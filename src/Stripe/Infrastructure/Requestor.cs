@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Text;
+using System;
 
 namespace Stripe
 {
@@ -30,16 +31,20 @@ namespace Stripe
 
         private static WebRequest GetWebRequest(string url, string method)
         {
-            var request = (WebRequest) WebRequest.Create(url);
+            var request = (HttpWebRequest) WebRequest.Create(url);
             request.Method = method;
-            request.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["StripeApiKey"], string.Empty);
+			request.Headers.Add("Authorization", GetAuthorizationHeaderValue(ConfigurationManager.AppSettings["StripeApiKey"]));
             request.ContentType = "application/x-www-form-urlencoded";
-
-            if (request is HttpWebRequest)
-                ((HttpWebRequest) request).UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
+            request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
 
             return request;
         }
+
+		private static string GetAuthorizationHeaderValue(string apiKey)
+		{
+			var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", apiKey)));
+			return string.Format("Basic {0}", token);
+		}
 
         private static string ExecuteWebRequest(WebRequest webRequest)
         {
