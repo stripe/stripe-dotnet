@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Stripe.Tests</RootNamespace>
+    <AssemblyName>Stripe.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Machine.Specifications">
+      <HintPath>..\Lib\Machine.Specifications.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="charges\charge_behaviors.cs" />
+    <Compile Include="charges\when_creating_a_charge_with_a_token.cs" />
+    <Compile Include="charges\when_listing_charges_for_customer.cs" />
+    <Compile Include="charges\when_listing_charges.cs" />
+    <Compile Include="coupons\when_deleting_a_coupon.cs" />
+    <Compile Include="coupons\coupon_behaviors.cs" />
+    <Compile Include="coupons\when_listing_coupons.cs" />
+    <Compile Include="customers\when_canceling_a_customer_subscription.cs" />
+    <Compile Include="customers\when_creating_an_updated_customer_subscription.cs" />
+    <Compile Include="customers\test_data\stripe_customer_update_subscription_options.cs" />
+    <Compile Include="customers\when_creating_a_customer_with_a_token.cs" />
+    <Compile Include="customers\test_data\stripe_customer_update_options.cs" />
+    <Compile Include="customers\when_updating_a_customer.cs" />
+    <Compile Include="customers\when_deleting_a_customer.cs" />
+    <Compile Include="customers\customer_behaviors.cs" />
+    <Compile Include="customers\when_listing_customers.cs" />
+    <Compile Include="card_behaviors.cs" />
+    <Compile Include="plans\when_listing_plans.cs" />
+    <Compile Include="plans\when_deleting_a_plan.cs" />
+    <Compile Include="plans\plan_behaviors.cs" />
+    <Compile Include="tokens\token_behaviors.cs" />
+    <Compile Include="charges\when_refunding_a_charge_with_an_amount.cs" />
+    <Compile Include="charges\when_refunding_a_charge.cs" />
+    <Compile Include="plans\when_getting_a_plan.cs" />
+    <Compile Include="customers\when_getting_a_customer.cs" />
+    <Compile Include="charges\when_getting_a_charge.cs" />
+    <Compile Include="coupons\when_getting_a_coupon.cs" />
+    <Compile Include="tokens\when_getting_a_token.cs" />
+    <Compile Include="tokens\test_data\stripe_token_create_options.cs" />
+    <Compile Include="tokens\when_creating_a_token.cs" />
+    <Compile Include="charges\when_creating_a_charge_with_a_customer.cs" />
+    <Compile Include="charges\when_creating_a_charge_with_a_card.cs" />
+    <Compile Include="charges\test_data\stripe_charge_create_options.cs" />
+    <Compile Include="coupons\test_data\stripe_coupon_create_options.cs" />
+    <Compile Include="coupons\when_creating_a_coupon.cs" />
+    <Compile Include="plans\test_data\stripe_plan_create_options.cs" />
+    <Compile Include="customers\test_data\stripe_customer_create_options.cs" />
+    <Compile Include="plans\when_creating_a_plan.cs" />
+    <Compile Include="customers\when_creating_a_customer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Stripe\Stripe.csproj">
+      <Project>{E48E9AC1-3A88-406B-82FF-166B1E3C7A48}</Project>
+      <Name>Stripe</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

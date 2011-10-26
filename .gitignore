@@ -1,0 +1,10 @@
+src/*/bin
+obj
+dist
+*.suo
+*.user
+*.cache
+_ReSharper.*
+*resharper*
+
+working

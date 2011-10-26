@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E48E9AC1-3A88-406B-82FF-166B1E3C7A48}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Stripe</RootNamespace>
+    <AssemblyName>Stripe</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Entities\StripeError.cs" />
+    <Compile Include="Entities\StripeToken.cs" />
+    <Compile Include="Entities\StripeCharge.cs" />
+    <Compile Include="Entities\StripeCard.cs" />
+    <Compile Include="Entities\StripePlan.cs" />
+    <Compile Include="Entities\StripeSubscription.cs" />
+    <Compile Include="Entities\StripeCoupon.cs" />
+    <Compile Include="Entities\StripeDiscount.cs" />
+    <Compile Include="Entities\StripeNextRecurringCharge.cs" />
+    <Compile Include="Infrastructure\Mapper.cs" />
+    <Compile Include="Entities\StripeCustomer.cs" />
+    <Compile Include="Services\CreditCardOptions.cs" />
+    <Compile Include="Services\Charges\StripeChargeCreateOptions.cs" />
+    <Compile Include="Services\Charges\StripeChargeService.cs" />
+    <Compile Include="Services\Coupons\StripeCouponCreateOptions.cs" />
+    <Compile Include="Services\Coupons\StripeCouponService.cs" />
+    <Compile Include="Services\Customers\StripeCustomerUpdateSubscriptionOptions.cs" />
+    <Compile Include="Services\Customers\StripeCustomerUpdateOptions.cs" />
+    <Compile Include="Services\Customers\StripeCustomerCreateOptions.cs" />
+    <Compile Include="Services\Customers\StripeCustomerService.cs" />
+    <Compile Include="Infrastructure\StripeArgumentAttribute.cs" />
+    <Compile Include="Services\Plans\StripePlanCreateOptions.cs" />
+    <Compile Include="Services\Plans\StripePlanService.cs" />
+    <Compile Include="Services\Tokens\StripeTokenCreateOptions.cs" />
+    <Compile Include="Services\Tokens\StripeTokenService.cs" />
+    <Compile Include="Infrastructure\StripeException.cs" />
+    <Compile Include="Infrastructure\Urls.cs" />
+    <Compile Include="Infrastructure\ParameterBuilder.cs" />
+    <Compile Include="Infrastructure\Requestor.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
