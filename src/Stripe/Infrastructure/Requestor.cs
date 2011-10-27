@@ -1,8 +1,8 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Text;
-using System;
 
 namespace Stripe
 {
@@ -33,18 +33,18 @@ namespace Stripe
         {
             var request = (HttpWebRequest) WebRequest.Create(url);
             request.Method = method;
-			request.Headers.Add("Authorization", GetAuthorizationHeaderValue(ConfigurationManager.AppSettings["StripeApiKey"]));
+            request.Headers.Add("Authorization", GetAuthorizationHeaderValue(ConfigurationManager.AppSettings["StripeApiKey"]));
             request.ContentType = "application/x-www-form-urlencoded";
             request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
 
             return request;
         }
 
-		private static string GetAuthorizationHeaderValue(string apiKey)
-		{
-			var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", apiKey)));
-			return string.Format("Basic {0}", token);
-		}
+        private static string GetAuthorizationHeaderValue(string apiKey)
+        {
+            var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", apiKey)));
+            return string.Format("Basic {0}", token);
+        }
 
         private static string ExecuteWebRequest(WebRequest webRequest)
         {
