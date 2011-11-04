@@ -1,6 +1,6 @@
 require 'albacore'
 
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 
 task :default => [:build, :merge, :output, :package]
 
@@ -25,7 +25,7 @@ end
 desc "Merge"
 exec :merge do |cmd|
 	cmd.command = 'tools\ilmerge\ilmerge.exe'
-	cmd.parameters ='/out:src\Stripe\bin\release\StripeMerged.dll /targetplatform:v4,"C:\Windows\Microsoft.NET\Framework\v4.0.30319" src\Stripe\bin\release\Stripe.dll src\Stripe\bin\release\Newtonsoft.Json.dll'
+	cmd.parameters ='/out:src\Stripe\bin\release\Stripe.net.dll /targetplatform:v4,"C:\Windows\Microsoft.NET\Framework\v4.0.30319" src\Stripe\bin\release\Stripe.dll src\Stripe\bin\release\Newtonsoft.Json.dll /closed'
 	puts 'Merging complete'
 end
 
@@ -33,7 +33,7 @@ desc "Output"
 output :output do |out|
 	out.from '.'
 	out.to 'working'
-	out.file 'src\Stripe\bin\release\StripeMerged.dll', :as=>'Stripe.dll'
+	out.file 'src\Stripe\bin\release\Stripe.net.dll', :as=>'Stripe.net.dll'
 	puts 'Output folder created'
 end
 
