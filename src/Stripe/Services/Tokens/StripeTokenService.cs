@@ -1,31 +1,25 @@
-﻿namespace Stripe
+﻿using Newtonsoft.Json;
+using Stripe.Infrastructure;
+namespace Stripe
 {
     public class StripeTokenService
     {
-        public StripeToken Create(StripeTokenCreateOptions createOptions)
-        {
-            var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Tokens);
-            
-            var response = Requestor.PostString(url);
+		public StripeToken Create(StripeTokenCreateOptions createOptions)
+		{
+			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Tokens);
 
-            return PopulateStripeToken(response);
-        }
+			var response = Requestor.PostString(url);
 
-        public StripeToken Get(string tokenId)
-        {
-            var url = string.Format("{0}/{1}", Urls.Tokens, tokenId);
+			return Mapper<StripeToken>.MapFromJson(response);
+		}
 
-            var response = Requestor.GetString(url);
+		public StripeToken Get(string tokenId)
+		{
+			var url = string.Format("{0}/{1}", Urls.Tokens, tokenId);
 
-            return PopulateStripeToken(response);
-        }
+			var response = Requestor.GetString(url);
 
-        private StripeToken PopulateStripeToken(string json)
-        {
-            var stripeToken = Mapper<StripeToken>.MapFromJson(json);
-            stripeToken.StripeCard = Mapper<StripeCard>.MapFromJson(json, "card.");
-
-            return stripeToken;
-        }
+			return Mapper<StripeToken>.MapFromJson(response);
+		}
     }
 }

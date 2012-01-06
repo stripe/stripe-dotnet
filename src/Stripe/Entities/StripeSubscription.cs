@@ -1,36 +1,35 @@
 ﻿using System;
+using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeSubscription
+    public class StripeSubscription : StripeSubscriptionBase
     {
-        [StripeArgument("customer")]
+        [JsonProperty("customer")]
         public string CustomerId { get; set; }
 
-        [StripeArgument("current_period_start")]
+        [JsonProperty("current_period_start")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? PeriodStart { get; set; }
 
-        [StripeArgument("current_period_end")]
+        [JsonProperty("current_period_end")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? PeriodEnd { get; set; }
 
-        [StripeArgument("start")]
+        [JsonProperty("start")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? Start { get; set; }
 
-        [StripeArgument("status")]
+        [JsonProperty("status")]
         public string Status { get; set; }
 
-        [StripeArgument("trial_start")]
-        public DateTime? TrialStart { get; set; }
-
-        [StripeArgument("trial_end")]
-        public DateTime? TrialEnd { get; set; }
-
-        [StripeArgument("canceled_at")]
+        [JsonProperty("canceled_at")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
 
-        [StripeArgument("ended_at")]
+        [JsonProperty("ended_at")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? EndedAt { get; set; }
-
-        public StripePlan StripePlan { get; set; }
     }
 }

@@ -60,7 +60,7 @@ namespace Stripe
                 if (webException.Response != null)
                 {
                     var statusCode = ((HttpWebResponse) webException.Response).StatusCode;
-                    var stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()));
+					var stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()), "error");
 
                     throw new StripeException(statusCode, stripeError, stripeError.Message);
                 }

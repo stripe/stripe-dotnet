@@ -1,27 +1,28 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace Stripe
 {
     public class StripeCouponCreateOptions
     {
-        [StripeArgument("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
-        [StripeArgument("percent_off")]
+        [JsonProperty("percent_off")]
         public int? PercentOff { get; set; }
 
-        [StripeArgument("duration")]
+        [JsonProperty("duration")]
         public string Duration { get; set; }
 
-        [StripeArgument("duration_in_months")]
+        [JsonProperty("duration_in_months")]
         public int? DurationInMonths { get; set; }
 
-        [StripeArgument("max_redemptions")]
+        [JsonProperty("max_redemptions")]
         public int? MaxRedemptions { get; set; }
 
         public DateTime? RedeemBy { get; set; }
 
-        [StripeArgument("redeem_by")]
+        [JsonProperty("redeem_by")]
         internal int? RedeemByInternal
         {
             get

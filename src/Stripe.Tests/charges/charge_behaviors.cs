@@ -26,7 +26,7 @@ namespace Stripe.Tests
             StripeCharge.Description.ShouldEqual(StripeChargeCreateOptions.Description);
 
         It should_have_a_fee = () =>
-            StripeCharge.FeeInCents.ShouldBeGreaterThan(0);
+            StripeCharge.FeeInCents.ShouldBeGreaterThanOrEqualTo(0);
 
         It should_have_the_correct_live_mode = () =>
             StripeCharge.LiveMode.ShouldEqual(false);

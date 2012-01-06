@@ -7,6 +7,11 @@
             get { return BaseUrl + "/invoices"; }
         }
 
+        public static string InvoiceItems
+        {
+            get { return BaseUrl + "/invoiceitems"; }
+        }
+
         public static string Tokens
         {
             get { return BaseUrl + "/tokens"; }

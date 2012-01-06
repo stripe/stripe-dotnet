@@ -8,10 +8,10 @@ namespace Stripe
         public StripeCustomer Create(StripeCustomerCreateOptions createOptions)
         {
             var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Customers);
-            
+
             var response = Requestor.PostString(url);
 
-            return PopulateStripeCustomer(response);
+            return Mapper<StripeCustomer>.MapFromJson(response);
         }
 
         public StripeCustomer Get(string customerId)
@@ -20,7 +20,7 @@ namespace Stripe
 
             var response = Requestor.GetString(url);
 
-            return PopulateStripeCustomer(response);
+            return Mapper<StripeCustomer>.MapFromJson(response);
         }
 
         public StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
@@ -30,7 +30,7 @@ namespace Stripe
 
             var response = Requestor.PostString(url);
 
-            return PopulateStripeCustomer(response);
+            return Mapper<StripeCustomer>.MapFromJson(response);
         }
 
         public void Delete(string customerId)
@@ -48,9 +48,7 @@ namespace Stripe
 
             var response = Requestor.GetString(url);
 
-            var json = Mapper<StripeCustomer>.MapCollectionToObjectList(response);
-
-            return json.Select(PopulateStripeCustomer);
+            return Mapper<StripeCustomer>.MapCollectionFromJson(response);
         }
 
         public StripeSubscription UpdateSubscription(string customerId, StripeCustomerUpdateSubscriptionOptions updateOptions)
@@ -60,10 +58,7 @@ namespace Stripe
 
             var response = Requestor.PostString(url);
 
-            var subscription = Mapper<StripeSubscription>.MapFromJson(response);
-            subscription.StripePlan = Mapper<StripePlan>.MapFromJson(response, "plan.");
-
-            return subscription;
+            return Mapper<StripeSubscription>.MapFromJson(response);
         }
 
         public StripeSubscription CancelSubscription(string customerId, bool cancelAtPeriodEnd = false)
@@ -73,29 +68,7 @@ namespace Stripe
 
             var response = Requestor.Delete(url);
 
-            var subscription = Mapper<StripeSubscription>.MapFromJson(response);
-            subscription.StripePlan = Mapper<StripePlan>.MapFromJson(response, "plan.");
-
-            return subscription;
-        }
-
-        private StripeCustomer PopulateStripeCustomer(string json)
-        {
-            var stripeCustomer = Mapper<StripeCustomer>.MapFromJson(json);
-            stripeCustomer.StripeNextRecurringCharge = Mapper<StripeNextRecurringCharge>.MapFromJson(json, "next_recurring_charge.");
-            stripeCustomer.StripeDiscount = Mapper<StripeDiscount>.MapFromJson(json, "discount.");
-
-            if (stripeCustomer.StripeDiscount != null)
-                stripeCustomer.StripeDiscount.StripeCoupon = Mapper<StripeCoupon>.MapFromJson(json, "discount.coupon.");
-
-            stripeCustomer.StripeSubscription = Mapper<StripeSubscription>.MapFromJson(json, "subscription.");
-
-            if (stripeCustomer.StripeSubscription != null)
-                stripeCustomer.StripeSubscription.StripePlan = Mapper<StripePlan>.MapFromJson(json, "subscription.plan.");
-
-            stripeCustomer.StripeCard = Mapper<StripeCard>.MapFromJson(json, "active_card.");
-
-            return stripeCustomer;
+            return Mapper<StripeSubscription>.MapFromJson(response);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace Stripe
 {
@@ -15,14 +16,14 @@ namespace Stripe
             {
                 foreach (var attribute in property.GetCustomAttributes(false))
                 {
-                    if (attribute.GetType() != typeof(StripeArgumentAttribute)) continue;
+                    if (attribute.GetType() != typeof(JsonPropertyAttribute)) continue;
                    
-                    var stripeArgumentAttribute = (StripeArgumentAttribute)attribute;
+                    var JsonPropertyAttribute = (JsonPropertyAttribute)attribute;
 
                     var value = property.GetValue(obj, null);
 
                     if (value != null)
-                        newUrl = ApplyParameterToUrl(newUrl, stripeArgumentAttribute.Field, value.ToString());
+                        newUrl = ApplyParameterToUrl(newUrl, JsonPropertyAttribute.PropertyName, value.ToString());
                 }
             }
 

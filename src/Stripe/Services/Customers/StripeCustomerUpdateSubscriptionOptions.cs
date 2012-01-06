@@ -1,21 +1,22 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace Stripe
 {
     public class StripeCustomerUpdateSubscriptionOptions : CreditCardOptions
     {
-        [StripeArgument("plan")]
+        [JsonProperty("plan")]
         public string PlanId { get; set; }
 
-        [StripeArgument("coupon")]
+        [JsonProperty("coupon")]
         public string CouponId { get; set; }
 
-        [StripeArgument("prorate")]
+        [JsonProperty("prorate")]
         public bool? Prorate { get; set; }
 
         public DateTime? TrialEnd { get; set; }
 
-        [StripeArgument("trial_end")]
+        [JsonProperty("trial_end")]
         internal int? TrialEndInternal
         {
             get

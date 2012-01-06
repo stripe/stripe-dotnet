@@ -1,17 +1,18 @@
-﻿namespace Stripe
+﻿using Newtonsoft.Json;
+namespace Stripe
 {
     public class StripeChargeCreateOptions : CreditCardOptions
     {
-        [StripeArgument("amount")]
+        [JsonProperty("amount")]
         public int? AmountInCents { get; set; }
 
-        [StripeArgument("currency")]
+        [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        [StripeArgument("description")]
+        [JsonProperty("description")]
         public string Description { get; set; }
 
-        [StripeArgument("customer")]
+        [JsonProperty("customer")]
         public string CustomerId { get; set; }
     }
 }

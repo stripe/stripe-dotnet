@@ -1,14 +1,15 @@
-﻿namespace Stripe
+﻿using Newtonsoft.Json;
+namespace Stripe
 {
     public class StripeCustomerUpdateOptions : CreditCardOptions
     {
-        [StripeArgument("coupon")]
+        [JsonProperty("coupon")]
         public string Coupon { get; set; }
 
-        [StripeArgument("email")]
+        [JsonProperty("email")]
         public string Email { get; set; }
 
-        [StripeArgument("description")]
+        [JsonProperty("description")]
         public string Description { get; set; }
     }
 }

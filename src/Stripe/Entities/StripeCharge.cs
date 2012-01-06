@@ -1,42 +1,46 @@
 ﻿using System;
+using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
     public class StripeCharge
     {
-        [StripeArgument("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
-        [StripeArgument("amount")]
+        [JsonProperty("amount")]
         public int? AmountInCents { get; set; }
 
-        [StripeArgument("amount_refunded")]
+        [JsonProperty("amount_refunded")]
         public int? AmountInCentsRefunded { get; set; }
 
-        [StripeArgument("created")]
+        [JsonProperty("created")]
+		[JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
 
-        [StripeArgument("currency")]
+        [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        [StripeArgument("customer")]
+        [JsonProperty("customer")]
         public string CustomerId { get; set; }
 
-        [StripeArgument("description")]
+        [JsonProperty("description")]
         public string Description { get; set; }
 
-        [StripeArgument("fee")]
+        [JsonProperty("fee")]
         public int? FeeInCents { get; set; }
 
-        [StripeArgument("paid")]
+        [JsonProperty("paid")]
         public bool? Paid { get; set; }
 
-        [StripeArgument("refunded")]
+        [JsonProperty("refunded")]
         public bool? Refunded { get; set; }
 
-        [StripeArgument("livemode")]
+        [JsonProperty("livemode")]
         public bool? LiveMode { get; set; }
 
+		[JsonProperty("card")]
         public StripeCard StripeCard { get; set; }
     }
 }

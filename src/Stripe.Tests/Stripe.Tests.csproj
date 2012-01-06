@@ -31,8 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Machine.Specifications">
-      <HintPath>..\Lib\Machine.Specifications.dll</HintPath>
+    <Reference Include="Machine.Specifications, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Machine.Specifications.0.5.2.0\lib\Machine.Specifications.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,6 +51,17 @@
     <Compile Include="charges\when_creating_a_charge_with_a_token.cs" />
     <Compile Include="charges\when_listing_charges_for_customer.cs" />
     <Compile Include="charges\when_listing_charges.cs" />
+    <Compile Include="invoices\when_getting_an_invoice.cs" />
+    <Compile Include="invoices\when_getting_an_upcoming_invoice.cs" />
+    <Compile Include="invoices\when_listing_invoices.cs" />
+    <Compile Include="invoiceitems\when_updating_an_invoiceitem.cs" />
+    <Compile Include="invoiceitems\invoiceitem_behaviors.cs" />
+    <Compile Include="coupons\test_data\stripe_coupon_create_options.cs" />
+    <Compile Include="invoiceitems\test_data\stripe_invoiceitem_update_options.cs" />
+    <Compile Include="invoiceitems\when_creating_an_invoiceitem.cs" />
+    <Compile Include="invoiceitems\when_deleting_an_invoiceitem.cs" />
+    <Compile Include="invoiceitems\when_getting_an_invoiceitem.cs" />
+    <Compile Include="invoiceitems\when_listing_invoiceitems.cs" />
     <Compile Include="coupons\when_deleting_a_coupon.cs" />
     <Compile Include="coupons\coupon_behaviors.cs" />
     <Compile Include="coupons\when_listing_coupons.cs" />
@@ -79,7 +91,7 @@
     <Compile Include="charges\when_creating_a_charge_with_a_customer.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_card.cs" />
     <Compile Include="charges\test_data\stripe_charge_create_options.cs" />
-    <Compile Include="coupons\test_data\stripe_coupon_create_options.cs" />
+    <Compile Include="invoiceitems\test_data\stripe_invoiceitem_create_options.cs" />
     <Compile Include="coupons\when_creating_a_coupon.cs" />
     <Compile Include="plans\test_data\stripe_plan_create_options.cs" />
     <Compile Include="customers\test_data\stripe_customer_create_options.cs" />

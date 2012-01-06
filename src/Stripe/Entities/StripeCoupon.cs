@@ -1,28 +1,31 @@
 ﻿using System;
+using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
     public class StripeCoupon
     {
-        [StripeArgument("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
-        [StripeArgument("duration")]
+        [JsonProperty("duration")]
         public string Duration { get; set; }
 
-        [StripeArgument("duration_in_months")]
+        [JsonProperty("duration_in_months")]
         public int? DurationInMonths { get; set; }
 
-        [StripeArgument("livemode")]
+        [JsonProperty("livemode")]
         public bool? LiveMode { get; set; }
 
-        [StripeArgument("max_redemptions")]
+        [JsonProperty("max_redemptions")]
         public int? MaxRedemptions { get; set; }
 
-        [StripeArgument("percent_off")]
+        [JsonProperty("percent_off")]
         public int? PercentOff { get; set; }
-        
-        [StripeArgument("redeem_by")]
+
+        [JsonProperty("redeem_by")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? RedeemBy { get; set; }
     }
 }

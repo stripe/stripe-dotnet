@@ -1,26 +1,27 @@
-﻿namespace Stripe
+﻿using Newtonsoft.Json;
+namespace Stripe
 {
     public class StripePlan
     {
-        [StripeArgument("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
-        [StripeArgument("name")]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
-        [StripeArgument("currency")]
+        [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        [StripeArgument("amount")]
+        [JsonProperty("amount")]
         public int? AmountInCents { get; set; }
 
-        [StripeArgument("interval")]
+        [JsonProperty("interval")]
         public string Interval { get; set; }
 
-        [StripeArgument("livemode")]
+        [JsonProperty("livemode")]
         public bool? LiveMode { get; set; }
 
-        [StripeArgument("trial_period_days")]
+        [JsonProperty("trial_period_days")]
         public int? TrialPeriodDays { get; set; }
     }
 }

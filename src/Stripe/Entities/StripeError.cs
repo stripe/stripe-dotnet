@@ -1,17 +1,18 @@
-﻿namespace Stripe
+﻿using Newtonsoft.Json;
+namespace Stripe
 {
     public class StripeError
     {
-        [StripeArgument("error.type")]
+        [JsonProperty("type")]
         public string ErrorType { get; set; }
 
-        [StripeArgument("error.message")]
+        [JsonProperty("message")]
         public string Message { get; set; }
 
-        [StripeArgument("error.code")]
+        [JsonProperty("code")]
         public string Code { get; set; }
 
-        [StripeArgument("error.param")]
+        [JsonProperty("param")]
         public string Parameter { get; set; }
     }
 }

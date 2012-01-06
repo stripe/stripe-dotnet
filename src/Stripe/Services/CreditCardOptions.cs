@@ -1,38 +1,39 @@
-﻿namespace Stripe
+﻿using Newtonsoft.Json;
+namespace Stripe
 {
     public abstract class CreditCardOptions
     {
-        [StripeArgument("card[number]")]
+        [JsonProperty("card[number]")]
         public string CardNumber { get; set; }
 
-        [StripeArgument("card[exp_month]")]
+        [JsonProperty("card[exp_month]")]
         public string CardExpirationMonth { get; set; }
 
-        [StripeArgument("card[exp_year]")]
+        [JsonProperty("card[exp_year]")]
         public string CardExpirationYear { get; set; }
 
-        [StripeArgument("card[cvc]")]
+        [JsonProperty("card[cvc]")]
         public string CardCvc { get; set; }
 
-        [StripeArgument("card[name]")]
+        [JsonProperty("card[name]")]
         public string CardName { get; set; }
 
-        [StripeArgument("card[address_line1]")]
+        [JsonProperty("card[address_line1]")]
         public string CardAddressLine1 { get; set; }
 
-        [StripeArgument("card[address_line2]")]
+        [JsonProperty("card[address_line2]")]
         public string CardAddressLine2 { get; set; }
 
-        [StripeArgument("card[address_zip]")]
+        [JsonProperty("card[address_zip]")]
         public string CardAddressZip { get; set; }
 
-        [StripeArgument("card[address_state]")]
+        [JsonProperty("card[address_state]")]
         public string CardAddressState { get; set; }
 
-        [StripeArgument("card[address_country]")]
+        [JsonProperty("card[address_country]")]
         public string CardAddressCountry { get; set; }
 
-        [StripeArgument("card")]
+        [JsonProperty("card")]
         public string TokenId { get; set; }
     }
 }

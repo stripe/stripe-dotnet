@@ -1,51 +1,47 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
     public class StripePlanService
     {
-        public StripePlan Create(StripePlanCreateOptions createOptions)
-        {
-            var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Plans);
-            
-            var response = Requestor.PostString(url);
+		public StripePlan Create(StripePlanCreateOptions createOptions)
+		{
+			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Plans);
 
-            return PopulateStripePlan(response);
-        }
+			var response = Requestor.PostString(url);
 
-        public StripePlan Get(string planId)
-        {
-            var url = string.Format("{0}/{1}", Urls.Plans, planId);
+			return Mapper<StripePlan>.MapFromJson(response);
+		}
 
-            var response = Requestor.GetString(url);
+		public StripePlan Get(string planId)
+		{
+			var url = string.Format("{0}/{1}", Urls.Plans, planId);
 
-            return PopulateStripePlan(response);
-        }
+			var response = Requestor.GetString(url);
 
-        public void Delete(string planId)
-        {
-            var url = string.Format("{0}/{1}", Urls.Plans, planId);
+			return Mapper<StripePlan>.MapFromJson(response);
+		}
 
-            Requestor.Delete(url);
-        }
+		public void Delete(string planId)
+		{
+			var url = string.Format("{0}/{1}", Urls.Plans, planId);
 
-        public IEnumerable<StripePlan> List(int count = 10, int offset = 0)
-        {
-            var url = Urls.Plans;
-            url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-            url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+			Requestor.Delete(url);
+		}
 
-            var response = Requestor.GetString(url);
+		public IEnumerable<StripePlan> List(int count = 10, int offset = 0)
+		{
+			var url = Urls.Plans;
+			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
+			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
 
-            var json = Mapper<StripePlan>.MapCollectionToObjectList(response);
+			var response = Requestor.GetString(url);
 
-            return json.Select(PopulateStripePlan);
-        }
+			return Mapper<StripePlan>.MapCollectionFromJson(response);
 
-        private StripePlan PopulateStripePlan(string json)
-        {
-            return Mapper<StripePlan>.MapFromJson(json);
-        }
+		}
     }
 }

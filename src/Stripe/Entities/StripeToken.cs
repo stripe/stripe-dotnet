@@ -1,30 +1,34 @@
 ﻿using System;
+using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
     public class StripeToken
     {
-        [StripeArgument("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
-        [StripeArgument("amount")]
+        [JsonProperty("amount")]
         public int? AmountInCents { get; set; }
 
-        [StripeArgument("created")]
+		[JsonProperty("created")]
+		[JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? Created { get; set; }
 
-        [StripeArgument("currency")]
+        [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        [StripeArgument("description")]
+        [JsonProperty("description")]
         public string Description { get; set; }
 
-        [StripeArgument("used")]
+        [JsonProperty("used")]
         public bool? Used { get; set; }
 
-        [StripeArgument("livemode")]
+        [JsonProperty("livemode")]
         public bool? LiveMode { get; set; }
 
+		[JsonProperty("card")]
         public StripeCard StripeCard { get; set; }
     }
 }

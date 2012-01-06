@@ -1,51 +1,46 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
     public class StripeCouponService
     {
-        public StripeCoupon Create(StripeCouponCreateOptions createOptions)
-        {
-            var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Coupons);
-            
-            var response = Requestor.PostString(url);
+		public StripeCoupon Create(StripeCouponCreateOptions createOptions)
+		{
+			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Coupons);
 
-            return PopulateStripeCoupon(response);
-        }
+			var response = Requestor.PostString(url);
 
-        public StripeCoupon Get(string couponId)
-        {
-            var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
+			return Mapper<StripeCoupon>.MapFromJson(response);
+		}
 
-            var response = Requestor.GetString(url);
+		public StripeCoupon Get(string couponId)
+		{
+			var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
 
-            return PopulateStripeCoupon(response);
-        }
+			var response = Requestor.GetString(url);
 
-        public void Delete(string couponId)
-        {
-            var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
+			return Mapper<StripeCoupon>.MapFromJson(response);
+		}
 
-            Requestor.Delete(url);
-        }
+		public void Delete(string couponId)
+		{
+			var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
 
-        public IEnumerable<StripeCoupon> List(int count = 10, int offset = 0)
-        {
-            var url = Urls.Coupons;
-            url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-            url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+			Requestor.Delete(url);
+		}
 
-            var response = Requestor.GetString(url);
+		public IEnumerable<StripeCoupon> List(int count = 10, int offset = 0)
+		{
+			var url = Urls.Coupons;
+			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
+			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
 
-            var json = Mapper<StripeCoupon>.MapCollectionToObjectList(response);
+			var response = Requestor.GetString(url);
 
-            return json.Select(PopulateStripeCoupon);
-        }
-
-        private StripeCoupon PopulateStripeCoupon(string json)
-        {
-            return Mapper<StripeCoupon>.MapFromJson(json);
-        }
+			return Mapper<StripeCoupon>.MapCollectionFromJson(response);
+		}
     }
 }

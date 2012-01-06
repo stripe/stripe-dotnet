@@ -1,13 +1,16 @@
 ﻿using System;
+using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
     public class StripeNextRecurringCharge
     {
-        [StripeArgument("amount")]
+        [JsonProperty("amount")]
         public string AmountInCents { get; set; }
 
-        [StripeArgument("date")]
+		[JsonProperty("date")]
+		[JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? Date { get; set; }
     }
 }

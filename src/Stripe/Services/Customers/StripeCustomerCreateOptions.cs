@@ -1,24 +1,25 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace Stripe
 {
     public class StripeCustomerCreateOptions : CreditCardOptions
     {
-        [StripeArgument("coupon")]
+        [JsonProperty("coupon")]
         public string CouponId { get; set; }
 
-        [StripeArgument("email")]
+        [JsonProperty("email")]
         public string Email { get; set; }
 
-        [StripeArgument("description")]
+        [JsonProperty("description")]
         public string Description { get; set; }
 
-        [StripeArgument("plan")]
+        [JsonProperty("plan")]
         public string PlanId { get; set; }
 
         public DateTime? TrialEnd { get; set; }
 
-        [StripeArgument("trial_end")]
+        [JsonProperty("trial_end")]
         internal int? TrialEndInternal
         {
             get
