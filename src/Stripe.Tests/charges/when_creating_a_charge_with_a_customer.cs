@@ -13,10 +13,10 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            var stripeCustomerService = new StripeCustomerService();
+			var stripeCustomerService = new StripeCustomerService(false);
             _stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
-            
-            _stripeChargeService = new StripeChargeService();
+
+			_stripeChargeService = new StripeChargeService(false);
             StripeChargeCreateOptions = test_data.stripe_charge_create_options.ValidCustomer(_stripeCustomer.Id);
         };
 

@@ -11,7 +11,7 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            _stripePlanService = new StripePlanService();
+			_stripePlanService = new StripePlanService(false);
 
             _stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
             _stripePlanService.Create(test_data.stripe_plan_create_options.Valid());

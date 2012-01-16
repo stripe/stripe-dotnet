@@ -6,13 +6,16 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeInvoiceService
+    public class StripeInvoiceService: StripeServiceBase
     {
+		public StripeInvoiceService() : base() { }
+		public StripeInvoiceService(bool liveMode) : base(liveMode) { }
+
         public StripeInvoice Get(string invoiceId)
         {
             var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
 
-            var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url, LiveMode);
 
             return Mapper<StripeInvoice>.MapFromJson(response);
         }
@@ -23,7 +26,7 @@ namespace Stripe
 
             url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
 
-            var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url, LiveMode);
 
             return Mapper<StripeInvoice>.MapFromJson(response);
         }
@@ -37,7 +40,7 @@ namespace Stripe
             if(!string.IsNullOrEmpty(customerId))
                 url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
 
-            var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url, LiveMode);
 
             return Mapper<StripeInvoice>.MapCollectionFromJson(response);
         }

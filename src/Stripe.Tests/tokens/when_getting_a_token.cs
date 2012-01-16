@@ -12,7 +12,7 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            _stripeTokenService = new StripeTokenService();
+			_stripeTokenService = new StripeTokenService(false);
             StripeTokenCreateOptions = test_data.stripe_token_create_options.Valid();
 
             var stripeToken = _stripeTokenService.Create(StripeTokenCreateOptions);

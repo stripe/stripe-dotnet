@@ -8,32 +8,32 @@ namespace Stripe
 {
     internal static class Requestor
     {
-        public static string GetString(string url)
+        public static string GetString(string url, bool liveMode)
         {
-            var wr = GetWebRequest(url, "GET");
+            var wr = GetWebRequest(url, "GET", liveMode);
 
             return ExecuteWebRequest(wr);
         }
 
-        public static string PostString(string url)
+        public static string PostString(string url, bool liveMode)
         {
-            var wr = GetWebRequest(url, "POST");
+            var wr = GetWebRequest(url, "POST", liveMode);
 
             return ExecuteWebRequest(wr);
         }
 
-        public static string Delete(string url)
+        public static string Delete(string url, bool liveMode)
         {
-            var wr = GetWebRequest(url, "DELETE");
+            var wr = GetWebRequest(url, "DELETE", liveMode);
 
             return ExecuteWebRequest(wr);
         }
 
-        private static WebRequest GetWebRequest(string url, string method)
+        private static WebRequest GetWebRequest(string url, string method, bool liveMode)
         {
             var request = (HttpWebRequest) WebRequest.Create(url);
             request.Method = method;
-            request.Headers.Add("Authorization", GetAuthorizationHeaderValue(ConfigurationManager.AppSettings["StripeApiKey"]));
+            request.Headers.Add("Authorization", GetAuthorizationHeaderValue(ConfigurationManager.AppSettings["Stripe" + (liveMode ? "Live" : "Test") + "ApiKey"]));
             request.ContentType = "application/x-www-form-urlencoded";
             request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
 
