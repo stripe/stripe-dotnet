@@ -10,7 +10,7 @@ namespace Stripe
 	public class StripePayment
 	{
 		[JsonProperty("card")]
-		public StripeCardBase Card { get; set; }
+		public StripeCardBase StripeCard { get; set; }
 
 		[JsonProperty("time")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
@@ -18,6 +18,5 @@ namespace Stripe
 
 		[JsonProperty("success")]
 		public bool? Success { get; set; }
-
 	}
 }

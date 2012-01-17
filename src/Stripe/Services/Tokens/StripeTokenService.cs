@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Stripe.Infrastructure;
+
 namespace Stripe
 {
     public class StripeTokenService

@@ -4,29 +4,29 @@ namespace Stripe.Tests
 {
 	public class when_updating_an_invoiceitem
     {
-		protected static StripeInvoiceItemCreateOptions StripeInvoiceItemCreateOptions;
-		protected static StripeInvoiceItemUpdateOptions StripeInvoiceItemUpdateOptions;
-		protected static StripeInvoiceItem StripeInvoiceItem;
-		protected static string StripeInvoiceItemId;
-
+		private static StripeInvoiceItem _stripeInvoiceItem;
+		private static string _stripeInvoiceItemId;
 		private static StripeInvoiceItemService _stripeInvoiceItemService;
-		private static StripeCustomer _stripeCustomer;
 
 		Establish context = () =>
 		{
 			var stripeCustomerService = new StripeCustomerService();
-			_stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
+			var stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
 
 			_stripeInvoiceItemService = new StripeInvoiceItemService();
-			StripeInvoiceItemCreateOptions = test_data.stripe_invoiceitem_create_options.Valid(_stripeCustomer.Id);
+            var _stripeInvoiceItemCreateOptions = test_data.stripe_invoiceitem_create_options.Valid(stripeCustomer.Id);
 
-			var createdInvoice = _stripeInvoiceItemService.Create(StripeInvoiceItemCreateOptions);
-			StripeInvoiceItemId = createdInvoice.Id;
+            var createdInvoice = _stripeInvoiceItemService.Create(_stripeInvoiceItemCreateOptions);
+            _stripeInvoiceItemId = createdInvoice.Id;
 		};
 
 		Because of = () =>
-			StripeInvoiceItem = _stripeInvoiceItemService.Update(StripeInvoiceItemId, test_data.stripe_invoiceitem_update_options.Valid());
+            _stripeInvoiceItem = _stripeInvoiceItemService.Update(_stripeInvoiceItemId, test_data.stripe_invoiceitem_update_options.Valid());
 
-		Behaves_like<invoiceitem_behaviors> behaviors;
+        It should_have_the_correct_amount = () =>
+            _stripeInvoiceItem.AmountInCents.ShouldEqual(test_data.stripe_invoiceitem_update_options.Valid().AmountInCents);
+
+        It should_have_the_correct_description = () =>
+            _stripeInvoiceItem.Description.ShouldEqual(test_data.stripe_invoiceitem_update_options.Valid().Description);
     }
 }

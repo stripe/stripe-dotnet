@@ -9,9 +9,9 @@ namespace Stripe
         public int? AmountInCents { get; set; }
 
         [JsonProperty("plan")]
-        public StripePlan Plan { get; set; }
+        public StripePlan StripePlan { get; set; }
 
         [JsonProperty("period")]
-        public StripePeriod Period { get; set; }
+        public StripePeriod StripePeriod { get; set; }
     }
 }

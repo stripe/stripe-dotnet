@@ -21,9 +21,9 @@ namespace Stripe
 		public int? Attempt { get; set; }
 
 		[JsonProperty("invoice")]
-		public StripeInvoice Invoice { get; set; }
+        public StripeInvoice StripeInvoice { get; set; }
 
 		[JsonProperty("payment")]
-		public StripePayment Payment { get; set; }
+        public StripePayment StripePayment { get; set; }
 	}
 }

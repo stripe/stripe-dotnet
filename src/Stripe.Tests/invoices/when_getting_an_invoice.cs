@@ -5,54 +5,44 @@ using System;
 
 namespace Stripe.Tests
 {
-    public class when_gettting_an_invoice
+    public class when_getting_an_invoice
 	{
-		protected static StripeCustomerCreateOptions StripeCustomerCreateOptions;
-		protected static StripeCustomer StripeCustomer;
-		protected static StripePlan StripePlan;
-		protected static StripeCoupon StripeCoupon;
-		protected static StripeCard StripeCard;
-		protected static StripeInvoice StripeInvoice;
-
+        private static StripeInvoice _stripeInvoice;
 		private static List<StripeInvoice> _stripeInvoiceList;
 		private static StripeInvoiceService _stripeInvoiceService;
-		private static StripeCustomerService _stripeCustomerService;
 
 		Establish context = () =>
 		{
-			var _stripePlanService = new StripePlanService();
-			StripePlan = _stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
+			var stripePlanService = new StripePlanService();
+            var stripePlan = stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
 
-			var _stripeCouponService = new StripeCouponService();
-			StripeCoupon = _stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid());
+			var stripeCouponService = new StripeCouponService();
+            var stripeCoupon = stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid());
 
-			_stripeCustomerService = new StripeCustomerService();
-			StripeCustomerCreateOptions = test_data.stripe_customer_create_options.ValidCard(StripePlan.Id, StripeCoupon.Id);
-			StripeCustomer = _stripeCustomerService.Create(StripeCustomerCreateOptions);
+			var stripeCustomerService = new StripeCustomerService();
+            var stripeCustomerCreateOptions = test_data.stripe_customer_create_options.ValidCard(stripePlan.Id, stripeCoupon.Id);
+            var stripeCustomer = stripeCustomerService.Create(stripeCustomerCreateOptions);
 
 			_stripeInvoiceService = new StripeInvoiceService();
-			_stripeInvoiceList = _stripeInvoiceService.List(10, 0, StripeCustomer.Id).ToList();
-
-
+            _stripeInvoiceList = _stripeInvoiceService.List(10, 0, stripeCustomer.Id).ToList();
 		};
 
 		Because of = () =>
-			StripeInvoice = _stripeInvoiceService.Get(_stripeInvoiceList.First().Id);
+            _stripeInvoice = _stripeInvoiceService.Get(_stripeInvoiceList.First().Id);
 
 		It should_have_the_correct_id = () =>
-			StripeInvoice.Id.ShouldEqual(_stripeInvoiceList.First().Id);
+            _stripeInvoice.Id.ShouldEqual(_stripeInvoiceList.First().Id);
 
 		It should_have_a_valid_date = () =>
-			StripeInvoice.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
+            _stripeInvoice.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
 
 		It should_have_a_subtotal = () =>
-			StripeInvoice.SubtotalInCents.ShouldBeGreaterThanOrEqualTo(0);
+            _stripeInvoice.SubtotalInCents.ShouldBeGreaterThanOrEqualTo(0);
 
 		It should_have_a_total = () =>
-			StripeInvoice.TotalInCents.ShouldBeGreaterThanOrEqualTo(0);
+            _stripeInvoice.TotalInCents.ShouldBeGreaterThanOrEqualTo(0);
 
 		It should_have_a_lines_object = () =>
-			StripeInvoice.Lines.ShouldNotBeNull();
-
+            _stripeInvoice.StripeInvoiceLines.ShouldNotBeNull();
     }
 }

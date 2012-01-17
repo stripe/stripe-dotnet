@@ -49,11 +49,10 @@ namespace Stripe
         [JsonProperty("total")]
         public int? TotalInCents { get; set; }
 
-        
         [JsonProperty("lines")]
-        public StripeInvoiceLine Lines { get; set; }
+        public StripeInvoiceLines StripeInvoiceLines { get; set; }
 
         [JsonProperty("discount")]
-        public StripeDiscount Discount { get; set; }
+        public StripeDiscount StripeDiscount { get; set; }
     }
 }

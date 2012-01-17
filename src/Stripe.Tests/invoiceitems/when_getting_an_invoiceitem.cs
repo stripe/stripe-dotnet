@@ -24,9 +24,7 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-			{
-				StripeInvoiceItem = _stripeInvoiceItemService.Get(StripeInvoiceItemId);
-			};
+			StripeInvoiceItem = _stripeInvoiceItemService.Get(StripeInvoiceItemId);
 
 		Behaves_like<invoiceitem_behaviors> behaviors;
     }

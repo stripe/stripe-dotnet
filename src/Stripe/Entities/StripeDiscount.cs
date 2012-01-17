@@ -17,7 +17,6 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? End { get; set; }
 
-
         [JsonProperty("coupon")]
         public StripeCoupon StripeCoupon { get; set; }
     }

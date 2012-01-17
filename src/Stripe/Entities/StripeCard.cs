@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
+
 namespace Stripe
 {
-    public class StripeCard: StripeCardBase
+    public class StripeCard : StripeCardBase
     {
         [JsonProperty("address_country")]
         public string AddressCountry { get; set; }

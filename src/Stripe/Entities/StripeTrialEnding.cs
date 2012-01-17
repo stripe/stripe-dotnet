@@ -18,6 +18,6 @@ namespace Stripe
 		public bool? LiveMode { get; set; }
 
 		[JsonProperty("subscription")]
-		public StripeSubscriptionBase Subscription { get; set; }
+		public StripeSubscriptionBase StripeSubscription { get; set; }
 	}
 }

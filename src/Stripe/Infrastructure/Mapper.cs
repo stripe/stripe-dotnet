@@ -18,7 +18,8 @@ namespace Stripe
 
 		public static T MapFromJson(string json, string parentToken = null)
 		{
-			string jsonToParse = string.IsNullOrEmpty(parentToken) ? json : JObject.Parse(json).SelectToken(parentToken).ToString();
+			var jsonToParse = string.IsNullOrEmpty(parentToken) ? json : JObject.Parse(json).SelectToken(parentToken).ToString();
+
 			return JsonConvert.DeserializeObject<T>(jsonToParse);
 		}
 	}

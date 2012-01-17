@@ -11,7 +11,7 @@ namespace Stripe.Tests.test_data
 				AmountInCents = 1000,
 				Currency = "usd",
 				CustomerId = customerId,
-				Description = "Test Invoice Item"    
+				Description = "Test Invoice Item"
             };
 
 			return stripeInvoiceItemCreateOptions;

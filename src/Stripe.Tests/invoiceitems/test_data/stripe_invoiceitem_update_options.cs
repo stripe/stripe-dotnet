@@ -8,9 +8,9 @@ namespace Stripe.Tests.test_data
         {
 			var stripeInvoiceItemUpdateOptions = new StripeInvoiceItemUpdateOptions()
             {
-				AmountInCents = 1000,
+				AmountInCents = 1001,
 				Currency = "usd",
-				Description = "Test Invoice Item"    
+				Description = "Test Invoice Item Update"    
             };
 
 			return stripeInvoiceItemUpdateOptions;

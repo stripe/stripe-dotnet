@@ -41,7 +41,6 @@ namespace Stripe
 			var response = Requestor.GetString(url);
 
 			return Mapper<StripePlan>.MapCollectionFromJson(response);
-
 		}
     }
 }

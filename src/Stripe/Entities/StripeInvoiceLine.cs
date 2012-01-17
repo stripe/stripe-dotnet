@@ -4,13 +4,12 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeInvoiceLine
+    public class StripeInvoiceLines
     {
         [JsonProperty("invoiceitems")]
-        public List<StripeInvoiceItem> InvoiceItems { get; set; }
+        public List<StripeInvoiceItem> StripeInvoiceItems { get; set; }
 
 		[JsonProperty("subscriptions")]
-		public List<StripeInvoiceSubscription> Subscriptions { get; set; }
-
+		public List<StripeInvoiceSubscription> StripeInvoiceSubscriptions { get; set; }
     }
 }

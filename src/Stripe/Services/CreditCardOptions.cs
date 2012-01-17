@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+
 namespace Stripe
 {
     public abstract class CreditCardOptions

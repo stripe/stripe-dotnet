@@ -10,7 +10,6 @@ namespace Stripe.Tests
 		protected static StripeInvoiceItem StripeInvoiceItem;
 		protected static string StripeInvoiceItemId;
 
-
 		It should_have_the_correct_amount = () =>
 			StripeInvoiceItem.AmountInCents.ShouldEqual(StripeInvoiceItemCreateOptions.AmountInCents);
 
@@ -27,11 +26,11 @@ namespace Stripe.Tests
 			StripeInvoiceItem.Description.ShouldEqual(StripeInvoiceItemCreateOptions.Description);
 
 		It should_have_a_valid_id = () =>
-			{
-				if (!string.IsNullOrEmpty(StripeInvoiceItemId))
-					StripeInvoiceItem.Id.ShouldEqual(StripeInvoiceItemId);
-				else
-					StripeInvoiceItem.Id.ShouldNotBeNull();
-			};
+		{
+			if (!string.IsNullOrEmpty(StripeInvoiceItemId))
+				StripeInvoiceItem.Id.ShouldEqual(StripeInvoiceItemId);
+			else
+				StripeInvoiceItem.Id.ShouldNotBeNull();
+		};
     }
 }
