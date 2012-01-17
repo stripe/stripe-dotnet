@@ -12,7 +12,7 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            _stripeCouponService = new StripeCouponService();
+			_stripeCouponService = new StripeCouponService(false);
             StripeCouponCreateOptions = test_data.stripe_coupon_create_options.Valid();
 
             var stripeCoupon = _stripeCouponService.Create(StripeCouponCreateOptions);

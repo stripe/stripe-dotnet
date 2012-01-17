@@ -88,6 +88,7 @@
     <Compile Include="Services\Customers\StripeCustomerService.cs" />
     <Compile Include="Services\Plans\StripePlanCreateOptions.cs" />
     <Compile Include="Services\Plans\StripePlanService.cs" />
+    <Compile Include="Services\StripeServiceBase.cs" />
     <Compile Include="Services\Tokens\StripeTokenCreateOptions.cs" />
     <Compile Include="Services\Tokens\StripeTokenService.cs" />
     <Compile Include="Infrastructure\StripeException.cs" />

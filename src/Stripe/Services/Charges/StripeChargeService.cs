@@ -5,13 +5,16 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeChargeService
+    public class StripeChargeService: StripeServiceBase
     {
+		public StripeChargeService() : base() { }
+		public StripeChargeService(bool liveMode) : base(liveMode) { }
+
         public StripeCharge Create(StripeChargeCreateOptions createOptions)
         {
             var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Charges);
 
-            var response = Requestor.PostString(url);
+			var response = Requestor.PostString(url, LiveMode);
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
@@ -20,7 +23,7 @@ namespace Stripe
         {
             var url = string.Format("{0}/{1}", Urls.Charges, chargeId);
 
-            var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url, LiveMode);
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
@@ -32,7 +35,7 @@ namespace Stripe
             if (refundAmountInCents.HasValue)
                 url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmountInCents.Value.ToString());
 
-            var response = Requestor.PostString(url);
+			var response = Requestor.PostString(url, LiveMode);
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
@@ -46,7 +49,7 @@ namespace Stripe
             if (!string.IsNullOrEmpty(customerId))
                 url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
 
-            var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url, LiveMode);
 
             return Mapper<StripeCharge>.MapCollectionFromJson(response);
         }

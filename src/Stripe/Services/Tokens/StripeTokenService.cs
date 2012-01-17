@@ -2,13 +2,15 @@
 using Stripe.Infrastructure;
 namespace Stripe
 {
-    public class StripeTokenService
+    public class StripeTokenService: StripeServiceBase
     {
+		public StripeTokenService() : base() { }
+		public StripeTokenService(bool liveMode) : base(liveMode) { }
 		public StripeToken Create(StripeTokenCreateOptions createOptions)
 		{
 			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Tokens);
 
-			var response = Requestor.PostString(url);
+			var response = Requestor.PostString(url, LiveMode);
 
 			return Mapper<StripeToken>.MapFromJson(response);
 		}
@@ -17,7 +19,7 @@ namespace Stripe
 		{
 			var url = string.Format("{0}/{1}", Urls.Tokens, tokenId);
 
-			var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url, LiveMode);
 
 			return Mapper<StripeToken>.MapFromJson(response);
 		}

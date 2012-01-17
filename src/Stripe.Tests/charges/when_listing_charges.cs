@@ -11,7 +11,7 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            _stripeChargeService = new StripeChargeService();
+			_stripeChargeService = new StripeChargeService(false);
 
             _stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCard());
             _stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCard());
