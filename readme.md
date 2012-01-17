@@ -1,8 +1,8 @@
 Stripe.net
 ==========
 
-Stripe.net is a .net api for http://stripe.com. As of today, it includes support for Plans, Tokens, Customers, 
-Charges, and Subscriptions. The only feature not covered at this time is invoicing and webhook functionality.
+Stripe.net is a full service .net api for http://stripe.com. It includes support for Plans, Tokens, Customers, 
+Charges, Subscriptions, Invoices, and webhooks. 
 
 For more information about the examples below, you can visit https://stripe.com/docs/api for a full reference.
 
