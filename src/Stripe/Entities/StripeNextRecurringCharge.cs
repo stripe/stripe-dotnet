@@ -7,7 +7,7 @@ namespace Stripe
     public class StripeNextRecurringCharge
     {
         [JsonProperty("amount")]
-        public string AmountInCents { get; set; }
+        public int? AmountInCents { get; set; }
 
 		[JsonProperty("date")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
