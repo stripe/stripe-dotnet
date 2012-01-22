@@ -9,11 +9,11 @@ namespace Stripe
 {
 	public class StripePeriod
 	{
-		[JsonProperty("end")]
+		[JsonProperty("start")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? Start { get; set; }
 
-		[JsonProperty("start")]
+		[JsonProperty("end")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? End { get; set; }
 	}
