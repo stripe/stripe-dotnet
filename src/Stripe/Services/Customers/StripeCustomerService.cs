@@ -42,7 +42,7 @@ namespace Stripe
 
         public IEnumerable<StripeCustomer> List(int count = 10, int offset = 0)
         {
-            var url = Urls.Coupons;
+            var url = Urls.Customers;
             url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
             url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
 
