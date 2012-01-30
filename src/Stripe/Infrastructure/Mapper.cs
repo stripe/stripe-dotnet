@@ -11,9 +11,15 @@ namespace Stripe
 	{
 		public static List<T> MapCollectionFromJson(string json, string token = "data")
 		{
+			var list = new List<T>();
+
 			var jObject = JObject.Parse(json);
 
-			return jObject.SelectToken(token).Select<JToken, T>(x => MapFromJson(x.ToString())).ToList();
+			var allTokens = jObject.SelectToken(token);
+			foreach (var tkn in allTokens)
+				list.Add(Mapper<T>.MapFromJson(tkn.ToString()));
+
+			return list;
 		}
 
 		public static T MapFromJson(string json, string parentToken = null)
