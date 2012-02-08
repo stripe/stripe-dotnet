@@ -5,7 +5,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Stripe.Services.Events
+namespace Stripe
 {
 	public static class StripeEventUtility
 	{
