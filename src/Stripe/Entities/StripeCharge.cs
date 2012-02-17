@@ -42,5 +42,8 @@ namespace Stripe
 
 		[JsonProperty("card")]
         public StripeCard StripeCard { get; set; }
+
+        [JsonProperty("invoice")]
+        public string InvoiceId { get; set; }
     }
 }
