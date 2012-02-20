@@ -25,7 +25,7 @@ end
 desc "Merge"
 exec :merge do |cmd|
 	cmd.command = 'tools\ilmerge\ilmerge.exe'
-	cmd.parameters ='/out:src\Stripe\bin\release\Stripe.net.dll /targetplatform:v4,"C:\Windows\Microsoft.NET\Framework\v4.0.30319" src\Stripe\bin\release\Stripe.dll src\Stripe\bin\release\Newtonsoft.Json.dll /closed'
+	cmd.parameters ='/out:src\Stripe\bin\release\Stripe.net.dll /targetplatform:v4,"C:\Windows\Microsoft.NET\Framework\v4.0.30319" src\Stripe\bin\release\Stripe.dll src\Stripe\bin\release\Newtonsoft.Json.dll /closed /internalize'
 	puts 'Merging complete'
 end
 
