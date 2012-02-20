@@ -6,8 +6,16 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeInvoiceItemService
+    public interface IStripeInvoiceItemService 
     {
+        StripeInvoiceItem Create(StripeInvoiceItemCreateOptions createOptions);
+        StripeInvoiceItem Get(string invoiceItemId);
+        StripeInvoiceItem Update(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions);
+        void Delete(string invoiceItemId);
+        IEnumerable<StripeInvoiceItem> List(int count = 10, int offset = 0, string customerId = null);
+    }
+
+    public class StripeInvoiceItemService : IStripeInvoiceItemService {
         public StripeInvoiceItem Create(StripeInvoiceItemCreateOptions createOptions)
         {
             var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.InvoiceItems);

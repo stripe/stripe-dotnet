@@ -3,7 +3,13 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeTokenService
+    public interface IStripeTokenService
+    {
+        StripeToken Create(StripeTokenCreateOptions createOptions);
+        StripeToken Get(string tokenId);
+    }
+
+    public class StripeTokenService : IStripeTokenService 
     {
 		public StripeToken Create(StripeTokenCreateOptions createOptions)
 		{

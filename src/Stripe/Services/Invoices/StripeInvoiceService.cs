@@ -6,8 +6,14 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeInvoiceService
+    public interface IStripeInvoiceService 
     {
+        StripeInvoice Get(string invoiceId);
+        StripeInvoice Upcoming(string customerId);
+        IEnumerable<StripeInvoice> List(int count = 10, int offset = 0, string customerId = null);
+    }
+
+    public class StripeInvoiceService : IStripeInvoiceService {
         public StripeInvoice Get(string invoiceId)
         {
             var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);

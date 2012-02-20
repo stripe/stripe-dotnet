@@ -6,7 +6,16 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeWebhookService
+    public interface IStripeWebhookService
+    {
+        StripeInvoiceReady InvoiceReady(string json);
+        StripeRecurringPayment FailedRecurringPayment(string json);
+        StripeRecurringPayment SuccessfulRecurringPayment(string json);
+        StripeTrialEnding TrialEnding(string json);
+        StripeFinalPaymentAttempt FinalPaymentAttempt(string json);
+    }
+
+    public class StripeWebhookService : IStripeWebhookService 
     {
         public StripeInvoiceReady InvoiceReady(string json)
         {

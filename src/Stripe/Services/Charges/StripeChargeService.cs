@@ -5,7 +5,15 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeChargeService
+    public interface IStripeChargeService 
+    {
+        StripeCharge Create(StripeChargeCreateOptions createOptions);
+        StripeCharge Get(string chargeId);
+        StripeCharge Refund(string chargeId, int? refundAmountInCents = null);
+        IEnumerable<StripeCharge> List(int count = 10, int offset = 0, string customerId = null);
+    }
+
+    public class StripeChargeService : IStripeChargeService 
     {
         public StripeCharge Create(StripeChargeCreateOptions createOptions)
         {

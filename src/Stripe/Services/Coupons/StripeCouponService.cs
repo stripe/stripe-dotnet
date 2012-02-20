@@ -5,7 +5,15 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeCouponService
+    public interface IStripeCouponService 
+    {
+        StripeCoupon Create(StripeCouponCreateOptions createOptions);
+        StripeCoupon Get(string couponId);
+        void Delete(string couponId);
+        IEnumerable<StripeCoupon> List(int count = 10, int offset = 0);
+    }
+
+    public class StripeCouponService : IStripeCouponService 
     {
 		public StripeCoupon Create(StripeCouponCreateOptions createOptions)
 		{

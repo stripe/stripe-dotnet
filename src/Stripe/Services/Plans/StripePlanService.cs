@@ -5,7 +5,15 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripePlanService
+    public interface IStripePlanService 
+    {
+        StripePlan Create(StripePlanCreateOptions createOptions);
+        StripePlan Get(string planId);
+        void Delete(string planId);
+        IEnumerable<StripePlan> List(int count = 10, int offset = 0);
+    }
+
+    public class StripePlanService : IStripePlanService 
     {
 		public StripePlan Create(StripePlanCreateOptions createOptions)
 		{
