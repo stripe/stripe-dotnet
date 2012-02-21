@@ -6,5 +6,6 @@ dist
 *.cache
 _ReSharper.*
 *resharper*
+*.nupkg
 
 working
