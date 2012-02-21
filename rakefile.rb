@@ -42,5 +42,13 @@ zip :package do | zip |
 	zip.directories_to_zip "working"
 	zip.output_file = "Stripe.net #{VERSION}.zip"
 	zip.output_path = File.join(File.dirname(__FILE__), 'build')
+	system "nuget pack stripedotnet.nuspec -o build"
 	puts 'Packing complete'
+end
+
+desc 'Release to nuget'
+task :release => :package do	
+	nuspecs = Dir['build/*.nupkg']
+	raise "Could not find nupkg file" unless nuspecs.size == 1
+	system "nuget push #{nuspecs.first}"
 end
