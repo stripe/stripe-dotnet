@@ -20,6 +20,8 @@ namespace Stripe.Infrastructure
 		{
 			if (reader.TokenType == JsonToken.Integer)
                 return ConvertEpochToDateTime((long)reader.Value);
+
+			if (reader.Value == null) return null;
 			
             return DateTime.Parse(reader.Value.ToString());
 		}
