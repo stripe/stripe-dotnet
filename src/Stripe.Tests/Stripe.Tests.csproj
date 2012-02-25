@@ -32,11 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Machine.Specifications">
-<<<<<<< HEAD
       <HintPath>..\Lib\Machine.Specifications.dll</HintPath>
-=======
-      <HintPath>..\packages\Machine.Specifications.0.5.3.0\lib\Machine.Specifications.dll</HintPath>
->>>>>>> 66cb54bcf9630f443c998b81be2f3d38d4a493db
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

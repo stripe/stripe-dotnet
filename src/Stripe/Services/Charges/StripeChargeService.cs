@@ -7,7 +7,7 @@ namespace Stripe
 {
     public class StripeChargeService
     {
-        public StripeCharge Create(StripeChargeCreateOptions createOptions)
+        public virtual StripeCharge Create(StripeChargeCreateOptions createOptions)
         {
             var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Charges);
 
@@ -16,7 +16,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(response);
         }
 
-        public StripeCharge Get(string chargeId)
+        public virtual StripeCharge Get(string chargeId)
         {
             var url = string.Format("{0}/{1}", Urls.Charges, chargeId);
 
@@ -25,7 +25,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(response);
         }
 
-        public StripeCharge Refund(string chargeId, int? refundAmountInCents = null)
+        public virtual StripeCharge Refund(string chargeId, int? refundAmountInCents = null)
         {
             var url = string.Format("{0}/{1}/refund", Urls.Charges, chargeId);
 
@@ -37,7 +37,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(response);
         }
 
-        public IEnumerable<StripeCharge> List(int count = 10, int offset = 0, string customerId = null)
+        public virtual IEnumerable<StripeCharge> List(int count = 10, int offset = 0, string customerId = null)
         {
             var url = Urls.Charges;
             url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());

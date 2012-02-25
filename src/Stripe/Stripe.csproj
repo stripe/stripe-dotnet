@@ -32,11 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-<<<<<<< HEAD
       <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
-=======
-      <HintPath>..\packages\Newtonsoft.Json.4.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
->>>>>>> 66cb54bcf9630f443c998b81be2f3d38d4a493db
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

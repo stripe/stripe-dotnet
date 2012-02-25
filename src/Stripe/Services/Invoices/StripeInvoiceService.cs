@@ -8,7 +8,7 @@ namespace Stripe
 {
     public class StripeInvoiceService
     {
-        public StripeInvoice Get(string invoiceId)
+        public virtual StripeInvoice Get(string invoiceId)
         {
             var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
 
@@ -17,7 +17,7 @@ namespace Stripe
             return Mapper<StripeInvoice>.MapFromJson(response);
         }
 
-        public StripeInvoice Upcoming(string customerId)
+        public virtual StripeInvoice Upcoming(string customerId)
         {
             var url = string.Format("{0}/{1}", Urls.Invoices, "upcoming");
 
@@ -28,7 +28,7 @@ namespace Stripe
             return Mapper<StripeInvoice>.MapFromJson(response);
         }
 
-        public IEnumerable<StripeInvoice> List(int count = 10, int offset = 0, string customerId = null)
+        public virtual IEnumerable<StripeInvoice> List(int count = 10, int offset = 0, string customerId = null)
         {
             var url = Urls.Invoices;
             url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());

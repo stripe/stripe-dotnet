@@ -8,27 +8,27 @@ namespace Stripe
 {
     public class StripeWebhookService
     {
-        public StripeInvoiceReady InvoiceReady(string json)
+        public virtual StripeInvoiceReady InvoiceReady(string json)
         {
             return Mapper<StripeInvoiceReady>.MapFromJson(json);
         }
 
-        public StripeRecurringPayment FailedRecurringPayment(string json)
+        public virtual StripeRecurringPayment FailedRecurringPayment(string json)
         {
             return Mapper<StripeRecurringPayment>.MapFromJson(json);
         }
 
-        public StripeRecurringPayment SuccessfulRecurringPayment(string json)
+        public virtual StripeRecurringPayment SuccessfulRecurringPayment(string json)
         {
             return Mapper<StripeRecurringPayment>.MapFromJson(json);
         }
 
-        public StripeTrialEnding TrialEnding(string json)
+        public virtual StripeTrialEnding TrialEnding(string json)
         {
             return Mapper<StripeTrialEnding>.MapFromJson(json);
         }
 
-        public StripeFinalPaymentAttempt FinalPaymentAttempt(string json)
+        public virtual StripeFinalPaymentAttempt FinalPaymentAttempt(string json)
         {
             return Mapper<StripeFinalPaymentAttempt>.MapFromJson(json);
         }
