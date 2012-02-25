@@ -5,7 +5,7 @@ namespace Stripe
 {
     public class StripeCustomerService
     {
-        public StripeCustomer Create(StripeCustomerCreateOptions createOptions)
+        public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions)
         {
             var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Customers);
 
@@ -14,7 +14,7 @@ namespace Stripe
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
 
-        public StripeCustomer Get(string customerId)
+        public virtual StripeCustomer Get(string customerId)
         {
             var url = string.Format("{0}/{1}", Urls.Customers, customerId);
 
@@ -23,7 +23,7 @@ namespace Stripe
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
 
-        public StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
+        public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
         {
             var url = string.Format("{0}/{1}", Urls.Customers, customerId);
             url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
@@ -33,14 +33,14 @@ namespace Stripe
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
 
-        public void Delete(string customerId)
+        public virtual void Delete(string customerId)
         {
             var url = string.Format("{0}/{1}", Urls.Customers, customerId);
 
             Requestor.Delete(url);
         }
 
-        public IEnumerable<StripeCustomer> List(int count = 10, int offset = 0)
+        public virtual IEnumerable<StripeCustomer> List(int count = 10, int offset = 0)
         {
             var url = Urls.Customers;
             url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
@@ -51,7 +51,7 @@ namespace Stripe
             return Mapper<StripeCustomer>.MapCollectionFromJson(response);
         }
 
-        public StripeSubscription UpdateSubscription(string customerId, StripeCustomerUpdateSubscriptionOptions updateOptions)
+        public virtual StripeSubscription UpdateSubscription(string customerId, StripeCustomerUpdateSubscriptionOptions updateOptions)
         {
             var url = string.Format("{0}/{1}/subscription", Urls.Customers, customerId);
             url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
@@ -61,7 +61,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
 
-        public StripeSubscription CancelSubscription(string customerId, bool cancelAtPeriodEnd = false)
+        public virtual StripeSubscription CancelSubscription(string customerId, bool cancelAtPeriodEnd = false)
         {
             var url = string.Format("{0}/{1}/subscription", Urls.Customers, customerId);
             url = ParameterBuilder.ApplyParameterToUrl(url, "at_period_end", cancelAtPeriodEnd.ToString());

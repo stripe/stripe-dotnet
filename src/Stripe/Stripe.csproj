@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -49,12 +48,11 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Entities\StripeFinalPaymentAttempt.cs" />
+    <Compile Include="Entities\StripeEventData.cs" />
+    <Compile Include="Entities\StripeEvent.cs" />
     <Compile Include="Entities\StripeSubscriptionBase.cs" />
-    <Compile Include="Entities\StripeTrialEnding.cs" />
     <Compile Include="Entities\StripeCardBase.cs" />
     <Compile Include="Entities\StripePayment.cs" />
-    <Compile Include="Entities\StripeRecurringPayment.cs" />
     <Compile Include="Entities\StripeInvoiceSubscription.cs" />
     <Compile Include="Entities\StripeInvoiceLine.cs" />
     <Compile Include="Entities\StripeInvoice.cs" />
@@ -69,10 +67,12 @@
     <Compile Include="Entities\StripeCoupon.cs" />
     <Compile Include="Entities\StripeDiscount.cs" />
     <Compile Include="Entities\StripeNextRecurringCharge.cs" />
-    <Compile Include="Entities\StripeInvoiceReady.cs" />
     <Compile Include="Infrastructure\StripeDateTimeConverter.cs" />
     <Compile Include="Infrastructure\Mapper.cs" />
     <Compile Include="Entities\StripeCustomer.cs" />
+    <Compile Include="Services\Events\StripeEventSearchOptions.cs" />
+    <Compile Include="Services\Events\StripeEventService.cs" />
+    <Compile Include="Services\Events\StripeEventUtility.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemUpdateOptions.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemCreateOptions.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemService.cs" />
@@ -94,7 +94,6 @@
     <Compile Include="Infrastructure\Urls.cs" />
     <Compile Include="Infrastructure\ParameterBuilder.cs" />
     <Compile Include="Infrastructure\Requestor.cs" />
-    <Compile Include="Services\Webhooks\StripeWebhookService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

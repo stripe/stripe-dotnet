@@ -37,6 +37,11 @@
             get { return BaseUrl + "/customers"; }
         }
 
+		public static string Events
+		{
+			get { return BaseUrl + "/events"; }
+		}
+
         private static string BaseUrl
         {
             get { return "https://api.stripe.com/v1"; }
