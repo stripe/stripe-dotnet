@@ -1,4 +1,5 @@
 ﻿using Machine.Specifications;
+using System;
 
 namespace Stripe.Tests
 {
@@ -24,7 +25,7 @@ namespace Stripe.Tests
 
         Because of = () =>
         {
-            _stripeSubscription = _stripeCustomerService.UpdateSubscription(_stripeCustomer.Id, test_data.stripe_customer_update_subscription_options.ValidCard(_stripePlan.Id, _stripeCoupon.Id));
+            _stripeSubscription = _stripeCustomerService.UpdateSubscription(_stripeCustomer.Id, test_data.stripe_customer_update_subscription_options.ValidCard(_stripePlan.Id, _stripeCoupon.Id, DateTime.UtcNow.AddDays(5)));
             
             // have to load this again to make sure the coupon took
             _stripeCustomer = _stripeCustomerService.Get(_stripeCustomer.Id);

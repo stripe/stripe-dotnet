@@ -15,8 +15,19 @@ namespace Stripe
         [JsonProperty("prorate")]
         public bool? Prorate { get; set; }
 
-        [JsonProperty("trial_end")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
+
+        [JsonProperty("trial_end")]
+        internal int? TrialEndInternal
+        {
+            get
+            {
+                if (!TrialEnd.HasValue) return null;
+
+                var diff = TrialEnd.Value - new DateTime(1970, 1, 1);
+
+                return (int)Math.Floor(diff.TotalSeconds);
+            }
+        }
     }
 }

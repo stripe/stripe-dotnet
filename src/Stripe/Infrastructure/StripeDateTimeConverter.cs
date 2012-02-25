@@ -19,11 +19,11 @@ namespace Stripe.Infrastructure
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
 			if (reader.TokenType == JsonToken.Integer)
-                return ConvertEpochToDateTime((long)reader.Value);
+				return ConvertEpochToDateTime((long)reader.Value);
 
 			if (reader.Value == null) return null;
 			
-            return DateTime.Parse(reader.Value.ToString());
+			return DateTime.Parse(reader.Value.ToString());
 		}
 
 		private DateTime ConvertEpochToDateTime(long seconds)
@@ -36,7 +36,7 @@ namespace Stripe.Infrastructure
 			var epochStart = new DateTime(1970, 1, 1);
 			if (datetime < epochStart) return 0;
 			
-            return Convert.ToInt64(datetime.Subtract(epochStart).TotalSeconds);
+			return Convert.ToInt64(datetime.Subtract(epochStart).TotalSeconds);
 		}
 	}
 }
