@@ -10,7 +10,7 @@ For more information about the examples below, you can visit https://stripe.com/
 Quick Start
 -----------
 
-Add a reference to Stripe.net.dll (You can find a pre-compiled version in the build folder of this repository)
+Add a reference to Stripe.net.dll (You can find a pre-compiled version in the build folder of this repository or install Stripe.net via NuGet)
 
 Add an AppSetting with your api key
 

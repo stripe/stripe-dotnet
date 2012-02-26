@@ -7,5 +7,6 @@ dist
 _ReSharper.*
 *resharper*
 *.nupkg
+build nuget.cmd
 
 working
