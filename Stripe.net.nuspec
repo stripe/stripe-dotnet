@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>Stripe.net</id>
+    <version>1.1.6</version>
+    <authors>Jayme Davis</authors>
+    <owners>Jayme Davis</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/jaymedavis/stripe.net</projectUrl>
+    <licenseUrl>https://raw.github.com/jaymedavis/stripe.net/master/LICENSE</licenseUrl>
+    <description>Stripe.net is a full service .net api for http://stripe.com. It includes support for Plans, Tokens, Customers, Charges, Subscriptions, Invoices, and Events.</description>
+    <tags>stripe, payment, credit cards, money</tags>
+  </metadata>
+  <files>
+    <file src="working\Stripe.net.dll" target="lib\net40" />    
+  </files>
+</package>

@@ -1,8 +1,8 @@
 require 'albacore'
 
-VERSION = "1.1.5"
+VERSION = "1.1.6"
 
-task :default => [:build, :merge, :output, :package]
+task :default => [:build, :merge, :output, :package, :nuget]
 
 assemblyinfo :assemblyinfo do |asm|
 	asm.version = VERSION
@@ -38,9 +38,16 @@ output :output do |out|
 end
 
 desc "Package"
-zip :package do | zip |
+zip :package do |zip|
 	zip.directories_to_zip "working"
 	zip.output_file = "Stripe.net #{VERSION}.zip"
 	zip.output_path = File.join(File.dirname(__FILE__), 'build')
 	puts 'Packing complete'
+end
+
+desc 'NuGet'
+exec :nuget do |cmd|	
+	cmd.command = "tools\nuget\nuget.exe" 
+	cmd.parameters = "pack Stripe.net.nuspec -o build"
+	puts "NuGet packing complete"
 end
