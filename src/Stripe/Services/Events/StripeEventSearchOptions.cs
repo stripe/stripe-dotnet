@@ -8,31 +8,36 @@ namespace Stripe
 		[JsonProperty("type")]
 		public string Type { get; set; }
 
-		[JsonProperty("created[gt]")]
+		public DateTime? Created { get; set; }
+		public DateTime? LessThan { get; set; }
+		public DateTime? LessThanOrEqualTo { get; set; }
 		public DateTime? GreaterThan { get; set; }
-
-		[JsonProperty("created[gte]")]
 		public DateTime? GreaterThanOrEqualTo { get; set; }
 
+		[JsonProperty("created")]
+		internal int? CreatedInternal { get { return ConvertToEpoch(Created); } }
+
 		[JsonProperty("created[lt]")]
-		public DateTime? LessThan { get; set; }
+		internal int? LessThanInternal { get { return ConvertToEpoch(LessThan); } }
 
 		[JsonProperty("created[lte]")]
-		public DateTime? LessThanOrEqualTo { get; set; }
+		internal int? LessThanOrEqualToInternal { get { return ConvertToEpoch(LessThanOrEqualTo); } }
 
-		public DateTime? Created { get; set; }
+		[JsonProperty("created[gt]")]
+		internal int? GreaterThanInternal { get { return ConvertToEpoch(GreaterThan); } }
 
-		[JsonProperty("created")]
-		internal int? Createdinternal
+		[JsonProperty("created[gte]")]
+		internal int? GreaterThanOrEqualToInternal { get { return ConvertToEpoch(GreaterThanOrEqualTo); } }
+
+
+
+		private int? ConvertToEpoch(DateTime? datetime)
 		{
-			get
-			{
-				if (!Created.HasValue) return null;
+			if (!datetime.HasValue) return null;
 
-				var diff = Created.Value - new DateTime(1970, 1, 1);
+			var diff = datetime.Value - new DateTime(1970, 1, 1);
 
-				return (int)Math.Floor(diff.TotalSeconds);
-			}
+			return (int)Math.Floor(diff.TotalSeconds);
 		}
 	}
 }
