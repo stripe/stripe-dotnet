@@ -9,7 +9,11 @@ namespace Stripe
         public HttpStatusCode HttpStatusCode { get; set; }
         public StripeError StripeError { get; set; }
 
-        internal StripeException(HttpStatusCode httpStatusCode, StripeError stripeError, string message) : base(message)
+		public StripeException() 
+		{ 
+		}
+
+        public StripeException(HttpStatusCode httpStatusCode, StripeError stripeError, string message) : base(message)
         {
             HttpStatusCode = httpStatusCode;
             StripeError = stripeError;
