@@ -18,9 +18,11 @@ namespace Stripe.Infrastructure
 
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
 		{
+			if (reader.Value == null) return null;
+
 			if (reader.TokenType == JsonToken.Integer)
 				return ConvertEpochToDateTime((long)reader.Value);
-			
+
 			return DateTime.Parse(reader.Value.ToString());
 		}
 
