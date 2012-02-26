@@ -29,8 +29,6 @@ namespace Stripe
 		[JsonProperty("created[gte]")]
 		internal int? GreaterThanOrEqualToInternal { get { return ConvertToEpoch(GreaterThanOrEqualTo); } }
 
-
-
 		private int? ConvertToEpoch(DateTime? datetime)
 		{
 			if (!datetime.HasValue) return null;
