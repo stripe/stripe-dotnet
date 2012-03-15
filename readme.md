@@ -135,7 +135,7 @@ Customers
 When creating a customer, you can specify any plan they are on, any coupons that will apply, 
 a credit card or token, and various meta data.
 
-	var myCustomer = new StripeCustomerCreateOptions()
+	var myCustomer = new StripeCustomerCreateOptions();
 
 	// set these properties if it makes you happy
 	myCustomer.Email = "pork@email.com";
