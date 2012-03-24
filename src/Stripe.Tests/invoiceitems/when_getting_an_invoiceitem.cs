@@ -3,7 +3,7 @@
 namespace Stripe.Tests
 {
 	public class when_getting_an_invoiceitem
-    {
+	{
 		protected static StripeInvoiceItemCreateOptions StripeInvoiceItemCreateOptions;
 		protected static StripeInvoiceItem StripeInvoiceItem;
 		protected static string StripeInvoiceItemId;
@@ -27,5 +27,5 @@ namespace Stripe.Tests
 			StripeInvoiceItem = _stripeInvoiceItemService.Get(StripeInvoiceItemId);
 
 		Behaves_like<invoiceitem_behaviors> behaviors;
-    }
+	}
 }

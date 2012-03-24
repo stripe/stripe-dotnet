@@ -3,9 +3,9 @@ using System;
 
 namespace Stripe.Tests
 {
-    [Behaviors]
-    public class invoiceitem_behaviors
-    {
+	[Behaviors]
+	public class invoiceitem_behaviors
+	{
 		protected static StripeInvoiceItemCreateOptions StripeInvoiceItemCreateOptions;
 		protected static StripeInvoiceItem StripeInvoiceItem;
 		protected static string StripeInvoiceItemId;
@@ -32,5 +32,5 @@ namespace Stripe.Tests
 			else
 				StripeInvoiceItem.Id.ShouldNotBeNull();
 		};
-    }
+	}
 }

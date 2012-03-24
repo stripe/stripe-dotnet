@@ -9,7 +9,7 @@ namespace Stripe
 {
 	public class StripeEventService
 	{
-        public virtual StripeEvent Get(string eventId)
+		public virtual StripeEvent Get(string eventId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Events, eventId);
 
@@ -18,7 +18,7 @@ namespace Stripe
 			return Mapper<StripeEvent>.MapFromJson(response);
 		}
 
-        public virtual IEnumerable<StripeEvent> List(int count = 10, int offset = 0, StripeEventSearchOptions searchOptions = null)
+		public virtual IEnumerable<StripeEvent> List(int count = 10, int offset = 0, StripeEventSearchOptions searchOptions = null)
 		{
 			var url = Urls.Events;
 			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());

@@ -2,26 +2,26 @@
 
 namespace Stripe.Tests
 {
-    public class when_getting_a_token
-    {
-        protected static StripeTokenCreateOptions StripeTokenCreateOptions;
-        protected static StripeToken StripeToken;
+	public class when_getting_a_token
+	{
+		protected static StripeTokenCreateOptions StripeTokenCreateOptions;
+		protected static StripeToken StripeToken;
 
-        private static StripeTokenService _stripeTokenService;
-        private static string _createdStripeTokenId;
+		private static StripeTokenService _stripeTokenService;
+		private static string _createdStripeTokenId;
 
-        Establish context = () =>
-        {
-            _stripeTokenService = new StripeTokenService();
-            StripeTokenCreateOptions = test_data.stripe_token_create_options.Valid();
+		Establish context = () =>
+		{
+			_stripeTokenService = new StripeTokenService();
+			StripeTokenCreateOptions = test_data.stripe_token_create_options.Valid();
 
-            var stripeToken = _stripeTokenService.Create(StripeTokenCreateOptions);
-            _createdStripeTokenId = stripeToken.Id;
-        };
+			var stripeToken = _stripeTokenService.Create(StripeTokenCreateOptions);
+			_createdStripeTokenId = stripeToken.Id;
+		};
 
-        Because of = () =>
-            StripeToken = _stripeTokenService.Get(_createdStripeTokenId);
+		Because of = () =>
+			StripeToken = _stripeTokenService.Get(_createdStripeTokenId);
 
-        Behaves_like<token_behaviors> behaviors;
-    }
+		Behaves_like<token_behaviors> behaviors;
+	}
 }

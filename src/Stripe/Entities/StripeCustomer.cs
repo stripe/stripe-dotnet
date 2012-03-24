@@ -4,37 +4,37 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeCustomer
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+	public class StripeCustomer
+	{
+		[JsonProperty("id")]
+		public string Id { get; set; }
 
-        [JsonProperty("email")]
-        public string Email { get; set; }
+		[JsonProperty("email")]
+		public string Email { get; set; }
 
-        [JsonProperty("description")]
-        public string Description { get; set; }
+		[JsonProperty("description")]
+		public string Description { get; set; }
 
-        [JsonProperty("livemode")]
-        public bool? LiveMode { get; set; }
+		[JsonProperty("livemode")]
+		public bool? LiveMode { get; set; }
 
 		[JsonProperty("created")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime Created { get; set; }
+		public DateTime Created { get; set; }
 
-        [JsonProperty("deleted")]
-        public bool? Deleted { get; set; }
+		[JsonProperty("deleted")]
+		public bool? Deleted { get; set; }
 
 		[JsonProperty("next_recurring_charge")]
-        public StripeNextRecurringCharge StripeNextRecurringCharge { get; set; }
+		public StripeNextRecurringCharge StripeNextRecurringCharge { get; set; }
 
 		[JsonProperty("discount")]
-        public StripeDiscount StripeDiscount { get; set; }
+		public StripeDiscount StripeDiscount { get; set; }
 
 		[JsonProperty("subscription")]
-        public StripeSubscription StripeSubscription { get; set; }
+		public StripeSubscription StripeSubscription { get; set; }
 
 		[JsonProperty("active_card")]
-        public StripeCard StripeCard { get; set; }
-    }
+		public StripeCard StripeCard { get; set; }
+	}
 }

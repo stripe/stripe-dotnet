@@ -3,9 +3,9 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeTokenService
-    {
-        public virtual StripeToken Create(StripeTokenCreateOptions createOptions)
+	public class StripeTokenService
+	{
+		public virtual StripeToken Create(StripeTokenCreateOptions createOptions)
 		{
 			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Tokens);
 
@@ -14,7 +14,7 @@ namespace Stripe
 			return Mapper<StripeToken>.MapFromJson(response);
 		}
 
-        public virtual StripeToken Get(string tokenId)
+		public virtual StripeToken Get(string tokenId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Tokens, tokenId);
 
@@ -22,5 +22,5 @@ namespace Stripe
 
 			return Mapper<StripeToken>.MapFromJson(response);
 		}
-    }
+	}
 }
