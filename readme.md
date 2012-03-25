@@ -385,7 +385,7 @@ Stripe sends Events (or webhooks) whenever an associated action occurs. The list
 	
 	<%@ WebHandler Language="C#" Class="StripeHandler" CodeBehind="StripeHandler.cs" %>
 
-3) Login to Stripe and go to Account Settings, webhooks - from here, you can setup the url that points to your site for testing. 
+3) Login to Stripe and go to Account Settings, webhooks - from here, you can setup the url that points to your StripeHandler.ashx for testing. 
 
 Whenever an Event is received, StripeEventUtility.ParseEvent(json) will convert the response into a *StripeEvent* object. 
 
