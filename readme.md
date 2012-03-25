@@ -351,9 +351,73 @@ Any invoice items you create for a customer will be added to their bill.
 
 ### List all invoice items
 
-	var invoiceItemService = new StripeInvoiceItemService();
+	var invoiceItemService = new StripeInvoiceItemService();				
 	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List(); // can optionally pass count (defaults to 10), offset, and a customerid
 
+Events
+------
+
+Stripe sends Events (or webhooks) whenever an associated action occurs. The list of events Stripe sends is documented here: https://stripe.com/docs/api#event_types
+
+### Receiving events from Stripe
+
+1) In your application, create a handler that looks something like the below:
+
+	namespace TheBestApplicationEverCreated
+	{
+		public class StripeHandler : IHttpHandler
+		{
+			public bool IsReusable
+			{
+				get { return true; }
+			}
+	
+			public void ProcessRequest(HttpContext context)
+			{
+				var json = new StreamReader(context.Request.InputStream).ReadToEnd();
+	
+				var stripeEvent = StripeEventUtility.ParseEvent(json);
+			}
+		}
+	}
+
+2) Create a StripeHandler.ashx in the root of your website (or wherever) that looks like this:
+	
+	<%@ WebHandler Language="C#" Class="StripeHandler" CodeBehind="StripeHandler.cs" %>
+
+3) Login to Stripe and go to Account Settings, webhooks - from here, you can setup the url that points to your site for testing. 
+
+Whenever an Event is received, StripeEventUtility.ParseEvent(json) will convert the response into a *StripeEvent* object. 
+
+### Retrieving an event
+
+If you have the id and you want to retrieve the event
+
+	var eventService = new StripeEventService();
+	StripeEvent response = eventService.Get(*eventId*)
+	
+### List all events
+
+You can list events in the same way everything else works in Stripe.net. 
+
+	var eventService = new StripeEventService();
+	IEnumerable<StripeEvent> response = eventService.List(); // can optionally pass count (defaults to 10), offset, and StripeEventSearchOptions
+	
+You can also optionally pass a StripeSearchEventOptions which supports a specific Created timestamp, LessThan, LessThanOrEqualTo, GreaterThan, or GreaterThanOrEqualTo.
+	
+	var eventService = new StripeEventService();
+	
+	var eventSearchOptions = new StripeEventSearchOptions();
+	
+	// created will match on an exact date time
+	eventSearchOptions.Created = DateTime.UtcNow; 
+	
+	// or you could do something like
+	eventSearchOptions.LessThanOrEqualTo = DateTime.UtcNow;
+	eventSearchOptions.GreaterThanOrEqualTo = DateTime.UtcNow.AddMonths(-1);
+	
+	IEnumerable<StripeEvent> response = eventService.List(10, 0, eventSearchOptions);
+	
 Errors
 ------
 

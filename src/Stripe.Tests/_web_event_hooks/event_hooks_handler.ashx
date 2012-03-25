@@ -1,0 +1,1 @@
+﻿<%@ WebHandler Language="C#" Class="event_hooks_handler" CodeBehind="event_hooks_handler.cs" %>

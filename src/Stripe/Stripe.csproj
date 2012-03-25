@@ -98,6 +98,10 @@
     <Compile Include="Infrastructure\Requestor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /y "$(TargetDir)Stripe.dll" "$(SolutionDir)Stripe.Tests\_web_event_hooks\bin\Stripe.dll"
+copy /y "$(TargetDir)Newtonsoft.json.dll" "$(SolutionDir)Stripe.Tests\_web_event_hooks\bin\Newtonsoft.json.dll"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

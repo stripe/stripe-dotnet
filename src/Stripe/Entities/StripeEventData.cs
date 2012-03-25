@@ -13,6 +13,6 @@ namespace Stripe
 		public dynamic PreviousAttributes { get; set; }
 
 		[JsonProperty("object")]
-		public dynamic Content { get; set; }
+		public dynamic Object { get; set; }
 	}
 }
