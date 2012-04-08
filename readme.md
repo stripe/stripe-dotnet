@@ -143,7 +143,7 @@ a credit card or token, and various meta data.
 
 	// set these properties if using a card
 	myCustomer.CardNumber = "4242424242424242";
-	myCustomer.CardExpirationYear = "2012"
+	myCustomer.CardExpirationYear = "2012";
 	myCustomer.CardExpirationMonth = "10";
 	myCustomer.CardAddressCountry = "US";				// optional
 	myCustomer.CardAddressLine1 = "24 Beef Flank St";	// optional
@@ -156,7 +156,7 @@ a credit card or token, and various meta data.
 	// set this property if using a token
 	myCustomer.TokenId = *tokenId*;
 
-	myCustomer.Plan = *planId*;								// only if you have a plan
+	myCustomer.PlanId = *planId*;								// only if you have a plan
 	myCustomer.Coupon = *couponId*;							// only if you have a coupon
 	myCustomer.TrialEnd = DateTime.UtcNow.AddMonths(1);		// when the customers trial ends (overrides the plan if applicable)
 

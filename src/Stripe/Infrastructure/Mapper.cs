@@ -7,7 +7,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	internal static class Mapper<T>
+	public static class Mapper<T>
 	{
 		public static List<T> MapCollectionFromJson(string json, string token = "data")
 		{
