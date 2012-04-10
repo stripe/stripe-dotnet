@@ -31,9 +31,6 @@ namespace Stripe
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? Date { get; set; }
 
-        [JsonProperty("discount")]
-        public int? DiscountInCents { get; set; }
-
         [JsonProperty("ending_balance")]
         public int? EndingBalanceInCents { get; set; }
 
