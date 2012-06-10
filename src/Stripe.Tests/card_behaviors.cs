@@ -50,6 +50,9 @@ namespace Stripe.Tests
 		It should_have_the_correct_card_type = () =>
 			StripeCustomer.StripeCard.Type.ShouldEqual("Visa");
 
+		It should_have_a_fingerprint = () =>
+			StripeCustomer.StripeCard.Fingerprint.ShouldNotBeNull();
+
 		It should_have_the_correct_card_country = () =>
 			StripeCustomer.StripeCard.Country.ShouldEqual("US");
 

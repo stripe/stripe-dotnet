@@ -4,7 +4,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeSubscription : StripeSubscriptionBase
+	public class StripeSubscription
 	{
 		[JsonProperty("customer")]
 		public string CustomerId { get; set; }
@@ -31,5 +31,16 @@ namespace Stripe
 		[JsonProperty("ended_at")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? EndedAt { get; set; }
+
+		[JsonProperty("trial_start")]
+		[JsonConverter(typeof(StripeDateTimeConverter))]
+		public DateTime? TrialStart { get; set; }
+
+		[JsonProperty("trial_end")]
+		[JsonConverter(typeof(StripeDateTimeConverter))]
+		public DateTime? TrialEnd { get; set; }
+
+		[JsonProperty("plan")]
+		public StripePlan StripePlan { get; set; }
 	}
 }

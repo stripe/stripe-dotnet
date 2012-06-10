@@ -111,7 +111,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="_web_event_hooks\event_hooks_handler.ashx" />
-    <None Include="_web_event_hooks\web.config" />
+    <None Include="_web_event_hooks\web.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_web_event_hooks\bin\" />

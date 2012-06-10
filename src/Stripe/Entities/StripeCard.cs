@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-	public class StripeCard : StripeCardBase
+	public class StripeCard
 	{
 		[JsonProperty("address_country")]
 		public string AddressCountry { get; set; }
@@ -39,5 +39,14 @@ namespace Stripe
 
 		[JsonProperty("name")]
 		public string Name { get; set; }
+
+		[JsonProperty("last4")]
+		public string Last4 { get; set; }
+
+		[JsonProperty("type")]
+		public string Type { get; set; }
+
+		[JsonProperty("fingerprint")]
+		public string Fingerprint { get; set; }
 	}
 }

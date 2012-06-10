@@ -12,6 +12,7 @@
     <AssemblyName>Stripe</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,7 +35,6 @@
     <Reference Include="Newtonsoft.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -42,7 +42,6 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -52,9 +51,6 @@
     </Compile>
     <Compile Include="Entities\StripeEventData.cs" />
     <Compile Include="Entities\StripeEvent.cs" />
-    <Compile Include="Entities\StripeSubscriptionBase.cs" />
-    <Compile Include="Entities\StripeCardBase.cs" />
-    <Compile Include="Entities\StripePayment.cs" />
     <Compile Include="Entities\StripeInvoiceSubscription.cs" />
     <Compile Include="Entities\StripeInvoiceLine.cs" />
     <Compile Include="Entities\StripeInvoice.cs" />
