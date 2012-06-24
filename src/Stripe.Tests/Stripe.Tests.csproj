@@ -55,6 +55,13 @@
     <Compile Include="charges\when_creating_a_charge_with_a_token.cs" />
     <Compile Include="charges\when_listing_charges_for_customer.cs" />
     <Compile Include="charges\when_listing_charges.cs" />
+    <Compile Include="charges\when_used_with_api_key.cs" />
+    <Compile Include="coupons\when_used_with_api_key.cs" />
+    <Compile Include="customers\when_used_with_api_key.cs" />
+    <Compile Include="invoiceitems\when_used_with_api_key.cs" />
+    <Compile Include="invoices\when_used_with_api_key.cs" />
+    <Compile Include="plans\when_used_with_api_key.cs" />
+    <Compile Include="tokens\when_used_with_api_key.cs" />
     <Compile Include="_web_event_hooks\App_Code\event_hooks_handler.cs" />
     <Compile Include="invoices\when_getting_an_invoice.cs" />
     <Compile Include="invoices\when_getting_an_upcoming_invoice.cs" />

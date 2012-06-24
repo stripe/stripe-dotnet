@@ -11,7 +11,7 @@ namespace Stripe.Tests
 
 		Establish context = () =>
 		{
-			_stripeTokenService = new StripeTokenService();
+            _stripeTokenService = new StripeTokenService("[your api key here]");
 			StripeTokenCreateOptions = test_data.stripe_token_create_options.Valid();
 		};
 

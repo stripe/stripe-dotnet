@@ -15,7 +15,7 @@ namespace Stripe.Tests
 			var stripeCustomerService = new StripeCustomerService();
 			var stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
 
-			_stripeInvoiceItemService = new StripeInvoiceItemService();
+            _stripeInvoiceItemService = new StripeInvoiceItemService("6WXhLKA1LOFwodfjYboOxpaeJ4gGQXfP");
 			StripeInvoiceItemCreateOptions = test_data.stripe_invoiceitem_create_options.Valid(stripeCustomer.Id);
 		};
 
