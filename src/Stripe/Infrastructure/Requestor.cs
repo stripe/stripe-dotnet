@@ -7,7 +7,7 @@ using System.Text;
 namespace Stripe
 {
 	internal static class Requestor
-	{
+	{        
 		public static string GetString(string url)
 		{
 			var wr = GetWebRequest(url, "GET");
@@ -33,7 +33,7 @@ namespace Stripe
 		{
 			var request = (HttpWebRequest) WebRequest.Create(url);
 			request.Method = method;
-			request.Headers.Add("Authorization", GetAuthorizationHeaderValue(ConfigurationManager.AppSettings["StripeApiKey"]));
+            request.Headers.Add("Authorization", GetAuthorizationHeaderValue(Configuration.GetApiKey()));
 			request.ContentType = "application/x-www-form-urlencoded";
 			request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
 
