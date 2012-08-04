@@ -12,14 +12,17 @@ Quick Start
 
 Add a reference to Stripe.net.dll (You can find a pre-compiled version in the build folder of this repository or install Stripe.net via NuGet)
 
-Add an AppSetting with your api key
-
+Add an AppSetting with your api key to your config
 
 	<appSettings>
 	...
 		<add key="StripeApiKey" value="[your api key here]" />
 	...
 	</appSettings>
+
+OR in your application initialization, call
+
+	StripeConfiguration.SetApiKey("[your api key here]");
 
 
 Use the library :)
