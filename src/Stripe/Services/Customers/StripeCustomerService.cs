@@ -7,7 +7,7 @@ namespace Stripe
 	{
         public StripeCustomerService(string apiKey = null)
         {
-            
+            ApiKey = apiKey;
         }
 
 	    private string ApiKey { get; set; }
