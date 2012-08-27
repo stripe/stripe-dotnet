@@ -26,7 +26,7 @@ Next you will need to provide Stripe.net with your api key. There are 3 ways to 
 
 	StripeConfiguration.SetApiKey("[your api key here]");
 
-3) In any of the service constructors documented below, you can optionally pass the api key
+3) In any of the service constructors documented below, you can optionally pass the api key. i.e...
 
 	var planService = new StripePlanService("[your api key here]");
 
