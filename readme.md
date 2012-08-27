@@ -12,7 +12,9 @@ Quick Start
 
 Add a reference to Stripe.net.dll (You can find a pre-compiled version in the build folder of this repository or install Stripe.net via NuGet)
 
-Add an AppSetting with your api key to your config
+Next you will need to provide Stripe.net with your api key. There are 3 ways to do this:
+
+1) Add an AppSetting with your api key to your config
 
 	<appSettings>
 	...
@@ -20,10 +22,12 @@ Add an AppSetting with your api key to your config
 	...
 	</appSettings>
 
-OR in your application initialization, call
+2) In your application initialization, call
 
 	StripeConfiguration.SetApiKey("[your api key here]");
 
+3) In any of the service constructors documented below, you can optionally pass the api key
+	var planService = new StripePlanService("[your api key here]");
 
 Use the library :)
 
