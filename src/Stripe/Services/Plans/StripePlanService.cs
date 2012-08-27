@@ -7,11 +7,18 @@ namespace Stripe
 {
 	public class StripePlanService
 	{
+		private string ApiKey { get; set; }
+
+		public StripePlanService(string apiKey = null)
+		{
+			ApiKey = apiKey;
+		}
+
 		public virtual StripePlan Create(StripePlanCreateOptions createOptions)
 		{
 			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Plans);
 
-			var response = Requestor.PostString(url);
+			var response = Requestor.PostString(url, ApiKey);
 
 			return Mapper<StripePlan>.MapFromJson(response);
 		}
@@ -20,7 +27,7 @@ namespace Stripe
 		{
 			var url = string.Format("{0}/{1}", Urls.Plans, planId);
 
-			var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url, ApiKey);
 
 			return Mapper<StripePlan>.MapFromJson(response);
 		}
@@ -38,7 +45,7 @@ namespace Stripe
 			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
 			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
 
-			var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url, ApiKey);
 
 			return Mapper<StripePlan>.MapCollectionFromJson(response);
 		}

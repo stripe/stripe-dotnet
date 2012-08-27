@@ -1,9 +1,13 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Text;
 using Machine.Specifications;
 
 namespace Stripe.Tests
 {
-	public class when_creating_an_invoiceitem
+	public class when_creating_an_invoiceitem_with_an_api_key
 	{
 		protected static StripeInvoiceItemCreateOptions StripeInvoiceItemCreateOptions;
 		protected static StripeInvoiceItem StripeInvoiceItem;
@@ -16,7 +20,7 @@ namespace Stripe.Tests
 			var stripeCustomerService = new StripeCustomerService();
 			var stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
 
-			_stripeInvoiceItemService = new StripeInvoiceItemService();
+			_stripeInvoiceItemService = new StripeInvoiceItemService(ConfigurationManager.AppSettings["StripeApiKey"]);
 			StripeInvoiceItemCreateOptions = test_data.stripe_invoiceitem_create_options.Valid(stripeCustomer.Id);
 		};
 

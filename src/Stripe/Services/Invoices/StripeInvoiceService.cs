@@ -8,11 +8,18 @@ namespace Stripe
 {
 	public class StripeInvoiceService
 	{
+		private string ApiKey { get; set; }
+
+		public StripeInvoiceService(string apiKey = null)
+		{
+			ApiKey = apiKey;
+		}
+
 		public virtual StripeInvoice Get(string invoiceId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
 
-			var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url, ApiKey);
 
 			return Mapper<StripeInvoice>.MapFromJson(response);
 		}
@@ -23,7 +30,7 @@ namespace Stripe
 
 			url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
 
-			var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url, ApiKey);
 
 			return Mapper<StripeInvoice>.MapFromJson(response);
 		}
@@ -34,10 +41,10 @@ namespace Stripe
 			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
 			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
 
-			if(!string.IsNullOrEmpty(customerId))
+			if (!string.IsNullOrEmpty(customerId))
 				url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
 
-			var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url, ApiKey);
 
 			return Mapper<StripeInvoice>.MapCollectionFromJson(response);
 		}
