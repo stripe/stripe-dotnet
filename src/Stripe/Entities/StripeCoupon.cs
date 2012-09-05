@@ -27,5 +27,8 @@ namespace Stripe
 		[JsonProperty("redeem_by")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? RedeemBy { get; set; }
+
+		[JsonProperty("times_redeemed")]
+		public int TimesRedeemed { get; private set; }
 	}
 }

@@ -45,5 +45,8 @@ namespace Stripe
 
 		[JsonProperty("invoice")]
 		public string InvoiceId { get; set; }
+
+		[JsonProperty("failure_message")]
+		public string FailureMessage { get; private set; }
 	}
 }

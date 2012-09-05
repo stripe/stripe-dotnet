@@ -9,6 +9,7 @@
 				CardAddressCountry = "US",
 				CardAddressLine1 = "24 Beef Flank St",
 				CardAddressLine2 = "Apt 24",
+				CardAddressCity = "BIGGIE",
 				CardAddressState = "NC",
 				CardAddressZip = "27617",
 				CardCvc = "1223",

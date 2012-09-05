@@ -28,6 +28,9 @@ namespace Stripe
 		[JsonProperty("card[address_zip]")]
 		public string CardAddressZip { get; set; }
 
+		[JsonProperty("card[address_city]")]
+		public string CardAddressCity { get; set; }
+
 		[JsonProperty("card[address_state]")]
 		public string CardAddressState { get; set; }
 

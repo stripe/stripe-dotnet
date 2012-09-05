@@ -37,11 +37,17 @@ namespace Stripe.Tests
 		It should_have_not_been_marked_as_refunded = () =>
 			StripeCharge.Refunded.ShouldEqual(false);
 
+		It should_have_the_correct_failure_message = () =>
+			StripeCharge.FailureMessage.ShouldBeNull();
+
 		It should_have_the_correct_card_address_line_1 = () =>
 			StripeCharge.StripeCard.AddressLine1.ShouldEqual(StripeCard.AddressLine1);
 
 		It should_have_the_correct_card_address_line_2 = () =>
 			StripeCharge.StripeCard.AddressLine2.ShouldEqual(StripeCard.AddressLine2);
+
+		It should_have_the_correct_card_address_city = () =>
+			StripeCharge.StripeCard.AddressCity.ShouldEqual(StripeCard.AddressCity);
 
 		It should_have_the_correct_card_address_state = () =>
 			StripeCharge.StripeCard.AddressState.ShouldEqual(StripeCard.AddressState);

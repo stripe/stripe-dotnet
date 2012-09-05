@@ -7,6 +7,9 @@ namespace Stripe
 		[JsonProperty("address_country")]
 		public string AddressCountry { get; set; }
 
+		[JsonProperty("address_city")]
+		public string AddressCity { get; set; }
+
 		[JsonProperty("address_state")]
 		public string AddressState { get; set; }
 

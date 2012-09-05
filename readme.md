@@ -115,6 +115,7 @@ customer or a charge, but only used once.
 	myToken.CardAddressCountry = "US";
 	myToken.CardAddressLine1 = "24 Portal St";
 	myToken.CardAddressLine2 = "Unit B";
+	myToken.CardAddressCity = "Biggie Smalls";
 	myToken.CardAddressState = "NC";
 	myToken.CardAddressZip = "27617";
 	myToken.CardCvc = "1223";
@@ -156,6 +157,7 @@ a credit card or token, and various meta data.
 	myCustomer.CardAddressCountry = "US";				// optional
 	myCustomer.CardAddressLine1 = "24 Beef Flank St";	// optional
 	myCustomer.CardAddressLine2 = "Apt 24";				// optional
+	myCustomer.CardAddressCity = "Biggie Smalls";  //optional
 	myCustomer.CardAddressState = "NC";					// optional
 	myCustomer.CardAddressZip = "27617";				// optional
 	myCustomer.CardName = "Joe Meatballs";				// optional
