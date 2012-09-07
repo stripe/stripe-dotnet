@@ -31,7 +31,7 @@ namespace Stripe
 
 		private static WebRequest GetWebRequest(string url, string method, string apiKey = null)
 		{
-			apiKey = apiKey ?? ConfigurationManager.AppSettings["StripeApiKey"];
+			apiKey = apiKey ?? StripeConfiguration.GetApiKey();
 
 			var request = (HttpWebRequest)WebRequest.Create(url);
 			request.Method = method;
