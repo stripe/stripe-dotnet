@@ -15,6 +15,9 @@ namespace Stripe
 
 		[JsonProperty("interval")]
 		public string Interval { get; set; }
+		
+		[JsonProperty("interval_count")]
+		public int? IntervalCount { get; set; }
 
 		[JsonProperty("name")]
 		public string Name { get; set; }

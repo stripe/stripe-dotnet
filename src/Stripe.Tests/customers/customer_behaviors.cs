@@ -55,6 +55,9 @@ namespace Stripe.Tests
 
 		It should_have_the_correct_trial_period_days = () =>
 			StripeCustomer.StripeSubscription.TrialEnd.Value.Date.ShouldEqual(StripeCustomerCreateOptions.TrialEnd.Value.Date);
+		
+		It should_have_the_correct_quantity = () =>
+			StripeCustomer.StripeSubscription.Quantity.ShouldEqual(1);
 
 		It should_have_the_correct_plan_id = () =>
 			StripeCustomer.StripeSubscription.StripePlan.Id.ShouldEqual(StripePlan.Id);

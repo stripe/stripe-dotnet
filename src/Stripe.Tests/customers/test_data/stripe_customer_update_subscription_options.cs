@@ -4,7 +4,7 @@ namespace Stripe.Tests.test_data
 {
 	public static class stripe_customer_update_subscription_options
 	{
-		public static StripeCustomerUpdateSubscriptionOptions ValidCard(string _planId = null, string _couponId = null, DateTime? _trialEnd = null)
+		public static StripeCustomerUpdateSubscriptionOptions ValidCard(string _planId = null, string _couponId = null, DateTime? _trialEnd = null, int? _quantity = null)
 		{
 			var stripeCustomerUpdateSubscriptionOptions = new StripeCustomerUpdateSubscriptionOptions()
 			{
@@ -27,6 +27,11 @@ namespace Stripe.Tests.test_data
 
 			if (_trialEnd != null)
 				stripeCustomerUpdateSubscriptionOptions.TrialEnd = _trialEnd;
+
+			if (_quantity != null)
+				stripeCustomerUpdateSubscriptionOptions.Quantity = _quantity.Value;
+			else
+				stripeCustomerUpdateSubscriptionOptions.Quantity = 1;
 
 			return stripeCustomerUpdateSubscriptionOptions;
 		}

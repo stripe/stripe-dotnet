@@ -19,6 +19,9 @@ namespace Stripe.Tests
 
 		It should_have_the_correct_interval = () =>
 			StripePlan.Interval.ShouldEqual(StripePlanCreateOptions.Interval);
+		
+		It should_have_the_correct_interval_count = () =>
+			StripePlan.IntervalCount.ShouldEqual(1);
 
 		It should_have_the_correct_name = () =>
 			StripePlan.Name.ShouldEqual(StripePlanCreateOptions.Name);

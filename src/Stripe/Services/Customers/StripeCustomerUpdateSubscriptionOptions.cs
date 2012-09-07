@@ -17,6 +17,9 @@ namespace Stripe
 
 		public DateTime? TrialEnd { get; set; }
 
+		[JsonProperty("quantity")]
+		public int? Quantity { get; set; }
+
 		[JsonProperty("trial_end")]
 		internal int? TrialEndInternal
 		{

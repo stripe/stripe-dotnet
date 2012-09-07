@@ -40,6 +40,9 @@ namespace Stripe
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? TrialEnd { get; set; }
 
+		[JsonProperty("quantity")]
+		public int Quantity { get; set; }
+
 		[JsonProperty("plan")]
 		public StripePlan StripePlan { get; set; }
 	}
