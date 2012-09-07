@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
+using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -30,6 +31,9 @@ namespace Stripe
 
 		[JsonProperty("fee")]
 		public int? FeeInCents { get; set; }
+
+		[JsonProperty("fee_details")]
+		public List<StripeFee> FeeDetails { get; set; }
 
 		[JsonProperty("paid")]
 		public bool? Paid { get; set; }
