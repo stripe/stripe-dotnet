@@ -12,9 +12,9 @@ Quick Start
 
 Add a reference to Stripe.net.dll (You can find a pre-compiled version in the build folder of this repository or install Stripe.net via NuGet)
 
-Next you will need to provide Stripe.net with your api key. There are 3 ways to do this:
+Next you will need to provide Stripe.net with your api key. There are 3 ways to do this: Choose one.
 
-1) Add an AppSetting with your api key to your config
+a) Add an AppSetting with your api key to your config (this is the easiest way)
 
 	<appSettings>
 	...
@@ -22,11 +22,11 @@ Next you will need to provide Stripe.net with your api key. There are 3 ways to 
 	...
 	</appSettings>
 
-2) In your application initialization, call
+b) In your application initialization, call (this is a programmatic way, but you only have to do it once during startup)
 
 	StripeConfiguration.SetApiKey("[your api key here]");
 
-3) In any of the service constructors documented below, you can optionally pass the api key. i.e...
+c) In any of the service constructors documented below, you can optionally pass the api key (not recommended for single app/single key use). i.e...
 
 	var planService = new StripePlanService("[your api key here]");
 
@@ -43,11 +43,12 @@ Plans
 If your site has multiple offerings, plans are perfect. You can create as many plans as you want and then just assign customers to those plans later on.
 
 	var myPlan = new StripePlanCreateOptions();
-	myPlan.AmountInCents = 1000;	// all amounts on Stripe are in cents
-	myPlan.Currency = "usd";		// "usd" only supported right now
-	myPlan.Interval = "month";		// "month" or "year"
+	myPlan.AmountInCents = 1000;    // all amounts on Stripe are in cents
+	myPlan.Currency = "usd";        // "usd" only supported right now
+	myPlan.Interval = "month";      // "month" or "year"
+	myPlan.IntervalCount = 1;       // optional
 	myPlan.Name = "Bronze";
-	myPlan.TrialPeriodDays = 30;	// amount of time that will lapse before the customer is billed
+	myPlan.TrialPeriodDays = 30;    // amount of time that will lapse before the customer is billed
 
 	var planService = new StripePlanService();
 	StripePlan response = planService.Create(myPlan);
@@ -78,8 +79,8 @@ Coupons (queue-pons not coo-pons)
 	var myCoupon = new StripeCouponCreateOptions();
 	myCoupon.Id = "HOLIDAY10OFF";
 	myCoupon.PercentOff = "10";
-	myCoupon.Duration = "repeating";	// "forever", "once", or "repeating"
-	myCoupon.DurationInMonths = 3;		// valid when "repeating" only
+	myCoupon.Duration = "repeating";    // "forever", "once", or "repeating"
+	myCoupon.DurationInMonths = 3;      // valid when "repeating" only
 
 	// set these if you want to
 	myCoupon.MaxRedemptions = 100;
@@ -101,7 +102,7 @@ Coupons (queue-pons not coo-pons)
 ### List all coupons
 
 	var couponService = new StripeCouponService();
-	IEnumerable<StripeCoupon> response = couponService.List();	// can optionally pass count (defaults to 10) and offset
+	IEnumerable<StripeCoupon> response = couponService.List();    // can optionally pass count (defaults to 10) and offset
 
 Tokens
 ------
@@ -154,21 +155,22 @@ a credit card or token, and various meta data.
 	myCustomer.CardNumber = "4242424242424242";
 	myCustomer.CardExpirationYear = "2012";
 	myCustomer.CardExpirationMonth = "10";
-	myCustomer.CardAddressCountry = "US";				// optional
-	myCustomer.CardAddressLine1 = "24 Beef Flank St";	// optional
-	myCustomer.CardAddressLine2 = "Apt 24";				// optional
-	myCustomer.CardAddressCity = "Biggie Smalls";  //optional
-	myCustomer.CardAddressState = "NC";					// optional
-	myCustomer.CardAddressZip = "27617";				// optional
-	myCustomer.CardName = "Joe Meatballs";				// optional
-	myCustomer.CardCvc = "1223";						// optional
+	myCustomer.CardAddressCountry = "US";                // optional
+	myCustomer.CardAddressLine1 = "24 Beef Flank St";    // optional
+	myCustomer.CardAddressLine2 = "Apt 24";              // optional
+	myCustomer.CardAddressCity = "Biggie Smalls";        // optional
+	myCustomer.CardAddressState = "NC";                  // optional
+	myCustomer.CardAddressZip = "27617";                 // optional
+	myCustomer.CardName = "Joe Meatballs";               // optional
+	myCustomer.CardCvc = "1223";                         // optional
 
 	// set this property if using a token
 	myCustomer.TokenId = *tokenId*;
 
-	myCustomer.PlanId = *planId*;								// only if you have a plan
-	myCustomer.Coupon = *couponId*;							// only if you have a coupon
-	myCustomer.TrialEnd = DateTime.UtcNow.AddMonths(1);		// when the customers trial ends (overrides the plan if applicable)
+	myCustomer.PlanId = *planId*;                          // only if you have a plan
+	myCustomer.Coupon = *couponId*;                        // only if you have a coupon
+	myCustomer.TrialEnd = DateTime.UtcNow.AddMonths(1);    // when the customers trial ends (overrides the plan if applicable)
+	myCustomer.Quantity = 1;                               // optional, defaults to 1
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Create(myCustomer);
@@ -187,18 +189,18 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 	myCustomer.CardNumber = "4242424242424242";
 	myCustomer.CardExpirationYear = "2012";
 	myCustomer.CardExpirationMonth = "10";
-	myCustomer.CardAddressCountry = "US";				// optional
-	myCustomer.CardAddressLine1 = "24 Beef Flank St";	// optional
-	myCustomer.CardAddressLine2 = "Apt 24";				// optional
-	myCustomer.CardAddressState = "NC";					// optional
-	myCustomer.CardAddressZip = "27617";				// optional
-	myCustomer.CardName = "Joe Meatballs";				// optional
-	myCustomer.CardCvc = "1223";						// optional
+	myCustomer.CardAddressCountry = "US";                // optional
+	myCustomer.CardAddressLine1 = "24 Beef Flank St";    // optional
+	myCustomer.CardAddressLine2 = "Apt 24";              // optional
+	myCustomer.CardAddressState = "NC";                  // optional
+	myCustomer.CardAddressZip = "27617";                 // optional
+	myCustomer.CardName = "Joe Meatballs";               // optional
+	myCustomer.CardCvc = "1223";                         // optional
 
 	// set this property if using a token
 	myCustomer.TokenId = *tokenId*;
 
-	myCustomer.Coupon = *couponId*;		// only if you have a coupon
+	myCustomer.Coupon = *couponId*;    // only if you have a coupon
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Update(*customerId*, myCustomer);
@@ -228,13 +230,13 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 	myUpdatedSubscription.CardNumber = "4242424242424242";
 	myUpdatedSubscription.CardExpirationYear = "2012";
 	myUpdatedSubscription.CardExpirationMonth = "10";
-	myUpdatedSubscription.CardAddressCountry = "US";				// optional
-	myUpdatedSubscription.CardAddressLine1 = "24 Beef Flank St";	// optional
-	myUpdatedSubscription.CardAddressLine2 = "Apt 24";				// optional
-	myUpdatedSubscription.CardAddressState = "NC";					// optional
-	myUpdatedSubscription.CardAddressZip = "27617";					// optional
-	myUpdatedSubscription.CardName = "Joe Meatballs";				// optional
-	myUpdatedSubscription.CardCvc = "1223";							// optional
+	myUpdatedSubscription.CardAddressCountry = "US";                // optional
+	myUpdatedSubscription.CardAddressLine1 = "24 Beef Flank St";    // optional
+	myUpdatedSubscription.CardAddressLine2 = "Apt 24";              // optional
+	myUpdatedSubscription.CardAddressState = "NC";                  // optional
+	myUpdatedSubscription.CardAddressZip = "27617";                 // optional
+	myUpdatedSubscription.CardName = "Joe Meatballs";               // optional
+	myUpdatedSubscription.CardCvc = "1223";                         // optional
 
 	// set this property if using a token
 	myUpdatedSubscription.TokenId = *tokenId*;
@@ -242,6 +244,7 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 	myUpdatedSubscription.PlanId = *planId*;			
 	myUpdatedSubscription.CouponId = *couponId*;
 	myUpdatedSubscription.TrialEnd = DateTime.UtcNow.AddMonths(1);
+	myUpdatedSubscription.Quantity = 1;                             // optional, defaults to 1
 
 	var customerService = new StripeCustomerService();
 	StripeSubscription = customerService.UpdateSubscription(*customerId*, myUpdatedSubscription);
@@ -249,7 +252,7 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 ### Canceling a customer subscription
 
 	var customerService = new StripeCustomerService();
-	StripeSubscription = customerService.CancelSubscription(*customerId*);	// you can optionally pass cancelAtPeriodEnd instead of immediately cancelling 
+	StripeSubscription = customerService.CancelSubscription(*customerId*);    // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling 
 
 Charges
 -------
@@ -271,19 +274,22 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	myCharge.CardNumber = "4242424242424242";
 	myCharge.CardExpirationYear = "2012";
 	myCharge.CardExpirationMonth = "10";
-	myCharge.CardAddressCountry = "US";				// optional
-	myCharge.CardAddressLine1 = "24 Beef Flank St";	// optional
-	myCharge.CardAddressLine2 = "Apt 24";			// optional
-	myCharge.CardAddressState = "NC";				// optional
-	myCharge.CardAddressZip = "27617";				// optional
-	myCharge.CardName = "Joe Meatballs";			// optional
-	myCharge.CardCvc = "1223";						// optional
+	myCharge.CardAddressCountry = "US";               // optional
+	myCharge.CardAddressLine1 = "24 Beef Flank St"    // optional
+	myCharge.CardAddressLine2 = "Apt 24";             // optional
+	myCharge.CardAddressState = "NC";                 // optional
+	myCharge.CardAddressZip = "27617";                // optional
+	myCharge.CardName = "Joe Meatballs";              // optional
+	myCharge.CardCvc = "1223";                        // optional
 
 	// set this property if using a customer
 	myCharge.CustomerId = *customerId*;
 	
 	// set this property if using a token
 	myCharge.TokenId = *tokenId*;
+
+	// set this if you have your own application fees (you must have your application configured first within Stripe)
+	myCharge.ApplicationFeeInCents = 25;
 
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Create(myCharge);
@@ -303,7 +309,7 @@ If you do not specify an amountInCents, the entire charge is refunded. The Strip
 ### List all charges
 
 	var chargeService = new StripeChargeService();
-	IEnumerable<StripeCharge> response = chargeService.List();	// can optionally pass count (defaults to 10), offset, and a customerId to get charges for a single customer
+	IEnumerable<StripeCharge> response = chargeService.List();    // can optionally pass count (defaults to 10), offset, and a customerId to get charges for a single customer
 
 Invoices
 --------
@@ -321,7 +327,7 @@ Invoices
 ### List all invoices
 
 	var invoiceService = new StripeInvoiceService();
-	IEnumerable<StripeInvoice> response = invoiceService.List(); // can optionally pass count (defaults to 10), offset, and a customerid
+	IEnumerable<StripeInvoice> response = invoiceService.List();    // can optionally pass count (defaults to 10), offset, and a customerid
 
 Invoice Items
 -------------
@@ -331,10 +337,10 @@ Invoice Items
 Any invoice items you create for a customer will be added to their bill.
 
 	var myItem = new StripeInvoiceItemCreateOptions();
-	myItem.AmountInCents = 1000;		// all amounts on Stripe are in cents
-	myItem.Currency = "usd";			// "usd" only supported right now
+	myItem.AmountInCents = 1000;        // all amounts on Stripe are in cents
+	myItem.Currency = "usd";            // "usd" only supported right now
 	myItem.CustomerId = *customerId*;
-	myItem.Description = "na";			// not required
+	myItem.Description = "na";          // not required
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	StripeInvoiceItem response = invoiceItemService.Create(myItem);
@@ -347,9 +353,9 @@ Any invoice items you create for a customer will be added to their bill.
 ### Updating an invoice item
 
 	var myUpdatedItem = new StripeInvoiceItemUpdateOptions();
-	myUpdatedItem.AmountInCents = 1010;		// all amounts on Stripe are in cents
-	myUpdatedItem.Currency = "usd";			// "usd" only supported right now
-	myUpdatedItem.Description = "test";		// not required
+	myUpdatedItem.AmountInCents = 1010;    // all amounts on Stripe are in cents
+	myUpdatedItem.Currency = "usd";        // "usd" only supported right now
+	myUpdatedItem.Description = "test";    // not required
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	StripeInvoiceItem response = invoiceItemService.Update(*invoiceItemId*, myUpdatedItem);
@@ -361,8 +367,8 @@ Any invoice items you create for a customer will be added to their bill.
 
 ### List all invoice items
 
-	var invoiceItemService = new StripeInvoiceItemService();				
-	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List(); // can optionally pass count (defaults to 10), offset, and a customerid
+	var invoiceItemService = new StripeInvoiceItemService();
+	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List();    // can optionally pass count (defaults to 10), offset, and a customerid
 
 Events
 ------
@@ -411,7 +417,7 @@ If you have the id and you want to retrieve the event
 You can list events in the same way everything else works in Stripe.net. 
 
 	var eventService = new StripeEventService();
-	IEnumerable<StripeEvent> response = eventService.List(); // can optionally pass count (defaults to 10), offset, and StripeEventSearchOptions
+	IEnumerable<StripeEvent> response = eventService.List();    // can optionally pass count (defaults to 10), offset, and StripeEventSearchOptions
 	
 You can also optionally pass a StripeSearchEventOptions which supports a specific Created timestamp, LessThan, LessThanOrEqualTo, GreaterThan, or GreaterThanOrEqualTo.
 	
