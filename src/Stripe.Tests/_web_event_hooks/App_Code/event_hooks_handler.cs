@@ -10,7 +10,7 @@ namespace Stripe.Tests
 		{
 			get { return true; }
 		}
-
+		
 		public void ProcessRequest(HttpContext context)
 		{
 			var json = new StreamReader(context.Request.InputStream).ReadToEnd();
