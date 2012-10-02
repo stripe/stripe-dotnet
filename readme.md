@@ -393,6 +393,13 @@ Stripe sends Events (or webhooks) whenever an associated action occurs. The list
 				var json = new StreamReader(context.Request.InputStream).ReadToEnd();
 	
 				var stripeEvent = StripeEventUtility.ParseEvent(json);
+
+				switch (stripeEvent.Type)
+				{
+					case "charge.refunded":  // take a look at all the types here: https://stripe.com/docs/api#event_types
+						var stripeCharge = Stripe.Mapper<StripeCharge>.MapFromJson(stripeEvent.Data.Object);
+						break;
+				}
 			}
 		}
 	}

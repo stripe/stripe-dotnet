@@ -16,6 +16,13 @@ namespace Stripe.Tests
 			var json = new StreamReader(context.Request.InputStream).ReadToEnd();
 
 			var stripeEvent = StripeEventUtility.ParseEvent(json);
+
+			switch (stripeEvent.Type)
+			{
+				case "charge.refunded":
+					var stripeCharge = Stripe.Mapper<StripeCharge>.MapFromJson(stripeEvent.Data.Object);
+					break;
+			}
 		}
 	}
 }
