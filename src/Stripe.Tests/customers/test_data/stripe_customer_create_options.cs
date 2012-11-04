@@ -16,7 +16,7 @@ namespace Stripe.Tests.test_data
 				Email = "pork@email.com",
 				CardCvc = "1661",
 				CardExpirationMonth = "10",
-				CardExpirationYear = "2012",
+				CardExpirationYear = "2021",
 				CardName = "Johnny Tenderloin",
 				CardNumber = "4242424242424242",
 				Description = "Johnny Tenderloin (pork@email.com)",

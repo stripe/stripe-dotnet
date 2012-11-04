@@ -15,5 +15,8 @@ namespace Stripe
 
 		[JsonProperty("param")]
 		public string Parameter { get; set; }
+
+		[JsonProperty("charge")]
+		public string ChargeId { get; set; }
 	}
 }

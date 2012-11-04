@@ -54,6 +54,7 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="charges\charge_behaviors.cs" />
+    <Compile Include="charges\when_creating_a_charge_with_an_invalid_card.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_card_and_an_application_fee.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_token.cs" />
     <Compile Include="charges\when_listing_charges_for_customer.cs" />

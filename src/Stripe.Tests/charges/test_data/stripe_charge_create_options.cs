@@ -14,9 +14,29 @@
 				CardAddressZip = "27617",
 				CardCvc = "1223",
 				CardExpirationMonth = "10",
-				CardExpirationYear = "2012",
+				CardExpirationYear = "2021",
 				CardName = "Joe Meatballs",
 				CardNumber = "4242424242424242",
+				Description = "Joe Meatball Charge",
+				AmountInCents = 5153,
+				Currency = "usd"
+			};
+		}
+
+		public static StripeChargeCreateOptions InvalidCard()
+		{
+			return new StripeChargeCreateOptions()
+			{
+				CardAddressCountry = "US",
+				CardAddressLine1 = "24 Poopie St",
+				CardAddressCity = "Yeehaw Beebop ChickyChicky",
+				CardAddressState = "NC",
+				CardAddressZip = "90210",
+				CardCvc = "1223",
+				CardExpirationMonth = "10",
+				CardExpirationYear = "2004",
+				CardName = "Joe Meatballs",
+				CardNumber = "425221",
 				Description = "Joe Meatball Charge",
 				AmountInCents = 5153,
 				Currency = "usd"

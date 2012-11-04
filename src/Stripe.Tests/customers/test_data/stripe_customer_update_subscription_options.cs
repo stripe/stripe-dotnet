@@ -14,7 +14,7 @@ namespace Stripe.Tests.test_data
 				CardAddressZip = "33101",
 				CardCvc = "1661",
 				CardExpirationMonth = "10",
-				CardExpirationYear = "2012",
+				CardExpirationYear = "2021",
 				CardName = "Vanilla Ice",
 				CardNumber = "4242424242424242",
 			};
