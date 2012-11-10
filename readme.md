@@ -247,12 +247,12 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 	myUpdatedSubscription.Quantity = 1;                             // optional, defaults to 1
 
 	var customerService = new StripeCustomerService();
-	StripeSubscription = customerService.UpdateSubscription(*customerId*, myUpdatedSubscription);
+	StripeSubscription subscription = customerService.UpdateSubscription(*customerId*, myUpdatedSubscription);
 
 ### Canceling a customer subscription
 
 	var customerService = new StripeCustomerService();
-	StripeSubscription = customerService.CancelSubscription(*customerId*);    // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling 
+	StripeSubscription subscription = customerService.CancelSubscription(*customerId*);    // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling 
 
 Charges
 -------
