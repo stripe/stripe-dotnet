@@ -22,6 +22,13 @@ namespace Stripe
 			return ExecuteWebRequest(wr);
 		}
 
+        public static string PostStringBearer(string url, string apiKey = null)
+        {
+            var wr = GetWebRequestBearer(url, "POST", apiKey);
+
+            return ExecuteWebRequest(wr);
+        }
+
 		public static string Delete(string url, string apiKey = null)
 		{
 			var wr = GetWebRequest(url, "DELETE", apiKey);
@@ -42,11 +49,30 @@ namespace Stripe
 			return request;
 		}
 
+        private static WebRequest GetWebRequestBearer(string url, string method, string apiKey = null)
+        {
+            apiKey = apiKey ?? StripeConfiguration.GetApiKey();
+
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = method;
+            request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(apiKey));
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
+
+            return request;
+        }
+
 		private static string GetAuthorizationHeaderValue(string apiKey)
 		{
 			var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", apiKey)));
 			return string.Format("Basic {0}", token);
 		}
+
+        private static string GetAuthorizationHeaderValueBearer(string apiKey)
+        {
+            //var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", apiKey)));
+            return string.Format("Bearer {0}", apiKey);
+        }
 
 		private static string ExecuteWebRequest(WebRequest webRequest)
 		{
