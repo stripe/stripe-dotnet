@@ -47,14 +47,14 @@
 			get { return "https://api.stripe.com/v1"; }
 		}
 
-        private static string BaseConnectUrl
-        {
-            get { return "https://connect.stripe.com"; }
-        }
+		public static string OAuthToken
+		{
+			get { return BaseConnectUrl + "/oauth/token"; }
+		}
 
-        public static string OAuthToken
-        {
-            get { return BaseConnectUrl + "/oauth/token"; }
-        }
+		private static string BaseConnectUrl
+		{
+			get { return "https://connect.stripe.com"; }
+		}
 	}
 }
