@@ -441,6 +441,12 @@ You can also optionally pass a StripeSearchEventOptions which supports a specifi
 	
 	IEnumerable<StripeEvent> response = eventService.List(10, 0, eventSearchOptions);
 	
+
+OAuth
+-----
+
+For information about how to use OAuth, see this comment https://github.com/jaymedavis/stripe.net/pull/43#issuecomment-10903921
+
 Errors
 ------
 
