@@ -56,5 +56,10 @@
 		{
 			get { return "https://connect.stripe.com"; }
 		}
+
+	    public static string Account
+	    {
+            get { return BaseUrl + "/account"; }
+	    }
 	}
 }
