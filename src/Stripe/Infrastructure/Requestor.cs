@@ -7,13 +7,20 @@ using System.Text;
 namespace Stripe
 {
 	internal static class Requestor
-	{
-		public static string GetString(string url, string apiKey = null)
-		{
-			var wr = GetWebRequest(url, "GET", apiKey);
+    {
+        public static string GetString(string url, string apiKey = null)
+        {
+            var wr = GetWebRequest(url, "GET", apiKey);
 
-			return ExecuteWebRequest(wr);
-		}
+            return ExecuteWebRequest(wr);
+        }
+
+        public static string GetStringBearer(string url, string apiKey = null)
+        {
+            var wr = GetWebRequest(url, "GET", apiKey, true);
+
+            return ExecuteWebRequest(wr);
+        }
 
 		public static string PostString(string url, string apiKey = null)
 		{

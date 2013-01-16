@@ -15,7 +15,7 @@ namespace Stripe
         {
             string url = ParameterBuilder.ApplyAllParameters(null, Urls.Account);
 
-            string response = Requestor.PostStringBearer(url, ApiKey);
+            string response = Requestor.GetStringBearer(url, ApiKey);
 
             return Mapper<StripeAccount>.MapFromJson(response);
         }
