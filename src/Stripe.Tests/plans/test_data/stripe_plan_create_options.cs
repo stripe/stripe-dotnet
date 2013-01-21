@@ -17,4 +17,16 @@ namespace Stripe.Tests.test_data
 			};
 		}
 	}
+
+    public static class stripe_plan_update_options
+    {
+        public static StripePlanUpdateOptions Valid()
+        {
+            return new StripePlanUpdateOptions()
+            {
+                Id = "test-plan-" + Guid.NewGuid(),
+                Name = "Test Plan Modified",
+            };
+        }
+    }
 }
