@@ -56,6 +56,15 @@ If your site has multiple offerings, plans are perfect. You can create as many p
 The returned StripePlan entity above will have a unique Id. You will want to persist this for later. When you create a customer you will be able to assign them 
 to a plan id (or not)
 
+### Updating a plan
+
+	var myPlan = new StripePlanUpdateOptions();
+
+	myPlan.Name = "NEW Plan YO!";
+
+	var planService = new StripePlanService();
+	StripePlan response = planService.Update(*planId*, myPlan);
+
 ### Retrieving a plan
 
 	var planService = new StripePlanService();
@@ -179,7 +188,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 ### Updating a customer
 
-	var myCustomer = new StripeCustomerUpdateOptions()
+	var myCustomer = new StripeCustomerUpdateOptions();
 
 	// set these properties if it makes you happy
 	myCustomer.Email = "pork@email.com";

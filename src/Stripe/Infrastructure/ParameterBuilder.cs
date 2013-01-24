@@ -17,7 +17,7 @@ namespace Stripe
 				foreach (var attribute in property.GetCustomAttributes(false))
 				{
 					if (attribute.GetType() != typeof(JsonPropertyAttribute)) continue;
-				   
+
 					var JsonPropertyAttribute = (JsonPropertyAttribute)attribute;
 
 					var value = property.GetValue(obj, null);
