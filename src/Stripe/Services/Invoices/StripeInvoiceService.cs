@@ -35,6 +35,15 @@ namespace Stripe
 			return Mapper<StripeInvoice>.MapFromJson(response);
 		}
 
+		public virtual StripeInvoice Pay(string invoiceId)
+		{
+			var url = string.Format("{0}/{1}/pay", Urls.Invoices, invoiceId);
+
+			var response = Requestor.PostString(url, ApiKey);
+
+			return Mapper<StripeInvoice>.MapFromJson(response);
+		}
+
 		public virtual IEnumerable<StripeInvoice> List(int count = 10, int offset = 0, string customerId = null)
 		{
 			var url = Urls.Invoices;
