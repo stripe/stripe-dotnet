@@ -15,9 +15,7 @@
 				CardExpirationMonth = "10",
 				CardExpirationYear = "2021",
 				CardName = "Bob Winghead",
-				CardNumber = "4242424242424242",
-				AmountInCents = 5153,
-				Currency = "usd"
+				CardNumber = "4242424242424242"
 			};
 		}
 	}
