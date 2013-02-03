@@ -1,4 +1,5 @@
 ﻿using Machine.Specifications;
+using System.Configuration;
 
 namespace Stripe.Tests
 {
@@ -13,10 +14,10 @@ namespace Stripe.Tests
 
 		Establish context = () =>
 		{
-			var stripeTokenService = new StripeTokenService();
+			var stripeTokenService = new StripeTokenService(ConfigurationManager.AppSettings["StripeApiKey"]);
 			_stripeToken = stripeTokenService.Create(test_data.stripe_token_create_options.Valid());
-			
-			_stripeChargeService = new StripeChargeService();
+
+			_stripeChargeService = new StripeChargeService(ConfigurationManager.AppSettings["StripeApiKey"]);
 			StripeChargeCreateOptions = test_data.stripe_charge_create_options.ValidToken(_stripeToken.Id);
 		};
 

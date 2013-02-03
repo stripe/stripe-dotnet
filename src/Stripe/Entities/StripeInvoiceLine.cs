@@ -6,10 +6,7 @@ namespace Stripe
 {
 	public class StripeInvoiceLines
 	{
-		[JsonProperty("invoiceitems")]
+		[JsonProperty("data")]
 		public List<StripeInvoiceItem> StripeInvoiceItems { get; set; }
-
-		[JsonProperty("subscriptions")]
-		public List<StripeInvoiceSubscription> StripeInvoiceSubscriptions { get; set; }
 	}
 }
