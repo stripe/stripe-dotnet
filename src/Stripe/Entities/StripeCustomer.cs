@@ -25,9 +25,6 @@ namespace Stripe
 		[JsonProperty("deleted")]
 		public bool? Deleted { get; set; }
 
-		[JsonProperty("next_recurring_charge")]
-		public StripeNextRecurringCharge StripeNextRecurringCharge { get; set; }
-
 		[JsonProperty("discount")]
 		public StripeDiscount StripeDiscount { get; set; }
 

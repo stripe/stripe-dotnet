@@ -67,7 +67,6 @@
     <Compile Include="Entities\StripeSubscription.cs" />
     <Compile Include="Entities\StripeCoupon.cs" />
     <Compile Include="Entities\StripeDiscount.cs" />
-    <Compile Include="Entities\StripeNextRecurringCharge.cs" />
     <Compile Include="Entities\StripeTransfer.cs" />
     <Compile Include="Entities\StripeTransferSummary.cs" />
     <Compile Include="Infrastructure\StripeConfiguration.cs" />
