@@ -54,10 +54,10 @@ namespace Stripe.Tests
 		It should_have_the_correct_invoiceitems_object = () =>
 			_stripeInvoice.StripeInvoiceLines.StripeInvoiceItems[0].AmountInCents.ShouldEqual(_stripeInvoiceItemCreateOptions.AmountInCents);
 
-		It should_have_a_valid_subscriptions_object = () =>
-			_stripeInvoice.StripeInvoiceLines.StripeInvoiceSubscriptions.ShouldNotBeNull();
+		It should_have_a_valid_invoiceitems_plan_object = () =>
+			_stripeInvoice.StripeInvoiceLines.StripeInvoiceItems[1].Plan.ShouldNotBeNull();
 
-		It should_have_the_correct_subscriptions_object = () =>
-			_stripeInvoice.StripeInvoiceLines.StripeInvoiceSubscriptions[0].AmountInCents.ShouldEqual(_stripePlanCreateOptions.AmountInCents);
+		It should_have_the_correct_invoiceitems_plan_object = () =>
+			_stripeInvoice.StripeInvoiceLines.StripeInvoiceItems[1].Plan.AmountInCents.ShouldEqual(_stripePlanCreateOptions.AmountInCents);
 	}
 }

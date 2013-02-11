@@ -53,7 +53,6 @@
     <Compile Include="Entities\StripeFee.cs" />
     <Compile Include="Entities\StripeEventData.cs" />
     <Compile Include="Entities\StripeEvent.cs" />
-    <Compile Include="Entities\StripeInvoiceSubscription.cs" />
     <Compile Include="Entities\StripeInvoiceLine.cs" />
     <Compile Include="Entities\StripeInvoice.cs" />
     <Compile Include="Entities\StripeInvoiceItem.cs" />
