@@ -133,13 +133,11 @@ customer or a charge, but only used once.
 	myToken.CardExpirationYear = "2012";
 	myToken.CardName = "Gabe Newell";
 	myToken.CardNumber = "4242424242424242";
-	myToken.AmountInCents = 5153;
-	myToken.Currency = "usd";
 
 	var tokenService = new StripeTokenService();
 	StripeToken stripeToken = tokenService.Create(myToken);
 
-Tokens are very useful if you don't want to store the customers credit card information on your servers (very good for pci compliance).
+Tokens are very useful if you don't want to store the customers credit card information on your servers (pci compliance).
 
 ### Retrieving a token
 

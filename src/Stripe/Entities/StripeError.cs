@@ -16,6 +16,12 @@ namespace Stripe
 		[JsonProperty("param")]
 		public string Parameter { get; set; }
 
+		[JsonProperty("error")]
+		public string Error { get; set; }
+
+		[JsonProperty("error_description")]
+		public string ErrorSubscription { get; set; }
+
 		[JsonProperty("charge")]
 		public string ChargeId { get; set; }
 	}
