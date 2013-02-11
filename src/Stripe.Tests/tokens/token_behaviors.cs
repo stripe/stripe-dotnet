@@ -12,14 +12,8 @@ namespace Stripe.Tests
 		It should_have_an_id = () =>
 			StripeToken.Id.ShouldNotBeNull();
 
-		It should_have_the_correct_amount = () =>
-			StripeToken.AmountInCents.ShouldEqual(StripeTokenCreateOptions.AmountInCents);
-
 		It should_have_the_correct_created_date = () =>
 			StripeToken.Created.Value.Day.ShouldEqual(DateTime.UtcNow.Day);
-
-		It should_have_the_correct_currency = () =>
-			StripeToken.Currency.ShouldEqual(StripeTokenCreateOptions.Currency);
 
 		It should_have_the_correct_live_mode = () =>
 			StripeToken.LiveMode.ShouldEqual(false);

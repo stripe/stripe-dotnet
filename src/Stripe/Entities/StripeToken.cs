@@ -9,15 +9,9 @@ namespace Stripe
 		[JsonProperty("id")]
 		public string Id { get; set; }
 
-		[JsonProperty("amount")]
-		public int? AmountInCents { get; set; }
-
 		[JsonProperty("created")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? Created { get; set; }
-
-		[JsonProperty("currency")]
-		public string Currency { get; set; }
 
 		[JsonProperty("description")]
 		public string Description { get; set; }
