@@ -4,7 +4,7 @@
 	{
 		private string ApiKey { get; set; }
 
-        public StripeAccountService(string apiKey = null)
+		public StripeAccountService(string apiKey = null)
 		{
 			ApiKey = apiKey;
 		}

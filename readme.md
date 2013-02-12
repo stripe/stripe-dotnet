@@ -377,6 +377,15 @@ Any invoice items you create for a customer will be added to their bill.
 	var invoiceItemService = new StripeInvoiceItemService();
 	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List();    // can optionally pass count (defaults to 10), offset, and a customerid
 
+Account
+-------
+
+### Retrieving your account
+
+	var accountService = new StripeAccountService();
+	StripeAccount response = accountService.Get();
+
+
 Events
 ------
 

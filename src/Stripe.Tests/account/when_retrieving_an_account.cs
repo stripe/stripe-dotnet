@@ -3,22 +3,22 @@ using Machine.Specifications;
 
 namespace Stripe.Tests
 {
-    public class when_retrieving_an_account
-    {
-        protected static StripeAccount StripeAccount;
+	public class when_retrieving_an_account
+	{
+		protected static StripeAccount StripeAccount;
 
-        private static StripeAccountService _stripeAccountService;
+		private static StripeAccountService _stripeAccountService;
 
-        Establish context = () =>
-        {
-            _stripeAccountService = new StripeAccountService(ConfigurationManager.AppSettings["StripeApiKey"]);
-        };
+		Establish context = () =>
+		{
+			_stripeAccountService = new StripeAccountService();
+		};
 
-        Because of = () =>
-        {
-            StripeAccount = _stripeAccountService.Get();
-        };
+		Because of = () =>
+		{
+			StripeAccount = _stripeAccountService.Get();
+		};
 
-        Behaves_like<account_behaviors> behaviors;
-    }
+		Behaves_like<account_behaviors> behaviors;
+	}
 }

@@ -42,10 +42,10 @@
 			get { return BaseUrl + "/events"; }
 		}
 
-	    public static string Account
-        {
-            get { return BaseUrl + "/account"; }
-	    }
+		public static string Account
+		{
+			get { return BaseUrl + "/account"; }
+		}
 
 		private static string BaseUrl
 		{
