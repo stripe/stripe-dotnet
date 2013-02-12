@@ -42,6 +42,11 @@
 			get { return BaseUrl + "/events"; }
 		}
 
+	    public static string Account
+        {
+            get { return BaseUrl + "/account"; }
+	    }
+
 		private static string BaseUrl
 		{
 			get { return "https://api.stripe.com/v1"; }

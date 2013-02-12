@@ -53,6 +53,8 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="account\account_behaviors.cs" />
+    <Compile Include="account\when_retrieving_an_account.cs" />
     <Compile Include="charges\charge_behaviors.cs" />
     <Compile Include="charges\when_creating_a_charge_with_an_invalid_card.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_card_and_an_application_fee.cs" />
