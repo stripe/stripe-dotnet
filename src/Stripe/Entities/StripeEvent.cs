@@ -24,5 +24,11 @@ namespace Stripe
 
 		[JsonProperty("livemode")]
 		public bool? LiveMode { get; set; }
+
+        [JsonProperty("user_id")]
+        public string UserId { get; set; }
+
+        [JsonProperty("pending_webhooks")]
+        public int PendingWebhooks { get; set; }
 	}
 }
