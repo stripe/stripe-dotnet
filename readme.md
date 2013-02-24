@@ -1,3 +1,4 @@
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/5f9bbd19e41d91cc092ebec6ff4bb40c "githalytics.com")](http://githalytics.com/jaymedavis/stripe.net)
 Stripe.net
 ==========
 
