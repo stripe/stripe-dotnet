@@ -390,6 +390,15 @@ Account
 	var accountService = new StripeAccountService();
 	StripeAccount response = accountService.Get();
 
+Disputes
+--------
+
+### Updating a dispute
+
+	var disputeService = new StripeDisputeService();
+
+	// providing the dispute reason is optional
+	StripeDispute stripeDispute = disputeService.Update(*chargeId*, "customer ate the donut before I charged them, so they said it was free"); 
 
 Events
 ------
