@@ -11,3 +11,5 @@ _ReSharper.*
 *.nupkg
 
 working
+
+App.config.mine

@@ -70,6 +70,7 @@
     <Compile Include="plans\when_updating_a_plan.cs" />
     <Compile Include="plans\when_creating_a_plan_with_an_interval_count.cs" />
     <Compile Include="plans\when_creating_a_plan_with_an_api_key.cs" />
+    <Compile Include="tokens\when_creating_a_token_with_a_customer.cs" />
     <Compile Include="tokens\when_creating_a_token_with_an_api_key.cs" />
     <Compile Include="_web_event_hooks\App_Code\event_hooks_handler.cs" />
     <Compile Include="invoices\when_getting_an_invoice.cs" />
@@ -128,6 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.config.mine">
       <SubType>Designer</SubType>
     </None>
     <None Include="_web_event_hooks\event_hooks_handler.ashx" />

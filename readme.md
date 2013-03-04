@@ -122,6 +122,8 @@ A token can be used anywhere on Stripe where you would normally pass a card. Onc
 customer or a charge, but only used once.
 
 	var myToken = new StripeTokenCreateOptions();
+
+	// set these properties if using a card
 	myToken.CardAddressCountry = "US";
 	myToken.CardAddressLine1 = "24 Portal St";
 	myToken.CardAddressLine2 = "Unit B";
@@ -133,6 +135,9 @@ customer or a charge, but only used once.
 	myToken.CardExpirationYear = "2012";
 	myToken.CardName = "Gabe Newell";
 	myToken.CardNumber = "4242424242424242";
+	
+	// set this property if using a customer (stripe connect only)
+	myToken.CustomerId = *customerId*;
 
 	var tokenService = new StripeTokenService();
 	StripeToken stripeToken = tokenService.Create(myToken);
@@ -458,10 +463,10 @@ You can also optionally pass a StripeSearchEventOptions which supports a specifi
 	IEnumerable<StripeEvent> response = eventService.List(10, 0, eventSearchOptions);
 	
 
-OAuth
------
+Stripe Connect
+--------------
 
-For information about how to use OAuth, see this comment https://github.com/jaymedavis/stripe.net/pull/43#issuecomment-10903921
+For information about how to use Stripe Connect, see this comment https://github.com/jaymedavis/stripe.net/pull/43#issuecomment-10903921
 
 Errors
 ------
