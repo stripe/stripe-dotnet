@@ -21,6 +21,9 @@ namespace Stripe
 		[JsonProperty("max_redemptions")]
 		public int? MaxRedemptions { get; set; }
 
+		[JsonProperty("amount_off")]
+		public int? AmountOff { get; set; }
+
 		[JsonProperty("percent_off")]
 		public int? PercentOff { get; set; }
 
