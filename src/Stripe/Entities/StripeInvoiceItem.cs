@@ -30,5 +30,8 @@ namespace Stripe
 
 		[JsonProperty("plan")]
 		public StripePlan Plan { get; set; }
+		
+		[JsonProperty("period")]
+		public StripePeriod Period { get; set; }
 	}
 }
