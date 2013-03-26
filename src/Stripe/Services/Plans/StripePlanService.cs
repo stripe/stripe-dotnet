@@ -36,7 +36,7 @@ namespace Stripe
 		{
 			var url = string.Format("{0}/{1}", Urls.Plans, planId);
 
-			Requestor.Delete(url);
+			Requestor.Delete(url, ApiKey);
 		}
 
 		public virtual StripePlan Update(string planId, StripePlanUpdateOptions updateOptions)

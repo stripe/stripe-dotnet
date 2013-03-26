@@ -36,7 +36,7 @@ namespace Stripe
 		{
 			var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
 
-			Requestor.Delete(url);
+			Requestor.Delete(url, ApiKey);
 		}
 
 		public virtual IEnumerable<StripeCoupon> List(int count = 10, int offset = 0)
