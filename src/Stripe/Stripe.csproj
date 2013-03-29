@@ -82,6 +82,7 @@
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemUpdateOptions.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemCreateOptions.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemService.cs" />
+    <Compile Include="Services\Invoices\StripeInvoiceCreateOptions.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceService.cs" />
     <Compile Include="Services\CreditCardOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeCreateOptions.cs" />
