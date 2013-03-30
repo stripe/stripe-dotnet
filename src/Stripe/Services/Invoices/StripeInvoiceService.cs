@@ -57,5 +57,15 @@ namespace Stripe
 
 			return Mapper<StripeInvoice>.MapCollectionFromJson(response);
 		}
+
+		public virtual StripeInvoice Create(string customerId)
+		{
+			var url = Urls.Invoices;
+			url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+
+			var response = Requestor.PostString(url, ApiKey);
+
+			return Mapper<StripeInvoice>.MapFromJson(response);
+		}
 	}
 }
