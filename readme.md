@@ -336,6 +336,11 @@ Invoices
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Upcoming(*customerId*);
 
+### Create a customer invoice
+
+	var invoiceService = new StripeInvoiceService();
+	StripeInvoice response = invoiceService.Create(*customerId*);
+
 ### List all invoices
 
 	var invoiceService = new StripeInvoiceService();
