@@ -30,5 +30,8 @@ namespace Stripe
 
 		[JsonProperty("pending_webhooks")]
 		public int PendingWebhooks { get; set; }
+
+        [JsonProperty("request")]
+        public string Request { get; set; }
 	}
 }
