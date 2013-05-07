@@ -26,7 +26,6 @@ namespace Stripe.Tests
 		It should_have_the_correct_redeem_by_days = () =>
 			StripeCoupon.RedeemBy.Value.Date.ShouldEqual(StripeCouponCreateOptions.RedeemBy.Value.Date);
 
-
 		It should_have_the_correct_times_redeemed = () =>
 			StripeCoupon.TimesRedeemed.ShouldEqual(0);
 

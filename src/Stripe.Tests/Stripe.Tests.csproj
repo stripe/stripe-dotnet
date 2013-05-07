@@ -62,6 +62,7 @@
     <Compile Include="charges\when_listing_charges_for_customer.cs" />
     <Compile Include="charges\when_listing_charges.cs" />
     <Compile Include="charges\when_creating_a_charge_with_an_api_key.cs" />
+    <Compile Include="coupons\when_creating_a_coupon_with_amount_off.cs" />
     <Compile Include="coupons\when_creating_a_coupon_with_an_api_key.cs" />
     <Compile Include="customers\when_creating_a_customer_with_an_api_key.cs" />
     <Compile Include="invoiceitems\when_creating_an_invoiceitem_with_an_api_key.cs" />

@@ -8,6 +8,12 @@ namespace Stripe
 		[JsonProperty("id")]
 		public string Id { get; set; }
 
+		[JsonProperty("amount_off")]
+		public int? AmountOff { get; set; }
+
+		[JsonProperty("currency")]
+		public string Currency { get; set; }
+
 		[JsonProperty("percent_off")]
 		public int? PercentOff { get; set; }
 
