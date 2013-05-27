@@ -19,7 +19,7 @@ namespace Stripe.Tests.test_data
 				CardExpirationYear = "2021",
 				CardName = "Johnny Tenderloin",
 				CardNumber = "4242424242424242",
-				Description = "Johnny Tenderloin (pork@email.com)",
+				Description = "Johnny Tenderloin (pork@email.com)"
 			};
 
 			if (_planId != null)

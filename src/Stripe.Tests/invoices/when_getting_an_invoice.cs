@@ -44,5 +44,8 @@ namespace Stripe.Tests
 
 		It should_have_a_lines_object = () =>
 			_stripeInvoice.StripeInvoiceLines.ShouldNotBeNull();
+
+		It should_have_the_correct_currency = () =>
+			_stripeInvoice.Currency.ShouldEqual<string>("usd");
 	}
 }

@@ -27,6 +27,9 @@ namespace Stripe
 		[JsonProperty("customer")]
 		public string CustomerId { get; set; }
 
+		[JsonProperty("currency")]
+		public string Currency { get; set; }
+
 		[JsonProperty("date")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? Date { get; set; }
