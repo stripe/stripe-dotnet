@@ -97,5 +97,8 @@ namespace Stripe.Tests
 
 		It should_have_the_correct_coupon_livemode = () =>
 			StripeCustomer.StripeDiscount.StripeCoupon.LiveMode.ShouldEqual(false);
+
+		It should_have_the_correct_account_balance = () =>
+			StripeCustomer.AccountBalance.ShouldEqual(100);
 	}
 }

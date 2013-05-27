@@ -24,5 +24,8 @@ namespace Stripe.Tests
 
 		It should_have_the_correct_description = () =>
 			_stripeCustomer.Description.ShouldEqual(_stripeCustomerUpdateOptions.Description);
+
+		It should_have_the_correct_account_balance = () =>
+			_stripeCustomer.AccountBalance.ShouldEqual(1000);
 	}
 }

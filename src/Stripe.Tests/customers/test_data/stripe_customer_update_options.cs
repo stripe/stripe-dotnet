@@ -6,7 +6,8 @@
 		{
 			var stripeCustomerUpdateOptions = new StripeCustomerUpdateOptions()
 			{
-				Description = "Gangster Pancakes (syrup@og.com)"
+				Description = "Gangster Pancakes (syrup@og.com)",
+				AccountBalance = 1000
 			};
 
 			return stripeCustomerUpdateOptions;
