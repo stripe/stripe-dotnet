@@ -23,7 +23,11 @@ namespace Stripe.Tests
 			var stripeCustomerCreateOptions = test_data.stripe_customer_create_options.ValidCard(stripePlan.Id, stripeCoupon.Id);
 			var stripeCustomer = stripeCustomerService.Create(stripeCustomerCreateOptions);
 
+			var stripeInvoiceItemService = new StripeInvoiceItemService();
+			stripeInvoiceItemService.Create(test_data.stripe_invoiceitem_create_options.Valid(stripeCustomer.Id));
+
 			_stripeInvoiceService = new StripeInvoiceService();
+			_stripeInvoiceService.Create(stripeCustomer.Id);
 			_stripeInvoiceList = _stripeInvoiceService.List(10, 0, stripeCustomer.Id).ToList();
 
 		};
