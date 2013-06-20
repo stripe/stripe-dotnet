@@ -57,5 +57,17 @@ namespace Stripe
 
 			return Mapper<StripeCharge>.MapCollectionFromJson(response);
 		}
+
+		public virtual StripeCharge Capture(string chargeId, int? captureAmountInCents = null)
+		{
+			var url = string.Format("{0}/{1}/capture", Urls.Charges, chargeId);
+
+			if (captureAmountInCents.HasValue)
+				url = ParameterBuilder.ApplyParameterToUrl(url, "amount", captureAmountInCents.Value.ToString());
+
+			var response = Requestor.PostString(url, ApiKey);
+
+			return Mapper<StripeCharge>.MapFromJson(response);
+		}
 	}
 }
