@@ -53,7 +53,7 @@ namespace Stripe
 		[JsonProperty("failure_message")]
 		public string FailureMessage { get; private set; }
 
-        [JsonProperty("failure_code")]
-	    public string FailureCode { get; private set; }
+		[JsonProperty("failure_code")]
+		public string FailureCode { get; private set; }
 	}
 }
