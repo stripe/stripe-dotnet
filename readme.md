@@ -316,7 +316,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 If you do not specify an amountInCents, the entire charge is refunded. The StripeCharge entity has properties for "Refunded" (bool) and RefundedAmountInCents.
 
 	var chargeService = new StripeChargeService();
-	StripeCharge stripeCharge = chargeService.Refund(*chargeId*, *amountInCents*);
+	StripeCharge stripeCharge = chargeService.Refund(*chargeId*, *amountInCents*, *refundApplicationFee*);
 
 ### List all charges
 
@@ -340,6 +340,14 @@ Invoices
 
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Create(*customerId*);
+
+### Updating a customer invoice
+
+	var stripeInvoiceUpdateOptions = new StripeInvoiceUpdateOptions();
+	stripeInvoiceUpdateOptions.Closed = true;
+
+	var invoiceService = new StripeInvoiceService();
+	StripeInvoice response = invoiceService.Update(stripeInvoiceUpdateOptions);
 
 ### List all invoices
 

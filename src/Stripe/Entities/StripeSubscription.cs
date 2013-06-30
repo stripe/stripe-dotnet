@@ -46,7 +46,7 @@ namespace Stripe
 		[JsonProperty("plan")]
 		public StripePlan StripePlan { get; set; }
 
-        [JsonProperty("cancel_at_period_end")]
-        public bool CancelAtPeriodEnd { get; set; }
+		[JsonProperty("cancel_at_period_end")]
+		public bool CancelAtPeriodEnd { get; set; }
 	}
 }
