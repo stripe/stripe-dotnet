@@ -35,6 +35,16 @@ namespace Stripe
 			return Mapper<StripeInvoice>.MapFromJson(response);
 		}
 
+		public virtual StripeInvoice Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions)
+		{
+			var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
+			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+
+			var response = Requestor.PostString(url, ApiKey);
+
+			return Mapper<StripeInvoice>.MapFromJson(response);
+		}
+
 		public virtual StripeInvoice Pay(string invoiceId)
 		{
 			var url = string.Format("{0}/{1}/pay", Urls.Invoices, invoiceId);

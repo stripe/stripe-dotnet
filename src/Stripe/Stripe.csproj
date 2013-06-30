@@ -92,6 +92,7 @@
     <Compile Include="Services\Customers\StripeCustomerUpdateOptions.cs" />
     <Compile Include="Services\Customers\StripeCustomerCreateOptions.cs" />
     <Compile Include="Services\Customers\StripeCustomerService.cs" />
+    <Compile Include="Services\Invoices\StripeInvoiceUpdateOptions.cs" />
     <Compile Include="Services\OAuth\StripeOAuthTokenCreateOptions.cs" />
     <Compile Include="Services\OAuth\StripeOAuthTokenService.cs" />
     <Compile Include="Services\Plans\StripePlanCreateOptions.cs" />
