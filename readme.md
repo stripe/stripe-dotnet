@@ -303,6 +303,9 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	// set this if you have your own application fees (you must have your application configured first within Stripe)
 	myCharge.ApplicationFeeInCents = 25;
 
+	// (not required) set this to false if you don't want to capture the charge yet - requires you call capture later
+	myCharge.Capture = true;
+
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Create(myCharge);
 
@@ -317,6 +320,13 @@ If you do not specify an amountInCents, the entire charge is refunded. The Strip
 
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Refund(*chargeId*, *amountInCents*, *refundApplicationFee*);
+
+### Capturing a charge
+
+If you set a charge to capture = false, you use this to capture the charge later. *amountInCents* and *applicationFeeInCents* are not required.
+
+	var chargeService = new StripeChargeService();
+	StripeCharge stripeCharge = chargeService.Capture(*chargeId*, *amountInCents*, *applicationFeeInCents*);
 
 ### List all charges
 
