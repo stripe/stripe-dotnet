@@ -1,5 +1,6 @@
 ﻿using System;
 using Machine.Specifications;
+using System.Linq;
 
 namespace Stripe.Tests
 {
@@ -33,7 +34,7 @@ namespace Stripe.Tests
 		{
 			StripeCustomer = _stripeCustomerService.Get(_createdStripeCustomerId);
 
-			StripeCard = StripeCustomer.StripeCard;
+            StripeCard = StripeCustomer.StripeCardList.StripeCards.First();
 		};
 
 		Behaves_like<customer_behaviors> behaviors;
