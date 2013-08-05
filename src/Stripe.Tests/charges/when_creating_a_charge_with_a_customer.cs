@@ -1,4 +1,5 @@
 ﻿using Machine.Specifications;
+using System.Linq;
 
 namespace Stripe.Tests
 {
@@ -23,7 +24,7 @@ namespace Stripe.Tests
 		Because of = () =>
 		{
 			StripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions);
-			StripeCard = _stripeCustomer.StripeCard;
+            StripeCard = _stripeCustomer.StripeCardList.StripeCards.First();
 		};
 
 		Behaves_like<charge_behaviors> behaviors;

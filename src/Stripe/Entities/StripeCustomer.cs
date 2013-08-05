@@ -37,7 +37,10 @@ namespace Stripe
 		[JsonProperty("subscription")]
 		public StripeSubscription StripeSubscription { get; set; }
 
-		[JsonProperty("active_card")]
-		public StripeCard StripeCard { get; set; }
+        [JsonProperty("default_card")]
+		public string StripeDefaultCardId { get; set; }
+
+        [JsonProperty("cards")]
+        public StripeCardList StripeCardList { get; set; }
 	}
 }

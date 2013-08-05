@@ -50,6 +50,7 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Entities\StripeCardList.cs" />
     <Compile Include="Entities\StripeDispute.cs" />
     <Compile Include="Entities\StripeAccount.cs" />
     <Compile Include="Entities\StripeFee.cs" />
@@ -75,6 +76,11 @@
     <Compile Include="Infrastructure\Mapper.cs" />
     <Compile Include="Entities\StripeCustomer.cs" />
     <Compile Include="Services\Account\StripeAccountService.cs" />
+    <Compile Include="Services\Cards\StripeCardCreateOptions.cs" />
+    <Compile Include="Services\Cards\StripeCardService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Cards\StripeCardUpdateOptions.cs" />
     <Compile Include="Services\Disputes\StripeDisputeService.cs" />
     <Compile Include="Services\Events\StripeEventSearchOptions.cs" />
     <Compile Include="Services\Events\StripeEventService.cs" />
