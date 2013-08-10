@@ -266,6 +266,65 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 	var customerService = new StripeCustomerService();
 	StripeSubscription subscription = customerService.CancelSubscription(*customerId*);    // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling 
 
+Cards
+-----
+
+### Creating a card
+
+When creating a card you can use either a card or a token
+
+	var myCard = new StripeCardCreateOptions();
+
+	// set these properties if using a card
+	myCard.CardNumber = "4242424242424242";
+	myCard.CardExpirationYear = "2015";
+	myCard.CardExpirationMonth = "10";
+	myCard.CardAddressCountry = "US";               // optional
+	myCard.CardAddressLine1 = "24 Beef Flank St"    // optional
+	myCard.CardAddressLine2 = "Apt 24";             // optional
+	myCard.CardAddressState = "NC";                 // optional
+	myCard.CardAddressZip = "27617";                // optional
+	myCard.CardName = "Joey Pepperoni Smith";       // optional
+	myCard.CardCvc = "1223";                        // optional
+
+	// set this property if using a token
+	myCard.TokenId = *tokenId*;
+
+	var cardService = new StripeCardService();
+	StripeCard stripeCard = cardService.Create(*customerId*, myCard);
+
+### Retrieving a card
+
+	var cardService = new StripeCardService();
+	StripeCard stripeCard = cardService.Get(*customerId*, *cardId*);
+
+### Updating a card
+
+	var myCard = new StripeCardUpdateOptions();
+
+	myCard.Name = "Cardy MyCardson"
+	myCard.ExpirationYear = "2016";
+	myCard.ExpirationMonth = "10";
+	myCard.AddressCountry = "US";
+	myCard.AddressLine1 = "1234 ComeOnBabySayYouLoveMe St";
+	myCard.AddressLine2 = "";
+	myCard.AddressState = "NC";
+	myCard.AddressCity = "Raleigh"
+	myCard.AddressZip = "27617";
+
+	var cardService = new StripeCardService();
+	StripeCard stripeCard = cardService.Update(*customerId*, *cardId*, myCard);
+
+### Deleting a card
+
+	var cardService = new StripeCardService();
+	cardService.Delete(*customerId*, *cardId*);
+
+### List all cards
+
+	var cardService = new StripeCardService();
+	IEnumerable<StripeCard> response = cardService.List(*customerId*);    // can optionally pass count (defaults to 10) and offset
+
 Charges
 -------
 
