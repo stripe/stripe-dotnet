@@ -6,9 +6,9 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeCardList
-    {
-        [JsonProperty("data")]
-        public List<StripeCard> StripeCards { get; set; }
-    }
+	public class StripeCardList
+	{
+		[JsonProperty("data")]
+		public List<StripeCard> StripeCards { get; set; }
+	}
 }

@@ -32,14 +32,14 @@
 			get { return BaseUrl + "/plans"; }
 		}
 
-        public static string Cards
-        {
-            get { return BaseUrl + "/customers/{0}/cards"; }
-        }
-
 		public static string Customers
 		{
 			get { return BaseUrl + "/customers"; }
+		}
+
+		public static string Cards
+		{
+			get { return BaseUrl + "/customers/{0}/cards"; }
 		}
 
 		public static string Events

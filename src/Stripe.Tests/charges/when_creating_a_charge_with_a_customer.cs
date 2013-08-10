@@ -24,7 +24,7 @@ namespace Stripe.Tests
 		Because of = () =>
 		{
 			StripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions);
-            StripeCard = _stripeCustomer.StripeCardList.StripeCards.First();
+			StripeCard = _stripeCustomer.StripeCardList.StripeCards.First();
 		};
 
 		Behaves_like<charge_behaviors> behaviors;

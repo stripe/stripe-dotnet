@@ -25,37 +25,37 @@ namespace Stripe.Tests
 			StripeCustomer.LiveMode.ShouldEqual(false);
 
 		It should_have_the_correct_card_address_line_1 = () =>
-            StripeCustomer.StripeCardList.StripeCards.First().AddressLine1.ShouldEqual(StripeCard.AddressLine1);
+			StripeCustomer.StripeCardList.StripeCards.First().AddressLine1.ShouldEqual(StripeCard.AddressLine1);
 
 		It should_have_the_correct_card_address_line_2 = () =>
-            StripeCustomer.StripeCardList.StripeCards.First().AddressLine2.ShouldEqual(StripeCard.AddressLine2);
+			StripeCustomer.StripeCardList.StripeCards.First().AddressLine2.ShouldEqual(StripeCard.AddressLine2);
 
 		It should_have_the_correct_card_address_state = () =>
-            StripeCustomer.StripeCardList.StripeCards.First().AddressState.ShouldEqual(StripeCard.AddressState);
+			StripeCustomer.StripeCardList.StripeCards.First().AddressState.ShouldEqual(StripeCard.AddressState);
 
 		It should_have_the_correct_card_address_zip = () =>
-            StripeCustomer.StripeCardList.StripeCards.First().AddressZip.ShouldEqual(StripeCard.AddressZip);
+			StripeCustomer.StripeCardList.StripeCards.First().AddressZip.ShouldEqual(StripeCard.AddressZip);
 
 		It should_have_the_correct_card_last_4 = () =>
-            StripeCustomer.StripeCardList.StripeCards.First().Last4.ShouldEqual(StripeCard.Last4.ShouldEqual(StripeCard.Last4));
+			StripeCustomer.StripeCardList.StripeCards.First().Last4.ShouldEqual(StripeCard.Last4.ShouldEqual(StripeCard.Last4));
 
 		It should_have_the_correct_card_expiration_month = () =>
-            StripeCustomer.StripeCardList.StripeCards.First().ExpirationMonth.ShouldEqual(StripeCard.ExpirationMonth);
+			StripeCustomer.StripeCardList.StripeCards.First().ExpirationMonth.ShouldEqual(StripeCard.ExpirationMonth);
 
 		It should_have_the_correct_card_expiration_year = () =>
-            StripeCustomer.StripeCardList.StripeCards.First().ExpirationYear.ShouldEqual(StripeCard.ExpirationYear);
+			StripeCustomer.StripeCardList.StripeCards.First().ExpirationYear.ShouldEqual(StripeCard.ExpirationYear);
 
 		It should_have_the_correct_card_name = () =>
-            StripeCustomer.StripeCardList.StripeCards.First().Name.ShouldEqual(StripeCard.Name);
+			StripeCustomer.StripeCardList.StripeCards.First().Name.ShouldEqual(StripeCard.Name);
 
 		It should_have_the_correct_card_type = () =>
-            StripeCustomer.StripeCardList.StripeCards.First().Type.ShouldEqual("Visa");
+			StripeCustomer.StripeCardList.StripeCards.First().Type.ShouldEqual("Visa");
 
 		It should_have_a_fingerprint = () =>
-            StripeCustomer.StripeCardList.StripeCards.First().Fingerprint.ShouldNotBeNull();
+			StripeCustomer.StripeCardList.StripeCards.First().Fingerprint.ShouldNotBeNull();
 
 		It should_have_the_correct_card_country = () =>
-            StripeCustomer.StripeCardList.StripeCards.First().Country.ShouldEqual("US");
+			StripeCustomer.StripeCardList.StripeCards.First().Country.ShouldEqual("US");
 
 		It should_have_the_correct_trial_period_days = () =>
 			StripeCustomer.StripeSubscription.TrialEnd.Value.Date.ShouldEqual(StripeCustomerCreateOptions.TrialEnd.Value.Date);
