@@ -42,5 +42,31 @@ namespace Stripe
 
 		[JsonProperty("cards")]
 		public StripeCardList StripeCardList { get; set; }
+
+        public StripeCard DefaultCard
+        {
+            get
+            {
+                if (StripeCardList == null)
+                    return null;
+
+                if (StripeCardList.StripeCards == null)
+                    return null;
+
+                if (StripeCardList.StripeCards.Count == 0)
+                    return null;
+
+                if (String.IsNullOrEmpty(StripeDefaultCardId))
+                    return null;
+
+                foreach (var card in StripeCardList.StripeCards)
+                {
+                    if (card.Id == StripeDefaultCardId)
+                        return card;
+                }
+
+                return null;
+            }
+        }
 	}
 }
