@@ -136,9 +136,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="App.config.mine">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="_web_event_hooks\event_hooks_handler.ashx" />
     <None Include="_web_event_hooks\web.config">
       <SubType>Designer</SubType>

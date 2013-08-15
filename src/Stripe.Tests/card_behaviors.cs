@@ -24,6 +24,9 @@ namespace Stripe.Tests
 		It should_have_the_correct_livemode = () =>
 			StripeCustomer.LiveMode.ShouldEqual(false);
 
+		It should_have_an_id = () =>
+			StripeCustomer.StripeCardList.StripeCards.First().Id.ShouldNotBeNull();
+
 		It should_have_the_correct_card_address_line_1 = () =>
 			StripeCustomer.StripeCardList.StripeCards.First().AddressLine1.ShouldEqual(StripeCard.AddressLine1);
 
