@@ -20,5 +20,8 @@ namespace Stripe
 
 		[JsonProperty("capture")]
 		public bool? Capture { get; set; }
+
+        [JsonProperty("card")]
+        public string Card { get; set; }
 	}
 }
