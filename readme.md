@@ -212,6 +212,9 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 	// set this property if using a token
 	myCustomer.TokenId = *tokenId*;
 
+	// this will set the default card to use for this customer
+	myCustomer.DefaultCard = *cardId*;
+
 	myCustomer.Coupon = *couponId*;    // only if you have a coupon
 
 	var customerService = new StripeCustomerService();
@@ -358,6 +361,9 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	
 	// set this property if using a token
 	myCharge.TokenId = *tokenId*;
+
+	// set this property if using a card
+	myCharge.Card = *cardId*;
 
 	// set this if you have your own application fees (you must have your application configured first within Stripe)
 	myCharge.ApplicationFeeInCents = 25;

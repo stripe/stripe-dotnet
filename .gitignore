@@ -9,6 +9,7 @@ _ReSharper.*
 *resharper*
 *.DotCover
 *.nupkg
+.DS_Store
 
 working
 

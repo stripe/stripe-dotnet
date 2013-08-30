@@ -1,6 +1,6 @@
 require 'albacore'
 
-VERSION = "1.6.1"
+VERSION = "1.6.2"
 
 task :default => [:build, :merge, :output, :package]
 
