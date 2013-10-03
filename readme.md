@@ -6,6 +6,7 @@ Charges, Subscriptions, Invoices, and Events.
 
 For more information about the examples below, you can visit https://stripe.com/docs/api for a full reference.
 
+<a href='http://www.pledgie.com/campaigns/22262'><img alt='Click here to lend your support to: stripe.net and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/22262.png?skin_name=chrome' border='0' /></a>
 
 Quick Start
 -----------
