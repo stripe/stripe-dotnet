@@ -164,7 +164,11 @@ a credit card or token, and various meta data.
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
 
-	// set these properties if using a card
+	// set this property if using a token
+	myCustomer.TokenId = *tokenId*;
+
+	// set these properties if passing full card details (do not
+	// set these properties if you have set TokenId)
 	myCustomer.CardNumber = "4242424242424242";
 	myCustomer.CardExpirationYear = "2012";
 	myCustomer.CardExpirationMonth = "10";
@@ -177,8 +181,6 @@ a credit card or token, and various meta data.
 	myCustomer.CardName = "Joe Meatballs";               // optional
 	myCustomer.CardCvc = "1223";                         // optional
 
-	// set this property if using a token
-	myCustomer.TokenId = *tokenId*;
 
 	myCustomer.PlanId = *planId*;                          // only if you have a plan
 	myCustomer.Coupon = *couponId*;                        // only if you have a coupon
@@ -198,7 +200,11 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
 
-	// set these properties if using a card
+	// set this property if using a token
+	myCustomer.TokenId = *tokenId*;
+
+	// set these properties if passing full card details (do not
+	// set these properties if you have set TokenId)
 	myCustomer.CardNumber = "4242424242424242";
 	myCustomer.CardExpirationYear = "2012";
 	myCustomer.CardExpirationMonth = "10";
@@ -209,9 +215,6 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 	myCustomer.CardAddressZip = "27617";                 // optional
 	myCustomer.CardName = "Joe Meatballs";               // optional
 	myCustomer.CardCvc = "1223";                         // optional
-
-	// set this property if using a token
-	myCustomer.TokenId = *tokenId*;
 
 	// this will set the default card to use for this customer
 	myCustomer.DefaultCard = *cardId*;
@@ -345,7 +348,11 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	// set this if you want to
 	myCharge.Description = "Charge it like it's hot";
 
-	// set these properties if using a card
+	// set this property if using a token
+	myCharge.TokenId = *tokenId*;
+
+	// set these properties if passing full card details
+	// (do not set these properties if you have set a TokenId)
 	myCharge.CardNumber = "4242424242424242";
 	myCharge.CardExpirationYear = "2012";
 	myCharge.CardExpirationMonth = "10";
@@ -359,11 +366,9 @@ When creating a charge you can use either a card, customer, or a token. Only one
 
 	// set this property if using a customer
 	myCharge.CustomerId = *customerId*;
-	
-	// set this property if using a token
-	myCharge.TokenId = *tokenId*;
-
-	// set this property if using a card
+	// if using a customer, you may also set this property to charge
+	// a card other than the customer's default card (in this case,
+	// cardId must be the id of a card stored on customer customerId).
 	myCharge.Card = *cardId*;
 
 	// set this if you have your own application fees (you must have your application configured first within Stripe)
