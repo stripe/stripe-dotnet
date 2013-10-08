@@ -203,8 +203,8 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 	// set this property if using a token
 	myCustomer.TokenId = *tokenId*;
 
-	// set these properties if passing full card details (do not
-	// set these properties if you have set TokenId)
+	// set these properties if passing full card details
+	// (do not set these properties if you have set TokenId)
 	myCustomer.CardNumber = "4242424242424242";
 	myCustomer.CardExpirationYear = "2012";
 	myCustomer.CardExpirationMonth = "10";
@@ -366,9 +366,9 @@ When creating a charge you can use either a card, customer, or a token. Only one
 
 	// set this property if using a customer
 	myCharge.CustomerId = *customerId*;
+
 	// if using a customer, you may also set this property to charge
-	// a card other than the customer's default card (in this case,
-	// cardId must be the id of a card stored on customer customerId).
+	// a card other than the customer's default card
 	myCharge.Card = *cardId*;
 
 	// set this if you have your own application fees (you must have your application configured first within Stripe)
