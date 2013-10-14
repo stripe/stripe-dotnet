@@ -6,7 +6,7 @@
 		{
 			var stripeTransferCreateOptions = new StripeTransferCreateOptions()
 			{
-				Amount = 50,
+				AmountInCents = 50,
 				Currency = "usd",
 				Recipient = "self",
 				Description = "Test Transfer",

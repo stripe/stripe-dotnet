@@ -8,7 +8,7 @@ namespace Stripe
 		/// A positive integer in cents representing how much to transfer.
 		/// </summary>
 		[JsonProperty("amount")]
-		public int Amount { get; set; }
+		public int AmountInCents { get; set; }
 
 		/// <summary>
 		/// Three-letter ISO code for currency.

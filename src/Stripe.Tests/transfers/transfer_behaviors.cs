@@ -13,7 +13,7 @@ namespace Stripe.Tests
 			StripeTransfer.Id.ShouldNotBeNull();
 
 		private It should_have_the_correct_amount = () =>
-			StripeTransfer.AmountInCents.ShouldEqual(StripeTransferCreateOptions.Amount);
+			StripeTransfer.AmountInCents.ShouldEqual(StripeTransferCreateOptions.AmountInCents);
 
 		private It should_have_the_correct_currency = () =>
 			StripeTransfer.Currency.ShouldEqual(StripeTransferCreateOptions.Currency);
