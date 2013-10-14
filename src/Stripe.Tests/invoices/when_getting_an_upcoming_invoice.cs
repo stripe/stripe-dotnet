@@ -1,5 +1,4 @@
 ﻿using Machine.Specifications;
-using System;
 
 namespace Stripe.Tests
 {

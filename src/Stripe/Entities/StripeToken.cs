@@ -18,11 +18,14 @@ namespace Stripe
 
 		[JsonProperty("used")]
 		public bool? Used { get; set; }
-
+		
 		[JsonProperty("livemode")]
 		public bool? LiveMode { get; set; }
 
 		[JsonProperty("card")]
 		public StripeCard StripeCard { get; set; }
+
+		[JsonProperty("bank_account")]
+		public StripeBankAccount StripeBankAccount { get; set; }
 	}
 }

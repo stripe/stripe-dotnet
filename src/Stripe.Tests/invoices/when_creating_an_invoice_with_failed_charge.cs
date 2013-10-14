@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using Machine.Specifications;
+﻿using Machine.Specifications;
 
 namespace Stripe.Tests
 {

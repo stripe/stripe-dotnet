@@ -1,7 +1,4 @@
-﻿using System;
-using Machine.Specifications;
-
-namespace Stripe.Tests
+﻿namespace Stripe.Tests
 {
 	public class when_creating_a_customer_with_a_token
 	{
