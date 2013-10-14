@@ -52,6 +52,16 @@
 			get { return BaseUrl + "/account"; }
 		}
 
+		public static string Recipients
+		{
+			get { return BaseUrl + "/recipients"; }
+		}
+
+		public static string Transfers
+		{
+			get { return BaseUrl + "/transfers"; }
+		}
+
 		private static string BaseUrl
 		{
 			get { return "https://api.stripe.com/v1"; }

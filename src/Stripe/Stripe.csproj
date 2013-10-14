@@ -50,6 +50,10 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Entities\StripeActiveBankAccount.cs" />
+    <Compile Include="Entities\StripeBankAccount.cs" />
+    <Compile Include="Entities\StripeTransferAccount.cs" />
+    <Compile Include="Services\BankAccountOptions.cs" />
     <Compile Include="Entities\StripeCardList.cs" />
     <Compile Include="Entities\StripeDispute.cs" />
     <Compile Include="Entities\StripeAccount.cs" />
@@ -62,6 +66,8 @@
     <Compile Include="Entities\StripeError.cs" />
     <Compile Include="Entities\StripeOAuthToken.cs" />
     <Compile Include="Entities\StripePeriod.cs" />
+    <Compile Include="Entities\StripeRecipient.cs" />
+    <Compile Include="Entities\StripeRecipientAccount.cs" />
     <Compile Include="Entities\StripeToken.cs" />
     <Compile Include="Entities\StripeCharge.cs" />
     <Compile Include="Entities\StripeCard.cs" />
@@ -104,12 +110,18 @@
     <Compile Include="Services\Plans\StripePlanCreateOptions.cs" />
     <Compile Include="Services\Plans\StripePlanService.cs" />
     <Compile Include="Services\Plans\StripePlanUpdateOptions.cs" />
+    <Compile Include="Services\Recipients\StripeBankAccountCreateOptions.cs" />
+    <Compile Include="Services\Recipients\StripeRecipientCreateOptions.cs" />
+    <Compile Include="Services\Recipients\StripeRecipientService.cs" />
+    <Compile Include="Services\Recipients\StripeRecipientUpdateOptions.cs" />
     <Compile Include="Services\Tokens\StripeTokenCreateOptions.cs" />
     <Compile Include="Services\Tokens\StripeTokenService.cs" />
     <Compile Include="Infrastructure\StripeException.cs" />
     <Compile Include="Infrastructure\Urls.cs" />
     <Compile Include="Infrastructure\ParameterBuilder.cs" />
     <Compile Include="Infrastructure\Requestor.cs" />
+    <Compile Include="Services\Transfers\StripeTransferCreateOptions.cs" />
+    <Compile Include="Services\Transfers\StripeTransferService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
