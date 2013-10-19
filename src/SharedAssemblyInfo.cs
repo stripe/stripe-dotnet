@@ -6,4 +6,3 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Stripe.net")]
 [assembly: AssemblyCopyright("Copyright (C) Jayme Davis 2013")]
 [assembly: AssemblyVersion("1.6.3")]
-

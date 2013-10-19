@@ -9,7 +9,7 @@
 		<projectUrl>https://github.com/jaymedavis/stripe.net</projectUrl>
 		<iconUrl>https://stripe.com/img/frontpage/blueprints.png</iconUrl>
 		<licenseUrl>https://raw.github.com/jaymedavis/stripe.net/master/LICENSE</licenseUrl>
-		<description>Stripe.net is a full service .net api for http://stripe.com. It includes support for Plans, Tokens, Customers, Charges, Subscriptions, Invoices, Events, and OAuth. For full documentation, visit https://github.com/jaymedavis/stripe.net.</description>
+		<description>Stripe.net is a full service .net api for http://stripe.com. For documentation, visit https://github.com/jaymedavis/stripe.net.</description>
 		<tags>stripe, payment, credit cards, money</tags>
 		<dependencies>
 			<dependency id="Newtonsoft.Json" version="4.5.9" />

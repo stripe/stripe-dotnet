@@ -1,8 +1,7 @@
 Stripe.net
 ==========
 
-Stripe.net is a full service .net api for http://stripe.com. It includes support for Plans, Tokens, Customers, 
-Charges, Subscriptions, Invoices, and Events.
+Stripe.net is a full service .net api for http://stripe.com.
 
 For more information about the examples below, you can visit https://stripe.com/docs/api for a full reference.
 
@@ -11,7 +10,10 @@ For more information about the examples below, you can visit https://stripe.com/
 Quick Start
 -----------
 
-Add a reference to Stripe.net.dll (You can find a pre-compiled version in the build folder of this repository or install Stripe.net via NuGet)
+It is recommended that you install Stripe.net via NuGet. If you wish to build it yourself via build.cmd, you will need 
+ruby installed along with the gems albacore and zip.
+
+Add a reference to Stripe.net.dll.
 
 Next you will need to provide Stripe.net with your api key. There are 3 ways to do this: Choose one.
 

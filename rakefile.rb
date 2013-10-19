@@ -2,7 +2,7 @@ require 'albacore'
 
 VERSION = "1.6.3"
 
-task :default => [:build, :output, :package]
+task :default => [:build, :output]
 
 assemblyinfo :assemblyinfo do |asm|
 	asm.version = VERSION
@@ -28,12 +28,4 @@ output :output do |out|
 	out.to 'working'
 	out.file 'src\Stripe\bin\release\Stripe.net.dll', :as=>'Stripe.net.dll'
 	puts 'Output folder created'
-end
-
-desc "Package"
-zip :package do |zip|
-	zip.directories_to_zip "working"
-	zip.output_file = "Stripe.net #{VERSION}.zip"
-	zip.output_path = File.join(File.dirname(__FILE__), 'build')
-	puts 'Packing complete'
 end

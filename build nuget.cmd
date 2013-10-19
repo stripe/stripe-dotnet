@@ -1,1 +1,1 @@
-tools\nuget\nuget pack Stripe.net.nuspec -o build
+tools\nuget\nuget pack Stripe.net.nuspec -o working

@@ -1,1 +1,1 @@
-tools\ruby\bin\rake
+rake
