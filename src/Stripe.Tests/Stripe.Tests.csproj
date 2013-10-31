@@ -61,7 +61,6 @@
     <Compile Include="charges\when_capturing_a_charge_with_a_card.cs" />
     <Compile Include="charges\when_setting_a_charge_to_capture.cs" />
     <Compile Include="charges\when_creating_a_charge_with_an_invalid_card.cs" />
-    <Compile Include="charges\when_creating_a_charge_with_a_card_and_an_application_fee.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_token.cs" />
     <Compile Include="charges\when_listing_charges_for_customer.cs" />
     <Compile Include="charges\when_listing_charges.cs" />
