@@ -5,8 +5,8 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeCouponService
-	{
+    public class StripeCouponService : IStripeCouponService
+    {
 		private string ApiKey { get; set; }
 
 		public StripeCouponService(string apiKey = null)

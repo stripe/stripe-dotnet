@@ -76,19 +76,28 @@
     <Compile Include="Infrastructure\StripeDateTimeConverter.cs" />
     <Compile Include="Infrastructure\Mapper.cs" />
     <Compile Include="Entities\StripeCustomer.cs" />
+    <Compile Include="Services\Account\IStripeAccountService.cs" />
     <Compile Include="Services\Account\StripeAccountService.cs" />
+    <Compile Include="Services\Cards\IStripeCardService.cs" />
     <Compile Include="Services\Cards\StripeCardCreateOptions.cs" />
     <Compile Include="Services\Cards\StripeCardService.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Services\Cards\StripeCardUpdateOptions.cs" />
+    <Compile Include="Services\Charges\IStripeChargeService.cs" />
+    <Compile Include="Services\Coupons\IStripeCouponService.cs" />
+    <Compile Include="Services\Customers\IStripeCustomerService.cs" />
+    <Compile Include="Services\Disputes\IStripeDisputeService.cs" />
     <Compile Include="Services\Disputes\StripeDisputeService.cs" />
+    <Compile Include="Services\Events\IStripeEventService.cs" />
     <Compile Include="Services\Events\StripeEventSearchOptions.cs" />
     <Compile Include="Services\Events\StripeEventService.cs" />
     <Compile Include="Services\Events\StripeEventUtility.cs" />
+    <Compile Include="Services\InvoiceItems\IStripeInvoiceItemService.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemUpdateOptions.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemCreateOptions.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemService.cs" />
+    <Compile Include="Services\Invoices\IStripeInvoiceService.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceService.cs" />
     <Compile Include="Services\CreditCardOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeCreateOptions.cs" />
@@ -100,11 +109,14 @@
     <Compile Include="Services\Customers\StripeCustomerCreateOptions.cs" />
     <Compile Include="Services\Customers\StripeCustomerService.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceUpdateOptions.cs" />
+    <Compile Include="Services\OAuth\IStripeOAuthTokenService.cs" />
     <Compile Include="Services\OAuth\StripeOAuthTokenCreateOptions.cs" />
     <Compile Include="Services\OAuth\StripeOAuthTokenService.cs" />
+    <Compile Include="Services\Plans\IStripePlanService.cs" />
     <Compile Include="Services\Plans\StripePlanCreateOptions.cs" />
     <Compile Include="Services\Plans\StripePlanService.cs" />
     <Compile Include="Services\Plans\StripePlanUpdateOptions.cs" />
+    <Compile Include="Services\Tokens\IStripeTokenService.cs" />
     <Compile Include="Services\Tokens\StripeTokenCreateOptions.cs" />
     <Compile Include="Services\Tokens\StripeTokenService.cs" />
     <Compile Include="Infrastructure\StripeException.cs" />

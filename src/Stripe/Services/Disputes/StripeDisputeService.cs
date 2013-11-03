@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeDisputeService
+	public class StripeDisputeService : IStripeDisputeService
 	{
 		private string ApiKey { get; set; }
 

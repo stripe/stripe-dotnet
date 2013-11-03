@@ -1,6 +1,6 @@
 ﻿namespace Stripe
 {
-	public class StripeAccountService
+	public class StripeAccountService : IStripeAccountService
 	{
 		private string ApiKey { get; set; }
 

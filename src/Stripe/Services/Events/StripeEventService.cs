@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-	public class StripeEventService
+	public class StripeEventService : IStripeEventService
 	{
 		private string ApiKey { get; set; }
 

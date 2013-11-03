@@ -3,8 +3,8 @@ using System.Linq;
 
 namespace Stripe
 {
-	public class StripeCustomerService
-	{
+    public class StripeCustomerService : IStripeCustomerService
+    {
 		private string ApiKey { get; set; }
 
 		public StripeCustomerService(string apiKey = null)

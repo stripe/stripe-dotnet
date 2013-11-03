@@ -3,7 +3,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeTokenService
+	public class StripeTokenService : IStripeTokenService
 	{
 		private string ApiKey { get; set; }
 

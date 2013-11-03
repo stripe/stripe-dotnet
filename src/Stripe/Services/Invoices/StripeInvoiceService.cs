@@ -6,7 +6,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeInvoiceService
+	public class StripeInvoiceService : IStripeInvoiceService
 	{
 		private string ApiKey { get; set; }
 
