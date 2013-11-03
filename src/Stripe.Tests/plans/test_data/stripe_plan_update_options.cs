@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Stripe.Tests.test_data
+﻿namespace Stripe.Tests.test_data
 {
 	public static class stripe_plan_update_options
 	{

@@ -495,6 +495,100 @@ Disputes
 
 	// providing the dispute reason is optional
 	StripeDispute stripeDispute = disputeService.Update(*chargeId*, "customer ate the donut before I charged them, so they said it was free"); 
+	
+Recipients
+----------
+
+### Creating a recipient
+
+When creating a recipient, you can specify the bank account you'd later create a transfer to and various metadata.
+
+	var myRecipient = new StripeRecipientCreateOptions();
+	myRecipient.TaxId = "000000000";										//optional
+	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";	//optional
+	myRecipient.Email = "bacon@example.com";								//optional
+	myRecipient.BankAccount = new StripeBankAccountCreateOptions { 			//optional
+			AccountNumber = "000123456789", 								//If specifying a bank account, all three fields are required
+			RoutingNumber = "110000000",
+			Country = "US"
+		};
+	
+	myRecipient.Name = "Bacon Industries Limited";
+	myRecipient.Type = StripeRecipientCreateOptions.RecipientType.[corporation|individual];
+	
+	var recipientService = new StripeRecipientService();
+	StripeRecipient stripeRecipient = recipientServices.Create(myRecipient);
+	
+Of all the fields listed, you're only required to specify the Name (their full, legal name) and Type (corporation or individual) of the recipient. 
+Everything else is optional, unless you include a Bank Account, in which case you are required to include the AccountNumber, RoutingNumber and Country fields.
+
+Note: According to the Stripe documentation, currently only "US" (note the capital letters) is supported with regards to the country the bank account is in.
+
+### Updating a recipient
+
+	var myRecipient = new StripeRecipientUpdateOptions();
+	myRecipient.TaxId = "000000000";
+	myRecipient.Name = "000000000";												//optional
+	myRecipient.Description = "Sausage Industries Ltd. (sausage@example.com)";	//optional
+	myRecipient.Email = "sausage@example.com"									//optional
+	myRecipient.BankAccount = new StripeBankAccountCreateOptions {				//optional
+			AccountNumber = "000123456789",											//If specifying a bank account, all three fields are required
+			RoutingNumber = "110000000",
+			Country = "US"
+		};
+		
+	var recipientService = new StripeRecipientService();
+	StripeRecipient stripeRecipient = recipientServices.Update(*recipientId*, myRecipient);
+	
+Any parameters that aren't provided will be left unchanged. If you update the name or Tax ID, the identity verification will automatically be rerun. If you update
+the bank account, the bank account validation will automatically be run.
+
+Note: You cannot update a recipient to change the Type (e.g. from a 'corporation' to an 'individual').
+
+### Retrieving a recipient
+
+	var recipientService = new StripeRecipientService();
+	StripeRecipient stripeRecipient = recipientService.Get(*recipientId*);
+	
+### Deleting a recipient
+
+	var recipientService = new StripeRecipientService();
+	recipientService.Deleted(*recipientId*);
+	
+### List all recipients
+
+	var recipientService = new StripeRecipientService();
+	IEnumerable<StripeRecipient> response = recipientService.List(); //can optionally pass count (defaults to 10) and offset (defaults to 0)
+	
+Transfers
+---------
+	
+### Create transfer to recipient
+
+	var myTransfer = new StripeTransferCreateOptions();
+	myTransfer.AmountInCents = 100;					//Must be a positive integer in cents representing how much to transfer. The Stripe 25 cent fee for transfers will be appended to this.
+	myTransfer.Currency = "usd";
+	myTransfer.Recipient = "*recipientId*";			//Can also be "self" if you want to send to your own account.
+	myTransfer.Description = "Sales Week #42";		//Optional
+	myTransfer.StatementDescriptor = "Commissions";	//Optional. Additional string appended to the bank statement description.
+
+	var transferService = new StripeTransferService();
+	return transferService.Create(myTransfer);
+	
+### Retrieving a transfer
+
+	var transferService = new StripeTransferService();
+	return transferService.Get(*transferId*);
+	
+### Cancel a transfer
+
+	var transferService = new StripeTransferService();
+	return transferService.Cancel(*transferId*);
+	
+### List all transfers
+
+	var transferService = new StripeTransferService();
+	IEnumerable<StripeTransfer> response = transferService.List(); //can optionally pass count (defaults to 10) and offset (defaults to 0)
 
 Events
 ------
