@@ -5,55 +5,64 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeTransfer : StripeTransferAccount
+	public class StripeTransfer
 	{
 		[JsonProperty("id")]
 		public string Id { get; set; }
 
+		[JsonProperty("object")]
+		public string Object { get; set; }
+
 		[JsonProperty("livemode")]
 		public bool LiveMode { get; set; }
 
-		/// <summary>
-		/// Date that the transfer was initiated. If the transfer is pending, the date the transfer
-		/// is scheduled to go out.
-		/// </summary>
+		[JsonProperty("amount")]
+		public int? AmountInCents { get; set; } 
+
+		[JsonProperty("currency")]
+		public string Currency { get; set; }
+
 		[JsonProperty("date")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime Date { get; set; }
 
-		/// <summary>
-		/// Amount (in cents) to be transferred.
-		/// </summary>
-		[JsonProperty("amount")]
-		public int? AmountInCents { get; set; }
-
-		/// <summary>
-		/// Current status of the transfer ('paid', 'pending' or 'failed'). A transfer will be 'pending'
-		/// until it is submitted, at which point it becomes 'paid'. If it does not go through successfully,
-		/// its status will change to 'failed'.
-		/// </summary>
 		[JsonProperty("status")]
 		public string Status { get; set; }
 
-		/// <summary>
-		/// Three-letter ISO currency code.
-		/// </summary>
-		[JsonProperty("currency")]
-		public string Currency { get; set; }
+		[JsonProperty("account[id]")]
+		public string AccountId { get; set; }
 
-		/// <summary>
-		/// Internal-only description of the transfer.
-		/// </summary>
+		[JsonProperty("account[object]")]
+		public string AccountObject { get; set; } 
+
+		[JsonProperty("account[bank_name]")]
+		public string AccountBankName { get; set; }
+
+		[JsonProperty("account[country]")]
+		public string AccountCountry { get; set; }
+
+		[JsonProperty("account[currency]")]
+		public string AccountCurrency { get; set; }
+
+		[JsonProperty("account[last4]")]
+		public string AccountLast4 { get; set; }
+
+		[JsonProperty("account[fingerprint]")]
+		public string AccountFingerprint { get; set; }
+
+		[JsonProperty("account[validated]")]
+		public bool? AccountValidated { get; set; }
+
+		[JsonProperty("account[verified]")]
+		public bool? AccountVerified { get; set; }
+
+		[JsonProperty("balance_transaction")]
+		public string BalanceTransaction { get; set; }
+
 		[JsonProperty("description")]
 		public string Description { get; set; }
 
-		[JsonProperty("other_transfers")]
-		public List<string> OtherTransfers { get; set; }
-
-		[JsonProperty("summary")]
-		public StripeTransferSummary Summary { get; set; }
-
-		[JsonProperty("deleted")]
-		public bool? Deleted { get; set; }
+		[JsonProperty("statement_descriptor")]
+		public string StatementDescriptor { get; set; }
 	}
 }

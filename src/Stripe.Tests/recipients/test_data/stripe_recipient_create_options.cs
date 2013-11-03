@@ -7,12 +7,13 @@
 			var stripeRecipientCreateOptions = new StripeRecipientCreateOptions()
 			{
 				Name = "Johnny Tenderloin",
-				Type = StripeRecipientCreateOptions.RecipientType.individual,
-				TaxId = "123456789",
-				AccountNumber = "1234567890",
-				RoutingNumber = "1000000000",
+				Type = "individual",
+				TaxId = "000000000",
+				BankAccountNumber = "000123456789",
+				BankAccountRoutingNumber = "110000000",
+				BankAccountCountry = "US",
 				Email = "pork@email.com",
-				Description = "Johnny Tenderloin (pork@email.com)"
+				Description = "Johnny Tenderloin (pork@email.com)",
 			};
 
 			return stripeRecipientCreateOptions;
@@ -23,10 +24,11 @@
 			var stripeRecipientCreateOptions = new StripeRecipientCreateOptions()
 			{
 				Name = "Tenderloin International, Ltd.",
-				Type = StripeRecipientCreateOptions.RecipientType.corporation,
-				TaxId = "0987654321",
-				AccountNumber = "1000100012",
-				RoutingNumber = "1000000000",
+				Type = "corporation",
+				TaxId = "000000000",
+				BankAccountNumber = "000123456789",
+				BankAccountRoutingNumber = "110000000",
+				BankAccountCountry = "US",
 				Email = "tenderloins@email.com",
 				Description = "Tenderloin International (tenderloins@email.com)"
 			};

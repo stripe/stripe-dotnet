@@ -1,4 +1,5 @@
 ﻿using Machine.Specifications;
+using System;
 
 namespace Stripe.Tests
 {
@@ -7,15 +8,35 @@ namespace Stripe.Tests
 	{
 		protected static StripeTransferCreateOptions StripeTransferCreateOptions;
 		protected static StripeTransfer StripeTransfer;
-		protected static BankAccountOptions BankAccountOptions;
 
-		private It should_have_a_new_id = () =>
+		It should_have_a_new_id = () =>
 			StripeTransfer.Id.ShouldNotBeNull();
 
-		private It should_have_the_correct_amount = () =>
+		It should_have_an_object_value_of_transfer = () =>
+			StripeTransfer.Object.ShouldEqual("transfer");
+
+		It should_have_the_correct_live_mode = () =>
+			StripeTransfer.LiveMode.ShouldEqual(false);
+
+		It should_have_the_correct_amount = () =>
 			StripeTransfer.AmountInCents.ShouldEqual(StripeTransferCreateOptions.AmountInCents);
 
-		private It should_have_the_correct_currency = () =>
+		It should_have_the_correct_currency = () =>
 			StripeTransfer.Currency.ShouldEqual(StripeTransferCreateOptions.Currency);
+
+		It should_have_a_valid_date = () =>
+			StripeTransfer.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
+
+		It should_have_a_status_other_than_failed = () =>
+			StripeTransfer.Status.ShouldNotEqual("failed");
+
+		It should_have_a_balance_transaction = () =>
+			StripeTransfer.BalanceTransaction.ShouldNotBeNull();
+
+		It should_have_the_correct_description = () =>
+			StripeTransfer.Description.ShouldEqual(StripeTransferCreateOptions.Description);
+
+		It should_have_the_correct_statement_descriptor = () =>
+			StripeTransfer.StatementDescriptor.ShouldEqual(StripeTransferCreateOptions.StatementDescriptor);
 	}
 }

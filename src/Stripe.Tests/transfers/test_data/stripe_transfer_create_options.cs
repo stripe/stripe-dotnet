@@ -1,4 +1,5 @@
-﻿namespace Stripe.Tests.test_data
+﻿using System;
+namespace Stripe.Tests.test_data
 {
 	public class stripe_transfer_create_options
 	{
@@ -9,8 +10,8 @@
 				AmountInCents = 50,
 				Currency = "usd",
 				Recipient = "self",
-				Description = "Test Transfer",
-				StatementDescriptor = "Invoice 1234"
+				Description = "test-transfer-description-" + Guid.NewGuid().ToString(),
+				StatementDescriptor = "test-transfer-statement-descriptor" + Guid.NewGuid().ToString()
 			};
 
 			return stripeTransferCreateOptions;

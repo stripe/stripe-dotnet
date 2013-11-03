@@ -1,6 +1,6 @@
 ﻿using Machine.Specifications;
 
-namespace Stripe.Tests.transfers
+namespace Stripe.Tests
 {
 	public class when_getting_a_transfer
 	{
@@ -10,7 +10,7 @@ namespace Stripe.Tests.transfers
 		private static StripeTransferService _stripeTransferService;
 		private static string _createStripeTransferId;
 
-		private Establish context = () =>
+		Establish context = () =>
 		{
 			_stripeTransferService = new StripeTransferService();
 			StripeTransferCreateOptions = test_data.stripe_transfer_create_options.Valid();
@@ -19,11 +19,11 @@ namespace Stripe.Tests.transfers
 			_createStripeTransferId = stripeTransfer.Id;
 		};
 
-		private Because of = () =>
+		Because of = () =>
 		{
 			StripeTransfer = _stripeTransferService.Get(_createStripeTransferId);
 		};
 
-		private Behaves_like<transfer_behaviors> behaviors;
+		Behaves_like<transfer_behaviors> behaviors;
 	}
 }

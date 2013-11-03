@@ -2,21 +2,14 @@
 {
 	public class stripe_recipient_update_options
 	{
-		public static StripeRecipientUpdateOptions ValidIndividual()
+		public static StripeRecipientUpdateOptions Valid()
 		{
 			var stripeRecipientUpdateOptions = new StripeRecipientUpdateOptions()
 			{
-				Description = "John Doe (john@doe.com)"
-			};
-
-			return stripeRecipientUpdateOptions;
-		}
-
-		public static StripeRecipientUpdateOptions ValidCorporation()
-		{
-			var stripeRecipientUpdateOptions = new StripeRecipientUpdateOptions()
-			{
-				Description = "Timothy's Ice Rink (speed@example.com"
+				Name = "Billy Madison",
+				TaxId = "000000000",
+				Email = "billy@madison.com",
+				Description = "Conditioner is better, it makes the hair silky and smooth"
 			};
 
 			return stripeRecipientUpdateOptions;

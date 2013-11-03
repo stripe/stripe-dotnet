@@ -9,7 +9,7 @@ namespace Stripe.Tests
 		private static List<StripeRecipient> _stripeRecipientList;
 		private static StripeRecipientService _stripeRecipientService;
 
-		private Establish context = () =>
+		Establish context = () =>
 		{
 			_stripeRecipientService = new StripeRecipientService();
 
@@ -17,10 +17,10 @@ namespace Stripe.Tests
 			_stripeRecipientService.Create(test_data.stripe_recipient_create_options.ValidIndividual());
 		};
 
-		private Because of = () =>
+		Because of = () =>
 			_stripeRecipientList = _stripeRecipientService.List().ToList();
 
-		private It should_havea_atleast_2_entries = () =>
+		It should_havea_atleast_2_entries = () =>
 			_stripeRecipientList.Count.ShouldBeGreaterThanOrEqualTo(2);
 	}
 }

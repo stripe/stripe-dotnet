@@ -9,20 +9,26 @@ namespace Stripe.Tests
 		private static string _createdStripeRecipientId;
 		private static StripeRecipientUpdateOptions _stripeRecipientUpdateOptions;
 
-		private Establish context = () =>
+		Establish context = () =>
 		{
 			_stripeRecipientService = new StripeRecipientService();
 
-			var stripeRecipient = _stripeRecipientService.Create(test_data.stripe_recipient_create_options.ValidCorporation());
+			var stripeRecipient = _stripeRecipientService.Create(test_data.stripe_recipient_create_options.ValidIndividual());
 			_createdStripeRecipientId = stripeRecipient.Id;
 
-			_stripeRecipientUpdateOptions = test_data.stripe_recipient_update_options.ValidCorporation();
+			_stripeRecipientUpdateOptions = test_data.stripe_recipient_update_options.Valid();
 		};
 
-		private Because of = () =>
+		Because of = () =>
 			_stripeRecipient = _stripeRecipientService.Update(_createdStripeRecipientId, _stripeRecipientUpdateOptions);
 
-		private It should_have_the_correct_description = () =>
+		It should_have_the_correct_name = () =>
+			_stripeRecipient.Name.ShouldEqual(_stripeRecipientUpdateOptions.Name);
+
+		It should_have_the_correct_email = () =>
+			_stripeRecipient.Email.ShouldEqual(_stripeRecipientUpdateOptions.Email);
+
+		It should_have_the_correct_description = () =>
 			_stripeRecipient.Description.ShouldEqual(_stripeRecipientUpdateOptions.Description);
 	}
 }

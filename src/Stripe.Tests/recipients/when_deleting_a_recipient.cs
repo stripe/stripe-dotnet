@@ -7,7 +7,7 @@ namespace Stripe.Tests
 		private static StripeRecipientService _stripeRecipientService;
 		private static string _createdStripeRecipientId;
 
-		private Establish context = () =>
+		Establish context = () =>
 		{
 			_stripeRecipientService = new StripeRecipientService();
 
@@ -15,10 +15,10 @@ namespace Stripe.Tests
 			_createdStripeRecipientId = stripeRecipient.Id;
 		};
 
-		private Because of = () =>
+		Because of = () =>
 			_stripeRecipientService.Delete(_createdStripeRecipientId);
 
-		private It should_show_as_deleted = () =>
+		It should_show_as_deleted = () =>
 			_stripeRecipientService.Get(_createdStripeRecipientId).Deleted.ShouldEqual(true);
 	}
 }

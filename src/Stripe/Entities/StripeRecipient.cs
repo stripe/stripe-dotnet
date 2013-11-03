@@ -6,79 +6,62 @@ namespace Stripe
 {
 	public class StripeRecipient
 	{
-		/// <summary>
-		/// Type of the recipient, one of 'individual' or 'corporation'.
-		/// </summary>
-		public enum RecipientType
-		{
-			individual,
-			corporation
-		}
-
 		[JsonProperty("id")]
 		public string Id { get; set; }
-		
+
+		[JsonProperty("object")]
+		public string Object { get; set; }
+
 		[JsonProperty("livemode")]
-		public bool? LiveMode { get; set; }
+		public bool LiveMode { get; set; }
 		
-		/// <summary>
-		/// Timestamp
-		/// </summary>
 		[JsonProperty("created")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? Created { get; set; }
 
-		[JsonProperty("deleted")]
-		public bool? Deleted { get; set; }
+		[JsonProperty("type")]
+		public string Type { get; set; }
 
-		/// <summary>
-		/// Hash describing the current account on the recipient, if there is one.
-		/// </summary>
-		[JsonProperty("active_account")]
-		public StripeActiveBankAccount ActiveAccount { get; set; }
+		[JsonProperty("active_account[id]")]
+		public string ActiveAccountId { get; set; }
 
-		/// <summary>
-		/// A bank account to attach to the recipient.
-		/// </summary>
-		[JsonProperty("bank_account")]
-		public BankAccountOptions BankAccountOptions { get; set; }
+		[JsonProperty("active_account[object]")]
+		public string ActiveAccountObject { get; set; }
 
-		/// <summary>
-		/// An arbitrary string which you can attach to a recipient object. It is displayed
-		/// alongside the recipient in the web interface.
-		/// </summary>
-		/// <value>Default is null</value>
+		[JsonProperty("active_account[bank_name]")]
+		public string ActiveAccountBankName { get; set; }
+
+		[JsonProperty("active_account[country]")]
+		public string ActiveAccountCountry { get; set; }
+
+		[JsonProperty("active_account[currency]")]
+		public string ActiveAccountCurrency { get; set; }
+
+		[JsonProperty("active_account[last4]")]
+		public string ActiveAccountLast4 { get; set; }
+
+		[JsonProperty("active_account[fingerprint]")]
+		public string ActiveAccountFingerprint { get; set; }
+
+		[JsonProperty("active_account[validated]")]
+		public bool? ActiveAccountValidated { get; set; }
+
+		[JsonProperty("active_account[verified]")]
+		public bool? ActiveAccountVerified { get; set; }
+
 		[JsonProperty("description")]
 		public string Description { get; set; }
-
-		/// <summary>
-		/// The recipient's email address. It is displayed alongside the recipient in the 
-		/// web interface and can be useful for searching and tracking.
-		/// </summary>
-		/// <value>Default is null</value>
+		
 		[JsonProperty("email")]
 		public string Email { get; set; }
 
-		/// <summary>
-		/// The recipient's full, legal name.
-		/// <example>For type 'individual', should be in the format "First Last", 
-		/// "First Middle Last", or "First M Last" (no prefixes or suffixes).
-		/// For type 'corporation', the full incorporated name.</example>
-		/// </summary>
 		[JsonProperty("name")]
 		public string Name { get; set; }
-
-		/// <summary>
-		/// Type of the recipient: either 'individual' or 'corporation'.
-		/// </summary>
-		[JsonProperty("type")]
-		public RecipientType Type { get; set; }
-
-		/// <summary>
-		/// The recipient's tax ID, as a string. For type 'individual', the full SSN.
-		/// For type 'corporation', the full EIN.
-		/// </summary>
+		
 		[JsonProperty("tax_id")]
 		public string TaxId { get; set; }
+
+		[JsonProperty("deleted")]
+		public bool? Deleted { get; set; }
 	}
 }

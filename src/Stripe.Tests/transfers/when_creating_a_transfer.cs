@@ -9,17 +9,15 @@ namespace Stripe.Tests
 
 		private static StripeTransferService _stripeTransferService;
 
-		private Establish context = () =>
+		Establish context = () =>
 		{
-			var _stripeTransferService = new StripeTransferService();
+			_stripeTransferService = new StripeTransferService();
 			StripeTransferCreateOptions = test_data.stripe_transfer_create_options.Valid();
 		};
 
-		private Because of = () =>
-		{
+		Because of = () =>
 			StripeTransfer = _stripeTransferService.Create(StripeTransferCreateOptions);
-		};
 
-		private Behaves_like<transfer_behaviors> behaviors;
+		Behaves_like<transfer_behaviors> behaviors;
 	}
 }

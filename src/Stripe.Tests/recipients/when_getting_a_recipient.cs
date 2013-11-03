@@ -19,7 +19,7 @@ namespace Stripe.Tests
 			_createdStripeRecipientId = stripeRecipient.Id;
 		};
 
-		private Because of = () =>
+		Because of = () =>
 		{
 			StripeRecipient = _stripeRecipientService.Get(_createdStripeRecipientId);
 		};
