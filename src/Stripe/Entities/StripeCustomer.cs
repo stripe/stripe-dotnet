@@ -4,7 +4,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeCustomer
+    public class StripeCustomer : StripeBase
 	{
 		[JsonProperty("id")]
 		public string Id { get; set; }

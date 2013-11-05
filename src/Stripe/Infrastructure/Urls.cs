@@ -36,7 +36,14 @@
 		{
 			get { return BaseUrl + "/customers"; }
 		}
-
+        public static string Balance 
+        {
+            get { return BaseUrl + "/balance"; }
+        }
+        public static string BalanceTransaction
+        {
+            get { return BaseUrl + "/balance/history"; }
+        }
 		public static string Cards
 		{
 			get { return BaseUrl + "/customers/{0}/cards"; }

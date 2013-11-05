@@ -57,6 +57,8 @@
     </Compile>
     <Compile Include="account\account_behaviors.cs" />
     <Compile Include="account\when_retrieving_an_account.cs" />
+    <Compile Include="balance\balance_behaviors.cs" />
+    <Compile Include="balance\when_retrieving_balance.cs" />
     <Compile Include="charges\charge_behaviors.cs" />
     <Compile Include="charges\when_capturing_a_charge_with_a_card.cs" />
     <Compile Include="charges\when_setting_a_charge_to_capture.cs" />
