@@ -63,5 +63,8 @@ namespace Stripe
 
 		[JsonProperty("deleted")]
 		public bool? Deleted { get; set; }
+
+        [JsonProperty("verified")]
+        public bool Verified { get; set; }
 	}
 }
