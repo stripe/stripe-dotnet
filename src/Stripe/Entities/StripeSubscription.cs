@@ -27,6 +27,9 @@ namespace Stripe
 		[JsonProperty("status")]
 		public string Status { get; set; }
 
+		[JsonProperty("application_fee_percent")]
+		public decimal? ApplicationFeePercent { get; set; }
+
 		[JsonProperty("canceled_at")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? CanceledAt { get; set; }
