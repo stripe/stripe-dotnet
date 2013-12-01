@@ -16,6 +16,9 @@ namespace Stripe
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime Date { get; set; }
 
+		[JsonProperty("proration")]
+		public bool Proration{ get; set; }
+
 		[JsonProperty("currency")]
 		public string Currency { get; set; }
 
