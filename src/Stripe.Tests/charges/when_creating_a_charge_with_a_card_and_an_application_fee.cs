@@ -15,7 +15,7 @@ namespace Stripe.Tests
 		{
 			_stripeChargeService = new StripeChargeService();
 			StripeChargeCreateOptions = test_data.stripe_charge_create_options.ValidCard();
-			StripeChargeCreateOptions.ApplicationFeeInCents = 25;
+			StripeChargeCreateOptions.ApplicationFee = 25;
 		};
 
 		Because of = () =>
