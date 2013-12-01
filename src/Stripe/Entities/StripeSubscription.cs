@@ -6,6 +6,9 @@ namespace Stripe
 {
 	public class StripeSubscription
 	{
+		[JsonProperty("id")]
+		public string Id { get; set; }
+
 		[JsonProperty("customer")]
 		public string CustomerId { get; set; }
 
