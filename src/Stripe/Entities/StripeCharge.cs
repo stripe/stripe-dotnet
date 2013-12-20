@@ -51,6 +51,9 @@ namespace Stripe
 		public string FailureCode { get; private set; }
 
 		[JsonProperty("captured")]
-		public bool? Captured { get; set; }
+        public bool? Captured { get; set; }
+
+        [JsonProperty("dispute")]
+        public StripeDispute StripeDispute { get; set; }
 	}
 }
