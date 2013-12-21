@@ -4,7 +4,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeDispute
+    public class StripeDispute : StripeBase
 	{
 		[JsonProperty("livemode")]
 		public bool? LiveMode { get; set; }

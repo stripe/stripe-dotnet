@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeTransfer
+    public class StripeTransfer : StripeBase
 	{
 		[JsonProperty("id")]
 		public string Id { get; set; }

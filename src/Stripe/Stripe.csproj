@@ -51,6 +51,9 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Entities\StripeAmount.cs" />
+    <Compile Include="Entities\StripeBalanceTransaction.cs" />
+    <Compile Include="Entities\StripeBase.cs" />
     <Compile Include="Entities\StripeCardList.cs" />
     <Compile Include="Entities\StripeDispute.cs" />
     <Compile Include="Entities\StripeAccount.cs" />
@@ -71,12 +74,15 @@
     <Compile Include="Entities\StripeSubscription.cs" />
     <Compile Include="Entities\StripeCoupon.cs" />
     <Compile Include="Entities\StripeDiscount.cs" />
+    <Compile Include="Entities\StripeBalanceTransactionList.cs" />
     <Compile Include="Entities\StripeTransfer.cs" />
     <Compile Include="Infrastructure\StripeConfiguration.cs" />
     <Compile Include="Infrastructure\StripeDateTimeConverter.cs" />
     <Compile Include="Infrastructure\Mapper.cs" />
     <Compile Include="Entities\StripeCustomer.cs" />
+    <Compile Include="Infrastructure\StripeObjectFormatter.cs" />
     <Compile Include="Services\Account\StripeAccountService.cs" />
+    <Compile Include="Services\Balance\StripeBalanceService.cs" />
     <Compile Include="Services\BankAccountOptions.cs" />
     <Compile Include="Services\Cards\StripeCardCreateOptions.cs" />
     <Compile Include="Services\Cards\StripeCardService.cs">
@@ -115,6 +121,7 @@
     <Compile Include="Infrastructure\Urls.cs" />
     <Compile Include="Infrastructure\ParameterBuilder.cs" />
     <Compile Include="Infrastructure\Requestor.cs" />
+    <Compile Include="Entities\StripeBalance.cs" />
     <Compile Include="Services\Transfers\StripeTransferCreateOptions.cs" />
     <Compile Include="Services\Transfers\StripeTransferService.cs" />
   </ItemGroup>

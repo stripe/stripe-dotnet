@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-	public class StripeCharge
+	public class StripeCharge :StripeBase
 	{
 		[JsonProperty("id")]
 		public string Id { get; set; }

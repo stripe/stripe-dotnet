@@ -4,7 +4,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeEvent
+    public class StripeEvent : StripeBase
 	{
 		[JsonProperty("id")]
 		public string Id { get; set; }

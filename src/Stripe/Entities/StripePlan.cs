@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-	public class StripePlan
+    public class StripePlan : StripeBase
 	{
 		[JsonProperty("id")]
 		public string Id { get; set; }
