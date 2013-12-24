@@ -29,12 +29,6 @@ namespace Stripe
 		[JsonProperty("description")]
 		public string Description { get; set; }
 
-		[JsonProperty("fee")]
-		public int? FeeInCents { get; set; }
-
-		[JsonProperty("fee_details")]
-		public List<StripeFee> FeeDetails { get; set; }
-
 		[JsonProperty("paid")]
 		public bool? Paid { get; set; }
 

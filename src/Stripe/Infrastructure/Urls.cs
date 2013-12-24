@@ -62,6 +62,11 @@
 			get { return BaseUrl + "/transfers"; }
 		}
 
+	    public static string ApplicationFees
+	    {
+            get { return BaseUrl + "/application_fees"; }
+	    }
+
 		private static string BaseUrl
 		{
 			get { return "https://api.stripe.com/v1"; }

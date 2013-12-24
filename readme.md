@@ -577,6 +577,21 @@ Transfers
 	var transferService = new StripeTransferService();
 	IEnumerable<StripeTransfer> response = transferService.List(); //can optionally pass count (defaults to 10), offset (defaults to 0), recipientId, and status
 
+Application Fees
+----------------
+
+If you do not specify an amountInCents, the entire application fee is refunded.
+
+### Retrieving an application fee
+
+	var feeService = new StripeApplicationFeeService();
+	StripeApplicationFee stripeApplicationFee = feeService.Get(*applicationFeeId*);
+
+### Refunding an application fee
+
+	var feeService = new StripeApplicationFeeService();
+	StripeApplicationFee stripeApplicationFee = feeService.Refund(*applicationFeeId*, *amountInCents*);
+
 Events
 ------
 
