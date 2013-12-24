@@ -7,8 +7,9 @@
 		<owners>Jayme Davis</owners>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<projectUrl>https://github.com/jaymedavis/stripe.net</projectUrl>
-		<iconUrl>http://imgur.com/RF430nw</iconUrl>
+		<iconUrl>http://i.imgur.com/RF430nw.png?1</iconUrl>
 		<licenseUrl>https://raw.github.com/jaymedavis/stripe.net/master/LICENSE</licenseUrl>
+		<title>Stripe.net</title>
 		<description>Stripe.net is a full service .net api for http://stripe.com. For documentation, visit https://github.com/jaymedavis/stripe.net.</description>
 		<tags>stripe, payment, credit cards, money</tags>
 		<dependencies>
