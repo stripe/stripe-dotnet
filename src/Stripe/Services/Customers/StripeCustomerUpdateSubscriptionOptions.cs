@@ -15,12 +15,13 @@ namespace Stripe
 		public bool? Prorate { get; set; }
 
 		public DateTime? TrialEnd { get; set; }
+		public bool EndTrialNow { get; set; }
 
 		[JsonProperty("quantity")]
 		public int? Quantity { get; set; }
 
 		[JsonProperty("trial_end")]
-		internal int? TrialEndInternal
+		internal string TrialEndInternal
 		{
 			get
 			{
@@ -28,7 +29,10 @@ namespace Stripe
 
 				var diff = TrialEnd.Value - new DateTime(1970, 1, 1);
 
-				return (int)Math.Floor(diff.TotalSeconds);
+				if (EndTrialNow)
+					return "now";
+				else
+					return Math.Floor(diff.TotalSeconds).ToString();
 			}
 		}
 	}
