@@ -53,6 +53,8 @@
     </Compile>
     <Compile Include="Entities\StripeApplicationFeeRefund.cs" />
     <Compile Include="Entities\StripeApplicationFee.cs" />
+    <Compile Include="Entities\StripeBalanceAmount.cs" />
+    <Compile Include="Entities\StripeBalance.cs" />
     <Compile Include="Entities\StripeCardList.cs" />
     <Compile Include="Entities\StripeDispute.cs" />
     <Compile Include="Entities\StripeAccount.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Infrastructure\Mapper.cs" />
     <Compile Include="Entities\StripeCustomer.cs" />
     <Compile Include="Services\Account\StripeAccountService.cs" />
+    <Compile Include="Services\Balance\StripeBalanceService.cs" />
     <Compile Include="Services\BankAccountOptions.cs" />
     <Compile Include="Services\ApplicationFees\StripeApplicationFeeService.cs" />
     <Compile Include="Services\Cards\StripeCardCreateOptions.cs" />
