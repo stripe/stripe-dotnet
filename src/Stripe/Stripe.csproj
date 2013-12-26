@@ -35,8 +35,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -83,6 +83,7 @@
     <Compile Include="Services\Balance\StripeBalanceService.cs" />
     <Compile Include="Services\BankAccountOptions.cs" />
     <Compile Include="Services\ApplicationFees\StripeApplicationFeeService.cs" />
+    <Compile Include="Services\BaseStripeRequest.cs" />
     <Compile Include="Services\Cards\StripeCardCreateOptions.cs" />
     <Compile Include="Services\Cards\StripeCardService.cs">
       <SubType>Code</SubType>
@@ -126,7 +127,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /y "$(TargetDir)Stripe.dll" "$(SolutionDir)Stripe.Tests\_web_event_hooks\bin\Stripe.dll"

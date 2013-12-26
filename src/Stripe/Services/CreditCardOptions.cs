@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-	public abstract class CreditCardOptions
+	public abstract class CreditCardOptions : BaseStripeRequest
 	{
 		[JsonProperty("card[number]")]
 		public string CardNumber { get; set; }
