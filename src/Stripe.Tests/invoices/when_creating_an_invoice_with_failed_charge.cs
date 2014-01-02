@@ -8,6 +8,7 @@ namespace Stripe.Tests
 		private static StripeInvoice _stripeFailedInvoice;
 		private static StripeInvoiceService _stripeInvoiceService;
 		private static StripeCharge _stripeCharge;
+        private static StripeException _stripeException;
 
 		Establish context = () =>
 		{
@@ -25,7 +26,8 @@ namespace Stripe.Tests
 
 		Because of = () =>
 		{
-			_stripeInvoiceService.Pay(_stripeCreatedInvoice.Id);
+            // API 2013-02-11 changed behaviour to throw exception instead of just set paid to false
+            _stripeException = Catch.Exception(() => _stripeInvoiceService.Pay(_stripeCreatedInvoice.Id)) as StripeException;
 
 			_stripeFailedInvoice = _stripeInvoiceService.Get(_stripeCreatedInvoice.Id);
 
@@ -33,7 +35,10 @@ namespace Stripe.Tests
 			_stripeCharge = stripeChargeService.Get(_stripeFailedInvoice.ChargeId);
 		};
 
-		It should_have_the_correct_id = () =>
+        It should_have_thrown_an_exception = () =>
+            _stripeException.ShouldNotBeNull();
+        
+        It should_have_the_correct_id = () =>
 			_stripeFailedInvoice.Id.ShouldEqual(_stripeCreatedInvoice.Id);
 
 		It should_have_a_declined_failure_message = () =>
