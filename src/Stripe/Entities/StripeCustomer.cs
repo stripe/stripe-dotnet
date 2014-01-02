@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 
@@ -55,5 +56,8 @@ namespace Stripe
 
 		[JsonProperty("cards")]
 		public StripeCardList StripeCardList { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

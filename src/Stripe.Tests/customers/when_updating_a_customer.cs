@@ -27,5 +27,11 @@ namespace Stripe.Tests
 
 		It should_have_the_correct_account_balance = () =>
 			_stripeCustomer.AccountBalance.ShouldEqual(1000);
+
+		It should_have_metadata = () =>
+			_stripeCustomer.Metadata.Count.ShouldBeGreaterThan(0);
+
+		It should_have_the_correct_metadata = () =>
+			_stripeCustomer.Metadata.ShouldContainOnly(_stripeCustomerUpdateOptions.Metadata);
 	}
 }

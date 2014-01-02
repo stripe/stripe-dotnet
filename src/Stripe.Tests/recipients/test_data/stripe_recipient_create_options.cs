@@ -1,4 +1,5 @@
-﻿namespace Stripe.Tests.test_data
+﻿using System.Collections.Generic;
+namespace Stripe.Tests.test_data
 {
 	public class stripe_recipient_create_options
 	{
@@ -14,6 +15,11 @@
 				BankAccountCountry = "US",
 				Email = "pork@email.com",
 				Description = "Johnny Tenderloin (pork@email.com)",
+				Metadata = new Dictionary<string, string>
+				{
+                    { "A", "Value-A" },
+                    { "B", "Value-B" }
+				}
 			};
 
 			return stripeRecipientCreateOptions;
@@ -30,7 +36,12 @@
 				BankAccountRoutingNumber = "110000000",
 				BankAccountCountry = "US",
 				Email = "tenderloins@email.com",
-				Description = "Tenderloin International (tenderloins@email.com)"
+				Description = "Tenderloin International (tenderloins@email.com)",
+				Metadata = new Dictionary<string, string>
+				{
+                    { "A", "Value-A" },
+                    { "B", "Value-B" }
+				}
 			};
 
 			return stripeRecipientCreateOptions;

@@ -19,5 +19,11 @@ namespace Stripe.Tests
 			StripeRecipient = _stripeRecipientService.Create(StripeRecipientCreateOptions);
 
 		Behaves_like<recipient_behaviors> behaviors;
+
+		It should_have_metadata = () =>
+			StripeRecipient.Metadata.Count.ShouldBeGreaterThan(0);
+
+		It should_have_correct_metadata = () =>
+			StripeRecipient.Metadata.ShouldContainOnly(StripeRecipientCreateOptions.Metadata);
 	}
 }

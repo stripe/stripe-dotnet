@@ -52,5 +52,8 @@ namespace Stripe
 
 		[JsonProperty("captured")]
 		public bool? Captured { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }
