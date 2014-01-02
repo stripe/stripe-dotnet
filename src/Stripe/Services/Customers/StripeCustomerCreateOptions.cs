@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Stripe
@@ -37,5 +38,8 @@ namespace Stripe
 				return (int)Math.Floor(diff.TotalSeconds);
 			}
 		}
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Stripe.Tests.test_data
 {
@@ -13,7 +14,12 @@ namespace Stripe.Tests.test_data
 				Currency = "usd",
 				Interval = "month",
 				Name = "Test Plan",
-				TrialPeriodDays = 1
+				TrialPeriodDays = 1,
+				Metadata = new Dictionary<string, string> 
+                {
+                    { "A", "Value-A" },
+                    { "B", "Value-B" }
+                }
 			};
 		}
 	}

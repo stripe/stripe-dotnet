@@ -19,5 +19,11 @@ namespace Stripe.Tests
 			StripeTransfer = _stripeTransferService.Create(StripeTransferCreateOptions);
 
 		Behaves_like<transfer_behaviors> behaviors;
+
+		It should_have_metadata = () =>
+			StripeTransfer.Metadata.Count.ShouldBeGreaterThan(0);
+
+		It should_have_correct_metadata = () =>
+			StripeTransfer.Metadata.ShouldContainOnly(StripeTransferCreateOptions.Metadata);
 	}
 }

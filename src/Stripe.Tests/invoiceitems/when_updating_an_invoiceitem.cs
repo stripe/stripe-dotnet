@@ -7,6 +7,7 @@ namespace Stripe.Tests
 		private static StripeInvoiceItem _stripeInvoiceItem;
 		private static string _stripeInvoiceItemId;
 		private static StripeInvoiceItemService _stripeInvoiceItemService;
+		private static StripeInvoiceItemUpdateOptions StripeInvoiceItemUpdateOptions;
 
 		Establish context = () =>
 		{
@@ -18,15 +19,23 @@ namespace Stripe.Tests
 
 			var createdInvoice = _stripeInvoiceItemService.Create(_stripeInvoiceItemCreateOptions);
 			_stripeInvoiceItemId = createdInvoice.Id;
+
+			StripeInvoiceItemUpdateOptions = test_data.stripe_invoiceitem_update_options.Valid();
 		};
 
 		Because of = () =>
-			_stripeInvoiceItem = _stripeInvoiceItemService.Update(_stripeInvoiceItemId, test_data.stripe_invoiceitem_update_options.Valid());
+			_stripeInvoiceItem = _stripeInvoiceItemService.Update(_stripeInvoiceItemId, StripeInvoiceItemUpdateOptions);
 
 		It should_have_the_correct_amount = () =>
 			_stripeInvoiceItem.AmountInCents.ShouldEqual(test_data.stripe_invoiceitem_update_options.Valid().AmountInCents);
 
 		It should_have_the_correct_description = () =>
 			_stripeInvoiceItem.Description.ShouldEqual(test_data.stripe_invoiceitem_update_options.Valid().Description);
+
+		It should_have_metadata = () =>
+			_stripeInvoiceItem.Metadata.Count.ShouldBeGreaterThan(0);
+
+		It should_have_the_correct_metadata = () =>
+			_stripeInvoiceItem.Metadata.ShouldContainOnly(StripeInvoiceItemUpdateOptions.Metadata);
 	}
 }
