@@ -35,7 +35,7 @@ namespace Stripe
 
 			if (refundAmountInCents.HasValue)
 				url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmountInCents.Value.ToString());
-			if(refundApplicationFee.HasValue)
+			if (refundApplicationFee.HasValue)
 				url = ParameterBuilder.ApplyParameterToUrl(url, "refund_application_fee", refundApplicationFee.Value.ToString());
 
 			var response = Requestor.PostString(url, ApiKey);
@@ -43,14 +43,13 @@ namespace Stripe
 			return Mapper<StripeCharge>.MapFromJson(response);
 		}
 
-		public virtual IEnumerable<StripeCharge> List(int count = 10, int offset = 0, string customerId = null)
+		public virtual IEnumerable<StripeCharge> List(StripeChargeListOptions options = null)
 		{
 			var url = Urls.Charges;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
-
-			if (!string.IsNullOrEmpty(customerId))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+			if (options != null)
+			{
+				url = ParameterBuilder.ApplyAllParameters(options, url);
+			}
 
 			var response = Requestor.GetString(url, ApiKey);
 

@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Reflection;
 using System.Web;
 using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
@@ -18,36 +20,59 @@ namespace Stripe
 
 			foreach (var property in obj.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
 			{
-				foreach (var attribute in property.GetCustomAttributes(false))
+				foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
 				{
-					if (attribute.GetType() != typeof(JsonPropertyAttribute)) continue;
-
-					var JsonPropertyAttribute = (JsonPropertyAttribute)attribute;
-
 					var value = property.GetValue(obj, null);
 
-                    if (value != null)
-                    {
-                        // metadata property gets treated differently
-                        if ((string.Compare(JsonPropertyAttribute.PropertyName, "metadata", true) == 0)
-                            && property.PropertyType == typeof(Dictionary<string, string>))
-                        {
-                            Dictionary<string, string> metadata = (Dictionary<string, string>)value;
-                            if (metadata.Count > 10) 
-                            {
-                                throw new ArgumentException("No more than 10 metadata items may be supplied");
-                            }
-                            foreach (string key in metadata.Keys)
-                            {
-                                newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
-                            }
-                        }
-                        else
-                        {
-                            newUrl = ApplyParameterToUrl(newUrl, JsonPropertyAttribute.PropertyName, value.ToString());
-                        }
-                    }
-                }
+					if (value != null)		// Null objects don't get included
+					{
+						// metadata property gets treated differently
+						if ((string.Compare(attribute.PropertyName, "metadata", true) == 0)
+							&& property.PropertyType == typeof(Dictionary<string, string>))
+						{
+							Dictionary<string, string> metadata = (Dictionary<string, string>)value;
+							if (metadata.Count > 10)
+							{
+								throw new ArgumentException("No more than 10 metadata items may be supplied");
+							}
+							foreach (string key in metadata.Keys)
+							{
+								newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
+							}
+						}
+						else if (property.PropertyType == typeof(StripeDateFilter))
+						{
+							StripeDateFilter filter = (StripeDateFilter)value;
+							if (filter.EqualTo.HasValue)
+							{
+								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, filter.EqualTo.Value.ConvertDateTimeToEpoch().ToString());
+							}
+							else
+							{
+								if (filter.LessThan.HasValue)
+								{
+									newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString());
+								}
+								if (filter.LessThanOrEqual.HasValue)
+								{
+									newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lte]", filter.LessThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
+								}
+								if (filter.GreaterThan.HasValue)
+								{
+									newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gt]", filter.GreaterThan.Value.ConvertDateTimeToEpoch().ToString());
+								}
+								if (filter.GreaterThanOrEqual.HasValue)
+								{
+									newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gte]", filter.GreaterThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
+								}
+							}
+						}
+						else
+						{
+							newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
+						}
+					}
+				}
 			}
 
 			return newUrl;

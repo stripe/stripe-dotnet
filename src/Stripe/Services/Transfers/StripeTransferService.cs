@@ -38,17 +38,13 @@ namespace Stripe
 			return Mapper<StripeTransfer>.MapFromJson(response);
 		}
 
-		public virtual IEnumerable<StripeTransfer> List(int count = 10, int offset = 0, string recipientId = null, string status = null)
+		public virtual IEnumerable<StripeTransfer> List(StripeTransferListOptions options = null)
 		{
 			var url = Urls.Transfers;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
-
-			if (!string.IsNullOrEmpty(recipientId))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "recipient", recipientId);
-
-			if (!string.IsNullOrEmpty(status))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "status", status);
+			if (options != null)
+			{
+				url = ParameterBuilder.ApplyAllParameters(options, url);
+			}
 
 			var response = Requestor.GetString(url, ApiKey);
 
