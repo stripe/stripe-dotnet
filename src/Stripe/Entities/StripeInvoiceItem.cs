@@ -51,6 +51,6 @@ namespace Stripe
         /// Stripe only allows 10 kvps
         /// </summary>
         [JsonProperty("metadata")]
-        public IDictionary<string, string> Metadata { get; set; }
+        public Dictionary<string, string> Metadata { get; set; }
 	}
 }

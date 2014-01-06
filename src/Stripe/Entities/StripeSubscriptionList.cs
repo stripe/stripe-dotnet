@@ -21,6 +21,6 @@ namespace Stripe
         public string Url { get; set; }
 
         [JsonProperty("data")]
-        public IEnumerable<StripeSubscription> StripeSubscriptions { get; set; } 
+        public List<StripeSubscription> StripeSubscriptions { get; set; } 
     }
 }
