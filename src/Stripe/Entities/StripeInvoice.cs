@@ -72,5 +72,8 @@ namespace Stripe
 
 		[JsonProperty("discount")]
 		public StripeDiscount StripeDiscount { get; set; }
+
+        [JsonProperty("application_fee")]
+        public int? ApplicationFee { get; set; }
 	}
 }

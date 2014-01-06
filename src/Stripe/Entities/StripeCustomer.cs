@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 
@@ -6,6 +8,11 @@ namespace Stripe
 {
 	public class StripeCustomer
 	{
+	    public StripeCustomer()
+	    {
+	        Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("id")]
 		public string Id { get; set; }
 
@@ -44,8 +51,15 @@ namespace Stripe
 		/// Hash describing the current subscription on the customer, if there is one. If the
 		/// customer has no current subscription, this will be null.
 		/// </summary>
+		[Obsolete("Use StripeSubscriptions")]
 		[JsonProperty("subscription")]
 		public StripeSubscription StripeSubscription { get; set; }
+
+        /// <summary>
+        /// Populated if the customer has multiple subscriptions.
+        /// </summary>
+        [JsonProperty("subscriptions")]
+        public StripeSubscriptionList StripeSubscriptions { get; set; }
 
 		/// <summary>
 		/// ID of the default credit card attached to the customer.
@@ -55,5 +69,11 @@ namespace Stripe
 
 		[JsonProperty("cards")]
 		public StripeCardList StripeCardList { get; set; }
+
+        /// <summary>
+        /// Stripe only allows 10 kvps
+        /// </summary>
+        [JsonProperty("metadata")]
+        public IDictionary<string,string> Metadata { get; set; }
 	}
 }

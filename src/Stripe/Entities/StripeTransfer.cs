@@ -7,6 +7,11 @@ namespace Stripe
 {
 	public class StripeTransfer
 	{
+	    public StripeTransfer()
+	    {
+	        Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("id")]
 		public string Id { get; set; }
 
@@ -64,5 +69,11 @@ namespace Stripe
 
 		[JsonProperty("statement_descriptor")]
 		public string StatementDescriptor { get; set; }
+
+        /// <summary>
+        /// Stripe only allows 10 kvp's
+        /// </summary>
+        [JsonProperty("metadata")]
+        public IDictionary<string, string> Metadata { get; set; }
 	}
 }

@@ -17,5 +17,8 @@ namespace Stripe
 
 		[JsonProperty("invoice")]
 		public string InvoiceId { get; set; }
+
+        [JsonProperty("subscription")]
+        public string SubscriptionId { get; set; }
 	}
 }
