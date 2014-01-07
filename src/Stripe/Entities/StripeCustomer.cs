@@ -61,7 +61,7 @@ namespace Stripe
         /// Populated if the customer has multiple subscriptions.
         /// </summary>
         [JsonProperty("subscriptions")]
-        public StripeSubscriptionList StripeSubscriptions { get; set; }
+        public StripeSubscriptionList StripeSubscriptionList { get; set; }
 
         // Do not add JsonProperty as this is managed by the InternalStripeDefaultCard field
 		public string StripeDefaultCardId { get; private set; }
