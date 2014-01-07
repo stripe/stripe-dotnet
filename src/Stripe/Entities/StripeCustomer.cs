@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 using Stripe.Infrastructure;
 
 namespace Stripe
@@ -61,11 +63,29 @@ namespace Stripe
         [JsonProperty("subscriptions")]
         public StripeSubscriptionList StripeSubscriptions { get; set; }
 
-		/// <summary>
-		/// ID of the default credit card attached to the customer.
-		/// </summary>
-		[JsonProperty("default_card")]
-		public string StripeDefaultCardId { get; set; }
+        // Do not add JsonProperty as this is managed by the InternalStripeDefaultCard field
+		public string StripeDefaultCardId { get; private set; }
+        // Do not add JsonProperty as this is managed by the InternalStripeDefaultCard field
+        public StripeCard StripeDefaultCard { get; private set; }
+
+        [JsonProperty("default_card")]
+	    internal object InternalStripeDefaultCard
+	    {
+	        get { return StripeDefaultCard; }
+            set
+            {
+                if (value is JObject)
+                {
+                    StripeDefaultCard = ((JToken)value).ToObject<StripeCard>();
+                    StripeDefaultCardId = StripeDefaultCard.Id;
+                }
+                else
+                {
+                    StripeDefaultCardId = value.ToString();
+                    StripeDefaultCard = null;
+                }
+            }
+	    }
 
 		[JsonProperty("cards")]
 		public StripeCardList StripeCardList { get; set; }
