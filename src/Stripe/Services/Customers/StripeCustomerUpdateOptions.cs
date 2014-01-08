@@ -1,9 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using System.CodeDom;
+using System.Collections.Generic;
+
+using Newtonsoft.Json;
 
 namespace Stripe
 {
 	public class StripeCustomerUpdateOptions : CreditCardOptions
 	{
+	    public StripeCustomerUpdateOptions()
+	    {
+            Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("coupon")]
 		public string Coupon { get; set; }
 
@@ -18,5 +26,11 @@ namespace Stripe
 
 		[JsonProperty("default_card")]
 		public string DefaultCard { get; set; }
+
+        /// <summary>
+        /// Stripe only allows 10 kvps
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 	}
 }

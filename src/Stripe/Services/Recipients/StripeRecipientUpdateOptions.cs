@@ -1,9 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+
+using Newtonsoft.Json;
 
 namespace Stripe
 {
 	public class StripeRecipientUpdateOptions : BankAccountOptions
 	{
+	    public StripeRecipientUpdateOptions()
+	    {
+            Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("name")]
 		public string Name { get; set; }
 
@@ -15,5 +22,11 @@ namespace Stripe
 
 		[JsonProperty("description")]
 		public string Description { get; set; }
+
+        /// <summary>
+        /// Stripe only allows 10 kvps
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 	}
 }
