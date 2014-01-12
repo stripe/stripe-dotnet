@@ -57,7 +57,7 @@ namespace Stripe
 		public bool? AccountVerified { get; set; }
 
 		[JsonProperty("balance_transaction")]
-		public string BalanceTransaction { get; set; }
+		public string BalanceTransactionId { get; set; }
 
 		[JsonProperty("description")]
 		public string Description { get; set; }
