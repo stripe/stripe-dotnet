@@ -60,10 +60,10 @@
     <Compile Include="Entities\StripeAccount.cs" />
     <Compile Include="Entities\StripeEventData.cs" />
     <Compile Include="Entities\StripeEvent.cs" />
-    <Compile Include="Entities\StripeInvoiceLine.cs" />
     <Compile Include="Entities\StripeInvoice.cs" />
     <Compile Include="Entities\StripeInvoiceItem.cs" />
     <Compile Include="Entities\StripeError.cs" />
+    <Compile Include="Entities\StripeInvoiceLines.cs" />
     <Compile Include="Entities\StripeOAuthToken.cs" />
     <Compile Include="Entities\StripePeriod.cs" />
     <Compile Include="Entities\StripeRecipient.cs" />
