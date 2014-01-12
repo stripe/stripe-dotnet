@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
-using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -52,5 +52,8 @@ namespace Stripe
 
 		[JsonProperty("captured")]
 		public bool? Captured { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+
 namespace Stripe
 {
 	public class StripeInvoiceItemCreateOptions
@@ -17,5 +19,8 @@ namespace Stripe
 
 		[JsonProperty("invoice")]
 		public string InvoiceId { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

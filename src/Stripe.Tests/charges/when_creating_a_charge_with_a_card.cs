@@ -23,5 +23,11 @@ namespace Stripe.Tests
 		};
 
 		Behaves_like<charge_behaviors> behaviors;
+
+		It should_have_metadata = () =>
+			StripeCharge.Metadata.ShouldNotBeNull();
+
+		It should_have_the_correct_metadata = () =>
+			StripeCharge.Metadata.ShouldContainOnly(StripeChargeCreateOptions.Metadata);
 	}
 }
