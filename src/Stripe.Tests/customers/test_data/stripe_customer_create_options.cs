@@ -22,7 +22,7 @@ namespace Stripe.Tests.test_data
 				CardNumber = "4242424242424242",
 				Description = "Johnny Tenderloin (pork@email.com)",
 				AccountBalance = 100,
-				Metadata = new Dictionary<string, string> 
+				Metadata = new Dictionary<string, string>
 				{
 					{ "A", "Value-A" },
 					{ "B", "Value-B" }

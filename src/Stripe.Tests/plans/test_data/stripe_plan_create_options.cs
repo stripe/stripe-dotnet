@@ -15,11 +15,11 @@ namespace Stripe.Tests.test_data
 				Interval = "month",
 				Name = "Test Plan",
 				TrialPeriodDays = 1,
-				Metadata = new Dictionary<string, string> 
-                {
-                    { "A", "Value-A" },
-                    { "B", "Value-B" }
-                }
+				Metadata = new Dictionary<string, string>
+				{
+					{ "A", "Value-A" },
+					{ "B", "Value-B" }
+				}
 			};
 		}
 	}

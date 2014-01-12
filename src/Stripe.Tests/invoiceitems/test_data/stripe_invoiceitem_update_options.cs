@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 namespace Stripe.Tests.test_data
 {
 	public static class stripe_invoiceitem_update_options
@@ -9,7 +10,7 @@ namespace Stripe.Tests.test_data
 			{
 				AmountInCents = 1001,
 				Description = "Test Invoice Item Update",
-				Metadata = new Dictionary<string, string> 
+				Metadata = new Dictionary<string, string>
 				{
 					{ "A", "Value-A" },
 					{ "B", "Value-B" },

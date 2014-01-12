@@ -4,10 +4,10 @@ namespace Stripe.Tests
 {
 	public class when_updating_an_invoiceitem
 	{
+		private static StripeInvoiceItemUpdateOptions StripeInvoiceItemUpdateOptions;
 		private static StripeInvoiceItem _stripeInvoiceItem;
 		private static string _stripeInvoiceItemId;
 		private static StripeInvoiceItemService _stripeInvoiceItemService;
-		private static StripeInvoiceItemUpdateOptions StripeInvoiceItemUpdateOptions;
 
 		Establish context = () =>
 		{

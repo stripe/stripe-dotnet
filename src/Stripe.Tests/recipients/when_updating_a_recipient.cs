@@ -36,6 +36,5 @@ namespace Stripe.Tests
 
 		It should_have_correct_metadata = () =>
 			_stripeRecipient.Metadata.ShouldContainOnly(_stripeRecipientUpdateOptions.Metadata);
-
 	}
 }

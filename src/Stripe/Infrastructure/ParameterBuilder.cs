@@ -24,21 +24,16 @@ namespace Stripe
 				{
 					var value = property.GetValue(obj, null);
 
-					if (value != null)		// Null objects don't get included
-					{
-						// metadata property gets treated differently
-						if ((string.Compare(attribute.PropertyName, "metadata", true) == 0)
-							&& property.PropertyType == typeof(Dictionary<string, string>))
-						{
-							Dictionary<string, string> metadata = (Dictionary<string, string>)value;
-							if (metadata.Count > 10)
-							{
-								throw new ArgumentException("No more than 10 metadata items may be supplied");
-							}
-							foreach (string key in metadata.Keys)
-							{
-								newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
-							}
+					if (value == null) continue;
+
+					if (string.Compare(JsonPropertyAttribute.PropertyName, "metadata", true) == 0)
+                    {
+						var metadata = (Dictionary<string, string>)value;
+
+                            foreach (string key in metadata.Keys)
+                            {
+                                newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
+                            }
 						}
 						else if (property.PropertyType == typeof(StripeDateFilter))
 						{
@@ -46,9 +41,9 @@ namespace Stripe
 							if (filter.EqualTo.HasValue)
 							{
 								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, filter.EqualTo.Value.ConvertDateTimeToEpoch().ToString());
-							}
-							else
-							{
+                        }
+                        else
+                        {
 								if (filter.LessThan.HasValue)
 								{
 									newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString());
@@ -70,10 +65,9 @@ namespace Stripe
 						else
 						{
 							newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
-						}
-					}
-				}
-			}
+                        }
+                    }
+                }
 
 			return newUrl;
 		}
