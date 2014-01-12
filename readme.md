@@ -496,6 +496,18 @@ Balance
 	var balanceService = new StripeBalanceService();
 	StripeBalance response = balanceService.Get();
 
+### Retrieving a specific balance transaction
+
+    var balanceService = new StripeBalanceService();
+    StripeBalanceTransaction response = balanceService.Get(*balanceTransactionId*);
+
+### Listing Balance Transactions
+
+    var balanceService = new StripeBalanceService();
+    var allItems = balanceService.List();
+    var itemsForCharge = balanceService.List(new StripeBalanceTransactionListOptions { SourceId = *chargeId*, Type = "charge" });
+    // Options class has more filtering options available
+
 Disputes
 --------
 

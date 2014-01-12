@@ -65,6 +65,8 @@
     <Compile Include="account\account_behaviors.cs" />
     <Compile Include="account\when_retrieving_an_account.cs" />
     <Compile Include="balance\balance_behaviors.cs" />
+    <Compile Include="balance\when_listing_balancetransactions.cs" />
+    <Compile Include="balance\when_listing_balancetransactions_forcharge.cs" />
     <Compile Include="balance\when_retrieving_a_balance.cs" />
     <Compile Include="charges\charge_behaviors.cs" />
     <Compile Include="charges\when_capturing_a_charge_with_a_card.cs" />
