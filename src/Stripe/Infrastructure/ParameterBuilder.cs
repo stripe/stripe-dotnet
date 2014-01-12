@@ -26,48 +26,48 @@ namespace Stripe
 
 					if (value == null) continue;
 
-					if (string.Compare(JsonPropertyAttribute.PropertyName, "metadata", true) == 0)
-                    {
+					if (string.Compare(attribute.PropertyName, "metadata", true) == 0)
+					{
 						var metadata = (Dictionary<string, string>)value;
 
-                            foreach (string key in metadata.Keys)
-                            {
-                                newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
-                            }
-						}
-						else if (property.PropertyType == typeof(StripeDateFilter))
+						foreach (string key in metadata.Keys)
 						{
-							StripeDateFilter filter = (StripeDateFilter)value;
-							if (filter.EqualTo.HasValue)
-							{
-								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, filter.EqualTo.Value.ConvertDateTimeToEpoch().ToString());
-                        }
-                        else
-                        {
-								if (filter.LessThan.HasValue)
-								{
-									newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString());
-								}
-								if (filter.LessThanOrEqual.HasValue)
-								{
-									newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lte]", filter.LessThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
-								}
-								if (filter.GreaterThan.HasValue)
-								{
-									newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gt]", filter.GreaterThan.Value.ConvertDateTimeToEpoch().ToString());
-								}
-								if (filter.GreaterThanOrEqual.HasValue)
-								{
-									newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gte]", filter.GreaterThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
-								}
-							}
+							newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
+						}
+					}
+					else if (property.PropertyType == typeof(StripeDateFilter))
+					{
+						StripeDateFilter filter = (StripeDateFilter)value;
+						if (filter.EqualTo.HasValue)
+						{
+							newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, filter.EqualTo.Value.ConvertDateTimeToEpoch().ToString());
 						}
 						else
 						{
-							newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
-                        }
-                    }
-                }
+							if (filter.LessThan.HasValue)
+							{
+								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString());
+							}
+							if (filter.LessThanOrEqual.HasValue)
+							{
+								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lte]", filter.LessThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
+							}
+							if (filter.GreaterThan.HasValue)
+							{
+								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gt]", filter.GreaterThan.Value.ConvertDateTimeToEpoch().ToString());
+							}
+							if (filter.GreaterThanOrEqual.HasValue)
+							{
+								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gte]", filter.GreaterThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
+							}
+						}
+					}
+					else
+					{
+						newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
+					}
+				}
+			}
 
 			return newUrl;
 		}
