@@ -9,7 +9,7 @@ namespace Stripe
 
 		internal static string GetApiKey()
 		{
-			if (String.IsNullOrEmpty(_apiKey))
+			if (string.IsNullOrEmpty(_apiKey))
 				_apiKey = ConfigurationManager.AppSettings["StripeApiKey"];
 
 			return _apiKey;

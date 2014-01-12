@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 namespace Stripe.Tests.test_data
 {
 	public class stripe_recipient_create_options
@@ -17,8 +18,8 @@ namespace Stripe.Tests.test_data
 				Description = "Johnny Tenderloin (pork@email.com)",
 				Metadata = new Dictionary<string, string>
 				{
-                    { "A", "Value-A" },
-                    { "B", "Value-B" }
+					{ "A", "Value-A" },
+					{ "B", "Value-B" }
 				}
 			};
 
@@ -39,8 +40,8 @@ namespace Stripe.Tests.test_data
 				Description = "Tenderloin International (tenderloins@email.com)",
 				Metadata = new Dictionary<string, string>
 				{
-                    { "A", "Value-A" },
-                    { "B", "Value-B" }
+					{ "A", "Value-A" },
+					{ "B", "Value-B" }
 				}
 			};
 

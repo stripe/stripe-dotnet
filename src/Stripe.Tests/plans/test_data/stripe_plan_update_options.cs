@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 namespace Stripe.Tests.test_data
 {
 	public static class stripe_plan_update_options
@@ -8,12 +9,12 @@ namespace Stripe.Tests.test_data
 			return new StripePlanUpdateOptions()
 			{
 				Name = "Test Plan Modified",
-				Metadata = new Dictionary<string, string> 
-                {
-                    { "A", "Value-A" },
-                    { "B", "Value-B" },
-                    { "C", "Value-C" }
-                }
+				Metadata = new Dictionary<string, string>
+				{
+					{ "A", "Value-A" },
+					{ "B", "Value-B" },
+					{ "C", "Value-C" }
+				}
 			};
 		}
 	}

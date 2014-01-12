@@ -20,7 +20,7 @@ namespace Stripe
 		[JsonProperty("statement_descriptor")]
 		public string StatementDescriptor { get; set; }
 
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

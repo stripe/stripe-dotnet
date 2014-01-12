@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 namespace Stripe.Tests.test_data
 {
 	public static class stripe_customer_update_options
@@ -9,7 +10,7 @@ namespace Stripe.Tests.test_data
 			{
 				Description = "Gangster Pancakes (syrup@og.com)",
 				AccountBalance = 1000,
-				Metadata = new Dictionary<string, string> 
+				Metadata = new Dictionary<string, string>
 				{
 					{ "A", "Value-A" },
 					{ "B", "Value-B" },
