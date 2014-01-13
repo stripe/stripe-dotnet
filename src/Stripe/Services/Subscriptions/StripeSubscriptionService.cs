@@ -39,9 +39,13 @@ namespace Stripe.Services.Subscriptions
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
 
-        public virtual StripeSubscription Cancel(string customerId, bool cancelAtPeriodEnd = false)
+        /// <summary>
+        /// Cancels the given subscription
+        /// Note: subscriptionId is required if you have multiple subscriptions enabled
+        /// </summary>
+        public virtual StripeSubscription Cancel(string customerId, string subscriptionId = "", bool cancelAtPeriodEnd = false)
         {
-            var url = string.Format("{0}/{1}/subscriptions", Urls.Customers, customerId);
+            var url = string.Format(Urls.Subscriptions + "/{1}", customerId, subscriptionId);
             url = ParameterBuilder.ApplyParameterToUrl(url, "at_period_end", cancelAtPeriodEnd.ToString());
 
             var response = Requestor.Delete(url, ApiKey);

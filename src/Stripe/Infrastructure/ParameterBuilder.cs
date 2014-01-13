@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Reflection;
 using System.Web;
 using Newtonsoft.Json;
 
@@ -22,8 +23,23 @@ namespace Stripe
 
 					var value = property.GetValue(obj, null);
 
-					if (value != null)
-						newUrl = ApplyParameterToUrl(newUrl, JsonPropertyAttribute.PropertyName, value.ToString());
+                    if (value != null)
+                    {
+                        if (property.Name == "Metadata")
+                        {
+                            var metaData = (Dictionary<string, string>)value;
+
+                            foreach (var data in metaData)
+                            {
+                                var propName = string.Format("metadata[{0}]", data.Key);
+                                newUrl = ApplyParameterToUrl(newUrl, propName, data.Value);
+                            }
+                        }
+                        else
+                        {
+                            newUrl = ApplyParameterToUrl(newUrl, JsonPropertyAttribute.PropertyName, value.ToString());
+                        }
+                    }
 				}
 			}
 
