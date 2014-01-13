@@ -1,10 +1,10 @@
-<img alt='Stripe.net' src='http://i.imgur.com/RF430nw.png?1' border='0' />
-<br/>
-<a href='http://www.pledgie.com/campaigns/22262'><img alt='Click here to lend your support to: stripe.net and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/22262.png?skin_name=chrome' border='0' /></a>
+![Stripe.net](http://i.imgur.com/RF430nw.png?1)
 
-<b>Stripe.net is a full service .net api for http://stripe.com.</b>
+[![Click here to lend your support to: stripe.net and make a donation at www.pledgie.com](http://www.pledgie.com/campaigns/22262.png?skin_name=chrome)](http://www.pledgie.com/campaigns/22262)
 
-<b>For more information about the examples below, visit https://stripe.com/docs/api for a full reference.</b>
+**Stripe.net is a full service .net api for http://stripe.com.**
+
+**For more information about the examples below, visit https://stripe.com/docs/api for a full reference.**
 
 Quick Start
 -----------
@@ -237,10 +237,14 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 	var customerService = new StripeCustomerService();
 	customerService.Delete(*customerId*);
 
-### List all customers
+### List customers
 
 	var customerService = new StripeCustomerService();
-	IEnumerable<StripeCustomer> response = customerService.List(); // can optionally pass count (defaults to 10) and offset
+	IEnumerable<StripeCustomer> allCustomers = customerService.List(); 
+    IEnumerable<StripeCustomer> secondPageOfCustomers = customerService.List(
+        new StripeCustomerListOptions { Offset = 1, Count = 10 });
+    IEnumerable<StripeCustomer> customersCreatedToday = customerService.List(
+        new StripeCustomerListOptions { Created = new StripeDateFilter { GreaterThanOrEqual = DateTime.UtcNow.Date } });
 
 ### Updating a customer subscription
 
@@ -403,10 +407,13 @@ If you set a charge to capture = false, you use this to capture the charge later
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Capture(*chargeId*, *amountInCents*, *applicationFeeInCents*);
 
-### List all charges
+### List charges
 
 	var chargeService = new StripeChargeService();
-	IEnumerable<StripeCharge> response = chargeService.List();    // can optionally pass count (defaults to 10), offset, and a customerId to get charges for a single customer
+	IEnumerable<StripeCharge> allCharges = chargeService.List();	// Defaults to first 10 results
+    IEnumerable<StripeCharge> chargesForCustomer = chargeService.List(new StripeChargeListOptions { Customer = customerId });
+    IEnumerable<StripeCharge> chargesToday = chargeService.List(
+        new StripeChargeListOptions { Created = new StripeDateFilter { GreaterThanOrEqual = DateTime.UtcNow.Date } });
 
 Invoices
 --------
@@ -437,7 +444,8 @@ Invoices
 ### List all invoices
 
 	var invoiceService = new StripeInvoiceService();
-	IEnumerable<StripeInvoice> response = invoiceService.List();    // can optionally pass count (defaults to 10), offset, and a customerid
+	IEnumerable<StripeInvoice> invoices = invoiceService.List();		// Defaults to first 10
+    IEnumerable<StripeInvoice> secondPageOfInvoices = invoiceService.List(new StripeInvoiceListOptions { Offset = 1 }); 
 
 Invoice Items
 -------------
@@ -478,7 +486,7 @@ Any invoice items you create for a customer will be added to their bill.
 ### List all invoice items
 
 	var invoiceItemService = new StripeInvoiceItemService();
-	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List();    // can optionally pass count (defaults to 10), offset, and a customerid
+	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List();    // can pass options including offset & count for paging, customer, and created date
 
 Account
 -------
@@ -585,7 +593,7 @@ Transfers
 ### List all transfers
 
 	var transferService = new StripeTransferService();
-	IEnumerable<StripeTransfer> response = transferService.List(); //can optionally pass count (defaults to 10), offset (defaults to 0), recipientId, and status
+	IEnumerable<StripeTransfer> response = transferService.List(); // Can pass options including offset & count for paging, recipientId, status, and date
 
 Application Fees
 ----------------
