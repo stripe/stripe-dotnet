@@ -1,9 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+
+using Newtonsoft.Json;
 
 namespace Stripe
 {
 	public class StripeChargeCreateOptions : CreditCardOptions
 	{
+	    public StripeChargeCreateOptions()
+	    {
+	        Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("amount")]
 		public int? AmountInCents { get; set; }
 
@@ -24,5 +31,8 @@ namespace Stripe
 
 		[JsonProperty("card")]
 		public string Card { get; set; }
+
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; } 
 	}
 }

@@ -20,6 +20,9 @@ namespace Stripe
 		[JsonProperty("attempted")]
 		public bool? Attempted { get; set; }
 
+        [JsonProperty("subscription")]
+        public string SubscriptionId { get; set; }
+
         // Do not add JsonProperty as this is managed by the InternalCharge field
         public string ChargeId { get; private set; }
         // Do not add JsonProperty as this is managed by the InternalCharge field
