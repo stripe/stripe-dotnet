@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 
@@ -17,7 +18,7 @@ namespace Stripe
 		public DateTime Date { get; set; }
 
 		[JsonProperty("proration")]
-		public bool Proration{ get; set; }
+		public bool Proration { get; set; }
 
 		[JsonProperty("currency")]
 		public string Currency { get; set; }
@@ -36,5 +37,8 @@ namespace Stripe
 
 		[JsonProperty("period")]
 		public StripePeriod Period { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

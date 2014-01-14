@@ -25,7 +25,7 @@ namespace Stripe.Tests
 			StripeTransfer.Currency.ShouldEqual(StripeTransferCreateOptions.Currency);
 
 		It should_have_a_valid_date = () =>
-			StripeTransfer.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
+            StripeTransfer.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow.AddMinutes(1));
 
 		It should_have_a_status_other_than_failed = () =>
 			StripeTransfer.Status.ShouldNotEqual("failed");

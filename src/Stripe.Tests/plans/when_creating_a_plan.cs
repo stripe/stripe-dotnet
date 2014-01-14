@@ -19,5 +19,11 @@ namespace Stripe.Tests
 			StripePlan = _stripePlanService.Create(StripePlanCreateOptions);
 
 		Behaves_like<plan_behaviors> behaviors;
+
+		It should_have_metadata = () =>
+			StripePlan.Metadata.Count.ShouldBeGreaterThan(0);
+
+		It should_have_correct_metadata = () =>
+			StripePlan.Metadata.ShouldContainOnly(StripePlanCreateOptions.Metadata);
 	}
 }

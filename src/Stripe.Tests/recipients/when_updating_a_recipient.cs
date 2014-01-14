@@ -30,5 +30,11 @@ namespace Stripe.Tests
 
 		It should_have_the_correct_description = () =>
 			_stripeRecipient.Description.ShouldEqual(_stripeRecipientUpdateOptions.Description);
+
+		It should_have_metadata = () =>
+			_stripeRecipient.Metadata.Count.ShouldBeGreaterThan(0);
+
+		It should_have_correct_metadata = () =>
+			_stripeRecipient.Metadata.ShouldContainOnly(_stripeRecipientUpdateOptions.Metadata);
 	}
 }

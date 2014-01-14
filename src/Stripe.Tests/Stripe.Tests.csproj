@@ -43,6 +43,16 @@
     </Reference>
     <Reference Include="Machine.Specifications.Should">
       <HintPath>..\packages\Machine.Specifications.0.6.1\lib\net40\Machine.Specifications.Should.dll</HintPath>
+    <Reference Include="Machine.Specifications, Version=0.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Machine.Specifications.0.6.2\lib\net40\Machine.Specifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications.Clr4, Version=0.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Machine.Specifications.0.6.2\lib\net40\Machine.Specifications.Clr4.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications.Should">
+      <HintPath>..\packages\Machine.Specifications.0.6.2\lib\net40\Machine.Specifications.Should.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -94,7 +104,6 @@
     <Compile Include="tokens\when_creating_a_token_with_an_api_key.cs" />
     <Compile Include="transfers\test_data\stripe_transfer_create_options.cs" />
     <Compile Include="transfers\transfer_behaviors.cs" />
-    <Compile Include="transfers\when_canceling_a_transfer.cs" />
     <Compile Include="transfers\when_creating_a_transfer.cs" />
     <Compile Include="transfers\when_getting_a_transfer.cs" />
     <Compile Include="transfers\when_listing_transfers.cs" />
@@ -157,7 +166,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="_web_event_hooks\event_hooks_handler.ashx" />
     <None Include="_web_event_hooks\web.config">
       <SubType>Designer</SubType>

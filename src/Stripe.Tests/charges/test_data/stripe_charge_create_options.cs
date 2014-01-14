@@ -1,4 +1,5 @@
-﻿namespace Stripe.Tests.test_data
+﻿using System.Collections.Generic;
+namespace Stripe.Tests.test_data
 {
 	public static class stripe_charge_create_options
 	{
@@ -19,7 +20,12 @@
 				CardNumber = "4242424242424242",
 				Description = "Joe Meatball Charge",
 				AmountInCents = 5153,
-				Currency = "usd"
+				Currency = "usd",
+				Metadata = new Dictionary<string, string>
+				{
+					{ "A", "Value-A" },
+					{ "B", "Value-B" }
+				}
 			};
 		}
 

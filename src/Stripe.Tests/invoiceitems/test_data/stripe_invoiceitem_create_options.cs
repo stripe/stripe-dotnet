@@ -1,4 +1,6 @@
-﻿namespace Stripe.Tests.test_data
+﻿using System.Collections.Generic;
+
+namespace Stripe.Tests.test_data
 {
 	public static class stripe_invoiceitem_create_options
 	{
@@ -9,7 +11,12 @@
 				AmountInCents = 1000,
 				Currency = "usd",
 				CustomerId = customerId,
-				Description = "Test Invoice Item"
+				Description = "Test Invoice Item",
+				Metadata = new Dictionary<string, string>
+				{
+					{ "A", "Value-A" },
+					{ "B", "Value-B" }
+				}
 			};
 
 			return stripeInvoiceItemCreateOptions;

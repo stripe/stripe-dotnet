@@ -8,6 +8,7 @@ namespace Stripe.Tests
 		private static StripeInvoice _stripeFailedInvoice;
 		private static StripeInvoiceService _stripeInvoiceService;
 		private static StripeCharge _stripeCharge;
+		private static StripeException _stripeException;
 
 		Establish context = () =>
 		{
@@ -25,21 +26,20 @@ namespace Stripe.Tests
 
 		Because of = () =>
 		{
-			_stripeInvoiceService.Pay(_stripeCreatedInvoice.Id);
-
-			_stripeFailedInvoice = _stripeInvoiceService.Get(_stripeCreatedInvoice.Id);
-
-			var stripeChargeService = new StripeChargeService();
-			_stripeCharge = stripeChargeService.Get(_stripeFailedInvoice.ChargeId);
+			try
+			{
+				_stripeInvoiceService.Pay(_stripeCreatedInvoice.Id);
+			}
+			catch (StripeException exception)
+			{
+				_stripeException = exception;
+			}
 		};
 
-		It should_have_the_correct_id = () =>
-			_stripeFailedInvoice.Id.ShouldEqual(_stripeCreatedInvoice.Id);
-
 		It should_have_a_declined_failure_message = () =>
-			_stripeCharge.FailureMessage.ShouldBeEqualIgnoringCase("Your card was declined.");
+			_stripeException.Message.ShouldBeEqualIgnoringCase("Your card was declined.");
 
 		It should_have_a_declined_failure_code = () =>
-			_stripeCharge.FailureCode.ShouldBeEqualIgnoringCase("card_declined");
+			_stripeException.StripeError.Code.ShouldBeEqualIgnoringCase("card_declined");
 	}
 }

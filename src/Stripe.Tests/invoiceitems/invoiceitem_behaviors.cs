@@ -20,7 +20,7 @@ namespace Stripe.Tests
 			StripeInvoiceItem.CustomerId.ShouldEqual(StripeInvoiceItemCreateOptions.CustomerId);
 
 		It should_have_the_correct_date = () =>
-			StripeInvoiceItem.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
+            StripeInvoiceItem.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow.AddMinutes(1));
 
 		It should_have_the_correct_description = () =>
 			StripeInvoiceItem.Description.ShouldEqual(StripeInvoiceItemCreateOptions.Description);
