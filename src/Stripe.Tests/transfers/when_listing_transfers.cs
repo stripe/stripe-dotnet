@@ -13,13 +13,13 @@ namespace Stripe.Tests
 		{
 			_stripeTransferService = new StripeTransferService();
 
-			_stripeTransferService.Create(test_data.stripe_transfer_create_options.Valid());
-			_stripeTransferService.Create(test_data.stripe_transfer_create_options.Valid());
-			_stripeTransferService.Create(test_data.stripe_transfer_create_options.Valid());
+            _stripeTransferService.Create(test_data.stripe_transfer_create_options.Valid()).Await();
+            _stripeTransferService.Create(test_data.stripe_transfer_create_options.Valid()).Await();
+            _stripeTransferService.Create(test_data.stripe_transfer_create_options.Valid()).Await();
 		};
 
 		Because of = () =>
-			_stripeTransferList = _stripeTransferService.List().ToList();
+            _stripeTransferList = _stripeTransferService.List().Await();
 
 		It should_have_at_least_one_entry = () =>
 			_stripeTransferList.Count.ShouldBeGreaterThanOrEqualTo(3);

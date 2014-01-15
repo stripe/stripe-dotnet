@@ -10,12 +10,12 @@ namespace Stripe.Tests
 		Establish context = () =>
 		{
 			var stripeCustomerService = new StripeCustomerService();
-			var stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
+            StripeCustomer stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard()).Await();
 
 			_stripeInvoiceItemService = new StripeInvoiceItemService();
 			var stripeInvoiceItemCreateOptions = test_data.stripe_invoiceitem_create_options.Valid(stripeCustomer.Id);
 
-			var stripeInvoiceItem = _stripeInvoiceItemService.Create(stripeInvoiceItemCreateOptions);
+            StripeInvoiceItem stripeInvoiceItem = _stripeInvoiceItemService.Create(stripeInvoiceItemCreateOptions).Await();
 			_createdInvoiceItemId = stripeInvoiceItem.Id;
 		};
 
@@ -24,7 +24,7 @@ namespace Stripe.Tests
 
 		It should_throw_exception_when_getting = () =>
 		{
-			var exception = Catch.Exception(() => _stripeInvoiceItemService.Get(_createdInvoiceItemId));
+            var exception = Catch.Exception(() => _stripeInvoiceItemService.Get(_createdInvoiceItemId).Await());
 			exception.Message.ShouldContain("No such invoiceitem");
 		};
 	}

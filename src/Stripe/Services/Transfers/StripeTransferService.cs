@@ -1,56 +1,59 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Stripe.Services;
 
 namespace Stripe
 {
-	public class StripeTransferService
+	public class StripeTransferService : BaseStripeService
 	{
-		private string ApiKey { get; set; }
-
-		public StripeTransferService(string apiKey = null)
+		public StripeTransferService(string apiKey = null) : base(apiKey)
 		{
-			ApiKey = apiKey;
 		}
 
-		public virtual StripeTransfer Create(StripeTransferCreateOptions createOptions)
+		public virtual async Task<StripeTransfer> Create(StripeTransferCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Transfers);
+			var data = ParameterBuilder.GenerateFormData(createOptions);
 
-			var response = Requestor.PostString(url, ApiKey);
+			var response = await Requestor.PostStringAsync(Urls.Transfers, data, ApiKey);
 
 			return Mapper<StripeTransfer>.MapFromJson(response);
 		}
 
-		public virtual StripeTransfer Get(string transferId)
+		public virtual async Task<StripeTransfer> Get(string transferId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Transfers, transferId);
 
-			var response = Requestor.GetString(url, ApiKey);
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripeTransfer>.MapFromJson(response);
 		}
 
-		public virtual StripeTransfer Cancel(string transferId)
+		public virtual async Task<StripeTransfer> Cancel(string transferId)
 		{
 			var url = string.Format("{0}/{1}/cancel", Urls.Transfers, transferId);
-
-			var response = Requestor.PostString(url, ApiKey);
+		    var data = new List<KeyValuePair<string, string>>();
+			var response = await Requestor.PostStringAsync(url, data, ApiKey);
 
 			return Mapper<StripeTransfer>.MapFromJson(response);
 		}
 
-		public virtual IEnumerable<StripeTransfer> List(int count = 10, int offset = 0, string recipientId = null, string status = null)
+		public virtual async Task<List<StripeTransfer>> List(int count = 10, int offset = 0, string recipientId = null, string status = null)
 		{
-			var url = Urls.Transfers;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+            var data = new List<KeyValuePair<string, string>>
+		    {
+		        new KeyValuePair<string, string>("count", count.ToString()),
+		        new KeyValuePair<string, string>("offset", offset.ToString())
+		    };
 
-			if (!string.IsNullOrEmpty(recipientId))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "recipient", recipientId);
+            if (!string.IsNullOrEmpty(recipientId))
+                data.Add(new KeyValuePair<string, string>("recipient", recipientId));
 
-			if (!string.IsNullOrEmpty(status))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "status", status);
+            if (!string.IsNullOrEmpty(status))
+               data.Add(new KeyValuePair<string, string>("status", status));
 
-			var response = Requestor.GetString(url, ApiKey);
+			var url = ParameterBuilder.ApplyDataToUrl(Urls.Transfers, data);
+            
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripeTransfer>.MapCollectionFromJson(response);
 		}

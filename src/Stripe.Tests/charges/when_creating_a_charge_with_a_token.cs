@@ -14,7 +14,7 @@ namespace Stripe.Tests
 		Establish context = () =>
 		{
 			var stripeTokenService = new StripeTokenService();
-			_stripeToken = stripeTokenService.Create(test_data.stripe_token_create_options.Valid());
+			_stripeToken = stripeTokenService.Create(test_data.stripe_token_create_options.Valid()).Await();
 			
 			_stripeChargeService = new StripeChargeService();
 			StripeChargeCreateOptions = test_data.stripe_charge_create_options.ValidToken(_stripeToken.Id);
@@ -22,7 +22,7 @@ namespace Stripe.Tests
 
 		Because of = () =>
 		{
-			StripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions);
+			StripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions).Await();
 			StripeCard = _stripeToken.StripeCard;
 		};
 

@@ -15,7 +15,7 @@ namespace Stripe.Tests
 		Establish context = () =>
 		{
 			var stripeCustomerService = new StripeCustomerService();
-			_stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
+			_stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard()).Await();
 			
 			_stripeChargeService = new StripeChargeService();
 			StripeChargeCreateOptions = test_data.stripe_charge_create_options.ValidCustomer(_stripeCustomer.Id);
@@ -23,7 +23,7 @@ namespace Stripe.Tests
 
 		Because of = () =>
 		{
-			StripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions);
+			StripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions).Await();
 			StripeCard = _stripeCustomer.StripeCardList.StripeCards.First();
 		};
 

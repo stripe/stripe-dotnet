@@ -16,7 +16,7 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-			StripeRecipient = _stripeRecipientService.Create(StripeRecipientCreateOptions);
+            StripeRecipient = _stripeRecipientService.Create(StripeRecipientCreateOptions).Await();
 
 		Behaves_like<recipient_behaviors> behaviors;
 

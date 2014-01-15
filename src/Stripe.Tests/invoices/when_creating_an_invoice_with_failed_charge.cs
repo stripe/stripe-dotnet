@@ -14,21 +14,21 @@ namespace Stripe.Tests
 		{
 			var stripeCustomerService = new StripeCustomerService();
 			var stripeCustomerCreateOptions = test_data.stripe_customer_create_options.ValidCardButChargeFails();
-			var stripeCustomer = stripeCustomerService.Create(stripeCustomerCreateOptions);
+            StripeCustomer stripeCustomer = stripeCustomerService.Create(stripeCustomerCreateOptions).Await();
 
 			var stripeInvoiceItemService = new StripeInvoiceItemService();
 			var stripeInvoiceItemCreateOptions = test_data.stripe_invoiceitem_create_options.Valid(stripeCustomer.Id);
-			stripeInvoiceItemService.Create(stripeInvoiceItemCreateOptions);
+            stripeInvoiceItemService.Create(stripeInvoiceItemCreateOptions).Await();
 
 			_stripeInvoiceService = new StripeInvoiceService();
-			_stripeCreatedInvoice = _stripeInvoiceService.Create(stripeCustomer.Id);
+            _stripeCreatedInvoice = _stripeInvoiceService.Create(stripeCustomer.Id).Await();
 		};
 
 		Because of = () =>
 		{
 			try
 			{
-				_stripeInvoiceService.Pay(_stripeCreatedInvoice.Id);
+                _stripeInvoiceService.Pay(_stripeCreatedInvoice.Id).Await();
 			}
 			catch (StripeException exception)
 			{

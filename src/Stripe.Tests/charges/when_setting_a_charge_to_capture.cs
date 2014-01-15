@@ -18,7 +18,7 @@ namespace Stripe.Tests
 
 		Because of = () =>
 		{
-			StripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions);
+            StripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions).Await();
 		};
 
 		It should_have_captured_set_to_false = () =>

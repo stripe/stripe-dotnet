@@ -16,13 +16,13 @@ namespace Stripe.Tests
 			_stripeChargeService = new StripeChargeService();
 			StripeChargeCreateOptions = test_data.stripe_charge_create_options.ValidCard();
 
-			var stripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions);
+			StripeCharge stripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions).Await();
 			_createdStripeChargeId = stripeCharge.Id;
 		};
 
 		Because of = () =>
 		{
-			StripeCharge = _stripeChargeService.Get(_createdStripeChargeId);
+			StripeCharge = _stripeChargeService.Get(_createdStripeChargeId).Await();
 			StripeCard = StripeCharge.StripeCard;
 		};
 

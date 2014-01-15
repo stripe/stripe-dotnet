@@ -18,21 +18,21 @@ namespace Stripe.Tests
 		Establish context = () =>
 		{
 			var _stripePlanService = new StripePlanService();
-			StripePlan = _stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
+            StripePlan = _stripePlanService.Create(test_data.stripe_plan_create_options.Valid()).Await();
 
 			var _stripeCouponService = new StripeCouponService();
-			StripeCoupon = _stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid());
+            StripeCoupon = _stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid()).Await();
 
 			_stripeCustomerService = new StripeCustomerService();
 			StripeCustomerCreateOptions = test_data.stripe_customer_create_options.ValidCard(StripePlan.Id, StripeCoupon.Id, DateTime.UtcNow.AddMonths(1));
 
-			var stripeCustomer = _stripeCustomerService.Create(StripeCustomerCreateOptions);
+            StripeCustomer stripeCustomer = _stripeCustomerService.Create(StripeCustomerCreateOptions).Await();
 			_createdStripeCustomerId = stripeCustomer.Id;
 		};
 
 		Because of = () =>
 		{
-			StripeCustomer = _stripeCustomerService.Get(_createdStripeCustomerId);
+            StripeCustomer = _stripeCustomerService.Get(_createdStripeCustomerId).Await();
 
 			StripeCard = StripeCustomer.StripeCardList.StripeCards.First();
 		};

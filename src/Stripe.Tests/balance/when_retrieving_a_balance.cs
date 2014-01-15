@@ -15,7 +15,7 @@ namespace Stripe.Tests
 
 		Because of = () =>
 		{
-			StripeBalance = _stripeBalanceService.Get();
+			StripeBalance = _stripeBalanceService.Get().Await();
 		};
 
 		Behaves_like<balance_behaviors> behaviors;

@@ -15,12 +15,12 @@ namespace Stripe.Tests
 			_stripeCouponService = new StripeCouponService();
 			StripeCouponCreateOptions = test_data.stripe_coupon_create_options.Valid();
 
-			var stripeCoupon = _stripeCouponService.Create(StripeCouponCreateOptions);
+            StripeCoupon stripeCoupon = _stripeCouponService.Create(StripeCouponCreateOptions).Await();
 			_createdCouponId = stripeCoupon.Id;
 		};
 
 		Because of = () =>
-			StripeCoupon = _stripeCouponService.Get(_createdCouponId);
+            StripeCoupon = _stripeCouponService.Get(_createdCouponId).Await();
 
 		Behaves_like<coupon_behaviors> behaviors;
 	}

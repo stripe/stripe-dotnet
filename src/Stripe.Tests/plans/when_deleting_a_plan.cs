@@ -13,16 +13,16 @@ namespace Stripe.Tests
 			_stripePlanService = new StripePlanService();
 			_stripePlanCreateOptions = test_data.stripe_plan_create_options.Valid();
 
-			var stripePlan = _stripePlanService.Create(_stripePlanCreateOptions);
+            StripePlan stripePlan = _stripePlanService.Create(_stripePlanCreateOptions).Await();
 			_createdStripePlanId = stripePlan.Id;
 		};
 
 		Because of = () =>
-			_stripePlanService.Delete(_createdStripePlanId);
+            _stripePlanService.Delete(_createdStripePlanId).Await();
 
 		It should_throw_exception_when_getting = () =>
 		{
-			var exception = Catch.Exception(() => _stripePlanService.Get(_createdStripePlanId));
+            var exception = Catch.Exception(() => _stripePlanService.Get(_createdStripePlanId).Await());
 			exception.Message.ShouldContain("No such plan");
 		};
 	}

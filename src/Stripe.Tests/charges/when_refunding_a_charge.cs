@@ -14,12 +14,12 @@ namespace Stripe.Tests
 			_stripeChargeService = new StripeChargeService();
 			_stripeChargeCreateOptions = test_data.stripe_charge_create_options.ValidCard();
 
-			var stripeCharge = _stripeChargeService.Create(_stripeChargeCreateOptions);
+            StripeCharge stripeCharge = _stripeChargeService.Create(_stripeChargeCreateOptions).Await();
 			_createdStripeChargeId = stripeCharge.Id;
 		};
 
 		Because of = () =>
-			_stripeCharge = _stripeChargeService.Refund(_createdStripeChargeId);
+            _stripeCharge = _stripeChargeService.Refund(_createdStripeChargeId).Await();
 
 		It should_have_been_marked_as_refunded = () =>
 			_stripeCharge.Refunded.ShouldEqual(true);

@@ -13,14 +13,14 @@ namespace Stripe.Tests
 		{
 			_stripePlanService = new StripePlanService();
 
-			_stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
-			_stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
-			_stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
-			_stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
+            _stripePlanService.Create(test_data.stripe_plan_create_options.Valid()).Await();
+            _stripePlanService.Create(test_data.stripe_plan_create_options.Valid()).Await();
+            _stripePlanService.Create(test_data.stripe_plan_create_options.Valid()).Await();
+            _stripePlanService.Create(test_data.stripe_plan_create_options.Valid()).Await();
 		};
 
 		Because of = () =>
-			_stripePlanList = _stripePlanService.List().ToList();
+            _stripePlanList = _stripePlanService.List().Await();
 
 		It should_have_atleast_4_entries = () =>
 			_stripePlanList.Count.ShouldBeGreaterThanOrEqualTo(4);

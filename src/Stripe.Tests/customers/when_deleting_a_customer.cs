@@ -10,15 +10,15 @@ namespace Stripe.Tests
 		Establish context = () =>
 		{
 			_stripeCustomerService = new StripeCustomerService();
- 
-			var stripeCustomer = _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
+
+            StripeCustomer stripeCustomer = _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard()).Await();
 			_createdStripeCustomerId = stripeCustomer.Id;
 		};
 
 		Because of = () =>
-			_stripeCustomerService.Delete(_createdStripeCustomerId);
+            _stripeCustomerService.Delete(_createdStripeCustomerId).Await();
 
 		It should_show_as_deleted = () =>
-			_stripeCustomerService.Get(_createdStripeCustomerId).Deleted.ShouldEqual(true);
+            ((StripeCustomer)_stripeCustomerService.Get(_createdStripeCustomerId).Await()).Deleted.ShouldEqual(true);
 	}
 }

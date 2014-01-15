@@ -16,7 +16,7 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-			StripeCoupon = _stripeCouponService.Create(StripeCouponCreateOptions);
+            StripeCoupon = _stripeCouponService.Create(StripeCouponCreateOptions).Await();
 
 		Behaves_like<coupon_behaviors> behaviors;
 	}

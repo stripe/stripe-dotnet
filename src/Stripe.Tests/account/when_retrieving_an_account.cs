@@ -15,7 +15,7 @@ namespace Stripe.Tests
 
 		Because of = () =>
 		{
-			StripeAccount = _stripeAccountService.Get();
+			StripeAccount = _stripeAccountService.Get().Await();
 		};
 
 		Behaves_like<account_behaviors> behaviors;

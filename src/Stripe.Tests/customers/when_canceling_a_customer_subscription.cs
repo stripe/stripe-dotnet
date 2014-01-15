@@ -12,18 +12,18 @@ namespace Stripe.Tests
 		Establish context = () =>
 		{
 			var _stripePlanService = new StripePlanService();
-			_stripePlan = _stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
+			_stripePlan = _stripePlanService.Create(test_data.stripe_plan_create_options.Valid()).Await();
 
 			_stripeCustomerService = new StripeCustomerService();
-			_stripeCustomer = _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard(_stripePlan.Id));
+			_stripeCustomer = _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard(_stripePlan.Id)).Await();
 		};
 
 		Because of = () =>
 		{
-			_stripeSubscription = _stripeCustomerService.CancelSubscription(_stripeCustomer.Id);
+			_stripeSubscription = _stripeCustomerService.CancelSubscription(_stripeCustomer.Id).Await();
 
 			// have to load this again to make sure the coupon took
-			_stripeCustomer = _stripeCustomerService.Get(_stripeCustomer.Id);
+			_stripeCustomer = _stripeCustomerService.Get(_stripeCustomer.Id).Await();
 		};
 
 		It should_have_the_new_plan = () =>

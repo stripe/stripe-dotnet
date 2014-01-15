@@ -13,20 +13,20 @@ namespace Stripe.Tests
 		Establish context = () =>
 		{
 			var stripeCustomerService = new StripeCustomerService();
-			_stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
+			_stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard()).Await();
 
 			_stripeChargeService = new StripeChargeService();
 
-			_stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCard());
-			_stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCard());
-			_stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCard());
-			_stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCard());
-			_stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCustomer(_stripeCustomer.Id));
-			_stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCustomer(_stripeCustomer.Id));
+			_stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCard()).Await();
+            _stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCard()).Await();
+            _stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCard()).Await();
+            _stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCard()).Await();
+            _stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCustomer(_stripeCustomer.Id)).Await();
+            _stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCustomer(_stripeCustomer.Id)).Await();
 		};
 
 		Because of = () =>
-			_stripeChargeList = _stripeChargeService.List(10, 0, _stripeCustomer.Id).ToList();
+			_stripeChargeList = _stripeChargeService.List(10, 0, _stripeCustomer.Id).Await();
 
 		It should_have_only_2_entries = () =>
 			_stripeChargeList.Count.ShouldEqual(2);

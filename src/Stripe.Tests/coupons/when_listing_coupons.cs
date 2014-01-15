@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Machine.Specifications;
 
 namespace Stripe.Tests
@@ -13,14 +12,14 @@ namespace Stripe.Tests
 		{
 			_stripeCouponService = new StripeCouponService();
 
-			_stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid());
-			_stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid());
-			_stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid());
-			_stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid());
+            _stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid()).Await();
+            _stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid()).Await();
+            _stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid()).Await();
+            _stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid()).Await();
 		};
 
 		Because of = () =>
-			_stripeCouponList = _stripeCouponService.List().ToList();
+            _stripeCouponList = _stripeCouponService.List().Await();
 
 		It should_have_atleast_4_entries = () =>
 			_stripeCouponList.Count.ShouldBeGreaterThanOrEqualTo(4);

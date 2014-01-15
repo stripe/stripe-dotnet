@@ -16,14 +16,14 @@ namespace Stripe.Tests
 			_stripePlanService = new StripePlanService();
 			StripePlanCreateOptions = test_data.stripe_plan_create_options.Valid();
 
-			var stripePlan = _stripePlanService.Create(StripePlanCreateOptions);
+            StripePlan stripePlan = _stripePlanService.Create(StripePlanCreateOptions).Await();
 			_createdStripePlanId = stripePlan.Id;
 
 			StripePlanUpdateOptions = test_data.stripe_plan_update_options.Valid();
 		};
 
 		Because of = () =>
-			StripePlan = _stripePlanService.Update(_createdStripePlanId, StripePlanUpdateOptions);
+            StripePlan = _stripePlanService.Update(_createdStripePlanId, StripePlanUpdateOptions).Await();
 
 		It should_have_the_new_name = () =>
 			StripePlan.Name.ShouldEqual(StripePlanUpdateOptions.Name);

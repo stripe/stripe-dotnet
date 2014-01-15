@@ -15,13 +15,13 @@ namespace Stripe.Tests
 			_stripeRecipientService = new StripeRecipientService();
 			StripeRecipientCreateOptions = test_data.stripe_recipient_create_options.ValidCorporation();
 
-			var stripeRecipient = _stripeRecipientService.Create(StripeRecipientCreateOptions);
+            StripeRecipient stripeRecipient = _stripeRecipientService.Create(StripeRecipientCreateOptions).Await();
 			_createdStripeRecipientId = stripeRecipient.Id;
 		};
 
 		Because of = () =>
 		{
-			StripeRecipient = _stripeRecipientService.Get(_createdStripeRecipientId);
+            StripeRecipient = _stripeRecipientService.Get(_createdStripeRecipientId).Await();
 		};
 
 		Behaves_like<recipient_behaviors> behaviors;

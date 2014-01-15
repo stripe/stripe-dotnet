@@ -13,14 +13,14 @@ namespace Stripe.Tests
 		{
 			_stripeCustomerService = new StripeCustomerService();
 
-			_stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
-			_stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
-			_stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
-			_stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
+            _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard()).Await();
+            _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard()).Await();
+            _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard()).Await();
+            _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard()).Await();
 		};
 
 		Because of = () =>
-			_stripeCustomerList = _stripeCustomerService.List().ToList();
+			_stripeCustomerList = _stripeCustomerService.List().Await();
 
 		It should_have_atleast_4_entries = () =>
 			_stripeCustomerList.Count.ShouldBeGreaterThanOrEqualTo(4);

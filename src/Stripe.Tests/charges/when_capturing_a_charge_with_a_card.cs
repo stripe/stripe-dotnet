@@ -18,10 +18,10 @@ namespace Stripe.Tests
 
 		Because of = () =>
 		{
-			var charge = _stripeChargeService.Create(StripeChargeCreateOptions);
-			_stripeChargeService.Capture(charge.Id);
+			StripeCharge charge = _stripeChargeService.Create(StripeChargeCreateOptions).Await();
+			_stripeChargeService.Capture(charge.Id).Await();
 
-			StripeCharge = _stripeChargeService.Get(charge.Id);
+			StripeCharge = _stripeChargeService.Get(charge.Id).Await();
 		};
 
 		It should_have_captured_set_to_true = () =>

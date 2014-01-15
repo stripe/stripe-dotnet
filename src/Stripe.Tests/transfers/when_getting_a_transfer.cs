@@ -15,13 +15,13 @@ namespace Stripe.Tests
 			_stripeTransferService = new StripeTransferService();
 			StripeTransferCreateOptions = test_data.stripe_transfer_create_options.Valid();
 
-			var stripeTransfer = _stripeTransferService.Create(StripeTransferCreateOptions);
+            StripeTransfer stripeTransfer = _stripeTransferService.Create(StripeTransferCreateOptions).Await();
 			_createStripeTransferId = stripeTransfer.Id;
 		};
 
 		Because of = () =>
 		{
-			StripeTransfer = _stripeTransferService.Get(_createStripeTransferId);
+            StripeTransfer = _stripeTransferService.Get(_createStripeTransferId).Await();
 		};
 
 		Behaves_like<transfer_behaviors> behaviors;

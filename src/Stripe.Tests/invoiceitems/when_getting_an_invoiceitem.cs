@@ -14,17 +14,17 @@ namespace Stripe.Tests
 		Establish context = () =>
 		{
 			var stripeCustomerService = new StripeCustomerService();
-			_stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
+            _stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard()).Await();
 
 			_stripeInvoiceItemService = new StripeInvoiceItemService();
 			StripeInvoiceItemCreateOptions = test_data.stripe_invoiceitem_create_options.Valid(_stripeCustomer.Id);
 
-			var createdInvoice = _stripeInvoiceItemService.Create(StripeInvoiceItemCreateOptions);
+            StripeInvoiceItem createdInvoice = _stripeInvoiceItemService.Create(StripeInvoiceItemCreateOptions).Await();
 			StripeInvoiceItemId = createdInvoice.Id;
 		};
 
 		Because of = () =>
-			StripeInvoiceItem = _stripeInvoiceItemService.Get(StripeInvoiceItemId);
+            StripeInvoiceItem = _stripeInvoiceItemService.Get(StripeInvoiceItemId).Await();
 
 		Behaves_like<invoiceitem_behaviors> behaviors;
 	}
