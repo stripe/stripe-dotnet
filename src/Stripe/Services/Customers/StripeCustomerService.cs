@@ -45,7 +45,7 @@ namespace Stripe
 			await Requestor.DeleteAsync(url, ApiKey);
 		}
 
-	    public virtual async Task<List<StripeCustomer>> List(int count = 10, int offset = 0)
+	    public virtual async Task<IEnumerable<StripeCustomer>> List(int count = 10, int offset = 0)
 		{
             var url = ParameterBuilder.ApplyDataToUrl(Urls.Customers, new List<KeyValuePair<string, string>>
 		    {

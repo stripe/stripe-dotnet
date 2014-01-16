@@ -43,7 +43,7 @@ namespace Stripe
 			return Mapper<StripeCharge>.MapFromJson(response);
 		}
 
-		public virtual async Task<List<StripeCharge>> List(int count = 10, int offset = 0, string customerId = null)
+		public virtual async Task<IEnumerable<StripeCharge>> List(int count = 10, int offset = 0, string customerId = null)
 		{
 			var url = Urls.Charges;
 		    var data = new List<KeyValuePair<string, string>>

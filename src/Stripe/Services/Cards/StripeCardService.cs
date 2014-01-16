@@ -49,7 +49,7 @@ namespace Stripe
 			await Requestor.DeleteAsync(url, ApiKey);
 		}
 
-		public virtual async Task<List<StripeCard>> List(string customerId, int count = 10, int offset = 0)
+		public virtual async Task<IEnumerable<StripeCard>> List(string customerId, int count = 10, int offset = 0)
 		{
 			var url = string.Format(Urls.Cards, customerId);
 		    url = ParameterBuilder.ApplyDataToUrl(url, new List<KeyValuePair<string, string>>

@@ -7,7 +7,7 @@ namespace Stripe.Tests
 	public class when_closing_an_invoice
 	{
 		private static StripeInvoice _stripeInvoice;
-		private static List<StripeInvoice> _stripeInvoiceList;
+		private static IEnumerable<StripeInvoice> _stripeInvoiceList;
 		private static StripeInvoiceService _stripeInvoiceService;
 
 		Establish context = () =>
@@ -27,7 +27,7 @@ namespace Stripe.Tests
 
 			_stripeInvoiceService = new StripeInvoiceService();
             _stripeInvoiceService.Create(stripeCustomer.Id).Await();
-            _stripeInvoiceList = _stripeInvoiceService.List(10, 0, stripeCustomer.Id).Await();
+            _stripeInvoiceList = _stripeInvoiceService.List(10, 0, stripeCustomer.Id).Result;
 		};
 
 		Because of = () =>

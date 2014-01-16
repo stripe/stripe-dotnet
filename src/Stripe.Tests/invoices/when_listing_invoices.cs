@@ -6,7 +6,7 @@ namespace Stripe.Tests
 {
 	public class when_listing_invoices
 	{
-		private static List<StripeInvoice> _stripeInvoiceList;
+		private static IEnumerable<StripeInvoice> _stripeInvoiceList;
 		private static StripeCustomer _stripeCustomer;
 		private static StripeInvoiceService _stripeInvoiceService;
 
@@ -26,9 +26,9 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-            _stripeInvoiceList = _stripeInvoiceService.List(10, 0, _stripeCustomer.Id).Await();
+            _stripeInvoiceList = _stripeInvoiceService.List(10, 0, _stripeCustomer.Id).Result;
 
 		It should_have_atleast_1_entry = () =>
-			_stripeInvoiceList.Count.ShouldBeGreaterThanOrEqualTo(1);
+			_stripeInvoiceList.Count().ShouldBeGreaterThanOrEqualTo(1);
 	}
 }

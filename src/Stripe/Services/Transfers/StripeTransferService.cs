@@ -37,7 +37,7 @@ namespace Stripe
 			return Mapper<StripeTransfer>.MapFromJson(response);
 		}
 
-		public virtual async Task<List<StripeTransfer>> List(int count = 10, int offset = 0, string recipientId = null, string status = null)
+		public virtual async Task<IEnumerable<StripeTransfer>> List(int count = 10, int offset = 0, string recipientId = null, string status = null)
 		{
             var data = new List<KeyValuePair<string, string>>
 		    {

@@ -45,7 +45,7 @@ namespace Stripe
 			return Mapper<StripePlan>.MapFromJson(response);
 		}
 
-		public virtual async Task<List<StripePlan>> List(int count = 10, int offset = 0)
+		public virtual async Task<IEnumerable<StripePlan>> List(int count = 10, int offset = 0)
 		{
 		    var url = ParameterBuilder.ApplyDataToUrl(Urls.Plans, new List<KeyValuePair<string, string>>
 		    {

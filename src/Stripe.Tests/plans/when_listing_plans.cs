@@ -6,7 +6,7 @@ namespace Stripe.Tests
 {
 	public class when_listing_plans
 	{
-		private static List<StripePlan> _stripePlanList;
+		private static IEnumerable<StripePlan> _stripePlanList;
 		private static StripePlanService _stripePlanService;
 
 		Establish context = () =>
@@ -20,9 +20,9 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-            _stripePlanList = _stripePlanService.List().Await();
+            _stripePlanList = _stripePlanService.List().Result;
 
 		It should_have_atleast_4_entries = () =>
-			_stripePlanList.Count.ShouldBeGreaterThanOrEqualTo(4);
+			_stripePlanList.Count().ShouldBeGreaterThanOrEqualTo(4);
 	}
 }

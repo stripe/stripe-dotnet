@@ -6,7 +6,7 @@ namespace Stripe.Tests
 {
 	public class when_listing_transfers
 	{
-		private static List<StripeTransfer> _stripeTransferList;
+		private static IEnumerable<StripeTransfer> _stripeTransferList;
 		private static StripeTransferService _stripeTransferService;
 
 		Establish context = () =>
@@ -19,9 +19,9 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-            _stripeTransferList = _stripeTransferService.List().Await();
+            _stripeTransferList = _stripeTransferService.List().Result;
 
 		It should_have_at_least_one_entry = () =>
-			_stripeTransferList.Count.ShouldBeGreaterThanOrEqualTo(3);
+			_stripeTransferList.Count().ShouldBeGreaterThanOrEqualTo(3);
 	}
 }

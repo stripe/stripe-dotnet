@@ -6,7 +6,7 @@ namespace Stripe.Tests
 {
 	public class when_listing_recipients
 	{
-		private static List<StripeRecipient> _stripeRecipientList;
+		private static IEnumerable<StripeRecipient> _stripeRecipientList;
 		private static StripeRecipientService _stripeRecipientService;
 
 		Establish context = () =>
@@ -18,9 +18,9 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-            _stripeRecipientList = _stripeRecipientService.List().Await();
+            _stripeRecipientList = _stripeRecipientService.List().Result;
 
 		It should_havea_atleast_2_entries = () =>
-			_stripeRecipientList.Count.ShouldBeGreaterThanOrEqualTo(2);
+			_stripeRecipientList.Count().ShouldBeGreaterThanOrEqualTo(2);
 	}
 }

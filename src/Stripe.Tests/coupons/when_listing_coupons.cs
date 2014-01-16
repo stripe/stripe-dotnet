@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Machine.Specifications;
 
 namespace Stripe.Tests
 {
 	public class when_listing_coupons
 	{
-		private static List<StripeCoupon> _stripeCouponList;
+		private static IEnumerable<StripeCoupon> _stripeCouponList;
 		private static StripeCouponService _stripeCouponService;
 
 		Establish context = () =>
@@ -19,9 +20,9 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-            _stripeCouponList = _stripeCouponService.List().Await();
+            _stripeCouponList = _stripeCouponService.List().Result;
 
 		It should_have_atleast_4_entries = () =>
-			_stripeCouponList.Count.ShouldBeGreaterThanOrEqualTo(4);
+			_stripeCouponList.Count().ShouldBeGreaterThanOrEqualTo(4);
 	}
 }

@@ -9,7 +9,7 @@ namespace Stripe.Tests
 	public class when_creating_an_invoice_with_an_api_key
 	{
 		private static StripeInvoice _stripeInvoice;
-		private static List<StripeInvoice> _stripeInvoiceList;
+		private static IEnumerable<StripeInvoice> _stripeInvoiceList;
 		private static StripeInvoiceService _stripeInvoiceService;
 
 		Establish context = () =>
@@ -25,7 +25,7 @@ namespace Stripe.Tests
             StripeCustomer stripeCustomer = stripeCustomerService.Create(stripeCustomerCreateOptions).Await();
 
 			_stripeInvoiceService = new StripeInvoiceService(ConfigurationManager.AppSettings["StripeApiKey"]);
-            _stripeInvoiceList = _stripeInvoiceService.List(10, 0, stripeCustomer.Id).Await();
+            _stripeInvoiceList = _stripeInvoiceService.List(10, 0, stripeCustomer.Id).Result;
 		};
 
 		Because of = () =>
