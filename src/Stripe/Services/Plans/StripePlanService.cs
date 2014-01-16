@@ -1,58 +1,59 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Stripe.Services;
 
 namespace Stripe
 {
-	public class StripePlanService
+	public class StripePlanService : BaseStripeService
 	{
-		private string ApiKey { get; set; }
-
-		public StripePlanService(string apiKey = null)
+        public StripePlanService(string apiKey = null):base(apiKey)
 		{
-			ApiKey = apiKey;
 		}
 
-		public virtual StripePlan Create(StripePlanCreateOptions createOptions)
+		public virtual async Task<StripePlan> Create(StripePlanCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Plans);
+			var data = ParameterBuilder.GenerateFormData(createOptions);
 
-			var response = Requestor.PostString(url, ApiKey);
+			var response = await Requestor.PostStringAsync(Urls.Plans, data, ApiKey);
 
 			return Mapper<StripePlan>.MapFromJson(response);
 		}
 
-		public virtual StripePlan Get(string planId)
+		public virtual async Task<StripePlan> Get(string planId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Plans, planId);
 
-			var response = Requestor.GetString(url, ApiKey);
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripePlan>.MapFromJson(response);
 		}
 
-		public virtual void Delete(string planId)
+		public virtual async Task Delete(string planId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Plans, planId);
 
-			Requestor.Delete(url, ApiKey);
+			await Requestor.DeleteAsync(url, ApiKey);
 		}
 
-		public virtual StripePlan Update(string planId, StripePlanUpdateOptions updateOptions)
+		public virtual async Task<StripePlan> Update(string planId, StripePlanUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Plans, planId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			var data = ParameterBuilder.GenerateFormData(updateOptions);
 
-			var response = Requestor.PostString(url, ApiKey);
+			var response = await Requestor.PostStringAsync(url, data, ApiKey);
 
 			return Mapper<StripePlan>.MapFromJson(response);
 		}
 
-		public virtual IEnumerable<StripePlan> List(int count = 10, int offset = 0)
+		public virtual async Task<IEnumerable<StripePlan>> List(int count = 10, int offset = 0)
 		{
-			var url = Urls.Plans;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+		    var url = ParameterBuilder.ApplyDataToUrl(Urls.Plans, new List<KeyValuePair<string, string>>
+		    {
+		        new KeyValuePair<string, string>("count", count.ToString()),
+		        new KeyValuePair<string, string>("offset", offset.ToString())
+		    });
 
-			var response = Requestor.GetString(url, ApiKey);
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripePlan>.MapCollectionFromJson(response);
 		}

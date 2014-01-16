@@ -69,5 +69,17 @@ namespace Stripe.Tests.test_data
 				TokenId = _tokenId
 			};
 		}
+
+        public static StripeChargeCreateOptions ValidCardFromPCICompliantService()
+        {
+            var baseCard = ValidCard();
+            baseCard.Ip = "127.0.0.1";
+            baseCard.UserAgent =
+                "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36";
+            baseCard.Referrer = "http://test-referrer.wowee.com";
+            baseCard.ExternalId = "cid-9986";
+            baseCard.PaymentUserAgent = "Stripe.Net";
+            return baseCard;
+        }
 	}
 }

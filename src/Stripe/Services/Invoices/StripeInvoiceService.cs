@@ -1,77 +1,82 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Stripe.Services;
 
 namespace Stripe
 {
-	public class StripeInvoiceService
-	{
-		private string ApiKey { get; set; }
+    public class StripeInvoiceService : BaseStripeService
+    {
+        public StripeInvoiceService(string apiKey = null)
+            : base(apiKey)
+        {
+        }
 
-		public StripeInvoiceService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+        public virtual async Task<StripeInvoice> Get(string invoiceId)
+        {
+            var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
 
-		public virtual StripeInvoice Get(string invoiceId)
-		{
-			var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
+            var response = await Requestor.GetStringAsync(url, ApiKey);
 
-			var response = Requestor.GetString(url, ApiKey);
+            return Mapper<StripeInvoice>.MapFromJson(response);
+        }
 
-			return Mapper<StripeInvoice>.MapFromJson(response);
-		}
+        public virtual async Task<StripeInvoice> Upcoming(string customerId)
+        {
+            var url = string.Format("{0}/{1}", Urls.Invoices, "upcoming");
+            url = ParameterBuilder.ApplyDataToUrl(url,
+                new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("customer", customerId) });
 
-		public virtual StripeInvoice Upcoming(string customerId)
-		{
-			var url = string.Format("{0}/{1}", Urls.Invoices, "upcoming");
+            var response = await Requestor.GetStringAsync(url, ApiKey);
 
-			url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+            return Mapper<StripeInvoice>.MapFromJson(response);
+        }
 
-			var response = Requestor.GetString(url, ApiKey);
+        public virtual async Task<StripeInvoice> Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions)
+        {
+            var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
+            var data = ParameterBuilder.GenerateFormData(updateOptions);
 
-			return Mapper<StripeInvoice>.MapFromJson(response);
-		}
+            var response = await Requestor.PostStringAsync(url, data, ApiKey);
 
-		public virtual StripeInvoice Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions)
-		{
-			var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+            return Mapper<StripeInvoice>.MapFromJson(response);
+        }
 
-			var response = Requestor.PostString(url, ApiKey);
+        public virtual async Task<StripeInvoice> Pay(string invoiceId)
+        {
+            var url = string.Format("{0}/{1}/pay", Urls.Invoices, invoiceId);
+            var data = new List<KeyValuePair<string, string>>();
+            var response = await Requestor.PostStringAsync(url, data, ApiKey);
 
-			return Mapper<StripeInvoice>.MapFromJson(response);
-		}
+            return Mapper<StripeInvoice>.MapFromJson(response);
+        }
 
-		public virtual StripeInvoice Pay(string invoiceId)
-		{
-			var url = string.Format("{0}/{1}/pay", Urls.Invoices, invoiceId);
+        public virtual async Task<IEnumerable<StripeInvoice>> List(int count = 10, int offset = 0, string customerId = null)
+        {
 
-			var response = Requestor.PostString(url, ApiKey);
+            var data = new List<KeyValuePair<string, string>>
+		    {
+		        new KeyValuePair<string, string>("count", count.ToString()),
+		        new KeyValuePair<string, string>("offset", offset.ToString())
+		    };
 
-			return Mapper<StripeInvoice>.MapFromJson(response);
-		}
+            if (!string.IsNullOrEmpty(customerId))
+                data.Add(new KeyValuePair<string, string>("customer", customerId));
 
-		public virtual IEnumerable<StripeInvoice> List(int count = 10, int offset = 0, string customerId = null)
-		{
-			var url = Urls.Invoices;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+            var url = ParameterBuilder.ApplyDataToUrl(Urls.Invoices, data);
 
-			if (!string.IsNullOrEmpty(customerId))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+            var response = await Requestor.GetStringAsync(url, ApiKey);
 
-			var response = Requestor.GetString(url, ApiKey);
+            return Mapper<StripeInvoice>.MapCollectionFromJson(response);
+        }
 
-			return Mapper<StripeInvoice>.MapCollectionFromJson(response);
-		}
+        public virtual async Task<StripeInvoice> Create(string customerId)
+        {
+            var url = Urls.Invoices;
+            var data = new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("customer", customerId) };
 
-		public virtual StripeInvoice Create(string customerId)
-		{
-			var url = Urls.Invoices;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+            var response = await Requestor.PostStringAsync(Urls.Invoices, data, ApiKey);
 
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeInvoice>.MapFromJson(response);
-		}
-	}
+            return Mapper<StripeInvoice>.MapFromJson(response);
+        }
+    }
 }

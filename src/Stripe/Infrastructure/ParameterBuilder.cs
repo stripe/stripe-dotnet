@@ -10,51 +10,49 @@ namespace Stripe
 {
 	internal static class ParameterBuilder
 	{
-		public static string ApplyAllParameters(object obj, string url)
-		{
-			if (obj == null) return url;
+		public static IEnumerable<KeyValuePair<string,string>> GenerateFormData( object obj)
+        {
+            var data = new List<KeyValuePair<string, string>>();
+            foreach (var property in obj.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+            {
+                foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false))
+                {
+                    var attr = (JsonPropertyAttribute)attribute;
 
-			var newUrl = url;
+                    var value = property.GetValue(obj, null);
+                    if (value == null) continue;
 
-			foreach (var property in obj.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
-			{
-				foreach (var attribute in property.GetCustomAttributes(false))
-				{
-					if (attribute.GetType() != typeof(JsonPropertyAttribute)) continue;
+                    if (string.Compare(attr.PropertyName, "metadata", true) == 0)
+                    {
+                        var metadata = (Dictionary<string, string>)value;
 
-					var JsonPropertyAttribute = (JsonPropertyAttribute)attribute;
+                        foreach (string key in metadata.Keys)
+                        {
+                            data.Add(new KeyValuePair<string,string>(string.Format("metadata[{0}]", key), metadata[key]));
+                        }
+                    }
+                    else
+                    {
+                        data.Add(new KeyValuePair<string, string>(attr.PropertyName, value.ToString()));
+                    }
+                }
+            }
 
-					var value = property.GetValue(obj, null);
+            return data;
+        }
 
-					if (value == null) continue;
+        public static string ApplyDataToUrl(string url, IEnumerable<KeyValuePair<string,string>> urlData)
+        {
+            foreach (var data in urlData)
+            {
+                var token = "&";
 
-					if (string.Compare(JsonPropertyAttribute.PropertyName, "metadata", true) == 0)
-					{
-						var metadata = (Dictionary<string, string>)value;
+                if (!url.Contains("?"))
+                    token = "?";
 
-						foreach (string key in metadata.Keys)
-						{
-							newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
-						}
-					}
-					else
-					{
-						newUrl = ApplyParameterToUrl(newUrl, JsonPropertyAttribute.PropertyName, value.ToString());
-					}
-				}
-			}
-
-			return newUrl;
-		}
-
-		public static string ApplyParameterToUrl(string url, string argument, string value)
-		{
-			var token = "&";
-
-			if (!url.Contains("?"))
-				token = "?";
-
-			return string.Format("{0}{1}{2}={3}", url, token, argument, HttpUtility.UrlEncode(value));
-		}
+                url = string.Format("{0}{1}{2}={3}", url, token, data.Key, HttpUtility.UrlEncode(data.Value));
+            }
+            return url;
+        }
 	}
 }

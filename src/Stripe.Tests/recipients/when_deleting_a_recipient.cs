@@ -11,7 +11,7 @@ namespace Stripe.Tests
 		{
 			_stripeRecipientService = new StripeRecipientService();
 
-			var stripeRecipient = _stripeRecipientService.Create(test_data.stripe_recipient_create_options.ValidIndividual());
+            StripeRecipient stripeRecipient = _stripeRecipientService.Create(test_data.stripe_recipient_create_options.ValidIndividual()).Await();
 			_createdStripeRecipientId = stripeRecipient.Id;
 		};
 
@@ -19,6 +19,6 @@ namespace Stripe.Tests
 			_stripeRecipientService.Delete(_createdStripeRecipientId);
 
 		It should_show_as_deleted = () =>
-			_stripeRecipientService.Get(_createdStripeRecipientId).Deleted.ShouldEqual(true);
+            ((StripeRecipient)_stripeRecipientService.Get(_createdStripeRecipientId).Await()).Deleted.ShouldEqual(true);
 	}
 }

@@ -1,22 +1,22 @@
-﻿namespace Stripe
-{
-	public class StripeDisputeService
-	{
-		private string ApiKey { get; set; }
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Stripe.Services;
 
-		public StripeDisputeService(string apiKey = null)
+namespace Stripe
+{
+	public class StripeDisputeService : BaseStripeService
+	{
+		public StripeDisputeService(string apiKey = null) : base(apiKey)
 		{
-			ApiKey = apiKey;
 		}
 
-		public virtual StripeDispute Update(string chargeId, string evidence = null)
+		public virtual async Task<StripeDispute> Update(string chargeId, string evidence = null)
 		{
 			var url = string.Format("{0}/dispute", chargeId);
 
-			if (!string.IsNullOrEmpty(evidence))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);
+			var data = new List<KeyValuePair<string,string>>{new KeyValuePair<string,string>("evidence", evidence)};
 
-			var response = Requestor.PostString(url, ApiKey);
+			var response = await Requestor.PostStringAsync(url, data, ApiKey);
 
 			return Mapper<StripeDispute>.MapFromJson(response);
 		}

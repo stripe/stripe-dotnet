@@ -12,19 +12,19 @@ namespace Stripe.Tests
 		Establish context = () =>
 		{
 			var stripeCustomerService = new StripeCustomerService();
-			var stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
+            StripeCustomer stripeCustomer = stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard()).Await();
 
 			_stripeInvoiceItemService = new StripeInvoiceItemService();
 			var _stripeInvoiceItemCreateOptions = test_data.stripe_invoiceitem_create_options.Valid(stripeCustomer.Id);
 
-			var createdInvoice = _stripeInvoiceItemService.Create(_stripeInvoiceItemCreateOptions);
+            StripeInvoiceItem createdInvoice = _stripeInvoiceItemService.Create(_stripeInvoiceItemCreateOptions).Await();
 			_stripeInvoiceItemId = createdInvoice.Id;
 
 			StripeInvoiceItemUpdateOptions = test_data.stripe_invoiceitem_update_options.Valid();
 		};
 
 		Because of = () =>
-			_stripeInvoiceItem = _stripeInvoiceItemService.Update(_stripeInvoiceItemId, StripeInvoiceItemUpdateOptions);
+            _stripeInvoiceItem = _stripeInvoiceItemService.Update(_stripeInvoiceItemId, StripeInvoiceItemUpdateOptions).Await();
 
 		It should_have_the_correct_amount = () =>
 			_stripeInvoiceItem.AmountInCents.ShouldEqual(test_data.stripe_invoiceitem_update_options.Valid().AmountInCents);

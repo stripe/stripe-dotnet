@@ -19,7 +19,7 @@ namespace Stripe.Tests
 
 		Because of = () =>
 		{
-			StripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions);
+			StripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions).Await();
 			StripeCard = StripeCharge.StripeCard;
 		};
 

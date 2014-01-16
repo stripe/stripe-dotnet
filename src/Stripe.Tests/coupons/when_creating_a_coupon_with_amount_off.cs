@@ -16,7 +16,7 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-			StripeCoupon = _stripeCouponService.Create(StripeCouponCreateOptions);
+            StripeCoupon = _stripeCouponService.Create(StripeCouponCreateOptions).Await();
 
 		It should_have_the_correct_amount_off = () =>
 			StripeCoupon.AmountOff.ShouldEqual(StripeCouponCreateOptions.AmountOff.Value);

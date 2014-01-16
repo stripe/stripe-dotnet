@@ -1,34 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Stripe.Services;
 
 namespace Stripe
 {
-	public class StripeApplicationFeeService
+	public class StripeApplicationFeeService : BaseStripeService
 	{
-		private string ApiKey { get; set; }
-
-		public StripeApplicationFeeService(string apiKey = null)
+		public StripeApplicationFeeService(string apiKey = null) : base(apiKey)
 		{
-			ApiKey = apiKey;
 		}
 
-		public virtual StripeApplicationFee Get(string applicationFeeId)
+		public virtual async Task<StripeApplicationFee> Get(string applicationFeeId)
 		{
 			var url = string.Format("{0}/{1}", Urls.ApplicationFees, applicationFeeId);
 
-			var response = Requestor.GetString(url, ApiKey);
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripeApplicationFee>.MapFromJson(response);
 		}
 
-		public virtual StripeApplicationFee Refund(string applicationFeeId, int? refundAmountInCents = null)
+		public virtual async Task<StripeApplicationFee> Refund(string applicationFeeId, int? refundAmountInCents = null)
 		{
 			var url = string.Format("{0}/{1}/refund", Urls.ApplicationFees, applicationFeeId);
 
-			if (refundAmountInCents.HasValue)
-				url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmountInCents.Value.ToString());
+		    var data = new List<KeyValuePair<string, string>>();
+		    if (refundAmountInCents.HasValue)
+		    {
+		        data.Add(new KeyValuePair<string, string>("amount", refundAmountInCents.GetValueOrDefault().ToString()));
+		    }
 
-			var response = Requestor.PostString(url, ApiKey);
+		    var response = await Requestor.PostStringAsync(url, data, ApiKey);
 
 			return Mapper<StripeApplicationFee>.MapFromJson(response);
 		}

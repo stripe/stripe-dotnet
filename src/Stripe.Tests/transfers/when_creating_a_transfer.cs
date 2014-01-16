@@ -16,7 +16,7 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-			StripeTransfer = _stripeTransferService.Create(StripeTransferCreateOptions);
+            StripeTransfer = _stripeTransferService.Create(StripeTransferCreateOptions).Await();
 
 		Behaves_like<transfer_behaviors> behaviors;
 

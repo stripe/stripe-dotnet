@@ -1,61 +1,65 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Stripe.Services;
 
 namespace Stripe
 {
-	public class StripeInvoiceItemService
+	public class StripeInvoiceItemService : BaseStripeService
 	{
-		private string ApiKey { get; set; }
-
-		public StripeInvoiceItemService(string apiKey = null)
+		public StripeInvoiceItemService(string apiKey = null) : base(apiKey)
 		{
-			ApiKey = apiKey;
 		}
 
-		public virtual StripeInvoiceItem Create(StripeInvoiceItemCreateOptions createOptions)
+		public virtual async Task<StripeInvoiceItem> Create(StripeInvoiceItemCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.InvoiceItems);
+			var data = ParameterBuilder.GenerateFormData(createOptions);
 
-			var response = Requestor.PostString(url, ApiKey);
+			var response = await Requestor.PostStringAsync(Urls.InvoiceItems, data, ApiKey);
 
 			return Mapper<StripeInvoiceItem>.MapFromJson(response);
 		}
 
-		public virtual StripeInvoiceItem Get(string invoiceItemId)
+		public virtual async Task<StripeInvoiceItem> Get(string invoiceItemId)
 		{
 			var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
 
-			var response = Requestor.GetString(url, ApiKey);
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripeInvoiceItem>.MapFromJson(response);
 		}
 
-		public virtual StripeInvoiceItem Update(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions)
+		public virtual async Task<StripeInvoiceItem> Update(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			var data = ParameterBuilder.GenerateFormData(updateOptions);
 
-			var response = Requestor.PostString(url, ApiKey);
+			var response = await Requestor.PostStringAsync(url, data, ApiKey);
 
 			return Mapper<StripeInvoiceItem>.MapFromJson(response);
 		}
 
-		public virtual void Delete(string invoiceItemId)
+		public virtual async Task Delete(string invoiceItemId)
 		{
 			var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
 
-			Requestor.Delete(url, ApiKey);
+			await Requestor.DeleteAsync(url, ApiKey);
 		}
 
-		public virtual IEnumerable<StripeInvoiceItem> List(int count = 10, int offset = 0, string customerId = null)
+		public virtual async Task<IEnumerable<StripeInvoiceItem>> List(int count = 10, int offset = 0, string customerId = null)
 		{
-			var url = Urls.InvoiceItems;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
-
+		    var data = new List<KeyValuePair<string, string>>
+		    {
+		        new KeyValuePair<string, string>("count", count.ToString()),
+		        new KeyValuePair<string, string>("offset", offset.ToString())
+		    };
+            
 			if (!string.IsNullOrEmpty(customerId))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+				data.Add(new KeyValuePair<string, string>("customer", customerId));
 
-			var response = Requestor.GetString(url, ApiKey);
+		    var url = ParameterBuilder.ApplyDataToUrl(Urls.InvoiceItems, data);
+
+
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripeInvoiceItem>.MapCollectionFromJson(response);
 		}

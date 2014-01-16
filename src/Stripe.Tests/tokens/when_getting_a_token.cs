@@ -15,12 +15,12 @@ namespace Stripe.Tests
 			_stripeTokenService = new StripeTokenService();
 			StripeTokenCreateOptions = test_data.stripe_token_create_options.Valid();
 
-			var stripeToken = _stripeTokenService.Create(StripeTokenCreateOptions);
+            StripeToken stripeToken = _stripeTokenService.Create(StripeTokenCreateOptions).Await();
 			_createdStripeTokenId = stripeToken.Id;
 		};
 
 		Because of = () =>
-			StripeToken = _stripeTokenService.Get(_createdStripeTokenId);
+            StripeToken = _stripeTokenService.Get(_createdStripeTokenId).Await();
 
 		Behaves_like<token_behaviors> behaviors;
 	}

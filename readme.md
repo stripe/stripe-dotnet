@@ -53,7 +53,7 @@ If your site has multiple offerings, plans are perfect. You can create as many p
 	myPlan.TrialPeriodDays = 30;    // amount of time that will lapse before the customer is billed
 
 	var planService = new StripePlanService();
-	StripePlan response = planService.Create(myPlan);
+	StripePlan response = await planService.Create(myPlan);
 
 The returned StripePlan entity above will have a unique Id. You will want to persist this for later. When you create a customer you will be able to assign them 
 to a plan id (or not)
@@ -65,22 +65,22 @@ to a plan id (or not)
 	myPlan.Name = "NEW Plan YO!";
 
 	var planService = new StripePlanService();
-	StripePlan response = planService.Update(*planId*, myPlan);
+	StripePlan response = await planService.Update(*planId*, myPlan);
 
 ### Retrieving a plan
 
 	var planService = new StripePlanService();
-	StripePlan response = planService.Get(*planId*);
+	StripePlan response = await planService.Get(*planId*);
 
 ### Deleting a plan
 
 	var planService = new StripePlanService();
-	planService.Delete(*planId*);
+	await planService.Delete(*planId*);
 
 ### List all plans
 
 	var planService = new StripePlanService();
-	IEnumerable<StripePlan> response = planService.List(); // can optionally pass count (defaults to 10) and offset
+	IEnumerable<StripePlan> response = await planService.List(); // can optionally pass count (defaults to 10) and offset
 
 Coupons (queue-pons not coo-pons)
 ---------------------------------
@@ -98,22 +98,22 @@ Coupons (queue-pons not coo-pons)
 	myCoupon.RedeemBy = '12/31/2012';
 	
 	var couponService = new StripeCouponService();
-	StripeCoupon response = couponService.Create(myCoupon);
+	StripeCoupon response = await couponService.Create(myCoupon);
 
 ### Retrieving a coupon
 
 	var couponService = new StripeCouponService();
-	StripeCoupon response = couponService.Get(*couponId*);
+	StripeCoupon response = await couponService.Get(*couponId*);
 
 ### Deleting a coupon
 
 	var couponService = new StripeCouponService();
-	couponService.Delete(*couponId*);
+	await couponService.Delete(*couponId*);
 
 ### List all coupons
 
 	var couponService = new StripeCouponService();
-	IEnumerable<StripeCoupon> response = couponService.List();    // can optionally pass count (defaults to 10) and offset
+	IEnumerable<StripeCoupon> response = await couponService.List();    // can optionally pass count (defaults to 10) and offset
 
 Tokens
 ------
@@ -142,14 +142,14 @@ customer or a charge, but only used once.
 	myToken.CustomerId = *customerId*;
 
 	var tokenService = new StripeTokenService();
-	StripeToken stripeToken = tokenService.Create(myToken);
+	StripeToken stripeToken = await tokenService.Create(myToken);
 
 Tokens are very useful if you don't want to store the customers credit card information on your servers (pci compliance).
 
 ### Retrieving a token
 
 	var tokenService = new StripeTokenService();
-	StripeToken stripeToken = tokenService.Get(*tokenId*);
+	StripeToken stripeToken = await tokenService.Get(*tokenId*);
 
 Customers
 ---------
@@ -189,7 +189,7 @@ a credit card or token, and various meta data.
 	myCustomer.Quantity = 1;                               // optional, defaults to 1
 
 	var customerService = new StripeCustomerService();
-	StripeCustomer stripeCustomer = customerService.Create(myCustomer);
+	StripeCustomer stripeCustomer = await customerService.Create(myCustomer);
 
 Don't let this be intimidating - all of these fields are optional. You could just create a customer with an email if you wanted.
 
@@ -223,12 +223,12 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 	myCustomer.Coupon = *couponId*;    // only if you have a coupon
 
 	var customerService = new StripeCustomerService();
-	StripeCustomer stripeCustomer = customerService.Update(*customerId*, myCustomer);
+	StripeCustomer stripeCustomer = await customerService.Update(*customerId*, myCustomer);
 
 ### Retrieving a customer
 
 	var customerService = new StripeCustomerService();
-	StripeCustomer stripeCustomer = customerService.Get(*customerId*);
+	StripeCustomer stripeCustomer = await customerService.Get(*customerId*);
 
 ### Deleting a customer
 
@@ -270,12 +270,12 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 	myUpdatedSubscription.EndTrialNow = true;
 
 	var customerService = new StripeCustomerService();
-	StripeSubscription subscription = customerService.UpdateSubscription(*customerId*, myUpdatedSubscription);
+	StripeSubscription subscription = await customerService.UpdateSubscription(*customerId*, myUpdatedSubscription);
 
 ### Canceling a customer subscription
 
 	var customerService = new StripeCustomerService();
-	StripeSubscription subscription = customerService.CancelSubscription(*customerId*);    // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling 
+	StripeSubscription subscription = await customerService.CancelSubscription(*customerId*);    // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling 
 
 Cards
 -----
@@ -302,12 +302,12 @@ When creating a card you can use either a card or a token
 	myCard.TokenId = *tokenId*;
 
 	var cardService = new StripeCardService();
-	StripeCard stripeCard = cardService.Create(*customerId*, myCard);
+	StripeCard stripeCard = await cardService.Create(*customerId*, myCard);
 
 ### Retrieving a card
 
 	var cardService = new StripeCardService();
-	StripeCard stripeCard = cardService.Get(*customerId*, *cardId*);
+	StripeCard stripeCard = await cardService.Get(*customerId*, *cardId*);
 
 ### Updating a card
 
@@ -324,17 +324,17 @@ When creating a card you can use either a card or a token
 	myCard.AddressZip = "27617";
 
 	var cardService = new StripeCardService();
-	StripeCard stripeCard = cardService.Update(*customerId*, *cardId*, myCard);
+	StripeCard stripeCard = await cardService.Update(*customerId*, *cardId*, myCard);
 
 ### Deleting a card
 
 	var cardService = new StripeCardService();
-	cardService.Delete(*customerId*, *cardId*);
+	await cardService.Delete(*customerId*, *cardId*);
 
 ### List all cards
 
 	var cardService = new StripeCardService();
-	IEnumerable<StripeCard> response = cardService.List(*customerId*);    // can optionally pass count (defaults to 10) and offset
+	IEnumerable<StripeCard> response = await cardService.List(*customerId*);    // can optionally pass count (defaults to 10) and offset
 
 Charges
 -------
@@ -382,31 +382,31 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	myCharge.Capture = true;
 
 	var chargeService = new StripeChargeService();
-	StripeCharge stripeCharge = chargeService.Create(myCharge);
+	StripeCharge stripeCharge = await chargeService.Create(myCharge);
 
 ### Retrieving a charge
 
 	var chargeService = new StripeChargeService();
-	StripeCharge stripeCharge = chargeService.Get(*chargeId*);
+	StripeCharge stripeCharge = await chargeService.Get(*chargeId*);
 
 ### Refunding a charge
 	
 If you do not specify an amountInCents, the entire charge is refunded. The StripeCharge entity has properties for "Refunded" (bool) and RefundedAmountInCents.
 
 	var chargeService = new StripeChargeService();
-	StripeCharge stripeCharge = chargeService.Refund(*chargeId*, *amountInCents*, *refundApplicationFee*);
+	StripeCharge stripeCharge = await chargeService.Refund(*chargeId*, *amountInCents*, *refundApplicationFee*);
 
 ### Capturing a charge
 
 If you set a charge to capture = false, you use this to capture the charge later. *amountInCents* and *applicationFeeInCents* are not required.
 
 	var chargeService = new StripeChargeService();
-	StripeCharge stripeCharge = chargeService.Capture(*chargeId*, *amountInCents*, *applicationFeeInCents*);
+	StripeCharge stripeCharge = await chargeService.Capture(*chargeId*, *amountInCents*, *applicationFeeInCents*);
 
 ### List all charges
 
 	var chargeService = new StripeChargeService();
-	IEnumerable<StripeCharge> response = chargeService.List();    // can optionally pass count (defaults to 10), offset, and a customerId to get charges for a single customer
+	IEnumerable<StripeCharge> response = await chargeService.List();    // can optionally pass count (defaults to 10), offset, and a customerId to get charges for a single customer
 
 Invoices
 --------
@@ -414,17 +414,17 @@ Invoices
 ### Retrieving an invoice
 
 	var invoiceService = new StripeInvoiceService();
-	StripeInvoice response = invoiceService.Get(*invoiceId*);
+	StripeInvoice response = await invoiceService.Get(*invoiceId*);
 
 ### Retrieving an upcoming invoice (for a single customer)
 
 	var invoiceService = new StripeInvoiceService();
-	StripeInvoice response = invoiceService.Upcoming(*customerId*);
+	StripeInvoice response = await invoiceService.Upcoming(*customerId*);
 
 ### Create a customer invoice
 
 	var invoiceService = new StripeInvoiceService();
-	StripeInvoice response = invoiceService.Create(*customerId*);
+	StripeInvoice response = await invoiceService.Create(*customerId*);
 
 ### Updating a customer invoice
 
@@ -432,12 +432,12 @@ Invoices
 	stripeInvoiceUpdateOptions.Closed = true;
 
 	var invoiceService = new StripeInvoiceService();
-	StripeInvoice response = invoiceService.Update(stripeInvoiceUpdateOptions);
+	StripeInvoice response = await invoiceService.Update(stripeInvoiceUpdateOptions);
 
 ### List all invoices
 
 	var invoiceService = new StripeInvoiceService();
-	IEnumerable<StripeInvoice> response = invoiceService.List();    // can optionally pass count (defaults to 10), offset, and a customerid
+	IEnumerable<StripeInvoice> response = await invoiceService.List();    // can optionally pass count (defaults to 10), offset, and a customerid
 
 Invoice Items
 -------------
@@ -453,12 +453,12 @@ Any invoice items you create for a customer will be added to their bill.
 	myItem.Description = "na";          // not required
 
 	var invoiceItemService = new StripeInvoiceItemService();
-	StripeInvoiceItem response = invoiceItemService.Create(myItem);
+	StripeInvoiceItem response = await invoiceItemService.Create(myItem);
 
 ### Retrieving an invoice item
 
 	var invoiceItemService = new StripeInvoiceItemService();
-	StripeInvoiceItem response = invoiceItemService.Get(*invoiceItemId*);
+	StripeInvoiceItem response = await invoiceItemService.Get(*invoiceItemId*);
 
 ### Updating an invoice item
 
@@ -468,17 +468,17 @@ Any invoice items you create for a customer will be added to their bill.
 	myUpdatedItem.Description = "test";    // not required
 
 	var invoiceItemService = new StripeInvoiceItemService();
-	StripeInvoiceItem response = invoiceItemService.Update(*invoiceItemId*, myUpdatedItem);
+	StripeInvoiceItem response = await invoiceItemService.Update(*invoiceItemId*, myUpdatedItem);
 
 ### Deleting an invoice item
 
 	var invoiceItemService = new StripeInvoiceItemService();
-	invoiceItemService.Delete(*invoiceItemId*);
+	await invoiceItemService.Delete(*invoiceItemId*);
 
 ### List all invoice items
 
 	var invoiceItemService = new StripeInvoiceItemService();
-	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List();    // can optionally pass count (defaults to 10), offset, and a customerid
+	IEnumerable<StripeInvoiceItem> response = await invoiceItemService.List();    // can optionally pass count (defaults to 10), offset, and a customerid
 
 Account
 -------
@@ -486,7 +486,7 @@ Account
 ### Retrieving your account
 
 	var accountService = new StripeAccountService();
-	StripeAccount response = accountService.Get();
+	StripeAccount response = await accountService.Get();
 
 Balance
 -------
@@ -494,7 +494,7 @@ Balance
 ### Retrieving your account balance
 
 	var balanceService = new StripeBalanceService();
-	StripeBalance response = balanceService.Get();
+	StripeBalance response = await balanceService.Get();
 
 Disputes
 --------
@@ -504,7 +504,7 @@ Disputes
 	var disputeService = new StripeDisputeService();
 
 	// providing the dispute reason is optional
-	StripeDispute stripeDispute = disputeService.Update(*chargeId*, "customer ate the donut before I charged them, so they said it was free"); 
+	StripeDispute stripeDispute = await disputeService.Update(*chargeId*, "customer ate the donut before I charged them, so they said it was free"); 
 
 Recipients
 ----------
@@ -524,7 +524,7 @@ Recipients
 	myRecipient.BankAccountNumber = "000123456789";
 	
 	var recipientService = new StripeRecipientService();
-	StripeRecipient stripeRecipient = recipientService.Create(myRecipient);
+	StripeRecipient stripeRecipient = await recipientService.Create(myRecipient);
 
 ### Updating a recipient
 
@@ -540,22 +540,22 @@ Recipients
 	myRecipient.BankAccountNumber = "000123456789";
 
 	var recipientService = new StripeRecipientService();
-	StripeRecipient stripeRecipient = recipientService.Update(*recipientId*, myRecipient);
+	StripeRecipient stripeRecipient = await recipientService.Update(*recipientId*, myRecipient);
 
 ### Retrieving a recipient
 
 	var recipientService = new StripeRecipientService();
-	StripeRecipient stripeRecipient = recipientService.Get(*recipientId*);
+	StripeRecipient stripeRecipient = await recipientService.Get(*recipientId*);
 
 ### Deleting a recipient
 
 	var recipientService = new StripeRecipientService();
-	recipientService.Deleted(*recipientId*);
+	await recipientService.Deleted(*recipientId*);
 
 ### List all recipients
 
 	var recipientService = new StripeRecipientService();
-	IEnumerable<StripeRecipient> response = recipientService.List(); //can optionally pass count (defaults to 10), offset (defaults to 0), and verified (bool)
+	IEnumerable<StripeRecipient> response = await recipientService.List(); //can optionally pass count (defaults to 10), offset (defaults to 0), and verified (bool)
 
 Transfers
 ---------
@@ -570,22 +570,22 @@ Transfers
 	myTransfer.StatementDescriptor = "Commissions"; // optional
 
 	var transferService = new StripeTransferService();
-	StripeTransfer stripeTransfer = transferService.Create(myTransfer);
+	StripeTransfer stripeTransfer = await transferService.Create(myTransfer);
 
 ### Retrieving a transfer
 
 	var transferService = new StripeTransferService();
-	StripeTransfer stripeTransfer = transferService.Get(*transferId*);
+	StripeTransfer stripeTransfer = await transferService.Get(*transferId*);
 
 ### Cancel a transfer
 
 	var transferService = new StripeTransferService();
-	StripeTransfer stripeTransfer = transferService.Cancel(*transferId*);
+	StripeTransfer stripeTransfer = await transferService.Cancel(*transferId*);
 
 ### List all transfers
 
 	var transferService = new StripeTransferService();
-	IEnumerable<StripeTransfer> response = transferService.List(); //can optionally pass count (defaults to 10), offset (defaults to 0), recipientId, and status
+	IEnumerable<StripeTransfer> response = await transferService.List(); //can optionally pass count (defaults to 10), offset (defaults to 0), recipientId, and status
 
 Application Fees
 ----------------
@@ -595,12 +595,12 @@ If you do not specify an amountInCents, the entire application fee is refunded.
 ### Retrieving an application fee
 
 	var feeService = new StripeApplicationFeeService();
-	StripeApplicationFee stripeApplicationFee = feeService.Get(*applicationFeeId*);
+	StripeApplicationFee stripeApplicationFee = await feeService.Get(*applicationFeeId*);
 
 ### Refunding an application fee
 
 	var feeService = new StripeApplicationFeeService();
-	StripeApplicationFee stripeApplicationFee = feeService.Refund(*applicationFeeId*, *amountInCents*);
+	StripeApplicationFee stripeApplicationFee = await feeService.Refund(*applicationFeeId*, *amountInCents*);
 
 Events
 ------
@@ -649,14 +649,14 @@ Whenever an Event is received, StripeEventUtility.ParseEvent(json) will convert 
 If you have the id and you want to retrieve the event
 
 	var eventService = new StripeEventService();
-	StripeEvent response = eventService.Get(*eventId*)
+	StripeEvent response = await eventService.Get(*eventId*)
 	
 ### List all events
 
 You can list events in the same way everything else works in Stripe.net. 
 
 	var eventService = new StripeEventService();
-	IEnumerable<StripeEvent> response = eventService.List();    // can optionally pass count (defaults to 10), offset, and StripeEventSearchOptions
+	IEnumerable<StripeEvent> response = await eventService.List();    // can optionally pass count (defaults to 10), offset, and StripeEventSearchOptions
 	
 You can also optionally pass a StripeSearchEventOptions which supports a specific Created timestamp, LessThan, LessThanOrEqualTo, GreaterThan, or GreaterThanOrEqualTo.
 	
@@ -671,7 +671,7 @@ You can also optionally pass a StripeSearchEventOptions which supports a specifi
 	eventSearchOptions.LessThanOrEqualTo = DateTime.UtcNow;
 	eventSearchOptions.GreaterThanOrEqualTo = DateTime.UtcNow.AddMonths(-1);
 	
-	IEnumerable<StripeEvent> response = eventService.List(10, 0, eventSearchOptions);
+	IEnumerable<StripeEvent> response = await eventService.List(10, 0, eventSearchOptions);
 	
 
 Stripe Connect

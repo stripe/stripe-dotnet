@@ -1,61 +1,63 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Stripe.Services;
 
 namespace Stripe
 {
-	public class StripeRecipientService
+	public class StripeRecipientService : BaseStripeService
 	{
-		private string ApiKey { get; set; }
-
-		public StripeRecipientService(string apiKey = null)
+		public StripeRecipientService(string apiKey = null) : base(apiKey)
 		{
-			ApiKey = apiKey;
 		}
 
-		public virtual StripeRecipient Create(StripeRecipientCreateOptions createOptions)
+		public virtual async Task<StripeRecipient> Create(StripeRecipientCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Recipients);
+			var data = ParameterBuilder.GenerateFormData(createOptions);
 
-			var response = Requestor.PostString(url, ApiKey);
+			var response = await Requestor.PostStringAsync(Urls.Recipients, data, ApiKey);
 
 			return Mapper<StripeRecipient>.MapFromJson(response);
 		}
 
-		public virtual StripeRecipient Get(string recipientId)
+		public virtual async Task<StripeRecipient> Get(string recipientId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Recipients, recipientId);
 
-			var response = Requestor.GetString(url, ApiKey);
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripeRecipient>.MapFromJson(response);
 		}
 
-		public virtual StripeRecipient Update(string recipientId, StripeRecipientUpdateOptions updateOptions)
+		public virtual async Task<StripeRecipient> Update(string recipientId, StripeRecipientUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Recipients, recipientId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			var data = ParameterBuilder.GenerateFormData(updateOptions);
 
-			var response = Requestor.PostString(url, ApiKey);
+			var response = await Requestor.PostStringAsync(url, data, ApiKey);
 
 			return Mapper<StripeRecipient>.MapFromJson(response);
 		}
 
-		public virtual void Delete(string recipientId)
+		public virtual async Task Delete(string recipientId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Recipients, recipientId);
 
-			Requestor.Delete(url, ApiKey);
+			await Requestor.DeleteAsync(url, ApiKey);
 		}
 
-		public virtual IEnumerable<StripeRecipient> List(int count = 10, int offset = 0, bool? verified = null)
+		public virtual async Task<IEnumerable<StripeRecipient>> List(int count = 10, int offset = 0, bool? verified = null)
 		{
-			var url = Urls.Recipients;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+            var data = new List<KeyValuePair<string, string>>
+		    {
+		        new KeyValuePair<string, string>("count", count.ToString()),
+		        new KeyValuePair<string, string>("offset", offset.ToString())
+		    };
+            if (verified.HasValue)
+                data.Add(new KeyValuePair<string, string>("verified", verified.ToString()));
 
-			if (verified.HasValue)
-				url = ParameterBuilder.ApplyParameterToUrl(url, "verified", verified.ToString());
-
-			var response = Requestor.GetString(url, ApiKey);
+			var url = ParameterBuilder.ApplyDataToUrl(Urls.Recipients, data);
+            
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripeRecipient>.MapCollectionFromJson(response);
 		}

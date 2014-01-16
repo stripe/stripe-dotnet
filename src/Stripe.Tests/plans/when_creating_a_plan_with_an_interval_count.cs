@@ -17,7 +17,7 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-			StripePlan = _stripePlanService.Create(StripePlanCreateOptions);
+            StripePlan = _stripePlanService.Create(StripePlanCreateOptions).Await();
 
 		It should_have_the_correct_interval_count = () =>
 			StripePlan.IntervalCount.ShouldEqual(StripePlanCreateOptions.IntervalCount.Value);

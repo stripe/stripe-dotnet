@@ -1,48 +1,49 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Stripe.Services;
 
 namespace Stripe
 {
-	public class StripeCouponService
+	public class StripeCouponService : BaseStripeService
 	{
-		private string ApiKey { get; set; }
-
-		public StripeCouponService(string apiKey = null)
+		public StripeCouponService(string apiKey = null) : base(apiKey)
 		{
-			ApiKey = apiKey;
 		}
 
-		public virtual StripeCoupon Create(StripeCouponCreateOptions createOptions)
+		public virtual async Task<StripeCoupon> Create(StripeCouponCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Coupons);
+			var data = ParameterBuilder.GenerateFormData(createOptions);
 
-			var response = Requestor.PostString(url, ApiKey);
+			var response = await Requestor.PostStringAsync(Urls.Coupons, data, ApiKey);
 
 			return Mapper<StripeCoupon>.MapFromJson(response);
 		}
 
-		public virtual StripeCoupon Get(string couponId)
+		public virtual async Task<StripeCoupon> Get(string couponId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
 
-			var response = Requestor.GetString(url, ApiKey);
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripeCoupon>.MapFromJson(response);
 		}
 
-		public virtual void Delete(string couponId)
+		public virtual async Task Delete(string couponId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
 
-			Requestor.Delete(url, ApiKey);
+			await Requestor.DeleteAsync(url, ApiKey);
 		}
 
-		public virtual IEnumerable<StripeCoupon> List(int count = 10, int offset = 0)
+		public virtual async Task<IEnumerable<StripeCoupon>> List(int count = 10, int offset = 0)
 		{
-			var url = Urls.Coupons;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+		    var url = ParameterBuilder.ApplyDataToUrl(Urls.Coupons, new List<KeyValuePair<string, string>>
+		    {
+		        new KeyValuePair<string, string>("count", count.ToString()),
+		        new KeyValuePair<string, string>("offset", offset.ToString())
+		    });
 
-			var response = Requestor.GetString(url, ApiKey);
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripeCoupon>.MapCollectionFromJson(response);
 		}

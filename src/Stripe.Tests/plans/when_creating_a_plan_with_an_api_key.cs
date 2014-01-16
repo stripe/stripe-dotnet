@@ -17,7 +17,7 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-			StripePlan = _stripePlanService.Create(StripePlanCreateOptions);
+            StripePlan = _stripePlanService.Create(StripePlanCreateOptions).Await();
 
 		Behaves_like<plan_behaviors> behaviors;
 	}

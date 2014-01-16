@@ -13,14 +13,14 @@ namespace Stripe.Tests
 		{
 			_stripeRecipientService = new StripeRecipientService();
 
-			var stripeRecipient = _stripeRecipientService.Create(test_data.stripe_recipient_create_options.ValidIndividual());
+            StripeRecipient stripeRecipient = _stripeRecipientService.Create(test_data.stripe_recipient_create_options.ValidIndividual()).Await();
 			_createdStripeRecipientId = stripeRecipient.Id;
 
 			_stripeRecipientUpdateOptions = test_data.stripe_recipient_update_options.Valid();
 		};
 
 		Because of = () =>
-			_stripeRecipient = _stripeRecipientService.Update(_createdStripeRecipientId, _stripeRecipientUpdateOptions);
+            _stripeRecipient = _stripeRecipientService.Update(_createdStripeRecipientId, _stripeRecipientUpdateOptions).Await();
 
 		It should_have_the_correct_name = () =>
 			_stripeRecipient.Name.ShouldEqual(_stripeRecipientUpdateOptions.Name);

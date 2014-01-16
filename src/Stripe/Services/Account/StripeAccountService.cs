@@ -1,17 +1,17 @@
-﻿namespace Stripe
-{
-	public class StripeAccountService
-	{
-		private string ApiKey { get; set; }
+﻿using System.Threading.Tasks;
+using Stripe.Services;
 
-		public StripeAccountService(string apiKey = null)
+namespace Stripe
+{
+	public class StripeAccountService : BaseStripeService
+	{
+        public StripeAccountService(string apiKey = null):base(apiKey)
 		{
-			ApiKey = apiKey;
 		}
 
-		public virtual StripeAccount Get()
+		public virtual async Task<StripeAccount> Get()
 		{
-			var response = Requestor.GetString(Urls.Account, ApiKey);
+			var response = await Requestor.GetStringAsync(Urls.Account, ApiKey);
 
 			return Mapper<StripeAccount>.MapFromJson(response);
 		}

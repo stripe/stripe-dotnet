@@ -1,78 +1,79 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Stripe.Services;
 
 namespace Stripe
 {
-	public class StripeCustomerService
+	public class StripeCustomerService : BaseStripeService
 	{
-		private string ApiKey { get; set; }
-
-		public StripeCustomerService(string apiKey = null)
+		public StripeCustomerService(string apiKey = null) : base(apiKey)
 		{
-			ApiKey = apiKey;
 		}
 
-		public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions)
+		public virtual async Task<StripeCustomer> Create(StripeCustomerCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Customers);
+			var data = ParameterBuilder.GenerateFormData(createOptions);
 
-			var response = Requestor.PostString(url, ApiKey);
+			var response = await Requestor.PostStringAsync(Urls.Customers, data, ApiKey);
 
 			return Mapper<StripeCustomer>.MapFromJson(response);
 		}
 
-		public virtual StripeCustomer Get(string customerId)
+		public virtual async Task<StripeCustomer> Get(string customerId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
 
-			var response = Requestor.GetString(url, ApiKey);
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripeCustomer>.MapFromJson(response);
 		}
 
-		public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
+		public virtual async Task<StripeCustomer> Update(string customerId, StripeCustomerUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			var data = ParameterBuilder.GenerateFormData(updateOptions);
 
-			var response = Requestor.PostString(url, ApiKey);
+			var response = await Requestor.PostStringAsync(url, data, ApiKey);
 
 			return Mapper<StripeCustomer>.MapFromJson(response);
 		}
 
-		public virtual void Delete(string customerId)
+		public virtual async Task Delete(string customerId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
 
-			Requestor.Delete(url, ApiKey);
+			await Requestor.DeleteAsync(url, ApiKey);
 		}
 
-		public virtual IEnumerable<StripeCustomer> List(int count = 10, int offset = 0)
+	    public virtual async Task<IEnumerable<StripeCustomer>> List(int count = 10, int offset = 0)
 		{
-			var url = Urls.Customers;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+            var url = ParameterBuilder.ApplyDataToUrl(Urls.Customers, new List<KeyValuePair<string, string>>
+		    {
+		        new KeyValuePair<string, string>("count", count.ToString()),
+		        new KeyValuePair<string, string>("offset", offset.ToString())
+		    });
 
-			var response = Requestor.GetString(url, ApiKey);
+			var response = await Requestor.GetStringAsync(url, ApiKey);
 
 			return Mapper<StripeCustomer>.MapCollectionFromJson(response);
 		}
 
-		public virtual StripeSubscription UpdateSubscription(string customerId, StripeCustomerUpdateSubscriptionOptions updateOptions)
+		public virtual async Task<StripeSubscription> UpdateSubscription(string customerId, StripeCustomerUpdateSubscriptionOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}/subscription", Urls.Customers, customerId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			var data = ParameterBuilder.GenerateFormData(updateOptions);
 
-			var response = Requestor.PostString(url, ApiKey);
+			var response = await Requestor.PostStringAsync(url, data, ApiKey);
 
 			return Mapper<StripeSubscription>.MapFromJson(response);
 		}
 
-		public virtual StripeSubscription CancelSubscription(string customerId, bool cancelAtPeriodEnd = false)
+		public virtual async Task<StripeSubscription> CancelSubscription(string customerId, bool cancelAtPeriodEnd = false)
 		{
 			var url = string.Format("{0}/{1}/subscription", Urls.Customers, customerId);
-			url = ParameterBuilder.ApplyParameterToUrl(url, "at_period_end", cancelAtPeriodEnd.ToString());
+			url = ParameterBuilder.ApplyDataToUrl(url, new List<KeyValuePair<string,string>>{new KeyValuePair<string, string>("at_period_end", cancelAtPeriodEnd.ToString())});
 
-			var response = Requestor.Delete(url, ApiKey);
+			var response = await Requestor.DeleteAsync(url, ApiKey);
 
 			return Mapper<StripeSubscription>.MapFromJson(response);
 		}

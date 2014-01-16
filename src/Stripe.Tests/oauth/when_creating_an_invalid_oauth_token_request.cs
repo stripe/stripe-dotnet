@@ -18,7 +18,7 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-			Exception = Catch.Exception(() => _stripeOAuthTokenService.Create(StripeOAuthTokeCreateOptions));
+            Exception = Catch.Exception(() => _stripeOAuthTokenService.Create(StripeOAuthTokeCreateOptions).Await());
 
 		It should_have_an_invalid_code = () =>
 			((StripeException)Exception).StripeError.Error.ShouldEqual("invalid_grant");

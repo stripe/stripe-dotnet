@@ -1,104 +1,110 @@
 ﻿using System;
 using System.IO;
+using System.Net.Http;
 using System.Net;
 using System.Text;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Collections.Specialized;
 
 namespace Stripe
 {
-	internal static class Requestor
-	{
-		public static string GetString(string url, string apiKey = null)
-		{
-			var wr = GetWebRequest(url, "GET", apiKey);
+    internal static class Requestor
+    {
+        private static HttpClient client = new HttpClient();
 
-			return ExecuteWebRequest(wr);
-		}
+        private static IEnumerable<KeyValuePair<string, string>> EmptyFormData =
+            new List<KeyValuePair<string, string>>(); 
 
-		public static string PostString(string url, string apiKey = null)
-		{
-			var wr = GetWebRequest(url, "POST", apiKey);
+        public static async Task<string> GetStringAsync(string url, string apiKey = null)
+        {
+            var response = await PerformRequest(url, "GET", null, apiKey);
+            return await ProcessResponse(response);
+        }
 
-			return ExecuteWebRequest(wr);
-		}
+        public static async Task<string> PostStringAsync(string url, IEnumerable<KeyValuePair<string, string>> formData, string apiKey = null)
+        {
+            var response = await PerformRequest(url, "POST", formData, apiKey);
+            return await ProcessResponse(response);
+        }
 
-		public static string PostStringBearer(string url, string apiKey = null)
-		{
-			var wr = GetWebRequest(url, "POST", apiKey, true);
+        public static async Task<string> PostStringBearerAsync(string url, IEnumerable<KeyValuePair<string, string>> formData, string apiKey = null)
+        {
+            var response = await PerformRequest(url, "POST", formData, apiKey, true);
+            return await ProcessResponse(response);
+        }
 
-			return ExecuteWebRequest(wr);
-		}
+        public static async Task<string> DeleteAsync(string url, string apiKey = null)
+        {
+            var response = await PerformRequest(url, "DELETE", null, apiKey);
+            return await ProcessResponse(response);
+        }
 
-		public static string Delete(string url, string apiKey = null)
-		{
-			var wr = GetWebRequest(url, "DELETE", apiKey);
+        private static async Task<HttpResponseMessage> PerformRequest(string url, string method, IEnumerable<KeyValuePair<string, string>> formData = null, string apiKey = null, bool useBearer = false)
+        {
+            apiKey = apiKey ?? StripeConfiguration.GetApiKey();
 
-			return ExecuteWebRequest(wr);
-		}
+            var headers = new List<KeyValuePair<string, string>>
+            {
+                !useBearer
+                    ? new KeyValuePair<string, string>("Authorization", GetAuthorizationHeaderValue(apiKey))
+                    : new KeyValuePair<string, string>("Authorization", GetAuthorizationHeaderValueBearer(apiKey)),
+                new KeyValuePair<string, string>("User-Agent", "Stripe.net (https://github.com/jaymedavis/stripe.net)")
+            };
 
-		private static WebRequest GetWebRequest(string url, string method, string apiKey = null, bool useBearer = false)
-		{
-			apiKey = apiKey ?? StripeConfiguration.GetApiKey();
+            return await GetBaseRequest(client, url, method, headers, formData);
+        }
 
-			var request = (HttpWebRequest)WebRequest.Create(url);
-			request.Method = method;
+        private static async Task<string> ProcessResponse(HttpResponseMessage response)
+        {
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsStringAsync();
+            }
+            else
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var stripeError = new StripeError();
 
-			if(!useBearer)
-				request.Headers.Add("Authorization", GetAuthorizationHeaderValue(apiKey));
-			else
-				request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(apiKey));
+                if (response.RequestMessage.RequestUri.ToString().Contains("oauth"))
+                    stripeError = Mapper<StripeError>.MapFromJson(content);
+                else
+                    stripeError = Mapper<StripeError>.MapFromJson(content, "error");
 
-			request.ContentType = "application/x-www-form-urlencoded";
-			request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
+                throw new StripeException(response.StatusCode, stripeError, stripeError.Message);
+            }
+        }
 
-			return request;
-		}
 
-		private static string GetAuthorizationHeaderValue(string apiKey)
-		{
-			var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", apiKey)));
-			return string.Format("Basic {0}", token);
-		}
+        private static async Task<HttpResponseMessage> GetBaseRequest(HttpClient client, string url, string httpMethod, IEnumerable<KeyValuePair<string, string>> headersToAdd, IEnumerable<KeyValuePair<string, string>> formData = null)
+        {
+            client.DefaultRequestHeaders.Clear();
+            foreach (var header in headersToAdd)
+            {
+                client.DefaultRequestHeaders.Add(header.Key, header.Value);
+            }
+            switch (httpMethod)
+            {
+                case "GET":
+                    return await client.GetAsync(url);
+                case "POST":
+                    return await client.PostAsync(url, new FormUrlEncodedContent(formData ?? EmptyFormData));
+                case "DELETE":
+                    return await client.DeleteAsync(url);
+                default:
+                    throw new ArgumentException("httpMethod must be one of GET/POST/DELETE", "httpMethod");
+            }
+        }
 
-		private static string GetAuthorizationHeaderValueBearer(string apiKey)
-		{
-			return string.Format("Bearer {0}", apiKey);
-		}
+        private static string GetAuthorizationHeaderValue(string apiKey)
+        {
+            var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", apiKey)));
+            return string.Format("Basic {0}", token);
+        }
 
-		private static string ExecuteWebRequest(WebRequest webRequest)
-		{
-			try
-			{
-				using (var response = webRequest.GetResponse())
-				{
-					return ReadStream(response.GetResponseStream());
-				}
-			}
-			catch (WebException webException)
-			{
-				if (webException.Response != null)
-				{
-					var statusCode = ((HttpWebResponse)webException.Response).StatusCode;
-					
-					var stripeError = new StripeError();
-
-					if(webRequest.RequestUri.ToString().Contains("oauth"))
-						stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()));
-					else
-						stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()), "error");
-
-					throw new StripeException(statusCode, stripeError, stripeError.Message);
-				}
-
-				throw;
-			}
-		}
-
-		private static string ReadStream(Stream stream)
-		{
-			using (var reader = new StreamReader(stream, Encoding.UTF8))
-			{
-				return reader.ReadToEnd();
-			}
-		}
-	}
+        private static string GetAuthorizationHeaderValueBearer(string apiKey)
+        {
+            return string.Format("Bearer {0}", apiKey);
+        }
+    }
 }

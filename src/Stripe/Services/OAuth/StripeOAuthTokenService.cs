@@ -1,19 +1,18 @@
-﻿namespace Stripe
-{
-	public class StripeOAuthTokenService
-	{
-		private string ApiKey { get; set; }
+﻿using System.Threading.Tasks;
+using Stripe.Services;
 
-		public StripeOAuthTokenService(string apiKey = null)
+namespace Stripe
+{
+	public class StripeOAuthTokenService : BaseStripeService
+	{
+		public StripeOAuthTokenService(string apiKey = null) : base(apiKey)
 		{
-			ApiKey = apiKey;
 		}
 
-		public virtual StripeOAuthToken Create(StripeOAuthTokenCreateOptions createOptions)
+		public virtual async Task<StripeOAuthToken> Create(StripeOAuthTokenCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.OAuthToken);
-
-			var response = Requestor.PostStringBearer(url, ApiKey);
+            var data = ParameterBuilder.GenerateFormData(createOptions);
+			var response = await Requestor.PostStringBearerAsync(Urls.OAuthToken, data, ApiKey);
 
 			return Mapper<StripeOAuthToken>.MapFromJson(response);
 		}
