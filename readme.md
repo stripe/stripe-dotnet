@@ -266,9 +266,6 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 	myUpdatedSubscription.TrialEnd = DateTime.UtcNow.AddMonths(1);
 	myUpdatedSubscription.Quantity = 1;                             // optional, defaults to 1
 
-	// set this property if you wish to end the customer's trial right now
-	myUpdatedSubscription.EndTrialNow = true;
-
 	var customerService = new StripeCustomerService();
 	StripeSubscription subscription = customerService.UpdateSubscription(*customerId*, myUpdatedSubscription);
 
