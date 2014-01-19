@@ -40,5 +40,8 @@ namespace Stripe
 
 		[JsonProperty("metadata")]
 		public Dictionary<string, string> Metadata { get; set; }
+		
+		[JsonProperty("invoice")]
+		public string InvoiceId { get; set; }
 	}
 }
