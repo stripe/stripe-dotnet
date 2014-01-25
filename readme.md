@@ -1,6 +1,8 @@
 <img alt='Stripe.net' src='http://i.imgur.com/RF430nw.png?1' border='0' />
 <br/>
 <a href='http://www.pledgie.com/campaigns/22262'><img alt='Click here to lend your support to: stripe.net and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/22262.png?skin_name=chrome' border='0' /></a>
+<br/>
+Or how about some DOGEcoin? Much thanks! DAum6PSacnqRE4mjJJB7nzvB8vQrjRHR4j
 
 <b>Stripe.net is a full service .net api for http://stripe.com.</b>
 
