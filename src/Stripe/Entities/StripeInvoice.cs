@@ -41,7 +41,7 @@ namespace Stripe
                 }
                 else
                 {
-                    ChargeId = value.ToString();
+                    ChargeId = value == null ? string.Empty : value.ToString();
                     Charge = null;
                 }
             }

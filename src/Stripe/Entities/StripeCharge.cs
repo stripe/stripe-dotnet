@@ -48,7 +48,7 @@ namespace Stripe
 	            }
 	            else
 	            {
-	                CustomerId = value.ToString();
+                    CustomerId = value == null ? string.Empty : value.ToString();
 	                Customer = null;
 	            }
 	        }
@@ -87,7 +87,7 @@ namespace Stripe
                 }
                 else
                 {
-                    InvoiceId = value.ToString();
+                    InvoiceId = value == null ? string.Empty : value.ToString();
                     Invoice = null;
                 }
 	        }

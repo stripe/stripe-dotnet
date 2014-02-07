@@ -81,7 +81,7 @@ namespace Stripe
                 }
                 else
                 {
-                    StripeDefaultCardId = value.ToString();
+                    StripeDefaultCardId = value == null ? string.Empty : value.ToString();
                     StripeDefaultCard = null;
                 }
             }
