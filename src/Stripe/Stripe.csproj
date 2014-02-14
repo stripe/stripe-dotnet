@@ -129,8 +129,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /y "$(TargetDir)Stripe.dll" "$(SolutionDir)Stripe.Tests\_web_event_hooks\bin\Stripe.dll"
-copy /y "$(TargetDir)Newtonsoft.json.dll" "$(SolutionDir)Stripe.Tests\_web_event_hooks\bin\Newtonsoft.json.dll"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
