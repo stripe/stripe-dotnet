@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -25,8 +26,11 @@ namespace Stripe
 			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
 
 			var response = Requestor.GetString(url, ApiKey);
+			var json = JObject.Parse(response);
 
-			return Mapper<StripeCustomer>.MapFromJson(response);
+			json["subscriptions"] = json["subscriptions"]["data"];
+
+			return Mapper<StripeCustomer>.MapFromJson(json.ToString());
 		}
 
 		public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
