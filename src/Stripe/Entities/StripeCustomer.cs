@@ -35,8 +35,12 @@ namespace Stripe
 		[JsonProperty("discount")]
 		public StripeDiscount StripeDiscount { get; set; }
 
-		[JsonProperty("subscription")]
+		[Obsolete("Use new StripeSubscriptions property")]
+		[JsonIgnore]
 		public StripeSubscription StripeSubscription { get; set; }
+
+		[JsonProperty("subscriptions")]
+		public IList<StripeSubscription> StripeSubscriptions { get; set; }
 
 		[JsonProperty("default_card")]
 		public string StripeDefaultCardId { get; set; }
