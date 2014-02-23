@@ -33,6 +33,15 @@ namespace Stripe
 			return Mapper<StripeCustomer>.MapFromJson(json.ToString());
 		}
 
+		public virtual IEnumerable<StripeSubscription> GetSubscriptions(string customerID)
+		{
+			var url = string.Format("{0}/{1}/subscriptions", Urls.Customers, customerID);
+
+			var response = Requestor.GetString(url, ApiKey);
+
+			return Mapper<StripeSubscription>.MapCollectionFromJson(response);
+		}
+
 		public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
