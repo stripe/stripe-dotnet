@@ -6,6 +6,7 @@ namespace Stripe
 	public static class StripeConfiguration
 	{
 		private static string _apiKey;
+		private static string _apiVersion;
 
 		internal static string GetApiKey()
 		{
@@ -18,6 +19,14 @@ namespace Stripe
 		public static void SetApiKey(string newApiKey)
 		{
 			_apiKey = newApiKey;
+		}
+
+		internal static string GetApiVersion()
+		{
+			if (string.IsNullOrEmpty(_apiVersion))
+				_apiVersion = ConfigurationManager.AppSettings["StripeApiVersion"];
+
+			return _apiVersion;
 		}
 	}
 }
