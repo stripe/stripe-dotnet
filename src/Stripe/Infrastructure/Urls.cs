@@ -37,6 +37,11 @@
 			get { return BaseUrl + "/balance"; }
 		}
 
+		public static string BalanceTransactions
+		{
+			get { return BaseUrl + "/balance/history"; }
+		}
+
 		public static string Customers
 		{
 			get { return BaseUrl + "/customers"; }
@@ -67,10 +72,10 @@
 			get { return BaseUrl + "/transfers"; }
 		}
 
-	    public static string ApplicationFees
-	    {
-            get { return BaseUrl + "/application_fees"; }
-	    }
+		public static string ApplicationFees
+		{
+			get { return BaseUrl + "/application_fees"; }
+		}
 
 		private static string BaseUrl
 		{

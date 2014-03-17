@@ -12,6 +12,9 @@ namespace Stripe
 		[JsonProperty("amount")]
 		public int? AmountInCents { get; set; }
 
+		[JsonProperty("balance_transaction")]
+		public string BalanceTransactionId { get; set; }
+
 		[JsonProperty("charge")]
 		public string ChargeId { get; set; }
 

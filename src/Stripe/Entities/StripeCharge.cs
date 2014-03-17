@@ -16,6 +16,9 @@ namespace Stripe
 		[JsonProperty("amount_refunded")]
 		public int? AmountInCentsRefunded { get; set; }
 
+		[JsonProperty("balance_transaction")]
+		public string BalanceTransactionId { get; set; }
+
 		[JsonProperty("created")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime Created { get; set; }
@@ -24,7 +27,7 @@ namespace Stripe
 		public string Currency { get; set; }
 
 		[JsonProperty("customer")]
-		public string CustomerId { get; set; }
+		public string CustomerId { get; private set; }
 
 		[JsonProperty("description")]
 		public string Description { get; set; }

@@ -17,6 +17,6 @@ namespace Stripe
 		public string Currency { get; set; }
 
 		[JsonProperty("balance_transaction")]
-		public string BalanceTransaction { get; set; }
+		public string BalanceTransactionId { get; set; }
 	}
 }
