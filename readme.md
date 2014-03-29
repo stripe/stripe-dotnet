@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/jaymedavis/stripe.net.png?label=ready&title=Ready)](https://waffle.io/jaymedavis/stripe.net)
 <img alt='Stripe.net' src='http://i.imgur.com/RF430nw.png?1' border='0' />
 <br/>
 <a href='http://www.pledgie.com/campaigns/22262'><img alt='Click here to lend your support to: stripe.net and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/22262.png?skin_name=chrome' border='0' /></a>
