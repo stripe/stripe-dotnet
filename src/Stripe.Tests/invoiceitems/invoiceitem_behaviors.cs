@@ -11,7 +11,7 @@ namespace Stripe.Tests
 		protected static string StripeInvoiceItemId;
 
 		It should_have_the_correct_amount = () =>
-			StripeInvoiceItem.AmountInCents.ShouldEqual(StripeInvoiceItemCreateOptions.AmountInCents);
+			StripeInvoiceItem.Amount.ShouldEqual(StripeInvoiceItemCreateOptions.Amount);
 
 		It should_have_the_correct_currency = () =>
 			StripeInvoiceItem.Currency.ShouldEqual(StripeInvoiceItemCreateOptions.Currency);

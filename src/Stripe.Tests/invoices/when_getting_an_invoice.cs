@@ -37,10 +37,10 @@ namespace Stripe.Tests
 			_stripeInvoice.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
 
 		It should_have_a_subtotal = () =>
-			_stripeInvoice.SubtotalInCents.ShouldBeGreaterThanOrEqualTo(0);
+			_stripeInvoice.Subtotal.ShouldBeGreaterThanOrEqualTo(0);
 
 		It should_have_a_total = () =>
-			_stripeInvoice.TotalInCents.ShouldBeGreaterThanOrEqualTo(0);
+			_stripeInvoice.Total.ShouldBeGreaterThanOrEqualTo(0);
 
 		It should_have_a_lines_object = () =>
 			_stripeInvoice.StripeInvoiceLines.ShouldNotBeNull();

@@ -17,7 +17,7 @@ namespace Stripe
 		public bool LiveMode { get; set; }
 
 		[JsonProperty("amount")]
-		public int? AmountInCents { get; set; }
+		public int? Amount { get; set; }
 
 		[JsonProperty("currency")]
 		public string Currency { get; set; }

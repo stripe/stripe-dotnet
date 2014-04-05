@@ -8,7 +8,7 @@ namespace Stripe.Tests.test_data
 		{
 			var stripeInvoiceItemCreateOptions = new StripeInvoiceItemCreateOptions()
 			{
-				AmountInCents = 1000,
+				Amount = 1000,
 				Currency = "usd",
 				CustomerId = customerId,
 				Description = "Test Invoice Item",

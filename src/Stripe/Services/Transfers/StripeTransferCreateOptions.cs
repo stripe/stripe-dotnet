@@ -6,7 +6,7 @@ namespace Stripe
 	public class StripeTransferCreateOptions
 	{
 		[JsonProperty("amount")]
-		public int AmountInCents { get; set; }
+		public int Amount { get; set; }
 
 		[JsonProperty("currency")]
 		public string Currency { get; set; }

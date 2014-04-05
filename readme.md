@@ -44,7 +44,7 @@ Plans
 If your site has multiple offerings, plans are perfect. You can create as many plans as you want and then just assign customers to those plans later on.
 
 	var myPlan = new StripePlanCreateOptions();
-	myPlan.AmountInCents = 1000;    // all amounts on Stripe are in cents
+	myPlan.Amount = 1000;           // all amounts on Stripe are in cents, pence, etc
 	myPlan.Currency = "usd";        // "usd" only supported right now
 	myPlan.Interval = "month";      // "month" or "year"
 	myPlan.IntervalCount = 1;       // optional
@@ -342,7 +342,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	var myCharge = new StripeChargeCreateOptions();
 
 	// always set these properties
-	myCharge.AmountInCents = 5153;
+	myCharge.Amount = 5153;
 	myCharge.Currency = "usd";
 
 	// set this if you want to
@@ -372,7 +372,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	myCharge.Card = *cardId*;
 
 	// set this if you have your own application fees (you must have your application configured first within Stripe)
-	myCharge.ApplicationFeeInCents = 25;
+	myCharge.ApplicationFee = 25;
 
 	// (not required) set this to false if you don't want to capture the charge yet - requires you call capture later
 	myCharge.Capture = true;
@@ -387,17 +387,17 @@ When creating a charge you can use either a card, customer, or a token. Only one
 
 ### Refunding a charge
 
-If you do not specify an amountInCents, the entire charge is refunded. The StripeCharge entity has properties for "Refunded" (bool) and RefundedAmountInCents.
+If you do not specify an amount, the entire charge is refunded. The StripeCharge entity has properties for "Refunded" (bool) and RefundedAmount.
 
 	var chargeService = new StripeChargeService();
-	StripeCharge stripeCharge = chargeService.Refund(*chargeId*, *amountInCents*, *refundApplicationFee*);
+	StripeCharge stripeCharge = chargeService.Refund(*chargeId*, *amount*, *refundApplicationFee*);
 
 ### Capturing a charge
 
-If you set a charge to capture = false, you use this to capture the charge later. *amountInCents* and *applicationFeeInCents* are not required.
+If you set a charge to capture = false, you use this to capture the charge later. *amount* and *applicationFee* are not required.
 
 	var chargeService = new StripeChargeService();
-	StripeCharge stripeCharge = chargeService.Capture(*chargeId*, *amountInCents*, *applicationFeeInCents*);
+	StripeCharge stripeCharge = chargeService.Capture(*chargeId*, *amount*, *applicationFee*);
 
 ### List all charges
 
@@ -443,7 +443,7 @@ Invoice Items
 Any invoice items you create for a customer will be added to their bill.
 
 	var myItem = new StripeInvoiceItemCreateOptions();
-	myItem.AmountInCents = 1000;        // all amounts on Stripe are in cents
+	myItem.Amount = 1000;
 	myItem.Currency = "usd";            // "usd" only supported right now
 	myItem.CustomerId = *customerId*;
 	myItem.Description = "na";          // not required
@@ -459,7 +459,7 @@ Any invoice items you create for a customer will be added to their bill.
 ### Updating an invoice item
 
 	var myUpdatedItem = new StripeInvoiceItemUpdateOptions();
-	myUpdatedItem.AmountInCents = 1010;    // all amounts on Stripe are in cents
+	myUpdatedItem.Amount = 1010;
 	myUpdatedItem.Currency = "usd";        // "usd" only supported right now
 	myUpdatedItem.Description = "test";    // not required
 
@@ -528,7 +528,7 @@ Recipients
 	myRecipient.Name = "Bacon Industries Limited";
 	myRecipient.TaxId = "000000000";                                        // optional
 	myRecipient.Email = "bacon@example.com";                                // optional
-	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";  //optional
+	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";  // optional
 
 	// optional - you must specify all 3 values if you use a bank account
 	myRecipient.BankAccountCountry = "US";
@@ -559,7 +559,7 @@ Transfers
 ### Creating a transfer to a recipient
 
 	var myTransfer = new StripeTransferCreateOptions();
-	myTransfer.AmountInCents = 100;
+	myTransfer.Amount = 100;
 	myTransfer.Currency = "usd";
 	myTransfer.Recipient = "*recipientId*";          // can also be "self" if you want to send to your own account
 	myTransfer.Description = "Sales Week #42";       // optional
@@ -586,7 +586,7 @@ Transfers
 Application Fees
 ----------------
 
-If you do not specify an amountInCents, the entire application fee is refunded.
+If you do not specify an amount, the entire application fee is refunded.
 
 ### Retrieving an application fee
 
@@ -596,7 +596,7 @@ If you do not specify an amountInCents, the entire application fee is refunded.
 ### Refunding an application fee
 
 	var feeService = new StripeApplicationFeeService();
-	StripeApplicationFee stripeApplicationFee = feeService.Refund(*applicationFeeId*, *amountInCents*);
+	StripeApplicationFee stripeApplicationFee = feeService.Refund(*applicationFeeId*, *amount*);
 
 Events
 ------

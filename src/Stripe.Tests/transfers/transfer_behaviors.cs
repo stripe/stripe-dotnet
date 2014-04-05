@@ -19,7 +19,7 @@ namespace Stripe.Tests
 			StripeTransfer.LiveMode.ShouldEqual(false);
 
 		It should_have_the_correct_amount = () =>
-			StripeTransfer.AmountInCents.ShouldEqual(StripeTransferCreateOptions.AmountInCents);
+			StripeTransfer.Amount.ShouldEqual(StripeTransferCreateOptions.Amount);
 
 		It should_have_the_correct_currency = () =>
 			StripeTransfer.Currency.ShouldEqual(StripeTransferCreateOptions.Currency);

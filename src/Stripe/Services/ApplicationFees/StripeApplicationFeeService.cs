@@ -20,12 +20,12 @@ namespace Stripe
 			return Mapper<StripeApplicationFee>.MapFromJson(response);
 		}
 
-		public virtual StripeApplicationFee Refund(string applicationFeeId, int? refundAmountInCents = null)
+		public virtual StripeApplicationFee Refund(string applicationFeeId, int? refundAmount = null)
 		{
 			var url = string.Format("{0}/{1}/refund", Urls.ApplicationFees, applicationFeeId);
 
-			if (refundAmountInCents.HasValue)
-				url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmountInCents.Value.ToString());
+			if (refundAmount.HasValue)
+				url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());
 
 			var response = Requestor.PostString(url, ApiKey);
 

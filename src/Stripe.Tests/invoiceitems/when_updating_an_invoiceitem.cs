@@ -27,7 +27,7 @@ namespace Stripe.Tests
 			_stripeInvoiceItem = _stripeInvoiceItemService.Update(_stripeInvoiceItemId, StripeInvoiceItemUpdateOptions);
 
 		It should_have_the_correct_amount = () =>
-			_stripeInvoiceItem.AmountInCents.ShouldEqual(test_data.stripe_invoiceitem_update_options.Valid().AmountInCents);
+			_stripeInvoiceItem.Amount.ShouldEqual(test_data.stripe_invoiceitem_update_options.Valid().Amount);
 
 		It should_have_the_correct_description = () =>
 			_stripeInvoiceItem.Description.ShouldEqual(test_data.stripe_invoiceitem_update_options.Valid().Description);

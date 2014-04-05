@@ -14,7 +14,7 @@ namespace Stripe.Tests
 			StripeCharge.Id.ShouldNotBeNull();
 
 		It should_have_the_correct_amount = () =>
-			StripeCharge.AmountInCents.ShouldEqual(StripeChargeCreateOptions.AmountInCents.Value);
+			StripeCharge.Amount.ShouldEqual(StripeChargeCreateOptions.Amount.Value);
 
 		It should_have_the_correct_created_date = () =>
 			StripeCharge.Created.Day.ShouldEqual(DateTime.UtcNow.Day);

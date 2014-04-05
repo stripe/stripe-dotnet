@@ -22,6 +22,6 @@ namespace Stripe.Tests
 			_stripeCharge = _stripeChargeService.Refund(_createdStripeChargeId, 250);
 
 		It should_have_the_correct_amount_refunded = () =>
-			_stripeCharge.AmountInCentsRefunded.ShouldEqual(250);
+			_stripeCharge.AmountRefunded.ShouldEqual(250);
 	}
 }

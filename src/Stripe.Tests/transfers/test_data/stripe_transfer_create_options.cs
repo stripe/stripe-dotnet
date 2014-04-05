@@ -9,7 +9,7 @@ namespace Stripe.Tests.test_data
 		{
 			var stripeTransferCreateOptions = new StripeTransferCreateOptions()
 			{
-				AmountInCents = 50,
+				Amount = 50,
 				Currency = "usd",
 				Recipient = "self",
 				Description = "test-transfer-description-" + Guid.NewGuid(),
