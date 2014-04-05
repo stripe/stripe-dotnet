@@ -36,7 +36,7 @@ namespace Stripe.Tests
 		It should_have_the_correct_description = () =>
 			StripeTransfer.Description.ShouldEqual(StripeTransferCreateOptions.Description);
 
-		It should_have_the_correct_statement_descriptor = () =>
-			StripeTransfer.StatementDescriptor.ShouldEqual(StripeTransferCreateOptions.StatementDescriptor);
+		It should_have_the_correct_statement_description = () =>
+			StripeTransfer.StatementDescription.ShouldEqual(StripeTransferCreateOptions.StatementDescription);
 	}
 }

@@ -12,8 +12,8 @@ namespace Stripe.Tests.test_data
 				AmountInCents = 50,
 				Currency = "usd",
 				Recipient = "self",
-				Description = "test-transfer-description-" + Guid.NewGuid().ToString(),
-				StatementDescriptor = "test-transfer-statement-descriptor" + Guid.NewGuid().ToString(),
+				Description = "test-transfer-description-" + Guid.NewGuid(),
+				StatementDescription = "test-transfer-statement-descriptor" + Guid.NewGuid(),
 				Metadata = new Dictionary<string, string>
 				{
 					{ "A", "Value-A" },
