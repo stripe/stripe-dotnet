@@ -67,6 +67,7 @@
     <Compile Include="Entities\StripeOAuthToken.cs" />
     <Compile Include="Entities\StripePeriod.cs" />
     <Compile Include="Entities\StripeRecipient.cs" />
+    <Compile Include="Entities\StripeSubscriptionList.cs" />
     <Compile Include="Entities\StripeToken.cs" />
     <Compile Include="Entities\StripeCharge.cs" />
     <Compile Include="Entities\StripeCard.cs" />

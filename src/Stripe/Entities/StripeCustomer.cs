@@ -30,13 +30,13 @@ namespace Stripe
 		public bool? Deleted { get; set; }
 
 		[JsonProperty("delinquent")]
-		public bool? Delinquent { get; set; }
+		public bool Delinquent { get; set; }
 
 		[JsonProperty("discount")]
 		public StripeDiscount StripeDiscount { get; set; }
 
-		[JsonProperty("subscription")]
-		public StripeSubscription StripeSubscription { get; set; }
+		[JsonProperty("subscriptions")]
+		public StripeSubscriptionList StripeSubscriptionList { get; set; }
 
 		[JsonProperty("default_card")]
 		public string StripeDefaultCardId { get; set; }
