@@ -46,11 +46,10 @@ namespace Stripe
 			Requestor.Delete(url, ApiKey);
 		}
 
-		public virtual IEnumerable<StripeRecipient> List(int count = 10, int offset = 0, bool? verified = null)
+		public virtual IEnumerable<StripeRecipient> List(int limit = 10, bool? verified = null)
 		{
 			var url = Urls.Recipients;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+			url = ParameterBuilder.ApplyParameterToUrl(url, "limit", limit.ToString());
 
 			if (verified.HasValue)
 				url = ParameterBuilder.ApplyParameterToUrl(url, "verified", verified.ToString());

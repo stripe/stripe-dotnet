@@ -20,11 +20,10 @@ namespace Stripe
 			return Mapper<StripeEvent>.MapFromJson(response);
 		}
 
-		public virtual IEnumerable<StripeEvent> List(int count = 10, int offset = 0, StripeEventSearchOptions searchOptions = null)
+		public virtual IEnumerable<StripeEvent> List(int limit = 10, StripeEventSearchOptions searchOptions = null)
 		{
 			var url = Urls.Events;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+			url = ParameterBuilder.ApplyParameterToUrl(url, "limit", limit.ToString());
 			url = ParameterBuilder.ApplyAllParameters(searchOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);

@@ -32,11 +32,10 @@ namespace Stripe
 			return Mapper<StripeApplicationFee>.MapFromJson(response);
 		}
 
-		public virtual IEnumerable<StripeApplicationFee> List(int count = 10, int offset = 0, string chargeId = null)
+		public virtual IEnumerable<StripeApplicationFee> List(int limit = 10, string chargeId = null)
 		{
 			var url = Urls.ApplicationFees;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+			url = ParameterBuilder.ApplyParameterToUrl(url, "limit", limit.ToString());
 
 			if (!string.IsNullOrEmpty(chargeId))
 				url = ParameterBuilder.ApplyParameterToUrl(url, "charge", chargeId);
