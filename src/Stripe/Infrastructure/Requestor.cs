@@ -2,6 +2,9 @@
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Net.Security;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Stripe
 {
@@ -50,7 +53,43 @@ namespace Stripe
 			request.ContentType = "application/x-www-form-urlencoded";
 			request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
 
+			//// this only works for .NET 4.5+, unfortunately :(
+			//request.ServerCertificateValidationCallback = StripeCertificateVerificationCallback;
+
 			return request;
+		}
+
+		private static string[] blacklistedCertDigests = {
+			// api.stripe.com
+			"05C0B3643694470A888C6E7FEB5C9E24E823DC53",
+			// REVOKED.STRIPE.COM
+			"5B7DC7FBC98D78BF76D4D4FA6F597A0C901FAD5C",
+			// api.stripe.com
+			//"7BBBEC45CFCC848CEBD5ADE6A16E48805CD9541C",
+		};
+
+
+		private static bool StripeCertificateVerificationCallback(
+			Object sender,
+			X509Certificate certificate,
+			X509Chain chain,
+			SslPolicyErrors sslPolicyErrors)
+		{
+			Console.WriteLine("StripeCertificateVerificationCallback 1");
+			if(sslPolicyErrors != SslPolicyErrors.None) {
+        Console.WriteLine("StripeCertificateVerificationCallback 1b");
+				return false;
+			}
+
+			Console.WriteLine("StripeCertificateVerificationCallback 2");
+			string cert_digest = certificate.GetCertHashString();
+			if(Array.Exists(blacklistedCertDigests, digest => digest.Equals(cert_digest, StringComparison.OrdinalIgnoreCase))) {
+        Console.WriteLine("StripeCertificateVerificationCallback 2b");
+				return false;
+			}
+
+			Console.WriteLine("StripeCertificateVerificationCallback 3");
+			return true;
 		}
 
 		private static string GetAuthorizationHeaderValue(string apiKey)
@@ -66,8 +105,12 @@ namespace Stripe
 
 		private static string ExecuteWebRequest(WebRequest webRequest)
 		{
+      Console.WriteLine("CREATING DELEGATE");
+      var del = new RemoteCertificateValidationCallback(StripeCertificateVerificationCallback);
 			try
 			{
+        Console.WriteLine("ASSIGNING DELEGATE");
+        ServicePointManager.ServerCertificateValidationCallback += del;
 				using (var response = webRequest.GetResponse())
 				{
 					return ReadStream(response.GetResponseStream());
@@ -90,6 +133,11 @@ namespace Stripe
 				}
 
 				throw;
+			}
+			finally
+			{
+       Console.WriteLine("UN-ASSIGNING DELEGATE");
+			 ServicePointManager.ServerCertificateValidationCallback -= del;
 			}
 		}
 
