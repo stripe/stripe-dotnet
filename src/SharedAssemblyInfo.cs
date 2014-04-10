@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle("Stripe.net")]
 [assembly: AssemblyDescription("A .net client api for http://stripe.com")]
 [assembly: AssemblyCompany("Jayme Davis")]
