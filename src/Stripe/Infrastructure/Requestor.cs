@@ -59,13 +59,13 @@ namespace Stripe
 			return request;
 		}
 
-		private static byte[][] blacklistedCertDigests = {
+		private static string[] blacklistedCertDigests = {
 			// api.stripe.com
-			new byte[]{0x05, 0xc0, 0xb3, 0x64, 0x36, 0x94, 0x47, 0x0a, 0x88, 0x8c, 0x6e, 0x7f, 0xeb, 0x5c, 0x9e, 0x24, 0xe8, 0x23, 0xdc, 0x53},
-			// revoked.stripe.com
-			new byte[]{0x5b, 0x7d, 0xc7, 0xfb, 0xc9, 0x8d, 0x78, 0xbf, 0x76, 0xd4, 0xd4, 0xfa, 0x6f, 0x59, 0x7a, 0x0c, 0x90, 0x1f, 0xad, 0x5c},
+			"05C0B3643694470A888C6E7FEB5C9E24E823DC53",
+			// REVOKED.STRIPE.COM
+			"5B7DC7FBC98D78BF76D4D4FA6F597A0C901FAD5C",
 			// api.stripe.com
-			new byte[]{0x7b, 0xbb, 0xec, 0x45, 0xcf, 0xcc, 0x84, 0x8c, 0xeb, 0xd5, 0xad, 0xe6, 0xa1, 0x6e, 0x48, 0x80, 0x5c, 0xd9, 0x54, 0x1c},
+			//"7BBBEC45CFCC848CEBD5ADE6A16E48805CD9541C",
 		};
 
 
@@ -75,19 +75,20 @@ namespace Stripe
 			X509Chain chain,
 			SslPolicyErrors sslPolicyErrors)
 		{
-			System.Diagnostics.Debug.WriteLine("StripeCertificateVerificationCallback 1");
+			Console.WriteLine("StripeCertificateVerificationCallback 1");
 			if(sslPolicyErrors != SslPolicyErrors.None) {
+        Console.WriteLine("StripeCertificateVerificationCallback 1b");
 				return false;
 			}
 
-			System.Diagnostics.Debug.WriteLine("StripeCertificateVerificationCallback 2");
-			SHA1 sha1 = SHA1.Create();
-			byte[] cert_digest = sha1.ComputeHash(certificate.GetRawCertData());
-			if(Array.Exists(blacklistedCertDigests, digest => Array.Equals(digest, cert_digest))) {
+			Console.WriteLine("StripeCertificateVerificationCallback 2");
+			string cert_digest = certificate.GetCertHashString();
+			if(Array.Exists(blacklistedCertDigests, digest => digest.Equals(cert_digest, StringComparison.OrdinalIgnoreCase))) {
+        Console.WriteLine("StripeCertificateVerificationCallback 2b");
 				return false;
 			}
 
-			System.Diagnostics.Debug.WriteLine("StripeCertificateVerificationCallback 3");
+			Console.WriteLine("StripeCertificateVerificationCallback 3");
 			return true;
 		}
 
@@ -104,9 +105,12 @@ namespace Stripe
 
 		private static string ExecuteWebRequest(WebRequest webRequest)
 		{
+      Console.WriteLine("CREATING DELEGATE");
+      var del = new RemoteCertificateValidationCallback(StripeCertificateVerificationCallback);
 			try
 			{
-				ServicePointManager.ServerCertificateValidationCallback = StripeCertificateVerificationCallback;
+        Console.WriteLine("ASSIGNING DELEGATE");
+        ServicePointManager.ServerCertificateValidationCallback += del;
 				using (var response = webRequest.GetResponse())
 				{
 					return ReadStream(response.GetResponseStream());
@@ -132,7 +136,8 @@ namespace Stripe
 			}
 			finally
 			{
-				//ServicePointManager.ServerCertificateValidationCallback -= StripeCertificateVerificationCallback;
+       Console.WriteLine("UN-ASSIGNING DELEGATE");
+			 ServicePointManager.ServerCertificateValidationCallback -= del;
 			}
 		}
 
