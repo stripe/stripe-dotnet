@@ -144,6 +144,7 @@
     <Compile Include="plans\when_creating_a_plan.cs" />
     <Compile Include="customers\when_creating_a_customer.cs" />
     <Compile Include="oauth\when_creating_an_invalid_oauth_token_request.cs" />
+    <Compile Include="requestor\certificate_blacklists.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Stripe\Stripe.csproj">

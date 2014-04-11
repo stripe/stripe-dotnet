@@ -2,6 +2,9 @@
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Net.Security;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Stripe
 {
@@ -53,6 +56,35 @@ namespace Stripe
 			return request;
 		}
 
+		private static string[] blacklistedCertDigests = {
+			// api.stripe.com
+			"05C0B3643694470A888C6E7FEB5C9E24E823DC53",
+			// revoked.stripe.com
+			"5B7DC7FBC98D78BF76D4D4FA6F597A0C901FAD5C",
+		};
+
+
+		private static bool StripeCertificateVerificationCallback(
+			Object sender,
+			X509Certificate certificate,
+			X509Chain chain,
+			SslPolicyErrors sslPolicyErrors)
+		{
+			string cert_digest = certificate.GetCertHashString();
+			if(Array.Exists(blacklistedCertDigests, digest => digest.Equals(cert_digest, StringComparison.OrdinalIgnoreCase))) {
+				Console.WriteLine("Invalid server certificate: {0} ({1})", certificate.Subject, cert_digest);
+				Console.WriteLine("You tried to connect to a server that has a blacklisted SSL certificate, which means we cannot securely send data to that server. Please email support@stripe.com if you need help connecting to the correct API endpoint.");
+				return false;
+			}
+
+			// make sure there are no other SSL validation errors
+			if(sslPolicyErrors == SslPolicyErrors.None) {
+				return true;
+			}
+
+			return false;
+		}
+
 		private static string GetAuthorizationHeaderValue(string apiKey)
 		{
 			var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", apiKey)));
@@ -66,8 +98,10 @@ namespace Stripe
 
 		private static string ExecuteWebRequest(WebRequest webRequest)
 		{
+			RemoteCertificateValidationCallback verification_callback = new RemoteCertificateValidationCallback(StripeCertificateVerificationCallback);
 			try
 			{
+				ServicePointManager.ServerCertificateValidationCallback += verification_callback;
 				using (var response = webRequest.GetResponse())
 				{
 					return ReadStream(response.GetResponseStream());
@@ -90,6 +124,10 @@ namespace Stripe
 				}
 
 				throw;
+			}
+			finally
+			{
+			 ServicePointManager.ServerCertificateValidationCallback -= verification_callback;
 			}
 		}
 
