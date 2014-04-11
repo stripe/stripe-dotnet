@@ -7,3 +7,4 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyProduct("Stripe.net")]
 [assembly: AssemblyCopyright("Copyright (C) Jayme Davis 2014")]
 [assembly: AssemblyVersion("2.0.0")]
+[assembly: InternalsVisibleTo("Stripe.Tests")]
