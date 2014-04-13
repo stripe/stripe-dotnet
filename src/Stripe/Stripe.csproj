@@ -80,6 +80,7 @@
     <Compile Include="Infrastructure\StripeDateTimeConverter.cs" />
     <Compile Include="Infrastructure\Mapper.cs" />
     <Compile Include="Entities\StripeCustomer.cs" />
+    <Compile Include="Properties\InternalsVisibleTo.cs" />
     <Compile Include="Services\Account\StripeAccountService.cs" />
     <Compile Include="Services\Balance\StripeBalanceService.cs" />
     <Compile Include="Services\BankAccountOptions.cs" />
