@@ -1,4 +1,6 @@
-![Stripe.net](http://i.imgur.com/wNVIGA3.png)
+![Stripe.net](http://i.imgur.com/V3vD8EF.png)
+
+[![Stories in Ready](https://badge.waffle.io/jaymedavis/stripe.net.png?label=ready&title=Ready)](https://waffle.io/jaymedavis/stripe.net)
 
 [![Click here to lend your support to: stripe.net and make a donation at www.pledgie.com](http://www.pledgie.com/campaigns/22262.png?skin_name=chrome)](http://www.pledgie.com/campaigns/22262)
 
