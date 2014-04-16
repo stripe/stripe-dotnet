@@ -8,10 +8,13 @@ namespace Stripe
 {
 	public class StripeListOptions
 	{
-		[JsonProperty("count")]
-		public int? Count { get; set; }
+		[JsonProperty("limit")]
+		public int? Limit { get; set; }
 
-		[JsonProperty("offset")]
-		public int? Offset { get; set; }
+		[JsonProperty("starting_after")]
+		public string StartingAfter { get; set; }
+
+		[JsonProperty("ending_before")]
+		public string EndingBefore { get; set; }
 	}
 }
