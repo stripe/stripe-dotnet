@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>169</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,6 +45,13 @@
     <Reference Include="Machine.Specifications.Should">
       <HintPath>..\packages\Machine.Specifications.0.6.2\lib\net40\Machine.Specifications.Should.dll</HintPath>
     </Reference>
+    <Reference Include="NCrunch.Framework, Version=2.0.0.97, Culture=neutral, PublicKeyToken=01d101bf6f3e0aea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NCrunch.Framework.2.0.0.97\lib\net35\NCrunch.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -64,6 +72,8 @@
     <Compile Include="balance\when_retrieving_a_balance.cs" />
     <Compile Include="charges\charge_behaviors.cs" />
     <Compile Include="charges\when_capturing_a_charge_with_a_card.cs" />
+    <Compile Include="charges\when_listing_charges_by_date.cs" />
+    <Compile Include="charges\when_listing_charges_with_paging.cs" />
     <Compile Include="charges\when_setting_a_charge_to_capture.cs" />
     <Compile Include="charges\when_creating_a_charge_with_an_invalid_card.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_token.cs" />
@@ -73,6 +83,11 @@
     <Compile Include="coupons\when_creating_a_coupon_with_amount_off.cs" />
     <Compile Include="coupons\when_creating_a_coupon_with_an_api_key.cs" />
     <Compile Include="customers\when_creating_a_customer_with_an_api_key.cs" />
+    <Compile Include="infrastructure\test_data\sample_object.cs" />
+    <Compile Include="infrastructure\when_building_parameters.cs" />
+    <Compile Include="infrastructure\when_passed_empty_object.cs" />
+    <Compile Include="infrastructure\when_serializing_an_equals_datefilter.cs" />
+    <Compile Include="infrastructure\when_serializing_a_datefilter_query.cs" />
     <Compile Include="invoiceitems\when_creating_an_invoiceitem_with_an_api_key.cs" />
     <Compile Include="invoices\when_closing_an_invoice.cs" />
     <Compile Include="invoices\when_creating_an_invoice_with_an_api_key.cs" />

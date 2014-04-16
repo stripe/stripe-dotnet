@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
@@ -29,15 +30,13 @@ namespace Stripe
 		public DateTime? RedeemBy { get; set; }
 
 		[JsonProperty("redeem_by")]
-		internal int? RedeemByInternal
+		internal long? RedeemByInternal
 		{
 			get
 			{
 				if (!RedeemBy.HasValue) return null;
 
-				var diff = RedeemBy.Value - new DateTime(1970, 1, 1);
-
-				return (int)Math.Floor(diff.TotalSeconds);
+				return EpochTime.ConvertDateTimeToEpoch(RedeemBy.Value);
 			}
 		}
 	}

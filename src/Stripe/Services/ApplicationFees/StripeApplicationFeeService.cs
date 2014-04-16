@@ -32,15 +32,15 @@ namespace Stripe
 			return Mapper<StripeApplicationFee>.MapFromJson(response);
 		}
 
-		public virtual IEnumerable<StripeApplicationFee> List(int limit = 10, string chargeId = null)
+		public virtual IEnumerable<StripeApplicationFee> List(StripeApplicationFeeListOptions options = null)
 		{
 			var url = Urls.ApplicationFees;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "limit", limit.ToString());
+			if (options != null)
+			{
+				url = ParameterBuilder.ApplyAllParameters(options, url);
+			}
 
-			if (!string.IsNullOrEmpty(chargeId))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "charge", chargeId);
-
-			var response = Requestor.GetString(url, ApiKey);
+			var response = Requestor.PostString(url, ApiKey);
 
 			return Mapper<StripeApplicationFee>.MapCollectionFromJson(response);
 		}

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -50,10 +51,21 @@ namespace Stripe
 			Requestor.Delete(url, ApiKey);
 		}
 
-		public virtual IEnumerable<StripeCard> List(string customerId, int limit = 10)
+		public virtual IEnumerable<StripeCard> List(string customer)
 		{
-			var url = string.Format(Urls.Cards, customerId);
-			url = ParameterBuilder.ApplyParameterToUrl(url, "limit", limit.ToString());
+			return List(new StripeCardListOptions { Customer = customer });
+		}
+
+		public virtual IEnumerable<StripeCard> List(StripeCardListOptions options)
+		{
+			if (options == null) { throw new ArgumentNullException("options"); }
+			if (string.IsNullOrEmpty(options.Customer)) { throw new ArgumentNullException("Customer"); }
+
+			var url = string.Format(Urls.Cards, options.Customer);
+			if (options != null)
+			{
+				url = ParameterBuilder.ApplyAllParameters(options, url);
+			}
 
 			var response = Requestor.GetString(url, ApiKey);
 

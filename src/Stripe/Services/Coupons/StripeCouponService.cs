@@ -36,10 +36,13 @@ namespace Stripe
 			Requestor.Delete(url, ApiKey);
 		}
 
-		public virtual IEnumerable<StripeCoupon> List(int limit = 10)
+		public virtual IEnumerable<StripeCoupon> List(StripeListOptions options = null)
 		{
 			var url = Urls.Coupons;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "limit", limit.ToString());
+			if (options != null)
+			{
+				url = ParameterBuilder.ApplyAllParameters(options, url);
+			}
 
 			var response = Requestor.GetString(url, ApiKey);
 

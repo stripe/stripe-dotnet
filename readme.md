@@ -11,7 +11,7 @@ For more information about the examples below, visit https://stripe.com/docs/api
 Quick Start
 -----------
 
-It is recommended that you install Stripe.net via NuGet. If you wish to build it yourself via build.cmd, you will need
+It is recommended that you install Stripe.net via NuGet. If you wish to build it yourself via build.cmd, you will need 
 ruby installed along with the gems albacore and zip.
 
 Add a reference to Stripe.net.dll.
@@ -57,7 +57,7 @@ If your site has multiple offerings, plans are perfect. You can create as many p
 	var planService = new StripePlanService();
 	StripePlan response = planService.Create(myPlan);
 
-The returned StripePlan entity above will have a unique Id. You will want to persist this for later. When you create a customer you will be able to assign them
+The returned StripePlan entity above will have a unique Id. You will want to persist this for later. When you create a customer you will be able to assign them 
 to a plan id (or not)
 
 ### Updating a plan
@@ -82,7 +82,10 @@ to a plan id (or not)
 ### List all plans
 
 	var planService = new StripePlanService();
-	IEnumerable<StripePlan> response = planService.List(); // can optionally pass limit (defaults to 10)
+	IEnumerable<StripePlan> response = planService.List(); 
+
+List takes options including [paging](#paging)
+
 
 Coupons (queue-pons not coo-pons)
 ---------------------------------
@@ -98,7 +101,7 @@ Coupons (queue-pons not coo-pons)
 	// set these if you want to
 	myCoupon.MaxRedemptions = 100;
 	myCoupon.RedeemBy = '12/31/2012';
-
+	
 	var couponService = new StripeCouponService();
 	StripeCoupon response = couponService.Create(myCoupon);
 
@@ -115,7 +118,9 @@ Coupons (queue-pons not coo-pons)
 ### List all coupons
 
 	var couponService = new StripeCouponService();
-	IEnumerable<StripeCoupon> response = couponService.List();    // can optionally pass limit (defaults to 10)
+	IEnumerable<StripeCoupon> response = couponService.List();
+
+List takes options including [paging](#paging)
 
 Tokens
 ------
@@ -139,7 +144,7 @@ customer or a charge, but only used once.
 	myToken.CardExpirationYear = "2012";
 	myToken.CardName = "Gabe Newell";
 	myToken.CardNumber = "4242424242424242";
-
+	
 	// set this property if using a customer (stripe connect only)
 	myToken.CustomerId = *customerId*;
 
@@ -158,7 +163,7 @@ Customers
 
 ### Creating a customer
 
-When creating a customer, you can specify any plan they are on, any coupons that will apply,
+When creating a customer, you can specify any plan they are on, any coupons that will apply, 
 a credit card or token, and various meta data.
 
 	var myCustomer = new StripeCustomerCreateOptions();
@@ -239,10 +244,16 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 	var customerService = new StripeCustomerService();
 	customerService.Delete(*customerId*);
 
-### List all customers
+### List customers
 
 	var customerService = new StripeCustomerService();
-	IEnumerable<StripeCustomer> response = customerService.List(); // can optionally pass limit (defaults to 10)
+	var allCustomers = customerService.List(); 
+    var customersCreatedToday = customerService.List(new StripeCustomerListOptions 
+	{
+		Created = new StripeDateFilter { GreaterThanOrEqual = DateTime.UtcNow.Date } 
+	});
+
+List takes options including [paging](#paging) and [date filtering](#date-filtering)
 
 ### Updating a customer subscription
 
@@ -263,7 +274,7 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 	// set this property if using a token
 	myUpdatedSubscription.TokenId = *tokenId*;
 
-	myUpdatedSubscription.PlanId = *planId*;
+	myUpdatedSubscription.PlanId = *planId*;			
 	myUpdatedSubscription.CouponId = *couponId*;
 	myUpdatedSubscription.TrialEnd = DateTime.UtcNow.AddMonths(1);
 	myUpdatedSubscription.Quantity = 1;                             // optional, defaults to 1
@@ -274,7 +285,7 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 ### Canceling a customer subscription
 
 	var customerService = new StripeCustomerService();
-	StripeSubscription subscription = customerService.CancelSubscription(*customerId*);    // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling
+	StripeSubscription subscription = customerService.CancelSubscription(*customerId*);    // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling 
 
 Cards
 -----
@@ -333,7 +344,14 @@ When creating a card you can use either a card or a token
 ### List all cards
 
 	var cardService = new StripeCardService();
-	IEnumerable<StripeCard> response = cardService.List(*customerId*);    // can optionally pass limit (defaults to 10)
+	IEnumerable<StripeCard> cards = cardService.List(*customerId*);
+    IEnumerable<StripeCard> cardsFirstPage = cardService.List(new StripeCardListOptions 
+	{
+		Customer = customerId,
+		Limit = 10
+	});
+
+List takes options including [paging](#paging)
 
 Charges
 -------
@@ -343,7 +361,7 @@ Charges
 When creating a charge you can use either a card, customer, or a token. Only one is allowed.
 
 	var myCharge = new StripeChargeCreateOptions();
-
+	
 	// always set these properties
 	myCharge.Amount = 5153;
 	myCharge.Currency = "usd";
@@ -389,7 +407,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	StripeCharge stripeCharge = chargeService.Get(*chargeId*);
 
 ### Refunding a charge
-
+	
 If you do not specify an amount, the entire charge is refunded. The StripeCharge entity has properties for "Refunded" (bool) and RefundedAmount.
 
 	var chargeService = new StripeChargeService();
@@ -402,10 +420,15 @@ If you set a charge to capture = false, you use this to capture the charge later
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Capture(*chargeId*, *amount*, *applicationFee*);
 
-### List all charges
+### List charges
 
 	var chargeService = new StripeChargeService();
-	IEnumerable<StripeCharge> response = chargeService.List();    // can optionally pass limit (defaults to 10), and a customerId to get charges for a single customer
+	IEnumerable<StripeCharge> allCharges = chargeService.List();	// Defaults to first 10 results
+    IEnumerable<StripeCharge> chargesForCustomer = chargeService.List(new StripeChargeListOptions { Customer = customerId });
+    IEnumerable<StripeCharge> chargesToday = chargeService.List(
+        new StripeChargeListOptions { Created = new StripeDateFilter { GreaterThanOrEqual = DateTime.Now.Date } });
+
+List takes options including [paging](#paging) and [date filtering](#date-filtering)
 
 Invoices
 --------
@@ -433,10 +456,18 @@ Invoices
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Update(stripeInvoiceUpdateOptions);
 
-### List all invoices
+### List invoices
 
 	var invoiceService = new StripeInvoiceService();
-	IEnumerable<StripeInvoice> response = invoiceService.List();    // can optionally pass limit (defaults to 10), and a customerid
+	IEnumerable<StripeInvoice> invoices = invoiceService.List();		
+	IEnumerable<StripeInvoice> invoicesForCustomer = invoiceService.List(new StripeInvoiceListOptions {
+		Customer = customerId
+	});		
+	IEnumerable<StripeInvoice> invoicesToday = invoiceService.List(new StripeInvoiceListOptions {
+		Created = new StripeDateFilter { GreaterThanOrEqual = DateTime.Now.Date }
+	});		
+
+List takes options including [paging](#paging) and [date filtering](#date-filtering) 
 
 Invoice Items
 -------------
@@ -477,7 +508,7 @@ Any invoice items you create for a customer will be added to their bill.
 ### List all invoice items
 
 	var invoiceItemService = new StripeInvoiceItemService();
-	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List();    // can optionally pass limit (defaults to 10), and a customerid
+	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List();    // can pass options including offset & count for paging, customer, and created date
 
 Account
 -------
@@ -503,7 +534,7 @@ Disputes
 	var disputeService = new StripeDisputeService();
 
 	// providing the dispute reason is optional
-	StripeDispute stripeDispute = disputeService.Update(*chargeId*, "customer ate the donut before I charged them, so they said it was free");
+	StripeDispute stripeDispute = disputeService.Update(*chargeId*, "customer ate the donut before I charged them, so they said it was free"); 
 
 Recipients
 ----------
@@ -521,7 +552,7 @@ Recipients
 	myRecipient.BankAccountCountry = "US";
 	myRecipient.BankAccountRoutingNumber = "110000000";
 	myRecipient.BankAccountNumber = "000123456789";
-
+	
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Create(myRecipient);
 
@@ -554,7 +585,13 @@ Recipients
 ### List all recipients
 
 	var recipientService = new StripeRecipientService();
-	IEnumerable<StripeRecipient> response = recipientService.List(); // can optionally pass limit (defaults to 10), and verified (bool)
+	IEnumerable<StripeRecipient> response = recipientService.List();
+	IEnumerable<StripeRecipient> verifiedRecipients = recipientService.List(new StripeRecipientListOptions 
+	{
+		Verified = true
+	}); 
+
+List takes options including [paging](#paging)
 
 Transfers
 ---------
@@ -584,7 +621,13 @@ Transfers
 ### List all transfers
 
 	var transferService = new StripeTransferService();
-	IEnumerable<StripeTransfer> response = transferService.List(); // can optionally pass limit (defaults to 10), recipientId, and status
+	IEnumerable<StripeTransfer> response = transferService.List();
+	IEnumerable<StripeTransfer> paidTransfers = transferService.List(new StripeTransferListOptions
+	{
+		Status = "paid"
+	}); // Can pass options recipientId, status, and date
+
+List takes options including [paging](#paging) and [date filtering](#date-filtering) 
 
 Application Fees
 ----------------
@@ -600,6 +643,49 @@ If you do not specify an amount, the entire application fee is refunded.
 
 	var feeService = new StripeApplicationFeeService();
 	StripeApplicationFee stripeApplicationFee = feeService.Refund(*applicationFeeId*, *amount*);
+
+Paging
+------
+
+All Stripe List methods support paging, using `limit`, `starting_after` and `ending_before` properties.  If you do not specify any options, `limit` will default to 10.  Examples of retrieving paged data from the Charge list service:
+
+	var chargeService = new StripeChargeService();
+	IEnumerable<StripeCharge> allCharges = chargeService.List();	// Defaults to first 10 results
+    IEnumerable<StripeCharge> firstPage = chargeService.List(new StripeChargeListOptions 
+    { 
+        Limit = 5 
+    });
+    IEnumerable<StripeCharge> nextPage = chargeService.List(new StripeChargeListOptions 
+    { 
+        Limit = 5, 
+    	StartingAfter = firstPage.Last().Id
+	});
+	IEnumerable<StripeCharge> previousPage = chargeService.List(new StripeChargeListOptions
+	{
+		Limit = 5,
+		EndingBefore = nextPage.First().Id
+	}); 
+
+Date Filtering
+--------------
+
+Many of the List methods support parameters to filter by date.  To use this, use the `StripeDateFilter` class.  You can combine the filters to make complex queries.  Examples below:
+
+	var chargeService = new StripeChargeService();
+	var chargesToday = chargeService.List(new StripeChargeListOptions 
+	{
+		Created = new StripeDateFilter { GreaterThanOrEqual = DateTime.UtcNow.Date }
+	});
+    var chargesYesterday = chargeService.List(new StripeChargeListOptions 
+	{
+		Created = new StripeDateFilter 
+		{ 
+			GreaterThanOrEqual = DateTime.Now.AddDays(-1).Date,
+			LessThan = DateTime.Now.Date
+		}
+	});
+
+NB: All Stripe date parameters should be in UTC, no matter what your Stripe account settings say.
 
 Events
 ------
@@ -618,11 +704,11 @@ Stripe sends Events (or webhooks) whenever an associated action occurs. The list
 			{
 				get { return true; }
 			}
-
+	
 			public void ProcessRequest(HttpContext context)
 			{
 				var json = new StreamReader(context.Request.InputStream).ReadToEnd();
-
+	
 				var stripeEvent = StripeEventUtility.ParseEvent(json);
 
 				switch (stripeEvent.Type)
@@ -636,12 +722,12 @@ Stripe sends Events (or webhooks) whenever an associated action occurs. The list
 	}
 
 2) Create a StripeHandler.ashx in the root of your website (or wherever) that looks like this:
-
+	
 	<%@ WebHandler Language="C#" Class="StripeHandler" CodeBehind="StripeHandler.cs" %>
 
-3) Login to Stripe and go to Account Settings, webhooks - from here, you can setup the url that points to your StripeHandler.ashx for testing.
+3) Login to Stripe and go to Account Settings, webhooks - from here, you can setup the url that points to your StripeHandler.ashx for testing. 
 
-Whenever an Event is received, StripeEventUtility.ParseEvent(json) will convert the response into a *StripeEvent* object.
+Whenever an Event is received, StripeEventUtility.ParseEvent(json) will convert the response into a *StripeEvent* object. 
 
 ### Retrieving an event
 
@@ -649,29 +735,29 @@ If you have the id and you want to retrieve the event
 
 	var eventService = new StripeEventService();
 	StripeEvent response = eventService.Get(*eventId*)
-
+	
 ### List all events
 
-You can list events in the same way everything else works in Stripe.net.
+You can list events in the same way everything else works in Stripe.net. 
 
 	var eventService = new StripeEventService();
 	IEnumerable<StripeEvent> response = eventService.List();    // can optionally pass limit (defaults to 10), and StripeEventSearchOptions
-
+	
 You can also optionally pass a StripeSearchEventOptions which supports a specific Created timestamp, LessThan, LessThanOrEqualTo, GreaterThan, or GreaterThanOrEqualTo.
-
+	
 	var eventService = new StripeEventService();
-
+	
 	var eventSearchOptions = new StripeEventSearchOptions();
-
+	
 	// created will match on an exact date time
-	eventSearchOptions.Created = DateTime.UtcNow;
-
+	eventSearchOptions.Created = DateTime.UtcNow; 
+	
 	// or you could do something like
 	eventSearchOptions.LessThanOrEqualTo = DateTime.UtcNow;
 	eventSearchOptions.GreaterThanOrEqualTo = DateTime.UtcNow.AddMonths(-1);
-
+	
 	IEnumerable<StripeEvent> response = eventService.List(10, 0, eventSearchOptions);
-
+	
 
 Stripe Connect
 --------------
