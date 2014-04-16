@@ -89,6 +89,7 @@
     <Compile Include="Services\BankAccountOptions.cs" />
     <Compile Include="Services\ApplicationFees\StripeApplicationFeeService.cs" />
     <Compile Include="Services\Cards\StripeCardCreateOptions.cs" />
+    <Compile Include="Services\Cards\StripeCardListOptions.cs" />
     <Compile Include="Services\Cards\StripeCardService.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -99,6 +100,7 @@
     <Compile Include="Services\Events\StripeEventSearchOptions.cs" />
     <Compile Include="Services\Events\StripeEventService.cs" />
     <Compile Include="Services\Events\StripeEventUtility.cs" />
+    <Compile Include="Services\InvoiceItems\StripeInvoiceItemListOptions.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemUpdateOptions.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemCreateOptions.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemService.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="Services\Customers\StripeCustomerCreateOptions.cs" />
     <Compile Include="Services\Customers\StripeCustomerService.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceUpdateOptions.cs" />
+    <Compile Include="Services\Recipients\StripeRecipientListOptions.cs" />
     <Compile Include="Services\StripeListOptions.cs" />
     <Compile Include="Services\OAuth\StripeOAuthTokenCreateOptions.cs" />
     <Compile Include="Services\OAuth\StripeOAuthTokenService.cs" />

@@ -11,6 +11,9 @@ namespace Stripe
 		[JsonProperty("date")]
 		public StripeDateFilter Date { get; set; }
 
+		[JsonProperty("created")]
+		public StripeDateFilter Created { get; set; }
+
 		[JsonProperty("recipient")]
 		public string Recipient { get; set; }
 
