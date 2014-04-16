@@ -11,10 +11,10 @@ namespace Stripe
 		public string Id { get; set; }
 
 		[JsonProperty("amount")]
-		public int? AmountInCents { get; set; }
+		public int? Amount { get; set; }
 
 		[JsonProperty("amount_refunded")]
-		public int? AmountInCentsRefunded { get; set; }
+		public int? AmountRefunded { get; set; }
 
 		[JsonProperty("created")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]

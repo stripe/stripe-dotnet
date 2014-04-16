@@ -11,7 +11,7 @@ namespace Stripe
 		public string Id { get; set; }
 
 		[JsonProperty("amount")]
-		public int? AmountInCents { get; set; }
+		public int? Amount { get; set; }
 
 		[JsonProperty("date")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]

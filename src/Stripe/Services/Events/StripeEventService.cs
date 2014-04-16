@@ -25,7 +25,7 @@ namespace Stripe
 			var url = Urls.Events;
 			if (searchOptions != null)
 			{
-				url = ParameterBuilder.ApplyAllParameters(searchOptions, url);
+			url = ParameterBuilder.ApplyAllParameters(searchOptions, url);
 			}
 
 			var response = Requestor.GetString(url, ApiKey);

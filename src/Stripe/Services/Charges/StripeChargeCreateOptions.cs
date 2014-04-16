@@ -6,10 +6,10 @@ namespace Stripe
 	public class StripeChargeCreateOptions : CreditCardOptions
 	{
 		[JsonProperty("amount")]
-		public int? AmountInCents { get; set; }
+		public int? Amount { get; set; }
 
 		[JsonProperty("application_fee")]
-		public int? ApplicationFeeInCents { get; set; }
+		public int? ApplicationFee { get; set; }
 
 		[JsonProperty("currency")]
 		public string Currency { get; set; }

@@ -17,7 +17,7 @@ namespace Stripe
 		public string AccountId { get; set; }
 
 		[JsonProperty("amount")]
-		public int AmountInCents { get; set; }
+		public int Amount { get; set; }
 
 		[JsonProperty("application")]
 		public string ApplicationId { get; set; }
@@ -42,6 +42,6 @@ namespace Stripe
 		public List<StripeApplicationFeeRefund> Refunds { get; set; }
 
 		[JsonProperty("amount_refunded")]
-		public int AmountRefundedInCents { get; set; }
+		public int AmountRefunded { get; set; }
 	}
 }

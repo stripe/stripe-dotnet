@@ -8,7 +8,7 @@ namespace Stripe.Tests.test_data
 		{
 			var stripeInvoiceItemUpdateOptions = new StripeInvoiceItemUpdateOptions()
 			{
-				AmountInCents = 1001,
+				Amount = 1001,
 				Description = "Test Invoice Item Update",
 				Metadata = new Dictionary<string, string>
 				{

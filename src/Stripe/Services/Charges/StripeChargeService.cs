@@ -29,13 +29,13 @@ namespace Stripe
 			return Mapper<StripeCharge>.MapFromJson(response);
 		}
 
-		public virtual StripeCharge Refund(string chargeId, int? refundAmountInCents = null, bool? refundApplicationFee = null)
+		public virtual StripeCharge Refund(string chargeId, int? refundAmount = null, bool? refundApplicationFee = null)
 		{
 			var url = string.Format("{0}/{1}/refund", Urls.Charges, chargeId);
 
-			if (refundAmountInCents.HasValue)
-				url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmountInCents.Value.ToString());
-			if (refundApplicationFee.HasValue)
+			if (refundAmount.HasValue)
+				url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());
+			if(refundApplicationFee.HasValue)
 				url = ParameterBuilder.ApplyParameterToUrl(url, "refund_application_fee", refundApplicationFee.Value.ToString());
 
 			var response = Requestor.PostString(url, ApiKey);
@@ -56,14 +56,14 @@ namespace Stripe
 			return Mapper<StripeCharge>.MapCollectionFromJson(response);
 		}
 
-		public virtual StripeCharge Capture(string chargeId, int? captureAmountInCents = null, int? applicationFeeInCents = null)
+		public virtual StripeCharge Capture(string chargeId, int? captureAmount = null, int? applicationFee = null)
 		{
 			var url = string.Format("{0}/{1}/capture", Urls.Charges, chargeId);
 
-			if (captureAmountInCents.HasValue)
-				url = ParameterBuilder.ApplyParameterToUrl(url, "amount", captureAmountInCents.Value.ToString());
-			if (applicationFeeInCents.HasValue)
-				url = ParameterBuilder.ApplyParameterToUrl(url, "application_fee", applicationFeeInCents.Value.ToString());
+			if (captureAmount.HasValue)
+				url = ParameterBuilder.ApplyParameterToUrl(url, "amount", captureAmount.Value.ToString());
+			if (applicationFee.HasValue)
+				url = ParameterBuilder.ApplyParameterToUrl(url, "application_fee", applicationFee.Value.ToString());
 
 			var response = Requestor.PostString(url, ApiKey);
 

@@ -19,7 +19,7 @@ namespace Stripe.Tests
 			StripeTransfer.LiveMode.ShouldEqual(false);
 
 		It should_have_the_correct_amount = () =>
-			StripeTransfer.AmountInCents.ShouldEqual(StripeTransferCreateOptions.AmountInCents);
+			StripeTransfer.Amount.ShouldEqual(StripeTransferCreateOptions.Amount);
 
 		It should_have_the_correct_currency = () =>
 			StripeTransfer.Currency.ShouldEqual(StripeTransferCreateOptions.Currency);
@@ -36,7 +36,7 @@ namespace Stripe.Tests
 		It should_have_the_correct_description = () =>
 			StripeTransfer.Description.ShouldEqual(StripeTransferCreateOptions.Description);
 
-		It should_have_the_correct_statement_descriptor = () =>
-			StripeTransfer.StatementDescriptor.ShouldEqual(StripeTransferCreateOptions.StatementDescriptor);
+		It should_have_the_correct_statement_description = () =>
+			StripeTransfer.StatementDescription.ShouldEqual(StripeTransferCreateOptions.StatementDescription);
 	}
 }

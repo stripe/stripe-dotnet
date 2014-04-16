@@ -1,10 +1,12 @@
-![Stripe.net](http://i.imgur.com/RF430nw.png?1)
+![Stripe.net](http://i.imgur.com/V3vD8EF.png)
+
+[![Stories in Ready](https://badge.waffle.io/jaymedavis/stripe.net.png?label=ready&title=Ready)](https://waffle.io/jaymedavis/stripe.net)
 
 [![Click here to lend your support to: stripe.net and make a donation at www.pledgie.com](http://www.pledgie.com/campaigns/22262.png?skin_name=chrome)](http://www.pledgie.com/campaigns/22262)
 
-**Stripe.net is a full service .net api for http://stripe.com.**
+Or how about some DOGEcoin? Much thanks! DAum6PSacnqRE4mjJJB7nzvB8vQrjRHR4j
 
-**For more information about the examples below, visit https://stripe.com/docs/api for a full reference.**
+For more information about the examples below, visit https://stripe.com/docs/api for a full reference.
 
 Quick Start
 -----------
@@ -45,7 +47,7 @@ Plans
 If your site has multiple offerings, plans are perfect. You can create as many plans as you want and then just assign customers to those plans later on.
 
 	var myPlan = new StripePlanCreateOptions();
-	myPlan.AmountInCents = 1000;    // all amounts on Stripe are in cents
+	myPlan.Amount = 1000;           // all amounts on Stripe are in cents, pence, etc
 	myPlan.Currency = "usd";        // "usd" only supported right now
 	myPlan.Interval = "month";      // "month" or "year"
 	myPlan.IntervalCount = 1;       // optional
@@ -80,7 +82,7 @@ to a plan id (or not)
 ### List all plans
 
 	var planService = new StripePlanService();
-	IEnumerable<StripePlan> response = planService.List(); // can optionally pass count (defaults to 10) and offset
+	IEnumerable<StripePlan> response = planService.List(); // can optionally pass limit (defaults to 10)
 
 Coupons (queue-pons not coo-pons)
 ---------------------------------
@@ -113,7 +115,7 @@ Coupons (queue-pons not coo-pons)
 ### List all coupons
 
 	var couponService = new StripeCouponService();
-	IEnumerable<StripeCoupon> response = couponService.List();    // can optionally pass count (defaults to 10) and offset
+	IEnumerable<StripeCoupon> response = couponService.List();    // can optionally pass limit (defaults to 10)
 
 Tokens
 ------
@@ -270,9 +272,6 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 	myUpdatedSubscription.TrialEnd = DateTime.UtcNow.AddMonths(1);
 	myUpdatedSubscription.Quantity = 1;                             // optional, defaults to 1
 
-	// set this property if you wish to end the customer's trial right now
-	myUpdatedSubscription.EndTrialNow = true;
-
 	var customerService = new StripeCustomerService();
 	StripeSubscription subscription = customerService.UpdateSubscription(*customerId*, myUpdatedSubscription);
 
@@ -338,7 +337,7 @@ When creating a card you can use either a card or a token
 ### List all cards
 
 	var cardService = new StripeCardService();
-	IEnumerable<StripeCard> response = cardService.List(*customerId*);    // can optionally pass count (defaults to 10) and offset
+	IEnumerable<StripeCard> response = cardService.List(*customerId*);    // can optionally pass limit (defaults to 10)
 
 Charges
 -------
@@ -350,7 +349,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	var myCharge = new StripeChargeCreateOptions();
 	
 	// always set these properties
-	myCharge.AmountInCents = 5153;
+	myCharge.Amount = 5153;
 	myCharge.Currency = "usd";
 
 	// set this if you want to
@@ -380,7 +379,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	myCharge.Card = *cardId*;
 
 	// set this if you have your own application fees (you must have your application configured first within Stripe)
-	myCharge.ApplicationFeeInCents = 25;
+	myCharge.ApplicationFee = 25;
 
 	// (not required) set this to false if you don't want to capture the charge yet - requires you call capture later
 	myCharge.Capture = true;
@@ -395,17 +394,17 @@ When creating a charge you can use either a card, customer, or a token. Only one
 
 ### Refunding a charge
 	
-If you do not specify an amountInCents, the entire charge is refunded. The StripeCharge entity has properties for "Refunded" (bool) and RefundedAmountInCents.
+If you do not specify an amount, the entire charge is refunded. The StripeCharge entity has properties for "Refunded" (bool) and RefundedAmount.
 
 	var chargeService = new StripeChargeService();
-	StripeCharge stripeCharge = chargeService.Refund(*chargeId*, *amountInCents*, *refundApplicationFee*);
+	StripeCharge stripeCharge = chargeService.Refund(*chargeId*, *amount*, *refundApplicationFee*);
 
 ### Capturing a charge
 
-If you set a charge to capture = false, you use this to capture the charge later. *amountInCents* and *applicationFeeInCents* are not required.
+If you set a charge to capture = false, you use this to capture the charge later. *amount* and *applicationFee* are not required.
 
 	var chargeService = new StripeChargeService();
-	StripeCharge stripeCharge = chargeService.Capture(*chargeId*, *amountInCents*, *applicationFeeInCents*);
+	StripeCharge stripeCharge = chargeService.Capture(*chargeId*, *amount*, *applicationFee*);
 
 ### List charges
 
@@ -455,7 +454,7 @@ Invoice Items
 Any invoice items you create for a customer will be added to their bill.
 
 	var myItem = new StripeInvoiceItemCreateOptions();
-	myItem.AmountInCents = 1000;        // all amounts on Stripe are in cents
+	myItem.Amount = 1000;
 	myItem.Currency = "usd";            // "usd" only supported right now
 	myItem.CustomerId = *customerId*;
 	myItem.Description = "na";          // not required
@@ -471,7 +470,7 @@ Any invoice items you create for a customer will be added to their bill.
 ### Updating an invoice item
 
 	var myUpdatedItem = new StripeInvoiceItemUpdateOptions();
-	myUpdatedItem.AmountInCents = 1010;    // all amounts on Stripe are in cents
+	myUpdatedItem.Amount = 1010;
 	myUpdatedItem.Currency = "usd";        // "usd" only supported right now
 	myUpdatedItem.Description = "test";    // not required
 
@@ -540,7 +539,7 @@ Recipients
 	myRecipient.Name = "Bacon Industries Limited";
 	myRecipient.TaxId = "000000000";                                        // optional
 	myRecipient.Email = "bacon@example.com";                                // optional
-	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";  //optional
+	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";  // optional
 
 	// optional - you must specify all 3 values if you use a bank account
 	myRecipient.BankAccountCountry = "US";
@@ -563,7 +562,7 @@ Recipients
 ### List all recipients
 
 	var recipientService = new StripeRecipientService();
-	IEnumerable<StripeRecipient> response = recipientService.List(); //can optionally pass count (defaults to 10), offset (defaults to 0), and verified (bool)
+	IEnumerable<StripeRecipient> response = recipientService.List(); // can optionally pass limit (defaults to 10), and verified (bool)
 
 Transfers
 ---------
@@ -571,11 +570,11 @@ Transfers
 ### Creating a transfer to a recipient
 
 	var myTransfer = new StripeTransferCreateOptions();
-	myTransfer.AmountInCents = 100;
+	myTransfer.Amount = 100;
 	myTransfer.Currency = "usd";
-	myTransfer.Recipient = "*recipientId*";         // can also be "self" if you want to send to your own account
-	myTransfer.Description = "Sales Week #42";      // optional
-	myTransfer.StatementDescriptor = "Commissions"; // optional
+	myTransfer.Recipient = "*recipientId*";          // can also be "self" if you want to send to your own account
+	myTransfer.Description = "Sales Week #42";       // optional
+	myTransfer.StatementDescription = "Commissions"; // optional
 
 	var transferService = new StripeTransferService();
 	StripeTransfer stripeTransfer = transferService.Create(myTransfer);
@@ -598,7 +597,7 @@ Transfers
 Application Fees
 ----------------
 
-If you do not specify an amountInCents, the entire application fee is refunded.
+If you do not specify an amount, the entire application fee is refunded.
 
 ### Retrieving an application fee
 
@@ -608,7 +607,7 @@ If you do not specify an amountInCents, the entire application fee is refunded.
 ### Refunding an application fee
 
 	var feeService = new StripeApplicationFeeService();
-	StripeApplicationFee stripeApplicationFee = feeService.Refund(*applicationFeeId*, *amountInCents*);
+	StripeApplicationFee stripeApplicationFee = feeService.Refund(*applicationFeeId*, *amount*);
 
 Events
 ------
@@ -664,7 +663,7 @@ If you have the id and you want to retrieve the event
 You can list events in the same way everything else works in Stripe.net. 
 
 	var eventService = new StripeEventService();
-	IEnumerable<StripeEvent> response = eventService.List();    // can optionally pass count (defaults to 10), offset, and StripeEventSearchOptions
+	IEnumerable<StripeEvent> response = eventService.List();    // can optionally pass limit (defaults to 10), and StripeEventSearchOptions
 	
 You can also optionally pass a StripeSearchEventOptions which supports a specific Created timestamp, LessThan, LessThanOrEqualTo, GreaterThan, or GreaterThanOrEqualTo.
 	

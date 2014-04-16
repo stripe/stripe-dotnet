@@ -39,11 +39,5 @@ namespace Stripe.Tests
 
 		It should_have_the_new_coupon = () =>
 			_stripeCustomer.StripeDiscount.StripeCoupon.Id.ShouldEqual(_stripeCoupon.Id);
-
-		It should_have_the_new_trial_end = () =>
-			_stripeCustomer.StripeSubscription.TrialEnd.Value.Date.ShouldEqual(_stripeCustomerUpdateSubscriptionOptions.TrialEnd.Value.Date);
-
-		It should_have_the_new_quantity = () =>
-			_stripeCustomer.StripeSubscription.Quantity.ShouldEqual(_stripeCustomerUpdateSubscriptionOptions.Quantity.Value);
 	}
 }

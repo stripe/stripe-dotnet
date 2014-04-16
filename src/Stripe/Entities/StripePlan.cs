@@ -15,7 +15,7 @@ namespace Stripe
 		public string Currency { get; set; }
 
 		[JsonProperty("amount")]
-		public int? AmountInCents { get; set; }
+		public int? Amount { get; set; }
 
 		[JsonProperty("interval")]
 		public string Interval { get; set; }

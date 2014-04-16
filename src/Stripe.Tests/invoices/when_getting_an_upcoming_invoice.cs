@@ -39,10 +39,10 @@ namespace Stripe.Tests
 			_stripeInvoice.Id.ShouldBeNull();
 
 		It should_have_a_subtotal = () =>
-			_stripeInvoice.SubtotalInCents.ShouldBeGreaterThanOrEqualTo(0);
+			_stripeInvoice.Subtotal.ShouldBeGreaterThanOrEqualTo(0);
 
 		It should_have_a_total = () =>
-			_stripeInvoice.TotalInCents.ShouldBeGreaterThanOrEqualTo(0);
+			_stripeInvoice.Total.ShouldBeGreaterThanOrEqualTo(0);
 
 		It should_have_a_lines_object = () =>
 			_stripeInvoice.StripeInvoiceLines.ShouldNotBeNull();
@@ -51,12 +51,12 @@ namespace Stripe.Tests
 			_stripeInvoice.StripeInvoiceLines.StripeInvoiceItems.ShouldNotBeNull();
 
 		It should_have_the_correct_invoiceitems_object = () =>
-			_stripeInvoice.StripeInvoiceLines.StripeInvoiceItems[0].AmountInCents.ShouldEqual(_stripeInvoiceItemCreateOptions.AmountInCents);
+			_stripeInvoice.StripeInvoiceLines.StripeInvoiceItems[0].Amount.ShouldEqual(_stripeInvoiceItemCreateOptions.Amount);
 
 		It should_have_a_valid_invoiceitems_plan_object = () =>
 			_stripeInvoice.StripeInvoiceLines.StripeInvoiceItems[1].Plan.ShouldNotBeNull();
 
 		It should_have_the_correct_invoiceitems_plan_object = () =>
-			_stripeInvoice.StripeInvoiceLines.StripeInvoiceItems[1].Plan.AmountInCents.ShouldEqual(_stripePlanCreateOptions.AmountInCents);
+			_stripeInvoice.StripeInvoiceLines.StripeInvoiceItems[1].Plan.Amount.ShouldEqual(_stripePlanCreateOptions.Amount);
 	}
 }

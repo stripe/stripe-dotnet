@@ -12,7 +12,7 @@ namespace Stripe.Tests
 			StripePlan.Id.ShouldEqual(StripePlanCreateOptions.Id);
 
 		It should_have_the_correct_amount = () =>
-			StripePlan.AmountInCents.ShouldEqual(StripePlanCreateOptions.AmountInCents.Value);
+			StripePlan.Amount.ShouldEqual(StripePlanCreateOptions.Amount.Value);
 
 		It should_have_the_correct_currency = () =>
 			StripePlan.Currency.ShouldEqual(StripePlanCreateOptions.Currency);

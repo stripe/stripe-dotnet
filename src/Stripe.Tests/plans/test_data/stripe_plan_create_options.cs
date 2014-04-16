@@ -10,7 +10,7 @@ namespace Stripe.Tests.test_data
 			return new StripePlanCreateOptions()
 			{
 				Id = "test-plan-" + Guid.NewGuid(),
-				AmountInCents = 5000,
+				Amount = 5000,
 				Currency = "usd",
 				Interval = "month",
 				Name = "Test Plan",

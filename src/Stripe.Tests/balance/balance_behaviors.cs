@@ -14,8 +14,8 @@ namespace Stripe.Tests
 		It should_have_available_amounts = () =>
 			StripeBalance.Available.Count.ShouldBeGreaterThan(0);
 		
-		It should_specify_amountincents_on_available_amount = () =>
-			StripeBalance.Available.First().AmountInCents.ShouldNotBeNull();
+		It should_specify_amount_on_available_amount = () =>
+			StripeBalance.Available.First().Amount.ShouldNotBeNull();
 
 		It should_specify_currency_on_available_amount = () =>
 			StripeBalance.Available.First().Currency.ShouldNotBeNull();
