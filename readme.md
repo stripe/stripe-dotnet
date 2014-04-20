@@ -84,7 +84,7 @@ to a plan id (or not)
 	var planService = new StripePlanService();
 	IEnumerable<StripePlan> response = planService.List(); // optional StripeListOptions
 
-[StripeListOptions](#stripelistoptions-(paging) for paging
+[StripeListOptions](#stripelistoptions-paging) for paging
 
 Coupons (queue-pons not coo-pons)
 ---------------------------------
@@ -119,7 +119,7 @@ Coupons (queue-pons not coo-pons)
 	var couponService = new StripeCouponService();
 	IEnumerable<StripeCoupon> response = couponService.List();  // optional StripeListOptions
 
-[StripeListOptions](#stripelistoptions-(paging) for paging
+[StripeListOptions](#stripelistoptions-paging) for paging
 
 Tokens
 ------
@@ -248,7 +248,7 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 	var customerService = new StripeCustomerService();
 	IEnumerable<StripeCustomer> response = customerService.List(); // optional StripeCustomerListOptions
 
-StripeCustomerListOptions supports [StripeListOptions](#stripelistoptions-(paging) for paging, and a [StripeDateFilter](#stripedatefilter-(date-filtering) for date filtering
+StripeCustomerListOptions supports [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
 ### Updating a customer subscription
 
@@ -341,7 +341,7 @@ When creating a card you can use either a card or a token
 	var cardService = new StripeCardService();
 	IEnumerable<StripeCard> response = cardService.List(*customerId*); // optional StripeListOptions
 
-[StripeListOptions](#stripelistoptions-(paging) for paging
+[StripeListOptions](#stripelistoptions-paging) for paging
 
 Charges
 -------
@@ -415,7 +415,7 @@ If you set a charge to capture = false, you use this to capture the charge later
 	var chargeService = new StripeChargeService();
 	IEnumerable<StripeCharge> response = chargeService.List(); // optional StripeChargeListOptions
 
-StripeChargeListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-(paging) for paging, and a [StripeDateFilter](#stripedatefilter-(date-filtering) for date filtering
+StripeChargeListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
 Invoices
 --------
@@ -448,7 +448,7 @@ Invoices
 	var invoiceService = new StripeInvoiceService();
 	IEnumerable<StripeInvoice> response = invoiceService.List(); // optional StripeInvoiceListOptions
 
-StripeInvoiceListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-(paging) for paging, and a [StripeDateFilter](#stripedatefilter-(date-filtering) for date filtering
+StripeInvoiceListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
 Invoice Items
 -------------
@@ -491,7 +491,7 @@ Any invoice items you create for a customer will be added to their bill.
 	var invoiceItemService = new StripeInvoiceItemService();
 	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List(); // optional StripeInvoiceItemListOptions
 
-StripeInvoiceItemListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-(paging) for paging, and a [StripeDateFilter](#stripedatefilter-(date-filtering) for date filtering
+StripeInvoiceItemListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
 Account
 -------
@@ -570,7 +570,7 @@ Recipients
 	var recipientService = new StripeRecipientService();
 	IEnumerable<StripeRecipient> response = recipientService.List(); // optional StripeRecipientListOptions
 
-StripeRecipientListOptions supports a verified flag and [StripeListOptions](#stripelistoptions-(paging) for paging
+StripeRecipientListOptions supports a verified flag and [StripeListOptions](#stripelistoptions-paging) for paging
 
 Transfers
 ---------
@@ -602,7 +602,7 @@ Transfers
 	var transferService = new StripeTransferService();
 	IEnumerable<StripeTransfer> response = transferService.List(); // optional StripeTransferListOptions
 
-StripeTransferListOptions supports a RecipientId, Status ('pending', 'paid' or 'failed'), [StripeListOptions](#stripelistoptions-(paging) for paging, and a [StripeDateFilter](#stripedatefilter-(date-filtering) for date filtering (on both the created and date fields)
+StripeTransferListOptions supports a RecipientId, Status ('pending', 'paid' or 'failed'), [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering (on both the created and date fields)
 
 Application Fees
 ----------------
@@ -717,7 +717,7 @@ You can list events in the same way everything else works in Stripe.net.
 	var eventService = new StripeEventService();
 	IEnumerable<StripeEvent> response = eventService.List(); // optional StripeEventListOptions
 
-StripeEventListOptions supports a type, [StripeListOptions](#stripelistoptions-(paging) for paging, and a [StripeDateFilter](#stripedatefilter-(date-filtering) for date filtering
+StripeEventListOptions supports a type, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
 Stripe Connect
 --------------
