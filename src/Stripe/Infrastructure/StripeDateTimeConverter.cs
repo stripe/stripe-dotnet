@@ -23,7 +23,7 @@ namespace Stripe.Infrastructure
 
 		private DateTime ConvertEpochToDateTime(long seconds)
 		{
-			return new DateTime(1970, 1, 1).AddSeconds(seconds);
+			return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(seconds);
 		}
 
 		private long ConvertDateTimeToEpoch(DateTime datetime)
