@@ -50,10 +50,12 @@ namespace Stripe
 			Requestor.Delete(url, ApiKey);
 		}
 
-		public virtual IEnumerable<StripeCard> List(string customerId, int limit = 10)
+		public virtual IEnumerable<StripeCard> List(string customerId, StripeListOptions listOptions = null)
 		{
 			var url = string.Format(Urls.Cards, customerId);
-			url = ParameterBuilder.ApplyParameterToUrl(url, "limit", limit.ToString());
+
+			if (listOptions != null)
+				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 

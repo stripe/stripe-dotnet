@@ -46,13 +46,12 @@ namespace Stripe
 			Requestor.Delete(url, ApiKey);
 		}
 
-		public virtual IEnumerable<StripeRecipient> List(int limit = 10, bool? verified = null)
+		public virtual IEnumerable<StripeRecipient> List(StripeRecipientListOptions listOptions = null)
 		{
 			var url = Urls.Recipients;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "limit", limit.ToString());
 
-			if (verified.HasValue)
-				url = ParameterBuilder.ApplyParameterToUrl(url, "verified", verified.ToString());
+			if (listOptions != null)
+				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 

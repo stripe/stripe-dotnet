@@ -46,10 +46,12 @@ namespace Stripe
 			return Mapper<StripePlan>.MapFromJson(response);
 		}
 
-		public virtual IEnumerable<StripePlan> List(int limit = 10)
+		public virtual IEnumerable<StripePlan> List(StripeListOptions listOptions = null)
 		{
 			var url = Urls.Plans;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "limit", limit.ToString());
+
+			if (listOptions != null)
+				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 

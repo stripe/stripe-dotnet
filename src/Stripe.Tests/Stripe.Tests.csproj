@@ -44,6 +44,9 @@
     <Reference Include="Machine.Specifications.Should">
       <HintPath>..\packages\Machine.Specifications.0.6.2\lib\net40\Machine.Specifications.Should.dll</HintPath>
     </Reference>
+    <Reference Include="NCrunch.Framework">
+      <HintPath>..\packages\NCrunch.Framework.2.6.0.18\lib\NCrunch.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -64,6 +67,8 @@
     <Compile Include="balance\when_retrieving_a_balance.cs" />
     <Compile Include="charges\charge_behaviors.cs" />
     <Compile Include="charges\when_capturing_a_charge_with_a_card.cs" />
+    <Compile Include="charges\when_listing_charges_by_date.cs" />
+    <Compile Include="charges\when_listing_charges_with_paging.cs" />
     <Compile Include="charges\when_setting_a_charge_to_capture.cs" />
     <Compile Include="charges\when_creating_a_charge_with_an_invalid_card.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_token.cs" />
@@ -167,6 +172,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_web_event_hooks\bin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

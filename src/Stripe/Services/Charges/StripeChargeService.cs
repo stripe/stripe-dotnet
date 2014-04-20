@@ -43,13 +43,12 @@ namespace Stripe
 			return Mapper<StripeCharge>.MapFromJson(response);
 		}
 
-		public virtual IEnumerable<StripeCharge> List(int limit = 10, string customerId = null)
+		public virtual IEnumerable<StripeCharge> List(StripeChargeListOptions listOptions = null)
 		{
 			var url = Urls.Charges;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "limit", limit.ToString());
 
-			if (!string.IsNullOrEmpty(customerId))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+			if (listOptions != null)
+				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 

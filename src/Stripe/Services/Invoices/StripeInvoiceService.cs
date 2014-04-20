@@ -50,13 +50,12 @@ namespace Stripe
 			return Mapper<StripeInvoice>.MapFromJson(response);
 		}
 
-		public virtual IEnumerable<StripeInvoice> List(int limit = 10, string customerId = null)
+		public virtual IEnumerable<StripeInvoice> List(StripeInvoiceListOptions listOptions = null)
 		{
 			var url = Urls.Invoices;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "limit", limit.ToString());
 
-			if (!string.IsNullOrEmpty(customerId))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+			if (listOptions != null)
+				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 

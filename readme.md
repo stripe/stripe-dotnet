@@ -82,7 +82,9 @@ to a plan id (or not)
 ### List all plans
 
 	var planService = new StripePlanService();
-	IEnumerable<StripePlan> response = planService.List(); // can optionally pass limit (defaults to 10)
+	IEnumerable<StripePlan> response = planService.List(); // optional StripeListOptions
+
+[StripeListOptions](#stripelistoptions-(paging) for paging
 
 Coupons (queue-pons not coo-pons)
 ---------------------------------
@@ -115,7 +117,9 @@ Coupons (queue-pons not coo-pons)
 ### List all coupons
 
 	var couponService = new StripeCouponService();
-	IEnumerable<StripeCoupon> response = couponService.List();    // can optionally pass limit (defaults to 10)
+	IEnumerable<StripeCoupon> response = couponService.List();  // optional StripeListOptions
+
+[StripeListOptions](#stripelistoptions-(paging) for paging
 
 Tokens
 ------
@@ -242,7 +246,9 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 ### List all customers
 
 	var customerService = new StripeCustomerService();
-	IEnumerable<StripeCustomer> response = customerService.List(); // can optionally pass limit (defaults to 10)
+	IEnumerable<StripeCustomer> response = customerService.List(); // optional StripeCustomerListOptions
+
+StripeCustomerListOptions supports [StripeListOptions](#stripelistoptions-(paging) for paging, and a [StripeDateFilter](#stripedatefilter-(date-filtering) for date filtering
 
 ### Updating a customer subscription
 
@@ -274,7 +280,7 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 ### Canceling a customer subscription
 
 	var customerService = new StripeCustomerService();
-	StripeSubscription subscription = customerService.CancelSubscription(*customerId*);    // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling
+	StripeSubscription subscription = customerService.CancelSubscription(*customerId*); // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling
 
 Cards
 -----
@@ -333,7 +339,9 @@ When creating a card you can use either a card or a token
 ### List all cards
 
 	var cardService = new StripeCardService();
-	IEnumerable<StripeCard> response = cardService.List(*customerId*);    // can optionally pass limit (defaults to 10)
+	IEnumerable<StripeCard> response = cardService.List(*customerId*); // optional StripeListOptions
+
+[StripeListOptions](#stripelistoptions-(paging) for paging
 
 Charges
 -------
@@ -405,7 +413,9 @@ If you set a charge to capture = false, you use this to capture the charge later
 ### List all charges
 
 	var chargeService = new StripeChargeService();
-	IEnumerable<StripeCharge> response = chargeService.List();    // can optionally pass limit (defaults to 10), and a customerId to get charges for a single customer
+	IEnumerable<StripeCharge> response = chargeService.List(); // optional StripeChargeListOptions
+
+StripeChargeListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-(paging) for paging, and a [StripeDateFilter](#stripedatefilter-(date-filtering) for date filtering
 
 Invoices
 --------
@@ -436,7 +446,9 @@ Invoices
 ### List all invoices
 
 	var invoiceService = new StripeInvoiceService();
-	IEnumerable<StripeInvoice> response = invoiceService.List();    // can optionally pass limit (defaults to 10), and a customerid
+	IEnumerable<StripeInvoice> response = invoiceService.List(); // optional StripeInvoiceListOptions
+
+StripeInvoiceListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-(paging) for paging, and a [StripeDateFilter](#stripedatefilter-(date-filtering) for date filtering
 
 Invoice Items
 -------------
@@ -477,7 +489,9 @@ Any invoice items you create for a customer will be added to their bill.
 ### List all invoice items
 
 	var invoiceItemService = new StripeInvoiceItemService();
-	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List();    // can optionally pass limit (defaults to 10), and a customerid
+	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List(); // optional StripeInvoiceItemListOptions
+
+StripeInvoiceItemListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-(paging) for paging, and a [StripeDateFilter](#stripedatefilter-(date-filtering) for date filtering
 
 Account
 -------
@@ -554,7 +568,9 @@ Recipients
 ### List all recipients
 
 	var recipientService = new StripeRecipientService();
-	IEnumerable<StripeRecipient> response = recipientService.List(); // can optionally pass limit (defaults to 10), and verified (bool)
+	IEnumerable<StripeRecipient> response = recipientService.List(); // optional StripeRecipientListOptions
+
+StripeRecipientListOptions supports a verified flag and [StripeListOptions](#stripelistoptions-(paging) for paging
 
 Transfers
 ---------
@@ -584,7 +600,9 @@ Transfers
 ### List all transfers
 
 	var transferService = new StripeTransferService();
-	IEnumerable<StripeTransfer> response = transferService.List(); // can optionally pass limit (defaults to 10), recipientId, and status
+	IEnumerable<StripeTransfer> response = transferService.List(); // optional StripeTransferListOptions
+
+StripeTransferListOptions supports a RecipientId, Status ('pending', 'paid' or 'failed'), [StripeListOptions](#stripelistoptions-(paging) for paging, and a [StripeDateFilter](#stripedatefilter-(date-filtering) for date filtering (on both the created and date fields)
 
 Application Fees
 ----------------
@@ -600,6 +618,48 @@ If you do not specify an amount, the entire application fee is refunded.
 
 	var feeService = new StripeApplicationFeeService();
 	StripeApplicationFee stripeApplicationFee = feeService.Refund(*applicationFeeId*, *amount*);
+
+StripeListOptions (paging)
+--------------------------
+
+All Stripe List methods support paging, using `limit`, `starting_after` and `ending_before` properties.  If you do not specify any options, `limit` will default to 10. Some examples of retrieving paged data from the StripeChargeService:
+
+	var chargeService = new StripeChargeService();
+
+	// get the first five results
+	IEnumerable<StripeCharge> firstPage = chargeService.List(new StripeChargeListOptions {
+  	Limit = 5
+	});
+
+	// get the next five results
+	IEnumerable<StripeCharge> nextPage = chargeService.List(new StripeChargeListOptions {
+  	Limit = 5,
+    StartingAfter = firstPage.Last().Id
+	});
+
+	// get the previous five results again
+	IEnumerable<StripeCharge> previousPage = chargeService.List(new StripeChargeListOptions {
+		Limit = 5,
+		EndingBefore = nextPage.First().Id
+	});
+
+StripeDateFilter (date filtering)
+---------------------------------
+
+Many of the List methods support parameters to filter by date. To use this, use the `StripeDateFilter` class. You can combine the filters to make complex queries. Some examples are:
+
+	var chargeService = new StripeChargeService();
+
+	var chargesToday = chargeService.List(new StripeChargeListOptions {
+		Created = new StripeDateFilter { GreaterThanOrEqual = DateTime.UtcNow.Date }
+	});
+
+	var chargesYesterday = chargeService.List(new StripeChargeListOptions {
+		Created = new StripeDateFilter {
+			GreaterThanOrEqual = DateTime.Now.AddDays(-1).Date,
+			LessThan = DateTime.Now.Date
+		}
+	});
 
 Events
 ------
@@ -655,23 +715,9 @@ If you have the id and you want to retrieve the event
 You can list events in the same way everything else works in Stripe.net.
 
 	var eventService = new StripeEventService();
-	IEnumerable<StripeEvent> response = eventService.List();    // can optionally pass limit (defaults to 10), and StripeEventSearchOptions
+	IEnumerable<StripeEvent> response = eventService.List(); // optional StripeEventListOptions
 
-You can also optionally pass a StripeSearchEventOptions which supports a specific Created timestamp, LessThan, LessThanOrEqualTo, GreaterThan, or GreaterThanOrEqualTo.
-
-	var eventService = new StripeEventService();
-
-	var eventSearchOptions = new StripeEventSearchOptions();
-
-	// created will match on an exact date time
-	eventSearchOptions.Created = DateTime.UtcNow;
-
-	// or you could do something like
-	eventSearchOptions.LessThanOrEqualTo = DateTime.UtcNow;
-	eventSearchOptions.GreaterThanOrEqualTo = DateTime.UtcNow.AddMonths(-1);
-
-	IEnumerable<StripeEvent> response = eventService.List(10, 0, eventSearchOptions);
-
+StripeEventListOptions supports a type, [StripeListOptions](#stripelistoptions-(paging) for paging, and a [StripeDateFilter](#stripedatefilter-(date-filtering) for date filtering
 
 Stripe Connect
 --------------
