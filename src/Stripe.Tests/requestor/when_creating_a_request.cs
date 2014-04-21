@@ -25,9 +25,6 @@ namespace Stripe.Tests.requestor
 		It should_have_urlencoded_content_type = () =>
 			_request.ContentType.ShouldEqual("application/x-www-form-urlencoded");
 
-		It should_contain_stripeversion_header = () =>
-			_request.Headers.AllKeys.ShouldContain("Stripe-Version");
-
 		It should_have_stripeversion_header_matching_config = () =>
 			_request.Headers["Stripe-Version"].ShouldEqual(StripeConfiguration.ApiVersion);
 
