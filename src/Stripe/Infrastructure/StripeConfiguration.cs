@@ -19,5 +19,7 @@ namespace Stripe
 		{
 			_apiKey = newApiKey;
 		}
+
+		public const string ApiVersion = "2014-03-28";
 	}
 }
