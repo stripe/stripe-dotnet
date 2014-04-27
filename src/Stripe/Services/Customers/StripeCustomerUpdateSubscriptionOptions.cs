@@ -17,6 +17,9 @@ namespace Stripe
 
 		public DateTime? TrialEnd { get; set; }
 
+        [JsonProperty("application_fee_percent")]
+        public float? ApplicationFeePercent { get; set; }
+
 		[JsonProperty("quantity")]
 		public int? Quantity { get; set; }
 
