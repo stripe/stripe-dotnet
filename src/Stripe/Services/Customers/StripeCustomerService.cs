@@ -77,5 +77,16 @@ namespace Stripe
 
 			return Mapper<StripeSubscription>.MapFromJson(response);
 		}
+		
+		//Added subscriptionId to support canceling an individual subscription rather than all subscriptions for this customer
+		public virtual StripeSubscription CancelSubscription(string customerId, string subscriptionId, bool cancelAtPeriodEnd = false)
+	        {
+	            var url = string.Format("{0}/{1}/{2}/{3}", Urls.Customers, customerId, Urls.Subscriptions, subscriptionId);
+	            url = ParameterBuilder.ApplyParameterToUrl(url, "at_period_end", cancelAtPeriodEnd.ToString());
+	
+	            var response = Requestor.Delete(url, ApiKey);
+	
+	            return Mapper<StripeSubscription>.MapFromJson(response);
+	        }
 	}
 }
