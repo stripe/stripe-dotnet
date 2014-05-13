@@ -11,41 +11,33 @@ namespace Stripe
 			ApiKey = apiKey;
 		}
 
-		public virtual StripeCoupon Create(StripeCouponCreateOptions createOptions)
+		public virtual StripeResponse<StripeCoupon> Create(StripeCouponCreateOptions createOptions)
 		{
 			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Coupons);
-
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeCoupon>.MapFromJson(response);
+		    return url.PostResponse<StripeCoupon>(ApiKey);
 		}
 
-		public virtual StripeCoupon Get(string couponId)
+        public virtual StripeResponse<StripeCoupon> Get(string couponId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
-
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripeCoupon>.MapFromJson(response);
+		    return url.GetResponse<StripeCoupon>(ApiKey);
 		}
 
 		public virtual void Delete(string couponId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
-
-			Requestor.Delete(url, ApiKey);
+		    url.DeleteResponse<StripeCoupon>(ApiKey);
 		}
 
-		public virtual IEnumerable<StripeCoupon> List(StripeListOptions listOptions = null)
+		public virtual StripeResponse<List<StripeCoupon>> List(StripeListOptions listOptions = null)
 		{
 			var url = Urls.Coupons;
+		    if (listOptions != null)
+		    {
+		        url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+		    }
 
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
-
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripeCoupon>.MapCollectionFromJson(response);
+		    return url.GetResponseList<StripeCoupon>(ApiKey);
 		}
 	}
 }

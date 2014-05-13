@@ -9,13 +9,11 @@
 			ApiKey = apiKey;
 		}
 
-		public virtual StripeOAuthToken Create(StripeOAuthTokenCreateOptions createOptions)
+		public virtual StripeResponse<StripeOAuthToken> Create(StripeOAuthTokenCreateOptions createOptions)
 		{
 			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.OAuthToken);
 
-			var response = Requestor.PostStringBearer(url, ApiKey);
-
-			return Mapper<StripeOAuthToken>.MapFromJson(response);
+		    return url.PostBearerResponse<StripeOAuthToken>(ApiKey);
 		}
 	}
 }

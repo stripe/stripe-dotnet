@@ -11,51 +11,44 @@ namespace Stripe
 			ApiKey = apiKey;
 		}
 
-		public virtual StripeRecipient Create(StripeRecipientCreateOptions createOptions)
+		public virtual StripeResponse<StripeRecipient> Create(StripeRecipientCreateOptions createOptions)
 		{
 			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Recipients);
 
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeRecipient>.MapFromJson(response);
+		    return url.PostResponse<StripeRecipient>(ApiKey);
 		}
 
-		public virtual StripeRecipient Get(string recipientId)
+        public virtual StripeResponse<StripeRecipient> Get(string recipientId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Recipients, recipientId);
 
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripeRecipient>.MapFromJson(response);
+            return url.GetResponse<StripeRecipient>(ApiKey);
 		}
 
-		public virtual StripeRecipient Update(string recipientId, StripeRecipientUpdateOptions updateOptions)
+        public virtual StripeResponse<StripeRecipient> Update(string recipientId, StripeRecipientUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Recipients, recipientId);
 			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
 
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeRecipient>.MapFromJson(response);
+            return url.PostResponse<StripeRecipient>(ApiKey);
 		}
 
 		public virtual void Delete(string recipientId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Recipients, recipientId);
 
-			Requestor.Delete(url, ApiKey);
+		    url.DeleteResponse<StripeRecipient>(ApiKey);
 		}
 
-		public virtual IEnumerable<StripeRecipient> List(StripeRecipientListOptions listOptions = null)
-		{
-			var url = Urls.Recipients;
+	    public virtual StripeResponse<List<StripeRecipient>> List(StripeRecipientListOptions listOptions = null)
+	    {
+	        var url = Urls.Recipients;
+	        if (listOptions != null)
+	        {
+	            url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+	        }
 
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
-
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripeRecipient>.MapCollectionFromJson(response);
-		}
+	        return url.GetResponseList<StripeRecipient>(ApiKey);
+	    }
 	}
 }

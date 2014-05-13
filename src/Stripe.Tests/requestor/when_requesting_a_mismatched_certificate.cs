@@ -6,12 +6,10 @@ namespace Stripe.Tests
 {
 	public class when_requesting_a_mismatched_certificate
 	{
-		private static WebException ex;
+		private static StripeError error;
 
-		Because of = () =>
-			ex = (WebException) Catch.Exception(() => Requestor.GetString("https://mismatched.stripe.com/", ""));
-
-		It should_raise_a_trust_exception = () =>
-			 ex.Status.ShouldEqual(WebExceptionStatus.TrustFailure);
+	    private Because of = () => Requestor.GetString("https://mismatched.stripe.com/", out error, "");
+	
+		It should_raise_a_trust_exception = () => error.StatusCode.ShouldEqual(HttpStatusCode.Forbidden);
 	}
 }

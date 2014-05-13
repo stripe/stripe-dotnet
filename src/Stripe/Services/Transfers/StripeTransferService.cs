@@ -11,43 +11,36 @@ namespace Stripe
 			ApiKey = apiKey;
 		}
 
-		public virtual StripeTransfer Create(StripeTransferCreateOptions createOptions)
+		public virtual StripeResponse<StripeTransfer> Create(StripeTransferCreateOptions createOptions)
 		{
 			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Transfers);
 
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeTransfer>.MapFromJson(response);
+		    return url.PostResponse<StripeTransfer>(ApiKey);
 		}
 
-		public virtual StripeTransfer Get(string transferId)
-		{
-			var url = string.Format("{0}/{1}", Urls.Transfers, transferId);
+	    public virtual StripeResponse<StripeTransfer> Get(string transferId)
+	    {
+	        var url = string.Format("{0}/{1}", Urls.Transfers, transferId);
 
-			var response = Requestor.GetString(url, ApiKey);
+	        return url.GetResponse<StripeTransfer>(ApiKey);
+	    }
 
-			return Mapper<StripeTransfer>.MapFromJson(response);
-		}
-
-		public virtual StripeTransfer Cancel(string transferId)
+	    public virtual StripeResponse<StripeTransfer> Cancel(string transferId)
 		{
 			var url = string.Format("{0}/{1}/cancel", Urls.Transfers, transferId);
 
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeTransfer>.MapFromJson(response);
+            return url.PostResponse<StripeTransfer>(ApiKey);
 		}
 
-		public virtual IEnumerable<StripeTransfer> List(StripeTransferListOptions listOptions = null)
+		public virtual StripeResponse<List<StripeTransfer>> List(StripeTransferListOptions listOptions = null)
 		{
 			var url = Urls.Transfers;
+		    if (listOptions != null)
+		    {
+		        url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+		    }
 
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
-
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripeTransfer>.MapCollectionFromJson(response);
+		    return url.GetResponseList<StripeTransfer>(ApiKey);
 		}
 	}
 }

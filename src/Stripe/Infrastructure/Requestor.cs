@@ -9,32 +9,32 @@ namespace Stripe
 {
 	internal static class Requestor
 	{
-		public static string GetString(string url, string apiKey = null)
+		public static string GetString(string url, out StripeError error, string apiKey = null)
 		{
 			var wr = GetWebRequest(url, "GET", apiKey);
 
-			return ExecuteWebRequest(wr);
+            return ExecuteWebRequest(wr, out error);
 		}
 
-		public static string PostString(string url, string apiKey = null)
+        public static string PostString(string url, out StripeError error, string apiKey = null)
 		{
 			var wr = GetWebRequest(url, "POST", apiKey);
 
-			return ExecuteWebRequest(wr);
+            return ExecuteWebRequest(wr, out error);
 		}
 
-		public static string PostStringBearer(string url, string apiKey = null)
+		public static string PostStringBearer(string url, out StripeError error, string apiKey = null)
 		{
 			var wr = GetWebRequest(url, "POST", apiKey, true);
 
-			return ExecuteWebRequest(wr);
+            return ExecuteWebRequest(wr, out error);
 		}
 
-		public static string Delete(string url, string apiKey = null)
+		public static string DeleteString(string url, out StripeError error, string apiKey = null)
 		{
 			var wr = GetWebRequest(url, "DELETE", apiKey);
 
-			return ExecuteWebRequest(wr);
+			return ExecuteWebRequest(wr, out error);
 		}
 
 		private static WebRequest GetWebRequest(string url, string method, string apiKey = null, bool useBearer = false)
@@ -44,13 +44,11 @@ namespace Stripe
 			var request = (HttpWebRequest)WebRequest.Create(url);
 			request.Method = method;
 
-			if(!useBearer)
-				request.Headers.Add("Authorization", GetAuthorizationHeaderValue(apiKey));
-			else
-				request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(apiKey));
+		    request.Headers.Add("Authorization",
+		        !useBearer ? GetAuthorizationHeaderValue(apiKey) : GetAuthorizationHeaderValueBearer(apiKey));
 
-			request.ContentType = "application/x-www-form-urlencoded";
-			request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
+		    request.ContentType = "application/x-www-form-urlencoded";
+			request.UserAgent = "Stripe.net+ (https://github.com/danielcrenna/stripe.net)";
 
 			return request;
 		}
@@ -86,7 +84,7 @@ namespace Stripe
 			return string.Format("Bearer {0}", apiKey);
 		}
 
-		private static string ExecuteWebRequest(WebRequest webRequest)
+		private static string ExecuteWebRequest(WebRequest webRequest, out StripeError error)
 		{
 			var verificationCallback = new RemoteCertificateValidationCallback(StripeCertificateVerificationCallback);
 
@@ -96,26 +94,25 @@ namespace Stripe
 
 				using (var response = webRequest.GetResponse())
 				{
-					return ReadStream(response.GetResponseStream());
+                    var result = ReadStream(response.GetResponseStream());
+				    error = null;
+				    return result;
 				}
 			}
 			catch (WebException webException)
 			{
-				if (webException.Response != null)
-				{
-					var statusCode = ((HttpWebResponse)webException.Response).StatusCode;
-					
-					var stripeError = new StripeError();
+			    if (webException.Response == null) throw;
 
-					if(webRequest.RequestUri.ToString().Contains("oauth"))
-						stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()));
-					else
-						stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()), "error");
+			    var json = ReadStream(webException.Response.GetResponseStream());
 
-					throw new StripeException(statusCode, stripeError, stripeError.Message);
-				}
+			    error = webRequest.RequestUri.ToString().Contains("oauth")
+			        ? Mapper<StripeError>.MapFromJson(json)
+			        : Mapper<StripeError>.MapFromJson(json, "error");
 
-				throw;
+			    var statusCode = ((HttpWebResponse)webException.Response).StatusCode;
+                error.StatusCode = statusCode;
+
+			    return null;
 			}
 			finally
 			{
