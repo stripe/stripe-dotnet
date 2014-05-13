@@ -277,10 +277,15 @@ StripeCustomerListOptions supports [StripeListOptions](#stripelistoptions-paging
 	var customerService = new StripeCustomerService();
 	StripeSubscription subscription = customerService.UpdateSubscription(*customerId*, myUpdatedSubscription);
 
-### Canceling a customer subscription
+### Canceling all customer's subscriptions
 
 	var customerService = new StripeCustomerService();
 	StripeSubscription subscription = customerService.CancelSubscription(*customerId*); // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling
+
+### Canceling a single subscription
+
+	var customerService = new StripeCustomerService();
+	StripeSubscription subscription = customerService.CancelSubscription(*customerId*, *subscriptionId*); // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling
 
 Cards
 -----

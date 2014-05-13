@@ -62,6 +62,11 @@
 			get { return BaseUrl + "/recipients"; }
 		}
 
+		public static string Subscriptions
+		{
+			get { return BaseUrl + "/subscriptions"; }
+		}
+
 		public static string Transfers
 		{
 			get { return BaseUrl + "/transfers"; }
