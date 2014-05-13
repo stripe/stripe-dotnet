@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Web;
 using Newtonsoft.Json;
+using Stripe.FastMember;
 using Stripe.Infrastructure;
 
 namespace Stripe
@@ -18,19 +16,19 @@ namespace Stripe
 
 			var newUrl = url;
 
-			foreach (var property in obj.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+		    var descriptor = TypeAccessor.Create(obj.GetType());
+            foreach (var property in descriptor.PropertyInfos)
 			{
 				foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
 				{
-					var value = property.GetValue(obj, null);
+                    var value = descriptor[obj, property.Name];
+                    if (value == null) continue;
 
-					if (value == null) continue;
-
-					if (string.Compare(attribute.PropertyName, "metadata", true) == 0)
+					if (System.String.Compare(attribute.PropertyName, "metadata", System.StringComparison.OrdinalIgnoreCase) == 0)
 					{
 						var metadata = (Dictionary<string, string>)value;
 
-						foreach (string key in metadata.Keys)
+						foreach (var key in metadata.Keys)
 						{
 							newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
 						}
@@ -40,16 +38,16 @@ namespace Stripe
 						var filter = (StripeDateFilter) value;
 
 						if (filter.EqualTo.HasValue)
-							newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, filter.EqualTo.Value.ConvertDateTimeToEpoch().ToString());
+							newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, filter.EqualTo.Value.ConvertDateTimeToEpoch().ToString(CultureInfo.InvariantCulture));
 						else
 							if (filter.LessThan.HasValue)
-								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString());
+								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString(CultureInfo.InvariantCulture));
 
 							if (filter.LessThanOrEqual.HasValue)
-								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lte]", filter.LessThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
+								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lte]", filter.LessThanOrEqual.Value.ConvertDateTimeToEpoch().ToString(CultureInfo.InvariantCulture));
 
 							if (filter.GreaterThan.HasValue)
-								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gt]", filter.GreaterThan.Value.ConvertDateTimeToEpoch().ToString());
+								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gt]", filter.GreaterThan.Value.ConvertDateTimeToEpoch().ToString(CultureInfo.InvariantCulture));
 
 							if (filter.GreaterThanOrEqual.HasValue)
 								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gte]", filter.GreaterThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());

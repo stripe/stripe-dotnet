@@ -11,51 +11,43 @@ namespace Stripe
 			ApiKey = apiKey;
 		}
 
-		public virtual StripePlan Create(StripePlanCreateOptions createOptions)
+		public virtual StripeResponse<StripePlan> Create(StripePlanCreateOptions createOptions)
 		{
 			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Plans);
-
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripePlan>.MapFromJson(response);
+		    return url.PostResponse<StripePlan>(ApiKey);
 		}
 
-		public virtual StripePlan Get(string planId)
+        public virtual StripeResponse<StripePlan> Get(string planId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Plans, planId);
 
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripePlan>.MapFromJson(response);
+            return url.GetResponse<StripePlan>(ApiKey);
 		}
 
 		public virtual void Delete(string planId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Plans, planId);
 
-			Requestor.Delete(url, ApiKey);
+		    url.DeleteResponse<StripePlan>(ApiKey);
 		}
 
-		public virtual StripePlan Update(string planId, StripePlanUpdateOptions updateOptions)
+        public virtual StripeResponse<StripePlan> Update(string planId, StripePlanUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Plans, planId);
 			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
-
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripePlan>.MapFromJson(response);
+            return url.PostResponse<StripePlan>(ApiKey);
 		}
 
-		public virtual IEnumerable<StripePlan> List(StripeListOptions listOptions = null)
+        public virtual StripeResponse<List<StripePlan>> List(StripeListOptions listOptions = null)
 		{
 			var url = Urls.Plans;
 
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+            if (listOptions != null)
+            {
+                url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+            }
 
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripePlan>.MapCollectionFromJson(response);
+            return url.GetResponseList<StripePlan>(ApiKey);
 		}
 	}
 }

@@ -14,7 +14,7 @@ namespace Stripe
 
 			var allTokens = jObject.SelectToken(token);
 			foreach (var tkn in allTokens)
-				list.Add(Mapper<T>.MapFromJson(tkn.ToString()));
+				list.Add(MapFromJson(tkn.ToString()));
 
 			return list;
 		}

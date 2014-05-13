@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Net;
+using Newtonsoft.Json;
 
 namespace Stripe
 {
@@ -24,5 +25,7 @@ namespace Stripe
 
 		[JsonProperty("charge")]
 		public string ChargeId { get; set; }
+
+	    public HttpStatusCode StatusCode { get; set; }
 	}
 }

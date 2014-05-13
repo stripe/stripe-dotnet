@@ -9,11 +9,9 @@
 			ApiKey = apiKey;
 		}
 
-		public virtual StripeAccount Get()
+		public virtual StripeResponse<StripeAccount> Get()
 		{
-			var response = Requestor.GetString(Urls.Account, ApiKey);
-
-			return Mapper<StripeAccount>.MapFromJson(response);
+		    return Urls.Account.GetResponse<StripeAccount>(ApiKey);
 		}
 	}
 }

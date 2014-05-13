@@ -9,11 +9,9 @@
 			ApiKey = apiKey;
 		}
 
-		public virtual StripeBalance Get()
+		public virtual StripeResponse<StripeBalance> Get()
 		{
-			var response = Requestor.GetString(Urls.Balance, ApiKey);
-			
-			return Mapper<StripeBalance>.MapFromJson(response);
+			return Urls.Balance.GetResponse<StripeBalance>(ApiKey);
 		}
 	}
 }

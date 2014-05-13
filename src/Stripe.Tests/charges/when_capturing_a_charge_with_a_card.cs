@@ -19,9 +19,9 @@ namespace Stripe.Tests
 		Because of = () =>
 		{
 			var charge = _stripeChargeService.Create(StripeChargeCreateOptions);
-			_stripeChargeService.Capture(charge.Id);
+			_stripeChargeService.Capture(charge.Content.Id);
 
-			StripeCharge = _stripeChargeService.Get(charge.Id);
+			StripeCharge = _stripeChargeService.Get(charge.Content.Id).Content;
 		};
 
 		It should_have_captured_set_to_true = () =>

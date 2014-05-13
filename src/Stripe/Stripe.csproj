@@ -51,6 +51,9 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="FastMember\CallSiteCache.cs" />
+    <Compile Include="FastMember\ObjectAccessor.cs" />
+    <Compile Include="FastMember\TypeAccessor.cs" />
     <Compile Include="Services\StripeDateFilter.cs" />
     <Compile Include="Entities\StripeApplicationFeeRefund.cs" />
     <Compile Include="Entities\StripeApplicationFee.cs" />
@@ -125,6 +128,8 @@
     <Compile Include="Services\Recipients\StripeRecipientService.cs" />
     <Compile Include="Services\Recipients\StripeRecipientUpdateOptions.cs" />
     <Compile Include="Services\StripeListOptions.cs" />
+    <Compile Include="Entities\StripeResponse.cs" />
+    <Compile Include="Infrastructure\StripeExtensions.cs" />
     <Compile Include="Services\Tokens\StripeTokenCreateOptions.cs" />
     <Compile Include="Services\Tokens\StripeTokenService.cs" />
     <Compile Include="Infrastructure\StripeException.cs" />

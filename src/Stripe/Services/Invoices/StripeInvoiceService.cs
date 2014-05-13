@@ -11,65 +11,51 @@ namespace Stripe
 			ApiKey = apiKey;
 		}
 
-		public virtual StripeInvoice Get(string invoiceId)
+		public virtual StripeResponse<StripeInvoice> Get(string invoiceId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
-
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripeInvoice>.MapFromJson(response);
+            return url.GetResponse<StripeInvoice>(ApiKey);
 		}
 
-		public virtual StripeInvoice Upcoming(string customerId)
+        public virtual StripeResponse<StripeInvoice> Upcoming(string customerId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Invoices, "upcoming");
+            url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
 
-			url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
-
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripeInvoice>.MapFromJson(response);
+            return url.GetResponse<StripeInvoice>(ApiKey);
 		}
 
-		public virtual StripeInvoice Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions)
+        public virtual StripeResponse<StripeInvoice> Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
 			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
 
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeInvoice>.MapFromJson(response);
+            return url.PostResponse<StripeInvoice>(ApiKey);
 		}
 
-		public virtual StripeInvoice Pay(string invoiceId)
+        public virtual StripeResponse<StripeInvoice> Pay(string invoiceId)
 		{
 			var url = string.Format("{0}/{1}/pay", Urls.Invoices, invoiceId);
 
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeInvoice>.MapFromJson(response);
+            return url.PostResponse<StripeInvoice>(ApiKey);
 		}
 
-		public virtual IEnumerable<StripeInvoice> List(StripeInvoiceListOptions listOptions = null)
+		public virtual StripeResponse<List<StripeInvoice>> List(StripeInvoiceListOptions listOptions = null)
 		{
 			var url = Urls.Invoices;
 
 			if (listOptions != null)
 				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
 
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripeInvoice>.MapCollectionFromJson(response);
+		    return url.GetResponseList<StripeInvoice>(ApiKey);
 		}
 
-		public virtual StripeInvoice Create(string customerId)
+        public virtual StripeResponse<StripeInvoice> Create(string customerId)
 		{
 			var url = Urls.Invoices;
 			url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
 
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeInvoice>.MapFromJson(response);
+            return url.PostResponse<StripeInvoice>(ApiKey);
 		}
 	}
 }

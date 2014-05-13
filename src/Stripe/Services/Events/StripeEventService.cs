@@ -11,25 +11,22 @@ namespace Stripe
 			ApiKey = apiKey;
 		}
 
-		public virtual StripeEvent Get(string eventId)
+		public virtual StripeResponse<StripeEvent> Get(string eventId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Events, eventId);
 
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripeEvent>.MapFromJson(response);
+		    return url.GetResponse<StripeEvent>(ApiKey);
 		}
 
-		public virtual IEnumerable<StripeEvent> List(StripeEventListOptions listOptions = null)
+		public virtual StripeResponse<List<StripeEvent>> List(StripeEventListOptions listOptions = null)
 		{
 			var url = Urls.Events;
+		    if (listOptions != null)
+		    {
+		        url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+		    }
 
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
-
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripeEvent>.MapCollectionFromJson(response);
+		    return url.GetResponseList<StripeEvent>(ApiKey);
 		}
 	}
 }

@@ -9,16 +9,15 @@
 			ApiKey = apiKey;
 		}
 
-		public virtual StripeDispute Update(string chargeId, string evidence = null)
+		public virtual StripeResponse<StripeDispute> Update(string chargeId, string evidence = null)
 		{
 			var url = string.Format("{0}/dispute", chargeId);
+		    if (!string.IsNullOrEmpty(evidence))
+		    {
+		        url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);
+		    }
 
-			if (!string.IsNullOrEmpty(evidence))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);
-
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeDispute>.MapFromJson(response);
+		    return url.PostResponse<StripeDispute>(ApiKey);
 		}
 	}
 }

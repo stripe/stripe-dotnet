@@ -11,51 +11,41 @@ namespace Stripe
 			ApiKey = apiKey;
 		}
 
-		public virtual StripeInvoiceItem Create(StripeInvoiceItemCreateOptions createOptions)
+		public virtual StripeResponse<StripeInvoiceItem> Create(StripeInvoiceItemCreateOptions createOptions)
 		{
 			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.InvoiceItems);
-
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeInvoiceItem>.MapFromJson(response);
+		    return url.PostResponse<StripeInvoiceItem>(ApiKey);
 		}
 
-		public virtual StripeInvoiceItem Get(string invoiceItemId)
+        public virtual StripeResponse<StripeInvoiceItem> Get(string invoiceItemId)
 		{
 			var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
-
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripeInvoiceItem>.MapFromJson(response);
+            return url.GetResponse<StripeInvoiceItem>(ApiKey);
 		}
 
-		public virtual StripeInvoiceItem Update(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions)
+        public virtual StripeResponse<StripeInvoiceItem> Update(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
 			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
 
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeInvoiceItem>.MapFromJson(response);
+            return url.PostResponse<StripeInvoiceItem>(ApiKey);
 		}
 
 		public virtual void Delete(string invoiceItemId)
 		{
 			var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
-
-			Requestor.Delete(url, ApiKey);
+		    url.DeleteResponse<StripeInvoiceItem>(ApiKey);
 		}
 
-		public virtual IEnumerable<StripeInvoiceItem> List(StripeInvoiceItemListOptions listOptions = null)
+		public virtual StripeResponse<List<StripeInvoiceItem>> List(StripeInvoiceItemListOptions listOptions = null)
 		{
 			var url = Urls.InvoiceItems;
+		    if (listOptions != null)
+		    {
+		        url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+		    }
 
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
-
-			var response = Requestor.GetString(url, ApiKey);
-
-			return Mapper<StripeInvoiceItem>.MapCollectionFromJson(response);
+		    return url.GetResponseList<StripeInvoiceItem>(ApiKey);
 		}
 	}
 }
