@@ -514,6 +514,18 @@ Balance
 	var balanceService = new StripeBalanceService();
 	StripeBalance response = balanceService.Get();
 
+### Retrieving a specific balance transaction
+
+	var balanceService = new StripeBalanceService();
+	StripeBalanceTransaction transaction = balanceService.Get(*balanceTransactionId*);
+
+### Listing balance transactions
+
+	var balanceService = new StripeBalanceService();
+	IEnumerable<StripeBalanceTransaction> balanceTransactions = balanceService.List(); // optional StripeBalanceTransactionListOptions
+
+StripeBalanceTransactionListOptions supports filtering by date created, date available, currency, source, transfer and type, and supports [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
+
 Disputes
 --------
 
