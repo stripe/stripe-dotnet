@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 namespace Stripe
 {
 	public class StripeBalanceService

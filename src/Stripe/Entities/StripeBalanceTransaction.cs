@@ -11,7 +11,7 @@ namespace Stripe
 		public string Id { get; set; }
 
 		[JsonProperty("amount")]
-		public int AmountInCents { get; set; }
+		public int Amount { get; set; }
 
 		[JsonProperty("available_on")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
@@ -25,13 +25,13 @@ namespace Stripe
 		public string Currency { get; set; }
 
 		[JsonProperty("fee")]
-		public int FeeInCents { get; set; }
+		public int Fee { get; set; }
+
+		[JsonProperty("fee_details")]
+		public IList<StripeFee> FeeDetails { get; set; }
 
 		[JsonProperty("net")]
-		public int NetInCents { get; set; }
-
-		[JsonProperty("source")]
-		public string Source { get; set; }
+		public int Net { get; set; }
 
 		[JsonProperty("status")]
 		public string Status { get; set; }
@@ -42,7 +42,7 @@ namespace Stripe
 		[JsonProperty("description")]
 		public string Description { get; set; }
 
-		[JsonProperty("fee_details")]
-		public IList<StripeFee> FeeDetails { get; set; }
+		[JsonProperty("source")]
+		public string Source { get; set; }
 	}
 }
