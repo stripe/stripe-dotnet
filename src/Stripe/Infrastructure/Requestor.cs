@@ -40,6 +40,7 @@ namespace Stripe
 		private static WebRequest GetWebRequest(string url, string method, string apiKey = null, bool useBearer = false)
 		{
 			apiKey = apiKey ?? StripeConfiguration.GetApiKey();
+			string apiVersion = StripeConfiguration.GetApiVersion();
 
 			var request = (HttpWebRequest)WebRequest.Create(url);
 			request.Method = method;
@@ -48,6 +49,9 @@ namespace Stripe
 				request.Headers.Add("Authorization", GetAuthorizationHeaderValue(apiKey));
 			else
 				request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(apiKey));
+
+			if (!string.IsNullOrWhiteSpace(apiVersion))
+				request.Headers.Add("Stripe-Version", apiVersion);
 
 			request.ContentType = "application/x-www-form-urlencoded";
 			request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
