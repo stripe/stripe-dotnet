@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 using Stripe.Infrastructure;
 
 namespace Stripe
 {
 	public class StripeCustomer
 	{
+	    public StripeCustomer()
+	    {
+	        Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("id")]
 		public string Id { get; set; }
 
@@ -35,11 +42,43 @@ namespace Stripe
 		[JsonProperty("discount")]
 		public StripeDiscount StripeDiscount { get; set; }
 
-		[JsonProperty("subscriptions")]
-		public StripeSubscriptionList StripeSubscriptionList { get; set; }
+		/// <summary>
+		/// Hash describing the current subscription on the customer, if there is one. If the
+		/// customer has no current subscription, this will be null.
+		/// </summary>
+		[Obsolete("Use StripeSubscriptions")]
+		[JsonProperty("subscription")]
+		public StripeSubscription StripeSubscription { get; set; }
 
-		[JsonProperty("default_card")]
-		public string StripeDefaultCardId { get; set; }
+        /// <summary>
+        /// Populated if the customer has multiple subscriptions.
+        /// </summary>
+        [JsonProperty("subscriptions")]
+        public StripeSubscriptionList StripeSubscriptionList { get; set; }
+
+        // Do not add JsonProperty as this is managed by the InternalStripeDefaultCard field
+		public string StripeDefaultCardId { get; private set; }
+        // Do not add JsonProperty as this is managed by the InternalStripeDefaultCard field
+        public StripeCard StripeDefaultCard { get; private set; }
+
+        [JsonProperty("default_card")]
+	    internal object InternalStripeDefaultCard
+	    {
+	        get { return StripeDefaultCard; }
+            set
+            {
+                if (value is JObject)
+                {
+                    StripeDefaultCard = ((JToken)value).ToObject<StripeCard>();
+                    StripeDefaultCardId = StripeDefaultCard.Id;
+                }
+                else
+                {
+                    StripeDefaultCardId = value == null ? string.Empty : value.ToString();
+                    StripeDefaultCard = null;
+                }
+            }
+	    }
 
 		[JsonProperty("cards")]
 		public StripeCardList StripeCardList { get; set; }

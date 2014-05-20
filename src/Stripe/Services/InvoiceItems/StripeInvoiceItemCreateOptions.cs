@@ -5,6 +5,11 @@ namespace Stripe
 {
 	public class StripeInvoiceItemCreateOptions
 	{
+	    public StripeInvoiceItemCreateOptions()
+	    {
+            Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("amount")]
 		public int Amount { get; set; }
 
@@ -20,7 +25,10 @@ namespace Stripe
 		[JsonProperty("invoice")]
 		public string InvoiceId { get; set; }
 
-		[JsonProperty("metadata")]
-		public Dictionary<string, string> Metadata { get; set; }
+	        [JsonProperty("subscription")]
+        	public string SubscriptionId { get; set; }
+
+	        [JsonProperty("metadata")]
+        	public Dictionary<string, string> Metadata { get; set; }
 	}
 }

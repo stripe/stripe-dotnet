@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+
+using Stripe.Services.Subscriptions;
 
 namespace Stripe
 {
@@ -57,9 +60,10 @@ namespace Stripe
 
 			return Mapper<StripeCustomer>.MapCollectionFromJson(response);
 		}
-
+        
+        [Obsolete("Use StripeSubscriptionService.Update()")]
 		public virtual StripeSubscription UpdateSubscription(string customerId, StripeCustomerUpdateSubscriptionOptions updateOptions)
-		{
+        {
 			var url = string.Format("{0}/{1}/subscription", Urls.Customers, customerId);
 			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
 
@@ -68,6 +72,10 @@ namespace Stripe
 			return Mapper<StripeSubscription>.MapFromJson(response);
 		}
 
+        /// <summary>
+        /// Cancel a users subscription, this method with not work if there is more than zero or one subscriptions for the user
+        /// </summary>
+        [Obsolete("Use StripeSubscriptionService.Cancel()")]
 		public virtual StripeSubscription CancelSubscription(string customerId, bool cancelAtPeriodEnd = false)
 		{
 			var url = string.Format("{0}/{1}/subscription", Urls.Customers, customerId);

@@ -5,6 +5,11 @@ namespace Stripe
 {
 	public class StripeInvoiceItemUpdateOptions
 	{
+	    public StripeInvoiceItemUpdateOptions()
+	    {
+            Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("amount")]
 		public int Amount { get; set; }
 

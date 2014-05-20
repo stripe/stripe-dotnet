@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 using Stripe.Infrastructure;
 
 namespace Stripe
 {
 	public class StripeCharge
 	{
+	    public StripeCharge()
+	    {
+	        Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("id")]
 		public string Id { get; set; }
 
@@ -23,8 +30,29 @@ namespace Stripe
 		[JsonProperty("currency")]
 		public string Currency { get; set; }
 
-		[JsonProperty("customer")]
-		public string CustomerId { get; set; }
+        // Do not add JsonProperty as this is managed by the InternalCustomer field
+		public string CustomerId { get; private set; }
+        // Do not add JsonProperty as this is managed by the InternalCustomer field
+        public StripeCustomer Customer { get; private set; }
+
+	    [JsonProperty("customer")]
+	    internal object InternalCustomer
+	    {
+            get { return Customer; }
+	        set
+	        {
+	            if (value is JObject)
+	            {
+	                Customer = ((JToken) value).ToObject<StripeCustomer>();
+	                CustomerId = Customer.Id;
+	            }
+	            else
+	            {
+                    CustomerId = value == null ? string.Empty : value.ToString();
+	                Customer = null;
+	            }
+	        }
+	    }
 
 		[JsonProperty("description")]
 		public string Description { get; set; }
@@ -41,8 +69,29 @@ namespace Stripe
 		[JsonProperty("card")]
 		public StripeCard StripeCard { get; set; }
 
-		[JsonProperty("invoice")]
-		public string InvoiceId { get; set; }
+        // Do not add JsonProperty as this is managed by the InternalInvoice field
+		public string InvoiceId { get; private set; }
+        // Do not add JsonProperty as this is managed by the InternalInvoice field
+        public StripeInvoice Invoice { get; private set; }
+
+	    [JsonProperty("invoice")]
+	    internal object InternalInvoice
+	    {
+	        get { return Invoice; }
+	        set
+	        {
+                if (value is JObject)
+                {
+                    Invoice = ((JToken)value).ToObject<StripeInvoice>();
+                    InvoiceId = Invoice.Id;
+                }
+                else
+                {
+                    InvoiceId = value == null ? string.Empty : value.ToString();
+                    Invoice = null;
+                }
+	        }
+	    }
 
 		[JsonProperty("failure_message")]
 		public string FailureMessage { get; private set; }

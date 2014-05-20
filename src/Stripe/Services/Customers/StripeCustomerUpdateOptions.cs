@@ -1,10 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System.CodeDom;
+using System.Collections.Generic;
+
 using Newtonsoft.Json;
 
 namespace Stripe
 {
 	public class StripeCustomerUpdateOptions : CreditCardOptions
 	{
+	    public StripeCustomerUpdateOptions()
+	    {
+            Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("coupon")]
 		public string Coupon { get; set; }
 
