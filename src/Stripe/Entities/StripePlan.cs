@@ -1,10 +1,16 @@
 ﻿using System.Collections.Generic;
+
 using Newtonsoft.Json;
 
 namespace Stripe
 {
 	public class StripePlan
 	{
+	    public StripePlan()
+	    {
+	        Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("id")]
 		public string Id { get; set; }
 

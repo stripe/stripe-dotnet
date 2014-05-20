@@ -5,6 +5,11 @@ namespace Stripe
 {
 	public class StripeRecipientCreateOptions : BankAccountOptions
 	{
+	    public StripeRecipientCreateOptions()
+	    {
+            Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("name")]
 		public string Name { get; set; }
 

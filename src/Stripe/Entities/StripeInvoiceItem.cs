@@ -7,8 +7,16 @@ namespace Stripe
 {
 	public class StripeInvoiceItem
 	{
+	    public StripeInvoiceItem()
+	    {
+	        Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("id")]
 		public string Id { get; set; }
+
+        [JsonProperty("subscription")]
+        public string SubscriptionId { get; set; }
 
 		[JsonProperty("amount")]
 		public int? Amount { get; set; }

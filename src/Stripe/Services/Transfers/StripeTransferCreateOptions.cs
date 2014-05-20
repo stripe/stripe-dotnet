@@ -5,6 +5,11 @@ namespace Stripe
 {
 	public class StripeTransferCreateOptions
 	{
+	    public StripeTransferCreateOptions()
+	    {
+            Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("amount")]
 		public int Amount { get; set; }
 

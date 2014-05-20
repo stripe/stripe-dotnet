@@ -1,5 +1,7 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
+
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 
@@ -7,6 +9,11 @@ namespace Stripe
 {
 	public class StripeCustomerCreateOptions : CreditCardOptions
 	{
+	    public StripeCustomerCreateOptions()
+	    {
+            Metadata = new Dictionary<string, string>(10);
+	    }
+
 		[JsonProperty("coupon")]
 		public string CouponId { get; set; }
 
