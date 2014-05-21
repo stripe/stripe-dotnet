@@ -96,6 +96,8 @@
     <Compile Include="recipients\when_getting_a_recipient.cs" />
     <Compile Include="recipients\when_listing_recipients.cs" />
     <Compile Include="recipients\when_updating_a_recipient.cs" />
+    <Compile Include="requestor\when_creating_a_request.cs" />
+    <Compile Include="requestor\when_requesting_an_old_api_version.cs" />
     <Compile Include="requestor\when_requesting_a_blacklisted_certificate.cs" />
     <Compile Include="requestor\when_requesting_a_mismatched_certificate.cs" />
     <Compile Include="tokens\when_creating_a_token_with_a_customer.cs" />
@@ -180,7 +182,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
