@@ -23,32 +23,8 @@ namespace Stripe
 		[JsonProperty("type")]
 		public string Type { get; set; }
 
-		[JsonProperty("active_account[id]")]
-		public string ActiveAccountId { get; set; }
-
-		[JsonProperty("active_account[object]")]
-		public string ActiveAccountObject { get; set; }
-
-		[JsonProperty("active_account[bank_name]")]
-		public string ActiveAccountBankName { get; set; }
-
-		[JsonProperty("active_account[country]")]
-		public string ActiveAccountCountry { get; set; }
-
-		[JsonProperty("active_account[currency]")]
-		public string ActiveAccountCurrency { get; set; }
-
-		[JsonProperty("active_account[last4]")]
-		public string ActiveAccountLast4 { get; set; }
-
-		[JsonProperty("active_account[fingerprint]")]
-		public string ActiveAccountFingerprint { get; set; }
-
-		[JsonProperty("active_account[validated]")]
-		public bool? ActiveAccountValidated { get; set; }
-
-		[JsonProperty("active_account[verified]")]
-		public bool? ActiveAccountVerified { get; set; }
+		[JsonProperty("active_account")]
+		public StripeRecipientActiveAccount ActiveAccount { get; set; }
 
 		[JsonProperty("description")]
 		public string Description { get; set; }
