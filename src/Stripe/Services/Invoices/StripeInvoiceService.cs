@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -20,11 +21,14 @@ namespace Stripe
 			return Mapper<StripeInvoice>.MapFromJson(response);
 		}
 
-		public virtual StripeInvoice Upcoming(string customerId)
+		public virtual StripeInvoice Upcoming(string customerId, string subscriptionId = null)
 		{
 			var url = string.Format("{0}/{1}", Urls.Invoices, "upcoming");
 
 			url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+
+			if(!String.IsNullOrEmpty(subscriptionId))
+				url = ParameterBuilder.ApplyParameterToUrl(url, "subscription", subscriptionId);
 
 			var response = Requestor.GetString(url, ApiKey);
 

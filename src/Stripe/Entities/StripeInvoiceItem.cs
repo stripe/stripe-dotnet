@@ -38,6 +38,9 @@ namespace Stripe
 		[JsonProperty("period")]
 		public StripePeriod Period { get; set; }
 
+		[JsonProperty("subscription")]
+		public string SubscriptionId { get; set; }
+
 		[JsonProperty("metadata")]
 		public Dictionary<string, string> Metadata { get; set; }
 	}
