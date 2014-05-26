@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 
@@ -54,5 +55,8 @@ namespace Stripe
 
 		[JsonProperty("cancel_at_period_end")]
 		public bool CancelAtPeriodEnd { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }
