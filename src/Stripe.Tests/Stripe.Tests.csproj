@@ -100,6 +100,7 @@
     <Compile Include="requestor\when_requesting_an_old_api_version.cs" />
     <Compile Include="requestor\when_requesting_a_blacklisted_certificate.cs" />
     <Compile Include="requestor\when_requesting_a_mismatched_certificate.cs" />
+    <Compile Include="subscriptions\when_changing_a_subscription_plan.cs" />
     <Compile Include="subscriptions\when_creating_a_subscription.cs" />
     <Compile Include="subscriptions\when_updating_a_subscription.cs" />
     <Compile Include="subscriptions\when_getting_a_subscription.cs" />
