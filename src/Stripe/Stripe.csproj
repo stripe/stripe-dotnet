@@ -115,7 +115,6 @@
     <Compile Include="Services\Charges\StripeChargeService.cs" />
     <Compile Include="Services\Coupons\StripeCouponCreateOptions.cs" />
     <Compile Include="Services\Coupons\StripeCouponService.cs" />
-    <Compile Include="Services\Customers\StripeCustomerUpdateSubscriptionOptions.cs" />
     <Compile Include="Services\Customers\StripeCustomerUpdateOptions.cs" />
     <Compile Include="Services\Customers\StripeCustomerCreateOptions.cs" />
     <Compile Include="Services\Customers\StripeCustomerService.cs" />
@@ -130,6 +129,9 @@
     <Compile Include="Services\Recipients\StripeRecipientService.cs" />
     <Compile Include="Services\Recipients\StripeRecipientUpdateOptions.cs" />
     <Compile Include="Services\StripeListOptions.cs" />
+    <Compile Include="Services\Subscriptions\StripeSubscriptionUpdateOptions.cs" />
+    <Compile Include="Services\Subscriptions\StripeSubscriptionService.cs" />
+    <Compile Include="Services\Subscriptions\StripeSubscriptionCreateOptions.cs" />
     <Compile Include="Services\Tokens\StripeTokenCreateOptions.cs" />
     <Compile Include="Services\Tokens\StripeTokenService.cs" />
     <Compile Include="Infrastructure\StripeException.cs" />
@@ -143,6 +145,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

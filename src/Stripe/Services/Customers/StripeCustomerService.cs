@@ -57,35 +57,5 @@ namespace Stripe
 
 			return Mapper<StripeCustomer>.MapCollectionFromJson(response);
 		}
-
-		public virtual StripeSubscription UpdateSubscription(string customerId, StripeCustomerUpdateSubscriptionOptions updateOptions)
-		{
-			var url = string.Format("{0}/{1}/subscription", Urls.Customers, customerId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
-
-			var response = Requestor.PostString(url, ApiKey);
-
-			return Mapper<StripeSubscription>.MapFromJson(response);
-		}
-
-		public virtual StripeSubscription CancelSubscription(string customerId, bool cancelAtPeriodEnd = false)
-		{
-			var url = string.Format("{0}/{1}/subscription", Urls.Customers, customerId);
-			url = ParameterBuilder.ApplyParameterToUrl(url, "at_period_end", cancelAtPeriodEnd.ToString());
-
-			var response = Requestor.Delete(url, ApiKey);
-
-			return Mapper<StripeSubscription>.MapFromJson(response);
-		}
-		
-		public virtual StripeSubscription CancelSubscription(string customerId, string subscriptionId, bool cancelAtPeriodEnd = false)
-		{
-			var url = string.Format("{0}/{1}/{2}/{3}", Urls.Customers, customerId, Urls.Subscriptions, subscriptionId);
-			url = ParameterBuilder.ApplyParameterToUrl(url, "at_period_end", cancelAtPeriodEnd.ToString());
-	
-			var response = Requestor.Delete(url, ApiKey);
-	
-			return Mapper<StripeSubscription>.MapFromJson(response);
-		}
 	}
 }

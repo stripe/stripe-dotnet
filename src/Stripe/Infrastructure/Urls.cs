@@ -74,7 +74,7 @@
 
 		public static string Subscriptions
 		{
-			get { return BaseUrl + "/subscriptions"; }
+			get { return BaseUrl + "/customers/{0}/subscriptions"; }
 		}
 
 		public static string Transfers
