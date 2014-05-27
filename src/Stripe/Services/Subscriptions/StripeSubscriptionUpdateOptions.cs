@@ -8,5 +8,8 @@ namespace Stripe
 	{
 		[JsonProperty("prorate")]
 		public bool? Prorate { get; set; }
+
+		[JsonProperty("plan")]
+		public string PlanId { get; set; }
 	}
 }
