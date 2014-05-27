@@ -250,42 +250,35 @@ Customers that are deleted can still be retrieved through the api. The Deleted p
 
 StripeCustomerListOptions supports [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
-### Updating a customer subscription
+Subscriptions
+-------------
 
-	var myUpdatedSubscription = new StripeCustomerUpdateSubscriptionOptions()
+### Creating a subscription
 
-	// set these properties if using a card
-	myUpdatedSubscription.CardNumber = "4242424242424242";
-	myUpdatedSubscription.CardExpirationYear = "2012";
-	myUpdatedSubscription.CardExpirationMonth = "10";
-	myUpdatedSubscription.CardAddressCountry = "US";                // optional
-	myUpdatedSubscription.CardAddressLine1 = "24 Beef Flank St";    // optional
-	myUpdatedSubscription.CardAddressLine2 = "Apt 24";              // optional
-	myUpdatedSubscription.CardAddressState = "NC";                  // optional
-	myUpdatedSubscription.CardAddressZip = "27617";                 // optional
-	myUpdatedSubscription.CardName = "Joe Meatballs";               // optional
-	myUpdatedSubscription.CardCvc = "1223";                         // optional
+	var subscriptionService = new StripeSubscriptionService();
+	StripeSubscription stripeSubscription = subscriptionService.Create(*customerId*, *planId*); // optional StripeSubscriptionCreateOptions
 
-	// set this property if using a token
-	myUpdatedSubscription.TokenId = *tokenId*;
+### Updating a subscription
 
-	myUpdatedSubscription.PlanId = *planId*;
-	myUpdatedSubscription.CouponId = *couponId*;
-	myUpdatedSubscription.TrialEnd = DateTime.UtcNow.AddMonths(1);
-	myUpdatedSubscription.Quantity = 1;                             // optional, defaults to 1
+	var subscriptionService = new StripeSubscriptionService();
+	StripeSubscription stripeSubscription = subscriptionService.Update(*customerId*, *subscriptionId*); // optional StripeSubscriptionUpdateOptions
 
-	var customerService = new StripeCustomerService();
-	StripeSubscription subscription = customerService.UpdateSubscription(*customerId*, myUpdatedSubscription);
+### Retrieving a subscription
 
-### Canceling all customer's subscriptions
+	var subscriptionService = new StripeSubscriptionService();
+	StripeSubscription stripeSubscription = subscriptionService.Get(*subscriptionId*);
 
-	var customerService = new StripeCustomerService();
-	StripeSubscription subscription = customerService.CancelSubscription(*customerId*); // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling
+### Canceling a subscription
 
-### Canceling a single subscription
+	var subscriptionService = new StripeSubscriptionService();
+	subscriptionService.Cancel(*customerId*, *subscriptionId*); // optional cancelAtPeriodEnd flag
 
-	var customerService = new StripeCustomerService();
-	StripeSubscription subscription = customerService.CancelSubscription(*customerId*, *subscriptionId*); // you can optionally pass cancelAtPeriodEnd instead of immediately cancelling
+### List all subscriptions for a customer
+
+	var subscriptionService = new StripeSubscriptionService();
+	IEnumerable<StripeSubscription> response = customerService.List(*customerId*); // optional StripeListOptions
+
+[StripeListOptions](#stripelistoptions-paging) for paging
 
 Cards
 -----

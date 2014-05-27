@@ -24,12 +24,11 @@ namespace Stripe.Tests
 			_stripeSubscriptionService = new StripeSubscriptionService();
 
 			_stripeSubscriptionCreateOptions = new StripeSubscriptionCreateOptions();
-			_stripeSubscriptionCreateOptions.PlanId = _stripePlan.Id;
 			_stripeSubscriptionCreateOptions.Quantity = 2;
 		};
 
 		Because of = () =>
-			_stripeSubscription = _stripeSubscriptionService.Create(_stripeCustomer.Id, _stripeSubscriptionCreateOptions);
+			_stripeSubscription = _stripeSubscriptionService.Create(_stripeCustomer.Id, _stripePlan.Id, _stripeSubscriptionCreateOptions);
 
 		It should_get_the_same_subscription = () =>
 			_stripeSubscription.StripePlan.Id.ShouldEqual(_stripePlan.Id);

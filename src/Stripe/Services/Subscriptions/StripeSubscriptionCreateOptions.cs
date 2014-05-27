@@ -7,9 +7,6 @@ namespace Stripe
 {
 	public class StripeSubscriptionCreateOptions : CreditCardOptions
 	{
-		[JsonProperty("plan")]
-		public string PlanId { get; set; }
-
 		[JsonProperty("coupon")]
 		public string CouponId { get; set; }
 
