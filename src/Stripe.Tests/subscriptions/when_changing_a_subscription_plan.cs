@@ -11,7 +11,7 @@ namespace Stripe.Tests
 		private static StripeSubscriptionUpdateOptions _stripeSubscriptionUpdateOptions;
 		private static StripeSubscription _stripeSubscription;
 		private static StripeSubscriptionService _stripeSubscriptionService;
-	    private static StripePlan _stripePlan2 ;
+		private static StripePlan _stripePlan2;
 
 		Establish context = () =>
 		{
@@ -28,13 +28,13 @@ namespace Stripe.Tests
 			_stripeSubscriptionService = new StripeSubscriptionService();
 
 			_stripeSubscriptionUpdateOptions = new StripeSubscriptionUpdateOptions();
-            _stripeSubscriptionUpdateOptions.PlanId = _stripePlan2.Id;
+			_stripeSubscriptionUpdateOptions.PlanId = _stripePlan2.Id;
 		};
 
 		Because of = () =>
 			_stripeSubscription = _stripeSubscriptionService.Update(_stripeCustomer.Id, _stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id, _stripeSubscriptionUpdateOptions);
 
-	    It should_have_the_new_quantity = () =>
-	        _stripeSubscription.StripePlan.Id.ShouldEqual(_stripePlan2.Id);
+		It should_have_the_same_id_as_the_new_plan = () =>
+			_stripeSubscription.StripePlan.Id.ShouldEqual(_stripePlan2.Id);
 	}
 }
