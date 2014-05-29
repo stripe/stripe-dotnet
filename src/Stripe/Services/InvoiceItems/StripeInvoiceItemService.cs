@@ -11,6 +11,8 @@ namespace Stripe
 			ApiKey = apiKey;
 		}
 
+		public bool ExpandCustomer { get; set; }
+
 		public virtual StripeInvoiceItem Create(StripeInvoiceItemCreateOptions createOptions)
 		{
 			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.InvoiceItems);
@@ -56,6 +58,14 @@ namespace Stripe
 			var response = Requestor.GetString(url, ApiKey);
 
 			return Mapper<StripeInvoiceItem>.MapCollectionFromJson(response);
+		}
+
+		private string ApplyExpandableProperties(string url)
+		{
+			if (ExpandCustomer)
+				url += ParameterBuilder.ApplyParameterToUrl(url, "expand[]", "customer");
+
+			return url;
 		}
 	}
 }

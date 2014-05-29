@@ -19,6 +19,7 @@ namespace Stripe
 
 		[JsonProperty("customer")]
 		public string CustomerId { get; set; }
+		public bool ExpandCustomer { get; set; }
 
 		[JsonProperty("capture")]
 		public bool? Capture { get; set; }

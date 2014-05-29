@@ -30,8 +30,8 @@ namespace Stripe.Tests
 		It should_have_a_status_other_than_failed = () =>
 			StripeTransfer.Status.ShouldNotEqual("failed");
 
-		It should_have_a_balance_transaction = () =>
-			StripeTransfer.BalanceTransaction.ShouldNotBeNull();
+		It should_have_a_balance_transactionid = () =>
+			StripeTransfer.BalanceTransactionId.ShouldNotBeNull();
 
 		It should_have_the_correct_description = () =>
 			StripeTransfer.Description.ShouldEqual(StripeTransferCreateOptions.Description);

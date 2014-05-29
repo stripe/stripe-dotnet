@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
+using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
@@ -22,9 +23,21 @@ namespace Stripe
 
 		[JsonProperty("currency")]
 		public string Currency { get; set; }
+		
+		public string CustomerId { get; set; }
+		public StripeCustomer Customer { get; set; }
 
 		[JsonProperty("customer")]
-		public string CustomerId { get; set; }
+		internal object InternalCustomer
+		{
+			set
+			{
+				if (value is JObject)
+					Customer = Mapper<StripeCustomer>.MapFromJson(value.ToString());
+				else
+					CustomerId = value == null ? null : value.ToString();
+			}
+		}
 
 		[JsonProperty("description")]
 		public string Description { get; set; }
@@ -41,8 +54,20 @@ namespace Stripe
 		[JsonProperty("card")]
 		public StripeCard StripeCard { get; set; }
 
-		[JsonProperty("invoice")]
 		public string InvoiceId { get; set; }
+		public StripeInvoice Invoice { get; set; }
+
+		[JsonProperty("invoice")]
+		internal object InternalInvoice
+		{
+			set
+			{
+				if (value is JObject)
+					Invoice = Mapper<StripeInvoice>.MapFromJson(value.ToString());
+				else
+					InvoiceId = value == null ? null : value.ToString();
+			}
+		}
 
 		[JsonProperty("failure_message")]
 		public string FailureMessage { get; private set; }
