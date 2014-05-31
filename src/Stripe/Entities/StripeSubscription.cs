@@ -8,18 +8,15 @@ namespace Stripe
 {
 	public class StripeSubscription : StripeObject
 	{
-		public string CustomerId { get; set; }
 		public StripeCustomer Customer { get; set; }
+		public string CustomerId { get; set; }
 
 		[JsonProperty("customer")]
 		internal object InternalCustomer
 		{
 			set
 			{
-				if (value is JObject)
-					Customer = Mapper<StripeCustomer>.MapFromJson(value.ToString());
-				else
-					CustomerId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
 			}
 		}
 

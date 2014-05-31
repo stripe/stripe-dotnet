@@ -7,8 +7,10 @@ namespace Stripe
 		public StripeChargeService(string apiKey = null)
 			: base(apiKey) { }
 
+		public bool ExpandBalanceTransaction { get; set; }
 		public bool ExpandCustomer { get; set; }
 		public bool ExpandInvoice { get; set; }
+
 
 		public virtual StripeCharge Create(StripeChargeCreateOptions createOptions)
 		{

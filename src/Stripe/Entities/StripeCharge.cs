@@ -14,6 +14,18 @@ namespace Stripe
 		[JsonProperty("amount_refunded")]
 		public int? AmountRefunded { get; set; }
 
+		public StripeBalanceTransaction BalanceTransaction { get; set;}
+		public string BalanceTransactionId { get; set; }
+
+		[JsonProperty("balance_transaction")]
+		internal object InternalBalanceTransaction
+		{
+			set
+			{
+				ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+			}
+		}
+
 		[JsonProperty("created")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime Created { get; set; }
@@ -29,10 +41,7 @@ namespace Stripe
 		{
 			set
 			{
-				if (value is JObject)
-					Customer = Mapper<StripeCustomer>.MapFromJson(value.ToString());
-				else
-					CustomerId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
 			}
 		}
 
@@ -59,10 +68,7 @@ namespace Stripe
 		{
 			set
 			{
-				if (value is JObject)
-					Invoice = Mapper<StripeInvoice>.MapFromJson(value.ToString());
-				else
-					InvoiceId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeInvoice>.Map(value, s => InvoiceId = s, o => Invoice = o);
 			}
 		}
 

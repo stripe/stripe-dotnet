@@ -16,5 +16,17 @@ namespace Stripe
 
 		[JsonProperty("coupon")]
 		public StripeCoupon StripeCoupon { get; set; }
+
+		public StripeCustomer Customer { get; set; }
+		public string CustomerId { get; set; }
+
+		[JsonProperty("customer")]
+		internal object InternalCustomer
+		{
+			set
+			{
+				ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+			}
+		}
 	}
 }

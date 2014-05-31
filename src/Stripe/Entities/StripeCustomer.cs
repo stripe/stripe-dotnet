@@ -38,15 +38,13 @@ namespace Stripe
 
 		public string StripeDefaultCardId { get; set; }
 		public StripeCard StripeDefaultCard { get; set; }
+		
 		[JsonProperty("default_card")]
 		internal object InternalDefaultCard
 		{
 			set
 			{
-				if (value is JObject)
-					StripeDefaultCard = Mapper<StripeCard>.MapFromJson(value.ToString());
-				else
-					StripeDefaultCardId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeCard>.Map(value, s => StripeDefaultCardId = s, o => StripeDefaultCard = o);
 			}
 		}
 

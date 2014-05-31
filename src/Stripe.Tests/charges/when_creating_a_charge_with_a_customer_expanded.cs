@@ -31,8 +31,8 @@ namespace Stripe.Tests
 		It should_have_the_customer = () =>
 			StripeCharge.Customer.ShouldNotBeNull();
 
-		It should_not_have_the_customerid = () =>
-			StripeCharge.CustomerId.ShouldBeNull();
+		It should_have_the_customerid = () =>
+			StripeCharge.CustomerId.ShouldNotBeNull();
 
 		//Behaves_like<charge_behaviors> behaviors;
 	}

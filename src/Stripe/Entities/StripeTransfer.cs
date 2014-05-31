@@ -54,17 +54,15 @@ namespace Stripe
 		[JsonProperty("account[verified]")]
 		public bool? AccountVerified { get; set; }
 
-		public string BalanceTransactionId { get; set; }
 		public StripeBalanceTransaction BalanceTransaction { get; set; }
+		public string BalanceTransactionId { get; set; }
+
 		[JsonProperty("balance_transaction")]
 		internal object InternalBalanceTransaction
 		{
 			set
 			{
-				if (value is JObject)
-					BalanceTransaction = Mapper<StripeBalanceTransaction>.MapFromJson(value.ToString());
-				else
-					BalanceTransactionId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
 			}
 		}
 

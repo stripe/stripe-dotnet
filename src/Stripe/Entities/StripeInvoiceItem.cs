@@ -21,20 +21,18 @@ namespace Stripe
 		[JsonProperty("currency")]
 		public string Currency { get; set; }
 
-		public string CustomerId { get; set; }
 		public StripeCustomer Customer { get; set; }
+		public string CustomerId { get; set; }
 
 		[JsonProperty("customer")]
 		internal object InternalCustomer
 		{
 			set
 			{
-				if (value is JObject)
-					Customer = Mapper<StripeCustomer>.MapFromJson(value.ToString());
-				else
-					CustomerId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
 			}
 		}
+
 		[JsonProperty("description")]
 		public string Description { get; set; }
 
@@ -52,5 +50,16 @@ namespace Stripe
 
 		[JsonProperty("metadata")]
 		public Dictionary<string, string> Metadata { get; set; }
+
+		public StripeInvoice Invoice { get; set; }
+		public string InvoiceId { get; set; }
+		[JsonProperty("invoice")]
+		public object InternalInvoice
+		{
+			set
+			{
+				ExpandableProperty<StripeInvoice>.Map(value, s => InvoiceId = s, o => Invoice = o);
+			}
+		}
 	}
 }
