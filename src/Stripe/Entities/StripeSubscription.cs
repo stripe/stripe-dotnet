@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
+using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
@@ -10,8 +11,20 @@ namespace Stripe
 		[JsonProperty("id")]
 		public string Id { get; set; }
 
-		[JsonProperty("customer")]
 		public string CustomerId { get; set; }
+		public StripeCustomer Customer { get; set; }
+
+		[JsonProperty("customer")]
+		internal object InternalCustomer
+		{
+			set
+			{
+				if (value is JObject)
+					Customer = Mapper<StripeCustomer>.MapFromJson(value.ToString());
+				else
+					CustomerId = value == null ? null : value.ToString();
+			}
+		}
 
 		[JsonProperty("current_period_start")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]

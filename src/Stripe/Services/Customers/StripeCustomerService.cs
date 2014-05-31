@@ -11,9 +11,12 @@ namespace Stripe
 			ApiKey = apiKey;
 		}
 
+		public bool ExpandDefaultCard { get; set; }
+
 		public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions)
 		{
 			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Customers);
+			url = ApplyExpandableProperties(url);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -23,6 +26,7 @@ namespace Stripe
 		public virtual StripeCustomer Get(string customerId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
+			url = ApplyExpandableProperties(url);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -33,6 +37,7 @@ namespace Stripe
 		{
 			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
 			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			url = ApplyExpandableProperties(url);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -56,6 +61,14 @@ namespace Stripe
 			var response = Requestor.GetString(url, ApiKey);
 
 			return Mapper<StripeCustomer>.MapCollectionFromJson(response);
+		}
+
+		private string ApplyExpandableProperties(string url)
+		{
+			if (ExpandDefaultCard)
+				url += ParameterBuilder.ApplyParameterToUrl(url, "expand[]", "default_card");
+
+			return url;
 		}
 	}
 }

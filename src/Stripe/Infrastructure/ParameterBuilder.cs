@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Web;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
+using System.Diagnostics;
 
 namespace Stripe
 {
@@ -20,12 +21,11 @@ namespace Stripe
 
 			foreach (var property in obj.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
 			{
+				var value = property.GetValue(obj, null);
+				if (value == null) continue;
+
 				foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
 				{
-					var value = property.GetValue(obj, null);
-
-					if (value == null) continue;
-
 					if (string.Compare(attribute.PropertyName, "metadata", true) == 0)
 					{
 						var metadata = (Dictionary<string, string>)value;
