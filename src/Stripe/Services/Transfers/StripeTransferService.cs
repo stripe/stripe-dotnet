@@ -11,7 +11,7 @@ namespace Stripe
 
 		public virtual StripeTransfer Create(StripeTransferCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Transfers);
+			var url = this.ApplyAllParameters(createOptions, Urls.Transfers);
 			url = ApplyExpandableProperties(url);
 
 			var response = Requestor.PostString(url, ApiKey);
@@ -45,7 +45,7 @@ namespace Stripe
 			url = ApplyExpandableProperties(url);
 
 			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+				url = this.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 

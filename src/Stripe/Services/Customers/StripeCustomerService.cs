@@ -11,8 +11,7 @@ namespace Stripe
 
 		public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Customers);
-			url = ApplyExpandableProperties(url);
+			var url = this.ApplyAllParameters(createOptions, Urls.Customers);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -22,7 +21,7 @@ namespace Stripe
 		public virtual StripeCustomer Get(string customerId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-			url = ApplyExpandableProperties(url);
+			this.ApplyAllParameters(null, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -32,8 +31,7 @@ namespace Stripe
 		public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
-			url = ApplyExpandableProperties(url);
+			url = this.ApplyAllParameters(updateOptions, url);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -52,19 +50,11 @@ namespace Stripe
 			var url = Urls.Customers;
 
 			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+				url = this.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 
 			return Mapper<StripeCustomer>.MapCollectionFromJson(response);
-		}
-
-		private string ApplyExpandableProperties(string url)
-		{
-			if (ExpandDefaultCard)
-				url += ParameterBuilder.ApplyParameterToUrl(url, "expand[]", "default_card");
-
-			return url;
 		}
 	}
 }

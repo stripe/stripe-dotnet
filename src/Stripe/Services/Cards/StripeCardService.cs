@@ -10,7 +10,7 @@ namespace Stripe
 		public virtual StripeCard Create(string customerId, StripeCardCreateOptions createOptions)
 		{
 			var url = string.Format(Urls.Cards, customerId);
-			url = ParameterBuilder.ApplyAllParameters(createOptions, url);
+			url = this.ApplyAllParameters(createOptions, url);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -31,7 +31,7 @@ namespace Stripe
 		{
 			var customerUrl = string.Format(Urls.Cards, customerId);
 			var url = string.Format("{0}/{1}", customerUrl, cardId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -51,7 +51,7 @@ namespace Stripe
 			var url = string.Format(Urls.Cards, customerId);
 
 			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+				url = this.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 

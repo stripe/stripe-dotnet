@@ -9,7 +9,7 @@ namespace Stripe
 
 		public virtual StripeCoupon Create(StripeCouponCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Coupons);
+			var url = this.ApplyAllParameters(createOptions, Urls.Coupons);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -37,7 +37,7 @@ namespace Stripe
 			var url = Urls.Coupons;
 
 			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+				url = this.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 

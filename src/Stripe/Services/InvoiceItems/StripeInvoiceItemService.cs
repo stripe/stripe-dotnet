@@ -11,7 +11,7 @@ namespace Stripe
 
 		public virtual StripeInvoiceItem Create(StripeInvoiceItemCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.InvoiceItems);
+			var url = this.ApplyAllParameters(createOptions, Urls.InvoiceItems);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -30,7 +30,7 @@ namespace Stripe
 		public virtual StripeInvoiceItem Update(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -49,7 +49,7 @@ namespace Stripe
 			var url = Urls.InvoiceItems;
 
 			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+				url = this.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 

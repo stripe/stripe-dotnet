@@ -34,7 +34,7 @@ namespace Stripe
 		public virtual StripeInvoice Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -55,7 +55,7 @@ namespace Stripe
 			var url = Urls.Invoices;
 
 			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+				url = this.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 

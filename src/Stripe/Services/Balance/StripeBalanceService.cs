@@ -26,7 +26,7 @@ namespace Stripe
 			var url = Urls.BalanceTransactions;
 
 			if (options != null)
-				url = ParameterBuilder.ApplyAllParameters(options, url);
+				url = this.ApplyAllParameters(options, url);
 
 			var response = Requestor.GetString(url);
 

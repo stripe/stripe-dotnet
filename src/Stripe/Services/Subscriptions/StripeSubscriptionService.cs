@@ -25,7 +25,7 @@ namespace Stripe
 			var url = string.Format(Urls.Subscriptions, customerId);
 			url = ApplyExpandableProperties(url);
 			url = ParameterBuilder.ApplyParameterToUrl(url, "plan", planId);
-			url = ParameterBuilder.ApplyAllParameters(createOptions, url);
+			url = this.ApplyAllParameters(createOptions, url);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -36,7 +36,7 @@ namespace Stripe
 		{
 			var url = string.Format(Urls.Subscriptions + "/{1}", customerId, subscriptionId);
 			url = ApplyExpandableProperties(url);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -60,7 +60,7 @@ namespace Stripe
 			url = ApplyExpandableProperties(url);
 
 			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+				url = this.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 

@@ -8,42 +8,43 @@ using System.Web;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace Stripe
 {
 	internal static class ParameterBuilder
 	{
-		public static string ApplyAllParameters(object obj, string url)
+		public static string ApplyAllParameters(this StripeService service, object obj, string url)
 		{
-			if (obj == null) return url;
+			string newUrl = url;
 
-			var newUrl = url;
-
-			foreach (var property in obj.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+			if (obj != null)
 			{
-				var value = property.GetValue(obj, null);
-				if (value == null) continue;
-
-				foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
+				foreach (var property in obj.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
 				{
-					if (string.Compare(attribute.PropertyName, "metadata", true) == 0)
-					{
-						var metadata = (Dictionary<string, string>)value;
+					var value = property.GetValue(obj, null);
+					if (value == null) continue;
 
-						foreach (string key in metadata.Keys)
+					foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
+					{
+						if (string.Compare(attribute.PropertyName, "metadata", true) == 0)
 						{
-							newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
-						}
-					}
-					else if (property.PropertyType == typeof(StripeDateFilter))
-					{
-						var filter = (StripeDateFilter) value;
+							var metadata = (Dictionary<string, string>)value;
 
-						if (filter.EqualTo.HasValue)
-							newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, filter.EqualTo.Value.ConvertDateTimeToEpoch().ToString());
-						else
-							if (filter.LessThan.HasValue)
-								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString());
+							foreach (string key in metadata.Keys)
+							{
+								newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
+							}
+						}
+						else if (property.PropertyType == typeof(StripeDateFilter))
+						{
+							var filter = (StripeDateFilter)value;
+
+							if (filter.EqualTo.HasValue)
+								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, filter.EqualTo.Value.ConvertDateTimeToEpoch().ToString());
+							else
+								if (filter.LessThan.HasValue)
+									newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString());
 
 							if (filter.LessThanOrEqual.HasValue)
 								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lte]", filter.LessThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
@@ -53,11 +54,35 @@ namespace Stripe
 
 							if (filter.GreaterThanOrEqual.HasValue)
 								newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gte]", filter.GreaterThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
+						}
+						else
+						{
+							newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
+						}
 					}
-					else
+				}
+			}
+
+			if (service != null)
+			{
+				// Find Expand properties on service which have been set
+				var propertiesToExpand = service.GetType()
+					.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+					.Where(p => p.Name.StartsWith("Expand") && p.PropertyType == typeof(bool))
+					.Where(p => (bool)p.GetValue(service, null))
+					.Select(p => p.Name);
+
+				foreach (var propertyName in propertiesToExpand)
+				{
+					string expandPropertyName = propertyName.Substring("Expand".Length);		// Remove Expand
+					expandPropertyName = Regex.Replace(expandPropertyName, "([a-z])([A-Z])", "$1_$2").ToLower();
+
+					if (obj is StripeListOptions)
 					{
-						newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
+						expandPropertyName = "data." + expandPropertyName;
 					}
+
+					newUrl = ApplyParameterToUrl(newUrl, "expand[]", expandPropertyName);
 				}
 			}
 

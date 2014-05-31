@@ -39,7 +39,7 @@ namespace Stripe
 			var url = Urls.ApplicationFees;
 
 			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+				url = this.ApplyAllParameters(listOptions, url);
 
 			var response = Requestor.GetString(url, ApiKey);
 
