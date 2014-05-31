@@ -80,6 +80,11 @@
     <Compile Include="coupons\when_creating_a_coupon_with_amount_off.cs" />
     <Compile Include="coupons\when_creating_a_coupon_with_an_api_key.cs" />
     <Compile Include="customers\when_creating_a_customer_with_an_api_key.cs" />
+    <Compile Include="infrastructure\test_data\sample_object.cs" />
+    <Compile Include="infrastructure\when_building_parameters.cs" />
+    <Compile Include="infrastructure\when_passed_empty_object.cs" />
+    <Compile Include="infrastructure\when_serializing_an_equals_datefilter.cs" />
+    <Compile Include="infrastructure\when_serializing_a_datefilter_query.cs" />
     <Compile Include="invoiceitems\when_creating_an_invoiceitem_with_an_api_key.cs" />
     <Compile Include="invoices\when_closing_an_invoice.cs" />
     <Compile Include="invoices\when_creating_an_invoice_with_an_api_key.cs" />
