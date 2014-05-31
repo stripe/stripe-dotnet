@@ -2,22 +2,19 @@
 
 namespace Stripe
 {
-	public class StripeChargeService
+	public class StripeChargeService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeChargeService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
+		public bool ExpandBalanceTransaction { get; set; }
 		public bool ExpandCustomer { get; set; }
 		public bool ExpandInvoice { get; set; }
 
+
 		public virtual StripeCharge Create(StripeChargeCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Charges);
-			url = ApplyExpandableProperties(url);
+			var url = this.ApplyAllParameters(createOptions, Urls.Charges, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -27,7 +24,7 @@ namespace Stripe
 		public virtual StripeCharge Get(string chargeId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Charges, chargeId);
-			url = ApplyExpandableProperties(url);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -37,7 +34,7 @@ namespace Stripe
 		public virtual StripeCharge Refund(string chargeId, int? refundAmount = null, bool? refundApplicationFee = null)
 		{
 			var url = string.Format("{0}/{1}/refund", Urls.Charges, chargeId);
-			url = ApplyExpandableProperties(url);
+			url = this.ApplyAllParameters(null, url, false);
 
 			if (refundAmount.HasValue)
 				url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());
@@ -52,9 +49,7 @@ namespace Stripe
 		public virtual IEnumerable<StripeCharge> List(StripeChargeListOptions listOptions = null)
 		{
 			var url = Urls.Charges;
-
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -64,7 +59,7 @@ namespace Stripe
 		public virtual StripeCharge Capture(string chargeId, int? captureAmount = null, int? applicationFee = null)
 		{
 			var url = string.Format("{0}/{1}/capture", Urls.Charges, chargeId);
-			url = ApplyExpandableProperties(url);
+			url = this.ApplyAllParameters(null, url, false);
 
 			if (captureAmount.HasValue)
 				url = ParameterBuilder.ApplyParameterToUrl(url, "amount", captureAmount.Value.ToString());
@@ -74,16 +69,6 @@ namespace Stripe
 			var response = Requestor.PostString(url, ApiKey);
 
 			return Mapper<StripeCharge>.MapFromJson(response);
-		}
-
-		private string ApplyExpandableProperties(string url)
-		{
-			if (ExpandCustomer)
-				url += ParameterBuilder.ApplyParameterToUrl(url, "expand[]", "customer");
-			if (ExpandInvoice)
-				url += ParameterBuilder.ApplyParameterToUrl(url, "expand[]", "invoice");
-
-			return url;
 		}
 	}
 }

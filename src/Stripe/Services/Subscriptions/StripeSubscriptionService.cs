@@ -3,21 +3,17 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-	public class StripeSubscriptionService
+	public class StripeSubscriptionService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeSubscriptionService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public bool ExpandCustomer { get; set; }
 
 		public virtual StripeSubscription Get(string customerId, string subscriptionId)
 		{
 			var url = string.Format(Urls.Subscriptions + "/{1}", customerId, subscriptionId);
-			url = ApplyExpandableProperties(url);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -27,9 +23,8 @@ namespace Stripe
 		public virtual StripeSubscription Create(string customerId, string planId, StripeSubscriptionCreateOptions createOptions)
 		{
 			var url = string.Format(Urls.Subscriptions, customerId);
-			url = ApplyExpandableProperties(url);
+			url = this.ApplyAllParameters(createOptions, url, false);
 			url = ParameterBuilder.ApplyParameterToUrl(url, "plan", planId);
-			url = ParameterBuilder.ApplyAllParameters(createOptions, url);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -39,8 +34,7 @@ namespace Stripe
 		public virtual StripeSubscription Update(string customerId, string subscriptionId, StripeSubscriptionUpdateOptions updateOptions)
 		{
 			var url = string.Format(Urls.Subscriptions + "/{1}", customerId, subscriptionId);
-			url = ApplyExpandableProperties(url);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -50,7 +44,6 @@ namespace Stripe
 		public virtual StripeSubscription Cancel(string customerId, string subscriptionId, bool cancelAtPeriodEnd = false)
 		{
 			var url = string.Format(Urls.Subscriptions + "/{1}", customerId, subscriptionId);
-			url = ApplyExpandableProperties(url);
 			url = ParameterBuilder.ApplyParameterToUrl(url, "at_period_end", cancelAtPeriodEnd.ToString());
 
 			var response = Requestor.Delete(url, ApiKey);
@@ -61,22 +54,11 @@ namespace Stripe
 		public virtual IEnumerable<StripeSubscription> List(string customerId, StripeListOptions listOptions = null)
 		{
 			var url = string.Format(Urls.Subscriptions, customerId);
-			url = ApplyExpandableProperties(url);
-
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 
 			return Mapper<StripeSubscription>.MapCollectionFromJson(response);
-		}
-
-		private string ApplyExpandableProperties(string url)
-		{
-			if (ExpandCustomer)
-				url += ParameterBuilder.ApplyParameterToUrl(url, "expand[]", "customer");
-
-			return url;
 		}
 	}
 }

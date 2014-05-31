@@ -6,11 +6,8 @@ using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-	public class StripeApplicationFee
+	public class StripeApplicationFee : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("livemode")]
 		public bool? LiveMode { get; set; }
 
@@ -22,10 +19,7 @@ namespace Stripe
 		{
 			set
 			{
-				if (value is JObject)
-					Account = Mapper<StripeAccount>.MapFromJson(value.ToString());
-				else
-					AccountId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeAccount>.Map(value, s => AccountId = s, o => Account = o);
 			}
 		}
 
@@ -37,29 +31,24 @@ namespace Stripe
 
 		public string BalanceTransactionId { get; set; }
 		public StripeBalanceTransaction BalanceTransaction { get; set; }
+
 		[JsonProperty("balance_transaction")]
 		internal object InternalBalanceTransaction
 		{
 			set
 			{
-				if (value is JObject)
-					BalanceTransaction = Mapper<StripeBalanceTransaction>.MapFromJson(value.ToString());
-				else
-					BalanceTransactionId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
 			}
 		}
 
-		public string ChargeId { get; set; }
-		public StripeCharge Charge { get; set; }
-		[JsonProperty("charge")]
-		internal object InternalCharge
+		public string CardId { get; set; }
+		public StripeCard Card { get; set; }
+
+		internal object InternalCard
 		{
 			set
 			{
-				if (value is JObject)
-					Charge = Mapper<StripeCharge>.MapFromJson(value.ToString());
-				else
-					ChargeId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeCard>.Map(value, s => CardId = s, o => Card = o);
 			}
 		}
 

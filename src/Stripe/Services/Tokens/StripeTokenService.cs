@@ -1,17 +1,13 @@
 ﻿namespace Stripe
 {
-	public class StripeTokenService
+	public class StripeTokenService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeTokenService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public virtual StripeToken Create(StripeTokenCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Tokens);
+			var url = this.ApplyAllParameters(createOptions, Urls.Tokens, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 

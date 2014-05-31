@@ -4,11 +4,8 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeToken
+	public class StripeToken : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("created")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? Created { get; set; }

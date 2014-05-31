@@ -2,21 +2,16 @@
 
 namespace Stripe
 {
-	public class StripeTransferService
+	public class StripeTransferService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeTransferService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public bool ExpandBalanceTransaction { get; set; }
 
 		public virtual StripeTransfer Create(StripeTransferCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Transfers);
-			url = ApplyExpandableProperties(url);
+			var url = this.ApplyAllParameters(createOptions, Urls.Transfers, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -26,7 +21,7 @@ namespace Stripe
 		public virtual StripeTransfer Get(string transferId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Transfers, transferId);
-			url = ApplyExpandableProperties(url);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -36,7 +31,7 @@ namespace Stripe
 		public virtual StripeTransfer Cancel(string transferId)
 		{
 			var url = string.Format("{0}/{1}/cancel", Urls.Transfers, transferId);
-			url = ApplyExpandableProperties(url);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -46,22 +41,11 @@ namespace Stripe
 		public virtual IEnumerable<StripeTransfer> List(StripeTransferListOptions listOptions = null)
 		{
 			var url = Urls.Transfers;
-			url = ApplyExpandableProperties(url);
-
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 
 			return Mapper<StripeTransfer>.MapCollectionFromJson(response);
-		}
-
-		private string ApplyExpandableProperties(string url)
-		{
-			if (ExpandBalanceTransaction)
-				url += ParameterBuilder.ApplyParameterToUrl(url, "expand[]", "balance_transaction");
-
-			return url;
 		}
 	}
 }

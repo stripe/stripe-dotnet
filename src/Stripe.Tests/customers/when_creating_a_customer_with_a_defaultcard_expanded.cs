@@ -39,7 +39,7 @@ namespace Stripe.Tests
 		It should_have_the_defaultcard = () =>
 			StripeCustomer.StripeDefaultCard.ShouldNotBeNull();
 
-		It should_not_have_the_defaultcardid = () =>
-			StripeCustomer.StripeDefaultCardId.ShouldBeNull();
+		It should_have_the_defaultcardid = () =>
+			StripeCustomer.StripeDefaultCardId.ShouldNotBeNull();
 	}
 }

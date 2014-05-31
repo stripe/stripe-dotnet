@@ -5,11 +5,8 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeBalanceTransaction
+	public class StripeBalanceTransaction : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("amount")]
 		public int Amount { get; set; }
 

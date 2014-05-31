@@ -2,14 +2,10 @@
 
 namespace Stripe
 {
-	public class StripeEventService
+	public class StripeEventService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeEventService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public virtual StripeEvent Get(string eventId)
 		{
@@ -23,9 +19,7 @@ namespace Stripe
 		public virtual IEnumerable<StripeEvent> List(StripeEventListOptions listOptions = null)
 		{
 			var url = Urls.Events;
-
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 

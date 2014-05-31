@@ -2,19 +2,15 @@
 
 namespace Stripe
 {
-	public class StripeCardService
+	public class StripeCardService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeCardService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public virtual StripeCard Create(string customerId, StripeCardCreateOptions createOptions)
 		{
 			var url = string.Format(Urls.Cards, customerId);
-			url = ParameterBuilder.ApplyAllParameters(createOptions, url);
+			url = this.ApplyAllParameters(createOptions, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -25,6 +21,7 @@ namespace Stripe
 		{
 			var customerUrl = string.Format(Urls.Cards, customerId);
 			var url = string.Format("{0}/{1}", customerUrl, cardId);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -35,7 +32,7 @@ namespace Stripe
 		{
 			var customerUrl = string.Format(Urls.Cards, customerId);
 			var url = string.Format("{0}/{1}", customerUrl, cardId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -53,9 +50,7 @@ namespace Stripe
 		public virtual IEnumerable<StripeCard> List(string customerId, StripeListOptions listOptions = null)
 		{
 			var url = string.Format(Urls.Cards, customerId);
-
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 

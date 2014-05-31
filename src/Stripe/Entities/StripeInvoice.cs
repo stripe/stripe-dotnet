@@ -5,11 +5,8 @@ using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-	public class StripeInvoice
+	public class StripeInvoice : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("amount_due")]
 		public int? AmountDue { get; set; }
 
@@ -26,28 +23,22 @@ namespace Stripe
 		{
 			set
 			{
-				if (value is JObject)
-					Charge = Mapper<StripeCharge>.MapFromJson(value.ToString());
-				else
-					ChargeId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
 			}
 		}
 
 		[JsonProperty("closed")]
 		public bool? Closed { get; set; }
 
-		public string CustomerId { get; set; }
 		public StripeCustomer Customer { get; set; }
+		public string CustomerId { get; set; }
 
 		[JsonProperty("customer")]
 		internal object InternalCustomer
 		{
 			set
 			{
-				if (value is JObject)
-					Customer = Mapper<StripeCustomer>.MapFromJson(value.ToString());
-				else
-					CustomerId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
 			}
 		}
 

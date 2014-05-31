@@ -3,11 +3,8 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-	public class StripePlan
+	public class StripePlan : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("name")]
 		public string Name { get; set; }
 

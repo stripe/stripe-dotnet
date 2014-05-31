@@ -15,16 +15,24 @@ namespace Stripe
 
 		public string ChargeId { get; set; }
 		public StripeCharge Charge { get; set; }
-
 		[JsonProperty("charge")]
 		internal object InternalCharge
 		{
 			set
 			{
-				if (value is JObject)
-					Charge = Mapper<StripeCharge>.MapFromJson(value.ToString());
-				else
-					ChargeId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
+			}
+		}
+
+		public StripeBalanceTransaction BalanceTransaction { get; set; }
+		public string BalanceTransactionId { get; set; }
+
+		[JsonProperty("balance_transaction")]
+		internal object InternalBalanceTransaction
+		{
+			set
+			{
+				ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
 			}
 		}
 

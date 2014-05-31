@@ -2,21 +2,16 @@
 
 namespace Stripe
 {
-	public class StripeCustomerService
+	public class StripeCustomerService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeCustomerService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public bool ExpandDefaultCard { get; set; }
 
 		public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Customers);
-			url = ApplyExpandableProperties(url);
+			var url = this.ApplyAllParameters(createOptions, Urls.Customers, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -26,7 +21,7 @@ namespace Stripe
 		public virtual StripeCustomer Get(string customerId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-			url = ApplyExpandableProperties(url);
+			this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -36,8 +31,7 @@ namespace Stripe
 		public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
-			url = ApplyExpandableProperties(url);
+			url = this.ApplyAllParameters(updateOptions, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -54,21 +48,11 @@ namespace Stripe
 		public virtual IEnumerable<StripeCustomer> List(StripeCustomerListOptions listOptions = null)
 		{
 			var url = Urls.Customers;
-
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 
 			return Mapper<StripeCustomer>.MapCollectionFromJson(response);
-		}
-
-		private string ApplyExpandableProperties(string url)
-		{
-			if (ExpandDefaultCard)
-				url += ParameterBuilder.ApplyParameterToUrl(url, "expand[]", "default_card");
-
-			return url;
 		}
 	}
 }

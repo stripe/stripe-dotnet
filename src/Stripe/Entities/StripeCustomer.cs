@@ -6,11 +6,8 @@ using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-	public class StripeCustomer
+	public class StripeCustomer : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("email")]
 		public string Email { get; set; }
 
@@ -41,15 +38,13 @@ namespace Stripe
 
 		public string StripeDefaultCardId { get; set; }
 		public StripeCard StripeDefaultCard { get; set; }
+		
 		[JsonProperty("default_card")]
 		internal object InternalDefaultCard
 		{
 			set
 			{
-				if (value is JObject)
-					StripeDefaultCard = Mapper<StripeCard>.MapFromJson(value.ToString());
-				else
-					StripeDefaultCardId = value == null ? null : value.ToString();
+				ExpandableProperty<StripeCard>.Map(value, s => StripeDefaultCardId = s, o => StripeDefaultCard = o);
 			}
 		}
 

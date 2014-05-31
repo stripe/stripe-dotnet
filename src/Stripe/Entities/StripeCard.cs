@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeCard
+	public class StripeCard : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("address_country")]
 		public string AddressCountry { get; set; }
 
@@ -54,5 +52,29 @@ namespace Stripe
 
 		[JsonProperty("fingerprint")]
 		public string Fingerprint { get; set; }
+
+		public StripeCustomer Customer { get; set; }
+		public string CustomerId { get; set; }
+
+		[JsonProperty("customer")]
+		internal object InternalCustomer
+		{
+			set
+			{
+				ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+			}
+		}
+
+		public StripeRecipient Recipient { get; set; }
+		public string RecipientId { get; set; }
+
+		[JsonProperty("recipient")]
+		internal object InternalRecipient
+		{
+			set
+			{
+				ExpandableProperty<StripeRecipient>.Map(value, s => RecipientId = s, o => Recipient = o);
+			}
+		}
 	}
 }

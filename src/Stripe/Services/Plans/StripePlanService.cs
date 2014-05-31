@@ -2,18 +2,14 @@
 
 namespace Stripe
 {
-	public class StripePlanService
+	public class StripePlanService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripePlanService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public virtual StripePlan Create(StripePlanCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Plans);
+			var url = this.ApplyAllParameters(createOptions, Urls.Plans, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -23,6 +19,7 @@ namespace Stripe
 		public virtual StripePlan Get(string planId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Plans, planId);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -39,7 +36,7 @@ namespace Stripe
 		public virtual StripePlan Update(string planId, StripePlanUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Plans, planId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -49,9 +46,7 @@ namespace Stripe
 		public virtual IEnumerable<StripePlan> List(StripeListOptions listOptions = null)
 		{
 			var url = Urls.Plans;
-
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 
