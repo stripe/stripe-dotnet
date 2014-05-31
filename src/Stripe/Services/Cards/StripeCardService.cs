@@ -2,14 +2,10 @@
 
 namespace Stripe
 {
-	public class StripeCardService
+	public class StripeCardService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeCardService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public virtual StripeCard Create(string customerId, StripeCardCreateOptions createOptions)
 		{

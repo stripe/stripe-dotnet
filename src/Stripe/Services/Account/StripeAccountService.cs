@@ -1,13 +1,9 @@
 ﻿namespace Stripe
 {
-	public class StripeAccountService
+	public class StripeAccountService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeAccountService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public virtual StripeAccount Get()
 		{

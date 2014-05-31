@@ -1,13 +1,9 @@
 ﻿namespace Stripe
 {
-	public class StripeDisputeService
+	public class StripeDisputeService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeDisputeService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public bool ExpandCharge { get; set; }
 

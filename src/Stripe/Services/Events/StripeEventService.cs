@@ -2,14 +2,10 @@
 
 namespace Stripe
 {
-	public class StripeEventService
+	public class StripeEventService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeEventService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public virtual StripeEvent Get(string eventId)
 		{

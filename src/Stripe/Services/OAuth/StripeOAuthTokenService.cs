@@ -1,13 +1,9 @@
 ﻿namespace Stripe
 {
-	public class StripeOAuthTokenService
+	public class StripeOAuthTokenService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeOAuthTokenService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public virtual StripeOAuthToken Create(StripeOAuthTokenCreateOptions createOptions)
 		{

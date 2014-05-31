@@ -2,14 +2,10 @@
 
 namespace Stripe
 {
-	public class StripeRecipientService
+	public class StripeRecipientService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeRecipientService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public virtual StripeRecipient Create(StripeRecipientCreateOptions createOptions)
 		{

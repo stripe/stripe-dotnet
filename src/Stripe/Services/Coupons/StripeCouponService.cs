@@ -2,14 +2,10 @@
 
 namespace Stripe
 {
-	public class StripeCouponService
+	public class StripeCouponService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeCouponService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public virtual StripeCoupon Create(StripeCouponCreateOptions createOptions)
 		{

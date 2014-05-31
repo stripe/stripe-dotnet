@@ -2,14 +2,10 @@
 
 namespace Stripe
 {
-	public class StripeApplicationFeeService
+	public class StripeApplicationFeeService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeApplicationFeeService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public bool ExpandCustomer { get; set; }
 		public bool ExpandBalanceTransaction { get; set; }
@@ -58,7 +54,7 @@ namespace Stripe
 				url += ParameterBuilder.ApplyParameterToUrl(url, "expand[]", "balance_transaction");
 			if (ExpandCharge)
 				url += ParameterBuilder.ApplyParameterToUrl(url, "expand[]", "charge");
-			
+
 			return url;
 		}
 	}

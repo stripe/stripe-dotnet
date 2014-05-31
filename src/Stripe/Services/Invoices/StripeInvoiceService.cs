@@ -3,14 +3,10 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-	public class StripeInvoiceService
+	public class StripeInvoiceService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeInvoiceService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public virtual StripeInvoice Get(string invoiceId)
 		{

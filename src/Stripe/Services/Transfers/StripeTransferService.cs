@@ -2,14 +2,10 @@
 
 namespace Stripe
 {
-	public class StripeTransferService
+	public class StripeTransferService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeTransferService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public bool ExpandBalanceTransaction { get; set; }
 

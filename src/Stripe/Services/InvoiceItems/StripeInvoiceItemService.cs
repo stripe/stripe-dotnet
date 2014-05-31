@@ -2,14 +2,10 @@
 
 namespace Stripe
 {
-	public class StripeInvoiceItemService
+	public class StripeInvoiceItemService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeInvoiceItemService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public bool ExpandCustomer { get; set; }
 

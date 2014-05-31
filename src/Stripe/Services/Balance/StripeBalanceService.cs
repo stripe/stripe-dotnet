@@ -2,14 +2,10 @@
 
 namespace Stripe
 {
-	public class StripeBalanceService
+	public class StripeBalanceService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeBalanceService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public virtual StripeBalance Get()
 		{

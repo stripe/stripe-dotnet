@@ -2,14 +2,10 @@
 
 namespace Stripe
 {
-	public class StripeCustomerService
+	public class StripeCustomerService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeCustomerService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public bool ExpandDefaultCard { get; set; }
 

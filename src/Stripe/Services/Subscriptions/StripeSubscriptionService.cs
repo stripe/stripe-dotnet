@@ -3,14 +3,10 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-	public class StripeSubscriptionService
+	public class StripeSubscriptionService : StripeService
 	{
-		private string ApiKey { get; set; }
-
 		public StripeSubscriptionService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+			: base(apiKey) { }
 
 		public bool ExpandCustomer { get; set; }
 
