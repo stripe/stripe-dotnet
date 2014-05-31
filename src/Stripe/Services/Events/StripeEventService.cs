@@ -19,9 +19,7 @@ namespace Stripe
 		public virtual IEnumerable<StripeEvent> List(StripeEventListOptions listOptions = null)
 		{
 			var url = Urls.Events;
-
-			if (listOptions != null)
-				url = this.ApplyAllParameters(listOptions, url);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 

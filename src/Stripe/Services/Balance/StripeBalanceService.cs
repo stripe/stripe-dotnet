@@ -16,7 +16,10 @@ namespace Stripe
 
 		public virtual StripeBalanceTransaction Get(string id)
 		{
-			var response = Requestor.GetString(string.Format(Urls.SpecificBalanceTransaction, id));
+			var url = string.Format(Urls.SpecificBalanceTransaction, id);
+			url = this.ApplyAllParameters(null, url, false);
+
+			var response = Requestor.GetString(url);
 
 			return Mapper<StripeBalanceTransaction>.MapFromJson(response);
 		}
@@ -24,9 +27,7 @@ namespace Stripe
 		public virtual IEnumerable<StripeBalanceTransaction> List(StripeBalanceTransactionListOptions options = null)
 		{
 			var url = Urls.BalanceTransactions;
-
-			if (options != null)
-				url = this.ApplyAllParameters(options, url);
+			url = this.ApplyAllParameters(options, url, true);
 
 			var response = Requestor.GetString(url);
 

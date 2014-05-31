@@ -30,8 +30,8 @@ namespace Stripe.Tests.infrastructure
 
 		Because of = () =>
 		{
-			_result = _testService.ApplyAllParameters(null, origurl);
-			_listResult = _testService.ApplyAllParameters(new StripeListOptions(), origurl);
+			_result = _testService.ApplyAllParameters(null, origurl, false);
+			_listResult = _testService.ApplyAllParameters(null, origurl, true);
 		};
 
 		It should_contain_expanded_simple_property = () =>

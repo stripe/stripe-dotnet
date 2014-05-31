@@ -14,7 +14,7 @@ namespace Stripe
 {
 	internal static class ParameterBuilder
 	{
-		public static string ApplyAllParameters(this StripeService service, object obj, string url)
+		public static string ApplyAllParameters(this StripeService service, object obj, string url, bool isListMethod)
 		{
 			string newUrl = url;
 
@@ -77,7 +77,7 @@ namespace Stripe
 					string expandPropertyName = propertyName.Substring("Expand".Length);		// Remove Expand
 					expandPropertyName = Regex.Replace(expandPropertyName, "([a-z])([A-Z])", "$1_$2").ToLower();
 
-					if (obj is StripeListOptions)
+					if (isListMethod)
 					{
 						expandPropertyName = "data." + expandPropertyName;
 					}

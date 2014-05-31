@@ -34,7 +34,7 @@ namespace Stripe
 		public virtual StripeInvoice Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
-			url = this.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -44,7 +44,7 @@ namespace Stripe
 		public virtual StripeInvoice Pay(string invoiceId)
 		{
 			var url = string.Format("{0}/{1}/pay", Urls.Invoices, invoiceId);
-
+			url = this.ApplyAllParameters(null, url, false);
 			var response = Requestor.PostString(url, ApiKey);
 
 			return Mapper<StripeInvoice>.MapFromJson(response);
@@ -53,9 +53,7 @@ namespace Stripe
 		public virtual IEnumerable<StripeInvoice> List(StripeInvoiceListOptions listOptions = null)
 		{
 			var url = Urls.Invoices;
-
-			if (listOptions != null)
-				url = this.ApplyAllParameters(listOptions, url);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 

@@ -10,7 +10,7 @@
 		public virtual StripeDispute Update(string chargeId, string evidence = null)
 		{
 			var url = string.Format("{0}/dispute", chargeId);
-			url = ApplyExpandableProperties(url);
+			url = this.ApplyAllParameters(null, url, false);
 
 			if (!string.IsNullOrEmpty(evidence))
 				url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);
@@ -18,14 +18,6 @@
 			var response = Requestor.PostString(url, ApiKey);
 
 			return Mapper<StripeDispute>.MapFromJson(response);
-		}
-
-		private string ApplyExpandableProperties(string url)
-		{
-			if (ExpandCharge)
-				url += ParameterBuilder.ApplyParameterToUrl(url, "expand[]", "charge");
-
-			return url;
 		}
 	}
 }

@@ -11,7 +11,7 @@ namespace Stripe
 
 		public virtual StripeInvoiceItem Create(StripeInvoiceItemCreateOptions createOptions)
 		{
-			var url = this.ApplyAllParameters(createOptions, Urls.InvoiceItems);
+			var url = this.ApplyAllParameters(createOptions, Urls.InvoiceItems, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -21,6 +21,7 @@ namespace Stripe
 		public virtual StripeInvoiceItem Get(string invoiceItemId)
 		{
 			var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -30,7 +31,7 @@ namespace Stripe
 		public virtual StripeInvoiceItem Update(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
-			url = this.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -47,21 +48,11 @@ namespace Stripe
 		public virtual IEnumerable<StripeInvoiceItem> List(StripeInvoiceItemListOptions listOptions = null)
 		{
 			var url = Urls.InvoiceItems;
-
-			if (listOptions != null)
-				url = this.ApplyAllParameters(listOptions, url);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 
 			return Mapper<StripeInvoiceItem>.MapCollectionFromJson(response);
-		}
-
-		private string ApplyExpandableProperties(string url)
-		{
-			if (ExpandCustomer)
-				url += ParameterBuilder.ApplyParameterToUrl(url, "expand[]", "customer");
-
-			return url;
 		}
 	}
 }

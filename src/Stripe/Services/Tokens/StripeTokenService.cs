@@ -7,7 +7,7 @@
 
 		public virtual StripeToken Create(StripeTokenCreateOptions createOptions)
 		{
-			var url = this.ApplyAllParameters(createOptions, Urls.Tokens);
+			var url = this.ApplyAllParameters(createOptions, Urls.Tokens, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
