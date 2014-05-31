@@ -6,11 +6,8 @@ using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-	public class StripeApplicationFee
+	public class StripeApplicationFee : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("livemode")]
 		public bool? LiveMode { get; set; }
 

@@ -6,11 +6,8 @@ using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-	public class StripeSubscription
+	public class StripeSubscription : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		public string CustomerId { get; set; }
 		public StripeCustomer Customer { get; set; }
 

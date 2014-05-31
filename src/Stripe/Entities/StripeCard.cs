@@ -2,11 +2,8 @@
 
 namespace Stripe
 {
-	public class StripeCard
+	public class StripeCard : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("address_country")]
 		public string AddressCountry { get; set; }
 

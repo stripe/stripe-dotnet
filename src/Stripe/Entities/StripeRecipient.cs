@@ -5,11 +5,8 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeRecipient
+	public class StripeRecipient : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("object")]
 		public string Object { get; set; }
 
