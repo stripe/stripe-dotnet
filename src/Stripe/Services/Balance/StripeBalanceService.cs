@@ -2,14 +2,9 @@
 
 namespace Stripe
 {
-	public class StripeBalanceService
+	public class StripeBalanceService : StripeService
 	{
-		private string ApiKey { get; set; }
-
-		public StripeBalanceService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+		public StripeBalanceService(string apiKey = null) : base(apiKey) { }
 
 		public virtual StripeBalance Get()
 		{
@@ -20,7 +15,10 @@ namespace Stripe
 
 		public virtual StripeBalanceTransaction Get(string id)
 		{
-			var response = Requestor.GetString(string.Format(Urls.SpecificBalanceTransaction, id));
+			var url = string.Format(Urls.SpecificBalanceTransaction, id);
+			url = this.ApplyAllParameters(null, url, false);
+
+			var response = Requestor.GetString(url);
 
 			return Mapper<StripeBalanceTransaction>.MapFromJson(response);
 		}
@@ -28,9 +26,7 @@ namespace Stripe
 		public virtual IEnumerable<StripeBalanceTransaction> List(StripeBalanceTransactionListOptions options = null)
 		{
 			var url = Urls.BalanceTransactions;
-
-			if (options != null)
-				url = ParameterBuilder.ApplyAllParameters(options, url);
+			url = this.ApplyAllParameters(options, url, true);
 
 			var response = Requestor.GetString(url);
 

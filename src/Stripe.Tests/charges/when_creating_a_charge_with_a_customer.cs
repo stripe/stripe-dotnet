@@ -27,6 +27,12 @@ namespace Stripe.Tests
 			StripeCard = _stripeCustomer.StripeCardList.StripeCards.First();
 		};
 
+		It should_have_the_customerid = () =>
+			StripeCharge.CustomerId.ShouldNotBeNull();
+
+		It should_not_have_the_customer = () =>
+			StripeCharge.Customer.ShouldBeNull();
+
 		Behaves_like<charge_behaviors> behaviors;
 	}
 }

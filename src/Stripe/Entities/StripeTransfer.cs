@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
+using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-	public class StripeTransfer
+	public class StripeTransfer : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("object")]
 		public string Object { get; set; }
 
@@ -56,8 +54,17 @@ namespace Stripe
 		[JsonProperty("account[verified]")]
 		public bool? AccountVerified { get; set; }
 
+		public string BalanceTransactionId { get; set; }
+		public StripeBalanceTransaction BalanceTransaction { get; set; }
+
 		[JsonProperty("balance_transaction")]
-		public string BalanceTransaction { get; set; }
+		internal object InternalBalanceTransaction
+		{
+			set
+			{
+				ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+			}
+		}
 
 		[JsonProperty("description")]
 		public string Description { get; set; }

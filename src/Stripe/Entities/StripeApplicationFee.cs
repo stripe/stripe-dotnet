@@ -2,19 +2,26 @@
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-	public class StripeApplicationFee
+	public class StripeApplicationFee : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("livemode")]
 		public bool? LiveMode { get; set; }
 
-		[JsonProperty("account")]
 		public string AccountId { get; set; }
+		public StripeAccount Account { get; set; }
+
+		[JsonProperty("account")]
+		internal object InternalAccount
+		{
+			set
+			{
+				ExpandableProperty<StripeAccount>.Map(value, s => AccountId = s, o => Account = o);
+			}
+		}
 
 		[JsonProperty("amount")]
 		public int Amount { get; set; }
@@ -22,11 +29,40 @@ namespace Stripe
 		[JsonProperty("application")]
 		public string ApplicationId { get; set; }
 
+		public string BalanceTransactionId { get; set; }
+		public StripeBalanceTransaction BalanceTransaction { get; set; }
+
 		[JsonProperty("balance_transaction")]
-		public string BalanceTransaction { get; set; }
+		internal object InternalBalanceTransaction
+		{
+			set
+			{
+				ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+			}
+		}
+
+		public string CardId { get; set; }
+		public StripeCard Card { get; set; }
+
+		internal object InternalCard
+		{
+			set
+			{
+				ExpandableProperty<StripeCard>.Map(value, s => CardId = s, o => Card = o);
+			}
+		}
+
+		public string ChargeId { get; set; }
+		public StripeCharge Charge { get; set; }
 
 		[JsonProperty("charge")]
-		public string ChargeId { get; set; }
+		internal object InternalCharge
+		{
+			set
+			{
+				ExpandableProperty<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
+			}
+		}
 
 		[JsonProperty("created")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]

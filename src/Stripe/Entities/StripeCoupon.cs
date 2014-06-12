@@ -4,11 +4,8 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeCoupon
+	public class StripeCoupon : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("duration")]
 		public string Duration { get; set; }
 

@@ -4,11 +4,8 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeDiscount
+	public class StripeDiscount : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-		
 		[JsonProperty("start")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? Start { get; set; }
@@ -19,5 +16,17 @@ namespace Stripe
 
 		[JsonProperty("coupon")]
 		public StripeCoupon StripeCoupon { get; set; }
+
+		public string CustomerId { get; set; }
+		public StripeCustomer Customer { get; set; }
+
+		[JsonProperty("customer")]
+		internal object InternalCustomer
+		{
+			set
+			{
+				ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+			}
+		}
 	}
 }

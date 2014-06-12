@@ -2,18 +2,15 @@
 
 namespace Stripe
 {
-	public class StripeRecipientService
+	public class StripeRecipientService : StripeService
 	{
-		private string ApiKey { get; set; }
+		public StripeRecipientService(string apiKey = null) : base(apiKey) { }
 
-		public StripeRecipientService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+		public bool ExpandDefaultCard { get; set; }
 
 		public virtual StripeRecipient Create(StripeRecipientCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Recipients);
+			var url = this.ApplyAllParameters(createOptions, Urls.Recipients, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -23,6 +20,7 @@ namespace Stripe
 		public virtual StripeRecipient Get(string recipientId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Recipients, recipientId);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -32,7 +30,7 @@ namespace Stripe
 		public virtual StripeRecipient Update(string recipientId, StripeRecipientUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Recipients, recipientId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -49,9 +47,7 @@ namespace Stripe
 		public virtual IEnumerable<StripeRecipient> List(StripeRecipientListOptions listOptions = null)
 		{
 			var url = Urls.Recipients;
-
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 

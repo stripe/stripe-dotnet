@@ -2,18 +2,16 @@
 
 namespace Stripe
 {
-	public class StripeInvoiceItemService
+	public class StripeInvoiceItemService : StripeService
 	{
-		private string ApiKey { get; set; }
+		public StripeInvoiceItemService(string apiKey = null) : base(apiKey) { }
 
-		public StripeInvoiceItemService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+		public bool ExpandCustomer { get; set; }
+		public bool ExpandInvoice { get; set; }
 
 		public virtual StripeInvoiceItem Create(StripeInvoiceItemCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.InvoiceItems);
+			var url = this.ApplyAllParameters(createOptions, Urls.InvoiceItems, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -23,6 +21,7 @@ namespace Stripe
 		public virtual StripeInvoiceItem Get(string invoiceItemId)
 		{
 			var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -32,7 +31,7 @@ namespace Stripe
 		public virtual StripeInvoiceItem Update(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -49,9 +48,7 @@ namespace Stripe
 		public virtual IEnumerable<StripeInvoiceItem> List(StripeInvoiceItemListOptions listOptions = null)
 		{
 			var url = Urls.InvoiceItems;
-
-			if (listOptions != null)
-				url = ParameterBuilder.ApplyAllParameters(listOptions, url);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 

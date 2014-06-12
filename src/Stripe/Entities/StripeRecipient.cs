@@ -5,11 +5,8 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeRecipient
+	public class StripeRecipient : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("object")]
 		public string Object { get; set; }
 
@@ -43,6 +40,18 @@ namespace Stripe
 
 		[JsonProperty("verified")]
 		public bool Verified { get; set; }
+
+		public string StripeDefaultCardId { get; set; }
+		public StripeCard StripeDefaultCard { get; set; }
+
+		[JsonProperty("default_card")]
+		internal object InternalDefaultCard
+		{
+			set
+			{
+				ExpandableProperty<StripeCard>.Map(value, s => StripeDefaultCardId = s, o => StripeDefaultCard = o);
+			}
+		}
 
 		[JsonProperty("metadata")]
 		public Dictionary<string, string> Metadata { get; set; }
