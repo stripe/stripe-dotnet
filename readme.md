@@ -671,6 +671,22 @@ Many of the List methods support parameters to filter by date. To use this, use 
 		}
 	});
 
+ExpandableProperties
+--------------------
+
+Many of the services support *expandable* properties. Setting an expandable property to true means you want the entire object back instead of just the id.
+
+For example:
+
+	var chargeService = new StripeChargeService();
+	chargeService.ExpandBalanceTransaction = true;
+	chargeService.ExpandCustomer = true;
+	chargeService.ExpandInvoice = true;
+
+	StripeCharge stripeCharge = chargeService.Get(*chargeId*);
+
+When the StripeCharge is returned, the Customer, BalanceTransaction, and Invoice properties will be hydrated objects.
+
 Events
 ------
 
