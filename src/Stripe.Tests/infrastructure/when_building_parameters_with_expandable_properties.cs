@@ -6,7 +6,7 @@ using Machine.Specifications;
 
 namespace Stripe.Tests
 {
-	public class when_building_parameters_with_expandableproperties
+	public class when_building_parameters_with_expandable_properties
 	{
 		public class TestService : StripeService
 		{

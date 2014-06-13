@@ -84,8 +84,14 @@
     <Compile Include="customers\when_creating_a_customer_with_a_defaultcard_expanded.cs" />
     <Compile Include="customers\when_creating_a_customer_with_an_api_key.cs" />
     <Compile Include="customers\when_listing_customers_with_expanded_properties.cs" />
-    <Compile Include="infrastructure\when_building_parameters_with_expandableproperties.cs" />
+    <Compile Include="infrastructure\test_data\test_service.cs" />
+    <Compile Include="infrastructure\when_building_parameters_with_expandable_properties.cs" />
     <Compile Include="infrastructure\when_mapping_expandable_property.cs" />
+    <Compile Include="infrastructure\test_data\sample_object.cs" />
+    <Compile Include="infrastructure\when_building_parameters.cs" />
+    <Compile Include="infrastructure\when_passed_only_url_to_parameter_builder.cs" />
+    <Compile Include="infrastructure\when_serializing_an_equals_datefilter.cs" />
+    <Compile Include="infrastructure\when_serializing_a_datefilter_query.cs" />
     <Compile Include="invoiceitems\when_creating_an_invoiceitem_with_an_api_key.cs" />
     <Compile Include="invoices\when_closing_an_invoice.cs" />
     <Compile Include="invoices\when_creating_an_invoice_with_an_api_key.cs" />
