@@ -671,8 +671,8 @@ Many of the List methods support parameters to filter by date. To use this, use 
 		}
 	});
 
-ExpandableProperties
---------------------
+Expandable Properties
+---------------------
 
 Many of the services support *expandable* properties. Setting an expandable property to true means you want the entire object back instead of just the id.
 
