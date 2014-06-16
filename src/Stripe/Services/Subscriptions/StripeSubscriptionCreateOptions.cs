@@ -12,14 +12,31 @@ namespace Stripe
 
 		public DateTime? TrialEnd { get; set; }
 
+		public bool EndTrialNow { get; set; }
+
 		[JsonProperty("trial_end")]
-		internal long? TrialEndInternal
+		internal string TrialEndInternal
 		{
 			get
 			{
-				if (!TrialEnd.HasValue) return null;
+				if (EndTrialNow)
+				{
+					if (TrialEnd.HasValue)
+					{
+						throw new ArgumentException("TrialEnd", "Set EndTrialNow OR TrialEnd, not both");
+					}
 
-				return EpochTime.ConvertDateTimeToEpoch(TrialEnd.Value);
+
+					return "now";
+				}
+				else if (TrialEnd.HasValue)
+				{
+					return EpochTime.ConvertDateTimeToEpoch(TrialEnd.Value).ToString();
+				}
+				else
+				{
+					return null;
+				}
 			}
 		}
 

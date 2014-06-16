@@ -119,6 +119,7 @@
     <Compile Include="subscriptions\when_getting_a_subscription.cs" />
     <Compile Include="subscriptions\when_canceling_a_subscription.cs" />
     <Compile Include="subscriptions\when_listing_subscriptions.cs" />
+    <Compile Include="subscriptions\when_updating_trial_end_of_subscription.cs" />
     <Compile Include="tokens\when_creating_a_token_with_a_customer.cs" />
     <Compile Include="tokens\when_creating_a_token_with_an_api_key.cs" />
     <Compile Include="transfers\test_data\stripe_transfer_create_options.cs" />
