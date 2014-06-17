@@ -34,5 +34,11 @@ namespace Stripe.Tests
 
 		It should_have_the_new_quantity = () =>
 			_stripeSubscription.Quantity.ShouldEqual(5);
+
+		It should_have_trial_start_date = () =>
+			_stripeSubscription.TrialStart.ShouldNotBeNull();
+
+		It should_have_trial_end_date = () =>
+			_stripeSubscription.TrialEnd.ShouldNotBeNull();
 	}
 }
