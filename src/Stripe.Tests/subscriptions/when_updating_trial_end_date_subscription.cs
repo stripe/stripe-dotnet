@@ -5,7 +5,7 @@ using System.Text;
 using Machine.Specifications;
 using Stripe.Infrastructure;
 
-namespace Stripe.Tests.subscriptions
+namespace Stripe.Tests
 {
 	public class when_updating_trial_end_date_subscription
 	{
