@@ -26,7 +26,7 @@ namespace Stripe.Tests
 		};
 
 		Because of = () =>
-			_stripeInvoiceList = _stripeInvoiceService.List(10, 0, _stripeCustomer.Id).ToList();
+			_stripeInvoiceList = _stripeInvoiceService.List(new StripeInvoiceListOptions { CustomerId = _stripeCustomer.Id }).ToList();
 
 		It should_have_atleast_1_entry = () =>
 			_stripeInvoiceList.Count.ShouldBeGreaterThanOrEqualTo(1);

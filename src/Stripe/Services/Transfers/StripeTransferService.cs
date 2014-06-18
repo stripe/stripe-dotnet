@@ -2,18 +2,15 @@
 
 namespace Stripe
 {
-	public class StripeTransferService
+	public class StripeTransferService : StripeService
 	{
-		private string ApiKey { get; set; }
+		public StripeTransferService(string apiKey = null) : base(apiKey) { }
 
-		public StripeTransferService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+		public bool ExpandBalanceTransaction { get; set; }
 
 		public virtual StripeTransfer Create(StripeTransferCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Transfers);
+			var url = this.ApplyAllParameters(createOptions, Urls.Transfers, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -23,6 +20,7 @@ namespace Stripe
 		public virtual StripeTransfer Get(string transferId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Transfers, transferId);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -32,23 +30,17 @@ namespace Stripe
 		public virtual StripeTransfer Cancel(string transferId)
 		{
 			var url = string.Format("{0}/{1}/cancel", Urls.Transfers, transferId);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
 			return Mapper<StripeTransfer>.MapFromJson(response);
 		}
 
-		public virtual IEnumerable<StripeTransfer> List(int count = 10, int offset = 0, string recipientId = null, string status = null)
+		public virtual IEnumerable<StripeTransfer> List(StripeTransferListOptions listOptions = null)
 		{
 			var url = Urls.Transfers;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
-
-			if (!string.IsNullOrEmpty(recipientId))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "recipient", recipientId);
-
-			if (!string.IsNullOrEmpty(status))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "status", status);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 

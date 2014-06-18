@@ -1,13 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
+using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-	public class StripeSubscription
+	public class StripeSubscription : StripeObject
 	{
-		[JsonProperty("customer")]
 		public string CustomerId { get; set; }
+		public StripeCustomer Customer { get; set; }
+
+		[JsonProperty("customer")]
+		internal object InternalCustomer
+		{
+			set
+			{
+				ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+			}
+		}
 
 		[JsonProperty("current_period_start")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
@@ -23,6 +34,9 @@ namespace Stripe
 
 		[JsonProperty("status")]
 		public string Status { get; set; }
+
+		[JsonProperty("application_fee_percent")]
+		public decimal? ApplicationFeePercent { get; set; }
 
 		[JsonProperty("canceled_at")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
@@ -48,5 +62,8 @@ namespace Stripe
 
 		[JsonProperty("cancel_at_period_end")]
 		public bool CancelAtPeriodEnd { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

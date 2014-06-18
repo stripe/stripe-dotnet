@@ -35,8 +35,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -51,10 +52,20 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Entities\StripeBalanceTransaction.cs" />
+    <Compile Include="Entities\StripeFee.cs" />
+    <Compile Include="Entities\StripeObject.cs" />
+    <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
+    <Compile Include="Infrastructure\ExpandableProperty.cs" />
+    <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
+    <Compile Include="Services\StripeDateFilter.cs" />
+    <Compile Include="Entities\StripeApplicationFeeRefund.cs" />
+    <Compile Include="Entities\StripeApplicationFee.cs" />
+    <Compile Include="Entities\StripeBalanceAmount.cs" />
+    <Compile Include="Entities\StripeBalance.cs" />
     <Compile Include="Entities\StripeCardList.cs" />
     <Compile Include="Entities\StripeDispute.cs" />
     <Compile Include="Entities\StripeAccount.cs" />
-    <Compile Include="Entities\StripeFee.cs" />
     <Compile Include="Entities\StripeEventData.cs" />
     <Compile Include="Entities\StripeEvent.cs" />
     <Compile Include="Entities\StripeInvoiceLine.cs" />
@@ -64,6 +75,7 @@
     <Compile Include="Entities\StripeOAuthToken.cs" />
     <Compile Include="Entities\StripePeriod.cs" />
     <Compile Include="Entities\StripeRecipient.cs" />
+    <Compile Include="Entities\StripeSubscriptionList.cs" />
     <Compile Include="Entities\StripeToken.cs" />
     <Compile Include="Entities\StripeCharge.cs" />
     <Compile Include="Entities\StripeCard.cs" />
@@ -72,31 +84,39 @@
     <Compile Include="Entities\StripeCoupon.cs" />
     <Compile Include="Entities\StripeDiscount.cs" />
     <Compile Include="Entities\StripeTransfer.cs" />
+    <Compile Include="Infrastructure\EpochTime.cs" />
     <Compile Include="Infrastructure\StripeConfiguration.cs" />
     <Compile Include="Infrastructure\StripeDateTimeConverter.cs" />
     <Compile Include="Infrastructure\Mapper.cs" />
     <Compile Include="Entities\StripeCustomer.cs" />
+    <Compile Include="Properties\InternalsVisibleTo.cs" />
     <Compile Include="Services\Account\StripeAccountService.cs" />
+    <Compile Include="Services\ApplicationFees\StripeApplicationFeeListOptions.cs" />
+    <Compile Include="Services\Balance\StripeBalanceService.cs" />
     <Compile Include="Services\BankAccountOptions.cs" />
+    <Compile Include="Services\ApplicationFees\StripeApplicationFeeService.cs" />
     <Compile Include="Services\Cards\StripeCardCreateOptions.cs" />
     <Compile Include="Services\Cards\StripeCardService.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Services\Cards\StripeCardUpdateOptions.cs" />
+    <Compile Include="Services\Charges\StripeChargeListOptions.cs" />
+    <Compile Include="Services\Customers\StripeCustomerListOptions.cs" />
     <Compile Include="Services\Disputes\StripeDisputeService.cs" />
-    <Compile Include="Services\Events\StripeEventSearchOptions.cs" />
+    <Compile Include="Services\Events\StripeEventListOptions.cs" />
     <Compile Include="Services\Events\StripeEventService.cs" />
     <Compile Include="Services\Events\StripeEventUtility.cs" />
+    <Compile Include="Services\InvoiceItems\StripeInvoiceItemListOptions.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemUpdateOptions.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemCreateOptions.cs" />
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemService.cs" />
+    <Compile Include="Services\Invoices\StripeInvoiceListOptions.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceService.cs" />
     <Compile Include="Services\CreditCardOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeCreateOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeService.cs" />
     <Compile Include="Services\Coupons\StripeCouponCreateOptions.cs" />
     <Compile Include="Services\Coupons\StripeCouponService.cs" />
-    <Compile Include="Services\Customers\StripeCustomerUpdateSubscriptionOptions.cs" />
     <Compile Include="Services\Customers\StripeCustomerUpdateOptions.cs" />
     <Compile Include="Services\Customers\StripeCustomerCreateOptions.cs" />
     <Compile Include="Services\Customers\StripeCustomerService.cs" />
@@ -106,28 +126,36 @@
     <Compile Include="Services\Plans\StripePlanCreateOptions.cs" />
     <Compile Include="Services\Plans\StripePlanService.cs" />
     <Compile Include="Services\Plans\StripePlanUpdateOptions.cs" />
+    <Compile Include="Services\Recipients\StripeRecipientListOptions.cs" />
     <Compile Include="Services\Recipients\StripeRecipientCreateOptions.cs" />
     <Compile Include="Services\Recipients\StripeRecipientService.cs" />
     <Compile Include="Services\Recipients\StripeRecipientUpdateOptions.cs" />
+    <Compile Include="Services\StripeListOptions.cs" />
+    <Compile Include="Services\StripeService.cs" />
+    <Compile Include="Services\Subscriptions\StripeSubscriptionUpdateOptions.cs" />
+    <Compile Include="Services\Subscriptions\StripeSubscriptionService.cs" />
+    <Compile Include="Services\Subscriptions\StripeSubscriptionCreateOptions.cs" />
     <Compile Include="Services\Tokens\StripeTokenCreateOptions.cs" />
     <Compile Include="Services\Tokens\StripeTokenService.cs" />
     <Compile Include="Infrastructure\StripeException.cs" />
     <Compile Include="Infrastructure\Urls.cs" />
     <Compile Include="Infrastructure\ParameterBuilder.cs" />
     <Compile Include="Infrastructure\Requestor.cs" />
+    <Compile Include="Services\Transfers\StripeTransferListOptions.cs" />
     <Compile Include="Services\Transfers\StripeTransferCreateOptions.cs" />
     <Compile Include="Services\Transfers\StripeTransferService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /y "$(TargetDir)Stripe.dll" "$(SolutionDir)Stripe.Tests\_web_event_hooks\bin\Stripe.dll"
-copy /y "$(TargetDir)Newtonsoft.json.dll" "$(SolutionDir)Stripe.Tests\_web_event_hooks\bin\Newtonsoft.json.dll"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

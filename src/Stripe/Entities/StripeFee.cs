@@ -5,18 +5,18 @@ namespace Stripe
 	public class StripeFee
 	{
 		[JsonProperty("amount")]
-		public int AmountInCents { get; set; }
+		public int Amount { get; set; }
 
 		[JsonProperty("currency")]
 		public string Currency { get; set; }
 
-		[JsonProperty("application")]
-		public string Application { get; set; }
-
 		[JsonProperty("type")]
-		public string type { get; set; }
+		public string Type { get; set; }
 
 		[JsonProperty("description")]
 		public string Description { get; set; }
+
+		[JsonProperty("application")]
+		public string Application { get; set; }
 	}
 }

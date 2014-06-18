@@ -25,7 +25,7 @@ namespace Stripe.Tests
 			var stripeCustomer = stripeCustomerService.Create(stripeCustomerCreateOptions);
 
 			_stripeInvoiceService = new StripeInvoiceService(ConfigurationManager.AppSettings["StripeApiKey"]);
-			_stripeInvoiceList = _stripeInvoiceService.List(10, 0, stripeCustomer.Id).ToList();
+			_stripeInvoiceList = _stripeInvoiceService.List(new StripeInvoiceListOptions { CustomerId = stripeCustomer.Id }).ToList();
 		};
 
 		Because of = () =>
@@ -38,10 +38,10 @@ namespace Stripe.Tests
 			_stripeInvoice.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
 
 		It should_have_a_subtotal = () =>
-			_stripeInvoice.SubtotalInCents.ShouldBeGreaterThanOrEqualTo(0);
+			_stripeInvoice.Subtotal.ShouldBeGreaterThanOrEqualTo(0);
 
 		It should_have_a_total = () =>
-			_stripeInvoice.TotalInCents.ShouldBeGreaterThanOrEqualTo(0);
+			_stripeInvoice.Total.ShouldBeGreaterThanOrEqualTo(0);
 
 		It should_have_a_lines_object = () =>
 			_stripeInvoice.StripeInvoiceLines.ShouldNotBeNull();

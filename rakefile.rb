@@ -1,6 +1,6 @@
 require 'albacore'
 
-VERSION = "1.7.0"
+VERSION = "2.2.4"
 
 task :default => [:build, :output]
 
@@ -10,7 +10,7 @@ assemblyinfo :assemblyinfo do |asm|
 	asm.product_name = "Stripe.net"
 	asm.title = "Stripe.net"
 	asm.description = "A .net client api for http://stripe.com"
-	asm.copyright = "Copyright (C) Jayme Davis 2013"
+	asm.copyright = "Copyright (C) Jayme Davis 2014"
 	asm.output_file = "src/SharedAssemblyInfo.cs"
 end
 

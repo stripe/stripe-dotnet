@@ -27,7 +27,7 @@ namespace Stripe.Tests
 
 			_stripeInvoiceService = new StripeInvoiceService();
 			_stripeInvoiceService.Create(stripeCustomer.Id);
-			_stripeInvoiceList = _stripeInvoiceService.List(10, 0, stripeCustomer.Id).ToList();
+			_stripeInvoiceList = _stripeInvoiceService.List(new StripeInvoiceListOptions { CustomerId = stripeCustomer.Id }).ToList();
 		};
 
 		Because of = () =>

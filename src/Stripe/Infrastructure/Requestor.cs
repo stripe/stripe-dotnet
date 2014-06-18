@@ -2,6 +2,8 @@
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Stripe
 {
@@ -35,7 +37,7 @@ namespace Stripe
 			return ExecuteWebRequest(wr);
 		}
 
-		private static WebRequest GetWebRequest(string url, string method, string apiKey = null, bool useBearer = false)
+		internal static WebRequest GetWebRequest(string url, string method, string apiKey = null, bool useBearer = false)
 		{
 			apiKey = apiKey ?? StripeConfiguration.GetApiKey();
 
@@ -47,10 +49,32 @@ namespace Stripe
 			else
 				request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(apiKey));
 
+			request.Headers.Add("Stripe-Version", StripeConfiguration.ApiVersion);
+
 			request.ContentType = "application/x-www-form-urlencoded";
 			request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
 
 			return request;
+		}
+
+		private static readonly string[] BlacklistedCertDigests = {
+			// api.stripe.com
+			"05C0B3643694470A888C6E7FEB5C9E24E823DC53",
+			// revoked.stripe.com
+			"5B7DC7FBC98D78BF76D4D4FA6F597A0C901FAD5C",
+		};
+
+		private static bool StripeCertificateVerificationCallback(Object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+		{
+			var certDigest = certificate.GetCertHashString();
+
+			if(Array.Exists(BlacklistedCertDigests, digest => digest.Equals(certDigest, StringComparison.OrdinalIgnoreCase)))
+				return false;
+
+			if(sslPolicyErrors == SslPolicyErrors.None)
+				return true;
+
+			return false;
 		}
 
 		private static string GetAuthorizationHeaderValue(string apiKey)
@@ -66,8 +90,12 @@ namespace Stripe
 
 		private static string ExecuteWebRequest(WebRequest webRequest)
 		{
+			var verificationCallback = new RemoteCertificateValidationCallback(StripeCertificateVerificationCallback);
+
 			try
 			{
+				ServicePointManager.ServerCertificateValidationCallback += verificationCallback;
+
 				using (var response = webRequest.GetResponse())
 				{
 					return ReadStream(response.GetResponseStream());
@@ -90,6 +118,10 @@ namespace Stripe
 				}
 
 				throw;
+			}
+			finally
+			{
+				ServicePointManager.ServerCertificateValidationCallback -= verificationCallback;
 			}
 		}
 

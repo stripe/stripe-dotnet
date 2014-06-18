@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Stripe.Tests.test_data
 {
@@ -20,7 +21,12 @@ namespace Stripe.Tests.test_data
 				CardName = "Johnny Tenderloin",
 				CardNumber = "4242424242424242",
 				Description = "Johnny Tenderloin (pork@email.com)",
-				AccountBalance = 100
+				AccountBalance = 100,
+				Metadata = new Dictionary<string, string>
+				{
+					{ "A", "Value-A" },
+					{ "B", "Value-B" }
+				}
 			};
 
 			if (_planId != null)

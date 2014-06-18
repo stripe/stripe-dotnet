@@ -1,17 +1,16 @@
 ﻿namespace Stripe
 {
-	public class StripeDisputeService
+	public class StripeDisputeService : StripeService
 	{
-		private string ApiKey { get; set; }
+		public StripeDisputeService(string apiKey = null) : base(apiKey) { }
 
-		public StripeDisputeService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+		public bool ExpandCharge { get; set; }
+		public bool ExpandBalanceTransaction { get; set; }
 
 		public virtual StripeDispute Update(string chargeId, string evidence = null)
 		{
 			var url = string.Format("{0}/dispute", chargeId);
+			url = this.ApplyAllParameters(null, url, false);
 
 			if (!string.IsNullOrEmpty(evidence))
 				url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);

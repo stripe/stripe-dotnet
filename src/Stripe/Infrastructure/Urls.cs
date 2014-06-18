@@ -32,6 +32,21 @@
 			get { return BaseUrl + "/plans"; }
 		}
 
+		public static string Balance
+		{
+			get { return BaseUrl + "/balance"; }
+		}
+
+		public static string BalanceTransactions
+		{
+			get { return BaseUrl + "/balance/history"; }
+		}
+
+		public static string SpecificBalanceTransaction
+		{
+			get { return BalanceTransactions + "/{0}"; }
+		}
+
 		public static string Customers
 		{
 			get { return BaseUrl + "/customers"; }
@@ -57,9 +72,19 @@
 			get { return BaseUrl + "/recipients"; }
 		}
 
+		public static string Subscriptions
+		{
+			get { return BaseUrl + "/customers/{0}/subscriptions"; }
+		}
+
 		public static string Transfers
 		{
 			get { return BaseUrl + "/transfers"; }
+		}
+
+		public static string ApplicationFees
+		{
+			get { return BaseUrl + "/application_fees"; }
 		}
 
 		private static string BaseUrl

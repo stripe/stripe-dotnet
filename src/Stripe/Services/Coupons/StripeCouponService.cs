@@ -2,18 +2,13 @@
 
 namespace Stripe
 {
-	public class StripeCouponService
+	public class StripeCouponService : StripeService
 	{
-		private string ApiKey { get; set; }
-
-		public StripeCouponService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+		public StripeCouponService(string apiKey = null) : base(apiKey) { }
 
 		public virtual StripeCoupon Create(StripeCouponCreateOptions createOptions)
 		{
-			var url = ParameterBuilder.ApplyAllParameters(createOptions, Urls.Coupons);
+			var url = this.ApplyAllParameters(createOptions, Urls.Coupons, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -23,6 +18,7 @@ namespace Stripe
 		public virtual StripeCoupon Get(string couponId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -32,15 +28,15 @@ namespace Stripe
 		public virtual void Delete(string couponId)
 		{
 			var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
+			url = this.ApplyAllParameters(null, url, false);
 
 			Requestor.Delete(url, ApiKey);
 		}
 
-		public virtual IEnumerable<StripeCoupon> List(int count = 10, int offset = 0)
+		public virtual IEnumerable<StripeCoupon> List(StripeListOptions listOptions = null)
 		{
 			var url = Urls.Coupons;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 

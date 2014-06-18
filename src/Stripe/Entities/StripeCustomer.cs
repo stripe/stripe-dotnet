@@ -1,14 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
+using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-	public class StripeCustomer
+	public class StripeCustomer : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("email")]
 		public string Email { get; set; }
 
@@ -28,32 +27,31 @@ namespace Stripe
 		[JsonProperty("deleted")]
 		public bool? Deleted { get; set; }
 
-		/// <summary>
-		/// Whether or not the latest charge for the customer's latest invoice has failed.
-		/// </summary>
 		[JsonProperty("delinquent")]
-		public bool? Delinquent { get; set; }
+		public bool Delinquent { get; set; }
 
-		/// <summary>
-		/// Describes the current discount active on the customer, if there is one.
-		/// </summary>
 		[JsonProperty("discount")]
 		public StripeDiscount StripeDiscount { get; set; }
 
-		/// <summary>
-		/// Hash describing the current subscription on the customer, if there is one. If the
-		/// customer has no current subscription, this will be null.
-		/// </summary>
-		[JsonProperty("subscription")]
-		public StripeSubscription StripeSubscription { get; set; }
+		[JsonProperty("subscriptions")]
+		public StripeSubscriptionList StripeSubscriptionList { get; set; }
 
-		/// <summary>
-		/// ID of the default credit card attached to the customer.
-		/// </summary>
-		[JsonProperty("default_card")]
 		public string StripeDefaultCardId { get; set; }
+		public StripeCard StripeDefaultCard { get; set; }
+
+		[JsonProperty("default_card")]
+		internal object InternalDefaultCard
+		{
+			set
+			{
+				ExpandableProperty<StripeCard>.Map(value, s => StripeDefaultCardId = s, o => StripeDefaultCard = o);
+			}
+		}
 
 		[JsonProperty("cards")]
 		public StripeCardList StripeCardList { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

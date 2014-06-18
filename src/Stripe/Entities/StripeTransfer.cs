@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
+using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-	public class StripeTransfer
+	public class StripeTransfer : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("object")]
 		public string Object { get; set; }
 
@@ -17,7 +15,7 @@ namespace Stripe
 		public bool LiveMode { get; set; }
 
 		[JsonProperty("amount")]
-		public int? AmountInCents { get; set; } 
+		public int? Amount { get; set; }
 
 		[JsonProperty("currency")]
 		public string Currency { get; set; }
@@ -33,7 +31,7 @@ namespace Stripe
 		public string AccountId { get; set; }
 
 		[JsonProperty("account[object]")]
-		public string AccountObject { get; set; } 
+		public string AccountObject { get; set; }
 
 		[JsonProperty("account[bank_name]")]
 		public string AccountBankName { get; set; }
@@ -56,13 +54,28 @@ namespace Stripe
 		[JsonProperty("account[verified]")]
 		public bool? AccountVerified { get; set; }
 
+		public string BalanceTransactionId { get; set; }
+		public StripeBalanceTransaction BalanceTransaction { get; set; }
+
 		[JsonProperty("balance_transaction")]
-		public string BalanceTransaction { get; set; }
+		internal object InternalBalanceTransaction
+		{
+			set
+			{
+				ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+			}
+		}
 
 		[JsonProperty("description")]
 		public string Description { get; set; }
 
-		[JsonProperty("statement_descriptor")]
-		public string StatementDescriptor { get; set; }
+		[JsonProperty("statement_description")]
+		public string StatementDescription { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
+
+		[JsonProperty("recipient")]
+		public string RecipientId { get; set; }
 	}
 }

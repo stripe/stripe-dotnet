@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
+using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
@@ -10,10 +11,31 @@ namespace Stripe
 		public bool? LiveMode { get; set; }
 
 		[JsonProperty("amount")]
-		public int? AmountInCents { get; set; }
+		public int? Amount { get; set; }
+
+		public string ChargeId { get; set; }
+		public StripeCharge Charge { get; set; }
 
 		[JsonProperty("charge")]
-		public string ChargeId { get; set; }
+		internal object InternalCharge
+		{
+			set
+			{
+				ExpandableProperty<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
+			}
+		}
+
+		public string BalanceTransactionId { get; set; }
+		public StripeBalanceTransaction BalanceTransaction { get; set; }
+
+		[JsonProperty("balance_transaction")]
+		internal object InternalBalanceTransaction
+		{
+			set
+			{
+				ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+			}
+		}
 
 		[JsonProperty("created")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]

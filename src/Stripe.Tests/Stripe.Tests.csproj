@@ -33,13 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Machine.Specifications, Version=0.5.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Machine.Specifications.0.5.8\lib\net40\Machine.Specifications.dll</HintPath>
+    <Reference Include="Machine.Specifications">
+      <HintPath>..\packages\Machine.Specifications.0.8.2\tools\Machine.Specifications.dll</HintPath>
     </Reference>
-    <Reference Include="Machine.Specifications.Clr4, Version=0.5.8.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Machine.Specifications.Should">
+      <HintPath>..\packages\Machine.Specifications.Should.0.7.2\lib\net40\Machine.Specifications.Should.dll</HintPath>
+    </Reference>
+    <Reference Include="NCrunch.Framework">
+      <HintPath>..\packages\NCrunch.Framework.2.6.0.18\lib\NCrunch.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Machine.Specifications.0.5.8\lib\net40\Machine.Specifications.Clr4.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -57,18 +62,36 @@
     </Compile>
     <Compile Include="account\account_behaviors.cs" />
     <Compile Include="account\when_retrieving_an_account.cs" />
+    <Compile Include="balance\balance_behaviors.cs" />
+    <Compile Include="balance\when_listing_balancetransaction_by_id.cs" />
+    <Compile Include="balance\when_listing_balancetransactions.cs" />
+    <Compile Include="balance\when_listing_balancetransactions_for_charge.cs" />
+    <Compile Include="balance\when_retrieving_a_balance.cs" />
     <Compile Include="charges\charge_behaviors.cs" />
     <Compile Include="charges\when_capturing_a_charge_with_a_card.cs" />
+    <Compile Include="charges\when_creating_a_charge_with_a_customer_expanded.cs" />
+    <Compile Include="charges\when_listing_charges_by_date.cs" />
+    <Compile Include="charges\when_listing_charges_with_expanded_properties.cs" />
+    <Compile Include="charges\when_listing_charges_with_paging.cs" />
     <Compile Include="charges\when_setting_a_charge_to_capture.cs" />
     <Compile Include="charges\when_creating_a_charge_with_an_invalid_card.cs" />
-    <Compile Include="charges\when_creating_a_charge_with_a_card_and_an_application_fee.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_token.cs" />
     <Compile Include="charges\when_listing_charges_for_customer.cs" />
     <Compile Include="charges\when_listing_charges.cs" />
     <Compile Include="charges\when_creating_a_charge_with_an_api_key.cs" />
     <Compile Include="coupons\when_creating_a_coupon_with_amount_off.cs" />
     <Compile Include="coupons\when_creating_a_coupon_with_an_api_key.cs" />
+    <Compile Include="customers\when_creating_a_customer_with_a_defaultcard_expanded.cs" />
     <Compile Include="customers\when_creating_a_customer_with_an_api_key.cs" />
+    <Compile Include="customers\when_listing_customers_with_expanded_properties.cs" />
+    <Compile Include="infrastructure\test_data\test_service.cs" />
+    <Compile Include="infrastructure\when_building_parameters_with_expandable_properties.cs" />
+    <Compile Include="infrastructure\when_mapping_expandable_property.cs" />
+    <Compile Include="infrastructure\test_data\sample_object.cs" />
+    <Compile Include="infrastructure\when_building_parameters.cs" />
+    <Compile Include="infrastructure\when_passed_only_url_to_parameter_builder.cs" />
+    <Compile Include="infrastructure\when_serializing_an_equals_datefilter.cs" />
+    <Compile Include="infrastructure\when_serializing_a_datefilter_query.cs" />
     <Compile Include="invoiceitems\when_creating_an_invoiceitem_with_an_api_key.cs" />
     <Compile Include="invoices\when_closing_an_invoice.cs" />
     <Compile Include="invoices\when_creating_an_invoice_with_an_api_key.cs" />
@@ -85,11 +108,23 @@
     <Compile Include="recipients\when_getting_a_recipient.cs" />
     <Compile Include="recipients\when_listing_recipients.cs" />
     <Compile Include="recipients\when_updating_a_recipient.cs" />
+    <Compile Include="requestor\when_creating_a_request.cs" />
+    <Compile Include="requestor\when_requesting_an_old_api_version.cs" />
+    <Compile Include="requestor\when_requesting_a_blacklisted_certificate.cs" />
+    <Compile Include="requestor\when_requesting_a_mismatched_certificate.cs" />
+    <Compile Include="subscriptions\when_changing_a_subscription_plan.cs" />
+    <Compile Include="subscriptions\when_creating_a_subscription.cs" />
+    <Compile Include="subscriptions\when_canceling_a_subscription_and_trying_to_retrieve.cs" />
+    <Compile Include="subscriptions\when_updating_a_subscription.cs" />
+    <Compile Include="subscriptions\when_getting_a_subscription.cs" />
+    <Compile Include="subscriptions\when_canceling_a_subscription.cs" />
+    <Compile Include="subscriptions\when_listing_subscriptions.cs" />
+    <Compile Include="subscriptions\when_updating_trial_end_date_subscription.cs" />
+    <Compile Include="subscriptions\when_updating_trial_end_of_subscription.cs" />
     <Compile Include="tokens\when_creating_a_token_with_a_customer.cs" />
     <Compile Include="tokens\when_creating_a_token_with_an_api_key.cs" />
     <Compile Include="transfers\test_data\stripe_transfer_create_options.cs" />
     <Compile Include="transfers\transfer_behaviors.cs" />
-    <Compile Include="transfers\when_canceling_a_transfer.cs" />
     <Compile Include="transfers\when_creating_a_transfer.cs" />
     <Compile Include="transfers\when_getting_a_transfer.cs" />
     <Compile Include="transfers\when_listing_transfers.cs" />
@@ -108,9 +143,6 @@
     <Compile Include="coupons\when_deleting_a_coupon.cs" />
     <Compile Include="coupons\coupon_behaviors.cs" />
     <Compile Include="coupons\when_listing_coupons.cs" />
-    <Compile Include="customers\when_canceling_a_customer_subscription.cs" />
-    <Compile Include="customers\when_creating_an_updated_customer_subscription.cs" />
-    <Compile Include="customers\test_data\stripe_customer_update_subscription_options.cs" />
     <Compile Include="customers\when_creating_a_customer_with_a_token.cs" />
     <Compile Include="customers\test_data\stripe_customer_update_options.cs" />
     <Compile Include="customers\when_updating_a_customer.cs" />
@@ -152,7 +184,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="_web_event_hooks\event_hooks_handler.ashx" />
     <None Include="_web_event_hooks\web.config">
       <SubType>Designer</SubType>
@@ -161,9 +195,12 @@
   <ItemGroup>
     <Folder Include="_web_event_hooks\bin\" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

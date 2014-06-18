@@ -1,15 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Stripe
 {
-	public class StripeInvoiceService
+	public class StripeInvoiceService : StripeService
 	{
-		private string ApiKey { get; set; }
+		public StripeInvoiceService(string apiKey = null) : base(apiKey) { }
 
-		public StripeInvoiceService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+		public bool ExpandCharge { get; set; }
+		public bool ExpandCustomer { get; set; }
 
 		public virtual StripeInvoice Get(string invoiceId)
 		{
@@ -20,11 +19,14 @@ namespace Stripe
 			return Mapper<StripeInvoice>.MapFromJson(response);
 		}
 
-		public virtual StripeInvoice Upcoming(string customerId)
+		public virtual StripeInvoice Upcoming(string customerId, string subscriptionId = null)
 		{
 			var url = string.Format("{0}/{1}", Urls.Invoices, "upcoming");
 
 			url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+
+			if(!String.IsNullOrEmpty(subscriptionId))
+				url = ParameterBuilder.ApplyParameterToUrl(url, "subscription", subscriptionId);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -34,7 +36,7 @@ namespace Stripe
 		public virtual StripeInvoice Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions)
 		{
 			var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -44,20 +46,16 @@ namespace Stripe
 		public virtual StripeInvoice Pay(string invoiceId)
 		{
 			var url = string.Format("{0}/{1}/pay", Urls.Invoices, invoiceId);
-
+			url = this.ApplyAllParameters(null, url, false);
 			var response = Requestor.PostString(url, ApiKey);
 
 			return Mapper<StripeInvoice>.MapFromJson(response);
 		}
 
-		public virtual IEnumerable<StripeInvoice> List(int count = 10, int offset = 0, string customerId = null)
+		public virtual IEnumerable<StripeInvoice> List(StripeInvoiceListOptions listOptions = null)
 		{
 			var url = Urls.Invoices;
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
-
-			if (!string.IsNullOrEmpty(customerId))
-				url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 
