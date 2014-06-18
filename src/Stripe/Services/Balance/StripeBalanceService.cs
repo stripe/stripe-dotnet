@@ -18,7 +18,7 @@ namespace Stripe
 			var url = string.Format(Urls.SpecificBalanceTransaction, id);
 			url = this.ApplyAllParameters(null, url, false);
 
-			var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url,ApiKey);
 
 			return Mapper<StripeBalanceTransaction>.MapFromJson(response);
 		}
@@ -28,7 +28,7 @@ namespace Stripe
 			var url = Urls.BalanceTransactions;
 			url = this.ApplyAllParameters(options, url, true);
 
-			var response = Requestor.GetString(url);
+			var response = Requestor.GetString(url,ApiKey);
 
 			return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(response);
 		}
