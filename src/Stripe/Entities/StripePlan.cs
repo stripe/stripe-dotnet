@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using System;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
@@ -11,8 +13,12 @@ namespace Stripe
 		[JsonProperty("currency")]
 		public string Currency { get; set; }
 
+		[JsonProperty("created")]
+		[JsonConverter(typeof(StripeDateTimeConverter))]
+		public DateTime Created { get; set; }
+
 		[JsonProperty("amount")]
-		public int? Amount { get; set; }
+		public int Amount { get; set; }
 
 		[JsonProperty("interval")]
 		public string Interval { get; set; }
@@ -22,6 +28,9 @@ namespace Stripe
 
 		[JsonProperty("livemode")]
 		public bool? LiveMode { get; set; }
+
+		[JsonProperty("statement_description")]
+		public string StatementDescription { get; set; }
 
 		[JsonProperty("trial_period_days")]
 		public int? TrialPeriodDays { get; set; }

@@ -33,5 +33,8 @@ namespace Stripe.Tests
 
 		It should_have_correct_metadata = () =>
 			StripePlan.Metadata.ShouldContainOnly(StripePlanUpdateOptions.Metadata);
+
+		It should_have_the_new_statement_description = () =>
+			StripePlan.StatementDescription.ShouldEqual(StripePlanUpdateOptions.StatementDescription);
 	}
 }

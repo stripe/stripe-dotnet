@@ -14,7 +14,8 @@ namespace Stripe.Tests.test_data
 					{ "A", "Value-A" },
 					{ "B", "Value-B" },
 					{ "C", "Value-C" }
-				}
+				},
+				StatementDescription = "heyyyy ya?"
 			};
 		}
 	}
