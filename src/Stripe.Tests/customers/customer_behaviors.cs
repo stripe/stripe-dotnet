@@ -54,33 +54,6 @@ namespace Stripe.Tests
 		It should_have_the_correct_card_country = () =>
 			StripeCustomer.StripeCardList.StripeCards.First().Country.ShouldEqual("US");
 
-		It should_have_the_correct_trial_period_days = () =>
-			StripeCustomer.StripeSubscription.TrialEnd.Value.Date.ShouldEqual(StripeCustomerCreateOptions.TrialEnd.Value.Date);
-		
-		It should_have_the_correct_quantity = () =>
-			StripeCustomer.StripeSubscription.Quantity.ShouldEqual(1);
-
-		It should_have_the_correct_plan_id = () =>
-			StripeCustomer.StripeSubscription.StripePlan.Id.ShouldEqual(StripePlan.Id);
-
-		It should_have_the_correct_plan_amount = () =>
-			StripeCustomer.StripeSubscription.StripePlan.AmountInCents.ShouldEqual(StripePlan.AmountInCents);
-
-		It should_have_the_correct_plan_currency = () =>
-			StripeCustomer.StripeSubscription.StripePlan.Currency.ShouldEqual(StripePlan.Currency);
-
-		It should_have_the_correct_plan_interval = () =>
-			StripeCustomer.StripeSubscription.StripePlan.Interval.ShouldEqual(StripePlan.Interval);
-
-		It should_have_the_correct_plan_name = () =>
-			StripeCustomer.StripeSubscription.StripePlan.Name.ShouldEqual(StripePlan.Name);
-
-		It should_have_the_correct_plan_trial_period_days = () =>
-			StripeCustomer.StripeSubscription.StripePlan.TrialPeriodDays.ShouldEqual(StripePlan.TrialPeriodDays);
-
-		It should_have_the_correct_plan_livemode = () =>
-			StripeCustomer.StripeSubscription.StripePlan.LiveMode.ShouldEqual(false);
-
 		It should_have_the_correct_coupon_id = () =>
 			StripeCustomer.StripeDiscount.StripeCoupon.Id.ShouldEqual(StripeCoupon.Id);
 
@@ -98,8 +71,5 @@ namespace Stripe.Tests
 
 		It should_have_the_correct_coupon_livemode = () =>
 			StripeCustomer.StripeDiscount.StripeCoupon.LiveMode.ShouldEqual(false);
-
-		It should_have_the_correct_account_balance = () =>
-			StripeCustomer.AccountBalance.ShouldEqual(100);
 	}
 }

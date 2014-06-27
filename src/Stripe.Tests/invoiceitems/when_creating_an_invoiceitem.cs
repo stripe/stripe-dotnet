@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using Machine.Specifications;
+﻿using Machine.Specifications;
 
 namespace Stripe.Tests
 {
@@ -24,5 +23,11 @@ namespace Stripe.Tests
 			StripeInvoiceItem = _stripeInvoiceItemService.Create(StripeInvoiceItemCreateOptions);
 
 		Behaves_like<invoiceitem_behaviors> behaviors;
+
+		It should_have_metadata = () =>
+			StripeInvoiceItem.Metadata.Count.ShouldBeGreaterThan(0);
+
+		It should_have_the_correct_metadata = () =>
+			StripeInvoiceItem.Metadata.ShouldContainOnly(StripeInvoiceItemCreateOptions.Metadata);
 	}
 }

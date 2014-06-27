@@ -1,7 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
 	public class StripeCardCreateOptions : CreditCardOptions
 	{

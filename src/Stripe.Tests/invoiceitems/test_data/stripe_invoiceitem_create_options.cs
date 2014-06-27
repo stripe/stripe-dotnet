@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace Stripe.Tests.test_data
 {
@@ -8,10 +8,15 @@ namespace Stripe.Tests.test_data
 		{
 			var stripeInvoiceItemCreateOptions = new StripeInvoiceItemCreateOptions()
 			{
-				AmountInCents = 1000,
+				Amount = 1000,
 				Currency = "usd",
 				CustomerId = customerId,
-				Description = "Test Invoice Item"
+				Description = "Test Invoice Item",
+				Metadata = new Dictionary<string, string>
+				{
+					{ "A", "Value-A" },
+					{ "B", "Value-B" }
+				}
 			};
 
 			return stripeInvoiceItemCreateOptions;

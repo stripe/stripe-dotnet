@@ -1,4 +1,5 @@
-﻿namespace Stripe.Tests.test_data
+﻿using System.Collections.Generic;
+namespace Stripe.Tests.test_data
 {
 	public static class stripe_charge_create_options
 	{
@@ -18,8 +19,13 @@
 				CardName = "Joe Meatballs",
 				CardNumber = "4242424242424242",
 				Description = "Joe Meatball Charge",
-				AmountInCents = 5153,
-				Currency = "usd"
+				Amount = 5153,
+				Currency = "usd",
+				Metadata = new Dictionary<string, string>
+				{
+					{ "A", "Value-A" },
+					{ "B", "Value-B" }
+				}
 			};
 		}
 
@@ -38,7 +44,7 @@
 				CardName = "Joe Meatballs",
 				CardNumber = "425221",
 				Description = "Joe Meatball Charge",
-				AmountInCents = 5153,
+				Amount = 5153,
 				Currency = "usd"
 			};
 		}
@@ -48,7 +54,7 @@
 			return new StripeChargeCreateOptions()
 			{
 				Description = "Buddy Roast (beef@email.com)",
-				AmountInCents = 2994,
+				Amount = 2994,
 				Currency = "usd",
 				CustomerId = customerId
 			};
@@ -58,7 +64,7 @@
 		{
 			return new StripeChargeCreateOptions()
 			{
-				AmountInCents = 2001,
+				Amount = 2001,
 				Currency = "usd",
 				TokenId = _tokenId
 			};

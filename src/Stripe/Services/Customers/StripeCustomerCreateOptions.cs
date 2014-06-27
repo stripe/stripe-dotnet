@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
@@ -26,16 +28,17 @@ namespace Stripe
 		public int? Quantity { get; set; }
 
 		[JsonProperty("trial_end")]
-		internal int? TrialEndInternal
+		internal long? TrialEndInternal
 		{
 			get
 			{
 				if (!TrialEnd.HasValue) return null;
 
-				var diff = TrialEnd.Value - new DateTime(1970, 1, 1);
-
-				return (int)Math.Floor(diff.TotalSeconds);
+				return EpochTime.ConvertDateTimeToEpoch(TrialEnd.Value);
 			}
 		}
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

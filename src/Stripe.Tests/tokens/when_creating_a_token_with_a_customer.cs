@@ -1,6 +1,4 @@
-﻿using Machine.Specifications;
-
-namespace Stripe.Tests
+﻿namespace Stripe.Tests
 {
 	public class when_creating_a_token_with_a_customer
 	{

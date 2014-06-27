@@ -1,20 +1,24 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+using System;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripePlan
+	public class StripePlan : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("name")]
 		public string Name { get; set; }
 
 		[JsonProperty("currency")]
 		public string Currency { get; set; }
 
+		[JsonProperty("created")]
+		[JsonConverter(typeof(StripeDateTimeConverter))]
+		public DateTime Created { get; set; }
+
 		[JsonProperty("amount")]
-		public int? AmountInCents { get; set; }
+		public int Amount { get; set; }
 
 		[JsonProperty("interval")]
 		public string Interval { get; set; }
@@ -25,7 +29,13 @@ namespace Stripe
 		[JsonProperty("livemode")]
 		public bool? LiveMode { get; set; }
 
+		[JsonProperty("statement_description")]
+		public string StatementDescription { get; set; }
+
 		[JsonProperty("trial_period_days")]
 		public int? TrialPeriodDays { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

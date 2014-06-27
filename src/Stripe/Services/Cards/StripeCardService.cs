@@ -1,21 +1,18 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace Stripe
 {
-	public class StripeCardService
+	public class StripeCardService : StripeService
 	{
-		private string ApiKey { get; set; }
+		public StripeCardService(string apiKey = null) : base(apiKey) { }
 
-		public StripeCardService(string apiKey = null)
-		{
-			ApiKey = apiKey;
-		}
+		public bool ExpandCustomer { get; set; }
+		public bool ExpandRecipient { get; set; }
 
 		public virtual StripeCard Create(string customerId, StripeCardCreateOptions createOptions)
 		{
 			var url = string.Format(Urls.Cards, customerId);
-			url = ParameterBuilder.ApplyAllParameters(createOptions, url);
+			url = this.ApplyAllParameters(createOptions, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -26,6 +23,7 @@ namespace Stripe
 		{
 			var customerUrl = string.Format(Urls.Cards, customerId);
 			var url = string.Format("{0}/{1}", customerUrl, cardId);
+			url = this.ApplyAllParameters(null, url, false);
 
 			var response = Requestor.GetString(url, ApiKey);
 
@@ -36,7 +34,7 @@ namespace Stripe
 		{
 			var customerUrl = string.Format(Urls.Cards, customerId);
 			var url = string.Format("{0}/{1}", customerUrl, cardId);
-			url = ParameterBuilder.ApplyAllParameters(updateOptions, url);
+			url = this.ApplyAllParameters(updateOptions, url, false);
 
 			var response = Requestor.PostString(url, ApiKey);
 
@@ -51,11 +49,10 @@ namespace Stripe
 			Requestor.Delete(url, ApiKey);
 		}
 
-		public virtual IEnumerable<StripeCard> List(string customerId, int count = 10, int offset = 0)
+		public virtual IEnumerable<StripeCard> List(string customerId, StripeListOptions listOptions = null)
 		{
 			var url = string.Format(Urls.Cards, customerId);
-			url = ParameterBuilder.ApplyParameterToUrl(url, "count", count.ToString());
-			url = ParameterBuilder.ApplyParameterToUrl(url, "offset", offset.ToString());
+			url = this.ApplyAllParameters(listOptions, url, true);
 
 			var response = Requestor.GetString(url, ApiKey);
 

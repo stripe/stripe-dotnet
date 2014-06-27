@@ -1,13 +1,18 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
+using System.Collections.Generic;
 
 namespace Stripe
 {
-	public class StripeCoupon
+	public class StripeCoupon : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
+		[JsonProperty("currency")]
+		public string Currency { get; set; }
+
+		[JsonProperty("created")]
+		[JsonConverter(typeof(StripeDateTimeConverter))]
+		public DateTime Created { get; set; }
 
 		[JsonProperty("duration")]
 		public string Duration { get; set; }
@@ -33,5 +38,11 @@ namespace Stripe
 
 		[JsonProperty("times_redeemed")]
 		public int TimesRedeemed { get; private set; }
+
+		[JsonProperty("valid")]
+		public bool Valid { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

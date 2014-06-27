@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Configuration;
 
 namespace Stripe
@@ -9,10 +6,16 @@ namespace Stripe
 	public static class StripeConfiguration
 	{
 		private static string _apiKey;
+		internal const string SupportedApiVersion = "2014-03-28";
+
+		static StripeConfiguration()
+		{
+			ApiVersion = SupportedApiVersion;
+		}
 
 		internal static string GetApiKey()
 		{
-			if (String.IsNullOrEmpty(_apiKey))
+			if (string.IsNullOrEmpty(_apiKey))
 				_apiKey = ConfigurationManager.AppSettings["StripeApiKey"];
 
 			return _apiKey;
@@ -22,5 +25,7 @@ namespace Stripe
 		{
 			_apiKey = newApiKey;
 		}
+
+		public static string ApiVersion { get; internal set; }
 	}
 }

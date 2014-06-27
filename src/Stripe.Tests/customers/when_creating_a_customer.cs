@@ -34,5 +34,11 @@ namespace Stripe.Tests
 		};
 
 		Behaves_like<customer_behaviors> behaviors;
+
+		It should_have_metadata = () =>
+			StripeCustomer.Metadata.Count.ShouldBeGreaterThan(0);
+
+		It should_have_the_correct_metadata = () =>
+			StripeCustomer.Metadata.ShouldContainOnly(StripeCustomerCreateOptions.Metadata);
 	}
 }

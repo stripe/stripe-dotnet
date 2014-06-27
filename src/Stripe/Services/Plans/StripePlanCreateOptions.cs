@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Stripe
 {
@@ -8,7 +9,7 @@ namespace Stripe
 		public string Id { get; set; }
 
 		[JsonProperty("amount")]
-		public int? AmountInCents { get; set; }
+		public int Amount { get; set; }
 
 		[JsonProperty("currency")]
 		public string Currency { get; set; }
@@ -24,5 +25,11 @@ namespace Stripe
 
 		[JsonProperty("trial_period_days")]
 		public int? TrialPeriodDays { get; set; }
+
+		[JsonProperty("statement_description")]
+		public string StatementDescription { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }

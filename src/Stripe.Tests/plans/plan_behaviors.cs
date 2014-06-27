@@ -12,7 +12,7 @@ namespace Stripe.Tests
 			StripePlan.Id.ShouldEqual(StripePlanCreateOptions.Id);
 
 		It should_have_the_correct_amount = () =>
-			StripePlan.AmountInCents.ShouldEqual(StripePlanCreateOptions.AmountInCents.Value);
+			StripePlan.Amount.ShouldEqual(StripePlanCreateOptions.Amount);
 
 		It should_have_the_correct_currency = () =>
 			StripePlan.Currency.ShouldEqual(StripePlanCreateOptions.Currency);
@@ -28,6 +28,12 @@ namespace Stripe.Tests
 
 		It should_have_the_correct_trial_period_days = () =>
 			StripePlan.TrialPeriodDays.ShouldEqual(StripePlanCreateOptions.TrialPeriodDays);
+
+		It should_have_a_created_date = () =>
+			StripePlan.Created.ShouldNotBeNull();
+
+		It should_have_the_correct_statement_description = () =>
+			StripePlan.StatementDescription.ShouldEqual(StripePlanCreateOptions.StatementDescription);
 
 		It should_have_the_correct_live_mode = () =>
 			StripePlan.LiveMode.ShouldEqual(false);

@@ -11,7 +11,7 @@ namespace Stripe.Tests
 		protected static string StripeInvoiceItemId;
 
 		It should_have_the_correct_amount = () =>
-			StripeInvoiceItem.AmountInCents.ShouldEqual(StripeInvoiceItemCreateOptions.AmountInCents);
+			StripeInvoiceItem.Amount.ShouldEqual(StripeInvoiceItemCreateOptions.Amount);
 
 		It should_have_the_correct_currency = () =>
 			StripeInvoiceItem.Currency.ShouldEqual(StripeInvoiceItemCreateOptions.Currency);
@@ -20,7 +20,7 @@ namespace Stripe.Tests
 			StripeInvoiceItem.CustomerId.ShouldEqual(StripeInvoiceItemCreateOptions.CustomerId);
 
 		It should_have_the_correct_date = () =>
-			StripeInvoiceItem.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
+            StripeInvoiceItem.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow.AddMinutes(1));
 
 		It should_have_the_correct_description = () =>
 			StripeInvoiceItem.Description.ShouldEqual(StripeInvoiceItemCreateOptions.Description);

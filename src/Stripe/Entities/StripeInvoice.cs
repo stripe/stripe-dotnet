@@ -1,16 +1,14 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
+using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-	public class StripeInvoice
+	public class StripeInvoice : StripeObject
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("amount_due")]
-		public int? AmountDueInCents { get; set; }
+		public int? AmountDue { get; set; }
 
 		[JsonProperty("attempt_count")]
 		public int? AttemptCount { get; set; }
@@ -18,14 +16,32 @@ namespace Stripe
 		[JsonProperty("attempted")]
 		public bool? Attempted { get; set; }
 
-		[JsonProperty("charge")]
 		public string ChargeId { get; set; }
+		public StripeCharge Charge { get; set; }
+
+		[JsonProperty("charge")]
+		internal object InternalCharge
+		{
+			set
+			{
+				ExpandableProperty<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
+			}
+		}
 
 		[JsonProperty("closed")]
 		public bool? Closed { get; set; }
 
-		[JsonProperty("customer")]
 		public string CustomerId { get; set; }
+		public StripeCustomer Customer { get; set; }
+
+		[JsonProperty("customer")]
+		internal object InternalCustomer
+		{
+			set
+			{
+				ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+			}
+		}
 
 		[JsonProperty("currency")]
 		public string Currency { get; set; }
@@ -35,7 +51,7 @@ namespace Stripe
 		public DateTime? Date { get; set; }
 
 		[JsonProperty("ending_balance")]
-		public int? EndingBalanceInCents { get; set; }
+		public int? EndingBalance { get; set; }
 
 		[JsonProperty("livemode")]
 		public bool? LiveMode { get; set; }
@@ -59,13 +75,13 @@ namespace Stripe
 		public DateTime? PeriodStart { get; set; }
 
 		[JsonProperty("starting_balance")]
-		public int? StartingBalanceInCents { get; set; }
+		public int? StartingBalance { get; set; }
 
 		[JsonProperty("subtotal")]
-		public int? SubtotalInCents { get; set; }
+		public int? Subtotal { get; set; }
 
 		[JsonProperty("total")]
-		public int? TotalInCents { get; set; }
+		public int? Total { get; set; }
 
 		[JsonProperty("lines")]
 		public StripeInvoiceLines StripeInvoiceLines { get; set; }
