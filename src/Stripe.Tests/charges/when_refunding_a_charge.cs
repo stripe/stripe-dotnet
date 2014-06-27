@@ -23,5 +23,11 @@ namespace Stripe.Tests
 
 		It should_have_been_marked_as_refunded = () =>
 			_stripeCharge.Refunded.ShouldEqual(true);
+
+	    It should_have_a_refund_listed = () =>
+	        _stripeCharge.Refunds.Data.Count.ShouldEqual(1);
+
+	    It should_have_a_refund_listed_with_correct_amount = () =>
+	        _stripeCharge.Refunds.Data[0].Amount.ShouldEqual(_stripeCharge.Amount.Value);
 	}
 }
