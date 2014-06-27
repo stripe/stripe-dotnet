@@ -86,5 +86,8 @@ namespace Stripe
 
         [JsonProperty("refunds")]
         public StripeDataList<StripeRefund> Refunds { get; set; }
+
+        [JsonProperty("dispute")]
+        public StripeDispute Dispute { get; set; }
 	}
 }
