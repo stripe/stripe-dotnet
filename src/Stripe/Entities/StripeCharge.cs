@@ -83,5 +83,11 @@ namespace Stripe
 
 		[JsonProperty("metadata")]
 		public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("refunds")]
+        public StripeDataList<StripeRefund> Refunds { get; set; }
+
+        [JsonProperty("dispute")]
+        public StripeDispute Dispute { get; set; }
 	}
 }

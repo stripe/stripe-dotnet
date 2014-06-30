@@ -3,7 +3,7 @@ using System;
 
 namespace Stripe
 {
-	public class StripeEventListOptions
+	public class StripeEventListOptions : StripeListOptions
 	{
 		[JsonProperty("type")]
 		public string Type { get; set; }
