@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 namespace Stripe.Tests.test_data
 {
 	public static class stripe_charge_create_options
@@ -20,7 +21,7 @@ namespace Stripe.Tests.test_data
 				CardNumber = "4242424242424242",
 				Description = "Joe Meatball Charge",
 				Amount = 5153,
-				Currency = "usd",
+                Currency = ConfigurationManager.AppSettings["StripeCurrency"],
 				Metadata = new Dictionary<string, string>
 				{
 					{ "A", "Value-A" },
@@ -45,7 +46,7 @@ namespace Stripe.Tests.test_data
 				CardNumber = "425221",
 				Description = "Joe Meatball Charge",
 				Amount = 5153,
-				Currency = "usd"
+                Currency = ConfigurationManager.AppSettings["StripeCurrency"]
 			};
 		}
 
