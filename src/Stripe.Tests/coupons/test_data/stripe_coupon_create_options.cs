@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 
 namespace Stripe.Tests.test_data
 {
@@ -25,7 +26,7 @@ namespace Stripe.Tests.test_data
 			{
 				Id = "test-coupon-" + Guid.NewGuid().ToString(),
 				AmountOff = 10,
-				Currency = "usd",
+                Currency = ConfigurationManager.AppSettings["StripeCurrency"],
 				Duration = "repeating",
 				DurationInMonths = 3,
 				MaxRedemptions = 5,
