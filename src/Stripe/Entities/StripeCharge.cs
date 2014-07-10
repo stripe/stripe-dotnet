@@ -54,6 +54,9 @@ namespace Stripe
 		[JsonProperty("refunded")]
 		public bool? Refunded { get; set; }
 
+        [JsonProperty("refunds")]
+        public StripeRefundList StripeRefundList { get; set; }
+
 		[JsonProperty("livemode")]
 		public bool? LiveMode { get; set; }
 
@@ -81,7 +84,30 @@ namespace Stripe
 		[JsonProperty("captured")]
 		public bool? Captured { get; set; }
 
+        [JsonProperty("dispute")]
+        public StripeDispute Dispute { get; set; }
+
 		[JsonProperty("metadata")]
 		public Dictionary<string, string> Metadata { get; set; }
+
+        public StripeRefund Refund(StripeRefundCreateOptions createOptions, string apiKey = null)
+        {
+            StripeRefundService _stripeRefundService = new StripeRefundService(apiKey);
+            StripeChargeService _stripeChargeService = new StripeChargeService(apiKey);
+
+            var stripeRefund = _stripeRefundService.Create(Id, createOptions);
+
+            var stripeCharge = _stripeChargeService.Get(Id);
+            this.Refunded = stripeCharge.Refunded;
+            this.AmountRefunded = stripeCharge.AmountRefunded;
+            this.StripeRefundList = stripeCharge.StripeRefundList;
+
+            return stripeRefund;
+        }
+
+        public StripeRefund Refund(int amount, string apiKey = null)
+        {
+            return Refund(new StripeRefundCreateOptions { Amount = amount }, apiKey);
+        }
 	}
 }

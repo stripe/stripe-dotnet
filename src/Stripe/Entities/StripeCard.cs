@@ -47,8 +47,21 @@ namespace Stripe
 		[JsonProperty("last4")]
 		public string Last4 { get; set; }
 
+        [System.Obsolete("Use brand property instead - since API version 2014-06-13")]
 		[JsonProperty("type")]
-		public string Type { get; set; }
+		public string Type { 
+            get
+            {
+                return this.Brand;
+            }
+            set
+            {
+                this.Brand = value;
+            }
+        }
+
+        [JsonProperty("brand")]
+        public string Brand { get; set; }
 
 		[JsonProperty("fingerprint")]
 		public string Fingerprint { get; set; }

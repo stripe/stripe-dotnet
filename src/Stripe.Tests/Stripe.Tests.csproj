@@ -69,10 +69,14 @@
     <Compile Include="balance\when_retrieving_a_balance.cs" />
     <Compile Include="charges\charge_behaviors.cs" />
     <Compile Include="charges\when_capturing_a_charge_with_a_card.cs" />
+    <Compile Include="charges\when_refunding_a_charge_from_charge.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_customer_expanded.cs" />
     <Compile Include="charges\when_listing_charges_by_date.cs" />
     <Compile Include="charges\when_listing_charges_with_expanded_properties.cs" />
     <Compile Include="charges\when_listing_charges_with_paging.cs" />
+    <Compile Include="charges\when_refunding_a_charge_with_an_amount_from_charge2.cs" />
+    <Compile Include="charges\when_refunding_a_charge_with_an_amount_from_charge_service.cs" />
+    <Compile Include="charges\when_refunding_a_charge_with_an_amount_from_charge.cs" />
     <Compile Include="charges\when_setting_a_charge_to_capture.cs" />
     <Compile Include="charges\when_creating_a_charge_with_an_invalid_card.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_token.cs" />
@@ -108,6 +112,11 @@
     <Compile Include="recipients\when_getting_a_recipient.cs" />
     <Compile Include="recipients\when_listing_recipients.cs" />
     <Compile Include="recipients\when_updating_a_recipient.cs" />
+    <Compile Include="refunds\refund_behaviors.cs" />
+    <Compile Include="refunds\test_data\stripe_refund_create_options.cs" />
+    <Compile Include="refunds\when_getting_a_refund.cs" />
+    <Compile Include="refunds\when_over_refunding_a_charge.cs" />
+    <Compile Include="refunds\when_listing_refunds.cs" />
     <Compile Include="requestor\when_creating_a_request.cs" />
     <Compile Include="requestor\when_requesting_an_old_api_version.cs" />
     <Compile Include="requestor\when_requesting_a_blacklisted_certificate.cs" />
@@ -154,8 +163,8 @@
     <Compile Include="plans\when_deleting_a_plan.cs" />
     <Compile Include="plans\plan_behaviors.cs" />
     <Compile Include="tokens\token_behaviors.cs" />
-    <Compile Include="charges\when_refunding_a_charge_with_an_amount.cs" />
-    <Compile Include="charges\when_refunding_a_charge.cs" />
+    <Compile Include="refunds\when_refunding_a_charge_with_an_amount.cs" />
+    <Compile Include="refunds\when_refunding_a_charge.cs" />
     <Compile Include="plans\when_getting_a_plan.cs" />
     <Compile Include="customers\when_getting_a_customer.cs" />
     <Compile Include="charges\when_getting_a_charge.cs" />
