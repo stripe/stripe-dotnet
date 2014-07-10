@@ -27,31 +27,31 @@ namespace Stripe
 		[JsonProperty("status")]
 		public string Status { get; set; }
 
-		[JsonProperty("account[id]")]
+		[JsonProperty("bank_account[id]")]
 		public string AccountId { get; set; }
 
-		[JsonProperty("account[object]")]
+        [JsonProperty("bank_account[object]")]
 		public string AccountObject { get; set; }
 
-		[JsonProperty("account[bank_name]")]
+        [JsonProperty("bank_account[bank_name]")]
 		public string AccountBankName { get; set; }
 
-		[JsonProperty("account[country]")]
+        [JsonProperty("bank_account[country]")]
 		public string AccountCountry { get; set; }
 
-		[JsonProperty("account[currency]")]
+        [JsonProperty("bank_account[currency]")]
 		public string AccountCurrency { get; set; }
 
-		[JsonProperty("account[last4]")]
+        [JsonProperty("bank_account[last4]")]
 		public string AccountLast4 { get; set; }
 
-		[JsonProperty("account[fingerprint]")]
+        [JsonProperty("bank_account[fingerprint]")]
 		public string AccountFingerprint { get; set; }
 
-		[JsonProperty("account[validated]")]
+        [JsonProperty("bank_account[validated]")]
 		public bool? AccountValidated { get; set; }
 
-		[JsonProperty("account[verified]")]
+        [JsonProperty("bank_account[verified]")]
 		public bool? AccountVerified { get; set; }
 
 		public string BalanceTransactionId { get; set; }
