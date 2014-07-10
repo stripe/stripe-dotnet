@@ -2,6 +2,7 @@
 using System.Linq;
 using Machine.Specifications;
 using System;
+using System.Configuration;
 
 namespace Stripe.Tests
 {
@@ -46,6 +47,6 @@ namespace Stripe.Tests
 			_stripeInvoice.StripeInvoiceLines.ShouldNotBeNull();
 
 		It should_have_the_correct_currency = () =>
-			_stripeInvoice.Currency.ShouldEqual<string>("usd");
+            _stripeInvoice.Currency.ShouldEqual<string>(ConfigurationManager.AppSettings["StripeCurrency"]);
 	}
 }

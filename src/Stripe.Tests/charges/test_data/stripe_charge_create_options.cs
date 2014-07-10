@@ -56,7 +56,7 @@ namespace Stripe.Tests.test_data
 			{
 				Description = "Buddy Roast (beef@email.com)",
 				Amount = 2994,
-				Currency = "usd",
+                Currency = ConfigurationManager.AppSettings["StripeCurrency"],
 				CustomerId = customerId
 			};
 		}
@@ -66,7 +66,7 @@ namespace Stripe.Tests.test_data
 			return new StripeChargeCreateOptions()
 			{
 				Amount = 2001,
-				Currency = "usd",
+                Currency = ConfigurationManager.AppSettings["StripeCurrency"],
 				TokenId = _tokenId
 			};
 		}
