@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace Stripe.Tests.test_data
 {
@@ -7,11 +8,11 @@ namespace Stripe.Tests.test_data
 	{
 		public static StripePlanCreateOptions Valid()
 		{
-			return new StripePlanCreateOptions()
+            return new StripePlanCreateOptions()
 			{
 				Id = "test-plan-" + Guid.NewGuid(),
 				Amount = 5000,
-				Currency = "usd",
+                Currency = ConfigurationManager.AppSettings["StripeCurrency"],
 				Interval = "month",
 				Name = "Test Plan",
 				TrialPeriodDays = 1,

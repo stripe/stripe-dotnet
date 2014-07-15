@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 
 namespace Stripe.Tests.test_data
 {
@@ -9,7 +10,7 @@ namespace Stripe.Tests.test_data
 			var stripeInvoiceItemCreateOptions = new StripeInvoiceItemCreateOptions()
 			{
 				Amount = 1000,
-				Currency = "usd",
+				Currency = ConfigurationManager.AppSettings["StripeCurrency"],
 				CustomerId = customerId,
 				Description = "Test Invoice Item",
 				Metadata = new Dictionary<string, string>

@@ -22,6 +22,11 @@
 			get { return BaseUrl + "/charges"; }
 		}
 
+        public static string Refunds
+        {
+            get { return BaseUrl + "/charges/{0}/refunds"; }
+        }
+
 		public static string Coupons
 		{
 			get { return BaseUrl + "/coupons"; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace Stripe.Tests.test_data
 {
@@ -10,7 +11,7 @@ namespace Stripe.Tests.test_data
 			var stripeTransferCreateOptions = new StripeTransferCreateOptions()
 			{
 				Amount = 50,
-				Currency = "usd",
+                Currency = ConfigurationManager.AppSettings["StripeCurrency"],
 				Recipient = "self",
 				Description = "test-transfer-description-" + Guid.NewGuid(),
 				StatementDescription = "test-transfer-statement-descriptor" + Guid.NewGuid(),
