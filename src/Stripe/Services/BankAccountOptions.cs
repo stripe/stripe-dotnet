@@ -12,5 +12,8 @@ namespace Stripe
 
 		[JsonProperty("bank_account[account_number]")]
 		public string BankAccountNumber { get; set; }
+
+        [JsonProperty("bank_account")]
+        public string TokenId { get; set; }
 	}
 }
