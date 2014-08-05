@@ -5,9 +5,9 @@ namespace Stripe
 	public class StripeEventData
 	{
 		[JsonProperty("previous_attributes")]
-		public dynamic PreviousAttributes { get; set; }
+		public object PreviousAttributes { get; set; }
 
 		[JsonProperty("object")]
-		public dynamic Object { get; set; }
+		public object Object { get; set; }
 	}
 }
