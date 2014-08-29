@@ -28,6 +28,9 @@ namespace Stripe
 
 		[JsonProperty("address_line2")]
 		public string AddressLine2 { get; set; }
+		
+		[JsonProperty("brand")]
+		public string Brand { get; set; }
 
 		[JsonProperty("country")]
 		public string Country { get; set; }
@@ -40,6 +43,9 @@ namespace Stripe
 
 		[JsonProperty("exp_year")]
 		public string ExpirationYear { get; set; }
+		
+		[JsonProperty("funding")]
+		public string Funding { get; set; }
 
 		[JsonProperty("name")]
 		public string Name { get; set; }
