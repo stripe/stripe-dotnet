@@ -55,5 +55,8 @@ namespace Stripe
 
 		[JsonProperty("metadata")]
 		public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("cards")]
+        public StripeCardList StripeCardList { get; set; }
 	}
 }

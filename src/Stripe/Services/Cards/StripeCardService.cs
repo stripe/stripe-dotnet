@@ -19,6 +19,8 @@ namespace Stripe
 			return Mapper<StripeCard>.MapFromJson(response);
 		}
 
+
+
 		public virtual StripeCard Get(string customerId, string cardId)
 		{
 			var customerUrl = string.Format(Urls.Cards, customerId);

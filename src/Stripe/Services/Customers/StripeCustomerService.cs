@@ -2,56 +2,71 @@
 
 namespace Stripe
 {
-	public class StripeCustomerService : StripeService
-	{
-		public StripeCustomerService(string apiKey = null) : base(apiKey) { }
+    public class StripeCustomerService : StripeService
+    {
+        public StripeCustomerService(string apiKey = null) : base(apiKey) { }
 
-		public bool ExpandDefaultCard { get; set; }
+        public bool ExpandDefaultCard { get; set; }
 
-		public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions)
-		{
-			var url = this.ApplyAllParameters(createOptions, Urls.Customers, false);
+        public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions)
+        {
+            var url = this.ApplyAllParameters(createOptions, Urls.Customers, false);
 
-			var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey);
 
-			return Mapper<StripeCustomer>.MapFromJson(response);
-		}
+            return Mapper<StripeCustomer>.MapFromJson(response);
+        }
 
-		public virtual StripeCustomer Get(string customerId)
-		{
-			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-			this.ApplyAllParameters(null, url, false);
+        public virtual StripeCustomer Get(string customerId)
+        {
+            var url = string.Format("{0}/{1}", Urls.Customers, customerId);
+            this.ApplyAllParameters(null, url, false);
 
-			var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey);
 
-			return Mapper<StripeCustomer>.MapFromJson(response);
-		}
+            return Mapper<StripeCustomer>.MapFromJson(response);
+        }
 
-		public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
-		{
-			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-			url = this.ApplyAllParameters(updateOptions, url, false);
+        public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
+        {
+            var url = string.Format("{0}/{1}", Urls.Customers, customerId);
+            url = this.ApplyAllParameters(updateOptions, url, false);
 
-			var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey);
 
-			return Mapper<StripeCustomer>.MapFromJson(response);
-		}
+            return Mapper<StripeCustomer>.MapFromJson(response);
+        }
 
-		public virtual void Delete(string customerId)
-		{
-			var url = string.Format("{0}/{1}", Urls.Customers, customerId);
+        public virtual void Delete(string customerId)
+        {
+            var url = string.Format("{0}/{1}", Urls.Customers, customerId);
 
-			Requestor.Delete(url, ApiKey);
-		}
+            Requestor.Delete(url, ApiKey);
+        }
 
-		public virtual IEnumerable<StripeCustomer> List(StripeCustomerListOptions listOptions = null)
-		{
-			var url = Urls.Customers;
-			url = this.ApplyAllParameters(listOptions, url, true);
+        public virtual IEnumerable<StripeCustomer> List(StripeCustomerListOptions listOptions = null)
+        {
+            var url = Urls.Customers;
+            url = this.ApplyAllParameters(listOptions, url, true);
 
-			var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey);
 
-			return Mapper<StripeCustomer>.MapCollectionFromJson(response);
-		}
-	}
+            return Mapper<StripeCustomer>.MapCollectionFromJson(response);
+        }
+
+        public virtual StripeCustomer CreateCard(string customerId, string tokenId)
+        {
+            var url = string.Format("{0}/{1}/{2}", Urls.Customers, customerId, "cards");
+            url = this.ApplyAllParameters((new StripeCustomerUpdateOptions { TokenId = tokenId }), url, false);
+            var response = Requestor.PostString(url, ApiKey);
+            return Mapper<StripeCustomer>.MapFromJson(response);
+        }
+
+        public virtual StripeCard DeleteCard(string customerId, string cardId)
+        {
+            var url = string.Format("{0}/{1}/{2}/{3}", Urls.Customers, customerId, "cards", cardId);
+            var response = Requestor.Delete(url, ApiKey);
+            return Mapper<StripeCard>.MapFromJson(response);
+        }
+    }
 }
