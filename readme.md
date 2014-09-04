@@ -238,7 +238,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 ### Deleting a customer
 
-	See Stripe's [deleting a customer](https://stripe.com/docs/api#delete_customer) for more information.
+	See Stripe's documentation on deleting a customer for more information.
 
 	var customerService = new StripeCustomerService();
 	customerService.Delete(*customerId*);
