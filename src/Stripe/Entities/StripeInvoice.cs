@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -88,5 +89,8 @@ namespace Stripe
 
 		[JsonProperty("discount")]
 		public StripeDiscount StripeDiscount { get; set; }
+
+		[JsonProperty("metadata")]
+		public Dictionary<string, string> Metadata { get; set; }
 	}
 }
