@@ -52,7 +52,7 @@ namespace Stripe.Tests
 			StripeCustomer.StripeCardList.StripeCards.First().Name.ShouldEqual(StripeCard.Name);
 
 		It should_have_the_correct_card_type = () =>
-			StripeCustomer.StripeCardList.StripeCards.First().Type.ShouldEqual("Visa");
+			StripeCustomer.StripeCardList.StripeCards.First().Brand.ShouldEqual("Visa");
 
 		It should_have_a_fingerprint = () =>
 			StripeCustomer.StripeCardList.StripeCards.First().Fingerprint.ShouldNotBeNull();

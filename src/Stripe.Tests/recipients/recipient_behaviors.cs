@@ -18,11 +18,8 @@ namespace Stripe.Tests
 		It should_have_the_correct_live_mode = () =>
 			StripeRecipient.LiveMode.ShouldEqual(false);
 
-		It should_have_the_correct_verified_state = () =>
-			StripeRecipient.Verified.ShouldEqual(true);
-
 		It should_have_the_correct_created_date = () =>
-			StripeRecipient.Created.Value.Day.ShouldEqual(DateTime.UtcNow.Day);
+			StripeRecipient.Created.Day.ShouldEqual(DateTime.UtcNow.Day);
 
 		It should_have_the_correct_type = () =>
 			StripeRecipient.Type.ShouldEqual(StripeRecipientCreateOptions.Type);
