@@ -34,12 +34,5 @@ namespace Stripe.Tests
 
 		It should_have_the_new_quantity = () =>
 			_stripeSubscription.Quantity.ShouldEqual(5);
-
-		// TODO: these tests are failing as of 2.2.6 - I suspect Stripe EOL'd them or something similar. Will look into later.
-		//It should_have_trial_start_date = () =>
-		//	_stripeSubscription.TrialStart.ShouldNotBeNull();
-
-		//It should_have_trial_end_date = () =>
-		//	_stripeSubscription.TrialEnd.ShouldNotBeNull();
 	}
 }

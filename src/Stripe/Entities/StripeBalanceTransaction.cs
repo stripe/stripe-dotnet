@@ -7,12 +7,15 @@ namespace Stripe
 {
 	public class StripeBalanceTransaction : StripeObject
 	{
+		[JsonProperty("object")]
+		public string Object { get; set; }
+
 		[JsonProperty("amount")]
 		public int Amount { get; set; }
 
 		[JsonProperty("available_on")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
-		public DateTime? AvailableOn { get; set; }
+		public DateTime AvailableOn { get; set; }
 
 		[JsonProperty("created")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
