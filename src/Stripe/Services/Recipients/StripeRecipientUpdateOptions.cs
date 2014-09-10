@@ -19,5 +19,11 @@ namespace Stripe
 
 		[JsonProperty("metadata")]
 		public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("default_card")]
+        public string DefaultCardId { get; set; }
+
+        [JsonProperty("card")]
+        public string TokenId { get; set; }
 	}
 }
