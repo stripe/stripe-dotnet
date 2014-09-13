@@ -42,6 +42,9 @@ namespace Stripe
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? CanceledAt { get; set; }
 
+		[JsonProperty("discount")]
+		public StripeDiscount StripeDiscount { get; set; }
+
 		[JsonProperty("ended_at")]
 		[JsonConverter(typeof(StripeDateTimeConverter))]
 		public DateTime? EndedAt { get; set; }
