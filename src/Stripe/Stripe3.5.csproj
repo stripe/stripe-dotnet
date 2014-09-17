@@ -70,6 +70,7 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Entities\StripeBalanceTransaction.cs" />
+    <Compile Include="Entities\StripeBankAccount.cs" />
     <Compile Include="Entities\StripeFee.cs" />
     <Compile Include="Entities\StripeObject.cs" />
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
