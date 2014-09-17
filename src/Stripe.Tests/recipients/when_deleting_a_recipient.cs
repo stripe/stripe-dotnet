@@ -17,8 +17,5 @@ namespace Stripe.Tests
 
 		Because of = () =>
 			_stripeRecipientService.Delete(_createdStripeRecipientId);
-
-		It should_show_as_deleted = () =>
-			_stripeRecipientService.Get(_createdStripeRecipientId).Deleted.ShouldEqual(true);
 	}
 }

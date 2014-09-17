@@ -238,7 +238,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 ### Deleting a customer
 
-Customers that are deleted can still be retrieved through the api. The Deleted property will be set to true if they are deleted.
+	See Stripe's documentation on deleting a customer for more information.
 
 	var customerService = new StripeCustomerService();
 	customerService.Delete(*customerId*);

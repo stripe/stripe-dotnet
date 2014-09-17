@@ -83,5 +83,11 @@ namespace Stripe
 
 		[JsonProperty("metadata")]
 		public Dictionary<string, string> Metadata { get; set; }
+
+		[JsonProperty("receipt_email")]
+		public string ReceiptEmail { get; set; }
+
+		[JsonProperty("statement_description")]
+		public string StatementDescription { get; set; }
 	}
 }

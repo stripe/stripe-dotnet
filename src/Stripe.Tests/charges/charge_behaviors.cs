@@ -65,7 +65,7 @@ namespace Stripe.Tests
 			StripeCharge.StripeCard.Name.ShouldEqual(StripeCard.Name);
 
 		It should_have_the_correct_card_type = () =>
-			StripeCharge.StripeCard.Type.ShouldEqual("Visa");
+			StripeCharge.StripeCard.Brand.ShouldEqual("Visa");
 
 		It should_have_the_correct_card_country = () =>
 			StripeCharge.StripeCard.Country.ShouldEqual("US");
