@@ -13,10 +13,10 @@ namespace Stripe
 		[JsonProperty("type")]
 		public string Type { get; set; }
 
-		[JsonProperty("description")]
-		public string Description { get; set; }
-
 		[JsonProperty("application")]
 		public string Application { get; set; }
+
+		[JsonProperty("description")]
+		public string Description { get; set; }
 	}
 }

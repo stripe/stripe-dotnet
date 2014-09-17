@@ -46,7 +46,7 @@ namespace Stripe.Tests
 			StripeToken.StripeCard.Name.ShouldEqual(StripeTokenCreateOptions.CardName);
 
 		It should_have_the_correct_card_type = () =>
-			StripeToken.StripeCard.Type.ShouldEqual("Visa");
+			StripeToken.StripeCard.Brand.ShouldEqual("Visa");
 
 		It should_have_the_correct_card_country = () =>
 			StripeToken.StripeCard.Country.ShouldEqual("US");
