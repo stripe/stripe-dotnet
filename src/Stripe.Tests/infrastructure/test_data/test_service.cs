@@ -6,10 +6,10 @@ using Newtonsoft.Json;
 
 namespace Stripe.Tests.test_data
 {
-	public class test_service : StripeService
-	{
-		public test_service() : base(null)
-		{
-		}
-	}
+    public class test_service : StripeService
+    {
+        public test_service() : base(null)
+        {
+        }
+    }
 }

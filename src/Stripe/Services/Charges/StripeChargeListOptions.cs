@@ -6,12 +6,12 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-	public class StripeChargeListOptions : StripeListOptions
-	{
-		[JsonProperty("customer")]
-		public string CustomerId { get; set; }
+    public class StripeChargeListOptions : StripeListOptions
+    {
+        [JsonProperty("customer")]
+        public string CustomerId { get; set; }
 
-		[JsonProperty("created")]
-		public StripeDateFilter Created { get; set; }
-	}
+        [JsonProperty("created")]
+        public StripeDateFilter Created { get; set; }
+    }
 }

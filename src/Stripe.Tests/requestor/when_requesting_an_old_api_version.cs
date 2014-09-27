@@ -8,22 +8,22 @@ using NCrunch.Framework;
 
 namespace Stripe.Tests
 {
-	[Serial]
-	public class when_requesting_an_old_api_version
-	{
-		protected static string _response;
+    [Serial]
+    public class when_requesting_an_old_api_version
+    {
+        protected static string _response;
 
-		Because of = () =>
-		{
-			StripeConfiguration.ApiVersion = "2014-03-13"; // adds old Count property to list methods
+        Because of = () =>
+        {
+            StripeConfiguration.ApiVersion = "2014-03-13"; // adds old Count property to list methods
 
-			_response = Requestor.GetString(Urls.Customers);
+            _response = Requestor.GetString(Urls.Customers);
 
-			// restore main supported API version
-			StripeConfiguration.ApiVersion = StripeConfiguration.SupportedApiVersion;
-		};
+            // restore main supported API version
+            StripeConfiguration.ApiVersion = StripeConfiguration.SupportedApiVersion;
+        };
 
-		It should_contain_count_property = () =>
-			_response.ShouldContain("\"count\":");
-	}
+        It should_contain_count_property = () =>
+            _response.ShouldContain("\"count\":");
+    }
 }

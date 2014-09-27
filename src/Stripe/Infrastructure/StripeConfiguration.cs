@@ -3,29 +3,29 @@ using System.Configuration;
 
 namespace Stripe
 {
-	public static class StripeConfiguration
-	{
-		private static string _apiKey;
-		internal const string SupportedApiVersion = "2014-06-13";
+    public static class StripeConfiguration
+    {
+        private static string _apiKey;
+        internal const string SupportedApiVersion = "2014-06-13";
 
-		static StripeConfiguration()
-		{
-			ApiVersion = SupportedApiVersion;
-		}
+        static StripeConfiguration()
+        {
+            ApiVersion = SupportedApiVersion;
+        }
 
-		internal static string GetApiKey()
-		{
-			if (string.IsNullOrEmpty(_apiKey))
-				_apiKey = ConfigurationManager.AppSettings["StripeApiKey"];
+        internal static string GetApiKey()
+        {
+            if (string.IsNullOrEmpty(_apiKey))
+                _apiKey = ConfigurationManager.AppSettings["StripeApiKey"];
 
-			return _apiKey;
-		}
+            return _apiKey;
+        }
 
-		public static void SetApiKey(string newApiKey)
-		{
-			_apiKey = newApiKey;
-		}
+        public static void SetApiKey(string newApiKey)
+        {
+            _apiKey = newApiKey;
+        }
 
-		public static string ApiVersion { get; internal set; }
-	}
+        public static string ApiVersion { get; internal set; }
+    }
 }
