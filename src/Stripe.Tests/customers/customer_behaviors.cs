@@ -11,7 +11,7 @@ namespace Stripe.Tests
         protected static StripePlan StripePlan;
         protected static StripeCoupon StripeCoupon;
         protected static StripeCard StripeCard;
-        
+
         It should_have_a_new_id = () =>
             StripeCustomer.Id.ShouldNotBeNull();
 
@@ -23,6 +23,9 @@ namespace Stripe.Tests
 
         It should_have_the_correct_livemode = () =>
             StripeCustomer.LiveMode.ShouldEqual(false);
+
+        It should_have_the_correct_currency = () =>
+            StripeCustomer.Currency.ShouldEqual(StripePlan.Currency);
 
         It should_have_the_correct_card_address_line_1 = () =>
             StripeCustomer.StripeCardList.StripeCards.First().AddressLine1.ShouldEqual(StripeCard.AddressLine1);
