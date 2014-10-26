@@ -5,6 +5,9 @@ namespace Stripe
 {
     public class StripeCard : StripeObject
     {
+        [JsonProperty("id")]
+        public string CardId { get; set; }
+
         [JsonProperty("object")]
         public string Object { get; set; }
 
@@ -53,8 +56,23 @@ namespace Stripe
         [JsonProperty("country")]
         public string Country { get; set; }
 
+        public string CustomerId { get; set; }
+        public StripeCustomer Customer { get; set; }
+
+        [JsonProperty("customer")]
+        internal object InternalCustomer
+        {
+            set
+            {
+                ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+            }
+        }
+
         [JsonProperty("cvc_check")]
         public string CvcCheck { get; set; }
+
+        [JsonProperty("dynamic_last4")]
+        public string DynamicLast4 { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
