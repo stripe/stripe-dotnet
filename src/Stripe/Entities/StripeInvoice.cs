@@ -72,7 +72,7 @@ namespace Stripe
         public int? Total { get; set; }
 
         [JsonProperty("application_fee")]
-        public int ApplicationFee { get; set; }
+        public int? ApplicationFee { get; set; }
 
         public string ChargeId { get; set; }
         public StripeCharge Charge { get; set; }
@@ -110,7 +110,7 @@ namespace Stripe
 
         [JsonProperty("webhooks_delivered_at")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime WebhooksDeliveredAt { get; set; }
+        public DateTime? WebhooksDeliveredAt { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
