@@ -8,9 +8,6 @@ namespace Stripe
 {
     public class StripeCustomer : StripeObject
     {
-        [JsonProperty("id")]
-        public string CustomerId { get; set; }
-
         [JsonProperty("object")]
         public string Object { get; set; }
 
