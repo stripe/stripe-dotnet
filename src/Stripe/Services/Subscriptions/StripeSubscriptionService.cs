@@ -19,7 +19,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
 
-        public virtual StripeSubscription Create(string customerId, string planId, StripeSubscriptionCreateOptions createOptions)
+        public virtual StripeSubscription Create(string customerId, string planId, StripeSubscriptionCreateOptions createOptions = null)
         {
             var url = string.Format(Urls.Subscriptions, customerId);
             url = this.ApplyAllParameters(createOptions, url, false);
