@@ -4,7 +4,7 @@
     {
         public StripeTokenService(string apiKey = null) : base(apiKey) { }
 
-        public virtual StripeToken Create(StripeTokenCreateOptions createOptions)
+        public virtual StripeToken Create(StripeTokenCreateOptionsBase createOptions)
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Tokens, false);
 

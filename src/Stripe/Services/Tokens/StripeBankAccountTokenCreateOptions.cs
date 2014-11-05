@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public abstract class BankAccountOptions
+    public class StripeBankAccountTokenCreateOptions : StripeTokenCreateOptionsBase
     {
         [JsonProperty("bank_account[country]")]
         public string BankAccountCountry { get; set; }
@@ -12,8 +12,5 @@ namespace Stripe
 
         [JsonProperty("bank_account[account_number]")]
         public string BankAccountNumber { get; set; }
-
-        [JsonProperty("bank_account")]
-        public string TokenId { get; set; }
     }
 }

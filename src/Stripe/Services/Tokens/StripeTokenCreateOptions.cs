@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
-    public class StripeTokenCreateOptions : CreditCardOptions
+    /// <summary>
+    /// Deprecated: Class mantained for compatibility with previous versions.
+    /// Use StripeCardTokenCreateOptions or StripeBankAccountTokenCreateOptions instead.
+    /// </summary>
+    public class StripeTokenCreateOptions : StripeCardTokenCreateOptions
     {
-        [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+
     }
 }

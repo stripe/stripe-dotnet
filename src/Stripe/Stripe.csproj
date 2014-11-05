@@ -136,6 +136,9 @@
     <Compile Include="Services\Subscriptions\StripeSubscriptionUpdateOptions.cs" />
     <Compile Include="Services\Subscriptions\StripeSubscriptionService.cs" />
     <Compile Include="Services\Subscriptions\StripeSubscriptionCreateOptions.cs" />
+    <Compile Include="Services\Tokens\StripeBankAccountTokenCreateOptions.cs" />
+    <Compile Include="Services\Tokens\StripeCardTokenCreateOptions.cs" />
+    <Compile Include="Services\Tokens\StripeTokenCreateOptionsBase.cs" />
     <Compile Include="Services\Tokens\StripeTokenCreateOptions.cs" />
     <Compile Include="Services\Tokens\StripeTokenService.cs" />
     <Compile Include="Infrastructure\StripeException.cs" />
