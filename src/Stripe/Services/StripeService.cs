@@ -1,12 +1,12 @@
 ﻿namespace Stripe
 {
-	public abstract class StripeService
-	{
-		public string ApiKey { get; set; }
+    public abstract class StripeService
+    {
+        public string ApiKey { get; set; }
 
-		public StripeService(string apiKey)
-		{
-			ApiKey = apiKey;
-		}
-	}
+        public StripeService(string apiKey)
+        {
+            ApiKey = apiKey;
+        }
+    }
 }

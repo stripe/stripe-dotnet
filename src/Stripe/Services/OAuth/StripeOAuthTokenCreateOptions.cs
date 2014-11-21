@@ -2,21 +2,21 @@
 
 namespace Stripe
 {
-	public class StripeOAuthTokenCreateOptions
-	{
-		[JsonProperty("code")]
-		public string Code { get; set; }
+    public class StripeOAuthTokenCreateOptions
+    {
+        [JsonProperty("code")]
+        public string Code { get; set; }
 
-		[JsonProperty("client_secret")]
-		public string ClientSecret { get; set; }
+        [JsonProperty("client_secret")]
+        public string ClientSecret { get; set; }
 
-		[JsonProperty("refresh_token")]
-		public string RefreshToken { get; set; }
+        [JsonProperty("refresh_token")]
+        public string RefreshToken { get; set; }
 
-		[JsonProperty("grant_type")]
-		public string GrantType { get; set; }
+        [JsonProperty("grant_type")]
+        public string GrantType { get; set; }
 
-		[JsonProperty("scope")]
-		public string Scope { get; set; }
-	}
+        [JsonProperty("scope")]
+        public string Scope { get; set; }
+    }
 }

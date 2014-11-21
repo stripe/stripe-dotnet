@@ -1,6 +1,6 @@
 ﻿namespace Stripe
 {
-	public class StripeCardCreateOptions : CreditCardOptions
-	{
-	}
+    public class StripeCardCreateOptions : CreditCardOptions
+    {
+    }
 }

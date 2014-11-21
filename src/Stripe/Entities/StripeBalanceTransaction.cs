@@ -5,41 +5,44 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-	public class StripeBalanceTransaction : StripeObject
-	{
-		[JsonProperty("amount")]
-		public int Amount { get; set; }
+    public class StripeBalanceTransaction : StripeObject
+    {
+        [JsonProperty("object")]
+        public string Object { get; set; }
 
-		[JsonProperty("available_on")]
-		[JsonConverter(typeof(StripeDateTimeConverter))]
-		public DateTime? AvailableOn { get; set; }
+        [JsonProperty("amount")]
+        public int Amount { get; set; }
 
-		[JsonProperty("created")]
-		[JsonConverter(typeof(StripeDateTimeConverter))]
-		public DateTime Created { get; set; }
+        [JsonProperty("available_on")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime AvailableOn { get; set; }
 
-		[JsonProperty("currency")]
-		public string Currency { get; set; }
+        [JsonProperty("created")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime Created { get; set; }
 
-		[JsonProperty("fee")]
-		public int Fee { get; set; }
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
 
-		[JsonProperty("fee_details")]
-		public IList<StripeFee> FeeDetails { get; set; }
+        [JsonProperty("fee")]
+        public int Fee { get; set; }
 
-		[JsonProperty("net")]
-		public int Net { get; set; }
+        [JsonProperty("fee_details")]
+        public IList<StripeFee> FeeDetails { get; set; }
 
-		[JsonProperty("status")]
-		public string Status { get; set; }
+        [JsonProperty("net")]
+        public int Net { get; set; }
 
-		[JsonProperty("type")]
-		public string Type { get; set; }
+        [JsonProperty("status")]
+        public string Status { get; set; }
 
-		[JsonProperty("description")]
-		public string Description { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
 
-		[JsonProperty("source")]
-		public string Source { get; set; }
-	}
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+    }
 }

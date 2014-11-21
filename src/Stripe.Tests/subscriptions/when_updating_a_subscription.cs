@@ -5,41 +5,34 @@ using System.Collections.Generic;
 
 namespace Stripe.Tests
 {
-	public class when_updating_a_subscription
-	{
-		private static StripeCustomer _stripeCustomer;
-		private static StripeSubscriptionUpdateOptions _stripeSubscriptionUpdateOptions;
-		private static StripeSubscription _stripeSubscription;
-		private static StripeSubscriptionService _stripeSubscriptionService;
+    public class when_updating_a_subscription
+    {
+        private static StripeCustomer _stripeCustomer;
+        private static StripeSubscriptionUpdateOptions _stripeSubscriptionUpdateOptions;
+        private static StripeSubscription _stripeSubscription;
+        private static StripeSubscriptionService _stripeSubscriptionService;
 
-		Establish context = () =>
-		{
-			var _stripePlanService = new StripePlanService();
-			var _stripePlan = _stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
+        Establish context = () =>
+        {
+            var _stripePlanService = new StripePlanService();
+            var _stripePlan = _stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
 
-			var _stripeCouponService = new StripeCouponService();
-			var _stripeCoupon = _stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid());
+            var _stripeCouponService = new StripeCouponService();
+            var _stripeCoupon = _stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid());
 
-			var _stripeCustomerService = new StripeCustomerService();
-			_stripeCustomer = _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard(_stripePlan.Id, _stripeCoupon.Id, DateTime.UtcNow.AddDays(10)));
-		
-			_stripeSubscriptionService = new StripeSubscriptionService();
+            var _stripeCustomerService = new StripeCustomerService();
+            _stripeCustomer = _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard(_stripePlan.Id, _stripeCoupon.Id, DateTime.UtcNow.AddDays(10)));
+        
+            _stripeSubscriptionService = new StripeSubscriptionService();
 
-			_stripeSubscriptionUpdateOptions = new StripeSubscriptionUpdateOptions();
-			_stripeSubscriptionUpdateOptions.Quantity = 5;
-		};
+            _stripeSubscriptionUpdateOptions = new StripeSubscriptionUpdateOptions();
+            _stripeSubscriptionUpdateOptions.Quantity = 5;
+        };
 
-		Because of = () =>
-			_stripeSubscription = _stripeSubscriptionService.Update(_stripeCustomer.Id, _stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id, _stripeSubscriptionUpdateOptions);
+        Because of = () =>
+            _stripeSubscription = _stripeSubscriptionService.Update(_stripeCustomer.Id, _stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id, _stripeSubscriptionUpdateOptions);
 
-		It should_have_the_new_quantity = () =>
-			_stripeSubscription.Quantity.ShouldEqual(5);
-
-		// TODO: these tests are failing as of 2.2.6 - I suspect Stripe EOL'd them or something similar. Will look into later.
-		//It should_have_trial_start_date = () =>
-		//	_stripeSubscription.TrialStart.ShouldNotBeNull();
-
-		//It should_have_trial_end_date = () =>
-		//	_stripeSubscription.TrialEnd.ShouldNotBeNull();
-	}
+        It should_have_the_new_quantity = () =>
+            _stripeSubscription.Quantity.ShouldEqual(5);
+    }
 }
