@@ -12,6 +12,13 @@ namespace Stripe
         public bool? LiveMode { get; set; }
 
         public string AccountId { get; set; }
+
+        /*
+         * If the user is using the CamelCasePropertyNamesContractResolver and we don't tell the serializer to ignore this property,
+         * the exception 'A member with the name 'account' already exists on 'Stripe.StripeApplicationFee'. Use the JsonPropertyAttribute to specify another name.'
+         * will be thrown
+         */
+        [JsonIgnore]
         public StripeAccount Account { get; set; }
 
         [JsonProperty("account")]
@@ -42,8 +49,16 @@ namespace Stripe
         }
 
         public string CardId { get; set; }
+
+        /*
+         * If the user is using the CamelCasePropertyNamesContractResolver and we don't tell the serializer to ignore this property,
+         * the exception 'A member with the name 'charge' already exists on 'Stripe.StripeApplicationFee'. Use the JsonPropertyAttribute to specify another name.'
+         * will be thrown
+         */
+        [JsonIgnore]
         public StripeCard Card { get; set; }
 
+        [JsonProperty("card")]
         internal object InternalCard
         {
             set
@@ -53,6 +68,13 @@ namespace Stripe
         }
 
         public string ChargeId { get; set; }
+
+        /*
+         * If the user is using the CamelCasePropertyNamesContractResolver and we don't tell the serializer to ignore this property,
+         * the exception 'A member with the name 'charge' already exists on 'Stripe.StripeApplicationFee'. Use the JsonPropertyAttribute to specify another name.'
+         * will be thrown
+         */
+        [JsonIgnore]
         public StripeCharge Charge { get; set; }
 
         [JsonProperty("charge")]

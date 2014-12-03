@@ -30,6 +30,13 @@ namespace Stripe
         public string Currency { get; set; }
 
         public string CustomerId { get; set; }
+
+        /*
+         * If the user is using the CamelCasePropertyNamesContractResolver and we don't tell the serializer to ignore this property,
+         * the exception 'A member with the name 'customer' already exists on 'Stripe.StripeInvoice'. Use the JsonPropertyAttribute to specify another name.'
+         * will be thrown
+         */
+        [JsonIgnore]
         public StripeCustomer Customer { get; set; }
 
         [JsonProperty("customer")]
@@ -75,6 +82,13 @@ namespace Stripe
         public int? ApplicationFee { get; set; }
 
         public string ChargeId { get; set; }
+
+        /*
+         * If the user is using the CamelCasePropertyNamesContractResolver and we don't tell the serializer to ignore this property,
+         * the exception 'A member with the name 'charge' already exists on 'Stripe.StripeInvoice'. Use the JsonPropertyAttribute to specify another name.'
+         * will be thrown
+         */
+        [JsonIgnore]
         public StripeCharge Charge { get; set; }
 
         [JsonProperty("charge")]

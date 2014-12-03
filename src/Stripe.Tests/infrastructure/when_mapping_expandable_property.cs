@@ -22,7 +22,7 @@ namespace Stripe.Tests
             public TestObject Foo { get; set; }
 
             [JsonProperty("foo")]
-            private object FooInternal
+            internal object FooInternal
             {
                 set
                 {
