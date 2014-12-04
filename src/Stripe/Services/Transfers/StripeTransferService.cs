@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+
+#if NET40
 using System.Threading.Tasks;
+#endif
 
 namespace Stripe
 {
@@ -18,6 +21,7 @@ namespace Stripe
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeTransfer> CreateAsync(StripeTransferCreateOptions createOptions)
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Transfers, false);
@@ -26,6 +30,7 @@ namespace Stripe
 
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
+#endif
 
         public virtual StripeTransfer Get(string transferId)
         {
@@ -36,6 +41,7 @@ namespace Stripe
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeTransfer> GetAsync(string transferId)
         {
             var url = FormatGetUrl(transferId);
@@ -44,6 +50,7 @@ namespace Stripe
 
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
+#endif
         
         public virtual StripeTransfer Cancel(string transferId)
         {
@@ -54,6 +61,7 @@ namespace Stripe
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeTransfer> CancelAsync(string transferId)
         {
             var url = FormatCancelUrl(transferId);
@@ -62,6 +70,7 @@ namespace Stripe
 
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
+#endif
         
         public virtual IEnumerable<StripeTransfer> List(StripeTransferListOptions listOptions = null)
         {
@@ -72,6 +81,7 @@ namespace Stripe
             return Mapper<StripeTransfer>.MapCollectionFromJson(response);
         }
 
+#if NET40
         public virtual async Task<IEnumerable<StripeTransfer>> ListAsync(StripeTransferListOptions listOptions = null)
         {
             var url = FormatListUrl(listOptions);
@@ -80,6 +90,7 @@ namespace Stripe
 
             return Mapper<StripeTransfer>.MapCollectionFromJson(response);
         }
+#endif
 
         private string FormatListUrl(StripeTransferListOptions listOptions)
         {

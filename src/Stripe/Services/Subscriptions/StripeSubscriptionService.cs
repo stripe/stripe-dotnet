@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+
+#if NET40
 using System.Threading.Tasks;
+#endif
 
 namespace Stripe
 {
@@ -19,6 +22,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeSubscription> GetAsync(string customerId, string subscriptionId)
         {
             var url = FormatGetUrl(customerId, subscriptionId);
@@ -27,6 +31,7 @@ namespace Stripe
 
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
+#endif
 
         public virtual StripeSubscription Create(string customerId, string planId, StripeSubscriptionCreateOptions createOptions = null)
         {
@@ -37,6 +42,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeSubscription> CreateAsync(string customerId, string planId, StripeSubscriptionCreateOptions createOptions = null)
         {
             var url = FormatCreateUrl(customerId, planId, createOptions);
@@ -45,6 +51,7 @@ namespace Stripe
 
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
+#endif
 
         public virtual StripeSubscription Update(string customerId, string subscriptionId, StripeSubscriptionUpdateOptions updateOptions)
         {
@@ -55,6 +62,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeSubscription> UpdateAsync(string customerId, string subscriptionId, StripeSubscriptionUpdateOptions updateOptions)
         {
             var url = FormatUpdateUrl(customerId, subscriptionId, updateOptions);
@@ -63,6 +71,7 @@ namespace Stripe
 
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
+#endif
         
         public virtual StripeSubscription Cancel(string customerId, string subscriptionId, bool cancelAtPeriodEnd = false)
         {
@@ -73,6 +82,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeSubscription> CancelAsync(string customerId, string subscriptionId, bool cancelAtPeriodEnd = false)
         {
             var url = FormatCancelUrl(customerId, subscriptionId, cancelAtPeriodEnd);
@@ -81,6 +91,7 @@ namespace Stripe
 
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
+#endif
         
         public virtual IEnumerable<StripeSubscription> List(string customerId, StripeListOptions listOptions = null)
         {
@@ -91,6 +102,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapCollectionFromJson(response);
         }
 
+#if NET40
         public virtual async Task<IEnumerable<StripeSubscription>> ListAsync(string customerId, StripeListOptions listOptions = null)
         {
             var url = FormatListUrl(customerId, listOptions);
@@ -99,6 +111,7 @@ namespace Stripe
 
             return Mapper<StripeSubscription>.MapCollectionFromJson(response);
         }
+#endif
 
         private string FormatListUrl(string customerId, StripeListOptions listOptions)
         {

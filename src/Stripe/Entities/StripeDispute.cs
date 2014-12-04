@@ -18,6 +18,8 @@ namespace Stripe
         public int? Amount { get; set; }
 
         public string ChargeId { get; set; }
+
+        [JsonIgnore]
         public StripeCharge Charge { get; set; }
 
         [JsonProperty("charge")]

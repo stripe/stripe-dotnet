@@ -1,0 +1,20 @@
+﻿{
+  "id": "tr_155TMK2eZvKYlo2Cplnoz5te",
+  "object": "transfer",
+  "created": 1417575560,
+  "date": 1417737600,
+  "livemode": false,
+  "amount": 3673466,
+  "currency": "usd",
+  "status": "pending",
+  "type": "bank_account",
+  "balance_transaction": "txn_153Otp2eZvKYlo2CgqvbRlEA",
+  "destination": null,
+  "description": "STRIPE TRANSFER",
+  "failure_message": null,
+  "failure_code": null,
+  "metadata": {
+  },
+  "statement_description": null,
+  "recipient": "rc_imadethisup"
+}

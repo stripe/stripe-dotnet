@@ -33,18 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Machine.Specifications">
-      <HintPath>..\packages\Machine.Specifications.0.8.2\tools\Machine.Specifications.dll</HintPath>
+    <Reference Include="Machine.Specifications, Version=0.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Machine.Specifications.0.9.1\lib\net40\Machine.Specifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications.Clr4, Version=0.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Machine.Specifications.0.9.1\lib\net40\Machine.Specifications.Clr4.dll</HintPath>
     </Reference>
     <Reference Include="Machine.Specifications.Should">
       <HintPath>..\packages\Machine.Specifications.Should.0.7.2\lib\net40\Machine.Specifications.Should.dll</HintPath>
     </Reference>
-    <Reference Include="NCrunch.Framework">
-      <HintPath>..\packages\NCrunch.Framework.2.6.0.18\lib\NCrunch.Framework.dll</HintPath>
+    <Reference Include="NCrunch.Framework, Version=2.8.0.34, Culture=neutral, PublicKeyToken=01d101bf6f3e0aea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NCrunch.Framework.2.8.0.34\lib\NCrunch.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -84,11 +90,20 @@
     <Compile Include="customers\when_creating_a_customer_with_a_defaultcard_expanded.cs" />
     <Compile Include="customers\when_creating_a_customer_with_an_api_key.cs" />
     <Compile Include="customers\when_listing_customers_with_expanded_properties.cs" />
+    <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_application_fee.cs" />
+    <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_card.cs" />
+    <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_charge.cs" />
+    <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_discount.cs" />
+    <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_dispute.cs" />
+    <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_invoice.cs" />
+    <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_invoice_item.cs" />
+    <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_transfer.cs" />
     <Compile Include="infrastructure\test_data\test_service.cs" />
     <Compile Include="infrastructure\when_building_parameters_with_expandable_properties.cs" />
     <Compile Include="infrastructure\when_mapping_expandable_property.cs" />
     <Compile Include="infrastructure\test_data\sample_object.cs" />
     <Compile Include="infrastructure\when_building_parameters.cs" />
+    <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_subscription.cs" />
     <Compile Include="infrastructure\when_passed_only_url_to_parameter_builder.cs" />
     <Compile Include="infrastructure\when_serializing_an_equals_datefilter.cs" />
     <Compile Include="infrastructure\when_serializing_a_datefilter_query.cs" />
@@ -197,6 +212,17 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="infrastructure\test_data\transfer.json" />
+    <Content Include="infrastructure\test_data\charge.json" />
+    <Content Include="infrastructure\test_data\card.json" />
+    <Content Include="infrastructure\test_data\application_fee.json" />
+    <Content Include="infrastructure\test_data\discount.json" />
+    <Content Include="infrastructure\test_data\dispute.json" />
+    <Content Include="infrastructure\test_data\invoice_item.json" />
+    <Content Include="infrastructure\test_data\invoice.json" />
+    <Content Include="infrastructure\test_data\subscription.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

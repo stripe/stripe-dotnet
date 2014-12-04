@@ -18,6 +18,8 @@ namespace Stripe
         public StripeCoupon StripeCoupon { get; set; }
 
         public string CustomerId { get; set; }
+
+        [JsonIgnore]
         public StripeCustomer Customer { get; set; }
 
         [JsonProperty("customer")]

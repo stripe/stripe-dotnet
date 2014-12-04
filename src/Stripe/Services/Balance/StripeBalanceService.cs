@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+
+#if NET40
 using System.Threading.Tasks;
+#endif
 
 namespace Stripe
 {
@@ -14,12 +17,14 @@ namespace Stripe
             return Mapper<StripeBalance>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeBalance> GetAsync()
         {
             var response = await Requestor.GetStringAsync(Urls.Balance, ApiKey);
 
             return Mapper<StripeBalance>.MapFromJson(response);
         }
+#endif
 
         public virtual StripeBalanceTransaction Get(string id)
         {
@@ -30,6 +35,7 @@ namespace Stripe
             return Mapper<StripeBalanceTransaction>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeBalanceTransaction> GetAsync(string id)
         {
             var url = FormatGetWithIdUrl(id);
@@ -38,6 +44,7 @@ namespace Stripe
 
             return Mapper<StripeBalanceTransaction>.MapFromJson(response);
         }
+#endif
 
         public virtual IEnumerable<StripeBalanceTransaction> List(StripeBalanceTransactionListOptions options = null)
         {
@@ -48,6 +55,7 @@ namespace Stripe
             return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(response);
         }
 
+#if NET40
         public virtual async Task<IEnumerable<StripeBalanceTransaction>> ListAsync(StripeBalanceTransactionListOptions options = null)
         {
             var url = FormatListUrl(options);
@@ -56,6 +64,7 @@ namespace Stripe
 
             return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(response);
         }
+#endif
 
         private string FormatListUrl(StripeBalanceTransactionListOptions options)
         {

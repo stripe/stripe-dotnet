@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+
+#if NET40
 using System.Threading.Tasks;
+#endif
 
 namespace Stripe
 {
@@ -18,6 +21,7 @@ namespace Stripe
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeCustomer> CreateAsync(StripeCustomerCreateOptions createOptions)
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Customers, false);
@@ -26,6 +30,7 @@ namespace Stripe
 
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
+#endif
 
         public virtual StripeCustomer Get(string customerId)
         {
@@ -36,6 +41,7 @@ namespace Stripe
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
         
+#if NET40
         public virtual async Task<StripeCustomer> GetAsync(string customerId)
         {
             var url = FormatGetUrl(customerId);
@@ -44,6 +50,7 @@ namespace Stripe
 
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
+#endif
 
         public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
         {
@@ -54,6 +61,7 @@ namespace Stripe
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeCustomer> UpdateAsync(string customerId, StripeCustomerUpdateOptions updateOptions)
         {
             var url = FormatUpdateUrl(customerId, updateOptions);
@@ -62,6 +70,7 @@ namespace Stripe
 
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
+#endif
 
         public virtual void Delete(string customerId)
         {
@@ -70,12 +79,14 @@ namespace Stripe
             Requestor.Delete(url, ApiKey);
         }
 
+#if NET40
         public virtual async Task DeleteAsync(string customerId)
         {
             var url = FormatDeleteUrl(customerId);
 
             await Requestor.DeleteAsync(url, ApiKey);
         }
+#endif
 
         public virtual IEnumerable<StripeCustomer> List(StripeCustomerListOptions listOptions = null)
         {
@@ -86,6 +97,7 @@ namespace Stripe
             return Mapper<StripeCustomer>.MapCollectionFromJson(response);
         }
 
+#if NET40
         public virtual async Task<IEnumerable<StripeCustomer>> ListAsync(StripeCustomerListOptions listOptions = null)
         {
             var url = FormatListUrl(listOptions);
@@ -94,6 +106,7 @@ namespace Stripe
 
             return Mapper<StripeCustomer>.MapCollectionFromJson(response);
         }
+#endif
 
         private string FormatListUrl(StripeCustomerListOptions listOptions)
         {

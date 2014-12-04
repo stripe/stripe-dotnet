@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+
+#if NET40
 using System.Threading.Tasks;
+#endif
 
 namespace Stripe
 {
@@ -20,6 +23,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeCharge> CreateAsync(StripeChargeCreateOptions createOptions)
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Charges, false);
@@ -28,6 +32,7 @@ namespace Stripe
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
+#endif
 
         public virtual StripeCharge Get(string chargeId)
         {
@@ -38,6 +43,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeCharge> GetAsync(string chargeId)
         {
             var url = FormatGetUrl(chargeId);
@@ -46,6 +52,7 @@ namespace Stripe
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
+#endif
 
         public virtual StripeCharge Refund(string chargeId, int? refundAmount = null, bool? refundApplicationFee = null)
         {
@@ -56,6 +63,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeCharge> RefundAsync(string chargeId, int? refundAmount = null, bool? refundApplicationFee = null)
         {
             var url = FormatRefundUrl(chargeId, refundAmount, refundApplicationFee);
@@ -64,6 +72,7 @@ namespace Stripe
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
+#endif
         
         public virtual IEnumerable<StripeCharge> List(StripeChargeListOptions listOptions = null)
         {
@@ -74,6 +83,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapCollectionFromJson(response);
         }
 
+#if NET40
         public virtual async Task<IEnumerable<StripeCharge>> ListAsync(StripeChargeListOptions listOptions = null)
         {
             var url = FormatListUrl(listOptions);
@@ -82,6 +92,7 @@ namespace Stripe
 
             return Mapper<StripeCharge>.MapCollectionFromJson(response);
         }
+#endif
 
         public virtual StripeCharge Capture(string chargeId, int? captureAmount = null, int? applicationFee = null)
         {
@@ -92,6 +103,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeCharge> CaptureAsync(string chargeId, int? captureAmount = null, int? applicationFee = null)
         {
             var url = FormatCaptureUrl(chargeId, captureAmount, applicationFee);
@@ -100,6 +112,7 @@ namespace Stripe
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
+#endif
 
         private string FormatCaptureUrl(string chargeId, int? captureAmount, int? applicationFee)
         {

@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Stripe
 {
@@ -18,6 +20,7 @@ namespace Stripe
             return Mapper<StripeDispute>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeDispute> UpdateAsync(string chargeId, string evidence = null)
         {
             var url = FormatUpdateUrl(chargeId, evidence);
@@ -26,6 +29,7 @@ namespace Stripe
 
             return Mapper<StripeDispute>.MapFromJson(response);
         }
+#endif
 
         private string FormatUpdateUrl(string chargeId, string evidence)
         {

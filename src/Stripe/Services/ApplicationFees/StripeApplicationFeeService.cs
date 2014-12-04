@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+
+#if NET40
 using System.Threading.Tasks;
+#endif
 
 namespace Stripe
 {
@@ -20,6 +23,7 @@ namespace Stripe
             return Mapper<StripeApplicationFee>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeApplicationFee> GetAsync(string applicationFeeId)
         {
             var url = FormatGetUrl(applicationFeeId);
@@ -28,7 +32,8 @@ namespace Stripe
 
             return Mapper<StripeApplicationFee>.MapFromJson(response);
         }
-        
+#endif
+
         public virtual StripeApplicationFee Refund(string applicationFeeId, int? refundAmount = null)
         {
             var url = FormatRefundUrl(applicationFeeId, refundAmount);
@@ -38,6 +43,7 @@ namespace Stripe
             return Mapper<StripeApplicationFee>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeApplicationFee> RefundAsync(string applicationFeeId, int? refundAmount = null)
         {
             var url = FormatRefundUrl(applicationFeeId, refundAmount);
@@ -46,6 +52,7 @@ namespace Stripe
 
             return Mapper<StripeApplicationFee>.MapFromJson(response);
         }
+#endif
 
         public virtual IEnumerable<StripeApplicationFee> List(StripeApplicationFeeListOptions listOptions)
         {
@@ -56,6 +63,7 @@ namespace Stripe
             return Mapper<StripeApplicationFee>.MapCollectionFromJson(response);
         }
 
+#if NET40
         public virtual async Task<IEnumerable<StripeApplicationFee>> ListAsync(StripeApplicationFeeListOptions listOptions)
         {
             var url = FormatListUrl(listOptions);
@@ -64,6 +72,7 @@ namespace Stripe
 
             return Mapper<StripeApplicationFee>.MapCollectionFromJson(response);
         }
+#endif
 
         private string FormatListUrl(StripeApplicationFeeListOptions listOptions)
         {

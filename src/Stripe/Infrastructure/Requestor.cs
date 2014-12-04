@@ -4,7 +4,10 @@ using System.Net;
 using System.Text;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+
+#if NET40
 using System.Threading.Tasks;
+#endif
 
 namespace Stripe
 {
@@ -17,12 +20,14 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
+#if NET40
         public static Task<string> GetStringAsync(string url, string apiKey = null)
         {
             var wr = GetWebRequest(url, "GET", apiKey);
 
             return ExecuteWebRequestAsync(wr);
         }
+#endif
 
         public static string PostString(string url, string apiKey = null)
         {
@@ -31,12 +36,14 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
+#if NET40
         public static Task<string> PostStringAsync(string url, string apiKey = null)
         {
             var wr = GetWebRequest(url, "POST", apiKey);
 
             return ExecuteWebRequestAsync(wr);
         }
+#endif
 
         public static string PostStringBearer(string url, string apiKey = null)
         {
@@ -45,12 +52,14 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
+#if NET40
         public static Task<string> PostStringBearerAsync(string url, string apiKey = null)
         {
             var wr = GetWebRequest(url, "POST", apiKey, true);
 
             return ExecuteWebRequestAsync(wr);
         }
+#endif
 
         public static string Delete(string url, string apiKey = null)
         {
@@ -59,12 +68,14 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
+#if NET40
         public static Task<string> DeleteAsync(string url, string apiKey = null)
         {
             var wr = GetWebRequest(url, "DELETE", apiKey);
 
             return ExecuteWebRequestAsync(wr);
         }
+#endif
 
         internal static WebRequest GetWebRequest(string url, string method, string apiKey = null, bool useBearer = false)
         {
@@ -142,6 +153,7 @@ namespace Stripe
             }
         }
 
+#if NET40
         private static async Task<string> ExecuteWebRequestAsync(WebRequest webRequest)
         {
             var verificationCallback = new RemoteCertificateValidationCallback(StripeCertificateVerificationCallback);
@@ -168,6 +180,7 @@ namespace Stripe
                 ServicePointManager.ServerCertificateValidationCallback -= verificationCallback;
             }
         }
+#endif
 
         private static void MaybeThrowStripeExceptionFromWebException(WebRequest webRequest, WebException webException)
         {
@@ -194,6 +207,7 @@ namespace Stripe
             }
         }
 
+#if NET40
         private static async Task<string> ReadStreamAsync(Stream stream)
         {
             using (var reader = new StreamReader(stream, Encoding.UTF8))
@@ -201,5 +215,6 @@ namespace Stripe
                 return await reader.ReadToEndAsync();
             }
         }
+#endif
     }
 }

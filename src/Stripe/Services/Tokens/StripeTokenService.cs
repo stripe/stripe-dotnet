@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿#if NET40
+using System.Threading.Tasks;
+#endif
 
 namespace Stripe
 {
@@ -15,6 +17,7 @@ namespace Stripe
             return Mapper<StripeToken>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeToken> CreateAsync(StripeTokenCreateOptions createOptions)
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Tokens, false);
@@ -23,6 +26,7 @@ namespace Stripe
 
             return Mapper<StripeToken>.MapFromJson(response);
         }
+#endif
 
         public virtual StripeToken Get(string tokenId)
         {
@@ -33,6 +37,7 @@ namespace Stripe
             return Mapper<StripeToken>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeToken> GetAsync(string tokenId)
         {
             var url = FormatGetUrl(tokenId);
@@ -41,6 +46,7 @@ namespace Stripe
 
             return Mapper<StripeToken>.MapFromJson(response);
         }
+#endif
 
         private static string FormatGetUrl(string tokenId)
         {

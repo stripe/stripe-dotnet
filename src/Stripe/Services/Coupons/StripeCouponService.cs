@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+
+#if NET40
 using System.Threading.Tasks;
+#endif
 
 namespace Stripe
 {
@@ -16,6 +19,7 @@ namespace Stripe
             return Mapper<StripeCoupon>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeCoupon> CreateAsync(StripeCouponCreateOptions createOptions)
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Coupons, false);
@@ -24,6 +28,7 @@ namespace Stripe
 
             return Mapper<StripeCoupon>.MapFromJson(response);
         }
+#endif
 
         public virtual StripeCoupon Get(string couponId)
         {
@@ -34,6 +39,7 @@ namespace Stripe
             return Mapper<StripeCoupon>.MapFromJson(response);
         }
 
+#if NET40
         public virtual async Task<StripeCoupon> GetAsync(string couponId)
         {
             var url = FormatGetUrl(couponId);
@@ -42,6 +48,7 @@ namespace Stripe
 
             return Mapper<StripeCoupon>.MapFromJson(response);
         }
+#endif
 
         public virtual void Delete(string couponId)
         {
@@ -50,12 +57,14 @@ namespace Stripe
             Requestor.Delete(url, ApiKey);
         }
         
+#if NET40
         public virtual async Task DeleteAsync(string couponId)
         {
             var url = FormatDeleteUrl(couponId);
 
             await Requestor.DeleteAsync(url, ApiKey);
         }
+#endif
 
         public virtual IEnumerable<StripeCoupon> List(StripeListOptions listOptions = null)
         {
@@ -66,6 +75,7 @@ namespace Stripe
             return Mapper<StripeCoupon>.MapCollectionFromJson(response);
         }
 
+#if NET40
         public virtual async Task<IEnumerable<StripeCoupon>> ListAsync(StripeListOptions listOptions = null)
         {
             var url = FormatListUrl(listOptions);
@@ -74,6 +84,7 @@ namespace Stripe
 
             return Mapper<StripeCoupon>.MapCollectionFromJson(response);
         }
+#endif
 
         private string FormatListUrl(StripeListOptions listOptions)
         {

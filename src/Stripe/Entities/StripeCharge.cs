@@ -34,6 +34,8 @@ namespace Stripe
         public string Currency { get; set; }
 
         public string CustomerId { get; set; }
+
+        [JsonIgnore]
         public StripeCustomer Customer { get; set; }
 
         [JsonProperty("customer")]
@@ -61,6 +63,8 @@ namespace Stripe
         public StripeCard StripeCard { get; set; }
 
         public string InvoiceId { get; set; }
+
+        [JsonIgnore]
         public StripeInvoice Invoice { get; set; }
 
         [JsonProperty("invoice")]

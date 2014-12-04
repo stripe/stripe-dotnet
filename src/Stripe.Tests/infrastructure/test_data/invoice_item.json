@@ -1,0 +1,31 @@
+﻿{
+  "object": "invoiceitem",
+  "id": "ii_150wVk2eZvKYlo2CSva6SJbb",
+  "date": 1416495980,
+  "amount": 15000,
+  "livemode": false,
+  "proration": true,
+  "currency": "usd",
+  "customer": "cus_5GC5XeHUC4TmO9",
+  "description": "Remaining time on Bar after 20 Nov 2014",
+  "metadata": {
+  },
+  "invoice": "in_150wVl2eZvKYlo2COqibpian",
+  "subscription": "sub_5BJ7ZvMzIAGQaS",
+  "quantity": 1,
+  "plan": {
+    "interval": "week",
+    "name": "Bar",
+    "created": 1416495970,
+    "amount": 100000,
+    "currency": "usd",
+    "id": "13476bar1416495970",
+    "object": "plan",
+    "livemode": false,
+    "interval_count": 1,
+    "trial_period_days": null,
+    "metadata": {
+    },
+    "statement_description": null
+  }
+}

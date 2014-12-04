@@ -19,10 +19,12 @@ namespace Stripe.Tests
         public class TestParent
         {
             public string FooId { get; set; }
+
+            [JsonIgnore]
             public TestObject Foo { get; set; }
 
             [JsonProperty("foo")]
-            private object FooInternal
+            internal object FooInternal
             {
                 set
                 {

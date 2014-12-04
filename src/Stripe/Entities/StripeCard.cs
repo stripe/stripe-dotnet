@@ -54,6 +54,8 @@ namespace Stripe
         public string Country { get; set; }
 
         public string CustomerId { get; set; }
+
+        [JsonIgnore]
         public StripeCustomer Customer { get; set; }
 
         [JsonProperty("customer")]
@@ -75,6 +77,8 @@ namespace Stripe
         public string Name { get; set; }
 
         public string RecipientId { get; set; }
+
+        [JsonIgnore]
         public StripeRecipient Recipient { get; set; }
 
         [JsonProperty("recipient")]
