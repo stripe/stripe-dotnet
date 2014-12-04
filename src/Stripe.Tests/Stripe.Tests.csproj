@@ -44,8 +44,9 @@
     <Reference Include="Machine.Specifications.Should">
       <HintPath>..\packages\Machine.Specifications.Should.0.7.2\lib\net40\Machine.Specifications.Should.dll</HintPath>
     </Reference>
-    <Reference Include="NCrunch.Framework">
-      <HintPath>..\packages\NCrunch.Framework.2.6.0.18\lib\NCrunch.Framework.dll</HintPath>
+    <Reference Include="NCrunch.Framework, Version=2.8.0.34, Culture=neutral, PublicKeyToken=01d101bf6f3e0aea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NCrunch.Framework.2.8.0.34\lib\NCrunch.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

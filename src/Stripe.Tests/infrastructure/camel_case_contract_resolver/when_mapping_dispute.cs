@@ -4,7 +4,7 @@ using Machine.Specifications;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Stripe.Tests.camel_case_contract_resolver
+namespace Stripe.Tests
 {
     public class when_mapping_dispute
     {
@@ -18,13 +18,14 @@ namespace Stripe.Tests.camel_case_contract_resolver
             };
         }
 
-        private Because of = () =>
+        Because of = () =>
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../infrastructure", "test_data", "dispute.json");
             var json = File.ReadAllText(path);
             _dispute = Mapper<StripeDispute>.MapFromJson(json);
         };
 
-        private It should_not_throw_exception = () => _dispute.ChargeId.ShouldEqual("ch_14aX6m2eZvKYlo2C1awwC61Y");
+        It should_not_throw_exception = () =>
+            _dispute.ChargeId.ShouldEqual("ch_14aX6m2eZvKYlo2C1awwC61Y");
     }
 }

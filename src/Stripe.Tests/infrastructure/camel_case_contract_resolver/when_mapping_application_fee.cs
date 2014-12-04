@@ -4,7 +4,7 @@ using Machine.Specifications;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Stripe.Tests.camel_case_contract_resolver
+namespace Stripe.Tests
 {
     public class when_mapping_application_fee
     {
@@ -18,14 +18,14 @@ namespace Stripe.Tests.camel_case_contract_resolver
             };
         }
 
-        private Because of = () =>
+        Because of = () =>
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../infrastructure", "test_data", "application_fee.json");
             var json = File.ReadAllText(path);
             _fee = Mapper<StripeApplicationFee>.MapFromJson(json);
         };
 
-        private It should_not_throw_exception = () =>
+        It should_not_throw_exception = () =>
         {
             _fee.AccountId.ShouldEqual("acct_1032D82eZvKYlo2C");
             _fee.BalanceTransactionId.ShouldEqual("txn_153Otp2eZvKYlo2CgqvbRlEA");

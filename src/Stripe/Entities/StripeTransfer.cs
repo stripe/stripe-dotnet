@@ -66,11 +66,6 @@ namespace Stripe
 
         public string RecipientId { get; set; }
 
-        /*
-         * If the user is using the CamelCasePropertyNamesContractResolver and we don't tell the serializer to ignore this property,
-         * the exception 'A member with the name 'recipient' already exists on 'Stripe.StripeTransfer'. Use the JsonPropertyAttribute to specify another name.'
-         * will be thrown
-         */
         [JsonIgnore]
         public StripeRecipient Recipient { get; set; }
 

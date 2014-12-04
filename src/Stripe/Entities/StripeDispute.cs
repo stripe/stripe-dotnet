@@ -19,11 +19,6 @@ namespace Stripe
 
         public string ChargeId { get; set; }
 
-        /*
-         * If the user is using the CamelCasePropertyNamesContractResolver and we don't tell the serializer to ignore this property,
-         * the exception 'A member with the name 'charge' already exists on 'Stripe.StripeDispute'. Use the JsonPropertyAttribute to specify another name.'
-         * will be thrown
-         */
         [JsonIgnore]
         public StripeCharge Charge { get; set; }
 
