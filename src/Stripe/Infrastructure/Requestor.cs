@@ -4,6 +4,7 @@ using System.Net;
 using System.Text;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 
 namespace Stripe
 {
@@ -16,11 +17,25 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
+        public static Task<string> GetStringAsync(string url, string apiKey = null)
+        {
+            var wr = GetWebRequest(url, "GET", apiKey);
+
+            return ExecuteWebRequestAsync(wr);
+        }
+
         public static string PostString(string url, string apiKey = null)
         {
             var wr = GetWebRequest(url, "POST", apiKey);
 
             return ExecuteWebRequest(wr);
+        }
+
+        public static Task<string> PostStringAsync(string url, string apiKey = null)
+        {
+            var wr = GetWebRequest(url, "POST", apiKey);
+
+            return ExecuteWebRequestAsync(wr);
         }
 
         public static string PostStringBearer(string url, string apiKey = null)
@@ -30,11 +45,25 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
+        public static Task<string> PostStringBearerAsync(string url, string apiKey = null)
+        {
+            var wr = GetWebRequest(url, "POST", apiKey, true);
+
+            return ExecuteWebRequestAsync(wr);
+        }
+
         public static string Delete(string url, string apiKey = null)
         {
             var wr = GetWebRequest(url, "DELETE", apiKey);
 
             return ExecuteWebRequest(wr);
+        }
+
+        public static Task<string> DeleteAsync(string url, string apiKey = null)
+        {
+            var wr = GetWebRequest(url, "DELETE", apiKey);
+
+            return ExecuteWebRequestAsync(wr);
         }
 
         internal static WebRequest GetWebRequest(string url, string method, string apiKey = null, bool useBearer = false)
@@ -103,19 +132,7 @@ namespace Stripe
             }
             catch (WebException webException)
             {
-                if (webException.Response != null)
-                {
-                    var statusCode = ((HttpWebResponse)webException.Response).StatusCode;
-                    
-                    var stripeError = new StripeError();
-
-                    if(webRequest.RequestUri.ToString().Contains("oauth"))
-                        stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()));
-                    else
-                        stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()), "error");
-
-                    throw new StripeException(statusCode, stripeError, stripeError.Message);
-                }
+                MaybeThrowStripeExceptionFromWebException(webRequest, webException);
 
                 throw;
             }
@@ -125,11 +142,63 @@ namespace Stripe
             }
         }
 
+        private static async Task<string> ExecuteWebRequestAsync(WebRequest webRequest)
+        {
+            var verificationCallback = new RemoteCertificateValidationCallback(StripeCertificateVerificationCallback);
+
+            try
+            {
+                ServicePointManager.ServerCertificateValidationCallback += verificationCallback;
+
+                var task = Task.Factory.FromAsync(webRequest.BeginGetResponse, (Func<IAsyncResult, WebResponse>)webRequest.EndGetResponse, null);
+                
+                using (var response = await task)
+                {                    
+                    return await ReadStreamAsync(response.GetResponseStream());
+                }
+            }
+            catch (WebException webException)
+            {
+                MaybeThrowStripeExceptionFromWebException(webRequest, webException);
+
+                throw;
+            }
+            finally
+            {
+                ServicePointManager.ServerCertificateValidationCallback -= verificationCallback;
+            }
+        }
+
+        private static void MaybeThrowStripeExceptionFromWebException(WebRequest webRequest, WebException webException)
+        {
+            if (webException.Response != null)
+            {
+                var statusCode = ((HttpWebResponse)webException.Response).StatusCode;
+
+                var stripeError = new StripeError();
+
+                if (webRequest.RequestUri.ToString().Contains("oauth"))
+                    stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()));
+                else
+                    stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()), "error");
+
+                throw new StripeException(statusCode, stripeError, stripeError.Message);
+            }
+        }
+
         private static string ReadStream(Stream stream)
         {
             using (var reader = new StreamReader(stream, Encoding.UTF8))
             {
                 return reader.ReadToEnd();
+            }
+        }
+
+        private static async Task<string> ReadStreamAsync(Stream stream)
+        {
+            using (var reader = new StreamReader(stream, Encoding.UTF8))
+            {
+                return await reader.ReadToEndAsync();
             }
         }
     }
