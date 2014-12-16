@@ -6,7 +6,7 @@ namespace Stripe
     public class StripeInvoiceItemUpdateOptions
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
