@@ -28,6 +28,7 @@
   "canceled_at": null,
   "quantity": 1,
   "application_fee_percent": null,
+  "tax_percent": null,
   "discount": null,
   "metadata": {
   }
