@@ -56,6 +56,9 @@ If your site has multiple offerings, plans are perfect. You can create as many p
 
 	var planService = new StripePlanService();
 	StripePlan response = planService.Create(myPlan);
+	
+	// async version:
+	StripePlan response = await planService.CreateAsync(myPlan);
 
 The returned StripePlan entity above will have a unique Id. You will want to persist this for later. When you create a customer you will be able to assign them
 to a plan id (or not)
@@ -68,21 +71,33 @@ to a plan id (or not)
 
 	var planService = new StripePlanService();
 	StripePlan response = planService.Update(*planId*, myPlan);
+	
+	// async version:
+	StripePlan response = await planService.UpdateAsync(*planId*, myPlan);
 
 ### Retrieving a plan
 
 	var planService = new StripePlanService();
 	StripePlan response = planService.Get(*planId*);
+	
+	// async version:
+	StripePlan response = await planService.GetAsync(*planId*);
 
 ### Deleting a plan
 
 	var planService = new StripePlanService();
 	planService.Delete(*planId*);
+	
+	// async version: 
+	await planService.DeleteAsync(*planId*);
 
 ### List all plans
 
 	var planService = new StripePlanService();
 	IEnumerable<StripePlan> response = planService.List(); // optional StripeListOptions
+	
+	// async version:
+	IEnumerable<StripePlan> response = await planService.ListAsync(); // optional StripeListOptions
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -103,21 +118,33 @@ Coupons (queue-pons not coo-pons)
 
 	var couponService = new StripeCouponService();
 	StripeCoupon response = couponService.Create(myCoupon);
+	
+	// async version:
+	StripeCoupon response = await couponService.CreateAsync(myCoupon);
 
 ### Retrieving a coupon
 
 	var couponService = new StripeCouponService();
 	StripeCoupon response = couponService.Get(*couponId*);
+	
+	// async version:
+	StripeCoupon response = await couponService.GetAsync(*couponId*);
 
 ### Deleting a coupon
 
 	var couponService = new StripeCouponService();
 	couponService.Delete(*couponId*);
+	
+	// async version:
+	await couponService.DeleteAsync(*couponId*);
 
 ### List all coupons
 
 	var couponService = new StripeCouponService();
 	IEnumerable<StripeCoupon> response = couponService.List();  // optional StripeListOptions
+	
+	// async version:
+	IEnumerable<StripeCoupon> response = await couponService.ListAsync();  // optional StripeListOptions
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -149,6 +176,9 @@ customer or a charge, but only used once.
 
 	var tokenService = new StripeTokenService();
 	StripeToken stripeToken = tokenService.Create(myToken);
+	
+	// async version:
+	StripeToken stripeToken = await tokenService.CreateAsync(myToken);
 
 Tokens are very useful if you don't want to store the customers credit card information on your servers (pci compliance).
 
@@ -156,6 +186,9 @@ Tokens are very useful if you don't want to store the customers credit card info
 
 	var tokenService = new StripeTokenService();
 	StripeToken stripeToken = tokenService.Get(*tokenId*);
+	
+	// async version:
+	StripeToken stripeToken = await tokenService.GetAsync(*tokenId*);
 
 Customers
 ---------
@@ -196,6 +229,9 @@ a credit card or token, and various meta data.
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Create(myCustomer);
+	
+	// async version:
+	StripeCustomer stripeCustomer = await customerService.CreateAsync(myCustomer);
 
 Don't let this be intimidating - all of these fields are optional. You could just create a customer with an email if you wanted.
 
@@ -230,11 +266,17 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Update(*customerId*, myCustomer);
+	
+	// async version:
+	StripeCustomer stripeCustomer = await customerService.UpdateAsync(*customerId*, myCustomer);
 
 ### Retrieving a customer
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Get(*customerId*);
+	
+	// async version:
+	StripeCustomer stripeCustomer = await customerService.GetAsync(*customerId*);
 
 ### Deleting a customer
 
@@ -242,11 +284,17 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 	var customerService = new StripeCustomerService();
 	customerService.Delete(*customerId*);
+	
+	// async version:
+	await customerService.DeleteAsync(*customerId*);
 
 ### List all customers
 
 	var customerService = new StripeCustomerService();
 	IEnumerable<StripeCustomer> response = customerService.List(); // optional StripeCustomerListOptions
+	
+	// async version:
+	IEnumerable<StripeCustomer> response = await customerService.ListAsync(); // optional StripeCustomerListOptions
 
 StripeCustomerListOptions supports [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
@@ -257,26 +305,41 @@ Subscriptions
 
 	var subscriptionService = new StripeSubscriptionService();
 	StripeSubscription stripeSubscription = subscriptionService.Create(*customerId*, *planId*); // optional StripeSubscriptionCreateOptions
+	
+	// async version:
+	StripeSubscription stripeSubscription = await subscriptionService.CreateAsync(*customerId*, *planId*); // optional StripeSubscriptionCreateOptions
 
 ### Updating a subscription
 
 	var subscriptionService = new StripeSubscriptionService();
 	StripeSubscription stripeSubscription = subscriptionService.Update(*customerId*, *subscriptionId*); // optional StripeSubscriptionUpdateOptions
+	
+	// async version:
+	StripeSubscription stripeSubscription = await subscriptionService.UpdateAsync(*customerId*, *subscriptionId*); // optional StripeSubscriptionUpdateOptions
 
 ### Retrieving a subscription
 
 	var subscriptionService = new StripeSubscriptionService();
 	StripeSubscription stripeSubscription = subscriptionService.Get(*subscriptionId*);
+	
+	// async version:
+	StripeSubscription stripeSubscription = await subscriptionService.GetAsync(*subscriptionId*);
 
 ### Canceling a subscription
 
 	var subscriptionService = new StripeSubscriptionService();
 	subscriptionService.Cancel(*customerId*, *subscriptionId*); // optional cancelAtPeriodEnd flag
+	
+	// async version:
+	await subscriptionService.CancelAsync(*customerId*, *subscriptionId*); // optional cancelAtPeriodEnd flag
 
 ### List all subscriptions for a customer
 
 	var subscriptionService = new StripeSubscriptionService();
 	IEnumerable<StripeSubscription> response = customerService.List(*customerId*); // optional StripeListOptions
+	
+	// async version:
+	IEnumerable<StripeSubscription> response = await customerService.ListAsync(*customerId*); // optional StripeListOptions
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -306,11 +369,17 @@ When creating a card you can use either a card or a token
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Create(*customerId*, myCard);
+	
+	// async version:
+	StripeCard stripeCard = await cardService.CreateAsync(*customerId*, myCard);
 
 ### Retrieving a card
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Get(*customerId*, *cardId*);
+	
+	// async version:
+	StripeCard stripeCard = await cardService.GetAsync(*customerId*, *cardId*);
 
 ### Updating a card
 
@@ -328,16 +397,25 @@ When creating a card you can use either a card or a token
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Update(*customerId*, *cardId*, myCard);
+	
+	// async version:
+	StripeCard stripeCard = await cardService.UpdateAsync(*customerId*, *cardId*, myCard);
 
 ### Deleting a card
 
 	var cardService = new StripeCardService();
 	cardService.Delete(*customerId*, *cardId*);
+	
+	// async version:
+	await cardService.DeleteAsync(*customerId*, *cardId*);
 
 ### List all cards
 
 	var cardService = new StripeCardService();
 	IEnumerable<StripeCard> response = cardService.List(*customerId*); // optional StripeListOptions
+	
+	// async version:
+	IEnumerable<StripeCard> response = await cardService.ListAsync(*customerId*); // optional StripeListOptions
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -388,11 +466,17 @@ When creating a charge you can use either a card, customer, or a token. Only one
 
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Create(myCharge);
+	
+	// async version: 
+	StripeCharge stripeCharge = await chargeService.CreateAsync(myCharge);
 
 ### Retrieving a charge
 
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Get(*chargeId*);
+	
+	// async version:
+	StripeCharge stripeCharge = await chargeService.GetAsync(*chargeId*);
 
 ### Refunding a charge
 
@@ -400,6 +484,9 @@ If you do not specify an amount, the entire charge is refunded. The StripeCharge
 
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Refund(*chargeId*, *amount*, *refundApplicationFee*);
+	
+	// async version:
+	StripeCharge stripeCharge = await chargeService.RefundAsync(*chargeId*, *amount*, *refundApplicationFee*);
 
 ### Capturing a charge
 
@@ -407,11 +494,17 @@ If you set a charge to capture = false, you use this to capture the charge later
 
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Capture(*chargeId*, *amount*, *applicationFee*);
+	
+	// async version:
+	StripeCharge stripeCharge = await chargeService.CaptureAsync(*chargeId*, *amount*, *applicationFee*);
 
 ### List all charges
 
 	var chargeService = new StripeChargeService();
 	IEnumerable<StripeCharge> response = chargeService.List(); // optional StripeChargeListOptions
+	
+	// async version: 
+	IEnumerable<StripeCharge> response = await chargeService.ListAsync(); // optional StripeChargeListOptions
 
 StripeChargeListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
@@ -422,16 +515,25 @@ Invoices
 
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Get(*invoiceId*);
+	
+	// async version:
+	StripeInvoice response = await invoiceService.GetAsync(*invoiceId*);
 
 ### Retrieving an upcoming invoice (for a single customer)
 
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Upcoming(*customerId*);
+	
+	// async version:
+	StripeInvoice response = await invoiceService.UpcomingAsync(*customerId*);
 
 ### Create a customer invoice
 
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Create(*customerId*);
+	
+	// async version:
+	StripeInvoice response = await invoiceService.CreateAsync(*customerId*);
 
 ### Updating a customer invoice
 
@@ -440,16 +542,25 @@ Invoices
 
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Update(stripeInvoiceUpdateOptions);
+	
+	// async version:
+	StripeInvoice response = await invoiceService.UpdateAsync(stripeInvoiceUpdateOptions);
 
 ### Paying an invoice
 
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Pay(*invoiceId*);
+	
+	// async version:
+	StripeInvoice response = await invoiceService.PayAsync(*invoiceId*);
 
 ### List all invoices
 
 	var invoiceService = new StripeInvoiceService();
 	IEnumerable<StripeInvoice> response = invoiceService.List(); // optional StripeInvoiceListOptions
+	
+	// async version:
+	IEnumerable<StripeInvoice> response = await invoiceService.ListAsync(); // optional StripeInvoiceListOptions
 
 StripeInvoiceListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
@@ -468,11 +579,17 @@ Any invoice items you create for a customer will be added to their bill.
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	StripeInvoiceItem response = invoiceItemService.Create(myItem);
+	
+	// async version:
+	StripeInvoiceItem response = await invoiceItemService.CreateAsync(myItem);
 
 ### Retrieving an invoice item
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	StripeInvoiceItem response = invoiceItemService.Get(*invoiceItemId*);
+	
+	// async version:
+	StripeInvoiceItem response = await invoiceItemService.GetAsync(*invoiceItemId*);
 
 ### Updating an invoice item
 
@@ -483,16 +600,25 @@ Any invoice items you create for a customer will be added to their bill.
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	StripeInvoiceItem response = invoiceItemService.Update(*invoiceItemId*, myUpdatedItem);
+	
+	// async version:
+	StripeInvoiceItem response = await invoiceItemService.UpdateAsync(*invoiceItemId*, myUpdatedItem);
 
 ### Deleting an invoice item
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	invoiceItemService.Delete(*invoiceItemId*);
+	
+	// async version:
+	await invoiceItemService.DeleteAsync(*invoiceItemId*);
 
 ### List all invoice items
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List(); // optional StripeInvoiceItemListOptions
+	
+	// async version:
+	IEnumerable<StripeInvoiceItem> response = await invoiceItemService.ListAsync(); // optional StripeInvoiceItemListOptions
 
 StripeInvoiceItemListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
@@ -503,6 +629,9 @@ Account
 
 	var accountService = new StripeAccountService();
 	StripeAccount response = accountService.Get();
+	
+	// async version:
+	StripeAccount response = await accountService.GetAsync();
 
 Balance
 -------
@@ -511,16 +640,25 @@ Balance
 
 	var balanceService = new StripeBalanceService();
 	StripeBalance response = balanceService.Get();
+	
+	// async version:
+	StripeBalance response = await balanceService.GetAsync();
 
 ### Retrieving a specific balance transaction
 
 	var balanceService = new StripeBalanceService();
 	StripeBalanceTransaction transaction = balanceService.Get(*balanceTransactionId*);
+	
+	// async version:
+	StripeBalanceTransaction transaction = await balanceService.GetAsync(*balanceTransactionId*);
 
 ### Listing balance transactions
 
 	var balanceService = new StripeBalanceService();
 	IEnumerable<StripeBalanceTransaction> balanceTransactions = balanceService.List(); // optional StripeBalanceTransactionListOptions
+	
+	// async version:
+	IEnumerable<StripeBalanceTransaction> balanceTransactions = await balanceService.ListAsync(); // optional StripeBalanceTransactionListOptions
 
 StripeBalanceTransactionListOptions supports filtering by a [StripeDateFilter](#stripedatefilter-date-filtering) for date created, a [StripeDateFilter](#stripedatefilter-date-filtering) for date available, currency, source, transfer, type, and supports [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -533,6 +671,9 @@ Disputes
 
 	// providing the dispute reason is optional
 	StripeDispute stripeDispute = disputeService.Update(*chargeId*, "customer ate the donut before I charged them, so they said it was free");
+	
+	// async version:
+	StripeDispute stripeDispute = await disputeService.UpdateAsync(*chargeId*, "customer ate the donut before I charged them, so they said it was free");
 
 Recipients
 ----------
@@ -553,6 +694,9 @@ Recipients
 
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Create(myRecipient);
+	
+	// async version:
+	StripeRecipient stripeRecipient = await recipientService.CreateAsync(myRecipient);
 
 ### Updating a recipient
 
@@ -569,21 +713,33 @@ Recipients
 
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Update(*recipientId*, myRecipient);
+	
+	// async version:
+	StripeRecipient stripeRecipient = await recipientService.UpdateAsync(*recipientId*, myRecipient);
 
 ### Retrieving a recipient
 
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Get(*recipientId*);
+	
+	// async version:
+	StripeRecipient stripeRecipient = await recipientService.GetAsync(*recipientId*);
 
 ### Deleting a recipient
 
 	var recipientService = new StripeRecipientService();
 	recipientService.Deleted(*recipientId*);
+	
+	// async version:
+	await recipientService.DeletedAsync(*recipientId*);
 
 ### List all recipients
 
 	var recipientService = new StripeRecipientService();
 	IEnumerable<StripeRecipient> response = recipientService.List(); // optional StripeRecipientListOptions
+	
+	// async version:
+	IEnumerable<StripeRecipient> response = await recipientService.ListAsync(); // optional StripeRecipientListOptions
 
 StripeRecipientListOptions supports a verified flag and [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -601,21 +757,33 @@ Transfers
 
 	var transferService = new StripeTransferService();
 	StripeTransfer stripeTransfer = transferService.Create(myTransfer);
+	
+	// async version:
+	StripeTransfer stripeTransfer = await transferService.CreateAsync(myTransfer);
 
 ### Retrieving a transfer
 
 	var transferService = new StripeTransferService();
 	StripeTransfer stripeTransfer = transferService.Get(*transferId*);
+	
+	// async version:
+	StripeTransfer stripeTransfer = await transferService.GetAsync(*transferId*);
 
 ### Cancel a transfer
 
 	var transferService = new StripeTransferService();
 	StripeTransfer stripeTransfer = transferService.Cancel(*transferId*);
+	
+	// async version:
+	StripeTransfer stripeTransfer = await transferService.CancelAsync(*transferId*);
 
 ### List all transfers
 
 	var transferService = new StripeTransferService();
 	IEnumerable<StripeTransfer> response = transferService.List(); // optional StripeTransferListOptions
+	
+	// async version:
+	IEnumerable<StripeTransfer> response = await transferService.ListAsync(); // optional StripeTransferListOptions
 
 StripeTransferListOptions supports a RecipientId, Status ('pending', 'paid' or 'failed'), [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering (on both the created and date fields)
 
@@ -628,11 +796,17 @@ If you do not specify an amount, the entire application fee is refunded.
 
 	var feeService = new StripeApplicationFeeService();
 	StripeApplicationFee stripeApplicationFee = feeService.Get(*applicationFeeId*);
+	
+	// async version:
+	StripeApplicationFee stripeApplicationFee = await feeService.GetAsync(*applicationFeeId*);
 
 ### Refunding an application fee
 
 	var feeService = new StripeApplicationFeeService();
 	StripeApplicationFee stripeApplicationFee = feeService.Refund(*applicationFeeId*, *amount*);
+	
+	// async version:
+	StripeApplicationFee stripeApplicationFee = await feeService.RefundAsync(*applicationFeeId*, *amount*);
 
 StripeListOptions (paging)
 --------------------------
@@ -763,3 +937,8 @@ Any errors that occur on any of the services will throw a StripeException with t
 The StripeException contains and HttpStatusCode and a StripeError entity. The StripeError entity contains the type, message, code and param. For more infomation, review the Errors section
 of stripe here: https://stripe.com/docs/api#errors
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/5f9bbd19e41d91cc092ebec6ff4bb40c "githalytics.com")](http://githalytics.com/jaymedavis/stripe.net)
+
+Async Support
+-------------
+
+All methods have Async versions that are non-blocking so that you can use them on web applications for higher throughput, or GUI applications to prevent the UI from locking up while waiting on a response. Async versions are not available in the .NET 3.5 build.
