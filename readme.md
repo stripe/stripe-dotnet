@@ -441,6 +441,11 @@ Invoices
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Update(stripeInvoiceUpdateOptions);
 
+### Paying an invoice
+
+	var invoiceService = new StripeInvoiceService();
+	StripeInvoice response = invoiceService.Pay(*invoiceId*);
+
 ### List all invoices
 
 	var invoiceService = new StripeInvoiceService();
