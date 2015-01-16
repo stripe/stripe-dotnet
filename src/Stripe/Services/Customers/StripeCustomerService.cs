@@ -20,7 +20,7 @@ namespace Stripe
         public virtual StripeCustomer Get(string customerId)
         {
             var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-            this.ApplyAllParameters(null, url, false);
+            url = this.ApplyAllParameters(null, url, false);
 
             var response = Requestor.GetString(url, ApiKey);
 
