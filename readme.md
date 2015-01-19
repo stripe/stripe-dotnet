@@ -762,4 +762,3 @@ Any errors that occur on any of the services will throw a StripeException with t
 
 The StripeException contains and HttpStatusCode and a StripeError entity. The StripeError entity contains the type, message, code and param. For more infomation, review the Errors section
 of stripe here: https://stripe.com/docs/api#errors
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/5f9bbd19e41d91cc092ebec6ff4bb40c "githalytics.com")](http://githalytics.com/jaymedavis/stripe.net)
