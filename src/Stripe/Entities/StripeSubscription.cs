@@ -73,8 +73,5 @@ namespace Stripe
         [JsonProperty("trial_start")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? TrialStart { get; set; }
-
-        [JsonProperty("tax_percent")]
-        public Decimal? TaxPercent { get; set; }
     }
 }
