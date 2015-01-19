@@ -65,6 +65,8 @@ namespace Stripe
         public StripeCard Card { get; set; }
 
         public string RecipientId { get; set; }
+
+        [JsonIgnore]
         public StripeRecipient Recipient { get; set; }
 
         [JsonProperty("recipient")]

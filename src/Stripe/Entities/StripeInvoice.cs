@@ -30,6 +30,8 @@ namespace Stripe
         public string Currency { get; set; }
 
         public string CustomerId { get; set; }
+
+        [JsonIgnore]
         public StripeCustomer Customer { get; set; }
 
         [JsonProperty("customer")]
@@ -75,6 +77,8 @@ namespace Stripe
         public int? ApplicationFee { get; set; }
 
         public string ChargeId { get; set; }
+
+        [JsonIgnore]
         public StripeCharge Charge { get; set; }
 
         [JsonProperty("charge")]

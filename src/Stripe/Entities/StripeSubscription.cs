@@ -15,6 +15,8 @@ namespace Stripe
         public bool CancelAtPeriodEnd { get; set; }
 
         public string CustomerId { get; set; }
+
+        [JsonIgnore]
         public StripeCustomer Customer { get; set; }
 
         [JsonProperty("customer")]
