@@ -1,4 +1,4 @@
-![Stripe.net](http://i.imgur.com/V3vD8EF.png)
+![Stripe.net](http://imgur.com/70TIMws)
 
 Stripe.net is under active development. Being able to keep the library in good shape with the community takes a lot of time and commitment. I value code changes being solid, tests being in place when necessary, and good consistency. Pull requests sometimes take more time because pieces are missing, such as readme updates or tests. I also receive a lot of email for support. I wish I had the time to talk to each and every one of you, but I have other commitments much like you.
 
