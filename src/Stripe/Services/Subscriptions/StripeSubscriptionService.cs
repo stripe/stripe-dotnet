@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Stripe
@@ -48,6 +49,11 @@ namespace Stripe
             var response = Requestor.Delete(url, ApiKey);
 
             return Mapper<StripeSubscription>.MapFromJson(response);
+        }
+
+        public virtual void DeleteSubscriptionDiscount(string customerId, string subscriptionId){
+            var url = String.Format(Urls.SubscriptionDiscount, customerId, subscriptionId);
+            var response = Requestor.Delete(url, ApiKey);
         }
 
         public virtual IEnumerable<StripeSubscription> List(string customerId, StripeListOptions listOptions = null)

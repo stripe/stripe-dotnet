@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -35,6 +36,11 @@ namespace Stripe
             var response = Requestor.PostString(url, ApiKey);
 
             return Mapper<StripeCustomer>.MapFromJson(response);
+        }
+
+        public virtual void DeleteDiscount(string customerId){
+            var customerUrl = String.Format(Urls.CustomerDiscount, customerId);
+            Requestor.Delete(customerUrl, ApiKey);
         }
 
         public virtual void Delete(string customerId)
