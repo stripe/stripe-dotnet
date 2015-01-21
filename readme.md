@@ -1,12 +1,13 @@
 ![Stripe.net](http://i.imgur.com/V3vD8EF.png)
 
-[![Stories in progress](https://badge.waffle.io/jaymedavis/stripe.net.png?label=in%20progress&title=Ready)](https://waffle.io/jaymedavis/stripe.net)
+Stripe.net is under active development. Being able to keep the library in good shape with the community takes a lot of time and commitment. I value code changes being solid, tests being in place when necessary, and good consistency. Pull requests sometimes take more time because pieces are missing, such as readme updates or tests. I also receive a lot of email for support. I wish I had the time to talk to each and every one of you, but I have other commitments much like you.
 
-[![Click here to lend your support to: stripe.net and make a donation at www.pledgie.com](http://www.pledgie.com/campaigns/22262.png?skin_name=chrome)](http://www.pledgie.com/campaigns/22262)
+So I've decided to offer a couple of plans to users who have requested a method of paying for support, and expediting pull requests or adding quick features:
+The ![stripe.net support incident](https://gum.co/oCGI)
+The ![stripe.net support incident with code](https://gum.co/NQEEK)
 
-Or how about some DOGEcoin? Much thanks! DAum6PSacnqRE4mjJJB7nzvB8vQrjRHR4j
+Don't want to pay anything for upgrades? Don't worry, you don't have to! The codebase will remain open source and all issues and pull requests will be handled as they always have been. If you are waiting for your feature to be included, you are always welcome to fork the codebase, add your changes, and use that fork until I can get it merged into the main repository.
 
-For more information about the examples below, visit https://stripe.com/docs/api for a full reference.
 
 Quick Start
 -----------
