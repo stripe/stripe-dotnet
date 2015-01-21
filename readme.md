@@ -2,7 +2,7 @@
 
 Stripe.net is under active development. Being able to keep the library in good shape with the community takes a lot of time and commitment. I value code changes being solid, tests being in place when necessary, and good consistency. Pull requests sometimes take more time because pieces are missing, such as readme updates or tests. I also receive a lot of email for support. I wish I had the time to talk to each and every one of you, but I have other commitments much like you.
 
-So I've decided to offer a couple of plans to users who have requested a method of paying for support, and expediting pull requests or adding quick features:
+So I've decided to offer a couple of plans to users who have requested a method of paying for support, expediting pull requests, or adding quick features. Keep in mind with my other commitments, these will have to be handled in the evenings or on the weekends. If you are interested in purchasing a plan, contact me first about availability. For occasional updates, sign up at [jayme.io](https://jayme.io).
 
 The [stripe.net support incident](https://gum.co/oCGI)
 
