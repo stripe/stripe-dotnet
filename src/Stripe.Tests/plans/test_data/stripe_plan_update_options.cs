@@ -15,7 +15,7 @@ namespace Stripe.Tests.test_data
                     { "B", "Value-B" },
                     { "C", "Value-C" }
                 },
-				StatementDescriptor = "heyyyy ya?"
+                StatementDescriptor = "heyyyy ya?"
             };
         }
     }

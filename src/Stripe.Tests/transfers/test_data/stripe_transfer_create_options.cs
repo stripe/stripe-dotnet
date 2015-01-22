@@ -13,7 +13,7 @@ namespace Stripe.Tests.test_data
                 Currency = "usd",
                 Recipient = "self",
                 Description = "test-transfer-description-" + Guid.NewGuid(),
-				StatementDescriptor = "test-transfer-statement-descriptor" + Guid.NewGuid(),
+                StatementDescriptor = "test-transfer-statement-descriptor" + Guid.NewGuid(),
                 Metadata = new Dictionary<string, string>
                 {
                     { "A", "Value-A" },
