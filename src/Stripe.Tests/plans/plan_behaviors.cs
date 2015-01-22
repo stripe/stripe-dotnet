@@ -32,8 +32,8 @@ namespace Stripe.Tests
         It should_have_a_created_date = () =>
             StripePlan.Created.ShouldNotBeNull();
 
-        It should_have_the_correct_statement_description = () =>
-            StripePlan.StatementDescription.ShouldEqual(StripePlanCreateOptions.StatementDescription);
+		It should_have_the_correct_statement_descriptor = () =>
+			StripePlan.StatementDescriptor.ShouldEqual(StripePlanCreateOptions.StatementDescriptor);
 
         It should_have_the_correct_live_mode = () =>
             StripePlan.LiveMode.ShouldEqual(false);

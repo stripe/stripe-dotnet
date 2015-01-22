@@ -9,7 +9,7 @@ namespace Stripe.Tests.test_data
             var stripeInvoiceUpdateOptions = new StripeInvoiceUpdateOptions()
             {
                 Description = "Invoice Description",
-                StatementDescription = "ST_DESC", // must be less than 15 char
+				StatementDescriptor = "ST_DESC", // must be less than 15 char
                 Metadata = new Dictionary<string, string>
                 {
                     { "A", "Value-A" },
@@ -35,7 +35,7 @@ namespace Stripe.Tests.test_data
         {
             var stripeInvoiceUpdateOptions = new StripeInvoiceUpdateOptions()
             {
-                StatementDescription = "ST_DESC NEW" // must be less than 15 char
+				StatementDescriptor = "ST_DESC NEW" // must be less than 15 char
             };
 
             return stripeInvoiceUpdateOptions;

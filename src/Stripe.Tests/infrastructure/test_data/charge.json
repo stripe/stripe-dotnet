@@ -50,7 +50,7 @@
   "dispute": null,
   "metadata": {
   },
-  "statement_description": null,
+  "statement_descriptor": null,
   "fraud_details": {
     "stripe_report": "unavailable",
     "user_report": null

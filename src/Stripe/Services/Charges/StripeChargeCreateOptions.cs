@@ -26,8 +26,8 @@ namespace Stripe
         [JsonProperty("capture")]
         public bool? Capture { get; set; }
 
-        [JsonProperty("statement_description")]
-        public string StatementDescription { get; set; }
+		[JsonProperty("statement_descriptor")]
+		public string StatementDescriptor { get; set; }
 
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }

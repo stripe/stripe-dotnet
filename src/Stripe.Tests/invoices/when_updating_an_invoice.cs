@@ -40,8 +40,8 @@ namespace Stripe.Tests
 		It should_have_the_correct_description = () =>
 			_stripeInvoice.Description.ShouldEqual(StripeInvoiceUpdateOptions.Description);
 
-		It should_have_the_correct_statement_description = () =>
-			_stripeInvoice.StatementDescription.ShouldEqual(StripeInvoiceUpdateOptions.StatementDescription);
+		It should_have_the_correct_statement_descriptor = () =>
+			_stripeInvoice.StatementDescriptor.ShouldEqual(StripeInvoiceUpdateOptions.StatementDescriptor);
 
 		It should_have_the_correct_value_for_forgiven = () =>
 			_stripeInvoice.Forgiven.ShouldEqual(false);

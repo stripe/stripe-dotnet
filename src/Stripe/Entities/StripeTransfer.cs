@@ -78,7 +78,7 @@ namespace Stripe
             }
         }
 
-        [JsonProperty("statement_description")]
-        public string StatementDescription { get; set; }
+		[JsonProperty("statement_descriptor")]
+		public string StatementDescriptor { get; set; }
     }
 }
