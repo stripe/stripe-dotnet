@@ -32,7 +32,7 @@
           "trial_period_days": null,
           "metadata": {
           },
-          "statement_description": null
+          "statement_descriptor": null
         },
         "description": null,
         "metadata": {
@@ -65,7 +65,7 @@
   "subscription": "sub_4KrhgJ7EO0QG7x",
   "metadata": {
   },
-  "statement_description": null,
+  "statement_descriptor": null,
   "description": null,
   "receipt_number": null
 }

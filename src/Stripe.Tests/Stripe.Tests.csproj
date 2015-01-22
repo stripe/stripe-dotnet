@@ -107,7 +107,10 @@
     <Compile Include="infrastructure\when_passed_only_url_to_parameter_builder.cs" />
     <Compile Include="infrastructure\when_serializing_an_equals_datefilter.cs" />
     <Compile Include="infrastructure\when_serializing_a_datefilter_query.cs" />
+    <Compile Include="invoiceitems\when_updating_an_invoiceitem_metadata_only.cs" />
     <Compile Include="invoiceitems\when_creating_an_invoiceitem_with_an_api_key.cs" />
+    <Compile Include="invoices\test_data\stripe_invoice_update_options.cs" />
+    <Compile Include="invoices\when_updating_an_invoice.cs" />
     <Compile Include="invoices\when_closing_an_invoice.cs" />
     <Compile Include="invoices\when_creating_an_invoice_with_an_api_key.cs" />
     <Compile Include="invoices\when_creating_an_invoice_with_failed_charge.cs" />

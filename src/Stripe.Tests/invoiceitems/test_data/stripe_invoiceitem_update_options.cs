@@ -20,5 +20,21 @@ namespace Stripe.Tests.test_data
 
             return stripeInvoiceItemUpdateOptions;
         }
+
+        public static StripeInvoiceItemUpdateOptions MetadataOnly()
+        {
+            var stripeInvoiceItemUpdateOptions = new StripeInvoiceItemUpdateOptions()
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "A", "Value-A1" },
+                    { "B", "Value-B1" },
+                    { "C", "Value-C1" },
+                    { "D", "Value-D1" }
+                }
+            };
+
+            return stripeInvoiceItemUpdateOptions;
+        }
     }
 }
