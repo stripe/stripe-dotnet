@@ -5,4 +5,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompany("Jayme Davis")]
 [assembly: AssemblyProduct("Stripe.net")]
 [assembly: AssemblyCopyright("Copyright (C) Jayme Davis 2015")]
-[assembly: AssemblyVersion("2.3.5")]
+[assembly: AssemblyVersion("2.4.0")]
