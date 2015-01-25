@@ -10,6 +10,15 @@ Depending on how complex the request is, I am negotiable on the rate. If support
 
 Don't want to pay anything for upgrades or support? You don't have to! The codebase will remain open source and all issues and pull requests will be handled as they always have been. If you are waiting for your feature to be included, you are always welcome to fork the codebase, add your changes, and use that fork until I can get it merged into the main repository. If you absolutely cannot wait and need it on nuget immediately, contact me and I can provide you with a quote.
 
+##**If you would like to submit a pull request and help out.**
+First, thank you! It is a lot of work to do alone. Here are a few things that would help me out a lot if you decide to help:
+1) Do not submit pull requests for more than one fix. Keep them small and focused.
+2) Please code review yourself. There are a lot of pull requests with typos and mistakes. Don't worry, we all do it. But a code review of yourself will help. )
+3) Please review the comparison screen in GitHub that I will see before I merge your pull requests. If it's hard for you to tell what the differences are, it's going to be hard for me too.
+
+
+
+
 Quick Start
 -----------
 
