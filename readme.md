@@ -16,6 +16,7 @@ First, thank you! It is a lot of work to learn someone else's codebase, so I app
 * Please review the diff in GitHub that I will see before I merge your pull requests. If it's hard for you to tell what the differences are, it's going to be hard for me too.
 <br>
 ![Donate](https://pledgie.com/campaigns/22262.png)
+
 Quick Start
 -----------
 
