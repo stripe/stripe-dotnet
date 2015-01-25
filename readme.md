@@ -1,16 +1,14 @@
 ![Stripe.net](http://i.imgur.com/70TIMws.png)
 
-Stripe.net is under active development. Being able to keep the library in good shape with the community takes a lot of time and commitment. I value code changes being solid, tests being in place when necessary, and good consistency. Pull requests sometimes take more time because pieces are missing, such as readme updates or tests. I also receive a lot of email for support. I wish I had the time to talk to each and every one of you, but I have other commitments much like you.
+##**If you need immediate support or  code changes, read this first.**
 
-So I've decided to offer a couple of plans to users who have requested a method of paying for support, expediting pull requests, or adding quick features. Keep in mind with my other commitments, these will have to be handled in the evenings or on the weekends. If you are interested in purchasing a plan, contact me first about availability. For occasional updates, sign up at [jayme.io](http://jayme.io).
+Stripe.net is under active development. Keeping the library in stable condition and working with the community takes a lot of time and commitment. I value code changes being well crafted, tests being in place when necessary, and consistency. Pull requests generally take more time than they appear. Sometimes pieces are missing, such as readme updates or tests. I also receive a lot of support email. I wish I had the time to talk to each and every one of you, but I have other commitments.
 
-The [stripe.net support incident](https://gum.co/oCGI)
+So I've decided to offer paid plans for people who have requested immediate support, expediting pull requests, or adding features immediately. Keep in mind with my other commitments, these will have to be handled in the evenings or on the weekends. If you are interested, contact me about availability.
 
-The [stripe.net support incident with code](https://gum.co/NQEEK)
+Depending on how complex the request is, I am negotiable on the rate. If support help takes me 10 minutes, it will obviously be much cheaper than if it takes an hour. Same goes with a code change, if it's a simple pull request or code change and will not take me long to test and perform a build, it will obviously be much cheaper than if I have to spend 8 hours on the change.
 
-
-Don't want to pay anything for upgrades? Don't worry, you don't have to! The codebase will remain open source and all issues and pull requests will be handled as they always have been. If you are waiting for your feature to be included, you are always welcome to fork the codebase, add your changes, and use that fork until I can get it merged into the main repository.
-
+Don't want to pay anything for upgrades or support? You don't have to! The codebase will remain open source and all issues and pull requests will be handled as they always have been. If you are waiting for your feature to be included, you are always welcome to fork the codebase, add your changes, and use that fork until I can get it merged into the main repository. If you absolutely cannot wait and need it on nuget immediately, contact me and I can provide you with a quote.
 
 Quick Start
 -----------
