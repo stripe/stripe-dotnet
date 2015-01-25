@@ -1,5 +1,4 @@
 ![Stripe.net](http://i.imgur.com/70TIMws.png)
-
 ##**If you need immediate support or  code changes, read this first.**
 
 Stripe.net is under active development. Keeping the library in stable condition and working with the community takes a lot of time and commitment. I value code changes being well crafted, tests being in place when necessary, and consistency. Pull requests generally take more time than they appear. Sometimes pieces are missing, such as readme updates or tests. I also receive a lot of support email. I wish I had the time to talk to each and every one of you, but I have other commitments.
@@ -16,10 +15,7 @@ First, thank you! It is a lot of work to learn someone else's codebase, so I app
 2) Please code review yourself. There are a lot of pull requests with typos and mistakes. Don't worry, we all do it. But a code review of yourself will help. :)
 3) Please review the diff in GitHub that I will see before I merge your pull requests. If it's hard for you to tell what the differences are, it's going to be hard for me too.
 
-<br>
-<br>
-
-
+![Donate](https://pledgie.com/campaigns/22262.png)
 Quick Start
 -----------
 
