@@ -11,9 +11,9 @@ Don't want to pay anything for upgrades or support? You don't have to! The codeb
 
 ##**If you would like to submit a pull request.**
 First, thank you! It is a lot of work to learn someone else's codebase, so I appreciate it. Here are a few things that would help me out:
-1) Do not submit pull requests for more than one fix. Keep them small and focused.
-2) Please code review yourself. There are a lot of pull requests with typos and mistakes. Don't worry, we all do it. But a code review of yourself will help. :)
-3) Please review the diff in GitHub that I will see before I merge your pull requests. If it's hard for you to tell what the differences are, it's going to be hard for me too.
+* Do not submit pull requests for more than one fix. Keep them small and focused.
+* Please code review yourself. There are a lot of pull requests with typos and mistakes. Don't worry, we all do it. But a code review of yourself will help. :)
+* Please review the diff in GitHub that I will see before I merge your pull requests. If it's hard for you to tell what the differences are, it's going to be hard for me too.
 
 ![Donate](https://pledgie.com/campaigns/22262.png)
 Quick Start
