@@ -11,6 +11,7 @@ namespace Stripe
         [JsonProperty("livemode")]
         public bool? LiveMode { get; set; }
 
+        #region Expandable Account
         public string AccountId { get; set; }
 
         [JsonIgnore]
@@ -24,6 +25,7 @@ namespace Stripe
                 ExpandableProperty<StripeAccount>.Map(value, s => AccountId = s, o => Account = o);
             }
         }
+        #endregion
 
         [JsonProperty("amount")]
         public int Amount { get; set; }

@@ -8,7 +8,7 @@ namespace Stripe.Tests
 {
     public class when_mapping_invoice_item
     {
-        private static StripeInvoiceItem _invoice;
+        private static StripeInvoiceLineItem _invoice;
 
         static when_mapping_invoice_item()
         {
@@ -22,7 +22,7 @@ namespace Stripe.Tests
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../infrastructure", "test_data", "invoice_item.json");
             var json = File.ReadAllText(path);
-            _invoice = Mapper<StripeInvoiceItem>.MapFromJson(json);
+            _invoice = Mapper<StripeInvoiceLineItem>.MapFromJson(json);
         };
 
         It should_not_throw_exception = () =>

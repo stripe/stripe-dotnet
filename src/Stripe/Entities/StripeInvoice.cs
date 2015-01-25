@@ -12,23 +12,24 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("livemode")]
-        public bool? LiveMode { get; set; }
+        public bool LiveMode { get; set; }
 
         [JsonProperty("amount_due")]
-        public int? AmountDue { get; set; }
+        public int AmountDue { get; set; }
 
         [JsonProperty("attempt_count")]
-        public int? AttemptCount { get; set; }
+        public int AttemptCount { get; set; }
 
         [JsonProperty("attempted")]
-        public bool? Attempted { get; set; }
+        public bool Attempted { get; set; }
 
         [JsonProperty("closed")]
-        public bool? Closed { get; set; }
+        public bool Closed { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        #region Expandable Customer
         public string CustomerId { get; set; }
 
         [JsonIgnore]
@@ -42,6 +43,7 @@ namespace Stripe
                 ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
             }
         }
+        #endregion
 
         [JsonProperty("date")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
@@ -54,28 +56,29 @@ namespace Stripe
         public StripeInvoiceLines StripeInvoiceLines { get; set; }
 
         [JsonProperty("paid")]
-        public bool? Paid { get; set; }
+        public bool Paid { get; set; }
 
         [JsonProperty("period_end")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime? PeriodEnd { get; set; }
+        public DateTime PeriodEnd { get; set; }
 
         [JsonProperty("period_start")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime? PeriodStart { get; set; }
+        public DateTime PeriodStart { get; set; }
 
         [JsonProperty("starting_balance")]
-        public int? StartingBalance { get; set; }
+        public int StartingBalance { get; set; }
 
         [JsonProperty("subtotal")]
-        public int? Subtotal { get; set; }
+        public int Subtotal { get; set; }
 
         [JsonProperty("total")]
-        public int? Total { get; set; }
+        public int Total { get; set; }
 
         [JsonProperty("application_fee")]
         public int? ApplicationFee { get; set; }
 
+        #region Expandable Charge
         public string ChargeId { get; set; }
 
         [JsonIgnore]
@@ -89,6 +92,7 @@ namespace Stripe
                 ExpandableProperty<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
             }
         }
+        #endregion
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -118,5 +122,11 @@ namespace Stripe
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("tax")]
+        public int Tax { get; set; }
+
+        [JsonProperty("tax_percent")]
+        public decimal? TaxPercent { get; set; }
     }
 }

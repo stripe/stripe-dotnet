@@ -17,6 +17,7 @@ namespace Stripe
         [JsonProperty("coupon")]
         public StripeCoupon StripeCoupon { get; set; }
 
+        #region Expandable Customer
         public string CustomerId { get; set; }
 
         [JsonIgnore]
@@ -30,5 +31,6 @@ namespace Stripe
                 ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
             }
         }
+        #endregion
     }
 }

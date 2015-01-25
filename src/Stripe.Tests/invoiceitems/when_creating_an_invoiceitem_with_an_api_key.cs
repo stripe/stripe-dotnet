@@ -6,7 +6,7 @@ namespace Stripe.Tests
     public class when_creating_an_invoiceitem_with_an_api_key
     {
         protected static StripeInvoiceItemCreateOptions StripeInvoiceItemCreateOptions;
-        protected static StripeInvoiceItem StripeInvoiceItem;
+        protected static StripeInvoiceLineItem StripeInvoiceItem;
         protected static string StripeInvoiceItemId;
 
         private static StripeInvoiceItemService _stripeInvoiceItemService;

@@ -7,7 +7,7 @@ namespace Stripe.Tests
     public class invoiceitem_behaviors
     {
         protected static StripeInvoiceItemCreateOptions StripeInvoiceItemCreateOptions;
-        protected static StripeInvoiceItem StripeInvoiceItem;
+        protected static StripeInvoiceLineItem StripeInvoiceItem;
         protected static string StripeInvoiceItemId;
 
         It should_have_the_correct_amount = () =>

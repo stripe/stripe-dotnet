@@ -52,6 +52,7 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Entities\StripePageable.cs" />
     <Compile Include="Entities\StripeRefund.cs" />
     <Compile Include="Entities\StripeRefundList.cs" />
     <Compile Include="Entities\StripeBankAccount.cs" />
@@ -73,7 +74,7 @@
     <Compile Include="Entities\StripeEvent.cs" />
     <Compile Include="Entities\StripeInvoiceLine.cs" />
     <Compile Include="Entities\StripeInvoice.cs" />
-    <Compile Include="Entities\StripeInvoiceItem.cs" />
+    <Compile Include="Entities\StripeInvoiceLineItem.cs" />
     <Compile Include="Entities\StripeError.cs" />
     <Compile Include="Entities\StripeOAuthToken.cs" />
     <Compile Include="Entities\StripePeriod.cs" />
