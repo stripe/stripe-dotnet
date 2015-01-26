@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeInvoiceLines
+    public class StripeInvoiceLines : StripePageable
     {
         [JsonProperty("data")]
-        public List<StripeInvoiceItem> StripeInvoiceItems { get; set; }
+        public List<StripeInvoiceLineItem> StripeInvoiceItems { get; set; }
     }
 }

@@ -13,63 +13,63 @@ namespace Stripe
         public bool ExpandCustomer { get; set; }
         public bool ExpandInvoice { get; set; }
 
-        public virtual StripeInvoiceItem Create(StripeInvoiceItemCreateOptions createOptions)
+        public virtual StripeInvoiceLineItem Create(StripeInvoiceItemCreateOptions createOptions)
         {
             var url = this.ApplyAllParameters(createOptions, Urls.InvoiceItems, false);
 
             var response = Requestor.PostString(url, ApiKey);
 
-            return Mapper<StripeInvoiceItem>.MapFromJson(response);
+            return Mapper<StripeInvoiceLineItem>.MapFromJson(response);
         }
 
 #if NET40
-        public virtual async Task<StripeInvoiceItem> CreateAsync(StripeInvoiceItemCreateOptions createOptions)
+        public virtual async Task<StripeInvoiceLineItem> CreateAsync(StripeInvoiceItemCreateOptions createOptions)
         {
             var url = this.ApplyAllParameters(createOptions, Urls.InvoiceItems, false);
 
             var response = await Requestor.PostStringAsync(url, ApiKey);
 
-            return Mapper<StripeInvoiceItem>.MapFromJson(response);
+            return Mapper<StripeInvoiceLineItem>.MapFromJson(response);
         }
 #endif
 
-        public virtual StripeInvoiceItem Get(string invoiceItemId)
+        public virtual StripeInvoiceLineItem Get(string invoiceItemId)
         {
             var url = FormatGetUrl(invoiceItemId);
 
             var response = Requestor.GetString(url, ApiKey);
 
-            return Mapper<StripeInvoiceItem>.MapFromJson(response);
+            return Mapper<StripeInvoiceLineItem>.MapFromJson(response);
         }
 
 #if NET40
-        public virtual async Task<StripeInvoiceItem> GetAsync(string invoiceItemId)
+        public virtual async Task<StripeInvoiceLineItem> GetAsync(string invoiceItemId)
         {
             var url = FormatGetUrl(invoiceItemId);
 
             var response = await Requestor.GetStringAsync(url, ApiKey);
 
-            return Mapper<StripeInvoiceItem>.MapFromJson(response);
+            return Mapper<StripeInvoiceLineItem>.MapFromJson(response);
         }
 #endif
 
-        public virtual StripeInvoiceItem Update(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions)
+        public virtual StripeInvoiceLineItem Update(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions)
         {
             var url = FormatUpdateUrl(invoiceItemId, updateOptions);
 
             var response = Requestor.PostString(url, ApiKey);
 
-            return Mapper<StripeInvoiceItem>.MapFromJson(response);
+            return Mapper<StripeInvoiceLineItem>.MapFromJson(response);
         }
 
 #if NET40
-        public virtual async Task<StripeInvoiceItem> UpdateAsync(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions)
+        public virtual async Task<StripeInvoiceLineItem> UpdateAsync(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions)
         {
             var url = FormatUpdateUrl(invoiceItemId, updateOptions);
 
             var response = await Requestor.PostStringAsync(url, ApiKey);
 
-            return Mapper<StripeInvoiceItem>.MapFromJson(response);
+            return Mapper<StripeInvoiceLineItem>.MapFromJson(response);
         }
 #endif
 
@@ -89,23 +89,23 @@ namespace Stripe
         }
 #endif
 
-        public virtual IEnumerable<StripeInvoiceItem> List(StripeInvoiceItemListOptions listOptions = null)
+        public virtual IEnumerable<StripeInvoiceLineItem> List(StripeInvoiceItemListOptions listOptions = null)
         {
             var url = FormatListUrl(listOptions);
 
             var response = Requestor.GetString(url, ApiKey);
 
-            return Mapper<StripeInvoiceItem>.MapCollectionFromJson(response);
+            return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(response);
         }
 
 #if NET40
-        public virtual async Task<IEnumerable<StripeInvoiceItem>> ListAsync(StripeInvoiceItemListOptions listOptions = null)
+        public virtual async Task<IEnumerable<StripeInvoiceLineItem>> ListAsync(StripeInvoiceItemListOptions listOptions = null)
         {
             var url = FormatListUrl(listOptions);
 
             var response = await Requestor.GetStringAsync(url, ApiKey);
 
-            return Mapper<StripeInvoiceItem>.MapCollectionFromJson(response);
+            return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(response);
         }
 #endif
         

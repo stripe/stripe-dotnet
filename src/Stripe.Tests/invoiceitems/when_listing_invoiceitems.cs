@@ -6,7 +6,7 @@ namespace Stripe.Tests
 {
     public class when_listing_invoiceitems
     {
-        private static List<StripeInvoiceItem> _stripeInvoiceItemList;
+        private static List<StripeInvoiceLineItem> _stripeInvoiceItemList;
         private static StripeInvoiceItemService _stripeInvoiceItemService;
 
         Establish context = () =>

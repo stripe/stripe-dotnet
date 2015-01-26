@@ -36,6 +36,9 @@ namespace Stripe
         [JsonProperty("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
+        [JsonProperty("tax_percent")]
+        public decimal? TaxPercent { get; set; }
+
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
     }

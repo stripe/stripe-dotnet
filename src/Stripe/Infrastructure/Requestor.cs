@@ -2,8 +2,6 @@
 using System.IO;
 using System.Net;
 using System.Text;
-using System.Net.Security;
-using System.Security.Cryptography.X509Certificates;
 
 #if NET40
 using System.Threading.Tasks;
@@ -97,26 +95,6 @@ namespace Stripe
             return request;
         }
 
-        private static readonly string[] BlacklistedCertDigests = {
-            // api.stripe.com
-            "05C0B3643694470A888C6E7FEB5C9E24E823DC53",
-            // revoked.stripe.com
-            "5B7DC7FBC98D78BF76D4D4FA6F597A0C901FAD5C",
-        };
-
-        private static bool StripeCertificateVerificationCallback(Object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
-        {
-            var certDigest = certificate.GetCertHashString();
-
-            if(Array.Exists(BlacklistedCertDigests, digest => digest.Equals(certDigest, StringComparison.OrdinalIgnoreCase)))
-                return false;
-
-            if(sslPolicyErrors == SslPolicyErrors.None)
-                return true;
-
-            return false;
-        }
-
         private static string GetAuthorizationHeaderValue(string apiKey)
         {
             var token = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", apiKey)));
@@ -130,12 +108,8 @@ namespace Stripe
 
         private static string ExecuteWebRequest(WebRequest webRequest)
         {
-            var verificationCallback = new RemoteCertificateValidationCallback(StripeCertificateVerificationCallback);
-
             try
             {
-                ServicePointManager.ServerCertificateValidationCallback += verificationCallback;
-
                 using (var response = webRequest.GetResponse())
                 {
                     return ReadStream(response.GetResponseStream());
@@ -147,21 +121,13 @@ namespace Stripe
 
                 throw;
             }
-            finally
-            {
-                ServicePointManager.ServerCertificateValidationCallback -= verificationCallback;
-            }
         }
 
 #if NET40
         private static async Task<string> ExecuteWebRequestAsync(WebRequest webRequest)
         {
-            var verificationCallback = new RemoteCertificateValidationCallback(StripeCertificateVerificationCallback);
-
             try
             {
-                ServicePointManager.ServerCertificateValidationCallback += verificationCallback;
-
                 var task = Task.Factory.FromAsync(webRequest.BeginGetResponse, (Func<IAsyncResult, WebResponse>)webRequest.EndGetResponse, null);
                 
                 using (var response = await task)
@@ -175,28 +141,24 @@ namespace Stripe
 
                 throw;
             }
-            finally
-            {
-                ServicePointManager.ServerCertificateValidationCallback -= verificationCallback;
-            }
         }
 #endif
 
         private static void MaybeThrowStripeExceptionFromWebException(WebRequest webRequest, WebException webException)
         {
-            if (webException.Response != null)
-            {
-                var statusCode = ((HttpWebResponse)webException.Response).StatusCode;
+                if (webException.Response != null)
+                {
+                    var statusCode = ((HttpWebResponse)webException.Response).StatusCode;
+                    
+                    var stripeError = new StripeError();
 
-                var stripeError = new StripeError();
+                    if (webRequest.RequestUri.ToString().Contains("oauth"))
+                        stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()));
+                    else
+                        stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()), "error");
 
-                if (webRequest.RequestUri.ToString().Contains("oauth"))
-                    stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()));
-                else
-                    stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()), "error");
-
-                throw new StripeException(statusCode, stripeError, stripeError.Message);
-            }
+                    throw new StripeException(statusCode, stripeError, stripeError.Message);
+                }
         }
 
         private static string ReadStream(Stream stream)

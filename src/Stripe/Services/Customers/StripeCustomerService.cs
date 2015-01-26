@@ -114,7 +114,7 @@ namespace Stripe
             url = this.ApplyAllParameters(listOptions, url, true);
             return url;
         }
-        
+
         private string FormatGetUrl(string customerId)
         {
             var url = string.Format("{0}/{1}", Urls.Customers, customerId);

@@ -1,12 +1,21 @@
-![Stripe.net](http://i.imgur.com/V3vD8EF.png)
+![Stripe.net](http://i.imgur.com/70TIMws.png)
+##**If you need immediate support or  code changes, read this first.**
 
-[![Stories in progress](https://badge.waffle.io/jaymedavis/stripe.net.png?label=in%20progress&title=Ready)](https://waffle.io/jaymedavis/stripe.net)
+Stripe.net is under active development. Keeping the library in stable condition and working with the community takes a lot of time and commitment. I value code changes being well crafted, tests being in place when necessary, and consistency. Pull requests generally take more time than they appear. Sometimes pieces are missing, such as readme updates or tests. I also receive a lot of support email. I wish I had the time to talk to each and every one of you, but I have other commitments.
 
-[![Click here to lend your support to: stripe.net and make a donation at www.pledgie.com](http://www.pledgie.com/campaigns/22262.png?skin_name=chrome)](http://www.pledgie.com/campaigns/22262)
+So I've decided to offer paid plans for people who have requested immediate support, expediting pull requests, or adding features immediately. Keep in mind with my other commitments, these will have to be handled in the evenings or on the weekends. If you are interested, contact me about availability.
 
-Or how about some DOGEcoin? Much thanks! DAum6PSacnqRE4mjJJB7nzvB8vQrjRHR4j
+Depending on how complex the request is, I am negotiable on the rate. If support help takes me 10 minutes, it will obviously be much cheaper than if it takes an hour. Same goes with a code change, if it's a simple pull request or code change and will not take me long to test and perform a build, it will obviously be much cheaper than if I have to spend 8 hours on the change.
 
-For more information about the examples below, visit https://stripe.com/docs/api for a full reference.
+Don't want to pay anything for upgrades or support? You don't have to! The codebase will remain open source and all issues and pull requests will be handled as they always have been. If you are waiting for your feature to be included, you are always welcome to fork the codebase, add your changes, and use that fork until I can get it merged into the main repository. If you absolutely cannot wait and need it on nuget immediately, contact me and I can provide you with a quote.
+
+##**If you would like to submit a pull request.**
+First, thank you! It is a lot of work to learn someone else's codebase, so I appreciate it. Here are a few things that would help me out:
+* Do not submit pull requests for more than one fix. Keep them small and focused.
+* Please code review yourself. There are a lot of pull requests with typos and mistakes. Don't worry, we all do it. But a code review of yourself will help. :)
+* Please review the diff in GitHub that I will see before I merge your pull requests. If it's hard for you to tell what the differences are, it's going to be hard for me too.
+<br><br><br>
+![Donate](https://pledgie.com/campaigns/22262.png)
 
 Quick Start
 -----------
@@ -56,7 +65,7 @@ If your site has multiple offerings, plans are perfect. You can create as many p
 
 	var planService = new StripePlanService();
 	StripePlan response = planService.Create(myPlan);
-	
+
 	// async version:
 	StripePlan response = await planService.CreateAsync(myPlan);
 
@@ -71,7 +80,7 @@ to a plan id (or not)
 
 	var planService = new StripePlanService();
 	StripePlan response = planService.Update(*planId*, myPlan);
-	
+
 	// async version:
 	StripePlan response = await planService.UpdateAsync(*planId*, myPlan);
 
@@ -79,7 +88,7 @@ to a plan id (or not)
 
 	var planService = new StripePlanService();
 	StripePlan response = planService.Get(*planId*);
-	
+
 	// async version:
 	StripePlan response = await planService.GetAsync(*planId*);
 
@@ -87,7 +96,7 @@ to a plan id (or not)
 
 	var planService = new StripePlanService();
 	planService.Delete(*planId*);
-	
+
 	// async version: 
 	await planService.DeleteAsync(*planId*);
 
@@ -95,7 +104,7 @@ to a plan id (or not)
 
 	var planService = new StripePlanService();
 	IEnumerable<StripePlan> response = planService.List(); // optional StripeListOptions
-	
+
 	// async version:
 	IEnumerable<StripePlan> response = await planService.ListAsync(); // optional StripeListOptions
 
@@ -118,7 +127,7 @@ Coupons (queue-pons not coo-pons)
 
 	var couponService = new StripeCouponService();
 	StripeCoupon response = couponService.Create(myCoupon);
-	
+
 	// async version:
 	StripeCoupon response = await couponService.CreateAsync(myCoupon);
 
@@ -126,7 +135,7 @@ Coupons (queue-pons not coo-pons)
 
 	var couponService = new StripeCouponService();
 	StripeCoupon response = couponService.Get(*couponId*);
-	
+
 	// async version:
 	StripeCoupon response = await couponService.GetAsync(*couponId*);
 
@@ -134,7 +143,7 @@ Coupons (queue-pons not coo-pons)
 
 	var couponService = new StripeCouponService();
 	couponService.Delete(*couponId*);
-	
+
 	// async version:
 	await couponService.DeleteAsync(*couponId*);
 
@@ -142,7 +151,7 @@ Coupons (queue-pons not coo-pons)
 
 	var couponService = new StripeCouponService();
 	IEnumerable<StripeCoupon> response = couponService.List();  // optional StripeListOptions
-	
+
 	// async version:
 	IEnumerable<StripeCoupon> response = await couponService.ListAsync();  // optional StripeListOptions
 
@@ -176,7 +185,7 @@ customer or a charge, but only used once.
 
 	var tokenService = new StripeTokenService();
 	StripeToken stripeToken = tokenService.Create(myToken);
-	
+
 	// async version:
 	StripeToken stripeToken = await tokenService.CreateAsync(myToken);
 
@@ -186,7 +195,7 @@ Tokens are very useful if you don't want to store the customers credit card info
 
 	var tokenService = new StripeTokenService();
 	StripeToken stripeToken = tokenService.Get(*tokenId*);
-	
+
 	// async version:
 	StripeToken stripeToken = await tokenService.GetAsync(*tokenId*);
 
@@ -229,7 +238,7 @@ a credit card or token, and various meta data.
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Create(myCustomer);
-	
+
 	// async version:
 	StripeCustomer stripeCustomer = await customerService.CreateAsync(myCustomer);
 
@@ -266,7 +275,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Update(*customerId*, myCustomer);
-	
+
 	// async version:
 	StripeCustomer stripeCustomer = await customerService.UpdateAsync(*customerId*, myCustomer);
 
@@ -274,7 +283,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Get(*customerId*);
-	
+
 	// async version:
 	StripeCustomer stripeCustomer = await customerService.GetAsync(*customerId*);
 
@@ -284,7 +293,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 	var customerService = new StripeCustomerService();
 	customerService.Delete(*customerId*);
-	
+
 	// async version:
 	await customerService.DeleteAsync(*customerId*);
 
@@ -292,7 +301,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 	var customerService = new StripeCustomerService();
 	IEnumerable<StripeCustomer> response = customerService.List(); // optional StripeCustomerListOptions
-	
+
 	// async version:
 	IEnumerable<StripeCustomer> response = await customerService.ListAsync(); // optional StripeCustomerListOptions
 
@@ -305,7 +314,7 @@ Subscriptions
 
 	var subscriptionService = new StripeSubscriptionService();
 	StripeSubscription stripeSubscription = subscriptionService.Create(*customerId*, *planId*); // optional StripeSubscriptionCreateOptions
-	
+
 	// async version:
 	StripeSubscription stripeSubscription = await subscriptionService.CreateAsync(*customerId*, *planId*); // optional StripeSubscriptionCreateOptions
 
@@ -313,7 +322,7 @@ Subscriptions
 
 	var subscriptionService = new StripeSubscriptionService();
 	StripeSubscription stripeSubscription = subscriptionService.Update(*customerId*, *subscriptionId*); // optional StripeSubscriptionUpdateOptions
-	
+
 	// async version:
 	StripeSubscription stripeSubscription = await subscriptionService.UpdateAsync(*customerId*, *subscriptionId*); // optional StripeSubscriptionUpdateOptions
 
@@ -321,7 +330,7 @@ Subscriptions
 
 	var subscriptionService = new StripeSubscriptionService();
 	StripeSubscription stripeSubscription = subscriptionService.Get(*subscriptionId*);
-	
+
 	// async version:
 	StripeSubscription stripeSubscription = await subscriptionService.GetAsync(*subscriptionId*);
 
@@ -329,7 +338,7 @@ Subscriptions
 
 	var subscriptionService = new StripeSubscriptionService();
 	subscriptionService.Cancel(*customerId*, *subscriptionId*); // optional cancelAtPeriodEnd flag
-	
+
 	// async version:
 	await subscriptionService.CancelAsync(*customerId*, *subscriptionId*); // optional cancelAtPeriodEnd flag
 
@@ -337,7 +346,7 @@ Subscriptions
 
 	var subscriptionService = new StripeSubscriptionService();
 	IEnumerable<StripeSubscription> response = customerService.List(*customerId*); // optional StripeListOptions
-	
+
 	// async version:
 	IEnumerable<StripeSubscription> response = await customerService.ListAsync(*customerId*); // optional StripeListOptions
 
@@ -369,7 +378,7 @@ When creating a card you can use either a card or a token
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Create(*customerId*, myCard);
-	
+
 	// async version:
 	StripeCard stripeCard = await cardService.CreateAsync(*customerId*, myCard);
 
@@ -377,7 +386,7 @@ When creating a card you can use either a card or a token
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Get(*customerId*, *cardId*);
-	
+
 	// async version:
 	StripeCard stripeCard = await cardService.GetAsync(*customerId*, *cardId*);
 
@@ -397,7 +406,7 @@ When creating a card you can use either a card or a token
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Update(*customerId*, *cardId*, myCard);
-	
+
 	// async version:
 	StripeCard stripeCard = await cardService.UpdateAsync(*customerId*, *cardId*, myCard);
 
@@ -405,7 +414,7 @@ When creating a card you can use either a card or a token
 
 	var cardService = new StripeCardService();
 	cardService.Delete(*customerId*, *cardId*);
-	
+
 	// async version:
 	await cardService.DeleteAsync(*customerId*, *cardId*);
 
@@ -413,7 +422,7 @@ When creating a card you can use either a card or a token
 
 	var cardService = new StripeCardService();
 	IEnumerable<StripeCard> response = cardService.List(*customerId*); // optional StripeListOptions
-	
+
 	// async version:
 	IEnumerable<StripeCard> response = await cardService.ListAsync(*customerId*); // optional StripeListOptions
 
@@ -466,7 +475,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Create(myCharge);
-	
+
 	// async version: 
 	StripeCharge stripeCharge = await chargeService.CreateAsync(myCharge);
 
@@ -474,7 +483,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Get(*chargeId*);
-	
+
 	// async version:
 	StripeCharge stripeCharge = await chargeService.GetAsync(*chargeId*);
 
@@ -484,7 +493,7 @@ If you do not specify an amount, the entire charge is refunded. The StripeCharge
 
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Refund(*chargeId*, *amount*, *refundApplicationFee*);
-	
+
 	// async version:
 	StripeCharge stripeCharge = await chargeService.RefundAsync(*chargeId*, *amount*, *refundApplicationFee*);
 
@@ -494,7 +503,7 @@ If you set a charge to capture = false, you use this to capture the charge later
 
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Capture(*chargeId*, *amount*, *applicationFee*);
-	
+
 	// async version:
 	StripeCharge stripeCharge = await chargeService.CaptureAsync(*chargeId*, *amount*, *applicationFee*);
 
@@ -502,7 +511,7 @@ If you set a charge to capture = false, you use this to capture the charge later
 
 	var chargeService = new StripeChargeService();
 	IEnumerable<StripeCharge> response = chargeService.List(); // optional StripeChargeListOptions
-	
+
 	// async version: 
 	IEnumerable<StripeCharge> response = await chargeService.ListAsync(); // optional StripeChargeListOptions
 
@@ -515,7 +524,7 @@ Invoices
 
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Get(*invoiceId*);
-	
+
 	// async version:
 	StripeInvoice response = await invoiceService.GetAsync(*invoiceId*);
 
@@ -523,7 +532,7 @@ Invoices
 
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Upcoming(*customerId*);
-	
+
 	// async version:
 	StripeInvoice response = await invoiceService.UpcomingAsync(*customerId*);
 
@@ -531,7 +540,7 @@ Invoices
 
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Create(*customerId*);
-	
+
 	// async version:
 	StripeInvoice response = await invoiceService.CreateAsync(*customerId*);
 
@@ -542,7 +551,7 @@ Invoices
 
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Update(stripeInvoiceUpdateOptions);
-	
+
 	// async version:
 	StripeInvoice response = await invoiceService.UpdateAsync(stripeInvoiceUpdateOptions);
 
@@ -550,7 +559,7 @@ Invoices
 
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Pay(*invoiceId*);
-	
+
 	// async version:
 	StripeInvoice response = await invoiceService.PayAsync(*invoiceId*);
 
@@ -558,7 +567,7 @@ Invoices
 
 	var invoiceService = new StripeInvoiceService();
 	IEnumerable<StripeInvoice> response = invoiceService.List(); // optional StripeInvoiceListOptions
-	
+
 	// async version:
 	IEnumerable<StripeInvoice> response = await invoiceService.ListAsync(); // optional StripeInvoiceListOptions
 
@@ -579,7 +588,7 @@ Any invoice items you create for a customer will be added to their bill.
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	StripeInvoiceItem response = invoiceItemService.Create(myItem);
-	
+
 	// async version:
 	StripeInvoiceItem response = await invoiceItemService.CreateAsync(myItem);
 
@@ -587,7 +596,7 @@ Any invoice items you create for a customer will be added to their bill.
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	StripeInvoiceItem response = invoiceItemService.Get(*invoiceItemId*);
-	
+
 	// async version:
 	StripeInvoiceItem response = await invoiceItemService.GetAsync(*invoiceItemId*);
 
@@ -600,7 +609,7 @@ Any invoice items you create for a customer will be added to their bill.
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	StripeInvoiceItem response = invoiceItemService.Update(*invoiceItemId*, myUpdatedItem);
-	
+
 	// async version:
 	StripeInvoiceItem response = await invoiceItemService.UpdateAsync(*invoiceItemId*, myUpdatedItem);
 
@@ -608,7 +617,7 @@ Any invoice items you create for a customer will be added to their bill.
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	invoiceItemService.Delete(*invoiceItemId*);
-	
+
 	// async version:
 	await invoiceItemService.DeleteAsync(*invoiceItemId*);
 
@@ -616,7 +625,7 @@ Any invoice items you create for a customer will be added to their bill.
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List(); // optional StripeInvoiceItemListOptions
-	
+
 	// async version:
 	IEnumerable<StripeInvoiceItem> response = await invoiceItemService.ListAsync(); // optional StripeInvoiceItemListOptions
 
@@ -629,7 +638,7 @@ Account
 
 	var accountService = new StripeAccountService();
 	StripeAccount response = accountService.Get();
-	
+
 	// async version:
 	StripeAccount response = await accountService.GetAsync();
 
@@ -640,7 +649,7 @@ Balance
 
 	var balanceService = new StripeBalanceService();
 	StripeBalance response = balanceService.Get();
-	
+
 	// async version:
 	StripeBalance response = await balanceService.GetAsync();
 
@@ -648,7 +657,7 @@ Balance
 
 	var balanceService = new StripeBalanceService();
 	StripeBalanceTransaction transaction = balanceService.Get(*balanceTransactionId*);
-	
+
 	// async version:
 	StripeBalanceTransaction transaction = await balanceService.GetAsync(*balanceTransactionId*);
 
@@ -656,7 +665,7 @@ Balance
 
 	var balanceService = new StripeBalanceService();
 	IEnumerable<StripeBalanceTransaction> balanceTransactions = balanceService.List(); // optional StripeBalanceTransactionListOptions
-	
+
 	// async version:
 	IEnumerable<StripeBalanceTransaction> balanceTransactions = await balanceService.ListAsync(); // optional StripeBalanceTransactionListOptions
 
@@ -671,7 +680,7 @@ Disputes
 
 	// providing the dispute reason is optional
 	StripeDispute stripeDispute = disputeService.Update(*chargeId*, "customer ate the donut before I charged them, so they said it was free");
-	
+
 	// async version:
 	StripeDispute stripeDispute = await disputeService.UpdateAsync(*chargeId*, "customer ate the donut before I charged them, so they said it was free");
 
@@ -694,7 +703,7 @@ Recipients
 
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Create(myRecipient);
-	
+
 	// async version:
 	StripeRecipient stripeRecipient = await recipientService.CreateAsync(myRecipient);
 
@@ -713,7 +722,7 @@ Recipients
 
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Update(*recipientId*, myRecipient);
-	
+
 	// async version:
 	StripeRecipient stripeRecipient = await recipientService.UpdateAsync(*recipientId*, myRecipient);
 
@@ -721,7 +730,7 @@ Recipients
 
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Get(*recipientId*);
-	
+
 	// async version:
 	StripeRecipient stripeRecipient = await recipientService.GetAsync(*recipientId*);
 
@@ -729,7 +738,7 @@ Recipients
 
 	var recipientService = new StripeRecipientService();
 	recipientService.Deleted(*recipientId*);
-	
+
 	// async version:
 	await recipientService.DeletedAsync(*recipientId*);
 
@@ -737,7 +746,7 @@ Recipients
 
 	var recipientService = new StripeRecipientService();
 	IEnumerable<StripeRecipient> response = recipientService.List(); // optional StripeRecipientListOptions
-	
+
 	// async version:
 	IEnumerable<StripeRecipient> response = await recipientService.ListAsync(); // optional StripeRecipientListOptions
 
@@ -757,7 +766,7 @@ Transfers
 
 	var transferService = new StripeTransferService();
 	StripeTransfer stripeTransfer = transferService.Create(myTransfer);
-	
+
 	// async version:
 	StripeTransfer stripeTransfer = await transferService.CreateAsync(myTransfer);
 
@@ -765,7 +774,7 @@ Transfers
 
 	var transferService = new StripeTransferService();
 	StripeTransfer stripeTransfer = transferService.Get(*transferId*);
-	
+
 	// async version:
 	StripeTransfer stripeTransfer = await transferService.GetAsync(*transferId*);
 
@@ -773,7 +782,7 @@ Transfers
 
 	var transferService = new StripeTransferService();
 	StripeTransfer stripeTransfer = transferService.Cancel(*transferId*);
-	
+
 	// async version:
 	StripeTransfer stripeTransfer = await transferService.CancelAsync(*transferId*);
 
@@ -781,7 +790,7 @@ Transfers
 
 	var transferService = new StripeTransferService();
 	IEnumerable<StripeTransfer> response = transferService.List(); // optional StripeTransferListOptions
-	
+
 	// async version:
 	IEnumerable<StripeTransfer> response = await transferService.ListAsync(); // optional StripeTransferListOptions
 
@@ -796,7 +805,7 @@ If you do not specify an amount, the entire application fee is refunded.
 
 	var feeService = new StripeApplicationFeeService();
 	StripeApplicationFee stripeApplicationFee = feeService.Get(*applicationFeeId*);
-	
+
 	// async version:
 	StripeApplicationFee stripeApplicationFee = await feeService.GetAsync(*applicationFeeId*);
 
@@ -804,7 +813,7 @@ If you do not specify an amount, the entire application fee is refunded.
 
 	var feeService = new StripeApplicationFeeService();
 	StripeApplicationFee stripeApplicationFee = feeService.Refund(*applicationFeeId*, *amount*);
-	
+
 	// async version:
 	StripeApplicationFee stripeApplicationFee = await feeService.RefundAsync(*applicationFeeId*, *amount*);
 
@@ -936,7 +945,6 @@ Any errors that occur on any of the services will throw a StripeException with t
 
 The StripeException contains and HttpStatusCode and a StripeError entity. The StripeError entity contains the type, message, code and param. For more infomation, review the Errors section
 of stripe here: https://stripe.com/docs/api#errors
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/5f9bbd19e41d91cc092ebec6ff4bb40c "githalytics.com")](http://githalytics.com/jaymedavis/stripe.net)
 
 Async Support
 -------------
