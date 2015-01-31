@@ -1,4 +1,5 @@
-﻿using Machine.Specifications;
+﻿using System.Linq;
+using Machine.Specifications;
 
 namespace Stripe.Tests
 {
@@ -45,18 +46,18 @@ namespace Stripe.Tests
             _stripeInvoice.Total.ShouldBeGreaterThanOrEqualTo(0);
 
         It should_have_a_lines_object = () =>
-            _stripeInvoice.StripeInvoiceLines.ShouldNotBeNull();
+            _stripeInvoice.StripeInvoiceLineItems.ShouldNotBeNull();
 
         It should_have_a_valid_invoiceitems_object = () =>
-            _stripeInvoice.StripeInvoiceLines.StripeInvoiceItems.ShouldNotBeNull();
+            _stripeInvoice.StripeInvoiceLineItems.Data.ShouldNotBeNull();
 
         It should_have_the_correct_invoiceitems_object = () =>
-            _stripeInvoice.StripeInvoiceLines.StripeInvoiceItems[0].Amount.ShouldEqual(_stripeInvoiceItemCreateOptions.Amount);
+            _stripeInvoice.StripeInvoiceLineItems.Data.First().Amount.ShouldEqual(_stripeInvoiceItemCreateOptions.Amount);
 
         It should_have_a_valid_invoiceitems_plan_object = () =>
-            _stripeInvoice.StripeInvoiceLines.StripeInvoiceItems[1].Plan.ShouldNotBeNull();
+            _stripeInvoice.StripeInvoiceLineItems.Data[1].Plan.ShouldNotBeNull();
 
         It should_have_the_correct_invoiceitems_plan_object = () =>
-            _stripeInvoice.StripeInvoiceLines.StripeInvoiceItems[1].Plan.Amount.ShouldEqual(_stripePlanCreateOptions.Amount);
+            _stripeInvoice.StripeInvoiceLineItems.Data[1].Plan.Amount.ShouldEqual(_stripePlanCreateOptions.Amount);
     }
 }

@@ -44,6 +44,6 @@ namespace Stripe.Tests
             _stripeInvoice.Total.ShouldBeGreaterThanOrEqualTo(0);
 
         It should_have_a_lines_object = () =>
-            _stripeInvoice.StripeInvoiceLines.ShouldNotBeNull();
+            _stripeInvoice.StripeInvoiceLineItems.ShouldNotBeNull();
     }
 }
