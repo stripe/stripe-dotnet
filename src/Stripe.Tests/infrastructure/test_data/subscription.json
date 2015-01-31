@@ -1,0 +1,35 @@
+﻿{
+  "id": "sub_5GCI2FDm9cMQTl",
+  "plan": {
+    "interval": "month",
+    "name": "-JYI_nRwd_ltcGRLnVys",
+    "created": 1412299176,
+    "amount": 2000,
+    "currency": "usd",
+    "id": "-JYI_nRwd_ltcGRLnVys",
+    "object": "plan",
+    "livemode": false,
+    "interval_count": 1,
+    "trial_period_days": null,
+    "metadata": {
+    },
+    "statement_description": null
+  },
+  "object": "subscription",
+  "start": 1417623744,
+  "status": "active",
+  "customer": "cus_5GC5XeHUC4TmO9",
+  "cancel_at_period_end": false,
+  "current_period_start": 1417623744,
+  "current_period_end": 1420302144,
+  "ended_at": null,
+  "trial_start": null,
+  "trial_end": null,
+  "canceled_at": null,
+  "quantity": 1,
+  "application_fee_percent": null,
+  "tax_percent": null,
+  "discount": null,
+  "metadata": {
+  }
+}

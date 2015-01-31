@@ -1,0 +1,1 @@
+src\.nuget\nuget pack Stripe.net.nuspec -o working40

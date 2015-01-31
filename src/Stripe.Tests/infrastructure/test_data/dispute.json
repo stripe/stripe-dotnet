@@ -1,0 +1,40 @@
+﻿{
+  "charge": "ch_14aX6m2eZvKYlo2C1awwC61Y",
+  "amount": 400,
+  "created": 1410201807,
+  "status": "lost",
+  "livemode": false,
+  "currency": "usd",
+  "object": "dispute",
+  "reason": "general",
+  "is_charge_refundable": false,
+  "balance_transactions": [
+    {
+      "id": "txn_14aX6p2eZvKYlo2C9vuZXfqN",
+      "object": "balance_transaction",
+      "amount": -400,
+      "currency": "usd",
+      "net": -1900,
+      "type": "adjustment",
+      "created": 1410201807,
+      "available_on": 1410739200,
+      "status": "available",
+      "fee": 1500,
+      "fee_details": [
+        {
+          "amount": 1500,
+          "currency": "usd",
+          "type": "stripe_fee",
+          "description": "Dispute fee",
+          "application": null
+        }
+      ],
+      "source": "ch_14aX6m2eZvKYlo2C1awwC61Y",
+      "description": "Chargeback withdrawal for ch_14aX6m2eZvKYlo2C1awwC61Y"
+    }
+  ],
+  "evidence_due_by": 1411603199,
+  "evidence": null,
+  "metadata": {
+  }
+}
