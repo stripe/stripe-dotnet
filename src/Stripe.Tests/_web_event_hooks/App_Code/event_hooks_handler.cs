@@ -18,10 +18,10 @@ namespace Stripe.Tests
 
             switch (stripeEvent.Type)
             {
-                case "charge.refunded":
+                case StripeEvents.ChargeRefunded:
                     var stripeCharge = Stripe.Mapper<StripeCharge>.MapFromJson(stripeEvent.Data.Object.ToString());
                     break;
-                case "charge.dispute.created":
+                case StripeEvents.ChargeDisputeCreated:
                     var stripeDispute = Stripe.Mapper<StripeDispute>.MapFromJson(stripeEvent.Data.Object.ToString());
                     break;
             }
