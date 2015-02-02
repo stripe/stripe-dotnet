@@ -53,7 +53,7 @@ namespace Stripe
         public bool Forgiven { get; set; }
 
         [JsonProperty("lines")]
-        public StripeInvoiceLines StripeInvoiceLines { get; set; }
+        public StripePageableList<StripeInvoiceLineItem> StripeInvoiceLineItems { get; set; }
 
         [JsonProperty("paid")]
         public bool Paid { get; set; }

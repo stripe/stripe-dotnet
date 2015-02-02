@@ -4,7 +4,7 @@ using Machine.Specifications;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Stripe.Test
+namespace Stripe.Tests
 {
     public class when_mapping_invoice
     {

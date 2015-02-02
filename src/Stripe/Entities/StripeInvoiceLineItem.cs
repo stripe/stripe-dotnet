@@ -73,5 +73,11 @@ namespace Stripe
 
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
+
+        [JsonProperty("period")]
+        public StripePeriod StripePeriod { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 }

@@ -72,7 +72,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
 #endif
-        
+
         public virtual StripeSubscription Cancel(string customerId, string subscriptionId, bool cancelAtPeriodEnd = false)
         {
             var url = FormatCancelUrl(customerId, subscriptionId, cancelAtPeriodEnd);

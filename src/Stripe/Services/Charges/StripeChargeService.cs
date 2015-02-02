@@ -73,7 +73,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(response);
         }
 #endif
-        
+
         public virtual IEnumerable<StripeCharge> List(StripeChargeListOptions listOptions = null)
         {
             var url = FormatListUrl(listOptions);

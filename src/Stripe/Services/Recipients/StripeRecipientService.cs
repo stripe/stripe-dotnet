@@ -71,7 +71,7 @@ namespace Stripe
             return Mapper<StripeRecipient>.MapFromJson(response);
         }
 #endif
-        
+
         public virtual void Delete(string recipientId)
         {
             var url = FormatDeleteUrl(recipientId);
