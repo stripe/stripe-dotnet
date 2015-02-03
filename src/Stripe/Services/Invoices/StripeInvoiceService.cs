@@ -12,7 +12,8 @@ namespace Stripe
 
         public virtual StripeInvoice Get(string invoiceId)
         {
-            var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
+			var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
+			url = this.ApplyAllParameters(null, url, false);
 
             var response = Requestor.GetString(url, ApiKey);
 
