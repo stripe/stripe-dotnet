@@ -79,9 +79,20 @@ namespace Stripe
 
                 foreach (var attribute in property.GetCustomAttributes(typeof (JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
                 {
-                    var dictionary = value as IDictionary<string, string>;
-                    if (dictionary != null)
+                    QueryStringParameterConverterAttribute converterAttrib = valueType.GetCustomAttributes(typeof(QueryStringParameterConverterAttribute), false).Cast<QueryStringParameterConverterAttribute>().FirstOrDefault();
+
+                    if (converterAttrib != null)
                     {
+                        var converter = converterAttrib.GetConverter();
+                        var convertedValue = converter.ConvertToQueryStringValue(value);
+                        if (convertedValue != null)
+                        {
+                            AddQueryStringProperty(queryStringProperties, parents, attribute.PropertyName, convertedValue);
+                        }
+                    }
+                    else if (value is IDictionary<string, string>)
+                    {
+                        var dictionary = (IDictionary<string, string>)value;
                         foreach (string key in dictionary.Keys)
                         {
                             AddQueryStringProperty(queryStringProperties, parents.Union(new[] { attribute.PropertyName }), key, dictionary[key]);

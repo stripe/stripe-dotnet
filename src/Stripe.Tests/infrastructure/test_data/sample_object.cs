@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe.Tests.test_data
 {
@@ -28,6 +30,14 @@ namespace Stripe.Tests.test_data
             SubObject = new sample_sub_object()
             {
                 Pi = "3.1415"
+            };
+            SubObjectWithConverter = new sample_sub_object_with_custom_converter()
+            {
+                Value = "Hello"
+            };
+            NullSubObjectWithConverter = new sample_sub_object_with_custom_converter()
+            {
+                Value = null
             };
         }
 
@@ -65,11 +75,35 @@ namespace Stripe.Tests.test_data
 
         [JsonProperty("subobject")]
         public sample_sub_object SubObject { get; set; }
+
+        [JsonProperty("subobjectwithconverter")]
+        public sample_sub_object_with_custom_converter SubObjectWithConverter { get; set; }
+
+        [JsonProperty("nullsubobjectwithconverter")]
+        public sample_sub_object_with_custom_converter NullSubObjectWithConverter { get; set; }
     }
 
     public class sample_sub_object
     {
         [JsonProperty("pi")]
         public string Pi { get; set; }
+    }
+
+
+    [QueryStringParameterConverter(typeof(sample_type_converter))]
+    public class sample_sub_object_with_custom_converter
+    {
+        public string Value { get; set; }
+    }
+
+    internal class sample_type_converter 
+        : QueryStringParameterConverter<sample_sub_object_with_custom_converter>
+    {
+        public override string ConvertToQueryStringValue(sample_sub_object_with_custom_converter @object)
+        {
+            if (@object.Value == null) return null;
+
+            return new string(@object.Value.Reverse().ToArray());
+        }
     }
 }

@@ -51,5 +51,11 @@ namespace Stripe.Tests
 
         It should_contain_properties_with_complex_objects = () =>
             _result.ShouldContain("subobject[pi]=3.1415");
+
+        It should_contain_properties_with_custom_converters = () =>
+            _result.ShouldContain("subobjectwithconverter=olleH");
+
+        It should_not_contain_properties_with_null_converted_values = () =>
+            _result.ShouldNotContain("nullsubobjectwithconverter=");
     }
 }
