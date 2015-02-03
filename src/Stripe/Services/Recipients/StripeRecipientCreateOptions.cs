@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeRecipientCreateOptions : BankAccountOptions
+    public class StripeRecipientCreateOptions
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -19,6 +20,30 @@ namespace Stripe
 
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        [Obsolete("Use BankAccount.Country instead")]
+        public string BankAccountCountry
+        {
+            get { return BankAccount == null ? string.Empty : BankAccount.Country; }
+            set { (BankAccount ?? (BankAccount = new BankAccountOptions())).Country = value; }
+        }
+
+        [Obsolete("Use BankAccount.RoutingNumber instead")]
+        public string BankAccountRoutingNumber
+        {
+            get { return BankAccount == null ? string.Empty : BankAccount.RoutingNumber; }
+            set { (BankAccount ?? (BankAccount = new BankAccountOptions())).RoutingNumber = value; }
+        }
+
+        [Obsolete("Use BankAccount.AccountNumber instead")]
+        public string BankAccountNumber
+        {
+            get { return BankAccount == null ? string.Empty : BankAccount.AccountNumber; }
+            set { (BankAccount ?? (BankAccount = new BankAccountOptions())).AccountNumber = value; }
+        }
+
+        [JsonProperty("bank_account")]
+        public BankAccountOptions BankAccount { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

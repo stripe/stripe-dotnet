@@ -12,6 +12,7 @@ namespace Stripe.Tests.test_data
         {
             StringContainingText = "Foo";
             StringWithDifferentName = "Foo";
+            StringWithEncoding = "H=I";
             Number = 42;
             Metadata = new Dictionary<string, string> {
                 { "A", "Value-A" },
@@ -23,6 +24,10 @@ namespace Stripe.Tests.test_data
             {
                 LessThan = DateTime.Parse("2100-01-01"),
                 GreaterThan = DateTime.Parse("2000-01-01")
+            };
+            SubObject = new sample_sub_object()
+            {
+                Pi = "3.1415"
             };
         }
 
@@ -36,6 +41,9 @@ namespace Stripe.Tests.test_data
 
         [JsonProperty("stringcontainingnull")]
         public string StringContainingNull { get; set; }
+
+        [JsonProperty("stringwithencoding")]
+        public string StringWithEncoding { get; set; }
 
         [JsonProperty("number")]
         public int Number { get; set; }
@@ -54,5 +62,14 @@ namespace Stripe.Tests.test_data
 
         [JsonProperty("datecomplex")]
         public StripeDateFilter ComplexDateFilter { get; set; }
+
+        [JsonProperty("subobject")]
+        public sample_sub_object SubObject { get; set; }
+    }
+
+    public class sample_sub_object
+    {
+        [JsonProperty("pi")]
+        public string Pi { get; set; }
     }
 }
