@@ -74,13 +74,13 @@ namespace Stripe.Tests.test_data
         public StripeDateFilter ComplexDateFilter { get; set; }
 
         [JsonProperty("subobject")]
-        public sample_sub_object SubObject { get; set; }
+        public object SubObject { get; set; }
 
         [JsonProperty("subobjectwithconverter")]
-        public sample_sub_object_with_custom_converter SubObjectWithConverter { get; set; }
+        public object SubObjectWithConverter { get; set; }
 
         [JsonProperty("nullsubobjectwithconverter")]
-        public sample_sub_object_with_custom_converter NullSubObjectWithConverter { get; set; }
+        public object NullSubObjectWithConverter { get; set; }
     }
 
     public class sample_sub_object

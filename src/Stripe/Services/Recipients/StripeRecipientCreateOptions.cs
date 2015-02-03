@@ -24,26 +24,32 @@ namespace Stripe
         [Obsolete("Use BankAccount.Country instead")]
         public string BankAccountCountry
         {
-            get { return BankAccount == null ? string.Empty : BankAccount.Country; }
-            set { (BankAccount ?? (BankAccount = new BankAccountOptions())).Country = value; }
+            get { return InternalBankAccountOptions == null ? string.Empty : InternalBankAccountOptions.Country; }
+            set { (InternalBankAccountOptions ?? (InternalBankAccountOptions = new BankAccountOptions())).Country = value; }
         }
 
         [Obsolete("Use BankAccount.RoutingNumber instead")]
         public string BankAccountRoutingNumber
         {
-            get { return BankAccount == null ? string.Empty : BankAccount.RoutingNumber; }
-            set { (BankAccount ?? (BankAccount = new BankAccountOptions())).RoutingNumber = value; }
+            get { return InternalBankAccountOptions == null ? string.Empty : InternalBankAccountOptions.RoutingNumber; }
+            set { (InternalBankAccountOptions ?? (InternalBankAccountOptions = new BankAccountOptions())).RoutingNumber = value; }
         }
 
         [Obsolete("Use BankAccount.AccountNumber instead")]
         public string BankAccountNumber
         {
-            get { return BankAccount == null ? string.Empty : BankAccount.AccountNumber; }
-            set { (BankAccount ?? (BankAccount = new BankAccountOptions())).AccountNumber = value; }
+            get { return InternalBankAccountOptions == null ? string.Empty : InternalBankAccountOptions.AccountNumber; }
+            set { (InternalBankAccountOptions ?? (InternalBankAccountOptions = new BankAccountOptions())).AccountNumber = value; }
+        }
+
+        private BankAccountOptions InternalBankAccountOptions
+        {
+            get { return BankAccount as BankAccountOptions; }
+            set { BankAccount = value; }
         }
 
         [JsonProperty("bank_account")]
-        public BankAccountOptions BankAccount { get; set; }
+        public IBankAccountOptions BankAccount { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
