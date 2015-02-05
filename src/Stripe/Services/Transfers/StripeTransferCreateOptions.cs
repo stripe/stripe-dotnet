@@ -17,6 +17,12 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        [JsonProperty("bank_account")]
+        public string BankAccount { get; set; }
+
+        [JsonProperty("card")]
+        public string Card { get; set; }
+
         [JsonProperty("statement_description")]
         public string StatementDescription { get; set; }
 
