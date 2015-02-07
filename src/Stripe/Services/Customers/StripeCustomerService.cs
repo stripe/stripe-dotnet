@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 
+#if NET40
+using System.Threading.Tasks;
+#endif
+
 namespace Stripe
 {
     public class StripeCustomerService : StripeService
@@ -17,41 +21,118 @@ namespace Stripe
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
 
+#if NET40
+        public virtual async Task<StripeCustomer> CreateAsync(StripeCustomerCreateOptions createOptions)
+        {
+            var url = this.ApplyAllParameters(createOptions, Urls.Customers, false);
+
+            var response = await Requestor.PostStringAsync(url, ApiKey);
+
+            return Mapper<StripeCustomer>.MapFromJson(response);
+        }
+#endif
+
         public virtual StripeCustomer Get(string customerId)
         {
-            var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-            url = this.ApplyAllParameters(null, url, false);
+            var url = FormatGetUrl(customerId);
 
             var response = Requestor.GetString(url, ApiKey);
 
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
+        
+#if NET40
+        public virtual async Task<StripeCustomer> GetAsync(string customerId)
+        {
+            var url = FormatGetUrl(customerId);
+
+            var response = await Requestor.GetStringAsync(url, ApiKey);
+
+            return Mapper<StripeCustomer>.MapFromJson(response);
+        }
+#endif
 
         public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
         {
-            var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-            url = this.ApplyAllParameters(updateOptions, url, false);
+            var url = FormatUpdateUrl(customerId, updateOptions);
 
             var response = Requestor.PostString(url, ApiKey);
 
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
 
+#if NET40
+        public virtual async Task<StripeCustomer> UpdateAsync(string customerId, StripeCustomerUpdateOptions updateOptions)
+        {
+            var url = FormatUpdateUrl(customerId, updateOptions);
+
+            var response = await Requestor.PostStringAsync(url, ApiKey);
+
+            return Mapper<StripeCustomer>.MapFromJson(response);
+        }
+#endif
+
         public virtual void Delete(string customerId)
         {
-            var url = string.Format("{0}/{1}", Urls.Customers, customerId);
+            var url = FormatDeleteUrl(customerId);
 
             Requestor.Delete(url, ApiKey);
         }
 
+#if NET40
+        public virtual async Task DeleteAsync(string customerId)
+        {
+            var url = FormatDeleteUrl(customerId);
+
+            await Requestor.DeleteAsync(url, ApiKey);
+        }
+#endif
+
         public virtual IEnumerable<StripeCustomer> List(StripeCustomerListOptions listOptions = null)
         {
-            var url = Urls.Customers;
-            url = this.ApplyAllParameters(listOptions, url, true);
+            var url = FormatListUrl(listOptions);
 
             var response = Requestor.GetString(url, ApiKey);
 
             return Mapper<StripeCustomer>.MapCollectionFromJson(response);
+        }
+
+#if NET40
+        public virtual async Task<IEnumerable<StripeCustomer>> ListAsync(StripeCustomerListOptions listOptions = null)
+        {
+            var url = FormatListUrl(listOptions);
+
+            var response = await Requestor.GetStringAsync(url, ApiKey);
+
+            return Mapper<StripeCustomer>.MapCollectionFromJson(response);
+        }
+#endif
+
+        private string FormatListUrl(StripeCustomerListOptions listOptions)
+        {
+            var url = Urls.Customers;
+            url = this.ApplyAllParameters(listOptions, url, true);
+            return url;
+        }
+
+        private string FormatGetUrl(string customerId)
+        {
+            var url = string.Format("{0}/{1}", Urls.Customers, customerId);
+            this.ApplyAllParameters(null, url, false);
+            return url;
+        }
+
+        private string FormatUpdateUrl(string customerId, StripeCustomerUpdateOptions updateOptions)
+        {
+            var url = string.Format("{0}/{1}", Urls.Customers, customerId);
+            url = this.ApplyAllParameters(updateOptions, url, false);
+            return url;
+        }
+
+        private static string FormatDeleteUrl(string customerId)
+        {
+            var url = string.Format("{0}/{1}", Urls.Customers, customerId);
+            return url;
         }
     }
 }
