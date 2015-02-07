@@ -37,7 +37,7 @@ namespace Stripe.Tests
             StripeRecipient.ActiveAccount.Currency.ShouldEqual("usd");
 
         It should_have_default_for_currency = () =>
-            StripeRecipient.ActiveAccount.DefaultForCurrency.ShouldBeTrue();
+            StripeRecipient.ActiveAccount.DefaultForCurrency.ShouldBeFalse();
 
         It should_have_active_account_last4 = () =>
             StripeRecipient.ActiveAccount.Last4.ShouldEqual("6789");
