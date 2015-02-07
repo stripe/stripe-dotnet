@@ -1,4 +1,4 @@
-![Stripe.net](http://i.imgur.com/9UzKGQd.png)  
+![Stripe.net](http://i.imgur.com/9UzKGQd.png)    
 ![Donate](https://pledgie.com/campaigns/22262.png)  
 
 ##**If you would like to submit a pull request.**
