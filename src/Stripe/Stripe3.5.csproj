@@ -73,6 +73,7 @@
     <Compile Include="Entities\StripeBankAccount.cs" />
     <Compile Include="Entities\StripeFee.cs" />
     <Compile Include="Entities\StripeInvoiceLineItem.cs" />
+    <Compile Include="Entities\StripeList.cs" />
     <Compile Include="Entities\StripeObject.cs" />
     <Compile Include="Entities\StripePageableList.cs" />
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
