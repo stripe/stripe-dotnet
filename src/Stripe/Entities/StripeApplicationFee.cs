@@ -33,7 +33,10 @@ namespace Stripe
         [JsonProperty("application")]
         public string ApplicationId { get; set; }
 
+        #region Expandable Balance Transaction
         public string BalanceTransactionId { get; set; }
+
+        [JsonIgnore]
         public StripeBalanceTransaction BalanceTransaction { get; set; }
 
         [JsonProperty("balance_transaction")]
@@ -44,7 +47,9 @@ namespace Stripe
                 ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
             }
         }
+        #endregion
 
+        #region Expandable Card
         public string CardId { get; set; }
 
         [JsonIgnore]
@@ -58,7 +63,9 @@ namespace Stripe
                 ExpandableProperty<StripeCard>.Map(value, s => CardId = s, o => Card = o);
             }
         }
+        #endregion
 
+        #region Expandable Charge
         public string ChargeId { get; set; }
 
         [JsonIgnore]
@@ -72,6 +79,7 @@ namespace Stripe
                 ExpandableProperty<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
             }
         }
+        #endregion
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
@@ -83,8 +91,8 @@ namespace Stripe
         [JsonProperty("refunded")]
         public bool Refunded { get; set; }
 
-        //[JsonProperty("refunds")]
-        //public StripeApplicationFeeRefundList StripeApplicationFeeRefundList { get; set; }
+        [JsonProperty("refunds")]
+        public StripeList<StripeApplicationFee> StripeApplicationFeeRefundList { get; set; }
 
         [JsonProperty("amount_refunded")]
         public int AmountRefunded { get; set; }
