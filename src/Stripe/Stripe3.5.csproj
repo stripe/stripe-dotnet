@@ -75,7 +75,6 @@
     <Compile Include="Entities\StripeInvoiceLineItem.cs" />
     <Compile Include="Entities\StripeList.cs" />
     <Compile Include="Entities\StripeObject.cs" />
-    <Compile Include="Entities\StripePageableList.cs" />
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
     <Compile Include="Entities\StripeRefund.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />

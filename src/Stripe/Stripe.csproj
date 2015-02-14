@@ -53,7 +53,6 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Entities\StripeList.cs" />
-    <Compile Include="Entities\StripePageableList.cs" />
     <Compile Include="Entities\StripeRefund.cs" />
     <Compile Include="Entities\StripeBankAccount.cs" />
     <Compile Include="Entities\StripeBalanceTransaction.cs" />
