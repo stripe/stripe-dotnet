@@ -77,7 +77,6 @@
     <Compile Include="Entities\StripePageableList.cs" />
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
     <Compile Include="Entities\StripeRefund.cs" />
-    <Compile Include="Entities\StripeRefundList.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
     <Compile Include="Services\StripeDateFilter.cs" />
