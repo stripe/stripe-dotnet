@@ -90,7 +90,6 @@
     <Compile Include="customers\when_creating_a_customer_with_a_defaultcard_expanded.cs" />
     <Compile Include="customers\when_creating_a_customer_with_an_api_key.cs" />
     <Compile Include="customers\when_listing_customers_with_expanded_properties.cs" />
-    <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_application_fee.cs" />
     <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_card.cs" />
     <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_charge.cs" />
     <Compile Include="infrastructure\camel_case_contract_resolver\when_mapping_discount.cs" />
@@ -216,7 +215,6 @@
     <Content Include="infrastructure\test_data\transfer.json" />
     <Content Include="infrastructure\test_data\charge.json" />
     <Content Include="infrastructure\test_data\card.json" />
-    <Content Include="infrastructure\test_data\application_fee.json" />
     <Content Include="infrastructure\test_data\discount.json" />
     <Content Include="infrastructure\test_data\dispute.json" />
     <Content Include="infrastructure\test_data\invoice_item.json" />

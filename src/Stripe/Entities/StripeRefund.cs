@@ -20,6 +20,7 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        #region Expandable Balance Transaction
         public string BalanceTransactionId { get; set; }
 
         [JsonIgnore]
@@ -33,7 +34,9 @@ namespace Stripe
                 ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
             }
         }
+        #endregion
 
+        #region Expandable Charge
         public string ChargeId { get; set; }
 
         [JsonIgnore]
@@ -47,6 +50,7 @@ namespace Stripe
                 ExpandableProperty<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
             }
         }
+        #endregion
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

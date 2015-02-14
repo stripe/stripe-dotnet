@@ -110,8 +110,8 @@ namespace Stripe
         [JsonProperty("receipt_number")]
         public string ReceiptNumber { get; set; }
 
-        [JsonProperty("statement_description")]
-        public string StatementDescription { get; set; }
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
 
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
