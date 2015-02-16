@@ -23,8 +23,8 @@ namespace Stripe
         [JsonProperty("card")]
         public string Card { get; set; }
 
-        [JsonProperty("statement_description")]
-        public string StatementDescription { get; set; }
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

@@ -1,22 +1,13 @@
-![Stripe.net](http://i.imgur.com/70TIMws.png)
-##**If you need immediate support or  code changes, read this first.**
-
-Stripe.net is under active development. Keeping the library in stable condition and working with the community takes a lot of time and commitment. I value code changes being well crafted, tests being in place when necessary, and consistency. Pull requests generally take more time than they appear. Sometimes pieces are missing, such as readme updates or tests. I also receive a lot of support email. I wish I had the time to talk to each and every one of you, but I have other commitments.
-
-So I've decided to offer paid plans for people who have requested immediate support, expediting pull requests, or adding features immediately. Keep in mind with my other commitments, these will have to be handled in the evenings or on the weekends. If you are interested, contact me about availability.
-
-Depending on how complex the request is, I am negotiable on the rate. If support help takes me 10 minutes, it will obviously be much cheaper than if it takes an hour. Same goes with a code change, if it's a simple pull request or code change and will not take me long to test and perform a build, it will obviously be much cheaper than if I have to spend 8 hours on the change.
-
-Don't want to pay anything for upgrades or support? You don't have to! The codebase will remain open source and all issues and pull requests will be handled as they always have been. If you are waiting for your feature to be included, you are always welcome to fork the codebase, add your changes, and use that fork until I can get it merged into the main repository. If you absolutely cannot wait and need it on nuget immediately, contact me and I can provide you with a quote.
+![Stripe.net](http://i.imgur.com/9UzKGQd.png)  
+  
+![Donate](https://pledgie.com/campaigns/22262.png)  
 
 ##**If you would like to submit a pull request.**
 First, thank you! It is a lot of work to learn someone else's codebase, so I appreciate it. Here are a few things that would help me out:
 * Do not submit pull requests for more than one fix. Keep them small and focused.
 * Please code review yourself. There are a lot of pull requests with typos and mistakes. Don't worry, we all do it. But a code review of yourself will help. :)
 * Please review the diff in GitHub that I will see before I merge your pull requests. If it's hard for you to tell what the differences are, it's going to be hard for me too.
-* Please do not include files in your pull requests that are just white space changes.
-<br><br><br>
-![Donate](https://pledgie.com/campaigns/22262.png)
+* Please do not include files in your pull requests that are just white space changes.  
 
 Quick Start
 -----------
@@ -150,7 +141,7 @@ customer or a charge, but only used once.
 	myToken.CardAddressZip = "27617";
 	myToken.CardCvc = "1223";
 	myToken.CardExpirationMonth = "10";
-	myToken.CardExpirationYear = "2012";
+	myToken.CardExpirationYear = "2022";
 	myToken.CardName = "Gabe Newell";
 	myToken.CardNumber = "4242424242424242";
 
@@ -187,7 +178,7 @@ a credit card or token, and various meta data.
 	// set these properties if passing full card details (do not
 	// set these properties if you have set TokenId)
 	myCustomer.CardNumber = "4242424242424242";
-	myCustomer.CardExpirationYear = "2012";
+	myCustomer.CardExpirationYear = "2022";
 	myCustomer.CardExpirationMonth = "10";
 	myCustomer.CardAddressCountry = "US";                // optional
 	myCustomer.CardAddressLine1 = "24 Beef Flank St";    // optional
@@ -223,7 +214,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 	// set these properties if passing full card details
 	// (do not set these properties if you have set TokenId)
 	myCustomer.CardNumber = "4242424242424242";
-	myCustomer.CardExpirationYear = "2012";
+	myCustomer.CardExpirationYear = "2022";
 	myCustomer.CardExpirationMonth = "10";
 	myCustomer.CardAddressCountry = "US";                // optional
 	myCustomer.CardAddressLine1 = "24 Beef Flank St";    // optional
@@ -373,10 +364,10 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	// set these properties if passing full card details
 	// (do not set these properties if you have set a TokenId)
 	myCharge.CardNumber = "4242424242424242";
-	myCharge.CardExpirationYear = "2012";
+	myCharge.CardExpirationYear = "2022";
 	myCharge.CardExpirationMonth = "10";
 	myCharge.CardAddressCountry = "US";               // optional
-	myCharge.CardAddressLine1 = "24 Beef Flank St"    // optional
+	myCharge.CardAddressLine1 = "24 Beef Flank St";   // optional
 	myCharge.CardAddressLine2 = "Apt 24";             // optional
 	myCharge.CardAddressState = "NC";                 // optional
 	myCharge.CardAddressZip = "27617";                // optional

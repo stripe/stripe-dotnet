@@ -73,11 +73,11 @@
     <Compile Include="Entities\StripeBankAccount.cs" />
     <Compile Include="Entities\StripeFee.cs" />
     <Compile Include="Entities\StripeInvoiceLineItem.cs" />
+    <Compile Include="Entities\StripeList.cs" />
     <Compile Include="Entities\StripeObject.cs" />
     <Compile Include="Entities\StripePageableList.cs" />
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
     <Compile Include="Entities\StripeRefund.cs" />
-    <Compile Include="Entities\StripeRefundList.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Infrastructure\Properties.cs" />
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />

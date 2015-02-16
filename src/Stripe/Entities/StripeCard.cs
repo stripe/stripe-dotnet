@@ -53,6 +53,7 @@ namespace Stripe
         [JsonProperty("country")]
         public string Country { get; set; }
 
+        #region Expandable Customer
         public string CustomerId { get; set; }
 
         [JsonIgnore]
@@ -66,6 +67,7 @@ namespace Stripe
                 ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
             }
         }
+        #endregion
 
         [JsonProperty("cvc_check")]
         public string CvcCheck { get; set; }

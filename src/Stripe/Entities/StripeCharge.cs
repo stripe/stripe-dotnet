@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
-using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
@@ -34,7 +33,7 @@ namespace Stripe
         public bool Refunded { get; set; }
 
         [JsonProperty("refunds")]
-        public StripeRefundList StripeRefundList { get; set; }
+        public StripeList<StripeRefund> StripeRefundList { get; set; }
 
         [JsonProperty("amount_refunded")]
         public int AmountRefunded { get; set; }

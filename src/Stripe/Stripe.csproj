@@ -52,9 +52,9 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Entities\StripeList.cs" />
     <Compile Include="Entities\StripePageableList.cs" />
     <Compile Include="Entities\StripeRefund.cs" />
-    <Compile Include="Entities\StripeRefundList.cs" />
     <Compile Include="Entities\StripeBankAccount.cs" />
     <Compile Include="Entities\StripeBalanceTransaction.cs" />
     <Compile Include="Entities\StripeFee.cs" />

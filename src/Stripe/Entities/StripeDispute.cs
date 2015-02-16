@@ -17,6 +17,7 @@ namespace Stripe
         [JsonProperty("amount")]
         public int? Amount { get; set; }
 
+        #region Expandable Charge
         public string ChargeId { get; set; }
 
         [JsonIgnore]
@@ -30,6 +31,7 @@ namespace Stripe
                 ExpandableProperty<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
             }
         }
+        #endregion
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
@@ -38,33 +40,17 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        // evidence details
-
         [JsonProperty("reason")]
         public string Reason { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        // this needs to be a BalanceTransactions array
-        //public string BalanceTransactionId { get; set; }
-        //public StripeBalanceTransaction BalanceTransaction { get; set; }
+        [JsonProperty("balance_transactions")]
+        public List<StripeBalanceTransaction> BalanceTransactions { get; set; }
 
-        //[JsonProperty("balance_transaction")]
-        //internal object InternalBalanceTransaction
-        //{
-        //    set
-        //    {
-        //        ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
-        //    }
-        //}
-
-        [JsonProperty("evidence")]
-        public string Evidence { get; set; }
-
-        [JsonProperty("evidence_due_by")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime? EvidenceDueBy { get; set; }
+        // needs evidence object
+        // needs evidence_details
 
         [JsonProperty("is_charge_refundable")]
         public bool IsChargeRefundable { get; set; }
