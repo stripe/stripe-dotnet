@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeRecipientCreateOptions : BankAccountOptions
+    public class StripeRecipientCreateOptions : BankAccountDebitCardOptions
     {
         [JsonProperty("name")]
         public string Name { get; set; }
