@@ -14,5 +14,8 @@
         public const string CARD_ADDRESS_STATE = "card[address_state]";
         public const string CARD_ADDRESS_COUNTRY = "card[address_country]";
         public const string CARD_TOKEN_ID = "card";
+        public const string BANK_ACCOUNT_COUNTRY = "bank_account[country]";
+        public const string BANK_ACCOUNT_ROUTING_NUMBER = "bank_account[routing_number]";
+        public const string BANK_ACCOUNT_ACCOUNT_NUMBER = "bank_account[account_number]";
     }
 }

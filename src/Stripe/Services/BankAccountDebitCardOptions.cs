@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public abstract class BankAccountOptions
+    public abstract class BankAccountDebitCardOptions : CreditCardOptions
     {
         [JsonProperty(Properties.BANK_ACCOUNT_COUNTRY)]
         public string BankAccountCountry { get; set; }

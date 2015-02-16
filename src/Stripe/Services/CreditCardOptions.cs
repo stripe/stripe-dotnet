@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public abstract class CreditCardOptions : ICreditCardOptions
+    public abstract class CreditCardOptions 
     {
         [JsonProperty(Properties.CARD_NUMBER)]
         public string CardNumber { get; set; }
