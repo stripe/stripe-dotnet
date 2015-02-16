@@ -45,5 +45,17 @@ namespace Stripe.Tests
 
         It should_contain_metadata_as_inline_items = () =>
             _result.ShouldContain("metadata[A]=Value-A");
+
+        It should_encode_string_properties = () =>
+            _result.ShouldContain("stringwithencoding=H%3dI");
+
+        It should_contain_properties_with_complex_objects = () =>
+            _result.ShouldContain("subobject[pi]=3.1415");
+
+        It should_contain_properties_with_custom_converters = () =>
+            _result.ShouldContain("subobjectwithconverter=olleH");
+
+        It should_not_contain_properties_with_null_converted_values = () =>
+            _result.ShouldNotContain("nullsubobjectwithconverter=");
     }
 }
