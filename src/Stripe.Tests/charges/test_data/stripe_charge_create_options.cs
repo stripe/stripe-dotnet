@@ -5,7 +5,7 @@ namespace Stripe.Tests.test_data
     {
         public static StripeChargeCreateOptions ValidCard()
         {
-            return new StripeChargeCreateOptions()
+            var cardOptions = new StripeCreditCardOptions()
             {
                 CardAddressCountry = "US",
                 CardAddressLine1 = "24 Beef Flank St",
@@ -18,6 +18,11 @@ namespace Stripe.Tests.test_data
                 CardExpirationYear = "2021",
                 CardName = "Joe Meatballs",
                 CardNumber = "4242424242424242",
+            };
+
+            return new StripeChargeCreateOptions()
+            {
+                Card = cardOptions,
                 Description = "Joe Meatball Charge",
                 Amount = 5153,
                 Currency = "usd",
@@ -31,7 +36,7 @@ namespace Stripe.Tests.test_data
 
         public static StripeChargeCreateOptions InvalidCard()
         {
-            return new StripeChargeCreateOptions()
+            var cardOptions = new StripeCreditCardOptions()
             {
                 CardAddressCountry = "US",
                 CardAddressLine1 = "24 Poopie St",
@@ -42,7 +47,12 @@ namespace Stripe.Tests.test_data
                 CardExpirationMonth = "10",
                 CardExpirationYear = "2004",
                 CardName = "Joe Meatballs",
-                CardNumber = "425221",
+                CardNumber = "425221"
+            };
+
+            return new StripeChargeCreateOptions()
+            {
+                Card = cardOptions,
                 Description = "Joe Meatball Charge",
                 Amount = 5153,
                 Currency = "usd"
@@ -66,7 +76,7 @@ namespace Stripe.Tests.test_data
             {
                 Amount = 2001,
                 Currency = "usd",
-                TokenId = _tokenId
+                Card = new StripeCreditCardOptions() { TokenId = _tokenId }
             };
         }
     }

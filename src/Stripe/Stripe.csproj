@@ -95,7 +95,7 @@
     <Compile Include="Services\Account\StripeAccountService.cs" />
     <Compile Include="Services\ApplicationFees\StripeApplicationFeeListOptions.cs" />
     <Compile Include="Services\Balance\StripeBalanceService.cs" />
-    <Compile Include="Services\BankAccountOptions.cs" />
+    <Compile Include="Services\StripeBankAccountOptions.cs" />
     <Compile Include="Services\ApplicationFees\StripeApplicationFeeService.cs" />
     <Compile Include="Services\Cards\StripeCardCreateOptions.cs" />
     <Compile Include="Services\Cards\StripeCardService.cs">
@@ -114,7 +114,7 @@
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemService.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceListOptions.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceService.cs" />
-    <Compile Include="Services\CreditCardOptions.cs" />
+    <Compile Include="Services\StripeCreditCardOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeCreateOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeService.cs" />
     <Compile Include="Services\Coupons\StripeCouponCreateOptions.cs" />

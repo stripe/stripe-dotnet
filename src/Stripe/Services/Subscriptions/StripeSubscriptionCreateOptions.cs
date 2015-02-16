@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeSubscriptionCreateOptions : CreditCardOptions
+    public class StripeSubscriptionCreateOptions
     {
         [JsonProperty("plan")]
         public string PlanId { get; set; }
@@ -29,6 +29,9 @@ namespace Stripe
                     return null;
             }
         }
+
+        [JsonProperty("card")]
+        public StripeCreditCardOptions Card { get; set; }
 
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }

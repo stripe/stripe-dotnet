@@ -2,8 +2,11 @@
 
 namespace Stripe
 {
-    public abstract class CreditCardOptions
+    public class StripeCreditCardOptions
     {
+        [JsonProperty("card")]
+        public string TokenId { get; set; }
+
         [JsonProperty("card[number]")]
         public string CardNumber { get; set; }
 
@@ -36,8 +39,5 @@ namespace Stripe
 
         [JsonProperty("card[address_country]")]
         public string CardAddressCountry { get; set; }
-
-        [JsonProperty("card")]
-        public string TokenId { get; set; }
     }
 }

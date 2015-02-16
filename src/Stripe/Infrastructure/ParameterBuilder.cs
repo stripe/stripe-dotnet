@@ -55,6 +55,16 @@ namespace Stripe
                             if (filter.GreaterThanOrEqual.HasValue)
                                 newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gte]", filter.GreaterThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
                         }
+                        else if (property.PropertyType == typeof(StripeBankAccountOptions))
+                        {
+                            var bankAccountOptions = (StripeBankAccountOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, bankAccountOptions);
+                        }
+                        else if (property.PropertyType == typeof(StripeCreditCardOptions))
+                        {
+                            var creditCardOptions = (StripeCreditCardOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, creditCardOptions);
+                        }
                         else
                         {
                             newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
@@ -96,6 +106,22 @@ namespace Stripe
                 token = "?";
 
             return string.Format("{0}{1}{2}={3}", url, token, argument, HttpUtility.UrlEncode(value));
+        }
+
+        private static string ApplyNestedObjectProperties(string newUrl, object nestedObject)
+        {
+            foreach (var prop in nestedObject.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+            {
+                var val = prop.GetValue(nestedObject, null);
+                if (val == null) continue;
+
+                foreach (var attr in prop.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
+                {
+                    newUrl = ApplyParameterToUrl(newUrl, attr.PropertyName, val.ToString());
+                }
+            }
+
+            return newUrl;
         }
     }
 }
