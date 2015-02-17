@@ -1,7 +1,9 @@
 ![Stripe.net](http://i.imgur.com/9UzKGQd.png)  
   
 ![Donate](https://pledgie.com/campaigns/22262.png)  
-
+  
+*Breaking changes of stripe.net in the future will have a major version change (e.g. 3.0 for this latest release). Version changes that add functionality will be a minor version (e.g. 2.8.0). Sorry for the latest breaking code change, I will use this system going forward.* 
+  
 ##**If you would like to submit a pull request.**
 First, thank you! It is a lot of work to learn someone else's codebase, so I appreciate it. Here are a few things that would help me out:
 * Do not submit pull requests for more than one fix. Keep them small and focused.
