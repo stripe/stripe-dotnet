@@ -38,6 +38,9 @@ namespace Stripe
         [JsonProperty("cards")]
         public StripeCardList StripeCardList { get; set; }
 
+        [JsonProperty("verified")]
+        public bool Verified { get; set; }
+
         public string StripeDefaultCardId { get; set; }
         public StripeCard StripeDefaultCard { get; set; }
 
