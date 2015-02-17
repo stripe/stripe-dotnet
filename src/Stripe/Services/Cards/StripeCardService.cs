@@ -20,8 +20,6 @@ namespace Stripe
             return Mapper<StripeCard>.MapFromJson(response);
         }
 
-
-
         public virtual StripeCard Get(string stripeId, string cardId, bool isRecipient = false)
         {
             var url = SetUpUrl(stripeId, isRecipient, cardId);
