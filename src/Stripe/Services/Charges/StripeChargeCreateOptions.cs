@@ -15,6 +15,9 @@ namespace Stripe
         public string CustomerId { get; set; }
 
         [JsonProperty("card")]
+        public string CardId { get; set; }
+
+        [JsonProperty("card")]
         public StripeCreditCardOptions Card { get; set; }
 
         [JsonProperty("description")]

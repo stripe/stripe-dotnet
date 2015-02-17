@@ -406,7 +406,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 
 	// if using a customer, you may also set this property to charge
 	// a card other than the customer's default card
-	myCharge.Card = *cardId*;
+	myCharge.CardId = *cardId*;
 
 	// set this if you have your own application fees (you must have your application configured first within Stripe)
 	myCharge.ApplicationFee = 25;
