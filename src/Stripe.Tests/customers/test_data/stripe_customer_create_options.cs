@@ -7,19 +7,24 @@ namespace Stripe.Tests.test_data
     {
         public static StripeCustomerCreateOptions ValidCard(string _planId = null, string _couponId = null, DateTime? _trialEnd = null)
         {
-            var stripeCustomerCreateOptions = new StripeCustomerCreateOptions()
+            var cardOptions = new StripeCreditCardOptions()
             {
                 CardAddressCountry = "US",
                 CardAddressLine1 = "234 Bacon St",
                 CardAddressLine2 = "Apt 1",
                 CardAddressState = "NC",
                 CardAddressZip = "27617",
-                Email = "pork@email.com",
                 CardCvc = "1661",
                 CardExpirationMonth = "10",
                 CardExpirationYear = "2021",
                 CardName = "Johnny Tenderloin",
                 CardNumber = "4242424242424242",
+            };
+
+            var stripeCustomerCreateOptions = new StripeCustomerCreateOptions()
+            {
+                Card = cardOptions,
+                Email = "pork@email.com",
                 Description = "Johnny Tenderloin (pork@email.com)",
                 AccountBalance = 100,
                 Metadata = new Dictionary<string, string>
@@ -44,7 +49,7 @@ namespace Stripe.Tests.test_data
         public static StripeCustomerCreateOptions ValidCardButChargeFails(string _planId = null, string _couponId = null, DateTime? _trialEnd = null)
         {
             var stripeCustomerCreateOptions = ValidCard(_planId, _couponId, _trialEnd);
-            stripeCustomerCreateOptions.CardNumber = "4000000000000341";
+            stripeCustomerCreateOptions.Card.CardNumber = "4000000000000341";
 
             return stripeCustomerCreateOptions;
         }
@@ -53,7 +58,7 @@ namespace Stripe.Tests.test_data
         {
             var stripeCustomerCreateOptions = new StripeCustomerCreateOptions()
             {
-                TokenId = tokenId
+                Card = new StripeCreditCardOptions() { TokenId = tokenId }
             };
 
             if (_planId != null)

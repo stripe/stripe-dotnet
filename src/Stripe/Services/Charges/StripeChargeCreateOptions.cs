@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeChargeCreateOptions : CreditCardOptions
+    public class StripeChargeCreateOptions
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -15,7 +15,10 @@ namespace Stripe
         public string CustomerId { get; set; }
 
         [JsonProperty("card")]
-        public string Card { get; set; }
+        public string CardId { get; set; }
+
+        [JsonProperty("card")]
+        public StripeCreditCardOptions Card { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -26,8 +29,8 @@ namespace Stripe
         [JsonProperty("capture")]
         public bool? Capture { get; set; }
 
-        [JsonProperty("statement_description")]
-        public string StatementDescription { get; set; }
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
 
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }

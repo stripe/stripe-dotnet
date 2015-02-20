@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeRecipientCreateOptions : BankAccountOptions
+    public class StripeRecipientCreateOptions
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -13,6 +13,12 @@ namespace Stripe
 
         [JsonProperty("tax_id")]
         public string TaxId { get; set; }
+
+        [JsonProperty("bank_account")]
+        public StripeBankAccountOptions BankAccount { get; set; }
+
+        [JsonProperty("card")]
+        public StripeCreditCardOptions Card { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }

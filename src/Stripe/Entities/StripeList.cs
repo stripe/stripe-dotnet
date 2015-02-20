@@ -3,13 +3,13 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeRefundList
+    public class StripeList<T>
     {
         [JsonProperty("object")]
         public string Object { get; set; }
 
         [JsonProperty("data")]
-        public List<StripeRefund> StripeRefunds { get; set; }
+        public List<T> Data { get; set; }
 
         [JsonProperty("has_more")]
         public bool HasMore { get; set; }

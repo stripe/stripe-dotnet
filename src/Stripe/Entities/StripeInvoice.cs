@@ -53,7 +53,7 @@ namespace Stripe
         public bool Forgiven { get; set; }
 
         [JsonProperty("lines")]
-        public StripePageableList<StripeInvoiceLineItem> StripeInvoiceLineItems { get; set; }
+        public StripeList<StripeInvoiceLineItem> StripeInvoiceLineItems { get; set; }
 
         [JsonProperty("paid")]
         public bool Paid { get; set; }
@@ -110,8 +110,8 @@ namespace Stripe
         [JsonProperty("receipt_number")]
         public string ReceiptNumber { get; set; }
 
-        [JsonProperty("statement_description")]
-        public string StatementDescription { get; set; }
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
 
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
@@ -124,7 +124,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("tax")]
-        public int Tax { get; set; }
+        public int? Tax { get; set; }
 
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }

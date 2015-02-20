@@ -30,8 +30,11 @@ namespace Stripe.Tests
         It should_have_active_account = () =>
             StripeRecipient.ActiveAccount.ShouldNotBeNull();
 
+        It should_have_active_account_routing_number = () =>
+            StripeRecipient.ActiveAccount.RoutingNumber.ShouldEqual(StripeRecipientCreateOptions.BankAccount.RoutingNumber);
+
         It should_have_active_account_country = () =>
-            StripeRecipient.ActiveAccount.Country.ShouldEqual(StripeRecipientCreateOptions.BankAccountCountry);
+            StripeRecipient.ActiveAccount.Country.ShouldEqual(StripeRecipientCreateOptions.BankAccount.Country);
 
         It should_have_active_account_currency = () =>
             StripeRecipient.ActiveAccount.Currency.ShouldEqual("usd");
@@ -50,9 +53,6 @@ namespace Stripe.Tests
 
         It should_have_active_account_fingerprint = () =>
             StripeRecipient.ActiveAccount.Fingerprint.ShouldNotBeEmpty();
-
-        It should_have_active_account_routing_number = () =>
-            StripeRecipient.ActiveAccount.RoutingNumber.ShouldEqual(StripeRecipientCreateOptions.BankAccountRoutingNumber);
 
         // obsolete?
         //It should_have_active_account_disabled = () =>

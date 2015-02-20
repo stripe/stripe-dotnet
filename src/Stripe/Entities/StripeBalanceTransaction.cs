@@ -28,7 +28,7 @@ namespace Stripe
         public int Fee { get; set; }
 
         [JsonProperty("fee_details")]
-        public IList<StripeFee> FeeDetails { get; set; }
+        public List<StripeFee> FeeDetails { get; set; }
 
         [JsonProperty("net")]
         public int Net { get; set; }

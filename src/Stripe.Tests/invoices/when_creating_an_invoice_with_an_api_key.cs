@@ -45,5 +45,8 @@ namespace Stripe.Tests
 
         It should_have_a_lines_object = () =>
             _stripeInvoice.StripeInvoiceLineItems.ShouldNotBeNull();
+
+        private It should_have_a_null_tax_value = () =>
+            _stripeInvoice.Tax.ShouldBeNull();
     }
 }
