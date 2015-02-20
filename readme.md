@@ -1,22 +1,15 @@
-![Stripe.net](http://i.imgur.com/70TIMws.png)
-##**If you need immediate support or  code changes, read this first.**
-
-Stripe.net is under active development. Keeping the library in stable condition and working with the community takes a lot of time and commitment. I value code changes being well crafted, tests being in place when necessary, and consistency. Pull requests generally take more time than they appear. Sometimes pieces are missing, such as readme updates or tests. I also receive a lot of support email. I wish I had the time to talk to each and every one of you, but I have other commitments.
-
-So I've decided to offer paid plans for people who have requested immediate support, expediting pull requests, or adding features immediately. Keep in mind with my other commitments, these will have to be handled in the evenings or on the weekends. If you are interested, contact me about availability.
-
-Depending on how complex the request is, I am negotiable on the rate. If support help takes me 10 minutes, it will obviously be much cheaper than if it takes an hour. Same goes with a code change, if it's a simple pull request or code change and will not take me long to test and perform a build, it will obviously be much cheaper than if I have to spend 8 hours on the change.
-
-Don't want to pay anything for upgrades or support? You don't have to! The codebase will remain open source and all issues and pull requests will be handled as they always have been. If you are waiting for your feature to be included, you are always welcome to fork the codebase, add your changes, and use that fork until I can get it merged into the main repository. If you absolutely cannot wait and need it on nuget immediately, contact me and I can provide you with a quote.
-
+![Stripe.net](http://i.imgur.com/9UzKGQd.png)  
+  
+![Donate](https://pledgie.com/campaigns/22262.png)  
+  
+*Breaking changes of stripe.net in the future will have a major version change (e.g. 3.0 for this latest release). Version changes that add functionality will be a minor version (e.g. 2.8.0). Sorry for the latest breaking code change, I will use this system going forward.* 
+  
 ##**If you would like to submit a pull request.**
 First, thank you! It is a lot of work to learn someone else's codebase, so I appreciate it. Here are a few things that would help me out:
 * Do not submit pull requests for more than one fix. Keep them small and focused.
 * Please code review yourself. There are a lot of pull requests with typos and mistakes. Don't worry, we all do it. But a code review of yourself will help. :)
 * Please review the diff in GitHub that I will see before I merge your pull requests. If it's hard for you to tell what the differences are, it's going to be hard for me too.
-* Please do not include files in your pull requests that are just white space changes.
-<br><br><br>
-![Donate](https://pledgie.com/campaigns/22262.png)
+* Please do not include files in your pull requests that are just white space changes.  
 
 Quick Start
 -----------
@@ -141,18 +134,26 @@ customer or a charge, but only used once.
 
 	var myToken = new StripeTokenCreateOptions();
 
-	// set these properties if using a card
-	myToken.CardAddressCountry = "US";
-	myToken.CardAddressLine1 = "24 Portal St";
-	myToken.CardAddressLine2 = "Unit B";
-	myToken.CardAddressCity = "Biggie Smalls";
-	myToken.CardAddressState = "NC";
-	myToken.CardAddressZip = "27617";
-	myToken.CardCvc = "1223";
-	myToken.CardExpirationMonth = "10";
-	myToken.CardExpirationYear = "2012";
-	myToken.CardName = "Gabe Newell";
-	myToken.CardNumber = "4242424242424242";
+	// if you need this...
+	myToken.Card = new StripeCreditCardOptions()
+	{
+		// set this property if using a token
+		TokenId = *tokenId*;
+
+		// set these properties if passing full card details (do not
+		// set these properties if you set TokenId)
+		CardNumber = "4242424242424242";
+		CardExpirationYear = "2022";
+		CardExpirationMonth = "10";
+		CardAddressCountry = "US";                // optional
+		CardAddressLine1 = "24 Beef Flank St";    // optional
+		CardAddressLine2 = "Apt 24";              // optional
+		CardAddressCity = "Biggie Smalls";        // optional
+		CardAddressState = "NC";                  // optional
+		CardAddressZip = "27617";                 // optional
+		CardName = "Joe Meatballs";               // optional
+		CardCvc = "1223";                         // optional
+	}
 
 	// set this property if using a customer (stripe connect only)
 	myToken.CustomerId = *customerId*;
@@ -181,23 +182,26 @@ a credit card or token, and various meta data.
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
 
-	// set this property if using a token
-	myCustomer.TokenId = *tokenId*;
+	// setting up the card
+	myCustomer.Card = new StripeCreditCardOptions()
+	{
+		// set this property if using a token
+		TokenId = *tokenId*;
 
-	// set these properties if passing full card details (do not
-	// set these properties if you have set TokenId)
-	myCustomer.CardNumber = "4242424242424242";
-	myCustomer.CardExpirationYear = "2012";
-	myCustomer.CardExpirationMonth = "10";
-	myCustomer.CardAddressCountry = "US";                // optional
-	myCustomer.CardAddressLine1 = "24 Beef Flank St";    // optional
-	myCustomer.CardAddressLine2 = "Apt 24";              // optional
-	myCustomer.CardAddressCity = "Biggie Smalls";        // optional
-	myCustomer.CardAddressState = "NC";                  // optional
-	myCustomer.CardAddressZip = "27617";                 // optional
-	myCustomer.CardName = "Joe Meatballs";               // optional
-	myCustomer.CardCvc = "1223";                         // optional
-
+		// set these properties if passing full card details (do not
+		// set these properties if you set TokenId)
+		CardNumber = "4242424242424242";
+		CardExpirationYear = "2022";
+		CardExpirationMonth = "10";
+		CardAddressCountry = "US";                // optional
+		CardAddressLine1 = "24 Beef Flank St";    // optional
+		CardAddressLine2 = "Apt 24";              // optional
+		CardAddressCity = "Biggie Smalls";        // optional
+		CardAddressState = "NC";                  // optional
+		CardAddressZip = "27617";                 // optional
+		CardName = "Joe Meatballs";               // optional
+		CardCvc = "1223";                         // optional
+	}
 
 	myCustomer.PlanId = *planId*;                          // only if you have a plan
 	myCustomer.Coupon = *couponId*;                        // only if you have a coupon
@@ -217,21 +221,26 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
 
-	// set this property if using a token
-	myCustomer.TokenId = *tokenId*;
+	// setting up the card
+	myCustomer.Card = new StripeCreditCardOptions()
+	{
+		// set this property if using a token
+		TokenId = *tokenId*;
 
-	// set these properties if passing full card details
-	// (do not set these properties if you have set TokenId)
-	myCustomer.CardNumber = "4242424242424242";
-	myCustomer.CardExpirationYear = "2012";
-	myCustomer.CardExpirationMonth = "10";
-	myCustomer.CardAddressCountry = "US";                // optional
-	myCustomer.CardAddressLine1 = "24 Beef Flank St";    // optional
-	myCustomer.CardAddressLine2 = "Apt 24";              // optional
-	myCustomer.CardAddressState = "NC";                  // optional
-	myCustomer.CardAddressZip = "27617";                 // optional
-	myCustomer.CardName = "Joe Meatballs";               // optional
-	myCustomer.CardCvc = "1223";                         // optional
+		// set these properties if passing full card details (do not
+		// set these properties if you set TokenId)
+		CardNumber = "4242424242424242";
+		CardExpirationYear = "2022";
+		CardExpirationMonth = "10";
+		CardAddressCountry = "US";                // optional
+		CardAddressLine1 = "24 Beef Flank St";    // optional
+		CardAddressLine2 = "Apt 24";              // optional
+		CardAddressCity = "Biggie Smalls";        // optional
+		CardAddressState = "NC";                  // optional
+		CardAddressZip = "27617";                 // optional
+		CardName = "Joe Meatballs";               // optional
+		CardCvc = "1223";                         // optional
+	}
 
 	// this will set the default card to use for this customer
 	myCustomer.DefaultCard = *cardId*;
@@ -299,20 +308,26 @@ When creating a card you can use either a card or a token
 
 	var myCard = new StripeCardCreateOptions();
 
-	// set these properties if using a card
-	myCard.CardNumber = "4242424242424242";
-	myCard.CardExpirationYear = "2015";
-	myCard.CardExpirationMonth = "10";
-	myCard.CardAddressCountry = "US";               // optional
-	myCard.CardAddressLine1 = "24 Beef Flank St"    // optional
-	myCard.CardAddressLine2 = "Apt 24";             // optional
-	myCard.CardAddressState = "NC";                 // optional
-	myCard.CardAddressZip = "27617";                // optional
-	myCard.CardName = "Joey Pepperoni Smith";       // optional
-	myCard.CardCvc = "1223";                        // optional
+	// setting up the card
+	myCard.Card = new StripeCreditCardOptions()
+	{
+		// set this property if using a token
+		TokenId = *tokenId*;
 
-	// set this property if using a token
-	myCard.TokenId = *tokenId*;
+		// set these properties if passing full card details (do not
+		// set these properties if you set TokenId)
+		CardNumber = "4242424242424242";
+		CardExpirationYear = "2022";
+		CardExpirationMonth = "10";
+		CardAddressCountry = "US";                // optional
+		CardAddressLine1 = "24 Beef Flank St";    // optional
+		CardAddressLine2 = "Apt 24";              // optional
+		CardAddressCity = "Biggie Smalls";        // optional
+		CardAddressState = "NC";                  // optional
+		CardAddressZip = "27617";                 // optional
+		CardName = "Joe Meatballs";               // optional
+		CardCvc = "1223";                         // optional
+	}
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Create(*customerId*, myCard);
@@ -367,28 +382,33 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	// set this if you want to
 	myCharge.Description = "Charge it like it's hot";
 
-	// set this property if using a token
-	myCharge.TokenId = *tokenId*;
+	// setting up the card
+	myCharge.Card = new StripeCreditCardOptions()
+	{
+		// set this property if using a token
+		TokenId = *tokenId*;
 
-	// set these properties if passing full card details
-	// (do not set these properties if you have set a TokenId)
-	myCharge.CardNumber = "4242424242424242";
-	myCharge.CardExpirationYear = "2012";
-	myCharge.CardExpirationMonth = "10";
-	myCharge.CardAddressCountry = "US";               // optional
-	myCharge.CardAddressLine1 = "24 Beef Flank St"    // optional
-	myCharge.CardAddressLine2 = "Apt 24";             // optional
-	myCharge.CardAddressState = "NC";                 // optional
-	myCharge.CardAddressZip = "27617";                // optional
-	myCharge.CardName = "Joe Meatballs";              // optional
-	myCharge.CardCvc = "1223";                        // optional
+		// set these properties if passing full card details (do not
+		// set these properties if you set TokenId)
+		CardNumber = "4242424242424242";
+		CardExpirationYear = "2022";
+		CardExpirationMonth = "10";
+		CardAddressCountry = "US";                // optional
+		CardAddressLine1 = "24 Beef Flank St";    // optional
+		CardAddressLine2 = "Apt 24";              // optional
+		CardAddressCity = "Biggie Smalls";        // optional
+		CardAddressState = "NC";                  // optional
+		CardAddressZip = "27617";                 // optional
+		CardName = "Joe Meatballs";               // optional
+		CardCvc = "1223";                         // optional
+	}
 
 	// set this property if using a customer
 	myCharge.CustomerId = *customerId*;
 
 	// if using a customer, you may also set this property to charge
 	// a card other than the customer's default card
-	myCharge.Card = *cardId*;
+	myCharge.CardId = *cardId*;
 
 	// set this if you have your own application fees (you must have your application configured first within Stripe)
 	myCharge.ApplicationFee = 25;
@@ -556,10 +576,26 @@ Recipients
 	myRecipient.Email = "bacon@example.com";                                // optional
 	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";  //optional
 
-	// optional - you must specify all 3 values if you use a bank account
-	myRecipient.BankAccountCountry = "US";
-	myRecipient.BankAccountRoutingNumber = "110000000";
-	myRecipient.BankAccountNumber = "000123456789";
+	// if you need this...
+	myRecipient.Card = new StripeCreditCardOptions()
+	{
+		// set this property if using a token
+		TokenId = *tokenId*;
+
+		// set these properties if passing full card details (do not
+		// set these properties if you set TokenId)
+		CardNumber = "4242424242424242";
+		CardExpirationYear = "2022";
+		CardExpirationMonth = "10";
+		CardAddressCountry = "US";                // optional
+		CardAddressLine1 = "24 Beef Flank St";    // optional
+		CardAddressLine2 = "Apt 24";              // optional
+		CardAddressCity = "Biggie Smalls";        // optional
+		CardAddressState = "NC";                  // optional
+		CardAddressZip = "27617";                 // optional
+		CardName = "Joe Meatballs";               // optional
+		CardCvc = "1223";                         // optional
+	}
 
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Create(myRecipient);
@@ -572,10 +608,26 @@ Recipients
 	myRecipient.Email = "bacon@example.com";                                // optional
 	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";  // optional
 
-	// optional - you must specify all 3 values if you use a bank account
-	myRecipient.BankAccountCountry = "US";
-	myRecipient.BankAccountRoutingNumber = "110000000";
-	myRecipient.BankAccountNumber = "000123456789";
+	// if you need this...
+	myRecipient.Card = new StripeCreditCardOptions()
+	{
+		// set this property if using a token
+		TokenId = *tokenId*;
+
+		// set these properties if passing full card details (do not
+		// set these properties if you set TokenId)
+		CardNumber = "4242424242424242";
+		CardExpirationYear = "2022";
+		CardExpirationMonth = "10";
+		CardAddressCountry = "US";                // optional
+		CardAddressLine1 = "24 Beef Flank St";    // optional
+		CardAddressLine2 = "Apt 24";              // optional
+		CardAddressCity = "Biggie Smalls";        // optional
+		CardAddressState = "NC";                  // optional
+		CardAddressZip = "27617";                 // optional
+		CardName = "Joe Meatballs";               // optional
+		CardCvc = "1223";                         // optional
+	}
 
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Update(*recipientId*, myRecipient);

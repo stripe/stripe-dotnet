@@ -4,7 +4,7 @@
     {
         public static StripeTokenCreateOptions Valid()
         {
-            return new StripeTokenCreateOptions()
+            var cardOptions = new StripeCreditCardOptions()
             {
                 CardAddressCountry = "US",
                 CardAddressLine1 = "24 Chicken Leg Ave",
@@ -16,6 +16,11 @@
                 CardExpirationYear = "2021",
                 CardName = "Bob Winghead",
                 CardNumber = "4242424242424242"
+            };
+
+            return new StripeTokenCreateOptions()
+            {
+                Card = cardOptions
             };
         }
     }

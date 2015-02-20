@@ -11,9 +11,12 @@ namespace Stripe.Tests.test_data
                 Name = "Johnny Tenderloin",
                 Type = "individual",
                 TaxId = "000000000",
-                BankAccountNumber = "000123456789",
-                BankAccountRoutingNumber = "110000000",
-                BankAccountCountry = "US",
+                BankAccount = new StripeBankAccountOptions()
+                {
+                    AccountNumber = "000123456789",
+                    RoutingNumber = "110000000",
+                    Country = "US"
+                },
                 Email = "pork@email.com",
                 Description = "Johnny Tenderloin (pork@email.com)",
                 Metadata = new Dictionary<string, string>
@@ -33,9 +36,12 @@ namespace Stripe.Tests.test_data
                 Name = "Tenderloin International, Ltd.",
                 Type = "corporation",
                 TaxId = "000000000",
-                BankAccountNumber = "000123456789",
-                BankAccountRoutingNumber = "110000000",
-                BankAccountCountry = "US",
+                BankAccount = new StripeBankAccountOptions()
+                {
+                    AccountNumber = "000123456789",
+                    RoutingNumber = "110000000",
+                    Country = "US"
+                },
                 Email = "tenderloins@email.com",
                 Description = "Tenderloin International (tenderloins@email.com)",
                 Metadata = new Dictionary<string, string>

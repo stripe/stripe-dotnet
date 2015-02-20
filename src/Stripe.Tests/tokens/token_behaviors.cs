@@ -22,28 +22,28 @@ namespace Stripe.Tests
             StripeToken.Used.ShouldEqual(false);
 
         It should_have_the_correct_card_address_line_1 = () =>
-            StripeToken.StripeCard.AddressLine1.ShouldEqual(StripeTokenCreateOptions.CardAddressLine1);
+            StripeToken.StripeCard.AddressLine1.ShouldEqual(StripeTokenCreateOptions.Card.CardAddressLine1);
 
         It should_have_the_correct_card_address_line_2 = () =>
-            StripeToken.StripeCard.AddressLine2.ShouldEqual(StripeTokenCreateOptions.CardAddressLine2);
+            StripeToken.StripeCard.AddressLine2.ShouldEqual(StripeTokenCreateOptions.Card.CardAddressLine2);
 
         It should_have_the_correct_card_address_state = () =>
-            StripeToken.StripeCard.AddressState.ShouldEqual(StripeTokenCreateOptions.CardAddressState);
+            StripeToken.StripeCard.AddressState.ShouldEqual(StripeTokenCreateOptions.Card.CardAddressState);
 
         It should_have_the_correct_card_address_zip = () =>
-            StripeToken.StripeCard.AddressZip.ShouldEqual(StripeTokenCreateOptions.CardAddressZip);
+            StripeToken.StripeCard.AddressZip.ShouldEqual(StripeTokenCreateOptions.Card.CardAddressZip);
 
         It should_have_the_correct_card_last_4 = () =>
-            StripeToken.StripeCard.Last4.ShouldEqual(StripeTokenCreateOptions.CardNumber.Substring(StripeTokenCreateOptions.CardNumber.Length - 4));
+            StripeToken.StripeCard.Last4.ShouldEqual(StripeTokenCreateOptions.Card.CardNumber.Substring(StripeTokenCreateOptions.Card.CardNumber.Length - 4));
 
         It should_have_the_correct_card_expiration_month = () =>
-            StripeToken.StripeCard.ExpirationMonth.ShouldEqual(StripeTokenCreateOptions.CardExpirationMonth);
+            StripeToken.StripeCard.ExpirationMonth.ShouldEqual(StripeTokenCreateOptions.Card.CardExpirationMonth);
 
         It should_have_the_correct_card_expiration_year = () =>
-            StripeToken.StripeCard.ExpirationYear.ShouldEqual(StripeTokenCreateOptions.CardExpirationYear);
+            StripeToken.StripeCard.ExpirationYear.ShouldEqual(StripeTokenCreateOptions.Card.CardExpirationYear);
 
         It should_have_the_correct_card_name = () =>
-            StripeToken.StripeCard.Name.ShouldEqual(StripeTokenCreateOptions.CardName);
+            StripeToken.StripeCard.Name.ShouldEqual(StripeTokenCreateOptions.Card.CardName);
 
         It should_have_the_correct_card_type = () =>
             StripeToken.StripeCard.Brand.ShouldEqual("Visa");
