@@ -1,36 +1,16 @@
 ﻿using Newtonsoft.Json;
-using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public interface IBankAccountOptions
+    public abstract class BankAccountOptions
     {
-    }
+        [JsonProperty("bank_account[country]")]
+        public string BankAccountCountry { get; set; }
 
-    public class BankAccountOptions : IBankAccountOptions
-    {
-        [JsonProperty("country")]
-        public string Country { get; set; }
+        [JsonProperty("bank_account[routing_number]")]
+        public string BankAccountRoutingNumber { get; set; }
 
-        [JsonProperty("routing_number")]
-        public string RoutingNumber { get; set; }
-
-        [JsonProperty("account_number")]
-        public string AccountNumber { get; set; }
-    }
-
-    [QueryStringParameterConverter(typeof(BankAccountTokenQueryStringParameterConverter))]
-    public class BankAccountToken : IBankAccountOptions
-    {
-        public string Token { get; set; }
-    }
-
-    internal class BankAccountTokenQueryStringParameterConverter
-        : QueryStringParameterConverter<BankAccountToken>
-    {
-        public override string ConvertToQueryStringValue(BankAccountToken @object)
-        {
-            return @object.Token;
-        }
+        [JsonProperty("bank_account[account_number]")]
+        public string BankAccountNumber { get; set; }
     }
 }

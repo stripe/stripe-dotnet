@@ -11,12 +11,9 @@ namespace Stripe.Tests.test_data
                 Name = "Johnny Tenderloin",
                 Type = "individual",
                 TaxId = "000000000",
-                BankAccount = new BankAccountOptions
-                {
-                    AccountNumber = "000123456789",
-                    RoutingNumber = "110000000",
-                    Country = "US",
-                },
+                BankAccountNumber = "000123456789",
+                BankAccountRoutingNumber = "110000000",
+                BankAccountCountry = "US",
                 Email = "pork@email.com",
                 Description = "Johnny Tenderloin (pork@email.com)",
                 Metadata = new Dictionary<string, string>

@@ -62,9 +62,6 @@
     <Compile Include="Entities\StripeObject.cs" />
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
-    <Compile Include="Infrastructure\IQueryStringParameterConverter.cs" />
-    <Compile Include="Infrastructure\QueryStringParameterConverter.cs" />
-    <Compile Include="Infrastructure\QueryStringParameterConverterAttribute.cs" />
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
     <Compile Include="Services\StripeDateFilter.cs" />
     <Compile Include="Entities\StripeApplicationFeeRefund.cs" />
