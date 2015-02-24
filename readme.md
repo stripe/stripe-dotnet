@@ -204,7 +204,8 @@ a credit card or token, and various meta data.
 	}
 
 	myCustomer.PlanId = *planId*;                          // only if you have a plan
-	myCustomer.Coupon = *couponId*;                        // only if you have a coupon
+	myCustomer.TaxPercent = 20;                            // only if you are passing a plan, this tax percent will be added to the price.
+    myCustomer.Coupon = *couponId*;                        // only if you have a coupon
 	myCustomer.TrialEnd = DateTime.UtcNow.AddMonths(1);    // when the customers trial ends (overrides the plan if applicable)
 	myCustomer.Quantity = 1;                               // optional, defaults to 1
 
