@@ -138,22 +138,22 @@ customer or a charge, but only used once.
 	myToken.Card = new StripeCreditCardOptions()
 	{
 		// set this property if using a token
-		TokenId = *tokenId*;
+		TokenId = *tokenId*,
 
 		// set these properties if passing full card details (do not
 		// set these properties if you set TokenId)
-		CardNumber = "4242424242424242";
-		CardExpirationYear = "2022";
-		CardExpirationMonth = "10";
-		CardAddressCountry = "US";                // optional
-		CardAddressLine1 = "24 Beef Flank St";    // optional
-		CardAddressLine2 = "Apt 24";              // optional
-		CardAddressCity = "Biggie Smalls";        // optional
-		CardAddressState = "NC";                  // optional
-		CardAddressZip = "27617";                 // optional
-		CardName = "Joe Meatballs";               // optional
-		CardCvc = "1223";                         // optional
-	}
+		CardNumber = "4242424242424242",
+		CardExpirationYear = "2022",
+		CardExpirationMonth = "10",
+		CardAddressCountry = "US",                // optional
+		CardAddressLine1 = "24 Beef Flank St",    // optional
+		CardAddressLine2 = "Apt 24",              // optional
+		CardAddressCity = "Biggie Smalls",        // optional
+		CardAddressState = "NC",                  // optional
+		CardAddressZip = "27617",                 // optional
+		CardName = "Joe Meatballs",               // optional
+		CardCvc = "1223",                         // optional
+	};
 
 	// set this property if using a customer (stripe connect only)
 	myToken.CustomerId = *customerId*;
