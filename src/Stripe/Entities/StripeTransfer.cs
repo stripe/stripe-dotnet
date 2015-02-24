@@ -80,5 +80,14 @@ namespace Stripe
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
+
+        [JsonProperty("reversed")]
+        public bool Reversed { get; set; }
+
+        [JsonProperty("amount_reversed")]
+        public int AmountReversed { get; set; }
+
+        [JsonProperty("reversals")]
+        public StripeList<StripeTransferReversal> StripeTransferReversalList { get; set; }
     }
 }
