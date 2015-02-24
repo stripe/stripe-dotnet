@@ -8,8 +8,6 @@ namespace Stripe
 
         public bool ExpandBalanceTransaction { get; set; }
 
-        public bool ExpandReversalBalanceTransaction { get; set; }
-
         public virtual StripeTransfer Create(StripeTransferCreateOptions createOptions)
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Transfers, false);
