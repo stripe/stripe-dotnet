@@ -28,6 +28,9 @@ namespace Stripe
         [JsonProperty("plan")]
         public string PlanId { get; set; }
 
+        [JsonProperty("tax_percent")]
+        public decimal? TaxPercent { get; set; }
+
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
 
