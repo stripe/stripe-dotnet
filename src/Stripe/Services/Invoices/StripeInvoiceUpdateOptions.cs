@@ -11,13 +11,13 @@ namespace Stripe
         public int? ApplicationFee { get; set; }
 
         [JsonProperty("closed")]
-        public bool Closed { get; set; }
+        public bool? Closed { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("forgiven")]
-        public bool Forgiven { get; set; }
+        public bool? Forgiven { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
