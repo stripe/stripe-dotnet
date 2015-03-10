@@ -72,7 +72,8 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        // todo: hash, dispute object
+        [JsonProperty("dispute")]
+        public StripeDispute Dispute { get; set; }
 
         [JsonProperty("failure_code")]
         public string FailureCode { get; set; }

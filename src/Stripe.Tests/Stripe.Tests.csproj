@@ -76,6 +76,7 @@
     <Compile Include="charges\charge_behaviors.cs" />
     <Compile Include="charges\when_capturing_a_charge_with_a_card.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_customer_expanded.cs" />
+    <Compile Include="charges\when_getting_a_disputed_charge.cs" />
     <Compile Include="charges\when_listing_charges_by_date.cs" />
     <Compile Include="charges\when_listing_charges_with_expanded_properties.cs" />
     <Compile Include="charges\when_listing_charges_with_paging.cs" />
