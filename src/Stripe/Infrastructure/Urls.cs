@@ -57,6 +57,11 @@
             get { return BaseUrl + "/customers/{0}/cards"; }
         }
 
+        public static string BankAccounts
+        {
+            get { return BaseUrl + "/customers/{0}/bank_accounts"; }
+        }
+
         public static string Events
         {
             get { return BaseUrl + "/events"; }
