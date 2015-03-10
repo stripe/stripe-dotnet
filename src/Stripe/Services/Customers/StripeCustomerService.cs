@@ -7,6 +7,7 @@ namespace Stripe
         public StripeCustomerService(string apiKey = null) : base(apiKey) { }
 
         public bool ExpandDefaultCard { get; set; }
+        public bool ExpandDefaultBankAccount { get; set; }
 
         public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions)
         {

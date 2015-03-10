@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Entities\StripeBalanceTransaction.cs" />
     <Compile Include="Entities\StripeBankAccount.cs" />
+    <Compile Include="Entities\StripeBankAccountList.cs" />
     <Compile Include="Entities\StripeFee.cs" />
     <Compile Include="Entities\StripeInvoiceLineItem.cs" />
     <Compile Include="Entities\StripeList.cs" />
@@ -79,6 +80,10 @@
     <Compile Include="Entities\StripeRefund.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
+    <Compile Include="Services\BankAccounts\StripeBankAccountCreateOptions.cs" />
+    <Compile Include="Services\BankAccounts\StripeBankAccountService.cs" />
+    <Compile Include="Services\BankAccounts\StripeBankAccountUpdateOptions.cs" />
+    <Compile Include="Services\BankAccounts\StripeBankAccountVerifyOptions.cs" />
     <Compile Include="Services\StripeBankAccountOptions.cs" />
     <Compile Include="Services\StripeCreditCardOptions.cs" />
     <Compile Include="Services\StripeDateFilter.cs" />

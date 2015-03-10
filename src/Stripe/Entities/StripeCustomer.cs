@@ -17,6 +17,9 @@ namespace Stripe
         [JsonProperty("cards")]
         public StripeCardList StripeCardList { get; set; }
 
+        [JsonProperty("bank_accounts")]
+        public StripeBankAccountList StripeBankAccountList { get; set; }
+
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
@@ -38,6 +41,24 @@ namespace Stripe
                 ExpandableProperty<StripeCard>.Map(value, s => StripeDefaultCardId = s, o => StripeDefaultCard = o);
             }
         }
+
+        public string StripeDefaultBankAccountId { get; set; }
+        public StripeBankAccount StripeDefaultBankAccount { get; set; }
+
+        [JsonProperty("default_bank_account")]
+        internal object InternalDefaultBankAccount
+        {
+            set
+            {
+                ExpandableProperty<StripeBankAccount>.Map( value, s => StripeDefaultBankAccountId = s, o => StripeDefaultBankAccount = o );
+            }
+        }
+
+        [JsonProperty("default_source_type")]
+        public string DefaultSourceType { get; set; }
+
+        [JsonProperty("default_source")]
+        public string DefaultSourceId { get; set; }
 
         [JsonProperty("delinquent")]
         public bool Delinquent { get; set; }
