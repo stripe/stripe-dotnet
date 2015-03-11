@@ -164,6 +164,7 @@
     <Compile Include="Services\Transfers\StripeTransferCreateOptions.cs" />
     <Compile Include="Services\Transfers\StripeTransferService.cs" />
     <Compile Include="Types\StripeEvents.cs" />
+    <Compile Include="Types\StripeTransferFailureCodes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
