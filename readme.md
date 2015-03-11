@@ -757,7 +757,7 @@ When the StripeCharge is returned, the Customer, BalanceTransaction, and Invoice
 Events
 ------
 
-Stripe sends Events (or webhooks) whenever an associated action occurs. The list of events Stripe sends is documented here: https://stripe.com/docs/api#event_types
+Stripe sends Events (via webhooks) whenever an associated action occurs. The list of events Stripe sends is documented here: https://stripe.com/docs/api#event_types
 
 ### Receiving events from Stripe
 
@@ -780,7 +780,7 @@ Stripe sends Events (or webhooks) whenever an associated action occurs. The list
 
 				switch (stripeEvent.Type)
 				{
-					case "charge.refunded":  // take a look at all the types here: https://stripe.com/docs/api#event_types
+					case StripeEvents.ChargeRefunded:  // all of the types available are listed in StripeEvents
 						var stripeCharge = Stripe.Mapper<StripeCharge>.MapFromJson(stripeEvent.Data.Object.ToString());
 						break;
 				}
