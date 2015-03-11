@@ -330,12 +330,12 @@ When creating a card you can use either a card or a token
 	}
 
 	var cardService = new StripeCardService();
-	StripeCard stripeCard = cardService.Create(*customerId*, myCard);
+	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
 
 ### Retrieving a card
 
 	var cardService = new StripeCardService();
-	StripeCard stripeCard = cardService.Get(*customerId*, *cardId*);
+	StripeCard stripeCard = cardService.Get(*customerId*, *cardId*); // optional isRecipient
 
 ### Updating a card
 
@@ -352,17 +352,17 @@ When creating a card you can use either a card or a token
 	myCard.AddressZip = "27617";
 
 	var cardService = new StripeCardService();
-	StripeCard stripeCard = cardService.Update(*customerId*, *cardId*, myCard);
+	StripeCard stripeCard = cardService.Update(*customerId*, *cardId*, myCard); // optional isRecipient
 
 ### Deleting a card
 
 	var cardService = new StripeCardService();
-	cardService.Delete(*customerId*, *cardId*);
+	cardService.Delete(*customerId*, *cardId*); // optional isRecipient
 
 ### List all cards
 
 	var cardService = new StripeCardService();
-	IEnumerable<StripeCard> response = cardService.List(*customerId*); // optional StripeListOptions
+	IEnumerable<StripeCard> response = cardService.List(*customerId*); // optional StripeListOptions and isRecipient
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
