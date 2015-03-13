@@ -57,8 +57,6 @@ namespace Stripe
         [JsonProperty("subscriptions")]
         public StripeSubscriptionList StripeSubscriptionList { get; set; }
 
-        [Obsolete("This property is not documented and could be removed in a later release.")]
-        [JsonProperty("deleted")]
         public bool? Deleted { get; set; }
     }
 }
