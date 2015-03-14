@@ -5,7 +5,7 @@
 I've been very fortunate to receive so many donations for stripe.net, and I would like to give some back to the community! The tests passing out of the box is very important to me, and I am offering $20 to the person with a simple pull request that fixes issue #306. I expect to have no Stripe test data (new account), clone this repo and execute *run_tests.bat* and have every test complete succesfully! First pull request with an elegant and simple way to do this, gets $20!  
 
 Note: add the following line to packages.config under Stripe.Tests to download the test runner on compile (an update will fix this in the future):  
-    <package id="Machine.Specifications.Runner.Console" version="0.9.0" />
+	<package id="Machine.Specifications.Runner.Console" version="0.9.0" />
 
 [![Bountysource](https://www.bountysource.com/badge/issue?issue_id=9455782)](https://www.bountysource.com/issues/9455782-all-of-the-tests-don-t-pass-out-of-the-box?utm_source=9455782&utm_medium=shield&utm_campaign=ISSUE_BADGE)
   
