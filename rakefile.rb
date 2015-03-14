@@ -1,6 +1,6 @@
 require 'albacore'
 
-VERSION = "2.7.2"
+VERSION = "2.8.0"
 
 task :default => [:build35, :build40, :output35, :output40]
 
@@ -17,7 +17,7 @@ end
 desc "Build 3.5"
 msbuild :build35 => :assemblyinfo do |msb|
     msb.properties :configuration => :Release35
-    msb.targets :Clean, :Build
+    msb.targets :Build
     msb.solution = "src/Stripe.sln"
     puts 'Solution 3.5 built'
 end
@@ -25,7 +25,7 @@ end
 desc "Build 4.0"
 msbuild :build40 => :assemblyinfo do |msb|
     msb.properties :configuration => :Release
-    msb.targets :Clean, :Build
+    msb.targets :Build
     msb.solution = "src/Stripe.sln"
     puts 'Solution 4.0 built'
 end
