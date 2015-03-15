@@ -47,7 +47,7 @@
         public const string RecipientDeleted = "recipient.deleted";
         public const string TransferCreated = "transfer.created";
         public const string TransferUpdated = "transfer.updated";
-        public const string TransferCanceled = "transfer.canceled";
+        public const string TransferReversed = "transfer.reversed";
         public const string TransferPaid = "transfer.paid";
         public const string TransferFailed = "transfer.failed";
         public const string Ping = "ping";
