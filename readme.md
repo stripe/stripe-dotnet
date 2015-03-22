@@ -1,6 +1,10 @@
 ![Stripe.net](http://i.imgur.com/9UzKGQd.png)  
   
-![Donate](https://pledgie.com/campaigns/22262.png)  
+![Donate](https://pledgie.com/campaigns/22262.png) 
+
+I've been very fortunate to receive so many donations for stripe.net, and I would like to give some back to the community! The tests passing out of the box is very important to me, and I am offering $20 to the person with a simple pull request that fixes issue #306. I expect to have no Stripe test data (new account), clone this repo and execute *run_tests.bat* and have every test complete successfully! First pull request with an elegant and simple way to do this, gets $20!  
+
+[![Bountysource](https://www.bountysource.com/badge/issue?issue_id=9455782)](https://www.bountysource.com/issues/9455782-all-of-the-tests-don-t-pass-out-of-the-box?utm_source=9455782&utm_medium=shield&utm_campaign=ISSUE_BADGE)
   
 *Breaking changes of stripe.net in the future will have a major version change (e.g. 3.0 for this latest release). Version changes that add functionality will be a minor version (e.g. 2.8.0). Sorry for the latest breaking code change, I will use this system going forward.* 
   
@@ -330,12 +334,12 @@ When creating a card you can use either a card or a token
 	}
 
 	var cardService = new StripeCardService();
-	StripeCard stripeCard = cardService.Create(*customerId*, myCard);
+	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
 
 ### Retrieving a card
 
 	var cardService = new StripeCardService();
-	StripeCard stripeCard = cardService.Get(*customerId*, *cardId*);
+	StripeCard stripeCard = cardService.Get(*customerId*, *cardId*); // optional isRecipient
 
 ### Updating a card
 
@@ -352,17 +356,17 @@ When creating a card you can use either a card or a token
 	myCard.AddressZip = "27617";
 
 	var cardService = new StripeCardService();
-	StripeCard stripeCard = cardService.Update(*customerId*, *cardId*, myCard);
+	StripeCard stripeCard = cardService.Update(*customerId*, *cardId*, myCard); // optional isRecipient
 
 ### Deleting a card
 
 	var cardService = new StripeCardService();
-	cardService.Delete(*customerId*, *cardId*);
+	cardService.Delete(*customerId*, *cardId*); // optional isRecipient
 
 ### List all cards
 
 	var cardService = new StripeCardService();
-	IEnumerable<StripeCard> response = cardService.List(*customerId*); // optional StripeListOptions
+	IEnumerable<StripeCard> response = cardService.List(*customerId*); // optional StripeListOptions and isRecipient
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -757,7 +761,7 @@ When the StripeCharge is returned, the Customer, BalanceTransaction, and Invoice
 Events
 ------
 
-Stripe sends Events (or webhooks) whenever an associated action occurs. The list of events Stripe sends is documented here: https://stripe.com/docs/api#event_types
+Stripe sends Events (via webhooks) whenever an associated action occurs. The list of events Stripe sends is documented here: https://stripe.com/docs/api#event_types
 
 ### Receiving events from Stripe
 
@@ -780,7 +784,7 @@ Stripe sends Events (or webhooks) whenever an associated action occurs. The list
 
 				switch (stripeEvent.Type)
 				{
-					case "charge.refunded":  // take a look at all the types here: https://stripe.com/docs/api#event_types
+					case StripeEvents.ChargeRefunded:  // all of the types available are listed in StripeEvents
 						var stripeCharge = Stripe.Mapper<StripeCharge>.MapFromJson(stripeEvent.Data.Object.ToString());
 						break;
 				}

@@ -52,9 +52,14 @@
             get { return BaseUrl + "/customers"; }
         }
 
-        public static string Cards
+        public static string CustomerCards
         {
             get { return BaseUrl + "/customers/{0}/cards"; }
+        }
+
+        public static string RecipientCards
+        {
+            get { return BaseUrl + "/recipients/{0}/cards"; }
         }
 
         public static string Events

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -9,9 +10,9 @@ namespace Stripe
         public bool ExpandCustomer { get; set; }
         public bool ExpandRecipient { get; set; }
 
-        public virtual StripeCard Create(string customerId, StripeCardCreateOptions createOptions)
+        public virtual StripeCard Create(string customerOrRecipientId, StripeCardCreateOptions createOptions, bool isRecipient = false)
         {
-            var url = string.Format(Urls.Cards, customerId);
+            var url = SetupUrl(customerOrRecipientId, isRecipient);
             url = this.ApplyAllParameters(createOptions, url, false);
 
             var response = Requestor.PostString(url, ApiKey);
@@ -19,10 +20,9 @@ namespace Stripe
             return Mapper<StripeCard>.MapFromJson(response);
         }
 
-        public virtual StripeCard Get(string customerId, string cardId)
+        public virtual StripeCard Get(string customerOrRecipientId, string cardId, bool isRecipient = false)
         {
-            var customerUrl = string.Format(Urls.Cards, customerId);
-            var url = string.Format("{0}/{1}", customerUrl, cardId);
+            var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
             url = this.ApplyAllParameters(null, url, false);
 
             var response = Requestor.GetString(url, ApiKey);
@@ -30,10 +30,9 @@ namespace Stripe
             return Mapper<StripeCard>.MapFromJson(response);
         }
 
-        public virtual StripeCard Update(string customerId, string cardId, StripeCardUpdateOptions updateOptions)
+        public virtual StripeCard Update(string customerOrRecipientId, string cardId, StripeCardUpdateOptions updateOptions, bool isRecipient = false)
         {
-            var customerUrl = string.Format(Urls.Cards, customerId);
-            var url = string.Format("{0}/{1}", customerUrl, cardId);
+            var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
             url = this.ApplyAllParameters(updateOptions, url, false);
 
             var response = Requestor.PostString(url, ApiKey);
@@ -41,22 +40,34 @@ namespace Stripe
             return Mapper<StripeCard>.MapFromJson(response);
         }
 
-        public virtual void Delete(string customerId, string cardId)
+        public virtual void Delete(string customerOrRecipientId, string cardId, bool isRecipient = false)
         {
-            var customerUrl = string.Format(Urls.Cards, customerId);
-            var url = string.Format("{0}/{1}", customerUrl, cardId);
+            var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
 
             Requestor.Delete(url, ApiKey);
         }
 
-        public virtual IEnumerable<StripeCard> List(string customerId, StripeListOptions listOptions = null)
+        public virtual IEnumerable<StripeCard> List(string customerOrRecipientId, StripeListOptions listOptions = null, bool isRecipient = false)
         {
-            var url = string.Format(Urls.Cards, customerId);
+            var url = SetupUrl(customerOrRecipientId, isRecipient);
             url = this.ApplyAllParameters(listOptions, url, true);
 
             var response = Requestor.GetString(url, ApiKey);
 
             return Mapper<StripeCard>.MapCollectionFromJson(response);
+        }
+
+        private string SetupUrl(string customerOrRecipientId, bool isRecipient, string cardId = null)
+        {
+            var urlParams = string.Format(Urls.CustomerCards, customerOrRecipientId);
+
+            if (isRecipient)
+                urlParams = string.Format(Urls.RecipientCards, customerOrRecipientId);
+
+            if (!String.IsNullOrEmpty(cardId))
+                return string.Format("{0}/{1}", urlParams, cardId);
+
+            return urlParams;
         }
     }
 }
