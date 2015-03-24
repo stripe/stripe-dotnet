@@ -431,7 +431,7 @@ Invoices
 ### Create a customer invoice
 
 	var invoiceService = new StripeInvoiceService();
-	StripeInvoice response = invoiceService.Create(*customerId*);
+	StripeInvoice response = invoiceService.Create(*customerId*, stripeInvoiceCreateOptions);
 
 ### Updating a customer invoice
 
@@ -439,7 +439,7 @@ Invoices
 	stripeInvoiceUpdateOptions.Closed = true;
 
 	var invoiceService = new StripeInvoiceService();
-	StripeInvoice response = invoiceService.Update(stripeInvoiceUpdateOptions);
+	StripeInvoice response = invoiceService.Update(*invoiceId*,stripeInvoiceUpdateOptions);
 
 ### Paying an invoice
 
