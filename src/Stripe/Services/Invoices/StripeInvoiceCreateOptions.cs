@@ -5,10 +5,6 @@ namespace Stripe.Services.Invoices
 {
     public class StripeInvoiceCreateOptions
     {
-
-        [JsonProperty("customer")]
-        public bool CustomerId { get; set; }
-
         [JsonProperty("application_fee")]
         public int? ApplicationFee { get; set; }
 
