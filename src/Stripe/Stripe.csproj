@@ -59,6 +59,7 @@
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
+    <Compile Include="Services\Invoices\StripeInvoiceCreateOptions.cs" />
     <Compile Include="Services\StripeDateFilter.cs" />
     <Compile Include="Entities\StripeApplicationFeeRefund.cs" />
     <Compile Include="Entities\StripeApplicationFee.cs" />
