@@ -54,6 +54,8 @@
     </Compile>
     <Compile Include="Entities\StripeBankAccount.cs" />
     <Compile Include="Entities\StripeBalanceTransaction.cs" />
+    <Compile Include="Entities\StripeCard.cs" />
+    <Compile Include="Entities\StripeCardList.cs" />
     <Compile Include="Entities\StripeFee.cs" />
     <Compile Include="Entities\StripeObject.cs" />
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
@@ -65,7 +67,6 @@
     <Compile Include="Entities\StripeApplicationFee.cs" />
     <Compile Include="Entities\StripeBalanceAmount.cs" />
     <Compile Include="Entities\StripeBalance.cs" />
-    <Compile Include="Entities\StripeCardList.cs" />
     <Compile Include="Entities\StripeDispute.cs" />
     <Compile Include="Entities\StripeAccount.cs" />
     <Compile Include="Entities\StripeEventData.cs" />
@@ -80,7 +81,6 @@
     <Compile Include="Entities\StripeSubscriptionList.cs" />
     <Compile Include="Entities\StripeToken.cs" />
     <Compile Include="Entities\StripeCharge.cs" />
-    <Compile Include="Entities\StripeCard.cs" />
     <Compile Include="Entities\StripePlan.cs" />
     <Compile Include="Entities\StripeSubscription.cs" />
     <Compile Include="Entities\StripeCoupon.cs" />
