@@ -17,7 +17,7 @@ namespace Stripe.Tests.test_data
                 CardExpirationMonth = "10",
                 CardExpirationYear = "2021",
                 CardName = "Joe Meatballs",
-                CardNumber = "4242424242424242",
+                CardNumber = "4000000000000077",
             };
 
             return new StripeChargeCreateOptions()

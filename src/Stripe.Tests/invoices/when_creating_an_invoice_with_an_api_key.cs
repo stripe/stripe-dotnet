@@ -35,7 +35,7 @@ namespace Stripe.Tests
             _stripeInvoice.Id.ShouldEqual(_stripeInvoiceList.First().Id);
 
         It should_have_a_valid_date = () =>
-            _stripeInvoice.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow);
+            _stripeInvoice.Date.ShouldBeLessThanOrEqualTo(DateTime.UtcNow.AddMinutes(1));
 
         It should_have_a_subtotal = () =>
             _stripeInvoice.Subtotal.ShouldBeGreaterThanOrEqualTo(0);
