@@ -24,7 +24,7 @@ namespace Stripe
         public bool Attempted { get; set; }
 
         [JsonProperty("closed")]
-        public bool Closed { get; set; }
+        public bool? Closed { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -50,7 +50,7 @@ namespace Stripe
         public DateTime? Date { get; set; }
 
         [JsonProperty("forgiven")]
-        public bool Forgiven { get; set; }
+        public bool? Forgiven { get; set; }
 
         [JsonProperty("lines")]
         public StripeList<StripeInvoiceLineItem> StripeInvoiceLineItems { get; set; }
