@@ -53,6 +53,9 @@ namespace Stripe
         [JsonProperty("country")]
         public string Country { get; set; }
 
+        [JsonProperty("metadata")]
+        public object MetaData { get; set; }
+
         #region Expandable Customer
         public string CustomerId { get; set; }
 

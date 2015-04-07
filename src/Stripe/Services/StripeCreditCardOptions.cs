@@ -39,5 +39,8 @@ namespace Stripe
 
         [JsonProperty("card[address_country]")]
         public string CardAddressCountry { get; set; }
+
+        [JsonProperty("metadata")]
+        public object MetaData { get; set; }
     }
 }
