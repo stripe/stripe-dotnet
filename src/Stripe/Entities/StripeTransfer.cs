@@ -28,11 +28,20 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Date { get; set; }
 
+        [JsonProperty("reversals")]
+        public StripeList<StripeTransferReversal> StripeTransferReversalList { get; set; }
+
+        [JsonProperty("reversed")]
+        public bool Reversed { get; set; }
+
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        [JsonProperty("amount_reversed")]
+        public int AmountReversed { get; set; }
 
         public string BalanceTransactionId { get; set; }
         public StripeBalanceTransaction BalanceTransaction { get; set; }

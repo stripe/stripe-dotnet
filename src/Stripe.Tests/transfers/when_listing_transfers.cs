@@ -21,7 +21,7 @@ namespace Stripe.Tests
         Because of = () =>
             _stripeTransferList = _stripeTransferService.List().ToList();
 
-        It should_have_at_least_one_entry = () =>
+        It should_have_at_least_three_entries = () =>
             _stripeTransferList.Count.ShouldBeGreaterThanOrEqualTo(3);
     }
 }

@@ -140,6 +140,7 @@
     <Compile Include="transfers\transfer_behaviors.cs" />
     <Compile Include="transfers\when_creating_a_transfer.cs" />
     <Compile Include="transfers\when_getting_a_transfer.cs" />
+    <Compile Include="transfers\when_creating_a_failed_transfer.cs" />
     <Compile Include="transfers\when_listing_transfers.cs" />
     <Compile Include="_web_event_hooks\App_Code\event_hooks_handler.cs" />
     <Compile Include="invoices\when_getting_an_invoice.cs" />
