@@ -53,5 +53,30 @@ namespace Stripe.Tests.test_data
 
             return stripeRecipientCreateOptions;
         }
+
+        public static StripeRecipientCreateOptions TransferFailCorporation()
+        {
+            var stripeRecipientCreateOptions = new StripeRecipientCreateOptions()
+            {
+                Name = "Tenderloin International, Ltd.",
+                Type = "corporation",
+                TaxId = "000000000",
+                BankAccount = new StripeBankAccountOptions()
+                {
+                    AccountNumber = "000111111116",
+                    RoutingNumber = "110000000",
+                    Country = "US"
+                },
+                Email = "tenderloins@email.com",
+                Description = "Tenderloin International (tenderloins@email.com)",
+                Metadata = new Dictionary<string, string>
+                {
+                    { "A", "Value-A" },
+                    { "B", "Value-B" }
+                }
+            };
+
+            return stripeRecipientCreateOptions;
+        }
     }
 }

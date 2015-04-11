@@ -5,13 +5,13 @@ namespace Stripe.Tests.test_data
 {
     public class stripe_transfer_create_options
     {
-        public static StripeTransferCreateOptions Valid()
+        public static StripeTransferCreateOptions Valid(string recipient = "self")
         {
             var stripeTransferCreateOptions = new StripeTransferCreateOptions()
             {
                 Amount = 50,
                 Currency = "usd",
-                Recipient = "self",
+                Recipient = recipient,
                 Description = "test-transfer-description-" + Guid.NewGuid(),
                 StatementDescriptor = "test-transfer-statement-descriptor" + Guid.NewGuid(),
                 Metadata = new Dictionary<string, string>
