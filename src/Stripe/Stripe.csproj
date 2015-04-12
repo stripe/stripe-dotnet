@@ -60,7 +60,7 @@
     <Compile Include="Entities\StripeObject.cs" />
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
     <Compile Include="Entities\StripeTransferReversal.cs" />
-    <Compile Include="Entities\StripeRefundReasons.cs" />
+    <Compile Include="Constants\StripeRefundReasons.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
     <Compile Include="Services\Refunds\StripeRefundCreateOptions.cs" />
@@ -151,8 +151,8 @@
     <Compile Include="Services\Transfers\StripeTransferListOptions.cs" />
     <Compile Include="Services\Transfers\StripeTransferCreateOptions.cs" />
     <Compile Include="Services\Transfers\StripeTransferService.cs" />
-    <Compile Include="Types\StripeTransferFailureCodes.cs" />
-    <Compile Include="Types\StripeEvents.cs" />
+    <Compile Include="Constants\StripeTransferFailureCodes.cs" />
+    <Compile Include="Constants\StripeEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

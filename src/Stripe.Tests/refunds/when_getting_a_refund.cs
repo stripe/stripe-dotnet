@@ -22,7 +22,7 @@ namespace Stripe.Tests
             var refund = _stripeRefundService.Create(_createdStripeChargeId, new StripeRefundCreateOptions()
             {
                 Amount = 300,
-                Reason = StripeRefundReasons.RequestedByCustomer,
+                Reason = StripeRefundReasons.Fradulent,
                 Metadata = new Dictionary<string, string>() { { "key", "value" } }
             });
 
@@ -31,6 +31,15 @@ namespace Stripe.Tests
 
         Because of = () =>
             _stripeRefund = _stripeRefundService.Get(_createdStripeChargeId, _createdStripeRefundId);
+
+        It should_create_with_stripe_charge_id = () =>
+            _stripeRefund.ChargeId.ShouldEqual(_createdStripeChargeId);
+
+        It should_refund_300 = () =>
+            _stripeRefund.Amount.ShouldEqual(300);
+
+        It should_have_reason = () =>
+            _stripeRefund.Reason.ShouldEqual(StripeRefundReasons.Fradulent);
 
         It should_have_metadata = () =>
             _stripeRefund.Metadata["key"].ShouldEqual("value");

@@ -27,7 +27,6 @@ namespace Stripe.Tests
             });
 
             _createdStripeRefundId = refund.Id;
-
         };
 
         Because of = () =>

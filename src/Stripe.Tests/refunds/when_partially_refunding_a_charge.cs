@@ -29,13 +29,13 @@ namespace Stripe.Tests
 
         It should_create_with_stripe_charge_id = () =>
             _stripeRefund.ChargeId.ShouldEqual(_createdStripeChargeId);
-        
+
         It should_refund_300 = () =>
             _stripeRefund.Amount.ShouldEqual(300);
 
         It should_have_reason = () =>
             _stripeRefund.Reason.ShouldEqual(StripeRefundReasons.RequestedByCustomer);
-    
+
         It should_have_metadata = () =>
             _stripeRefund.Metadata["key"].ShouldEqual("value");
     }

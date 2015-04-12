@@ -69,6 +69,9 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Constants\StripeEvents.cs" />
+    <Compile Include="Constants\StripeRefundReasons.cs" />
+    <Compile Include="Constants\StripeTransferFailureCodes.cs" />
     <Compile Include="Entities\StripeBalanceTransaction.cs" />
     <Compile Include="Entities\StripeBankAccount.cs" />
     <Compile Include="Entities\StripeFee.cs" />
@@ -167,8 +170,6 @@
     <Compile Include="Services\Transfers\StripeTransferListOptions.cs" />
     <Compile Include="Services\Transfers\StripeTransferCreateOptions.cs" />
     <Compile Include="Services\Transfers\StripeTransferService.cs" />
-    <Compile Include="Types\StripeEvents.cs" />
-    <Compile Include="Types\StripeTransferFailureCodes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
