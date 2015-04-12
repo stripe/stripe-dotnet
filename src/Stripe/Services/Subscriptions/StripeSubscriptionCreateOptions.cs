@@ -43,7 +43,6 @@ namespace Stripe
         public decimal? TaxPercent { get; set; }
 
         public DateTime? BillingCycleAnchor { get; set; }
-
         public bool BillingCycleAnchorNow { get; set; }
 
         [JsonProperty("billing_cycle_anchor")]
@@ -51,7 +50,7 @@ namespace Stripe
         {
             get
             {
-                if (EndTrialNow)
+                if (BillingCycleAnchorNow)
                     return "now";
                 else if (BillingCycleAnchor.HasValue)
                     return EpochTime.ConvertDateTimeToEpoch(BillingCycleAnchor.Value).ToString();
