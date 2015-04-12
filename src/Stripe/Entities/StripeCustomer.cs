@@ -57,6 +57,7 @@ namespace Stripe
         [JsonProperty("subscriptions")]
         public StripeSubscriptionList StripeSubscriptionList { get; set; }
 
+        [JsonProperty("deleted")]
         public bool? Deleted { get; set; }
     }
 }
