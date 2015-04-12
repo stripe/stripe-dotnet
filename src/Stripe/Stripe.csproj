@@ -60,8 +60,12 @@
     <Compile Include="Entities\StripeObject.cs" />
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
     <Compile Include="Entities\StripeTransferReversal.cs" />
+    <Compile Include="Entities\StripeRefundReasons.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
+    <Compile Include="Services\Refunds\StripeRefundCreateOptions.cs" />
+    <Compile Include="Services\Refunds\StripeRefundService.cs" />
+    <Compile Include="Services\Refunds\StripeRefundUpdateOptions.cs" />
     <Compile Include="Services\StripeDateFilter.cs" />
     <Compile Include="Entities\StripeApplicationFeeRefund.cs" />
     <Compile Include="Entities\StripeApplicationFee.cs" />
