@@ -284,7 +284,7 @@ Subscriptions
 ### Retrieving a subscription
 
 	var subscriptionService = new StripeSubscriptionService();
-	StripeSubscription stripeSubscription = subscriptionService.Get(*subscriptionId*);
+	StripeSubscription stripeSubscription = subscriptionService.Get(*customerId*, *subscriptionId*);
 
 ### Canceling a subscription
 
