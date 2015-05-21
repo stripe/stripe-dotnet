@@ -460,11 +460,11 @@ Invoices
 ### Create a customer invoice
 
 	var invoiceService = new StripeInvoiceService();
-	StripeInvoice response = invoiceService.Create(*customerId*);
+	StripeInvoice response = invoiceService.Create(*customerId*, stripeInvoiceCreateOptions);
 
 ### Updating a customer invoice
 
-	var stripeInvoiceUpdateOptions = new StripeInvoiceUpdateOptions();
+	var stripeInvoiceUpdateOptions = new StripeInvoiceUpdateOptions(*invoiceId*);
 	stripeInvoiceUpdateOptions.Closed = true;
 
 	var invoiceService = new StripeInvoiceService();
