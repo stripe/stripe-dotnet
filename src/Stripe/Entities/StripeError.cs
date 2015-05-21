@@ -24,7 +24,7 @@ namespace Stripe
 
         [JsonProperty("charge")]
         public string ChargeId { get; set; }
-        
+
         [JsonProperty("decline_code")]
         public string DeclineCode { get; set; }
     }
