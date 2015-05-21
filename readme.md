@@ -460,15 +460,15 @@ Invoices
 ### Create a customer invoice
 
 	var invoiceService = new StripeInvoiceService();
-	StripeInvoice response = invoiceService.Create(*customerId*, stripeInvoiceCreateOptions);
+	StripeInvoice response = invoiceService.Create(*customerId*); // optional StripeInvoiceCreateOptions
 
 ### Updating a customer invoice
 
-	var stripeInvoiceUpdateOptions = new StripeInvoiceUpdateOptions(*invoiceId*);
+	var stripeInvoiceUpdateOptions = new StripeInvoiceUpdateOptions();
 	stripeInvoiceUpdateOptions.Closed = true;
 
 	var invoiceService = new StripeInvoiceService();
-	StripeInvoice response = invoiceService.Update(stripeInvoiceUpdateOptions);
+	StripeInvoice response = invoiceService.Update(*invoiceId*, stripeInvoiceUpdateOptions);
 
 ### Paying an invoice
 

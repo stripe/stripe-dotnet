@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Stripe.Services.Invoices
+namespace Stripe
 {
     public class StripeInvoiceCreateOptions
     {
@@ -9,7 +9,7 @@ namespace Stripe.Services.Invoices
         public int? ApplicationFee { get; set; }
 
         [JsonProperty("description")]
-        public bool Description { get; set; }
+        public string Description { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -21,6 +21,6 @@ namespace Stripe.Services.Invoices
         public string SubscriptionId { get; set; }
 
         [JsonProperty("tax_percent")]
-        public int? TaxPercent { get; set; }
+        public decimal? TaxPercent { get; set; }
     }
 }

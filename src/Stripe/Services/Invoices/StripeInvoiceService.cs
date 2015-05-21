@@ -68,7 +68,7 @@ namespace Stripe
         {
             var url = Urls.Invoices;
             url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
-            url = this.ApplyAllParameters(createOptions, url, true);
+            url = this.ApplyAllParameters(createOptions, url, false);
 
             var response = Requestor.PostString(url, ApiKey);
 
