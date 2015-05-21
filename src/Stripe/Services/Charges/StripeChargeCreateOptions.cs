@@ -35,6 +35,9 @@ namespace Stripe
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
 
+        [JsonProperty("destination")]
+        public string Destination { get; set; }
+
         [JsonProperty("application_fee")]
         public int? ApplicationFee { get; set; }
     }
