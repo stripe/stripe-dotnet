@@ -35,20 +35,20 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
-        internal static WebRequest GetWebRequest(string url, string method, string apiKey = null, bool useBearer = false)
+        internal static WebRequest GetWebRequest(string url, string method, string apiKey = null, bool useBearer = false, string idempotencyKey = null)
         {
             apiKey = apiKey ?? StripeConfiguration.GetApiKey();
 
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = method;
 
-            if(!useBearer)
+            if (!useBearer)
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValue(apiKey));
             else
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(apiKey));
 
             request.Headers.Add("Stripe-Version", StripeConfiguration.ApiVersion);
-
+            request.Headers.Add("Idempotency-Key", idempotencyKey);
             request.ContentType = "application/x-www-form-urlencoded";
             request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
 
