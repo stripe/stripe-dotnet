@@ -14,16 +14,16 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
-        public static string PostString(string url, string apiKey = null)
+        public static string PostString(string url, string apiKey = null, string idempotencyKey = null)
         {
-            var wr = GetWebRequest(url, "POST", apiKey);
+            var wr = GetWebRequest(url, "POST", apiKey, idempotencyKey);
 
             return ExecuteWebRequest(wr);
         }
 
         public static string PostStringBearer(string url, string apiKey = null)
         {
-            var wr = GetWebRequest(url, "POST", apiKey, true);
+            var wr = GetWebRequest(url, "POST", apiKey, "", true);
 
             return ExecuteWebRequest(wr);
         }
@@ -35,7 +35,7 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
-        internal static WebRequest GetWebRequest(string url, string method, string apiKey = null, bool useBearer = false, string idempotencyKey = null)
+        internal static WebRequest GetWebRequest(string url, string method, string apiKey = null, string idempotencyKey = null, bool useBearer = false)
         {
             apiKey = apiKey ?? StripeConfiguration.GetApiKey();
 

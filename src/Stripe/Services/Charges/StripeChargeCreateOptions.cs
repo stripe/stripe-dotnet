@@ -37,5 +37,8 @@ namespace Stripe
 
         [JsonProperty("application_fee")]
         public int? ApplicationFee { get; set; }
+
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
     }
 }

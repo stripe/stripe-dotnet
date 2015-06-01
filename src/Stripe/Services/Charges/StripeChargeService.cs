@@ -15,7 +15,7 @@ namespace Stripe
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Charges, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, createOptions.IdempotencyKey);
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
