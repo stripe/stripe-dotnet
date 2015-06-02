@@ -48,7 +48,10 @@ namespace Stripe
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(apiKey));
 
             request.Headers.Add("Stripe-Version", StripeConfiguration.ApiVersion);
-            request.Headers.Add("Idempotency-Key", idempotencyKey);
+            if (idempotencyKey != "")
+            {
+                request.Headers.Add("Idempotency-Key", idempotencyKey);
+            }
             request.ContentType = "application/x-www-form-urlencoded";
             request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
 
