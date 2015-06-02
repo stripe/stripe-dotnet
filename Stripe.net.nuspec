@@ -2,7 +2,7 @@
 <package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Stripe.net</id>
-    <version>2.9.0</version>
+    <version>2.9.0.1</version>
     <authors>Jayme Davis</authors>
     <owners>Jayme Davis</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -17,7 +17,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="working40\Stripe.net.dll" target="lib\net40" />
-    <file src="working35\Stripe.net.dll" target="lib\net35" />
+    <file src="src\Stripe\bin\release\Stripe.net.dll" target="lib\net40" />
+    <file src="src\Stripe\bin\release 3.5\Stripe.net.dll" target="lib\net35" />
   </files>
 </package>
