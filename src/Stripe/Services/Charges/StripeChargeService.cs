@@ -11,11 +11,11 @@ namespace Stripe
         public bool ExpandCustomer { get; set; }
         public bool ExpandInvoice { get; set; }
 
-        public virtual StripeCharge Create(StripeChargeCreateOptions createOptions)
+        public virtual StripeCharge Create(StripeChargeCreateOptions createOptions, string idempotencyKey = "")
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Charges, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, idempotencyKey);
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }

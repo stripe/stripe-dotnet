@@ -14,16 +14,16 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
-        public static string PostString(string url, string apiKey = null)
+        public static string PostString(string url, string apiKey = null, string idempotencyKey = "")
         {
-            var wr = GetWebRequest(url, "POST", apiKey);
+            var wr = GetWebRequest(url, "POST", apiKey, idempotencyKey);
 
             return ExecuteWebRequest(wr);
         }
 
         public static string PostStringBearer(string url, string apiKey = null)
         {
-            var wr = GetWebRequest(url, "POST", apiKey, true);
+            var wr = GetWebRequest(url, "POST", apiKey, "", true);
 
             return ExecuteWebRequest(wr);
         }
@@ -35,7 +35,7 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
-        internal static WebRequest GetWebRequest(string url, string method, string apiKey = null, bool useBearer = false)
+        internal static WebRequest GetWebRequest(string url, string method, string apiKey = null, string idempotencyKey = "", bool useBearer = false)
         {
             apiKey = apiKey ?? StripeConfiguration.GetApiKey();
 
@@ -48,7 +48,10 @@ namespace Stripe
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(apiKey));
 
             request.Headers.Add("Stripe-Version", StripeConfiguration.ApiVersion);
-
+            if (idempotencyKey != "")
+            {
+                request.Headers.Add("Idempotency-Key", idempotencyKey);
+            }
             request.ContentType = "application/x-www-form-urlencoded";
             request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
 
