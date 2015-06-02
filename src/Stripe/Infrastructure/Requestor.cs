@@ -42,7 +42,7 @@ namespace Stripe
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = method;
 
-            if (!useBearer)
+            if(!useBearer)
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValue(apiKey));
             else
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(apiKey));
