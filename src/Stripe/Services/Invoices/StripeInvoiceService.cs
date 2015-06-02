@@ -63,10 +63,11 @@ namespace Stripe
             return Mapper<StripeInvoice>.MapCollectionFromJson(response);
         }
 
-        public virtual StripeInvoice Create(string customerId)
+        public virtual StripeInvoice Create(string customerId, StripeInvoiceCreateOptions createOptions = null)
         {
             var url = Urls.Invoices;
             url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+            url = this.ApplyAllParameters(createOptions, url, false);
 
             var response = Requestor.PostString(url, ApiKey);
 

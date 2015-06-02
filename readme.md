@@ -35,7 +35,7 @@ c) In any of the service constructors documented below, you can optionally pass 
 
 	var planService = new StripePlanService("[your api key here]");
 
-Use the library :)
+Stripe.net forces a version of the Stripe API for which it was designed. You can find out the latest version support by viewing StripeConfiguration.cs under the Infrastructure folder.
 
 Examples
 ========
@@ -294,7 +294,7 @@ Subscriptions
 ### List all subscriptions for a customer
 
 	var subscriptionService = new StripeSubscriptionService();
-	IEnumerable<StripeSubscription> response = customerService.List(*customerId*); // optional StripeListOptions
+	IEnumerable<StripeSubscription> response = subscriptionService.List(*customerId*); // optional StripeListOptions
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -460,7 +460,7 @@ Invoices
 ### Create a customer invoice
 
 	var invoiceService = new StripeInvoiceService();
-	StripeInvoice response = invoiceService.Create(*customerId*);
+	StripeInvoice response = invoiceService.Create(*customerId*); // optional StripeInvoiceCreateOptions
 
 ### Updating a customer invoice
 
@@ -468,7 +468,7 @@ Invoices
 	stripeInvoiceUpdateOptions.Closed = true;
 
 	var invoiceService = new StripeInvoiceService();
-	StripeInvoice response = invoiceService.Update(stripeInvoiceUpdateOptions);
+	StripeInvoice response = invoiceService.Update(*invoiceId*, stripeInvoiceUpdateOptions);
 
 ### Paying an invoice
 
