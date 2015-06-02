@@ -4,7 +4,7 @@ namespace Stripe
 {
     public class StripeCustomerService : StripeService
     {
-        public StripeCustomerService(string apiKey = null) : base(apiKey) { }
+        public StripeCustomerService(string apiKey = null, string stripeAccountId = null) : base(apiKey, stripeAccountId) { }
 
         public bool ExpandDefaultCard { get; set; }
 
@@ -12,7 +12,7 @@ namespace Stripe
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Customers, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
@@ -22,7 +22,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Customers, customerId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
@@ -32,7 +32,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Customers, customerId);
             url = this.ApplyAllParameters(updateOptions, url, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
@@ -41,7 +41,7 @@ namespace Stripe
         {
             var url = string.Format("{0}/{1}", Urls.Customers, customerId);
 
-            Requestor.Delete(url, ApiKey);
+            Requestor.Delete(url, ApiKey, StripeAccountId);
         }
 
         public virtual IEnumerable<StripeCustomer> List(StripeCustomerListOptions listOptions = null)
@@ -49,7 +49,7 @@ namespace Stripe
             var url = Urls.Customers;
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeCustomer>.MapCollectionFromJson(response);
         }

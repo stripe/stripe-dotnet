@@ -10,7 +10,7 @@ namespace Stripe.Tests
     {
         public class TestService : StripeService
         {
-            public TestService() : base(null) { }
+            public TestService() : base(null, null) { }
             public bool ExpandSimple { get; set; }
             public bool ExpandMultiWordProperty { get; set; }
         }

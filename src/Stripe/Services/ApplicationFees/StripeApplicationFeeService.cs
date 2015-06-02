@@ -4,7 +4,7 @@ namespace Stripe
 {
     public class StripeApplicationFeeService : StripeService
     {
-        public StripeApplicationFeeService(string apiKey = null) : base(apiKey) { }
+        public StripeApplicationFeeService(string apiKey = null, string stripeAccountId = null) : base(apiKey, stripeAccountId) { }
 
         public bool ExpandAccount { get; set; }
         public bool ExpandBalanceTransaction { get; set; }
@@ -15,7 +15,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.ApplicationFees, applicationFeeId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeApplicationFee>.MapFromJson(response);
         }
@@ -28,7 +28,7 @@ namespace Stripe
             if (refundAmount.HasValue)
                 url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeApplicationFee>.MapFromJson(response);
         }
@@ -38,7 +38,7 @@ namespace Stripe
             var url = Urls.ApplicationFees;
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeApplicationFee>.MapCollectionFromJson(response);
         }

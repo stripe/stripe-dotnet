@@ -4,7 +4,7 @@ namespace Stripe
 {
     public class StripeInvoiceItemService : StripeService
     {
-        public StripeInvoiceItemService(string apiKey = null) : base(apiKey) { }
+        public StripeInvoiceItemService(string apiKey = null, string stripeAccountId = null) : base(apiKey, stripeAccountId) { }
 
         public bool ExpandCustomer { get; set; }
         public bool ExpandInvoice { get; set; }
@@ -13,7 +13,7 @@ namespace Stripe
         {
             var url = this.ApplyAllParameters(createOptions, Urls.InvoiceItems, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeInvoiceLineItem>.MapFromJson(response);
         }
@@ -23,7 +23,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeInvoiceLineItem>.MapFromJson(response);
         }
@@ -33,7 +33,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
             url = this.ApplyAllParameters(updateOptions, url, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeInvoiceLineItem>.MapFromJson(response);
         }
@@ -42,7 +42,7 @@ namespace Stripe
         {
             var url = string.Format("{0}/{1}", Urls.InvoiceItems, invoiceItemId);
 
-            Requestor.Delete(url, ApiKey);
+            Requestor.Delete(url, ApiKey, StripeAccountId);
         }
 
         public virtual IEnumerable<StripeInvoiceLineItem> List(StripeInvoiceItemListOptions listOptions = null)
@@ -50,7 +50,7 @@ namespace Stripe
             var url = Urls.InvoiceItems;
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(response);
         }

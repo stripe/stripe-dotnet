@@ -5,7 +5,7 @@ namespace Stripe
 {
     public class StripeChargeService : StripeService
     {
-        public StripeChargeService(string apiKey = null) : base(apiKey) { }
+        public StripeChargeService(string apiKey = null, string stripeAccountId = null) : base(apiKey, stripeAccountId) { }
 
         public bool ExpandBalanceTransaction { get; set; }
         public bool ExpandCustomer { get; set; }
@@ -15,7 +15,7 @@ namespace Stripe
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Charges, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
@@ -25,7 +25,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Charges, chargeId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
@@ -41,7 +41,7 @@ namespace Stripe
             if (refundApplicationFee.HasValue)
                 url = ParameterBuilder.ApplyParameterToUrl(url, "refund_application_fee", refundApplicationFee.Value.ToString());
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
@@ -51,7 +51,7 @@ namespace Stripe
             var url = Urls.Charges;
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeCharge>.MapCollectionFromJson(response);
         }
@@ -66,7 +66,7 @@ namespace Stripe
             if (applicationFee.HasValue)
                 url = ParameterBuilder.ApplyParameterToUrl(url, "application_fee", applicationFee.Value.ToString());
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }

@@ -5,7 +5,7 @@ namespace Stripe
 {
     public class StripeSubscriptionService : StripeService
     {
-        public StripeSubscriptionService(string apiKey = null) : base(apiKey) { }
+        public StripeSubscriptionService(string apiKey = null, string stripeAccountId = null) : base(apiKey, stripeAccountId) { }
 
         public bool ExpandCustomer { get; set; }
 
@@ -14,7 +14,7 @@ namespace Stripe
             var url = string.Format(Urls.Subscriptions + "/{1}", customerId, subscriptionId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
@@ -25,7 +25,7 @@ namespace Stripe
             url = this.ApplyAllParameters(createOptions, url, false);
             url = ParameterBuilder.ApplyParameterToUrl(url, "plan", planId);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
@@ -35,7 +35,7 @@ namespace Stripe
             var url = string.Format(Urls.Subscriptions + "/{1}", customerId, subscriptionId);
             url = this.ApplyAllParameters(updateOptions, url, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
@@ -45,7 +45,7 @@ namespace Stripe
             var url = string.Format(Urls.Subscriptions + "/{1}", customerId, subscriptionId);
             url = ParameterBuilder.ApplyParameterToUrl(url, "at_period_end", cancelAtPeriodEnd.ToString());
 
-            var response = Requestor.Delete(url, ApiKey);
+            var response = Requestor.Delete(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeSubscription>.MapFromJson(response);
         }
@@ -55,7 +55,7 @@ namespace Stripe
             var url = string.Format(Urls.Subscriptions, customerId);
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeSubscription>.MapCollectionFromJson(response);
         }
