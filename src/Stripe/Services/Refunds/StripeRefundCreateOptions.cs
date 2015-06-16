@@ -11,6 +11,9 @@ namespace Stripe
         [JsonProperty("refund_application_fee")]
         public bool? RefundApplicationFee { get; set; }
 
+        [JsonProperty("reverse_transfer")]
+        public bool? ReverseTransfer { get; set; }
+
         [JsonProperty("reason")]
         public string Reason { get; set; }
 
