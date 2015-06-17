@@ -297,7 +297,7 @@ Subscriptions
 ### List all subscriptions for a customer
 
 	var subscriptionService = new StripeSubscriptionService();
-	IEnumerable<StripeSubscription> response = customerService.List(*customerId*); // optional StripeListOptions
+	IEnumerable<StripeSubscription> response = subscriptionService.List(*customerId*); // optional StripeListOptions
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
