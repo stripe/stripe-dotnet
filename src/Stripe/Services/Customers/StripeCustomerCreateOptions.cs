@@ -34,6 +34,9 @@ namespace Stripe
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
 
+        [JsonProperty("source")]
+        public string SourceTokenId { get; set; }
+
         public DateTime? TrialEnd { get; set; }
 
         [JsonProperty("trial_end")]
