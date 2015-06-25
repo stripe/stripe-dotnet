@@ -4,13 +4,13 @@ namespace Stripe
 {
     public class StripePlanService : StripeService
     {
-        public StripePlanService(string apiKey = null) : base(apiKey) { }
+        public StripePlanService(string apiKey = null, string stripeAccountId = null) : base(apiKey, stripeAccountId) { }
 
         public virtual StripePlan Create(StripePlanCreateOptions createOptions)
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Plans, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripePlan>.MapFromJson(response);
         }
@@ -20,7 +20,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Plans, planId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripePlan>.MapFromJson(response);
         }
@@ -29,7 +29,7 @@ namespace Stripe
         {
             var url = string.Format("{0}/{1}", Urls.Plans, planId);
 
-            Requestor.Delete(url, ApiKey);
+            Requestor.Delete(url, ApiKey, StripeAccountId);
         }
 
         public virtual StripePlan Update(string planId, StripePlanUpdateOptions updateOptions)
@@ -37,7 +37,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Plans, planId);
             url = this.ApplyAllParameters(updateOptions, url, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripePlan>.MapFromJson(response);
         }
@@ -47,7 +47,7 @@ namespace Stripe
             var url = Urls.Plans;
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripePlan>.MapCollectionFromJson(response);
         }

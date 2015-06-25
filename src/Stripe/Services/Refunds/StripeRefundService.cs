@@ -5,7 +5,7 @@ namespace Stripe
 {
     public class StripeRefundService : StripeService
     {
-        public StripeRefundService(string apiKey = null) : base(apiKey) { }
+        public StripeRefundService(string apiKey = null, string stripeAccountId = null) : base(apiKey, stripeAccountId) { }
 
         public bool ExpandBalanceTransaction { get; set; }
 
@@ -14,7 +14,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}/refunds", Urls.Charges, chargeId);
             url = this.ApplyAllParameters(createOptions, url, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeRefund>.MapFromJson(response);
         }
@@ -24,7 +24,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}/refunds/{2}", Urls.Charges, chargeId, refundId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeRefund>.MapFromJson(response);
         }
@@ -34,7 +34,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}/refunds/{2}", Urls.Charges, chargeId, refundId);
             url = this.ApplyAllParameters(updateOptions, url, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeRefund>.MapFromJson(response);
         }
@@ -44,7 +44,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}/refunds", Urls.Charges, chargeId);
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeRefund>.MapCollectionFromJson(response);
         }

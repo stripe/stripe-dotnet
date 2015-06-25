@@ -4,7 +4,7 @@ namespace Stripe
 {
     public class StripeTransferService : StripeService
     {
-        public StripeTransferService(string apiKey = null) : base(apiKey) { }
+        public StripeTransferService(string apiKey = null, string stripeAccountId = null) : base(apiKey, stripeAccountId) { }
 
         public bool ExpandBalanceTransaction { get; set; }
 
@@ -12,7 +12,7 @@ namespace Stripe
         {
             var url = this.ApplyAllParameters(createOptions, Urls.Transfers, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
@@ -22,7 +22,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Transfers, transferId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
@@ -32,7 +32,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}/cancel", Urls.Transfers, transferId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
@@ -42,7 +42,7 @@ namespace Stripe
             var url = Urls.Transfers;
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, ApiKey);
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeTransfer>.MapCollectionFromJson(response);
         }

@@ -2,7 +2,7 @@
 {
     public class StripeDisputeService : StripeService
     {
-        public StripeDisputeService(string apiKey = null) : base(apiKey) { }
+        public StripeDisputeService(string apiKey = null, string stripeAccountId = null) : base(apiKey, stripeAccountId) { }
 
         public bool ExpandCharge { get; set; }
         public bool ExpandBalanceTransaction { get; set; }
@@ -15,7 +15,7 @@
             if (!string.IsNullOrEmpty(evidence))
                 url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);
 
-            var response = Requestor.PostString(url, ApiKey);
+            var response = Requestor.PostString(url, ApiKey, StripeAccountId);
 
             return Mapper<StripeDispute>.MapFromJson(response);
         }
