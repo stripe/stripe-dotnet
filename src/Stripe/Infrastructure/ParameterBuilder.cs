@@ -65,6 +65,11 @@ namespace Stripe
                             var creditCardOptions = (StripeCreditCardOptions)value;
                             newUrl = ApplyNestedObjectProperties(newUrl, creditCardOptions);
                         }
+                        else if (property.PropertyType == typeof(StripeSourceOptions))
+                        {
+                            var creditCardOptions = (StripeSourceOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, creditCardOptions);
+                        }
                         else
                         {
                             newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());

@@ -33,7 +33,7 @@ namespace Stripe
         [JsonProperty("source[address_line2]")]
         public string AddressLine2 { get; set; }
 
-        [JsonProperty("card[address_city]")]
+        [JsonProperty("source[address_city]")]
         public string AddressCity { get; set; }
 
         [JsonProperty("source[address_zip]")]
