@@ -8,14 +8,14 @@ namespace Stripe
         [JsonProperty("account_balance")]
         public int? AccountBalance { get; set; }
 
-        [JsonProperty("card")]
-        public StripeCreditCardOptions Card { get; set; }
+        [JsonProperty("source")]
+        public StripeSourceOptions Source { get; set; }
 
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
 
-        [JsonProperty("default_card")]
-        public string DefaultCard { get; set; }
+        [JsonProperty("default_source")]
+        public string DefaultSource { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }

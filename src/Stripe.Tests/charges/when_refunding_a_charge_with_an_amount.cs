@@ -19,7 +19,10 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeCharge = _stripeChargeService.Refund(_createdStripeChargeId, 250);
+        {
+            new StripeRefundService().Create(_createdStripeChargeId, new StripeRefundCreateOptions { Amount = 250 });
+            _stripeCharge = _stripeChargeService.Get(_createdStripeChargeId);
+        };
 
         It should_have_the_correct_amount_refunded = () =>
             _stripeCharge.AmountRefunded.ShouldEqual(250);

@@ -20,9 +20,9 @@
         public const string CustomerCreated = "customer.created";
         public const string CustomerUpdated = "customer.updated";
         public const string CustomerDeleted = "customer.deleted";
-        public const string CustomerCardCreated = "customer.card.created";
-        public const string CustomerCardUpdated = "customer.card.updated";
-        public const string CustomerCardDeleted = "customer.card.deleted";
+        public const string CustomerSourceCreated = "customer.source.created";
+        public const string CustomerSourceUpdated = "customer.source.updated";
+        public const string CustomerSourcedDeleted = "customer.source.deleted";
         public const string CustomerSubscriptionCreated = "customer.subscription.created";
         public const string CustomerSubscriptionUpdated = "customer.subscription.updated";
         public const string CustomerSubscriptionDeleted = "customer.subscription.deleted";

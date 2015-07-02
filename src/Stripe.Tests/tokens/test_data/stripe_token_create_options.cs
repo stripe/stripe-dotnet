@@ -6,16 +6,16 @@
         {
             var cardOptions = new StripeCreditCardOptions()
             {
-                CardAddressCountry = "US",
-                CardAddressLine1 = "24 Chicken Leg Ave",
-                CardAddressLine2 = "Unit B",
-                CardAddressState = "NC",
-                CardAddressZip = "27617",
-                CardCvc = "1223",
-                CardExpirationMonth = "10",
-                CardExpirationYear = "2021",
-                CardName = "Bob Winghead",
-                CardNumber = "4242424242424242"
+                AddressCountry = "US",
+                AddressLine1 = "24 Chicken Leg Ave",
+                AddressLine2 = "Unit B",
+                AddressState = "NC",
+                AddressZip = "27617",
+                Cvc = "1223",
+                ExpirationMonth = "10",
+                ExpirationYear = "2021",
+                Name = "Bob Winghead",
+                Number = "4242424242424242"
             };
 
             return new StripeTokenCreateOptions()

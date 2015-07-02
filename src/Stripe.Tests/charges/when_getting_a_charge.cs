@@ -23,7 +23,7 @@ namespace Stripe.Tests
         Because of = () =>
         {
             StripeCharge = _stripeChargeService.Get(_createdStripeChargeId);
-            StripeCard = StripeCharge.StripeCard;
+            StripeCard = StripeCharge.Source;
         };
 
         Behaves_like<charge_behaviors> behaviors;

@@ -27,7 +27,7 @@ namespace Stripe
         public int IntervalCount { get; set; }
 
         [JsonProperty("livemode")]
-        public bool? LiveMode { get; set; }
+        public bool LiveMode { get; set; }
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }

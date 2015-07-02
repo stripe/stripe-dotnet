@@ -8,37 +8,37 @@ namespace Stripe
         public string TokenId { get; set; }
 
         [JsonProperty("card[number]")]
-        public string CardNumber { get; set; }
+        public string Number { get; set; }
 
         [JsonProperty("card[exp_month]")]
-        public string CardExpirationMonth { get; set; }
+        public string ExpirationMonth { get; set; }
 
         [JsonProperty("card[exp_year]")]
-        public string CardExpirationYear { get; set; }
+        public string ExpirationYear { get; set; }
 
         [JsonProperty("card[cvc]")]
-        public string CardCvc { get; set; }
+        public string Cvc { get; set; }
 
         [JsonProperty("card[name]")]
-        public string CardName { get; set; }
+        public string Name { get; set; }
 
         [JsonProperty("card[address_line1]")]
-        public string CardAddressLine1 { get; set; }
+        public string AddressLine1 { get; set; }
 
         [JsonProperty("card[address_line2]")]
-        public string CardAddressLine2 { get; set; }
+        public string AddressLine2 { get; set; }
 
         [JsonProperty("card[address_zip]")]
-        public string CardAddressZip { get; set; }
+        public string AddressZip { get; set; }
 
         [JsonProperty("card[address_city]")]
-        public string CardAddressCity { get; set; }
+        public string AddressCity { get; set; }
 
         [JsonProperty("card[address_state]")]
-        public string CardAddressState { get; set; }
+        public string AddressState { get; set; }
 
         [JsonProperty("card[address_country]")]
-        public string CardAddressCountry { get; set; }
+        public string AddressCountry { get; set; }
 
         [JsonProperty("metadata")]
         public object MetaData { get; set; }

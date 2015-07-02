@@ -17,7 +17,7 @@ namespace Stripe
         public bool? Used { get; set; }
         
         [JsonProperty("livemode")]
-        public bool? LiveMode { get; set; }
+        public bool LiveMode { get; set; }
 
         [JsonProperty("card")]
         public StripeCard StripeCard { get; set; }

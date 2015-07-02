@@ -94,7 +94,6 @@
     <Compile Include="Entities\StripeApplicationFee.cs" />
     <Compile Include="Entities\StripeBalanceAmount.cs" />
     <Compile Include="Entities\StripeBalance.cs" />
-    <Compile Include="Entities\StripeCardList.cs" />
     <Compile Include="Entities\StripeDispute.cs" />
     <Compile Include="Entities\StripeAccount.cs" />
     <Compile Include="Entities\StripeEventData.cs" />
@@ -104,7 +103,6 @@
     <Compile Include="Entities\StripeOAuthToken.cs" />
     <Compile Include="Entities\StripePeriod.cs" />
     <Compile Include="Entities\StripeRecipient.cs" />
-    <Compile Include="Entities\StripeSubscriptionList.cs" />
     <Compile Include="Entities\StripeToken.cs" />
     <Compile Include="Entities\StripeCharge.cs" />
     <Compile Include="Entities\StripeCard.cs" />
@@ -159,6 +157,7 @@
     <Compile Include="Services\Recipients\StripeRecipientUpdateOptions.cs" />
     <Compile Include="Services\StripeListOptions.cs" />
     <Compile Include="Services\StripeService.cs" />
+    <Compile Include="Services\StripeSourceOptions.cs" />
     <Compile Include="Services\Subscriptions\StripeSubscriptionUpdateOptions.cs" />
     <Compile Include="Services\Subscriptions\StripeSubscriptionService.cs" />
     <Compile Include="Services\Subscriptions\StripeSubscriptionCreateOptions.cs" />

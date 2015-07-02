@@ -30,22 +30,6 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(response);
         }
 
-        [Obsolete("Use StripeRefundService.Create instead")]
-        public virtual StripeCharge Refund(string chargeId, int? refundAmount = null, bool? refundApplicationFee = null)
-        {
-            var url = string.Format("{0}/{1}/refund", Urls.Charges, chargeId);
-            url = this.ApplyAllParameters(null, url, false);
-
-            if (refundAmount.HasValue)
-                url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());
-            if (refundApplicationFee.HasValue)
-                url = ParameterBuilder.ApplyParameterToUrl(url, "refund_application_fee", refundApplicationFee.Value.ToString());
-
-            var response = Requestor.PostString(url, ApiKey);
-
-            return Mapper<StripeCharge>.MapFromJson(response);
-        }
-
         public virtual IEnumerable<StripeCharge> List(StripeChargeListOptions listOptions = null)
         {
             var url = Urls.Charges;

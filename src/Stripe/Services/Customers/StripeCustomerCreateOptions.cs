@@ -10,9 +10,6 @@ namespace Stripe
         [JsonProperty("account_balance")]
         public int? AccountBalance { get; set; }
 
-        [JsonProperty("card")]
-        public StripeCreditCardOptions Card { get; set; }
-
         [JsonProperty("coupon")]
         public string CouponId { get; set; }
 
@@ -28,11 +25,14 @@ namespace Stripe
         [JsonProperty("plan")]
         public string PlanId { get; set; }
 
-        [JsonProperty("tax_percent")]
-        public decimal? TaxPercent { get; set; }
-
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
+
+        [JsonProperty("source")]
+        public StripeSourceOptions Source { get; set; }
+
+        [JsonProperty("tax_percent")]
+        public decimal? TaxPercent { get; set; }
 
         public DateTime? TrialEnd { get; set; }
 

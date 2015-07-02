@@ -140,7 +140,6 @@
     <Compile Include="subscriptions\when_listing_subscriptions.cs" />
     <Compile Include="subscriptions\when_updating_trial_end_date_subscription.cs" />
     <Compile Include="subscriptions\when_updating_trial_end_of_subscription.cs" />
-    <Compile Include="tokens\when_creating_a_token_with_a_customer.cs" />
     <Compile Include="tokens\when_creating_a_token_with_an_api_key.cs" />
     <Compile Include="transfers\test_data\stripe_transfer_create_options.cs" />
     <Compile Include="transfers\transfer_behaviors.cs" />
@@ -163,7 +162,6 @@
     <Compile Include="coupons\when_deleting_a_coupon.cs" />
     <Compile Include="coupons\coupon_behaviors.cs" />
     <Compile Include="coupons\when_listing_coupons.cs" />
-    <Compile Include="customers\when_creating_a_customer_with_a_token.cs" />
     <Compile Include="customers\test_data\stripe_customer_update_options.cs" />
     <Compile Include="customers\when_updating_a_customer.cs" />
     <Compile Include="customers\when_deleting_a_customer.cs" />

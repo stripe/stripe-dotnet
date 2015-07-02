@@ -35,9 +35,16 @@ namespace Stripe
         [JsonProperty("refunds")]
         public StripeList<StripeRefund> StripeRefundList { get; set; }
 
+        [JsonProperty("source")]
+        public StripeCard Source { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
         [JsonProperty("amount_refunded")]
         public int AmountRefunded { get; set; }
 
+        #region Expandable Balance Transaction
         public string BalanceTransactionId { get; set; }
 
         [JsonIgnore]
@@ -51,10 +58,9 @@ namespace Stripe
                 ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
             }
         }
+        #endregion
 
-        [JsonProperty("card")]
-        public StripeCard StripeCard { get; set; }
-
+        #region Expandable Customer
         public string CustomerId { get; set; }
 
         [JsonIgnore]
@@ -68,6 +74,7 @@ namespace Stripe
                 ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
             }
         }
+        #endregion
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -81,6 +88,7 @@ namespace Stripe
         [JsonProperty("failure_message")]
         public string FailureMessage { get; set; }
 
+        #region Expandable Invoice
         public string InvoiceId { get; set; }
 
         [JsonIgnore]
@@ -94,6 +102,7 @@ namespace Stripe
                 ExpandableProperty<StripeInvoice>.Map(value, s => InvoiceId = s, o => Invoice = o);
             }
         }
+        #endregion
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -104,8 +113,14 @@ namespace Stripe
         [JsonProperty("receipt_number")]
         public string ReceiptNumber { get; set; }
 
+        // application_fee
+
+        // destination
+
         // todo: hash, fraud details
 
         // todo: hash, shipping
+
+        // transfer
     }
 }

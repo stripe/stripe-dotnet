@@ -12,7 +12,7 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("livemode")]
-        public bool? LiveMode { get; set; }
+        public bool LiveMode { get; set; }
 
         [JsonProperty("amount")]
         public int? Amount { get; set; }

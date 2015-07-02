@@ -36,12 +36,15 @@ namespace Stripe
         public string Name { get; set; }
 
         [JsonProperty("cards")]
-        public StripeCardList StripeCardList { get; set; }
+        public StripeList<StripeCard> StripeCardList { get; set; }
 
         [JsonProperty("verified")]
         public bool Verified { get; set; }
 
+        #region Expandable Default Card
         public string StripeDefaultCardId { get; set; }
+
+        [JsonIgnore]
         public StripeCard StripeDefaultCard { get; set; }
 
         [JsonProperty("default_card")]
@@ -52,5 +55,6 @@ namespace Stripe
                 ExpandableProperty<StripeCard>.Map(value, s => StripeDefaultCardId = s, o => StripeDefaultCard = o);
             }
         }
+        #endregion
     }
 }

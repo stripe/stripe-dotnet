@@ -28,20 +28,15 @@ namespace Stripe
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
-        #region Obsolete
         [JsonProperty("plan")]
-        [Obsolete("Doesn't show in the latest documentation. May need to check with Stripe.")]
         public string PlanId { get; set; }
 
         [JsonProperty("coupon")]
-        [Obsolete("Doesn't show in the latest documentation. May need to check with Stripe.")]
         public string CouponId { get; set; }
 
         #region Expndable TrialEnd
-        [Obsolete("Doesn't show in the latest documentation. May need to check with Stripe.")]
         public DateTime? TrialEnd { get; set; }
 
-        [Obsolete("Doesn't show in the latest documentation. May need to check with Stripe.")]
         public bool EndTrialNow { get; set; }
 
         [JsonProperty("trial_end")]
@@ -58,9 +53,7 @@ namespace Stripe
         }
         #endregion
 
-        [Obsolete("Doesn't show in the latest documentation. May need to check with Stripe.")]
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
-        #endregion
     }
 }

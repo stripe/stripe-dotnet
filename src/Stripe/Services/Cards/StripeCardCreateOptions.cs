@@ -4,7 +4,7 @@ namespace Stripe
 {
     public class StripeCardCreateOptions
     {
-        [JsonProperty("card")]
-        public StripeCreditCardOptions Card { get; set; }
+        [JsonProperty("source")]
+        public StripeSourceOptions Source { get; set; }
     }
 }

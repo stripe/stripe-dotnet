@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Stripe.Infrastructure;
+using System;
+using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -16,9 +18,6 @@ namespace Stripe
 
         [JsonProperty("exp_year")]
         public string ExpirationYear { get; set; }
-
-        [JsonProperty("fingerprint")]
-        public string Fingerprint { get; set; }
 
         [JsonProperty("funding")]
         public string Funding { get; set; }
@@ -53,8 +52,39 @@ namespace Stripe
         [JsonProperty("country")]
         public string Country { get; set; }
 
+        [JsonProperty("cvc_check")]
+        public string CvcCheck { get; set; }
+
+        [JsonProperty("dynamic_last4")]
+        public string DynamicLast4 { get; set; }
+
         [JsonProperty("metadata")]
-        public object MetaData { get; set; }
+        public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("tokenization_method")]
+        public string TokenizationMethod { get; set; }
+
+        [JsonProperty("fingerprint")]
+        public string Fingerprint { get; set; }
+
+        #region Expandable Recipient
+        public string RecipientId { get; set; }
+
+        [JsonIgnore]
+        public StripeRecipient Recipient { get; set; }
+
+        [JsonProperty("recipient")]
+        internal object InternalRecipient
+        {
+            set
+            {
+                ExpandableProperty<StripeRecipient>.Map(value, s => RecipientId = s, o => Recipient = o);
+            }
+        }
+        #endregion
 
         #region Expandable Customer
         public string CustomerId { get; set; }
@@ -72,27 +102,26 @@ namespace Stripe
         }
         #endregion
 
-        [JsonProperty("cvc_check")]
-        public string CvcCheck { get; set; }
-
-        [JsonProperty("dynamic_last4")]
-        public string DynamicLast4 { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        public string RecipientId { get; set; }
+        #region Expandable Account
+        public string AccountId { get; set; }
 
         [JsonIgnore]
-        public StripeRecipient Recipient { get; set; }
+        public StripeAccount Account { get; set; }
 
-        [JsonProperty("recipient")]
-        internal object InternalRecipient
+        [JsonProperty("account")]
+        internal object InternalAccount
         {
             set
             {
-                ExpandableProperty<StripeRecipient>.Map(value, s => RecipientId = s, o => Recipient = o);
+                ExpandableProperty<StripeAccount>.Map(value, s => AccountId = s, o => Account = o);
             }
         }
+        #endregion
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        [JsonProperty("default_for_currency")]
+        public bool DefaultForCurrency { get; set; }
     }
 }

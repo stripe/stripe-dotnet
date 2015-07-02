@@ -36,18 +36,13 @@ namespace Stripe
         [JsonProperty("routing_number")]
         public string RoutingNumber { get; set; }
 
-        #region Obsolete
         [JsonProperty("disabled")]
-        [Obsolete("Doesn't show in the latest documentation. May need to check with Stripe.")]
         public bool? Disabled { get; set; }
 
         [JsonProperty("metadata")]
-        [Obsolete("Doesn't show in the latest documentation. May need to check with Stripe.")]
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("validated")]
-        [Obsolete("Doesn't show in the latest documentation. May need to check with Stripe.")]
         public bool? Validated { get; set; }
-        #endregion
     }
 }

@@ -12,32 +12,33 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("livemode")]
-        public bool? LiveMode { get; set; }
-
-        [JsonProperty("cards")]
-        public StripeCardList StripeCardList { get; set; }
+        public bool LiveMode { get; set; }
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("account_balance")]
-        public int? AccountBalance { get; set; }
+        public int AccountBalance { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        public string StripeDefaultCardId { get; set; }
-        public StripeCard StripeDefaultCard { get; set; }
+        #region Expandable Default Source
+        public string DefaultSourceId { get; set; }
 
-        [JsonProperty("default_card")]
-        internal object InternalDefaultCard
+        [JsonIgnore]
+        public StripeCard DefaultSource { get; set; }
+
+        [JsonProperty("default_source")]
+        internal object InternalDefaultSource
         {
             set
             {
-                ExpandableProperty<StripeCard>.Map(value, s => StripeDefaultCardId = s, o => StripeDefaultCard = o);
+                ExpandableProperty<StripeCard>.Map(value, s => DefaultSourceId = s, o => DefaultSource = o);
             }
         }
+        #endregion
 
         [JsonProperty("delinquent")]
         public bool Delinquent { get; set; }
@@ -54,8 +55,11 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("sources")]
+        public StripeList<StripeCard> SourceList { get; set; }
+
         [JsonProperty("subscriptions")]
-        public StripeSubscriptionList StripeSubscriptionList { get; set; }
+        public StripeList<StripeSubscription> StripeSubscriptionList { get; set; }
 
         [JsonProperty("deleted")]
         public bool? Deleted { get; set; }

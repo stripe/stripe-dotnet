@@ -53,12 +53,5 @@ namespace Stripe.Tests
 
         It should_have_active_account_fingerprint = () =>
             StripeRecipient.ActiveAccount.Fingerprint.ShouldNotBeEmpty();
-
-        // obsolete?
-        //It should_have_active_account_disabled = () =>
-        //    StripeRecipient.ActiveAccount.Disabled.ShouldNotBeNull();
-
-        //It should_have_active_account_validated = () =>
-        //    StripeRecipient.ActiveAccount.Validated.ShouldNotBeNull();
     }
 }

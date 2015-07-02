@@ -8,8 +8,11 @@ namespace Stripe
 {
     public class StripeApplicationFee : StripeObject
     {
+        [JsonProperty("object")]
+        public string Object { get; set; }
+
         [JsonProperty("livemode")]
-        public bool? LiveMode { get; set; }
+        public bool LiveMode { get; set; }
 
         #region Expandable Account
         public string AccountId { get; set; }
@@ -92,7 +95,7 @@ namespace Stripe
         public bool Refunded { get; set; }
 
         [JsonProperty("refunds")]
-        public StripeList<StripeApplicationFee> StripeApplicationFeeRefundList { get; set; }
+        public StripeList<StripeApplicationFeeRefund> StripeApplicationFeeRefundList { get; set; }
 
         [JsonProperty("amount_refunded")]
         public int AmountRefunded { get; set; }

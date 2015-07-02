@@ -28,7 +28,7 @@ namespace Stripe.Tests
             do
             {
                 StripeCharge = _stripeChargeService.Get(_createdStripeChargeId);
-                StripeCard = StripeCharge.StripeCard;
+                StripeCard = StripeCharge.Source;
                 if (StripeCharge.Dispute != null) break;
                 Thread.Sleep(500);
             } while (stopwatch.ElapsedMilliseconds < 10000);

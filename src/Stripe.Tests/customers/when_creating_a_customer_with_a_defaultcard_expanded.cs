@@ -31,15 +31,15 @@ namespace Stripe.Tests
         {
             StripeCustomer = _stripeCustomerService.Create(StripeCustomerCreateOptions);
 
-            StripeCard = StripeCustomer.StripeCardList.StripeCards.First();
+            StripeCard = StripeCustomer.SourceList.Data.First();
         };
 
         Behaves_like<customer_behaviors> behaviors;
 
         It should_have_the_defaultcard = () =>
-            StripeCustomer.StripeDefaultCard.ShouldNotBeNull();
+            StripeCustomer.DefaultSource.ShouldNotBeNull();
 
         It should_have_the_defaultcardid = () =>
-            StripeCustomer.StripeDefaultCardId.ShouldNotBeNull();
+            StripeCustomer.DefaultSourceId.ShouldNotBeNull();
     }
 }
