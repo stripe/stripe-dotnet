@@ -1,6 +1,6 @@
 require 'albacore'
 
-VERSION = "4.0.1"
+VERSION = "4.0.2"
 
 task :default => [:build35, :build40, :output35, :output40]
 
