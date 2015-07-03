@@ -14,6 +14,7 @@ namespace Stripe
         [JsonProperty("cancel_at_period_end")]
         public bool CancelAtPeriodEnd { get; set; }
 
+        #region Expandable Customer
         public string CustomerId { get; set; }
 
         [JsonIgnore]
@@ -27,6 +28,7 @@ namespace Stripe
                 ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
             }
         }
+        #endregion
 
         [JsonProperty("plan")]
         public StripePlan StripePlan { get; set; }

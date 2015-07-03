@@ -23,7 +23,7 @@ namespace Stripe.Tests
             StripeCoupon = _stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid());
 
             _stripeCustomerService = new StripeCustomerService();
-            _stripeCustomerService.ExpandDefaultCard = true;
+            _stripeCustomerService.ExpandDefaultSource = true;
             StripeCustomerCreateOptions = test_data.stripe_customer_create_options.ValidCard(StripePlan.Id, StripeCoupon.Id, DateTime.UtcNow.AddDays(5));
         };
 

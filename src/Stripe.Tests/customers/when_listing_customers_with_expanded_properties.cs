@@ -14,7 +14,7 @@ namespace Stripe.Tests
         Establish context = () =>
         {
             _stripeCustomerService = new StripeCustomerService();
-            _stripeCustomerService.ExpandDefaultCard = true;
+            _stripeCustomerService.ExpandDefaultSource = true;
 
             _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
             _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
