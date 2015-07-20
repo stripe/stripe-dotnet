@@ -60,7 +60,7 @@ namespace Stripe
         [JsonProperty("card")]
         public StripeCard StripeCard { get; set; }
 
-        // todo: waiting to here from Stripe if this is still valid
+        [Obsolete("This property is not valid on tokens and will be removed in a later version.")]
         [JsonProperty("description")]
         public string Description { get; set; }
     }
