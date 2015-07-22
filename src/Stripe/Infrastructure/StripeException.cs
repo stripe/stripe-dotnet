@@ -3,8 +3,15 @@ using System.Net;
 
 namespace Stripe
 {
+#if !WINDOWS_UAP
     [Serializable]
-    public class StripeException : ApplicationException
+#endif
+    public class StripeException :
+#if WINDOWS_UAP
+        Exception
+#else
+        ApplicationException
+#endif
     {
         public HttpStatusCode HttpStatusCode { get; set; }
         public StripeError StripeError { get; set; }

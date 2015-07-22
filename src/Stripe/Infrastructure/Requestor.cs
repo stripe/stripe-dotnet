@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !WINDOWS_UAP
+using System;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -104,3 +105,4 @@ namespace Stripe
         }
     }
 }
+#endif

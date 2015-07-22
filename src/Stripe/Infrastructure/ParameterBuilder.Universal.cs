@@ -1,14 +1,10 @@
-﻿#if !WINDOWS_UAP
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Reflection;
-using System.Web;
+﻿#if WINDOWS_UAP
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
-using System.Diagnostics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace Stripe
@@ -19,16 +15,15 @@ namespace Stripe
         {
             string newUrl = url;
 
-            if (obj != null)
-            {
-                foreach (var property in obj.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+            if (obj != null) {
+                foreach (var property in obj.GetType().GetRuntimeProperties())
                 {
                     var value = property.GetValue(obj, null);
                     if (value == null) continue;
 
                     foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
                     {
-                        if (string.Compare(attribute.PropertyName, "metadata", true) == 0)
+                        if (string.Compare(attribute.PropertyName, "metadata", StringComparison.OrdinalIgnoreCase) == 0)
                         {
                             var metadata = (Dictionary<string, string>)value;
 
@@ -45,7 +40,7 @@ namespace Stripe
                                 newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, filter.EqualTo.Value.ConvertDateTimeToEpoch().ToString());
                             else
                                 if (filter.LessThan.HasValue)
-                                    newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString());
+                                newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString());
 
                             if (filter.LessThanOrEqual.HasValue)
                                 newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lte]", filter.LessThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
@@ -82,7 +77,7 @@ namespace Stripe
             if (service != null)
             {
                 var propertiesToExpand = service.GetType()
-                    .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                    .GetRuntimeProperties()
                     .Where(p => p.Name.StartsWith("Expand") && p.PropertyType == typeof(bool))
                     .Where(p => (bool)p.GetValue(service, null))
                     .Select(p => p.Name);
@@ -111,12 +106,12 @@ namespace Stripe
             if (!url.Contains("?"))
                 token = "?";
 
-            return string.Format("{0}{1}{2}={3}", url, token, argument, HttpUtility.UrlEncode(value));
+            return string.Format("{0}{1}{2}={3}", url, token, argument, System.Net.WebUtility.UrlEncode(value));
         }
 
         private static string ApplyNestedObjectProperties(string newUrl, object nestedObject)
         {
-            foreach (var prop in nestedObject.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+            foreach (var prop in nestedObject.GetType().GetRuntimeProperties())
             {
                 var val = prop.GetValue(nestedObject, null);
                 if (val == null) continue;
