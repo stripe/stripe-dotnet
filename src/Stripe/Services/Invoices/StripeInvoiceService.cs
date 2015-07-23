@@ -20,18 +20,16 @@ namespace Stripe
             return Mapper<StripeInvoice>.MapFromJson(response);
         }
 
-        public virtual StripeInvoice Upcoming(string customerId, string subscriptionId = null)
+        public virtual StripeInvoice Upcoming( string customerId, StripeUpcomingInvoiceOptions options )
         {
-            var url = string.Format("{0}/{1}", Urls.Invoices, "upcoming");
+           var url = string.Format( "{0}/{1}", Urls.Invoices, "upcoming" );
 
-            url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+           url = ParameterBuilder.ApplyParameterToUrl( url, "customer", customerId );
+           url = this.ApplyAllParameters( options, url, false );
 
-            if(!String.IsNullOrEmpty(subscriptionId))
-                url = ParameterBuilder.ApplyParameterToUrl(url, "subscription", subscriptionId);
+           var response = Requestor.GetString( url, ApiKey );
 
-            var response = Requestor.GetString(url, ApiKey);
-
-            return Mapper<StripeInvoice>.MapFromJson(response);
+           return Mapper<StripeInvoice>.MapFromJson( response );
         }
 
         public virtual StripeInvoice Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions)
