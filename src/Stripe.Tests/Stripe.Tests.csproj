@@ -44,10 +44,6 @@
     <Reference Include="Machine.Specifications.Should">
       <HintPath>..\packages\Machine.Specifications.Should.0.7.2\lib\net40\Machine.Specifications.Should.dll</HintPath>
     </Reference>
-    <Reference Include="NCrunch.Framework, Version=2.8.0.34, Culture=neutral, PublicKeyToken=01d101bf6f3e0aea, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NCrunch.Framework.2.8.0.34\lib\NCrunch.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -73,11 +69,11 @@
     <Compile Include="balance\when_listing_balancetransactions.cs" />
     <Compile Include="balance\when_listing_balancetransactions_for_charge.cs" />
     <Compile Include="balance\when_retrieving_a_balance.cs" />
+    <Compile Include="idempotency\when_creating_a_charge_with_a_card_and_idempotency_key.cs" />
     <Compile Include="charges\charge_behaviors.cs" />
     <Compile Include="charges\when_capturing_a_charge_with_a_card.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_customer_expanded.cs" />
     <Compile Include="charges\when_getting_a_disputed_charge.cs" />
-    <Compile Include="charges\when_listing_charges_by_date.cs" />
     <Compile Include="charges\when_listing_charges_with_expanded_properties.cs" />
     <Compile Include="charges\when_listing_charges_with_paging.cs" />
     <Compile Include="charges\when_setting_a_charge_to_capture.cs" />
@@ -86,6 +82,8 @@
     <Compile Include="charges\when_listing_charges_for_customer.cs" />
     <Compile Include="charges\when_listing_charges.cs" />
     <Compile Include="charges\when_creating_a_charge_with_an_api_key.cs" />
+    <Compile Include="connect\when_listing_subscriptions_on_another_account.cs" />
+    <Compile Include="connect\when_authorizing_an_account.cs" />
     <Compile Include="coupons\when_creating_a_coupon_with_amount_off.cs" />
     <Compile Include="coupons\when_creating_a_coupon_with_an_api_key.cs" />
     <Compile Include="customers\when_creating_a_customer_with_a_defaultcard_expanded.cs" />
@@ -129,7 +127,6 @@
     <Compile Include="refunds\when_partially_refunding_a_charge.cs" />
     <Compile Include="refunds\when_refunding_a_charge.cs" />
     <Compile Include="requestor\when_creating_a_request.cs" />
-    <Compile Include="requestor\when_requesting_an_old_api_version.cs" />
     <Compile Include="requestor\when_requesting_a_mismatched_certificate.cs" />
     <Compile Include="subscriptions\when_changing_a_subscription_plan.cs" />
     <Compile Include="subscriptions\when_creating_a_subscription.cs" />
@@ -190,7 +187,6 @@
     <Compile Include="customers\test_data\stripe_customer_create_options.cs" />
     <Compile Include="plans\when_creating_a_plan.cs" />
     <Compile Include="customers\when_creating_a_customer.cs" />
-    <Compile Include="oauth\when_creating_an_invalid_oauth_token_request.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Stripe\Stripe.csproj">

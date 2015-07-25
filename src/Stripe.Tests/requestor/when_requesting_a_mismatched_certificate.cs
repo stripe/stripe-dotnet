@@ -9,7 +9,7 @@ namespace Stripe.Tests
         private static WebException ex;
 
         Because of = () =>
-            ex = (WebException) Catch.Exception(() => Requestor.GetString("https://mismatched.stripe.com/", ""));
+            ex = (WebException) Catch.Exception(() => Requestor.GetString("https://mismatched.stripe.com/", new StripeRequestOptions()));
 
         It should_raise_a_trust_exception = () =>
              ex.Status.ShouldEqual(WebExceptionStatus.TrustFailure);

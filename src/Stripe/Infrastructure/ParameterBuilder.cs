@@ -67,8 +67,8 @@ namespace Stripe
                         }
                         else if (property.PropertyType == typeof(StripeSourceOptions))
                         {
-                            var creditCardOptions = (StripeSourceOptions)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, creditCardOptions);
+                            var stripeSourceOptions = (StripeSourceOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, stripeSourceOptions);
                         }
                         else
                         {

@@ -422,13 +422,6 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Get(*chargeId*);
 
-### Refunding a charge
-
-If you do not specify an amount, the entire charge is refunded. The StripeCharge entity has properties for "Refunded" (bool) and RefundedAmount.
-
-	var chargeService = new StripeChargeService();
-	StripeCharge stripeCharge = chargeService.Refund(*chargeId*, *amount*, *refundApplicationFee*);
-
 ### Capturing a charge
 
 If you set a charge to capture = false, you use this to capture the charge later. *amount* and *applicationFee* are not required.
