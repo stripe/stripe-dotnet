@@ -829,6 +829,7 @@ valuable service as well, but they are not available in Stripe.net yet.
 3) When the user clicks the link on your site, they will be prompted to authorize the connection. At this point, they can create a new Stripe account or setup the connection with an existing account.
 
 Your link will look something like this:
+
 	https://connect.stripe.com/oauth/authorize?response_type=code&client_id=*your_client_id_from_the_stripe_connect_dashboard&scope=read_write
 
 4) The link above will return a code when the setup is complete (and also return back to your redirect_uri if specified). With this code, you can make a request to Stripe to get the StripeUserId for accessing
@@ -860,12 +861,12 @@ part of StripeRequestOptions.
 StripeRequestOptions
 --------------------
 
-All of the service methods accept an optional StripeRequestOptions object. This is used if you need to use an [Idempotency Key](https://stripe.com/docs/api?lang=curl#idempotent_requests), 
+All of the service methods accept an optional StripeRequestOptions object. This is used if you need an [Idempotency Key](https://stripe.com/docs/api?lang=curl#idempotent_requests), 
 if you are using Stripe Connect, or if you want to pass the ApiKey on each method.
 
 	var requestOptions = new StripeRequestOptions();
 	requestOptions.ApiKey = *optional*;              // this is not required unless you choose to pass the apikey on every service call
-	requestOptions.IdempotencyKey = "some string";   // this is for [Idempotent Requests](https://stripe.com/docs/api?lang=curl#idempotent_requests) (to make sure a charge wont go through more than once)
+	requestOptions.IdempotencyKey = "some string";   // this is for Idempotent Requests - https://stripe.com/docs/api?lang=curl#idempotent_requests
 	requestOptions.StripeConnectAccountId = "acct_*" // if you are using Stripe Connect and want to issue a request on the connected account
 
 Errors
