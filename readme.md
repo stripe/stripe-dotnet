@@ -819,6 +819,7 @@ valuable service as well, but they are not available in Stripe.net yet.
 
 2) The next thing to do, is have another party connect to your site. To do this, put a link on your site which will start the authorization process, or you can use a 
 [Stripe Connect Button](https://stripe.com/about/resources). Your link will need to contain some querystring paramaters:
+
 	response_type: code
 	client_id:     *your client id from the stripe connect dashboard*
 	scope:         read_only (default), or read_write (lets you modify their data as well) // this is optional and defaults to read_only
