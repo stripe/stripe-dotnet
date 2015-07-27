@@ -64,5 +64,15 @@ namespace Stripe
 
             return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(response);
         }
+
+        public virtual StripeList<StripeInvoiceLineItem> List(string invoiceId, StripeInvoiceItemListOptions listOptions = null)
+        {
+            var url = string.Format(Urls.InvoiceItemsForInvoice, invoiceId);
+            url = this.ApplyAllParameters(listOptions, url, true);
+
+            var response = Requestor.GetString(url, ApiKey, StripeAccountId);
+
+            return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(response);
+        }
     }
 }
