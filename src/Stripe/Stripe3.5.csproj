@@ -156,6 +156,7 @@
     <Compile Include="Services\Recipients\StripeRecipientService.cs" />
     <Compile Include="Services\Recipients\StripeRecipientUpdateOptions.cs" />
     <Compile Include="Services\StripeListOptions.cs" />
+    <Compile Include="Services\StripeRequestOptions.cs" />
     <Compile Include="Services\StripeService.cs" />
     <Compile Include="Services\StripeSourceOptions.cs" />
     <Compile Include="Services\Subscriptions\StripeSubscriptionUpdateOptions.cs" />

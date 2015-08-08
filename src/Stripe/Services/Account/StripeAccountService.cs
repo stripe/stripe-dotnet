@@ -4,9 +4,11 @@
     {
         public StripeAccountService(string apiKey = null) : base(apiKey) { }
 
-        public virtual StripeAccount Get()
+        public virtual StripeAccount Get(StripeRequestOptions requestOptions = null)
         {
-            var response = Requestor.GetString(Urls.Account, ApiKey);
+            requestOptions = SetupRequestOptions(requestOptions);
+
+            var response = Requestor.GetString(Urls.Account, requestOptions);
 
             return Mapper<StripeAccount>.MapFromJson(response);
         }

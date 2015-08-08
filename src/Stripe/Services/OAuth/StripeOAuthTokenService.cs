@@ -4,11 +4,13 @@
     {
         public StripeOAuthTokenService(string apiKey = null) : base(apiKey) { }
 
-        public virtual StripeOAuthToken Create(StripeOAuthTokenCreateOptions createOptions)
+        public virtual StripeOAuthToken Create(StripeOAuthTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
+            requestOptions = SetupRequestOptions(requestOptions);
+
             var url = this.ApplyAllParameters(createOptions, Urls.OAuthToken, false);
 
-            var response = Requestor.PostStringBearer(url, ApiKey);
+            var response = Requestor.PostStringBearer(url, requestOptions);
 
             return Mapper<StripeOAuthToken>.MapFromJson(response);
         }

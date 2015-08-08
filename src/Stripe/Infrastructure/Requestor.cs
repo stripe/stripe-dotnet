@@ -8,47 +8,53 @@ namespace Stripe
 {
     internal static class Requestor
     {
-        public static string GetString(string url, string apiKey = null)
+        public static string GetString(string url, StripeRequestOptions requestOptions)
         {
-            var wr = GetWebRequest(url, "GET", apiKey);
+            var wr = GetWebRequest(url, "GET", requestOptions);
 
             return ExecuteWebRequest(wr);
         }
 
-        public static string PostString(string url, string apiKey = null)
+        public static string PostString(string url, StripeRequestOptions requestOptions)
         {
-            var wr = GetWebRequest(url, "POST", apiKey);
+            var wr = GetWebRequest(url, "POST", requestOptions);
 
             return ExecuteWebRequest(wr);
         }
 
-        public static string PostStringBearer(string url, string apiKey = null)
+        public static string Delete(string url, StripeRequestOptions requestOptions)
         {
-            var wr = GetWebRequest(url, "POST", apiKey, true);
+            var wr = GetWebRequest(url, "DELETE", requestOptions);
 
             return ExecuteWebRequest(wr);
         }
 
-        public static string Delete(string url, string apiKey = null)
+        public static string PostStringBearer(string url, StripeRequestOptions requestOptions)
         {
-            var wr = GetWebRequest(url, "DELETE", apiKey);
+            var wr = GetWebRequest(url, "POST", requestOptions, true);
 
             return ExecuteWebRequest(wr);
         }
 
-        internal static WebRequest GetWebRequest(string url, string method, string apiKey = null, bool useBearer = false)
+        internal static WebRequest GetWebRequest(string url, string method, StripeRequestOptions requestOptions, bool useBearer = false)
         {
-            apiKey = apiKey ?? StripeConfiguration.GetApiKey();
+            requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.GetApiKey();
 
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = method;
 
             if(!useBearer)
-                request.Headers.Add("Authorization", GetAuthorizationHeaderValue(apiKey));
+                request.Headers.Add("Authorization", GetAuthorizationHeaderValue(requestOptions.ApiKey));
             else
-                request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(apiKey));
+                request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(requestOptions.ApiKey));
 
             request.Headers.Add("Stripe-Version", StripeConfiguration.ApiVersion);
+
+            if (requestOptions.StripeConnectAccountId != null)
+                request.Headers.Add("Stripe-Account", requestOptions.StripeConnectAccountId);
+
+            if (requestOptions.IdempotencyKey != null)
+                request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
 
             request.ContentType = "application/x-www-form-urlencoded";
             request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
@@ -81,7 +87,7 @@ namespace Stripe
                 if (webException.Response != null)
                 {
                     var statusCode = ((HttpWebResponse)webException.Response).StatusCode;
-                    
+
                     var stripeError = new StripeError();
 
                     if(webRequest.RequestUri.ToString().Contains("oauth"))
