@@ -1,4 +1,4 @@
-﻿#if !WINDOWS_UAP
+﻿#if !WINDOWS_UWP
 using System;
 using System.Collections;
 using System.Collections.Generic;

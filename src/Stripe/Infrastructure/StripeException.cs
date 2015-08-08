@@ -3,11 +3,11 @@ using System.Net;
 
 namespace Stripe
 {
-#if !WINDOWS_UAP
+#if !WINDOWS_UWP
     [Serializable]
 #endif
     public class StripeException :
-#if WINDOWS_UAP
+#if WINDOWS_UWP
         Exception
 #else
         ApplicationException

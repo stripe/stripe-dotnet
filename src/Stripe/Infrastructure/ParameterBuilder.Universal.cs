@@ -1,4 +1,4 @@
-﻿#if WINDOWS_UAP
+﻿#if WINDOWS_UWP
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 using System;

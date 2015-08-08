@@ -1,5 +1,5 @@
 ﻿using System;
-#if !WINDOWS_UAP
+#if !WINDOWS_UWP
 using System.Configuration;
 #endif
 
@@ -19,7 +19,7 @@ namespace Stripe
         {
             if (string.IsNullOrEmpty(_apiKey))
             {
-#if WINDOWS_UAP
+#if WINDOWS_UWP
                 throw new Exception("You must SetApiKey on Windows Universal Platform");
 #else
                 _apiKey = ConfigurationManager.AppSettings["StripeApiKey"];
