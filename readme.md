@@ -137,10 +137,10 @@ Tokens
 A token can be used anywhere on Stripe where you would normally pass a card. Once it's created, it can be used on a
 customer or a charge, but only used once.
 
-	var myToken = new StripeTokenCreateOptions();
+	var myToken = new StripeChargeCreateOptions();
 
 	// if you need this...
-	myToken.Card = new StripeCreditCardOptions()
+	myToken.Source = new StripeSourceOptions()
 	{
 		// set this property if using a token
 		TokenId = *tokenId*,
