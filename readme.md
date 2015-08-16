@@ -142,9 +142,6 @@ customer or a charge, but only used once.
 	// if you need this...
 	myToken.Card = new StripeCreditCardOptions()
 	{
-		// set this property if using a token
-		TokenId = *tokenId*,
-
 		// set these properties if passing full card details (do not
 		// set these properties if you set TokenId)
 		Number = "4242424242424242",
