@@ -10,7 +10,13 @@ namespace Stripe
         public string TokenId { get; set; }
 
         [JsonProperty("source[object]")]
-        public string Object { get; set; }
+        internal string Object
+        {
+            get
+            {
+                return (String.IsNullOrEmpty(TokenId)) ? "card" : null;
+            }
+        }
 
         [JsonProperty("source[number]")]
         public string Number { get; set; }

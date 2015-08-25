@@ -9,7 +9,6 @@ namespace Stripe.Tests.test_data
         {
             var cardOptions = new StripeSourceOptions()
             {
-                Object = "card",
                 AddressCountry = "US",
                 AddressLine1 = "234 Bacon St",
                 AddressLine2 = "Apt 1",
