@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
@@ -7,6 +7,9 @@ namespace Stripe
 {
     public class StripeCharge : StripeObject
     {
+        [JsonProperty("id")]
+        public string StripeId { get; set; }
+
         [JsonProperty("object")]
         public string Object { get; set; }
 
