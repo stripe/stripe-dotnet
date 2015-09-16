@@ -6,7 +6,7 @@ namespace Stripe
     public static class StripeConfiguration
     {
         private static string _apiKey;
-        internal const string SupportedApiVersion = "2015-03-24";
+        internal const string SupportedApiVersion = "2015-09-08";
 
         static StripeConfiguration()
         {
