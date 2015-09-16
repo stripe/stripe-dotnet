@@ -6,6 +6,9 @@
         public const string AccountApplicationDeauthorized = "account.application.deauthorized";
         public const string ApplicationFeeCreated = "application_fee.created";
         public const string ApplicationFeeRefunded = "application_fee.refunded";
+        public const string AccountExternalAccountCreated = "account.external_account.created";
+        public const string AccountExternalAccountDeleted = "account.external_account.deleted";
+        public const string AccountExternalAccountUpdated = "account.external_account.updated";
         public const string BalanceAvailable = "balance.available";
         public const string ChargeSucceeded = "charge.succeeded";
         public const string ChargeFailed = "charge.failed";
@@ -47,6 +50,7 @@
         public const string RecipientDeleted = "recipient.deleted";
         public const string TransferCreated = "transfer.created";
         public const string TransferUpdated = "transfer.updated";
+        public const string TransferCanceled = "transfer.canceled";
         public const string TransferReversed = "transfer.reversed";
         public const string TransferPaid = "transfer.paid";
         public const string TransferFailed = "transfer.failed";
