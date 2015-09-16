@@ -6,8 +6,8 @@ namespace Stripe.Entities
 {
     public class StripeAccountVerification
     {
-        [JsonProperty("contacted")]
-        public bool Contacted { get; set; }
+        [JsonProperty("disabled_reason")]
+        public string DisabledReason { get; set; }
 
         [JsonProperty("fields_needed")]
         public string[] FieldsNeeded { get; set; }
