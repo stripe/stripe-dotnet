@@ -10,4 +10,13 @@ namespace Stripe
         [JsonProperty("card")]
         public StripeCreditCardOptions Card { get; set; }
     }
+
+    public class StripeTokenCreateFromCardOptions
+    {
+        [JsonProperty("customer")]
+        public string CustomerId { get; set; }
+
+        [JsonProperty("card")]
+        public string Card { get; set; }
+    }
 }

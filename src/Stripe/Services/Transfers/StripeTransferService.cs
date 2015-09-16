@@ -31,6 +31,18 @@ namespace Stripe
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
 
+        public virtual StripeTransfer Update(string transferId, StripeTransferUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        {
+            requestOptions = SetupRequestOptions(requestOptions);
+
+            var url = string.Format("{0}/{1}", Urls.Transfers, transferId);
+            url = this.ApplyAllParameters(updateOptions, url, false);
+
+            var response = Requestor.PostString(url, requestOptions);
+
+            return Mapper<StripeTransfer>.MapFromJson(response);
+        }
+
         public virtual StripeTransfer Cancel(string transferId, StripeRequestOptions requestOptions = null)
         {
             requestOptions = SetupRequestOptions(requestOptions);
@@ -43,7 +55,19 @@ namespace Stripe
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
 
-        public virtual IEnumerable<StripeTransfer> List(StripeTransferListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeTransferReversal Reverse(string transferId, StripeRequestOptions requestOptions = null)
+        {
+            requestOptions = SetupRequestOptions(requestOptions);
+
+            var url = string.Format("{0}/{1}/reversals", Urls.Transfers, transferId);
+            url = this.ApplyAllParameters(null, url, false);
+
+            var response = Requestor.PostString(url, requestOptions);
+
+            return Mapper<StripeTransferReversal>.MapFromJson(response);
+        }
+
+    public virtual IEnumerable<StripeTransfer> List(StripeTransferListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             requestOptions = SetupRequestOptions(requestOptions);
 

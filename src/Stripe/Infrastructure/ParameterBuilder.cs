@@ -113,7 +113,7 @@ namespace Stripe
             return string.Format("{0}{1}{2}={3}", url, token, argument, HttpUtility.UrlEncode(value));
         }
 
-        private static string ApplyNestedObjectProperties(string newUrl, object nestedObject)
+        public static string ApplyNestedObjectProperties(string newUrl, object nestedObject)
         {
             foreach (var prop in nestedObject.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
             {

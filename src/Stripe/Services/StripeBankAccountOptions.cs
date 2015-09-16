@@ -10,6 +10,9 @@ namespace Stripe
         [JsonProperty("bank_account[country]")]
         public string Country { get; set; }
 
+        [JsonProperty("bank_account[currency]")]
+        public string Currency { get; set; }
+
         [JsonProperty("bank_account[routing_number]")]
         public string RoutingNumber { get; set; }
 

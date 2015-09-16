@@ -33,8 +33,11 @@ namespace Stripe
         [JsonProperty("dob")]
         public StripeBirthDay BirthDay { get; set; }
 
-        [JsonProperty("ssn_last_4")]
-        public string SSN4 { get; set; }
+        [JsonProperty("ssn_last_4_provided")]
+        public bool SSN4Provided { get; set; }
+
+        [JsonProperty("personal_id_number_provided")]
+        public bool PersonalIdNumberProvided { get; set; }
 
         [JsonProperty("verification")]
         public StripeLegalEntityVerification Verification { get; set; }
