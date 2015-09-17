@@ -91,6 +91,9 @@ namespace Stripe
         [JsonProperty("failure_message")]
         public string FailureMessage { get; set; }
 
+        [JsonProperty("fraud_details")]
+        public Dictionary<string, string> FraudDetails { get; set; }
+        
         #region Expandable Invoice
         public string InvoiceId { get; set; }
 
