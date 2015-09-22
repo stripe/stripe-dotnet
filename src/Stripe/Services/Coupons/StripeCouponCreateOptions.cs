@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 
@@ -39,5 +40,8 @@ namespace Stripe
                 return EpochTime.ConvertDateTimeToEpoch(RedeemBy.Value);
             }
         }
+
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
     }
 }
