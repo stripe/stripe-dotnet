@@ -24,6 +24,7 @@ namespace Stripe.Tests.test_data
             {
                 Source = cardOptions,
                 Description = "Joe Meatball Charge",
+                StatementDescriptor = "Joe Meatball Sub",
                 Amount = 5153,
                 Currency = "usd",
                 Metadata = new Dictionary<string, string>
@@ -55,6 +56,7 @@ namespace Stripe.Tests.test_data
             {
                 Source = cardOptions,
                 Description = "Joe Meatball Charge",
+                StatementDescriptor = "Joe Meatball Sub",
                 Amount = 5153,
                 Currency = "usd",
                 Metadata = new Dictionary<string, string>
@@ -85,6 +87,7 @@ namespace Stripe.Tests.test_data
             {
                 Source = cardOptions,
                 Description = "Joe Meatball Charge",
+                StatementDescriptor = "Joe Meatball Sub",
                 Amount = 5153,
                 Currency = "usd"
             };
@@ -95,6 +98,7 @@ namespace Stripe.Tests.test_data
             return new StripeChargeCreateOptions()
             {
                 Description = "Buddy Roast (beef@email.com)",
+                StatementDescriptor = "Joe Meatball Sub",
                 Amount = 2994,
                 Currency = "usd",
                 CustomerId = customerId
