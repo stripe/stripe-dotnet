@@ -28,6 +28,9 @@ namespace Stripe
         [JsonProperty("max_redemptions")]
         public int? MaxRedemptions { get; set; }
 
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+
         public DateTime? RedeemBy { get; set; }
 
         [JsonProperty("redeem_by")]
@@ -40,8 +43,5 @@ namespace Stripe
                 return EpochTime.ConvertDateTimeToEpoch(RedeemBy.Value);
             }
         }
-
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
     }
 }

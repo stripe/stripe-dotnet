@@ -29,7 +29,6 @@ namespace Stripe
             return Mapper<StripeCoupon>.MapFromJson(response);
         }
 
-
         public virtual StripeCoupon Get(string couponId, StripeRequestOptions requestOptions = null)
         {
             requestOptions = SetupRequestOptions(requestOptions);
