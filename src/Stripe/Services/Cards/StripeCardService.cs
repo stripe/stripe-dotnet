@@ -26,7 +26,7 @@ namespace Stripe
         {
             requestOptions = SetupRequestOptions(requestOptions);
 
-            var url = string.Format(Urls.RecipientCards, recipientId);
+            var url = SetupUrl(recipientId, true);
             url = this.ApplyAllParameters(createOptions, url, false);
 
             var response = Requestor.PostString(url, requestOptions);
