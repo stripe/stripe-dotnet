@@ -39,10 +39,22 @@ d) In any of the service calls, you can pass a [StripeRequestOptions](#stripereq
 	var planService = new StripePlanService();
 	planService.Get(*planId*, new StripeRequestOptions() { ApiKey = "[your api key here]" });
 
+Stripe Architecture
+------------------------
+Watch the 2 minute video below to get a high level overview of the Stripe Architecture in a .NET project and understand how all the pieces fit together.  
+
+<a href="https://www.youtube.com/watch?v=BQg267TuJ0M&feature=youtu.be&t=7s&related=0" target="_blank">
+<img src="http://i.imgur.com/NBU9pWk.png?1" alt="Stripe .NET Architecture"></img>
+</a>
+
 Stripe API Version
 ------------------
 
-Stripe.net forces a version of the Stripe API for which it was designed. You can find out the latest version supported by viewing StripeConfiguration.cs under the Infrastructure folder.
+Stripe.net forces a version of the Stripe API for which it was designed. You can find out the latest version supported by viewing StripeConfiguration.cs under the Infrastructure folder.  See the video below for more information about Stripe.NET versions and how they correspond with Stripe API versions.
+
+<a href="https://youtu.be/c6dJRc9V_Ls?t=51s&related=0" target="_blank">
+<img src="http://i.imgur.com/eArdtRE.png?1" alt="Stripe API and Stripe.NET Versions"></img>
+</a>
 
 Examples
 ========
