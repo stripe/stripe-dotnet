@@ -8,7 +8,7 @@
         {
             requestOptions = SetupRequestOptions(requestOptions);
 
-            var response = Requestor.GetString(Urls.Account, requestOptions);
+            var response = Requestor.Instance.GetString(Urls.Account, requestOptions);
 
             return Mapper<StripeAccount>.MapFromJson(response);
         }

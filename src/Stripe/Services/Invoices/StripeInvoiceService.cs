@@ -17,7 +17,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeInvoice>.MapFromJson(response);
         }
@@ -33,7 +33,7 @@ namespace Stripe
             if(!String.IsNullOrEmpty(subscriptionId))
                 url = ParameterBuilder.ApplyParameterToUrl(url, "subscription", subscriptionId);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeInvoice>.MapFromJson(response);
         }
@@ -45,7 +45,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
             url = this.ApplyAllParameters(updateOptions, url, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeInvoice>.MapFromJson(response);
         }
@@ -57,7 +57,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}/pay", Urls.Invoices, invoiceId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeInvoice>.MapFromJson(response);
         }
@@ -69,7 +69,7 @@ namespace Stripe
             var url = Urls.Invoices;
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeInvoice>.MapCollectionFromJson(response);
         }
@@ -82,7 +82,7 @@ namespace Stripe
             url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
             url = this.ApplyAllParameters(createOptions, url, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeInvoice>.MapFromJson(response);
         }

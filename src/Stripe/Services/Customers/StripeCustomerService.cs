@@ -14,7 +14,7 @@ namespace Stripe
 
             var url = this.ApplyAllParameters(createOptions, Urls.Customers, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
@@ -26,7 +26,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Customers, customerId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
@@ -38,7 +38,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Customers, customerId);
             url = this.ApplyAllParameters(updateOptions, url, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeCustomer>.MapFromJson(response);
         }
@@ -49,7 +49,7 @@ namespace Stripe
 
             var url = string.Format("{0}/{1}", Urls.Customers, customerId);
 
-            Requestor.Delete(url, requestOptions);
+            Requestor.Instance.Delete(url, requestOptions);
         }
 
         public virtual IEnumerable<StripeCustomer> List(StripeCustomerListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -59,7 +59,7 @@ namespace Stripe
             var url = Urls.Customers;
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeCustomer>.MapCollectionFromJson(response);
         }

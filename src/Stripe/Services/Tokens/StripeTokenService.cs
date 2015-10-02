@@ -10,7 +10,7 @@
 
             var url = this.ApplyAllParameters(createOptions, Urls.Tokens, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeToken>.MapFromJson(response);
         }
@@ -21,7 +21,7 @@
 
             var url = string.Format("{0}/{1}", Urls.Tokens, tokenId);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeToken>.MapFromJson(response);
         }

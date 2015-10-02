@@ -16,7 +16,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}/refunds", Urls.Charges, chargeId);
             url = this.ApplyAllParameters(createOptions, url, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeRefund>.MapFromJson(response);
         }
@@ -28,7 +28,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}/refunds/{2}", Urls.Charges, chargeId, refundId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeRefund>.MapFromJson(response);
         }
@@ -40,7 +40,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}/refunds/{2}", Urls.Charges, chargeId, refundId);
             url = this.ApplyAllParameters(updateOptions, url, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeRefund>.MapFromJson(response);
         }
@@ -52,7 +52,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}/refunds", Urls.Charges, chargeId);
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeRefund>.MapCollectionFromJson(response);
         }

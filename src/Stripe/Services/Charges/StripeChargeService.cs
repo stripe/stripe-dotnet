@@ -17,7 +17,7 @@ namespace Stripe
 
             var url = this.ApplyAllParameters(createOptions, Urls.Charges, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
@@ -29,7 +29,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Charges, chargeId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
@@ -41,7 +41,7 @@ namespace Stripe
             var url = Urls.Charges;
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeCharge>.MapCollectionFromJson(response);
         }
@@ -58,7 +58,7 @@ namespace Stripe
             if (applicationFee.HasValue)
                 url = ParameterBuilder.ApplyParameterToUrl(url, "application_fee", applicationFee.Value.ToString());
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }

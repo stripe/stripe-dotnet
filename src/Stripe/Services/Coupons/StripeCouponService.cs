@@ -12,7 +12,7 @@ namespace Stripe
 
             var url = this.ApplyAllParameters(createOptions, Urls.Coupons, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeCoupon>.MapFromJson(response);
         }
@@ -24,7 +24,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeCoupon>.MapFromJson(response);
         }
@@ -36,7 +36,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
             url = this.ApplyAllParameters(null, url, false);
 
-            Requestor.Delete(url, requestOptions);
+            Requestor.Instance.Delete(url, requestOptions);
         }
 
         public virtual IEnumerable<StripeCoupon> List(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -46,7 +46,7 @@ namespace Stripe
             var url = Urls.Coupons;
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeCoupon>.MapCollectionFromJson(response);
         }

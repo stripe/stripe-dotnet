@@ -10,7 +10,7 @@ namespace Stripe
         {
             requestOptions = SetupRequestOptions(requestOptions);
 
-            var response = Requestor.GetString(Urls.Balance, requestOptions);
+            var response = Requestor.Instance.GetString(Urls.Balance, requestOptions);
             
             return Mapper<StripeBalance>.MapFromJson(response);
         }
@@ -22,7 +22,7 @@ namespace Stripe
             var url = string.Format(Urls.SpecificBalanceTransaction, id);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeBalanceTransaction>.MapFromJson(response);
         }
@@ -34,7 +34,7 @@ namespace Stripe
             var url = Urls.BalanceTransactions;
             url = this.ApplyAllParameters(options, url, true);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(response);
         }

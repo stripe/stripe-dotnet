@@ -1,11 +1,9 @@
-﻿#if !WINDOWS_UWP
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
-using System.Web;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 using System.Diagnostics;
@@ -111,7 +109,13 @@ namespace Stripe
             if (!url.Contains("?"))
                 token = "?";
 
-            return string.Format("{0}{1}{2}={3}", url, token, argument, HttpUtility.UrlEncode(value));
+            return string.Format("{0}{1}{2}={3}", url, token, argument,
+#if WINDOWS_UWP
+                System.Net.WebUtility.UrlEncode(value)
+#else
+                System.Web.HttpUtility.UrlEncode(value)
+#endif
+                );
         }
 
         private static string ApplyNestedObjectProperties(string newUrl, object nestedObject)
@@ -131,4 +135,4 @@ namespace Stripe
         }
     }
 }
-#endif
+

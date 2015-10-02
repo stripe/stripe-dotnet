@@ -17,7 +17,7 @@ namespace Stripe
             var url = SetupUrl(customerOrRecipientId, isRecipient);
             url = this.ApplyAllParameters(createOptions, url, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeCard>.MapFromJson(response);
         }
@@ -29,7 +29,7 @@ namespace Stripe
             var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeCard>.MapFromJson(response);
         }
@@ -41,7 +41,7 @@ namespace Stripe
             var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
             url = this.ApplyAllParameters(updateOptions, url, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeCard>.MapFromJson(response);
         }
@@ -52,7 +52,7 @@ namespace Stripe
 
             var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
 
-            Requestor.Delete(url, requestOptions);
+            Requestor.Instance.Delete(url, requestOptions);
         }
 
         public virtual IEnumerable<StripeCard> List(string customerOrRecipientId, StripeListOptions listOptions = null, bool isRecipient = false, StripeRequestOptions requestOptions = null)
@@ -62,7 +62,7 @@ namespace Stripe
             var url = SetupUrl(customerOrRecipientId, isRecipient);
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeCard>.MapCollectionFromJson(response);
         }

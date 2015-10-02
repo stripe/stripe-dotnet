@@ -126,8 +126,8 @@
     <Compile Include="Entities\StripeTransferReversal.cs" />
     <Compile Include="Constants\StripeRefundReasons.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
-    <Compile Include="Infrastructure\ParameterBuilder.Universal.cs" />
-    <Compile Include="Infrastructure\Requestor.Universal.cs" />
+    <Compile Include="Infrastructure\Requestor.cs" />
+    <Compile Include="Infrastructure\UniversalRequestor.cs" />
     <Compile Include="Services\StripeRequestOptions.cs" />
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
     <Compile Include="Services\Refunds\StripeRefundCreateOptions.cs" />
