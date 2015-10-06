@@ -15,6 +15,17 @@
             return Mapper<StripeToken>.MapFromJson(response);
         }
 
+        public virtual StripeToken Create(StripeTokenCreateFromCardOptions createOptions, StripeRequestOptions requestOptions = null)
+        {
+            requestOptions = SetupRequestOptions(requestOptions);
+
+            var url = this.ApplyAllParameters(createOptions, Urls.Tokens, false);
+
+            var response = Requestor.PostString(url, requestOptions);
+
+            return Mapper<StripeToken>.MapFromJson(response);
+        }
+
         public virtual StripeToken Get(string tokenId, StripeRequestOptions requestOptions = null)
         {
             requestOptions = SetupRequestOptions(requestOptions);

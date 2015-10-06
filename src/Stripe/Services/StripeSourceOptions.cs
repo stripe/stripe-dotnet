@@ -42,29 +42,6 @@ namespace Stripe
         [JsonProperty("source[address_state]")]
         public string AddressState { get; set; }
 
-        [JsonProperty("source[address_country]")]
-        public string AddressCountry { get; set; }
 
-        [JsonProperty("source[description]")]
-        public string Description { get; set; }
-
-        [JsonProperty("source[metadata]")]
-        public Dictionary<string, string> Metadata { get; set; }
-
-        [JsonProperty("source[capture]")]
-        public bool? Capture { get; set; }
-
-        [JsonProperty("source[statement_descriptor]")]
-        public string StatementDescriptor { get; set; }
-
-        [JsonProperty("source[receipt_email]")]
-        public string ReceiptEmail { get; set; }
-
-        [JsonProperty("source[destination]")]
-        public string Destination { get; set; }
-
-        // application_fee
-
-        // shipping
     }
 }

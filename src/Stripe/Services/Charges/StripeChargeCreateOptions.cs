@@ -15,8 +15,11 @@ namespace Stripe
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
 
-        [JsonProperty("source")]
+        [JsonIgnore]
         public StripeSourceOptions Source { get; set; }
+
+        [JsonIgnore]
+        public string SourceId { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }

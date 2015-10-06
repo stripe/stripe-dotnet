@@ -72,6 +72,17 @@
             get { return BaseUrl + "/account"; }
         }
 
+        public static string Accounts
+        {
+            get { return BaseUrl + "/accounts"; }
+        }
+
+        public static string SpecificAccount
+        {
+            get { return Accounts + "/{0}"; }
+        }
+
+
         public static string Recipients
         {
             get { return BaseUrl + "/recipients"; }
@@ -105,6 +116,11 @@
         private static string BaseConnectUrl
         {
             get { return "https://connect.stripe.com"; }
+        }
+
+        public static string Uploads
+        {
+            get { return "https://uploads.stripe.com/v1/files"; }
         }
     }
 }

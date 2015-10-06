@@ -77,6 +77,10 @@ namespace Stripe
         [JsonProperty("period")]
         public StripePeriod StripePeriod { get; set; }
 
+        [JsonProperty("discountable")]
+        public bool Discountable { get; set; }
+
+
         [JsonProperty("type")]
         public string Type { get; set; }
     }

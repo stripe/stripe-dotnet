@@ -16,6 +16,10 @@ namespace Stripe
             requestOptions = SetupRequestOptions(requestOptions);
 
             var url = this.ApplyAllParameters(createOptions, Urls.Charges, false);
+            if (createOptions.Source != null)
+                url = ParameterBuilder.ApplyNestedObjectProperties(url, createOptions.Source);
+            else
+                url = ParameterBuilder.ApplyParameterToUrl(url, "source", createOptions.SourceId);
 
             var response = Requestor.PostString(url, requestOptions);
 
