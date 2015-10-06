@@ -10,7 +10,7 @@
 
             var url = this.ApplyAllParameters(createOptions, Urls.OAuthToken, false);
 
-            var response = Requestor.PostStringBearer(url, requestOptions);
+            var response = Requestor.Instance.PostStringBearer(url, requestOptions);
 
             return Mapper<StripeOAuthToken>.MapFromJson(response);
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using Machine.Specifications;
+using Stripe.Infrastructure;
 
 namespace Stripe.Tests
 {
@@ -14,7 +15,7 @@ namespace Stripe.Tests
         private const string method = "method";
 
         Because of = () =>
-            _request = (HttpWebRequest) Requestor.GetWebRequest(url, method, new StripeRequestOptions());
+            _request = (HttpWebRequest) new DefaultRequestor().GetWebRequest(url, method, new StripeRequestOptions());
 
         It should_have_matching_url = () =>
             _request.RequestUri.ToString().ShouldEqual(url);

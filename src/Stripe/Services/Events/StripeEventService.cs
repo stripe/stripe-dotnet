@@ -12,7 +12,7 @@ namespace Stripe
 
             var url = string.Format("{0}/{1}", Urls.Events, eventId);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeEvent>.MapFromJson(response);
         }
@@ -24,7 +24,7 @@ namespace Stripe
             var url = Urls.Events;
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeEvent>.MapCollectionFromJson(response);
         }

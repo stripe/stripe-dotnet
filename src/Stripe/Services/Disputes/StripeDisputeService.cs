@@ -17,7 +17,7 @@
             if (!string.IsNullOrEmpty(evidence))
                 url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeDispute>.MapFromJson(response);
         }

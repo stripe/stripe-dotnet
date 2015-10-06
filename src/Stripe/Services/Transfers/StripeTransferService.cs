@@ -14,7 +14,7 @@ namespace Stripe
 
             var url = this.ApplyAllParameters(createOptions, Urls.Transfers, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
@@ -26,7 +26,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}", Urls.Transfers, transferId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
@@ -38,7 +38,7 @@ namespace Stripe
             var url = string.Format("{0}/{1}/cancel", Urls.Transfers, transferId);
             url = this.ApplyAllParameters(null, url, false);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var response = Requestor.Instance.PostString(url, requestOptions);
 
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
@@ -50,7 +50,7 @@ namespace Stripe
             var url = Urls.Transfers;
             url = this.ApplyAllParameters(listOptions, url, true);
 
-            var response = Requestor.GetString(url, requestOptions);
+            var response = Requestor.Instance.GetString(url, requestOptions);
 
             return Mapper<StripeTransfer>.MapCollectionFromJson(response);
         }

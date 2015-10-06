@@ -1,64 +1,57 @@
-﻿using System;
-using System.IO;
+﻿using Stripe.Infrastructure;
+using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Text;
 
-namespace Stripe
-{
-    internal static class Requestor
+namespace Stripe {
+    internal interface IRequestor
     {
-        public static string GetString(string url, StripeRequestOptions requestOptions)
-        {
-            var wr = GetWebRequest(url, "GET", requestOptions);
+        string GetString(string url, StripeRequestOptions requestOptions);
+        string PostString(string url, StripeRequestOptions requestOptions);
+        string Delete(string url, StripeRequestOptions requestOptions);
+        string PostStringBearer(string url, StripeRequestOptions requestOptions);
+    }
 
-            return ExecuteWebRequest(wr);
+    internal abstract class Requestor : IRequestor
+    {
+        protected const string UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
+        internal static IRequestor Instance { get; private set; }
+
+        static Requestor()
+        {
+#if WINDOWS_UWP
+            Instance = new UniversalRequestor();
+#else
+            Instance = new DefaultRequestor();
+#endif
         }
 
-        public static string PostString(string url, StripeRequestOptions requestOptions)
-        {
-            var wr = GetWebRequest(url, "POST", requestOptions);
+        public abstract string GetString(string url, StripeRequestOptions requestOptions);
+        public abstract string PostString(string url, StripeRequestOptions requestOptions);
+        public abstract string Delete(string url, StripeRequestOptions requestOptions);
+        public abstract string PostStringBearer(string url, StripeRequestOptions requestOptions);
 
-            return ExecuteWebRequest(wr);
-        }
-
-        public static string Delete(string url, StripeRequestOptions requestOptions)
-        {
-            var wr = GetWebRequest(url, "DELETE", requestOptions);
-
-            return ExecuteWebRequest(wr);
-        }
-
-        public static string PostStringBearer(string url, StripeRequestOptions requestOptions)
-        {
-            var wr = GetWebRequest(url, "POST", requestOptions, true);
-
-            return ExecuteWebRequest(wr);
-        }
-
-        internal static WebRequest GetWebRequest(string url, string method, StripeRequestOptions requestOptions, bool useBearer = false)
+        protected IDictionary<string, string> GetHeaders(StripeRequestOptions requestOptions, bool useBearer)
         {
             requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.GetApiKey();
 
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = method;
+            var result = new Dictionary<string, string>();
 
-            if(!useBearer)
-                request.Headers.Add("Authorization", GetAuthorizationHeaderValue(requestOptions.ApiKey));
+            if (!useBearer)
+                result.Add("Authorization", GetAuthorizationHeaderValue(requestOptions.ApiKey));
             else
-                request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(requestOptions.ApiKey));
+                result.Add("Authorization", GetAuthorizationHeaderValueBearer(requestOptions.ApiKey));
 
-            request.Headers.Add("Stripe-Version", StripeConfiguration.ApiVersion);
+            result.Add("Stripe-Version", StripeConfiguration.ApiVersion);
 
             if (requestOptions.StripeConnectAccountId != null)
-                request.Headers.Add("Stripe-Account", requestOptions.StripeConnectAccountId);
+                result.Add("Stripe-Account", requestOptions.StripeConnectAccountId);
 
             if (requestOptions.IdempotencyKey != null)
-                request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
+                result.Add("Idempotency-Key", requestOptions.IdempotencyKey);
 
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
-
-            return request;
+            return result;
         }
 
         private static string GetAuthorizationHeaderValue(string apiKey)
@@ -72,41 +65,16 @@ namespace Stripe
             return string.Format("Bearer {0}", apiKey);
         }
 
-        private static string ExecuteWebRequest(WebRequest webRequest)
+        protected StripeException BuildStripeException(HttpStatusCode statusCode, string requestUri, string responseContent)
         {
-            try
-            {
-                using (var response = webRequest.GetResponse())
-                {
-                    return ReadStream(response.GetResponseStream());
-                }
-            }
-            catch (WebException webException)
-            {
-                if (webException.Response != null)
-                {
-                    var statusCode = ((HttpWebResponse)webException.Response).StatusCode;
+            var stripeError = new StripeError();
 
-                    var stripeError = new StripeError();
+            if (requestUri.Contains("oauth"))
+                stripeError = Mapper<StripeError>.MapFromJson(responseContent);
+            else
+                stripeError = Mapper<StripeError>.MapFromJson(responseContent);
 
-                    if(webRequest.RequestUri.ToString().Contains("oauth"))
-                        stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()));
-                    else
-                        stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()), "error");
-
-                    throw new StripeException(statusCode, stripeError, stripeError.Message);
-                }
-
-                throw;
-            }
-        }
-
-        private static string ReadStream(Stream stream)
-        {
-            using (var reader = new StreamReader(stream, Encoding.UTF8))
-            {
-                return reader.ReadToEnd();
-            }
+            return new StripeException(statusCode, stripeError, stripeError.Message);
         }
     }
 }
