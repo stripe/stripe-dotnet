@@ -39,10 +39,26 @@ d) In any of the service calls, you can pass a [StripeRequestOptions](#stripereq
 	var planService = new StripePlanService();
 	planService.Get(*planId*, new StripeRequestOptions() { ApiKey = "[your api key here]" });
 
+Stripe Architecture
+------------------------
+Watch the 2 minute video below to get a high level overview of the Stripe Architecture in a .NET project and understand how all the pieces fit together.  
+
+<a href="https://www.youtube.com/watch?v=BQg267TuJ0M&feature=youtu.be&t=7s&related=0" target="_blank">
+<img src="http://i.imgur.com/NBU9pWk.png?1" alt="Stripe .NET Architecture"></img>
+</a>
+
 Stripe API Version
 ------------------
 
-Stripe.net forces a version of the Stripe API for which it was designed. You can find out the latest version supported by viewing StripeConfiguration.cs under the Infrastructure folder.
+stripe.net forces a version of the Stripe API for which it was designed. You can find out the latest version supported by viewing StripeConfiguration.cs under the Infrastructure folder. If you *are not* using Stripe Event objects (which are most commonly used in webhooks) then you need to do nothing for stripe.net to be compatible with the Stripe API.  
+
+If you *are* using Stripe Events then you will need to email Stripe support and ask them to set your API version (you can see this in your Stripe Dashboard) to the one specified in stripe.net's StripeConfiguration.cs file.
+
+See the video below for more information about stripe.net versions and how they correspond with Stripe API versions.
+
+<a href="https://youtu.be/c6dJRc9V_Ls?t=51s&related=0" target="_blank">
+<img src="http://i.imgur.com/eArdtRE.png?1" alt="Stripe API and Stripe.NET Versions"></img>
+</a>
 
 Examples
 ========
