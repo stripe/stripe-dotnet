@@ -1,7 +1,5 @@
-![stripe.net](http://i.imgur.com/9UzKGQd.png)  
-  
-If you would like to donate to help support stripe.net, my paypal address is jaymedavis@gmail.com. It's certainly not required, but I would appreciate it. :)  
-  
+#### stripe.net
+
 ##**If you would like to submit a pull request.**
 First, thank you! It is a lot of work to learn someone else's codebase, so I appreciate it. Here are a few things that would help me out:
 * Do not submit pull requests for more than one fix. Keep them small and focused.
@@ -11,8 +9,7 @@ First, thank you! It is a lot of work to learn someone else's codebase, so I app
 Quick Start
 -----------
 
-It is recommended that you install Stripe.net via NuGet. If you wish to build it yourself via build.cmd, you will need
-ruby installed along with the gems albacore and zip. You could also just build the assembly in Visual Studio by opening the solution and compiling.
+It is recommended that you install Stripe.net via NuGet. If you wish to build it yourself, just run build.cmd.
 
 Add a reference to Stripe.net.dll.
 

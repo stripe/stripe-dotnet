@@ -2,12 +2,12 @@
 <package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Stripe.net</id>
-    <version>4.2.1</version>
+    <version>5.0.0</version>
     <authors>Jayme Davis</authors>
     <owners>Jayme Davis</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/jaymedavis/stripe.net</projectUrl>
-    <iconUrl>http://i.imgur.com/xLqSrj8.png</iconUrl>
+    <iconUrl>https://pbs.twimg.com/profile_images/497432038492733440/eW6tXeq3.png</iconUrl>
     <licenseUrl>https://raw.github.com/jaymedavis/stripe.net/master/LICENSE</licenseUrl>
     <title>Stripe.net</title>
     <description>Stripe.net is a full service .net api for http://stripe.com. For documentation, visit https://github.com/jaymedavis/stripe.net.</description>
@@ -18,6 +18,5 @@
   </metadata>
   <files>
     <file src="working40\Stripe.net.dll" target="lib\net40" />
-    <file src="working35\Stripe.net.dll" target="lib\net35" />
   </files>
 </package>
