@@ -10,11 +10,23 @@ namespace Stripe
         public bool ExpandCustomer { get; set; }
         public bool ExpandRecipient { get; set; }
 
-        public virtual StripeCard Create(string customerOrRecipientId, StripeCardCreateOptions createOptions, bool isRecipient = false, StripeRequestOptions requestOptions = null)
+        public virtual StripeCard Create(string customerId, StripeCardCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             requestOptions = SetupRequestOptions(requestOptions);
 
-            var url = SetupUrl(customerOrRecipientId, isRecipient);
+            var url = SetupUrl(customerId, false);
+            url = this.ApplyAllParameters(createOptions, url, false);
+
+            var response = Requestor.PostString(url, requestOptions);
+
+            return Mapper<StripeCard>.MapFromJson(response);
+        }
+
+        public virtual StripeCard Create(string recipientId, StripeCreditCardOptions createOptions, StripeRequestOptions requestOptions = null)
+        {
+            requestOptions = SetupRequestOptions(requestOptions);
+
+            var url = SetupUrl(recipientId, true);
             url = this.ApplyAllParameters(createOptions, url, false);
 
             var response = Requestor.PostString(url, requestOptions);

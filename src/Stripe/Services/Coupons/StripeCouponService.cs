@@ -17,6 +17,18 @@ namespace Stripe
             return Mapper<StripeCoupon>.MapFromJson(response);
         }
 
+        public virtual StripeCoupon Update(string couponId, StripeCouponUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        {
+            requestOptions = SetupRequestOptions(requestOptions);
+
+            var url = string.Format("{0}/{1}", Urls.Coupons, couponId);
+            url = this.ApplyAllParameters(updateOptions, url, false);
+
+            var response = Requestor.PostString(url, requestOptions);
+
+            return Mapper<StripeCoupon>.MapFromJson(response);
+        }
+
         public virtual StripeCoupon Get(string couponId, StripeRequestOptions requestOptions = null)
         {
             requestOptions = SetupRequestOptions(requestOptions);

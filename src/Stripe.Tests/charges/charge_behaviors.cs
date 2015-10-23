@@ -26,7 +26,7 @@ namespace Stripe.Tests
             StripeCharge.Description.ShouldEqual(StripeChargeCreateOptions.Description);
 
         It should_have_the_correct_statement_descriptor = () =>
-            StripeCharge.Description.ShouldEqual(StripeChargeCreateOptions.StatementDescriptor);
+            StripeCharge.StatementDescriptor.ShouldEqual(StripeChargeCreateOptions.StatementDescriptor);
 
         It should_have_the_correct_live_mode = () =>
             StripeCharge.LiveMode.ShouldEqual(false);

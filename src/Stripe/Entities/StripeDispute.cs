@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeDispute
+    public class StripeDispute : StripeObject
     {
         [JsonProperty("object")]
         public string Object { get; set; }
