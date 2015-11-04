@@ -119,6 +119,9 @@ namespace Stripe
         [JsonProperty("destination")]
         public string Destination { get; set; }
 
+        [JsonProperty("application_fee")]
+        public string ApplicationFee { get; set; }
+
         // application_fee
 
         // todo: hash, fraud details
