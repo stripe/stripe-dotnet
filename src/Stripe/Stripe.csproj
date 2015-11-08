@@ -52,7 +52,19 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Entities\StripeAdditionalOwner.cs" />
+    <Compile Include="Entities\StripeAddress.cs" />
+    <Compile Include="Entities\StripeTransferSchedule.cs" />
+    <Compile Include="Entities\StripeTosAcceptance.cs" />
+    <Compile Include="Entities\StripeFileUpload.cs" />
+    <Compile Include="Entities\StripeVerificationOfAccount.cs" />
+    <Compile Include="Entities\StripeVerificationOfEntity.cs" />
+    <Compile Include="Entities\StripeDOB.cs" />
+    <Compile Include="Entities\StripeLegalEntity.cs" />
+    <Compile Include="Entities\StripeDeclineCharge.cs" />
+    <Compile Include="Entities\StripeManagedAccount.cs" />
     <Compile Include="Entities\StripeList.cs" />
+    <Compile Include="Entities\StripeExternalAccount.cs" />
     <Compile Include="Entities\StripeRefund.cs" />
     <Compile Include="Entities\StripeBankAccount.cs" />
     <Compile Include="Entities\StripeBalanceTransaction.cs" />
@@ -62,6 +74,10 @@
     <Compile Include="Entities\StripeTransferReversal.cs" />
     <Compile Include="Constants\StripeRefundReasons.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
+    <Compile Include="Services\ManagedAccounts\StripeManagedAccountCreateOptions.cs" />
+    <Compile Include="Services\ManagedAccounts\StripeManagedAccountListOptions.cs" />
+    <Compile Include="Services\ManagedAccounts\StripeManagedAccountService.cs" />
+    <Compile Include="Services\ManagedAccounts\StripeManagedAccountUpdateOptions.cs" />
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
     <Compile Include="Services\Coupons\StripeCouponUpdateOptions.cs" />
     <Compile Include="Services\Refunds\StripeRefundCreateOptions.cs" />
