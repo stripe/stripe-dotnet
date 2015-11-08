@@ -1,5 +1,8 @@
 #### stripe.net
 
+If you are interested in stripe.net pro, please contact me directly at jaymedavis@gmail.com. The pro version will add additional tooling and priority support.  
+
+
 ##**If you would like to submit a pull request.**
 First, thank you! It is a lot of work to learn someone else's codebase, so I appreciate it. Here are a few things that would help me out:
 * Do not submit pull requests for more than one fix. Keep them small and focused.
