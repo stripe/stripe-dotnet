@@ -10,7 +10,7 @@ namespace Stripe
 
         //hash
         [JsonProperty("dob")]
-        public StripeDOB DOB { get; set; }
+        public StripeDob Dob { get; set; }
 
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -20,7 +20,7 @@ namespace Stripe
 
         //hash
         [JsonProperty("verification")]
-        public StripeVerificationOfEntity Verification { get; set; }
+        public StripeLegalEntityVerification Verification { get; set; }
 
     }
 }

@@ -2,15 +2,15 @@
 
 namespace Stripe
 {
-    public class StripeDOB
+    public class StripeDob
     {
         [JsonProperty("day")]
-        public int Day { get; set; }
+        public int? Day { get; set; }
 
         [JsonProperty("month")]
-        public int Month { get; set; }
+        public int? Month { get; set; }
 
         [JsonProperty("year")]
-        public int Year { get; set; }
+        public int? Year { get; set; }
     }
 }

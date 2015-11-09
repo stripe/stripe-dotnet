@@ -4,11 +4,13 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeVerificationOfEntity
+    public class StripeLegalEntityVerification
     {
+        //Read Only Property
         [JsonProperty("details")]
         public string Details { get; set; }
 
+        //Read Only Property
         [JsonProperty("details_code")]
         public string DetailsCode { get; set; }
 
@@ -28,6 +30,7 @@ namespace Stripe
         }
         #endregion
 
+        //Read Only Property
         [JsonProperty("status")]
         public string Status { get; set; }
     }

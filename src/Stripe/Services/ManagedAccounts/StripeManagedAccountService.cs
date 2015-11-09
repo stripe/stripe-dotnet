@@ -12,9 +12,13 @@ namespace Stripe
         {
             requestOptions = SetupRequestOptions(requestOptions);
 
-            var url = this.ApplyAllParameters(createOptions, Urls.Customers, false);
+            //var url = this.ApplyAllParameters(createOptions, Urls.Accounts, false);
+            //var response = Requestor.PostString(url, requestOptions);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var postData = this.ApplyAllParameters(createOptions, "", false);
+            postData = RemoveQuestionMark(postData);
+
+            var response = Requestor.PostData(Urls.Accounts, postData, requestOptions);
 
             return Mapper<StripeManagedAccount>.MapFromJson(response);
         }
@@ -23,7 +27,7 @@ namespace Stripe
         {
             requestOptions = SetupRequestOptions(requestOptions);
 
-            var url = string.Format("{0}/{1}", Urls.Accounts, accountId);
+            var url = string.Format(Urls.ManagedAccount, accountId);
             url = this.ApplyAllParameters(null, url, false);
 
             var response = Requestor.GetString(url, requestOptions);
@@ -35,10 +39,15 @@ namespace Stripe
         {
             requestOptions = SetupRequestOptions(requestOptions);
 
-            var url = string.Format("{0}/{1}", Urls.Accounts, accountId);
-            url = this.ApplyAllParameters(updateOptions, url, false);
+            //url = this.ApplyAllParameters(updateOptions, url, false);
+            //var response = Requestor.PostString(url, requestOptions);
 
-            var response = Requestor.PostString(url, requestOptions);
+            var url = string.Format(Urls.ManagedAccount, accountId);
+
+            var postData = this.ApplyAllParameters(updateOptions, "", false);
+            postData = RemoveQuestionMark(postData);
+
+            var response = Requestor.PostData(url, postData, requestOptions);
 
             return Mapper<StripeManagedAccount>.MapFromJson(response);
         }
@@ -47,7 +56,7 @@ namespace Stripe
         {
             requestOptions = SetupRequestOptions(requestOptions);
 
-            var url = string.Format("{0}/{1}", Urls.Accounts, accountId);
+            var url = string.Format(Urls.ManagedAccount, accountId);
 
             Requestor.Delete(url, requestOptions);
         }
@@ -56,12 +65,21 @@ namespace Stripe
         {
             requestOptions = SetupRequestOptions(requestOptions);
 
-            var url = Urls.Customers;
-            url = this.ApplyAllParameters(listOptions, url, true);
+            var url = this.ApplyAllParameters(listOptions, Urls.Accounts, true);
 
             var response = Requestor.GetString(url, requestOptions);
 
             return Mapper<StripeManagedAccount>.MapCollectionFromJson(response);
         }
-    }
+
+        private static string RemoveQuestionMark(string source)
+        {
+            int index = source.IndexOf("?");
+            string clean = (index < 0)
+                ? source
+                : source.Remove(index, "?".Length);
+
+            return clean;
+        }
+}
 }

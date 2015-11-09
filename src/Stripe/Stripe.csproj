@@ -54,12 +54,13 @@
     </Compile>
     <Compile Include="Entities\StripeAdditionalOwner.cs" />
     <Compile Include="Entities\StripeAddress.cs" />
+    <Compile Include="Entities\StripeManagedAccountKeys.cs" />
     <Compile Include="Entities\StripeTransferSchedule.cs" />
     <Compile Include="Entities\StripeTosAcceptance.cs" />
     <Compile Include="Entities\StripeFileUpload.cs" />
-    <Compile Include="Entities\StripeVerificationOfAccount.cs" />
-    <Compile Include="Entities\StripeVerificationOfEntity.cs" />
-    <Compile Include="Entities\StripeDOB.cs" />
+    <Compile Include="Entities\StripeAccountVerification.cs" />
+    <Compile Include="Entities\StripeLegalEntityVerification.cs" />
+    <Compile Include="Entities\StripeDob.cs" />
     <Compile Include="Entities\StripeLegalEntity.cs" />
     <Compile Include="Entities\StripeDeclineCharge.cs" />
     <Compile Include="Entities\StripeManagedAccount.cs" />
@@ -74,6 +75,8 @@
     <Compile Include="Entities\StripeTransferReversal.cs" />
     <Compile Include="Constants\StripeRefundReasons.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
+    <Compile Include="Services\Account\StripeAccountCreateOptions.cs" />
+    <Compile Include="Services\Account\StripeAccountListOptions.cs" />
     <Compile Include="Services\ManagedAccounts\StripeManagedAccountCreateOptions.cs" />
     <Compile Include="Services\ManagedAccounts\StripeManagedAccountListOptions.cs" />
     <Compile Include="Services\ManagedAccounts\StripeManagedAccountService.cs" />

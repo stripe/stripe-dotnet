@@ -77,6 +77,11 @@
             get { return BaseUrl + "/accounts"; }
         }
 
+        public static string ManagedAccount
+        {
+            get { return Accounts + "/{0}"; }
+        }
+
         public static string Recipients
         {
             get { return BaseUrl + "/recipients"; }

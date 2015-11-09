@@ -19,6 +19,10 @@ namespace Stripe
         public StripeList<StripeExternalAccount> StripeExternalAccountList { get; set; }
 
         //hash
+        [JsonProperty("keys")]
+        public StripeManagedAccountKeys Keys { get; set; }
+
+        //hash
         [JsonProperty("legal_entity")]
         public StripeLegalEntity LegalEntity { get; set; }
 
@@ -35,6 +39,6 @@ namespace Stripe
 
         //hash
         [JsonProperty("verification")]
-        public StripeVerificationOfAccount Verification { get; set; }
+        public StripeAccountVerification Verification { get; set; }
     }
 }

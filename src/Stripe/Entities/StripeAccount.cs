@@ -14,12 +14,17 @@ namespace Stripe
         [JsonProperty("business_name")]
         public string BusinessName { get; set; }
 
+        //business_logo is mentioned but cannot find information on its use/implementation
+        [JsonProperty("business_logo")]
+        public string BusinessLogo { get; set; }
+
         [JsonProperty("business_primary_color")]
         public string BusinessPrimaryColor { get; set; }
 
         [JsonProperty("business_url")]
         public string BusinessUrl { get; set; }
 
+        //Read Only Property
         [JsonProperty("charges_enabled")]
         public bool ChargesEnabled { get; set; }
 
@@ -38,6 +43,7 @@ namespace Stripe
         [JsonProperty("default_currency")]
         public string DefaultCurrency { get; set; }
 
+        //Read Only Property
         [JsonProperty("details_submitted")]
         public bool DetailsSubmitted { get; set; }
 
@@ -83,6 +89,7 @@ namespace Stripe
         //See StripeManagedAccount - Property of Managed Accounts only
         //[JsonProperty("transfer_schedule")]
 
+        //Read Only Property
         [JsonProperty("transfers_enabled")]
         public bool TransfersEnabled { get; set; }
 
