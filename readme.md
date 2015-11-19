@@ -205,6 +205,7 @@ a credit card or token, and various meta data.
 
 		// set these properties if passing full card details (do not
 		// set these properties if you set TokenId)
+		Object = "card",
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
 		ExpirationMonth = "10",
@@ -216,7 +217,7 @@ a credit card or token, and various meta data.
 		AddressZip = "27617",                 // optional
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
-	}
+	};
 
 	myCustomer.PlanId = *planId*;                          // only if you have a plan
 	myCustomer.TaxPercent = 20;                            // only if you are passing a plan, this tax percent will be added to the price.
@@ -245,6 +246,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 		// set these properties if passing full card details (do not
 		// set these properties if you set TokenId)
+		Object = "card",
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
 		ExpirationMonth = "10",
@@ -256,7 +258,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 		AddressZip = "27617",                 // optional
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
-	}
+	};
 
 	// this will set the default card to use for this customer
 	myCustomer.DefaultSource = *cardId*;
@@ -332,6 +334,7 @@ When creating a card you can use either a card or a token
 
 		// set these properties if passing full card details (do not
 		// set these properties if you set TokenId)
+		Object = "card",
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
 		ExpirationMonth = "10",
@@ -343,7 +346,7 @@ When creating a card you can use either a card or a token
 		AddressZip = "27617",                 // optional
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
-	}
+	};
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
@@ -406,6 +409,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 
 		// set these properties if passing full card details (do not
 		// set these properties if you set TokenId)
+		Object = "card",
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
 		ExpirationMonth = "10",
@@ -417,7 +421,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 		AddressZip = "27617",                 // optional
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
-	}
+	};
 
 	// set this property if using a customer
 	myCharge.CustomerId = *customerId*;
