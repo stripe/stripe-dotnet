@@ -1,5 +1,8 @@
 #### stripe.net
 
+If you are interested in stripe.net pro, please contact me directly at jaymedavis@gmail.com. The pro version will add additional tooling and priority support.  
+
+
 ##**If you would like to submit a pull request.**
 First, thank you! It is a lot of work to learn someone else's codebase, so I appreciate it. Here are a few things that would help me out:
 * Do not submit pull requests for more than one fix. Keep them small and focused.
@@ -832,7 +835,7 @@ and access or modify connected accounts depending on permissions.
 valuable service as well, but they are not available in Stripe.net yet.
 
 2) The next thing to do, is have another party connect to your site. To do this, put a link on your site which will start the authorization process, or you can use a 
-[Stripe Connect Button](https://stripe.com/about/resources). Your link will need to contain some querystring paramaters:
+[Stripe Connect Button](https://stripe.com/about/resources). Your link will need to contain some querystring parameters:
 
 	response_type: code
 	client_id:     *your client id from the stripe connect dashboard*
