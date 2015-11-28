@@ -39,6 +39,8 @@ namespace Stripe
         {
             requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.GetApiKey();
 
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = method;
 
