@@ -17,6 +17,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="working40\Stripe.net.dll" target="lib\net40" />
+    <file src="working40\Stripe.net.dll" target="lib\net46" />
   </files>
 </package>
