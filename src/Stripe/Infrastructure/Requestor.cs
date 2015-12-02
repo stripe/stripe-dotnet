@@ -21,7 +21,14 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
-        public static string Delete(string url, StripeRequestOptions requestOptions)
+        public static string PostData(string url, string data, StripeRequestOptions requestOptions)
+        {
+            var wr = GetWebRequest(url, "POST", requestOptions, postData: data);
+
+            return ExecuteWebRequest(wr);
+        }
+
+    public static string Delete(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetWebRequest(url, "DELETE", requestOptions);
 
@@ -35,7 +42,7 @@ namespace Stripe
             return ExecuteWebRequest(wr);
         }
 
-        internal static WebRequest GetWebRequest(string url, string method, StripeRequestOptions requestOptions, bool useBearer = false)
+        internal static WebRequest GetWebRequest(string url, string method, StripeRequestOptions requestOptions, bool useBearer = false, string postData = "")
         {
             requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.GetApiKey();
 
@@ -59,6 +66,17 @@ namespace Stripe
 
             request.ContentType = "application/x-www-form-urlencoded";
             request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
+
+            if (request.Method == "POST" && !string.IsNullOrEmpty(postData))
+            {
+                byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+                request.ContentLength = byteArray.Length;
+                Stream dataStream = request.GetRequestStream();
+                // Write the data to the request stream.
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                // Close the Stream object.
+                dataStream.Close();
+            }
 
             return request;
         }
