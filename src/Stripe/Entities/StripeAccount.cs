@@ -36,5 +36,9 @@ namespace Stripe
 
         [JsonProperty("timezone")]
         public string Timezone { get; set; }
+
+        [JsonProperty("keys")]
+        public StripeAccountKeys AccountKeys { get; set; }
+        
     }
 }

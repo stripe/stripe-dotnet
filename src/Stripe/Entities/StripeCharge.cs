@@ -116,9 +116,13 @@ namespace Stripe
         [JsonProperty("receipt_number")]
         public string ReceiptNumber { get; set; }
 
-        // application_fee
+        [JsonProperty("destination")]
+        public string Destination { get; set; }
 
-        // destination
+        [JsonProperty("application_fee")]
+        public string ApplicationFee { get; set; }
+
+        // application_fee
 
         // todo: hash, fraud details
 
