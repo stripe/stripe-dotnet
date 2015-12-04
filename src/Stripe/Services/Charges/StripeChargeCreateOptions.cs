@@ -39,6 +39,7 @@ namespace Stripe
         [JsonProperty("application_fee")]
         public int? ApplicationFee { get; set; }
 
-        // shipping
+        [JsonProperty("shipping")]
+        public Dictionary<string, string> Shipping { get; set; }
     }
 }

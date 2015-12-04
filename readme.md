@@ -1,9 +1,9 @@
-#### stripe.net
+## stripe.net
 
-If you are interested in stripe.net pro, please contact me directly at jaymedavis@gmail.com. The pro version will add additional tooling and priority support.  
+I am no longer using semantic naming in this project. I do not want to have a 17.0 version of stripe.net. From now on, major changes will be a major
+release, and minor changes will be a minor release. If you want to know more, view the [release notes](https://github.com/jaymedavis/stripe.net/releases).
 
-
-##**If you would like to submit a pull request.**
+###**If you would like to submit a pull request.**
 First, thank you! It is a lot of work to learn someone else's codebase, so I appreciate it. Here are a few things that would help me out:
 * Do not submit pull requests for more than one fix. Keep them small and focused.
 * Please code review yourself. There are a lot of pull requests with typos and mistakes. Don't worry, we all do it. But a code review of yourself will help. :)
@@ -40,7 +40,7 @@ d) In any of the service calls, you can pass a [StripeRequestOptions](#stripereq
 	planService.Get(*planId*, new StripeRequestOptions() { ApiKey = "[your api key here]" });
 
 Stripe Architecture
-------------------------
+-------------------
 Watch the 2 minute video below to get a high level overview of the Stripe Architecture in a .NET project and understand how all the pieces fit together.  
 
 <a href="https://www.youtube.com/watch?v=BQg267TuJ0M&feature=youtu.be&t=7s&related=0" target="_blank">
@@ -208,6 +208,7 @@ a credit card or token, and various meta data.
 
 		// set these properties if passing full card details (do not
 		// set these properties if you set TokenId)
+		Object = "card",
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
 		ExpirationMonth = "10",
@@ -219,7 +220,7 @@ a credit card or token, and various meta data.
 		AddressZip = "27617",                 // optional
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
-	}
+	};
 
 	myCustomer.PlanId = *planId*;                          // only if you have a plan
 	myCustomer.TaxPercent = 20;                            // only if you are passing a plan, this tax percent will be added to the price.
@@ -248,6 +249,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 		// set these properties if passing full card details (do not
 		// set these properties if you set TokenId)
+		Object = "card",
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
 		ExpirationMonth = "10",
@@ -259,7 +261,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 		AddressZip = "27617",                 // optional
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
-	}
+	};
 
 	// this will set the default card to use for this customer
 	myCustomer.DefaultSource = *cardId*;
@@ -335,6 +337,7 @@ When creating a card you can use either a card or a token
 
 		// set these properties if passing full card details (do not
 		// set these properties if you set TokenId)
+		Object = "card",
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
 		ExpirationMonth = "10",
@@ -346,7 +349,7 @@ When creating a card you can use either a card or a token
 		AddressZip = "27617",                 // optional
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
-	}
+	};
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
@@ -409,6 +412,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 
 		// set these properties if passing full card details (do not
 		// set these properties if you set TokenId)
+		Object = "card",
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
 		ExpirationMonth = "10",
@@ -420,7 +424,7 @@ When creating a charge you can use either a card, customer, or a token. Only one
 		AddressZip = "27617",                 // optional
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
-	}
+	};
 
 	// set this property if using a customer
 	myCharge.CustomerId = *customerId*;
