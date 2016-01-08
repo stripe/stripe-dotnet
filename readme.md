@@ -71,6 +71,7 @@ Plans
 If your site has multiple offerings, plans are perfect. You can create as many plans as you want and then just assign customers to those plans later on.
 
 	var myPlan = new StripePlanCreateOptions();
+	myPlan.Id = "hi, im unique!";
 	myPlan.Amount = 1000;           // all amounts on Stripe are in cents, pence, etc
 	myPlan.Currency = "usd";        // "usd" only supported right now
 	myPlan.Interval = "month";      // "month" or "year"
