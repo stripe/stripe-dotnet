@@ -54,6 +54,16 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Entities\StripeBirthDay.cs" />
+    <Compile Include="Entities\StripeAddress.cs" />
+    <Compile Include="Entities\StripeDeclineChargeOn.cs" />
+    <Compile Include="Entities\StripeAdditionalOwners.cs" />
+    <Compile Include="Entities\StripeFileUpload.cs" />
+    <Compile Include="Entities\StripeLegalEntityVerification.cs" />
+    <Compile Include="Entities\StripeLegalEntity.cs" />
+    <Compile Include="Entities\StripeTermsOfServiceAcceptance.cs" />
+    <Compile Include="Entities\StripeTransferSchedule.cs" />
+    <Compile Include="Entities\StripeAccountVerification.cs" />
     <Compile Include="Entities\StripeList.cs" />
     <Compile Include="Entities\StripeRefund.cs" />
     <Compile Include="Entities\StripeBankAccount.cs" />
