@@ -149,38 +149,6 @@ Coupons (queue-pons not coo-pons)
 Tokens
 ------
 
-### Creating a token
-
-A token can be used anywhere on Stripe where you would normally pass a card. Once it's created, it can be used on a
-customer or a charge, but only used once.
-
-	var myToken = new StripeTokenCreateOptions();
-
-	// if you need this...
-	myToken.Card = new StripeCreditCardOptions()
-	{
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
-	};
-
-	// set this property if using a customer (stripe connect only)
-	myToken.CustomerId = *customerId*;
-
-	var tokenService = new StripeTokenService();
-	StripeToken stripeToken = tokenService.Create(myToken);
-
-Tokens are very useful if you don't want to store the customers credit card information on your servers (pci compliance).
 
 ### Retrieving a token
 
