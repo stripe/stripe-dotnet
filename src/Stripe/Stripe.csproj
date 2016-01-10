@@ -54,6 +54,7 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Constants\StripeSubscriptionStatuses.cs" />
     <Compile Include="Entities\StripeBirthDay.cs" />
     <Compile Include="Entities\StripeAddress.cs" />
     <Compile Include="Entities\StripeDeclineChargeOn.cs" />
