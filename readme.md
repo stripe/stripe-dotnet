@@ -589,6 +589,9 @@ Disputes
 Recipients
 ----------
 
+**Note: recipients have been deprecated by Stripe - please use
+[Stripe Connnect](https://stripe.com/docs/connect) instead**
+
 ### Creating a recipient
 
 	var myRecipient = new StripeRecipientCreateOptions();
