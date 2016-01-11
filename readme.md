@@ -151,8 +151,21 @@ Tokens
 
 ### Creating a token
 
-A token can be used anywhere on Stripe where you would normally pass a card. Once it's created, it can be used on a
-customer or a charge, but only used once.
+A token can be used anywhere on Stripe where you would normally pass a card.
+Once it's created, it can be used on a customer or a charge, but only used once.
+
+For production usage, you'll almost always want to create tokens with either
+[stripe.js](https://stripe.com/docs/tutorials/forms) or
+[Checkout](https://stripe.com/docs/tutorials/checkout), but it can be useful
+to create tokens with Stripe.net for testing.
+
+You generally wouldn't want to use stripe.net to create tokens in production,
+since creating tokens with your server offers almost no security or compliance
+benefits - it still involves passing raw card data through your server.
+If you're OK with the additional compliance burden, it's usually still simpler
+to pass card data directly to the API.
+However, there are occasionally situations where it would make sense to create
+tokens on your server.
 
 	var myToken = new StripeTokenCreateOptions();
 
@@ -179,8 +192,6 @@ customer or a charge, but only used once.
 
 	var tokenService = new StripeTokenService();
 	StripeToken stripeToken = tokenService.Create(myToken);
-
-Tokens are very useful if you don't want to store the customers credit card information on your servers (pci compliance).
 
 ### Retrieving a token
 
@@ -579,6 +590,9 @@ Disputes
 
 Recipients
 ----------
+
+**Note: recipients have been deprecated by Stripe - please use
+[Stripe Connnect](https://stripe.com/docs/connect) instead**
 
 ### Creating a recipient
 
