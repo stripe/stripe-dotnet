@@ -215,23 +215,10 @@ a credit card or token, and various meta data.
 	// setting up the card
 	myCustomer.Source = new StripeSourceOptions()
 	{
-		// set this property if using a token
-		TokenId = *tokenId*,
-
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Object = "card",
-		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
+		// a tokenId is a symbolic representation of a card acquired by exchanging credit card information through Stripe.JS or Checkout
+		// if you're fully PCI compliant, you can also pass raw credit card information
+		// such as in https://github.com/jaymedavis/stripe.net#creating-a-card, but this is not recommended
+		TokenId = *tokenId*
 	};
 
 	myCustomer.PlanId = *planId*;                          // only if you have a plan
@@ -256,23 +243,10 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 	// setting up the card
 	myCustomer.Source = new StripeSourceOptions()
 	{
-		// set this property if using a token
-		TokenId = *tokenId*,
-
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Object = "card",
-		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
+		// a tokenId is a symbolic representation of a card acquired by exchanging credit card information through Stripe.JS or Checkout
+		// if you're fully PCI compliant, you can also pass raw credit card information
+		// such as in https://github.com/jaymedavis/stripe.net#creating-a-card, but this is not recommended
+		TokenId = *tokenId*
 	};
 
 	// this will set the default card to use for this customer
@@ -337,19 +311,13 @@ Cards
 
 ### Creating a card
 
-When creating a card you can use either a card or a token
+When creating a card you can use card information:
 
 	var myCard = new StripeCardCreateOptions();
 
 	// setting up the card
 	myCard.Source = new StripeSourceOptions()
 	{
-		// set this property if using a token
-		TokenId = *tokenId*,
-
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Object = "card",
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
 		ExpirationMonth = "10",
@@ -361,6 +329,20 @@ When creating a card you can use either a card or a token
 		AddressZip = "27617",                 // optional
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
+	};
+
+	var cardService = new StripeCardService();
+	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
+
+Or you can use a token:
+
+	var myCard = new StripeCardCreateOptions();
+
+	// setting up the card
+	myCard.Source = new StripeSourceOptions()
+	{
+		// a tokenId is a symbolic representation of a card acquired by exchanging credit card information through Stripe.JS or Checkout
+		TokenId = *tokenId*
 	};
 
 	var cardService = new StripeCardService();
@@ -419,23 +401,10 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	// setting up the card
 	myCharge.Source = new StripeSourceOptions()
 	{
-		// set this property if using a token
-		TokenId = *tokenId*,
-
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Object = "card",
-		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
+		// a tokenId is a symbolic representation of a card acquired by exchanging credit card information through Stripe.JS or Checkout
+		// if you're fully PCI compliant, you can also pass raw credit card information
+		// such as in https://github.com/jaymedavis/stripe.net#creating-a-card, but this is not recommended
+		TokenId = *tokenId*
 	};
 
 	// set this property if using a customer
@@ -606,22 +575,10 @@ Recipients
 	// if you need this...
 	myRecipient.Card = new StripeCreditCardOptions()
 	{
-		// set this property if using a token
-		TokenId = *tokenId*,
-
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
+		// a tokenId is a symbolic representation of a card acquired by exchanging credit card information through Stripe.JS or Checkout
+		// if you're fully PCI compliant, you can also pass raw credit card information
+		// such as in https://github.com/jaymedavis/stripe.net#creating-a-card, but this is not recommended
+		TokenId = *tokenId*
 	}
 
 	var recipientService = new StripeRecipientService();
@@ -638,22 +595,10 @@ Recipients
 	// if you need this...
 	myRecipient.Card = new StripeCreditCardOptions()
 	{
-		// set this property if using a token
-		TokenId = *tokenId*,
-
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
+		// a tokenId is a symbolic representation of a card acquired by exchanging credit card information through Stripe.JS or Checkout
+		// if you're fully PCI compliant, you can also pass raw credit card information
+		// such as in https://github.com/jaymedavis/stripe.net#creating-a-card, but this is not recommended
+		TokenId = *tokenId*
 	}
 
 	var recipientService = new StripeRecipientService();
