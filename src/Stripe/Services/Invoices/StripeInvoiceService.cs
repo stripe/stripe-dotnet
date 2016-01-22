@@ -22,16 +22,14 @@ namespace Stripe
             return Mapper<StripeInvoice>.MapFromJson(response);
         }
 
-        public virtual StripeInvoice Upcoming(string customerId, string subscriptionId = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeInvoice Upcoming(string customerId, StripeUpcomingInvoiceOptions upcomingOptions = null, StripeRequestOptions requestOptions = null)
         {
             requestOptions = SetupRequestOptions(requestOptions);
 
             var url = string.Format("{0}/{1}", Urls.Invoices, "upcoming");
 
             url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
-
-            if(!String.IsNullOrEmpty(subscriptionId))
-                url = ParameterBuilder.ApplyParameterToUrl(url, "subscription", subscriptionId);
+            url = this.ApplyAllParameters(upcomingOptions, url, false);
 
             var response = Requestor.GetString(url, requestOptions);
 

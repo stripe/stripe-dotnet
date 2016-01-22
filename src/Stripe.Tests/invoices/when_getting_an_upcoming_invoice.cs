@@ -36,7 +36,7 @@ namespace Stripe.Tests
         Because of = () =>
             _stripeInvoice = _stripeInvoiceService.Upcoming(_stripeCustomer.Id);
         
-        It should_have_a_valid_id = () =>
+        It shouldnt_have_an_id = () =>
             _stripeInvoice.Id.ShouldBeNull();
 
         It should_have_a_subtotal = () =>
