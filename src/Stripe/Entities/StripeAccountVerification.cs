@@ -11,7 +11,7 @@ namespace Stripe
 
         [JsonProperty("due_by")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime DueBy { get; set; }
+        public DateTime? DueBy { get; set; }
 
         [JsonProperty("fields_needed")]
         public string[] FieldsNeeded { get; set; }
