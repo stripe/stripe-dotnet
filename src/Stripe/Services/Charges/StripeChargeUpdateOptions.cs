@@ -14,7 +14,5 @@ namespace Stripe
 
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
-
-        // shipping
     }
 }

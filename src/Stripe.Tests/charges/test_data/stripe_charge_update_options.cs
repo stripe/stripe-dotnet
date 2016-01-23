@@ -6,7 +6,7 @@ namespace Stripe.Tests.test_data
     {
         public static StripeChargeUpdateOptions Valid()
         {
-            var stripeChargeUpdateOptions = new StripeChargeUpdateOptions
+            return new StripeChargeUpdateOptions
             {
                 Description = "Gangster Pancakes (syrup@og.com)",
                 Metadata = new Dictionary<string, string>
@@ -17,8 +17,6 @@ namespace Stripe.Tests.test_data
                 },
                 ReceiptEmail = "syrup@og.com"
             };
-
-            return stripeChargeUpdateOptions;
         }
     }
 }

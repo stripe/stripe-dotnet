@@ -50,8 +50,7 @@ namespace Stripe
         {
             requestOptions = SetupRequestOptions(requestOptions);
 
-            var url = Urls.Charges;
-            url = this.ApplyAllParameters(listOptions, url, true);
+            var url = this.ApplyAllParameters(listOptions, Urls.Charges, true);
 
             var response = Requestor.GetString(url, requestOptions);
 
