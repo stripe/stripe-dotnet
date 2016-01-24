@@ -128,6 +128,7 @@ namespace Stripe
 
         // todo: hash, shipping
 
-        // transfer
+        [JsonProperty("transfer")]
+        public string Transfer { get; set; }
     }
 }

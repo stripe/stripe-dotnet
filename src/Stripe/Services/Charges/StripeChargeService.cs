@@ -62,5 +62,19 @@ namespace Stripe
 
             return Mapper<StripeCharge>.MapFromJson(response);
         }
+
+
+        public virtual StripeCharge Update(string chargeId, StripeChargeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        {
+            requestOptions = SetupRequestOptions(requestOptions);
+
+            var url = string.Format("{0}/{1}", Urls.Charges, chargeId);
+            url = this.ApplyAllParameters(updateOptions, url, false);
+
+            var response = Requestor.PostString(url, requestOptions);
+
+            return Mapper<StripeCharge>.MapFromJson(response);
+        }
+
     }
 }

@@ -31,6 +31,21 @@ namespace Stripe
             return Mapper<StripeTransfer>.MapFromJson(response);
         }
 
+
+
+        public virtual StripeTransfer Update(string transferId, StripeTransferUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        {
+            requestOptions = SetupRequestOptions(requestOptions);
+
+            var url = string.Format("{0}/{1}", Urls.Transfers, transferId);
+            url = this.ApplyAllParameters(updateOptions, url, false);
+
+            var response = Requestor.PostString(url, requestOptions);
+
+            return Mapper<StripeTransfer>.MapFromJson(response);
+        }
+
+
         public virtual StripeTransfer Cancel(string transferId, StripeRequestOptions requestOptions = null)
         {
             requestOptions = SetupRequestOptions(requestOptions);

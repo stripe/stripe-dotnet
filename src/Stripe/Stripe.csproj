@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Stripe</RootNamespace>
     <AssemblyName>Stripe.net</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -24,6 +24,7 @@
     <DefineConstants>TRACE;DEBUG;NET40</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,12 +33,13 @@
     <DefineConstants>TRACE;NET40</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -65,7 +67,9 @@
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Services\Account\StripeAccountCreateOptions.cs" />
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
+    <Compile Include="Services\Charges\StripeChargeUpdateOptions.cs" />
     <Compile Include="Services\Refunds\StripeRefundCreateOptions.cs" />
+    <Compile Include="Services\Refunds\StripeRefundListOptions.cs" />
     <Compile Include="Services\Refunds\StripeRefundService.cs" />
     <Compile Include="Services\Refunds\StripeRefundUpdateOptions.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceCreateOptions.cs" />
@@ -156,6 +160,7 @@
     <Compile Include="Services\Transfers\StripeTransferService.cs" />
     <Compile Include="Constants\StripeTransferFailureCodes.cs" />
     <Compile Include="Constants\StripeEvents.cs" />
+    <Compile Include="Services\Transfers\StripeTransferUpdateOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
