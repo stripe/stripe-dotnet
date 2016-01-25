@@ -2,46 +2,109 @@
 {
     internal static class Urls
     {
-        public static string Account => BaseUrl + "/account";
+        public static string Invoices
+        {
+            get { return BaseUrl + "/invoices"; }
+        }
 
-        public static string ApplicationFees => BaseUrl + "/application_fees";
+        public static string InvoiceItems
+        {
+            get { return BaseUrl + "/invoiceitems"; }
+        }
 
-        public static string Balance => BaseUrl + "/balance";
+        public static string Tokens
+        {
+            get { return BaseUrl + "/tokens"; }
+        }
 
-        public static string BalanceTransactions => BaseUrl + "/balance/history";
+        public static string Charges
+        {
+            get { return BaseUrl + "/charges"; }
+        }
 
-        public static string Charges => BaseUrl + "/charges";
+        public static string Coupons
+        {
+            get { return BaseUrl + "/coupons"; }
+        }
 
-        public static string Coupons => BaseUrl + "/coupons";
+        public static string Plans
+        {
+            get { return BaseUrl + "/plans"; }
+        }
 
-        public static string Customers => BaseUrl + "/customers";
+        public static string Balance
+        {
+            get { return BaseUrl + "/balance"; }
+        }
 
-        public static string CustomerCards => BaseUrl + "/customers/{0}/sources";
+        public static string BalanceTransactions
+        {
+            get { return BaseUrl + "/balance/history"; }
+        }
 
-        public static string Events => BaseUrl + "/events";
+        public static string SpecificBalanceTransaction
+        {
+            get { return BalanceTransactions + "/{0}"; }
+        }
 
-        public static string Invoices => BaseUrl + "/invoices";
+        public static string Customers
+        {
+            get { return BaseUrl + "/customers"; }
+        }
 
-        public static string InvoiceItems => BaseUrl + "/invoiceitems";
+        public static string CustomerCards
+        {
+            get { return BaseUrl + "/customers/{0}/sources"; }
+        }
 
-        public static string OAuthToken => BaseConnectUrl + "/oauth/token";
+        public static string RecipientCards
+        {
+            get { return BaseUrl + "/recipients/{0}/cards"; }
+        }
 
-        public static string Plans => BaseUrl + "/plans";
+        public static string Events
+        {
+            get { return BaseUrl + "/events"; }
+        }
 
-        public static string Recipients => BaseUrl + "/recipients";
+        public static string Account
+        {
+            get { return BaseUrl + "/account"; }
+        }
 
-        public static string RecipientCards => BaseUrl + "/recipients/{0}/cards";
+        public static string Recipients
+        {
+            get { return BaseUrl + "/recipients"; }
+        }
 
-        public static string SpecificBalanceTransaction => BalanceTransactions + "/{0}";
+        public static string Subscriptions
+        {
+            get { return BaseUrl + "/customers/{0}/subscriptions"; }
+        }
 
-        public static string Subscriptions => BaseUrl + "/customers/{0}/subscriptions";
+        public static string Transfers
+        {
+            get { return BaseUrl + "/transfers"; }
+        }
 
-        public static string Transfers => BaseUrl + "/transfers";
+        public static string ApplicationFees
+        {
+            get { return BaseUrl + "/application_fees"; }
+        }
 
-        public static string Tokens => BaseUrl + "/tokens";
+        private static string BaseUrl
+        {
+            get { return "https://api.stripe.com/v1"; }
+        }
 
-        private static string BaseUrl => "https://api.stripe.com/v1";
+        public static string OAuthToken
+        {
+            get { return BaseConnectUrl + "/oauth/token"; }
+        }
 
-        private static string BaseConnectUrl => "https://connect.stripe.com";
+        private static string BaseConnectUrl
+        {
+            get { return "https://connect.stripe.com"; }
+        }
     }
 }
