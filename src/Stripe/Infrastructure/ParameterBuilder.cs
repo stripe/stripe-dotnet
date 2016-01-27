@@ -36,6 +36,15 @@ namespace Stripe
                                 newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
                             }
                         }
+                        else if (string.Compare(attribute.PropertyName, "fraud_details", true) == 0)
+                        {
+                            var fraudDetails = (Dictionary<string, string>)value;
+
+                            foreach (string key in fraudDetails.Keys)
+                            {
+                                newUrl = ApplyParameterToUrl(newUrl, string.Format("fraud_details[{0}]", key), fraudDetails[key]);
+                            }
+                        }
                         else if (property.PropertyType == typeof(StripeDateFilter))
                         {
                             var filter = (StripeDateFilter)value;
