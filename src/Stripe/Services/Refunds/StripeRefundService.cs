@@ -45,11 +45,11 @@ namespace Stripe
             return Mapper<StripeRefund>.MapFromJson(response);
         }
 
-        public virtual IEnumerable<StripeRefund> List(string chargeId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual IEnumerable<StripeRefund> List(StripeRefundListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             requestOptions = SetupRequestOptions(requestOptions);
 
-            var url = string.Format("{0}/{1}/refunds", Urls.Charges, chargeId);
+            var url = Urls.Refunds;
             url = this.ApplyAllParameters(listOptions, url, true);
 
             var response = Requestor.GetString(url, requestOptions);
