@@ -5,7 +5,7 @@ namespace Stripe.Tests.test_data
 {
     public static class stripe_customer_create_options
     {
-        public static StripeCustomerCreateOptions ValidCard(string _planId = null, string _couponId = null, DateTime? _trialEnd = null)
+        public static StripeCustomerCreateOptions ValidCard(string _planId = null, string _couponId = null, DateTime? _trialEnd = null, bool _trialEndNow = false)
         {
             var cardOptions = new StripeSourceOptions()
             {
@@ -41,7 +41,9 @@ namespace Stripe.Tests.test_data
             if (_couponId != null)
                 stripeCustomerCreateOptions.CouponId = _couponId;
 
-            if (_trialEnd != null)
+            if (_trialEndNow)
+                stripeCustomerCreateOptions.EndTrialNow = true;
+            else if (_trialEnd != null)
                 stripeCustomerCreateOptions.TrialEnd = _trialEnd;
 
             return stripeCustomerCreateOptions;
