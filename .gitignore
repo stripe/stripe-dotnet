@@ -16,3 +16,5 @@ working*
 App.config.mine
 src/packages/*
 !src/packages/repositories.config
+src/.vs/config/applicationhost.config
+src/Stripe.tss

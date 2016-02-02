@@ -1,5 +1,7 @@
 ﻿using System;
+#if !PORTABLE
 using System.Configuration;
+#endif
 
 namespace Stripe
 {
@@ -16,7 +18,13 @@ namespace Stripe
         internal static string GetApiKey()
         {
             if (string.IsNullOrEmpty(_apiKey))
+            {
+#if PORTABLE
+                throw new Exception("You must explicitly specify the ApiKey on Portable platforms.");
+#else
                 _apiKey = ConfigurationManager.AppSettings["StripeApiKey"];
+#endif
+            }
 
             return _apiKey;
         }
