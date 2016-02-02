@@ -84,9 +84,8 @@ namespace Stripe
                 request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
 
             request.Headers.UserAgent.Clear();
-            request.Headers.UserAgent.TryParseAdd($"Stripe.net {Version} (https://github.com/jaymedavis/stripe.net)");
-
-            //request.ContentType = "application/x-www-form-urlencoded";
+            //request.Headers.UserAgent.TryParseAdd($"Stripe.net {Version} (https://github.com/jaymedavis/stripe.net)");
+            request.Headers.UserAgent.TryParseAdd($"Stripe.net (https://github.com/jaymedavis/stripe.net)");
 
             return request;
         }
@@ -123,7 +122,7 @@ namespace Stripe
             if (requestUri.Contains("oauth"))
                 stripeError = Mapper<StripeError>.MapFromJson(responseContent);
             else
-                stripeError = Mapper<StripeError>.MapFromJson(responseContent);
+                stripeError = Mapper<StripeError>.MapFromJson(responseContent, "error");
 
             return new StripeException(statusCode, stripeError, stripeError.Message);
         }
