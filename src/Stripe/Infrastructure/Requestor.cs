@@ -1,9 +1,8 @@
 ﻿using System;
-using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Stripe
@@ -67,6 +66,10 @@ namespace Stripe
         internal static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions, bool useBearer = false)
         {
             requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.GetApiKey();
+
+#if !PORTABLE
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+#endif
 
             var request = new HttpRequestMessage(method, new Uri(url));
 
