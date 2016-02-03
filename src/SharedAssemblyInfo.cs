@@ -1,4 +1,5 @@
 using System.Reflection;
+
 [assembly: AssemblyTitle("Stripe.net")]
 [assembly: AssemblyDescription("A .net client api for http://stripe.com")]
 [assembly: AssemblyCompany("Jayme Davis")]
