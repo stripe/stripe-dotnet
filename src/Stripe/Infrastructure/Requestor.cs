@@ -38,29 +38,53 @@ namespace Stripe
         public static string GetString(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
-
-            return ExecuteRequest(wr).Result;
+            try
+            {
+                return ExecuteRequest(wr).Result;
+            }
+            catch (AggregateException ex)
+            {
+                throw ex.InnerException;
+            }
         }
 
         public static string PostString(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
-
-            return ExecuteRequest(wr).Result;
+            try
+            {
+                return ExecuteRequest(wr).Result;
+            }
+            catch (AggregateException ex)
+            {
+                throw ex.InnerException;
+            }
         }
 
         public static string Delete(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Delete, requestOptions);
-
-            return ExecuteRequest(wr).Result;
+            try
+            {
+                return ExecuteRequest(wr).Result;
+            }
+            catch (AggregateException ex)
+            {
+                throw ex.InnerException;
+            }
         }
 
         public static string PostStringBearer(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions, true);
-
-            return ExecuteRequest(wr).Result;
+            try
+            {
+                return ExecuteRequest(wr).Result;
+            }
+            catch (AggregateException ex)
+            {
+                throw ex.InnerException;
+            }
         }
 
         internal static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions, bool useBearer = false)
