@@ -550,8 +550,8 @@ Any invoice items you create for a customer will be added to their bill.
 
 StripeInvoiceItemListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
-Account
--------
+Accounts
+--------
 ### Creating an account
 
 When creating an account, you can create a standalone or managed account. Standalone accounts are managed by Stripe and the account owner directly. Managed accounts are handled by your platform. See the Stripe documentation for more information.  
