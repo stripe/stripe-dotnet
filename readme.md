@@ -555,7 +555,8 @@ Accounts
 ### Creating an account
 
 When creating an account, you can create a standalone or managed account. Standalone accounts are managed by Stripe and the account owner directly. Managed accounts are handled by your platform. See the Stripe documentation for more information.  
-Since Stripe returns `ExternalAccounts` as a single array (contains StripeCard's and/or StripeBankAccount's), that type is StripeList<dynamic>(). These are split up as `ExternalCards` and `ExternalBankAccounts` for your convenience.
+
+Since Stripe returns `ExternalAccounts` as a single array (contains StripeCard's and/or StripeBankAccount's), that type is a dynamic StripeList. These are split up as `ExternalCards` and `ExternalBankAccounts` for your convenience.
 
 	var account = new StripeAccountCreateOptions();
 	account.Email = "jayme@yoyoyo.com"  // this is required if it is not a managed account. the user is emailed on standalone accounts,
