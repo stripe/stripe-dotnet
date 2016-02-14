@@ -2,7 +2,7 @@
 <package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Stripe.net</id>
-    <version>5.2.0</version>
+    <version>5.3.0</version>
     <authors>Jayme Davis</authors>
     <owners>Jayme Davis</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,7 +10,7 @@
     <iconUrl>https://pbs.twimg.com/profile_images/497432038492733440/eW6tXeq3.png</iconUrl>
     <licenseUrl>https://raw.github.com/jaymedavis/stripe.net/master/LICENSE</licenseUrl>
     <title>Stripe.net</title>
-    <description>Stripe.net is a full service .net api for http://stripe.com. For documentation, visit https://github.com/jaymedavis/stripe.net.</description>
+    <description>A .net client for http://stripe.com</description>
     <tags>stripe, payment, credit cards, money</tags>
     <dependencies>
       <dependency id="Newtonsoft.Json" version="7.0.1" />
