@@ -70,6 +70,16 @@ namespace Stripe
                             var stripeSourceOptions = (StripeSourceOptions)value;
                             newUrl = ApplyNestedObjectProperties(newUrl, stripeSourceOptions);
                         }
+                        else if (property.PropertyType == typeof(StripeAccountCardOptions))
+                        {
+                            var stripeAccountCardOptions = (StripeAccountCardOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, stripeAccountCardOptions);
+                        }
+                        else if (property.PropertyType == typeof(StripeAccountBankAccountOptions))
+                        {
+                            var stripeAccountBankAccountOptions = (StripeAccountBankAccountOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, stripeAccountBankAccountOptions);
+                        }
                         else
                         {
                             newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());

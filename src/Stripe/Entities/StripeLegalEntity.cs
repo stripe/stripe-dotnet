@@ -6,7 +6,7 @@ namespace Stripe
     public class StripeLegalEntity
     {
         [JsonProperty("additional_owners")]
-        public StripeList<StripeAdditionalOwners> StripAdditionalOwners { get; set; }
+        public List<StripeAdditionalOwners> AdditionalOwners { get; set; }
 
         [JsonProperty("address")]
         public StripeAddress Address { get; set; }
@@ -15,7 +15,7 @@ namespace Stripe
         public string BusinessName { get; set; }
 
         [JsonProperty("dob")]
-        public StripeBirthDay StripeBirthDay { get; set; }
+        public StripeBirthDay BirthDay { get; set; }
 
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -36,6 +36,6 @@ namespace Stripe
         public string Type { get; set; }
 
         [JsonProperty("verification")]
-        public StripeLegalEntityVerification StripeLegalEntityVerification { get; set; }
+        public StripeLegalEntityVerification LegalEntityVerification { get; set; }
     }
 }

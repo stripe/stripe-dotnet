@@ -11,6 +11,12 @@ namespace Stripe
         [JsonProperty("account")]
         public string AccountId { get; set; }
 
+        [JsonProperty("account_holder_type")]
+        public string AccountHolderType { get; set; }
+
+        [JsonProperty("Name")]
+        public string Name { get; set; }
+
         [JsonProperty("country")]
         public string Country { get; set; }
 

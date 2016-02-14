@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
@@ -7,6 +9,9 @@ namespace Stripe
     {
         [JsonProperty("object")]
         public string Object { get; set; }
+
+        [JsonProperty("business_logo")]
+        public string BusinessLogoFileId { get; set; }
 
         [JsonProperty("business_name")]
         public string BusinessName { get; set; }
@@ -44,13 +49,32 @@ namespace Stripe
         [JsonProperty("email")]
         public string Email { get; set; }
 
-        // this should work, but it probably needs to determine if it's a card
-        // or a bank account, and give back a list accordingly
+        #region External Accounts
+
         [JsonProperty("external_accounts")]
-        public StripeList<dynamic> StripeExternalAccounts { get; set; }
+        [JsonConverter(typeof(StripeExternalAccountConverter))]
+        public StripeList<dynamic> ExternalAccounts { get; set; }
+
+        public List<StripeCard> ExternalCards
+        {
+            get
+            {
+                return ExternalAccounts.Data.Where(acc => acc.Object == "card").Cast<StripeCard>().ToList();
+            }
+        }
+
+        public List<StripeBankAccount> ExternalBankAccounts
+        {
+            get
+            {
+                return ExternalAccounts.Data.Where(acc => acc.Object == "bank_account").Cast<StripeBankAccount>().ToList();
+            }
+        }
+
+        #endregion
 
         [JsonProperty("legal_entity")]
-        public StripeLegalEntity StripeLegalEntity { get; set; }
+        public StripeLegalEntity LegalEntity { get; set; }
 
         [JsonProperty("managed")]
         public bool Managed { get; set; }
@@ -86,6 +110,9 @@ namespace Stripe
         public bool TransfersEnabled { get; set; }
 
         [JsonProperty("verification")]
-        public StripeAccountVerification Verification { get; set; }
+        public StripeAccountVerification AccountVerification { get; set; }
+
+        [JsonProperty("keys")]
+        public StripeManagedAccountKeys ManagedAccountKeys { get; set; }
      }
 }

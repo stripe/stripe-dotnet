@@ -9,7 +9,7 @@ namespace Stripe
     {
         [JsonProperty("date")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         [JsonProperty("ip")]
         public string Ip { get; set; }

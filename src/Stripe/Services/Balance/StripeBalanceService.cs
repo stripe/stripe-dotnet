@@ -11,7 +11,7 @@ namespace Stripe
             requestOptions = SetupRequestOptions(requestOptions);
 
             var response = Requestor.GetString(Urls.Balance, requestOptions);
-            
+
             return Mapper<StripeBalance>.MapFromJson(response);
         }
 

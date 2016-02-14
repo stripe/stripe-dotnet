@@ -67,9 +67,9 @@
             get { return BaseUrl + "/events"; }
         }
 
-        public static string Account
+        public static string Accounts
         {
-            get { return BaseUrl + "/account"; }
+            get { return BaseUrl + "/accounts"; }
         }
 
         public static string Recipients

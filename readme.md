@@ -552,11 +552,43 @@ StripeInvoiceItemListOptions supports a CustomerId, [StripeListOptions](#stripel
 
 Account
 -------
+### Creating an account
 
-### Retrieving your account
+When creating an account, you can create a standalone or managed account. Standalone accounts are managed by Stripe and the account owner directly. Managed accounts are handled by your platform. See the Stripe documentation for more information.  
+Since Stripe returns `ExternalAccounts` as a single array (contains StripeCard's and/or StripeBankAccount's), that type is StripeList<dynamic>(). These are split up as `ExternalCards` and `ExternalBankAccounts` for your convenience.
+
+	var account = new StripeAccountCreateOptions();
+	account.Email = "jayme@yoyoyo.com"  // this is required if it is not a managed account. the user is emailed on standalone accounts,
+	                                    // it's only used for reference on managed accounts
+	account.Managed = false;            // set this to true if you want a managed account (email is not required if this is set to true)
+
+	// a few optional settings
+	account.Country = "US"                                 // defaults to your country
+	account.BusinessName = "Jayme Davis' GitHub, Inc";
+	account.BusinessUrl = "http://github.com/jaymedavis";
+
+	var accountService = new StripeAccountService(account);
+	StripeAccount response = accountService.Create(account);
+
+### Retrieving an account
 
 	var accountService = new StripeAccountService();
-	StripeAccount response = accountService.Get();
+	StripeAccount response = accountService.Get(*accountId*);
+
+### Updating an account
+
+Updating an account has almost all the same available properties as creating an account.
+
+	var myAccount = new StripeAccountUpdateOptions();
+	account.BusinessUrl = "http://twitter.com/jaymed";
+
+	var accountService = new StripeAccountService();
+	StripeAccount response = accountService.Update(*accountId*, myAccount);
+
+### Deleting an account
+
+	var accountService = new StripeAccountService();
+	accountService.Delete(*accountId*);
 
 Balance
 -------
@@ -732,13 +764,13 @@ All Stripe List methods support paging, using `limit`, `starting_after` and `end
 
 	// get the first five results
 	IEnumerable<StripeCharge> firstPage = chargeService.List(new StripeChargeListOptions {
-  	Limit = 5
+		Limit = 5
 	});
 
 	// get the next five results
 	IEnumerable<StripeCharge> nextPage = chargeService.List(new StripeChargeListOptions {
-  	Limit = 5,
-    StartingAfter = firstPage.Last().Id
+		Limit = 5,
+		StartingAfter = firstPage.Last().Id
 	});
 
 	// get the previous five results again
