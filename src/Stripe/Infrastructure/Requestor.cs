@@ -1,48 +1,63 @@
 ﻿using System;
-using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 
 namespace Stripe
 {
     internal static class Requestor
     {
+        internal static HttpClient HttpClient { get; private set; }
+
+        static Requestor()
+        {
+            var handler = new HttpClientHandler();
+
+#if !PORTABLE
+            if (handler.SupportsAutomaticDecompression)
+                handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+#endif
+
+            HttpClient = new HttpClient(handler);
+        }
+
         public static string GetString(string url, StripeRequestOptions requestOptions)
         {
-            var wr = GetWebRequest(url, "GET", requestOptions);
+            var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
 
-            return ExecuteWebRequest(wr);
+            return ExecuteRequest(wr);
         }
 
         public static string PostString(string url, StripeRequestOptions requestOptions)
         {
-            var wr = GetWebRequest(url, "POST", requestOptions);
+            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
 
-            return ExecuteWebRequest(wr);
+            return ExecuteRequest(wr);
         }
 
         public static string Delete(string url, StripeRequestOptions requestOptions)
         {
-            var wr = GetWebRequest(url, "DELETE", requestOptions);
+            var wr = GetRequestMessage(url, HttpMethod.Delete, requestOptions);
 
-            return ExecuteWebRequest(wr);
+            return ExecuteRequest(wr);
         }
 
         public static string PostStringBearer(string url, StripeRequestOptions requestOptions)
         {
-            var wr = GetWebRequest(url, "POST", requestOptions, true);
+            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions, true);
 
-            return ExecuteWebRequest(wr);
+            return ExecuteRequest(wr);
         }
 
-        internal static WebRequest GetWebRequest(string url, string method, StripeRequestOptions requestOptions, bool useBearer = false)
+        internal static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions, bool useBearer = false)
         {
             requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.GetApiKey();
 
+#if !PORTABLE
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+#endif
 
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = method;
+            var request = new HttpRequestMessage(method, new Uri(url));
 
             if(!useBearer)
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValue(requestOptions.ApiKey));
@@ -57,8 +72,7 @@ namespace Stripe
             if (requestOptions.IdempotencyKey != null)
                 request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
 
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.UserAgent = "Stripe.net (https://github.com/jaymedavis/stripe.net)";
+            request.Headers.UserAgent.TryParseAdd("Stripe.net (https://github.com/jaymedavis/stripe.net)");
 
             return request;
         }
@@ -74,41 +88,27 @@ namespace Stripe
             return string.Format("Bearer {0}", apiKey);
         }
 
-        private static string ExecuteWebRequest(WebRequest webRequest)
+        private static string ExecuteRequest(HttpRequestMessage requestMessage)
         {
-            try
-            {
-                using (var response = webRequest.GetResponse())
-                {
-                    return ReadStream(response.GetResponseStream());
-                }
-            }
-            catch (WebException webException)
-            {
-                if (webException.Response != null)
-                {
-                    var statusCode = ((HttpWebResponse)webException.Response).StatusCode;
+            var response = HttpClient.SendAsync(requestMessage).Result;
+            var responseText = response.Content.ReadAsStringAsync().Result;
 
-                    var stripeError = new StripeError();
+            if (response.IsSuccessStatusCode)
+                return responseText;
 
-                    if(webRequest.RequestUri.ToString().Contains("oauth"))
-                        stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()));
-                    else
-                        stripeError = Mapper<StripeError>.MapFromJson(ReadStream(webException.Response.GetResponseStream()), "error");
-
-                    throw new StripeException(statusCode, stripeError, stripeError.Message);
-                }
-
-                throw;
-            }
+            throw BuildStripeException(response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
 
-        private static string ReadStream(Stream stream)
+        internal static StripeException BuildStripeException(HttpStatusCode statusCode, string requestUri, string responseContent)
         {
-            using (var reader = new StreamReader(stream, Encoding.UTF8))
-            {
-                return reader.ReadToEnd();
-            }
+            var stripeError = new StripeError();
+
+            if (requestUri.Contains("oauth"))
+                stripeError = Mapper<StripeError>.MapFromJson(responseContent);
+            else
+                stripeError = Mapper<StripeError>.MapFromJson(responseContent, "error");
+
+            return new StripeException(statusCode, stripeError, stripeError.Message);
         }
     }
 }

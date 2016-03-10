@@ -2,7 +2,7 @@
 <package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Stripe.net</id>
-    <version>5.3.0</version>
+    <version>6.0.0</version>
     <authors>Jayme Davis</authors>
     <owners>Jayme Davis</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,13 +10,15 @@
     <iconUrl>https://pbs.twimg.com/profile_images/497432038492733440/eW6tXeq3.png</iconUrl>
     <licenseUrl>https://raw.github.com/jaymedavis/stripe.net/master/LICENSE</licenseUrl>
     <title>Stripe.net</title>
-    <description>A .net client for http://stripe.com</description>
-    <tags>stripe, payment, credit cards, money</tags>
+    <description>Stripe.net is a .NET 4.5+ client, and a portable class library for stripe.com.</description>
+    <tags>stripe, payment, credit cards, money, gateway, paypal, braintree</tags>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="7.0.1" />
+      <dependency id="Newtonsoft.Json" version="8.0.2" />
     </dependencies>
   </metadata>
   <files>
-    <file src="working40\Stripe.net.dll" target="lib" />
+    <file src="net45\Stripe.net.dll" target="lib\net45" />
+    <file src="portable\Stripe.net.dll" target="lib\dotnet" />
+    <file src="portable\Stripe.net.dll" target="lib\portable-net45+win8+wpa81+wp8" />
   </files>
 </package>

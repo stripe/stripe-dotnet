@@ -1,24 +1,22 @@
-## stripe.net
+![Stripe](https://stripe.com/img/navigation/logo.png?2)
 
-I am no longer using semantic naming in this project. I do not want to have a 17.0 version of stripe.net. From now on, major changes will be a major
-release, and minor changes will be a minor release. If you want to know more, view the [release notes](https://github.com/jaymedavis/stripe.net/releases).
+**Release: 6.0.0**    
+Stripe.net now supports .NET 4.5+ and is a portable class library. UWP, .NET Core, Windows 8, WindowsPhone 8.0+, and Xamarin are now supported.
 
-###**If you would like to submit a pull request.**
-First, thank you! It is a lot of work to learn someone else's codebase, so I appreciate it. Here are a few things that would help me out:
-* Do not submit pull requests for more than one fix. Keep them small and focused.
-* Please code review yourself. There are a lot of pull requests with typos and mistakes. Don't worry, we all do it. But a code review of yourself will help. :)
-* Please review the diff in GitHub that I will see before I merge your pull requests. If it's hard for you to tell what the differences are, it's going to be hard for me too.
+Support
+-------
+Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to make sure your issue doesn't exist already. If it does, please leave a comment. [Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if it does not exist.  
+
+You can often find me in IRC hanging out in #stripe on freenode. 
 
 Quick Start
 -----------
 
-It is recommended that you install Stripe.net via NuGet. If you wish to build it yourself, just run build.cmd.
-
-Add a reference to Stripe.net.dll.
+It is recommended that you install Stripe.net via NuGet.
 
 Next you will need to provide Stripe.net with your api key. There are 4 ways to do this:
 
-a) Add an AppSetting with your api key to your config (this is the easiest way and will work throughout the app on every request)
+a) Add an AppSetting with your api key to your config (this is the easiest way and will work throughout the app on every request) - will not work on portable platforms
 
 	<appSettings>
 	...
@@ -879,8 +877,7 @@ The Stripe Connect documentation can be a little intimidating, so I am going to 
 and access or modify connected accounts depending on permissions.
 
 1) The first thing you need to do is [register your platform](https://dashboard.stripe.com/account/applications/settings) with Stripe Connect. Stripe.net at this time only supports 
-[Standalone Accounts](https://stripe.com/docs/connect/standalone-accounts), which is very useful because it supports every country Stripe supports. Managed Accounts are a 
-valuable service as well, but they are not available in Stripe.net yet.
+[Standalone Accounts](https://stripe.com/docs/connect/standalone-accounts), which is very useful because it supports every country Stripe supports.
 
 2) The next thing to do, is have another party connect to your site. To do this, put a link on your site which will start the authorization process, or you can use a 
 [Stripe Connect Button](https://stripe.com/about/resources). Your link will need to contain some querystring parameters:
