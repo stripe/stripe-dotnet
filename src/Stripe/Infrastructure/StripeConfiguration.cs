@@ -3,7 +3,7 @@
     public static class StripeConfiguration
     {
         private static string _apiKey;
-        internal const string SupportedApiVersion = "2015-03-24";
+        internal const string SupportedApiVersion = "2015-07-28";
 
         static StripeConfiguration()
         {
