@@ -1,6 +1,6 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)
 
-We are aware of issues relating to UWP and Xamarin. Both are being worked on now and will be fixed asap.    
+The latest release (6.0.1) has fixed the cross platform issues with UWP and Xamarin. Enjoy! I will get this available on the Xamarin store when time allows.
 
 **Release: 6.0.0**    
 Stripe.net now supports .NET 4.5+ and is a portable class library. UWP, .NET Core, Windows 8, WindowsPhone 8.0+, and Xamarin are now supported.
