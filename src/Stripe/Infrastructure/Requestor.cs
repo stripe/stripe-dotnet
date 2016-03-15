@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using ModernHttpClient;
 
 namespace Stripe
 {
@@ -11,14 +12,7 @@ namespace Stripe
 
         static Requestor()
         {
-            var handler = new HttpClientHandler();
-
-#if !PORTABLE
-            if (handler.SupportsAutomaticDecompression)
-                handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-#endif
-
-            HttpClient = new HttpClient(handler);
+            HttpClient = new HttpClient(new NativeMessageHandler());
         }
 
         public static string GetString(string url, StripeRequestOptions requestOptions)
