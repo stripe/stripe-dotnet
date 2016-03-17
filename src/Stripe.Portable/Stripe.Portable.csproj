@@ -216,11 +216,17 @@
     <Compile Include="..\Stripe\Services\Account\StripeAccountCreateOptions.cs">
       <Link>Services\Account\StripeAccountCreateOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\Account\StripeAccountLegalEntityOptions.cs">
+      <Link>Services\Account\StripeAccountLegalEntityOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\Account\StripeAccountService.cs">
       <Link>Services\Account\StripeAccountService.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Services\Account\StripeAccountSharedOptions.cs">
       <Link>Services\Account\StripeAccountSharedOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\Account\StripeAccountTosAcceptanceOptions.cs">
+      <Link>Services\Account\StripeAccountTosAcceptanceOptions.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Services\Account\StripeAccountUpdateOptions.cs">
       <Link>Services\Account\StripeAccountUpdateOptions.cs</Link>

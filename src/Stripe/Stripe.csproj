@@ -84,6 +84,8 @@
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Infrastructure\StripeExternalAccountConverter.cs" />
     <Compile Include="Services\Account\StripeAccountBankAccountOptions.cs" />
+    <Compile Include="Services\Account\StripeAccountLegalEntityOptions.cs" />
+    <Compile Include="Services\Account\StripeAccountTosAcceptanceOptions.cs" />
     <Compile Include="Services\Account\StripeAccountUpdateOptions.cs" />
     <Compile Include="Services\Account\StripeAccountSharedOptions.cs" />
     <Compile Include="Services\Account\StripeAccountCreateOptions.cs" />

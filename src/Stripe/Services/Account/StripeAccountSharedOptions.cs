@@ -39,7 +39,8 @@ namespace Stripe
         [JsonProperty("external_account")]
         public StripeAccountBankAccountOptions ExternalBankAccount { get; set; }
 
-        // legal entity
+        [JsonProperty("legal_entity")]
+        public StripeAccountLegalEntityOptions LegalEntity { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -59,7 +60,8 @@ namespace Stripe
         [JsonProperty("support_url")]
         public string SupportUrl { get; set; }
 
-        // tos acceptance
+        [JsonProperty("tos_acceptance")]
+        public StripeAccountTosAcceptanceOptions TosAcceptance { get; set; }
 
         // transfer schedule
     }
