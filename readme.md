@@ -878,8 +878,7 @@ Stripe Connect
 The Stripe Connect documentation can be a little intimidating, so I am going to try to break it down a little. Stripe Connect gives you the ability to accept money on behalf of other accounts, 
 and access or modify connected accounts depending on permissions.
 
-1) The first thing you need to do is [register your platform](https://dashboard.stripe.com/account/applications/settings) with Stripe Connect. Stripe.net at this time only supports 
-[Standalone Accounts](https://stripe.com/docs/connect/standalone-accounts), which is very useful because it supports every country Stripe supports.
+1) The first thing you need to do is [register your platform](https://dashboard.stripe.com/account/applications/settings) with Stripe Connect.
 
 2) The next thing to do, is have another party connect to your site. To do this, put a link on your site which will start the authorization process, or you can use a 
 [Stripe Connect Button](https://stripe.com/about/resources). Your link will need to contain some querystring parameters:
