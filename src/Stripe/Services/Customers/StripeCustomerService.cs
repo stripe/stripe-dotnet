@@ -63,5 +63,14 @@ namespace Stripe
 
             return Mapper<StripeCustomer>.MapCollectionFromJson(response);
         }
+
+        public virtual void DeleteDiscount(string customerId, StripeRequestOptions requestOptions = null)
+        {
+            requestOptions = SetupRequestOptions(requestOptions);
+
+            var url = string.Format(Urls.Customers + "/{0}/discount", customerId);
+
+            Requestor.Delete(url, requestOptions);
+        }
     }
 }
