@@ -24,7 +24,7 @@ namespace Stripe
 
                     foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
                     {
-                        if (string.Compare(attribute.PropertyName, "metadata", StringComparison.OrdinalIgnoreCase) == 0)
+                        if (attribute.PropertyName.ToLower().Contains("metadata"))
                         {
                             var metadata = (Dictionary<string, string>)value;
 
