@@ -1,6 +1,8 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)
 
-The latest release (6.0.1) has fixed the cross platform issues with UWP and Xamarin. Enjoy! I will get this available on the Xamarin store when time allows.
+The latest release (6.1.0) has fixed the Metadata bug when used on certain services. The next version of Stripe.net will change how tokens/cards/existing cards are passed to the services via options. The plan is to 
+have a `StripeSourceCard` (pass a new card), `StripeSourceToken`, and a `StripeSourceExistingCard` (when you want to use a customers existing card, but not the default card). This should make working 
+with charges a lot more intuitive. The existing `StripeSourceOptions` will marked as obsolete, but will still function... for now. :)
 
 **Release: 6.0.0**    
 Stripe.net now supports .NET 4.5+ and is a portable class library. UWP, .NET Core, Windows 8, WindowsPhone 8.0+, and Xamarin are now supported.
