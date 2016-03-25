@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using ModernHttpClient;
 
 namespace Stripe
@@ -45,6 +46,36 @@ namespace Stripe
 
             return ExecuteRequest(wr);
         }
+
+#if !PORTABLE
+        public static Task<string> GetStringAsync(string url, StripeRequestOptions requestOptions)
+        {
+            var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
+
+            return ExecuteRequestAsync(wr);
+        }
+
+        public static Task<string> PostStringAsync(string url, StripeRequestOptions requestOptions)
+        {
+            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
+
+            return ExecuteRequestAsync(wr);
+        }
+
+        public static Task<string> DeleteAsync(string url, StripeRequestOptions requestOptions)
+        {
+            var wr = GetRequestMessage(url, HttpMethod.Delete, requestOptions);
+
+            return ExecuteRequestAsync(wr);
+        }
+
+        public static Task<string> PostStringBearerAsync(string url, StripeRequestOptions requestOptions)
+        {
+            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions, true);
+
+            return ExecuteRequestAsync(wr);
+        }
+#endif
 
         internal static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions, bool useBearer = false)
         {
@@ -119,6 +150,19 @@ namespace Stripe
 
             throw BuildStripeException(response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
+
+#if !PORTABLE
+        private static async Task<string> ExecuteRequestAsync(HttpRequestMessage requestMessage)
+        {
+            var response = await HttpClient.SendAsync(requestMessage);
+
+            if (response.IsSuccessStatusCode)
+                return await response.Content.ReadAsStringAsync();
+
+            // this is not async
+            throw BuildStripeException(response.StatusCode, requestMessage.RequestUri.AbsoluteUri, response.Content.ReadAsStringAsync().Result);
+        }
+#endif
 
         internal static StripeException BuildStripeException(HttpStatusCode statusCode, string requestUri, string responseContent)
         {

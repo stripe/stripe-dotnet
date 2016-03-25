@@ -1,4 +1,6 @@
-﻿namespace Stripe
+﻿using System.Threading.Tasks;
+
+namespace Stripe
 {
     public class StripeAccountService : StripeService
     {
@@ -6,47 +8,64 @@
 
         public virtual StripeAccount Create(StripeAccountCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
-            requestOptions = SetupRequestOptions(requestOptions);
-
-            var url = this.ApplyAllParameters(createOptions, Urls.Accounts, false);
-
-            var response = Requestor.PostString(url, requestOptions);
-
-            return Mapper<StripeAccount>.MapFromJson(response);
+            return Mapper<StripeAccount>.MapFromJson(
+                Requestor.PostString(this.ApplyAllParameters(createOptions, Urls.Accounts, false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
         public virtual StripeAccount Get(string accountId, StripeRequestOptions requestOptions = null)
         {
-            requestOptions = SetupRequestOptions(requestOptions);
-
-            var url = string.Format("{0}/{1}", Urls.Accounts, accountId);
-            url = this.ApplyAllParameters(null, url, false);
-
-            var response = Requestor.GetString(url, requestOptions);
-
-            return Mapper<StripeAccount>.MapFromJson(response);
+            return Mapper<StripeAccount>.MapFromJson(
+                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Accounts}/{accountId}", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
         public virtual StripeAccount Update(string accountId, StripeAccountUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
-            requestOptions = SetupRequestOptions(requestOptions);
-
-            var url = string.Format("{0}/{1}", Urls.Accounts, accountId);
-            url = this.ApplyAllParameters(updateOptions, url, false);
-
-            var response = Requestor.PostString(url, requestOptions);
-
-            return Mapper<StripeAccount>.MapFromJson(response);
+            return Mapper<StripeAccount>.MapFromJson(
+                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Accounts}/{accountId}", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
         public virtual void Delete(string accountId, StripeRequestOptions requestOptions = null)
         {
-            requestOptions = SetupRequestOptions(requestOptions);
-
-            var url = string.Format("{0}/{1}", Urls.Accounts, accountId);
-            url = this.ApplyAllParameters(null, url, false);
-
-            Requestor.Delete(url, requestOptions);
+            Requestor.Delete(this.ApplyAllParameters(null, $"{Urls.Accounts}/{accountId}", false),
+                SetupRequestOptions(requestOptions));
         }
+
+#if !PORTABLE
+        public virtual async Task<StripeAccount> CreateAsync(StripeAccountCreateOptions createOptions, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeAccount>.MapFromJson(
+                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.Accounts, false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripeAccount> GetAsync(string accountId, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeAccount>.MapFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Accounts}/{accountId}", false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripeAccount> UpdateSync(string accountId, StripeAccountUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeAccount>.MapFromJson(
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Accounts}/{accountId}", false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async void DeleteSync(string accountId, StripeRequestOptions requestOptions = null)
+        {
+            await Requestor.DeleteAsync(this.ApplyAllParameters(null, $"{Urls.Accounts}/{accountId}", false),
+                SetupRequestOptions(requestOptions));
+        }
+#endif
     }
 }
