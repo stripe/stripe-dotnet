@@ -5,6 +5,7 @@ obj
 src/packages/*
 *.nupkg
 Stripe.net.dll
+*.pdb
 
 # user/vs files
 *.user

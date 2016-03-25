@@ -63,6 +63,8 @@
     </Compile>
     <Compile Include="account\account_behaviors.cs" />
     <Compile Include="account\test_data\stripe_account_create_options.cs" />
+    <Compile Include="account\when_creating_an_account_with_only_an_emailaddress_async_error.cs" />
+    <Compile Include="account\when_creating_an_account_with_only_an_emailaddress_async.cs" />
     <Compile Include="account\when_updating_an_account.cs" />
     <Compile Include="account\when_deleting_an_account.cs" />
     <Compile Include="account\when_creating_a_managed_account_with_a_bank_account.cs" />
