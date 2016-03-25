@@ -74,6 +74,7 @@
     <Compile Include="balance\when_listing_balancetransactions.cs" />
     <Compile Include="balance\when_listing_balancetransactions_for_charge.cs" />
     <Compile Include="balance\when_retrieving_a_balance.cs" />
+    <Compile Include="files\when_uploading_a_file.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="charges\test_data\stripe_charge_update_options.cs" />
     <Compile Include="charges\when_updating_a_charge.cs" />

@@ -92,6 +92,16 @@
             get { return BaseUrl + "/application_fees"; }
         }
 
+        public static string Files
+        {
+            get { return FileBaseUrl + "/files"; }
+        }
+
+        private static string FileBaseUrl
+        {
+            get { return "https://uploads.stripe.com/v1"; }
+        }
+
         private static string BaseUrl
         {
             get { return "https://api.stripe.com/v1"; }
