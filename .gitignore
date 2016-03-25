@@ -16,3 +16,6 @@ Stripe.userprefs
 
 # my secretz
 my_test_keys.txt
+
+src/Stripe.v12.suo
+src/Stripe.sln
