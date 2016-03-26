@@ -12,6 +12,11 @@
             get { return BaseUrl + "/invoiceitems"; }
         }
 
+        public static string InvoiceItemsForInvoice
+        {
+            get { return BaseUrl + "/invoices/{0}/lines"; }
+        }
+
         public static string Tokens
         {
             get { return BaseUrl + "/tokens"; }
