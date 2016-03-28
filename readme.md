@@ -4,14 +4,14 @@ The latest release (6.1.0) has fixed the Metadata bug when used on certain servi
 have a `StripeSourceCard` (pass a new card), `StripeSourceToken`, and a `StripeSourceExistingCard` (when you want to use a customers existing card, but not the default card). This should make working 
 with charges a lot more intuitive. The existing `StripeSourceOptions` will be marked as obsolete, but will still function... for now. :)
 
-**Release: 6.0.0**    
+**Release: 6.0.0**
 Stripe.net now supports .NET 4.5+ and is a portable class library. UWP, .NET Core, Windows 8, WindowsPhone 8.0+, and Xamarin are now supported.
 
 Support
 -------
-Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to make sure your issue doesn't exist already. If it does, please leave a comment. [Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if it does not exist.  
+Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to see if your issue/request already exists. If it does, please leave a comment or a [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). This helps me priortize what I work on next. [Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if you can't find what you're looking for. :)
 
-You can often find me in IRC hanging out in #stripe on freenode. 
+I also hang out in IRC in #stripe on freenode (my nick is truepudding) when I can. Feel free to ping me there as well.
 
 Quick Start
 -----------

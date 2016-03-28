@@ -51,7 +51,7 @@ namespace Stripe
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 #endif
 
-            var request = new HttpRequestMessage(method, new Uri(url));
+            var request = BuildRequest(method, url);
 
             if(!useBearer)
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValue(requestOptions.ApiKey));
@@ -69,6 +69,30 @@ namespace Stripe
             request.Headers.UserAgent.TryParseAdd("Stripe.net (https://github.com/jaymedavis/stripe.net)");
 
             return request;
+        }
+
+        private static HttpRequestMessage BuildRequest(HttpMethod method, string url)
+        {
+            if (method == HttpMethod.Post)
+            {
+                var postData = string.Empty;
+                var newUrl = url;
+
+                if (!string.IsNullOrEmpty(new Uri(url).Query))
+                {
+                    postData = new Uri(url).Query.Substring(1);
+                    newUrl = url.Substring(0, url.IndexOf("?", StringComparison.CurrentCultureIgnoreCase));
+                }
+
+                var request = new HttpRequestMessage(method, new Uri(newUrl))
+                {
+                    Content = new StringContent(postData, Encoding.UTF8, "application/x-www-form-urlencoded")
+                };
+
+                return request;
+            }
+
+            return new HttpRequestMessage(method, new Uri(url));
         }
 
         private static string GetAuthorizationHeaderValue(string apiKey)
