@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using ModernHttpClient;
 
@@ -29,6 +31,57 @@ namespace Stripe
             return ExecuteRequest(wr);
         }
 
+        public static string PostMultiPartFile(string url, string fileName, Stream streamContent, string purpose, StripeRequestOptions requestOptions)
+        {
+            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
+
+            wr.Headers.ExpectContinue = true;
+
+            var multiPartContent = new MultipartFormDataContent("----------------------------Stripe");
+
+            multiPartContent.Add(new StringContent(purpose), "\"purpose\"");
+            
+            var fileContent = new StreamContent(streamContent);
+            fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+            {
+                Name = "\"file\"",
+                FileName = "\"" + fileName + "\""
+            };
+
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue(GetMimeType(fileName));
+            
+            multiPartContent.Add(fileContent);
+            
+            wr.Content = multiPartContent;
+            
+            return ExecuteRequest(wr);
+        }
+
+        private static string GetMimeType(string fileName)
+        {
+            switch (Path.GetExtension(fileName.ToLower()))
+            {
+                case ".pdf":
+                {
+                    return "application/pdf";
+                }
+
+                case ".jpeg":
+                case ".jpg":
+                {
+                    return "image/jpeg";
+                }
+
+                case ".png":
+                {
+                    return "image/png";
+                }
+            
+                default:
+                    return "";
+            }
+        }
+
         public static string Delete(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Delete, requestOptions);
@@ -53,6 +106,7 @@ namespace Stripe
 
             var request = new HttpRequestMessage(method, new Uri(url));
 
+            
             if(!useBearer)
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValue(requestOptions.ApiKey));
             else

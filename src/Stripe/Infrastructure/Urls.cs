@@ -2,6 +2,11 @@
 {
     internal static class Urls
     {
+        public static string Disputes
+        {
+            get { return BaseUrl + "/disputes"; }
+        }
+
         public static string Invoices
         {
             get { return BaseUrl + "/invoices"; }
@@ -90,6 +95,16 @@
         public static string ApplicationFees
         {
             get { return BaseUrl + "/application_fees"; }
+        }
+
+        public static string Files
+        {
+            get { return FileBaseUrl + "/files"; }
+        }
+
+        private static string FileBaseUrl
+        {
+            get { return "https://uploads.stripe.com/v1"; }
         }
 
         private static string BaseUrl
