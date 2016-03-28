@@ -77,6 +77,10 @@ namespace Stripe
                             var stripeAccountBankAccountOptions = (StripeAccountBankAccountOptions)value;
                             newUrl = ApplyNestedObjectProperties(newUrl, stripeAccountBankAccountOptions);
                         }
+                        else if (obj.GetType() == typeof(StripeEvidence))
+                        {
+                            newUrl = ApplyParameterToUrl(newUrl, "evidence[" + attribute.PropertyName + "]", value.ToString());
+                        }
                         else
                         {
                             newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
@@ -135,5 +139,6 @@ namespace Stripe
 
             return newUrl;
         }
+        
     }
 }

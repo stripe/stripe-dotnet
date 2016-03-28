@@ -61,6 +61,8 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Entities\StripeEvidence.cs" />
+    <Compile Include="Entities\StripeEvidenceDetails.cs" />
     <Compile Include="Entities\StripeManagedAccountKeys.cs" />
     <Compile Include="Entities\StripeBirthDay.cs" />
     <Compile Include="Entities\StripeAddress.cs" />
@@ -91,6 +93,8 @@
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeUpdateOptions.cs" />
     <Compile Include="Services\Coupons\StripeCouponUpdateOptions.cs" />
+    <Compile Include="Services\Disputes\StripeDisputeListOptions.cs" />
+    <Compile Include="Services\Disputes\StripeDisputeResponse.cs" />
     <Compile Include="Services\File\StripeFileService.cs" />
     <Compile Include="Services\Invoices\StripeUpcomingInvoiceOptions.cs" />
     <Compile Include="Services\Refunds\StripeRefundCreateOptions.cs" />

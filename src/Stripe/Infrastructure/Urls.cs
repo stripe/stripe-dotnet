@@ -2,6 +2,11 @@
 {
     internal static class Urls
     {
+        public static string Disputes
+        {
+            get { return BaseUrl + "/disputes"; }
+        }
+
         public static string Invoices
         {
             get { return BaseUrl + "/invoices"; }
