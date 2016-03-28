@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using ModernHttpClient;
 
@@ -9,10 +10,12 @@ namespace Stripe
     internal static class Requestor
     {
         internal static HttpClient HttpClient { get; private set; }
+        internal static string Version { get; }
 
         static Requestor()
         {
             HttpClient = new HttpClient(new NativeMessageHandler());
+            Version = new AssemblyName(typeof(Requestor).GetTypeInfo().Assembly.FullName).Version.ToString(3);
         }
 
         public static string GetString(string url, StripeRequestOptions requestOptions)
@@ -66,7 +69,7 @@ namespace Stripe
             if (requestOptions.IdempotencyKey != null)
                 request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
 
-            request.Headers.UserAgent.TryParseAdd("Stripe.net (https://github.com/jaymedavis/stripe.net)");
+            request.Headers.UserAgent.TryParseAdd($"Stripe.net {Version} (https://github.com/jaymedavis/stripe.net)");
 
             return request;
         }
