@@ -53,7 +53,7 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<StripeAccount> UpdateSync(string accountId, StripeAccountUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        public virtual async Task<StripeAccount> UpdateAsync(string accountId, StripeAccountUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeAccount>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Accounts}/{accountId}", false),
@@ -61,7 +61,7 @@ namespace Stripe
             );
         }
 
-        public virtual async void DeleteSync(string accountId, StripeRequestOptions requestOptions = null)
+        public virtual async void DeleteAsync(string accountId, StripeRequestOptions requestOptions = null)
         {
             await Requestor.DeleteAsync(this.ApplyAllParameters(null, $"{Urls.Accounts}/{accountId}", false),
                 SetupRequestOptions(requestOptions));
