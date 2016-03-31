@@ -34,14 +34,14 @@ namespace Stripe
         public virtual async Task<StripeBalance> GetAsync(StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeBalance>.MapFromJson(
-                await Requestor.GetString(Urls.Balance, SetupRequestOptions(requestOptions))
+                await Requestor.GetStringAsync(Urls.Balance, SetupRequestOptions(requestOptions))
             );
         }
 
         public virtual async Task<StripeBalanceTransaction> GetAsync(string id, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeBalanceTransaction>.MapFromJson(
-                await Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.BalanceTransactions}/{id}", false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.BalanceTransactions}/{id}", false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -49,7 +49,7 @@ namespace Stripe
         public virtual async Task<IEnumerable<StripeBalanceTransaction>> ListAsync(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(
-                await Requestor.GetString(this.ApplyAllParameters(options, Urls.BalanceTransactions, true),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(options, Urls.BalanceTransactions, true),
                 SetupRequestOptions(requestOptions))
             );
         }
