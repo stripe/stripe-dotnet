@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Stripe
 {
@@ -13,65 +14,98 @@ namespace Stripe
 
         public virtual StripeCharge Create(StripeChargeCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
-            requestOptions = SetupRequestOptions(requestOptions);
-
-            var url = this.ApplyAllParameters(createOptions, Urls.Charges, false);
-
-            var response = Requestor.PostString(url, requestOptions);
-
-            return Mapper<StripeCharge>.MapFromJson(response);
+            return Mapper<StripeCharge>.MapFromJson(
+                Requestor.PostString(this.ApplyAllParameters(createOptions, Urls.Charges, false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
         public virtual StripeCharge Update(string chargeId, StripeChargeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
-            requestOptions = SetupRequestOptions(requestOptions);
-
-            var url = string.Format("{0}/{1}", Urls.Charges, chargeId);
-            url = this.ApplyAllParameters(updateOptions, url, false);
-
-            var response = Requestor.PostString(url, requestOptions);
-
-            return Mapper<StripeCharge>.MapFromJson(response);
+            return Mapper<StripeCharge>.MapFromJson(
+                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
         public virtual StripeCharge Get(string chargeId, StripeRequestOptions requestOptions = null)
         {
-            requestOptions = SetupRequestOptions(requestOptions);
-
-            var url = string.Format("{0}/{1}", Urls.Charges, chargeId);
-            url = this.ApplyAllParameters(null, url, false);
-
-            var response = Requestor.GetString(url, requestOptions);
-
-            return Mapper<StripeCharge>.MapFromJson(response);
+            return Mapper<StripeCharge>.MapFromJson(
+                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
         public virtual IEnumerable<StripeCharge> List(StripeChargeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            requestOptions = SetupRequestOptions(requestOptions);
-
-            var url = this.ApplyAllParameters(listOptions, Urls.Charges, true);
-
-            var response = Requestor.GetString(url, requestOptions);
-
-            return Mapper<StripeCharge>.MapCollectionFromJson(response);
+            return Mapper<StripeCharge>.MapCollectionFromJson(
+                Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Charges, true),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
         public virtual StripeCharge Capture(string chargeId, int? captureAmount = null, int? applicationFee = null, StripeRequestOptions requestOptions = null)
         {
-            requestOptions = SetupRequestOptions(requestOptions);
-
-            var url = string.Format("{0}/{1}/capture", Urls.Charges, chargeId);
-            url = this.ApplyAllParameters(null, url, false);
+            var url = this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}/capture", false);
 
             if (captureAmount.HasValue)
                 url = ParameterBuilder.ApplyParameterToUrl(url, "amount", captureAmount.Value.ToString());
             if (applicationFee.HasValue)
                 url = ParameterBuilder.ApplyParameterToUrl(url, "application_fee", applicationFee.Value.ToString());
 
-            var response = Requestor.PostString(url, requestOptions);
-
-            return Mapper<StripeCharge>.MapFromJson(response);
+            return Mapper<StripeCharge>.MapFromJson(
+                Requestor.PostString(url,
+                SetupRequestOptions(requestOptions))
+            );
         }
+
+#if !PORTABLE
+        public virtual async Task<StripeCharge> CreateAsync(StripeChargeCreateOptions createOptions, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeCharge>.MapFromJson(
+                await Requestor.PostString(this.ApplyAllParameters(createOptions, Urls.Charges, false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripeCharge> UpdateAsync(string chargeId, StripeChargeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeCharge>.MapFromJson(
+                await Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripeCharge> GetAsync(string chargeId, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeCharge>.MapFromJson(
+                await Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<IEnumerable<StripeCharge>> ListAsync(StripeChargeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeCharge>.MapCollectionFromJson(
+                await Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Charges, true),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripeCharge> CaptureAsync(string chargeId, int? captureAmount = null, int? applicationFee = null, StripeRequestOptions requestOptions = null)
+        {
+            var url = this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}/capture", false);
+
+            if (captureAmount.HasValue)
+                url = ParameterBuilder.ApplyParameterToUrl(url, "amount", captureAmount.Value.ToString());
+            if (applicationFee.HasValue)
+                url = ParameterBuilder.ApplyParameterToUrl(url, "application_fee", applicationFee.Value.ToString());
+
+            return Mapper<StripeCharge>.MapFromJson(
+                await Requestor.PostString(url,
+                SetupRequestOptions(requestOptions))
+            );
+        }
+#endif
     }
 }
