@@ -43,7 +43,7 @@ namespace Stripe
         public virtual async Task<StripeApplicationFee> GetAsync(string applicationFeeId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeApplicationFee>.MapFromJson(
-                await Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}", false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}", false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -56,14 +56,14 @@ namespace Stripe
                 url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());
 
             return Mapper<StripeApplicationFee>.MapFromJson(
-                await Requestor.PostString(url, SetupRequestOptions(requestOptions))
+                await Requestor.PostStringAsync(url, SetupRequestOptions(requestOptions))
             );
         }
 
         public virtual async Task<IEnumerable<StripeApplicationFee>> ListAsync(StripeApplicationFeeListOptions listOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeApplicationFee>.MapCollectionFromJson(
-                await Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.ApplicationFees, true),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.ApplicationFees, true),
                 SetupRequestOptions(requestOptions))
             );
         }
