@@ -74,7 +74,7 @@ namespace Stripe
             var url = SetupUrl(customerId, false);
 
             return Mapper<StripeCard>.MapFromJson(
-                await Requestor.PostString(this.ApplyAllParameters(createOptions, url, false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, url, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -84,7 +84,7 @@ namespace Stripe
             var url = SetupUrl(recipientId, true);
 
             return Mapper<StripeCard>.MapFromJson(
-                await Requestor.PostString(this.ApplyAllParameters(createOptions, url, false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, url, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -94,7 +94,7 @@ namespace Stripe
             var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
 
             return Mapper<StripeCard>.MapFromJson(
-                await Requestor.GetString(this.ApplyAllParameters(null, url, false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, url, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -104,7 +104,7 @@ namespace Stripe
             var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
 
             return Mapper<StripeCard>.MapFromJson(
-                await Requestor.PostString(this.ApplyAllParameters(updateOptions, url, false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, url, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -113,7 +113,7 @@ namespace Stripe
         {
             var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
 
-            await Requestor.Delete(url, SetupRequestOptions(requestOptions));
+            await Requestor.DeleteAsync(url, SetupRequestOptions(requestOptions));
         }
 
         public virtual async Task<IEnumerable<StripeCard>> ListAsync(string customerOrRecipientId, StripeListOptions listOptions = null, bool isRecipient = false, StripeRequestOptions requestOptions = null)
@@ -121,7 +121,7 @@ namespace Stripe
             var url = SetupUrl(customerOrRecipientId, isRecipient);
 
             return Mapper<StripeCard>.MapCollectionFromJson(
-                await Requestor.GetString(this.ApplyAllParameters(listOptions, url, true),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, url, true),
                 SetupRequestOptions(requestOptions))
             );
         }
