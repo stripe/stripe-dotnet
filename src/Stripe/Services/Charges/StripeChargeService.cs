@@ -63,7 +63,7 @@ namespace Stripe
         public virtual async Task<StripeCharge> CreateAsync(StripeChargeCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCharge>.MapFromJson(
-                await Requestor.PostString(this.ApplyAllParameters(createOptions, Urls.Charges, false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.Charges, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -71,7 +71,7 @@ namespace Stripe
         public virtual async Task<StripeCharge> UpdateAsync(string chargeId, StripeChargeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCharge>.MapFromJson(
-                await Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -79,7 +79,7 @@ namespace Stripe
         public virtual async Task<StripeCharge> GetAsync(string chargeId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCharge>.MapFromJson(
-                await Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -87,7 +87,7 @@ namespace Stripe
         public virtual async Task<IEnumerable<StripeCharge>> ListAsync(StripeChargeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCharge>.MapCollectionFromJson(
-                await Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Charges, true),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Charges, true),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -102,7 +102,7 @@ namespace Stripe
                 url = ParameterBuilder.ApplyParameterToUrl(url, "application_fee", applicationFee.Value.ToString());
 
             return Mapper<StripeCharge>.MapFromJson(
-                await Requestor.PostString(url,
+                await Requestor.PostStringAsync(url,
                 SetupRequestOptions(requestOptions))
             );
         }
