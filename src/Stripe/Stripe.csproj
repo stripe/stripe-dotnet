@@ -181,7 +181,7 @@
     <Compile Include="Services\Transfers\StripeTransferService.cs" />
     <Compile Include="Constants\StripeTransferFailureCodes.cs" />
     <Compile Include="Constants\StripeEvents.cs" />
-    <Compile Include="Services\_sources\SouceCard.cs" />
+    <Compile Include="Services\_sources\SourceCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

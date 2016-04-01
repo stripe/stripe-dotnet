@@ -399,11 +399,9 @@
     <Compile Include="..\Stripe\Services\_refactor\StripeSourceOptions.cs">
       <Link>Services\_refactor\StripeSourceOptions.cs</Link>
     </Compile>
-    <Compile Include="..\Stripe\Services\_sources\SouceCard.cs">
-      <Link>Services\_sources\SouceCard.cs</Link>
-    </Compile>
     <Compile Include="Extensions\BindingFlags.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
+    <Compile Include="Services\_sources\SourceCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
