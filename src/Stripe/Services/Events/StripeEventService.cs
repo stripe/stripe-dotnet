@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Stripe
 {
@@ -8,25 +9,36 @@ namespace Stripe
 
         public virtual StripeEvent Get(string eventId, StripeRequestOptions requestOptions = null)
         {
-            requestOptions = SetupRequestOptions(requestOptions);
-
-            var url = string.Format("{0}/{1}", Urls.Events, eventId);
-
-            var response = Requestor.GetString(url, requestOptions);
-
-            return Mapper<StripeEvent>.MapFromJson(response);
+            return Mapper<StripeEvent>.MapFromJson(
+                Requestor.GetString($"{Urls.Events}/{eventId}",
+                SetupRequestOptions(requestOptions))
+            );
         }
 
         public virtual IEnumerable<StripeEvent> List(StripeEventListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            requestOptions = SetupRequestOptions(requestOptions);
-
-            var url = Urls.Events;
-            url = this.ApplyAllParameters(listOptions, url, true);
-
-            var response = Requestor.GetString(url, requestOptions);
-
-            return Mapper<StripeEvent>.MapCollectionFromJson(response);
+            return Mapper<StripeEvent>.MapCollectionFromJson(
+                Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Events, true),
+                SetupRequestOptions(requestOptions))
+            );
         }
+
+#if !PORTABLE
+        public virtual async Task<StripeEvent> GetAsync(string eventId, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeEvent>.MapFromJson(
+                await Requestor.GetStringAsync($"{Urls.Events}/{eventId}",
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<IEnumerable<StripeEvent>> ListAsync(StripeEventListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeEvent>.MapCollectionFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Events, true),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+#endif
     }
 }
