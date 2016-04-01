@@ -1,9 +1,5 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)
 
-The latest release (6.1.0) has fixed the Metadata bug when used on certain services. The next version of Stripe.net will change how tokens/cards/existing cards are passed to the services via options. The plan is to 
-have a `StripeSourceCard` (pass a new card), `StripeSourceToken`, and a `StripeSourceExistingCard` (when you want to use a customers existing card, but not the default card). This should make working 
-with charges a lot more intuitive. The existing `StripeSourceOptions` will be marked as obsolete, but will still function... for now. :)
-
 **Release: 6.0.0**
 Stripe.net now supports .NET 4.5+ and is a portable class library. UWP, .NET Core, Windows 8, WindowsPhone 8.0+, and Xamarin are now supported.
 
@@ -208,21 +204,32 @@ Customers
 When creating a customer, you can specify any plan they are on, any coupons that will apply,
 a credit card or token, and various meta data.
 
-	var myCustomer = new StripeCustomerCreateOptions();
+With a token:
 
-	// set these properties if it makes you happy
+	var myCustomer = new StripeCustomerCreateOptions();
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
+    
+    myCustomer.SourceToken = *token*;
 
+	myCustomer.PlanId = *planId*;                          // only if you have a plan
+	myCustomer.TaxPercent = 20;                            // only if you are passing a plan, this tax percent will be added to the price.
+	myCustomer.Coupon = *couponId*;                        // only if you have a coupon
+	myCustomer.TrialEnd = DateTime.UtcNow.AddMonths(1);    // when the customers trial ends (overrides the plan if applicable)
+	myCustomer.Quantity = 1;                               // optional, defaults to 1
+
+	var customerService = new StripeCustomerService();
+	StripeCustomer stripeCustomer = customerService.Create(myCustomer);
+    
+With a card:
+
+	var myCustomer = new StripeCustomerCreateOptions();
+	myCustomer.Email = "pork@email.com";
+	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
+    
 	// setting up the card
-	myCustomer.Source = new StripeSourceOptions()
+	myCustomer.SourceCard = new SourceCard()
 	{
-		// set this property if using a token
-		TokenId = *tokenId*,
-
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Object = "card",
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
 		ExpirationMonth = "10",
@@ -249,18 +256,28 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 ### Updating a customer
 
-	var myCustomer = new StripeCustomerUpdateOptions();
+With a token:
 
-	// set these properties if it makes you happy
+	var myCustomer = new StripeCustomerUpdateOptions();
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
 
-	// setting up the card
-	myCustomer.Source = new StripeSourceOptions()
-	{
-		// set this property if using a token
-		TokenId = *tokenId*,
+    myCustomer.SourceToken = *token*;
 
+	myCustomer.Coupon = *couponId*;    // only if you have a coupon
+
+	var customerService = new StripeCustomerService();
+	StripeCustomer stripeCustomer = customerService.Update(*customerId*, myCustomer);
+
+With a card:
+
+	var myCustomer = new StripeCustomerUpdateOptions();
+	myCustomer.Email = "pork@email.com";
+	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
+    
+	// setting up the card
+	myCustomer.Source = new SourceCard()
+	{
 		// set these properties if passing full card details (do not
 		// set these properties if you set TokenId)
 		Object = "card",
@@ -277,13 +294,14 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 		Cvc = "1223"                          // optional
 	};
 
-	// this will set the default card to use for this customer
-	myCustomer.DefaultSource = *cardId*;
-
 	myCustomer.Coupon = *couponId*;    // only if you have a coupon
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Update(*customerId*, myCustomer);
+    
+If you want to set the default source, just add:
+
+	myCustomer.DefaultSource = *sourceId*;
 
 ### Retrieving a customer
 
@@ -341,17 +359,22 @@ Cards
 
 When creating a card you can use either a card or a token
 
+With a token:
+
 	var myCard = new StripeCardCreateOptions();
 
-	// setting up the card
-	myCard.Source = new StripeSourceOptions()
-	{
-		// set this property if using a token
-		TokenId = *tokenId*,
+    myCard.SourceToken = *tokenId*;
 
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Object = "card",
+	var cardService = new StripeCardService();
+	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
+    
+With a card:
+
+    var myCard = new StripeCardCreateOptions();
+
+	// setting up the card
+	myCard.SourceCard = new SourceCard()
+	{
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
 		ExpirationMonth = "10",
@@ -364,8 +387,8 @@ When creating a card you can use either a card or a token
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
 	};
-
-	var cardService = new StripeCardService();
+    
+    var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
 
 ### Retrieving a card
@@ -407,7 +430,9 @@ Charges
 
 ### Creating a charge
 
-When creating a charge you can use either a card, customer, or a token. Only one is allowed.
+When creating a charge you can use either a card, customer, or a token/existing source. Only one is allowed.
+
+With a token (or an existing source):
 
 	var myCharge = new StripeChargeCreateOptions();
 
@@ -418,15 +443,34 @@ When creating a charge you can use either a card, customer, or a token. Only one
 	// set this if you want to
 	myCharge.Description = "Charge it like it's hot";
 
-	// setting up the card
-	myCharge.Source = new StripeSourceOptions()
-	{
-		// set this property if using a token
-		TokenId = *tokenId*,
+    myCharge.SourceTokenOrExistingSourceId = *tokenId or existingSourceId*;
 
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Object = "card",
+	// set this property if using a customer - this MUST be set if you are using an existing source!
+	myCharge.CustomerId = *customerId*;
+
+	// set this if you have your own application fees (you must have your application configured first within Stripe)
+	myCharge.ApplicationFee = 25;
+
+	// (not required) set this to false if you don't want to capture the charge yet - requires you call capture later
+	myCharge.Capture = true;
+
+	var chargeService = new StripeChargeService();
+	StripeCharge stripeCharge = chargeService.Create(myCharge);
+    
+With a card:
+
+    // setting up the card
+	var myCharge = new StripeChargeCreateOptions();
+
+	// always set these properties
+	myCharge.Amount = 5153;
+	myCharge.Currency = "usd";
+
+	// set this if you want to
+	myCharge.Description = "Charge it like it's hot";
+    
+	myCharge.SourceCard = new StripeCard()
+	{
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
 		ExpirationMonth = "10",
@@ -439,8 +483,8 @@ When creating a charge you can use either a card, customer, or a token. Only one
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
 	};
-
-	// set this property if using a customer
+    
+    // set this property if using a customer
 	myCharge.CustomerId = *customerId*;
 
 	// set this if you have your own application fees (you must have your application configured first within Stripe)
@@ -638,26 +682,7 @@ Recipients
 	myRecipient.Email = "bacon@example.com";                                // optional
 	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";  //optional
 
-	// if you need this...
-	myRecipient.Card = new StripeCreditCardOptions()
-	{
-		// set this property if using a token
-		TokenId = *tokenId*,
-
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
-	}
+	// create a token OR card via SourceToken or SourceCard (see above examples)
 
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Create(myRecipient);
@@ -670,26 +695,7 @@ Recipients
 	myRecipient.Email = "bacon@example.com";                                // optional
 	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";  // optional
 
-	// if you need this...
-	myRecipient.Card = new StripeCreditCardOptions()
-	{
-		// set this property if using a token
-		TokenId = *tokenId*,
-
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
-	}
+	// update a token OR card via SourceToken or SourceCard (see above examples)
 
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Update(*recipientId*, myRecipient);

@@ -16,6 +16,12 @@ namespace Stripe
         public string CustomerId { get; set; }
 
         [JsonProperty("source")]
+        public string SourceTokenOrExistingSourceId { get; set; }
+
+        [JsonProperty("source")]
+        public SourceCard SourceCard { get; set; }
+
+        [JsonProperty("source")]
         public StripeSourceOptions Source { get; set; }
 
         [JsonProperty("description")]

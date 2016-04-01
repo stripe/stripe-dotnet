@@ -333,6 +333,9 @@
     <Compile Include="..\Stripe\Services\Plans\StripePlanUpdateOptions.cs">
       <Link>Services\Plans\StripePlanUpdateOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\Recipients\StripeBankAccountOptions.cs">
+      <Link>Services\Recipients\StripeBankAccountOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\Recipients\StripeRecipientCreateOptions.cs">
       <Link>Services\Recipients\StripeRecipientCreateOptions.cs</Link>
     </Compile>
@@ -354,12 +357,6 @@
     <Compile Include="..\Stripe\Services\Refunds\StripeRefundUpdateOptions.cs">
       <Link>Services\Refunds\StripeRefundUpdateOptions.cs</Link>
     </Compile>
-    <Compile Include="..\Stripe\Services\StripeBankAccountOptions.cs">
-      <Link>Services\StripeBankAccountOptions.cs</Link>
-    </Compile>
-    <Compile Include="..\Stripe\Services\StripeCreditCardOptions.cs">
-      <Link>Services\StripeCreditCardOptions.cs</Link>
-    </Compile>
     <Compile Include="..\Stripe\Services\StripeDateFilter.cs">
       <Link>Services\StripeDateFilter.cs</Link>
     </Compile>
@@ -371,9 +368,6 @@
     </Compile>
     <Compile Include="..\Stripe\Services\StripeService.cs">
       <Link>Services\StripeService.cs</Link>
-    </Compile>
-    <Compile Include="..\Stripe\Services\StripeSourceOptions.cs">
-      <Link>Services\StripeSourceOptions.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Services\Subscriptions\StripeSubscriptionCreateOptions.cs">
       <Link>Services\Subscriptions\StripeSubscriptionCreateOptions.cs</Link>
@@ -398,6 +392,15 @@
     </Compile>
     <Compile Include="..\Stripe\Services\Transfers\StripeTransferService.cs">
       <Link>Services\Transfers\StripeTransferService.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\_refactor\StripeCreditCardOptions.cs">
+      <Link>Services\_refactor\StripeCreditCardOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\_refactor\StripeSourceOptions.cs">
+      <Link>Services\_refactor\StripeSourceOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\_sources\SouceCard.cs">
+      <Link>Services\_sources\SouceCard.cs</Link>
     </Compile>
     <Compile Include="Extensions\BindingFlags.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />

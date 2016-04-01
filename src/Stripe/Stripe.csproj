@@ -97,8 +97,8 @@
     <Compile Include="Services\Refunds\StripeRefundUpdateOptions.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceCreateOptions.cs" />
     <Compile Include="Services\StripeRequestOptions.cs" />
-    <Compile Include="Services\StripeSourceOptions.cs" />
-    <Compile Include="Services\StripeCreditCardOptions.cs" />
+    <Compile Include="Services\_refactor\StripeSourceOptions.cs" />
+    <Compile Include="Services\_refactor\StripeCreditCardOptions.cs" />
     <Compile Include="Services\StripeDateFilter.cs" />
     <Compile Include="Entities\StripeApplicationFeeRefund.cs" />
     <Compile Include="Entities\StripeApplicationFee.cs" />
@@ -131,7 +131,7 @@
     <Compile Include="Services\Account\StripeAccountService.cs" />
     <Compile Include="Services\ApplicationFees\StripeApplicationFeeListOptions.cs" />
     <Compile Include="Services\Balance\StripeBalanceService.cs" />
-    <Compile Include="Services\StripeBankAccountOptions.cs" />
+    <Compile Include="Services\Recipients\StripeBankAccountOptions.cs" />
     <Compile Include="Services\ApplicationFees\StripeApplicationFeeService.cs" />
     <Compile Include="Services\Cards\StripeCardCreateOptions.cs" />
     <Compile Include="Services\Cards\StripeCardService.cs" />
@@ -181,6 +181,7 @@
     <Compile Include="Services\Transfers\StripeTransferService.cs" />
     <Compile Include="Constants\StripeTransferFailureCodes.cs" />
     <Compile Include="Constants\StripeEvents.cs" />
+    <Compile Include="Services\_sources\SouceCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

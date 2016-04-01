@@ -24,6 +24,7 @@ namespace Stripe
 
                     foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
                     {
+                        // simplify this crap
                         if (attribute.PropertyName.ToLower().Contains("metadata"))
                         {
                             var metadata = (Dictionary<string, string>)value;
@@ -54,29 +55,35 @@ namespace Stripe
                         }
                         else if (property.PropertyType == typeof(StripeBankAccountOptions))
                         {
-                            var bankAccountOptions = (StripeBankAccountOptions)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, bankAccountOptions);
+                            var options = (StripeBankAccountOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
                         }
                         else if (property.PropertyType == typeof(StripeCreditCardOptions))
                         {
-                            var creditCardOptions = (StripeCreditCardOptions)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, creditCardOptions);
+                            var options = (StripeCreditCardOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
                         }
                         else if (property.PropertyType == typeof(StripeSourceOptions))
                         {
-                            var stripeSourceOptions = (StripeSourceOptions)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, stripeSourceOptions);
+                            var options = (StripeSourceOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
+                        }
+                        else if (property.PropertyType == typeof(SourceCard))
+                        {
+                            var options = (SourceCard)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
                         }
                         else if (property.PropertyType == typeof(StripeAccountCardOptions))
                         {
-                            var stripeAccountCardOptions = (StripeAccountCardOptions)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, stripeAccountCardOptions);
+                            var options = (StripeAccountCardOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
                         }
                         else if (property.PropertyType == typeof(StripeAccountBankAccountOptions))
                         {
-                            var stripeAccountBankAccountOptions = (StripeAccountBankAccountOptions)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, stripeAccountBankAccountOptions);
+                            var options = (StripeAccountBankAccountOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
                         }
+                        // end the crap
                         else
                         {
                             newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());

@@ -7,9 +7,9 @@ namespace Stripe.Tests.test_data
     {
         public static StripeCustomerCreateOptions ValidCard(string _planId = null, string _couponId = null, DateTime? _trialEnd = null)
         {
-            var cardOptions = new StripeSourceOptions()
+            // obsolete: var cardOptions = new StripeSourceOptions()
+            var cardOptions = new SourceCard()
             {
-                Object = "card",
                 AddressCountry = "US",
                 AddressLine1 = "234 Bacon St",
                 AddressLine2 = "Apt 1",
@@ -24,7 +24,8 @@ namespace Stripe.Tests.test_data
 
             var stripeCustomerCreateOptions = new StripeCustomerCreateOptions()
             {
-                Source = cardOptions,
+                // obsolete: Source = cardOptions,
+                SourceCard = cardOptions,
                 Email = "pork@email.com",
                 Description = "Johnny Tenderloin (pork@email.com)",
                 AccountBalance = 100,
@@ -50,7 +51,8 @@ namespace Stripe.Tests.test_data
         public static StripeCustomerCreateOptions ValidCardButChargeFails(string _planId = null, string _couponId = null, DateTime? _trialEnd = null)
         {
             var stripeCustomerCreateOptions = ValidCard(_planId, _couponId, _trialEnd);
-            stripeCustomerCreateOptions.Source.Number = "4000000000000341";
+            // obsolete: stripeCustomerCreateOptions.Source.Number = "4000000000000341";
+            stripeCustomerCreateOptions.SourceCard.Number = "4000000000000341";
 
             return stripeCustomerCreateOptions;
         }
@@ -59,7 +61,8 @@ namespace Stripe.Tests.test_data
         {
             var stripeCustomerCreateOptions = new StripeCustomerCreateOptions()
             {
-                Source = new StripeSourceOptions() { TokenId = tokenId }
+                // obsolete: Source = new StripeSourceOptions() { TokenId = tokenId }
+                SourceToken = tokenId
             };
 
             if (_planId != null)

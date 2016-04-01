@@ -6,7 +6,8 @@ namespace Stripe.Tests.test_data
     {
         public static StripeChargeCreateOptions ValidCard()
         {
-            var cardOptions = new StripeSourceOptions()
+            // obsolete: var cardOptions = new StripeSourceOptions()
+            var cardOptions = new SourceCard()
             {
                 AddressCountry = "US",
                 AddressLine1 = "24 Beef Flank St",
@@ -23,7 +24,8 @@ namespace Stripe.Tests.test_data
 
             return new StripeChargeCreateOptions()
             {
-                Source = cardOptions,
+                // obsolete: Source = cardOptions,
+                SourceCard = cardOptions,
                 Description = "Joe Meatball Charge",
                 StatementDescriptor = "Joe Meatball Sub",
                 Amount = 5153,
@@ -38,7 +40,8 @@ namespace Stripe.Tests.test_data
 
         public static StripeChargeCreateOptions DisputedCard()
         {
-            var cardOptions = new StripeSourceOptions()
+            // obsolete: var cardOptions = new StripeSourceOptions()
+            var cardOptions = new SourceCard()
             {
                 AddressCountry = "US",
                 AddressLine1 = "24 Beef Flank St",
@@ -55,7 +58,8 @@ namespace Stripe.Tests.test_data
 
             return new StripeChargeCreateOptions()
             {
-                Source = cardOptions,
+                // obsolete: Source = cardOptions,
+                SourceCard = cardOptions,
                 Description = "Joe Meatball Charge",
                 StatementDescriptor = "Joe Meatball Sub",
                 Amount = 5153,
@@ -70,7 +74,8 @@ namespace Stripe.Tests.test_data
 
         public static StripeChargeCreateOptions InvalidCard()
         {
-            var cardOptions = new StripeSourceOptions()
+            // obsolete: var cardOptions = new StripeSourceOptions()
+            var cardOptions = new SourceCard()
             {
                 AddressCountry = "US",
                 AddressLine1 = "24 Poopie St",
@@ -86,7 +91,8 @@ namespace Stripe.Tests.test_data
 
             return new StripeChargeCreateOptions()
             {
-                Source = cardOptions,
+                // obsolete: Source = cardOptions,
+                SourceCard = cardOptions,
                 Description = "Joe Meatball Charge",
                 StatementDescriptor = "Joe Meatball Sub",
                 Amount = 5153,
@@ -112,7 +118,8 @@ namespace Stripe.Tests.test_data
             {
                 Amount = 2001,
                 Currency = "usd",
-                Source = new StripeSourceOptions() { TokenId = _tokenId }
+                // obsolete: Source = new StripeSourceOptions() { TokenId = _tokenId }
+                SourceTokenOrExistingSourceId =  _tokenId
             };
         }
     }

@@ -29,6 +29,12 @@ namespace Stripe
         public int? Quantity { get; set; }
 
         [JsonProperty("source")]
+        public string SourceToken { get; set; }
+
+        [JsonProperty("source")]
+        public SourceCard SourceCard { get; set; }
+        
+        [JsonProperty("source")]
         public StripeSourceOptions Source { get; set; }
 
         [JsonProperty("tax_percent")]

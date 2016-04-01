@@ -1,16 +1,12 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeSourceOptions
+    public class SourceCard
     {
-        [JsonProperty("source")]
-        public string TokenId { get; set; }
-
         [JsonProperty("source[object]")]
-        public string Object { get; set; }
+        internal string Object => "card";
 
         [JsonProperty("source[number]")]
         public string Number { get; set; }
