@@ -7,3 +7,5 @@ copy .\src\Stripe.Portable\bin\Release\Stripe.net.pdb .\build\portable\Stripe.ne
 
 cd build
 nuget pack Stripe.net.nuspec
+
+pause
