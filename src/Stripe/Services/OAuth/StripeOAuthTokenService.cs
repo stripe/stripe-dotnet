@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 ﻿namespace Stripe
 {
     public class StripeOAuthTokenService : StripeService
@@ -6,13 +8,20 @@
 
         public virtual StripeOAuthToken Create(StripeOAuthTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
-            requestOptions = SetupRequestOptions(requestOptions);
-
-            var url = this.ApplyAllParameters(createOptions, Urls.OAuthToken, false);
-
-            var response = Requestor.PostStringBearer(url, requestOptions);
-
-            return Mapper<StripeOAuthToken>.MapFromJson(response);
+            return Mapper<StripeOAuthToken>.MapFromJson(
+                Requestor.PostStringBearer(this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
+                SetupRequestOptions(requestOptions))
+            );
         }
+
+#if !PORTABLE
+        public virtual async Task<StripeOAuthToken> CreateAsync(StripeOAuthTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeOAuthToken>.MapFromJson(
+                await Requestor.PostStringBearerAsync(this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+#endif
     }
 }
