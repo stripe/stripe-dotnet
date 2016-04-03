@@ -1,5 +1,11 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)
 
+Async is now supported for .NET 4.5+. All of the examples below still apply (method signatures are the same names + Async: GetAsync, ListAsync, etc). 
+A documentation update is overdue (this readme is quite large!), and using async will be documented in greater detail at that time. There are some cool changes 
+coming with regards to documentation. :)
+
+Let me know if you run into any issues. Enjoy!
+
 **Release: 6.0.0**
 Stripe.net now supports .NET 4.5+ and is a portable class library. UWP, .NET Core, Windows 8, WindowsPhone 8.0+, and Xamarin are now supported.
 
