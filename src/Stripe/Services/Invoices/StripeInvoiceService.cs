@@ -21,7 +21,7 @@ namespace Stripe
 
         public virtual StripeInvoice Upcoming(string customerId, StripeUpcomingInvoiceOptions upcomingOptions = null, StripeRequestOptions requestOptions = null)
         {
-            url = ParameterBuilder.ApplyParameterToUrl($"{Urls.Invoices}/upcoming", "customer", customerId);
+            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.Invoices}/upcoming", "customer", customerId);
 
             return Mapper<StripeInvoice>.MapFromJson(
                 Requestor.GetString(this.ApplyAllParameters(upcomingOptions, url, false),
@@ -55,7 +55,7 @@ namespace Stripe
 
         public virtual StripeInvoice Create(string customerId, StripeInvoiceCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
         {
-            url = ParameterBuilder.ApplyParameterToUrl(Urls.Invoices, "customer", customerId);
+            var url = ParameterBuilder.ApplyParameterToUrl(Urls.Invoices, "customer", customerId);
 
             return Mapper<StripeInvoice>.MapFromJson(
                 Requestor.PostString(this.ApplyAllParameters(createOptions, url, false),
@@ -74,7 +74,7 @@ namespace Stripe
 
         public virtual async Task<StripeInvoice> UpcomingAsync(string customerId, StripeUpcomingInvoiceOptions upcomingOptions = null, StripeRequestOptions requestOptions = null)
         {
-            url = ParameterBuilder.ApplyParameterToUrl($"{Urls.Invoices}/upcoming", "customer", customerId);
+            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.Invoices}/upcoming", "customer", customerId);
 
             return Mapper<StripeInvoice>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(upcomingOptions, url, false),
@@ -108,7 +108,7 @@ namespace Stripe
 
         public virtual async Task<StripeInvoice> CreateAsync(string customerId, StripeInvoiceCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
         {
-            url = ParameterBuilder.ApplyParameterToUrl(Urls.Invoices, "customer", customerId);
+            var url = ParameterBuilder.ApplyParameterToUrl(Urls.Invoices, "customer", customerId);
 
             return Mapper<StripeInvoice>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, url, false),

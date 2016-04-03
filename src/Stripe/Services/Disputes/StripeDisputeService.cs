@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
         public virtual StripeDispute Update(string chargeId, string evidence = null, StripeRequestOptions requestOptions = null)
         {
-            url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
+            var url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
 
             if (!string.IsNullOrEmpty(evidence))
                 url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);
@@ -25,7 +25,7 @@ using System.Threading.Tasks;
 #if !PORTABLE
         public virtual async Task<StripeDispute> UpdateAsync(string chargeId, string evidence = null, StripeRequestOptions requestOptions = null)
         {
-            url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
+            var url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
 
             if (!string.IsNullOrEmpty(evidence))
                 url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);
