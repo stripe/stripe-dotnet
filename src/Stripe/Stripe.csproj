@@ -70,6 +70,7 @@
     <Compile Include="Entities\StripeFileUpload.cs" />
     <Compile Include="Entities\StripeLegalEntityVerification.cs" />
     <Compile Include="Entities\StripeLegalEntity.cs" />
+    <Compile Include="Entities\StripeOAuthDeauthorize.cs" />
     <Compile Include="Entities\StripeTermsOfServiceAcceptance.cs" />
     <Compile Include="Entities\StripeTransferSchedule.cs" />
     <Compile Include="Entities\StripeAccountVerification.cs" />

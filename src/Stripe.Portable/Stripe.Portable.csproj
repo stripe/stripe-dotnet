@@ -135,6 +135,9 @@
     <Compile Include="..\Stripe\Entities\StripeManagedAccountKeys.cs">
       <Link>Entities\StripeManagedAccountKeys.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Entities\StripeOAuthDeauthorize.cs">
+      <Link>Entities\StripeOAuthDeauthorize.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Entities\StripeOAuthToken.cs">
       <Link>Entities\StripeOAuthToken.cs</Link>
     </Compile>

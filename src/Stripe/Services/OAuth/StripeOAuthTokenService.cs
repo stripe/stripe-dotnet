@@ -14,12 +14,32 @@ using System.Threading.Tasks;
             );
         }
 
+        public virtual StripeOAuthDeauthorize Deauthorize(string clientId, string stripeUserId, StripeRequestOptions requestOptions = null)
+        {
+            var url = ParameterBuilder.ApplyParameterToUrl(Urls.OAuthDeauthorize, "client_id", clientId);
+            url = ParameterBuilder.ApplyParameterToUrl(Urls.OAuthDeauthorize, "stripe_user_id", stripeUserId);
+
+            return Mapper<StripeOAuthDeauthorize>.MapFromJson(
+                Requestor.PostString(url, SetupRequestOptions(requestOptions))
+            );
+        }
+
 #if !PORTABLE
         public virtual async Task<StripeOAuthToken> CreateAsync(StripeOAuthTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeOAuthToken>.MapFromJson(
                 await Requestor.PostStringBearerAsync(this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
                 SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripeOAuthDeauthorize> DeauthorizeAsync(string clientId, string stripeUserId, StripeRequestOptions requestOptions = null)
+        {
+            var url = ParameterBuilder.ApplyParameterToUrl(Urls.OAuthDeauthorize, "client_id", clientId);
+            url = ParameterBuilder.ApplyParameterToUrl(Urls.OAuthDeauthorize, "stripe_user_id", stripeUserId);
+
+            return Mapper<StripeOAuthDeauthorize>.MapFromJson(
+                await Requestor.PostStringAsync(url, SetupRequestOptions(requestOptions))
             );
         }
 #endif
