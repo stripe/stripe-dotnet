@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
@@ -38,7 +40,8 @@ namespace Stripe
         [JsonProperty("external_account")]
         public StripeAccountBankAccountOptions ExternalBankAccount { get; set; }
 
-        // legal entity
+        [JsonProperty("legal_entity")]
+        public StripeAccountLegalEntityOptions LegalEntity { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -58,8 +61,43 @@ namespace Stripe
         [JsonProperty("support_url")]
         public string SupportUrl { get; set; }
 
-        // tos acceptance
+        #region Tos Acceptance
 
-        // transfer schedule
+        public DateTime? TosAcceptanceDate { get; set; }
+
+        [JsonProperty("tos_acceptance[date]")]
+        internal long? TosAcceptanceDateInternal
+        {
+            get
+            {
+                if (!TosAcceptanceDate.HasValue) return null;
+
+                return EpochTime.ConvertDateTimeToEpoch(TosAcceptanceDate.Value);
+            }
+        }
+
+        [JsonProperty("tos_acceptance[ip]")]
+        public string TosAcceptanceIp { get; set; }
+
+        [JsonProperty("tos_acceptance[user_agent]")]
+        public string TosAcceptanceUserAgent { get; set; }
+
+        #endregion
+
+        #region Transfer Schedule
+
+        [JsonProperty("transfer_schedule[delay_days]")]
+        public string TransferScheduleDelayDays { get; set; }
+
+        [JsonProperty("transfer_schedule[interval]")]
+        public string TransferScheduleInterval { get; set; }
+
+        [JsonProperty("transfer_schedule[monthly_anchor]")]
+        public string TransferScheduleMonthlyAnchor { get; set; }
+
+        [JsonProperty("transfer_schedule[weekly_anchor]")]
+        public string TransferScheduleWeeklyAnchor { get; set; }
+
+        #endregion
     }
 }

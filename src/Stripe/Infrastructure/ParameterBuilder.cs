@@ -83,6 +83,11 @@ namespace Stripe
                             var options = (StripeAccountBankAccountOptions)value;
                             newUrl = ApplyNestedObjectProperties(newUrl, options);
                         }
+                        else if (property.PropertyType == typeof(StripeAccountLegalEntityOptions))
+                        {
+                            var sripeAccountLegalEntityOptions = (StripeAccountLegalEntityOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, sripeAccountLegalEntityOptions);
+                        }
                         // end the crap
                         else
                         {
