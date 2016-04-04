@@ -14,5 +14,8 @@ namespace Stripe
 
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
+        
+        [JsonProperty("fraud_details")]
+        public Dictionary<string, string> FraudDetails { get; set; }
     }
 }

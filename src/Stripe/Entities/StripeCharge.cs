@@ -117,7 +117,9 @@ namespace Stripe
         public string ReceiptNumber { get; set; }
 
         // fraud details
-
+        [JsonProperty("fraud_details")]
+        public StripeFraudDetails FraudDetails { get; set; }
+        
         // shipping
 
         // application_fee
