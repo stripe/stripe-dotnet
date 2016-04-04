@@ -34,7 +34,8 @@ namespace Stripe
         [JsonProperty("coupon")]
         public string CouponId { get; set; }
 
-        #region Expndable TrialEnd
+        #region Trial End
+
         public DateTime? TrialEnd { get; set; }
 
         public bool EndTrialNow { get; set; }
@@ -51,6 +52,7 @@ namespace Stripe
                 return null;
             }
         }
+
         #endregion
 
         [JsonProperty("quantity")]

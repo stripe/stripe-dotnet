@@ -11,8 +11,8 @@ namespace Stripe.Tests
         protected static StripePlan StripePlan;
         protected static StripeCoupon StripeCoupon;
         protected static StripeCard StripeCard;
-        protected static StripeSubscription StripeSubscription;
 
+        private static StripeSubscription _stripeSubscription;
         private static StripeCustomerService _stripeCustomerService;
 
         Establish context = () =>
@@ -33,7 +33,7 @@ namespace Stripe.Tests
 
             StripeCard = StripeCustomer.SourceList.Data.First();
 
-            StripeSubscription = StripeCustomer.StripeSubscriptionList.Data.First();
+            _stripeSubscription = StripeCustomer.StripeSubscriptionList.Data.First();
         };
 
         Behaves_like<customer_behaviors> behaviors;
@@ -42,9 +42,9 @@ namespace Stripe.Tests
             StripeCustomerCreateOptions.TrialEndInternal.ShouldEqual("now");
 
         It should_have_expired_trial_start = () =>
-            StripeSubscription.TrialStart.ShouldBeNull();
+            _stripeSubscription.TrialStart.ShouldBeNull();
 
         It should_have_expired_trial_end = () =>
-            StripeSubscription.TrialEnd.ShouldBeNull();
+            _stripeSubscription.TrialEnd.ShouldBeNull();
     }
 }

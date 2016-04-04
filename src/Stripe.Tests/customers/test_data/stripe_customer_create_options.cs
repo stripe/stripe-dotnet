@@ -42,10 +42,11 @@ namespace Stripe.Tests.test_data
             if (_couponId != null)
                 stripeCustomerCreateOptions.CouponId = _couponId;
 
+            if (_trialEnd != null)
+                stripeCustomerCreateOptions.TrialEnd = _trialEnd;
+
             if (_trialEndNow)
                 stripeCustomerCreateOptions.EndTrialNow = true;
-            else if (_trialEnd != null)
-                stripeCustomerCreateOptions.TrialEnd = _trialEnd;
 
             return stripeCustomerCreateOptions;
         }

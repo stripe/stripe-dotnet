@@ -40,9 +40,10 @@ namespace Stripe
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
+        #region Trial End
 
         public DateTime? TrialEnd { get; set; }
-        
+
         public bool EndTrialNow { get; set; }
 
         [JsonProperty("trial_end")]
@@ -58,5 +59,7 @@ namespace Stripe
                     return null;
             }
         }
+
+        #endregion
     }
 }
