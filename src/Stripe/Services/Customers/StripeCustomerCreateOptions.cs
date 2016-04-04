@@ -40,16 +40,22 @@ namespace Stripe
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
+
         public DateTime? TrialEnd { get; set; }
+        
+        public bool EndTrialNow { get; set; }
 
         [JsonProperty("trial_end")]
-        internal long? TrialEndInternal
+        internal string TrialEndInternal
         {
             get
             {
-                if (!TrialEnd.HasValue) return null;
-
-                return EpochTime.ConvertDateTimeToEpoch(TrialEnd.Value);
+                if (EndTrialNow)
+                    return "now";
+                else if (TrialEnd.HasValue)
+                    return EpochTime.ConvertDateTimeToEpoch(TrialEnd.Value).ToString();
+                else
+                    return null;
             }
         }
     }

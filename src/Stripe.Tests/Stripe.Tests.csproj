@@ -82,6 +82,7 @@
     <Compile Include="Setup.cs" />
     <Compile Include="charges\test_data\stripe_charge_update_options.cs" />
     <Compile Include="charges\when_updating_a_charge.cs" />
+    <Compile Include="customers\when_creating_a_customer_with_trial_end_now.cs" />
     <Compile Include="idempotency\when_creating_a_charge_with_a_card_and_idempotency_key.cs" />
     <Compile Include="charges\charge_behaviors.cs" />
     <Compile Include="charges\when_capturing_a_charge_with_a_card.cs" />
