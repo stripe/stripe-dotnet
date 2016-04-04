@@ -9,6 +9,9 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        [JsonProperty("fraud_details")]
+        public Dictionary<string, string> FraudDetails { get; set; }
+
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
