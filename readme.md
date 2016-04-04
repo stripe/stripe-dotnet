@@ -358,14 +358,6 @@ Subscriptions
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
-### Statuses
-
-    StripeSubscriptionStatuses.Trialing
-    StripeSubscriptionStatuses.Active
-    StripeSubscriptionStatuses.PastDue
-    StripeSubscriptionStatuses.Canceled
-    StripeSubscriptionStatuses.Unpaid
-
 Cards
 -----
 

@@ -1,8 +1,5 @@
 ﻿namespace Stripe
 {
-    /// <summary>
-    /// https://stripe.com/docs/api#subscription_object-status
-    /// </summary>
     public static class StripeSubscriptionStatuses
     {
         public const string Trialing = "trialing";
