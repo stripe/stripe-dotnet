@@ -78,6 +78,7 @@
     <Compile Include="balance\when_listing_balancetransactions.cs" />
     <Compile Include="balance\when_listing_balancetransactions_for_charge.cs" />
     <Compile Include="balance\when_retrieving_a_balance.cs" />
+    <Compile Include="card\when_creating_a_card.cs" />
     <Compile Include="charges\when_refunding_and_setting_fraud_details.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="charges\test_data\stripe_charge_update_options.cs" />

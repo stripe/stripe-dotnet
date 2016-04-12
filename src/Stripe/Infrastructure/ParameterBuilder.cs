@@ -26,14 +26,7 @@ namespace Stripe
                     {
                         // simplify this crap
                         if (attribute.PropertyName.ToLower().Contains("metadata"))
-                        {
-                            var metadata = (Dictionary<string, string>)value;
-
-                            foreach (string key in metadata.Keys)
-                            {
-                                newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
-                            }
-                        }
+                            newUrl = ApplyMetadataParameters(newUrl, value);
                         else if (attribute.PropertyName.ToLower().Contains("fraud_details"))
                         {
                             var fraudDetails = (Dictionary<string, string>)value;
@@ -143,15 +136,30 @@ namespace Stripe
 
         private static string ApplyNestedObjectProperties(string newUrl, object nestedObject)
         {
-            foreach (var prop in nestedObject.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+            foreach (var property in nestedObject.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
             {
-                var val = prop.GetValue(nestedObject, null);
-                if (val == null) continue;
+                var value = property.GetValue(nestedObject, null);
+                if (value == null) continue;
 
-                foreach (var attr in prop.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
+                foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
                 {
-                    newUrl = ApplyParameterToUrl(newUrl, attr.PropertyName, val.ToString());
+                    if (attribute.PropertyName.ToLower().Contains("metadata"))
+                        newUrl = ApplyMetadataParameters(newUrl, value);
+                    else
+                        newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
                 }
+            }
+
+            return newUrl;
+        }
+
+        private static string ApplyMetadataParameters(string newUrl, object value)
+        {
+            var metadata = (Dictionary<string, string>)value;
+
+            foreach (string key in metadata.Keys)
+            {
+                newUrl = ApplyParameterToUrl(newUrl, $"metadata[{key}]", metadata[key]);
             }
 
             return newUrl;
