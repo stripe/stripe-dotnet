@@ -109,7 +109,7 @@ namespace Stripe
             );
         }
 
-        public virtual async void DeleteAsync(string customerOrRecipientId, string cardId, bool isRecipient = false, StripeRequestOptions requestOptions = null)
+        public virtual async Task DeleteAsync(string customerOrRecipientId, string cardId, bool isRecipient = false, StripeRequestOptions requestOptions = null)
         {
             var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
 
