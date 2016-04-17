@@ -1,15 +1,10 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)
 
-First off, a big thanks to Stripe for supporting my work on this project. I really appreciate it.
+The new BankAccountService does not have the usual name, StripeBankAccountService. I will slowly be moving from this method of always including the name Stripe, as class names are getting way too long (even for me). BankAccountCreateOptions is just a shorter name, for example.
 
-Async is now supported for .NET 4.5+. All of the examples below still apply (method signatures are the same names + Async: GetAsync, ListAsync, etc). 
-A documentation update is overdue (this readme is quite large!), and using async will be documented in greater detail at that time. There are some cool changes 
-coming with regards to documentation. :)
+This service also returns a CustomerBankAccount, instead of the already built in StripeBankAccount. The reason is because Stripe wants to keep a clean separation between external account bank accounts, and customer bank accounts. The StripeBankAccount entity will 
+eventually be renamed to ExternalAccountBankAccount.
 
-Let me know if you run into any issues. Enjoy!
-
-**Release: 6.0.0**
-Stripe.net now supports .NET 4.5+ and is a portable class library. UWP, .NET Core, Windows 8, WindowsPhone 8.0+, and Xamarin are now supported.
 
 Support
 -------
