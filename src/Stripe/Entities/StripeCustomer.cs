@@ -11,18 +11,35 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        [JsonProperty("account_balance")]
+        public int AccountBalance { get; set; }
+
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
 
-        [JsonProperty("account_balance")]
-        public int AccountBalance { get; set; }
+        [JsonProperty("bank_accounts")]
+        public StripeList<CustomerBankAccount> CustomerBankAccounts { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
+
+        #region Expandable Default CustomerBankAccount
+        public string DefaultCustomerBankAccountId { get; set; }
+
+        [JsonIgnore]
+        public CustomerBankAccount DefaultCustomerBankAccount { get; set; }
+
+        [JsonProperty("default_bank_account")]
+        internal object InternalDefaultCustomerBankAccount
+        {
+            set
+            {
+                ExpandableProperty<CustomerBankAccount>.Map(value, s => DefaultCustomerBankAccountId = s, o => DefaultCustomerBankAccount = o);
+            }
+        }
+        #endregion
 
         #region Expandable Default Source
         public string DefaultSourceId { get; set; }
@@ -40,6 +57,9 @@ namespace Stripe
         }
         #endregion
 
+        [JsonProperty("default_source_type")]
+        public string DefaultSourceType { get; set; }
+
         [JsonProperty("delinquent")]
         public bool Delinquent { get; set; }
 
@@ -51,6 +71,9 @@ namespace Stripe
 
         [JsonProperty("email")]
         public string Email { get; set; }
+
+        [JsonProperty("livemode")]
+        public bool LiveMode { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

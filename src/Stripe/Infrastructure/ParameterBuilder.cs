@@ -11,7 +11,7 @@ namespace Stripe
 {
     internal static class ParameterBuilder
     {
-        public static string ApplyAllParameters(this StripeService service, object obj, string url, bool isListMethod)
+        public static string ApplyAllParameters(this StripeService service, object obj, string url, bool isListMethod = false)
         {
             string newUrl = url;
 
@@ -73,6 +73,11 @@ namespace Stripe
                         else if (property.PropertyType == typeof(SourceCard))
                         {
                             var options = (SourceCard)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
+                        }
+                        else if (property.PropertyType == typeof(SourceBankAccount))
+                        {
+                            var options = (SourceBankAccount)value;
                             newUrl = ApplyNestedObjectProperties(newUrl, options);
                         }
                         else if (property.PropertyType == typeof(StripeAccountCardOptions))

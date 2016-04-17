@@ -61,6 +61,8 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Constants\BankAccountHolderType.cs" />
+    <Compile Include="Entities\CustomerBankAccount.cs" />
     <Compile Include="Entities\StripeManagedAccountKeys.cs" />
     <Compile Include="Constants\StripeSubscriptionStatuses.cs" />
     <Compile Include="Entities\StripeBirthDay.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Entities\StripeLegalEntityVerification.cs" />
     <Compile Include="Entities\StripeLegalEntity.cs" />
     <Compile Include="Entities\StripeOAuthDeauthorize.cs" />
+    <Compile Include="Entities\StripeObject.cs" />
     <Compile Include="Entities\StripeTermsOfServiceAcceptance.cs" />
     <Compile Include="Entities\StripeTransferSchedule.cs" />
     <Compile Include="Entities\StripeAccountVerification.cs" />
@@ -79,7 +82,6 @@
     <Compile Include="Entities\StripeBankAccount.cs" />
     <Compile Include="Entities\StripeBalanceTransaction.cs" />
     <Compile Include="Entities\StripeFee.cs" />
-    <Compile Include="Entities\StripeObject.cs" />
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
     <Compile Include="Entities\StripeTransferReversal.cs" />
     <Compile Include="Constants\StripeRefundReasons.cs" />
@@ -92,6 +94,10 @@
     <Compile Include="Services\Account\StripeAccountCreateOptions.cs" />
     <Compile Include="Services\Account\StripeAccountCardOptions.cs" />
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
+    <Compile Include="Services\BankAccounts\BankAccountVerifyOptions.cs" />
+    <Compile Include="Services\BankAccounts\BankAccountUpdateOptions.cs" />
+    <Compile Include="Services\BankAccounts\BankAccountService.cs" />
+    <Compile Include="Services\BankAccounts\BankAccountCreateOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeUpdateOptions.cs" />
     <Compile Include="Services\Coupons\StripeCouponUpdateOptions.cs" />
     <Compile Include="Services\Invoices\StripeUpcomingInvoiceOptions.cs" />
@@ -185,6 +191,7 @@
     <Compile Include="Constants\StripeTransferFailureCodes.cs" />
     <Compile Include="Constants\StripeEvents.cs" />
     <Compile Include="Services\_sources\SourceCard.cs" />
+    <Compile Include="Services\_sources\SourceBankAccount.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

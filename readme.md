@@ -433,6 +433,82 @@ With a card:
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
+Bank Accounts
+-------------
+
+### Creating a bank account
+
+When creating a bank account you can use either bank account details or a token (ONE OR THE OTHER, NOT BOTH)
+
+With a token:
+
+    var myBankAccount = new BankAccountCreateOptions();
+
+    myBankAccount.SourceToken = *tokenId*;
+
+    var bankAccountService = new BankAccountService();
+	CustomerBankAccount bankAccount = bankAccountService.Create(*customerId*, myBankAccount);
+    
+With a bank account:
+
+    var myBankAccount = new BankAccountCreateOptions
+    {
+        SourceBankAccount = new SourceBankAccount()
+        {
+            AccountNumber = "000123456789",
+            Country = "US",
+            Currency = "usd",
+            AccountHolderName = "Frank",
+            AccountHolderType = BankAccountHolderType.Company,
+            RoutingNumber = "110000000",
+            Metadata = new Dictionary<string, string>
+            {
+                { "Name", "Ray Barone" },
+                { "OftenSays", "Thatttttt's right" }
+            }
+        }
+    };
+
+    var bankAccountService = new BankAccountService();
+	CustomerBankAccount bankAccount = bankAccountService.Create(*customerId*, myBankAccount);
+
+### Retrieving a bank account
+
+    var bankAccountService = new BankAccountService();
+	CustomerBankAccount bankAccount = bankAccountService.Get(*customerId*, *bankAccountId*);
+
+### Updating a bank account
+
+	var myBankAccount = new BankAccountUpdateOptions()
+    {
+        AccountHolderName = "Robert",
+        AccountHolderType = BankAccountHolderType.Individual,
+        Metadata = new Dictionary<string, string>()
+        {
+            { "Name", "Frank Barone" },
+            { "OftenSays", "Holy Crap" }
+        }
+    };
+
+    var bankAccountService = new BankAccountService();
+	CustomerBankAccount bankAccount = bankAccountService.Update(*customerId*, *bankAccountId*, myBankAccount);
+
+### Deleting a bank account
+
+    var bankAccountService = new BankAccountService();
+	bankAccountService.Delete(*customerId*, *bankAccountId*);
+
+### List all bank account
+
+    var bankAccountService = new BankAccountService();
+	IEnumerable<CustomerBankAccount> response = bankAccountService.List(*customerId*); // optional StripeListOptions
+
+[StripeListOptions](#stripelistoptions-paging) for paging
+
+### Verify a bank account
+
+The Verify function is also available.
+
 Charges
 -------
 

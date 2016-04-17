@@ -39,14 +39,23 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Constants\BankAccountHolderType.cs">
+      <Link>Constants\BankAccountHolderType.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Constants\StripeEvents.cs">
       <Link>Constants\StripeEvents.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Constants\StripeRefundReasons.cs">
       <Link>Constants\StripeRefundReasons.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Constants\StripeSubscriptionStatuses.cs">
+      <Link>Constants\StripeSubscriptionStatuses.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Constants\StripeTransferFailureCodes.cs">
       <Link>Constants\StripeTransferFailureCodes.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Entities\CustomerBankAccount.cs">
+      <Link>Entities\CustomerBankAccount.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Entities\StripeAccount.cs">
       <Link>Entities\StripeAccount.cs</Link>
@@ -243,6 +252,18 @@
     <Compile Include="..\Stripe\Services\Balance\StripeBalanceTransactionListOptions.cs">
       <Link>Services\Balance\StripeBalanceTransactionListOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\BankAccounts\BankAccountCreateOptions.cs">
+      <Link>Services\BankAccounts\BankAccountCreateOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\BankAccounts\BankAccountService.cs">
+      <Link>Services\BankAccounts\BankAccountService.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\BankAccounts\BankAccountUpdateOptions.cs">
+      <Link>Services\BankAccounts\BankAccountUpdateOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\BankAccounts\BankAccountVerifyOptions.cs">
+      <Link>Services\BankAccounts\BankAccountVerifyOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\Cards\StripeCardCreateOptions.cs">
       <Link>Services\Cards\StripeCardCreateOptions.cs</Link>
     </Compile>
@@ -405,6 +426,9 @@
     <Compile Include="..\Stripe\Services\_refactor\StripeSourceOptions.cs">
       <Link>Services\_refactor\StripeSourceOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\_sources\SourceBankAccount.cs">
+      <Link>Services\_sources\SourceBankAccount.cs</Link>
+    </Compile>
     <Compile Include="Extensions\BindingFlags.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
     <Compile Include="Services\_sources\SourceCard.cs" />
@@ -434,6 +458,7 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

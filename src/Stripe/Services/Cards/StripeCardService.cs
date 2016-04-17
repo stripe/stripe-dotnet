@@ -129,7 +129,7 @@ namespace Stripe
 
         private string SetupUrl(string customerOrRecipientId, bool isRecipient, string cardId = null)
         {
-            var urlParams = string.Format(Urls.CustomerCards, customerOrRecipientId);
+            var urlParams = string.Format(Urls.CustomerSources, customerOrRecipientId);
 
             if (isRecipient)
                 urlParams = string.Format(Urls.RecipientCards, customerOrRecipientId);

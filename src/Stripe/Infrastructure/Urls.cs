@@ -20,7 +20,7 @@
 
         public static string Customers => BaseUrl + "/customers";
 
-        public static string CustomerCards => BaseUrl + "/customers/{0}/sources";
+        public static string CustomerSources => BaseUrl + "/customers/{0}/sources";
 
         public static string RecipientCards => BaseUrl + "/recipients/{0}/cards";
 
@@ -36,7 +36,7 @@
 
         public static string ApplicationFees => BaseUrl + "/application_fees";
 
-        private static string BaseUrl => "https://api.stripe.com/v1";
+        internal static string BaseUrl => "https://api.stripe.com/v1";
 
         public static string OAuthToken => BaseConnectUrl + "/oauth/token";
 
