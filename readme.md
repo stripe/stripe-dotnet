@@ -548,7 +548,7 @@ With a card:
 	// set this if you want to
 	myCharge.Description = "Charge it like it's hot";
     
-	myCharge.SourceCard = new StripeCard()
+	myCharge.SourceCard = new SourceCard()
 	{
 		Number = "4242424242424242",
 		ExpirationYear = "2022",
