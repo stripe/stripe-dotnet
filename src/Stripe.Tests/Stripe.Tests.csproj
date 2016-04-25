@@ -79,6 +79,7 @@
     <Compile Include="balance\when_listing_balancetransactions_for_charge.cs" />
     <Compile Include="balance\when_retrieving_a_balance.cs" />
     <Compile Include="bank_accounts\test_data\bank_account_create_options.cs" />
+    <Compile Include="bank_accounts\when_verifying_a_bank_account.cs" />
     <Compile Include="bank_accounts\when_listing_bank_accounts.cs" />
     <Compile Include="bank_accounts\when_getting_a_bank_account.cs" />
     <Compile Include="bank_accounts\when_updating_a_bank_account.cs" />

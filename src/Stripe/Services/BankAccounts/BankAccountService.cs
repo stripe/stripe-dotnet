@@ -61,7 +61,7 @@ namespace Stripe
         {
             return Mapper<CustomerBankAccount>.MapFromJson(
                 Requestor.PostString(
-                    this.ApplyAllParameters(verifyoptions, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
+                    this.ApplyAllParameters(verifyoptions, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}/verify"),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -120,7 +120,7 @@ namespace Stripe
         {
             return Mapper<CustomerBankAccount>.MapFromJson(
                 await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(verifyoptions, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
+                    this.ApplyAllParameters(verifyoptions, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}/verify"),
                     SetupRequestOptions(requestOptions)
                 )
             );
