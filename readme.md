@@ -693,7 +693,7 @@ Since Stripe returns `ExternalAccounts` as a single array (contains StripeCard's
 	account.BusinessName = "Jayme Davis' GitHub, Inc";
 	account.BusinessUrl = "http://github.com/jaymedavis";
 
-	var accountService = new StripeAccountService(account);
+	var accountService = new StripeAccountService();
 	StripeAccount response = accountService.Create(account);
 
 ### Retrieving an account
