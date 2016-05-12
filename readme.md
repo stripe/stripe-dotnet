@@ -31,16 +31,22 @@ a) Add an AppSetting with your api key to your config (this is the easiest way a
 
 b) In your application initialization, call this method (this is a programmatic way, but you only have to do it once during startup)
 
+```csharp
 	StripeConfiguration.SetApiKey("[your api key here]");
+```
 
 c) In any of the service constructors, you can optionally pass the api key (will be assigned that apikey for the life of the service instance).
 
+```csharp
 	var planService = new StripePlanService("[your api key here]");
+```
 
 d) In any of the service calls, you can pass a [StripeRequestOptions](#striperequestoptions) object with the apikey specified.
 
+```csharp
 	var planService = new StripePlanService();
 	planService.Get(*planId*, new StripeRequestOptions() { ApiKey = "[your api key here]" });
+```
 
 Stripe Architecture
 -------------------
