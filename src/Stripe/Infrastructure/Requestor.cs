@@ -7,10 +7,22 @@ using System.Threading.Tasks;
 
 namespace Stripe
 {
-    internal static class Requestor
+    public static class Requestor
     {
         internal static HttpClient HttpClient { get; private set; }
         internal static string Version { get; }
+
+#if !PORTABLE
+
+        /// <summary>
+        /// Gets or sets the type of the security protocol.
+        /// </summary>
+        /// <value>
+        /// The type of the security protocol.
+        /// </value>
+        public static SecurityProtocolType SecurityProtocol { get; set; } = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
+#endif
 
         static Requestor()
         {
@@ -81,7 +93,7 @@ namespace Stripe
             requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.GetApiKey();
 
 #if !PORTABLE
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            ServicePointManager.SecurityProtocol = SecurityProtocol;
 #endif
 
             var request = BuildRequest(method, url);
