@@ -232,9 +232,9 @@
     <Content Include="infrastructure\test_data\subscription.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Stripe.Portable\Stripe.Portable.csproj">
-      <Project>{41019920-b57d-4065-b9df-1442cdaf3bac}</Project>
-      <Name>Stripe.Portable</Name>
+    <ProjectReference Include="..\Stripe\Stripe.csproj">
+      <Project>{e48e9ac1-3a88-406b-82ff-166b1e3c7a48}</Project>
+      <Name>Stripe</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
