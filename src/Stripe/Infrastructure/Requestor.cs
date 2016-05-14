@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using ModernHttpClient;
 
 namespace Stripe
 {
@@ -15,7 +14,7 @@ namespace Stripe
 
         static Requestor()
         {
-            HttpClient = new HttpClient(new NativeMessageHandler());
+            HttpClient = new HttpClient();
             Version = new AssemblyName(typeof(Requestor).GetTypeInfo().Assembly.FullName).Version.ToString(3);
         }
 
