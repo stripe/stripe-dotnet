@@ -44,7 +44,7 @@ namespace Stripe.Tests.customers
 
         Behaves_like<customer_behaviors> behaviors;
 
-        It should_have_an_unpaid_invoice = () =>
+        It should_have_a_paid_invoice = () =>
             StripeInvoices.First().Paid.ShouldBeTrue();
     }
 }

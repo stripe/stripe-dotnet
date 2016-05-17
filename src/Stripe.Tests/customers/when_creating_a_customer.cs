@@ -47,7 +47,7 @@ namespace Stripe.Tests
         It should_have_the_correct_metadata = () =>
             StripeCustomer.Metadata.ShouldContainOnly(StripeCustomerCreateOptions.Metadata);
 
-        It should_have_an_unpaid_invoice = () =>
+        It should_have_a_paid_invoice = () =>
             StripeInvoices.First().Paid.ShouldBeTrue();
     }
 }
