@@ -243,6 +243,9 @@
     <Compile Include="..\Stripe\Services\ApplicationFees\StripeApplicationFeeListOptions.cs">
       <Link>Services\ApplicationFees\StripeApplicationFeeListOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\ApplicationFees\StripeApplicationFeeRefundService.cs">
+      <Link>Services\ApplicationFees\StripeApplicationFeeRefundService.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\ApplicationFees\StripeApplicationFeeService.cs">
       <Link>Services\ApplicationFees\StripeApplicationFeeService.cs</Link>
     </Compile>
