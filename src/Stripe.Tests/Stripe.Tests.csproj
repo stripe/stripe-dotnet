@@ -155,6 +155,7 @@
     <Compile Include="subscriptions\when_creating_a_subscription.cs" />
     <Compile Include="subscriptions\when_canceling_a_subscription_and_trying_to_retrieve.cs" />
     <Compile Include="subscriptions\when_updating_a_subscription_with_proration.cs" />
+    <Compile Include="subscriptions\when_listing_customer_subscriptions.cs" />
     <Compile Include="subscriptions\when_updating_a_subscription.cs" />
     <Compile Include="subscriptions\when_getting_a_subscription.cs" />
     <Compile Include="subscriptions\when_canceling_a_subscription.cs" />

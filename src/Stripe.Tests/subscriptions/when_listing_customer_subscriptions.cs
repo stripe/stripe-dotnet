@@ -1,13 +1,14 @@
 ﻿using System;
 using Machine.Specifications;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Stripe.Tests
 {
-    public class when_canceling_a_subscription_and_trying_to_retrieve
+    public class when_listing_customer_subscriptions
     {
         private static StripeCustomer _stripeCustomer;
-        private static StripeSubscription _stripeSubscription;
+        private static List<StripeSubscription> _stripeSubscriptionList;
         private static StripeSubscriptionService _stripeSubscriptionService;
 
         Establish context = () =>
@@ -20,17 +21,14 @@ namespace Stripe.Tests
 
             var _stripeCustomerService = new StripeCustomerService();
             _stripeCustomer = _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard(_stripePlan.Id, _stripeCoupon.Id, DateTime.UtcNow.AddDays(10)));
-
+        
             _stripeSubscriptionService = new StripeSubscriptionService();
         };
 
         Because of = () =>
-            _stripeSubscription = _stripeSubscriptionService.Cancel(_stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id, false);
+            _stripeSubscriptionList = _stripeSubscriptionService.List(_stripeCustomer.Id).ToList();
 
-        It should_throw_exception_when_retrieved = () =>
-        {
-            var exception = Catch.Exception(() => _stripeSubscriptionService.Get(_stripeSubscription.Id));
-            exception.Message.ShouldNotBeNull(); 
-        };
+        It should_have_one_subscription = () =>
+            _stripeSubscriptionList.Count().ShouldEqual(1);
     }
 }

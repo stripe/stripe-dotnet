@@ -32,7 +32,7 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeSubscription = _stripeSubscriptionService.Update(_stripeCustomer.Id, _stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id, _stripeSubscriptionUpdateOptions);
+            _stripeSubscription = _stripeSubscriptionService.Update(_stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id, _stripeSubscriptionUpdateOptions);
 
         It should_have_the_same_id_as_the_new_plan = () =>
             _stripeSubscription.StripePlan.Id.ShouldEqual(_stripePlan2.Id);

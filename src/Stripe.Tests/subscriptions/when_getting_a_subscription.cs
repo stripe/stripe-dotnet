@@ -26,7 +26,7 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeSubscription = _stripeSubscriptionService.Get(_stripeCustomer.Id, _stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id);
+            _stripeSubscription = _stripeSubscriptionService.Get(_stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id);
 
         It should_get_the_same_subscription = () =>
             _stripeSubscription.ShouldNotBeNull();

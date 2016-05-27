@@ -31,7 +31,7 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeSubscription = _stripeSubscriptionService.Update(_stripeCustomer.Id, _stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id, _stripeSubscriptionUpdateOptions);
+            _stripeSubscription = _stripeSubscriptionService.Update(_stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id, _stripeSubscriptionUpdateOptions);
 
         It should_return_now_for_internal_trialend = () =>
             _stripeSubscriptionUpdateOptions.TrialEndInternal.ShouldEqual("now");

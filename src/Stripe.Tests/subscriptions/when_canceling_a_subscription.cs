@@ -26,7 +26,7 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeSubscription = _stripeSubscriptionService.Cancel(_stripeCustomer.Id, _stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id);
+            _stripeSubscription = _stripeSubscriptionService.Cancel(_stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id);
 
         It should_be_a_canceled_subscription = () =>
             _stripeSubscription.Status.ShouldEqual("canceled");
