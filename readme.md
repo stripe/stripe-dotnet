@@ -1152,7 +1152,7 @@ their account.
 In Stripe.net, you can accomplish this with the following code:
 
 ```csharp
-	var stripeOAuthTokenService = new StripeOAuthTokenService(ConfigurationManager.AppSettings["StripeApiKey"]);
+	var stripeOAuthTokenService = new StripeOAuthTokenService();
 	var _stripeOAuthTokenCreateOptions = new StripeOAuthTokenCreateOptions()
 	{
 		ClientSecret = ConfigurationManager.AppSettings["StripeApiKey"],
