@@ -1153,14 +1153,14 @@ In Stripe.net, you can accomplish this with the following code:
 
 ```csharp
 	var stripeOAuthTokenService = new StripeOAuthTokenService();
-	var stripeOAuthTokeCreateOptions = new StripeOAuthTokenCreateOptions()
+	var _stripeOAuthTokenCreateOptions = new StripeOAuthTokenCreateOptions()
 	{
 		ClientSecret = ConfigurationManager.AppSettings["StripeApiKey"],
 		Code = *the code returned from above*,
 		GrantType = "authorization_code"
 	};
 
-	StripeOAuthToken stripeOAuthToken = stripeOAuthTokenService.Create(_stripeOAuthTokeCreateOptions);
+	StripeOAuthToken stripeOAuthToken = stripeOAuthTokenService.Create(_stripeOAuthTokenCreateOptions);
 ```
 
 5) You're done! Whenever you need to access the connected account, you simply need the StripeUserId from the StripeOAuthToken to be passed as part of the [StripeRequestOptions](#striperequestoptions) 
