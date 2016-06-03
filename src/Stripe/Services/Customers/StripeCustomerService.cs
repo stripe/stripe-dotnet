@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Stripe
 {
@@ -7,57 +8,88 @@ namespace Stripe
     {
         public StripeCustomerService(string apiKey = null) : base(apiKey) { }
 
-        public bool ExpandDefaultCard { get; set; }
+        public bool ExpandDefaultSource { get; set; }
+        public bool ExpandDefaultCustomerBankAccount { get; set; }
 
-        public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions)
+        public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
-            var url = this.ApplyAllParameters(createOptions, Urls.Customers, false);
-
-            var response = Requestor.PostString(url, ApiKey);
-
-            return Mapper<StripeCustomer>.MapFromJson(response);
+            return Mapper<StripeCustomer>.MapFromJson(
+                Requestor.PostString(this.ApplyAllParameters(createOptions, Urls.Customers, false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
-        public virtual StripeCustomer Get(string customerId)
+        public virtual StripeCustomer Get(string customerId, StripeRequestOptions requestOptions = null)
         {
-            var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-            this.ApplyAllParameters(null, url, false);
-
-            var response = Requestor.GetString(url, ApiKey);
-
-            return Mapper<StripeCustomer>.MapFromJson(response);
+            return Mapper<StripeCustomer>.MapFromJson(
+                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Customers}/{customerId}", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
-        public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions)
+        public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
-            var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-            url = this.ApplyAllParameters(updateOptions, url, false);
-
-            var response = Requestor.PostString(url, ApiKey);
-
-            return Mapper<StripeCustomer>.MapFromJson(response);
+            return Mapper<StripeCustomer>.MapFromJson(
+                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Customers}/{customerId}", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
-        public virtual void DeleteDiscount(string customerId){
+        public virtual void Delete(string customerId, StripeRequestOptions requestOptions = null)
+        {
+            Requestor.Delete($"{Urls.Customers}/{customerId}",
+                SetupRequestOptions(requestOptions));
+        }
+
+        public virtual IEnumerable<StripeCustomer> List(StripeCustomerListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeCustomer>.MapCollectionFromJson(
+                Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Customers, true),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+#if !PORTABLE
+        public virtual async Task<StripeCustomer> CreateAsync(StripeCustomerCreateOptions createOptions, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeCustomer>.MapFromJson(
+                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.Customers, false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripeCustomer> GetAsync(string customerId, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeCustomer>.MapFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Customers}/{customerId}", false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripeCustomer> UpdateAsync(string customerId, StripeCustomerUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeCustomer>.MapFromJson(
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Customers}/{customerId}", false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+        public virtual void DeleteDiscount(string customerId) {
             var customerUrl = String.Format(Urls.CustomerDiscount, customerId);
             Requestor.Delete(customerUrl, ApiKey);
         }
-
         public virtual void Delete(string customerId)
         {
-            var url = string.Format("{0}/{1}", Urls.Customers, customerId);
-
-            Requestor.Delete(url, ApiKey);
+            await Requestor.DeleteAsync($"{Urls.Customers}/{customerId}",
+                SetupRequestOptions(requestOptions));
         }
 
-        public virtual IEnumerable<StripeCustomer> List(StripeCustomerListOptions listOptions = null)
+        public virtual async Task<IEnumerable<StripeCustomer>> ListAsync(StripeCustomerListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            var url = Urls.Customers;
-            url = this.ApplyAllParameters(listOptions, url, true);
-
-            var response = Requestor.GetString(url, ApiKey);
-
-            return Mapper<StripeCustomer>.MapCollectionFromJson(response);
+            return Mapper<StripeCustomer>.MapCollectionFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Customers, true),
+                SetupRequestOptions(requestOptions))
+            );
         }
+#endif
     }
 }

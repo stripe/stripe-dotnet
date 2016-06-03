@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -30,5 +32,8 @@ namespace Stripe
 
         [JsonProperty("address_country")]
         public string AddressCountry { get; set; }
+
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
     }
 }

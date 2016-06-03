@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using System;
 
 namespace Stripe
 {
-    public class StripeChargeCreateOptions : CreditCardOptions
+    public class StripeChargeCreateOptions
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -14,8 +15,14 @@ namespace Stripe
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
 
-        [JsonProperty("card")]
-        public string Card { get; set; }
+        [JsonProperty("source")]
+        public string SourceTokenOrExistingSourceId { get; set; }
+
+        [JsonProperty("source")]
+        public SourceCard SourceCard { get; set; }
+
+        [JsonProperty("source")]
+        public StripeSourceOptions Source { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -26,13 +33,19 @@ namespace Stripe
         [JsonProperty("capture")]
         public bool? Capture { get; set; }
 
-        [JsonProperty("statement_description")]
-        public string StatementDescription { get; set; }
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
 
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
 
+        [JsonProperty("destination")]
+        public string Destination { get; set; }
+
         [JsonProperty("application_fee")]
         public int? ApplicationFee { get; set; }
+
+        [JsonProperty("shipping")]
+        public Dictionary<string, string> Shipping { get; set; }
     }
 }

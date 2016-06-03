@@ -17,7 +17,7 @@ namespace Stripe
         public StripeEventData Data { get; set; }
 
         [JsonProperty("livemode")]
-        public bool? LiveMode { get; set; }
+        public bool LiveMode { get; set; }
 
         [JsonProperty("user_id")]
         public string UserId { get; set; }

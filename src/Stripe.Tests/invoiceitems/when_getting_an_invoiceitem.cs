@@ -5,7 +5,7 @@ namespace Stripe.Tests
     public class when_getting_an_invoiceitem
     {
         protected static StripeInvoiceItemCreateOptions StripeInvoiceItemCreateOptions;
-        protected static StripeInvoiceItem StripeInvoiceItem;
+        protected static StripeInvoiceLineItem StripeInvoiceItem;
         protected static string StripeInvoiceItemId;
 
         private static StripeInvoiceItemService _stripeInvoiceItemService;

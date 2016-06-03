@@ -1,24 +1,67 @@
 ﻿using System.Collections.Generic;
+
 namespace Stripe.Tests.test_data
 {
     public static class stripe_charge_create_options
     {
         public static StripeChargeCreateOptions ValidCard()
         {
+            // obsolete: var cardOptions = new StripeSourceOptions()
+            var cardOptions = new SourceCard()
+            {
+                AddressCountry = "US",
+                AddressLine1 = "24 Beef Flank St",
+                AddressLine2 = "Apt 24",
+                AddressCity = "BIGGIE",
+                AddressState = "NC",
+                AddressZip = "27617",
+                Cvc = "1223",
+                ExpirationMonth = "10",
+                ExpirationYear = "2021",
+                Name = "Joe Meatballs",
+                Number = "4000000000000077",
+            };
+
             return new StripeChargeCreateOptions()
             {
-                CardAddressCountry = "US",
-                CardAddressLine1 = "24 Beef Flank St",
-                CardAddressLine2 = "Apt 24",
-                CardAddressCity = "BIGGIE",
-                CardAddressState = "NC",
-                CardAddressZip = "27617",
-                CardCvc = "1223",
-                CardExpirationMonth = "10",
-                CardExpirationYear = "2021",
-                CardName = "Joe Meatballs",
-                CardNumber = "4242424242424242",
+                // obsolete: Source = cardOptions,
+                SourceCard = cardOptions,
                 Description = "Joe Meatball Charge",
+                StatementDescriptor = "Joe Meatball Sub",
+                Amount = 5153,
+                Currency = "usd",
+                Metadata = new Dictionary<string, string>
+                {
+                    { "A", "Value-A" },
+                    { "B", "Value-B" }
+                }
+            };
+        }
+
+        public static StripeChargeCreateOptions DisputedCard()
+        {
+            // obsolete: var cardOptions = new StripeSourceOptions()
+            var cardOptions = new SourceCard()
+            {
+                AddressCountry = "US",
+                AddressLine1 = "24 Beef Flank St",
+                AddressLine2 = "Apt 24",
+                AddressCity = "BIGGIE",
+                AddressState = "NC",
+                AddressZip = "27617",
+                Cvc = "1223",
+                ExpirationMonth = "10",
+                ExpirationYear = "2021",
+                Name = "Joe Meatballs",
+                Number = "4000000000000259",
+            };
+
+            return new StripeChargeCreateOptions()
+            {
+                // obsolete: Source = cardOptions,
+                SourceCard = cardOptions,
+                Description = "Joe Meatball Charge",
+                StatementDescriptor = "Joe Meatball Sub",
                 Amount = 5153,
                 Currency = "usd",
                 Metadata = new Dictionary<string, string>
@@ -31,19 +74,27 @@ namespace Stripe.Tests.test_data
 
         public static StripeChargeCreateOptions InvalidCard()
         {
+            // obsolete: var cardOptions = new StripeSourceOptions()
+            var cardOptions = new SourceCard()
+            {
+                AddressCountry = "US",
+                AddressLine1 = "24 Poopie St",
+                AddressCity = "Yeehaw Beebop ChickyChicky",
+                AddressState = "NC",
+                AddressZip = "90210",
+                Cvc = "1223",
+                ExpirationMonth = "10",
+                ExpirationYear = "2004",
+                Name = "Joe Meatballs",
+                Number = "425221"
+            };
+
             return new StripeChargeCreateOptions()
             {
-                CardAddressCountry = "US",
-                CardAddressLine1 = "24 Poopie St",
-                CardAddressCity = "Yeehaw Beebop ChickyChicky",
-                CardAddressState = "NC",
-                CardAddressZip = "90210",
-                CardCvc = "1223",
-                CardExpirationMonth = "10",
-                CardExpirationYear = "2004",
-                CardName = "Joe Meatballs",
-                CardNumber = "425221",
+                // obsolete: Source = cardOptions,
+                SourceCard = cardOptions,
                 Description = "Joe Meatball Charge",
+                StatementDescriptor = "Joe Meatball Sub",
                 Amount = 5153,
                 Currency = "usd"
             };
@@ -54,6 +105,7 @@ namespace Stripe.Tests.test_data
             return new StripeChargeCreateOptions()
             {
                 Description = "Buddy Roast (beef@email.com)",
+                StatementDescriptor = "Joe Meatball Sub",
                 Amount = 2994,
                 Currency = "usd",
                 CustomerId = customerId
@@ -66,7 +118,8 @@ namespace Stripe.Tests.test_data
             {
                 Amount = 2001,
                 Currency = "usd",
-                TokenId = _tokenId
+                // obsolete: Source = new StripeSourceOptions() { TokenId = _tokenId }
+                SourceTokenOrExistingSourceId =  _tokenId
             };
         }
     }

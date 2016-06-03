@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Reflection;
-using System.Web;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Stripe.Infrastructure;
-using System.Diagnostics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace Stripe
 {
     internal static class ParameterBuilder
     {
-        public static string ApplyAllParameters(this StripeService service, object obj, string url, bool isListMethod)
+        public static string ApplyAllParameters(this StripeService service, object obj, string url, bool isListMethod = false)
         {
             string newUrl = url;
 
@@ -27,13 +24,16 @@ namespace Stripe
 
                     foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
                     {
-                        if (string.Compare(attribute.PropertyName, "metadata", true) == 0)
+                        // simplify this crap
+                        if (attribute.PropertyName.ToLower().Contains("metadata"))
+                            newUrl = ApplyMetadataParameters(newUrl, value);
+                        else if (attribute.PropertyName.ToLower().Contains("fraud_details"))
                         {
-                            var metadata = (Dictionary<string, string>)value;
+                            var fraudDetails = (Dictionary<string, string>)value;
 
-                            foreach (string key in metadata.Keys)
+                            foreach (string key in fraudDetails.Keys)
                             {
-                                newUrl = ApplyParameterToUrl(newUrl, string.Format("metadata[{0}]", key), metadata[key]);
+                                newUrl = ApplyParameterToUrl(newUrl, $"fraud_details[{key}]", fraudDetails[key]);
                             }
                         }
                         else if (property.PropertyType == typeof(StripeDateFilter))
@@ -55,6 +55,47 @@ namespace Stripe
                             if (filter.GreaterThanOrEqual.HasValue)
                                 newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gte]", filter.GreaterThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
                         }
+                        else if (property.PropertyType == typeof(StripeBankAccountOptions))
+                        {
+                            var options = (StripeBankAccountOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
+                        }
+                        else if (property.PropertyType == typeof(StripeCreditCardOptions))
+                        {
+                            var options = (StripeCreditCardOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
+                        }
+                        else if (property.PropertyType == typeof(StripeSourceOptions))
+                        {
+                            var options = (StripeSourceOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
+                        }
+                        else if (property.PropertyType == typeof(SourceCard))
+                        {
+                            var options = (SourceCard)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
+                        }
+                        else if (property.PropertyType == typeof(SourceBankAccount))
+                        {
+                            var options = (SourceBankAccount)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
+                        }
+                        else if (property.PropertyType == typeof(StripeAccountCardOptions))
+                        {
+                            var options = (StripeAccountCardOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
+                        }
+                        else if (property.PropertyType == typeof(StripeAccountBankAccountOptions))
+                        {
+                            var options = (StripeAccountBankAccountOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, options);
+                        }
+                        else if (property.PropertyType == typeof(StripeAccountLegalEntityOptions))
+                        {
+                            var sripeAccountLegalEntityOptions = (StripeAccountLegalEntityOptions)value;
+                            newUrl = ApplyNestedObjectProperties(newUrl, sripeAccountLegalEntityOptions);
+                        }
+                        // end the crap
                         else
                         {
                             newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
@@ -95,7 +136,38 @@ namespace Stripe
             if (!url.Contains("?"))
                 token = "?";
 
-            return string.Format("{0}{1}{2}={3}", url, token, argument, HttpUtility.UrlEncode(value));
+            return string.Format("{0}{1}{2}={3}", url, token, argument, WebUtility.UrlEncode(value));
+        }
+
+        private static string ApplyNestedObjectProperties(string newUrl, object nestedObject)
+        {
+            foreach (var property in nestedObject.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+            {
+                var value = property.GetValue(nestedObject, null);
+                if (value == null) continue;
+
+                foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
+                {
+                    if (attribute.PropertyName.ToLower().Contains("metadata"))
+                        newUrl = ApplyMetadataParameters(newUrl, value);
+                    else
+                        newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
+                }
+            }
+
+            return newUrl;
+        }
+
+        private static string ApplyMetadataParameters(string newUrl, object value)
+        {
+            var metadata = (Dictionary<string, string>)value;
+
+            foreach (string key in metadata.Keys)
+            {
+                newUrl = ApplyParameterToUrl(newUrl, $"metadata[{key}]", metadata[key]);
+            }
+
+            return newUrl;
         }
     }
 }

@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 ﻿namespace Stripe
 {
     public class StripeDisputeService : StripeService
@@ -7,17 +9,32 @@
         public bool ExpandCharge { get; set; }
         public bool ExpandBalanceTransaction { get; set; }
 
-        public virtual StripeDispute Update(string chargeId, string evidence = null)
+        public virtual StripeDispute Update(string chargeId, string evidence = null, StripeRequestOptions requestOptions = null)
         {
-            var url = string.Format("{0}/dispute", chargeId);
-            url = this.ApplyAllParameters(null, url, false);
+            var url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
 
             if (!string.IsNullOrEmpty(evidence))
                 url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);
 
-            var response = Requestor.PostString(url, ApiKey);
-
-            return Mapper<StripeDispute>.MapFromJson(response);
+            return Mapper<StripeDispute>.MapFromJson(
+                Requestor.PostString(url,
+                SetupRequestOptions(requestOptions))
+            );
         }
+
+#if !PORTABLE
+        public virtual async Task<StripeDispute> UpdateAsync(string chargeId, string evidence = null, StripeRequestOptions requestOptions = null)
+        {
+            var url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
+
+            if (!string.IsNullOrEmpty(evidence))
+                url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);
+
+            return Mapper<StripeDispute>.MapFromJson(
+                await Requestor.PostStringAsync(url,
+                SetupRequestOptions(requestOptions))
+            );
+        }
+#endif
     }
 }

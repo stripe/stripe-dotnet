@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Stripe
 {
@@ -10,66 +11,110 @@ namespace Stripe
         public bool ExpandCharge { get; set; }
         public bool ExpandCustomer { get; set; }
 
-        public virtual StripeInvoice Get(string invoiceId)
+        public virtual StripeInvoice Get(string invoiceId, StripeRequestOptions requestOptions = null)
         {
-            var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
-
-            var response = Requestor.GetString(url, ApiKey);
-
-            return Mapper<StripeInvoice>.MapFromJson(response);
+            return Mapper<StripeInvoice>.MapFromJson(
+                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Invoices}/{invoiceId}", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
-        public virtual StripeInvoice Upcoming(string customerId, string subscriptionId = null)
+        public virtual StripeInvoice Upcoming(string customerId, StripeUpcomingInvoiceOptions upcomingOptions = null, StripeRequestOptions requestOptions = null)
         {
-            var url = string.Format("{0}/{1}", Urls.Invoices, "upcoming");
+            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.Invoices}/upcoming", "customer", customerId);
 
-            url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
-
-            if(!String.IsNullOrEmpty(subscriptionId))
-                url = ParameterBuilder.ApplyParameterToUrl(url, "subscription", subscriptionId);
-
-            var response = Requestor.GetString(url, ApiKey);
-
-            return Mapper<StripeInvoice>.MapFromJson(response);
+            return Mapper<StripeInvoice>.MapFromJson(
+                Requestor.GetString(this.ApplyAllParameters(upcomingOptions, url, false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
-        public virtual StripeInvoice Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions)
+        public virtual StripeInvoice Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
-            var url = string.Format("{0}/{1}", Urls.Invoices, invoiceId);
-            url = this.ApplyAllParameters(updateOptions, url, false);
-
-            var response = Requestor.PostString(url, ApiKey);
-
-            return Mapper<StripeInvoice>.MapFromJson(response);
+            return Mapper<StripeInvoice>.MapFromJson(
+                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Invoices}/{invoiceId}", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
-        public virtual StripeInvoice Pay(string invoiceId)
+        public virtual StripeInvoice Pay(string invoiceId, StripeRequestOptions requestOptions = null)
         {
-            var url = string.Format("{0}/{1}/pay", Urls.Invoices, invoiceId);
-            url = this.ApplyAllParameters(null, url, false);
-            var response = Requestor.PostString(url, ApiKey);
-
-            return Mapper<StripeInvoice>.MapFromJson(response);
+            return Mapper<StripeInvoice>.MapFromJson(
+                Requestor.PostString(this.ApplyAllParameters(null, $"{Urls.Invoices}/{invoiceId}/pay", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
-        public virtual IEnumerable<StripeInvoice> List(StripeInvoiceListOptions listOptions = null)
+        public virtual IEnumerable<StripeInvoice> List(StripeInvoiceListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            var url = Urls.Invoices;
-            url = this.ApplyAllParameters(listOptions, url, true);
-
-            var response = Requestor.GetString(url, ApiKey);
-
-            return Mapper<StripeInvoice>.MapCollectionFromJson(response);
+            return Mapper<StripeInvoice>.MapCollectionFromJson(
+                Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Invoices, true),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
-        public virtual StripeInvoice Create(string customerId)
+        public virtual StripeInvoice Create(string customerId, StripeInvoiceCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
         {
-            var url = Urls.Invoices;
-            url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+            var url = ParameterBuilder.ApplyParameterToUrl(Urls.Invoices, "customer", customerId);
 
-            var response = Requestor.PostString(url, ApiKey);
-
-            return Mapper<StripeInvoice>.MapFromJson(response);
+            return Mapper<StripeInvoice>.MapFromJson(
+                Requestor.PostString(this.ApplyAllParameters(createOptions, url, false),
+                SetupRequestOptions(requestOptions))
+            );
         }
+
+#if !PORTABLE
+        public virtual async Task<StripeInvoice> GetAsync(string invoiceId, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeInvoice>.MapFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Invoices}/{invoiceId}", false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripeInvoice> UpcomingAsync(string customerId, StripeUpcomingInvoiceOptions upcomingOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.Invoices}/upcoming", "customer", customerId);
+
+            return Mapper<StripeInvoice>.MapFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(upcomingOptions, url, false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripeInvoice> UpdateAsync(string invoiceId, StripeInvoiceUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeInvoice>.MapFromJson(
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Invoices}/{invoiceId}", false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripeInvoice> PayAsync(string invoiceId, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeInvoice>.MapFromJson(
+                await Requestor.PostStringAsync(this.ApplyAllParameters(null, $"{Urls.Invoices}/{invoiceId}/pay", false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<IEnumerable<StripeInvoice>> ListAsync(StripeInvoiceListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeInvoice>.MapCollectionFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Invoices, true),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripeInvoice> CreateAsync(string customerId, StripeInvoiceCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            var url = ParameterBuilder.ApplyParameterToUrl(Urls.Invoices, "customer", customerId);
+
+            return Mapper<StripeInvoice>.MapFromJson(
+                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, url, false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+#endif
     }
 }

@@ -11,33 +11,54 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("livemode")]
-        public bool? LiveMode { get; set; }
+        [JsonProperty("account_balance")]
+        public int AccountBalance { get; set; }
 
-        [JsonProperty("cards")]
-        public StripeCardList StripeCardList { get; set; }
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
 
-        [JsonProperty("account_balance")]
-        public int? AccountBalance { get; set; }
+        [JsonProperty("bank_accounts")]
+        public StripeList<CustomerBankAccount> CustomerBankAccounts { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        public string StripeDefaultCardId { get; set; }
-        public StripeCard StripeDefaultCard { get; set; }
+        #region Expandable Default CustomerBankAccount
+        public string DefaultCustomerBankAccountId { get; set; }
 
-        [JsonProperty("default_card")]
-        internal object InternalDefaultCard
+        [JsonIgnore]
+        public CustomerBankAccount DefaultCustomerBankAccount { get; set; }
+
+        [JsonProperty("default_bank_account")]
+        internal object InternalDefaultCustomerBankAccount
         {
             set
             {
-                ExpandableProperty<StripeCard>.Map(value, s => StripeDefaultCardId = s, o => StripeDefaultCard = o);
+                ExpandableProperty<CustomerBankAccount>.Map(value, s => DefaultCustomerBankAccountId = s, o => DefaultCustomerBankAccount = o);
             }
         }
+        #endregion
+
+        #region Expandable Default Source
+        public string DefaultSourceId { get; set; }
+
+        [JsonIgnore]
+        public StripeCard DefaultSource { get; set; }
+
+        [JsonProperty("default_source")]
+        internal object InternalDefaultSource
+        {
+            set
+            {
+                ExpandableProperty<StripeCard>.Map(value, s => DefaultSourceId = s, o => DefaultSource = o);
+            }
+        }
+        #endregion
+
+        [JsonProperty("default_source_type")]
+        public string DefaultSourceType { get; set; }
 
         [JsonProperty("delinquent")]
         public bool Delinquent { get; set; }
@@ -51,13 +72,18 @@ namespace Stripe
         [JsonProperty("email")]
         public string Email { get; set; }
 
+        [JsonProperty("livemode")]
+        public bool LiveMode { get; set; }
+
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("subscriptions")]
-        public StripeSubscriptionList StripeSubscriptionList { get; set; }
+        [JsonProperty("sources")]
+        public StripeList<StripeCard> SourceList { get; set; }
 
-        [Obsolete("This property is not documented and could be removed in a later release.")]
+        [JsonProperty("subscriptions")]
+        public StripeList<StripeSubscription> StripeSubscriptionList { get; set; }
+
         [JsonProperty("deleted")]
         public bool? Deleted { get; set; }
     }

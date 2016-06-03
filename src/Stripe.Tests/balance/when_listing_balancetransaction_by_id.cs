@@ -33,7 +33,7 @@ namespace Stripe.Tests
             _stripeBalanceTransaction = _stripeBalanceService.Get(_stripeBalanceTransactions[0].Id);
 
         It should_have_the_right_amount = () =>
-            _stripeBalanceTransaction.Amount.ShouldEqual(_stripeCharge.Amount.Value);
+            _stripeBalanceTransaction.Amount.ShouldEqual(_stripeCharge.Amount);
 
         It should_have_the_right_id = () =>
             _stripeBalanceTransaction.Source.ShouldEqual(_stripeCharge.Id);

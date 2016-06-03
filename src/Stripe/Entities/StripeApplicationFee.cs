@@ -8,9 +8,13 @@ namespace Stripe
 {
     public class StripeApplicationFee : StripeObject
     {
-        [JsonProperty("livemode")]
-        public bool? LiveMode { get; set; }
+        [JsonProperty("object")]
+        public string Object { get; set; }
 
+        [JsonProperty("livemode")]
+        public bool LiveMode { get; set; }
+
+        #region Expandable Account
         public string AccountId { get; set; }
 
         [JsonIgnore]
@@ -24,6 +28,7 @@ namespace Stripe
                 ExpandableProperty<StripeAccount>.Map(value, s => AccountId = s, o => Account = o);
             }
         }
+        #endregion
 
         [JsonProperty("amount")]
         public int Amount { get; set; }
@@ -31,7 +36,10 @@ namespace Stripe
         [JsonProperty("application")]
         public string ApplicationId { get; set; }
 
+        #region Expandable Balance Transaction
         public string BalanceTransactionId { get; set; }
+
+        [JsonIgnore]
         public StripeBalanceTransaction BalanceTransaction { get; set; }
 
         [JsonProperty("balance_transaction")]
@@ -42,7 +50,9 @@ namespace Stripe
                 ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
             }
         }
+        #endregion
 
+        #region Expandable Card
         public string CardId { get; set; }
 
         [JsonIgnore]
@@ -56,7 +66,9 @@ namespace Stripe
                 ExpandableProperty<StripeCard>.Map(value, s => CardId = s, o => Card = o);
             }
         }
+        #endregion
 
+        #region Expandable Charge
         public string ChargeId { get; set; }
 
         [JsonIgnore]
@@ -70,6 +82,7 @@ namespace Stripe
                 ExpandableProperty<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
             }
         }
+        #endregion
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
@@ -82,7 +95,7 @@ namespace Stripe
         public bool Refunded { get; set; }
 
         [JsonProperty("refunds")]
-        public List<StripeApplicationFeeRefund> Refunds { get; set; }
+        public StripeList<StripeApplicationFeeRefund> StripeApplicationFeeRefundList { get; set; }
 
         [JsonProperty("amount_refunded")]
         public int AmountRefunded { get; set; }

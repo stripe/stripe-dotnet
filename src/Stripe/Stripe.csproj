@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,38 +10,43 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Stripe</RootNamespace>
     <AssemblyName>Stripe.net</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NET40</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;NET40</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,31 +57,68 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Constants\BankAccountHolderType.cs" />
+    <Compile Include="Entities\CustomerBankAccount.cs" />
+    <Compile Include="Entities\StripeManagedAccountKeys.cs" />
+    <Compile Include="Constants\StripeSubscriptionStatuses.cs" />
+    <Compile Include="Entities\StripeBirthDay.cs" />
+    <Compile Include="Entities\StripeAddress.cs" />
+    <Compile Include="Entities\StripeDeclineChargeOn.cs" />
+    <Compile Include="Entities\StripeAdditionalOwners.cs" />
+    <Compile Include="Entities\StripeFileUpload.cs" />
+    <Compile Include="Entities\StripeLegalEntityVerification.cs" />
+    <Compile Include="Entities\StripeLegalEntity.cs" />
+    <Compile Include="Entities\StripeOAuthDeauthorize.cs" />
+    <Compile Include="Entities\StripeObject.cs" />
+    <Compile Include="Entities\StripeTermsOfServiceAcceptance.cs" />
+    <Compile Include="Entities\StripeTransferSchedule.cs" />
+    <Compile Include="Entities\StripeAccountVerification.cs" />
+    <Compile Include="Entities\StripeList.cs" />
+    <Compile Include="Entities\StripeRefund.cs" />
     <Compile Include="Entities\StripeBankAccount.cs" />
     <Compile Include="Entities\StripeBalanceTransaction.cs" />
     <Compile Include="Entities\StripeFee.cs" />
-    <Compile Include="Entities\StripeObject.cs" />
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
+    <Compile Include="Entities\StripeTransferReversal.cs" />
+    <Compile Include="Constants\StripeRefundReasons.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
+    <Compile Include="Infrastructure\StripeExternalAccountConverter.cs" />
+    <Compile Include="Services\Account\StripeAccountBankAccountOptions.cs" />
+    <Compile Include="Services\Account\StripeAccountLegalEntityOptions.cs" />
+    <Compile Include="Services\Account\StripeAccountUpdateOptions.cs" />
+    <Compile Include="Services\Account\StripeAccountSharedOptions.cs" />
+    <Compile Include="Services\Account\StripeAccountCreateOptions.cs" />
+    <Compile Include="Services\Account\StripeAccountCardOptions.cs" />
     <Compile Include="Services\Balance\StripeBalanceTransactionListOptions.cs" />
+    <Compile Include="Services\BankAccounts\BankAccountVerifyOptions.cs" />
+    <Compile Include="Services\BankAccounts\BankAccountUpdateOptions.cs" />
+    <Compile Include="Services\BankAccounts\BankAccountService.cs" />
+    <Compile Include="Services\BankAccounts\BankAccountCreateOptions.cs" />
+    <Compile Include="Services\Charges\StripeChargeUpdateOptions.cs" />
+    <Compile Include="Services\Coupons\StripeCouponUpdateOptions.cs" />
+    <Compile Include="Services\Invoices\StripeUpcomingInvoiceOptions.cs" />
+    <Compile Include="Services\Refunds\StripeRefundCreateOptions.cs" />
+    <Compile Include="Services\Refunds\StripeRefundService.cs" />
+    <Compile Include="Services\Refunds\StripeRefundUpdateOptions.cs" />
+    <Compile Include="Services\Invoices\StripeInvoiceCreateOptions.cs" />
+    <Compile Include="Services\StripeRequestOptions.cs" />
+    <Compile Include="Services\_refactor\StripeSourceOptions.cs" />
+    <Compile Include="Services\_refactor\StripeCreditCardOptions.cs" />
     <Compile Include="Services\StripeDateFilter.cs" />
     <Compile Include="Entities\StripeApplicationFeeRefund.cs" />
     <Compile Include="Entities\StripeApplicationFee.cs" />
     <Compile Include="Entities\StripeBalanceAmount.cs" />
     <Compile Include="Entities\StripeBalance.cs" />
-    <Compile Include="Entities\StripeCardList.cs" />
     <Compile Include="Entities\StripeDispute.cs" />
     <Compile Include="Entities\StripeAccount.cs" />
     <Compile Include="Entities\StripeEventData.cs" />
     <Compile Include="Entities\StripeEvent.cs" />
-    <Compile Include="Entities\StripeInvoiceLine.cs" />
     <Compile Include="Entities\StripeInvoice.cs" />
-    <Compile Include="Entities\StripeInvoiceItem.cs" />
+    <Compile Include="Entities\StripeInvoiceLineItem.cs" />
     <Compile Include="Entities\StripeError.cs" />
     <Compile Include="Entities\StripeOAuthToken.cs" />
     <Compile Include="Entities\StripePeriod.cs" />
     <Compile Include="Entities\StripeRecipient.cs" />
-    <Compile Include="Entities\StripeSubscriptionList.cs" />
     <Compile Include="Entities\StripeToken.cs" />
     <Compile Include="Entities\StripeCharge.cs" />
     <Compile Include="Entities\StripeCard.cs" />
@@ -94,12 +136,10 @@
     <Compile Include="Services\Account\StripeAccountService.cs" />
     <Compile Include="Services\ApplicationFees\StripeApplicationFeeListOptions.cs" />
     <Compile Include="Services\Balance\StripeBalanceService.cs" />
-    <Compile Include="Services\BankAccountOptions.cs" />
+    <Compile Include="Services\Recipients\StripeBankAccountOptions.cs" />
     <Compile Include="Services\ApplicationFees\StripeApplicationFeeService.cs" />
     <Compile Include="Services\Cards\StripeCardCreateOptions.cs" />
-    <Compile Include="Services\Cards\StripeCardService.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Services\Cards\StripeCardService.cs" />
     <Compile Include="Services\Cards\StripeCardUpdateOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeListOptions.cs" />
     <Compile Include="Services\Customers\StripeCustomerListOptions.cs" />
@@ -113,7 +153,6 @@
     <Compile Include="Services\InvoiceItems\StripeInvoiceItemService.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceListOptions.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceService.cs" />
-    <Compile Include="Services\CreditCardOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeCreateOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeService.cs" />
     <Compile Include="Services\Coupons\StripeCouponCreateOptions.cs" />
@@ -145,14 +184,13 @@
     <Compile Include="Services\Transfers\StripeTransferListOptions.cs" />
     <Compile Include="Services\Transfers\StripeTransferCreateOptions.cs" />
     <Compile Include="Services\Transfers\StripeTransferService.cs" />
+    <Compile Include="Constants\StripeTransferFailureCodes.cs" />
+    <Compile Include="Constants\StripeEvents.cs" />
+    <Compile Include="Services\_sources\SourceCard.cs" />
+    <Compile Include="Services\_sources\SourceBankAccount.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

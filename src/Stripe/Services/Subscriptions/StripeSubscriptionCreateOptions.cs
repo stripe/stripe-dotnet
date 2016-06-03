@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeSubscriptionCreateOptions : CreditCardOptions
+    public class StripeSubscriptionCreateOptions
     {
         [JsonProperty("plan")]
         public string PlanId { get; set; }
@@ -30,11 +30,37 @@ namespace Stripe
             }
         }
 
+        [JsonProperty("card")]
+        public StripeCreditCardOptions Card { get; set; }
+
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
 
         [JsonProperty("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
+
+        [JsonProperty("tax_percent")]
+        public decimal? TaxPercent { get; set; }
+
+        public DateTime? BillingCycleAnchor { get; set; }
+        public bool BillingCycleAnchorNow { get; set; }
+        public bool BillingCycleAnchorUnchanged { get; set; }
+
+        [JsonProperty("billing_cycle_anchor")]
+        internal string BillingCycleAnchorInternal
+        {
+            get
+            {
+                if (BillingCycleAnchorNow)
+                    return "now";
+                else if (BillingCycleAnchorUnchanged)
+                    return "unchanged";
+                else if (BillingCycleAnchor.HasValue)
+                    return EpochTime.ConvertDateTimeToEpoch(BillingCycleAnchor.Value).ToString();
+                else
+                    return null;
+            }
+        }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

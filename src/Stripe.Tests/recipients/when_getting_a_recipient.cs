@@ -1,4 +1,5 @@
-﻿using Machine.Specifications;
+﻿using System;
+using Machine.Specifications;
 
 namespace Stripe.Tests
 {
@@ -25,5 +26,32 @@ namespace Stripe.Tests
         };
 
         Behaves_like<recipient_behaviors> behaviors;
+
+        It should_have_active_account = () =>
+            StripeRecipient.ActiveAccount.ShouldNotBeNull();
+
+        It should_have_active_account_routing_number = () =>
+            StripeRecipient.ActiveAccount.RoutingNumber.ShouldEqual(StripeRecipientCreateOptions.BankAccount.RoutingNumber);
+
+        It should_have_active_account_country = () =>
+            StripeRecipient.ActiveAccount.Country.ShouldEqual(StripeRecipientCreateOptions.BankAccount.Country);
+
+        It should_have_active_account_currency = () =>
+            StripeRecipient.ActiveAccount.Currency.ShouldEqual("usd");
+
+        It should_have_default_for_currency = () =>
+            StripeRecipient.ActiveAccount.DefaultForCurrency.ShouldBeFalse();
+
+        It should_have_active_account_last4 = () =>
+            StripeRecipient.ActiveAccount.Last4.ShouldEqual("6789");
+
+        It should_have_active_account_status = () =>
+            StripeRecipient.ActiveAccount.Status.ShouldNotBeEmpty();
+
+        It should_have_active_account_bank_name = () =>
+            StripeRecipient.ActiveAccount.BankName.ShouldNotBeEmpty();
+
+        It should_have_active_account_fingerprint = () =>
+            StripeRecipient.ActiveAccount.Fingerprint.ShouldNotBeEmpty();
     }
 }

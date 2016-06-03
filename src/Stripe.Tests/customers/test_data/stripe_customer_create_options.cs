@@ -5,21 +5,28 @@ namespace Stripe.Tests.test_data
 {
     public static class stripe_customer_create_options
     {
-        public static StripeCustomerCreateOptions ValidCard(string _planId = null, string _couponId = null, DateTime? _trialEnd = null)
+        public static StripeCustomerCreateOptions ValidCard(string _planId = null, string _couponId = null, DateTime? _trialEnd = null, bool _trialEndNow = false)
         {
+            // obsolete: var cardOptions = new StripeSourceOptions()
+            var cardOptions = new SourceCard()
+            {
+                AddressCountry = "US",
+                AddressLine1 = "234 Bacon St",
+                AddressLine2 = "Apt 1",
+                AddressState = "NC",
+                AddressZip = "27617",
+                Cvc = "1661",
+                ExpirationMonth = "10",
+                ExpirationYear = "2021",
+                Name = "Johnny Tenderloin",
+                Number = "4242424242424242",
+            };
+
             var stripeCustomerCreateOptions = new StripeCustomerCreateOptions()
             {
-                CardAddressCountry = "US",
-                CardAddressLine1 = "234 Bacon St",
-                CardAddressLine2 = "Apt 1",
-                CardAddressState = "NC",
-                CardAddressZip = "27617",
+                // obsolete: Source = cardOptions,
+                SourceCard = cardOptions,
                 Email = "pork@email.com",
-                CardCvc = "1661",
-                CardExpirationMonth = "10",
-                CardExpirationYear = "2021",
-                CardName = "Johnny Tenderloin",
-                CardNumber = "4242424242424242",
                 Description = "Johnny Tenderloin (pork@email.com)",
                 AccountBalance = 100,
                 Metadata = new Dictionary<string, string>
@@ -38,13 +45,17 @@ namespace Stripe.Tests.test_data
             if (_trialEnd != null)
                 stripeCustomerCreateOptions.TrialEnd = _trialEnd;
 
+            if (_trialEndNow)
+                stripeCustomerCreateOptions.EndTrialNow = true;
+
             return stripeCustomerCreateOptions;
         }
 
         public static StripeCustomerCreateOptions ValidCardButChargeFails(string _planId = null, string _couponId = null, DateTime? _trialEnd = null)
         {
             var stripeCustomerCreateOptions = ValidCard(_planId, _couponId, _trialEnd);
-            stripeCustomerCreateOptions.CardNumber = "4000000000000341";
+            // obsolete: stripeCustomerCreateOptions.Source.Number = "4000000000000341";
+            stripeCustomerCreateOptions.SourceCard.Number = "4000000000000341";
 
             return stripeCustomerCreateOptions;
         }
@@ -53,7 +64,8 @@ namespace Stripe.Tests.test_data
         {
             var stripeCustomerCreateOptions = new StripeCustomerCreateOptions()
             {
-                TokenId = tokenId
+                // obsolete: Source = new StripeSourceOptions() { TokenId = tokenId }
+                SourceToken = tokenId
             };
 
             if (_planId != null)

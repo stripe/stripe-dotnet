@@ -23,7 +23,7 @@ namespace Stripe.Tests
             StripeCoupon = _stripeCouponService.Create(test_data.stripe_coupon_create_options.Valid());
 
             _stripeCustomerService = new StripeCustomerService();
-            _stripeCustomerService.ExpandDefaultCard = true;
+            _stripeCustomerService.ExpandDefaultSource = true;
             StripeCustomerCreateOptions = test_data.stripe_customer_create_options.ValidCard(StripePlan.Id, StripeCoupon.Id, DateTime.UtcNow.AddDays(5));
         };
 
@@ -31,15 +31,15 @@ namespace Stripe.Tests
         {
             StripeCustomer = _stripeCustomerService.Create(StripeCustomerCreateOptions);
 
-            StripeCard = StripeCustomer.StripeCardList.StripeCards.First();
+            StripeCard = StripeCustomer.SourceList.Data.First();
         };
 
         Behaves_like<customer_behaviors> behaviors;
 
         It should_have_the_defaultcard = () =>
-            StripeCustomer.StripeDefaultCard.ShouldNotBeNull();
+            StripeCustomer.DefaultSource.ShouldNotBeNull();
 
         It should_have_the_defaultcardid = () =>
-            StripeCustomer.StripeDefaultCardId.ShouldNotBeNull();
+            StripeCustomer.DefaultSourceId.ShouldNotBeNull();
     }
 }

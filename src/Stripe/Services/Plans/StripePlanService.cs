@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Stripe
 {
@@ -6,50 +7,82 @@ namespace Stripe
     {
         public StripePlanService(string apiKey = null) : base(apiKey) { }
 
-        public virtual StripePlan Create(StripePlanCreateOptions createOptions)
+        public virtual StripePlan Create(StripePlanCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
-            var url = this.ApplyAllParameters(createOptions, Urls.Plans, false);
-
-            var response = Requestor.PostString(url, ApiKey);
-
-            return Mapper<StripePlan>.MapFromJson(response);
+            return Mapper<StripePlan>.MapFromJson(
+                Requestor.PostString(this.ApplyAllParameters(createOptions, Urls.Plans, false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
-        public virtual StripePlan Get(string planId)
+        public virtual StripePlan Get(string planId, StripeRequestOptions requestOptions = null)
         {
-            var url = string.Format("{0}/{1}", Urls.Plans, planId);
-            url = this.ApplyAllParameters(null, url, false);
-
-            var response = Requestor.GetString(url, ApiKey);
-
-            return Mapper<StripePlan>.MapFromJson(response);
+            return Mapper<StripePlan>.MapFromJson(
+                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Plans}/{planId}", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
-        public virtual void Delete(string planId)
+        public virtual void Delete(string planId, StripeRequestOptions requestOptions = null)
         {
-            var url = string.Format("{0}/{1}", Urls.Plans, planId);
-
-            Requestor.Delete(url, ApiKey);
+            Requestor.Delete($"{Urls.Plans}/{planId}",
+                SetupRequestOptions(requestOptions));
         }
 
-        public virtual StripePlan Update(string planId, StripePlanUpdateOptions updateOptions)
+        public virtual StripePlan Update(string planId, StripePlanUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
-            var url = string.Format("{0}/{1}", Urls.Plans, planId);
-            url = this.ApplyAllParameters(updateOptions, url, false);
-
-            var response = Requestor.PostString(url, ApiKey);
-
-            return Mapper<StripePlan>.MapFromJson(response);
+            return Mapper<StripePlan>.MapFromJson(
+                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{planId}", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
-        public virtual IEnumerable<StripePlan> List(StripeListOptions listOptions = null)
+        public virtual IEnumerable<StripePlan> List(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            var url = Urls.Plans;
-            url = this.ApplyAllParameters(listOptions, url, true);
-
-            var response = Requestor.GetString(url, ApiKey);
-
-            return Mapper<StripePlan>.MapCollectionFromJson(response);
+            return Mapper<StripePlan>.MapCollectionFromJson(
+                Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Plans, true),
+                SetupRequestOptions(requestOptions))
+            );
         }
+
+#if !PORTABLE
+        public virtual async Task<StripePlan> CreateAsync(StripePlanCreateOptions createOptions, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripePlan>.MapFromJson(
+                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.Plans, false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<StripePlan> GetAsync(string planId, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripePlan>.MapFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Plans}/{planId}", false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async void DeleteAsync(string planId, StripeRequestOptions requestOptions = null)
+        {
+            await Requestor.DeleteAsync($"{Urls.Plans}/{planId}",
+                SetupRequestOptions(requestOptions));
+        }
+
+        public virtual async Task<StripePlan> UpdateAsync(string planId, StripePlanUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripePlan>.MapFromJson(
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{planId}", false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual async Task<IEnumerable<StripePlan>> ListAsync(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripePlan>.MapCollectionFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Plans, true),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+#endif
     }
 }
