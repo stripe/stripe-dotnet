@@ -309,6 +309,9 @@
     <Compile Include="..\Stripe\Services\Customers\StripeCustomerUpdateOptions.cs">
       <Link>Services\Customers\StripeCustomerUpdateOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\Discounts\StripeDiscountService.cs">
+      <Link>Services\Discounts\StripeDiscountService.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\Disputes\StripeDisputeService.cs">
       <Link>Services\Disputes\StripeDisputeService.cs</Link>
     </Compile>
