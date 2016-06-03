@@ -108,6 +108,9 @@
     <Compile Include="..\Stripe\Entities\StripeDiscount.cs">
       <Link>Entities\StripeDiscount.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Entities\StripeDiscountDelete.cs">
+      <Link>Entities\StripeDiscountDelete.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Entities\StripeDispute.cs">
       <Link>Entities\StripeDispute.cs</Link>
     </Compile>

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -62,6 +63,12 @@ namespace Stripe
             );
         }
 
+        public virtual StripeDiscountDelete DeleteDiscount(string subscriptionId, StripeRequestOptions requestOptions = null) 
+        {
+            var url = String.Format(Urls.SubscriptionDiscount, subscriptionId);
+            return Mapper<StripeDiscountDelete>.MapFromJson(Requestor.Delete(url, SetupRequestOptions(requestOptions)));
+        }
+
 #if !PORTABLE
         public virtual async Task<StripeSubscription> GetAsync(string customerId, string subscriptionId, StripeRequestOptions requestOptions = null)
         {
@@ -113,6 +120,12 @@ namespace Stripe
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, url, true),
                 SetupRequestOptions(requestOptions))
             );
+        }
+
+        public virtual async Task<StripeDiscountDelete> DeleteDiscountAsync(string subscriptionId, StripeRequestOptions requestOptions = null) 
+        {
+            var url = String.Format(Urls.SubscriptionDiscount, subscriptionId);
+            return Mapper<StripeDiscountDelete>.MapFromJson(await Requestor.DeleteAsync(url, SetupRequestOptions(requestOptions)));
         }
 #endif
     }

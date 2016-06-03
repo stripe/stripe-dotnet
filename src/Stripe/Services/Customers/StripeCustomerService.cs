@@ -48,7 +48,10 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-
+        public virtual StripeDiscountDelete DeleteDiscount(string customerId, StripeRequestOptions requestOptions = null) {
+            var customerUrl = string.Format(Urls.CustomerDiscount, customerId);
+            return Mapper<StripeDiscountDelete>.MapFromJson(Requestor.Delete(customerUrl, SetupRequestOptions(requestOptions)));
+        }
 #if !PORTABLE
         public virtual async Task<StripeCustomer> CreateAsync(StripeCustomerCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
@@ -73,14 +76,16 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-        public virtual void DeleteDiscount(string customerId) {
-            var customerUrl = String.Format(Urls.CustomerDiscount, customerId);
-            Requestor.Delete(customerUrl, ApiKey);
-        }
-        public virtual void Delete(string customerId)
+        
+        public virtual async Task DeleteAsync(string customerId, StripeRequestOptions requestOptions = null)
         {
             await Requestor.DeleteAsync($"{Urls.Customers}/{customerId}",
                 SetupRequestOptions(requestOptions));
+        }
+
+        public virtual async Task<StripeDiscountDelete> DeleteDiscountAsync(string customerId, StripeRequestOptions requestOptions = null) {
+            var customerUrl = string.Format(Urls.CustomerDiscount, customerId);
+            return Mapper<StripeDiscountDelete>.MapFromJson(await Requestor.DeleteAsync(customerUrl, SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<IEnumerable<StripeCustomer>> ListAsync(StripeCustomerListOptions listOptions = null, StripeRequestOptions requestOptions = null)

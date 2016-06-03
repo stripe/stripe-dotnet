@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="Constants\BankAccountHolderType.cs" />
     <Compile Include="Entities\CustomerBankAccount.cs" />
+    <Compile Include="Entities\StripeDiscountDelete.cs" />
     <Compile Include="Entities\StripeManagedAccountKeys.cs" />
     <Compile Include="Constants\StripeSubscriptionStatuses.cs" />
     <Compile Include="Entities\StripeBirthDay.cs" />
@@ -192,5 +193,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
