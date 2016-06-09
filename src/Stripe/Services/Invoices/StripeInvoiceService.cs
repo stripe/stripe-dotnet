@@ -53,6 +53,14 @@ namespace Stripe
             );
         }
 
+        public virtual IEnumerable<StripeInvoiceLineItem> ListLineItems(string invoiceId, StripeInvoiceListLineItemsOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(
+                Requestor.GetString(this.ApplyAllParameters(listOptions, $"{Urls.Invoices}/{invoiceId}/lines", true),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
         public virtual StripeInvoice Create(string customerId, StripeInvoiceCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
         {
             var url = ParameterBuilder.ApplyParameterToUrl(Urls.Invoices, "customer", customerId);
