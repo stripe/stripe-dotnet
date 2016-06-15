@@ -405,6 +405,9 @@
     <Compile Include="..\Stripe\Services\Subscriptions\StripeSubscriptionUpdateOptions.cs">
       <Link>Services\Subscriptions\StripeSubscriptionUpdateOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\Subscriptions\SubscriptionSharedOptions.cs">
+      <Link>Services\Subscriptions\SubscriptionSharedOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\Tokens\StripeTokenCreateOptions.cs">
       <Link>Services\Tokens\StripeTokenCreateOptions.cs</Link>
     </Compile>

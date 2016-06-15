@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeSubscriptionUpdateOptions : StripeSubscriptionCreateOptions
+    public class StripeSubscriptionUpdateOptions : SubscriptionSharedOptions
     {
         [JsonProperty("prorate")]
         public bool? Prorate { get; set; }
