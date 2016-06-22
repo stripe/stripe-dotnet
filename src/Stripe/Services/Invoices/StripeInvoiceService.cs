@@ -29,6 +29,17 @@ namespace Stripe
             );
         }
 
+        //https://api.stripe.com/v1/invoices/upcoming/lines?customer=cus_8Kv2kvdLpEatVh&limit=100
+        public virtual StripeList<StripeInvoiceLineItem> UpcomingLines(string customerId, StripeUpcomingInvoiceLinesOptions upcomingOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.Invoices}/upcoming/lines", "customer", customerId);
+
+            return Mapper<StripeInvoiceLineItem>.MapStripeListFromJson(
+                Requestor.GetString(this.ApplyAllParameters(upcomingOptions, url, false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
         public virtual StripeInvoice Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeInvoice>.MapFromJson(
