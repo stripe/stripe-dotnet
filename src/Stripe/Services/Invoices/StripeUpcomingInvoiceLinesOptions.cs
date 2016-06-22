@@ -5,9 +5,6 @@ namespace Stripe
 {
     public class StripeUpcomingInvoiceLinesOptions : StripeListOptions
     {
-        [JsonProperty("customer")]
-        public string CustomerId { get; set; }
-
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
 
