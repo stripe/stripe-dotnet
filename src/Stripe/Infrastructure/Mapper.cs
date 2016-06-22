@@ -6,6 +6,18 @@ namespace Stripe
 {
     public static class Mapper<T>
     {
+        public static StripeList<T> MapStripeListFromJson(string json, string token = "data")
+        {
+            var list = new StripeList<T>();
+
+            var jObject = JObject.Parse(json);
+
+            var allTokens = jObject.SelectToken(token);
+            list.Data=new List<T>();
+            foreach (var tkn in allTokens)
+                list.Data.Add(MapFromJson(tkn.ToString()));
+            return list;
+        }
         public static List<T> MapCollectionFromJson(string json, string token = "data")
         {
             var list = new List<T>();
