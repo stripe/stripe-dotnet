@@ -42,8 +42,10 @@ namespace Stripe.Tests
 
         It should_be_the_right_amount = () =>
         {
-            _upcomingInvoice.AmountDue.ShouldBeGreaterThan(1200);
-            _upcomingInvoice.AmountDue.ShouldBeLessThan(1250);
+            // the first one was $5 for the month. The second month is $10 because the quantity went to two
+            // however, we are prorating the first one 15 days, so it should only be about half the price, give or take
+            _upcomingInvoice.AmountDue.ShouldBeGreaterThan(1250);
+            _upcomingInvoice.AmountDue.ShouldBeLessThan(1255);
         };
     }
 }
