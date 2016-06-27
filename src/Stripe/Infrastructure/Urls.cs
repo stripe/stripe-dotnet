@@ -1,6 +1,6 @@
 ﻿namespace Stripe
 {
-    internal static class Urls
+    public static class Urls
     {
         public static string Invoices => BaseUrl + "/invoices";
 
@@ -36,12 +36,12 @@
 
         public static string ApplicationFees => BaseUrl + "/application_fees";
 
-        internal static string BaseUrl => "https://api.stripe.com/v1";
+        public static string BaseUrl { get; set; } = "https://api.stripe.com/v1";
 
         public static string OAuthToken => BaseConnectUrl + "/oauth/token";
 
         public static string OAuthDeauthorize => BaseConnectUrl + "/oauth/deauthorize";
 
-        private static string BaseConnectUrl => "https://connect.stripe.com";
+        public static string BaseConnectUrl { get; set; } = "https://connect.stripe.com";
     }
 }
