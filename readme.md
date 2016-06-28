@@ -48,6 +48,14 @@ d) In any of the service calls, you can pass a [StripeRequestOptions](#stripereq
 	planService.Get(*planId*, new StripeRequestOptions() { ApiKey = "[your api key here]" });
 ```
 
+Stripe API Version
+==================
+
+Stripe.net forces a version of the Stripe API for which it was designed. You can find out the latest version supported by viewing StripeConfiguration.cs under the Infrastructure folder. Many features built after this are still supported. If you are not using webhooks, then you need to do nothing for stripe.net to be compatible with the Stripe API.
+
+If you *are* using Stripe Events then you will need to email Stripe support and ask them to set your API version (you can see this in your Stripe Dashboard) to the one specified in stripe.net's StripeConfiguration.cs file.
+
+
 Examples
 ========
 
