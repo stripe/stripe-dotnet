@@ -7,7 +7,7 @@ namespace Stripe
     /// <summary>
     /// Use StripeCard instead, or SourceToken/SourceTokenOrExistingSourceId
     /// </summary>
-    [Obsolete]
+    [Obsolete("Use StripeCard instead, or SourceToken/SourceTokenOrExistingSourceId")]
     public class StripeSourceOptions
     {
         [JsonProperty("source")]
