@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class SourceCard
+    public class SourceCard : INestedOptions
     {
         [JsonProperty("source[object]")]
         internal string Object => "card";

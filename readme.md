@@ -49,14 +49,15 @@ d) In any of the service calls, you can pass a [StripeRequestOptions](#stripereq
 ```
 
 Stripe API Version
-==================
+------------------
 
-Stripe.net forces a version of the Stripe API for which it was designed. You can find out the latest version supported by viewing StripeConfiguration.cs under the Infrastructure folder. Many features built after this are still supported. If you are not using webhooks, then you need to do nothing to be compatible with the Stripe API.
+Stripe.net forces a version of the Stripe API for which it was designed. You can find out the latest version supported by viewing StripeConfiguration.cs under the src/Infrastructure folder. 
+If you are not using webhooks, then you don't need to do anything for Stripe.net to be compatible with the Stripe API.
 
-If you are using Stripe events then you will need to email Stripe support and ask them to set your API version (you can see this in your Dashboard) to the one specified in Stripe.net's StripeConfiguration.cs file.
+If you are using webhooks from Stripe, then you will need to email Stripe support and ask them to set your API version (you can see this in your Stripe Dashboard) to the one specified in Stripe.net's StripeConfiguration.cs file.
 
 Examples
-========
+--------
 
 Plans
 -----

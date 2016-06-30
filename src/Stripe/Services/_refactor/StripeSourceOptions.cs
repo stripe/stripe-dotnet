@@ -8,7 +8,7 @@ namespace Stripe
     /// Use StripeCard instead, or SourceToken/SourceTokenOrExistingSourceId
     /// </summary>
     [Obsolete]
-    public class StripeSourceOptions
+    public class StripeSourceOptions : INestedOptions
     {
         [JsonProperty("source")]
         public string TokenId { get; set; }

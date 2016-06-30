@@ -82,6 +82,7 @@
     <Compile Include="Entities\StripeTransferReversal.cs" />
     <Compile Include="Constants\StripeRefundReasons.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
+    <Compile Include="Services\INestedOption.cs" />
     <Compile Include="Infrastructure\StripeExternalAccountConverter.cs" />
     <Compile Include="Services\Account\StripeAccountBankAccountOptions.cs" />
     <Compile Include="Services\Account\StripeAccountLegalEntityOptions.cs" />
