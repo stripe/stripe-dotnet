@@ -20,6 +20,10 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
 
+        [JsonProperty("created")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime? Created { get; set; }
+
         [JsonProperty("current_period_end")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? CurrentPeriodEnd { get; set; }

@@ -24,7 +24,6 @@ namespace Stripe
 
                     foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
                     {
-                        // simplify this crap
                         if (attribute.PropertyName.ToLower().Contains("metadata"))
                             newUrl = ApplyMetadataParameters(newUrl, value);
                         else if (attribute.PropertyName.ToLower().Contains("fraud_details"))
@@ -42,9 +41,9 @@ namespace Stripe
 
                             if (filter.EqualTo.HasValue)
                                 newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, filter.EqualTo.Value.ConvertDateTimeToEpoch().ToString());
-                            else
-                                if (filter.LessThan.HasValue)
-                                    newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString());
+
+                            if (filter.LessThan.HasValue)
+                                newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString());
 
                             if (filter.LessThanOrEqual.HasValue)
                                 newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[lte]", filter.LessThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
@@ -55,47 +54,10 @@ namespace Stripe
                             if (filter.GreaterThanOrEqual.HasValue)
                                 newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gte]", filter.GreaterThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
                         }
-                        else if (property.PropertyType == typeof(StripeBankAccountOptions))
+                        else if (value as INestedOptions != null)
                         {
-                            var options = (StripeBankAccountOptions)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, options);
+                            newUrl = ApplyNestedObjectProperties(newUrl, value);
                         }
-                        else if (property.PropertyType == typeof(StripeCreditCardOptions))
-                        {
-                            var options = (StripeCreditCardOptions)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, options);
-                        }
-                        else if (property.PropertyType == typeof(StripeSourceOptions))
-                        {
-                            var options = (StripeSourceOptions)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, options);
-                        }
-                        else if (property.PropertyType == typeof(SourceCard))
-                        {
-                            var options = (SourceCard)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, options);
-                        }
-                        else if (property.PropertyType == typeof(SourceBankAccount))
-                        {
-                            var options = (SourceBankAccount)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, options);
-                        }
-                        else if (property.PropertyType == typeof(StripeAccountCardOptions))
-                        {
-                            var options = (StripeAccountCardOptions)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, options);
-                        }
-                        else if (property.PropertyType == typeof(StripeAccountBankAccountOptions))
-                        {
-                            var options = (StripeAccountBankAccountOptions)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, options);
-                        }
-                        else if (property.PropertyType == typeof(StripeAccountLegalEntityOptions))
-                        {
-                            var sripeAccountLegalEntityOptions = (StripeAccountLegalEntityOptions)value;
-                            newUrl = ApplyNestedObjectProperties(newUrl, sripeAccountLegalEntityOptions);
-                        }
-                        // end the crap
                         else
                         {
                             newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());

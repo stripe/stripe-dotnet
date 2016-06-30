@@ -1,7 +1,6 @@
 ﻿using System;
 using Machine.Specifications;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace Stripe.Tests
 {
@@ -22,7 +21,7 @@ namespace Stripe.Tests
 
             var _stripeCustomerService = new StripeCustomerService();
             _stripeCustomer = _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard(_stripePlan.Id, _stripeCoupon.Id, DateTime.UtcNow.AddDays(10)));
-        
+
             _stripeSubscriptionService = new StripeSubscriptionService();
 
             _stripeSubscriptionUpdateOptions = new StripeSubscriptionUpdateOptions();

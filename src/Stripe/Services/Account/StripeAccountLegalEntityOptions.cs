@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeAccountLegalEntityOptions
+    public class StripeAccountLegalEntityOptions : INestedOptions
     {
         #region Address
 

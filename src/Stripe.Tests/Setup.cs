@@ -6,7 +6,7 @@ namespace Stripe.Tests
     {
         void IAssemblyContext.OnAssemblyStart()
         {
-            StripeConfiguration.SetApiKey("test_api_key_here");
+            StripeConfiguration.SetApiKey("sk_test_zH6JDWg1Pk2jGnEJ5PfibhW3");
         }
 
         void IAssemblyContext.OnAssemblyComplete()

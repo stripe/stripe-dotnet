@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeCreditCardOptions
+    public class StripeCreditCardOptions : INestedOptions
     {
         [JsonProperty("card")]
         public string TokenId { get; set; }

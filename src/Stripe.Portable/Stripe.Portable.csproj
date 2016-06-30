@@ -318,6 +318,9 @@
     <Compile Include="..\Stripe\Services\Events\StripeEventUtility.cs">
       <Link>Services\Events\StripeEventUtility.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\INestedOption.cs">
+      <Link>Services\INestedOption.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\InvoiceItems\StripeInvoiceItemCreateOptions.cs">
       <Link>Services\InvoiceItems\StripeInvoiceItemCreateOptions.cs</Link>
     </Compile>
@@ -407,6 +410,9 @@
     </Compile>
     <Compile Include="..\Stripe\Services\Subscriptions\StripeSubscriptionUpdateOptions.cs">
       <Link>Services\Subscriptions\StripeSubscriptionUpdateOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\Subscriptions\SubscriptionSharedOptions.cs">
+      <Link>Services\Subscriptions\SubscriptionSharedOptions.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Services\Tokens\StripeTokenCreateOptions.cs">
       <Link>Services\Tokens\StripeTokenCreateOptions.cs</Link>
