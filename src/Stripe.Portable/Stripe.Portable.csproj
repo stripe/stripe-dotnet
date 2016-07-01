@@ -318,6 +318,9 @@
     <Compile Include="..\Stripe\Services\Events\StripeEventUtility.cs">
       <Link>Services\Events\StripeEventUtility.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\INestedNamedOptions.cs">
+      <Link>Services\INestedNamedOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\INestedOption.cs">
       <Link>Services\INestedOption.cs</Link>
     </Compile>
@@ -335,6 +338,9 @@
     </Compile>
     <Compile Include="..\Stripe\Services\Invoices\StripeInvoiceCreateOptions.cs">
       <Link>Services\Invoices\StripeInvoiceCreateOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\Invoices\StripeInvoiceListLineItemsOptions.cs">
+      <Link>Services\Invoices\StripeInvoiceListLineItemsOptions.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Services\Invoices\StripeInvoiceListOptions.cs">
       <Link>Services\Invoices\StripeInvoiceListOptions.cs</Link>

@@ -54,9 +54,18 @@ namespace Stripe
                             if (filter.GreaterThanOrEqual.HasValue)
                                 newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName + "[gte]", filter.GreaterThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
                         }
+                        else if (value as INestedNamedOptions != null)
+                        {
+                            newUrl = ApplyNestedNamedObjectProperties(newUrl, attribute.PropertyName, value);    
+                        }
                         else if (value as INestedOptions != null)
                         {
                             newUrl = ApplyNestedObjectProperties(newUrl, value);
+                        }
+                        else if (property.PropertyType.IsArray)
+                        {
+                            var objArr = ((Array)value).Cast<object>().ToArray();
+                            newUrl = ApplyArrayParameters(newUrl, attribute.PropertyName, objArr);
                         }
                         else
                         {
@@ -99,6 +108,32 @@ namespace Stripe
                 token = "?";
 
             return string.Format("{0}{1}{2}={3}", url, token, argument, WebUtility.UrlEncode(value));
+        }
+
+        private static string ApplyArrayParameters(string newUrl, string propertyName, object[] array)
+        {
+            foreach (var o in array)
+            {
+                newUrl = ApplyParameterToUrl(newUrl, $"{propertyName}[]", o.ToString());
+            }
+
+            return newUrl;
+        }
+
+        private static string ApplyNestedNamedObjectProperties(string newUrl, string propertyName, object nestedObject)
+        {
+            foreach (var property in nestedObject.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+            {
+                var value = property.GetValue(nestedObject, null);
+                if (value == null) continue;
+
+                foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
+                {
+                    newUrl = ApplyParameterToUrl(newUrl, $"{propertyName}[{attribute.PropertyName}]", value.ToString());
+                }
+            }
+
+            return newUrl;
         }
 
         private static string ApplyNestedObjectProperties(string newUrl, object nestedObject)
