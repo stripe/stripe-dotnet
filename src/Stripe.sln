@@ -10,6 +10,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stripe.Portable", "Stripe.Portable\Stripe.Portable.csproj", "{41019920-B57D-4065-B9DF-1442CDAF3BAC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3F91159-E7A8-4F44-9DD9-B7D76E2E7542}"
+	ProjectSection(SolutionItems) = preProject
+		..\LICENSE = ..\LICENSE
+		..\readme.md = ..\readme.md
+		..\build\Stripe.net.nuspec = ..\build\Stripe.net.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

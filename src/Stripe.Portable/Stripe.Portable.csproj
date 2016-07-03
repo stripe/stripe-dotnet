@@ -435,8 +435,6 @@
     <Compile Include="..\Stripe\Services\_sources\SourceBankAccount.cs">
       <Link>Services\_sources\SourceBankAccount.cs</Link>
     </Compile>
-    <Compile Include="Extensions\BindingFlags.cs" />
-    <Compile Include="Extensions\ReflectionExtensions.cs" />
     <Compile Include="Services\_sources\SourceCard.cs" />
   </ItemGroup>
   <ItemGroup>
