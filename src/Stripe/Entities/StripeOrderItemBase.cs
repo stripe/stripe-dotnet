@@ -37,7 +37,7 @@ namespace Stripe
         /// <summary>
         /// Gets or sets the Type of line item. One of sku, tax, shipping, or discount
         /// </summary>
-        [JsonProperty("Type")]
+        [JsonProperty("type")]
         public string Type { get; set; }
     }
 }

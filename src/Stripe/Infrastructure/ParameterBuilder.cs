@@ -22,19 +22,56 @@ namespace Stripe
                     var value = property.GetValue(obj, null);
                     if (value == null) continue;
 
+                    
                     foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
                     {
-                        if (attribute.PropertyName.ToLower().Contains("metadata"))
-                            newUrl = ApplyMetadataParameters(newUrl, value);
-                        else if (attribute.PropertyName.ToLower().Contains("fraud_details"))
-                        {
-                            var fraudDetails = (Dictionary<string, string>)value;
+                        //Check if this property is a dictionary:
+//                        Type dictionaryInterfaceType =
+//                            value.GetType()
+//                                .GetInterfaces()
+//                                .SingleOrDefault(
+//                                    x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IDictionary<,>));
+                        Type dictionaryInterfaceType =
+                            value.GetType()
+                                .GetTypeInfo()
+                                .ImplementedInterfaces.SingleOrDefault(
+                                    x => x.GetTypeInfo().IsGenericType && x.GetGenericTypeDefinition() == typeof(IDictionary<,>));
 
-                            foreach (string key in fraudDetails.Keys)
+
+                        if (dictionaryInterfaceType != null)
+                        {
+                            Type[] dictioanryKeyValueTypes = dictionaryInterfaceType.GetTypeInfo().GenericTypeArguments;
+                            if (dictioanryKeyValueTypes[0] == typeof(string))
                             {
-                                newUrl = ApplyParameterToUrl(newUrl, $"fraud_details[{key}]", fraudDetails[key]);
+                                Type valueType = dictioanryKeyValueTypes[0];
+
+                                //newUrl = ApplyDictionaryParameters(newUrl, attribute.PropertyName, value);
+
+                                //MethodInfo method = typeof(ParameterBuilder).GetMethod("ApplyDictionaryParameters");
+                                MethodInfo method =
+                                    typeof(ParameterBuilder).GetTypeInfo()
+                                        .GetDeclaredMethod("ApplyDictionaryParameters");
+                                MethodInfo generic = method.MakeGenericMethod(valueType);
+                                newUrl = (string)generic.Invoke(null, new[] { newUrl, attribute.PropertyName, value });
                             }
-                        }
+                            else
+                            {
+                                throw new NotSupportedException("Only string keys are supported for dictionary properties.");
+                            }
+                        } 
+
+
+//                        if (attribute.PropertyName.ToLower().Contains("metadata"))
+//                            newUrl = ApplyMetadataParameters(newUrl, value);
+//                        else if (attribute.PropertyName.ToLower().Contains("fraud_details"))
+//                        {
+//                            var fraudDetails = (Dictionary<string, string>)value;
+//
+//                            foreach (string key in fraudDetails.Keys)
+//                            {
+//                                newUrl = ApplyParameterToUrl(newUrl, $"fraud_details[{key}]", fraudDetails[key]);
+//                            }
+//                        }
                         else if (property.PropertyType == typeof(StripeDateFilter))
                         {
                             var filter = (StripeDateFilter)value;
@@ -145,26 +182,37 @@ namespace Stripe
 
                 foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
                 {
+                    //TODO:
                     if (attribute.PropertyName.ToLower().Contains("metadata"))
-                        newUrl = ApplyMetadataParameters(newUrl, value);
-                    else
-                        newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
+                        //newUrl = ApplyMetadataParameters(newUrl, value);
+                        newUrl = ApplyDictionaryParameters(newUrl, "metadata", value as Dictionary<string, string>);
+                    else newUrl = ApplyParameterToUrl(newUrl, attribute.PropertyName, value.ToString());
                 }
             }
 
             return newUrl;
         }
 
-        private static string ApplyMetadataParameters(string newUrl, object value)
+        private static string ApplyDictionaryParameters<T>(string newUrl, string propertyName, Dictionary<string, T> values)
         {
-            var metadata = (Dictionary<string, string>)value;
-
-            foreach (string key in metadata.Keys)
+            foreach (var kvp in values)
             {
-                newUrl = ApplyParameterToUrl(newUrl, $"metadata[{key}]", metadata[key]);
+                newUrl = ApplyParameterToUrl(newUrl, $"{propertyName}[{kvp.Key}]", kvp.Value.ToString());
             }
 
             return newUrl;
         }
+
+//        private static string ApplyMetadataParameters(string newUrl, object value)
+//        {
+//            var metadata = (Dictionary<string, string>)value;
+//
+//            foreach (string key in metadata.Keys)
+//            {
+//                newUrl = ApplyParameterToUrl(newUrl, $"metadata[{key}]", metadata[key]);
+//            }
+//
+//            return newUrl;
+//        }
     }
 }

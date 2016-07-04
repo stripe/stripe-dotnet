@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-namespace Stripe.Services.Skus
+namespace Stripe
 {
     public class StripeSkuService : StripeService
     {

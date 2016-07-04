@@ -120,6 +120,7 @@
     <Compile Include="Services\Orders\StripeOrderUpdateOptions.cs" />
     <Compile Include="Services\Orders\StripeOrderUpsertOptionsBase.cs" />
     <Compile Include="Services\Orders\StripeStatusTransitionsFilter.cs" />
+    <Compile Include="Services\Skus\StripeInventoryOptions.cs" />
     <Compile Include="Services\StripeDimensionsOptions.cs" />
     <Compile Include="Services\Products\StripeProductCreateOptions.cs" />
     <Compile Include="Services\Products\StripeProductListOptions.cs" />

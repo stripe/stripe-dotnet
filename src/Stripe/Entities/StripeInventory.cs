@@ -5,7 +5,7 @@ namespace Stripe
     /// <summary>
     /// Describing inventory levels
     /// </summary>
-    public class StripeInventory
+    public class StripeInventory : INestedNamedOptions
     {
         /// <summary>
         /// Gets or sets the count of inventory available. Will be present if and only if Type is finite.
@@ -16,7 +16,7 @@ namespace Stripe
         /// <summary>
         /// Gets or sets inventory Type. Possible values are finite, bucket (not quantified), and infinite.
         /// </summary>
-        [JsonProperty("Type")]
+        [JsonProperty("type")]
         public string Type { get; set; }
 
         /// <summary>
