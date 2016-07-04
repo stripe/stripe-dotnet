@@ -39,6 +39,6 @@ namespace Stripe
         /// Gets or sets the Shipping address for the order. Required if any of the SKUs are for products that have shippable set to true.
         /// </summary>
         [JsonProperty("shipping")]
-        public StripeShipping Shipping { get; set; }
+        public StripeShippingOptions Shipping { get; set; }
     }
 }

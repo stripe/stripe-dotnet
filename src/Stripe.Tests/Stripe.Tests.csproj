@@ -87,6 +87,9 @@
     <Compile Include="card\when_creating_a_card.cs" />
     <Compile Include="charges\when_refunding_and_setting_fraud_details.cs" />
     <Compile Include="invoices\when_listing_invoice_line_items.cs" />
+    <Compile Include="orders\order_behaviors.cs" />
+    <Compile Include="orders\test_data\stripe_order_create_options.cs" />
+    <Compile Include="orders\when_creating_an_order.cs" />
     <Compile Include="products\product_behaviors.cs" />
     <Compile Include="products\test_data\stripe_product_create_options.cs" />
     <Compile Include="products\when_creating_a_product.cs" />
