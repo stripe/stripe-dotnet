@@ -28,7 +28,7 @@ namespace Stripe
         /// <summary>
         /// Gets or sets the type of estimate. Must be either "range" or "exact"
         /// </summary>
-        [JsonProperty("Type")]
+        [JsonProperty("type")]
         public string Type { get; set; }
     }
 }

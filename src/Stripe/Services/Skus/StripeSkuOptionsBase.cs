@@ -32,7 +32,7 @@ namespace Stripe
         /// Gets or sets a description of the SKU’s inventory.
         /// </summary>
         [JsonProperty("inventory")]
-        public StripeInventory Inventory { get; set; }
+        public StripeInventoryOptions Inventory { get; set; }
 
         /// <summary>
         /// Gets or sets a set of key/value pairs that you can attach to a SKU object. It can be useful for storing additional information about the SKU in a structured format.
