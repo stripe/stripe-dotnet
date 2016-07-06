@@ -70,24 +70,27 @@ namespace Stripe
                 }
             }
 
-            // expandable properties
-            var propertiesToExpand = service.GetType()
-                .GetRuntimeProperties()
-                .Where(p => p.Name.StartsWith("Expand") && p.PropertyType == typeof(bool))
-                .Where(p => (bool)p.GetValue(service, null))
-                .Select(p => p.Name);
-
-            foreach (var propertyName in propertiesToExpand)
+            if (service != null)
             {
-                string expandPropertyName = propertyName.Substring("Expand".Length);
-                expandPropertyName = Regex.Replace(expandPropertyName, "([a-z])([A-Z])", "$1_$2").ToLower();
+                // expandable properties
+                var propertiesToExpand = service.GetType()
+                    .GetRuntimeProperties()
+                    .Where(p => p.Name.StartsWith("Expand") && p.PropertyType == typeof(bool))
+                    .Where(p => (bool)p.GetValue(service, null))
+                    .Select(p => p.Name);
 
-                if (isListMethod)
+                foreach (var propertyName in propertiesToExpand)
                 {
-                    expandPropertyName = "data." + expandPropertyName;
-                }
+                    string expandPropertyName = propertyName.Substring("Expand".Length);
+                    expandPropertyName = Regex.Replace(expandPropertyName, "([a-z])([A-Z])", "$1_$2").ToLower();
 
-                requestString = ApplyParameterToUrl(requestString, "expand[]", expandPropertyName);
+                    if (isListMethod)
+                    {
+                        expandPropertyName = "data." + expandPropertyName;
+                    }
+
+                    requestString = ApplyParameterToUrl(requestString, "expand[]", expandPropertyName);
+                }
             }
 
             return requestString;

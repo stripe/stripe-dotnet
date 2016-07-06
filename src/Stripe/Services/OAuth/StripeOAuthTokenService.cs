@@ -17,7 +17,7 @@ using System.Threading.Tasks;
         public virtual StripeOAuthDeauthorize Deauthorize(string clientId, string stripeUserId, StripeRequestOptions requestOptions = null)
         {
             var url = ParameterBuilder.ApplyParameterToUrl(Urls.OAuthDeauthorize, "client_id", clientId);
-            url = ParameterBuilder.ApplyParameterToUrl(Urls.OAuthDeauthorize, "stripe_user_id", stripeUserId);
+            url = ParameterBuilder.ApplyParameterToUrl(url, "stripe_user_id", stripeUserId);
 
             return Mapper<StripeOAuthDeauthorize>.MapFromJson(
                 Requestor.PostString(url, SetupRequestOptions(requestOptions))
@@ -36,7 +36,7 @@ using System.Threading.Tasks;
         public virtual async Task<StripeOAuthDeauthorize> DeauthorizeAsync(string clientId, string stripeUserId, StripeRequestOptions requestOptions = null)
         {
             var url = ParameterBuilder.ApplyParameterToUrl(Urls.OAuthDeauthorize, "client_id", clientId);
-            url = ParameterBuilder.ApplyParameterToUrl(Urls.OAuthDeauthorize, "stripe_user_id", stripeUserId);
+            url = ParameterBuilder.ApplyParameterToUrl(url, "stripe_user_id", stripeUserId);
 
             return Mapper<StripeOAuthDeauthorize>.MapFromJson(
                 await Requestor.PostStringAsync(url, SetupRequestOptions(requestOptions))
