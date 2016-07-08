@@ -1,5 +1,7 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)
 
+Notes on Naming
+---------------
 The new BankAccountService does not have the usual name, StripeBankAccountService. I will slowly be moving from this method of always including the name Stripe, as class names are getting way too long (even for me). BankAccountCreateOptions is just a shorter name, for example.
 
 This service also returns a CustomerBankAccount, instead of the already built in StripeBankAccount. The reason is because Stripe wants to keep a clean separation between external account bank accounts, and customer bank accounts. The StripeBankAccount entity will 
@@ -9,8 +11,6 @@ eventually be renamed to ExternalAccountBankAccount.
 Support
 -------
 Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to see if your issue/request already exists. If it does, please leave a comment or a [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). This helps me priortize what I work on next. [Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if you can't find what you're looking for. :)
-
-I also hang out in IRC in #stripe on freenode (my nick is truepudding) when I can. Feel free to ping me there as well.
 
 Quick Start
 -----------
