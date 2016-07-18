@@ -36,7 +36,6 @@ namespace Stripe
                 SetupRequestOptions(requestOptions));
         }
 
-#if !PORTABLE
         public virtual async Task<StripeAccount> CreateAsync(StripeAccountCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeAccount>.MapFromJson(
@@ -66,6 +65,5 @@ namespace Stripe
             await Requestor.DeleteAsync(this.ApplyAllParameters(null, $"{Urls.Accounts}/{accountId}", false),
                 SetupRequestOptions(requestOptions));
         }
-#endif
     }
 }

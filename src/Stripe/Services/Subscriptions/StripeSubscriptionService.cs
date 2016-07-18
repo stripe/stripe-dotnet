@@ -62,7 +62,6 @@ namespace Stripe
             );
         }
 
-#if !PORTABLE
         public virtual async Task<StripeSubscription> GetAsync(string customerId, string subscriptionId, StripeRequestOptions requestOptions = null)
         {
             var url = string.Format(Urls.Subscriptions + "/{1}", customerId, subscriptionId);
@@ -114,6 +113,5 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-#endif
-    }
+   }
 }

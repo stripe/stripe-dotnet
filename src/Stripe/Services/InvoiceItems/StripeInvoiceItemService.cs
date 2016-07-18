@@ -48,7 +48,6 @@ namespace Stripe
             );
         }
 
-#if !PORTABLE
         public virtual async Task<StripeInvoiceLineItem> CreateAsync(StripeInvoiceItemCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
@@ -86,6 +85,5 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-#endif
     }
 }

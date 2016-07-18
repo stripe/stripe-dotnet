@@ -46,7 +46,6 @@ namespace Stripe
             return ExecuteRequest(wr);
         }
 
-#if !PORTABLE
         public static Task<string> GetStringAsync(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
@@ -74,7 +73,6 @@ namespace Stripe
 
             return ExecuteRequestAsync(wr);
         }
-#endif
 
         internal static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions, bool useBearer = false)
         {
@@ -150,7 +148,6 @@ namespace Stripe
             throw BuildStripeException(response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
 
-#if !PORTABLE
         private static async Task<string> ExecuteRequestAsync(HttpRequestMessage requestMessage)
         {
             var response = await HttpClient.SendAsync(requestMessage);
@@ -161,7 +158,6 @@ namespace Stripe
             // this is not async
             throw BuildStripeException(response.StatusCode, requestMessage.RequestUri.AbsoluteUri, response.Content.ReadAsStringAsync().Result);
         }
-#endif
 
         internal static StripeException BuildStripeException(HttpStatusCode statusCode, string requestUri, string responseContent)
         {
