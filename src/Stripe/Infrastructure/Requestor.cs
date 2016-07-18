@@ -155,8 +155,7 @@ namespace Stripe
             if (response.IsSuccessStatusCode)
                 return await response.Content.ReadAsStringAsync();
 
-            // this is not async
-            throw BuildStripeException(response.StatusCode, requestMessage.RequestUri.AbsoluteUri, response.Content.ReadAsStringAsync().Result);
+            throw BuildStripeException(response.StatusCode, requestMessage.RequestUri.AbsoluteUri, await response.Content.ReadAsStringAsync());
         }
 
         internal static StripeException BuildStripeException(HttpStatusCode statusCode, string requestUri, string responseContent)
