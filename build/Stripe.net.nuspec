@@ -29,7 +29,7 @@
     <file src="net45\Stripe.net.pdb" target="lib\net45" />
     <file src="portable\Stripe.net.dll" target="lib\dotnet" />
     <file src="portable\Stripe.net.pdb" target="lib\dotnet" />
-    <file src="portable\Stripe.net.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid+MonoTouch+Xamarin.iOS+Xamarin.Mac" />
-    <file src="portable\Stripe.net.pdb" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid+MonoTouch+Xamarin.iOS+Xamarin.Mac" />
+    <file src="portable\Stripe.net.dll" target="lib\portable-net45+wp8+wpa81" />
+    <file src="portable\Stripe.net.pdb" target="lib\portable-net45+wp8+wpa81" />
   </files>
 </package>
