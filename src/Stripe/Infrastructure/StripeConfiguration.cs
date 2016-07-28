@@ -1,13 +1,21 @@
-﻿namespace Stripe
+﻿using System.Reflection;
+
+namespace Stripe
 {
     public static class StripeConfiguration
     {
+        /// <summary>
+        /// <para>This is the api version of Stripe that Stripe.net uses. You only need to be concerned if you are using webhooks (Stripe Events).</para>
+        /// <para>If you are using webhooks and are having issues, email Stripe and ask them to downgrade your api version to match the StripeApiVersion.</para>
+        /// </summary>
+        public static string StripeApiVersion = "2015-09-08";
+        public static string StripeNetVersion { get; private set; }
+
         private static string _apiKey;
-        internal const string SupportedApiVersion = "2015-09-08";
 
         static StripeConfiguration()
         {
-            ApiVersion = SupportedApiVersion;
+            StripeNetVersion = new AssemblyName(typeof(Requestor).GetTypeInfo().Assembly.FullName).Version.ToString(3);
         }
 
         internal static string GetApiKey()
@@ -26,7 +34,5 @@
         {
             _apiKey = newApiKey;
         }
-
-        public static string ApiVersion { get; internal set; }
     }
 }

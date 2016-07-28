@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
@@ -15,7 +16,6 @@ namespace Stripe
         static Requestor()
         {
             HttpClient = new HttpClient();
-            Version = new AssemblyName(typeof(Requestor).GetTypeInfo().Assembly.FullName).Version.ToString(3);
         }
 
         public static string GetString(string url, StripeRequestOptions requestOptions)
@@ -91,15 +91,17 @@ namespace Stripe
             else
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(requestOptions.ApiKey));
 
-            request.Headers.Add("Stripe-Version", StripeConfiguration.ApiVersion);
-
             if (requestOptions.StripeConnectAccountId != null)
                 request.Headers.Add("Stripe-Account", requestOptions.StripeConnectAccountId);
 
             if (requestOptions.IdempotencyKey != null)
                 request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
 
-            request.Headers.UserAgent.TryParseAdd($"Stripe.net {Version} (https://github.com/jaymedavis/stripe.net)");
+            request.Headers.Add("Stripe-Version", StripeConfiguration.StripeApiVersion);
+
+            var requestData = new RequestClient(request);
+            requestData.ApplyUserAgent();
+            requestData.ApplyClientData();
 
             return request;
         }

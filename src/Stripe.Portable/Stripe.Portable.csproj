@@ -198,6 +198,9 @@
     <Compile Include="..\Stripe\Infrastructure\ParameterBuilder.cs">
       <Link>Infrastructure\ParameterBuilder.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Infrastructure\RequestClient.cs">
+      <Link>Infrastructure\RequestClient.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Infrastructure\Requestor.cs">
       <Link>Infrastructure\Requestor.cs</Link>
     </Compile>
