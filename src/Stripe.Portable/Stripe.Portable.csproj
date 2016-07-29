@@ -186,6 +186,9 @@
     <Compile Include="..\Stripe\Entities\StripeTransferSchedule.cs">
       <Link>Entities\StripeTransferSchedule.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Infrastructure\Client.cs">
+      <Link>Infrastructure\Client.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Infrastructure\EpochTime.cs">
       <Link>Infrastructure\EpochTime.cs</Link>
     </Compile>
@@ -197,9 +200,6 @@
     </Compile>
     <Compile Include="..\Stripe\Infrastructure\ParameterBuilder.cs">
       <Link>Infrastructure\ParameterBuilder.cs</Link>
-    </Compile>
-    <Compile Include="..\Stripe\Infrastructure\RequestClient.cs">
-      <Link>Infrastructure\RequestClient.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Infrastructure\Requestor.cs">
       <Link>Infrastructure\Requestor.cs</Link>
@@ -438,7 +438,9 @@
     <Compile Include="..\Stripe\Services\_sources\SourceBankAccount.cs">
       <Link>Services\_sources\SourceBankAccount.cs</Link>
     </Compile>
-    <Compile Include="Services\_sources\SourceCard.cs" />
+    <Compile Include="..\Stripe\Services\_sources\SourceCard.cs">
+      <Link>Services\_sources\SourceCard.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

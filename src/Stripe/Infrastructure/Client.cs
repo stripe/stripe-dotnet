@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -7,11 +8,11 @@ using System.Text;
 
 namespace Stripe.Infrastructure
 {
-    internal class RequestClient
+    internal class Client
     {
         private HttpRequestMessage RequestMessage { get; set; }
 
-        public RequestClient(HttpRequestMessage requestMessage)
+        public Client(HttpRequestMessage requestMessage)
         {
             RequestMessage = requestMessage;
         }
@@ -34,9 +35,9 @@ namespace Stripe.Infrastructure
             values.Add("lang", ".NET");
             values.Add("publisher", "Jayme Davis");
             values.Add("lang_version", GetLangVersion());
-            values.Add("platform", typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product);
+            values.Add("uname", GetSystemInformation());
 
-            return BuildJsonObject(values);
+            return serialize(values);
         }
 
         private string GetLangVersion()
@@ -47,8 +48,22 @@ namespace Stripe.Infrastructure
             return assemblyName.Version.Major + "." + assemblyName.Version.Minor + "." + assemblyName.Version.Revision;
         }
 
+        private string GetSystemInformation()
+        {
+            var hash = new Dictionary<string, string>();
+
+#if !PORTABLE
+            hash.Add("net45.platform", Environment.OSVersion.VersionString);
+            hash.Add("net45.product", typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product);
+#else
+            hash.Add("portable.product", typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product);
+#endif
+
+            return serialize(hash);
+        }
+
         // i want to move away from json.net. this is a simple serializer
-        private string BuildJsonObject(Dictionary<string, string> items)
+        private string serialize(Dictionary<string, string> items)
         {
             var result = new StringBuilder();
 
@@ -58,8 +73,8 @@ namespace Stripe.Infrastructure
                 if (item == 0) result.Append("{");
 
                 // add the key/value
-                result.AppendFormat("\"{0}\": \"{1}\"", 
-                    items.Keys.ElementAt(item), 
+                result.AppendFormat("\"{0}\": \"{1}\"",
+                    items.Keys.ElementAt(item),
                     WebUtility.HtmlEncode(items.Values.ElementAt(item))
                 );
 

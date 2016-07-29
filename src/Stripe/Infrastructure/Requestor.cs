@@ -99,9 +99,9 @@ namespace Stripe
 
             request.Headers.Add("Stripe-Version", StripeConfiguration.StripeApiVersion);
 
-            var requestData = new RequestClient(request);
-            requestData.ApplyUserAgent();
-            requestData.ApplyClientData();
+            var client = new Client(request);
+            client.ApplyUserAgent();
+            client.ApplyClientData();
 
             return request;
         }
