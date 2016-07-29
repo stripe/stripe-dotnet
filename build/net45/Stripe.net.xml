@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Stripe.net</name>
+    </assembly>
+    <members>
+        <member name="T:Stripe.StripeSourceOptions">
+            <summary>
+            Use StripeCard instead, or SourceToken/SourceTokenOrExistingSourceId
+            </summary>
+        </member>
+        <member name="F:Stripe.StripeConfiguration.StripeApiVersion">
+            <summary>
+            <para>This is the API version that Stripe.net will automatically use when working with Stripe. You only need to be concerned if you are using webhooks (Stripe Events) and having issues.</para>
+            <para>If you notice webhooks are not working correctly, email Stripe and ask them to downgrade your API version to match the StripeApiVersion. Work is going on to catch up so this isn't necessary!</para>
+            </summary>
+        </member>
+    </members>
+</doc>

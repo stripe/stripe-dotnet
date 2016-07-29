@@ -5,8 +5,8 @@ namespace Stripe
     public static class StripeConfiguration
     {
         /// <summary>
-        /// <para>This is the api version of Stripe that Stripe.net uses. You only need to be concerned if you are using webhooks (Stripe Events).</para>
-        /// <para>If you are using webhooks and are having issues, email Stripe and ask them to downgrade your api version to match the StripeApiVersion.</para>
+        /// <para>This is the API version that Stripe.net will automatically use when working with Stripe. You only need to be concerned if you are using webhooks (Stripe Events) and having issues.</para>
+        /// <para>If you notice webhooks are not working correctly, email Stripe and ask them to downgrade your API version to match the StripeApiVersion. Work is going on to catch up so this isn't necessary!</para>
         /// </summary>
         public static string StripeApiVersion = "2015-09-08";
         public static string StripeNetVersion { get; private set; }

@@ -34,6 +34,7 @@
     <DefineConstants>TRACE;PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Stripe.net.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs">
