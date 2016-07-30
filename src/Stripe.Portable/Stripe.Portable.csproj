@@ -349,6 +349,9 @@
     <Compile Include="..\Stripe\Services\Invoices\StripeInvoiceUpdateOptions.cs">
       <Link>Services\Invoices\StripeInvoiceUpdateOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\Invoices\StripeUpcomingInvoiceLinesOptions.cs">
+      <Link>Services\Invoices\StripeUpcomingInvoiceLinesOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\Invoices\StripeUpcomingInvoiceOptions.cs">
       <Link>Services\Invoices\StripeUpcomingInvoiceOptions.cs</Link>
     </Compile>

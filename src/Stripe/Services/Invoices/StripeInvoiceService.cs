@@ -29,6 +29,16 @@ namespace Stripe
             );
         }
 
+        public virtual StripeList<StripeInvoiceLineItem> UpcomingLines(string customerId, StripeUpcomingInvoiceLinesOptions upcomingOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.Invoices}/upcoming/lines", "customer", customerId);
+
+            return Mapper<StripeInvoiceLineItem>.MapStripeListFromJson(
+                Requestor.GetString(this.ApplyAllParameters(upcomingOptions, url, false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
         public virtual StripeInvoice Update(string invoiceId, StripeInvoiceUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeInvoice>.MapFromJson(
@@ -115,6 +125,17 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
+
+        public virtual async Task<StripeList<StripeInvoiceLineItem>> UpcomingLinesAsync(string customerId, StripeUpcomingInvoiceLinesOptions upcomingOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.Invoices}/upcoming/lines", "customer", customerId);
+
+            return Mapper<StripeInvoiceLineItem>.MapStripeListFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(upcomingOptions, url, false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
 #endif
     }
 }

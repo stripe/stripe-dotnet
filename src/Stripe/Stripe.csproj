@@ -99,6 +99,7 @@
     <Compile Include="Services\BankAccounts\BankAccountCreateOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeUpdateOptions.cs" />
     <Compile Include="Services\Coupons\StripeCouponUpdateOptions.cs" />
+    <Compile Include="Services\Invoices\StripeUpcomingInvoiceLinesOptions.cs" />
     <Compile Include="Services\Invoices\StripeUpcomingInvoiceOptions.cs" />
     <Compile Include="Services\Refunds\StripeRefundCreateOptions.cs" />
     <Compile Include="Services\Refunds\StripeRefundService.cs" />
