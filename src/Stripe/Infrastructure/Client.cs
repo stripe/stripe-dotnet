@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
 
@@ -19,7 +20,7 @@ namespace Stripe.Infrastructure
 
         public void ApplyUserAgent()
         {
-            RequestMessage.Headers.UserAgent.TryParseAdd($"User-Agent: Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}");
+            RequestMessage.Headers.UserAgent.ParseAdd($"Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}");
         }
 
         public void ApplyClientData()
@@ -73,7 +74,7 @@ namespace Stripe.Infrastructure
                 if (item == 0) result.Append("{");
 
                 // add the key/value
-                result.AppendFormat("\"{0}\": \"{1}\"",
+                result.AppendFormat("{0}: {1}",
                     items.Keys.ElementAt(item),
                     WebUtility.HtmlEncode(items.Values.ElementAt(item))
                 );
