@@ -5,9 +5,9 @@ using System.Collections.Generic;
 namespace Stripe
 {
     /// <summary>
-    /// Use StripeCard instead, or SourceToken/SourceTokenOrExistingSourceId
+    /// Use StripeCard, SourceToken, or SourceTokenOrExistingSourceId instead
     /// </summary>
-    [Obsolete]
+    [Obsolete("This is going away in Stripe.net 7.0")]
     public class StripeSourceOptions : INestedOptions
     {
         [JsonProperty("source")]

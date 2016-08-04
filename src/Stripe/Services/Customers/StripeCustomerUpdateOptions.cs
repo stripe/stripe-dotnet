@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Stripe
@@ -13,7 +14,8 @@ namespace Stripe
 
         [JsonProperty("source")]
         public SourceCard SourceCard { get; set; }
-        
+
+        [Obsolete("This is going away in Stripe.net 7.0")]
         [JsonProperty("source")]
         public StripeSourceOptions Source { get; set; }
 
