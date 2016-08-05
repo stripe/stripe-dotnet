@@ -5,7 +5,7 @@ namespace Stripe.Tests.test_data
 {
     public static class stripe_customer_create_options
     {
-        public static StripeCustomerCreateOptions ValidCard(string _planId = null, string _couponId = null, DateTime? _trialEnd = null, bool _trialEndNow = false)
+        public static StripeCustomerCreateOptions ValidCard(string _planId = null, string _couponId = null, DateTime? _trialEnd = null, bool _trialEndNow = false, bool? _payImmediately = null)
         {
             // obsolete: var cardOptions = new StripeSourceOptions()
             var cardOptions = new SourceCard()
@@ -33,7 +33,8 @@ namespace Stripe.Tests.test_data
                 {
                     { "A", "Value-A" },
                     { "B", "Value-B" }
-                }
+                },
+                PayImmediately = _payImmediately
             };
 
             if (_planId != null)
