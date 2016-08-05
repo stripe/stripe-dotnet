@@ -108,6 +108,7 @@
     <Compile Include="Services\Invoices\StripeInvoiceCreateOptions.cs" />
     <Compile Include="Services\StripeRequestOptions.cs" />
     <Compile Include="Services\Subscriptions\SubscriptionSharedOptions.cs" />
+    <Compile Include="Services\_sources_token\BankAccountOptions.cs" />
     <Compile Include="Services\_refactor\StripeSourceOptions.cs" />
     <Compile Include="Services\_refactor\StripeCreditCardOptions.cs" />
     <Compile Include="Services\StripeDateFilter.cs" />

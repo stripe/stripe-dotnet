@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Stripe
 {
+    [Obsolete("This service has been deprecated by Stripe for sometime, and it will be removed in 7.0. Use Connect instead.")]
     public class StripeRecipientService : StripeService
     {
         public StripeRecipientService(string apiKey = null) : base(apiKey) { }

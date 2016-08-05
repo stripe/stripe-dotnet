@@ -9,5 +9,8 @@ namespace Stripe
 
         [JsonProperty("card")]
         public StripeCreditCardOptions Card { get; set; }
+
+        [JsonProperty("bank_account")]
+        public BankAccountOptions BankAccount { get; set; }
     }
 }

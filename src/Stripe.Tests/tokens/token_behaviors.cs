@@ -12,6 +12,9 @@ namespace Stripe.Tests
         It should_have_an_id = () =>
             StripeToken.Id.ShouldNotBeNull();
 
+        It should_have_a_card_token = () =>
+            StripeToken.Id.ShouldStartWith("tok_");
+
         It should_have_the_correct_created_date = () =>
             StripeToken.Created.Value.Day.ShouldEqual(DateTime.UtcNow.Day);
 

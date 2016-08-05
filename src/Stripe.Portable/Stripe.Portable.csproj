@@ -448,6 +448,9 @@
     <Compile Include="..\Stripe\Services\_sources\SourceCard.cs">
       <Link>Services\_sources\SourceCard.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\_sources_token\BankAccountOptions.cs">
+      <Link>Services\_sources_token\BankAccountOptions.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
