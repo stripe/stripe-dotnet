@@ -58,6 +58,9 @@
     <Compile Include="..\Stripe\Entities\CustomerBankAccount.cs">
       <Link>Entities\CustomerBankAccount.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Entities\Source.cs">
+      <Link>Entities\Source.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Entities\StripeAccount.cs">
       <Link>Entities\StripeAccount.cs</Link>
     </Compile>
@@ -204,6 +207,9 @@
     </Compile>
     <Compile Include="..\Stripe\Infrastructure\Requestor.cs">
       <Link>Infrastructure\Requestor.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Infrastructure\SourceConverter.cs">
+      <Link>Infrastructure\SourceConverter.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Infrastructure\StripeConfiguration.cs">
       <Link>Infrastructure\StripeConfiguration.cs</Link>

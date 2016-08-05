@@ -35,8 +35,8 @@ namespace Stripe
         [JsonProperty("refunds")]
         public StripeList<StripeRefund> StripeRefundList { get; set; }
 
-        [JsonProperty("source")]
-        public StripeCard Source { get; set; }
+        [JsonConverter(typeof(SourceConverter))]
+        public Source Source { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }

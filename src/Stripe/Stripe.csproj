@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="Constants\BankAccountHolderType.cs" />
     <Compile Include="Entities\CustomerBankAccount.cs" />
+    <Compile Include="Entities\Source.cs" />
     <Compile Include="Entities\StripeManagedAccountKeys.cs" />
     <Compile Include="Constants\StripeSubscriptionStatuses.cs" />
     <Compile Include="Entities\StripeBirthDay.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Constants\StripeRefundReasons.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Infrastructure\Client.cs" />
+    <Compile Include="Infrastructure\SourceConverter.cs" />
     <Compile Include="Services\INestedOption.cs" />
     <Compile Include="Infrastructure\StripeExternalAccountConverter.cs" />
     <Compile Include="Services\Account\StripeAccountBankAccountOptions.cs" />

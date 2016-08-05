@@ -103,7 +103,7 @@ namespace Stripe
             if (!url.Contains("?"))
                 token = "?";
 
-            return string.Format("{0}{1}{2}={3}", url, token, argument, WebUtility.UrlEncode(value));
+            return $"{url}{token}{argument}={WebUtility.UrlEncode(value)}";
         }
 
         private static string ApplyNestedObjectProperties(string requestString, object nestedObject)

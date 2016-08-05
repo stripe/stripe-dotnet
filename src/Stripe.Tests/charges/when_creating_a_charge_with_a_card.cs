@@ -19,7 +19,7 @@ namespace Stripe.Tests
         Because of = () =>
         {
             StripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions);
-            StripeCard = StripeCharge.Source;
+            StripeCard = StripeCharge.Source.Card;
         };
 
         Behaves_like<charge_behaviors> behaviors;
