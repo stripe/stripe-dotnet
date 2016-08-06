@@ -49,7 +49,6 @@ namespace Stripe
             );
         }
 
-#if !PORTABLE
         public virtual async Task<StripeRecipient> CreateAsync(StripeRecipientCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeRecipient>.MapFromJson(
@@ -87,6 +86,5 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-#endif
     }
 }

@@ -68,7 +68,6 @@ namespace Stripe
             );
         }
 
-#if !PORTABLE
         public virtual async Task<StripeCard> CreateAsync(string customerId, StripeCardCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             var url = SetupUrl(customerId, false);
@@ -125,7 +124,6 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-#endif
 
         private string SetupUrl(string customerOrRecipientId, bool isRecipient, string cardId = null)
         {
