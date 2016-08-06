@@ -6,7 +6,7 @@
     <members>
         <member name="T:Stripe.StripeSourceOptions">
             <summary>
-            Use StripeCard instead, or SourceToken/SourceTokenOrExistingSourceId
+            Use StripeCard, SourceToken, or SourceTokenOrExistingSourceId instead
             </summary>
         </member>
         <member name="F:Stripe.StripeConfiguration.StripeApiVersion">
