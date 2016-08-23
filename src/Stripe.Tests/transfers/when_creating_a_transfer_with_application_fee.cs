@@ -4,7 +4,7 @@
 
 //namespace Stripe.Tests
 //{
-//    public class when_creating_a_transfer
+//    public class when_creating_a_transfer_with_application_fee
 //    {
 //        protected static StripeTransferCreateOptions StripeTransferCreateOptions;
 //        protected static StripeTransfer StripeTransfer;
