@@ -21,8 +21,6 @@
 //        Because of = () =>
 //            StripeTransfer = _stripeTransferService.Create(StripeTransferCreateOptions);
 
-//        Behaves_like<transfer_behaviors> behaviors;
-
 //        It should_have_application_fee = () =>
 //            StripeTransfer.ApplicationFee.ShouldEqual(10);
 //    }
