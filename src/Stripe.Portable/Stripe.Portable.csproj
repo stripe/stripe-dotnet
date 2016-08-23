@@ -97,6 +97,9 @@
     <Compile Include="..\Stripe\Entities\StripeCharge.cs">
       <Link>Entities\StripeCharge.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Entities\StripeCountrySpec.cs">
+      <Link>Entities\StripeCountrySpec.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Entities\StripeCoupon.cs">
       <Link>Entities\StripeCoupon.cs</Link>
     </Compile>
@@ -288,6 +291,12 @@
     </Compile>
     <Compile Include="..\Stripe\Services\Charges\StripeChargeUpdateOptions.cs">
       <Link>Services\Charges\StripeChargeUpdateOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\CountrySpecs\StripeCountrySpecsListOptions.cs">
+      <Link>Services\CountrySpecs\StripeCountrySpecsListOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\CountrySpecs\StripeCountrySpecsService.cs">
+      <Link>Services\CountrySpecs\StripeCountrySpecsService.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Services\Coupons\StripeCouponCreateOptions.cs">
       <Link>Services\Coupons\StripeCouponCreateOptions.cs</Link>
