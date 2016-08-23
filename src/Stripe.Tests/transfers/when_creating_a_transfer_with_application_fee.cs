@@ -6,8 +6,8 @@
 //{
 //    public class when_creating_a_transfer_with_application_fee
 //    {
-//        protected static StripeTransferCreateOptions StripeTransferCreateOptions;
-//        protected static StripeTransfer StripeTransfer;
+//        private static StripeTransferCreateOptions StripeTransferCreateOptions;
+//        private static StripeTransfer StripeTransfer;
 
 //        private static StripeTransferService _stripeTransferService;
 
@@ -22,6 +22,6 @@
 //            StripeTransfer = _stripeTransferService.Create(StripeTransferCreateOptions);
 
 //        It should_have_application_fee = () =>
-//            StripeTransfer.ApplicationFee.ShouldEqual(10);
+//            StripeTransfer.ApplicationFee.ShouldEqual(StripeTransferCreateOptions.ApplicationFee);
 //    }
 //}
