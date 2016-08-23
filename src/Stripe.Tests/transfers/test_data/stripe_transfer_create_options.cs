@@ -18,8 +18,7 @@ namespace Stripe.Tests.test_data
                 {
                     { "A", "Value-A" },
                     { "B", "Value-B" }
-                },
-                ApplicationFee = 10
+                }
             };
 
             return stripeTransferCreateOptions;
