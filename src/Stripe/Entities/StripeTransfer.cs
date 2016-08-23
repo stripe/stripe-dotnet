@@ -40,6 +40,9 @@ namespace Stripe
         [JsonProperty("type")]
         public string Type { get; set; }
 
+        [JsonProperty("application_fee")]
+        public int? ApplicationFee { get; set; }
+
         [JsonProperty("amount_reversed")]
         public int AmountReversed { get; set; }
 
