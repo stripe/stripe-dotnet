@@ -36,14 +36,13 @@ namespace Stripe.Tests
 
         It should_have_the_client_user_agent_cast_to_json = () =>
         {
-            try
-            {
-                var token = JToken.Parse(request.Headers.GetValues("X-Stripe-Client-User-Agent").FirstOrDefault());
-            }
-            catch (JsonReaderException jrException)
-            {
-                throw;
-            }
+            var clientData = JToken.Parse(request.Headers.GetValues("X-Stripe-Client-User-Agent").FirstOrDefault());
+        };
+
+        It should_have_the_net45_for_uname = () =>
+        {
+            var clientData = JToken.Parse(request.Headers.GetValues("X-Stripe-Client-User-Agent").FirstOrDefault());
+            clientData.SelectToken("uname").ToString().ShouldContain("net45.");
         };
     }
 }
