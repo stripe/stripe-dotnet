@@ -24,7 +24,6 @@ namespace Stripe
             );
         }
 
-#if !PORTABLE
         public virtual async Task<StripeCountrySpec> GetAsync(string country, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCountrySpec>.MapFromJson(
@@ -40,6 +39,5 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-#endif
     }
 }
