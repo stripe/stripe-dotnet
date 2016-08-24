@@ -34,14 +34,8 @@ namespace Stripe.Infrastructure
             langVersion = typeof(object).GetTypeInfo().Assembly.ImageRuntimeVersion;
 #endif
 
-            // check for mono and replace langVersion if it's present
-            var type = Type.GetType("Mono.Runtime");
-
-            if (type != null)
-            {
-                var getDisplayName = type.GetTypeInfo().GetDeclaredMethod("GetDisplayName");
-                langVersion = getDisplayName?.Invoke(null, null).ToString();
-            }
+            var mono = testForMono();
+            if (!string.IsNullOrEmpty(mono)) langVersion = mono;
 
             var values = new Dictionary<string, string>
             {
@@ -49,23 +43,54 @@ namespace Stripe.Infrastructure
                 {"lang", ".net"},
                 {"publisher", "Jayme Davis"},
                 {"lang_version", WebUtility.HtmlEncode(langVersion)},
-                {"uname", WebUtility.HtmlEncode(GetSystemInformation())}
+                {"uname", WebUtility.HtmlEncode(getSystemInformation())}
             };
 
             return JsonConvert.SerializeObject(values);
         }
 
-        private string GetSystemInformation()
+        private string testForMono()
+        {
+            var type = Type.GetType("Mono.Runtime");
+            var getDisplayName = type?.GetTypeInfo().GetDeclaredMethod("GetDisplayName");
+
+            return getDisplayName?.Invoke(null, null).ToString();
+        }
+
+        private string getSystemInformation()
         {
             var result = string.Empty;
-            
+
 #if !PORTABLE
             result += $"net45.platform: {Environment.OSVersion.VersionString}";
+            result += $" , {getOperatingSystemInfo()}"; 
 #else
             result += $"portable.platform: {typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product}";
 #endif
 
             return result;
         }
+
+#if !PORTABLE
+        private string getOperatingSystemInfo()
+        {
+            var os = Environment.OSVersion;
+            var pid = os.Platform;
+
+            switch (pid)
+            {
+                case PlatformID.Win32NT:
+                case PlatformID.Win32S:
+                case PlatformID.Win32Windows:
+                case PlatformID.WinCE:
+                    return "OS: Windows";
+                case PlatformID.Unix:
+                    return "OS: Unix";
+                default:
+                    return "OS: Unknown";
+            }
+        }
+#endif
+
     }
 }
