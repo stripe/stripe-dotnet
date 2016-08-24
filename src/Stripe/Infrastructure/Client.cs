@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Reflection;
-using System.Text;
+using Newtonsoft.Json;
 
 namespace Stripe.Infrastructure
 {
@@ -30,63 +28,44 @@ namespace Stripe.Infrastructure
 
         private string GetClientUserAgentString()
         {
-            var values = new Dictionary<string, string>();
+            var langVersion = "unknown";
 
-            values.Add("bindings_version", StripeConfiguration.StripeNetVersion);
-            values.Add("lang", ".NET");
-            values.Add("publisher", "Jayme Davis");
-            values.Add("lang_version", GetLangVersion());
-            values.Add("uname", GetSystemInformation());
+#if !PORTABLE
+            langVersion = typeof(object).GetTypeInfo().Assembly.ImageRuntimeVersion;
+#endif
 
-            return serialize(values);
-        }
+            // check for mono and replace langVersion if it's present
+            var type = Type.GetType("Mono.Runtime");
 
-        private string GetLangVersion()
-        {
-            var assembly = typeof(object).GetTypeInfo().Assembly;
+            if (type != null)
+            {
+                var getDisplayName = type.GetTypeInfo().GetDeclaredMethod("GetDisplayName");
+                langVersion = getDisplayName?.Invoke(null, null).ToString();
+            }
 
-            var assemblyName = new AssemblyName(assembly.FullName);
-            return assemblyName.Version.Major + "." + assemblyName.Version.Minor + "." + assemblyName.Version.Revision;
+            var values = new Dictionary<string, string>
+            {
+                {"bindings_version", StripeConfiguration.StripeNetVersion},
+                {"lang", ".net"},
+                {"publisher", "Jayme Davis"},
+                {"lang_version", WebUtility.HtmlEncode(langVersion)},
+                {"uname", WebUtility.HtmlEncode(GetSystemInformation())}
+            };
+
+            return JsonConvert.SerializeObject(values);
         }
 
         private string GetSystemInformation()
         {
-            var hash = new Dictionary<string, string>();
-
+            var result = string.Empty;
+            
 #if !PORTABLE
-            hash.Add("net45.platform", Environment.OSVersion.VersionString);
-            hash.Add("net45.product", typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product);
+            result += $"net45.platform: {Environment.OSVersion.VersionString}";
 #else
-            hash.Add("portable.product", typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product);
+            result += $"portable.platform: {typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product}";
 #endif
 
-            return serialize(hash);
-        }
-
-        // i want to move away from json.net. this is a simple serializer
-        private string serialize(Dictionary<string, string> items)
-        {
-            var result = new StringBuilder();
-
-            for (var item = 0; item < items.Count; item++)
-            {
-                // if it's the first item, add the opening bracket.
-                if (item == 0) result.Append("{");
-
-                // add the key/value
-                result.AppendFormat("{0}: {1}",
-                    items.Keys.ElementAt(item),
-                    WebUtility.HtmlEncode(items.Values.ElementAt(item))
-                );
-
-                // if it's not the last item, add a comma
-                if (item < items.Count - 1) result.Append(", ");
-
-                // if it is the last item, close the json object
-                if (item == items.Count - 1) result.Append("}");
-            }
-
-            return result.ToString();
+            return result;
         }
     }
 }
