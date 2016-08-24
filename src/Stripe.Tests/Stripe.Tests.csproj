@@ -87,6 +87,7 @@
     <Compile Include="card\when_creating_a_card.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_bank_account.cs" />
     <Compile Include="charges\when_refunding_and_setting_fraud_details.cs" />
+    <Compile Include="infrastructure\when_building_the_client.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="charges\test_data\stripe_charge_update_options.cs" />
     <Compile Include="charges\when_updating_a_charge.cs" />
