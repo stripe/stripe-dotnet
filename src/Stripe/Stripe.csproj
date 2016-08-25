@@ -60,7 +60,7 @@
     </Compile>
     <Compile Include="Constants\BankAccountHolderType.cs" />
     <Compile Include="Entities\CustomerBankAccount.cs" />
-    <Compile Include="Entities\StripeCountrySpec.cs" />
+    <Compile Include="Entities\CountrySpec.cs" />
     <Compile Include="Entities\StripeManagedAccountKeys.cs" />
     <Compile Include="Constants\StripeSubscriptionStatuses.cs" />
     <Compile Include="Entities\StripeBirthDay.cs" />

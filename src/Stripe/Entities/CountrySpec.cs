@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeCountrySpec : StripeObject
+    public class CountrySpec : StripeObject
     {
         [JsonProperty("object")]
         public string Object { get; set; }

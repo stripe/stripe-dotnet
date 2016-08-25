@@ -6,7 +6,7 @@ namespace Stripe.Tests
 {
     public class when_listing_country_specs
     {
-        private static List<StripeCountrySpec> _stripeCountrySpecList;
+        private static List<CountrySpec> _stripeCountrySpecList;
         private static StripeCountrySpecsService _stripeCountrySpecsService;
 
         Establish context = () =>

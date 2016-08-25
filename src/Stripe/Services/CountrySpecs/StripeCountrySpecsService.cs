@@ -8,33 +8,33 @@ namespace Stripe
     {
         public StripeCountrySpecsService(string apiKey = null) : base(apiKey) { }
 
-        public virtual StripeCountrySpec Get(string country, StripeRequestOptions requestOptions = null)
+        public virtual CountrySpec Get(string country, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeCountrySpec>.MapFromJson(
+            return Mapper<CountrySpec>.MapFromJson(
                 Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.CountrySpecs}/{country}", false),
                 SetupRequestOptions(requestOptions))
             );
         }
 
-        public virtual IEnumerable<StripeCountrySpec> List(StripeChargeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual IEnumerable<CountrySpec> List(StripeChargeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeCountrySpec>.MapCollectionFromJson(
+            return Mapper<CountrySpec>.MapCollectionFromJson(
                 Requestor.GetString(this.ApplyAllParameters(listOptions, $"{Urls.CountrySpecs}", true),
                 SetupRequestOptions(requestOptions))
             );
         }
 
-        public virtual async Task<StripeCountrySpec> GetAsync(string country, StripeRequestOptions requestOptions = null)
+        public virtual async Task<CountrySpec> GetAsync(string country, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeCountrySpec>.MapFromJson(
+            return Mapper<CountrySpec>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.CountrySpecs}/{country}", false),
                 SetupRequestOptions(requestOptions))
             );
         }
 
-        public virtual async Task<IEnumerable<StripeCountrySpec>> ListAsync(StripeChargeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual async Task<IEnumerable<CountrySpec>> ListAsync(StripeChargeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeCountrySpec>.MapCollectionFromJson(
+            return Mapper<CountrySpec>.MapCollectionFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, $"{Urls.CountrySpecs}", true),
                 SetupRequestOptions(requestOptions))
             );
