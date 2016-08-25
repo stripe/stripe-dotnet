@@ -90,6 +90,23 @@ namespace Stripe
             }
         }
 
+        public string SourceTransactionId { get; set; }
+
+        [JsonIgnore]
+        public StripeCharge SourceTransaction { get; set; }
+
+        [JsonProperty("source_transaction")]
+        internal object InternalSourceTransaction
+        {
+            set
+            {
+                ExpandableProperty<StripeCharge>.Map(value, s => SourceTransactionId = s, o => SourceTransaction = o);
+            }
+        }
+
+        [JsonProperty("source_type")]
+        public string SourceType { get; set; }
+
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
     }
