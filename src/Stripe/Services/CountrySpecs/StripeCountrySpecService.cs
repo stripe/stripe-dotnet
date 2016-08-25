@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace Stripe
 {
-    public class StripeCountrySpecsService : StripeService
+    public class StripeCountrySpecService : StripeService
     {
-        public StripeCountrySpecsService(string apiKey = null) : base(apiKey) { }
+        public StripeCountrySpecService(string apiKey = null) : base(apiKey) { }
 
         public virtual CountrySpec Get(string country, StripeRequestOptions requestOptions = null)
         {

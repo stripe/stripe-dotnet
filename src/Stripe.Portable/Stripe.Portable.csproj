@@ -292,11 +292,11 @@
     <Compile Include="..\Stripe\Services\Charges\StripeChargeUpdateOptions.cs">
       <Link>Services\Charges\StripeChargeUpdateOptions.cs</Link>
     </Compile>
-    <Compile Include="..\Stripe\Services\CountrySpecs\StripeCountrySpecsListOptions.cs">
-      <Link>Services\CountrySpecs\StripeCountrySpecsListOptions.cs</Link>
+    <Compile Include="..\Stripe\Services\CountrySpecs\StripeCountrySpecListOptions.cs">
+      <Link>Services\CountrySpecs\StripeCountrySpecListOptions.cs</Link>
     </Compile>
-    <Compile Include="..\Stripe\Services\CountrySpecs\StripeCountrySpecsService.cs">
-      <Link>Services\CountrySpecs\StripeCountrySpecsService.cs</Link>
+    <Compile Include="..\Stripe\Services\CountrySpecs\StripeCountrySpecService.cs">
+      <Link>Services\CountrySpecs\StripeCountrySpecService.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Services\Coupons\StripeCouponCreateOptions.cs">
       <Link>Services\Coupons\StripeCouponCreateOptions.cs</Link>

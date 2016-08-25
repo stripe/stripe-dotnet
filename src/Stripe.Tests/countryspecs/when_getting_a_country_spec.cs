@@ -6,15 +6,15 @@ namespace Stripe.Tests
     {
         protected static CountrySpec CountrySpec;
 
-        private static StripeCountrySpecsService _stripeCountrySpecsService;
+        private static StripeCountrySpecService _stripeCountrySpecService;
 
         Establish context = () =>
         {
-            _stripeCountrySpecsService = new StripeCountrySpecsService();
+            _stripeCountrySpecService = new StripeCountrySpecService();
         };
 
         Because of = () =>
-            CountrySpec = _stripeCountrySpecsService.Get("US");
+            CountrySpec = _stripeCountrySpecService.Get("US");
 
         It should_have_verification_field_with_individual_company = () =>
                 CountrySpec.VerificationFields.ShouldContain("individual", "company");

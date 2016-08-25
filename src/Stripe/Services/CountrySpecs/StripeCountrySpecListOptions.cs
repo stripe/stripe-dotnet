@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeCountrySpecsListOptions : StripeListOptions
+    public class StripeCountrySpecListOptions : StripeListOptions
     {
     }
 }

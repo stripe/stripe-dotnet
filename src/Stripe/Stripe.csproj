@@ -85,8 +85,8 @@
     <Compile Include="Constants\StripeRefundReasons.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Infrastructure\Client.cs" />
-    <Compile Include="Services\CountrySpecs\StripeCountrySpecsListOptions.cs" />
-    <Compile Include="Services\CountrySpecs\StripeCountrySpecsService.cs" />
+    <Compile Include="Services\CountrySpecs\StripeCountrySpecListOptions.cs" />
+    <Compile Include="Services\CountrySpecs\StripeCountrySpecService.cs" />
     <Compile Include="Services\INestedOption.cs" />
     <Compile Include="Infrastructure\StripeExternalAccountConverter.cs" />
     <Compile Include="Services\Account\StripeAccountBankAccountOptions.cs" />
