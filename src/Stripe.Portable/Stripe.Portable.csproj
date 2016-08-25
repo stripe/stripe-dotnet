@@ -55,6 +55,9 @@
     <Compile Include="..\Stripe\Constants\StripeTransferFailureCodes.cs">
       <Link>Constants\StripeTransferFailureCodes.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Entities\CountrySpec.cs">
+      <Link>Entities\CountrySpec.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Entities\CustomerBankAccount.cs">
       <Link>Entities\CustomerBankAccount.cs</Link>
     </Compile>
@@ -96,9 +99,6 @@
     </Compile>
     <Compile Include="..\Stripe\Entities\StripeCharge.cs">
       <Link>Entities\StripeCharge.cs</Link>
-    </Compile>
-    <Compile Include="..\Stripe\Entities\StripeCountrySpec.cs">
-      <Link>Entities\StripeCountrySpec.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Entities\StripeCoupon.cs">
       <Link>Entities\StripeCoupon.cs</Link>
