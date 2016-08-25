@@ -23,6 +23,6 @@ namespace Stripe
         public IEnumerable<string> SupportedPaymentMethods { get; set; }
 
         [JsonProperty("verification_fields")]
-        public Dictionary<string, Dictionary<string,IEnumerable<string>>> VerificationFields { get; set; }
+        public Dictionary<string, Dictionary<string,List<string>>> VerificationFields { get; set; }
     }
 }
