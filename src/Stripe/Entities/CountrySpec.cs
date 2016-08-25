@@ -10,9 +10,6 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
-
         [JsonProperty("default_currency")]
         public string DefaultCurrency { get; set; }
 
