@@ -63,7 +63,7 @@ namespace Stripe.Infrastructure
 
 #if !PORTABLE
             result += $"net45.platform: {Environment.OSVersion.VersionString}";
-            result += $" , {getOperatingSystemInfo()}"; 
+            result += $", {getOperatingSystemInfo()}"; 
 #else
             result += $"portable.platform: {typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product}";
 #endif
