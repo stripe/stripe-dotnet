@@ -113,6 +113,12 @@ namespace Stripe
         [JsonProperty("legal_entity[first_name_kanji]")]
         public string FirstNameKanji { get; set; }
 
+        /// <summary>
+        /// The gender of the individual responsible for the account (International regulations require either “male” or “female”)
+        /// </summary>
+        [JsonProperty("legal_entity[gender]")]
+        public string Gender { get; set; }
+
         [JsonProperty("legal_entity[last_name]")]
         public string LastName { get; set; }
 

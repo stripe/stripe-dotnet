@@ -31,6 +31,7 @@ namespace Stripe.Tests
                 BirthDay = "25",
                 BirthMonth = "12",
                 BirthYear = "1981",
+                Gender = "female",
                 FirstName = "Joe",
                 LastName = "Schmoe",
                 Type = "individual"
@@ -55,6 +56,7 @@ namespace Stripe.Tests
             _stripeAccount.LegalEntity.BirthDay.Month.Value.ToString().ShouldEqual(_stripeAccountCreateOptions.LegalEntity.BirthMonth);
             _stripeAccount.LegalEntity.BirthDay.Year.Value.ToString().ShouldEqual(_stripeAccountCreateOptions.LegalEntity.BirthYear);
             _stripeAccount.LegalEntity.FirstName.ShouldEqual(_stripeAccountCreateOptions.LegalEntity.FirstName);
+            _stripeAccount.LegalEntity.Gender.ShouldEqual(_stripeAccountCreateOptions.LegalEntity.Gender);
             _stripeAccount.LegalEntity.LastName.ShouldEqual(_stripeAccountCreateOptions.LegalEntity.LastName);
             _stripeAccount.LegalEntity.Type.ShouldEqual(_stripeAccountCreateOptions.LegalEntity.Type);
         };
