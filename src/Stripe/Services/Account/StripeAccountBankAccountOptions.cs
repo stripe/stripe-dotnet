@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Stripe
@@ -6,7 +7,7 @@ namespace Stripe
     public class StripeAccountBankAccountOptions : INestedOptions
     {
         [JsonProperty("external_account[object]")]
-        internal string Object { get { return "bank_account"; } }
+        internal string Object => "bank_account";
 
         [JsonProperty("external_account")]
         public string TokenId { get; set; }
@@ -23,7 +24,11 @@ namespace Stripe
         [JsonProperty("external_account[account_holder_type]")]
         public string AccountHolderType { get; set; }
 
-        [JsonProperty("external_account[name]")]
+        [JsonProperty("external_account[account_holder_name]")]
+        public string AccountHolderName { get; set; }
+
+        [Obsolete("Use AccountHolderName instead.")]
+        [JsonProperty("external_account[account_holder_name]")]
         public string Name { get; set; }
 
         [JsonProperty("external_account[routing_number]")]

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Stripe
@@ -14,6 +15,10 @@ namespace Stripe
         [JsonProperty("account_holder_type")]
         public string AccountHolderType { get; set; }
 
+        [JsonProperty("account_holder_name")]
+        public string AccountHolderName { get; set; }
+
+        [Obsolete("Use AccountHolderName")]
         [JsonProperty("Name")]
         public string Name { get; set; }
 

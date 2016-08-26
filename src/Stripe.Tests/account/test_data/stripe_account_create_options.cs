@@ -53,6 +53,7 @@ namespace Stripe.Tests.test_data
                     Country = "US",
                     Currency = "usd",
                     AccountHolderType = "company",
+                    AccountHolderName = "Jayme Inc",
                     Name = "Jayme Inc",
                     RoutingNumber = "110000000"
                 }
