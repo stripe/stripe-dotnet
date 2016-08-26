@@ -1,6 +1,22 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)
 
-Stripe.net
+[Accounts](#accounts)  
+[Application Fees](#application-fees)  
+[Balance](#balance)  
+[Bank Accounts](#bank-accounts)  
+[Cards](#cards)  
+[Charges](#charges)  
+[Country Specs](#country-specs)  
+[Coupons](#coupons)  
+[Customers](#customers)  
+[Disputes](#disputes)  
+[Invoices](#invoices)  
+[Invoice Items](#invoice-items)  
+[Plans](#plans)  
+[Recipients](#recipients)  
+[Subscriptions](#subscriptions)  
+[Tokens](#tokens)  
+[Transfers](#transfers)  
 
 Support
 -------
@@ -51,9 +67,6 @@ Stripe.net forces a version of the Stripe API for which it was designed. You can
 If you are not using webhooks, then you don't need to do anything for Stripe.net to be compatible with the Stripe API.
 
 If you are using webhooks from Stripe, then you will need to email Stripe support and ask them to set your API version (you can see this in your Stripe Dashboard) to the one specified in Stripe.net's StripeConfiguration.cs file.
-
-Examples
---------
 
 Plans
 -----
@@ -113,8 +126,8 @@ to a plan id (or not)
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
-Coupons (queue-pons not coo-pons)
----------------------------------
+Coupons
+-------
 
 ### Creating a coupon
 
@@ -786,8 +799,10 @@ Each account's country can have different rules for required fields, payment met
 
 ```csharp
 	var countrySpecService = new CountrySpecService();
-	CountrySpec spec = countrySpecService.List(); // optional [StripeListOptions](#stripelistoptions-paging)
+	CountrySpec spec = countrySpecService.List();
 ```
+
+[StripeListOptions](#stripelistoptions-paging) for paging
 
 Accounts
 --------
@@ -879,8 +894,7 @@ Disputes
 Recipients
 ----------
 
-**Note: recipients have been deprecated by Stripe - please use
-[Stripe Connnect](https://stripe.com/docs/connect) instead**
+**Note: recipients have been deprecated by Stripe - please use [Stripe Connnect](https://stripe.com/docs/connect) instead**
 
 ### Creating a recipient
 
