@@ -1,16 +1,12 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)
 
-Notes on Naming
----------------
-The new BankAccountService does not have the usual name, StripeBankAccountService. I will slowly be moving from this method of always including the name Stripe, as class names are getting way too long (even for me). BankAccountCreateOptions is just a shorter name, for example.
-
-This service also returns a CustomerBankAccount, instead of the already built in StripeBankAccount. The reason is because Stripe wants to keep a clean separation between external account bank accounts, and customer bank accounts. The StripeBankAccount entity will 
-eventually be renamed to ExternalAccountBankAccount.
-
+Stripe.net
 
 Support
 -------
-Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to see if your issue/request already exists. If it does, please leave a comment or a [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). This helps me priortize what I work on next. [Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if you can't find what you're looking for. :)
+Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to see if your issue has already been reported. 
+If it has, please leave a comment or a [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). 
+[Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if your question is still not answered. :)
 
 Quick Start
 -----------
@@ -773,6 +769,25 @@ Any invoice items you create for a customer will be added to their bill.
 ```
 
 StripeInvoiceItemListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
+
+Country Specs
+-------------
+
+Each account's country can have different rules for required fields, payment methods, and currencies. The CountrySpecService allows you to receive this metadata.
+
+### Retrieving a CountrySpec
+
+```csharp
+	var countrySpecService = new CountrySpecService();
+	CountrySpec spec = countrySpecService.Get("US");
+```
+
+### List all CountrySpec's
+
+```csharp
+	var countrySpecService = new CountrySpecService();
+	CountrySpec spec = countrySpecService.List(); // optional [StripeListOptions](#stripelistoptions-paging)
+```
 
 Accounts
 --------

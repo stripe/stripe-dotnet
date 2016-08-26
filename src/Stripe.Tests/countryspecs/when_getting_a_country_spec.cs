@@ -4,37 +4,39 @@ namespace Stripe.Tests
 {
     public class when_getting_a_country_spec
     {
-        protected static CountrySpec CountrySpec;
-
-        private static StripeCountrySpecService _stripeCountrySpecService;
+        private static CountrySpec _countrySpec;
+        private static CountrySpecService _countrySpecService;
 
         Establish context = () =>
         {
-            _stripeCountrySpecService = new StripeCountrySpecService();
+            _countrySpecService = new CountrySpecService();
         };
 
         Because of = () =>
-            CountrySpec = _stripeCountrySpecService.Get("US");
-
-        It should_have_verification_field_with_individual_company = () =>
-                CountrySpec.VerificationFields.ShouldContain("individual", "company");
+            _countrySpec = _countrySpecService.Get("US");
 
         It should_have_default_currency = () =>
-                CountrySpec.DefaultCurrency.ShouldNotBeEmpty();
+            _countrySpec.DefaultCurrency.ShouldNotBeEmpty();
 
         It should_have_supported_bank_currencies = () =>
-                CountrySpec.SupportedBankAccountCurrencies.ShouldNotBeEmpty();
+            _countrySpec.SupportedBankAccountCurrencies.ShouldNotBeEmpty();
 
         It should_have_supported_payment_currencies = () =>
-                CountrySpec.SupportedPaymentCurrencies.ShouldNotBeEmpty();
+            _countrySpec.SupportedPaymentCurrencies.ShouldNotBeEmpty();
 
         It should_have_supported_payment_methods = () =>
-                CountrySpec.SupportedPaymentMethods.ShouldNotBeEmpty();
+            _countrySpec.SupportedPaymentMethods.ShouldNotBeEmpty();
 
-        It should_have_verification_field_individual_with_minimum_additional = () =>
-                CountrySpec.VerificationFields["individual"].ShouldContain("minimum", "additional");
+        It should_have_verification_field_individual_with_minimum = () =>
+            _countrySpec.VerificationFields["individual"]["minimum"].ShouldNotBeNull();
 
-        It should_have_verification_field_company_with_minimum_additional = () =>
-                CountrySpec.VerificationFields["company"].ShouldContain("minimum", "additional");
+        It should_have_verification_field_individual_with_additional = () =>
+            _countrySpec.VerificationFields["individual"]["additional"].ShouldNotBeNull();
+
+        It should_have_verification_field_company_with_minimum = () =>
+            _countrySpec.VerificationFields["company"]["minimum"].ShouldNotBeNull();
+
+        It should_have_verification_field_company_with_additional = () =>
+            _countrySpec.VerificationFields["company"]["additional"].ShouldNotBeNull();
     }
 }

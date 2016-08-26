@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using Stripe.Infrastructure;
 
 namespace Stripe
 {
@@ -23,6 +21,6 @@ namespace Stripe
         public List<string> SupportedPaymentMethods { get; set; }
 
         [JsonProperty("verification_fields")]
-        public Dictionary<string, Dictionary<string,List<string>>> VerificationFields { get; set; }
+        public Dictionary<string, Dictionary<string, List<string>>> VerificationFields { get; set; }
     }
 }
