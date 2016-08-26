@@ -2,7 +2,7 @@
 <package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Stripe.net</id>
-    <version>6.3.6</version>
+    <version>6.4.0</version>
     <authors>Jayme Davis</authors>
     <owners>Jayme Davis</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -13,14 +13,11 @@
     <description>Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.</description>
     <tags>stripe, payment, credit cards, money, gateway, paypal, braintree</tags>
     <dependencies>
-      <group targetFramework="portable-net45+wp8+wpa81+win8+MonoAndroid+MonoTouch+Xamarin.iOS+Xamarin.Mac">
-        <dependency id="Microsoft.Net.Http" version="2.2.29"/>
-        <dependency id="Microsoft.Bcl" version="1.1.10" />
-        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
-        <dependency id="Newtonsoft.Json" version="8.0.3" />
+      <group targetFramework="portable-net45+win8+wpa81">
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
       </group>
       <group targetFramework="net45">
-        <dependency id="Newtonsoft.Json" version="8.0.3" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
       </group>
     </dependencies>
   </metadata>
@@ -29,7 +26,7 @@
     <file src="net45\Stripe.net.xml" target="lib\net45" />
     <file src="portable\Stripe.net.dll" target="lib\dotnet" />
     <file src="portable\Stripe.net.xml" target="lib\dotnet" />
-    <file src="portable\Stripe.net.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid+MonoTouch+Xamarin.iOS+Xamarin.Mac" />
-    <file src="portable\Stripe.net.xml" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid+MonoTouch+Xamarin.iOS+Xamarin.Mac" />
+    <file src="portable\Stripe.net.dll" target="lib\portable-net45+win8+wpa81" />
+    <file src="portable\Stripe.net.pdb" target="lib\portable-net45+win8+wpa81" />
   </files>
 </package>

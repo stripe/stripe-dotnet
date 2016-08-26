@@ -22,7 +22,6 @@ using System.Threading.Tasks;
             );
         }
 
-#if !PORTABLE
         public virtual async Task<StripeToken> CreateAsync(StripeTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeToken>.MapFromJson(
@@ -38,6 +37,5 @@ using System.Threading.Tasks;
                 SetupRequestOptions(requestOptions))
             );
         }
-#endif
     }
 }

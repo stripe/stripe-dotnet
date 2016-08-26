@@ -41,36 +41,36 @@ namespace Stripe.Tests
             StripeCharge.FailureMessage.ShouldBeNull();
 
         It should_have_the_correct_source_address_line_1 = () =>
-            StripeCharge.Source.AddressLine1.ShouldEqual(StripeCard.AddressLine1);
+            StripeCharge.Source.Card.AddressLine1.ShouldEqual(StripeCard.AddressLine1);
 
         It should_have_the_correct_source_address_line_2 = () =>
-            StripeCharge.Source.AddressLine2.ShouldEqual(StripeCard.AddressLine2);
+            StripeCharge.Source.Card.AddressLine2.ShouldEqual(StripeCard.AddressLine2);
 
         It should_have_the_correct_source_address_city = () =>
-            StripeCharge.Source.AddressCity.ShouldEqual(StripeCard.AddressCity);
+            StripeCharge.Source.Card.AddressCity.ShouldEqual(StripeCard.AddressCity);
 
         It should_have_the_correct_source_address_state = () =>
-            StripeCharge.Source.AddressState.ShouldEqual(StripeCard.AddressState);
+            StripeCharge.Source.Card.AddressState.ShouldEqual(StripeCard.AddressState);
 
         It should_have_the_correct_source_address_zip = () =>
-            StripeCharge.Source.AddressZip.ShouldEqual(StripeCard.AddressZip);
+            StripeCharge.Source.Card.AddressZip.ShouldEqual(StripeCard.AddressZip);
 
         It should_have_the_correct_source_last_4 = () =>
-            StripeCharge.Source.Last4.ShouldEqual(StripeCard.Last4.ShouldEqual(StripeCard.Last4));
+            StripeCharge.Source.Card.Last4.ShouldEqual(StripeCard.Last4.ShouldEqual(StripeCard.Last4));
 
         It should_have_the_correct_source_expiration_month = () =>
-            StripeCharge.Source.ExpirationMonth.ShouldEqual(StripeCard.ExpirationMonth);
+            StripeCharge.Source.Card.ExpirationMonth.ShouldEqual(StripeCard.ExpirationMonth);
 
         It should_have_the_correct_source_expiration_year = () =>
-            StripeCharge.Source.ExpirationYear.ShouldEqual(StripeCard.ExpirationYear);
+            StripeCharge.Source.Card.ExpirationYear.ShouldEqual(StripeCard.ExpirationYear);
 
         It should_have_the_correct_source_name = () =>
-            StripeCharge.Source.Name.ShouldEqual(StripeCard.Name);
+            StripeCharge.Source.Card.Name.ShouldEqual(StripeCard.Name);
 
         It should_have_the_correct_source_type = () =>
-            StripeCharge.Source.Brand.ShouldEqual("Visa");
+            StripeCharge.Source.Card.Brand.ShouldEqual("Visa");
 
         It should_have_the_correct_source_country = () =>
-            StripeCharge.Source.Country.ShouldEqual("US");
+            StripeCharge.Source.Card.Country.ShouldEqual("US");
     }
 }

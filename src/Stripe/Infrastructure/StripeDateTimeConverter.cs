@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Stripe.Infrastructure
 {
-    public class StripeDateTimeConverter : DateTimeConverterBase
+    internal class StripeDateTimeConverter : DateTimeConverterBase
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {

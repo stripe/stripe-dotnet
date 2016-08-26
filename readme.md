@@ -1,16 +1,32 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)
 
-Notes on Naming
----------------
-The new BankAccountService does not have the usual name, StripeBankAccountService. I will slowly be moving from this method of always including the name Stripe, as class names are getting way too long (even for me). BankAccountCreateOptions is just a shorter name, for example.
-
-This service also returns a CustomerBankAccount, instead of the already built in StripeBankAccount. The reason is because Stripe wants to keep a clean separation between external account bank accounts, and customer bank accounts. The StripeBankAccount entity will 
-eventually be renamed to ExternalAccountBankAccount.
-
+[Accounts](#accounts)  
+[Application Fees](#application-fees)  
+[Balance](#balance)  
+[Bank Accounts](#bank-accounts)  
+[Cards](#cards)  
+[Charges](#charges)  
+[Connect](#stripe-connect)  
+[Country Specs](#country-specs)  
+[Coupons](#coupons)  
+[Customers](#customers)  
+[Disputes](#disputes)  
+[Events](#events)  
+[Errors](#errors)  
+[Expandable Properties](#expandable-properties)  
+[Invoices](#invoices)  
+[Invoice Items](#invoice-items)  
+[Plans](#plans)  
+[Recipients](#recipients)  
+[Subscriptions](#subscriptions)  
+[Tokens](#tokens)  
+[Transfers](#transfers)  
 
 Support
 -------
-Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to see if your issue/request already exists. If it does, please leave a comment or a [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). This helps me priortize what I work on next. [Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if you can't find what you're looking for. :)
+Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to see if your issue has already been reported. 
+If it has, please leave a comment or a [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). 
+[Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if your question is still not answered. :)
 
 Quick Start
 -----------
@@ -55,9 +71,6 @@ Stripe.net forces a version of the Stripe API for which it was designed. You can
 If you are not using webhooks, then you don't need to do anything for Stripe.net to be compatible with the Stripe API.
 
 If you are using webhooks from Stripe, then you will need to email Stripe support and ask them to set your API version (you can see this in your Stripe Dashboard) to the one specified in Stripe.net's StripeConfiguration.cs file.
-
-Examples
---------
 
 Plans
 -----
@@ -117,8 +130,8 @@ to a plan id (or not)
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
-Coupons (queue-pons not coo-pons)
----------------------------------
+Coupons
+-------
 
 ### Creating a coupon
 
@@ -774,6 +787,27 @@ Any invoice items you create for a customer will be added to their bill.
 
 StripeInvoiceItemListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
+Country Specs
+-------------
+
+Each account's country can have different rules for required fields, payment methods, and currencies. The CountrySpecService allows you to receive this metadata.
+
+### Retrieving a CountrySpec
+
+```csharp
+	var countrySpecService = new CountrySpecService();
+	CountrySpec spec = countrySpecService.Get("US");
+```
+
+### List all CountrySpec's
+
+```csharp
+	var countrySpecService = new CountrySpecService();
+	CountrySpec spec = countrySpecService.List();
+```
+
+[StripeListOptions](#stripelistoptions-paging) for paging
+
 Accounts
 --------
 ### Creating an account
@@ -864,8 +898,7 @@ Disputes
 Recipients
 ----------
 
-**Note: recipients have been deprecated by Stripe - please use
-[Stripe Connnect](https://stripe.com/docs/connect) instead**
+**Note: recipients have been deprecated by Stripe - please use [Stripe Connnect](https://stripe.com/docs/connect) instead**
 
 ### Creating a recipient
 

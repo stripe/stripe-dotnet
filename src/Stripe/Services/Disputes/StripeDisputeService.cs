@@ -22,7 +22,6 @@ using System.Threading.Tasks;
             );
         }
 
-#if !PORTABLE
         public virtual async Task<StripeDispute> UpdateAsync(string chargeId, string evidence = null, StripeRequestOptions requestOptions = null)
         {
             var url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
@@ -35,6 +34,5 @@ using System.Threading.Tasks;
                 SetupRequestOptions(requestOptions))
             );
         }
-#endif
     }
 }
