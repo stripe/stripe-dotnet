@@ -19,11 +19,11 @@ namespace Stripe.Infrastructure
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var incoming = (JObject.Load(reader)).ToObject<dynamic>();
+            var incoming = (JObject.Load(reader));
 
             var source = new Source
             {
-                Id = incoming.SelectToken("id")
+                Id = incoming.SelectToken("id").ToString()
             };
 
             if (incoming.SelectToken("object").ToString() == "bank_account")
@@ -32,7 +32,7 @@ namespace Stripe.Infrastructure
                 source.BankAccount = Mapper<StripeBankAccount>.MapFromJson(incoming.ToString());
             }
 
-            if (incoming.SelectToken("object") == "card")
+            if (incoming.SelectToken("object").ToString() == "card")
             {
                 source.Type = SourceType.Card;
                 source.Card = Mapper<StripeCard>.MapFromJson(incoming.ToString());
