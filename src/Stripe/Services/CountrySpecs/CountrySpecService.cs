@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Stripe
@@ -7,6 +8,9 @@ namespace Stripe
     {
         public CountrySpecService(string apiKey = null) : base(apiKey) { }
 
+
+
+        //Sync
         public virtual CountrySpec Get(string country, StripeRequestOptions requestOptions = null)
         {
             return Mapper<CountrySpec>.MapFromJson(
@@ -27,22 +31,27 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<CountrySpec> GetAsync(string country, StripeRequestOptions requestOptions = null)
+
+
+        //Async
+        public virtual async Task<CountrySpec> GetAsync(string country, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<CountrySpec>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.CountrySpecs}/{country}"),
-                    SetupRequestOptions(requestOptions)
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken
                 )
             );
         }
 
-        public virtual async Task<IEnumerable<CountrySpec>> ListAsync(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual async Task<IEnumerable<CountrySpec>> ListAsync(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<CountrySpec>.MapCollectionFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, $"{Urls.CountrySpecs}", true),
-                    SetupRequestOptions(requestOptions)
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken
                 )
             );
         }
