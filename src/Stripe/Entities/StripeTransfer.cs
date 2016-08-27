@@ -17,6 +17,9 @@ namespace Stripe
         [JsonProperty("amount")]
         public int Amount { get; set; }
 
+        [JsonProperty("application_fee")]
+        public int? ApplicationFee { get; set; }
+
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
@@ -79,8 +82,18 @@ namespace Stripe
         [JsonProperty("card")]
         public StripeCard Card { get; set; }
 
+        [JsonProperty("source_transaction")]
+        public string SourceTransactionId { get; set; }
+
+        [JsonProperty("source_type")]
+        public string SourceType { get; set; }
+
+        #region Recipient (Obsolete)
+
+        [Obsolete("Recipients are deprecated. Use Destination or Connect instead.")]
         public string RecipientId { get; set; }
 
+        [Obsolete("Recipients are deprecated. Use Destination or Connect instead.")]
         [JsonIgnore]
         public StripeRecipient Recipient { get; set; }
 
@@ -92,6 +105,8 @@ namespace Stripe
                 ExpandableProperty<StripeRecipient>.Map(value, s => RecipientId = s, o => Recipient = o);
             }
         }
+
+        #endregion
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }

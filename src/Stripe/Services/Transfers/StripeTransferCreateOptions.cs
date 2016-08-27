@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Stripe
@@ -8,11 +9,18 @@ namespace Stripe
         [JsonProperty("amount")]
         public int Amount { get; set; }
 
+        [JsonProperty("application_fee")]
+        public int? ApplicationFee { get; set; }
+
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [Obsolete("User Destination or Connect instead.")]
         [JsonProperty("recipient")]
         public string Recipient { get; set; }
+
+        [JsonProperty("destination")]
+        public string Destination { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }

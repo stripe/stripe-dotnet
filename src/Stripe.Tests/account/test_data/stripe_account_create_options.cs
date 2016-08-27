@@ -15,6 +15,7 @@ namespace Stripe.Tests.test_data
                 DeclineChargeOnAvsFailure = false,
                 DeclineChargeOnCvcFailure = true,
                 DefaultCurrency = "usd",
+                Email = $"Debra{Guid.NewGuid()}@gmail.com",
 
                 ExternalCardAccount = new StripeAccountCardOptions()
                 {
