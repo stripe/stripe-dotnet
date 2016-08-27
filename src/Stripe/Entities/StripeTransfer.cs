@@ -40,6 +40,9 @@ namespace Stripe
         [JsonProperty("type")]
         public string Type { get; set; }
 
+        [JsonProperty("application_fee")]
+        public int? ApplicationFee { get; set; }
+
         [JsonProperty("amount_reversed")]
         public int AmountReversed { get; set; }
 
@@ -92,6 +95,23 @@ namespace Stripe
                 ExpandableProperty<StripeRecipient>.Map(value, s => RecipientId = s, o => Recipient = o);
             }
         }
+
+        public string SourceTransactionId { get; set; }
+
+        [JsonIgnore]
+        public StripeCharge SourceTransaction { get; set; }
+
+        [JsonProperty("source_transaction")]
+        internal object InternalSourceTransaction
+        {
+            set
+            {
+                ExpandableProperty<StripeCharge>.Map(value, s => SourceTransactionId = s, o => SourceTransaction = o);
+            }
+        }
+
+        [JsonProperty("source_type")]
+        public string SourceType { get; set; }
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }

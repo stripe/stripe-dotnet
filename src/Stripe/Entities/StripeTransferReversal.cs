@@ -30,5 +30,8 @@ namespace Stripe
         // todo: this should be an expandable property
         [JsonProperty("transfer")]
         public string TransferId { get; set; }
+
+        [JsonProperty("refund_application_fee")]
+        public int? RefundApplicationFee { get; set; }
     }
 }

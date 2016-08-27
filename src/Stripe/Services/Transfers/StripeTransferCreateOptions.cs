@@ -28,5 +28,8 @@ namespace Stripe
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("application_fee")]
+        public int? ApplicationFee { get; set; }
     }
 }
