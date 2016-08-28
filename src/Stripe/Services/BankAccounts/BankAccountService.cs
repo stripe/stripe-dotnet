@@ -43,11 +43,13 @@ namespace Stripe
             );
         }
 
-        public virtual void Delete(string customerId, string bankAccountId, StripeRequestOptions requestOptions = null)
+        public virtual StripeDeleted Delete(string customerId, string bankAccountId, StripeRequestOptions requestOptions = null)
         {
-            Requestor.Delete(
-                this.ApplyAllParameters(null, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
-                SetupRequestOptions(requestOptions)
+            return Mapper<StripeDeleted>.MapFromJson(
+                Requestor.Delete(
+                    this.ApplyAllParameters(null, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
+                    SetupRequestOptions(requestOptions)
+                )
             );
         }
 
@@ -107,12 +109,14 @@ namespace Stripe
             );
         }
 
-        public virtual async Task DeleteAsync(string customerId, string bankAccountId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeDeleted> DeleteAsync(string customerId, string bankAccountId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Requestor.DeleteAsync(
-                this.ApplyAllParameters(null, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
-                SetupRequestOptions(requestOptions),
+            return Mapper<StripeDeleted>.MapFromJson(
+                await Requestor.DeleteAsync(
+                    this.ApplyAllParameters(null, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
+                    SetupRequestOptions(requestOptions),
                     cancellationToken
+                )
             );
         }
 

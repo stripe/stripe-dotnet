@@ -55,11 +55,13 @@ namespace Stripe
             );
         }
 
-        public virtual void Delete(string customerOrRecipientId, string cardId, bool isRecipient = false, StripeRequestOptions requestOptions = null)
+        public virtual StripeDeleted Delete(string customerOrRecipientId, string cardId, bool isRecipient = false, StripeRequestOptions requestOptions = null)
         {
             var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
 
-            Requestor.Delete(url, SetupRequestOptions(requestOptions));
+            return Mapper<StripeDeleted>.MapFromJson(
+                Requestor.Delete(url, SetupRequestOptions(requestOptions))
+            );
         }
 
         public virtual IEnumerable<StripeCard> List(string customerOrRecipientId, StripeListOptions listOptions = null, bool isRecipient = false, StripeRequestOptions requestOptions = null)
@@ -119,13 +121,15 @@ namespace Stripe
             );
         }
 
-        public virtual async Task DeleteAsync(string customerOrRecipientId, string cardId, bool isRecipient = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeDeleted> DeleteAsync(string customerOrRecipientId, string cardId, bool isRecipient = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
 
-            await Requestor.DeleteAsync(url, 
-                SetupRequestOptions(requestOptions),
-                cancellationToken);
+            return Mapper<StripeDeleted>.MapFromJson(
+                await Requestor.DeleteAsync(url, 
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken)
+                );
         }
 
         public virtual async Task<IEnumerable<StripeCard>> ListAsync(string customerOrRecipientId, StripeListOptions listOptions = null, bool isRecipient = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))

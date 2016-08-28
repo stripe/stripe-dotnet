@@ -36,10 +36,12 @@ namespace Stripe
             );
         }
 
-        public virtual void Delete(string couponId, StripeRequestOptions requestOptions = null)
+        public virtual StripeDeleted Delete(string couponId, StripeRequestOptions requestOptions = null)
         {
-            Requestor.Delete(this.ApplyAllParameters(null, $"{Urls.Coupons}/{couponId}", false),
-                SetupRequestOptions(requestOptions));
+            return Mapper<StripeDeleted>.MapFromJson(
+                Requestor.Delete(this.ApplyAllParameters(null, $"{Urls.Coupons}/{couponId}", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
         public virtual IEnumerable<StripeCoupon> List(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -80,11 +82,13 @@ namespace Stripe
             );
         }
 
-        public virtual async Task DeleteAsync(string couponId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeDeleted> DeleteAsync(string couponId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Requestor.DeleteAsync(this.ApplyAllParameters(null, $"{Urls.Coupons}/{couponId}", false),
+            return Mapper<StripeDeleted>.MapFromJson(
+                await Requestor.DeleteAsync(this.ApplyAllParameters(null, $"{Urls.Coupons}/{couponId}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken);
+                cancellationToken)
+            );
         }
 
         public virtual async Task<IEnumerable<StripeCoupon>> ListAsync(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))

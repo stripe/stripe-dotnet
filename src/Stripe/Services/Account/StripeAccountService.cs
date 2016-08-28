@@ -34,10 +34,12 @@ namespace Stripe
             );
         }
 
-        public virtual void Delete(string accountId, StripeRequestOptions requestOptions = null)
+        public virtual StripeDeleted Delete(string accountId, StripeRequestOptions requestOptions = null)
         {
-            Requestor.Delete(this.ApplyAllParameters(null, $"{Urls.Accounts}/{accountId}", false),
-                SetupRequestOptions(requestOptions));
+            return Mapper<StripeDeleted>.MapFromJson(
+                Requestor.Delete(this.ApplyAllParameters(null, $"{Urls.Accounts}/{accountId}", false),
+                SetupRequestOptions(requestOptions))
+            );
         }
 
 
@@ -70,11 +72,13 @@ namespace Stripe
             );
         }
 
-        public virtual async Task DeleteAsync(string accountId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeDeleted> DeleteAsync(string accountId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Requestor.DeleteAsync(this.ApplyAllParameters(null, $"{Urls.Accounts}/{accountId}", false),
+            return Mapper<StripeDeleted>.MapFromJson(
+                await Requestor.DeleteAsync(this.ApplyAllParameters(null, $"{Urls.Accounts}/{accountId}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken);
+                cancellationToken)
+            );
         }
     }
 }

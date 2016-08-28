@@ -38,10 +38,12 @@ namespace Stripe
             );
         }
 
-        public virtual void Delete(string customerId, StripeRequestOptions requestOptions = null)
+        public virtual StripeDeleted Delete(string customerId, StripeRequestOptions requestOptions = null)
         {
-            Requestor.Delete($"{Urls.Customers}/{customerId}",
-                SetupRequestOptions(requestOptions));
+            return Mapper<StripeDeleted>.MapFromJson(
+                Requestor.Delete($"{Urls.Customers}/{customerId}",
+                SetupRequestOptions(requestOptions))
+             );
         }
 
         public virtual IEnumerable<StripeCustomer> List(StripeCustomerListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -82,11 +84,13 @@ namespace Stripe
             );
         }
 
-        public virtual async Task DeleteAsync(string customerId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeDeleted> DeleteAsync(string customerId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Requestor.DeleteAsync($"{Urls.Customers}/{customerId}",
+            return Mapper<StripeDeleted>.MapFromJson(
+                await Requestor.DeleteAsync($"{Urls.Customers}/{customerId}",
                 SetupRequestOptions(requestOptions),
-                cancellationToken);
+                cancellationToken)
+            );
         }
 
         public virtual async Task<IEnumerable<StripeCustomer>> ListAsync(StripeCustomerListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
