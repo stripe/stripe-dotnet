@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
 
@@ -54,10 +52,11 @@ namespace Stripe.Infrastructure
             var hash = new Dictionary<string, string>();
 
 #if !PORTABLE
-            hash.Add("net45.platform", Environment.OSVersion.VersionString);
+            hash.Add("net45.platform", System.Environment.OSVersion.VersionString);
             hash.Add("net45.product", typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product);
 #else
-            hash.Add("portable.product", typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product);
+            // Null reference when running in Release mode on iOS
+            hash.Add("portable.product", typeof(object).GetTypeInfo()?.Assembly.GetCustomAttribute<AssemblyProductAttribute>()?.Product ?? "iOS Platform Product");
 #endif
 
             return serialize(hash);
