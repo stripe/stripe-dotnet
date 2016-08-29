@@ -1,21 +1,34 @@
-﻿using System;
+﻿using Stripe.Infrastructure;
+using System;
 using System.Net;
 using System.Net.Http;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Stripe.Infrastructure;
 
 namespace Stripe
 {
     internal static class Requestor
     {
-        internal static HttpClient HttpClient { get; private set; }
-        internal static string Version { get; }
+        private static HttpClient httpClient;
 
-        static Requestor()
+        internal static HttpClient HttpClient
         {
-            HttpClient = new HttpClient();
+            get
+            {
+                if (httpClient == null)
+                {
+                    if (StripeConfiguration.HttpMessageHandler == null)
+                    {
+                        httpClient = new HttpClient();
+                    }
+                    else
+                    {
+                        httpClient = new HttpClient(StripeConfiguration.HttpMessageHandler);
+                    }
+                }
+
+                return httpClient;
+            }
         }
 
         public static string GetString(string url, StripeRequestOptions requestOptions)
@@ -84,7 +97,7 @@ namespace Stripe
 
             var request = BuildRequest(method, url);
 
-            if(!useBearer)
+            if (!useBearer)
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValue(requestOptions.ApiKey));
             else
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(requestOptions.ApiKey));

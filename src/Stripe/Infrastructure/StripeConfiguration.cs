@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Net.Http;
+using System.Reflection;
 
 namespace Stripe
 {
@@ -12,6 +13,7 @@ namespace Stripe
         public static string StripeNetVersion { get; private set; }
 
         private static string _apiKey;
+        internal static HttpMessageHandler HttpMessageHandler { get; private set; }
 
         static StripeConfiguration()
         {
@@ -28,6 +30,11 @@ namespace Stripe
             }
 
             return _apiKey;
+        }
+
+        public static void SetHttpMessageHandler(HttpMessageHandler handler)
+        {
+            HttpMessageHandler = handler;
         }
 
         public static void SetApiKey(string newApiKey)
