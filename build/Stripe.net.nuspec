@@ -14,10 +14,10 @@
     <tags>stripe, payment, credit cards, money, gateway, paypal, braintree</tags>
     <dependencies>
       <group targetFramework="portable-net45+win8+wpa81">
-        <dependency id="Newtonsoft.Json" version="8.0.3" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
       </group>
       <group targetFramework="net45">
-        <dependency id="Newtonsoft.Json" version="8.0.3" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
       </group>
     </dependencies>
   </metadata>

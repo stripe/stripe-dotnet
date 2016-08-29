@@ -42,7 +42,7 @@ namespace Stripe.Tests
             firstEntry.Currency.ShouldEqual(CreateOrUpdateOptions.ExternalBankAccount.Currency);
             firstEntry.Country.ShouldEqual(CreateOrUpdateOptions.ExternalBankAccount.Country);
             firstEntry.RoutingNumber.ShouldEqual(CreateOrUpdateOptions.ExternalBankAccount.RoutingNumber);
-            firstEntry.Name.ShouldEqual(CreateOrUpdateOptions.ExternalBankAccount.Name);
+            firstEntry.AccountHolderName.ShouldEqual(CreateOrUpdateOptions.ExternalBankAccount.AccountHolderName);
             firstEntry.AccountHolderType.ShouldEqual(CreateOrUpdateOptions.ExternalBankAccount.AccountHolderType);
         };
 

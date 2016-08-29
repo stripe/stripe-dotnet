@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace Stripe.Tests
 {
+    [Ignore("The latest Stripe release uses status, and returns the subscription after it's canceled.")]
     public class when_canceling_a_subscription_and_trying_to_retrieve
     {
         private static StripeCustomer _stripeCustomer;

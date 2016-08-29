@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Stripe
@@ -53,6 +54,7 @@ namespace Stripe
         [JsonProperty("source[statement_descriptor]")]
         public string StatementDescriptor { get; set; }
 
+        [Obsolete("This property is no longer accepted by Stripe as of the 10.12.2015 API")]
         [JsonProperty("source[receipt_email]")]
         public string ReceiptEmail { get; set; }
 
