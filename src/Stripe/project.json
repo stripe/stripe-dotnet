@@ -1,8 +1,9 @@
 {
-  "version": "0.0.0-*",
+  "authors": [ "Jayme Davis" ],
   "dependencies": {
     "Newtonsoft.Json": "9.0.1"
   },
+  "description": "Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.",
   "frameworks": {
     "net45": {
       "frameworkAssemblies": {
@@ -26,5 +27,19 @@
         "NETStandard.Library": "1.6.0"
       }
     }
-  }
+  },
+  "packOptions": {
+    "iconUrl": "https://pbs.twimg.com/profile_images/497432038492733440/eW6tXeq3.png",
+    "licenseUrl": "https://raw.github.com/jaymedavis/stripe.net/master/LICENSE",
+    "owners": [ "Jayme Davis" ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jaymedavis/stripe.net"
+    },
+    "requireLicenseAcceptance": false,
+    "summary": "Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.",
+    "tags": [ "stripe", "payment", "credit", "cards", "money", "gateway", "paypal", "braintree" ]
+  },
+  "title": "Stripe.net",
+  "version": "6.4.0"
 }
