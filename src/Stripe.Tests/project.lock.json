@@ -1,0 +1,150 @@
+{
+  "locked": false,
+  "version": 2,
+  "targets": {
+    ".NETFramework,Version=v4.5": {
+      "Machine.Specifications/0.11.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Runtime.Remoting",
+          "System.Xml",
+          "System.Xml.Linq",
+          "System.Xml.Serialization"
+        ],
+        "compile": {
+          "lib/net45/Machine.Specifications.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Machine.Specifications.dll": {}
+        }
+      },
+      "Machine.Specifications.Should/0.11.0": {
+        "type": "package",
+        "dependencies": {
+          "Machine.Specifications": "0.11.0"
+        },
+        "compile": {
+          "lib/net45/Machine.Specifications.Should.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Machine.Specifications.Should.dll": {}
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Stripe/0.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5",
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System.Core",
+          "System.Data",
+          "System.Data.DataSetExtensions",
+          "System.Net.Http",
+          "System.Net.Http.WebRequest",
+          "System.Web",
+          "System.Xml",
+          "System.Xml.Linq",
+          "System.configuration"
+        ],
+        "compile": {
+          "net45/Stripe.dll": {}
+        },
+        "runtime": {
+          "net45/Stripe.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Machine.Specifications/0.11.0": {
+      "sha512": "5U7xMfGPYZRyaVdl4nrWJ3DG7OVoPofWdjnUC/vLBPgIvwfW2pKwmkee9o1MGIYbsvbaSnJjJLCcQoALu6s8Jg==",
+      "type": "package",
+      "path": "Machine.Specifications/0.11.0",
+      "files": [
+        "Machine.Specifications.0.11.0.nupkg.sha512",
+        "Machine.Specifications.nuspec",
+        "lib/net35/Machine.Specifications.dll",
+        "lib/net40/Machine.Specifications.dll",
+        "lib/net45/Machine.Specifications.dll",
+        "lib/netstandard1.3/Machine.Specifications.dll"
+      ]
+    },
+    "Machine.Specifications.Should/0.11.0": {
+      "sha512": "CdEOWWfsv1ApVRYab+NNEW1Mh1uxFk3zuTNqbjkZhdsTWKTnoChSQjj21f6poV3THdV2b+8i1PVwQTqi4pufSw==",
+      "type": "package",
+      "path": "Machine.Specifications.Should/0.11.0",
+      "files": [
+        "Machine.Specifications.Should.0.11.0.nupkg.sha512",
+        "Machine.Specifications.Should.nuspec",
+        "lib/net35/Machine.Specifications.Should.dll",
+        "lib/net40/Machine.Specifications.Should.dll",
+        "lib/net45/Machine.Specifications.Should.dll",
+        "lib/netstandard1.3/Machine.Specifications.Should.dll"
+      ]
+    },
+    "Newtonsoft.Json/9.0.1": {
+      "sha512": "U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw==",
+      "type": "package",
+      "path": "Newtonsoft.Json/9.0.1",
+      "files": [
+        "Newtonsoft.Json.9.0.1.nupkg.sha512",
+        "Newtonsoft.Json.nuspec",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "tools/install.ps1"
+      ]
+    },
+    "Stripe/0.0.0": {
+      "type": "project",
+      "path": "../Stripe/project.json",
+      "msbuildProject": "../Stripe/Stripe.xproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "Machine.Specifications >= 0.11.0",
+      "Machine.Specifications.Should >= 0.11.0",
+      "Newtonsoft.Json >= 9.0.1",
+      "Stripe"
+    ],
+    ".NETFramework,Version=v4.5": [
+      "Microsoft.CSharp",
+      "System.Core",
+      "System.Data",
+      "System.Data.DataSetExtensions",
+      "System.Net.Http",
+      "System.Runtime.Remoting",
+      "System.Web",
+      "System.Web.Extensions",
+      "System.Xml",
+      "System.Xml.Linq",
+      "System.Xml.Serialization",
+      "System.configuration"
+    ]
+  },
+  "tools": {},
+  "projectFileToolGroups": {}
+}

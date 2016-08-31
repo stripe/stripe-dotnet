@@ -1,0 +1,30 @@
+{
+  "version": "0.0.0-*",
+  "dependencies": {
+    "Newtonsoft.Json": "9.0.1"
+  },
+  "frameworks": {
+    "net45": {
+      "frameworkAssemblies": {
+        "Microsoft.CSharp": "*",
+        "System.Configuration": "*",
+        "System.Core": "*",
+        "System.Net.Http": "*",
+        "System.Net.Http.WebRequest": "*",
+        "System.Web": "*",
+        "System.Xml.Linq": "*",
+        "System.Data.DataSetExtensions": "*",
+        "System.Data": "*",
+        "System.Xml": "*"
+      }
+    },
+    "netstandard1.1": {
+      "buildOptions": {
+        "define": [ "PORTABLE" ]
+      },
+      "dependencies": {
+        "NETStandard.Library": "1.6.0"
+      }
+    }
+  }
+}
