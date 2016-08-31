@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Stripe.net", "Stripe\Stripe.net.xproj", "{E48E9AC1-3A88-406B-82FF-166B1E3C7A48}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Stripe", "Stripe.net\Stripe.xproj", "{E48E9AC1-3A88-406B-82FF-166B1E3C7A48}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Stripe.Tests", "Stripe.Tests\Stripe.Tests.xproj", "{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}"
 EndProject
