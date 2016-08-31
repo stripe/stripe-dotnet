@@ -1,10 +1,9 @@
 {
-  "version": "0.0.0-*",
   "dependencies": {
     "Machine.Specifications": "0.11.0",
     "Machine.Specifications.Should": "0.11.0",
-    "Newtonsoft.Json": "9.0.1",
-    "Stripe": "*"
+    "Stripe.net": "*",
+    "dotnet-test-mspec": "*"
   },
   "frameworks": {
     "net45": {
@@ -22,6 +21,16 @@
         "System.Xml": "*",
         "System.Xml.Serialization": "*"
       }
+    },
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0",
+          "type": "platform"
+        }
+      }
     }
-  }
+  },
+  "testRunner": "mspec",
+  "version": "0.0.0-*"
 }
