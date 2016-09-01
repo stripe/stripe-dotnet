@@ -15,7 +15,10 @@ namespace Stripe
 
         static Requestor()
         {
-            HttpClient = new HttpClient();
+            HttpClient =
+                StripeConfiguration.HttpMessageHandler != null
+                    ? new HttpClient(StripeConfiguration.HttpMessageHandler)
+                    : new HttpClient();
         }
 
         public static string GetString(string url, StripeRequestOptions requestOptions)
