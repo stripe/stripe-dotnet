@@ -28,7 +28,7 @@ namespace Stripe.Infrastructure
 
         private string GetClientUserAgentString()
         {
-            var langVersion = "unknown";
+            var langVersion = "4.5";
 
 #if !PORTABLE
             langVersion = typeof(object).GetTypeInfo().Assembly.ImageRuntimeVersion;
@@ -65,7 +65,16 @@ namespace Stripe.Infrastructure
             result += $"net45.platform: {Environment.OSVersion.VersionString}";
             result += $", {getOperatingSystemInfo()}"; 
 #else
-            result += $"portable.platform: {typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product}";
+            result += "portable.platform: ";
+
+            try
+            {
+                result += typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
+            }
+            catch
+            {
+                result += "unknown";
+            }
 #endif
 
             return result;
