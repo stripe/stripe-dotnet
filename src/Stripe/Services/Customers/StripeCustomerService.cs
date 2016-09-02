@@ -72,7 +72,7 @@ namespace Stripe
             );
         }
 
-        public virtual async void DeleteAsync(string customerId, StripeRequestOptions requestOptions = null)
+        public virtual async Task DeleteAsync(string customerId, StripeRequestOptions requestOptions = null)
         {
             await Requestor.DeleteAsync($"{Urls.Customers}/{customerId}",
                 SetupRequestOptions(requestOptions));
