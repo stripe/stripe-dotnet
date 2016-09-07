@@ -26,11 +26,11 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeSubscription = _stripeSubscriptionService.Cancel(_stripeCustomer.Id, _stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id, false);
+            _stripeSubscription = _stripeSubscriptionService.Cancel(_stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id, false);
 
         It should_throw_exception_when_retrieved = () =>
         {
-            var exception = Catch.Exception(() => _stripeSubscriptionService.Get(_stripeCustomer.Id, _stripeSubscription.Id));
+            var exception = Catch.Exception(() => _stripeSubscriptionService.Get(_stripeSubscription.Id));
             exception.Message.ShouldNotBeNull(); 
         };
     }

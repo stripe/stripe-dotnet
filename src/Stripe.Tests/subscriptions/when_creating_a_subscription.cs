@@ -5,7 +5,6 @@ namespace Stripe.Tests
 {
     public class when_creating_a_subscription
     {
-        private static StripeCustomer _stripeCustomer;
         private static StripePlan _stripePlan;
         private static StripeSubscription _stripeSubscription;
         private static StripeSubscriptionService _stripeSubscriptionService;
@@ -14,7 +13,7 @@ namespace Stripe.Tests
         Establish context = () =>
         {
             var _stripeCustomerService = new StripeCustomerService();
-            _stripeCustomer = _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
+            var _stripeCustomer = _stripeCustomerService.Create(test_data.stripe_customer_create_options.ValidCard());
         
             var _stripePlanService = new StripePlanService();
             _stripePlan = _stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
@@ -23,10 +22,12 @@ namespace Stripe.Tests
 
             _stripeSubscriptionCreateOptions = new StripeSubscriptionCreateOptions();
             _stripeSubscriptionCreateOptions.Quantity = 2;
+            _stripeSubscriptionCreateOptions.CustomerId = _stripeCustomer.Id;
+            _stripeSubscriptionCreateOptions.PlanId = _stripePlan.Id;
         };
 
         Because of = () =>
-            _stripeSubscription = _stripeSubscriptionService.Create(_stripeCustomer.Id, _stripePlan.Id, _stripeSubscriptionCreateOptions);
+            _stripeSubscription = _stripeSubscriptionService.Create(_stripeSubscriptionCreateOptions);
 
         It should_get_the_same_subscription = () =>
             _stripeSubscription.StripePlan.Id.ShouldEqual(_stripePlan.Id);

@@ -374,28 +374,28 @@ Subscriptions
 
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
-	StripeSubscription stripeSubscription = subscriptionService.Create(*customerId*, *planId*); // optional StripeSubscriptionCreateOptions
+	StripeSubscription stripeSubscription = subscriptionService.Create(StripeSubscriptionCreateOptions);
 ```
 
 ### Updating a subscription
 
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
-	StripeSubscription stripeSubscription = subscriptionService.Update(*customerId*, *subscriptionId*); // optional StripeSubscriptionUpdateOptions
+	StripeSubscription stripeSubscription = subscriptionService.Update(*subscriptionId*, StripeSubscriptionUpdateOptions);
 ```
 
 ### Retrieving a subscription
 
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
-	StripeSubscription stripeSubscription = subscriptionService.Get(*customerId*, *subscriptionId*);
+	StripeSubscription stripeSubscription = subscriptionService.Get(*subscriptionId*);
 ```
 
 ### Canceling a subscription
 
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
-	subscriptionService.Cancel(*customerId*, *subscriptionId*); // optional cancelAtPeriodEnd flag
+	subscriptionService.Cancel(*subscriptionId*); // optional cancelAtPeriodEnd flag
 ```
 
 ### List all subscriptions for a customer
@@ -403,6 +403,13 @@ Subscriptions
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
 	IEnumerable<StripeSubscription> response = subscriptionService.List(*customerId*); // optional StripeListOptions
+```
+
+### List all subscriptions
+
+```csharp
+	var subscriptionService = new StripeSubscriptionService();
+	IEnumerable<StripeSubscription> response = subscriptionService.List(); // optional StripeListOptions
 ```
 
 [StripeListOptions](#stripelistoptions-paging) for paging

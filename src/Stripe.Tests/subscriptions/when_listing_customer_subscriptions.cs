@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 namespace Stripe.Tests
 {
-    public class when_canceling_a_subscription
+    public class when_listing_customer_subscriptions
     {
         private static StripeCustomer _stripeCustomer;
-        private static StripeSubscription _stripeSubscription;
+        private static List<StripeSubscription> _stripeSubscriptionList;
         private static StripeSubscriptionService _stripeSubscriptionService;
 
         Establish context = () =>
@@ -26,9 +26,9 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeSubscription = _stripeSubscriptionService.Cancel(_stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id);
+            _stripeSubscriptionList = _stripeSubscriptionService.List(_stripeCustomer.Id).ToList();
 
-        It should_be_a_canceled_subscription = () =>
-            _stripeSubscription.Status.ShouldEqual("canceled");
+        It should_have_one_subscription = () =>
+            _stripeSubscriptionList.Count().ShouldEqual(1);
     }
 }
