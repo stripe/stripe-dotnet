@@ -62,6 +62,7 @@
     <Compile Include="Entities\CustomerBankAccount.cs" />
     <Compile Include="Entities\Source.cs" />
     <Compile Include="Entities\CountrySpec.cs" />
+    <Compile Include="Entities\StripeDeleted.cs" />
     <Compile Include="Entities\StripeManagedAccountKeys.cs" />
     <Compile Include="Constants\StripeSubscriptionStatuses.cs" />
     <Compile Include="Entities\StripeBirthDay.cs" />
