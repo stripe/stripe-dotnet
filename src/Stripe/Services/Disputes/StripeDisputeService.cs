@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 
 ﻿namespace Stripe
@@ -9,6 +10,9 @@ using System.Threading.Tasks;
         public bool ExpandCharge { get; set; }
         public bool ExpandBalanceTransaction { get; set; }
 
+
+
+        //Sync
         public virtual StripeDispute Update(string chargeId, string evidence = null, StripeRequestOptions requestOptions = null)
         {
             var url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
@@ -22,7 +26,10 @@ using System.Threading.Tasks;
             );
         }
 
-        public virtual async Task<StripeDispute> UpdateAsync(string chargeId, string evidence = null, StripeRequestOptions requestOptions = null)
+
+
+        //Async
+        public virtual async Task<StripeDispute> UpdateAsync(string chargeId, string evidence = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
 
@@ -31,7 +38,8 @@ using System.Threading.Tasks;
 
             return Mapper<StripeDispute>.MapFromJson(
                 await Requestor.PostStringAsync(url,
-                SetupRequestOptions(requestOptions))
+                SetupRequestOptions(requestOptions),
+                cancellationToken)
             );
         }
     }
