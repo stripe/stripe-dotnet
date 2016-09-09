@@ -112,6 +112,9 @@
     <Compile Include="..\Stripe\Entities\StripeDeclineChargeOn.cs">
       <Link>Entities\StripeDeclineChargeOn.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Entities\StripeDeleted.cs">
+      <Link>Entities\StripeDeleted.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Entities\StripeDiscount.cs">
       <Link>Entities\StripeDiscount.cs</Link>
     </Compile>
