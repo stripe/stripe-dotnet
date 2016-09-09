@@ -48,7 +48,9 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-        public virtual StripeDiscountDelete DeleteDiscount(string customerId, StripeRequestOptions requestOptions = null) {
+
+        public virtual StripeDiscountDelete DeleteDiscount(string customerId, StripeRequestOptions requestOptions = null) 
+        {
             var customerUrl = string.Format(Urls.CustomerDiscount, customerId);
             return Mapper<StripeDiscountDelete>.MapFromJson(Requestor.Delete(customerUrl, SetupRequestOptions(requestOptions)));
         }
@@ -95,6 +97,5 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-#endif
     }
 }

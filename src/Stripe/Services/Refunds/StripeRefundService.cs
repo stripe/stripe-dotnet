@@ -42,7 +42,6 @@ namespace Stripe
             );
         }
 
-#if !PORTABLE
         public virtual async Task<StripeRefund> CreateAsync(string chargeId, StripeRefundCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeRefund>.MapFromJson(
@@ -74,6 +73,5 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-#endif
     }
 }

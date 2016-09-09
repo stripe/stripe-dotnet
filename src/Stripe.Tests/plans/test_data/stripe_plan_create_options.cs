@@ -23,5 +23,17 @@ namespace Stripe.Tests.test_data
                 StatementDescriptor = "heyyyy ya!"
             };
         }
+
+        public static StripePlanCreateOptions ThirtyDayIntervalWithFiveDollars()
+        {
+            return new StripePlanCreateOptions()
+            {
+                Id = "test-plan-thirty-" + Guid.NewGuid(),
+                Amount = 500,
+                Currency = "usd",
+                Interval = "month",
+                Name = "Thirty Days and Five Dollars"
+            };
+        }
     }
 }

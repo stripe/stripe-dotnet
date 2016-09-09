@@ -1,13 +1,27 @@
-﻿namespace Stripe
+﻿using System.Net.Http;
+using System.Reflection;
+
+namespace Stripe
 {
     public static class StripeConfiguration
     {
+        /// <summary>
+        /// <para>This is the API version that Stripe.net will automatically use when working with Stripe. You only need to be concerned if you are using webhooks (Stripe Events) and having issues.</para>
+        /// <para>If you notice webhooks are not working correctly, email Stripe and ask them to downgrade your API version to match the StripeApiVersion. Work is going on to catch up so this isn't necessary!</para>
+        /// </summary>
+        public static string StripeApiVersion = "2016-07-06";
+        public static string StripeNetVersion { get; private set; }
+
+        /// <summary>
+        /// This option allows you to provide your own HttpMessageHandler. Useful with Android/iPhone and/or adding in ModernHttpClient.
+        /// </summary>
+        public static HttpMessageHandler HttpMessageHandler { get; set; } 
+
         private static string _apiKey;
-        internal const string SupportedApiVersion = "2015-09-08";
 
         static StripeConfiguration()
         {
-            ApiVersion = SupportedApiVersion;
+            StripeNetVersion = new AssemblyName(typeof(Requestor).GetTypeInfo().Assembly.FullName).Version.ToString(3);
         }
 
         internal static string GetApiKey()
@@ -26,7 +40,5 @@
         {
             _apiKey = newApiKey;
         }
-
-        public static string ApiVersion { get; internal set; }
     }
 }

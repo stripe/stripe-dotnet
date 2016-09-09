@@ -1,16 +1,32 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)
 
-The new BankAccountService does not have the usual name, StripeBankAccountService. I will slowly be moving from this method of always including the name Stripe, as class names are getting way too long (even for me). BankAccountCreateOptions is just a shorter name, for example.
-
-This service also returns a CustomerBankAccount, instead of the already built in StripeBankAccount. The reason is because Stripe wants to keep a clean separation between external account bank accounts, and customer bank accounts. The StripeBankAccount entity will 
-eventually be renamed to ExternalAccountBankAccount.
-
+[Accounts](#accounts)  
+[Application Fees](#application-fees)  
+[Balance](#balance)  
+[Bank Accounts](#bank-accounts)  
+[Cards](#cards)  
+[Charges](#charges)  
+[Connect](#stripe-connect)  
+[Country Specs](#country-specs)  
+[Coupons](#coupons)  
+[Customers](#customers)  
+[Disputes](#disputes)  
+[Events](#events)  
+[Errors](#errors)  
+[Expandable Properties](#expandable-properties)  
+[Invoices](#invoices)  
+[Invoice Items](#invoice-items)  
+[Plans](#plans)  
+[Recipients](#recipients)  
+[Subscriptions](#subscriptions)  
+[Tokens](#tokens)  
+[Transfers](#transfers)  
 
 Support
 -------
-Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to see if your issue/request already exists. If it does, please leave a comment or a [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). This helps me priortize what I work on next. [Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if you can't find what you're looking for. :)
-
-I also hang out in IRC in #stripe on freenode (my nick is truepudding) when I can. Feel free to ping me there as well.
+Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to see if your issue has already been reported. 
+If it has, please leave a comment or a [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). 
+[Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if your question is still not answered. :)
 
 Quick Start
 -----------
@@ -48,29 +64,9 @@ d) In any of the service calls, you can pass a [StripeRequestOptions](#stripereq
 	planService.Get(*planId*, new StripeRequestOptions() { ApiKey = "[your api key here]" });
 ```
 
-Stripe Architecture
--------------------
-Watch the 2 minute video below to get a high level overview of the Stripe Architecture in a .NET project and understand how all the pieces fit together.  
+** If you are using Xamarin/Mono, you may want to provide your own HttpMessageHandler. You can do so by passing an instance to StripeConfiguration.HttpMessageHandler on your application's startup. See [this thread](https://github.com/jaymedavis/stripe.net/issues/567) for details.
 
-<a href="https://www.youtube.com/watch?v=BQg267TuJ0M&feature=youtu.be&t=7s&related=0" target="_blank">
-<img src="http://i.imgur.com/NBU9pWk.png?1" alt="Stripe .NET Architecture"></img>
-</a>
-
-Stripe API Version
-------------------
-
-stripe.net forces a version of the Stripe API for which it was designed. You can find out the latest version supported by viewing StripeConfiguration.cs under the Infrastructure folder. If you *are not* using Stripe Event objects (which are most commonly used in webhooks) then you need to do nothing for stripe.net to be compatible with the Stripe API.  
-
-If you *are* using Stripe Events then you will need to email Stripe support and ask them to set your API version (you can see this in your Stripe Dashboard) to the one specified in stripe.net's StripeConfiguration.cs file.
-
-See the video below for more information about stripe.net versions and how they correspond with Stripe API versions.
-
-<a href="https://youtu.be/c6dJRc9V_Ls?t=51s&related=0" target="_blank">
-<img src="http://i.imgur.com/eArdtRE.png?1" alt="Stripe API and Stripe.NET Versions"></img>
-</a>
-
-Examples
-========
+Examples Below!
 
 Plans
 -----
@@ -130,8 +126,8 @@ to a plan id (or not)
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
-Coupons (queue-pons not coo-pons)
----------------------------------
+Coupons
+-------
 
 ### Creating a coupon
 
@@ -787,6 +783,27 @@ Any invoice items you create for a customer will be added to their bill.
 
 StripeInvoiceItemListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
+Country Specs
+-------------
+
+Each account's country can have different rules for required fields, payment methods, and currencies. The CountrySpecService allows you to receive this metadata.
+
+### Retrieving a CountrySpec
+
+```csharp
+	var countrySpecService = new CountrySpecService();
+	CountrySpec spec = countrySpecService.Get("US");
+```
+
+### List all CountrySpec's
+
+```csharp
+	var countrySpecService = new CountrySpecService();
+	CountrySpec spec = countrySpecService.List();
+```
+
+[StripeListOptions](#stripelistoptions-paging) for paging
+
 Accounts
 --------
 ### Creating an account
@@ -877,8 +894,7 @@ Disputes
 Recipients
 ----------
 
-**Note: recipients have been deprecated by Stripe - please use
-[Stripe Connnect](https://stripe.com/docs/connect) instead**
+**Note: recipients have been deprecated by Stripe - please use [Stripe Connnect](https://stripe.com/docs/connect) instead**
 
 ### Creating a recipient
 

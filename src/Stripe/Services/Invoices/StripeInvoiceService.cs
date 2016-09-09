@@ -53,6 +53,14 @@ namespace Stripe
             );
         }
 
+        public virtual IEnumerable<StripeInvoiceLineItem> ListLineItems(string invoiceId, StripeInvoiceListLineItemsOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(
+                Requestor.GetString(this.ApplyAllParameters(listOptions, $"{Urls.Invoices}/{invoiceId}/lines", true),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
         public virtual StripeInvoice Create(string customerId, StripeInvoiceCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
         {
             var url = ParameterBuilder.ApplyParameterToUrl(Urls.Invoices, "customer", customerId);
@@ -63,7 +71,6 @@ namespace Stripe
             );
         }
 
-#if !PORTABLE
         public virtual async Task<StripeInvoice> GetAsync(string invoiceId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeInvoice>.MapFromJson(
@@ -106,6 +113,14 @@ namespace Stripe
             );
         }
 
+        public virtual async Task<IEnumerable<StripeInvoiceLineItem>> ListLineItemsAsync(string invoiceId, StripeInvoiceListLineItemsOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, $"{Urls.Invoices}/{invoiceId}/lines", true),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
         public virtual async Task<StripeInvoice> CreateAsync(string customerId, StripeInvoiceCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
         {
             var url = ParameterBuilder.ApplyParameterToUrl(Urls.Invoices, "customer", customerId);
@@ -115,6 +130,5 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-#endif
     }
 }

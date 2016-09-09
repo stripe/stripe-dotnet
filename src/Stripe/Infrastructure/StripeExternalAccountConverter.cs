@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Stripe.Infrastructure
 {
-    public class StripeExternalAccountConverter : JsonConverter
+    internal class StripeExternalAccountConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {

@@ -19,7 +19,7 @@ namespace Stripe.Tests.test_data
                 ExpirationMonth = "10",
                 ExpirationYear = "2021",
                 Name = "Joe Meatballs",
-                Number = "4000000000000077",
+                Number = "4000000000000077"
             };
 
             return new StripeChargeCreateOptions()

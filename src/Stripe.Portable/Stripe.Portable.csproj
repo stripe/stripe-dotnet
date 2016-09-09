@@ -13,7 +13,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -34,6 +34,7 @@
     <DefineConstants>TRACE;PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Stripe.net.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs">
@@ -54,8 +55,14 @@
     <Compile Include="..\Stripe\Constants\StripeTransferFailureCodes.cs">
       <Link>Constants\StripeTransferFailureCodes.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Entities\CountrySpec.cs">
+      <Link>Entities\CountrySpec.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Entities\CustomerBankAccount.cs">
       <Link>Entities\CustomerBankAccount.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Entities\Source.cs">
+      <Link>Entities\Source.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Entities\StripeAccount.cs">
       <Link>Entities\StripeAccount.cs</Link>
@@ -189,6 +196,9 @@
     <Compile Include="..\Stripe\Entities\StripeTransferSchedule.cs">
       <Link>Entities\StripeTransferSchedule.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Infrastructure\Client.cs">
+      <Link>Infrastructure\Client.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Infrastructure\EpochTime.cs">
       <Link>Infrastructure\EpochTime.cs</Link>
     </Compile>
@@ -203,6 +213,9 @@
     </Compile>
     <Compile Include="..\Stripe\Infrastructure\Requestor.cs">
       <Link>Infrastructure\Requestor.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Infrastructure\SourceConverter.cs">
+      <Link>Infrastructure\SourceConverter.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Infrastructure\StripeConfiguration.cs">
       <Link>Infrastructure\StripeConfiguration.cs</Link>
@@ -288,6 +301,9 @@
     <Compile Include="..\Stripe\Services\Charges\StripeChargeUpdateOptions.cs">
       <Link>Services\Charges\StripeChargeUpdateOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\CountrySpecs\CountrySpecService.cs">
+      <Link>Services\CountrySpecs\CountrySpecService.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\Coupons\StripeCouponCreateOptions.cs">
       <Link>Services\Coupons\StripeCouponCreateOptions.cs</Link>
     </Compile>
@@ -324,6 +340,9 @@
     <Compile Include="..\Stripe\Services\Events\StripeEventUtility.cs">
       <Link>Services\Events\StripeEventUtility.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\INestedOption.cs">
+      <Link>Services\INestedOption.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\InvoiceItems\StripeInvoiceItemCreateOptions.cs">
       <Link>Services\InvoiceItems\StripeInvoiceItemCreateOptions.cs</Link>
     </Compile>
@@ -338,6 +357,9 @@
     </Compile>
     <Compile Include="..\Stripe\Services\Invoices\StripeInvoiceCreateOptions.cs">
       <Link>Services\Invoices\StripeInvoiceCreateOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\Invoices\StripeInvoiceListLineItemsOptions.cs">
+      <Link>Services\Invoices\StripeInvoiceListLineItemsOptions.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Services\Invoices\StripeInvoiceListOptions.cs">
       <Link>Services\Invoices\StripeInvoiceListOptions.cs</Link>
@@ -411,6 +433,9 @@
     <Compile Include="..\Stripe\Services\Subscriptions\StripeSubscriptionUpdateOptions.cs">
       <Link>Services\Subscriptions\StripeSubscriptionUpdateOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\Subscriptions\SubscriptionSharedOptions.cs">
+      <Link>Services\Subscriptions\SubscriptionSharedOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\Tokens\StripeTokenCreateOptions.cs">
       <Link>Services\Tokens\StripeTokenCreateOptions.cs</Link>
     </Compile>
@@ -435,38 +460,21 @@
     <Compile Include="..\Stripe\Services\_sources\SourceBankAccount.cs">
       <Link>Services\_sources\SourceBankAccount.cs</Link>
     </Compile>
-    <Compile Include="Extensions\BindingFlags.cs" />
-    <Compile Include="Extensions\ReflectionExtensions.cs" />
-    <Compile Include="Services\_sources\SourceCard.cs" />
+    <Compile Include="..\Stripe\Services\_sources\SourceCard.cs">
+      <Link>Services\_sources\SourceCard.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\_sources_token\BankAccountOptions.cs">
+      <Link>Services\_sources_token\BankAccountOptions.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.Extensions, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-  </Target>
 </Project>

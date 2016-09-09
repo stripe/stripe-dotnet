@@ -29,26 +29,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Machine.Specifications, Version=0.9.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Machine.Specifications.0.9.3\lib\net45\Machine.Specifications.dll</HintPath>
+    <Reference Include="Machine.Specifications, Version=0.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Machine.Specifications.0.11.0\lib\net45\Machine.Specifications.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Machine.Specifications.Clr4, Version=0.9.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Machine.Specifications.0.9.3\lib\net45\Machine.Specifications.Clr4.dll</HintPath>
+    <Reference Include="Machine.Specifications.Should, Version=0.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Machine.Specifications.Should.0.11.0\lib\net45\Machine.Specifications.Should.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Machine.Specifications.Should, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Machine.Specifications.Should.0.8.0\lib\net45\Machine.Specifications.Should.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +53,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs">
@@ -85,7 +83,12 @@
     <Compile Include="bank_accounts\when_updating_a_bank_account.cs" />
     <Compile Include="bank_accounts\when_creating_a_bank_account.cs" />
     <Compile Include="card\when_creating_a_card.cs" />
+    <Compile Include="charges\when_creating_a_charge_with_a_bank_account.cs" />
     <Compile Include="charges\when_refunding_and_setting_fraud_details.cs" />
+    <Compile Include="countryspecs\when_getting_a_country_spec.cs" />
+    <Compile Include="countryspecs\when_listing_country_specs.cs" />
+    <Compile Include="infrastructure\when_building_the_client.cs" />
+    <Compile Include="invoices\when_listing_invoice_line_items.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="charges\test_data\stripe_charge_update_options.cs" />
     <Compile Include="charges\when_updating_a_charge.cs" />
@@ -153,6 +156,7 @@
     <Compile Include="subscriptions\when_changing_a_subscription_plan.cs" />
     <Compile Include="subscriptions\when_creating_a_subscription.cs" />
     <Compile Include="subscriptions\when_canceling_a_subscription_and_trying_to_retrieve.cs" />
+    <Compile Include="subscriptions\when_updating_a_subscription_with_proration.cs" />
     <Compile Include="customers\when_deleting_a_customer_discount.cs" />
     <Compile Include="subscriptions\when_deleting_a_subscription_discount.cs" />
     <Compile Include="subscriptions\when_updating_a_subscription.cs" />
@@ -161,6 +165,7 @@
     <Compile Include="subscriptions\when_listing_subscriptions.cs" />
     <Compile Include="subscriptions\when_updating_trial_end_date_subscription.cs" />
     <Compile Include="subscriptions\when_updating_trial_end_of_subscription.cs" />
+    <Compile Include="tokens\when_creating_a_token_for_a_bank_account.cs" />
     <Compile Include="tokens\when_creating_a_token_with_an_api_key.cs" />
     <Compile Include="transfers\test_data\stripe_transfer_create_options.cs" />
     <Compile Include="transfers\transfer_behaviors.cs" />
@@ -168,6 +173,7 @@
     <Compile Include="transfers\when_getting_a_transfer.cs" />
     <Compile Include="transfers\when_creating_a_failed_transfer.cs" />
     <Compile Include="transfers\when_listing_transfers.cs" />
+    <Compile Include="_shared\TestSources.cs" />
     <Compile Include="_web_event_hooks\App_Code\event_hooks_handler.cs" />
     <Compile Include="invoices\when_getting_an_invoice.cs" />
     <Compile Include="invoices\when_getting_an_upcoming_invoice.cs" />

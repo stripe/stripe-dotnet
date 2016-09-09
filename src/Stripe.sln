@@ -1,13 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stripe", "Stripe\Stripe.csproj", "{E48E9AC1-3A88-406B-82FF-166B1E3C7A48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stripe.Tests", "Stripe.Tests\Stripe.Tests.csproj", "{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stripe.Portable", "Stripe.Portable\Stripe.Portable.csproj", "{41019920-B57D-4065-B9DF-1442CDAF3BAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3F91159-E7A8-4F44-9DD9-B7D76E2E7542}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\LICENSE = ..\LICENSE
+		..\readme.md = ..\readme.md
+		..\build\Stripe.net.nuspec = ..\build\Stripe.net.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

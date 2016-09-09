@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Stripe.Infrastructure
 {
-    public static class EpochTime
+    internal static class EpochTime
     {
         private static DateTime _epochStartDateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 

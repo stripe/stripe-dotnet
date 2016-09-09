@@ -15,7 +15,7 @@ namespace Stripe
         {
             if(requestOptions == null) requestOptions = new StripeRequestOptions();
 
-            if (!String.IsNullOrEmpty(ApiKey))
+            if (!string.IsNullOrEmpty(ApiKey))
                 requestOptions.ApiKey = ApiKey;
 
             return requestOptions;

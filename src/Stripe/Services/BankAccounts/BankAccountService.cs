@@ -67,7 +67,6 @@ namespace Stripe
             );
         }
 
-#if !PORTABLE
         public virtual async Task<CustomerBankAccount> CreateAsync(string customerId, BankAccountCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<CustomerBankAccount>.MapFromJson(
@@ -125,6 +124,5 @@ namespace Stripe
                 )
             );
         }
-#endif
     }
 }

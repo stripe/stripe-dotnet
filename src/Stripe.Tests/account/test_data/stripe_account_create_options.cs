@@ -15,6 +15,7 @@ namespace Stripe.Tests.test_data
                 DeclineChargeOnAvsFailure = false,
                 DeclineChargeOnCvcFailure = true,
                 DefaultCurrency = "usd",
+                Email = $"Debra{Guid.NewGuid()}@gmail.com",
 
                 ExternalCardAccount = new StripeAccountCardOptions()
                 {
@@ -53,6 +54,7 @@ namespace Stripe.Tests.test_data
                     Country = "US",
                     Currency = "usd",
                     AccountHolderType = "company",
+                    AccountHolderName = "Jayme Inc",
                     Name = "Jayme Inc",
                     RoutingNumber = "110000000"
                 }

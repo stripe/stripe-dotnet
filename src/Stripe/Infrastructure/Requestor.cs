@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
@@ -14,8 +15,10 @@ namespace Stripe
 
         static Requestor()
         {
-            HttpClient = new HttpClient();
-            Version = new AssemblyName(typeof(Requestor).GetTypeInfo().Assembly.FullName).Version.ToString(3);
+            HttpClient =
+                StripeConfiguration.HttpMessageHandler != null
+                    ? new HttpClient(StripeConfiguration.HttpMessageHandler)
+                    : new HttpClient();
         }
 
         public static string GetString(string url, StripeRequestOptions requestOptions)
@@ -46,7 +49,6 @@ namespace Stripe
             return ExecuteRequest(wr);
         }
 
-#if !PORTABLE
         public static Task<string> GetStringAsync(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
@@ -74,7 +76,6 @@ namespace Stripe
 
             return ExecuteRequestAsync(wr);
         }
-#endif
 
         internal static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions, bool useBearer = false)
         {
@@ -91,15 +92,17 @@ namespace Stripe
             else
                 request.Headers.Add("Authorization", GetAuthorizationHeaderValueBearer(requestOptions.ApiKey));
 
-            request.Headers.Add("Stripe-Version", StripeConfiguration.ApiVersion);
-
             if (requestOptions.StripeConnectAccountId != null)
                 request.Headers.Add("Stripe-Account", requestOptions.StripeConnectAccountId);
 
             if (requestOptions.IdempotencyKey != null)
                 request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
 
-            request.Headers.UserAgent.TryParseAdd($"Stripe.net {Version} (https://github.com/jaymedavis/stripe.net)");
+            request.Headers.Add("Stripe-Version", StripeConfiguration.StripeApiVersion);
+
+            var client = new Client(request);
+            client.ApplyUserAgent();
+            client.ApplyClientData();
 
             return request;
         }
@@ -150,7 +153,6 @@ namespace Stripe
             throw BuildStripeException(response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
 
-#if !PORTABLE
         private static async Task<string> ExecuteRequestAsync(HttpRequestMessage requestMessage)
         {
             var response = await HttpClient.SendAsync(requestMessage);
@@ -158,10 +160,8 @@ namespace Stripe
             if (response.IsSuccessStatusCode)
                 return await response.Content.ReadAsStringAsync();
 
-            // this is not async
-            throw BuildStripeException(response.StatusCode, requestMessage.RequestUri.AbsoluteUri, response.Content.ReadAsStringAsync().Result);
+            throw BuildStripeException(response.StatusCode, requestMessage.RequestUri.AbsoluteUri, await response.Content.ReadAsStringAsync());
         }
-#endif
 
         internal static StripeException BuildStripeException(HttpStatusCode statusCode, string requestUri, string responseContent)
         {

@@ -30,7 +30,6 @@ namespace Stripe
             );
         }
 
-#if !PORTABLE
         public virtual async Task<StripeBalance> GetAsync(StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeBalance>.MapFromJson(
@@ -53,6 +52,5 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-#endif
     }
 }
