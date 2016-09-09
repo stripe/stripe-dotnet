@@ -68,8 +68,7 @@ namespace Stripe
             var url = String.Format(Urls.SubscriptionDiscount, subscriptionId);
             return Mapper<StripeDiscountDelete>.MapFromJson(Requestor.Delete(url, SetupRequestOptions(requestOptions)));
         }
-
-#if !PORTABLE
+        
         public virtual async Task<StripeSubscription> GetAsync(string customerId, string subscriptionId, StripeRequestOptions requestOptions = null)
         {
             var url = string.Format(Urls.Subscriptions + "/{1}", customerId, subscriptionId);
@@ -127,6 +126,5 @@ namespace Stripe
             var url = String.Format(Urls.SubscriptionDiscount, subscriptionId);
             return Mapper<StripeDiscountDelete>.MapFromJson(await Requestor.DeleteAsync(url, SetupRequestOptions(requestOptions)));
         }
-#endif
     }
 }

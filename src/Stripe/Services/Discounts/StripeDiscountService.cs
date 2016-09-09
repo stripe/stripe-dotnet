@@ -21,8 +21,7 @@ namespace Stripe.Services.Discounts {
         {
             return _stripeSubscriptionService.DeleteDiscount(subscriptionId, requestOptions);
         }
-
-#if !PORTABLE
+        
         public virtual Task<StripeDiscountDelete> DeleteCustomerDiscountAsync(string customerId, StripeRequestOptions requestOptions = null) 
         {
             return _stripeCustomerService.DeleteDiscountAsync(customerId, requestOptions);
@@ -32,7 +31,6 @@ namespace Stripe.Services.Discounts {
         {
             return _stripeSubscriptionService.DeleteDiscountAsync(subscriptionId, requestOptions);
         }
-#endif
 
 
     }

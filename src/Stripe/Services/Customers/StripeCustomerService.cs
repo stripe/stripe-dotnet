@@ -54,7 +54,6 @@ namespace Stripe
             var customerUrl = string.Format(Urls.CustomerDiscount, customerId);
             return Mapper<StripeDiscountDelete>.MapFromJson(Requestor.Delete(customerUrl, SetupRequestOptions(requestOptions)));
         }
-#if !PORTABLE
         public virtual async Task<StripeCustomer> CreateAsync(StripeCustomerCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCustomer>.MapFromJson(
