@@ -4,32 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stripe.Services.Discounts {
+namespace Stripe
+{
     public class StripeDiscountService :StripeService 
     {
-        private StripeCustomerService _stripeCustomerService => new StripeCustomerService(ApiKey);
-        private StripeSubscriptionService _stripeSubscriptionService => new StripeSubscriptionService(ApiKey);
-        public StripeDiscountService(string apiKey) : base(apiKey) {}
+        public StripeDiscountService(string apiKey = null) : base(apiKey) {}
 
 
         public virtual StripeDiscountDelete DeleteCustomerDiscount(string customerId, StripeRequestOptions requestOptions = null) 
         {
-            return _stripeCustomerService.DeleteDiscount(customerId, requestOptions);
+            var customerUrl = string.Format(Urls.CustomerDiscount, customerId);
+            return Mapper<StripeDiscountDelete>.MapFromJson(Requestor.Delete(customerUrl, SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeDiscountDelete DeleteSubscriptionDiscount(string subscriptionId, StripeRequestOptions requestOptions = null) 
         {
-            return _stripeSubscriptionService.DeleteDiscount(subscriptionId, requestOptions);
+            var url = String.Format(Urls.SubscriptionDiscount, subscriptionId);
+            return Mapper<StripeDiscountDelete>.MapFromJson(Requestor.Delete(url, SetupRequestOptions(requestOptions)));
         }
         
-        public virtual Task<StripeDiscountDelete> DeleteCustomerDiscountAsync(string customerId, StripeRequestOptions requestOptions = null) 
+        public virtual async Task<StripeDiscountDelete> DeleteCustomerDiscountAsync(string customerId, StripeRequestOptions requestOptions = null) 
         {
-            return _stripeCustomerService.DeleteDiscountAsync(customerId, requestOptions);
+            var customerUrl = string.Format(Urls.CustomerDiscount, customerId);
+            return Mapper<StripeDiscountDelete>.MapFromJson(await Requestor.DeleteAsync(customerUrl, SetupRequestOptions(requestOptions)));
         }
 
-        public virtual Task<StripeDiscountDelete> DeleteSubscriptionDiscountAsync(string subscriptionId, StripeRequestOptions requestOptions = null) 
+        public virtual async Task<StripeDiscountDelete> DeleteSubscriptionDiscountAsync(string subscriptionId, StripeRequestOptions requestOptions = null) 
         {
-            return _stripeSubscriptionService.DeleteDiscountAsync(subscriptionId, requestOptions);
+            var url = String.Format(Urls.SubscriptionDiscount, subscriptionId);
+            return Mapper<StripeDiscountDelete>.MapFromJson(await Requestor.DeleteAsync(url, SetupRequestOptions(requestOptions)));
         }
 
 

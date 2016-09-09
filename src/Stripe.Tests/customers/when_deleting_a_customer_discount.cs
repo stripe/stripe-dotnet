@@ -9,13 +9,14 @@ namespace Stripe.Tests.subscriptions
 {
     public class when_deleting_a_discount 
     {
-        private static StripeCustomerService _stripeCustomerService;
+        private static StripeDiscountService _stripeDiscountService;
         private static StripeCustomer _stripeCustomer;
         private static string _createdStripeCustomerId;
         private static StripeDiscountDelete _discountDelete;
 
         Establish context = () => 
         {
+            _stripeDiscountService = new StripeDiscountService();
             var _stripePlanService = new StripePlanService();
             var _stripePlan = _stripePlanService.Create(test_data.stripe_plan_create_options.Valid());
 
@@ -27,7 +28,7 @@ namespace Stripe.Tests.subscriptions
         };
 
         Because of = () => {
-            _discountDelete = _stripeCustomerService.DeleteDiscount(_createdStripeCustomerId);
+            _discountDelete = _stripeDiscountService.DeleteCustomerDiscount(_createdStripeCustomerId);
 
             It should_be_deleted_true = () => 
             {

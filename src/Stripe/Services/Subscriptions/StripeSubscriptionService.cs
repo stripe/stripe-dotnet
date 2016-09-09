@@ -63,11 +63,6 @@ namespace Stripe
             );
         }
 
-        public virtual StripeDiscountDelete DeleteDiscount(string subscriptionId, StripeRequestOptions requestOptions = null) 
-        {
-            var url = String.Format(Urls.SubscriptionDiscount, subscriptionId);
-            return Mapper<StripeDiscountDelete>.MapFromJson(Requestor.Delete(url, SetupRequestOptions(requestOptions)));
-        }
         
         public virtual async Task<StripeSubscription> GetAsync(string customerId, string subscriptionId, StripeRequestOptions requestOptions = null)
         {
@@ -120,11 +115,6 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-
-        public virtual async Task<StripeDiscountDelete> DeleteDiscountAsync(string subscriptionId, StripeRequestOptions requestOptions = null) 
-        {
-            var url = String.Format(Urls.SubscriptionDiscount, subscriptionId);
-            return Mapper<StripeDiscountDelete>.MapFromJson(await Requestor.DeleteAsync(url, SetupRequestOptions(requestOptions)));
-        }
+        
     }
 }
