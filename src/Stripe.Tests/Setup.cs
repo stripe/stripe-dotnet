@@ -7,6 +7,12 @@ namespace Stripe.Tests
     {
         void IAssemblyContext.OnAssemblyStart()
         {
+            foreach(var pair in Environment.GetEnvironmentVariables().Keys)
+            {
+                Console.WriteLine(pair);
+                Console.WriteLine(Environment.GetEnvironmentVariables()[pair]);
+            };
+
             var apiKey = "your_test_key_here";
 
             var envKey = Environment.GetEnvironmentVariable("test_api_key");
