@@ -1,0 +1,9 @@
+version: 1.0.{build}
+branches:
+  only:
+  - source-serializer
+environment:
+  test_api_key:
+    secure: C/E3uMBx7EJPoMSE+O7DnE31d39j2CUalU56sFc6iozRRnQ/TXcaM/z3l7hi0scfhbxY9x59fDsfNbyB+0oyD1kK6dFnz2VZJGk3TAFmm3U=
+build:
+  verbosity: minimal
