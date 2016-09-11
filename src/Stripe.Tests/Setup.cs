@@ -9,13 +9,12 @@ namespace Stripe.Tests
         {
             foreach(var pair in Environment.GetEnvironmentVariables().Keys)
             {
-                Console.WriteLine(pair);
-                Console.WriteLine(Environment.GetEnvironmentVariables()[pair]);
+                Console.WriteLine(pair + " = " + Environment.GetEnvironmentVariables()[pair]);
             };
 
-            var apiKey = "your_test_key_here";
+            var apiKey = "stripe_test_secret_key";
 
-            var envKey = Environment.GetEnvironmentVariable("test_api_key");
+            var envKey = Environment.GetEnvironmentVariable("stripe_test_secret_key");
             if (!string.IsNullOrEmpty(envKey)) apiKey = envKey;
 
             StripeConfiguration.SetApiKey(apiKey);

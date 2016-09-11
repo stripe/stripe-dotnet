@@ -1,11 +1,19 @@
-version: 1.0.{build}
+environment:
+  assembly_version: 6.6.0
+  stripe_test_secret_key:
+    secure: +p/EWA8+0B64k7a88nb6ZiSTcv6TIukyhQQU2Ljf7jNVtwVZXhJtNf5LdemV7EuY
+
 branches:
   only:
   - source-serializer
-environment:
-  test_api_key:
-    secure: C/E3uMBx7EJPoMSE+O7DnE31d39j2CUalU56sFc6iozRRnQ/TXcaM/z3l7hi0scfhbxY9x59fDsfNbyB+0oyD1kK6dFnz2VZJGk3TAFmm3U=
+
 before_build:
   - nuget restore src\Stripe.sln
+
 build:
   verbosity: minimal
+
+assembly_info:
+  patch: true
+  file: src\SharedAssemblyInfo.cs
+  assembly_version: '$(assembly_version)'
