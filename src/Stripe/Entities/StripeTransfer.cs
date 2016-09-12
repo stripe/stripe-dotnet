@@ -18,7 +18,7 @@ namespace Stripe
         public int Amount { get; set; }
 
         [JsonProperty("application_fee")]
-        public int? ApplicationFee { get; set; }
+        public string ApplicationFee { get; set; }
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
