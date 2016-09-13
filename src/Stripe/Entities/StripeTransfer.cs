@@ -17,8 +17,21 @@ namespace Stripe
         [JsonProperty("amount")]
         public int Amount { get; set; }
 
+        #region Expandable Application Fee
+        public string ApplicationFeeId { get; set; }
+
+        [JsonIgnore]
+        public StripeApplicationFee ApplicationFee { get; set; }
+
         [JsonProperty("application_fee")]
-        public string ApplicationFee { get; set; }
+        internal object InternalApplicationFee
+        {
+            set
+            {
+                ExpandableProperty<StripeApplicationFee>.Map(value, s => ApplicationFeeId = s, o => ApplicationFee = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
