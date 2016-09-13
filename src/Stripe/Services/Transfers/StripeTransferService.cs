@@ -10,7 +10,7 @@ namespace Stripe
 
         public bool ExpandBalanceTransaction { get; set; }
 
-
+        public bool ExpandApplicationFee { get; set; }
 
         //Sync
         public virtual StripeTransfer Create(StripeTransferCreateOptions createOptions, StripeRequestOptions requestOptions = null)

@@ -169,7 +169,7 @@
     <Compile Include="transfers\test_data\stripe_transfer_create_options.cs" />
     <Compile Include="transfers\transfer_behaviors.cs" />
     <Compile Include="transfers\when_creating_a_transfer.cs" />
-    <Compile Include="transfers\when_getting_a_transfer.cs" />
+    <Compile Include="transfers\when_getting_a_transfer_with_application_fee.cs" />
     <Compile Include="transfers\when_creating_a_failed_transfer.cs" />
     <Compile Include="transfers\when_listing_transfers.cs" />
     <Compile Include="_shared\TestSources.cs" />
