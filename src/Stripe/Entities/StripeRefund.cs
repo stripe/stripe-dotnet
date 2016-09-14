@@ -63,5 +63,8 @@ namespace Stripe
 
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
     }
 }
