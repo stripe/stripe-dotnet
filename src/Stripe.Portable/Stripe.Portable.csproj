@@ -403,6 +403,9 @@
     <Compile Include="..\Stripe\Services\Refunds\StripeRefundCreateOptions.cs">
       <Link>Services\Refunds\StripeRefundCreateOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\Refunds\StripeRefundListOptions.cs">
+      <Link>Services\Refunds\StripeRefundListOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\Refunds\StripeRefundService.cs">
       <Link>Services\Refunds\StripeRefundService.cs</Link>
     </Compile>
