@@ -6,6 +6,9 @@ namespace Stripe
 {
     public class StripeFile : StripeObject
     {
+        [JsonProperty("object")]
+        public string Object { get; set; }
+
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }

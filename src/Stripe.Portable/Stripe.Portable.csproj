@@ -139,9 +139,6 @@
     <Compile Include="..\Stripe\Entities\StripeFile.cs">
       <Link>Entities\StripeFile.cs</Link>
     </Compile>
-    <Compile Include="..\Stripe\Entities\StripeFileUpload.cs">
-      <Link>Entities\StripeFileUpload.cs</Link>
-    </Compile>
     <Compile Include="..\Stripe\Entities\StripeInvoice.cs">
       <Link>Entities\StripeInvoice.cs</Link>
     </Compile>

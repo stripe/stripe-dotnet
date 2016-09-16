@@ -15,14 +15,14 @@ namespace Stripe
         public string DocumentId { get; set; }
 
         [JsonIgnore]
-        public StripeFileUpload Document { get; set; }
+        public StripeFile Document { get; set; }
 
         [JsonProperty("document")]
         internal object InternalDocument
         {
             set
             {
-                ExpandableProperty<StripeFileUpload>.Map(value, s => DocumentId = s, o => Document = o);
+                ExpandableProperty<StripeFile>.Map(value, s => DocumentId = s, o => Document = o);
             }
         }
         #endregion

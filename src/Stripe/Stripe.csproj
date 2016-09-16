@@ -71,7 +71,6 @@
     <Compile Include="Entities\StripeAddress.cs" />
     <Compile Include="Entities\StripeDeclineChargeOn.cs" />
     <Compile Include="Entities\StripeAdditionalOwners.cs" />
-    <Compile Include="Entities\StripeFileUpload.cs" />
     <Compile Include="Entities\StripeLegalEntityVerification.cs" />
     <Compile Include="Entities\StripeLegalEntity.cs" />
     <Compile Include="Entities\StripeOAuthDeauthorize.cs" />
