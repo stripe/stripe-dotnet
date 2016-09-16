@@ -130,8 +130,14 @@
     <Compile Include="..\Stripe\Entities\StripeEventData.cs">
       <Link>Entities\StripeEventData.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Entities\StripeEvidence.cs">
+      <Link>Entities\StripeEvidence.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Entities\StripeFee.cs">
       <Link>Entities\StripeFee.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Entities\StripeFile.cs">
+      <Link>Entities\StripeFile.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Entities\StripeFileUpload.cs">
       <Link>Entities\StripeFileUpload.cs</Link>

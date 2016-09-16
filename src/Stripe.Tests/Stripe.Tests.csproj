@@ -88,6 +88,8 @@
     <Compile Include="charges\when_refunding_and_setting_fraud_details.cs" />
     <Compile Include="countryspecs\when_getting_a_country_spec.cs" />
     <Compile Include="countryspecs\when_listing_country_specs.cs" />
+    <Compile Include="disputes\test_data\stripe_dispute_options.cs" />
+    <Compile Include="disputes\when_creating_a_disputed_charge.cs" />
     <Compile Include="infrastructure\when_building_the_client.cs" />
     <Compile Include="invoices\when_listing_invoice_line_items.cs" />
     <Compile Include="Setup.cs" />
@@ -98,7 +100,6 @@
     <Compile Include="charges\charge_behaviors.cs" />
     <Compile Include="charges\when_capturing_a_charge_with_a_card.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_customer_expanded.cs" />
-    <Compile Include="charges\when_getting_a_disputed_charge.cs" />
     <Compile Include="charges\when_listing_charges_with_expanded_properties.cs" />
     <Compile Include="charges\when_listing_charges_with_paging.cs" />
     <Compile Include="charges\when_setting_a_charge_to_capture.cs" />
@@ -172,7 +173,6 @@
     <Compile Include="transfers\when_getting_a_transfer_with_application_fee.cs" />
     <Compile Include="transfers\when_creating_a_failed_transfer.cs" />
     <Compile Include="transfers\when_listing_transfers.cs" />
-    <Compile Include="_shared\TestSources.cs" />
     <Compile Include="_web_event_hooks\App_Code\event_hooks_handler.cs" />
     <Compile Include="invoices\when_getting_an_invoice.cs" />
     <Compile Include="invoices\when_getting_an_upcoming_invoice.cs" />

@@ -13,7 +13,7 @@ namespace Stripe.Tests
             _stripeTokenService = new StripeTokenService();
             _stripeTokenCreateOptions = new StripeTokenCreateOptions()
             {
-                BankAccount = TestSources.ValidBankAccountOptions()
+                BankAccount = test_data.bank_account_create_options.ValidBankAccountOptions()
             };
         };
 

@@ -49,7 +49,9 @@ namespace Stripe
         [JsonProperty("balance_transactions")]
         public List<StripeBalanceTransaction> BalanceTransactions { get; set; }
 
-        // needs evidence object
+        [JsonProperty("evidence")]
+        public StripeEvidence Evidence { get; set; }
+
         // needs evidence_details
 
         [JsonProperty("is_charge_refundable")]
