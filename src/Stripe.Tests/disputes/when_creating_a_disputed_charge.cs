@@ -62,5 +62,21 @@ namespace Stripe.Tests
 
         It should_have_the_right_customer_name_on_dispute_evidence = () =>
             _disputedCharge.Dispute.Evidence.CustomerName.ShouldEqual(_disputedOptions.SourceCard.Name);
+
+        It should_have_disputed_evidence_details_defined = () =>
+            _disputedCharge.Dispute.EvidenceDetails.ShouldNotBeNull();
+
+        // this isn't always present, but with the test card it is
+        It should_have_the_disputed_evidence_details_dueby = () =>
+            _disputedCharge.Dispute.EvidenceDetails.DueBy.ShouldNotBeNull();
+
+        It should_have_the_disputed_evidence_details_hasevidence_as_false = () =>
+            _disputedCharge.Dispute.EvidenceDetails.HasEvidence.ShouldBeFalse();
+
+        It should_have_the_disputed_evidence_details_pastdue_as_false = () =>
+            _disputedCharge.Dispute.EvidenceDetails.PastDue.ShouldBeFalse();
+
+        It should_have_the_disputed_evidence_details_submissioncount_as_zero = () =>
+            _disputedCharge.Dispute.EvidenceDetails.SubmissionCount.ShouldEqual(0);
     }
 }

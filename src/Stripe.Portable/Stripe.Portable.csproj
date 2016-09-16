@@ -133,6 +133,9 @@
     <Compile Include="..\Stripe\Entities\StripeEvidence.cs">
       <Link>Entities\StripeEvidence.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Entities\StripeEvidenceDetails.cs">
+      <Link>Entities\StripeEvidenceDetails.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Entities\StripeFee.cs">
       <Link>Entities\StripeFee.cs</Link>
     </Compile>

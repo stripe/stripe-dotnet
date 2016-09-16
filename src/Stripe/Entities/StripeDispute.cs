@@ -52,7 +52,8 @@ namespace Stripe
         [JsonProperty("evidence")]
         public StripeEvidence Evidence { get; set; }
 
-        // needs evidence_details
+        [JsonProperty("evidence_details")]
+        public StripeEvidenceDetails EvidenceDetails { get; set; }
 
         [JsonProperty("is_charge_refundable")]
         public bool IsChargeRefundable { get; set; }
