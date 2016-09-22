@@ -15,14 +15,14 @@ namespace Stripe
         public string CancellationPolicyFileId { get; set; }
 
         [JsonIgnore]
-        public StripeFile CancellationPolicyFile { get; set; }
+        public StripeFileUpload CancellationPolicyFile { get; set; }
 
         [JsonProperty("cancellation_policy")]
         internal object InternalCancellationPolicy
         {
             set
             {
-                ExpandableProperty<StripeFile>.Map(value, s => CancellationPolicyFileId = s, o => CancellationPolicyFile = o);
+                ExpandableProperty<StripeFileUpload>.Map(value, s => CancellationPolicyFileId = s, o => CancellationPolicyFile = o);
             }
         }
         #endregion
@@ -37,14 +37,14 @@ namespace Stripe
         public string CustomerCommunicationFileId { get; set; }
 
         [JsonIgnore]
-        public StripeFile CustomerCommunicationFile { get; set; }
+        public StripeFileUpload CustomerCommunicationFile { get; set; }
 
         [JsonProperty("customer_communication")]
         internal object InternalCustomerCommunication
         {
             set
             {
-                ExpandableProperty<StripeFile>.Map(value, s => CustomerCommunicationFileId = s, o => CustomerCommunicationFile = o);
+                ExpandableProperty<StripeFileUpload>.Map(value, s => CustomerCommunicationFileId = s, o => CustomerCommunicationFile = o);
             }
         }
         #endregion
@@ -62,14 +62,14 @@ namespace Stripe
         public string CustomerSignatureFileId { get; set; }
 
         [JsonIgnore]
-        public StripeFile CustomerSignatureFile { get; set; }
+        public StripeFileUpload CustomerSignatureFile { get; set; }
 
         [JsonProperty("customer_signature")]
         internal object InternalCustomerSignatureFile
         {
             set
             {
-                ExpandableProperty<StripeFile>.Map(value, s => CustomerSignatureFileId = s, o => CustomerSignatureFile = o);
+                ExpandableProperty<StripeFileUpload>.Map(value, s => CustomerSignatureFileId = s, o => CustomerSignatureFile = o);
             }
         }
         #endregion
@@ -78,14 +78,14 @@ namespace Stripe
         public string DuplicateChargeDocumentationFileId { get; set; }
 
         [JsonIgnore]
-        public StripeFile DuplicateChargeDocumentationFile { get; set; }
+        public StripeFileUpload DuplicateChargeDocumentationFile { get; set; }
 
         [JsonProperty("duplicate_charge_documentation")]
         internal object InternalDuplicateChargeDocumentationFile
         {
             set
             {
-                ExpandableProperty<StripeFile>.Map(value, s => DuplicateChargeDocumentationFileId = s, o => DuplicateChargeDocumentationFile = o);
+                ExpandableProperty<StripeFileUpload>.Map(value, s => DuplicateChargeDocumentationFileId = s, o => DuplicateChargeDocumentationFile = o);
             }
         }
         #endregion
@@ -103,14 +103,14 @@ namespace Stripe
         public string ReceiptFileId { get; set; }
 
         [JsonIgnore]
-        public StripeFile ReceiptFile { get; set; }
+        public StripeFileUpload ReceiptFile { get; set; }
 
         [JsonProperty("receipt")]
         internal object InternalReceiptFile
         {
             set
             {
-                ExpandableProperty<StripeFile>.Map(value, s => ReceiptFileId = s, o => ReceiptFile = o);
+                ExpandableProperty<StripeFileUpload>.Map(value, s => ReceiptFileId = s, o => ReceiptFile = o);
             }
         }
         #endregion
@@ -119,14 +119,14 @@ namespace Stripe
         public string RefundPolicyFileId { get; set; }
 
         [JsonIgnore]
-        public StripeFile RefundPolicyFile { get; set; }
+        public StripeFileUpload RefundPolicyFile { get; set; }
 
         [JsonProperty("refund_policy")]
         internal object InternalRefundPolicyFile
         {
             set
             {
-                ExpandableProperty<StripeFile>.Map(value, s => RefundPolicyFileId = s, o => RefundPolicyFile = o);
+                ExpandableProperty<StripeFileUpload>.Map(value, s => RefundPolicyFileId = s, o => RefundPolicyFile = o);
             }
         }
         #endregion
@@ -144,14 +144,14 @@ namespace Stripe
         public string ServiceDocumentationFileId { get; set; }
 
         [JsonIgnore]
-        public StripeFile ServiceDocumentationFile { get; set; }
+        public StripeFileUpload ServiceDocumentationFile { get; set; }
 
         [JsonProperty("service_documentation")]
         internal object InternalServiceDocumentationFile
         {
             set
             {
-                ExpandableProperty<StripeFile>.Map(value, s => ServiceDocumentationFileId = s, o => ServiceDocumentationFile = o);
+                ExpandableProperty<StripeFileUpload>.Map(value, s => ServiceDocumentationFileId = s, o => ServiceDocumentationFile = o);
             }
         }
         #endregion
@@ -169,14 +169,14 @@ namespace Stripe
         public string ShippingDocumentationFileId { get; set; }
 
         [JsonIgnore]
-        public StripeFile ShippingDocumentationFile { get; set; }
+        public StripeFileUpload ShippingDocumentationFile { get; set; }
 
         [JsonProperty("shipping_documentation")]
         internal object InternalShippingDocumentationFile
         {
             set
             {
-                ExpandableProperty<StripeFile>.Map(value, s => ShippingDocumentationFileId = s, o => ShippingDocumentationFile = o);
+                ExpandableProperty<StripeFileUpload>.Map(value, s => ShippingDocumentationFileId = s, o => ShippingDocumentationFile = o);
             }
         }
         #endregion
@@ -188,14 +188,14 @@ namespace Stripe
         public string UncategorizedFileId { get; set; }
 
         [JsonIgnore]
-        public StripeFile UncategorizedFile { get; set; }
+        public StripeFileUpload UncategorizedFile { get; set; }
 
         [JsonProperty("uncategorized_file")]
         internal object InternalUncategorizedFile
         {
             set
             {
-                ExpandableProperty<StripeFile>.Map(value, s => UncategorizedFileId = s, o => UncategorizedFile = o);
+                ExpandableProperty<StripeFileUpload>.Map(value, s => UncategorizedFileId = s, o => UncategorizedFile = o);
             }
         }
         #endregion

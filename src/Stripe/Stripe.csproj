@@ -59,12 +59,13 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Constants\BankAccountHolderType.cs" />
+    <Compile Include="Constants\StripeFilePurpose.cs" />
     <Compile Include="Entities\CustomerBankAccount.cs" />
     <Compile Include="Entities\Source.cs" />
     <Compile Include="Entities\CountrySpec.cs" />
     <Compile Include="Entities\StripeDeleted.cs" />
     <Compile Include="Entities\StripeEvidenceDetails.cs" />
-    <Compile Include="Entities\StripeFile.cs" />
+    <Compile Include="Entities\StripeFileUpload.cs" />
     <Compile Include="Entities\StripeEvidence.cs" />
     <Compile Include="Entities\StripeManagedAccountKeys.cs" />
     <Compile Include="Constants\StripeSubscriptionStatuses.cs" />
@@ -87,10 +88,12 @@
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
     <Compile Include="Entities\StripeTransferReversal.cs" />
     <Compile Include="Constants\StripeRefundReasons.cs" />
+    <Compile Include="Infrastructure\MimeTypes.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Infrastructure\Client.cs" />
     <Compile Include="Infrastructure\SourceConverter.cs" />
     <Compile Include="Services\CountrySpecs\CountrySpecService.cs" />
+    <Compile Include="Services\FileUploads\StripeFileUploadService.cs" />
     <Compile Include="Services\INestedOption.cs" />
     <Compile Include="Infrastructure\StripeExternalAccountConverter.cs" />
     <Compile Include="Services\Account\StripeAccountBankAccountOptions.cs" />

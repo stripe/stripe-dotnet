@@ -45,5 +45,9 @@
         public static string OAuthDeauthorize => BaseConnectUrl + "/oauth/deauthorize";
 
         private static string BaseConnectUrl => "https://connect.stripe.com";
+
+        private static string BaseUploadsUrl => "https://uploads.stripe.com/v1";
+
+        public static string FileUploads => BaseUploadsUrl + "/files";
     }
 }

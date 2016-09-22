@@ -90,6 +90,7 @@
     <Compile Include="countryspecs\when_listing_country_specs.cs" />
     <Compile Include="disputes\test_data\stripe_dispute_options.cs" />
     <Compile Include="disputes\when_creating_a_disputed_charge.cs" />
+    <Compile Include="fileuploads\when_creating_a_file_upload.cs" />
     <Compile Include="infrastructure\when_building_the_client.cs" />
     <Compile Include="invoices\when_listing_invoice_line_items.cs" />
     <Compile Include="Setup.cs" />
@@ -229,6 +230,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="fileuploads\test_data\logo.png" />
     <Content Include="infrastructure\test_data\transfer.json" />
     <Content Include="infrastructure\test_data\charge.json" />
     <Content Include="infrastructure\test_data\card.json" />
