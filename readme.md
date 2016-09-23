@@ -15,6 +15,7 @@
 [Events](#events)  
 [Errors](#errors)  
 [Expandable Properties](#expandable-properties)  
+[File Uploads](#file-uploads)
 [Invoices](#invoices)  
 [Invoice Items](#invoice-items)  
 [Plans](#plans)  
