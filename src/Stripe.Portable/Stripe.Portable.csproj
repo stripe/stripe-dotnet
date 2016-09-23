@@ -346,6 +346,9 @@
     <Compile Include="..\Stripe\Services\Events\StripeEventUtility.cs">
       <Link>Services\Events\StripeEventUtility.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\FileUploads\StripeFileUploadListOptions.cs">
+      <Link>Services\FileUploads\StripeFileUploadListOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\FileUploads\StripeFileUploadService.cs">
       <Link>Services\FileUploads\StripeFileUploadService.cs</Link>
     </Compile>

@@ -19,98 +19,56 @@ namespace Stripe
             );
         }
 
-        //public virtual StripeCharge Update(string chargeId, StripeChargeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
-        //{
-        //    return Mapper<StripeCharge>.MapFromJson(
-        //        Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
-        //        SetupRequestOptions(requestOptions))
-        //    );
-        //}
+        public virtual StripeFileUpload Get(string fileUploadId, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeFileUpload>.MapFromJson(
+                Requestor.GetString(
+                    this.ApplyAllParameters(null, $"{Urls.FileUploads}/{fileUploadId}"),
+                    SetupRequestOptions(requestOptions)
+                )
+            );
+        }
 
-        //public virtual StripeCharge Get(string chargeId, StripeRequestOptions requestOptions = null)
-        //{
-        //    return Mapper<StripeCharge>.MapFromJson(
-        //        Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
-        //        SetupRequestOptions(requestOptions))
-        //    );
-        //}
-
-        //public virtual IEnumerable<StripeCharge> List(StripeChargeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
-        //{
-        //    return Mapper<StripeCharge>.MapCollectionFromJson(
-        //        Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Charges, true),
-        //        SetupRequestOptions(requestOptions))
-        //    );
-        //}
-
-        //public virtual StripeCharge Capture(string chargeId, int? captureAmount = null, int? applicationFee = null, StripeRequestOptions requestOptions = null)
-        //{
-        //    var url = this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}/capture", false);
-
-        //    if (captureAmount.HasValue)
-        //        url = ParameterBuilder.ApplyParameterToUrl(url, "amount", captureAmount.Value.ToString());
-        //    if (applicationFee.HasValue)
-        //        url = ParameterBuilder.ApplyParameterToUrl(url, "application_fee", applicationFee.Value.ToString());
-
-        //    return Mapper<StripeCharge>.MapFromJson(
-        //        Requestor.PostString(url,
-        //        SetupRequestOptions(requestOptions))
-        //    );
-        //}
+        public virtual IEnumerable<StripeFileUpload> List(StripeFileUploadListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeFileUpload>.MapCollectionFromJson(
+                Requestor.GetString(
+                    this.ApplyAllParameters(listOptions, Urls.FileUploads, true),
+                    SetupRequestOptions(requestOptions)
+                )
+            );
+        }
 
 
 
         //Async
-        //public virtual async Task<StripeCharge> CreateAsync(StripeChargeCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        //{
-        //    return Mapper<StripeCharge>.MapFromJson(
-        //        await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.Charges, false),
-        //        SetupRequestOptions(requestOptions),
-        //        cancellationToken)
-        //    );
-        //}
+        public virtual async Task<StripeFileUpload> CreateAsync(string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return Mapper<StripeFileUpload>.MapFromJson(
+                await Requestor.PostFileAsync(Urls.FileUploads, fileName, fileStream, purpose, SetupRequestOptions(requestOptions), cancellationToken)
+            );
+        }
 
-        //public virtual async Task<StripeCharge> UpdateAsync(string chargeId, StripeChargeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        //{
-        //    return Mapper<StripeCharge>.MapFromJson(
-        //        await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
-        //        SetupRequestOptions(requestOptions),
-        //        cancellationToken)
-        //    );
-        //}
+        public virtual async Task<StripeFileUpload> GetAsync(string fileUploadId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return Mapper<StripeFileUpload>.MapFromJson(
+                await Requestor.GetStringAsync(
+                    this.ApplyAllParameters(null, $"{Urls.FileUploads}/{fileUploadId}"),
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken
+                )
+            );
+        }
 
-        //public virtual async Task<StripeCharge> GetAsync(string chargeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        //{
-        //    return Mapper<StripeCharge>.MapFromJson(
-        //        await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
-        //        SetupRequestOptions(requestOptions),
-        //        cancellationToken)
-        //    );
-        //}
-
-        //public virtual async Task<IEnumerable<StripeCharge>> ListAsync(StripeChargeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        //{
-        //    return Mapper<StripeCharge>.MapCollectionFromJson(
-        //        await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Charges, true),
-        //        SetupRequestOptions(requestOptions),
-        //        cancellationToken)
-        //    );
-        //}
-
-        //public virtual async Task<StripeCharge> CaptureAsync(string chargeId, int? captureAmount = null, int? applicationFee = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        //{
-        //    var url = this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}/capture", false);
-
-        //    if (captureAmount.HasValue)
-        //        url = ParameterBuilder.ApplyParameterToUrl(url, "amount", captureAmount.Value.ToString());
-        //    if (applicationFee.HasValue)
-        //        url = ParameterBuilder.ApplyParameterToUrl(url, "application_fee", applicationFee.Value.ToString());
-
-        //    return Mapper<StripeCharge>.MapFromJson(
-        //        await Requestor.PostStringAsync(url,
-        //        SetupRequestOptions(requestOptions),
-        //        cancellationToken)
-        //    );
-        //}
+        public virtual async Task<IEnumerable<StripeFileUpload>> ListAsync(StripeFileUploadListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return Mapper<StripeFileUpload>.MapCollectionFromJson(
+                await Requestor.GetStringAsync(
+                    this.ApplyAllParameters(listOptions, Urls.FileUploads, true),
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken
+                )
+            );
+        }
     }
 }

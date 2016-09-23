@@ -104,7 +104,16 @@ namespace Stripe
 
             return ExecuteRequestAsync(wr, cancellationToken);
         }
-        
+
+        public static Task<string> PostFileAsync(string url, string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
+
+            ApplyMultiPartFileToRequest(wr, fileName, fileStream, purpose);
+
+            return ExecuteRequestAsync(wr, cancellationToken);
+        }
+
         private static async Task<string> ExecuteRequestAsync(HttpRequestMessage requestMessage, CancellationToken cancellationToken = default(CancellationToken))
         {
             var response = await HttpClient.SendAsync(requestMessage, cancellationToken);

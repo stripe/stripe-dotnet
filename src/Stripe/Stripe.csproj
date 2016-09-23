@@ -93,6 +93,7 @@
     <Compile Include="Infrastructure\Client.cs" />
     <Compile Include="Infrastructure\SourceConverter.cs" />
     <Compile Include="Services\CountrySpecs\CountrySpecService.cs" />
+    <Compile Include="Services\FileUploads\StripeFileUploadListOptions.cs" />
     <Compile Include="Services\FileUploads\StripeFileUploadService.cs" />
     <Compile Include="Services\INestedOption.cs" />
     <Compile Include="Infrastructure\StripeExternalAccountConverter.cs" />

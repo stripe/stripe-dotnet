@@ -90,7 +90,9 @@
     <Compile Include="countryspecs\when_listing_country_specs.cs" />
     <Compile Include="disputes\test_data\stripe_dispute_options.cs" />
     <Compile Include="disputes\when_creating_a_disputed_charge.cs" />
+    <Compile Include="fileuploads\when_getting_a_file_upload.cs" />
     <Compile Include="fileuploads\when_creating_a_file_upload.cs" />
+    <Compile Include="fileuploads\when_listing_fileuploads.cs" />
     <Compile Include="infrastructure\when_building_the_client.cs" />
     <Compile Include="invoices\when_listing_invoice_line_items.cs" />
     <Compile Include="Setup.cs" />
