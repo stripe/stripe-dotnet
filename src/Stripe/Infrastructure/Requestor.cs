@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -51,7 +53,16 @@ namespace Stripe
 
             return ExecuteRequest(wr);
         }
-        
+
+        public static string PostFile(string url, string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions)
+        {
+            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
+
+            ApplyMultiPartFileToRequest(wr, fileName, fileStream, purpose);
+
+            return ExecuteRequest(wr);
+        }
+
         private static string ExecuteRequest(HttpRequestMessage requestMessage)
         {
             var response = HttpClient.SendAsync(requestMessage).Result;
@@ -93,7 +104,16 @@ namespace Stripe
 
             return ExecuteRequestAsync(wr, cancellationToken);
         }
-        
+
+        public static Task<string> PostFileAsync(string url, string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
+
+            ApplyMultiPartFileToRequest(wr, fileName, fileStream, purpose);
+
+            return ExecuteRequestAsync(wr, cancellationToken);
+        }
+
         private static async Task<string> ExecuteRequestAsync(HttpRequestMessage requestMessage, CancellationToken cancellationToken = default(CancellationToken))
         {
             var response = await HttpClient.SendAsync(requestMessage, cancellationToken);
@@ -167,6 +187,29 @@ namespace Stripe
         private static string GetAuthorizationHeaderValueBearer(string apiKey)
         {
             return $"Bearer {apiKey}";
+        }
+
+        private static void ApplyMultiPartFileToRequest(HttpRequestMessage requestMessage, string fileName, Stream fileStream, string purpose)
+        {
+            requestMessage.Headers.ExpectContinue = true;
+
+            var fileContent = new StreamContent(fileStream);
+            fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+            {
+                Name = "\"file\"",
+                FileName = $"\"{fileName}\""
+            };
+
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue(MimeTypes.GetMimeType(fileName));
+
+            var multiPartContent =
+                new MultipartFormDataContent($"----------Upload: {DateTime.UtcNow.Ticks.ToString("x")}")
+                {
+                    { new StringContent(purpose), "\"purpose\"" },
+                    fileContent
+                };
+
+            requestMessage.Content = multiPartContent;
         }
 
         private static StripeException BuildStripeException(HttpStatusCode statusCode, string requestUri, string responseContent)

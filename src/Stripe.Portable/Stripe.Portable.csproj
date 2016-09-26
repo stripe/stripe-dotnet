@@ -130,6 +130,12 @@
     <Compile Include="..\Stripe\Entities\StripeEventData.cs">
       <Link>Entities\StripeEventData.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Entities\StripeEvidence.cs">
+      <Link>Entities\StripeEvidence.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Entities\StripeEvidenceDetails.cs">
+      <Link>Entities\StripeEvidenceDetails.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Entities\StripeFee.cs">
       <Link>Entities\StripeFee.cs</Link>
     </Compile>
@@ -207,6 +213,9 @@
     </Compile>
     <Compile Include="..\Stripe\Infrastructure\Mapper.cs">
       <Link>Infrastructure\Mapper.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Infrastructure\MimeTypes.cs">
+      <Link>Infrastructure\MimeTypes.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Infrastructure\ParameterBuilder.cs">
       <Link>Infrastructure\ParameterBuilder.cs</Link>
@@ -336,6 +345,12 @@
     </Compile>
     <Compile Include="..\Stripe\Services\Events\StripeEventUtility.cs">
       <Link>Services\Events\StripeEventUtility.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\FileUploads\StripeFileUploadListOptions.cs">
+      <Link>Services\FileUploads\StripeFileUploadListOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\FileUploads\StripeFileUploadService.cs">
+      <Link>Services\FileUploads\StripeFileUploadService.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Services\INestedOption.cs">
       <Link>Services\INestedOption.cs</Link>

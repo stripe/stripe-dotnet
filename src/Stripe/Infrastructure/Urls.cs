@@ -24,6 +24,8 @@
 
         public static string CountrySpecs => BaseUrl + "/country_specs";
 
+        public static string Disputes => BaseUrl + "/disputes";
+
         public static string RecipientCards => BaseUrl + "/recipients/{0}/cards";
 
         public static string Events => BaseUrl + "/events";
@@ -45,5 +47,9 @@
         public static string OAuthDeauthorize => BaseConnectUrl + "/oauth/deauthorize";
 
         private static string BaseConnectUrl => "https://connect.stripe.com";
+
+        private static string BaseUploadsUrl => "https://uploads.stripe.com/v1";
+
+        public static string FileUploads => BaseUploadsUrl + "/files";
     }
 }

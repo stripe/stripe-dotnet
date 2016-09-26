@@ -15,6 +15,7 @@
 [Events](#events)  
 [Errors](#errors)  
 [Expandable Properties](#expandable-properties)  
+[File Uploads](#file-uploads)
 [Invoices](#invoices)  
 [Invoice Items](#invoice-items)  
 [Plans](#plans)  
@@ -725,6 +726,37 @@ You can also specify Metadata, RefundApplicationFee (Connect Only), and ReverseT
 ```
 
 StripeRefundListOptions supports ChargeId and [StripeListOptions](#stripelistoptions-paging) for paging
+
+File Uploads
+------------
+
+### Creating a file upload
+
+When setting the Purpose of a file, all available options are listed as constants in [StripeFilePurpose](src/Stripe/Constants/StripeFilePurpose.cs).
+
+```csharp
+	var fileService = new StripeFileUploadService();
+
+	StripeFileUpload file = _fileService.Create("logo.png", *fileStream*, StripeFilePurpose.BusinessLogo);
+```
+
+In order to determine the mime type, your filename must end with one of the following extensions: jpeg, jpg, pdf, or png.
+
+### Retrieving a file upload
+
+```csharp
+	var fileService = new StripeFileUploadService();
+	StripeRefund refund = fileService.Get(*fileUploadId*);
+```
+
+### List all file uploads
+
+```csharp
+	var fileService = new StripeFileUploadService();
+	IEnumerable<StripeFileUpload> response = fileService.List(); // optional StripeFileUploadListOptions
+```
+
+StripeFileUploadListOptions supports a Purpose, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
 Invoices
 --------
