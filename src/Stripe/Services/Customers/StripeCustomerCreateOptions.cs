@@ -41,6 +41,9 @@ namespace Stripe
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
+        [JsonProperty("validate")]
+        public bool? Validate { get; set; }
+
         #region Trial End
 
         public DateTime? TrialEnd { get; set; }
