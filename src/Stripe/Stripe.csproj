@@ -61,6 +61,7 @@
     <Compile Include="Constants\BankAccountHolderType.cs" />
     <Compile Include="Constants\StripeFilePurpose.cs" />
     <Compile Include="Entities\CustomerBankAccount.cs" />
+    <Compile Include="Entities\StripeDiscountDelete.cs" />
     <Compile Include="Entities\Source.cs" />
     <Compile Include="Entities\CountrySpec.cs" />
     <Compile Include="Entities\StripeDeleted.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Services\BankAccounts\BankAccountCreateOptions.cs" />
     <Compile Include="Services\Charges\StripeChargeUpdateOptions.cs" />
     <Compile Include="Services\Coupons\StripeCouponUpdateOptions.cs" />
+    <Compile Include="Services\Discounts\StripeDiscountService.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceListLineItemsOptions.cs" />
     <Compile Include="Services\Invoices\StripeUpcomingInvoiceOptions.cs" />
     <Compile Include="Services\Refunds\StripeRefundCreateOptions.cs" />
@@ -210,5 +212,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

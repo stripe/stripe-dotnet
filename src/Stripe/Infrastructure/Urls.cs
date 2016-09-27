@@ -6,6 +6,10 @@
 
         public static string InvoiceItems => BaseUrl + "/invoiceitems";
 
+        public static string CustomerDiscount => BaseUrl + "/customers/{0}/discount";
+
+        public static string SubscriptionDiscount => BaseUrl + "/subscriptions/{0}/discount";
+
         public static string Tokens => BaseUrl + "/tokens";
 
         public static string Charges => BaseUrl + "/charges";
