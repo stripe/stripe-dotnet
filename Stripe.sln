@@ -4,12 +4,12 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3F91159-E7A8-4F44-9DD9-B7D76E2E7542}"
 	ProjectSection(SolutionItems) = preProject
-		..\.gitattributes = ..\.gitattributes
-		..\.gitignore = ..\.gitignore
-		..\appveyor.yml = ..\appveyor.yml
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		appveyor.yml = appveyor.yml
 		global.json = global.json
-		..\LICENSE = ..\LICENSE
-		..\readme.md = ..\readme.md
+		LICENSE = LICENSE
+		readme.md = readme.md
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Stripe.Tests", "test\Stripe.Tests\Stripe.Tests.xproj", "{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}"
