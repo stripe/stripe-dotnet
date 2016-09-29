@@ -15,7 +15,7 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        [Obsolete("User Destination or Connect instead.")]
+        [Obsolete("Use Destination or Connect instead.")]
         [JsonProperty("recipient")]
         public string Recipient { get; set; }
 

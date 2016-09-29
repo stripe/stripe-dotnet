@@ -1,4 +1,5 @@
-![Stripe](https://stripe.com/img/navigation/logo.png?2)
+![Stripe](https://stripe.com/img/navigation/logo.png?2)  
+[![Build status](https://ci.appveyor.com/api/projects/status/5kje1md0hltqfpyh/branch/master?svg=true)](https://ci.appveyor.com/project/JaymeDavis/stripe-net/branch/master)
 
 [Accounts](#accounts)  
 [Application Fees](#application-fees)  
@@ -14,10 +15,12 @@
 [Events](#events)  
 [Errors](#errors)  
 [Expandable Properties](#expandable-properties)  
+[File Uploads](#file-uploads)
 [Invoices](#invoices)  
 [Invoice Items](#invoice-items)  
 [Plans](#plans)  
 [Recipients](#recipients)  
+[Refunds](#refunds)  
 [Subscriptions](#subscriptions)  
 [Tokens](#tokens)  
 [Transfers](#transfers)  
@@ -63,6 +66,8 @@ d) In any of the service calls, you can pass a [StripeRequestOptions](#stripereq
 	var planService = new StripePlanService();
 	planService.Get(*planId*, new StripeRequestOptions() { ApiKey = "[your api key here]" });
 ```
+
+** If you are using Xamarin/Mono, you may want to provide your own HttpMessageHandler. You can do so by passing an instance to StripeConfiguration.HttpMessageHandler on your application's startup. See [this thread](https://github.com/jaymedavis/stripe.net/issues/567) for details.
 
 Examples Below!
 
@@ -249,14 +254,14 @@ With a token:
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Create(myCustomer);
 ```
-    
+
 With a card:
 
 ```csharp
 	var myCustomer = new StripeCustomerCreateOptions();
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
-    
+
 	// setting up the card
 	myCustomer.SourceCard = new SourceCard()
 	{
@@ -308,7 +313,7 @@ With a card:
 	var myCustomer = new StripeCustomerUpdateOptions();
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
-    
+
 	// setting up the card
 	myCustomer.Source = new SourceCard()
 	{
@@ -333,7 +338,7 @@ With a card:
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Update(*customerId*, myCustomer);
 ```
-    
+
 If you want to set the default source, just add:
 
 ```csharp
@@ -417,16 +422,16 @@ With a token:
 ```csharp
 	var myCard = new StripeCardCreateOptions();
 
-    myCard.SourceToken = *tokenId*;
+	myCard.SourceToken = *tokenId*;
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
 ```
-    
+
 With a card:
 
 ```csharp
-    var myCard = new StripeCardCreateOptions();
+	var myCard = new StripeCardCreateOptions();
 
 	// setting up the card
 	myCard.SourceCard = new SourceCard()
@@ -443,8 +448,8 @@ With a card:
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
 	};
-    
-    var cardService = new StripeCardService();
+
+	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
 ```
 
@@ -500,43 +505,43 @@ When creating a bank account you can use either bank account details or a token 
 With a token:
 
 ```csharp
-    var myBankAccount = new BankAccountCreateOptions();
+	var myBankAccount = new BankAccountCreateOptions();
 
-    myBankAccount.SourceToken = *tokenId*;
+	myBankAccount.SourceToken = *tokenId*;
 
-    var bankAccountService = new BankAccountService();
+	var bankAccountService = new BankAccountService();
 	CustomerBankAccount bankAccount = bankAccountService.Create(*customerId*, myBankAccount);
 ```
     
 With a bank account:
 
 ```csharp
-    var myBankAccount = new BankAccountCreateOptions
-    {
-        SourceBankAccount = new SourceBankAccount()
-        {
-            AccountNumber = "000123456789",
-            Country = "US",
-            Currency = "usd",
-            AccountHolderName = "Frank",
-            AccountHolderType = BankAccountHolderType.Company,
-            RoutingNumber = "110000000",
-            Metadata = new Dictionary<string, string>
-            {
-                { "Name", "Ray Barone" },
-                { "OftenSays", "Thatttttt's right" }
-            }
-        }
-    };
+	var myBankAccount = new BankAccountCreateOptions
+	{
+		SourceBankAccount = new SourceBankAccount()
+		{
+			AccountNumber = "000123456789",
+			Country = "US",
+			Currency = "usd",
+			AccountHolderName = "Frank",
+			AccountHolderType = BankAccountHolderType.Company,
+			RoutingNumber = "110000000",
+			Metadata = new Dictionary<string, string>
+			{
+				{ "Name", "Ray Barone" },
+				{ "OftenSays", "Thatttttt's right" }
+			}
+		}
+	};
 
-    var bankAccountService = new BankAccountService();
+	var bankAccountService = new BankAccountService();
 	CustomerBankAccount bankAccount = bankAccountService.Create(*customerId*, myBankAccount);
 ```
 
 ### Retrieving a bank account
 
 ```csharp
-    var bankAccountService = new BankAccountService();
+	var bankAccountService = new BankAccountService();
 	CustomerBankAccount bankAccount = bankAccountService.Get(*customerId*, *bankAccountId*);
 ```
 
@@ -544,31 +549,31 @@ With a bank account:
 
 ```csharp
 	var myBankAccount = new BankAccountUpdateOptions()
-    {
-        AccountHolderName = "Robert",
-        AccountHolderType = BankAccountHolderType.Individual,
-        Metadata = new Dictionary<string, string>()
-        {
-            { "Name", "Frank Barone" },
-            { "OftenSays", "Holy Crap" }
-        }
-    };
+	{
+		AccountHolderName = "Robert",
+		AccountHolderType = BankAccountHolderType.Individual,
+		Metadata = new Dictionary<string, string>()
+		{
+			{ "Name", "Frank Barone" },
+			{ "OftenSays", "Holy Crap" }
+		}
+	};
 
-    var bankAccountService = new BankAccountService();
+	var bankAccountService = new BankAccountService();
 	CustomerBankAccount bankAccount = bankAccountService.Update(*customerId*, *bankAccountId*, myBankAccount);
 ```
 
 ### Deleting a bank account
 
 ```csharp
-    var bankAccountService = new BankAccountService();
+	var bankAccountService = new BankAccountService();
 	bankAccountService.Delete(*customerId*, *bankAccountId*);
 ```
 
 ### List all bank account
 
 ```csharp
-    var bankAccountService = new BankAccountService();
+	var bankAccountService = new BankAccountService();
 	IEnumerable<CustomerBankAccount> response = bankAccountService.List(*customerId*); // optional StripeListOptions
 ```
 
@@ -597,7 +602,7 @@ With a token (or an existing source):
 	// set this if you want to
 	myCharge.Description = "Charge it like it's hot";
 
-    myCharge.SourceTokenOrExistingSourceId = *tokenId or existingSourceId*;
+	myCharge.SourceTokenOrExistingSourceId = *tokenId or existingSourceId*;
 
 	// set this property if using a customer - this MUST be set if you are using an existing source!
 	myCharge.CustomerId = *customerId*;
@@ -615,7 +620,7 @@ With a token (or an existing source):
 With a card:
 
 ```csharp
-    // setting up the card
+	// setting up the card
 	var myCharge = new StripeChargeCreateOptions();
 
 	// always set these properties
@@ -624,7 +629,7 @@ With a card:
 
 	// set this if you want to
 	myCharge.Description = "Charge it like it's hot";
-    
+
 	myCharge.SourceCard = new SourceCard()
 	{
 		Number = "4242424242424242",
@@ -639,8 +644,8 @@ With a card:
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
 	};
-    
-    // set this property if using a customer
+
+	// set this property if using a customer
 	myCharge.CustomerId = *customerId*;
 
 	// set this if you have your own application fees (you must have your application configured first within Stripe)
@@ -677,6 +682,81 @@ If you set a charge to capture = false, you use this to capture the charge later
 ```
 
 StripeChargeListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
+
+Refunds
+-------
+
+### Creating a refund
+
+```csharp
+	var refundService = new StripeRefundService();
+
+	StripeRefund refund = refundService.Create(*chargeId*, new StripeRefundCreateOptions()
+	{
+		Amount = 300,
+		Reason = StripeRefundReasons.Fradulent
+	});
+```
+
+You can also specify Metadata, RefundApplicationFee (Connect Only), and ReverseTransfer (Connect Only)
+
+### Retrieving a refund
+
+```csharp
+	var refundService = new StripeRefundService();
+	StripeRefund refund = refundService.Get(*refundId*);
+```
+
+### Updating a refund
+
+```csharp
+	var refundService = new StripeRefundService();
+	StripeRefund refund = 
+		refundService.Update(*refundId*, new StripeRefundUpdateOptions()
+			{
+				Metadata = new Dictionary<string, string>() {{ "SomeKey", "SomeValue" }}
+			});
+```
+
+### List all refunds
+
+```csharp
+	var refundService = new StripeRefundService();
+	IEnumerable<StripeRefund> response = refundService.List(); // optional StripeRefundListOptions
+```
+
+StripeRefundListOptions supports ChargeId and [StripeListOptions](#stripelistoptions-paging) for paging
+
+File Uploads
+------------
+
+### Creating a file upload
+
+When setting the Purpose of a file, all available options are listed as constants in [StripeFilePurpose](src/Stripe/Constants/StripeFilePurpose.cs).
+
+```csharp
+	var fileService = new StripeFileUploadService();
+
+	StripeFileUpload file = _fileService.Create("logo.png", *fileStream*, StripeFilePurpose.BusinessLogo);
+```
+
+In order to determine the mime type, your filename must end with one of the following extensions: jpeg, jpg, pdf, or png.
+
+### Retrieving a file upload
+
+```csharp
+	var fileService = new StripeFileUploadService();
+	StripeRefund refund = fileService.Get(*fileUploadId*);
+```
+
+### List all file uploads
+
+```csharp
+	var fileService = new StripeFileUploadService();
+	IEnumerable<StripeFileUpload> response = fileService.List(); // optional StripeFileUploadListOptions
+```
+
+StripeFileUploadListOptions supports a Purpose, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
 Invoices
 --------

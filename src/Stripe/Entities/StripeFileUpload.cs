@@ -13,16 +13,16 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
 
-        [JsonProperty("purpose")]
-        public string Purpose { get; set; }
-
         [JsonProperty("size")]
         public int Size { get; set; }
 
+        [JsonProperty("purpose")]
+        public string Purpose { get; set; }
+
+        [JsonProperty("Url")]
+        public string Url { get; set; }
+
         [JsonProperty("type")]
         public string Type { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
     }
 }
