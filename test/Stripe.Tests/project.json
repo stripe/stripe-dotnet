@@ -2,8 +2,11 @@
   "dependencies": {
     "Machine.Specifications": "0.11.0",
     "Machine.Specifications.Should": "0.11.0",
-    "Stripe.net": "*",
-    "dotnet-test-mspec": "*"
+    "dotnet-test-mspec": "*",
+    "Stripe.net": {
+      "version": "*",
+      "target": "project"
+    }
   },
   "frameworks": {
     "net45": {
@@ -21,16 +24,11 @@
         "System.Xml": "*",
         "System.Xml.Serialization": "*"
       }
-    },
-    "netcoreapp1.0": {
-      "dependencies": {
-        "Microsoft.NETCore.App": {
-          "version": "1.0.0",
-          "type": "platform"
-        }
-      }
     }
   },
   "testRunner": "mspec",
-  "version": "0.0.0-*"
+  "version": "0.0.0-*",
+  "runtimes": {
+    "win": {}
+  }
 }
