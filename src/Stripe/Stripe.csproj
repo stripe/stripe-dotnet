@@ -93,6 +93,8 @@
     <Compile Include="Infrastructure\Client.cs" />
     <Compile Include="Infrastructure\SourceConverter.cs" />
     <Compile Include="Services\CountrySpecs\CountrySpecService.cs" />
+    <Compile Include="Services\Disputes\StripeDisputeUpdateOptions.cs" />
+    <Compile Include="Services\Disputes\StripeDisputeListOptions.cs" />
     <Compile Include="Services\FileUploads\StripeFileUploadListOptions.cs" />
     <Compile Include="Services\FileUploads\StripeFileUploadService.cs" />
     <Compile Include="Services\INestedOption.cs" />
@@ -117,7 +119,9 @@
     <Compile Include="Services\Refunds\StripeRefundService.cs" />
     <Compile Include="Services\Refunds\StripeRefundUpdateOptions.cs" />
     <Compile Include="Services\Invoices\StripeInvoiceCreateOptions.cs" />
+    <Compile Include="Services\StripeBasicService.cs" />
     <Compile Include="Services\StripeRequestOptions.cs" />
+    <Compile Include="Services\StripeService.cs" />
     <Compile Include="Services\Subscriptions\SubscriptionSharedOptions.cs" />
     <Compile Include="Services\_sources_token\BankAccountOptions.cs" />
     <Compile Include="Services\_refactor\StripeSourceOptions.cs" />
@@ -189,7 +193,6 @@
     <Compile Include="Services\Recipients\StripeRecipientService.cs" />
     <Compile Include="Services\Recipients\StripeRecipientUpdateOptions.cs" />
     <Compile Include="Services\StripeListOptions.cs" />
-    <Compile Include="Services\StripeService.cs" />
     <Compile Include="Services\Subscriptions\StripeSubscriptionUpdateOptions.cs" />
     <Compile Include="Services\Subscriptions\StripeSubscriptionService.cs" />
     <Compile Include="Services\Subscriptions\StripeSubscriptionCreateOptions.cs" />

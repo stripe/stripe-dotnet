@@ -334,8 +334,14 @@
     <Compile Include="..\Stripe\Services\Customers\StripeCustomerUpdateOptions.cs">
       <Link>Services\Customers\StripeCustomerUpdateOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\Disputes\StripeDisputeListOptions.cs">
+      <Link>Services\Disputes\StripeDisputeListOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\Disputes\StripeDisputeService.cs">
       <Link>Services\Disputes\StripeDisputeService.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\Disputes\StripeDisputeUpdateOptions.cs">
+      <Link>Services\Disputes\StripeDisputeUpdateOptions.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Services\Events\StripeEventListOptions.cs">
       <Link>Services\Events\StripeEventListOptions.cs</Link>
@@ -426,6 +432,9 @@
     </Compile>
     <Compile Include="..\Stripe\Services\Refunds\StripeRefundUpdateOptions.cs">
       <Link>Services\Refunds\StripeRefundUpdateOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\StripeBasicService.cs">
+      <Link>Services\StripeBasicService.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Services\StripeDateFilter.cs">
       <Link>Services\StripeDateFilter.cs</Link>
