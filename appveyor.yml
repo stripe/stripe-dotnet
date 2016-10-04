@@ -1,4 +1,4 @@
-version: 6.8.0.{build}
+version: 6.8.0
 
 environment:
   stripe_test_secret_key:
