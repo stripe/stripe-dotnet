@@ -19,7 +19,7 @@ namespace Stripe.Tests
             var chargeService = new StripeChargeService();
             var disputedOptions = test_data.stripe_dispute_options.DisputedCard();
 
-            var initialCharge = chargeService.Create(disputedOptions);
+            var initialCharge = chargeService.CreateAsync(disputedOptions).Result;
 
             // we need to wait for Stripe to process the dispute. Try for 10 seconds.
             var stopwatch = Stopwatch.StartNew();

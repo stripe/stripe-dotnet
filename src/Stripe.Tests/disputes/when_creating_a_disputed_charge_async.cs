@@ -30,7 +30,7 @@ namespace Stripe.Tests
             var stopwatch = Stopwatch.StartNew();
             do
             {
-                _disputedCharge = _chargeService.Get(_initialCharge.Id);
+                _disputedCharge = _chargeService.GetAsync(_initialCharge.Id).Result;
                 if (_disputedCharge.Dispute != null) break;
                 Thread.Sleep(500);
             } while (stopwatch.ElapsedMilliseconds < 10000);

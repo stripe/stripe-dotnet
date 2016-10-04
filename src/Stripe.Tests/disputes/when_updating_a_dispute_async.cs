@@ -14,7 +14,7 @@ namespace Stripe.Tests
         private static StripeCharge _disputedCharge;
         private static StripeDispute _dispute;
 
-        Establish context = () =>
+        private Establish context = () =>
         {
             var chargeService = new StripeChargeService();
             var disputedOptions = test_data.stripe_dispute_options.DisputedCard();
@@ -25,7 +25,7 @@ namespace Stripe.Tests
             var stopwatch = Stopwatch.StartNew();
             do
             {
-                _disputedCharge = chargeService.Get(initialCharge.Id);
+                _disputedCharge = chargeService.GetAsync(initialCharge.Id).Result;
                 if (_disputedCharge.Dispute != null) break;
                 Thread.Sleep(500);
             } while (stopwatch.ElapsedMilliseconds < 10000);
@@ -33,10 +33,10 @@ namespace Stripe.Tests
 
         Because of = () =>
         {
-            _dispute = new StripeDisputeService().Update(_disputedCharge.Dispute.Id, new StripeDisputeUpdateOptions()
+            _dispute = new StripeDisputeService().UpdateAsync(_disputedCharge.Dispute.Id, new StripeDisputeUpdateOptions()
             {
                 CustomerEmailAddress = "indiana@jones.com"
-            });
+            }).Result;
         };
 
         It should_not_be_null = () =>

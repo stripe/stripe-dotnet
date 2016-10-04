@@ -21,14 +21,14 @@ namespace Stripe.Tests
             var chargeService = new StripeChargeService();
             var disputedOptions = test_data.stripe_dispute_options.DisputedCard();
 
-            _stripeChargeOne = chargeService.Create(disputedOptions);
-            _stripeChargeTwo = chargeService.Create(disputedOptions);
+            _stripeChargeOne = chargeService.CreateAsync(disputedOptions).Result;
+            _stripeChargeTwo = chargeService.CreateAsync(disputedOptions).Result;
 
             // we need to wait for Stripe to process the dispute. Try for 10 seconds.
             var stopwatch = Stopwatch.StartNew();
             do
             {
-                _stripeChargeOne = chargeService.Get(_stripeChargeOne.Id);
+                _stripeChargeOne = chargeService.GetAsync(_stripeChargeOne.Id).Result;
                 if (_stripeChargeOne.Dispute != null)
                 {
                     _disputedChargeOne = _stripeChargeOne.Dispute;
@@ -40,7 +40,7 @@ namespace Stripe.Tests
             stopwatch = Stopwatch.StartNew();
             do
             {
-                _stripeChargeTwo = chargeService.Get(_stripeChargeTwo.Id);
+                _stripeChargeTwo = chargeService.GetAsync(_stripeChargeTwo.Id).Result;
                 if (_stripeChargeTwo.Dispute != null)
                 {
                     _disputedChargeTwo = _stripeChargeTwo.Dispute;

@@ -46,6 +46,9 @@
     <Compile Include="..\Stripe\Constants\StripeEvents.cs">
       <Link>Constants\StripeEvents.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Constants\StripeFilePurpose.cs">
+      <Link>Constants\StripeFilePurpose.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Constants\StripeRefundReasons.cs">
       <Link>Constants\StripeRefundReasons.cs</Link>
     </Compile>
