@@ -13,4 +13,4 @@ build:
 assembly_info:
   patch: true
   file: src\SharedAssemblyInfo.cs
-  assembly_version: '$(version)'
+  assembly_version: '${version}'
