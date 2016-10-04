@@ -23,7 +23,7 @@ using System.Threading.Tasks;
         }
 
         #region Remove in 7.0
-        [Obsolete("This method will be replaced without requiring the charge id")]
+        [Obsolete("A chargeId is no longer required")]
         public virtual StripeDispute Update(string chargeId, string evidence = null, StripeRequestOptions requestOptions = null)
         {
             var url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
@@ -62,7 +62,7 @@ using System.Threading.Tasks;
         }
 
         #region Remove in 7.0
-        [Obsolete("This method will be replaced without requiring the charge id")]
+        [Obsolete("A chargeId is no longer required")]
         public virtual async Task<StripeDispute> UpdateAsync(string chargeId, string evidence = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
