@@ -41,6 +41,9 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Stripe.Core">
+      <HintPath>..\Stripe.Core\bin\Debug\net45\Stripe.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -250,12 +253,6 @@
     <Content Include="infrastructure\test_data\invoice_item.json" />
     <Content Include="infrastructure\test_data\invoice.json" />
     <Content Include="infrastructure\test_data\subscription.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Stripe\Stripe.csproj">
-      <Project>{e48e9ac1-3a88-406b-82ff-166b1e3c7a48}</Project>
-      <Name>Stripe</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
