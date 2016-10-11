@@ -7,7 +7,7 @@
     <owners>Jayme Davis</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/jaymedavis/stripe.net</projectUrl>
-    <iconUrl>https://pbs.twimg.com/profile_images/497432038492733440/eW6tXeq3.png</iconUrl>
+    <iconUrl>http://i.imgur.com/UuBwQ33.png</iconUrl>
     <licenseUrl>https://raw.github.com/jaymedavis/stripe.net/master/LICENSE</licenseUrl>
     <title>Stripe.net</title>
     <description>Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.</description>
