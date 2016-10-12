@@ -44,11 +44,20 @@ namespace Stripe
             );
         }
 
+        public virtual StripeDeleted Delete(string url, StripeRequestOptions requestOptions, object options = null)
+        {
+            return Mapper<StripeDeleted>.MapFromJson(
+                Requestor.Delete(
+                    this.ApplyAllParameters(options, url),
+                    SetupRequestOptions(requestOptions)
+                )
+             );
+        }
 
 
 
         // Async
-        public virtual async Task<EntityReturned> GetEntityAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken), object options = null)
+        public virtual async Task<EntityReturned> GetEntityAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken, object options = null)
         {
             return Mapper<EntityReturned>.MapFromJson(
                 await Requestor.GetStringAsync(
@@ -59,7 +68,7 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<IEnumerable<EntityReturned>> GetEntityListAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken), object options = null)
+        public virtual async Task<IEnumerable<EntityReturned>> GetEntityListAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken, object options = null)
         {
             return Mapper<EntityReturned>.MapCollectionFromJson(
                 await Requestor.GetStringAsync(
@@ -70,7 +79,7 @@ namespace Stripe
             );
         }
 
-        public async Task<EntityReturned> PostAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken), object options = null)
+        public async Task<EntityReturned> PostAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken, object options = null)
         {
             return Mapper<EntityReturned>.MapFromJson(
                 await Requestor.PostStringAsync(
@@ -79,6 +88,17 @@ namespace Stripe
                     cancellationToken
                 )
             );
+        }
+
+        public async Task<StripeDeleted> DeleteAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken, object options = null)
+        {
+            return Mapper<StripeDeleted>.MapFromJson(
+                await Requestor.DeleteAsync(
+                    this.ApplyAllParameters(options, url),
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken
+                )
+             );
         }
 
 

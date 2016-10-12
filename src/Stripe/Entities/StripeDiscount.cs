@@ -28,6 +28,22 @@ namespace Stripe
         }
         #endregion
 
+        #region Expandable Subscription
+        public string SubscriptionId { get; set; }
+
+        [JsonIgnore]
+        public StripeSubscription Subscription { get; set; }
+
+        [JsonProperty("subscription")]
+        internal object InternalSubscription
+        {
+            set
+            {
+                ExpandableProperty<StripeSubscription>.Map(value, s => SubscriptionId = s, o => Subscription = o);
+            }
+        }
+        #endregion
+
         [JsonProperty("start")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? Start { get; set; }
