@@ -16,7 +16,7 @@ using System.Threading.Tasks;
         public bool ExpandBalanceTransaction { get; set; }
         #endregion
 
-        //Sync
+        // Sync
         public virtual StripeDispute Get(string disputeId, StripeRequestOptions requestOptions = null)
         {
             return GetEntity($"{Urls.Disputes}/{disputeId}", requestOptions);
@@ -55,7 +55,7 @@ using System.Threading.Tasks;
 
 
 
-        //Async
+        // Async
         public virtual async Task<StripeDispute> GetAsync(string disputeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await GetEntityAsync($"{Urls.Disputes}/{disputeId}", requestOptions, cancellationToken);

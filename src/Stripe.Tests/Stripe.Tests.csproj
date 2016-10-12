@@ -88,6 +88,10 @@
     <Compile Include="charges\when_refunding_and_setting_fraud_details.cs" />
     <Compile Include="countryspecs\when_getting_a_country_spec.cs" />
     <Compile Include="countryspecs\when_listing_country_specs.cs" />
+    <Compile Include="discounts\when_deleting_a_discount_from_a_subscription_async.cs" />
+    <Compile Include="discounts\when_deleting_a_discount_from_a_subscription.cs" />
+    <Compile Include="discounts\when_deleting_a_discount_from_a_customer_async.cs" />
+    <Compile Include="discounts\when_deleting_a_discount_from_a_customer.cs" />
     <Compile Include="disputes\test_data\stripe_dispute_options.cs" />
     <Compile Include="disputes\when_closing_a_dispute_async.cs" />
     <Compile Include="disputes\when_closing_a_dispute.cs" />

@@ -93,6 +93,7 @@
     <Compile Include="Infrastructure\Client.cs" />
     <Compile Include="Infrastructure\SourceConverter.cs" />
     <Compile Include="Services\CountrySpecs\CountrySpecService.cs" />
+    <Compile Include="Services\Discounts\StripeDiscountService.cs" />
     <Compile Include="Services\Disputes\StripeDisputeUpdateOptions.cs" />
     <Compile Include="Services\Disputes\StripeDisputeListOptions.cs" />
     <Compile Include="Services\FileUploads\StripeFileUploadListOptions.cs" />
