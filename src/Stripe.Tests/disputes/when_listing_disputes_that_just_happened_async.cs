@@ -35,7 +35,7 @@ namespace Stripe.Tests
                     break;
                 }
                 Thread.Sleep(500);
-            } while (stopwatch.ElapsedMilliseconds < 10000);
+            } while (stopwatch.ElapsedMilliseconds < 15000);
 
             stopwatch = Stopwatch.StartNew();
             do
@@ -47,7 +47,7 @@ namespace Stripe.Tests
                     break;
                 }
                 Thread.Sleep(500);
-            } while (stopwatch.ElapsedMilliseconds < 10000);
+            } while (stopwatch.ElapsedMilliseconds < 15000);
         };
 
         Because of = () =>
