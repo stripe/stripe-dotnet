@@ -121,7 +121,21 @@ namespace Stripe
 
         // shipping
 
-        // application_fee
+        #region Expandable Application Fee
+        public string ApplicationFeeId { get; set; }
+
+        [JsonIgnore]
+        public StripeApplicationFee ApplicationFee { get; set; }
+
+        [JsonProperty("application_fee")]
+        internal object InternalApplicationFee
+        {
+            set
+            {
+                ExpandableProperty<StripeApplicationFee>.Map(value, s => ApplicationFeeId = s, o => ApplicationFee = o);
+            }
+        }
+        #endregion
 
         // destination
 
