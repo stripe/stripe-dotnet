@@ -67,8 +67,8 @@ namespace Stripe.Tests
 
         It should_have_the_right_charges_for_the_disputes = () =>
         {
-            _disputeListOne.First().Charge.Id.ShouldEqual(_stripeChargeOne.Id);
-            _disputeListTwo.First().Charge.Id.ShouldEqual(_stripeChargeTwo.Id);
+            _disputeListOne.ToList().ShouldContain(c => c.Charge.Id == _stripeChargeOne.Id);
+            _disputeListTwo.ToList().ShouldContain(c => c.Charge.Id == _stripeChargeTwo.Id);
         };
     }
 }
