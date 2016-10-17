@@ -35,7 +35,7 @@ namespace Stripe.Tests
                     break;
                 }
                 Thread.Sleep(500);
-            } while (stopwatch.ElapsedMilliseconds < 15000);
+            } while (stopwatch.ElapsedMilliseconds < 10000);
 
             stopwatch = Stopwatch.StartNew();
             do
@@ -47,7 +47,7 @@ namespace Stripe.Tests
                     break;
                 }
                 Thread.Sleep(500);
-            } while (stopwatch.ElapsedMilliseconds < 15000);
+            } while (stopwatch.ElapsedMilliseconds < 10000);
         };
 
         Because of = () =>
@@ -59,11 +59,11 @@ namespace Stripe.Tests
             _disputeListTwo = new StripeDisputeService { ExpandCharge = true }.ListAsync(new StripeDisputeListOptions { Created = secondDisputeTimeFilter }).Result;
         };
 
-        It should_have_only_one_dispute_on_the_first_list = () =>
-            _disputeListOne.Count().ShouldEqual(1);
+        It should_have_at_least_one_dispute_on_the_first_list = () =>
+            _disputeListOne.Count().ShouldBeGreaterThanOrEqualTo(1);
 
-        It should_have_only_one_dispute_on_the_second_list = () =>
-            _disputeListTwo.Count().ShouldEqual(1);
+        It should_have_at_lest_one_dispute_on_the_second_list = () =>
+            _disputeListTwo.Count().ShouldBeGreaterThanOrEqualTo(1);
 
         It should_have_the_right_charges_for_the_disputes = () =>
         {
