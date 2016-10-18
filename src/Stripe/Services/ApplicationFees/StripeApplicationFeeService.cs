@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeApplicationFeeService : StripeService
+    public class StripeApplicationFeeService : StripeBasicService<StripeApplicationFee>
     {
         public StripeApplicationFeeService(string apiKey = null) : base(apiKey) { }
 
@@ -17,12 +17,10 @@ namespace Stripe
         //Sync
         public virtual StripeApplicationFee Get(string applicationFeeId, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeApplicationFee>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}", false),
-                SetupRequestOptions(requestOptions))
-            );
+            return GetEntity($"{Urls.BaseUrl}/application_fees/{applicationFeeId}", requestOptions);
         }
 
+        // obsolete: use StripeApplicationFeeRefundService instead.
         public virtual StripeApplicationFee Refund(string applicationFeeId, int? refundAmount = null, StripeRequestOptions requestOptions = null)
         {
             var url = this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}/refund", false);
@@ -37,10 +35,7 @@ namespace Stripe
 
         public virtual IEnumerable<StripeApplicationFee> List(StripeApplicationFeeListOptions listOptions, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeApplicationFee>.MapCollectionFromJson(
-                Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.ApplicationFees, true),
-                SetupRequestOptions(requestOptions))
-            );
+            return GetEntityList($"{Urls.BaseUrl}/application_fees", requestOptions, listOptions);
         }
 
 
@@ -48,13 +43,10 @@ namespace Stripe
         //Async
         public virtual async Task<StripeApplicationFee> GetAsync(string applicationFeeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeApplicationFee>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}", false),
-                SetupRequestOptions(requestOptions),
-                cancellationToken)
-            );
+            return GetEntityAsync($"{Urls.BaseUrl}/application_fees/{applicationFeeId}", requestOptions, cancellationToken);
         }
 
+        // obsolete: use StripeApplicationFeeRefundService instead.
         public virtual async Task<StripeApplicationFee> RefundAsync(string applicationFeeId, int? refundAmount = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}/refund", false);
@@ -69,11 +61,7 @@ namespace Stripe
 
         public virtual async Task<IEnumerable<StripeApplicationFee>> ListAsync(StripeApplicationFeeListOptions listOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeApplicationFee>.MapCollectionFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.ApplicationFees, true),
-                SetupRequestOptions(requestOptions), 
-                cancellationToken)
-            );
+            return GetEntityListAsync($"{Urls.BaseUrl}/application_fees", requestOptions, cancellationToken, listOptions);
         }
     }
 }
