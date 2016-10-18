@@ -71,6 +71,13 @@
     <Compile Include="account\when_creating_a_managed_account_with_a_card.cs" />
     <Compile Include="account\when_creating_an_account_with_only_an_emailaddress.cs" />
     <Compile Include="account\when_retrieving_an_account.cs" />
+    <Compile Include="applicationfeerefunds\when_listing_application_fee_refunds.cs" />
+    <Compile Include="applicationfeerefunds\when_updating_an_application_fee_refund_async.cs" />
+    <Compile Include="applicationfeerefunds\when_updating_an_application_fee_refund.cs" />
+    <Compile Include="applicationfeerefunds\when_getting_an_application_fee_refund.cs" />
+    <Compile Include="applicationfeerefunds\when_getting_an_application_fee_refund_async.cs" />
+    <Compile Include="applicationfeerefunds\when_creating_an_application_fee_refund_async.cs" />
+    <Compile Include="applicationfeerefunds\when_creating_an_application_fee_refund.cs" />
     <Compile Include="balance\balance_behaviors.cs" />
     <Compile Include="balance\when_listing_balancetransaction_by_id.cs" />
     <Compile Include="balance\when_listing_balancetransactions.cs" />

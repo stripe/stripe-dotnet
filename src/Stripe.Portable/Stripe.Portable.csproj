@@ -268,6 +268,15 @@
     <Compile Include="..\Stripe\Services\Account\StripeAccountUpdateOptions.cs">
       <Link>Services\Account\StripeAccountUpdateOptions.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Services\ApplicationFeeRefunds\StripeApplicationFeeRefundCreateOptions.cs">
+      <Link>Services\ApplicationFeeRefunds\StripeApplicationFeeRefundCreateOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\ApplicationFeeRefunds\StripeApplicationFeeRefundService.cs">
+      <Link>Services\ApplicationFeeRefunds\StripeApplicationFeeRefundService.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\ApplicationFeeRefunds\StripeApplicationFeeRefundUpdateOptions.cs">
+      <Link>Services\ApplicationFeeRefunds\StripeApplicationFeeRefundUpdateOptions.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Services\ApplicationFees\StripeApplicationFeeListOptions.cs">
       <Link>Services\ApplicationFees\StripeApplicationFeeListOptions.cs</Link>
     </Compile>
@@ -506,5 +515,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

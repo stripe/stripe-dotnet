@@ -39,11 +39,11 @@ namespace Stripe.Infrastructure
 
             var values = new Dictionary<string, string>
             {
-                {"bindings_version", StripeConfiguration.StripeNetVersion},
-                {"lang", ".net"},
-                {"publisher", "Jayme Davis"},
-                {"lang_version", WebUtility.HtmlEncode(langVersion)},
-                {"uname", WebUtility.HtmlEncode(getSystemInformation())}
+                { "bindings_version", StripeConfiguration.StripeNetVersion },
+                { "lang", ".net" },
+                { "publisher", "Jayme Davis" },
+                { "lang_version", WebUtility.HtmlEncode(langVersion) },
+                { "uname", WebUtility.HtmlEncode(getSystemInformation()) }
             };
 
             return JsonConvert.SerializeObject(values);
@@ -62,7 +62,7 @@ namespace Stripe.Infrastructure
             var result = string.Empty;
 
 #if !PORTABLE
-            result += $"net45.platform: {Environment.OSVersion.VersionString}";
+            result += $"net45.platform: { Environment.OSVersion.VersionString }";
             result += $", {getOperatingSystemInfo()}"; 
 #else
             result += "portable.platform: ";
