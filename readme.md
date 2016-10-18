@@ -1,34 +1,35 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)  
 [![Build status](https://ci.appveyor.com/api/projects/status/5kje1md0hltqfpyh/branch/master?svg=true)](https://ci.appveyor.com/project/JaymeDavis/stripe-net/branch/master)
 
-[Accounts](#accounts)  
-[Application Fees](#application-fees)  
-[Balance](#balance)  
-[Bank Accounts](#bank-accounts)  
-[Cards](#cards)  
-[Charges](#charges)  
-[Connect](#stripe-connect)  
-[Country Specs](#country-specs)  
-[Coupons](#coupons)  
-[Customers](#customers)  
-[Disputes](#disputes)  
-[Events](#events)  
-[Errors](#errors)  
-[Expandable Properties](#expandable-properties)  
-[File Uploads](#file-uploads)  
-[Invoices](#invoices)  
-[Invoice Items](#invoice-items)  
-[Plans](#plans)  
-[Recipients](#recipients)  
-[Refunds](#refunds)  
-[Subscriptions](#subscriptions)  
-[Tokens](#tokens)  
-[Transfers](#transfers)  
+- [Accounts](#accounts)
+- [Application Fees](#application-fees)
+- [Balance](#balance)
+- [Bank Accounts](#bank-accounts)
+- [Cards](#cards)
+- [Charges](#charges)
+- [Connect](#stripe-connect)
+- [Country Specs](#country-specs)
+- [Coupons](#coupons)
+- [Customers](#customers)
+- [Disputes](#disputes)
+- [Events](#events)
+- [Errors](#errors)
+- [Expandable Properties](#expandable-properties)
+- [File Uploads](#file-uploads)
+- [Invoices](#invoices)
+- [Invoice Items](#invoice-items)
+- [Metadata](#metadata)
+- [Plans](#plans)
+- [Recipients](#recipients)
+- [Refunds](#refunds)
+- [Subscriptions](#subscriptions)
+- [Tokens](#tokens)
+- [Transfers](#transfers)
 
 Support
 -------
-Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to see if your issue has already been reported. 
-If it has, please leave a comment or a [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). 
+Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to see if your issue has already been reported.
+If it has, please leave a comment or a [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments).
 [Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if your question is still not answered. :)
 
 Quick Start
@@ -70,6 +71,15 @@ d) In any of the service calls, you can pass a [StripeRequestOptions](#stripereq
 ** If you are using Xamarin/Mono, you may want to provide your own HttpMessageHandler. You can do so by passing an instance to StripeConfiguration.HttpMessageHandler on your application's startup. See [this thread](https://github.com/jaymedavis/stripe.net/issues/567) for details.
 
 Examples Below!
+
+Metadata
+--------
+
+Various calls allow attaching metadata to them such as [Creating a Customer](#creating-a-customer) and [Creating a Charge](#creating-a-charge).
+
+### Clearing Metadata
+
+To clear metadata you can call the update operation and pass an empty string (`String.Empty`) or `null` for each value you'd like to clear.
 
 Plans
 -----
@@ -242,7 +252,7 @@ With a token:
 	var myCustomer = new StripeCustomerCreateOptions();
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
-    
+
     myCustomer.SourceToken = *token*;
 
 	myCustomer.PlanId = *planId*;                          // only if you have a plan
@@ -512,7 +522,7 @@ With a token:
 	var bankAccountService = new BankAccountService();
 	CustomerBankAccount bankAccount = bankAccountService.Create(*customerId*, myBankAccount);
 ```
-    
+
 With a bank account:
 
 ```csharp
@@ -616,7 +626,7 @@ With a token (or an existing source):
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Create(myCharge);
 ```
-    
+
 With a card:
 
 ```csharp
@@ -711,7 +721,7 @@ You can also specify Metadata, RefundApplicationFee (Connect Only), and ReverseT
 
 ```csharp
 	var refundService = new StripeRefundService();
-	StripeRefund refund = 
+	StripeRefund refund =
 		refundService.Update(*refundId*, new StripeRefundUpdateOptions()
 			{
 				Metadata = new Dictionary<string, string>() {{ "SomeKey", "SomeValue" }}
@@ -886,7 +896,7 @@ Accounts
 --------
 ### Creating an account
 
-When creating an account, you can create a standalone or managed account. Standalone accounts are managed by Stripe and the account owner directly. Managed accounts are handled by your platform. See the Stripe documentation for more information.  
+When creating an account, you can create a standalone or managed account. Standalone accounts are managed by Stripe and the account owner directly. Managed accounts are handled by your platform. See the Stripe documentation for more information.
 
 Since Stripe returns `ExternalAccounts` as a single array (contains StripeCard's and/or StripeBankAccount's), that type is a dynamic StripeList. These are split up as `ExternalCards` and `ExternalBankAccounts` for your convenience.
 
@@ -1220,12 +1230,12 @@ StripeEventListOptions supports a type, [StripeListOptions](#stripelistoptions-p
 Stripe Connect
 --------------
 
-The Stripe Connect documentation can be a little intimidating, so I am going to try to break it down a little. Stripe Connect gives you the ability to accept money on behalf of other accounts, 
+The Stripe Connect documentation can be a little intimidating, so I am going to try to break it down a little. Stripe Connect gives you the ability to accept money on behalf of other accounts,
 and access or modify connected accounts depending on permissions.
 
 1) The first thing you need to do is [register your platform](https://dashboard.stripe.com/account/applications/settings) with Stripe Connect.
 
-2) The next thing to do, is have another party connect to your site. To do this, put a link on your site which will start the authorization process, or you can use a 
+2) The next thing to do, is have another party connect to your site. To do this, put a link on your site which will start the authorization process, or you can use a
 [Stripe Connect Button](https://stripe.com/about/resources). Your link will need to contain some querystring parameters:
 
 	response_type: code
@@ -1257,7 +1267,7 @@ In Stripe.net, you can accomplish this with the following code:
 	StripeOAuthToken stripeOAuthToken = stripeOAuthTokenService.Create(_stripeOAuthTokenCreateOptions);
 ```
 
-5) You're done! Whenever you need to access the connected account, you simply need the StripeUserId from the StripeOAuthToken to be passed as part of the [StripeRequestOptions](#striperequestoptions) 
+5) You're done! Whenever you need to access the connected account, you simply need the StripeUserId from the StripeOAuthToken to be passed as part of the [StripeRequestOptions](#striperequestoptions)
 which all service calls now support as an optional parameter.
 
 For example, to get the plans on the connected account, you could run the following code:
@@ -1273,7 +1283,7 @@ part of StripeRequestOptions.
 StripeRequestOptions
 --------------------
 
-All of the service methods accept an optional StripeRequestOptions object. This is used if you need an [Idempotency Key](https://stripe.com/docs/api?lang=curl#idempotent_requests), 
+All of the service methods accept an optional StripeRequestOptions object. This is used if you need an [Idempotency Key](https://stripe.com/docs/api?lang=curl#idempotent_requests),
 if you are using Stripe Connect, or if you want to pass the ApiKey on each method.
 
 ```csharp
