@@ -1,12 +1,12 @@
-﻿using System;
-using Machine.Specifications;
+﻿using Machine.Specifications;
 
 namespace Stripe.Tests
 {
-    public class when_creating_an_application_fee_refund_async
+    public class when_getting_an_application_fee_refund_async
     {
         private static StripeCharge _charge;
-        private static StripeApplicationFeeRefund _refund;
+        private static StripeApplicationFeeRefund _createdRefund;
+        private static StripeApplicationFeeRefund _retrievedRefund;
 
         private Establish context = () =>
         {
@@ -26,21 +26,26 @@ namespace Stripe.Tests
             var chargeCreateOptions = test_data.stripe_charge_create_options.ValidToken(token.Id);
             chargeCreateOptions.ApplicationFee = 10;
 
-            _charge = new StripeChargeService().Create(chargeCreateOptions, 
+            _charge = new StripeChargeService().Create(chargeCreateOptions,
                 new StripeRequestOptions
                 {
                     StripeConnectAccountId = managedAccount.Id
                 }
             );
+
+            _createdRefund = new StripeApplicationFeeRefundService().CreateAsync(_charge.ApplicationFeeId).Result;
         };
 
         Because of = () =>
-            _refund = new StripeApplicationFeeRefundService().CreateAsync(_charge.ApplicationFeeId).Result;
+            _retrievedRefund = new StripeApplicationFeeRefundService().GetAsync(_charge.ApplicationFeeId, _createdRefund.Id).Result;
 
         It should_have_a_refund_object = () =>
-            _refund.ShouldNotBeNull();
+            _retrievedRefund.ShouldNotBeNull();
+
+        It should_have_the_right_id = () =>
+            _retrievedRefund.Id.ShouldEqual(_createdRefund.Id);
 
         It should_have_a_refund_amount_of_ten_cents = () =>
-            _refund.Amount.ShouldEqual(10);
+            _retrievedRefund.Amount.ShouldEqual(10);
     }
 }

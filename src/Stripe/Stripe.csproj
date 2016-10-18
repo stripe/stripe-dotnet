@@ -92,6 +92,7 @@
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Infrastructure\Client.cs" />
     <Compile Include="Infrastructure\SourceConverter.cs" />
+    <Compile Include="Services\ApplicationFeeRefunds\StripeApplicationFeeRefundUpdateOptions.cs" />
     <Compile Include="Services\ApplicationFeeRefunds\StripeApplicationFeeRefundCreateOptions.cs" />
     <Compile Include="Services\ApplicationFeeRefunds\StripeApplicationFeeRefundService.cs" />
     <Compile Include="Services\CountrySpecs\CountrySpecService.cs" />

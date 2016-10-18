@@ -5,7 +5,6 @@ namespace Stripe.Tests
 {
     public class when_creating_an_application_fee_refund
     {
-        private static StripeAccount _managedAccount;
         private static StripeCharge _charge;
         private static StripeApplicationFeeRefund _refund;
 
@@ -15,7 +14,7 @@ namespace Stripe.Tests
             var accountOptions = test_data.stripe_account_create_options.ValidAccountWithBankAccount();
             accountOptions.Managed = true;
 
-            _managedAccount = new StripeAccountService().Create(accountOptions);
+            var managedAccount = new StripeAccountService().Create(accountOptions);
 
             // since stripe will error without using a token from stripe.js, we will use the 
             // token service from stripe.net for this test. you should use stripe.js to receive
@@ -30,12 +29,11 @@ namespace Stripe.Tests
             _charge = new StripeChargeService().Create(chargeCreateOptions, 
                 new StripeRequestOptions
                 {
-                    StripeConnectAccountId = _managedAccount.Id
+                    StripeConnectAccountId = managedAccount.Id
                 }
             );
         };
 
-        // refund the application fee from the managed account
         Because of = () =>
             _refund = new StripeApplicationFeeRefundService().Create(_charge.ApplicationFeeId);
 
