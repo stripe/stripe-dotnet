@@ -23,5 +23,24 @@ namespace Stripe.Tests.test_data
 
             return stripeTransferCreateOptions;
         }
+
+        public static StripeTransferCreateOptions ValidForDestination(string destination)
+        {
+            var stripeTransferCreateOptions = new StripeTransferCreateOptions()
+            {
+                Amount = 50,
+                Currency = "usd",
+                Destination = destination,
+                Description = "test-transfer-description-" + Guid.NewGuid(),
+                StatementDescriptor = "test-transfer-statement-descriptor" + Guid.NewGuid(),
+                Metadata = new Dictionary<string, string>
+                {
+                    { "A", "Value-A" },
+                    { "B", "Value-B" }
+                }
+            };
+
+            return stripeTransferCreateOptions;
+        }
     }
 }

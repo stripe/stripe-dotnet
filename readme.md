@@ -1,16 +1,36 @@
-![Stripe](https://stripe.com/img/navigation/logo.png?2)
+![Stripe](https://stripe.com/img/navigation/logo.png?2)  
+[![Build status](https://ci.appveyor.com/api/projects/status/5kje1md0hltqfpyh/branch/master?svg=true)](https://ci.appveyor.com/project/JaymeDavis/stripe-net/branch/master)
 
-The new BankAccountService does not have the usual name, StripeBankAccountService. I will slowly be moving from this method of always including the name Stripe, as class names are getting way too long (even for me). BankAccountCreateOptions is just a shorter name, for example.
-
-This service also returns a CustomerBankAccount, instead of the already built in StripeBankAccount. The reason is because Stripe wants to keep a clean separation between external account bank accounts, and customer bank accounts. The StripeBankAccount entity will 
-eventually be renamed to ExternalAccountBankAccount.
-
+- [Accounts](#accounts)
+- [Application Fees](#application-fees)
+- [Balance](#balance)
+- [Bank Accounts](#bank-accounts)
+- [Cards](#cards)
+- [Charges](#charges)
+- [Connect](#stripe-connect)
+- [Country Specs](#country-specs)
+- [Coupons](#coupons)
+- [Customers](#customers)
+- [Disputes](#disputes)
+- [Events](#events)
+- [Errors](#errors)
+- [Expandable Properties](#expandable-properties)
+- [File Uploads](#file-uploads)
+- [Invoices](#invoices)
+- [Invoice Items](#invoice-items)
+- [Metadata](#metadata)
+- [Plans](#plans)
+- [Recipients](#recipients)
+- [Refunds](#refunds)
+- [Subscriptions](#subscriptions)
+- [Tokens](#tokens)
+- [Transfers](#transfers)
 
 Support
 -------
-Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to see if your issue/request already exists. If it does, please leave a comment or a [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). This helps me priortize what I work on next. [Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if you can't find what you're looking for. :)
-
-I also hang out in IRC in #stripe on freenode (my nick is truepudding) when I can. Feel free to ping me there as well.
+Search [issues](https://github.com/jaymedavis/stripe.net/issues) and [pull requests](https://github.com/jaymedavis/stripe.net/pulls) to see if your issue has already been reported.
+If it has, please leave a comment or a [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments).
+[Create a new issue](https://github.com/jaymedavis/stripe.net/issues/new) if your question is still not answered. :)
 
 Quick Start
 -----------
@@ -21,48 +41,45 @@ Next you will need to provide Stripe.net with your api key. There are 4 ways to 
 
 a) Add an AppSetting with your api key to your config (this is the easiest way and will work throughout the app on every request) - will not work on portable platforms
 
+```xml
 	<appSettings>
 	...
 		<add key="StripeApiKey" value="[your api key here]" />
 	...
 	</appSettings>
+```
 
 b) In your application initialization, call this method (this is a programmatic way, but you only have to do it once during startup)
 
+```csharp
 	StripeConfiguration.SetApiKey("[your api key here]");
+```
 
 c) In any of the service constructors, you can optionally pass the api key (will be assigned that apikey for the life of the service instance).
 
+```csharp
 	var planService = new StripePlanService("[your api key here]");
+```
 
 d) In any of the service calls, you can pass a [StripeRequestOptions](#striperequestoptions) object with the apikey specified.
 
+```csharp
 	var planService = new StripePlanService();
 	planService.Get(*planId*, new StripeRequestOptions() { ApiKey = "[your api key here]" });
+```
 
-Stripe Architecture
--------------------
-Watch the 2 minute video below to get a high level overview of the Stripe Architecture in a .NET project and understand how all the pieces fit together.  
+** If you are using Xamarin/Mono, you may want to provide your own HttpMessageHandler. You can do so by passing an instance to StripeConfiguration.HttpMessageHandler on your application's startup. See [this thread](https://github.com/jaymedavis/stripe.net/issues/567) for details.
 
-<a href="https://www.youtube.com/watch?v=BQg267TuJ0M&feature=youtu.be&t=7s&related=0" target="_blank">
-<img src="http://i.imgur.com/NBU9pWk.png?1" alt="Stripe .NET Architecture"></img>
-</a>
+Examples Below!
 
-Stripe API Version
-------------------
+Metadata
+--------
 
-stripe.net forces a version of the Stripe API for which it was designed. You can find out the latest version supported by viewing StripeConfiguration.cs under the Infrastructure folder. If you *are not* using Stripe Event objects (which are most commonly used in webhooks) then you need to do nothing for stripe.net to be compatible with the Stripe API.  
+Various calls allow attaching metadata to them such as [Creating a Customer](#creating-a-customer) and [Creating a Charge](#creating-a-charge).
 
-If you *are* using Stripe Events then you will need to email Stripe support and ask them to set your API version (you can see this in your Stripe Dashboard) to the one specified in stripe.net's StripeConfiguration.cs file.
+### Clearing Metadata
 
-See the video below for more information about stripe.net versions and how they correspond with Stripe API versions.
-
-<a href="https://youtu.be/c6dJRc9V_Ls?t=51s&related=0" target="_blank">
-<img src="http://i.imgur.com/eArdtRE.png?1" alt="Stripe API and Stripe.NET Versions"></img>
-</a>
-
-Examples
-========
+To clear metadata you can call the update operation and pass an empty string (`String.Empty`) or `null` for each value you'd like to clear.
 
 Plans
 -----
@@ -71,6 +88,7 @@ Plans
 
 If your site has multiple offerings, plans are perfect. You can create as many plans as you want and then just assign customers to those plans later on.
 
+```csharp
 	var myPlan = new StripePlanCreateOptions();
 	myPlan.Id = "hi, im unique!";
 	myPlan.Amount = 1000;           // all amounts on Stripe are in cents, pence, etc
@@ -82,41 +100,51 @@ If your site has multiple offerings, plans are perfect. You can create as many p
 
 	var planService = new StripePlanService();
 	StripePlan response = planService.Create(myPlan);
+```
 
 The returned StripePlan entity above will have a unique Id. You will want to persist this for later. When you create a customer you will be able to assign them
 to a plan id (or not)
 
 ### Updating a plan
 
+```csharp
 	var myPlan = new StripePlanUpdateOptions();
 
 	myPlan.Name = "NEW Plan YO!";
 
 	var planService = new StripePlanService();
 	StripePlan response = planService.Update(*planId*, myPlan);
+```
 
 ### Retrieving a plan
 
+```csharp
 	var planService = new StripePlanService();
 	StripePlan response = planService.Get(*planId*);
+```
 
 ### Deleting a plan
 
+```csharp
 	var planService = new StripePlanService();
 	planService.Delete(*planId*);
+```
 
 ### List all plans
 
+```csharp
 	var planService = new StripePlanService();
 	IEnumerable<StripePlan> response = planService.List(); // optional StripeListOptions
+```
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
-Coupons (queue-pons not coo-pons)
----------------------------------
+Coupons
+-------
 
 ### Creating a coupon
 
+```csharp
 	var myCoupon = new StripeCouponCreateOptions();
 	myCoupon.Id = "HOLIDAY10OFF";
 	myCoupon.PercentOff = "10";
@@ -129,21 +157,28 @@ Coupons (queue-pons not coo-pons)
 
 	var couponService = new StripeCouponService();
 	StripeCoupon response = couponService.Create(myCoupon);
+```
 
 ### Retrieving a coupon
 
+```csharp
 	var couponService = new StripeCouponService();
 	StripeCoupon response = couponService.Get(*couponId*);
+```
 
 ### Deleting a coupon
 
+```csharp
 	var couponService = new StripeCouponService();
 	couponService.Delete(*couponId*);
+```
 
 ### List all coupons
 
+```csharp
 	var couponService = new StripeCouponService();
 	IEnumerable<StripeCoupon> response = couponService.List();  // optional StripeListOptions
+```
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -168,6 +203,7 @@ to pass card data directly to the API.
 However, there are occasionally situations where it would make sense to create
 tokens on your server.
 
+```csharp
 	var myToken = new StripeTokenCreateOptions();
 
 	// if you need this...
@@ -193,11 +229,14 @@ tokens on your server.
 
 	var tokenService = new StripeTokenService();
 	StripeToken stripeToken = tokenService.Create(myToken);
+```
 
 ### Retrieving a token
 
+```csharp
 	var tokenService = new StripeTokenService();
 	StripeToken stripeToken = tokenService.Get(*tokenId*);
+```
 
 Customers
 ---------
@@ -209,10 +248,11 @@ a credit card or token, and various meta data.
 
 With a token:
 
+```csharp
 	var myCustomer = new StripeCustomerCreateOptions();
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
-    
+
     myCustomer.SourceToken = *token*;
 
 	myCustomer.PlanId = *planId*;                          // only if you have a plan
@@ -223,13 +263,15 @@ With a token:
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Create(myCustomer);
-    
+```
+
 With a card:
 
+```csharp
 	var myCustomer = new StripeCustomerCreateOptions();
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
-    
+
 	// setting up the card
 	myCustomer.SourceCard = new SourceCard()
 	{
@@ -254,6 +296,7 @@ With a card:
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Create(myCustomer);
+```
 
 Don't let this be intimidating - all of these fields are optional. You could just create a customer with an email if you wanted.
 
@@ -261,6 +304,7 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 With a token:
 
+```csharp
 	var myCustomer = new StripeCustomerUpdateOptions();
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
@@ -271,13 +315,15 @@ With a token:
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Update(*customerId*, myCustomer);
+```
 
 With a card:
 
+```csharp
 	var myCustomer = new StripeCustomerUpdateOptions();
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
-    
+
 	// setting up the card
 	myCustomer.Source = new SourceCard()
 	{
@@ -301,27 +347,36 @@ With a card:
 
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Update(*customerId*, myCustomer);
-    
+```
+
 If you want to set the default source, just add:
 
+```csharp
 	myCustomer.DefaultSource = *sourceId*;
+```
 
 ### Retrieving a customer
 
+```csharp
 	var customerService = new StripeCustomerService();
 	StripeCustomer stripeCustomer = customerService.Get(*customerId*);
+```
 
 ### Deleting a customer
 
 	See Stripe's documentation on deleting a customer for more information.
 
+```csharp
 	var customerService = new StripeCustomerService();
 	customerService.Delete(*customerId*);
+```
 
 ### List all customers
 
+```csharp
 	var customerService = new StripeCustomerService();
 	IEnumerable<StripeCustomer> response = customerService.List(); // optional StripeCustomerListOptions
+```
 
 StripeCustomerListOptions supports [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
@@ -330,28 +385,38 @@ Subscriptions
 
 ### Creating a subscription
 
+```csharp
 	var subscriptionService = new StripeSubscriptionService();
 	StripeSubscription stripeSubscription = subscriptionService.Create(*customerId*, *planId*); // optional StripeSubscriptionCreateOptions
+```
 
 ### Updating a subscription
 
+```csharp
 	var subscriptionService = new StripeSubscriptionService();
 	StripeSubscription stripeSubscription = subscriptionService.Update(*customerId*, *subscriptionId*); // optional StripeSubscriptionUpdateOptions
+```
 
 ### Retrieving a subscription
 
+```csharp
 	var subscriptionService = new StripeSubscriptionService();
 	StripeSubscription stripeSubscription = subscriptionService.Get(*customerId*, *subscriptionId*);
+```
 
 ### Canceling a subscription
 
+```csharp
 	var subscriptionService = new StripeSubscriptionService();
 	subscriptionService.Cancel(*customerId*, *subscriptionId*); // optional cancelAtPeriodEnd flag
+```
 
 ### List all subscriptions for a customer
 
+```csharp
 	var subscriptionService = new StripeSubscriptionService();
 	IEnumerable<StripeSubscription> response = subscriptionService.List(*customerId*); // optional StripeListOptions
+```
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -364,16 +429,19 @@ When creating a card you can use either a card or a token
 
 With a token:
 
+```csharp
 	var myCard = new StripeCardCreateOptions();
 
-    myCard.SourceToken = *tokenId*;
+	myCard.SourceToken = *tokenId*;
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
-    
+```
+
 With a card:
 
-    var myCard = new StripeCardCreateOptions();
+```csharp
+	var myCard = new StripeCardCreateOptions();
 
 	// setting up the card
 	myCard.SourceCard = new SourceCard()
@@ -390,17 +458,21 @@ With a card:
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
 	};
-    
-    var cardService = new StripeCardService();
+
+	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
+```
 
 ### Retrieving a card
 
+```csharp
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Get(*customerId*, *cardId*); // optional isRecipient
+```
 
 ### Updating a card
 
+```csharp
 	var myCard = new StripeCardUpdateOptions();
 
 	myCard.Name = "Cardy MyCardson"
@@ -415,16 +487,21 @@ With a card:
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Update(*customerId*, *cardId*, myCard); // optional isRecipient
+```
 
 ### Deleting a card
 
+```csharp
 	var cardService = new StripeCardService();
 	cardService.Delete(*customerId*, *cardId*); // optional isRecipient
+```
 
 ### List all cards
 
+```csharp
 	var cardService = new StripeCardService();
 	IEnumerable<StripeCard> response = cardService.List(*customerId*); // optional StripeListOptions and isRecipient
+```
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -437,66 +514,78 @@ When creating a bank account you can use either bank account details or a token 
 
 With a token:
 
-    var myBankAccount = new BankAccountCreateOptions();
+```csharp
+	var myBankAccount = new BankAccountCreateOptions();
 
-    myBankAccount.SourceToken = *tokenId*;
+	myBankAccount.SourceToken = *tokenId*;
 
-    var bankAccountService = new BankAccountService();
+	var bankAccountService = new BankAccountService();
 	CustomerBankAccount bankAccount = bankAccountService.Create(*customerId*, myBankAccount);
-    
+```
+
 With a bank account:
 
-    var myBankAccount = new BankAccountCreateOptions
-    {
-        SourceBankAccount = new SourceBankAccount()
-        {
-            AccountNumber = "000123456789",
-            Country = "US",
-            Currency = "usd",
-            AccountHolderName = "Frank",
-            AccountHolderType = BankAccountHolderType.Company,
-            RoutingNumber = "110000000",
-            Metadata = new Dictionary<string, string>
-            {
-                { "Name", "Ray Barone" },
-                { "OftenSays", "Thatttttt's right" }
-            }
-        }
-    };
+```csharp
+	var myBankAccount = new BankAccountCreateOptions
+	{
+		SourceBankAccount = new SourceBankAccount()
+		{
+			AccountNumber = "000123456789",
+			Country = "US",
+			Currency = "usd",
+			AccountHolderName = "Frank",
+			AccountHolderType = BankAccountHolderType.Company,
+			RoutingNumber = "110000000",
+			Metadata = new Dictionary<string, string>
+			{
+				{ "Name", "Ray Barone" },
+				{ "OftenSays", "Thatttttt's right" }
+			}
+		}
+	};
 
-    var bankAccountService = new BankAccountService();
+	var bankAccountService = new BankAccountService();
 	CustomerBankAccount bankAccount = bankAccountService.Create(*customerId*, myBankAccount);
+```
 
 ### Retrieving a bank account
 
-    var bankAccountService = new BankAccountService();
+```csharp
+	var bankAccountService = new BankAccountService();
 	CustomerBankAccount bankAccount = bankAccountService.Get(*customerId*, *bankAccountId*);
+```
 
 ### Updating a bank account
 
+```csharp
 	var myBankAccount = new BankAccountUpdateOptions()
-    {
-        AccountHolderName = "Robert",
-        AccountHolderType = BankAccountHolderType.Individual,
-        Metadata = new Dictionary<string, string>()
-        {
-            { "Name", "Frank Barone" },
-            { "OftenSays", "Holy Crap" }
-        }
-    };
+	{
+		AccountHolderName = "Robert",
+		AccountHolderType = BankAccountHolderType.Individual,
+		Metadata = new Dictionary<string, string>()
+		{
+			{ "Name", "Frank Barone" },
+			{ "OftenSays", "Holy Crap" }
+		}
+	};
 
-    var bankAccountService = new BankAccountService();
+	var bankAccountService = new BankAccountService();
 	CustomerBankAccount bankAccount = bankAccountService.Update(*customerId*, *bankAccountId*, myBankAccount);
+```
 
 ### Deleting a bank account
 
-    var bankAccountService = new BankAccountService();
+```csharp
+	var bankAccountService = new BankAccountService();
 	bankAccountService.Delete(*customerId*, *bankAccountId*);
+```
 
 ### List all bank account
 
-    var bankAccountService = new BankAccountService();
+```csharp
+	var bankAccountService = new BankAccountService();
 	IEnumerable<CustomerBankAccount> response = bankAccountService.List(*customerId*); // optional StripeListOptions
+```
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -513,6 +602,7 @@ When creating a charge you can use either a card, customer, or a token/existing 
 
 With a token (or an existing source):
 
+```csharp
 	var myCharge = new StripeChargeCreateOptions();
 
 	// always set these properties
@@ -522,7 +612,7 @@ With a token (or an existing source):
 	// set this if you want to
 	myCharge.Description = "Charge it like it's hot";
 
-    myCharge.SourceTokenOrExistingSourceId = *tokenId or existingSourceId*;
+	myCharge.SourceTokenOrExistingSourceId = *tokenId or existingSourceId*;
 
 	// set this property if using a customer - this MUST be set if you are using an existing source!
 	myCharge.CustomerId = *customerId*;
@@ -535,10 +625,12 @@ With a token (or an existing source):
 
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Create(myCharge);
-    
+```
+
 With a card:
 
-    // setting up the card
+```csharp
+	// setting up the card
 	var myCharge = new StripeChargeCreateOptions();
 
 	// always set these properties
@@ -547,7 +639,7 @@ With a card:
 
 	// set this if you want to
 	myCharge.Description = "Charge it like it's hot";
-    
+
 	myCharge.SourceCard = new SourceCard()
 	{
 		Number = "4242424242424242",
@@ -562,8 +654,8 @@ With a card:
 		Name = "Joe Meatballs",               // optional
 		Cvc = "1223"                          // optional
 	};
-    
-    // set this property if using a customer
+
+	// set this property if using a customer
 	myCharge.CustomerId = *customerId*;
 
 	// set this if you have your own application fees (you must have your application configured first within Stripe)
@@ -574,61 +666,155 @@ With a card:
 
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Create(myCharge);
+```
 
 ### Retrieving a charge
 
+```csharp
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Get(*chargeId*);
+```
 
 ### Capturing a charge
 
 If you set a charge to capture = false, you use this to capture the charge later. *amount* and *applicationFee* are not required.
 
+```csharp
 	var chargeService = new StripeChargeService();
 	StripeCharge stripeCharge = chargeService.Capture(*chargeId*, *amount*, *applicationFee*);
+```
 
 ### List all charges
 
+```csharp
 	var chargeService = new StripeChargeService();
 	IEnumerable<StripeCharge> response = chargeService.List(); // optional StripeChargeListOptions
+```
 
 StripeChargeListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
+
+Refunds
+-------
+
+### Creating a refund
+
+```csharp
+	var refundService = new StripeRefundService();
+
+	StripeRefund refund = refundService.Create(*chargeId*, new StripeRefundCreateOptions()
+	{
+		Amount = 300,
+		Reason = StripeRefundReasons.Fradulent
+	});
+```
+
+You can also specify Metadata, RefundApplicationFee (Connect Only), and ReverseTransfer (Connect Only)
+
+### Retrieving a refund
+
+```csharp
+	var refundService = new StripeRefundService();
+	StripeRefund refund = refundService.Get(*refundId*);
+```
+
+### Updating a refund
+
+```csharp
+	var refundService = new StripeRefundService();
+	StripeRefund refund =
+		refundService.Update(*refundId*, new StripeRefundUpdateOptions()
+			{
+				Metadata = new Dictionary<string, string>() {{ "SomeKey", "SomeValue" }}
+			});
+```
+
+### List all refunds
+
+```csharp
+	var refundService = new StripeRefundService();
+	IEnumerable<StripeRefund> response = refundService.List(); // optional StripeRefundListOptions
+```
+
+StripeRefundListOptions supports ChargeId and [StripeListOptions](#stripelistoptions-paging) for paging
+
+File Uploads
+------------
+
+### Creating a file upload
+
+When setting the Purpose of a file, all available options are listed as constants in [StripeFilePurpose](src/Stripe/Constants/StripeFilePurpose.cs).
+
+```csharp
+	var fileService = new StripeFileUploadService();
+
+	StripeFileUpload file = _fileService.Create("logo.png", *fileStream*, StripeFilePurpose.BusinessLogo);
+```
+
+In order to determine the mime type, your filename must end with one of the following extensions: jpeg, jpg, pdf, or png.
+
+### Retrieving a file upload
+
+```csharp
+	var fileService = new StripeFileUploadService();
+	StripeRefund refund = fileService.Get(*fileUploadId*);
+```
+
+### List all file uploads
+
+```csharp
+	var fileService = new StripeFileUploadService();
+	IEnumerable<StripeFileUpload> response = fileService.List(); // optional StripeFileUploadListOptions
+```
+
+StripeFileUploadListOptions supports a Purpose, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
 Invoices
 --------
 
 ### Retrieving an invoice
 
+```csharp
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Get(*invoiceId*);
+```
 
 ### Retrieving an upcoming invoice (for a single customer)
 
+```csharp
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Upcoming(*customerId*);
+```
 
 ### Create a customer invoice
 
+```csharp
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Create(*customerId*); // optional StripeInvoiceCreateOptions
+```
 
 ### Updating a customer invoice
 
+```csharp
 	var stripeInvoiceUpdateOptions = new StripeInvoiceUpdateOptions();
 	stripeInvoiceUpdateOptions.Closed = true;
 
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Update(*invoiceId*, stripeInvoiceUpdateOptions);
+```
 
 ### Paying an invoice
 
+```csharp
 	var invoiceService = new StripeInvoiceService();
 	StripeInvoice response = invoiceService.Pay(*invoiceId*);
+```
 
 ### List all invoices
 
+```csharp
 	var invoiceService = new StripeInvoiceService();
 	IEnumerable<StripeInvoice> response = invoiceService.List(); // optional StripeInvoiceListOptions
+```
 
 StripeInvoiceListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
@@ -639,6 +825,7 @@ Invoice Items
 
 Any invoice items you create for a customer will be added to their bill.
 
+```csharp
 	var myItem = new StripeInvoiceItemCreateOptions();
 	myItem.Amount = 1000;
 	myItem.Currency = "usd";            // "usd" only supported right now
@@ -647,14 +834,18 @@ Any invoice items you create for a customer will be added to their bill.
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	StripeInvoiceItem response = invoiceItemService.Create(myItem);
+```
 
 ### Retrieving an invoice item
 
+```csharp
 	var invoiceItemService = new StripeInvoiceItemService();
 	StripeInvoiceItem response = invoiceItemService.Get(*invoiceItemId*);
+```
 
 ### Updating an invoice item
 
+```csharp
 	var myUpdatedItem = new StripeInvoiceItemUpdateOptions();
 	myUpdatedItem.Amount = 1010;
 	myUpdatedItem.Currency = "usd";        // "usd" only supported right now
@@ -662,27 +853,54 @@ Any invoice items you create for a customer will be added to their bill.
 
 	var invoiceItemService = new StripeInvoiceItemService();
 	StripeInvoiceItem response = invoiceItemService.Update(*invoiceItemId*, myUpdatedItem);
+```
 
 ### Deleting an invoice item
 
+```csharp
 	var invoiceItemService = new StripeInvoiceItemService();
 	invoiceItemService.Delete(*invoiceItemId*);
+```
 
 ### List all invoice items
 
+```csharp
 	var invoiceItemService = new StripeInvoiceItemService();
 	IEnumerable<StripeInvoiceItem> response = invoiceItemService.List(); // optional StripeInvoiceItemListOptions
+```
 
 StripeInvoiceItemListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
+
+Country Specs
+-------------
+
+Each account's country can have different rules for required fields, payment methods, and currencies. The CountrySpecService allows you to receive this metadata.
+
+### Retrieving a CountrySpec
+
+```csharp
+	var countrySpecService = new CountrySpecService();
+	CountrySpec spec = countrySpecService.Get("US");
+```
+
+### List all CountrySpec's
+
+```csharp
+	var countrySpecService = new CountrySpecService();
+	CountrySpec spec = countrySpecService.List();
+```
+
+[StripeListOptions](#stripelistoptions-paging) for paging
 
 Accounts
 --------
 ### Creating an account
 
-When creating an account, you can create a standalone or managed account. Standalone accounts are managed by Stripe and the account owner directly. Managed accounts are handled by your platform. See the Stripe documentation for more information.  
+When creating an account, you can create a standalone or managed account. Standalone accounts are managed by Stripe and the account owner directly. Managed accounts are handled by your platform. See the Stripe documentation for more information.
 
 Since Stripe returns `ExternalAccounts` as a single array (contains StripeCard's and/or StripeBankAccount's), that type is a dynamic StripeList. These are split up as `ExternalCards` and `ExternalBankAccounts` for your convenience.
 
+```csharp
 	var account = new StripeAccountCreateOptions();
 	account.Email = "jayme@yoyoyo.com"  // this is required if it is not a managed account. the user is emailed on standalone accounts,
 	                                    // it's only used for reference on managed accounts
@@ -693,46 +911,59 @@ Since Stripe returns `ExternalAccounts` as a single array (contains StripeCard's
 	account.BusinessName = "Jayme Davis' GitHub, Inc";
 	account.BusinessUrl = "http://github.com/jaymedavis";
 
-	var accountService = new StripeAccountService(account);
+	var accountService = new StripeAccountService();
 	StripeAccount response = accountService.Create(account);
+```
 
 ### Retrieving an account
 
+```csharp
 	var accountService = new StripeAccountService();
 	StripeAccount response = accountService.Get(*accountId*);
+```
 
 ### Updating an account
 
 Updating an account has almost all the same available properties as creating an account.
 
+```csharp
 	var myAccount = new StripeAccountUpdateOptions();
 	account.BusinessUrl = "http://twitter.com/jaymed";
 
 	var accountService = new StripeAccountService();
 	StripeAccount response = accountService.Update(*accountId*, myAccount);
+```
 
 ### Deleting an account
 
+```csharp
 	var accountService = new StripeAccountService();
 	accountService.Delete(*accountId*);
+```
 
 Balance
 -------
 
 ### Retrieving your account balance
 
+```csharp
 	var balanceService = new StripeBalanceService();
 	StripeBalance response = balanceService.Get();
+```
 
 ### Retrieving a specific balance transaction
 
+```csharp
 	var balanceService = new StripeBalanceService();
 	StripeBalanceTransaction transaction = balanceService.Get(*balanceTransactionId*);
+```
 
 ### Listing balance transactions
 
+```csharp
 	var balanceService = new StripeBalanceService();
 	IEnumerable<StripeBalanceTransaction> balanceTransactions = balanceService.List(); // optional StripeBalanceTransactionListOptions
+```
 
 StripeBalanceTransactionListOptions supports filtering by a [StripeDateFilter](#stripedatefilter-date-filtering) for date created, a [StripeDateFilter](#stripedatefilter-date-filtering) for date available, currency, source, transfer, type, and supports [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -741,19 +972,21 @@ Disputes
 
 ### Updating a dispute
 
+```csharp
 	var disputeService = new StripeDisputeService();
 
 	// providing the dispute reason is optional
 	StripeDispute stripeDispute = disputeService.Update(*chargeId*, "customer ate the donut before I charged them, so they said it was free");
+```
 
 Recipients
 ----------
 
-**Note: recipients have been deprecated by Stripe - please use
-[Stripe Connnect](https://stripe.com/docs/connect) instead**
+**Note: recipients have been deprecated by Stripe - please use [Stripe Connnect](https://stripe.com/docs/connect) instead**
 
 ### Creating a recipient
 
+```csharp
 	var myRecipient = new StripeRecipientCreateOptions();
 	myRecipient.Name = "Bacon Industries Limited";
 	myRecipient.Type = "individual";                                        // "corporation" is also valid here.
@@ -765,9 +998,11 @@ Recipients
 
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Create(myRecipient);
+```
 
 ### Updating a recipient
 
+```csharp
 	var myRecipient = new StripeRecipientUpdateOptions();
 	myRecipient.Name = "Bacon Industries Limited";
 	myRecipient.TaxId = "000000000";                                        // optional
@@ -778,21 +1013,28 @@ Recipients
 
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Update(*recipientId*, myRecipient);
+```
 
 ### Retrieving a recipient
 
+```csharp
 	var recipientService = new StripeRecipientService();
 	StripeRecipient stripeRecipient = recipientService.Get(*recipientId*);
+```
 
 ### Deleting a recipient
 
+```csharp
 	var recipientService = new StripeRecipientService();
 	recipientService.Deleted(*recipientId*);
+```
 
 ### List all recipients
 
+```csharp
 	var recipientService = new StripeRecipientService();
 	IEnumerable<StripeRecipient> response = recipientService.List(); // optional StripeRecipientListOptions
+```
 
 StripeRecipientListOptions supports a verified flag and [StripeListOptions](#stripelistoptions-paging) for paging
 
@@ -801,6 +1043,7 @@ Transfers
 
 ### Creating a transfer to a recipient
 
+```csharp
 	var myTransfer = new StripeTransferCreateOptions();
 	myTransfer.Amount = 100;
 	myTransfer.Currency = "usd";
@@ -810,21 +1053,28 @@ Transfers
 
 	var transferService = new StripeTransferService();
 	StripeTransfer stripeTransfer = transferService.Create(myTransfer);
+```
 
 ### Retrieving a transfer
 
+```csharp
 	var transferService = new StripeTransferService();
 	StripeTransfer stripeTransfer = transferService.Get(*transferId*);
+```
 
 ### Cancel a transfer
 
+```csharp
 	var transferService = new StripeTransferService();
 	StripeTransfer stripeTransfer = transferService.Cancel(*transferId*);
+```
 
 ### List all transfers
 
+```csharp
 	var transferService = new StripeTransferService();
 	IEnumerable<StripeTransfer> response = transferService.List(); // optional StripeTransferListOptions
+```
 
 StripeTransferListOptions supports a RecipientId, Status ('pending', 'paid' or 'failed'), [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering (on both the created and date fields)
 
@@ -835,19 +1085,24 @@ If you do not specify an amount, the entire application fee is refunded.
 
 ### Retrieving an application fee
 
+```csharp
 	var feeService = new StripeApplicationFeeService();
 	StripeApplicationFee stripeApplicationFee = feeService.Get(*applicationFeeId*);
+```
 
 ### Refunding an application fee
 
+```csharp
 	var feeService = new StripeApplicationFeeService();
 	StripeApplicationFee stripeApplicationFee = feeService.Refund(*applicationFeeId*, *amount*);
+```
 
 StripeListOptions (paging)
 --------------------------
 
 All Stripe List methods support paging, using `limit`, `starting_after` and `ending_before` properties.  If you do not specify any options, `limit` will default to 10. Some examples of retrieving paged data from the StripeChargeService:
 
+```csharp
 	var chargeService = new StripeChargeService();
 
 	// get the first five results
@@ -866,12 +1121,14 @@ All Stripe List methods support paging, using `limit`, `starting_after` and `end
 		Limit = 5,
 		EndingBefore = nextPage.First().Id
 	});
+```
 
 StripeDateFilter (date filtering)
 ---------------------------------
 
 Many of the List methods support parameters to filter by date. To use this, use the `StripeDateFilter` class. You can combine the filters to make complex queries. Some examples are:
 
+```csharp
 	var chargeService = new StripeChargeService();
 
 	var chargesToday = chargeService.List(new StripeChargeListOptions {
@@ -884,6 +1141,7 @@ Many of the List methods support parameters to filter by date. To use this, use 
 			LessThan = DateTime.Now.Date
 		}
 	});
+```
 
 Expandable Properties
 ---------------------
@@ -892,12 +1150,14 @@ Many of the services support *expandable* properties. Setting an expandable prop
 
 For example:
 
+```csharp
 	var chargeService = new StripeChargeService();
 	chargeService.ExpandBalanceTransaction = true;
 	chargeService.ExpandCustomer = true;
 	chargeService.ExpandInvoice = true;
 
 	StripeCharge stripeCharge = chargeService.Get(*chargeId*);
+```
 
 When the StripeCharge is returned, the Customer, BalanceTransaction, and Invoice properties will be hydrated objects.
 
@@ -910,6 +1170,7 @@ Stripe sends Events (via webhooks) whenever an associated action occurs. The lis
 
 1) In your application, create a handler that looks something like the below:
 
+```csharp
 	namespace TheBestApplicationEverCreated
 	{
 		public class StripeHandler : IHttpHandler
@@ -934,10 +1195,13 @@ Stripe sends Events (via webhooks) whenever an associated action occurs. The lis
 			}
 		}
 	}
+```
 
 2) Create a StripeHandler.ashx in the root of your website (or wherever) that looks like this:
 
+```xml
 	<%@ WebHandler Language="C#" Class="StripeHandler" CodeBehind="StripeHandler.cs" %>
+```
 
 3) Login to Stripe and go to Account Settings, webhooks - from here, you can setup the url that points to your StripeHandler.ashx for testing.
 
@@ -947,27 +1211,31 @@ Whenever an Event is received, StripeEventUtility.ParseEvent(json) will convert 
 
 If you have the id and you want to retrieve the event
 
+```csharp
 	var eventService = new StripeEventService();
 	StripeEvent response = eventService.Get(*eventId*)
+```
 
 ### List all events
 
 You can list events in the same way everything else works in Stripe.net.
 
+```csharp
 	var eventService = new StripeEventService();
 	IEnumerable<StripeEvent> response = eventService.List(); // optional StripeEventListOptions
+```
 
 StripeEventListOptions supports a type, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
 
 Stripe Connect
 --------------
 
-The Stripe Connect documentation can be a little intimidating, so I am going to try to break it down a little. Stripe Connect gives you the ability to accept money on behalf of other accounts, 
+The Stripe Connect documentation can be a little intimidating, so I am going to try to break it down a little. Stripe Connect gives you the ability to accept money on behalf of other accounts,
 and access or modify connected accounts depending on permissions.
 
 1) The first thing you need to do is [register your platform](https://dashboard.stripe.com/account/applications/settings) with Stripe Connect.
 
-2) The next thing to do, is have another party connect to your site. To do this, put a link on your site which will start the authorization process, or you can use a 
+2) The next thing to do, is have another party connect to your site. To do this, put a link on your site which will start the authorization process, or you can use a
 [Stripe Connect Button](https://stripe.com/about/resources). Your link will need to contain some querystring parameters:
 
 	response_type: code
@@ -987,23 +1255,27 @@ their account.
 
 In Stripe.net, you can accomplish this with the following code:
 
+```csharp
 	var stripeOAuthTokenService = new StripeOAuthTokenService();
-	var stripeOAuthTokeCreateOptions = new StripeOAuthTokenCreateOptions()
+	var _stripeOAuthTokenCreateOptions = new StripeOAuthTokenCreateOptions()
 	{
 		ClientSecret = ConfigurationManager.AppSettings["StripeApiKey"],
 		Code = *the code returned from above*,
 		GrantType = "authorization_code"
 	};
 
-	StripeOAuthToken stripeOAuthToken = stripeOAuthTokenService.Create(_stripeOAuthTokeCreateOptions);
+	StripeOAuthToken stripeOAuthToken = stripeOAuthTokenService.Create(_stripeOAuthTokenCreateOptions);
+```
 
-5) You're done! Whenever you need to access the connected account, you simply need the StripeUserId from the StripeOAuthToken to be passed as part of the [StripeRequestOptions](#striperequestoptions) 
+5) You're done! Whenever you need to access the connected account, you simply need the StripeUserId from the StripeOAuthToken to be passed as part of the [StripeRequestOptions](#striperequestoptions)
 which all service calls now support as an optional parameter.
 
 For example, to get the plans on the connected account, you could run the following code:
 
+```csharp
 	var planService = new StripePlanService();
 	StripePlan response = planService.List(null /* StripeListOptions */, new StripeRequestOptions() { StripeConnectAccountId = *the StripeUserId on the StripeOAuthToken above* });
+```
 
 Depending on if your permissions are read_write or read_only, you can do anything on the connected account you can do on your own account just by passing the StripeUserId as
 part of StripeRequestOptions.
@@ -1011,13 +1283,15 @@ part of StripeRequestOptions.
 StripeRequestOptions
 --------------------
 
-All of the service methods accept an optional StripeRequestOptions object. This is used if you need an [Idempotency Key](https://stripe.com/docs/api?lang=curl#idempotent_requests), 
+All of the service methods accept an optional StripeRequestOptions object. This is used if you need an [Idempotency Key](https://stripe.com/docs/api?lang=curl#idempotent_requests),
 if you are using Stripe Connect, or if you want to pass the ApiKey on each method.
 
+```csharp
 	var requestOptions = new StripeRequestOptions();
 	requestOptions.ApiKey = *optional*;              // this is not required unless you choose to pass the apikey on every service call
 	requestOptions.IdempotencyKey = "some string";   // this is for Idempotent Requests - https://stripe.com/docs/api?lang=curl#idempotent_requests
 	requestOptions.StripeConnectAccountId = "acct_*" // if you are using Stripe Connect and want to issue a request on the connected account
+```
 
 Errors
 ------

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeAccountCardOptions
+    public class StripeAccountCardOptions : INestedOptions
     {
         [JsonProperty("external_account[object]")]
         internal string Object { get { return "card"; } }

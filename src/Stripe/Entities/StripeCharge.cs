@@ -35,8 +35,8 @@ namespace Stripe
         [JsonProperty("refunds")]
         public StripeList<StripeRefund> StripeRefundList { get; set; }
 
-        [JsonProperty("source")]
-        public StripeCard Source { get; set; }
+        [JsonConverter(typeof(SourceConverter))]
+        public Source Source { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -121,7 +121,21 @@ namespace Stripe
 
         // shipping
 
-        // application_fee
+        #region Expandable Application Fee
+        public string ApplicationFeeId { get; set; }
+
+        [JsonIgnore]
+        public StripeApplicationFee ApplicationFee { get; set; }
+
+        [JsonProperty("application_fee")]
+        internal object InternalApplicationFee
+        {
+            set
+            {
+                ExpandableProperty<StripeApplicationFee>.Map(value, s => ApplicationFeeId = s, o => ApplicationFee = o);
+            }
+        }
+        #endregion
 
         // destination
 

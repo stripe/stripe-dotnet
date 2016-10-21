@@ -1,4 +1,5 @@
-﻿using Machine.Specifications;
+﻿using System;
+using Machine.Specifications;
 
 namespace Stripe.Tests
 {
@@ -6,7 +7,12 @@ namespace Stripe.Tests
     {
         void IAssemblyContext.OnAssemblyStart()
         {
-            StripeConfiguration.SetApiKey("test_api_key_here");
+            var apiKey = "stripe_test_secret_key";
+
+            var envKey = Environment.GetEnvironmentVariable("stripe_test_secret_key");
+            if (!string.IsNullOrEmpty(envKey)) apiKey = envKey;
+
+            StripeConfiguration.SetApiKey(apiKey);
         }
 
         void IAssemblyContext.OnAssemblyComplete()

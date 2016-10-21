@@ -24,7 +24,6 @@ namespace Stripe.Tests
                 SourceCard = new SourceCard()
                 {
                     Name = "TestCard " + Guid.NewGuid(),
-                    ReceiptEmail = "testcard@" + Guid.NewGuid() + ".com",
                     ExpirationMonth = "10",
                     ExpirationYear = "2021",
                     Number = "4000000000000077",

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Stripe
@@ -7,6 +8,9 @@ namespace Stripe
     {
         public StripeEventService(string apiKey = null) : base(apiKey) { }
 
+
+
+        //Sync
         public virtual StripeEvent Get(string eventId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeEvent>.MapFromJson(
@@ -23,22 +27,25 @@ namespace Stripe
             );
         }
 
-#if !PORTABLE
-        public virtual async Task<StripeEvent> GetAsync(string eventId, StripeRequestOptions requestOptions = null)
+
+
+        //Async
+        public virtual async Task<StripeEvent> GetAsync(string eventId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeEvent>.MapFromJson(
                 await Requestor.GetStringAsync($"{Urls.Events}/{eventId}",
-                SetupRequestOptions(requestOptions))
+                SetupRequestOptions(requestOptions),
+                cancellationToken)
             );
         }
 
-        public virtual async Task<IEnumerable<StripeEvent>> ListAsync(StripeEventListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual async Task<IEnumerable<StripeEvent>> ListAsync(StripeEventListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeEvent>.MapCollectionFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Events, true),
-                SetupRequestOptions(requestOptions))
+                SetupRequestOptions(requestOptions),
+                cancellationToken)
             );
         }
-#endif
     }
 }

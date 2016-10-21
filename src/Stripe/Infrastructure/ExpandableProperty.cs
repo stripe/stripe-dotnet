@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Stripe.Infrastructure
 {
-    public static class ExpandableProperty<T> where T : StripeObject
+    internal static class ExpandableProperty<T> where T : StripeObject
     {
         public static void Map(object value, Action<string> updateId, Action<T> updateObject)
         {

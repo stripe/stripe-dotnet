@@ -4,11 +4,8 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-    /// <summary>
-    /// Use StripeCard instead, or SourceToken/SourceTokenOrExistingSourceId
-    /// </summary>
-    [Obsolete]
-    public class StripeSourceOptions
+    [Obsolete("This is going away in Stripe.net 7.0. Instead, use StripeCard, SourceToken, or SourceTokenOrExistingSourceId")]
+    public class StripeSourceOptions : INestedOptions
     {
         [JsonProperty("source")]
         public string TokenId { get; set; }

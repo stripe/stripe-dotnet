@@ -33,12 +33,16 @@ namespace Stripe
 
         [JsonProperty("source")]
         public SourceCard SourceCard { get; set; }
-        
+
+        [Obsolete("This is going away in Stripe.net 7.0")]
         [JsonProperty("source")]
         public StripeSourceOptions Source { get; set; }
 
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
+
+        [JsonProperty("validate")]
+        public bool? Validate { get; set; }
 
         #region Trial End
 

@@ -1,7 +1,5 @@
-﻿using System;
-using Machine.Specifications;
-using System.Linq;
-using System.Collections.Generic;
+﻿using Machine.Specifications;
+using System;
 
 namespace Stripe.Tests
 {
@@ -35,5 +33,8 @@ namespace Stripe.Tests
 
         It should_have_the_same_quantity = () =>
             _stripeSubscription.Quantity.ShouldEqual(2);
+
+        It should_have_a_recent_created_date = () =>
+            _stripeSubscription.Created.Value.ShouldBeGreaterThan(DateTime.Now.AddSeconds(-5));
     }
 }

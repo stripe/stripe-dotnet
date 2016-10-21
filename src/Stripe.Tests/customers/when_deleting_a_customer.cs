@@ -6,6 +6,7 @@ namespace Stripe.Tests
     {
         private static StripeCustomerService _stripeCustomerService;
         private static string _createdStripeCustomerId;
+        private static StripeDeleted _deletedCustomer;
 
         Establish context = () =>
         {
@@ -16,9 +17,15 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeCustomerService.Delete(_createdStripeCustomerId);
+            _deletedCustomer = _stripeCustomerService.Delete(_createdStripeCustomerId);
 
         It should_show_as_deleted = () =>
             _stripeCustomerService.Get(_createdStripeCustomerId).Deleted.ShouldEqual(true);
+
+        It should_have_the_id_on_stripe_deleted = () =>
+            _deletedCustomer.Id.ShouldEqual(_createdStripeCustomerId);
+
+        It should_have_the_deleted_flag_set_to_true = () =>
+            _deletedCustomer.Deleted.ShouldBeTrue();
     }
 }

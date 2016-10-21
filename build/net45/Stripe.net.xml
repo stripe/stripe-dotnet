@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Stripe.net</name>
+    </assembly>
+    <members>
+        <member name="T:Stripe.StripeDisputeListOptions">
+            <summary>
+            The optional arguments you can pass. <see href="https://stripe.com/docs/api#list_disputes">Stripe Documentation</see>
+            </summary>
+        </member>
+        <member name="P:Stripe.StripeAccountLegalEntityOptions.Gender">
+            <summary>
+            The gender of the individual responsible for the account (International regulations require either “male” or “female”)
+            </summary>
+        </member>
+        <member name="F:Stripe.StripeConfiguration.StripeApiVersion">
+            <summary>
+            <para>This is the API version that Stripe.net will automatically use when working with Stripe. You only need to be concerned if you are using webhooks (Stripe Events) and having issues.</para>
+            <para>If you notice webhooks are not working correctly, email Stripe and ask them to downgrade your API version to match the StripeApiVersion. Work is going on to catch up so this isn't necessary!</para>
+            </summary>
+        </member>
+        <member name="P:Stripe.StripeConfiguration.HttpMessageHandler">
+            <summary>
+            This option allows you to provide your own HttpMessageHandler. Useful with Android/iPhone and/or adding in ModernHttpClient.
+            </summary>
+        </member>
+    </members>
+</doc>
