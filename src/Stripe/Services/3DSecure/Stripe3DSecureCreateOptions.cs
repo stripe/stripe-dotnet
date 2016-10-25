@@ -1,0 +1,28 @@
+using Newtonsoft.Json;
+
+namespace Stripe
+{
+    /// <summary>
+    /// <see href="https://stripe.com/docs/api#create_three_d_secure">Stripe Documentation</see>
+    /// </summary>
+    public class Stripe3DSecureCreateOptions
+    {
+        [JsonProperty("amount")]
+        public int Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        [JsonProperty("return_url")]
+        public string ReturnUrl { get; set; }
+
+        /// <summary>
+        /// If you pass a card id, you must also pass the customer id
+        /// </summary>
+        [JsonProperty("card")]
+        public string CardTokenOrCardId { get; set; }
+
+        [JsonProperty("customer")]
+        public string CustomerId { get; set; }
+    }
+}
