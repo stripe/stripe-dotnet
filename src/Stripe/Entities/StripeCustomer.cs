@@ -14,7 +14,6 @@ namespace Stripe
         [JsonProperty("account_balance")]
         public int AccountBalance { get; set; }
 
-
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }

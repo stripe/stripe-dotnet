@@ -61,6 +61,7 @@
     <Compile Include="Constants\BankAccountHolderType.cs" />
     <Compile Include="Constants\StripeFilePurpose.cs" />
     <Compile Include="Entities\CustomerBankAccount.cs" />
+    <Compile Include="Entities\Stripe3DSecure.cs" />
     <Compile Include="Entities\Source.cs" />
     <Compile Include="Entities\CountrySpec.cs" />
     <Compile Include="Entities\StripeDeleted.cs" />
@@ -92,6 +93,8 @@
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Infrastructure\Client.cs" />
     <Compile Include="Infrastructure\SourceConverter.cs" />
+    <Compile Include="Services\3DSecure\Stripe3DSecureService.cs" />
+    <Compile Include="Services\3DSecure\Stripe3DSecureCreateOptions.cs" />
     <Compile Include="Services\ApplicationFeeRefunds\StripeApplicationFeeRefundUpdateOptions.cs" />
     <Compile Include="Services\ApplicationFeeRefunds\StripeApplicationFeeRefundCreateOptions.cs" />
     <Compile Include="Services\ApplicationFeeRefunds\StripeApplicationFeeRefundService.cs" />

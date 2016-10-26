@@ -64,6 +64,9 @@ namespace Stripe
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("three_d_secure")]
+        public Dictionary<string, string> ThreeDSecure { get; set; }
+
         [JsonProperty("tokenization_method")]
         public string TokenizationMethod { get; set; }
 

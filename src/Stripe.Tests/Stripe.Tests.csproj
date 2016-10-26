@@ -59,6 +59,8 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="3d_secure\when_creating_3d_secure_for_a_customer.cs" />
+    <Compile Include="3d_secure\when_creating_3d_secure.cs" />
     <Compile Include="account\account_behaviors.cs" />
     <Compile Include="account\test_data\stripe_account_create_options.cs" />
     <Compile Include="account\when_creating_an_account_with_a_legal_entity.cs" />
