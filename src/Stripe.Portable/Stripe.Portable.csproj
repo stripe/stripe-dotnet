@@ -67,6 +67,9 @@
     <Compile Include="..\Stripe\Entities\Source.cs">
       <Link>Entities\Source.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Entities\Stripe3DSecure.cs">
+      <Link>Entities\Stripe3DSecure.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Entities\StripeAccount.cs">
       <Link>Entities\StripeAccount.cs</Link>
     </Compile>
@@ -246,6 +249,12 @@
     </Compile>
     <Compile Include="..\Stripe\Properties\InternalsVisibleTo.cs">
       <Link>Properties\InternalsVisibleTo.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\3DSecure\Stripe3DSecureCreateOptions.cs">
+      <Link>Services\3DSecure\Stripe3DSecureCreateOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Services\3DSecure\Stripe3DSecureService.cs">
+      <Link>Services\3DSecure\Stripe3DSecureService.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Services\Account\StripeAccountBankAccountOptions.cs">
       <Link>Services\Account\StripeAccountBankAccountOptions.cs</Link>
