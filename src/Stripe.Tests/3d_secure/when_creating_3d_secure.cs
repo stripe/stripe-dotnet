@@ -38,6 +38,6 @@ namespace Stripe.Tests
             _3DSecure.RedirectUrl.ShouldContain("http");
 
         It should_have_a_card_with_3d_secure_hash = () =>
-            _3DSecure.Card.Stripe3DSecure.Keys.ShouldContain("supported");
+            _3DSecure.Card.ThreeDSecure.Keys.ShouldContain("supported");
     }
 }

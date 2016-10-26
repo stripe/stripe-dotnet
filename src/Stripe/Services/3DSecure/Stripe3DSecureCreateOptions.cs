@@ -2,9 +2,6 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    /// <summary>
-    /// <see href="https://stripe.com/docs/api#create_three_d_secure">Stripe Documentation</see>
-    /// </summary>
     public class Stripe3DSecureCreateOptions
     {
         [JsonProperty("amount")]
