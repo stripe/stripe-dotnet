@@ -12,17 +12,18 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        public bool UseStripeJsIframe { get; set; }
-
         public string ReturnUrl { get; set; }
 
         [JsonProperty("return_url")]
         internal string ReturnUrlInternal
         {
-            get { return UseStripeJsIframe ? "_callback" : ReturnUrl; }
+            get { return ReturnUrl ?? "_callback"; }
         }
 
         [JsonProperty("card")]
         public string CardId { get; set; }
+
+        [JsonProperty("customer")]
+        public string CustomerId { get; set; }
     }
 }
