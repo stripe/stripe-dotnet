@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Machine.Specifications;
+﻿using Machine.Specifications;
+using Stripe.Infrastructure;
 using Stripe.Tests.test_data;
 
 namespace Stripe.Tests
@@ -13,7 +10,7 @@ namespace Stripe.Tests
         private static string _result;
 
         Because of = () =>
-            _result = (new test_service()).ApplyAllParameters(null, original, false);
+            _result = new test_service().ApplyAllParameters(null, original, false);
 
         It should_return_original = () =>
             _result.ShouldEqual(original);

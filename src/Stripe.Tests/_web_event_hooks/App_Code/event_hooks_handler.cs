@@ -1,5 +1,5 @@
-﻿using System.Web;
-using System.IO;
+﻿using System.IO;
+using System.Web;
 
 namespace Stripe.Tests
 {

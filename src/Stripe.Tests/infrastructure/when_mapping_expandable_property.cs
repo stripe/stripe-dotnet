@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Machine.Specifications;
+﻿using Machine.Specifications;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Stripe.Infrastructure;
 
 namespace Stripe.Tests

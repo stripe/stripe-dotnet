@@ -1,6 +1,5 @@
-﻿using Machine.Specifications;
-using System;
-using System.Configuration;
+﻿using System.Configuration;
+using Machine.Specifications;
 
 namespace Stripe.Tests
 {

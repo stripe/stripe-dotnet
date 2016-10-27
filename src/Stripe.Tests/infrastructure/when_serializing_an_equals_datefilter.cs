@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Machine.Specifications;
+﻿using Machine.Specifications;
+using Stripe.Infrastructure;
 using Stripe.Tests.test_data;
 
 namespace Stripe.Tests
@@ -17,7 +14,7 @@ namespace Stripe.Tests
             _testObject = new sample_object();
 
         Because of = () =>
-            _result = (new test_service()).ApplyAllParameters(_testObject, origurl, false);
+            _result = new test_service().ApplyAllParameters(_testObject, origurl, false);
 
         It should_contain_plain_equals = () =>
             _result.ShouldContain("dateequals=946684800");

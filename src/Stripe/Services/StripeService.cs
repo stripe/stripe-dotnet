@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Stripe
+﻿namespace Stripe
 {
     public abstract class StripeService
     {

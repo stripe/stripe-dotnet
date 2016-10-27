@@ -1,6 +1,5 @@
-﻿using System;
+﻿using System.Linq;
 using Machine.Specifications;
-using System.Linq;
 
 namespace Stripe.Tests
 {

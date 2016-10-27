@@ -229,23 +229,23 @@
     <Compile Include="..\Stripe\Infrastructure\JsonConverters\StripeExternalAccountConverter.cs">
       <Link>Infrastructure\JsonConverters\StripeExternalAccountConverter.cs</Link>
     </Compile>
-    <Compile Include="..\Stripe\Infrastructure\Mapper.cs">
-      <Link>Infrastructure\Mapper.cs</Link>
-    </Compile>
     <Compile Include="..\Stripe\Infrastructure\MimeTypes.cs">
       <Link>Infrastructure\MimeTypes.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Infrastructure\ParameterBuilder.cs">
       <Link>Infrastructure\ParameterBuilder.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Infrastructure\Public\Mapper.cs">
+      <Link>Infrastructure\Public\Mapper.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Infrastructure\Public\StripeConfiguration.cs">
+      <Link>Infrastructure\Public\StripeConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\Stripe\Infrastructure\Public\StripeException.cs">
+      <Link>Infrastructure\Public\StripeException.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Infrastructure\Requestor.cs">
       <Link>Infrastructure\Requestor.cs</Link>
-    </Compile>
-    <Compile Include="..\Stripe\Infrastructure\StripeConfiguration.cs">
-      <Link>Infrastructure\StripeConfiguration.cs</Link>
-    </Compile>
-    <Compile Include="..\Stripe\Infrastructure\StripeException.cs">
-      <Link>Infrastructure\StripeException.cs</Link>
     </Compile>
     <Compile Include="..\Stripe\Infrastructure\Urls.cs">
       <Link>Infrastructure\Urls.cs</Link>

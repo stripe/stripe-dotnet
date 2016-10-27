@@ -1,8 +1,8 @@
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Stripe.Infrastructure;
 
-﻿namespace Stripe
+namespace Stripe
 {
     public class Stripe3DSecureService : StripeBasicService<Stripe3DSecure>
     {
