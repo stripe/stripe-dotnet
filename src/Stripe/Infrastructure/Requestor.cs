@@ -203,7 +203,7 @@ namespace Stripe
             fileContent.Headers.ContentType = new MediaTypeHeaderValue(MimeTypes.GetMimeType(fileName));
 
             var multiPartContent =
-                new MultipartFormDataContent($"----------Upload: {DateTime.UtcNow.Ticks.ToString("x")}")
+                new MultipartFormDataContent($"----------Upload: { DateTime.UtcNow.Ticks.ToString("x") }")
                 {
                     { new StringContent(purpose), "\"purpose\"" },
                     fileContent

@@ -3,7 +3,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeEvidence
+    public class StripeEvidence : StripeEntity
     {
         [JsonProperty("access_activity_log")]
         public string AccessActivityLog { get; set; }

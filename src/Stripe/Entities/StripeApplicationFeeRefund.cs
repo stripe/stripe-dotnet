@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeApplicationFeeRefund : StripeObject
+    public class StripeApplicationFeeRefund : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }

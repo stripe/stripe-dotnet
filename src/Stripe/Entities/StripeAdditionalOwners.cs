@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeAdditionalOwners
+    public class StripeAdditionalOwners : StripeEntity
     {
         [JsonProperty("address")]
         public StripeAddress Address { get; set; }

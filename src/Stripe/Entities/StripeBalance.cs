@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeBalance
+    public class StripeBalance : StripeEntity
     {
         [JsonProperty("livemode")]
         public bool LiveMode { get; set; }

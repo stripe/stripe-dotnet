@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeTransferReversal : StripeObject
+    public class StripeTransferReversal : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }

@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-    public class StripeTransfer : StripeObject
+    public class StripeTransfer : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }

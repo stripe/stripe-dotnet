@@ -4,7 +4,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeAccountVerification
+    public class StripeAccountVerification : StripeEntity
     {
         [JsonProperty("disabled_reason")]
         public string DisabledReason { get; set; }

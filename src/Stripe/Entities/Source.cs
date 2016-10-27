@@ -6,7 +6,7 @@
         BankAccount
     }
 
-    public class Source : StripeObject
+    public class Source : StripeEntityWithId
     {
         public SourceType Type { get; set; }
 

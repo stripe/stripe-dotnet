@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeTermsOfServiceAcceptance
+    public class StripeTermsOfServiceAcceptance : StripeEntity
     {
         [JsonProperty("date")]
         [JsonConverter(typeof(StripeDateTimeConverter))]

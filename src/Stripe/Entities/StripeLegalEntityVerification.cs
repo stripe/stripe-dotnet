@@ -3,7 +3,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeLegalEntityVerification
+    public class StripeLegalEntityVerification : StripeEntity
     {
         [JsonProperty("details")]
         public string Details { get; set; }

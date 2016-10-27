@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public abstract class StripeObject
+    public abstract class StripeEntityWithId : StripeEntity
     {
         [JsonProperty("id")]
         public string Id { get; set; }

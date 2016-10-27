@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeRecipientActiveAccount : StripeObject
+    public class StripeRecipientActiveAccount : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }

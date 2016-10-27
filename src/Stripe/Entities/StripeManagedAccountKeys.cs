@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeManagedAccountKeys
+    public class StripeManagedAccountKeys : StripeEntity
     {
         [JsonProperty("secret")]
         public string Secret { get; set; }

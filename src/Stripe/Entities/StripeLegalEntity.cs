@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeLegalEntity
+    public class StripeLegalEntity : StripeEntity
     {
         [JsonProperty("additional_owners")]
         public List<StripeAdditionalOwners> AdditionalOwners { get; set; }

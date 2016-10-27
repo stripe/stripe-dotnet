@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeBirthDay
+    public class StripeBirthDay : StripeEntity
     {
         [JsonProperty("day")]
         public int? Day { get; set; }

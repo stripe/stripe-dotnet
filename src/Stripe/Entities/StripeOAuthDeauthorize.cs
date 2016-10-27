@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeOAuthDeauthorize
+    public class StripeOAuthDeauthorize : StripeEntity
     {
         [JsonProperty("stripe_user_id")]
         public string StripeUserId { get; set; }

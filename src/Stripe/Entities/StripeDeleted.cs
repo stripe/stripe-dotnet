@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeDeleted : StripeObject
+    public class StripeDeleted : StripeEntityWithId
     {
         [JsonProperty("deleted")]
         public bool Deleted { get; set; }

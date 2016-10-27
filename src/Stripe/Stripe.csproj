@@ -77,7 +77,8 @@
     <Compile Include="Entities\StripeLegalEntityVerification.cs" />
     <Compile Include="Entities\StripeLegalEntity.cs" />
     <Compile Include="Entities\StripeOAuthDeauthorize.cs" />
-    <Compile Include="Entities\StripeObject.cs" />
+    <Compile Include="Entities\Base\StripeEntity.cs" />
+    <Compile Include="Entities\Base\StripeEntityWithId.cs" />
     <Compile Include="Entities\StripeTermsOfServiceAcceptance.cs" />
     <Compile Include="Entities\StripeTransferSchedule.cs" />
     <Compile Include="Entities\StripeAccountVerification.cs" />
@@ -92,7 +93,7 @@
     <Compile Include="Infrastructure\MimeTypes.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Infrastructure\Client.cs" />
-    <Compile Include="Infrastructure\SourceConverter.cs" />
+    <Compile Include="Infrastructure\JsonConverters\SourceConverter.cs" />
     <Compile Include="Services\3DSecure\Stripe3DSecureService.cs" />
     <Compile Include="Services\3DSecure\Stripe3DSecureCreateOptions.cs" />
     <Compile Include="Services\ApplicationFeeRefunds\StripeApplicationFeeRefundUpdateOptions.cs" />
@@ -105,7 +106,7 @@
     <Compile Include="Services\FileUploads\StripeFileUploadListOptions.cs" />
     <Compile Include="Services\FileUploads\StripeFileUploadService.cs" />
     <Compile Include="Services\INestedOption.cs" />
-    <Compile Include="Infrastructure\StripeExternalAccountConverter.cs" />
+    <Compile Include="Infrastructure\JsonConverters\StripeExternalAccountConverter.cs" />
     <Compile Include="Services\Account\StripeAccountBankAccountOptions.cs" />
     <Compile Include="Services\Account\StripeAccountLegalEntityOptions.cs" />
     <Compile Include="Services\Account\StripeAccountUpdateOptions.cs" />
@@ -158,7 +159,7 @@
     <Compile Include="Entities\StripeTransfer.cs" />
     <Compile Include="Infrastructure\EpochTime.cs" />
     <Compile Include="Infrastructure\StripeConfiguration.cs" />
-    <Compile Include="Infrastructure\StripeDateTimeConverter.cs" />
+    <Compile Include="Infrastructure\JsonConverters\StripeDateTimeConverter.cs" />
     <Compile Include="Infrastructure\Mapper.cs" />
     <Compile Include="Entities\StripeCustomer.cs" />
     <Compile Include="Properties\InternalsVisibleTo.cs" />

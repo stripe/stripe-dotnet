@@ -4,7 +4,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripePeriod
+    public class StripePeriod : StripeEntity
     {
         [JsonProperty("start")]
         [JsonConverter(typeof(StripeDateTimeConverter))]

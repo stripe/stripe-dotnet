@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-	public class StripeEventData
+	public class StripeEventData : StripeEntity
 	{
 		[JsonProperty("previous_attributes")]
 		public dynamic PreviousAttributes { get; set; }
