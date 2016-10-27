@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Stripe.Infrastructure;
 
-﻿namespace Stripe
+namespace Stripe
 {
     public class StripeApplicationFeeRefundService : StripeBasicService<StripeApplicationFeeRefund>
     {

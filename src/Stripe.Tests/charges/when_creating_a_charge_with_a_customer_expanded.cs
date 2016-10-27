@@ -1,5 +1,5 @@
-﻿using Machine.Specifications;
-using System.Linq;
+﻿using System.Linq;
+using Machine.Specifications;
 
 namespace Stripe.Tests
 {

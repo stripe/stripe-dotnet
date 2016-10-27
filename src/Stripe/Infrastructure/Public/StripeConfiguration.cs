@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Reflection;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {

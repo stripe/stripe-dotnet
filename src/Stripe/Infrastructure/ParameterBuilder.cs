@@ -1,13 +1,11 @@
-﻿using Newtonsoft.Json;
-using Stripe.Infrastructure;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
-namespace Stripe
+namespace Stripe.Infrastructure
 {
     internal static class ParameterBuilder
     {

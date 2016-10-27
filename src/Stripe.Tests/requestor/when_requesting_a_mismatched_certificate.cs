@@ -1,8 +1,4 @@
-﻿using System.Net;
-using Machine.Specifications;
-using System;
-
-namespace Stripe.Tests
+﻿namespace Stripe.Tests
 {
     //public class when_requesting_a_mismatched_certificate
     //{

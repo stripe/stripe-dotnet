@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using System.Threading;
+﻿using System.Reflection;
 using Machine.Specifications;
 
 namespace Stripe.Tests

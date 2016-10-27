@@ -21,7 +21,7 @@ namespace Stripe.Infrastructure
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var list = (JObject.Load(reader)).ToObject<StripeList<dynamic>>();
+            var list = JObject.Load(reader).ToObject<StripeList<dynamic>>();
 
             var result = new List<dynamic>();
 
