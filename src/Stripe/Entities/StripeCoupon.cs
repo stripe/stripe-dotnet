@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeCoupon : StripeObject
+    public class StripeCoupon : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }

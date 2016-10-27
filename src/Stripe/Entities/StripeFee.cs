@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeFee
+    public class StripeFee : StripeEntity
     {
         [JsonProperty("amount")]
         public int Amount { get; set; }

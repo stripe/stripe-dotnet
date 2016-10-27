@@ -4,7 +4,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeEvidenceDetails
+    public class StripeEvidenceDetails : StripeEntity
     {
         [JsonProperty("due_by")]
         [JsonConverter(typeof(StripeDateTimeConverter))]

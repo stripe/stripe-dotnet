@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeTransferSchedule
+    public class StripeTransferSchedule : StripeEntity
     {
         [JsonProperty("delay_days")]
         public int DelayDays { get; set; }

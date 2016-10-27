@@ -4,7 +4,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeFileUpload : StripeObject
+    public class StripeFileUpload : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }
