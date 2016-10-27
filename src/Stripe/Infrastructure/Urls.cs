@@ -40,6 +40,8 @@
 
         public static string ApplicationFees => BaseUrl + "/application_fees";
 
+        public static string ThreeDSecure => BaseUrl + "/3d_secure";
+
         internal static string BaseUrl => "https://api.stripe.com/v1";
 
         public static string OAuthToken => BaseConnectUrl + "/oauth/token";

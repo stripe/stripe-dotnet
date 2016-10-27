@@ -10,6 +10,7 @@ Stripe.net.dll
 # user/vs files
 *.user
 .vs
+*.suo
 
 # portable/xamarin
 Stripe.userprefs

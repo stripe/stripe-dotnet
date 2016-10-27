@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="Constants\BankAccountHolderType.cs" />
     <Compile Include="Constants\StripeFilePurpose.cs" />
+    <Compile Include="Constants\StripeThreeDSecureStatuses.cs" />
     <Compile Include="Entities\CustomerBankAccount.cs" />
     <Compile Include="Entities\Stripe3DSecure.cs" />
     <Compile Include="Entities\Source.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Entities\Base\StripeEntity.cs" />
     <Compile Include="Entities\Base\StripeEntityWithId.cs" />
     <Compile Include="Entities\StripeTermsOfServiceAcceptance.cs" />
+    <Compile Include="Entities\StripeThreeDSecure.cs" />
     <Compile Include="Entities\StripeTransferSchedule.cs" />
     <Compile Include="Entities\StripeAccountVerification.cs" />
     <Compile Include="Entities\StripeList.cs" />
@@ -131,6 +133,8 @@
     <Compile Include="Services\StripeRequestOptions.cs" />
     <Compile Include="Services\StripeService.cs" />
     <Compile Include="Services\Subscriptions\SubscriptionSharedOptions.cs" />
+    <Compile Include="Services\ThreeDSecure\StripeThreeDSecureCreateOptions.cs" />
+    <Compile Include="Services\ThreeDSecure\StripeThreeDSecureService.cs" />
     <Compile Include="Services\_sources_token\BankAccountOptions.cs" />
     <Compile Include="Services\_refactor\StripeSourceOptions.cs" />
     <Compile Include="Services\_refactor\StripeCreditCardOptions.cs" />
