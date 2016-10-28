@@ -7,7 +7,7 @@ namespace Stripe.Tests
         private static StripeCharge _charge;
         private static StripeApplicationFeeRefund _refund;
 
-        private Establish context = () =>
+        Establish context = () =>
         {
             // create a managed account
             var accountOptions = test_data.stripe_account_create_options.ValidAccountWithBankAccount();

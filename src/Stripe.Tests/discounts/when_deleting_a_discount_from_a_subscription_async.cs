@@ -9,7 +9,7 @@ namespace Stripe.Tests
         private static StripeSubscription _subscription;
         private static StripeDeleted _deleted;
 
-        private Establish context = () =>
+        Establish context = () =>
         {
             _discountService = new StripeDiscountService();
 

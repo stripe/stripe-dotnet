@@ -10,7 +10,7 @@ namespace Stripe.Tests
         private static StripeCustomer _createdCustomer;
         private static StripeCustomer _updatedCustomer;
 
-        private Establish context = () =>
+        Establish context = () =>
         {
             _customerService = new StripeCustomerService();
 
