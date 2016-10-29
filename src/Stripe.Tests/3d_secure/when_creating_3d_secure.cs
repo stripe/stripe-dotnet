@@ -7,7 +7,7 @@ namespace Stripe.Tests
         private static StripeToken _token;
         private static Stripe3DSecure _3DSecure;
 
-        private Establish context = () =>
+        Establish context = () =>
         {
             var tokenOptions = test_data.stripe_token_create_options.Valid();
             tokenOptions.Card.Number = "4000000000003055";

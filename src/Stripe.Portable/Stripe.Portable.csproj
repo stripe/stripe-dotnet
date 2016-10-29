@@ -244,6 +244,9 @@
     <Compile Include="..\Stripe\Infrastructure\Public\StripeException.cs">
       <Link>Infrastructure\Public\StripeException.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Infrastructure\Public\StripeResponse.cs">
+      <Link>Infrastructure\Public\StripeResponse.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Infrastructure\Requestor.cs">
       <Link>Infrastructure\Requestor.cs</Link>
     </Compile>

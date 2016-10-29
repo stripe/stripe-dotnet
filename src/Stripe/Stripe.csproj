@@ -88,6 +88,7 @@
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Infrastructure\Client.cs" />
     <Compile Include="Infrastructure\JsonConverters\SourceConverter.cs" />
+    <Compile Include="Infrastructure\Public\StripeResponse.cs" />
     <Compile Include="Services\3DSecure\Stripe3DSecureService.cs" />
     <Compile Include="Services\3DSecure\Stripe3DSecureCreateOptions.cs" />
     <Compile Include="Services\ApplicationFeeRefunds\StripeApplicationFeeRefundUpdateOptions.cs" />

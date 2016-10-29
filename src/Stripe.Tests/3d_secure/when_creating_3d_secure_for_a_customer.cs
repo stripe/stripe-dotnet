@@ -7,7 +7,7 @@ namespace Stripe.Tests
         private static StripeCustomer _customer;
         private static Stripe3DSecure _3DSecure;
 
-        private Establish context = () =>
+        Establish context = () =>
         {
             var customerOptions = test_data.stripe_customer_create_options.ValidCard();
             _customer = new StripeCustomerService().Create(customerOptions);

@@ -2,6 +2,6 @@
 {
     public abstract class StripeEntity
     {
-        public string StripeRawJson { get; set; }
+        public StripeResponse StripeResponse { get; set; }
     }
 }

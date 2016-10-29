@@ -16,7 +16,7 @@ namespace Stripe.Tests
         private static StripeDispute _disputedChargeOne;
         private static StripeDispute _disputedChargeTwo;
 
-        private Establish context = () =>
+        Establish context = () =>
         {
             var chargeService = new StripeChargeService();
             var disputedOptions = test_data.stripe_dispute_options.DisputedCard();
