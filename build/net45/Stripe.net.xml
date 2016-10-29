@@ -4,6 +4,11 @@
         <name>Stripe.net</name>
     </assembly>
     <members>
+        <member name="P:Stripe.Stripe3DSecureCreateOptions.CardTokenOrCardId">
+            <summary>
+            If you pass a card id, you must also pass the customer id
+            </summary>
+        </member>
         <member name="T:Stripe.StripeDisputeListOptions">
             <summary>
             The optional arguments you can pass. <see href="https://stripe.com/docs/api#list_disputes">Stripe Documentation</see>

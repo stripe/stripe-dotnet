@@ -15,6 +15,11 @@
             This option allows you to provide your own HttpMessageHandler. Useful with Android/iPhone and/or adding in ModernHttpClient.
             </summary>
         </member>
+        <member name="P:Stripe.Stripe3DSecureCreateOptions.CardTokenOrCardId">
+            <summary>
+            If you pass a card id, you must also pass the customer id
+            </summary>
+        </member>
         <member name="P:Stripe.StripeAccountLegalEntityOptions.Gender">
             <summary>
             The gender of the individual responsible for the account (International regulations require either “male” or “female”)
