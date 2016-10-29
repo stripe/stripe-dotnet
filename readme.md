@@ -44,7 +44,7 @@ If it has, please leave a comment or a [reaction](https://github.com/blog/2119-a
 Quick Start
 -----------
 
-It is recommended that you install Stripe.net via NuGet.
+It is recommended that you install Stripe.net via NuGet `nuget install Stripe.net`.
 
 Next you will need to provide Stripe.net with your api key. There are 4 ways to do this:
 
