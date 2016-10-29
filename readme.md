@@ -24,7 +24,7 @@
 [Invoices](#invoices)  
 [Invoice Items](#invoice-items)  
 [Metadata](#metadata)  
-[OAuth](#stripe-connect) (see stripe connect)
+[OAuth](#stripe-connect) (see stripe connect)`  
 [Plans](#plans)  
 [Recipients](#recipients)  
 [Refunds](#refunds)  
