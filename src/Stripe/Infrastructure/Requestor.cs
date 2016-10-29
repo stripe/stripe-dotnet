@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -24,35 +25,35 @@ namespace Stripe.Infrastructure
 
 
         // Sync
-        public static string GetString(string url, StripeRequestOptions requestOptions)
+        public static StripeResponse GetString(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
 
             return ExecuteRequest(wr);
         }
 
-        public static string PostString(string url, StripeRequestOptions requestOptions)
+        public static StripeResponse PostString(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
 
             return ExecuteRequest(wr);
         }
 
-        public static string Delete(string url, StripeRequestOptions requestOptions)
+        public static StripeResponse Delete(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Delete, requestOptions);
 
             return ExecuteRequest(wr);
         }
 
-        public static string PostStringBearer(string url, StripeRequestOptions requestOptions)
+        public static StripeResponse PostStringBearer(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions, true);
 
             return ExecuteRequest(wr);
         }
 
-        public static string PostFile(string url, string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions)
+        public static StripeResponse PostFile(string url, string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
 
@@ -61,49 +62,48 @@ namespace Stripe.Infrastructure
             return ExecuteRequest(wr);
         }
 
-        private static string ExecuteRequest(HttpRequestMessage requestMessage)
+        private static StripeResponse ExecuteRequest(HttpRequestMessage requestMessage)
         {
             var response = HttpClient.SendAsync(requestMessage).Result;
             var responseText = response.Content.ReadAsStringAsync().Result;
 
             if (response.IsSuccessStatusCode)
-                return responseText;
+                return BuildResponseData(response, responseText);
 
             throw BuildStripeException(response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
 
 
-
         // Async
-        public static Task<string> GetStringAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<StripeResponse> GetStringAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
 
             return ExecuteRequestAsync(wr, cancellationToken);
         }
 
-        public static Task<string> PostStringAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<StripeResponse> PostStringAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
 
             return ExecuteRequestAsync(wr, cancellationToken);
         }
 
-        public static Task<string> DeleteAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<StripeResponse> DeleteAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Delete, requestOptions);
 
             return ExecuteRequestAsync(wr, cancellationToken);
         }
 
-        public static Task<string> PostStringBearerAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<StripeResponse> PostStringBearerAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions, true);
 
             return ExecuteRequestAsync(wr, cancellationToken);
         }
 
-        public static Task<string> PostFileAsync(string url, string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<StripeResponse> PostFileAsync(string url, string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
 
@@ -112,12 +112,12 @@ namespace Stripe.Infrastructure
             return ExecuteRequestAsync(wr, cancellationToken);
         }
 
-        private static async Task<string> ExecuteRequestAsync(HttpRequestMessage requestMessage, CancellationToken cancellationToken = default(CancellationToken))
+        private static async Task<StripeResponse> ExecuteRequestAsync(HttpRequestMessage requestMessage, CancellationToken cancellationToken = default(CancellationToken))
         {
             var response = await HttpClient.SendAsync(requestMessage, cancellationToken);
 
             if (response.IsSuccessStatusCode)
-                return await response.Content.ReadAsStringAsync();
+                return BuildResponseData(response, await response.Content.ReadAsStringAsync());
 
             throw BuildStripeException(response.StatusCode, requestMessage.RequestUri.AbsoluteUri, await response.Content.ReadAsStringAsync());
         }
@@ -217,6 +217,18 @@ namespace Stripe.Infrastructure
                 : Mapper<StripeError>.MapFromJson(responseContent, "error");
 
             return new StripeException(statusCode, stripeError, stripeError.Message);
+        }
+
+        private static StripeResponse BuildResponseData(HttpResponseMessage response, string responseText)
+        {
+            var result = new StripeResponse
+            {
+                RequestId = response.Headers.GetValues("Request-Id").First(),
+                RequestDate = Convert.ToDateTime(response.Headers.GetValues("Date").First()),
+                ResponseJson = responseText
+            };
+
+            return result;
         }
     }
 }

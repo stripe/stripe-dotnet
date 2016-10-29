@@ -85,6 +85,7 @@
     <Compile Include="bank_accounts\when_updating_a_bank_account.cs" />
     <Compile Include="bank_accounts\when_creating_a_bank_account.cs" />
     <Compile Include="card\when_creating_a_card.cs" />
+    <Compile Include="_stripe_response\test_data\stripe_charge_list_options.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_bank_account.cs" />
     <Compile Include="charges\when_serializing_a_stripe_charge.cs" />
     <Compile Include="charges\when_refunding_and_setting_fraud_details.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="transfers\when_getting_a_transfer_with_application_fee.cs" />
     <Compile Include="transfers\when_creating_a_failed_transfer.cs" />
     <Compile Include="transfers\when_listing_transfers.cs" />
+    <Compile Include="_stripe_response\when_requesting_something_from_stripe.cs" />
     <Compile Include="_web_event_hooks\App_Code\event_hooks_handler.cs" />
     <Compile Include="invoices\when_getting_an_invoice.cs" />
     <Compile Include="invoices\when_getting_an_upcoming_invoice.cs" />
