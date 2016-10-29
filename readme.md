@@ -3,8 +3,10 @@
 
 **Stripe Services**
 
+[3D Secure](#) (needs documentation)  
 [Accounts](#accounts)  
 [Application Fees](#application-fees)  
+[Application Fee Refunds](#) (needs documentation)  
 [Balance](#balance)  
 [Bank Accounts](#bank-accounts)  
 [Cards](#cards)  
@@ -13,6 +15,7 @@
 [Country Specs](#country-specs)  
 [Coupons](#coupons)  
 [Customers](#customers)  
+[Discounts](#) (needs documentation)  
 [Disputes](#disputes)  
 [Events](#events)  
 [Errors](#errors)  
@@ -21,6 +24,7 @@
 [Invoices](#invoices)  
 [Invoice Items](#invoice-items)  
 [Metadata](#metadata)  
+[OAuth](#stripe-connect) (see stripe connect)
 [Plans](#plans)  
 [Recipients](#recipients)  
 [Refunds](#refunds)  
