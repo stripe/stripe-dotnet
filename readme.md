@@ -1,7 +1,7 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)  
 [![Build status](https://ci.appveyor.com/api/projects/status/5kje1md0hltqfpyh/branch/master?svg=true)](https://ci.appveyor.com/project/JaymeDavis/stripe-net/branch/master)
 
-Stripe Services
+*Stripe Services*
 
 [Accounts](#accounts)  
 [Application Fees](#application-fees)  
@@ -28,7 +28,7 @@ Stripe Services
 [Tokens](#tokens)  
 [Transfers](#transfers)  
 
-Stripe.net Concepts
+*Stripe.net Concepts*
 
 [StripeDateFilter](##stripedatefilter-date-filtering)
 [StripeListOptions](#stripelistoptions-paging)
