@@ -739,7 +739,7 @@ StripeChargeListOptions supports a CustomerId, [StripeListOptions](#stripelistop
 Radar
 -----
 
-Radar is a suite of products from Stripe that learns (and improves) from their network of businesses to identify and prevent fraud. I would recommend [reading more about Radar](https://stripe.com/radar), and 
+Radar is a suite of products from Stripe that learns (and improves) from their network of businesses to identify and prevent fraud. I recommend [reading more about Radar](https://stripe.com/radar), and 
 checking out [how it works](https://stripe.com/radar/guide#stripe-radar-and-the-stripe-network). The Stripe dashboard allows you to add rules for when to block or review payments. You can also enable 
 or disable these rules as needed.
 
