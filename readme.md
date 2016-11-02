@@ -743,12 +743,13 @@ Radar is a suite of products from Stripe that learns (and improves) from their n
 checking out [how it works](https://stripe.com/radar/guide#stripe-radar-and-the-stripe-network). The Stripe dashboard allows you to add rules for when to block or review payments. You can also enable 
 or disable these rules as needed.
 
-In Stripe.net, once a payment has been processed via Radar, it is exposed as the `Review` property on StripeCharge. In a nutshell, if your review's Open property is set to true, you will need to take action. 
+In Stripe.net, once a payment has been processed via Radar, it adds the `Review` property on StripeCharge. In a nutshell, if your review's Open property is set to true, you will need to take action. 
 
 Some example code (in test mode) that will create and expand a review:
 
 ```csharp
-	var token = **a token created from expiration month "06", expiration year "2020", and card number = "4000000000009235"**;
+	// a token from expiration month "06", expiration year "2020", and card "4000000000009235"
+	var token = "tkn_12345"; 
 	
 	var service = new StripeChargeService();
 	
