@@ -29,6 +29,22 @@ namespace Stripe
         [JsonProperty("paid")]
         public bool Paid { get; set; }
 
+        #region Expandable Review
+        public string ReviewId { get; set; }
+
+        [JsonIgnore]
+        public StripeReview Review { get; set; }
+
+        [JsonProperty("review")]
+        internal object InternalReview
+        {
+            set
+            {
+                ExpandableProperty<StripeReview>.Map(value, s => ReviewId = s, o => Review = o);
+            }
+        }
+        #endregion
+
         [JsonProperty("refunded")]
         public bool Refunded { get; set; }
 

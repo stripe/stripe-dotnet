@@ -23,5 +23,21 @@
                 Card = cardOptions
             };
         }
+
+        public static StripeTokenCreateOptions ValidForRadar()
+        {
+            var cardOptions = new StripeCreditCardOptions()
+            {
+               
+                ExpirationMonth = "06",
+                ExpirationYear = "2020",
+                Number = "4000000000009235"
+            };
+
+            return new StripeTokenCreateOptions()
+            {
+                Card = cardOptions
+            };
+        }
     }
 }

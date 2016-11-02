@@ -73,6 +73,7 @@
     <Compile Include="Entities\StripeOAuthDeauthorize.cs" />
     <Compile Include="Entities\Base\StripeEntity.cs" />
     <Compile Include="Entities\Base\StripeEntityWithId.cs" />
+    <Compile Include="Entities\StripeReview.cs" />
     <Compile Include="Entities\StripeTermsOfServiceAcceptance.cs" />
     <Compile Include="Entities\StripeTransferSchedule.cs" />
     <Compile Include="Entities\StripeAccountVerification.cs" />
