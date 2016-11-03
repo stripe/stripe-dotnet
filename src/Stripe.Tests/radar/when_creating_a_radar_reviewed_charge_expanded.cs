@@ -14,7 +14,7 @@ namespace Stripe.Tests
             _token = new StripeTokenService().Create(test_data.stripe_token_create_options.ValidForRadar());
         };
 
-        private Because of = () =>
+        Because of = () =>
         {
             // tell the service to expand the review (radar)
             _chargeService.ExpandReview = true;
