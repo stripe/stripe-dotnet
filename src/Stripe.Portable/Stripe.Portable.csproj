@@ -193,6 +193,9 @@
     <Compile Include="..\Stripe\Entities\StripeRefund.cs">
       <Link>Entities\StripeRefund.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Entities\StripeReview.cs">
+      <Link>Entities\StripeReview.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Entities\StripeSubscription.cs">
       <Link>Entities\StripeSubscription.cs</Link>
     </Compile>

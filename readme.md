@@ -26,6 +26,7 @@
 [Metadata](#metadata)  
 [OAuth](#stripe-connect) (see stripe connect)  
 [Plans](#plans)  
+[Radar](#radar)  
 [Recipients](#recipients)  
 [Refunds](#refunds)  
 [Subscriptions](#subscriptions)  
@@ -734,6 +735,32 @@ If you set a charge to capture = false, you use this to capture the charge later
 ```
 
 StripeChargeListOptions supports a CustomerId, [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering
+
+Radar
+-----
+
+Radar is a suite of products from Stripe that learns (and improves) from their network of businesses to identify and prevent fraud. I recommend [reading more about Radar](https://stripe.com/radar), and 
+checking out [how it works](https://stripe.com/radar/guide#stripe-radar-and-the-stripe-network). The Stripe dashboard allows you to add rules for when to block or review payments. You can also enable 
+or disable these rules as needed.
+
+In Stripe.net, once a payment has been processed via Radar, it adds the `Review` property on StripeCharge. In a nutshell, if your review's Open property is set to true, you will need to take action. 
+
+Some example code (in test mode) that will create and expand a review:
+
+```csharp
+	// a token from expiration month "06", expiration year "2020", and card "4000000000009235"
+	var token = "tkn_12345"; 
+	
+	var service = new StripeChargeService();
+	
+	// Review is an expandable property. If you don't expand it on your service, it will only populate ReviewId!
+	service.ExpandReview = true;
+	
+	var charge = service.Create(new StripeChargeCreateOptions { SourceTokenOrExistingSourceId = token });
+	Console.WriteLine(_charge.Review);
+```
+
+**Read the docs for the radar review object to see the reasons a review is open or closed [here](https://stripe.com/docs/api#reviews)**
 
 Refunds
 -------
