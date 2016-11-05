@@ -60,6 +60,7 @@
     <Compile Include="account\when_creating_an_account_with_tos_acceptance.cs" />
     <Compile Include="account\when_creating_an_account_with_only_an_emailaddress_async_error.cs" />
     <Compile Include="account\when_creating_an_account_with_only_an_emailaddress_async.cs" />
+    <Compile Include="account\when_updating_an_account_with_a_bank_account_token.cs" />
     <Compile Include="account\when_updating_an_account.cs" />
     <Compile Include="account\when_deleting_an_account.cs" />
     <Compile Include="account\when_creating_a_managed_account_with_a_bank_account.cs" />
