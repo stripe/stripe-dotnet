@@ -41,7 +41,7 @@ namespace Stripe.Tests
         Because of = () =>
             _retrievedAccount = _stripeAccountService.Update(_initialAccount.Id, _updateOptions);
 
-        It should_have_the_correct__account_info = () =>
+        It should_have_a_bank_account = () =>
             _retrievedAccount.ExternalBankAccounts.ShouldNotBeNull();
     }
 }

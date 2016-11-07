@@ -95,6 +95,22 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        #region Expandable Destination
+        public string DestinationId { get; set; }
+
+        [JsonIgnore]
+        public StripeAccount Destination { get; set; }
+
+        [JsonProperty("destination")]
+        internal object InternalDestination
+        {
+            set
+            {
+                ExpandableProperty<StripeAccount>.Map(value, s => DestinationId = s, o => Destination = o);
+            }
+        }
+        #endregion
+
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 

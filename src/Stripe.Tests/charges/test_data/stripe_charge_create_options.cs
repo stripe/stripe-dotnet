@@ -38,6 +38,17 @@ namespace Stripe.Tests.test_data
             };
         }
 
+        public static StripeChargeCreateOptions ValidTokenWithDestination(string tokenId, string destinationAccountId)
+        {
+            return new StripeChargeCreateOptions()
+            {
+                SourceTokenOrExistingSourceId = tokenId,
+                Destination = destinationAccountId,
+                Amount = 8675309,
+                Currency = "usd"
+            };
+        }
+
         public static StripeChargeCreateOptions InvalidCard()
         {
             // obsolete: var cardOptions = new StripeSourceOptions()
