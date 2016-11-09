@@ -8,7 +8,7 @@ before_build:
   - nuget restore src\Stripe.sln
 
 build_script:
-- cmd: msbuild "C:\projects\stripe-net\src\Stripe.sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+- cmd: msbuild "C:\projects\stripe-net\src\Stripe.sln" /p:WarningLevel=0 /verbosity:quiet /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 assembly_info:
   patch: true
