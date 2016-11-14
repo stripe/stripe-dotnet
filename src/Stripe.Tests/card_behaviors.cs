@@ -25,40 +25,40 @@ namespace Stripe.Tests
             StripeCustomer.LiveMode.ShouldEqual(false);
 
         It should_have_an_id = () =>
-            StripeCustomer.SourceList.Data.First().Id.ShouldNotBeNull();
+            StripeCustomer.SourceList.Data.First().Card.Id.ShouldNotBeNull();
 
         It should_have_the_correct_source_address_line_1 = () =>
-            StripeCustomer.SourceList.Data.First().AddressLine1.ShouldEqual(StripeCard.AddressLine1);
+            StripeCustomer.SourceList.Data.First().Card.AddressLine1.ShouldEqual(StripeCard.AddressLine1);
 
         It should_have_the_correct_source_address_line_2 = () =>
-            StripeCustomer.SourceList.Data.First().AddressLine2.ShouldEqual(StripeCard.AddressLine2);
+            StripeCustomer.SourceList.Data.First().Card.AddressLine2.ShouldEqual(StripeCard.AddressLine2);
 
         It should_have_the_correct_source_address_state = () =>
-            StripeCustomer.SourceList.Data.First().AddressState.ShouldEqual(StripeCard.AddressState);
+            StripeCustomer.SourceList.Data.First().Card.AddressState.ShouldEqual(StripeCard.AddressState);
 
         It should_have_the_correct_source_address_zip = () =>
-            StripeCustomer.SourceList.Data.First().AddressZip.ShouldEqual(StripeCard.AddressZip);
+            StripeCustomer.SourceList.Data.First().Card.AddressZip.ShouldEqual(StripeCard.AddressZip);
 
         It should_have_the_correct_source_last_4 = () =>
-            StripeCustomer.SourceList.Data.First().Last4.ShouldEqual(StripeCard.Last4.ShouldEqual(StripeCard.Last4));
+            StripeCustomer.SourceList.Data.First().Card.Last4.ShouldEqual(StripeCard.Last4.ShouldEqual(StripeCard.Last4));
 
         It should_have_the_correct_source_expiration_month = () =>
-            StripeCustomer.SourceList.Data.First().ExpirationMonth.ShouldEqual(StripeCard.ExpirationMonth);
+            StripeCustomer.SourceList.Data.First().Card.ExpirationMonth.ShouldEqual(StripeCard.ExpirationMonth);
 
         It should_have_the_correct_source_expiration_year = () =>
-            StripeCustomer.SourceList.Data.First().ExpirationYear.ShouldEqual(StripeCard.ExpirationYear);
+            StripeCustomer.SourceList.Data.First().Card.ExpirationYear.ShouldEqual(StripeCard.ExpirationYear);
 
         It should_have_the_correct_source_name = () =>
-            StripeCustomer.SourceList.Data.First().Name.ShouldEqual(StripeCard.Name);
+            StripeCustomer.SourceList.Data.First().Card.Name.ShouldEqual(StripeCard.Name);
 
         It should_have_the_correct_source_type = () =>
-            StripeCustomer.SourceList.Data.First().Brand.ShouldEqual("Visa");
+            StripeCustomer.SourceList.Data.First().Card.Brand.ShouldEqual("Visa");
 
         It should_have_a_fingerprint = () =>
-            StripeCustomer.SourceList.Data.First().Fingerprint.ShouldNotBeNull();
+            StripeCustomer.SourceList.Data.First().Card.Fingerprint.ShouldNotBeNull();
 
         It should_have_the_correct_source_country = () =>
-            StripeCustomer.SourceList.Data.First().Country.ShouldEqual("US");
+            StripeCustomer.SourceList.Data.First().Card.Country.ShouldEqual("US");
 
         It should_have_the_correct_coupon_id = () =>
             StripeCustomer.StripeDiscount.StripeCoupon.Id.ShouldEqual(StripeCoupon.Id);

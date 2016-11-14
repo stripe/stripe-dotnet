@@ -226,6 +226,9 @@
     <Compile Include="..\Stripe\Infrastructure\JsonConverters\SourceConverter.cs">
       <Link>Infrastructure\JsonConverters\SourceConverter.cs</Link>
     </Compile>
+    <Compile Include="..\Stripe\Infrastructure\JsonConverters\SourceListConverter.cs">
+      <Link>Infrastructure\JsonConverters\SourceListConverter.cs</Link>
+    </Compile>
     <Compile Include="..\Stripe\Infrastructure\JsonConverters\StripeDateTimeConverter.cs">
       <Link>Infrastructure\JsonConverters\StripeDateTimeConverter.cs</Link>
     </Compile>
