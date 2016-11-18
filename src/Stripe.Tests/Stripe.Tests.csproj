@@ -87,6 +87,8 @@
     <Compile Include="bank_accounts\when_creating_a_bank_account.cs" />
     <Compile Include="card\when_creating_a_card.cs" />
     <Compile Include="charges\when_creating_a_charge_on_a_connected_account.cs" />
+    <Compile Include="invoices\when_listing_upcoming_invoice_lines_async.cs" />
+    <Compile Include="invoices\when_listing_upcoming_invoice_lines.cs" />
     <Compile Include="radar\when_creating_a_radar_reviewed_charge_expanded.cs" />
     <Compile Include="radar\when_creating_a_radar_reviewed_charge.cs" />
     <Compile Include="_stripe_response\test_data\stripe_charge_list_options.cs" />
