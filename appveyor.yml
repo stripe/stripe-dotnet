@@ -7,8 +7,8 @@ environment:
 before_build:
   - nuget restore src\Stripe.sln
 
-build:
-  verbosity: minimal
+build_script:
+- cmd: msbuild "C:\projects\stripe-net\src\Stripe.sln" /p:WarningLevel=1 /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 assembly_info:
   patch: true
