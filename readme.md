@@ -35,7 +35,7 @@
 
 **Stripe.net Concepts**
 
-[StripeDateFilter](##stripedatefilter-date-filtering)  
+[StripeDateFilter](#stripedatefilter-date-filtering)  
 [StripeListOptions](#stripelistoptions-paging)  
 [StripeResponse](#stripe-response)  
 [StripeRequestOptions](#striperequestoptions)  
