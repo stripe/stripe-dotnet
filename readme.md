@@ -264,7 +264,7 @@ With a bank account:
 
 ### Verify a bank account
 
-The Verify function is also available.
+The Verify function is also available. You pass it to the two values sent to the user's account.
 
 Cards
 -----
@@ -1296,6 +1296,7 @@ Many of the List methods support parameters to filter by date. To use this, use 
 		}
 	});
 ```
+
 StripeListOptions (paging)
 --------------------------
 
@@ -1354,6 +1355,7 @@ e.g. `var charge = new StripeChargeService().Create(...)` - when you access `cha
 		public DateTime RequestDate { get; set; }
 	}
 ```
+
 StripeRequestOptions
 --------------------
 
