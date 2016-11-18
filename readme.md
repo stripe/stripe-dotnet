@@ -87,7 +87,7 @@ d) In any of the service calls, you can pass a [StripeRequestOptions](#stripereq
 Stripe Response
 ---------------
 
-The [`StripeResponse`](src/Stripe/Infrastructure/public/StripeResponse.cs) object is a property (with the same name) attached to all entities in Stripe.net when they are returned from a service call.
+The [`StripeResponse`](./src/Stripe/Infrastructure/public/StripeResponse.cs) object is a property (with the same name) attached to all entities in Stripe.net when they are returned from a service call.
 
 e.g. `var charge = new StripeChargeService().Create(...)` - when you access `charge.StripeResponse`, this object will be available. The object is documented below with useful tips on each property.
 
