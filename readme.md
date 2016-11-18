@@ -84,6 +84,39 @@ d) In any of the service calls, you can pass a [StripeRequestOptions](#stripereq
 
 ** If you are using Xamarin/Mono, you may want to provide your own HttpMessageHandler. You can do so by passing an instance to StripeConfiguration.HttpMessageHandler on your application's startup. See [this thread](https://github.com/jaymedavis/stripe.net/issues/567) for details.
 
+Stripe Response
+---------------
+
+The [`StripeResponse`](src/Stripe/Infrastructure/public/StripeResponse.cs) object is a property (with the same name) attached to all entities in Stripe.net when they are returned from a service call.
+
+e.g. `var charge = new StripeChargeService().Create(...)` - when you access `charge.StripeResponse`, this object will be available. The object is documented below with useful tips on each property.
+
+```csharp
+	public class StripeResponse
+	{
+		// ResponseJson will always tell you the complete json Stripe returned to Stripe.net.
+		// this will be the same as the ObjectJson when you execute a create/get/delete call. 
+		// however, if you execute a List() method, the ResponseJson will have the full api result 
+		// from Stripe (a charge list with 10 charges, for example).
+		public string ResponseJson { get; set; }
+		
+		// when you call a List() method, the object json is the object in the response array that represents
+		// the entity. The ResponseJson will be the full array returned from Stripe on every entity, however, 
+		// since that was the full response from Stripe. ObjectJson is always the same as ResponseJson when 
+		// you are doing a regular create/get/delete, because you are dealing with a single object.
+		public string ObjectJson { get; set; }
+
+		// this is the request id of the call, as seen in the Stripe dashboard. I would recommend logging 
+		// this and/or saving it to your database. this is very useful to help you find your request 
+		// in the dashboard, or ask Stripe a question about your api call
+		public string RequestId { get; set; }
+
+		// this is the request date and time of the call. I would also recommend logging this and/or 
+		// saving it to your database, as it tells you when Stripe processed the request.
+		public DateTime RequestDate { get; set; }
+	}
+```
+
 Accounts
 --------
 ### Creating an account
@@ -1321,39 +1354,6 @@ All Stripe List methods support paging, using `limit`, `starting_after` and `end
 		Limit = 5,
 		EndingBefore = nextPage.First().Id
 	});
-```
-
-Stripe Response
----------------
-
-The [`StripeResponse`](src/Stripe/Infrastructure/public/StripeResponse.cs) object is a property (with the same name) attached to all entities in Stripe.net when they are returned from a service call.
-
-e.g. `var charge = new StripeChargeService().Create(...)` - when you access `charge.StripeResponse`, this object will be available. The object is documented below with useful tips on each property.
-
-```csharp
-	public class StripeResponse
-	{
-		// ResponseJson will always tell you the complete json Stripe returned to Stripe.net.
-		// this will be the same as the ObjectJson when you execute a create/get/delete call. 
-		// however, if you execute a List() method, the ResponseJson will have the full api result 
-		// from Stripe (a charge list with 10 charges, for example).
-		public string ResponseJson { get; set; }
-		
-		// when you call a List() method, the object json is the object in the response array that represents
-		// the entity. The ResponseJson will be the full array returned from Stripe on every entity, however, 
-		// since that was the full response from Stripe. ObjectJson is always the same as ResponseJson when 
-		// you are doing a regular create/get/delete, because you are dealing with a single object.
-		public string ObjectJson { get; set; }
-
-		// this is the request id of the call, as seen in the Stripe dashboard. I would recommend logging 
-		// this and/or saving it to your database. this is very useful to help you find your request 
-		// in the dashboard, or ask Stripe a question about your api call
-		public string RequestId { get; set; }
-
-		// this is the request date and time of the call. I would also recommend logging this and/or 
-		// saving it to your database, as it tells you when Stripe processed the request.
-		public DateTime RequestDate { get; set; }
-	}
 ```
 
 StripeRequestOptions
