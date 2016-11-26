@@ -84,6 +84,13 @@ d) In any of the service calls, you can pass a [StripeRequestOptions](#stripereq
 
 ** If you are using Xamarin/Mono, you may want to provide your own HttpMessageHandler. You can do so by passing an instance to StripeConfiguration.HttpMessageHandler on your application's startup. See [this thread](https://github.com/jaymedavis/stripe.net/issues/567) for details.
 
+Addtional Learning
+------------------
+
+There is a course made by Craig McKeachie - find it here:
+
+[![Training](https://www.pluralsight.com/content/dam/pluralsight/newsroom/brand-assets/logos/pluralsight-logo-hor-black-1@2x.png)](https://app.pluralsight.com/library/courses/stripe-fundamentals-with-asp-net-mvc)
+
 Stripe Response
 ---------------
 
