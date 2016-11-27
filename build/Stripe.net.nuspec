@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-    <id>Stripe.net</id>
-    <version>6.4.0</version>
+    <id>Stripe.net.BTRBuild</id>
+    <version>6.4.1.4</version>
     <authors>Jayme Davis</authors>
     <owners>Jayme Davis</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
