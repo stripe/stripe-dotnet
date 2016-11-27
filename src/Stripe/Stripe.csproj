@@ -85,6 +85,7 @@
     <Compile Include="Entities\StripeRecipientActiveAccount.cs" />
     <Compile Include="Entities\StripeTransferReversal.cs" />
     <Compile Include="Constants\StripeRefundReasons.cs" />
+    <Compile Include="Infrastructure\JsonConverters\SourceListConverter.cs" />
     <Compile Include="Infrastructure\MimeTypes.cs" />
     <Compile Include="Infrastructure\ExpandableProperty.cs" />
     <Compile Include="Infrastructure\Client.cs" />

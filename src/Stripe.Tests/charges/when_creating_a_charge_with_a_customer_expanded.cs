@@ -25,7 +25,7 @@ namespace Stripe.Tests
         Because of = () =>
         {
             StripeCharge = _stripeChargeService.Create(StripeChargeCreateOptions);
-            StripeCard = _stripeCustomer.SourceList.Data.First();
+            StripeCard = _stripeCustomer.SourceList.Data.First().Card;
         };
 
         It should_have_the_customerid = () =>

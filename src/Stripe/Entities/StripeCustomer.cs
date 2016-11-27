@@ -77,7 +77,8 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("sources")]
-        public StripeList<StripeCard> SourceList { get; set; }
+        [JsonConverter(typeof(SourceListConverter))]
+        public StripeList<Source> SourceList { get; set; }
 
         [JsonProperty("subscriptions")]
         public StripeList<StripeSubscription> StripeSubscriptionList { get; set; }
