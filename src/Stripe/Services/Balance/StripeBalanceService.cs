@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeBalanceService : StripeService
+    public class StripeBalanceService : StripeBasicService<StripeBalance>
     {
         public StripeBalanceService(string apiKey = null) : base(apiKey) { }
 
@@ -14,25 +14,17 @@ namespace Stripe
         //Sync
         public virtual StripeBalance Get(StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeBalance>.MapFromJson(
-                Requestor.GetString(Urls.Balance, SetupRequestOptions(requestOptions))
-            );
+            return GetEntity($"{Urls.BaseUrl}/balance", requestOptions);
         }
 
         public virtual StripeBalanceTransaction Get(string id, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeBalanceTransaction>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.BalanceTransactions}/{id}", false),
-                SetupRequestOptions(requestOptions))
-            );
+            return GetEntity($"{Urls.BaseUrl}/balance/history/{id}", requestOptions);
         }
 
-        public virtual IEnumerable<StripeBalanceTransaction> List(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null)
+        public virtual IEnumerable<StripeBalanceTransaction> List(StripeBalanceTransactionListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(
-                Requestor.GetString(this.ApplyAllParameters(options, Urls.BalanceTransactions, true),
-                SetupRequestOptions(requestOptions))
-            );
+            return GetEntityList($"{Urls.BaseUrl}/balance/history", requestOptions, listOptions);
         }
 
 
@@ -40,27 +32,17 @@ namespace Stripe
         //Async
         public virtual async Task<StripeBalance> GetAsync(StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeBalance>.MapFromJson(
-                await Requestor.GetStringAsync(Urls.Balance, SetupRequestOptions(requestOptions), cancellationToken)
-            );
+            return GetEntityAsync($"{Urls.BaseUrl}/balance", requestOptions, cancellationToken);
         }
 
         public virtual async Task<StripeBalanceTransaction> GetAsync(string id, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeBalanceTransaction>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.BalanceTransactions}/{id}", false),
-                SetupRequestOptions(requestOptions), 
-                cancellationToken)
-            );
+            return GetEntityAsync($"{Urls.BaseUrl}/balance/history/{id}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<IEnumerable<StripeBalanceTransaction>> ListAsync(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<IEnumerable<StripeBalanceTransaction>> ListAsync(StripeBalanceTransactionListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(options, Urls.BalanceTransactions, true),
-                SetupRequestOptions(requestOptions), 
-                cancellationToken)
-            );
+            return GetEntityListAsync($"{Urls.BaseUrl}/balance/history", requestOptions, cancellationToken, listOptions);
         }
     }
 }
