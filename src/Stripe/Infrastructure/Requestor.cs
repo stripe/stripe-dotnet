@@ -12,17 +12,27 @@ namespace Stripe.Infrastructure
 {
     internal static class Requestor
     {
-        internal static HttpClient HttpClient { get; private set; }
+        private static HttpClient httpClient;
 
-        static Requestor()
+        internal static HttpClient HttpClient
         {
-            HttpClient =
-                StripeConfiguration.HttpMessageHandler != null
-                    ? new HttpClient(StripeConfiguration.HttpMessageHandler)
-                    : new HttpClient();
+            get
+            {
+                if (httpClient == null)
+                {
+                    if (StripeConfiguration.HttpMessageHandler == null)
+                    {
+                        httpClient = new HttpClient();
+                    }
+                    else
+                    {
+                        httpClient = new HttpClient(StripeConfiguration.HttpMessageHandler);
+                    }
+                }
+
+                return httpClient;
+            }
         }
-
-
 
         // Sync
         public static StripeResponse GetString(string url, StripeRequestOptions requestOptions)
@@ -212,8 +222,8 @@ namespace Stripe.Infrastructure
 
         private static StripeException BuildStripeException(HttpStatusCode statusCode, string requestUri, string responseContent)
         {
-            var stripeError = requestUri.Contains("oauth") 
-                ? Mapper<StripeError>.MapFromJson(responseContent) 
+            var stripeError = requestUri.Contains("oauth")
+                ? Mapper<StripeError>.MapFromJson(responseContent)
                 : Mapper<StripeError>.MapFromJson(responseContent, "error");
 
             return new StripeException(statusCode, stripeError, stripeError.Message);
