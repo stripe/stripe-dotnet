@@ -38,37 +38,14 @@ namespace Stripe.Tests.test_data
             };
         }
 
-        public static StripeChargeCreateOptions DisputedCard()
+        public static StripeChargeCreateOptions ValidTokenWithDestination(string tokenId, string destinationAccountId)
         {
-            // obsolete: var cardOptions = new StripeSourceOptions()
-            var cardOptions = new SourceCard()
-            {
-                AddressCountry = "US",
-                AddressLine1 = "24 Beef Flank St",
-                AddressLine2 = "Apt 24",
-                AddressCity = "BIGGIE",
-                AddressState = "NC",
-                AddressZip = "27617",
-                Cvc = "1223",
-                ExpirationMonth = "10",
-                ExpirationYear = "2021",
-                Name = "Joe Meatballs",
-                Number = "4000000000000259",
-            };
-
             return new StripeChargeCreateOptions()
             {
-                // obsolete: Source = cardOptions,
-                SourceCard = cardOptions,
-                Description = "Joe Meatball Charge",
-                StatementDescriptor = "Joe Meatball Sub",
-                Amount = 5153,
-                Currency = "usd",
-                Metadata = new Dictionary<string, string>
-                {
-                    { "A", "Value-A" },
-                    { "B", "Value-B" }
-                }
+                SourceTokenOrExistingSourceId = tokenId,
+                Destination = destinationAccountId,
+                Amount = 8675309,
+                Currency = "usd"
             };
         }
 
@@ -78,7 +55,7 @@ namespace Stripe.Tests.test_data
             var cardOptions = new SourceCard()
             {
                 AddressCountry = "US",
-                AddressLine1 = "24 Poopie St",
+                AddressLine1 = "24 Lynbrook St",
                 AddressCity = "Yeehaw Beebop ChickyChicky",
                 AddressState = "NC",
                 AddressZip = "90210",

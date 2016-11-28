@@ -1,11 +1,16 @@
+using System.Threading;
 using System.Threading.Tasks;
+using Stripe.Infrastructure;
 
-﻿namespace Stripe
+namespace Stripe
 {
     public class StripeTokenService : StripeService
     {
         public StripeTokenService(string apiKey = null) : base(apiKey) { }
 
+
+
+        //Sync
         public virtual StripeToken Create(StripeTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeToken>.MapFromJson(
@@ -22,19 +27,24 @@ using System.Threading.Tasks;
             );
         }
 
-        public virtual async Task<StripeToken> CreateAsync(StripeTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null)
+
+
+        //Async
+        public virtual async Task<StripeToken> CreateAsync(StripeTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeToken>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.Tokens, false),
-                SetupRequestOptions(requestOptions))
+                SetupRequestOptions(requestOptions),
+                cancellationToken)
             );
         }
 
-        public virtual async Task<StripeToken> GetAsync(string tokenId, StripeRequestOptions requestOptions = null)
+        public virtual async Task<StripeToken> GetAsync(string tokenId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeToken>.MapFromJson(
                 await Requestor.GetStringAsync($"{Urls.Tokens}/{tokenId}",
-                SetupRequestOptions(requestOptions))
+                SetupRequestOptions(requestOptions),
+                cancellationToken)
             );
         }
     }

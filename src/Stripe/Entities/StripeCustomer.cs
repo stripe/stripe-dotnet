@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
-using Newtonsoft.Json.Linq;
 
 namespace Stripe
 {
-    public class StripeCustomer : StripeObject
+    public class StripeCustomer : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }
 
         [JsonProperty("account_balance")]
         public int AccountBalance { get; set; }
-
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]

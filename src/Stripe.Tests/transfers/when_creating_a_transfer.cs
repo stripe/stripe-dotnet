@@ -11,7 +11,10 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            var account = new StripeAccountService().Create(test_data.stripe_account_create_options.ValidAccountWithCard());
+            var accountOptions = test_data.stripe_account_create_options.ValidAccountWithCard();
+            accountOptions.Managed = true;
+
+            var account = new StripeAccountService().Create(accountOptions);
 
             _stripeTransferService = new StripeTransferService();
             StripeTransferCreateOptions = test_data.stripe_transfer_create_options.ValidForDestination(account.Id);

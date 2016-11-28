@@ -1,15 +1,13 @@
-# build and binary files
-src/*/bin
-src/*/_web_event_hooks/bin
-obj
-src/packages/*
+# build
+[Bb]uild/
+[Dd]ebug/
+[Pp]ackages/
+[Rr]elease/
 *.nupkg
-Stripe.net.dll
-*.pdb
 
-# user/vs files
+# user 
 *.user
 .vs
+.vscode
 
-# portable/xamarin
-Stripe.userprefs
+project.lock.json

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
-using System.Text;
+using Newtonsoft.Json;
 
 namespace Stripe.Infrastructure
 {
@@ -28,64 +28,78 @@ namespace Stripe.Infrastructure
 
         private string GetClientUserAgentString()
         {
-            var values = new Dictionary<string, string>();
-
-            values.Add("bindings_version", StripeConfiguration.StripeNetVersion);
-            values.Add("lang", ".NET");
-            values.Add("publisher", "Jayme Davis");
-            values.Add("lang_version", GetLangVersion());
-            values.Add("uname", GetSystemInformation());
-
-            return serialize(values);
-        }
-
-        private string GetLangVersion()
-        {
-            var assembly = typeof(object).GetTypeInfo().Assembly;
-
-            var assemblyName = new AssemblyName(assembly.FullName);
-            return assemblyName.Version.Major + "." + assemblyName.Version.Minor + "." + assemblyName.Version.Revision;
-        }
-
-        private string GetSystemInformation()
-        {
-            var hash = new Dictionary<string, string>();
+            var langVersion = "4.5";
 
 #if !PORTABLE
-            hash.Add("net45.platform", System.Environment.OSVersion.VersionString);
-            hash.Add("net45.product", typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product);
-#else
-            // Null reference when running in Release mode on iOS
-            hash.Add("portable.product", typeof(object).GetTypeInfo()?.Assembly.GetCustomAttribute<AssemblyProductAttribute>()?.Product ?? "iOS Platform Product");
+            langVersion = typeof(object).GetTypeInfo().Assembly.ImageRuntimeVersion;
 #endif
 
-            return serialize(hash);
-        }
+            var mono = testForMono();
+            if (!string.IsNullOrEmpty(mono)) langVersion = mono;
 
-        // i want to move away from json.net. this is a simple serializer
-        private string serialize(Dictionary<string, string> items)
-        {
-            var result = new StringBuilder();
-
-            for (var item = 0; item < items.Count; item++)
+            var values = new Dictionary<string, string>
             {
-                // if it's the first item, add the opening bracket.
-                if (item == 0) result.Append("{");
+                { "bindings_version", StripeConfiguration.StripeNetVersion },
+                { "lang", ".net" },
+                { "publisher", "Jayme Davis" },
+                { "lang_version", WebUtility.HtmlEncode(langVersion) },
+                { "uname", WebUtility.HtmlEncode(getSystemInformation()) }
+            };
 
-                // add the key/value
-                result.AppendFormat("{0}: {1}",
-                    items.Keys.ElementAt(item),
-                    WebUtility.HtmlEncode(items.Values.ElementAt(item))
-                );
-
-                // if it's not the last item, add a comma
-                if (item < items.Count - 1) result.Append(", ");
-
-                // if it is the last item, close the json object
-                if (item == items.Count - 1) result.Append("}");
-            }
-
-            return result.ToString();
+            return JsonConvert.SerializeObject(values);
         }
+
+        private string testForMono()
+        {
+            var type = Type.GetType("Mono.Runtime");
+            var getDisplayName = type?.GetTypeInfo().GetDeclaredMethod("GetDisplayName");
+
+            return getDisplayName?.Invoke(null, null).ToString();
+        }
+
+        private string getSystemInformation()
+        {
+            var result = string.Empty;
+
+#if !PORTABLE
+            result += $"net45.platform: { Environment.OSVersion.VersionString }";
+            result += $", {getOperatingSystemInfo()}"; 
+#else
+            result += "portable.platform: ";
+
+            try
+            {
+                result += typeof(object).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
+            }
+            catch
+            {
+                result += "unknown";
+            }
+#endif
+
+            return result;
+        }
+
+#if !PORTABLE
+        private string getOperatingSystemInfo()
+        {
+            var os = Environment.OSVersion;
+            var pid = os.Platform;
+
+            switch (pid)
+            {
+                case PlatformID.Win32NT:
+                case PlatformID.Win32S:
+                case PlatformID.Win32Windows:
+                case PlatformID.WinCE:
+                    return "OS: Windows";
+                case PlatformID.Unix:
+                    return "OS: Unix";
+                default:
+                    return "OS: Unknown";
+            }
+        }
+#endif
+
     }
 }

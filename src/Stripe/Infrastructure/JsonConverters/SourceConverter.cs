@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -14,12 +13,14 @@ namespace Stripe.Infrastructure
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            var incoming = JObject.FromObject(value);
+
+            incoming.WriteTo(writer);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var incoming = (JObject.Load(reader));
+            var incoming = JObject.Load(reader);
 
             var source = new Source
             {

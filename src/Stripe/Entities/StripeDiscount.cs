@@ -4,7 +4,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeDiscount : StripeObject
+    public class StripeDiscount : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -24,6 +24,22 @@ namespace Stripe
             set
             {
                 ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+            }
+        }
+        #endregion
+
+        #region Expandable Subscription
+        public string SubscriptionId { get; set; }
+
+        [JsonIgnore]
+        public StripeSubscription Subscription { get; set; }
+
+        [JsonProperty("subscription")]
+        internal object InternalSubscription
+        {
+            set
+            {
+                ExpandableProperty<StripeSubscription>.Map(value, s => SubscriptionId = s, o => Subscription = o);
             }
         }
         #endregion

@@ -1,0 +1,16 @@
+version: 6.11.1.{build}
+
+environment:
+  stripe_test_secret_key:
+    secure: +p/EWA8+0B64k7a88nb6ZiSTcv6TIukyhQQU2Ljf7jNVtwVZXhJtNf5LdemV7EuY
+
+before_build:
+  - nuget restore src\Stripe.sln
+
+build:
+  verbosity: minimal
+
+assembly_info:
+  patch: true
+  file: src\SharedAssemblyInfo.cs
+  assembly_version: '6.11.1'

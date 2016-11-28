@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeError
+    public class StripeError : StripeEntity
     {
         [JsonProperty("type")]
         public string ErrorType { get; set; }

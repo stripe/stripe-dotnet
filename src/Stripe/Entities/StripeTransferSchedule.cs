@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeTransferSchedule
+    public class StripeTransferSchedule : StripeEntity
     {
         [JsonProperty("delay_days")]
         public int DelayDays { get; set; }

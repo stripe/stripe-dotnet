@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Newtonsoft.Json.Linq;
 
 namespace Stripe.Infrastructure
 {
-    internal static class ExpandableProperty<T> where T : StripeObject
+    internal static class ExpandableProperty<T> where T : StripeEntityWithId
     {
         public static void Map(object value, Action<string> updateId, Action<T> updateObject)
         {

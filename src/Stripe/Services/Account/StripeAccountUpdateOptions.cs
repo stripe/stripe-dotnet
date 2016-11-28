@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
     public class StripeAccountUpdateOptions : StripeAccountSharedOptions
     {

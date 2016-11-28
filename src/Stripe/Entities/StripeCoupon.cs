@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
-using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeCoupon : StripeObject
+    public class StripeCoupon : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }

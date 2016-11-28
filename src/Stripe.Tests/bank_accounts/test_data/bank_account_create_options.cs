@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Stripe.Tests.test_data
 {
@@ -23,6 +22,19 @@ namespace Stripe.Tests.test_data
                         { "OftenSays", "Thatttttt's right" }
                     }
                 }
+            };
+        }
+
+        public static BankAccountOptions ValidBankAccountOptions()
+        {
+            return new BankAccountOptions()
+            {
+                AccountNumber = "000123456789",
+                Country = "US",
+                Currency = "usd",
+                AccountHolderName = "Bobby Barone",
+                AccountHolderType = BankAccountHolderType.Company,
+                RoutingNumber = "110000000"
             };
         }
     }

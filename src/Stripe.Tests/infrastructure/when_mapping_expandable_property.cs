@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Machine.Specifications;
+﻿using Machine.Specifications;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Stripe.Infrastructure;
 
 namespace Stripe.Tests
 {
     public class when_mapping_expandable_property
     {
-        public class TestObject : StripeObject
+        public class TestEntityWithId : StripeEntityWithId
         {
             public string Name { get; set; }
         }
@@ -21,14 +16,14 @@ namespace Stripe.Tests
             public string FooId { get; set; }
 
             [JsonIgnore]
-            public TestObject Foo { get; set; }
+            public TestEntityWithId Foo { get; set; }
 
             [JsonProperty("foo")]
             internal object FooInternal
             {
                 set
                 {
-                    ExpandableProperty<TestObject>.Map(value, s => FooId = s, o => Foo = o);
+                    ExpandableProperty<TestEntityWithId>.Map(value, s => FooId = s, o => Foo = o);
                 }
             }
         }

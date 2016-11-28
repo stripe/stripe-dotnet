@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeSubscription : StripeObject
+    public class StripeSubscription : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }

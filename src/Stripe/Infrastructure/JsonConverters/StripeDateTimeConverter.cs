@@ -1,6 +1,6 @@
 ﻿using System;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Stripe.Infrastructure
 {

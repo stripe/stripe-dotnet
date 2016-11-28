@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
-using System;
 using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripePlan : StripeObject
+    public class StripePlan : StripeEntityWithId
     {
         [JsonProperty("name")]
         public string Name { get; set; }

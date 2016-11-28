@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using Stripe.Infrastructure;
-using System;
-using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeCard : StripeObject
+    public class StripeCard : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -63,6 +62,9 @@ namespace Stripe
 
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        [JsonProperty("three_d_secure")]
+        public Dictionary<string, string> ThreeDSecure { get; set; }
 
         [JsonProperty("tokenization_method")]
         public string TokenizationMethod { get; set; }

@@ -1,10 +1,10 @@
 ﻿using System;
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeBankAccount : StripeObject
+    public class StripeBankAccount : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }

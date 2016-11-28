@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeBalance
+    public class StripeBalance : StripeEntity
     {
         [JsonProperty("livemode")]
         public bool LiveMode { get; set; }

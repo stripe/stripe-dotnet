@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeCharge : StripeObject
+    public class StripeCharge : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -28,6 +28,22 @@ namespace Stripe
 
         [JsonProperty("paid")]
         public bool Paid { get; set; }
+
+        #region Expandable Review
+        public string ReviewId { get; set; }
+
+        [JsonIgnore]
+        public StripeReview Review { get; set; }
+
+        [JsonProperty("review")]
+        internal object InternalReview
+        {
+            set
+            {
+                ExpandableProperty<StripeReview>.Map(value, s => ReviewId = s, o => Review = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("refunded")]
         public bool Refunded { get; set; }
@@ -79,6 +95,22 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        #region Expandable Destination
+        public string DestinationId { get; set; }
+
+        [JsonIgnore]
+        public StripeAccount Destination { get; set; }
+
+        [JsonProperty("destination")]
+        internal object InternalDestination
+        {
+            set
+            {
+                ExpandableProperty<StripeAccount>.Map(value, s => DestinationId = s, o => Destination = o);
+            }
+        }
+        #endregion
+
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
@@ -121,7 +153,21 @@ namespace Stripe
 
         // shipping
 
-        // application_fee
+        #region Expandable Application Fee
+        public string ApplicationFeeId { get; set; }
+
+        [JsonIgnore]
+        public StripeApplicationFee ApplicationFee { get; set; }
+
+        [JsonProperty("application_fee")]
+        internal object InternalApplicationFee
+        {
+            set
+            {
+                ExpandableProperty<StripeApplicationFee>.Map(value, s => ApplicationFeeId = s, o => ApplicationFee = o);
+            }
+        }
+        #endregion
 
         // destination
 

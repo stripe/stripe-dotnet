@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
-using Stripe.Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeApplicationFeeRefund : StripeObject
+    public class StripeApplicationFeeRefund : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }

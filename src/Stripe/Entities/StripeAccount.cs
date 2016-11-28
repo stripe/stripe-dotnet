@@ -1,11 +1,11 @@
-﻿using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeAccount : StripeObject
+    public class StripeAccount : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -88,6 +88,9 @@ namespace Stripe
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
+        [JsonProperty("transfer_statement_descriptor")]
+        public string TransferStatementDescriptor { get; set; }
+        
         [JsonProperty("support_email")]
         public string SupportEmail { get; set; }
 

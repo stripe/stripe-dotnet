@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeRefund : StripeObject
+    public class StripeRefund : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -63,5 +63,8 @@ namespace Stripe
 
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
     }
 }

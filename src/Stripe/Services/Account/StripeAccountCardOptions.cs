@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Stripe
 {
     public class StripeAccountCardOptions : INestedOptions
     {
         [JsonProperty("external_account[object]")]
-        internal string Object { get { return "card"; } }
+        internal string Object => "card";
 
         [JsonProperty("external_account")]
         public string TokenId { get; set; }

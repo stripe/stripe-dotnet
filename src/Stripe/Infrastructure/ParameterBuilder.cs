@@ -1,13 +1,11 @@
-﻿using Newtonsoft.Json;
-using Stripe.Infrastructure;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
-namespace Stripe
+namespace Stripe.Infrastructure
 {
     internal static class ParameterBuilder
     {
@@ -76,7 +74,7 @@ namespace Stripe
                 var propertiesToExpand = service.GetType()
                     .GetRuntimeProperties()
                     .Where(p => p.Name.StartsWith("Expand") && p.PropertyType == typeof(bool))
-                    .Where(p => (bool)p.GetValue(service, null))
+                    .Where(p => (bool) p.GetValue(service, null))
                     .Select(p => p.Name);
 
                 foreach (var propertyName in propertiesToExpand)
@@ -90,6 +88,12 @@ namespace Stripe
                     }
 
                     requestString = ApplyParameterToUrl(requestString, "expand[]", expandPropertyName);
+
+                    // note for someday - I had no idea you could expand properties beyond the first level (up to 4 before stripe throws and exception).
+                    // something to consider adding to the project.
+                    //
+                    // example:
+                    // requestString = ApplyParameterToUrl(requestString, "expand[]", "data.charge.dispute.charge.dispute.charge.dispute");
                 }
             }
 

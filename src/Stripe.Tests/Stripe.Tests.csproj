@@ -45,32 +45,36 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="3d_secure\when_creating_3d_secure_for_a_customer.cs" />
+    <Compile Include="3d_secure\when_creating_3d_secure.cs" />
     <Compile Include="account\account_behaviors.cs" />
     <Compile Include="account\test_data\stripe_account_create_options.cs" />
     <Compile Include="account\when_creating_an_account_with_a_legal_entity.cs" />
     <Compile Include="account\when_creating_an_account_with_tos_acceptance.cs" />
     <Compile Include="account\when_creating_an_account_with_only_an_emailaddress_async_error.cs" />
     <Compile Include="account\when_creating_an_account_with_only_an_emailaddress_async.cs" />
+    <Compile Include="account\when_updating_an_account_with_a_bank_account_token.cs" />
     <Compile Include="account\when_updating_an_account.cs" />
     <Compile Include="account\when_deleting_an_account.cs" />
     <Compile Include="account\when_creating_a_managed_account_with_a_bank_account.cs" />
     <Compile Include="account\when_creating_a_managed_account_with_a_card.cs" />
     <Compile Include="account\when_creating_an_account_with_only_an_emailaddress.cs" />
     <Compile Include="account\when_retrieving_an_account.cs" />
+    <Compile Include="account\when_updating_an_account_with_a_card_token.cs" />
+    <Compile Include="applicationfeerefunds\when_listing_application_fee_refunds.cs" />
+    <Compile Include="applicationfeerefunds\when_updating_an_application_fee_refund_async.cs" />
+    <Compile Include="applicationfeerefunds\when_updating_an_application_fee_refund.cs" />
+    <Compile Include="applicationfeerefunds\when_getting_an_application_fee_refund.cs" />
+    <Compile Include="applicationfeerefunds\when_getting_an_application_fee_refund_async.cs" />
+    <Compile Include="applicationfeerefunds\when_creating_an_application_fee_refund_async.cs" />
+    <Compile Include="applicationfeerefunds\when_creating_an_application_fee_refund.cs" />
     <Compile Include="balance\balance_behaviors.cs" />
     <Compile Include="balance\when_listing_balancetransaction_by_id.cs" />
     <Compile Include="balance\when_listing_balancetransactions.cs" />
@@ -83,10 +87,38 @@
     <Compile Include="bank_accounts\when_updating_a_bank_account.cs" />
     <Compile Include="bank_accounts\when_creating_a_bank_account.cs" />
     <Compile Include="card\when_creating_a_card.cs" />
+    <Compile Include="charges\when_creating_a_charge_on_a_connected_account.cs" />
+    <Compile Include="invoices\when_listing_upcoming_invoice_lines_async.cs" />
+    <Compile Include="invoices\when_listing_upcoming_invoice_lines.cs" />
+    <Compile Include="radar\when_creating_a_radar_reviewed_charge_expanded.cs" />
+    <Compile Include="radar\when_creating_a_radar_reviewed_charge.cs" />
+    <Compile Include="_stripe_response\test_data\stripe_charge_list_options.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_bank_account.cs" />
+    <Compile Include="charges\when_serializing_a_stripe_charge.cs" />
     <Compile Include="charges\when_refunding_and_setting_fraud_details.cs" />
     <Compile Include="countryspecs\when_getting_a_country_spec.cs" />
     <Compile Include="countryspecs\when_listing_country_specs.cs" />
+    <Compile Include="customers\when_creating_a_customer_with_metadata.cs" />
+    <Compile Include="discounts\when_deleting_a_discount_from_a_subscription_async.cs" />
+    <Compile Include="discounts\when_deleting_a_discount_from_a_subscription.cs" />
+    <Compile Include="discounts\when_deleting_a_discount_from_a_customer_async.cs" />
+    <Compile Include="discounts\when_deleting_a_discount_from_a_customer.cs" />
+    <Compile Include="disputes\test_data\stripe_dispute_options.cs" />
+    <Compile Include="disputes\when_closing_a_dispute_async.cs" />
+    <Compile Include="disputes\when_closing_a_dispute.cs" />
+    <Compile Include="disputes\when_creating_a_disputed_charge_async.cs" />
+    <Compile Include="disputes\when_listing_disputes_that_just_happened_async.cs" />
+    <Compile Include="disputes\when_listing_disputes_that_just_happened.cs" />
+    <Compile Include="disputes\when_retrieving_a_dispute_async.cs" />
+    <Compile Include="disputes\when_updating_a_dispute_async.cs" />
+    <Compile Include="disputes\when_updating_a_dispute.cs" />
+    <Compile Include="disputes\when_retrieving_a_dispute.cs" />
+    <Compile Include="disputes\when_creating_a_disputed_charge.cs" />
+    <Compile Include="fileuploads\when_getting_a_file_upload.cs" />
+    <Compile Include="fileuploads\when_creating_a_file_upload.cs" />
+    <Compile Include="fileuploads\when_listing_fileuploads.cs" />
+    <Compile Include="infrastructure\when_building_the_client.cs" />
+    <Compile Include="invoices\when_listing_invoice_line_items.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="charges\test_data\stripe_charge_update_options.cs" />
     <Compile Include="charges\when_updating_a_charge.cs" />
@@ -95,7 +127,6 @@
     <Compile Include="charges\charge_behaviors.cs" />
     <Compile Include="charges\when_capturing_a_charge_with_a_card.cs" />
     <Compile Include="charges\when_creating_a_charge_with_a_customer_expanded.cs" />
-    <Compile Include="charges\when_getting_a_disputed_charge.cs" />
     <Compile Include="charges\when_listing_charges_with_expanded_properties.cs" />
     <Compile Include="charges\when_listing_charges_with_paging.cs" />
     <Compile Include="charges\when_setting_a_charge_to_capture.cs" />
@@ -166,10 +197,10 @@
     <Compile Include="transfers\test_data\stripe_transfer_create_options.cs" />
     <Compile Include="transfers\transfer_behaviors.cs" />
     <Compile Include="transfers\when_creating_a_transfer.cs" />
-    <Compile Include="transfers\when_getting_a_transfer.cs" />
+    <Compile Include="transfers\when_getting_a_transfer_with_application_fee.cs" />
     <Compile Include="transfers\when_creating_a_failed_transfer.cs" />
     <Compile Include="transfers\when_listing_transfers.cs" />
-    <Compile Include="_shared\TestSources.cs" />
+    <Compile Include="_stripe_response\when_requesting_something_from_stripe.cs" />
     <Compile Include="_web_event_hooks\App_Code\event_hooks_handler.cs" />
     <Compile Include="invoices\when_getting_an_invoice.cs" />
     <Compile Include="invoices\when_getting_an_upcoming_invoice.cs" />
@@ -226,6 +257,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="fileuploads\test_data\logo.png" />
     <Content Include="infrastructure\test_data\transfer.json" />
     <Content Include="infrastructure\test_data\charge.json" />
     <Content Include="infrastructure\test_data\card.json" />

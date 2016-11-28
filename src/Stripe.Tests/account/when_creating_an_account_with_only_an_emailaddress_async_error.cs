@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Machine.Specifications;
-
-namespace Stripe.Tests
+﻿namespace Stripe.Tests
 {
     //public class when_creating_an_account_with_only_an_emailaddress_async_error
     //{
