@@ -18,8 +18,7 @@ function Invoke-Test
 	$test_result = (dotnet test src\Stripe.net.Tests | Out-String) -split "\n"
 
 	foreach($line in $test_result) {
-		if     (${line} -Match "SUMMARY:" -and ${line} -Match "Failed: 1") { $shouldPublish = $false }
-		elseif (${line}) { write-host ${line} }
+		if (${line} -Match "Failures:") { $shouldPublish = $false }
 	}
 
 	if ($shouldPublish -eq $null) { $shouldPublish = $true }
