@@ -1,4 +1,4 @@
-$global:build = @()
+$global:build = null
 
 function Invoke-Restore()
 {
@@ -10,7 +10,7 @@ function Invoke-Build
 	dotnet build -c Debug src\Stripe.net
 	dotnet build -c Release src\Stripe.net
 
-	dotnet build src\Stripe.Tests
+	dotnet build src\Stripe.net.Tests
 }
 
 function Invoke-Test
@@ -18,14 +18,14 @@ function Invoke-Test
 	$test_result = (dotnet test src\Stripe.net.Tests | Out-String) -split "\n"
 
 	foreach($line in $test_result) {
-		if     (${line} -Match "SUMMARY:" -and ${line} -Match "Failed: 1") { $global:build.test_failed = $true }
-		elseif (${line} -Match "warning CS0169" -and ${line} -Match "Stripe.net.Tests" -and ${line} -Match ".behaviors" ) { $test_behaviors ++ }
+		if     (${line} -Match "SUMMARY:" -and ${line} -Match "Failed: 1") { Set-Variable -Name $build -Value $false -Scope Global }
 		elseif (${line}) { write-host ${line} }
 	}
 
+	if ($build == null) { Set-Variable -Name $build -Value $true -Scope Global }
+
 	blankLines
-	Write-Host $("Ignoring $test_behaviors test behaviors.") -ForegroundColor DarkCyan
-	Write-Host $("The final build" + $global:build) -ForegroundColor Cyan
+	Write-Host $("Should we package? $build") -ForegroundColor Cyan
 	blankLines
 }
 
