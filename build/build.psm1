@@ -39,7 +39,7 @@ function Invoke-Build
 
 function Invoke-Test
 {
-	dotnet test src\Stripe.Tests
+	dotnet test src\Stripe.net.Tests
 }
 
 function Invoke-Pack
