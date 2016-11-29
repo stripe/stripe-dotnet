@@ -7,14 +7,10 @@ function Invoke-Restore()
 
 function Invoke-Build
 {
-	$debug_build = ("dotnet build -c Debug src\Stripe.net" | Out-String) -split "\n"
-	Write-Host $debug_build
-	
-	$prod_build = ("dotnet build -c Release src\Stripe.net" | Out-String) -split "\n"
-	Write-Host $prod_build
+	dotnet build -c Debug src\Stripe.net
+	dotnet build -c Release src\Stripe.net
 
-	$test_build = (msbuild "src\Stripe.net\Stripe.Tests.proj" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" | Out-String) -split "\n"
-	Write-Host $test_build
+	msbuild "src\Stripe.net\Stripe.Tests.csproj" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 	#$missing_comments = 0
 	#$missing_comments_portable = 0
@@ -46,6 +42,8 @@ function Invoke-Pack
 {
 	Write-Host " "
 	Write-Host "Packing Release up..."
+
+	dotnet pack -c Release src\Stripe
 
 	$build = ("dotnet pack -c Release src\Stripe" | Out-String) -split "\n"
 
