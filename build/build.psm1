@@ -45,9 +45,6 @@ function Invoke-Test
 function Invoke-Pack
 {
 	dotnet pack -c Release src\Stripe.net
-
-	$build = ("dotnet pack -c Release src\Stripe.net" | Out-String) -split "\n"
-	Write-Host "(I packed this in a string too)"
 }
 
 #function Invoke-NuGetCheck
