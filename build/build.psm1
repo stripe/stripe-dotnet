@@ -1,4 +1,4 @@
-$global:build = $null
+$shouldPublish = $null
 
 function Invoke-Restore()
 {
@@ -18,14 +18,14 @@ function Invoke-Test
 	$test_result = (dotnet test src\Stripe.net.Tests | Out-String) -split "\n"
 
 	foreach($line in $test_result) {
-		if     (${line} -Match "SUMMARY:" -and ${line} -Match "Failed: 1") { Set-Variable -Name $build -Value $false -Scope Global }
+		if     (${line} -Match "SUMMARY:" -and ${line} -Match "Failed: 1") { $shouldPublish = $false }
 		elseif (${line}) { write-host ${line} }
 	}
 
-	if ($build -eq $null) { Set-Variable -Name $build -Value $true -Scope Global }
+	if ($shouldPublish -eq $null) { $shouldPublish = $true }
 
 	blankLines
-	Write-Host $("Should we package? $build") -ForegroundColor Cyan
+	Write-Host $("Should we package? $shouldPublish") -ForegroundColor Cyan
 	blankLines
 }
 
