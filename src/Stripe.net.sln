@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stripe.Tests", "Stripe.Tests\Stripe.Tests.csproj", "{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3F91159-E7A8-4F44-9DD9-B7D76E2E7542}"
 	ProjectSection(SolutionItems) = preProject
 		..\.gitattributes = ..\.gitattributes
@@ -16,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Stripe.net", "Stripe.net\Stripe.net.xproj", "{CF3E9E0A-F11C-4364-A671-0025D3CBFB70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stripe.Tests", "Stripe.Tests\Stripe.Tests.csproj", "{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,22 +29,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|ARM.Build.0 = Debug|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|x64.Build.0 = Debug|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|x86.Build.0 = Debug|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|ARM.ActiveCfg = Release|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|ARM.Build.0 = Release|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|x64.ActiveCfg = Release|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|x64.Build.0 = Release|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|x86.ActiveCfg = Release|Any CPU
-		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|x86.Build.0 = Release|Any CPU
 		{CF3E9E0A-F11C-4364-A671-0025D3CBFB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF3E9E0A-F11C-4364-A671-0025D3CBFB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF3E9E0A-F11C-4364-A671-0025D3CBFB70}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -61,6 +45,22 @@ Global
 		{CF3E9E0A-F11C-4364-A671-0025D3CBFB70}.Release|x64.Build.0 = Release|Any CPU
 		{CF3E9E0A-F11C-4364-A671-0025D3CBFB70}.Release|x86.ActiveCfg = Release|Any CPU
 		{CF3E9E0A-F11C-4364-A671-0025D3CBFB70}.Release|x86.Build.0 = Release|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|ARM.Build.0 = Debug|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|x64.Build.0 = Debug|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Debug|x86.Build.0 = Debug|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|ARM.ActiveCfg = Release|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|ARM.Build.0 = Release|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|x64.ActiveCfg = Release|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|x64.Build.0 = Release|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|x86.ActiveCfg = Release|Any CPU
+		{9150C4E3-8FBB-4C2B-A652-A18C58AE9678}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

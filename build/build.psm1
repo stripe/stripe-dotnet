@@ -1,8 +1,7 @@
 function Invoke-Restore()
 {
-	$build = (dotnet restore)
-
-	Write-Host $build
+	dotnet restore
+	nuget restore "src\Stripe.Tests\Stripe.Tests.csproj"
 }
 
 function Invoke-Build
@@ -40,14 +39,11 @@ function Invoke-Build
 
 function Invoke-Pack
 {
-	Write-Host " "
-	Write-Host "Packing Release up..."
-
 	dotnet pack -c Release src\Stripe
 
 	$build = ("dotnet pack -c Release src\Stripe" | Out-String) -split "\n"
 
-	Write-Host " "
+	Write-Host "(I packed this in a string too)"
 }
 
 #function Invoke-NuGetCheck
