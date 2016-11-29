@@ -8,6 +8,7 @@ function Invoke-Build
 	dotnet build -c Debug src\Stripe.net
 	dotnet build -c Release src\Stripe.net
 
+	# this definitely needs to be wrapped up from below code
 	dotnet build src\Stripe.Tests
 
 	#$missing_comments = 0
@@ -34,6 +35,11 @@ function Invoke-Build
 	#Write-Host $("TESTS:      $tests_deprecated_types tests are targetting deprecated types") -ForegroundColor Yellow
 
 	Write-Host " "
+}
+
+function Invoke-Test
+{
+	dotnet test
 }
 
 function Invoke-Pack

@@ -14,9 +14,8 @@ before_build:
 build_script:
 - ps: Invoke-Build
 
-test:
-  assemblies:
-    - '**\*.Tests.dll'
+test_script:
+- ps: Invoke-Test
 
 after_build:
 - ps: Invoke-Pack
