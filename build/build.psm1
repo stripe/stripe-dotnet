@@ -1,15 +1,15 @@
 function Invoke-Restore()
 {
-	dotnet restore
+	#dotnet restore
 	nuget restore "src\Stripe.net.sln"
 }
 
 function Invoke-Build
 {
-	dotnet build -c Debug src\Stripe.net
-	dotnet build -c Release src\Stripe.net
+	#dotnet build -c Debug src\Stripe.net
+	#dotnet build -c Release src\Stripe.net
 
-	msbuild "src\Stripe.Tests\Stripe.Tests.csproj" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+	msbuild /v:n /p:Configuration=Debug "src\Stripe.net.sln" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 	#$missing_comments = 0
 	#$missing_comments_portable = 0
