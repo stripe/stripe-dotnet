@@ -5,16 +5,21 @@ environment:
   stripe_test_secret_key:
     secure: +p/EWA8+0B64k7a88nb6ZiSTcv6TIukyhQQU2Ljf7jNVtwVZXhJtNf5LdemV7EuY
 
+install:
+- ps: Import-Module .\build\build.psm1
+
 before_build:
-- dotnet restore
+- ps: Invoke-Restore
 
 build_script:
-- ps: dotnet build -c Debug src\Stripe.net
-- ps: dotnet build -c Release src\Stripe.net
+- ps: Invoke-Build
+
+test:
+  assemblies:
+    - '**\*.Tests.dll'
 
 after_build:
-- ps: >-
-    dotnet pack -c Release src\Stripe
+- ps: Invoke-Pack
 
 artifacts:
 - path: '**\Release\*.nupkg'
