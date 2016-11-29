@@ -1,3 +1,5 @@
+$global:build = @{}
+
 function Invoke-Restore()
 {
 	dotnet restore
@@ -8,38 +10,21 @@ function Invoke-Build
 	dotnet build -c Debug src\Stripe.net
 	dotnet build -c Release src\Stripe.net
 
-	# this definitely needs to be wrapped up from below code
 	dotnet build src\Stripe.Tests
-
-	#$missing_comments = 0
-	#$missing_comments_portable = 0
-	#$deprecated_types = 0
-	#$deprecated_types_portable = 0
-	#$tests_deprecated_types = 0
-
-	#foreach($line in $build) {
-	#	if     (${line} -Match "warning CS1591" -and ${line} -Match "Stripe.csproj") { $missing_comments++ }
-	#	elseif (${line} -Match "warning CS0618" -and ${line} -Match "Stripe.csproj") { $deprecated_types++ }
-	#	elseif (${line} -Match "warning CS1591" -and ${line} -Match "Stripe.Portable.csproj") { $missing_comments_portable++ }
-	#	elseif (${line} -Match "warning CS0618" -and ${line} -Match "Stripe.Portable.csproj") { $deprecated_types_portable++ }
-	#	elseif (${line} -Match "warning CS0618" -and ${line} -Match "Stripe.Tests.csproj") { $tests_deprecated_types++ }
-	#	elseif (${line} -Match "warning CS0169" -and ${line} -Match "Stripe.Tests.csproj" -and ${line} -Match ".behaviors" ) { } # do nothing - this is just behaviors
-	#	elseif (${line}) { write-host ${line} }
-	#}
-
-	#Write-Host " "
-	#Write-Host $("NET45:      $missing_comments publicly visible items are missing XML comments") -ForegroundColor Cyan
-	#Write-Host $("PORTABLE:   $missing_comments_portable publicly visible items are missing XML comments") -ForegroundColor DarkCyan
-	#Write-Host $("NET45:      $deprecated_types items are deprecated") -ForegroundColor Cyan
-	#Write-Host $("PORTABLE:   $deprecated_types_portable items are deprecated") -ForegroundColor DarkCyan
-	#Write-Host $("TESTS:      $tests_deprecated_types tests are targetting deprecated types") -ForegroundColor Yellow
-
-	Write-Host " "
 }
 
 function Invoke-Test
 {
-	dotnet test src\Stripe.net.Tests
+	$test_result = (dotnet test src\Stripe.net.Tests | Out-String) -split "\n"
+
+	foreach($line in $test_result) {
+		if     (${line} -Match "SUMMARY:" -and ${line} -Match "Failed: 1") { $build.test_failed = $true }
+		elseif (${line} -Match "warning CS0169" -and ${line} -Match "Stripe.net.Tests" -and ${line} -Match ".behaviors" ) { $global:build.test_behaviors ++ }
+		elseif (${line}) { write-host ${line} }
+	}
+
+	Write-Host $("Ignoring $build.test_behaviors test behaviors.") -ForegroundColor DarkCyan
+	Write-Host $("The final build result was $build.test_failed") -ForegroundColor Cyan
 }
 
 function Invoke-Pack
