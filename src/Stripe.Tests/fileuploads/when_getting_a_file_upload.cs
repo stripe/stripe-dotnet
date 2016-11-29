@@ -13,7 +13,7 @@ namespace Stripe.Tests
         {
             _fileService = new StripeFileUploadService();
 
-            var fileStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Stripe.Tests.fileuploads.test_data.logo.png");
+            var fileStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Stripe.net-Tests.fileuploads.test_data.logo.png");
             _initialFileUpload = _fileService.Create("logo.png", fileStream, StripeFilePurpose.BusinessLogo);
         };
 

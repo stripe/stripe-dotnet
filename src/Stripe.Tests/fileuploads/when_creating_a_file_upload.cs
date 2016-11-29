@@ -14,7 +14,7 @@ namespace Stripe.Tests
         {
             _fileService = new StripeFileUploadService();
 
-            _fileStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Stripe.Tests.fileuploads.test_data.logo.png");
+            _fileStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Stripe.net-Tests.fileuploads.test_data.logo.png");
         };
 
         Because of = () =>

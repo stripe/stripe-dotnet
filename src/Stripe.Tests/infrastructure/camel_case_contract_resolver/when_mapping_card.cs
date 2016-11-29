@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
+using System.Text;
 using Machine.Specifications;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -20,8 +22,11 @@ namespace Stripe.Tests
 
         Because of = () =>
         {
-            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../infrastructure", "test_data", "card.json");
-            var json = File.ReadAllText(path);
+            var json = new StreamReader(
+                Assembly.GetExecutingAssembly().GetManifestResourceStream("Stripe.net-Tests.infrastructure.test_data.card.json"),
+                Encoding.UTF8
+            ).ReadToEnd();
+
             _card = Mapper<StripeCard>.MapFromJson(json);
         };
 

@@ -14,11 +14,11 @@ namespace Stripe.Tests
         {
             _fileService = new StripeFileUploadService();
 
-            var fileStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Stripe.Tests.fileuploads.test_data.logo.png");
+            var fileStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Stripe.net-Tests.fileuploads.test_data.logo.png");
             _fileService.Create("logo.png", fileStream, StripeFilePurpose.BusinessLogo);
-            var fileStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("Stripe.Tests.fileuploads.test_data.logo.png");
+            var fileStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("Stripe.net-Tests.fileuploads.test_data.logo.png");
             _fileService.Create("logo.png", fileStream2, StripeFilePurpose.BusinessLogo);
-            var fileStream3 = Assembly.GetExecutingAssembly().GetManifestResourceStream("Stripe.Tests.fileuploads.test_data.logo.png");
+            var fileStream3 = Assembly.GetExecutingAssembly().GetManifestResourceStream("Stripe.net-Tests.fileuploads.test_data.logo.png");
             _fileService.Create("logo.png", fileStream3, StripeFilePurpose.BusinessLogo);
         };
 
