@@ -28,7 +28,5 @@
   },
   "testRunner": "mspec",
   "version": "0.0.0-*",
-  "runtimes": {
-    "win": {}
-  }
+
 }
