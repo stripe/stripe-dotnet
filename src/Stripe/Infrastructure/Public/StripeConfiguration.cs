@@ -29,7 +29,7 @@ namespace Stripe
         {
             if (string.IsNullOrEmpty(_apiKey))
             {
-#if !PORTABLE
+#if NET45
                 _apiKey = System.Configuration.ConfigurationManager.AppSettings["StripeApiKey"];
 #endif
             }

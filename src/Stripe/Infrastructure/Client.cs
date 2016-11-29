@@ -30,7 +30,7 @@ namespace Stripe.Infrastructure
         {
             var langVersion = "4.5";
 
-#if !PORTABLE
+#if NET45
             langVersion = typeof(object).GetTypeInfo().Assembly.ImageRuntimeVersion;
 #endif
 
@@ -61,7 +61,7 @@ namespace Stripe.Infrastructure
         {
             var result = string.Empty;
 
-#if !PORTABLE
+#if NET45
             result += $"net45.platform: { Environment.OSVersion.VersionString }";
             result += $", {getOperatingSystemInfo()}"; 
 #else
@@ -80,7 +80,7 @@ namespace Stripe.Infrastructure
             return result;
         }
 
-#if !PORTABLE
+#if NET45
         private string getOperatingSystemInfo()
         {
             var os = Environment.OSVersion;
