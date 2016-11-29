@@ -10,7 +10,7 @@ function Invoke-Build
 	dotnet build -c Debug src\Stripe.net
 	dotnet build -c Release src\Stripe.net
 
-	msbuild "src\Stripe.net\Stripe.Tests.csproj" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+	msbuild "src\Stripe.Tests\Stripe.Tests.csproj" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 	#$missing_comments = 0
 	#$missing_comments_portable = 0
