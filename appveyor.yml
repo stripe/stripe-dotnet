@@ -1,4 +1,4 @@
-version: 6.12.0.{build}
+version: 6.11.1.{build}
 image: Visual Studio 2015
 
 environment:
@@ -10,11 +10,12 @@ before_build:
 
 build_script:
 - ps: >-
-    dotnet build -c Debug src\Stripe
-    dotnet build -c Release src\Stripe
+    dotnet build -c Debug src\Stripe.net
+    dotnet build -c Release src\Stripe.net
 
 after_build:
-- dotnet pack -c Release src\Stripe
+- ps: >-
+    dotnet pack -c Release src\Stripe
 
 artifacts:
-- path: '**\*.nupkg'
+- path: '**\Release\*.nupkg'
