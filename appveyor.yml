@@ -22,4 +22,6 @@ after_build:
 - ps: Invoke-Pack
 
 artifacts:
-- path: '**\Release\*.nupkg'
+  - path: src
+    name: src-folder
+    type: zip
