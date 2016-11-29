@@ -1,4 +1,4 @@
-$global:build = null
+$global:build = $null
 
 function Invoke-Restore()
 {
@@ -22,7 +22,7 @@ function Invoke-Test
 		elseif (${line}) { write-host ${line} }
 	}
 
-	if ($build == null) { Set-Variable -Name $build -Value $true -Scope Global }
+	if ($build -eq $null) { Set-Variable -Name $build -Value $true -Scope Global }
 
 	blankLines
 	Write-Host $("Should we package? $build") -ForegroundColor Cyan
