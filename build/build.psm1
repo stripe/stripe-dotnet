@@ -15,22 +15,18 @@ function Invoke-Build
 
 function Invoke-Test
 {
-	blankLine
-	blankLine
-
 	$test_result = (dotnet test src\Stripe.net.Tests | Out-String) -split "\n"
 
 	foreach($line in $test_result) {
-		if     (${line} -Match "SUMMARY:" -and ${line} -Match "Failed: 1") { $build.test_failed = $true }
-		elseif (${line} -Match "warning CS0169" -and ${line} -Match "Stripe.net.Tests" -and ${line} -Match ".behaviors" ) { $global:build.test_behaviors ++ }
+		if     (${line} -Match "SUMMARY:" -and ${line} -Match "Failed: 1") { $global:build.test_failed = $true }
+		elseif (${line} -Match "warning CS0169" -and ${line} -Match "Stripe.net.Tests" -and ${line} -Match ".behaviors" ) { $test_behaviors ++ }
 		elseif (${line}) { write-host ${line} }
 	}
 
-	Write-Host $("Ignoring $build.test_behaviors test behaviors.") -ForegroundColor DarkCyan
-	Write-Host $("The final build result was $build.test_failed") -ForegroundColor Cyan
-
-	blankLine
-	blankLine
+	blankLines
+	Write-Host $("Ignoring $test_behaviors test behaviors.") -ForegroundColor DarkCyan
+	Write-Host $("The final build" + $global:build) -ForegroundColor Cyan
+	blankLines
 }
 
 function Invoke-Pack
@@ -38,7 +34,11 @@ function Invoke-Pack
 	dotnet pack -c Release src\Stripe.net
 }
 
-function blankLine() { Write-Host " " }
+function blankLines() 
+{ 
+	Write-Host " "
+	Write-Host " "
+}
 
 #function Invoke-NuGetCheck
 #{
