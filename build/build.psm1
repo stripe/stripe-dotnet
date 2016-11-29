@@ -1,7 +1,7 @@
 function Invoke-Restore()
 {
 	dotnet restore
-	nuget restore "src\Stripe.Tests\Stripe.Tests.csproj"
+	nuget restore "src\Stripe.net.sln"
 }
 
 function Invoke-Build
