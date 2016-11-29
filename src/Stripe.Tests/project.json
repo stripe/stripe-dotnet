@@ -23,6 +23,9 @@
         "System.Data": "*",
         "System.Xml": "*",
         "System.Xml.Serialization": "*"
+      },
+      "buildOptions": {
+        "embed": [ "*.png", "*.json" ]
       }
     }
   },
