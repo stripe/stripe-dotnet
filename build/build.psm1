@@ -1,13 +1,13 @@
 function Invoke-Restore()
 {
-	#dotnet restore
-	nuget restore "src\Stripe.net.sln"
+	dotnet restore
+	nuget restore "src\Stripe.Tests\Stripe.Tests.csproj" -PackagesDirectory "../"
 }
 
 function Invoke-Build
 {
-	#dotnet build -c Debug src\Stripe.net
-	#dotnet build -c Release src\Stripe.net
+	dotnet build -c Debug src\Stripe.net
+	dotnet build -c Release src\Stripe.net
 
 	msbuild /v:n /p:Configuration=Debug "src\Stripe.net.sln" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
