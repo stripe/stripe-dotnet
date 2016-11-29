@@ -9,9 +9,8 @@ before_build:
 - dotnet restore
 
 build_script:
-- ps: >-
-    dotnet build -c Debug src\Stripe.net
-    dotnet build -c Release src\Stripe.net
+- ps: dotnet build -c Debug src\Stripe.net
+- ps: dotnet build -c Release src\Stripe.net
 
 after_build:
 - ps: >-
