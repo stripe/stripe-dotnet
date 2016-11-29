@@ -1,16 +1,26 @@
 version: 6.11.1.{build}
+image: Visual Studio 2015
 
 environment:
   stripe_test_secret_key:
     secure: +p/EWA8+0B64k7a88nb6ZiSTcv6TIukyhQQU2Ljf7jNVtwVZXhJtNf5LdemV7EuY
 
+install:
+- ps: Import-Module .\build\build.psm1
+
 before_build:
-  - nuget restore src\Stripe.sln
+- ps: Invoke-Restore
 
-build:
-  verbosity: minimal
+build_script:
+- ps: Invoke-Build
 
-assembly_info:
-  patch: true
-  file: src\SharedAssemblyInfo.cs
-  assembly_version: '6.11.1'
+test_script:
+- ps: Invoke-Test
+
+after_build:
+- ps: Invoke-Pack
+
+artifacts:
+  - path: src
+    name: src-folder
+    type: zip

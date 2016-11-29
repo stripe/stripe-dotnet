@@ -1,0 +1,39 @@
+{
+  "dependencies": {
+    "Machine.Specifications": "0.11.0",
+    "Machine.Specifications.Should": "0.11.0",
+    "dotnet-test-mspec": "*",
+    "Stripe.net": {
+      "version": "*",
+      "target": "project"
+    }
+  },
+  "frameworks": {
+    "net45": {
+      "frameworkAssemblies": {
+        "System.Configuration": "*",
+        "System.Collections": "*", 
+        "System.Core": "*",
+        "System.Net.Http": "*",
+        "System.Runtime":  "*", 
+        "System.Runtime.Remoting": "*",
+        "System.Web": "*",
+        "System.Web.Extensions": "*",
+        "System.Xml.Linq": "*",
+        "System.Data.DataSetExtensions": "*",
+        "Microsoft.CSharp": "*",
+        "System.Data": "*",
+        "System.Xml": "*",
+        "System.Xml.Serialization": "*"
+      },
+      "buildOptions": {
+        "embed": [ "fileuploads/test_data/*.png", "infrastructure/test_data/*.json" ]
+      }
+    }
+  },
+  "testRunner": "mspec",
+  "version": "0.0.0-*",
+  "runtimes": {
+    "win": { } 
+  }
+}
