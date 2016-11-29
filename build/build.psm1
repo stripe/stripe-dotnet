@@ -1,19 +1,20 @@
 function Invoke-Restore()
 {
 	$build = (dotnet restore)
+
+	Write-Host $build
 }
 
 function Invoke-Build
 {
-	Write-Host " "
-	Write-Host "Running debug build script..."
+	$debug_build = ("dotnet build -c Debug src\Stripe.net" | Out-String) -split "\n"
+	Write-Host $debug_build
+	
+	$prod_build = ("dotnet build -c Release src\Stripe.net" | Out-String) -split "\n"
+	Write-Host $prod_build
 
-	$build = (msbuild "src\Stripe.net.sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" | Out-String) -split "\n"
-
-	Write-Host " Build full solution this time."
-
-	#$debug_build = ("dotnet build -c Debug src\Stripe.net" | Out-String) -split "\n"
-	#$prod_build = ("dotnet build -c Release src\Stripe.net" | Out-String) -split "\n"
+	$test_build = (msbuild "src\Stripe.net\Stripe.Tests.proj" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" | Out-String) -split "\n"
+	Write-Host $test_build
 
 	#$missing_comments = 0
 	#$missing_comments_portable = 0
