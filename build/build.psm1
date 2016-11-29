@@ -31,6 +31,8 @@ function Invoke-Test
 
 function Invoke-Pack
 {
+	if ($shouldPublish -ne $true) { $host.SetShouldExit($LastExitCode) }
+
 	dotnet pack -c Release src\Stripe.net
 }
 
