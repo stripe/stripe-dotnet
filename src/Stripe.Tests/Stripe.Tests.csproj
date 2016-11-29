@@ -267,11 +267,5 @@
     <Content Include="infrastructure\test_data\invoice.json" />
     <Content Include="infrastructure\test_data\subscription.json" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Stripe\Stripe.csproj">
-      <Project>{e48e9ac1-3a88-406b-82ff-166b1e3c7a48}</Project>
-      <Name>Stripe</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,16 +1,20 @@
-version: 6.11.1.{build}
+version: 6.12.0.{build}
+image: Visual Studio 2015
 
 environment:
   stripe_test_secret_key:
     secure: +p/EWA8+0B64k7a88nb6ZiSTcv6TIukyhQQU2Ljf7jNVtwVZXhJtNf5LdemV7EuY
 
 before_build:
-  - nuget restore src\Stripe.sln
+- dotnet restore
 
-build:
-  verbosity: minimal
+build_script:
+- ps: >-
+    dotnet build -c Debug src\Stripe
+    dotnet build -c Release src\Stripe
 
-assembly_info:
-  patch: true
-  file: src\SharedAssemblyInfo.cs
-  assembly_version: '6.11.1'
+after_build:
+- dotnet pack -c Release src\Stripe
+
+artifacts:
+- path: '**\*.nupkg'
