@@ -21,6 +21,7 @@
         "Microsoft.CSharp": "*",
         "System.Configuration": "*",
         "System.Core": "*",
+        "System.Linq": "*", 
         "System.Net.Http": "*",
         "System.Net.Http.WebRequest": "*",
         "System.Web": "*",
