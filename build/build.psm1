@@ -39,15 +39,14 @@ function Invoke-Build
 
 function Invoke-Test
 {
-	dotnet test
+	dotnet test src\Stripe.Tests
 }
 
 function Invoke-Pack
 {
-	dotnet pack -c Release src\Stripe
+	dotnet pack -c Release src\Stripe.net
 
-	$build = ("dotnet pack -c Release src\Stripe" | Out-String) -split "\n"
-
+	$build = ("dotnet pack -c Release src\Stripe.net" | Out-String) -split "\n"
 	Write-Host "(I packed this in a string too)"
 }
 
