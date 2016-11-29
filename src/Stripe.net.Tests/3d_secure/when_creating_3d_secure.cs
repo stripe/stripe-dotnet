@@ -24,9 +24,8 @@ namespace Stripe.Tests
                 CardTokenOrCardId = _token.Id
             });
 
-        // failing on purpose to test build
         It should_have_a_3d_secure_object = () =>
-            _3DSecure.ShouldBeNull();
+            _3DSecure.ShouldNotBeNull();
 
         It should_have_the_right_amount = () =>
             _3DSecure.Amount.ShouldEqual(1000);
