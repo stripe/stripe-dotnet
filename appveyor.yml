@@ -19,8 +19,3 @@ test_script:
 
 after_build:
 - ps: Invoke-Pack
-
-artifacts:
-  - path: src
-    name: src-folder
-    type: zip
