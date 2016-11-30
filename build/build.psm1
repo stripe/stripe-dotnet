@@ -33,9 +33,8 @@ function Invoke-Pack
 	if ($shouldPublish -ne $true) { $host.SetShouldExit($LastExitCode) }
 
 	dotnet pack -c Release src\Stripe.net
-	
-	# artifact: *.nupkg
-	Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -Filename $_.FullName }
+
+	Get-ChildItem Stripe*.nupkg -Recurse | % { Push-AppveyorArtifact $_.FullName -Filename $_.FullName }
 }
 
 function blankLines()
