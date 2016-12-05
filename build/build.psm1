@@ -16,9 +16,13 @@ function Invoke-Build
 
 function Invoke-Test
 {
-	$test_result = (dotnet test src\Stripe.net.Tests | Out-String) -split "\n"
+	$test_result_legacy = (dotnet test src\Stripe.net.Tests | Out-String) -split "\n"
+	foreach($line in $test_result_legacy) {
+		if (${line} -Match "Failures:") { $shouldPublish = $false }
+	}
 
-	foreach($line in $test_result) {
+	$test_result = (dotnet test src\Stripe.net.Tests.xUnit | Out-String) -split "\n"
+	foreach($line in $test_result_legacy) {
 		if (${line} -Match "Failures:") { $shouldPublish = $false }
 	}
 
