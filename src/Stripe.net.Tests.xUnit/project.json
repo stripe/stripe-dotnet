@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0-*",
+  "dependencies": {
+    "System.Runtime.Serialization.Primitives": "4.3.0",
+    "xunit": "2.1.0",
+    "dotnet-test-xunit": "2.2.0-preview2-build1029",
+    "Stripe.net": "6.12.0",
+    "FluentAssertions": "4.17.0"
+  },
+  "testRunner": "xunit",
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": [
+        "dotnet5.6",
+        "portable-net45+win8"
+      ],
+      "dependencies": {
+        "NETStandard.Library": "1.6.1"
+      }
+    }
+  },
+  "runtimes": {
+    "win10-x64": {},
+    "osx.10.12-x64": {}
+  }
+}

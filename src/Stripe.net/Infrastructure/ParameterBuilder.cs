@@ -4,6 +4,7 @@ using System.Net;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Stripe.Infrastructure.Middleware;
 
 namespace Stripe.Infrastructure
 {
@@ -26,44 +27,10 @@ namespace Stripe.Infrastructure
 
                     foreach (var attribute in property.GetCustomAttributes<JsonPropertyAttribute>())
                     {
-                        if (attribute.PropertyName.ToLower().Contains("metadata"))
-                            requestString = ApplyMetadataParameters(requestString, value);
-                        else if (attribute.PropertyName.ToLower().Contains("fraud_details"))
-                        {
-                            var fraudDetails = (Dictionary<string, string>)value;
-
-                            foreach (string key in fraudDetails.Keys)
-                            {
-                                requestString = ApplyParameterToUrl(requestString, $"fraud_details[{key}]", fraudDetails[key]);
-                            }
-                        }
-                        else if (property.PropertyType == typeof(StripeDateFilter))
-                        {
-                            var filter = (StripeDateFilter)value;
-
-                            if (filter.EqualTo.HasValue)
-                                requestString = ApplyParameterToUrl(requestString, attribute.PropertyName, filter.EqualTo.Value.ConvertDateTimeToEpoch().ToString());
-
-                            if (filter.LessThan.HasValue)
-                                requestString = ApplyParameterToUrl(requestString, attribute.PropertyName + "[lt]", filter.LessThan.Value.ConvertDateTimeToEpoch().ToString());
-
-                            if (filter.LessThanOrEqual.HasValue)
-                                requestString = ApplyParameterToUrl(requestString, attribute.PropertyName + "[lte]", filter.LessThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
-
-                            if (filter.GreaterThan.HasValue)
-                                requestString = ApplyParameterToUrl(requestString, attribute.PropertyName + "[gt]", filter.GreaterThan.Value.ConvertDateTimeToEpoch().ToString());
-
-                            if (filter.GreaterThanOrEqual.HasValue)
-                                requestString = ApplyParameterToUrl(requestString, attribute.PropertyName + "[gte]", filter.GreaterThanOrEqual.Value.ConvertDateTimeToEpoch().ToString());
-                        }
-                        else if (value as INestedOptions != null)
-                        {
-                            requestString = ApplyNestedObjectProperties(requestString, value);
-                        }
+                        if (value is INestedOptions)
+                            ApplyNestedObjectProperties(ref requestString, value);
                         else
-                        {
-                            requestString = ApplyParameterToUrl(requestString, attribute.PropertyName, value.ToString());
-                        }
+                            RequestStringBuilder.ProcessPlugins(ref requestString, attribute, property, value, obj);
                     }
                 }
             }
@@ -89,7 +56,7 @@ namespace Stripe.Infrastructure
 
                     requestString = ApplyParameterToUrl(requestString, "expand[]", expandPropertyName);
 
-                    // note for someday - I had no idea you could expand properties beyond the first level (up to 4 before stripe throws and exception).
+                    // note: I had no idea you could expand properties beyond the first level (up to 4 before stripe throws an exception).
                     // something to consider adding to the project.
                     //
                     // example:
@@ -102,15 +69,12 @@ namespace Stripe.Infrastructure
 
         public static string ApplyParameterToUrl(string url, string argument, string value)
         {
-            var token = "&";
+            RequestStringBuilder.ApplyParameterToRequestString(ref url, argument, value);
 
-            if (!url.Contains("?"))
-                token = "?";
-
-            return $"{url}{token}{argument}={WebUtility.UrlEncode(value)}";
+            return url;
         }
 
-        private static string ApplyNestedObjectProperties(string requestString, object nestedObject)
+        private static void ApplyNestedObjectProperties(ref string requestString, object nestedObject)
         {
             foreach (var property in nestedObject.GetType().GetRuntimeProperties())
             {
@@ -118,27 +82,8 @@ namespace Stripe.Infrastructure
                 if (value == null) continue;
 
                 foreach (var attribute in property.GetCustomAttributes<JsonPropertyAttribute>())
-                {
-                    if (attribute.PropertyName.ToLower().Contains("metadata"))
-                        requestString = ApplyMetadataParameters(requestString, value);
-                    else
-                        requestString = ApplyParameterToUrl(requestString, attribute.PropertyName, value.ToString());
-                }
+                    RequestStringBuilder.ProcessPlugins(ref requestString, attribute, property, value, nestedObject);
             }
-
-            return requestString;
-        }
-
-        private static string ApplyMetadataParameters(string requestString, object value)
-        {
-            var metadata = (Dictionary<string, string>)value;
-
-            foreach (string key in metadata.Keys)
-            {
-                requestString = ApplyParameterToUrl(requestString, $"metadata[{key}]", metadata[key]);
-            }
-
-            return requestString;
         }
     }
 }

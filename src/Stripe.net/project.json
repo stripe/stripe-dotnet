@@ -56,6 +56,7 @@
   "title": "Stripe.net",
   "version": "6.12.0",
   "runtimes": {
-    "win": { } 
+    "win10-x64": {},
+    
   }
 }
