@@ -9,15 +9,15 @@ namespace Stripe.Infrastructure.Middleware
 {
     public static class RequestStringBuilder
     {
-        private static IEnumerable<IParserPlugin> PropertyPlugins { get; set; }
+        private static IEnumerable<IParserPlugin> ParserPlugins { get; set; }
 
         static RequestStringBuilder()
         {
-            if (PropertyPlugins != null) return;
+            if (ParserPlugins != null) return;
 
             // use reflection so this works on the bin directory later for additional plugin processing tools
 
-            PropertyPlugins = new List<IParserPlugin>
+            ParserPlugins = new List<IParserPlugin>
             {
                 new AdditionalOwnerPlugin(),
                 new DictionaryPlugin(),
@@ -29,7 +29,7 @@ namespace Stripe.Infrastructure.Middleware
         {
             var parsedParameter = false;
 
-            foreach (var plugin in PropertyPlugins)
+            foreach (var plugin in ParserPlugins)
             {
                 if(!parsedParameter)
                     parsedParameter = plugin.Parse(ref requestString, attribute, property, propertyValue, propertyParent);

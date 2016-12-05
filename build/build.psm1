@@ -11,6 +11,7 @@ function Invoke-Build
 	dotnet build -c Release src\Stripe.net
 
 	dotnet build src\Stripe.net.Tests
+	dotnet build src\Stripe.net.Tests.xUnit
 }
 
 function Invoke-Test

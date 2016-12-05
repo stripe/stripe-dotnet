@@ -7,7 +7,7 @@ namespace Stripe.Tests.xUnit
 {
     public class when_adding_legal_entity_additional_owners : test
     {
-        private readonly StripeAccount _retrievedAccount;
+        private StripeAccount RetrievedAccount { get; }
 
         public when_adding_legal_entity_additional_owners()
         {
@@ -27,7 +27,7 @@ namespace Stripe.Tests.xUnit
                 }
             );
 
-            _retrievedAccount = new StripeAccountService(_stripe_api_key).Get(newAccount.Id);
+            RetrievedAccount = new StripeAccountService(_stripe_api_key).Get(newAccount.Id);
         }
 
         public StripeAccount Account { get; set; }
@@ -35,33 +35,33 @@ namespace Stripe.Tests.xUnit
         [Fact]
         public void it_should_have_the_legal_entity()
         {
-            _retrievedAccount.LegalEntity.Should().NotBeNull();
+            RetrievedAccount.LegalEntity.Should().NotBeNull();
         }
 
         [Fact]
         public void it_should_have_the_addditional_owners()
         {
-            _retrievedAccount.LegalEntity.AdditionalOwners.Should().NotBeNull();
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().NotBeNull();
         }
 
         [Fact]
         public void it_should_have_the_owner_count_as_two()
         {
-            _retrievedAccount.LegalEntity.AdditionalOwners.Count.ShouldBeEquivalentTo(2);
+            RetrievedAccount.LegalEntity.AdditionalOwners.Count.ShouldBeEquivalentTo(2);
         }
 
         [Fact]
         public void it_should_have_the_owner_firstnames_right()
         {
-            _retrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.FirstName == "Big");
-            _retrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.FirstName == "Trouble");
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.FirstName == "Big");
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.FirstName == "Trouble");
         }
 
         [Fact]
         public void it_should_have_the_owner_lastnames_right()
         {
-            _retrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.LastName == "Little");
-            _retrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.LastName == "China");
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.LastName == "Little");
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.LastName == "China");
         }
     }
 }

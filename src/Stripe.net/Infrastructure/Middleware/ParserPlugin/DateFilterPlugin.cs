@@ -9,7 +9,7 @@ namespace Stripe.Infrastructure.Middleware
     {
         public bool Parse(ref string requestString, JsonPropertyAttribute attribute, PropertyInfo property, object propertyValue, object propertyParent)
         {
-            if (property.GetType() != typeof(StripeDateFilter)) return false;
+            if (property.PropertyType!= typeof(StripeDateFilter)) return false;
 
             var filter = (StripeDateFilter) propertyValue;
 
