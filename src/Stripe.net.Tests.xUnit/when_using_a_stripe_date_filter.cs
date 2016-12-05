@@ -15,7 +15,7 @@ namespace Stripe.Tests.xUnit
             Invoices = new StripeInvoiceService(_stripe_api_key).List(
                 new StripeInvoiceListOptions
                 {
-                    Date = new StripeDateFilter { EqualTo = DateTime.UtcNow }
+                    Date = new StripeDateFilter { EqualTo = DateTime.UtcNow.AddYears(-10) }
                 }
             ).ToList();
         }
@@ -23,9 +23,9 @@ namespace Stripe.Tests.xUnit
         public StripeAccount Account { get; set; }
 
         [Fact]
-        public void it_should_have_some_invoices()
+        public void it_should_have_no_invoices()
         {
-            Invoices.Count.Should().BeGreaterThan(1);
+            Invoices.Count.ShouldBeEquivalentTo(0);
         }
     }
 }

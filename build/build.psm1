@@ -1,4 +1,4 @@
-$shouldPublish = $null
+$shouldPublish = $false
 
 function Invoke-Restore()
 {
@@ -16,17 +16,15 @@ function Invoke-Build
 
 function Invoke-Test
 {
+	$test_result = (dotnet test src\Stripe.net.Tests.xUnit | Out-String) -split "\n"
+	foreach($line in $test_result_legacy) {
+		if (${line} -Match "Failed: 0") { $shouldPublish = $true }
+	}
+
 	$test_result_legacy = (dotnet test src\Stripe.net.Tests | Out-String) -split "\n"
 	foreach($line in $test_result_legacy) {
 		if (${line} -Match "Failures:") { $shouldPublish = $false }
 	}
-
-	$test_result = (dotnet test src\Stripe.net.Tests.xUnit | Out-String) -split "\n"
-	foreach($line in $test_result_legacy) {
-		if (${line} -Match "Failures:") { $shouldPublish = $false }
-	}
-
-	if ($shouldPublish -eq $null) { $shouldPublish = $true }
 
 	blankLines
 	Write-Host $("Should we package? $shouldPublish") -ForegroundColor Cyan

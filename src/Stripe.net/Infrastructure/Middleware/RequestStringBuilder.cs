@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Reflection;
 using Newtonsoft.Json;
@@ -9,7 +7,7 @@ namespace Stripe.Infrastructure.Middleware
 {
     public static class RequestStringBuilder
     {
-        private static IEnumerable<IParserPlugin> ParserPlugins { get; set; }
+        private static IEnumerable<IParserPlugin> ParserPlugins { get; }
 
         static RequestStringBuilder()
         {
