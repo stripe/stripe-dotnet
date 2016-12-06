@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Stripe
 {
@@ -219,6 +220,13 @@ namespace Stripe
 
         [JsonProperty("legal_entity[verification][document]")]
         public string VerificationDocumentFileId { get; set; }
+
+        #endregion
+
+        #region Additional Owners
+
+        [JsonProperty("legal_entity[additional_owners]")]
+        public List<StripeAccountAdditionalOwner> AdditionalOwners { get; set; }
 
         #endregion
     }

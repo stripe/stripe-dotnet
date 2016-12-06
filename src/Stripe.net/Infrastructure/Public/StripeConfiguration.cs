@@ -7,14 +7,13 @@ namespace Stripe
     public static class StripeConfiguration
     {
         /// <summary>
-        /// <para>This is the API version that Stripe.net will automatically use when working with Stripe. You only need to be concerned if you are using webhooks (Stripe Events) and having issues.</para>
-        /// <para>If you notice webhooks are not working correctly, email Stripe and ask them to downgrade your API version to match the StripeApiVersion. Work is going on to catch up so this isn't necessary!</para>
+        /// If this isn't the latest version of the Stripe API, it's news to me.
         /// </summary>
         public static string StripeApiVersion = "2016-07-06";
         public static string StripeNetVersion { get; private set; }
 
         /// <summary>
-        /// This option allows you to provide your own HttpMessageHandler. Useful with Android/iPhone and/or adding in ModernHttpClient.
+        /// This option allows you to provide your own HttpMessageHandler. Useful with Android/iPhone.
         /// </summary>
         public static HttpMessageHandler HttpMessageHandler { get; set; } 
 
