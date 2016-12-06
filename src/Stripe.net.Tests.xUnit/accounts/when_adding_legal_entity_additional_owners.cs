@@ -21,7 +21,7 @@ namespace Stripe.Tests.xUnit
                         AdditionalOwners = new List<StripeAccountAdditionalOwner>
                         {
                             new StripeAccountAdditionalOwner { FirstName = "Big", LastName = "Little" },
-                            new StripeAccountAdditionalOwner { FirstName = "Trouble", LastName = "China" }
+                            new StripeAccountAdditionalOwner { FirstName = "Trouble", LastName = "China", City = "A", Line1 = "B", Line2 = "C", PostalCode = "90210", Country = "us" }
                         }
                     }
                 }
@@ -51,17 +51,13 @@ namespace Stripe.Tests.xUnit
         }
 
         [Fact]
-        public void it_should_have_the_owner_firstnames_right()
+        public void it_should_have_the_address_right()
         {
-            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.FirstName == "Big");
-            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.FirstName == "Trouble");
-        }
-
-        [Fact]
-        public void it_should_have_the_owner_lastnames_right()
-        {
-            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.LastName == "Little");
-            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.LastName == "China");
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.CityOrTown == "A");
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.Line1 == "B");
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.Line2 == "C");
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.PostalCode == "90210");
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.Country == "us");
         }
     }
 }

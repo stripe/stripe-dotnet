@@ -30,7 +30,7 @@ namespace Stripe.Infrastructure.Middleware
                     if (attr == null) continue;
 
                     RequestStringBuilder.ApplyParameterToRequestString(ref requestString,
-                        $"{attribute.PropertyName}[{ownerIndex}][{attr.PropertyName}]", 
+                        $"{attribute.PropertyName}[{ownerIndex}]{attr.PropertyName}", 
                         value.ToString());
                 }
 

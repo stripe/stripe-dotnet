@@ -5,7 +5,7 @@ namespace Stripe
     public class StripeAddress : StripeEntity
     {
         [JsonProperty("city")]
-        public string City { get; set; }
+        public string CityOrTown { get; set; }
 
         [JsonProperty("country")]
         public string Country { get; set; }

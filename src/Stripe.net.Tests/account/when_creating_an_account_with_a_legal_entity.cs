@@ -46,7 +46,7 @@ namespace Stripe.Tests
 
         It should_have_the_correct_legal_entity_values = () =>
         {
-            _stripeAccount.LegalEntity.Address.City.ShouldEqual(_stripeAccountCreateOptions.LegalEntity.AddressCity);
+            _stripeAccount.LegalEntity.Address.CityOrTown.ShouldEqual(_stripeAccountCreateOptions.LegalEntity.AddressCity);
             _stripeAccount.LegalEntity.Address.Country.ShouldEqual(_stripeAccountCreateOptions.LegalEntity.AddressTwoLetterCountry);
             _stripeAccount.LegalEntity.Address.Line1.ShouldEqual(_stripeAccountCreateOptions.LegalEntity.AddressLine1);
             _stripeAccount.LegalEntity.Address.Line2.ShouldEqual(_stripeAccountCreateOptions.LegalEntity.AddressLine2);

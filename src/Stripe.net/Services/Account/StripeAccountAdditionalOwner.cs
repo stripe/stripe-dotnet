@@ -1,41 +1,40 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Stripe
 {
     public class StripeAccountAdditionalOwner : INestedOptions
     {
-        [JsonProperty("address[city]")]
-        public string AddressCity { get; set; }
+        [JsonProperty("[city]")]
+        public string City { get; set; }
 
-        [JsonProperty("address[country]")]
+        [JsonProperty("[country]")]
         public string Country { get; set; }
 
-        [JsonProperty("address[line1]")]
+        [JsonProperty("[line1]")]
         public string Line1 { get; set; }
 
-        [JsonProperty("address[line2]")]
+        [JsonProperty("[line2]")]
         public string Line2 { get; set; }
 
-        [JsonProperty("address[postal_code]")]
+        [JsonProperty("[postal_code]")]
         public string PostalCode { get; set; }
 
-        [JsonProperty("address[state]")]
+        [JsonProperty("[state]")]
         public string State { get; set; }
 
-        [JsonProperty("dob[day]")]
-        public int? Day { get; set; }
+        //[JsonProperty("[dob][day]")]
+        //public int? BirthDay { get; set; }
 
-        [JsonProperty("dob[month]")]
-        public int? Month { get; set; }
+        //[JsonProperty("[dob][month]")]
+        //public int? BirthMonth { get; set; }
 
-        [JsonProperty("dob[year]")]
-        public int? Year { get; set; }
+        //[JsonProperty("[dob][year]")]
+        //public int? BirthYear { get; set; }
 
-        [JsonProperty("first_name")]
+        [JsonProperty("[first_name]")]
         public string FirstName { get; set; }
 
-        [JsonProperty("last_name")]
+        [JsonProperty("[last_name]")]
         public string LastName { get; set; }
     }
 }

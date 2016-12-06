@@ -48,10 +48,6 @@ function Invoke-Pack
 	dotnet pack -c Release src\Stripe.net
 
 	Get-ChildItem Stripe*.nupkg -Recurse | % { Push-AppveyorArtifact $_.FullName -Filename $_.FullName }
-
-	blankLines
-	Write-Host $("HOOOOORAY!!") -BackgroundColor DarkCyan
-	blankLines
 }
 
 function blankLines()
