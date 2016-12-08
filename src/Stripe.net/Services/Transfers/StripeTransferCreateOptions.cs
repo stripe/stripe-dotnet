@@ -37,6 +37,9 @@ namespace Stripe
         [JsonProperty("source_transaction")]
         public string SourceTransaction { get; set; }
 
+        [JsonProperty("source_type")]
+        public string SourceType { get; set; }
+
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
     }
