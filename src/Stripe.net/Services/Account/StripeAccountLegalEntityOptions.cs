@@ -95,13 +95,13 @@ namespace Stripe
         #region Date of Birth
 
         [JsonProperty("legal_entity[dob][day]")]
-        public string BirthDay { get; set; }
+        public int? BirthDay { get; set; }
 
         [JsonProperty("legal_entity[dob][month]")]
-        public string BirthMonth { get; set; }
+        public int? BirthMonth { get; set; }
 
         [JsonProperty("legal_entity[dob][year]")]
-        public string BirthYear { get; set; }
+        public int? BirthYear { get; set; }
 
         #endregion
 
