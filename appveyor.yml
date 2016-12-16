@@ -1,9 +1,16 @@
-version: 6.11.1.{build}
+version: 6.12.1.{build}
 image: Visual Studio 2015
 
 environment:
   stripe_test_secret_key:
     secure: +p/EWA8+0B64k7a88nb6ZiSTcv6TIukyhQQU2Ljf7jNVtwVZXhJtNf5LdemV7EuY
+
+deploy:
+- provider: NuGet
+  api_key:
+    secure: D6ys+uEckSSs1hTQ0/io7wKytQnGH32FMzsPCRBVT1L6wmGe2pj3bmVNgw/xKBqM
+  on:
+    branch: master
 
 install:
 - ps: Import-Module .\build\build.psm1
