@@ -5,6 +5,8 @@ using Xunit;
 
 namespace Stripe.Tests.xUnit
 {
+    // TODO: needs a bit of work - set the RetrievedAccount after update then assert fields
+
     public class when_updating_legal_entity_additional_owners : test
     {
         private StripeAccount RetrievedAccount { get; }
