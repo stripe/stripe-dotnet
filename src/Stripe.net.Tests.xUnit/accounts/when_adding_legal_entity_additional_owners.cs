@@ -5,11 +5,11 @@ using Xunit;
 
 namespace Stripe.Tests.xUnit
 {
-    public class when_adding_legal_entity_additional_owners : test
+    public class adding_additional_owners : test
     {
         private StripeAccount RetrievedAccount { get; }
 
-        public when_adding_legal_entity_additional_owners()
+        public adding_additional_owners()
         {
             var newAccount = new StripeAccountService(_stripe_api_key).Create(
                 new StripeAccountCreateOptions
@@ -20,8 +20,18 @@ namespace Stripe.Tests.xUnit
                     {
                         AdditionalOwners = new List<StripeAccountAdditionalOwner>
                         {
-                            new StripeAccountAdditionalOwner { FirstName = "Big", LastName = "Little" },
-                            new StripeAccountAdditionalOwner { FirstName = "Trouble", LastName = "China", City = "A", Line1 = "B", Line2 = "C", PostalCode = "90210", Country = "us" }
+                            new StripeAccountAdditionalOwner
+                            {
+                                FirstName = "Big", LastName = "Little",
+                                BirthDay = 25, BirthMonth = 12, BirthYear = 2000
+                            },
+                            new StripeAccountAdditionalOwner
+                            {
+                                FirstName = "Trouble", LastName = "China",
+                                State = "CA", CityOrTown = "A",
+                                Line1 ="B", Line2 = "C", PostalCode = "27635",
+                                Country = "US"
+                            }
                         }
                     }
                 }
@@ -33,31 +43,78 @@ namespace Stripe.Tests.xUnit
         public StripeAccount Account { get; set; }
 
         [Fact]
-        public void it_should_have_the_legal_entity()
+        public void has_legal_entity()
         {
             RetrievedAccount.LegalEntity.Should().NotBeNull();
         }
 
         [Fact]
-        public void it_should_have_the_addditional_owners()
+        public void has_addditional_owners()
         {
             RetrievedAccount.LegalEntity.AdditionalOwners.Should().NotBeNull();
         }
 
         [Fact]
-        public void it_should_have_the_owner_count_as_two()
+        public void right_state()
+        {
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.Address.State == "CA");
+        }
+
+        [Fact]
+        public void right_owners_count()
         {
             RetrievedAccount.LegalEntity.AdditionalOwners.Count.ShouldBeEquivalentTo(2);
         }
 
         [Fact]
-        public void it_should_have_the_address_right()
+        public void right_city()
         {
-            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.CityOrTown == "A");
-            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.Line1 == "B");
-            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.Line2 == "C");
-            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.PostalCode == "90210");
-            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.Country == "us");
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.Address.CityOrTown == "A");
+        }
+
+        [Fact]
+        public void right_line_1()
+        {
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.Address.Line1 == "B");
+        }
+
+        [Fact]
+        public void right_line_2()
+        {
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.Address.Line2 == "C");
+        }
+
+        [Fact]
+        public void right_postal_code()
+        {
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.Address.PostalCode == "27635");
+        }
+
+        [Fact]
+        public void right_country()
+        {
+            RetrievedAccount.LegalEntity.AdditionalOwners.Should().Contain(owner => owner.Address.Country == "US");
+        }
+
+        [Fact]
+        public void right_first_name()
+        {
+            RetrievedAccount.LegalEntity.AdditionalOwners[0].FirstName.ShouldBeEquivalentTo("Big");
+        }
+
+        [Fact]
+        public void right_last_name()
+        {
+            RetrievedAccount.LegalEntity.AdditionalOwners[0].LastName.ShouldBeEquivalentTo("Little");
+        }
+
+        [Fact]
+        public void right_birthday()
+        {
+            RetrievedAccount.LegalEntity.AdditionalOwners[0].BirthDay.Day.ShouldBeEquivalentTo(25);
+            RetrievedAccount.LegalEntity.AdditionalOwners[0].BirthDay.Month.ShouldBeEquivalentTo(12);
+            RetrievedAccount.LegalEntity.AdditionalOwners[0].BirthDay.Year.ShouldBeEquivalentTo(2000);
         }
     }
 }
+
