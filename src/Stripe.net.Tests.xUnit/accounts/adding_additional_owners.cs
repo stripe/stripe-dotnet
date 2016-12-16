@@ -14,7 +14,7 @@ namespace Stripe.Tests.xUnit
             var newAccount = new StripeAccountService(_stripe_api_key).Create(
                 new StripeAccountCreateOptions
                 {
-                    Email = $"merry{ Guid.NewGuid() }@christmas.com",
+                    Email = $"merry@christmas.com",
                     Managed = true,
                     LegalEntity = new StripeAccountLegalEntityOptions
                     {
