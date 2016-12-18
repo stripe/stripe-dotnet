@@ -49,29 +49,9 @@ namespace Stripe
         [JsonProperty("email")]
         public string Email { get; set; }
 
-        #region External Accounts
-
         [JsonProperty("external_accounts")]
-        [JsonConverter(typeof(StripeExternalAccountConverter))]
-        public StripeList<dynamic> ExternalAccounts { get; set; }
-
-        public List<StripeCard> ExternalCards
-        {
-            get
-            {
-                return ExternalAccounts.Data.Where(acc => acc.Object == "card").Cast<StripeCard>().ToList();
-            }
-        }
-
-        public List<StripeBankAccount> ExternalBankAccounts
-        {
-            get
-            {
-                return ExternalAccounts.Data.Where(acc => acc.Object == "bank_account").Cast<StripeBankAccount>().ToList();
-            }
-        }
-
-        #endregion
+        [JsonConverter(typeof(SourceListConverter))]
+        public StripeList<Source> ExternalAccounts { get; set; }
 
         [JsonProperty("legal_entity")]
         public StripeLegalEntity LegalEntity { get; set; }

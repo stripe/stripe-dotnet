@@ -45,7 +45,7 @@ namespace Stripe.Tests
         It should_have_the_correct_external_account_info = () =>
         {
             StripeAccount.ExternalAccounts.TotalCount.ShouldEqual(1);
-            var account = (StripeBankAccount) StripeAccount.ExternalAccounts.Data[0];
+            var account = (StripeBankAccount) StripeAccount.ExternalAccounts.Data[0].BankAccount;
             account.Object.ShouldEqual(CreateOrUpdateOptions.ExternalBankAccount.Object);
         };
 

@@ -42,9 +42,9 @@ namespace Stripe.Tests
             _retrievedAccount = _stripeAccountService.Update(_initialAccount.Id, _updateOptions);
 
         It should_have_a_card_account = () =>
-            _retrievedAccount.ExternalCards.ShouldNotBeNull();
+            _retrievedAccount.ExternalAccounts.ShouldNotBeNull();
 
         It should_have_the_right_card_account = () =>
-            _retrievedAccount.ExternalCards.Where(card => card.Name == "Bob Winghead").ShouldNotBeNull();
+            _retrievedAccount.ExternalAccounts.Data.Where(acc => acc.Card.Name == "Bob Winghead").ShouldNotBeNull();
     }
 }

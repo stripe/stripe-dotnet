@@ -36,7 +36,7 @@ namespace Stripe.Tests
         {
             StripeAccount.ExternalAccounts.TotalCount.ShouldEqual(1);
 
-            var firstEntry = (StripeCard)StripeAccount.ExternalAccounts.Data.First();
+            var firstEntry = (StripeCard)StripeAccount.ExternalAccounts.Data.First().Card;
 
             firstEntry.AddressCountry.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.AddressCountry);
             firstEntry.AddressLine1.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.AddressLine1);
@@ -53,9 +53,9 @@ namespace Stripe.Tests
 
         It should_have_the_correct_card = () =>
         {
-            var firstEntry = (StripeCard)StripeAccount.ExternalAccounts.Data.First();
+            var firstEntry = (StripeCard)StripeAccount.ExternalAccounts.Data.First().Card;
 
-            StripeAccount.ExternalCards.First().Name.ShouldEqual(firstEntry.Name);
+            StripeAccount.ExternalAccounts.Data.First().Card.Name.ShouldEqual(firstEntry.Name);
         };
 
         Behaves_like<account_behaviors> behaviors;
