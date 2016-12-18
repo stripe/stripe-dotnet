@@ -10,61 +10,47 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
-
+        /// <summary>
+        /// A positive integer in the smallest currency unit (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a 0-decimal currency) representing how much to charge. The minimum amount is $0.50 US or equivalent in charge currency.
+        /// </summary>
         [JsonProperty("amount")]
         public int Amount { get; set; }
 
-        [JsonProperty("captured")]
-        public bool? Captured { get; set; }
+        /// <summary>
+        /// Amount in cents refunded (can be less than the amount attribute on the charge if a partial refund was issued).
+        /// </summary>
+        [JsonProperty("amount_refunded")]
+        public int AmountRefunded { get; set; }
 
-        [JsonProperty("created")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime Created { get; set; }
+        // application
 
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
+        #region Expandable Application Fee
+        public string ApplicationFeeId { get; set; }
 
-        [JsonProperty("paid")]
-        public bool Paid { get; set; }
-
-        #region Expandable Review
-        public string ReviewId { get; set; }
-
+        /// <summary>
+        /// The application fee (if any) for the charge. See the Connect documentation for details.
+        /// </summary>
         [JsonIgnore]
-        public StripeReview Review { get; set; }
+        public StripeApplicationFee ApplicationFee { get; set; }
 
-        [JsonProperty("review")]
-        internal object InternalReview
+        [JsonProperty("application_fee")]
+        internal object InternalApplicationFee
         {
             set
             {
-                ExpandableProperty<StripeReview>.Map(value, s => ReviewId = s, o => Review = o);
+                ExpandableProperty<StripeApplicationFee>.Map(value, s => ApplicationFeeId = s, o => ApplicationFee = o);
             }
         }
         #endregion
 
-        [JsonProperty("refunded")]
-        public bool Refunded { get; set; }
-
-        [JsonProperty("refunds")]
-        public StripeList<StripeRefund> StripeRefundList { get; set; }
-
-        [JsonConverter(typeof(SourceConverter))]
-        public Source Source { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("amount_refunded")]
-        public int AmountRefunded { get; set; }
-
         #region Expandable Balance Transaction
+        /// <summary>
+        /// ID of the balance transaction that describes the impact of this charge on your account balance (not including refunds or disputes).
+        /// </summary>
         public string BalanceTransactionId { get; set; }
 
         [JsonIgnore]
-        public StripeBalanceTransaction BalanceTransaction { get; set;}
+        public StripeBalanceTransaction BalanceTransaction { get; set; }
 
         [JsonProperty("balance_transaction")]
         internal object InternalBalanceTransaction
@@ -76,7 +62,26 @@ namespace Stripe
         }
         #endregion
 
+        /// <summary>
+        /// If the charge was created without capturing, this boolean represents whether or not it is still uncaptured or has since been captured.
+        /// </summary>
+        [JsonProperty("captured")]
+        public bool? Captured { get; set; }
+
+        [JsonProperty("created")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime Created { get; set; }
+
+        /// <summary>
+        /// Three-letter ISO currency code representing the currency in which the charge was made.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
         #region Expandable Customer
+        /// <summary>
+        /// ID of the customer this charge is for if one exists.
+        /// </summary>
         public string CustomerId { get; set; }
 
         [JsonIgnore]
@@ -98,6 +103,9 @@ namespace Stripe
         #region Expandable Destination
         public string DestinationId { get; set; }
 
+        /// <summary>
+        /// The account (if any) the charge was made on behalf of, with an automatic transfer. See the Connect documentation for details.
+        /// </summary>
         [JsonIgnore]
         public StripeAccount Destination { get; set; }
 
@@ -111,22 +119,34 @@ namespace Stripe
         }
         #endregion
 
-        [JsonProperty("statement_descriptor")]
-        public string StatementDescriptor { get; set; }
-
+        /// <summary>
+        /// Details about the dispute if the charge has been disputed.
+        /// </summary>
         [JsonProperty("dispute")]
         public StripeDispute Dispute { get; set; }
 
+        /// <summary>
+        /// Error code explaining reason for charge failure if available (see the errors section for a list of codes).
+        /// </summary>
         [JsonProperty("failure_code")]
         public string FailureCode { get; set; }
 
+        /// <summary>
+        /// Message to user further explaining reason for charge failure if available.
+        /// </summary>
         [JsonProperty("failure_message")]
         public string FailureMessage { get; set; }
 
+        /// <summary>
+        /// Hash with information on fraud assessments for the charge. Assessments reported by you have the key user_report and, if set, possible values of safe and fraudulent. Assessments from Stripe have the key stripe_report and, if set, the value fraudulent.
+        /// </summary>
         [JsonProperty("fraud_details")]
         public Dictionary<string, string> FraudDetails { get; set; }
 
         #region Expandable Invoice
+        /// <summary>
+        /// ID of the invoice this charge is for if one exists.
+        /// </summary>
         public string InvoiceId { get; set; }
 
         [JsonIgnore]
@@ -142,37 +162,98 @@ namespace Stripe
         }
         #endregion
 
+        [JsonProperty("livemode")]
+        public bool LiveMode { get; set; }
+
+        /// <summary>
+        /// A set of key/value pairs that you can attach to a charge object. It can be useful for storing additional information about the charge in a structured format.
+        /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        // order
+
+        // outcome
+
+        /// <summary>
+        /// true if the charge succeeded, or was successfully authorized for later capture.
+        /// </summary>
+        [JsonProperty("paid")]
+        public bool Paid { get; set; }
+
+        /// <summary>
+        /// This is the email address that the receipt for this charge was sent to.
+        /// </summary>
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
 
+        /// <summary>
+        /// This is the transaction number that appears on email receipts sent for this charge.
+        /// </summary>
         [JsonProperty("receipt_number")]
         public string ReceiptNumber { get; set; }
 
-        [JsonProperty("shipping")]
-        public StripeShipping Shipping { get; set; }
+        /// <summary>
+        /// Whether or not the charge has been fully refunded. If the charge is only partially refunded, this attribute will still be false.
+        /// </summary>
+        [JsonProperty("refunded")]
+        public bool Refunded { get; set; }
 
-        #region Expandable Application Fee
-        public string ApplicationFeeId { get; set; }
+        /// <summary>
+        /// A list of refunds that have been applied to the charge.
+        /// </summary>
+        [JsonProperty("refunds")]
+        public StripeList<StripeRefund> Refunds { get; set; }
+
+        #region Expandable Review
+        /// <summary>
+        /// ID of the review associated with this charge if one exists.
+        /// </summary>
+        public string ReviewId { get; set; }
 
         [JsonIgnore]
-        public StripeApplicationFee ApplicationFee { get; set; }
+        public StripeReview Review { get; set; }
 
-        [JsonProperty("application_fee")]
-        internal object InternalApplicationFee
+        [JsonProperty("review")]
+        internal object InternalReview
         {
             set
             {
-                ExpandableProperty<StripeApplicationFee>.Map(value, s => ApplicationFeeId = s, o => ApplicationFee = o);
+                ExpandableProperty<StripeReview>.Map(value, s => ReviewId = s, o => Review = o);
             }
         }
         #endregion
 
-        // destination
+        /// <summary>
+        /// Shipping information for the charge.
+        /// </summary>
+        [JsonProperty("shipping")]
+        public StripeShipping Shipping { get; set; }
+
+        /// <summary>
+        /// For most Stripe users, the source of every charge is a credit or debit card. This hash is then the card object describing that card.
+        /// </summary>
+        [JsonConverter(typeof(SourceConverter))]
+        public Source Source { get; set; }
+
+        // source transfer
+
+        /// <summary>
+        /// Extra information about a charge. This will appear on your customer’s credit card statement.
+        /// </summary>
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
+
+        /// <summary>
+        /// The status of the payment is either succeeded, pending, or failed
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; set; }
 
         #region Expandable Transfer
+        /// <summary>
+        /// ID of the transfer to the destination account (only applicable if the charge was created using the destination parameter).
+        /// </summary>
         public string TransferId { get; set; }
 
         [JsonIgnore]
