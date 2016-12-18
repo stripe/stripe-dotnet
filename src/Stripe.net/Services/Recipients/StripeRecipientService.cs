@@ -6,7 +6,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    [Obsolete("This service has been deprecated by Stripe for sometime, and it will be removed in 7.0. Use Connect instead.")]
+    [Obsolete("This service has been deprecated by Stripe for sometime, and it will be removed in a later version. Use Connect instead.")]
     public class StripeRecipientService : StripeService
     {
         public StripeRecipientService(string apiKey = null) : base(apiKey) { }

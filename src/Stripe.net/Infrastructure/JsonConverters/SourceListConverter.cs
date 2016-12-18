@@ -23,7 +23,14 @@ namespace Stripe.Infrastructure
         {
             var list = JObject.Load(reader).ToObject<StripeList<dynamic>>();
 
-            var result = new StripeList<Source> { Data = new List<Source>() };
+            var result = new StripeList<Source>
+            {
+                Data = new List<Source>(),
+                HasMore = list.HasMore,
+                Object = list.Object,
+                TotalCount = list.TotalCount,
+                Url = list.Url
+            };
 
             foreach (var item in list.Data)
             {

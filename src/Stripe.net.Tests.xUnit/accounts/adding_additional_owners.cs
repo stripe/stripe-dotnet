@@ -40,8 +40,6 @@ namespace Stripe.Tests.xUnit
             RetrievedAccount = new StripeAccountService(_stripe_api_key).Get(newAccount.Id);
         }
 
-        public StripeAccount Account { get; set; }
-
         [Fact]
         public void has_legal_entity()
         {
