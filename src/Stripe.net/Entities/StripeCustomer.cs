@@ -115,6 +115,8 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        // shipping
+
         /// <summary>
         /// The customer’s payment sources, if any
         /// </summary>
@@ -126,7 +128,7 @@ namespace Stripe
         /// The customer’s current subscriptions, if any
         /// </summary>
         [JsonProperty("subscriptions")]
-        public StripeList<StripeSubscription> StripeSubscriptionList { get; set; }
+        public StripeList<StripeSubscription> Subscriptions { get; set; }
 
         /// <summary>
         /// Warning: this is not in the documentation

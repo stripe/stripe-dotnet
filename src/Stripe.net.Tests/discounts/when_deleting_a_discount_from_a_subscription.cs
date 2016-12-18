@@ -23,7 +23,7 @@ namespace Stripe.Tests
             _customer = customerService.Create(test_data.stripe_customer_create_options.ValidCard(plan.Id));
 
             _subscription = new StripeSubscriptionService().Update(_customer.Id, 
-                _customer.StripeSubscriptionList.Data[0].Id,
+                _customer.Subscriptions.Data[0].Id,
                 new StripeSubscriptionUpdateOptions()
                 {
                     CouponId = coupon.Id
