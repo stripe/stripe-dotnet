@@ -30,7 +30,7 @@ namespace Stripe.Tests
         {
             StripeCustomer = _stripeCustomerService.Create(StripeCustomerCreateOptions);
 
-            StripeCard = StripeCustomer.SourceList.Data.First();
+            StripeCard = StripeCustomer.Sources.Data.First().Card;
         };
 
         Behaves_like<customer_behaviors> behaviors;
