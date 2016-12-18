@@ -151,7 +151,8 @@ namespace Stripe
         [JsonProperty("receipt_number")]
         public string ReceiptNumber { get; set; }
 
-        // shipping
+        [JsonProperty("shipping")]
+        public StripeShipping Shipping { get; set; }
 
         #region Expandable Application Fee
         public string ApplicationFeeId { get; set; }
