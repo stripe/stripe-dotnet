@@ -171,6 +171,20 @@ namespace Stripe
 
         // destination
 
-        // transfer
+        #region Expandable Transfer
+        public string TransferId { get; set; }
+
+        [JsonIgnore]
+        public StripeTransfer Transfer { get; set; }
+
+        [JsonProperty("transfer")]
+        internal object InternalTransfer
+        {
+            set
+            {
+                ExpandableProperty<StripeTransfer>.Map(value, s => TransferId = s, o => Transfer = o);
+            }
+        }
+        #endregion
     }
 }
