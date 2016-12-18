@@ -36,7 +36,7 @@ namespace Stripe.Tests
         {
             StripeAccount.ExternalAccounts.TotalCount.ShouldEqual(1);
 
-            var firstEntry = (StripeBankAccount)StripeAccount.ExternalAccounts.Data.First();
+            var firstEntry = (StripeBankAccount)StripeAccount.ExternalAccounts.Data.First().BankAccount;
 
             firstEntry.Object.ShouldEqual(firstEntry.Object);
             firstEntry.Currency.ShouldEqual(CreateOrUpdateOptions.ExternalBankAccount.Currency);
@@ -48,9 +48,9 @@ namespace Stripe.Tests
 
         It should_have_the_correct_bank_account = () =>
         {
-            var firstEntry = (StripeBankAccount) StripeAccount.ExternalAccounts.Data.First();
+            var firstEntry = (StripeBankAccount) StripeAccount.ExternalAccounts.Data.First().BankAccount;
 
-            StripeAccount.ExternalBankAccounts.First().Name.ShouldEqual(firstEntry.Name);
+            StripeAccount.ExternalAccounts.Data.First().BankAccount.AccountHolderName.ShouldEqual(firstEntry.AccountHolderName);
         };
 
         Behaves_like<account_behaviors> behaviors;
