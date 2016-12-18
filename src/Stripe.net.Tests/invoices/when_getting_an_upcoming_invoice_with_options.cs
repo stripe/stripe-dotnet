@@ -25,7 +25,7 @@ namespace Stripe.Tests
 
             _stripeUpcomingInvoiceOptions = new StripeUpcomingInvoiceOptions
             {
-                SubscriptionId = _stripeCustomer.StripeSubscriptionList.Data.First().Id,
+                SubscriptionId = _stripeCustomer.Subscriptions.Data.First().Id,
                 SubscriptionPlanId = _stripePlan.Id,
             };
         };

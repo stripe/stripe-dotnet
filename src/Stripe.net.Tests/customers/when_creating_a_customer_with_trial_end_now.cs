@@ -32,7 +32,7 @@ namespace Stripe.Tests
 
             StripeCard = StripeCustomer.Sources.Data.First().Card;
 
-            _stripeSubscription = StripeCustomer.StripeSubscriptionList.Data.First();
+            _stripeSubscription = StripeCustomer.Subscriptions.Data.First();
         };
 
         Behaves_like<customer_behaviors> behaviors;
