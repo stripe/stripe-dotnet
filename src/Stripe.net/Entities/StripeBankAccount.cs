@@ -18,10 +18,6 @@ namespace Stripe
         [JsonProperty("account_holder_name")]
         public string AccountHolderName { get; set; }
 
-        [Obsolete("Use AccountHolderName")]
-        [JsonProperty("Name")]
-        public string Name { get; set; }
-
         [JsonProperty("country")]
         public string Country { get; set; }
 

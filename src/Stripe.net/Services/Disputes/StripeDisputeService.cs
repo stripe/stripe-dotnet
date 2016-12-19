@@ -12,32 +12,11 @@ namespace Stripe
 
         public bool ExpandCharge { get; set; }
 
-        #region Remove in 7.0
-        [Obsolete("Balance transactions are now a list on StripeDispute")]
-        public bool ExpandBalanceTransaction { get; set; }
-        #endregion
-
         // Sync
         public virtual StripeDispute Get(string disputeId, StripeRequestOptions requestOptions = null)
         {
             return GetEntity($"{Urls.Disputes}/{disputeId}", requestOptions);
         }
-
-        #region Remove in 7.0
-        [Obsolete("A chargeId is no longer required")]
-        public virtual StripeDispute Update(string chargeId, string evidence = null, StripeRequestOptions requestOptions = null)
-        {
-            var url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
-
-            if (!string.IsNullOrEmpty(evidence))
-                url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);
-
-            return Mapper<StripeDispute>.MapFromJson(
-                Requestor.PostString(url,
-                SetupRequestOptions(requestOptions))
-            );
-        }
-        #endregion
 
         public virtual StripeDispute Update(string disputeId, StripeDisputeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
@@ -61,23 +40,6 @@ namespace Stripe
         {
             return await GetEntityAsync($"{Urls.Disputes}/{disputeId}", requestOptions, cancellationToken);
         }
-
-        #region Remove in 7.0
-        [Obsolete("A chargeId is no longer required")]
-        public virtual async Task<StripeDispute> UpdateAsync(string chargeId, string evidence = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var url = this.ApplyAllParameters(null, $"{chargeId}/dispute", false);
-
-            if (!string.IsNullOrEmpty(evidence))
-                url = ParameterBuilder.ApplyParameterToUrl(url, "evidence", evidence);
-
-            return Mapper<StripeDispute>.MapFromJson(
-                await Requestor.PostStringAsync(url,
-                SetupRequestOptions(requestOptions),
-                cancellationToken)
-            );
-        }
-        #endregion
 
         public virtual Task<StripeDispute> UpdateAsync(string disputeId, StripeDisputeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

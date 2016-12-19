@@ -49,14 +49,6 @@ namespace Stripe
         [JsonProperty("bank_account[routing_number]")]
         public string BankAccountRoutingNumber { get; set; }
 
-        [Obsolete("This property is now handled via BankAccountStatus and will be removed in the next major version.")]
-        [JsonProperty("bank_account[validated]")]
-        public bool? BankAccountValidated { get; set; }
-
-        [Obsolete("This property is now handled via BankAccountStatus and will be removed in the next major version.")]
-        [JsonProperty("bank_account[verified]")]
-        public bool? BankAccountVerified { get; set; }
-
         [JsonProperty("card")]
         public StripeCard StripeCard { get; set; }
 

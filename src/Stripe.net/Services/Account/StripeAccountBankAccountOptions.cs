@@ -26,10 +26,6 @@ namespace Stripe
         [JsonProperty("external_account[account_holder_name]")]
         public string AccountHolderName { get; set; }
 
-        [Obsolete("Use AccountHolderName instead.")]
-        [JsonProperty("external_account[account_holder_name]")]
-        public string Name { get; set; }
-
         [JsonProperty("external_account[routing_number]")]
         public string RoutingNumber { get; set; }
     }

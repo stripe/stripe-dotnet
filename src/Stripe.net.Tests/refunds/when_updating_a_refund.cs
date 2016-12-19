@@ -30,7 +30,7 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeRefund = _stripeRefundService.Update(_createdStripeChargeId, _createdStripeRefundId, new StripeRefundUpdateOptions()
+            _stripeRefund = _stripeRefundService.Update(_createdStripeRefundId, new StripeRefundUpdateOptions()
             {
                 Metadata = new Dictionary<string, string>() {{ "key", "eulav"}}
             });
