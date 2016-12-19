@@ -7,7 +7,6 @@ namespace Stripe.Tests.test_data
     {
         public static StripeCustomerCreateOptions ValidCard(string _planId = null, string _couponId = null, DateTime? _trialEnd = null, bool _trialEndNow = false)
         {
-            // obsolete: var cardOptions = new StripeSourceOptions()
             var cardOptions = new SourceCard()
             {
                 AddressCountry = "US",
@@ -24,7 +23,6 @@ namespace Stripe.Tests.test_data
 
             var stripeCustomerCreateOptions = new StripeCustomerCreateOptions()
             {
-                // obsolete: Source = cardOptions,
                 SourceCard = cardOptions,
                 Email = "pork@email.com",
                 Description = "Johnny Tenderloin (pork@email.com)",
@@ -54,7 +52,6 @@ namespace Stripe.Tests.test_data
         public static StripeCustomerCreateOptions ValidCardButChargeFails(string _planId = null, string _couponId = null, DateTime? _trialEnd = null)
         {
             var stripeCustomerCreateOptions = ValidCard(_planId, _couponId, _trialEnd);
-            // obsolete: stripeCustomerCreateOptions.Source.Number = "4000000000000341";
             stripeCustomerCreateOptions.SourceCard.Number = "4000000000000341";
 
             return stripeCustomerCreateOptions;
@@ -64,7 +61,6 @@ namespace Stripe.Tests.test_data
         {
             var stripeCustomerCreateOptions = new StripeCustomerCreateOptions()
             {
-                // obsolete: Source = new StripeSourceOptions() { TokenId = tokenId }
                 SourceToken = tokenId
             };
 

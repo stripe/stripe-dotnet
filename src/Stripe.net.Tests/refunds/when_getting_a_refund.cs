@@ -30,7 +30,7 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeRefund = _stripeRefundService.Get(_createdStripeChargeId, _createdStripeRefundId);
+            _stripeRefund = _stripeRefundService.Get(_createdStripeRefundId);
 
         It should_create_with_stripe_charge_id = () =>
             _stripeRefund.ChargeId.ShouldEqual(_createdStripeChargeId);

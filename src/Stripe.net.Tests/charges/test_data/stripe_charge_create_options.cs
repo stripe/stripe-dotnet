@@ -6,7 +6,6 @@ namespace Stripe.Tests.test_data
     {
         public static StripeChargeCreateOptions ValidCard()
         {
-            // obsolete: var cardOptions = new StripeSourceOptions()
             var cardOptions = new SourceCard()
             {
                 AddressCountry = "US",
@@ -24,7 +23,6 @@ namespace Stripe.Tests.test_data
 
             return new StripeChargeCreateOptions()
             {
-                // obsolete: Source = cardOptions,
                 SourceCard = cardOptions,
                 Description = "Joe Meatball Charge",
                 StatementDescriptor = "Joe Meatball Sub",
@@ -51,7 +49,6 @@ namespace Stripe.Tests.test_data
 
         public static StripeChargeCreateOptions InvalidCard()
         {
-            // obsolete: var cardOptions = new StripeSourceOptions()
             var cardOptions = new SourceCard()
             {
                 AddressCountry = "US",
@@ -68,7 +65,6 @@ namespace Stripe.Tests.test_data
 
             return new StripeChargeCreateOptions()
             {
-                // obsolete: Source = cardOptions,
                 SourceCard = cardOptions,
                 Description = "Joe Meatball Charge",
                 StatementDescriptor = "Joe Meatball Sub",
@@ -95,7 +91,6 @@ namespace Stripe.Tests.test_data
             {
                 Amount = 2001,
                 Currency = "usd",
-                // obsolete: Source = new StripeSourceOptions() { TokenId = _tokenId }
                 SourceTokenOrExistingSourceId =  _tokenId
             };
         }

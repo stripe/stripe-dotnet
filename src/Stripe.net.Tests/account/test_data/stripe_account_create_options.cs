@@ -57,7 +57,6 @@ namespace Stripe.Tests.test_data
                     Currency = "usd",
                     AccountHolderType = "company",
                     AccountHolderName = "Jayme Inc",
-                    Name = "Jayme Inc",
                     RoutingNumber = "110000000"
                 }
             };

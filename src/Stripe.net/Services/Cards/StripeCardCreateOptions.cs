@@ -17,9 +17,5 @@ namespace Stripe
 
         [JsonProperty("default_for_currency")]
         public bool? DefaultForCurrency { get; set; }
-
-        [Obsolete("This is going away in Stripe.net 7.0")]
-        [JsonProperty("source")]
-        public StripeSourceOptions Source { get; set; }
     }
 }

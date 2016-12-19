@@ -40,7 +40,7 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeRefundList = _stripeRefundService.List(_createdStripeChargeId);
+            _stripeRefundList = _stripeRefundService.List(new StripeRefundListOptions { ChargeId = _createdStripeChargeId } );
 
         It should_contain_ids = () =>
             _stripeRefundList.Select(r => r.Id).ShouldContainOnly(_refundIds);
