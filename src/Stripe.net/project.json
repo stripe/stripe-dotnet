@@ -54,7 +54,7 @@
     "tags": [ "stripe", "payment", "credit", "cards", "money", "gateway", "paypal", "braintree" ]
   },
   "title": "Stripe.net",
-  "version": "6.13.0",
+  "version": "7.0.0",
   "runtimes": {
     "win10-x64": {}
   }
