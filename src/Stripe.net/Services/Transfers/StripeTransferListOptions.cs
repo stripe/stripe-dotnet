@@ -4,6 +4,12 @@ namespace Stripe
 {
     public class StripeTransferListOptions : StripeListOptions
     {
+        /// <summary>
+        /// Only return transfers for the destination specified by this account ID.
+        /// </summary>
+        [JsonProperty("destination")]
+        public string DestinationAccountId { get; set; }
+
         [JsonProperty("date")]
         public StripeDateFilter Date { get; set; }
 
