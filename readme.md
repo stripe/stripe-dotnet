@@ -1,5 +1,6 @@
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)  
-[![Build status](https://ci.appveyor.com/api/projects/status/5kje1md0hltqfpyh/branch/master?svg=true)](https://ci.appveyor.com/project/JaymeDavis/stripe-net/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/5kje1md0hltqfpyh/branch/master?svg=true)](https://ci.appveyor.com/project/JaymeDavis/stripe-net/branch/master)  
+[![ready](https://badge.waffle.io/jaymedavis/stripe.net.svg?label=ready&title=ready)](http://waffle.io/jaymedavis/stripe.net)
 
 **Stripe Services**
 
@@ -17,13 +18,9 @@
 [Customers](#customers)  
 [Discounts](#) (needs documentation)  
 [Disputes](#disputes)  
-[Events](#events)  
-[Errors](#errors)  
-[Expandable Properties](#expandable-properties)  
 [File Uploads](#file-uploads)  
 [Invoices](#invoices)  
 [Invoice Items](#invoice-items)  
-[Metadata](#metadata)  
 [OAuth](#stripe-connect) (see stripe connect)  
 [Plans](#plans)  
 [Radar](#radar)  
@@ -33,12 +30,17 @@
 [Tokens](#tokens)  
 [Transfers](#transfers)  
 
-**Stripe.net Concepts**
-
+**Features**
+[Expandable Properties](#expandable-properties)  
 [StripeDateFilter](#stripedatefilter-date-filtering)  
 [StripeListOptions](#stripelistoptions-paging)  
 [StripeResponse](#stripe-response)  
 [StripeRequestOptions](#striperequestoptions)  
+
+**Infrastructure**
+[Errors](#errors)  
+[Events](#events)  
+[Metadata](#metadata)  
 
 Support
 -------
