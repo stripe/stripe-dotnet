@@ -31,6 +31,7 @@
 [Transfers](#transfers)  
 
 **Features**
+
 [Expandable Properties](#expandable-properties)  
 [StripeDateFilter](#stripedatefilter-date-filtering)  
 [StripeListOptions](#stripelistoptions-paging)  
@@ -38,6 +39,7 @@
 [StripeRequestOptions](#striperequestoptions)  
 
 **Infrastructure**
+
 [Errors](#errors)  
 [Events](#events)  
 [Metadata](#metadata)  
