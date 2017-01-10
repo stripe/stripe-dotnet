@@ -46,7 +46,7 @@ namespace Stripe.Infrastructure
                 { "uname", WebUtility.HtmlEncode(getSystemInformation()) }
             };
 
-            return JsonConvert.SerializeObject(values);
+            return JsonConvert.SerializeObject(values, Formatting.None);
         }
 
         private string testForMono()
