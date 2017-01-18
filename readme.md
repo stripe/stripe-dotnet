@@ -1146,6 +1146,8 @@ Refunds
 
 ### Creating a refund
 
+If you do not specify an amount to refund, the entire amount will be refunded.
+
 ```csharp
 	var refundService = new StripeRefundService();
 
