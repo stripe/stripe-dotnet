@@ -1,4 +1,4 @@
-version: 7.0.2.{build}
+version: 7.0.3.{build}
 image: Visual Studio 2015
 
 environment:
@@ -26,3 +26,10 @@ test_script:
 
 after_build:
 - ps: Invoke-Pack
+
+# these commands force appveyor to offer an RDP session for debugging
+#init:
+#- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+#
+#on_finish:
+#- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))

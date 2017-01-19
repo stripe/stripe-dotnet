@@ -2,6 +2,8 @@
 {
     internal static class Urls
     {
+        internal static string BaseUrl => "https://api.stripe.com/v1";
+
         public static string Invoices => BaseUrl + "/invoices";
 
         public static string InvoiceItems => BaseUrl + "/invoiceitems";
@@ -30,8 +32,6 @@
 
         public static string Events => BaseUrl + "/events";
 
-        public static string Accounts => BaseUrl + "/accounts";
-
         public static string Recipients => BaseUrl + "/recipients";
 
         public static string Subscriptions => BaseUrl + "/customers/{0}/subscriptions";
@@ -39,8 +39,6 @@
         public static string Transfers => BaseUrl + "/transfers";
 
         public static string ApplicationFees => BaseUrl + "/application_fees";
-
-        internal static string BaseUrl => "https://api.stripe.com/v1";
 
         public static string OAuthToken => BaseConnectUrl + "/oauth/token";
 
