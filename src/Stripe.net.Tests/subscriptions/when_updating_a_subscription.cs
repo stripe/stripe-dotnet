@@ -29,7 +29,7 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeSubscription = _stripeSubscriptionService.Update(_stripeCustomer.Id, _stripeSubscriptionService.List(_stripeCustomer.Id).ToList()[0].Id, _stripeSubscriptionUpdateOptions);
+            _stripeSubscription = _stripeSubscriptionService.Update(_stripeSubscriptionService.List(new StripeSubscriptionListOptions { CustomerId = _stripeCustomer.Id }).ToList()[0].Id, _stripeSubscriptionUpdateOptions);
 
         It should_have_the_new_quantity = () =>
             _stripeSubscription.Quantity.ShouldEqual(5);
