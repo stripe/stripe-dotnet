@@ -1201,28 +1201,28 @@ Subscriptions
 
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
-	StripeSubscription stripeSubscription = subscriptionService.Update(*customerId*, *subscriptionId*); // optional StripeSubscriptionUpdateOptions
+	StripeSubscription stripeSubscription = subscriptionService.Update(*subscriptionId*); // optional StripeSubscriptionUpdateOptions
 ```
 
 ### Retrieving a subscription
 
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
-	StripeSubscription stripeSubscription = subscriptionService.Get(*customerId*, *subscriptionId*);
+	StripeSubscription stripeSubscription = subscriptionService.Get(*subscriptionId*);
 ```
 
 ### Canceling a subscription
 
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
-	subscriptionService.Cancel(*customerId*, *subscriptionId*); // optional cancelAtPeriodEnd flag
+	subscriptionService.Cancel(*subscriptionId*); // optional cancelAtPeriodEnd flag
 ```
 
-### List all subscriptions for a customer
+### List all subscriptions
 
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
-	IEnumerable<StripeSubscription> response = subscriptionService.List(*customerId*); // optional StripeListOptions
+	IEnumerable<StripeSubscription> response = subscriptionService.List(); // optional StripeSubscriptionListOptions
 ```
 
 [StripeListOptions](#stripelistoptions-paging) for paging
