@@ -1,4 +1,4 @@
-Protect your customer's data, and don't write any client-side code. [Checkout.net](http:\\www.checkoutnet.com)
+Protect your customer's data without writing any client-side code. [Checkout.net](http:\\www.checkoutnet.com) writes your payment form for you, the PCI compliant way.
 
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)  
 [![Build status](https://ci.appveyor.com/api/projects/status/5kje1md0hltqfpyh/branch/master?svg=true)](https://ci.appveyor.com/project/JaymeDavis/stripe-net/branch/master)  
