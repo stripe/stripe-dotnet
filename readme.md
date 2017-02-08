@@ -1,3 +1,5 @@
+Protect your customer's data, and dont write any client-side code. [Checkout.net](http:\\www.checkoutnet.com)
+
 ![Stripe](https://stripe.com/img/navigation/logo.png?2)  
 [![Build status](https://ci.appveyor.com/api/projects/status/5kje1md0hltqfpyh/branch/master?svg=true)](https://ci.appveyor.com/project/JaymeDavis/stripe-net/branch/master)  
 [![ready](https://badge.waffle.io/jaymedavis/stripe.net.svg?label=ready&title=ready)](http://waffle.io/jaymedavis/stripe.net)
