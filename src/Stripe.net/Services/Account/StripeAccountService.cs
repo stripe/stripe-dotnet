@@ -67,7 +67,7 @@ namespace Stripe
         public virtual async Task<StripeAccount> CreateAsync(StripeAccountCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeAccount>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, "{Urls.BaseUrl}/accounts", false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, $"{Urls.BaseUrl}/accounts", false),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
             );
