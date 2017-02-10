@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Stripe.Infrastructure;
+using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -15,6 +16,16 @@ namespace Stripe
         {
             return Mapper<StripeAccount>.MapFromJson(
                 Requestor.PostString(this.ApplyAllParameters(createOptions, $"{Urls.BaseUrl}/accounts", false),
+                SetupRequestOptions(requestOptions))
+            );
+        }
+
+        public virtual IEnumerable<StripeAccount> List(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            var path = $"{Urls.BaseUrl}/accounts";
+
+            return Mapper<StripeAccount>.MapCollectionFromJson(
+                Requestor.GetString(this.ApplyAllParameters(listOptions, path, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -57,6 +68,17 @@ namespace Stripe
         {
             return Mapper<StripeAccount>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, "{Urls.BaseUrl}/accounts", false),
+                SetupRequestOptions(requestOptions),
+                cancellationToken)
+            );
+        }
+
+        public virtual async Task<IEnumerable<StripeAccount>> ListAsync(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var path = $"{Urls.BaseUrl}/accounts";
+
+            return Mapper<StripeAccount>.MapCollectionFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, path, false),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
             );
