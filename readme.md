@@ -179,6 +179,15 @@ Updating an account has almost all the same available properties as creating an 
 	accountService.Delete(*accountId*);
 ```
 
+### List all accounts
+
+```csharp
+	var accountService = new StripeAccountService();
+	IEnumerable<StripeAccount> response = accountService.List(); // optional StripeListOptions
+```
+
+[StripeListOptions](#stripelistoptions-paging) for paging
+
 Application Fees
 ----------------
 
