@@ -14,7 +14,7 @@ namespace Stripe
 
         public virtual StripeSku Create(StripeSkuCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Post(Urls.Skus, requestOptions);
+            return Post(Urls.Skus, requestOptions, createOptions);
         }
 
         public virtual StripeSku Update(string skuId, StripeSkuUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
