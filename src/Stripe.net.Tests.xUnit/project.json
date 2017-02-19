@@ -1,6 +1,10 @@
 {
   "version": "1.0.0-*",
   "dependencies": {
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.1"
+    },
     "System.Runtime.Serialization.Primitives": "4.3.0",
     "xunit": "2.1.0",
     "dotnet-test-xunit": "2.2.0-preview2-build1029",
@@ -8,6 +12,10 @@
     "FluentAssertions": "4.18.0"
   },
   "testRunner": "xunit",
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "debugType": "portable"
+  },
   "frameworks": {
     "netcoreapp1.0": {
       "imports": [

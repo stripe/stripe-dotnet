@@ -1,0 +1,15 @@
+{
+    "version": "0.1.0",
+    "command": "dotnet",
+    "isShellCommand": true,
+    "args": [],
+    "tasks": [
+        {
+            "taskName": "test",
+            "args": [ "${workspaceRoot}/src/Stripe.net.Tests.XUnit" ],
+            "isBuildCommand": true,
+            "showOutput": "silent",
+            "problemMatcher": "$msCompile"
+        },
+    ]
+}
