@@ -10,7 +10,6 @@ namespace Stripe
         public StripeAccountService(string apiKey = null) : base(apiKey) { }
 
 
-
         //Sync
         public virtual StripeAccount Create(StripeAccountCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
