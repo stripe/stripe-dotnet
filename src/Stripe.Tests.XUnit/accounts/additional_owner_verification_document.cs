@@ -24,6 +24,7 @@ namespace Stripe.Tests.xUnit
             Account = new StripeAccountService(_stripe_api_key).Create(
                new StripeAccountCreateOptions
                {
+                   Email = $"bumble@some-email-somewhere.com",
                    Managed = true,
                    LegalEntity = new StripeAccountLegalEntityOptions
                    {
@@ -31,6 +32,7 @@ namespace Stripe.Tests.xUnit
                        {
                             new StripeAccountAdditionalOwner
                             {
+                                FirstName = "Bumble",
                                 VerificationDocument = file.Id
                             },
                        }
