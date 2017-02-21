@@ -4,7 +4,7 @@ using System.Linq;
 using FluentAssertions;
 using Xunit;
 
-namespace Stripe.Tests.xUnit
+namespace Stripe.Tests.Xunit
 {
     public class when_using_a_stripe_date_filter : test
     {
