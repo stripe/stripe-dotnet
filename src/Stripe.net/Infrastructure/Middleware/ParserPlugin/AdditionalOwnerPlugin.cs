@@ -13,16 +13,13 @@ namespace Stripe.Infrastructure.Middleware
 
             var owners = ((List<StripeAccountAdditionalOwner>) property.GetValue(propertyParent, null));
 
-            if (owners == null) return true;
             if (owners.Count == 0)
             {
-                RequestStringBuilder.ApplyParameterToRequestString(ref requestString,
-                    attribute.PropertyName,
-                    "");
+                RequestStringBuilder.ApplyParameterToRequestString(ref requestString, attribute.PropertyName, "");
                 return true;
             }
-            var ownerIndex = 0;
 
+            var ownerIndex = 0;
             foreach (var owner in owners)
             {
                 var properties = owner.GetType().GetRuntimeProperties();
