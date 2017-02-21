@@ -30,7 +30,7 @@ function Invoke-Test
 	Write-Host $("RUNNING THE XUNIT TESTS...") -BackgroundColor DarkCyan
 	blankLines
 
-	dotnet test src\Stripe.net.Tests.xUnit
+	dotnet test src\Stripe.Tests.xUnit
 
 	blankLines
 	Write-Host $("RUNNING THE MSPEC TESTS...") -BackgroundColor DarkCyan
