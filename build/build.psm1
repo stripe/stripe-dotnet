@@ -21,7 +21,7 @@ function Invoke-Build
 	blankLines
 
 	dotnet build src\Stripe.net.Tests
-	dotnet build src\Stripe.net.Tests.xUnit
+	dotnet build src\Stripe.Tests.Xunit
 }
 
 function Invoke-Test
@@ -30,7 +30,7 @@ function Invoke-Test
 	Write-Host $("RUNNING THE XUNIT TESTS...") -BackgroundColor DarkCyan
 	blankLines
 
-	dotnet test src\Stripe.net.Tests.xUnit
+	dotnet test src\Stripe.Tests.Xunit
 
 	blankLines
 	Write-Host $("RUNNING THE MSPEC TESTS...") -BackgroundColor DarkCyan

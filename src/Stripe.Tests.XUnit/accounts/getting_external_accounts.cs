@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
 
-namespace Stripe.Tests.xUnit
+namespace Stripe.Tests.Xunit
 {
-    public class listing_external_accounts : test
+    public class getting_external_accounts : test
     {
-        private IEnumerable<StripeAccount> DefaultLimitAllRetrievedAccounts { get; }
-        private IEnumerable<StripeAccount> Limit4RetrievedAccounts { get; }
+        private StripeAccount RetrievedAccount { get; }
 
-        public listing_external_accounts()
+        public getting_external_accounts()
         {
             var newAccount = new StripeAccountService(_stripe_api_key).Create(
                 new StripeAccountCreateOptions
@@ -44,33 +42,25 @@ namespace Stripe.Tests.xUnit
                 }
             );
 
-            DefaultLimitAllRetrievedAccounts = new StripeAccountService(_stripe_api_key).List();
-
-            Limit4RetrievedAccounts = new StripeAccountService(_stripe_api_key).List(new StripeListOptions { Limit = 4 });
+            RetrievedAccount = new StripeAccountService(_stripe_api_key).Get(newAccount.Id);
         }
 
         [Fact]
-        public void has_default_limit_min_total_count()
+        public void has_object()
         {
-            DefaultLimitAllRetrievedAccounts.ToList().Count().Should().BeGreaterOrEqualTo(1);
+            RetrievedAccount.ExternalAccounts.Object.Should().NotBeNull();
         }
 
         [Fact]
-        public void has_default_limit_max_total_count()
+        public void has_total_count()
         {
-            DefaultLimitAllRetrievedAccounts.ToList().Count().Should().BeLessOrEqualTo(10);
+            RetrievedAccount.ExternalAccounts.TotalCount.ShouldBeEquivalentTo(1);
         }
 
         [Fact]
-        public void has_specified_limit_min_total_count()
+        public void has_url()
         {
-            Limit4RetrievedAccounts.ToList().Count().Should().BeGreaterOrEqualTo(1);
-        }
-
-        [Fact]
-        public void has_specified_limit_max_total_count()
-        {
-            Limit4RetrievedAccounts.ToList().Count().Should().BeLessOrEqualTo(4);
+            RetrievedAccount.ExternalAccounts.Url.Should().NotBeNull();
         }
     }
 }

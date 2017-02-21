@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
 
-namespace Stripe.Tests.xUnit
+namespace Stripe.Tests.Xunit
 {
     // TODO: needs a bit of work - set the RetrievedAccount after update then assert fields
 

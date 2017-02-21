@@ -9,12 +9,14 @@
     "xunit": "2.1.0",
     "dotnet-test-xunit": "2.2.0-preview2-build1029",
     "Stripe.net": "*",
-    "FluentAssertions": "4.18.0"
+    "FluentAssertions": "4.18.0",
+    "Microsoft.CSharp": "4.3.0",
   },
   "testRunner": "xunit",
   "buildOptions": {
     "emitEntryPoint": true,
-    "debugType": "portable"
+    "debugType": "portable",
+    "embed": "_resources/*.jpg"  
   },
   "frameworks": {
     "netcoreapp1.0": {
