@@ -2,7 +2,7 @@
 using Stripe.Tests.xUnit;
 using Xunit;
 
-namespace Stripe.net.Tests.xUnit
+namespace Stripe.Tests.xUnit
 {
     public class creating_a_card_token : test
     {
