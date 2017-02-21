@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
 
-namespace Stripe.Tests.xUnit
+namespace Stripe.Tests.Xunit
 {
     public class listing_external_accounts : test
     {

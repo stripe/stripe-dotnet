@@ -5,7 +5,7 @@ using System.Reflection;
 using FluentAssertions;
 using Xunit;
 
-namespace Stripe.Tests.xUnit
+namespace Stripe.Tests.Xunit
 {
     public class adding_additional_owner_verification_document : test
     {
@@ -15,12 +15,10 @@ namespace Stripe.Tests.xUnit
         {
             // create a file
             var fileService = new StripeFileUploadService(_stripe_api_key);
-            var fileStream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Stripe.Tests.XUnit._resources.bumble.jpg");
+            var fileStream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Stripe.Tests.Xunit._resources.bumble.jpg");
             var file = fileService.Create("bumble.jpg", fileStream, StripeFilePurpose.IdentityDocument);
 
-            // create the new account
-            var accountService = new StripeAccountService();
-
+            // create the new account with the file as the verification document
             Account = new StripeAccountService(_stripe_api_key).Create(
                new StripeAccountCreateOptions
                {

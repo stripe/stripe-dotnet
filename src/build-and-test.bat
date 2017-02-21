@@ -6,7 +6,7 @@ dotnet pack
 cd ..\Stripe.net.Tests
 dotnet test
 
-cd ..\Stripe.Tests.xUnit
+cd ..\Stripe.Tests.Xunit
 dotnet test
 
 cd ..
