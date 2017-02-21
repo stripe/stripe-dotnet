@@ -2,7 +2,7 @@
 using FluentAssertions;
 using Xunit;
 
-namespace Stripe.Tests.xUnit
+namespace Stripe.Tests.Xunit
 {
     public class getting_an_account_with_no_accountid : test
     {

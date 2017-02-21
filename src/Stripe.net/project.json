@@ -2,17 +2,6 @@
   "authors": [ "Jayme Davis" ],
   "description": "Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.",
   "frameworks": {
-    "netcoreapp1.0": {
-      "imports": [
-        "dotnet5.6",
-        "portable-net45+win8"
-      ],
-      "dependencies": {
-        "Microsoft.NETCore.App": {
-          "version": "1.0.1"
-        }
-      }
-    },
     "netstandard1.2": {
       "imports": [ "netcoreapp1.0" ],
       "dependencies": {

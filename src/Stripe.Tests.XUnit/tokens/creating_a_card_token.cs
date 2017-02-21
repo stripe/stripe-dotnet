@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using Stripe.Tests.xUnit;
+using Stripe.Tests.Xunit;
 using Xunit;
 
-namespace Stripe.net.Tests.xUnit
+namespace Stripe.Tests.Xunit
 {
     public class creating_a_card_token : test
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Stripe.Tests.xUnit
+namespace Stripe.Tests.Xunit
 {
     public abstract class test
     {

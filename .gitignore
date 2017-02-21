@@ -8,6 +8,5 @@
 *.user
 *.userprefs
 .vs
-.vscode
 
 project.lock.json
