@@ -35,7 +35,7 @@ namespace Stripe.Tests
                 Quantity = 2,
             };
 
-            _subscription = _subscriptionService.Update(_customerId, _subscription.Id, updateOptions);
+            _subscription = _subscriptionService.Update(_subscription.Id, updateOptions);
 
             _upcomingInvoice = new StripeInvoiceService().Upcoming(_customerId, new StripeUpcomingInvoiceOptions() { SubscriptionId = _subscription.Id });
         };
