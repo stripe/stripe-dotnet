@@ -36,5 +36,8 @@ namespace Stripe
 
         [JsonProperty("[last_name]")]
         public string LastName { get; set; }
+
+        [JsonProperty("verification[document]")]
+        public string VerificationDocument { get; set; }
     }
 }
