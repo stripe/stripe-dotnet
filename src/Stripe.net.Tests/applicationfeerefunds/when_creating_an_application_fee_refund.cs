@@ -7,7 +7,7 @@ namespace Stripe.Tests
         private static StripeCharge _charge;
         private static StripeApplicationFeeRefund _refund;
 
-        private Establish context = () =>
+        Establish context = () =>
         {
             var managedAccount = Cache.GetManagedAccount();
 

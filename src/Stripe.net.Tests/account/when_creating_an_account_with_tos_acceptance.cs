@@ -11,18 +11,12 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            _stripeAccountService = new StripeAccountService();
-
-            _stripeAccountCreateOptions = new StripeAccountCreateOptions()
-            {
-                Email = "joe@" + Guid.NewGuid() + ".com",
-                Managed = true,
-
-            };
+            _stripeAccount = Cache.GetManagedAccount();
+            _stripeAccountCreateOptions = Cache.ManagedAccountOptions;
         };
 
         Because of = () =>
-            _stripeAccount = _stripeAccountService.Create(_stripeAccountCreateOptions);
+            _stripeAccount = Cache.GetManagedAccount();
 
         It should_have_the_correct_email_address = () =>
             _stripeAccount.Email.ShouldEqual(_stripeAccountCreateOptions.Email);

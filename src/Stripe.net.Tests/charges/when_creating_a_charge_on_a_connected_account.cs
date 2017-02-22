@@ -11,11 +11,10 @@ namespace Stripe.Tests
         private static StripeToken _token;
         private static StripeCharge _charge;
 
-        private Establish context = () =>
+        Establish context = () =>
         {
             // setup a managed (connect) account
-            _account = new StripeAccountService()
-                .Create(new StripeAccountCreateOptions { Email = "west@" + Guid.NewGuid() + "world.com", Managed = true });
+            _account = Cache.GetManagedAccount();
 
             // create a token (not on the connected account)
             _token = new StripeTokenService().Create(test_data.stripe_token_create_options.Valid());
