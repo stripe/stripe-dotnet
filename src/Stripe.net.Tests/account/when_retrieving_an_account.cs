@@ -10,6 +10,8 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
+            _stripeAccountService = new StripeAccountService();
+
             _createdAccount = Cache.GetManagedAccount();
         };
 
