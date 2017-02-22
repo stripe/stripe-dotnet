@@ -171,9 +171,32 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        // order
+        #region Expandable OnBehalfOf (Account)
+        /// <summary>
+        /// The account (if any) the charge was made on behalf of without triggering an automatic transfer. See the Connect documentation for details.
+        /// <para>To populate the OnBehalfOf entity, you need to set ExpandOnBehalfOf to true on your service before invoking a service method.</para>
+        /// </summary>
+        public string OnBehalfOfId { get; set; }
 
-        // outcome
+        [JsonIgnore]
+        public StripeAccount OnBehalfOf { get; set; }
+
+        [JsonProperty("on_behalf_of")]
+        internal object InternalOnBehalfOf
+        {
+            set
+            {
+                ExpandableProperty<StripeAccount>.Map(value, s => OnBehalfOfId = s, o => OnBehalfOf = o);
+            }
+        }
+        #endregion
+
+        // order - requires orders to be expandable
+        [JsonProperty("order")]
+        public string Order { get; set; }
+
+        [JsonProperty("outcome")]
+        public StripeOutcome Outcome { get; set; }
 
         /// <summary>
         /// true if the charge succeeded, or was successfully authorized for later capture.
@@ -236,7 +259,24 @@ namespace Stripe
         [JsonConverter(typeof(SourceConverter))]
         public Source Source { get; set; }
 
-        // source transfer
+        #region Expandable Transfer
+        /// <summary>
+        /// The transfer ID which created this charge. Only present if the charge came from another Stripe account. See the Connect documentation for details.
+        /// </summary>
+        public string SourceTransferId { get; set; }
+
+        [JsonIgnore]
+        public StripeTransfer SourceTransfer { get; set; }
+
+        [JsonProperty("source_transfer")]
+        internal object InternalSourceTransfer
+        {
+            set
+            {
+                ExpandableProperty<StripeTransfer>.Map(value, s => SourceTransferId = s, o => SourceTransfer = o);
+            }
+        }
+        #endregion
 
         /// <summary>
         /// Extra information about a charge. This will appear on your customer’s credit card statement.
@@ -268,5 +308,11 @@ namespace Stripe
             }
         }
         #endregion
+
+        /// <summary>
+        /// A string that identifies this transaction as part of a group. See the Connect documentation for details.
+        /// </summary>
+        [JsonProperty("transfer_group")]
+        public string TransferGroup { get; set; }
     }
 }
