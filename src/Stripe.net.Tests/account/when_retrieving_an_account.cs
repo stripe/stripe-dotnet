@@ -20,5 +20,8 @@ namespace Stripe.Tests
 
         It should_have_the_same_id = () =>
             _createdAccount.Id.ShouldEqual(_retrievedAccount.Id);
+
+        It should_have_the_correct_email_address = () =>
+            _createdAccount.Email.ShouldEqual(_retrievedAccount.Email);
     }
 }
