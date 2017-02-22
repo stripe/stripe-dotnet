@@ -10,14 +10,7 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            _stripeAccountService = new StripeAccountService();
-
-            var stripeAccountCreateOptions = new StripeAccountCreateOptions()
-            {
-                Managed = true
-            };
-
-            _createdAccount = _stripeAccountService.Create(stripeAccountCreateOptions);
+            _createdAccount = Cache.GetManagedAccount();
         };
 
         Because of = () =>

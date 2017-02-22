@@ -8,20 +8,16 @@ namespace Stripe.Tests
         private static StripeAccount _stripeAccount;
         private static StripeAccountService _stripeAccountService;
         private static StripeAccountCreateOptions _stripeAccountCreateOptions;
-        private static DateTime? _timestamp;
 
         Establish context = () =>
         {
             _stripeAccountService = new StripeAccountService();
-            _timestamp = DateTime.UtcNow.Date;
 
             _stripeAccountCreateOptions = new StripeAccountCreateOptions()
             {
                 Email = "joe@" + Guid.NewGuid() + ".com",
                 Managed = true,
-                TosAcceptanceDate = _timestamp,
-                TosAcceptanceIp = "8.8.8.8",
-                TosAcceptanceUserAgent = "user-agent-7"
+
             };
         };
 
