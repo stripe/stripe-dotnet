@@ -8,25 +8,15 @@ namespace Stripe.Tests
         private static StripeAccount _stripeAccount;
         private static StripeAccountService _stripeAccountService;
         private static StripeAccountCreateOptions _stripeAccountCreateOptions;
-        private static DateTime? _timestamp;
 
         Establish context = () =>
         {
-            _stripeAccountService = new StripeAccountService();
-            _timestamp = DateTime.UtcNow.Date;
-
-            _stripeAccountCreateOptions = new StripeAccountCreateOptions()
-            {
-                Email = "joe@" + Guid.NewGuid() + ".com",
-                Managed = true,
-                TosAcceptanceDate = _timestamp,
-                TosAcceptanceIp = "8.8.8.8",
-                TosAcceptanceUserAgent = "user-agent-7"
-            };
+            _stripeAccount = Cache.GetManagedAccount();
+            _stripeAccountCreateOptions = Cache.ManagedAccountOptions;
         };
 
         Because of = () =>
-            _stripeAccount = _stripeAccountService.Create(_stripeAccountCreateOptions);
+            _stripeAccount = Cache.GetManagedAccount();
 
         It should_have_the_correct_email_address = () =>
             _stripeAccount.Email.ShouldEqual(_stripeAccountCreateOptions.Email);
