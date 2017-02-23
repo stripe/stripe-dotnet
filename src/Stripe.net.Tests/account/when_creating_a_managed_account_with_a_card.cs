@@ -17,7 +17,10 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
+        {
             StripeAccount = Cache.GetManagedAccount();
+            CreateOrUpdateOptions = Cache.ManagedAccountOptions;
+        };
 
         It should_have_the_correct_country = () =>
             StripeAccount.Country.ShouldEqual(CreateOrUpdateOptions.Country);
