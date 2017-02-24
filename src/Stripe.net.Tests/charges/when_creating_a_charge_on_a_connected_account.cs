@@ -27,7 +27,7 @@ namespace Stripe.Tests
         {
             // create a charge using a token with the destination set to the managed account
             _charge = _chargeService
-                .Create(test_data.stripe_charge_create_options.ValidTokenWithDestination(_token.Id, _account.Id));
+                .Create(test_data.stripe_charge_create_options.ValidTokenWithDestination(_token.Id, _account.Id, 100));
         };
 
         It should_have_the_destination = () =>
@@ -36,7 +36,7 @@ namespace Stripe.Tests
         It should_have_the_destination_account_id_correct = () =>
             _charge.Destination.Id.ShouldEqual(_account.Id);
 
-        It should_have_the_destination_id = () =>
-            _charge.DestinationId.ShouldNotBeNull();
+        //It should_have_the_destination_amount_correct = () =>
+        //    _charge.Amount.ShouldEqual(100);
     }
 }
