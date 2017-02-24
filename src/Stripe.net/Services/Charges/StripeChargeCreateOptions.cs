@@ -36,9 +36,17 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        // todo: this needs to be converted to a dictionary of accountId(string)/amount(int) ?
-        [JsonProperty("destination")]
+        /// <summary>
+        /// ID of an existing, connected stripe account.
+        /// </summary>
+        [JsonProperty("destination[account]")]
         public string Destination { get; set; }
+
+        /// <summary>
+        /// The amount to transfer to the destination account without creating an Application Fee. Cannot be combined with the <see cref="ApplicationFee" /> parameter. Must be equal to or lesser than the charge amount.
+        /// </summary>
+        [JsonProperty("destination[amount]")]
+        public int? DestinationAmount { get; set; }
 
         /// <summary>
         /// A string that identifies this transaction as part of a group. See the Connect documentation for details.
