@@ -1,15 +1,16 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Stripe.Tests
 {
     public static class Cache
     {
-        // this will return null if you haven't asked for a managed account
-        public static StripeAccountCreateOptions ManagedAccountOptions { get; set; }
+        
+        public static StripeAccountCreateOptions ManagedAccountWithCardOptions { get; set; }
 
         private static StripeAccount _managedAccount { get; set; }
 
-        public static StripeAccount GetManagedAccount()
+        public static StripeAccount GetManagedAccountWithCard()
         {
             if(_managedAccount != null) return _managedAccount;
 
@@ -21,9 +22,12 @@ namespace Stripe.Tests
             options.TosAcceptanceIp = "8.8.8.8";
             options.TosAcceptanceUserAgent = "user-agent-7";
 
-            ManagedAccountOptions = options;
+            ManagedAccountWithCardOptions = options;
 
             return _managedAccount = new StripeAccountService().Create(options);
         }
+
+ 
+
     }
 }
