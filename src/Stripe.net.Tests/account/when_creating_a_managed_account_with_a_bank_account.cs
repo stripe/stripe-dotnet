@@ -11,17 +11,16 @@ namespace Stripe.Tests
 
         private static StripeAccountService _stripeAccountService;
 
-        Establish context = () =>
+        private Establish context = () =>
         {
             _stripeAccountService = new StripeAccountService();
-            CreateOrUpdateOptions = test_data.stripe_account_create_options.ValidAccountWithBankAccount();
-            CreateOrUpdateOptions.Country = "US";
-            CreateOrUpdateOptions.Email = "joe" + Guid.NewGuid() + "@blahblah.com";
-            CreateOrUpdateOptions.Managed = true;
+
+            Cache.GetManagedAccountWithBankAccount();
+            CreateOrUpdateOptions = Cache.ManagedAccountWithBankAccountOptions;
         };
 
         Because of = () =>
-            StripeAccount = _stripeAccountService.Create(CreateOrUpdateOptions);
+            StripeAccount = Cache.GetManagedAccountWithBankAccount();
 
         It should_have_the_correct_country = () =>
             StripeAccount.Country.ShouldEqual(CreateOrUpdateOptions.Country);

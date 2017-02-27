@@ -1,17 +1,19 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Stripe.Tests
 {
     public static class Cache
     {
-        // this will return null if you haven't asked for a managed account
-        public static StripeAccountCreateOptions ManagedAccountOptions { get; set; }
+        public static StripeAccountCreateOptions ManagedAccountWithCardOptions { get; set; }
+        public static StripeAccountCreateOptions ManagedAccountWithBankAccountOptions { get; set; }
 
-        private static StripeAccount _managedAccount { get; set; }
+        private static StripeAccount _managedAccountWithCard { get; set; }
+        private static StripeAccount _managedAccountWithBankAccount { get; set; }
 
-        public static StripeAccount GetManagedAccount()
-        {
-            if(_managedAccount != null) return _managedAccount;
+        public static StripeAccount GetManagedAccountWithCard()
+        {  
+            if(_managedAccountWithCard != null) return _managedAccountWithCard;
 
             var options = test_data.stripe_account_create_options.ValidAccountWithCard();
             options.Country = "US";
@@ -21,9 +23,24 @@ namespace Stripe.Tests
             options.TosAcceptanceIp = "8.8.8.8";
             options.TosAcceptanceUserAgent = "user-agent-7";
 
-            ManagedAccountOptions = options;
+            ManagedAccountWithCardOptions = options;
 
-            return _managedAccount = new StripeAccountService().Create(options);
+            return _managedAccountWithCard = new StripeAccountService().Create(options);
         }
+
+        public static StripeAccount GetManagedAccountWithBankAccount()
+        {
+            if (_managedAccountWithBankAccount != null) return _managedAccountWithBankAccount;
+
+            var options = test_data.stripe_account_create_options.ValidAccountWithBankAccount();
+            options.Country = "US";
+            options.Email = $"joe{ Guid.NewGuid() }@blahblah.com";
+            options.Managed = true;
+
+            ManagedAccountWithBankAccountOptions = options;
+
+            return _managedAccountWithBankAccount = new StripeAccountService().Create(options);
+        }
+
     }
 }

@@ -18,8 +18,8 @@ namespace Stripe.Tests
 
         Because of = () =>
         {
-            StripeAccount = Cache.GetManagedAccount();
-            CreateOrUpdateOptions = Cache.ManagedAccountOptions;
+            StripeAccount = Cache.GetManagedAccountWithCard();
+            CreateOrUpdateOptions = Cache.ManagedAccountWithCardOptions;
         };
 
         It should_have_the_correct_country = () =>

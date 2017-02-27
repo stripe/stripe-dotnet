@@ -17,7 +17,7 @@ namespace Stripe.Tests
             // create a managed account
             _stripeAccountService = new StripeAccountService();
 
-            _initialAccount = Cache.GetManagedAccount();
+            _initialAccount = Cache.GetManagedAccountWithCard();
 
             // create a token for a new card
             var tokenOptions = test_data.stripe_token_create_options.ValidDebitCard();

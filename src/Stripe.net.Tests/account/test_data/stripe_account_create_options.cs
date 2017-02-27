@@ -11,6 +11,7 @@ namespace Stripe.Tests.test_data
                 BusinessName = "created-business-name-" + Guid.NewGuid(),
                 BusinessPrimaryColor = "#" + new Random().Next(0, 6).ToString("D6"),
                 BusinessUrl = "http://created.com/" + Guid.NewGuid(),
+                Country = "US",
                 DebitNegativeBalances = true,
                 DeclineChargeOnAvsFailure = false,
                 DeclineChargeOnCvcFailure = true,
