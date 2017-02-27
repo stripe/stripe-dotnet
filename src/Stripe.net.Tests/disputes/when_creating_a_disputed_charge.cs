@@ -14,6 +14,8 @@ namespace Stripe.Tests
         Establish context = () =>
         {
             _chargeService = new StripeChargeService();
+            _chargeService.ExpandDispute = true;
+
             _disputedOptions = test_data.stripe_dispute_options.DisputedCard();
 
             _initialCharge = _chargeService.Create(_disputedOptions);
@@ -30,6 +32,9 @@ namespace Stripe.Tests
                 Thread.Sleep(500);
             } while (stopwatch.ElapsedMilliseconds < 10000);
         };
+
+        It should_have_a_dispute_id = () =>
+            _disputedCharge.DisputeId.ShouldNotBeNull();
 
         It should_have_dispute_defined = () =>
             _disputedCharge.Dispute.ShouldNotBeNull();

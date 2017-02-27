@@ -14,6 +14,8 @@ namespace Stripe.Tests
         Establish context = () =>
         {
             _chargeService = new StripeChargeService();
+            _chargeService.ExpandDispute = true;
+
             _disputedOptions = test_data.stripe_dispute_options.DisputedCard();
 
             _initialCharge = _chargeService.CreateAsync(_disputedOptions).Result;

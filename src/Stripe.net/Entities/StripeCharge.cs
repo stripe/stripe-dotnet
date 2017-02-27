@@ -119,11 +119,25 @@ namespace Stripe
         }
         #endregion
 
+
+        #region Expandable Dispute
+        public string DisputeId { get; set; }
+
         /// <summary>
         /// Details about the dispute if the charge has been disputed.
         /// </summary>
-        [JsonProperty("dispute")]
+        [JsonIgnore]
         public StripeDispute Dispute { get; set; }
+
+        [JsonProperty("dispute")]
+        internal object InternalDispute
+        {
+            set
+            {
+                ExpandableProperty<StripeDispute>.Map(value, s => DisputeId = s, o => Dispute = o);
+            }
+        }
+        #endregion
 
         /// <summary>
         /// Error code explaining reason for charge failure if available (see the errors section for a list of codes).
@@ -195,8 +209,21 @@ namespace Stripe
         [JsonProperty("order")]
         public string Order { get; set; }
 
-        [JsonProperty("outcome")]
+        #region Expandable Outcome
+        public string OutcomeId { get; set; }
+
+        [JsonIgnore]
         public StripeOutcome Outcome { get; set; }
+
+        [JsonProperty("outcome")]
+        internal object InternalOutcome
+        {
+            set
+            {
+                ExpandableProperty<StripeOutcome>.Map(value, s => OutcomeId = s, o => Outcome = o);
+            }
+        }
+        #endregion
 
         /// <summary>
         /// true if the charge succeeded, or was successfully authorized for later capture.

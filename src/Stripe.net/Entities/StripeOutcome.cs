@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeOutcome : StripeEntity
+    public class StripeOutcome : StripeEntityWithId
     {
         /// <summary>
         /// Possible values are approved_by_network, declined_by_network, not_sent_to_network, and reversed_after_approval. The value reversed_after_approval indicates the payment was blocked by Stripe after bank authorization, and may temporarily appear as “pending” on a cardholder’s statement.
