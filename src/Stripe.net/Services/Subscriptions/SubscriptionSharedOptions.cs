@@ -53,6 +53,9 @@ namespace Stripe
             }
         }
 
+        [JsonProperty("trial_period_days")]
+        public int? TrialPeriodDays { get; set; }
+
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
     }
