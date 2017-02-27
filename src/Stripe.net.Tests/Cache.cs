@@ -30,7 +30,7 @@ namespace Stripe.Tests
 
         public static StripeAccount GetManagedAccountWithBankAccount()
         {
-            if (_managedAccountWithBankAccount != null) return _managedAccountWithCard;
+            if (_managedAccountWithBankAccount != null) return _managedAccountWithBankAccount;
 
             var options = test_data.stripe_account_create_options.ValidAccountWithBankAccount();
             options.Country = "US";
