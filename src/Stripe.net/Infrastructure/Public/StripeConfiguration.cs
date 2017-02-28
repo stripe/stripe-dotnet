@@ -6,10 +6,7 @@ namespace Stripe
 {
     public static class StripeConfiguration
     {
-        /// <summary>
-        /// If this isn't the latest version of the Stripe API, it's news to me.
-        /// </summary>
-        public static string StripeApiVersion = "2016-07-06";
+        public static string StripeApiVersion = "2017-02-14";
         public static string StripeNetVersion { get; private set; }
 
         /// <summary>
