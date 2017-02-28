@@ -9,6 +9,9 @@ namespace Stripe
         [JsonProperty("account_balance")]
         public int? AccountBalance { get; set; }
 
+        [JsonProperty("business_vat_id")]
+        public string BusinessVatId { get; set; }
+
         [JsonProperty("source")]
         public string SourceToken { get; set; }
 

@@ -10,6 +10,9 @@ namespace Stripe
         [JsonProperty("account_balance")]
         public int? AccountBalance { get; set; }
 
+        [JsonProperty("business_vat_id")]
+        public string BusinessVatId { get; set; }
+
         [JsonProperty("coupon")]
         public string CouponId { get; set; }
 
