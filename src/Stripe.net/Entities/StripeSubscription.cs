@@ -62,7 +62,7 @@ namespace Stripe
         public StripePlan StripePlan { get; set; }
 
         [JsonProperty("quantity")]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         [JsonProperty("start")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
@@ -81,5 +81,8 @@ namespace Stripe
         [JsonProperty("trial_start")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? TrialStart { get; set; }
+        
+        [JsonProperty("items")]
+        public StripeList<StripeSubscriptionItem> SubscriptionItems { get; set; }
     }
 }
