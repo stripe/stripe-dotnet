@@ -12,7 +12,7 @@ namespace Stripe
 
 
         // Sync
-        public virtual StripeSubscriptionItem Create(StripeSubscriptionCreateOptions options, StripeRequestOptions requestOptions = null)
+        public virtual StripeSubscriptionItem Create(StripeSubscriptionItemCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/subscription_items", requestOptions, options);
         }
@@ -32,7 +32,7 @@ namespace Stripe
             return DeleteEntity($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions);
         }
 
-        public virtual IEnumerable<StripeSubscriptionItem> List(StripeInvoiceItemListOptions options = null, StripeRequestOptions requestOptions = null)
+        public virtual IEnumerable<StripeSubscriptionItem> List(StripeSubscriptionItemListOptions options = null, StripeRequestOptions requestOptions = null)
         {
             return GetEntityList($"{Urls.BaseUrl}/subscription_items", requestOptions, options);
         }
@@ -40,7 +40,7 @@ namespace Stripe
 
 
         // Async
-        public virtual Task<StripeSubscriptionItem> CreateAsync(StripeSubscriptionCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeSubscriptionItem> CreateAsync(StripeSubscriptionItemCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return PostAsync($"{Urls.BaseUrl}/subscription_items", requestOptions, cancellationToken, options);
         }
@@ -60,7 +60,7 @@ namespace Stripe
             return DeleteEntityAsync($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions, cancellationToken);
         }
 
-        public virtual Task<IEnumerable<StripeSubscriptionItem>> ListAsync(StripeInvoiceItemListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IEnumerable<StripeSubscriptionItem>> ListAsync(StripeSubscriptionItemListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return GetEntityListAsync($"{Urls.BaseUrl}/subscription_items", requestOptions, cancellationToken, options);
         }
