@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeSubscriptionItemService : StripeService
+    public class StripeSubscriptionItemService : StripeBasicService<StripeSubscriptionItem>
     {
         public StripeSubscriptionItemService(string apiKey = null) : base(apiKey)
         {
@@ -20,7 +20,7 @@ namespace Stripe
 
         public virtual StripeSubscriptionItem Create(string planId, string subscriptionId, StripeSubscriptionItemCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
         {
-            var url = this.ApplyAllParameters(createOptions, Urls.SubscriptionItems, false);            
+            var url = this.ApplyAllParameters(createOptions, Urls.SubscriptionItems, false);
             url = ParameterBuilder.ApplyParameterToUrl(url, "plan", planId);
             url = ParameterBuilder.ApplyParameterToUrl(url, "subscription", subscriptionId);
 
@@ -30,7 +30,7 @@ namespace Stripe
         }
 
         public StripeSubscriptionItem Delete(string subscriptionItemId, StripeSubscriptionItemDeleteOptions deleteOptions = null, StripeRequestOptions requestOptions = null)
-        {          
+        {
             var url = Urls.SubscriptionItems + "/" + subscriptionItemId;
             url = this.ApplyAllParameters(deleteOptions, url, false);
 
@@ -39,7 +39,7 @@ namespace Stripe
             );
         }
 
-        public IEnumerable<StripeSubscriptionItem> List(string subscriptionId, StripeSubscriptionItemListingOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public IEnumerable<StripeSubscriptionItem> List(string subscriptionId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             var url = this.ApplyAllParameters(listOptions, Urls.SubscriptionItems, true);
             url = ParameterBuilder.ApplyParameterToUrl(url, "subscription", subscriptionId);
