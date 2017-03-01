@@ -44,7 +44,7 @@ namespace Stripe
             );
         }
 
-        public virtual StripeDeleted Delete(string url, StripeRequestOptions requestOptions, object options = null)
+        public virtual StripeDeleted DeleteEntity(string url, StripeRequestOptions requestOptions, object options = null)
         {
             return Mapper<StripeDeleted>.MapFromJson(
                 Requestor.Delete(
@@ -90,7 +90,7 @@ namespace Stripe
             );
         }
 
-        public async Task<StripeDeleted> DeleteAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken, object options = null)
+        public async Task<StripeDeleted> DeleteEntityAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken, object options = null)
         {
             return Mapper<StripeDeleted>.MapFromJson(
                 await Requestor.DeleteAsync(
