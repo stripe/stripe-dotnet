@@ -14,7 +14,7 @@ namespace Stripe
         public DateTime Created { get; set; }
 
         [JsonProperty("plan")]
-        public StripePlan StripePlan { get; set; }
+        public StripePlan Plan { get; set; }
 
         [JsonProperty("quantity")]
         public int Quantity { get; set; }
