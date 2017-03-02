@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Stripe.Tests.Xunit
 {
     public class subscription_item_fixture : IDisposable
     {
         public StripeSubscriptionItemCreateOptions SubscriptionItemCreateOptions { get; }
-        public StripeSubscriptionItemUpdateOptions StripeSubscriptionItemUpdateOptions { get; }
+        public StripeSubscriptionItemUpdateOptions SubscriptionItemUpdateOptions { get; }
 
         public StripeSubscriptionItem SubscriptionItem { get; }
         public StripeSubscriptionItem SubscriptionItemUpdated { get; }
+        public StripeSubscriptionItem SubscriptionItemRetrieved { get; }
+        public IEnumerable<StripeSubscriptionItem> SubscriptionItemList { get; }
 
         public subscription_item_fixture()
         {
@@ -21,13 +25,16 @@ namespace Stripe.Tests.Xunit
                 Quantity = 1
             };
 
-            StripeSubscriptionItemUpdateOptions = new StripeSubscriptionItemUpdateOptions
+            SubscriptionItemUpdateOptions = new StripeSubscriptionItemUpdateOptions
             {
                 Quantity = 2
             };
 
-            SubscriptionItem = new StripeSubscriptionItemService(Cache.ApiKey).Create(SubscriptionItemCreateOptions);
-            SubscriptionItemUpdated = new StripeSubscriptionItemService(Cache.ApiKey).Update(SubscriptionItem.Id, StripeSubscriptionItemUpdateOptions);
+            var service = new StripeSubscriptionItemService(Cache.ApiKey);
+            SubscriptionItem = service.Create(SubscriptionItemCreateOptions);
+            SubscriptionItemUpdated = service.Update(SubscriptionItem.Id, SubscriptionItemUpdateOptions);
+            SubscriptionItemRetrieved = service.Get(SubscriptionItem.Id);
+            SubscriptionItemList = service.List();
         }
 
         public void Dispose()

@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace Stripe.Tests.Xunit
@@ -40,6 +41,24 @@ namespace Stripe.Tests.Xunit
         public void updated_has_right_quantity()
         {
             fixture.SubscriptionItemUpdated.Quantity.Should().Be(fixture.SubscriptionItemUpdateOptions.Quantity);
+        }
+
+        [Fact]
+        public void retrieved_is_not_null()
+        {
+            fixture.SubscriptionItemRetrieved.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void list_is_not_null()
+        {
+            fixture.SubscriptionItemList.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void list_has_atleast_one_item()
+        {
+            fixture.SubscriptionItemList.ToList().Count.Should().BeGreaterOrEqualTo(1);
         }
     }
 }
