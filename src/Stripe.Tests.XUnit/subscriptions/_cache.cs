@@ -18,7 +18,6 @@
 
             var options = new StripeSubscriptionCreateOptions
             {
-                
             };
             Items.Add("subscription_create_options", options);
 

@@ -3,33 +3,25 @@ using Xunit;
 
 namespace Stripe.Tests.Xunit
 {
-    public class creating_a_subscription_item
+    public class creating_a_subscription_item : IClassFixture<subscription_item_fixture>
     {
-        private StripeSubscriptionItem SubscriptionItem { get; set; }
+        private readonly subscription_item_fixture fixture;
 
-        public creating_a_subscription_item()
+        public creating_a_subscription_item(subscription_item_fixture fixture)
         {
-            SubscriptionItem = new StripeSubscriptionItemService(Cache.ApiKey).Create(
-                new StripeSubscriptionItemCreateOptions
-                {
-                    SubscriptionId = Cache.GetSubscription().Id,
-                    PlanId = Cache.GetPlan2().Id,
-                    Quantity = 1
-                }
-            );
+            this.fixture = fixture;
         }
 
         [Fact]
         public void is_not_null()
         {
-            SubscriptionItem.Should().NotBeNull();
+            fixture.SubscriptionItem.Should().NotBeNull();
         }
-
 
         [Fact]
         public void has_right_quantity()
         {
-            SubscriptionItem.Quantity.Should().Be(1);
+            fixture.SubscriptionItem.Quantity.Should().Be(fixture.SubscriptionItemCreateOptions.Quantity);
         }
     }
 }
