@@ -12,9 +12,9 @@ namespace Stripe.Tests.Xunit
             SubscriptionItem = new StripeSubscriptionItemService(Cache.ApiKey).Create(
                 new StripeSubscriptionItemCreateOptions
                 {
-                    PlanId = Cache.GetPlan().Id,
                     SubscriptionId = Cache.GetSubscription().Id,
-                    Quantity = 2
+                    PlanId = Cache.GetPlan2().Id,
+                    Quantity = 1
                 }
             );
         }
@@ -29,7 +29,7 @@ namespace Stripe.Tests.Xunit
         [Fact]
         public void has_right_quantity()
         {
-            SubscriptionItem.Quantity.Should().Be(2);
+            SubscriptionItem.Quantity.Should().Be(1);
         }
     }
 }
