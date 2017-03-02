@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Stripe.Tests.Xunit
@@ -34,7 +33,7 @@ namespace Stripe.Tests.Xunit
             SubscriptionItem = service.Create(SubscriptionItemCreateOptions);
             SubscriptionItemUpdated = service.Update(SubscriptionItem.Id, SubscriptionItemUpdateOptions);
             SubscriptionItemRetrieved = service.Get(SubscriptionItem.Id);
-            SubscriptionItemList = service.List();
+            SubscriptionItemList = service.List(new StripeSubscriptionItemListOptions { SubscriptionId = Cache.GetSubscription().Id });
         }
 
         public void Dispose()

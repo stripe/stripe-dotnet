@@ -4,11 +4,11 @@ using Xunit;
 
 namespace Stripe.Tests.Xunit
 {
-    public class creating_and_updating_subscription_item : IClassFixture<subscription_item_fixture>
+    public class creating_and_updating_subscription_items : IClassFixture<subscription_item_fixture>
     {
         private readonly subscription_item_fixture fixture;
 
-        public creating_and_updating_subscription_item(subscription_item_fixture fixture)
+        public creating_and_updating_subscription_items(subscription_item_fixture fixture)
         {
             this.fixture = fixture;
         }

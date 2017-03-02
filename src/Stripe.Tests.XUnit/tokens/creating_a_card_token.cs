@@ -4,13 +4,13 @@ using Xunit;
 
 namespace Stripe.Tests.Xunit
 {
-    public class creating_a_card_token : test
+    public class creating_a_card_token
     {
         private StripeToken Token { get; set; }
 
         public creating_a_card_token()
         {
-            Token = new StripeTokenService(_stripe_api_key).CreateAsync(
+            Token = new StripeTokenService(Cache.ApiKey).CreateAsync(
                 new StripeTokenCreateOptions
                 {
                     Card = new StripeCreditCardOptions

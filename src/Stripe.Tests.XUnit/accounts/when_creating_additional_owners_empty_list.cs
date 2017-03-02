@@ -6,34 +6,29 @@ using Xunit;
 
 namespace Stripe.Tests.Xunit
 {
-    public class when_additional_owners_is_empty_list : test
+    public class when_creating_additional_owners_empty_list
     {
-        private StripeAccount Account { get; set; }
+        private StripeAccount Account { get; }
 
-        public when_additional_owners_is_empty_list()
+        public when_creating_additional_owners_empty_list()
         {
-            Account = new StripeAccountService(_stripe_api_key).Create(
+            Account = new StripeAccountService(Cache.ApiKey).Create(
                 new StripeAccountCreateOptions
                 {
-                    Email = $"happy@gilmore.com",
+                    Email = "happy@gilmore.com",
                     Managed = true,
                     LegalEntity = new StripeAccountLegalEntityOptions
                     {
-                        AdditionalOwners = new List<StripeAccountAdditionalOwner> {}
+                        AdditionalOwners = new List<StripeAccountAdditionalOwner>()
                     }
                 }
             ); 
         }
 
         [Fact]
-        public void be_a_valid_account()
+        public void has_an_empty_list_of_additional_owners()
         {
             Account.Should().NotBeNull();
-        }
-
-        [Fact]
-        public void has_valid_additional_owners()
-        {
             Account.LegalEntity.AdditionalOwners.Should().NotBeNull();
             Account.LegalEntity.AdditionalOwners.Count.Should().Be(0);
         }
