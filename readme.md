@@ -27,6 +27,7 @@
 [Recipients](#recipients)  
 [Refunds](#refunds)  
 [Subscriptions](#subscriptions)  
+[Subscription Items](#subscription-items)  
 [Tokens](#tokens)  
 [Transfers](#transfers)  
 
@@ -1232,6 +1233,53 @@ Subscriptions
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
 	IEnumerable<StripeSubscription> response = subscriptionService.List(); // optional StripeSubscriptionListOptions
+```
+
+[StripeListOptions](#stripelistoptions-paging) for paging
+
+Subscription Items
+------------------
+
+### Creating a subscription item
+
+```csharp
+	var subscriptionItem = new StripeSubscriptionItemService().Create(
+		new StripeSubscriptionItemCreateOptions
+		{
+			SubscriptionId = *subscriptionId*,  // required!
+			PlanId = *planId*,                  // required!
+			Quantity = 1
+		};
+	);
+```
+
+### Updating a subscription item
+
+```csharp
+	var subscriptionItem = new StripeSubscriptionItemService().Update(
+		*subscriptionItemId*,
+		new StripeSubscriptionItemUpdateOptions
+		{
+			Quantity = 2
+		};
+	);
+```
+
+### Retrieving a subscription item
+
+```csharp
+var subscriptionItem = new StripeSubscriptionItemService().Get(*subscriptionItemId*);
+```
+
+### List all subscription items
+
+```csharp
+	var subscriptionItems = new StripeSubscriptionItemService().List(
+		new StripeSubscriptionItemListOptions
+		{ 
+			SubscriptionId = *subscriptionId* 
+		}
+	);
 ```
 
 [StripeListOptions](#stripelistoptions-paging) for paging
