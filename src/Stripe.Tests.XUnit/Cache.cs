@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Stripe.Tests.Xunit
 {
+    /// <summary>
+    /// A cache utility that provides objects and options for testing
+    /// </summary>
     public static partial class Cache
     {
         static Cache()
