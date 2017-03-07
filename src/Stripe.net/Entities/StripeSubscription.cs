@@ -71,6 +71,9 @@ namespace Stripe
         [JsonProperty("status")]
         public string Status { get; set; }
 
+        [JsonProperty("items")]
+        public StripeList<StripeSubscriptionItem> SubscriptionItems { get; set; }
+
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
