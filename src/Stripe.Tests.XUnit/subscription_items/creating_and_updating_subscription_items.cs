@@ -60,5 +60,17 @@ namespace Stripe.Tests.Xunit
         {
             fixture.SubscriptionItemList.ToList().Count.Should().BeGreaterOrEqualTo(1);
         }
+
+        [Fact]
+        public void subscription_has_subscription_items()
+        {
+            Cache.GetSubscription().SubscriptionItems.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void subscriptions_first_subscription_item_has_a_plan()
+        {
+            Cache.GetSubscription().SubscriptionItems.Data.First().Plan.Should().NotBeNull();
+        }
     }
 }
