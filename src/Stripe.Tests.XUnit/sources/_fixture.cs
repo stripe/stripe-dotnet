@@ -16,7 +16,7 @@ namespace Stripe.Tests.Xunit
         {
             SourceCreateOptions = new StripeSourceCreateOptions
             {
-                Type = "bitcoin",
+                Type = StripeSourceType.Bitcoin,
                 Amount = 1,
                 Currency = "usd",
                 Owner = new StripeSourceOwner

@@ -6,7 +6,7 @@ namespace Stripe
     public class StripeSourceCreateOptions
     {
         /// <summary>
-        /// REQUIRED: The type of the source to create.
+        /// REQUIRED: The type of the source to create. One of type <see cref="StripeSourceType"/>
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
