@@ -1,26 +1,25 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Stripe
 {
     public class StripeSourceOwner : INestedOptions
     {
-        [JsonProperty("[owner][city]")]
+        [JsonProperty("[owner][address][city]")]
         public string CityOrTown { get; set; }
 
-        [JsonProperty("[owner][country]")]
+        [JsonProperty("[owner][address][country]")]
         public string Country { get; set; }
 
-        [JsonProperty("[owner][line1]")]
+        [JsonProperty("[owner][address][line1]")]
         public string Line1 { get; set; }
 
-        [JsonProperty("[owner][line2]")]
+        [JsonProperty("[owner][address][line2]")]
         public string Line2 { get; set; }
 
-        [JsonProperty("[owner][postal_code]")]
+        [JsonProperty("[owner][address][postal_code]")]
         public string PostalCode { get; set; }
 
-        [JsonProperty("[owner][state]")]
+        [JsonProperty("[owner][address][state]")]
         public string State { get; set; }
 
         [JsonProperty("[owner][email]")]
