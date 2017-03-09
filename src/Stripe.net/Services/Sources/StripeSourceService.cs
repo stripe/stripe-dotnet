@@ -26,10 +26,11 @@ namespace Stripe
             return Post($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions, options);
         }
 
-        public virtual StripeDeleted Delete(string sourceId, StripeRequestOptions requestOptions = null)
-        {
-            return DeleteEntity($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions);
-        }
+        // not available :(
+        //public virtual StripeDeleted Delete(string sourceId, StripeRequestOptions requestOptions = null)
+        //{
+        //    return DeleteEntity($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions);
+        //}
 
 
 
@@ -49,9 +50,10 @@ namespace Stripe
             return PostAsync($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions, cancellationToken, options);
         }
 
-        public virtual Task<StripeDeleted> DeleteAsync(string sourceId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return DeleteEntityAsync($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions, cancellationToken);
-        }
+        // not available :(
+        //public virtual Task<StripeDeleted> DeleteAsync(string sourceId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        //{
+        //    return DeleteEntityAsync($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions, cancellationToken);
+        //}
     }
 }

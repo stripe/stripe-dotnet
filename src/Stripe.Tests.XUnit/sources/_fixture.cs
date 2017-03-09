@@ -43,7 +43,8 @@ namespace Stripe.Tests.Xunit
 
         public void Dispose()
         {
-            new StripeSourceService(Cache.ApiKey).Delete(Source.Id);
+            // not implemented :(
+            // new StripeSourceService(Cache.ApiKey).Delete(Source.Id);
         }
     }
 }
