@@ -1204,7 +1204,7 @@ Sources
 Before working with sources, I would recommend you read [Getting Started with Sources](https://stripe.com/docs/sources). Sources allow 
 you to use a common integration for multiple payment types.
 
-### Creating a Source
+### Creating a source
 
 ```csharp
 var source = new StripeSourceService().Create(
