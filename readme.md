@@ -26,6 +26,7 @@
 [Radar](#radar)  
 [Recipients](#recipients)  
 [Refunds](#refunds)  
+[Sources](#sources)  
 [Subscriptions](#subscriptions)  
 [Subscription Items](#subscription-items)  
 [Tokens](#tokens)  
@@ -1196,6 +1197,51 @@ You can also specify Metadata, RefundApplicationFee (Connect Only), and ReverseT
 ```
 
 StripeRefundListOptions supports ChargeId and [StripeListOptions](#stripelistoptions-paging) for paging
+
+Sources
+-------
+
+Before working with sources, I would recommend you read [Getting Started with Sources](https://stripe.com/docs/sources). Sources allow 
+you to use a common integration for multiple payment types.
+
+### Creating a source
+
+```csharp
+var source = new StripeSourceService().Create(
+	new StripeSourceCreateOptions
+	{
+		Type = StripeSourceType.Bitcoin,
+		Amount = 1,
+		Currency = "usd",
+		Owner = new StripeSourceOwner
+		{
+			Email = "jimmy@hendrix.com",
+			CityOrTown = "Mayberry",
+			State = "NC"
+		}
+	}
+);
+```
+
+### Updating a source
+
+```csharp
+var source = new StripeSourceService().Update(*sourceId*,
+	new StripeSourceUpdateOptions
+	{
+		Owner = new StripeSourceOwner
+		{
+			Email = "hendrix@hjimmy.com"
+		}
+	}
+);
+```
+
+### Retrieving a source
+
+```csharp
+var source = new StripeSourceService().Get(*sourceId*);
+```
 
 Subscriptions
 -------------
