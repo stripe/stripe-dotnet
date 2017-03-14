@@ -22,11 +22,9 @@ namespace Stripe.Infrastructure
 
             if (obj != null)
             {
-                foreach (var property in
-                    obj.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+                foreach (var property in obj.GetType().GetRuntimeProperties())
                 {
                     var value = property.GetValue(obj, null);
-
                     var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
                     if (attribute == null)
                     {
@@ -39,8 +37,7 @@ namespace Stripe.Infrastructure
 
             if (service != null)
             {
-                var propertiesToExpand = service.GetType()
-                    .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                var propertiesToExpand = service.GetType().GetRuntimeProperties()
                     .Where(p => p.Name.StartsWith("Expand") && p.PropertyType == typeof(bool))
                     .Where(p => (bool)p.GetValue(service, null))
                     .Select(p => p.Name);
@@ -149,7 +146,7 @@ namespace Stripe.Infrastructure
             {
                 // recursive: 
                 foreach (var property in
-                    obj.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+                    obj.GetType().GetRuntimeProperties())
                 {
                     var value = property.GetValue(obj, null);
 
@@ -162,12 +159,11 @@ namespace Stripe.Infrastructure
                 //Left the old nested options processing as is:
                 newUrl = ApplyNestedObjectProperties(newUrl, obj);
             }
-            else if (obj.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).Any(p => p.GetCustomAttribute<JsonPropertyAttribute>() != null))
+            else if (obj.GetType().GetRuntimeProperties().Any(p => p.GetCustomAttribute<JsonPropertyAttribute>() != null))
             {
                 //even if the object was not marked as nested, we check to see if has fields marked with the json JsonPropertyAttribute and treat it as a nested object:
                 // recursive: 
-                foreach (var property in
-                    obj.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+                foreach (var property in obj.GetType().GetRuntimeProperties())
                 {
                     var value = property.GetValue(obj, null);
 
@@ -216,25 +212,9 @@ namespace Stripe.Infrastructure
             return newUrl;
         }
 
-        private static string ApplyNestedNamedObjectProperties(string newUrl, string propertyName, object nestedObject)
-        {
-            foreach (var property in nestedObject.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
-            {
-                var value = property.GetValue(nestedObject, null);
-                if (value == null) continue;
-
-                foreach (var attribute in property.GetCustomAttributes(typeof(JsonPropertyAttribute), false).Cast<JsonPropertyAttribute>())
-                {
-                    newUrl = ApplyParameterToUrl(newUrl, $"{propertyName}[{attribute.PropertyName}]", value.ToString());
-                }
-            }
-
-            return newUrl;
-        }
-
         private static string ApplyNestedObjectProperties(string newUrl, object nestedObject)
         {
-            foreach (var property in nestedObject.GetType().GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+            foreach (var property in nestedObject.GetType().GetRuntimeProperties())
             {
                 var value = property.GetValue(nestedObject, null);
                 if (value == null) continue;

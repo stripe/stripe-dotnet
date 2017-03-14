@@ -29,7 +29,7 @@ namespace Stripe
 
         public virtual StripeDeleted DeleteProduct(string productId, StripeRequestOptions requestOptions = null)
         {
-            return Delete($"{Urls.Products}/{productId}", requestOptions);
+            return DeleteEntity($"{Urls.Products}/{productId}", requestOptions);
         }
     }
 }

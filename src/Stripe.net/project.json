@@ -5,8 +5,7 @@
   "projectUrl": "https://github.com/jaymedavis/stripe.net",
   "description": "Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.",
   "frameworks": {
-    "netstandard1.2": {
-      "imports": [ "netcoreapp1.0" ],
+    "netstandard2.0": {
       "dependencies": {
         "NETStandard.Library": "1.6.1"
       }
