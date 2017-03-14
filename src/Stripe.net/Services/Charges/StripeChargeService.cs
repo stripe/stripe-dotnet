@@ -16,7 +16,10 @@ namespace Stripe
         public bool ExpandInvoice { get; set; }
         public bool ExpandReview { get; set; }
         public bool ExpandTransfer { get; set; }
-
+        public bool ExpandOnBehalfOf { get; set; }
+        public bool ExpandSourceTransfer { get; set; }
+        public bool ExpandDispute { get; set; }
+        public bool ExpandOutcome { get; set; }
 
 
         //Sync

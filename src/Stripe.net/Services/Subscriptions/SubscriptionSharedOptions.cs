@@ -20,6 +20,9 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("customer")]
+        public string CustomerId { get; set; }
+
         [JsonProperty("plan")]
         public string PlanId { get; set; }
 
@@ -49,6 +52,9 @@ namespace Stripe
                     return null;
             }
         }
+
+        [JsonProperty("trial_period_days")]
+        public int? TrialPeriodDays { get; set; }
 
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }

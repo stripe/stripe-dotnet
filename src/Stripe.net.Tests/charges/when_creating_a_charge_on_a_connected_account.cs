@@ -11,11 +11,10 @@ namespace Stripe.Tests
         private static StripeToken _token;
         private static StripeCharge _charge;
 
-        private Establish context = () =>
+        Establish context = () =>
         {
             // setup a managed (connect) account
-            _account = new StripeAccountService()
-                .Create(new StripeAccountCreateOptions { Email = "west@" + Guid.NewGuid() + "world.com", Managed = true });
+            _account = Cache.GetManagedAccountWithCard();
 
             // create a token (not on the connected account)
             _token = new StripeTokenService().Create(test_data.stripe_token_create_options.Valid());
@@ -28,7 +27,7 @@ namespace Stripe.Tests
         {
             // create a charge using a token with the destination set to the managed account
             _charge = _chargeService
-                .Create(test_data.stripe_charge_create_options.ValidTokenWithDestination(_token.Id, _account.Id));
+                .Create(test_data.stripe_charge_create_options.ValidTokenWithDestination(_token.Id, _account.Id, 100));
         };
 
         It should_have_the_destination = () =>
@@ -37,7 +36,7 @@ namespace Stripe.Tests
         It should_have_the_destination_account_id_correct = () =>
             _charge.Destination.Id.ShouldEqual(_account.Id);
 
-        It should_have_the_destination_id = () =>
-            _charge.DestinationId.ShouldNotBeNull();
+        //It should_have_the_destination_amount_correct = () =>
+        //    _charge.Amount.ShouldEqual(100);
     }
 }

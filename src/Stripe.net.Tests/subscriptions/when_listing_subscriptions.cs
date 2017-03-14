@@ -26,7 +26,7 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeSubscriptionList = _stripeSubscriptionService.List(_stripeCustomer.Id).ToList();
+            _stripeSubscriptionList = _stripeSubscriptionService.List(new StripeSubscriptionListOptions { CustomerId = _stripeCustomer.Id }).ToList();
 
         It should_have_one_subscription = () =>
             _stripeSubscriptionList.Count().ShouldEqual(1);

@@ -22,7 +22,7 @@ namespace Stripe.Tests
             var refund = _stripeRefundService.Create(_createdStripeChargeId, new StripeRefundCreateOptions()
             {
                 Amount = 300,
-                Reason = StripeRefundReasons.Fradulent,
+                Reason = StripeRefundReasons.Fraudulent,
                 Metadata = new Dictionary<string, string>() { { "key", "value" } }
             });
 
@@ -39,7 +39,7 @@ namespace Stripe.Tests
             _stripeRefund.Amount.ShouldEqual(300);
 
         It should_have_reason = () =>
-            _stripeRefund.Reason.ShouldEqual(StripeRefundReasons.Fradulent);
+            _stripeRefund.Reason.ShouldEqual(StripeRefundReasons.Fraudulent);
 
         It should_have_metadata = () =>
             _stripeRefund.Metadata["key"].ShouldEqual("value");

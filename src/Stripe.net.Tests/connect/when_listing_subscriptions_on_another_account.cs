@@ -25,7 +25,7 @@ namespace Stripe.Tests
         Because of = () =>
         {
             var requestOptions = new StripeRequestOptions() { StripeConnectAccountId = _connectedAccountId };
-            _stripeSubscriptionList = _stripeSubscriptionService.List(_connectedAccountCustomerId, null, requestOptions).ToList();
+            _stripeSubscriptionList = _stripeSubscriptionService.List(new StripeSubscriptionListOptions { CustomerId = _connectedAccountCustomerId }, requestOptions).ToList();
         };
 
         It should_have_at_lest_one_subscription = () =>

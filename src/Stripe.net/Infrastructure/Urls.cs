@@ -34,7 +34,7 @@
 
         public static string Recipients => BaseUrl + "/recipients";
 
-        public static string Subscriptions => BaseUrl + "/customers/{0}/subscriptions";
+        public static string Subscriptions => BaseUrl + "/subscriptions";
 
         public static string Transfers => BaseUrl + "/transfers";
 

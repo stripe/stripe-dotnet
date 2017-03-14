@@ -36,12 +36,13 @@ namespace Stripe.Tests.test_data
             };
         }
 
-        public static StripeChargeCreateOptions ValidTokenWithDestination(string tokenId, string destinationAccountId)
+        public static StripeChargeCreateOptions ValidTokenWithDestination(string tokenId, string destinationAccountId, int? destinationAmount)
         {
             return new StripeChargeCreateOptions()
             {
                 SourceTokenOrExistingSourceId = tokenId,
                 Destination = destinationAccountId,
+                DestinationAmount = destinationAmount.GetValueOrDefault(),
                 Amount = 8675309,
                 Currency = "usd"
             };

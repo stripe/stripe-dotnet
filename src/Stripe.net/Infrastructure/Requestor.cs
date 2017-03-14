@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -224,7 +225,7 @@ namespace Stripe.Infrastructure
             var result = new StripeResponse
             {
                 RequestId = response.Headers.GetValues("Request-Id").First(),
-                RequestDate = Convert.ToDateTime(response.Headers.GetValues("Date").First()),
+                RequestDate = Convert.ToDateTime(response.Headers.GetValues("Date").First(), CultureInfo.InvariantCulture),
                 ResponseJson = responseText
             };
 

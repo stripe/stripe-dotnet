@@ -8,6 +8,9 @@ namespace Stripe.Tests
         protected static StripeAccountSharedOptions CreateOrUpdateOptions;
         protected static StripeAccount StripeAccount;
 
+        //It should_have_the_correct_email_address = () =>
+        //    StripeAccount.Email.ShouldEqual(CreateOrUpdateOptions.Email);
+
         It should_have_the_correct_business_info = () =>
         {
             StripeAccount.BusinessName.ShouldEqual(CreateOrUpdateOptions.BusinessName);

@@ -6,13 +6,13 @@ using Xunit;
 
 namespace Stripe.Tests.Xunit
 {
-    public class when_using_a_stripe_date_filter : test
+    public class when_using_a_date_filter
     {
-        private List<StripeInvoice> Invoices{ get; }
+        private List<StripeInvoice> Invoices { get; }
 
-        public when_using_a_stripe_date_filter()
+        public when_using_a_date_filter()
         {
-            Invoices = new StripeInvoiceService(_stripe_api_key).List(
+            Invoices = new StripeInvoiceService(Cache.ApiKey).List(
                 new StripeInvoiceListOptions
                 {
                     Date = new StripeDateFilter { EqualTo = DateTime.UtcNow.AddYears(-10) }

@@ -1,32 +1,22 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Xunit;
 
 namespace Stripe.Tests.Xunit
 {
-    public class getting_an_account_with_no_accountid : test
+    public class getting_an_account_with_no_accountid
     {
-        private StripeAccount RetrievedAccount { get; }
-        //private StripeAccount RetrievedAccountAsync { get; }
+        private StripeAccount Account { get; }
 
         public getting_an_account_with_no_accountid()
         {
-            RetrievedAccount = new StripeAccountService(_stripe_api_key).Get();
-            //RetrievedAccountAsync = new StripeAccountService(_stripe_api_key).GetAsync().Result;
+            Account = new StripeAccountService(Cache.ApiKey).Get();
         }
 
         [Fact]
-        public void has_total_count()
+        public void returns_your_account()
         {
-            RetrievedAccount.Should().NotBeNull();
-            //RetrievedAccountAsync.Should().NotBeNull();
-        }
-
-        [Fact]
-        public void has_account_id()
-        {
-            RetrievedAccount.Id.Should().StartWith("acct_");
-            //RetrievedAccountAsync.Id.Should().StartWith("acct_");
+            Account.Should().NotBeNull();
+            Account.Id.Should().StartWith("acct_");
         }
     }
 }

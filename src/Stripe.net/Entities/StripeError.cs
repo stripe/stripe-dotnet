@@ -20,7 +20,7 @@ namespace Stripe
         public string Error { get; set; }
 
         [JsonProperty("error_description")]
-        public string ErrorSubscription { get; set; }
+        public string ErrorDescription { get; set; }
 
         [JsonProperty("charge")]
         public string ChargeId { get; set; }

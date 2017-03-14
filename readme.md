@@ -26,7 +26,9 @@
 [Radar](#radar)  
 [Recipients](#recipients)  
 [Refunds](#refunds)  
+[Sources](#sources)  
 [Subscriptions](#subscriptions)  
+[Subscription Items](#subscription-items)  
 [Tokens](#tokens)  
 [Transfers](#transfers)  
 
@@ -1196,6 +1198,51 @@ You can also specify Metadata, RefundApplicationFee (Connect Only), and ReverseT
 
 StripeRefundListOptions supports ChargeId and [StripeListOptions](#stripelistoptions-paging) for paging
 
+Sources
+-------
+
+Before working with sources, I would recommend you read [Getting Started with Sources](https://stripe.com/docs/sources). Sources allow 
+you to use a common integration for multiple payment types.
+
+### Creating a source
+
+```csharp
+var source = new StripeSourceService().Create(
+	new StripeSourceCreateOptions
+	{
+		Type = StripeSourceType.Bitcoin,
+		Amount = 1,
+		Currency = "usd",
+		Owner = new StripeSourceOwner
+		{
+			Email = "jimmy@hendrix.com",
+			CityOrTown = "Mayberry",
+			State = "NC"
+		}
+	}
+);
+```
+
+### Updating a source
+
+```csharp
+var source = new StripeSourceService().Update(*sourceId*,
+	new StripeSourceUpdateOptions
+	{
+		Owner = new StripeSourceOwner
+		{
+			Email = "hendrix@hjimmy.com"
+		}
+	}
+);
+```
+
+### Retrieving a source
+
+```csharp
+var source = new StripeSourceService().Get(*sourceId*);
+```
+
 Subscriptions
 -------------
 
@@ -1210,28 +1257,75 @@ Subscriptions
 
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
-	StripeSubscription stripeSubscription = subscriptionService.Update(*customerId*, *subscriptionId*); // optional StripeSubscriptionUpdateOptions
+	StripeSubscription stripeSubscription = subscriptionService.Update(*subscriptionId*); // optional StripeSubscriptionUpdateOptions
 ```
 
 ### Retrieving a subscription
 
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
-	StripeSubscription stripeSubscription = subscriptionService.Get(*customerId*, *subscriptionId*);
+	StripeSubscription stripeSubscription = subscriptionService.Get(*subscriptionId*);
 ```
 
 ### Canceling a subscription
 
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
-	subscriptionService.Cancel(*customerId*, *subscriptionId*); // optional cancelAtPeriodEnd flag
+	subscriptionService.Cancel(*subscriptionId*); // optional cancelAtPeriodEnd flag
 ```
 
-### List all subscriptions for a customer
+### List all subscriptions
 
 ```csharp
 	var subscriptionService = new StripeSubscriptionService();
-	IEnumerable<StripeSubscription> response = subscriptionService.List(*customerId*); // optional StripeListOptions
+	IEnumerable<StripeSubscription> response = subscriptionService.List(); // optional StripeSubscriptionListOptions
+```
+
+[StripeListOptions](#stripelistoptions-paging) for paging
+
+Subscription Items
+------------------
+
+### Creating a subscription item
+
+```csharp
+	var subscriptionItem = new StripeSubscriptionItemService().Create(
+		new StripeSubscriptionItemCreateOptions
+		{
+			SubscriptionId = *subscriptionId*,  // required!
+			PlanId = *planId*,                  // required!
+			Quantity = 1
+		};
+	);
+```
+
+### Updating a subscription item
+
+```csharp
+	var subscriptionItem = new StripeSubscriptionItemService().Update(
+		*subscriptionItemId*,
+		new StripeSubscriptionItemUpdateOptions
+		{
+			Quantity = 2
+		};
+	);
+```
+
+### Retrieving a subscription item
+
+```csharp
+var subscriptionItem = new StripeSubscriptionItemService().Get(*subscriptionItemId*);
+```
+
+### List all subscription items
+
+```csharp
+	var subscriptionItems = new StripeSubscriptionItemService().List(
+		new StripeSubscriptionItemListOptions
+		{ 
+			SubscriptionId = *subscriptionId* 
+		}
+	);
 ```
 
 [StripeListOptions](#stripelistoptions-paging) for paging
