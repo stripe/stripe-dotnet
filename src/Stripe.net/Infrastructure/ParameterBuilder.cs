@@ -145,13 +145,16 @@ namespace Stripe.Infrastructure
             else if (obj is INestedNamedOptions)
             {
                 // recursive: 
-                foreach (var property in
-                    obj.GetType().GetRuntimeProperties())
+                foreach (var property in obj.GetType().GetRuntimeProperties())
                 {
                     var value = property.GetValue(obj, null);
 
                     var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
-                    newUrl = ApplyParameters(newUrl, $"{propertyName}[{attribute.PropertyName}]", value, includeEmptyValues);
+
+                    if (attribute != null)
+                    {
+                        newUrl = ApplyParameters(newUrl, $"{propertyName}[{attribute.PropertyName}]", value, includeEmptyValues);
+                    }
                 }
             }
             else if (obj is INestedOptions)
@@ -163,7 +166,8 @@ namespace Stripe.Infrastructure
             {
                 //even if the object was not marked as nested, we check to see if has fields marked with the json JsonPropertyAttribute and treat it as a nested object:
                 // recursive: 
-                foreach (var property in obj.GetType().GetRuntimeProperties())
+                var propertiesWithJsonPropertyAttribute = obj.GetType().GetRuntimeProperties().Where(p => p.GetCustomAttribute<JsonPropertyAttribute>() != null);
+                foreach (var property in propertiesWithJsonPropertyAttribute)
                 {
                     var value = property.GetValue(obj, null);
 
@@ -239,6 +243,15 @@ namespace Stripe.Infrastructure
             }
 
             return newUrl;
+        }
+
+        private static List<PropertyInfo> GetSerializedProperties(object obj)
+        {
+            return
+                obj.GetType()
+                    .GetRuntimeProperties()
+                    .Where(p => p.GetCustomAttribute<JsonPropertyAttribute>() != null)
+                    .ToList();
         }
     }
 }

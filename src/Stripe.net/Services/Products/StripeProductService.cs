@@ -27,7 +27,7 @@ namespace Stripe
             return GetEntityList(Urls.Products, requestOptions, listOptions);
         }
 
-        public virtual StripeDeleted DeleteProduct(string productId, StripeRequestOptions requestOptions = null)
+        public virtual StripeDeleted Delete(string productId, StripeRequestOptions requestOptions = null)
         {
             return DeleteEntity($"{Urls.Products}/{productId}", requestOptions);
         }

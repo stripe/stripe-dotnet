@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Stripe.Infrastructure;
+﻿using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
 

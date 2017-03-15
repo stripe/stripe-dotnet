@@ -16,6 +16,12 @@ namespace Stripe
         public bool? Active { get; set; }
 
         /// <summary>
+        /// Gets or sets a dictionary of attributes and values for the attributes defined by the product. If, for example, a product’s attributes are ["size", "gender"], a valid SKU has the following dictionary of attributes: {"size": "Medium", "gender": "Unisex"}.
+        /// </summary>
+        [JsonProperty("attributes")]
+        public Dictionary<string, string> Attributes { get; set; }
+
+        /// <summary>
         /// Gets or sets a 3-letter ISO code for currency.
         /// </summary>
         [JsonProperty("currency")]

@@ -12,12 +12,17 @@ namespace Stripe
         public bool? Active { get; set; }
 
         /// <summary>
+        /// Gets or sets a list of up to 5 alphanumeric attributes that each SKU can provide values for (e.g. ["color", "size"]).
+        /// Optional
+        /// </summary>
+        [JsonProperty("attributes")]
+        public string[] Attributes { get; set; }
+
+        /// <summary>
         /// Gets or sets a short one-line description of the product, meant to be displayable to the customer.
         /// </summary>
         [JsonProperty("caption")]
         public string Caption { get; set; }
-
-        ////TODO: deactivate_on
 
         /// <summary>
         /// Gets or sets the product’s description, meant to be displayable to the customer.

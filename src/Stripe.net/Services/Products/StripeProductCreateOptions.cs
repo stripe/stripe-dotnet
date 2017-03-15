@@ -10,12 +10,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets a list of up to 5 alphanumeric attributes that each SKU can provide values for (e.g. ["color", "size"]).
-        /// Optional
-        /// </summary>
-        [JsonProperty("attributes")]
-        public string[] Attributes { get; set; }
     }
 }

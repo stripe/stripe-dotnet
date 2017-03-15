@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Stripe.Tests.Xunit;
 using Xunit;
 
 namespace Stripe.Tests.Xunit
