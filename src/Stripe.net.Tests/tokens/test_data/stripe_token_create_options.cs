@@ -12,8 +12,8 @@
                 AddressState = "NC",
                 AddressZip = "27617",
                 Cvc = "1223",
-                ExpirationMonth = "10",
-                ExpirationYear = "2021",
+                ExpirationMonth = 10,
+                ExpirationYear = 2021,
                 Name = "Bob Winghead",
                 Number = "4242424242424242"
             };
@@ -34,8 +34,8 @@
                 AddressState = "NC",
                 AddressZip = "27617",
                 Cvc = "1223",
-                ExpirationMonth = "10",
-                ExpirationYear = "2021",
+                ExpirationMonth = 10,
+                ExpirationYear = 2021,
                 Name = "Andy Dufresne",
                 Number = "4000056655665556",
                 Currency = "usd"
@@ -52,8 +52,8 @@
             var cardOptions = new StripeCreditCardOptions()
             {
                
-                ExpirationMonth = "06",
-                ExpirationYear = "2020",
+                ExpirationMonth = 06,
+                ExpirationYear = 2020,
                 Number = "4000000000009235"
             };
 

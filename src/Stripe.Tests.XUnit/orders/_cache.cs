@@ -19,11 +19,12 @@ namespace Stripe.Tests.Xunit
         {
             if (Items.ContainsKey("order_create_options")) return (StripeOrderCreateOptions)Items["order_create_options"];
 
+            var customer = GetCustomer();
             var options = new StripeOrderCreateOptions
             {
                 Currency = "usd",
-                CustomerId = GetCustomer().Id,
-                Email = GetCustomer().Email,
+                CustomerId = customer.Id,
+                Email = customer.Email,
                 StripeOrderItems = new List<StripeOrderItem>
                 {
                     new StripeOrderItem

@@ -28,7 +28,6 @@ namespace Stripe.Tests.Xunit
         public static StripeProductCreateOptions GetProductCreateOptions()
         {
             if (Items.ContainsKey("product_create_options")) return (StripeProductCreateOptions)Items["product_create_options"];
-
             var options = GenerateProductCreateOptions();
             Items.Add("product_create_options", options);
 

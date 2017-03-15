@@ -19,13 +19,13 @@ namespace Stripe.Tests
             });
             
             _stripeCardService = new StripeCardService();
-            _stripeCardCreateOptions = new StripeCardCreateOptions()
+            _stripeCardCreateOptions = new StripeCardCreateOptions
             {
                 SourceCard = new SourceCard()
                 {
                     Name = "TestCard " + Guid.NewGuid(),
-                    ExpirationMonth = "10",
-                    ExpirationYear = "2021",
+                    ExpirationMonth = 10,
+                    ExpirationYear = 2021,
                     Number = "4000000000000077",
                     Metadata = new Dictionary<string, string>
                     {

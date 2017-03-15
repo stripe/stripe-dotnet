@@ -15,8 +15,8 @@ namespace Stripe.Tests.test_data
                 AddressState = "NC",
                 AddressZip = "27617",
                 Cvc = "1661",
-                ExpirationMonth = "10",
-                ExpirationYear = "2021",
+                ExpirationMonth = 10,
+                ExpirationYear = 2021,
                 Name = "Johnny Tenderloin",
                 Number = "4242424242424242",
             };
