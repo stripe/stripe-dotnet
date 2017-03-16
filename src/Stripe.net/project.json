@@ -1,6 +1,6 @@
 ﻿{
   "title": "Stripe.net",
-  "version": "7.4.0",
+  "version": "7.5.0",
   "authors": [ "Jayme Davis" ],
   "projectUrl": "https://github.com/jaymedavis/stripe.net",
   "description": "Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.",
