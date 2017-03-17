@@ -1,7 +1,7 @@
 {
   "title": "Rentler.Stripe",
   "version": "1.0.0-0",
-  "authors": [ "Jayme Davis" ],
+  "authors": [ "Rentler" ],
   "projectUrl": "https://github.com/rentler/stripe-net",
   "description": "This is our Stripe API",
   "frameworks": {
