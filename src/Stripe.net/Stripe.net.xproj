@@ -7,7 +7,7 @@
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
     <ProjectGuid>cf3e9e0a-f11c-4364-a671-0025d3cbfb70</ProjectGuid>
-    <RootNamespace>Rentler.Stripe</RootNamespace>
+    <RootNamespace>Stripe</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin</OutputPath>
   </PropertyGroup>
