@@ -1,9 +1,9 @@
-﻿{
-  "title": "Stripe.net",
-  "version": "7.4.0",
-  "authors": [ "Jayme Davis" ],
-  "projectUrl": "https://github.com/jaymedavis/stripe.net",
-  "description": "Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.",
+{
+  "title": "Rentler.Stripe",
+  "version": "1.0.0-0",
+  "authors": [ "Rentler" ],
+  "projectUrl": "https://github.com/rentler/stripe-net",
+  "description": "This is our Stripe API",
   "frameworks": {
     "netstandard1.2": {
       "imports": [ "netcoreapp1.0" ],
@@ -35,14 +35,14 @@
   },
   "packOptions": {
     "iconUrl": "http://i.imgur.com/UuBwQ33.png",
-    "licenseUrl": "https://raw.github.com/jaymedavis/stripe.net/master/LICENSE",
-    "owners": [ "Jayme Davis" ],
+    "licenseUrl": "https://github.com/rentler/stripe-net/master/LICENSE",
+    "owners": [ "Rentler" ],
     "repository": {
       "type": "git",
-      "url": "https://github.com/jaymedavis/stripe.net"
+      "url": "https://github.com/rentler/stripe-net"
     },
     "requireLicenseAcceptance": false,
-    "summary": "Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.",
+    "summary": "This is our Stripe API",
     "tags": [ "stripe", "payment", "credit", "cards", "money", "gateway", "paypal", "braintree" ]
   },
   "runtimes": {
