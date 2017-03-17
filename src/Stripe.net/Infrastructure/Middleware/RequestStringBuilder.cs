@@ -13,13 +13,14 @@ namespace Stripe.Infrastructure.Middleware
         {
             if (ParserPlugins != null) return;
 
-            // use reflection so this works on the bin directory later for additional plugin processing tools
-
+            // use reflection so this works on the bin directory
             ParserPlugins = new List<IParserPlugin>
             {
                 new AdditionalOwnerPlugin(),
                 new DictionaryPlugin(),
-                new DateFilterPlugin()
+                new DateFilterPlugin(),
+                new SubscriptionItemPlugin(),
+                new SubscriptionItemUpdatedPlugin()
             };
         }
 

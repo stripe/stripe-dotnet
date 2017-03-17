@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 
@@ -17,13 +18,17 @@ namespace Stripe
             {
                 if (BillingCycleAnchorNow)
                     return "now";
-                else if (BillingCycleAnchorUnchanged)
+
+                if (BillingCycleAnchorUnchanged)
                     return "unchanged";
-                else if (BillingCycleAnchor.HasValue)
-                    return EpochTime.ConvertDateTimeToEpoch(BillingCycleAnchor.Value).ToString();
-                else
-                    return null;
+
+                return BillingCycleAnchor?.ConvertDateTimeToEpoch().ToString();
             }
         }
+
+        // this will actually send items. this is to flag it for the middleware
+        // to process it as a plugin
+        [JsonProperty("subscription_items")]
+        public List<StripeSubscriptionItemOption> Items { get; set; }
     }
 }

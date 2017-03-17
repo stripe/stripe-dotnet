@@ -35,6 +35,19 @@ namespace Stripe
             );
         }
 
+        public virtual StripeSubscription Create(string customerId, StripeSubscriptionCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            var url = this.ApplyAllParameters(createOptions, Urls.Subscriptions, false);
+            url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+
+            return Mapper<StripeSubscription>.MapFromJson(
+                Requestor.PostString(
+                    this.ApplyAllParameters(createOptions, url),
+                    SetupRequestOptions(requestOptions)
+                )
+            );
+        }
+
         public virtual StripeSubscription Update(string subscriptionId, StripeSubscriptionUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             var url = string.Format(Urls.Subscriptions + "/{0}", subscriptionId);
@@ -87,6 +100,20 @@ namespace Stripe
                 await Requestor.PostStringAsync(ParameterBuilder.ApplyParameterToUrl(url, "plan", planId),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
+            );
+        }
+
+        public virtual async Task<StripeSubscription> CreateAsync(string customerId, StripeSubscriptionCreateOptions createOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var url = this.ApplyAllParameters(createOptions, Urls.Subscriptions, false);
+            url = ParameterBuilder.ApplyParameterToUrl(url, "customer", customerId);
+
+            return Mapper<StripeSubscription>.MapFromJson(
+                await Requestor.PostStringAsync(
+                    this.ApplyAllParameters(createOptions, url),
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken
+                )
             );
         }
 
