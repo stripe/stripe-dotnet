@@ -49,7 +49,7 @@ namespace Stripe
         /// <para>The URL you provide to redirect the customer back to you after they authenticated their payment. It can use your application URI scheme in the context of a mobile application.</para>
         /// </summary>
         [JsonProperty("[redirect][return_url]")]
-        public string ReturnUrl { get; set; }
+        public string RedirectReturnUrl { get; set; }
 
         /// <summary>
         /// An optional token used to create the source. When passed, token properties will override source parameters.
