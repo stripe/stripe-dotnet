@@ -1,35 +1,30 @@
-version: 7.4.0.{build}
-image: Visual Studio 2015
-
-environment:
-  stripe_test_secret_key:
-    secure: +p/EWA8+0B64k7a88nb6ZiSTcv6TIukyhQQU2Ljf7jNVtwVZXhJtNf5LdemV7EuY
-
-deploy:
-- provider: NuGet
-  api_key:
-    secure: D6ys+uEckSSs1hTQ0/io7wKytQnGH32FMzsPCRBVT1L6wmGe2pj3bmVNgw/xKBqM
-  on:
-    branch: master
-
-install:
-- ps: Import-Module .\build\build.psm1
-
+shallow_clone: true
+version: 1.0.{build}
+configuration: Release
+assembly_info:
+  patch: true
+  file: AssemblyInfo.*
+  assembly_version: "{version}"
+  assembly_file_version: "{version}"
+  assembly_informational_version: "{version}"
 before_build:
-- ps: Invoke-Restore
-
-build_script:
-- ps: Invoke-Build
-
-test_script:
-- ps: Invoke-Test
-
-after_build:
-- ps: Invoke-Pack
-
-# these commands force appveyor to offer an RDP session for debugging
-#init:
-#- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-#
-#on_finish:
-#- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  - cmd: cd src
+  - cmd: nuget restore
+  - cmd: cd ..
+build:
+  project: src/Stripe.net.sln
+  publish_nuget: true
+artifacts:
+  - path: '**\*.nupkg'
+nuget:
+  account_feed: true
+deploy:
+  - provider: NuGet
+    server: https://www.myget.org/F/rentler/api/v2/package
+    api_key:
+      secure: GJWY0KmJFoav+62A4/SW8buDyrYiWh2IVzYpdaXSSDukQrXgoSei21qrUZTfVNEl
+    skip_symbols: true
+    artifact: /.*\.nupkg/
+    on:
+      branch: master
+      appveyor_repo_tag: true
