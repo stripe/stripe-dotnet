@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>rentler</authors>
+    <owners>rentler</owners>
+    <licenseUrl>https://github.com/rentler/stripe-net/blob/master/license.txt</licenseUrl>
+    <projectUrl>https://github.com/rentler/stripe-net</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This is our Stripe API.</description>
+    <releaseNotes>Initial Release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Rentler Stripe</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
+    </dependencies>
+  </metadata>
+</package>
