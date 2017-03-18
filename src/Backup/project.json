@@ -16,17 +16,17 @@
         "define": [ "NET45" ]
       },
       "frameworkAssemblies": {
-        "Microsoft.CSharp": "*",
-        "System.Configuration": "*",
-        "System.Core": "*",
-        "System.Data.Linq": "*",
-        "System.Net.Http": "*",
-        "System.Net.Http.WebRequest": "*",
-        "System.Web": "*",
-        "System.Xml.Linq": "*",
-        "System.Data.DataSetExtensions": "*",
-        "System.Data": "*",
-        "System.Xml": "*"
+        "Microsoft.CSharp": "4.0.0.0",
+        "System.Configuration": "4.0.0.0",
+        "System.Core": "4.0.0.0",
+        "System.Data": "4.0.0.0",
+        "System.Data.DataSetExtensions": "4.0.0.0",
+        "System.Data.Linq": "4.0.0.0",
+        "System.Net.Http": "4.0.0.0",
+        "System.Net.Http.WebRequest": "4.0.0.0",
+        "System.Web": "4.0.0.0",
+        "System.Xml": "4.0.0.0",
+        "System.Xml.Linq": "4.0.0.0"
       }
     }
   },
