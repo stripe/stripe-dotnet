@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeReturn : StripeEntity
+    public class StripeReturn : StripeEntityWithId
     {
         /// <summary>
         /// Gets or sets the object Type. value is "order_return"

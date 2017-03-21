@@ -4,7 +4,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeStatusTransitions
+    public class StripeStatusTransitions : StripeEntity
     {
         /// <summary>
         /// Gets or sets the date of cancellation.

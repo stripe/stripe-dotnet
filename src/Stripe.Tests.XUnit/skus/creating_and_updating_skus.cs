@@ -17,52 +17,52 @@ namespace Stripe.Tests.Xunit
         [Fact]
         public void created_is_not_null()
         {
-            fixture.Sku.Should().NotBeNull();
+            fixture.SkuCreated.Should().NotBeNull();
         }
 
         [Fact]
         public void created_has_right_price()
         {
-            fixture.Sku.Price.Should().Be(fixture.SkuCreateOptions.Price);
+            fixture.SkuCreated.Price.Should().Be(fixture.SkuCreateOptions.Price);
         }
 
         [Fact]
         public void created_has_right_product_id()
         {
-            fixture.Sku.ProductId.Should().Be(fixture.SkuCreateOptions.ProductId);
+            fixture.SkuCreated.ProductId.Should().Be(fixture.SkuCreateOptions.ProductId);
         }
 
         [Fact]
         public void created_has_right_attributes()
         {
-            fixture.Sku.Attributes.ShouldBeEquivalentTo(fixture.SkuCreateOptions.Attributes);
+            fixture.SkuCreated.Attributes.ShouldBeEquivalentTo(fixture.SkuCreateOptions.Attributes);
         }
 
         [Fact]
         public void created_has_right_active()
         {
-            fixture.Sku.Active.Should().Be(fixture.SkuCreateOptions.Active.Value);
+            fixture.SkuCreated.Active.Should().Be(fixture.SkuCreateOptions.Active.Value);
         }
 
         [Fact]
         public void created_has_right_image()
         {
-            fixture.Sku.Image.Should().Be(fixture.SkuCreateOptions.Image);
+            fixture.SkuCreated.Image.Should().Be(fixture.SkuCreateOptions.Image);
         }
 
         [Fact]
         public void created_has_right_package_dimensions()
         {
-            fixture.Sku.PackageDimensions.Width.Should().Be(fixture.SkuCreateOptions.PackageDimensions.Width);
-            fixture.Sku.PackageDimensions.Height.Should().Be(fixture.SkuCreateOptions.PackageDimensions.Height);
-            fixture.Sku.PackageDimensions.Length.Should().Be(fixture.SkuCreateOptions.PackageDimensions.Length);
-            fixture.Sku.PackageDimensions.Weight.Should().Be(fixture.SkuCreateOptions.PackageDimensions.Weight);
+            fixture.SkuCreated.PackageDimensions.Width.Should().Be(fixture.SkuCreateOptions.PackageDimensions.Width);
+            fixture.SkuCreated.PackageDimensions.Height.Should().Be(fixture.SkuCreateOptions.PackageDimensions.Height);
+            fixture.SkuCreated.PackageDimensions.Length.Should().Be(fixture.SkuCreateOptions.PackageDimensions.Length);
+            fixture.SkuCreated.PackageDimensions.Weight.Should().Be(fixture.SkuCreateOptions.PackageDimensions.Weight);
         }
 
         [Fact]
         public void created_has_right_metadata()
         {
-            fixture.Sku.Metadata.ShouldBeEquivalentTo(fixture.SkuCreateOptions.Metadata);
+            fixture.SkuCreated.Metadata.ShouldBeEquivalentTo(fixture.SkuCreateOptions.Metadata);
         }
 
 

@@ -2,11 +2,8 @@
 
 namespace Stripe
 {
-    public class StripeShippingMethod
+    public class StripeShippingMethod : StripeEntityWithId
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
         [JsonProperty("amount")]
         public int Amount { get; set; }
 

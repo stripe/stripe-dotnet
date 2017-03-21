@@ -17,52 +17,52 @@ namespace Stripe.Tests.Xunit
         [Fact]
         public void created_is_not_null()
         {
-            fixture.Product.Should().NotBeNull();
+            fixture.ProductCreated.Should().NotBeNull();
         }
 
         [Fact]
         public void created_has_right_shippable()
         {
-            fixture.Product.Shippable.Should().Be(fixture.ProductCreateOptions.Shippable.Value);
+            fixture.ProductCreated.Shippable.Should().Be(fixture.ProductCreateOptions.Shippable.Value);
         }
 
         [Fact]
         public void created_has_right_package_dimensions()
         {
-            fixture.Product.PackageDimensions.Width.Should().Be(fixture.ProductCreateOptions.PackageDimensions.Width);
-            fixture.Product.PackageDimensions.Height.Should().Be(fixture.ProductCreateOptions.PackageDimensions.Height);
-            fixture.Product.PackageDimensions.Length.Should().Be(fixture.ProductCreateOptions.PackageDimensions.Length);
-            fixture.Product.PackageDimensions.Weight.Should().Be(fixture.ProductCreateOptions.PackageDimensions.Weight);
+            fixture.ProductCreated.PackageDimensions.Width.Should().Be(fixture.ProductCreateOptions.PackageDimensions.Width);
+            fixture.ProductCreated.PackageDimensions.Height.Should().Be(fixture.ProductCreateOptions.PackageDimensions.Height);
+            fixture.ProductCreated.PackageDimensions.Length.Should().Be(fixture.ProductCreateOptions.PackageDimensions.Length);
+            fixture.ProductCreated.PackageDimensions.Weight.Should().Be(fixture.ProductCreateOptions.PackageDimensions.Weight);
         }
 
         [Fact]
         public void created_has_right_attributes()
         {
-            fixture.Product.Attributes.Should().BeEquivalentTo(fixture.ProductCreateOptions.Attributes);
+            fixture.ProductCreated.Attributes.Should().BeEquivalentTo(fixture.ProductCreateOptions.Attributes);
         }
 
         [Fact]
         public void created_has_right_images()
         {
-            fixture.Product.Images.Should().BeEquivalentTo(fixture.ProductCreateOptions.Images);
+            fixture.ProductCreated.Images.Should().BeEquivalentTo(fixture.ProductCreateOptions.Images);
         }
 
         [Fact]
         public void created_has_right_url()
         {
-            fixture.Product.Url.Should().Be(fixture.ProductCreateOptions.Url);
+            fixture.ProductCreated.Url.Should().Be(fixture.ProductCreateOptions.Url);
         }
 
         [Fact]
         public void created_has_right_metadata()
         {
-            fixture.Product.Metadata.ShouldBeEquivalentTo(fixture.ProductCreateOptions.Metadata);
+            fixture.ProductCreated.Metadata.ShouldBeEquivalentTo(fixture.ProductCreateOptions.Metadata);
         }
 
         [Fact]
         public void updated_is_not_null()
         {
-            fixture.Product.Should().NotBeNull();
+            fixture.ProductCreated.Should().NotBeNull();
         }
 
         [Fact]

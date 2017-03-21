@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeDeliveryEstimate
+    public class StripeDeliveryEstimate : StripeEntity
     {
         /// <summary>
         /// Gets or sets the expected delivery date.
