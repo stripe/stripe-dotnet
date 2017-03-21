@@ -13,10 +13,10 @@ namespace Stripe
         public string Number { get; set; }
 
         [JsonProperty("source[exp_month]")]
-        public int ExpirationMonth { get; set; }
+        public string ExpirationMonth { get; set; }
 
         [JsonProperty("source[exp_year]")]
-        public int ExpirationYear { get; set; }
+        public string ExpirationYear { get; set; }
 
         [JsonProperty("source[cvc]")]
         public string Cvc { get; set; }

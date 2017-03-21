@@ -15,8 +15,8 @@ namespace Stripe.Tests.test_data
                 AddressState = "NC",
                 AddressZip = "27617",
                 Cvc = "1223",
-                ExpirationMonth = 10,
-                ExpirationYear = 2021,
+                ExpirationMonth = "10",
+                ExpirationYear = "2021",
                 Name = "Joe Meatballs",
                 Number = "4000000000000077"
             };
@@ -58,8 +58,8 @@ namespace Stripe.Tests.test_data
                 AddressState = "NC",
                 AddressZip = "90210",
                 Cvc = "1223",
-                ExpirationMonth = 10,
-                ExpirationYear = 2004,
+                ExpirationMonth = "10",
+                ExpirationYear = "2004",
                 Name = "Joe Meatballs",
                 Number = "425221"
             };
