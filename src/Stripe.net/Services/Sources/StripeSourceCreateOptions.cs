@@ -48,6 +48,7 @@ namespace Stripe
         /// <para>Parameters required for the redirect flow. Required if the source is authenticated by a redirect (flow is redirect).</para>
         /// <para>The URL you provide to redirect the customer back to you after they authenticated their payment. It can use your application URI scheme in the context of a mobile application.</para>
         /// </summary>
+        [JsonProperty("[redirect][return_url]")]
         public string RedirectReturnUrl { get; set; }
 
         /// <summary>

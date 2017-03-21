@@ -62,7 +62,7 @@ namespace Stripe
         public StripePlan StripePlan { get; set; }
 
         [JsonProperty("quantity")]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         [JsonProperty("start")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
@@ -72,7 +72,7 @@ namespace Stripe
         public string Status { get; set; }
 
         [JsonProperty("items")]
-        public StripeList<StripeSubscriptionItem> SubscriptionItems { get; set; }
+        public StripeList<StripeSubscriptionItem> Items { get; set; }
 
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }

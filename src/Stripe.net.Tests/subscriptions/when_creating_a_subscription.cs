@@ -21,8 +21,7 @@ namespace Stripe.Tests
 
             _stripeSubscriptionService = new StripeSubscriptionService();
 
-            _stripeSubscriptionCreateOptions = new StripeSubscriptionCreateOptions();
-            _stripeSubscriptionCreateOptions.Quantity = 2;
+            _stripeSubscriptionCreateOptions = new StripeSubscriptionCreateOptions { Quantity = 2 };
         };
 
         Because of = () =>

@@ -64,13 +64,13 @@ namespace Stripe.Tests.Xunit
         [Fact]
         public void subscription_has_subscription_items()
         {
-            Cache.GetSubscription().SubscriptionItems.Should().NotBeNull();
+            Cache.GetSubscription().Items.Should().NotBeNull();
         }
 
         [Fact]
         public void subscriptions_first_subscription_item_has_a_plan()
         {
-            Cache.GetSubscription().SubscriptionItems.Data.First().Plan.Should().NotBeNull();
+            Cache.GetSubscription().Items.Data.First().Plan.Should().NotBeNull();
         }
     }
 }

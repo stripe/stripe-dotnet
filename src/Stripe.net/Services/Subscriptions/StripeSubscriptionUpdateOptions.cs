@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 
@@ -12,15 +13,11 @@ namespace Stripe
         public DateTime? ProrationDate { get; set; }
 
         [JsonProperty("proration_date")]
-        internal string ProrationDateInternal
-        {
-            get
-            {
-                if (ProrationDate.HasValue)
-                    return EpochTime.ConvertDateTimeToEpoch(ProrationDate.Value).ToString();
-                else
-                    return null;
-            }
-        }
+        internal string ProrationDateInternal => ProrationDate?.ConvertDateTimeToEpoch().ToString();
+
+        // this will actually send items. this is to flag it for the middleware
+        // to process it as a plugin
+        [JsonProperty("subscription_items_updated")]
+        public List<StripeSubscriptionItemUpdateOption> Items { get; set; }
     }
 }
