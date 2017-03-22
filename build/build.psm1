@@ -4,7 +4,7 @@ function Invoke-Restore()
 	Write-Host $("RESTORING EVERYTHING...") -BackgroundColor DarkCyan
 	blankLines
 	
-	dotnet restore src\Stripe.net.sln
+	dotnet restore
 }
 
 function Invoke-Build
