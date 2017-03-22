@@ -4,12 +4,7 @@
     {
         public static StripeToken GetToken()
         {
-            if (Items.ContainsKey("token")) return (StripeToken) Items["token"];
-
-            var token = new StripeTokenService(ApiKey).Create(GetTokenCreateOptions());
-            Items.Add("token", token);
-
-            return token;
+            return new StripeTokenService(ApiKey).Create(GetTokenCreateOptions());
         }
 
         public static StripeTokenCreateOptions GetTokenCreateOptions()

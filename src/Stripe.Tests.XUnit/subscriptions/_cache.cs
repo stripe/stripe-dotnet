@@ -2,12 +2,12 @@
 {
     public static partial class Cache
     {
-        public static StripeSubscription GetSubscription()
+        public static StripeSubscription GetSubscription(string subscriptionName = "subscription")
         {
-            if (Items.ContainsKey("subscription")) return (StripeSubscription) Items["subscription"];
+            if (Items.ContainsKey(subscriptionName)) return (StripeSubscription) Items[subscriptionName];
 
             var subscription = new StripeSubscriptionService(ApiKey).Create(GetCustomer().Id, GetPlan().Id, GetSubscriptionCreateOptions());
-            Items.Add("subscription", subscription);
+            Items.Add(subscriptionName, subscription);
 
             return subscription;
         }

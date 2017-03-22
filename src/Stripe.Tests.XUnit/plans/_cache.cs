@@ -4,12 +4,12 @@ namespace Stripe.Tests.Xunit
 {
     public static partial class Cache
     {
-        public static StripePlan GetPlan()
+        public static StripePlan GetPlan(string planName = "plan")
         {
-            if (Items.ContainsKey("plan")) return (StripePlan) Items["plan"];
+            if (Items.ContainsKey(planName)) return (StripePlan) Items[planName];
 
             var plan = new StripePlanService(ApiKey).Create(GetPlanCreateOptions());
-            Items.Add("plan", plan);
+            Items.Add(planName, plan);
 
             return plan;
         }

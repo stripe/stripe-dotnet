@@ -4,12 +4,12 @@ namespace Stripe.Tests.Xunit
 {
     public static partial class Cache
     {
-        public static StripeCustomer GetCustomer()
+        public static StripeCustomer GetCustomer(string customerName = "customer")
         {
-            if (Items.ContainsKey("customer")) return (StripeCustomer) Items["customer"];
+            if (Items.ContainsKey(customerName)) return (StripeCustomer) Items[customerName];
 
             var customer = new StripeCustomerService(ApiKey).Create(GetCustomerCreateOptions());
-            Items.Add("customer", customer);
+            Items.Add(customerName, customer);
 
             return customer;
         }
@@ -29,4 +29,3 @@ namespace Stripe.Tests.Xunit
         }
     }
 }
-
