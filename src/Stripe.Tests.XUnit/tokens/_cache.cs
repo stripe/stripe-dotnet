@@ -4,18 +4,11 @@
     {
         public static StripeToken GetToken()
         {
-            if (Items.ContainsKey("token")) return (StripeToken) Items["token"];
-
-            var token = new StripeTokenService(ApiKey).Create(GetTokenCreateOptions());
-            Items.Add("token", token);
-
-            return token;
+            return new StripeTokenService(ApiKey).Create(GetTokenCreateOptions());
         }
 
         public static StripeTokenCreateOptions GetTokenCreateOptions()
         {
-            if (Items.ContainsKey("token_create_options")) return (StripeTokenCreateOptions) Items["token_create_options"];
-
             var options = new StripeTokenCreateOptions
             {
                 Card = new StripeCreditCardOptions
@@ -33,7 +26,6 @@
                     Number = "4242424242424242"
                 }
             };
-            Items.Add("token_create_options", options);
 
             return options;
         }
