@@ -4,7 +4,7 @@ namespace Stripe.Tests.Xunit
 {
     public static partial class Cache
     {
-        public static StripeCustomer GetCustomer(string customerName = "customer")
+        public static StripeCustomer GetCustomer()
         {
             return new StripeCustomerService(ApiKey).Create(GetCustomerCreateOptions());
         }

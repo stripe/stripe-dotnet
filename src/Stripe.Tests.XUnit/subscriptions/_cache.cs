@@ -2,7 +2,7 @@
 {
     public static partial class Cache
     {
-        public static StripeSubscription GetSubscription(string subscriptionName = "subscription")
+        public static StripeSubscription GetSubscription()
         {
             return new StripeSubscriptionService(ApiKey).Create(GetCustomer().Id, GetPlan().Id, GetSubscriptionCreateOptions());
         }
