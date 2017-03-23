@@ -18,7 +18,7 @@ namespace Stripe.Tests.Xunit
                 Items = new List<StripeSubscriptionItemOption>
                 {
                     new StripeSubscriptionItemOption { PlanId = Cache.GetPlan().Id, Quantity = 1 },
-                    new StripeSubscriptionItemOption { PlanId = Cache.GetPlan2().Id, Quantity = 2 }
+                    new StripeSubscriptionItemOption { PlanId = Cache.GetPlan("silver").Id, Quantity = 2 }
                 }
             };
 

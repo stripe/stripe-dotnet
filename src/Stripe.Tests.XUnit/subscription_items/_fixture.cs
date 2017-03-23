@@ -20,7 +20,7 @@ namespace Stripe.Tests.Xunit
                 SubscriptionId = Cache.GetSubscription().Id,
                 // GetPlan() in the cache is used to create the original subscription
                 // you cannot have a subscription item with the same plan as the original sub plan
-                PlanId = Cache.GetPlan2().Id,
+                PlanId = Cache.GetPlan("bronze").Id,
                 Quantity = 1
             };
 

@@ -8,15 +8,15 @@ namespace Stripe.Tests.Xunit
         {
             if (Items.ContainsKey(planName)) return (StripePlan) Items[planName];
 
-            var plan = new StripePlanService(ApiKey).Create(GetPlanCreateOptions());
+            var plan = new StripePlanService(ApiKey).Create(GetPlanCreateOptions(planName));
             Items.Add(planName, plan);
 
             return plan;
         }
 
-        public static StripePlanCreateOptions GetPlanCreateOptions()
+        public static StripePlanCreateOptions GetPlanCreateOptions(string planName = "plan")
         {
-            if (Items.ContainsKey("plan_create_options")) return (StripePlanCreateOptions) Items["plan_create_options"];
+            if (Items.ContainsKey($"{planName}_create_options")) return (StripePlanCreateOptions) Items[$"{planName}_create_options"];
 
             var options = new StripePlanCreateOptions
             {
@@ -26,34 +26,7 @@ namespace Stripe.Tests.Xunit
                 Id = Guid.NewGuid().ToString(),
                 Interval = StripePlanIntervals.Week
             };
-            Items.Add("plan_create_options", options);
-
-            return options;
-        }
-
-        public static StripePlan GetPlan2()
-        {
-            if (Items.ContainsKey("plan2")) return (StripePlan)Items["plan2"];
-
-            var plan = new StripePlanService(ApiKey).Create(GetPlan2CreateOptions());
-            Items.Add("plan2", plan);
-
-            return plan;
-        }
-
-        public static StripePlanCreateOptions GetPlan2CreateOptions()
-        {
-            if (Items.ContainsKey("plan2_create_options")) return (StripePlanCreateOptions)Items["plan2_create_options"];
-
-            var options = new StripePlanCreateOptions
-            {
-                Amount = 500,
-                Currency = "usd",
-                Name = Guid.NewGuid().ToString(),
-                Id = Guid.NewGuid().ToString(),
-                Interval = StripePlanIntervals.Week
-            };
-            Items.Add("plan2_create_options", options);
+            Items.Add($"{planName}_create_options", options);
 
             return options;
         }

@@ -9,8 +9,6 @@
 
         public static StripeTokenCreateOptions GetTokenCreateOptions()
         {
-            if (Items.ContainsKey("token_create_options")) return (StripeTokenCreateOptions) Items["token_create_options"];
-
             var options = new StripeTokenCreateOptions
             {
                 Card = new StripeCreditCardOptions
@@ -28,7 +26,6 @@
                     Number = "4242424242424242"
                 }
             };
-            Items.Add("token_create_options", options);
 
             return options;
         }
