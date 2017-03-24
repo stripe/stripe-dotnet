@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Stripe.Tests.Xunit
+{
+    public class payouts_fixture
+    {
+        public StripePayoutCreateOptions PayoutCreateOptions { get; }
+        public StripePayoutUpdateOptions PayoutUpdateOptions { get; }
+
+        public StripePayout Payout { get; }
+        public StripePayout PayoutUpdated { get; }
+        public StripePayout PayoutRetrieved { get; }
+
+        public payouts_fixture()
+        {
+            // make sure the account has sufficient funds first
+            new StripeChargeService(Cache.ApiKey).Create(new StripeChargeCreateOptions
+            {
+                Amount = 2000,
+                Currency = "usd",
+                SourceCard = new SourceCard
+                {
+                    Number = "4000000000000077",
+                    ExpirationMonth = "10",
+                    ExpirationYear = "2019",
+                    Cvc = "123"
+                }
+            });
+
+            PayoutCreateOptions = new StripePayoutCreateOptions
+            {
+                Amount = 1000,
+                Currency = "usd"
+            };
+
+            PayoutUpdateOptions = new StripePayoutUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>()
+                {
+                    { "some-key", "some-value" }
+                }
+            };
+
+            var service = new StripePayoutService(Cache.ApiKey);
+            Payout = service.Create(PayoutCreateOptions);
+            PayoutUpdated = service.Update(Payout.Id, PayoutUpdateOptions);
+            PayoutRetrieved = service.Get(Payout.Id);
+        }
+    }
+}
