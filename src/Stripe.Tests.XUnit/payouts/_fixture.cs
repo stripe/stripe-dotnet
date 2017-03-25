@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Stripe.Tests.Xunit
 {
@@ -7,10 +8,12 @@ namespace Stripe.Tests.Xunit
     {
         public StripePayoutCreateOptions PayoutCreateOptions { get; }
         public StripePayoutUpdateOptions PayoutUpdateOptions { get; }
+        public StripePayoutListOptions PayoutListOptions { get; }
 
         public StripePayout Payout { get; }
         public StripePayout PayoutUpdated { get; }
         public StripePayout PayoutRetrieved { get; }
+        public List<StripePayout> PayoutList { get; }
 
         public payouts_fixture()
         {
@@ -31,7 +34,8 @@ namespace Stripe.Tests.Xunit
             PayoutCreateOptions = new StripePayoutCreateOptions
             {
                 Amount = 1000,
-                Currency = "usd"
+                Currency = "usd",
+                StatementDescriptor = "Testy McTest"
             };
 
             PayoutUpdateOptions = new StripePayoutUpdateOptions
@@ -46,6 +50,15 @@ namespace Stripe.Tests.Xunit
             Payout = service.Create(PayoutCreateOptions);
             PayoutUpdated = service.Update(Payout.Id, PayoutUpdateOptions);
             PayoutRetrieved = service.Get(Payout.Id);
+
+            PayoutListOptions = new StripePayoutListOptions
+            {
+                // Amount = Payout.Amount,
+                Created = Payout.Created,
+                ArrivalDate = Payout.ArrivalDate
+            };
+
+            PayoutList = service.List(PayoutListOptions).ToList();
         }
     }
 }
