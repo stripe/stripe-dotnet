@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Stripe.Infrastructure;
@@ -26,6 +27,11 @@ namespace Stripe
             return Post($"{Urls.BaseUrl}/payouts/{payoutId}", requestOptions, options);
         }
 
+        public virtual IEnumerable<StripePayout> List(StripePayoutListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            return GetEntityList($"{Urls.BaseUrl}/payouts", requestOptions, listOptions);
+        }
+
 
 
         // Async
@@ -42,6 +48,11 @@ namespace Stripe
         public virtual Task<StripePayout> UpdateAsync(string payoutId, StripePayoutUpdateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return PostAsync($"{Urls.BaseUrl}/payouts/{payoutId}", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Task<IEnumerable<StripePayout>> ListAsync(StripePayoutListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return GetEntityListAsync($"{Urls.BaseUrl}/payouts", requestOptions, cancellationToken, listOptions);
         }
     }
 }

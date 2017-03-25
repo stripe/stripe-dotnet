@@ -37,6 +37,12 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
+        public void created_has_the_right_statement_descriptor()
+        {
+            fixture.Payout.StatementDescriptor.Should().Be(fixture.PayoutCreateOptions.StatementDescriptor);
+        }
+
+        [Fact]
         public void get_is_not_null()
         {
             fixture.PayoutRetrieved.Should().NotBeNull();
@@ -46,6 +52,12 @@ namespace Stripe.Tests.Xunit
         public void updated_has_the_right_metadata()
         {
             fixture.PayoutUpdated.Metadata.Keys.Should().BeEquivalentTo(fixture.PayoutUpdateOptions.Metadata.Keys);
+        }
+
+        [Fact]
+        public void list_has_atleast_one_item()
+        {
+            fixture.PayoutList.Count.Should().BeGreaterOrEqualTo(1);
         }
     }
 }
