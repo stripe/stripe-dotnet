@@ -32,6 +32,11 @@ namespace Stripe
             return GetEntityList($"{Urls.BaseUrl}/payouts", requestOptions, listOptions);
         }
 
+        public virtual StripePayout Cancel(string payoutId, StripeRequestOptions requestOptions = null)
+        {
+            return Post($"{Urls.BaseUrl}/payouts/{payoutId}/cancel", requestOptions);
+        }
+
 
 
         // Async
@@ -53,6 +58,11 @@ namespace Stripe
         public virtual Task<IEnumerable<StripePayout>> ListAsync(StripePayoutListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return GetEntityListAsync($"{Urls.BaseUrl}/payouts", requestOptions, cancellationToken, listOptions);
+        }
+
+        public virtual Task<StripePayout> CancelAsync(string payoutId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return PostAsync($"{Urls.BaseUrl}/payouts/{payoutId}/cancel", requestOptions, cancellationToken);
         }
     }
 }
