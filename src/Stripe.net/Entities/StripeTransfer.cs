@@ -17,8 +17,10 @@ namespace Stripe
         public int Amount { get; set; }
 
         #region Expandable Application Fee
+        [Obsolete("This is going away with payouts.")]
         public string ApplicationFeeId { get; set; }
 
+        [Obsolete("This is going away with payouts.")]
         [JsonIgnore]
         public StripeApplicationFee ApplicationFee { get; set; }
 
@@ -43,9 +45,11 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Date { get; set; }
 
+        [Obsolete("This is going away with payouts.")]
         [JsonProperty("reversals")]
         public StripeList<StripeTransferReversal> StripeTransferReversalList { get; set; }
 
+        [Obsolete("This is going away with payouts.")]
         [JsonProperty("reversed")]
         public bool Reversed { get; set; }
 
@@ -70,12 +74,14 @@ namespace Stripe
             }
         }
 
+        [Obsolete("This is going away with payouts.")]
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("destination")]
         public string Destination { get; set; }
 
+        [Obsolete("This is going away with payouts.")]
         [JsonProperty("destination_payment")]
         public string DestinationPayment { get; set; }
 
@@ -94,6 +100,7 @@ namespace Stripe
         [JsonProperty("card")]
         public StripeCard Card { get; set; }
 
+        [Obsolete("This is going away with payouts.")]
         [JsonProperty("source_transaction")]
         public string SourceTransactionId { get; set; }
 
