@@ -48,6 +48,9 @@ namespace Stripe
         [JsonProperty("address_zip_check")]
         public string AddressZipCheck { get; set; }
 
+        [JsonProperty("available_payout_methods")]
+        public string[] AvailablePayoutMethods { get; set; }
+
         [JsonProperty("country")]
         public string Country { get; set; }
 
