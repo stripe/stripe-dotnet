@@ -24,7 +24,6 @@
 [OAuth](#stripe-connect) (see stripe connect)  
 [Plans](#plans)  
 [Radar](#radar)  
-[Recipients](#recipients)  
 [Refunds](#refunds)  
 [Sources](#sources)  
 [Subscriptions](#subscriptions)  
@@ -1092,65 +1091,6 @@ Some example code (in test mode) that will create and expand a review:
 ```
 
 **Read the docs for the radar review object to see the reasons a review is open or closed [here](https://stripe.com/docs/api#reviews)**
-
-Recipients
-----------
-
-**Note: recipients have been deprecated by Stripe - please use [Stripe Connnect](https://stripe.com/docs/connect) instead**
-
-### Creating a recipient
-
-```csharp
-	var myRecipient = new StripeRecipientCreateOptions();
-	myRecipient.Name = "Bacon Industries Limited";
-	myRecipient.Type = "individual";                                        // "corporation" is also valid here.
-	myRecipient.TaxId = "000000000";                                        // optional
-	myRecipient.Email = "bacon@example.com";                                // optional
-	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";  //optional
-
-	// create a token OR card via SourceToken or SourceCard (see above examples)
-
-	var recipientService = new StripeRecipientService();
-	StripeRecipient stripeRecipient = recipientService.Create(myRecipient);
-```
-
-### Updating a recipient
-
-```csharp
-	var myRecipient = new StripeRecipientUpdateOptions();
-	myRecipient.Name = "Bacon Industries Limited";
-	myRecipient.TaxId = "000000000";                                        // optional
-	myRecipient.Email = "bacon@example.com";                                // optional
-	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";  // optional
-
-	// update a token OR card via SourceToken or SourceCard (see above examples)
-
-	var recipientService = new StripeRecipientService();
-	StripeRecipient stripeRecipient = recipientService.Update(*recipientId*, myRecipient);
-```
-
-### Retrieving a recipient
-
-```csharp
-	var recipientService = new StripeRecipientService();
-	StripeRecipient stripeRecipient = recipientService.Get(*recipientId*);
-```
-
-### Deleting a recipient
-
-```csharp
-	var recipientService = new StripeRecipientService();
-	recipientService.Deleted(*recipientId*);
-```
-
-### List all recipients
-
-```csharp
-	var recipientService = new StripeRecipientService();
-	IEnumerable<StripeRecipient> response = recipientService.List(); // optional StripeRecipientListOptions
-```
-
-StripeRecipientListOptions supports a verified flag and [StripeListOptions](#stripelistoptions-paging) for paging
 
 Refunds
 -------
