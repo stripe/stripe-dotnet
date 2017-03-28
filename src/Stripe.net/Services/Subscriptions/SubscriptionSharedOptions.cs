@@ -10,7 +10,7 @@ namespace Stripe
         [JsonProperty("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
-        // mark this obsolete and use source
+        [Obsolete("Use Source or SourceCard")]
         [JsonProperty("card")]
         public StripeCreditCardOptions Card { get; set; }
 
@@ -26,12 +26,17 @@ namespace Stripe
         [JsonProperty("plan")]
         public string PlanId { get; set; }
 
-        // do this instead of using StripeCreditCardOptions
-        // [JsonProperty("source")]
-        // public string SourceTokenOrExistingSourceId { get; set; }
+        /// <summary>
+        /// If you use Source as a token, you cannot use SourceCard also.
+        /// </summary>
+        [JsonProperty("source")]
+        public string Source { get; set; }
 
-        // [JsonProperty("source")]
-        // public SourceCard SourceCard { get; set; }
+        /// <summary>
+        /// If you use SourceCard, you cannot use Source also.
+        /// </summary>
+        [JsonProperty("source")]
+        public SourceCard SourceCard { get; set; }
 
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
@@ -40,18 +45,7 @@ namespace Stripe
         public bool EndTrialNow { get; set; }
 
         [JsonProperty("trial_end")]
-        internal string TrialEndInternal
-        {
-            get
-            {
-                if (EndTrialNow)
-                    return "now";
-                else if (TrialEnd.HasValue)
-                    return EpochTime.ConvertDateTimeToEpoch(TrialEnd.Value).ToString();
-                else
-                    return null;
-            }
-        }
+        internal string TrialEndInternal => EndTrialNow ? "now" : TrialEnd?.ConvertDateTimeToEpoch().ToString();
 
         [JsonProperty("trial_period_days")]
         public int? TrialPeriodDays { get; set; }
