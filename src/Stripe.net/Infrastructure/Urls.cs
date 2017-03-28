@@ -40,6 +40,12 @@
 
         public static string ApplicationFees => BaseUrl + "/application_fees";
 
+        public static string Products => BaseUrl + "/products";
+
+        public static string Skus => BaseUrl + "/skus";
+
+        public static string Orders => BaseUrl + "/orders";
+
         public static string OAuthToken => BaseConnectUrl + "/oauth/token";
 
         public static string OAuthDeauthorize => BaseConnectUrl + "/oauth/deauthorize";

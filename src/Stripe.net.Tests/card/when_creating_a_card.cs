@@ -19,7 +19,7 @@ namespace Stripe.Tests
             });
             
             _stripeCardService = new StripeCardService();
-            _stripeCardCreateOptions = new StripeCardCreateOptions()
+            _stripeCardCreateOptions = new StripeCardCreateOptions
             {
                 SourceCard = new SourceCard()
                 {
