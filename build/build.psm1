@@ -4,7 +4,7 @@ function Invoke-Restore()
 	Write-Host $("RESTORING EVERYTHING...") -BackgroundColor DarkCyan
 	blankLines
 	
-	dotnet restore
+	dotnet restore .\src
 }
 
 function Invoke-Build
