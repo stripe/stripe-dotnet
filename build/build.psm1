@@ -30,13 +30,13 @@ function Invoke-Test
 	Write-Host $("RUNNING THE XUNIT TESTS...") -BackgroundColor DarkCyan
 	blankLines
 
-	dotnet test src\Stripe.Tests.Xunit
+	dotnet test src\Stripe.Tests.XUnit\Stripe.Tests.XUnit.csproj
 
 	blankLines
 	Write-Host $("RUNNING THE MSPEC TESTS...") -BackgroundColor DarkCyan
 	blankLines
 
-	dotnet test src\Stripe.net.Tests
+	dotnet test src\Stripe.net.Tests\Stripe.net.Tests.csproj
 }
 
 function Invoke-Pack
