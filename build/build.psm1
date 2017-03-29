@@ -20,7 +20,7 @@ function Invoke-Build
 	Write-Host $("BUILDING THE TESTS...") -BackgroundColor DarkCyan
 	blankLines
 
-	Write-Host $("dotnet build src\Stripe.net.Tests")
+	dotnet build src\Stripe.net.Tests
 	dotnet build src\Stripe.Tests.Xunit
 }
 
