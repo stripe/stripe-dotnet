@@ -54,33 +54,23 @@ If it has, please leave a comment or a [reaction](https://github.com/blog/2119-a
 Quick Start
 -----------
 
-It is recommended that you install Stripe.net via NuGet `nuget install Stripe.net`.
+Install Stripe.net via NuGet `nuget install Stripe.net`
 
-Next you will need to provide Stripe.net with your api key. There are 4 ways to do this:
+Provide Stripe.net with your api key - there are a couple of ways to do this:
 
-a) Add an AppSetting with your api key to your config (this is the easiest way and will work throughout the app on every request) - will not work on portable platforms
-
-```xml
-	<appSettings>
-	...
-		<add key="StripeApiKey" value="[your api key here]" />
-	...
-	</appSettings>
-```
-
-b) In your application initialization, call this method (this is a programmatic way, but you only have to do it once during startup)
+a) In your application initialization, call this function (you only have to do it once during startup):
 
 ```csharp
 	StripeConfiguration.SetApiKey("[your api key here]");
 ```
 
-c) In any of the service constructors, you can optionally pass the api key (will be assigned that apikey for the life of the service instance).
+b) pass the api key to any of the services when you create them:
 
 ```csharp
 	var planService = new StripePlanService("[your api key here]");
 ```
 
-d) In any of the service calls, you can pass a [StripeRequestOptions](#striperequestoptions) object with the apikey specified.
+c) pass the api key to a [StripeRequestOptions](#striperequestoptions):
 
 ```csharp
 	var planService = new StripePlanService();
