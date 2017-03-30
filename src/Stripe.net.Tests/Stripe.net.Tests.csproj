@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <VersionPrefix>0.0.0</VersionPrefix>
-    <TargetFramework>net45</TargetFramework>
+    <TargetFramework>net46</TargetFramework>
     <AssemblyName>Stripe.net.Tests</AssemblyName>
     <PackageId>Stripe.net.Tests</PackageId>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
@@ -14,17 +14,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
     <PackageReference Include="Machine.Specifications" Version="0.11.0" />
+    <PackageReference Include="Machine.Specifications.Runner.VisualStudio" Version="2.*" />
     <PackageReference Include="Machine.Specifications.Should" Version="0.11.0" />
-    <PackageReference Include="dotnet-test-mspec" Version="0.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.*" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
     <EmbeddedResource Include="fileuploads\test_data\*.png;infrastructure\test_data\*.json" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
     <Reference Include="System.Configuration" />
     <Reference Include="System.Collections" />
     <Reference Include="System.Core" />
