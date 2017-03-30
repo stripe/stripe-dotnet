@@ -4,7 +4,7 @@ function Invoke-Restore()
 	Write-Host $("RESTORING EVERYTHING...") -BackgroundColor DarkCyan
 	blankLines
 	
-	dotnet restore .\src
+	dotnet restore
 }
 
 function Invoke-Build
@@ -30,13 +30,13 @@ function Invoke-Test
 	Write-Host $("RUNNING THE XUNIT TESTS...") -BackgroundColor DarkCyan
 	blankLines
 
-	dotnet test src\Stripe.Tests.XUnit\Stripe.Tests.XUnit.csproj
+	dotnet test src\Stripe.Tests.XUnit
 
 	blankLines
 	Write-Host $("RUNNING THE MSPEC TESTS...") -BackgroundColor DarkCyan
 	blankLines
 
-	dotnet test src\Stripe.net.Tests\Stripe.net.Tests.csproj
+	dotnet test src\Stripe.net.Tests
 }
 
 function Invoke-Pack
