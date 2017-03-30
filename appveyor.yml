@@ -1,5 +1,5 @@
 version: 7.6.1.{build}
-image: Visual Studio 2015
+image: Visual Studio 2017
 
 environment:
   stripe_test_secret_key:
