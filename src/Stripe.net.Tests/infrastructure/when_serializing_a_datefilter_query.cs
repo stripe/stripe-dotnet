@@ -10,10 +10,10 @@ namespace Stripe.Tests
         private static sample_object _testObject;
         private static string _result;
 
-        // 1/1/2000 at 00:00:00 GMT
+        // 1/1/2000 at 00:05:00 GMT
         private static string UtcDateOne => "946702800";
 
-        // 1/1/2001 at 00:00:00 GMTB
+        // 1/1/2001 at 00:00:00 GMT
         private static string UtcDateTwo => "978307200";
 
         Establish context = () =>
