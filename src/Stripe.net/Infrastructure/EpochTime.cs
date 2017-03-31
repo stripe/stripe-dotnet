@@ -15,7 +15,7 @@ namespace Stripe.Infrastructure
         {
             if (datetime < _epochStartDateTime) return 0;
 
-            return Convert.ToInt64(datetime.Subtract(_epochStartDateTime).TotalSeconds);
+            return Convert.ToInt64((datetime.ToUniversalTime() - _epochStartDateTime).TotalSeconds);
         }
     }
 }

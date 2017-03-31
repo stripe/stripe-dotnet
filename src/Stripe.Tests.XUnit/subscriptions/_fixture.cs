@@ -15,6 +15,7 @@ namespace Stripe.Tests.Xunit
         {
             SubscriptionCreateOptions = new StripeSubscriptionCreateOptions
             {
+                TrialEnd = DateTime.Now.AddMinutes(5),
                 Items = new List<StripeSubscriptionItemOption>
                 {
                     new StripeSubscriptionItemOption { PlanId = Cache.GetPlan().Id, Quantity = 1 },
