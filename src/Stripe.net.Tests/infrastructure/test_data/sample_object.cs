@@ -15,12 +15,12 @@ namespace Stripe.Tests.test_data
                 { "A", "Value-A" },
                 { "B", "Value-B" }
             };
-            EqualDateFilter = new StripeDateFilter { EqualTo = DateTime.Parse("2000-01-01") };
-            LessThanDateFilter = new StripeDateFilter { LessThan = DateTime.Parse("2000-01-01") };
+            EqualDateFilter = new StripeDateFilter { EqualTo = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z") };
+            LessThanDateFilter = new StripeDateFilter { LessThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z") };
             ComplexDateFilter = new StripeDateFilter
             {
-                LessThan = DateTime.Parse("2100-01-01"),
-                GreaterThan = DateTime.Parse("2000-01-01")
+                LessThan = DateTime.Parse("Mon, 01 Jan 2001 00:00:00Z"),
+                GreaterThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z")
             };
         }
 
