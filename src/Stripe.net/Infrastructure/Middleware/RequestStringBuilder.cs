@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Net;
 using System.Reflection;
 using Newtonsoft.Json;
@@ -35,7 +36,7 @@ namespace Stripe.Infrastructure.Middleware
             }
 
             if (!parsedParameter)
-                ApplyParameterToRequestString(ref requestString, attribute.PropertyName, propertyValue.ToString());
+                ApplyParameterToRequestString(ref requestString, attribute.PropertyName, string.Format(CultureInfo.InvariantCulture, "{0}", propertyValue));
         }
 
         public static void ApplyParameterToRequestString(ref string requestString, string argument, string value)
