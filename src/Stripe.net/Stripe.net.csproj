@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.</Description>
+    <AssemblyTitle>Stripe.net</AssemblyTitle>
+    <VersionPrefix>7.6.1</VersionPrefix>
+    <Authors>Jayme Davis</Authors>
+    <TargetFrameworks>netstandard1.2;net45</TargetFrameworks>
+    <AssemblyName>Stripe.net</AssemblyName>
+    <PackageId>Stripe.net</PackageId>
+    <PackageTags>stripe;payment;credit;cards;money;gateway;paypal;braintree</PackageTags>
+    <PackageIconUrl>http://i.imgur.com/UuBwQ33.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/jaymedavis/stripe.net</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.github.com/jaymedavis/stripe.net/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/jaymedavis/stripe.net</RepositoryUrl>
+    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.2' ">$(PackageTargetFallback);netcoreapp1.0</PackageTargetFallback>
+    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.2' ">1.6.1</NetStandardImplicitPackageVersion>
+    <SignAssembly>True</SignAssembly>
+    <Version>7.7.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <DefineConstants>$(DefineConstants);NET45</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System" />
+  </ItemGroup>
+
+</Project>

@@ -18,7 +18,7 @@ namespace Stripe.Tests.Xunit
         {
             // create a file to attach to the additional owner as a verification document
             var fileService = new StripeFileUploadService(Cache.ApiKey);
-            var fileStream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Stripe.Tests.Xunit._resources.bumble.jpg");
+            var fileStream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Stripe.Tests.XUnit._resources.bumble.jpg");
             var file = fileService.Create("bumble.jpg", fileStream, StripeFilePurpose.IdentityDocument);
 
             AccountCreateOptions = new StripeAccountCreateOptions

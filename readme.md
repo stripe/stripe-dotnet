@@ -24,7 +24,6 @@
 [OAuth](#stripe-connect) (see stripe connect)  
 [Plans](#plans)  
 [Radar](#radar)  
-[Recipients](#recipients)  
 [Refunds](#refunds)  
 [Sources](#sources)  
 [Subscriptions](#subscriptions)  
@@ -55,33 +54,23 @@ If it has, please leave a comment or a [reaction](https://github.com/blog/2119-a
 Quick Start
 -----------
 
-It is recommended that you install Stripe.net via NuGet `nuget install Stripe.net`.
+Install Stripe.net via NuGet `nuget install Stripe.net`
 
-Next you will need to provide Stripe.net with your api key. There are 4 ways to do this:
+Provide Stripe.net with your api key - there are a couple of ways to do this:
 
-a) Add an AppSetting with your api key to your config (this is the easiest way and will work throughout the app on every request) - will not work on portable platforms
-
-```xml
-	<appSettings>
-	...
-		<add key="StripeApiKey" value="[your api key here]" />
-	...
-	</appSettings>
-```
-
-b) In your application initialization, call this method (this is a programmatic way, but you only have to do it once during startup)
+a) In your application initialization, call this function (you only have to do it once during startup):
 
 ```csharp
 	StripeConfiguration.SetApiKey("[your api key here]");
 ```
 
-c) In any of the service constructors, you can optionally pass the api key (will be assigned that apikey for the life of the service instance).
+b) pass the api key to any of the services when you create them:
 
 ```csharp
 	var planService = new StripePlanService("[your api key here]");
 ```
 
-d) In any of the service calls, you can pass a [StripeRequestOptions](#striperequestoptions) object with the apikey specified.
+c) pass the api key to a [StripeRequestOptions](#striperequestoptions):
 
 ```csharp
 	var planService = new StripePlanService();
@@ -1092,65 +1081,6 @@ Some example code (in test mode) that will create and expand a review:
 ```
 
 **Read the docs for the radar review object to see the reasons a review is open or closed [here](https://stripe.com/docs/api#reviews)**
-
-Recipients
-----------
-
-**Note: recipients have been deprecated by Stripe - please use [Stripe Connnect](https://stripe.com/docs/connect) instead**
-
-### Creating a recipient
-
-```csharp
-	var myRecipient = new StripeRecipientCreateOptions();
-	myRecipient.Name = "Bacon Industries Limited";
-	myRecipient.Type = "individual";                                        // "corporation" is also valid here.
-	myRecipient.TaxId = "000000000";                                        // optional
-	myRecipient.Email = "bacon@example.com";                                // optional
-	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";  //optional
-
-	// create a token OR card via SourceToken or SourceCard (see above examples)
-
-	var recipientService = new StripeRecipientService();
-	StripeRecipient stripeRecipient = recipientService.Create(myRecipient);
-```
-
-### Updating a recipient
-
-```csharp
-	var myRecipient = new StripeRecipientUpdateOptions();
-	myRecipient.Name = "Bacon Industries Limited";
-	myRecipient.TaxId = "000000000";                                        // optional
-	myRecipient.Email = "bacon@example.com";                                // optional
-	myRecipient.Description = "Bacon Industries Ltd. (bacon@example.com)";  // optional
-
-	// update a token OR card via SourceToken or SourceCard (see above examples)
-
-	var recipientService = new StripeRecipientService();
-	StripeRecipient stripeRecipient = recipientService.Update(*recipientId*, myRecipient);
-```
-
-### Retrieving a recipient
-
-```csharp
-	var recipientService = new StripeRecipientService();
-	StripeRecipient stripeRecipient = recipientService.Get(*recipientId*);
-```
-
-### Deleting a recipient
-
-```csharp
-	var recipientService = new StripeRecipientService();
-	recipientService.Deleted(*recipientId*);
-```
-
-### List all recipients
-
-```csharp
-	var recipientService = new StripeRecipientService();
-	IEnumerable<StripeRecipient> response = recipientService.List(); // optional StripeRecipientListOptions
-```
-
-StripeRecipientListOptions supports a verified flag and [StripeListOptions](#stripelistoptions-paging) for paging
 
 Refunds
 -------

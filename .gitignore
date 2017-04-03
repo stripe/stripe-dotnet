@@ -1,7 +1,6 @@
 # build
-[Dd]ebug/
-[Pp]ackages/
-[Rr]elease/
+[Bb]in/
+[Oo]bj/
 *.nupkg
 
 # user 
