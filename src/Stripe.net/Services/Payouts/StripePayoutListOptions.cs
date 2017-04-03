@@ -6,9 +6,6 @@ namespace Stripe
 {
     public class StripePayoutListOptions : StripeListOptions
     {
-        [JsonProperty("amount")]
-        public int? Amount { get; set; }
-
         public DateTime? ArrivalDate { get; set; }
 
         [JsonProperty("arrival_date")]
