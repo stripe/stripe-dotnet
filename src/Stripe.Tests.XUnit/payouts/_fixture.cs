@@ -53,7 +53,6 @@ namespace Stripe.Tests.Xunit
 
             PayoutListOptions = new StripePayoutListOptions
             {
-                // Amount = Payout.Amount,
                 Created = Payout.Created,
                 ArrivalDate = Payout.ArrivalDate
             };
