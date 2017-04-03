@@ -47,6 +47,9 @@ namespace Stripe
         [JsonProperty("flow")]
         public string Flow { get; set; }
 
+        [JsonProperty("ideal")]
+        public StripeIdeal Ideal { get; set; }
+
         [JsonProperty("livemode")]
         public bool LiveMode { get; set; }
 
