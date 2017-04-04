@@ -32,6 +32,12 @@ namespace Stripe
         [JsonProperty("flow")]
         public string Flow { get; set; }
 
+        [JsonProperty("ideal[bank]")]
+        public string IdealBank { get; set; }
+
+        [JsonProperty("ideal[statement_descriptor]")]
+        public string IdealStatementDescriptor { get; set; }
+
         /// <summary>
         /// A set of key/value pairs that you can attach to a source object. It can be useful for storing additional information about the source in a structured format.
         /// </summary>
