@@ -5,6 +5,9 @@ namespace Stripe.Tests
 {
     public static class Cache
     {
+        public static string RecipientApiKey => Environment.GetEnvironmentVariable("STRIPE_RECIPIENT_KEY");
+
+
         public static StripeAccountCreateOptions ManagedAccountWithCardOptions { get; set; }
         public static StripeAccountCreateOptions ManagedAccountWithBankAccountOptions { get; set; }
 

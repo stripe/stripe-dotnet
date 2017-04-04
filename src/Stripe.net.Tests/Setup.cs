@@ -7,17 +7,14 @@ namespace Stripe.Tests
     {
         void IAssemblyContext.OnAssemblyStart()
         {
-            var apiKey = "stripe_test_secret_key";
+            var envKey = Environment.GetEnvironmentVariable("STRIPE_TEST_KEY");
 
-            var envKey = Environment.GetEnvironmentVariable("stripe_test_secret_key");
-            if (!string.IsNullOrEmpty(envKey)) apiKey = envKey;
-
-            StripeConfiguration.SetApiKey(apiKey);
+            StripeConfiguration.SetApiKey(envKey);
         }
 
         void IAssemblyContext.OnAssemblyComplete()
         {
-            // great, we're done!
+            // great, we're done! nothing to cleanup.
         }
     }
 }
