@@ -19,5 +19,6 @@ namespace Stripe.Tests.Xunit
         public static Dictionary<string, object> Items { get; set; }
 
         public static string ApiKey => Environment.GetEnvironmentVariable("STRIPE_TEST_KEY");
+        public static string RecipientApiKey => Environment.GetEnvironmentVariable("STRIPE_TEST_KEY_RECIPIENT");
     }
 }

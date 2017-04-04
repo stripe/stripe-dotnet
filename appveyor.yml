@@ -4,7 +4,7 @@ image: Visual Studio 2017
 environment:
   STRIPE_TEST_KEY:
     secure: +p/EWA8+0B64k7a88nb6ZiSTcv6TIukyhQQU2Ljf7jNVtwVZXhJtNf5LdemV7EuY
-  STRIPE_RECIPIENT_TEST_KEY:
+  STRIPE_TEST_KEY_RECIPIENT:
     secure: +eN5/SMeEbaqOR5VeM62dIJ8CGEzb74+3+feLb60jnYhQJ5enX2IwdFyfIy6/5UZ
 
 deploy:

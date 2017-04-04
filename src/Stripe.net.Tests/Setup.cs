@@ -8,7 +8,7 @@ namespace Stripe.Tests
         void IAssemblyContext.OnAssemblyStart()
         {
             // using this temporarily while the main test account is deleting test data
-            var envKey = Environment.GetEnvironmentVariable("STRIPE_RECIPIENT_KEY");
+            var envKey = Environment.GetEnvironmentVariable("STRIPE_TEST_KEY_RECIPIENT");
 
             //var envKey = Environment.GetEnvironmentVariable("STRIPE_TEST_KEY");
 
