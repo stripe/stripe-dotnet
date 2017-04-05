@@ -9,5 +9,8 @@ namespace Stripe
 
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
+
+        [JsonProperty("include_all")]
+        public bool IncludeAll { get; set; }
     }
 }

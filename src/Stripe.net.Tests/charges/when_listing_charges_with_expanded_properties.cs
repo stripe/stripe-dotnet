@@ -6,7 +6,7 @@ namespace Stripe.Tests
 {
     public class when_listing_charges_with_expanded_properties
     {
-        private static List<StripeCharge> _stripeChargeList;
+        private static StripeList<StripeCharge> _stripeChargeList;
         private static StripeChargeService _stripeChargeService;
         private static StripeChargeListOptions _listOptions;
 
@@ -31,18 +31,18 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeChargeList = _stripeChargeService.List(_listOptions).ToList();
+            _stripeChargeList = _stripeChargeService.List(_listOptions);
 
         It should_have_customer_on_each_item = () =>
-            _stripeChargeList.ShouldEachConformTo(c => c.Customer != null);
+            _stripeChargeList.Data.ShouldEachConformTo(c => c.Customer != null);
 
         It should_have_customer_id_on_each_item = () =>
-            _stripeChargeList.ShouldEachConformTo(c => c.CustomerId != null);
+            _stripeChargeList.Data.ShouldEachConformTo(c => c.CustomerId != null);
 
         It should_have_balance_transaction_on_each_item = () =>
-            _stripeChargeList.ShouldEachConformTo(c => c.BalanceTransaction != null);
+            _stripeChargeList.Data.ShouldEachConformTo(c => c.BalanceTransaction != null);
         
         It should_have_balance_transaction_id_on_each_item = () =>
-            _stripeChargeList.ShouldEachConformTo(c => c.BalanceTransactionId != null);
+            _stripeChargeList.Data.ShouldEachConformTo(c => c.BalanceTransactionId != null);
     }
 }
