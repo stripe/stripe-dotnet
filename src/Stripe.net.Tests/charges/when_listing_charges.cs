@@ -6,7 +6,7 @@ namespace Stripe.Tests
 {
     public class when_listing_charges
     {
-        private static List<StripeCharge> _stripeChargeList;
+        private static StripeList<StripeCharge> _stripeChargeList;
         private static StripeChargeService _stripeChargeService;
 
         Establish context = () =>
@@ -20,9 +20,9 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeChargeList = _stripeChargeService.List().ToList();
+            _stripeChargeList = _stripeChargeService.List(new StripeChargeListOptions { IncludeTotalCount = true });
 
         It should_have_atleast_4_entries = () =>
-            _stripeChargeList.Count.ShouldBeGreaterThanOrEqualTo(4);
+            _stripeChargeList.TotalCount.ShouldBeGreaterThanOrEqualTo(4);
     }
 }

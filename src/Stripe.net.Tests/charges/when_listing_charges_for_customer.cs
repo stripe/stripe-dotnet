@@ -6,7 +6,7 @@ namespace Stripe.Tests
 {
     public class when_listing_charges_for_customer
     {
-        private static List<StripeCharge> _stripeChargeList;
+        private static StripeList<StripeCharge> _stripeChargeList;
         private static StripeChargeService _stripeChargeService;
         private static StripeCustomer _stripeCustomer;
 
@@ -26,9 +26,13 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeChargeList = _stripeChargeService.List(new StripeChargeListOptions { CustomerId = _stripeCustomer.Id }).ToList();
+            _stripeChargeList = _stripeChargeService.List(new StripeChargeListOptions
+            {
+                CustomerId = _stripeCustomer.Id,
+                IncludeTotalCount = true
+            });
 
         It should_have_only_2_entries = () =>
-            _stripeChargeList.Count.ShouldEqual(2);
+            _stripeChargeList.TotalCount.ShouldEqual(2);
     }
 }

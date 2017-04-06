@@ -9,9 +9,9 @@ namespace Stripe.Tests
         private static StripeCustomer _stripeCustomer;
         private static StripeChargeService _stripeChargeService;
 
-        private static List<StripeCharge> _stripeChargeListFirstPage;
-        private static List<StripeCharge> _stripeChargeListSecondPage;
-        private static List<StripeCharge> _stripeChargeListFirstPageFromSecond;
+        private static StripeList<StripeCharge> _stripeChargeListFirstPage;
+        private static StripeList<StripeCharge> _stripeChargeListSecondPage;
+        private static StripeList<StripeCharge> _stripeChargeListFirstPageFromSecond;
 
         private static List<string> _chargeIds;
 
@@ -39,36 +39,36 @@ namespace Stripe.Tests
             {
                 Limit = 2,
                 CustomerId = _stripeCustomer.Id
-            }).ToList();
+            });
 
             _stripeChargeListSecondPage = _stripeChargeService.List(new StripeChargeListOptions
             {
                 Limit = 2,
                 CustomerId = _stripeCustomer.Id,
-                StartingAfter = _stripeChargeListFirstPage.Last().Id
-            }).ToList();
+                StartingAfter = _stripeChargeListFirstPage.Data.Last().Id
+            });
 
             _stripeChargeListFirstPageFromSecond = _stripeChargeService.List(new StripeChargeListOptions
             {
                 Limit = 2,
                 CustomerId = _stripeCustomer.Id,
-                EndingBefore = _stripeChargeListSecondPage.First().Id
-            }).ToList();
+                EndingBefore = _stripeChargeListSecondPage.Data.First().Id
+            });
         };
 
         It should_only_have_2_entries_on_first_page = () =>
-            _stripeChargeListFirstPage.Count.ShouldEqual(2);
+            _stripeChargeListFirstPage.Data.Count.ShouldEqual(2);
 
         It should_only_have_2_entries_on_second_page = () =>
-            _stripeChargeListSecondPage.Count.ShouldEqual(2);
+            _stripeChargeListSecondPage.Data.Count.ShouldEqual(2);
 
         It should_only_have_2_entries_on_first_page_from_second = () =>
-            _stripeChargeListFirstPageFromSecond.Count.ShouldEqual(2);
+            _stripeChargeListFirstPageFromSecond.Data.Count.ShouldEqual(2);
 
         It should_start_second_page_from_third_charge = () =>
-            _stripeChargeListSecondPage.First().Id.ShouldEqual(_chargeIds[2]);
+            _stripeChargeListSecondPage.Data.First().Id.ShouldEqual(_chargeIds[2]);
 
         It should_start_first_page_from_second_from_first_charge = () =>
-            _stripeChargeListFirstPageFromSecond.First().Id.ShouldEqual(_chargeIds[0]);
+            _stripeChargeListFirstPageFromSecond.Data.First().Id.ShouldEqual(_chargeIds[0]);
     }
 }
