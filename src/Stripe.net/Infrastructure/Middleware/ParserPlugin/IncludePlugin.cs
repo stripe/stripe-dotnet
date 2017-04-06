@@ -9,7 +9,7 @@ namespace Stripe.Infrastructure.Middleware
     {
         public bool Parse(ref string requestString, JsonPropertyAttribute attribute, PropertyInfo property, object propertyValue, object propertyParent)
         {
-            if (!attribute.PropertyName.Contains("include_all")) return false;
+            if (!attribute.PropertyName.Contains("include_total_count")) return false;
 
             var doInclude = (bool) propertyValue;
 
