@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.</Description>
     <AssemblyTitle>Stripe.net</AssemblyTitle>
-    <VersionPrefix>7.6.1</VersionPrefix>
+    <VersionPrefix>7.8.0</VersionPrefix>
     <Authors>Jayme Davis</Authors>
     <TargetFrameworks>netstandard1.2;net45</TargetFrameworks>
     <AssemblyName>Stripe.net</AssemblyName>
@@ -18,7 +18,7 @@
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.2' ">$(PackageTargetFallback);netcoreapp1.0</PackageTargetFallback>
     <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.2' ">1.6.1</NetStandardImplicitPackageVersion>
     <SignAssembly>True</SignAssembly>
-    <Version>7.7.0</Version>
+    <Version>7.8.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
