@@ -32,6 +32,8 @@ namespace Stripe
             var result = JsonConvert.DeserializeObject<T>(jsonToParse);
             applyStripeResponse(json, stripeResponse, result);
 
+            // if necessary, we might need to apply the stripe response to nested properties for StripeList<T>
+
             return result;
         }
 
