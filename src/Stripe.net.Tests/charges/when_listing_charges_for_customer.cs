@@ -26,7 +26,11 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeChargeList = _stripeChargeService.List(new StripeChargeListOptions { CustomerId = _stripeCustomer.Id });
+            _stripeChargeList = _stripeChargeService.List(new StripeChargeListOptions
+            {
+                CustomerId = _stripeCustomer.Id,
+                IncludeTotalCount = true
+            });
 
         It should_have_only_2_entries = () =>
             _stripeChargeList.TotalCount.ShouldEqual(2);

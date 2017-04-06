@@ -11,6 +11,6 @@ namespace Stripe
         public string CustomerId { get; set; }
 
         [JsonProperty("include_total_count")]
-        internal bool IncludeTotalCount => true;
+        public bool IncludeTotalCount { get; set; } = true;
     }
 }

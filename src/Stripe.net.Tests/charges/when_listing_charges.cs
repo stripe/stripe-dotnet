@@ -20,7 +20,7 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeChargeList = _stripeChargeService.List();
+            _stripeChargeList = _stripeChargeService.List(new StripeChargeListOptions { IncludeTotalCount = true });
 
         It should_have_atleast_4_entries = () =>
             _stripeChargeList.TotalCount.ShouldBeGreaterThanOrEqualTo(4);
