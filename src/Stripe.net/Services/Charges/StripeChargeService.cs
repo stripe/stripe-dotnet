@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Stripe.Infrastructure;
 
@@ -44,15 +42,6 @@ namespace Stripe
         {
             return Mapper<StripeCharge>.MapFromJson(
                 Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
-                SetupRequestOptions(requestOptions))
-            );
-        }
-
-        [Obsolete("Use List")]
-        public virtual IEnumerable<StripeCharge> LegacyList(StripeChargeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
-        {
-            return Mapper<StripeCharge>.MapCollectionFromJson(
-                Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Charges, true),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -105,16 +94,6 @@ namespace Stripe
         {
             return Mapper<StripeCharge>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
-                SetupRequestOptions(requestOptions),
-                cancellationToken)
-            );
-        }
-
-        [Obsolete("Use List")]
-        public virtual async Task<IEnumerable<StripeCharge>> LegacyListAsync(StripeChargeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return Mapper<StripeCharge>.MapCollectionFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Charges, true),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
             );
