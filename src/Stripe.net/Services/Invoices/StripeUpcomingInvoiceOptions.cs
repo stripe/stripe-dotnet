@@ -50,6 +50,8 @@ namespace Stripe
             }
         }
 
+        // this will actually send subscription_items. this is to flag it for the middleware
+        // to process it as a plugin
         [JsonProperty("subscription_items_array_invoice")]
         public List<StripeInvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
     }
