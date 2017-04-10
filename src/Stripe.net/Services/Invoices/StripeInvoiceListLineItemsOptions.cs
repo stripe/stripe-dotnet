@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -15,5 +16,8 @@ namespace Stripe
 
         [JsonProperty("subscription_plan")]
         public string SubscriptionPlanId { get; set; }
+
+        [JsonProperty("subscription_items_array_invoice")]
+        public List<StripeInvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
     }
 }

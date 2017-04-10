@@ -10,7 +10,7 @@ namespace Stripe.Infrastructure.Middleware
     {
         public bool Parse(ref string requestString, JsonPropertyAttribute attribute, PropertyInfo property, object propertyValue, object propertyParent)
         {
-            if (attribute.PropertyName != "subscription_items_updated") return false;
+            if (attribute.PropertyName != "subscription_items_array_updated") return false;
 
             var items = ((List<StripeSubscriptionItemUpdateOption>) property.GetValue(propertyParent, null));
 
