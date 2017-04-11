@@ -4,6 +4,7 @@ using Xunit;
 namespace Stripe.Tests.Xunit
 {
     /// <summary>
+    /// https://dashboard.stripe.com/account/details
     /// this test requires the account to be activated first. it was activated by using the routing number 111904943
     /// and the bank account number 000123456789. also, automatic transfers disabled https://dashboard.stripe.com/account/transfers
     /// </summary>

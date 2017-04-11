@@ -34,8 +34,7 @@ namespace Stripe.Tests.Xunit
             PayoutCreateOptions = new StripePayoutCreateOptions
             {
                 Amount = 1000,
-                Currency = "usd",
-                StatementDescriptor = "Testy McTest"
+                Currency = "usd"
             };
 
             PayoutUpdateOptions = new StripePayoutUpdateOptions

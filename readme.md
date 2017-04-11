@@ -22,6 +22,7 @@
 [Invoices](#invoices)  
 [Invoice Items](#invoice-items)  
 [OAuth](#stripe-connect) (see stripe connect)  
+[Payouts](#payouts) (needs documentation)  
 [Plans](#plans)  
 [Radar](#radar)  
 [Refunds](#refunds)  
