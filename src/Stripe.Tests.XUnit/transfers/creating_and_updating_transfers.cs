@@ -21,7 +21,7 @@ namespace Stripe.Tests.Xunit
         [Fact]
         public void created_has_right_id()
         {
-            fixture.Transfer.Id.Should().StartWith("tf_");
+            fixture.Transfer.Id.Should().StartWith("tr_");
         }
 
         [Fact]
