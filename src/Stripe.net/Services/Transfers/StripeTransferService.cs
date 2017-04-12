@@ -5,99 +5,54 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeTransferService : StripeService
+    public class StripeTransferService : StripeBasicService<StripeTransfer>
     {
         public StripeTransferService(string apiKey = null) : base(apiKey) { }
 
         public bool ExpandBalanceTransaction { get; set; }
 
         //Sync
-        public virtual StripeTransfer Create(StripeTransferCreateOptions createOptions, StripeRequestOptions requestOptions = null)
+        public virtual StripeTransfer Create(StripeTransferCreateOptions options, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeTransfer>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(createOptions, Urls.Transfers),
-                SetupRequestOptions(requestOptions))
-            );
+            return Post($"{Urls.BaseUrl}/transfers", requestOptions, options);
         }
 
-        public virtual StripeTransfer Update(string transferId, StripeTransferUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        public virtual StripeTransfer Get(string payoutId, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeTransfer>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Transfers}/{transferId}"),
-                    SetupRequestOptions(requestOptions))
-            );
+            return GetEntity($"{Urls.BaseUrl}/transfers/{payoutId}", requestOptions);
         }
 
-        public virtual StripeTransfer Get(string transferId, StripeRequestOptions requestOptions = null)
+        public virtual StripeTransfer Update(string transferId, StripeTransferUpdateOptions options, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeTransfer>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Transfers}/{transferId}"),
-                SetupRequestOptions(requestOptions))
-            );
+            return Post($"{Urls.BaseUrl}/transfers/{transferId}", requestOptions, options);
         }
-
-        //public virtual StripeTransfer Cancel(string transferId, StripeRequestOptions requestOptions = null)
-        //{
-        //    return Mapper<StripeTransfer>.MapFromJson(
-        //        Requestor.PostString(this.ApplyAllParameters(null, $"{Urls.Transfers}/{transferId}/cancel"),
-        //        SetupRequestOptions(requestOptions))
-        //    );
-        //}
 
         public virtual IEnumerable<StripeTransfer> List(StripeTransferListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeTransfer>.MapCollectionFromJson(
-                Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Transfers, true),
-                SetupRequestOptions(requestOptions))
-            );
+            return GetEntityList($"{Urls.BaseUrl}/transfers", requestOptions, listOptions);
         }
 
 
 
-        //Async
-        public virtual async Task<StripeTransfer> CreateAsync(StripeTransferCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        // Async
+        public virtual Task<StripeTransfer> CreateAsync(StripeTransferCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeTransfer>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.Transfers, false),
-                SetupRequestOptions(requestOptions),
-                cancellationToken)
-            );
+            return PostAsync($"{Urls.BaseUrl}/transfers", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<StripeTransfer> UpdateAsync(string transferId, StripeTransferUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeTransfer> GetAsync(string payoutId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeTransfer>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Transfers}/{transferId}"),
-                    SetupRequestOptions(requestOptions),
-                    cancellationToken)
-            );
+            return GetEntityAsync($"{Urls.BaseUrl}/transfers/{payoutId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<StripeTransfer> GetAsync(string transferId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeTransfer> UpdateAsync(string transferId, StripeTransferUpdateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeTransfer>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Transfers}/{transferId}", false),
-                SetupRequestOptions(requestOptions),
-                cancellationToken)
-            );
+            return PostAsync($"{Urls.BaseUrl}/transfers/{transferId}", requestOptions, cancellationToken, options);
         }
 
-        //public virtual async Task<StripeTransfer> CancelAsync(string transferId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        //{
-        //    return Mapper<StripeTransfer>.MapFromJson(
-        //        await Requestor.PostStringAsync(this.ApplyAllParameters(null, $"{Urls.Transfers}/{transferId}/cancel", false),
-        //        SetupRequestOptions(requestOptions),
-        //        cancellationToken)
-        //    );
-        //}
-
-        public virtual async Task<IEnumerable<StripeTransfer>> ListAsync(StripeTransferListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IEnumerable<StripeTransfer>> ListAsync(StripeTransferListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeTransfer>.MapCollectionFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Transfers, true),
-                SetupRequestOptions(requestOptions),
-                cancellationToken)
-            );
+            return GetEntityListAsync($"{Urls.BaseUrl}/transfers", requestOptions, cancellationToken, listOptions);
         }
     }
 }
