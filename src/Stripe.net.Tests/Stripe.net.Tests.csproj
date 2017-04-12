@@ -21,7 +21,14 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
-    <EmbeddedResource Include="fileuploads\test_data\*.png;infrastructure\test_data\*.json" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <EmbeddedResource Include="fileuploads\test_data\logo.png" />
+    <EmbeddedResource Include="infrastructure\test_data\card.json" />
+    <EmbeddedResource Include="infrastructure\test_data\charge.json" />
+    <EmbeddedResource Include="infrastructure\test_data\discount.json" />
+    <EmbeddedResource Include="infrastructure\test_data\dispute.json" />
+    <EmbeddedResource Include="infrastructure\test_data\invoice.json" />
+    <EmbeddedResource Include="infrastructure\test_data\invoice_item.json" />
+    <EmbeddedResource Include="infrastructure\test_data\subscription.json" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
