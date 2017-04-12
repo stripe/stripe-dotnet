@@ -372,18 +372,6 @@ namespace Stripe
         public const string TransferCreated = "transfer.created";
 
         /// <summary>
-        /// Occurs whenever Stripe attempts to send a transfer and that transfer fails.
-        /// </summary>
-        [Obsolete("This is going away with payouts.")]
-        public const string TransferFailed = "transfer.failed";
-
-        /// <summary>
-        /// Occurs whenever a sent transfer is expected to be available in the destination bank account. If the transfer failed, a transfer.failed webhook will additionally be sent at a later time. Note to Connect users: this event is only created for transfers from your connected Stripe accounts to their bank accounts, not for transfers to the connected accounts themselves.
-        /// </summary>
-        [Obsolete("This is going away with payouts.")]
-        public const string TransferPaid = "transfer.paid";
-
-        /// <summary>
         /// Occurs whenever a transfer is reversed, including partial reversals.
         /// </summary>
         public const string TransferReversed = "transfer.reversed";
