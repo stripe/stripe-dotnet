@@ -36,8 +36,6 @@
 
         public static string Subscriptions => BaseUrl + "/subscriptions";
 
-        public static string Transfers => BaseUrl + "/transfers";
-
         public static string ApplicationFees => BaseUrl + "/application_fees";
 
         public static string OAuthToken => BaseConnectUrl + "/oauth/token";
