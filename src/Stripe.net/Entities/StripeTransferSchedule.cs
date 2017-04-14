@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeTransferSchedule : StripeEntity
+    public class StripePayoutSchedule : StripeEntity
     {
         [JsonProperty("delay_days")]
         public int DelayDays { get; set; }

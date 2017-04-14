@@ -1,4 +1,6 @@
-﻿namespace Stripe
+﻿using System;
+
+namespace Stripe
 {
     public static class StripeEvents
     {
@@ -267,6 +269,13 @@
         /// </summary>
         public const string OrderReturnCreated = "order_return.created";
 
+
+        public const string PayoutCreated = "payout.created";
+        public const string PayoutFailed = "payout.failed";
+        public const string PayoutReversed = "payout.reversed";
+        public const string PayoutPaid = "payout.paid";
+        public const string PayoutUpdated = "payout.updated";
+
         /// <summary>
         /// Occurs whenever a plan is created.
         /// </summary>
@@ -361,16 +370,6 @@
         /// Occurs whenever a new transfer is created.
         /// </summary>
         public const string TransferCreated = "transfer.created";
-
-        /// <summary>
-        /// Occurs whenever Stripe attempts to send a transfer and that transfer fails.
-        /// </summary>
-        public const string TransferFailed = "transfer.failed";
-
-        /// <summary>
-        /// Occurs whenever a sent transfer is expected to be available in the destination bank account. If the transfer failed, a transfer.failed webhook will additionally be sent at a later time. Note to Connect users: this event is only created for transfers from your connected Stripe accounts to their bank accounts, not for transfers to the connected accounts themselves.
-        /// </summary>
-        public const string TransferPaid = "transfer.paid";
 
         /// <summary>
         /// Occurs whenever a transfer is reversed, including partial reversals.

@@ -22,6 +22,7 @@
 [Invoices](#invoices)  
 [Invoice Items](#invoice-items)  
 [OAuth](#stripe-connect) (see stripe connect)  
+[Payouts](#payouts)  
 [Plans](#plans)  
 [Radar](#radar)  
 [Refunds](#refunds)  
@@ -1001,6 +1002,43 @@ Various calls allow attaching metadata to them such as [Creating a Customer](#cr
 
 To delete metadata you can call the update operation and pass an empty string (`String.Empty`) or `null` for each value you want to delete.
 
+Payouts
+-------
+
+### Creating a payout
+
+This will create a payout to the account you setup when activating your Stripe account.
+
+```csharp
+	var payout = new StripePayoutService(*apikey*).Create(
+		new StripePayoutCreateOptions
+		{
+			Amount = 1000,
+			Currency = "usd"
+		}
+	);
+```
+
+### Retrieving a payout
+
+```csharp
+	var payout = new StripePayoutService(*apiKey*).Get(*payoutId*);
+```
+
+### List all payouts
+
+```csharp
+	var payouts = new StripePayoutService(*apiKey*).List(
+		new StripePayoutListOptions
+		{
+			Created = DateTime.SomeDay,
+			ArrivalDate = DateTime.SomeDay
+		};
+	);
+```
+
+[StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering (on both the created and date fields)
+
 Plans
 -----
 
@@ -1321,16 +1359,15 @@ tokens on your server.
 
 Transfers
 ---------
+Transfers are for sending funds to another account inside stripe.
 
-### Creating a transfer to a recipient
+### Creating a transfer
 
 ```csharp
 	var myTransfer = new StripeTransferCreateOptions();
 	myTransfer.Amount = 100;
 	myTransfer.Currency = "usd";
-	myTransfer.Recipient = "*recipientId*";          // can also be "self" if you want to send to your own account
-	myTransfer.Description = "Sales Week #42";       // optional
-	myTransfer.StatementDescription = "Commissions"; // optional
+	myTransfer.Destination = *someAccountId*;
 
 	var transferService = new StripeTransferService();
 	StripeTransfer stripeTransfer = transferService.Create(myTransfer);
@@ -1357,7 +1394,7 @@ Transfers
 	IEnumerable<StripeTransfer> response = transferService.List(); // optional StripeTransferListOptions
 ```
 
-StripeTransferListOptions supports a RecipientId, Status ('pending', 'paid' or 'failed'), [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering (on both the created and date fields)
+[StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering (on both the created and date fields)
 
 StripeDateFilter (date filtering)
 ---------------------------------
