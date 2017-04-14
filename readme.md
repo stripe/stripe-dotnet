@@ -769,11 +769,17 @@ Disputes
 Events
 ------
 
-Stripe sends Events (via webhooks) whenever an associated action occurs. The list of events Stripe sends is documented here: https://stripe.com/docs/api#event_types
+Stripe sends Events (webhooks) whenever an associated action occurs. The list of events Stripe sends is documented here: https://stripe.com/docs/api#event_types. 
+
+[Configure your webhook urls](https://dashboard.stripe.com/account/webhooks) first, so Stripe knows where to send the data.
 
 ### Receiving events from Stripe
 
-1) In your application, create a handler that looks something like the below:
+a) Use a Controller (recommended)
+
+[See here](https://github.com/jaymedavis/stripe.net/issues/818#issuecomment-293068650)
+
+b) Create a handler that looks something like the below:
 
 ```csharp
 	namespace TheBestApplicationEverCreated
@@ -801,14 +807,11 @@ Stripe sends Events (via webhooks) whenever an associated action occurs. The lis
 		}
 	}
 ```
-
-2) Create a StripeHandler.ashx in the root of your website (or wherever) that looks like this:
+c) Create a StripeHandler.ashx in the root of your website (or wherever) that looks like this:
 
 ```xml
 	<%@ WebHandler Language="C#" Class="StripeHandler" CodeBehind="StripeHandler.cs" %>
 ```
-
-3) Login to Stripe and go to Account Settings, webhooks - from here, you can setup the url that points to your StripeHandler.ashx for testing.
 
 Whenever an Event is received, StripeEventUtility.ParseEvent(json) will convert the response into a *StripeEvent* object.
 
