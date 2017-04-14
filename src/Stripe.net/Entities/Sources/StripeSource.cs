@@ -77,6 +77,12 @@ namespace Stripe
         [JsonProperty("redirect")]
         public StripeRedirect Redirect { get; set; }
 
+        [JsonProperty("sepa_debit")]
+        public StripeSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("sofort")]
+        public StripeSofort Sofort { get; set; }
+
         /// <summary>
         /// The status of the charge, one of canceled, chargeable, consumed, failed, or pending. Only chargeable source objects can be used to create a charge.
         /// </summary>
