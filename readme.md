@@ -777,7 +777,7 @@ Stripe sends Events (webhooks) whenever an associated action occurs. The list of
 
 a) Use a Controller (recommended)
 
-[Example code](https://github.com/jaymedavis/stripe.net/issues/818#issuecomment-293068650)
+[See here](https://github.com/jaymedavis/stripe.net/issues/818#issuecomment-293068650)
 
 b) Create a handler that looks something like the below:
 
