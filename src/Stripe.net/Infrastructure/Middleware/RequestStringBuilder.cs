@@ -22,7 +22,8 @@ namespace Stripe.Infrastructure.Middleware
                 new DictionaryPlugin(),
                 new IncludePlugin(),
                 new SubscriptionItemPlugin(),
-                new SubscriptionItemUpdatedPlugin()
+                new SubscriptionItemUpdatedPlugin(),
+                new InvoiceSubscriptionItemPlugin()
             };
         }
 

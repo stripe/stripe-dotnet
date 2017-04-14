@@ -5,13 +5,13 @@ using Newtonsoft.Json;
 
 namespace Stripe.Infrastructure.Middleware
 {
-    internal class SubscriptionItemPlugin : IParserPlugin
+    internal class InvoiceSubscriptionItemPlugin : IParserPlugin
     {
         public bool Parse(ref string requestString, JsonPropertyAttribute attribute, PropertyInfo property, object propertyValue, object propertyParent)
         {
-            if (attribute.PropertyName != "subscription_items_array") return false;
+            if (attribute.PropertyName != "subscription_items_array_invoice") return false;
 
-            var items = ((List<StripeSubscriptionItemOption>) property.GetValue(propertyParent, null));
+            var items = ((List<StripeInvoiceSubscriptionItemOptions>) property.GetValue(propertyParent, null));
 
             var itemIndex = 0;
             foreach (var item in items)
@@ -28,7 +28,7 @@ namespace Stripe.Infrastructure.Middleware
                     if (attr == null) continue;
 
                     RequestStringBuilder.ApplyParameterToRequestString(ref requestString,
-                        $"items[{itemIndex}][{attr.PropertyName}]", value.ToString());
+                        $"subscription_items[{itemIndex}][{attr.PropertyName}]", value.ToString());
                 }
 
                 itemIndex++;

@@ -17,7 +17,7 @@ namespace Stripe
 
         // this will actually send items. this is to flag it for the middleware
         // to process it as a plugin
-        [JsonProperty("subscription_items_updated")]
+        [JsonProperty("subscription_items_array_updated")]
         public List<StripeSubscriptionItemUpdateOption> Items { get; set; }
     }
 }
