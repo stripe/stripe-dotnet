@@ -38,6 +38,15 @@ namespace Stripe
         [JsonProperty("ideal[statement_descriptor]")]
         public string IdealStatementDescriptor { get; set; }
 
+        [JsonProperty("sepa_debit[iban]")]
+        public string SepaDebitIban { get; set; }
+
+        [JsonProperty("sofort[country]")]
+        public string SofortCountry { get; set; }
+
+        [JsonProperty("sofort[statement_descriptor]")]
+        public string SofortStatementDescriptor { get; set; }
+
         /// <summary>
         /// A set of key/value pairs that you can attach to a source object. It can be useful for storing additional information about the source in a structured format.
         /// </summary>
