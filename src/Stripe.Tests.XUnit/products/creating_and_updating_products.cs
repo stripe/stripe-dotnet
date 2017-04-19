@@ -47,5 +47,11 @@ namespace Stripe.Tests.Xunit
         {
             fixture.ProductList.Should().NotBeNull();
         }
+
+        [Fact]
+        public void list_has_both_products()
+        {
+            fixture.ProductList.Count.Should().Be(2);
+        }
     }
 }

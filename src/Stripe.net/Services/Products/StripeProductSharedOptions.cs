@@ -8,19 +8,19 @@ namespace Stripe
         [JsonProperty("active")]
         public bool? Active { get; set; }
 
-        [JsonProperty("attributes")]
+        [JsonProperty("array:attributes")]
         public string[] Attributes { get; set; }
 
         [JsonProperty("caption")]
         public string Caption { get; set; }
 
-        [JsonProperty("deactivate_on")]
+        [JsonProperty("array:deactivate_on")]
         public string[] DeactivateOn { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("images")]
+        [JsonProperty("array:images")]
         public string[] Images { get; set; }
 
         [JsonProperty("metadata")]
