@@ -18,6 +18,7 @@ namespace Stripe.Infrastructure.Middleware
             ParserPlugins = new List<IParserPlugin>
             {
                 new AdditionalOwnerPlugin(),
+                new ArrayPlugin(),
                 new DateFilterPlugin(),
                 new DictionaryPlugin(),
                 new IncludePlugin(),
