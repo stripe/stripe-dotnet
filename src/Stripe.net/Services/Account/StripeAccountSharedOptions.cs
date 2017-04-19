@@ -52,8 +52,8 @@ namespace Stripe
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
         
-        [JsonProperty("transfer_statement_descriptor")]
-        public string TransferStatementDescriptor { get; set; }
+        [JsonProperty("payout_statement_descriptor")]
+        public string PayoutStatementDescriptor { get; set; }
 
         [JsonProperty("support_email")]
         public string SupportEmail { get; set; }
@@ -89,16 +89,16 @@ namespace Stripe
 
         #region Transfer Schedule
 
-        [JsonProperty("transfer_schedule[delay_days]")]
+        [JsonProperty("payout_schedule[delay_days]")]
         public string TransferScheduleDelayDays { get; set; }
 
-        [JsonProperty("transfer_schedule[interval]")]
+        [JsonProperty("payout_schedule[interval]")]
         public string TransferScheduleInterval { get; set; }
 
-        [JsonProperty("transfer_schedule[monthly_anchor]")]
+        [JsonProperty("payout_schedule[monthly_anchor]")]
         public string TransferScheduleMonthlyAnchor { get; set; }
 
-        [JsonProperty("transfer_schedule[weekly_anchor]")]
+        [JsonProperty("payout_schedule[weekly_anchor]")]
         public string TransferScheduleWeeklyAnchor { get; set; }
 
         #endregion
