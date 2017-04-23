@@ -14,6 +14,12 @@ namespace Stripe
         [JsonProperty("business_name")]
         public string BusinessName { get; set; }
 
+        [JsonProperty("business_tax_id")]
+        public string BusinessTaxId { get; set; }
+
+        [JsonProperty("business_vat_id")]
+        public string BusinessVatId { get; set; }
+
         /// <summary>
         /// Whether the business ID number of the legal entity has been provided.
         /// </summary>
