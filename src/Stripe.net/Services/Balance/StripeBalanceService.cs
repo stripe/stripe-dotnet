@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Stripe.Infrastructure;
@@ -27,7 +28,8 @@ namespace Stripe
             );
         }
 
-        public virtual IEnumerable<StripeBalanceTransaction> List(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null)
+        [Obsolete("Use List")]
+        public virtual IEnumerable<StripeBalanceTransaction> LegacyList(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(
                 Requestor.GetString(this.ApplyAllParameters(options, Urls.BalanceTransactions, true),
@@ -35,6 +37,13 @@ namespace Stripe
             );
         }
 
+        public virtual StripeList<StripeBalanceTransaction> List(StripeBalanceTransactionListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeList<StripeBalanceTransaction>>.MapFromJson(
+                Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.BalanceTransactions, true),
+                    SetupRequestOptions(requestOptions))
+            );
+        }
 
 
         //Async
@@ -54,12 +63,22 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<IEnumerable<StripeBalanceTransaction>> ListAsync(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        [Obsolete("Use List")]
+        public virtual async Task<IEnumerable<StripeBalanceTransaction>> LegacyListAsync(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(options, Urls.BalanceTransactions, true),
                 SetupRequestOptions(requestOptions), 
                 cancellationToken)
+            );
+        }
+
+        public virtual async Task<StripeList<StripeBalanceTransaction>> ListAsync(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return Mapper<StripeList<StripeBalanceTransaction>>.MapFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(options, Urls.BalanceTransactions, true),
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken)
             );
         }
     }

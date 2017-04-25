@@ -6,7 +6,7 @@ namespace Stripe.Tests
 {
     public class when_listing_balancetransactions
     {
-        private static List<StripeBalanceTransaction> _stripeBalanceTransactionList;
+        private static StripeList<StripeBalanceTransaction> _stripeBalanceTransactionList;
         private static StripeBalanceService _stripeBalanceService;
 
         Establish context = () =>
@@ -21,9 +21,9 @@ namespace Stripe.Tests
         };
 
         Because of = () =>
-            _stripeBalanceTransactionList = _stripeBalanceService.List().ToList();
+            _stripeBalanceTransactionList = _stripeBalanceService.List();
 
         It should_have_atleast_4_entries = () =>
-            _stripeBalanceTransactionList.Count.ShouldBeGreaterThanOrEqualTo(4);
+            _stripeBalanceTransactionList.TotalCount.ShouldBeGreaterThanOrEqualTo(4);
     }
 }

@@ -7,7 +7,7 @@ namespace Stripe.Tests
     public class when_listing_balancetransactions_by_id
     {
         private static StripeBalanceTransaction _stripeBalanceTransaction;
-        private static List<StripeBalanceTransaction> _stripeBalanceTransactions;
+        private static StripeList<StripeBalanceTransaction> _stripeBalanceTransactions;
         private static StripeBalanceService _stripeBalanceService;
         private static StripeCharge _stripeCharge;
 
@@ -24,11 +24,11 @@ namespace Stripe.Tests
                 Type = "charge"
             };
 
-            _stripeBalanceTransactions = _stripeBalanceService.List(_stripeBalanceTransactionListOptions).ToList();
+            _stripeBalanceTransactions = _stripeBalanceService.List(_stripeBalanceTransactionListOptions);
         };
 
         Because of = () =>
-            _stripeBalanceTransaction = _stripeBalanceService.Get(_stripeBalanceTransactions[0].Id);
+            _stripeBalanceTransaction = _stripeBalanceService.Get(_stripeBalanceTransactions.Data[0].Id);
 
         It should_have_the_right_amount = () =>
             _stripeBalanceTransaction.Amount.ShouldEqual(_stripeCharge.Amount);
