@@ -24,6 +24,6 @@ namespace Stripe.Tests
             _stripeBalanceTransactionList = _stripeBalanceService.List();
 
         It should_have_atleast_4_entries = () =>
-            _stripeBalanceTransactionList.TotalCount.ShouldBeGreaterThanOrEqualTo(4);
+            _stripeBalanceTransactionList.Data.Count.ShouldBeGreaterThanOrEqualTo(4);
     }
 }

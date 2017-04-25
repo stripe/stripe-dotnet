@@ -28,7 +28,7 @@ namespace Stripe.Tests
             _stripeBalanceTransactionList = _stripeBalanceService.List(_stripeBalanceTransactionListOptions);
 
         It should_have_only_one_entry = () =>
-            _stripeBalanceTransactionList.TotalCount.ShouldEqual(1);
+            _stripeBalanceTransactionList.Data.Count.ShouldEqual(1);
 
         It should_match_charge_id = () =>
             _stripeBalanceTransactionList.Data.Single().Source.ShouldEqual(_stripeCharge.Id);
