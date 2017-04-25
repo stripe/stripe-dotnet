@@ -28,15 +28,6 @@ namespace Stripe
             );
         }
 
-        [Obsolete("Use List")]
-        public virtual IEnumerable<StripeBalanceTransaction> LegacyList(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null)
-        {
-            return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(
-                Requestor.GetString(this.ApplyAllParameters(options, Urls.BalanceTransactions, true),
-                SetupRequestOptions(requestOptions))
-            );
-        }
-
         public virtual StripeList<StripeBalanceTransaction> List(StripeBalanceTransactionListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeList<StripeBalanceTransaction>>.MapFromJson(
@@ -58,16 +49,6 @@ namespace Stripe
         {
             return Mapper<StripeBalanceTransaction>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.BalanceTransactions}/{id}", false),
-                SetupRequestOptions(requestOptions), 
-                cancellationToken)
-            );
-        }
-
-        [Obsolete("Use List")]
-        public virtual async Task<IEnumerable<StripeBalanceTransaction>> LegacyListAsync(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(options, Urls.BalanceTransactions, true),
                 SetupRequestOptions(requestOptions), 
                 cancellationToken)
             );
