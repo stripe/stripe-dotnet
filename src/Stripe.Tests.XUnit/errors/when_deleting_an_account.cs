@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
-using Machine.Specifications;
+using FluentAssertions;
+using Stripe.Tests.Xunit;
+using Xunit;
 
 namespace Stripe.Tests
 {
@@ -10,31 +11,27 @@ namespace Stripe.Tests
         private static StripeAccountService _stripeAccountService;
         private static StripeAccountCreateOptions _stripeAccountCreateOptions;
 
-        Establish context = () =>
+        public when_deleting_an_account()
         {
-            _stripeAccountService = new StripeAccountService();
+            _stripeAccountService = new StripeAccountService(Cache.ApiKey);
             _stripeAccountCreateOptions = new StripeAccountCreateOptions()
             {
                 Email = "joe@" + Guid.NewGuid() + ".com",
                 Managed = true
             };
             _stripeAccountId = _stripeAccountService.Create(_stripeAccountCreateOptions).Id;
-        };
 
-        Because of = () =>
             _stripeAccountService.Delete(_stripeAccountId);
+        }
 
-        It should_throw_exception_when_getting = () =>
+        [Fact]
+        public void it_should_throw_exception_when_getting()
         {
-            var exception = Catch.Exception(() =>
-                {
-                    var result = _stripeAccountService.Get(_stripeAccountId);
-
-                    Trace.WriteLine("request id: " + result.StripeResponse.RequestId);
-                }
+            var exception = Assert.Throws<StripeException>(() =>
+                    _stripeAccountService.Get(_stripeAccountId)
             );
 
-            exception.Message.ShouldContain("or that account does not exist");
-        };
+            exception.Message.Should().Contain("or that account does not exist");
+        }
     }
 }
