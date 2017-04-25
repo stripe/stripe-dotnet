@@ -34,8 +34,6 @@ namespace Stripe.Tests
                 }
             );
 
-            var exc = ((StripeException) exception);
-            Trace.WriteLine();
             exception.Message.ShouldContain("or that account does not exist");
         };
     }
