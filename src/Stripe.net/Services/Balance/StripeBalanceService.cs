@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Stripe.Infrastructure;
@@ -27,14 +28,13 @@ namespace Stripe
             );
         }
 
-        public virtual IEnumerable<StripeBalanceTransaction> List(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeBalanceTransaction> List(StripeBalanceTransactionListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(
-                Requestor.GetString(this.ApplyAllParameters(options, Urls.BalanceTransactions, true),
-                SetupRequestOptions(requestOptions))
+            return Mapper<StripeList<StripeBalanceTransaction>>.MapFromJson(
+                Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.BalanceTransactions, true),
+                    SetupRequestOptions(requestOptions))
             );
         }
-
 
 
         //Async
@@ -54,12 +54,12 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<IEnumerable<StripeBalanceTransaction>> ListAsync(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeBalanceTransaction>> ListAsync(StripeBalanceTransactionListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeBalanceTransaction>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeBalanceTransaction>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(options, Urls.BalanceTransactions, true),
-                SetupRequestOptions(requestOptions), 
-                cancellationToken)
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken)
             );
         }
     }
