@@ -227,7 +227,7 @@ namespace Stripe.Infrastructure
         {
             var result = new StripeResponse
             {
-                RequestId = response.Headers.Contains("RequestId") ? response.Headers.GetValues("Request-Id").First() : "n/a",
+                RequestId = response.Headers.Contains("Request-Id") ? response.Headers.GetValues("Request-Id").First() : "n/a",
                 RequestDate = Convert.ToDateTime(response.Headers.GetValues("Date").First(), CultureInfo.InvariantCulture),
                 ResponseJson = responseText
             };
