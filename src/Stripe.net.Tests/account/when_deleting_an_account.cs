@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Machine.Specifications;
 
 namespace Stripe.Tests
@@ -25,7 +26,16 @@ namespace Stripe.Tests
 
         It should_throw_exception_when_getting = () =>
         {
-            var exception = Catch.Exception(() => _stripeAccountService.Get(_stripeAccountId));
+            var exception = Catch.Exception(() =>
+                {
+                    var result = _stripeAccountService.Get(_stripeAccountId);
+
+                    Trace.WriteLine("request id: " + result.StripeResponse.RequestId);
+                }
+            );
+
+            var exc = ((StripeException) exception);
+            Trace.WriteLine();
             exception.Message.ShouldContain("or that account does not exist");
         };
     }
