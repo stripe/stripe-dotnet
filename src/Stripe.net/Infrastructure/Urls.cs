@@ -10,6 +10,8 @@
 
         public static string Tokens => BaseUrl + "/tokens";
 
+        public static string Transfers => BaseUrl + "/transfers";
+
         public static string Charges => BaseUrl + "/charges";
 
         public static string Coupons => BaseUrl + "/coupons";
