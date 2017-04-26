@@ -16,7 +16,7 @@ namespace Stripe
         {
             return Mapper<StripeTransferReversal>.MapFromJson(
                 Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, $"{Urls.Transfers}/{transferId}/reversals"),
+                    this.ApplyAllParameters(createOptions, $"{Urls.BaseUrl}/transfers/{transferId}/reversals"),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -26,7 +26,7 @@ namespace Stripe
         {
             return Mapper<StripeTransferReversal>.MapFromJson(
                 Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{Urls.Transfers}/{transferId}/reversals/{reversalId}"),
+                    this.ApplyAllParameters(null, $"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}"),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -36,7 +36,7 @@ namespace Stripe
         {
             return Mapper<StripeTransferReversal>.MapFromJson(
                 Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.Transfers}/{transferId}/reversals/{reversalId}"),
+                    this.ApplyAllParameters(updateOptions, $"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}"),
                     SetupRequestOptions(requestOptions)
                 )
             );         
@@ -46,7 +46,7 @@ namespace Stripe
         {
             return Mapper<StripeTransferReversal>.MapCollectionFromJson(
                 Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, $"{Urls.Transfers}/{transferId}/reversals", true),
+                    this.ApplyAllParameters(listOptions, $"{Urls.BaseUrl}/transfers/{transferId}/reversals", true),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -59,7 +59,7 @@ namespace Stripe
         {
             return Mapper<StripeTransferReversal>.MapFromJson(
                 await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, $"{Urls.Transfers}/{transferId}/reversals"),
+                    this.ApplyAllParameters(createOptions, $"{Urls.BaseUrl}/transfers/{transferId}/reversals"),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
                 )
@@ -70,7 +70,7 @@ namespace Stripe
         {
             return Mapper<StripeTransferReversal>.MapFromJson(
                 await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{Urls.Transfers}/{transferId}/reversals/{reversalId}"),
+                    this.ApplyAllParameters(null, $"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}"),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
                 )
@@ -81,7 +81,7 @@ namespace Stripe
         {
             return Mapper<StripeTransferReversal>.MapFromJson(
                 await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.Transfers}/{transferId}/reversals/{reversalId}"),
+                    this.ApplyAllParameters(updateOptions, $"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}"),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
                 )
@@ -92,7 +92,7 @@ namespace Stripe
         {
             return Mapper<StripeTransferReversal>.MapCollectionFromJson(
                 await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, $"{Urls.Transfers}/{transferId}/reversals", true),
+                    this.ApplyAllParameters(listOptions, $"{Urls.BaseUrl}/transfers/{transferId}/reversals", true),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
                 )
