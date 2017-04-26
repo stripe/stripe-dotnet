@@ -23,6 +23,6 @@ namespace Stripe
         public string Type { get; set; }
 
         [JsonProperty("include_total_count")]
-        public bool IncludeTotalCount { get; set; } = true;
+        public bool IncludeTotalCount { get; set; }
     }
 }
