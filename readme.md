@@ -31,6 +31,7 @@
 [Subscription Items](#subscription-items)  
 [Tokens](#tokens)  
 [Transfers](#transfers)  
+[Transfer Reversals](#transfer-reversals)  
 
 **Features**
 
@@ -1392,6 +1393,45 @@ Transfers are for sending funds to another account inside stripe.
 ```csharp
 	var transferService = new StripeTransferService();
 	IEnumerable<StripeTransfer> response = transferService.List(); // optional StripeTransferListOptions
+```
+
+Transfer Reversals
+------------------
+A previously created transfer can be reversed if it has not yet been paid out.
+
+### Creating a transfer reversal
+
+```csharp
+	var myTransferReversal = new StripeTransferReversalCreateOptions();
+	myTransferReversal.Amount = 100;
+	myTransferReversal.Description = "test";    // not required
+
+	var transferReversalService = new StripeTransferReversalService();
+	StripeTransferReversal stripeTransferReversal = transferReversalService.Create(*transferId*, myTransferReversal);
+```
+
+### Updating a transfer reversal
+
+```csharp
+	var myTransferReversal = new StripeTransferReversalUpdateOptions();
+	myTransferReversal.Metadata = new Dictionary<string, string> { { "some-key", "some-value" } };
+
+	var transferReversalService = new StripeTransferReversalService();
+	StripeTransferReversal stripeTransferReversal = transferReversalService.Update(*transferId*, *reversalId*, myTransferReversal);
+```
+
+### Retrieving a transfer reversal
+
+```csharp
+	var transferReversalService = new StripeTransferReversalService();
+	StripeTransferReversal stripeTransferReversal = transferReversalService.Get(*transferId*, *reversalId*);
+```
+
+### List all reversals of a transfer
+
+```csharp
+	var transferReversalService = new StripeTransferReversalService();
+	IEnumerable<StripeTransferReversal> response = transferReversalService.List(); // optional StripeListOptions
 ```
 
 [StripeListOptions](#stripelistoptions-paging) for paging, and a [StripeDateFilter](#stripedatefilter-date-filtering) for date filtering (on both the created and date fields)

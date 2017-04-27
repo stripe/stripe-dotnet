@@ -1,9 +1,8 @@
 ﻿using System;
 using FluentAssertions;
-using Stripe.Tests.Xunit;
 using Xunit;
 
-namespace Stripe.Tests
+namespace Stripe.Tests.Xunit
 {
     public class when_deleting_an_account
     {

@@ -11,6 +11,8 @@ namespace Stripe
 
         public bool ExpandBalanceTransaction { get; set; }
 
+
+
         //Sync
         public virtual StripeTransfer Create(StripeTransferCreateOptions options, StripeRequestOptions requestOptions = null)
         {
