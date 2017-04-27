@@ -30,8 +30,8 @@
 [Subscriptions](#subscriptions)  
 [Subscription Items](#subscription-items)  
 [Tokens](#tokens)  
-[Transfers](#transfers)
-[Transfer Reversals](#transfer-reversals)
+[Transfers](#transfers)  
+[Transfer Reversals](#transfer-reversals)  
 
 **Features**
 
