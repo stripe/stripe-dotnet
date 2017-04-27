@@ -13,9 +13,21 @@ namespace Stripe
         [JsonProperty("amount")]
         public int Amount { get; set; }
 
-        // todo: this should be an expandable property
-        [JsonProperty("balance_transaction")]
+        #region Expandable Balance Transaction
         public string BalanceTransactionId { get; set; }
+
+        [JsonIgnore]
+        public StripeBalanceTransaction BalanceTransaction { get; set; }
+
+        [JsonProperty("balance_transaction")]
+        internal object InternalBalanceTransaction
+        {
+            set
+            {
+                ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
@@ -27,8 +39,20 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        // todo: this should be an expandable property
-        [JsonProperty("transfer")]
+        #region Expandable Transfer
         public string TransferId { get; set; }
+
+        [JsonIgnore]
+        public StripeTransfer Transfer { get; set; }
+
+        [JsonProperty("transfer")]
+        internal object InternalTransfer
+        {
+            set
+            {
+                ExpandableProperty<StripeTransfer>.Map(value, s => TransferId = s, o => Transfer = o);
+            }
+        }
+        #endregion
     }
 }
