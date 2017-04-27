@@ -38,7 +38,7 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
-        public void created_has_tranfer_reversed()
+        public void created_has_transfer_reversed()
         {
             fixture.Transfer.Reversed.Should().BeTrue();
             fixture.Transfer.Reversals.Data.Count.Should().BeGreaterOrEqualTo(1);

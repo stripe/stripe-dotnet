@@ -56,12 +56,13 @@ namespace Stripe.Tests.Xunit
             var service = new StripeTransferReversalService(Cache.ApiKey);
             service.ExpandBalanceTransaction = true;
             service.ExpandTransfer = true;
+
             TransferReversal = service.Create(Transfer.Id, TransferReversalCreateOptions);
             TransferReversalUpdated = service.Update(Transfer.Id, TransferReversal.Id, TransferReversalUpdateOptions);
             TransferReversalRetrieved = service.Get(Transfer.Id, TransferReversal.Id);
             TransferReversalList = service.List(Transfer.Id, new StripeListOptions()).ToList();
 
-            // get transfer reversed
+            // get the original transfer
             Transfer = new StripeTransferService(Cache.ApiKey).Get(Transfer.Id);
         }
     }
