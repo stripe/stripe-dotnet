@@ -9,7 +9,7 @@ namespace Stripe
     {
         public StripeTransferReversalService(string apiKey = null) : base(apiKey) { }
 
-        public bool ExpandBalanceTransaction { get; set; }
+
 
         //Sync
         public virtual StripeTransferReversal Create(string transferId, StripeTransferReversalCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
