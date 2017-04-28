@@ -83,6 +83,9 @@ namespace Stripe
         [JsonProperty("sofort")]
         public StripeSofort Sofort { get; set; }
 
+        [JsonProperty("three_d_secure")]
+        public StripeThreeDSecure ThreeDSecure { get; set; }
+
         /// <summary>
         /// The status of the charge, one of canceled, chargeable, consumed, failed, or pending. Only chargeable source objects can be used to create a charge.
         /// </summary>

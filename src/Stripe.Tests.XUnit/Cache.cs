@@ -20,5 +20,10 @@ namespace Stripe.Tests.Xunit
 
         public static string ApiKey => Environment.GetEnvironmentVariable("STRIPE_TEST_KEY");
         public static string RecipientApiKey => Environment.GetEnvironmentVariable("STRIPE_RECIPIENT_KEY");
+
+        /// <summary>
+        /// This flag should be set to true if you are working from a new test account on stripe. By checking for this flag, we can speed up some list tests, etc.
+        /// </summary>
+        public static bool FirstRun => false;
     }
 }

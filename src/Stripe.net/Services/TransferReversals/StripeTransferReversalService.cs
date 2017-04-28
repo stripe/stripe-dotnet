@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeTransferReversalService : StripeBasicService<StripeTransfer>
+    public class StripeTransferReversalService : StripeBasicService<StripeTransferReversal>
     {
         public StripeTransferReversalService(string apiKey = null) : base(apiKey) { }
 
@@ -13,92 +13,49 @@ namespace Stripe
         public bool ExpandTransfer { get; set; }
 
 
+
         //Sync
-        public virtual StripeTransferReversal Create(string transferId, StripeTransferReversalCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeTransferReversal Create(string transferId, StripeTransferReversalCreateOptions options = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeTransferReversal>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, $"{Urls.BaseUrl}/transfers/{transferId}/reversals"),
-                    SetupRequestOptions(requestOptions)
-                )
-            );
+            return Post($"{Urls.BaseUrl}/transfers/{transferId}/reversals", requestOptions, options);
         }
         
         public virtual StripeTransferReversal Get(string transferId, string reversalId, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeTransferReversal>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}"),
-                    SetupRequestOptions(requestOptions)
-                )
-            );
+            return GetEntity($"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}", requestOptions);
         }
 
-        public virtual StripeTransferReversal Update(string transferId,  string reversalId, StripeTransferReversalUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        public virtual StripeTransferReversal Update(string transferId,  string reversalId, StripeTransferReversalUpdateOptions options, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeTransferReversal>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}"),
-                    SetupRequestOptions(requestOptions)
-                )
-            );         
+            return Post($"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}", requestOptions, options);
         }
 
-        public virtual IEnumerable<StripeTransferReversal> List(string transferId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual IEnumerable<StripeTransferReversal> List(string transferId, StripeListOptions options = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeTransferReversal>.MapCollectionFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, $"{Urls.BaseUrl}/transfers/{transferId}/reversals", true),
-                    SetupRequestOptions(requestOptions)
-                )
-            );
+            return GetEntityList($"{Urls.BaseUrl}/transfers/{transferId}/reversals", requestOptions, options);
         }
 
 
 
         // Async
-        public virtual async Task<StripeTransferReversal> CreateAsync(string transferId, StripeTransferReversalCreateOptions createOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeTransferReversal> CreateAsync(string transferId, StripeTransferReversalCreateOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeTransferReversal>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, $"{Urls.BaseUrl}/transfers/{transferId}/reversals"),
-                    SetupRequestOptions(requestOptions),
-                    cancellationToken
-                )
-            );
+            return PostAsync($"{Urls.BaseUrl}/transfers/{transferId}/reversals", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<StripeTransferReversal> GetAsync(string transferId, string reversalId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeTransferReversal> GetAsync(string transferId, string reversalId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeTransferReversal>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}"),
-                    SetupRequestOptions(requestOptions),
-                    cancellationToken
-                )
-            );
+            return GetEntityAsync($"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<StripeTransferReversal> UpdateAsync(string transferId,  string reversalId, StripeTransferReversalUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeTransferReversal> UpdateAsync(string transferId,  string reversalId, StripeTransferReversalUpdateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeTransferReversal>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}"),
-                    SetupRequestOptions(requestOptions),
-                    cancellationToken
-                )
-            );         
+            return PostAsync($"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}", requestOptions, cancellationToken, options);      
         }
 
-        public virtual async Task<IEnumerable<StripeTransferReversal>> ListAsync(string transferId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IEnumerable<StripeTransferReversal>> ListAsync(string transferId, StripeListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeTransferReversal>.MapCollectionFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, $"{Urls.BaseUrl}/transfers/{transferId}/reversals", true),
-                    SetupRequestOptions(requestOptions),
-                    cancellationToken
-                )
-            );
+            return GetEntityListAsync($"{Urls.BaseUrl}/transfers/{transferId}/reversals", requestOptions, cancellationToken, options);
         }
     }
 }

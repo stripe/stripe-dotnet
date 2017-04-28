@@ -15,6 +15,7 @@ namespace Stripe.Tests.Xunit
 
             ChargeListOptions = new StripeChargeListOptions
             {
+                IncludeTotalCount = true
             };
 
             var service = new StripeChargeService(Cache.ApiKey);

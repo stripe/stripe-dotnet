@@ -47,6 +47,9 @@ namespace Stripe
         [JsonProperty("sofort[statement_descriptor]")]
         public string SofortStatementDescriptor { get; set; }
 
+        [JsonProperty("[three_d_secure][card]")]
+        public string ThreeDSecureCardOrSourceId { get; set; }
+
         /// <summary>
         /// A set of key/value pairs that you can attach to a source object. It can be useful for storing additional information about the source in a structured format.
         /// </summary>
