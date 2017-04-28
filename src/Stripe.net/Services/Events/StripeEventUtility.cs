@@ -50,7 +50,7 @@ namespace Stripe
             var cryptographer = new HMACSHA256(secretBytes);
             var hash = cryptographer.ComputeHash(payloadBytes);
 
-            return BitConverter.ToString(hash).Replace("-", "").ToLower(); ;
+            return BitConverter.ToString(hash).Replace("-", "").ToLower();
         }
     }
 }
