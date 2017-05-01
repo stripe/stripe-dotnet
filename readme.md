@@ -771,9 +771,9 @@ Events
 ------
 
 Stripe sends Events (webhooks) whenever an associated action occurs. The list of events Stripe sends is documented here: https://stripe.com/docs/api#event_types. There are a couple of ways to process events: 
-```StripeEventUtility.ParseEvent(json)``` and ```StripeEventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], secret, tolerance (optioanl))```. Using `ParseEvent` will immediately parse the event into a StripeEvent, while 
+```StripeEventUtility.ParseEvent(json)``` and ```StripeEventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], secret, tolerance **optional**```. Using `ParseEvent` will immediately parse the event into a StripeEvent, while 
 `ConstructEvent` will verify the event using your secret from the dashboard and enciphering the payload. You can also pass an optional tolerance 
-which is the number of seconds you allow before the event should no longer be valid.
+which is the number of seconds you allow before the event is invalidated.
 
 [Configure your webhook urls](https://dashboard.stripe.com/account/webhooks) first, so Stripe knows where to send the data.
 
