@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
     public static class StripeEventUtility
     {
+        internal static long? EpochUtcNowOverride { get; set; }
+
         public static StripeEvent ParseEvent(string json)
         {
             return Mapper<StripeEvent>.MapFromJson(json);
@@ -25,11 +29,14 @@ namespace Stripe
 
             var ciphertext = Encipher(secret, signatureItems["t"].FirstOrDefault(), json);
 
-            // make sure the ciphertext exists as a 'v1' key in signatureItems
-            // throw an exception if not
+            if(!IsSignaturePresent(ciphertext, signatureItems["v1"]))
+                throw new Exception("The signature for the webhook is not present in the Stripe-Signature header.");
 
-            // make sure the timestamp is not above the tolerance (current utc - timestamp <= tolerance)
-            // throw an exception if not
+            var utcNow = EpochUtcNowOverride ?? DateTime.UtcNow.ConvertDateTimeToEpoch();
+            var webhookUtc = Convert.ToInt32(signatureItems["t"].FirstOrDefault());
+
+            if (utcNow - webhookUtc > tolerance)
+                throw new Exception("The webhook cannot be processed because the current timestamp is above the allowed tolerance.");
 
             return Mapper<StripeEvent>.MapFromJson(json);
         }
@@ -40,6 +47,11 @@ namespace Stripe
                 .Split(',')
                 .Select(item => item.Trim().Split('='))
                 .ToLookup(item => item[0], item => item[1]);
+        }
+
+        private static bool IsSignaturePresent(string signature, IEnumerable<string> signatures)
+        {
+            return signatures.Any(key => key == signature);
         }
 
         private static string Encipher(string secret, string timestamp, string payload)

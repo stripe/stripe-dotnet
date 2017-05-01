@@ -9,11 +9,11 @@ namespace Stripe.Tests.Xunit
     public class when_constructing_an_event
     {
         // this was sent in the header Stripe-Signature along with the body of event.json in a test webhook
-        private string StripeSignature => "t=1493329224,v1=09b8e30b483570b410390cdac6327c036937e84a6316008a0143db833ac21a09,v0=63f3a72374a733066c4be69ed7f8e5ac85c22c9f0a6a612ab9a025a9e4ee7eef";
-        private string StripeJson         { get; set; }
-        private string StripeSecret =>    "whsec_H68eTX02a4bCbiQOOoSAsIytOvuWZrQC";
+        private static string StripeSignature => "t=1493329224,v1=09b8e30b483570b410390cdac6327c036937e84a6316008a0143db833ac21a09,v0=63f3a72374a733066c4be69ed7f8e5ac85c22c9f0a6a612ab9a025a9e4ee7eef";
+        private static string StripeJson { get; set; }
+        private static string StripeSecret => "whsec_H68eTX02a4bCbiQOOoSAsIytOvuWZrQC";
 
-        private StripeEvent ConstructedEvent { get; set; }
+        public StripeEvent ConstructedEvent { get; set; }
 
         public when_constructing_an_event()
         {
@@ -22,13 +22,20 @@ namespace Stripe.Tests.Xunit
                 Encoding.UTF8
             ).ReadToEnd();
 
+            // this throws an error because the tolerance was higher than allowed
+            // ConstructedEvent = StripeEventUtility.ConstructEvent(StripeJson, StripeSignature, StripeSecret);
+
+            // override the event utility from looking at utc now to 300 seconds in front of the timestamp in the header
+            StripeEventUtility.EpochUtcNowOverride = 1493329524;
+
             ConstructedEvent = StripeEventUtility.ConstructEvent(StripeJson, StripeSignature, StripeSecret);
+
+            // this throws an error that the signature doesn't match one in the headers
+            //ConstructedEventBadJson = StripeEventUtility.ConstructEvent(StripeJson + "/n", StripeSignature, StripeSecret);
         }
 
-        public StripeAccount Account { get; set; }
-
         [Fact]
-        public void it_should_validate_with_right_secret()
+        public void it_should_validate_with_right_data()
         {
             ConstructedEvent.Should().NotBeNull();
         }
