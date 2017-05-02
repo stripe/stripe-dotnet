@@ -77,6 +77,9 @@ namespace Stripe
         [JsonProperty("redirect")]
         public StripeRedirect Redirect { get; set; }
 
+        [JsonProperty("bancontact")]
+        public StripeBancontact Bancontact { get; set; }
+
         [JsonProperty("sepa_debit")]
         public StripeSepaDebit SepaDebit { get; set; }
 
