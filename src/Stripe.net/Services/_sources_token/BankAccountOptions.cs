@@ -3,6 +3,9 @@ using Stripe;
 
 public class BankAccountOptions : INestedOptions
 {
+    [JsonProperty("bank_account")]
+    public string TokenId { get; set; }
+
     [JsonProperty("bank_account[account_holder_name]")]
     public string AccountHolderName { get; set; }
 
