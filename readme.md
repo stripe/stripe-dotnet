@@ -770,9 +770,9 @@ Disputes
 Events
 ------
 
-Stripe sends Events (webhooks) whenever an associated action occurs. These events sent are [documented here](https://stripe.com/docs/api#event_types) and available via code as `StripeEvents`. There are a couple of ways to process events: 
-```StripeEventUtility.ParseEvent(json)``` and ```StripeEventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], secret, tolerance **optional**```. Using `ParseEvent` will immediately parse the event into a StripeEvent, while 
-`ConstructEvent` will verify the event using your secret from the dashboard and enciphering the payload. You can also pass an optional tolerance 
+Stripe sends Events (webhooks) whenever an associated action occurs. The events sent are [documented here](https://stripe.com/docs/api#event_types) and available via code as `StripeEvents`. There are a couple of ways to process events: 
+```StripeEventUtility.ParseEvent(json)``` and ```StripeEventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], secret, tolerance **optional**)```. Using `ParseEvent` will immediately parse the event into a StripeEvent, while 
+`ConstructEvent` will verify the event using your secret from the dashboard and comparing the signature. You can also pass an optional tolerance 
 which is the number of seconds you allow before the event is invalidated.
 
 [Configure your webhook urls](https://dashboard.stripe.com/account/webhooks) first, so Stripe knows where to send the data.
