@@ -27,9 +27,9 @@ namespace Stripe
         {
             var signatureItems = parseStripeSignature(stripeSignatureHeader);
 
-            var ciphertext = Encipher(secret, signatureItems["t"].FirstOrDefault(), json);
+            var signature = computeSignature(secret, signatureItems["t"].FirstOrDefault(), json);
 
-            if(!IsSignaturePresent(ciphertext, signatureItems["v1"]))
+            if(!isSignaturePresent(signature, signatureItems["v1"]))
                 throw new Exception("The signature for the webhook is not present in the Stripe-Signature header.");
 
             var utcNow = EpochUtcNowOverride ?? DateTime.UtcNow.ConvertDateTimeToEpoch();
@@ -49,12 +49,12 @@ namespace Stripe
                 .ToLookup(item => item[0], item => item[1]);
         }
 
-        private static bool IsSignaturePresent(string signature, IEnumerable<string> signatures)
+        private static bool isSignaturePresent(string signature, IEnumerable<string> signatures)
         {
-            return signatures.Any(key => key == signature);
+            return signatures.Any(key => secureCompare(key, signature));
         }
 
-        private static string Encipher(string secret, string timestamp, string payload)
+        private static string computeSignature(string secret, string timestamp, string payload)
         {
             var secretBytes = Encoding.UTF8.GetBytes(secret);
             var payloadBytes = Encoding.UTF8.GetBytes($"{timestamp}.{payload}");
@@ -63,6 +63,20 @@ namespace Stripe
             var hash = cryptographer.ComputeHash(payloadBytes);
 
             return BitConverter.ToString(hash).Replace("-", "").ToLower();
+        }
+
+        private static bool secureCompare(string a, string b)
+        {
+            if (a.Length != b.Length) return false;
+
+            var result = 0;
+
+            for (var i = 0; i < a.Length; i++)
+            {
+                result |= a[i] ^ b[i];
+            }
+
+            return result == 0;
         }
     }
 }
