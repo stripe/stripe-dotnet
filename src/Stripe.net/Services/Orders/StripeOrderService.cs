@@ -27,10 +27,15 @@ namespace Stripe
             return Post($"{Urls.BaseUrl}/orders/{orderId}", requestOptions, options);
         }
 
-        //public virtual IEnumerable<StripeOrder> List(StripePayoutListOptions listOptions = null, StripeRequestOptions requestOptions = null)
-        //{
-        //    return GetEntityList($"{Urls.BaseUrl}/payouts", requestOptions, listOptions);
-        //}
+        public virtual StripeOrder Pay(string orderId, StripeOrderPayOptions options, StripeRequestOptions requestOptions = null)
+        {
+            return Post($"{Urls.BaseUrl}/orders/{orderId}/pay", requestOptions, options);
+        }
+
+        public virtual IEnumerable<StripeOrder> List(StripeOrderListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            return GetEntityList($"{Urls.BaseUrl}/orders", requestOptions, listOptions);
+        }
 
 
 
@@ -50,9 +55,14 @@ namespace Stripe
             return PostAsync($"{Urls.BaseUrl}/orders/{orderId}", requestOptions, cancellationToken, options);
         }
 
-        //public virtual Task<IEnumerable<StripeOrder>> ListAsync(StripePayoutListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        //{
-        //    return GetEntityListAsync($"{Urls.BaseUrl}/payouts", requestOptions, cancellationToken, listOptions);
-        //}
+        public virtual Task<StripeOrder> PayAsync(string orderId, StripeOrderPayOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return PostAsync($"{Urls.BaseUrl}/orders/{orderId}/pay", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Task<IEnumerable<StripeOrder>> ListAsync(StripeOrderListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return GetEntityListAsync($"{Urls.BaseUrl}/orders", requestOptions, cancellationToken, listOptions);
+        }
     }
 }

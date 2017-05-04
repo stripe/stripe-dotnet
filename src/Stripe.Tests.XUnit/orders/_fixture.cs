@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Stripe.Tests.Xunit
 {
@@ -6,12 +7,14 @@ namespace Stripe.Tests.Xunit
     {
         public StripeOrderCreateOptions OrderCreateOptions { get; }
         public StripeOrderUpdateOptions OrderUpdateOptions { get; }
-        //public StripePayoutListOptions PayoutListOptions { get; }
+        public StripeOrderListOptions OrderListOptions { get; }
+        public StripeOrderPayOptions OrderPayOptions { get; }
 
         public StripeOrder Order { get; }
         public StripeOrder OrderUpdated { get; }
         public StripeOrder OrderRetrieved { get; }
-        //public List<StripePayout> PayoutList { get; }
+        public StripeOrder OrderPaid { get; }
+        public List<StripeOrder> OrderList { get; }
 
         public orders_fixture()
         {
@@ -43,18 +46,26 @@ namespace Stripe.Tests.Xunit
                 }
             };
 
+            var customer = Cache.GetCustomer();
+
+            OrderPayOptions = new StripeOrderPayOptions
+            {
+                CustomerId = customer.Sources.Data.First().Id,
+                Email = customer.Email,
+            };
+
             var service = new StripeOrderService(Cache.ApiKey);
             Order = service.Create(OrderCreateOptions);
             OrderUpdated = service.Update(Order.Id, OrderUpdateOptions);
             OrderRetrieved = service.Get(Order.Id);
+            //OrderPaid = service.Pay(Order.Id, OrderPayOptions);
 
-            //PayoutListOptions = new StripePayoutListOptions
-            //{
-            //    Created = Payout.Created,
-            //    ArrivalDate = Payout.ArrivalDate
-            //};
+            OrderListOptions = new StripeOrderListOptions()
+            {
+                Created = Order.Created
+            };
 
-            //PayoutList = service.List(PayoutListOptions).ToList();
+            OrderList = service.List(OrderListOptions).ToList();
         }
     }
 }
