@@ -5,12 +5,12 @@ namespace Stripe.Tests.Xunit
     public class orders_fixture
     {
         public StripeOrderCreateOptions OrderCreateOptions { get; }
-        //public StripePayoutUpdateOptions PayoutUpdateOptions { get; }
+        public StripeOrderUpdateOptions OrderUpdateOptions { get; }
         //public StripePayoutListOptions PayoutListOptions { get; }
 
         public StripeOrder Order { get; }
-        //public StripePayout PayoutUpdated { get; }
-        //public StripePayout PayoutRetrieved { get; }
+        public StripeOrder OrderUpdated { get; }
+        public StripeOrder OrderRetrieved { get; }
         //public List<StripePayout> PayoutList { get; }
 
         public orders_fixture()
@@ -35,18 +35,18 @@ namespace Stripe.Tests.Xunit
                 }
             };
 
-            //PayoutUpdateOptions = new StripePayoutUpdateOptions
-            //{
-            //    Metadata = new Dictionary<string, string>()
-            //    {
-            //        { "some-key", "some-value" }
-            //    }
-            //};
+            OrderUpdateOptions = new StripeOrderUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>()
+                {
+                    { "some-key", "some-value" }
+                }
+            };
 
             var service = new StripeOrderService(Cache.ApiKey);
             Order = service.Create(OrderCreateOptions);
-            //PayoutUpdated = service.Update(Payout.Id, PayoutUpdateOptions);
-            //PayoutRetrieved = service.Get(Payout.Id);
+            OrderUpdated = service.Update(Order.Id, OrderUpdateOptions);
+            OrderRetrieved = service.Get(Order.Id);
 
             //PayoutListOptions = new StripePayoutListOptions
             //{

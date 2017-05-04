@@ -30,8 +30,16 @@ namespace Stripe.Tests.Xunit
             fixture.Order.Shipping.Address.Line1.Should().Be(fixture.OrderCreateOptions.Shipping.Line1);
         }
 
-        // updated
+        [Fact]
+        public void updated_is_not_null()
+        {
+            fixture.OrderUpdated.Should().NotBeNull();
+        }
 
-        // list
+        [Fact]
+        public void retrieved_is_not_null()
+        {
+            fixture.OrderRetrieved.Should().NotBeNull();
+        }
     }
 }
