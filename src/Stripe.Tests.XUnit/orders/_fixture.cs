@@ -50,7 +50,7 @@ namespace Stripe.Tests.Xunit
 
             OrderPayOptions = new StripeOrderPayOptions
             {
-                CustomerId = customer.Sources.Data.First().Id,
+                SourceId = Cache.GetToken().Id,
                 Email = customer.Email,
             };
 
@@ -58,7 +58,7 @@ namespace Stripe.Tests.Xunit
             Order = service.Create(OrderCreateOptions);
             OrderUpdated = service.Update(Order.Id, OrderUpdateOptions);
             OrderRetrieved = service.Get(Order.Id);
-            //OrderPaid = service.Pay(Order.Id, OrderPayOptions);
+            OrderPaid = service.Pay(Order.Id, OrderPayOptions);
 
             OrderListOptions = new StripeOrderListOptions()
             {

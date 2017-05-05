@@ -42,10 +42,10 @@ namespace Stripe.Tests.Xunit
             fixture.OrderRetrieved.Should().NotBeNull();
         }
 
-        //[Fact]
-        //public void paid_is_not_null()
-        //{
-        //    fixture.OrderPaid.Should().NotBeNull();
-        //}
+        [Fact]
+        public void paid_is_not_null()
+        {
+            fixture.OrderPaid.Should().NotBeNull();
+        }
     }
 }
