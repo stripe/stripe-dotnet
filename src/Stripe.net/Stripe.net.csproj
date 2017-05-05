@@ -3,8 +3,8 @@
   <PropertyGroup>
     <Description>Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.</Description>
     <AssemblyTitle>Stripe.net</AssemblyTitle>
-    <VersionPrefix>8.3.0</VersionPrefix>
-    <Version>8.3.0</Version>
+    <VersionPrefix>8.4.0</VersionPrefix>
+    <Version>8.4.0</Version>
     <Authors>Jayme Davis</Authors>
     <TargetFrameworks>netstandard1.2;net45</TargetFrameworks>
     <AssemblyName>Stripe.net</AssemblyName>
