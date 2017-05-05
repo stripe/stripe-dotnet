@@ -86,6 +86,9 @@ namespace Stripe
         [JsonProperty("sofort")]
         public StripeSofort Sofort { get; set; }
 
+        [JsonProperty("card")]
+        public StripeSourceCard Card { get; set; }
+
         [JsonProperty("three_d_secure")]
         public StripeThreeDSecure ThreeDSecure { get; set; }
 
