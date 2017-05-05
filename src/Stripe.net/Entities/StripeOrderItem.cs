@@ -36,7 +36,7 @@ namespace Stripe
         /// A positive integer representing the number of instances of parent that are included in this order item. Applicable/present only if type is sku.
         /// </summary>
         [JsonProperty("quantity")]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// The type of line item. One of sku, tax, shipping, or discount.
