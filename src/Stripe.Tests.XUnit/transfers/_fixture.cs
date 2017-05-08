@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Stripe.Tests.Xunit
@@ -27,14 +28,16 @@ namespace Stripe.Tests.Xunit
                     ExpirationMonth = "10",
                     ExpirationYear = "2019",
                     Cvc = "123"
-                }
+                },
+                TransferGroup = $"test_group_{ Guid.NewGuid() }"
             });
 
             TransferCreateOptions = new StripeTransferCreateOptions
             {
                 Amount = 1000,
                 Currency = "usd",
-                Destination = Cache.GetAccount().Id
+                Destination = Cache.GetAccount().Id,
+                TransferGroup = $"test_group_{ Guid.NewGuid() }"
             };
 
             TransferUpdateOptions = new StripeTransferUpdateOptions

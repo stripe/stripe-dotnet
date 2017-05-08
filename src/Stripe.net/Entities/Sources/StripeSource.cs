@@ -77,11 +77,17 @@ namespace Stripe
         [JsonProperty("redirect")]
         public StripeRedirect Redirect { get; set; }
 
+        [JsonProperty("bancontact")]
+        public StripeBancontact Bancontact { get; set; }
+
         [JsonProperty("sepa_debit")]
         public StripeSepaDebit SepaDebit { get; set; }
 
         [JsonProperty("sofort")]
         public StripeSofort Sofort { get; set; }
+
+        [JsonProperty("card")]
+        public StripeSourceCard Card { get; set; }
 
         [JsonProperty("three_d_secure")]
         public StripeThreeDSecure ThreeDSecure { get; set; }

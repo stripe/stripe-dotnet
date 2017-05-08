@@ -15,6 +15,7 @@ namespace Stripe.Tests
         {
             var _stripeChargeService = new StripeChargeService();
             _stripeBalanceService = new StripeBalanceService();
+            _stripeBalanceService.ExpandSource = true;
 
             _stripeCharge = _stripeChargeService.Create(test_data.stripe_charge_create_options.ValidCard());
             _stripeBalanceTransactionListOptions = new StripeBalanceTransactionListOptions
@@ -31,7 +32,10 @@ namespace Stripe.Tests
             _stripeBalanceTransactionList.Data.Count.ShouldEqual(1);
 
         It should_match_charge_id = () =>
-            _stripeBalanceTransactionList.Data.Single().Source.ShouldEqual(_stripeCharge.Id);
+            _stripeBalanceTransactionList.Data.Single().SourceId.ShouldEqual(_stripeCharge.Id);
+
+        It should_have_the_source = () =>
+            _stripeBalanceTransactionList.Data.Single().Source.ShouldNotBeNull();
 
         It should_match_charge_type = () =>
             _stripeBalanceTransactionList.Data.Single().Type.ShouldEqual("charge");

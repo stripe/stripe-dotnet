@@ -10,7 +10,7 @@ namespace Stripe
     {
         public StripeBalanceService(string apiKey = null) : base(apiKey) { }
 
-
+        public bool ExpandSource { get; set; }
 
         //Sync
         public virtual StripeBalance Get(StripeRequestOptions requestOptions = null)

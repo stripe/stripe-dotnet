@@ -1,0 +1,31 @@
+﻿using FluentAssertions;
+using Xunit;
+
+namespace Stripe.Tests.Xunit
+{
+    public class creating_and_updating_card_source
+    {
+        private StripeSource Source { get; set; }
+
+        public creating_and_updating_card_source()
+        {
+            var options = new StripeSourceCreateOptions
+            {
+                Type = StripeSourceType.Card,
+                Amount = 1,
+                Currency = "usd",
+                Token = Cache.GetToken().Id,
+                RedirectReturnUrl = "http://no.where/webhooks"
+            };
+
+            Source = new StripeSourceService(Cache.ApiKey).Create(options);
+        }
+
+        [Fact]
+        public void source_should_not_be_null()
+        {
+            Source.Should().NotBeNull();
+            Source.Card.Should().NotBeNull();
+        }
+    }
+}
