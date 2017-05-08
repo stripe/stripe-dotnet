@@ -49,9 +49,9 @@ namespace Stripe.Tests
             account.Object.ShouldEqual(CreateOrUpdateOptions.ExternalBankAccount.Object);
         };
 
-#pragma warning disable 414
+#pragma warning disable 169, 414
         Behaves_like<account_behaviors> behaviors;
-#pragma warning restore 414
+#pragma warning restore 169, 414
 
     }
 }

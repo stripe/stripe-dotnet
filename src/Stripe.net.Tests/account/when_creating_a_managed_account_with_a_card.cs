@@ -57,9 +57,9 @@ namespace Stripe.Tests
             StripeAccount.ExternalAccounts.Data.First().Card.Name.ShouldEqual(firstEntry.Name);
         };
 
-#pragma warning disable 414
+#pragma warning disable 169, 414
         Behaves_like<account_behaviors> behaviors;
-#pragma warning restore 414
+#pragma warning restore 169, 414
 
     }
 }

@@ -34,9 +34,9 @@ namespace Stripe.Tests
             StripeCard = StripeCustomer.Sources.Data.First().Card;
         };
 
-#pragma warning disable 414
+#pragma warning disable 169, 414
         Behaves_like<customer_behaviors> behaviors;
-#pragma warning restore 414
+#pragma warning restore 169, 414
 
         It should_have_the_defaultcard = () =>
             StripeCustomer.DefaultSource.ShouldNotBeNull();

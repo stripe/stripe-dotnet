@@ -18,9 +18,9 @@ namespace Stripe.Tests
         Because of = () =>
             StripeToken = _stripeTokenService.Create(StripeTokenCreateOptions);
 
-#pragma warning disable 414
+#pragma warning disable 169, 414
         Behaves_like<token_behaviors> behaviors;
-#pragma warning restore 414
+#pragma warning restore 169, 414
 
     }
 }

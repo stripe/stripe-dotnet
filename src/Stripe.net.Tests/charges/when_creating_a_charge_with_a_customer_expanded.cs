@@ -34,9 +34,9 @@ namespace Stripe.Tests
         It should_have_the_customer = () =>
             StripeCharge.Customer.ShouldNotBeNull();
 
-#pragma warning disable 414
+#pragma warning disable 169, 414
         Behaves_like<charge_behaviors> behaviors;
-#pragma warning restore 414
+#pragma warning restore 169, 414
 
     }
 }
