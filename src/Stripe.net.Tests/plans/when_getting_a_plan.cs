@@ -22,6 +22,9 @@ namespace Stripe.Tests
         Because of = () =>
             StripePlan = _stripePlanService.Get(_createdStripePlanId);
 
+#pragma warning disable 414
         Behaves_like<plan_behaviors> behaviors;
+#pragma warning restore 414
+
     }
 }

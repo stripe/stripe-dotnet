@@ -5,9 +5,7 @@ namespace Stripe.Tests
     public class when_creating_an_invoice_with_failed_charge
     {
         private static StripeInvoice _stripeCreatedInvoice;
-        private static StripeInvoice _stripeFailedInvoice;
         private static StripeInvoiceService _stripeInvoiceService;
-        private static StripeCharge _stripeCharge;
         private static StripeException _stripeException;
 
         Establish context = () =>

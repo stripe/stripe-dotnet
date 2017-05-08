@@ -22,6 +22,9 @@ namespace Stripe.Tests
         Because of = () =>
             StripeInvoiceItem = _stripeInvoiceItemService.Create(StripeInvoiceItemCreateOptions);
 
+#pragma warning disable 414
         Behaves_like<invoiceitem_behaviors> behaviors;
+#pragma warning restore 414
+
     }
 }

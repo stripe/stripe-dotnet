@@ -26,6 +26,9 @@ namespace Stripe.Tests
             StripeCard = StripeCharge.Source.Card;
         };
 
+#pragma warning disable 414
         Behaves_like<charge_behaviors> behaviors;
+#pragma warning restore 414
+
     }
 }

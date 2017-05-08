@@ -35,7 +35,9 @@ namespace Stripe.Tests
             _stripeSubscription = StripeCustomer.Subscriptions.Data.First();
         };
 
+#pragma warning disable 414
         Behaves_like<customer_behaviors> behaviors;
+#pragma warning restore 414
 
         It should_return_now_for_internal_trialend = () =>
             StripeCustomerCreateOptions.TrialEndInternal.ShouldEqual("now");

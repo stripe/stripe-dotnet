@@ -33,7 +33,9 @@ namespace Stripe.Tests
             StripeCard = StripeCustomer.Sources.Data.First().Card;
         };
 
+#pragma warning disable 414
         Behaves_like<customer_behaviors> behaviors;
+#pragma warning restore 414
 
         It should_have_metadata = () =>
             StripeCustomer.Metadata.Count.ShouldBeGreaterThan(0);

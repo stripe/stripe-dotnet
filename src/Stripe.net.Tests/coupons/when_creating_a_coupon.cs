@@ -18,6 +18,9 @@ namespace Stripe.Tests
         Because of = () =>
             StripeCoupon = _stripeCouponService.Create(StripeCouponCreateOptions);
 
+#pragma warning disable 414
         Behaves_like<coupon_behaviors> behaviors;
+#pragma warning restore 414
+
     }
 }
