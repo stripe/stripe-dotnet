@@ -33,7 +33,7 @@ namespace Stripe.Tests.Xunit
         [Fact]
         public void created_has_the_right_owner_city()
         {
-            fixture.Source.Owner.Address.CityOrTown.Should().Be(fixture.SourceCreateOptions.Owner.CityOrTown);
+            fixture.Source.Owner.Address.City.Should().Be(fixture.SourceCreateOptions.Owner.CityOrTown);
         }
 
         [Fact]
