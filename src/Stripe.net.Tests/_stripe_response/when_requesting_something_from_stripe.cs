@@ -12,15 +12,9 @@ namespace Stripe.Tests
         private static StripeList<StripeCharge> _stripeChargesSyncList;
         private static StripeList<StripeCharge> _stripeChargesAsyncList;
 
-        private static string _listIdentifier = "\"url\": \"/v1/charges\"";
-
         Establish context = () =>
         {
-            // create some charges and store them for the tests to assert - sync and async
-            // making sure the StripeResponse is attached to the entities
-
-            // the list are not always populated as individual items as part of StripeList<T>, so that code was 
-            // commented out. fix this if it's a problem. the StripeResponse is still on the StripeList<T>
+            // no context. if needed, we can expand the stripe response to be on each object in a list
         };
 
         Because of = () =>
