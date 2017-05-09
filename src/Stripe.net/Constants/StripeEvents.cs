@@ -269,11 +269,29 @@ namespace Stripe
         /// </summary>
         public const string OrderReturnCreated = "order_return.created";
 
+        /// <summary>
+        /// Occurs whenever a payout is canceled.
+        /// </summary>
+        public const string PayoutCanceled = "payout.canceled";
 
+        /// <summary>
+        /// Occurs whenever a new payout is created.
+        /// </summary>
         public const string PayoutCreated = "payout.created";
+
+        /// <summary>
+        /// Occurs whenever Stripe attempts to send a payout and that transfer fails.
+        /// </summary>
         public const string PayoutFailed = "payout.failed";
-        public const string PayoutReversed = "payout.reversed";
+
+        /// <summary>
+        /// Occurs whenever a payout is expected to be available in the destination bank account. If the payout failed, a payout.failed webhook will additionally be sent at a later time.
+        /// </summary>
         public const string PayoutPaid = "payout.paid";
+
+        /// <summary>
+        /// Occurs whenever the metadata of a payout is updated.
+        /// </summary>
         public const string PayoutUpdated = "payout.updated";
 
         /// <summary>
