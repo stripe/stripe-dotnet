@@ -18,6 +18,9 @@ namespace Stripe.Tests
             StripeBalance = _stripeBalanceService.Get();
         };
 
+#pragma warning disable 169, 414
         Behaves_like<balance_behaviors> behaviors;
+#pragma warning restore 169, 414
+
     }
 }

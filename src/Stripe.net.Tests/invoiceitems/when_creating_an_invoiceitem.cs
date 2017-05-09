@@ -22,7 +22,9 @@ namespace Stripe.Tests
         Because of = () =>
             StripeInvoiceItem = _stripeInvoiceItemService.Create(StripeInvoiceItemCreateOptions);
 
+#pragma warning disable 169, 414
         Behaves_like<invoiceitem_behaviors> behaviors;
+#pragma warning restore 169, 414
 
         It should_have_metadata = () =>
             StripeInvoiceItem.Metadata.Count.ShouldBeGreaterThan(0);

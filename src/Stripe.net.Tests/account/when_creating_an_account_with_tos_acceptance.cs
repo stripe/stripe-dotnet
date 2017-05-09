@@ -6,7 +6,6 @@ namespace Stripe.Tests
     public class when_creating_an_account_with_tos_acceptance
     {
         private static StripeAccount _stripeAccount;
-        private static StripeAccountService _stripeAccountService;
         private static StripeAccountCreateOptions _stripeAccountCreateOptions;
 
         Establish context = () =>

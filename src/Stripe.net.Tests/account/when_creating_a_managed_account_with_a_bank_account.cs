@@ -52,6 +52,9 @@ namespace Stripe.Tests
             StripeAccount.ExternalAccounts.Data.First().BankAccount.AccountHolderName.ShouldEqual(firstEntry.AccountHolderName);
         };
 
+#pragma warning disable 169, 414
         Behaves_like<account_behaviors> behaviors;
+#pragma warning restore 169, 414
+
     }
 }

@@ -22,7 +22,9 @@ namespace Stripe.Tests
             StripeCard = StripeCharge.Source.Card;
         };
 
+#pragma warning disable 169, 414
         Behaves_like<charge_behaviors> behaviors;
+#pragma warning restore 169, 414
 
         It should_have_metadata = () =>
             StripeCharge.Metadata.ShouldNotBeNull();

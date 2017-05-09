@@ -33,6 +33,9 @@ namespace Stripe.Tests
             StripeCard = StripeCustomer.Sources.Data.First().Card;
         };
 
+#pragma warning disable 169, 414
         Behaves_like<customer_behaviors> behaviors;
+#pragma warning restore 169, 414
+
     }
 }

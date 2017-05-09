@@ -14,7 +14,7 @@ namespace Stripe.Infrastructure.Middleware
         {
             if (ParserPlugins != null) return;
 
-            // use reflection so this works on the bin directory
+            // use reflection so this works on the bin directory?
             ParserPlugins = new List<IParserPlugin>
             {
                 new AdditionalOwnerPlugin(),
