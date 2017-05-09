@@ -2,7 +2,7 @@
 using Stripe.Tests.Xunit;
 using Xunit;
 
-namespace Stripe.Tests
+namespace Stripe.Tests.XUnit
 {
     public class when_listing_balance_transactions
     { 
