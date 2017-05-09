@@ -53,24 +53,6 @@ namespace Stripe
         }
         #endregion
 
-        #region Expandable Card
-        [Obsolete("This is no longer in the stripe docs. Replaced with application?")]
-        public string CardId { get; set; }
-
-        [Obsolete("This is no longer in the stripe docs. Replaced with application?")]
-        [JsonIgnore]
-        public StripeCard Card { get; set; }
-
-        [JsonProperty("card")]
-        internal object InternalCard
-        {
-            set
-            {
-                ExpandableProperty<StripeCard>.Map(value, s => CardId = s, o => Card = o);
-            }
-        }
-        #endregion
-
         #region Expandable Charge
         public string ChargeId { get; set; }
 
