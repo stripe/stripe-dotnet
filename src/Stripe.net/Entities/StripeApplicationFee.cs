@@ -34,8 +34,21 @@ namespace Stripe
         [JsonProperty("amount_refunded")]
         public int AmountRefunded { get; set; }
 
-        [JsonProperty("application")]
+        #region Expandable Application
         public string ApplicationId { get; set; }
+
+        [JsonIgnore]
+        public StripeApplication Application { get; set; }
+
+        [JsonProperty("application")]
+        internal object InternalApplication
+        {
+            set
+            {
+                ExpandableProperty<StripeApplication>.Map(value, s => ApplicationId = s, o => Application = o);
+            }
+        }
+        #endregion
 
         #region Expandable Balance Transaction
         public string BalanceTransactionId { get; set; }
@@ -49,24 +62,6 @@ namespace Stripe
             set
             {
                 ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
-            }
-        }
-        #endregion
-
-        #region Expandable Card
-        [Obsolete("This is no longer in the stripe docs. Replaced with application?")]
-        public string CardId { get; set; }
-
-        [Obsolete("This is no longer in the stripe docs. Replaced with application?")]
-        [JsonIgnore]
-        public StripeCard Card { get; set; }
-
-        [JsonProperty("card")]
-        internal object InternalCard
-        {
-            set
-            {
-                ExpandableProperty<StripeCard>.Map(value, s => CardId = s, o => Card = o);
             }
         }
         #endregion
