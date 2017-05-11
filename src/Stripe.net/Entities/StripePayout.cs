@@ -23,7 +23,7 @@ namespace Stripe
         public string BalanceTransactionId { get; set; }
 
         // probably expandable
-        [JsonProperty("cancellation_balance_transaction")]
+        [JsonProperty("failure_balance_transaction")]
         public string CancellationBalanceTransactionId { get; set; }
 
         [JsonProperty("created")]
