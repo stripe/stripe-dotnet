@@ -1,4 +1,7 @@
-﻿namespace Stripe
+﻿using Newtonsoft.Json;
+using Stripe.Infrastructure;
+
+namespace Stripe
 {
     public enum SourceType
     {
@@ -6,6 +9,7 @@
         BankAccount
     }
 
+    [JsonConverter(typeof(SourceConverter))]
     public class Source : StripeEntityWithId
     {
         public SourceType Type { get; set; }

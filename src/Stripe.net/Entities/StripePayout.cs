@@ -64,14 +64,14 @@ namespace Stripe
         public string DestinationId { get; set; }
 
         [JsonIgnore]
-        public StripeExternalAccount Destination { get; set; }
+        public Source Destination { get; set; }
 
         [JsonProperty("destination")]
         internal object InternalDestination
         {
             set
             {
-                ExpandableProperty<StripeExternalAccount>.Map(value, s => DestinationId = s, o => Destination = o);
+                ExpandableProperty<Source>.Map(value, s => DestinationId = s, o => Destination = o);
             }
         }
         #endregion
