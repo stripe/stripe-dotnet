@@ -18,13 +18,40 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime ArrivalDate { get; set; }
 
-        // probably expandable
-        [JsonProperty("balance_transaction")]
+        #region Expandable Balance Transaction
         public string BalanceTransactionId { get; set; }
 
-        // probably expandable
-        [JsonProperty("failure_balance_transaction")]
+        [JsonIgnore]
+        public StripeBalanceTransaction BalanceTransaction { get; set; }
+
+        [JsonProperty("balance_transaction")]
+        internal object InternalBalanceTransaction
+        {
+            set
+            {
+                ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+            }
+        }
+        #endregion
+
+        #region Expandable Cancellation Balance Transaction
+        /// <summary>
+        /// If the payout failed or was canceled, this will be the ID of the balance transaction that reversed the initial balance transaction, and puts the funds from the failed payout back in your balance.
+        /// </summary>
         public string CancellationBalanceTransactionId { get; set; }
+
+        [JsonIgnore]
+        public StripeBalanceTransaction CancellationBalanceTransaction { get; set; }
+
+        [JsonProperty("failure_balance_transaction")]
+        internal object InternalCancellationBalanceTransaction
+        {
+            set
+            {
+                ExpandableProperty<StripeBalanceTransaction>.Map(value, s => CancellationBalanceTransactionId = s, o => CancellationBalanceTransaction = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
