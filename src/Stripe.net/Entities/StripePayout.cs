@@ -38,17 +38,17 @@ namespace Stripe
         /// <summary>
         /// If the payout failed or was canceled, this will be the ID of the balance transaction that reversed the initial balance transaction, and puts the funds from the failed payout back in your balance.
         /// </summary>
-        public string CancellationBalanceTransactionId { get; set; }
+        public string FailureBalanceTransactionId { get; set; }
 
         [JsonIgnore]
-        public StripeBalanceTransaction CancellationBalanceTransaction { get; set; }
+        public StripeBalanceTransaction FailureBalanceTransaction { get; set; }
 
         [JsonProperty("failure_balance_transaction")]
-        internal object InternalCancellationBalanceTransaction
+        internal object InternalFailureBalanceTransaction
         {
             set
             {
-                ExpandableProperty<StripeBalanceTransaction>.Map(value, s => CancellationBalanceTransactionId = s, o => CancellationBalanceTransaction = o);
+                ExpandableProperty<StripeBalanceTransaction>.Map(value, s => FailureBalanceTransactionId = s, o => FailureBalanceTransaction = o);
             }
         }
         #endregion
@@ -60,9 +60,21 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        // expandable, but different types
-        [JsonProperty("destination")]
+        #region Expandable Destination
         public string DestinationId { get; set; }
+
+        [JsonIgnore]
+        public StripeExternalAccount Destination { get; set; }
+
+        [JsonProperty("destination")]
+        internal object InternalDestination
+        {
+            set
+            {
+                ExpandableProperty<StripeExternalAccount>.Map(value, s => DestinationId = s, o => Destination = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("failure_code")]
         public string FailureCode { get; set; }

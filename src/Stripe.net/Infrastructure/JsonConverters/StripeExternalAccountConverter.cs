@@ -21,20 +21,26 @@ namespace Stripe.Infrastructure
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var list = JObject.Load(reader).ToObject<StripeList<dynamic>>();
+            var incoming = JObject.Load(reader);
 
-            var result = new List<dynamic>();
-
-            foreach (var item in list.Data)
+            var source = new StripeExternalAccount
             {
-                result.Add(item.SelectToken("object").ToString() == "bank_account"
-                    ? item.ToObject<StripeBankAccount>()
-                    : item.ToObject<StripeCard>());
+                Id = incoming.SelectToken("id").ToString()
+            };
+
+            if (incoming.SelectToken("object").ToString() == "bank_account")
+            {
+                source.Type = StripeExternalAccountType.BankAccount;
+                source.BankAccount = Mapper<StripeBankAccount>.MapFromJson(incoming.ToString());
             }
 
-            list.Data = result;
+            if (incoming.SelectToken("object").ToString() == "card")
+            {
+                source.Type = StripeExternalAccountType.Card;
+                source.Card = Mapper<StripeCard>.MapFromJson(incoming.ToString());
+            }
 
-            return list;
+            return source;
         }
     }
 }
