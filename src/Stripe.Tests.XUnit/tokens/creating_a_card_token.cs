@@ -23,8 +23,8 @@ namespace Stripe.Tests.Xunit
                         AddressZip = "35636",
                         AddressCountry = "US",
                         Cvc = "123",
-                        ExpirationMonth = "10",
-                        ExpirationYear = "2025",
+                        ExpirationMonth = 10,
+                        ExpirationYear = 2025,
                         Number = "4242424242424242"
                     }
                 }

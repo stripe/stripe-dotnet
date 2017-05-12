@@ -13,8 +13,8 @@
                 AddressState = "NY",
                 AddressZip = "11563",
                 Cvc = "1223",
-                ExpirationMonth = "10",
-                ExpirationYear = "2021",
+                ExpirationMonth = 10,
+                ExpirationYear = 2021,
                 Name = "Ray Barone",
                 Number = "4000000000000259",
             };
