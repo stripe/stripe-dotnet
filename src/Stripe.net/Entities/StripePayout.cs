@@ -18,13 +18,40 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime ArrivalDate { get; set; }
 
-        // probably expandable
-        [JsonProperty("balance_transaction")]
+        #region Expandable Balance Transaction
         public string BalanceTransactionId { get; set; }
 
-        // probably expandable
-        [JsonProperty("cancellation_balance_transaction")]
-        public string CancellationBalanceTransactionId { get; set; }
+        [JsonIgnore]
+        public StripeBalanceTransaction BalanceTransaction { get; set; }
+
+        [JsonProperty("balance_transaction")]
+        internal object InternalBalanceTransaction
+        {
+            set
+            {
+                ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+            }
+        }
+        #endregion
+
+        #region Expandable Cancellation Balance Transaction
+        /// <summary>
+        /// If the payout failed or was canceled, this will be the ID of the balance transaction that reversed the initial balance transaction, and puts the funds from the failed payout back in your balance.
+        /// </summary>
+        public string FailureBalanceTransactionId { get; set; }
+
+        [JsonIgnore]
+        public StripeBalanceTransaction FailureBalanceTransaction { get; set; }
+
+        [JsonProperty("failure_balance_transaction")]
+        internal object InternalFailureBalanceTransaction
+        {
+            set
+            {
+                ExpandableProperty<StripeBalanceTransaction>.Map(value, s => FailureBalanceTransactionId = s, o => FailureBalanceTransaction = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
@@ -33,9 +60,21 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        // expandable, but different types
-        [JsonProperty("destination")]
+        #region Expandable Destination
         public string DestinationId { get; set; }
+
+        [JsonIgnore]
+        public Source Destination { get; set; }
+
+        [JsonProperty("destination")]
+        internal object InternalDestination
+        {
+            set
+            {
+                ExpandableProperty<Source>.Map(value, s => DestinationId = s, o => Destination = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("failure_code")]
         public string FailureCode { get; set; }

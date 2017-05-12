@@ -6,6 +6,8 @@ namespace Stripe.Infrastructure
 {
     internal class SourceConverter : JsonConverter
     {
+        public override bool CanWrite => false;
+
         public override bool CanConvert(Type objectType)
         {
             throw new NotImplementedException();

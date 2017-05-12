@@ -22,8 +22,5 @@ namespace Stripe.Tests
 
         It should_return_a_stripe_charge = () =>
             _stripeCharge.ShouldNotBeNull();
-
-        It should_have_the_source_in_the_serialized_charge = () =>
-            _serializedCharge.ShouldContain("\"Source\":");
     }
 }

@@ -283,7 +283,7 @@ namespace Stripe
         /// <summary>
         /// For most Stripe users, the source of every charge is a credit or debit card. This hash is then the card object describing that card.
         /// </summary>
-        [JsonConverter(typeof(SourceConverter))]
+        [JsonProperty("source")]
         public Source Source { get; set; }
 
         #region Expandable Transfer

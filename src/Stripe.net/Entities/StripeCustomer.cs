@@ -68,7 +68,6 @@ namespace Stripe
         public string DefaultSourceId { get; set; }
 
         [JsonIgnore]
-        [JsonConverter(typeof(SourceConverter))]
         public Source DefaultSource { get; set; }
 
         [JsonProperty("default_source")]
@@ -122,7 +121,6 @@ namespace Stripe
         /// The customer’s payment sources, if any
         /// </summary>
         [JsonProperty("sources")]
-        [JsonConverter(typeof(SourceListConverter))]
         public StripeList<Source> Sources { get; set; }
 
         /// <summary>
