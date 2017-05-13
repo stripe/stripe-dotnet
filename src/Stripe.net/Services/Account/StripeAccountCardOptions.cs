@@ -18,10 +18,10 @@ namespace Stripe
         public bool? DefaultForCurrency { get; set; }
 
         [JsonProperty("external_account[exp_month]")]
-        public int ExpirationMonth { get; set; }
+        public int? ExpirationMonth { get; set; }
 
         [JsonProperty("external_account[exp_year]")]
-        public int ExpirationYear { get; set; }
+        public int? ExpirationYear { get; set; }
 
         [JsonProperty("external_account[number]")]
         public string Number { get; set; }

@@ -40,10 +40,10 @@ namespace Stripe.Tests
             StripeToken.StripeCard.Last4.ShouldEqual(StripeTokenCreateOptions.Card.Number.Substring(StripeTokenCreateOptions.Card.Number.Length - 4));
 
         It should_have_the_correct_card_expiration_month = () =>
-            StripeToken.StripeCard.ExpirationMonth.ShouldEqual(StripeTokenCreateOptions.Card.ExpirationMonth);
+            StripeToken.StripeCard.ExpirationMonth.ShouldEqual(StripeTokenCreateOptions.Card.ExpirationMonth.Value);
 
         It should_have_the_correct_card_expiration_year = () =>
-            StripeToken.StripeCard.ExpirationYear.ShouldEqual(StripeTokenCreateOptions.Card.ExpirationYear);
+            StripeToken.StripeCard.ExpirationYear.ShouldEqual(StripeTokenCreateOptions.Card.ExpirationYear.Value);
 
         It should_have_the_correct_card_name = () =>
             StripeToken.StripeCard.Name.ShouldEqual(StripeTokenCreateOptions.Card.Name);
