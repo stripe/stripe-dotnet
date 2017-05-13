@@ -25,8 +25,8 @@ namespace Stripe.Tests.Xunit
                 SourceCard = new SourceCard
                 {
                     Number = "4000000000000077",
-                    ExpirationMonth = "10",
-                    ExpirationYear = "2019",
+                    ExpirationMonth = 10,
+                    ExpirationYear = 2019,
                     Cvc = "123"
                 }
             });

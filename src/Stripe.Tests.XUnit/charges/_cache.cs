@@ -18,8 +18,8 @@ namespace Stripe.Tests.Xunit
                 SourceCard = new SourceCard
                 {
                     Number = "4242424242424242",
-                    ExpirationYear = "2022",
-                    ExpirationMonth = "10",
+                    ExpirationYear = 2022,
+                    ExpirationMonth = 10,
                     Name = "John Doe"
                 }
             };

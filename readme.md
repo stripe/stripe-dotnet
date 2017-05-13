@@ -339,8 +339,8 @@ With a card:
 	myCard.SourceCard = new SourceCard()
 	{
 		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
+		ExpirationYear = 2022,
+		ExpirationMonth = 10,
 		AddressCountry = "US",                // optional
 		AddressLine1 = "24 Beef Flank St",    // optional
 		AddressLine2 = "Apt 24",              // optional
@@ -368,8 +368,8 @@ With a card:
 	var myCard = new StripeCardUpdateOptions();
 
 	myCard.Name = "Cardy MyCardson"
-	myCard.ExpirationYear = "2016";
-	myCard.ExpirationMonth = "10";
+	myCard.ExpirationYear = 2016;
+	myCard.ExpirationMonth = 10;
 	myCard.AddressCountry = "US";
 	myCard.AddressLine1 = "1234 ComeOnBabySayYouLoveMe St";
 	myCard.AddressLine2 = "";
@@ -447,8 +447,8 @@ With a card:
 	myCharge.SourceCard = new SourceCard()
 	{
 		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
+		ExpirationYear = 2022,
+		ExpirationMonth = 10,
 		AddressCountry = "US",                // optional
 		AddressLine1 = "24 Beef Flank St",    // optional
 		AddressLine2 = "Apt 24",              // optional
@@ -652,8 +652,8 @@ With a card:
 	myCustomer.SourceCard = new SourceCard()
 	{
 		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
+		ExpirationYear = 2022,
+		ExpirationMonth = 10,
 		AddressCountry = "US",                // optional
 		AddressLine1 = "24 Beef Flank St",    // optional
 		AddressLine2 = "Apt 24",              // optional
@@ -707,8 +707,8 @@ With a card:
 		// set these properties if you set TokenId)
 		Object = "card",
 		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
+		ExpirationYear = 2022,
+		ExpirationMonth = 10,
 		AddressCountry = "US",                // optional
 		AddressLine1 = "24 Beef Flank St",    // optional
 		AddressLine2 = "Apt 24",              // optional
@@ -1113,7 +1113,7 @@ In Stripe.net, once a payment has been processed via Radar, it adds the `Review`
 Some example code (in test mode) that will create and expand a review:
 
 ```csharp
-	// a token from expiration month "06", expiration year "2020", and card "4000000000009235"
+	// a token from expiration month 6, expiration year 2020, and card "4000000000009235"
 	var token = "tkn_12345"; 
 	
 	var service = new StripeChargeService();
@@ -1335,8 +1335,8 @@ tokens on your server.
 		// set these properties if passing full card details (do not
 		// set these properties if you set TokenId)
 		Number = "4242424242424242",
-		ExpirationYear = "2022",
-		ExpirationMonth = "10",
+		ExpirationYear = 2022,
+		ExpirationMonth = 10,
 		AddressCountry = "US",                // optional
 		AddressLine1 = "24 Beef Flank St",    // optional
 		AddressLine2 = "Apt 24",              // optional

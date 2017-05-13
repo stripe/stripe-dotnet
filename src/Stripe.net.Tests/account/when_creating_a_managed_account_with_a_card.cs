@@ -43,8 +43,8 @@ namespace Stripe.Tests
             firstEntry.AddressCity.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.AddressCity);
             firstEntry.AddressState.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.AddressState);
             firstEntry.AddressZip.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.AddressZip);
-            firstEntry.ExpirationMonth.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.ExpirationMonth);
-            firstEntry.ExpirationYear.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.ExpirationYear);
+            firstEntry.ExpirationMonth.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.ExpirationMonth.Value);
+            firstEntry.ExpirationYear.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.ExpirationYear.Value);
             firstEntry.Name.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.Name);
             firstEntry.Currency.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.Currency);
             firstEntry.DefaultForCurrency.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.DefaultForCurrency.Value);

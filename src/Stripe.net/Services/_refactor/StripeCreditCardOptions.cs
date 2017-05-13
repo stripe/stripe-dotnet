@@ -8,10 +8,10 @@ namespace Stripe
         public string TokenId { get; set; }
 
         [JsonProperty("card[exp_month]")]
-        public string ExpirationMonth { get; set; }
+        public int? ExpirationMonth { get; set; }
 
         [JsonProperty("card[exp_year]")]
-        public string ExpirationYear { get; set; }
+        public int? ExpirationYear { get; set; }
 
         [JsonProperty("card[number]")]
         public string Number { get; set; }
