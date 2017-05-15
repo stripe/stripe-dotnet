@@ -53,5 +53,11 @@ namespace Stripe.Tests.Xunit
         {
             fixture.SubscriptionUpdated.Items.Data[0].Quantity.Should().Be(fixture.SubscriptionUpdateOptions.Items[1].Quantity);
         }
+
+        [Fact]
+        public void ended_should_not_be_null()
+        {
+            fixture.SubscriptionEnded.Should().NotBeNull();
+        }
     }
 }

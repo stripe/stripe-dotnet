@@ -7,9 +7,11 @@ namespace Stripe.Tests.Xunit
     {
         public StripeSubscriptionCreateOptions SubscriptionCreateOptions { get; }
         public StripeSubscriptionUpdateOptions SubscriptionUpdateOptions { get; }
+        public StripeSubscriptionUpdateOptions SubscriptionEndedOptions { get; }
 
         public StripeSubscription Subscription { get; }
         public StripeSubscription SubscriptionUpdated { get; }
+        public StripeSubscription SubscriptionEnded { get; }
 
         public subscription_fixture()
         {
@@ -36,6 +38,13 @@ namespace Stripe.Tests.Xunit
             };
 
             SubscriptionUpdated = service.Update(Subscription.Id, SubscriptionUpdateOptions);
+
+            SubscriptionEndedOptions = new StripeSubscriptionUpdateOptions
+            {
+                EndTrialNow = true
+            };
+
+            SubscriptionEnded = service.Update(Subscription.Id, SubscriptionEndedOptions);
         }
 
         public void Dispose()
