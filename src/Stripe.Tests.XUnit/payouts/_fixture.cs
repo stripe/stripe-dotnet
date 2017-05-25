@@ -52,8 +52,8 @@ namespace Stripe.Tests.Xunit
 
             PayoutListOptions = new StripePayoutListOptions
             {
-                Created = Payout.Created,
-                ArrivalDate = Payout.ArrivalDate
+                Created = new StripeDateFilter { EqualTo = Payout.Created },
+                ArrivalDate = new StripeDateFilter { EqualTo = Payout.ArrivalDate }
             };
 
             PayoutList = service.List(PayoutListOptions).ToList();
