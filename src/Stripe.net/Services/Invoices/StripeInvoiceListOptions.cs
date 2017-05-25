@@ -9,5 +9,8 @@ namespace Stripe
  
         [JsonProperty("date")]
         public StripeDateFilter Date { get; set; }
+
+        [JsonProperty("subscription")]
+        public string SubscriptionId { get; set; }
     }
 }
