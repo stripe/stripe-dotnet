@@ -84,5 +84,8 @@ namespace Stripe
 
         [JsonProperty("evidence[uncategorized_text")]
         public string UncategorizedText { get; set; }
+
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
     }
 }
