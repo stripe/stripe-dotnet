@@ -6,15 +6,11 @@ namespace Stripe
 {
     public class StripePayoutListOptions : StripeListOptions
     {
-        public DateTime? ArrivalDate { get; set; }
-
         [JsonProperty("arrival_date")]
-        internal string ArrivalDateInternal => ArrivalDate?.ConvertDateTimeToEpoch().ToString();
-
-        public DateTime? Created { get; set; }
+        public StripeDateFilter ArrivalDate { get; set; }
 
         [JsonProperty("created")]
-        internal string CreatedInternal => Created?.ConvertDateTimeToEpoch().ToString();
+        public StripeDateFilter Created { get; set; }
 
         [JsonProperty("destination")]
         public string Destination { get; set; }
