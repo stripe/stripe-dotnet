@@ -21,6 +21,9 @@ namespace Stripe.Infrastructure
                 StripeConfiguration.HttpMessageHandler != null
                     ? new HttpClient(StripeConfiguration.HttpMessageHandler)
                     : new HttpClient();
+
+            if (StripeConfiguration.HttpTimeSpan.HasValue)
+                HttpClient.Timeout = StripeConfiguration.HttpTimeSpan.Value;
         }
 
 
