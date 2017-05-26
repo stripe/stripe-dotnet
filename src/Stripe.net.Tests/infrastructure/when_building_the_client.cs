@@ -34,10 +34,10 @@ namespace Stripe.Tests
             var clientData = JToken.Parse(request.Headers.GetValues("X-Stripe-Client-User-Agent").FirstOrDefault());
         };
 
-        It should_have_the_net45_for_uname = () =>
+        It should_have_the_platform_in_the_uname = () =>
         {
             var clientData = JToken.Parse(request.Headers.GetValues("X-Stripe-Client-User-Agent").FirstOrDefault());
-            clientData.SelectToken("uname").ToString().ShouldContain("net45.");
+            clientData.SelectToken("uname").ToString().ShouldContain(".platform");
         };
     }
 }

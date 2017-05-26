@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using Stripe.Infrastructure;
+
+using System.Security.Cryptography;
+
 
 namespace Stripe
 {
@@ -56,6 +58,7 @@ namespace Stripe
 
         private static string computeSignature(string secret, string timestamp, string payload)
         {
+
             var secretBytes = Encoding.UTF8.GetBytes(secret);
             var payloadBytes = Encoding.UTF8.GetBytes($"{timestamp}.{payload}");
 
@@ -78,5 +81,6 @@ namespace Stripe
 
             return result == 0;
         }
+
     }
 }
