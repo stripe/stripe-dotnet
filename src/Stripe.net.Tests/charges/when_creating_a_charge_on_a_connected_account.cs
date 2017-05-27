@@ -13,8 +13,8 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            // setup a managed (connect) account
-            _account = Cache.GetManagedAccountWithCard();
+            // setup a custom (connect) account
+            _account = Cache.GetCustomAccountWithCard();
 
             // create a token (not on the connected account)
             _token = new StripeTokenService().Create(test_data.stripe_token_create_options.Valid());
@@ -25,7 +25,7 @@ namespace Stripe.Tests
 
         Because of = () =>
         {
-            // create a charge using a token with the destination set to the managed account
+            // create a charge using a token with the destination set to the custom account
             _charge = _chargeService
                 .Create(test_data.stripe_charge_create_options.ValidTokenWithDestination(_token.Id, _account.Id, 100));
         };

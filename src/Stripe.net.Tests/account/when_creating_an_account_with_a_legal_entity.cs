@@ -16,7 +16,7 @@ namespace Stripe.Tests
             _stripeAccountCreateOptions = new StripeAccountCreateOptions()
             {
                 Email = "joe@" + Guid.NewGuid() + ".com",
-                Managed = true
+                Type = "custom"
             };
 
             _timestamp = DateTime.UtcNow.Date;

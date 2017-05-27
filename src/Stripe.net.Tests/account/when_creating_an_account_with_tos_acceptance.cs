@@ -10,12 +10,12 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            _stripeAccount = Cache.GetManagedAccountWithCard();
-            _stripeAccountCreateOptions = Cache.ManagedAccountWithCardOptions;
+            _stripeAccount = Cache.GetCustomAccountWithCard();
+            _stripeAccountCreateOptions = Cache.CustomAccountWithCardOptions;
         };
 
         Because of = () =>
-            _stripeAccount = Cache.GetManagedAccountWithCard();
+            _stripeAccount = Cache.GetCustomAccountWithCard();
 
         It should_have_the_correct_email_address = () =>
             _stripeAccount.Email.ShouldEqual(_stripeAccountCreateOptions.Email);

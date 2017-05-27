@@ -14,7 +14,7 @@ namespace Stripe.Tests.Xunit
                 {
                     DefaultCurrency = "usd",
                     Email = "cu_xxxxxx@gmail.com",
-                    Managed = true
+                    Type = "custom"
                 }
             );
 
