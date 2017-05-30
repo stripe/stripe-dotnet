@@ -7,6 +7,9 @@ namespace Stripe
         [JsonProperty("country")]
         public string Country { get; set; }
 
+        /// <summary>
+        /// One of <see cref="StripeAccountType"/>
+        /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
     }

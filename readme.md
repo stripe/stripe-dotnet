@@ -133,7 +133,7 @@ Since Stripe returns `ExternalAccounts` as a single array (contains StripeCard's
 	var account = new StripeAccountCreateOptions();
 	account.Email = "jayme@yoyoyo.com"  // this is required for a Standard account as the owner gets emails from Stripe.
 	                                    // it's only used for reference on Custom accounts
-	account.Type = "custom";            // this can be "custom" or "standard". Express accounts are not created via the API.
+	account.Type = StripeAccountType.Custom;            // this can be "custom" or "standard". Express accounts are not created via the API.
 
 	// a few optional settings
 	account.Country = "US"                                 // defaults to your country

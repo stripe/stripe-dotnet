@@ -20,7 +20,7 @@ namespace Stripe.Tests.Xunit
                 DeclineChargeOnAvsFailure = false,
                 DeclineChargeOnCvcFailure = true,
                 DefaultCurrency = "usd",
-                Type = "custom",
+                Type = StripeAccountType.Custom,
 
                 ExternalBankAccount = new StripeAccountBankAccountOptions()
                 {

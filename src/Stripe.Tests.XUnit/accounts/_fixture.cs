@@ -31,7 +31,7 @@ namespace Stripe.Tests.Xunit
                 DeclineChargeOnCvcFailure = true,
                 DefaultCurrency = "usd",
                 Email = "caesar@turing.dpn",
-                Type = "custom",
+                Type = StripeAccountType.Custom,
                 ExternalCardAccount = new StripeAccountCardOptions()
                 {
                     AddressCountry = "US",

@@ -16,7 +16,7 @@ namespace Stripe.Tests
             _stripeAccountCreateOptions = new StripeAccountCreateOptions()
             {
                 Email = "joe@" + Guid.NewGuid() + ".com",
-                Type = "custom"
+                Type = StripeAccountType.Custom
             };
             _stripeAccountId = _stripeAccountService.Create(_stripeAccountCreateOptions).Id;
         };

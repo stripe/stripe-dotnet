@@ -21,7 +21,7 @@ namespace Stripe.Tests
             var options = test_data.stripe_account_create_options.ValidAccountWithCard();
             options.Country = "US";
             options.Email = $"joe{ Guid.NewGuid() }@blahblah.com";
-            options.Type = "custom";
+            options.Type = StripeAccountType.Custom;
             options.TosAcceptanceDate = DateTime.UtcNow.Date;
             options.TosAcceptanceIp = "8.8.8.8";
             options.TosAcceptanceUserAgent = "user-agent-7";
@@ -38,7 +38,7 @@ namespace Stripe.Tests
             var options = test_data.stripe_account_create_options.ValidAccountWithBankAccount();
             options.Country = "US";
             options.Email = $"joe{ Guid.NewGuid() }@blahblah.com";
-            options.Type = "custom";
+            options.Type = StripeAccountType.Custom;
 
             CustomAccountWithBankAccountOptions = options;
 
