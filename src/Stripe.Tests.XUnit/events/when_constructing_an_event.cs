@@ -38,9 +38,9 @@ namespace Stripe.Tests.Xunit
         public void it_should_validate_with_right_data()
         {
             ConstructedEvent.Should().NotBeNull();
-            Assert.True(ConstructedEvent.Request.Id.Equals("req_FAKE"));
-            Assert.True(ConstructedEvent.Request.IdempotencyKey.Equals("placeholder"));
-            Assert.True(ConstructedEvent.Account.Equals("acct_CONNECT"));
+            ConstructedEvent.Request.Should().Be("req_FAKE");
+            ConstructedEvent.Request.IdempotencyKey.Should().Be("placeholder");
+            ConstructedEvent.Account.Should().Be("acct_CONNECT");
         }
     }
 }
