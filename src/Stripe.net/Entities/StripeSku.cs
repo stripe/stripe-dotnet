@@ -20,7 +20,7 @@ namespace Stripe
         /// A dictionary of attributes and values for the attributes defined by the product. If, for example, a product’s attributes are ["size", "gender"], a valid SKU has the following dictionary of attributes: {"size": "Medium", "gender": "Unisex"}.
         /// </summary>
         [JsonProperty("attributes")]
-        public string[] Attributes { get; set; }
+        public Dictionary<string, string> Attributes { get; set; }
 
         /// <summary>
         /// Time at which the object was created.
