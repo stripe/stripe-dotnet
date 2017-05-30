@@ -16,7 +16,6 @@ namespace Stripe
 
 
 
-
         // Async
         public virtual Task<Stripe3DSecure> CreateAsync(Stripe3DSecureCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
