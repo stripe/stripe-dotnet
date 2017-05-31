@@ -77,6 +77,9 @@ namespace Stripe
         [JsonProperty("redirect")]
         public StripeRedirect Redirect { get; set; }
 
+        [JsonProperty("bitcoin")]
+        public StripeBitcoin Bitcoin { get; set; }
+
         [JsonProperty("bancontact")]
         public StripeBancontact Bancontact { get; set; }
 
