@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26430.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E3F91159-E7A8-4F44-9DD9-B7D76E2E7542}"
 	ProjectSection(SolutionItems) = preProject
@@ -16,11 +16,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B6B9F592-4B61-45D0-A9B2-8D1C03C8E81F}"
 	ProjectSection(SolutionItems) = preProject
 		..\build\build.psm1 = ..\build\build.psm1
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E7A9FD3A-77C4-467C-9A70-BA0D3EB4C042}"
-	ProjectSection(SolutionItems) = preProject
-		build-and-test.bat = build-and-test.bat
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stripe.net", "Stripe.net\Stripe.net.csproj", "{FA3F03CD-6128-4B34-89CA-F5D5DE0991AD}"
@@ -81,6 +76,5 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B6B9F592-4B61-45D0-A9B2-8D1C03C8E81F} = {E3F91159-E7A8-4F44-9DD9-B7D76E2E7542}
-		{E7A9FD3A-77C4-467C-9A70-BA0D3EB4C042} = {E3F91159-E7A8-4F44-9DD9-B7D76E2E7542}
 	EndGlobalSection
 EndGlobal
