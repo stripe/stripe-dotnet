@@ -7,7 +7,7 @@ namespace Stripe
         [JsonProperty("country")]
         public string Country { get; set; }
 
-        [JsonProperty("managed")]
-        public bool? Managed { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace Stripe.Tests.Xunit
                 new StripeAccountCreateOptions
                 {
                     Email = "happy@gilmore.com",
-                    Managed = true,
+                    Type = "custom",
                     LegalEntity = new StripeAccountLegalEntityOptions
                     {
                         AdditionalOwners = new List<StripeAccountAdditionalOwner>()

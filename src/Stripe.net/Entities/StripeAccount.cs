@@ -55,9 +55,6 @@ namespace Stripe
         [JsonProperty("legal_entity")]
         public StripeLegalEntity LegalEntity { get; set; }
 
-        [JsonProperty("managed")]
-        public bool Managed { get; set; }
-
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
@@ -82,6 +79,9 @@ namespace Stripe
         [JsonProperty("tos_acceptance")]
         public StripeTermsOfServiceAcceptance TermsOfServiceAcceptance { get; set; }
 
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
         [JsonProperty("payouts_enabled")]
         public bool PayoutsEnabled { get; set; }
 
@@ -95,6 +95,6 @@ namespace Stripe
         public StripeAccountVerification AccountVerification { get; set; }
 
         [JsonProperty("keys")]
-        public StripeManagedAccountKeys ManagedAccountKeys { get; set; }
+        public StripeCustomAccountKeys CustomAccountKeys { get; set; }
      }
 }

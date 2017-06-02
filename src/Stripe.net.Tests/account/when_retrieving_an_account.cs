@@ -12,7 +12,7 @@ namespace Stripe.Tests
         {
             _stripeAccountService = new StripeAccountService();
 
-            _createdAccount = Cache.GetManagedAccountWithCard();
+            _createdAccount = Cache.GetCustomAccountWithCard();
         };
 
         Because of = () =>

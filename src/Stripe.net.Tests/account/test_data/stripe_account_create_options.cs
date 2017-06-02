@@ -17,7 +17,7 @@ namespace Stripe.Tests.test_data
                 DeclineChargeOnCvcFailure = true,
                 DefaultCurrency = "usd",
                 Email = $"Debra{Guid.NewGuid()}@gmail.com",
-                Managed = true,
+                Type = "custom",
 
                 ExternalCardAccount = new StripeAccountCardOptions()
                 {
@@ -49,7 +49,7 @@ namespace Stripe.Tests.test_data
                 DeclineChargeOnAvsFailure = false,
                 DeclineChargeOnCvcFailure = true,
                 DefaultCurrency = "usd",
-                Managed = true,
+                Type = "custom",
 
                 ExternalBankAccount = new StripeAccountBankAccountOptions()
                 {

@@ -17,7 +17,7 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            var managedAccount = Cache.GetManagedAccountWithCard();
+            var customAccount = Cache.GetCustomAccountWithCard();
 
             var token = new StripeTokenService().Create(test_data.stripe_token_create_options.Valid());
 
@@ -27,7 +27,7 @@ namespace Stripe.Tests
             _charge = new StripeChargeService().Create(chargeCreateOptions,
                 new StripeRequestOptions
                 {
-                    StripeConnectAccountId = managedAccount.Id
+                    StripeConnectAccountId = customAccount.Id
                 }
             );
 

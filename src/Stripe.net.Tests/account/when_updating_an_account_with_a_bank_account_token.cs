@@ -17,7 +17,7 @@ namespace Stripe.Tests
             var stripeAccountCreateOptions = test_data.stripe_account_create_options.ValidAccountWithBankAccount();
             stripeAccountCreateOptions.Country = "US";
             stripeAccountCreateOptions.Email = "joe" + Guid.NewGuid() + "@blahblah.com";
-            stripeAccountCreateOptions.Managed = true;
+            stripeAccountCreateOptions.Type = "custom";
 
             _initialAccount = _stripeAccountService.Create(stripeAccountCreateOptions);
 
