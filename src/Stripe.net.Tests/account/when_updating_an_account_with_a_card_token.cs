@@ -14,10 +14,10 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            // create a managed account
+            // create a custom account
             _stripeAccountService = new StripeAccountService();
 
-            _initialAccount = Cache.GetManagedAccountWithCard();
+            _initialAccount = Cache.GetCustomAccountWithCard();
 
             // create a token for a new card
             var tokenOptions = test_data.stripe_token_create_options.ValidDebitCard();

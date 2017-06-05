@@ -1,7 +1,8 @@
 ﻿{
   "id": "evt_1ADKLLLWlyqCpbLp0qRyqExL",
   "object": "event",
-  "api_version": "2017-04-06",
+  "account": "acct_CONNECT",
+  "api_version": "2017-05-25",
   "created": 1493329207,
   "data": {
     "object": {
@@ -34,6 +35,9 @@
   },
   "livemode": false,
   "pending_webhooks": 2,
-  "request": null,
+  "request": {
+    "id": "req_FAKE",
+    "idempotency_key": "placeholder"
+  },
   "type": "invoiceitem.updated"
 }

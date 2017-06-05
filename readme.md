@@ -91,7 +91,7 @@ There is a course made by Craig McKeachie - find it here:
 Stripe Response
 ---------------
 
-The [`StripeResponse`](./src/Stripe/Infrastructure/public/StripeResponse.cs) object is a property (with the same name) attached to all entities in Stripe.net when they are returned from a service call.
+The [`StripeResponse`](./src/Stripe.net/Infrastructure/public/StripeResponse.cs) object is a property (with the same name) attached to all entities in Stripe.net when they are returned from a service call.
 
 e.g. `var charge = new StripeChargeService().Create(...)` - when you access `charge.StripeResponse`, this object will be available. The object is documented below with useful tips on each property.
 
@@ -125,15 +125,15 @@ Accounts
 --------
 ### Creating an account
 
-When creating an account, you can create a standalone or managed account. Standalone accounts are managed by Stripe and the account owner directly. Managed accounts are handled by your platform. See the Stripe documentation for more information.
+When creating an account, you can create a Standard or Custom account. Standard accounts are managed by Stripe and the account owner directly. Custom accounts are handled by your platform. See the Stripe documentation for more information.
 
 Since Stripe returns `ExternalAccounts` as a single array (contains StripeCard's and/or StripeBankAccount's), that type is a dynamic StripeList. These are split up as `ExternalCards` and `ExternalBankAccounts` for your convenience.
 
 ```csharp
 	var account = new StripeAccountCreateOptions();
-	account.Email = "jayme@yoyoyo.com"  // this is required if it is not a managed account. the user is emailed on standalone accounts,
-	                                    // it's only used for reference on managed accounts
-	account.Managed = false;            // set this to true if you want a managed account (email is not required if this is set to true)
+	account.Email = "jayme@yoyoyo.com"  // this is required for a Standard account as the owner gets emails from Stripe.
+	                                    // it's only used for reference on Custom accounts
+	account.Type = StripeAccountType.Custom;            // this can be "custom" or "standard". Express accounts are not created via the API.
 
 	// a few optional settings
 	account.Country = "US"                                 // defaults to your country
@@ -870,7 +870,7 @@ File Uploads
 
 ### Creating a file upload
 
-When setting the Purpose of a file, all available options are listed as constants in [StripeFilePurpose](src/Stripe/Constants/StripeFilePurpose.cs).
+When setting the Purpose of a file, all available options are listed as constants in [StripeFilePurpose](src/Stripe.net/Constants/StripeFilePurpose.cs).
 
 ```csharp
 	var fileService = new StripeFileUploadService();

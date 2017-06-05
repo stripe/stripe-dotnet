@@ -14,7 +14,7 @@ namespace Stripe.Tests.Xunit
                 Type = StripeSourceType.Ideal,
                 IdealBank = "ing",
                 IdealStatementDescriptor = "finished",
-                Amount = 1,
+                Amount = 2001,
                 Currency = "eur",
                 RedirectReturnUrl = "http://no.where/webhooks"
             };

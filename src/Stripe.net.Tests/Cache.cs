@@ -8,41 +8,41 @@ namespace Stripe.Tests
         public static string RecipientApiKey => Environment.GetEnvironmentVariable("STRIPE_RECIPIENT_KEY");
 
 
-        public static StripeAccountCreateOptions ManagedAccountWithCardOptions { get; set; }
-        public static StripeAccountCreateOptions ManagedAccountWithBankAccountOptions { get; set; }
+        public static StripeAccountCreateOptions CustomAccountWithCardOptions { get; set; }
+        public static StripeAccountCreateOptions CustomAccountWithBankAccountOptions { get; set; }
 
-        private static StripeAccount _managedAccountWithCard { get; set; }
-        private static StripeAccount _managedAccountWithBankAccount { get; set; }
+        private static StripeAccount _customAccountWithCard { get; set; }
+        private static StripeAccount _customAccountWithBankAccount { get; set; }
 
-        public static StripeAccount GetManagedAccountWithCard()
+        public static StripeAccount GetCustomAccountWithCard()
         {  
-            if(_managedAccountWithCard != null) return _managedAccountWithCard;
+            if(_customAccountWithCard != null) return _customAccountWithCard;
 
             var options = test_data.stripe_account_create_options.ValidAccountWithCard();
             options.Country = "US";
             options.Email = $"joe{ Guid.NewGuid() }@blahblah.com";
-            options.Managed = true;
+            options.Type = StripeAccountType.Custom;
             options.TosAcceptanceDate = DateTime.UtcNow.Date;
             options.TosAcceptanceIp = "8.8.8.8";
             options.TosAcceptanceUserAgent = "user-agent-7";
 
-            ManagedAccountWithCardOptions = options;
+            CustomAccountWithCardOptions = options;
 
-            return _managedAccountWithCard = new StripeAccountService().Create(options);
+            return _customAccountWithCard = new StripeAccountService().Create(options);
         }
 
-        public static StripeAccount GetManagedAccountWithBankAccount()
+        public static StripeAccount GetCustomAccountWithBankAccount()
         {
-            if (_managedAccountWithBankAccount != null) return _managedAccountWithBankAccount;
+            if (_customAccountWithBankAccount != null) return _customAccountWithBankAccount;
 
             var options = test_data.stripe_account_create_options.ValidAccountWithBankAccount();
             options.Country = "US";
             options.Email = $"joe{ Guid.NewGuid() }@blahblah.com";
-            options.Managed = true;
+            options.Type = StripeAccountType.Custom;
 
-            ManagedAccountWithBankAccountOptions = options;
+            CustomAccountWithBankAccountOptions = options;
 
-            return _managedAccountWithBankAccount = new StripeAccountService().Create(options);
+            return _customAccountWithBankAccount = new StripeAccountService().Create(options);
         }
 
     }

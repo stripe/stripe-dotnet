@@ -53,12 +53,9 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeSource>.Map(value, s => SourceId = s, o => Source = o);
+                StringOrObject<StripeSource>.Map(value, s => SourceId = s, o => Source = o);
             }
         }
         #endregion
-
-        [JsonProperty("sourced_transfers")]
-        public StripeList<StripeTransfer> SourcedTransfers { get; set; }
     }
 }

@@ -3,18 +3,22 @@ using Xunit;
 
 namespace Stripe.Tests.Xunit
 {
-    public class creating_and_updating_card_source
+    public class creating_and_updating_bitcoin_source
     {
         private StripeSource Source { get; set; }
 
-        public creating_and_updating_card_source()
+        public creating_and_updating_bitcoin_source()
         {
             var options = new StripeSourceCreateOptions
             {
-                Type = StripeSourceType.Card,
-                Amount = 100,
+                Type = StripeSourceType.Bitcoin,
+                Amount = 100101,
                 Currency = "usd",
-                Token = Cache.GetToken().Id,
+                Owner = new StripeSourceOwner
+                {
+                    Name = "Satoshi Nakamoto",
+                    Email = "nobody_knows@gmail.com"
+                },
                 RedirectReturnUrl = "http://no.where/webhooks"
             };
 
@@ -25,7 +29,7 @@ namespace Stripe.Tests.Xunit
         public void source_should_not_be_null()
         {
             Source.Should().NotBeNull();
-            Source.Card.Should().NotBeNull();
+            Source.Bitcoin.Should().NotBeNull();
         }
     }
 }

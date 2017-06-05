@@ -55,7 +55,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<CustomerBankAccount>.Map(value, s => DefaultCustomerBankAccountId = s, o => DefaultCustomerBankAccount = o);
+                StringOrObject<CustomerBankAccount>.Map(value, s => DefaultCustomerBankAccountId = s, o => DefaultCustomerBankAccount = o);
             }
         }
         #endregion
@@ -75,7 +75,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<Source>.Map(value, s => DefaultSourceId = s, o => DefaultSource = o);
+                StringOrObject<Source>.Map(value, s => DefaultSourceId = s, o => DefaultSource = o);
             }
         }
 

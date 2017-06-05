@@ -4,7 +4,7 @@ using Machine.Specifications;
 
 namespace Stripe.Tests
 {
-    public class when_creating_a_managed_account_with_a_card
+    public class when_creating_a_custom_account_with_a_card
     {
         protected static StripeAccountCreateOptions CreateOrUpdateOptions;
         protected static StripeAccount StripeAccount;
@@ -18,8 +18,8 @@ namespace Stripe.Tests
 
         Because of = () =>
         {
-            StripeAccount = Cache.GetManagedAccountWithCard();
-            CreateOrUpdateOptions = Cache.ManagedAccountWithCardOptions;
+            StripeAccount = Cache.GetCustomAccountWithCard();
+            CreateOrUpdateOptions = Cache.CustomAccountWithCardOptions;
         };
 
         It should_have_the_correct_country = () =>
@@ -28,8 +28,8 @@ namespace Stripe.Tests
         It should_have_the_correct_email = () =>
             StripeAccount.Email.ShouldEqual(CreateOrUpdateOptions.Email);
 
-        It should_be_a_managed_account = () =>
-            StripeAccount.Managed.ShouldEqual(true);
+        It should_be_a_custom_account = () =>
+            StripeAccount.Type.ShouldEqual("custom");
 
         It should_have_the_correct_external_account_info = () =>
         {

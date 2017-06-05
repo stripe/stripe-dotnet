@@ -22,7 +22,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeFileUpload>.Map(value, s => DocumentId = s, o => Document = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => DocumentId = s, o => Document = o);
             }
         }
         #endregion
