@@ -23,7 +23,7 @@ namespace Stripe.Tests
             {
                 set
                 {
-                    ExpandableProperty<TestEntityWithId>.Map(value, s => FooId = s, o => Foo = o);
+                    StringOrObject<TestEntityWithId>.Map(value, s => FooId = s, o => Foo = o);
                 }
             }
         }

@@ -53,7 +53,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeSource>.Map(value, s => SourceId = s, o => Source = o);
+                StringOrObject<StripeSource>.Map(value, s => SourceId = s, o => Source = o);
             }
         }
         #endregion

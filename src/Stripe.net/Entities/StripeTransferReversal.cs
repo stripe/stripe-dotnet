@@ -24,7 +24,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
             }
         }
         #endregion
@@ -50,7 +50,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeTransfer>.Map(value, s => TransferId = s, o => Transfer = o);
+                StringOrObject<StripeTransfer>.Map(value, s => TransferId = s, o => Transfer = o);
             }
         }
         #endregion

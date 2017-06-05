@@ -14,8 +14,8 @@ namespace Stripe.Tests.Xunit
                 {
                     DefaultCurrency = "usd",
                     Email = "cu_xxxxxx@gmail.com",
-                    Managed = true
-                }
+                    Type = StripeAccountType.Custom
+            }
             );
 
             var chargeService = new StripeChargeService(Cache.ApiKey);
