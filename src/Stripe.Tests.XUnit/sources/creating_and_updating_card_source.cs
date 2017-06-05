@@ -12,7 +12,7 @@ namespace Stripe.Tests.Xunit
             var options = new StripeSourceCreateOptions
             {
                 Type = StripeSourceType.Card,
-                Amount = 1,
+                Amount = 100,
                 Currency = "usd",
                 Token = Cache.GetToken().Id,
                 RedirectReturnUrl = "http://no.where/webhooks"
