@@ -25,7 +25,24 @@ namespace Stripe
         [JsonProperty("pending_webhooks")]
         public int PendingWebhooks { get; set; }
 
+        #region Request
+        // this works like expandable properties. it's used for the event having just a string for the request id or
+        // the Request object for requests after the 2017-05-25 api release
+
         [JsonProperty("request")]
+        public string RequestId { get; set; }
+
+        [JsonIgnore]
         public StripeEventRequest Request { get; set; }
+
+        [JsonProperty("request")]
+        internal object InternalRequest
+        {
+            set
+            {
+                StringOrObject<StripeEventRequest>.Map(value, s => RequestId = s, o => Request = o);
+            }
+        }
+        #endregion
     }
 }

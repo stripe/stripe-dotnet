@@ -2,11 +2,8 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-	public class StripeEventRequest : StripeEntity
+	public class StripeEventRequest : StripeEntityWithId
 	{
-		[JsonProperty("id")]
-		public string Id { get; set; }
-
 		[JsonProperty("idempotency_key")]
 		public string IdempotencyKey { get; set; }
 	}
