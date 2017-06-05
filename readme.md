@@ -91,7 +91,7 @@ There is a course made by Craig McKeachie - find it here:
 Stripe Response
 ---------------
 
-The [`StripeResponse`](./src/Stripe/Infrastructure/public/StripeResponse.cs) object is a property (with the same name) attached to all entities in Stripe.net when they are returned from a service call.
+The [`StripeResponse`](./src/Stripe.net/Infrastructure/public/StripeResponse.cs) object is a property (with the same name) attached to all entities in Stripe.net when they are returned from a service call.
 
 e.g. `var charge = new StripeChargeService().Create(...)` - when you access `charge.StripeResponse`, this object will be available. The object is documented below with useful tips on each property.
 
@@ -870,7 +870,7 @@ File Uploads
 
 ### Creating a file upload
 
-When setting the Purpose of a file, all available options are listed as constants in [StripeFilePurpose](src/Stripe/Constants/StripeFilePurpose.cs).
+When setting the Purpose of a file, all available options are listed as constants in [StripeFilePurpose](src/Stripe.net/Constants/StripeFilePurpose.cs).
 
 ```csharp
 	var fileService = new StripeFileUploadService();

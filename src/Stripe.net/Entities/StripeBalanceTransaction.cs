@@ -57,8 +57,5 @@ namespace Stripe
             }
         }
         #endregion
-
-        [JsonProperty("sourced_transfers")]
-        public StripeList<StripeTransfer> SourcedTransfers { get; set; }
     }
 }
