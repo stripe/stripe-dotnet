@@ -52,7 +52,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeCard>.Map(value, s => StripeDefaultCardId = s, o => StripeDefaultCard = o);
+                StringOrObject<StripeCard>.Map(value, s => StripeDefaultCardId = s, o => StripeDefaultCard = o);
             }
         }
         #endregion

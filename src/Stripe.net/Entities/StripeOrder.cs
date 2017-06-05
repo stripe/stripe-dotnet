@@ -43,7 +43,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
+                StringOrObject<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
             }
         }
         #endregion
@@ -75,7 +75,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+                StringOrObject<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
             }
         }
         #endregion

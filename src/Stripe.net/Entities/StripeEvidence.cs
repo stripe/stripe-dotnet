@@ -22,7 +22,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeFileUpload>.Map(value, s => CancellationPolicyFileId = s, o => CancellationPolicyFile = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => CancellationPolicyFileId = s, o => CancellationPolicyFile = o);
             }
         }
         #endregion
@@ -44,7 +44,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeFileUpload>.Map(value, s => CustomerCommunicationFileId = s, o => CustomerCommunicationFile = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => CustomerCommunicationFileId = s, o => CustomerCommunicationFile = o);
             }
         }
         #endregion
@@ -69,7 +69,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeFileUpload>.Map(value, s => CustomerSignatureFileId = s, o => CustomerSignatureFile = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => CustomerSignatureFileId = s, o => CustomerSignatureFile = o);
             }
         }
         #endregion
@@ -85,7 +85,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeFileUpload>.Map(value, s => DuplicateChargeDocumentationFileId = s, o => DuplicateChargeDocumentationFile = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => DuplicateChargeDocumentationFileId = s, o => DuplicateChargeDocumentationFile = o);
             }
         }
         #endregion
@@ -110,7 +110,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeFileUpload>.Map(value, s => ReceiptFileId = s, o => ReceiptFile = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => ReceiptFileId = s, o => ReceiptFile = o);
             }
         }
         #endregion
@@ -126,7 +126,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeFileUpload>.Map(value, s => RefundPolicyFileId = s, o => RefundPolicyFile = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => RefundPolicyFileId = s, o => RefundPolicyFile = o);
             }
         }
         #endregion
@@ -151,7 +151,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeFileUpload>.Map(value, s => ServiceDocumentationFileId = s, o => ServiceDocumentationFile = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => ServiceDocumentationFileId = s, o => ServiceDocumentationFile = o);
             }
         }
         #endregion
@@ -176,7 +176,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeFileUpload>.Map(value, s => ShippingDocumentationFileId = s, o => ShippingDocumentationFile = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => ShippingDocumentationFileId = s, o => ShippingDocumentationFile = o);
             }
         }
         #endregion
@@ -195,7 +195,7 @@ namespace Stripe
         {
             set
             {
-                ExpandableProperty<StripeFileUpload>.Map(value, s => UncategorizedFileId = s, o => UncategorizedFile = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => UncategorizedFileId = s, o => UncategorizedFile = o);
             }
         }
         #endregion
