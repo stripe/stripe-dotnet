@@ -5,9 +5,9 @@ namespace Stripe
 {
     public enum SourceType
     {
-        Deleted,
         Card,
-        BankAccount
+        BankAccount,
+        Deleted
     }
 
     [JsonConverter(typeof(SourceConverter))]
