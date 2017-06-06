@@ -5,6 +5,7 @@ namespace Stripe
 {
     public enum SourceType
     {
+        Deleted,
         Card,
         BankAccount
     }
@@ -14,6 +15,7 @@ namespace Stripe
     {
         public SourceType Type { get; set; }
 
+        public StripeDeleted Deleted { get; set; }
         public StripeCard Card { get; set; }
         public StripeBankAccount BankAccount { get; set; }
     }
