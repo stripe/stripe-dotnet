@@ -29,16 +29,22 @@ namespace Stripe.Infrastructure
                 Id = incoming.SelectToken("id").ToString()
             };
 
-            if (incoming.SelectToken("object").ToString() == "bank_account")
+            if (incoming.SelectToken("object")?.ToString() == "bank_account")
             {
                 source.Type = SourceType.BankAccount;
                 source.BankAccount = Mapper<StripeBankAccount>.MapFromJson(incoming.ToString());
             }
 
-            if (incoming.SelectToken("object").ToString() == "card")
+            if (incoming.SelectToken("object")?.ToString() == "card")
             {
                 source.Type = SourceType.Card;
                 source.Card = Mapper<StripeCard>.MapFromJson(incoming.ToString());
+            }
+
+            if (incoming.SelectToken("deleted")?.ToString() == "true")
+            {
+                source.Type = SourceType.Deleted;
+                source.Deleted = Mapper<StripeDeleted>.MapFromJson(incoming.ToString());
             }
 
             return source;
