@@ -17,7 +17,9 @@ namespace Stripe.Tests
 
         Because of = () =>
         {
-            StripeLoginLink = _stripeLoginLinkService.Create("acct_1ATUvjL0EMaiKBY7");
+            // This is the id of an Express account for this library's platform.
+            // When testing locally you need to put an id valid for your platform.
+            StripeLoginLink = _stripeLoginLinkService.Create("acct_1ATVm2ETkVWzzLxp");
         };
 
         It should_have_a_url = () =>
