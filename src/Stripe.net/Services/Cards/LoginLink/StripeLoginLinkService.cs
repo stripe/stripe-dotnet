@@ -5,17 +5,22 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeLoginLinkService : StripeService
+    public class StripeLoginLinkService : StripeBasicService<StripeLoginLink>
     {
         public StripeLoginLinkService(string apiKey = null) : base(apiKey) { }
 
         //Sync
         public virtual StripeLoginLink Create(string accountId, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeLoginLink>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(null, $"{Urls.BaseUrl}/accounts/{accountId}/login_links", false),
-                SetupRequestOptions(requestOptions))
-            );
+            return Post($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, null);
+        }
+
+
+
+        // Async
+        public virtual Task<StripeLoginLink> CreateAsync(string accountId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return PostAsync($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, cancellationToken, null);
         }
     }
 }
