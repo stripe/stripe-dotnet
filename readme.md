@@ -179,6 +179,15 @@ Updating an account has almost all the same available properties as creating an 
 
 [StripeListOptions](#stripelistoptions-paging) for paging
 
+### Creating a login link
+
+When managing Express accounts, you can allow the owner to log into their dashboard by creating a login link for them.
+
+```csharp
+	var loginLinkService = new StripeLoginLinkService();
+	StripeLoginLink loginLink = loginLinkService.Create(*accountId*);
+```
+
 Application Fees
 ----------------
 
