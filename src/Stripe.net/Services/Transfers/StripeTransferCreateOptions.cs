@@ -23,5 +23,8 @@ namespace Stripe
 
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
+
+        [JsonProperty("source_type")]
+        public string SourceType { get; set; }
     }
 }
