@@ -3,30 +3,58 @@ using Xunit;
 
 namespace Stripe.Tests.Xunit
 {
-    // ******** this test was used to try and get the response from three3secure. it would work, but it would have to be a test source id
+    public class creating_three_d_secure_source
+    {
+        private StripeSource Source { get; }
+        private StripeSource ThreeDSecure { get; }
 
-    //public class creating_three_d_secure_source
-    //{
-    //    private StripeSource Source { get; set; }
+        public creating_three_d_secure_source()
+        {
+            Source = new StripeSourceService(Cache.ApiKey).Create(
+                new StripeSourceCreateOptions
+                {
+                    Type = StripeSourceType.Card,
+                    Amount = 8675309,
+                    Currency = "eur",
+                    RedirectReturnUrl = "http://no.where/webhooks",
+                    Card = new StripeCreditCardOptions
+                    {
+                        Number = "4000000000003063",
+                        ExpirationMonth = 12,
+                        ExpirationYear = 2020
+                    }
+                }
+            );
 
-    //    public creating_three_d_secure_source()
-    //    {
-    //        var options = new StripeSourceCreateOptions
-    //        {
-    //            Type = StripeSourceType.ThreeDSecure,
-    //            ThreeDSecureId = "4000000000003063",
-    //            Amount = 1,
-    //            Currency = "eur",
-    //            RedirectReturnUrl = "http://no.where/webhooks"
-    //        };
+            ThreeDSecure = new StripeSourceService(Cache.ApiKey).Create(
+                new StripeSourceCreateOptions
+                {
+                    Type = StripeSourceType.ThreeDSecure,
+                    Amount = 8675309,
+                    Currency = "eur",
+                    RedirectReturnUrl = "http://no.where/webhooks",
+                    ThreeDSecureCardOrSourceId = Source.Id
+                }
+            );
 
-    //        Source = new StripeSourceService(Cache.ApiKey).Create(options);
-    //    }
+            // from here, you have to go to the threeDSecure.Redirect.Url and click success
 
-    //    [Fact]
-    //    public void source_should_not_be_null()
-    //    {
-    //        Source.Should().NotBeNull();
-    //    }
-    //}
+            //var charge = new StripeChargeService(Cache.ApiKey).Create(
+            //    new StripeChargeCreateOptions
+            //    {
+            //        Amount = 8675309,
+            //        Currency = "eur",
+            //        SourceTokenOrExistingSourceId = threeDSecure.Id
+            //    }
+            //);
+        }
+
+        [Fact]
+        public void should_setup_for_3d_secure()
+        {
+            Source.Should().NotBeNull();
+            ThreeDSecure.Should().NotBeNull();
+            ThreeDSecure.Redirect.Url.Should().NotBeNull();
+        }
+    }
 }

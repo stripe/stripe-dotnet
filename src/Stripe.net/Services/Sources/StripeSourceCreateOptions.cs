@@ -35,6 +35,9 @@ namespace Stripe
         [JsonProperty("bancontact[statement_descriptor]")]
         public string BancontactStatementDescriptor { get; set; }
 
+        [JsonProperty("card")]
+        public StripeCreditCardOptions Card { get; set; }
+
         [JsonProperty("ideal[bank]")]
         public string IdealBank { get; set; }
 
