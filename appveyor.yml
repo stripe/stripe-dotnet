@@ -4,8 +4,6 @@ image: Visual Studio 2017
 environment:
   STRIPE_TEST_KEY:
     secure: +p/EWA8+0B64k7a88nb6ZiSTcv6TIukyhQQU2Ljf7jNVtwVZXhJtNf5LdemV7EuY
-  STRIPE_RECIPIENT_KEY:
-    secure: +eN5/SMeEbaqOR5VeM62dIJ8CGEzb74+3+feLb60jnYhQJ5enX2IwdFyfIy6/5UZ
 
 deploy:
 - provider: NuGet
@@ -14,22 +12,33 @@ deploy:
   on:
     branch: master
 
-install:
-- ps: Import-Module .\build\build.psm1
-
 before_build:
-- ps: Invoke-Restore
+  - ps: Write-Host $("`n               HOST INFORMATION               `n") -BackgroundColor DarkCyan
+  - dotnet --info
+  - ps: Write-Host $("`n               RESTORING PACKAGES FOR ALL FRAMEWORKS               `n") -BackgroundColor DarkCyan
+  - dotnet restore src\
+
+build:
+  parallel: true
 
 build_script:
-- ps: Invoke-Build
-
-test_script:
-- ps: Invoke-Test
+  - ps: Write-Host $("`n               BUILDING EVERYTHING               `n") -BackgroundColor DarkCyan
+  - dotnet build -c Release src\Stripe.net
+  - dotnet build -c Debug src\Stripe.net
+  - dotnet build src\Stripe.net.Tests -c Debug
+  - dotnet build src\Stripe.Tests.Xunit -c Debug
 
 after_build:
-- ps: Invoke-Pack
+  - ps: Write-Host $("`n               PACKING UP               `n") -BackgroundColor DarkCyan
+  - dotnet pack -c Release src\Stripe.net
 
-# these commands force appveyor to offer an RDP session for debugging
+test_script:
+  - ps: Write-Host $("`n               RUNNING THE XUNIT TESTS               `n") -BackgroundColor DarkCyan
+  - dotnet test src\Stripe.Tests.XUnit\Stripe.Tests.XUnit.csproj
+  - ps: Write-Host $("`n               RUNNING THE MSPEC TESTS               `n") -BackgroundColor DarkCyan
+  - dotnet test src\Stripe.net.Tests\Stripe.net.Tests.csproj
+
+# these commands tell appveyor to open an RDP session for debugging
 #init:
 #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 #
