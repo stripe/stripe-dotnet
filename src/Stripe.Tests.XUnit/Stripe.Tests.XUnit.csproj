@@ -8,7 +8,7 @@
     <RuntimeIdentifiers>win10-x64;win81-x64;osx.10.12-x64</RuntimeIdentifiers>
     <RuntimeFrameworkVersion>1.1.1</RuntimeFrameworkVersion>
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
-    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+    <NetStandardImplicitPackageVersion>1.2</NetStandardImplicitPackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
