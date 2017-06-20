@@ -4,6 +4,9 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using Newtonsoft.Json;
+#if NET45
+using Microsoft.Win32;
+#endif
 
 namespace Stripe.Infrastructure
 {
@@ -64,6 +67,7 @@ namespace Stripe.Infrastructure
 #if NET45
             result += $"net45.platform: { Environment.OSVersion.VersionString }";
             result += $", {getOperatingSystemInfo()}"; 
+            result += $", framework: {getFrameworkFromRegistry()}";
 #else
             result += "portable.platform: ";
 
@@ -81,6 +85,32 @@ namespace Stripe.Infrastructure
         }
 
 #if NET45
+        private static string getFrameworkFromRegistry()
+        {
+            using (var key = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey("SOFTWARE\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full\\"))
+            {
+                var releaseKey = Convert.ToInt32(key.GetValue("Release"));
+                return get45Version(releaseKey);
+            }
+        }
+
+        private static string get45Version(int releaseKey)
+        {
+            if (releaseKey >= 393273)
+                return "4.6 RC or later";
+
+            if (releaseKey >= 379893)
+                return "4.5.2";
+
+            if (releaseKey >= 378675)
+                return "4.5.1";
+
+            if (releaseKey >= 378389)
+                return "4.5";
+
+            return "4.5 not detected! wat?";
+        }
+
         private string getOperatingSystemInfo()
         {
             var os = Environment.OSVersion;
