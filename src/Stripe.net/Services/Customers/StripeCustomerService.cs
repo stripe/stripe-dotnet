@@ -17,10 +17,16 @@ namespace Stripe
         //Sync
         public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeCustomer>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(createOptions, Urls.Customers, false),
-                SetupRequestOptions(requestOptions))
-            );
+            // since the infrastructure uses .Result anyway, this is processsed the same way behind the scenes.
+            // we could simplify the services by removing the duplication of Create/CreateAsync by calling the async method and adding .Result for the sync method
+
+            return CreateAsync(createOptions, requestOptions, CancellationToken.None).Result;
+
+            // alternatively, we could default to all async by renaming CreateAsync below to Create. Then the documentation for sync changes are below
+            // from:
+            // var customer = new StripeCustomerService().Create(...);
+            // to:
+            // var customer = new StripeCustomerService().Create(...).Result;
         }
 
         public virtual StripeCustomer Get(string customerId, StripeRequestOptions requestOptions = null)
