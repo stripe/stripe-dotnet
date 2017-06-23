@@ -1,9 +1,11 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Stripe.Infrastructure;
 
 namespace Stripe
 {
+    [Obsolete("Use the StripeSourceService instead.")]
     public class Stripe3DSecureService : StripeBasicService<Stripe3DSecure>
     {
         public Stripe3DSecureService(string apiKey = null) : base(apiKey) { }
