@@ -12,7 +12,7 @@ namespace Stripe
         //Sync
         public virtual StripeLoginLink Create(string accountId, StripeRequestOptions requestOptions = null)
         {
-            return Post($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, null);
+            return CreateAsync(accountId, requestOptions, CancellationToken.None).Result;
         }
 
 
