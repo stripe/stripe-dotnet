@@ -5,7 +5,7 @@ namespace Stripe
     public class StripeBalanceAmount : StripeEntity
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
