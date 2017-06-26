@@ -4,6 +4,8 @@ image: Visual Studio 2017
 environment:
   STRIPE_TEST_KEY:
     secure: +p/EWA8+0B64k7a88nb6ZiSTcv6TIukyhQQU2Ljf7jNVtwVZXhJtNf5LdemV7EuY
+  STRIPE_TEST_SK:
+    secure: FNxc9q82h6VFpNVkdYByjQ33o7XgzcBVKui2lK9qxTqJSa6gkAggzcSvew7w4xxK
 
 deploy:
 - provider: NuGet
