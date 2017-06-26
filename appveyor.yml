@@ -38,6 +38,9 @@ test_script:
   - ps: Write-Host $("`n               RUNNING THE MSPEC TESTS               `n") -BackgroundColor DarkCyan
   - dotnet test src\Stripe.net.Tests\Stripe.net.Tests.csproj
 
+artifacts:
+  - path: '**\*.nupkg'
+
 # these commands tell appveyor to open an RDP session for debugging
 #init:
 #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
