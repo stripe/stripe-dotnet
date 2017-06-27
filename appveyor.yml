@@ -4,6 +4,8 @@ image: Visual Studio 2017
 environment:
   STRIPE_TEST_KEY:
     secure: +p/EWA8+0B64k7a88nb6ZiSTcv6TIukyhQQU2Ljf7jNVtwVZXhJtNf5LdemV7EuY
+  STRIPE_TEST_SK:
+    secure: FNxc9q82h6VFpNVkdYByjQ33o7XgzcBVKui2lK9qxTqJSa6gkAggzcSvew7w4xxK
 
 deploy:
 - provider: NuGet
@@ -37,6 +39,9 @@ test_script:
   - dotnet test src\Stripe.Tests.XUnit\Stripe.Tests.XUnit.csproj
   - ps: Write-Host $("`n               RUNNING THE MSPEC TESTS               `n") -BackgroundColor DarkCyan
   - dotnet test src\Stripe.net.Tests\Stripe.net.Tests.csproj
+
+artifacts:
+  - path: '**\*.nupkg'
 
 # these commands tell appveyor to open an RDP session for debugging
 #init:
