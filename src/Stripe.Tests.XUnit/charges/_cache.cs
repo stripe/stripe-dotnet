@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Stripe.Tests.Xunit
 {
@@ -21,6 +22,14 @@ namespace Stripe.Tests.Xunit
                     ExpirationYear = 2022,
                     ExpirationMonth = 10,
                     Name = "John Doe"
+                },
+                Shipping = new StripeShippingOptions
+                {
+                    Name = "Namey Namerson",
+                    Line1 = "123 Main St",
+                    Line2 = "Apt B",
+                    Country = "USA",
+                    State = "NC"
                 }
             };
         }

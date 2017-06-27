@@ -18,11 +18,6 @@ namespace Stripe.Tests.Xunit
         /// </summary>
         public static Dictionary<string, object> Items { get; set; }
 
-        public static string ApiKey => Environment.GetEnvironmentVariable("STRIPE_TEST_SK");
-
-        /// <summary>
-        /// This flag should be set to true if you are working from a new test account on stripe. By checking for this flag, we can speed up some list tests, etc.
-        /// </summary>
-        public static bool FirstRun => false;
+        public static string ApiKey => Environment.GetEnvironmentVariable("STRIPE_TEST_KEY");
     }
 }
