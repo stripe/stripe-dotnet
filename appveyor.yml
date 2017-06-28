@@ -36,7 +36,7 @@ test_script:
   - ps: Write-Host $("`n               RUNNING THE XUNIT TESTS               `n") -BackgroundColor DarkCyan
   - dotnet test src\Stripe.Tests.XUnit\Stripe.Tests.XUnit.csproj
   - ps: Write-Host $("`n               RUNNING THE MSPEC TESTS               `n") -BackgroundColor DarkCyan
-  - dotnet test src\Stripe.net.Tests\Stripe.net.Tests.csproj
+  - dotnet test src\Stripe.net.Tests\Stripe.net.Tests.csproj /p:TargetFramework=net46
 
 artifacts:
   - path: '**\*.nupkg'
