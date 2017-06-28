@@ -16,5 +16,11 @@ namespace Stripe
 
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
+
+        /// <summary>
+        /// Shipping information for the charge. Helps prevent fraud on charges for physical goods. For more information, see the Charge object documentation.
+        /// </summary>
+        [JsonProperty("shipping")]
+        public StripeShippingOptions Shipping { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace Stripe.Tests.XUnit
     { 
         public when_listing_balance_transactions()
         {
-            if (!Cache.FirstRun) return;
+            // todo: minimize this happening every time. it only needs 4 charges present to test the list
 
             Cache.GetStripeCharge(Cache.ApiKey);
             Cache.GetStripeCharge(Cache.ApiKey);
