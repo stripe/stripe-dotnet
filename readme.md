@@ -2,6 +2,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/rg0pg5tlr1a6f8tf?svg=true)](https://ci.appveyor.com/project/stripe-appveyor-ci/stripe-dotnet)
 [![waiting for release](https://badge.waffle.io/jaymedavis/stripe.net.svg?label=waiting%20for%20release&title=waiting%20for%20release)](http://waffle.io/jaymedavis/stripe.net)  
 
+
 **Stripe Services**
 
 [3D Secure](#) (needs documentation)  
