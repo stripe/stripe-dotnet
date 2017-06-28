@@ -2,15 +2,13 @@ version: 10.1.0.{build}
 image: Visual Studio 2017
 
 environment:
-  STRIPE_TEST_KEY:
-    secure: +p/EWA8+0B64k7a88nb6ZiSTcv6TIukyhQQU2Ljf7jNVtwVZXhJtNf5LdemV7EuY
   STRIPE_TEST_SK:
-    secure: FNxc9q82h6VFpNVkdYByjQ33o7XgzcBVKui2lK9qxTqJSa6gkAggzcSvew7w4xxK
+    secure: CcMNB0hu30XVzrZiu9MLdpEzejPmX1xqp/kizfUz5s0BaCzAKnfBYRjqO+Q8wTfN
 
 deploy:
 - provider: NuGet
   api_key:
-    secure: D6ys+uEckSSs1hTQ0/io7wKytQnGH32FMzsPCRBVT1L6wmGe2pj3bmVNgw/xKBqM
+    secure: cmo/iFw1omV9CJBtyj3k2smUjb9KUSaYdL++rPTntmzyJ32gq76WeyYnojL5opzw
   on:
     branch: master
 
@@ -38,7 +36,7 @@ test_script:
   - ps: Write-Host $("`n               RUNNING THE XUNIT TESTS               `n") -BackgroundColor DarkCyan
   - dotnet test src\Stripe.Tests.XUnit\Stripe.Tests.XUnit.csproj
   - ps: Write-Host $("`n               RUNNING THE MSPEC TESTS               `n") -BackgroundColor DarkCyan
-  - dotnet test src\Stripe.net.Tests\Stripe.net.Tests.csproj
+  - dotnet test src\Stripe.net.Tests\Stripe.net.Tests.csproj /p:TargetFramework=net46
 
 artifacts:
   - path: '**\*.nupkg'
