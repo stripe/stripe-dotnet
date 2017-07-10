@@ -26,6 +26,9 @@ namespace Stripe
             }
         }
 
+        [JsonProperty("customer")]
+        public string CustomerId { get; set; }
+
         // this will actually send items. this is to flag it for the middleware
         // to process it as a plugin
         [JsonProperty("subscription_items_array")]
