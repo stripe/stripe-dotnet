@@ -1,20 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for stripe.com.</Description>
+    <Description>Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for the Stripe API.  (Official Library)</Description>
     <AssemblyTitle>Stripe.net</AssemblyTitle>
-    <VersionPrefix>10.2.0</VersionPrefix>
-    <Version>10.2.0</Version>
-    <Authors>Jayme Davis</Authors>
+    <VersionPrefix>10.3.0</VersionPrefix>
+    <Version>10.3.0</Version>
+    <Authors>Stripe, Jayme Davis</Authors>
     <TargetFrameworks>netstandard1.2;net45</TargetFrameworks>
     <AssemblyName>Stripe.net</AssemblyName>
     <PackageId>Stripe.net</PackageId>
     <PackageTags>stripe;payment;credit;cards;money;gateway;paypal;braintree</PackageTags>
     <PackageIconUrl>http://i.imgur.com/UuBwQ33.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/jaymedavis/stripe.net</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.github.com/jaymedavis/stripe.net/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/stripe/stripe-dotnet</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.github.com/stripe/stripe-dotnet/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/jaymedavis/stripe.net</RepositoryUrl>
+    <RepositoryUrl>https://github.com/stripe/stripe-dotnet</RepositoryUrl>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.2' ">$(PackageTargetFallback);netcoreapp1.0</PackageTargetFallback>
     <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.2' ">1.6.1</NetStandardImplicitPackageVersion>
