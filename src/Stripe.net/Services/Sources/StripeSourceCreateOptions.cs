@@ -18,7 +18,7 @@ namespace Stripe
         /// Amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for single-use sources.
         /// </summary>
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         /// <summary>
         /// The currency associated with the source. This is the currency for which the source will be chargeable once ready.
