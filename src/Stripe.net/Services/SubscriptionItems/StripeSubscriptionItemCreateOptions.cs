@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Stripe
 {
@@ -9,5 +10,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
+
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
     }
 }

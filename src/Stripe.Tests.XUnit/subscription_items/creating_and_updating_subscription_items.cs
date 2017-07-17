@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using FluentAssertions;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Stripe.Tests.Xunit
@@ -32,6 +33,13 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
+        public void created_has_right_metadata()
+        {
+            fixture.SubscriptionItem.Metadata["key"].Should().Be(
+              fixture.SubscriptionItemCreateOptions.Metadata["key"]);
+        }
+
+        [Fact]
         public void updated_is_not_null()
         {
             fixture.SubscriptionItemUpdated.Should().NotBeNull();
@@ -44,10 +52,25 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
+        public void updated_has_right_metadata()
+        {
+            fixture.SubscriptionItemUpdated.Metadata["key"].Should().Be(
+              fixture.SubscriptionItemUpdateOptions.Metadata["key"]);
+        }
+
+        [Fact]
         public void retrieved_is_not_null()
         {
             fixture.SubscriptionItemRetrieved.Should().NotBeNull();
         }
+
+        [Fact]
+        public void retrieved_has_right_metadata()
+        {
+            fixture.SubscriptionItemRetrieved.Metadata["key"].Should().Be(
+              fixture.SubscriptionItemUpdateOptions.Metadata["key"]);
+        }
+
 
         [Fact]
         public void list_is_not_null()
