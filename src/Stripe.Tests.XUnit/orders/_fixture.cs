@@ -27,7 +27,7 @@ namespace Stripe.Tests.Xunit
                     {
                         Amount = 1,
                         Description = "some random items in a furry sack",
-                        Parent = "sku_B3QG08Tr9vICLA", // i hardcoded this because skus isn't written yet. created from the dashboard
+                        Parent = "sku_stripe_net_test", // i hardcoded this because skus isn't written yet. created from the dashboard
                         Quantity = 1
                     },
                 },
