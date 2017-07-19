@@ -327,7 +327,7 @@ Cards
 
 ### Creating a card
 
-When creating a card you can use either a card or a token. For [PCI compliance](https://stripe.com/docs/security#validating-pci-compliance) though we highly recommend that you pass a token generated client-side.
+When creating a card you can use either a card or a token. For [PCI compliance](https://stripe.com/docs/security#validating-pci-compliance) though we highly recommend that you pass a token generated client-side so that raw credit card numbers are never directly handled by your servers.
 
 ```csharp
 	var myCard = new StripeCardCreateOptions();
@@ -1185,11 +1185,12 @@ A token can be used anywhere on Stripe where you would normally pass a card.
 Once it's created, it can be used on a customer or a charge, but only used once.
 
 For production usage, you'll almost always want to create tokens with either
-[stripe.js](https://stripe.com/docs/tutorials/forms) or
+[Stripe.js](https://stripe.com/docs/tutorials/forms) or
 [Checkout](https://stripe.com/docs/tutorials/checkout), or one of our mobile
 SDKS for [iOS](https://stripe.com/docs/mobile/ios) or
-[Android](https://stripe.com/docs/mobile/android). You can read more about this
-in our documentation about [PCI compliance](https://stripe.com/docs/security#validating-pci-compliance).
+[Android](https://stripe.com/docs/mobile/android) so that raw credit card numbers
+are never directly handled by your servers You can read more about this in our
+documentation about [PCI compliance](https://stripe.com/docs/security#validating-pci-compliance).
 
 ### Retrieving a token
 
