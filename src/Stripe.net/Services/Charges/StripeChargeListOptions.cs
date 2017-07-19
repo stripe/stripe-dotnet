@@ -9,8 +9,5 @@ namespace Stripe
 
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
-
-        [JsonProperty("include_total_count")]
-        public bool IncludeTotalCount { get; set; }
     }
 }

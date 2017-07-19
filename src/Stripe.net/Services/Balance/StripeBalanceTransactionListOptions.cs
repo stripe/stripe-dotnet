@@ -21,8 +21,5 @@ namespace Stripe
 
         [JsonProperty("type")]
         public string Type { get; set; }
-
-        [JsonProperty("include_total_count")]
-        public bool IncludeTotalCount { get; set; }
     }
 }
