@@ -4,6 +4,8 @@
     {
         public static StripeTokenCreateOptions Valid()
         {
+            // While we should not use raw PANs anymore in Tests we keep this code
+            // to properly test the token creation API
             var cardOptions = new StripeCreditCardOptions()
             {
                 AddressCountry = "US",

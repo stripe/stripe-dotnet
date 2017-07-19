@@ -19,6 +19,7 @@ namespace Stripe.Tests.Xunit
                     RedirectReturnUrl = "http://no.where/webhooks",
                     Card = new StripeCreditCardOptions
                     {
+                        // Using PAN as we don't have a 3DS test token yet
                         Number = "4000000000003063",
                         ExpirationMonth = 12,
                         ExpirationYear = 2020
