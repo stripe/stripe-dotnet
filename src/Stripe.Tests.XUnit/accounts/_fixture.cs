@@ -12,6 +12,7 @@ namespace Stripe.Tests.Xunit
         public StripeAccount Account { get; }
         public StripeAccount AccountUpdated { get; }
         public StripeAccount AccountRetrieved { get; }
+        public StripeAccount AccountRejected { get; }
         public IEnumerable<StripeAccount> AccountList { get; }
 
         public account_fixture()
@@ -74,11 +75,17 @@ namespace Stripe.Tests.Xunit
                 BusinessUrl = "https://subtracts.io"
             };
 
+            var _rejectOptions = new StripeAccountRejectOptions
+            {
+                Reason = "terms_of_service"
+            };
+
             var service = new StripeAccountService(Cache.ApiKey);
             Account = service.Create(AccountCreateOptions);
             AccountUpdated = service.Update(Account.Id, AccountUpdateOptions);
             AccountRetrieved = service.Get(Account.Id);
             AccountList = service.List();
+            AccountRejected = service.Reject(Account.Id, _rejectOptions);
         }
 
         public void Dispose()

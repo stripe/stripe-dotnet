@@ -52,6 +52,14 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
+        public void rejected_is_disabled()
+        {
+            fixture.AccountRejected.ChargesEnabled.Should().BeFalse();
+            fixture.AccountRejected.PayoutsEnabled.Should().BeFalse();
+            fixture.AccountRejected.AccountVerification.DisabledReason.Should().Be("rejected.terms_of_service");
+        }
+
+        [Fact]
         public void list_is_not_null()
         {
             fixture.AccountList.Should().NotBeNull();
