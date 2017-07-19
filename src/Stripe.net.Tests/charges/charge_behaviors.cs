@@ -40,33 +40,6 @@ namespace Stripe.Tests
         It should_have_the_correct_failure_message = () =>
             StripeCharge.FailureMessage.ShouldBeNull();
 
-        It should_have_the_correct_source_address_line_1 = () =>
-            StripeCharge.Source.Card.AddressLine1.ShouldEqual(StripeCard.AddressLine1);
-
-        It should_have_the_correct_source_address_line_2 = () =>
-            StripeCharge.Source.Card.AddressLine2.ShouldEqual(StripeCard.AddressLine2);
-
-        It should_have_the_correct_source_address_city = () =>
-            StripeCharge.Source.Card.AddressCity.ShouldEqual(StripeCard.AddressCity);
-
-        It should_have_the_correct_source_address_state = () =>
-            StripeCharge.Source.Card.AddressState.ShouldEqual(StripeCard.AddressState);
-
-        It should_have_the_correct_source_address_zip = () =>
-            StripeCharge.Source.Card.AddressZip.ShouldEqual(StripeCard.AddressZip);
-
-        It should_have_the_correct_source_last_4 = () =>
-            StripeCharge.Source.Card.Last4.ShouldEqual(StripeCard.Last4.ShouldEqual(StripeCard.Last4));
-
-        It should_have_the_correct_source_expiration_month = () =>
-            StripeCharge.Source.Card.ExpirationMonth.ShouldEqual(StripeCard.ExpirationMonth);
-
-        It should_have_the_correct_source_expiration_year = () =>
-            StripeCharge.Source.Card.ExpirationYear.ShouldEqual(StripeCard.ExpirationYear);
-
-        It should_have_the_correct_source_name = () =>
-            StripeCharge.Source.Card.Name.ShouldEqual(StripeCard.Name);
-
         It should_have_the_correct_source_type = () =>
             StripeCharge.Source.Card.Brand.ShouldEqual("Visa");
 

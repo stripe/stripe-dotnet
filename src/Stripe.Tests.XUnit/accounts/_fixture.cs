@@ -34,19 +34,7 @@ namespace Stripe.Tests.Xunit
                 Type = StripeAccountType.Custom,
                 ExternalCardAccount = new StripeAccountCardOptions()
                 {
-                    AddressCountry = "US",
-                    AddressLine1 = "24 Main St",
-                    AddressLine2 = "Apt 24",
-                    AddressCity = "Raleigh",
-                    AddressState = "NC",
-                    AddressZip = "27617",
-                    Cvc = "1223",
-                    ExpirationMonth = 10,
-                    ExpirationYear = 2021,
-                    Name = "Julius Turing",
-                    Number = "4000056655665556",
-                    Currency = "usd",
-                    DefaultForCurrency = true
+                    TokenId = "tok_visa_debit"
                 },
                 LegalEntity = new StripeAccountLegalEntityOptions
                 {
