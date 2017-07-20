@@ -22,9 +22,9 @@ namespace Stripe
             );
         }
 
-        public virtual IEnumerable<CountrySpec> List(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<CountrySpec> List(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<CountrySpec>.MapCollectionFromJson(
+            return Mapper<StripeList<CountrySpec>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, $"{Urls.CountrySpecs}", true),
                     SetupRequestOptions(requestOptions)
@@ -46,9 +46,9 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<IEnumerable<CountrySpec>> ListAsync(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<CountrySpec>> ListAsync(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<CountrySpec>.MapCollectionFromJson(
+            return Mapper<StripeList<CountrySpec>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, $"{Urls.CountrySpecs}", true),
                     SetupRequestOptions(requestOptions),

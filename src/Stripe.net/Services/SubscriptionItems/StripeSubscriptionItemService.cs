@@ -32,7 +32,7 @@ namespace Stripe
             return DeleteEntity($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions);
         }
 
-        public virtual IEnumerable<StripeSubscriptionItem> List(StripeSubscriptionItemListOptions options = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeSubscriptionItem> List(StripeSubscriptionItemListOptions options = null, StripeRequestOptions requestOptions = null)
         {
             return GetEntityList($"{Urls.BaseUrl}/subscription_items", requestOptions, options);
         }
@@ -60,7 +60,7 @@ namespace Stripe
             return DeleteEntityAsync($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions, cancellationToken);
         }
 
-        public virtual Task<IEnumerable<StripeSubscriptionItem>> ListAsync(StripeSubscriptionItemListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<StripeSubscriptionItem>> ListAsync(StripeSubscriptionItemListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return GetEntityListAsync($"{Urls.BaseUrl}/subscription_items", requestOptions, cancellationToken, options);
         }

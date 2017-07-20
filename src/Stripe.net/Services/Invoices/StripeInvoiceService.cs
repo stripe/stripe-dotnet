@@ -49,27 +49,27 @@ namespace Stripe
             );
         }
 
-        public virtual IEnumerable<StripeInvoice> List(StripeInvoiceListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeInvoice> List(StripeInvoiceListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeInvoice>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeInvoice>>.MapFromJson(
                 Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Invoices, true),
                 SetupRequestOptions(requestOptions))
             );
         }
 
-        public virtual IEnumerable<StripeInvoiceLineItem> ListLineItems(string invoiceId, StripeInvoiceListLineItemsOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeInvoiceLineItem> ListLineItems(string invoiceId, StripeInvoiceListLineItemsOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
                 Requestor.GetString(this.ApplyAllParameters(listOptions, $"{Urls.Invoices}/{invoiceId}/lines", true),
                 SetupRequestOptions(requestOptions))
             );
         }
 
-        public virtual IEnumerable<StripeInvoiceLineItem> ListUpcomingLineItems(string customerId, StripeUpcomingInvoiceOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeInvoiceLineItem> ListUpcomingLineItems(string customerId, StripeUpcomingInvoiceOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.Invoices}/upcoming/lines", "customer", customerId);
 
-            return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
                 Requestor.GetString(this.ApplyAllParameters(listOptions, url, true),
                 SetupRequestOptions(requestOptions))
             );
@@ -126,18 +126,18 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<IEnumerable<StripeInvoice>> ListAsync(StripeInvoiceListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeInvoice>> ListAsync(StripeInvoiceListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeInvoice>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeInvoice>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Invoices, true),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
             );
         }
 
-        public virtual async Task<IEnumerable<StripeInvoiceLineItem>> ListLineItemsAsync(string invoiceId, StripeInvoiceListLineItemsOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeInvoiceLineItem>> ListLineItemsAsync(string invoiceId, StripeInvoiceListLineItemsOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, $"{Urls.Invoices}/{invoiceId}/lines", true),
                     SetupRequestOptions(requestOptions), 
@@ -145,11 +145,11 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<IEnumerable<StripeInvoiceLineItem>> ListUpcomingLineItemsAsync(string customerId, StripeUpcomingInvoiceOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeInvoiceLineItem>> ListUpcomingLineItemsAsync(string customerId, StripeUpcomingInvoiceOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.Invoices}/upcoming/lines", "customer", customerId);
 
-            return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, url, true),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)

@@ -47,9 +47,9 @@ namespace Stripe
             );
         }
 
-        public virtual IEnumerable<StripeInvoiceLineItem> List(StripeInvoiceItemListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeInvoiceLineItem> List(StripeInvoiceItemListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
                 Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.InvoiceItems, true),
                 SetupRequestOptions(requestOptions))
             );
@@ -94,9 +94,9 @@ namespace Stripe
                 );
         }
 
-        public virtual async Task<IEnumerable<StripeInvoiceLineItem>> ListAsync(StripeInvoiceItemListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeInvoiceLineItem>> ListAsync(StripeInvoiceItemListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeInvoiceLineItem>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.InvoiceItems, true),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)

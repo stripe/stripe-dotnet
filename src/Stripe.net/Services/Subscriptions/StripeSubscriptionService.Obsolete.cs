@@ -27,7 +27,7 @@ namespace Stripe
         }
 
         [Obsolete("List with customerId is deprecated, use List without the customerId.")]
-        public virtual IEnumerable<StripeSubscription> List(string customerId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeSubscription> List(string customerId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             var options = new StripeSubscriptionListOptions
             {
@@ -66,7 +66,7 @@ namespace Stripe
         }
 
         [Obsolete("ListAsync with customerId is deprecated, use ListAsync without the customerId.")]
-        public virtual async Task<IEnumerable<StripeSubscription>> ListAsync(string customerId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeSubscription>> ListAsync(string customerId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var options = new StripeSubscriptionListOptions
             {

@@ -93,9 +93,9 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<IEnumerable<StripeCustomer>> ListAsync(StripeCustomerListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeCustomer>> ListAsync(StripeCustomerListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeCustomer>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeCustomer>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Customers, true),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
