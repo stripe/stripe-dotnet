@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeList<T> : StripeEntity
+    [JsonObject]
+    public class StripeList<T> : StripeEntity, IEnumerable<T>
     {
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -22,5 +25,15 @@ namespace Stripe
 
         [JsonProperty("url")]
         public string Url { get; set; }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return Data.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Data.GetEnumerator();
+        }
     }
 }

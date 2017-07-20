@@ -47,14 +47,13 @@ namespace Stripe
              );
         }
 
-        public virtual IEnumerable<StripeCustomer> List(StripeCustomerListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeCustomer> List(StripeCustomerListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeCustomer>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeCustomer>>.MapFromJson(
                 Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Customers, true),
                 SetupRequestOptions(requestOptions))
             );
         }
-
 
 
         //Async
