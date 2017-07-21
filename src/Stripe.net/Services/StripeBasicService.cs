@@ -28,7 +28,7 @@ namespace Stripe
         {
             return Mapper<StripeList<EntityReturned>>.MapFromJson(
                 Requestor.GetString(
-                    this.ApplyAllParameters(options, url, true),
+                    this.ApplyAllParameters(options, url),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -72,7 +72,7 @@ namespace Stripe
         {
             return Mapper<StripeList<EntityReturned>>.MapFromJson(
                 await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(options, url, true),
+                    this.ApplyAllParameters(options, url),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
                 )
