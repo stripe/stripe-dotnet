@@ -32,7 +32,7 @@ namespace Stripe
             return Post($"{Urls.BaseUrl}/orders/{orderId}/pay", requestOptions, options);
         }
 
-        public virtual IEnumerable<StripeOrder> List(StripeOrderListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeOrder> List(StripeOrderListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             return GetEntityList($"{Urls.BaseUrl}/orders", requestOptions, listOptions);
         }
@@ -60,7 +60,7 @@ namespace Stripe
             return PostAsync($"{Urls.BaseUrl}/orders/{orderId}/pay", requestOptions, cancellationToken, options);
         }
 
-        public virtual Task<IEnumerable<StripeOrder>> ListAsync(StripeOrderListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<StripeOrder>> ListAsync(StripeOrderListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return GetEntityListAsync($"{Urls.BaseUrl}/orders", requestOptions, cancellationToken, listOptions);
         }

@@ -27,7 +27,7 @@ namespace Stripe
             return Post($"{Urls.BaseUrl}/products/{productId}", requestOptions, options);
         }
 
-        public virtual IEnumerable<StripeProduct> List(StripeProductListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeProduct> List(StripeProductListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             return GetEntityList($"{Urls.BaseUrl}/products", requestOptions, listOptions);
         }
@@ -55,7 +55,7 @@ namespace Stripe
             return PostAsync($"{Urls.BaseUrl}/products/{productId}", requestOptions, cancellationToken, options);
         }
 
-        public virtual Task<IEnumerable<StripeProduct>> ListAsync(StripeProductListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<StripeProduct>> ListAsync(StripeProductListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return GetEntityListAsync($"{Urls.BaseUrl}/products", requestOptions, cancellationToken, listOptions);
         }

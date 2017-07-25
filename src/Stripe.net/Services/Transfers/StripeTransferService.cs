@@ -29,7 +29,7 @@ namespace Stripe
             return Post($"{Urls.BaseUrl}/transfers/{transferId}", requestOptions, options);
         }
 
-        public virtual IEnumerable<StripeTransfer> List(StripeTransferListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeTransfer> List(StripeTransferListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             return GetEntityList($"{Urls.BaseUrl}/transfers", requestOptions, listOptions);
         }
@@ -52,7 +52,7 @@ namespace Stripe
             return PostAsync($"{Urls.BaseUrl}/transfers/{transferId}", requestOptions, cancellationToken, options);
         }
 
-        public virtual Task<IEnumerable<StripeTransfer>> ListAsync(StripeTransferListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<StripeTransfer>> ListAsync(StripeTransferListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return GetEntityListAsync($"{Urls.BaseUrl}/transfers", requestOptions, cancellationToken, listOptions);
         }
