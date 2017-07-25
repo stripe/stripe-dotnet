@@ -24,7 +24,7 @@ namespace Stripe
             var path = $"{Urls.BaseUrl}/accounts";
 
             return Mapper<StripeList<StripeAccount>>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(listOptions, path, false),
+                Requestor.GetString(this.ApplyAllParameters(listOptions, path, true),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -77,7 +77,7 @@ namespace Stripe
             var path = $"{Urls.BaseUrl}/accounts";
 
             return Mapper<StripeList<StripeAccount>>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, path, false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, path, true),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
             );
