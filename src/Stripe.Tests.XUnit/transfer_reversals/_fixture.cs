@@ -13,7 +13,7 @@ namespace Stripe.Tests.Xunit
         public StripeTransferReversal TransferReversal { get; }
         public StripeTransferReversal TransferReversalUpdated { get; }
         public StripeTransferReversal TransferReversalRetrieved { get; }
-        public List<StripeTransferReversal> TransferReversalList { get; }
+        public StripeList<StripeTransferReversal> TransferReversalList { get; }
 
         public transfer_reversals_fixture()
         {
@@ -60,7 +60,7 @@ namespace Stripe.Tests.Xunit
             TransferReversal = service.Create(Transfer.Id, TransferReversalCreateOptions);
             TransferReversalUpdated = service.Update(Transfer.Id, TransferReversal.Id, TransferReversalUpdateOptions);
             TransferReversalRetrieved = service.Get(Transfer.Id, TransferReversal.Id);
-            TransferReversalList = service.List(Transfer.Id, new StripeListOptions()).ToList();
+            TransferReversalList = service.List(Transfer.Id, new StripeListOptions());
 
             // get the original transfer
             Transfer = new StripeTransferService(Cache.ApiKey).Get(Transfer.Id);

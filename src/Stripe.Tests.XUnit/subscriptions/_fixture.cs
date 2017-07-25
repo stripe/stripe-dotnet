@@ -12,6 +12,7 @@ namespace Stripe.Tests.Xunit
         public StripeSubscription Subscription { get; }
         public StripeSubscription SubscriptionUpdated { get; }
         public StripeSubscription SubscriptionEnded { get; }
+        public StripeList<StripeSubscription> SubscriptionList { get; }
 
         public subscription_fixture()
         {
@@ -26,7 +27,10 @@ namespace Stripe.Tests.Xunit
             };
 
             var service = new StripeSubscriptionService(Cache.ApiKey);
-            Subscription = service.Create(Cache.GetCustomer().Id, SubscriptionCreateOptions);
+            var customer_id = Cache.GetCustomer().Id;
+            Subscription = service.Create(customer_id, SubscriptionCreateOptions);
+            service.Create(customer_id, SubscriptionCreateOptions);
+            SubscriptionList = service.List(new StripeSubscriptionListOptions { CustomerId = customer_id });
 
             SubscriptionUpdateOptions = new StripeSubscriptionUpdateOptions
             {

@@ -11,7 +11,7 @@ namespace Stripe.Tests.Xunit
         public StripeSubscriptionItem SubscriptionItem { get; }
         public StripeSubscriptionItem SubscriptionItemUpdated { get; }
         public StripeSubscriptionItem SubscriptionItemRetrieved { get; }
-        public IEnumerable<StripeSubscriptionItem> SubscriptionItemList { get; }
+        public StripeList<StripeSubscriptionItem> SubscriptionItemList { get; }
 
         public subscription_item_fixture()
         {
