@@ -57,8 +57,8 @@ namespace Stripe
         [JsonProperty("reversed")]
         public bool Reversed { get; set; }
 
-        //[JsonProperty("source_transaction")]
-        //public string SourceTransactionId { get; set; }
+        [JsonProperty("source_transaction")]
+        public string SourceTransactionId { get; set; }
 
         [JsonProperty("source_type")]
         public string SourceType { get; set; }

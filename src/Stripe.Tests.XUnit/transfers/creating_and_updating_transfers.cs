@@ -25,6 +25,12 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
+        public void created_has_right_source_transaction()
+        {
+            fixture.Transfer.SourceTransactionId.Should().Be(fixture.Charge.Id);
+        }
+
+        [Fact]
         public void created_has_the_right_amount()
         {
             fixture.Transfer.Amount.Should().Be(fixture.TransferCreateOptions.Amount);
