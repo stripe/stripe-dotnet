@@ -5,31 +5,17 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace Stripe.Tests.XUnit
+namespace Stripe.Tests.Xunit
 {
-    public class when_listing_balance_transactions
+    public class when_listing_products : IClassFixture<products_fixture>
     {
+        private readonly products_fixture fixture;
+        StripeList<StripeProduct> result;
 
-        StripeList<StripeBalanceTransaction> result;
-
-        public when_listing_balance_transactions()
+        public when_listing_products(products_fixture fixture)
         {
-            // todo: minimize this happening every time. it only needs 4 charges present to test the list
-
-            Cache.GetStripeCharge(Cache.ApiKey);
-            Cache.GetStripeCharge(Cache.ApiKey);
-            Cache.GetStripeCharge(Cache.ApiKey);
-            Cache.GetStripeCharge(Cache.ApiKey);
-
-            result = new StripeBalanceService(Cache.ApiKey).List(new StripeBalanceTransactionListOptions { IncludeTotalCount = true });
-
-        }
-
-        [Fact]
-        public void it_should_have_the_total_count()
-        {
-            result.TotalCount.Should().BeGreaterOrEqualTo(4);
-            result.Data.Count.Should().BeGreaterOrEqualTo(4);
+            this.fixture = fixture;
+            result = fixture.ProductList;
         }
 
 
@@ -37,11 +23,12 @@ namespace Stripe.Tests.XUnit
         public void list_is_iterable()
         {
             var count = 0;
-            IEnumerable<StripeBalanceTransaction> enumerable = result as IEnumerable<StripeBalanceTransaction>;
+            IEnumerable<StripeProduct> enumerable = result as IEnumerable<StripeProduct>;
             foreach (var obj in enumerable)
             {
                 count += 1;
             }
+            Assert.Equal(result.ToList().Count > 0, true);
             Assert.Equal(result.ToList().Count, count);
 
         }
@@ -57,7 +44,7 @@ namespace Stripe.Tests.XUnit
             }
 
             var enumhash = new HashSet<String>();
-            IEnumerable<StripeBalanceTransaction> enumerable = result as IEnumerable<StripeBalanceTransaction>;
+            IEnumerable<StripeProduct> enumerable = result as IEnumerable<StripeProduct>;
             foreach (var obj in enumerable)
             {
                 enumhash.Add(obj.Id);

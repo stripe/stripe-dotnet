@@ -28,7 +28,7 @@ namespace Stripe
             return Post($"{Urls.Disputes}/{disputeId}/close", requestOptions);
         }
 
-        public virtual IEnumerable<StripeDispute> List(StripeDisputeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeDispute> List(StripeDisputeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             return GetEntityList(Urls.Disputes, requestOptions, listOptions);
         }
@@ -51,7 +51,7 @@ namespace Stripe
             return await PostAsync($"{Urls.Disputes}/{disputeId}/close", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<IEnumerable<StripeDispute>> ListAsync(StripeDisputeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeDispute>> ListAsync(StripeDisputeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await GetEntityListAsync(Urls.Disputes, requestOptions, cancellationToken, listOptions);
         }

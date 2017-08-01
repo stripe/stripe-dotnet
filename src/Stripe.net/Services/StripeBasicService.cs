@@ -24,9 +24,9 @@ namespace Stripe
             );
         }
 
-        public IEnumerable<EntityReturned> GetEntityList(string url, StripeRequestOptions requestOptions, object options = null)
+        public StripeList<EntityReturned> GetEntityList(string url, StripeRequestOptions requestOptions, object options = null)
         {
-            return Mapper<EntityReturned>.MapCollectionFromJson(
+            return Mapper<StripeList<EntityReturned>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(options, url, true),
                     SetupRequestOptions(requestOptions)
@@ -68,9 +68,9 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<IEnumerable<EntityReturned>> GetEntityListAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken, object options = null)
+        public virtual async Task<StripeList<EntityReturned>> GetEntityListAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken, object options = null)
         {
-            return Mapper<EntityReturned>.MapCollectionFromJson(
+            return Mapper<StripeList<EntityReturned>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(options, url, true),
                     SetupRequestOptions(requestOptions),

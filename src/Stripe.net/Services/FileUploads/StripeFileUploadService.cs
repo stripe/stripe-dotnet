@@ -30,9 +30,9 @@ namespace Stripe
             );
         }
 
-        public virtual IEnumerable<StripeFileUpload> List(StripeFileUploadListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeFileUpload> List(StripeFileUploadListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeFileUpload>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeFileUpload>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.FileUploads, true),
                     SetupRequestOptions(requestOptions)
@@ -61,9 +61,9 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<IEnumerable<StripeFileUpload>> ListAsync(StripeFileUploadListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeFileUpload>> ListAsync(StripeFileUploadListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeFileUpload>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeFileUpload>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.FileUploads, true),
                     SetupRequestOptions(requestOptions),

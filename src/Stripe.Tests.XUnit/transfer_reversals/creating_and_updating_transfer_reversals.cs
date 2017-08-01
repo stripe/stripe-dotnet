@@ -1,4 +1,7 @@
 ﻿using FluentAssertions;
+using System.Collections.Generic;
+using System;
+using System.Linq;
 using Xunit;
 
 namespace Stripe.Tests.Xunit
@@ -62,10 +65,49 @@ namespace Stripe.Tests.Xunit
             fixture.TransferReversalUpdated.Metadata.Keys.Should().BeEquivalentTo(fixture.TransferReversalUpdated.Metadata.Keys);
         }
 
+
         [Fact]
-        public void list_has_atleast_one_item()
+        public void list_is_iterable()
         {
-            fixture.TransferReversalList.Count.Should().BeGreaterOrEqualTo(1);
+            var count = 0;
+            IEnumerable<StripeTransferReversal> enumerable = fixture.TransferReversalList as IEnumerable<StripeTransferReversal>;
+            foreach (var obj in enumerable)
+            {
+                count += 1;
+            }
+            Assert.Equal(fixture.TransferReversalList.ToList().Count > 0, true);
+            Assert.Equal(fixture.TransferReversalList.ToList().Count, count);
+
+        }
+
+        [Fact]
+        public void list_contents_equal()
+        {
+
+            var datahash = new HashSet<String>();
+            foreach (var obj in fixture.TransferReversalList.Data)
+            {
+                datahash.Add(obj.Id);
+            }
+
+            var enumhash = new HashSet<String>();
+            IEnumerable<StripeTransferReversal> enumerable = fixture.TransferReversalList as IEnumerable<StripeTransferReversal>;
+            foreach (var obj in enumerable)
+            {
+                enumhash.Add(obj.Id);
+            }
+
+            Assert.Equal(datahash, enumhash);
+
+        }
+
+        [Fact]
+        public void list_contains_extra_attributes()
+        {
+            Assert.NotNull(fixture.TransferReversalList.Object);
+            Assert.Equal(fixture.TransferReversalList.Object, "list");
+            Assert.NotNull(fixture.TransferReversalList.Data);
+            Assert.NotNull(fixture.TransferReversalList.Url);
         }
     }
 }

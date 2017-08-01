@@ -15,7 +15,7 @@ namespace Stripe.Tests.Xunit
         public StripeProduct ProductTwo { get; }
         public StripeProduct ProductUpdated { get; }
         public StripeProduct ProductRetrieved { get; }
-        public List<StripeProduct> ProductList { get; }
+        public StripeList<StripeProduct> ProductList { get; }
 
         public products_fixture()
         {
@@ -46,7 +46,7 @@ namespace Stripe.Tests.Xunit
                 Ids = new [] { Product.Id, ProductTwo.Id }
             };
 
-            ProductList = service.List(ProductListOptions).ToList();
+            ProductList = service.List(ProductListOptions);
         }
     }
 }

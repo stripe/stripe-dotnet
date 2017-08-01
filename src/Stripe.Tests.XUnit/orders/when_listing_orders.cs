@@ -7,41 +7,30 @@ using Xunit;
 
 namespace Stripe.Tests.XUnit
 {
-    public class when_listing_balance_transactions
+
+    public class when_listing_orders : IClassFixture<orders_fixture>
     {
 
-        StripeList<StripeBalanceTransaction> result;
+        private readonly orders_fixture fixture;
+        StripeList<StripeOrder> result;
 
-        public when_listing_balance_transactions()
+        public when_listing_orders(orders_fixture fixture)
         {
-            // todo: minimize this happening every time. it only needs 4 charges present to test the list
-
-            Cache.GetStripeCharge(Cache.ApiKey);
-            Cache.GetStripeCharge(Cache.ApiKey);
-            Cache.GetStripeCharge(Cache.ApiKey);
-            Cache.GetStripeCharge(Cache.ApiKey);
-
-            result = new StripeBalanceService(Cache.ApiKey).List(new StripeBalanceTransactionListOptions { IncludeTotalCount = true });
-
+            this.fixture = fixture;
+            result = fixture.OrderList;
         }
-
-        [Fact]
-        public void it_should_have_the_total_count()
-        {
-            result.TotalCount.Should().BeGreaterOrEqualTo(4);
-            result.Data.Count.Should().BeGreaterOrEqualTo(4);
-        }
-
 
         [Fact]
         public void list_is_iterable()
         {
+
             var count = 0;
-            IEnumerable<StripeBalanceTransaction> enumerable = result as IEnumerable<StripeBalanceTransaction>;
+            IEnumerable<StripeOrder> enumerable = result as IEnumerable<StripeOrder>;
             foreach (var obj in enumerable)
             {
                 count += 1;
             }
+            Assert.Equal(result.ToList().Count > 0, true);
             Assert.Equal(result.ToList().Count, count);
 
         }
@@ -57,7 +46,7 @@ namespace Stripe.Tests.XUnit
             }
 
             var enumhash = new HashSet<String>();
-            IEnumerable<StripeBalanceTransaction> enumerable = result as IEnumerable<StripeBalanceTransaction>;
+            IEnumerable<StripeOrder> enumerable = result as IEnumerable<StripeOrder>;
             foreach (var obj in enumerable)
             {
                 enumhash.Add(obj.Id);
@@ -75,5 +64,6 @@ namespace Stripe.Tests.XUnit
             Assert.NotNull(result.Data);
             Assert.NotNull(result.Url);
         }
+
     }
 }

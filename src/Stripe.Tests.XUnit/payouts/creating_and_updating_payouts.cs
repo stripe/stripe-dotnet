@@ -55,10 +55,5 @@ namespace Stripe.Tests.Xunit
             fixture.PayoutUpdated.Metadata.Keys.Should().BeEquivalentTo(fixture.PayoutUpdateOptions.Metadata.Keys);
         }
 
-        [Fact]
-        public void list_has_atleast_one_item()
-        {
-            fixture.PayoutList.Count.Should().BeGreaterOrEqualTo(1);
-        }
     }
 }

@@ -14,7 +14,7 @@ namespace Stripe.Tests.Xunit
         public StripeTransfer Transfer { get; }
         public StripeTransfer TransferUpdated { get; }
         public StripeTransfer TransferRetrieved { get; }
-        public List<StripeTransfer> TransferList { get; }
+        public StripeList<StripeTransfer> TransferList { get; }
 
         public transfers_fixture()
         {
@@ -63,7 +63,7 @@ namespace Stripe.Tests.Xunit
                 Created = new StripeDateFilter { EqualTo = Transfer.Created }
             };
 
-            TransferList = service.List(TransferListOptions).ToList();
+            TransferList = service.List(TransferListOptions);
         }
     }
 }

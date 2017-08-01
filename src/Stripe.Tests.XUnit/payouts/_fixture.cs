@@ -13,7 +13,7 @@ namespace Stripe.Tests.Xunit
         public StripePayout Payout { get; }
         public StripePayout PayoutUpdated { get; }
         public StripePayout PayoutRetrieved { get; }
-        public List<StripePayout> PayoutList { get; }
+        public StripeList<StripePayout> PayoutList { get; }
 
         public payouts_fixture()
         {
@@ -50,7 +50,7 @@ namespace Stripe.Tests.Xunit
                 ArrivalDate = new StripeDateFilter { EqualTo = Payout.ArrivalDate }
             };
 
-            PayoutList = service.List(PayoutListOptions).ToList();
+            PayoutList = service.List(PayoutListOptions);
         }
     }
 }

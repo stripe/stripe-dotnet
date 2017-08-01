@@ -43,9 +43,9 @@ namespace Stripe
             );
         }
 
-        public virtual IEnumerable<StripeRefund> List(StripeRefundListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeRefund> List(StripeRefundListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeRefund>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeRefund>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, $"{Urls.BaseUrl}/refunds", true),
                     SetupRequestOptions(requestOptions)
@@ -87,9 +87,9 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<IEnumerable<StripeRefund>> ListAsync(StripeRefundListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeRefund>> ListAsync(StripeRefundListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeRefund>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeRefund>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, $"{Urls.BaseUrl}/refunds", true),
                     SetupRequestOptions(requestOptions),

@@ -37,9 +37,9 @@ namespace Stripe
             );
         }
 
-        public virtual IEnumerable<StripeApplicationFee> List(StripeApplicationFeeListOptions listOptions, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeApplicationFee> List(StripeApplicationFeeListOptions listOptions, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeApplicationFee>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeApplicationFee>>.MapFromJson(
                 Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.ApplicationFees, true),
                 SetupRequestOptions(requestOptions))
             );
@@ -69,9 +69,9 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<IEnumerable<StripeApplicationFee>> ListAsync(StripeApplicationFeeListOptions listOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeApplicationFee>> ListAsync(StripeApplicationFeeListOptions listOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeApplicationFee>.MapCollectionFromJson(
+            return Mapper<StripeList<StripeApplicationFee>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.ApplicationFees, true),
                 SetupRequestOptions(requestOptions), 
                 cancellationToken)

@@ -1,4 +1,7 @@
 ﻿using FluentAssertions;
+using System.Collections.Generic;
+using System;
+using System.Linq;
 using Xunit;
 
 namespace Stripe.Tests.Xunit
@@ -59,5 +62,50 @@ namespace Stripe.Tests.Xunit
         {
             fixture.SubscriptionEnded.Should().NotBeNull();
         }
+
+        [Fact]
+        public void list_is_iterable()
+        {
+            var count = 0;
+            IEnumerable<StripeSubscription> enumerable = fixture.SubscriptionList as IEnumerable<StripeSubscription>;
+            foreach (var obj in enumerable)
+            {
+                count += 1;
+            }
+            Assert.Equal(fixture.SubscriptionList.ToList().Count > 0, true);
+            Assert.Equal(fixture.SubscriptionList.ToList().Count, count);
+
+        }
+
+        [Fact]
+        public void list_contents_equal()
+        {
+
+            var datahash = new HashSet<String>();
+            foreach (var obj in fixture.SubscriptionList.Data)
+            {
+                datahash.Add(obj.Id);
+            }
+
+            var enumhash = new HashSet<String>();
+            IEnumerable<StripeSubscription> enumerable = fixture.SubscriptionList as IEnumerable<StripeSubscription>;
+            foreach (var obj in enumerable)
+            {
+                enumhash.Add(obj.Id);
+            }
+
+            Assert.Equal(datahash, enumhash);
+
+        }
+
+        [Fact]
+        public void list_contains_extra_attributes()
+        {
+            Assert.NotNull(fixture.SubscriptionList.Object);
+            Assert.Equal(fixture.SubscriptionList.Object, "list");
+            Assert.NotNull(fixture.SubscriptionList.Data);
+            Assert.NotNull(fixture.SubscriptionList.Url);
+        }
+
     }
 }

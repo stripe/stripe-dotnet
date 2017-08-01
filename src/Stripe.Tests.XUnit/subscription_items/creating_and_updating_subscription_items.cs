@@ -1,6 +1,8 @@
-﻿using System.Linq;
-using FluentAssertions;
+
+﻿using FluentAssertions;
 using System.Collections.Generic;
+using System;
+using System.Linq;
 using Xunit;
 
 namespace Stripe.Tests.Xunit
@@ -68,20 +70,8 @@ namespace Stripe.Tests.Xunit
         public void retrieved_has_right_metadata()
         {
             fixture.SubscriptionItemRetrieved.Metadata["key"].Should().Be(
-              fixture.SubscriptionItemUpdateOptions.Metadata["key"]);
-        }
-
-
-        [Fact]
-        public void list_is_not_null()
-        {
-            fixture.SubscriptionItemList.Should().NotBeNull();
-        }
-
-        [Fact]
-        public void list_has_atleast_one_item()
-        {
-            fixture.SubscriptionItemList.ToList().Count.Should().BeGreaterOrEqualTo(1);
+              fixture.SubscriptionItemUpdateOptions.Metadata["key"]
+            );
         }
 
         [Fact]
@@ -95,5 +85,50 @@ namespace Stripe.Tests.Xunit
         {
             Cache.GetSubscription().Items.Data.First().Plan.Should().NotBeNull();
         }
+
+        [Fact]
+        public void list_is_iterable()
+        {
+            var count = 0;
+            IEnumerable<StripeSubscriptionItem> enumerable = fixture.SubscriptionItemList as IEnumerable<StripeSubscriptionItem>;
+            foreach (var obj in enumerable)
+            {
+                count += 1;
+            }
+            Assert.Equal(fixture.SubscriptionItemList.ToList().Count > 0, true);
+            Assert.Equal(fixture.SubscriptionItemList.ToList().Count, count);
+
+        }
+
+        [Fact]
+        public void list_contents_equal()
+        {
+
+            var datahash = new HashSet<String>();
+            foreach (var obj in fixture.SubscriptionItemList.Data)
+            {
+                datahash.Add(obj.Id);
+            }
+
+            var enumhash = new HashSet<String>();
+            IEnumerable<StripeSubscriptionItem> enumerable = fixture.SubscriptionItemList as IEnumerable<StripeSubscriptionItem>;
+            foreach (var obj in enumerable)
+            {
+                enumhash.Add(obj.Id);
+            }
+
+            Assert.Equal(datahash, enumhash);
+
+        }
+
+        [Fact]
+        public void list_contains_extra_attributes()
+        {
+            Assert.NotNull(fixture.SubscriptionItemList.Object);
+            Assert.Equal(fixture.SubscriptionItemList.Object, "list");
+            Assert.NotNull(fixture.SubscriptionItemList.Data);
+            Assert.NotNull(fixture.SubscriptionItemList.Url);
+        }
+
     }
 }

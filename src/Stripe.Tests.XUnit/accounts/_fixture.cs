@@ -12,8 +12,8 @@ namespace Stripe.Tests.Xunit
         public StripeAccount Account { get; }
         public StripeAccount AccountUpdated { get; }
         public StripeAccount AccountRetrieved { get; }
+        public StripeList<StripeAccount> AccountList { get; }
         public StripeAccount AccountRejected { get; }
-        public IEnumerable<StripeAccount> AccountList { get; }
 
         public account_fixture()
         {

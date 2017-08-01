@@ -14,7 +14,7 @@ namespace Stripe.Tests.Xunit
         public StripeOrder OrderUpdated { get; }
         public StripeOrder OrderRetrieved { get; }
         public StripeOrder OrderPaid { get; }
-        public List<StripeOrder> OrderList { get; }
+        public StripeList<StripeOrder> OrderList { get; }
 
         public orders_fixture()
         {
@@ -26,8 +26,8 @@ namespace Stripe.Tests.Xunit
                     new StripeOrderItemOptions
                     {
                         Amount = 1,
-                        Description = "some random items in a furry sack",
-                        Parent = "sku_stripe_net_test", // i hardcoded this because skus isn't written yet. created from the dashboard
+                        Description = "Blue Shirts",
+                        Parent = "sku_stripe_net_test",  // TODO: Remove hardcoding
                         Quantity = 1
                     },
                 },
@@ -65,7 +65,7 @@ namespace Stripe.Tests.Xunit
                 Created = Order.Created
             };
 
-            OrderList = service.List(OrderListOptions).ToList();
+            OrderList = service.List(OrderListOptions);
         }
     }
 }
