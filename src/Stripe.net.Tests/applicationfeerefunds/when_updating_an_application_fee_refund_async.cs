@@ -19,9 +19,7 @@ namespace Stripe.Tests
         {
             var customAccount = Cache.GetCustomAccountWithCard();
 
-            var token = new StripeTokenService().Create(test_data.stripe_token_create_options.Valid());
-
-            var chargeCreateOptions = test_data.stripe_charge_create_options.ValidToken(token.Id);
+            var chargeCreateOptions = test_data.stripe_charge_create_options.ValidToken("tok_visa");
             chargeCreateOptions.ApplicationFee = 10;
 
             _charge = new StripeChargeService().Create(chargeCreateOptions,

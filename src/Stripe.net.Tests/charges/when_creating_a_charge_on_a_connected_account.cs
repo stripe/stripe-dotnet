@@ -8,16 +8,12 @@ namespace Stripe.Tests
         private static StripeChargeService _chargeService;
 
         private static StripeAccount _account;
-        private static StripeToken _token;
         private static StripeCharge _charge;
 
         Establish context = () =>
         {
             // setup a custom (connect) account
             _account = Cache.GetCustomAccountWithCard();
-
-            // create a token (not on the connected account)
-            _token = new StripeTokenService().Create(test_data.stripe_token_create_options.Valid());
 
             // setup the charge service to expand the destination
             _chargeService = new StripeChargeService { ExpandDestination = true };
@@ -27,7 +23,7 @@ namespace Stripe.Tests
         {
             // create a charge using a token with the destination set to the custom account
             _charge = _chargeService
-                .Create(test_data.stripe_charge_create_options.ValidTokenWithDestination(_token.Id, _account.Id, 100));
+                .Create(test_data.stripe_charge_create_options.ValidTokenWithDestination("tok_visa", _account.Id, 100));
         };
 
         It should_have_the_destination = () =>

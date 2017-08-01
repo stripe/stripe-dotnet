@@ -21,19 +21,7 @@ namespace Stripe.Tests.test_data
 
                 ExternalCardAccount = new StripeAccountCardOptions()
                 {
-                    AddressCountry = "US",
-                    AddressLine1 = "24 Beef Flank St",
-                    AddressLine2 = "Apt 24",
-                    AddressCity = "BIGGIE",
-                    AddressState = "NC",
-                    AddressZip = "27617",
-                    Cvc = "1223",
-                    ExpirationMonth = 10,
-                    ExpirationYear = 2021,
-                    Name = "Joe Meatballs",
-                    Number = "4000056655665556",
-                    Currency = "usd",
-                    DefaultForCurrency = true
+                    TokenId = "tok_visa_debit"
                 }
             };
         }

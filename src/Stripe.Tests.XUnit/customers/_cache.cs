@@ -14,7 +14,7 @@ namespace Stripe.Tests.Xunit
             var options = new StripeCustomerCreateOptions
             {
                 Email = $"{Guid.NewGuid()}@email.com",
-                SourceToken = GetToken().Id
+                SourceToken = "tok_visa"
             };
 
             return options;

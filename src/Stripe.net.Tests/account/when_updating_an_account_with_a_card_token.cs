@@ -9,7 +9,6 @@ namespace Stripe.Tests
         private static StripeAccountService _stripeAccountService;
         private static StripeAccount _initialAccount;
         private static StripeAccount _retrievedAccount;
-        private static StripeToken _token;
         private static StripeAccountUpdateOptions _updateOptions;
 
         Establish context = () =>
@@ -19,16 +18,11 @@ namespace Stripe.Tests
 
             _initialAccount = Cache.GetCustomAccountWithCard();
 
-            // create a token for a new card
-            var tokenOptions = test_data.stripe_token_create_options.ValidDebitCard();
-            _token = new StripeTokenService().Create(tokenOptions);
-
-            // set up the update for that account with the token
             _updateOptions = new StripeAccountUpdateOptions()
             {
                 ExternalCardAccount = new StripeAccountCardOptions()
                 {
-                    TokenId = _token.Id
+                    TokenId = "tok_visa_debit"
                 }
             };
         };

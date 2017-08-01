@@ -21,12 +21,14 @@ namespace Stripe.Tests.Xunit
                 // GetPlan() in the cache is used to create the original subscription
                 // you cannot have a subscription item with the same plan as the original sub plan
                 PlanId = Cache.GetPlan("bronze").Id,
-                Quantity = 1
+                Quantity = 1,
+                Metadata = new Dictionary<string, string>() { { "key", "value1" } }
             };
 
             SubscriptionItemUpdateOptions = new StripeSubscriptionItemUpdateOptions
             {
-                Quantity = 2
+                Quantity = 2,
+                Metadata = new Dictionary<string, string>() { { "key", "value2" } }
             };
 
             var service = new StripeSubscriptionItemService(Cache.ApiKey);

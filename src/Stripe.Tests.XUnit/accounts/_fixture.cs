@@ -13,6 +13,7 @@ namespace Stripe.Tests.Xunit
         public StripeAccount AccountUpdated { get; }
         public StripeAccount AccountRetrieved { get; }
         public StripeList<StripeAccount> AccountList { get; }
+        public StripeAccount AccountRejected { get; }
 
         public account_fixture()
         {
@@ -34,19 +35,7 @@ namespace Stripe.Tests.Xunit
                 Type = StripeAccountType.Custom,
                 ExternalCardAccount = new StripeAccountCardOptions()
                 {
-                    AddressCountry = "US",
-                    AddressLine1 = "24 Main St",
-                    AddressLine2 = "Apt 24",
-                    AddressCity = "Raleigh",
-                    AddressState = "NC",
-                    AddressZip = "27617",
-                    Cvc = "1223",
-                    ExpirationMonth = 10,
-                    ExpirationYear = 2021,
-                    Name = "Julius Turing",
-                    Number = "4000056655665556",
-                    Currency = "usd",
-                    DefaultForCurrency = true
+                    TokenId = "tok_visa_debit"
                 },
                 LegalEntity = new StripeAccountLegalEntityOptions
                 {
@@ -74,11 +63,17 @@ namespace Stripe.Tests.Xunit
                 BusinessUrl = "https://subtracts.io"
             };
 
+            var _rejectOptions = new StripeAccountRejectOptions
+            {
+                Reason = "terms_of_service"
+            };
+
             var service = new StripeAccountService(Cache.ApiKey);
             Account = service.Create(AccountCreateOptions);
             AccountUpdated = service.Update(Account.Id, AccountUpdateOptions);
             AccountRetrieved = service.Get(Account.Id);
             AccountList = service.List();
+            AccountRejected = service.Reject(Account.Id, _rejectOptions);
         }
 
         public void Dispose()

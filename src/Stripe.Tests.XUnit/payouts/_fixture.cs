@@ -22,13 +22,7 @@ namespace Stripe.Tests.Xunit
             {
                 Amount = 2000,
                 Currency = "usd",
-                SourceCard = new SourceCard
-                {
-                    Number = "4000000000000077",
-                    ExpirationMonth = 10,
-                    ExpirationYear = 2019,
-                    Cvc = "123"
-                }
+                SourceTokenOrExistingSourceId = "tok_bypassPending"
             });
 
             PayoutCreateOptions = new StripePayoutCreateOptions

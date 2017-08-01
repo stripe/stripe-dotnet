@@ -24,7 +24,7 @@ namespace Stripe.Tests.Xunit
             var charge = chargeService.Create(
                 new StripeChargeCreateOptions
                 {
-                    SourceTokenOrExistingSourceId = Cache.GetToken().Id,
+                    SourceTokenOrExistingSourceId = "tok_visa",
                     ApplicationFee = 10,
                     Amount = 100,
                     Currency = "usd"

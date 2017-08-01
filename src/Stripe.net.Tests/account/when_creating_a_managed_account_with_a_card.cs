@@ -37,17 +37,9 @@ namespace Stripe.Tests
 
             var firstEntry = (StripeCard)StripeAccount.ExternalAccounts.Data.First().Card;
 
-            firstEntry.AddressCountry.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.AddressCountry);
-            firstEntry.AddressLine1.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.AddressLine1);
-            firstEntry.AddressLine2.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.AddressLine2);
-            firstEntry.AddressCity.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.AddressCity);
-            firstEntry.AddressState.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.AddressState);
-            firstEntry.AddressZip.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.AddressZip);
-            firstEntry.ExpirationMonth.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.ExpirationMonth.Value);
-            firstEntry.ExpirationYear.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.ExpirationYear.Value);
-            firstEntry.Name.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.Name);
-            firstEntry.Currency.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.Currency);
-            firstEntry.DefaultForCurrency.ShouldEqual(CreateOrUpdateOptions.ExternalCardAccount.DefaultForCurrency.Value);
+            firstEntry.Brand.ShouldEqual("Visa");
+            firstEntry.Funding.ShouldEqual("debit");
+            firstEntry.DefaultForCurrency.ShouldBeTrue();
         };
 
         It should_have_the_correct_card = () =>
