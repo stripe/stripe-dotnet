@@ -10,6 +10,7 @@ namespace Stripe.Tests.Xunit
         public StripeTransferUpdateOptions TransferUpdateOptions { get; }
         public StripeTransferListOptions TransferListOptions { get; }
 
+        public StripeCharge Charge { get; }
         public StripeTransfer Transfer { get; }
         public StripeTransfer TransferUpdated { get; }
         public StripeTransfer TransferRetrieved { get; }
@@ -17,13 +18,22 @@ namespace Stripe.Tests.Xunit
 
         public transfers_fixture()
         {
+            var transferGroup = $"test_group_{ Guid.NewGuid() }";
+
             // make sure the account has sufficient funds first
-            new StripeChargeService(Cache.ApiKey).Create(new StripeChargeCreateOptions
+            var chargeService = new StripeChargeService(Cache.ApiKey);
+            Charge = chargeService.Create(new StripeChargeCreateOptions
             {
                 Amount = 10000,
                 Currency = "usd",
-                SourceTokenOrExistingSourceId = "tok_bypassPending",
-                TransferGroup = $"test_group_{ Guid.NewGuid() }"
+                SourceCard = new SourceCard
+                {
+                    Number = "4000000000000077",
+                    ExpirationMonth = 10,
+                    ExpirationYear = 2021,
+                    Cvc = "123"
+                },
+                TransferGroup = transferGroup
             });
 
             TransferCreateOptions = new StripeTransferCreateOptions
@@ -31,7 +41,8 @@ namespace Stripe.Tests.Xunit
                 Amount = 1000,
                 Currency = "usd",
                 Destination = Cache.GetAccount().Id,
-                TransferGroup = $"test_group_{ Guid.NewGuid() }"
+                TransferGroup = transferGroup,
+                SourceTransaction = Charge.Id
             };
 
             TransferUpdateOptions = new StripeTransferUpdateOptions
