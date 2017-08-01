@@ -39,27 +39,6 @@ namespace Stripe.Tests
         It should_have_dispute_evidence = () =>
             _disputedCharge.Dispute.Evidence.ShouldNotBeNull();
 
-        It should_have_the_right_addressline1_on_dispute_evidence = () =>
-            _disputedCharge.Dispute.Evidence.BillingAddress.ShouldContain(_disputedOptions.SourceCard.AddressLine1);
-
-        It should_have_the_right_addressline2_on_dispute_evidence = () =>
-            _disputedCharge.Dispute.Evidence.BillingAddress.ShouldContain(_disputedOptions.SourceCard.AddressLine2);
-
-        It should_have_the_right_city_on_dispute_evidence = () =>
-            _disputedCharge.Dispute.Evidence.BillingAddress.ShouldContain(_disputedOptions.SourceCard.AddressCity);
-
-        It should_have_the_right_state_on_dispute_evidence = () =>
-            _disputedCharge.Dispute.Evidence.BillingAddress.ShouldContain(_disputedOptions.SourceCard.AddressState);
-
-        It should_have_the_right_country_on_dispute_evidence = () =>
-            _disputedCharge.Dispute.Evidence.BillingAddress.ShouldContain(_disputedOptions.SourceCard.AddressCountry);
-
-        It should_have_the_right_zip_on_dispute_evidence = () =>
-            _disputedCharge.Dispute.Evidence.BillingAddress.ShouldContain(_disputedOptions.SourceCard.AddressZip);
-
-        It should_have_the_right_customer_name_on_dispute_evidence = () =>
-            _disputedCharge.Dispute.Evidence.CustomerName.ShouldEqual(_disputedOptions.SourceCard.Name);
-
         It should_have_disputed_evidence_details_defined = () =>
             _disputedCharge.Dispute.EvidenceDetails.ShouldNotBeNull();
 

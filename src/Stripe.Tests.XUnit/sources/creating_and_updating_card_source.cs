@@ -14,7 +14,7 @@ namespace Stripe.Tests.Xunit
                 Type = StripeSourceType.Card,
                 Amount = 100,
                 Currency = "usd",
-                Token = Cache.GetToken().Id,
+                Token = "tok_visa",
                 RedirectReturnUrl = "http://no.where/webhooks"
             };
 

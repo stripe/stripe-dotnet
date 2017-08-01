@@ -18,11 +18,9 @@ namespace Stripe.Tests
 
         It should_throw_exception = () =>
         {
-            var exception = Catch.Exception(() => _stripeChargeService.Create(StripeChargeCreateOptions));
-            exception.Message.ShouldNotBeNull(); 
-            
-            // this is basically a useless test. I need to figure out how to make stripe send back a 'charge' value in the exception.
-            // https://github.com/jaymedavis/stripe.net/issues/42
+            var exception = (StripeException) Catch.Exception(() => _stripeChargeService.Create(StripeChargeCreateOptions));
+            exception.Message.ShouldNotBeNull();
+            exception.StripeError.ChargeId.ShouldNotBeNull();
         };
     }
 }

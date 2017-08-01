@@ -21,17 +21,12 @@ namespace Stripe.Tests
             _stripeCardService = new StripeCardService();
             _stripeCardCreateOptions = new StripeCardCreateOptions()
             {
-                SourceCard = new SourceCard()
+
+                SourceToken = "tok_bypassPending",
+                Metadata = new Dictionary<string, string>
                 {
-                    Name = "TestCard " + Guid.NewGuid(),
-                    ExpirationMonth = 10,
-                    ExpirationYear = 2021,
-                    Number = "4000000000000077",
-                    Metadata = new Dictionary<string, string>
-                    {
-                        { "OwnerId", "1234" },
-                        { "EventId", "1414141" }
-                    }
+                    { "OwnerId", "1234" },
+                    { "EventId", "1414141" }
                 }
             };
         };

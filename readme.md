@@ -327,39 +327,12 @@ Cards
 
 ### Creating a card
 
-When creating a card you can use either a card or a token
-
-With a token:
+When creating a card you can use either a card or a token. For [PCI compliance](https://stripe.com/docs/security#validating-pci-compliance) though we highly recommend that you pass a token generated client-side so that raw credit card numbers are never directly handled by your servers.
 
 ```csharp
 	var myCard = new StripeCardCreateOptions();
 
 	myCard.SourceToken = *tokenId*;
-
-	var cardService = new StripeCardService();
-	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
-```
-
-With a card:
-
-```csharp
-	var myCard = new StripeCardCreateOptions();
-
-	// setting up the card
-	myCard.SourceCard = new SourceCard()
-	{
-		Number = "4242424242424242",
-		ExpirationYear = 2022,
-		ExpirationMonth = 10,
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
-	};
 
 	var cardService = new StripeCardService();
 	StripeCard stripeCard = cardService.Create(*customerId*, myCard); // optional isRecipient
@@ -412,9 +385,7 @@ Charges
 
 ### Creating a charge
 
-When creating a charge you can use either a card, customer, or a token/existing source. Only one is allowed.
-
-With a token (or an existing source):
+When creating a charge you can use either a card, customer, or a token/existing source. Only one is allowed. For [PCI compliance](https://stripe.com/docs/security#validating-pci-compliance) though we highly recommend that you don't pass raw card details server-side.
 
 ```csharp
 	var myCharge = new StripeChargeCreateOptions();
@@ -429,47 +400,6 @@ With a token (or an existing source):
 	myCharge.SourceTokenOrExistingSourceId = *tokenId or existingSourceId*;
 
 	// set this property if using a customer - this MUST be set if you are using an existing source!
-	myCharge.CustomerId = *customerId*;
-
-	// set this if you have your own application fees (you must have your application configured first within Stripe)
-	myCharge.ApplicationFee = 25;
-
-	// (not required) set this to false if you don't want to capture the charge yet - requires you call capture later
-	myCharge.Capture = true;
-
-	var chargeService = new StripeChargeService();
-	StripeCharge stripeCharge = chargeService.Create(myCharge);
-```
-
-With a card:
-
-```csharp
-	// setting up the card
-	var myCharge = new StripeChargeCreateOptions();
-
-	// always set these properties
-	myCharge.Amount = 5153;
-	myCharge.Currency = "usd";
-
-	// set this if you want to
-	myCharge.Description = "Charge it like it's hot";
-
-	myCharge.SourceCard = new SourceCard()
-	{
-		Number = "4242424242424242",
-		ExpirationYear = 2022,
-		ExpirationMonth = 10,
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
-	};
-
-	// set this property if using a customer
 	myCharge.CustomerId = *customerId*;
 
 	// set this if you have your own application fees (you must have your application configured first within Stripe)
@@ -632,47 +562,12 @@ Customers
 When creating a customer, you can specify any plan they are on, any coupons that will apply,
 a credit card or token, and various meta data.
 
-With a token:
-
 ```csharp
 	var myCustomer = new StripeCustomerCreateOptions();
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
 
     myCustomer.SourceToken = *token*;
-
-	myCustomer.PlanId = *planId*;                          // only if you have a plan
-	myCustomer.TaxPercent = 20;                            // only if you are passing a plan, this tax percent will be added to the price.
-	myCustomer.Coupon = *couponId*;                        // only if you have a coupon
-	myCustomer.TrialEnd = DateTime.UtcNow.AddMonths(1);    // when the customers trial ends (overrides the plan if applicable)
-	myCustomer.Quantity = 1;                               // optional, defaults to 1
-
-	var customerService = new StripeCustomerService();
-	StripeCustomer stripeCustomer = customerService.Create(myCustomer);
-```
-
-With a card:
-
-```csharp
-	var myCustomer = new StripeCustomerCreateOptions();
-	myCustomer.Email = "pork@email.com";
-	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
-
-	// setting up the card
-	myCustomer.SourceCard = new SourceCard()
-	{
-		Number = "4242424242424242",
-		ExpirationYear = 2022,
-		ExpirationMonth = 10,
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
-	};
 
 	myCustomer.PlanId = *planId*;                          // only if you have a plan
 	myCustomer.TaxPercent = 20;                            // only if you are passing a plan, this tax percent will be added to the price.
@@ -688,46 +583,12 @@ Don't let this be intimidating - all of these fields are optional. You could jus
 
 ### Updating a customer
 
-With a token:
-
 ```csharp
 	var myCustomer = new StripeCustomerUpdateOptions();
 	myCustomer.Email = "pork@email.com";
 	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
 
     myCustomer.SourceToken = *token*;
-
-	myCustomer.Coupon = *couponId*;    // only if you have a coupon
-
-	var customerService = new StripeCustomerService();
-	StripeCustomer stripeCustomer = customerService.Update(*customerId*, myCustomer);
-```
-
-With a card:
-
-```csharp
-	var myCustomer = new StripeCustomerUpdateOptions();
-	myCustomer.Email = "pork@email.com";
-	myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
-
-	// setting up the card
-	myCustomer.Source = new SourceCard()
-	{
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Object = "card",
-		Number = "4242424242424242",
-		ExpirationYear = 2022,
-		ExpirationMonth = 10,
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
-	};
 
 	myCustomer.Coupon = *couponId*;    // only if you have a coupon
 
@@ -1123,8 +984,8 @@ In Stripe.net, once a payment has been processed via Radar, it adds the `Review`
 Some example code (in test mode) that will create and expand a review:
 
 ```csharp
-	// a token from expiration month 6, expiration year 2020, and card "4000000000009235"
-	var token = "tkn_12345"; 
+	// a token representing a card triggering an elevated risk review
+	var token = "tok_riskLevelElevated"; 
 	
 	var service = new StripeChargeService();
 	
@@ -1324,45 +1185,12 @@ A token can be used anywhere on Stripe where you would normally pass a card.
 Once it's created, it can be used on a customer or a charge, but only used once.
 
 For production usage, you'll almost always want to create tokens with either
-[stripe.js](https://stripe.com/docs/tutorials/forms) or
-[Checkout](https://stripe.com/docs/tutorials/checkout), but it can be useful
-to create tokens with Stripe.net for testing.
-
-You generally wouldn't want to use stripe.net to create tokens in production,
-since creating tokens with your server offers almost no security or compliance
-benefits - it still involves passing raw card data through your server.
-If you're OK with the additional compliance burden, it's usually still simpler
-to pass card data directly to the API.
-However, there are occasionally situations where it would make sense to create
-tokens on your server.
-
-```csharp
-	var myToken = new StripeTokenCreateOptions();
-
-	// if you need this...
-	myToken.Card = new StripeCreditCardOptions()
-	{
-		// set these properties if passing full card details (do not
-		// set these properties if you set TokenId)
-		Number = "4242424242424242",
-		ExpirationYear = 2022,
-		ExpirationMonth = 10,
-		AddressCountry = "US",                // optional
-		AddressLine1 = "24 Beef Flank St",    // optional
-		AddressLine2 = "Apt 24",              // optional
-		AddressCity = "Biggie Smalls",        // optional
-		AddressState = "NC",                  // optional
-		AddressZip = "27617",                 // optional
-		Name = "Joe Meatballs",               // optional
-		Cvc = "1223"                          // optional
-	};
-
-	// set this property if using a customer (stripe connect only)
-	myToken.CustomerId = *customerId*;
-
-	var tokenService = new StripeTokenService();
-	StripeToken stripeToken = tokenService.Create(myToken);
-```
+[Stripe.js](https://stripe.com/docs/tutorials/forms) or
+[Checkout](https://stripe.com/docs/tutorials/checkout), or one of our mobile
+SDKS for [iOS](https://stripe.com/docs/mobile/ios) or
+[Android](https://stripe.com/docs/mobile/android) so that raw credit card numbers
+are never directly handled by your servers You can read more about this in our
+documentation about [PCI compliance](https://stripe.com/docs/security#validating-pci-compliance).
 
 ### Retrieving a token
 

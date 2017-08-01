@@ -6,26 +6,11 @@ namespace Stripe.Tests.test_data
     {
         public static StripeChargeCreateOptions ValidCard()
         {
-            var cardOptions = new SourceCard()
-            {
-                AddressCountry = "US",
-                AddressLine1 = "24 Beef Flank St",
-                AddressLine2 = "Apt 24",
-                AddressCity = "BIGGIE",
-                AddressState = "NC",
-                AddressZip = "27617",
-                Cvc = "1223",
-                ExpirationMonth = 10,
-                ExpirationYear = 2021,
-                Name = "Joe Meatballs",
-                Number = "4000000000000077"
-            };
-
             return new StripeChargeCreateOptions()
             {
-                SourceCard = cardOptions,
-                Description = "Joe Meatball Charge",
-                StatementDescriptor = "Joe Meatball Sub",
+                SourceTokenOrExistingSourceId = "tok_bypassPending",
+                Description = "my charge description",
+                StatementDescriptor = "my statement",
                 Amount = 5153,
                 Currency = "usd",
                 Metadata = new Dictionary<string, string>
@@ -50,25 +35,11 @@ namespace Stripe.Tests.test_data
 
         public static StripeChargeCreateOptions InvalidCard()
         {
-            var cardOptions = new SourceCard()
-            {
-                AddressCountry = "US",
-                AddressLine1 = "24 Lynbrook St",
-                AddressCity = "Yeehaw Beebop ChickyChicky",
-                AddressState = "NC",
-                AddressZip = "90210",
-                Cvc = "1223",
-                ExpirationMonth = 10,
-                ExpirationYear = 2004,
-                Name = "Joe Meatballs",
-                Number = "425221"
-            };
-
             return new StripeChargeCreateOptions()
             {
-                SourceCard = cardOptions,
-                Description = "Joe Meatball Charge",
-                StatementDescriptor = "Joe Meatball Sub",
+                SourceTokenOrExistingSourceId = "tok_chargeDeclined",
+                Description = "my charge description",
+                StatementDescriptor = "my statement",
                 Amount = 5153,
                 Currency = "usd"
             };
@@ -92,7 +63,7 @@ namespace Stripe.Tests.test_data
             {
                 Amount = 2001,
                 Currency = "usd",
-                SourceTokenOrExistingSourceId =  _tokenId
+                SourceTokenOrExistingSourceId = _tokenId
             };
         }
     }

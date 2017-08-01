@@ -13,7 +13,7 @@ namespace Stripe.Tests.Xunit
             {
                 Type = StripeSourceType.Card,
                 Usage = StripeSourceUsage.Reusable,
-                Token = Cache.GetToken().Id,
+                Token = "tok_visa",
             };
 
             Source = new StripeSourceService(Cache.ApiKey).Create(options);

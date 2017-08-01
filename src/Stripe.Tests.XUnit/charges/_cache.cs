@@ -16,13 +16,7 @@ namespace Stripe.Tests.Xunit
             {
                 Amount = 1000,
                 Currency = "usd",
-                SourceCard = new SourceCard
-                {
-                    Number = "4242424242424242",
-                    ExpirationYear = 2022,
-                    ExpirationMonth = 10,
-                    Name = "John Doe"
-                },
+                SourceTokenOrExistingSourceId = "tok_visa",
                 Shipping = new StripeShippingOptions
                 {
                     Name = "Namey Namerson",

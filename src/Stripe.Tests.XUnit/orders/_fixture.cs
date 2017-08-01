@@ -50,7 +50,7 @@ namespace Stripe.Tests.Xunit
 
             OrderPayOptions = new StripeOrderPayOptions
             {
-                SourceId = Cache.GetToken().Id,
+                SourceId = "tok_visa",
                 Email = customer.Email,
             };
 
