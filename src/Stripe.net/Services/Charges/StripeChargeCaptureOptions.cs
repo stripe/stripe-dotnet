@@ -18,13 +18,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("application_fee")]
         public int? ApplicationFee { get; set; }
-
-       /// <summary>
-        /// ID of an existing, connected stripe account.
-        /// </summary>
-        [JsonProperty("destination[account]")]
-        public string Destination { get; set; }
-
+        
         /// <summary>
         /// The amount to transfer to the destination account without creating an Application Fee. Cannot be combined with the <see cref="ApplicationFee" /> parameter. Must be equal to or lesser than the charge amount.
         /// </summary>

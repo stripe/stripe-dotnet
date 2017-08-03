@@ -10,20 +10,21 @@ namespace Stripe.Tests
 
         private static StripeChargeService _stripeChargeService;
 
-        Establish context = () =>
+        private Establish context = () =>
         {
 
             // setup a custom (connect) account
             _account = Cache.GetCustomAccountWithCard();
             _stripeChargeService = new StripeChargeService();
             StripeChargeCreateOptions = test_data.stripe_charge_create_options.ValidCard();
+            StripeChargeCreateOptions.Destination = _account.Id;
             StripeChargeCreateOptions.Capture = false;
         };
 
         private Because of = () =>
         {
             var charge = _stripeChargeService.Create(StripeChargeCreateOptions);
-            var captureOptions = test_data.stripe_charge_capture_options.DestinationFee(_account.Id, 665309);
+            var captureOptions = test_data.stripe_charge_capture_options.DestinationFee(420);
             _stripeChargeService.Capture(charge.Id, captureOptions);
 
             StripeCharge = _stripeChargeService.Get(charge.Id);

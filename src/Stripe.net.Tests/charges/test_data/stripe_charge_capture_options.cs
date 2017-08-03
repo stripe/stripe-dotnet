@@ -4,12 +4,11 @@ namespace Stripe.Tests.test_data
 {
     public static class stripe_charge_capture_options
     {
-        public static Stripe.StripeChargeCaptureOptions  DestinationFee(string destinationAccountId, int? destinationAmount)
+        public static Stripe.StripeChargeCaptureOptions  DestinationFee(int? destinationAmount)
         {
             return new StripeChargeCaptureOptions()
             {
-                Amount = 675309,
-                Destination = destinationAccountId,
+                Amount = 4120,
                 DestinationAmount = destinationAmount.GetValueOrDefault(),
                 StatementDescriptor = "my statement"
             };
