@@ -506,7 +506,7 @@ Each account's country can have different rules for required fields, payment met
 
 ```csharp
 	var countrySpecService = new CountrySpecService();
-	CountrySpec spec = countrySpecService.List();
+	IEnumerable<CountrySpec> spec = countrySpecService.List();
 ```
 
 [StripeListOptions](#stripelistoptions-paging) for paging
