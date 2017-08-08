@@ -134,4 +134,4 @@ Once you've written your pull request, **please make sure you test your changes*
   * A test suite in the `Stripe.net.Test` project.
   * Another test suite in the `Stripe.Test.XUnit` project.
 
-ince we're moving to XUnit as the preferred testing suite, please try and build tests against that project. If you need help, you can [open an issue](https://github.com/stripe/stripe-dotnet/issues/new).
+Since we're moving to XUnit as the preferred testing suite, please try and build tests against that project. If you need help, you can [open an issue](https://github.com/stripe/stripe-dotnet/issues/new).
