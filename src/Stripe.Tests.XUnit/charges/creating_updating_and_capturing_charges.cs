@@ -57,6 +57,18 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
+        public void shipping_has_the_right_carrier()
+        {
+            fixture.Charge.Shipping.Carrier.Should().Be(Cache.GetStripeChargeCreateOptions().Shipping.Carrier);
+        }
+
+        [Fact]
+        public void shipping_has_the_right_tracking_number()
+        {
+            fixture.Charge.Shipping.TrackingNumber.Should().Be(Cache.GetStripeChargeCreateOptions().Shipping.TrackingNumber);
+        }
+
+        [Fact]
         public void updated_has_the_right_description()
         {
             fixture.UpdatedCharge.Description.Should().Be(fixture.ChargeUpdateOptions.Description);
@@ -66,6 +78,11 @@ namespace Stripe.Tests.Xunit
         public void updated_shipping_has_the_right_phone()
         {
             fixture.UpdatedCharge.Shipping.Phone.Should().Be(fixture.ChargeUpdateOptions.Shipping.Phone);
+        }
+
+        public void updated_shipping_has_the_right_tracking_number()
+        {
+            fixture.UpdatedCharge.Shipping.TrackingNumber.Should().Be(fixture.ChargeUpdateOptions.Shipping.TrackingNumber);
         }
 
         [Fact]
@@ -81,5 +98,6 @@ namespace Stripe.Tests.Xunit
             fixture.CapturedCharge.StatementDescriptor.Should().Be(fixture.ChargeCaptureOptions.StatementDescriptor);
             Assert.Equal(fixture.CapturedCharge.Amount - fixture.CapturedCharge.AmountRefunded, fixture.ChargeCaptureOptions.Amount);
         }
+
     }
 }
