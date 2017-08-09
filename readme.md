@@ -12,7 +12,7 @@ From the command line:
 
 From Package Manager:
 
-	PM> Install-Package EntryPoint
+	PM> Install-Package Stripe.net
 
 From within Visual Studio:
 
