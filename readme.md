@@ -2,6 +2,10 @@
 
 Stripe.net is an officially supported library for .NET 4.5+ that provides convenient access to the Stripe API.
 
+## Documentation
+
+See the [.NET API docs](https://stripe.com/docs/api/dotnet#intro).
+
 ## Installation
 
 ### Install Stripe.net via NuGet
