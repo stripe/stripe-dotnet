@@ -38,6 +38,8 @@
 
         public static string ApplicationFees => BaseUrl + "/application_fees";
 
+        public static string EphemeralKeys => BaseUrl + "/ephemeral_keys";
+
         public static string OAuthToken => BaseConnectUrl + "/oauth/token";
 
         public static string OAuthDeauthorize => BaseConnectUrl + "/oauth/deauthorize";
