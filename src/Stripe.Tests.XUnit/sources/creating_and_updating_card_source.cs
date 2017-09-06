@@ -49,8 +49,8 @@ namespace Stripe.Tests.Xunit
         [Fact]
         public void source_updated_should_have_the_correct_expiration_date()
         {
-            SourceCard.Card.ExpirationMonth.Should().Be(SourceCardUpdateOptions.Card.ExpirationMonth);
-            SourceCard.Card.ExpirationYear.Should().Be(SourceCardUpdateOptions.Card.ExpirationYear);
+            SourceCardUpdated.Card.ExpirationMonth.Should().Be(SourceCardUpdateOptions.Card.ExpirationMonth);
+            SourceCardUpdated.Card.ExpirationYear.Should().Be(SourceCardUpdateOptions.Card.ExpirationYear);
         }
     }
 }
