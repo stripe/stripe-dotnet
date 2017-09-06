@@ -223,7 +223,10 @@ namespace Stripe.Infrastructure
                 ? Mapper<StripeError>.MapFromJson(responseContent, null, response) 
                 : Mapper<StripeError>.MapFromJson(responseContent, "error", response);
 
-            return new StripeException(statusCode, stripeError, stripeError.Message);
+            return new StripeException(statusCode, stripeError, stripeError.Message)
+            {
+                StripeResponse = response
+            };
         }
 
         private static StripeResponse BuildResponseData(HttpResponseMessage response, string responseText)

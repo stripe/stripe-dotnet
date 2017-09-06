@@ -21,6 +21,7 @@ namespace Stripe.Tests
             var exception = (StripeException) Catch.Exception(() => _stripeChargeService.Create(StripeChargeCreateOptions));
             exception.Message.ShouldNotBeNull();
             exception.StripeError.ChargeId.ShouldNotBeNull();
+            exception.StripeResponse.RequestId.ShouldNotBeNull();
         };
     }
 }
