@@ -15,9 +15,21 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
-        public void created_has_the_right_customer_id()
+        public void created_has_the_number_of_associated_objects()
         {
             fixture.EphemeralKey.AssociatedObjects.Count().Should().Be(1);
+        }
+
+        [Fact]
+        public void created_has_the_right_customer_id()
+        {
+            fixture.EphemeralKey.AssociatedObjects.First().Id.Should().Be(fixture.EphemeralKeyCreateOptions.CustomerId);
+        }
+
+        [Fact]
+        public void created_has_the_right_livemode()
+        {
+            fixture.EphemeralKey.LiveMode.Should().Be(false);
         }
     }
 }

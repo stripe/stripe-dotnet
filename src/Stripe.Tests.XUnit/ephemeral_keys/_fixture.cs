@@ -7,18 +7,16 @@ namespace Stripe.Tests.Xunit
         public StripeEphemeralKeyCreateOptions EphemeralKeyCreateOptions { get; set; }
 
         public StripeEphemeralKey EphemeralKey { get; set; }
-        public StripeEphemeralKey EphemeralKeyDeleted { get; set; }
-        public StripeCustomer Customer { get; set; }
 
         public ephemeral_keys_fixture()
         {
-            Customer = Cache.GetCustomer();
+            var customer = Cache.GetCustomer();
 
             var service = new StripeEphemeralKeyService(Cache.ApiKey);
 
             EphemeralKeyCreateOptions = new StripeEphemeralKeyCreateOptions
             {
-                CustomerId = Customer.Id,
+                CustomerId = customer.Id,
             };
 
             var requestOptions = new StripeRequestOptions();
