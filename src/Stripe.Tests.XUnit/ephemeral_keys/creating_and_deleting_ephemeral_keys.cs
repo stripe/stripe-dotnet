@@ -31,5 +31,11 @@ namespace Stripe.Tests.Xunit
         {
             fixture.EphemeralKey.LiveMode.Should().Be(false);
         }
+
+        [Fact]
+        public void created_has_the_response_json()
+        {
+            fixture.EphemeralKey.StripeResponse.ResponseJson.Should().NotBeNull();
+        }
     }
 }
