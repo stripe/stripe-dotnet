@@ -22,7 +22,7 @@ namespace Stripe
         public DateTime Expires { get; set; }
 
         [JsonProperty("associated_objects")]
-        public List<StripeEphemeralkeyAssociatedObject> AssociatedObjects { get; set; }
+        public List<StripeEphemeralKeyAssociatedObject> AssociatedObjects { get; set; }
 
         // figure out how to get the raw JSON.
     }
