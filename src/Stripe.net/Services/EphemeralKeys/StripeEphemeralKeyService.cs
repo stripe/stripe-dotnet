@@ -5,48 +5,32 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeEphemeralKeyService : StripeService
+    public class StripeEphemeralKeyService : StripeBasicService<StripeEphemeralKey>
     {
         public StripeEphemeralKeyService(string apiKey = null) : base(apiKey) { }
 
-
-
-        //Sync
+        // Sync
         public virtual StripeEphemeralKey Create(StripeEphemeralKeyCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeEphemeralKey>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(createOptions, Urls.EphemeralKeys, false),
-                SetupRequestOptions(requestOptions))
-            );
+            return Post(Urls.EphemeralKeys, requestOptions, createOptions);
         }
 
-        public virtual StripeDeleted Delete(string EphemeralKeyId, StripeRequestOptions requestOptions = null)
+        public virtual StripeDeleted Delete(string keyId, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeDeleted>.MapFromJson(
-                Requestor.Delete(this.ApplyAllParameters(null, $"{Urls.EphemeralKeys}/{EphemeralKeyId}", false),
-                SetupRequestOptions(requestOptions))
-            );
+            return DeleteEntity($"{Urls.EphemeralKeys}/{keyId}", requestOptions);
         }
 
 
 
-        //Async
-        public virtual async Task<StripeEphemeralKey> CreateAsync(StripeEphemeralKeyCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        // Async
+        public virtual Task<StripeEphemeralKey> CreateAsync(StripeEphemeralKeyCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeEphemeralKey>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.EphemeralKeys, false),
-                SetupRequestOptions(requestOptions),
-                cancellationToken)
-            );
+            return PostAsync(Urls.EphemeralKeys, requestOptions, cancellationToken, createOptions);
         }
 
-        public virtual async Task<StripeDeleted> DeleteAsync(string EphemeralKeyId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeDeleted> DeleteAsync(string keyId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeDeleted>.MapFromJson(
-                await Requestor.DeleteAsync(this.ApplyAllParameters(null, $"{Urls.EphemeralKeys}/{EphemeralKeyId}", false),
-                SetupRequestOptions(requestOptions),
-                cancellationToken)
-            );
+            return DeleteEntityAsync($"{Urls.EphemeralKeys}/{keyId}", requestOptions, cancellationToken);
         }
     }
 }
