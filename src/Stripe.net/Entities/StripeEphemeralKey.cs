@@ -24,6 +24,12 @@ namespace Stripe
         [JsonProperty("associated_objects")]
         public List<StripeEphemeralKeyAssociatedObject> AssociatedObjects { get; set; }
 
-        // figure out how to get the raw JSON.
+        // RawJson is the raw JSON data of the response that was used to initialize this
+        // ephemeral key. When working with mobile clients that might only understand
+        // one version of the API you should prefer to send this value back to them so
+        // that they'll be able to decode an object that's current according to their version.
+        public string RawJson {
+            get { return this.StripeResponse?.ResponseJson; }
+        }
     }
 }
