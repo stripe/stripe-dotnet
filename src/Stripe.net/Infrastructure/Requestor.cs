@@ -152,8 +152,8 @@ namespace Stripe.Infrastructure
             if (requestOptions.IdempotencyKey != null)
                 request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
 
-            if (requestOptions.EphemeralKeyStripeVersion != null)
-                request.Headers.Add("Stripe-Version", requestOptions.EphemeralKeyStripeVersion);
+            if (requestOptions.StripeVersion != null)
+                request.Headers.Add("Stripe-Version", requestOptions.StripeVersion);
             else
                 request.Headers.Add("Stripe-Version", StripeConfiguration.StripeApiVersion);
 

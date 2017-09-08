@@ -20,7 +20,7 @@ namespace Stripe.Tests.Xunit
             };
 
             var requestOptions = new StripeRequestOptions();
-            requestOptions.EphemeralKeyStripeVersion = "2017-05-25";
+            requestOptions.StripeVersion = "2017-05-25";
 
             EphemeralKey = service.Create(EphemeralKeyCreateOptions, requestOptions);
         }
