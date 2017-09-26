@@ -7,6 +7,9 @@ namespace Stripe
 {
     public class StripeCustomerCreateOptions
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         [JsonProperty("account_balance")]
         public int? AccountBalance { get; set; }
 
