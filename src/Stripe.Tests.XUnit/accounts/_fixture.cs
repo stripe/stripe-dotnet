@@ -44,7 +44,8 @@ namespace Stripe.Tests.Xunit
                         new StripeAccountAdditionalOwner
                         {
                             FirstName = "Bumble", LastName = "B",
-                            BirthDay = 29, BirthMonth = 8, BirthYear = 2013,
+                            // Ensure the owner is older than 18 to avoid API issues.
+                            BirthDay = 29, BirthMonth = 8, BirthYear = 1980,
                             VerificationDocument = file.Id
                         },
                         new StripeAccountAdditionalOwner
