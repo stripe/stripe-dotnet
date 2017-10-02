@@ -54,17 +54,10 @@ namespace Stripe
             );
         }
 
-        public virtual StripeCharge Capture(string chargeId, int? captureAmount = null, int? applicationFee = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeCharge Capture(string chargeId, StripeChargeCaptureOptions captureOptions, StripeRequestOptions requestOptions = null)
         {
-            var url = this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}/capture", false);
-
-            if (captureAmount.HasValue)
-                url = ParameterBuilder.ApplyParameterToUrl(url, "amount", captureAmount.Value.ToString());
-            if (applicationFee.HasValue)
-                url = ParameterBuilder.ApplyParameterToUrl(url, "application_fee", applicationFee.Value.ToString());
-
             return Mapper<StripeCharge>.MapFromJson(
-                Requestor.PostString(url,
+                Requestor.PostString(this.ApplyAllParameters(captureOptions, $"{Urls.Charges}/{chargeId}/capture", false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -108,17 +101,10 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<StripeCharge> CaptureAsync(string chargeId, int? captureAmount = null, int? applicationFee = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeCharge> CaptureAsync(string chargeId, StripeChargeCaptureOptions captureOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}/capture", false);
-
-            if (captureAmount.HasValue)
-                url = ParameterBuilder.ApplyParameterToUrl(url, "amount", captureAmount.Value.ToString());
-            if (applicationFee.HasValue)
-                url = ParameterBuilder.ApplyParameterToUrl(url, "application_fee", applicationFee.Value.ToString());
-
             return Mapper<StripeCharge>.MapFromJson(
-                await Requestor.PostStringAsync(url,
+                await Requestor.PostStringAsync(this.ApplyAllParameters(captureOptions, $"{Urls.Charges}/{chargeId}/capture", false),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
             );

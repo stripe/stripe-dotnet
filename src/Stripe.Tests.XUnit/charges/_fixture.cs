@@ -6,10 +6,13 @@ namespace Stripe.Tests.Xunit
     {
         public StripeChargeListOptions ChargeListOptions { get; set; }
         public StripeChargeUpdateOptions ChargeUpdateOptions { get; set; }
+        public StripeChargeCaptureOptions ChargeCaptureOptions { get; set; }
 
         public StripeCharge Charge { get; set; }
         public StripeList<StripeCharge> Charges { get; set; }
         public StripeCharge UpdatedCharge { get; set; }
+        public StripeCharge UncapturedCharge { get; set; }
+        public StripeCharge CapturedCharge { get; set; }
 
         public charges_fixture()
         {
@@ -36,6 +39,15 @@ namespace Stripe.Tests.Xunit
             ChargeUpdateOptions.Shipping.Phone = "8675309";
 
             UpdatedCharge = service.Update(Charge.Id, ChargeUpdateOptions);
+
+            UncapturedCharge = Cache.GetStripeChargeUncaptured(Cache.ApiKey);
+
+            ChargeCaptureOptions = new StripeChargeCaptureOptions
+            {
+                Amount = 123,
+                StatementDescriptor = "CapturedCharge"
+            };
+            CapturedCharge = service.Capture(UncapturedCharge.Id, ChargeCaptureOptions);
         }
 
         public void Dispose() { }

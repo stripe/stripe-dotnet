@@ -5,11 +5,11 @@ using Xunit;
 
 namespace Stripe.Tests.Xunit
 {
-    public class creating_and_updating_charges : IClassFixture<charges_fixture>
+    public class creating_updating_and_capturing_charges : IClassFixture<charges_fixture>
     {
         private readonly charges_fixture fixture;
 
-        public creating_and_updating_charges(charges_fixture fixture)
+        public creating_updating_and_capturing_charges(charges_fixture fixture)
         {
             this.fixture = fixture;
         }
@@ -66,6 +66,20 @@ namespace Stripe.Tests.Xunit
         public void updated_shipping_has_the_right_phone()
         {
             fixture.UpdatedCharge.Shipping.Phone.Should().Be(fixture.ChargeUpdateOptions.Shipping.Phone);
+        }
+
+        [Fact]
+        public void uncaptured_is_not_captured()
+        {
+            fixture.UncapturedCharge.Captured.Should().Be(false);
+        }
+
+        [Fact]
+        public void captured_is_captured_with_right_settings()
+        {
+            fixture.CapturedCharge.Captured.Should().Be(true);
+            fixture.CapturedCharge.StatementDescriptor.Should().Be(fixture.ChargeCaptureOptions.StatementDescriptor);
+            Assert.Equal(fixture.CapturedCharge.Amount - fixture.CapturedCharge.AmountRefunded, fixture.ChargeCaptureOptions.Amount);
         }
     }
 }
