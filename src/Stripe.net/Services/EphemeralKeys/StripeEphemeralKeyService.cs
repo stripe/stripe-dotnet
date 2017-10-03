@@ -12,6 +12,13 @@ namespace Stripe
         // Sync
         public virtual StripeEphemeralKey Create(StripeEphemeralKeyCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
+            // Creating an ephemeral key requires a specific API version to be set. This is handled as a parameter
+            // but has to be set on the StripeRequestOptions instead.
+            if (requestOptions == null)
+                requestOptions = new StripeRequestOptions();
+
+            requestOptions.StripeVersion = createOptions.StripeVersion;
+
             return Post(Urls.EphemeralKeys, requestOptions, createOptions);
         }
 
@@ -25,6 +32,13 @@ namespace Stripe
         // Async
         public virtual Task<StripeEphemeralKey> CreateAsync(StripeEphemeralKeyCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            // Creating an ephemeral key requires a specific API version to be set. This is handled as a parameter
+            // but has to be set on the StripeRequestOptions instead.
+            if (requestOptions == null)
+                requestOptions = new StripeRequestOptions();
+
+            requestOptions.StripeVersion = createOptions.StripeVersion;
+
             return PostAsync(Urls.EphemeralKeys, requestOptions, cancellationToken, createOptions);
         }
 

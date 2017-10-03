@@ -17,12 +17,10 @@ namespace Stripe.Tests.Xunit
             EphemeralKeyCreateOptions = new StripeEphemeralKeyCreateOptions
             {
                 CustomerId = customer.Id,
+                StripeVersion = "2017-05-25",
             };
 
-            var requestOptions = new StripeRequestOptions();
-            requestOptions.StripeVersion = "2017-05-25";
-
-            EphemeralKey = service.Create(EphemeralKeyCreateOptions, requestOptions);
+            EphemeralKey = service.Create(EphemeralKeyCreateOptions);
         }
 
         public void Dispose() { }

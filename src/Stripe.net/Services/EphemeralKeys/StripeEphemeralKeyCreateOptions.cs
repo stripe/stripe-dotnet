@@ -9,5 +9,7 @@ namespace Stripe
     {
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
+
+        public string StripeVersion { get; set; }
     }
 }
