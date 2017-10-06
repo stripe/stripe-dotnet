@@ -23,7 +23,7 @@ namespace Stripe.Tests
         It should_throw_exception_when_getting = () =>
         {
             var exception = Catch.Exception(() => _stripePlanService.Get(_createdStripePlanId));
-            exception.Message.ShouldContain("No such plan");
+            exception.Message.ShouldContain("No such ");
         };
     }
 }

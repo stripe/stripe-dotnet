@@ -4,14 +4,21 @@ namespace Stripe.Tests.Xunit
 {
     public static partial class Cache
     {
+        private static Object cacheLock = new Object();
+
         public static StripePlan GetPlan(string planName = "plan")
         {
-            if (Items.ContainsKey(planName)) return (StripePlan) Items[planName];
+            // Ensures that creating a new plan only happens synchronously
+            // Avoids parallel calls to end up with the same options (and id) twice.
+            lock(cacheLock)
+            {
+                if (Items.ContainsKey(planName)) return (StripePlan) Items[planName];
 
-            var plan = new StripePlanService(ApiKey).Create(GetPlanCreateOptions(planName));
-            Items.Add(planName, plan);
+                var plan = new StripePlanService(ApiKey).Create(GetPlanCreateOptions(planName));
+                Items.Add(planName, plan);
 
-            return plan;
+                return plan;
+            }
         }
 
         public static StripePlanCreateOptions GetPlanCreateOptions(string planName = "plan")
