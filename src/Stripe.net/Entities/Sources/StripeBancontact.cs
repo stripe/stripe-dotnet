@@ -12,5 +12,8 @@ namespace Stripe
 
         [JsonProperty("bic")]
         public string Bic { get; set; }
+
+        [JsonProperty("preferred_language")]
+        public string PreferredLanguage { get; set; }
     }
 }

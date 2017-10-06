@@ -32,6 +32,9 @@ namespace Stripe
         [JsonProperty("flow")]
         public string Flow { get; set; }
 
+        [JsonProperty("bancontact[preferred_language]")]
+        public string BancontactPreferredLanguage { get; set; }
+
         [JsonProperty("bancontact[statement_descriptor]")]
         public string BancontactStatementDescriptor { get; set; }
 
