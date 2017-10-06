@@ -69,7 +69,13 @@ namespace Stripe
             );
         }
 
-
+        public virtual StripeCharge Capture(string chargeId, StripeChargeCaptureOptions captureOptions, StripeRequestOptions requestOptions = null)
+        {
+            return Mapper<StripeCharge>.MapFromJson(
+                Requestor.PostString(this.ApplyAllParameters(captureOptions, $"{Urls.Charges}/{chargeId}/capture", false),
+                    SetupRequestOptions(requestOptions))
+            );
+        }
 
         //Async
         public virtual async Task<StripeCharge> CreateAsync(StripeChargeCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -121,6 +127,15 @@ namespace Stripe
                 await Requestor.PostStringAsync(url,
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
+            );
+        }
+
+        public virtual async Task<StripeCharge> CaptureAsync(string chargeId, StripeChargeCaptureOptions captureOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return Mapper<StripeCharge>.MapFromJson(
+                await Requestor.PostStringAsync(this.ApplyAllParameters(captureOptions, $"{Urls.Charges}/{chargeId}/capture", false),
+                    SetupRequestOptions(requestOptions), 
+                    cancellationToken)
             );
         }
     }
