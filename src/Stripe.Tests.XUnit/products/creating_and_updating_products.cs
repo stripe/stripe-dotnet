@@ -25,6 +25,15 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
+        public void created_has_right_package_dimensions()
+        {
+            fixture.Product.PackageDimensions.Height.Should().Be(fixture.ProductCreateOptions.PackageDimensions.Height);
+            fixture.Product.PackageDimensions.Length.Should().Be(fixture.ProductCreateOptions.PackageDimensions.Length);
+            fixture.Product.PackageDimensions.Weight.Should().Be(fixture.ProductCreateOptions.PackageDimensions.Weight);
+            fixture.Product.PackageDimensions.Width.Should().Be(fixture.ProductCreateOptions.PackageDimensions.Width);
+        }
+
+        [Fact]
         public void get_is_not_null()
         {
             fixture.ProductRetrieved.Should().NotBeNull();
