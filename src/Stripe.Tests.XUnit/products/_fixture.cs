@@ -53,6 +53,9 @@ namespace Stripe.Tests.Xunit
             };
 
             ProductList = service.List(ProductListOptions);
+
+            service.Delete(Product.Id);
+            service.Delete(ProductTwo.Id);
         }
     }
 }
