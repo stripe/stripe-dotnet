@@ -3,18 +3,18 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripePackageDimensionOptions
+    public class StripePackageDimensionOptions : INestedOptions
     {
-        [JsonProperty("height")]
+        [JsonProperty("package_dimensions[height]")]
         public decimal? Height { get; set; }
 
-        [JsonProperty("length")]
+        [JsonProperty("package_dimensions[length]")]
         public decimal? Length { get; set; }
 
-        [JsonProperty("weight")]
+        [JsonProperty("package_dimensions[weight]")]
         public decimal? Weight { get; set; }
 
-        [JsonProperty("width")]
+        [JsonProperty("package_dimensions[width]")]
         public decimal? Width { get; set; }
     }
 }

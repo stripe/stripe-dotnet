@@ -18,6 +18,22 @@ namespace Stripe.Tests.Xunit
 
         public orders_fixture()
         {
+            var productService = new StripeProductService(Cache.ApiKey);
+            var product = productService.Create(new StripeProductCreateOptions {
+                Name = "T-shirt",
+            });
+
+            var skuService = new StripeSkuService(Cache.ApiKey);
+            var sku = skuService.Create(new StripeSkuCreateOptions
+            {
+                Currency = "usd",
+                Inventory = new StripeInventoryOptions {
+                    Type = "infinite",
+                },
+                Price = 1234,
+                Product = product.Id
+            });
+
             OrderCreateOptions = new StripeOrderCreateOptions()
             {
                 Currency = "usd",
@@ -27,7 +43,7 @@ namespace Stripe.Tests.Xunit
                     {
                         Amount = 1,
                         Description = "Blue Shirts",
-                        Parent = "sku_stripe_net_test",  // TODO: Remove hardcoding
+                        Parent = sku.Id,
                         Quantity = 1
                     },
                 },

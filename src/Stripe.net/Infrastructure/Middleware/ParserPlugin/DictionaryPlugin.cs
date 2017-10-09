@@ -9,7 +9,7 @@ namespace Stripe.Infrastructure.Middleware
     {
         public bool Parse(ref string requestString, JsonPropertyAttribute attribute, PropertyInfo property, object propertyValue, object propertyParent)
         {
-            if (!attribute.PropertyName.Contains("metadata") && !attribute.PropertyName.Contains("fraud_details")) return false;
+            if (!attribute.PropertyName.Contains("metadata") && !attribute.PropertyName.Contains("fraud_details") && !attribute.PropertyName.Contains("attributes")) return false;
 
             var dictionary = (Dictionary<string, string>) propertyValue;
             if (dictionary == null) return true;

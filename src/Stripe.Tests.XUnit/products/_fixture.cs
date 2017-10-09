@@ -21,7 +21,13 @@ namespace Stripe.Tests.Xunit
         {
             ProductCreateOptions = new StripeProductCreateOptions
             {
-                Name = $"test-product-{ Guid.NewGuid() }"
+                Name = $"test-product-{ Guid.NewGuid() }",
+                PackageDimensions = new StripePackageDimensionOptions {
+                    Height = 100,
+                    Length = 100,
+                    Weight = 100,
+                    Width = 100,
+                }
             };
 
             ProductTwoCreateOptions = new StripeProductCreateOptions
@@ -47,6 +53,9 @@ namespace Stripe.Tests.Xunit
             };
 
             ProductList = service.List(ProductListOptions);
+
+            service.Delete(Product.Id);
+            service.Delete(ProductTwo.Id);
         }
     }
 }
