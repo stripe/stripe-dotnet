@@ -10,6 +10,14 @@ namespace Stripe.Tests.Xunit
             return new StripeChargeService(apiKey).Create(GetStripeChargeCreateOptions());
         }
 
+        public static StripeCharge GetStripeChargeUncaptured(string apiKey)
+        {
+            var options = GetStripeChargeCreateOptions();
+            options.Capture = false;
+
+            return new StripeChargeService(apiKey).Create(options);
+        }
+
         public static StripeChargeCreateOptions GetStripeChargeCreateOptions()
         {
             return new StripeChargeCreateOptions
