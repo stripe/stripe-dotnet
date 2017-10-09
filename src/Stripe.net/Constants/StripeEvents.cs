@@ -85,6 +85,11 @@ namespace Stripe
         public const string ChargePending = "charge.pending";
 
         /// <summary>
+        /// Occurs whenever a refund is updated on selected payment methods.
+        /// </summary>
+        public const string ChargeRefundUpdated = "charge.refund.updated";
+
+        /// <summary>
         /// Occurs whenever a charge is refunded, including partial refunds.
         /// </summary>
         public const string ChargeRefunded = "charge.refunded";
@@ -223,6 +228,11 @@ namespace Stripe
         /// Occurs whenever an invoice email is sent out.
         /// </summary>
         public const string InvoiceSent = "invoice.sent";
+
+        /// <summary>
+        /// Occurs X number of days before a subscription is scheduled to create an invoice that is charged automatically, where X is determined by your subscriptions settings.
+        /// </summary>
+        public const string InvoiceUpcoming = "invoice.upcoming";
 
         /// <summary>
         /// Occurs whenever an invoice changes (for example, the amount could change).
