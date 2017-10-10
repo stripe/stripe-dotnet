@@ -1,6 +1,6 @@
-# Stripe.net [![Build status](https://ci.appveyor.com/api/projects/status/rg0pg5tlr1a6f8tf?svg=true)](https://ci.appveyor.com/project/stripe-appveyor-ci/stripe-dotnet)
+# Stripe.net [![Build status](https://ci.appveyor.com/api/projects/status/rg0pg5tlr1a6f8tf?svg=true)](https://ci.appveyor.com/project/stripe-appveyor-ci/stripe-dotnet) [![NuGet](https://img.shields.io/nuget/v/stripe.net.svg)](https://www.nuget.org/packages/Stripe.net/)
 
-Stripe.net is an officially supported library for .NET 4.5+ that provides convenient access to the Stripe API.
+The official Stripe library, supporting .NET Standard 1.2+, .NET Core 1.0+, and .NET Framework 4.5+
 
 ## Documentation
 
@@ -12,9 +12,11 @@ See the [.NET API docs](https://stripe.com/docs/api/dotnet#intro).
 
 From the command line:
 
-```
-nuget install Stripe.net
-```
+	nuget install Stripe.net
+
+From Package Manager:
+
+	PM> Install-Package Stripe.net
 
 From within Visual Studio:
 
