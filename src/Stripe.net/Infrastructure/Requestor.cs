@@ -136,7 +136,10 @@ namespace Stripe.Infrastructure
             if (requestOptions.IdempotencyKey != null)
                 request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
 
-            request.Headers.Add("Stripe-Version", StripeConfiguration.StripeApiVersion);
+            if (requestOptions.StripeVersion != null)
+                request.Headers.Add("Stripe-Version", requestOptions.StripeVersion);
+            else
+                request.Headers.Add("Stripe-Version", StripeConfiguration.StripeApiVersion);
 
             var client = new Client(request);
             client.ApplyUserAgent();
