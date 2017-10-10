@@ -39,6 +39,9 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Date { get; set; }
 
+        [JsonProperty("discountable")]
+        public bool Discountable { get; set; }
+
         [JsonProperty("proration")]
         public bool Proration { get; set; }
 
