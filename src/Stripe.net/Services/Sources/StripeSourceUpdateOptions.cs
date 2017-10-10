@@ -17,5 +17,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("owner")]
         public StripeSourceOwner Owner { get; set; }
+
+        /// <summary>
+        /// Properties that can be updated on a Card Source.
+        /// </summary>
+        [JsonProperty("card")]
+        public StripeSourceCardUpdateOptions Card { get; set; }
     }
 }
