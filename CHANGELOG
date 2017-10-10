@@ -1,3 +1,9 @@
+11.1.0 2017-10-10
+	[#1002] Add access for `StripeResponse` on `StripeException`
+	[#1005] Add support for updating card source expiration date
+	[#1008] Use bearer authorization everywhere and by default
+	[#1021] Add `PreferredLanguage` for Bancontact sources
+
 11.0.0 2017-10-10
 	[#1007] Add support for Apple Pay Domain resource
 	[#1018] Add event constants `ChargeRefundUpdated` and `InvoiceUpcoming`
