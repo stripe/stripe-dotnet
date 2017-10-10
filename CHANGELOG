@@ -1,3 +1,7 @@
+11.2.0 2017-10-10
+	[#986] Add support for shipping on customer create and update
+	[#997] Add support for the Ephmeral Key API resource
+
 11.1.0 2017-10-10
 	[#1002] Add access for `StripeResponse` on `StripeException`
 	[#1005] Add support for updating card source expiration date
@@ -5,7 +9,7 @@
 	[#1021] Add `PreferredLanguage` for Bancontact sources
 
 11.0.0 2017-10-10
-	[#1007] Add support for Apple Pay Domain resource
+	[#1007] Add support for Apple Pay Domain API resource
 	[#1018] Add event constants `ChargeRefundUpdated` and `InvoiceUpcoming`
 	[#1019] Add `StripeChargeCaptureOptions` and use it for charge capture
 	[#1022] Add support for SKUs
