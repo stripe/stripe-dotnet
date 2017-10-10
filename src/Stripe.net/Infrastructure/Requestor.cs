@@ -50,13 +50,6 @@ namespace Stripe.Infrastructure
             return ExecuteRequest(wr);
         }
 
-        public static StripeResponse PostStringBearer(string url, StripeRequestOptions requestOptions)
-        {
-            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions, true);
-
-            return ExecuteRequest(wr);
-        }
-
         public static StripeResponse PostFile(string url, string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
@@ -101,13 +94,6 @@ namespace Stripe.Infrastructure
             return ExecuteRequestAsync(wr, cancellationToken);
         }
 
-        public static Task<StripeResponse> PostStringBearerAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions, true);
-
-            return ExecuteRequestAsync(wr, cancellationToken);
-        }
-
         public static Task<StripeResponse> PostFileAsync(string url, string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
@@ -131,7 +117,7 @@ namespace Stripe.Infrastructure
 
 
 
-        private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions, bool useBearer = false)
+        private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions)
         {
             requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.GetApiKey();
 
@@ -142,9 +128,7 @@ namespace Stripe.Infrastructure
             var request = BuildRequest(method, url);
 
             request.Headers.Add("Authorization",
-                !useBearer
-                    ? GetAuthorizationHeaderValue(requestOptions.ApiKey)
-                    : GetAuthorizationHeaderValueBearer(requestOptions.ApiKey));
+                GetAuthorizationHeaderValue(requestOptions.ApiKey));
 
             if (requestOptions.StripeConnectAccountId != null)
                 request.Headers.Add("Stripe-Account", requestOptions.StripeConnectAccountId);
@@ -185,12 +169,6 @@ namespace Stripe.Infrastructure
 
         private static string GetAuthorizationHeaderValue(string apiKey)
         {
-            var token = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{apiKey}:"));
-            return $"Basic {token}";
-        }
-
-        private static string GetAuthorizationHeaderValueBearer(string apiKey)
-        {
             return $"Bearer {apiKey}";
         }
 
@@ -219,8 +197,8 @@ namespace Stripe.Infrastructure
 
         private static StripeException BuildStripeException(StripeResponse response, HttpStatusCode statusCode, string requestUri, string responseContent)
         {
-            var stripeError = requestUri.Contains("oauth") 
-                ? Mapper<StripeError>.MapFromJson(responseContent, null, response) 
+            var stripeError = requestUri.Contains("oauth")
+                ? Mapper<StripeError>.MapFromJson(responseContent, null, response)
                 : Mapper<StripeError>.MapFromJson(responseContent, "error", response);
 
             return new StripeException(statusCode, stripeError, stripeError.Message);
