@@ -37,5 +37,15 @@ namespace Stripe.Tests.Xunit
         {
             fixture.EphemeralKey.RawJson.Should().NotBeNull();
         }
+
+        [Fact]
+        public void throws_if_stripe_version_not_set()
+        {
+            var exception = Assert.Throws<System.ArgumentException>(() =>
+                new StripeEphemeralKeyService(Cache.ApiKey).Create(new StripeEphemeralKeyCreateOptions())
+            );
+
+            exception.Message.Should().Contain("The StripeVersion parameter has to be set when creating");
+        }
     }
 }

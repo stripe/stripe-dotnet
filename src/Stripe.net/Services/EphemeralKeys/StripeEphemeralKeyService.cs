@@ -12,6 +12,11 @@ namespace Stripe
         // Sync
         public virtual StripeEphemeralKey Create(StripeEphemeralKeyCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
+            if (createOptions.StripeVersion == null)
+            {
+                throw new System.ArgumentException("The StripeVersion parameter has to be set when creating an Ephemeral Key", "StripeVersion");
+            }
+
             // Creating an ephemeral key requires a specific API version to be set. This is handled as a parameter
             // but has to be set on the StripeRequestOptions instead.
             requestOptions = requestOptions ?? new StripeRequestOptions();
