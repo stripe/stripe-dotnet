@@ -1,0 +1,6 @@
+11.0.0 2017-10-10
+	[#1007] Add support for Apple Pay Domain resource
+	[#1018] Add event constants `ChargeRefundUpdated` and `InvoiceUpcoming`
+	[#1019] Add `StripeChargeCaptureOptions` and use it for charge capture
+	[#1022] Add support for SKUs
+	[#1025] Add `Discountable` for `StripeInvoiceLineItem`
