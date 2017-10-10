@@ -27,35 +27,5 @@ namespace Stripe
 
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
-
-        [JsonProperty("plan")]
-        public string PlanId { get; set; }
-
-        [JsonProperty("coupon")]
-        public string CouponId { get; set; }
-
-        #region Trial End
-
-        public DateTime? TrialEnd { get; set; }
-
-        public bool EndTrialNow { get; set; }
-
-        [JsonProperty("trial_end")]
-        internal string TrialEndInternal
-        {
-            get
-            {
-                if (EndTrialNow)
-                    return "now";
-                if (TrialEnd.HasValue)
-                    return EpochTime.ConvertDateTimeToEpoch(TrialEnd.Value).ToString();
-                return null;
-            }
-        }
-
-        #endregion
-
-        [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
     }
 }
