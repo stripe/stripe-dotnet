@@ -31,6 +31,9 @@ namespace Stripe
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
 
+        [JsonProperty("shipping")]
+        public StripeShippingOptions Shipping { get; set; }
+
         [JsonProperty("source")]
         public string SourceToken { get; set; }
 

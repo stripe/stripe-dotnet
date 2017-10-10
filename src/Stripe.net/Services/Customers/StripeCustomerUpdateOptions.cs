@@ -32,5 +32,8 @@ namespace Stripe
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("shipping")]
+        public StripeShippingOptions Shipping { get; set; }
     }
 }

@@ -25,13 +25,15 @@ namespace Stripe.Tests.Xunit
                 Amount = 1000,
                 Currency = "usd",
                 SourceTokenOrExistingSourceId = "tok_visa",
-                Shipping = new StripeShippingOptions
+                Shipping = new StripeChargeShippingOptions
                 {
                     Name = "Namey Namerson",
                     Line1 = "123 Main St",
                     Line2 = "Apt B",
                     Country = "USA",
-                    State = "NC"
+                    State = "NC",
+                    TrackingNumber = "12345",
+                    Carrier = "Carrier",
                 }
             };
         }

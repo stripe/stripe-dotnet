@@ -76,7 +76,7 @@ namespace Stripe
         /// Shipping information for the charge. Helps prevent fraud on charges for physical goods. For more information, see the Charge object documentation.
         /// </summary>
         [JsonProperty("shipping")]
-        public StripeShippingOptions Shipping { get; set; }
+        public StripeChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
         /// The ID of an existing customer that will be charged in this request.
