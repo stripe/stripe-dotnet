@@ -42,6 +42,12 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
+        /// The customer to which the source is attached, if any.
+        /// </summary>
+        [JsonProperty("customer")]
+        public string Customer { get; set; }
+
+        /// <summary>
         /// The authentication flow of the source. Flow is one of redirect, receiver, code_verification, none.
         /// </summary>
         [JsonProperty("flow")]
