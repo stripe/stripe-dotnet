@@ -24,7 +24,7 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
-        public void updated_has_the_right_defails()
+        public void updated_has_the_right_details()
         {
             fixture.CouponUpdated.Id.Should().Be(fixture.Coupon.Id);
             fixture.CouponUpdated.Metadata.Keys.Should().BeEquivalentTo(fixture.CouponUpdateOptions.Metadata.Keys);
