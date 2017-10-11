@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.3.0 - 2017-10-11
+* [#1028](https://github.com/stripe/stripe-dotnet#1028) Support for attaching/detaching sources to/from customers
+* [#1029](https://github.com/stripe/stripe-dotnet#1029) Correctly encode custom coupon and plan IDs in API URLs
+
 ## 11.2.0 - 2017-10-10
 * [#986](https://github.com/stripe/stripe-dotnet#986) Add support for shipping on customer create and update
 * [#997](https://github.com/stripe/stripe-dotnet#997) Add support for the Ephmeral Key API resource
