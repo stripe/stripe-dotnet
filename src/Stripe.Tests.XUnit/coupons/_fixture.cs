@@ -17,10 +17,12 @@ namespace Stripe.Tests.Xunit
         public coupons_fixture()
         {
             CouponCreateOptions = new StripeCouponCreateOptions() {
-              Id = "test-coupon-" + Guid.NewGuid().ToString() + " ",
-              PercentOff = 25,
-              Duration = "repeating",
-              DurationInMonths = 3,
+                // Add a space at the end to ensure the ID is properly URL encoded
+                // when passed in the URL for other methods
+                Id = "test-coupon-" + Guid.NewGuid().ToString() + " ",
+                PercentOff = 25,
+                Duration = "repeating",
+                DurationInMonths = 3,
             };
 
             CouponUpdateOptions = new StripeCouponUpdateOptions {
