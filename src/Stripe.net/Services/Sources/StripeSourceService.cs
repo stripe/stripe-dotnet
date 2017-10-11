@@ -26,11 +26,19 @@ namespace Stripe
             return Post($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions, options);
         }
 
-        // not available :(
-        //public virtual StripeDeleted Delete(string sourceId, StripeRequestOptions requestOptions = null)
-        //{
-        //    return DeleteEntity($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions);
-        //}
+        public virtual StripeSource Attach(string customerId, StripeSourceAttachOptions attachOptions, StripeRequestOptions requestOptions = null)
+        {
+            return Post($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, attachOptions);
+        }
+
+        public virtual StripeSource Detach(string customerId, string sourceId, StripeRequestOptions requestOptions = null)
+        {
+            var url = $"{Urls.BaseUrl}/customers/{customerId}/sources/{sourceId}";
+
+            return Mapper<StripeSource>.MapFromJson(
+                Requestor.Delete(url, SetupRequestOptions(requestOptions))
+            );
+        }
 
 
 
@@ -50,10 +58,20 @@ namespace Stripe
             return PostAsync($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions, cancellationToken, options);
         }
 
-        // not available :(
-        //public virtual Task<StripeDeleted> DeleteAsync(string sourceId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        //{
-        //    return DeleteEntityAsync($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions, cancellationToken);
-        //}
+        public virtual Task<StripeSource> AttachAsync(string customerId, StripeSourceAttachOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return PostAsync($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, cancellationToken, options);
+        }
+
+        public virtual async Task<StripeSource> DetachAsync(string customerId, string sourceId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var url = $"{Urls.BaseUrl}/customers/{customerId}/sources/{sourceId}";
+
+            return Mapper<StripeSource>.MapFromJson(
+                await Requestor.DeleteAsync(url, 
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken)
+                );
+        }
     }
 }
