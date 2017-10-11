@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Stripe.Infrastructure;
+using System.Net;
 
 namespace Stripe
 {
@@ -23,7 +24,7 @@ namespace Stripe
         public virtual StripePlan Get(string planId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripePlan>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Plans}/{planId}", false),
+                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -31,7 +32,7 @@ namespace Stripe
         public virtual StripeDeleted Delete(string planId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeDeleted>.MapFromJson(
-                Requestor.Delete($"{Urls.Plans}/{planId}",
+                Requestor.Delete($"{Urls.Plans}/{WebUtility.UrlEncode(planId)}",
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -39,7 +40,7 @@ namespace Stripe
         public virtual StripePlan Update(string planId, StripePlanUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripePlan>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{planId}", false),
+                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -67,7 +68,7 @@ namespace Stripe
         public virtual async Task<StripePlan> GetAsync(string planId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripePlan>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Plans}/{planId}", false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
             );
@@ -76,7 +77,7 @@ namespace Stripe
         public virtual async Task<StripeDeleted> DeleteAsync(string planId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeDeleted>.MapFromJson(
-                await Requestor.DeleteAsync($"{Urls.Plans}/{planId}",
+                await Requestor.DeleteAsync($"{Urls.Plans}/{WebUtility.UrlEncode(planId)}",
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
             );
@@ -85,7 +86,7 @@ namespace Stripe
         public virtual async Task<StripePlan> UpdateAsync(string planId, StripePlanUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripePlan>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{planId}", false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
             );

@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Stripe.Infrastructure;
+using System.Net;
 
 namespace Stripe
 {
@@ -23,7 +24,7 @@ namespace Stripe
         public virtual StripeCoupon Update(string couponId, StripeCouponUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCoupon>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Coupons}/{couponId}", false),
+                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -31,7 +32,7 @@ namespace Stripe
         public virtual StripeCoupon Get(string couponId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCoupon>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Coupons}/{couponId}", false),
+                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -39,7 +40,7 @@ namespace Stripe
         public virtual StripeDeleted Delete(string couponId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeDeleted>.MapFromJson(
-                Requestor.Delete(this.ApplyAllParameters(null, $"{Urls.Coupons}/{couponId}", false),
+                Requestor.Delete(this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -67,7 +68,7 @@ namespace Stripe
         public virtual async Task<StripeCoupon> UpdateAsync(string couponId, StripeCouponUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeCoupon>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Coupons}/{couponId}", false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
             );
@@ -76,7 +77,7 @@ namespace Stripe
         public virtual async Task<StripeCoupon> GetAsync(string couponId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeCoupon>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Coupons}/{couponId}", false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
             );
@@ -85,7 +86,7 @@ namespace Stripe
         public virtual async Task<StripeDeleted> DeleteAsync(string couponId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeDeleted>.MapFromJson(
-                await Requestor.DeleteAsync(this.ApplyAllParameters(null, $"{Urls.Coupons}/{couponId}", false),
+                await Requestor.DeleteAsync(this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
                 SetupRequestOptions(requestOptions),
                 cancellationToken)
             );
