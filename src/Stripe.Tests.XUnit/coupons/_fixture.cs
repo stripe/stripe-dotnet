@@ -17,7 +17,7 @@ namespace Stripe.Tests.Xunit
         public coupons_fixture()
         {
             CouponCreateOptions = new StripeCouponCreateOptions() {
-              Id = "test-coupon-" + Guid.NewGuid().ToString(),
+              Id = "test-coupon-" + Guid.NewGuid().ToString() + " ",
               PercentOff = 25,
               Duration = "repeating",
               DurationInMonths = 3,
