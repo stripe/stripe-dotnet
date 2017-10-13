@@ -1,5 +1,8 @@
 # Changelog
 
+## 11.4.0 - 2017-10-13
+* [#1031](https://github.com/stripe/stripe-dotnet#1031) Support for manual subscription payments
+
 ## 11.3.0 - 2017-10-11
 * [#1028](https://github.com/stripe/stripe-dotnet#1028) Support for attaching/detaching sources to/from customers
 * [#1029](https://github.com/stripe/stripe-dotnet#1029) Correctly encode custom coupon and plan IDs in API URLs
