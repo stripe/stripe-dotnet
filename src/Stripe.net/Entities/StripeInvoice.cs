@@ -22,6 +22,12 @@ namespace Stripe
         [JsonProperty("attempted")]
         public bool Attempted { get; set; }
 
+        /// <summary>
+        /// One of <see cref="StripeBilling" />. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions.
+        /// </summary>
+        [JsonProperty("billing")]
+        public StripeBilling? Billing { get; set; }
+
         [JsonProperty("closed")]
         public bool? Closed { get; set; }
 
@@ -48,11 +54,24 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? Date { get; set; }
 
+        /// <summary>
+        /// The date on which payment for this invoice is due. This value will be null for invoices where billing=charge_automatically.
+        /// </summary>
+        [JsonProperty("due_date")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime? DueDate { get; set; }
+
         [JsonProperty("forgiven")]
         public bool? Forgiven { get; set; }
 
         [JsonProperty("lines")]
         public StripeList<StripeInvoiceLineItem> StripeInvoiceLineItems { get; set; }
+
+        /// <summary>
+        /// A unique, identifying string that appears on emails sent to the customer for this invoice.
+        /// </summary>
+        [JsonProperty("number")]
+        public string Number { get; set; }
 
         [JsonProperty("paid")]
         public bool Paid { get; set; }
