@@ -1,5 +1,8 @@
 # Changelog
 
+## 11.5.0 - 2017-10-16
+* [#1034](https://github.com/stripe/stripe-dotnet#1034) Add `Customer` to `StripeBankAccount`
+
 ## 11.4.0 - 2017-10-13
 * [#1031](https://github.com/stripe/stripe-dotnet#1031) Support for manual subscription payments
 
