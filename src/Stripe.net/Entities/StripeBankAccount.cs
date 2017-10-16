@@ -24,6 +24,9 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [JsonProperty("customer")]
+        public string Customer { get; set; }
+
         [JsonProperty("default_for_currency")]
         public bool DefaultForCurrency { get; set; }
 
