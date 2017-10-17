@@ -9,9 +9,6 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
-
         #region Expandable Account
         public string AccountId { get; set; }
 
@@ -88,6 +85,9 @@ namespace Stripe
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
+
+        [JsonProperty("livemode")]
+        public bool LiveMode { get; set; }
 
         #region Expandable Originating Transaction
         public string OriginatingTransactionId { get; set; }

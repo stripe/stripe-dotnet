@@ -67,6 +67,11 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? EndedAt { get; set; }
 
+        [JsonProperty("items")]
+        public StripeList<StripeSubscriptionItem> Items { get; set; }
+
+        // TODO: add livemode
+
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
@@ -82,9 +87,6 @@ namespace Stripe
 
         [JsonProperty("status")]
         public string Status { get; set; }
-
-        [JsonProperty("items")]
-        public StripeList<StripeSubscriptionItem> Items { get; set; }
 
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }

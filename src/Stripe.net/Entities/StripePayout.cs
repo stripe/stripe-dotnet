@@ -34,6 +34,31 @@ namespace Stripe
         }
         #endregion
 
+        [JsonProperty("created")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime Created { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        // TODO: add description
+
+        #region Expandable Destination
+        public string DestinationId { get; set; }
+
+        [JsonIgnore]
+        public Source Destination { get; set; }
+
+        [JsonProperty("destination")]
+        internal object InternalDestination
+        {
+            set
+            {
+                StringOrObject<Source>.Map(value, s => DestinationId = s, o => Destination = o);
+            }
+        }
+        #endregion
+
         #region Expandable Cancellation Balance Transaction
         /// <summary>
         /// If the payout failed or was canceled, this will be the ID of the balance transaction that reversed the initial balance transaction, and puts the funds from the failed payout back in your balance.
@@ -49,29 +74,6 @@ namespace Stripe
             set
             {
                 StringOrObject<StripeBalanceTransaction>.Map(value, s => FailureBalanceTransactionId = s, o => FailureBalanceTransaction = o);
-            }
-        }
-        #endregion
-
-        [JsonProperty("created")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime Created { get; set; }
-
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        #region Expandable Destination
-        public string DestinationId { get; set; }
-
-        [JsonIgnore]
-        public Source Destination { get; set; }
-
-        [JsonProperty("destination")]
-        internal object InternalDestination
-        {
-            set
-            {
-                StringOrObject<Source>.Map(value, s => DestinationId = s, o => Destination = o);
             }
         }
         #endregion

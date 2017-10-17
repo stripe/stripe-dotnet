@@ -10,39 +10,15 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
-
-        [JsonProperty("created")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime Created { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
         [JsonProperty("active_account")]
         public StripeRecipientActiveAccount ActiveAccount { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("email")]
-        public string Email { get; set; }
-
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
-
-        [JsonProperty("migrated_to")]
-        public string MigratedTo { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
 
         [JsonProperty("cards")]
         public StripeList<StripeCard> StripeCardList { get; set; }
 
-        [JsonProperty("verified")]
-        public bool Verified { get; set; }
+        [JsonProperty("created")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime Created { get; set; }
 
         #region Expandable Default Card
         public string StripeDefaultCardId { get; set; }
@@ -59,5 +35,31 @@ namespace Stripe
             }
         }
         #endregion
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("livemode")]
+        public bool LiveMode { get; set; }
+
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("migrated_to")]
+        public string MigratedTo { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        // TODO: add rolled_back_from
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("verified")]
+        public bool Verified { get; set; }
     }
 }

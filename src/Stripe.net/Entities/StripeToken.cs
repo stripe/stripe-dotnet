@@ -9,19 +9,6 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
-
-        [JsonProperty("created")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime? Created { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("used")]
-        public bool? Used { get; set; }
-
         [JsonProperty("bank_account[id]")]
         public string BankAccountId { get; set; }
 
@@ -52,6 +39,22 @@ namespace Stripe
         [JsonProperty("card")]
         public StripeCard StripeCard { get; set; }
 
+        // TODO: add client_ip
+
+        [JsonProperty("created")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime? Created { get; set; }
+
+        [JsonProperty("livemode")]
+        public bool LiveMode { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("used")]
+        public bool? Used { get; set; }
+
+        // TODO: remove
         [Obsolete("This property is not valid on tokens and will be removed in a later version.")]
         [JsonProperty("description")]
         public string Description { get; set; }

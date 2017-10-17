@@ -24,6 +24,9 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
         [JsonProperty("fee")]
         public int Fee { get; set; }
 
@@ -32,15 +35,6 @@ namespace Stripe
 
         [JsonProperty("net")]
         public int Net { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
 
         #region Expandable Source
         public string SourceId { get; set; }
@@ -57,5 +51,11 @@ namespace Stripe
             }
         }
         #endregion
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 }

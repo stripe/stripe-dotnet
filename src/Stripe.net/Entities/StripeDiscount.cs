@@ -28,6 +28,14 @@ namespace Stripe
         }
         #endregion
 
+        [JsonProperty("end")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime? End { get; set; }
+
+        [JsonProperty("start")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime? Start { get; set; }
+
         #region Expandable Subscription
         public string SubscriptionId { get; set; }
 
@@ -43,13 +51,5 @@ namespace Stripe
             }
         }
         #endregion
-
-        [JsonProperty("start")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime? Start { get; set; }
-
-        [JsonProperty("end")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime? End { get; set; }
     }
 }

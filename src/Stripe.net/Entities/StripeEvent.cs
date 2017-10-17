@@ -6,11 +6,12 @@ namespace Stripe
 {
     public class StripeEvent : StripeEntityWithId
     {
-        [JsonProperty("type")]
-        public string Type { get; set; }
+        // TODO: add object
 
         [JsonProperty("account")]
         public string Account { get; set; }
+
+        // TODO: add api_version
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
@@ -43,5 +44,8 @@ namespace Stripe
             }
         }
         #endregion
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 }
