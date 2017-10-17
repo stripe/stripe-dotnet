@@ -80,7 +80,11 @@ namespace Stripe
         [JsonProperty("redirect")]
         public StripeRedirect Redirect { get; set; }
 
-        // TODO: add statement_descriptor
+        /// <summary>
+        /// Extra information about a source. This will appear on your customer’s statement every time you charge the source.
+        /// </summary>
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
 
         /// <summary>
         /// The status of the charge, one of canceled, chargeable, consumed, failed, or pending. Only chargeable source objects can be used to create a charge.

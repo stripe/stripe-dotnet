@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Stripe
 {
@@ -10,6 +11,7 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        // TODO: add source_types
+        [JsonProperty("source_types")]
+        public Dictionary<string, long> SourceTypes { get; set; }
     }
  }

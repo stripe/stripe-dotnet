@@ -7,7 +7,8 @@ namespace Stripe
 {
     public class StripePlan : StripeEntityWithId
     {
-        // TODO: add object
+        [JsonProperty("object")]
+        public string Object { get; set; }
 
         [JsonProperty("amount")]
         public int Amount { get; set; }

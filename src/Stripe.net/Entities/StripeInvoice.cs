@@ -131,7 +131,9 @@ namespace Stripe
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
 
-        // TODO: add subscription_proration_date
+        [JsonProperty("subscription_proration_date")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime SubscriptionProrationDate { get; set; }
 
         [JsonProperty("subtotal")]
         public int Subtotal { get; set; }

@@ -41,7 +41,8 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        // TODO: add description
+        [JsonProperty("description")]
+        public string Description { get; set; }
 
         #region Expandable Destination
         public string DestinationId { get; set; }
@@ -84,7 +85,6 @@ namespace Stripe
         [JsonProperty("failure_message")]
         public string FailureMessage { get; set; }
 
-        // todo: can this move to StripeEntity?
         [JsonProperty("livemode")]
         public bool LiveMode { get; set; }
 

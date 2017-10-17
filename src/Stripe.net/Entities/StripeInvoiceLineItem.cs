@@ -79,7 +79,8 @@ namespace Stripe
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
 
-        // TODO: add subscription_item
+        [JsonProperty("subscription_item")]
+        public string SubscriptionItem { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
