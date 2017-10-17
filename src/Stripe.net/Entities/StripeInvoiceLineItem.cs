@@ -10,9 +10,6 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
-
         [JsonProperty("amount")]
         public int Amount { get; set; }
 
@@ -39,14 +36,11 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Date { get; set; }
 
-        [JsonProperty("discountable")]
-        public bool Discountable { get; set; }
-
-        [JsonProperty("proration")]
-        public bool Proration { get; set; }
-
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        [JsonProperty("discountable")]
+        public bool Discountable { get; set; }
 
         #region Expandable Invoice
         public string InvoiceId { get; set; }
@@ -64,11 +58,20 @@ namespace Stripe
         }
         #endregion
 
+        [JsonProperty("livemode")]
+        public bool LiveMode { get; set; }
+
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("period")]
+        public StripePeriod StripePeriod { get; set; }
+
         [JsonProperty("plan")]
         public StripePlan Plan { get; set; }
+
+        [JsonProperty("proration")]
+        public bool Proration { get; set; }
 
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
@@ -76,8 +79,7 @@ namespace Stripe
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
 
-        [JsonProperty("period")]
-        public StripePeriod StripePeriod { get; set; }
+        // TODO: add subscription_item
 
         [JsonProperty("type")]
         public string Type { get; set; }

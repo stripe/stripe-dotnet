@@ -62,6 +62,8 @@ namespace Stripe
         [JsonProperty("last_name_kanji")]
         public string LastNameKanji { get; set; }
 
+        // TODO: add maiden_name
+
         [JsonProperty("personal_address")]
         public StripeAddress PersonalAddress { get; set; }
 
@@ -74,8 +76,12 @@ namespace Stripe
         [JsonProperty("personal_id_number_provided")]
         public bool PersonalIdNumberProvided { get; set; }
 
+        // TODO: add phone_number
+
         [JsonProperty("ssn_last_4_provided")]
         public bool SocialSecurityNumberLastFourProvided { get; set; }
+
+        // TODO: add tax_id_registrar
 
         [JsonProperty("type")]
         public string Type { get; set; }

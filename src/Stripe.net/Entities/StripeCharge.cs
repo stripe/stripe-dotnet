@@ -22,7 +22,7 @@ namespace Stripe
         [JsonProperty("amount_refunded")]
         public int AmountRefunded { get; set; }
 
-        // application
+        // TODO: add application
 
         #region Expandable Application Fee
         public string ApplicationFeeId { get; set; }
@@ -118,7 +118,6 @@ namespace Stripe
             }
         }
         #endregion
-
 
         #region Expandable Dispute
         public string DisputeId { get; set; }

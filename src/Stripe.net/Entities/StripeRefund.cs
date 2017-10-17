@@ -13,13 +13,6 @@ namespace Stripe
         [JsonProperty("amount")]
         public int Amount { get; set; }
 
-        [JsonProperty("created")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime Created { get; set; }
-
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
         #region Expandable Balance Transaction
         public string BalanceTransactionId { get; set; }
 
@@ -52,6 +45,20 @@ namespace Stripe
         }
         #endregion
 
+        [JsonProperty("created")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime Created { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        // TODO: add failure_balance_transaction
+
+        // TODO: add failure_reason
+
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
@@ -60,9 +67,6 @@ namespace Stripe
 
         [JsonProperty("receipt_number")]
         public string ReceiptNumber { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }

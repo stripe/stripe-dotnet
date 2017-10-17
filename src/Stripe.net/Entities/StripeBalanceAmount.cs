@@ -9,5 +9,7 @@ namespace Stripe
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
+
+        // TODO: add source_types
     }
  }

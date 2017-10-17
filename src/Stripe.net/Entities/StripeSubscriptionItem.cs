@@ -14,13 +14,13 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
 
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+
         [JsonProperty("plan")]
         public StripePlan Plan { get; set; }
 
         [JsonProperty("quantity")]
         public int Quantity { get; set; }
-
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
     }
 }

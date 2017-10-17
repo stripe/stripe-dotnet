@@ -10,24 +10,24 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        [JsonProperty("amount_off")]
+        public int? AmountOff { get; set; }
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
 
-        [JsonProperty("duration")]
-        public string Duration { get; set; }
-
-        [JsonProperty("amount_off")]
-        public int? AmountOff { get; set; }
-
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [JsonProperty("duration")]
+        public string Duration { get; set; }
+
         [JsonProperty("duration_in_months")]
         public int? DurationInMonths { get; set; }
+
+        [JsonProperty("livemode")]
+        public bool LiveMode { get; set; }
 
         [JsonProperty("max_redemptions")]
         public int? MaxRedemptions { get; set; }

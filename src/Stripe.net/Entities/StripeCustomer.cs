@@ -17,6 +17,12 @@ namespace Stripe
         public int AccountBalance { get; set; }
 
         /// <summary>
+        /// Warning: this is not in the documentation
+        /// </summary>
+        [JsonProperty("bank_accounts")]
+        public StripeList<CustomerBankAccount> CustomerBankAccounts { get; set; }
+
+        /// <summary>
         /// The customer’s VAT identification number
         /// </summary>
         [JsonProperty("business_vat_id")]
@@ -25,12 +31,6 @@ namespace Stripe
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
-
-        /// <summary>
-        /// Warning: this is not in the documentation
-        /// </summary>
-        [JsonProperty("bank_accounts")]
-        public StripeList<CustomerBankAccount> CustomerBankAccounts { get; set; }
 
         /// <summary>
         /// The currency the customer can be charged in for recurring billing purposes
@@ -88,6 +88,12 @@ namespace Stripe
         public string DefaultSourceType { get; set; }
 
         /// <summary>
+        /// Warning: this is not in the documentation
+        /// </summary>
+        [JsonProperty("deleted")]
+        public bool? Deleted { get; set; }
+
+        /// <summary>
         /// Whether or not the latest charge for the customer’s latest invoice has failed
         /// </summary>
         [JsonProperty("delinquent")]
@@ -128,11 +134,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscriptions")]
         public StripeList<StripeSubscription> Subscriptions { get; set; }
-
-        /// <summary>
-        /// Warning: this is not in the documentation
-        /// </summary>
-        [JsonProperty("deleted")]
-        public bool? Deleted { get; set; }
     }
 }

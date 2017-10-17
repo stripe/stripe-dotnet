@@ -53,9 +53,6 @@ namespace Stripe
         [JsonProperty("flow")]
         public string Flow { get; set; }
 
-        [JsonProperty("ideal")]
-        public StripeIdeal Ideal { get; set; }
-
         [JsonProperty("livemode")]
         public bool LiveMode { get; set; }
 
@@ -83,23 +80,7 @@ namespace Stripe
         [JsonProperty("redirect")]
         public StripeRedirect Redirect { get; set; }
 
-        [JsonProperty("bitcoin")]
-        public StripeBitcoin Bitcoin { get; set; }
-
-        [JsonProperty("bancontact")]
-        public StripeBancontact Bancontact { get; set; }
-
-        [JsonProperty("sepa_debit")]
-        public StripeSepaDebit SepaDebit { get; set; }
-
-        [JsonProperty("sofort")]
-        public StripeSofort Sofort { get; set; }
-
-        [JsonProperty("card")]
-        public StripeSourceCard Card { get; set; }
-
-        [JsonProperty("three_d_secure")]
-        public StripeThreeDSecure ThreeDSecure { get; set; }
+        // TODO: add statement_descriptor
 
         /// <summary>
         /// The status of the charge, one of canceled, chargeable, consumed, failed, or pending. Only chargeable source objects can be used to create a charge.
@@ -118,5 +99,28 @@ namespace Stripe
         /// </summary>
         [JsonProperty("usage")]
         public string Usage { get; set; }
+
+        // Type-specific attributes
+
+        [JsonProperty("bancontact")]
+        public StripeBancontact Bancontact { get; set; }
+
+        [JsonProperty("bitcoin")]
+        public StripeBitcoin Bitcoin { get; set; }
+
+        [JsonProperty("card")]
+        public StripeSourceCard Card { get; set; }
+
+        [JsonProperty("ideal")]
+        public StripeIdeal Ideal { get; set; }
+
+        [JsonProperty("sepa_debit")]
+        public StripeSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("sofort")]
+        public StripeSofort Sofort { get; set; }
+
+        [JsonProperty("three_d_secure")]
+        public StripeThreeDSecure ThreeDSecure { get; set; }
     }
 }

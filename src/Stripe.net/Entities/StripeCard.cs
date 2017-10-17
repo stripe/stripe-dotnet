@@ -9,20 +9,21 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("brand")]
-        public string Brand { get; set; }
+        #region Expandable Account
+        public string AccountId { get; set; }
 
-        [JsonProperty("exp_month")]
-        public int ExpirationMonth { get; set; }
+        [JsonIgnore]
+        public StripeAccount Account { get; set; }
 
-        [JsonProperty("exp_year")]
-        public int ExpirationYear { get; set; }
-
-        [JsonProperty("funding")]
-        public string Funding { get; set; }
-
-        [JsonProperty("last4")]
-        public string Last4 { get; set; }
+        [JsonProperty("account")]
+        internal object InternalAccount
+        {
+            set
+            {
+                StringOrObject<StripeAccount>.Map(value, s => AccountId = s, o => Account = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("address_city")]
         public string AddressCity { get; set; }
@@ -51,45 +52,14 @@ namespace Stripe
         [JsonProperty("available_payout_methods")]
         public string[] AvailablePayoutMethods { get; set; }
 
+        [JsonProperty("brand")]
+        public string Brand { get; set; }
+
         [JsonProperty("country")]
         public string Country { get; set; }
 
-        [JsonProperty("cvc_check")]
-        public string CvcCheck { get; set; }
-
-        [JsonProperty("dynamic_last4")]
-        public string DynamicLast4 { get; set; }
-
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("three_d_secure")]
-        public string ThreeDSecure { get; set; }
-
-        [JsonProperty("tokenization_method")]
-        public string TokenizationMethod { get; set; }
-
-        [JsonProperty("fingerprint")]
-        public string Fingerprint { get; set; }
-
-        #region Expandable Recipient
-        public string RecipientId { get; set; }
-
-        [JsonIgnore]
-        public StripeRecipient Recipient { get; set; }
-
-        [JsonProperty("recipient")]
-        internal object InternalRecipient
-        {
-            set
-            {
-                StringOrObject<StripeRecipient>.Map(value, s => RecipientId = s, o => Recipient = o);
-            }
-        }
-        #endregion
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
 
         #region Expandable Customer
         public string CustomerId { get; set; }
@@ -107,26 +77,56 @@ namespace Stripe
         }
         #endregion
 
-        #region Expandable Account
-        public string AccountId { get; set; }
+        [JsonProperty("cvc_check")]
+        public string CvcCheck { get; set; }
+
+        [JsonProperty("default_for_currency")]
+        public bool DefaultForCurrency { get; set; }
+
+        [JsonProperty("dynamic_last4")]
+        public string DynamicLast4 { get; set; }
+
+        [JsonProperty("exp_month")]
+        public int ExpirationMonth { get; set; }
+
+        [JsonProperty("exp_year")]
+        public int ExpirationYear { get; set; }
+
+        [JsonProperty("fingerprint")]
+        public string Fingerprint { get; set; }
+
+        [JsonProperty("funding")]
+        public string Funding { get; set; }
+
+        [JsonProperty("last4")]
+        public string Last4 { get; set; }
+
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        #region Expandable Recipient
+        public string RecipientId { get; set; }
 
         [JsonIgnore]
-        public StripeAccount Account { get; set; }
+        public StripeRecipient Recipient { get; set; }
 
-        [JsonProperty("account")]
-        internal object InternalAccount
+        [JsonProperty("recipient")]
+        internal object InternalRecipient
         {
             set
             {
-                StringOrObject<StripeAccount>.Map(value, s => AccountId = s, o => Account = o);
+                StringOrObject<StripeRecipient>.Map(value, s => RecipientId = s, o => Recipient = o);
             }
         }
         #endregion
 
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
+        [JsonProperty("three_d_secure")]
+        public string ThreeDSecure { get; set; }
 
-        [JsonProperty("default_for_currency")]
-        public bool DefaultForCurrency { get; set; }
+        [JsonProperty("tokenization_method")]
+        public string TokenizationMethod { get; set; }
     }
 }
