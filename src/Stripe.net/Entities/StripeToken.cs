@@ -9,6 +9,7 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        // TODO: use a single property to map bank_account to a StripeBankAccount object
         [JsonProperty("bank_account[id]")]
         public string BankAccountId { get; set; }
 
@@ -39,7 +40,8 @@ namespace Stripe
         [JsonProperty("card")]
         public StripeCard StripeCard { get; set; }
 
-        // TODO: add client_ip
+        [JsonProperty("client_ip")]
+        public string ClientIp { get; set; }
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]

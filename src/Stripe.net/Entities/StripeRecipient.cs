@@ -54,7 +54,8 @@ namespace Stripe
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        // TODO: add rolled_back_from
+        [JsonProperty("rolled_back_from")]
+        public string RolledBackFrom { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

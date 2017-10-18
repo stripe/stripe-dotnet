@@ -22,7 +22,7 @@ namespace Stripe
         [JsonProperty("type")]
         public string Type { get; set; }
 
-        [JsonProperty("Url")] // TODO: should be "url"
+        [JsonProperty("url")]
         public string Url { get; set; }
     }
 }

@@ -8,7 +8,8 @@ namespace Stripe
         [JsonProperty("available")]
         public List<StripeBalanceAmount> Available { get; set; }
 
-        // TODO: add connect_reserved
+        [JsonProperty("connect_reserved")]
+        public List<StripeBalanceAmount> ConnectReserved { get; set; }
 
         [JsonProperty("livemode")]
         public bool LiveMode { get; set; }

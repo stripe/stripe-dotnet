@@ -70,7 +70,8 @@ namespace Stripe
         [JsonProperty("items")]
         public StripeList<StripeSubscriptionItem> Items { get; set; }
 
-        // TODO: add livemode
+        [JsonProperty("livemode")]
+        public bool LiveMode { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

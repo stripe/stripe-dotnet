@@ -55,9 +55,24 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        // TODO: add failure_balance_transaction
+        #region Expandable Failure Balance Transaction
+        public string FailureBalanceTransactionId { get; set; }
 
-        // TODO: add failure_reason
+        [JsonIgnore]
+        public StripeBalanceTransaction FailureBalanceTransaction { get; set; }
+
+        [JsonProperty("failure_balance_transaction")]
+        internal object InternalFailureBalanceTransaction
+        {
+            set
+            {
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => FailureBalanceTransactionId = s, o => FailureBalanceTransaction = o);
+            }
+        }
+        #endregion
+
+        [JsonProperty("failure_reason")]
+        public string FailureReason { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

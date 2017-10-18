@@ -22,7 +22,21 @@ namespace Stripe
         [JsonProperty("amount_refunded")]
         public int AmountRefunded { get; set; }
 
-        // TODO: add application
+        #region Expandable Application
+        public string ApplicationId { get; set; }
+
+        [JsonIgnore]
+        public StripeApplication Application { get; set; }
+
+        [JsonProperty("application")]
+        internal object InternalApplication
+        {
+            set
+            {
+                StringOrObject<StripeApplication>.Map(value, s => ApplicationId = s, o => Application = o);
+            }
+        }
+        #endregion
 
         #region Expandable Application Fee
         public string ApplicationFeeId { get; set; }
