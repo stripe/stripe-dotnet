@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.6.0 - 2017-10-19
+* [#1035](https://github.com/stripe/stripe-dotnet#1035) Signature fixes for webhook signature verification
+    * Explicitly dispose of `HMACSHA256` after use so that its buffer cannot be inadvertently leaked
+    * Use `SafeUTF8.GetBytes` so that unrecognized codepoints are not silently replaced with "?"
+* [#1040](https://github.com/stripe/stripe-dotnet/pull/1040) Add a few field definitions that were missing from API resources
+
 ## 11.5.0 - 2017-10-16
 * [#1034](https://github.com/stripe/stripe-dotnet#1034) Add `Customer` to `StripeBankAccount`
 
