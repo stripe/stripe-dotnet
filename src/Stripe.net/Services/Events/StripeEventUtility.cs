@@ -12,6 +12,7 @@ namespace Stripe
     public static class StripeEventUtility
     {
         internal static long? EpochUtcNowOverride { get; set; }
+        internal static readonly UTF8Encoding SafeUTF8 = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
         public static StripeEvent ParseEvent(string json)
         {
@@ -26,10 +27,18 @@ namespace Stripe
         public static StripeEvent ConstructEvent(string json, string stripeSignatureHeader, string secret, int tolerance = 300)
         {
             var signatureItems = parseStripeSignature(stripeSignatureHeader);
+            var signature = string.Empty;
 
-            var signature = computeSignature(secret, signatureItems["t"].FirstOrDefault(), json);
+            try
+            {
+               signature = computeSignature(secret, signatureItems["t"].FirstOrDefault(), json);
+            }
+            catch (EncoderFallbackException ex)
+            {
+               throw new Exception("The webhook cannot be processed because the signature cannot be safely calculated.", ex);
+            }
 
-            if(!isSignaturePresent(signature, signatureItems["v1"]))
+            if (!isSignaturePresent(signature, signatureItems["v1"]))
                 throw new Exception("The signature for the webhook is not present in the Stripe-Signature header.");
 
             var utcNow = EpochUtcNowOverride ?? DateTime.UtcNow.ConvertDateTimeToEpoch();
@@ -56,13 +65,14 @@ namespace Stripe
 
         private static string computeSignature(string secret, string timestamp, string payload)
         {
-            var secretBytes = Encoding.UTF8.GetBytes(secret);
-            var payloadBytes = Encoding.UTF8.GetBytes($"{timestamp}.{payload}");
+            var secretBytes = SafeUTF8.GetBytes(secret);
+            var payloadBytes = SafeUTF8.GetBytes($"{timestamp}.{payload}");
 
-            var cryptographer = new HMACSHA256(secretBytes);
-            var hash = cryptographer.ComputeHash(payloadBytes);
-
-            return BitConverter.ToString(hash).Replace("-", "").ToLower();
+            using (var cryptographer = new HMACSHA256(secretBytes))
+            {
+                var hash = cryptographer.ComputeHash(payloadBytes);
+                return BitConverter.ToString(hash).Replace("-", "").ToLower();
+            }      
         }
 
         private static bool secureCompare(string a, string b)
