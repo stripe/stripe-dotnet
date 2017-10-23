@@ -29,6 +29,9 @@ namespace Stripe
         [JsonProperty("destination[amount]")]
         public int? DestinationAmount { get; set; }
 
+        [JsonProperty("exchange_rate")]
+        public decimal? ExchangeRate { get; set; }
+
         /// <summary>
         /// Email address that will receive an email receipt confirming the transaction.
         /// </summary>
