@@ -7,7 +7,7 @@ namespace Stripe
         [JsonProperty("active")]
         public bool? Active { get; set; }
 
-        [JsonProperty("array:ids")]
+        [JsonProperty("ids")]
         public string[] Ids { get; set; }
 
         [JsonProperty("shippable")]

@@ -11,7 +11,7 @@ namespace Stripe
         [JsonProperty("attributes")]
         public Dictionary<string, string> Attributes { get; set; }
 
-        [JsonProperty("array:ids")]
+        [JsonProperty("ids")]
         public string[] Ids { get; set; }
 
         [JsonProperty("in_stock")]
