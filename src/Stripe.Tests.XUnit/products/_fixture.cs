@@ -27,7 +27,8 @@ namespace Stripe.Tests.Xunit
                     Length = 100,
                     Weight = 100,
                     Width = 100,
-                }
+                },
+                Attributes = new string[] { "color", "size" },
             };
 
             ProductTwoCreateOptions = new StripeProductCreateOptions

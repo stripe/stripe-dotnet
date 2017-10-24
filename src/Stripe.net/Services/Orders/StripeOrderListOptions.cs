@@ -15,7 +15,7 @@ namespace Stripe
         /// <summary>
         /// Only return orders with the given IDs.
         /// </summary>
-        [JsonProperty("array:ids")]
+        [JsonProperty("ids")]
         public string[] Ids { get; set; }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Stripe
         /// <summary>
         /// Only return orders with the given upstream order IDs.
         /// </summary>
-        [JsonProperty("array:upstream_ids")]
+        [JsonProperty("upstream_ids")]
         public string[] UpstreamIds { get; set; }
     }
 }

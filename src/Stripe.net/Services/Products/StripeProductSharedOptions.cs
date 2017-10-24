@@ -14,7 +14,7 @@ namespace Stripe
         /// <summary>
         /// A list of up to 5 alphanumeric attributes that each SKU can provide values for (e.g. ["color", "size"]).
         /// </summary>
-        [JsonProperty("array:attributes")]
+        [JsonProperty("attributes")]
         public string[] Attributes { get; set; }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Stripe
         /// <summary>
         /// An array of Connect application names or identifiers that should not be able to order the SKUs for this product.
         /// </summary>
-        [JsonProperty("array:deactivate_on")]
+        [JsonProperty("deactivate_on")]
         public string[] DeactivateOn { get; set; }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe
         /// <summary>
         /// A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
         /// </summary>
-        [JsonProperty("array:images")]
+        [JsonProperty("images")]
         public string[] Images { get; set; }
 
         /// <summary>
