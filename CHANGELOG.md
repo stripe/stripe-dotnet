@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.6.1 - 2017-10-24
+* [#1044](https://github.com/stripe/stripe-dotnet/pull/1044) Improvements to parameter encoding
+    * Main user-facing fix is that dictionary keys are now encoded correctly
+
 ## 11.6.0 - 2017-10-19
 * [#1035](https://github.com/stripe/stripe-dotnet#1035) Signature fixes for webhook signature verification
     * Explicitly dispose of `HMACSHA256` after use so that its buffer cannot be inadvertently leaked
