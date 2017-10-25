@@ -128,6 +128,11 @@ namespace Stripe
         /// Occurs when the dispute is updated (usually with evidence).
         /// </summary>
         public const string ChargeDisputeUpdated = "charge.dispute.updated";
+        
+        /// <summary>
+        /// Occurs whenever a refund is updated on selected payment methods.
+        /// </summary
+        public const string ChargeRefundUpdated = "charge.refund.updated";
 
         /// <summary>
         /// Occurs whenever a coupon is created.
@@ -223,11 +228,11 @@ namespace Stripe
         /// Occurs whenever an invoice attempts to be paid, and the payment succeeds.
         /// </summary>
         public const string InvoicePaymentSucceeded = "invoice.payment_succeeded";
-
+       
         /// <summary>
-        /// Occurs whenever an invoice email is sent out.
+        /// Occurs X number of days before a subscription is scheduled to create an invoice that is charged automatically, where X is determined by your subscriptions settings.
         /// </summary>
-        public const string InvoiceSent = "invoice.sent";
+        public const string InvoiceUpcoming = "invoice.upcoming";
 
         /// <summary>
         /// Occurs X number of days before a subscription is scheduled to create an invoice that is charged automatically, where X is determined by your subscriptions settings.
