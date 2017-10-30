@@ -48,6 +48,9 @@ namespace Stripe
         [JsonProperty("destination[amount]")]
         public int? DestinationAmount { get; set; }
 
+        [JsonProperty("exchange_rate")]
+        public decimal? ExchangeRate { get; set; }
+
         /// <summary>
         /// A string that identifies this transaction as part of a group. See the Connect documentation for details.
         /// </summary>

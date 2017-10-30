@@ -8,6 +8,9 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        [JsonProperty("exchange_rate")]
+        public decimal? ExchangeRate { get; set; }
+
         [JsonProperty("fraud_details")]
         public Dictionary<string, string> FraudDetails { get; set; }
 

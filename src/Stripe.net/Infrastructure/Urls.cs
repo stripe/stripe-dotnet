@@ -32,6 +32,8 @@
 
         public static string Events => BaseUrl + "/events";
 
+        public static string ExchangeRates => BaseUrl + "/exchange_rates";
+
         public static string Recipients => BaseUrl + "/recipients";
 
         public static string Subscriptions => BaseUrl + "/subscriptions";
