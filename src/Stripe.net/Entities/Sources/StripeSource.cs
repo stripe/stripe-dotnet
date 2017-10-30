@@ -106,6 +106,9 @@ namespace Stripe
 
         // Type-specific attributes
 
+        [JsonProperty("ach_credit_transfer")]
+        public StripeSourceAchCreditTransfer AchCreditTransfer { get; set; }
+
         [JsonProperty("bancontact")]
         public StripeBancontact Bancontact { get; set; }
 

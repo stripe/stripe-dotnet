@@ -2,6 +2,7 @@
 {
     public static class StripeSourceType
     {
+        public const string AchCreditTransfer = "ach_credit_transfer";
         public const string Bancontact = "bancontact";
         public const string Bitcoin = "bitcoin";
         public const string Card = "card";
