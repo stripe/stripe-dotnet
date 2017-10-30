@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.7.0 - 2017-10-30
+* [#1047](https://github.com/stripe/stripe-dotnet/pull/1047) Support for listing source transactions
+* [#1049](https://github.com/stripe/stripe-dotnet/pull/1049) Support for listing and retrieving exchange rates
+
 ## 11.6.1 - 2017-10-24
 * [#1044](https://github.com/stripe/stripe-dotnet/pull/1044) Improvements to parameter encoding
     * Main user-facing fix is that dictionary keys are now URL-encoded correctly (in case they contained characters incompatible with URLs)
