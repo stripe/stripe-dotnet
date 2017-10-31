@@ -1,5 +1,8 @@
 # Changelog
 
+## 11.7.1 - 2017-10-31
+* [#1050](https://github.com/stripe/stripe-dotnet/pull/1050) Make exchange rate APIs singular (released as patch because these APIs are brand new and because 11.7.0 never made it to Nuget anyway)
+
 ## 11.7.0 - 2017-10-30
 * [#1047](https://github.com/stripe/stripe-dotnet/pull/1047) Support for listing source transactions
 * [#1049](https://github.com/stripe/stripe-dotnet/pull/1049) Support for listing and retrieving exchange rates
