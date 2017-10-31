@@ -5,16 +5,16 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeExchangeRatesService : StripeService
+    public class StripeExchangeRateService : StripeService
     {
-        public StripeExchangeRatesService(string apiKey = null) : base(apiKey) { }
+        public StripeExchangeRateService(string apiKey = null) : base(apiKey) { }
 
 
 
         //Sync
-        public virtual StripeExchangeRates Get(string currency, StripeRequestOptions requestOptions = null)
+        public virtual StripeExchangeRate Get(string currency, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeExchangeRates>.MapFromJson(
+            return Mapper<StripeExchangeRate>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.ExchangeRates}/{currency}"),
                     SetupRequestOptions(requestOptions)
@@ -22,9 +22,9 @@ namespace Stripe
             );
         }
 
-        public virtual StripeList<StripeExchangeRates> List(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeExchangeRate> List(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<StripeExchangeRates>>.MapFromJson(
+            return Mapper<StripeList<StripeExchangeRate>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, $"{Urls.ExchangeRates}", true),
                     SetupRequestOptions(requestOptions)
@@ -35,9 +35,9 @@ namespace Stripe
 
 
         //Async
-        public virtual async Task<StripeExchangeRates> GetAsync(string currency, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeExchangeRate> GetAsync(string currency, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeExchangeRates>.MapFromJson(
+            return Mapper<StripeExchangeRate>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.ExchangeRates}/{currency}"),
                     SetupRequestOptions(requestOptions),
@@ -46,9 +46,9 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<StripeList<StripeExchangeRates>> ListAsync(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeExchangeRate>> ListAsync(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<StripeExchangeRates>>.MapFromJson(
+            return Mapper<StripeList<StripeExchangeRate>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, $"{Urls.ExchangeRates}", true),
                     SetupRequestOptions(requestOptions),

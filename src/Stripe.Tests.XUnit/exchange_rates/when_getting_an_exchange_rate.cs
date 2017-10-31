@@ -7,13 +7,13 @@ using Xunit;
 
 namespace Stripe.Tests.XUnit
 {
-    public class when_getting_exchange_rates
+    public class when_getting_an_exchange_rate
     {
-        StripeExchangeRates result;
+        StripeExchangeRate result;
 
-        public when_getting_exchange_rates()
+        public when_getting_an_exchange_rate()
         {
-            result = new StripeExchangeRatesService(Cache.ApiKey).Get("usd");
+            result = new StripeExchangeRateService(Cache.ApiKey).Get("usd");
         }
 
         [Fact]
@@ -24,7 +24,7 @@ namespace Stripe.Tests.XUnit
         }
 
         [Fact]
-        public void it_should_have_rates_for_eur()
+        public void it_should_have_rate_for_eur()
         {
             result.Rates["eur"].Should().BeGreaterThan(0);
         }

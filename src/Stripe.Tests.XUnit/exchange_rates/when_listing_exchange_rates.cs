@@ -9,18 +9,18 @@ namespace Stripe.Tests.XUnit
 {
     public class when_listing_exchange_rates
     {
-        StripeList<StripeExchangeRates> result;
+        StripeList<StripeExchangeRate> result;
 
         public when_listing_exchange_rates()
         {
-            result = new StripeExchangeRatesService(Cache.ApiKey).List(new StripeListOptions { Limit = 3 });
+            result = new StripeExchangeRateService(Cache.ApiKey).List(new StripeListOptions { Limit = 3 });
         }
 
         [Fact]
         public void list_is_iterable()
         {
             var count = 0;
-            IEnumerable<StripeExchangeRates> enumerable = result as IEnumerable<StripeExchangeRates>;
+            IEnumerable<StripeExchangeRate> enumerable = result as IEnumerable<StripeExchangeRate>;
             foreach (var obj in enumerable)
             {
                 count += 1;
