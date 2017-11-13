@@ -54,7 +54,7 @@ namespace Stripe
             );
         }
 
-        public virtual StripeList<CustomerBankAccount> List(string customerId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<CustomerBankAccount> List(string customerId, BankAccountListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeList<CustomerBankAccount>>.MapFromJson(
                 Requestor.GetString(
@@ -121,7 +121,7 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<StripeList<CustomerBankAccount>> ListAsync(string customerId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<CustomerBankAccount>> ListAsync(string customerId, BankAccountListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeList<CustomerBankAccount>>.MapFromJson(
                 await Requestor.GetStringAsync(

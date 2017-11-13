@@ -19,7 +19,7 @@ namespace Stripe
             );
         }
 
-        public virtual StripeList<StripeAccount> List(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeAccount> List(StripeAccountListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             var path = $"{Urls.BaseUrl}/accounts";
 
@@ -80,7 +80,7 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<StripeList<StripeAccount>> ListAsync(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeAccount>> ListAsync(StripeAccountListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var path = $"{Urls.BaseUrl}/accounts";
 

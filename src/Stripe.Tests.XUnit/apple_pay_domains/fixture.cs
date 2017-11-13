@@ -5,7 +5,7 @@ namespace Stripe.Tests.Xunit
     public class apple_pay_domains_fixture : IDisposable
     {
         public StripeApplePayDomainCreateOptions DomainCreateOptions { get; set; }
-        public StripeListOptions DomainListOptions { get; set; }
+        public StripeApplePayDomainListOptions DomainListOptions { get; set; }
 
         public StripeApplePayDomain Domain { get; set; }
         public StripeApplePayDomain DomainRetrieved { get; set; }
@@ -17,7 +17,7 @@ namespace Stripe.Tests.Xunit
             {
                 DomainName = "example.com"
             };
-            DomainListOptions = new StripeListOptions();
+            DomainListOptions = new StripeApplePayDomainListOptions();
 
             var service = new StripeApplePayDomainService(Cache.ApiKey);
             Domain = service.Create(DomainCreateOptions);

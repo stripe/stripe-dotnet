@@ -13,7 +13,7 @@ namespace Stripe.Tests.XUnit
 
         public when_listing_exchange_rates()
         {
-            result = new StripeExchangeRateService(Cache.ApiKey).List(new StripeListOptions { Limit = 3 });
+            result = new StripeExchangeRateService(Cache.ApiKey).List(new StripeExchangeRateListOptions { Limit = 3 });
         }
 
         [Fact]

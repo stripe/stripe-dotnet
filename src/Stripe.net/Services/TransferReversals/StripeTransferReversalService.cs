@@ -30,7 +30,7 @@ namespace Stripe
             return Post($"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}", requestOptions, options);
         }
 
-        public virtual StripeList<StripeTransferReversal> List(string transferId, StripeListOptions options = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeTransferReversal> List(string transferId, StripeTransferReversalListOptions options = null, StripeRequestOptions requestOptions = null)
         {
             return GetEntityList($"{Urls.BaseUrl}/transfers/{transferId}/reversals", requestOptions, options);
         }
@@ -53,7 +53,7 @@ namespace Stripe
             return PostAsync($"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}", requestOptions, cancellationToken, options);      
         }
 
-        public virtual Task<StripeList<StripeTransferReversal>> ListAsync(string transferId, StripeListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<StripeTransferReversal>> ListAsync(string transferId, StripeTransferReversalListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return GetEntityListAsync($"{Urls.BaseUrl}/transfers/{transferId}/reversals", requestOptions, cancellationToken, options);
         }

@@ -22,7 +22,7 @@ namespace Stripe
             return GetEntity($"{Urls.BaseUrl}/apple_pay/domains/{domainId}", requestOptions);
         }
 
-        public virtual StripeList<StripeApplePayDomain> List(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeApplePayDomain> List(StripeApplePayDomainListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             return GetEntityList($"{Urls.BaseUrl}/apple_pay/domains", requestOptions, listOptions);
         }
@@ -45,7 +45,7 @@ namespace Stripe
             return GetEntityAsync($"{Urls.BaseUrl}/apple_pay/domains/{domainId}", requestOptions, cancellationToken);
         }
 
-        public virtual Task<StripeList<StripeApplePayDomain>> ListAsync(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<StripeApplePayDomain>> ListAsync(StripeApplePayDomainListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return GetEntityListAsync($"{Urls.BaseUrl}/apple_pay/domains", requestOptions, cancellationToken, listOptions);
         }

@@ -17,7 +17,7 @@ namespace Stripe.Tests
         Because of = () =>
         {
             _countrySpecList = _countrySpecService.List(
-                new StripeListOptions() { Limit = 8 }
+                new CountrySpecListOptions() { Limit = 8 }
             ).ToList();
         };
 
