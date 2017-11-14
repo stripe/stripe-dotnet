@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
@@ -27,8 +28,10 @@ namespace Stripe
         /// <summary>
         /// The date on which payment for this invoice is due. Only valid for invoices where billing=send_invoice.
         /// </summary>
-        [JsonProperty("due_date")]
         public DateTime? DueDate { get; set; }
+
+        [JsonProperty("due_date")]
+        internal long? DueDateInternal => DueDate?.ConvertDateTimeToEpoch();
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

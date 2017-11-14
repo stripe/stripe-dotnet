@@ -1,3 +1,4 @@
+using System;
 using FluentAssertions;
 using Xunit;
 
@@ -31,7 +32,7 @@ namespace Stripe.Tests.Xunit
             var InvoiceCreateOptions = new StripeInvoiceCreateOptions
             {
                 Billing = StripeBilling.SendInvoice,
-                DaysUntilDue = 7,
+                DueDate = DateTime.UtcNow.AddDays(10),
             };
             InvoiceCreated = invoiceService.Create(Customer.Id, InvoiceCreateOptions);
 
