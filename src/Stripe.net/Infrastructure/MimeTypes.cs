@@ -19,7 +19,7 @@ namespace Stripe.Infrastructure
                     return "image/png";
 
                 default:
-                    return null;
+                    return "application/octet-stream";
             }
         }
     }
