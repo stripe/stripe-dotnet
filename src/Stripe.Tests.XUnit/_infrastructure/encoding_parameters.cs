@@ -11,7 +11,7 @@ namespace Stripe.Tests.Xunit
 {
     public class encoding_parameters
     {
-        public class TestObject
+        public class TestObject : StripeBaseOptions
         {
             [JsonProperty("an_int")]
             public int? AnInt { get; set; }
@@ -26,7 +26,7 @@ namespace Stripe.Tests.Xunit
             public int[] AList { get; set; }
         }
 
-        public class UnencodableObject
+        public class UnencodableObject : StripeBaseOptions
         {
             [JsonProperty("dict_int_keys")]
             public Dictionary<int, string> DictIntKeys { get; set; }

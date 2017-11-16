@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeInvoiceSubscriptionItemOptions
+    public class StripeInvoiceSubscriptionItemOptions : StripeBaseOptions
     {
         [JsonProperty("id")]
         public string Id { get; set; }

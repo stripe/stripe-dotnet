@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public abstract class StripeProductSharedOptions
+    public abstract class StripeProductSharedOptions : StripeBaseOptions
     {
         /// <summary>
         /// Whether or not the product is currently available for purchase. Defaults to true.

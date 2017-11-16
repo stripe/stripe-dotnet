@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeOAuthTokenCreateOptions
+    public class StripeOAuthTokenCreateOptions : StripeBaseOptions
     {
         [JsonProperty("code")]
         public string Code { get; set; }

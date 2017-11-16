@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeListOptions
+    public class StripeListOptions : StripeBaseOptions
     {
         /// <summary>
         /// A limit on the number of objects to be returned. Limit can range between 1 and 100 items.

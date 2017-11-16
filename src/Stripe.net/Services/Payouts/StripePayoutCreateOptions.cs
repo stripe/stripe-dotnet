@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripePayoutCreateOptions
+    public class StripePayoutCreateOptions : StripeBaseOptions
     {
         /// <summary>
         /// REQUIRED

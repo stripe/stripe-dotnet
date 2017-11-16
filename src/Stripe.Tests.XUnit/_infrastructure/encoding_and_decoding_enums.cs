@@ -21,7 +21,7 @@ namespace Stripe.Tests.Xunit
             TestTwo,
         }
 
-        public class TestObject
+        public class TestObject : StripeBaseOptions
         {
             [JsonProperty("enum")]
             public TestEnum? Enum { get; set; }

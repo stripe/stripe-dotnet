@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeChargeCaptureOptions
+    public class StripeChargeCaptureOptions : StripeBaseOptions
     {
         /// <summary>
         /// Amount to capture on the authorization

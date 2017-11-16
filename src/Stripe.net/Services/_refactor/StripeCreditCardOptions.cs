@@ -2,7 +2,7 @@
 
 namespace Stripe
 {
-    public class StripeCreditCardOptions : INestedOptions
+    public class StripeCreditCardOptions : StripeBaseOptions, INestedOptions
     {
         [JsonProperty("card")]
         public string TokenId { get; set; }
