@@ -1,5 +1,10 @@
 # Changelog
 
+## 11.8.0 - 2017-11-21
+* [#1056](https://github.com/stripe/stripe-dotnet/pull/1056) Add `Automatic` for `StripePayout`
+* [#1057](https://github.com/stripe/stripe-dotnet/pull/1057) Support for passing extra parameters
+* [#1058](https://github.com/stripe/stripe-dotnet/pull/1058) Add `Paid` for `StripeInvoiceListOptions`
+
 ## 11.7.1 - 2017-10-31
 * [#1050](https://github.com/stripe/stripe-dotnet/pull/1050) Make exchange rate APIs singular (released as patch because these APIs are brand new and because 11.7.0 never made it to Nuget anyway)
 
