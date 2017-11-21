@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeRefundCreateOptions
+    public class StripeRefundCreateOptions : StripeBaseOptions
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }

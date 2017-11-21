@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeAccountRejectOptions
+    public class StripeAccountRejectOptions : StripeBaseOptions
     {
         [JsonProperty("reason")]
         public string Reason { get; set; }

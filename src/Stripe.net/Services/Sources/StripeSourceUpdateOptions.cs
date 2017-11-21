@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeSourceUpdateOptions
+    public class StripeSourceUpdateOptions : StripeBaseOptions
     {
         /// <summary>
         /// A set of key/value pairs that you can attach to a source object. It can be useful for storing additional information about the source in a structured format. You can unset individual keys if you POST an empty value for that key. You can clear all keys if you POST an empty value for metadata.

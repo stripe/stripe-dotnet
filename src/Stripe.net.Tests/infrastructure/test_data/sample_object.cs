@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Stripe.Tests.test_data
 {
-    public class sample_object
+    public class sample_object : StripeBaseOptions
     {
         public sample_object()
         {

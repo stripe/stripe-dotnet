@@ -4,7 +4,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public abstract class SubscriptionItemSharedOptions
+    public abstract class SubscriptionItemSharedOptions : StripeBaseOptions
     {
         /// <summary>
         /// REQUIRED: The identifier of the plan to add to the subscription.

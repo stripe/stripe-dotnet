@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeInvoiceCreateOptions
+    public class StripeInvoiceCreateOptions : StripeBaseOptions
     {
         [JsonProperty("application_fee")]
         public int? ApplicationFee { get; set; }

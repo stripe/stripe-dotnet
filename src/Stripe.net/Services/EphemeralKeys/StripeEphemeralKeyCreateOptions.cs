@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeEphemeralKeyCreateOptions
+    public class StripeEphemeralKeyCreateOptions : StripeBaseOptions
     {
         [JsonProperty("customer")]
         public string CustomerId { get; set; }

@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeApplePayDomainCreateOptions
+    public class StripeApplePayDomainCreateOptions : StripeBaseOptions
     {
         /// <summary>
         /// Domain to add as an Apple Pay Domain

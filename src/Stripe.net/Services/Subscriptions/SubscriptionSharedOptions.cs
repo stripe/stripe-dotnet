@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public abstract class SubscriptionSharedOptions
+    public abstract class SubscriptionSharedOptions : StripeBaseOptions
     {
         [JsonProperty("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }

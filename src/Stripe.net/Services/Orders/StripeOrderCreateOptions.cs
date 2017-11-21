@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeOrderCreateOptions
+    public class StripeOrderCreateOptions : StripeBaseOptions
     {
         /// <summary>
         /// REQUIRED: Three-letter ISO currency code, in lowercase. Must be a supported currency.

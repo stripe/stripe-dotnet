@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeUpcomingInvoiceOptions
+    public class StripeUpcomingInvoiceOptions : StripeBaseOptions
     {
         [JsonProperty("coupon")]
         public string CouponId { get; set; }
