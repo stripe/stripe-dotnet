@@ -18,6 +18,9 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime ArrivalDate { get; set; }
 
+        [JsonProperty("automatic")]
+        public bool Automatic { get; set; }
+
         #region Expandable Balance Transaction
         public string BalanceTransactionId { get; set; }
 

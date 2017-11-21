@@ -26,6 +26,12 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
+        public void created_is_not_automatic()
+        {
+            fixture.Payout.Automatic.Should().BeFalse();
+        }
+
+        [Fact]
         public void created_has_right_id()
         {
             fixture.Payout.Id.Should().StartWith("po_");
