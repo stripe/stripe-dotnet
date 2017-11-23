@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.8.2 - 2017-11-23
+* [#1054](https://github.com/stripe/stripe-dotnet/pull/1054) Fix file uploading when the extension is not known
+* [#1055](https://github.com/stripe/stripe-dotnet/pull/1055) Fix `DueDate` encoding for `StripeInvoiceCreateOptions`
+
 ## 11.8.1 - 2017-11-22
 * [#1060](https://github.com/stripe/stripe-dotnet/pull/1060) Fix invoice listing
 
