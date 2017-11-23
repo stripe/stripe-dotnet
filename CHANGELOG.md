@@ -1,5 +1,8 @@
 # Changelog
 
+## 11.8.1 - 2017-11-22
+* [#1060](https://github.com/stripe/stripe-dotnet/pull/1060) Fix invoice listing
+
 ## 11.8.0 - 2017-11-21
 * [#1056](https://github.com/stripe/stripe-dotnet/pull/1056) Add `Automatic` for `StripePayout`
 * [#1057](https://github.com/stripe/stripe-dotnet/pull/1057) Support for passing extra parameters
