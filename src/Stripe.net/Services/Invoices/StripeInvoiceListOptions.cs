@@ -26,7 +26,7 @@ namespace Stripe
         /// A filter on the list based on the object paid field.
         /// </summary>
         [JsonProperty("paid")]
-        public bool Paid { get; set; }
+        public bool? Paid { get; set; }
         
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
