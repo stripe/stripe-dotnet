@@ -179,6 +179,11 @@ namespace Stripe.Infrastructure
         {
             requestMessage.Headers.ExpectContinue = true;
 
+            if (string.IsNullOrEmpty(fileName))
+            {
+                fileName = "blob";
+            }
+
             var fileContent = new StreamContent(fileStream);
             fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
             {
