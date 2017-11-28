@@ -65,9 +65,13 @@ namespace Stripe
             );
         }
 
-        public virtual StripeList<StripeCard> List(string customerOrRecipientId, StripeListOptions listOptions = null, bool isRecipient = false, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeCard> List(string customerOrRecipientId, StripeCardListOptions listOptions = null, bool isRecipient = false, StripeRequestOptions requestOptions = null)
         {
             var url = SetupUrl(customerOrRecipientId, isRecipient);
+
+            if (listOptions == null) {
+                listOptions = new StripeCardListOptions();
+            }
 
             return Mapper<StripeList<StripeCard>>.MapFromJson(
                 Requestor.GetString(this.ApplyAllParameters(listOptions, url, true),
@@ -133,9 +137,13 @@ namespace Stripe
                 );
         }
 
-        public virtual async Task<StripeList<StripeCard>> ListAsync(string customerOrRecipientId, StripeListOptions listOptions = null, bool isRecipient = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeCard>> ListAsync(string customerOrRecipientId, StripeCardListOptions listOptions = null, bool isRecipient = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = SetupUrl(customerOrRecipientId, isRecipient);
+
+            if (listOptions == null) {
+                listOptions = new StripeCardListOptions();
+            }
 
             return Mapper<StripeList<StripeCard>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, url, true),
