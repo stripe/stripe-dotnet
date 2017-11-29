@@ -1,5 +1,8 @@
 # Changelog
 
+## 11.9.0 - 2017-11-29
+* [#1064](https://github.com/stripe/stripe-dotnet/pull/1064) Support for listing sources on customers
+
 ## 11.8.2 - 2017-11-23
 * [#1054](https://github.com/stripe/stripe-dotnet/pull/1054) Fix file uploading when the extension is not known
 * [#1055](https://github.com/stripe/stripe-dotnet/pull/1055) Fix `DueDate` encoding for `StripeInvoiceCreateOptions`
