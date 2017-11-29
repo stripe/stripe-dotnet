@@ -40,6 +40,19 @@ namespace Stripe
             );
         }
 
+        public virtual StripeList<StripeSource> List(string customerId, StripeSourceListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        {
+            var url = string.Format(Urls.CustomerSources, customerId);
+
+            if (listOptions == null) {
+                listOptions = new StripeSourceListOptions();
+            }
+
+            return Mapper<StripeList<StripeSource>>.MapFromJson(
+                Requestor.GetString(this.ApplyAllParameters(listOptions, url, true),
+                SetupRequestOptions(requestOptions))
+            );
+        }
 
 
         // Async
@@ -72,6 +85,21 @@ namespace Stripe
                     SetupRequestOptions(requestOptions),
                     cancellationToken)
                 );
+        }
+
+        public virtual async Task<StripeList<StripeSource>> ListAsync(string customerId, StripeSourceListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var url = string.Format(Urls.CustomerSources, customerId);
+
+            if (listOptions == null) {
+                listOptions = new StripeSourceListOptions();
+            }
+
+            return Mapper<StripeList<StripeSource>>.MapFromJson(
+                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, url, true),
+                SetupRequestOptions(requestOptions),
+                cancellationToken)
+            );
         }
     }
 }
