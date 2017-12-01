@@ -22,6 +22,7 @@ namespace Stripe.Tests.Xunit
             var productService = new StripeProductService(Cache.ApiKey);
             Product = productService.Create(new StripeProductCreateOptions {
                 Name = "T-shirt",
+                Type = "good",
                 Description = "stripe-dotnet product description",
                 Attributes = new string[] {"size", "color"},
             });

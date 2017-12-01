@@ -20,14 +20,19 @@ namespace Stripe.Tests.Xunit
                 // Add a space at the end to ensure the ID is properly URL encoded
                 // when passed in the URL for other methods
                 Id = "test-plan-" + Guid.NewGuid().ToString() + " ",
-                Name = "plan-name",
+                Nickname = "plan-name",
                 Amount = 5000,
                 Currency = "usd",
                 Interval = "month",
+                Product = new StripePlanProductCreateOptions
+                {
+                    Name = "Test Product",
+                    StatementDescriptor = "TEST THIS PRODUCT"
+                },
             };
 
             PlanUpdateOptions = new StripePlanUpdateOptions {
-              Name = "plan-name-2"
+              Nickname = "plan-name-2"
             };
 
             var service = new StripePlanService(Cache.ApiKey);
@@ -36,6 +41,42 @@ namespace Stripe.Tests.Xunit
             PlanUpdated = service.Update(Plan.Id, PlanUpdateOptions);
             PlansList = service.List();
             PlanDeleted = service.Delete(Plan.Id);
+        }
+
+        public void Dispose() { }
+    }
+
+    public class add_plan_to_product_fixture : IDisposable
+    {
+        public StripeProductCreateOptions ProductCreateOptions { get; set; }
+        public StripePlanCreateOptions PlanCreateOptions { get; set; }
+
+        public StripeProduct Product{ get; set; }
+        public StripePlan Plan { get; set; }
+        public StripePlan PlanRetrieved { get; set; }
+
+        public add_plan_to_product_fixture()
+        {
+            ProductCreateOptions = new StripeProductCreateOptions
+            {
+                Name = $"test-product-{ Guid.NewGuid() }",
+                Type = "service"
+            };
+
+            var productService = new StripeProductService(Cache.ApiKey);
+            Product = productService.Create(ProductCreateOptions);
+
+            PlanCreateOptions = new StripePlanCreateOptions() {
+                Nickname = "plan-name",
+                Amount = 5000,
+                Currency = "usd",
+                Interval = "month",
+                ProductId = Product.Id
+            };
+
+            var planService = new StripePlanService(Cache.ApiKey);
+            Plan = planService.Create(PlanCreateOptions);
+            PlanRetrieved = planService.Get(Plan.Id);
         }
 
         public void Dispose() { }

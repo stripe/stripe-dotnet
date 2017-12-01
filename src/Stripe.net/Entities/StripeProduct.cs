@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Stripe.Infrastructure;
-using Newtonsoft.Json; 
+using Newtonsoft.Json;
 
 namespace Stripe
 {
@@ -14,7 +14,7 @@ namespace Stripe
         /// Whether or not the product is currently available for purchase.
         /// </summary>
         [JsonProperty("active")]
-        public bool Active { get; set; }
+        public bool? Active { get; set; }
 
         /// <summary>
         /// A list of up to 5 attributes that each SKU can provide values for (e.g. ["color", "size"]).
@@ -29,7 +29,7 @@ namespace Stripe
         public string Caption { get; set; }
 
         /// <summary>
-        /// Time at which the object was created. 
+        /// Time at which the object was created.
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
@@ -81,13 +81,25 @@ namespace Stripe
         /// Whether this product is a shipped good.
         /// </summary>
         [JsonProperty("shippable")]
-        public bool Shippable { get; set; }
+        public bool? Shippable { get; set; }
 
         /// <summary>
         /// A sublist of active SKUs associated with this product.
         /// </summary>
         [JsonProperty("skus")]
         public StripeList<StripeSku> Skus { get; set; }
+
+        /// <summary>
+        /// What appears on a customer's credit card statement.
+        /// </summary>
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
+
+        /// <summary>
+        /// The type of the Product. Either 'good' or 'service'.
+        /// </summary>
+        [JsonProperty("type")]
+        public string Type { get; set; }
 
         [JsonProperty("updated")]
         [JsonConverter(typeof(StripeDateTimeConverter))]

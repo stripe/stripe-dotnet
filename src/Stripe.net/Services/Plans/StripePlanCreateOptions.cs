@@ -16,20 +16,23 @@ namespace Stripe
 
         [JsonProperty("interval")]
         public string Interval { get; set; }
-        
+
         [JsonProperty("interval_count")]
         public int? IntervalCount { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("nickname")]
+        public string Nickname { get; set; }
+
+        [JsonProperty("product")]
+        public StripePlanProductCreateOptions Product { get; set; }
+
+        [JsonProperty("product")]
+        public string ProductId { get; set; }
 
         [JsonProperty("trial_period_days")]
         public int? TrialPeriodDays { get; set; }
-
-        [JsonProperty("statement_descriptor")]
-        public string StatementDescriptor { get; set; }
-
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
     }
 }

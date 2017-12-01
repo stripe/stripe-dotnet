@@ -19,6 +19,10 @@ namespace Stripe
         [JsonProperty("billing")]
         public StripeBilling? Billing { get; set; }
 
+        [JsonProperty("billing_cycle_anchor")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime? BillingCycleAnchor { get; set; }
+
         [JsonProperty("cancel_at_period_end")]
         public bool CancelAtPeriodEnd { get; set; }
 

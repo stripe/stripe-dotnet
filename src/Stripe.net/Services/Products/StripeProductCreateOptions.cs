@@ -9,5 +9,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
+
+        /// <summary>
+        /// The type of the product. Either 'service' or 'good'.
+        /// </summary>
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 }

@@ -13,14 +13,18 @@ namespace Stripe.Tests.test_data
                 Amount = 5000,
                 Currency = "usd",
                 Interval = "month",
-                Name = "Test Plan",
+                Nickname = "Test Price",
                 TrialPeriodDays = 1,
                 Metadata = new Dictionary<string, string>
                 {
                     { "A", "Value-A" },
                     { "B", "Value-B" }
                 },
-                StatementDescriptor = "heyyyy ya!"
+                Product = new StripePlanProductCreateOptions
+                {
+                    Name = "Test Plan",
+                    StatementDescriptor = "heyyyy ya!"
+                }
             };
         }
 
@@ -32,7 +36,10 @@ namespace Stripe.Tests.test_data
                 Amount = 500,
                 Currency = "usd",
                 Interval = "month",
-                Name = "Thirty Days and Five Dollars"
+                Product = new StripePlanProductCreateOptions
+                {
+                    Name = "Thirty Days and Five Dollars"
+                }
             };
         }
     }

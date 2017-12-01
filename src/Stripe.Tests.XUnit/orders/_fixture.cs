@@ -21,6 +21,7 @@ namespace Stripe.Tests.Xunit
             var productService = new StripeProductService(Cache.ApiKey);
             var product = productService.Create(new StripeProductCreateOptions {
                 Name = "T-shirt",
+                Type = "good"
             });
 
             var skuService = new StripeSkuService(Cache.ApiKey);

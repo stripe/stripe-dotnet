@@ -8,14 +8,13 @@ namespace Stripe.Tests.test_data
         {
             return new StripePlanUpdateOptions()
             {
-                Name = "Test Plan Modified",
+                Nickname = "Test Price Modified",
                 Metadata = new Dictionary<string, string>
                 {
                     { "A", "Value-A" },
                     { "B", "Value-B" },
                     { "C", "Value-C" }
-                },
-                StatementDescriptor = "heyyyy ya?"
+                }
             };
         }
     }
