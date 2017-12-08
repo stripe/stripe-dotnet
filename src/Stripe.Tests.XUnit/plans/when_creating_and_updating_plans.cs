@@ -18,7 +18,6 @@ namespace Stripe.Tests.Xunit
         public void created_has_the_right_details()
         {
             fixture.Plan.Id.Should().Be(fixture.PlanCreateOptions.Id);
-            fixture.Plan.Name.Should().Be(fixture.PlanCreateOptions.Name);
             fixture.Plan.Amount.Should().Be(fixture.PlanCreateOptions.Amount);
             fixture.Plan.Currency.Should().Be(fixture.PlanCreateOptions.Currency);
             fixture.Plan.Interval.Should().Be(fixture.PlanCreateOptions.Interval);
@@ -28,7 +27,6 @@ namespace Stripe.Tests.Xunit
         public void updated_has_the_right_details()
         {
             fixture.PlanUpdated.Id.Should().Be(fixture.Plan.Id);
-            fixture.PlanUpdated.Name.Should().BeEquivalentTo(fixture.PlanUpdateOptions.Name);
         }
 
         [Fact]

@@ -30,6 +30,6 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("nickname")]
-        public String Nickname { get; set; }
+        public string Nickname { get; set; }
     }
 }
