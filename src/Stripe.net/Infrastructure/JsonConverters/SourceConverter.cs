@@ -29,6 +29,12 @@ namespace Stripe.Infrastructure
                 Id = incoming.SelectToken("id").ToString()
             };
 
+            if (incoming.SelectToken("object")?.ToString() == "account")
+            {
+                source.Type = SourceType.Account;
+                source.Account = Mapper<StripeAccount>.MapFromJson(incoming.ToString());
+            }
+
             if (incoming.SelectToken("object")?.ToString() == "bank_account")
             {
                 source.Type = SourceType.BankAccount;
