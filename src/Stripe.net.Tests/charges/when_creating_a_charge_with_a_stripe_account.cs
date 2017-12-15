@@ -39,5 +39,8 @@ namespace Stripe.Tests
 
         It should_have_the_right_id = () =>
             _stripeCharge.Source.Id.ShouldEqual(_stripeAccount.Id);
+
+        It should_deserialize_the_account_properly = () =>
+            _stripeCharge.Source.Account.Id.ShouldEqual(_stripeAccount.Id);
     }
 }
