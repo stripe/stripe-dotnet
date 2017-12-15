@@ -30,9 +30,17 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
-        public void updated_has_right_metadata()
+        public void updated_bank_account_has_right_metadata()
         {
-            fixture.ExternalAccountUpdated.Card.Metadata["key"].Should().Be(fixture.ExernalAccountUpdateOptions.Metadata["key"]);
+            fixture.ExternalAccountBankAccountUpdated.BankAccount.Metadata["key"].Should().Be(fixture.ExernalAccountBankAccountUpdateOptions.Metadata["key"]);
+        }
+
+        [Fact]
+        public void updated_card_has_right_info()
+        {
+            fixture.ExternalAccountCardUpdated.Card.ExpirationMonth.Should().Be(fixture.ExernalAccountCardUpdateOptions.ExternalAccountCard.ExpirationMonth);
+            fixture.ExternalAccountCardUpdated.Card.ExpirationYear.Should().Be(fixture.ExernalAccountCardUpdateOptions.ExternalAccountCard.ExpirationYear);
+            fixture.ExternalAccountCardUpdated.Card.Name.Should().Be(fixture.ExernalAccountCardUpdateOptions.ExternalAccountCard.Name);
         }
 
         [Fact]

@@ -7,12 +7,14 @@ namespace Stripe.Tests.Xunit
     public class external_account_fixture : IDisposable
     {
         public StripeExternalAccountCreateOptions ExernalAccountCreateOptionsBankAccount { get; }
-        public StripeExternalAccountUpdateOptions ExernalAccountUpdateOptions { get; }
+        public StripeExternalAccountUpdateOptions ExernalAccountBankAccountUpdateOptions { get; }
+        public StripeExternalAccountUpdateOptions ExernalAccountCardUpdateOptions { get; }
 
         public StripeAccount Account { get; }
         public StripeExternalAccount ExternalAccountCard { get; }
         public StripeExternalAccount ExternalAccountBankAccount { get; }
-        public StripeExternalAccount ExternalAccountUpdated { get; }
+        public StripeExternalAccount ExternalAccountBankAccountUpdated { get; }
+        public StripeExternalAccount ExternalAccountCardUpdated { get; }
         public StripeExternalAccount ExternalAccountRetrieved { get; }
         public StripeList<StripeExternalAccount> ExternalAccountList { get; }
         public StripeDeleted ExternalAccountDeleted { get; }
@@ -36,11 +38,21 @@ namespace Stripe.Tests.Xunit
                 }
             };
 
-            ExernalAccountUpdateOptions = new StripeExternalAccountUpdateOptions
+            ExernalAccountBankAccountUpdateOptions = new StripeExternalAccountUpdateOptions
             {
                 Metadata = new Dictionary<string, string>()
                 {
                     { "key", "value" }
+                }
+            };
+
+            ExernalAccountCardUpdateOptions = new StripeExternalAccountUpdateOptions
+            {
+                ExternalAccountCard = new StripeExternalAccountCardUpdateOptions
+                {
+                    ExpirationMonth = 01,
+                    ExpirationYear = 2028,
+                    Name = "Updated Name"
                 }
             };
 
@@ -51,7 +63,8 @@ namespace Stripe.Tests.Xunit
                 ExternalAccountTokenId = "tok_visa_debit"
             });
             ExternalAccountBankAccount = service.Create(Account.Id, ExernalAccountCreateOptionsBankAccount);
-            ExternalAccountUpdated = service.Update(Account.Id, ExternalAccountCard.Id, ExernalAccountUpdateOptions);
+            ExternalAccountBankAccountUpdated = service.Update(Account.Id, ExternalAccountBankAccount.Id, ExernalAccountBankAccountUpdateOptions);
+            ExternalAccountCardUpdated = service.Update(Account.Id, ExternalAccountCard.Id, ExernalAccountCardUpdateOptions);
             ExternalAccountRetrieved = service.Get(Account.Id, ExternalAccountCard.Id);
             ExternalAccountList = service.List(Account.Id);
             ExternalAccountDeleted = service.Delete(Account.Id, ExternalAccountBankAccount.Id);
