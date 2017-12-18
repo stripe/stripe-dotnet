@@ -4,48 +4,27 @@ using Xunit;
 
 namespace Stripe.Tests.Xunit
 {
-    public class charging_from_another_account
+    public class charging_from_another_account : IClassFixture<connect_fixture>
     {
-        private StripeApplicationFee _appFee;
+        private readonly connect_fixture fixture;
 
-        public charging_from_another_account()
+        public charging_from_another_account(connect_fixture fixture)
         {
-            var anotherAccount = new StripeAccountService(Cache.ApiKey).Create(new StripeAccountCreateOptions
-                {
-                    DefaultCurrency = "usd",
-                    Email = "cu_xxxxxx@gmail.com",
-                    Type = StripeAccountType.Custom
-            }
-            );
+            this.fixture = fixture;
+        }
 
-            var chargeService = new StripeChargeService(Cache.ApiKey);
-            chargeService.ExpandApplicationFee = true;
-
-            var charge = chargeService.Create(
-                new StripeChargeCreateOptions
-                {
-                    SourceTokenOrExistingSourceId = "tok_visa",
-                    ApplicationFee = 10,
-                    Amount = 100,
-                    Currency = "usd"
-                }, 
-                new StripeRequestOptions
-                {
-                    StripeConnectAccountId = anotherAccount.Id
-                }
-            );
-
-            var appFeeService = new StripeApplicationFeeService(Cache.ApiKey);
-            appFeeService.ExpandApplication = true;
-
-            _appFee = appFeeService.Get(charge.ApplicationFeeId);
+        [Fact]
+        public void it_should_have_connected_app_on_charge()
+        {
+            this.fixture.Charge.ApplicationId.Should().StartWith("ca_");
+            this.fixture.Charge.Application.Should().NotBeNull();
         }
 
         [Fact]
         public void it_should_have_connected_app_on_app_fee()
         {
-            _appFee.ApplicationId.Should().StartWith("ca_");
-            _appFee.Application.Should().NotBeNull();
+            this.fixture.ApplicationFee.ApplicationId.Should().StartWith("ca_");
+            this.fixture.ApplicationFee.Application.Should().NotBeNull();
         }
     }
 }

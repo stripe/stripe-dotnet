@@ -8,6 +8,7 @@ namespace Stripe
     {
         public StripeChargeService(string apiKey = null) : base(apiKey) { }
 
+        public bool ExpandApplication { get; set; }
         public bool ExpandApplicationFee { get; set; }
         public bool ExpandBalanceTransaction { get; set; }
         public bool ExpandCustomer { get; set; }
