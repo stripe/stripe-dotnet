@@ -42,7 +42,7 @@ namespace Stripe
 
             return Mapper<StripeSubscription>.MapFromJson(
                 Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, url),
+                    url,
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -110,7 +110,7 @@ namespace Stripe
 
             return Mapper<StripeSubscription>.MapFromJson(
                 await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, url),
+                    url,
                     SetupRequestOptions(requestOptions),
                     cancellationToken
                 )
