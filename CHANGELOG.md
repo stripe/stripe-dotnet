@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.10.0 - 2017-12-26
+* [#1069](https://github.com/stripe/stripe-dotnet/pull/1069) Allow setting `three_d_secure[customer]` when creating 3DS sources
+* [#1071](https://github.com/stripe/stripe-dotnet/pull/1071) Add support for account debits
+* [#1074](https://github.com/stripe/stripe-dotnet/pull/1074) Add support for expanding `application` on charge objects
+* [#1077](https://github.com/stripe/stripe-dotnet/pull/1077) Fix parameters being sent twice when creating subscriptions
+
 ## 11.9.0 - 2017-11-29
 * [#1064](https://github.com/stripe/stripe-dotnet/pull/1064) Support for listing sources on customers
 
