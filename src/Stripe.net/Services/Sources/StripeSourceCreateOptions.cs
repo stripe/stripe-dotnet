@@ -56,6 +56,9 @@ namespace Stripe
         [JsonProperty("sofort[statement_descriptor]")]
         public string SofortStatementDescriptor { get; set; }
 
+        [JsonProperty("[three_d_secure][customer]")]
+        public string ThreeDSecureCustomer { get; set; }
+
         [JsonProperty("[three_d_secure][card]")]
         public string ThreeDSecureCardOrSourceId { get; set; }
 
