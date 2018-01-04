@@ -11,7 +11,7 @@ namespace Stripe
         public DateTime? Canceled { get; set; }
 
         [JsonConverter(typeof(StripeDateTimeConverter))]
-        [JsonProperty("fulfilled")]
+        [JsonProperty("fulfiled")]
         public DateTime? Fulfilled { get; set; }
 
         [JsonConverter(typeof(StripeDateTimeConverter))]
