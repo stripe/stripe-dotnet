@@ -12,7 +12,7 @@ namespace Stripe
 
         [JsonConverter(typeof(StripeDateTimeConverter))]
         [JsonProperty("fulfiled")]
-        public DateTime? Fulfilled { get; set; }
+        public DateTime? Fulfiled { get; set; }
 
         [JsonConverter(typeof(StripeDateTimeConverter))]
         [JsonProperty("paid")]
