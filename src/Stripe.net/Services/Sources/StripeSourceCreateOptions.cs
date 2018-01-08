@@ -35,26 +35,17 @@ namespace Stripe
         [JsonProperty("bancontact[preferred_language]")]
         public string BancontactPreferredLanguage { get; set; }
 
-        [JsonProperty("bancontact[statement_descriptor]")]
-        public string BancontactStatementDescriptor { get; set; }
-
         [JsonProperty("card")]
         public StripeCreditCardOptions Card { get; set; }
 
         [JsonProperty("ideal[bank]")]
         public string IdealBank { get; set; }
 
-        [JsonProperty("ideal[statement_descriptor]")]
-        public string IdealStatementDescriptor { get; set; }
-
         [JsonProperty("sepa_debit[iban]")]
         public string SepaDebitIban { get; set; }
 
         [JsonProperty("sofort[country]")]
         public string SofortCountry { get; set; }
-
-        [JsonProperty("sofort[statement_descriptor]")]
-        public string SofortStatementDescriptor { get; set; }
 
         [JsonProperty("[three_d_secure][customer]")]
         public string ThreeDSecureCustomer { get; set; }
@@ -80,6 +71,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("[redirect][return_url]")]
         public string RedirectReturnUrl { get; set; }
+
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
 
         /// <summary>
         /// An optional token used to create the source. When passed, token properties will override source parameters.
