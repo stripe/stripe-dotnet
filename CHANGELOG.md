@@ -1,5 +1,16 @@
 # Changelog
 
+## 12.0.0 - 2018-01-16
+* [#967](https://github.com/stripe/stripe-dotnet/pull/967) Remove the `TotalCount` property of list objects
+* [#1072](https://github.com/stripe/stripe-dotnet/pull/1072) Add support for managing external accounts
+* [#1080](https://github.com/stripe/stripe-dotnet/pull/1080) Fix card listing
+* [#1083](https://github.com/stripe/stripe-dotnet/pull/1083) Add specialized `ListOptions` classes for all API resources
+* [#1084](https://github.com/stripe/stripe-dotnet/pull/1084) Fix `single_use` string constant
+* [#1086](https://github.com/stripe/stripe-dotnet/pull/1086) Fix `fulfiled` attribute
+* [#1089](https://github.com/stripe/stripe-dotnet/pull/1089) Use top-level `statement_descriptor` attribute on source objects
+* [#1091](https://github.com/stripe/stripe-dotnet/pull/1091) Fix synchronous `login_link` creation
+* [#1093](https://github.com/stripe/stripe-dotnet/pull/1093) Upgrade to API version 2017-12-14
+
 ## 11.10.0 - 2017-12-26
 * [#1069](https://github.com/stripe/stripe-dotnet/pull/1069) Allow setting `three_d_secure[customer]` when creating 3DS sources
 * [#1071](https://github.com/stripe/stripe-dotnet/pull/1071) Add support for account debits
