@@ -50,7 +50,7 @@ namespace Stripe
         public string Email { get; set; }
 
         [JsonProperty("external_accounts")]
-        public StripeList<Source> ExternalAccounts { get; set; }
+        public StripeList<StripeExternalAccount> ExternalAccounts { get; set; }
 
         [JsonProperty("legal_entity")]
         public StripeLegalEntity LegalEntity { get; set; }
