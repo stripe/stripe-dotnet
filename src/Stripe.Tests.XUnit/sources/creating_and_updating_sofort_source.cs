@@ -6,26 +6,29 @@ namespace Stripe.Tests.Xunit
     public class creating_and_updating_sofort_source
     {
         private StripeSource Source { get; set; }
+        private StripeSourceCreateOptions SourceCreateOptions { get; set; }
 
         public creating_and_updating_sofort_source()
         {
-            var options = new StripeSourceCreateOptions
+            SourceCreateOptions = new StripeSourceCreateOptions
             {
                 Type = StripeSourceType.Sofort,
                 SofortCountry = "DE",
-                SofortStatementDescriptor = "soforty!",
+                StatementDescriptor = "soforty!",
                 Amount = 500,
                 Currency = "eur",
                 RedirectReturnUrl = "http://no.where/webhooks"
             };
 
-            Source = new StripeSourceService(Cache.ApiKey).Create(options);
+            Source = new StripeSourceService(Cache.ApiKey).Create(SourceCreateOptions);
         }
 
         [Fact]
         public void source_has_correct_parameters()
         {
             Source.Should().NotBeNull();
+            Source.StatementDescriptor.Should().Be(SourceCreateOptions.StatementDescriptor);
+            Source.Sofort.Should().NotBeNull();
             Source.Sofort.Country.Should().Be("DE");
         }
     }
