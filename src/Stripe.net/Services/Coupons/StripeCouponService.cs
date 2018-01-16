@@ -45,7 +45,7 @@ namespace Stripe
             );
         }
 
-        public virtual StripeList<StripeCoupon> List(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeCoupon> List(StripeCouponListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeList<StripeCoupon>>.MapFromJson(
                 Requestor.GetString(this.ApplyAllParameters(listOptions, Urls.Coupons, true),
@@ -92,7 +92,7 @@ namespace Stripe
             );
         }
 
-        public virtual async Task<StripeList<StripeCoupon>> ListAsync(StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeCoupon>> ListAsync(StripeCouponListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeList<StripeCoupon>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Coupons, true),

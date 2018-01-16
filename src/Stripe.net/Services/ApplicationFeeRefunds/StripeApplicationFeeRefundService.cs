@@ -25,7 +25,7 @@ namespace Stripe
             return Post($"{Urls.BaseUrl}/application_fees/{applicationFeeId}/refunds/{refundId}", requestOptions, updateOptions);
         }
 
-        public virtual StripeList<StripeApplicationFeeRefund> List(string applicationFeeId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeApplicationFeeRefund> List(string applicationFeeId, StripeApplicationFeeRefundListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             return GetEntityList($"{Urls.BaseUrl}/application_fees/{applicationFeeId}/refunds", requestOptions, listOptions);
         }
@@ -47,7 +47,7 @@ namespace Stripe
             return PostAsync($"{Urls.BaseUrl}/application_fees/{applicationFeeId}/refunds/{refundId}", requestOptions, cancellationToken, updateOptions);
         }
 
-        public virtual Task<StripeList<StripeApplicationFeeRefund>> ListAsync(string applicationFeeId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<StripeApplicationFeeRefund>> ListAsync(string applicationFeeId, StripeApplicationFeeRefundListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return GetEntityListAsync($"{Urls.BaseUrl}/application_fees/{applicationFeeId}/refunds", requestOptions, cancellationToken, listOptions);
         }

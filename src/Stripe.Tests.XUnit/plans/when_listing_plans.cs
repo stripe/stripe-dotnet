@@ -20,7 +20,7 @@ namespace Stripe.Tests.XUnit
             Cache.GetPlan();
             Cache.GetPlan();
             Cache.GetPlan();
-            result = new StripePlanService(Cache.ApiKey).List(new StripeListOptions { Limit = 3 });
+            result = new StripePlanService(Cache.ApiKey).List(new StripePlanListOptions { Limit = 3 });
 
         }
 
