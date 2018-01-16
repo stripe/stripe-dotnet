@@ -22,7 +22,6 @@ namespace Stripe.Infrastructure.Middleware
                 new DateFilterPlugin(),
                 new DictionaryPlugin(),
                 new EnumPlugin(),
-                new IncludePlugin(),
                 new OrderItemsPlugin(),
                 new SubscriptionItemPlugin(),
                 new SubscriptionItemUpdatedPlugin(),

@@ -22,12 +22,6 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
-        public void list_has_total_count()
-        {
-            fixture.Charges.TotalCount.Should().BeGreaterThan(0);
-        }
-
-        [Fact]
         public void list_is_iterable()
         {
             var count = 0;
@@ -69,6 +63,5 @@ namespace Stripe.Tests.Xunit
             Assert.NotNull(fixture.Charges.Data);
             Assert.NotNull(fixture.Charges.Url);
         }
-
     }
 }

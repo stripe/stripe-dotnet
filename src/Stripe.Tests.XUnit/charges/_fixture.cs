@@ -19,10 +19,7 @@ namespace Stripe.Tests.Xunit
             // make sure there's a charge
             Charge = Cache.GetStripeCharge(Cache.ApiKey);
 
-            ChargeListOptions = new StripeChargeListOptions
-            {
-                IncludeTotalCount = true
-            };
+            ChargeListOptions = new StripeChargeListOptions();
 
             var service = new StripeChargeService(Cache.ApiKey);
             Charges = service.List(ChargeListOptions);
