@@ -11,7 +11,7 @@ namespace Stripe
         public string ReturnUrl { get; set; }
 
         /// <summary>
-        /// The status of the redirect, either pending, succeeded or failed.
+        /// The status of the redirect, either not_required, pending, succeeded or failed.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
