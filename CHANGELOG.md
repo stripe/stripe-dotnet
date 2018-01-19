@@ -1,5 +1,8 @@
 # Changelog
 
+## 12.1.0 - 2018-01-19
+* [#1096](https://github.com/stripe/stripe-dotnet/pull/1096) Add support for `StripeSource` class in `Source` wrapper
+
 ## 12.0.0 - 2018-01-16
 * [#967](https://github.com/stripe/stripe-dotnet/pull/967) Remove the `TotalCount` property of list objects
 * [#1072](https://github.com/stripe/stripe-dotnet/pull/1072) Add support for managing external accounts
