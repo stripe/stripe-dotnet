@@ -47,6 +47,12 @@ namespace Stripe.Infrastructure
                 source.Card = Mapper<StripeCard>.MapFromJson(incoming.ToString());
             }
 
+            if (incoming.SelectToken("object")?.ToString() == "source")
+            {
+                source.Type = SourceType.Source;
+                source.SourceObject = Mapper<StripeSource>.MapFromJson(incoming.ToString());
+            }
+
             if (incoming.SelectToken("deleted")?.ToString() == "true")
             {
                 source.Type = SourceType.Deleted;
