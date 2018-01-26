@@ -1,0 +1,69 @@
+{
+  "id": "srcmn_1234",
+  "object": "source_mandate_notification",
+  "amount": 1000,
+  "created": 1516981090,
+  "livemode": false,
+  "reason": "debit_initiated",
+  "source": {
+    "id": "src_123",
+    "object": "source",
+    "amount": null,
+    "client_secret": "src_client_secret_123",
+    "created": 1516981089,
+    "currency": "eur",
+    "customer": "cus_123",
+    "flow": "none",
+    "livemode": false,
+    "mandate": {
+      "acceptance": {
+        "date": null,
+        "ip": null,
+        "status": "pending",
+        "user_agent": null
+      },
+      "notification_method": "manual",
+      "reference": "OAAAAAAAAAAAAAAO",
+      "url": "https://hooks.stripe.com/adapter/sepa_debit/file/src_123/src_client_secret_123"
+    },
+    "metadata": {
+    },
+    "owner": {
+      "address": {
+        "city": "City",
+        "country": "DE",
+        "line1": "line1",
+        "line2": null,
+        "postal_code": "11111",
+        "state": null
+      },
+      "email": null,
+      "name": "Jenny Rosen",
+      "phone": null,
+      "verified_address": null,
+      "verified_email": null,
+      "verified_name": null,
+      "verified_phone": null
+    },
+    "statement_descriptor": null,
+    "status": "chargeable",
+    "type": "sepa_debit",
+    "usage": "reusable",
+    "sepa_debit": {
+      "bank_code": "11111111",
+      "country": "DE",
+      "fingerprint": "123",
+      "last4": "3000",
+      "mandate_reference": "OAAAAAAAAAAAAAAO",
+      "mandate_url": "https://hooks.stripe.com/adapter/sepa_debit/file/src_123/src_client_secret_123",
+      "branch_code": null
+    }
+  },
+  "status": "pending",
+  "type": "sepa_debit",
+  "sepa_debit": {
+    "creditor_identifier": "TEST111111111111111",
+    "last4": "3000",
+    "mandate_reference": "OAAAAAAAAAAAAAAO"
+  }
+}
