@@ -21,6 +21,21 @@
     <SignAssembly>True</SignAssembly>
   </PropertyGroup>
 
+  <!--
+       .NET Core (and the .NET Standard) refactors the API's surface so that it
+       exists in a collection of smaller assemblies. As part of traditional
+       .NET (e.g., net45), System.Console existed as part of the standard
+       System assembly, but for the new standard it was added to its own.
+
+       Here we conditionally include System.Console for the .NET Standard
+       target (which also allows us to use it in .NET Core).
+
+       Reference: https://github.com/dotnet/corefx/issues/683
+  -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.2'">
+    <PackageReference Include="System.Console" Version="4.3.0" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
