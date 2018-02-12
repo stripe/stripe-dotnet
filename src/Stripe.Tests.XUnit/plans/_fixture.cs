@@ -20,14 +20,14 @@ namespace Stripe.Tests.Xunit
                 // Add a space at the end to ensure the ID is properly URL encoded
                 // when passed in the URL for other methods
                 Id = "test-plan-" + Guid.NewGuid().ToString() + " ",
-                Name = "plan-name",
+                Nickname = "plan-name",
                 Amount = 5000,
                 Currency = "usd",
                 Interval = "month",
             };
 
             PlanUpdateOptions = new StripePlanUpdateOptions {
-              Name = "plan-name-2"
+              Nickname = "plan-name-2"
             };
 
             var service = new StripePlanService(Cache.ApiKey);

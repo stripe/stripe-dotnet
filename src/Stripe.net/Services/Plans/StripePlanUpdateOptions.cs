@@ -5,13 +5,10 @@ namespace Stripe
 {
     public class StripePlanUpdateOptions : StripeBaseOptions
     {
-        [JsonProperty("name")]
-        public string Name { get; set; }
+        [JsonProperty("nickname")]
+        public string Nickname { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
-
-        [JsonProperty("statement_descriptor")]
-        public string StatementDescriptor { get; set; }
     }
 }
