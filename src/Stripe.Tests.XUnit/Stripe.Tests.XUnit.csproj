@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="events\event.json" />
+    <EmbeddedResource Include="source_mandate_notifications\source_mandate_notification.json" />
   </ItemGroup>
 
   <ItemGroup>
