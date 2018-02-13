@@ -7,6 +7,24 @@ namespace Stripe
 {
     public class StripeSubscriptionUpdateOptions : SubscriptionSharedOptions
     {
+        public bool BillingCycleAnchorNow { get; set; }
+        public bool BillingCycleAnchorUnchanged { get; set; }
+
+        [JsonProperty("billing_cycle_anchor")]
+        internal string BillingCycleAnchorInternal
+        {
+            get
+            {
+                if (BillingCycleAnchorNow)
+                    return "now";
+
+                if (BillingCycleAnchorUnchanged)
+                    return "unchanged";
+
+                return null;
+            }
+        }
+        
         [JsonProperty("prorate")]
         public bool? Prorate { get; set; }
 

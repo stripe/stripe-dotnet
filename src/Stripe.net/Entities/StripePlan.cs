@@ -32,11 +32,11 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+        [JsonProperty("nickname")]
+        public string Nickname { get; set; }
 
-        [JsonProperty("statement_descriptor")]
-        public string StatementDescriptor { get; set; }
+        [JsonProperty("product")]
+        public string ProductId { get; set; }
 
         [JsonProperty("trial_period_days")]
         public int? TrialPeriodDays { get; set; }

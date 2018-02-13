@@ -25,16 +25,13 @@ namespace Stripe.Tests
         Because of = () =>
             StripePlan = _stripePlanService.Update(_createdStripePlanId, StripePlanUpdateOptions);
 
-        It should_have_the_new_name = () =>
-            StripePlan.Name.ShouldEqual(StripePlanUpdateOptions.Name);
+        It should_have_the_new_nickname = () =>
+            StripePlan.Nickname.ShouldEqual(StripePlanUpdateOptions.Nickname);
 
         It should_have_metadata = () =>
             StripePlan.Metadata.Count.ShouldBeGreaterThan(0);
 
         It should_have_correct_metadata = () =>
             StripePlan.Metadata.ShouldContainOnly(StripePlanUpdateOptions.Metadata);
-
-        It should_have_the_new_statement_descriptor = () =>
-            StripePlan.StatementDescriptor.ShouldEqual(StripePlanUpdateOptions.StatementDescriptor);
     }
 }

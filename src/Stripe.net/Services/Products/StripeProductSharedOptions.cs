@@ -66,6 +66,12 @@ namespace Stripe
         public bool? Shippable { get; set; }
 
         /// <summary>
+        /// What appears on the customers credit card statement.
+        /// </summary>
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
+
+        /// <summary>
         /// A URL of a publicly-accessible webpage for this product.
         /// </summary>
         [JsonProperty("url")]

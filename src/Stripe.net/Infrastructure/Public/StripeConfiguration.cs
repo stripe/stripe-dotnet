@@ -7,7 +7,7 @@ namespace Stripe
 {
     public static class StripeConfiguration
     {
-        public static string StripeApiVersion = "2017-12-14";
+        public static string StripeApiVersion = "2018-02-06";
         public static string StripeNetVersion { get; }
 
         /// <summary>
