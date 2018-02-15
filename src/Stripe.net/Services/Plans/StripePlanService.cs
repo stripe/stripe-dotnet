@@ -10,6 +10,7 @@ namespace Stripe
     {
         public StripePlanService(string apiKey = null) : base(apiKey) { }
 
+        public bool ExpandProduct { get; set; }
 
 
         //Sync

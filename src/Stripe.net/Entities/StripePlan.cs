@@ -35,8 +35,25 @@ namespace Stripe
         [JsonProperty("nickname")]
         public string Nickname { get; set; }
 
-        [JsonProperty("product")]
+        #region Expandable Product
+        /// <summary>
+        /// ID of the product linked to this plan
+        /// <para>You can expand the Product by setting the ExpandProduct property on the service to true</para>
+        /// </summary>
         public string ProductId { get; set; }
+
+        [JsonIgnore]
+        public StripeProduct Product { get; set; }
+
+        [JsonProperty("product")]
+        internal object InternalProduct
+        {
+            set
+            {
+                StringOrObject<StripeProduct>.Map(value, s => ProductId = s, o => Product = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("trial_period_days")]
         public int? TrialPeriodDays { get; set; }
