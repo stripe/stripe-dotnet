@@ -7,7 +7,8 @@ namespace Stripe
 {
     public class StripeApplicationFeeRefundService : StripeBasicService<StripeApplicationFeeRefund>
     {
-        public StripeApplicationFeeRefundService(string apiKey = null) : base(apiKey) { }
+        public StripeApplicationFeeRefundService() : base(null) { }
+        public StripeApplicationFeeRefundService(string apiKey) : base(apiKey) { }
 
         // Sync
         public virtual StripeApplicationFeeRefund Create(string applicationFeeId, StripeApplicationFeeRefundCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)

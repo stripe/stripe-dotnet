@@ -7,7 +7,10 @@ namespace Stripe
 {
     public class StripeEphemeralKeyService : StripeBasicService<StripeEphemeralKey>
     {
-        public StripeEphemeralKeyService(string apiKey = null) : base(apiKey) { }
+        public StripeEphemeralKeyService() : base(null) { }
+        public StripeEphemeralKeyService(string apiKey) : base(apiKey) { }
+
+
 
         // Sync
         public virtual StripeEphemeralKey Create(StripeEphemeralKeyCreateOptions createOptions, StripeRequestOptions requestOptions = null)

@@ -7,7 +7,10 @@ namespace Stripe
 {
     public class StripeLoginLinkService : StripeBasicService<StripeLoginLink>
     {
-        public StripeLoginLinkService(string apiKey = null) : base(apiKey) { }
+        public StripeLoginLinkService() : base(null) { }
+        public StripeLoginLinkService(string apiKey) : base(apiKey) { }
+
+
 
         //Sync
         public virtual StripeLoginLink Create(string accountId, StripeRequestOptions requestOptions = null)

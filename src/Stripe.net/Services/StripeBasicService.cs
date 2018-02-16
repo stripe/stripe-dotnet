@@ -7,7 +7,8 @@ namespace Stripe
 {
     public abstract class StripeBasicService<EntityReturned> : StripeService
     {
-        protected StripeBasicService(string apiKey = null) : base(apiKey) { }
+        protected StripeBasicService() : base(null) { }
+        protected StripeBasicService(string apiKey) : base(apiKey) { }
 
         // ************************************************************************************
         // this will replace StripeService altogether some day and steal it's name, but for now

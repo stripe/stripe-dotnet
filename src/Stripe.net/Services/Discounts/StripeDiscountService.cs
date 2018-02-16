@@ -6,7 +6,10 @@ namespace Stripe
 {
     public class StripeDiscountService : StripeBasicService<StripeDiscount>
     {
-        public StripeDiscountService(string apiKey = null) : base(apiKey) { }
+        public StripeDiscountService() : base(null) { }
+        public StripeDiscountService(string apiKey) : base(apiKey) { }
+
+
 
         // Sync
         public virtual StripeDeleted DeleteCustomerDiscount(string customerId, StripeRequestOptions requestOptions = null)

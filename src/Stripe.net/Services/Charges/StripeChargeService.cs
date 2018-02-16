@@ -6,7 +6,8 @@ namespace Stripe
 {
     public class StripeChargeService : StripeService
     {
-        public StripeChargeService(string apiKey = null) : base(apiKey) { }
+        public StripeChargeService() : base(null) { }
+        public StripeChargeService(string apiKey) : base(apiKey) { }
 
         public bool ExpandApplication { get; set; }
         public bool ExpandApplicationFee { get; set; }
@@ -20,6 +21,7 @@ namespace Stripe
         public bool ExpandSourceTransfer { get; set; }
         public bool ExpandDispute { get; set; }
         public bool ExpandOutcome { get; set; }
+
 
 
         //Sync
