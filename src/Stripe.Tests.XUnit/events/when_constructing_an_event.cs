@@ -28,18 +28,15 @@ namespace Stripe.Tests.Xunit
         [Fact]
         public void it_should_validate_with_right_data()
         {
-            // Override the event utility to prevent it from looking at UTC now and use a fixed valid timestamp in the past
-            StripeEventUtility.EpochUtcNowOverride = 1493329524;
+            // A timestamp within the default tolerance of 300 seconds
+            int ReasonablyCloseTime = fixture.EventTimestamp + 120;
 
-            ConstructedEvent = StripeEventUtility.ConstructEvent(fixture.StripeJson, fixture.StripeSignature, fixture.StripeSecret);
+            ConstructedEvent = StripeEventUtility.ConstructEvent(fixture.StripeJson, fixture.StripeSignature, fixture.StripeSecret, ReasonablyCloseTime);
 
             ConstructedEvent.Should().NotBeNull();
             ConstructedEvent.Request.Id.Should().Be("req_FAKE");
             ConstructedEvent.Request.IdempotencyKey.Should().Be("placeholder");
             ConstructedEvent.Account.Should().Be("acct_CONNECT");
-
-            // Clean up to prevent unexpected behaviour in other facts
-            StripeEventUtility.EpochUtcNowOverride = null;
         }
 
         [Fact]
