@@ -1,5 +1,8 @@
 # Changelog
 
+## 13.0.1 - 2018-02-19
+* [#1103](https://github.com/stripe/stripe-dotnet/pull/1103) Add support for expanding `product` on plan objects
+
 ## 13.0.0 - 2018-02-13
 * [#1097](https://github.com/stripe/stripe-dotnet/pull/1097) Add support for deserializing `source_mandate_notification` objects
 * [#1099](https://github.com/stripe/stripe-dotnet/pull/1099) Upgrade API version to 2018-02-06 and add support for Product & Plan API
