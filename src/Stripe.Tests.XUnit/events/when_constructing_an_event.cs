@@ -18,7 +18,7 @@ namespace Stripe.Tests.Xunit
         public void it_should_throw_with_outdated_timestamp()
         {
             // This throws an error because the tolerance is higher than allowed
-            var exception = Assert.Throws<Exception>(() =>
+            var exception = Assert.Throws<StripeException>(() =>
                 StripeEventUtility.ConstructEvent(fixture.StripeJson, fixture.StripeSignature, fixture.StripeSecret)
             );
 
@@ -46,7 +46,7 @@ namespace Stripe.Tests.Xunit
         public void it_should_throw_with_incorrect_signature()
         {
             // This throws an error because the original JSON message is modified
-            var exception = Assert.Throws<Exception>(() =>
+            var exception = Assert.Throws<StripeException>(() =>
                 StripeEventUtility.ConstructEvent(fixture.StripeJson + "this_changes_the_json", fixture.StripeSignature, fixture.StripeSecret)
             );
 
@@ -56,7 +56,7 @@ namespace Stripe.Tests.Xunit
         [Fact]
         public void it_should_throw_with_invalid_unicode_in_secret()
         {
-            var exception = Assert.Throws<Exception>(() =>
+            var exception = Assert.Throws<StripeException>(() =>
                 StripeEventUtility.ConstructEvent(fixture.StripeJson, fixture.StripeSignature, fixture.StripeSecret + "\ud802")
             );
 
@@ -66,7 +66,7 @@ namespace Stripe.Tests.Xunit
         [Fact]
         public void it_should_throw_with_invalid_unicode_in_message()
         {
-            var exception = Assert.Throws<Exception>(() =>
+            var exception = Assert.Throws<StripeException>(() =>
                 StripeEventUtility.ConstructEvent(fixture.StripeJson + "\ud802", fixture.StripeSignature, fixture.StripeSecret)
             );
 
