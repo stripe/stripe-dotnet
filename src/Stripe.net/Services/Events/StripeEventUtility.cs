@@ -11,7 +11,6 @@ namespace Stripe
 {
     public static class StripeEventUtility
     {
-        internal static long? EpochUtcNowOverride { get; set; }
         internal static readonly UTF8Encoding SafeUTF8 = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
         public static StripeEvent ParseEvent(string json)
@@ -26,6 +25,11 @@ namespace Stripe
 
         public static StripeEvent ConstructEvent(string json, string stripeSignatureHeader, string secret, int tolerance = 300)
         {
+            return ConstructEvent(json, stripeSignatureHeader, secret, tolerance, DateTime.UtcNow.ConvertDateTimeToEpoch());
+        }
+
+        public static StripeEvent ConstructEvent(string json, string stripeSignatureHeader, string secret, int tolerance, long utcNow)
+        {
             var signatureItems = parseStripeSignature(stripeSignatureHeader);
             var signature = string.Empty;
 
@@ -35,17 +39,16 @@ namespace Stripe
             }
             catch (EncoderFallbackException ex)
             {
-               throw new Exception("The webhook cannot be processed because the signature cannot be safely calculated.", ex);
+               throw new StripeException("The webhook cannot be processed because the signature cannot be safely calculated.", ex);
             }
 
             if (!isSignaturePresent(signature, signatureItems["v1"]))
-                throw new Exception("The signature for the webhook is not present in the Stripe-Signature header.");
+                throw new StripeException("The signature for the webhook is not present in the Stripe-Signature header.");
 
-            var utcNow = EpochUtcNowOverride ?? DateTime.UtcNow.ConvertDateTimeToEpoch();
             var webhookUtc = Convert.ToInt32(signatureItems["t"].FirstOrDefault());
 
             if (utcNow - webhookUtc > tolerance)
-                throw new Exception("The webhook cannot be processed because the current timestamp is above the allowed tolerance.");
+                throw new StripeException("The webhook cannot be processed because the current timestamp is above the allowed tolerance.");
 
             return Mapper<StripeEvent>.MapFromJson(json);
         }
