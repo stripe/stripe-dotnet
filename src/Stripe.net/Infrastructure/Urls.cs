@@ -51,5 +51,7 @@
         private static string BaseUploadsUrl => "https://uploads.stripe.com/v1";
 
         public static string FileUploads => BaseUploadsUrl + "/files";
+
+        public static string Topups => BaseUrl + "/topups";
     }
 }
