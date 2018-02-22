@@ -8,7 +8,8 @@ namespace Stripe
 {
     public class StripeFileUploadService : StripeService
     {
-        public StripeFileUploadService(string apiKey = null) : base(apiKey) { }
+        public StripeFileUploadService() : base(null) { }
+        public StripeFileUploadService(string apiKey) : base(apiKey) { }
 
 
 

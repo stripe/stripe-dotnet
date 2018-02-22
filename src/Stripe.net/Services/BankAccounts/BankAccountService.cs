@@ -7,7 +7,8 @@ namespace Stripe
 {
     public class BankAccountService : StripeService
     {
-        public BankAccountService(string apiKey = null) : base(apiKey) { }
+        public BankAccountService() : base(null) { }
+        public BankAccountService(string apiKey) : base(apiKey) { }
 
         public bool ExpandCustomer { get; set; }
 

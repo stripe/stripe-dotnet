@@ -7,7 +7,8 @@ namespace Stripe
 {
     public class StripeProductService : StripeBasicService<StripeProduct>
     {
-        public StripeProductService(string apiKey = null) : base(apiKey) { }
+        public StripeProductService() : base(null) { }
+        public StripeProductService(string apiKey) : base(apiKey) { }
 
 
 

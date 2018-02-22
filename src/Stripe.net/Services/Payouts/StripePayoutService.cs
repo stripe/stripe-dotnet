@@ -7,7 +7,8 @@ namespace Stripe
 {
     public class StripePayoutService : StripeBasicService<StripePayout>
     {
-        public StripePayoutService(string apiKey = null) : base(apiKey) { }
+        public StripePayoutService() : base(null) { }
+        public StripePayoutService(string apiKey) : base(apiKey) { }
 
         public bool ExpandBalanceTransaction { get; set; }
         public bool ExpandFailureBalanceTransaction { get; set; }

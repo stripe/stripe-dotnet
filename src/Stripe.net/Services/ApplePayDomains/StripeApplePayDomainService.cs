@@ -7,7 +7,8 @@ namespace Stripe
 {
     public class StripeApplePayDomainService : StripeBasicService<StripeApplePayDomain>
     {
-        public StripeApplePayDomainService(string apiKey = null) : base(apiKey) { }
+        public StripeApplePayDomainService() : base(null) { }
+        public StripeApplePayDomainService(string apiKey) : base(apiKey) { }
 
 
 

@@ -8,7 +8,8 @@ namespace Stripe
 {
     public class StripeCouponService : StripeService
     {
-        public StripeCouponService(string apiKey = null) : base(apiKey) { }
+        public StripeCouponService() : base(null) { }
+        public StripeCouponService(string apiKey) : base(apiKey) { }
 
 
 
