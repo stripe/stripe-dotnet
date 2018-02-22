@@ -1,5 +1,8 @@
 # Changelog
 
+## 13.1.0 - 2018-02-22
+* [#1105](https://github.com/stripe/stripe-dotnet/pull/1105) Add parameterless constructors to all services
+
 ## 13.0.2 - 2018-02-22
 * [#1107](https://github.com/stripe/stripe-dotnet/pull/1107) Minor webhook signing improvements
 
