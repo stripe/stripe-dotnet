@@ -1,5 +1,8 @@
 # Changelog
 
+## 13.0.2 - 2018-02-22
+* [#1107](https://github.com/stripe/stripe-dotnet/pull/1107) Minor webhook signing improvements
+
 ## 13.0.1 - 2018-02-19
 * [#1103](https://github.com/stripe/stripe-dotnet/pull/1103) Add support for expanding `product` on plan objects
 
