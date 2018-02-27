@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeDisputeUpdateOptions : StripeBaseOptions
+    public class StripeDisputeUpdateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("evidence[access_activity_log]")]
         public string AccessActivityLog { get; set; }

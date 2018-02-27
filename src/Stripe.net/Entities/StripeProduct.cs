@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeProduct : StripeEntityWithId
+    public class StripeProduct : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
         public string Object => "product";

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeCardUpdateOptions : StripeBaseOptions
+    public class StripeCardUpdateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("exp_month")]
         public int? ExpirationMonth { get; set; }

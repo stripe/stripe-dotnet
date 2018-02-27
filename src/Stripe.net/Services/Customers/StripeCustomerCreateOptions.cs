@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeCustomerCreateOptions : StripeBaseOptions
+    public class StripeCustomerCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("account_balance")]
         public int? AccountBalance { get; set; }

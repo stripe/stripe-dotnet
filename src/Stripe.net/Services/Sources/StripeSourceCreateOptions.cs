@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeSourceCreateOptions : StripeBaseOptions
+    public class StripeSourceCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         /// <summary>
         /// REQUIRED: The type of the source to create. One of type <see cref="StripeSourceType"/>

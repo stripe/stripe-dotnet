@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public abstract class StripeSkuSharedOptions : StripeBaseOptions
+    public abstract class StripeSkuSharedOptions : StripeBaseOptions, ISupportMetadata
     {
         /// <summary>
         /// Whether or not the SKU is currently available for purchase. Defaults to true.

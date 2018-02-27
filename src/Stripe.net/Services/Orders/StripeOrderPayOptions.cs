@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeOrderPayOptions : StripeBaseOptions
+    public class StripeOrderPayOptions : StripeBaseOptions, ISupportMetadata
     {
         /// <summary>
         /// The ID of an existing customer that will be charged in this request.

@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeCouponCreateOptions : StripeBaseOptions
+    public class StripeCouponCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("id")]
         public string Id { get; set; }

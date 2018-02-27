@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeOrder : StripeEntityWithId
+    public class StripeOrder : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
         public string Object => "order";

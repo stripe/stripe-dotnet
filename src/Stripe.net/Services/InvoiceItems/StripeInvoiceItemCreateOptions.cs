@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeInvoiceItemCreateOptions : StripeBaseOptions
+    public class StripeInvoiceItemCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
