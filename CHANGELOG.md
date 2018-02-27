@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.2.0 - 2018-02-27
+* [#1114](https://github.com/stripe/stripe-dotnet/pull/1114) Update subscription request parameters
+* [#1115](https://github.com/stripe/stripe-dotnet/pull/1115) Remove unneeded parameters in `SourceCard`
+
 ## 13.1.0 - 2018-02-22
 * [#1105](https://github.com/stripe/stripe-dotnet/pull/1105) Add parameterless constructors to all services
 
