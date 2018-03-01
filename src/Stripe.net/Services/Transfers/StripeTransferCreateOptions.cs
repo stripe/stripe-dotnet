@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeTransferCreateOptions : StripeBaseOptions
+    public class StripeTransferCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("amount")]
         public int Amount { get; set; }

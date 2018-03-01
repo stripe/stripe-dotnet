@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeApplicationFeeRefund : StripeEntityWithId
+    public class StripeApplicationFeeRefund : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
         public string Object { get; set; }

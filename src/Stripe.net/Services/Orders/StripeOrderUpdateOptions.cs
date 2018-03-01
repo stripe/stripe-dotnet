@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeOrderUpdateOptions : StripeBaseOptions
+    public class StripeOrderUpdateOptions : StripeBaseOptions, ISupportMetadata
     {
         /// <summary>
         /// A coupon code that represents a discount to be applied to this order. Must be one-time duration and in tbe same currency as the order.

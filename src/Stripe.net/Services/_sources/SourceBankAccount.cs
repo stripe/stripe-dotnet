@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class SourceBankAccount : INestedOptions
+    public class SourceBankAccount : INestedOptions, ISupportMetadata
     {
         [JsonProperty("source[object]")]
         internal string Object => "bank_account";

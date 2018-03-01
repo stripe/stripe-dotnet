@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class SourceCard : INestedOptions
+    public class SourceCard : INestedOptions, ISupportMetadata
     {
         /// <summary>
         /// The type of payment source. Should be "card".

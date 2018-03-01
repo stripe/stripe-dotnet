@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeCustomerUpdateOptions : StripeBaseOptions
+    public class StripeCustomerUpdateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("account_balance")]
         public int? AccountBalance { get; set; }

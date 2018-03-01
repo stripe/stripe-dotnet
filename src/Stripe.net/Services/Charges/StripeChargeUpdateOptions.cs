@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeChargeUpdateOptions : StripeBaseOptions
+    public class StripeChargeUpdateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("description")]
         public string Description { get; set; }

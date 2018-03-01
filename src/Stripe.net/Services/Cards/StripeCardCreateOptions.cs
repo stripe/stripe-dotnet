@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeCardCreateOptions : StripeBaseOptions
+    public class StripeCardCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("source")]
         public string SourceToken { get; set; }

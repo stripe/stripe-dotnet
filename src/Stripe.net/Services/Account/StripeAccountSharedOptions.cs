@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public abstract class StripeAccountSharedOptions : StripeBaseOptions
+    public abstract class StripeAccountSharedOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("business_logo")]
         public string BusinessLogoFileId { get; set; }

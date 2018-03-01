@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeExternalAccountCreateOptions : StripeBaseOptions
+    public class StripeExternalAccountCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("external_account")]
         public string ExternalAccountTokenId { get; set; }

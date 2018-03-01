@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeInvoiceCreateOptions : StripeBaseOptions
+    public class StripeInvoiceCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("application_fee")]
         public int? ApplicationFee { get; set; }

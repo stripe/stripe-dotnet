@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Stripe
 {
-    public class StripeExternalAccountCardUpdateOptions : INestedOptions
+    public class StripeExternalAccountCardUpdateOptions : INestedOptions, ISupportMetadata
     {
         [JsonProperty("default_for_currency")]
         public bool? DefaultForCurrency { get; set; }

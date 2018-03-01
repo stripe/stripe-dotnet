@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Stripe
 {
-    public class StripeSubscriptionItemCreateOptions : SubscriptionItemSharedOptions
+    public class StripeSubscriptionItemCreateOptions : SubscriptionItemSharedOptions, ISupportMetadata
     {
         /// <summary>
         /// REQUIRED: The identifier of the subscription to modify.
