@@ -1,5 +1,10 @@
 # Changelog
 
+## 13.3.0 - 2018-03-01
+* [#1117](https://github.com/stripe/stripe-dotnet/pull/1117) Add `ISupportMetadata` interface to all Stripe entities that support metadata
+* [#1119](https://github.com/stripe/stripe-dotnet/pull/1119) Add `FailureReason` property to `StripeRedirect`
+* [#1123](https://github.com/stripe/stripe-dotnet/pull/1123) Upgrade Newtonsoft.Json dependency to 11.0.1
+
 ## 13.2.0 - 2018-02-27
 * [#1114](https://github.com/stripe/stripe-dotnet/pull/1114) Update subscription request parameters
 * [#1115](https://github.com/stripe/stripe-dotnet/pull/1115) Remove unneeded parameters in `SourceCard`
