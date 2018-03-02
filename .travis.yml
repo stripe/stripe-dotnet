@@ -1,0 +1,30 @@
+sudo: false
+
+language: csharp
+
+solution: src/Stripe.net.sln
+
+env:
+  global:
+    - STRIPE_MOCK_VERSION=0.39.0
+
+matrix:
+  include:
+    - dotnet: 2.1.502
+      mono: none
+      env: DOTNETCORE=2
+      install:
+        - dotnet --info
+        - dotnet restore src/
+      script:
+        - dotnet build src/Stripe.net -c Release /p:ContinuousIntegrationBuild=true
+        - dotnet build src/Stripe.net -c Debug
+        - dotnet build src/StripeTests -c Debug
+        - dotnet test src/StripeTests/Stripe.net.Tests.csproj
+    - mono: latest
+      install:
+        - nuget restore src/Stripe.net.sln
+        - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
+      script:
+        - msbuild src/Stripe.net.sln
+        - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./src/Stripe.Tests.XUnit/bin/Release/Stripe.Tests.XUnit.dll
