@@ -1,5 +1,8 @@
 # Changelog
 
+## 13.3.1 - 2018-03-05
+* [#1126](https://github.com/stripe/stripe-dotnet/pull/1126) Revert Newtonsoft.Json dependency back to 9.0.1
+
 ## 13.3.0 - 2018-03-01
 * [#1117](https://github.com/stripe/stripe-dotnet/pull/1117) Add `ISupportMetadata` interface to all Stripe entities that support metadata
 * [#1119](https://github.com/stripe/stripe-dotnet/pull/1119) Add `FailureReason` property to `StripeRedirect`
