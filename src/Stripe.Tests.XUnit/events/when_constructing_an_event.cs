@@ -69,5 +69,19 @@ namespace Stripe.Tests.Xunit
 
             exception.Message.Should().Be("The webhook cannot be processed because the signature cannot be safely calculated.");
         }
+
+        [Fact]
+        public void its_data_can_be_cast_to_a_charge_object()
+        {
+            int ReasonablyCloseTime = fixture.EventTimestamp;
+            ConstructedEvent = StripeEventUtility.ConstructEvent(fixture.StripeJson, fixture.StripeSignature, fixture.StripeSecret, ReasonablyCloseTime);
+
+            StripeCharge Charge = ConstructedEvent.Data.Object.ToObject(typeof(StripeCharge));
+            Charge.Amount.Should().Be(1000);
+            Charge.Currency.Should().Be("usd");
+            Charge.Source.Id.Should().Be("card_1C3T3MDTLHiiDklrqMvU11LV");
+            Charge.Source.Card.Brand.Should().Be("Visa");
+        }
+
     }
 }
