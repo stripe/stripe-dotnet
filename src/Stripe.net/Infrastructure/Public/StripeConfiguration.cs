@@ -18,6 +18,9 @@ namespace Stripe
         public static TimeSpan? HttpTimeSpan { get; set; }
 
         private static string _apiKey;
+        private static string _apiBase;
+        private static string _uploadsBase;
+        private static string _connectBase;
 
         static StripeConfiguration()
         {
@@ -39,6 +42,48 @@ namespace Stripe
         public static void SetApiKey(string newApiKey)
         {
             _apiKey = newApiKey;
+        }
+
+        internal static string GetApiBase()
+        {
+            if (string.IsNullOrEmpty(_apiBase))
+            {
+                _apiBase = Urls.DefaultBaseUrl;
+            }
+            return _apiBase;
+        }
+
+        public static void SetApiBase(string baseUrl)
+        {
+            _apiBase = baseUrl;
+        }
+
+        internal static string GetUploadsBase()
+        {
+            if (string.IsNullOrEmpty(_uploadsBase))
+            {
+                _uploadsBase = Urls.DefaultBaseUploadsUrl;
+            }
+            return _uploadsBase;
+        }
+
+        public static void SetUploadsBase(string baseUrl)
+        {
+            _uploadsBase = baseUrl;
+        }
+
+        internal static string GetConnectBase()
+        {
+            if (string.IsNullOrEmpty(_connectBase))
+            {
+                _connectBase = Urls.DefaultBaseConnectUrl;
+            }
+            return _connectBase;
+        }
+
+        public static void SetConnectBase(string baseUrl)
+        {
+            _connectBase = baseUrl;
         }
     }
 }

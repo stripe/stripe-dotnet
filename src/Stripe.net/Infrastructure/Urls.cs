@@ -2,7 +2,9 @@
 {
     internal static class Urls
     {
-        internal static string BaseUrl => "https://api.stripe.com/v1";
+        internal static string DefaultBaseUrl => "https://api.stripe.com/v1";
+
+        internal static string BaseUrl => StripeConfiguration.GetApiBase();
 
         public static string Invoices => BaseUrl + "/invoices";
 
@@ -46,9 +48,13 @@
 
         public static string OAuthDeauthorize => BaseConnectUrl + "/oauth/deauthorize";
 
-        private static string BaseConnectUrl => "https://connect.stripe.com";
+        internal static string DefaultBaseConnectUrl => "https://connect.stripe.com";
 
-        private static string BaseUploadsUrl => "https://uploads.stripe.com/v1";
+        private static string BaseConnectUrl => StripeConfiguration.GetConnectBase();
+
+        internal static string DefaultBaseUploadsUrl => "https://uploads.stripe.com/v1";
+
+        private static string BaseUploadsUrl => StripeConfiguration.GetUploadsBase();
 
         public static string FileUploads => BaseUploadsUrl + "/files";
     }
