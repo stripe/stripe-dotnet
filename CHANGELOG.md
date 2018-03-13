@@ -1,5 +1,8 @@
 # Changelog
 
+## 13.4.0 - 2018-03-13
+* [#1128](https://github.com/stripe/stripe-dotnet/pull/1128) Add support for custom URL bases
+
 ## 13.3.1 - 2018-03-05
 * [#1126](https://github.com/stripe/stripe-dotnet/pull/1126) Revert Newtonsoft.Json dependency back to 9.0.1
 
