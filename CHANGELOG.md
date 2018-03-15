@@ -1,5 +1,8 @@
 # Changelog
 
+## 13.5.0 - 2018-03-15
+* [#1135](https://github.com/stripe/stripe-dotnet/pull/1135) Add support for `Created` and `ProductId` parameters in plan listing requests
+
 ## 13.4.0 - 2018-03-13
 * [#1128](https://github.com/stripe/stripe-dotnet/pull/1128) Add support for custom URL bases
 
