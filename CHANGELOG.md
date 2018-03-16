@@ -1,5 +1,8 @@
 # Changelog
 
+## 14.0.0 - 2018-03-16
+* [#1138](https://github.com/stripe/stripe-dotnet/pull/1138) Add support for `redirect_url` in login link creation requests
+
 ## 13.5.0 - 2018-03-15
 * [#1135](https://github.com/stripe/stripe-dotnet/pull/1135) Add support for `Created` and `ProductId` parameters in plan listing requests
 
