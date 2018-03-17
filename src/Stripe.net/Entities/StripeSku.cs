@@ -71,11 +71,24 @@ namespace Stripe
         [JsonProperty("price")]
         public int Price { get; set; }
 
+        #region Expandable Product
         /// <summary>
         /// The ID of the product this SKU is associated with. The product must be currently active.
         /// </summary>
+        public string ProductId { get; set; }
+
+        [JsonIgnore]
+        public StripeProduct Product { get; set; }
+
         [JsonProperty("product")]
-        public string Product { get; set; }
+        internal object InternalProduct
+        {
+            set
+            {
+                StringOrObject<StripeProduct>.Map(value, s => ProductId = s, o => Product = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("updated")]
         [JsonConverter(typeof(StripeDateTimeConverter))]

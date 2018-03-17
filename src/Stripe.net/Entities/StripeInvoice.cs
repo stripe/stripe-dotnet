@@ -128,8 +128,21 @@ namespace Stripe
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
-        [JsonProperty("subscription")]
+        #region Expandable Subscription
         public string SubscriptionId { get; set; }
+
+        [JsonIgnore]
+        public StripeSubscription Subscription { get; set; }
+
+        [JsonProperty("subscription")]
+        internal object InternalSubscription
+        {
+            set
+            {
+                StringOrObject<StripeSubscription>.Map(value, s => SubscriptionId = s, o => Subscription = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("subscription_proration_date")]
         [JsonConverter(typeof(StripeDateTimeConverter))]

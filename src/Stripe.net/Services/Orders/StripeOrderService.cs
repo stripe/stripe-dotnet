@@ -10,6 +10,9 @@ namespace Stripe
         public StripeOrderService() : base(null) { }
         public StripeOrderService(string apiKey) : base(apiKey) { }
 
+        public bool ExpandCharge { get; set; }
+        public bool ExpandCustomer { get; set; }
+
 
 
         // Sync

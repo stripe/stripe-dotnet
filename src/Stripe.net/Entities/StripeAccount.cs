@@ -10,8 +10,21 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("business_logo")]
+        #region Expandable BusinessLogo
         public string BusinessLogoFileId { get; set; }
+
+        [JsonIgnore]
+        public StripeFileUpload BusinessLogo { get; set; }
+
+        [JsonProperty("business_logo")]
+        internal object InternalBusinessLogo
+        {
+            set
+            {
+                StringOrObject<StripeFileUpload>.Map(value, s => BusinessLogoFileId = s, o => BusinessLogo = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("business_name")]
         public string BusinessName { get; set; }

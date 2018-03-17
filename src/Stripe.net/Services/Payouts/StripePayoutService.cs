@@ -11,8 +11,8 @@ namespace Stripe
         public StripePayoutService(string apiKey) : base(apiKey) { }
 
         public bool ExpandBalanceTransaction { get; set; }
-        public bool ExpandFailureBalanceTransaction { get; set; }
         public bool ExpandDestination { get; set; }
+        public bool ExpandFailureBalanceTransaction { get; set; }
 
 
 

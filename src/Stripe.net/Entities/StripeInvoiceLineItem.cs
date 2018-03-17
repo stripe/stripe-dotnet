@@ -76,8 +76,21 @@ namespace Stripe
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
 
-        [JsonProperty("subscription")]
+        #region Expandable Subscription
         public string SubscriptionId { get; set; }
+
+        [JsonIgnore]
+        public StripeSubscription Subscription { get; set; }
+
+        [JsonProperty("subscription")]
+        internal object InternalSubscription
+        {
+            set
+            {
+                StringOrObject<StripeSubscription>.Map(value, s => SubscriptionId = s, o => Subscription = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("subscription_item")]
         public string SubscriptionItem { get; set; }

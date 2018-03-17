@@ -12,6 +12,7 @@ namespace Stripe
 
         public bool ExpandCustomer { get; set; }
         public bool ExpandInvoice { get; set; }
+        public bool ExpandSubscription { get; set; }
 
 
 

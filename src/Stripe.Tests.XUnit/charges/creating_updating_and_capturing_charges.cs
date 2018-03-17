@@ -69,6 +69,13 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
+        public void charge_has_outcome_filled()
+        {
+            fixture.Charge.Outcome.NetworkStatus.Should().NotBeNull();
+            fixture.Charge.Outcome.RiskLevel.Should().NotBeNull();
+        }
+
+        [Fact]
         public void updated_has_the_right_description()
         {
             fixture.UpdatedCharge.Description.Should().Be(fixture.ChargeUpdateOptions.Description);

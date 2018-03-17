@@ -10,6 +10,8 @@ namespace Stripe
         public StripeAccountService() : base(null) { }
         public StripeAccountService(string apiKey) : base(apiKey) { }
 
+        public bool ExpandBusinessLogo { get; set; }
+
 
 
         //Sync
