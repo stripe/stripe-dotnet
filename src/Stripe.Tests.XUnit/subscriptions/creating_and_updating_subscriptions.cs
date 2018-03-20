@@ -58,6 +58,18 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
+        public void updated_has_metadata_keys()
+        {
+            fixture.SubscriptionUpdated.Items.Data[0].Metadata.Should().ContainKeys(fixture.SubscriptionUpdateOptions.Items[1].Metadata.Keys);
+        }
+
+        [Fact]
+        public void updated_has_metadata_values()
+        {
+            fixture.SubscriptionUpdated.Items.Data[0].Metadata.Should().ContainValues(fixture.SubscriptionUpdateOptions.Items[1].Metadata.Values);
+        }
+
+        [Fact]
         public void ended_should_not_be_null()
         {
             fixture.SubscriptionEnded.Should().NotBeNull();
