@@ -68,7 +68,7 @@ namespace Stripe.Tests.Xunit
         {
             fixture.SkuList.Data.Count.Should().Be(1);
             fixture.SkuList.Data.First().Id.Should().Be(fixture.SkuTwo.Id);
-            fixture.SkuList.Data.First().Product.Should().Be(fixture.Product.Id);
+            fixture.SkuList.Data.First().ProductId.Should().Be(fixture.Product.Id);
         }
     }
 }

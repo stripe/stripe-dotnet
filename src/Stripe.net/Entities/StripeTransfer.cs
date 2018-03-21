@@ -39,11 +39,37 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        #region Expandable Destination
+        public string DestinationId { get; set; }
+
+        [JsonIgnore]
+        public StripeAccount Destination { get; set; }
+
         [JsonProperty("destination")]
-        public string Destination { get; set; }
+        internal object InternalDestination
+        {
+            set
+            {
+                StringOrObject<StripeAccount>.Map(value, s => DestinationId = s, o => Destination = o);
+            }
+        }
+        #endregion
+
+        #region Expandable Destination Payment
+        public string DestinationPaymentId { get; set; }
+
+        [JsonIgnore]
+        public StripeCharge DestinationPayment { get; set; }
 
         [JsonProperty("destination_payment")]
-        public string DestinationPayment { get; set; }
+        internal object InternalDestinationPayment
+        {
+            set
+            {
+                StringOrObject<StripeCharge>.Map(value, s => DestinationPaymentId = s, o => DestinationPayment = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("livemode")]
         public bool LiveMode { get; set; }
@@ -57,8 +83,21 @@ namespace Stripe
         [JsonProperty("reversed")]
         public bool Reversed { get; set; }
 
-        [JsonProperty("source_transaction")]
+        #region Expandable Source Transaction
         public string SourceTransactionId { get; set; }
+
+        [JsonIgnore]
+        public StripeCharge SourceTransaction { get; set; }
+
+        [JsonProperty("source_transaction")]
+        internal object InternalSourceTransaction
+        {
+            set
+            {
+                StringOrObject<StripeCharge>.Map(value, s => SourceTransactionId = s, o => SourceTransaction = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("source_type")]
         public string SourceType { get; set; }

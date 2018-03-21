@@ -218,25 +218,30 @@ namespace Stripe
         }
         #endregion
 
-        // order - requires orders to be expandable
-        [JsonProperty("order")]
-        public string Order { get; set; }
-
-        #region Expandable Outcome
-        public string OutcomeId { get; set; }
+        #region Expandable Order
+        /// <summary>
+        /// ID of the order this charge is for if one exists.
+        /// </summary>
+        public string OrderId { get; set; }
 
         [JsonIgnore]
-        public StripeOutcome Outcome { get; set; }
+        public StripeOrder Order { get; set; }
 
-        [JsonProperty("outcome")]
-        internal object InternalOutcome
+        [JsonProperty("order")]
+        internal object InternalOrder
         {
             set
             {
-                StringOrObject<StripeOutcome>.Map(value, s => OutcomeId = s, o => Outcome = o);
+                StringOrObject<StripeOrder>.Map(value, s => OrderId = s, o => Order = o);
             }
         }
         #endregion
+
+        /// <summary>
+        /// Details about whether the payment was accepted, and why.
+        /// </summary>
+        [JsonProperty("outcome")]
+        public StripeOutcome Outcome { get; set; }
 
         /// <summary>
         /// true if the charge succeeded, or was successfully authorized for later capture.

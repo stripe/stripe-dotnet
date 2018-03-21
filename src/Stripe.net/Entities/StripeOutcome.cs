@@ -23,10 +23,10 @@ namespace Stripe
         public string RiskLevel { get; set; }
 
         /// <summary>
-        /// An enumerated value indicating a more detailed explanation of the outcome’s type. See understanding declines for details.
+        /// The ID of the Radar rule that matched the payment, if applicable.
         /// </summary>
         [JsonProperty("rule")]
-        public string Rule { get; set; }
+        public string RuleId { get; set; }
 
         /// <summary>
         /// A human-readable description of the outcome type and reason, designed for you (the recipient of the payment), not your customer.

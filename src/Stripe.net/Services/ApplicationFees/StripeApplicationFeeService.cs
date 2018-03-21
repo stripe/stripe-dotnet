@@ -14,6 +14,7 @@ namespace Stripe
         public bool ExpandApplication { get; set; }
         public bool ExpandBalanceTransaction { get; set; }
         public bool ExpandCharge { get; set; }
+        public bool ExpandOriginatingTransaction { get; set; }
 
 
 
