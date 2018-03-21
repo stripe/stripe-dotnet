@@ -27,9 +27,9 @@ namespace Stripe.Infrastructure.Middleware
                     // it must have a json attribute matching stripe's key, and only one
                     var attr = prop.GetCustomAttributes<JsonPropertyAttribute>().SingleOrDefault();
                     if (attr == null) continue;
-
-                    RequestStringBuilder.ApplyParameterToRequestString(ref requestString,
-                        $"items[{itemIndex}][{attr.PropertyName}]", value.ToString());
+                    // a JsonPropertyAttribute is required to supply a property name to parser plugins.
+                    var indexedItemAttribute = new JsonPropertyAttribute($"items[{itemIndex}][{attr.PropertyName}]");
+                    RequestStringBuilder.ProcessPlugins(ref requestString, indexedItemAttribute, prop, value, propertyParent);
                 }
 
                 itemIndex++;

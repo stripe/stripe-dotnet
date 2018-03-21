@@ -37,7 +37,12 @@ namespace Stripe.Tests.Xunit
                 Items = new List<StripeSubscriptionItemUpdateOption>
                 {
                     new StripeSubscriptionItemUpdateOption { Id = Subscription.Items.Data[0].Id, Deleted = true },
-                    new StripeSubscriptionItemUpdateOption { Id = Subscription.Items.Data[1].Id, Quantity = 5 }
+                    new StripeSubscriptionItemUpdateOption
+                    {
+                        Id = Subscription.Items.Data[1].Id,
+                        Quantity = 5,
+                        Metadata = new Dictionary<string, string>{ {"key", "value"} }
+                    }
                 }
             };
 
