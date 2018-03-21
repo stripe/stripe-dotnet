@@ -9,5 +9,12 @@ namespace Stripe
         }
 
         public Dictionary<string, string> ExtraParams = new Dictionary<string, string>();
+
+
+        public void AddExpand(string value) {
+            Expand.Add(value);
+        }
+
+        public List<string> Expand = new List<string>();
     }
 }
