@@ -63,7 +63,7 @@ namespace Stripe
             return Mapper<StripeCustomer>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.Customers, false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -72,7 +72,7 @@ namespace Stripe
             return Mapper<StripeCustomer>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Customers}/{customerId}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -81,7 +81,7 @@ namespace Stripe
             return Mapper<StripeCustomer>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Customers}/{customerId}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -90,7 +90,7 @@ namespace Stripe
             return Mapper<StripeDeleted>.MapFromJson(
                 await Requestor.DeleteAsync($"{Urls.Customers}/{customerId}",
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -99,7 +99,7 @@ namespace Stripe
             return Mapper<StripeList<StripeCustomer>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Customers, true),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
     }

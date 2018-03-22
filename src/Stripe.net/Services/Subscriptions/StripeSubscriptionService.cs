@@ -88,7 +88,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(null, url, false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -100,7 +100,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(
                 await Requestor.PostStringAsync(ParameterBuilder.ApplyParameterToUrl(url, "plan", planId),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -114,7 +114,7 @@ namespace Stripe
                     url,
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
 
@@ -125,7 +125,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, url, false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -137,7 +137,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(
                 await Requestor.DeleteAsync(url,
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -146,7 +146,7 @@ namespace Stripe
             return Mapper<StripeList<StripeSubscription>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Subscriptions, true),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
     }

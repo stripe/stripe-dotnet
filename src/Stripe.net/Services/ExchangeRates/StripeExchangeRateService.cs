@@ -43,7 +43,7 @@ namespace Stripe
                     this.ApplyAllParameters(null, $"{Urls.ExchangeRates}/{currency}"),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
 
@@ -54,7 +54,7 @@ namespace Stripe
                     this.ApplyAllParameters(listOptions, $"{Urls.ExchangeRates}", true),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
     }

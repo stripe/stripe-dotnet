@@ -55,7 +55,7 @@ namespace Stripe
             return Mapper<StripeApplicationFee>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -67,7 +67,7 @@ namespace Stripe
                 url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());
 
             return Mapper<StripeApplicationFee>.MapFromJson(
-                await Requestor.PostStringAsync(url, SetupRequestOptions(requestOptions), cancellationToken)
+                await Requestor.PostStringAsync(url, SetupRequestOptions(requestOptions), cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -76,7 +76,7 @@ namespace Stripe
             return Mapper<StripeList<StripeApplicationFee>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.ApplicationFees, true),
                 SetupRequestOptions(requestOptions), 
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
     }

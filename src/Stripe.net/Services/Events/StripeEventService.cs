@@ -37,7 +37,7 @@ namespace Stripe
             return Mapper<StripeEvent>.MapFromJson(
                 await Requestor.GetStringAsync($"{Urls.Events}/{eventId}",
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -46,7 +46,7 @@ namespace Stripe
             return Mapper<StripeList<StripeEvent>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Events, true),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
     }

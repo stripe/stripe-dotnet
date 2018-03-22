@@ -64,7 +64,7 @@ namespace Stripe
             return Mapper<StripeRefund>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, $"{Urls.Charges}/{chargeId}/refunds", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -75,7 +75,7 @@ namespace Stripe
                     this.ApplyAllParameters(null, $"{Urls.BaseUrl}/refunds/{refundId}"),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
 
@@ -86,7 +86,7 @@ namespace Stripe
                     this.ApplyAllParameters(updateOptions, $"{Urls.BaseUrl}/refunds/{refundId}"),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
 
@@ -97,7 +97,7 @@ namespace Stripe
                     this.ApplyAllParameters(listOptions, $"{Urls.BaseUrl}/refunds", true),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
     }

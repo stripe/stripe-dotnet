@@ -95,7 +95,7 @@ namespace Stripe
             return Mapper<StripeInvoice>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Invoices}/{invoiceId}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -106,7 +106,7 @@ namespace Stripe
             return Mapper<StripeInvoice>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(upcomingOptions, url, false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -115,7 +115,7 @@ namespace Stripe
             return Mapper<StripeInvoice>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Invoices}/{invoiceId}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -124,7 +124,7 @@ namespace Stripe
             return Mapper<StripeInvoice>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(null, $"{Urls.Invoices}/{invoiceId}/pay", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -133,7 +133,7 @@ namespace Stripe
             return Mapper<StripeList<StripeInvoice>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Invoices, true),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -143,7 +143,7 @@ namespace Stripe
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, $"{Urls.Invoices}/{invoiceId}/lines", true),
                     SetupRequestOptions(requestOptions), 
-                    cancellationToken)
+                    cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -154,7 +154,7 @@ namespace Stripe
             return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, url, true),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -165,7 +165,7 @@ namespace Stripe
             return Mapper<StripeInvoice>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, url),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
     }

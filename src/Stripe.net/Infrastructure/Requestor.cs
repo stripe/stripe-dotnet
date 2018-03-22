@@ -61,8 +61,8 @@ namespace Stripe.Infrastructure
 
         private static StripeResponse ExecuteRequest(HttpRequestMessage requestMessage)
         {
-            var response = HttpClient.SendAsync(requestMessage).Result;
-            var responseText = response.Content.ReadAsStringAsync().Result;
+            var response = HttpClient.SendAsync(requestMessage).ConfigureAwait(false).GetAwaiter().GetResult();
+            var responseText = response.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
 
             var result = BuildResponseData(response, responseText);
 
@@ -105,14 +105,15 @@ namespace Stripe.Infrastructure
 
         private static async Task<StripeResponse> ExecuteRequestAsync(HttpRequestMessage requestMessage, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var response = await HttpClient.SendAsync(requestMessage, cancellationToken);
+            var response = await HttpClient.SendAsync(requestMessage, cancellationToken).ConfigureAwait(false);
+            var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var result = BuildResponseData(response, await response.Content.ReadAsStringAsync());
+            var result = BuildResponseData(response, responseText);
 
             if (response.IsSuccessStatusCode)
                 return result;
 
-            throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, await response.Content.ReadAsStringAsync());
+            throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
 
 

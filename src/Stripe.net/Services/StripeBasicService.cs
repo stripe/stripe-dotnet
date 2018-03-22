@@ -65,7 +65,7 @@ namespace Stripe
                     this.ApplyAllParameters(options, url),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
 
@@ -76,7 +76,7 @@ namespace Stripe
                     this.ApplyAllParameters(options, url, true),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
 
@@ -87,7 +87,7 @@ namespace Stripe
                     this.ApplyAllParameters(options, url),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
 
@@ -98,7 +98,7 @@ namespace Stripe
                     this.ApplyAllParameters(options, url),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
              );
         }
 

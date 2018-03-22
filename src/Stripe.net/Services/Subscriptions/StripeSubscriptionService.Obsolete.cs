@@ -48,25 +48,25 @@ namespace Stripe
 
         //Async
         [Obsolete("GetAsync with customerId is deprecated, use GetAsync without the customerId.")]
-        public virtual async Task<StripeSubscription> GetAsync(string customerId, string subscriptionId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeSubscription> GetAsync(string customerId, string subscriptionId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await GetAsync(subscriptionId, requestOptions, cancellationToken);
+            return GetAsync(subscriptionId, requestOptions, cancellationToken);
         }
 
         [Obsolete("UpdateAsync with customerId is deprecated, use UpdateAsync without the customerId.")]
-        public virtual async Task<StripeSubscription> UpdateAsync(string customerId, string subscriptionId, StripeSubscriptionUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeSubscription> UpdateAsync(string customerId, string subscriptionId, StripeSubscriptionUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await UpdateAsync(subscriptionId, updateOptions, requestOptions, cancellationToken);
+            return UpdateAsync(subscriptionId, updateOptions, requestOptions, cancellationToken);
         }
 
         [Obsolete("CancelAsync with customerId is deprecated, use CancelAsync without the customerId.")]
-        public virtual async Task<StripeSubscription> CancelAsync(string customerId, string subscriptionId, bool cancelAtPeriodEnd = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeSubscription> CancelAsync(string customerId, string subscriptionId, bool cancelAtPeriodEnd = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await CancelAsync(subscriptionId, cancelAtPeriodEnd, requestOptions, cancellationToken);
+            return CancelAsync(subscriptionId, cancelAtPeriodEnd, requestOptions, cancellationToken);
         }
 
         [Obsolete("ListAsync with customerId is deprecated, use ListAsync without the customerId.")]
-        public virtual async Task<StripeList<StripeSubscription>> ListAsync(string customerId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<StripeSubscription>> ListAsync(string customerId, StripeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var options = new StripeSubscriptionListOptions
             {
@@ -80,7 +80,7 @@ namespace Stripe
                 options.Limit = listOptions.Limit;
             }
 
-            return await ListAsync(options, requestOptions, cancellationToken);
+            return ListAsync(options, requestOptions, cancellationToken);
         }
     }
 }

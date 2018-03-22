@@ -44,7 +44,7 @@ namespace Stripe
         public virtual async Task<StripeBalance> GetAsync(StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeBalance>.MapFromJson(
-                await Requestor.GetStringAsync(Urls.Balance, SetupRequestOptions(requestOptions), cancellationToken)
+                await Requestor.GetStringAsync(Urls.Balance, SetupRequestOptions(requestOptions), cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -52,8 +52,8 @@ namespace Stripe
         {
             return Mapper<StripeBalanceTransaction>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.BalanceTransactions}/{id}", false),
-                SetupRequestOptions(requestOptions), 
-                cancellationToken)
+                SetupRequestOptions(requestOptions),
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -62,7 +62,7 @@ namespace Stripe
             return Mapper<StripeList<StripeBalanceTransaction>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(options, Urls.BalanceTransactions, true),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken)
+                    cancellationToken).ConfigureAwait(false)
             );
         }
     }

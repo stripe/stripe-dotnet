@@ -38,7 +38,7 @@ namespace Stripe
             return Mapper<StripeOAuthToken>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -49,7 +49,7 @@ namespace Stripe
 
             return Mapper<StripeOAuthDeauthorize>.MapFromJson(
                 await Requestor.PostStringAsync(url, SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
     }

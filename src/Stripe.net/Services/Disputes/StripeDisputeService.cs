@@ -39,9 +39,9 @@ namespace Stripe
 
 
         // Async
-        public virtual async Task<StripeDispute> GetAsync(string disputeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeDispute> GetAsync(string disputeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await GetEntityAsync($"{Urls.Disputes}/{disputeId}", requestOptions, cancellationToken);
+            return GetEntityAsync($"{Urls.Disputes}/{disputeId}", requestOptions, cancellationToken);
         }
 
         public virtual Task<StripeDispute> UpdateAsync(string disputeId, StripeDisputeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -49,14 +49,14 @@ namespace Stripe
             return PostAsync($"{Urls.Disputes}/{disputeId}", requestOptions, cancellationToken, updateOptions);
         }
 
-        public virtual async Task<StripeDispute> CloseAsync(string disputeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeDispute> CloseAsync(string disputeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PostAsync($"{Urls.Disputes}/{disputeId}/close", requestOptions, cancellationToken);
+            return PostAsync($"{Urls.Disputes}/{disputeId}/close", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<StripeList<StripeDispute>> ListAsync(StripeDisputeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<StripeDispute>> ListAsync(StripeDisputeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await GetEntityListAsync(Urls.Disputes, requestOptions, cancellationToken, listOptions);
+            return GetEntityListAsync(Urls.Disputes, requestOptions, cancellationToken, listOptions);
         }
     }
 }

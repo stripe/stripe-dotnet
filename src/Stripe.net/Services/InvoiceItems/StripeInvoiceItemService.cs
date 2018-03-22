@@ -65,7 +65,7 @@ namespace Stripe
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.InvoiceItems, false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -74,7 +74,7 @@ namespace Stripe
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -83,7 +83,7 @@ namespace Stripe
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -92,8 +92,8 @@ namespace Stripe
             return Mapper<StripeDeleted>.MapFromJson(
                 await Requestor.DeleteAsync($"{Urls.InvoiceItems}/{invoiceItemId}",
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
-                );
+                cancellationToken).ConfigureAwait(false)
+            );
         }
 
         public virtual async Task<StripeList<StripeInvoiceLineItem>> ListAsync(StripeInvoiceItemListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -101,7 +101,7 @@ namespace Stripe
             return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.InvoiceItems, true),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
     }
