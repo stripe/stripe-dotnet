@@ -8,7 +8,10 @@ namespace Stripe.Infrastructure
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            writer.WriteRawValue(@"""\/Date(" + EpochTime.ConvertDateTimeToEpoch((DateTime)value).ToString() + @")\/""");
+            if (value == null)
+                writer.WriteNull();
+            else
+                writer.WriteRawValue(((DateTime)value).ConvertDateTimeToEpoch().ToString());
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
