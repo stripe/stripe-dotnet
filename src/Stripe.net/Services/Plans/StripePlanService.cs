@@ -63,7 +63,7 @@ namespace Stripe
             return Mapper<StripePlan>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.Plans, false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -72,7 +72,7 @@ namespace Stripe
             return Mapper<StripePlan>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -81,7 +81,7 @@ namespace Stripe
             return Mapper<StripeDeleted>.MapFromJson(
                 await Requestor.DeleteAsync($"{Urls.Plans}/{WebUtility.UrlEncode(planId)}",
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -90,7 +90,7 @@ namespace Stripe
             return Mapper<StripePlan>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -99,7 +99,7 @@ namespace Stripe
             return Mapper<StripeList<StripePlan>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Plans, true),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
     }

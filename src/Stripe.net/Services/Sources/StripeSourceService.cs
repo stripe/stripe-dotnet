@@ -84,7 +84,7 @@ namespace Stripe
             return Mapper<StripeSource>.MapFromJson(
                 await Requestor.DeleteAsync(url, 
                     SetupRequestOptions(requestOptions),
-                    cancellationToken)
+                    cancellationToken).ConfigureAwait(false)
                 );
         }
 
@@ -99,7 +99,7 @@ namespace Stripe
             return Mapper<StripeList<StripeSource>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, url, true),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
     }

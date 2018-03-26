@@ -73,7 +73,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.Charges, false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -82,7 +82,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -91,7 +91,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -100,7 +100,7 @@ namespace Stripe
             return Mapper<StripeList<StripeCharge>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.Charges, true),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken)
+                    cancellationToken).ConfigureAwait(false)
             );
         }
 
@@ -109,7 +109,7 @@ namespace Stripe
             return Mapper<StripeCharge>.MapFromJson(
                 await Requestor.PostStringAsync(this.ApplyAllParameters(captureOptions, $"{Urls.Charges}/{chargeId}/capture", false),
                 SetupRequestOptions(requestOptions),
-                cancellationToken)
+                cancellationToken).ConfigureAwait(false)
             );
         }
     }

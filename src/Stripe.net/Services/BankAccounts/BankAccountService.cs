@@ -85,7 +85,7 @@ namespace Stripe
                     this.ApplyAllParameters(createOptions, $"{Urls.BaseUrl}/customers/{customerId}/bank_accounts"),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
 
@@ -96,7 +96,7 @@ namespace Stripe
                     this.ApplyAllParameters(null, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
 
@@ -107,7 +107,7 @@ namespace Stripe
                     this.ApplyAllParameters(updateOptions, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
 
@@ -118,7 +118,7 @@ namespace Stripe
                     this.ApplyAllParameters(null, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
 
@@ -129,7 +129,7 @@ namespace Stripe
                     this.ApplyAllParameters(listOptions, $"{Urls.BaseUrl}/customers/{customerId}/bank_accounts", true),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
 
@@ -140,7 +140,7 @@ namespace Stripe
                     this.ApplyAllParameters(verifyoptions, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}/verify"),
                     SetupRequestOptions(requestOptions),
                     cancellationToken
-                )
+                ).ConfigureAwait(false)
             );
         }
     }
