@@ -1,5 +1,8 @@
 # Changelog
 
+## 15.2.0 - 2018-03-26
+* [#1145](https://github.com/stripe/stripe-dotnet/pull/999) Use `ConfigureAwait(false)` for all async invocations
+
 ## 15.1.0 - 2018-03-23
 * [#1144](https://github.com/stripe/stripe-dotnet/pull/1144) Modify `StripeDateTimeConverter` so that it writes timestamps as standard epochs instead of in Microsoft's custom `Date` format
 
