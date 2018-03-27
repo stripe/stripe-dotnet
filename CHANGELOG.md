@@ -1,5 +1,8 @@
 # Changelog
 
+## 15.2.1 - 2018-03-27
+* [#1147](https://github.com/stripe/stripe-dotnet/pull/1147) Fix `CancelAtPeriodEnd` parameter in `StripeSubscriptionUpdateOptions`
+
 ## 15.2.0 - 2018-03-26
 * [#1145](https://github.com/stripe/stripe-dotnet/pull/999) Use `ConfigureAwait(false)` for all async invocations
 
