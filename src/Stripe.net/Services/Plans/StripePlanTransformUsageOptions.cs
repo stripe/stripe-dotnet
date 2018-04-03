@@ -2,12 +2,12 @@
 
 namespace Stripe
 {
-    public class StripePlanTransformUsageOptions
+    public class StripePlanTransformUsageOptions : INestedOptions
     {
-        [JsonProperty("divide_by")]
+        [JsonProperty("transform_usage[divide_by]")]
         public int DivideBy { get; set; }
 
-        [JsonProperty("round")]
+        [JsonProperty("transform_usage[round]")]
         public string Round { get; set; }
     }
 }
