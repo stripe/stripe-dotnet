@@ -23,6 +23,8 @@ namespace Stripe.Infrastructure.Middleware
                 new DictionaryPlugin(),
                 new EnumPlugin(),
                 new OrderItemsPlugin(),
+                new PlanTiersPlugin(),
+                new PlanTransformUsagePlugin(),
                 new SubscriptionItemPlugin(),
                 new SubscriptionItemUpdatedPlugin(),
                 new InvoiceSubscriptionItemPlugin()
