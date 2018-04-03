@@ -6,7 +6,7 @@ namespace Stripe.Tests.Xunit
     {
         private static Object cacheLock = new Object();
 
-        public static StripePlan GetPlan(string planName = "plan")
+        public static StripePlan GetPlan(string planName = "plan", string planUsageType = "licensed")
         {
             // Ensures that creating a new plan only happens synchronously
             // Avoids parallel calls to end up with the same options (and id) twice.
@@ -17,14 +17,14 @@ namespace Stripe.Tests.Xunit
                     return (StripePlan) Items[planName];
                 }
 
-                var plan = new StripePlanService(ApiKey).Create(GetPlanCreateOptions(planName));
+                var plan = new StripePlanService(ApiKey).Create(GetPlanCreateOptions(planName, planUsageType));
                 Items.Add(planName, plan);
 
                 return plan;
             }
         }
 
-        public static StripePlanCreateOptions GetPlanCreateOptions(string planName = "plan")
+        public static StripePlanCreateOptions GetPlanCreateOptions(string planName = "plan", string planUsageType = "licensed")
         {
             if (Items.ContainsKey($"{planName}_create_options")) return (StripePlanCreateOptions) Items[$"{planName}_create_options"];
 
@@ -39,7 +39,8 @@ namespace Stripe.Tests.Xunit
                 {
                     Name = "Test Product",
                     StatementDescriptor = "TEST THIS PRODUCT"
-                }
+                },
+                UsageType = planUsageType,
             };
             Items.Add($"{planName}_create_options", options);
 
