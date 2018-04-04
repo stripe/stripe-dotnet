@@ -1,5 +1,8 @@
 # Changelog
 
+## 15.3.0 - 2018-04-04
+* [#1150](https://github.com/stripe/stripe-dotnet/pull/1150) Flexible/Metered Billing API support
+
 ## 15.2.1 - 2018-03-27
 * [#1147](https://github.com/stripe/stripe-dotnet/pull/1147) Fix `CancelAtPeriodEnd` parameter in `StripeSubscriptionUpdateOptions`
 
