@@ -40,6 +40,6 @@ namespace Stripe.Tests
             _stripeInvoice.StripeInvoiceLineItems.Data.First().Plan.Id.ShouldEqual(_stripePlan.Id);
 
         It should_have_the_correct_plan_amount = () =>
-            _stripeInvoice.StripeInvoiceLineItems.Data.First().Amount.ShouldEqual(_stripePlan.Amount);
+            _stripeInvoice.StripeInvoiceLineItems.Data.First().Amount.ShouldEqual(_stripePlan.Amount.Value);
     }
 }

@@ -81,4 +81,95 @@ namespace Stripe.Tests.Xunit
 
         public void Dispose() { }
     }
+
+    public class tiered_plan_fixture : IDisposable
+    {
+        public StripeProductCreateOptions ProductCreateOptions { get; set; }
+        public StripePlanCreateOptions PlanCreateOptions { get; set; }
+
+        public StripePlan Plan { get; set; }
+        public StripePlan PlanRetrieved { get; set; }
+
+        public tiered_plan_fixture()
+        {
+            ProductCreateOptions = new StripeProductCreateOptions
+            {
+                Name = $"test-product-{ Guid.NewGuid() }",
+                Type = "service"
+            };
+
+            var productService = new StripeProductService(Cache.ApiKey);
+            var product = productService.Create(ProductCreateOptions);
+            var tiers = new List<StripePlanTierOptions>
+            {
+                new StripePlanTierOptions()
+                {
+                    Amount = 1000,
+                    UpTo = new StripePlanTierOptions.UpToBound() {Bound = 10}
+                },
+                new StripePlanTierOptions()
+                {
+                    Amount = 2000,
+                    UpTo = new StripePlanTierOptions.UpToInf()
+                }
+            };
+
+            PlanCreateOptions = new StripePlanCreateOptions() {
+                Nickname = "tiered-plan-name",
+                BillingScheme = "tiered",
+                TiersMode = "volume",
+                Tiers = tiers,
+                Currency = "usd",
+                Interval = "month",
+                ProductId = product.Id
+            };
+
+            var planService = new StripePlanService(Cache.ApiKey);
+            Plan = planService.Create(PlanCreateOptions);
+            PlanRetrieved = planService.Get(Plan.Id);
+        }
+
+        public void Dispose() { }
+    }
+
+    public class transform_usage_plan_fixture : IDisposable
+    {
+        public StripeProductCreateOptions ProductCreateOptions { get; set; }
+        public StripePlanCreateOptions PlanCreateOptions { get; set; }
+
+        public StripePlan Plan { get; set; }
+        public StripePlan PlanRetrieved { get; set; }
+
+        public transform_usage_plan_fixture()
+        {
+            ProductCreateOptions = new StripeProductCreateOptions
+            {
+                Name = $"test-product-{ Guid.NewGuid() }",
+                Type = "service"
+            };
+
+            var productService = new StripeProductService(Cache.ApiKey);
+            var product = productService.Create(ProductCreateOptions);
+            var transformUsage = new StripePlanTransformUsageOptions()
+            {
+                DivideBy = 100,
+                Round = "up"
+            };
+
+            PlanCreateOptions = new StripePlanCreateOptions() {
+                Nickname = "tiered-plan-name",
+                Amount = 1000,
+                Currency = "usd",
+                Interval = "month",
+                ProductId = product.Id,
+                TransformUsage = transformUsage,
+            };
+
+            var planService = new StripePlanService(Cache.ApiKey);
+            Plan = planService.Create(PlanCreateOptions);
+            PlanRetrieved = planService.Get(Plan.Id);
+        }
+
+        public void Dispose() { }
+    }
 }

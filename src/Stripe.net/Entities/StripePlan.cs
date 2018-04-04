@@ -11,7 +11,10 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
+
+        [JsonProperty("billing_scheme")]
+        public string BillingScheme { get; set; }
 
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
@@ -55,7 +58,19 @@ namespace Stripe
         }
         #endregion
 
+        [JsonProperty("tiers")]
+        public List<StripePlanTier> Tiers { get; set; }
+
+        [JsonProperty("tiers_mode")]
+        public string TiersMode { get; set; }
+
+        [JsonProperty("transform_usage")]
+        public StripePlanTransformUsage TransformUsage { get; set; }
+
         [JsonProperty("trial_period_days")]
         public int? TrialPeriodDays { get; set; }
+
+        [JsonProperty("usage_type")]
+        public string UsageType { get; set; }
     }
 }

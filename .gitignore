@@ -9,3 +9,6 @@
 .vs
 
 project.lock.json
+
+.DS_Store
+.idea/
