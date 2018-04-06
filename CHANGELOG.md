@@ -1,5 +1,8 @@
 # Changelog
 
+## 15.3.1 - 2018-04-06
+* [#1151](https://github.com/stripe/stripe-dotnet/pull/1151) Fix an issue when running the library with .NET Framework 4.5+ in non-Windows environments
+
 ## 15.3.0 - 2018-04-04
 * [#1150](https://github.com/stripe/stripe-dotnet/pull/1150) Flexible/Metered Billing API support
 
