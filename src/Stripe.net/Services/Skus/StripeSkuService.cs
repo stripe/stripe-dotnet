@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Stripe.Infrastructure;
@@ -22,12 +23,12 @@ namespace Stripe
 
         public virtual StripeSku Get(string skuId, StripeRequestOptions requestOptions = null)
         {
-            return GetEntity($"{Urls.BaseUrl}/skus/{skuId}", requestOptions);
+            return GetEntity($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions);
         }
 
         public virtual StripeSku Update(string skuId, StripeSkuUpdateOptions options, StripeRequestOptions requestOptions = null)
         {
-            return Post($"{Urls.BaseUrl}/skus/{skuId}", requestOptions, options);
+            return Post($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, options);
         }
 
         public virtual StripeList<StripeSku> List(StripeSkuListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -37,7 +38,7 @@ namespace Stripe
 
         public virtual StripeDeleted Delete(string skuId, StripeRequestOptions requestOptions = null)
         {
-            return DeleteEntity($"{Urls.BaseUrl}/skus/{skuId}", requestOptions);
+            return DeleteEntity($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions);
         }
 
 
@@ -50,12 +51,12 @@ namespace Stripe
 
         public virtual Task<StripeSku> GetAsync(string skuId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return GetEntityAsync($"{Urls.BaseUrl}/skus/{skuId}", requestOptions, cancellationToken);
+            return GetEntityAsync($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, cancellationToken);
         }
 
         public virtual Task<StripeSku> UpdateAsync(string skuId, StripeSkuUpdateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PostAsync($"{Urls.BaseUrl}/skus/{skuId}", requestOptions, cancellationToken, options);
+            return PostAsync($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, cancellationToken, options);
         }
 
         public virtual Task<StripeList<StripeSku>> ListAsync(StripeSkuListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -65,7 +66,7 @@ namespace Stripe
 
         public virtual Task<StripeDeleted> DeleteAsync(string skuId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return DeleteEntityAsync($"{Urls.BaseUrl}/skus/{skuId}", requestOptions, cancellationToken);
+            return DeleteEntityAsync($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, cancellationToken);
         }
     }
 }
