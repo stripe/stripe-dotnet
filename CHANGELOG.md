@@ -1,5 +1,8 @@
 # Changelog
 
+## 15.3.2 - 2018-04-09
+* [#1152](https://github.com/stripe/stripe-dotnet/pull/1152) Fix an issue where user-settable IDs would not be URL-encoded
+
 ## 15.3.1 - 2018-04-06
 * [#1151](https://github.com/stripe/stripe-dotnet/pull/1151) Fix an issue when running the library with .NET Framework 4.5+ in non-Windows environments
 
