@@ -44,6 +44,9 @@ namespace Stripe
         [JsonProperty("sepa_debit[iban]")]
         public string SepaDebitIban { get; set; }
 
+        [JsonProperty("sepa_debit[ideal]")]
+        public string SepaDebitIdealSourceId { get; set; }
+
         [JsonProperty("sofort[country]")]
         public string SofortCountry { get; set; }
 

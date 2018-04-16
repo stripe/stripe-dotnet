@@ -1,5 +1,9 @@
-﻿using System;
+﻿/*
+using System;
 using Machine.Specifications;
+
+The token `tok_riskLevelElevated` does not cause a blocked charge anymore.
+For now the test is simply disabled in case we want to look it up in the future.
 
 namespace Stripe.Tests
 {
@@ -29,3 +33,4 @@ namespace Stripe.Tests
             _charge.Review.ChargeId.ShouldEqual(_charge.Id);
     }
 }
+*/
