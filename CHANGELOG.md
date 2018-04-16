@@ -1,5 +1,8 @@
 # Changelog
 
+## 15.4.0 - 2018-04-16
+* [#1154](https://github.com/stripe/stripe-dotnet/pull/1154) Add `SepaDebitIdealSourceId` property to `StripeSourceCreateOptions` (for creating SEPA Direct Debit sources from iDEAL sources)
+
 ## 15.3.2 - 2018-04-09
 * [#1152](https://github.com/stripe/stripe-dotnet/pull/1152) Fix an issue where user-settable IDs would not be URL-encoded
 
