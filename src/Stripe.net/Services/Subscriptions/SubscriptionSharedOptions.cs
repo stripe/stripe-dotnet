@@ -74,6 +74,12 @@ namespace Stripe
         internal string TrialEndInternal => EndTrialNow ? "now" : TrialEnd?.ConvertDateTimeToEpoch().ToString();
         #endregion
 
+        /// <summary>
+        /// Boolean. Decide whether to use the default trial on the plan when creating a subscription.
+        /// </summary>
+        [JsonProperty("trial_from_plan")]
+        public bool? TrialFromPlan { get; set; }
+
         [Obsolete("Use Source or SourceCard")]
         [JsonProperty("card")]
         public StripeCreditCardOptions Card { get; set; }

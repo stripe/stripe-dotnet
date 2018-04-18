@@ -13,6 +13,9 @@ namespace Stripe
         [JsonProperty("amount_due")]
         public int AmountDue { get; set; }
 
+        [JsonProperty("amount_paid")]
+        public int AmountPaid { get; set; }
+
         [JsonProperty("application_fee")]
         public int? ApplicationFee { get; set; }
 
