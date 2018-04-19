@@ -128,5 +128,15 @@ namespace Stripe
 
         [JsonProperty("tokenization_method")]
         public string TokenizationMethod { get; set; }
+
+        // The properties below are for internal use only and not returned as part of standard API requests.
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("iin")]
+        public string IIN { get; set; }
+
+        [JsonProperty("issuer")]
+        public string Issuer { get; set; }
     }
 }
