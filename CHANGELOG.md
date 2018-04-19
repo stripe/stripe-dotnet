@@ -1,5 +1,8 @@
 # Changelog
 
+## 15.6.1 - 2018-04-19
+* [#1160](https://github.com/stripe/stripe-dotnet/pull/1160) Add internal properties to `StripeCard`
+
 ## 15.6.0 - 2018-04-18
 * [#1159](https://github.com/stripe/stripe-dotnet/pull/1159) Add `AmountPaid` property to `StripeInvoice` and `TrialFromPlan` property to `SubscriptionSharedOptions`
 
