@@ -23,7 +23,8 @@ namespace Stripe.Tests.Xunit
                 {
                     new StripeSubscriptionItemOption { PlanId = Cache.GetPlan().Id, Quantity = 1 },
                     new StripeSubscriptionItemOption { PlanId = Cache.GetPlan("silver").Id, Quantity = 2 }
-                }
+                },
+                BillingCycleAnchor = DateTime.UtcNow.AddDays(1),
             };
 
             var service = new StripeSubscriptionService(Cache.ApiKey);
