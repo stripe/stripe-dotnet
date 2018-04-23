@@ -1,0 +1,80 @@
+{
+  "object": "list",
+  "url": "/v1/balance/history",
+  "data": [
+    {
+      "id": "txn_100",
+      "object": "balance_transaction",
+      "source": {
+        "id": "fee_123",
+        "object": "application_fee",
+      },
+    },
+    {
+      "id": "txn_101",
+      "object": "balance_transaction",
+      "source": {
+        "id": "ch_123",
+        "object": "charge",
+      },
+    },
+    {
+      "id": "txn_102",
+      "object": "balance_transaction",
+      "source": {
+        "id": "dp_123",
+        "object": "dispute",
+      },
+    },
+    {
+      "id": "txn_103",
+      "object": "balance_transaction",
+      "source": {
+        "id": "po_123",
+        "object": "payout",
+      },
+    },
+    {
+      "id": "txn_104",
+      "object": "balance_transaction",
+      "source": {
+        "id": "re_123",
+        "object": "refund",
+      },
+    },
+    {
+      "id": "txn_105",
+      "object": "balance_transaction",
+      "source": {
+        "id": "tr_123",
+        "object": "transfer",
+      },
+    },
+    {
+      "id": "txn_106",
+      "object": "balance_transaction",
+      "source": {
+        "id": "trr_123",
+        "object": "transfer_reversal",
+      },
+    },
+    {
+      "id": "txn_107",
+      "object": "balance_transaction",
+      "source": {
+        "id": "tu_123",
+        "object": "topup",
+      },
+    },
+    {
+      "id": "txn_108",
+      "object": "balance_transaction",
+      "source": {
+        "id": "random",
+        "object": "unknown_object",
+      },
+    }
+  ]
+}
+
+

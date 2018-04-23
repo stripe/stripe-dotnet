@@ -1,9 +1,12 @@
 namespace StripeTests
 {
     using System;
+    using System.IO;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Reflection;
+    using System.Text;
     using System.Threading;
 
     using Stripe;
@@ -90,6 +93,21 @@ namespace StripeTests
 
                 return response.Content.ReadAsStringAsync().Result;
             }
+        }
+
+        /// <summary>
+        /// Gets a resource file and returns its contents in a string.
+        /// </summary>
+        /// <param name="path">Path to the resource file</param>
+        /// <returns>File contents</returns>
+        protected static string GetResourceAsString(string path)
+        {
+            var fullpath = "StripeTests.Resources." + path;
+            var json = new StreamReader(
+                typeof(BaseStripeTest).GetTypeInfo().Assembly.GetManifestResourceStream(fullpath),
+                Encoding.UTF8).ReadToEnd();
+
+            return json;
         }
 
         /// <summary>
