@@ -1,5 +1,8 @@
 # Changelog
 
+## 15.6.2 - 2018-04-24
+* [#1163](https://github.com/stripe/stripe-dotnet/pull/1163) Fix encoding of `BillingCycleAnchor` property in `StripeSubscriptionCreateOptions`
+
 ## 15.6.1 - 2018-04-19
 * [#1160](https://github.com/stripe/stripe-dotnet/pull/1160) Add internal properties to `StripeCard`
 
