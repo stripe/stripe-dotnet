@@ -7,7 +7,7 @@ namespace Stripe.Tests.Xunit
     {
         public StripeList<StripeSource> SourceListAll { get; }
         public StripeList<StripeSource> SourceListCard { get; }
-        public StripeList<StripeSource> SourceListBitcoin { get; }
+        public StripeList<StripeSource> SourceListACHCredit { get; }
 
         public listing_sources_on_customer()
         {
@@ -35,21 +35,20 @@ namespace Stripe.Tests.Xunit
             };
             SourceCard = sourceService.Attach(Customer.Id, SourceAttachOptions);
 
-            // Create bitcoin source and attach it to customer
-            var SourceBitcoinCreateOptions = new StripeSourceCreateOptions
+            // Create ACH Credit Transfer source and attach it to customer
+            var SourceACHCreditCreateOptions = new StripeSourceCreateOptions
             {
-                Type = StripeSourceType.Bitcoin,
-                Amount = 1000,
+                Type = StripeSourceType.AchCreditTransfer,
                 Currency = "usd",
                 Owner = new StripeSourceOwner
                 {
-                    Email = "jenny.rosen+fill_now@example.com",
+                    Email = "amount_4242@example.com",
                 },
             };
-            var SourceBitcoin = sourceService.Create(SourceBitcoinCreateOptions);
+            var SourceACHCredit = sourceService.Create(SourceACHCreditCreateOptions);
 
-            SourceAttachOptions.Source = SourceBitcoin.Id;
-            SourceBitcoin = sourceService.Attach(Customer.Id, SourceAttachOptions);
+            SourceAttachOptions.Source = SourceACHCredit.Id;
+            SourceACHCredit = sourceService.Attach(Customer.Id, SourceAttachOptions);
 
             // List sources on customer
             SourceListAll = sourceService.List(Customer.Id);
@@ -60,8 +59,8 @@ namespace Stripe.Tests.Xunit
             };
             SourceListCard = sourceService.List(Customer.Id, SourceListOptions);
 
-            SourceListOptions.Type = StripeSourceType.Bitcoin;
-            SourceListBitcoin = sourceService.List(Customer.Id, SourceListOptions);
+            SourceListOptions.Type = StripeSourceType.AchCreditTransfer;
+            SourceListACHCredit = sourceService.List(Customer.Id, SourceListOptions);
         }
 
         [Fact]
@@ -73,9 +72,9 @@ namespace Stripe.Tests.Xunit
             SourceCard.Type.Should().Be(StripeSourceType.Card);
             SourceCard.Card.Brand.Should().Be("Visa");
 
-            var SourceBitcoin = SourceListAll.Data[1];
-            SourceBitcoin.Type.Should().Be(StripeSourceType.Bitcoin);
-            SourceBitcoin.Bitcoin.Address.Should().NotBeNull();
+            var SourceACHCredit = SourceListAll.Data[1];
+            SourceACHCredit.Type.Should().Be(StripeSourceType.AchCreditTransfer);
+            SourceACHCredit.AchCreditTransfer.AccountNumber.Should().NotBeNull();
         }
 
         [Fact]
@@ -89,13 +88,13 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
-        public void list_bitcoin_should_have_bitcoin_source()
+        public void list_ach_credit_should_have_ach_credit_source()
         {
-            SourceListBitcoin.Data.Count.Should().Be(1);
+            SourceListACHCredit.Data.Count.Should().Be(1);
 
-            var SourceBitcoin = SourceListBitcoin.Data[0];
-            SourceBitcoin.Type.Should().Be(StripeSourceType.Bitcoin);
-            SourceBitcoin.Bitcoin.Address.Should().NotBeNull();
+            var SourceACHCredit = SourceListACHCredit.Data[0];
+            SourceACHCredit.Type.Should().Be(StripeSourceType.AchCreditTransfer);
+            SourceACHCredit.AchCreditTransfer.AccountNumber.Should().NotBeNull();
         }
     }
 }
