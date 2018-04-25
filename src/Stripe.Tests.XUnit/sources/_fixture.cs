@@ -16,12 +16,11 @@ namespace Stripe.Tests.Xunit
         {
             SourceCreateOptions = new StripeSourceCreateOptions
             {
-                Type = StripeSourceType.Bitcoin,
-                Amount = 1001,
+                Type = StripeSourceType.AchCreditTransfer,
                 Currency = "usd",
                 Owner = new StripeSourceOwner
                 {
-                    Email = "jimmy@hendrix.com",
+                    Email = "amount_1001@example.com",
                     CityOrTown = "Mayberry",
                     State = "NC"
                 }
