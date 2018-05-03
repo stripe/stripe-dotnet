@@ -22,6 +22,9 @@ namespace Stripe
         [JsonProperty("email")]
         public string Email { get; set; }
 
+        [JsonProperty("invoice_prefix")]
+        public string InvoicePrefix { get; set; }
+
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 

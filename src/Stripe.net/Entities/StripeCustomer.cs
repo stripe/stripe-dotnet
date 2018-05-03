@@ -111,6 +111,9 @@ namespace Stripe
         [JsonProperty("email")]
         public string Email { get; set; }
 
+        [JsonProperty("invoice_prefix")]
+        public string InvoicePrefix { get; set; }
+
         [JsonProperty("livemode")]
         public bool LiveMode { get; set; }
 
