@@ -1,5 +1,8 @@
 # Changelog
 
+## 15.7.0 - 2018-05-03
+* [#1172](https://github.com/stripe/stripe-dotnet/pull/1172) Add support for `invoice_prefix` attribute on customer objects and creation/update requests
+
 ## 15.6.2 - 2018-04-24
 * [#1163](https://github.com/stripe/stripe-dotnet/pull/1163) Fix encoding of `BillingCycleAnchor` property in `StripeSubscriptionCreateOptions`
 
