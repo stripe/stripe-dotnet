@@ -15,7 +15,7 @@ namespace Stripe.net.Tests
         Establish context = () =>
         {
             _stripeScheduledQueryService = new StripeScheduledQueryService();
-            _stripeQueryRuns = _stripeScheduledQueryService.List();
+            //_stripeQueryRuns = _stripeScheduledQueryService.List();
         };
     }
 }
