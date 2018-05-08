@@ -1,5 +1,8 @@
 # Changelog
 
+## 15.8.0 - 2018-05-07
+* [#1174](https://github.com/stripe/stripe-dotnet/pull/1174) Add support for Sigma scheduled queries
+
 ## 15.7.0 - 2018-05-03
 * [#1172](https://github.com/stripe/stripe-dotnet/pull/1172) Add support for `invoice_prefix` attribute on customer objects and creation/update requests
 
