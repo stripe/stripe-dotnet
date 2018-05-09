@@ -36,6 +36,9 @@ namespace Stripe
         [JsonProperty("subscription_quantity")]
         public int? SubscriptionQuantity { get; set; }
 
+        [JsonProperty("subscription_tax_percent")]
+        public decimal? SubscriptionTaxPercent { get; set; }
+
         public DateTime? SubscriptionTrialEnd { get; set; }
 
         [JsonProperty("subscription_trial_end")]
