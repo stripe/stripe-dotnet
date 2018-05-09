@@ -5,7 +5,7 @@ using Stripe.Infrastructure;
 
 namespace Stripe
 {
-    public class StripeIssuerFraudRecord : StripeEntityWithId, ISupportMetadata
+    public class StripeIssuerFraudRecord : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }
