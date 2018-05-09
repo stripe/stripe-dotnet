@@ -10,6 +10,8 @@
 
         public static string InvoiceItems => BaseUrl + "/invoiceitems";
 
+        public static string IssuerFraudRecords => BaseUrl + "/issuer_fraud_records";
+
         public static string Tokens => BaseUrl + "/tokens";
 
         public static string Charges => BaseUrl + "/charges";
