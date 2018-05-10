@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.1.0 - 2018-05-10
+* [#1182](https://github.com/stripe/stripe-dotnet/pull/1182) Add support `SubscriptionTaxPercent` and `SubscriptionTrialFromPlan` parameters for fetching upcoming invoices
+
 ## 16.0.0 - 2018-05-09
 * [#1176](https://github.com/stripe/stripe-dotnet/pull/1176) Properly handle bank account token deserialization
 
