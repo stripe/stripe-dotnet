@@ -36,6 +36,9 @@ namespace Stripe
         [JsonProperty("subscription_quantity")]
         public int? SubscriptionQuantity { get; set; }
 
+        [JsonProperty("subscription_tax_percent")]
+        public decimal? SubscriptionTaxPercent { get; set; }
+
         public DateTime? SubscriptionTrialEnd { get; set; }
 
         [JsonProperty("subscription_trial_end")]
@@ -49,6 +52,9 @@ namespace Stripe
                 return EpochTime.ConvertDateTimeToEpoch(SubscriptionTrialEnd.Value);
             }
         }
+
+        [JsonProperty("subscription_trial_from_plan")]
+        public bool? SubscriptionTrialFromPlan { get; set; }
 
         // this will actually send subscription_items. this is to flag it for the middleware
         // to process it as a plugin

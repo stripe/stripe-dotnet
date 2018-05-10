@@ -27,6 +27,7 @@ namespace Stripe.Tests
             {
                 SubscriptionId = _stripeCustomer.Subscriptions.Data.First().Id,
                 SubscriptionPlanId = _stripePlan.Id,
+                SubscriptionTaxPercent = 17.5m,
             };
         };
 
@@ -41,5 +42,8 @@ namespace Stripe.Tests
 
         It should_have_the_correct_plan_amount = () =>
             _stripeInvoice.StripeInvoiceLineItems.Data.First().Amount.ShouldEqual(_stripePlan.Amount.Value);
+
+        It should_have_the_correct_tax_amount = () =>
+            _stripeInvoice.TaxPercent.ShouldEqual(_stripeUpcomingInvoiceOptions.SubscriptionTaxPercent);
     }
 }
