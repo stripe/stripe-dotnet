@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.0.0 - 2018-05-09
+* [#1176](https://github.com/stripe/stripe-dotnet/pull/1176) Properly handle bank account token deserialization
+
 ## 15.8.0 - 2018-05-07
 * [#1174](https://github.com/stripe/stripe-dotnet/pull/1174) Add support for Sigma scheduled queries
 
