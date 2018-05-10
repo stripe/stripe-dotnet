@@ -53,6 +53,9 @@ namespace Stripe
             }
         }
 
+        [JsonProperty("subscription_trial_from_plan")]
+        public bool? SubscriptionTrialFromPlan { get; set; }
+
         // this will actually send subscription_items. this is to flag it for the middleware
         // to process it as a plugin
         [JsonProperty("subscription_items_array_invoice")]
