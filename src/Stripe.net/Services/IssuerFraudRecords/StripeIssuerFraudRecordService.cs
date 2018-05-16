@@ -31,6 +31,8 @@ namespace Stripe
             );
         }
 
+
+
         //Async
         public virtual async Task<StripeIssuerFraudRecord> GetAsync(string issuerFraudRecordId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
