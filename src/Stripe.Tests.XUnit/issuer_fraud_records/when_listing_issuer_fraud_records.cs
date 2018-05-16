@@ -16,14 +16,7 @@ namespace Stripe.Tests.XUnit
 
         public when_listing_issuer_fraud_records()
         {
-
-            Cache.GetSubscription();
-            Cache.GetSubscription();
-            Cache.GetSubscription();
-            Cache.GetSubscription();
-
             result = new StripeIssuerFraudRecordService(Cache.ApiKey).List(new StripeIssuerFraudRecordListOptions { Limit = 3 });
-
         }
 
         [Fact]
