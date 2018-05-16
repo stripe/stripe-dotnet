@@ -7,11 +7,8 @@ using Xunit;
 
 namespace Stripe.Tests.XUnit
 {
-
-
     public class when_listing_issuer_fraud_records
     {
-
         StripeList<StripeIssuerFraudRecord> result;
 
         public when_listing_issuer_fraud_records()
@@ -30,13 +27,11 @@ namespace Stripe.Tests.XUnit
             }
             Assert.Equal(result.ToList().Count, 3);
             Assert.Equal(result.ToList().Count, count);
-
         }
 
         [Fact]
         public void list_contents_equal()
         {
-
             var datahash = new HashSet<String>();
             foreach (var obj in result.Data)
             {
@@ -51,7 +46,6 @@ namespace Stripe.Tests.XUnit
             }
 
             Assert.Equal(datahash, enumhash);
-
         }
 
         [Fact]
@@ -62,6 +56,5 @@ namespace Stripe.Tests.XUnit
             Assert.NotNull(result.Data);
             Assert.NotNull(result.Url);
         }
-
     }
 }
