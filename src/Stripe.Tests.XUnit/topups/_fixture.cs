@@ -36,7 +36,7 @@ namespace Stripe.Tests.Xunit
                 Amount = 1000,
                 Currency = "usd",
                 Description = "Test Topup",
-                SourceTokenOrExistingSourceId = source.Id,
+                SourceId = source.Id,
                 StatementDescriptor = "Descriptor",
             };
 

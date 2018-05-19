@@ -31,7 +31,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("source")]
-        public string SourceTokenOrExistingSourceId { get; set; }
+        public string SourceId { get; set; }
 
         /// <summary>
         /// An arbitrary string to be displayed on your bank statement. This may be up to 22 characters. The statement description may not include <>"' characters, and will appear on your bank statement in capital letters. Non-ASCII characters are automatically stripped. While most banks display this information consistently, some may display it incorrectly or not at all.
