@@ -41,7 +41,7 @@ namespace Stripe
 
         [JsonProperty("expected_availability_date")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
-        public DateTime ExpectedAvailabilityDate { get; set; }
+        public DateTime? ExpectedAvailabilityDate { get; set; }
 
         /// <summary>
         /// Three-letter ISO currency code representing the currency in which the Top-up was made.
