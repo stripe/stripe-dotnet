@@ -121,6 +121,9 @@ namespace Stripe
         [JsonProperty("ideal")]
         public StripeIdeal Ideal { get; set; }
 
+        [JsonProperty("sepa_credit_transfer")]
+        public StripeSourceSepaCreditTransfer SepaCreditTransfer { get; set; }
+
         [JsonProperty("sepa_debit")]
         public StripeSepaDebit SepaDebit { get; set; }
 
