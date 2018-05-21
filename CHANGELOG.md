@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.2.0 - 2018-05-21
+* [#1110](https://github.com/stripe/stripe-dotnet/pull/1110) Add support for topups
+* [#1189](https://github.com/stripe/stripe-dotnet/pull/1189) Add support for SEPA credit transfer sources
+
 ## 16.1.0 - 2018-05-10
 * [#1182](https://github.com/stripe/stripe-dotnet/pull/1182) Add support `SubscriptionTaxPercent` and `SubscriptionTrialFromPlan` parameters for fetching upcoming invoices
 
