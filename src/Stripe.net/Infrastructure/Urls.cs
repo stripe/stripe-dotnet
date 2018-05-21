@@ -57,5 +57,7 @@
         private static string BaseUploadsUrl => StripeConfiguration.GetUploadsBase();
 
         public static string FileUploads => BaseUploadsUrl + "/files";
+
+        public static string Topups => BaseUrl + "/topups";
     }
 }
