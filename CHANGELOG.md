@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.3.0 - 2018-05-23
+* [#1191](https://github.com/stripe/stripe-dotnet/pull/1191) DESCRIBE CHANGES HERE (try to use the same style, tense, etc. as the other entries)
+    * This change is technically breaking, but it won't break most code because it's like to already have a `using Stripe` in the same file, so we've released it as a minor release
+
 ## 16.2.0 - 2018-05-21
 * [#1110](https://github.com/stripe/stripe-dotnet/pull/1110) Add support for topups
 * [#1189](https://github.com/stripe/stripe-dotnet/pull/1189) Add support for SEPA credit transfer sources
