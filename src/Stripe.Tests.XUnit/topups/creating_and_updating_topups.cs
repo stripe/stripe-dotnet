@@ -12,7 +12,7 @@ namespace Stripe.Tests.Xunit
             fixture = topupsFixture;
         }
 
-        [Fact]
+        [Fact(Skip="Feature is private beta and tests are non-deterministic")]
         public void created_has_right_details()
         {
             fixture.Topup.Should().NotBeNull();
@@ -23,7 +23,7 @@ namespace Stripe.Tests.Xunit
             fixture.Topup.StatementDescriptor.Should().Be(fixture.TopupCreateOptions.StatementDescriptor);
         }
 
-        [Fact]
+        [Fact(Skip="Feature is private beta and tests are non-deterministic")]
         public void get_is_not_null()
         {
             fixture.TopupRetrieved.Should().NotBeNull();
@@ -32,7 +32,7 @@ namespace Stripe.Tests.Xunit
             fixture.TopupRetrieved.Currency.Should().Be(fixture.Topup.Currency);
         }
 
-        [Fact]
+        [Fact(Skip="Feature is private beta and tests are non-deterministic")]
         public void updated_has_the_right_metadata()
         {
             fixture.TopupUpdated.Metadata.Keys.Should().BeEquivalentTo(fixture.TopupUpdateOptions.Metadata.Keys);
