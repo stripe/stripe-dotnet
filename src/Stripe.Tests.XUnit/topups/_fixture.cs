@@ -27,10 +27,6 @@ namespace Stripe.Tests.Xunit
                 }
             });
 
-            // Sleep for 5 seconds to ensure the Source is chargeable
-            // 1 or 2 seconds are unfortunately not enough.
-            System.Threading.Thread.Sleep(5000);
-
             TopupCreateOptions = new StripeTopupCreateOptions
             {
                 Amount = 1000,
@@ -49,16 +45,23 @@ namespace Stripe.Tests.Xunit
             };
 
             var service = new StripeTopupService(Cache.ApiKey);
-            Topup = service.Create(TopupCreateOptions);
-            TopupUpdated = service.Update(Topup.Id, TopupUpdateOptions);
-            TopupRetrieved = service.Get(Topup.Id);
 
-            TopupListOptions = new StripeTopupListOptions
-            {
-                Created = new StripeDateFilter { EqualTo = Topup.Created },
-            };
+            // We have to disable that part of the fixture. Creating a Topup requires a
+            // chargeable Source. In Test mode this can take a random time though which
+            // breaks the tests unfortunately.
+            // Since the feature is in private beta, we're just skipping the tests
+            // anyway.
 
-            TopupList = service.List(TopupListOptions);
+            //Topup = service.Create(TopupCreateOptions);
+            //TopupUpdated = service.Update(Topup.Id, TopupUpdateOptions);
+            //TopupRetrieved = service.Get(Topup.Id);
+
+            //TopupListOptions = new StripeTopupListOptions
+            //{
+            //    Created = new StripeDateFilter { EqualTo = Topup.Created },
+            //};
+
+            //TopupList = service.List(TopupListOptions);
         }
     }
 }

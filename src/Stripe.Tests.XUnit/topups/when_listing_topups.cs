@@ -18,7 +18,7 @@ namespace Stripe.Tests.XUnit
             result = fixture.TopupList;
         }
         
-        [Fact]
+        [Fact(Skip="Feature is private beta and tests are non-deterministic")]
         public void list_is_iterable()
         {
             var count = 0;
@@ -32,7 +32,7 @@ namespace Stripe.Tests.XUnit
 
         }
 
-        [Fact]
+        [Fact(Skip="Feature is private beta and tests are non-deterministic")]
         public void list_contents_equal()
         {
 
@@ -53,7 +53,7 @@ namespace Stripe.Tests.XUnit
 
         }
 
-        [Fact]
+        [Fact(Skip="Feature is private beta and tests are non-deterministic")]
         public void list_contains_extra_attributes()
         {
             Assert.NotNull(result.Object);
