@@ -1,7 +1,10 @@
 # Changelog
 
+## 16.4.0 - 2018-06-01
+* [#1195](https://github.com/stripe/stripe-dotnet/pull/1195) Add `Email` to `StripeCustomerListOptions` (for real this time)
+
 ## 16.3.0 - 2018-05-23
-* [#1191](https://github.com/stripe/stripe-dotnet/pull/1191) DESCRIBE CHANGES HERE (try to use the same style, tense, etc. as the other entries)
+* [#1191](https://github.com/stripe/stripe-dotnet/pull/1191) Move `BankAccountOptions` to the `Stripe` namespace
     * This change is technically breaking, but it won't break most code because it's like to already have a `using Stripe` in the same file, so we've released it as a minor release
 
 ## 16.2.0 - 2018-05-21
