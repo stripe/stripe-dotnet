@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.5.0 - 2018-06-06
+* [#1198](https://github.com/stripe/stripe-dotnet/pull/1198) Add `Subscription` to `StripeSubscriptionItem`
+
 ## 16.4.0 - 2018-06-01
 * [#1195](https://github.com/stripe/stripe-dotnet/pull/1195) Add `Email` to `StripeCustomerListOptions` (for real this time)
 
