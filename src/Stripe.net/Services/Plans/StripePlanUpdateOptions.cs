@@ -5,6 +5,9 @@ namespace Stripe
 {
     public class StripePlanUpdateOptions : StripeBaseOptions, ISupportMetadata
     {
+        [JsonProperty("active")]
+        public bool? Active { get; set; }
+
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 

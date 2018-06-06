@@ -10,6 +10,9 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("active")]
+        public bool Active { get; set; }
+
         [JsonProperty("amount")]
         public int? Amount { get; set; }
 

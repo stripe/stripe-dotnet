@@ -4,6 +4,9 @@ namespace Stripe
 {
     public class StripePlanListOptions : StripeListOptions
     {
+        [JsonProperty("active")]
+        public bool? Active { get; set; }
+
         [JsonProperty("created")]
         public StripeDateFilter Created { get; set; }
 
