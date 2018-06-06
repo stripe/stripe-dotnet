@@ -92,6 +92,12 @@ namespace Stripe
         [JsonProperty("forgiven")]
         public bool? Forgiven { get; set; }
 
+        [JsonProperty("hosted_invoice_url")]
+        public string HostedInvoiceUrl { get; set; }
+
+        [JsonProperty("invoice_pdf")]
+        public string InvoicePdf { get; set; }
+
         [JsonProperty("lines")]
         public StripeList<StripeInvoiceLineItem> StripeInvoiceLineItems { get; set; }
 
