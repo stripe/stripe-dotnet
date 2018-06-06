@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.7.0 - 2018-06-06
+* [#1200](https://github.com/stripe/stripe-dotnet/pull/1200) Add `Active` to plan parameter and response classes
+
 ## 16.6.0 - 2018-06-06
 * [#1199](https://github.com/stripe/stripe-dotnet/pull/1199) Add `HostedInvoiceUrl` and `InvoicePdf` to invoices
 
