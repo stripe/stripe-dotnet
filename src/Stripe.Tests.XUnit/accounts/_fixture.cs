@@ -19,8 +19,15 @@ namespace Stripe.Tests.Xunit
         {
             // create a file to attach to the additional owner as a verification document
             var fileService = new StripeFileUploadService(Cache.ApiKey);
-            var fileStream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Stripe.Tests.XUnit._resources.bumble.jpg");
-            var file = fileService.Create("bumble.jpg", fileStream, StripeFilePurpose.IdentityDocument);
+            var additionalOwnerFileStream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Stripe.Tests.XUnit._resources.bumble.jpg");
+            var additionalOwnerFileStreamBack = GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Stripe.Tests.XUnit._resources.bumble.jpg");
+            var verificationFileStream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Stripe.Tests.XUnit._resources.bumble.jpg");
+            var verificationFileStreamBack = GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Stripe.Tests.XUnit._resources.bumble.jpg");
+
+            var additionalOwnerFile = fileService.Create("bumble.jpg", additionalOwnerFileStream, StripeFilePurpose.IdentityDocument);
+            var additionalOwnerFileBack = fileService.Create("bumble_back.jpg", additionalOwnerFileStreamBack, StripeFilePurpose.IdentityDocument);
+            var verificationOwnerFile = fileService.Create("bumble.jpg", verificationFileStream, StripeFilePurpose.IdentityDocument);
+            var verificationOwnerFileBack = fileService.Create("bumble_back.jpg", verificationFileStreamBack, StripeFilePurpose.IdentityDocument);
 
             AccountCreateOptions = new StripeAccountCreateOptions
             {
@@ -46,7 +53,8 @@ namespace Stripe.Tests.Xunit
                             FirstName = "Bumble", LastName = "B",
                             // Ensure the owner is older than 18 to avoid API issues.
                             BirthDay = 29, BirthMonth = 8, BirthYear = 1980,
-                            VerificationDocument = file.Id
+                            VerificationDocument = additionalOwnerFile.Id,
+                            VerificationDocumentBack = additionalOwnerFileBack.Id
                         },
                         new StripeAccountAdditionalOwner
                         {
@@ -55,7 +63,9 @@ namespace Stripe.Tests.Xunit
                             Line1 ="B", Line2 = "C", PostalCode = "27635",
                             Country = "US"
                         }
-                    }
+                    },
+                    VerificationDocumentFileId = verificationOwnerFile.Id,
+                    VerificationDocumentFileBackId = verificationOwnerFileBack.Id
                 }
             };
 
