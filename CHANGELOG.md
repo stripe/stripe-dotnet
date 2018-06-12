@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.8.0 - 2018-06-12
+* [#1203](https://github.com/stripe/stripe-dotnet/pull/1203) Add `ProductId` to `StripePlanUpdateOptions`
+
 ## 16.7.0 - 2018-06-06
 * [#1200](https://github.com/stripe/stripe-dotnet/pull/1200) Add `Active` to plan parameter and response classes
 
