@@ -39,5 +39,8 @@ namespace Stripe
 
         [JsonProperty("verification[document]")]
         public string VerificationDocument { get; set; }
+
+        [JsonProperty("verification[document_back]")]
+        public string VerificationDocumentBack { get; set; }
     }
 }

@@ -221,6 +221,9 @@ namespace Stripe
         [JsonProperty("legal_entity[verification][document]")]
         public string VerificationDocumentFileId { get; set; }
 
+        [JsonProperty("legal_entity[verification][document_back]")]
+        public string VerificationDocumentFileBackId { get; set; }
+
         #endregion
 
         #region Additional Owners

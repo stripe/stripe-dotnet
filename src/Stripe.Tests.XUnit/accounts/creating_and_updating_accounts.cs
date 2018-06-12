@@ -22,6 +22,13 @@ namespace Stripe.Tests.Xunit
         }
 
         [Fact]
+        public void created_has_legal_entity_verification_document()
+        {
+            fixture.Account.LegalEntity.LegalEntityVerification.DocumentId.Should().NotBeNull();
+            fixture.Account.LegalEntity.LegalEntityVerification.DocumentIdBack.Should().NotBeNull();
+        }
+
+        [Fact]
         public void created_has_addditional_owners()
         {
             fixture.Account.LegalEntity.AdditionalOwners.Should().NotBeNull();
@@ -37,6 +44,7 @@ namespace Stripe.Tests.Xunit
         public void created_has_the_verification_document()
         {
             fixture.Account.LegalEntity.AdditionalOwners.First().LegalEntityVerification.DocumentId.Should().NotBeNullOrEmpty();
+            fixture.Account.LegalEntity.AdditionalOwners.First().LegalEntityVerification.DocumentIdBack.Should().NotBeNullOrEmpty();
         }
 
         [Fact]
