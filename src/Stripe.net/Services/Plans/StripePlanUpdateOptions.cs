@@ -13,5 +13,8 @@ namespace Stripe
 
         [JsonProperty("nickname")]
         public string Nickname { get; set; }
+
+        [JsonProperty("product")]
+        public string ProductId { get; set; }
     }
 }
