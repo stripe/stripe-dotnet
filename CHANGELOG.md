@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.10.0 - 2018-06-13
+* [#1205](https://github.com/stripe/stripe-dotnet/pull/1205) Add `Action` to `StripeUsageRecordCreateOptions`
+
 ## 16.9.0 - 2018-06-12
 * [#1201](https://github.com/stripe/stripe-dotnet/pull/1201) Add support for `document_back` on account objects and creation/update requests
 
