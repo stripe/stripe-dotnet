@@ -16,6 +16,9 @@ namespace Stripe
         [JsonProperty("amount_paid")]
         public int AmountPaid { get; set; }
 
+        [JsonProperty("amount_remaining")]
+        public int AmountRemaining { get; set; }
+
         [JsonProperty("application_fee")]
         public int? ApplicationFee { get; set; }
 
@@ -30,6 +33,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing")]
         public StripeBilling? Billing { get; set; }
+
+        public string BillingReason { get; set; }
 
         #region Expandable Charge
         public string ChargeId { get; set; }
