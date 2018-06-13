@@ -25,6 +25,7 @@ namespace Stripe.Tests.Xunit
             var subscription_item_id = subscription.Items.Data[0].Id;
 
             UsageRecordCreateOptions = new StripeUsageRecordCreateOptions() {
+                Action = "increment",
                 SubscriptionItem = subscription_item_id,
                 Timestamp = DateTime.Now,
                 Quantity = 2000

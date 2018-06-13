@@ -7,6 +7,9 @@ namespace Stripe
 {
     public class StripeUsageRecordCreateOptions : StripeBaseOptions
     {
+        [JsonProperty("action")]
+        public string Action { get; set; }
+
         [JsonIgnore]
         public string SubscriptionItem { get; set; }
 
