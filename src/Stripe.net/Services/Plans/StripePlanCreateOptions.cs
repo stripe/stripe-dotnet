@@ -11,6 +11,9 @@ namespace Stripe
         [JsonProperty("active")]
         public bool? Active { get; set; }
 
+        [JsonProperty("aggregate_usage")]
+        public string AggregateUsage { get; set; }
+
         [JsonProperty("amount")]
         public int? Amount { get; set; }
 
