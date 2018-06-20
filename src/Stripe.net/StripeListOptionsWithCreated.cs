@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Stripe.Infrastructure;
 
-namespace Stripe.net
+namespace Stripe
 {
     public class StripeListOptionsWithCreated : StripeListOptions
     {
