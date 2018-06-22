@@ -7,7 +7,7 @@ environment:
 deploy:
 - provider: NuGet
   api_key:
-    secure: cmo/iFw1omV9CJBtyj3k2smUjb9KUSaYdL++rPTntmzyJ32gq76WeyYnojL5opzw
+    secure: 8wM0xK4YjFp6Nc7jnkmHH9gnC8r7B+KUWP3jvvMacNLnKO3PE0xQI+E+pmrmk0hh
   on:
     branch: master
 
