@@ -26,7 +26,8 @@ namespace Stripe.Infrastructure.Middleware
                 new PlanTiersPlugin(),
                 new SubscriptionItemPlugin(),
                 new SubscriptionItemUpdatedPlugin(),
-                new InvoiceSubscriptionItemPlugin()
+                new InvoiceSubscriptionItemPlugin(),
+                new ChargeLevel3Plugin()
             };
         }
 

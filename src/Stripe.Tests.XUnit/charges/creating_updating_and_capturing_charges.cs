@@ -106,5 +106,10 @@ namespace Stripe.Tests.Xunit
             Assert.Equal(fixture.CapturedCharge.Amount - fixture.CapturedCharge.AmountRefunded, fixture.ChargeCaptureOptions.Amount);
         }
 
+        [Fact]
+        public void charge_level3_is_not_null()
+        {
+            fixture.Level3Charge.Should().NotBeNull();
+        }
     }
 }

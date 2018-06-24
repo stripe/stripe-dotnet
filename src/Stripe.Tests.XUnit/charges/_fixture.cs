@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Stripe.Tests.Xunit
 {
@@ -13,6 +14,7 @@ namespace Stripe.Tests.Xunit
         public StripeCharge UpdatedCharge { get; set; }
         public StripeCharge UncapturedCharge { get; set; }
         public StripeCharge CapturedCharge { get; set; }
+        public StripeCharge Level3Charge { get; set; }
 
         public charges_fixture()
         {
@@ -46,6 +48,38 @@ namespace Stripe.Tests.Xunit
                 StatementDescriptor = "CapturedCharge"
             };
             CapturedCharge = service.Capture(UncapturedCharge.Id, ChargeCaptureOptions);
+
+            // Create a charge with Level 3 data
+            var chargeLevel3Options = Cache.GetStripeChargeCreateOptions();
+            chargeLevel3Options.Amount = 11700;
+            chargeLevel3Options.Level3 = new StripeChargeLevel3Options
+            {
+                MerchantReference = "1234",
+                ShippingAddressZip = "94110",
+                ShippingAmount = 700,
+                LineItems = new List<StripeChargeLevel3LineItemOptions>
+                {
+                    new StripeChargeLevel3LineItemOptions
+                    {
+                        DiscountAmount = 200,
+                        ProductCode = "1234",
+                        ProductDescription = "description 1",
+                        Quantity = 2,
+                        TaxAmount = 200,
+                        UnitCost = 1000,
+                    },
+                    new StripeChargeLevel3LineItemOptions
+                    {
+                        DiscountAmount = 300,
+                        ProductCode = "1235",
+                        ProductDescription = "description 2",
+                        Quantity = 3,
+                        TaxAmount = 300,
+                        UnitCost = 3000,
+                    },
+                },
+            };
+            Level3Charge = service.Create(chargeLevel3Options);
         }
 
         public void Dispose() { }
