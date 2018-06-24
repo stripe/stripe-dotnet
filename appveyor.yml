@@ -7,9 +7,9 @@ environment:
 deploy:
 - provider: NuGet
   api_key:
-    secure: 8wM0xK4YjFp6Nc7jnkmHH9gnC8r7B+KUWP3jvvMacNLnKO3PE0xQI+E+pmrmk0hh
+    secure: 2+Gqp6u9nwfDPD/Fw6T5vcW4A9qsTSQNysK1f4ZXa7r+2a3/d/f1f2dZYWvwke7F
   on:
-    branch: master
+    appveyor_repo_tag: true
 
 before_build:
   - ps: Write-Host $("`n               HOST INFORMATION               `n") -BackgroundColor DarkCyan
