@@ -36,9 +36,7 @@ namespace Stripe
         /// <summary>
         /// List of subscription items, each with an attached plan.
         /// </summary>
-        // this will actually send `items`. this is to flag it for the middleware
-        // to process it as a plugin
-        [JsonProperty("subscription_items_array_updated")]
+        [JsonProperty("items")]
         public List<StripeSubscriptionItemUpdateOption> Items { get; set; }
 
         #region ProrationDate

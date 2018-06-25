@@ -23,7 +23,11 @@ namespace Stripe
         [JsonProperty("amount")]
         public int Amount { get; set; }
 
-        [JsonProperty("up_to")]
+        #region UpTo
         public UpToOption UpTo { get; set; }
+
+        [JsonProperty("up_to")]
+        internal string UpToInternal => UpTo is UpToInf ? "inf" : ((UpToBound) UpTo).Bound.ToString();
+        #endregion
     }
 }

@@ -32,7 +32,7 @@ namespace Stripe
         /// <summary>
         /// List of items constituting the order.
         /// </summary>
-        [JsonProperty("plugin:order_items")]
+        [JsonProperty("items")]
         public List<StripeOrderItemOptions> Items { get; set; }
 
         /// <summary>

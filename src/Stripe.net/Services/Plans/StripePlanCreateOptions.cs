@@ -41,7 +41,7 @@ namespace Stripe
         [JsonProperty("product")]
         public string ProductId { get; set; }
 
-        [JsonProperty("tiers_array")]
+        [JsonProperty("tiers")]
         public List<StripePlanTierOptions> Tiers { get; set; }
 
         [JsonProperty("tiers_mode")]
