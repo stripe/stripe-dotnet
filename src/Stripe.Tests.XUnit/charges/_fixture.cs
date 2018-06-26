@@ -54,7 +54,9 @@ namespace Stripe.Tests.Xunit
             chargeLevel3Options.Amount = 11700;
             chargeLevel3Options.Level3 = new StripeChargeLevel3Options
             {
+                CustomerReference = "customer 1",
                 MerchantReference = "1234",
+                ShippingFromZip = "90210",
                 ShippingAddressZip = "94110",
                 ShippingAmount = 700,
                 LineItems = new List<StripeChargeLevel3LineItemOptions>
