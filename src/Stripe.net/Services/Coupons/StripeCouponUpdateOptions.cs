@@ -7,5 +7,8 @@ namespace Stripe
     {
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 }
