@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.13.0 - 2018-06-28
+* [#1219](https://github.com/stripe/stripe-dotnet/pull/1219) Add `Name` to `StripeCouponUpdateOptions`
+
 ## 16.12.0 - 2018-06-20
 * [#1213](https://github.com/stripe/stripe-dotnet/pull/1213) Add `AggregateUsage` to `StripePlanCreateOptions`
 
