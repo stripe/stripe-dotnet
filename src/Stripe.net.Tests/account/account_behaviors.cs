@@ -21,12 +21,6 @@ namespace Stripe.Tests
         It should_have_the_correct_debit_negative_balances = () =>
             StripeAccount.DebitNegativeBalances.ShouldEqual(CreateOrUpdateOptions.DebitNegativeBalances.Value);
 
-        It should_have_the_correct_decline_charge_values = () =>
-        {
-            StripeAccount.DeclineChargeOn.AvsFailure.ShouldEqual(CreateOrUpdateOptions.DeclineChargeOnAvsFailure.Value);
-            StripeAccount.DeclineChargeOn.CvcFailure.ShouldEqual(CreateOrUpdateOptions.DeclineChargeOnCvcFailure.Value);
-        };
-
         It should_have_the_correct_default_currency = () =>
             StripeAccount.DefaultCurrency.ShouldEqual(CreateOrUpdateOptions.DefaultCurrency);
     }
