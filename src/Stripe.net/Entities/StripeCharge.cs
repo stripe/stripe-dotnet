@@ -238,6 +238,13 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Details about the level III data associated with the Charge.
+        /// This is a gated property and most integrations can not access it.
+        /// </summary>
+        [JsonProperty("level3")]
+        public StripeChargeLevel3 Level3 { get; set; }
+
+        /// <summary>
         /// Details about whether the payment was accepted, and why.
         /// </summary>
         [JsonProperty("outcome")]

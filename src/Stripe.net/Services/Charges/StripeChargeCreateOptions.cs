@@ -52,6 +52,12 @@ namespace Stripe
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
+        /// Extra information about the charge passing level III data to card networks
+        /// </summary>
+        [JsonProperty("level3")]
+        public StripeChargeLevel3Options Level3 { get; set; }
+
+        /// <summary>
         /// A string that identifies this transaction as part of a group. See the Connect documentation for details.
         /// </summary>
         [JsonProperty("transfer_group")]
