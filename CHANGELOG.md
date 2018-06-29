@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.14.0 - 2018-06-29
+* [#1216](https://github.com/stripe/stripe-dotnet/pull/1216) Add support for Level 3 Data on charge creation
+
 ## 16.13.0 - 2018-06-28
 * [#1219](https://github.com/stripe/stripe-dotnet/pull/1219) Add `Name` to `StripeCouponUpdateOptions`
 
