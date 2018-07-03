@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.15.0 - 2018-07-03
+* [#1221](https://github.com/stripe/stripe-dotnet/pull/1221) Add support for expanding `Outcome.Rule` on `StripeCharge`
+
 ## 16.14.0 - 2018-06-29
 * [#1216](https://github.com/stripe/stripe-dotnet/pull/1216) Add support for Level 3 Data on charge creation
 
