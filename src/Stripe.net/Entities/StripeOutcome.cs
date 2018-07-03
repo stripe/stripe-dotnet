@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Stripe.Infrastructure;
 
 namespace Stripe
 {
@@ -22,11 +23,24 @@ namespace Stripe
         [JsonProperty("risk_level")]
         public string RiskLevel { get; set; }
 
+        #region Expandable Rule
         /// <summary>
         /// The ID of the Radar rule that matched the payment, if applicable.
         /// </summary>
-        [JsonProperty("rule")]
         public string RuleId { get; set; }
+
+        [JsonIgnore]
+        public StripeOutcomeRule Rule { get; set; }
+
+        [JsonProperty("rule")]
+        internal object InternalOutcomeRule
+        {
+            set
+            {
+                StringOrObject<StripeOutcomeRule>.Map(value, s => RuleId = s, o => Rule = o);
+            }
+        }
+        #endregion
 
         /// <summary>
         /// A human-readable description of the outcome type and reason, designed for you (the recipient of the payment), not your customer.
