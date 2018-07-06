@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.16.0 - 2018-07-06
+* [#1223](https://github.com/stripe/stripe-dotnet/pull/1223) Add missing properties to invoice item objects and creation/update requests
+
 ## 16.15.0 - 2018-07-03
 * [#1221](https://github.com/stripe/stripe-dotnet/pull/1221) Add support for expanding `Outcome.Rule` on `StripeCharge`
 
