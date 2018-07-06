@@ -97,5 +97,8 @@ namespace Stripe
 
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        [JsonProperty("unit_amount")]
+        public int? UnitAmount { get; set; }
     }
 }
