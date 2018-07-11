@@ -10,7 +10,7 @@ namespace Stripe
 
         // this will actually send `line_items`. this is to flag it for the middleware
         // to process it as a plugin
-        [JsonProperty("charge_level3_line_items_array")]
+        [JsonProperty("level3[line_items]")]
         public List<StripeChargeLevel3LineItemOptions> LineItems { get; set; }
 
         [JsonProperty("level3[merchant_reference]")]

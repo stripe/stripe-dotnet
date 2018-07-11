@@ -22,8 +22,11 @@ namespace Stripe.Tests.Xunit
             [JsonProperty("a_dict")]
             public Dictionary<string, string> ADict { get; set; }
 
+            [JsonProperty("an_array")]
+            public int[] AnArray { get; set; }
+
             [JsonProperty("a_list")]
-            public int[] AList { get; set; }
+            public List<string> AList { get; set; }
         }
 
         public class UnencodableObject : StripeBaseOptions
@@ -61,10 +64,11 @@ namespace Stripe.Tests.Xunit
                     {"a", "A"},
                     {"b", "B"},
                 },
-                AList = new int[] { 1, 2 },
+                AnArray = new int[] { 1, 2 },
+                AList = new List<string>() {"foo", "bar"},
             };
             var url = Service.ApplyAllParameters(obj, "", false);
-            url.Should().Be("?an_int=3&a_string=%2Bfoo%3F&a_dict[a]=A&a_dict[b]=B&a_list[]=1&a_list[]=2");
+            url.Should().Be("?an_int=3&a_string=%2Bfoo%3F&a_dict[a]=A&a_dict[b]=B&an_array[]=1&an_array[]=2&a_list[0]=foo&a_list[1]=bar");
         }
 
         [Fact]
