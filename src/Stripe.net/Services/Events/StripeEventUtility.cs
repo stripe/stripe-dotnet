@@ -47,8 +47,8 @@ namespace Stripe
 
             var webhookUtc = Convert.ToInt32(signatureItems["t"].FirstOrDefault());
 
-            if (utcNow - webhookUtc > tolerance)
-                throw new StripeException("The webhook cannot be processed because the current timestamp is above the allowed tolerance.");
+            if (Math.Abs(utcNow - webhookUtc) > tolerance)
+                throw new StripeException("The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.");
 
             return Mapper<StripeEvent>.MapFromJson(json);
         }
