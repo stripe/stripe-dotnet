@@ -182,7 +182,12 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever a source is removed from a customer.
         /// </summary>
-        public const string CustomerSourcedDeleted = "customer.source.deleted";
+        public const string CustomerSourceDeleted = "customer.source.deleted";
+
+        /// <summary>
+        /// Occurs whenever a source will expire at the end of the month.
+        /// </summary>
+        public const string CustomerSourceExpiring = "customer.source.expiring";
 
         /// <summary>
         /// Occurs whenever a source's details are changed.
