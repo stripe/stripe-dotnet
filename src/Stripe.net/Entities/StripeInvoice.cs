@@ -28,6 +28,9 @@ namespace Stripe
         [JsonProperty("attempted")]
         public bool Attempted { get; set; }
 
+        [JsonProperty("auto_advance")]
+        public bool AutoAdvance { get; set; }
+
         /// <summary>
         /// One of <see cref="StripeBilling" />. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions.
         /// </summary>
