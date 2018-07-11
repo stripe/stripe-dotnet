@@ -3,6 +3,7 @@ image: Visual Studio 2017
 
 environment:
   STRIPE_TEST_SK: sk_test_eBgAzVoEpJKfYjD9nf2YoyMM
+  STRIPE_MOCK_VERSION: 0.19.0
 
 deploy:
 - provider: NuGet
@@ -10,6 +11,15 @@ deploy:
     secure: 2+Gqp6u9nwfDPD/Fw6T5vcW4A9qsTSQNysK1f4ZXa7r+2a3/d/f1f2dZYWvwke7F
   on:
     appveyor_repo_tag: true
+
+install:
+  - ps: |
+      New-Item -Path . -Name "stripe-mock" -ItemType "directory" | Out-Null
+      wget "https://github.com/stripe/stripe-mock/releases/download/v$($env:STRIPE_MOCK_VERSION)/stripe-mock_$($env:STRIPE_MOCK_VERSION)_windows_amd64.tar.gz" -OutFile "$($pwd)\stripe-mock\stripe-mock.tar.gz"
+      7z.exe e -y -o"stripe-mock" "stripe-mock\stripe-mock.tar.gz" | Out-Null
+      7z.exe x -y -o"stripe-mock" "stripe-mock\stripe-mock.tar" | Out-Null
+      $app = Start-Process -FilePath "stripe-mock\stripe-mock.exe" -NoNewWindow -PassThru
+      Write-Host ("`nstripe-mock running, Id = $($app.Id)`n") -ForegroundColor Green
 
 before_build:
   - ps: Write-Host $("`n               HOST INFORMATION               `n") -BackgroundColor DarkCyan
