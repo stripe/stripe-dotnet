@@ -1,5 +1,10 @@
 # Changelog
 
+## 17.0.0 - 2018-07-11
+* [#1210](https://github.com/stripe/stripe-dotnet/pull/1210) Fix `CustomerSourcedDeleted` typo to `CustomerSourceDeleted`, add `CustomerSourceExpiring`
+* [#1214](https://github.com/stripe/stripe-dotnet/pull/1214) Add `InvoiceItems` and `SubscriptionBillingCycleAnchor` to `StripeUpcomingInvoiceOptions`
+* [#1224](https://github.com/stripe/stripe-dotnet/pull/1224) Change webhook signature verification to allow for future timestamps (within the tolerance)
+
 ## 16.16.1 - 2018-07-11
 * [#1218](https://github.com/stripe/stripe-dotnet/pull/1218) Generic plugin for encoding lists
 
