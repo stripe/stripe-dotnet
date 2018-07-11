@@ -28,6 +28,7 @@
   <!-- Include all API fixture files to use in the Test suite -->
   <ItemGroup>
     <EmbeddedResource Include="Resources\api_fixtures\*.json" />
+    <EmbeddedResource Include="Resources\file_upload_logo.png" />
   </ItemGroup>
 
   <PropertyGroup>

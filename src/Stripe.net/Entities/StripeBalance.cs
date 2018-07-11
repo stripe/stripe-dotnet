@@ -5,6 +5,9 @@
 
     public class StripeBalance : StripeEntity
     {
+        [JsonProperty("object")]
+        public string Object { get; set; }
+
         [JsonProperty("available")]
         public List<StripeBalanceAmount> Available { get; set; }
 

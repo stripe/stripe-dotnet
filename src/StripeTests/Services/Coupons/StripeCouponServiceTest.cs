@@ -44,6 +44,7 @@ namespace StripeTests
         {
             var coupon = this.service.Create(this.createOptions);
             Assert.NotNull(coupon);
+            Assert.Equal("coupon", coupon.Object);
         }
 
         [Fact]
@@ -51,6 +52,7 @@ namespace StripeTests
         {
             var coupon = await this.service.CreateAsync(this.createOptions);
             Assert.NotNull(coupon);
+            Assert.Equal("coupon", coupon.Object);
         }
 
         [Fact]
@@ -72,6 +74,7 @@ namespace StripeTests
         {
             var coupon = this.service.Get(CouponId);
             Assert.NotNull(coupon);
+            Assert.Equal("coupon", coupon.Object);
         }
 
         [Fact]
@@ -79,6 +82,7 @@ namespace StripeTests
         {
             var coupon = await this.service.GetAsync(CouponId);
             Assert.NotNull(coupon);
+            Assert.Equal("coupon", coupon.Object);
         }
 
         [Fact]
@@ -86,6 +90,9 @@ namespace StripeTests
         {
             var coupons = this.service.List(this.listOptions);
             Assert.NotNull(coupons);
+            Assert.Equal("list", coupons.Object);
+            Assert.Single(coupons.Data);
+            Assert.Equal("coupon", coupons.Data[0].Object);
         }
 
         [Fact]
@@ -93,6 +100,9 @@ namespace StripeTests
         {
             var coupons = await this.service.ListAsync(this.listOptions);
             Assert.NotNull(coupons);
+            Assert.Equal("list", coupons.Object);
+            Assert.Single(coupons.Data);
+            Assert.Equal("coupon", coupons.Data[0].Object);
         }
 
         [Fact]
@@ -100,6 +110,7 @@ namespace StripeTests
         {
             var coupon = this.service.Update(CouponId, this.updateOptions);
             Assert.NotNull(coupon);
+            Assert.Equal("coupon", coupon.Object);
         }
 
         [Fact]
@@ -107,6 +118,7 @@ namespace StripeTests
         {
             var coupon = await this.service.UpdateAsync(CouponId, this.updateOptions);
             Assert.NotNull(coupon);
+            Assert.Equal("coupon", coupon.Object);
         }
     }
 }

@@ -9,9 +9,24 @@ namespace Stripe.Tests
 
         Establish context = () =>
         {
-            var tokenOptions = test_data.stripe_token_create_options.Valid();
-            // Using PAN as we don't have a 3DS test token yet
-            tokenOptions.Card.Number = "4000000000003055";
+            // While we should not use raw PANs anymore in Tests we keep this code
+            // to properly test the token creation API
+            var tokenOptions = new StripeTokenCreateOptions()
+            {
+                Card = new StripeCreditCardOptions
+                {
+                    AddressCountry = "US",
+                    AddressLine1 = "Line 1",
+                    AddressLine2 = "Line 2",
+                    AddressState = "Ca",
+                    AddressZip = "90210",
+                    Cvc = "123",
+                    ExpirationMonth = 10,
+                    ExpirationYear = 2021,
+                    Name = "Jenny Rosen",
+                    Number = "4000000000003055",
+                },
+            };
 
             _token = new StripeTokenService().Create(tokenOptions);
         };
