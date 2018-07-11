@@ -22,7 +22,7 @@ namespace Stripe.Tests.Xunit
                 StripeEventUtility.ConstructEvent(fixture.StripeJson, fixture.StripeSignature, fixture.StripeSecret)
             );
 
-            exception.Message.Should().Be("The webhook cannot be processed because the current timestamp is above the allowed tolerance.");
+            exception.Message.Should().Be("The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.");
         }
 
         [Fact]
