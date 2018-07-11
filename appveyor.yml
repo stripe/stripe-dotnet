@@ -1,4 +1,4 @@
-version: 16.16.0.{build}
+version: 16.16.1.{build}
 image: Visual Studio 2017
 
 environment:

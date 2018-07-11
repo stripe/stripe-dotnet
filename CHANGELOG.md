@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.16.1 - 2018-07-11
+* [#1218](https://github.com/stripe/stripe-dotnet/pull/1218) Generic plugin for encoding lists
+
 ## 16.16.0 - 2018-07-06
 * [#1223](https://github.com/stripe/stripe-dotnet/pull/1223) Add missing properties to invoice item objects and creation/update requests
 
