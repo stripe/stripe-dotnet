@@ -24,6 +24,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stripe.net.Tests", "Stripe.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stripe.Tests.XUnit", "Stripe.Tests.XUnit\Stripe.Tests.XUnit.csproj", "{44C779DD-9683-47B1-9600-95D053628E05}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StripeTests", "StripeTests\StripeTests.csproj", "{75F3AA23-C708-4408-AFD0-D7FA354E031B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
