@@ -43,12 +43,16 @@ namespace Stripe
             }
 
             if (!IsSignaturePresent(signature, signatureItems["v1"]))
+            {
                 throw new StripeException("The signature for the webhook is not present in the Stripe-Signature header.");
+            }
 
             var webhookUtc = Convert.ToInt32(signatureItems["t"].FirstOrDefault());
 
             if (Math.Abs(utcNow - webhookUtc) > tolerance)
+            {
                 throw new StripeException("The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.");
+            }
 
             return Mapper<StripeEvent>.MapFromJson(json);
         }

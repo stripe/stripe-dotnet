@@ -31,7 +31,9 @@ namespace Stripe
             var url = this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}/refund", false);
 
             if (refundAmount.HasValue)
+            {
                 url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());
+            }
 
             return Mapper<StripeApplicationFee>.MapFromJson(
                 Requestor.PostString(url, SetupRequestOptions(requestOptions))
@@ -62,7 +64,9 @@ namespace Stripe
             var url = this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}/refund", false);
 
             if (refundAmount.HasValue)
+            {
                 url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());
+            }
 
             return Mapper<StripeApplicationFee>.MapFromJson(
                 await Requestor.PostStringAsync(url, SetupRequestOptions(requestOptions), cancellationToken).ConfigureAwait(false)

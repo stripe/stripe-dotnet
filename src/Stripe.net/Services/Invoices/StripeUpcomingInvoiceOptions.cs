@@ -52,7 +52,9 @@ namespace Stripe
             get
             {
                 if (!SubscriptionProrationDate.HasValue)
+                {
                     return null;
+                }
 
                 return EpochTime.ConvertDateTimeToEpoch(SubscriptionProrationDate.Value);
             }
@@ -72,7 +74,9 @@ namespace Stripe
             get
             {
                 if (!SubscriptionTrialEnd.HasValue)
+                {
                     return null;
+                }
 
                 return EpochTime.ConvertDateTimeToEpoch(SubscriptionTrialEnd.Value);
             }

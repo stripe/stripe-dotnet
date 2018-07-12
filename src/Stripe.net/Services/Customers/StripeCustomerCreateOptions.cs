@@ -61,11 +61,17 @@ namespace Stripe
             get
             {
                 if (EndTrialNow)
+                {
                     return "now";
+                }
                 else if (TrialEnd.HasValue)
+                {
                     return EpochTime.ConvertDateTimeToEpoch(TrialEnd.Value).ToString();
+                }
                 else
+                {
                     return null;
+                }
             }
         }
 

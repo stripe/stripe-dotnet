@@ -21,7 +21,9 @@ namespace Stripe.Infrastructure
                     : new HttpClient();
 
             if (StripeConfiguration.HttpTimeSpan.HasValue)
+            {
                 HttpClient.Timeout = StripeConfiguration.HttpTimeSpan.Value;
+            }
         }
 
         internal static HttpClient HttpClient { get; private set; }
@@ -110,7 +112,9 @@ namespace Stripe.Infrastructure
             var result = BuildResponseData(response, responseText);
 
             if (response.IsSuccessStatusCode)
+            {
                 return result;
+            }
 
             throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
@@ -131,15 +135,23 @@ namespace Stripe.Infrastructure
                 GetAuthorizationHeaderValue(requestOptions.ApiKey));
 
             if (requestOptions.StripeConnectAccountId != null)
+            {
                 request.Headers.Add("Stripe-Account", requestOptions.StripeConnectAccountId);
+            }
 
             if (requestOptions.IdempotencyKey != null)
+            {
                 request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
+            }
 
             if (requestOptions.StripeVersion != null)
+            {
                 request.Headers.Add("Stripe-Version", requestOptions.StripeVersion);
+            }
             else
+            {
                 request.Headers.Add("Stripe-Version", StripeConfiguration.StripeApiVersion);
+            }
 
             var client = new Client(request);
             client.ApplyUserAgent();
@@ -151,7 +163,9 @@ namespace Stripe.Infrastructure
         private static HttpRequestMessage BuildRequest(HttpMethod method, string url)
         {
             if (method != HttpMethod.Post)
+            {
                 return new HttpRequestMessage(method, new Uri(url));
+            }
 
             var postData = string.Empty;
             var newUrl = url;

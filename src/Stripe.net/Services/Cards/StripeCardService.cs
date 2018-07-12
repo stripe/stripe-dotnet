@@ -161,10 +161,14 @@ namespace Stripe
             var urlParams = string.Format(Urls.CustomerSources, customerOrRecipientId);
 
             if (isRecipient)
+            {
                 urlParams = string.Format(Urls.RecipientCards, customerOrRecipientId);
+            }
 
             if (!string.IsNullOrEmpty(cardId))
+            {
                 return string.Format("{0}/{1}", urlParams, cardId);
+            }
 
             return urlParams;
         }

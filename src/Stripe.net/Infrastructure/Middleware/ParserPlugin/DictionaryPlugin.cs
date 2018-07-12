@@ -25,11 +25,15 @@ namespace Stripe.Infrastructure.Middleware
             // Ensure that key and value types are both string
             var keyType = type.GetTypeInfo().GenericTypeArguments[0];
             if (keyType != typeof(string))
+            {
                 throw new System.ArgumentException($"Expected {typeof(string).ToString()} as dictionary key type, got {keyType.ToString()}");
+            }
 
             var valueType = type.GetTypeInfo().GenericTypeArguments[1];
             if (valueType != typeof(string))
+            {
                 throw new System.ArgumentException($"Expected {typeof(string).ToString()} as dictionary value type, got {valueType.ToString()}");
+            }
 
             var dictionary = (Dictionary<string, string>)propertyValue;
             if (dictionary == null)
@@ -38,7 +42,9 @@ namespace Stripe.Infrastructure.Middleware
             }
 
             foreach (var key in dictionary.Keys)
+            {
                 RequestStringBuilder.ApplyParameterToRequestString(ref requestString, $"{attribute.PropertyName}[{WebUtility.UrlEncode(key)}]", dictionary[key]);
+            }
 
             return true;
         }

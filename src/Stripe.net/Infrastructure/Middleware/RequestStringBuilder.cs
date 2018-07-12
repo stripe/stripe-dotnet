@@ -35,11 +35,15 @@ namespace Stripe.Infrastructure.Middleware
             foreach (var plugin in ParserPlugins)
             {
                 if (!parsedParameter)
+                {
                     parsedParameter = plugin.Parse(ref requestString, attribute, property, propertyValue, propertyParent);
+                }
             }
 
             if (!parsedParameter)
+            {
                 ApplyParameterToRequestString(ref requestString, attribute.PropertyName, string.Format(CultureInfo.InvariantCulture, "{0}", propertyValue));
+            }
         }
 
         public static void ApplyParameterToRequestString(ref string requestString, string argument, string value)
@@ -47,7 +51,9 @@ namespace Stripe.Infrastructure.Middleware
             var token = "&";
 
             if (!requestString.Contains("?"))
+            {
                 token = "?";
+            }
 
             requestString = $"{requestString}{token}{argument}={WebUtility.UrlEncode(value)}";
         }

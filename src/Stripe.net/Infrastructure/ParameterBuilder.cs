@@ -31,9 +31,13 @@ namespace Stripe.Infrastructure
                     foreach (var attribute in property.GetCustomAttributes<JsonPropertyAttribute>())
                     {
                         if (value is INestedOptions)
+                        {
                             ApplyNestedObjectProperties(ref requestString, value);
+                        }
                         else
+                        {
                             RequestStringBuilder.ProcessPlugins(ref requestString, attribute, property, value, obj);
+                        }
                     }
                 }
 
@@ -99,7 +103,9 @@ namespace Stripe.Infrastructure
                 }
 
                 foreach (var attribute in property.GetCustomAttributes<JsonPropertyAttribute>())
+                {
                     RequestStringBuilder.ProcessPlugins(ref requestString, attribute, property, value, nestedObject);
+                }
             }
         }
     }

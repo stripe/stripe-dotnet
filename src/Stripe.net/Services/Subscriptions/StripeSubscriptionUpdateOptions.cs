@@ -17,10 +17,14 @@ namespace Stripe
             get
             {
                 if (BillingCycleAnchorNow)
+                {
                     return "now";
+                }
 
                 if (BillingCycleAnchorUnchanged)
+                {
                     return "unchanged";
+                }
 
                 return null;
             }

@@ -17,7 +17,9 @@
             }
 
             if (!string.IsNullOrEmpty(ApiKey))
+            {
                 requestOptions.ApiKey = ApiKey;
+            }
 
             return requestOptions;
         }

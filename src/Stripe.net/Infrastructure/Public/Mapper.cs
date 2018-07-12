@@ -52,7 +52,9 @@ namespace Stripe
             foreach (var property in obj.GetType().GetRuntimeProperties())
             {
                 if (property.Name == nameof(StripeResponse))
+                {
                     property.SetValue(obj, stripeResponse);
+                }
             }
 
             stripeResponse.ObjectJson = json;
