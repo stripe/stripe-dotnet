@@ -18,7 +18,9 @@ namespace Stripe
         }
 
         public bool ExpandBalanceTransaction { get; set; }
+
         public bool ExpandDestination { get; set; }
+
         public bool ExpandFailureBalanceTransaction { get; set; }
 
 

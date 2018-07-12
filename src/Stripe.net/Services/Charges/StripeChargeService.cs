@@ -16,17 +16,29 @@ namespace Stripe
         {
         }
 
+
         public bool ExpandApplication { get; set; }
+
         public bool ExpandApplicationFee { get; set; }
+
         public bool ExpandBalanceTransaction { get; set; }
+
         public bool ExpandCustomer { get; set; }
+
         public bool ExpandDestination { get; set; }
+
         public bool ExpandDispute { get; set; }
+
         public bool ExpandInvoice { get; set; }
+
         public bool ExpandOnBehalfOf { get; set; }
+
         public bool ExpandOrder { get; set; }
+
         public bool ExpandReview { get; set; }
+
         public bool ExpandSourceTransfer { get; set; }
+
         public bool ExpandTransfer { get; set; }
 
 

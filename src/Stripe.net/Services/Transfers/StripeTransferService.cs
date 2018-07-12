@@ -18,8 +18,11 @@ namespace Stripe
         }
 
         public bool ExpandBalanceTransaction { get; set; }
+
         public bool ExpandDestination { get; set; }
+
         public bool ExpandDestinationPayment { get; set; }
+
         public bool ExpandSourceTransaction { get; set; }
 
 

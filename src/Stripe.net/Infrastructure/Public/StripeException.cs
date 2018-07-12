@@ -27,7 +27,9 @@ namespace Stripe
         }
 
         public HttpStatusCode HttpStatusCode { get; set; }
+
         public StripeError StripeError { get; set; }
+
         public StripeResponse StripeResponse { get; set; }
     }
 }

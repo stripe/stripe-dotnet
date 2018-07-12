@@ -69,6 +69,7 @@ namespace Stripe
         /// Date representing the end of the trial period the customer will get before being charged for the first time. Set <see cref="EndTrialNow"/> to <c>true</c> to end the customer’s trial immediately.
         /// </summary>
         public DateTime? TrialEnd { get; set; }
+
         public bool EndTrialNow { get; set; }
 
         [JsonProperty("trial_end")]

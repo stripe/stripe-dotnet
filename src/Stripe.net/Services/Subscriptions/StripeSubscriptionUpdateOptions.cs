@@ -9,6 +9,7 @@ namespace Stripe
     {
         #region BillingCycleAnchor
         public bool BillingCycleAnchorNow { get; set; }
+
         public bool BillingCycleAnchorUnchanged { get; set; }
 
         [JsonProperty("billing_cycle_anchor")]

@@ -19,6 +19,7 @@ namespace Stripe
         }
 
         public bool ExpandDefaultSource { get; set; }
+
         public bool ExpandDefaultCustomerBankAccount { get; set; }
 
 
