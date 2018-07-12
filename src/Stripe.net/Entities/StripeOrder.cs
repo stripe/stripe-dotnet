@@ -29,6 +29,7 @@ namespace Stripe
         public int? ApplicationFee { get; set; }
 
         #region Expandable Charge
+
         /// <summary>
         /// <para>The ID of the payment used to pay for the order. Present if the order status is paid, fulfilled, or refunded.</para>
         /// <para>Expandable</para>
@@ -62,6 +63,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
+
         /// <summary>
         /// The customer used for the order.
         /// </summary>

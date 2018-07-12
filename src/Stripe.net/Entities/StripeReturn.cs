@@ -36,6 +36,7 @@ namespace Stripe
         public bool LiveMode { get; set; }
 
         #region Expandable Order
+
         /// <summary>
         /// <para>The order that this return includes items from.</para>
         /// <para>Expandable</para>
@@ -56,6 +57,7 @@ namespace Stripe
         #endregion
 
         #region Expandable Refund
+
         /// <summary>
         /// <para>The ID of the refund issued for this return.</para>
         /// <para>Expandable</para>

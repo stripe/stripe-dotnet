@@ -24,6 +24,7 @@ namespace Stripe
         public string RiskLevel { get; set; }
 
         #region Expandable Rule
+
         /// <summary>
         /// The ID of the Radar rule that matched the payment, if applicable.
         /// </summary>

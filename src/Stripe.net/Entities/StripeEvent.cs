@@ -29,6 +29,7 @@ namespace Stripe
         public int PendingWebhooks { get; set; }
 
         #region Request
+
         // this works like expandable properties. it's used for the event having just a string for the request id or
         // the Request object for requests after the 2017-05-25 api release
 

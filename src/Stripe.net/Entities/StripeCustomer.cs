@@ -39,6 +39,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Default CustomerBankAccount
+
         /// <summary>
         /// Warning: this is not in the documentation
         /// </summary>
@@ -61,6 +62,7 @@ namespace Stripe
         #endregion
 
         #region Expandable DefaultSource
+
         /// <summary>
         /// ID of the default source attached to this customer
         /// <para>You can expand the DefaultSource by setting the ExpandDefaultSource property on the service to true</para>

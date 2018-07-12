@@ -40,6 +40,7 @@ namespace Stripe
         public List<StripeSubscriptionItemUpdateOption> Items { get; set; }
 
         #region ProrationDate
+
         /// <summary>
         /// Boolean indicating whether this subscription should cancel at the end of the current period.
         /// </summary>

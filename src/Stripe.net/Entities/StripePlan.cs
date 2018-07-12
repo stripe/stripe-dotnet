@@ -42,6 +42,7 @@ namespace Stripe
         public string Nickname { get; set; }
 
         #region Expandable Product
+
         /// <summary>
         /// ID of the product linked to this plan
         /// <para>You can expand the Product by setting the ExpandProduct property on the service to true</para>

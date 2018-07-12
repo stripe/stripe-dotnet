@@ -58,6 +58,7 @@ namespace Stripe
         #endregion
 
         #region Expandable Balance Transaction
+
         /// <summary>
         /// ID of the balance transaction that describes the impact of this charge on your account balance (not including refunds or disputes).
         /// </summary>
@@ -93,6 +94,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
+
         /// <summary>
         /// ID of the customer this charge is for if one exists.
         /// </summary>
@@ -171,6 +173,7 @@ namespace Stripe
         public Dictionary<string, string> FraudDetails { get; set; }
 
         #region Expandable Invoice
+
         /// <summary>
         /// ID of the invoice this charge is for if one exists.
         /// </summary>
@@ -199,6 +202,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         #region Expandable OnBehalfOf (Account)
+
         /// <summary>
         /// The account (if any) the charge was made on behalf of without triggering an automatic transfer. See the Connect documentation for details.
         /// <para>To populate the OnBehalfOf entity, you need to set ExpandOnBehalfOf to true on your service before invoking a service method.</para>
@@ -219,6 +223,7 @@ namespace Stripe
         #endregion
 
         #region Expandable Order
+
         /// <summary>
         /// ID of the order this charge is for if one exists.
         /// </summary>
@@ -281,6 +286,7 @@ namespace Stripe
         public StripeList<StripeRefund> Refunds { get; set; }
 
         #region Expandable Review
+
         /// <summary>
         /// ID of the review associated with this charge if one exists.
         /// </summary>
@@ -312,6 +318,7 @@ namespace Stripe
         public Source Source { get; set; }
 
         #region Expandable Transfer
+
         /// <summary>
         /// The transfer ID which created this charge. Only present if the charge came from another Stripe account. See the Connect documentation for details.
         /// </summary>
@@ -343,6 +350,7 @@ namespace Stripe
         public string Status { get; set; }
 
         #region Expandable Transfer
+
         /// <summary>
         /// ID of the transfer to the destination account (only applicable if the charge was created using the destination parameter).
         /// </summary>

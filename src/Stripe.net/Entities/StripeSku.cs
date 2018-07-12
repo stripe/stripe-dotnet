@@ -72,6 +72,7 @@ namespace Stripe
         public int Price { get; set; }
 
         #region Expandable Product
+
         /// <summary>
         /// The ID of the product this SKU is associated with. The product must be currently active.
         /// </summary>

@@ -17,6 +17,7 @@ namespace Stripe
         public int Amount { get; set; }
 
         #region Expandable Balance Transaction
+
         /// <summary>
         /// ID of the balance transaction that describes the impact of this Top-up on your account balance (not including refunds or disputes).
         /// </summary>
