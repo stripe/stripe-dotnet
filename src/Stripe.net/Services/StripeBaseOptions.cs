@@ -7,11 +7,13 @@ namespace Stripe
         public Dictionary<string, string> ExtraParams = new Dictionary<string, string>();
         public List<string> Expand = new List<string>();
 
-        public void AddExtraParam(string key, string value) {
+        public void AddExtraParam(string key, string value)
+        {
             ExtraParams.Add(key, value);
         }
 
-        public void AddExpand(string value) {
+        public void AddExpand(string value)
+        {
             Expand.Add(value);
         }
     }

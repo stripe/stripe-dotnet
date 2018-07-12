@@ -17,7 +17,8 @@ namespace Stripe
         // ephemeral key. When working with mobile clients that might only understand
         // one version of the API you should prefer to send this value back to them so
         // that they'll be able to decode an object that's current according to their version.
-        public string RawJson {
+        public string RawJson
+        {
             get { return this.StripeResponse?.ResponseJson; }
         }
 

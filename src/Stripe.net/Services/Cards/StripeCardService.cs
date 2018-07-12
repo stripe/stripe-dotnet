@@ -70,7 +70,8 @@ namespace Stripe
         {
             var url = SetupUrl(customerOrRecipientId, isRecipient);
 
-            if (listOptions == null) {
+            if (listOptions == null)
+            {
                 listOptions = new StripeCardListOptions();
             }
 
@@ -143,7 +144,8 @@ namespace Stripe
         {
             var url = SetupUrl(customerOrRecipientId, isRecipient);
 
-            if (listOptions == null) {
+            if (listOptions == null)
+            {
                 listOptions = new StripeCardListOptions();
             }
 

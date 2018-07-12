@@ -45,13 +45,16 @@ namespace Stripe.Infrastructure.Middleware
             {
                 var itemType = item.GetType();
 
-                if (itemType.GetTypeInfo().IsPrimitive || (itemType == typeof(string))) {
+                if (itemType.GetTypeInfo().IsPrimitive || (itemType == typeof(string)))
+                {
                     // Primitive type encoding (string counts as a primitive type)
                     RequestStringBuilder.ApplyParameterToRequestString(
                         ref requestString,
                         $"{attribute.PropertyName}[{itemIndex}]",
                         item.ToString());
-                } else {
+                }
+                else
+                {
                     // Complex type encoding
                     var itemProperties = item.GetType().GetRuntimeProperties();
 

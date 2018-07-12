@@ -45,7 +45,8 @@ namespace Stripe
         {
             var url = string.Format(Urls.CustomerSources, customerId);
 
-            if (listOptions == null) {
+            if (listOptions == null)
+            {
                 listOptions = new StripeSourceListOptions();
             }
 
@@ -82,7 +83,7 @@ namespace Stripe
             var url = $"{Urls.BaseUrl}/customers/{customerId}/sources/{sourceId}";
 
             return Mapper<StripeSource>.MapFromJson(
-                await Requestor.DeleteAsync(url, 
+                await Requestor.DeleteAsync(url,
                     SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false)
                 );
@@ -92,7 +93,8 @@ namespace Stripe
         {
             var url = string.Format(Urls.CustomerSources, customerId);
 
-            if (listOptions == null) {
+            if (listOptions == null)
+            {
                 listOptions = new StripeSourceListOptions();
             }
 

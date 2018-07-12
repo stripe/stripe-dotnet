@@ -43,7 +43,8 @@ namespace Stripe.Infrastructure
                     RequestStringBuilder.ApplyParameterToRequestString(ref requestString, key, pair.Value);
                 }
 
-                foreach (var value in obj.Expand) {
+                foreach (var value in obj.Expand)
+                {
                     RequestStringBuilder.ApplyParameterToRequestString(ref requestString, "expand[]", value);
                 }
             }
