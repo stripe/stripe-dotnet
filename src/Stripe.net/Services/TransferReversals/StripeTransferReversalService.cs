@@ -7,11 +7,13 @@ namespace Stripe
 {
     public class StripeTransferReversalService : StripeBasicService<StripeTransferReversal>
     {
-        public StripeTransferReversalService() : base(null)
+        public StripeTransferReversalService()
+            : base(null)
         {
         }
 
-        public StripeTransferReversalService(string apiKey) : base(apiKey)
+        public StripeTransferReversalService(string apiKey)
+            : base(apiKey)
         {
         }
 

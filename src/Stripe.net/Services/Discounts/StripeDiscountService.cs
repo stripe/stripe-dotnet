@@ -6,11 +6,13 @@ namespace Stripe
 {
     public class StripeDiscountService : StripeBasicService<StripeDiscount>
     {
-        public StripeDiscountService() : base(null)
+        public StripeDiscountService()
+            : base(null)
         {
         }
 
-        public StripeDiscountService(string apiKey) : base(apiKey)
+        public StripeDiscountService(string apiKey)
+            : base(apiKey)
         {
         }
 

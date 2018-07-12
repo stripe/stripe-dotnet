@@ -7,11 +7,13 @@ namespace Stripe
 {
     public class StripeTransferService : StripeBasicService<StripeTransfer>
     {
-        public StripeTransferService() : base(null)
+        public StripeTransferService()
+            : base(null)
         {
         }
 
-        public StripeTransferService(string apiKey) : base(apiKey)
+        public StripeTransferService(string apiKey)
+            : base(apiKey)
         {
         }
 

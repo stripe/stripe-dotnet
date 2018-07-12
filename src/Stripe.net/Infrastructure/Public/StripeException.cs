@@ -9,15 +9,18 @@ namespace Stripe
         {
         }
 
-        public StripeException(string message) : base(message)
+        public StripeException(string message)
+            : base(message)
         {
         }
 
-        public StripeException(string message, Exception err) : base(message, err)
+        public StripeException(string message, Exception err)
+            : base(message, err)
         {
         }
 
-        public StripeException(HttpStatusCode httpStatusCode, StripeError stripeError, string message) : base(message)
+        public StripeException(HttpStatusCode httpStatusCode, StripeError stripeError, string message)
+            : base(message)
         {
             HttpStatusCode = httpStatusCode;
             StripeError = stripeError;

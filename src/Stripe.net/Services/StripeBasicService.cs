@@ -7,11 +7,13 @@ namespace Stripe
 {
     public abstract class StripeBasicService<EntityReturned> : StripeService
     {
-        protected StripeBasicService() : base(null)
+        protected StripeBasicService()
+            : base(null)
         {
         }
 
-        protected StripeBasicService(string apiKey) : base(apiKey)
+        protected StripeBasicService(string apiKey)
+            : base(apiKey)
         {
         }
 

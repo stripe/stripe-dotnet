@@ -7,11 +7,13 @@ namespace Stripe
 {
     public class StripeEventService : StripeService
     {
-        public StripeEventService() : base(null)
+        public StripeEventService()
+            : base(null)
         {
         }
 
-        public StripeEventService(string apiKey) : base(apiKey)
+        public StripeEventService(string apiKey)
+            : base(apiKey)
         {
         }
 

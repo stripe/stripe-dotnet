@@ -7,11 +7,13 @@ namespace Stripe
 {
     public class StripeOrderService : StripeBasicService<StripeOrder>
     {
-        public StripeOrderService() : base(null)
+        public StripeOrderService()
+            : base(null)
         {
         }
 
-        public StripeOrderService(string apiKey) : base(apiKey)
+        public StripeOrderService(string apiKey)
+            : base(apiKey)
         {
         }
 

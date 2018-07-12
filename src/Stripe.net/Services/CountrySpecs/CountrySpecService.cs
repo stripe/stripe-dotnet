@@ -7,11 +7,13 @@ namespace Stripe
 {
     public class CountrySpecService : StripeService
     {
-        public CountrySpecService() : base(null)
+        public CountrySpecService()
+            : base(null)
         {
         }
 
-        public CountrySpecService(string apiKey) : base(apiKey)
+        public CountrySpecService(string apiKey)
+            : base(apiKey)
         {
         }
 

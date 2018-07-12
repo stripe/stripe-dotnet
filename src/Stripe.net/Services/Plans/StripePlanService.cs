@@ -8,11 +8,13 @@ namespace Stripe
 {
     public class StripePlanService : StripeService
     {
-        public StripePlanService() : base(null)
+        public StripePlanService()
+            : base(null)
         {
         }
 
-        public StripePlanService(string apiKey) : base(apiKey)
+        public StripePlanService(string apiKey)
+            : base(apiKey)
         {
         }
 

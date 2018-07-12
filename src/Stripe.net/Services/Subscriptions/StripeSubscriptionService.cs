@@ -7,11 +7,13 @@ namespace Stripe
 {
     public partial class StripeSubscriptionService : StripeService
     {
-        public StripeSubscriptionService() : base(null)
+        public StripeSubscriptionService()
+            : base(null)
         {
         }
 
-        public StripeSubscriptionService(string apiKey) : base(apiKey)
+        public StripeSubscriptionService(string apiKey)
+            : base(apiKey)
         {
         }
 

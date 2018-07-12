@@ -7,11 +7,13 @@ namespace Stripe
 {
     public class StripeExchangeRateService : StripeService
     {
-        public StripeExchangeRateService() : base(null)
+        public StripeExchangeRateService()
+            : base(null)
         {
         }
 
-        public StripeExchangeRateService(string apiKey) : base(apiKey)
+        public StripeExchangeRateService(string apiKey)
+            : base(apiKey)
         {
         }
 

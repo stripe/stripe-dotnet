@@ -8,11 +8,13 @@ namespace Stripe
 {
     public class StripeDisputeService : StripeBasicService<StripeDispute>
     {
-        public StripeDisputeService() : base(null)
+        public StripeDisputeService()
+            : base(null)
         {
         }
 
-        public StripeDisputeService(string apiKey) : base(apiKey)
+        public StripeDisputeService(string apiKey)
+            : base(apiKey)
         {
         }
 

@@ -7,11 +7,13 @@ namespace Stripe
 {
     public class StripeApplicationFeeService : StripeService
     {
-        public StripeApplicationFeeService() : base(null)
+        public StripeApplicationFeeService()
+            : base(null)
         {
         }
 
-        public StripeApplicationFeeService(string apiKey) : base(apiKey)
+        public StripeApplicationFeeService(string apiKey)
+            : base(apiKey)
         {
         }
 

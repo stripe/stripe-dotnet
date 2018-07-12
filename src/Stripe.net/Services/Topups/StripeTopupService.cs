@@ -6,7 +6,8 @@ namespace Stripe
 {
     public class StripeTopupService : StripeService
     {
-        public StripeTopupService(string apiKey = null) : base(apiKey)
+        public StripeTopupService(string apiKey = null)
+            : base(apiKey)
         {
         }
 

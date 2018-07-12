@@ -6,11 +6,13 @@ namespace Stripe
 {
     public class StripeSourceService : StripeBasicService<StripeSource>
     {
-        public StripeSourceService() : base(null)
+        public StripeSourceService()
+            : base(null)
         {
         }
 
-        public StripeSourceService(string apiKey) : base(apiKey)
+        public StripeSourceService(string apiKey)
+            : base(apiKey)
         {
         }
 

@@ -6,11 +6,13 @@ namespace Stripe
 {
     public class StripeScheduledQueryService : StripeBasicService<StripeScheduledQueryRun>
     {
-        public StripeScheduledQueryService() : base(null)
+        public StripeScheduledQueryService()
+            : base(null)
         {
         }
 
-        public StripeScheduledQueryService(string apiKey) : base(apiKey)
+        public StripeScheduledQueryService(string apiKey)
+            : base(apiKey)
         {
         }
 

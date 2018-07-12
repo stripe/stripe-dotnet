@@ -7,11 +7,13 @@ namespace Stripe
 {
     public class StripeEphemeralKeyService : StripeBasicService<StripeEphemeralKey>
     {
-        public StripeEphemeralKeyService() : base(null)
+        public StripeEphemeralKeyService()
+            : base(null)
         {
         }
 
-        public StripeEphemeralKeyService(string apiKey) : base(apiKey)
+        public StripeEphemeralKeyService(string apiKey)
+            : base(apiKey)
         {
         }
 

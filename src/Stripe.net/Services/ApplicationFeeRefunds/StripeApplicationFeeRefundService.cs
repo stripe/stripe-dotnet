@@ -7,11 +7,13 @@ namespace Stripe
 {
     public class StripeApplicationFeeRefundService : StripeBasicService<StripeApplicationFeeRefund>
     {
-        public StripeApplicationFeeRefundService() : base(null)
+        public StripeApplicationFeeRefundService()
+            : base(null)
         {
         }
 
-        public StripeApplicationFeeRefundService(string apiKey) : base(apiKey)
+        public StripeApplicationFeeRefundService(string apiKey)
+            : base(apiKey)
         {
         }
 
