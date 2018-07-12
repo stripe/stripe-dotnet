@@ -25,8 +25,6 @@ namespace Stripe
 
         public bool ExpandSourceTransaction { get; set; }
 
-
-
         public virtual StripeTransfer Create(StripeTransferCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/transfers", requestOptions, options);
@@ -46,8 +44,6 @@ namespace Stripe
         {
             return GetEntityList($"{Urls.BaseUrl}/transfers", requestOptions, listOptions);
         }
-
-
 
         public virtual Task<StripeTransfer> CreateAsync(StripeTransferCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

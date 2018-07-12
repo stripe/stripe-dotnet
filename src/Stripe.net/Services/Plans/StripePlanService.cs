@@ -20,7 +20,6 @@ namespace Stripe
 
         public bool ExpandProduct { get; set; }
 
-
         public virtual StripePlan Create(StripePlanCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripePlan>.MapFromJson(
@@ -60,8 +59,6 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-
-
 
         public virtual async Task<StripePlan> CreateAsync(StripePlanCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

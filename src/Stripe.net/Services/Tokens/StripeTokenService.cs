@@ -16,8 +16,6 @@ namespace Stripe
         {
         }
 
-
-
         public virtual StripeToken Create(StripeTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeToken>.MapFromJson(
@@ -33,8 +31,6 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-
-
 
         public virtual async Task<StripeToken> CreateAsync(StripeTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

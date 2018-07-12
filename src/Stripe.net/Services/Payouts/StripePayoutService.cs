@@ -23,8 +23,6 @@ namespace Stripe
 
         public bool ExpandFailureBalanceTransaction { get; set; }
 
-
-
         public virtual StripePayout Create(StripePayoutCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/payouts", requestOptions, options);
@@ -49,8 +47,6 @@ namespace Stripe
         {
             return Post($"{Urls.BaseUrl}/payouts/{payoutId}/cancel", requestOptions);
         }
-
-
 
         public virtual Task<StripePayout> CreateAsync(StripePayoutCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

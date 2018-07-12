@@ -16,8 +16,6 @@ namespace Stripe
         {
         }
 
-
-
         public virtual StripeScheduledQueryRun Get(string queryRunId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return GetEntity($"{Urls.BaseUrl}/sigma/scheduled_query_runs/{queryRunId}", requestOptions);
@@ -27,8 +25,6 @@ namespace Stripe
         {
             return GetEntityList($"{Urls.BaseUrl}/sigma/scheduled_query_runs", requestOptions, listOptions);
         }
-
-
 
         public virtual Task<StripeScheduledQueryRun> GetAsync(string queryRunId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

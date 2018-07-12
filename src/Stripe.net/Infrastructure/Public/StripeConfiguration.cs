@@ -28,7 +28,6 @@ namespace Stripe
 
         public static TimeSpan? HttpTimeSpan { get; set; }
 
-
         internal static string GetApiKey()
         {
             if (string.IsNullOrEmpty(apiKey))

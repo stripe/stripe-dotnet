@@ -61,8 +61,6 @@ namespace Stripe
              );
         }
 
-
-
         public virtual async Task<EntityReturned> GetEntityAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken, StripeBaseOptions options = null)
         {
             return Mapper<EntityReturned>.MapFromJson(

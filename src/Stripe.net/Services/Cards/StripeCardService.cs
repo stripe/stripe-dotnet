@@ -22,8 +22,6 @@ namespace Stripe
 
         public bool ExpandRecipient { get; set; }
 
-
-
         public virtual StripeCard Create(string customerId, StripeCardCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             var url = SetupUrl(customerId, false);
@@ -87,8 +85,6 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-
-
 
         public virtual async Task<StripeCard> CreateAsync(string customerId, StripeCardCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -161,8 +157,6 @@ namespace Stripe
                 cancellationToken).ConfigureAwait(false)
             );
         }
-
-
 
         private string SetupUrl(string customerOrRecipientId, bool isRecipient, string cardId = null)
         {

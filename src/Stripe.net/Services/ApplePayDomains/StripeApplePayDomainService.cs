@@ -17,8 +17,6 @@ namespace Stripe
         {
         }
 
-
-
         public virtual StripeApplePayDomain Create(StripeApplePayDomainCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/apple_pay/domains", requestOptions, options);
@@ -38,8 +36,6 @@ namespace Stripe
         {
             return DeleteEntity($"{Urls.BaseUrl}/apple_pay/domains/{domainId}", requestOptions);
         }
-
-
 
         public virtual Task<StripeApplePayDomain> CreateAsync(StripeApplePayDomainCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

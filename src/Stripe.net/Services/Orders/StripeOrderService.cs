@@ -21,8 +21,6 @@ namespace Stripe
 
         public bool ExpandCustomer { get; set; }
 
-
-
         public virtual StripeOrder Create(StripeOrderCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/orders", requestOptions, options);
@@ -47,8 +45,6 @@ namespace Stripe
         {
             return GetEntityList($"{Urls.BaseUrl}/orders", requestOptions, listOptions);
         }
-
-
 
         public virtual Task<StripeOrder> CreateAsync(StripeOrderCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

@@ -10,7 +10,6 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object => "order_return";
 
-
         /// <summary>
         /// A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a 0-decimal currency) representing the total amount for the line item.
         /// </summary>

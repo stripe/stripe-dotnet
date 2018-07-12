@@ -20,8 +20,6 @@ namespace Stripe
 
         public bool ExpandCharge { get; set; }
 
-
-
         public virtual StripeDispute Get(string disputeId, StripeRequestOptions requestOptions = null)
         {
             return GetEntity($"{Urls.Disputes}/{disputeId}", requestOptions);
@@ -41,8 +39,6 @@ namespace Stripe
         {
             return GetEntityList(Urls.Disputes, requestOptions, listOptions);
         }
-
-
 
         public virtual Task<StripeDispute> GetAsync(string disputeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

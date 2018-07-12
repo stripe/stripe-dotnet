@@ -27,8 +27,6 @@ namespace Stripe
 
         public bool ExpandOriginatingTransaction { get; set; }
 
-
-
         public virtual StripeApplicationFee Get(string applicationFeeId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeApplicationFee>.MapFromJson(
@@ -58,8 +56,6 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-
-
 
         public virtual async Task<StripeApplicationFee> GetAsync(string applicationFeeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

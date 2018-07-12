@@ -22,8 +22,6 @@ namespace Stripe
 
         public bool ExpandDefaultCustomerBankAccount { get; set; }
 
-
-
         public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCustomer>.MapFromJson(
@@ -63,7 +61,6 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-
 
         public virtual async Task<StripeCustomer> CreateAsync(StripeCustomerCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

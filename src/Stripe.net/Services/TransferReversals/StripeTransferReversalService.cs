@@ -21,8 +21,6 @@ namespace Stripe
 
         public bool ExpandTransfer { get; set; }
 
-
-
         public virtual StripeTransferReversal Create(string transferId, StripeTransferReversalCreateOptions options = null, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/transfers/{transferId}/reversals", requestOptions, options);
@@ -42,8 +40,6 @@ namespace Stripe
         {
             return GetEntityList($"{Urls.BaseUrl}/transfers/{transferId}/reversals", requestOptions, options);
         }
-
-
 
         public virtual Task<StripeTransferReversal> CreateAsync(string transferId, StripeTransferReversalCreateOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

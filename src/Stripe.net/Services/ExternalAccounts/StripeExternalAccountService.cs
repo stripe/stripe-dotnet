@@ -17,8 +17,6 @@ namespace Stripe
         {
         }
 
-
-
         public virtual StripeExternalAccount Create(string accountId, StripeExternalAccountCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts", requestOptions, options);
@@ -43,8 +41,6 @@ namespace Stripe
         {
             return DeleteEntity($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts/{externalAccountId}", requestOptions);
         }
-
-
 
         public virtual Task<StripeExternalAccount> CreateAsync(string accountId, StripeExternalAccountCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

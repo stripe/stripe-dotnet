@@ -17,8 +17,6 @@ namespace Stripe
         {
         }
 
-
-
         public virtual StripeEphemeralKey Create(StripeEphemeralKeyCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             if (createOptions.StripeVersion == null)
@@ -38,8 +36,6 @@ namespace Stripe
         {
             return DeleteEntity($"{Urls.EphemeralKeys}/{keyId}", requestOptions);
         }
-
-
 
         public virtual Task<StripeEphemeralKey> CreateAsync(StripeEphemeralKeyCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

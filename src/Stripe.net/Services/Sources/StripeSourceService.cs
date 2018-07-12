@@ -16,8 +16,6 @@ namespace Stripe
         {
         }
 
-
-
         public virtual StripeSource Create(StripeSourceCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/sources", requestOptions, options);
@@ -61,7 +59,6 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-
 
         public virtual Task<StripeSource> CreateAsync(StripeSourceCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

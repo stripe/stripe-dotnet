@@ -19,8 +19,6 @@ namespace Stripe
 
         public bool ExpandBusinessLogo { get; set; }
 
-
-
         public virtual StripeAccount Create(StripeAccountCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeAccount>.MapFromJson(
@@ -77,8 +75,6 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-
-
 
         public virtual async Task<StripeAccount> CreateAsync(StripeAccountCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

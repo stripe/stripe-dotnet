@@ -43,8 +43,6 @@ namespace Stripe
             return List(options, requestOptions);
         }
 
-
-
         [Obsolete("GetAsync with customerId is deprecated, use GetAsync without the customerId.")]
         public virtual Task<StripeSubscription> GetAsync(string customerId, string subscriptionId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

@@ -10,7 +10,6 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object => "payout";
 
-
         [JsonProperty("amount")]
         public int Amount { get; set; }
 

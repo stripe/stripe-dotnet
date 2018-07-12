@@ -24,8 +24,6 @@ namespace Stripe
 
         public bool ExpandFailureBalanceTransaction { get; set; }
 
-
-
         public virtual StripeRefund Create(string chargeId, StripeRefundCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeRefund>.MapFromJson(
@@ -63,8 +61,6 @@ namespace Stripe
                 )
             );
         }
-
-
 
         public virtual async Task<StripeRefund> CreateAsync(string chargeId, StripeRefundCreateOptions createOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

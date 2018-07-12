@@ -20,8 +20,6 @@ namespace Stripe
 
         public bool ExpandSource { get; set; }
 
-
-
         public virtual StripeBalance Get(StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeBalance>.MapFromJson(
@@ -44,7 +42,6 @@ namespace Stripe
                     SetupRequestOptions(requestOptions))
             );
         }
-
 
         public virtual async Task<StripeBalance> GetAsync(StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

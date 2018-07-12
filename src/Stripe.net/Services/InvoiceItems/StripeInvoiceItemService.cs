@@ -23,8 +23,6 @@ namespace Stripe
 
         public bool ExpandSubscription { get; set; }
 
-
-
         public virtual StripeInvoiceLineItem Create(StripeInvoiceItemCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
@@ -64,8 +62,6 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-
-
 
         public virtual async Task<StripeInvoiceLineItem> CreateAsync(StripeInvoiceItemCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

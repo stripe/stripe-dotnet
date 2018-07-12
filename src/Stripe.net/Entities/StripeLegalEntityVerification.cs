@@ -17,7 +17,6 @@ namespace Stripe
         [JsonIgnore]
         public StripeFileUpload Document { get; set; }
 
-
         [JsonProperty("document")]
         internal object InternalDocument
         {

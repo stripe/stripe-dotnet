@@ -20,8 +20,6 @@ namespace Stripe
 
         public bool ExpandProduct { get; set; }
 
-
-
         public virtual StripeSku Create(StripeSkuCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/skus", requestOptions, options);
@@ -46,8 +44,6 @@ namespace Stripe
         {
             return DeleteEntity($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions);
         }
-
-
 
         public virtual Task<StripeSku> CreateAsync(StripeSkuCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

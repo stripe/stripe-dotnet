@@ -17,8 +17,6 @@ namespace Stripe
         {
         }
 
-
-
         public virtual StripeSubscriptionItem Create(StripeSubscriptionItemCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/subscription_items", requestOptions, options);
@@ -43,8 +41,6 @@ namespace Stripe
         {
             return GetEntityList($"{Urls.BaseUrl}/subscription_items", requestOptions, options);
         }
-
-
 
         public virtual Task<StripeSubscriptionItem> CreateAsync(StripeSubscriptionItemCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

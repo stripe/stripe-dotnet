@@ -73,7 +73,6 @@ namespace Stripe.Infrastructure
             throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
 
-
         public static Task<StripeResponse> GetStringAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
@@ -118,8 +117,6 @@ namespace Stripe.Infrastructure
 
             throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
-
-
 
         private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions)
         {

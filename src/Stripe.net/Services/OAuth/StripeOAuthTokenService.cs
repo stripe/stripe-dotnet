@@ -16,8 +16,6 @@ namespace Stripe
         {
         }
 
-
-
         public virtual StripeOAuthToken Create(StripeOAuthTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeOAuthToken>.MapFromJson(
@@ -35,8 +33,6 @@ namespace Stripe
                 Requestor.PostString(url, SetupRequestOptions(requestOptions))
             );
         }
-
-
 
         public virtual async Task<StripeOAuthToken> CreateAsync(StripeOAuthTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

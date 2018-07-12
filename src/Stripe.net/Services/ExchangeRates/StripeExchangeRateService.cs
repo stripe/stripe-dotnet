@@ -17,8 +17,6 @@ namespace Stripe
         {
         }
 
-
-
         public virtual StripeExchangeRate Get(string currency, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeExchangeRate>.MapFromJson(
@@ -38,8 +36,6 @@ namespace Stripe
                 )
             );
         }
-
-
 
         public virtual async Task<StripeExchangeRate> GetAsync(string currency, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

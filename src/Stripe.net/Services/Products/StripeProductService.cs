@@ -18,8 +18,6 @@ namespace Stripe
         {
         }
 
-
-
         public virtual StripeProduct Create(StripeProductCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/products", requestOptions, options);
@@ -44,8 +42,6 @@ namespace Stripe
         {
             return DeleteEntity($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions);
         }
-
-
 
         public virtual Task<StripeProduct> CreateAsync(StripeProductCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

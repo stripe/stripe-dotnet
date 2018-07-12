@@ -17,8 +17,6 @@ namespace Stripe
         {
         }
 
-
-
         public virtual CountrySpec Get(string country, StripeRequestOptions requestOptions = null)
         {
             return Mapper<CountrySpec>.MapFromJson(
@@ -38,8 +36,6 @@ namespace Stripe
                 )
             );
         }
-
-
 
         public virtual async Task<CountrySpec> GetAsync(string country, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

@@ -16,7 +16,6 @@ namespace Stripe
         {
         }
 
-
         public bool ExpandApplication { get; set; }
 
         public bool ExpandApplicationFee { get; set; }
@@ -40,8 +39,6 @@ namespace Stripe
         public bool ExpandSourceTransfer { get; set; }
 
         public bool ExpandTransfer { get; set; }
-
-
 
         public virtual StripeCharge Create(StripeChargeCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
@@ -82,8 +79,6 @@ namespace Stripe
                 SetupRequestOptions(requestOptions))
             );
         }
-
-
 
         public virtual async Task<StripeCharge> CreateAsync(StripeChargeCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
