@@ -8,8 +8,13 @@ namespace Stripe
 {
     public class StripeRefundService : StripeService
     {
-        public StripeRefundService() : base(null) { }
-        public StripeRefundService(string apiKey) : base(apiKey) { }
+        public StripeRefundService() : base(null)
+        {
+        }
+
+        public StripeRefundService(string apiKey) : base(apiKey)
+        {
+        }
 
         public bool ExpandBalanceTransaction { get; set; }
         public bool ExpandCharge { get; set; }

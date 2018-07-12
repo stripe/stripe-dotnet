@@ -6,8 +6,13 @@ namespace Stripe
 {
     public class StripeSourceTransactionService : StripeBasicService<StripeSourceTransaction>
     {
-        public StripeSourceTransactionService() : base(null) { }
-        public StripeSourceTransactionService(string apiKey) : base(apiKey) { }
+        public StripeSourceTransactionService() : base(null)
+        {
+        }
+
+        public StripeSourceTransactionService(string apiKey) : base(apiKey)
+        {
+        }
 
 
 

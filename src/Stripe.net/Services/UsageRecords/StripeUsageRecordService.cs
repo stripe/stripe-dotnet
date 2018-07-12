@@ -7,8 +7,13 @@ namespace Stripe
 {
     public class StripeUsageRecordService : StripeBasicService<StripeUsageRecord>
     {
-        public StripeUsageRecordService() : base(null) { }
-        public StripeUsageRecordService(string apiKey) : base(apiKey) { }
+        public StripeUsageRecordService() : base(null)
+        {
+        }
+
+        public StripeUsageRecordService(string apiKey) : base(apiKey)
+        {
+        }
 
         public virtual StripeUsageRecord Create(StripeUsageRecordCreateOptions options, StripeRequestOptions requestOptions = null)
         {

@@ -7,8 +7,13 @@ namespace Stripe
 {
     public class StripeInvoiceItemService : StripeService
     {
-        public StripeInvoiceItemService() : base(null) { }
-        public StripeInvoiceItemService(string apiKey) : base(apiKey) { }
+        public StripeInvoiceItemService() : base(null)
+        {
+        }
+
+        public StripeInvoiceItemService(string apiKey) : base(apiKey)
+        {
+        }
 
         public bool ExpandCustomer { get; set; }
         public bool ExpandInvoice { get; set; }

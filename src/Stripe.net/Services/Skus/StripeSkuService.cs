@@ -8,8 +8,13 @@ namespace Stripe
 {
     public class StripeSkuService : StripeBasicService<StripeSku>
     {
-        public StripeSkuService() : base(null) { }
-        public StripeSkuService(string apiKey) : base(apiKey) { }
+        public StripeSkuService() : base(null)
+        {
+        }
+
+        public StripeSkuService(string apiKey) : base(apiKey)
+        {
+        }
 
         public bool ExpandProduct { get; set; }
 

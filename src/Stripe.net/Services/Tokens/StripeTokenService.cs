@@ -6,8 +6,13 @@ namespace Stripe
 {
     public class StripeTokenService : StripeService
     {
-        public StripeTokenService() : base(null) { }
-        public StripeTokenService(string apiKey) : base(apiKey) { }
+        public StripeTokenService() : base(null)
+        {
+        }
+
+        public StripeTokenService(string apiKey) : base(apiKey)
+        {
+        }
 
 
 

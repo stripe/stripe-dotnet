@@ -8,8 +8,13 @@ namespace Stripe
     [Obsolete("Use the StripeSourceService instead.")]
     public class Stripe3DSecureService : StripeBasicService<Stripe3DSecure>
     {
-        public Stripe3DSecureService() : base(null) { }
-        public Stripe3DSecureService(string apiKey) : base(apiKey) { }
+        public Stripe3DSecureService() : base(null)
+        {
+        }
+
+        public Stripe3DSecureService(string apiKey) : base(apiKey)
+        {
+        }
 
 
 

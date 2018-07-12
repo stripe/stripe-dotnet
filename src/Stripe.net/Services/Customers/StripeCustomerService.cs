@@ -8,8 +8,13 @@ namespace Stripe
 {
     public class StripeCustomerService : StripeService
     {
-        public StripeCustomerService() : base(null) { }
-        public StripeCustomerService(string apiKey) : base(apiKey) { }
+        public StripeCustomerService() : base(null)
+        {
+        }
+
+        public StripeCustomerService(string apiKey) : base(apiKey)
+        {
+        }
 
         public bool ExpandDefaultSource { get; set; }
         public bool ExpandDefaultCustomerBankAccount { get; set; }

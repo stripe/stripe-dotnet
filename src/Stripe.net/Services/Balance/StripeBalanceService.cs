@@ -8,8 +8,13 @@ namespace Stripe
 {
     public class StripeBalanceService : StripeService
     {
-        public StripeBalanceService() : base(null) { }
-        public StripeBalanceService(string apiKey) : base(apiKey) { }
+        public StripeBalanceService() : base(null)
+        {
+        }
+
+        public StripeBalanceService(string apiKey) : base(apiKey)
+        {
+        }
 
         public bool ExpandSource { get; set; }
 

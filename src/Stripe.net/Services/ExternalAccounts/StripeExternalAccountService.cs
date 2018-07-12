@@ -7,8 +7,13 @@ namespace Stripe
 {
     public class StripeExternalAccountService : StripeBasicService<StripeExternalAccount>
     {
-        public StripeExternalAccountService() : base(null) { }
-        public StripeExternalAccountService(string apiKey) : base(apiKey) { }
+        public StripeExternalAccountService() : base(null)
+        {
+        }
+
+        public StripeExternalAccountService(string apiKey) : base(apiKey)
+        {
+        }
 
 
 

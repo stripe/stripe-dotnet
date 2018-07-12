@@ -7,8 +7,13 @@ namespace Stripe
 {
     public class StripeLoginLinkService : StripeBasicService<StripeLoginLink>
     {
-        public StripeLoginLinkService() : base(null) { }
-        public StripeLoginLinkService(string apiKey) : base(apiKey) { }
+        public StripeLoginLinkService() : base(null)
+        {
+        }
+
+        public StripeLoginLinkService(string apiKey) : base(apiKey)
+        {
+        }
 
 
 
