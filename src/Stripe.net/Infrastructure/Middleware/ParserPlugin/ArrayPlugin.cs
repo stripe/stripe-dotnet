@@ -12,7 +12,10 @@ namespace Stripe.Infrastructure.Middleware
         {
             // Check if the property is an array
             var type = property.PropertyType;
-            if (!type.GetTypeInfo().IsArray) return false;
+            if (!type.GetTypeInfo().IsArray)
+            {
+                return false;
+            }
 
             var values = ((IEnumerable) propertyValue).Cast<object>().Select(x => x.ToString()).ToArray();
 

@@ -51,7 +51,7 @@ namespace Stripe
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
-        
+
         [JsonProperty("payout_statement_descriptor")]
         public string PayoutStatementDescriptor { get; set; }
 
@@ -73,7 +73,10 @@ namespace Stripe
         {
             get
             {
-                if (!TosAcceptanceDate.HasValue) return null;
+                if (!TosAcceptanceDate.HasValue)
+                {
+                    return null;
+                }
 
                 return EpochTime.ConvertDateTimeToEpoch(TosAcceptanceDate.Value);
             }

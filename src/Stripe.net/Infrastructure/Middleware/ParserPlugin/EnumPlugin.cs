@@ -14,7 +14,11 @@ namespace Stripe.Infrastructure.Middleware
             {
                 type = Nullable.GetUnderlyingType(type);
             }
-            if (!type.GetTypeInfo().IsEnum) return false;
+
+            if (!type.GetTypeInfo().IsEnum)
+            {
+                return false;
+            }
 
             // Use JsonConvert to grab the EnumMemberAttribute's Value for the enum element
             string value = JsonConvert.SerializeObject(propertyValue).Trim('"');

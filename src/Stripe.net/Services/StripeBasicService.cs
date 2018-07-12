@@ -101,7 +101,5 @@ namespace Stripe
                 ).ConfigureAwait(false)
              );
         }
-
-
     }
 }

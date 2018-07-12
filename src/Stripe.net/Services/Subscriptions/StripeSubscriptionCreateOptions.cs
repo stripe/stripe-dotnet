@@ -17,7 +17,10 @@ namespace Stripe
         {
             get
             {
-                if (!BillingCycleAnchor.HasValue) return null;
+                if (!BillingCycleAnchor.HasValue)
+                {
+                    return null;
+                }
 
                 return EpochTime.ConvertDateTimeToEpoch(BillingCycleAnchor.Value);
             }

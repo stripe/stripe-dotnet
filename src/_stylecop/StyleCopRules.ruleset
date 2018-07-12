@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Rules for StyleCop.Analyzers" Description="Code analysis rules for Stripe.net" ToolsVersion="14.0">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA1200" Action="None" />
+    <Rule Id="SA1101" Action="None" />
+    <Rule Id="SA1652" Action="None" />
+    <Rule Id="SA1633" Action="None" />
+    <Rule Id="SA1009" Action="None" />
+    <Rule Id="SA1111" Action="None" />
+    <Rule Id="SA1116" Action="None" />
+    <Rule Id="SA1202" Action="None" />
+    <Rule Id="SA1507" Action="None" />
+    <Rule Id="SA1516" Action="None" />
+    <Rule Id="SA1124" Action="None" />
+    <Rule Id="SA1128" Action="None" />
+    <Rule Id="SA1502" Action="None" />
+    <Rule Id="SA1503" Action="None" />
+    <Rule Id="SA1005" Action="None" />
+    <Rule Id="SA1028" Action="None" />
+    <Rule Id="SA1515" Action="None" />
+    <Rule Id="SA1208" Action="None" />
+    <Rule Id="SA1500" Action="None" />
+    <Rule Id="SA1027" Action="None" />
+    <Rule Id="SA1201" Action="None" />
+    <Rule Id="SA1003" Action="None" />
+    <Rule Id="SA1300" Action="None" />
+    <Rule Id="SA1210" Action="None" />
+    <Rule Id="SA1649" Action="None" />
+    <Rule Id="SA1513" Action="None" />
+    <Rule Id="SA1512" Action="None" />
+    <Rule Id="SA1309" Action="None" />
+    <Rule Id="SA1401" Action="None" />
+  </Rules>
+</RuleSet>

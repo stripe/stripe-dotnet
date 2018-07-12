@@ -41,7 +41,10 @@ namespace Stripe
         {
             get
             {
-                if (!RedeemBy.HasValue) return null;
+                if (!RedeemBy.HasValue)
+                {
+                    return null;
+                }
 
                 return EpochTime.ConvertDateTimeToEpoch(RedeemBy.Value);
             }

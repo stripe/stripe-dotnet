@@ -66,7 +66,10 @@ namespace Stripe.Infrastructure
 
             var result = BuildResponseData(response, responseText);
 
-            if (response.IsSuccessStatusCode) return result;
+            if (response.IsSuccessStatusCode)
+            {
+                return result;
+            }
 
             throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
@@ -195,7 +198,7 @@ namespace Stripe.Infrastructure
             fileContent.Headers.ContentType = new MediaTypeHeaderValue(MimeTypes.GetMimeType(fileName));
 
             var multiPartContent =
-                new MultipartFormDataContent($"----------Upload:{ DateTime.UtcNow.Ticks :x}")
+                new MultipartFormDataContent($"----------Upload:{DateTime.UtcNow.Ticks :x}")
                 {
                     { new StringContent(purpose), "\"purpose\"" },
                     fileContent

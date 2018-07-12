@@ -44,7 +44,10 @@ namespace Stripe
 
         private static void applyStripeResponse(string json, StripeResponse stripeResponse, object obj)
         {
-            if (stripeResponse == null) return;
+            if (stripeResponse == null)
+            {
+                return;
+            }
 
             foreach (var property in obj.GetType().GetRuntimeProperties())
             {

@@ -17,7 +17,7 @@ namespace Stripe
         {
             return Mapper<StripeEvent>.MapFromJson(json);
         }
-        
+
         public static T ParseEventDataItem<T>(dynamic dataItem)
         {
             return JsonConvert.DeserializeObject<T>((dataItem as JObject).ToString());
@@ -74,13 +74,16 @@ namespace Stripe
             using (var cryptographer = new HMACSHA256(secretBytes))
             {
                 var hash = cryptographer.ComputeHash(payloadBytes);
-                return BitConverter.ToString(hash).Replace("-", "").ToLower();
-            }      
+                return BitConverter.ToString(hash).Replace("-", string.Empty).ToLower();
+            }
         }
 
         private static bool secureCompare(string a, string b)
         {
-            if (a.Length != b.Length) return false;
+            if (a.Length != b.Length)
+            {
+                return false;
+            }
 
             var result = 0;
 

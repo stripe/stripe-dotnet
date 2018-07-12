@@ -28,7 +28,10 @@ namespace Stripe
         {
             get
             {
-                if (!ProrationDate.HasValue) return null;
+                if (!ProrationDate.HasValue)
+                {
+                    return null;
+                }
 
                 return ProrationDate.Value.ConvertDateTimeToEpoch();
             }

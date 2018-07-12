@@ -12,7 +12,6 @@ namespace Stripe
 
         public class UpToInf : UpToOption
         {
-
         }
 
         public class UpToBound : UpToOption

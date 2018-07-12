@@ -132,7 +132,8 @@ namespace Stripe
             var url = SetupUrl(customerOrRecipientId, isRecipient, cardId);
 
             return Mapper<StripeDeleted>.MapFromJson(
-                await Requestor.DeleteAsync(url, 
+                await Requestor.DeleteAsync(
+                    url,
                     SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false)
                 );
@@ -162,7 +163,7 @@ namespace Stripe
             if (isRecipient)
                 urlParams = string.Format(Urls.RecipientCards, customerOrRecipientId);
 
-            if (!String.IsNullOrEmpty(cardId))
+            if (!string.IsNullOrEmpty(cardId))
                 return string.Format("{0}/{1}", urlParams, cardId);
 
             return urlParams;

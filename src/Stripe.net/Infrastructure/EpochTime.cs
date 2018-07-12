@@ -13,7 +13,10 @@ namespace Stripe.Infrastructure
 
         public static long ConvertDateTimeToEpoch(this DateTime datetime)
         {
-            if (datetime < _epochStartDateTime) return 0;
+            if (datetime < _epochStartDateTime)
+            {
+                return 0;
+            }
 
             return Convert.ToInt64((datetime.ToUniversalTime() - _epochStartDateTime).TotalSeconds);
         }

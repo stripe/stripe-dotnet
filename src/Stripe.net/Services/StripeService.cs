@@ -11,7 +11,10 @@
 
         protected StripeRequestOptions SetupRequestOptions(StripeRequestOptions requestOptions)
         {
-            if(requestOptions == null) requestOptions = new StripeRequestOptions();
+            if (requestOptions == null)
+            {
+                requestOptions = new StripeRequestOptions();
+            }
 
             if (!string.IsNullOrEmpty(ApiKey))
                 requestOptions.ApiKey = ApiKey;

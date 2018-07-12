@@ -12,8 +12,15 @@ namespace Stripe.Infrastructure.Middleware
         {
             // Check if the property is a Dictionary
             var type = property.PropertyType;
-            if (!type.GetTypeInfo().IsGenericType) return false;
-            if (type.GetTypeInfo().GetGenericTypeDefinition() != typeof(Dictionary<,>)) return false;
+            if (!type.GetTypeInfo().IsGenericType)
+            {
+                return false;
+            }
+
+            if (type.GetTypeInfo().GetGenericTypeDefinition() != typeof(Dictionary<,>))
+            {
+                return false;
+            }
 
             // Ensure that key and value types are both string
             var keyType = type.GetTypeInfo().GenericTypeArguments[0];
@@ -25,7 +32,10 @@ namespace Stripe.Infrastructure.Middleware
                 throw new System.ArgumentException($"Expected {typeof(string).ToString()} as dictionary value type, got {valueType.ToString()}");
 
             var dictionary = (Dictionary<string, string>) propertyValue;
-            if (dictionary == null) return true;
+            if (dictionary == null)
+            {
+                return true;
+            }
 
             foreach (var key in dictionary.Keys)
                 RequestStringBuilder.ApplyParameterToRequestString(ref requestString, $"{attribute.PropertyName}[{WebUtility.UrlEncode(key)}]", dictionary[key]);

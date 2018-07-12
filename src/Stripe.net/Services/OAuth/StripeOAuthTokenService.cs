@@ -48,8 +48,10 @@ namespace Stripe
             url = ParameterBuilder.ApplyParameterToUrl(url, "stripe_user_id", stripeUserId);
 
             return Mapper<StripeOAuthDeauthorize>.MapFromJson(
-                await Requestor.PostStringAsync(url, SetupRequestOptions(requestOptions),
-                cancellationToken).ConfigureAwait(false)
+                await Requestor.PostStringAsync(
+                    url,
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken).ConfigureAwait(false)
             );
         }
     }

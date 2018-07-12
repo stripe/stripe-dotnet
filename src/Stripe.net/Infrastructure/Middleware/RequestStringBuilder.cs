@@ -12,7 +12,10 @@ namespace Stripe.Infrastructure.Middleware
 
         static RequestStringBuilder()
         {
-            if (ParserPlugins != null) return;
+            if (ParserPlugins != null)
+            {
+                return;
+            }
 
             // use reflection so this works on the bin directory?
             ParserPlugins = new List<IParserPlugin>
@@ -31,7 +34,7 @@ namespace Stripe.Infrastructure.Middleware
 
             foreach (var plugin in ParserPlugins)
             {
-                if(!parsedParameter)
+                if (!parsedParameter)
                     parsedParameter = plugin.Parse(ref requestString, attribute, property, propertyValue, propertyParent);
             }
 

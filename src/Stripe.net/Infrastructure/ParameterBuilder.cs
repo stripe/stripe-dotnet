@@ -23,7 +23,10 @@ namespace Stripe.Infrastructure
                 foreach (var property in obj.GetType().GetRuntimeProperties())
                 {
                     var value = property.GetValue(obj, null);
-                    if (value == null) continue;
+                    if (value == null)
+                    {
+                        continue;
+                    }
 
                     foreach (var attribute in property.GetCustomAttributes<JsonPropertyAttribute>())
                     {
@@ -88,7 +91,10 @@ namespace Stripe.Infrastructure
             foreach (var property in nestedObject.GetType().GetRuntimeProperties())
             {
                 var value = property.GetValue(nestedObject, null);
-                if (value == null) continue;
+                if (value == null)
+                {
+                    continue;
+                }
 
                 foreach (var attribute in property.GetCustomAttributes<JsonPropertyAttribute>())
                     RequestStringBuilder.ProcessPlugins(ref requestString, attribute, property, value, nestedObject);
