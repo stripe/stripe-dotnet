@@ -23,8 +23,13 @@
     <Rule Id="SA1027" Action="None" />
     <Rule Id="SA1201" Action="None" />
     <Rule Id="SA1003" Action="None" />
-    <Rule Id="SA1300" Action="None" />
     <Rule Id="SA1512" Action="None" />
     <Rule Id="SA1401" Action="None" />
+
+    <!--
+      Keep this rule disabled as it affects `image` on SKU.
+      Fixing it would be a breaking change.
+    -->
+    <Rule Id="SA1300" Action="None" />
   </Rules>
 </RuleSet>
