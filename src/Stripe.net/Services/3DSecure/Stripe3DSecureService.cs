@@ -13,7 +13,6 @@ namespace Stripe
 
 
 
-        // Sync
         public virtual Stripe3DSecure Create(Stripe3DSecureCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/3d_secure", requestOptions, createOptions);
@@ -21,7 +20,6 @@ namespace Stripe
 
 
 
-        // Async
         public virtual Task<Stripe3DSecure> CreateAsync(Stripe3DSecureCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return PostAsync($"{Urls.BaseUrl}/3d_secure", requestOptions, cancellationToken, createOptions);

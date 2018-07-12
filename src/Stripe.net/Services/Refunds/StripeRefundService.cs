@@ -17,7 +17,6 @@ namespace Stripe
 
 
 
-        //Sync
         public virtual StripeRefund Create(string chargeId, StripeRefundCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeRefund>.MapFromJson(
@@ -58,7 +57,6 @@ namespace Stripe
 
 
 
-        //Async
         public virtual async Task<StripeRefund> CreateAsync(string chargeId, StripeRefundCreateOptions createOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeRefund>.MapFromJson(

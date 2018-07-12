@@ -16,7 +16,6 @@ namespace Stripe
 
 
 
-        //Sync
         public virtual StripeInvoice Get(string invoiceId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeInvoice>.MapFromJson(
@@ -89,7 +88,6 @@ namespace Stripe
 
 
 
-        //Async
         public virtual async Task<StripeInvoice> GetAsync(string invoiceId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeInvoice>.MapFromJson(

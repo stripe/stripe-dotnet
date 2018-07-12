@@ -14,7 +14,6 @@ namespace Stripe
 
 
 
-        //Sync
         public virtual StripeAccount Create(StripeAccountCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeAccount>.MapFromJson(
@@ -74,7 +73,6 @@ namespace Stripe
 
 
 
-        //Async
         public virtual async Task<StripeAccount> CreateAsync(StripeAccountCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeAccount>.MapFromJson(

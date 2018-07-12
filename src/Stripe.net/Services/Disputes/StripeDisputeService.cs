@@ -15,7 +15,6 @@ namespace Stripe
 
 
 
-        // Sync
         public virtual StripeDispute Get(string disputeId, StripeRequestOptions requestOptions = null)
         {
             return GetEntity($"{Urls.Disputes}/{disputeId}", requestOptions);
@@ -38,7 +37,6 @@ namespace Stripe
 
 
 
-        // Async
         public virtual Task<StripeDispute> GetAsync(string disputeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return GetEntityAsync($"{Urls.Disputes}/{disputeId}", requestOptions, cancellationToken);

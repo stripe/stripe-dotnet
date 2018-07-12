@@ -16,7 +16,6 @@ namespace Stripe
 
 
 
-        // Sync
         public virtual StripePayout Create(StripePayoutCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/payouts", requestOptions, options);
@@ -44,7 +43,6 @@ namespace Stripe
 
 
 
-        // Async
         public virtual Task<StripePayout> CreateAsync(StripePayoutCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return PostAsync($"{Urls.BaseUrl}/payouts", requestOptions, cancellationToken, options);

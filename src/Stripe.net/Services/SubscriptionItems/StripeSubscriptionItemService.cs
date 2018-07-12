@@ -12,7 +12,6 @@ namespace Stripe
 
 
 
-        // Sync
         public virtual StripeSubscriptionItem Create(StripeSubscriptionItemCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/subscription_items", requestOptions, options);
@@ -40,7 +39,6 @@ namespace Stripe
 
 
 
-        // Async
         public virtual Task<StripeSubscriptionItem> CreateAsync(StripeSubscriptionItemCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return PostAsync($"{Urls.BaseUrl}/subscription_items", requestOptions, cancellationToken, options);

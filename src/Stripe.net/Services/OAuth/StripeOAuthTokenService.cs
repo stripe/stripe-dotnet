@@ -11,7 +11,6 @@ namespace Stripe
 
 
 
-        //Sync
         public virtual StripeOAuthToken Create(StripeOAuthTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeOAuthToken>.MapFromJson(
@@ -32,7 +31,6 @@ namespace Stripe
 
 
 
-        //Async
         public virtual async Task<StripeOAuthToken> CreateAsync(StripeOAuthTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeOAuthToken>.MapFromJson(

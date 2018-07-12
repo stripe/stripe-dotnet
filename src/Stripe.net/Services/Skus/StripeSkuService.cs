@@ -15,7 +15,6 @@ namespace Stripe
 
 
 
-        // Sync
         public virtual StripeSku Create(StripeSkuCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/skus", requestOptions, options);
@@ -43,7 +42,6 @@ namespace Stripe
 
 
 
-        // Async
         public virtual Task<StripeSku> CreateAsync(StripeSkuCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return PostAsync($"{Urls.BaseUrl}/skus", requestOptions, cancellationToken, options);

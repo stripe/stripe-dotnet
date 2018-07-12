@@ -16,7 +16,6 @@ namespace Stripe
 
 
 
-        //Sync
         public virtual StripeInvoiceLineItem Create(StripeInvoiceItemCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
@@ -59,7 +58,6 @@ namespace Stripe
 
 
 
-        //Async
         public virtual async Task<StripeInvoiceLineItem> CreateAsync(StripeInvoiceItemCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeInvoiceLineItem>.MapFromJson(

@@ -14,7 +14,6 @@ namespace Stripe
 
 
 
-        //Sync
         public virtual StripeSubscription Get(string subscriptionId, StripeRequestOptions requestOptions = null)
         {
             var url = string.Format(Urls.Subscriptions + "/{0}", subscriptionId);
@@ -80,7 +79,6 @@ namespace Stripe
 
 
 
-        //Async
         public virtual async Task<StripeSubscription> GetAsync(string subscriptionId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = string.Format(Urls.Subscriptions + "/{0}", subscriptionId);

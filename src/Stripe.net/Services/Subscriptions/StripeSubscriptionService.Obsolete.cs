@@ -7,7 +7,6 @@ namespace Stripe
 {
     public partial class StripeSubscriptionService
     {
-        //Sync
         [Obsolete("Get with customerId is deprecated, use Get without the customerId.")]
         public virtual StripeSubscription Get(string customerId, string subscriptionId, StripeRequestOptions requestOptions = null)
         {
@@ -46,7 +45,6 @@ namespace Stripe
 
 
 
-        //Async
         [Obsolete("GetAsync with customerId is deprecated, use GetAsync without the customerId.")]
         public virtual Task<StripeSubscription> GetAsync(string customerId, string subscriptionId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {

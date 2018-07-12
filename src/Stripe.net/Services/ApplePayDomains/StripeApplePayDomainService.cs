@@ -12,7 +12,6 @@ namespace Stripe
 
 
 
-        // Sync
         public virtual StripeApplePayDomain Create(StripeApplePayDomainCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/apple_pay/domains", requestOptions, options);
@@ -35,7 +34,6 @@ namespace Stripe
 
 
 
-        // Async
         public virtual Task<StripeApplePayDomain> CreateAsync(StripeApplePayDomainCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return PostAsync($"{Urls.BaseUrl}/apple_pay/domains", requestOptions, cancellationToken, options);

@@ -13,7 +13,6 @@ namespace Stripe
 
 
 
-        // Sync
         public virtual StripeProduct Create(StripeProductCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/products", requestOptions, options);
@@ -41,7 +40,6 @@ namespace Stripe
 
 
 
-        // Async
         public virtual Task<StripeProduct> CreateAsync(StripeProductCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return PostAsync($"{Urls.BaseUrl}/products", requestOptions, cancellationToken, options);

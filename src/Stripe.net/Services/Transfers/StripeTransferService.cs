@@ -17,7 +17,6 @@ namespace Stripe
 
 
 
-        //Sync
         public virtual StripeTransfer Create(StripeTransferCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/transfers", requestOptions, options);
@@ -40,7 +39,6 @@ namespace Stripe
 
 
 
-        // Async
         public virtual Task<StripeTransfer> CreateAsync(StripeTransferCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return PostAsync($"{Urls.BaseUrl}/transfers", requestOptions, cancellationToken, options);

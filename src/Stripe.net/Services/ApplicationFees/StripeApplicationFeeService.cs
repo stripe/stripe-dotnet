@@ -18,7 +18,6 @@ namespace Stripe
 
 
 
-        //Sync
         public virtual StripeApplicationFee Get(string applicationFeeId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeApplicationFee>.MapFromJson(
@@ -49,7 +48,6 @@ namespace Stripe
 
 
 
-        //Async
         public virtual async Task<StripeApplicationFee> GetAsync(string applicationFeeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeApplicationFee>.MapFromJson(

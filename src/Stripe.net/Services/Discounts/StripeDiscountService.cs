@@ -11,7 +11,6 @@ namespace Stripe
 
 
 
-        // Sync
         public virtual StripeDeleted DeleteCustomerDiscount(string customerId, StripeRequestOptions requestOptions = null)
         {
             return DeleteEntity($"{Urls.BaseUrl}/customers/{customerId}/discount", requestOptions);
@@ -24,7 +23,6 @@ namespace Stripe
 
 
 
-        // Async
         public virtual Task<StripeDeleted> DeleteCustomerDiscountAsync(string customerId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return DeleteEntityAsync($"{Urls.BaseUrl}/customers/{customerId}/discount", requestOptions, cancellationToken);

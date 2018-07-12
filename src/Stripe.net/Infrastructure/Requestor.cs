@@ -26,7 +26,6 @@ namespace Stripe.Infrastructure
 
         internal static HttpClient HttpClient { get; private set; }
 
-        // Sync
         public static StripeResponse GetString(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
@@ -73,7 +72,6 @@ namespace Stripe.Infrastructure
         }
 
 
-        // Async
         public static Task<StripeResponse> GetStringAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);

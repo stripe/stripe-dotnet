@@ -15,7 +15,6 @@ namespace Stripe
 
 
 
-        //Sync
         public virtual StripeTransferReversal Create(string transferId, StripeTransferReversalCreateOptions options = null, StripeRequestOptions requestOptions = null)
         {
             return Post($"{Urls.BaseUrl}/transfers/{transferId}/reversals", requestOptions, options);
@@ -38,7 +37,6 @@ namespace Stripe
 
 
 
-        // Async
         public virtual Task<StripeTransferReversal> CreateAsync(string transferId, StripeTransferReversalCreateOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return PostAsync($"{Urls.BaseUrl}/transfers/{transferId}/reversals", requestOptions, cancellationToken, options);

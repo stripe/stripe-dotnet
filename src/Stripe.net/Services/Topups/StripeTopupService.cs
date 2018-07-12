@@ -12,7 +12,6 @@ namespace Stripe
         public bool ExpandSource { get; set; }
 
 
-        //Sync
         public virtual StripeTopup Create(StripeTopupCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeTopup>.MapFromJson(
@@ -46,7 +45,6 @@ namespace Stripe
         }
 
 
-        //Async
         public virtual async Task<StripeTopup> CreateAsync(StripeTopupCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeTopup>.MapFromJson(

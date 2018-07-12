@@ -14,7 +14,6 @@ namespace Stripe
         // this will replace StripeService altogether some day and steal it's name, but for now
         // it allows us to refactor slowly and build new services easier.
 
-        // Sync
         public EntityReturned GetEntity(string url, StripeRequestOptions requestOptions, StripeBaseOptions options = null)
         {
             return Mapper<EntityReturned>.MapFromJson(
@@ -57,7 +56,6 @@ namespace Stripe
 
 
 
-        // Async
         public virtual async Task<EntityReturned> GetEntityAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken, StripeBaseOptions options = null)
         {
             return Mapper<EntityReturned>.MapFromJson(

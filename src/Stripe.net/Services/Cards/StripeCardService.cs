@@ -16,7 +16,6 @@ namespace Stripe
 
 
 
-        //Sync
         public virtual StripeCard Create(string customerId, StripeCardCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             var url = SetupUrl(customerId, false);
@@ -83,7 +82,6 @@ namespace Stripe
 
 
 
-        //Async
         public virtual async Task<StripeCard> CreateAsync(string customerId, StripeCardCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = SetupUrl(customerId, false);

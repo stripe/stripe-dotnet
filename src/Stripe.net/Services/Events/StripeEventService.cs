@@ -12,7 +12,6 @@ namespace Stripe
 
 
 
-        //Sync
         public virtual StripeEvent Get(string eventId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeEvent>.MapFromJson(
@@ -31,7 +30,6 @@ namespace Stripe
 
 
 
-        //Async
         public virtual async Task<StripeEvent> GetAsync(string eventId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeEvent>.MapFromJson(

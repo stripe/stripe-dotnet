@@ -15,7 +15,6 @@ namespace Stripe
 
 
 
-        //Sync
         public virtual StripeBalance Get(StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeBalance>.MapFromJson(
@@ -40,7 +39,6 @@ namespace Stripe
         }
 
 
-        //Async
         public virtual async Task<StripeBalance> GetAsync(StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeBalance>.MapFromJson(
