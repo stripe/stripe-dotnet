@@ -8,16 +8,19 @@
     <Rule Id="SA1009" Action="None" />
     <Rule Id="SA1111" Action="None" />
     <Rule Id="SA1116" Action="None" />
-    <Rule Id="SA1202" Action="None" />
 
     <Rule Id="SA1512" Action="None" />
     <Rule Id="SA1401" Action="None" />
 
 
     <!--
-      Keep this rule disabled as we actively use region in the code
+      Keep those rules disabled as we actively use region in the code
+       - SA1124: DoNotUseRegions
+       - SA1202: ElementsMustBeOrderedByAccess
+      If we keep regions we can't do the latter as we have internal in the middle
     -->
     <Rule Id="SA1124" Action="None" />
+    <Rule Id="SA1202" Action="None" />
 
     <!--
       Keep this rule disabled as it affects `image` on SKU.
