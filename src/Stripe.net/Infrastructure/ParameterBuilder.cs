@@ -42,6 +42,7 @@ namespace Stripe.Infrastructure
                     var key = WebUtility.UrlEncode(pair.Key);
                     RequestStringBuilder.ApplyParameterToRequestString(ref requestString, key, pair.Value);
                 }
+
                 foreach (var value in obj.Expand) {
                     RequestStringBuilder.ApplyParameterToRequestString(ref requestString, "expand[]", value);
                 }

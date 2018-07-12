@@ -50,6 +50,7 @@ namespace Stripe
             {
                 apiBase = Urls.DefaultBaseUrl;
             }
+
             return apiBase;
         }
 
@@ -64,6 +65,7 @@ namespace Stripe
             {
                 uploadsBase = Urls.DefaultBaseUploadsUrl;
             }
+
             return uploadsBase;
         }
 
@@ -78,6 +80,7 @@ namespace Stripe
             {
                 connectBase = Urls.DefaultBaseConnectUrl;
             }
+
             return connectBase;
         }
 
