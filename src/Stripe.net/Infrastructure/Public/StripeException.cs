@@ -5,12 +5,8 @@ namespace Stripe
 {
     public class StripeException : Exception
     {
-        public HttpStatusCode HttpStatusCode { get; set; }
-        public StripeError StripeError { get; set; }
-        public StripeResponse StripeResponse { get; set; }
-
-        public StripeException() 
-        { 
+        public StripeException()
+        {
         }
 
         public StripeException(string message) : base(message)
@@ -26,5 +22,9 @@ namespace Stripe
             HttpStatusCode = httpStatusCode;
             StripeError = stripeError;
         }
+
+        public HttpStatusCode HttpStatusCode { get; set; }
+        public StripeError StripeError { get; set; }
+        public StripeResponse StripeResponse { get; set; }
     }
 }

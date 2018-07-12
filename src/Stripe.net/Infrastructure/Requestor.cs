@@ -13,8 +13,6 @@ namespace Stripe.Infrastructure
 {
     internal static class Requestor
     {
-        internal static HttpClient HttpClient { get; private set; }
-
         static Requestor()
         {
             HttpClient =
@@ -26,7 +24,7 @@ namespace Stripe.Infrastructure
                 HttpClient.Timeout = StripeConfiguration.HttpTimeSpan.Value;
         }
 
-
+        internal static HttpClient HttpClient { get; private set; }
 
         // Sync
         public static StripeResponse GetString(string url, StripeRequestOptions requestOptions)

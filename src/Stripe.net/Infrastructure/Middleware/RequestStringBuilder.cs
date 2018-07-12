@@ -8,8 +8,6 @@ namespace Stripe.Infrastructure.Middleware
 {
     public static class RequestStringBuilder
     {
-        private static IEnumerable<IParserPlugin> ParserPlugins { get; }
-
         static RequestStringBuilder()
         {
             if (ParserPlugins != null)
@@ -27,6 +25,8 @@ namespace Stripe.Infrastructure.Middleware
                 new ListPlugin(),
             };
         }
+
+        private static IEnumerable<IParserPlugin> ParserPlugins { get; }
 
         internal static void ProcessPlugins(ref string requestString, JsonPropertyAttribute attribute, PropertyInfo property, object propertyValue, object propertyParent)
         {

@@ -14,12 +14,12 @@ namespace Stripe.Infrastructure
 {
     internal class Client
     {
-        private HttpRequestMessage RequestMessage { get; set; }
-
         public Client(HttpRequestMessage requestMessage)
         {
             RequestMessage = requestMessage;
         }
+
+        private HttpRequestMessage RequestMessage { get; set; }
 
         public void ApplyUserAgent()
         {

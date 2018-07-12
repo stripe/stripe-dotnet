@@ -2,12 +2,12 @@
 {
     public abstract class StripeService
     {
-        public string ApiKey { get; set; }
-
         protected StripeService(string apiKey)
         {
             ApiKey = apiKey;
         }
+
+        public string ApiKey { get; set; }
 
         protected StripeRequestOptions SetupRequestOptions(StripeRequestOptions requestOptions)
         {

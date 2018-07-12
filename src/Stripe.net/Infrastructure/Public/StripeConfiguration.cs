@@ -8,14 +8,6 @@ namespace Stripe
     public static class StripeConfiguration
     {
         public static string StripeApiVersion = "2018-02-06";
-        public static string StripeNetVersion { get; }
-
-        /// <summary>
-        /// This option allows you to provide your own HttpMessageHandler. Useful with Android/iPhone.
-        /// </summary>
-        public static HttpMessageHandler HttpMessageHandler { get; set; }
-
-        public static TimeSpan? HttpTimeSpan { get; set; }
 
         private static string apiKey;
         private static string apiBase;
@@ -26,6 +18,16 @@ namespace Stripe
         {
             StripeNetVersion = new AssemblyName(typeof(Requestor).GetTypeInfo().Assembly.FullName).Version.ToString(3);
         }
+
+        public static string StripeNetVersion { get; }
+
+        /// <summary>
+        /// This option allows you to provide your own HttpMessageHandler. Useful with Android/iPhone.
+        /// </summary>
+        public static HttpMessageHandler HttpMessageHandler { get; set; }
+
+        public static TimeSpan? HttpTimeSpan { get; set; }
+
 
         internal static string GetApiKey()
         {
