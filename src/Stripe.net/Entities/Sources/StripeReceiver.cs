@@ -28,4 +28,4 @@ namespace Stripe
         [JsonProperty("amount_returned")]
         public int AmountReturned { get; set; }
     }
-} 
+}

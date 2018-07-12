@@ -14,7 +14,7 @@ namespace Stripe
 
         [JsonProperty("authenticated")]
         public bool Authenticated { get; set; }
-        
+
         [JsonProperty("card")]
         public StripeCard Card { get; set; }
 

@@ -30,7 +30,7 @@ namespace Stripe
 
         [JsonProperty("funding")]
         public string Funding { get; set; }
-        
+
         [JsonProperty("last4")]
         public string Last4 { get; set; }
 
@@ -43,4 +43,4 @@ namespace Stripe
         [JsonProperty("dynamic_last4")]
         public string DynamicLast4 { get; set; }
     }
-} 
+}

@@ -128,7 +128,7 @@ namespace Stripe
         public List<StripeShippingMethod> ShippingMethods { get; set; }
 
         /// <summary>
-        /// Current order status. One of created, paid, canceled, fulfilled, or returned. 
+        /// Current order status. One of created, paid, canceled, fulfilled, or returned.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

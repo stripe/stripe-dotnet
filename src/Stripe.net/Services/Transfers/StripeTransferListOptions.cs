@@ -6,7 +6,7 @@ namespace Stripe
     {
         [JsonProperty("created")]
         public StripeDateFilter Created { get; set; }
-        
+
         [JsonProperty("destination")]
         public string Destination { get; set; }
 

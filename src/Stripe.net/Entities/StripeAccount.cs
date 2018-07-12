@@ -76,7 +76,7 @@ namespace Stripe
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
-        
+
         [JsonProperty("support_email")]
         public string SupportEmail { get; set; }
 

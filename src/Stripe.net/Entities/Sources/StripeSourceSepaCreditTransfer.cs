@@ -13,4 +13,4 @@ namespace Stripe
         [JsonProperty("swift_code")]
         public string SwiftCode { get; set; }
     }
-} 
+}

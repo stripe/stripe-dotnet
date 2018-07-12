@@ -12,7 +12,7 @@ namespace Stripe
 
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
- 
+
         [JsonProperty("date")]
         public StripeDateFilter Date { get; set; }
 
@@ -21,13 +21,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("due_date")]
         public StripeDateFilter DueDate { get; set; }
-        
+
         /// <summary>
         /// A filter on the list based on the object paid field.
         /// </summary>
         [JsonProperty("paid")]
         public bool? Paid { get; set; }
-        
+
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
     }

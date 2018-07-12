@@ -75,7 +75,7 @@ namespace Stripe
         {
             return Mapper<StripeList<StripeApplicationFee>>.MapFromJson(
                 await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, Urls.ApplicationFees, true),
-                SetupRequestOptions(requestOptions), 
+                SetupRequestOptions(requestOptions),
                 cancellationToken).ConfigureAwait(false)
             );
         }

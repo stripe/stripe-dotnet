@@ -142,7 +142,7 @@ namespace Stripe
             return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, $"{Urls.Invoices}/{invoiceId}/lines", true),
-                    SetupRequestOptions(requestOptions), 
+                    SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false)
             );
         }

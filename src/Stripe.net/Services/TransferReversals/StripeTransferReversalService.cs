@@ -20,7 +20,7 @@ namespace Stripe
         {
             return Post($"{Urls.BaseUrl}/transfers/{transferId}/reversals", requestOptions, options);
         }
-        
+
         public virtual StripeTransferReversal Get(string transferId, string reversalId, StripeRequestOptions requestOptions = null)
         {
             return GetEntity($"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}", requestOptions);
@@ -51,7 +51,7 @@ namespace Stripe
 
         public virtual Task<StripeTransferReversal> UpdateAsync(string transferId,  string reversalId, StripeTransferReversalUpdateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PostAsync($"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}", requestOptions, cancellationToken, options);      
+            return PostAsync($"{Urls.BaseUrl}/transfers/{transferId}/reversals/{reversalId}", requestOptions, cancellationToken, options);
         }
 
         public virtual Task<StripeList<StripeTransferReversal>> ListAsync(string transferId, StripeTransferReversalListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))

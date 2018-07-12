@@ -104,5 +104,5 @@ namespace Stripe
 
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
-    } 
+    }
 }
