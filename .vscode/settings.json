@@ -1,0 +1,19 @@
+{
+  "editor.renderWhitespace": "all",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "[csharp]": {
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.rulers": [
+      100
+    ],
+    "editor.tabSize": 4,
+  },
+  "[json]": {
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+  },
+}
