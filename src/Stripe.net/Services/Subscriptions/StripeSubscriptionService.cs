@@ -26,8 +26,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, url, false),
-                    SetupRequestOptions(requestOptions))
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeSubscription Create(string customerId, string planId, StripeSubscriptionCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
@@ -38,8 +37,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(
                 Requestor.PostString(
                     ParameterBuilder.ApplyParameterToUrl(url, "plan", planId),
-                    SetupRequestOptions(requestOptions))
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeSubscription Create(string customerId, StripeSubscriptionCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
@@ -50,9 +48,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(
                 Requestor.PostString(
                     url,
-                    SetupRequestOptions(requestOptions)
-                )
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeSubscription Update(string subscriptionId, StripeSubscriptionUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
@@ -62,8 +58,7 @@ namespace Stripe
             return Mapper<StripeSubscription>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, url, false),
-                    SetupRequestOptions(requestOptions))
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeSubscription Cancel(string subscriptionId, bool cancelAtPeriodEnd = false, StripeRequestOptions requestOptions = null)
@@ -72,8 +67,7 @@ namespace Stripe
             url = ParameterBuilder.ApplyParameterToUrl(url, "at_period_end", cancelAtPeriodEnd.ToString());
 
             return Mapper<StripeSubscription>.MapFromJson(
-                Requestor.Delete(url, SetupRequestOptions(requestOptions))
-            );
+                Requestor.Delete(url, SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripeSubscription> List(StripeSubscriptionListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -81,8 +75,7 @@ namespace Stripe
             return Mapper<StripeList<StripeSubscription>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.Subscriptions, true),
-                    SetupRequestOptions(requestOptions))
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeSubscription> GetAsync(string subscriptionId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -93,8 +86,7 @@ namespace Stripe
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, url, false),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeSubscription> CreateAsync(string customerId, string planId, StripeSubscriptionCreateOptions createOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -106,8 +98,7 @@ namespace Stripe
                 await Requestor.PostStringAsync(
                    ParameterBuilder.ApplyParameterToUrl(url, "plan", planId),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeSubscription> CreateAsync(string customerId, StripeSubscriptionCreateOptions createOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -119,9 +110,7 @@ namespace Stripe
                 await Requestor.PostStringAsync(
                     url,
                     SetupRequestOptions(requestOptions),
-                    cancellationToken
-                ).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeSubscription> UpdateAsync(string subscriptionId, StripeSubscriptionUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -132,8 +121,7 @@ namespace Stripe
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, url, false),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeSubscription> CancelAsync(string subscriptionId, bool cancelAtPeriodEnd = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -145,8 +133,7 @@ namespace Stripe
                 await Requestor.DeleteAsync(
                     url,
                     SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeList<StripeSubscription>> ListAsync(StripeSubscriptionListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -155,8 +142,7 @@ namespace Stripe
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.Subscriptions, true),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
     }
 }

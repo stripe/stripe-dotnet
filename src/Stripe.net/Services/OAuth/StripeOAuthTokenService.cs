@@ -21,8 +21,7 @@ namespace Stripe
             return Mapper<StripeOAuthToken>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
-                    SetupRequestOptions(requestOptions))
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeOAuthDeauthorize Deauthorize(string clientId, string stripeUserId, StripeRequestOptions requestOptions = null)
@@ -31,8 +30,7 @@ namespace Stripe
             url = ParameterBuilder.ApplyParameterToUrl(url, "stripe_user_id", stripeUserId);
 
             return Mapper<StripeOAuthDeauthorize>.MapFromJson(
-                Requestor.PostString(url, SetupRequestOptions(requestOptions))
-            );
+                Requestor.PostString(url, SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeOAuthToken> CreateAsync(StripeOAuthTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -41,8 +39,7 @@ namespace Stripe
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeOAuthDeauthorize> DeauthorizeAsync(string clientId, string stripeUserId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -54,8 +51,7 @@ namespace Stripe
                 await Requestor.PostStringAsync(
                     url,
                     SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
     }
 }

@@ -41,8 +41,7 @@ namespace Stripe
             var url = $"{Urls.BaseUrl}/customers/{customerId}/sources/{sourceId}";
 
             return Mapper<StripeSource>.MapFromJson(
-                Requestor.Delete(url, SetupRequestOptions(requestOptions))
-            );
+                Requestor.Delete(url, SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripeSource> List(string customerId, StripeSourceListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -57,8 +56,7 @@ namespace Stripe
             return Mapper<StripeList<StripeSource>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, url, true),
-                    SetupRequestOptions(requestOptions))
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual Task<StripeSource> CreateAsync(StripeSourceCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -89,8 +87,7 @@ namespace Stripe
                 await Requestor.DeleteAsync(
                     url,
                     SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false)
-                );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeList<StripeSource>> ListAsync(string customerId, StripeSourceListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -106,8 +103,7 @@ namespace Stripe
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, url, true),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
     }
 }

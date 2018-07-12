@@ -22,9 +22,7 @@ namespace Stripe
             return Mapper<CountrySpec>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.CountrySpecs}/{country}"),
-                    SetupRequestOptions(requestOptions)
-                )
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<CountrySpec> List(CountrySpecListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -32,9 +30,7 @@ namespace Stripe
             return Mapper<StripeList<CountrySpec>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, $"{Urls.CountrySpecs}", true),
-                    SetupRequestOptions(requestOptions)
-                )
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<CountrySpec> GetAsync(string country, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -43,9 +39,7 @@ namespace Stripe
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.CountrySpecs}/{country}"),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken
-                ).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeList<CountrySpec>> ListAsync(CountrySpecListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -54,9 +48,7 @@ namespace Stripe
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, $"{Urls.CountrySpecs}", true),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken
-                ).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
     }
 }

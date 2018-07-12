@@ -32,8 +32,7 @@ namespace Stripe
             return Mapper<StripeApplicationFee>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}", false),
-                    SetupRequestOptions(requestOptions))
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeApplicationFee Refund(string applicationFeeId, int? refundAmount = null, StripeRequestOptions requestOptions = null)
@@ -46,8 +45,7 @@ namespace Stripe
             }
 
             return Mapper<StripeApplicationFee>.MapFromJson(
-                Requestor.PostString(url, SetupRequestOptions(requestOptions))
-            );
+                Requestor.PostString(url, SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripeApplicationFee> List(StripeApplicationFeeListOptions listOptions, StripeRequestOptions requestOptions = null)
@@ -55,8 +53,7 @@ namespace Stripe
             return Mapper<StripeList<StripeApplicationFee>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.ApplicationFees, true),
-                    SetupRequestOptions(requestOptions))
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeApplicationFee> GetAsync(string applicationFeeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -65,8 +62,7 @@ namespace Stripe
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}", false),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeApplicationFee> RefundAsync(string applicationFeeId, int? refundAmount = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -79,8 +75,7 @@ namespace Stripe
             }
 
             return Mapper<StripeApplicationFee>.MapFromJson(
-                await Requestor.PostStringAsync(url, SetupRequestOptions(requestOptions), cancellationToken).ConfigureAwait(false)
-            );
+                await Requestor.PostStringAsync(url, SetupRequestOptions(requestOptions), cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeList<StripeApplicationFee>> ListAsync(StripeApplicationFeeListOptions listOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -89,8 +84,7 @@ namespace Stripe
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.ApplicationFees, true),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
     }
 }

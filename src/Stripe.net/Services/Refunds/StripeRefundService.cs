@@ -29,8 +29,7 @@ namespace Stripe
             return Mapper<StripeRefund>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, $"{Urls.Charges}/{chargeId}/refunds", false),
-                    SetupRequestOptions(requestOptions))
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeRefund Get(string refundId, StripeRequestOptions requestOptions = null)
@@ -38,9 +37,7 @@ namespace Stripe
             return Mapper<StripeRefund>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.BaseUrl}/refunds/{refundId}"),
-                    SetupRequestOptions(requestOptions)
-                )
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeRefund Update(string refundId, StripeRefundUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
@@ -48,9 +45,7 @@ namespace Stripe
             return Mapper<StripeRefund>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, $"{Urls.BaseUrl}/refunds/{refundId}"),
-                    SetupRequestOptions(requestOptions)
-                )
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripeRefund> List(StripeRefundListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -58,9 +53,7 @@ namespace Stripe
             return Mapper<StripeList<StripeRefund>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, $"{Urls.BaseUrl}/refunds", true),
-                    SetupRequestOptions(requestOptions)
-                )
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeRefund> CreateAsync(string chargeId, StripeRefundCreateOptions createOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -69,8 +62,7 @@ namespace Stripe
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, $"{Urls.Charges}/{chargeId}/refunds", false),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeRefund> GetAsync(string refundId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -79,9 +71,7 @@ namespace Stripe
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.BaseUrl}/refunds/{refundId}"),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken
-                ).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeRefund> UpdateAsync(string refundId, StripeRefundUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -90,9 +80,7 @@ namespace Stripe
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, $"{Urls.BaseUrl}/refunds/{refundId}"),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken
-                ).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeList<StripeRefund>> ListAsync(StripeRefundListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -101,9 +89,7 @@ namespace Stripe
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, $"{Urls.BaseUrl}/refunds", true),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken
-                ).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
     }
 }

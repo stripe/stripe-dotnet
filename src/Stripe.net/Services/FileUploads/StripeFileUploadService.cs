@@ -21,8 +21,7 @@ namespace Stripe
         public virtual StripeFileUpload Create(string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeFileUpload>.MapFromJson(
-                Requestor.PostFile(Urls.FileUploads, fileName, fileStream, purpose, SetupRequestOptions(requestOptions))
-            );
+                Requestor.PostFile(Urls.FileUploads, fileName, fileStream, purpose, SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeFileUpload Get(string fileUploadId, StripeRequestOptions requestOptions = null)
@@ -30,9 +29,7 @@ namespace Stripe
             return Mapper<StripeFileUpload>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.FileUploads}/{fileUploadId}"),
-                    SetupRequestOptions(requestOptions)
-                )
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripeFileUpload> List(StripeFileUploadListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -40,16 +37,13 @@ namespace Stripe
             return Mapper<StripeList<StripeFileUpload>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.FileUploads, true),
-                    SetupRequestOptions(requestOptions)
-                )
-            );
+                    SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeFileUpload> CreateAsync(string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeFileUpload>.MapFromJson(
-                await Requestor.PostFileAsync(Urls.FileUploads, fileName, fileStream, purpose, SetupRequestOptions(requestOptions), cancellationToken).ConfigureAwait(false)
-            );
+                await Requestor.PostFileAsync(Urls.FileUploads, fileName, fileStream, purpose, SetupRequestOptions(requestOptions), cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeFileUpload> GetAsync(string fileUploadId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -58,9 +52,7 @@ namespace Stripe
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.FileUploads}/{fileUploadId}"),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken
-                ).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual async Task<StripeList<StripeFileUpload>> ListAsync(StripeFileUploadListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -69,9 +61,7 @@ namespace Stripe
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.FileUploads, true),
                     SetupRequestOptions(requestOptions),
-                    cancellationToken
-                ).ConfigureAwait(false)
-            );
+                    cancellationToken).ConfigureAwait(false));
         }
     }
 }
