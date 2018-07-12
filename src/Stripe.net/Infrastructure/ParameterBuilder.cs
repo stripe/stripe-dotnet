@@ -54,7 +54,7 @@ namespace Stripe.Infrastructure
                 var propertiesToExpand = service.GetType()
                     .GetRuntimeProperties()
                     .Where(p => p.Name.StartsWith("Expand") && p.PropertyType == typeof(bool))
-                    .Where(p => (bool) p.GetValue(service, null))
+                    .Where(p => (bool)p.GetValue(service, null))
                     .Select(p => p.Name);
 
                 foreach (var propertyName in propertiesToExpand)

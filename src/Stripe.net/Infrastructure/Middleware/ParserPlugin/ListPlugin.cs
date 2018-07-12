@@ -29,7 +29,7 @@ namespace Stripe.Infrastructure.Middleware
             }
 
             // Cast to List<object>
-            var items = ((IEnumerable) propertyValue).Cast<object>().ToList();
+            var items = ((IEnumerable)propertyValue).Cast<object>().ToList();
 
             // If the list is empty, just send the parameter's name with an empty string as the
             // value to tell Stripe's API to empty the parameter.

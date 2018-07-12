@@ -17,7 +17,7 @@ namespace Stripe.Infrastructure.Middleware
                 return false;
             }
 
-            var values = ((IEnumerable) propertyValue).Cast<object>().Select(x => x.ToString()).ToArray();
+            var values = ((IEnumerable)propertyValue).Cast<object>().Select(x => x.ToString()).ToArray();
 
             foreach (var value in values)
                 RequestStringBuilder.ApplyParameterToRequestString(ref requestString, $"{attribute.PropertyName}[]", value);

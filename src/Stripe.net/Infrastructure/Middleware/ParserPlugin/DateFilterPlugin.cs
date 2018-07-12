@@ -14,7 +14,7 @@ namespace Stripe.Infrastructure.Middleware
                 return false;
             }
 
-            var filter = (StripeDateFilter) propertyValue;
+            var filter = (StripeDateFilter)propertyValue;
 
             if (filter.EqualTo.HasValue)
                 RequestStringBuilder.ApplyParameterToRequestString(ref requestString, attribute.PropertyName, filter.EqualTo.Value.ToUniversalTime().ConvertDateTimeToEpoch().ToString());

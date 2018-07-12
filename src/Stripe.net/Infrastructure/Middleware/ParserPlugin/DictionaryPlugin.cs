@@ -31,7 +31,7 @@ namespace Stripe.Infrastructure.Middleware
             if (valueType != typeof(string))
                 throw new System.ArgumentException($"Expected {typeof(string).ToString()} as dictionary value type, got {valueType.ToString()}");
 
-            var dictionary = (Dictionary<string, string>) propertyValue;
+            var dictionary = (Dictionary<string, string>)propertyValue;
             if (dictionary == null)
             {
                 return true;

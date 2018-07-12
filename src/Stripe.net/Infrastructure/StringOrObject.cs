@@ -10,13 +10,13 @@ namespace Stripe.Infrastructure
         {
             if (value is JObject)
             {
-                T item = ((JToken) value).ToObject<T>();
+                T item = ((JToken)value).ToObject<T>();
                 updateId(item.Id);
                 updateObject(item);
             }
             else if (value is string)
             {
-                updateId((string) value);
+                updateId((string)value);
                 updateObject(null);
             }
         }

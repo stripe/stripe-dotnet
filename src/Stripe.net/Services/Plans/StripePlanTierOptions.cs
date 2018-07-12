@@ -26,7 +26,7 @@ namespace Stripe
         public UpToOption UpTo { get; set; }
 
         [JsonProperty("up_to")]
-        internal string UpToInternal => UpTo is UpToInf ? "inf" : ((UpToBound) UpTo).Bound.ToString();
+        internal string UpToInternal => UpTo is UpToInf ? "inf" : ((UpToBound)UpTo).Bound.ToString();
         #endregion
     }
 }
