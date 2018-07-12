@@ -128,7 +128,8 @@ namespace Stripe.Infrastructure
 
             var request = BuildRequest(method, url);
 
-            request.Headers.Add("Authorization",
+            request.Headers.Add(
+                "Authorization",
                 GetAuthorizationHeaderValue(requestOptions.ApiKey));
 
             if (requestOptions.StripeConnectAccountId != null)

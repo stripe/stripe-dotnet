@@ -27,8 +27,9 @@ namespace Stripe
         public virtual StripeRefund Create(string chargeId, StripeRefundCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeRefund>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(createOptions, $"{Urls.Charges}/{chargeId}/refunds", false),
-                SetupRequestOptions(requestOptions))
+                Requestor.PostString(
+                    this.ApplyAllParameters(createOptions, $"{Urls.Charges}/{chargeId}/refunds", false),
+                    SetupRequestOptions(requestOptions))
             );
         }
 
@@ -65,9 +66,10 @@ namespace Stripe
         public virtual async Task<StripeRefund> CreateAsync(string chargeId, StripeRefundCreateOptions createOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeRefund>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, $"{Urls.Charges}/{chargeId}/refunds", false),
-                SetupRequestOptions(requestOptions),
-                cancellationToken).ConfigureAwait(false)
+                await Requestor.PostStringAsync(
+                    this.ApplyAllParameters(createOptions, $"{Urls.Charges}/{chargeId}/refunds", false),
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken).ConfigureAwait(false)
             );
         }
 

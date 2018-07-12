@@ -19,8 +19,9 @@ namespace Stripe
         public virtual StripeOAuthToken Create(StripeOAuthTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeOAuthToken>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
-                SetupRequestOptions(requestOptions))
+                Requestor.PostString(
+                    this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
+                    SetupRequestOptions(requestOptions))
             );
         }
 
@@ -37,9 +38,10 @@ namespace Stripe
         public virtual async Task<StripeOAuthToken> CreateAsync(StripeOAuthTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeOAuthToken>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
-                SetupRequestOptions(requestOptions),
-                cancellationToken).ConfigureAwait(false)
+                await Requestor.PostStringAsync(
+                    this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken).ConfigureAwait(false)
             );
         }
 

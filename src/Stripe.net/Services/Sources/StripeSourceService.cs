@@ -55,8 +55,9 @@ namespace Stripe
             }
 
             return Mapper<StripeList<StripeSource>>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(listOptions, url, true),
-                SetupRequestOptions(requestOptions))
+                Requestor.GetString(
+                    this.ApplyAllParameters(listOptions, url, true),
+                    SetupRequestOptions(requestOptions))
             );
         }
 
@@ -85,7 +86,8 @@ namespace Stripe
             var url = $"{Urls.BaseUrl}/customers/{customerId}/sources/{sourceId}";
 
             return Mapper<StripeSource>.MapFromJson(
-                await Requestor.DeleteAsync(url,
+                await Requestor.DeleteAsync(
+                    url,
                     SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false)
                 );
@@ -101,9 +103,10 @@ namespace Stripe
             }
 
             return Mapper<StripeList<StripeSource>>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(listOptions, url, true),
-                SetupRequestOptions(requestOptions),
-                cancellationToken).ConfigureAwait(false)
+                await Requestor.GetStringAsync(
+                    this.ApplyAllParameters(listOptions, url, true),
+                    SetupRequestOptions(requestOptions),
+                    cancellationToken).ConfigureAwait(false)
             );
         }
     }
