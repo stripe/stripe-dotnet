@@ -13,8 +13,6 @@
     -->
     <Rule Id="SA1401" Action="None" />
 
-
-
     <!--
       Keep those rules disabled as it would force a header for each file
       and a copyright.
