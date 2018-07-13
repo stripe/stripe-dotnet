@@ -1,5 +1,8 @@
 # Changelog
 
+## 17.2.0 - 2018-07-13
+* [#1233](https://github.com/stripe/stripe-dotnet/pull/1233) Add `OriginalSource` to `StripeSourceCreateOptions`
+
 ## 17.1.0 - 2018-07-12
 * [#1228](https://github.com/stripe/stripe-dotnet/pull/1228) Add `AutoAdvance` to `StripeInvoice`
 
