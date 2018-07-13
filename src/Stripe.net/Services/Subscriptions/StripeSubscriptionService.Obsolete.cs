@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     public partial class StripeSubscriptionService
     {
         [Obsolete("Get with customerId is deprecated, use Get without the customerId.")]

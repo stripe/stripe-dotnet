@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-
 namespace Stripe
 {
+    using System.Collections.Generic;
+
     public class StripeBaseOptions
     {
         public Dictionary<string, string> ExtraParams = new Dictionary<string, string>();

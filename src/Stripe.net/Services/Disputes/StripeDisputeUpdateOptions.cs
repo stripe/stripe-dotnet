@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class StripeDisputeUpdateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("evidence[access_activity_log]")]

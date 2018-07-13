@@ -1,9 +1,9 @@
-﻿using System;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class Stripe3DSecure : StripeEntityWithId
     {
         [JsonProperty("object")]

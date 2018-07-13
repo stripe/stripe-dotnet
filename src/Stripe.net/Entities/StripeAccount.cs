@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeAccount : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]

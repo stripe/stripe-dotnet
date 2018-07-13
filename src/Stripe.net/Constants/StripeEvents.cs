@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+
     public static class StripeEvents
     {
         /// <summary>

@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using Newtonsoft.Json;
-
 namespace Stripe
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class StripeChargeLevel3Options : INestedOptions
     {
         [JsonProperty("level3[customer_reference]")]

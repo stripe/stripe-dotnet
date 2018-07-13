@@ -1,9 +1,9 @@
-﻿using System;
-using System.Reflection;
-using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Reflection;
+    using Newtonsoft.Json;
+
     public class StripePlanTierOptions
     {
         [JsonProperty("amount")]

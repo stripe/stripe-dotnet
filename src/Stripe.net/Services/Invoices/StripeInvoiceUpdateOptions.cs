@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeInvoiceUpdateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("application_fee")]

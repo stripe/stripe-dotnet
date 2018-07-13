@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Stripe.Infrastructure.Middleware;
-
-namespace Stripe.Infrastructure
+﻿namespace Stripe.Infrastructure
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Reflection;
+    using System.Text.RegularExpressions;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure.Middleware;
+
     internal static class ParameterBuilder
     {
         public static string ApplyAllParameters(this StripeService service, StripeBaseOptions obj, string url, bool isListMethod = false)

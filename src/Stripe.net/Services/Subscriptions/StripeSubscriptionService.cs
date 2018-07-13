@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Stripe.Infrastructure;
+
     public partial class StripeSubscriptionService : StripeService
     {
         public StripeSubscriptionService()

@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using Newtonsoft.Json;
+
     public abstract class StripeEntityWithId : StripeEntity
     {
         [JsonProperty("id")]

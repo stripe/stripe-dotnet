@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
     public static class Mapper<T>
     {
         public static List<T> MapCollectionFromJson(string json, string token = "data", StripeResponse stripeResponse = null)

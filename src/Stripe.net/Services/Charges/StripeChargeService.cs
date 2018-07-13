@@ -1,9 +1,9 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Stripe.Infrastructure;
+
     public class StripeChargeService : StripeService
     {
         public StripeChargeService()

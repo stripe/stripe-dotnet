@@ -1,7 +1,7 @@
-﻿using System.IO;
-
-namespace Stripe.Infrastructure
+﻿namespace Stripe.Infrastructure
 {
+    using System.IO;
+
     internal static class MimeTypes
     {
         public static string GetMimeType(string fileName)

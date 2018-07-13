@@ -1,9 +1,9 @@
-﻿using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace Stripe.Infrastructure
+﻿namespace Stripe.Infrastructure
 {
+    using System;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
     internal class SourceConverter : JsonConverter
     {
         public override bool CanWrite => false;

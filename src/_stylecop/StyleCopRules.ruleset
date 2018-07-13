@@ -2,11 +2,6 @@
 <RuleSet Name="Rules for StyleCop.Analyzers" Description="Code analysis rules for Stripe.net" ToolsVersion="14.0">
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
     <!--
-      SA1200: UsingDirectivesMustBePlacedWithinNamespace
-    -->
-    <Rule Id="SA1200" Action="None" />
-
-    <!--
       SA1101: PrefixLocalCallsWithThis
       This ones seems really manual to fix.
     -->

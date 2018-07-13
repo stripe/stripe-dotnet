@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+
     public class StripeResponse
     {
         public string ResponseJson { get; set; }

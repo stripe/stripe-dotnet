@@ -1,11 +1,11 @@
-using System.Collections.Generic;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
-using Stripe.Infrastructure;
-
 namespace Stripe
 {
+    using System.Collections.Generic;
+    using System.Net;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Stripe.Infrastructure;
+
     public class StripeSkuService : StripeBasicService<StripeSku>
     {
         public StripeSkuService()

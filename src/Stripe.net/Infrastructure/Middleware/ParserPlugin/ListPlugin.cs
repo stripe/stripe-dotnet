@@ -1,12 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Newtonsoft.Json;
-
 namespace Stripe.Infrastructure.Middleware
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using Newtonsoft.Json;
+
     internal class ListPlugin : IParserPlugin
     {
         public bool Parse(

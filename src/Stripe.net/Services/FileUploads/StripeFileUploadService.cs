@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Stripe.Infrastructure;
+
     public class StripeFileUploadService : StripeService
     {
         public StripeFileUploadService()

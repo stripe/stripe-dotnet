@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class StripeSubscriptionItemCreateOptions : SubscriptionItemSharedOptions, ISupportMetadata
     {
         /// <summary>

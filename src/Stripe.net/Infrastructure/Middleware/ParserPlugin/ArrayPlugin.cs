@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using System.Reflection;
-using Newtonsoft.Json;
-
-namespace Stripe.Infrastructure.Middleware
+﻿namespace Stripe.Infrastructure.Middleware
 {
+    using System;
+    using System.Collections;
+    using System.Linq;
+    using System.Reflection;
+    using Newtonsoft.Json;
+
     internal class ArrayPlugin : IParserPlugin
     {
         public bool Parse(ref string requestString, JsonPropertyAttribute attribute, PropertyInfo property, object propertyValue, object propertyParent)

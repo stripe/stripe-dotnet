@@ -1,8 +1,8 @@
-﻿using System;
-using System.Net;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Net;
+
     public class StripeException : Exception
     {
         public StripeException()

@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-
 namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class StripeLoginLinkCreateOptions : StripeBaseOptions
     {
         [JsonProperty("redirect_url")]

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Newtonsoft.Json;
-
-namespace Stripe.Infrastructure.Middleware
+﻿namespace Stripe.Infrastructure.Middleware
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using Newtonsoft.Json;
+
     internal class DateFilterPlugin : IParserPlugin
     {
         public bool Parse(ref string requestString, JsonPropertyAttribute attribute, PropertyInfo property, object propertyValue, object propertyParent)

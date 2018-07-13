@@ -1,9 +1,9 @@
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
 namespace Stripe
 {
+    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     /// <summary>
     /// An enum describing the reason for a failed redirect.
     /// </summary>

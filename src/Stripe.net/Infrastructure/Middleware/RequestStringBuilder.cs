@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Net;
-using System.Reflection;
-using Newtonsoft.Json;
-
-namespace Stripe.Infrastructure.Middleware
+﻿namespace Stripe.Infrastructure.Middleware
 {
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Net;
+    using System.Reflection;
+    using Newtonsoft.Json;
+
     public static class RequestStringBuilder
     {
         static RequestStringBuilder()

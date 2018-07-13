@@ -1,10 +1,10 @@
-﻿using System;
-using System.Net.Http;
-using System.Reflection;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Net.Http;
+    using System.Reflection;
+    using Stripe.Infrastructure;
+
     public static class StripeConfiguration
     {
         public static string StripeApiVersion = "2018-02-06";

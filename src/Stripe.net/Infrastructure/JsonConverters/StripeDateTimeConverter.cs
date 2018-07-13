@@ -1,9 +1,9 @@
-﻿using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
-namespace Stripe.Infrastructure
+﻿namespace Stripe.Infrastructure
 {
+    using System;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     internal class StripeDateTimeConverter : DateTimeConverterBase
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

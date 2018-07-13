@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using System.Reflection;
-using Newtonsoft.Json;
+﻿namespace Stripe.Infrastructure
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
+    using System.Net.Http;
+    using System.Reflection;
+    using Newtonsoft.Json;
 #if NET45
-using Microsoft.Win32;
-#else
-using System.Runtime.InteropServices;
+    using Microsoft.Win32;
+    #else
+    using System.Runtime.InteropServices;
 #endif
 
-namespace Stripe.Infrastructure
-{
     internal class Client
     {
         public Client(HttpRequestMessage requestMessage)

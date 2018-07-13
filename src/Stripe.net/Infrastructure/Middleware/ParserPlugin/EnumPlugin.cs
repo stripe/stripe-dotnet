@@ -1,9 +1,9 @@
-using System;
-using System.Reflection;
-using Newtonsoft.Json;
-
 namespace Stripe.Infrastructure.Middleware
 {
+    using System;
+    using System.Reflection;
+    using Newtonsoft.Json;
+
     internal class EnumPlugin : IParserPlugin
     {
         public bool Parse(ref string requestString, JsonPropertyAttribute attribute, PropertyInfo property, object propertyValue, object propertyParent)

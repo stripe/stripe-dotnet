@@ -1,8 +1,8 @@
-﻿using System;
-using Newtonsoft.Json.Linq;
-
-namespace Stripe.Infrastructure
+﻿namespace Stripe.Infrastructure
 {
+    using System;
+    using Newtonsoft.Json.Linq;
+
     internal static class StringOrObject<T>
         where T : StripeEntityWithId
     {

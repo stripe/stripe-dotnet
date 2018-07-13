@@ -1,10 +1,10 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Stripe.Infrastructure;
-
 namespace Stripe
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Stripe.Infrastructure;
+
     [Obsolete("Use the StripeSourceService instead.")]
     public class Stripe3DSecureService : StripeBasicService<Stripe3DSecure>
     {
