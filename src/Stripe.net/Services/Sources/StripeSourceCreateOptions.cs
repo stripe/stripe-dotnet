@@ -62,6 +62,9 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("original_source")]
+        public string OriginalSource { get; set; }
+
         /// <summary>
         /// Information about the owner of the payment instrument that may be used or required by particular source types.
         /// </summary>
