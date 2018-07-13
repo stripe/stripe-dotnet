@@ -27,6 +27,13 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
+        /// The customer associated with the Source that you are trying to share with a Connected account.
+        /// This only works with Stripe Connect as documented here: https://stripe.com/docs/sources/connect#shared-card-sources
+        /// </summary>
+        [JsonProperty("customer")]
+        public string Customer { get; set; }
+
+        /// <summary>
         /// The authentication flow of the source to create. Flow is one of <see cref="StripeSourceFlow" />. It is generally inferred unless a type supports multiple flows.
         /// </summary>
         [JsonProperty("flow")]
@@ -62,6 +69,10 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        /// The id of the Source that you are trying to share with a Connected account.
+        /// This only works with Stripe Connect as documented here: https://stripe.com/docs/sources/connect#shared-card-sources
+        /// </summary>
         [JsonProperty("original_source")]
         public string OriginalSource { get; set; }
 
