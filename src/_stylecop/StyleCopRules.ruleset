@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RuleSet Name="Rules for StyleCop.Analyzers" Description="Code analysis rules for Stripe.net" ToolsVersion="14.0">
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <!--
+      SA1200: UsingDirectivesMustBePlacedWithinNamespace
+    -->
     <Rule Id="SA1200" Action="None" />
+
+    <!--
+      SA1101: PrefixLocalCallsWithThis
+      This ones seems really manual to fix.
+    -->
     <Rule Id="SA1101" Action="None" />
 
+    <!--
+      SA1512: SingleLineCommentsMustNotBeFollowedByBlankLine
+      This ones requires that we agree what to do with comments for sections of code
+      and how to indent properly
+    -->
     <Rule Id="SA1512" Action="None" />
+
+    <!--
+      SA1401: FieldsMustBePrivate
+      This ones would introduce breaking changes
+    -->
     <Rule Id="SA1401" Action="None" />
 
 
@@ -32,7 +50,5 @@
       Fixing it would be a breaking change.
     -->
     <Rule Id="SA1300" Action="None" />
-
-
   </Rules>
 </RuleSet>
