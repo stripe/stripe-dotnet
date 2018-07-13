@@ -1,5 +1,8 @@
 # Changelog
 
+## 17.3.0 - 2018-07-13
+* [#1234](https://github.com/stripe/stripe-dotnet/pull/1234) Add `Customer` to `StripeSourceCreateOptions`
+
 ## 17.2.0 - 2018-07-13
 * [#1233](https://github.com/stripe/stripe-dotnet/pull/1233) Add `OriginalSource` to `StripeSourceCreateOptions`
 
