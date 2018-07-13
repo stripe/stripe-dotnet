@@ -104,7 +104,9 @@
         [JsonProperty("usage")]
         public string Usage { get; set; }
 
-        // Type-specific attributes
+        /*
+         * Type-specific attributes
+         */
 
         [JsonProperty("ach_credit_transfer")]
         public StripeSourceAchCreditTransfer AchCreditTransfer { get; set; }

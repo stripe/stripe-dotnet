@@ -4,7 +4,9 @@
 
     public class StripeError : StripeEntity
     {
-        // For regular API errors:
+        /*
+         * For regular API errors:
+         */
 
         [JsonProperty("charge")]
         public string ChargeId { get; set; }
@@ -24,7 +26,9 @@
         [JsonProperty("type")]
         public string ErrorType { get; set; }
 
-        // For OAuth Errors:
+        /*
+         * For OAuth Errors:
+         */
 
         [JsonProperty("error")]
         public string Error { get; set; }

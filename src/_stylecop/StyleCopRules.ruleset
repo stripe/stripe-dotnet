@@ -8,13 +8,6 @@
     <Rule Id="SA1101" Action="None" />
 
     <!--
-      SA1512: SingleLineCommentsMustNotBeFollowedByBlankLine
-      This ones requires that we agree what to do with comments for sections of code
-      and how to indent properly
-    -->
-    <Rule Id="SA1512" Action="None" />
-
-    <!--
       SA1401: FieldsMustBePrivate
       This ones would introduce breaking changes
     -->

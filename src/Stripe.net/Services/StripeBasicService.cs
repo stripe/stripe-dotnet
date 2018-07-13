@@ -17,9 +17,10 @@
         {
         }
 
-        // ************************************************************************************
-        // this will replace StripeService altogether some day and steal it's name, but for now
-        // it allows us to refactor slowly and build new services easier.
+        /*
+         * this will replace StripeService altogether some day and steal it's name, but for now
+         * it allows us to refactor slowly and build new services easier.
+         */
 
         public EntityReturned GetEntity(string url, StripeRequestOptions requestOptions, StripeBaseOptions options = null)
         {

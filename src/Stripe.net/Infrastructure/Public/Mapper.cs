@@ -30,9 +30,9 @@
             var jsonToParse = string.IsNullOrEmpty(parentToken) ? json : JObject.Parse(json).SelectToken(parentToken).ToString();
 
             var result = JsonConvert.DeserializeObject<T>(jsonToParse);
-            ApplyStripeResponse(json, stripeResponse, result);
 
             // if necessary, we might need to apply the stripe response to nested properties for StripeList<T>
+            ApplyStripeResponse(json, stripeResponse, result);
 
             return result;
         }
