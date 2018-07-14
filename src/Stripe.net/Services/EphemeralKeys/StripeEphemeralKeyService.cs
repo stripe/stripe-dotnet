@@ -29,12 +29,12 @@ namespace Stripe
             requestOptions = requestOptions ?? new StripeRequestOptions();
             requestOptions.StripeVersion = createOptions.StripeVersion;
 
-            return Post(Urls.EphemeralKeys, requestOptions, createOptions);
+            return this.Post(Urls.EphemeralKeys, requestOptions, createOptions);
         }
 
         public virtual StripeDeleted Delete(string keyId, StripeRequestOptions requestOptions = null)
         {
-            return DeleteEntity($"{Urls.EphemeralKeys}/{keyId}", requestOptions);
+            return this.DeleteEntity($"{Urls.EphemeralKeys}/{keyId}", requestOptions);
         }
 
         public virtual Task<StripeEphemeralKey> CreateAsync(StripeEphemeralKeyCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -44,12 +44,12 @@ namespace Stripe
             requestOptions = requestOptions ?? new StripeRequestOptions();
             requestOptions.StripeVersion = createOptions.StripeVersion;
 
-            return PostAsync(Urls.EphemeralKeys, requestOptions, cancellationToken, createOptions);
+            return this.PostAsync(Urls.EphemeralKeys, requestOptions, cancellationToken, createOptions);
         }
 
         public virtual Task<StripeDeleted> DeleteAsync(string keyId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return DeleteEntityAsync($"{Urls.EphemeralKeys}/{keyId}", requestOptions, cancellationToken);
+            return this.DeleteEntityAsync($"{Urls.EphemeralKeys}/{keyId}", requestOptions, cancellationToken);
         }
     }
 }

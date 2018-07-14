@@ -27,7 +27,7 @@
         {
             set
             {
-                StringOrObject<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+                StringOrObject<StripeCustomer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
             }
         }
         #endregion
@@ -53,7 +53,7 @@
         {
             set
             {
-                StringOrObject<StripeInvoice>.Map(value, s => InvoiceId = s, o => Invoice = o);
+                StringOrObject<StripeInvoice>.Map(value, s => this.InvoiceId = s, o => this.Invoice = o);
             }
         }
         #endregion
@@ -87,7 +87,7 @@
         {
             set
             {
-                StringOrObject<StripeSubscription>.Map(value, s => SubscriptionId = s, o => Subscription = o);
+                StringOrObject<StripeSubscription>.Map(value, s => this.SubscriptionId = s, o => this.Subscription = o);
             }
         }
         #endregion

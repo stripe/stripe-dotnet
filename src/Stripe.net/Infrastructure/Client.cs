@@ -16,19 +16,19 @@
     {
         public Client(HttpRequestMessage requestMessage)
         {
-            RequestMessage = requestMessage;
+            this.RequestMessage = requestMessage;
         }
 
         private HttpRequestMessage RequestMessage { get; set; }
 
         public void ApplyUserAgent()
         {
-            RequestMessage.Headers.UserAgent.ParseAdd($"Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}");
+            this.RequestMessage.Headers.UserAgent.ParseAdd($"Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}");
         }
 
         public void ApplyClientData()
         {
-            RequestMessage.Headers.Add("X-Stripe-Client-User-Agent", GetClientUserAgentString());
+            this.RequestMessage.Headers.Add("X-Stripe-Client-User-Agent", this.GetClientUserAgentString());
         }
 
         private string GetClientUserAgentString()

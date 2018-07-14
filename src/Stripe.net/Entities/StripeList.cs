@@ -28,12 +28,12 @@
 
         public IEnumerator<T> GetEnumerator()
         {
-            return Data.GetEnumerator();
+            return this.Data.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return Data.GetEnumerator();
+            return this.Data.GetEnumerator();
         }
     }
 }

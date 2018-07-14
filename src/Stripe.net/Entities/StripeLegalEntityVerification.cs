@@ -22,7 +22,7 @@
         {
             set
             {
-                StringOrObject<StripeFileUpload>.Map(value, s => DocumentId = s, o => Document = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => this.DocumentId = s, o => this.Document = o);
             }
         }
         #endregion
@@ -38,7 +38,7 @@
         {
             set
             {
-                StringOrObject<StripeFileUpload>.Map(value, s => DocumentIdBack = s, o => DocumentBack = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => this.DocumentIdBack = s, o => this.DocumentBack = o);
             }
         }
         #endregion

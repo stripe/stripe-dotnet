@@ -10,19 +10,19 @@
         [Obsolete("Get with customerId is deprecated, use Get without the customerId.")]
         public virtual StripeSubscription Get(string customerId, string subscriptionId, StripeRequestOptions requestOptions = null)
         {
-            return Get(subscriptionId, requestOptions);
+            return this.Get(subscriptionId, requestOptions);
         }
 
         [Obsolete("Update with customerId is deprecated, use Update without the customerId.")]
         public virtual StripeSubscription Update(string customerId, string subscriptionId, StripeSubscriptionUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
-            return Update(subscriptionId, updateOptions, requestOptions);
+            return this.Update(subscriptionId, updateOptions, requestOptions);
         }
 
         [Obsolete("Cancel with customerId is deprecated, use Cancel without the customerId.")]
         public virtual StripeSubscription Cancel(string customerId, string subscriptionId, bool cancelAtPeriodEnd = false, StripeRequestOptions requestOptions = null)
         {
-            return Cancel(subscriptionId, cancelAtPeriodEnd, requestOptions);
+            return this.Cancel(subscriptionId, cancelAtPeriodEnd, requestOptions);
         }
 
         [Obsolete("List with customerId is deprecated, use List without the customerId.")]
@@ -40,25 +40,25 @@
                 options.Limit = listOptions.Limit;
             }
 
-            return List(options, requestOptions);
+            return this.List(options, requestOptions);
         }
 
         [Obsolete("GetAsync with customerId is deprecated, use GetAsync without the customerId.")]
         public virtual Task<StripeSubscription> GetAsync(string customerId, string subscriptionId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return GetAsync(subscriptionId, requestOptions, cancellationToken);
+            return this.GetAsync(subscriptionId, requestOptions, cancellationToken);
         }
 
         [Obsolete("UpdateAsync with customerId is deprecated, use UpdateAsync without the customerId.")]
         public virtual Task<StripeSubscription> UpdateAsync(string customerId, string subscriptionId, StripeSubscriptionUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return UpdateAsync(subscriptionId, updateOptions, requestOptions, cancellationToken);
+            return this.UpdateAsync(subscriptionId, updateOptions, requestOptions, cancellationToken);
         }
 
         [Obsolete("CancelAsync with customerId is deprecated, use CancelAsync without the customerId.")]
         public virtual Task<StripeSubscription> CancelAsync(string customerId, string subscriptionId, bool cancelAtPeriodEnd = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return CancelAsync(subscriptionId, cancelAtPeriodEnd, requestOptions, cancellationToken);
+            return this.CancelAsync(subscriptionId, cancelAtPeriodEnd, requestOptions, cancellationToken);
         }
 
         [Obsolete("ListAsync with customerId is deprecated, use ListAsync without the customerId.")]
@@ -76,7 +76,7 @@
                 options.Limit = listOptions.Limit;
             }
 
-            return ListAsync(options, requestOptions, cancellationToken);
+            return this.ListAsync(options, requestOptions, cancellationToken);
         }
     }
 }

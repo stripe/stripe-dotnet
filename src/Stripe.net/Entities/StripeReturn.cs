@@ -51,7 +51,7 @@
         {
             set
             {
-                StringOrObject<StripeOrder>.Map(value, s => OrderId = s, o => Order = o);
+                StringOrObject<StripeOrder>.Map(value, s => this.OrderId = s, o => this.Order = o);
             }
         }
         #endregion
@@ -72,7 +72,7 @@
         {
             set
             {
-                StringOrObject<StripeRefund>.Map(value, s => RefundId = s, o => Refund = o);
+                StringOrObject<StripeRefund>.Map(value, s => this.RefundId = s, o => this.Refund = o);
             }
         }
         #endregion

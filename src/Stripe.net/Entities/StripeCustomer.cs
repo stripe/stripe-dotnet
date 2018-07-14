@@ -56,7 +56,7 @@
         {
             set
             {
-                StringOrObject<CustomerBankAccount>.Map(value, s => DefaultCustomerBankAccountId = s, o => DefaultCustomerBankAccount = o);
+                StringOrObject<CustomerBankAccount>.Map(value, s => this.DefaultCustomerBankAccountId = s, o => this.DefaultCustomerBankAccount = o);
             }
         }
         #endregion
@@ -77,7 +77,7 @@
         {
             set
             {
-                StringOrObject<Source>.Map(value, s => DefaultSourceId = s, o => DefaultSource = o);
+                StringOrObject<Source>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
             }
         }
 

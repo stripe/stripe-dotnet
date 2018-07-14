@@ -22,7 +22,7 @@ namespace Stripe
             return Mapper<StripeExchangeRate>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.ExchangeRates}/{currency}"),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripeExchangeRate> List(StripeExchangeRateListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -30,7 +30,7 @@ namespace Stripe
             return Mapper<StripeList<StripeExchangeRate>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, $"{Urls.ExchangeRates}", true),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeExchangeRate> GetAsync(string currency, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -38,7 +38,7 @@ namespace Stripe
             return Mapper<StripeExchangeRate>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.ExchangeRates}/{currency}"),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -47,7 +47,7 @@ namespace Stripe
             return Mapper<StripeList<StripeExchangeRate>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, $"{Urls.ExchangeRates}", true),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
     }

@@ -18,12 +18,12 @@ namespace Stripe
 
         public virtual StripeList<StripeSourceTransaction> List(string sourceId, StripeSourceTransactionsListOptions options = null, StripeRequestOptions requestOptions = null)
         {
-            return GetEntityList($"{Urls.BaseUrl}/sources/{sourceId}/source_transactions", requestOptions, options);
+            return this.GetEntityList($"{Urls.BaseUrl}/sources/{sourceId}/source_transactions", requestOptions, options);
         }
 
         public virtual Task<StripeList<StripeSourceTransaction>> ListAsync(string sourceId, StripeSourceTransactionsListOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return GetEntityListAsync($"{Urls.BaseUrl}/sources/{sourceId}/source_transactions", requestOptions, cancellationToken, options);
+            return this.GetEntityListAsync($"{Urls.BaseUrl}/sources/{sourceId}/source_transactions", requestOptions, cancellationToken, options);
         }
     }
 }

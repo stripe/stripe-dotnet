@@ -73,12 +73,12 @@
         {
             get
             {
-                if (!TosAcceptanceDate.HasValue)
+                if (!this.TosAcceptanceDate.HasValue)
                 {
                     return null;
                 }
 
-                return EpochTime.ConvertDateTimeToEpoch(TosAcceptanceDate.Value);
+                return EpochTime.ConvertDateTimeToEpoch(this.TosAcceptanceDate.Value);
             }
         }
 

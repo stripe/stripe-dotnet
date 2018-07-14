@@ -20,7 +20,7 @@ namespace Stripe
             return Mapper<StripeTopup>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, Urls.Topups, false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeTopup Get(string topupId, StripeRequestOptions requestOptions = null)
@@ -28,7 +28,7 @@ namespace Stripe
             return Mapper<StripeTopup>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.Topups}/{topupId}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripeTopup> List(StripeTopupListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -36,7 +36,7 @@ namespace Stripe
             return Mapper<StripeList<StripeTopup>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.Topups, true),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeTopup Update(string topupId, StripeTopupUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
@@ -44,7 +44,7 @@ namespace Stripe
             return Mapper<StripeTopup>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, $"{Urls.Topups}/{topupId}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeTopup> CreateAsync(StripeTopupCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -52,7 +52,7 @@ namespace Stripe
             return Mapper<StripeTopup>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, Urls.Topups, false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken));
         }
 
@@ -61,7 +61,7 @@ namespace Stripe
             return Mapper<StripeTopup>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.Topups}/{topupId}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken));
         }
 
@@ -70,7 +70,7 @@ namespace Stripe
             return Mapper<StripeList<StripeTopup>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.Topups, true),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken));
         }
 
@@ -79,7 +79,7 @@ namespace Stripe
             return Mapper<StripeTopup>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, $"{Urls.Topups}/{topupId}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken));
         }
     }

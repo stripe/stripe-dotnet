@@ -24,7 +24,7 @@
             return Mapper<StripeAccount>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, $"{Urls.BaseUrl}/accounts", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripeAccount> List(StripeAccountListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -34,12 +34,12 @@
             return Mapper<StripeList<StripeAccount>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, path, true),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeAccount Get(StripeRequestOptions requestOptions = null)
         {
-            return Get(string.Empty, requestOptions);
+            return this.Get(string.Empty, requestOptions);
         }
 
         public virtual StripeAccount Get(string accountId, StripeRequestOptions requestOptions = null)
@@ -49,7 +49,7 @@
             return Mapper<StripeAccount>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, path, false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeAccount Update(string accountId, StripeAccountUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
@@ -57,7 +57,7 @@
             return Mapper<StripeAccount>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, $"{Urls.BaseUrl}/accounts/{accountId}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeAccount Reject(string accountId, StripeAccountRejectOptions rejectOptions, StripeRequestOptions requestOptions = null)
@@ -65,7 +65,7 @@
             return Mapper<StripeAccount>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(rejectOptions, $"{Urls.BaseUrl}/accounts/{accountId}/reject", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeDeleted Delete(string accountId, StripeRequestOptions requestOptions = null)
@@ -73,7 +73,7 @@
             return Mapper<StripeDeleted>.MapFromJson(
                 Requestor.Delete(
                     this.ApplyAllParameters(null, $"{Urls.BaseUrl}/accounts/{accountId}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeAccount> CreateAsync(StripeAccountCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -81,7 +81,7 @@
             return Mapper<StripeAccount>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, $"{Urls.BaseUrl}/accounts", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -92,13 +92,13 @@
             return Mapper<StripeList<StripeAccount>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, path, true),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
         public virtual Task<StripeAccount> GetAsync(StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return GetAsync(string.Empty, requestOptions, cancellationToken);
+            return this.GetAsync(string.Empty, requestOptions, cancellationToken);
         }
 
         public virtual async Task<StripeAccount> GetAsync(string accountId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -108,7 +108,7 @@
             return Mapper<StripeAccount>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, path, false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -117,7 +117,7 @@
             return Mapper<StripeAccount>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, $"{Urls.BaseUrl}/accounts/{accountId}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -126,7 +126,7 @@
             return Mapper<StripeAccount>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(rejectOptions, $"{Urls.BaseUrl}/accounts/{accountId}/reject", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -135,7 +135,7 @@
             return Mapper<StripeDeleted>.MapFromJson(
                 await Requestor.DeleteAsync(
                     this.ApplyAllParameters(null, $"{Urls.BaseUrl}/accounts/{accountId}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
     }

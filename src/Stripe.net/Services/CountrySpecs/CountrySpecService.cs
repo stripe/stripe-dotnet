@@ -22,7 +22,7 @@
             return Mapper<CountrySpec>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.CountrySpecs}/{country}"),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<CountrySpec> List(CountrySpecListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -30,7 +30,7 @@
             return Mapper<StripeList<CountrySpec>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, $"{Urls.CountrySpecs}", true),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<CountrySpec> GetAsync(string country, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -38,7 +38,7 @@
             return Mapper<CountrySpec>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.CountrySpecs}/{country}"),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -47,7 +47,7 @@
             return Mapper<StripeList<CountrySpec>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, $"{Urls.CountrySpecs}", true),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
     }

@@ -73,7 +73,7 @@
         public bool EndTrialNow { get; set; }
 
         [JsonProperty("trial_end")]
-        internal string TrialEndInternal => EndTrialNow ? "now" : TrialEnd?.ConvertDateTimeToEpoch().ToString();
+        internal string TrialEndInternal => this.EndTrialNow ? "now" : this.TrialEnd?.ConvertDateTimeToEpoch().ToString();
         #endregion
 
         /// <summary>

@@ -21,7 +21,7 @@ namespace Stripe
             return Mapper<StripeOAuthToken>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeOAuthDeauthorize Deauthorize(string clientId, string stripeUserId, StripeRequestOptions requestOptions = null)
@@ -30,7 +30,7 @@ namespace Stripe
             url = ParameterBuilder.ApplyParameterToUrl(url, "stripe_user_id", stripeUserId);
 
             return Mapper<StripeOAuthDeauthorize>.MapFromJson(
-                Requestor.PostString(url, SetupRequestOptions(requestOptions)));
+                Requestor.PostString(url, this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeOAuthToken> CreateAsync(StripeOAuthTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -38,7 +38,7 @@ namespace Stripe
             return Mapper<StripeOAuthToken>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -50,7 +50,7 @@ namespace Stripe
             return Mapper<StripeOAuthDeauthorize>.MapFromJson(
                 await Requestor.PostStringAsync(
                     url,
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
     }

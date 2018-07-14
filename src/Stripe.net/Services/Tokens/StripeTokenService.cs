@@ -21,7 +21,7 @@ namespace Stripe
             return Mapper<StripeToken>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, Urls.Tokens, false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeToken Get(string tokenId, StripeRequestOptions requestOptions = null)
@@ -29,7 +29,7 @@ namespace Stripe
             return Mapper<StripeToken>.MapFromJson(
                 Requestor.GetString(
                     $"{Urls.Tokens}/{tokenId}",
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeToken> CreateAsync(StripeTokenCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -37,7 +37,7 @@ namespace Stripe
             return Mapper<StripeToken>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, Urls.Tokens, false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -46,7 +46,7 @@ namespace Stripe
             return Mapper<StripeToken>.MapFromJson(
                 await Requestor.GetStringAsync(
                    $"{Urls.Tokens}/{tokenId}",
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
     }

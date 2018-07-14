@@ -45,7 +45,7 @@
         {
             set
             {
-                StringOrObject<StripeEventRequest>.Map(value, s => RequestId = s, o => Request = o);
+                StringOrObject<StripeEventRequest>.Map(value, s => this.RequestId = s, o => this.Request = o);
             }
         }
         #endregion

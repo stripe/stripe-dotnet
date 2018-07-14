@@ -33,7 +33,7 @@
         {
             set
             {
-                StringOrObject<StripeApplication>.Map(value, s => ApplicationId = s, o => Application = o);
+                StringOrObject<StripeApplication>.Map(value, s => this.ApplicationId = s, o => this.Application = o);
             }
         }
         #endregion
@@ -52,7 +52,7 @@
         {
             set
             {
-                StringOrObject<StripeApplicationFee>.Map(value, s => ApplicationFeeId = s, o => ApplicationFee = o);
+                StringOrObject<StripeApplicationFee>.Map(value, s => this.ApplicationFeeId = s, o => this.ApplicationFee = o);
             }
         }
         #endregion
@@ -72,7 +72,7 @@
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
             }
         }
         #endregion
@@ -108,7 +108,7 @@
         {
             set
             {
-                StringOrObject<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+                StringOrObject<StripeCustomer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
             }
         }
         #endregion
@@ -130,7 +130,7 @@
         {
             set
             {
-                StringOrObject<StripeAccount>.Map(value, s => DestinationId = s, o => Destination = o);
+                StringOrObject<StripeAccount>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
             }
         }
         #endregion
@@ -149,7 +149,7 @@
         {
             set
             {
-                StringOrObject<StripeDispute>.Map(value, s => DisputeId = s, o => Dispute = o);
+                StringOrObject<StripeDispute>.Map(value, s => this.DisputeId = s, o => this.Dispute = o);
             }
         }
         #endregion
@@ -187,7 +187,7 @@
         {
             set
             {
-                StringOrObject<StripeInvoice>.Map(value, s => InvoiceId = s, o => Invoice = o);
+                StringOrObject<StripeInvoice>.Map(value, s => this.InvoiceId = s, o => this.Invoice = o);
             }
         }
         #endregion
@@ -217,7 +217,7 @@
         {
             set
             {
-                StringOrObject<StripeAccount>.Map(value, s => OnBehalfOfId = s, o => OnBehalfOf = o);
+                StringOrObject<StripeAccount>.Map(value, s => this.OnBehalfOfId = s, o => this.OnBehalfOf = o);
             }
         }
         #endregion
@@ -237,7 +237,7 @@
         {
             set
             {
-                StringOrObject<StripeOrder>.Map(value, s => OrderId = s, o => Order = o);
+                StringOrObject<StripeOrder>.Map(value, s => this.OrderId = s, o => this.Order = o);
             }
         }
         #endregion
@@ -300,7 +300,7 @@
         {
             set
             {
-                StringOrObject<StripeReview>.Map(value, s => ReviewId = s, o => Review = o);
+                StringOrObject<StripeReview>.Map(value, s => this.ReviewId = s, o => this.Review = o);
             }
         }
         #endregion
@@ -332,7 +332,7 @@
         {
             set
             {
-                StringOrObject<StripeTransfer>.Map(value, s => SourceTransferId = s, o => SourceTransfer = o);
+                StringOrObject<StripeTransfer>.Map(value, s => this.SourceTransferId = s, o => this.SourceTransfer = o);
             }
         }
         #endregion
@@ -364,7 +364,7 @@
         {
             set
             {
-                StringOrObject<StripeTransfer>.Map(value, s => TransferId = s, o => Transfer = o);
+                StringOrObject<StripeTransfer>.Map(value, s => this.TransferId = s, o => this.Transfer = o);
             }
         }
         #endregion

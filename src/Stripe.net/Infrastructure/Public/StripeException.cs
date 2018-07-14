@@ -22,8 +22,8 @@
         public StripeException(HttpStatusCode httpStatusCode, StripeError stripeError, string message)
             : base(message)
         {
-            HttpStatusCode = httpStatusCode;
-            StripeError = stripeError;
+            this.HttpStatusCode = httpStatusCode;
+            this.StripeError = stripeError;
         }
 
         public HttpStatusCode HttpStatusCode { get; set; }

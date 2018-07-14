@@ -25,7 +25,7 @@
             return Mapper<StripePlan>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, Urls.Plans, false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripePlan Get(string planId, StripeRequestOptions requestOptions = null)
@@ -33,7 +33,7 @@
             return Mapper<StripePlan>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeDeleted Delete(string planId, StripeRequestOptions requestOptions = null)
@@ -41,7 +41,7 @@
             return Mapper<StripeDeleted>.MapFromJson(
                 Requestor.Delete(
                     $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}",
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripePlan Update(string planId, StripePlanUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
@@ -49,7 +49,7 @@
             return Mapper<StripePlan>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripePlan> List(StripePlanListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -57,7 +57,7 @@
             return Mapper<StripeList<StripePlan>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.Plans, true),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripePlan> CreateAsync(StripePlanCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -65,7 +65,7 @@
             return Mapper<StripePlan>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, Urls.Plans, false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -74,7 +74,7 @@
             return Mapper<StripePlan>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -83,7 +83,7 @@
             return Mapper<StripeDeleted>.MapFromJson(
                 await Requestor.DeleteAsync(
                     $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}",
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -92,7 +92,7 @@
             return Mapper<StripePlan>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -101,7 +101,7 @@
             return Mapper<StripeList<StripePlan>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.Plans, true),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
     }

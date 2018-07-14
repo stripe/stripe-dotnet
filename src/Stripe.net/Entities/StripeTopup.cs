@@ -31,7 +31,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
             }
         }
         #endregion

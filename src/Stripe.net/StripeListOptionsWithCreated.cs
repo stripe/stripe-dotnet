@@ -10,7 +10,7 @@
         public DateTime? Created { get; set; }
 
         [JsonProperty("created")]
-        internal string CreatedInternal => Created?.ConvertDateTimeToEpoch().ToString();
+        internal string CreatedInternal => this.Created?.ConvertDateTimeToEpoch().ToString();
 
         [JsonProperty("created[gt]")]
         public DateTime? GreaterThan { get; set; }

@@ -38,7 +38,7 @@
         {
             set
             {
-                StringOrObject<StripeOutcomeRule>.Map(value, s => RuleId = s, o => Rule = o);
+                StringOrObject<StripeOutcomeRule>.Map(value, s => this.RuleId = s, o => this.Rule = o);
             }
         }
         #endregion

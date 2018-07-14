@@ -28,7 +28,7 @@
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, Urls.InvoiceItems, false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeInvoiceLineItem Get(string invoiceItemId, StripeRequestOptions requestOptions = null)
@@ -36,7 +36,7 @@
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeInvoiceLineItem Update(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
@@ -44,7 +44,7 @@
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeDeleted Delete(string invoiceItemId, StripeRequestOptions requestOptions = null)
@@ -52,7 +52,7 @@
             return Mapper<StripeDeleted>.MapFromJson(
                 Requestor.Delete(
                     $"{Urls.InvoiceItems}/{invoiceItemId}",
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripeInvoiceLineItem> List(StripeInvoiceItemListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -60,7 +60,7 @@
             return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.InvoiceItems, true),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeInvoiceLineItem> CreateAsync(StripeInvoiceItemCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -68,7 +68,7 @@
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, Urls.InvoiceItems, false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -77,7 +77,7 @@
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -86,7 +86,7 @@
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -95,7 +95,7 @@
             return Mapper<StripeDeleted>.MapFromJson(
                 await Requestor.DeleteAsync(
                     $"{Urls.InvoiceItems}/{invoiceItemId}",
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -104,7 +104,7 @@
             return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.InvoiceItems, true),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
     }

@@ -23,7 +23,7 @@
             return Mapper<StripeCoupon>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, Urls.Coupons, false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeCoupon Update(string couponId, StripeCouponUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
@@ -31,7 +31,7 @@
             return Mapper<StripeCoupon>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeCoupon Get(string couponId, StripeRequestOptions requestOptions = null)
@@ -39,7 +39,7 @@
             return Mapper<StripeCoupon>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeDeleted Delete(string couponId, StripeRequestOptions requestOptions = null)
@@ -47,7 +47,7 @@
             return Mapper<StripeDeleted>.MapFromJson(
                 Requestor.Delete(
                     this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripeCoupon> List(StripeCouponListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -55,7 +55,7 @@
             return Mapper<StripeList<StripeCoupon>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.Coupons, true),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeCoupon> CreateAsync(StripeCouponCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -63,7 +63,7 @@
             return Mapper<StripeCoupon>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, Urls.Coupons, false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -72,7 +72,7 @@
             return Mapper<StripeCoupon>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -81,7 +81,7 @@
             return Mapper<StripeCoupon>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -90,7 +90,7 @@
             return Mapper<StripeDeleted>.MapFromJson(
                 await Requestor.DeleteAsync(
                     this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -99,7 +99,7 @@
             return Mapper<StripeList<StripeCoupon>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.Coupons, true),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
     }

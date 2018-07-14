@@ -60,13 +60,13 @@
         {
             get
             {
-                if (EndTrialNow)
+                if (this.EndTrialNow)
                 {
                     return "now";
                 }
-                else if (TrialEnd.HasValue)
+                else if (this.TrialEnd.HasValue)
                 {
-                    return EpochTime.ConvertDateTimeToEpoch(TrialEnd.Value).ToString();
+                    return EpochTime.ConvertDateTimeToEpoch(this.TrialEnd.Value).ToString();
                 }
                 else
                 {

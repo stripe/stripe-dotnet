@@ -18,7 +18,7 @@
         [JsonProperty("timestamp")]
         internal string TimestampInternal
         {
-            get { return Timestamp.ConvertDateTimeToEpoch().ToString(); }
+            get { return this.Timestamp.ConvertDateTimeToEpoch().ToString(); }
         }
 
         [JsonProperty("quantity")]

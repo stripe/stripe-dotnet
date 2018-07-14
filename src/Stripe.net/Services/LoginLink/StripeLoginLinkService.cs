@@ -19,12 +19,12 @@ namespace Stripe
 
         public virtual StripeLoginLink Create(string accountId, StripeLoginLinkCreateOptions options = null, StripeRequestOptions requestOptions = null)
         {
-            return Post($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, options);
+            return this.Post($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, options);
         }
 
         public virtual Task<StripeLoginLink> CreateAsync(string accountId, StripeLoginLinkCreateOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PostAsync($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, cancellationToken, options);
+            return this.PostAsync($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, cancellationToken, options);
         }
     }
 }

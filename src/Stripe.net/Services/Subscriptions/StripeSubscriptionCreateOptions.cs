@@ -17,12 +17,12 @@
         {
             get
             {
-                if (!BillingCycleAnchor.HasValue)
+                if (!this.BillingCycleAnchor.HasValue)
                 {
                     return null;
                 }
 
-                return EpochTime.ConvertDateTimeToEpoch(BillingCycleAnchor.Value);
+                return EpochTime.ConvertDateTimeToEpoch(this.BillingCycleAnchor.Value);
             }
         }
 

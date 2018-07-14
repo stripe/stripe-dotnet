@@ -47,7 +47,7 @@
         {
             set
             {
-                StringOrObject<StripeSource>.Map(value, s => SourceId = s, o => Source = o);
+                StringOrObject<StripeSource>.Map(value, s => this.SourceId = s, o => this.Source = o);
             }
         }
         #endregion

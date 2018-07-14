@@ -17,12 +17,12 @@
         {
             get
             {
-                if (BillingCycleAnchorNow)
+                if (this.BillingCycleAnchorNow)
                 {
                     return "now";
                 }
 
-                if (BillingCycleAnchorUnchanged)
+                if (this.BillingCycleAnchorUnchanged)
                 {
                     return "unchanged";
                 }
@@ -52,7 +52,7 @@
         public DateTime? ProrationDate { get; set; }
 
         [JsonProperty("proration_date")]
-        internal string ProrationDateInternal => ProrationDate?.ConvertDateTimeToEpoch().ToString();
+        internal string ProrationDateInternal => this.ProrationDate?.ConvertDateTimeToEpoch().ToString();
         #endregion
     }
 }

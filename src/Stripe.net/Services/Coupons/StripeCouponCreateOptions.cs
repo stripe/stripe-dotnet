@@ -41,12 +41,12 @@
         {
             get
             {
-                if (!RedeemBy.HasValue)
+                if (!this.RedeemBy.HasValue)
                 {
                     return null;
                 }
 
-                return EpochTime.ConvertDateTimeToEpoch(RedeemBy.Value);
+                return EpochTime.ConvertDateTimeToEpoch(this.RedeemBy.Value);
             }
         }
     }

@@ -31,7 +31,7 @@
         public DateTime? DueDate { get; set; }
 
         [JsonProperty("due_date")]
-        internal long? DueDateInternal => DueDate?.ConvertDateTimeToEpoch();
+        internal long? DueDateInternal => this.DueDate?.ConvertDateTimeToEpoch();
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

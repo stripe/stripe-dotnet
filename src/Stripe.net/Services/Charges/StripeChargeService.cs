@@ -45,7 +45,7 @@
             return Mapper<StripeCharge>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, Urls.Charges, false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeCharge Update(string chargeId, StripeChargeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
@@ -53,7 +53,7 @@
             return Mapper<StripeCharge>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeCharge Get(string chargeId, StripeRequestOptions requestOptions = null)
@@ -61,7 +61,7 @@
             return Mapper<StripeCharge>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripeCharge> List(StripeChargeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -69,7 +69,7 @@
             return Mapper<StripeList<StripeCharge>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.Charges, true),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeCharge Capture(string chargeId, StripeChargeCaptureOptions captureOptions, StripeRequestOptions requestOptions = null)
@@ -77,7 +77,7 @@
             return Mapper<StripeCharge>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(captureOptions, $"{Urls.Charges}/{chargeId}/capture", false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeCharge> CreateAsync(StripeChargeCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -85,7 +85,7 @@
             return Mapper<StripeCharge>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, Urls.Charges, false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -94,7 +94,7 @@
             return Mapper<StripeCharge>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -103,7 +103,7 @@
             return Mapper<StripeCharge>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -112,7 +112,7 @@
             return Mapper<StripeList<StripeCharge>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.Charges, true),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -121,7 +121,7 @@
             return Mapper<StripeCharge>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(captureOptions, $"{Urls.Charges}/{chargeId}/capture", false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
     }

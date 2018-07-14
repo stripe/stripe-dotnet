@@ -20,7 +20,7 @@
         {
             set
             {
-                StringOrObject<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
+                StringOrObject<StripeCharge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
             }
         }
         #endregion

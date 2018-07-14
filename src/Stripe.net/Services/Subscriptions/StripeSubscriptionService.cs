@@ -26,7 +26,7 @@
             return Mapper<StripeSubscription>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, url, false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeSubscription Create(string customerId, string planId, StripeSubscriptionCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
@@ -37,7 +37,7 @@
             return Mapper<StripeSubscription>.MapFromJson(
                 Requestor.PostString(
                     ParameterBuilder.ApplyParameterToUrl(url, "plan", planId),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeSubscription Create(string customerId, StripeSubscriptionCreateOptions createOptions = null, StripeRequestOptions requestOptions = null)
@@ -48,7 +48,7 @@
             return Mapper<StripeSubscription>.MapFromJson(
                 Requestor.PostString(
                     url,
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeSubscription Update(string subscriptionId, StripeSubscriptionUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
@@ -58,7 +58,7 @@
             return Mapper<StripeSubscription>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, url, false),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeSubscription Cancel(string subscriptionId, bool cancelAtPeriodEnd = false, StripeRequestOptions requestOptions = null)
@@ -67,7 +67,7 @@
             url = ParameterBuilder.ApplyParameterToUrl(url, "at_period_end", cancelAtPeriodEnd.ToString());
 
             return Mapper<StripeSubscription>.MapFromJson(
-                Requestor.Delete(url, SetupRequestOptions(requestOptions)));
+                Requestor.Delete(url, this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeList<StripeSubscription> List(StripeSubscriptionListOptions listOptions = null, StripeRequestOptions requestOptions = null)
@@ -75,7 +75,7 @@
             return Mapper<StripeList<StripeSubscription>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.Subscriptions, true),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeSubscription> GetAsync(string subscriptionId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -85,7 +85,7 @@
             return Mapper<StripeSubscription>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, url, false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -97,7 +97,7 @@
             return Mapper<StripeSubscription>.MapFromJson(
                 await Requestor.PostStringAsync(
                    ParameterBuilder.ApplyParameterToUrl(url, "plan", planId),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -109,7 +109,7 @@
             return Mapper<StripeSubscription>.MapFromJson(
                 await Requestor.PostStringAsync(
                     url,
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -120,7 +120,7 @@
             return Mapper<StripeSubscription>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, url, false),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -132,7 +132,7 @@
             return Mapper<StripeSubscription>.MapFromJson(
                 await Requestor.DeleteAsync(
                     url,
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -141,7 +141,7 @@
             return Mapper<StripeList<StripeSubscription>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.Subscriptions, true),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
     }

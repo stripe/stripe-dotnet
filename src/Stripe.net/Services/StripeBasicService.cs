@@ -27,7 +27,7 @@
             return Mapper<EntityReturned>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(options, url),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public StripeList<EntityReturned> GetEntityList(string url, StripeRequestOptions requestOptions, StripeBaseOptions options = null)
@@ -35,7 +35,7 @@
             return Mapper<StripeList<EntityReturned>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(options, url, true),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public EntityReturned Post(string url, StripeRequestOptions requestOptions, StripeBaseOptions options = null)
@@ -43,7 +43,7 @@
             return Mapper<EntityReturned>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(options, url),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual StripeDeleted DeleteEntity(string url, StripeRequestOptions requestOptions, StripeBaseOptions options = null)
@@ -51,7 +51,7 @@
             return Mapper<StripeDeleted>.MapFromJson(
                 Requestor.Delete(
                     this.ApplyAllParameters(options, url),
-                    SetupRequestOptions(requestOptions)));
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<EntityReturned> GetEntityAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken, StripeBaseOptions options = null)
@@ -59,7 +59,7 @@
             return Mapper<EntityReturned>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(options, url),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -68,7 +68,7 @@
             return Mapper<StripeList<EntityReturned>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(options, url, true),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -77,7 +77,7 @@
             return Mapper<EntityReturned>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(options, url),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
@@ -86,7 +86,7 @@
             return Mapper<StripeDeleted>.MapFromJson(
                 await Requestor.DeleteAsync(
                     this.ApplyAllParameters(options, url),
-                    SetupRequestOptions(requestOptions),
+                    this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
     }

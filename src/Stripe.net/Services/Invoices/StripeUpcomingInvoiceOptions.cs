@@ -23,12 +23,12 @@
         {
             get
             {
-                if (!SubscriptionBillingCycleAnchor.HasValue)
+                if (!this.SubscriptionBillingCycleAnchor.HasValue)
                 {
                     return null;
                 }
 
-                return EpochTime.ConvertDateTimeToEpoch(SubscriptionBillingCycleAnchor.Value);
+                return EpochTime.ConvertDateTimeToEpoch(this.SubscriptionBillingCycleAnchor.Value);
             }
         }
 
@@ -51,12 +51,12 @@
         {
             get
             {
-                if (!SubscriptionProrationDate.HasValue)
+                if (!this.SubscriptionProrationDate.HasValue)
                 {
                     return null;
                 }
 
-                return EpochTime.ConvertDateTimeToEpoch(SubscriptionProrationDate.Value);
+                return EpochTime.ConvertDateTimeToEpoch(this.SubscriptionProrationDate.Value);
             }
         }
 
@@ -73,12 +73,12 @@
         {
             get
             {
-                if (!SubscriptionTrialEnd.HasValue)
+                if (!this.SubscriptionTrialEnd.HasValue)
                 {
                     return null;
                 }
 
-                return EpochTime.ConvertDateTimeToEpoch(SubscriptionTrialEnd.Value);
+                return EpochTime.ConvertDateTimeToEpoch(this.SubscriptionTrialEnd.Value);
             }
         }
 

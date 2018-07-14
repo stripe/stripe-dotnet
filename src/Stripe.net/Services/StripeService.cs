@@ -4,7 +4,7 @@
     {
         protected StripeService(string apiKey)
         {
-            ApiKey = apiKey;
+            this.ApiKey = apiKey;
         }
 
         public string ApiKey { get; set; }
@@ -16,9 +16,9 @@
                 requestOptions = new StripeRequestOptions();
             }
 
-            if (!string.IsNullOrEmpty(ApiKey))
+            if (!string.IsNullOrEmpty(this.ApiKey))
             {
-                requestOptions.ApiKey = ApiKey;
+                requestOptions.ApiKey = this.ApiKey;
             }
 
             return requestOptions;

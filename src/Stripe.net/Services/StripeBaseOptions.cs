@@ -9,12 +9,12 @@ namespace Stripe
 
         public void AddExtraParam(string key, string value)
         {
-            ExtraParams.Add(key, value);
+            this.ExtraParams.Add(key, value);
         }
 
         public void AddExpand(string value)
         {
-            Expand.Add(value);
+            this.Expand.Add(value);
         }
     }
 }

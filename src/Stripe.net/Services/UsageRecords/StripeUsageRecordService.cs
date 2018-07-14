@@ -19,12 +19,12 @@
 
         public virtual StripeUsageRecord Create(StripeUsageRecordCreateOptions options, StripeRequestOptions requestOptions = null)
         {
-            return Post($"{Urls.BaseUrl}/subscription_items/{options.SubscriptionItem}/usage_records", requestOptions, options);
+            return this.Post($"{Urls.BaseUrl}/subscription_items/{options.SubscriptionItem}/usage_records", requestOptions, options);
         }
 
         public virtual Task<StripeUsageRecord> CreateAsync(StripeUsageRecordCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PostAsync($"{Urls.BaseUrl}/subscription_items/{options.SubscriptionItem}/usage_records", requestOptions, cancellationToken, options);
+            return this.PostAsync($"{Urls.BaseUrl}/subscription_items/{options.SubscriptionItem}/usage_records", requestOptions, cancellationToken, options);
         }
     }
 }

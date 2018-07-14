@@ -20,52 +20,52 @@ namespace Stripe
 
         public virtual StripeProduct Create(StripeProductCreateOptions options, StripeRequestOptions requestOptions = null)
         {
-            return Post($"{Urls.BaseUrl}/products", requestOptions, options);
+            return this.Post($"{Urls.BaseUrl}/products", requestOptions, options);
         }
 
         public virtual StripeProduct Get(string productId, StripeRequestOptions requestOptions = null)
         {
-            return GetEntity($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions);
+            return this.GetEntity($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions);
         }
 
         public virtual StripeProduct Update(string productId, StripeProductUpdateOptions options, StripeRequestOptions requestOptions = null)
         {
-            return Post($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions, options);
+            return this.Post($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions, options);
         }
 
         public virtual StripeList<StripeProduct> List(StripeProductListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            return GetEntityList($"{Urls.BaseUrl}/products", requestOptions, listOptions);
+            return this.GetEntityList($"{Urls.BaseUrl}/products", requestOptions, listOptions);
         }
 
         public virtual StripeDeleted Delete(string productId, StripeRequestOptions requestOptions = null)
         {
-            return DeleteEntity($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions);
+            return this.DeleteEntity($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions);
         }
 
         public virtual Task<StripeProduct> CreateAsync(StripeProductCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PostAsync($"{Urls.BaseUrl}/products", requestOptions, cancellationToken, options);
+            return this.PostAsync($"{Urls.BaseUrl}/products", requestOptions, cancellationToken, options);
         }
 
         public virtual Task<StripeProduct> GetAsync(string productId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return GetEntityAsync($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions, cancellationToken);
+            return this.GetEntityAsync($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions, cancellationToken);
         }
 
         public virtual Task<StripeProduct> UpdateAsync(string productId, StripeProductUpdateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PostAsync($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions, cancellationToken, options);
+            return this.PostAsync($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions, cancellationToken, options);
         }
 
         public virtual Task<StripeList<StripeProduct>> ListAsync(StripeProductListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return GetEntityListAsync($"{Urls.BaseUrl}/products", requestOptions, cancellationToken, listOptions);
+            return this.GetEntityListAsync($"{Urls.BaseUrl}/products", requestOptions, cancellationToken, listOptions);
         }
 
         public virtual Task<StripeDeleted> DeleteAsync(string productId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return DeleteEntityAsync($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions, cancellationToken);
+            return this.DeleteEntityAsync($"{Urls.BaseUrl}/products/{WebUtility.UrlEncode(productId)}", requestOptions, cancellationToken);
         }
     }
 }

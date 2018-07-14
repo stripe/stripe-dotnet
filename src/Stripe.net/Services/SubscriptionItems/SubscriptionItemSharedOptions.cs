@@ -28,12 +28,12 @@
         {
             get
             {
-                if (!ProrationDate.HasValue)
+                if (!this.ProrationDate.HasValue)
                 {
                     return null;
                 }
 
-                return ProrationDate.Value.ConvertDateTimeToEpoch();
+                return this.ProrationDate.Value.ConvertDateTimeToEpoch();
             }
         }
 

@@ -38,7 +38,7 @@
         {
             set
             {
-                StringOrObject<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+                StringOrObject<StripeCustomer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
             }
         }
         #endregion

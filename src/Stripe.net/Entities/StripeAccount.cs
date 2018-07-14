@@ -21,7 +21,7 @@
         {
             set
             {
-                StringOrObject<StripeFileUpload>.Map(value, s => BusinessLogoFileId = s, o => BusinessLogo = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => this.BusinessLogoFileId = s, o => this.BusinessLogo = o);
             }
         }
         #endregion

@@ -2,12 +2,6 @@
 <RuleSet Name="Rules for StyleCop.Analyzers" Description="Code analysis rules for Stripe.net" ToolsVersion="14.0">
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
     <!--
-      SA1101: PrefixLocalCallsWithThis
-      This ones seems really manual to fix.
-    -->
-    <Rule Id="SA1101" Action="None" />
-
-    <!--
       SA1401: FieldsMustBePrivate
       This ones would introduce breaking changes
     -->

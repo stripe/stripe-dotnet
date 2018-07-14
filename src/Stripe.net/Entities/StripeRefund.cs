@@ -24,7 +24,7 @@
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
             }
         }
         #endregion
@@ -40,7 +40,7 @@
         {
             set
             {
-                StringOrObject<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
+                StringOrObject<StripeCharge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
             }
         }
         #endregion
@@ -66,7 +66,7 @@
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => FailureBalanceTransactionId = s, o => FailureBalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.FailureBalanceTransactionId = s, o => this.FailureBalanceTransaction = o);
             }
         }
         #endregion
