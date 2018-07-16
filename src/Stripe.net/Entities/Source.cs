@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public enum SourceType
     {
         Account,
@@ -18,9 +18,13 @@ namespace Stripe
         public SourceType Type { get; set; }
 
         public StripeAccount Account { get; set; }
+
         public StripeBankAccount BankAccount { get; set; }
+
         public StripeCard Card { get; set; }
+
         public StripeDeleted Deleted { get; set; }
+
         public StripeSource SourceObject { get; set; }
     }
 }

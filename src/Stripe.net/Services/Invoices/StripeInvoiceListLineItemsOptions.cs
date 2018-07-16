@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class StripeInvoiceListLineItemsOptions : StripeListOptions
     {
         [JsonProperty("coupon")]

@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeOutcome : StripeEntityWithId
     {
         /// <summary>
@@ -24,6 +24,7 @@ namespace Stripe
         public string RiskLevel { get; set; }
 
         #region Expandable Rule
+
         /// <summary>
         /// The ID of the Radar rule that matched the payment, if applicable.
         /// </summary>
@@ -37,7 +38,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeOutcomeRule>.Map(value, s => RuleId = s, o => Rule = o);
+                StringOrObject<StripeOutcomeRule>.Map(value, s => this.RuleId = s, o => this.Rule = o);
             }
         }
         #endregion

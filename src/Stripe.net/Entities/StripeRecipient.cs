@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeRecipient : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
@@ -31,7 +31,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeCard>.Map(value, s => StripeDefaultCardId = s, o => StripeDefaultCard = o);
+                StringOrObject<StripeCard>.Map(value, s => this.StripeDefaultCardId = s, o => this.StripeDefaultCard = o);
             }
         }
         #endregion

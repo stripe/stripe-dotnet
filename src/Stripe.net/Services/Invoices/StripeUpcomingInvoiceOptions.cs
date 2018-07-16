@@ -1,10 +1,10 @@
-﻿using System;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-using System.Collections.Generic;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeUpcomingInvoiceOptions : StripeBaseOptions
     {
         [JsonProperty("coupon")]
@@ -23,9 +23,12 @@ namespace Stripe
         {
             get
             {
-                if (!SubscriptionBillingCycleAnchor.HasValue) return null;
+                if (!this.SubscriptionBillingCycleAnchor.HasValue)
+                {
+                    return null;
+                }
 
-                return EpochTime.ConvertDateTimeToEpoch(SubscriptionBillingCycleAnchor.Value);
+                return EpochTime.ConvertDateTimeToEpoch(this.SubscriptionBillingCycleAnchor.Value);
             }
         }
 
@@ -48,10 +51,12 @@ namespace Stripe
         {
             get
             {
-                if (!SubscriptionProrationDate.HasValue)
+                if (!this.SubscriptionProrationDate.HasValue)
+                {
                     return null;
+                }
 
-                return EpochTime.ConvertDateTimeToEpoch(SubscriptionProrationDate.Value);
+                return EpochTime.ConvertDateTimeToEpoch(this.SubscriptionProrationDate.Value);
             }
         }
 
@@ -68,10 +73,12 @@ namespace Stripe
         {
             get
             {
-                if (!SubscriptionTrialEnd.HasValue)
+                if (!this.SubscriptionTrialEnd.HasValue)
+                {
                     return null;
+                }
 
-                return EpochTime.ConvertDateTimeToEpoch(SubscriptionTrialEnd.Value);
+                return EpochTime.ConvertDateTimeToEpoch(this.SubscriptionTrialEnd.Value);
             }
         }
 

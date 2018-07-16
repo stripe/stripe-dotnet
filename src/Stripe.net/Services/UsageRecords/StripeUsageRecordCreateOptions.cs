@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeUsageRecordCreateOptions : StripeBaseOptions
     {
         [JsonProperty("action")]
@@ -18,7 +18,7 @@ namespace Stripe
         [JsonProperty("timestamp")]
         internal string TimestampInternal
         {
-            get { return Timestamp.ConvertDateTimeToEpoch().ToString(); }
+            get { return this.Timestamp.ConvertDateTimeToEpoch().ToString(); }
         }
 
         [JsonProperty("quantity")]

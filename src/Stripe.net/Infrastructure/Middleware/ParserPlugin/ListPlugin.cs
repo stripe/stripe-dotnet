@@ -1,30 +1,41 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Newtonsoft.Json;
-
 namespace Stripe.Infrastructure.Middleware
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using Newtonsoft.Json;
+
     internal class ListPlugin : IParserPlugin
     {
-        public bool Parse(ref string requestString, JsonPropertyAttribute attribute,
-                PropertyInfo property, object propertyValue, object propertyParent)
+        public bool Parse(
+            ref string requestString,
+            JsonPropertyAttribute attribute,
+            PropertyInfo property,
+            object propertyValue,
+            object propertyParent)
         {
             // Check if the property is a List
             var type = property.PropertyType;
-            if (!type.GetTypeInfo().IsGenericType) return false;
-            if (type.GetTypeInfo().GetGenericTypeDefinition() != typeof(List<>)) return false;
+            if (!type.GetTypeInfo().IsGenericType)
+            {
+                return false;
+            }
+
+            if (type.GetTypeInfo().GetGenericTypeDefinition() != typeof(List<>))
+            {
+                return false;
+            }
 
             // Cast to List<object>
-            var items = ((IEnumerable) propertyValue).Cast<object>().ToList();
+            var items = ((IEnumerable)propertyValue).Cast<object>().ToList();
 
             // If the list is empty, just send the parameter's name with an empty string as the
             // value to tell Stripe's API to empty the parameter.
             if (items.Count == 0)
             {
-                RequestStringBuilder.ApplyParameterToRequestString(ref requestString, attribute.PropertyName, "");
+                RequestStringBuilder.ApplyParameterToRequestString(ref requestString, attribute.PropertyName, string.Empty);
                 return true;
             }
 
@@ -34,11 +45,16 @@ namespace Stripe.Infrastructure.Middleware
             {
                 var itemType = item.GetType();
 
-                if ((itemType.GetTypeInfo().IsPrimitive) || (itemType == typeof(String))) {
+                if (itemType.GetTypeInfo().IsPrimitive || (itemType == typeof(string)))
+                {
                     // Primitive type encoding (string counts as a primitive type)
-                    RequestStringBuilder.ApplyParameterToRequestString(ref requestString,
-                        $"{attribute.PropertyName}[{itemIndex}]", item.ToString());
-                } else {
+                    RequestStringBuilder.ApplyParameterToRequestString(
+                        ref requestString,
+                        $"{attribute.PropertyName}[{itemIndex}]",
+                        item.ToString());
+                }
+                else
+                {
                     // Complex type encoding
                     var itemProperties = item.GetType().GetRuntimeProperties();
 

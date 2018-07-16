@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeAccount : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
@@ -21,7 +21,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeFileUpload>.Map(value, s => BusinessLogoFileId = s, o => BusinessLogo = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => this.BusinessLogoFileId = s, o => this.BusinessLogo = o);
             }
         }
         #endregion
@@ -76,7 +76,7 @@ namespace Stripe
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
-        
+
         [JsonProperty("support_email")]
         public string SupportEmail { get; set; }
 

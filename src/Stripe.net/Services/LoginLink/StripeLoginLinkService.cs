@@ -1,29 +1,30 @@
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Stripe.Infrastructure;
-
 namespace Stripe
 {
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Stripe.Infrastructure;
+
     public class StripeLoginLinkService : StripeBasicService<StripeLoginLink>
     {
-        public StripeLoginLinkService() : base(null) { }
-        public StripeLoginLinkService(string apiKey) : base(apiKey) { }
-
-
-
-        //Sync
-        public virtual StripeLoginLink Create(string accountId, StripeLoginLinkCreateOptions options = null, StripeRequestOptions requestOptions = null)
+        public StripeLoginLinkService()
+            : base(null)
         {
-            return Post($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, options);
         }
 
+        public StripeLoginLinkService(string apiKey)
+            : base(apiKey)
+        {
+        }
 
+        public virtual StripeLoginLink Create(string accountId, StripeLoginLinkCreateOptions options = null, StripeRequestOptions requestOptions = null)
+        {
+            return this.Post($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, options);
+        }
 
-        // Async
         public virtual Task<StripeLoginLink> CreateAsync(string accountId, StripeLoginLinkCreateOptions options = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PostAsync($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, cancellationToken, options);
+            return this.PostAsync($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, cancellationToken, options);
         }
     }
 }

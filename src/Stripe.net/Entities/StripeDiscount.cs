@@ -1,9 +1,9 @@
-﻿using System;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeDiscount : StripeEntityWithId
     {
         [JsonProperty("object")]
@@ -23,7 +23,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+                StringOrObject<StripeCustomer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
             }
         }
         #endregion
@@ -47,7 +47,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeSubscription>.Map(value, s => SubscriptionId = s, o => Subscription = o);
+                StringOrObject<StripeSubscription>.Map(value, s => this.SubscriptionId = s, o => this.Subscription = o);
             }
         }
         #endregion

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Stripe.Infrastructure;
-using Newtonsoft.Json; 
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeSku : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
@@ -72,6 +72,7 @@ namespace Stripe
         public int Price { get; set; }
 
         #region Expandable Product
+
         /// <summary>
         /// The ID of the product this SKU is associated with. The product must be currently active.
         /// </summary>
@@ -85,7 +86,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeProduct>.Map(value, s => ProductId = s, o => Product = o);
+                StringOrObject<StripeProduct>.Map(value, s => this.ProductId = s, o => this.Product = o);
             }
         }
         #endregion

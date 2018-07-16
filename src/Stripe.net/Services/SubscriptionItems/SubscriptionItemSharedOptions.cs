@@ -1,9 +1,9 @@
-﻿using System;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public abstract class SubscriptionItemSharedOptions : StripeBaseOptions
     {
         /// <summary>
@@ -28,9 +28,12 @@ namespace Stripe
         {
             get
             {
-                if (!ProrationDate.HasValue) return null;
+                if (!this.ProrationDate.HasValue)
+                {
+                    return null;
+                }
 
-                return ProrationDate.Value.ConvertDateTimeToEpoch();
+                return this.ProrationDate.Value.ConvertDateTimeToEpoch();
             }
         }
 

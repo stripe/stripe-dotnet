@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Stripe.Infrastructure.Middleware;
-
-namespace Stripe.Infrastructure
+﻿namespace Stripe.Infrastructure
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Reflection;
+    using System.Text.RegularExpressions;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure.Middleware;
+
     internal static class ParameterBuilder
     {
         public static string ApplyAllParameters(this StripeService service, StripeBaseOptions obj, string url, bool isListMethod = false)
@@ -23,14 +23,21 @@ namespace Stripe.Infrastructure
                 foreach (var property in obj.GetType().GetRuntimeProperties())
                 {
                     var value = property.GetValue(obj, null);
-                    if (value == null) continue;
+                    if (value == null)
+                    {
+                        continue;
+                    }
 
                     foreach (var attribute in property.GetCustomAttributes<JsonPropertyAttribute>())
                     {
                         if (value is INestedOptions)
+                        {
                             ApplyNestedObjectProperties(ref requestString, value);
+                        }
                         else
+                        {
                             RequestStringBuilder.ProcessPlugins(ref requestString, attribute, property, value, obj);
+                        }
                     }
                 }
 
@@ -39,7 +46,9 @@ namespace Stripe.Infrastructure
                     var key = WebUtility.UrlEncode(pair.Key);
                     RequestStringBuilder.ApplyParameterToRequestString(ref requestString, key, pair.Value);
                 }
-                foreach (var value in obj.Expand) {
+
+                foreach (var value in obj.Expand)
+                {
                     RequestStringBuilder.ApplyParameterToRequestString(ref requestString, "expand[]", value);
                 }
             }
@@ -50,7 +59,7 @@ namespace Stripe.Infrastructure
                 var propertiesToExpand = service.GetType()
                     .GetRuntimeProperties()
                     .Where(p => p.Name.StartsWith("Expand") && p.PropertyType == typeof(bool))
-                    .Where(p => (bool) p.GetValue(service, null))
+                    .Where(p => (bool)p.GetValue(service, null))
                     .Select(p => p.Name);
 
                 foreach (var propertyName in propertiesToExpand)
@@ -88,10 +97,15 @@ namespace Stripe.Infrastructure
             foreach (var property in nestedObject.GetType().GetRuntimeProperties())
             {
                 var value = property.GetValue(nestedObject, null);
-                if (value == null) continue;
+                if (value == null)
+                {
+                    continue;
+                }
 
                 foreach (var attribute in property.GetCustomAttributes<JsonPropertyAttribute>())
+                {
                     RequestStringBuilder.ProcessPlugins(ref requestString, attribute, property, value, nestedObject);
+                }
             }
         }
     }

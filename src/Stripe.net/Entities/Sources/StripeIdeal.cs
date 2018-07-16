@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using Newtonsoft.Json;
+
     public class StripeIdeal : StripeEntity
     {
         [JsonProperty("bank")]
@@ -13,4 +13,4 @@ namespace Stripe
         [JsonProperty("iban_last4")]
         public string IbanLast4 { get; set; }
     }
-} 
+}

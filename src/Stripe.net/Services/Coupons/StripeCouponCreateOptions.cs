@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeCouponCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("id")]
@@ -41,9 +41,12 @@ namespace Stripe
         {
             get
             {
-                if (!RedeemBy.HasValue) return null;
+                if (!this.RedeemBy.HasValue)
+                {
+                    return null;
+                }
 
-                return EpochTime.ConvertDateTimeToEpoch(RedeemBy.Value);
+                return EpochTime.ConvertDateTimeToEpoch(this.RedeemBy.Value);
             }
         }
     }

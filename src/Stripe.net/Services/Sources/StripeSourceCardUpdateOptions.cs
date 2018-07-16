@@ -1,7 +1,7 @@
-using Newtonsoft.Json;
-
 namespace Stripe
 {
+    using Newtonsoft.Json;
+
     public class StripeSourceCardUpdateOptions : INestedOptions
     {
         [JsonProperty("card[exp_month]")]

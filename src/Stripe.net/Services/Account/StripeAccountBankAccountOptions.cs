@@ -1,8 +1,8 @@
-﻿using System;
-using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using Newtonsoft.Json;
+
     public class StripeAccountBankAccountOptions : INestedOptions
     {
         [JsonProperty("external_account[object]")]

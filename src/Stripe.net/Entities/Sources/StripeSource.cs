@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     /// <summary>
     /// Source objects allow you to accept a variety of payment methods. They represent a customer's payment instrument and can be used with the Stripe API just like a card object: once chargeable, they can be charged, or attached to customers.
     /// </summary>
@@ -104,7 +104,9 @@ namespace Stripe
         [JsonProperty("usage")]
         public string Usage { get; set; }
 
-        // Type-specific attributes
+        /*
+         * Type-specific attributes
+         */
 
         [JsonProperty("ach_credit_transfer")]
         public StripeSourceAchCreditTransfer AchCreditTransfer { get; set; }

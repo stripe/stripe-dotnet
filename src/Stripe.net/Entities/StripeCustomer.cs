@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeCustomer : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
@@ -39,6 +39,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Default CustomerBankAccount
+
         /// <summary>
         /// Warning: this is not in the documentation
         /// </summary>
@@ -55,12 +56,13 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<CustomerBankAccount>.Map(value, s => DefaultCustomerBankAccountId = s, o => DefaultCustomerBankAccount = o);
+                StringOrObject<CustomerBankAccount>.Map(value, s => this.DefaultCustomerBankAccountId = s, o => this.DefaultCustomerBankAccount = o);
             }
         }
         #endregion
 
         #region Expandable DefaultSource
+
         /// <summary>
         /// ID of the default source attached to this customer
         /// <para>You can expand the DefaultSource by setting the ExpandDefaultSource property on the service to true</para>
@@ -75,7 +77,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<Source>.Map(value, s => DefaultSourceId = s, o => DefaultSource = o);
+                StringOrObject<Source>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
             }
         }
 

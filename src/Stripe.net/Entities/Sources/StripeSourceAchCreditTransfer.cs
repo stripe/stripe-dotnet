@@ -1,7 +1,7 @@
-using Newtonsoft.Json;
-
 namespace Stripe
 {
+    using Newtonsoft.Json;
+
     public class StripeSourceAchCreditTransfer : StripeEntity
     {
         [JsonProperty("account_number")]
@@ -19,4 +19,4 @@ namespace Stripe
         [JsonProperty("swift_code")]
         public string SwiftCode { get; set; }
     }
-} 
+}

@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using Newtonsoft.Json;
+
     public class StripeReceiver : StripeEntity
     {
         /// <summary>
@@ -28,4 +28,4 @@ namespace Stripe
         [JsonProperty("amount_returned")]
         public int AmountReturned { get; set; }
     }
-} 
+}

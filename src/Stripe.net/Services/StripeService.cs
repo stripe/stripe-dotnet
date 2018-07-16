@@ -2,19 +2,24 @@
 {
     public abstract class StripeService
     {
-        public string ApiKey { get; set; }
-
         protected StripeService(string apiKey)
         {
-            ApiKey = apiKey;
+            this.ApiKey = apiKey;
         }
+
+        public string ApiKey { get; set; }
 
         protected StripeRequestOptions SetupRequestOptions(StripeRequestOptions requestOptions)
         {
-            if(requestOptions == null) requestOptions = new StripeRequestOptions();
+            if (requestOptions == null)
+            {
+                requestOptions = new StripeRequestOptions();
+            }
 
-            if (!string.IsNullOrEmpty(ApiKey))
-                requestOptions.ApiKey = ApiKey;
+            if (!string.IsNullOrEmpty(this.ApiKey))
+            {
+                requestOptions.ApiKey = this.ApiKey;
+            }
 
             return requestOptions;
         }

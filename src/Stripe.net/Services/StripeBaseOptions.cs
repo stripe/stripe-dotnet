@@ -1,20 +1,20 @@
-using System.Collections.Generic;
-
 namespace Stripe
 {
+    using System.Collections.Generic;
+
     public class StripeBaseOptions
     {
-        public void AddExtraParam(string key, string value) {
-            ExtraParams.Add(key, value);
-        }
-
         public Dictionary<string, string> ExtraParams = new Dictionary<string, string>();
+        public List<string> Expand = new List<string>();
 
-
-        public void AddExpand(string value) {
-            Expand.Add(value);
+        public void AddExtraParam(string key, string value)
+        {
+            this.ExtraParams.Add(key, value);
         }
 
-        public List<string> Expand = new List<string>();
+        public void AddExpand(string value)
+        {
+            this.Expand.Add(value);
+        }
     }
 }

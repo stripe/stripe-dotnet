@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using Newtonsoft.Json;
-
 namespace Stripe
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class StripeExternalAccountCardUpdateOptions : INestedOptions, ISupportMetadata
     {
         [JsonProperty("default_for_currency")]

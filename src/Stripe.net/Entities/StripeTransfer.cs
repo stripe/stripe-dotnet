@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeTransfer : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
@@ -27,7 +27,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
             }
         }
         #endregion
@@ -50,7 +50,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeAccount>.Map(value, s => DestinationId = s, o => Destination = o);
+                StringOrObject<StripeAccount>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
             }
         }
         #endregion
@@ -66,7 +66,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeCharge>.Map(value, s => DestinationPaymentId = s, o => DestinationPayment = o);
+                StringOrObject<StripeCharge>.Map(value, s => this.DestinationPaymentId = s, o => this.DestinationPayment = o);
             }
         }
         #endregion
@@ -94,7 +94,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeCharge>.Map(value, s => SourceTransactionId = s, o => SourceTransaction = o);
+                StringOrObject<StripeCharge>.Map(value, s => this.SourceTransactionId = s, o => this.SourceTransaction = o);
             }
         }
         #endregion
@@ -104,5 +104,5 @@ namespace Stripe
 
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
-    } 
+    }
 }

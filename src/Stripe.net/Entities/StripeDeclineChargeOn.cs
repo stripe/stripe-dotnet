@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using Newtonsoft.Json;
+
     public class StripeDeclineChargeOn : StripeEntity
     {
         [JsonProperty("avs_failure")]

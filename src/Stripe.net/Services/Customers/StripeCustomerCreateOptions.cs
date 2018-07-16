@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeCustomerCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("account_balance")]
@@ -60,12 +60,18 @@ namespace Stripe
         {
             get
             {
-                if (EndTrialNow)
+                if (this.EndTrialNow)
+                {
                     return "now";
-                else if (TrialEnd.HasValue)
-                    return EpochTime.ConvertDateTimeToEpoch(TrialEnd.Value).ToString();
+                }
+                else if (this.TrialEnd.HasValue)
+                {
+                    return EpochTime.ConvertDateTimeToEpoch(this.TrialEnd.Value).ToString();
+                }
                 else
+                {
                     return null;
+                }
             }
         }
 

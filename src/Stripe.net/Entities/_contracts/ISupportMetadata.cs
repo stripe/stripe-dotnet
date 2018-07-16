@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-
 namespace Stripe
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Interface that identifies entities with a Metadata property of type <see cref="Dictionary{string,string}" />.
     /// </summary>

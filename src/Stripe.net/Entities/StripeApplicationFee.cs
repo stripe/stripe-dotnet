@@ -1,9 +1,9 @@
-﻿using System;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeApplicationFee : StripeEntityWithId
     {
         [JsonProperty("object")]
@@ -20,7 +20,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeAccount>.Map(value, s => AccountId = s, o => Account = o);
+                StringOrObject<StripeAccount>.Map(value, s => this.AccountId = s, o => this.Account = o);
             }
         }
         #endregion
@@ -42,7 +42,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeApplication>.Map(value, s => ApplicationId = s, o => Application = o);
+                StringOrObject<StripeApplication>.Map(value, s => this.ApplicationId = s, o => this.Application = o);
             }
         }
         #endregion
@@ -58,7 +58,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
             }
         }
         #endregion
@@ -74,7 +74,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
+                StringOrObject<StripeCharge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
             }
         }
         #endregion
@@ -100,7 +100,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeCharge>.Map(value, s => OriginatingTransactionId = s, o => OriginatingTransaction = o);
+                StringOrObject<StripeCharge>.Map(value, s => this.OriginatingTransactionId = s, o => this.OriginatingTransaction = o);
             }
         }
         #endregion

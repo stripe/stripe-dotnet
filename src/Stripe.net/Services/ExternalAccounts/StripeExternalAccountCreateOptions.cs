@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using Newtonsoft.Json;
-
 namespace Stripe
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class StripeExternalAccountCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("external_account")]

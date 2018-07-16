@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+
     public static class StripeEvents
     {
         /// <summary>
@@ -215,7 +215,7 @@ namespace Stripe
         public const string CustomerSubscriptionUpdated = "customer.subscription.updated";
 
         /// <summary>
-        /// Occurs whenever a new invoice is created. If you are using webhooks, Stripe will wait one hour after they have all succeeded to attempt to pay the invoice; the only exception here is on the first invoice, which gets created and paid immediately when you subscribe a customer to a plan. If your webhooks do not all respond successfully, Stripe will continue retrying the webhooks every hour and will not attempt to pay the invoice. After 3 days, Stripe will attempt to pay the invoice regardless of whether or not your webhooks have succeeded. 
+        /// Occurs whenever a new invoice is created. If you are using webhooks, Stripe will wait one hour after they have all succeeded to attempt to pay the invoice; the only exception here is on the first invoice, which gets created and paid immediately when you subscribe a customer to a plan. If your webhooks do not all respond successfully, Stripe will continue retrying the webhooks every hour and will not attempt to pay the invoice. After 3 days, Stripe will attempt to pay the invoice regardless of whether or not your webhooks have succeeded.
         /// </summary>
         public const string InvoiceCreated = "invoice.created";
 

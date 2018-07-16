@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
 namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeTransferReversal : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
@@ -24,7 +24,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
             }
         }
         #endregion
@@ -50,7 +50,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeTransfer>.Map(value, s => TransferId = s, o => Transfer = o);
+                StringOrObject<StripeTransfer>.Map(value, s => this.TransferId = s, o => this.Transfer = o);
             }
         }
         #endregion

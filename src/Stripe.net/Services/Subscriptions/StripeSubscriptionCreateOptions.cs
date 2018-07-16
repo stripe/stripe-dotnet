@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeSubscriptionCreateOptions : SubscriptionSharedOptions
     {
         /// <summary>
@@ -17,9 +17,12 @@ namespace Stripe
         {
             get
             {
-                if (!BillingCycleAnchor.HasValue) return null;
+                if (!this.BillingCycleAnchor.HasValue)
+                {
+                    return null;
+                }
 
-                return EpochTime.ConvertDateTimeToEpoch(BillingCycleAnchor.Value);
+                return EpochTime.ConvertDateTimeToEpoch(this.BillingCycleAnchor.Value);
             }
         }
 

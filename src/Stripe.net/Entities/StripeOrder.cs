@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeOrder : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
@@ -29,6 +29,7 @@ namespace Stripe
         public int? ApplicationFee { get; set; }
 
         #region Expandable Charge
+
         /// <summary>
         /// <para>The ID of the payment used to pay for the order. Present if the order status is paid, fulfilled, or refunded.</para>
         /// <para>Expandable</para>
@@ -43,7 +44,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeCharge>.Map(value, s => ChargeId = s, o => Charge = o);
+                StringOrObject<StripeCharge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
             }
         }
         #endregion
@@ -62,6 +63,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
+
         /// <summary>
         /// The customer used for the order.
         /// </summary>
@@ -75,7 +77,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+                StringOrObject<StripeCustomer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
             }
         }
         #endregion
@@ -126,7 +128,7 @@ namespace Stripe
         public List<StripeShippingMethod> ShippingMethods { get; set; }
 
         /// <summary>
-        /// Current order status. One of created, paid, canceled, fulfilled, or returned. 
+        /// Current order status. One of created, paid, canceled, fulfilled, or returned.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

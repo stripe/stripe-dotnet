@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeReturn : StripeEntityWithId
     {
         [JsonProperty("object")]
@@ -36,6 +36,7 @@ namespace Stripe
         public bool LiveMode { get; set; }
 
         #region Expandable Order
+
         /// <summary>
         /// <para>The order that this return includes items from.</para>
         /// <para>Expandable</para>
@@ -50,12 +51,13 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeOrder>.Map(value, s => OrderId = s, o => Order = o);
+                StringOrObject<StripeOrder>.Map(value, s => this.OrderId = s, o => this.Order = o);
             }
         }
         #endregion
 
         #region Expandable Refund
+
         /// <summary>
         /// <para>The ID of the refund issued for this return.</para>
         /// <para>Expandable</para>
@@ -70,7 +72,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeRefund>.Map(value, s => RefundId = s, o => Refund = o);
+                StringOrObject<StripeRefund>.Map(value, s => this.RefundId = s, o => this.Refund = o);
             }
         }
         #endregion

@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeSubscriptionUpdateOptions : SubscriptionSharedOptions
     {
         #region BillingCycleAnchor
         public bool BillingCycleAnchorNow { get; set; }
+
         public bool BillingCycleAnchorUnchanged { get; set; }
 
         [JsonProperty("billing_cycle_anchor")]
@@ -16,11 +17,15 @@ namespace Stripe
         {
             get
             {
-                if (BillingCycleAnchorNow)
+                if (this.BillingCycleAnchorNow)
+                {
                     return "now";
+                }
 
-                if (BillingCycleAnchorUnchanged)
+                if (this.BillingCycleAnchorUnchanged)
+                {
                     return "unchanged";
+                }
 
                 return null;
             }
@@ -40,13 +45,14 @@ namespace Stripe
         public List<StripeSubscriptionItemUpdateOption> Items { get; set; }
 
         #region ProrationDate
+
         /// <summary>
         /// Boolean indicating whether this subscription should cancel at the end of the current period.
         /// </summary>
         public DateTime? ProrationDate { get; set; }
 
         [JsonProperty("proration_date")]
-        internal string ProrationDateInternal => ProrationDate?.ConvertDateTimeToEpoch().ToString();
+        internal string ProrationDateInternal => this.ProrationDate?.ConvertDateTimeToEpoch().ToString();
         #endregion
     }
 }

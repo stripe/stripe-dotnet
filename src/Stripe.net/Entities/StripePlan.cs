@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripePlan : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
@@ -42,6 +42,7 @@ namespace Stripe
         public string Nickname { get; set; }
 
         #region Expandable Product
+
         /// <summary>
         /// ID of the product linked to this plan
         /// <para>You can expand the Product by setting the ExpandProduct property on the service to true</para>
@@ -56,7 +57,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeProduct>.Map(value, s => ProductId = s, o => Product = o);
+                StringOrObject<StripeProduct>.Map(value, s => this.ProductId = s, o => this.Product = o);
             }
         }
         #endregion

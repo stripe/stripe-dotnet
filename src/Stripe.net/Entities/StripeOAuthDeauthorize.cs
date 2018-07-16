@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using Newtonsoft.Json;
+
     public class StripeOAuthDeauthorize : StripeEntity
     {
         [JsonProperty("stripe_user_id")]

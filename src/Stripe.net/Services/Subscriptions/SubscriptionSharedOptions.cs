@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public abstract class SubscriptionSharedOptions : StripeBaseOptions, ISupportMetadata
     {
         /// <summary>
@@ -64,14 +64,16 @@ namespace Stripe
         public decimal? TaxPercent { get; set; }
 
         #region TrialEnd
+
         /// <summary>
         /// Date representing the end of the trial period the customer will get before being charged for the first time. Set <see cref="EndTrialNow"/> to <c>true</c> to end the customer’s trial immediately.
         /// </summary>
         public DateTime? TrialEnd { get; set; }
+
         public bool EndTrialNow { get; set; }
 
         [JsonProperty("trial_end")]
-        internal string TrialEndInternal => EndTrialNow ? "now" : TrialEnd?.ConvertDateTimeToEpoch().ToString();
+        internal string TrialEndInternal => this.EndTrialNow ? "now" : this.TrialEnd?.ConvertDateTimeToEpoch().ToString();
         #endregion
 
         /// <summary>

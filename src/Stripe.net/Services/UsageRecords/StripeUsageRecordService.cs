@@ -1,26 +1,30 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Stripe.Infrastructure;
+
     public class StripeUsageRecordService : StripeBasicService<StripeUsageRecord>
     {
-        public StripeUsageRecordService() : base(null) { }
-        public StripeUsageRecordService(string apiKey) : base(apiKey) { }
-
-        // Sync
-        public virtual StripeUsageRecord Create(StripeUsageRecordCreateOptions options, StripeRequestOptions requestOptions = null)
+        public StripeUsageRecordService()
+            : base(null)
         {
-            return Post($"{Urls.BaseUrl}/subscription_items/{options.SubscriptionItem}/usage_records", requestOptions, options);
         }
 
+        public StripeUsageRecordService(string apiKey)
+            : base(apiKey)
+        {
+        }
 
-        // Async
+        public virtual StripeUsageRecord Create(StripeUsageRecordCreateOptions options, StripeRequestOptions requestOptions = null)
+        {
+            return this.Post($"{Urls.BaseUrl}/subscription_items/{options.SubscriptionItem}/usage_records", requestOptions, options);
+        }
+
         public virtual Task<StripeUsageRecord> CreateAsync(StripeUsageRecordCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return PostAsync($"{Urls.BaseUrl}/subscription_items/{options.SubscriptionItem}/usage_records", requestOptions, cancellationToken, options);
+            return this.PostAsync($"{Urls.BaseUrl}/subscription_items/{options.SubscriptionItem}/usage_records", requestOptions, cancellationToken, options);
         }
     }
 }

@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripePayout : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
         public string Object => "payout";
-
 
         [JsonProperty("amount")]
         public int Amount { get; set; }
@@ -32,7 +31,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
             }
         }
         #endregion
@@ -58,12 +57,13 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<Source>.Map(value, s => DestinationId = s, o => Destination = o);
+                StringOrObject<Source>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
             }
         }
         #endregion
 
         #region Expandable Cancellation Balance Transaction
+
         /// <summary>
         /// If the payout failed or was canceled, this will be the ID of the balance transaction that reversed the initial balance transaction, and puts the funds from the failed payout back in your balance.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => FailureBalanceTransactionId = s, o => FailureBalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.FailureBalanceTransactionId = s, o => this.FailureBalanceTransaction = o);
             }
         }
         #endregion

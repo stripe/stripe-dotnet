@@ -1,20 +1,18 @@
-﻿using System;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Stripe.Infrastructure
+﻿namespace Stripe.Infrastructure
 {
+    using System;
+    using System.Globalization;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     internal static class Requestor
     {
-        internal static HttpClient HttpClient { get; private set; }
-
         static Requestor()
         {
             HttpClient =
@@ -23,12 +21,13 @@ namespace Stripe.Infrastructure
                     : new HttpClient();
 
             if (StripeConfiguration.HttpTimeSpan.HasValue)
+            {
                 HttpClient.Timeout = StripeConfiguration.HttpTimeSpan.Value;
+            }
         }
 
+        internal static HttpClient HttpClient { get; private set; }
 
-
-        // Sync
         public static StripeResponse GetString(string url, StripeRequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
@@ -66,13 +65,14 @@ namespace Stripe.Infrastructure
 
             var result = BuildResponseData(response, responseText);
 
-            if (response.IsSuccessStatusCode) return result;
+            if (response.IsSuccessStatusCode)
+            {
+                return result;
+            }
 
             throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
 
-
-        // Async
         public static Task<StripeResponse> GetStringAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
@@ -111,12 +111,12 @@ namespace Stripe.Infrastructure
             var result = BuildResponseData(response, responseText);
 
             if (response.IsSuccessStatusCode)
+            {
                 return result;
+            }
 
             throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
-
-
 
         private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions)
         {
@@ -128,19 +128,28 @@ namespace Stripe.Infrastructure
 
             var request = BuildRequest(method, url);
 
-            request.Headers.Add("Authorization",
+            request.Headers.Add(
+                "Authorization",
                 GetAuthorizationHeaderValue(requestOptions.ApiKey));
 
             if (requestOptions.StripeConnectAccountId != null)
+            {
                 request.Headers.Add("Stripe-Account", requestOptions.StripeConnectAccountId);
+            }
 
             if (requestOptions.IdempotencyKey != null)
+            {
                 request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
+            }
 
             if (requestOptions.StripeVersion != null)
+            {
                 request.Headers.Add("Stripe-Version", requestOptions.StripeVersion);
+            }
             else
+            {
                 request.Headers.Add("Stripe-Version", StripeConfiguration.StripeApiVersion);
+            }
 
             var client = new Client(request);
             client.ApplyUserAgent();
@@ -152,7 +161,9 @@ namespace Stripe.Infrastructure
         private static HttpRequestMessage BuildRequest(HttpMethod method, string url)
         {
             if (method != HttpMethod.Post)
+            {
                 return new HttpRequestMessage(method, new Uri(url));
+            }
 
             var postData = string.Empty;
             var newUrl = url;
@@ -195,7 +206,7 @@ namespace Stripe.Infrastructure
             fileContent.Headers.ContentType = new MediaTypeHeaderValue(MimeTypes.GetMimeType(fileName));
 
             var multiPartContent =
-                new MultipartFormDataContent($"----------Upload:{ DateTime.UtcNow.Ticks :x}")
+                new MultipartFormDataContent($"----------Upload:{DateTime.UtcNow.Ticks :x}")
                 {
                     { new StringContent(purpose), "\"purpose\"" },
                     fileContent

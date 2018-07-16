@@ -1,9 +1,9 @@
-using System;
-using System.Reflection;
-using Newtonsoft.Json;
-
 namespace Stripe.Infrastructure.Middleware
 {
+    using System;
+    using System.Reflection;
+    using Newtonsoft.Json;
+
     internal class EnumPlugin : IParserPlugin
     {
         public bool Parse(ref string requestString, JsonPropertyAttribute attribute, PropertyInfo property, object propertyValue, object propertyParent)
@@ -14,7 +14,11 @@ namespace Stripe.Infrastructure.Middleware
             {
                 type = Nullable.GetUnderlyingType(type);
             }
-            if (!type.GetTypeInfo().IsEnum) return false;
+
+            if (!type.GetTypeInfo().IsEnum)
+            {
+                return false;
+            }
 
             // Use JsonConvert to grab the EnumMemberAttribute's Value for the enum element
             string value = JsonConvert.SerializeObject(propertyValue).Trim('"');

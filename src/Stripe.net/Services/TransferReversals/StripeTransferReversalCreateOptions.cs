@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     public class StripeTransferReversalCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("amount")]

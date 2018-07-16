@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security.Cryptography;
+    using System.Text;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Stripe.Infrastructure;
+
     public static class StripeEventUtility
     {
         internal static readonly UTF8Encoding SafeUTF8 = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
@@ -17,7 +17,7 @@ namespace Stripe
         {
             return Mapper<StripeEvent>.MapFromJson(json);
         }
-        
+
         public static T ParseEventDataItem<T>(dynamic dataItem)
         {
             return JsonConvert.DeserializeObject<T>((dataItem as JObject).ToString());
@@ -30,30 +30,34 @@ namespace Stripe
 
         public static StripeEvent ConstructEvent(string json, string stripeSignatureHeader, string secret, int tolerance, long utcNow)
         {
-            var signatureItems = parseStripeSignature(stripeSignatureHeader);
+            var signatureItems = ParseStripeSignature(stripeSignatureHeader);
             var signature = string.Empty;
 
             try
             {
-               signature = computeSignature(secret, signatureItems["t"].FirstOrDefault(), json);
+               signature = ComputeSignature(secret, signatureItems["t"].FirstOrDefault(), json);
             }
             catch (EncoderFallbackException ex)
             {
                throw new StripeException("The webhook cannot be processed because the signature cannot be safely calculated.", ex);
             }
 
-            if (!isSignaturePresent(signature, signatureItems["v1"]))
+            if (!IsSignaturePresent(signature, signatureItems["v1"]))
+            {
                 throw new StripeException("The signature for the webhook is not present in the Stripe-Signature header.");
+            }
 
             var webhookUtc = Convert.ToInt32(signatureItems["t"].FirstOrDefault());
 
             if (Math.Abs(utcNow - webhookUtc) > tolerance)
+            {
                 throw new StripeException("The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.");
+            }
 
             return Mapper<StripeEvent>.MapFromJson(json);
         }
 
-        private static ILookup<string, string> parseStripeSignature(string stripeSignatureHeader)
+        private static ILookup<string, string> ParseStripeSignature(string stripeSignatureHeader)
         {
             return stripeSignatureHeader.Trim()
                 .Split(',')
@@ -61,12 +65,12 @@ namespace Stripe
                 .ToLookup(item => item[0], item => item[1]);
         }
 
-        private static bool isSignaturePresent(string signature, IEnumerable<string> signatures)
+        private static bool IsSignaturePresent(string signature, IEnumerable<string> signatures)
         {
-            return signatures.Any(key => secureCompare(key, signature));
+            return signatures.Any(key => SecureCompare(key, signature));
         }
 
-        private static string computeSignature(string secret, string timestamp, string payload)
+        private static string ComputeSignature(string secret, string timestamp, string payload)
         {
             var secretBytes = SafeUTF8.GetBytes(secret);
             var payloadBytes = SafeUTF8.GetBytes($"{timestamp}.{payload}");
@@ -74,13 +78,16 @@ namespace Stripe
             using (var cryptographer = new HMACSHA256(secretBytes))
             {
                 var hash = cryptographer.ComputeHash(payloadBytes);
-                return BitConverter.ToString(hash).Replace("-", "").ToLower();
-            }      
+                return BitConverter.ToString(hash).Replace("-", string.Empty).ToLower();
+            }
         }
 
-        private static bool secureCompare(string a, string b)
+        private static bool SecureCompare(string a, string b)
         {
-            if (a.Length != b.Length) return false;
+            if (a.Length != b.Length)
+            {
+                return false;
+            }
 
             var result = 0;
 

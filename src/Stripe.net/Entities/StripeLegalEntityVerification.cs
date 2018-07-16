@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeLegalEntityVerification : StripeEntity
     {
         [JsonProperty("details")]
@@ -17,13 +17,12 @@ namespace Stripe
         [JsonIgnore]
         public StripeFileUpload Document { get; set; }
 
-
         [JsonProperty("document")]
         internal object InternalDocument
         {
             set
             {
-                StringOrObject<StripeFileUpload>.Map(value, s => DocumentId = s, o => Document = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => this.DocumentId = s, o => this.Document = o);
             }
         }
         #endregion
@@ -39,7 +38,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeFileUpload>.Map(value, s => DocumentIdBack = s, o => DocumentBack = o);
+                StringOrObject<StripeFileUpload>.Map(value, s => this.DocumentIdBack = s, o => this.DocumentBack = o);
             }
         }
         #endregion

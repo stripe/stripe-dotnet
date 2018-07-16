@@ -1,8 +1,8 @@
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
 namespace Stripe
 {
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public enum ExternalAccountType
     {
         Card,
@@ -16,7 +16,9 @@ namespace Stripe
         public ExternalAccountType Type { get; set; }
 
         public StripeDeleted Deleted { get; set; }
+
         public StripeCard Card { get; set; }
+
         public StripeBankAccount BankAccount { get; set; }
     }
 }

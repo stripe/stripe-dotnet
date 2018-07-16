@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Rules for StyleCop.Analyzers" Description="Code analysis rules for Stripe.net" ToolsVersion="14.0">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <!--
+      SA1401: FieldsMustBePrivate
+      This ones would introduce breaking changes
+    -->
+    <Rule Id="SA1401" Action="None" />
+
+    <!--
+      Keep those rules disabled as it would force a header for each file
+      and a copyright.
+       - SA1633: FileMustHaveHeader
+       - SA1652: SA1652EnableXmlDocumentationOutput
+    -->
+    <Rule Id="SA1633" Action="None" />
+    <Rule Id="SA1652" Action="None" />
+
+    <!--
+      Keep those rules disabled as we actively use region in the code
+       - SA1124: DoNotUseRegions
+       - SA1202: ElementsMustBeOrderedByAccess
+      If we keep regions we can't do the latter as we have internal in the middle
+    -->
+    <Rule Id="SA1124" Action="None" />
+    <Rule Id="SA1202" Action="None" />
+
+    <!--
+      Keep this rule disabled as it affects `image` on SKU.
+      Fixing it would be a breaking change.
+    -->
+    <Rule Id="SA1300" Action="None" />
+  </Rules>
+</RuleSet>

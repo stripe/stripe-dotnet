@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
 namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeTopup : StripeEntityWithId
     {
         [JsonProperty("object")]
@@ -17,6 +17,7 @@ namespace Stripe
         public int Amount { get; set; }
 
         #region Expandable Balance Transaction
+
         /// <summary>
         /// ID of the balance transaction that describes the impact of this Top-up on your account balance (not including refunds or disputes).
         /// </summary>
@@ -30,7 +31,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
             }
         }
         #endregion

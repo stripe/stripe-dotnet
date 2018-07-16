@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using Newtonsoft.Json;
+
     public class StripeTransferListOptions : StripeListOptions
     {
         [JsonProperty("created")]
         public StripeDateFilter Created { get; set; }
-        
+
         [JsonProperty("destination")]
         public string Destination { get; set; }
 

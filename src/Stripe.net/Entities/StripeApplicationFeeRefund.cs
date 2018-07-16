@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeApplicationFeeRefund : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
@@ -24,7 +24,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
             }
         }
         #endregion
@@ -47,7 +47,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeApplicationFee>.Map(value, s => FeeId = s, o => Fee = o);
+                StringOrObject<StripeApplicationFee>.Map(value, s => this.FeeId = s, o => this.Fee = o);
             }
         }
         #endregion

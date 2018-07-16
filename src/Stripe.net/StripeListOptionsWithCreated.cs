@@ -1,16 +1,16 @@
-﻿using System;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeListOptionsWithCreated : StripeListOptions
     {
         [JsonProperty("created")]
         public DateTime? Created { get; set; }
 
         [JsonProperty("created")]
-        internal string CreatedInternal => Created?.ConvertDateTimeToEpoch().ToString();
+        internal string CreatedInternal => this.Created?.ConvertDateTimeToEpoch().ToString();
 
         [JsonProperty("created[gt]")]
         public DateTime? GreaterThan { get; set; }

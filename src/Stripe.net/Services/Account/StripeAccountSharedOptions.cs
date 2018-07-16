@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public abstract class StripeAccountSharedOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("business_logo")]
@@ -51,7 +51,7 @@ namespace Stripe
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
-        
+
         [JsonProperty("payout_statement_descriptor")]
         public string PayoutStatementDescriptor { get; set; }
 
@@ -73,9 +73,12 @@ namespace Stripe
         {
             get
             {
-                if (!TosAcceptanceDate.HasValue) return null;
+                if (!this.TosAcceptanceDate.HasValue)
+                {
+                    return null;
+                }
 
-                return EpochTime.ConvertDateTimeToEpoch(TosAcceptanceDate.Value);
+                return EpochTime.ConvertDateTimeToEpoch(this.TosAcceptanceDate.Value);
             }
         }
 

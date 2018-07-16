@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeInvoiceCreateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("application_fee")]
@@ -31,7 +31,7 @@ namespace Stripe
         public DateTime? DueDate { get; set; }
 
         [JsonProperty("due_date")]
-        internal long? DueDateInternal => DueDate?.ConvertDateTimeToEpoch();
+        internal long? DueDateInternal => this.DueDate?.ConvertDateTimeToEpoch();
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

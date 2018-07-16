@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
     public static class Mapper<T>
     {
         public static List<T> MapCollectionFromJson(string json, string token = "data", StripeResponse stripeResponse = null)
@@ -22,7 +22,7 @@ namespace Stripe
             return MapCollectionFromJson(stripeResponse.ResponseJson, token, stripeResponse);
         }
 
-        // the ResponseJson on a list method is the entire list (as json) returned from stripe. 
+        // the ResponseJson on a list method is the entire list (as json) returned from stripe.
         // the ObjectJson is so we can store only the json for a single object in the list on that entity for
         // logging and/or debugging
         public static T MapFromJson(string json, string parentToken = null, StripeResponse stripeResponse = null)
@@ -30,9 +30,9 @@ namespace Stripe
             var jsonToParse = string.IsNullOrEmpty(parentToken) ? json : JObject.Parse(json).SelectToken(parentToken).ToString();
 
             var result = JsonConvert.DeserializeObject<T>(jsonToParse);
-            applyStripeResponse(json, stripeResponse, result);
 
             // if necessary, we might need to apply the stripe response to nested properties for StripeList<T>
+            ApplyStripeResponse(json, stripeResponse, result);
 
             return result;
         }
@@ -42,14 +42,19 @@ namespace Stripe
             return MapFromJson(stripeResponse.ResponseJson, parentToken, stripeResponse);
         }
 
-        private static void applyStripeResponse(string json, StripeResponse stripeResponse, object obj)
+        private static void ApplyStripeResponse(string json, StripeResponse stripeResponse, object obj)
         {
-            if (stripeResponse == null) return;
+            if (stripeResponse == null)
+            {
+                return;
+            }
 
             foreach (var property in obj.GetType().GetRuntimeProperties())
             {
                 if (property.Name == nameof(StripeResponse))
+                {
                     property.SetValue(obj, stripeResponse);
+                }
             }
 
             stripeResponse.ObjectJson = json;

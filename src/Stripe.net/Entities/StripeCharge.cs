@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Stripe.Infrastructure;
-
-namespace Stripe
+﻿namespace Stripe
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
     public class StripeCharge : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
@@ -33,7 +33,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeApplication>.Map(value, s => ApplicationId = s, o => Application = o);
+                StringOrObject<StripeApplication>.Map(value, s => this.ApplicationId = s, o => this.Application = o);
             }
         }
         #endregion
@@ -52,12 +52,13 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeApplicationFee>.Map(value, s => ApplicationFeeId = s, o => ApplicationFee = o);
+                StringOrObject<StripeApplicationFee>.Map(value, s => this.ApplicationFeeId = s, o => this.ApplicationFee = o);
             }
         }
         #endregion
 
         #region Expandable Balance Transaction
+
         /// <summary>
         /// ID of the balance transaction that describes the impact of this charge on your account balance (not including refunds or disputes).
         /// </summary>
@@ -71,7 +72,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => BalanceTransactionId = s, o => BalanceTransaction = o);
+                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
             }
         }
         #endregion
@@ -93,6 +94,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
+
         /// <summary>
         /// ID of the customer this charge is for if one exists.
         /// </summary>
@@ -106,7 +108,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeCustomer>.Map(value, s => CustomerId = s, o => Customer = o);
+                StringOrObject<StripeCustomer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
             }
         }
         #endregion
@@ -128,7 +130,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeAccount>.Map(value, s => DestinationId = s, o => Destination = o);
+                StringOrObject<StripeAccount>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
             }
         }
         #endregion
@@ -147,7 +149,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeDispute>.Map(value, s => DisputeId = s, o => Dispute = o);
+                StringOrObject<StripeDispute>.Map(value, s => this.DisputeId = s, o => this.Dispute = o);
             }
         }
         #endregion
@@ -171,6 +173,7 @@ namespace Stripe
         public Dictionary<string, string> FraudDetails { get; set; }
 
         #region Expandable Invoice
+
         /// <summary>
         /// ID of the invoice this charge is for if one exists.
         /// </summary>
@@ -184,7 +187,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeInvoice>.Map(value, s => InvoiceId = s, o => Invoice = o);
+                StringOrObject<StripeInvoice>.Map(value, s => this.InvoiceId = s, o => this.Invoice = o);
             }
         }
         #endregion
@@ -199,6 +202,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         #region Expandable OnBehalfOf (Account)
+
         /// <summary>
         /// The account (if any) the charge was made on behalf of without triggering an automatic transfer. See the Connect documentation for details.
         /// <para>To populate the OnBehalfOf entity, you need to set ExpandOnBehalfOf to true on your service before invoking a service method.</para>
@@ -213,12 +217,13 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeAccount>.Map(value, s => OnBehalfOfId = s, o => OnBehalfOf = o);
+                StringOrObject<StripeAccount>.Map(value, s => this.OnBehalfOfId = s, o => this.OnBehalfOf = o);
             }
         }
         #endregion
 
         #region Expandable Order
+
         /// <summary>
         /// ID of the order this charge is for if one exists.
         /// </summary>
@@ -232,7 +237,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeOrder>.Map(value, s => OrderId = s, o => Order = o);
+                StringOrObject<StripeOrder>.Map(value, s => this.OrderId = s, o => this.Order = o);
             }
         }
         #endregion
@@ -281,6 +286,7 @@ namespace Stripe
         public StripeList<StripeRefund> Refunds { get; set; }
 
         #region Expandable Review
+
         /// <summary>
         /// ID of the review associated with this charge if one exists.
         /// </summary>
@@ -294,7 +300,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeReview>.Map(value, s => ReviewId = s, o => Review = o);
+                StringOrObject<StripeReview>.Map(value, s => this.ReviewId = s, o => this.Review = o);
             }
         }
         #endregion
@@ -312,6 +318,7 @@ namespace Stripe
         public Source Source { get; set; }
 
         #region Expandable Transfer
+
         /// <summary>
         /// The transfer ID which created this charge. Only present if the charge came from another Stripe account. See the Connect documentation for details.
         /// </summary>
@@ -325,7 +332,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeTransfer>.Map(value, s => SourceTransferId = s, o => SourceTransfer = o);
+                StringOrObject<StripeTransfer>.Map(value, s => this.SourceTransferId = s, o => this.SourceTransfer = o);
             }
         }
         #endregion
@@ -343,6 +350,7 @@ namespace Stripe
         public string Status { get; set; }
 
         #region Expandable Transfer
+
         /// <summary>
         /// ID of the transfer to the destination account (only applicable if the charge was created using the destination parameter).
         /// </summary>
@@ -356,7 +364,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<StripeTransfer>.Map(value, s => TransferId = s, o => Transfer = o);
+                StringOrObject<StripeTransfer>.Map(value, s => this.TransferId = s, o => this.Transfer = o);
             }
         }
         #endregion

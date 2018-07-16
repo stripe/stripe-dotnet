@@ -1,34 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using System.Reflection;
-using Newtonsoft.Json;
+﻿namespace Stripe.Infrastructure
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
+    using System.Net.Http;
+    using System.Reflection;
+    using Newtonsoft.Json;
 #if NET45
-using Microsoft.Win32;
-#else
-using System.Runtime.InteropServices;
+    using Microsoft.Win32;
+    #else
+    using System.Runtime.InteropServices;
 #endif
 
-namespace Stripe.Infrastructure
-{
     internal class Client
     {
-        private HttpRequestMessage RequestMessage { get; set; }
-
         public Client(HttpRequestMessage requestMessage)
         {
-            RequestMessage = requestMessage;
+            this.RequestMessage = requestMessage;
         }
+
+        private HttpRequestMessage RequestMessage { get; set; }
 
         public void ApplyUserAgent()
         {
-            RequestMessage.Headers.UserAgent.ParseAdd($"Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}");
+            this.RequestMessage.Headers.UserAgent.ParseAdd($"Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}");
         }
 
         public void ApplyClientData()
         {
-            RequestMessage.Headers.Add("X-Stripe-Client-User-Agent", GetClientUserAgentString());
+            this.RequestMessage.Headers.Add("X-Stripe-Client-User-Agent", this.GetClientUserAgentString());
         }
 
         private string GetClientUserAgentString()
