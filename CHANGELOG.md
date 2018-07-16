@@ -1,5 +1,8 @@
 # Changelog
 
+## 17.3.1 - 2018-07-16
+* [#1232](https://github.com/stripe/stripe-dotnet/pull/1232) Fix some code style issues reported by [StyleCop.Analyzers](https://github.com/DotNetAnalyzers/StyleCopAnalyzers). This should have no functional impact on the library.
+
 ## 17.3.0 - 2018-07-13
 * [#1234](https://github.com/stripe/stripe-dotnet/pull/1234) Add `Customer` to `StripeSourceCreateOptions`
 
