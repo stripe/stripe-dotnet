@@ -3,6 +3,7 @@ image: Visual Studio 2017
 
 environment:
   STRIPE_TEST_SK: sk_test_eBgAzVoEpJKfYjD9nf2YoyMM
+  # If you bump this, don't forget to bump `MinimumMockVersion` in `BaseStripeTest.cs` as well.
   STRIPE_MOCK_VERSION: 0.19.0
 
 deploy:
@@ -12,14 +13,20 @@ deploy:
   on:
     appveyor_repo_tag: true
 
+cache:
+  - stripe-mock -> appveyor.yml
+
 install:
   - ps: |
-      New-Item -Path . -Name "stripe-mock" -ItemType "directory" | Out-Null
-      wget "https://github.com/stripe/stripe-mock/releases/download/v$($env:STRIPE_MOCK_VERSION)/stripe-mock_$($env:STRIPE_MOCK_VERSION)_windows_amd64.tar.gz" -OutFile "$($pwd)\stripe-mock\stripe-mock.tar.gz"
-      7z.exe e -y -o"stripe-mock" "stripe-mock\stripe-mock.tar.gz" | Out-Null
-      7z.exe x -y -o"stripe-mock" "stripe-mock\stripe-mock.tar" | Out-Null
+      If(!(Test-Path "stripe-mock"))
+      {
+        New-Item -Path . -Name "stripe-mock" -ItemType "directory" -Force | Out-Null
+        wget "https://github.com/stripe/stripe-mock/releases/download/v$($env:STRIPE_MOCK_VERSION)/stripe-mock_$($env:STRIPE_MOCK_VERSION)_windows_amd64.tar.gz" -OutFile "$($pwd)\stripe-mock\stripe-mock.tar.gz"
+        7z.exe e -y -o"stripe-mock" "stripe-mock\stripe-mock.tar.gz" | Out-Null
+        7z.exe x -y -o"stripe-mock" "stripe-mock\stripe-mock.tar" | Out-Null
+      }
       $app = Start-Process -FilePath "stripe-mock\stripe-mock.exe" -NoNewWindow -PassThru
-      Write-Host ("`nstripe-mock running, Id = $($app.Id)`n") -ForegroundColor Green
+      Write-Host ("stripe-mock running, Id = $($app.Id)`n") -ForegroundColor Green
 
 before_build:
   - ps: Write-Host $("`n               HOST INFORMATION               `n") -BackgroundColor DarkCyan
@@ -36,12 +43,15 @@ build_script:
   - dotnet build -c Debug src\Stripe.net
   - dotnet build src\Stripe.net.Tests -c Debug
   - dotnet build src\Stripe.Tests.Xunit -c Debug
+  - dotnet build src\StripeTests -c Debug
 
 after_build:
   - ps: Write-Host $("`n               PACKING UP               `n") -BackgroundColor DarkCyan
   - dotnet pack -c Release src\Stripe.net
 
 test_script:
+  - ps: Write-Host $("`n               RUNNING THE NEW XUNIT + STRIPE-MOCK TESTS               `n") -BackgroundColor DarkCyan
+  - dotnet test src\StripeTests\StripeTests.csproj
   - ps: Write-Host $("`n               RUNNING THE XUNIT TESTS               `n") -BackgroundColor DarkCyan
   - dotnet test src\Stripe.Tests.XUnit\Stripe.Tests.XUnit.csproj
   - ps: Write-Host $("`n               RUNNING THE MSPEC TESTS               `n") -BackgroundColor DarkCyan
