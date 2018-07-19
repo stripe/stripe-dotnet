@@ -32,7 +32,7 @@ namespace StripeTests
 
             Assert.NotNull(balanceTransactions);
             Assert.NotNull(balanceTransactions.Data);
-            Assert.Equal(9, balanceTransactions.Data.Count);
+            Assert.Equal(11, balanceTransactions.Data.Count);
 
             Assert.NotNull(balanceTransactions.Data[0]);
             Assert.Equal("balance_transaction", balanceTransactions.Data[0].Object);
@@ -93,7 +93,21 @@ namespace StripeTests
             Assert.NotNull(balanceTransactions.Data[8]);
             Assert.Equal("balance_transaction", balanceTransactions.Data[8].Object);
             Assert.NotNull(balanceTransactions.Data[8].Source);
-            Assert.Equal(BalanceTransactionSourceType.Unknown, balanceTransactions.Data[8].Source.Type);
+            Assert.Equal(BalanceTransactionSourceType.IssuingAuthorization, balanceTransactions.Data[8].Source.Type);
+            Assert.NotNull(balanceTransactions.Data[8].Source.IssuingAuthorization);
+            Assert.Equal("issuing.authorization", balanceTransactions.Data[8].Source.IssuingAuthorization.Object);
+
+            Assert.NotNull(balanceTransactions.Data[9]);
+            Assert.Equal("balance_transaction", balanceTransactions.Data[9].Object);
+            Assert.NotNull(balanceTransactions.Data[9].Source);
+            Assert.Equal(BalanceTransactionSourceType.IssuingTransaction, balanceTransactions.Data[9].Source.Type);
+            Assert.NotNull(balanceTransactions.Data[9].Source.IssuingTransaction);
+            Assert.Equal("issuing.transaction", balanceTransactions.Data[9].Source.IssuingTransaction.Object);
+
+            Assert.NotNull(balanceTransactions.Data[10]);
+            Assert.Equal("balance_transaction", balanceTransactions.Data[10].Object);
+            Assert.NotNull(balanceTransactions.Data[10].Source);
+            Assert.Equal(BalanceTransactionSourceType.Unknown, balanceTransactions.Data[10].Source.Type);
         }
     }
 }

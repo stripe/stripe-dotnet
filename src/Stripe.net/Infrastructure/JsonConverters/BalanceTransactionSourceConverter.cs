@@ -44,6 +44,16 @@ namespace Stripe.Infrastructure
                 source.Type = BalanceTransactionSourceType.Dispute;
                 source.Dispute = Mapper<StripeDispute>.MapFromJson(incoming.ToString());
             }
+            else if (incoming.SelectToken("object")?.ToString() == "issuing.authorization")
+            {
+                source.Type = BalanceTransactionSourceType.IssuingAuthorization;
+                source.IssuingAuthorization = Mapper<Issuing.Authorization>.MapFromJson(incoming.ToString());
+            }
+            else if (incoming.SelectToken("object")?.ToString() == "issuing.transaction")
+            {
+                source.Type = BalanceTransactionSourceType.IssuingTransaction;
+                source.IssuingTransaction = Mapper<Issuing.Transaction>.MapFromJson(incoming.ToString());
+            }
             else if (incoming.SelectToken("object")?.ToString() == "payout")
             {
                 source.Type = BalanceTransactionSourceType.Payout;
@@ -54,6 +64,11 @@ namespace Stripe.Infrastructure
                 source.Type = BalanceTransactionSourceType.Refund;
                 source.Refund = Mapper<StripeRefund>.MapFromJson(incoming.ToString());
             }
+            else if (incoming.SelectToken("object")?.ToString() == "topup")
+            {
+                source.Type = BalanceTransactionSourceType.Topup;
+                source.Topup = Mapper<StripeTopup>.MapFromJson(incoming.ToString());
+            }
             else if (incoming.SelectToken("object")?.ToString() == "transfer")
             {
                 source.Type = BalanceTransactionSourceType.Transfer;
@@ -63,11 +78,6 @@ namespace Stripe.Infrastructure
             {
                 source.Type = BalanceTransactionSourceType.TransferReversal;
                 source.TransferReversal = Mapper<StripeTransferReversal>.MapFromJson(incoming.ToString());
-            }
-            else if (incoming.SelectToken("object")?.ToString() == "topup")
-            {
-                source.Type = BalanceTransactionSourceType.Topup;
-                source.Topup = Mapper<StripeTopup>.MapFromJson(incoming.ToString());
             }
             else
             {

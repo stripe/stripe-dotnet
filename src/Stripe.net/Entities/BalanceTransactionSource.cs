@@ -8,11 +8,13 @@ namespace Stripe
         ApplicationFee,
         Charge,
         Dispute,
+        IssuingAuthorization,
+        IssuingTransaction,
         Payout,
         Refund,
+        Topup,
         Transfer,
         TransferReversal,
-        Topup,
         Unknown,
     }
 
@@ -26,6 +28,10 @@ namespace Stripe
         public StripeCharge Charge { get; set; }
 
         public StripeDispute Dispute { get; set; }
+
+        public Issuing.Authorization IssuingAuthorization { get; set; }
+
+        public Issuing.Transaction IssuingTransaction { get; set; }
 
         public StripePayout Payout { get; set; }
 
