@@ -1,5 +1,8 @@
 # Changelog
 
+## 17.4.0 - 2018-07-23
+* [#1165](https://github.com/stripe/stripe-dotnet/pull/1165) Add support for expanding `Source` on `StripeBalanceTransaction`
+
 ## 17.3.1 - 2018-07-16
 * [#1232](https://github.com/stripe/stripe-dotnet/pull/1232) Fix some code style issues reported by [StyleCop.Analyzers](https://github.com/DotNetAnalyzers/StyleCopAnalyzers). This should have no functional impact on the library.
 
