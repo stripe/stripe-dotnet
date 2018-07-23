@@ -25,6 +25,11 @@
     <ProjectReference Include="..\Stripe.net\Stripe.net.csproj" />
   </ItemGroup>
 
+  <!-- Include all API fixture files to use in the Test suite -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\api_fixtures\*.json" />
+  </ItemGroup>
+
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\_stylecop\StyleCopRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>

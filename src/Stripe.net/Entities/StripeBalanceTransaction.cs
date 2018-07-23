@@ -36,18 +36,18 @@
         [JsonProperty("net")]
         public int Net { get; set; }
 
-        #region Expandable Source
+        #region Expandable BalanceTransactionSource
         public string SourceId { get; set; }
 
         [JsonIgnore]
-        public StripeSource Source { get; set; }
+        public BalanceTransactionSource Source { get; set; }
 
         [JsonProperty("source")]
         internal object InternalSource
         {
             set
             {
-                StringOrObject<StripeSource>.Map(value, s => this.SourceId = s, o => this.Source = o);
+                StringOrObject<BalanceTransactionSource>.Map(value, s => this.SourceId = s, o => this.Source = o);
             }
         }
         #endregion
