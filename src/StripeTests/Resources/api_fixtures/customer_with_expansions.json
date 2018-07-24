@@ -1,0 +1,37 @@
+{
+  "id": "cus_123",
+  "object": "customer",
+  "account_balance": 0,
+  "created": 1234567890,
+  "currency": "usd",
+  "default_source": {
+    "id": "card_123",
+    "object": "card"
+  },
+  "delinquent": false,
+  "description": null,
+  "discount": null,
+  "email": null,
+  "invoice_prefix": "F081586",
+  "livemode": false,
+  "metadata": {},
+  "shipping": null,
+  "sources": {
+    "data": [
+      {
+        "id": "card_123",
+        "object": "card"
+      }
+    ],
+    "has_more": false,
+    "object": "list",
+    "url": "/v1/customers/cus_123/sources"
+  },
+  "subscriptions": {
+    "data": [
+    ],
+    "has_more": false,
+    "object": "list",
+    "url": "/v1/customers/cus_123/subscriptions"
+  }
+}

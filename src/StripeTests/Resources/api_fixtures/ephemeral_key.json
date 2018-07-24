@@ -1,0 +1,14 @@
+{
+  "id": "ephkey_123",
+  "object": "ephemeral_key",
+  "associated_objects": [
+    {
+      "type": "customer",
+      "id": "cus_123"
+    }
+  ],
+  "created": 100,
+  "expires": 200,
+  "livemode": false,
+  "secret": "ek_test_hunter2"
+}
