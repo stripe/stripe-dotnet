@@ -1,0 +1,63 @@
+{
+  "object": "issuing.card_details",
+  "card": {
+    "id": "ic_123",
+    "object": "issuing.card",
+    "authorization_controls": {
+      "allowed_categories": null,
+      "blocked_categories": null,
+      "currency": "usd",
+      "max_amount": 10000,
+      "max_approvals": 1
+    },
+    "billing": {
+      "address": {
+        "city": "City",
+        "country": "US",
+        "line1": "line1",
+        "line2": "line2",
+        "postal_code": "90210",
+        "state": "CA"
+      }
+    },
+    "brand": "Visa",
+    "cardholder": {
+      "id": "ich_123",
+      "object": "issuing.cardholder",
+      "billing": {
+        "address": {
+          "city": "City",
+          "country": "US",
+          "line1": "line1",
+          "line2": "line2",
+          "postal_code": "90210",
+          "state": "CA"
+        },
+        "name": "Jenny Rosen"
+      },
+      "created": 1528992903,
+      "email": "jenny@example.com",
+      "livemode": false,
+      "metadata": {
+      },
+      "name": "Jenny Rosen",
+      "phone_number": "+15555555555",
+      "status": "active",
+      "type": "individual"
+    },
+    "created": 1532016681,
+    "currency": "usd",
+    "exp_month": 2,
+    "exp_year": 2023,
+    "last4": "4242",
+    "livemode": false,
+    "metadata": {
+    },
+    "name": "Jenny Rosen",
+    "shipping": null,
+    "status": "active",
+    "type": "physical"
+  },
+  "cvc": "123",
+  "number": "4242424242424242"
+}

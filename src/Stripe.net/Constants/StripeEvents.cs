@@ -260,6 +260,61 @@
         public const string InvoiceItemUpdated = "invoiceitem.updated";
 
         /// <summary>
+        /// Occurs whenever an issuing authorization is created.
+        /// </summary>
+        public const string IssuingAuthorizationCreated = "issuing_authorization.created";
+
+        /// <summary>
+        /// Occurs whenever an issuing authorization request is sent.
+        /// </summary>
+        public const string IssuingAuthorizationRequest = "issuing_authorization.request";
+
+        /// <summary>
+        /// Occurs whenever an issuing authorization is updated.
+        /// </summary>
+        public const string IssuingAuthorizationUpdated = "issuing_authorization.updated";
+
+        /// <summary>
+        /// Occurs whenever an issuing card is created.
+        /// </summary>
+        public const string IssuingCardCreated = "issuing_card.created";
+
+        /// <summary>
+        /// Occurs whenever an issuing card is updated.
+        /// </summary>
+        public const string IssuingCardUpdated = "issuing_card.updated";
+
+        /// <summary>
+        /// Occurs whenever an issuing cardholder is created.
+        /// </summary>
+        public const string IssuingCardholderCreated = "issuing_cardholder.created";
+
+        /// <summary>
+        /// Occurs whenever an issuing cardholder is updated.
+        /// </summary>
+        public const string IssuingCardholderUpdated = "issuing_cardholder.updated";
+
+        /// <summary>
+        /// Occurs whenever an issuing dispute is created.
+        /// </summary>
+        public const string IssuingDisputeCreated = "issuing_dispute.created";
+
+        /// <summary>
+        /// Occurs whenever an issuing dispute is updated.
+        /// </summary>
+        public const string IssuingDisputeUpdated = "issuing_dispute.updated";
+
+        /// <summary>
+        /// Occurs whenever an issuing transaction is created.
+        /// </summary>
+        public const string IssuingTransactionCreated = "issuing_transaction.created";
+
+        /// <summary>
+        /// Occurs whenever an issuing transaction is updated.
+        /// </summary>
+        public const string IssuingTransactionUpdated = "issuing_transaction.updated";
+
+        /// <summary>
         /// Occurs whenever an order is created.
         /// </summary>
         public const string OrderCreated = "order.created";

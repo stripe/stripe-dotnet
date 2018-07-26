@@ -45,6 +45,12 @@
         [JsonProperty("card")]
         public StripeCreditCardOptions Card { get; set; }
 
+        /// <summary>
+        /// This parameter is used to create a Source from an issuing card mostly in Test mode.
+        /// </summary>
+        [JsonProperty("card[issuing_card]")]
+        public string IssuingCardId { get; set; }
+
         [JsonProperty("ideal[bank]")]
         public string IdealBank { get; set; }
 
