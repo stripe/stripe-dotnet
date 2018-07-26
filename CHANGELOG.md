@@ -1,5 +1,8 @@
 # Changelog
 
+## 17.5.0 - 2018-07-26
+* [#1237](https://github.com/stripe/stripe-dotnet/pull/1237) Add support for Stripe Issuing
+
 ## 17.4.0 - 2018-07-23
 * [#1165](https://github.com/stripe/stripe-dotnet/pull/1165) Add support for expanding `Source` on `StripeBalanceTransaction`
 
