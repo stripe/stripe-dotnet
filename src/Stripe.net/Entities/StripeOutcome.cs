@@ -23,6 +23,12 @@
         [JsonProperty("risk_level")]
         public string RiskLevel { get; set; }
 
+        /// <summary>
+        /// Stripe’s evaluation of the riskiness of the payment. Possible values for evaluated payments are between 0 and 100.
+        /// </summary>
+        [JsonProperty("risk_score")]
+        public int RiskScore { get; set; }
+
         #region Expandable Rule
 
         /// <summary>
