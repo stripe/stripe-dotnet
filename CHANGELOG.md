@@ -1,5 +1,8 @@
 # Changelog
 
+## 17.6.0 - 2018-07-27
+* [#1239](https://github.com/stripe/stripe-dotnet/pull/1239) Add `RiskScore` to `StripeOutcome`
+
 ## 17.5.0 - 2018-07-26
 * [#1237](https://github.com/stripe/stripe-dotnet/pull/1237) Add support for Stripe Issuing
 
