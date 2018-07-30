@@ -86,7 +86,7 @@
         /// Information about the owner of the payment instrument that may be used or required by particular source types.
         /// </summary>
         [JsonProperty("owner")]
-        public StripeSourceOwner Owner { get; set; }
+        public StripeSourceOwnerOptions Owner { get; set; }
 
         /// <summary>
         /// <para>Parameters required for the redirect flow. Required if the source is authenticated by a redirect (flow is redirect).</para>
