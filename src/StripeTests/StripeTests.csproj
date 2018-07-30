@@ -29,6 +29,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\api_fixtures\*.json" />
     <EmbeddedResource Include="Resources\api_fixtures\issuing\*.json" />
+    <EmbeddedResource Include="Resources\api_fixtures\sigma\*.json" />
     <EmbeddedResource Include="Resources\file_upload_logo.png" />
   </ItemGroup>
 
