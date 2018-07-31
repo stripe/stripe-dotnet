@@ -1,26 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace Stripe.Tests.test_data
+namespace StripeTests.Infrastructure.TestData
 {
-    public class sample_object : StripeBaseOptions
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe;
+
+    public class TestOptions : StripeBaseOptions
     {
-        public sample_object()
+        public TestOptions()
         {
-            StringContainingText = "Foo";
-            StringWithDifferentName = "Foo";
-            Number = 42;
-            Metadata = new Dictionary<string, string> {
+            this.StringContainingText = "Foo";
+            this.StringWithDifferentName = "Foo";
+            this.Number = 42;
+            this.Metadata = new Dictionary<string, string>
+            {
                 { "A", "Value-A" },
-                { "B", "Value-B" }
+                { "B", "Value-B" },
             };
-            EqualDateFilter = new StripeDateFilter { EqualTo = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z") };
-            LessThanDateFilter = new StripeDateFilter { LessThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z") };
-            ComplexDateFilter = new StripeDateFilter
+            this.EqualDateFilter = new StripeDateFilter
+            {
+                EqualTo = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
+            };
+            this.LessThanDateFilter = new StripeDateFilter
+            {
+                LessThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
+            };
+            this.ComplexDateFilter = new StripeDateFilter
             {
                 LessThan = DateTime.Parse("Mon, 01 Jan 2001 00:00:00Z"),
-                GreaterThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z")
+                GreaterThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
             };
         }
 
