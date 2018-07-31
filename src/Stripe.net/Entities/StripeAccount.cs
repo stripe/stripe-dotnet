@@ -1,5 +1,6 @@
 ﻿namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Newtonsoft.Json;
@@ -40,6 +41,10 @@
 
         [JsonProperty("country")]
         public string Country { get; set; }
+
+        [JsonProperty("created")]
+        [JsonConverter(typeof(StripeDateTimeConverter))]
+        public DateTime Created { get; set; }
 
         [JsonProperty("currencies_supported")]
         public string[] CurrenciesSupported { get; set; }
