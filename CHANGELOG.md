@@ -1,5 +1,8 @@
 # Changelog
 
+## 17.7.0 - 2018-07-31
+* [#1242](https://github.com/stripe/stripe-dotnet/pull/1242) Add `Created` to `StripeAccount`
+
 ## 17.6.0 - 2018-07-27
 * [#1239](https://github.com/stripe/stripe-dotnet/pull/1239) Add `RiskScore` to `StripeOutcome`
 
