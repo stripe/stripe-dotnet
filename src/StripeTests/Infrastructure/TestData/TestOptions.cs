@@ -2,34 +2,25 @@ namespace StripeTests.Infrastructure.TestData
 {
     using System;
     using System.Collections.Generic;
+    using System.Runtime.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using Stripe;
 
     public class TestOptions : StripeBaseOptions
     {
         public TestOptions()
         {
-            this.StringContainingText = "Foo";
-            this.StringWithDifferentName = "Foo";
-            this.Number = 42;
-            this.Metadata = new Dictionary<string, string>
-            {
-                { "A", "Value-A" },
-                { "B", "Value-B" },
-            };
-            this.EqualDateFilter = new StripeDateFilter
-            {
-                EqualTo = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
-            };
-            this.LessThanDateFilter = new StripeDateFilter
-            {
-                LessThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
-            };
-            this.ComplexDateFilter = new StripeDateFilter
-            {
-                LessThan = DateTime.Parse("Mon, 01 Jan 2001 00:00:00Z"),
-                GreaterThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
-            };
+        }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TestEnum
+        {
+            [EnumMember(Value = "test_one")]
+            TestOne,
+
+            // TestTwo doesn't define a serialization value
+            TestTwo,
         }
 
         public string StringWithoutAttribute { get; set; }
@@ -60,5 +51,8 @@ namespace StripeTests.Infrastructure.TestData
 
         [JsonProperty("datecomplex")]
         public StripeDateFilter ComplexDateFilter { get; set; }
+
+        [JsonProperty("enum")]
+        public TestEnum? Enum { get; set; }
     }
 }
