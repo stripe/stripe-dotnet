@@ -13,6 +13,12 @@
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
 
+        [JsonProperty("filename")]
+        public string Filename { get; set; }
+
+        [JsonProperty("links")]
+        public StripeList<StripeFileLink> Links { get; set; }
+
         [JsonProperty("purpose")]
         public string Purpose { get; set; }
 
