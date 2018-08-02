@@ -1,43 +1,37 @@
 {
-  "id": "evt_1ADKLLLWlyqCpbLp0qRyqExL",
+  "id": "evt_123",
   "object": "event",
-  "account": "acct_CONNECT",
+  "account": "acct_123",
   "api_version": "2017-05-25",
-  "created": 1493329207,
+  "created": 1533204620,
   "data": {
     "object": {
-      "id": "ii_1ACxoELWlyqCpbLpBSzyGWHX",
+      "id": "ii_123",
       "object": "invoiceitem",
       "amount": 1000,
       "currency": "usd",
-      "customer": "cus_AY3wPzBBv9DU2H",
-      "date": 1493242586,
+      "customer": "cus_123",
+      "date": 1533204620,
       "description": "Test Invoice Item",
       "discountable": false,
-      "invoice": "in_1ADKLKLWlyqCpbLpMhrRBk7u",
+      "invoice": "in_123",
       "livemode": false,
-      "metadata": {
-        "A": "Value-A",
-        "B": "Value-B"
-      },
+      "metadata": {},
       "period": {
-        "start": 1493242586,
-        "end": 1493242586
+        "start": 1533204620,
+        "end": 1533204620
       },
       "plan": null,
       "proration": false,
       "quantity": null,
       "subscription": null
-    },
-    "previous_attributes": {
-      "invoice": null
     }
   },
   "livemode": false,
-  "pending_webhooks": 2,
+  "pending_webhooks": 1,
   "request": {
-    "id": "req_FAKE",
-    "idempotency_key": "placeholder"
+    "id": "req_123",
+    "idempotency_key": "idempotency-key-123"
   },
-  "type": "invoiceitem.updated"
+  "type": "invoiceitem.created"
 }

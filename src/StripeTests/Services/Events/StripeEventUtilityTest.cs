@@ -5,39 +5,40 @@ namespace StripeTests
 
     public class StripeEventUtilityTest : BaseStripeTest
     {
-        private int timestamp;
+        private int eventTimestamp;
         private string signature;
         private string json;
         private string secret;
 
         public StripeEventUtilityTest()
         {
-            this.timestamp = 1493329224;
-            this.secret = "whsec_H68eTX02a4bCbiQOOoSAsIytOvuWZrQC";
-            this.signature = $"t={this.timestamp},v1=dca14f723dfa3bf47a310c3d6c3aff8bdb2534263d051dd2613ece097b8bdea4,v0=63f3a72374a733066c4be69ed7f8e5ac85c22c9f0a6a612ab9a025a9e4ee7eef";
+            this.eventTimestamp = 1533204620;
+            this.secret = "webhook_secret";
+            this.signature = $"t={this.eventTimestamp},v1=cc2ebf93827f22fecfc48f8c665079f73cf0c10a86c16e2607f8be8bda1cfb14,v0=63f3a72374a733066c4be69ed7f8e5ac85c22c9f0a6a612ab9a025a9e4ee7eef";
             this.json = GetResourceAsString("event_test_signature.json");
         }
 
         [Fact]
         public void ConstructEvent()
         {
-            // A timestamp within the default tolerance of 300 seconds
-            int timestamp = this.timestamp + 120;
-
-            var evt = StripeEventUtility.ConstructEvent(this.json, this.signature, this.secret, timestamp);
+            var tolerance = 300;
+            var fakeCurrentTimestamp = this.eventTimestamp + 100;
+            var evt = StripeEventUtility.ConstructEvent(this.json, this.signature, this.secret, tolerance, fakeCurrentTimestamp);
 
             Assert.NotNull(evt);
-            Assert.Equal("req_FAKE", evt.Request.Id);
-            Assert.Equal("placeholder", evt.Request.IdempotencyKey);
-            Assert.Equal("acct_CONNECT", evt.Account);
+            Assert.Equal("acct_123", evt.Account);
+            Assert.Equal("req_123", evt.Request.Id);
+            Assert.Equal("idempotency-key-123", evt.Request.IdempotencyKey);
         }
 
         [Fact]
         public void RejectOutdatedTimestamp()
         {
-            // This throws an error because the tolerance is higher than allowed
+            var tolerance = 300;
+            var fakeCurrentTimestamp = this.eventTimestamp + tolerance + 100;
+
             var exception = Assert.Throws<StripeException>(() =>
-                StripeEventUtility.ConstructEvent(this.json, this.signature, this.secret));
+                StripeEventUtility.ConstructEvent(this.json, this.signature, this.secret, tolerance, fakeCurrentTimestamp));
 
             Assert.Equal("The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.", exception.Message);
         }
