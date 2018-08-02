@@ -135,9 +135,4 @@ var chargesYesterday = chargeService.List(new StripeChargeListOptions {
 
 We welcome contributions from anyone interested in Stripe or Stripe.net development. If you'd like to submit a pull request, it's best to start with an issue to describe what you'd like to build.
 
-Once you've written your pull request, **please make sure you test your changes**. We have two test unit suites:
-
-  * A test suite in the `Stripe.net.Test` project.
-  * Another test suite in the `Stripe.Test.XUnit` project.
-
-Since we're moving to XUnit as the preferred testing suite, please try and build tests against that project. If you need help, you can [open an issue](https://github.com/stripe/stripe-dotnet/issues/new).
+Once you've written your pull request, **please make sure you test your changes**.
