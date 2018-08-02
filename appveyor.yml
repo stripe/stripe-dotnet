@@ -4,7 +4,7 @@ image: Visual Studio 2017
 environment:
   STRIPE_TEST_SK: sk_test_eBgAzVoEpJKfYjD9nf2YoyMM
   # If you bump this, don't forget to bump `MinimumMockVersion` in `BaseStripeTest.cs` as well.
-  STRIPE_MOCK_VERSION: 0.24.0
+  STRIPE_MOCK_VERSION: 0.24.1
 
 deploy:
 - provider: NuGet
