@@ -118,7 +118,7 @@
             throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
 
-        private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions)
+        internal static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions)
         {
             requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.GetApiKey();
 

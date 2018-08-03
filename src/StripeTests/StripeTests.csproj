@@ -25,12 +25,9 @@
     <ProjectReference Include="..\Stripe.net\Stripe.net.csproj" />
   </ItemGroup>
 
-  <!-- Include all API fixture files to use in the Test suite -->
+  <!-- Include files in the Resources directory to be used across the test suite -->
   <ItemGroup>
-    <EmbeddedResource Include="Resources\api_fixtures\*.json" />
-    <EmbeddedResource Include="Resources\api_fixtures\issuing\*.json" />
-    <EmbeddedResource Include="Resources\api_fixtures\sigma\*.json" />
-    <EmbeddedResource Include="Resources\file_upload_logo.png" />
+    <EmbeddedResource Include="Resources\**\*.*" />
   </ItemGroup>
 
   <PropertyGroup>
