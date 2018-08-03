@@ -1,5 +1,9 @@
 # Changelog
 
+## 17.8.0 - 2018-08-03
+* [#1244](https://github.com/stripe/stripe-dotnet/pull/1244) Add support for file links
+* [#1245](https://github.com/stripe/stripe-dotnet/pull/1245) Add cancel support for topups
+
 ## 17.7.0 - 2018-07-31
 * [#1242](https://github.com/stripe/stripe-dotnet/pull/1242) Add `Created` to `StripeAccount`
 
