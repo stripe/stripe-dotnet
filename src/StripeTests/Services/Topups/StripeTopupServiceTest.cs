@@ -41,6 +41,22 @@ namespace StripeTests
         }
 
         [Fact]
+        public void Cancel()
+        {
+            var topup = this.service.Cancel(TopupId);
+            Assert.NotNull(topup);
+            Assert.Equal("topup", topup.Object);
+        }
+
+        [Fact]
+        public async Task CancelAsync()
+        {
+            var topup = await this.service.CancelAsync(TopupId);
+            Assert.NotNull(topup);
+            Assert.Equal("topup", topup.Object);
+        }
+
+        [Fact]
         public void Create()
         {
             var topup = this.service.Create(this.createOptions);
