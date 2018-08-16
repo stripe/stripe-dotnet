@@ -37,6 +37,7 @@
         [JsonProperty("billing")]
         public StripeBilling? Billing { get; set; }
 
+        [JsonProperty("billing_reason")]
         public string BillingReason { get; set; }
 
         #region Expandable Charge
