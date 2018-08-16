@@ -1,5 +1,8 @@
 # Changelog
 
+## 17.9.0 - 2018-08-16
+* [#1250](https://github.com/stripe/stripe-dotnet/pull/1250) Add `UnitLabel` to `StripeProduct` and fix deserialization of `BillingReason` on `StripeInvoice`
+
 ## 17.8.0 - 2018-08-03
 * [#1244](https://github.com/stripe/stripe-dotnet/pull/1244) Add support for file links
 * [#1245](https://github.com/stripe/stripe-dotnet/pull/1245) Add cancel support for topups
