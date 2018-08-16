@@ -110,5 +110,11 @@
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }
+
+        /// <summary>
+        /// This represents a unit of this product, such as a seat or API call, on customers' receipts and invoices.
+        /// </summary>
+        [JsonProperty("unit_label")]
+        public string UnitLabel { get; set; }
     }
 }
