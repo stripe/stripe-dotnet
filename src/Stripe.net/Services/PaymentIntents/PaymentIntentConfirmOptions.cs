@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PaymentIntentConfirmOptions : StripeBaseOptions
+    public class PaymentIntentConfirmOptions : BaseOptions
     {
         [JsonProperty("invoice")]
         public string Invoice { get; set; }
