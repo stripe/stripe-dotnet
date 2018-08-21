@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class StripeExternalAccountUpdateOptions : StripeBaseOptions, ISupportMetadata
+    public class ExternalAccountUpdateOptions : StripeBaseOptions, ISupportMetadata
     {
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -12,6 +12,6 @@ namespace Stripe
         public bool? DefaultForCurrency { get; set; }
 
         [JsonProperty("external_account")]
-        public StripeExternalAccountCardUpdateOptions ExternalAccountCard { get; set; }
+        public ExternalAccountCardUpdateOptions ExternalAccountCard { get; set; }
     }
 }

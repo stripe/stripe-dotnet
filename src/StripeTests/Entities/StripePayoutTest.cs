@@ -42,7 +42,7 @@ namespace StripeTests
             Assert.Equal("balance_transaction", payout.BalanceTransaction.Object);
 
             Assert.NotNull(payout.Destination);
-            Assert.Equal(SourceType.BankAccount, payout.Destination.Type);
+            Assert.Equal(ExternalAccountType.BankAccount, payout.Destination.Type);
             Assert.NotNull(payout.Destination.BankAccount);
             Assert.Equal("bank_account", payout.Destination.BankAccount.Object);
 
