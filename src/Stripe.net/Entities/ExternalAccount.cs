@@ -11,7 +11,7 @@ namespace Stripe
     }
 
     [JsonConverter(typeof(ExternalAccountConverter))]
-    public class StripeExternalAccount : StripeEntityWithId
+    public class ExternalAccount : StripeEntityWithId
     {
         public ExternalAccountType Type { get; set; }
 
@@ -19,6 +19,6 @@ namespace Stripe
 
         public StripeCard Card { get; set; }
 
-        public StripeBankAccount BankAccount { get; set; }
+        public BankAccount BankAccount { get; set; }
     }
 }

@@ -4,7 +4,7 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
-    internal class SourceConverter : JsonConverter
+    internal class PaymentSourceConverter : JsonConverter
     {
         public override bool CanWrite => false;
 
@@ -24,38 +24,38 @@
         {
             var incoming = JObject.Load(reader);
 
-            var source = new Source
+            var source = new PaymentSource
             {
                 Id = incoming.SelectToken("id").ToString()
             };
 
             if (incoming.SelectToken("object")?.ToString() == "account")
             {
-                source.Type = SourceType.Account;
+                source.Type = PaymentSourceType.Account;
                 source.Account = Mapper<StripeAccount>.MapFromJson(incoming.ToString());
             }
 
             if (incoming.SelectToken("object")?.ToString() == "bank_account")
             {
-                source.Type = SourceType.BankAccount;
-                source.BankAccount = Mapper<StripeBankAccount>.MapFromJson(incoming.ToString());
+                source.Type = PaymentSourceType.BankAccount;
+                source.BankAccount = Mapper<BankAccount>.MapFromJson(incoming.ToString());
             }
 
             if (incoming.SelectToken("object")?.ToString() == "card")
             {
-                source.Type = SourceType.Card;
+                source.Type = PaymentSourceType.Card;
                 source.Card = Mapper<StripeCard>.MapFromJson(incoming.ToString());
             }
 
             if (incoming.SelectToken("object")?.ToString() == "source")
             {
-                source.Type = SourceType.Source;
+                source.Type = PaymentSourceType.Source;
                 source.SourceObject = Mapper<StripeSource>.MapFromJson(incoming.ToString());
             }
 
             if (incoming.SelectToken("deleted")?.ToString() == "true")
             {
-                source.Type = SourceType.Deleted;
+                source.Type = PaymentSourceType.Deleted;
                 source.Deleted = Mapper<StripeDeleted>.MapFromJson(incoming.ToString());
             }
 

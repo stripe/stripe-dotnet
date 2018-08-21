@@ -24,7 +24,7 @@
 
         public virtual StripeCard Create(string customerId, StripeCardCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
-            var url = this.SetupUrl(customerId, false);
+            var url = this.SetupUrl(customerId);
 
             return Mapper<StripeCard>.MapFromJson(
                 Requestor.PostString(
@@ -32,19 +32,9 @@
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeCard Create(string recipientId, StripeCreditCardOptions createOptions, StripeRequestOptions requestOptions = null)
+        public virtual StripeCard Get(string customerId, string cardId, StripeRequestOptions requestOptions = null)
         {
-            var url = this.SetupUrl(recipientId, true);
-
-            return Mapper<StripeCard>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, url, false),
-                    this.SetupRequestOptions(requestOptions)));
-        }
-
-        public virtual StripeCard Get(string customerOrRecipientId, string cardId, bool isRecipient = false, StripeRequestOptions requestOptions = null)
-        {
-            var url = this.SetupUrl(customerOrRecipientId, isRecipient, cardId);
+            var url = this.SetupUrl(customerId, cardId);
 
             return Mapper<StripeCard>.MapFromJson(
                 Requestor.GetString(
@@ -52,9 +42,9 @@
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeCard Update(string customerOrRecipientId, string cardId, StripeCardUpdateOptions updateOptions, bool isRecipient = false, StripeRequestOptions requestOptions = null)
+        public virtual StripeCard Update(string customerId, string cardId, StripeCardUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
-            var url = this.SetupUrl(customerOrRecipientId, isRecipient, cardId);
+            var url = this.SetupUrl(customerId, cardId);
 
             return Mapper<StripeCard>.MapFromJson(
                 Requestor.PostString(
@@ -62,17 +52,17 @@
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeDeleted Delete(string customerOrRecipientId, string cardId, bool isRecipient = false, StripeRequestOptions requestOptions = null)
+        public virtual StripeDeleted Delete(string customerId, string cardId, StripeRequestOptions requestOptions = null)
         {
-            var url = this.SetupUrl(customerOrRecipientId, isRecipient, cardId);
+            var url = this.SetupUrl(customerId, cardId);
 
             return Mapper<StripeDeleted>.MapFromJson(
                 Requestor.Delete(url, this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeList<StripeCard> List(string customerOrRecipientId, StripeCardListOptions listOptions = null, bool isRecipient = false, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<StripeCard> List(string customerId, StripeCardListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
-            var url = this.SetupUrl(customerOrRecipientId, isRecipient);
+            var url = this.SetupUrl(customerId);
 
             if (listOptions == null)
             {
@@ -87,7 +77,7 @@
 
         public virtual async Task<StripeCard> CreateAsync(string customerId, StripeCardCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = this.SetupUrl(customerId, false);
+            var url = this.SetupUrl(customerId);
 
             return Mapper<StripeCard>.MapFromJson(
                 await Requestor.PostStringAsync(
@@ -96,20 +86,9 @@
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeCard> CreateAsync(string recipientId, StripeCreditCardOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeCard> GetAsync(string customerId, string cardId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = this.SetupUrl(recipientId, true);
-
-            return Mapper<StripeCard>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, url, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
-        }
-
-        public virtual async Task<StripeCard> GetAsync(string customerOrRecipientId, string cardId, bool isRecipient = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var url = this.SetupUrl(customerOrRecipientId, isRecipient, cardId);
+            var url = this.SetupUrl(customerId, cardId);
 
             return Mapper<StripeCard>.MapFromJson(
                 await Requestor.GetStringAsync(
@@ -118,9 +97,9 @@
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeCard> UpdateAsync(string customerOrRecipientId, string cardId, StripeCardUpdateOptions updateOptions, bool isRecipient = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeCard> UpdateAsync(string customerId, string cardId, StripeCardUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = this.SetupUrl(customerOrRecipientId, isRecipient, cardId);
+            var url = this.SetupUrl(customerId, cardId);
 
             return Mapper<StripeCard>.MapFromJson(
                 await Requestor.PostStringAsync(
@@ -129,9 +108,9 @@
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeDeleted> DeleteAsync(string customerOrRecipientId, string cardId, bool isRecipient = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeDeleted> DeleteAsync(string customerId, string cardId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = this.SetupUrl(customerOrRecipientId, isRecipient, cardId);
+            var url = this.SetupUrl(customerId, cardId);
 
             return Mapper<StripeDeleted>.MapFromJson(
                 await Requestor.DeleteAsync(
@@ -140,9 +119,9 @@
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeList<StripeCard>> ListAsync(string customerOrRecipientId, StripeCardListOptions listOptions = null, bool isRecipient = false, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<StripeCard>> ListAsync(string customerId, StripeCardListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = this.SetupUrl(customerOrRecipientId, isRecipient);
+            var url = this.SetupUrl(customerId);
 
             if (listOptions == null)
             {
@@ -156,14 +135,9 @@
                     cancellationToken).ConfigureAwait(false));
         }
 
-        private string SetupUrl(string customerOrRecipientId, bool isRecipient, string cardId = null)
+        private string SetupUrl(string customerId, string cardId = null)
         {
-            var urlParams = string.Format(Urls.CustomerSources, customerOrRecipientId);
-
-            if (isRecipient)
-            {
-                urlParams = string.Format(Urls.RecipientCards, customerOrRecipientId);
-            }
+            var urlParams = string.Format(Urls.CustomerSources, customerId);
 
             if (!string.IsNullOrEmpty(cardId))
             {

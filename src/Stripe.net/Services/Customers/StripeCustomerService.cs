@@ -20,8 +20,6 @@
 
         public bool ExpandDefaultSource { get; set; }
 
-        public bool ExpandDefaultCustomerBankAccount { get; set; }
-
         public virtual StripeCustomer Create(StripeCustomerCreateOptions createOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCustomer>.MapFromJson(
