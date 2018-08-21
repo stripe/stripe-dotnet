@@ -9,7 +9,7 @@
 
     internal static class ParameterBuilder
     {
-        public static string ApplyAllParameters(this StripeService service, StripeBaseOptions obj, string url, bool isListMethod = false)
+        public static string ApplyAllParameters(this StripeService service, BaseOptions obj, string url, bool isListMethod = false)
         {
             // store the original url from the service call into requestString (e.g. https://api.stripe.com/v1/accounts/account_id)
             // before the stripe attributes get applied. all of the attributes that will get passed to stripe will be applied to this string,
