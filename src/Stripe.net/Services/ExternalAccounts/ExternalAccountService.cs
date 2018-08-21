@@ -5,34 +5,34 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class StripeExternalAccountService : StripeBasicService<StripeExternalAccount>
+    public class ExternalAccountService : StripeBasicService<ExternalAccount>
     {
-        public StripeExternalAccountService()
+        public ExternalAccountService()
             : base(null)
         {
         }
 
-        public StripeExternalAccountService(string apiKey)
+        public ExternalAccountService(string apiKey)
             : base(apiKey)
         {
         }
 
-        public virtual StripeExternalAccount Create(string accountId, StripeExternalAccountCreateOptions options, StripeRequestOptions requestOptions = null)
+        public virtual ExternalAccount Create(string accountId, ExternalAccountCreateOptions options, StripeRequestOptions requestOptions = null)
         {
             return this.Post($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts", requestOptions, options);
         }
 
-        public virtual StripeExternalAccount Get(string accountId, string externalAccountId, StripeRequestOptions requestOptions = null)
+        public virtual ExternalAccount Get(string accountId, string externalAccountId, StripeRequestOptions requestOptions = null)
         {
             return this.GetEntity($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts/{externalAccountId}", requestOptions);
         }
 
-        public virtual StripeExternalAccount Update(string accountId, string externalAccountId, StripeExternalAccountUpdateOptions options, StripeRequestOptions requestOptions = null)
+        public virtual ExternalAccount Update(string accountId, string externalAccountId, ExternalAccountUpdateOptions options, StripeRequestOptions requestOptions = null)
         {
             return this.Post($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts/{externalAccountId}", requestOptions, options);
         }
 
-        public virtual StripeList<StripeExternalAccount> List(string accountId, StripeExternalAccountListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<ExternalAccount> List(string accountId, ExternalAccountListOptions listOptions = null, StripeRequestOptions requestOptions = null)
         {
             return this.GetEntityList($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts", requestOptions, listOptions);
         }
@@ -42,22 +42,22 @@ namespace Stripe
             return this.DeleteEntity($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts/{externalAccountId}", requestOptions);
         }
 
-        public virtual Task<StripeExternalAccount> CreateAsync(string accountId, StripeExternalAccountCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ExternalAccount> CreateAsync(string accountId, ExternalAccountCreateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.PostAsync($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts", requestOptions, cancellationToken, options);
         }
 
-        public virtual Task<StripeExternalAccount> GetAsync(string accountId, string externalAccountId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ExternalAccount> GetAsync(string accountId, string externalAccountId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityAsync($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts/{externalAccountId}", requestOptions, cancellationToken);
         }
 
-        public virtual Task<StripeExternalAccount> UpdateAsync(string accountId, string externalAccountId, StripeExternalAccountUpdateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ExternalAccount> UpdateAsync(string accountId, string externalAccountId, ExternalAccountUpdateOptions options, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.PostAsync($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts/{externalAccountId}", requestOptions, cancellationToken, options);
         }
 
-        public virtual Task<StripeList<StripeExternalAccount>> ListAsync(string accountId, StripeExternalAccountListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<ExternalAccount>> ListAsync(string accountId, ExternalAccountListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityListAsync($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts", requestOptions, cancellationToken, listOptions);
         }

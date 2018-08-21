@@ -33,7 +33,7 @@ namespace StripeTests
             Assert.Equal("customer", customer.Object);
 
             Assert.NotNull(customer.DefaultSource);
-            Assert.Equal(SourceType.Card, customer.DefaultSource.Type);
+            Assert.Equal(PaymentSourceType.Card, customer.DefaultSource.Type);
             Assert.NotNull(customer.DefaultSource.Card);
             Assert.Equal("card", customer.DefaultSource.Card.Object);
         }

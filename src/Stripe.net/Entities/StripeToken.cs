@@ -10,7 +10,7 @@
         public string Object { get; set; }
 
         [JsonProperty("bank_account")]
-        public StripeBankAccount StripeBankAccount { get; set; }
+        public BankAccount BankAccount { get; set; }
 
         [JsonProperty("card")]
         public StripeCard StripeCard { get; set; }

@@ -78,7 +78,7 @@ namespace Stripe
         /// For most Stripe users, the source of every Top-up is a bank account. This hash is then the source object describing that bank account.
         /// </summary>
         [JsonProperty("source")]
-        public Source Source { get; set; }
+        public StripeSource Source { get; set; }
 
         /// <summary>
         /// Extra information about a topup. This will appear on your customer’s credit card statement.
