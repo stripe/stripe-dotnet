@@ -16,12 +16,12 @@
     {
         public PaymentSourceType Type { get; set; }
 
-        public StripeAccount Account { get; set; }
+        public Account Account { get; set; }
 
         public BankAccount BankAccount { get; set; }
 
-        public StripeCard Card { get; set; }
+        public Card Card { get; set; }
 
-        public StripeSource SourceObject { get; set; }
+        public Source SourceObject { get; set; }
     }
 }

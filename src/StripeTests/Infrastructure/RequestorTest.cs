@@ -16,7 +16,7 @@ namespace StripeTests
         [Fact]
         public void SetsHeaders()
         {
-            StripeRequestOptions options = new StripeRequestOptions
+            RequestOptions options = new RequestOptions
             {
                 ApiKey = "sk_key",
                 StripeConnectAccountId = "acct_123",

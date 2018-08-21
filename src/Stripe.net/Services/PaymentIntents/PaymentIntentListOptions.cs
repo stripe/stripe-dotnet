@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class PaymentIntentListOptions : StripeListOptionsWithCreated
+    public class PaymentIntentListOptions : ListOptionsWithCreated
     {
     }
 }

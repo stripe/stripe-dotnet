@@ -20,7 +20,7 @@ namespace Stripe.Issuing
         {
         }
 
-        public virtual Cardholder Create(CardholderCreateOptions createOptions, StripeRequestOptions requestOptions = null)
+        public virtual Cardholder Create(CardholderCreateOptions createOptions, RequestOptions requestOptions = null)
         {
             return Mapper<Cardholder>.MapFromJson(
                 Requestor.PostString(
@@ -28,7 +28,7 @@ namespace Stripe.Issuing
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual Cardholder Update(string cardholderId, CardholderUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        public virtual Cardholder Update(string cardholderId, CardholderUpdateOptions updateOptions, RequestOptions requestOptions = null)
         {
             return Mapper<Cardholder>.MapFromJson(
                 Requestor.PostString(
@@ -36,7 +36,7 @@ namespace Stripe.Issuing
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual Cardholder Get(string cardholderId, StripeRequestOptions requestOptions = null)
+        public virtual Cardholder Get(string cardholderId, RequestOptions requestOptions = null)
         {
             return Mapper<Cardholder>.MapFromJson(
                 Requestor.GetString(
@@ -44,7 +44,7 @@ namespace Stripe.Issuing
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeList<Cardholder> List(CardholderListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<Cardholder> List(CardholderListOptions listOptions = null, RequestOptions requestOptions = null)
         {
             return Mapper<StripeList<Cardholder>>.MapFromJson(
                 Requestor.GetString(
@@ -52,7 +52,7 @@ namespace Stripe.Issuing
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<Cardholder> CreateAsync(CardholderCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Cardholder> CreateAsync(CardholderCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<Cardholder>.MapFromJson(
                 await Requestor.PostStringAsync(
@@ -61,7 +61,7 @@ namespace Stripe.Issuing
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<Cardholder> UpdateAsync(string cardholderId, CardholderUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Cardholder> UpdateAsync(string cardholderId, CardholderUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<Cardholder>.MapFromJson(
                 await Requestor.PostStringAsync(
@@ -70,7 +70,7 @@ namespace Stripe.Issuing
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<Cardholder> GetAsync(string cardholderId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Cardholder> GetAsync(string cardholderId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<Cardholder>.MapFromJson(
                 await Requestor.GetStringAsync(
@@ -79,7 +79,7 @@ namespace Stripe.Issuing
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeList<Cardholder>> ListAsync(CardholderListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<Cardholder>> ListAsync(CardholderListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeList<Cardholder>>.MapFromJson(
                 await Requestor.GetStringAsync(

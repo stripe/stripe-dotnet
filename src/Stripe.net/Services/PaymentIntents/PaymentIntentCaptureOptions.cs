@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PaymentIntentCaptureOptions : StripeBaseOptions
+    public class PaymentIntentCaptureOptions : BaseOptions
     {
         [JsonProperty("amount_to_capture")]
         public int? AmountToCapture { get; set; }

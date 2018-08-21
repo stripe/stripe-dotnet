@@ -5,6 +5,6 @@ namespace Stripe.Issuing
     public class Billing : StripeEntity
     {
         [JsonProperty("address")]
-        public StripeAddress Address { get; set; }
+        public Address Address { get; set; }
     }
 }

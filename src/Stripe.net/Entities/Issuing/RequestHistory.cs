@@ -1,4 +1,4 @@
-namespace Stripe
+namespace Stripe.Issuing
 {
     using System;
     using Newtonsoft.Json;
@@ -16,7 +16,7 @@ namespace Stripe
         public string AuthorizedCurrency { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("held_amount")]
