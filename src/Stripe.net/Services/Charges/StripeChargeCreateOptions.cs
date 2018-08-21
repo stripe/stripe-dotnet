@@ -97,7 +97,7 @@
         public string SourceTokenOrExistingSourceId { get; set; }
 
         [JsonProperty("source")]
-        public SourceCard SourceCard { get; set; }
+        public CardCreateNestedOptions SourceCard { get; set; }
 
         /// <summary>
         /// An arbitrary string to be displayed on your customer's credit card statement. This may

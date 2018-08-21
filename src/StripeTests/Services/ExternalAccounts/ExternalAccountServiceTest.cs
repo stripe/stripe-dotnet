@@ -6,21 +6,21 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeExternalAccountServiceTest : BaseStripeTest
+    public class ExternalAccountServiceTest : BaseStripeTest
     {
         private const string AccountId = "acct_123";
-        private const string StripeExternalAccountId = "ba_123";
+        private const string ExternalAccountId = "ba_123";
 
-        private StripeExternalAccountService service;
-        private StripeExternalAccountCreateOptions createOptions;
-        private StripeExternalAccountUpdateOptions updateOptions;
-        private StripeExternalAccountListOptions listOptions;
+        private ExternalAccountService service;
+        private ExternalAccountCreateOptions createOptions;
+        private ExternalAccountUpdateOptions updateOptions;
+        private ExternalAccountListOptions listOptions;
 
-        public StripeExternalAccountServiceTest()
+        public ExternalAccountServiceTest()
         {
-            this.service = new StripeExternalAccountService();
+            this.service = new ExternalAccountService();
 
-            this.createOptions = new StripeExternalAccountCreateOptions
+            this.createOptions = new ExternalAccountCreateOptions
             {
                 ExternalAccountBankAccount = new StripeAccountBankAccountOptions
                 {
@@ -31,7 +31,7 @@ namespace StripeTests
                 }
             };
 
-            this.updateOptions = new StripeExternalAccountUpdateOptions()
+            this.updateOptions = new ExternalAccountUpdateOptions()
             {
                 Metadata = new Dictionary<string, string>()
                 {
@@ -39,7 +39,7 @@ namespace StripeTests
                 },
             };
 
-            this.listOptions = new StripeExternalAccountListOptions()
+            this.listOptions = new ExternalAccountListOptions()
             {
                 Limit = 1,
             };
@@ -68,21 +68,21 @@ namespace StripeTests
         [Fact]
         public void Delete()
         {
-            var deleted = this.service.Delete(AccountId, StripeExternalAccountId);
+            var deleted = this.service.Delete(AccountId, ExternalAccountId);
             Assert.NotNull(deleted);
         }
 
         [Fact]
         public async Task DeleteAsync()
         {
-            var deleted = await this.service.DeleteAsync(AccountId, StripeExternalAccountId);
+            var deleted = await this.service.DeleteAsync(AccountId, ExternalAccountId);
             Assert.NotNull(deleted);
         }
 
         [Fact]
         public void Get()
         {
-            var externalAccount = this.service.Get(AccountId, StripeExternalAccountId);
+            var externalAccount = this.service.Get(AccountId, ExternalAccountId);
             Assert.NotNull(externalAccount);
             Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
             Assert.NotNull(externalAccount.BankAccount);
@@ -92,7 +92,7 @@ namespace StripeTests
         [Fact]
         public async Task GetAsync()
         {
-            var externalAccount = await this.service.GetAsync(AccountId, StripeExternalAccountId);
+            var externalAccount = await this.service.GetAsync(AccountId, ExternalAccountId);
             Assert.NotNull(externalAccount);
             Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
             Assert.NotNull(externalAccount.BankAccount);
@@ -122,7 +122,7 @@ namespace StripeTests
         [Fact]
         public void Update()
         {
-            var externalAccount = this.service.Update(AccountId, StripeExternalAccountId, this.updateOptions);
+            var externalAccount = this.service.Update(AccountId, ExternalAccountId, this.updateOptions);
             Assert.NotNull(externalAccount);
             Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
             Assert.NotNull(externalAccount.BankAccount);
@@ -132,7 +132,7 @@ namespace StripeTests
         [Fact]
         public async Task UpdateAsync()
         {
-            var externalAccount = await this.service.UpdateAsync(AccountId, StripeExternalAccountId, this.updateOptions);
+            var externalAccount = await this.service.UpdateAsync(AccountId, ExternalAccountId, this.updateOptions);
             Assert.NotNull(externalAccount);
             Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
             Assert.NotNull(externalAccount.BankAccount);
