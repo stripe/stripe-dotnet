@@ -68,7 +68,7 @@
         public string Email { get; set; }
 
         [JsonProperty("external_accounts")]
-        public StripeList<StripeExternalAccount> ExternalAccounts { get; set; }
+        public StripeList<ExternalAccount> ExternalAccounts { get; set; }
 
         [JsonProperty("legal_entity")]
         public StripeLegalEntity LegalEntity { get; set; }

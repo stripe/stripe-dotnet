@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SourceCard : INestedOptions, ISupportMetadata
+    public class CardCreateNestedOptions : INestedOptions, ISupportMetadata
     {
         /// <summary>
         /// The type of payment source. Should be "card".

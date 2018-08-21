@@ -50,14 +50,14 @@
         public string DestinationId { get; set; }
 
         [JsonIgnore]
-        public Source Destination { get; set; }
+        public ExternalAccount Destination { get; set; }
 
         [JsonProperty("destination")]
         internal object InternalDestination
         {
             set
             {
-                StringOrObject<Source>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
+                StringOrObject<ExternalAccount>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
             }
         }
         #endregion
