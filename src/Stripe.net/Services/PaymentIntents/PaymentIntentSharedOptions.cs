@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PaymentIntentSharedOptions : StripeBaseOptions, ISupportMetadata
+    public class PaymentIntentSharedOptions : BaseOptions, ISupportMetadata
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }

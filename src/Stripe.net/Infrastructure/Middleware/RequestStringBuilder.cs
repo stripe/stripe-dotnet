@@ -20,7 +20,7 @@
         /// <summary>
         /// Creates the HTTP query string for a given options class.
         /// </summary>
-        /// <paramref name="requestString">The string to which the query string will be appended.</param>
+        /// <param name="requestString">The string to which the query string will be appended.</param>
         /// <param name="options">The options class for which to create the query string.</param>
         public static void CreateQuery(ref string requestString, INestedOptions options)
         {
@@ -59,9 +59,9 @@
             {
                 flatParams = FlattenParamsOptions((INestedOptions)value, keyPrefix);
             }
-            else if (value is StripeDateFilter)
+            else if (value is DateFilter)
             {
-                flatParams = FlattenParamsDateFilter((StripeDateFilter)value, keyPrefix);
+                flatParams = FlattenParamsDateFilter((DateFilter)value, keyPrefix);
             }
             else if (IsDictionary(value))
             {
@@ -165,14 +165,14 @@
         }
 
         /// <summary>
-        /// Returns a list of parameters for a given `StripeDateFilter` object.
+        /// Returns a list of parameters for a given `DateFilter` object.
         /// If an `EqualTo` value is provided, then it will be used directly with the key prefix.
         /// Other values (`LessThan`, etc.) will be nested under the key prefix.
         /// </summary>
         /// <param name="filter">The filter for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested.</param>
         /// <returns>The list of parameters</returns>
-        private static List<Parameter> FlattenParamsDateFilter(StripeDateFilter filter, string keyPrefix)
+        private static List<Parameter> FlattenParamsDateFilter(DateFilter filter, string keyPrefix)
         {
             List<Parameter> flatParams = new List<Parameter>();
 
