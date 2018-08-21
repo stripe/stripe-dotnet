@@ -32,7 +32,7 @@
             if (incoming.SelectToken("object")?.ToString() == "account")
             {
                 source.Type = PaymentSourceType.Account;
-                source.Account = Mapper<StripeAccount>.MapFromJson(incoming.ToString());
+                source.Account = Mapper<Account>.MapFromJson(incoming.ToString());
             }
 
             if (incoming.SelectToken("object")?.ToString() == "bank_account")

@@ -16,7 +16,7 @@
     {
         public PaymentSourceType Type { get; set; }
 
-        public StripeAccount Account { get; set; }
+        public Account Account { get; set; }
 
         public BankAccount BankAccount { get; set; }
 

@@ -20,7 +20,7 @@ namespace Stripe.Issuing
         {
         }
 
-        public virtual Authorization Approve(string authorizationId, AuthorizationApproveOptions approveOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual Authorization Approve(string authorizationId, AuthorizationApproveOptions approveOptions = null, RequestOptions requestOptions = null)
         {
             return Mapper<Authorization>.MapFromJson(
                 Requestor.PostString(
@@ -28,7 +28,7 @@ namespace Stripe.Issuing
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual Authorization Decline(string authorizationId, AuthorizationDeclineOptions declineOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual Authorization Decline(string authorizationId, AuthorizationDeclineOptions declineOptions = null, RequestOptions requestOptions = null)
         {
             return Mapper<Authorization>.MapFromJson(
                 Requestor.PostString(
@@ -36,7 +36,7 @@ namespace Stripe.Issuing
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual Authorization Update(string authorizationId, AuthorizationUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        public virtual Authorization Update(string authorizationId, AuthorizationUpdateOptions updateOptions, RequestOptions requestOptions = null)
         {
             return Mapper<Authorization>.MapFromJson(
                 Requestor.PostString(
@@ -44,7 +44,7 @@ namespace Stripe.Issuing
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual Authorization Get(string authorizationId, StripeRequestOptions requestOptions = null)
+        public virtual Authorization Get(string authorizationId, RequestOptions requestOptions = null)
         {
             return Mapper<Authorization>.MapFromJson(
                 Requestor.GetString(
@@ -52,7 +52,7 @@ namespace Stripe.Issuing
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeList<Authorization> List(AuthorizationListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<Authorization> List(AuthorizationListOptions listOptions = null, RequestOptions requestOptions = null)
         {
             return Mapper<StripeList<Authorization>>.MapFromJson(
                 Requestor.GetString(
@@ -60,7 +60,7 @@ namespace Stripe.Issuing
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<Authorization> ApproveAsync(string authorizationId, AuthorizationApproveOptions approveOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Authorization> ApproveAsync(string authorizationId, AuthorizationApproveOptions approveOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<Authorization>.MapFromJson(
                 await Requestor.PostStringAsync(
@@ -69,7 +69,7 @@ namespace Stripe.Issuing
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<Authorization> DeclineAsync(string authorizationId, AuthorizationDeclineOptions declineOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Authorization> DeclineAsync(string authorizationId, AuthorizationDeclineOptions declineOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<Authorization>.MapFromJson(
                 await Requestor.PostStringAsync(
@@ -78,7 +78,7 @@ namespace Stripe.Issuing
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<Authorization> UpdateAsync(string authorizationId, AuthorizationUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Authorization> UpdateAsync(string authorizationId, AuthorizationUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<Authorization>.MapFromJson(
                 await Requestor.PostStringAsync(
@@ -87,7 +87,7 @@ namespace Stripe.Issuing
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<Authorization> GetAsync(string authorizationId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Authorization> GetAsync(string authorizationId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<Authorization>.MapFromJson(
                 await Requestor.GetStringAsync(
@@ -96,7 +96,7 @@ namespace Stripe.Issuing
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeList<Authorization>> ListAsync(AuthorizationListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<Authorization>> ListAsync(AuthorizationListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeList<Authorization>>.MapFromJson(
                 await Requestor.GetStringAsync(

@@ -10,7 +10,7 @@ namespace StripeTests
 
         public StripeResponseTest()
         {
-            this.charges = new StripeChargeService().List();
+            this.charges = new ChargeService().List();
         }
 
         [Fact]

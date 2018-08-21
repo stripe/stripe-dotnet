@@ -43,14 +43,14 @@
         public string DestinationId { get; set; }
 
         [JsonIgnore]
-        public StripeAccount Destination { get; set; }
+        public Account Destination { get; set; }
 
         [JsonProperty("destination")]
         internal object InternalDestination
         {
             set
             {
-                StringOrObject<StripeAccount>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
+                StringOrObject<Account>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
             }
         }
         #endregion
