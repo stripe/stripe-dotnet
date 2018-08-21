@@ -17,7 +17,7 @@ namespace StripeTests
         /// <remarks>
         /// If you bump this, don't forget to bump `STRIPE_MOCK_VERSION` in appveyor.yml as well.
         /// </remarks>
-        private const string MockMinimumVersion = "0.25.0";
+        private const string MockMinimumVersion = "0.26.0";
 
         private static string port;
 
