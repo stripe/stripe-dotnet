@@ -10,7 +10,7 @@
         public string SourceToken { get; set; }
 
         [JsonProperty("source")]
-        public SourceCard SourceCard { get; set; }
+        public CardCreateNestedOptions SourceCard { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

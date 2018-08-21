@@ -7,15 +7,13 @@ namespace StripeTests
     using Xunit;
 
     /*
-     * We do not test the Recipient path as it is not supported by stripe-mock today.
-     * We also do not test the object property on returned values for most methods
+     * We do not test the object property on returned values for most methods
      * as stripe-mock returns a Bank Account for those.
      */
     public class StripeCardServiceTest : BaseStripeTest
     {
         private const string CardId = "card_123";
         private const string CustomerId = "cus_123";
-        private const string RecipientId = "rp_123";
 
         private StripeCardService service;
         private StripeCardCreateOptions createOptions;
@@ -62,35 +60,35 @@ namespace StripeTests
         [Fact]
         public void Delete()
         {
-            var deleted = this.service.Delete(CustomerId, CardId, false);
+            var deleted = this.service.Delete(CustomerId, CardId);
             Assert.NotNull(deleted);
         }
 
         [Fact]
         public async Task DeleteAsync()
         {
-            var deleted = await this.service.DeleteAsync(CustomerId, CardId, false);
+            var deleted = await this.service.DeleteAsync(CustomerId, CardId);
             Assert.NotNull(deleted);
         }
 
         [Fact]
         public void Get()
         {
-            var card = this.service.Get(CustomerId, CardId, false);
+            var card = this.service.Get(CustomerId, CardId);
             Assert.NotNull(card);
         }
 
         [Fact]
         public async Task GetAsync()
         {
-            var card = await this.service.GetAsync(CustomerId, CardId, false);
+            var card = await this.service.GetAsync(CustomerId, CardId);
             Assert.NotNull(card);
         }
 
         [Fact]
         public void List()
         {
-            var cards = this.service.List(CustomerId, this.listOptions, false);
+            var cards = this.service.List(CustomerId, this.listOptions);
             Assert.NotNull(cards);
             Assert.Equal("list", cards.Object);
             Assert.Single(cards.Data);
@@ -99,7 +97,7 @@ namespace StripeTests
         [Fact]
         public async Task ListAsync()
         {
-            var cards = await this.service.ListAsync(CustomerId, this.listOptions, false);
+            var cards = await this.service.ListAsync(CustomerId, this.listOptions);
             Assert.NotNull(cards);
             Assert.Equal("list", cards.Object);
             Assert.Single(cards.Data);
@@ -108,7 +106,7 @@ namespace StripeTests
         [Fact]
         public void Update()
         {
-            var card = this.service.Update(CustomerId, CardId, this.updateOptions, false);
+            var card = this.service.Update(CustomerId, CardId, this.updateOptions);
             Assert.NotNull(card);
             Assert.Equal("card", card.Object);
         }
@@ -116,7 +114,7 @@ namespace StripeTests
         [Fact]
         public async Task UpdateAsync()
         {
-            var card = await this.service.UpdateAsync(CustomerId, CardId, this.updateOptions, false);
+            var card = await this.service.UpdateAsync(CustomerId, CardId, this.updateOptions);
             Assert.NotNull(card);
             Assert.Equal("card", card.Object);
         }
