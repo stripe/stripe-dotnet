@@ -46,6 +46,7 @@ namespace StripeTests
             Assert.Equal("customer", intent.Customer.Object);
 
             Assert.NotNull(intent.Source);
+            Assert.Equal(PaymentSourceType.Card, intent.Source.Type);
             Assert.Equal("card", intent.Source.Card.Object);
 
             Assert.NotNull(intent.TransferData);
