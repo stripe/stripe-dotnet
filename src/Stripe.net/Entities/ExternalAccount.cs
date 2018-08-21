@@ -14,7 +14,7 @@ namespace Stripe
     {
         public ExternalAccountType Type { get; set; }
 
-        public StripeCard Card { get; set; }
+        public Card Card { get; set; }
 
         public BankAccount BankAccount { get; set; }
     }

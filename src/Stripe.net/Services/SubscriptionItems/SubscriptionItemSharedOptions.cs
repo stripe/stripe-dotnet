@@ -4,7 +4,7 @@
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public abstract class SubscriptionItemSharedOptions : StripeBaseOptions
+    public abstract class SubscriptionItemSharedOptions : BaseOptions
     {
         /// <summary>
         /// REQUIRED: The identifier of the plan to add to the subscription.

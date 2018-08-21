@@ -5,7 +5,7 @@
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public abstract class SubscriptionSharedOptions : StripeBaseOptions, ISupportMetadata
+    public abstract class SubscriptionSharedOptions : BaseOptions, ISupportMetadata
     {
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal places. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner’s Stripe account. The request must be made with an OAuth key in order to set an application fee percentage. For more information, see the application fees <see href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</see>.
@@ -14,10 +14,10 @@
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
-        /// One of <see cref="StripeBilling" />. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions. Defaults to <c>charge_automatically</c>.
+        /// One of <see cref="Billing" />. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions. Defaults to <c>charge_automatically</c>.
         /// </summary>
         [JsonProperty("billing")]
-        public StripeBilling? Billing { get; set; }
+        public Billing? Billing { get; set; }
 
         /// <summary>
         /// The code of the coupon to apply to this subscription. A coupon applied to a subscription will only affect invoices created for that particular subscription.

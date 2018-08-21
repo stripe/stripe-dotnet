@@ -28,28 +28,28 @@
 
         internal static HttpClient HttpClient { get; private set; }
 
-        public static StripeResponse GetString(string url, StripeRequestOptions requestOptions)
+        public static StripeResponse GetString(string url, RequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
 
             return ExecuteRequest(wr);
         }
 
-        public static StripeResponse PostString(string url, StripeRequestOptions requestOptions)
+        public static StripeResponse PostString(string url, RequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
 
             return ExecuteRequest(wr);
         }
 
-        public static StripeResponse Delete(string url, StripeRequestOptions requestOptions)
+        public static StripeResponse Delete(string url, RequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Delete, requestOptions);
 
             return ExecuteRequest(wr);
         }
 
-        public static StripeResponse PostFile(string url, string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions)
+        public static StripeResponse PostFile(string url, string fileName, Stream fileStream, string purpose, RequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
 
@@ -73,28 +73,28 @@
             throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
 
-        public static Task<StripeResponse> GetStringAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<StripeResponse> GetStringAsync(string url, RequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
 
             return ExecuteRequestAsync(wr, cancellationToken);
         }
 
-        public static Task<StripeResponse> PostStringAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<StripeResponse> PostStringAsync(string url, RequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
 
             return ExecuteRequestAsync(wr, cancellationToken);
         }
 
-        public static Task<StripeResponse> DeleteAsync(string url, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<StripeResponse> DeleteAsync(string url, RequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Delete, requestOptions);
 
             return ExecuteRequestAsync(wr, cancellationToken);
         }
 
-        public static Task<StripeResponse> PostFileAsync(string url, string fileName, Stream fileStream, string purpose, StripeRequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<StripeResponse> PostFileAsync(string url, string fileName, Stream fileStream, string purpose, RequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
 
@@ -118,7 +118,7 @@
             throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
 
-        internal static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, StripeRequestOptions requestOptions)
+        internal static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, RequestOptions requestOptions)
         {
             requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.GetApiKey();
 
