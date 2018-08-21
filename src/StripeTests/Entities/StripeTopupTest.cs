@@ -41,9 +41,8 @@ namespace StripeTests
             Assert.Equal("balance_transaction", topup.BalanceTransaction.Object);
 
             Assert.NotNull(topup.Source);
-            Assert.Equal(SourceType.Source, topup.Source.Type);
-            Assert.NotNull(topup.Source.SourceObject);
-            Assert.Equal("source", topup.Source.SourceObject.Object);
+            Assert.Equal("ach_debit", topup.Source.Type);
+            Assert.Equal("source", topup.Source.Object);
         }
     }
 }
