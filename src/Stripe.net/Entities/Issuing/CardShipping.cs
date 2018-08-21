@@ -7,13 +7,13 @@ namespace Stripe.Issuing
     public class CardShipping : StripeEntity
     {
         [JsonProperty("address")]
-        public StripeAddress Address { get; set; }
+        public Address Address { get; set; }
 
         [JsonProperty("carrier")]
         public string Carrier { get; set; }
 
         [JsonProperty("eta")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Eta { get; set; }
 
         [JsonProperty("name")]

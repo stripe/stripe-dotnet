@@ -5,7 +5,7 @@ namespace StripeTests.Infrastructure.TestData
     using Newtonsoft.Json;
     using Stripe;
 
-    public class TestOptionsWithList : StripeBaseOptions
+    public class TestOptionsWithList : BaseOptions
     {
         public TestOptionsWithList()
         {

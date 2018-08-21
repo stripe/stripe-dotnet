@@ -1,4 +1,4 @@
-namespace StripeTests
+namespace StripeTests.Issuing
 {
     using System;
     using System.Collections.Generic;
@@ -15,9 +15,9 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = GetFixture("/v1/issuing/cards/ic_123");
-            var card = Mapper<Card>.MapFromJson(json);
+            var card = Mapper<Stripe.Issuing.Card>.MapFromJson(json);
             Assert.NotNull(card);
-            Assert.IsType<Card>(card);
+            Assert.IsType<Stripe.Issuing.Card>(card);
             Assert.NotNull(card.Id);
             Assert.Equal("issuing.card", card.Object);
 

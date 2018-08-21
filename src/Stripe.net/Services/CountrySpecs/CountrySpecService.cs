@@ -17,7 +17,7 @@
         {
         }
 
-        public virtual CountrySpec Get(string country, StripeRequestOptions requestOptions = null)
+        public virtual CountrySpec Get(string country, RequestOptions requestOptions = null)
         {
             return Mapper<CountrySpec>.MapFromJson(
                 Requestor.GetString(
@@ -25,7 +25,7 @@
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeList<CountrySpec> List(CountrySpecListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<CountrySpec> List(CountrySpecListOptions listOptions = null, RequestOptions requestOptions = null)
         {
             return Mapper<StripeList<CountrySpec>>.MapFromJson(
                 Requestor.GetString(
@@ -33,7 +33,7 @@
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<CountrySpec> GetAsync(string country, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<CountrySpec> GetAsync(string country, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<CountrySpec>.MapFromJson(
                 await Requestor.GetStringAsync(
@@ -42,7 +42,7 @@
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeList<CountrySpec>> ListAsync(CountrySpecListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<CountrySpec>> ListAsync(CountrySpecListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeList<CountrySpec>>.MapFromJson(
                 await Requestor.GetStringAsync(

@@ -7,7 +7,7 @@ namespace StripeTests.Infrastructure.TestData
     using Newtonsoft.Json.Converters;
     using Stripe;
 
-    public class TestOptions : StripeBaseOptions
+    public class TestOptions : BaseOptions
     {
         public TestOptions()
         {
@@ -33,7 +33,7 @@ namespace StripeTests.Infrastructure.TestData
         public bool? BoolNullable { get; set; }
 
         [JsonProperty("date_filter")]
-        public StripeDateFilter DateFilter { get; set; }
+        public DateFilter DateFilter { get; set; }
 
         [JsonProperty("datetime_nullable")]
         public DateTime? DateTimeNullable { get; set; }

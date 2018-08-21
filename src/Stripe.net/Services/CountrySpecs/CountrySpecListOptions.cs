@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class CountrySpecListOptions : StripeListOptions
+    public class CountrySpecListOptions : ListOptions
     {
     }
 }

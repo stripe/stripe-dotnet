@@ -17,7 +17,7 @@ namespace StripeTests
         public void SetsStripeResponse()
         {
             var exception = Assert.Throws<StripeException>(() =>
-                new StripeCouponService().Create(new StripeCouponCreateOptions()));
+                new CouponService().Create(new CouponCreateOptions()));
 
             Assert.NotNull(exception);
             Assert.NotNull(exception.StripeError);

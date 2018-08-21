@@ -36,11 +36,11 @@ a) In your application initialization, set your API key (only once once during s
 StripeConfiguration.SetApiKey("[your api key here]");
 ```
 
-b) Pass the API key to [StripeRequestOptions](#requestoptions):
+b) Pass the API key to [RequestOptions](#requestoptions):
 
 ```csharp
-var planService = new StripePlanService();
-planService.Get(*planId*, new StripeRequestOptions() { ApiKey = "[your api key here]" });
+var planService = new PlanService();
+planService.Get(*planId*, new RequestOptions() { ApiKey = "[your api key here]" });
 ```
 
 You can obtain your secret API key from the [API Settings](https://dashboard.stripe.com/account/apikeys) in the Dashboard.
@@ -63,10 +63,10 @@ If you are using Xamarin/Mono, you may want to provide your own `HttpMessageHand
 
 ### Request Options
 
-All of the service methods accept an optional `StripeRequestOptions` object. This is used if you need an [Idempotency Key](https://stripe.com/docs/api?lang=curl#idempotent_requests), if you are using [Stripe Connect](https://stripe.com/docs/connect/authentication#authentication-via-the-stripe-account-header), or if you want to pass the secret API key on each method.
+All of the service methods accept an optional `RequestOptions` object. This is used if you need an [Idempotency Key](https://stripe.com/docs/api?lang=curl#idempotent_requests), if you are using [Stripe Connect](https://stripe.com/docs/connect/authentication#authentication-via-the-stripe-account-header), or if you want to pass the secret API key on each method.
 
 ```csharp
-var requestOptions = new StripeRequestOptions();
+var requestOptions = new RequestOptions();
 requestOptions.ApiKey = "SECRET API KEY";                        // (optional) set the api key on a per-request basis
 requestOptions.IdempotencyKey = "SOME STRING";                   // (optional) create an idempotent request
 requestOptions.StripeConnectAccountId = "CONNECTED ACCOUNT ID";  // (optional) authenticate as a connected account
@@ -78,7 +78,7 @@ The [`StripeResponse`](./src/Stripe.net/Infrastructure/public/StripeResponse.cs)
 
 **Example: Access the StripeResponse**
 ```csharp
-var chargeService = new StripeChargeService();
+var chargeService = new ChargeService();
 StripeCharge charge = chargeService.Create(...);
 StripeResponse response = charge.StripeResponse;
 ```
@@ -113,18 +113,18 @@ public class StripeResponse
 
 ### Date Filtering
 
-Many of the `List()`-methods support parameters to filter by date.  You can use the `StripeDateFilter` class to combine the filters to make more interesting and complex queries.
+Many of the `List()`-methods support parameters to filter by date.  You can use the `DateFilter` class to combine the filters to make more interesting and complex queries.
 
-**Example: Interesting Queries with StripeDateFilter**
+**Example: Interesting Queries with DateFilter**
 ```csharp
-var chargeService = new StripeChargeService();
+var chargeService = new ChargeService();
 
-var chargesToday = chargeService.List(new StripeChargeListOptions {
-	Created = new StripeDateFilter { GreaterThanOrEqual = DateTime.UtcNow.Date }
+var chargesToday = chargeService.List(new ChargeListOptions {
+	Created = new DateFilter { GreaterThanOrEqual = DateTime.UtcNow.Date }
 });
 
-var chargesYesterday = chargeService.List(new StripeChargeListOptions {
-	Created = new StripeDateFilter {
+var chargesYesterday = chargeService.List(new ChargeListOptions {
+	Created = new DateFilter {
 		GreaterThanOrEqual = DateTime.Now.AddDays(-1).Date,
 		LessThan = DateTime.Now.Date
 	}
