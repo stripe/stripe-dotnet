@@ -1,5 +1,8 @@
 # Changelog
 
+## 17.10.0 - 2018-08-21
+* [#1251](https://github.com/stripe/stripe-dotnet/pull/1251) Add support for usage record summaries
+
 ## 17.9.0 - 2018-08-16
 * [#1250](https://github.com/stripe/stripe-dotnet/pull/1250) Add `UnitLabel` to `StripeProduct` and fix deserialization of `BillingReason` on `StripeInvoice`
 
