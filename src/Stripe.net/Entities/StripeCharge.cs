@@ -123,14 +123,14 @@
         /// The account (if any) the charge was made on behalf of, with an automatic transfer. See the Connect documentation for details.
         /// </summary>
         [JsonIgnore]
-        public StripeAccount Destination { get; set; }
+        public Account Destination { get; set; }
 
         [JsonProperty("destination")]
         internal object InternalDestination
         {
             set
             {
-                StringOrObject<StripeAccount>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
+                StringOrObject<Account>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
             }
         }
         #endregion
@@ -210,14 +210,14 @@
         public string OnBehalfOfId { get; set; }
 
         [JsonIgnore]
-        public StripeAccount OnBehalfOf { get; set; }
+        public Account OnBehalfOf { get; set; }
 
         [JsonProperty("on_behalf_of")]
         internal object InternalOnBehalfOf
         {
             set
             {
-                StringOrObject<StripeAccount>.Map(value, s => this.OnBehalfOfId = s, o => this.OnBehalfOf = o);
+                StringOrObject<Account>.Map(value, s => this.OnBehalfOfId = s, o => this.OnBehalfOf = o);
             }
         }
         #endregion

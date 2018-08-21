@@ -9,11 +9,11 @@
 
         public string ApiKey { get; set; }
 
-        protected StripeRequestOptions SetupRequestOptions(StripeRequestOptions requestOptions)
+        protected RequestOptions SetupRequestOptions(RequestOptions requestOptions)
         {
             if (requestOptions == null)
             {
-                requestOptions = new StripeRequestOptions();
+                requestOptions = new RequestOptions();
             }
 
             if (!string.IsNullOrEmpty(this.ApiKey))

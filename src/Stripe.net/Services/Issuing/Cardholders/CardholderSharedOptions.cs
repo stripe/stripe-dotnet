@@ -3,7 +3,7 @@ namespace Stripe.Issuing
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CardholderSharedOptions : StripeBaseOptions, ISupportMetadata
+    public class CardholderSharedOptions : BaseOptions, ISupportMetadata
     {
         [JsonProperty("billing")]
         public BillingOptions Billing { get; set; }

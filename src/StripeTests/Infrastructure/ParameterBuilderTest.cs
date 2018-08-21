@@ -113,7 +113,7 @@ namespace StripeTests
                 {
                     data = new TestOptions
                     {
-                        DateFilter = new StripeDateFilter
+                        DateFilter = new DateFilter
                         {
                             EqualTo = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
                         }
@@ -124,7 +124,7 @@ namespace StripeTests
                 {
                     data = new TestOptions
                     {
-                        DateFilter = new StripeDateFilter
+                        DateFilter = new DateFilter
                         {
                             LessThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
                             GreaterThanOrEqual = DateTime.Parse("Sat, 01 Jan 2000 00:00:00Z"),
@@ -394,7 +394,7 @@ namespace StripeTests
             this.service.ExpandSimple = true;
             this.service.ExpandMultiWordProperty = true;
 
-            var url = this.service.ApplyAllParameters(new StripeBaseOptions(), string.Empty, false);
+            var url = this.service.ApplyAllParameters(new BaseOptions(), string.Empty, false);
             Assert.Equal("?expand[]=simple&expand[]=multi_word_property", url);
         }
 
@@ -406,14 +406,14 @@ namespace StripeTests
             this.service.ExpandSimple = true;
             this.service.ExpandMultiWordProperty = true;
 
-            var url = this.service.ApplyAllParameters(new StripeBaseOptions(), string.Empty, true);
+            var url = this.service.ApplyAllParameters(new BaseOptions(), string.Empty, true);
             Assert.Equal("?expand[]=data.simple&expand[]=data.multi_word_property", url);
         }
 
         [Fact]
         public void ExpandOptions()
         {
-            var obj = new StripeBaseOptions();
+            var obj = new BaseOptions();
             obj.AddExpand("example1.subexample1");
             obj.AddExpand("example2");
             obj.AddExpand("example3.subexample3");
