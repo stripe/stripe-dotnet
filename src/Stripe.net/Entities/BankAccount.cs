@@ -1,16 +1,30 @@
 ﻿namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class CustomerBankAccount : StripeEntityWithId, ISupportMetadata
+    public class BankAccount : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("account")]
+        #region Expandable Account
         public string AccountId { get; set; }
+
+        [JsonIgnore]
+        public StripeAccount Account { get; set; }
+
+        [JsonProperty("account")]
+        internal object InternalAccount
+        {
+            set
+            {
+                StringOrObject<StripeAccount>.Map(value, s => this.AccountId = s, o => this.Account = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("account_holder_name")]
         public string AccountHolderName { get; set; }

@@ -16,12 +16,6 @@
         [JsonProperty("account_balance")]
         public int AccountBalance { get; set; }
 
-        /// <summary>
-        /// Warning: this is not in the documentation
-        /// </summary>
-        [JsonProperty("bank_accounts")]
-        public StripeList<CustomerBankAccount> CustomerBankAccounts { get; set; }
-
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
@@ -32,29 +26,6 @@
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        #region Expandable Default CustomerBankAccount
-
-        /// <summary>
-        /// Warning: this is not in the documentation
-        /// </summary>
-        public string DefaultCustomerBankAccountId { get; set; }
-
-        /// <summary>
-        /// Warning: this is not in the documentation
-        /// </summary>
-        [JsonIgnore]
-        public CustomerBankAccount DefaultCustomerBankAccount { get; set; }
-
-        [JsonProperty("default_bank_account")]
-        internal object InternalDefaultCustomerBankAccount
-        {
-            set
-            {
-                StringOrObject<CustomerBankAccount>.Map(value, s => this.DefaultCustomerBankAccountId = s, o => this.DefaultCustomerBankAccount = o);
-            }
-        }
-        #endregion
-
         #region Expandable DefaultSource
 
         /// <summary>
@@ -64,14 +35,14 @@
         public string DefaultSourceId { get; set; }
 
         [JsonIgnore]
-        public Source DefaultSource { get; set; }
+        public PaymentSource DefaultSource { get; set; }
 
         [JsonProperty("default_source")]
         internal object InternalDefaultSource
         {
             set
             {
-                StringOrObject<Source>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
+                StringOrObject<PaymentSource>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
             }
         }
 
@@ -126,7 +97,7 @@
         /// The customer’s payment sources, if any
         /// </summary>
         [JsonProperty("sources")]
-        public StripeList<Source> Sources { get; set; }
+        public StripeList<PaymentSource> Sources { get; set; }
 
         /// <summary>
         /// The customer’s current subscriptions, if any
