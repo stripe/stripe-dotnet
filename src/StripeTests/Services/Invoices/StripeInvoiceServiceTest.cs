@@ -14,6 +14,7 @@ namespace StripeTests
         private StripeInvoiceService service;
         private StripeInvoiceCreateOptions createOptions;
         private StripeInvoiceUpdateOptions updateOptions;
+        private StripeInvoicePayOptions payOptions;
         private StripeInvoiceListOptions listOptions;
         private StripeInvoiceListLineItemsOptions listLineItemsOptions;
         private StripeUpcomingInvoiceOptions upcomingOptions;
@@ -33,6 +34,12 @@ namespace StripeTests
                 {
                     { "key", "value" },
                 },
+            };
+
+            this.payOptions = new StripeInvoicePayOptions()
+            {
+                Forgive = true,
+                SourceId = "src_123",
             };
 
             this.listOptions = new StripeInvoiceListOptions()
@@ -146,7 +153,7 @@ namespace StripeTests
         [Fact]
         public void Pay()
         {
-            var invoice = this.service.Pay(InvoiceId);
+            var invoice = this.service.Pay(InvoiceId, this.payOptions);
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -154,7 +161,7 @@ namespace StripeTests
         [Fact]
         public async Task PayAsync()
         {
-            var invoice = await this.service.PayAsync(InvoiceId);
+            var invoice = await this.service.PayAsync(InvoiceId, this.payOptions);
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
