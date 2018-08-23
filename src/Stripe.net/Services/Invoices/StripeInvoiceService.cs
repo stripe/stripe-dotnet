@@ -49,11 +49,11 @@
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeInvoice Pay(string invoiceId, StripeRequestOptions requestOptions = null)
+        public virtual StripeInvoice Pay(string invoiceId, StripeInvoicePayOptions payOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeInvoice>.MapFromJson(
                 Requestor.PostString(
-                    this.ApplyAllParameters(null, $"{Urls.Invoices}/{invoiceId}/pay", false),
+                    this.ApplyAllParameters(payOptions, $"{Urls.Invoices}/{invoiceId}/pay", false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
@@ -122,11 +122,11 @@
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeInvoice> PayAsync(string invoiceId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeInvoice> PayAsync(string invoiceId, StripeInvoicePayOptions payOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeInvoice>.MapFromJson(
                 await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(null, $"{Urls.Invoices}/{invoiceId}/pay", false),
+                    this.ApplyAllParameters(payOptions, $"{Urls.Invoices}/{invoiceId}/pay", false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
