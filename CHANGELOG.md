@@ -1,5 +1,8 @@
 # Changelog
 
+## 18.0.0 - 2018-08-23
+* [#1257](https://github.com/stripe/stripe-dotnet/pull/1257) Add support for passing options to `StripeInvoiceService.Pay` / `PayAsync`
+
 ## 17.11.0 - 2018-08-23
 * [#1255](https://github.com/stripe/stripe-dotnet/pull/1255) Make `StripeInvoiceItemCreateOptions.Amount` optional
 
