@@ -1,5 +1,8 @@
 # Changelog
 
+## 17.11.0 - 2018-08-23
+* [#1255](https://github.com/stripe/stripe-dotnet/pull/1255) Make `StripeInvoiceItemCreateOptions.Amount` optional
+
 ## 17.10.0 - 2018-08-21
 * [#1251](https://github.com/stripe/stripe-dotnet/pull/1251) Add support for usage record summaries
 
