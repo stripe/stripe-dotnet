@@ -6,8 +6,8 @@
 
     public class StripePlanTierOptions
     {
-        [JsonProperty("amount")]
-        public int Amount { get; set; }
+        [JsonProperty("unit_amount")]
+        public int UnitAmount { get; set; }
 
         #region UpTo
         public UpToOption UpTo { get; set; }

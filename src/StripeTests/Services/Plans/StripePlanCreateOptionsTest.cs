@@ -26,7 +26,7 @@ namespace StripeTests
                 {
                     new StripePlanTierOptions
                     {
-                        Amount = 1000,
+                        UnitAmount = 1000,
                         UpTo = new StripePlanTierOptions.UpToBound
                         {
                             Bound = 10
@@ -34,14 +34,14 @@ namespace StripeTests
                     },
                     new StripePlanTierOptions
                     {
-                        Amount = 2000,
+                        UnitAmount = 2000,
                         UpTo = new StripePlanTierOptions.UpToInf()
                     }
                 },
             };
 
             var url = this.service.ApplyAllParameters(options, string.Empty, false);
-            Assert.Equal("?tiers[0][amount]=1000&tiers[0][up_to]=10&tiers[1][amount]=2000&tiers[1][up_to]=inf", url);
+            Assert.Equal("?tiers[0][unit_amount]=1000&tiers[0][up_to]=10&tiers[1][unit_amount]=2000&tiers[1][up_to]=inf", url);
         }
     }
 }

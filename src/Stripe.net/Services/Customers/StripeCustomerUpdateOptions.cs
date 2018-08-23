@@ -9,9 +9,6 @@
         [JsonProperty("account_balance")]
         public int? AccountBalance { get; set; }
 
-        [JsonProperty("business_vat_id")]
-        public string BusinessVatId { get; set; }
-
         [JsonProperty("source")]
         public string SourceToken { get; set; }
 
@@ -38,5 +35,8 @@
 
         [JsonProperty("shipping")]
         public StripeShippingOptions Shipping { get; set; }
+
+        [JsonProperty("tax_info")]
+        public StripeCustomerTaxInfoOptions TaxInfo { get; set; }
     }
 }

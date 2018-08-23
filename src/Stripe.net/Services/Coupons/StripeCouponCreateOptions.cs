@@ -17,7 +17,7 @@
         public string Currency { get; set; }
 
         [JsonProperty("percent_off")]
-        public int? PercentOff { get; set; }
+        public decimal? PercentOff { get; set; }
 
         [JsonProperty("duration")]
         public string Duration { get; set; }

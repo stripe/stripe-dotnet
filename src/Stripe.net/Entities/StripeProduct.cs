@@ -84,12 +84,6 @@
         public bool? Shippable { get; set; }
 
         /// <summary>
-        /// A sublist of active SKUs associated with this product.
-        /// </summary>
-        [JsonProperty("skus")]
-        public StripeList<StripeSku> Skus { get; set; }
-
-        /// <summary>
         /// What appears on a customer's credit card statement.
         /// </summary>
         [JsonProperty("statement_descriptor")]

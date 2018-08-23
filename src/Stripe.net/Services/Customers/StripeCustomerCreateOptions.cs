@@ -10,9 +10,6 @@
         [JsonProperty("account_balance")]
         public int? AccountBalance { get; set; }
 
-        [JsonProperty("business_vat_id")]
-        public string BusinessVatId { get; set; }
-
         [JsonProperty("coupon")]
         public string CouponId { get; set; }
 
@@ -42,6 +39,9 @@
 
         [JsonProperty("source")]
         public SourceCard SourceCard { get; set; }
+
+        [JsonProperty("tax_info")]
+        public StripeCustomerTaxInfoOptions TaxInfo { get; set; }
 
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
