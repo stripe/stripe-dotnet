@@ -7,7 +7,7 @@
 
     public static class StripeConfiguration
     {
-        public static string StripeApiVersion = "2018-02-06";
+        public static string StripeApiVersion = "2018-08-23";
 
         private static string apiKey;
         private static string apiBase;

@@ -22,12 +22,6 @@
         [JsonProperty("bank_accounts")]
         public StripeList<CustomerBankAccount> CustomerBankAccounts { get; set; }
 
-        /// <summary>
-        /// The customer’s VAT identification number
-        /// </summary>
-        [JsonProperty("business_vat_id")]
-        public string BusinessVatId { get; set; }
-
         [JsonProperty("created")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
@@ -139,5 +133,11 @@
         /// </summary>
         [JsonProperty("subscriptions")]
         public StripeList<StripeSubscription> Subscriptions { get; set; }
+
+        [JsonProperty("tax_info")]
+        public StripeCustomerTaxInfo TaxInfo { get; set; }
+
+        [JsonProperty("tax_info_verification")]
+        public StripeCustomerTaxInfoVerification TaxInfoVerification { get; set; }
     }
 }

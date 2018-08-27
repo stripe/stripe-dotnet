@@ -8,10 +8,10 @@ namespace StripeTests
 
     public class StripeSubscriptionServiceTest : BaseStripeTest
     {
-        private const string CustomerId = "cus_123";
         private const string SubscriptionId = "sub_123";
 
         private StripeSubscriptionService service;
+        private StripeSubscriptionCancelOptions cancelOptions;
         private StripeSubscriptionCreateOptions createOptions;
         private StripeSubscriptionUpdateOptions updateOptions;
         private StripeSubscriptionListOptions listOptions;
@@ -20,8 +20,13 @@ namespace StripeTests
         {
             this.service = new StripeSubscriptionService();
 
+            this.cancelOptions = new StripeSubscriptionCancelOptions
+            {
+            };
+
             this.createOptions = new StripeSubscriptionCreateOptions()
             {
+                CustomerId = "cus_123",
                 Items = new List<StripeSubscriptionItemOption>
                 {
                     new StripeSubscriptionItemOption
@@ -52,9 +57,25 @@ namespace StripeTests
         }
 
         [Fact]
+        public void Cancel()
+        {
+            var subscription = this.service.Cancel(SubscriptionId, this.cancelOptions);
+            Assert.NotNull(subscription);
+            Assert.Equal("subscription", subscription.Object);
+        }
+
+        [Fact]
+        public async Task CancelAsync()
+        {
+            var subscription = await this.service.CancelAsync(SubscriptionId, this.cancelOptions);
+            Assert.NotNull(subscription);
+            Assert.Equal("subscription", subscription.Object);
+        }
+
+        [Fact]
         public void Create()
         {
-            var subscription = this.service.Create(CustomerId, this.createOptions);
+            var subscription = this.service.Create(this.createOptions);
             Assert.NotNull(subscription);
             Assert.Equal("subscription", subscription.Object);
         }
@@ -62,7 +83,7 @@ namespace StripeTests
         [Fact]
         public async Task CreateAsync()
         {
-            var subscription = await this.service.CreateAsync(CustomerId, this.createOptions);
+            var subscription = await this.service.CreateAsync(this.createOptions);
             Assert.NotNull(subscription);
             Assert.Equal("subscription", subscription.Object);
         }
