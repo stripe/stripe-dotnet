@@ -1,5 +1,16 @@
 # Changelog
 
+## 19.0.0 - 2018-08-27
+* [#1259](https://github.com/stripe/stripe-dotnet/pull/1259) Upgrade to API version [2018-08-23](https://stripe.com/docs/upgrades#2018-08-23)
+
+List of backwards incompatible changes:
+* `BusinessVatId` on `StripeCustomer` / `StripeCustomerCreateOptions` / `StripeCustomerUpdateOptions` is replaced with `TaxInfo`
+* `Amount` on `StripePlanTier` / `StripePlanTierOptions` is replaced with `UnitAmount`
+* `PercentOff` on `StripeCouponCreateOptions` is now a `decimal` (used to be an `int`)
+* Request methods on `StripeSubscriptionService` no longer accept a `string customerId` argument. Instead, the customer ID should be provided in the appropriate options class (`StripeSubscriptionCreateOptions`, etc.)
+* `StripeSubscriptionService.Cancel` & `CancelAsync` no longer accept a `bool cancelAtPeriodEnd` argument. If you want to delete a subscription at the end of the period, you can _update_ the subscription with `CancelAtPeriodEnd`
+* `StripeProduct` no longer has a `Skus` property
+
 ## 18.0.0 - 2018-08-23
 * [#1257](https://github.com/stripe/stripe-dotnet/pull/1257) Add support for passing options to `StripeInvoiceService.Pay` / `PayAsync`
 
