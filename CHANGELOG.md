@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.0.1 - 2018-08-27
+* Fix 19.0.0 release. The version that was pushed to NuGet did not include the changes from 19.0.0.
+
 ## 19.0.0 - 2018-08-27
 * [#1259](https://github.com/stripe/stripe-dotnet/pull/1259) Upgrade to API version [2018-08-23](https://stripe.com/docs/upgrades#2018-08-23)
 
