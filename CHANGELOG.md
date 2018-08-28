@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.1.0 - 2018-08-28
+* [#1262](https://github.com/stripe/stripe-dotnet/pull/1262) Add `AuthorizationCode` to `StripeCharge`
+
 ## 19.0.1 - 2018-08-27
 * Fix 19.0.0 release. The version that was pushed to NuGet did not include the changes from 19.0.0.
 
