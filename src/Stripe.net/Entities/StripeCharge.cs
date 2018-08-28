@@ -374,5 +374,9 @@
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
+
+        // The properties below are for internal use only and not returned as part of standard API requests.
+        [JsonProperty("authorization_code")]
+        public string AuthorizationCode { get; set; }
     }
 }
