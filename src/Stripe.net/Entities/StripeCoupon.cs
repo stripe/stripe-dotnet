@@ -39,7 +39,7 @@
         public string Name { get; set; }
 
         [JsonProperty("percent_off")]
-        public int? PercentOff { get; set; }
+        public decimal? PercentOff { get; set; }
 
         [JsonProperty("redeem_by")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
