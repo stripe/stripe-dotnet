@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.2.0 - 2018-08-29
+* [#1266](https://github.com/stripe/stripe-dotnet/pull/1266) Fix type of `PercentOff` on `StripeCoupon` (this is technically breaking, but the previous implementation didn't work, so we're releasing as a minor)
+
 ## 19.1.0 - 2018-08-28
 * [#1262](https://github.com/stripe/stripe-dotnet/pull/1262) Add `AuthorizationCode` to `StripeCharge`
 
