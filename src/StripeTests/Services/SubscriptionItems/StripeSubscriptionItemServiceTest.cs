@@ -37,6 +37,7 @@ namespace StripeTests
             this.listOptions = new StripeSubscriptionItemListOptions()
             {
                 Limit = 1,
+                SubscriptionId = "sub_123",
             };
         }
 
