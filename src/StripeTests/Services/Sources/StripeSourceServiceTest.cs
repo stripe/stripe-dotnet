@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -22,7 +23,19 @@ namespace StripeTests
             this.createOptions = new StripeSourceCreateOptions
             {
                 Type = StripeSourceType.AchCreditTransfer,
-                Currency = "usd"
+                Currency = "usd",
+                Mandate = new StripeSourceMandateOptions
+                {
+                    MandateAcceptanceDate = DateTime.Parse("Mon, 01 Jan 2001 00:00:00Z"),
+                    MandateAcceptanceIp = "127.0.0.1",
+                    MandateAcceptanceStatus = "accepted",
+                    MandateAcceptanceUserAgent = "User-Agent",
+                    MandateNotificationMethod = "manual",
+                },
+                Receiver = new StripeSourceReceiverOptions
+                {
+                    RefundAttributesMethod = "manual",
+                },
             };
 
             this.updateOptions = new StripeSourceUpdateOptions
