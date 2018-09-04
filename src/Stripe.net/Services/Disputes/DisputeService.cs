@@ -6,7 +6,10 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class DisputeService : BasicService<Dispute>
+    public class DisputeService : BasicService<Dispute>,
+        IListable<Dispute, DisputeListOptions>,
+        IRetrievable<Dispute>,
+        IUpdatable<Dispute, DisputeUpdateOptions>
     {
         public DisputeService()
             : base(null)

@@ -6,7 +6,9 @@ namespace Stripe.Reporting
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ReportTypeService : StripeService
+    public class ReportTypeService : StripeService,
+        IListable<ReportType, ReportTypeListOptions>,
+        IRetrievable<ReportType>
     {
         private static string classUrl = Urls.BaseUrl + "/reporting/report_types";
 

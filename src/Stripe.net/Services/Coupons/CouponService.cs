@@ -6,7 +6,12 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class CouponService : StripeService
+    public class CouponService : StripeService,
+        ICreatable<Coupon, CouponCreateOptions>,
+        IDeletable<Coupon>,
+        IListable<Coupon, CouponListOptions>,
+        IRetrievable<Coupon>,
+        IUpdatable<Coupon, CouponUpdateOptions>
     {
         public CouponService()
             : base(null)

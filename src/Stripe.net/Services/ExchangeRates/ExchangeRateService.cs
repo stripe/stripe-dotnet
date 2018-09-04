@@ -5,7 +5,9 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ExchangeRateService : StripeService
+    public class ExchangeRateService : StripeService,
+        IListable<ExchangeRate, ExchangeRateListOptions>,
+        IRetrievable<ExchangeRate>
     {
         public ExchangeRateService()
             : base(null)
