@@ -70,6 +70,12 @@
         public string ThreeDSecureCardOrSourceId { get; set; }
 
         /// <summary>
+        /// Information about a mandate possiblity attached to a source object (generally for bank debits) as well as its acceptance status.
+        /// </summary>
+        [JsonProperty("mandate")]
+        public StripeSourceMandateOptions Mandate { get; set; }
+
+        /// <summary>
         /// A set of key/value pairs that you can attach to a source object. It can be useful for storing additional information about the source in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
@@ -94,6 +100,12 @@
         /// </summary>
         [JsonProperty("[redirect][return_url]")]
         public string RedirectReturnUrl { get; set; }
+
+        /// <summary>
+        /// Optional parameters for the receiver flow. Can be set only if the source is a receiver.
+        /// </summary>
+        [JsonProperty("receiver")]
+        public StripeSourceReceiverOptions Receiver { get; set; }
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
