@@ -6,7 +6,11 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class RefundService : StripeService
+    public class RefundService : StripeService,
+        ICreatable<Refund, RefundCreateOptions>,
+        IListable<Refund, RefundListOptions>,
+        IRetrievable<Refund>,
+        IUpdatable<Refund, RefundUpdateOptions>
     {
         private static string classUrl = Urls.BaseUrl + "/refunds";
 

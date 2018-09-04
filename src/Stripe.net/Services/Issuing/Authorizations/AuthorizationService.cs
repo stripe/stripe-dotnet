@@ -6,7 +6,10 @@ namespace Stripe.Issuing
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class AuthorizationService : StripeService
+    public class AuthorizationService : StripeService,
+        IListable<Authorization, AuthorizationListOptions>,
+        IRetrievable<Authorization>,
+        IUpdatable<Authorization, AuthorizationUpdateOptions>
     {
         private static string classUrl = Urls.BaseUrl + "/issuing/authorizations";
 

@@ -6,7 +6,12 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class SkuService : BasicService<Sku>
+    public class SkuService : BasicService<Sku>,
+        ICreatable<Sku, SkuCreateOptions>,
+        IDeletable<Sku>,
+        IListable<Sku, SkuListOptions>,
+        IRetrievable<Sku>,
+        IUpdatable<Sku, SkuUpdateOptions>
     {
         public SkuService()
             : base(null)

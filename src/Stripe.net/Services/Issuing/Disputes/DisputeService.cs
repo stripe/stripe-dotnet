@@ -6,7 +6,11 @@ namespace Stripe.Issuing
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class DisputeService : StripeService
+    public class DisputeService : StripeService,
+        ICreatable<Dispute, DisputeCreateOptions>,
+        IListable<Dispute, DisputeListOptions>,
+        IRetrievable<Dispute>,
+        IUpdatable<Dispute, DisputeUpdateOptions>
     {
         private static string classUrl = Urls.BaseUrl + "/issuing/disputes";
 

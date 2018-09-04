@@ -5,7 +5,11 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class PayoutService : BasicService<Payout>
+    public class PayoutService : BasicService<Payout>,
+        ICreatable<Payout, PayoutCreateOptions>,
+        IListable<Payout, PayoutListOptions>,
+        IRetrievable<Payout>,
+        IUpdatable<Payout, PayoutUpdateOptions>
     {
         public PayoutService()
             : base(null)

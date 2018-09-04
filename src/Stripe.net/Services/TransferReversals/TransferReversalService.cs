@@ -5,7 +5,11 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class TransferReversalService : BasicService<TransferReversal>
+    public class TransferReversalService : BasicService<TransferReversal>,
+        INestedCreatable<TransferReversal, TransferReversalCreateOptions>,
+        INestedListable<TransferReversal, TransferReversalListOptions>,
+        INestedRetrievable<TransferReversal>,
+        INestedUpdatable<TransferReversal, TransferReversalUpdateOptions>
     {
         public TransferReversalService()
             : base(null)
