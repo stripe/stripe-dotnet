@@ -4,7 +4,11 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class TopupService : StripeService
+    public class TopupService : StripeService,
+        ICreatable<Topup, TopupCreateOptions>,
+        IListable<Topup, TopupListOptions>,
+        IRetrievable<Topup>,
+        IUpdatable<Topup, TopupUpdateOptions>
     {
         public TopupService(string apiKey = null)
             : base(apiKey)

@@ -4,7 +4,9 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ScheduledQueryRunService : BasicService<ScheduledQueryRun>
+    public class ScheduledQueryRunService : BasicService<ScheduledQueryRun>,
+        IListable<ScheduledQueryRun, ScheduledQueryRunListOptions>,
+        IRetrievable<ScheduledQueryRun>
     {
         private static string classUrl = Urls.BaseUrl + "/sigma/scheduled_query_runs";
 

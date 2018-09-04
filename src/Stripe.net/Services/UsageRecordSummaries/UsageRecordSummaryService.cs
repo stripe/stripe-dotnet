@@ -5,7 +5,8 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class UsageRecordSummaryService : BasicService<UsageRecord>
+    public class UsageRecordSummaryService : BasicService<UsageRecord>,
+        INestedListable<UsageRecordSummary, UsageRecordSummaryListOptions>
     {
         public UsageRecordSummaryService()
             : base(null)
