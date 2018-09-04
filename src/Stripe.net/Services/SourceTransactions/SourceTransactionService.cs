@@ -4,7 +4,8 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class SourceTransactionService : BasicService<SourceTransaction>
+    public class SourceTransactionService : BasicService<SourceTransaction>,
+        INestedListable<SourceTransaction, SourceTransactionsListOptions>
     {
         public SourceTransactionService()
             : base(null)

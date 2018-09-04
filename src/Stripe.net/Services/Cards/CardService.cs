@@ -6,7 +6,12 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class CardService : StripeService
+    public class CardService : StripeService,
+        INestedCreatable<Card, CardCreateOptions>,
+        INestedDeletable<Card>,
+        INestedListable<Card, CardListOptions>,
+        INestedRetrievable<Card>,
+        INestedUpdatable<Card, CardUpdateOptions>
     {
         public CardService()
             : base(null)

@@ -5,7 +5,11 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ApplePayDomainService : BasicService<ApplePayDomain>
+    public class ApplePayDomainService : BasicService<ApplePayDomain>,
+        ICreatable<ApplePayDomain, ApplePayDomainCreateOptions>,
+        IDeletable<ApplePayDomain>,
+        IListable<ApplePayDomain, ApplePayDomainListOptions>,
+        IRetrievable<ApplePayDomain>
     {
         public ApplePayDomainService()
             : base(null)

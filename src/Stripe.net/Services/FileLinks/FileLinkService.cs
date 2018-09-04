@@ -6,7 +6,11 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class FileLinkService : StripeService
+    public class FileLinkService : StripeService,
+        ICreatable<FileLink, FileLinkCreateOptions>,
+        IListable<FileLink, FileLinkListOptions>,
+        IRetrievable<FileLink>,
+        IUpdatable<FileLink, FileLinkUpdateOptions>
     {
         private static string classUrl = Urls.BaseUrl + "/file_links";
 

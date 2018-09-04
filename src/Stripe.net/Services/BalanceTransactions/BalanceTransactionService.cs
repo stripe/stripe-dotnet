@@ -6,7 +6,9 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class BalanceTransactionService : BasicService<BalanceTransaction>
+    public class BalanceTransactionService : BasicService<BalanceTransaction>,
+        IListable<BalanceTransaction, BalanceTransactionListOptions>,
+        IRetrievable<BalanceTransaction>
     {
         private static string classUrl = Urls.BaseUrl + "/balance/history";
 

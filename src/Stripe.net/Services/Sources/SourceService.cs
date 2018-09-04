@@ -4,7 +4,10 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class SourceService : BasicService<Source>
+    public class SourceService : BasicService<Source>,
+        ICreatable<Source, SourceCreateOptions>,
+        IRetrievable<Source>,
+        IUpdatable<Source, SourceUpdateOptions>
     {
         public SourceService()
             : base(null)

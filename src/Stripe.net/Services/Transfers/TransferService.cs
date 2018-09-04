@@ -5,7 +5,11 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class TransferService : BasicService<Transfer>
+    public class TransferService : BasicService<Transfer>,
+        ICreatable<Transfer, TransferCreateOptions>,
+        IListable<Transfer, TransferListOptions>,
+        IRetrievable<Transfer>,
+        IUpdatable<Transfer, TransferUpdateOptions>
     {
         public TransferService()
             : base(null)

@@ -5,7 +5,9 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class EventService : StripeService
+    public class EventService : StripeService,
+        IListable<Event, EventListOptions>,
+        IRetrievable<Event>
     {
         public EventService()
             : base(null)

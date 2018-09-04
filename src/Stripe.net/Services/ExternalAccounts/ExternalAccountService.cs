@@ -5,7 +5,12 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ExternalAccountService : BasicService<ExternalAccount>
+    public class ExternalAccountService : BasicService<ExternalAccount>,
+        INestedCreatable<ExternalAccount, ExternalAccountCreateOptions>,
+        INestedDeletable<ExternalAccount>,
+        INestedListable<ExternalAccount, ExternalAccountListOptions>,
+        INestedRetrievable<ExternalAccount>,
+        INestedUpdatable<ExternalAccount, ExternalAccountUpdateOptions>
     {
         public ExternalAccountService()
             : base(null)
