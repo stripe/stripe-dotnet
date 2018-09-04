@@ -5,7 +5,9 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class CountrySpecService : StripeService
+    public class CountrySpecService : StripeService,
+        IListable<CountrySpec, CountrySpecListOptions>,
+        IRetrievable<CountrySpec>
     {
         public CountrySpecService()
             : base(null)

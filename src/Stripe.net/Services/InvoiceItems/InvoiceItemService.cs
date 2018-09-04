@@ -5,7 +5,12 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class InvoiceItemService : StripeService
+    public class InvoiceItemService : StripeService,
+        ICreatable<InvoiceLineItem, InvoiceItemCreateOptions>,
+        IDeletable<InvoiceLineItem>,
+        IListable<InvoiceLineItem, InvoiceItemListOptions>,
+        IRetrievable<InvoiceLineItem>,
+        IUpdatable<InvoiceLineItem, InvoiceItemUpdateOptions>
     {
         public InvoiceItemService()
             : base(null)

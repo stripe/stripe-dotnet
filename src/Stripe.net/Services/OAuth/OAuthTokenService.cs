@@ -4,7 +4,8 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class OAuthTokenService : StripeService
+    public class OAuthTokenService : StripeService,
+        ICreatable<OAuthToken, OAuthTokenCreateOptions>
     {
         public OAuthTokenService()
             : base(null)

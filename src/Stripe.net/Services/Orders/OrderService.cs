@@ -5,7 +5,11 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class OrderService : BasicService<Order>
+    public class OrderService : BasicService<Order>,
+        ICreatable<Order, OrderCreateOptions>,
+        IListable<Order, OrderListOptions>,
+        IRetrievable<Order>,
+        IUpdatable<Order, OrderUpdateOptions>
     {
         public OrderService()
             : base(null)

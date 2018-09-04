@@ -6,7 +6,12 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class PlanService : StripeService
+    public class PlanService : StripeService,
+        ICreatable<Plan, PlanCreateOptions>,
+        IDeletable<Plan>,
+        IListable<Plan, PlanListOptions>,
+        IRetrievable<Plan>,
+        IUpdatable<Plan, PlanUpdateOptions>
     {
         public PlanService()
             : base(null)

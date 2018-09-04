@@ -6,7 +6,10 @@ namespace Stripe.Reporting
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ReportRunService : StripeService
+    public class ReportRunService : StripeService,
+        ICreatable<ReportRun, ReportRunCreateOptions>,
+        IListable<ReportRun, ReportRunListOptions>,
+        IRetrievable<ReportRun>
     {
         private static string classUrl = Urls.BaseUrl + "/reporting/report_runs";
 

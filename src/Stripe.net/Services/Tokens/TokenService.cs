@@ -4,7 +4,9 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class TokenService : StripeService
+    public class TokenService : StripeService,
+        ICreatable<Token, TokenCreateOptions>,
+        IRetrievable<Token>
     {
         public TokenService()
             : base(null)

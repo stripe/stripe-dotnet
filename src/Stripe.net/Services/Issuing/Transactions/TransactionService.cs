@@ -6,7 +6,10 @@ namespace Stripe.Issuing
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class TransactionService : StripeService
+    public class TransactionService : StripeService,
+        IListable<Transaction, TransactionListOptions>,
+        IRetrievable<Transaction>,
+        IUpdatable<Transaction, TransactionUpdateOptions>
     {
         private static string classUrl = Urls.BaseUrl + "/issuing/transactions";
 

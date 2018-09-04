@@ -5,7 +5,12 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class SubscriptionItemService : BasicService<SubscriptionItem>
+    public class SubscriptionItemService : BasicService<SubscriptionItem>,
+        ICreatable<SubscriptionItem, SubscriptionItemCreateOptions>,
+        IDeletable<SubscriptionItem>,
+        IListable<SubscriptionItem, SubscriptionItemListOptions>,
+        IRetrievable<SubscriptionItem>,
+        IUpdatable<SubscriptionItem, SubscriptionItemUpdateOptions>
     {
         public SubscriptionItemService()
             : base(null)

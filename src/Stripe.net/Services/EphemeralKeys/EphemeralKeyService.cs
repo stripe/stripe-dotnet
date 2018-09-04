@@ -5,7 +5,9 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class EphemeralKeyService : BasicService<EphemeralKey>
+    public class EphemeralKeyService : BasicService<EphemeralKey>,
+        ICreatable<EphemeralKey, EphemeralKeyCreateOptions>,
+        IDeletable<EphemeralKey>
     {
         public EphemeralKeyService()
             : base(null)

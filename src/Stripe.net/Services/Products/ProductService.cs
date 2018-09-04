@@ -6,7 +6,12 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ProductService : BasicService<Product>
+    public class ProductService : BasicService<Product>,
+        ICreatable<Product, ProductCreateOptions>,
+        IDeletable<Product>,
+        IListable<Product, ProductListOptions>,
+        IRetrievable<Product>,
+        IUpdatable<Product, ProductUpdateOptions>
     {
         public ProductService()
             : base(null)

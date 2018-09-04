@@ -5,7 +5,12 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class AccountService : StripeService
+    public class AccountService : StripeService,
+        ICreatable<Account, AccountCreateOptions>,
+        IDeletable<Account>,
+        IListable<Account, AccountListOptions>,
+        IRetrievable<Account>,
+        IUpdatable<Account, AccountUpdateOptions>
     {
         public AccountService()
             : base(null)

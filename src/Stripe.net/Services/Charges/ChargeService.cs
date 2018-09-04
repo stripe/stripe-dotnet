@@ -4,7 +4,11 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ChargeService : StripeService
+    public class ChargeService : StripeService,
+        ICreatable<Charge, ChargeCreateOptions>,
+        IListable<Charge, ChargeListOptions>,
+        IRetrievable<Charge>,
+        IUpdatable<Charge, ChargeUpdateOptions>
     {
         public ChargeService()
             : base(null)
