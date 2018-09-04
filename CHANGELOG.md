@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.3.0 - 2018-09-04
+* [#1268](https://github.com/stripe/stripe-dotnet/pull/1268) Add `Mandate` and `Receiver` to `StripeSourceCreateOptions`
+
 ## 19.2.0 - 2018-08-29
 * [#1266](https://github.com/stripe/stripe-dotnet/pull/1266) Fix type of `PercentOff` on `StripeCoupon` (this is technically breaking, but the previous implementation didn't work, so we're releasing as a minor)
 
