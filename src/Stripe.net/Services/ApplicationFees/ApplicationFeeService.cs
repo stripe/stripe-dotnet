@@ -5,7 +5,9 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ApplicationFeeService : StripeService
+    public class ApplicationFeeService : StripeService,
+        IListable<ApplicationFee, ApplicationFeeListOptions>,
+        IRetrievable<ApplicationFee>
     {
         public ApplicationFeeService()
             : base(null)

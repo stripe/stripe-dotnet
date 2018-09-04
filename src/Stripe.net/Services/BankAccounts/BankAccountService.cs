@@ -5,7 +5,12 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class BankAccountService : StripeService
+    public class BankAccountService : StripeService,
+        INestedCreatable<BankAccount, BankAccountCreateOptions>,
+        INestedDeletable<BankAccount>,
+        INestedListable<BankAccount, BankAccountListOptions>,
+        INestedRetrievable<BankAccount>,
+        INestedUpdatable<BankAccount, BankAccountUpdateOptions>
     {
         public BankAccountService()
             : base(null)

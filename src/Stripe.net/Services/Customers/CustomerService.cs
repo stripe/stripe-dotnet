@@ -6,7 +6,12 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class CustomerService : StripeService
+    public class CustomerService : StripeService,
+        ICreatable<Customer, CustomerCreateOptions>,
+        IDeletable<Customer>,
+        IListable<Customer, CustomerListOptions>,
+        IRetrievable<Customer>,
+        IUpdatable<Customer, CustomerUpdateOptions>
     {
         public CustomerService()
             : base(null)

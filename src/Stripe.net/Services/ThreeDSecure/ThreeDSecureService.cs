@@ -6,7 +6,8 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     [Obsolete("Use the SourceService instead.")]
-    public class ThreeDSecureService : BasicService<ThreeDSecure>
+    public class ThreeDSecureService : BasicService<ThreeDSecure>,
+        ICreatable<ThreeDSecure, ThreeDSecureCreateOptions>
     {
         public ThreeDSecureService()
             : base(null)

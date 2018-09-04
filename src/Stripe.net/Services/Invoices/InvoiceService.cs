@@ -5,7 +5,11 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class InvoiceService : StripeService
+    public class InvoiceService : StripeService,
+        ICreatable<Invoice, InvoiceCreateOptions>,
+        IListable<Invoice, InvoiceListOptions>,
+        IRetrievable<Invoice>,
+        IUpdatable<Invoice, InvoiceUpdateOptions>
     {
         private static string classUrl = Urls.BaseUrl + "/invoices";
 

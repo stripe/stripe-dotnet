@@ -6,7 +6,11 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public partial class SubscriptionService : StripeService
+    public partial class SubscriptionService : StripeService,
+        ICreatable<Subscription, SubscriptionCreateOptions>,
+        IListable<Subscription, SubscriptionListOptions>,
+        IRetrievable<Subscription>,
+        IUpdatable<Subscription, SubscriptionUpdateOptions>
     {
         public SubscriptionService()
             : base(null)

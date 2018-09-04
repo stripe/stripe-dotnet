@@ -6,7 +6,8 @@
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class BalanceService : StripeService
+    public class BalanceService : StripeService,
+        ISingletonRetrievable<Balance>
     {
         private static string classUrl = Urls.BaseUrl + "/balance";
 

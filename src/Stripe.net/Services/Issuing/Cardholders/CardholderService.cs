@@ -6,7 +6,11 @@ namespace Stripe.Issuing
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class CardholderService : StripeService
+    public class CardholderService : StripeService,
+        ICreatable<Cardholder, CardholderCreateOptions>,
+        IListable<Cardholder, CardholderListOptions>,
+        IRetrievable<Cardholder>,
+        IUpdatable<Cardholder, CardholderUpdateOptions>
     {
         private static string classUrl = Urls.BaseUrl + "/issuing/cardholders";
 
