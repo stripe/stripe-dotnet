@@ -23,7 +23,11 @@
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        // todo: add status transitions when needed. perhaps just classes like StripeListOptionsWithCreated?
+        /// <summary>
+        /// Only return orders that match the given status_transitions. One of canceled, fulfilled, paid or returned.
+        /// </summary>
+        [JsonProperty("status_transitions")]
+        public StripeOrderStatusTransitionsOptions StatusTransitions { get; set; }
 
         /// <summary>
         /// Only return orders with the given upstream order IDs.
