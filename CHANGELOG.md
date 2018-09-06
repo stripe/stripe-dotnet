@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.4.0 - 2018-09-05
+* [#1272](https://github.com/stripe/stripe-dotnet/pull/1272) Add support for reporting resources
+
 ## 19.3.0 - 2018-09-04
 * [#1268](https://github.com/stripe/stripe-dotnet/pull/1268) Add `Mandate` and `Receiver` to `StripeSourceCreateOptions`
 
