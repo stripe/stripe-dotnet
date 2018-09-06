@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.5.0 - 2018-09-06
+* [#1273](https://github.com/stripe/stripe-dotnet/pull/1273) Add `ExchangeRate` to `StripeBalanceTransaction`
+* [#1270](https://github.com/stripe/stripe-dotnet/pull/1270) Add `StatusTransitions` to `StripeOrderListOptions`
+
 ## 19.4.0 - 2018-09-05
 * [#1272](https://github.com/stripe/stripe-dotnet/pull/1272) Add support for reporting resources
 
