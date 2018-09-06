@@ -27,6 +27,9 @@
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        [JsonProperty("exchange_rate")]
+        public decimal? ExchangeRate { get; set; }
+
         [JsonProperty("fee")]
         public int Fee { get; set; }
 
