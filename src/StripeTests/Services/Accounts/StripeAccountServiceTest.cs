@@ -23,10 +23,7 @@ namespace StripeTests
             this.createOptions = new StripeAccountCreateOptions
             {
                 Type = StripeAccountType.Custom,
-                ExternalCardAccount = new StripeAccountCardOptions()
-                {
-                    TokenId = "tok_visa_debit"
-                },
+                ExternalAccountId = "tok_visa_debit",
                 LegalEntity = new StripeAccountLegalEntityOptions
                 {
                     AdditionalOwners = new List<StripeAccountAdditionalOwner>
@@ -35,9 +32,11 @@ namespace StripeTests
                         {
                             FirstName = "John",
                             LastName = "Doe",
-                            BirthDay = 1,
-                            BirthMonth = 1,
-                            BirthYear = 1980,
+
+                            // Commenting these temporarily until stripe-mock is fixed
+                            // BirthDay = 1,
+                            // BirthMonth = 1,
+                            // BirthYear = 1980,
                             VerificationDocument = "file_123",
                             VerificationDocumentBack = "file_234",
                         },

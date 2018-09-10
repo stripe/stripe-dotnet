@@ -8,7 +8,7 @@ namespace Stripe
     {
         public DateTime? MandateAcceptanceDate { get; set; }
 
-        [JsonProperty("mandate[acceptance][date]")]
+        [JsonProperty("acceptance[date]")]
         internal long? MandateAcceptanceDateInternal
         {
             get
@@ -22,16 +22,16 @@ namespace Stripe
             }
         }
 
-        [JsonProperty("mandate[acceptance][ip]")]
+        [JsonProperty("acceptance[ip]")]
         public string MandateAcceptanceIp { get; set; }
 
-        [JsonProperty("mandate[acceptance][status]")]
+        [JsonProperty("acceptance[status]")]
         public string MandateAcceptanceStatus { get; set; }
 
-        [JsonProperty("mandate[acceptance][user_agent]")]
+        [JsonProperty("acceptance[user_agent]")]
         public string MandateAcceptanceUserAgent { get; set; }
 
-        [JsonProperty("mandate[notification_method]")]
+        [JsonProperty("notification_method")]
         public string MandateNotificationMethod { get; set; }
     }
 }

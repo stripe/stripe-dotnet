@@ -4,43 +4,40 @@
 
     public class StripeCreditCardOptions : StripeBaseOptions, INestedOptions
     {
-        [JsonProperty("card")]
-        public string TokenId { get; set; }
-
-        [JsonProperty("card[exp_month]")]
+        [JsonProperty("exp_month")]
         public int? ExpirationMonth { get; set; }
 
-        [JsonProperty("card[exp_year]")]
+        [JsonProperty("exp_year")]
         public int? ExpirationYear { get; set; }
 
-        [JsonProperty("card[number]")]
+        [JsonProperty("number")]
         public string Number { get; set; }
 
-        [JsonProperty("card[address_city]")]
+        [JsonProperty("address_city")]
         public string AddressCity { get; set; }
 
-        [JsonProperty("card[address_country]")]
+        [JsonProperty("address_country")]
         public string AddressCountry { get; set; }
 
-        [JsonProperty("card[address_line1]")]
+        [JsonProperty("address_line1")]
         public string AddressLine1 { get; set; }
 
-        [JsonProperty("card[address_line2]")]
+        [JsonProperty("address_line2")]
         public string AddressLine2 { get; set; }
 
-        [JsonProperty("card[address_state]")]
+        [JsonProperty("address_state")]
         public string AddressState { get; set; }
 
-        [JsonProperty("card[address_zip]")]
+        [JsonProperty("address_zip")]
         public string AddressZip { get; set; }
 
-        [JsonProperty("card[currency]")]
+        [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("card[cvc]")]
+        [JsonProperty("cvc")]
         public string Cvc { get; set; }
 
-        [JsonProperty("card[name]")]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("metadata")]

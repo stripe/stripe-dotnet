@@ -4,37 +4,37 @@
 
     public class StripeAccountAdditionalOwner : INestedOptions
     {
-        [JsonProperty("[address][city]")]
+        [JsonProperty("address[city]")]
         public string CityOrTown { get; set; }
 
-        [JsonProperty("[address][country]")]
+        [JsonProperty("address[country]")]
         public string Country { get; set; }
 
-        [JsonProperty("[address][line1]")]
+        [JsonProperty("address[line1]")]
         public string Line1 { get; set; }
 
-        [JsonProperty("[address][line2]")]
+        [JsonProperty("address[line2]")]
         public string Line2 { get; set; }
 
-        [JsonProperty("[address][postal_code]")]
+        [JsonProperty("address[postal_code]")]
         public string PostalCode { get; set; }
 
-        [JsonProperty("[address][state]")]
+        [JsonProperty("address[state]")]
         public string State { get; set; }
 
-        [JsonProperty("[dob][day]")]
+        [JsonProperty("dob[day]")]
         public int? BirthDay { get; set; }
 
-        [JsonProperty("[dob][month]")]
+        [JsonProperty("dob[month]")]
         public int? BirthMonth { get; set; }
 
-        [JsonProperty("[dob][year]")]
+        [JsonProperty("dob[year]")]
         public int? BirthYear { get; set; }
 
-        [JsonProperty("[first_name]")]
+        [JsonProperty("first_name")]
         public string FirstName { get; set; }
 
-        [JsonProperty("[last_name]")]
+        [JsonProperty("last_name")]
         public string LastName { get; set; }
 
         [JsonProperty("verification[document]")]
