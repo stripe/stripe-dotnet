@@ -5,16 +5,16 @@ namespace Stripe
 
     public class StripePlanProductCreateOptions : INestedOptions, ISupportMetadata
     {
-        [JsonProperty("product[id]")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("product[name]")]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("product[statement_descriptor]")]
+        [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
-        [JsonProperty("product[metadata]")]
+        [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

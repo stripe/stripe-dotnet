@@ -48,13 +48,16 @@ namespace StripeTests
             var testObject = new TestOptions
             {
                 StringContainingText = "Foo",
-                StringWithDifferentName = "Foo",
+                StringWithDifferentName = string.Empty,
                 Number = 42,
                 Metadata = new Dictionary<string, string>
                 {
                     { "A", "Value-A" },
                     { "B", "Value-B" },
+                    { "empty_value", string.Empty },
                 },
+                ListOfDecimals = new List<decimal> { 1.5m, 2.6m, 3.7m },
+                ArrayOfInts = new int[] { 7, 8, 9 },
                 EqualDateFilter = new StripeDateFilter
                 {
                     EqualTo = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
@@ -70,7 +73,18 @@ namespace StripeTests
                 },
             };
             var url = this.service.ApplyAllParameters(testObject, string.Empty, false);
-            Assert.Equal("?differentname=Foo&stringcontainingtext=Foo&number=42&metadata[A]=Value-A&metadata[B]=Value-B&dateequals=946702800&datelessthan[lt]=946702800&datecomplex[lt]=978307200&datecomplex[gt]=946702800", url);
+            Console.WriteLine(url);
+            Assert.Equal(
+                "?differentname=" +
+                "&stringcontainingtext=Foo" +
+                "&number=42" +
+                "&metadata[A]=Value-A&metadata[B]=Value-B&metadata[empty_value]=" +
+                "&list_of_decimals[0]=1.5&list_of_decimals[1]=2.6&list_of_decimals[2]=3.7" +
+                "&array_of_ints[0]=7&array_of_ints[1]=8&array_of_ints[2]=9" +
+                "&dateequals=946702800" +
+                "&datelessthan[lt]=946702800" +
+                "&datecomplex[lt]=978307200&datecomplex[gt]=946702800",
+                url);
             Assert.DoesNotContain("StringWithoutAttribute=", url);
             Assert.DoesNotContain("stringcontainingnull=", url);
             Assert.DoesNotContain("nullnumber=", url);
@@ -162,40 +176,6 @@ namespace StripeTests
             var testObject = new TestOptions();
             var url = this.service.ApplyAllParameters(null, "base_url", false);
             Assert.Equal("base_url", url);
-        }
-
-        [Fact]
-        public void ThrowsIfDictionaryKeysAreNotStrings()
-        {
-            var obj = new TestUnencodableOptions
-            {
-                DictIntKeys = new Dictionary<int, string>
-                {
-                    { 1, "one" },
-                },
-            };
-
-            var exception = Assert.Throws<System.ArgumentException>(() =>
-                this.service.ApplyAllParameters(obj, string.Empty, false));
-
-            Assert.Contains("Expected System.String as dictionary key type", exception.Message);
-        }
-
-        [Fact]
-        public void ThrowsIfDictionaryValuesAreNotStrings()
-        {
-            var obj = new TestUnencodableOptions
-            {
-                DictIntValues = new Dictionary<string, int>
-                {
-                    { "one", 1 },
-                },
-            };
-
-            var exception = Assert.Throws<System.ArgumentException>(() =>
-                this.service.ApplyAllParameters(obj, string.Empty, false));
-
-            Assert.Contains("Expected System.String as dictionary value type", exception.Message);
         }
 
         [Fact]

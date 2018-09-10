@@ -5,24 +5,22 @@ namespace Stripe
 
     public class StripeChargeLevel3Options : INestedOptions
     {
-        [JsonProperty("level3[customer_reference]")]
+        [JsonProperty("customer_reference")]
         public string CustomerReference { get; set; }
 
-        // this will actually send `line_items`. this is to flag it for the middleware
-        // to process it as a plugin
-        [JsonProperty("level3[line_items]")]
+        [JsonProperty("line_items")]
         public List<StripeChargeLevel3LineItemOptions> LineItems { get; set; }
 
-        [JsonProperty("level3[merchant_reference]")]
+        [JsonProperty("merchant_reference")]
         public string MerchantReference { get; set; }
 
-        [JsonProperty("level3[shipping_address_zip]")]
+        [JsonProperty("shipping_address_zip")]
         public string ShippingAddressZip { get; set; }
 
-        [JsonProperty("level3[shipping_from_zip]")]
+        [JsonProperty("shipping_from_zip")]
         public string ShippingFromZip { get; set; }
 
-        [JsonProperty("level3[shipping_amount]")]
+        [JsonProperty("shipping_amount")]
         public int ShippingAmount { get; set; }
     }
 }

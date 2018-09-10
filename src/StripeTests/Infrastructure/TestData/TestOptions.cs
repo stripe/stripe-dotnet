@@ -43,6 +43,12 @@ namespace StripeTests.Infrastructure.TestData
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("list_of_decimals")]
+        public List<decimal> ListOfDecimals { get; set; }
+
+        [JsonProperty("array_of_ints")]
+        public int[] ArrayOfInts { get; set; }
+
         [JsonProperty("dateequals")]
         public StripeDateFilter EqualDateFilter { get; set; }
 
