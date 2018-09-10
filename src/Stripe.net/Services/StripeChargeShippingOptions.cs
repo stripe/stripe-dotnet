@@ -4,10 +4,10 @@ namespace Stripe
 
     public class StripeChargeShippingOptions : StripeShippingOptions
     {
-        [JsonProperty("shipping[carrier]")]
+        [JsonProperty("carrier")]
         public string Carrier { get; set; }
 
-        [JsonProperty("shipping[tracking_number]")]
+        [JsonProperty("tracking_number")]
         public string TrackingNumber { get; set; }
     }
 }
