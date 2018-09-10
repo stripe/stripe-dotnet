@@ -5,16 +5,16 @@ namespace Stripe
 
     public class StripeOrderStatusTransitionsOptions : INestedOptions
     {
-        [JsonProperty("status_transitions[canceled]")]
+        [JsonProperty("canceled")]
         public StripeDateFilter Canceled { get; set; }
 
-        [JsonProperty("status_transitions[fulfilled]")]
+        [JsonProperty("fulfilled")]
         public StripeDateFilter Fulfilled { get; set; }
 
-        [JsonProperty("status_transitions[paid]")]
+        [JsonProperty("paid")]
         public StripeDateFilter Paid { get; set; }
 
-        [JsonProperty("status_transitions[returned]")]
+        [JsonProperty("returned")]
         public StripeDateFilter Returned { get; set; }
     }
 }

@@ -4,7 +4,7 @@
     using System.Reflection;
     using Newtonsoft.Json;
 
-    public class StripePlanTierOptions
+    public class StripePlanTierOptions : INestedOptions
     {
         [JsonProperty("unit_amount")]
         public int UnitAmount { get; set; }

@@ -5,7 +5,6 @@
     using System.Net;
     using System.Reflection;
     using System.Text.RegularExpressions;
-    using Newtonsoft.Json;
     using Stripe.Infrastructure.Middleware;
 
     internal static class ParameterBuilder
@@ -20,26 +19,7 @@
             // obj = the options object passed from the service
             if (obj != null)
             {
-                foreach (var property in obj.GetType().GetRuntimeProperties())
-                {
-                    var value = property.GetValue(obj, null);
-                    if (value == null)
-                    {
-                        continue;
-                    }
-
-                    foreach (var attribute in property.GetCustomAttributes<JsonPropertyAttribute>())
-                    {
-                        if (value is INestedOptions)
-                        {
-                            ApplyNestedObjectProperties(ref requestString, value);
-                        }
-                        else
-                        {
-                            RequestStringBuilder.ProcessPlugins(ref requestString, attribute, property, value, obj);
-                        }
-                    }
-                }
+                RequestStringBuilder.CreateQuery(ref requestString, obj);
 
                 foreach (KeyValuePair<string, string> pair in obj.ExtraParams)
                 {
@@ -90,23 +70,6 @@
             RequestStringBuilder.ApplyParameterToRequestString(ref url, argument, value);
 
             return url;
-        }
-
-        private static void ApplyNestedObjectProperties(ref string requestString, object nestedObject)
-        {
-            foreach (var property in nestedObject.GetType().GetRuntimeProperties())
-            {
-                var value = property.GetValue(nestedObject, null);
-                if (value == null)
-                {
-                    continue;
-                }
-
-                foreach (var attribute in property.GetCustomAttributes<JsonPropertyAttribute>())
-                {
-                    RequestStringBuilder.ProcessPlugins(ref requestString, attribute, property, value, nestedObject);
-                }
-            }
         }
     }
 }

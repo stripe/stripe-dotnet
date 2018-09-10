@@ -4,10 +4,10 @@
 
     public class StripePlanTransformUsageOptions : INestedOptions
     {
-        [JsonProperty("transform_usage[divide_by]")]
+        [JsonProperty("divide_by")]
         public int DivideBy { get; set; }
 
-        [JsonProperty("transform_usage[round]")]
+        [JsonProperty("round")]
         public string Round { get; set; }
     }
 }
