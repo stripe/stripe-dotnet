@@ -3,7 +3,7 @@
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public enum SourceType
+    public enum PaymentSourceType
     {
         Account,
         BankAccount,
@@ -12,14 +12,14 @@
         Source,
     }
 
-    [JsonConverter(typeof(SourceConverter))]
-    public class Source : StripeEntityWithId
+    [JsonConverter(typeof(PaymentSourceConverter))]
+    public class PaymentSource : StripeEntityWithId
     {
-        public SourceType Type { get; set; }
+        public PaymentSourceType Type { get; set; }
 
         public StripeAccount Account { get; set; }
 
-        public StripeBankAccount BankAccount { get; set; }
+        public BankAccount BankAccount { get; set; }
 
         public StripeCard Card { get; set; }
 
