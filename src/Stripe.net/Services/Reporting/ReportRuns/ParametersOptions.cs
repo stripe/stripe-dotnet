@@ -7,15 +7,15 @@ namespace Stripe.Reporting
 
     public class ParametersOptions : INestedOptions
     {
-        [JsonProperty("parameters[connected_account]")]
+        [JsonProperty("connected_account")]
         public string ConnectedAccount { get; set; }
 
-        [JsonProperty("parameters[currency]")]
+        [JsonProperty("currency")]
         public string Currency { get; set; }
 
         public DateTime? IntervalEnd { get; set; }
 
-        [JsonProperty("parameters[interval_end]")]
+        [JsonProperty("interval_end")]
         internal long? IntervalEndInternal
         {
             get
@@ -31,7 +31,7 @@ namespace Stripe.Reporting
 
         public DateTime? IntervalStart { get; set; }
 
-        [JsonProperty("parameters[interval_start]")]
+        [JsonProperty("interval_start")]
         internal long? IntervalStartInternal
         {
             get
@@ -45,10 +45,10 @@ namespace Stripe.Reporting
             }
         }
 
-        [JsonProperty("parameters[payout]")]
+        [JsonProperty("payout")]
         public string Payout { get; set; }
 
-        [JsonProperty("parameters[reporting_category]")]
+        [JsonProperty("reporting_category")]
         public string ReportingCategory { get; set; }
     }
 }

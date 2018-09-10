@@ -5,52 +5,49 @@
 
     public class StripeAccountCardOptions : INestedOptions, ISupportMetadata
     {
-        [JsonProperty("external_account[object]")]
+        [JsonProperty("object")]
         internal string Object => "card";
 
-        [JsonProperty("external_account")]
-        public string TokenId { get; set; }
-
-        [JsonProperty("external_account[currency]")]
+        [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("external_account[default_for_currency]")]
+        [JsonProperty("default_for_currency")]
         public bool? DefaultForCurrency { get; set; }
 
-        [JsonProperty("external_account[exp_month]")]
+        [JsonProperty("exp_month")]
         public int? ExpirationMonth { get; set; }
 
-        [JsonProperty("external_account[exp_year]")]
+        [JsonProperty("exp_year")]
         public int? ExpirationYear { get; set; }
 
-        [JsonProperty("external_account[number]")]
+        [JsonProperty("number")]
         public string Number { get; set; }
 
-        [JsonProperty("external_account[address_city]")]
+        [JsonProperty("address_city")]
         public string AddressCity { get; set; }
 
-        [JsonProperty("external_account[address_country]")]
+        [JsonProperty("address_country")]
         public string AddressCountry { get; set; }
 
-        [JsonProperty("external_account[address_line1]")]
+        [JsonProperty("address_line1")]
         public string AddressLine1 { get; set; }
 
-        [JsonProperty("external_account[address_line2]")]
+        [JsonProperty("address_line2")]
         public string AddressLine2 { get; set; }
 
-        [JsonProperty("external_account[address_state]")]
+        [JsonProperty("address_state")]
         public string AddressState { get; set; }
 
-        [JsonProperty("external_account[address_zip]")]
+        [JsonProperty("address_zip")]
         public string AddressZip { get; set; }
 
-        [JsonProperty("external_account[cvc]")]
+        [JsonProperty("cvc")]
         public string Cvc { get; set; }
 
-        [JsonProperty("external_account[metadata]")]
+        [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("external_account[name]")]
+        [JsonProperty("name")]
         public string Name { get; set; }
     }
 }
