@@ -5,16 +5,16 @@
 
     public class StripePackageDimensionOptions : INestedOptions
     {
-        [JsonProperty("package_dimensions[height]")]
+        [JsonProperty("height")]
         public decimal? Height { get; set; }
 
-        [JsonProperty("package_dimensions[length]")]
+        [JsonProperty("length")]
         public decimal? Length { get; set; }
 
-        [JsonProperty("package_dimensions[weight]")]
+        [JsonProperty("weight")]
         public decimal? Weight { get; set; }
 
-        [JsonProperty("package_dimensions[width]")]
+        [JsonProperty("width")]
         public decimal? Width { get; set; }
     }
 }
