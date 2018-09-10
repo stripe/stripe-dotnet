@@ -4,10 +4,10 @@ namespace Stripe
 
     public class StripeCustomerTaxInfoOptions : INestedOptions
     {
-        [JsonProperty("tax_info[tax_id]")]
+        [JsonProperty("tax_id")]
         public string TaxId { get; set; }
 
-        [JsonProperty("tax_info[type]")]
+        [JsonProperty("type")]
         public string Type { get; set; }
     }
 }

@@ -4,7 +4,7 @@ namespace Stripe
 
     public class StripeSourceReceiverOptions : INestedOptions
     {
-        [JsonProperty("receiver[refund_attributes_method]")]
+        [JsonProperty("refund_attributes_method")]
         public string RefundAttributesMethod { get; set; }
     }
 }
