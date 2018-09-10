@@ -5,13 +5,13 @@ namespace Stripe
 
     public class StripeInventoryOptions : INestedOptions
     {
-        [JsonProperty("inventory[quantity]")]
+        [JsonProperty("quantity")]
         public int? Quantity { get; set; }
 
-        [JsonProperty("inventory[type]")]
+        [JsonProperty("type")]
         public string Type { get; set; }
 
-        [JsonProperty("inventory[value]")]
+        [JsonProperty("value")]
         public string Value { get; set; }
     }
 }

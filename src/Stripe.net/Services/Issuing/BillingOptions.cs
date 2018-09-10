@@ -4,26 +4,26 @@ namespace Stripe.Issuing
 
     public class BillingOptions : INestedOptions
     {
-        [JsonProperty("billing[address][city]")]
+        [JsonProperty("address[city]")]
         public string City { get; set; }
 
-        [JsonProperty("billing[address][country]")]
+        [JsonProperty("address[country]")]
         public string Country { get; set; }
 
-        [JsonProperty("billing[address][line1]")]
+        [JsonProperty("address[line1]")]
         public string Line1 { get; set; }
 
-        [JsonProperty("billing[address][line2]")]
+        [JsonProperty("address[line2]")]
         public string Line2 { get; set; }
 
-        [JsonProperty("billing[address][postal_code]")]
+        [JsonProperty("address[postal_code]")]
         public string PostalCode { get; set; }
 
-        [JsonProperty("billing[address][state]")]
+        [JsonProperty("address[state]")]
         public string State { get; set; }
 
         // Keep this one separate as it's not on the same level in the API.
-        [JsonProperty("billing[name]")]
+        [JsonProperty("name")]
         public string Name { get; set; }
     }
 }
