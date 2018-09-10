@@ -2,7 +2,7 @@ namespace Stripe
 {
     using System.Collections.Generic;
 
-    public class StripeBaseOptions
+    public class StripeBaseOptions : INestedOptions
     {
         public Dictionary<string, string> ExtraParams = new Dictionary<string, string>();
         public List<string> Expand = new List<string>();

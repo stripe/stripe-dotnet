@@ -35,6 +35,9 @@
         public string Email { get; set; }
 
         [JsonProperty("external_account")]
+        public string ExternalAccountId { get; set; }
+
+        [JsonProperty("external_account")]
         public StripeAccountCardOptions ExternalCardAccount { get; set; }
 
         [JsonProperty("external_account")]
