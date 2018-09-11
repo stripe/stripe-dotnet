@@ -30,11 +30,19 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        /// The ID of a source to transfer funds from. For most users, this should be left
+        /// unspecified which will use the bank account that was set up in the dashboard for the
+        /// specified currency. In test mode, this can be a test bank token (see
+        /// <see href="https://stripe.com/docs/connect/testing#testing-top-ups">Testing
+        /// Top-ups</see>).
+        /// </summary>
         [JsonProperty("source")]
         public string SourceId { get; set; }
 
         /// <summary>
-        /// An arbitrary string to be displayed on your bank statement. This may be up to 22 characters. The statement description may not include <>"' characters, and will appear on your bank statement in capital letters. Non-ASCII characters are automatically stripped. While most banks display this information consistently, some may display it incorrectly or not at all.
+        /// Extra information about a top-up for the source’s bank statement. Limited to 15 ASCII
+        /// characters.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }

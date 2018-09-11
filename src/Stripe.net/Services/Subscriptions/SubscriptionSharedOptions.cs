@@ -44,14 +44,33 @@
         public bool? Prorate { get; set; }
 
         /// <summary>
-        /// ID of a Token or a Source, as returned by <see cref="https://stripe.com/docs/elements">Elements</see>. You must provide a source if the customer does not already have a valid source attached, and you are subscribing the customer to be charged automatically for a plan that is not free. Passing <c>source</c> will create a new source object, make it the customer default source, and delete the old customer default if one exists. If you want to add an additional source, instead use the <see cref="https://stripe.com/docs/api#create_card">card creation API</see> to add the card and then the <see cref="https://stripe.com/docs/api#update_customer">customer update API</see> to set it as the default. Whenever you attach a card to a customer, Stripe will automatically validate the card.
+        /// ID of a Token or a Source, as returned by
+        /// <see href="https://stripe.com/docs/elements">Elements</see>. You must provide a source
+        /// if the customer does not already have a valid source attached, and you are subscribing
+        /// the customer to be charged automatically for a plan that is not free. Passing
+        /// <c>source</c> will create a new source object, make it the customer default source, and
+        /// delete the old customer default if one exists. If you want to add an additional source,
+        /// instead use the
+        /// <see href="https://stripe.com/docs/api#create_card">card creation API</see> to add the
+        /// card and then the <see href="https://stripe.com/docs/api#update_customer">customer
+        /// update API</see> to set it as the default. Whenever you attach a card to a customer,
+        /// Stripe will automatically validate the card.
         /// <para>If you use Source, you cannot use SourceCard also.</para>
         /// </summary>
         [JsonProperty("source")]
         public string Source { get; set; }
 
         /// <summary>
-        /// <see cref="SourceCard"/> instance containing a user’s credit card details. You must provide a source if the customer does not already have a valid source attached, and you are subscribing the customer to be charged automatically for a plan that is not free. Passing <c>source</c> will create a new source object, make it the customer default source, and delete the old customer default if one exists. If you want to add an additional source, instead use the <see cref="https://stripe.com/docs/api#create_card">card creation API</see> to add the card and then the <see cref="https://stripe.com/docs/api#update_customer">customer update API</see> to set it as the default. Whenever you attach a card to a customer, Stripe will automatically validate the card.
+        /// <see cref="SourceCard"/> instance containing a user’s credit card details. You must
+        /// provide a source if the customer does not already have a valid source attached, and you
+        /// are subscribing the customer to be charged automatically for a plan that is not free.
+        /// Passing <c>source</c> will create a new source object, make it the customer default
+        /// source, and delete the old customer default if one exists. If you want to add an
+        /// additional source, instead use the
+        /// <see href="https://stripe.com/docs/api#create_card">card creation API</see> to add the
+        /// card and then the <see href="https://stripe.com/docs/api#update_customer">customer
+        /// update API</see> to set it as the default. Whenever you attach a card to a customer,
+        /// Stripe will automatically validate the card.
         /// <para>If you use SourceCard, you cannot use Source also.</para>
         /// </summary>
         [JsonProperty("source")]
