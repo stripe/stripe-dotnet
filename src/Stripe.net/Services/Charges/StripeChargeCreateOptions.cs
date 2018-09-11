@@ -100,7 +100,14 @@
         public SourceCard SourceCard { get; set; }
 
         /// <summary>
-        /// An arbitrary string to be displayed on your customer's credit card statement. This may be up to 22 characters. As an example, if your website is RunClub and the item you're charging for is a race ticket, you may want to specify a statement_descriptor of RunClub 5K race ticket. The statement description may not include <>"' characters, and will appear on your customer's statement in capital letters. Non-ASCII characters are automatically stripped. While most banks display this information consistently, some may display it incorrectly or not at all.
+        /// An arbitrary string to be displayed on your customer's credit card statement. This may
+        /// be up to 22 characters. As an example, if your website is <c>RunClub</c> and the item
+        /// you're charging for is a race ticket, you may want to specify a
+        /// <c>statement_descriptor</c> of <c>RunClub 5K race ticket</c>. The statement description
+        /// may not include <c>&lt;&gt;"'</c> characters, and will appear on your customer's
+        /// statement in capital letters. Non-ASCII characters are automatically stripped. While
+        /// most banks display this information consistently, some may display it incorrectly or not
+        /// at all.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
