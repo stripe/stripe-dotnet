@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.6.0 - 2018-09-11
+* [#1280](https://github.com/stripe/stripe-dotnet/pull/1280) Enable XML documentation
+* [#1279](https://github.com/stripe/stripe-dotnet/pull/1279) Add missing attributes to `StripeThreeDSecure`
+
 ## 19.5.0 - 2018-09-06
 * [#1273](https://github.com/stripe/stripe-dotnet/pull/1273) Add `ExchangeRate` to `StripeBalanceTransaction`
 * [#1270](https://github.com/stripe/stripe-dotnet/pull/1270) Add `StatusTransitions` to `StripeOrderListOptions`
