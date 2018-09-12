@@ -23,42 +23,43 @@ namespace StripeTests.Infrastructure.TestData
             TestTwo,
         }
 
-        public string StringWithoutAttribute { get; set; }
+        [JsonProperty("array")]
+        public string[] Array { get; set; }
 
-        [JsonProperty("differentname")]
-        public string StringWithDifferentName { get; set; }
+        [JsonProperty("bool")]
+        public bool Bool { get; set; }
 
-        [JsonProperty("stringcontainingtext")]
-        public string StringContainingText { get; set; }
+        [JsonProperty("bool_nullable")]
+        public bool? BoolNullable { get; set; }
 
-        [JsonProperty("stringcontainingnull")]
-        public string StringContainingNull { get; set; }
+        [JsonProperty("date_filter")]
+        public StripeDateFilter DateFilter { get; set; }
 
-        [JsonProperty("number")]
-        public int Number { get; set; }
+        [JsonProperty("decimal")]
+        public decimal Decimal { get; set; }
 
-        [JsonProperty("nullnumber")]
-        public int? NullNumber { get; set; }
+        [JsonProperty("decimal_nullable")]
+        public decimal? DecimalNullable { get; set; }
 
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
-
-        [JsonProperty("list_of_decimals")]
-        public List<decimal> ListOfDecimals { get; set; }
-
-        [JsonProperty("array_of_ints")]
-        public int[] ArrayOfInts { get; set; }
-
-        [JsonProperty("dateequals")]
-        public StripeDateFilter EqualDateFilter { get; set; }
-
-        [JsonProperty("datelessthan")]
-        public StripeDateFilter LessThanDateFilter { get; set; }
-
-        [JsonProperty("datecomplex")]
-        public StripeDateFilter ComplexDateFilter { get; set; }
+        [JsonProperty("dictionary")]
+        public Dictionary<string, object> Dictionary { get; set; }
 
         [JsonProperty("enum")]
-        public TestEnum? Enum { get; set; }
+        public TestEnum Enum { get; set; }
+
+        [JsonProperty("enum_nullable")]
+        public TestEnum? EnumNullable { get; set; }
+
+        [JsonProperty("int")]
+        public int Int { get; set; }
+
+        [JsonProperty("int_nullable")]
+        public int? IntNullable { get; set; }
+
+        [JsonProperty("list")]
+        public List<object> List { get; set; }
+
+        [JsonProperty("string")]
+        public string String { get; set; }
     }
 }
