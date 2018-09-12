@@ -45,49 +45,293 @@ namespace StripeTests
         {
             Assert.NotNull(this.service);
 
-            var testObject = new TestOptions
+            var testCases = new[]
             {
-                StringContainingText = "Foo",
-                StringWithDifferentName = string.Empty,
-                Number = 42,
-                Metadata = new Dictionary<string, string>
+                // No data
+                new
                 {
-                    { "A", "Value-A" },
-                    { "B", "Value-B" },
-                    { "empty_value", string.Empty },
+                    data = new TestOptions { },
+                    want = "?bool=False&decimal=0&enum=test_one&int=0"
                 },
-                ListOfDecimals = new List<decimal> { 1.5m, 2.6m, 3.7m },
-                ArrayOfInts = new int[] { 7, 8, 9 },
-                EqualDateFilter = new StripeDateFilter
+
+                // Array
+                new
                 {
-                    EqualTo = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
+                    data = new TestOptions
+                    {
+                            Array = new string[] { "1", "2", "3" },
+                    },
+                    want = "?array[0]=1&array[1]=2&array[2]=3&bool=False&decimal=0&enum=test_one&int=0"
                 },
-                LessThanDateFilter = new StripeDateFilter
+                new
                 {
-                    LessThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
+                    data = new TestOptions
+                    {
+                            Array = new string[] { },
+                    },
+                    want = "?array=&bool=False&decimal=0&enum=test_one&int=0"
                 },
-                ComplexDateFilter = new StripeDateFilter
+
+                // Bool
+                new
                 {
-                    LessThan = DateTime.Parse("Mon, 01 Jan 2001 00:00:00Z"),
-                    GreaterThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
+                    data = new TestOptions
+                    {
+                        Bool = false,
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&int=0"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Bool = true,
+                    },
+                    want = "?bool=True&decimal=0&enum=test_one&int=0"
+                },
+
+                // BoolNullable
+                new
+                {
+                    data = new TestOptions
+                    {
+                        BoolNullable = false,
+                    },
+                    want = "?bool=False&bool_nullable=False&decimal=0&enum=test_one&int=0"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        BoolNullable = true,
+                    },
+                    want = "?bool=False&bool_nullable=True&decimal=0&enum=test_one&int=0"
+                },
+
+                // DateFilter
+                new
+                {
+                    data = new TestOptions
+                    {
+                        DateFilter = new StripeDateFilter
+                        {
+                            EqualTo = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
+                        }
+                    },
+                    want = "?bool=False&date_filter=946702800&decimal=0&enum=test_one&int=0"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        DateFilter = new StripeDateFilter
+                        {
+                            LessThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
+                            GreaterThanOrEqual = DateTime.Parse("Sat, 01 Jan 2000 00:00:00Z"),
+                        }
+                    },
+                    want = "?bool=False&date_filter[lt]=946702800&date_filter[gte]=946684800&decimal=0&enum=test_one&int=0"
+                },
+
+                // Decimal
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Decimal = 1.2345m,
+                    },
+                    want = "?bool=False&decimal=1.2345&enum=test_one&int=0"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Decimal = 0.0m,
+                    },
+                    want = "?bool=False&decimal=0.0&enum=test_one&int=0"
+                },
+
+                // DecimalNullable
+                new
+                {
+                    data = new TestOptions
+                    {
+                        DecimalNullable = 1.2345m,
+                    },
+                    want = "?bool=False&decimal=0&decimal_nullable=1.2345&enum=test_one&int=0"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        DecimalNullable = 0.0m,
+                    },
+                    want = "?bool=False&decimal=0&decimal_nullable=0.0&enum=test_one&int=0"
+                },
+
+                // Dictionary
+                new
+                {
+                    data = new TestOptions
+                    {
+                            Dictionary = new Dictionary<string, object> { { "foo", "bar" } },
+                    },
+                    want = "?bool=False&decimal=0&dictionary[foo]=bar&enum=test_one&int=0"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                            Dictionary = new Dictionary<string, object> { { "empty", string.Empty } },
+                    },
+                    want = "?bool=False&decimal=0&dictionary[empty]=&enum=test_one&int=0"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                            Dictionary = new Dictionary<string, object>
+                            {
+                                { "foo", new Dictionary<string, object> { { "bar", "baz" } } },
+                            },
+                    },
+                    want = "?bool=False&decimal=0&dictionary[foo][bar]=baz&enum=test_one&int=0"
+                },
+
+                // Enum
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Enum = TestOptions.TestEnum.TestOne,
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&int=0"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Enum = TestOptions.TestEnum.TestTwo,
+                    },
+                    want = "?bool=False&decimal=0&enum=TestTwo&int=0"
+                },
+
+                // EnumNullable
+                new
+                {
+                    data = new TestOptions
+                    {
+                        EnumNullable = TestOptions.TestEnum.TestOne,
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&enum_nullable=test_one&int=0"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        EnumNullable = TestOptions.TestEnum.TestTwo,
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&enum_nullable=TestTwo&int=0"
+                },
+
+                // Int
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Int = 123,
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&int=123"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Int = 0,
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&int=0"
+                },
+
+                // IntNullable
+                new
+                {
+                    data = new TestOptions
+                    {
+                        IntNullable = 123,
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&int=0&int_nullable=123"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        IntNullable = 0,
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&int=0&int_nullable=0"
+                },
+
+                // List
+                new
+                {
+                    data = new TestOptions
+                    {
+                            List = new List<object> { "foo", "bar" },
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&int=0&list[0]=foo&list[1]=bar"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                            List = new List<object> { string.Empty, 0 },
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&int=0&list[0]=&list[1]=0"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                            List = new List<object> { },
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&int=0&list="
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                            List = new List<object>
+                            {
+                                new Dictionary<string, object> { { "foo", "bar" } },
+                                new Dictionary<string, object> { { "foo", "baz" } },
+                            },
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&int=0&list[0][foo]=bar&list[1][foo]=baz"
+                },
+
+                // String
+                new
+                {
+                    data = new TestOptions
+                    {
+                        String = "foo",
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&int=0&string=foo"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        String = string.Empty,
+                    },
+                    want = "?bool=False&decimal=0&enum=test_one&int=0&string="
                 },
             };
-            var url = this.service.ApplyAllParameters(testObject, string.Empty, false);
-            Console.WriteLine(url);
-            Assert.Equal(
-                "?differentname=" +
-                "&stringcontainingtext=Foo" +
-                "&number=42" +
-                "&metadata[A]=Value-A&metadata[B]=Value-B&metadata[empty_value]=" +
-                "&list_of_decimals[0]=1.5&list_of_decimals[1]=2.6&list_of_decimals[2]=3.7" +
-                "&array_of_ints[0]=7&array_of_ints[1]=8&array_of_ints[2]=9" +
-                "&dateequals=946702800" +
-                "&datelessthan[lt]=946702800" +
-                "&datecomplex[lt]=978307200&datecomplex[gt]=946702800",
-                url);
-            Assert.DoesNotContain("StringWithoutAttribute=", url);
-            Assert.DoesNotContain("stringcontainingnull=", url);
-            Assert.DoesNotContain("nullnumber=", url);
+
+            foreach (var testCase in testCases)
+            {
+                var url = this.service.ApplyAllParameters(testCase.data, string.Empty, false);
+                Assert.Equal(testCase.want, url);
+            }
         }
 
         [Fact]

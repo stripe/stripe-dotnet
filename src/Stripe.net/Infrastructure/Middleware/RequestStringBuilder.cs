@@ -132,6 +132,9 @@
             foreach (var property in options.GetType().GetRuntimeProperties())
             {
                 var value = property.GetValue(options, null);
+
+                // Fields on a class which are never set by the user will contain null values (for
+                // reference types), so skip those to avoid encoding them in the request.
                 if (value == null)
                 {
                     continue;
