@@ -452,7 +452,12 @@
         /// <summary>
         /// Occurs whenever a source transaction is created.
         /// </summary>
-        public const string SourceTransactionCanceled = "source.transaction.created";
+        public const string SourceTransactionCreated = "source.transaction.created";
+
+        /// <summary>
+        /// Occurs whenever a source transaction is updated.
+        /// </summary>
+        public const string SourceTransactionUpdated = "source.transaction.updated";
 
         /// <summary>
         /// Occurs whenever a new transfer is created.
