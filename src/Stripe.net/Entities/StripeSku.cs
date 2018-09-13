@@ -45,7 +45,7 @@
         /// The URL of an image for this SKU, meant to be displayable to the customer.
         /// </summary>
         [JsonProperty("image")]
-        public string image { get; set; }
+        public string Image { get; set; }
 
         /// <summary>
         /// Description of the SKU’s inventory.
