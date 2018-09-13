@@ -14,7 +14,7 @@
         public int? AmountOff { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("currency")]
@@ -48,7 +48,7 @@
         public decimal? PercentOff { get; set; }
 
         [JsonProperty("redeem_by")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? RedeemBy { get; set; }
 
         [JsonProperty("times_redeemed")]

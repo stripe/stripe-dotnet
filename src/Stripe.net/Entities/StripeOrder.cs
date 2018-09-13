@@ -52,7 +52,7 @@
         /// <summary>
         /// Time at which the object was created.
         /// </summary>
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         [JsonProperty("created")]
         public DateTime Created { get; set; }
 
@@ -139,7 +139,7 @@
         [JsonProperty("status_transitions")]
         public StripeStatusTransitions StatusTransitions { get; set; }
 
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         [JsonProperty("updated")]
         public DateTime Updated { get; set; }
 

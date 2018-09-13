@@ -7,11 +7,11 @@
     public class StripePeriod : StripeEntity
     {
         [JsonProperty("start")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? Start { get; set; }
 
         [JsonProperty("end")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? End { get; set; }
     }
 }

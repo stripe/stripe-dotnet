@@ -7,7 +7,7 @@
     public class StripeEvidenceDetails : StripeEntity
     {
         [JsonProperty("due_by")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? DueBy { get; set; }
 
         [JsonProperty("has_evidence")]

@@ -7,7 +7,7 @@
     public class TermsOfServiceAcceptance : StripeEntity
     {
         [JsonProperty("date")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? Date { get; set; }
 
         [JsonProperty("ip")]

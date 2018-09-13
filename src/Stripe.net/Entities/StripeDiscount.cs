@@ -35,11 +35,11 @@
         public bool Deleted { get; set; }
 
         [JsonProperty("end")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? End { get; set; }
 
         [JsonProperty("start")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? Start { get; set; }
 
         #region Expandable Subscription
