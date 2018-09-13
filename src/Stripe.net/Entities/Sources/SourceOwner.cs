@@ -11,7 +11,7 @@
         /// Owner’s address.
         /// </summary>
         [JsonProperty("address")]
-        public StripeAddress Address { get; set; }
+        public Address Address { get; set; }
 
         /// <summary>
         /// Owner’s email address.
@@ -35,7 +35,7 @@
         /// Verified owner's address.
         /// </summary>
         [JsonProperty("verified_address")]
-        public StripeAddress VerifiedAddress { get; set; }
+        public Address VerifiedAddress { get; set; }
 
         /// <summary>
         /// Verified owner’s email address.
