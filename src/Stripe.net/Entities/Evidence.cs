@@ -3,7 +3,7 @@
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class StripeEvidence : StripeEntity
+    public class Evidence : StripeEntity
     {
         [JsonProperty("access_activity_log")]
         public string AccessActivityLog { get; set; }
