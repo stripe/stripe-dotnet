@@ -22,7 +22,7 @@ namespace StripeTests
 
             this.createOptions = new SourceCreateOptions
             {
-                Type = StripeSourceType.AchCreditTransfer,
+                Type = SourceType.AchCreditTransfer,
                 Currency = "usd",
                 Mandate = new SourceMandateOptions
                 {

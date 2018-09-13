@@ -33,7 +33,7 @@ namespace StripeTests
         [Fact]
         public void Create()
         {
-            var fileUpload = this.service.Create(FileName, this.stream, StripeFilePurpose.BusinessLogo);
+            var fileUpload = this.service.Create(FileName, this.stream, FilePurpose.BusinessLogo);
             Assert.NotNull(fileUpload);
             Assert.Equal("file_upload", fileUpload.Object);
         }
@@ -41,7 +41,7 @@ namespace StripeTests
         [Fact]
         public async Task CreateAsync()
         {
-            var fileUpload = await this.service.CreateAsync(FileName, this.stream, StripeFilePurpose.BusinessLogo);
+            var fileUpload = await this.service.CreateAsync(FileName, this.stream, FilePurpose.BusinessLogo);
             Assert.NotNull(fileUpload);
             Assert.Equal("file_upload", fileUpload.Object);
         }

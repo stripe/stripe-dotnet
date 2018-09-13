@@ -1,6 +1,6 @@
 ﻿namespace Stripe
 {
-    public static class StripeSubscriptionStatuses
+    public static class SubscriptionStatuses
     {
         public const string Trialing = "trialing";
         public const string Active = "active";

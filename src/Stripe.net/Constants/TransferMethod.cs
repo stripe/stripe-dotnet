@@ -1,6 +1,6 @@
 ﻿namespace Stripe
 {
-    public static class StripeTransferMethod
+    public static class TransferMethod
     {
         /// <summary>
         /// Standard is the default method.

@@ -8,7 +8,7 @@ namespace Stripe
     /// An enum describing the reason for a failed redirect.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum StripeRedirectFailureReason
+    public enum RedirectFailureReason
     {
         /// <summary>
         /// Indicates that the authentication failed or the transaction was declined.

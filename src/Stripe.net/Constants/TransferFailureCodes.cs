@@ -1,6 +1,6 @@
 ﻿namespace Stripe
 {
-    public static class StripeTransferFailureCodes
+    public static class TransferFailureCodes
     {
         public const string InsufficientFunds = "insufficient_funds";
         public const string AccountClosed = "account_closed";

@@ -32,10 +32,10 @@
         public bool AutoAdvance { get; set; }
 
         /// <summary>
-        /// One of <see cref="StripeBilling" />. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions.
+        /// One of <see cref="Billing" />. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions.
         /// </summary>
         [JsonProperty("billing")]
-        public StripeBilling? Billing { get; set; }
+        public Billing? Billing { get; set; }
 
         [JsonProperty("billing_reason")]
         public string BillingReason { get; set; }

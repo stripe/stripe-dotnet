@@ -5,10 +5,10 @@
     public class InvoiceListOptions : ListOptions
     {
         /// <summary>
-        /// The billing mode of the invoice to retrieve. One of <see cref="StripeBilling" />.
+        /// The billing mode of the invoice to retrieve. One of <see cref="Billing" />.
         /// </summary>
         [JsonProperty("billing")]
-        public StripeBilling? Billing { get; set; }
+        public Billing? Billing { get; set; }
 
         [JsonProperty("customer")]
         public string CustomerId { get; set; }

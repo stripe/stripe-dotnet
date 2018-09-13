@@ -11,10 +11,10 @@
         public int? ApplicationFee { get; set; }
 
         /// <summary>
-        /// One of <see cref="StripeBilling" />. When charging automatically, Stripe will attempt to pay this invoice using the default source attached to the customer. When sending an invoice, Stripe will email this invoice to the customer with payment instructions. Defaults to charge_automatically.
+        /// One of <see cref="Billing" />. When charging automatically, Stripe will attempt to pay this invoice using the default source attached to the customer. When sending an invoice, Stripe will email this invoice to the customer with payment instructions. Defaults to charge_automatically.
         /// </summary>
         [JsonProperty("billing")]
-        public StripeBilling? Billing { get; set; }
+        public Billing? Billing { get; set; }
 
         /// <summary>
         /// The number of days from which the invoice is created until it is due. Only valid for invoices where billing=send_invoice.

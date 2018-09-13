@@ -2,7 +2,7 @@
 {
     using System;
 
-    public static class StripeEvents
+    public static class Events
     {
         /// <summary>
         /// Occurs whenever an account status or property has changed.
