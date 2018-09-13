@@ -58,6 +58,12 @@
         [JsonProperty("default_currency")]
         public string DefaultCurrency { get; set; }
 
+        /// <summary>
+        /// Whether this object is deleted or not.
+        /// </summary>
+        [JsonProperty("deleted")]
+        public bool Deleted { get; set; }
+
         [JsonProperty("details_submitted")]
         public bool DetailsSubmitted { get; set; }
 
