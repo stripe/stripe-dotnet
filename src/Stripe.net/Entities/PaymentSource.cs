@@ -8,7 +8,6 @@
         Account,
         BankAccount,
         Card,
-        Deleted,
         Source,
     }
 
@@ -22,8 +21,6 @@
         public BankAccount BankAccount { get; set; }
 
         public StripeCard Card { get; set; }
-
-        public StripeDeleted Deleted { get; set; }
 
         public StripeSource SourceObject { get; set; }
     }
