@@ -53,12 +53,6 @@
                 source.SourceObject = Mapper<StripeSource>.MapFromJson(incoming.ToString());
             }
 
-            if (incoming.SelectToken("deleted")?.ToString() == "true")
-            {
-                source.Type = PaymentSourceType.Deleted;
-                source.Deleted = Mapper<StripeDeleted>.MapFromJson(incoming.ToString());
-            }
-
             return source;
         }
     }

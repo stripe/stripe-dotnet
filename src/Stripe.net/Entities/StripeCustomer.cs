@@ -55,7 +55,7 @@
         public string DefaultSourceType { get; set; }
 
         /// <summary>
-        /// Warning: this is not in the documentation
+        /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted")]
         public bool? Deleted { get; set; }
