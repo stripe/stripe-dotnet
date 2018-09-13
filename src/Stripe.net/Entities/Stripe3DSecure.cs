@@ -16,7 +16,7 @@
         public bool Authenticated { get; set; }
 
         [JsonProperty("card")]
-        public StripeCard Card { get; set; }
+        public Card Card { get; set; }
 
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]

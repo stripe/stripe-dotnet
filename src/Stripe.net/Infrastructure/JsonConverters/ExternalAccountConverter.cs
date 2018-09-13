@@ -38,7 +38,7 @@ namespace Stripe.Infrastructure
             if (incoming.SelectToken("object")?.ToString() == "card")
             {
                 externalAccount.Type = ExternalAccountType.Card;
-                externalAccount.Card = Mapper<StripeCard>.MapFromJson(incoming.ToString());
+                externalAccount.Card = Mapper<Card>.MapFromJson(incoming.ToString());
             }
 
             return externalAccount;

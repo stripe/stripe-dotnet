@@ -20,7 +20,7 @@
 
         public BankAccount BankAccount { get; set; }
 
-        public StripeCard Card { get; set; }
+        public Card Card { get; set; }
 
         public Source SourceObject { get; set; }
     }

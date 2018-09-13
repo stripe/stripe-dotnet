@@ -1,4 +1,4 @@
-namespace StripeTests
+namespace StripeTests.Issuing
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

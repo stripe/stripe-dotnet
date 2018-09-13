@@ -14,7 +14,7 @@
         public RecipientActiveAccount ActiveAccount { get; set; }
 
         [JsonProperty("cards")]
-        public StripeList<StripeCard> StripeCardList { get; set; }
+        public StripeList<Card> CardList { get; set; }
 
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
@@ -24,14 +24,14 @@
         public string StripeDefaultCardId { get; set; }
 
         [JsonIgnore]
-        public StripeCard StripeDefaultCard { get; set; }
+        public Card StripeDefaultCard { get; set; }
 
         [JsonProperty("default_card")]
         internal object InternalDefaultCard
         {
             set
             {
-                StringOrObject<StripeCard>.Map(value, s => this.StripeDefaultCardId = s, o => this.StripeDefaultCard = o);
+                StringOrObject<Card>.Map(value, s => this.StripeDefaultCardId = s, o => this.StripeDefaultCard = o);
             }
         }
         #endregion
