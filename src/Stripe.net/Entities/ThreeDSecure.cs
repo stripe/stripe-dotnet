@@ -4,7 +4,7 @@
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Stripe3DSecure : StripeEntityWithId
+    public class ThreeDSecure : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }
