@@ -5,7 +5,7 @@
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class StripeOwner : StripeEntity
+    public class SourceOwner : StripeEntity
     {
         /// <summary>
         /// Owner’s address.

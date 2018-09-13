@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class StripeCodeVerification : StripeEntity
+    public class SourceCodeVerification : StripeEntity
     {
         /// <summary>
         /// The number of attempts remaining to authenticate the source object with a verification code.

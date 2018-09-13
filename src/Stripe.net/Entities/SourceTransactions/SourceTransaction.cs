@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class StripeSourceTransaction : StripeEntityWithId
+    public class SourceTransaction : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object => "source_transaction";
@@ -33,6 +33,6 @@ namespace Stripe
         public string Type { get; set; }
 
         [JsonProperty("ach_credit_transfer")]
-        public StripeSourceTransactionAchCreditTransfer AchCreditTransfer { get; set; }
+        public SourceTransactionAchCreditTransfer AchCreditTransfer { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace Stripe
         public string Reason { get; set; }
 
         [JsonProperty("source")]
-        public StripeSource Source { get; set; }
+        public Source Source { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }

@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class StripeSourceTransactionAchCreditTransfer : StripeEntity
+    public class SourceTransactionAchCreditTransfer : StripeEntity
     {
         [JsonProperty("fingerprint")]
         public string Fingerprint { get; set; }

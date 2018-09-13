@@ -22,6 +22,6 @@
 
         public StripeCard Card { get; set; }
 
-        public StripeSource SourceObject { get; set; }
+        public Source SourceObject { get; set; }
     }
 }

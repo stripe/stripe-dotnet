@@ -50,7 +50,7 @@
             if (incoming.SelectToken("object")?.ToString() == "source")
             {
                 source.Type = PaymentSourceType.Source;
-                source.SourceObject = Mapper<StripeSource>.MapFromJson(incoming.ToString());
+                source.SourceObject = Mapper<Source>.MapFromJson(incoming.ToString());
             }
 
             return source;

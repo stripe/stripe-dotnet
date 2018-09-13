@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class StripeSourceAchCreditTransfer : StripeEntity
+    public class SourceAchCreditTransfer : StripeEntity
     {
         [JsonProperty("account_number")]
         public string AccountNumber { get; set; }
