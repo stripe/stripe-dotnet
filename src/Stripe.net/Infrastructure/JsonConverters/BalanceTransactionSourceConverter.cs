@@ -32,12 +32,12 @@ namespace Stripe.Infrastructure
             if (incoming.SelectToken("object")?.ToString() == "application_fee")
             {
                 source.Type = BalanceTransactionSourceType.ApplicationFee;
-                source.ApplicationFee = Mapper<StripeApplicationFee>.MapFromJson(incoming.ToString());
+                source.ApplicationFee = Mapper<ApplicationFee>.MapFromJson(incoming.ToString());
             }
             else if (incoming.SelectToken("object")?.ToString() == "charge")
             {
                 source.Type = BalanceTransactionSourceType.Charge;
-                source.Charge = Mapper<StripeCharge>.MapFromJson(incoming.ToString());
+                source.Charge = Mapper<Charge>.MapFromJson(incoming.ToString());
             }
             else if (incoming.SelectToken("object")?.ToString() == "dispute")
             {
@@ -57,27 +57,27 @@ namespace Stripe.Infrastructure
             else if (incoming.SelectToken("object")?.ToString() == "payout")
             {
                 source.Type = BalanceTransactionSourceType.Payout;
-                source.Payout = Mapper<StripePayout>.MapFromJson(incoming.ToString());
+                source.Payout = Mapper<Payout>.MapFromJson(incoming.ToString());
             }
             else if (incoming.SelectToken("object")?.ToString() == "refund")
             {
                 source.Type = BalanceTransactionSourceType.Refund;
-                source.Refund = Mapper<StripeRefund>.MapFromJson(incoming.ToString());
+                source.Refund = Mapper<Refund>.MapFromJson(incoming.ToString());
             }
             else if (incoming.SelectToken("object")?.ToString() == "topup")
             {
                 source.Type = BalanceTransactionSourceType.Topup;
-                source.Topup = Mapper<StripeTopup>.MapFromJson(incoming.ToString());
+                source.Topup = Mapper<Topup>.MapFromJson(incoming.ToString());
             }
             else if (incoming.SelectToken("object")?.ToString() == "transfer")
             {
                 source.Type = BalanceTransactionSourceType.Transfer;
-                source.Transfer = Mapper<StripeTransfer>.MapFromJson(incoming.ToString());
+                source.Transfer = Mapper<Transfer>.MapFromJson(incoming.ToString());
             }
             else if (incoming.SelectToken("object")?.ToString() == "transfer_reversal")
             {
                 source.Type = BalanceTransactionSourceType.TransferReversal;
-                source.TransferReversal = Mapper<StripeTransferReversal>.MapFromJson(incoming.ToString());
+                source.TransferReversal = Mapper<TransferReversal>.MapFromJson(incoming.ToString());
             }
             else
             {

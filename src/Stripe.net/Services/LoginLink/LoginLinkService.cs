@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class LoginLinkService : BasicService<StripeLoginLink>
+    public class LoginLinkService : BasicService<LoginLink>
     {
         public LoginLinkService()
             : base(null)
@@ -17,12 +17,12 @@ namespace Stripe
         {
         }
 
-        public virtual StripeLoginLink Create(string accountId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null)
+        public virtual LoginLink Create(string accountId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Post($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, options);
         }
 
-        public virtual Task<StripeLoginLink> CreateAsync(string accountId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<LoginLink> CreateAsync(string accountId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.PostAsync($"{Urls.BaseUrl}/accounts/{accountId}/login_links", requestOptions, cancellationToken, options);
         }

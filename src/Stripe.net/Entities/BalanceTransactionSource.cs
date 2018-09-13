@@ -23,9 +23,9 @@ namespace Stripe
     {
         public BalanceTransactionSourceType Type { get; set; }
 
-        public StripeApplicationFee ApplicationFee { get; set; }
+        public ApplicationFee ApplicationFee { get; set; }
 
-        public StripeCharge Charge { get; set; }
+        public Charge Charge { get; set; }
 
         public StripeDispute Dispute { get; set; }
 
@@ -33,14 +33,14 @@ namespace Stripe
 
         public Issuing.Transaction IssuingTransaction { get; set; }
 
-        public StripePayout Payout { get; set; }
+        public Payout Payout { get; set; }
 
-        public StripeRefund Refund { get; set; }
+        public Refund Refund { get; set; }
 
-        public StripeTransfer Transfer { get; set; }
+        public Transfer Transfer { get; set; }
 
-        public StripeTransferReversal TransferReversal { get; set; }
+        public TransferReversal TransferReversal { get; set; }
 
-        public StripeTopup Topup { get; set; }
+        public Topup Topup { get; set; }
     }
 }

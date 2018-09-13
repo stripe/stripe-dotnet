@@ -23,85 +23,85 @@
 
         public bool ExpandSubscription { get; set; }
 
-        public virtual StripeInvoiceLineItem Create(InvoiceItemCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual InvoiceLineItem Create(InvoiceItemCreateOptions createOptions, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeInvoiceLineItem>.MapFromJson(
+            return Mapper<InvoiceLineItem>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, Urls.InvoiceItems, false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeInvoiceLineItem Get(string invoiceItemId, RequestOptions requestOptions = null)
+        public virtual InvoiceLineItem Get(string invoiceItemId, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeInvoiceLineItem>.MapFromJson(
+            return Mapper<InvoiceLineItem>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeInvoiceLineItem Update(string invoiceItemId, InvoiceItemUpdateOptions updateOptions, RequestOptions requestOptions = null)
+        public virtual InvoiceLineItem Update(string invoiceItemId, InvoiceItemUpdateOptions updateOptions, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeInvoiceLineItem>.MapFromJson(
+            return Mapper<InvoiceLineItem>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeInvoiceLineItem Delete(string invoiceItemId, RequestOptions requestOptions = null)
+        public virtual InvoiceLineItem Delete(string invoiceItemId, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeInvoiceLineItem>.MapFromJson(
+            return Mapper<InvoiceLineItem>.MapFromJson(
                 Requestor.Delete(
                     $"{Urls.InvoiceItems}/{invoiceItemId}",
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeList<StripeInvoiceLineItem> List(InvoiceItemListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<InvoiceLineItem> List(InvoiceItemListOptions listOptions = null, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
+            return Mapper<StripeList<InvoiceLineItem>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.InvoiceItems, true),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<StripeInvoiceLineItem> CreateAsync(InvoiceItemCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<InvoiceLineItem> CreateAsync(InvoiceItemCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeInvoiceLineItem>.MapFromJson(
+            return Mapper<InvoiceLineItem>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, Urls.InvoiceItems, false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeInvoiceLineItem> GetAsync(string invoiceItemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<InvoiceLineItem> GetAsync(string invoiceItemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeInvoiceLineItem>.MapFromJson(
+            return Mapper<InvoiceLineItem>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeInvoiceLineItem> UpdateAsync(string invoiceItemId, InvoiceItemUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<InvoiceLineItem> UpdateAsync(string invoiceItemId, InvoiceItemUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeInvoiceLineItem>.MapFromJson(
+            return Mapper<InvoiceLineItem>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeInvoiceLineItem> DeleteAsync(string invoiceItemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<InvoiceLineItem> DeleteAsync(string invoiceItemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeInvoiceLineItem>.MapFromJson(
+            return Mapper<InvoiceLineItem>.MapFromJson(
                 await Requestor.DeleteAsync(
                     $"{Urls.InvoiceItems}/{invoiceItemId}",
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeList<StripeInvoiceLineItem>> ListAsync(InvoiceItemListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<InvoiceLineItem>> ListAsync(InvoiceItemListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<StripeInvoiceLineItem>>.MapFromJson(
+            return Mapper<StripeList<InvoiceLineItem>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.InvoiceItems, true),
                     this.SetupRequestOptions(requestOptions),

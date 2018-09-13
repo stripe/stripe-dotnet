@@ -20,68 +20,68 @@ namespace Stripe
         {
         }
 
-        public virtual StripeFileLink Create(FileLinkCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual FileLink Create(FileLinkCreateOptions createOptions, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeFileLink>.MapFromJson(
+            return Mapper<FileLink>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, classUrl, false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<StripeFileLink> CreateAsync(FileLinkCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<FileLink> CreateAsync(FileLinkCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeFileLink>.MapFromJson(
+            return Mapper<FileLink>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, classUrl, false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual StripeFileLink Get(string fileLinkId, RequestOptions requestOptions = null)
+        public virtual FileLink Get(string fileLinkId, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeFileLink>.MapFromJson(
+            return Mapper<FileLink>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{classUrl}/{WebUtility.UrlEncode(fileLinkId)}", false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<StripeFileLink> GetAsync(string fileLinkId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<FileLink> GetAsync(string fileLinkId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeFileLink>.MapFromJson(
+            return Mapper<FileLink>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{classUrl}/{WebUtility.UrlEncode(fileLinkId)}", false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual StripeList<StripeFileLink> List(FileLinkListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<FileLink> List(FileLinkListOptions listOptions = null, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<StripeFileLink>>.MapFromJson(
+            return Mapper<StripeList<FileLink>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, classUrl, true),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<StripeList<StripeFileLink>> ListAsync(FileLinkListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<FileLink>> ListAsync(FileLinkListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<StripeFileLink>>.MapFromJson(
+            return Mapper<StripeList<FileLink>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, classUrl, true),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual StripeFileLink Update(string fileLinkId, FileLinkUpdateOptions updateOptions, RequestOptions requestOptions = null)
+        public virtual FileLink Update(string fileLinkId, FileLinkUpdateOptions updateOptions, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeFileLink>.MapFromJson(
+            return Mapper<FileLink>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, $"{classUrl}/{WebUtility.UrlEncode(fileLinkId)}", false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<StripeFileLink> UpdateAsync(string fileLinkId, FileLinkUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<FileLink> UpdateAsync(string fileLinkId, FileLinkUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeFileLink>.MapFromJson(
+            return Mapper<FileLink>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, $"{classUrl}/{WebUtility.UrlEncode(fileLinkId)}", false),
                     this.SetupRequestOptions(requestOptions),

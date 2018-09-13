@@ -8,13 +8,13 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeUsageRecordTest : BaseStripeTest
+    public class UsageRecordTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.usage_record.json");
-            var usageRecord = Mapper<StripeUsageRecord>.MapFromJson(json);
+            var usageRecord = Mapper<UsageRecord>.MapFromJson(json);
 
             Assert.NotNull(usageRecord);
             Assert.NotNull(usageRecord.Id);

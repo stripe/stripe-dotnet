@@ -16,34 +16,34 @@ namespace Stripe
         {
         }
 
-        public virtual StripeToken Create(TokenCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual Token Create(TokenCreateOptions createOptions, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeToken>.MapFromJson(
+            return Mapper<Token>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, Urls.Tokens, false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeToken Get(string tokenId, RequestOptions requestOptions = null)
+        public virtual Token Get(string tokenId, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeToken>.MapFromJson(
+            return Mapper<Token>.MapFromJson(
                 Requestor.GetString(
                     $"{Urls.Tokens}/{tokenId}",
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<StripeToken> CreateAsync(TokenCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Token> CreateAsync(TokenCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeToken>.MapFromJson(
+            return Mapper<Token>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, Urls.Tokens, false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeToken> GetAsync(string tokenId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Token> GetAsync(string tokenId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeToken>.MapFromJson(
+            return Mapper<Token>.MapFromJson(
                 await Requestor.GetStringAsync(
                    $"{Urls.Tokens}/{tokenId}",
                     this.SetupRequestOptions(requestOptions),

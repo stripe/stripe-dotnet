@@ -40,85 +40,85 @@
 
         public bool ExpandTransfer { get; set; }
 
-        public virtual StripeCharge Create(ChargeCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual Charge Create(ChargeCreateOptions createOptions, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeCharge>.MapFromJson(
+            return Mapper<Charge>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, Urls.Charges, false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeCharge Update(string chargeId, ChargeUpdateOptions updateOptions, RequestOptions requestOptions = null)
+        public virtual Charge Update(string chargeId, ChargeUpdateOptions updateOptions, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeCharge>.MapFromJson(
+            return Mapper<Charge>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeCharge Get(string chargeId, RequestOptions requestOptions = null)
+        public virtual Charge Get(string chargeId, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeCharge>.MapFromJson(
+            return Mapper<Charge>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeList<StripeCharge> List(ChargeListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Charge> List(ChargeListOptions listOptions = null, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<StripeCharge>>.MapFromJson(
+            return Mapper<StripeList<Charge>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.Charges, true),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeCharge Capture(string chargeId, ChargeCaptureOptions captureOptions, RequestOptions requestOptions = null)
+        public virtual Charge Capture(string chargeId, ChargeCaptureOptions captureOptions, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeCharge>.MapFromJson(
+            return Mapper<Charge>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(captureOptions, $"{Urls.Charges}/{chargeId}/capture", false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<StripeCharge> CreateAsync(ChargeCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Charge> CreateAsync(ChargeCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeCharge>.MapFromJson(
+            return Mapper<Charge>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, Urls.Charges, false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeCharge> UpdateAsync(string chargeId, ChargeUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Charge> UpdateAsync(string chargeId, ChargeUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeCharge>.MapFromJson(
+            return Mapper<Charge>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeCharge> GetAsync(string chargeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Charge> GetAsync(string chargeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeCharge>.MapFromJson(
+            return Mapper<Charge>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeList<StripeCharge>> ListAsync(ChargeListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<Charge>> ListAsync(ChargeListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<StripeCharge>>.MapFromJson(
+            return Mapper<StripeList<Charge>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.Charges, true),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeCharge> CaptureAsync(string chargeId, ChargeCaptureOptions captureOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Charge> CaptureAsync(string chargeId, ChargeCaptureOptions captureOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeCharge>.MapFromJson(
+            return Mapper<Charge>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(captureOptions, $"{Urls.Charges}/{chargeId}/capture", false),
                     this.SetupRequestOptions(requestOptions),

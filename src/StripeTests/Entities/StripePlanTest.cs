@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripePlanTest : BaseStripeTest
+    public class PlanTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             string json = GetFixture("/v1/plans/plan_123");
-            var plan = Mapper<StripePlan>.MapFromJson(json);
+            var plan = Mapper<Plan>.MapFromJson(json);
             Assert.NotNull(plan);
-            Assert.IsType<StripePlan>(plan);
+            Assert.IsType<Plan>(plan);
             Assert.NotNull(plan.Id);
             Assert.Equal("plan", plan.Object);
         }
@@ -30,9 +30,9 @@ namespace StripeTests
             };
 
             string json = GetFixture("/v1/plans/plan_123", expansions);
-            var plan = Mapper<StripePlan>.MapFromJson(json);
+            var plan = Mapper<Plan>.MapFromJson(json);
             Assert.NotNull(plan);
-            Assert.IsType<StripePlan>(plan);
+            Assert.IsType<Plan>(plan);
             Assert.NotNull(plan.Id);
             Assert.Equal("plan", plan.Object);
 

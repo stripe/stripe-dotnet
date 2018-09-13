@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeSkuTest : BaseStripeTest
+    public class SkuTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             string json = GetFixture("/v1/skus/sku_123");
-            var sku = Mapper<StripeSku>.MapFromJson(json);
+            var sku = Mapper<Sku>.MapFromJson(json);
             Assert.NotNull(sku);
-            Assert.IsType<StripeSku>(sku);
+            Assert.IsType<Sku>(sku);
             Assert.NotNull(sku.Id);
             Assert.Equal("sku", sku.Object);
         }
@@ -30,9 +30,9 @@ namespace StripeTests
             };
 
             string json = GetFixture("/v1/skus/sku_123", expansions);
-            var sku = Mapper<StripeSku>.MapFromJson(json);
+            var sku = Mapper<Sku>.MapFromJson(json);
             Assert.NotNull(sku);
-            Assert.IsType<StripeSku>(sku);
+            Assert.IsType<Sku>(sku);
             Assert.NotNull(sku.Id);
             Assert.Equal("sku", sku.Object);
 

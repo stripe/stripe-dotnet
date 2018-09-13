@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeBalanceTest : BaseStripeTest
+    public class BalanceTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             string json = GetFixture("/v1/balance");
-            var balance = Mapper<StripeBalance>.MapFromJson(json);
+            var balance = Mapper<Balance>.MapFromJson(json);
             Assert.NotNull(balance);
-            Assert.IsType<StripeBalance>(balance);
+            Assert.IsType<Balance>(balance);
             Assert.Equal("balance", balance.Object);
         }
     }

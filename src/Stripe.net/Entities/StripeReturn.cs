@@ -30,7 +30,7 @@
         /// The items included in this order return.
         /// </summary>
         [JsonProperty("items")]
-        public List<StripeOrderItem> OrderItems { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
 
         [JsonProperty("livemode")]
         public bool LiveMode { get; set; }
@@ -44,14 +44,14 @@
         public string OrderId { get; set; }
 
         [JsonIgnore]
-        public StripeOrder Order { get; set; }
+        public Order Order { get; set; }
 
         [JsonProperty("order")]
         internal object InternalOrder
         {
             set
             {
-                StringOrObject<StripeOrder>.Map(value, s => this.OrderId = s, o => this.Order = o);
+                StringOrObject<Order>.Map(value, s => this.OrderId = s, o => this.Order = o);
             }
         }
         #endregion
@@ -65,14 +65,14 @@
         public string RefundId { get; set; }
 
         [JsonIgnore]
-        public StripeRefund Refund { get; set; }
+        public Refund Refund { get; set; }
 
         [JsonProperty("refund")]
         internal object InternalRefund
         {
             set
             {
-                StringOrObject<StripeRefund>.Map(value, s => this.RefundId = s, o => this.Refund = o);
+                StringOrObject<Refund>.Map(value, s => this.RefundId = s, o => this.Refund = o);
             }
         }
         #endregion

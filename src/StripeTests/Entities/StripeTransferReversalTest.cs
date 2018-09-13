@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeTransferReversalTest : BaseStripeTest
+    public class TransferReversalTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             string json = GetFixture("/v1/transfers/tr_123/reversals/trr_123");
-            var transferReversal = Mapper<StripeTransferReversal>.MapFromJson(json);
+            var transferReversal = Mapper<TransferReversal>.MapFromJson(json);
             Assert.NotNull(transferReversal);
-            Assert.IsType<StripeTransferReversal>(transferReversal);
+            Assert.IsType<TransferReversal>(transferReversal);
             Assert.NotNull(transferReversal.Id);
             Assert.Equal("transfer_reversal", transferReversal.Object);
         }
@@ -31,9 +31,9 @@ namespace StripeTests
             };
 
             string json = GetFixture("/v1/transfers/tr_123/reversals/trr_123", expansions);
-            var transferReversal = Mapper<StripeTransferReversal>.MapFromJson(json);
+            var transferReversal = Mapper<TransferReversal>.MapFromJson(json);
             Assert.NotNull(transferReversal);
-            Assert.IsType<StripeTransferReversal>(transferReversal);
+            Assert.IsType<TransferReversal>(transferReversal);
             Assert.NotNull(transferReversal.Id);
             Assert.Equal("transfer_reversal", transferReversal.Object);
 
