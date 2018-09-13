@@ -6,21 +6,8 @@ namespace Stripe
 
     public class StripeSourceMandateOptions : INestedOptions
     {
-        public DateTime? MandateAcceptanceDate { get; set; }
-
         [JsonProperty("acceptance[date]")]
-        internal long? MandateAcceptanceDateInternal
-        {
-            get
-            {
-                if (!this.MandateAcceptanceDate.HasValue)
-                {
-                    return null;
-                }
-
-                return EpochTime.ConvertDateTimeToEpoch(this.MandateAcceptanceDate.Value);
-            }
-        }
+        public DateTime? MandateAcceptanceDate { get; set; }
 
         [JsonProperty("acceptance[ip]")]
         public string MandateAcceptanceIp { get; set; }

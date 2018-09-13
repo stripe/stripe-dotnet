@@ -10,21 +10,8 @@
         /// <summary>
         /// A future date to anchor the subscription’s <see href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</see>. This is used to determine the date of the first full invoice, and, for plans with <c>month</c> or <c>year</c> intervals, the day of the month for subsequent invoices.
         /// </summary>
-        public DateTime? BillingCycleAnchor { get; set; }
-
         [JsonProperty("billing_cycle_anchor")]
-        internal long? BillingCycleAnchorInternal
-        {
-            get
-            {
-                if (!this.BillingCycleAnchor.HasValue)
-                {
-                    return null;
-                }
-
-                return EpochTime.ConvertDateTimeToEpoch(this.BillingCycleAnchor.Value);
-            }
-        }
+        public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// REQUIRED: The identifier of the customer to subscribe.
