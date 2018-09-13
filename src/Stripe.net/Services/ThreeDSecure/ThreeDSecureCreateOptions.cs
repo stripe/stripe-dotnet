@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class Stripe3DSecureCreateOptions : BaseOptions
+    public class ThreeDSecureCreateOptions : BaseOptions
     {
         [JsonProperty("amount")]
         public int Amount { get; set; }

@@ -6,16 +6,16 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class Stripe3DSecureServiceTest : BaseStripeTest
+    public class ThreeDSecureServiceTest : BaseStripeTest
     {
-        private Stripe3DSecureService service;
-        private Stripe3DSecureCreateOptions createOptions;
+        private ThreeDSecureService service;
+        private ThreeDSecureCreateOptions createOptions;
 
-        public Stripe3DSecureServiceTest()
+        public ThreeDSecureServiceTest()
         {
-            this.service = new Stripe3DSecureService();
+            this.service = new ThreeDSecureService();
 
-            this.createOptions = new Stripe3DSecureCreateOptions()
+            this.createOptions = new ThreeDSecureCreateOptions()
             {
                 Amount = 25,
                 Currency = "eur",
