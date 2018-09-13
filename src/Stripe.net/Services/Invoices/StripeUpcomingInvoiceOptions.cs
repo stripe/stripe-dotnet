@@ -16,21 +16,8 @@
         /// <summary>
         /// A future date to anchor the subscription’s <see href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</see>. This is used to determine the date of the first full invoice, and, for plans with <c>month</c> or <c>year</c> intervals, the day of the month for subsequent invoices.
         /// </summary>
-        public DateTime? SubscriptionBillingCycleAnchor { get; set; }
-
         [JsonProperty("subscription_billing_cycle_anchor")]
-        internal long? SubscriptionBillingCycleAnchorInternal
-        {
-            get
-            {
-                if (!this.SubscriptionBillingCycleAnchor.HasValue)
-                {
-                    return null;
-                }
-
-                return EpochTime.ConvertDateTimeToEpoch(this.SubscriptionBillingCycleAnchor.Value);
-            }
-        }
+        public DateTime? SubscriptionBillingCycleAnchor { get; set; }
 
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
@@ -44,21 +31,8 @@
         [JsonProperty("subscription_prorate")]
         public bool? SubscriptionProrate { get; set; }
 
-        public DateTime? SubscriptionProrationDate { get; set; }
-
         [JsonProperty("subscription_proration_date")]
-        internal long? SubscriptionProrationDateInternal
-        {
-            get
-            {
-                if (!this.SubscriptionProrationDate.HasValue)
-                {
-                    return null;
-                }
-
-                return EpochTime.ConvertDateTimeToEpoch(this.SubscriptionProrationDate.Value);
-            }
-        }
+        public DateTime? SubscriptionProrationDate { get; set; }
 
         [JsonProperty("subscription_quantity")]
         public int? SubscriptionQuantity { get; set; }
@@ -66,21 +40,8 @@
         [JsonProperty("subscription_tax_percent")]
         public decimal? SubscriptionTaxPercent { get; set; }
 
-        public DateTime? SubscriptionTrialEnd { get; set; }
-
         [JsonProperty("subscription_trial_end")]
-        internal long? SubscriptionTrialEndInternal
-        {
-            get
-            {
-                if (!this.SubscriptionTrialEnd.HasValue)
-                {
-                    return null;
-                }
-
-                return EpochTime.ConvertDateTimeToEpoch(this.SubscriptionTrialEnd.Value);
-            }
-        }
+        public DateTime? SubscriptionTrialEnd { get; set; }
 
         [JsonProperty("subscription_trial_from_plan")]
         public bool? SubscriptionTrialFromPlan { get; set; }
