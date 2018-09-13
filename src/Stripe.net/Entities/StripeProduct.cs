@@ -32,7 +32,7 @@
         /// Time at which the object was created.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>
@@ -102,7 +102,7 @@
         public string Type { get; set; }
 
         [JsonProperty("updated")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Updated { get; set; }
 
         /// <summary>

@@ -14,7 +14,7 @@
         public int Amount { get; set; }
 
         [JsonProperty("arrival_date")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime ArrivalDate { get; set; }
 
         [JsonProperty("automatic")]
@@ -37,7 +37,7 @@
         #endregion
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("currency")]

@@ -10,11 +10,11 @@
         public string Object { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("data_load_time")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime DataLoadTime { get; set; }
 
         [JsonProperty("error")]
@@ -24,7 +24,7 @@
         public StripeFileUpload File { get; set; }
 
         [JsonProperty("result_available_until")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime ResultAvailableUntil { get; set; }
 
         [JsonProperty("sql")]

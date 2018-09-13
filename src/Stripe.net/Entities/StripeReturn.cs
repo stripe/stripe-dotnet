@@ -16,7 +16,7 @@
         [JsonProperty("amount")]
         public int Amount { get; set; }
 
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         [JsonProperty("created")]
         public DateTime Created { get; set; }
 

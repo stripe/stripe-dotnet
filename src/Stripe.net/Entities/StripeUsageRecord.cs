@@ -16,7 +16,7 @@
         public string SubscriptionItem { get; set; }
 
         [JsonProperty("timestamp")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Timestamp { get; set; }
 
         [JsonProperty("quantity")]

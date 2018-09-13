@@ -10,7 +10,7 @@
         public string DisabledReason { get; set; }
 
         [JsonProperty("due_by")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? DueBy { get; set; }
 
         [JsonProperty("fields_needed")]
