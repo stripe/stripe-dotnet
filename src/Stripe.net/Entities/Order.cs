@@ -107,7 +107,7 @@
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("returns")]
-        public StripeList<StripeReturn> Returns { get; set; }
+        public StripeList<OrderReturn> Returns { get; set; }
 
         /// <summary>
         /// The shipping method that is currently selected for this order, if any. If present, it is equal to one of the ids of shipping methods in the shipping_methods array. At order creation time, if there are multiple shipping methods, Stripe will automatically selected the first method.
