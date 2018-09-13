@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeFileUploadTest : BaseStripeTest
+    public class FileUploadTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             string json = GetFixture("/v1/files/file_123");
-            var fileUpload = Mapper<StripeFileUpload>.MapFromJson(json);
+            var fileUpload = Mapper<FileUpload>.MapFromJson(json);
             Assert.NotNull(fileUpload);
-            Assert.IsType<StripeFileUpload>(fileUpload);
+            Assert.IsType<FileUpload>(fileUpload);
             Assert.NotNull(fileUpload.Id);
             Assert.Equal("file_upload", fileUpload.Object);
         }

@@ -14,20 +14,20 @@
         public int? Amount { get; set; }
 
         [JsonProperty("balance_transactions")]
-        public List<StripeBalanceTransaction> BalanceTransactions { get; set; }
+        public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         #region Expandable Charge
         public string ChargeId { get; set; }
 
         [JsonIgnore]
-        public StripeCharge Charge { get; set; }
+        public Charge Charge { get; set; }
 
         [JsonProperty("charge")]
         internal object InternalCharge
         {
             set
             {
-                StringOrObject<StripeCharge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
+                StringOrObject<Charge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
             }
         }
         #endregion

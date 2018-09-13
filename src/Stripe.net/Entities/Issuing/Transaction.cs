@@ -30,14 +30,14 @@ namespace Stripe.Issuing
         public string BalanceTransactionId { get; set; }
 
         [JsonIgnore]
-        public StripeBalanceTransaction BalanceTransaction { get; set; }
+        public BalanceTransaction BalanceTransaction { get; set; }
 
         [JsonProperty("balance_transaction")]
         internal object InternalBalanceTransaction
         {
             set
             {
-                StringOrObject<StripeBalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
+                StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
             }
         }
         #endregion

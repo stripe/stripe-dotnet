@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeOrderTest : BaseStripeTest
+    public class OrderTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             string json = GetFixture("/v1/orders/or_123");
-            var order = Mapper<StripeOrder>.MapFromJson(json);
+            var order = Mapper<Order>.MapFromJson(json);
             Assert.NotNull(order);
-            Assert.IsType<StripeOrder>(order);
+            Assert.IsType<Order>(order);
             Assert.NotNull(order.Id);
             Assert.Equal("order", order.Object);
         }
@@ -31,9 +31,9 @@ namespace StripeTests
             };
 
             string json = GetFixture("/v1/orders/or_123", expansions);
-            var order = Mapper<StripeOrder>.MapFromJson(json);
+            var order = Mapper<Order>.MapFromJson(json);
             Assert.NotNull(order);
-            Assert.IsType<StripeOrder>(order);
+            Assert.IsType<Order>(order);
             Assert.NotNull(order.Id);
             Assert.Equal("order", order.Object);
 

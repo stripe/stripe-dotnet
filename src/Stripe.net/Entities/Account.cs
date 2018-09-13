@@ -15,14 +15,14 @@
         public string BusinessLogoFileId { get; set; }
 
         [JsonIgnore]
-        public StripeFileUpload BusinessLogo { get; set; }
+        public FileUpload BusinessLogo { get; set; }
 
         [JsonProperty("business_logo")]
         internal object InternalBusinessLogo
         {
             set
             {
-                StringOrObject<StripeFileUpload>.Map(value, s => this.BusinessLogoFileId = s, o => this.BusinessLogo = o);
+                StringOrObject<FileUpload>.Map(value, s => this.BusinessLogoFileId = s, o => this.BusinessLogo = o);
             }
         }
         #endregion
@@ -53,7 +53,7 @@
         public bool DebitNegativeBalances { get; set; }
 
         [JsonProperty("decline_charge_on")]
-        public StripeDeclineChargeOn DeclineChargeOn { get; set; }
+        public DeclineChargeOn DeclineChargeOn { get; set; }
 
         [JsonProperty("default_currency")]
         public string DefaultCurrency { get; set; }
@@ -77,7 +77,7 @@
         public StripeList<ExternalAccount> ExternalAccounts { get; set; }
 
         [JsonProperty("legal_entity")]
-        public StripeLegalEntity LegalEntity { get; set; }
+        public LegalEntity LegalEntity { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -110,7 +110,7 @@
         public bool PayoutsEnabled { get; set; }
 
         [JsonProperty("payout_schedule")]
-        public StripePayoutSchedule PayoutSchedule { get; set; }
+        public PayoutSchedule PayoutSchedule { get; set; }
 
         [JsonProperty("payout_statement_descriptor")]
         public string PayoutStatementDescriptor { get; set; }
@@ -119,6 +119,6 @@
         public AccountVerification AccountVerification { get; set; }
 
         [JsonProperty("keys")]
-        public StripeCustomAccountKeys CustomAccountKeys { get; set; }
+        public CustomAccountKeys CustomAccountKeys { get; set; }
      }
 }

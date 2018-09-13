@@ -20,7 +20,7 @@
         public DateTime? Created { get; set; }
 
         [JsonProperty("data")]
-        public StripeEventData Data { get; set; }
+        public EventData Data { get; set; }
 
         [JsonProperty("livemode")]
         public bool LiveMode { get; set; }

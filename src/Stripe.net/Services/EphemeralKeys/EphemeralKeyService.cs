@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class EphemeralKeyService : BasicService<StripeEphemeralKey>
+    public class EphemeralKeyService : BasicService<EphemeralKey>
     {
         public EphemeralKeyService()
             : base(null)
@@ -17,7 +17,7 @@ namespace Stripe
         {
         }
 
-        public virtual StripeEphemeralKey Create(EphemeralKeyCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual EphemeralKey Create(EphemeralKeyCreateOptions createOptions, RequestOptions requestOptions = null)
         {
             if (createOptions.StripeVersion == null)
             {
@@ -32,12 +32,12 @@ namespace Stripe
             return this.Post(Urls.EphemeralKeys, requestOptions, createOptions);
         }
 
-        public virtual StripeEphemeralKey Delete(string keyId, RequestOptions requestOptions = null)
+        public virtual EphemeralKey Delete(string keyId, RequestOptions requestOptions = null)
         {
             return this.DeleteEntity($"{Urls.EphemeralKeys}/{keyId}", requestOptions);
         }
 
-        public virtual Task<StripeEphemeralKey> CreateAsync(EphemeralKeyCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<EphemeralKey> CreateAsync(EphemeralKeyCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Creating an ephemeral key requires a specific API version to be set. This is handled as a parameter
             // but has to be set on the RequestOptions instead.
@@ -47,7 +47,7 @@ namespace Stripe
             return this.PostAsync(Urls.EphemeralKeys, requestOptions, cancellationToken, createOptions);
         }
 
-        public virtual Task<StripeEphemeralKey> DeleteAsync(string keyId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<EphemeralKey> DeleteAsync(string keyId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.DeleteEntityAsync($"{Urls.EphemeralKeys}/{keyId}", requestOptions, cancellationToken);
         }

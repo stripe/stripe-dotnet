@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeScheduledQueryRunTest : BaseStripeTest
+    public class ScheduledQueryRunTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             string json = GetFixture("/v1/sigma/scheduled_query_runs/sqr_123");
-            var run = Mapper<StripeScheduledQueryRun>.MapFromJson(json);
+            var run = Mapper<ScheduledQueryRun>.MapFromJson(json);
             Assert.NotNull(run);
-            Assert.IsType<StripeScheduledQueryRun>(run);
+            Assert.IsType<ScheduledQueryRun>(run);
             Assert.NotNull(run.Id);
             Assert.Equal("scheduled_query_run", run.Object);
 

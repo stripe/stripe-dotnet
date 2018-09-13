@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeExchangeRateTest : BaseStripeTest
+    public class ExchangeRateTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             string json = GetFixture("/v1/exchange_rates/usd");
-            var exchangeRate = Mapper<StripeExchangeRate>.MapFromJson(json);
+            var exchangeRate = Mapper<ExchangeRate>.MapFromJson(json);
             Assert.NotNull(exchangeRate);
-            Assert.IsType<StripeExchangeRate>(exchangeRate);
+            Assert.IsType<ExchangeRate>(exchangeRate);
             Assert.NotNull(exchangeRate.Id);
             Assert.Equal("exchange_rate", exchangeRate.Object);
         }

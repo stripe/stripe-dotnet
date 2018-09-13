@@ -45,14 +45,14 @@
         public string CustomerId { get; set; }
 
         [JsonIgnore]
-        public StripeCustomer Customer { get; set; }
+        public Customer Customer { get; set; }
 
         [JsonProperty("customer")]
         internal object InternalCustomer
         {
             set
             {
-                StringOrObject<StripeCustomer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
+                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
             }
         }
         #endregion

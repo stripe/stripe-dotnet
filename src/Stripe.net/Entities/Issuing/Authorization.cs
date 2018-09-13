@@ -23,7 +23,7 @@ namespace Stripe.Issuing
         public string AuthorizedCurrency { get; set; }
 
         [JsonProperty("balance_transactions")]
-        public List<StripeBalanceTransaction> BalanceTransactions { get; set; }
+        public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         [JsonProperty("card")]
         public Card Card { get; set; }

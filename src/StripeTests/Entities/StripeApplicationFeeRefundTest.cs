@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeApplicationFeeRefundTest : BaseStripeTest
+    public class ApplicationFeeRefundTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             string json = GetFixture("/v1/application_fees/fee_123/refunds/fr_123");
-            var applicationFeeRefund = Mapper<StripeApplicationFeeRefund>.MapFromJson(json);
+            var applicationFeeRefund = Mapper<ApplicationFeeRefund>.MapFromJson(json);
             Assert.NotNull(applicationFeeRefund);
-            Assert.IsType<StripeApplicationFeeRefund>(applicationFeeRefund);
+            Assert.IsType<ApplicationFeeRefund>(applicationFeeRefund);
             Assert.NotNull(applicationFeeRefund.Id);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
         }

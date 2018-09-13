@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeCouponTest : BaseStripeTest
+    public class CouponTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             string json = GetFixture("/v1/coupons/co_123");
-            var coupon = Mapper<StripeCoupon>.MapFromJson(json);
+            var coupon = Mapper<Coupon>.MapFromJson(json);
             Assert.NotNull(coupon);
-            Assert.IsType<StripeCoupon>(coupon);
+            Assert.IsType<Coupon>(coupon);
             Assert.NotNull(coupon.Id);
             Assert.Equal("coupon", coupon.Object);
         }

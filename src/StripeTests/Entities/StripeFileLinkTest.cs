@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeFileLinkTest : BaseStripeTest
+    public class FileLinkTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             string json = GetFixture("/v1/file_links/link_123");
-            var fileLink = Mapper<StripeFileLink>.MapFromJson(json);
+            var fileLink = Mapper<FileLink>.MapFromJson(json);
             Assert.NotNull(fileLink);
-            Assert.IsType<StripeFileLink>(fileLink);
+            Assert.IsType<FileLink>(fileLink);
             Assert.NotNull(fileLink.Id);
             Assert.Equal("file_link", fileLink.Object);
         }
@@ -30,9 +30,9 @@ namespace StripeTests
             };
 
             string json = GetFixture("/v1/file_links/link_123", expansions);
-            var fileLink = Mapper<StripeFileLink>.MapFromJson(json);
+            var fileLink = Mapper<FileLink>.MapFromJson(json);
             Assert.NotNull(fileLink);
-            Assert.IsType<StripeFileLink>(fileLink);
+            Assert.IsType<FileLink>(fileLink);
             Assert.NotNull(fileLink.Id);
             Assert.Equal("file_link", fileLink.Object);
 
