@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeEventTest : BaseStripeTest
+    public class EventTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             string json = GetFixture("/v1/events/evt_123");
-            var evt = Mapper<StripeEvent>.MapFromJson(json);
+            var evt = Mapper<Event>.MapFromJson(json);
             Assert.NotNull(evt);
-            Assert.IsType<StripeEvent>(evt);
+            Assert.IsType<Event>(evt);
             Assert.NotNull(evt.Id);
             Assert.Equal("event", evt.Object);
         }

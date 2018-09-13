@@ -26,14 +26,14 @@
         public string ApplicationId { get; set; }
 
         [JsonIgnore]
-        public StripeApplication Application { get; set; }
+        public Application Application { get; set; }
 
         [JsonProperty("application")]
         internal object InternalApplication
         {
             set
             {
-                StringOrObject<StripeApplication>.Map(value, s => this.ApplicationId = s, o => this.Application = o);
+                StringOrObject<Application>.Map(value, s => this.ApplicationId = s, o => this.Application = o);
             }
         }
         #endregion

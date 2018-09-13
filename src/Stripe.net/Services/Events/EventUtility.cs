@@ -9,13 +9,13 @@
     using Newtonsoft.Json.Linq;
     using Stripe.Infrastructure;
 
-    public static class StripeEventUtility
+    public static class EventUtility
     {
         internal static readonly UTF8Encoding SafeUTF8 = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
-        public static StripeEvent ParseEvent(string json)
+        public static Event ParseEvent(string json)
         {
-            return Mapper<StripeEvent>.MapFromJson(json);
+            return Mapper<Event>.MapFromJson(json);
         }
 
         public static T ParseEventDataItem<T>(dynamic dataItem)
@@ -23,12 +23,12 @@
             return JsonConvert.DeserializeObject<T>((dataItem as JObject).ToString());
         }
 
-        public static StripeEvent ConstructEvent(string json, string stripeSignatureHeader, string secret, int tolerance = 300)
+        public static Event ConstructEvent(string json, string stripeSignatureHeader, string secret, int tolerance = 300)
         {
             return ConstructEvent(json, stripeSignatureHeader, secret, tolerance, DateTime.UtcNow.ConvertDateTimeToEpoch());
         }
 
-        public static StripeEvent ConstructEvent(string json, string stripeSignatureHeader, string secret, int tolerance, long utcNow)
+        public static Event ConstructEvent(string json, string stripeSignatureHeader, string secret, int tolerance, long utcNow)
         {
             var signatureItems = ParseStripeSignature(stripeSignatureHeader);
             var signature = string.Empty;
@@ -54,7 +54,7 @@
                 throw new StripeException("The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.");
             }
 
-            return Mapper<StripeEvent>.MapFromJson(json);
+            return Mapper<Event>.MapFromJson(json);
         }
 
         private static ILookup<string, string> ParseStripeSignature(string stripeSignatureHeader)
