@@ -42,6 +42,12 @@
         public string[] DeactivateOn { get; set; }
 
         /// <summary>
+        /// Whether this object is deleted or not.
+        /// </summary>
+        [JsonProperty("deleted")]
+        public bool Deleted { get; set; }
+
+        /// <summary>
         /// The product’s description, meant to be displayable to the customer.
         /// </summary>
         [JsonProperty("description")]
