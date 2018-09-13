@@ -72,21 +72,8 @@
 
         #region Tos Acceptance
 
-        public DateTime? TosAcceptanceDate { get; set; }
-
         [JsonProperty("tos_acceptance[date]")]
-        internal long? TosAcceptanceDateInternal
-        {
-            get
-            {
-                if (!this.TosAcceptanceDate.HasValue)
-                {
-                    return null;
-                }
-
-                return EpochTime.ConvertDateTimeToEpoch(this.TosAcceptanceDate.Value);
-            }
-        }
+        public DateTime? TosAcceptanceDate { get; set; }
 
         [JsonProperty("tos_acceptance[ip]")]
         public string TosAcceptanceIp { get; set; }

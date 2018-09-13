@@ -28,10 +28,8 @@
         /// <summary>
         /// The date on which payment for this invoice is due. Only valid for invoices where billing=send_invoice.
         /// </summary>
-        public DateTime? DueDate { get; set; }
-
         [JsonProperty("due_date")]
-        internal long? DueDateInternal => this.DueDate?.ConvertDateTimeToEpoch();
+        public DateTime? DueDate { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

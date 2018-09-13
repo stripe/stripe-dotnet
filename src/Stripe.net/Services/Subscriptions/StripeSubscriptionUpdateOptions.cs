@@ -44,15 +44,10 @@
         [JsonProperty("items")]
         public List<StripeSubscriptionItemUpdateOption> Items { get; set; }
 
-        #region ProrationDate
-
         /// <summary>
         /// Boolean indicating whether this subscription should cancel at the end of the current period.
         /// </summary>
-        public DateTime? ProrationDate { get; set; }
-
         [JsonProperty("proration_date")]
-        internal string ProrationDateInternal => this.ProrationDate?.ConvertDateTimeToEpoch().ToString();
-        #endregion
+        public DateTime? ProrationDate { get; set; }
     }
 }
