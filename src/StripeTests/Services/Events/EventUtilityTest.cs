@@ -23,7 +23,7 @@ namespace StripeTests
         {
             var tolerance = 300;
             var fakeCurrentTimestamp = this.eventTimestamp + 100;
-            var evt = StripeEventUtility.ConstructEvent(this.json, this.signature, this.secret, tolerance, fakeCurrentTimestamp);
+            var evt = EventUtility.ConstructEvent(this.json, this.signature, this.secret, tolerance, fakeCurrentTimestamp);
 
             Assert.NotNull(evt);
             Assert.Equal("acct_123", evt.Account);
@@ -38,7 +38,7 @@ namespace StripeTests
             var fakeCurrentTimestamp = this.eventTimestamp + tolerance + 100;
 
             var exception = Assert.Throws<StripeException>(() =>
-                StripeEventUtility.ConstructEvent(this.json, this.signature, this.secret, tolerance, fakeCurrentTimestamp));
+                EventUtility.ConstructEvent(this.json, this.signature, this.secret, tolerance, fakeCurrentTimestamp));
 
             Assert.Equal("The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.", exception.Message);
         }
@@ -48,7 +48,7 @@ namespace StripeTests
         {
             // This throws an error because the original JSON message is modified
             var exception = Assert.Throws<StripeException>(() =>
-                StripeEventUtility.ConstructEvent(this.json + "this_changes_the_json", this.signature, this.secret));
+                EventUtility.ConstructEvent(this.json + "this_changes_the_json", this.signature, this.secret));
 
             Assert.Equal("The signature for the webhook is not present in the Stripe-Signature header.", exception.Message);
         }
@@ -57,7 +57,7 @@ namespace StripeTests
         public void RejectSecretWithUnicode()
         {
             var exception = Assert.Throws<StripeException>(() =>
-                StripeEventUtility.ConstructEvent(this.json, this.signature, this.secret + "\ud802"));
+                EventUtility.ConstructEvent(this.json, this.signature, this.secret + "\ud802"));
 
             Assert.Equal("The webhook cannot be processed because the signature cannot be safely calculated.", exception.Message);
         }
@@ -66,7 +66,7 @@ namespace StripeTests
         public void RejectMessageWithUnicode()
         {
             var exception = Assert.Throws<StripeException>(() =>
-                StripeEventUtility.ConstructEvent(this.json + "\ud802", this.signature, this.secret));
+                EventUtility.ConstructEvent(this.json + "\ud802", this.signature, this.secret));
 
             Assert.Equal("The webhook cannot be processed because the signature cannot be safely calculated.", exception.Message);
         }

@@ -4,7 +4,7 @@
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class StripeEvent : StripeEntityWithId
+    public class Event : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -38,14 +38,14 @@
         public string RequestId { get; set; }
 
         [JsonIgnore]
-        public StripeEventRequest Request { get; set; }
+        public EventRequest Request { get; set; }
 
         [JsonProperty("request")]
         internal object InternalRequest
         {
             set
             {
-                StringOrObject<StripeEventRequest>.Map(value, s => this.RequestId = s, o => this.Request = o);
+                StringOrObject<EventRequest>.Map(value, s => this.RequestId = s, o => this.Request = o);
             }
         }
         #endregion

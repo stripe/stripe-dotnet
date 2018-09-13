@@ -17,34 +17,34 @@
         {
         }
 
-        public virtual StripeEvent Get(string eventId, RequestOptions requestOptions = null)
+        public virtual Event Get(string eventId, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeEvent>.MapFromJson(
+            return Mapper<Event>.MapFromJson(
                 Requestor.GetString(
                     $"{Urls.Events}/{eventId}",
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeList<StripeEvent> List(EventListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Event> List(EventListOptions listOptions = null, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<StripeEvent>>.MapFromJson(
+            return Mapper<StripeList<Event>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, Urls.Events, true),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<StripeEvent> GetAsync(string eventId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Event> GetAsync(string eventId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeEvent>.MapFromJson(
+            return Mapper<Event>.MapFromJson(
                 await Requestor.GetStringAsync(
                    $"{Urls.Events}/{eventId}",
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeList<StripeEvent>> ListAsync(EventListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<Event>> ListAsync(EventListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<StripeEvent>>.MapFromJson(
+            return Mapper<StripeList<Event>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, Urls.Events, true),
                     this.SetupRequestOptions(requestOptions),
