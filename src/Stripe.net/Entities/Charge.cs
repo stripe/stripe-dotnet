@@ -309,7 +309,7 @@
         /// Shipping information for the charge.
         /// </summary>
         [JsonProperty("shipping")]
-        public StripeShipping Shipping { get; set; }
+        public Shipping Shipping { get; set; }
 
         /// <summary>
         /// For most Stripe users, the source of every charge is a credit or debit card. This hash is then the card object describing that card.

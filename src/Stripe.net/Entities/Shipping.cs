@@ -2,10 +2,10 @@
 {
     using Newtonsoft.Json;
 
-    public class StripeShipping : StripeEntity
+    public class Shipping : StripeEntity
     {
         [JsonProperty("address")]
-        public StripeAddress Address { get; set; }
+        public Address Address { get; set; }
 
         [JsonProperty("carrier")]
         public string Carrier { get; set; }

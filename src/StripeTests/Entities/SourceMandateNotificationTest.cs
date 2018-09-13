@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeSourceMandateNotificationTest : BaseStripeTest
+    public class SourceMandateNotificationTest : BaseStripeTest
     {
         [Fact]
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.source_mandate_notification.json");
-            var mandate = Mapper<StripeSourceMandateNotification>.MapFromJson(json);
+            var mandate = Mapper<SourceMandateNotification>.MapFromJson(json);
             Assert.NotNull(mandate);
-            Assert.IsType<StripeSourceMandateNotification>(mandate);
+            Assert.IsType<SourceMandateNotification>(mandate);
             Assert.NotNull(mandate.Id);
             Assert.Equal("source_mandate_notification", mandate.Object);
         }

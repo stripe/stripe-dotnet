@@ -5,7 +5,7 @@
     public class AdditionalOwners : StripeEntity
     {
         [JsonProperty("address")]
-        public StripeAddress Address { get; set; }
+        public Address Address { get; set; }
 
         [JsonProperty("dob")]
         public BirthDay BirthDay { get; set; }

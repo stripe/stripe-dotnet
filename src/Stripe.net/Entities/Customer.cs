@@ -91,7 +91,7 @@
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("shipping")]
-        public StripeShipping Shipping { get; set; }
+        public Shipping Shipping { get; set; }
 
         /// <summary>
         /// The customer’s payment sources, if any
