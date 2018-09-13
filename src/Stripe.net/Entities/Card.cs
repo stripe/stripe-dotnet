@@ -4,7 +4,7 @@
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class StripeCard : StripeEntityWithId, ISupportMetadata
+    public class Card : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
         public string Object { get; set; }

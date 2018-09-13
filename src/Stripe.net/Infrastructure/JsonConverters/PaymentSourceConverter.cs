@@ -44,7 +44,7 @@
             if (incoming.SelectToken("object")?.ToString() == "card")
             {
                 source.Type = PaymentSourceType.Card;
-                source.Card = Mapper<StripeCard>.MapFromJson(incoming.ToString());
+                source.Card = Mapper<Card>.MapFromJson(incoming.ToString());
             }
 
             if (incoming.SelectToken("object")?.ToString() == "source")

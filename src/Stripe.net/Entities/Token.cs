@@ -13,7 +13,7 @@
         public BankAccount BankAccount { get; set; }
 
         [JsonProperty("card")]
-        public StripeCard StripeCard { get; set; }
+        public Card Card { get; set; }
 
         [JsonProperty("client_ip")]
         public string ClientIp { get; set; }

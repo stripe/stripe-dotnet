@@ -22,45 +22,45 @@
 
         public bool ExpandRecipient { get; set; }
 
-        public virtual StripeCard Create(string customerId, CardCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual Card Create(string customerId, CardCreateOptions createOptions, RequestOptions requestOptions = null)
         {
             var url = this.SetupUrl(customerId);
 
-            return Mapper<StripeCard>.MapFromJson(
+            return Mapper<Card>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(createOptions, url, false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeCard Get(string customerId, string cardId, RequestOptions requestOptions = null)
+        public virtual Card Get(string customerId, string cardId, RequestOptions requestOptions = null)
         {
             var url = this.SetupUrl(customerId, cardId);
 
-            return Mapper<StripeCard>.MapFromJson(
+            return Mapper<Card>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(null, url, false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeCard Update(string customerId, string cardId, CardUpdateOptions updateOptions, RequestOptions requestOptions = null)
+        public virtual Card Update(string customerId, string cardId, CardUpdateOptions updateOptions, RequestOptions requestOptions = null)
         {
             var url = this.SetupUrl(customerId, cardId);
 
-            return Mapper<StripeCard>.MapFromJson(
+            return Mapper<Card>.MapFromJson(
                 Requestor.PostString(
                     this.ApplyAllParameters(updateOptions, url, false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeCard Delete(string customerId, string cardId, RequestOptions requestOptions = null)
+        public virtual Card Delete(string customerId, string cardId, RequestOptions requestOptions = null)
         {
             var url = this.SetupUrl(customerId, cardId);
 
-            return Mapper<StripeCard>.MapFromJson(
+            return Mapper<Card>.MapFromJson(
                 Requestor.Delete(url, this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeList<StripeCard> List(string customerId, CardListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Card> List(string customerId, CardListOptions listOptions = null, RequestOptions requestOptions = null)
         {
             var url = this.SetupUrl(customerId);
 
@@ -69,57 +69,57 @@
                 listOptions = new CardListOptions();
             }
 
-            return Mapper<StripeList<StripeCard>>.MapFromJson(
+            return Mapper<StripeList<Card>>.MapFromJson(
                 Requestor.GetString(
                     this.ApplyAllParameters(listOptions, url, true),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<StripeCard> CreateAsync(string customerId, CardCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Card> CreateAsync(string customerId, CardCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = this.SetupUrl(customerId);
 
-            return Mapper<StripeCard>.MapFromJson(
+            return Mapper<Card>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(createOptions, url, false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeCard> GetAsync(string customerId, string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Card> GetAsync(string customerId, string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = this.SetupUrl(customerId, cardId);
 
-            return Mapper<StripeCard>.MapFromJson(
+            return Mapper<Card>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(null, url, false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeCard> UpdateAsync(string customerId, string cardId, CardUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Card> UpdateAsync(string customerId, string cardId, CardUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = this.SetupUrl(customerId, cardId);
 
-            return Mapper<StripeCard>.MapFromJson(
+            return Mapper<Card>.MapFromJson(
                 await Requestor.PostStringAsync(
                     this.ApplyAllParameters(updateOptions, url, false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeCard> DeleteAsync(string customerId, string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Card> DeleteAsync(string customerId, string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = this.SetupUrl(customerId, cardId);
 
-            return Mapper<StripeCard>.MapFromJson(
+            return Mapper<Card>.MapFromJson(
                 await Requestor.DeleteAsync(
                     url,
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeList<StripeCard>> ListAsync(string customerId, CardListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<Card>> ListAsync(string customerId, CardListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = this.SetupUrl(customerId);
 
@@ -128,7 +128,7 @@
                 listOptions = new CardListOptions();
             }
 
-            return Mapper<StripeList<StripeCard>>.MapFromJson(
+            return Mapper<StripeList<Card>>.MapFromJson(
                 await Requestor.GetStringAsync(
                     this.ApplyAllParameters(listOptions, url, true),
                     this.SetupRequestOptions(requestOptions),
