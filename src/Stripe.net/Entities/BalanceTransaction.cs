@@ -34,7 +34,7 @@
         public int Fee { get; set; }
 
         [JsonProperty("fee_details")]
-        public List<StripeFee> FeeDetails { get; set; }
+        public List<Fee> FeeDetails { get; set; }
 
         [JsonProperty("net")]
         public int Net { get; set; }
