@@ -98,6 +98,15 @@
 
                 flatParams.Add(new Parameter(keyPrefix, paramValue));
             }
+            else if (value is DateTime)
+            {
+                flatParams = new List<Parameter>();
+                DateTime? dateTime = (DateTime)value;
+                if (dateTime.HasValue)
+                {
+                    flatParams.Add(new Parameter(keyPrefix, dateTime?.ConvertDateTimeToEpoch().ToString()));
+                }
+            }
             else if (value == null)
             {
                 flatParams = new List<Parameter>();

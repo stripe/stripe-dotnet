@@ -133,6 +133,16 @@ namespace StripeTests
                     want = "?bool=False&date_filter[lt]=946702800&date_filter[gte]=946684800&decimal=0&enum=test_one&int=0"
                 },
 
+                // DateTimeNullable
+                new
+                {
+                    data = new TestOptions
+                    {
+                        DateTimeNullable = DateTime.Parse("Sat, 01 Jan 2000 00:00:00Z"),
+                    },
+                    want = "?bool=False&datetime_nullable=946684800&decimal=0&enum=test_one&int=0"
+                },
+
                 // Decimal
                 new
                 {
