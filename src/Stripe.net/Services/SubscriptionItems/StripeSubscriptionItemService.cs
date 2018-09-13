@@ -32,7 +32,7 @@
             return this.Post($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions, options);
         }
 
-        public virtual StripeDeleted Delete(string subscriptionItemId, StripeRequestOptions requestOptions = null)
+        public virtual StripeSubscriptionItem Delete(string subscriptionItemId, StripeRequestOptions requestOptions = null)
         {
             return this.DeleteEntity($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions);
         }
@@ -57,7 +57,7 @@
             return this.PostAsync($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions, cancellationToken, options);
         }
 
-        public virtual Task<StripeDeleted> DeleteAsync(string subscriptionItemId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeSubscriptionItem> DeleteAsync(string subscriptionItemId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.DeleteEntityAsync($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions, cancellationToken);
         }

@@ -83,6 +83,12 @@
         [JsonProperty("default_for_currency")]
         public bool DefaultForCurrency { get; set; }
 
+        /// <summary>
+        /// Whether this object is deleted or not.
+        /// </summary>
+        [JsonProperty("deleted")]
+        public bool Deleted { get; set; }
+
         [JsonProperty("dynamic_last4")]
         public string DynamicLast4 { get; set; }
 

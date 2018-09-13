@@ -28,6 +28,12 @@
         }
         #endregion
 
+        /// <summary>
+        /// Whether this object is deleted or not.
+        /// </summary>
+        [JsonProperty("deleted")]
+        public bool Deleted { get; set; }
+
         [JsonProperty("end")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? End { get; set; }

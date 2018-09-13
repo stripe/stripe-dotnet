@@ -44,9 +44,9 @@
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeDeleted Delete(string customerId, StripeRequestOptions requestOptions = null)
+        public virtual StripeCustomer Delete(string customerId, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeDeleted>.MapFromJson(
+            return Mapper<StripeCustomer>.MapFromJson(
                 Requestor.Delete(
                     $"{Urls.Customers}/{WebUtility.UrlEncode(customerId)}",
                     this.SetupRequestOptions(requestOptions)));
@@ -87,9 +87,9 @@
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeDeleted> DeleteAsync(string customerId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeCustomer> DeleteAsync(string customerId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeDeleted>.MapFromJson(
+            return Mapper<StripeCustomer>.MapFromJson(
                 await Requestor.DeleteAsync(
                     $"{Urls.Customers}/{WebUtility.UrlEncode(customerId)}",
                     this.SetupRequestOptions(requestOptions),
