@@ -27,7 +27,7 @@ namespace Stripe
 
         public Charge Charge { get; set; }
 
-        public StripeDispute Dispute { get; set; }
+        public Dispute Dispute { get; set; }
 
         public Issuing.Authorization IssuingAuthorization { get; set; }
 

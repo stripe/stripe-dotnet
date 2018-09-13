@@ -4,7 +4,7 @@
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class StripeEvidenceDetails : StripeEntity
+    public class EvidenceDetails : StripeEntity
     {
         [JsonProperty("due_by")]
         [JsonConverter(typeof(DateTimeConverter))]

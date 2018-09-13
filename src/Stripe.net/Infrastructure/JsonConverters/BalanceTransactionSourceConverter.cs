@@ -42,7 +42,7 @@ namespace Stripe.Infrastructure
             else if (incoming.SelectToken("object")?.ToString() == "dispute")
             {
                 source.Type = BalanceTransactionSourceType.Dispute;
-                source.Dispute = Mapper<StripeDispute>.MapFromJson(incoming.ToString());
+                source.Dispute = Mapper<Dispute>.MapFromJson(incoming.ToString());
             }
             else if (incoming.SelectToken("object")?.ToString() == "issuing.authorization")
             {

@@ -142,14 +142,14 @@
         /// Details about the dispute if the charge has been disputed.
         /// </summary>
         [JsonIgnore]
-        public StripeDispute Dispute { get; set; }
+        public Dispute Dispute { get; set; }
 
         [JsonProperty("dispute")]
         internal object InternalDispute
         {
             set
             {
-                StringOrObject<StripeDispute>.Map(value, s => this.DisputeId = s, o => this.Dispute = o);
+                StringOrObject<Dispute>.Map(value, s => this.DisputeId = s, o => this.Dispute = o);
             }
         }
         #endregion

@@ -14,9 +14,9 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = GetFixture("/v1/disputes/dp_123");
-            var dispute = Mapper<StripeDispute>.MapFromJson(json);
+            var dispute = Mapper<Dispute>.MapFromJson(json);
             Assert.NotNull(dispute);
-            Assert.IsType<StripeDispute>(dispute);
+            Assert.IsType<Dispute>(dispute);
             Assert.NotNull(dispute.Id);
             Assert.Equal("dispute", dispute.Object);
         }
@@ -30,9 +30,9 @@ namespace StripeTests
             };
 
             string json = GetFixture("/v1/disputes/dp_123", expansions);
-            var dispute = Mapper<StripeDispute>.MapFromJson(json);
+            var dispute = Mapper<Dispute>.MapFromJson(json);
             Assert.NotNull(dispute);
-            Assert.IsType<StripeDispute>(dispute);
+            Assert.IsType<Dispute>(dispute);
             Assert.NotNull(dispute.Id);
             Assert.Equal("dispute", dispute.Object);
 

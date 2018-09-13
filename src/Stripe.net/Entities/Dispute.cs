@@ -5,7 +5,7 @@
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class StripeDispute : StripeEntityWithId, ISupportMetadata
+    public class Dispute : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -40,10 +40,10 @@
         public string Currency { get; set; }
 
         [JsonProperty("evidence")]
-        public StripeEvidence Evidence { get; set; }
+        public Evidence Evidence { get; set; }
 
         [JsonProperty("evidence_details")]
-        public StripeEvidenceDetails EvidenceDetails { get; set; }
+        public EvidenceDetails EvidenceDetails { get; set; }
 
         [JsonProperty("is_charge_refundable")]
         public bool IsChargeRefundable { get; set; }
