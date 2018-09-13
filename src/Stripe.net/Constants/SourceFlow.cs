@@ -1,6 +1,6 @@
 ﻿namespace Stripe
 {
-    public static class StripeSourceFlow
+    public static class SourceFlow
     {
         public const string Redirect = "redirect";
         public const string Receiver = "receiver";

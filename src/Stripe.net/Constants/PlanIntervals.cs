@@ -1,6 +1,6 @@
 ﻿namespace Stripe
 {
-    public static class StripePlanIntervals
+    public static class PlanIntervals
     {
         public const string Day = "day";
         public const string Week = "week";

@@ -1,6 +1,6 @@
 ﻿namespace Stripe
 {
-    public static class StripeFilePurpose
+    public static class FilePurpose
     {
         public const string BusinessLogo = "business_logo";
         public const string DisputeEvidence = "dispute_evidence";

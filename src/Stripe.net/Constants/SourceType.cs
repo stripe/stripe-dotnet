@@ -1,6 +1,6 @@
 ﻿namespace Stripe
 {
-    public static class StripeSourceType
+    public static class SourceType
     {
         public const string AchCreditTransfer = "ach_credit_transfer";
         public const string Bancontact = "bancontact";

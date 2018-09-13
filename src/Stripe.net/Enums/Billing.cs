@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json.Converters;
 
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum StripeBilling
+    public enum Billing
     {
         [EnumMember(Value = "charge_automatically")]
         ChargeAutomatically,

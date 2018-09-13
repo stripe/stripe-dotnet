@@ -5,10 +5,10 @@
     public class StripeRedirect : StripeEntity
     {
         /// <summary>
-        /// The failure reason for the redirect. One of <see cref="StripeRedirectFailureReason" />.
+        /// The failure reason for the redirect. One of <see cref="RedirectFailureReason" />.
         /// </summary>
         [JsonProperty("failure_reason")]
-        public StripeRedirectFailureReason? FailureReason { get; set; }
+        public RedirectFailureReason? FailureReason { get; set; }
 
         /// <summary>
         /// The URL you provide to redirect the customer to after they authenticated their payment.

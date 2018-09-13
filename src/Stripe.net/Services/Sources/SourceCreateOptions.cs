@@ -6,7 +6,7 @@
     public class SourceCreateOptions : BaseOptions, ISupportMetadata
     {
         /// <summary>
-        /// REQUIRED: The type of the source to create. One of type <see cref="StripeSourceType"/>
+        /// REQUIRED: The type of the source to create. One of type <see cref="SourceType"/>
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -34,7 +34,7 @@
         public string Customer { get; set; }
 
         /// <summary>
-        /// The authentication flow of the source to create. Flow is one of <see cref="StripeSourceFlow" />. It is generally inferred unless a type supports multiple flows.
+        /// The authentication flow of the source to create. Flow is one of <see cref="SourceFlow" />. It is generally inferred unless a type supports multiple flows.
         /// </summary>
         [JsonProperty("flow")]
         public string Flow { get; set; }
@@ -120,7 +120,7 @@
         public string Token { get; set; }
 
         /// <summary>
-        /// One of <see cref="StripeSourceUsage" />. Whether this source should be reusable or not. Some source types may or may not be reusable by construction, while other may leave the option at creation. If an incompatible value is passed, an error will be returned.
+        /// One of <see cref="SourceUsage" />. Whether this source should be reusable or not. Some source types may or may not be reusable by construction, while other may leave the option at creation. If an incompatible value is passed, an error will be returned.
         /// </summary>
         [JsonProperty("usage")]
         public string Usage { get; set; }
