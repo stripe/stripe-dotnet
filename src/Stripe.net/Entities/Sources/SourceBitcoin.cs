@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class StripeBitcoin : StripeEntity
+    public class SourceBitcoin : StripeEntity
     {
         [JsonProperty("address")]
         public string Address { get; set; }

@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class StripeSourceCard : StripeEntity
+    public class SourceCard : StripeEntity
     {
         [JsonProperty("exp_month")]
         public int ExpirationMonth { get; set; }

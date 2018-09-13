@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class StripeReceiver : StripeEntity
+    public class SourceReceiver : StripeEntity
     {
         /// <summary>
         /// The address of the receiver source. This is the value that should be communicated to the customer to send their funds to.

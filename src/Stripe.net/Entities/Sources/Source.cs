@@ -6,9 +6,9 @@
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// Source objects allow you to accept a variety of payment methods. They represent a customer's payment instrument and can be used with the Stripe API just like a card object: once chargeable, they can be charged, or attached to customers.
+    /// Source objects allow you to accept a variety of payment methods. They represent a customer's payment instrument and can be used with the Source API just like a card object: once chargeable, they can be charged, or attached to customers.
     /// </summary>
-    public class StripeSource : StripeEntityWithId, ISupportMetadata
+    public class Source : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
         public string Object => "source";
@@ -29,7 +29,7 @@
         /// Information related to the code verification flow. Present if the source is authenticated by a verification code (flow is code_verification).
         /// </summary>
         [JsonProperty("code_verification")]
-        public StripeCodeVerification CodeVerification { get; set; }
+        public SourceCodeVerification CodeVerification { get; set; }
 
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
@@ -66,19 +66,19 @@
         /// Information about the owner of the payment instrument that may be used or required by particular source types.
         /// </summary>
         [JsonProperty("owner")]
-        public StripeOwner Owner { get; set; }
+        public SourceOwner Owner { get; set; }
 
         /// <summary>
         /// Information related to the receiver flow. Present if the source is a receiver (flow is receiver).
         /// </summary>
         [JsonProperty("receiver")]
-        public StripeReceiver Receiver { get; set; }
+        public SourceReceiver Receiver { get; set; }
 
         /// <summary>
         /// Information related to the redirect flow. Present if the source is authenticated by a redirect (flow is redirect).
         /// </summary>
         [JsonProperty("redirect")]
-        public StripeRedirect Redirect { get; set; }
+        public SourceRedirect Redirect { get; set; }
 
         /// <summary>
         /// Extra information about a source. This will appear on your customer’s statement every time you charge the source.
@@ -109,30 +109,30 @@
          */
 
         [JsonProperty("ach_credit_transfer")]
-        public StripeSourceAchCreditTransfer AchCreditTransfer { get; set; }
+        public SourceAchCreditTransfer AchCreditTransfer { get; set; }
 
         [JsonProperty("bancontact")]
-        public StripeBancontact Bancontact { get; set; }
+        public SourceBancontact Bancontact { get; set; }
 
         [JsonProperty("bitcoin")]
-        public StripeBitcoin Bitcoin { get; set; }
+        public SourceBitcoin Bitcoin { get; set; }
 
         [JsonProperty("card")]
-        public StripeSourceCard Card { get; set; }
+        public SourceCard Card { get; set; }
 
         [JsonProperty("ideal")]
-        public StripeIdeal Ideal { get; set; }
+        public SourceIdeal Ideal { get; set; }
 
         [JsonProperty("sepa_credit_transfer")]
-        public StripeSourceSepaCreditTransfer SepaCreditTransfer { get; set; }
+        public SourceSepaCreditTransfer SepaCreditTransfer { get; set; }
 
         [JsonProperty("sepa_debit")]
-        public StripeSepaDebit SepaDebit { get; set; }
+        public SourceSepaDebit SepaDebit { get; set; }
 
         [JsonProperty("sofort")]
-        public StripeSofort Sofort { get; set; }
+        public SourceSofort Sofort { get; set; }
 
         [JsonProperty("three_d_secure")]
-        public StripeThreeDSecure ThreeDSecure { get; set; }
+        public SourceThreeDSecure ThreeDSecure { get; set; }
     }
 }

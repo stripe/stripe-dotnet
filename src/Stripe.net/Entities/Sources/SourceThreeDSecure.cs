@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class StripeThreeDSecure : StripeEntity
+    public class SourceThreeDSecure : StripeEntity
     {
         /// <summary>
         /// If `address_line1` was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`.

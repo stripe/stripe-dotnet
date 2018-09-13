@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class StripeBancontact : StripeEntity
+    public class SourceBancontact : StripeEntity
     {
         [JsonProperty("bank_code")]
         public string BankCode { get; set; }

@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class SourceOwner : INestedOptions
+    public class SourceOwnerOptions : INestedOptions
     {
         [JsonProperty("[owner][address][city]")]
         public string CityOrTown { get; set; }
