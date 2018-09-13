@@ -433,7 +433,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void ThrowsIfDictionaryValuesAreNotStrings()
+        public void DecodingShouldThrowIfValueNotDeclaredInEnum()
         {
             var json = "{\"enum\": \"unknown_value\"}";
 

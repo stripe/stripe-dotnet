@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class StripeSourceMandateNotification : StripeEntityWithId
+    public class SourceMandateNotification : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object => "source_mandate_notification";
@@ -33,6 +33,6 @@ namespace Stripe
         public string Type { get; set; }
 
         [JsonProperty("sepa_debit")]
-        public StripeSourceMandateNotificationSepaDebit SepaDebit { get; set; }
+        public SourceMandateNotificationSepaDebit SepaDebit { get; set; }
     }
 }

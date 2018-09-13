@@ -119,7 +119,7 @@
         /// The shipping address for the order. Present if the order is for goods to be shipped.
         /// </summary>
         [JsonProperty("shipping")]
-        public StripeShipping Shipping { get; set; }
+        public Shipping Shipping { get; set; }
 
         /// <summary>
         /// A list of supported shipping methods for this order. The desired shipping method can be specified either by updating the order, or when paying it.

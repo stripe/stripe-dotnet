@@ -9,13 +9,13 @@
         public List<AdditionalOwners> AdditionalOwners { get; set; }
 
         [JsonProperty("address")]
-        public StripeAddress Address { get; set; }
+        public Address Address { get; set; }
 
         [JsonProperty("address_kana")]
-        public StripeAddress AddressKana { get; set; }
+        public Address AddressKana { get; set; }
 
         [JsonProperty("address_kanji")]
-        public StripeAddress AddressKanji { get; set; }
+        public Address AddressKanji { get; set; }
 
         [JsonProperty("business_name")]
         public string BusinessName { get; set; }
@@ -66,13 +66,13 @@
         public string MaidenName { get; set; }
 
         [JsonProperty("personal_address")]
-        public StripeAddress PersonalAddress { get; set; }
+        public Address PersonalAddress { get; set; }
 
         [JsonProperty("personal_address_kana")]
-        public StripeAddress PersonalAddressKana { get; set; }
+        public Address PersonalAddressKana { get; set; }
 
         [JsonProperty("personal_address_kanji")]
-        public StripeAddress PersonalAddressKanji { get; set; }
+        public Address PersonalAddressKanji { get; set; }
 
         [JsonProperty("personal_id_number_provided")]
         public bool PersonalIdNumberProvided { get; set; }
