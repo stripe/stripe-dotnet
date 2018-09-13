@@ -10,21 +10,8 @@ namespace Stripe
         /// <summary>
         /// A future timestamp after which the link will no longer be usable.
         /// </summary>
-        public DateTime? ExpiresAt { get; set; }
-
         [JsonProperty("expires_at")]
-        internal long? ExpiresAtInternal
-        {
-            get
-            {
-                if (!this.ExpiresAt.HasValue)
-                {
-                    return null;
-                }
-
-                return EpochTime.ConvertDateTimeToEpoch(this.ExpiresAt.Value);
-            }
-        }
+        public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
         /// Set of key-value pairs that you can attach to an object. This can be useful for storing

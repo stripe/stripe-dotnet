@@ -35,6 +35,9 @@ namespace StripeTests.Infrastructure.TestData
         [JsonProperty("date_filter")]
         public StripeDateFilter DateFilter { get; set; }
 
+        [JsonProperty("datetime_nullable")]
+        public DateTime? DateTimeNullable { get; set; }
+
         [JsonProperty("decimal")]
         public decimal Decimal { get; set; }
 
