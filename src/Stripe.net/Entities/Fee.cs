@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class StripeFee : StripeEntity
+    public class Fee : StripeEntity
     {
         [JsonProperty("amount")]
         public int Amount { get; set; }
