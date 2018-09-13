@@ -13,13 +13,8 @@
         [JsonIgnore]
         public string SubscriptionItem { get; set; }
 
-        public DateTime Timestamp { get; set; }
-
         [JsonProperty("timestamp")]
-        internal string TimestampInternal
-        {
-            get { return this.Timestamp.ConvertDateTimeToEpoch().ToString(); }
-        }
+        public DateTime Timestamp { get; set; }
 
         [JsonProperty("quantity")]
         public int Quantity { get; set; }
