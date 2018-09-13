@@ -32,7 +32,7 @@ namespace Stripe
             return this.GetEntityList($"{Urls.BaseUrl}/apple_pay/domains", requestOptions, listOptions);
         }
 
-        public virtual StripeDeleted Delete(string domainId, StripeRequestOptions requestOptions = null)
+        public virtual StripeApplePayDomain Delete(string domainId, StripeRequestOptions requestOptions = null)
         {
             return this.DeleteEntity($"{Urls.BaseUrl}/apple_pay/domains/{domainId}", requestOptions);
         }
@@ -52,7 +52,7 @@ namespace Stripe
             return this.GetEntityListAsync($"{Urls.BaseUrl}/apple_pay/domains", requestOptions, cancellationToken, listOptions);
         }
 
-        public virtual Task<StripeDeleted> DeleteAsync(string domainId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeApplePayDomain> DeleteAsync(string domainId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.DeleteEntityAsync($"{Urls.BaseUrl}/apple_pay/domains/{domainId}", requestOptions, cancellationToken);
         }

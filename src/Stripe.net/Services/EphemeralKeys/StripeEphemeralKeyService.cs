@@ -32,7 +32,7 @@ namespace Stripe
             return this.Post(Urls.EphemeralKeys, requestOptions, createOptions);
         }
 
-        public virtual StripeDeleted Delete(string keyId, StripeRequestOptions requestOptions = null)
+        public virtual StripeEphemeralKey Delete(string keyId, StripeRequestOptions requestOptions = null)
         {
             return this.DeleteEntity($"{Urls.EphemeralKeys}/{keyId}", requestOptions);
         }
@@ -47,7 +47,7 @@ namespace Stripe
             return this.PostAsync(Urls.EphemeralKeys, requestOptions, cancellationToken, createOptions);
         }
 
-        public virtual Task<StripeDeleted> DeleteAsync(string keyId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeEphemeralKey> DeleteAsync(string keyId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.DeleteEntityAsync($"{Urls.EphemeralKeys}/{keyId}", requestOptions, cancellationToken);
         }

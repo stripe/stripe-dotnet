@@ -26,6 +26,12 @@ namespace Stripe
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
 
+        /// <summary>
+        /// Whether this object is deleted or not.
+        /// </summary>
+        [JsonProperty("deleted")]
+        public bool Deleted { get; set; }
+
         [JsonProperty("expires")]
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Expires { get; set; }

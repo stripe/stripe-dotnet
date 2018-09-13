@@ -22,6 +22,12 @@
         [JsonIgnore]
         public StripeCustomer Customer { get; set; }
 
+        /// <summary>
+        /// Whether this object is deleted or not.
+        /// </summary>
+        [JsonProperty("deleted")]
+        public bool Deleted { get; set; }
+
         [JsonProperty("customer")]
         internal object InternalCustomer
         {
