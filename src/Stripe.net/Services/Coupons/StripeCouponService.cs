@@ -42,9 +42,9 @@
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeDeleted Delete(string couponId, StripeRequestOptions requestOptions = null)
+        public virtual StripeCoupon Delete(string couponId, StripeRequestOptions requestOptions = null)
         {
-            return Mapper<StripeDeleted>.MapFromJson(
+            return Mapper<StripeCoupon>.MapFromJson(
                 Requestor.Delete(
                     this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
                     this.SetupRequestOptions(requestOptions)));
@@ -85,9 +85,9 @@
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeDeleted> DeleteAsync(string couponId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeCoupon> DeleteAsync(string couponId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeDeleted>.MapFromJson(
+            return Mapper<StripeCoupon>.MapFromJson(
                 await Requestor.DeleteAsync(
                     this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
                     this.SetupRequestOptions(requestOptions),

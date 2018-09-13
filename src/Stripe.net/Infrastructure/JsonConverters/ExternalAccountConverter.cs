@@ -41,12 +41,6 @@ namespace Stripe.Infrastructure
                 externalAccount.Card = Mapper<StripeCard>.MapFromJson(incoming.ToString());
             }
 
-            if (incoming.SelectToken("deleted")?.ToString() == "true")
-            {
-                externalAccount.Type = ExternalAccountType.Deleted;
-                externalAccount.Deleted = Mapper<StripeDeleted>.MapFromJson(incoming.ToString());
-            }
-
             return externalAccount;
         }
     }

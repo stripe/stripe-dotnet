@@ -16,22 +16,22 @@ namespace Stripe
         {
         }
 
-        public virtual StripeDeleted DeleteCustomerDiscount(string customerId, StripeRequestOptions requestOptions = null)
+        public virtual StripeDiscount DeleteCustomerDiscount(string customerId, StripeRequestOptions requestOptions = null)
         {
             return this.DeleteEntity($"{Urls.BaseUrl}/customers/{customerId}/discount", requestOptions);
         }
 
-        public virtual StripeDeleted DeleteSubscriptionDiscount(string subscriptionId, StripeRequestOptions requestOptions = null)
+        public virtual StripeDiscount DeleteSubscriptionDiscount(string subscriptionId, StripeRequestOptions requestOptions = null)
         {
             return this.DeleteEntity($"{Urls.BaseUrl}/subscriptions/{subscriptionId}/discount", requestOptions);
         }
 
-        public virtual Task<StripeDeleted> DeleteCustomerDiscountAsync(string customerId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeDiscount> DeleteCustomerDiscountAsync(string customerId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.DeleteEntityAsync($"{Urls.BaseUrl}/customers/{customerId}/discount", requestOptions, cancellationToken);
         }
 
-        public virtual Task<StripeDeleted> DeleteSubscriptionDiscountAsync(string subscriptionId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeDiscount> DeleteSubscriptionDiscountAsync(string subscriptionId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.DeleteEntityAsync($"{Urls.BaseUrl}/subscriptions/{subscriptionId}/discount", requestOptions, cancellationToken);
         }

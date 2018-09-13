@@ -40,7 +40,7 @@ namespace Stripe
             return this.GetEntityList($"{Urls.BaseUrl}/skus", requestOptions, listOptions);
         }
 
-        public virtual StripeDeleted Delete(string skuId, StripeRequestOptions requestOptions = null)
+        public virtual StripeSku Delete(string skuId, StripeRequestOptions requestOptions = null)
         {
             return this.DeleteEntity($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions);
         }
@@ -65,7 +65,7 @@ namespace Stripe
             return this.GetEntityListAsync($"{Urls.BaseUrl}/skus", requestOptions, cancellationToken, listOptions);
         }
 
-        public virtual Task<StripeDeleted> DeleteAsync(string skuId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeSku> DeleteAsync(string skuId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.DeleteEntityAsync($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, cancellationToken);
         }
