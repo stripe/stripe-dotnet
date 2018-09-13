@@ -21,21 +21,8 @@
         /// <summary>
         /// If set, the proration will be calculated as though the subscription was updated at the given time. This can be used to apply the same proration that was previewed with the upcoming invoice endpoint.
         /// </summary>
-        public DateTime? ProrationDate { get; set; }
-
         [JsonProperty("proration_date")]
-        internal long? ProrationDateInternal
-        {
-            get
-            {
-                if (!this.ProrationDate.HasValue)
-                {
-                    return null;
-                }
-
-                return this.ProrationDate.Value.ConvertDateTimeToEpoch();
-            }
-        }
+        public DateTime? ProrationDate { get; set; }
 
         /// <summary>
         /// The quantity you’d like to apply to the subscription item you’re creating.
