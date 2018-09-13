@@ -34,20 +34,7 @@
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        public DateTime? RedeemBy { get; set; }
-
         [JsonProperty("redeem_by")]
-        internal long? RedeemByInternal
-        {
-            get
-            {
-                if (!this.RedeemBy.HasValue)
-                {
-                    return null;
-                }
-
-                return EpochTime.ConvertDateTimeToEpoch(this.RedeemBy.Value);
-            }
-        }
+        public DateTime? RedeemBy { get; set; }
     }
 }
