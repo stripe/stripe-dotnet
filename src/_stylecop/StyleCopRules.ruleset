@@ -24,12 +24,6 @@
     <Rule Id="SA1202" Action="None" />
 
     <!--
-      Keep this rule disabled as it affects `image` on SKU.
-      Fixing it would be a breaking change.
-    -->
-    <Rule Id="SA1300" Action="None" />
-
-    <!--
       CS1591: Missing XML comment for publicly visible type or member 'Type_or_Member'
       SA1600: ElementsMustBeDocumented
       SA1601: PartialElementsMustBeDocumented
