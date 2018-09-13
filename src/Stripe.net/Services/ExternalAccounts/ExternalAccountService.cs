@@ -37,7 +37,7 @@ namespace Stripe
             return this.GetEntityList($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts", requestOptions, listOptions);
         }
 
-        public virtual StripeDeleted Delete(string accountId, string externalAccountId, StripeRequestOptions requestOptions = null)
+        public virtual ExternalAccount Delete(string accountId, string externalAccountId, StripeRequestOptions requestOptions = null)
         {
             return this.DeleteEntity($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts/{externalAccountId}", requestOptions);
         }
@@ -62,7 +62,7 @@ namespace Stripe
             return this.GetEntityListAsync($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts", requestOptions, cancellationToken, listOptions);
         }
 
-        public virtual Task<StripeDeleted> DeleteAsync(string accountId, string externalAccountId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ExternalAccount> DeleteAsync(string accountId, string externalAccountId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.DeleteEntityAsync($"{Urls.BaseUrl}/accounts/{accountId}/external_accounts/{externalAccountId}", requestOptions, cancellationToken);
         }

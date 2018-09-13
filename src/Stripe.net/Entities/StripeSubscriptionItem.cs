@@ -14,6 +14,12 @@
         [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime Created { get; set; }
 
+        /// <summary>
+        /// Whether this object is deleted or not.
+        /// </summary>
+        [JsonProperty("deleted")]
+        public bool Deleted { get; set; }
+
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 

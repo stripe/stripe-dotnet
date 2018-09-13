@@ -6,16 +6,13 @@ namespace Stripe
     public enum ExternalAccountType
     {
         Card,
-        BankAccount,
-        Deleted
+        BankAccount
     }
 
     [JsonConverter(typeof(ExternalAccountConverter))]
     public class ExternalAccount : StripeEntityWithId
     {
         public ExternalAccountType Type { get; set; }
-
-        public StripeDeleted Deleted { get; set; }
 
         public StripeCard Card { get; set; }
 
