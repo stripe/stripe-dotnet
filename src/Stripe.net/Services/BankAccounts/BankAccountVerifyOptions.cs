@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class BankAccountVerifyOptions : StripeBaseOptions
+    public class BankAccountVerifyOptions : BaseOptions
     {
         [JsonProperty("amounts[]")]
         public int AmountOne { get; set; }

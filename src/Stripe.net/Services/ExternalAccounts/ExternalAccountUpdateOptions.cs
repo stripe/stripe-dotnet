@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class ExternalAccountUpdateOptions : StripeBaseOptions, ISupportMetadata
+    public class ExternalAccountUpdateOptions : BaseOptions, ISupportMetadata
     {
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

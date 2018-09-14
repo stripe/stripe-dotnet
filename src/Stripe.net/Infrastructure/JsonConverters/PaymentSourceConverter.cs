@@ -32,7 +32,7 @@
             if (incoming.SelectToken("object")?.ToString() == "account")
             {
                 source.Type = PaymentSourceType.Account;
-                source.Account = Mapper<StripeAccount>.MapFromJson(incoming.ToString());
+                source.Account = Mapper<Account>.MapFromJson(incoming.ToString());
             }
 
             if (incoming.SelectToken("object")?.ToString() == "bank_account")
@@ -44,13 +44,13 @@
             if (incoming.SelectToken("object")?.ToString() == "card")
             {
                 source.Type = PaymentSourceType.Card;
-                source.Card = Mapper<StripeCard>.MapFromJson(incoming.ToString());
+                source.Card = Mapper<Card>.MapFromJson(incoming.ToString());
             }
 
             if (incoming.SelectToken("object")?.ToString() == "source")
             {
                 source.Type = PaymentSourceType.Source;
-                source.SourceObject = Mapper<StripeSource>.MapFromJson(incoming.ToString());
+                source.SourceObject = Mapper<Source>.MapFromJson(incoming.ToString());
             }
 
             return source;

@@ -2,10 +2,10 @@ namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
 
-    public class DisputeListOptions : StripeListOptions
+    public class DisputeListOptions : ListOptions
     {
         [JsonProperty("created")]
-        public StripeDateFilter Created { get; set; }
+        public DateFilter Created { get; set; }
 
         [JsonProperty("transaction")]
         public string TransactionId { get; set; }

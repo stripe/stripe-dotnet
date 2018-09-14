@@ -20,7 +20,7 @@ namespace Stripe.Reporting
         {
         }
 
-        public virtual ReportRun Create(ReportRunCreateOptions createOptions, StripeRequestOptions requestOptions = null)
+        public virtual ReportRun Create(ReportRunCreateOptions createOptions, RequestOptions requestOptions = null)
         {
             return Mapper<ReportRun>.MapFromJson(
                 Requestor.PostString(
@@ -28,7 +28,7 @@ namespace Stripe.Reporting
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual ReportRun Get(string reportRunId, StripeRequestOptions requestOptions = null)
+        public virtual ReportRun Get(string reportRunId, RequestOptions requestOptions = null)
         {
             return Mapper<ReportRun>.MapFromJson(
                 Requestor.GetString(
@@ -36,7 +36,7 @@ namespace Stripe.Reporting
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeList<ReportRun> List(ReportRunListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<ReportRun> List(ReportRunListOptions listOptions = null, RequestOptions requestOptions = null)
         {
             return Mapper<StripeList<ReportRun>>.MapFromJson(
                 Requestor.GetString(
@@ -44,7 +44,7 @@ namespace Stripe.Reporting
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<ReportRun> CreateAsync(ReportRunCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<ReportRun> CreateAsync(ReportRunCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<ReportRun>.MapFromJson(
                 await Requestor.PostStringAsync(
@@ -53,7 +53,7 @@ namespace Stripe.Reporting
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<ReportRun> GetAsync(string reportRunId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<ReportRun> GetAsync(string reportRunId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<ReportRun>.MapFromJson(
                 await Requestor.GetStringAsync(
@@ -62,7 +62,7 @@ namespace Stripe.Reporting
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeList<ReportRun>> ListAsync(ReportRunListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<ReportRun>> ListAsync(ReportRunListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeList<ReportRun>>.MapFromJson(
                 await Requestor.GetStringAsync(

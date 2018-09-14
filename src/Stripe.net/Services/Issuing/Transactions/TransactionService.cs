@@ -20,7 +20,7 @@ namespace Stripe.Issuing
         {
         }
 
-        public virtual Transaction Update(string transactionId, TransactionUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        public virtual Transaction Update(string transactionId, TransactionUpdateOptions updateOptions, RequestOptions requestOptions = null)
         {
             return Mapper<Transaction>.MapFromJson(
                 Requestor.PostString(
@@ -28,7 +28,7 @@ namespace Stripe.Issuing
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual Transaction Get(string transactionId, StripeRequestOptions requestOptions = null)
+        public virtual Transaction Get(string transactionId, RequestOptions requestOptions = null)
         {
             return Mapper<Transaction>.MapFromJson(
                 Requestor.GetString(
@@ -36,7 +36,7 @@ namespace Stripe.Issuing
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeList<Transaction> List(TransactionListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<Transaction> List(TransactionListOptions listOptions = null, RequestOptions requestOptions = null)
         {
             return Mapper<StripeList<Transaction>>.MapFromJson(
                 Requestor.GetString(
@@ -44,7 +44,7 @@ namespace Stripe.Issuing
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<Transaction> UpdateAsync(string transactionId, TransactionUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Transaction> UpdateAsync(string transactionId, TransactionUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<Transaction>.MapFromJson(
                 await Requestor.PostStringAsync(
@@ -53,7 +53,7 @@ namespace Stripe.Issuing
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<Transaction> GetAsync(string transactionId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Transaction> GetAsync(string transactionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<Transaction>.MapFromJson(
                 await Requestor.GetStringAsync(
@@ -62,7 +62,7 @@ namespace Stripe.Issuing
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeList<Transaction>> ListAsync(TransactionListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<Transaction>> ListAsync(TransactionListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeList<Transaction>>.MapFromJson(
                 await Requestor.GetStringAsync(

@@ -20,7 +20,7 @@ namespace Stripe.Reporting
         {
         }
 
-        public virtual ReportType Get(string reportTypeId, StripeRequestOptions requestOptions = null)
+        public virtual ReportType Get(string reportTypeId, RequestOptions requestOptions = null)
         {
             return Mapper<ReportType>.MapFromJson(
                 Requestor.GetString(
@@ -28,7 +28,7 @@ namespace Stripe.Reporting
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeList<ReportType> List(ReportTypeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<ReportType> List(ReportTypeListOptions listOptions = null, RequestOptions requestOptions = null)
         {
             return Mapper<StripeList<ReportType>>.MapFromJson(
                 Requestor.GetString(
@@ -36,7 +36,7 @@ namespace Stripe.Reporting
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<ReportType> GetAsync(string reportTypeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<ReportType> GetAsync(string reportTypeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<ReportType>.MapFromJson(
                 await Requestor.GetStringAsync(
@@ -45,7 +45,7 @@ namespace Stripe.Reporting
                     cancellationToken).ConfigureAwait(false));
         }
 
-        public virtual async Task<StripeList<ReportType>> ListAsync(ReportTypeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<StripeList<ReportType>> ListAsync(ReportTypeListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<StripeList<ReportType>>.MapFromJson(
                 await Requestor.GetStringAsync(
