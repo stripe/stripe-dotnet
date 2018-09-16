@@ -18,10 +18,25 @@
         {
         }
 
-        public virtual FileUpload Create(string fileName, Stream fileStream, string purpose, RequestOptions requestOptions = null)
+        public virtual FileUpload Create(FileUploadCreateOptions options, RequestOptions requestOptions = null)
         {
             return Mapper<FileUpload>.MapFromJson(
-                Requestor.PostFile(Urls.FileUploads, fileName, fileStream, purpose, this.SetupRequestOptions(requestOptions)));
+                Requestor.PostFile(
+                    Urls.FileUploads,
+                    options.File,
+                    options.Purpose,
+                    this.SetupRequestOptions(requestOptions)));
+        }
+
+        public virtual async Task<FileUpload> CreateAsync(FileUploadCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return Mapper<FileUpload>.MapFromJson(
+                await Requestor.PostFileAsync(
+                    Urls.FileUploads,
+                    options.File,
+                    options.Purpose,
+                    this.SetupRequestOptions(requestOptions),
+                    cancellationToken).ConfigureAwait(false));
         }
 
         public virtual FileUpload Get(string fileUploadId, RequestOptions requestOptions = null)
@@ -32,20 +47,6 @@
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeList<FileUpload> List(FileUploadListOptions listOptions = null, RequestOptions requestOptions = null)
-        {
-            return Mapper<StripeList<FileUpload>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, Urls.FileUploads, true),
-                    this.SetupRequestOptions(requestOptions)));
-        }
-
-        public virtual async Task<FileUpload> CreateAsync(string fileName, Stream fileStream, string purpose, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return Mapper<FileUpload>.MapFromJson(
-                await Requestor.PostFileAsync(Urls.FileUploads, fileName, fileStream, purpose, this.SetupRequestOptions(requestOptions), cancellationToken).ConfigureAwait(false));
-        }
-
         public virtual async Task<FileUpload> GetAsync(string fileUploadId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<FileUpload>.MapFromJson(
@@ -53,6 +54,14 @@
                     this.ApplyAllParameters(null, $"{Urls.FileUploads}/{fileUploadId}"),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
+        }
+
+        public virtual StripeList<FileUpload> List(FileUploadListOptions listOptions = null, RequestOptions requestOptions = null)
+        {
+            return Mapper<StripeList<FileUpload>>.MapFromJson(
+                Requestor.GetString(
+                    this.ApplyAllParameters(listOptions, Urls.FileUploads, true),
+                    this.SetupRequestOptions(requestOptions)));
         }
 
         public virtual async Task<StripeList<FileUpload>> ListAsync(FileUploadListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
