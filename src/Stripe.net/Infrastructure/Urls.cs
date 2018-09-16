@@ -6,8 +6,6 @@
 
         internal static string BaseUrl => StripeConfiguration.GetApiBase();
 
-        public static string Invoices => BaseUrl + "/invoices";
-
         public static string InvoiceItems => BaseUrl + "/invoiceitems";
 
         public static string Tokens => BaseUrl + "/tokens";
@@ -17,10 +15,6 @@
         public static string Coupons => BaseUrl + "/coupons";
 
         public static string Plans => BaseUrl + "/plans";
-
-        public static string Balance => BaseUrl + "/balance";
-
-        public static string BalanceTransactions => BaseUrl + "/balance/history";
 
         public static string Customers => BaseUrl + "/customers";
 
