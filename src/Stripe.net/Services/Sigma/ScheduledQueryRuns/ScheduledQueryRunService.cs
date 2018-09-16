@@ -1,17 +1,17 @@
-﻿namespace Stripe
+﻿namespace Stripe.Sigma
 {
     using System.Threading;
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ScheduledQueryService : BasicService<ScheduledQueryRun>
+    public class ScheduledQueryRunService : BasicService<ScheduledQueryRun>
     {
-        public ScheduledQueryService()
+        public ScheduledQueryRunService()
             : base(null)
         {
         }
 
-        public ScheduledQueryService(string apiKey)
+        public ScheduledQueryRunService(string apiKey)
             : base(apiKey)
         {
         }
@@ -21,7 +21,7 @@
             return this.GetEntity($"{Urls.BaseUrl}/sigma/scheduled_query_runs/{queryRunId}", requestOptions);
         }
 
-        public virtual StripeList<ScheduledQueryRun> List(ScheduledQueryListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual StripeList<ScheduledQueryRun> List(ScheduledQueryRunListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityList($"{Urls.BaseUrl}/sigma/scheduled_query_runs", requestOptions, listOptions);
         }
@@ -31,7 +31,7 @@
             return this.GetEntityAsync($"{Urls.BaseUrl}/sigma/scheduled_query_runs/{queryRunId}", requestOptions, cancellationToken);
         }
 
-        public virtual Task<StripeList<ScheduledQueryRun>> ListAsync(ScheduledQueryListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<ScheduledQueryRun>> ListAsync(ScheduledQueryRunListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityListAsync($"{Urls.BaseUrl}/sigma/scheduled_query_runs", requestOptions, cancellationToken, listOptions);
         }

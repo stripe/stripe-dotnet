@@ -1,4 +1,4 @@
-namespace StripeTests
+namespace StripeTests.Sigma
 {
     using System;
     using System.Collections.Generic;
@@ -6,6 +6,7 @@ namespace StripeTests
 
     using Newtonsoft.Json;
     using Stripe;
+    using Stripe.Sigma;
     using Xunit;
 
     public class ScheduledQueryRunTest : BaseStripeTest
