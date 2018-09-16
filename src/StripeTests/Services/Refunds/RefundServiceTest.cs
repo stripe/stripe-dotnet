@@ -8,7 +8,6 @@ namespace StripeTests
 
     public class RefundServiceTest : BaseStripeTest
     {
-        private const string ChargeId = "ch_123";
         private const string RefundId = "re_123";
 
         private RefundService service;
@@ -23,6 +22,7 @@ namespace StripeTests
             this.createOptions = new RefundCreateOptions()
             {
                 Amount = 123,
+                ChargeId = "ch_123",
             };
 
             this.updateOptions = new RefundUpdateOptions()
@@ -42,7 +42,7 @@ namespace StripeTests
         [Fact]
         public void Create()
         {
-            var refund = this.service.Create(ChargeId, this.createOptions);
+            var refund = this.service.Create(this.createOptions);
             Assert.NotNull(refund);
             Assert.Equal("refund", refund.Object);
         }
@@ -50,7 +50,7 @@ namespace StripeTests
         [Fact]
         public async Task CreateAsync()
         {
-            var refund = await this.service.CreateAsync(ChargeId, this.createOptions);
+            var refund = await this.service.CreateAsync(this.createOptions);
             Assert.NotNull(refund);
             Assert.Equal("refund", refund.Object);
         }

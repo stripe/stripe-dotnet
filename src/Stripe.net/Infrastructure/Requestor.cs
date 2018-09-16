@@ -49,11 +49,11 @@
             return ExecuteRequest(wr);
         }
 
-        public static StripeResponse PostFile(string url, string fileName, Stream fileStream, string purpose, RequestOptions requestOptions)
+        public static StripeResponse PostFile(string url, Stream stream, string purpose, RequestOptions requestOptions)
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
 
-            ApplyMultiPartFileToRequest(wr, fileName, fileStream, purpose);
+            ApplyMultiPartFileToRequest(wr, stream, purpose);
 
             return ExecuteRequest(wr);
         }
@@ -94,11 +94,11 @@
             return ExecuteRequestAsync(wr, cancellationToken);
         }
 
-        public static Task<StripeResponse> PostFileAsync(string url, string fileName, Stream fileStream, string purpose, RequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<StripeResponse> PostFileAsync(string url, Stream stream, string purpose, RequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
         {
             var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
 
-            ApplyMultiPartFileToRequest(wr, fileName, fileStream, purpose);
+            ApplyMultiPartFileToRequest(wr, stream, purpose);
 
             return ExecuteRequestAsync(wr, cancellationToken);
         }
@@ -187,16 +187,24 @@
             return $"Bearer {apiKey}";
         }
 
-        private static void ApplyMultiPartFileToRequest(HttpRequestMessage requestMessage, string fileName, Stream fileStream, string purpose)
+        private static void ApplyMultiPartFileToRequest(HttpRequestMessage requestMessage, Stream stream, string purpose)
         {
             requestMessage.Headers.ExpectContinue = true;
 
-            if (string.IsNullOrEmpty(fileName))
-            {
-                fileName = "blob";
-            }
+            string fileName = "blob";
 
-            var fileContent = new StreamContent(fileStream);
+            #if NET45
+            // Doing this on .NET Standard would require us to bump the minimum framework version
+            // to .NET Standard 1.3, which isn't worth it since the filename is basically ignored
+            // by the server.
+            FileStream fileStream = stream as FileStream;
+            if ((fileStream != null) && (!string.IsNullOrEmpty(fileStream.Name)))
+            {
+                fileName = fileStream.Name;
+            }
+            #endif
+
+            var fileContent = new StreamContent(stream);
             fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
             {
                 Name = "\"file\"",
