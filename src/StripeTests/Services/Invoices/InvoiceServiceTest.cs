@@ -8,7 +8,6 @@ namespace StripeTests
 
     public class InvoiceServiceTest : BaseStripeTest
     {
-        private const string CustomerId = "cus_123";
         private const string InvoiceId = "in_123";
 
         private InvoiceService service;
@@ -25,6 +24,7 @@ namespace StripeTests
 
             this.createOptions = new InvoiceCreateOptions()
             {
+                CustomerId = "cus_123",
                 TaxPercent = 12.5m,
             };
 
@@ -54,6 +54,7 @@ namespace StripeTests
 
             this.upcomingOptions = new UpcomingInvoiceOptions()
             {
+                CustomerId = "cus_123",
                 SubscriptionId = "sub_123",
             };
         }
@@ -61,7 +62,7 @@ namespace StripeTests
         [Fact]
         public void Create()
         {
-            var invoice = this.service.Create(CustomerId, this.createOptions);
+            var invoice = this.service.Create(this.createOptions);
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -69,7 +70,7 @@ namespace StripeTests
         [Fact]
         public async Task CreateAsync()
         {
-            var invoice = await this.service.CreateAsync(CustomerId, this.createOptions);
+            var invoice = await this.service.CreateAsync(this.createOptions);
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -133,7 +134,7 @@ namespace StripeTests
         [Fact]
         public void ListUpcomingLineItems()
         {
-            var invoices = this.service.ListUpcomingLineItems(CustomerId, this.upcomingOptions);
+            var invoices = this.service.ListUpcomingLineItems(this.upcomingOptions);
             Assert.NotNull(invoices);
             Assert.Equal("list", invoices.Object);
             Assert.Single(invoices.Data);
@@ -143,7 +144,7 @@ namespace StripeTests
         [Fact]
         public async Task ListUpcomingLineItemsAsync()
         {
-            var invoices = await this.service.ListUpcomingLineItemsAsync(CustomerId, this.upcomingOptions);
+            var invoices = await this.service.ListUpcomingLineItemsAsync(this.upcomingOptions);
             Assert.NotNull(invoices);
             Assert.Equal("list", invoices.Object);
             Assert.Single(invoices.Data);
@@ -169,7 +170,7 @@ namespace StripeTests
         [Fact]
         public void Upcoming()
         {
-            var invoice = this.service.Upcoming(CustomerId, this.upcomingOptions);
+            var invoice = this.service.Upcoming(this.upcomingOptions);
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -177,7 +178,7 @@ namespace StripeTests
         [Fact]
         public async Task UpcomingAsync()
         {
-            var invoice = await this.service.UpcomingAsync(CustomerId, this.upcomingOptions);
+            var invoice = await this.service.UpcomingAsync(this.upcomingOptions);
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
