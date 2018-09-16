@@ -1,10 +1,10 @@
-﻿namespace Stripe
+﻿namespace Stripe.Sigma
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
 
-    public class ScheduledQueryListOptions : ListOptions
+    public class ScheduledQueryRunListOptions : ListOptions
     {
     }
 }
