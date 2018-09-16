@@ -3,21 +3,21 @@ namespace StripeTests
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Stripe;
+    using Stripe.Sigma;
     using Xunit;
 
-    public class ScheduledQueryServiceTest : BaseStripeTest
+    public class ScheduledQueryRunServiceTest : BaseStripeTest
     {
         private const string ScheduledQueryId = "sqr_123";
 
-        private ScheduledQueryService service;
-        private ScheduledQueryListOptions listOptions;
+        private ScheduledQueryRunService service;
+        private ScheduledQueryRunListOptions listOptions;
 
-        public ScheduledQueryServiceTest()
+        public ScheduledQueryRunServiceTest()
         {
-            this.service = new ScheduledQueryService();
+            this.service = new ScheduledQueryRunService();
 
-            this.listOptions = new ScheduledQueryListOptions()
+            this.listOptions = new ScheduledQueryRunListOptions()
             {
                 Limit = 1,
             };
