@@ -14,15 +14,19 @@ namespace StripeTests
         private const string FileUploadId = "file_123";
         private const string FileName = "StripeTests.Resources.file_upload_logo.png";
 
-        private Stream stream;
         private FileUploadService service;
+        private FileUploadCreateOptions createOptions;
         private FileUploadListOptions listOptions;
 
         public FileUploadServiceTest()
         {
             this.service = new FileUploadService();
 
-            this.stream = typeof(FileUploadServiceTest).GetTypeInfo().Assembly.GetManifestResourceStream(FileName);
+            this.createOptions = new FileUploadCreateOptions()
+            {
+                File = typeof(FileUploadServiceTest).GetTypeInfo().Assembly.GetManifestResourceStream(FileName),
+                Purpose = FilePurpose.BusinessLogo,
+            };
 
             this.listOptions = new FileUploadListOptions()
             {
@@ -33,7 +37,7 @@ namespace StripeTests
         [Fact]
         public void Create()
         {
-            var fileUpload = this.service.Create(FileName, this.stream, FilePurpose.BusinessLogo);
+            var fileUpload = this.service.Create(createOptions);
             Assert.NotNull(fileUpload);
             Assert.Equal("file_upload", fileUpload.Object);
         }
@@ -41,7 +45,7 @@ namespace StripeTests
         [Fact]
         public async Task CreateAsync()
         {
-            var fileUpload = await this.service.CreateAsync(FileName, this.stream, FilePurpose.BusinessLogo);
+            var fileUpload = await this.service.CreateAsync(createOptions);
             Assert.NotNull(fileUpload);
             Assert.Equal("file_upload", fileUpload.Object);
         }
