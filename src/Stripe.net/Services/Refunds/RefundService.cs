@@ -26,7 +26,7 @@
 
         public bool ExpandFailureBalanceTransaction { get; set; }
 
-        public virtual Refund Create(RefundCreateOptions createOptions = null, RequestOptions requestOptions = null)
+        public virtual Refund Create(RefundCreateOptions createOptions, RequestOptions requestOptions = null)
         {
             return Mapper<Refund>.MapFromJson(
                 Requestor.PostString(
@@ -34,7 +34,7 @@
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<Refund> CreateAsync(RefundCreateOptions createOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Refund> CreateAsync(RefundCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<Refund>.MapFromJson(
                 await Requestor.PostStringAsync(

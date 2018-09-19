@@ -7,6 +7,8 @@
 
     public class InvoiceService : StripeService
     {
+        private static string classUrl = Urls.BaseUrl + "/invoices";
+
         public InvoiceService()
             : base(null)
         {
@@ -23,19 +25,19 @@
 
         public bool ExpandSubscription { get; set; }
 
-        public virtual Invoice Create(InvoiceCreateOptions createOptions = null, RequestOptions requestOptions = null)
+        public virtual Invoice Create(InvoiceCreateOptions createOptions, RequestOptions requestOptions = null)
         {
             return Mapper<Invoice>.MapFromJson(
                 Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, Urls.Invoices, false),
+                    this.ApplyAllParameters(createOptions, classUrl, false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual async Task<Invoice> CreateAsync(InvoiceCreateOptions createOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<Invoice> CreateAsync(InvoiceCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return Mapper<Invoice>.MapFromJson(
                 await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, Urls.Invoices, false),
+                    this.ApplyAllParameters(createOptions, classUrl, false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
@@ -44,7 +46,7 @@
         {
             return Mapper<Invoice>.MapFromJson(
                 Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{Urls.Invoices}/{invoiceId}", false),
+                    this.ApplyAllParameters(null, $"{classUrl}/{invoiceId}", false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
@@ -52,7 +54,7 @@
         {
             return Mapper<Invoice>.MapFromJson(
                 await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{Urls.Invoices}/{invoiceId}", false),
+                    this.ApplyAllParameters(null, $"{classUrl}/{invoiceId}", false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
@@ -61,7 +63,7 @@
         {
             return Mapper<StripeList<Invoice>>.MapFromJson(
                 Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, Urls.Invoices, true),
+                    this.ApplyAllParameters(listOptions, classUrl, true),
                     this.SetupRequestOptions(requestOptions)));
         }
 
@@ -69,7 +71,7 @@
         {
             return Mapper<StripeList<Invoice>>.MapFromJson(
                 await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, Urls.Invoices, true),
+                    this.ApplyAllParameters(listOptions, classUrl, true),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
@@ -78,7 +80,7 @@
         {
             return Mapper<StripeList<InvoiceLineItem>>.MapFromJson(
                 Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, $"{Urls.Invoices}/{invoiceId}/lines", true),
+                    this.ApplyAllParameters(listOptions, $"{classUrl}/{invoiceId}/lines", true),
                     this.SetupRequestOptions(requestOptions)));
         }
 
@@ -86,7 +88,7 @@
         {
             return Mapper<StripeList<InvoiceLineItem>>.MapFromJson(
                 await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, $"{Urls.Invoices}/{invoiceId}/lines", true),
+                    this.ApplyAllParameters(listOptions, $"{classUrl}/{invoiceId}/lines", true),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
@@ -95,7 +97,7 @@
         {
             return Mapper<StripeList<InvoiceLineItem>>.MapFromJson(
                 Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, $"{Urls.Invoices}/upcoming/lines", true),
+                    this.ApplyAllParameters(listOptions, $"{classUrl}/upcoming/lines", true),
                     this.SetupRequestOptions(requestOptions)));
         }
 
@@ -103,7 +105,7 @@
         {
             return Mapper<StripeList<InvoiceLineItem>>.MapFromJson(
                 await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, $"{Urls.Invoices}/upcoming/lines", true),
+                    this.ApplyAllParameters(listOptions, $"{classUrl}/upcoming/lines", true),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
@@ -112,7 +114,7 @@
         {
             return Mapper<Invoice>.MapFromJson(
                 Requestor.PostString(
-                    this.ApplyAllParameters(payOptions, $"{Urls.Invoices}/{invoiceId}/pay", false),
+                    this.ApplyAllParameters(payOptions, $"{classUrl}/{invoiceId}/pay", false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
@@ -120,7 +122,7 @@
         {
             return Mapper<Invoice>.MapFromJson(
                 await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(payOptions, $"{Urls.Invoices}/{invoiceId}/pay", false),
+                    this.ApplyAllParameters(payOptions, $"{classUrl}/{invoiceId}/pay", false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
@@ -129,7 +131,7 @@
         {
             return Mapper<Invoice>.MapFromJson(
                 Requestor.GetString(
-                    this.ApplyAllParameters(upcomingOptions, $"{Urls.Invoices}/upcoming", false),
+                    this.ApplyAllParameters(upcomingOptions, $"{classUrl}/upcoming", false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
@@ -137,7 +139,7 @@
         {
             return Mapper<Invoice>.MapFromJson(
                 await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(upcomingOptions, $"{Urls.Invoices}/upcoming", false),
+                    this.ApplyAllParameters(upcomingOptions, $"{classUrl}/upcoming", false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
@@ -146,7 +148,7 @@
         {
             return Mapper<Invoice>.MapFromJson(
                 Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.Invoices}/{invoiceId}", false),
+                    this.ApplyAllParameters(updateOptions, $"{classUrl}/{invoiceId}", false),
                     this.SetupRequestOptions(requestOptions)));
         }
 
@@ -154,7 +156,7 @@
         {
             return Mapper<Invoice>.MapFromJson(
                 await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.Invoices}/{invoiceId}", false),
+                    this.ApplyAllParameters(updateOptions, $"{classUrl}/{invoiceId}", false),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }
