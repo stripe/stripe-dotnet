@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.7.0 - 2018-09-20
+* [#1290](https://github.com/stripe/stripe-dotnet/pull/1290) Add `AccountToken` to `StripeAccountCreateOptions` and `StripeAccountUpdateOptions`
+
 ## 19.6.0 - 2018-09-11
 * [#1280](https://github.com/stripe/stripe-dotnet/pull/1280) Enable XML documentation
 * [#1279](https://github.com/stripe/stripe-dotnet/pull/1279) Add missing attributes to `StripeThreeDSecure`
