@@ -7,6 +7,9 @@
 
     public abstract class StripeAccountSharedOptions : StripeBaseOptions, ISupportMetadata
     {
+        [JsonProperty("account_token")]
+        public string AccountToken { get; set; }
+
         [JsonProperty("business_logo")]
         public string BusinessLogoFileId { get; set; }
 
