@@ -16,10 +16,6 @@
 
         public static string Plans => BaseUrl + "/plans";
 
-        public static string Balance => BaseUrl + "/balance";
-
-        public static string BalanceTransactions => BaseUrl + "/balance/history";
-
         public static string Customers => BaseUrl + "/customers";
 
         public static string CustomerSources => BaseUrl + "/customers/{0}/sources";
