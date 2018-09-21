@@ -199,7 +199,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void decoding_should_throw_if_value_not_declared_in_enum()
+        public void ThrowsIfValueNotDeclaredInEnum()
         {
             var json = "{\"enum\": \"unknown_value\"}";
 
