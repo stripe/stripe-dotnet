@@ -32,5 +32,6 @@
 
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\_stylecop\StyleCopRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\_stylecop\StripeTests.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 </Project>

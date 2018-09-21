@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Rules for StyleCop.Analyzers" Description="Code analysis rules for Stripe.net" ToolsVersion="14.0">
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <!--
+      CS0618: 'member' is obsolete: 'text'
+      We may want to test obsolete stuff.
+    -->
+    <Rule Id="CS0618" Action="None" />
+
+    <!--
+      SA1633: FileMustHaveHeader
+      SA1652: EnableXmlDocumentationOutput
+      Documentation related warnings, not applicable to tests.
+    -->
+    <Rule Id="SA1633" Action="None" />
+    <Rule Id="SA1652" Action="None" />
+  </Rules>
+</RuleSet>
