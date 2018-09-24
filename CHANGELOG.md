@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.8.0 - 2018-09-24
+* [#999](https://github.com/stripe/stripe-dotnet/pull/999) Add support for Payment Intent resource.
+
 ## 19.7.0 - 2018-09-20
 * [#1290](https://github.com/stripe/stripe-dotnet/pull/1290) Add `AccountToken` to `StripeAccountCreateOptions` and `StripeAccountUpdateOptions`
 
