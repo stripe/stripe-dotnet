@@ -6,7 +6,7 @@
     <VersionPrefix>19.8.0</VersionPrefix>
     <Version>19.8.0</Version>
     <Authors>Stripe, Jayme Davis</Authors>
-    <TargetFrameworks>netstandard1.2;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard1.2;netstandard2.0;net45</TargetFrameworks>
     <AssemblyName>Stripe.net</AssemblyName>
     <PackageId>Stripe.net</PackageId>
     <PackageTags>stripe;payment;credit;cards;money;gateway;paypal;braintree</PackageTags>
