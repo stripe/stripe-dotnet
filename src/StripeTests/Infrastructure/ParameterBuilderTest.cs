@@ -51,7 +51,7 @@ namespace StripeTests
                 new
                 {
                     data = new TestOptions { },
-                    want = "?bool=False&decimal=0&enum=test_one&int=0"
+                    want = string.Empty
                 },
 
                 // Array
@@ -61,7 +61,7 @@ namespace StripeTests
                     {
                             Array = new string[] { "1", "2", "3" },
                     },
-                    want = "?array[0]=1&array[1]=2&array[2]=3&bool=False&decimal=0&enum=test_one&int=0"
+                    want = "?array[0]=1&array[1]=2&array[2]=3"
                 },
                 new
                 {
@@ -69,7 +69,7 @@ namespace StripeTests
                     {
                             Array = new string[] { },
                     },
-                    want = "?array=&bool=False&decimal=0&enum=test_one&int=0"
+                    want = "?array="
                 },
 
                 // Bool
@@ -79,7 +79,7 @@ namespace StripeTests
                     {
                         Bool = false,
                     },
-                    want = "?bool=False&decimal=0&enum=test_one&int=0"
+                    want = "?bool=False"
                 },
                 new
                 {
@@ -87,25 +87,7 @@ namespace StripeTests
                     {
                         Bool = true,
                     },
-                    want = "?bool=True&decimal=0&enum=test_one&int=0"
-                },
-
-                // BoolNullable
-                new
-                {
-                    data = new TestOptions
-                    {
-                        BoolNullable = false,
-                    },
-                    want = "?bool=False&bool_nullable=False&decimal=0&enum=test_one&int=0"
-                },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        BoolNullable = true,
-                    },
-                    want = "?bool=False&bool_nullable=True&decimal=0&enum=test_one&int=0"
+                    want = "?bool=True"
                 },
 
                 // DateFilter
@@ -118,7 +100,7 @@ namespace StripeTests
                             EqualTo = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
                         }
                     },
-                    want = "?bool=False&date_filter=946702800&decimal=0&enum=test_one&int=0"
+                    want = "?date_filter=946702800"
                 },
                 new
                 {
@@ -130,17 +112,17 @@ namespace StripeTests
                             GreaterThanOrEqual = DateTime.Parse("Sat, 01 Jan 2000 00:00:00Z"),
                         }
                     },
-                    want = "?bool=False&date_filter[lt]=946702800&date_filter[gte]=946684800&decimal=0&enum=test_one&int=0"
+                    want = "?date_filter[lt]=946702800&date_filter[gte]=946684800"
                 },
 
-                // DateTimeNullable
+                // DateTime
                 new
                 {
                     data = new TestOptions
                     {
-                        DateTimeNullable = DateTime.Parse("Sat, 01 Jan 2000 00:00:00Z"),
+                        DateTime = DateTime.Parse("Sat, 01 Jan 2000 00:00:00Z"),
                     },
-                    want = "?bool=False&datetime_nullable=946684800&decimal=0&enum=test_one&int=0"
+                    want = "?datetime=946684800"
                 },
 
                 // Decimal
@@ -150,7 +132,7 @@ namespace StripeTests
                     {
                         Decimal = 1.2345m,
                     },
-                    want = "?bool=False&decimal=1.2345&enum=test_one&int=0"
+                    want = "?decimal=1.2345"
                 },
                 new
                 {
@@ -158,25 +140,7 @@ namespace StripeTests
                     {
                         Decimal = 0.0m,
                     },
-                    want = "?bool=False&decimal=0.0&enum=test_one&int=0"
-                },
-
-                // DecimalNullable
-                new
-                {
-                    data = new TestOptions
-                    {
-                        DecimalNullable = 1.2345m,
-                    },
-                    want = "?bool=False&decimal=0&decimal_nullable=1.2345&enum=test_one&int=0"
-                },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        DecimalNullable = 0.0m,
-                    },
-                    want = "?bool=False&decimal=0&decimal_nullable=0.0&enum=test_one&int=0"
+                    want = "?decimal=0.0"
                 },
 
                 // Dictionary
@@ -186,7 +150,7 @@ namespace StripeTests
                     {
                             Dictionary = new Dictionary<string, object> { { "foo", "bar" } },
                     },
-                    want = "?bool=False&decimal=0&dictionary[foo]=bar&enum=test_one&int=0"
+                    want = "?dictionary[foo]=bar"
                 },
                 new
                 {
@@ -194,7 +158,7 @@ namespace StripeTests
                     {
                             Dictionary = new Dictionary<string, object> { { "empty", string.Empty } },
                     },
-                    want = "?bool=False&decimal=0&dictionary[empty]=&enum=test_one&int=0"
+                    want = "?dictionary[empty]="
                 },
                 new
                 {
@@ -205,7 +169,7 @@ namespace StripeTests
                                 { "foo", new Dictionary<string, object> { { "bar", "baz" } } },
                             },
                     },
-                    want = "?bool=False&decimal=0&dictionary[foo][bar]=baz&enum=test_one&int=0"
+                    want = "?dictionary[foo][bar]=baz"
                 },
 
                 // Enum
@@ -215,7 +179,7 @@ namespace StripeTests
                     {
                         Enum = TestOptions.TestEnum.TestOne,
                     },
-                    want = "?bool=False&decimal=0&enum=test_one&int=0"
+                    want = "?enum=test_one"
                 },
                 new
                 {
@@ -223,25 +187,7 @@ namespace StripeTests
                     {
                         Enum = TestOptions.TestEnum.TestTwo,
                     },
-                    want = "?bool=False&decimal=0&enum=TestTwo&int=0"
-                },
-
-                // EnumNullable
-                new
-                {
-                    data = new TestOptions
-                    {
-                        EnumNullable = TestOptions.TestEnum.TestOne,
-                    },
-                    want = "?bool=False&decimal=0&enum=test_one&enum_nullable=test_one&int=0"
-                },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        EnumNullable = TestOptions.TestEnum.TestTwo,
-                    },
-                    want = "?bool=False&decimal=0&enum=test_one&enum_nullable=TestTwo&int=0"
+                    want = "?enum=TestTwo"
                 },
 
                 // Int
@@ -251,7 +197,7 @@ namespace StripeTests
                     {
                         Int = 123,
                     },
-                    want = "?bool=False&decimal=0&enum=test_one&int=123"
+                    want = "?int=123"
                 },
                 new
                 {
@@ -259,25 +205,7 @@ namespace StripeTests
                     {
                         Int = 0,
                     },
-                    want = "?bool=False&decimal=0&enum=test_one&int=0"
-                },
-
-                // IntNullable
-                new
-                {
-                    data = new TestOptions
-                    {
-                        IntNullable = 123,
-                    },
-                    want = "?bool=False&decimal=0&enum=test_one&int=0&int_nullable=123"
-                },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        IntNullable = 0,
-                    },
-                    want = "?bool=False&decimal=0&enum=test_one&int=0&int_nullable=0"
+                    want = "?int=0"
                 },
 
                 // List
@@ -287,7 +215,7 @@ namespace StripeTests
                     {
                             List = new List<object> { "foo", "bar" },
                     },
-                    want = "?bool=False&decimal=0&enum=test_one&int=0&list[0]=foo&list[1]=bar"
+                    want = "?list[0]=foo&list[1]=bar"
                 },
                 new
                 {
@@ -295,7 +223,7 @@ namespace StripeTests
                     {
                             List = new List<object> { string.Empty, 0 },
                     },
-                    want = "?bool=False&decimal=0&enum=test_one&int=0&list[0]=&list[1]=0"
+                    want = "?list[0]=&list[1]=0"
                 },
                 new
                 {
@@ -303,7 +231,7 @@ namespace StripeTests
                     {
                             List = new List<object> { },
                     },
-                    want = "?bool=False&decimal=0&enum=test_one&int=0&list="
+                    want = "?list="
                 },
                 new
                 {
@@ -315,7 +243,7 @@ namespace StripeTests
                                 new Dictionary<string, object> { { "foo", "baz" } },
                             },
                     },
-                    want = "?bool=False&decimal=0&enum=test_one&int=0&list[0][foo]=bar&list[1][foo]=baz"
+                    want = "?list[0][foo]=bar&list[1][foo]=baz"
                 },
 
                 // String
@@ -325,7 +253,7 @@ namespace StripeTests
                     {
                         String = "foo",
                     },
-                    want = "?bool=False&decimal=0&enum=test_one&int=0&string=foo"
+                    want = "?string=foo"
                 },
                 new
                 {
@@ -333,7 +261,7 @@ namespace StripeTests
                     {
                         String = string.Empty,
                     },
-                    want = "?bool=False&decimal=0&enum=test_one&int=0&string="
+                    want = "?string="
                 },
             };
 
