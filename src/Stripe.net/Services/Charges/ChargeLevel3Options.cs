@@ -21,6 +21,6 @@ namespace Stripe
         public string ShippingFromZip { get; set; }
 
         [JsonProperty("shipping_amount")]
-        public int ShippingAmount { get; set; }
+        public int? ShippingAmount { get; set; }
     }
 }

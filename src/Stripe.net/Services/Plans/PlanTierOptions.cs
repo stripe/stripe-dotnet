@@ -7,7 +7,7 @@
     public class PlanTierOptions : INestedOptions
     {
         [JsonProperty("unit_amount")]
-        public int UnitAmount { get; set; }
+        public int? UnitAmount { get; set; }
 
         #region UpTo
         public UpToOption UpTo { get; set; }

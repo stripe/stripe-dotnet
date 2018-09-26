@@ -6,7 +6,7 @@ namespace Stripe
     public class InvoiceUpcomingInvoiceItemOption : INestedOptions
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -15,7 +15,7 @@ namespace Stripe
         public string Description { get; set; }
 
         [JsonProperty("discountable")]
-        public bool Discountable { get; set; }
+        public bool? Discountable { get; set; }
 
         [JsonProperty("invoiceitem")]
         public string InvoiceItemId { get; set; }

@@ -14,9 +14,9 @@
         public string SubscriptionItem { get; set; }
 
         [JsonProperty("timestamp")]
-        public DateTime Timestamp { get; set; }
+        public DateTime? Timestamp { get; set; }
 
         [JsonProperty("quantity")]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
     }
 }
