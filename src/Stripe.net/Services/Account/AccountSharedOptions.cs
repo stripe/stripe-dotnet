@@ -25,11 +25,8 @@
         [JsonProperty("debit_negative_balances")]
         public bool? DebitNegativeBalances { get; set; }
 
-        [JsonProperty("decline_charge_on[cvc_failure]")]
-        public bool? DeclineChargeOnCvcFailure { get; set; }
-
-        [JsonProperty("decline_charge_on[avs_failure]")]
-        public bool? DeclineChargeOnAvsFailure { get; set; }
+        [JsonProperty("decline_charge_on")]
+        public AccountDeclineOptions DeclineChargeOn { get; set; }
 
         [JsonProperty("default_currency")]
         public string DefaultCurrency { get; set; }
@@ -52,14 +49,17 @@
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("payout_schedule")]
+        public AccountPayoutScheduleOptions PayoutSchedule { get; set; }
+
+        [JsonProperty("payout_statement_descriptor")]
+        public string PayoutStatementDescriptor { get; set; }
+
         [JsonProperty("product_description")]
         public string ProductDescription { get; set; }
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
-
-        [JsonProperty("payout_statement_descriptor")]
-        public string PayoutStatementDescriptor { get; set; }
 
         [JsonProperty("support_email")]
         public string SupportEmail { get; set; }
@@ -70,33 +70,7 @@
         [JsonProperty("support_url")]
         public string SupportUrl { get; set; }
 
-        #region Tos Acceptance
-
-        [JsonProperty("tos_acceptance[date]")]
-        public DateTime? TosAcceptanceDate { get; set; }
-
-        [JsonProperty("tos_acceptance[ip]")]
-        public string TosAcceptanceIp { get; set; }
-
-        [JsonProperty("tos_acceptance[user_agent]")]
-        public string TosAcceptanceUserAgent { get; set; }
-
-        #endregion
-
-        #region Transfer Schedule
-
-        [JsonProperty("payout_schedule[delay_days]")]
-        public string TransferScheduleDelayDays { get; set; }
-
-        [JsonProperty("payout_schedule[interval]")]
-        public string TransferScheduleInterval { get; set; }
-
-        [JsonProperty("payout_schedule[monthly_anchor]")]
-        public string TransferScheduleMonthlyAnchor { get; set; }
-
-        [JsonProperty("payout_schedule[weekly_anchor]")]
-        public string TransferScheduleWeeklyAnchor { get; set; }
-
-        #endregion
+        [JsonProperty("tos_acceptance")]
+        public AccountTosAcceptanceOptions TosAcceptance { get; set; }
     }
 }

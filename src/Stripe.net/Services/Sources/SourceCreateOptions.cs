@@ -39,38 +39,8 @@
         [JsonProperty("flow")]
         public string Flow { get; set; }
 
-        [JsonProperty("bancontact[preferred_language]")]
-        public string BancontactPreferredLanguage { get; set; }
-
-        [JsonProperty("card")]
-        public CreditCardOptions Card { get; set; }
-
         [JsonProperty("card")]
         public string CardId { get; set; }
-
-        /// <summary>
-        /// This parameter is used to create a Source from an issuing card mostly in Test mode.
-        /// </summary>
-        [JsonProperty("card[issuing_card]")]
-        public string IssuingCardId { get; set; }
-
-        [JsonProperty("ideal[bank]")]
-        public string IdealBank { get; set; }
-
-        [JsonProperty("sepa_debit[iban]")]
-        public string SepaDebitIban { get; set; }
-
-        [JsonProperty("sepa_debit[ideal]")]
-        public string SepaDebitIdealSourceId { get; set; }
-
-        [JsonProperty("sofort[country]")]
-        public string SofortCountry { get; set; }
-
-        [JsonProperty("[three_d_secure][customer]")]
-        public string ThreeDSecureCustomer { get; set; }
-
-        [JsonProperty("[three_d_secure][card]")]
-        public string ThreeDSecureCardOrSourceId { get; set; }
 
         /// <summary>
         /// Information about a mandate possiblity attached to a source object (generally for bank debits) as well as its acceptance status.
@@ -99,10 +69,9 @@
 
         /// <summary>
         /// <para>Parameters required for the redirect flow. Required if the source is authenticated by a redirect (flow is redirect).</para>
-        /// <para>The URL you provide to redirect the customer back to you after they authenticated their payment. It can use your application URI scheme in the context of a mobile application.</para>
         /// </summary>
-        [JsonProperty("[redirect][return_url]")]
-        public string RedirectReturnUrl { get; set; }
+        [JsonProperty("redirect")]
+        public SourceRedirectOptions Redirect { get; set; }
 
         /// <summary>
         /// Optional parameters for the receiver flow. Can be set only if the source is a receiver.
@@ -124,5 +93,27 @@
         /// </summary>
         [JsonProperty("usage")]
         public string Usage { get; set; }
+
+        /*
+           Below we group all Source type specific paramters
+        */
+
+        [JsonProperty("bancontact")]
+        public SourceBancontactCreateOptions Bancontact { get; set; }
+
+        [JsonProperty("card")]
+        public CreditCardOptions Card { get; set; }
+
+        [JsonProperty("ideal")]
+        public SourceIdealCreateOptions Ideal { get; set; }
+
+        [JsonProperty("sepa_debit")]
+        public SourceSepaDebitCreateOptions SepaDebit { get; set; }
+
+        [JsonProperty("sofort")]
+        public SourceSofortCreateOptions Sofort { get; set; }
+
+        [JsonProperty("three_d_secure")]
+        public SourceThreeDSecureCreateOptions ThreeDSecure { get; set; }
     }
 }

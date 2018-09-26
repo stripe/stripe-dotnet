@@ -2,13 +2,10 @@ namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
 
-    public class CardListOptions : ListOptions
+    public class CardListOptions : ListOptionsWithCreated
     {
         [JsonProperty("cardholder")]
         public string CardholderId { get; set; }
-
-        [JsonProperty("created")]
-        public DateFilter Created { get; set; }
 
         [JsonProperty("exp_month")]
         public int? ExpMonth { get; set; }

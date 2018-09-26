@@ -2,15 +2,14 @@
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
-    public class PayoutListOptions : ListOptions
+    public class PayoutListOptions : ListOptionsWithCreated
     {
         [JsonProperty("arrival_date")]
-        public DateFilter ArrivalDate { get; set; }
+        public DateTime? ArrivalDate { get; set; }
 
-        [JsonProperty("created")]
-        public DateFilter Created { get; set; }
+        [JsonProperty("arrival_date")]
+        public DateRangeOptions ArrivalDateRange { get; set; }
 
         [JsonProperty("destination")]
         public string Destination { get; set; }
