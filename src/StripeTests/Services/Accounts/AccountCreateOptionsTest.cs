@@ -28,24 +28,33 @@ namespace StripeTests
                     {
                         new AccountAdditionalOwner
                         {
+                            Dob = new AccountDobOptions
+                            {
+                                Day = 1,
+                                Month = 1,
+                                Year = 1980,
+                            },
                             FirstName = "John",
                             LastName = "Doe",
-                            BirthDay = 1,
-                            BirthMonth = 1,
-                            BirthYear = 1980,
-                            VerificationDocument = "file_123",
-                            VerificationDocumentBack = "file_234",
+                            Verification = new AccountVerificationOptions
+                            {
+                                DocumentBackId = "file_234",
+                                DocumentId = "file_123",
+                            },
                         },
                         new AccountAdditionalOwner
                         {
+                            Address = new AddressOptions
+                            {
+                                State = "CA",
+                                City = "City",
+                                Line1 = "Line1",
+                                Line2 = "Line2",
+                                PostalCode = "90210",
+                                Country = "US",
+                            },
                             FirstName = "Jenny",
                             LastName = "Rosen",
-                            State = "CA",
-                            CityOrTown = "City",
-                            Line1 = "Line1",
-                            Line2 = "Line2",
-                            PostalCode = "90210",
-                            Country = "US",
                         }
                     },
                 },
@@ -58,8 +67,8 @@ namespace StripeTests
                 "&legal_entity[additional_owners][0][dob][year]=1980" +
                 "&legal_entity[additional_owners][0][first_name]=John" +
                 "&legal_entity[additional_owners][0][last_name]=Doe" +
-                "&legal_entity[additional_owners][0][verification][document]=file_123" +
                 "&legal_entity[additional_owners][0][verification][document_back]=file_234" +
+                "&legal_entity[additional_owners][0][verification][document]=file_123" +
                 "&legal_entity[additional_owners][1][address][city]=City" +
                 "&legal_entity[additional_owners][1][address][country]=US" +
                 "&legal_entity[additional_owners][1][address][line1]=Line1" +

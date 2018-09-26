@@ -30,30 +30,42 @@ namespace StripeTests
                     {
                         new AccountAdditionalOwner
                         {
+                            // Verified this is encoded properly but stripe-mock does not
+                            // support dob at the moment for additional owners.
+                            // Dob = new AccountDobOptions
+                            // {
+                            //     Day = 1,
+                            //     Month = 1,
+                            //     Year = 1980,
+                            // },
                             FirstName = "John",
                             LastName = "Doe",
-
-                            // Commenting these temporarily until stripe-mock is fixed
-                            // BirthDay = 1,
-                            // BirthMonth = 1,
-                            // BirthYear = 1980,
-                            VerificationDocument = "file_123",
-                            VerificationDocumentBack = "file_234",
+                            Verification = new AccountVerificationOptions
+                            {
+                                DocumentBackId = "file_123",
+                                DocumentId = "file_234",
+                            },
                         },
                         new AccountAdditionalOwner
                         {
+                            Address = new AddressOptions
+                            {
+                                State = "CA",
+                                City = "City",
+                                Line1 = "Line1",
+                                Line2 = "Line2",
+                                PostalCode = "90210",
+                                Country = "US",
+                            },
                             FirstName = "Jenny",
                             LastName = "Rosen",
-                            State = "CA",
-                            CityOrTown = "City",
-                            Line1 = "Line1",
-                            Line2 = "Line2",
-                            PostalCode = "90210",
-                            Country = "US",
                         }
                     },
-                    VerificationDocumentFileId = "file_abc",
-                    VerificationDocumentFileBackId = "file_bcd",
+                    Verification = new AccountVerificationOptions
+                    {
+                        DocumentBackId = "file_abc",
+                        DocumentId = "file_bcd",
+                    },
                 }
             };
 
