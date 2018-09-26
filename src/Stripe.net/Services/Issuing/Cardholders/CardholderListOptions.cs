@@ -8,10 +8,10 @@ namespace Stripe.Issuing
         public DateFilter Created { get; set; }
 
         [JsonProperty("email")]
-        public int Email { get; set; }
+        public string Email { get; set; }
 
         [JsonProperty("phone_number")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
