@@ -59,10 +59,6 @@
             {
                 flatParams = FlattenParamsOptions((INestedOptions)value, keyPrefix);
             }
-            else if (value is DateFilter)
-            {
-                flatParams = FlattenParamsDateFilter((DateFilter)value, keyPrefix);
-            }
             else if (IsDictionary(value))
             {
                 // Cast to Dictionary<string, object>
@@ -159,46 +155,6 @@
                 string newPrefix = NewPrefix(key, keyPrefix);
 
                 flatParams.AddRange(FlattenParamsValue(value, newPrefix));
-            }
-
-            return flatParams;
-        }
-
-        /// <summary>
-        /// Returns a list of parameters for a given `DateFilter` object.
-        /// If an `EqualTo` value is provided, then it will be used directly with the key prefix.
-        /// Other values (`LessThan`, etc.) will be nested under the key prefix.
-        /// </summary>
-        /// <param name="filter">The filter for which to create the list of parameters.</param>
-        /// <param name="keyPrefix">The key under which new keys should be nested.</param>
-        /// <returns>The list of parameters</returns>
-        private static List<Parameter> FlattenParamsDateFilter(DateFilter filter, string keyPrefix)
-        {
-            List<Parameter> flatParams = new List<Parameter>();
-
-            if (filter.EqualTo.HasValue)
-            {
-                flatParams.AddRange(FlattenParamsValue(filter.EqualTo.Value.ToUniversalTime().ConvertDateTimeToEpoch().ToString(), keyPrefix));
-            }
-
-            if (filter.LessThan.HasValue)
-            {
-                flatParams.AddRange(FlattenParamsValue(filter.LessThan.Value.ToUniversalTime().ConvertDateTimeToEpoch().ToString(), $"{keyPrefix}[lt]"));
-            }
-
-            if (filter.LessThanOrEqual.HasValue)
-            {
-                flatParams.AddRange(FlattenParamsValue(filter.LessThanOrEqual.Value.ToUniversalTime().ConvertDateTimeToEpoch().ToString(), $"{keyPrefix}[lte]"));
-            }
-
-            if (filter.GreaterThan.HasValue)
-            {
-                flatParams.AddRange(FlattenParamsValue(filter.GreaterThan.Value.ToUniversalTime().ConvertDateTimeToEpoch().ToString(), $"{keyPrefix}[gt]"));
-            }
-
-            if (filter.GreaterThanOrEqual.HasValue)
-            {
-                flatParams.AddRange(FlattenParamsValue(filter.GreaterThanOrEqual.Value.ToUniversalTime().ConvertDateTimeToEpoch().ToString(), $"{keyPrefix}[gte]"));
             }
 
             return flatParams;

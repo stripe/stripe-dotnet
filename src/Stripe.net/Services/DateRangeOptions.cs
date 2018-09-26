@@ -3,21 +3,18 @@
     using System;
     using Newtonsoft.Json;
 
-    public class DateFilter
+    public class DateRangeOptions : INestedOptions
     {
-        [JsonProperty("")]
-        public DateTime? EqualTo { get; set; }
-
-        [JsonProperty("[gt]")]
+        [JsonProperty("gt")]
         public DateTime? GreaterThan { get; set; }
 
-        [JsonProperty("[gte]")]
+        [JsonProperty("gte")]
         public DateTime? GreaterThanOrEqual { get; set; }
 
-        [JsonProperty("[lt]")]
+        [JsonProperty("lt")]
         public DateTime? LessThan { get; set; }
 
-        [JsonProperty("[lte]")]
+        [JsonProperty("lte")]
         public DateTime? LessThanOrEqual { get; set; }
     }
 }

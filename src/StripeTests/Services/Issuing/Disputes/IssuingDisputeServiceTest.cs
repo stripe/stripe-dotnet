@@ -24,8 +24,11 @@ namespace StripeTests.Issuing
                 DisputedTransactionId = "ipi_123",
                 Evidence = new EvidenceOptions
                 {
-                    FraudulentDisputeExplanation = "Explanation",
-                    FraudulentUncategorizedFile = "file_123",
+                    Fraudulent = new EvidenceDetailsOptions
+                    {
+                        DisputeExplanation = "Explanation",
+                        UncategorizedFile = "file_123",
+                    }
                 },
                 Reason = "fraudulent",
             };

@@ -90,29 +90,18 @@ namespace StripeTests
                     want = "?bool=True"
                 },
 
-                // DateFilter
+                // DateRangeOptions
                 new
                 {
                     data = new TestOptions
                     {
-                        DateFilter = new DateFilter
-                        {
-                            EqualTo = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
-                        }
-                    },
-                    want = "?date_filter=946702800"
-                },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        DateFilter = new DateFilter
+                        DateRangeOptions = new DateRangeOptions
                         {
                             LessThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
                             GreaterThanOrEqual = DateTime.Parse("Sat, 01 Jan 2000 00:00:00Z"),
                         }
                     },
-                    want = "?date_filter[lt]=946702800&date_filter[gte]=946684800"
+                    want = "?date_filter[gte]=946684800&date_filter[lt]=946702800"
                 },
 
                 // DateTime
