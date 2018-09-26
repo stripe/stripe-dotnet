@@ -11,10 +11,10 @@ namespace Stripe.Issuing
         public DateFilter Created { get; set; }
 
         [JsonProperty("exp_month")]
-        public int ExpMonth { get; set; }
+        public int? ExpMonth { get; set; }
 
         [JsonProperty("exp_year")]
-        public int ExpYear { get; set; }
+        public int? ExpYear { get; set; }
 
         [JsonProperty("last4")]
         public string Last4 { get; set; }

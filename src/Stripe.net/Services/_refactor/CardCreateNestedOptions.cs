@@ -58,13 +58,13 @@
         /// REQUIRED: Two digit number representing the card's expiration month.
         /// </summary>
         [JsonProperty("exp_month")]
-        public int ExpirationMonth { get; set; }
+        public int? ExpirationMonth { get; set; }
 
         /// <summary>
         /// REQUIRED: Two or four digit number representing the card's expiration year.
         /// </summary>
         [JsonProperty("exp_year")]
-        public int ExpirationYear { get; set; }
+        public int? ExpirationYear { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to a card object. It can be useful for storing additional information about the card in a structured format.

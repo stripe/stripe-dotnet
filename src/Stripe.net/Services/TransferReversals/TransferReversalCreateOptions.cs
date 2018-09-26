@@ -7,7 +7,7 @@
     public class TransferReversalCreateOptions : BaseOptions, ISupportMetadata
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
