@@ -2,12 +2,9 @@
 {
     using Newtonsoft.Json;
 
-    public class InvoiceItemListOptions : ListOptions
+    public class InvoiceItemListOptions : ListOptionsWithCreated
     {
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
-
-        [JsonProperty("created")]
-        public DateFilter Created { get; set; }
     }
 }

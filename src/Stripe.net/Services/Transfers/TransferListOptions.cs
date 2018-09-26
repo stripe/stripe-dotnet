@@ -2,11 +2,8 @@
 {
     using Newtonsoft.Json;
 
-    public class TransferListOptions : ListOptions
+    public class TransferListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("created")]
-        public DateFilter Created { get; set; }
-
         [JsonProperty("destination")]
         public string Destination { get; set; }
 

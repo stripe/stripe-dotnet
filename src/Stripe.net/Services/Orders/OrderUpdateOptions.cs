@@ -24,16 +24,10 @@
         public string SelectedShippingMethod { get; set; }
 
         /// <summary>
-        /// The name of the carrier like USPS, UPS, or FedEx. ShippingTrackingNumber must also be set with this property.
+        /// Tracking information once the order has been fulfilled.
         /// </summary>
-        [JsonProperty("shipping[carrier]")]
-        public string ShippingCarrier { get; set; }
-
-        /// <summary>
-        /// The tracking number provided by the carrier. ShippingCarrier must also be set with this property.
-        /// </summary>
-        [JsonProperty("shipping[tracking_number]")]
-        public string ShippingTrackingNumber { get; set; }
+        [JsonProperty("shipping")]
+        public OrderUpdateShippingOptions Shipping { get; set; }
 
         /// <summary>
         /// Current order status. One of created, paid, canceled, fulfilled, or returned.

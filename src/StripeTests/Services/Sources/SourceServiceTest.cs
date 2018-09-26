@@ -26,11 +26,29 @@ namespace StripeTests
                 Currency = "usd",
                 Mandate = new SourceMandateOptions
                 {
-                    MandateAcceptanceDate = DateTime.Parse("Mon, 01 Jan 2001 00:00:00Z"),
-                    MandateAcceptanceIp = "127.0.0.1",
-                    MandateAcceptanceStatus = "accepted",
-                    MandateAcceptanceUserAgent = "User-Agent",
-                    MandateNotificationMethod = "manual",
+                    Acceptance = new SourceMandateAcceptanceOptions
+                    {
+                        Date = DateTime.Parse("Mon, 01 Jan 2001 00:00:00Z"),
+                        Ip = "127.0.0.1",
+                        NotificationMethod = "manual",
+                        Status = "accepted",
+                        UserAgent = "User-Agent",
+                    },
+                },
+                Owner = new SourceOwnerOptions
+                {
+                    Address = new AddressOptions
+                    {
+                        State = "CA",
+                        City = "City",
+                        Line1 = "Line1",
+                        Line2 = "Line2",
+                        PostalCode = "90210",
+                        Country = "US",
+                    },
+                    Email = "email@stripe.com",
+                    Name = "Owner Name",
+                    Phone = "5555555555",
                 },
                 Receiver = new SourceReceiverOptions
                 {

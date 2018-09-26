@@ -30,7 +30,7 @@ namespace StripeTests.Infrastructure.TestData
         public bool? Bool { get; set; }
 
         [JsonProperty("date_filter")]
-        public DateFilter DateFilter { get; set; }
+        public DateRangeOptions DateRangeOptions { get; set; }
 
         [JsonProperty("datetime")]
         public DateTime? DateTime { get; set; }

@@ -2,12 +2,9 @@
 {
     using Newtonsoft.Json;
 
-    public class ApplicationFeeListOptions : ListOptions
+    public class ApplicationFeeListOptions : ListOptionsWithCreated
     {
         [JsonProperty("charge")]
         public string ChargeId { get; set; }
-
-        [JsonProperty("created")]
-        public DateFilter Created { get; set; }
     }
 }

@@ -3,6 +3,7 @@ namespace StripeTests.Issuing
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using Stripe;
     using Stripe.Issuing;
     using Xunit;
 
@@ -23,11 +24,15 @@ namespace StripeTests.Issuing
             {
                 Billing = new BillingOptions
                 {
-                    City = "city",
-                    Country = "US",
-                    Line1 = "line1",
-                    PostalCode = "90210",
-                    State = "CA",
+                    Address = new AddressOptions
+                    {
+                        City = "city",
+                        Country = "US",
+                        Line1 = "line1",
+                        PostalCode = "90210",
+                        State = "CA",
+                    },
+                    Name = "Billing Name",
                 },
                 Name = "John Doe",
                 Type = "individual",
