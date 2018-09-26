@@ -12,6 +12,9 @@
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
         [JsonProperty("destination")]
         public string Destination { get; set; }
 

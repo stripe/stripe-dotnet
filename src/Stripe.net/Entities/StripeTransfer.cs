@@ -39,6 +39,9 @@
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
         #region Expandable Destination
         public string DestinationId { get; set; }
 
