@@ -5,16 +5,10 @@ namespace Stripe.Issuing
 
     public class EvidenceOptions : INestedOptions
     {
-        [JsonProperty("fraudulent[dispute_explanation]")]
-        public string FraudulentDisputeExplanation { get; set; }
+        [JsonProperty("fraudulent")]
+        public EvidenceDetailsOptions Fraudulent { get; set; }
 
-        [JsonProperty("fraudulent[uncategorized_file]")]
-        public string FraudulentUncategorizedFile { get; set; }
-
-        [JsonProperty("other[dispute_explanation]")]
-        public string OtherDisputeExplanation { get; set; }
-
-        [JsonProperty("other[uncategorized_file]")]
-        public string OtherUncategorizedFile { get; set; }
+        [JsonProperty("other")]
+        public EvidenceDetailsOptions Other { get; set; }
     }
 }

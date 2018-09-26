@@ -18,16 +18,10 @@ namespace Stripe
         public int? ApplicationFee { get; set; }
 
         /// <summary>
-        /// ID of an existing, connected stripe account.
+        /// An optional dictionary containing a new destination amount to use. Can only be used with destination charges created with Stripe Connect.
         /// </summary>
-        [JsonProperty("destination[account]")]
-        public string Destination { get; set; }
-
-        /// <summary>
-        /// The amount to transfer to the destination account without creating an Application Fee. Cannot be combined with the <see cref="ApplicationFee" /> parameter. Must be equal to or lesser than the charge amount.
-        /// </summary>
-        [JsonProperty("destination[amount]")]
-        public int? DestinationAmount { get; set; }
+        [JsonProperty("destination")]
+        public ChargeDestinationOptions Destination { get; set; }
 
         [JsonProperty("exchange_rate")]
         public decimal? ExchangeRate { get; set; }

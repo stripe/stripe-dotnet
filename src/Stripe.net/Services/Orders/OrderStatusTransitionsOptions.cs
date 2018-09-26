@@ -1,20 +1,32 @@
 namespace Stripe
 {
-    using System.Collections.Generic;
+    using System;
     using Newtonsoft.Json;
 
     public class OrderStatusTransitionsOptions : INestedOptions
     {
         [JsonProperty("canceled")]
-        public DateFilter Canceled { get; set; }
+        public DateTime? Canceled { get; set; }
+
+        [JsonProperty("canceled")]
+        public DateRangeOptions CanceledRange { get; set; }
 
         [JsonProperty("fulfilled")]
-        public DateFilter Fulfilled { get; set; }
+        public DateTime? Fulfilled { get; set; }
+
+        [JsonProperty("fulfilled")]
+        public DateRangeOptions FulfilledRange { get; set; }
 
         [JsonProperty("paid")]
-        public DateFilter Paid { get; set; }
+        public DateTime? Paid { get; set; }
+
+        [JsonProperty("paid")]
+        public DateRangeOptions PaidRange { get; set; }
 
         [JsonProperty("returned")]
-        public DateFilter Returned { get; set; }
+        public DateTime? Returned { get; set; }
+
+        [JsonProperty("returned")]
+        public DateRangeOptions ReturnedRange { get; set; }
     }
 }

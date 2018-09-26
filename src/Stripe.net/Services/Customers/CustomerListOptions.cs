@@ -2,11 +2,8 @@
 {
     using Newtonsoft.Json;
 
-    public class CustomerListOptions : ListOptions
+    public class CustomerListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("created")]
-        public DateFilter Created { get; set; }
-
         [JsonProperty("email")]
         public string Email { get; set; }
     }

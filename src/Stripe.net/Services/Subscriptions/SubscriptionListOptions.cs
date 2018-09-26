@@ -2,16 +2,13 @@
 {
     using Newtonsoft.Json;
 
-    public class SubscriptionListOptions : ListOptions
+    public class SubscriptionListOptions : ListOptionsWithCreated
     {
         /// <summary>
         /// The billing mode of the subscriptions to retrieve. One of <see cref="Billing" />.
         /// </summary>
         [JsonProperty("billing")]
         public Billing? Billing { get; set; }
-
-        [JsonProperty("created")]
-        public DateFilter Created { get; set; }
 
         /// <summary>
         /// The ID of the customer whose subscriptions will be retrieved.
