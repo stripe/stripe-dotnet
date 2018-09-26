@@ -6,7 +6,7 @@ namespace Stripe.Issuing
     public class DisputeCreateOptions : CardholderSharedOptions
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("evidence")]
         public EvidenceOptions Evidence { get; set; }

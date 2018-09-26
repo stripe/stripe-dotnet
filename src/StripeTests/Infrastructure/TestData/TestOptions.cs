@@ -27,37 +27,25 @@ namespace StripeTests.Infrastructure.TestData
         public string[] Array { get; set; }
 
         [JsonProperty("bool")]
-        public bool Bool { get; set; }
-
-        [JsonProperty("bool_nullable")]
-        public bool? BoolNullable { get; set; }
+        public bool? Bool { get; set; }
 
         [JsonProperty("date_filter")]
         public DateFilter DateFilter { get; set; }
 
-        [JsonProperty("datetime_nullable")]
-        public DateTime? DateTimeNullable { get; set; }
+        [JsonProperty("datetime")]
+        public DateTime? DateTime { get; set; }
 
         [JsonProperty("decimal")]
-        public decimal Decimal { get; set; }
-
-        [JsonProperty("decimal_nullable")]
-        public decimal? DecimalNullable { get; set; }
+        public decimal? Decimal { get; set; }
 
         [JsonProperty("dictionary")]
         public Dictionary<string, object> Dictionary { get; set; }
 
         [JsonProperty("enum")]
-        public TestEnum Enum { get; set; }
-
-        [JsonProperty("enum_nullable")]
-        public TestEnum? EnumNullable { get; set; }
+        public TestEnum? Enum { get; set; }
 
         [JsonProperty("int")]
-        public int Int { get; set; }
-
-        [JsonProperty("int_nullable")]
-        public int? IntNullable { get; set; }
+        public int? Int { get; set; }
 
         [JsonProperty("list")]
         public List<object> List { get; set; }
