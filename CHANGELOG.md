@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.9.1 - 2018-09-27
+* [#1300](https://github.com/stripe/stripe-dotnet/pull/1300) Make internals visible to Newtonsoft.Json
+
 ## 19.9.0 - 2018-09-26
 * [#1296](https://github.com/stripe/stripe-dotnet/pull/1296) Add `Description` on `StripeTransfer`, `StripeTransferCreateOptions` and `StripeTransferUpdateOptions`
 
