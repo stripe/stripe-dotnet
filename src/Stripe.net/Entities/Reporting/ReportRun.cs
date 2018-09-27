@@ -27,7 +27,7 @@ namespace Stripe.Reporting
         public string ReportType { get; set; }
 
         [JsonProperty("result")]
-        public FileUpload Result { get; set; }
+        public File Result { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }

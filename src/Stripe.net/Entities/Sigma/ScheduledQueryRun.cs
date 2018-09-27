@@ -21,7 +21,7 @@
         public string Error { get; set; }
 
         [JsonProperty("file")]
-        public FileUpload File { get; set; }
+        public File File { get; set; }
 
         [JsonProperty("result_available_until")]
         [JsonConverter(typeof(DateTimeConverter))]
