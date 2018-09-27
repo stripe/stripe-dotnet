@@ -15,14 +15,14 @@
         public string CancellationPolicyFileId { get; set; }
 
         [JsonIgnore]
-        public FileUpload CancellationPolicyFile { get; set; }
+        public File CancellationPolicyFile { get; set; }
 
         [JsonProperty("cancellation_policy")]
         internal object InternalCancellationPolicy
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.CancellationPolicyFileId = s, o => this.CancellationPolicyFile = o);
+                StringOrObject<File>.Map(value, s => this.CancellationPolicyFileId = s, o => this.CancellationPolicyFile = o);
             }
         }
         #endregion
@@ -37,14 +37,14 @@
         public string CustomerCommunicationFileId { get; set; }
 
         [JsonIgnore]
-        public FileUpload CustomerCommunicationFile { get; set; }
+        public File CustomerCommunicationFile { get; set; }
 
         [JsonProperty("customer_communication")]
         internal object InternalCustomerCommunication
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.CustomerCommunicationFileId = s, o => this.CustomerCommunicationFile = o);
+                StringOrObject<File>.Map(value, s => this.CustomerCommunicationFileId = s, o => this.CustomerCommunicationFile = o);
             }
         }
         #endregion
@@ -62,14 +62,14 @@
         public string CustomerSignatureFileId { get; set; }
 
         [JsonIgnore]
-        public FileUpload CustomerSignatureFile { get; set; }
+        public File CustomerSignatureFile { get; set; }
 
         [JsonProperty("customer_signature")]
         internal object InternalCustomerSignatureFile
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.CustomerSignatureFileId = s, o => this.CustomerSignatureFile = o);
+                StringOrObject<File>.Map(value, s => this.CustomerSignatureFileId = s, o => this.CustomerSignatureFile = o);
             }
         }
         #endregion
@@ -78,14 +78,14 @@
         public string DuplicateChargeDocumentationFileId { get; set; }
 
         [JsonIgnore]
-        public FileUpload DuplicateChargeDocumentationFile { get; set; }
+        public File DuplicateChargeDocumentationFile { get; set; }
 
         [JsonProperty("duplicate_charge_documentation")]
         internal object InternalDuplicateChargeDocumentationFile
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.DuplicateChargeDocumentationFileId = s, o => this.DuplicateChargeDocumentationFile = o);
+                StringOrObject<File>.Map(value, s => this.DuplicateChargeDocumentationFileId = s, o => this.DuplicateChargeDocumentationFile = o);
             }
         }
         #endregion
@@ -103,14 +103,14 @@
         public string ReceiptFileId { get; set; }
 
         [JsonIgnore]
-        public FileUpload ReceiptFile { get; set; }
+        public File ReceiptFile { get; set; }
 
         [JsonProperty("receipt")]
         internal object InternalReceiptFile
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.ReceiptFileId = s, o => this.ReceiptFile = o);
+                StringOrObject<File>.Map(value, s => this.ReceiptFileId = s, o => this.ReceiptFile = o);
             }
         }
         #endregion
@@ -119,14 +119,14 @@
         public string RefundPolicyFileId { get; set; }
 
         [JsonIgnore]
-        public FileUpload RefundPolicyFile { get; set; }
+        public File RefundPolicyFile { get; set; }
 
         [JsonProperty("refund_policy")]
         internal object InternalRefundPolicyFile
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.RefundPolicyFileId = s, o => this.RefundPolicyFile = o);
+                StringOrObject<File>.Map(value, s => this.RefundPolicyFileId = s, o => this.RefundPolicyFile = o);
             }
         }
         #endregion
@@ -144,14 +144,14 @@
         public string ServiceDocumentationFileId { get; set; }
 
         [JsonIgnore]
-        public FileUpload ServiceDocumentationFile { get; set; }
+        public File ServiceDocumentationFile { get; set; }
 
         [JsonProperty("service_documentation")]
         internal object InternalServiceDocumentationFile
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.ServiceDocumentationFileId = s, o => this.ServiceDocumentationFile = o);
+                StringOrObject<File>.Map(value, s => this.ServiceDocumentationFileId = s, o => this.ServiceDocumentationFile = o);
             }
         }
         #endregion
@@ -169,14 +169,14 @@
         public string ShippingDocumentationFileId { get; set; }
 
         [JsonIgnore]
-        public FileUpload ShippingDocumentationFile { get; set; }
+        public File ShippingDocumentationFile { get; set; }
 
         [JsonProperty("shipping_documentation")]
         internal object InternalShippingDocumentationFile
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.ShippingDocumentationFileId = s, o => this.ShippingDocumentationFile = o);
+                StringOrObject<File>.Map(value, s => this.ShippingDocumentationFileId = s, o => this.ShippingDocumentationFile = o);
             }
         }
         #endregion
@@ -188,14 +188,14 @@
         public string UncategorizedFileId { get; set; }
 
         [JsonIgnore]
-        public FileUpload UncategorizedFile { get; set; }
+        public File UncategorizedFile { get; set; }
 
         [JsonProperty("uncategorized_file")]
         internal object InternalUncategorizedFile
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.UncategorizedFileId = s, o => this.UncategorizedFile = o);
+                StringOrObject<File>.Map(value, s => this.UncategorizedFileId = s, o => this.UncategorizedFile = o);
             }
         }
         #endregion

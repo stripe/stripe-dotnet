@@ -17,7 +17,7 @@ namespace StripeTests
         /// <remarks>
         /// If you bump this, don't forget to bump `STRIPE_MOCK_VERSION` in appveyor.yml as well.
         /// </remarks>
-        private const string MockMinimumVersion = "0.30.0";
+        private const string MockMinimumVersion = "0.33.0";
 
         private static string port;
 
@@ -146,7 +146,7 @@ namespace StripeTests
             }
 
             StripeConfiguration.SetApiBase($"http://localhost:{port}/v1");
-            StripeConfiguration.SetUploadsBase($"http://localhost:{port}/v1");
+            StripeConfiguration.SetFilesBase($"http://localhost:{port}/v1");
             StripeConfiguration.SetApiKey("sk_test_123");
 
             return null;

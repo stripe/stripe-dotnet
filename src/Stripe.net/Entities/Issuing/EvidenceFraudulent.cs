@@ -12,14 +12,14 @@ namespace Stripe.Issuing
         public string UncategorizedFileId { get; set; }
 
         [JsonIgnore]
-        public FileUpload UncategorizedFile { get; set; }
+        public File UncategorizedFile { get; set; }
 
         [JsonProperty("uncategorized_file")]
         internal object InternalUncategorizedFile
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.UncategorizedFileId = s, o => this.UncategorizedFile = o);
+                StringOrObject<File>.Map(value, s => this.UncategorizedFileId = s, o => this.UncategorizedFile = o);
             }
         }
         #endregion
