@@ -51,14 +51,14 @@ namespace Stripe
         /// The file object this link points to (if expanded).
         /// </summary>
         [JsonIgnore]
-        public FileUpload File { get; set; }
+        public File File { get; set; }
 
         [JsonProperty("file")]
         internal object InternalFile
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.FileId = s, o => this.File = o);
+                StringOrObject<File>.Map(value, s => this.FileId = s, o => this.File = o);
             }
         }
         #endregion

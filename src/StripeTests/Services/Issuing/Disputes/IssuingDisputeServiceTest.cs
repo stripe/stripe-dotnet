@@ -21,13 +21,13 @@ namespace StripeTests.Issuing
 
             this.createOptions = new DisputeCreateOptions()
             {
+                DisputedTransactionId = "ipi_123",
                 Evidence = new EvidenceOptions
                 {
                     FraudulentDisputeExplanation = "Explanation",
                     FraudulentUncategorizedFile = "file_123",
                 },
                 Reason = "fraudulent",
-                TransactionId = "ipi_123",
             };
 
             this.updateOptions = new DisputeUpdateOptions()
