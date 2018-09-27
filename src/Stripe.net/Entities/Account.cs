@@ -15,14 +15,14 @@
         public string BusinessLogoFileId { get; set; }
 
         [JsonIgnore]
-        public FileUpload BusinessLogo { get; set; }
+        public File BusinessLogo { get; set; }
 
         [JsonProperty("business_logo")]
         internal object InternalBusinessLogo
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.BusinessLogoFileId = s, o => this.BusinessLogo = o);
+                StringOrObject<File>.Map(value, s => this.BusinessLogoFileId = s, o => this.BusinessLogo = o);
             }
         }
         #endregion

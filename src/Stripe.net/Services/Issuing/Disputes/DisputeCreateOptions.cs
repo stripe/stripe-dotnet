@@ -8,13 +8,13 @@ namespace Stripe.Issuing
         [JsonProperty("amount")]
         public int? Amount { get; set; }
 
+        [JsonProperty("disputed_transaction")]
+        public string DisputedTransactionId { get; set; }
+
         [JsonProperty("evidence")]
         public EvidenceOptions Evidence { get; set; }
 
         [JsonProperty("reason")]
         public string Reason { get; set; }
-
-        [JsonProperty("transaction")]
-        public string TransactionId { get; set; }
     }
 }

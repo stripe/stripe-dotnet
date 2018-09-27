@@ -4,7 +4,7 @@
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class FileUpload : StripeEntityWithId
+    public class File : StripeEntityWithId
     {
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -24,6 +24,9 @@
 
         [JsonProperty("size")]
         public int Size { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
