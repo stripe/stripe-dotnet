@@ -39,7 +39,7 @@ namespace StripeTests
             Assert.Equal("account", account.Object);
 
             Assert.NotNull(account.BusinessLogo);
-            Assert.Equal("file_upload", account.BusinessLogo.Object);
+            Assert.Equal("file", account.BusinessLogo.Object);
         }
     }
 }
