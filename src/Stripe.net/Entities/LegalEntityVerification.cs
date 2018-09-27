@@ -15,14 +15,14 @@
         public string DocumentId { get; set; }
 
         [JsonIgnore]
-        public FileUpload Document { get; set; }
+        public File Document { get; set; }
 
         [JsonProperty("document")]
         internal object InternalDocument
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.DocumentId = s, o => this.Document = o);
+                StringOrObject<File>.Map(value, s => this.DocumentId = s, o => this.Document = o);
             }
         }
         #endregion
@@ -31,14 +31,14 @@
         public string DocumentIdBack { get; set; }
 
         [JsonIgnore]
-        public FileUpload DocumentBack { get; set; }
+        public File DocumentBack { get; set; }
 
         [JsonProperty("document_back")]
         internal object InternalDocumentBack
         {
             set
             {
-                StringOrObject<FileUpload>.Map(value, s => this.DocumentIdBack = s, o => this.DocumentBack = o);
+                StringOrObject<File>.Map(value, s => this.DocumentIdBack = s, o => this.DocumentBack = o);
             }
         }
         #endregion

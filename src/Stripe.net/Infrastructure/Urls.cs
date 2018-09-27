@@ -42,13 +42,11 @@
 
         internal static string DefaultBaseConnectUrl => "https://connect.stripe.com";
 
-        private static string BaseConnectUrl => StripeConfiguration.GetConnectBase();
+        internal static string BaseConnectUrl => StripeConfiguration.GetConnectBase();
 
-        internal static string DefaultBaseUploadsUrl => "https://uploads.stripe.com/v1";
+        internal static string DefaultBaseFilesUrl => "https://files.stripe.com/v1";
 
-        private static string BaseUploadsUrl => StripeConfiguration.GetUploadsBase();
-
-        public static string FileUploads => BaseUploadsUrl + "/files";
+        internal static string BaseFilesUrl => StripeConfiguration.GetFilesBase();
 
         public static string Topups => BaseUrl + "/topups";
     }

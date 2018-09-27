@@ -4,7 +4,7 @@ namespace Stripe
     using System.IO;
     using Newtonsoft.Json;
 
-    public class FileUploadCreateOptions : BaseOptions
+    public class FileCreateOptions : BaseOptions
     {
         /// <summary>
         /// REQUIRED. A file to upload. The file should follow the specifications of RFC 2388
