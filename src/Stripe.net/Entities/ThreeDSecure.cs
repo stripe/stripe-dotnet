@@ -26,7 +26,7 @@
         public string Currency { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("redirect_url")]
         public string RedirectUrl { get; set; }

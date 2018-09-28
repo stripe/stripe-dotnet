@@ -38,7 +38,7 @@ namespace Stripe
         /// <code>false</code> if the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         #region Expandable File
 

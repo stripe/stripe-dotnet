@@ -11,7 +11,7 @@
         public string Scope { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("stripe_user_id")]
         public string StripeUserId { get; set; }

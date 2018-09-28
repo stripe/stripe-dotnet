@@ -33,7 +33,7 @@
         public int? DurationInMonths { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("max_redemptions")]
         public int? MaxRedemptions { get; set; }

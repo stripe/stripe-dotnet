@@ -18,7 +18,7 @@ namespace Stripe
         public DateTime Created { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("reason")]
         public string Reason { get; set; }
