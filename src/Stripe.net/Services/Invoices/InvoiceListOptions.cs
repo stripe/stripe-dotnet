@@ -1,5 +1,6 @@
 ﻿﻿namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
 
     public class InvoiceListOptions : ListOptions
@@ -14,13 +15,22 @@
         public string CustomerId { get; set; }
 
         [JsonProperty("date")]
-        public DateFilter Date { get; set; }
+        public DateTime? Date { get; set; }
+
+        /// <summary>
+        /// A filter on the list based on the object date field.
+        /// </summary>
+        [JsonProperty("date")]
+        public DateRangeOptions DateRange { get; set; }
+
+        [JsonProperty("due_date")]
+        public DateTime? DueDate { get; set; }
 
         /// <summary>
         /// A filter on the list based on the object due_date field.
         /// </summary>
         [JsonProperty("due_date")]
-        public DateFilter DueDate { get; set; }
+        public DateRangeOptions DueDateRange { get; set; }
 
         /// <summary>
         /// A filter on the list based on the object paid field.

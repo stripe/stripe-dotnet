@@ -2,9 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class TopupListOptions : ListOptions
+    public class TopupListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("created")]
-        public DateFilter Created { get; set; }
     }
 }

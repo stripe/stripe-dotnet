@@ -2,11 +2,8 @@ namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
 
-    public class CardholderListOptions : ListOptions
+    public class CardholderListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("created")]
-        public DateFilter Created { get; set; }
-
         [JsonProperty("email")]
         public string Email { get; set; }
 

@@ -2,11 +2,8 @@
 {
     using Newtonsoft.Json;
 
-    public class FileListOptions : ListOptions
+    public class FileListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("created")]
-        public DateFilter Created { get; set; }
-
         [JsonProperty("purpose")]
         public string Purpose { get; set; }
     }

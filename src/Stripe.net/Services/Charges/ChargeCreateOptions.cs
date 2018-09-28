@@ -37,16 +37,10 @@
         public string Description { get; set; }
 
         /// <summary>
-        /// ID of an existing, connected stripe account.
+        /// If specified, the charge will be attributed to the destination account for tax reporting, and the funds from the charge will be transferred to the destination account.
         /// </summary>
-        [JsonProperty("destination[account]")]
-        public string Destination { get; set; }
-
-        /// <summary>
-        /// The amount to transfer to the destination account without creating an Application Fee. Cannot be combined with the <see cref="ApplicationFee" /> parameter. Must be equal to or lesser than the charge amount.
-        /// </summary>
-        [JsonProperty("destination[amount]")]
-        public int? DestinationAmount { get; set; }
+        [JsonProperty("destination")]
+        public ChargeDestinationCreateOptions Destination { get; set; }
 
         [JsonProperty("exchange_rate")]
         public decimal? ExchangeRate { get; set; }

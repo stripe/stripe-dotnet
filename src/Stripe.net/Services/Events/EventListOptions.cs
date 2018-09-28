@@ -2,12 +2,9 @@
 {
     using Newtonsoft.Json;
 
-    public class EventListOptions : ListOptions
+    public class EventListOptions : ListOptionsWithCreated
     {
         [JsonProperty("type")]
         public string Type { get; set; }
-
-        [JsonProperty("created")]
-        public DateFilter Created { get; set; }
     }
 }
