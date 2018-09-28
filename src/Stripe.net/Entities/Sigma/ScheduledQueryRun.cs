@@ -1,4 +1,4 @@
-﻿namespace Stripe.Sigma
+namespace Stripe.Sigma
 {
     using System;
     using Newtonsoft.Json;
