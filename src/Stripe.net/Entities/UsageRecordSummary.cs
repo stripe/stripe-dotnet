@@ -13,7 +13,7 @@ namespace Stripe
         public string InvoiceId { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("period")]
         public Period Period { get; set; }
