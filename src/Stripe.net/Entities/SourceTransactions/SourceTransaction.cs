@@ -24,7 +24,7 @@ namespace Stripe
         public string CustomerData { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("source")]
         public string Source { get; set; }

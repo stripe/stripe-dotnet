@@ -98,7 +98,7 @@
         public List<OrderItem> OrderItems { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to an order object. It can be useful for storing additional information about the order in a structured format.

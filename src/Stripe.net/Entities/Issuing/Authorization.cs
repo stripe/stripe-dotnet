@@ -58,7 +58,7 @@ namespace Stripe.Issuing
         public bool IsHeldAmountControllable { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("merchant_data")]
         public MerchantData MerchantData { get; set; }

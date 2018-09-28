@@ -33,7 +33,7 @@
         public List<OrderItem> OrderItems { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         #region Expandable Order
 
