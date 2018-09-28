@@ -87,7 +87,7 @@
         public string Currency { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         #region Expandable Originating Transaction
         public string OriginatingTransactionId { get; set; }

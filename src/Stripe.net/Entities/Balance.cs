@@ -15,7 +15,7 @@
         public List<BalanceAmount> ConnectReserved { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("pending")]
         public List<BalanceAmount> Pending { get; set; }

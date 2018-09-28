@@ -98,7 +98,7 @@ namespace Stripe.Issuing
         #endregion
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("merchant_data")]
         public MerchantData MerchantData { get; set; }

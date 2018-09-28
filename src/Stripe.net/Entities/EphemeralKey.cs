@@ -37,6 +37,6 @@ namespace Stripe
         public DateTime Expires { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
     }
 }
