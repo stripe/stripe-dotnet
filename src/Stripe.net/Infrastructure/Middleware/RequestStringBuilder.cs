@@ -1,4 +1,4 @@
-﻿namespace Stripe.Infrastructure.Middleware
+namespace Stripe.Infrastructure.Middleware
 {
     using System;
     using System.Collections;

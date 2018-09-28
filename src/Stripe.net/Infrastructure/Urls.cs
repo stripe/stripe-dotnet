@@ -1,4 +1,4 @@
-﻿namespace Stripe.Infrastructure
+namespace Stripe.Infrastructure
 {
     internal static class Urls
     {
