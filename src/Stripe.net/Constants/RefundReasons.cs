@@ -1,4 +1,4 @@
-﻿namespace Stripe
+namespace Stripe
 {
     public static class RefundReasons
     {

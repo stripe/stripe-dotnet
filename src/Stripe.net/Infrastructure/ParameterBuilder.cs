@@ -1,4 +1,4 @@
-﻿namespace Stripe.Infrastructure
+namespace Stripe.Infrastructure
 {
     using System.Collections.Generic;
     using System.Linq;

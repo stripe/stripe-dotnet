@@ -1,4 +1,4 @@
-﻿namespace Stripe
+namespace Stripe
 {
     using System;
     using Newtonsoft.Json;

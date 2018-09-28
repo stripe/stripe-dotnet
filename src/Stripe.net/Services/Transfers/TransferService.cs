@@ -1,4 +1,4 @@
-﻿namespace Stripe
+namespace Stripe
 {
     using System.Collections.Generic;
     using System.Threading;

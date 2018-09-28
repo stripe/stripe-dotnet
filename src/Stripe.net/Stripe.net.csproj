@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for the Stripe API.  (Official Library)</Description>
@@ -69,8 +69,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.2'">
-    <PackageReference Include="System.Security.Cryptography.Algorithms">
-      <Version>4.3.0</Version>
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.0">
     </PackageReference>
   </ItemGroup>
 
