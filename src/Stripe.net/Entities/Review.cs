@@ -30,7 +30,7 @@
         public DateTime Created { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("open")]
         public bool Open { get; set; }

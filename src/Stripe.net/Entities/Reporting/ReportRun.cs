@@ -18,7 +18,7 @@ namespace Stripe.Reporting
         public string Error { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("parameters")]
         public Parameters Parameters { get; set; }

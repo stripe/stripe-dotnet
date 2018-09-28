@@ -63,7 +63,7 @@
         /// Flag indicating whether the object exists in live mode or test mode.
         /// </summary>
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         /// <summary>
         /// Set of key/value pairs that you can attach to an object. It can be useful for storing additional information about the object in a structured format.

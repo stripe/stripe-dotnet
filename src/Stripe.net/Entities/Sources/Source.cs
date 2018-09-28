@@ -54,7 +54,7 @@
         public string Flow { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to a source object. It can be useful for storing additional information about the source in a structured format.
