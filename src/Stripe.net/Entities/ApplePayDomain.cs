@@ -23,6 +23,6 @@ namespace Stripe
         public string DomainName { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
     }
 }

@@ -23,7 +23,7 @@
         public DateTime? Created { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

@@ -66,7 +66,7 @@ namespace Stripe
         public string FailureMessage { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to a topup object. It can be useful for storing additional information about the topup in a structured format.

@@ -23,7 +23,7 @@
         public EventData Data { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("pending_webhooks")]
         public int PendingWebhooks { get; set; }

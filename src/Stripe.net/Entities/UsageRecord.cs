@@ -10,7 +10,7 @@
         public string Object { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("subscription_item")]
         public string SubscriptionItem { get; set; }
