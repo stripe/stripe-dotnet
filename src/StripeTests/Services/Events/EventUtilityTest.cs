@@ -14,7 +14,7 @@ namespace StripeTests
         {
             this.eventTimestamp = 1533204620;
             this.secret = "webhook_secret";
-            this.signature = $"t={this.eventTimestamp},v1=cc2ebf93827f22fecfc48f8c665079f73cf0c10a86c16e2607f8be8bda1cfb14,v0=63f3a72374a733066c4be69ed7f8e5ac85c22c9f0a6a612ab9a025a9e4ee7eef";
+            this.signature = $"t={this.eventTimestamp},v1=f0bdba6d4eacbd8ad8a3bbadd7248e633ec1477f7899c124c51b39405fa36613,v0=63f3a72374a733066c4be69ed7f8e5ac85c22c9f0a6a612ab9a025a9e4ee7eef";
             this.json = GetResourceAsString("event_test_signature.json");
         }
 
