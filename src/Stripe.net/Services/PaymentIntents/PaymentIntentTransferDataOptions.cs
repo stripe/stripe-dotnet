@@ -1,14 +1,14 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PaymentIntentTransferDataOptions : INestedOptions
     {
-        [JsonProperty("amount")]
+        [FormProperty("amount")]
         public int? Amount { get; set; }
 
         // This is only available on creation and not update
-        [JsonProperty("destination")]
+        [FormProperty("destination")]
         public string Destination { get; set; }
     }
 }

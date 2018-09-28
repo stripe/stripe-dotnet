@@ -1,31 +1,31 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ShippingOptions : INestedOptions
     {
-        [JsonProperty("name")]
+        [FormProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("phone")]
+        [FormProperty("phone")]
         public string Phone { get; set; }
 
-        [JsonProperty("address[city]")]
+        [FormProperty("address[city]")]
         public string CityOrTown { get; set; }
 
-        [JsonProperty("address[country]")]
+        [FormProperty("address[country]")]
         public string Country { get; set; }
 
-        [JsonProperty("address[line1]")]
+        [FormProperty("address[line1]")]
         public string Line1 { get; set; }
 
-        [JsonProperty("address[line2]")]
+        [FormProperty("address[line2]")]
         public string Line2 { get; set; }
 
-        [JsonProperty("address[postal_code]")]
+        [FormProperty("address[postal_code]")]
         public string PostalCode { get; set; }
 
-        [JsonProperty("address[state]")]
+        [FormProperty("address[state]")]
         public string State { get; set; }
     }
 }

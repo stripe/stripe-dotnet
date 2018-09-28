@@ -1,7 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PaymentIntentCancelOptions : BaseOptions
     {

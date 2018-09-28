@@ -1,13 +1,13 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class BankAccountVerifyOptions : BaseOptions
     {
-        [JsonProperty("amounts[]")]
+        [FormProperty("amounts[]")]
         public int? AmountOne { get; set; }
 
-        [JsonProperty("amounts[]")]
+        [FormProperty("amounts[]")]
         public int? AmountTwo { get; set; }
     }
 }

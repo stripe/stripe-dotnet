@@ -1,20 +1,20 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class DisputeCreateOptions : CardholderSharedOptions
     {
-        [JsonProperty("amount")]
+        [FormProperty("amount")]
         public int? Amount { get; set; }
 
-        [JsonProperty("disputed_transaction")]
+        [FormProperty("disputed_transaction")]
         public string DisputedTransactionId { get; set; }
 
-        [JsonProperty("evidence")]
+        [FormProperty("evidence")]
         public EvidenceOptions Evidence { get; set; }
 
-        [JsonProperty("reason")]
+        [FormProperty("reason")]
         public string Reason { get; set; }
     }
 }

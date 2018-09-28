@@ -1,13 +1,13 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ChargeListOptions : ListOptions
     {
-        [JsonProperty("created")]
+        [FormProperty("created")]
         public DateFilter Created { get; set; }
 
-        [JsonProperty("customer")]
+        [FormProperty("customer")]
         public string CustomerId { get; set; }
     }
 }

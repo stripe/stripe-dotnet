@@ -2,20 +2,20 @@
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CardCreateOptions : BaseOptions, ISupportMetadata
     {
-        [JsonProperty("source")]
+        [FormProperty("source")]
         public string SourceToken { get; set; }
 
-        [JsonProperty("source")]
+        [FormProperty("source")]
         public CardCreateNestedOptions SourceCard { get; set; }
 
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("default_for_currency")]
+        [FormProperty("default_for_currency")]
         public bool? DefaultForCurrency { get; set; }
     }
 }

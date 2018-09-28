@@ -1,38 +1,38 @@
 ﻿namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CardUpdateOptions : BaseOptions, ISupportMetadata
     {
-        [JsonProperty("exp_month")]
+        [FormProperty("exp_month")]
         public int? ExpirationMonth { get; set; }
 
-        [JsonProperty("exp_year")]
+        [FormProperty("exp_year")]
         public int? ExpirationYear { get; set; }
 
-        [JsonProperty("name")]
+        [FormProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("address_line1")]
+        [FormProperty("address_line1")]
         public string AddressLine1 { get; set; }
 
-        [JsonProperty("address_line2")]
+        [FormProperty("address_line2")]
         public string AddressLine2 { get; set; }
 
-        [JsonProperty("address_city")]
+        [FormProperty("address_city")]
         public string AddressCity { get; set; }
 
-        [JsonProperty("address_state")]
+        [FormProperty("address_state")]
         public string AddressState { get; set; }
 
-        [JsonProperty("address_zip")]
+        [FormProperty("address_zip")]
         public string AddressZip { get; set; }
 
-        [JsonProperty("address_country")]
+        [FormProperty("address_country")]
         public string AddressCountry { get; set; }
 
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

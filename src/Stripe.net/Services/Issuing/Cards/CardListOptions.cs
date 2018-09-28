@@ -1,31 +1,31 @@
 namespace Stripe.Issuing
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CardListOptions : ListOptions
     {
-        [JsonProperty("cardholder")]
+        [FormProperty("cardholder")]
         public string CardholderId { get; set; }
 
-        [JsonProperty("created")]
+        [FormProperty("created")]
         public DateFilter Created { get; set; }
 
-        [JsonProperty("exp_month")]
+        [FormProperty("exp_month")]
         public int? ExpMonth { get; set; }
 
-        [JsonProperty("exp_year")]
+        [FormProperty("exp_year")]
         public int? ExpYear { get; set; }
 
-        [JsonProperty("last4")]
+        [FormProperty("last4")]
         public string Last4 { get; set; }
 
-        [JsonProperty("source")]
+        [FormProperty("source")]
         public string SourceId { get; set; }
 
-        [JsonProperty("status")]
+        [FormProperty("status")]
         public string Status { get; set; }
 
-        [JsonProperty("type")]
+        [FormProperty("type")]
         public string Type { get; set; }
     }
 }

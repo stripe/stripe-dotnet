@@ -2,15 +2,14 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
     public class EphemeralKeyCreateOptions : BaseOptions
     {
-        [JsonProperty("customer")]
+        [FormProperty("customer")]
         public string CustomerId { get; set; }
 
-        [JsonIgnore]
+        [FormProperty("-")]
         public string StripeVersion { get; set; }
     }
 }

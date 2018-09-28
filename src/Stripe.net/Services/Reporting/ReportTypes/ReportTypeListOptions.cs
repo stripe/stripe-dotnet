@@ -1,6 +1,6 @@
 namespace Stripe.Reporting
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ReportTypeListOptions : ListOptions
     {

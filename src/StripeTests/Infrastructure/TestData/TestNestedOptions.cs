@@ -4,13 +4,14 @@ namespace StripeTests.Infrastructure.TestData
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe;
+    using Stripe.Infrastructure;
 
     public class TestNestedOptions : INestedOptions
     {
-        [JsonProperty("an_int")]
+        [FormProperty("an_int")]
         public int? AnInt { get; set; }
 
-        [JsonProperty("a_string")]
+        [FormProperty("a_string")]
         public string AString { get; set; }
     }
 }

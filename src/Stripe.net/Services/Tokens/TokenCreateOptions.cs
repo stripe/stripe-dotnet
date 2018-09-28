@@ -1,16 +1,16 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class TokenCreateOptions : BaseOptions
     {
-        [JsonProperty("customer")]
+        [FormProperty("customer")]
         public string CustomerId { get; set; }
 
-        [JsonProperty("card")]
+        [FormProperty("card")]
         public CreditCardOptions Card { get; set; }
 
-        [JsonProperty("bank_account")]
+        [FormProperty("bank_account")]
         public BankAccountOptions BankAccount { get; set; }
     }
 }

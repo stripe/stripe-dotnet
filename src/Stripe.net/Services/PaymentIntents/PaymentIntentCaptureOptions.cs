@@ -1,17 +1,17 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PaymentIntentCaptureOptions : BaseOptions
     {
-        [JsonProperty("amount_to_capture")]
+        [FormProperty("amount_to_capture")]
         public int? AmountToCapture { get; set; }
 
-        [JsonProperty("application_fee_amount")]
+        [FormProperty("application_fee_amount")]
         public int? ApplicationFeeAmount { get; set; }
 
-        [JsonProperty("transfer_data")]
+        [FormProperty("transfer_data")]
         public PaymentIntentTransferDataOptions TransferData { get; set; }
     }
 }

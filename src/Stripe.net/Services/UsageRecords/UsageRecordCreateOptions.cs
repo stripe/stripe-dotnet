@@ -2,21 +2,20 @@
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
     public class UsageRecordCreateOptions : BaseOptions
     {
-        [JsonProperty("action")]
+        [FormProperty("action")]
         public string Action { get; set; }
 
-        [JsonIgnore]
+        [FormProperty("-")]
         public string SubscriptionItem { get; set; }
 
-        [JsonProperty("timestamp")]
+        [FormProperty("timestamp")]
         public DateTime? Timestamp { get; set; }
 
-        [JsonProperty("quantity")]
+        [FormProperty("quantity")]
         public int? Quantity { get; set; }
     }
 }

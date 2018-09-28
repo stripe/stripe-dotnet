@@ -1,20 +1,20 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ExternalAccountCreateOptions : BaseOptions, ISupportMetadata
     {
-        [JsonProperty("external_account")]
+        [FormProperty("external_account")]
         public string ExternalAccountTokenId { get; set; }
 
-        [JsonProperty("external_account")]
+        [FormProperty("external_account")]
         public AccountBankAccountOptions ExternalAccountBankAccount { get; set; }
 
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("default_for_currency")]
+        [FormProperty("default_for_currency")]
         public bool? DefaultForCurrency { get; set; }
     }
 }

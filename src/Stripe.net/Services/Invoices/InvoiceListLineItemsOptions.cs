@@ -1,23 +1,23 @@
 ﻿namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class InvoiceListLineItemsOptions : ListOptions
     {
-        [JsonProperty("coupon")]
+        [FormProperty("coupon")]
         public string CouponId { get; set; }
 
-        [JsonProperty("customer")]
+        [FormProperty("customer")]
         public string CustomerId { get; set; }
 
-        [JsonProperty("subscription")]
+        [FormProperty("subscription")]
         public string SubscriptionId { get; set; }
 
-        [JsonProperty("subscription_items")]
+        [FormProperty("subscription_items")]
         public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
 
-        [JsonProperty("subscription_plan")]
+        [FormProperty("subscription_plan")]
         public string SubscriptionPlanId { get; set; }
     }
 }

@@ -6,6 +6,7 @@ namespace StripeTests.Infrastructure.TestData
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Stripe;
+    using Stripe.Infrastructure;
 
     public class TestOptions : BaseOptions
     {
@@ -23,34 +24,34 @@ namespace StripeTests.Infrastructure.TestData
             TestTwo,
         }
 
-        [JsonProperty("array")]
+        [FormProperty("array")]
         public string[] Array { get; set; }
 
-        [JsonProperty("bool")]
+        [FormProperty("bool")]
         public bool? Bool { get; set; }
 
-        [JsonProperty("date_filter")]
+        [FormProperty("date_filter")]
         public DateFilter DateFilter { get; set; }
 
-        [JsonProperty("datetime")]
+        [FormProperty("datetime")]
         public DateTime? DateTime { get; set; }
 
-        [JsonProperty("decimal")]
+        [FormProperty("decimal")]
         public decimal? Decimal { get; set; }
 
-        [JsonProperty("dictionary")]
+        [FormProperty("dictionary")]
         public Dictionary<string, object> Dictionary { get; set; }
 
-        [JsonProperty("enum")]
+        [FormProperty("enum")]
         public TestEnum? Enum { get; set; }
 
-        [JsonProperty("int")]
+        [FormProperty("int")]
         public int? Int { get; set; }
 
-        [JsonProperty("list")]
+        [FormProperty("list")]
         public List<object> List { get; set; }
 
-        [JsonProperty("string")]
+        [FormProperty("string")]
         public string String { get; set; }
     }
 }

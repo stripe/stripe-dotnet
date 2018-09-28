@@ -1,25 +1,25 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ThreeDSecureCreateOptions : BaseOptions
     {
-        [JsonProperty("amount")]
+        [FormProperty("amount")]
         public int? Amount { get; set; }
 
-        [JsonProperty("currency")]
+        [FormProperty("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("return_url")]
+        [FormProperty("return_url")]
         public string ReturnUrl { get; set; }
 
         /// <summary>
         /// If you pass a card id, you must also pass the customer id
         /// </summary>
-        [JsonProperty("card")]
+        [FormProperty("card")]
         public string CardTokenOrCardId { get; set; }
 
-        [JsonProperty("customer")]
+        [FormProperty("customer")]
         public string CustomerId { get; set; }
     }
 }

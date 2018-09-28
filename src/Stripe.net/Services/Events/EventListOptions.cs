@@ -1,13 +1,13 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class EventListOptions : ListOptions
     {
-        [JsonProperty("type")]
+        [FormProperty("type")]
         public string Type { get; set; }
 
-        [JsonProperty("created")]
+        [FormProperty("created")]
         public DateFilter Created { get; set; }
     }
 }

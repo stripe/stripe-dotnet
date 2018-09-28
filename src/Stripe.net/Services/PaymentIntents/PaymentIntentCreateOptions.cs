@@ -1,23 +1,23 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PaymentIntentCreateOptions : PaymentIntentSharedOptions
     {
-        [JsonProperty("allowed_source_types")]
+        [FormProperty("allowed_source_types")]
         public List<string> AllowedSourceTypes { get; set; }
 
-        [JsonProperty("attempt_confirmation")]
+        [FormProperty("attempt_confirmation")]
         public bool? AttemptConfirmation { get; set; }
 
-        [JsonProperty("capture_method")]
+        [FormProperty("capture_method")]
         public string CaptureMethod { get; set; }
 
-        [JsonProperty("shipping")]
+        [FormProperty("shipping")]
         public ChargeShippingOptions Shipping { get; set; }
 
-        [JsonProperty("statement_descriptor")]
+        [FormProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
     }
 }

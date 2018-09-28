@@ -1,27 +1,26 @@
 ﻿namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
     public class ListOptionsWithCreated : ListOptions
     {
-        [JsonProperty("created")]
+        [FormProperty("created")]
         public DateTime? Created { get; set; }
 
-        [JsonProperty("created")]
+        [FormProperty("created")]
         internal string CreatedInternal => this.Created?.ConvertDateTimeToEpoch().ToString();
 
-        [JsonProperty("created[gt]")]
+        [FormProperty("created[gt]")]
         public DateTime? GreaterThan { get; set; }
 
-        [JsonProperty("created[gte]")]
+        [FormProperty("created[gte]")]
         public DateTime? GreaterThanOrEqual { get; set; }
 
-        [JsonProperty("created[lt]")]
+        [FormProperty("created[lt]")]
         public DateTime? LessThan { get; set; }
 
-        [JsonProperty("created[lte]")]
+        [FormProperty("created[lte]")]
         public DateTime? LessThanOrEqual { get; set; }
     }
 }

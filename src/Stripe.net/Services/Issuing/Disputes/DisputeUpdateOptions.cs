@@ -1,7 +1,7 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class DisputeUpdateOptions : DisputeSharedOptions
     {

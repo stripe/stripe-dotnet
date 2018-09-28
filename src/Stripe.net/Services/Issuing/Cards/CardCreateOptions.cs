@@ -1,23 +1,23 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CardCreateOptions : CardSharedOptions
     {
-        [JsonProperty("cardholder")]
+        [FormProperty("cardholder")]
         public string Cardholder { get; set; }
 
-        [JsonProperty("currency")]
+        [FormProperty("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("name")]
+        [FormProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("shipping")]
+        [FormProperty("shipping")]
         public CardShippingOptions Shipping { get; set; }
 
-        [JsonProperty("type")]
+        [FormProperty("type")]
         public string Type { get; set; }
     }
 }

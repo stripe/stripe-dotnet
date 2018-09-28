@@ -1,38 +1,38 @@
 ﻿namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class OrderListOptions : ListOptionsWithCreated
     {
         /// <summary>
         /// Only return orders for the given customer.
         /// </summary>
-        [JsonProperty("customer")]
+        [FormProperty("customer")]
         public string Customer { get; set; }
 
         /// <summary>
         /// Only return orders with the given IDs.
         /// </summary>
-        [JsonProperty("ids")]
+        [FormProperty("ids")]
         public string[] Ids { get; set; }
 
         /// <summary>
         /// Only return orders that have the given status. One of created, paid, fulfilled, or refunded.
         /// </summary>
-        [JsonProperty("status")]
+        [FormProperty("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// Only return orders that match the given status_transitions. One of canceled, fulfilled, paid or returned.
         /// </summary>
-        [JsonProperty("status_transitions")]
+        [FormProperty("status_transitions")]
         public OrderStatusTransitionsOptions StatusTransitions { get; set; }
 
         /// <summary>
         /// Only return orders with the given upstream order IDs.
         /// </summary>
-        [JsonProperty("upstream_ids")]
+        [FormProperty("upstream_ids")]
         public string[] UpstreamIds { get; set; }
     }
 }

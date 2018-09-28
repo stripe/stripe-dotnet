@@ -1,26 +1,26 @@
 ﻿namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class InvoiceItemUpdateOptions : BaseOptions, ISupportMetadata
     {
-        [JsonProperty("amount")]
+        [FormProperty("amount")]
         public int? Amount { get; set; }
 
-        [JsonProperty("description")]
+        [FormProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("discountable")]
+        [FormProperty("discountable")]
         public bool? Discountable { get; set; }
 
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("quantity")]
+        [FormProperty("quantity")]
         public int? Quantity { get; set; }
 
-        [JsonProperty("unit_amount")]
+        [FormProperty("unit_amount")]
         public int? UnitAmount { get; set; }
     }
 }

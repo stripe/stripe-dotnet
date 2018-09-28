@@ -1,19 +1,19 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class InvoiceSubscriptionItemOptions : BaseOptions
     {
-        [JsonProperty("id")]
+        [FormProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("deleted")]
+        [FormProperty("deleted")]
         public bool? Deleted { get; set; }
 
-        [JsonProperty("plan")]
+        [FormProperty("plan")]
         public string PlanId { get; set; }
 
-        [JsonProperty("quantity")]
+        [FormProperty("quantity")]
         public int? Quantity { get; set; }
     }
 }

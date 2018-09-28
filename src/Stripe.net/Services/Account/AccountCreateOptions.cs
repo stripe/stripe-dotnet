@@ -1,19 +1,19 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class AccountCreateOptions : AccountSharedOptions
     {
-        [JsonProperty("country")]
+        [FormProperty("country")]
         public string Country { get; set; }
 
         /// <summary>
         /// One of <see cref="AccountType"/>
         /// </summary>
-        [JsonProperty("type")]
+        [FormProperty("type")]
         public string Type { get; set; }
 
-        [JsonProperty("from_recipient")]
+        [FormProperty("from_recipient")]
         public string FromRecipient { get; set; }
     }
 }

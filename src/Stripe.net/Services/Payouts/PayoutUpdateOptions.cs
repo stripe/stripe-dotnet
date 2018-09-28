@@ -1,11 +1,11 @@
 ﻿namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PayoutUpdateOptions : BaseOptions, ISupportMetadata
     {
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

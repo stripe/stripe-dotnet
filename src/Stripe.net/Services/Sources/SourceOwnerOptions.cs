@@ -1,34 +1,34 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SourceOwnerOptions : INestedOptions
     {
-        [JsonProperty("[owner][address][city]")]
+        [FormProperty("[owner][address][city]")]
         public string CityOrTown { get; set; }
 
-        [JsonProperty("[owner][address][country]")]
+        [FormProperty("[owner][address][country]")]
         public string Country { get; set; }
 
-        [JsonProperty("[owner][address][line1]")]
+        [FormProperty("[owner][address][line1]")]
         public string Line1 { get; set; }
 
-        [JsonProperty("[owner][address][line2]")]
+        [FormProperty("[owner][address][line2]")]
         public string Line2 { get; set; }
 
-        [JsonProperty("[owner][address][postal_code]")]
+        [FormProperty("[owner][address][postal_code]")]
         public string PostalCode { get; set; }
 
-        [JsonProperty("[owner][address][state]")]
+        [FormProperty("[owner][address][state]")]
         public string State { get; set; }
 
-        [JsonProperty("[owner][email]")]
+        [FormProperty("[owner][email]")]
         public string Email { get; set; }
 
-        [JsonProperty("[owner][name]")]
+        [FormProperty("[owner][name]")]
         public string Name { get; set; }
 
-        [JsonProperty("[owner][phone]")]
+        [FormProperty("[owner][phone]")]
         public string Phone { get; set; }
     }
 }

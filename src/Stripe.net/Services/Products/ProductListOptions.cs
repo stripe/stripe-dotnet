@@ -1,19 +1,19 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ProductListOptions : ListOptions
     {
-        [JsonProperty("active")]
+        [FormProperty("active")]
         public bool? Active { get; set; }
 
-        [JsonProperty("ids")]
+        [FormProperty("ids")]
         public string[] Ids { get; set; }
 
-        [JsonProperty("shippable")]
+        [FormProperty("shippable")]
         public bool? Shippable { get; set; }
 
-        [JsonProperty("url")]
+        [FormProperty("url")]
         public string Url { get; set; }
     }
 }

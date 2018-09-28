@@ -1,22 +1,22 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class OAuthTokenCreateOptions : BaseOptions
     {
-        [JsonProperty("code")]
+        [FormProperty("code")]
         public string Code { get; set; }
 
-        [JsonProperty("client_secret")]
+        [FormProperty("client_secret")]
         public string ClientSecret { get; set; }
 
-        [JsonProperty("refresh_token")]
+        [FormProperty("refresh_token")]
         public string RefreshToken { get; set; }
 
-        [JsonProperty("grant_type")]
+        [FormProperty("grant_type")]
         public string GrantType { get; set; }
 
-        [JsonProperty("scope")]
+        [FormProperty("scope")]
         public string Scope { get; set; }
     }
 }

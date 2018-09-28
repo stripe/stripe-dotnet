@@ -1,20 +1,20 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PlanProductCreateOptions : INestedOptions, ISupportMetadata
     {
-        [JsonProperty("id")]
+        [FormProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("name")]
+        [FormProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("statement_descriptor")]
+        [FormProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

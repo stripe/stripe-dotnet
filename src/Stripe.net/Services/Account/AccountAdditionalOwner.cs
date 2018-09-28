@@ -1,46 +1,46 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class AccountAdditionalOwner : INestedOptions
     {
-        [JsonProperty("address[city]")]
+        [FormProperty("address[city]")]
         public string CityOrTown { get; set; }
 
-        [JsonProperty("address[country]")]
+        [FormProperty("address[country]")]
         public string Country { get; set; }
 
-        [JsonProperty("address[line1]")]
+        [FormProperty("address[line1]")]
         public string Line1 { get; set; }
 
-        [JsonProperty("address[line2]")]
+        [FormProperty("address[line2]")]
         public string Line2 { get; set; }
 
-        [JsonProperty("address[postal_code]")]
+        [FormProperty("address[postal_code]")]
         public string PostalCode { get; set; }
 
-        [JsonProperty("address[state]")]
+        [FormProperty("address[state]")]
         public string State { get; set; }
 
-        [JsonProperty("dob[day]")]
+        [FormProperty("dob[day]")]
         public int? BirthDay { get; set; }
 
-        [JsonProperty("dob[month]")]
+        [FormProperty("dob[month]")]
         public int? BirthMonth { get; set; }
 
-        [JsonProperty("dob[year]")]
+        [FormProperty("dob[year]")]
         public int? BirthYear { get; set; }
 
-        [JsonProperty("first_name")]
+        [FormProperty("first_name")]
         public string FirstName { get; set; }
 
-        [JsonProperty("last_name")]
+        [FormProperty("last_name")]
         public string LastName { get; set; }
 
-        [JsonProperty("verification[document]")]
+        [FormProperty("verification[document]")]
         public string VerificationDocument { get; set; }
 
-        [JsonProperty("verification[document_back]")]
+        [FormProperty("verification[document_back]")]
         public string VerificationDocumentBack { get; set; }
     }
 }

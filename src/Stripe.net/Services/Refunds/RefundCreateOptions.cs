@@ -1,7 +1,7 @@
 ﻿namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class RefundCreateOptions : BaseOptions, ISupportMetadata
     {
@@ -9,13 +9,13 @@
         /// A positive integer in cents representing how much of this charge to refund. Can refund
         /// only up to the remaining, unrefunded amount of the charge.
         /// </summary>
-        [JsonProperty("amount")]
+        [FormProperty("amount")]
         public int? Amount { get; set; }
 
         /// <summary>
         /// REQUIRED. The identifier of the charge to refund.
         /// </summary>
-        [JsonProperty("charge")]
+        [FormProperty("charge")]
         public string ChargeId { get; set; }
 
         /// <summary>
@@ -24,7 +24,7 @@
         /// can unset individual keys if you POST an empty value for that key. You can clear all
         /// keys if you POST an empty value for <c>metadata</c>
         /// </summary>
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -35,7 +35,7 @@
         /// <see href="https://stripe.com/docs/radar/lists">blocklists</see>, and will also help us
         /// improve our fraud detection algorithms.
         /// </summary>
-        [JsonProperty("reason")]
+        [FormProperty("reason")]
         public string Reason { get; set; }
 
         /// <summary>
@@ -45,7 +45,7 @@
         /// of the charge refunded.
         /// An application fee can be refunded only by the application that created the charge.
         /// </summary>
-        [JsonProperty("refund_application_fee")]
+        [FormProperty("refund_application_fee")]
         public bool? RefundApplicationFee { get; set; }
 
         /// <summary>
@@ -54,7 +54,7 @@
         /// entire or partial amount).
         /// A transfer can be reversed only by the application that created the charge.
         /// </summary>
-        [JsonProperty("reverse_transfer")]
+        [FormProperty("reverse_transfer")]
         public bool? ReverseTransfer { get; set; }
     }
 }

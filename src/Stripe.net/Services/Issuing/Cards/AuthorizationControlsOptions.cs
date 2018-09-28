@@ -1,20 +1,20 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class AuthorizationControlsOptions : INestedOptions
     {
-        [JsonProperty("allowed_categories")]
+        [FormProperty("allowed_categories")]
         public List<string> AllowedCategories { get; set; }
 
-        [JsonProperty("blocked_categories")]
+        [FormProperty("blocked_categories")]
         public List<string> BlockedCategories { get; set; }
 
-        [JsonProperty("max_amount")]
+        [FormProperty("max_amount")]
         public int? MaxAmount { get; set; }
 
-        [JsonProperty("max_approvals")]
+        [FormProperty("max_approvals")]
         public int? MaxApprovals { get; set; }
     }
 }

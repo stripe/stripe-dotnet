@@ -1,20 +1,20 @@
 ﻿namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PackageDimensionOptions : INestedOptions
     {
-        [JsonProperty("height")]
+        [FormProperty("height")]
         public decimal? Height { get; set; }
 
-        [JsonProperty("length")]
+        [FormProperty("length")]
         public decimal? Length { get; set; }
 
-        [JsonProperty("weight")]
+        [FormProperty("weight")]
         public decimal? Weight { get; set; }
 
-        [JsonProperty("width")]
+        [FormProperty("width")]
         public decimal? Width { get; set; }
     }
 }

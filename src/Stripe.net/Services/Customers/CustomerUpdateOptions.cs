@@ -2,41 +2,41 @@
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CustomerUpdateOptions : BaseOptions, ISupportMetadata
     {
-        [JsonProperty("account_balance")]
+        [FormProperty("account_balance")]
         public int? AccountBalance { get; set; }
 
-        [JsonProperty("source")]
+        [FormProperty("source")]
         public string SourceToken { get; set; }
 
-        [JsonProperty("source")]
+        [FormProperty("source")]
         public CardCreateNestedOptions SourceCard { get; set; }
 
-        [JsonProperty("coupon")]
+        [FormProperty("coupon")]
         public string Coupon { get; set; }
 
-        [JsonProperty("default_source")]
+        [FormProperty("default_source")]
         public string DefaultSource { get; set; }
 
-        [JsonProperty("description")]
+        [FormProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("email")]
+        [FormProperty("email")]
         public string Email { get; set; }
 
-        [JsonProperty("invoice_prefix")]
+        [FormProperty("invoice_prefix")]
         public string InvoicePrefix { get; set; }
 
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("shipping")]
+        [FormProperty("shipping")]
         public ShippingOptions Shipping { get; set; }
 
-        [JsonProperty("tax_info")]
+        [FormProperty("tax_info")]
         public CustomerTaxInfoOptions TaxInfo { get; set; }
     }
 }

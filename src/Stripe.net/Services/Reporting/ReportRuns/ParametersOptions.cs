@@ -2,27 +2,26 @@ namespace Stripe.Reporting
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
     public class ParametersOptions : INestedOptions
     {
-        [JsonProperty("connected_account")]
+        [FormProperty("connected_account")]
         public string ConnectedAccount { get; set; }
 
-        [JsonProperty("currency")]
+        [FormProperty("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("interval_end")]
+        [FormProperty("interval_end")]
         public DateTime? IntervalEnd { get; set; }
 
-        [JsonProperty("interval_start")]
+        [FormProperty("interval_start")]
         public DateTime? IntervalStart { get; set; }
 
-        [JsonProperty("payout")]
+        [FormProperty("payout")]
         public string Payout { get; set; }
 
-        [JsonProperty("reporting_category")]
+        [FormProperty("reporting_category")]
         public string ReportingCategory { get; set; }
     }
 }

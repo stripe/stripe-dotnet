@@ -4,6 +4,7 @@ namespace StripeTests.Infrastructure.TestData
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe;
+    using Stripe.Infrastructure;
 
     public class TestOptionsWithList : BaseOptions
     {
@@ -24,7 +25,7 @@ namespace StripeTests.Infrastructure.TestData
             };
         }
 
-        [JsonProperty("some_list")]
+        [FormProperty("some_list")]
         public List<TestNestedOptions> SomeList { get; set; }
     }
 }

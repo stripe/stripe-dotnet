@@ -1,16 +1,16 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class TransferListOptions : ListOptions
     {
-        [JsonProperty("created")]
+        [FormProperty("created")]
         public DateFilter Created { get; set; }
 
-        [JsonProperty("destination")]
+        [FormProperty("destination")]
         public string Destination { get; set; }
 
-        [JsonProperty("transfer_group")]
+        [FormProperty("transfer_group")]
         public string TransferGroup { get; set; }
     }
 }

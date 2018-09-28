@@ -1,14 +1,14 @@
 namespace Stripe.Reporting
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ReportRunCreateOptions : BaseOptions
     {
-        [JsonProperty("parameters")]
+        [FormProperty("parameters")]
         public ParametersOptions Parameters { get; set; }
 
-        [JsonProperty("report_type")]
+        [FormProperty("report_type")]
         public string ReportType { get; set; }
     }
 }

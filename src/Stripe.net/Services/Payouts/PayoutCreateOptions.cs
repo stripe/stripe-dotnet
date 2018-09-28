@@ -1,35 +1,35 @@
 ﻿namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PayoutCreateOptions : BaseOptions, ISupportMetadata
     {
         /// <summary>
         /// REQUIRED
         /// </summary>
-        [JsonProperty("amount")]
+        [FormProperty("amount")]
         public int? Amount { get; set; }
 
         /// <summary>
         /// REQUIRED
         /// </summary>
-        [JsonProperty("currency")]
+        [FormProperty("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("destination")]
+        [FormProperty("destination")]
         public string Destination { get; set; }
 
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("method")]
+        [FormProperty("method")]
         public string Method { get; set; }
 
-        [JsonProperty("source_type")]
+        [FormProperty("source_type")]
         public string SourceType { get; set; }
 
-        [JsonProperty("statement_descriptor")]
+        [FormProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
     }
 }

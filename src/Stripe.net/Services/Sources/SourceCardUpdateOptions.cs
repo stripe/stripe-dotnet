@@ -1,13 +1,13 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SourceCardUpdateOptions : INestedOptions
     {
-        [JsonProperty("exp_month")]
+        [FormProperty("exp_month")]
         public int? ExpirationMonth { get; set; }
 
-        [JsonProperty("exp_year")]
+        [FormProperty("exp_year")]
         public int? ExpirationYear { get; set; }
     }
 }

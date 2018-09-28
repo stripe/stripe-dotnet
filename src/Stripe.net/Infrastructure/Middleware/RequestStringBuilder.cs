@@ -149,13 +149,18 @@
                     continue;
                 }
 
-                var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
+                var attribute = property.GetCustomAttribute<FormPropertyAttribute>();
                 if (attribute == null)
                 {
                     continue;
                 }
 
-                string key = attribute.PropertyName;
+                string key = attribute.Name;
+                if (key.Equals("-"))
+                {
+                    continue;
+                }
+
                 string newPrefix = NewPrefix(key, keyPrefix);
 
                 flatParams.AddRange(FlattenParamsValue(value, newPrefix));

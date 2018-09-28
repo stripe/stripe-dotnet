@@ -1,14 +1,14 @@
 ﻿namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CouponUpdateOptions : BaseOptions, ISupportMetadata
     {
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("name")]
+        [FormProperty("name")]
         public string Name { get; set; }
     }
 }

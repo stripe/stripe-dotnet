@@ -2,39 +2,39 @@
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+
     using Stripe.Infrastructure;
 
     public class CouponCreateOptions : BaseOptions, ISupportMetadata
     {
-        [JsonProperty("id")]
+        [FormProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("amount_off")]
+        [FormProperty("amount_off")]
         public int? AmountOff { get; set; }
 
-        [JsonProperty("currency")]
+        [FormProperty("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("percent_off")]
+        [FormProperty("percent_off")]
         public decimal? PercentOff { get; set; }
 
-        [JsonProperty("duration")]
+        [FormProperty("duration")]
         public string Duration { get; set; }
 
-        [JsonProperty("duration_in_months")]
+        [FormProperty("duration_in_months")]
         public int? DurationInMonths { get; set; }
 
-        [JsonProperty("max_redemptions")]
+        [FormProperty("max_redemptions")]
         public int? MaxRedemptions { get; set; }
 
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("name")]
+        [FormProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("redeem_by")]
+        [FormProperty("redeem_by")]
         public DateTime? RedeemBy { get; set; }
     }
 }

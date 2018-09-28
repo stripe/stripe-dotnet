@@ -1,26 +1,26 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class InvoiceUpcomingInvoiceItemOption : INestedOptions
     {
-        [JsonProperty("amount")]
+        [FormProperty("amount")]
         public int? Amount { get; set; }
 
-        [JsonProperty("currency")]
+        [FormProperty("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("description")]
+        [FormProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("discountable")]
+        [FormProperty("discountable")]
         public bool? Discountable { get; set; }
 
-        [JsonProperty("invoiceitem")]
+        [FormProperty("invoiceitem")]
         public string InvoiceItemId { get; set; }
 
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

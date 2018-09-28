@@ -1,46 +1,46 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CreditCardOptions : BaseOptions, INestedOptions
     {
-        [JsonProperty("exp_month")]
+        [FormProperty("exp_month")]
         public int? ExpirationMonth { get; set; }
 
-        [JsonProperty("exp_year")]
+        [FormProperty("exp_year")]
         public int? ExpirationYear { get; set; }
 
-        [JsonProperty("number")]
+        [FormProperty("number")]
         public string Number { get; set; }
 
-        [JsonProperty("address_city")]
+        [FormProperty("address_city")]
         public string AddressCity { get; set; }
 
-        [JsonProperty("address_country")]
+        [FormProperty("address_country")]
         public string AddressCountry { get; set; }
 
-        [JsonProperty("address_line1")]
+        [FormProperty("address_line1")]
         public string AddressLine1 { get; set; }
 
-        [JsonProperty("address_line2")]
+        [FormProperty("address_line2")]
         public string AddressLine2 { get; set; }
 
-        [JsonProperty("address_state")]
+        [FormProperty("address_state")]
         public string AddressState { get; set; }
 
-        [JsonProperty("address_zip")]
+        [FormProperty("address_zip")]
         public string AddressZip { get; set; }
 
-        [JsonProperty("currency")]
+        [FormProperty("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("cvc")]
+        [FormProperty("cvc")]
         public string Cvc { get; set; }
 
-        [JsonProperty("name")]
+        [FormProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public object MetaData { get; set; }
     }
 }

@@ -1,23 +1,23 @@
 ﻿namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class DateFilter
     {
-        [JsonProperty("")]
+        [FormProperty("")]
         public DateTime? EqualTo { get; set; }
 
-        [JsonProperty("[gt]")]
+        [FormProperty("[gt]")]
         public DateTime? GreaterThan { get; set; }
 
-        [JsonProperty("[gte]")]
+        [FormProperty("[gte]")]
         public DateTime? GreaterThanOrEqual { get; set; }
 
-        [JsonProperty("[lt]")]
+        [FormProperty("[lt]")]
         public DateTime? LessThan { get; set; }
 
-        [JsonProperty("[lte]")]
+        [FormProperty("[lte]")]
         public DateTime? LessThanOrEqual { get; set; }
     }
 }

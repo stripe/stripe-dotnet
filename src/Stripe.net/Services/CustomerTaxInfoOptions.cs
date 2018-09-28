@@ -1,13 +1,13 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CustomerTaxInfoOptions : INestedOptions
     {
-        [JsonProperty("tax_id")]
+        [FormProperty("tax_id")]
         public string TaxId { get; set; }
 
-        [JsonProperty("type")]
+        [FormProperty("type")]
         public string Type { get; set; }
     }
 }

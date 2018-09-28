@@ -1,10 +1,10 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CardListOptions : ListOptions
     {
-        [JsonProperty("object")]
+        [FormProperty("object")]
         internal string Object => "card";
     }
 }

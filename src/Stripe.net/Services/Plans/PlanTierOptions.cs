@@ -2,17 +2,17 @@
 {
     using System;
     using System.Reflection;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PlanTierOptions : INestedOptions
     {
-        [JsonProperty("unit_amount")]
+        [FormProperty("unit_amount")]
         public int? UnitAmount { get; set; }
 
         #region UpTo
         public UpToOption UpTo { get; set; }
 
-        [JsonProperty("up_to")]
+        [FormProperty("up_to")]
         internal string UpToInternal => this.UpTo is UpToInf ? "inf" : ((UpToBound)this.UpTo).Bound.ToString();
         #endregion
 

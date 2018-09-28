@@ -1,26 +1,26 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ChargeLevel3Options : INestedOptions
     {
-        [JsonProperty("customer_reference")]
+        [FormProperty("customer_reference")]
         public string CustomerReference { get; set; }
 
-        [JsonProperty("line_items")]
+        [FormProperty("line_items")]
         public List<ChargeLevel3LineItemOptions> LineItems { get; set; }
 
-        [JsonProperty("merchant_reference")]
+        [FormProperty("merchant_reference")]
         public string MerchantReference { get; set; }
 
-        [JsonProperty("shipping_address_zip")]
+        [FormProperty("shipping_address_zip")]
         public string ShippingAddressZip { get; set; }
 
-        [JsonProperty("shipping_from_zip")]
+        [FormProperty("shipping_from_zip")]
         public string ShippingFromZip { get; set; }
 
-        [JsonProperty("shipping_amount")]
+        [FormProperty("shipping_amount")]
         public int? ShippingAmount { get; set; }
     }
 }

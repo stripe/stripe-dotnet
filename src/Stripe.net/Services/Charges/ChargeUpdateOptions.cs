@@ -1,29 +1,29 @@
 ﻿namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ChargeUpdateOptions : BaseOptions, ISupportMetadata
     {
-        [JsonProperty("description")]
+        [FormProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("exchange_rate")]
+        [FormProperty("exchange_rate")]
         public decimal? ExchangeRate { get; set; }
 
-        [JsonProperty("fraud_details")]
+        [FormProperty("fraud_details")]
         public Dictionary<string, string> FraudDetails { get; set; }
 
-        [JsonProperty("metadata")]
+        [FormProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("receipt_email")]
+        [FormProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
 
         /// <summary>
         /// Shipping information for the charge. Helps prevent fraud on charges for physical goods. For more information, see the Charge object documentation.
         /// </summary>
-        [JsonProperty("shipping")]
+        [FormProperty("shipping")]
         public ChargeShippingOptions Shipping { get; set; }
     }
 }

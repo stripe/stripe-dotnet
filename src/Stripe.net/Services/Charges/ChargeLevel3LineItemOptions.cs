@@ -1,25 +1,25 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ChargeLevel3LineItemOptions : INestedOptions
     {
-        [JsonProperty("discount_amount")]
+        [FormProperty("discount_amount")]
         public int? DiscountAmount { get; set; }
 
-        [JsonProperty("product_code")]
+        [FormProperty("product_code")]
         public string ProductCode { get; set; }
 
-        [JsonProperty("product_description")]
+        [FormProperty("product_description")]
         public string ProductDescription { get; set; }
 
-        [JsonProperty("quantity")]
+        [FormProperty("quantity")]
         public int? Quantity { get; set; }
 
-        [JsonProperty("tax_amount")]
+        [FormProperty("tax_amount")]
         public int? TaxAmount { get; set; }
 
-        [JsonProperty("unit_cost")]
+        [FormProperty("unit_cost")]
         public int? UnitCost { get; set; }
     }
 }

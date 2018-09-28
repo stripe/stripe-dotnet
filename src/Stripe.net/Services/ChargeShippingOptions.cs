@@ -1,13 +1,13 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ChargeShippingOptions : ShippingOptions
     {
-        [JsonProperty("carrier")]
+        [FormProperty("carrier")]
         public string Carrier { get; set; }
 
-        [JsonProperty("tracking_number")]
+        [FormProperty("tracking_number")]
         public string TrackingNumber { get; set; }
     }
 }

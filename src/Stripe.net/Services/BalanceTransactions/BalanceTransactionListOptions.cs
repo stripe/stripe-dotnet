@@ -1,25 +1,25 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class BalanceTransactionListOptions : ListOptions
     {
-        [JsonProperty("available_on")]
+        [FormProperty("available_on")]
         public DateFilter AvailableOn { get; set; }
 
-        [JsonProperty("created")]
+        [FormProperty("created")]
         public DateFilter Created { get; set; }
 
-        [JsonProperty("currency")]
+        [FormProperty("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("payout")]
+        [FormProperty("payout")]
         public string PayoutId { get; set; }
 
-        [JsonProperty("source")]
+        [FormProperty("source")]
         public string SourceId { get; set; }
 
-        [JsonProperty("type")]
+        [FormProperty("type")]
         public string Type { get; set; }
     }
 }

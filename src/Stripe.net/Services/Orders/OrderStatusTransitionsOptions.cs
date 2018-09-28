@@ -1,20 +1,20 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class OrderStatusTransitionsOptions : INestedOptions
     {
-        [JsonProperty("canceled")]
+        [FormProperty("canceled")]
         public DateFilter Canceled { get; set; }
 
-        [JsonProperty("fulfilled")]
+        [FormProperty("fulfilled")]
         public DateFilter Fulfilled { get; set; }
 
-        [JsonProperty("paid")]
+        [FormProperty("paid")]
         public DateFilter Paid { get; set; }
 
-        [JsonProperty("returned")]
+        [FormProperty("returned")]
         public DateFilter Returned { get; set; }
     }
 }

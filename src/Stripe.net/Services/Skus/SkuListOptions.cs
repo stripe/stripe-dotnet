@@ -1,23 +1,23 @@
 ﻿namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SkuListOptions : ListOptions
     {
-        [JsonProperty("active")]
+        [FormProperty("active")]
         public bool? Active { get; set; }
 
-        [JsonProperty("attributes")]
+        [FormProperty("attributes")]
         public Dictionary<string, string> Attributes { get; set; }
 
-        [JsonProperty("ids")]
+        [FormProperty("ids")]
         public string[] Ids { get; set; }
 
-        [JsonProperty("in_stock")]
+        [FormProperty("in_stock")]
         public bool? InStock { get; set; }
 
-        [JsonProperty("product")]
+        [FormProperty("product")]
         public string Product { get; set; }
     }
 }

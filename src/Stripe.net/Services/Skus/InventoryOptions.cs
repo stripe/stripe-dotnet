@@ -1,17 +1,17 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class InventoryOptions : INestedOptions
     {
-        [JsonProperty("quantity")]
+        [FormProperty("quantity")]
         public int? Quantity { get; set; }
 
-        [JsonProperty("type")]
+        [FormProperty("type")]
         public string Type { get; set; }
 
-        [JsonProperty("value")]
+        [FormProperty("value")]
         public string Value { get; set; }
     }
 }

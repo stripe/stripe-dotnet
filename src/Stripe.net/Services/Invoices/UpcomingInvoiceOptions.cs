@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
     public class UpcomingInvoiceOptions : BaseOptions
@@ -14,19 +13,19 @@
         /// next upcoming invoice from among the customer’s subscriptions. The invoice can be
         /// previewed without a coupon by passing this value as an empty string.
         /// </summary>
-        [JsonProperty("coupon")]
+        [FormProperty("coupon")]
         public string CouponId { get; set; }
 
         /// <summary>
         /// REQUIRED
         /// </summary>
-        [JsonProperty("customer")]
+        [FormProperty("customer")]
         public string CustomerId { get; set; }
 
         /// <summary>
         /// List of invoice items to add or update in the upcoming invoice preview.
         /// </summary>
-        [JsonProperty("invoice_items")]
+        [FormProperty("invoice_items")]
         public List<InvoiceUpcomingInvoiceItemOption> InvoiceItems { get; set; }
 
         #region SubscriptionBillingCycleAnchor
@@ -44,7 +43,7 @@
 
         public bool SubscriptionBillingCycleAnchorUnchanged { get; set; }
 
-        [JsonProperty("subscription_billing_cycle_anchor")]
+        [FormProperty("subscription_billing_cycle_anchor")]
         internal string SubscriptionBillingCycleAnchorInternal
         {
             get
@@ -68,7 +67,7 @@
         /// Boolean indicating whether this subscription should cancel at the end of the current
         /// period.
         /// </summary>
-        [JsonProperty("subscription_cancel_at_period_end")]
+        [FormProperty("subscription_cancel_at_period_end")]
         public bool? SubscriptionCancelAtPeriodEnd { get; set; }
 
         /// <summary>
@@ -78,13 +77,13 @@
         /// <c>subscription_items</c> is provided, you will retrieve the next upcoming invoice from
         /// among the customer’s subscriptions.
         /// </summary>
-        [JsonProperty("subscription")]
+        [FormProperty("subscription")]
         public string SubscriptionId { get; set; }
 
         /// <summary>
         /// List of subscription items, each with an attached plan.
         /// </summary>
-        [JsonProperty("subscription_items")]
+        [FormProperty("subscription_items")]
         public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
 
         /// <summary>
@@ -93,7 +92,7 @@
         /// <c>subscription</c>, and one of <c>subscription_items</c> or
         /// <c>subscription_trial_end</c> are required.
         /// </summary>
-        [JsonProperty("subscription_prorate")]
+        [FormProperty("subscription_prorate")]
         public bool? SubscriptionProrate { get; set; }
 
         /// <summary>
@@ -105,7 +104,7 @@
         /// <c>subscription_trial_end</c> are required. Also, <c>subscription_proration</c> cannot
         /// be set to false.
         /// </summary>
-        [JsonProperty("subscription_proration_date")]
+        [FormProperty("subscription_proration_date")]
         public DateTime? SubscriptionProrationDate { get; set; }
 
         /// <summary>
@@ -113,7 +112,7 @@
         /// that tax percent. If set, one of <c>subscription_items</c> or
         /// <c>subscription is required</c>.
         /// </summary>
-        [JsonProperty("subscription_tax_percent")]
+        [FormProperty("subscription_tax_percent")]
         public decimal? SubscriptionTaxPercent { get; set; }
 
         /// <summary>
@@ -121,7 +120,7 @@
         /// that trial end. If set, one of <c>subscription_items</c> or <c>subscription</c> is
         /// required.
         /// </summary>
-        [JsonProperty("subscription_trial_end")]
+        [FormProperty("subscription_trial_end")]
         public DateTime? SubscriptionTrialEnd { get; set; }
 
         /// <summary>
@@ -130,7 +129,7 @@
         /// to <c>false</c>. Setting this flag to <c>true</c> together with
         /// <c>subscription_trial_end</c> is not allowed.
         /// </summary>
-        [JsonProperty("subscription_trial_from_plan")]
+        [FormProperty("subscription_trial_from_plan")]
         public bool? SubscriptionTrialFromPlan { get; set; }
     }
 }

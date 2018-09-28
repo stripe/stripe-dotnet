@@ -1,13 +1,13 @@
 ﻿namespace Stripe
 {
-    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PlanTransformUsageOptions : INestedOptions
     {
-        [JsonProperty("divide_by")]
+        [FormProperty("divide_by")]
         public int? DivideBy { get; set; }
 
-        [JsonProperty("round")]
+        [FormProperty("round")]
         public string Round { get; set; }
     }
 }
