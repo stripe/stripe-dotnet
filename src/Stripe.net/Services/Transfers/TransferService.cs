@@ -34,24 +34,14 @@ namespace Stripe
             return this.Post($"{Urls.BaseUrl}/transfers", requestOptions, options);
         }
 
-        public virtual Transfer Get(string payoutId, RequestOptions requestOptions = null)
-        {
-            return this.GetEntity($"{Urls.BaseUrl}/transfers/{payoutId}", requestOptions);
-        }
-
-        public virtual Transfer Update(string transferId, TransferUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Post($"{Urls.BaseUrl}/transfers/{transferId}", requestOptions, options);
-        }
-
-        public virtual StripeList<Transfer> List(TransferListOptions listOptions = null, RequestOptions requestOptions = null)
-        {
-            return this.GetEntityList($"{Urls.BaseUrl}/transfers", requestOptions, listOptions);
-        }
-
         public virtual Task<Transfer> CreateAsync(TransferCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.PostAsync($"{Urls.BaseUrl}/transfers", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Transfer Get(string payoutId, RequestOptions requestOptions = null)
+        {
+            return this.GetEntity($"{Urls.BaseUrl}/transfers/{payoutId}", requestOptions);
         }
 
         public virtual Task<Transfer> GetAsync(string payoutId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -59,14 +49,24 @@ namespace Stripe
             return this.GetEntityAsync($"{Urls.BaseUrl}/transfers/{payoutId}", requestOptions, cancellationToken);
         }
 
-        public virtual Task<Transfer> UpdateAsync(string transferId, TransferUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual StripeList<Transfer> List(TransferListOptions listOptions = null, RequestOptions requestOptions = null)
         {
-            return this.PostAsync($"{Urls.BaseUrl}/transfers/{transferId}", requestOptions, cancellationToken, options);
+            return this.GetEntityList($"{Urls.BaseUrl}/transfers", requestOptions, listOptions);
         }
 
         public virtual Task<StripeList<Transfer>> ListAsync(TransferListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityListAsync($"{Urls.BaseUrl}/transfers", requestOptions, cancellationToken, listOptions);
+        }
+
+        public virtual Transfer Update(string transferId, TransferUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Post($"{Urls.BaseUrl}/transfers/{transferId}", requestOptions, options);
+        }
+
+        public virtual Task<Transfer> UpdateAsync(string transferId, TransferUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostAsync($"{Urls.BaseUrl}/transfers/{transferId}", requestOptions, cancellationToken, options);
         }
     }
 }
