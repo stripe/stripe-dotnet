@@ -24,14 +24,14 @@ namespace Stripe
             return this.GetEntity($"{Urls.BaseUrl}/events/{country}", requestOptions);
         }
 
-        public virtual StripeList<Event> List(EventListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.GetEntityList($"{Urls.BaseUrl}/events", requestOptions, options);
-        }
-
         public virtual Task<Event> GetAsync(string country, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityAsync($"{Urls.BaseUrl}/events/{country}", requestOptions, cancellationToken);
+        }
+
+        public virtual StripeList<Event> List(EventListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.GetEntityList($"{Urls.BaseUrl}/events", requestOptions, options);
         }
 
         public virtual Task<StripeList<Event>> ListAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))

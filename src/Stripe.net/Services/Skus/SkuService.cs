@@ -30,19 +30,9 @@ namespace Stripe
             return this.Post($"{Urls.BaseUrl}/skus", requestOptions, options);
         }
 
-        public virtual Sku Get(string skuId, RequestOptions requestOptions = null)
+        public virtual Task<Sku> CreateAsync(SkuCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntity($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions);
-        }
-
-        public virtual Sku Update(string skuId, SkuUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Post($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, options);
-        }
-
-        public virtual StripeList<Sku> List(SkuListOptions listOptions = null, RequestOptions requestOptions = null)
-        {
-            return this.GetEntityList($"{Urls.BaseUrl}/skus", requestOptions, listOptions);
+            return this.PostAsync($"{Urls.BaseUrl}/skus", requestOptions, cancellationToken, options);
         }
 
         public virtual Sku Delete(string skuId, RequestOptions requestOptions = null)
@@ -50,9 +40,14 @@ namespace Stripe
             return this.DeleteEntity($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions);
         }
 
-        public virtual Task<Sku> CreateAsync(SkuCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Sku> DeleteAsync(string skuId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/skus", requestOptions, cancellationToken, options);
+            return this.DeleteEntityAsync($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, cancellationToken);
+        }
+
+        public virtual Sku Get(string skuId, RequestOptions requestOptions = null)
+        {
+            return this.GetEntity($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions);
         }
 
         public virtual Task<Sku> GetAsync(string skuId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -60,9 +55,9 @@ namespace Stripe
             return this.GetEntityAsync($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, cancellationToken);
         }
 
-        public virtual Task<Sku> UpdateAsync(string skuId, SkuUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual StripeList<Sku> List(SkuListOptions listOptions = null, RequestOptions requestOptions = null)
         {
-            return this.PostAsync($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, cancellationToken, options);
+            return this.GetEntityList($"{Urls.BaseUrl}/skus", requestOptions, listOptions);
         }
 
         public virtual Task<StripeList<Sku>> ListAsync(SkuListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -70,9 +65,14 @@ namespace Stripe
             return this.GetEntityListAsync($"{Urls.BaseUrl}/skus", requestOptions, cancellationToken, listOptions);
         }
 
-        public virtual Task<Sku> DeleteAsync(string skuId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Sku Update(string skuId, SkuUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntityAsync($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, cancellationToken);
+            return this.Post($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, options);
+        }
+
+        public virtual Task<Sku> UpdateAsync(string skuId, SkuUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostAsync($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, cancellationToken, options);
         }
     }
 }

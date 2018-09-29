@@ -29,24 +29,14 @@ namespace Stripe
             return this.Post($"{classUrl}", requestOptions, options);
         }
 
-        public virtual FileLink Get(string fileLinkId, RequestOptions requestOptions = null)
-        {
-            return this.GetEntity($"{classUrl}/{fileLinkId}", requestOptions);
-        }
-
-        public virtual StripeList<FileLink> List(FileLinkListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.GetEntityList($"{classUrl}", requestOptions, options);
-        }
-
-        public virtual FileLink Update(string fileLinkId, FileLinkUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Post($"{classUrl}/{fileLinkId}", requestOptions, options);
-        }
-
         public virtual Task<FileLink> CreateAsync(FileLinkCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.PostAsync($"{classUrl}", requestOptions, cancellationToken, options);
+        }
+
+        public virtual FileLink Get(string fileLinkId, RequestOptions requestOptions = null)
+        {
+            return this.GetEntity($"{classUrl}/{fileLinkId}", requestOptions);
         }
 
         public virtual Task<FileLink> GetAsync(string fileLinkId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -54,9 +44,19 @@ namespace Stripe
             return this.GetEntityAsync($"{classUrl}/{fileLinkId}", requestOptions, cancellationToken);
         }
 
+        public virtual StripeList<FileLink> List(FileLinkListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.GetEntityList($"{classUrl}", requestOptions, options);
+        }
+
         public virtual Task<StripeList<FileLink>> ListAsync(FileLinkListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityListAsync($"{classUrl}", requestOptions, cancellationToken, options);
+        }
+
+        public virtual FileLink Update(string fileLinkId, FileLinkUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Post($"{classUrl}/{fileLinkId}", requestOptions, options);
         }
 
         public virtual Task<FileLink> UpdateAsync(string fileLinkId, FileLinkUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))

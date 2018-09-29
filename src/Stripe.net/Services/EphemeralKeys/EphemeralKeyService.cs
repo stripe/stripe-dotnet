@@ -34,11 +34,6 @@ namespace Stripe
             return this.Post($"{Urls.BaseUrl}/ephemeral_keys", requestOptions, options);
         }
 
-        public virtual EphemeralKey Delete(string keyId, RequestOptions requestOptions = null)
-        {
-            return this.DeleteEntity($"{Urls.BaseUrl}/ephemeral_keys/{keyId}", requestOptions);
-        }
-
         public virtual Task<EphemeralKey> CreateAsync(EphemeralKeyCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Creating an ephemeral key requires a specific API version to be set. This is handled as a parameter
@@ -47,6 +42,11 @@ namespace Stripe
             requestOptions.StripeVersion = options.StripeVersion;
 
             return this.PostAsync($"{Urls.BaseUrl}/ephemeral_keys", requestOptions, cancellationToken, options);
+        }
+
+        public virtual EphemeralKey Delete(string keyId, RequestOptions requestOptions = null)
+        {
+            return this.DeleteEntity($"{Urls.BaseUrl}/ephemeral_keys/{keyId}", requestOptions);
         }
 
         public virtual Task<EphemeralKey> DeleteAsync(string keyId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
