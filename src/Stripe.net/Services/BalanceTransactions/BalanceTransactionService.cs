@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class BalanceTransactionService : BasicService<BalanceTransaction>,
+    public class BalanceTransactionService : Service<BalanceTransaction>,
         IListable<BalanceTransaction, BalanceTransactionListOptions>,
         IRetrievable<BalanceTransaction>
     {

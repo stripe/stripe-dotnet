@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ExternalAccountService : BasicService<ExternalAccount>,
+    public class ExternalAccountService : Service<ExternalAccount>,
         INestedCreatable<ExternalAccount, ExternalAccountCreateOptions>,
         INestedDeletable<ExternalAccount>,
         INestedListable<ExternalAccount, ExternalAccountListOptions>,

@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class CardService : StripeService,
+    public class CardService : Service<Card>,
         INestedCreatable<Card, CardCreateOptions>,
         INestedDeletable<Card>,
         INestedListable<Card, CardListOptions>,
@@ -27,129 +27,54 @@ namespace Stripe
 
         public bool ExpandRecipient { get; set; }
 
-        public virtual Card Create(string customerId, CardCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual Card Create(string customerId, CardCreateOptions options, RequestOptions requestOptions = null)
         {
-            var url = this.SetupUrl(customerId);
-
-            return Mapper<Card>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, url, false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.Post($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, options);
         }
 
-        public virtual Card Get(string customerId, string cardId, RequestOptions requestOptions = null)
+        public virtual Card Delete(string customerId, string bankAccountId, RequestOptions requestOptions = null)
         {
-            var url = this.SetupUrl(customerId, cardId);
-
-            return Mapper<Card>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, url, false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.DeleteEntity($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}", requestOptions);
         }
 
-        public virtual Card Update(string customerId, string cardId, CardUpdateOptions updateOptions, RequestOptions requestOptions = null)
+        public virtual Card Get(string customerId, string bankAccountId, RequestOptions requestOptions = null)
         {
-            var url = this.SetupUrl(customerId, cardId);
-
-            return Mapper<Card>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, url, false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}", requestOptions);
         }
 
-        public virtual Card Delete(string customerId, string cardId, RequestOptions requestOptions = null)
+        public virtual StripeList<Card> List(string customerId, CardListOptions options = null, RequestOptions requestOptions = null)
         {
-            var url = this.SetupUrl(customerId, cardId);
-
-            return Mapper<Card>.MapFromJson(
-                Requestor.Delete(url, this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityList($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, options);
         }
 
-        public virtual StripeList<Card> List(string customerId, CardListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual Card Update(string customerId, string bankAccountId, CardUpdateOptions options, RequestOptions requestOptions = null)
         {
-            var url = this.SetupUrl(customerId);
-
-            if (listOptions == null)
-            {
-                listOptions = new CardListOptions();
-            }
-
-            return Mapper<StripeList<Card>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, url, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.Post($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}", requestOptions, options);
         }
 
-        public virtual async Task<Card> CreateAsync(string customerId, CardCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Card> CreateAsync(string customerId, CardCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = this.SetupUrl(customerId);
-
-            return Mapper<Card>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, url, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.PostAsync($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<Card> GetAsync(string customerId, string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Card> DeleteAsync(string customerId, string bankAccountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = this.SetupUrl(customerId, cardId);
-
-            return Mapper<Card>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, url, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.DeleteEntityAsync($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<Card> UpdateAsync(string customerId, string cardId, CardUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Card> GetAsync(string customerId, string bankAccountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = this.SetupUrl(customerId, cardId);
-
-            return Mapper<Card>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, url, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityAsync($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<Card> DeleteAsync(string customerId, string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Card>> ListAsync(string customerId, CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = this.SetupUrl(customerId, cardId);
-
-            return Mapper<Card>.MapFromJson(
-                await Requestor.DeleteAsync(
-                    url,
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityListAsync($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<StripeList<Card>> ListAsync(string customerId, CardListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Card> UpdateAsync(string customerId, string bankAccountId, CardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = this.SetupUrl(customerId);
-
-            if (listOptions == null)
-            {
-                listOptions = new CardListOptions();
-            }
-
-            return Mapper<StripeList<Card>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, url, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
-        }
-
-        private string SetupUrl(string customerId, string cardId = null)
-        {
-            var urlParams = string.Format(Urls.CustomerSources, customerId);
-
-            if (!string.IsNullOrEmpty(cardId))
-            {
-                return string.Format("{0}/{1}", urlParams, cardId);
-            }
-
-            return urlParams;
+            return this.PostAsync($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}", requestOptions, cancellationToken, options);
         }
     }
 }
