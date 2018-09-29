@@ -11,8 +11,6 @@ namespace Stripe
         IListable<File, FileListOptions>,
         IRetrievable<File>
     {
-        private static string classPath = "/files";
-
         public FileService()
             : base(null)
         {
@@ -23,11 +21,13 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/files";
+
         public virtual File Create(FileCreateOptions options, RequestOptions requestOptions = null)
         {
             return Mapper<File>.MapFromJson(
                 Requestor.PostFile(
-                    $"{Urls.BaseFilesUrl}{classPath}",
+                    this.ClassUrl(Urls.BaseFilesUrl),
                     options.File,
                     options.Purpose,
                     this.SetupRequestOptions(requestOptions)));
@@ -37,7 +37,7 @@ namespace Stripe
         {
             return Mapper<File>.MapFromJson(
                 await Requestor.PostFileAsync(
-                    $"{Urls.BaseFilesUrl}{classPath}",
+                    this.ClassUrl(Urls.BaseFilesUrl),
                     options.File,
                     options.Purpose,
                     this.SetupRequestOptions(requestOptions),
@@ -46,22 +46,22 @@ namespace Stripe
 
         public virtual File Get(string fileId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}{classPath}/{fileId}", requestOptions);
+            return this.GetEntity(fileId, null, requestOptions);
         }
 
         public virtual Task<File> GetAsync(string fileId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}{classPath}/{fileId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(fileId, null, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<File> List(FileListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<File> List(FileListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}{classPath}", requestOptions, listOptions);
+            return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<File>> ListAsync(FileListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<File>> ListAsync(FileListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}{classPath}", requestOptions, cancellationToken, listOptions);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
     }
 }

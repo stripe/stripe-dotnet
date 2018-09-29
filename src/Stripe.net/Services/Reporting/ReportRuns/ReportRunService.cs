@@ -11,8 +11,6 @@ namespace Stripe.Reporting
         IListable<ReportRun, ReportRunListOptions>,
         IRetrievable<ReportRun>
     {
-        private static string classUrl = Urls.BaseUrl + "/reporting/report_runs";
-
         public ReportRunService()
             : base(null)
         {
@@ -23,34 +21,36 @@ namespace Stripe.Reporting
         {
         }
 
+        public override string BasePath => "/reporting/report_runs";
+
         public virtual ReportRun Create(ReportRunCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{classUrl}", requestOptions, options);
+            return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<ReportRun> CreateAsync(ReportRunCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{classUrl}", requestOptions, cancellationToken, options);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual ReportRun Get(string reportRunId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{classUrl}/{reportRunId}", requestOptions);
+            return this.GetEntity(reportRunId, null, requestOptions);
         }
 
         public virtual Task<ReportRun> GetAsync(string reportRunId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{classUrl}/{reportRunId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(reportRunId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ReportRun> List(ReportRunListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{classUrl}", requestOptions, options);
+            return this.ListEntities(options, requestOptions);
         }
 
         public virtual Task<StripeList<ReportRun>> ListAsync(ReportRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{classUrl}", requestOptions, cancellationToken, options);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
     }
 }

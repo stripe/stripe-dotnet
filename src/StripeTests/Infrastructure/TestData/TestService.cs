@@ -9,6 +9,8 @@ namespace StripeTests.Infrastructure.TestData
         {
         }
 
+        public override string BasePath => "/charges";
+
         public bool ExpandSimple { get; set; }
 
         public bool ExpandMultiWordProperty { get; set; }
