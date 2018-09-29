@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public partial class SubscriptionService : StripeService,
+    public partial class SubscriptionService : Service<Subscription>,
         ICreatable<Subscription, SubscriptionCreateOptions>,
         IListable<Subscription, SubscriptionListOptions>,
         IRetrievable<Subscription>,
@@ -24,100 +24,54 @@ namespace Stripe
 
         public bool ExpandCustomer { get; set; }
 
+        public virtual Subscription Cancel(string subscriptionId, SubscriptionCancelOptions options, RequestOptions requestOptions = null)
+        {
+            return this.DeleteEntity($"{Urls.BaseUrl}/subscriptions/{subscriptionId}", requestOptions, options);
+        }
+
+        public virtual Subscription Create(SubscriptionCreateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Post($"{Urls.BaseUrl}/subscriptions", requestOptions, options);
+        }
+
         public virtual Subscription Get(string subscriptionId, RequestOptions requestOptions = null)
         {
-            var url = string.Format(Urls.Subscriptions + "/{0}", subscriptionId);
-
-            return Mapper<Subscription>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, url, false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity($"{Urls.BaseUrl}/subscriptions/{subscriptionId}", requestOptions);
         }
 
-        public virtual Subscription Create(SubscriptionCreateOptions createOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Subscription> List(SubscriptionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<Subscription>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, Urls.Subscriptions, false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityList($"{Urls.BaseUrl}/subscriptions", requestOptions, options);
         }
 
-        public virtual Subscription Update(string subscriptionId, SubscriptionUpdateOptions updateOptions, RequestOptions requestOptions = null)
+        public virtual Subscription Update(string subscriptionId, SubscriptionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            var url = string.Format(Urls.Subscriptions + "/{0}", subscriptionId);
-
-            return Mapper<Subscription>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, url, false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.Post($"{Urls.BaseUrl}/subscriptions/{subscriptionId}", requestOptions, options);
         }
 
-        public virtual Subscription Cancel(string subscriptionId, SubscriptionCancelOptions cancelOptions, RequestOptions requestOptions = null)
+        public virtual Task<Subscription> CancelAsync(string subscriptionId, SubscriptionCancelOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Subscription>.MapFromJson(
-                Requestor.Delete(
-                    this.ApplyAllParameters(cancelOptions, $"{Urls.Subscriptions}/{WebUtility.UrlEncode(subscriptionId)}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.DeleteEntityAsync($"{Urls.BaseUrl}/subscriptions/{subscriptionId}", requestOptions, cancellationToken, options);
         }
 
-        public virtual StripeList<Subscription> List(SubscriptionListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual Task<Subscription> CreateAsync(SubscriptionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<Subscription>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, Urls.Subscriptions, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.PostAsync($"{Urls.BaseUrl}/subscriptions", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<Subscription> GetAsync(string subscriptionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Subscription> GetAsync(string subscriptionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = string.Format(Urls.Subscriptions + "/{0}", subscriptionId);
-
-            return Mapper<Subscription>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, url, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityAsync($"{Urls.BaseUrl}/subscriptions/{subscriptionId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<Subscription> CreateAsync(SubscriptionCreateOptions createOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Subscription>> ListAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Subscription>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, Urls.Subscriptions, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityListAsync($"{Urls.BaseUrl}/subscriptions", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<Subscription> UpdateAsync(string subscriptionId, SubscriptionUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Subscription> UpdateAsync(string subscriptionId, SubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = string.Format(Urls.Subscriptions + "/{0}", subscriptionId);
-
-            return Mapper<Subscription>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, url, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
-        }
-
-        public virtual async Task<Subscription> CancelAsync(string subscriptionId, SubscriptionCancelOptions cancelOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var url = string.Format(Urls.Subscriptions + "/{0}", subscriptionId);
-            this.ApplyAllParameters(cancelOptions, url, false);
-
-            return Mapper<Subscription>.MapFromJson(
-                await Requestor.DeleteAsync(
-                    url,
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
-        }
-
-        public virtual async Task<StripeList<Subscription>> ListAsync(SubscriptionListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return Mapper<StripeList<Subscription>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, Urls.Subscriptions, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.PostAsync($"{Urls.BaseUrl}/subscriptions/{subscriptionId}", requestOptions, cancellationToken, options);
         }
     }
 }

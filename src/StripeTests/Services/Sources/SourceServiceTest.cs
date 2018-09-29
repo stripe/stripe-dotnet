@@ -9,6 +9,7 @@ namespace StripeTests
 
     public class SourceServiceTest : BaseStripeTest
     {
+        private const string CustomerId = "cus_123";
         private const string SourceId = "src_123";
 
         private SourceService service;
@@ -74,6 +75,82 @@ namespace StripeTests
         public void Create()
         {
             var source = this.service.Create(this.createOptions);
+            Assert.NotNull(source);
+            Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
+        public async Task CreateAsync()
+        {
+            var source = await this.service.CreateAsync(this.createOptions);
+            Assert.NotNull(source);
+            Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
+        public void Detach()
+        {
+            var source = this.service.Detach(CustomerId, SourceId);
+            Assert.NotNull(source);
+            Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
+        public async Task DetachAsync()
+        {
+            var source = await this.service.DetachAsync(CustomerId, SourceId);
+            Assert.NotNull(source);
+            Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
+        public void Get()
+        {
+            var source = this.service.Get(SourceId);
+            Assert.NotNull(source);
+            Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
+        public async Task GetAsync()
+        {
+            var source = await this.service.GetAsync(SourceId);
+            Assert.NotNull(source);
+            Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
+        public void List()
+        {
+            var sources = this.service.List(CustomerId, this.listOptions);
+            Assert.NotNull(sources);
+            Assert.Equal("list", sources.Object);
+            Assert.Single(sources.Data);
+            Assert.Equal("source", sources.Data[0].Object);
+        }
+
+        [Fact]
+        public async Task ListAsync()
+        {
+            var sources = await this.service.ListAsync(CustomerId, this.listOptions);
+            Assert.NotNull(sources);
+            Assert.Equal("list", sources.Object);
+            Assert.Single(sources.Data);
+            Assert.Equal("source", sources.Data[0].Object);
+        }
+
+        [Fact]
+        public void Update()
+        {
+            var source = this.service.Update(SourceId, this.updateOptions);
+            Assert.NotNull(source);
+            Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
+        public async Task UpdateAsync()
+        {
+            var source = await this.service.UpdateAsync(SourceId, this.updateOptions);
             Assert.NotNull(source);
             Assert.Equal("source", source.Object);
         }

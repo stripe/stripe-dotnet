@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ApplicationFeeRefundService : BasicService<ApplicationFeeRefund>,
+    public class ApplicationFeeRefundService : Service<ApplicationFeeRefund>,
         INestedCreatable<ApplicationFeeRefund, ApplicationFeeRefundCreateOptions>,
         INestedListable<ApplicationFeeRefund, ApplicationFeeRefundListOptions>,
         INestedRetrievable<ApplicationFeeRefund>,

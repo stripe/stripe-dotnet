@@ -4,7 +4,7 @@ namespace Stripe.Sigma
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ScheduledQueryRunService : BasicService<ScheduledQueryRun>,
+    public class ScheduledQueryRunService : Service<ScheduledQueryRun>,
         IListable<ScheduledQueryRun, ScheduledQueryRunListOptions>,
         IRetrievable<ScheduledQueryRun>
     {

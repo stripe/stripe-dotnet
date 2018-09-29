@@ -6,7 +6,7 @@ namespace Stripe.Issuing
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class CardholderService : StripeService,
+    public class CardholderService : Service<Cardholder>,
         ICreatable<Cardholder, CardholderCreateOptions>,
         IListable<Cardholder, CardholderListOptions>,
         IRetrievable<Cardholder>,
@@ -24,72 +24,44 @@ namespace Stripe.Issuing
         {
         }
 
-        public virtual Cardholder Create(CardholderCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual Cardholder Create(CardholderCreateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Cardholder>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, classUrl, false),
-                    this.SetupRequestOptions(requestOptions)));
-        }
-
-        public virtual Cardholder Update(string cardholderId, CardholderUpdateOptions updateOptions, RequestOptions requestOptions = null)
-        {
-            return Mapper<Cardholder>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, $"{classUrl}/{cardholderId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.Post($"{classUrl}", requestOptions, options);
         }
 
         public virtual Cardholder Get(string cardholderId, RequestOptions requestOptions = null)
         {
-            return Mapper<Cardholder>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{classUrl}/{cardholderId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity($"{classUrl}/{cardholderId}", requestOptions);
         }
 
-        public virtual StripeList<Cardholder> List(CardholderListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Cardholder> List(CardholderListOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<Cardholder>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityList($"{classUrl}", requestOptions, options);
         }
 
-        public virtual async Task<Cardholder> CreateAsync(CardholderCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Cardholder Update(string cardholderId, CardholderUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Cardholder>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, classUrl, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.Post($"{classUrl}/{cardholderId}", requestOptions, options);
         }
 
-        public virtual async Task<Cardholder> UpdateAsync(string cardholderId, CardholderUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Cardholder> CreateAsync(CardholderCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Cardholder>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, $"{classUrl}/{cardholderId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.PostAsync($"{classUrl}", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<Cardholder> GetAsync(string cardholderId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Cardholder> GetAsync(string cardholderId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Cardholder>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{classUrl}/{cardholderId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityAsync($"{classUrl}/{cardholderId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<StripeList<Cardholder>> ListAsync(CardholderListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Cardholder>> ListAsync(CardholderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<Cardholder>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityListAsync($"{classUrl}", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Task<Cardholder> UpdateAsync(string cardholderId, CardholderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostAsync($"{classUrl}/{cardholderId}", requestOptions, cancellationToken, options);
         }
     }
 }

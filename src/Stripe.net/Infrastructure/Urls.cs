@@ -6,40 +6,6 @@ namespace Stripe.Infrastructure
 
         internal static string BaseUrl => StripeConfiguration.GetApiBase();
 
-        public static string InvoiceItems => BaseUrl + "/invoiceitems";
-
-        public static string Tokens => BaseUrl + "/tokens";
-
-        public static string Charges => BaseUrl + "/charges";
-
-        public static string Coupons => BaseUrl + "/coupons";
-
-        public static string Plans => BaseUrl + "/plans";
-
-        public static string Customers => BaseUrl + "/customers";
-
-        public static string CustomerSources => BaseUrl + "/customers/{0}/sources";
-
-        public static string CountrySpecs => BaseUrl + "/country_specs";
-
-        public static string Disputes => BaseUrl + "/disputes";
-
-        public static string Events => BaseUrl + "/events";
-
-        public static string ExchangeRates => BaseUrl + "/exchange_rates";
-
-        public static string Recipients => BaseUrl + "/recipients";
-
-        public static string Subscriptions => BaseUrl + "/subscriptions";
-
-        public static string ApplicationFees => BaseUrl + "/application_fees";
-
-        public static string EphemeralKeys => BaseUrl + "/ephemeral_keys";
-
-        public static string OAuthToken => BaseConnectUrl + "/oauth/token";
-
-        public static string OAuthDeauthorize => BaseConnectUrl + "/oauth/deauthorize";
-
         internal static string DefaultBaseConnectUrl => "https://connect.stripe.com";
 
         internal static string BaseConnectUrl => StripeConfiguration.GetConnectBase();
@@ -47,7 +13,5 @@ namespace Stripe.Infrastructure
         internal static string DefaultBaseFilesUrl => "https://files.stripe.com/v1";
 
         internal static string BaseFilesUrl => StripeConfiguration.GetFilesBase();
-
-        public static string Topups => BaseUrl + "/topups";
     }
 }

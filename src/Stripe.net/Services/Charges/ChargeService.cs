@@ -4,7 +4,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ChargeService : StripeService,
+    public class ChargeService : Service<Charge>,
         ICreatable<Charge, ChargeCreateOptions>,
         IListable<Charge, ChargeListOptions>,
         IRetrievable<Charge>,
@@ -44,89 +44,66 @@ namespace Stripe
 
         public bool ExpandTransfer { get; set; }
 
-        public virtual Charge Create(ChargeCreateOptions createOptions, RequestOptions requestOptions = null)
+        public bool ExpandBusinessLogo { get; set; }
+
+        public virtual Charge Capture(string chargeId, ChargeCaptureOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Charge>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, Urls.Charges, false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.Post($"{Urls.BaseUrl}/charges/{chargeId}/capture", requestOptions, options);
         }
 
-        public virtual Charge Update(string chargeId, ChargeUpdateOptions updateOptions, RequestOptions requestOptions = null)
+        public virtual Charge Create(ChargeCreateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Charge>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.Post($"{Urls.BaseUrl}/charges", requestOptions, options);
+        }
+
+        public virtual Charge Delete(string chargeId, RequestOptions requestOptions = null)
+        {
+            return this.DeleteEntity($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions);
         }
 
         public virtual Charge Get(string chargeId, RequestOptions requestOptions = null)
         {
-            return Mapper<Charge>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions);
         }
 
-        public virtual StripeList<Charge> List(ChargeListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Charge> List(ChargeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<Charge>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, Urls.Charges, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityList($"{Urls.BaseUrl}/charges", requestOptions, options);
         }
 
-        public virtual Charge Capture(string chargeId, ChargeCaptureOptions captureOptions, RequestOptions requestOptions = null)
+        public virtual Charge Update(string chargeId, ChargeUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Charge>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(captureOptions, $"{Urls.Charges}/{chargeId}/capture", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.Post($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions, options);
         }
 
-        public virtual async Task<Charge> CreateAsync(ChargeCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Charge> CaptureAsync(string chargeId, ChargeCaptureOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Charge>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, Urls.Charges, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.PostAsync($"{Urls.BaseUrl}/charges/{chargeId}/capture", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<Charge> UpdateAsync(string chargeId, ChargeUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Charge> CreateAsync(ChargeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Charge>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.PostAsync($"{Urls.BaseUrl}/charges", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<Charge> GetAsync(string chargeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Charge> DeleteAsync(string chargeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Charge>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.DeleteEntityAsync($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<StripeList<Charge>> ListAsync(ChargeListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Charge> GetAsync(string chargeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<Charge>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, Urls.Charges, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityAsync($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<Charge> CaptureAsync(string chargeId, ChargeCaptureOptions captureOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Charge>> ListAsync(ChargeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Charge>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(captureOptions, $"{Urls.Charges}/{chargeId}/capture", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityListAsync($"{Urls.BaseUrl}/charges", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Task<Charge> UpdateAsync(string chargeId, ChargeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostAsync($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions, cancellationToken, options);
         }
     }
 }

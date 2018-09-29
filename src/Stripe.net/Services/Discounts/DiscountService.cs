@@ -4,7 +4,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class DiscountService : BasicService<Discount>
+    public class DiscountService : Service<Discount>
     {
         public DiscountService()
             : base(null)
