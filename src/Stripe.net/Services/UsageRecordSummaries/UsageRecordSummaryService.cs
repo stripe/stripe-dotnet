@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class UsageRecordSummaryService : BasicService<UsageRecord>,
+    public class UsageRecordSummaryService : Service<UsageRecordSummary>,
         INestedListable<UsageRecordSummary, UsageRecordSummaryListOptions>
     {
         public UsageRecordSummaryService()
@@ -18,23 +18,14 @@ namespace Stripe
         {
         }
 
-        public virtual StripeList<UsageRecordSummary> List(string subscriptionItemId, UsageRecordSummaryListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<UsageRecordSummary> List(string subscriptionItemId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null)
         {
-            var url = $"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}/usage_record_summaries";
-            return Mapper<StripeList<UsageRecordSummary>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, url, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityList($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}/usage_record_summaries", requestOptions, options);
         }
 
-        public virtual async Task<StripeList<UsageRecordSummary>> ListAsync(string subscriptionItemId, UsageRecordSummaryListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<UsageRecordSummary>> ListAsync(string subscriptionItemId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = $"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}/usage_record_summaries";
-            return Mapper<StripeList<UsageRecordSummary>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, url, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityListAsync($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}/usage_record_summaries", requestOptions, cancellationToken, options);
         }
     }
 }

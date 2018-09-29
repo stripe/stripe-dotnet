@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ApplicationFeeService : StripeService,
+    public class ApplicationFeeService : Service<ApplicationFee>,
         IListable<ApplicationFee, ApplicationFeeListOptions>,
         IRetrievable<ApplicationFee>
     {
@@ -31,62 +31,22 @@ namespace Stripe
 
         public virtual ApplicationFee Get(string applicationFeeId, RequestOptions requestOptions = null)
         {
-            return Mapper<ApplicationFee>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity($"{Urls.BaseUrl}/application_fees/{applicationFeeId}", requestOptions);
         }
 
-        public virtual ApplicationFee Refund(string applicationFeeId, int? refundAmount = null, RequestOptions requestOptions = null)
+        public virtual StripeList<ApplicationFee> List(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null)
         {
-            var url = this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}/refund", false);
-
-            if (refundAmount.HasValue)
-            {
-                url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());
-            }
-
-            return Mapper<ApplicationFee>.MapFromJson(
-                Requestor.PostString(url, this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityList($"{Urls.BaseUrl}/application_fees", requestOptions, options);
         }
 
-        public virtual StripeList<ApplicationFee> List(ApplicationFeeListOptions listOptions, RequestOptions requestOptions = null)
+        public virtual Task<ApplicationFee> GetAsync(string applicationFeeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<ApplicationFee>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, Urls.ApplicationFees, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityAsync($"{Urls.BaseUrl}/application_fees/{applicationFeeId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<ApplicationFee> GetAsync(string applicationFeeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<ApplicationFee>> ListAsync(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<ApplicationFee>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
-        }
-
-        public virtual async Task<ApplicationFee> RefundAsync(string applicationFeeId, int? refundAmount = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var url = this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}/refund", false);
-
-            if (refundAmount.HasValue)
-            {
-                url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());
-            }
-
-            return Mapper<ApplicationFee>.MapFromJson(
-                await Requestor.PostStringAsync(url, this.SetupRequestOptions(requestOptions), cancellationToken).ConfigureAwait(false));
-        }
-
-        public virtual async Task<StripeList<ApplicationFee>> ListAsync(ApplicationFeeListOptions listOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return Mapper<StripeList<ApplicationFee>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, Urls.ApplicationFees, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityListAsync($"{Urls.BaseUrl}/application_fees", requestOptions, cancellationToken, options);
         }
     }
 }

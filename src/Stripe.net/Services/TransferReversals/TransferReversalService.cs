@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class TransferReversalService : BasicService<TransferReversal>,
+    public class TransferReversalService : Service<TransferReversal>,
         INestedCreatable<TransferReversal, TransferReversalCreateOptions>,
         INestedListable<TransferReversal, TransferReversalListOptions>,
         INestedRetrievable<TransferReversal>,

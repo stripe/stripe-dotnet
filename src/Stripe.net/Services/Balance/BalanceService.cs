@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class BalanceService : StripeService,
+    public class BalanceService : Service<Balance>,
         ISingletonRetrievable<Balance>
     {
         private static string classUrl = Urls.BaseUrl + "/balance";
@@ -23,14 +23,12 @@ namespace Stripe
 
         public virtual Balance Get(RequestOptions requestOptions = null)
         {
-            return Mapper<Balance>.MapFromJson(
-                Requestor.GetString(classUrl, this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity($"{Urls.BaseUrl}/balance", requestOptions);
         }
 
-        public virtual async Task<Balance> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Balance> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Balance>.MapFromJson(
-                await Requestor.GetStringAsync(classUrl, this.SetupRequestOptions(requestOptions), cancellationToken).ConfigureAwait(false));
+            return this.GetEntityAsync($"{Urls.BaseUrl}/balance", requestOptions, cancellationToken);
         }
     }
 }

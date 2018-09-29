@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class CountrySpecService : StripeService,
+    public class CountrySpecService : Service<CountrySpec>,
         IListable<CountrySpec, CountrySpecListOptions>,
         IRetrievable<CountrySpec>
     {
@@ -21,36 +21,22 @@ namespace Stripe
 
         public virtual CountrySpec Get(string country, RequestOptions requestOptions = null)
         {
-            return Mapper<CountrySpec>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{Urls.CountrySpecs}/{country}"),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity($"{Urls.BaseUrl}/country_specs/{country}", requestOptions);
         }
 
-        public virtual StripeList<CountrySpec> List(CountrySpecListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<CountrySpec> List(CountrySpecListOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<CountrySpec>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, $"{Urls.CountrySpecs}", true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityList($"{Urls.BaseUrl}/country_specs", requestOptions, options);
         }
 
-        public virtual async Task<CountrySpec> GetAsync(string country, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<CountrySpec> GetAsync(string country, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<CountrySpec>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{Urls.CountrySpecs}/{country}"),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityAsync($"{Urls.BaseUrl}/country_specs/{country}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<StripeList<CountrySpec>> ListAsync(CountrySpecListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<CountrySpec>> ListAsync(CountrySpecListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<CountrySpec>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, $"{Urls.CountrySpecs}", true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityListAsync($"{Urls.BaseUrl}/country_specs", requestOptions, cancellationToken, options);
         }
     }
 }

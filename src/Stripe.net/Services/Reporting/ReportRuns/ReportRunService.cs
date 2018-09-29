@@ -6,7 +6,7 @@ namespace Stripe.Reporting
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ReportRunService : StripeService,
+    public class ReportRunService : Service<ReportRun>,
         ICreatable<ReportRun, ReportRunCreateOptions>,
         IListable<ReportRun, ReportRunListOptions>,
         IRetrievable<ReportRun>
@@ -23,55 +23,34 @@ namespace Stripe.Reporting
         {
         }
 
-        public virtual ReportRun Create(ReportRunCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual ReportRun Create(ReportRunCreateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<ReportRun>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, classUrl, false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.Post($"{classUrl}", requestOptions, options);
         }
 
         public virtual ReportRun Get(string reportRunId, RequestOptions requestOptions = null)
         {
-            return Mapper<ReportRun>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{classUrl}/{reportRunId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity($"{classUrl}/{reportRunId}", requestOptions);
         }
 
-        public virtual StripeList<ReportRun> List(ReportRunListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<ReportRun> List(ReportRunListOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<ReportRun>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityList($"{classUrl}", requestOptions, options);
         }
 
-        public virtual async Task<ReportRun> CreateAsync(ReportRunCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ReportRun> CreateAsync(ReportRunCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<ReportRun>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, classUrl, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.PostAsync($"{classUrl}", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<ReportRun> GetAsync(string reportRunId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ReportRun> GetAsync(string reportRunId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<ReportRun>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{classUrl}/{reportRunId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityAsync($"{classUrl}/{reportRunId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<StripeList<ReportRun>> ListAsync(ReportRunListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<ReportRun>> ListAsync(ReportRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<ReportRun>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityListAsync($"{classUrl}", requestOptions, cancellationToken, options);
         }
     }
 }

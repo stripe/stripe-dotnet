@@ -4,5 +4,7 @@ namespace Stripe
 
     public class BankAccountListOptions : ListOptions
     {
+        [JsonProperty("object")]
+        internal string Object => "bank_account";
     }
 }

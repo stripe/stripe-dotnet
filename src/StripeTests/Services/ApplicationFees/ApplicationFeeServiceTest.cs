@@ -58,21 +58,5 @@ namespace StripeTests
             Assert.Single(applicationFees.Data);
             Assert.Equal("application_fee", applicationFees.Data[0].Object);
         }
-
-        [Fact]
-        public void Refund()
-        {
-            var applicationFee = this.service.Refund(ApplicationFeeId, 100);
-            Assert.NotNull(applicationFee);
-            Assert.Equal("application_fee", applicationFee.Object);
-        }
-
-        [Fact]
-        public async Task RefundAsync()
-        {
-            var applicationFee = await this.service.RefundAsync(ApplicationFeeId, 100);
-            Assert.NotNull(applicationFee);
-            Assert.Equal("application_fee", applicationFee.Object);
-        }
     }
 }
