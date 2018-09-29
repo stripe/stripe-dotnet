@@ -24,14 +24,14 @@ namespace Stripe
             return this.GetEntity($"{Urls.BaseUrl}/exchange_rates/{currency}", requestOptions);
         }
 
-        public virtual StripeList<ExchangeRate> List(ExchangeRateListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.GetEntityList($"{Urls.BaseUrl}/exchange_rates", requestOptions, options);
-        }
-
         public virtual Task<ExchangeRate> GetAsync(string currency, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityAsync($"{Urls.BaseUrl}/exchange_rates/{currency}", requestOptions, cancellationToken);
+        }
+
+        public virtual StripeList<ExchangeRate> List(ExchangeRateListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.GetEntityList($"{Urls.BaseUrl}/exchange_rates", requestOptions, options);
         }
 
         public virtual Task<StripeList<ExchangeRate>> ListAsync(ExchangeRateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))

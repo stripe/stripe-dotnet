@@ -35,24 +35,14 @@ namespace Stripe
             return this.Post($"{classUrl}", requestOptions, options);
         }
 
-        public virtual Refund Get(string refundId, RequestOptions requestOptions = null)
-        {
-            return this.GetEntity($"{classUrl}/{refundId}", requestOptions);
-        }
-
-        public virtual StripeList<Refund> List(RefundListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.GetEntityList($"{classUrl}", requestOptions, options);
-        }
-
-        public virtual Refund Update(string refundId, RefundUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Post($"{classUrl}/{refundId}", requestOptions, options);
-        }
-
         public virtual Task<Refund> CreateAsync(RefundCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.PostAsync($"{classUrl}", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Refund Get(string refundId, RequestOptions requestOptions = null)
+        {
+            return this.GetEntity($"{classUrl}/{refundId}", requestOptions);
         }
 
         public virtual Task<Refund> GetAsync(string refundId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -60,9 +50,19 @@ namespace Stripe
             return this.GetEntityAsync($"{classUrl}/{refundId}", requestOptions, cancellationToken);
         }
 
+        public virtual StripeList<Refund> List(RefundListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.GetEntityList($"{classUrl}", requestOptions, options);
+        }
+
         public virtual Task<StripeList<Refund>> ListAsync(RefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityListAsync($"{classUrl}", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Refund Update(string refundId, RefundUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Post($"{classUrl}/{refundId}", requestOptions, options);
         }
 
         public virtual Task<Refund> UpdateAsync(string refundId, RefundUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))

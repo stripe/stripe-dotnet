@@ -27,14 +27,14 @@ namespace Stripe.Reporting
             return this.GetEntity($"{classUrl}/{reportTypeId}", requestOptions);
         }
 
-        public virtual StripeList<ReportType> List(ReportTypeListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.GetEntityList($"{classUrl}", requestOptions, options);
-        }
-
         public virtual Task<ReportType> GetAsync(string reportTypeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityAsync($"{classUrl}/{reportTypeId}", requestOptions, cancellationToken);
+        }
+
+        public virtual StripeList<ReportType> List(ReportTypeListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.GetEntityList($"{classUrl}", requestOptions, options);
         }
 
         public virtual Task<StripeList<ReportType>> ListAsync(ReportTypeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))

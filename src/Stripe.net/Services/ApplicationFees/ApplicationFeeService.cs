@@ -34,14 +34,14 @@ namespace Stripe
             return this.GetEntity($"{Urls.BaseUrl}/application_fees/{applicationFeeId}", requestOptions);
         }
 
-        public virtual StripeList<ApplicationFee> List(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.GetEntityList($"{Urls.BaseUrl}/application_fees", requestOptions, options);
-        }
-
         public virtual Task<ApplicationFee> GetAsync(string applicationFeeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityAsync($"{Urls.BaseUrl}/application_fees/{applicationFeeId}", requestOptions, cancellationToken);
+        }
+
+        public virtual StripeList<ApplicationFee> List(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.GetEntityList($"{Urls.BaseUrl}/application_fees", requestOptions, options);
         }
 
         public virtual Task<StripeList<ApplicationFee>> ListAsync(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))

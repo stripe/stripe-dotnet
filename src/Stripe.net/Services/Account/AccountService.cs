@@ -29,9 +29,19 @@ namespace Stripe
             return this.Post($"{Urls.BaseUrl}/accounts", requestOptions, options);
         }
 
+        public virtual Task<Account> CreateAsync(AccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostAsync($"{Urls.BaseUrl}/accounts", requestOptions, cancellationToken, options);
+        }
+
         public virtual Account Delete(string accountId, RequestOptions requestOptions = null)
         {
             return this.DeleteEntity($"{Urls.BaseUrl}/accounts/{accountId}", requestOptions);
+        }
+
+        public virtual Task<Account> DeleteAsync(string accountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.DeleteEntityAsync($"{Urls.BaseUrl}/accounts/{accountId}", requestOptions, cancellationToken);
         }
 
         public virtual Account Get(RequestOptions requestOptions = null)
@@ -45,31 +55,6 @@ namespace Stripe
             return this.GetEntity(path, requestOptions);
         }
 
-        public virtual StripeList<Account> List(AccountListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.GetEntityList($"{Urls.BaseUrl}/accounts", requestOptions, options);
-        }
-
-        public virtual Account Reject(string accountId, AccountRejectOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Post($"{Urls.BaseUrl}/accounts/{accountId}/reject", requestOptions, options);
-        }
-
-        public virtual Account Update(string accountId, AccountUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Post($"{Urls.BaseUrl}/accounts/{accountId}", requestOptions, options);
-        }
-
-        public virtual Task<Account> CreateAsync(AccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return this.PostAsync($"{Urls.BaseUrl}/accounts", requestOptions, cancellationToken, options);
-        }
-
-        public virtual Task<Account> DeleteAsync(string accountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return this.DeleteEntityAsync($"{Urls.BaseUrl}/accounts/{accountId}", requestOptions, cancellationToken);
-        }
-
         public virtual Task<Account> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetAsync(string.Empty, requestOptions, cancellationToken);
@@ -81,14 +66,29 @@ namespace Stripe
             return this.GetEntityAsync(path, requestOptions, cancellationToken);
         }
 
+        public virtual StripeList<Account> List(AccountListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.GetEntityList($"{Urls.BaseUrl}/accounts", requestOptions, options);
+        }
+
         public virtual Task<StripeList<Account>> ListAsync(AccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityListAsync($"{Urls.BaseUrl}/accounts", requestOptions, cancellationToken, options);
         }
 
+        public virtual Account Reject(string accountId, AccountRejectOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Post($"{Urls.BaseUrl}/accounts/{accountId}/reject", requestOptions, options);
+        }
+
         public virtual Task<Account> RejectAsync(string accountId, AccountRejectOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.PostAsync($"{Urls.BaseUrl}/accounts/{accountId}/reject", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Account Update(string accountId, AccountUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Post($"{Urls.BaseUrl}/accounts/{accountId}", requestOptions, options);
         }
 
         public virtual Task<Account> UpdateAsync(string accountId, AccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
