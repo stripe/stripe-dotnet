@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class PlanService : StripeService,
+    public class PlanService : Service<Plan>,
         ICreatable<Plan, PlanCreateOptions>,
         IDeletable<Plan>,
         IListable<Plan, PlanListOptions>,
@@ -25,89 +25,54 @@ namespace Stripe
 
         public bool ExpandProduct { get; set; }
 
-        public virtual Plan Create(PlanCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual Plan Create(PlanCreateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Plan>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, Urls.Plans, false),
-                    this.SetupRequestOptions(requestOptions)));
-        }
-
-        public virtual Plan Get(string planId, RequestOptions requestOptions = null)
-        {
-            return Mapper<Plan>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.Post($"{Urls.BaseUrl}/plans", requestOptions, options);
         }
 
         public virtual Plan Delete(string planId, RequestOptions requestOptions = null)
         {
-            return Mapper<Plan>.MapFromJson(
-                Requestor.Delete(
-                    $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}",
-                    this.SetupRequestOptions(requestOptions)));
+            return this.DeleteEntity($"{Urls.BaseUrl}/plans/{planId}", requestOptions);
         }
 
-        public virtual Plan Update(string planId, PlanUpdateOptions updateOptions, RequestOptions requestOptions = null)
+        public virtual Plan Get(string planId, RequestOptions requestOptions = null)
         {
-            return Mapper<Plan>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity($"{Urls.BaseUrl}/plans/{planId}", requestOptions);
         }
 
-        public virtual StripeList<Plan> List(PlanListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Plan> List(PlanListOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<Plan>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, Urls.Plans, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityList($"{Urls.BaseUrl}/plans", requestOptions, options);
         }
 
-        public virtual async Task<Plan> CreateAsync(PlanCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Plan Update(string planId, PlanUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Plan>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, Urls.Plans, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.Post($"{Urls.BaseUrl}/plans/{planId}", requestOptions, options);
         }
 
-        public virtual async Task<Plan> GetAsync(string planId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Plan> CreateAsync(PlanCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Plan>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.PostAsync($"{Urls.BaseUrl}/plans", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<Plan> DeleteAsync(string planId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Plan> DeleteAsync(string planId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Plan>.MapFromJson(
-                await Requestor.DeleteAsync(
-                    $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}",
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.DeleteEntityAsync($"{Urls.BaseUrl}/plans/{planId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<Plan> UpdateAsync(string planId, PlanUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Plan> GetAsync(string planId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Plan>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{WebUtility.UrlEncode(planId)}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityAsync($"{Urls.BaseUrl}/plans/{planId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<StripeList<Plan>> ListAsync(PlanListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Plan>> ListAsync(PlanListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<Plan>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, Urls.Plans, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityListAsync($"{Urls.BaseUrl}/plans", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Task<Plan> UpdateAsync(string planId, PlanUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostAsync($"{Urls.BaseUrl}/plans/{planId}", requestOptions, cancellationToken, options);
         }
     }
 }

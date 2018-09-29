@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class FileService : BasicService<File>,
+    public class FileService : Service<File>,
         ICreatable<File, FileCreateOptions>,
         IListable<File, FileListOptions>,
         IRetrievable<File>

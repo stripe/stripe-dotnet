@@ -4,7 +4,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class OAuthTokenService : StripeService,
+    public class OAuthTokenService : Service<OAuthToken>,
         ICreatable<OAuthToken, OAuthTokenCreateOptions>
     {
         public OAuthTokenService()
@@ -17,42 +17,30 @@ namespace Stripe
         {
         }
 
-        public virtual OAuthToken Create(OAuthTokenCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual OAuthToken Create(OAuthTokenCreateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<OAuthToken>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.Post($"{Urls.BaseConnectUrl}/oauth/token", requestOptions, options);
+        }
+
+        public virtual Task<OAuthToken> CreateAsync(OAuthTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostAsync($"{Urls.BaseConnectUrl}/oauth/token", requestOptions, cancellationToken, options);
         }
 
         public virtual OAuthDeauthorize Deauthorize(string clientId, string stripeUserId, RequestOptions requestOptions = null)
         {
-            var url = ParameterBuilder.ApplyParameterToUrl(Urls.OAuthDeauthorize, "client_id", clientId);
+            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.BaseConnectUrl}/oauth/deauthorize", "client_id", clientId);
             url = ParameterBuilder.ApplyParameterToUrl(url, "stripe_user_id", stripeUserId);
 
-            return Mapper<OAuthDeauthorize>.MapFromJson(
-                Requestor.PostString(url, this.SetupRequestOptions(requestOptions)));
+            return this.PostRequest<OAuthDeauthorize>(url, null, requestOptions);
         }
 
-        public virtual async Task<OAuthToken> CreateAsync(OAuthTokenCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<OAuthDeauthorize> DeauthorizeAsync(string clientId, string stripeUserId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<OAuthToken>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, Urls.OAuthToken, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
-        }
-
-        public virtual async Task<OAuthDeauthorize> DeauthorizeAsync(string clientId, string stripeUserId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var url = ParameterBuilder.ApplyParameterToUrl(Urls.OAuthDeauthorize, "client_id", clientId);
+            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.BaseConnectUrl}/oauth/deauthorize", "client_id", clientId);
             url = ParameterBuilder.ApplyParameterToUrl(url, "stripe_user_id", stripeUserId);
 
-            return Mapper<OAuthDeauthorize>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    url,
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.PostRequestAsync<OAuthDeauthorize>(url, null, requestOptions, cancellationToken);
         }
     }
 }

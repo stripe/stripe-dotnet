@@ -4,7 +4,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class TokenService : StripeService,
+    public class TokenService : Service<Token>,
         ICreatable<Token, TokenCreateOptions>,
         IRetrievable<Token>
     {
@@ -18,38 +18,24 @@ namespace Stripe
         {
         }
 
-        public virtual Token Create(TokenCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual Token Create(TokenCreateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Token>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, Urls.Tokens, false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.Post($"{Urls.BaseUrl}/tokens", requestOptions, options);
         }
 
         public virtual Token Get(string tokenId, RequestOptions requestOptions = null)
         {
-            return Mapper<Token>.MapFromJson(
-                Requestor.GetString(
-                    $"{Urls.Tokens}/{tokenId}",
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity($"{Urls.BaseUrl}/tokens/{tokenId}", requestOptions);
         }
 
-        public virtual async Task<Token> CreateAsync(TokenCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Token> CreateAsync(TokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Token>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, Urls.Tokens, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.PostAsync($"{Urls.BaseUrl}/tokens", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<Token> GetAsync(string tokenId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Token> GetAsync(string tokenId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Token>.MapFromJson(
-                await Requestor.GetStringAsync(
-                   $"{Urls.Tokens}/{tokenId}",
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityAsync($"{Urls.BaseUrl}/tokens/{tokenId}", requestOptions, cancellationToken);
         }
     }
 }
