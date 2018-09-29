@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class SubscriptionItemService : BasicService<SubscriptionItem>,
+    public class SubscriptionItemService : Service<SubscriptionItem>,
         ICreatable<SubscriptionItem, SubscriptionItemCreateOptions>,
         IDeletable<SubscriptionItem>,
         IListable<SubscriptionItem, SubscriptionItemListOptions>,

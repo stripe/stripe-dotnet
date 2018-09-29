@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class UsageRecordService : BasicService<UsageRecord>,
+    public class UsageRecordService : Service<UsageRecord>,
         ICreatable<UsageRecord, UsageRecordCreateOptions>
     {
         public UsageRecordService()

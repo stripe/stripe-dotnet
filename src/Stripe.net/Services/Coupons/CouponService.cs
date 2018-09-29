@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class CouponService : StripeService,
+    public class CouponService : Service<Coupon>,
         ICreatable<Coupon, CouponCreateOptions>,
         IDeletable<Coupon>,
         IListable<Coupon, CouponListOptions>,
@@ -23,89 +23,54 @@ namespace Stripe
         {
         }
 
-        public virtual Coupon Create(CouponCreateOptions createOptions, RequestOptions requestOptions = null)
+        public virtual Coupon Create(CouponCreateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Coupon>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, Urls.Coupons, false),
-                    this.SetupRequestOptions(requestOptions)));
-        }
-
-        public virtual Coupon Update(string couponId, CouponUpdateOptions updateOptions, RequestOptions requestOptions = null)
-        {
-            return Mapper<Coupon>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
-                    this.SetupRequestOptions(requestOptions)));
-        }
-
-        public virtual Coupon Get(string couponId, RequestOptions requestOptions = null)
-        {
-            return Mapper<Coupon>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.Post($"{Urls.BaseUrl}/coupons", requestOptions, options);
         }
 
         public virtual Coupon Delete(string couponId, RequestOptions requestOptions = null)
         {
-            return Mapper<Coupon>.MapFromJson(
-                Requestor.Delete(
-                    this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.DeleteEntity($"{Urls.BaseUrl}/coupons/{couponId}", requestOptions);
         }
 
-        public virtual StripeList<Coupon> List(CouponListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual Coupon Get(string couponId, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<Coupon>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, Urls.Coupons, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity($"{Urls.BaseUrl}/coupons/{couponId}", requestOptions);
         }
 
-        public virtual async Task<Coupon> CreateAsync(CouponCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual StripeList<Coupon> List(CouponListOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<Coupon>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, Urls.Coupons, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityList($"{Urls.BaseUrl}/coupons", requestOptions, options);
         }
 
-        public virtual async Task<Coupon> UpdateAsync(string couponId, CouponUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Coupon Update(string couponId, CouponUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Coupon>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.Post($"{Urls.BaseUrl}/coupons/{couponId}", requestOptions, options);
         }
 
-        public virtual async Task<Coupon> GetAsync(string couponId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Coupon> CreateAsync(CouponCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Coupon>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.PostAsync($"{Urls.BaseUrl}/coupons", requestOptions, cancellationToken, options);
         }
 
-        public virtual async Task<Coupon> DeleteAsync(string couponId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Coupon> DeleteAsync(string couponId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Coupon>.MapFromJson(
-                await Requestor.DeleteAsync(
-                    this.ApplyAllParameters(null, $"{Urls.Coupons}/{WebUtility.UrlEncode(couponId)}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.DeleteEntityAsync($"{Urls.BaseUrl}/coupons/{couponId}", requestOptions, cancellationToken);
         }
 
-        public virtual async Task<StripeList<Coupon>> ListAsync(CouponListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Coupon> GetAsync(string couponId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<Coupon>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, Urls.Coupons, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityAsync($"{Urls.BaseUrl}/coupons/{couponId}", requestOptions, cancellationToken);
+        }
+
+        public virtual Task<StripeList<Coupon>> ListAsync(CouponListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.GetEntityListAsync($"{Urls.BaseUrl}/coupons", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Task<Coupon> UpdateAsync(string couponId, CouponUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostAsync($"{Urls.BaseUrl}/coupons/{couponId}", requestOptions, cancellationToken, options);
         }
     }
 }

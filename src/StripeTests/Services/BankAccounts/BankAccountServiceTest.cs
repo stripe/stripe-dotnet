@@ -114,7 +114,6 @@ namespace StripeTests
             Assert.NotNull(bankAccounts);
             Assert.Equal("list", bankAccounts.Object);
             Assert.Single(bankAccounts.Data);
-            Assert.Equal("bank_account", bankAccounts.Data[0].Object);
         }
 
         [Fact]
@@ -124,7 +123,6 @@ namespace StripeTests
             Assert.NotNull(bankAccounts);
             Assert.Equal("list", bankAccounts.Object);
             Assert.Single(bankAccounts.Data);
-            Assert.Equal("bank_account", bankAccounts.Data[0].Object);
         }
 
         // stripe-mock does not return a bank account object on update today so we do not test
