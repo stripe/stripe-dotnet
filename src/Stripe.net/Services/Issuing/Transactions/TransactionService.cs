@@ -28,24 +28,24 @@ namespace Stripe.Issuing
             return this.GetEntity($"{classUrl}/{transactionId}", requestOptions);
         }
 
-        public virtual StripeList<Transaction> List(TransactionListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.GetEntityList($"{classUrl}", requestOptions, options);
-        }
-
-        public virtual Transaction Update(string transactionId, TransactionUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Post($"{classUrl}/{transactionId}", requestOptions, options);
-        }
-
         public virtual Task<Transaction> GetAsync(string transactionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityAsync($"{classUrl}/{transactionId}", requestOptions, cancellationToken);
         }
 
+        public virtual StripeList<Transaction> List(TransactionListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.GetEntityList($"{classUrl}", requestOptions, options);
+        }
+
         public virtual Task<StripeList<Transaction>> ListAsync(TransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityListAsync($"{classUrl}", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Transaction Update(string transactionId, TransactionUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Post($"{classUrl}/{transactionId}", requestOptions, options);
         }
 
         public virtual Task<Transaction> UpdateAsync(string transactionId, TransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))

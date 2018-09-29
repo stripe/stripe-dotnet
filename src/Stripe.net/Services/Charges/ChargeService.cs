@@ -51,34 +51,14 @@ namespace Stripe
             return this.Post($"{Urls.BaseUrl}/charges/{chargeId}/capture", requestOptions, options);
         }
 
-        public virtual Charge Create(ChargeCreateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Post($"{Urls.BaseUrl}/charges", requestOptions, options);
-        }
-
-        public virtual Charge Delete(string chargeId, RequestOptions requestOptions = null)
-        {
-            return this.DeleteEntity($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions);
-        }
-
-        public virtual Charge Get(string chargeId, RequestOptions requestOptions = null)
-        {
-            return this.GetEntity($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions);
-        }
-
-        public virtual StripeList<Charge> List(ChargeListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.GetEntityList($"{Urls.BaseUrl}/charges", requestOptions, options);
-        }
-
-        public virtual Charge Update(string chargeId, ChargeUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Post($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions, options);
-        }
-
         public virtual Task<Charge> CaptureAsync(string chargeId, ChargeCaptureOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.PostAsync($"{Urls.BaseUrl}/charges/{chargeId}/capture", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Charge Create(ChargeCreateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Post($"{Urls.BaseUrl}/charges", requestOptions, options);
         }
 
         public virtual Task<Charge> CreateAsync(ChargeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -86,9 +66,9 @@ namespace Stripe
             return this.PostAsync($"{Urls.BaseUrl}/charges", requestOptions, cancellationToken, options);
         }
 
-        public virtual Task<Charge> DeleteAsync(string chargeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Charge Get(string chargeId, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntityAsync($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions, cancellationToken);
+            return this.GetEntity($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions);
         }
 
         public virtual Task<Charge> GetAsync(string chargeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -96,9 +76,19 @@ namespace Stripe
             return this.GetEntityAsync($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions, cancellationToken);
         }
 
+        public virtual StripeList<Charge> List(ChargeListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.GetEntityList($"{Urls.BaseUrl}/charges", requestOptions, options);
+        }
+
         public virtual Task<StripeList<Charge>> ListAsync(ChargeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityListAsync($"{Urls.BaseUrl}/charges", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Charge Update(string chargeId, ChargeUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Post($"{Urls.BaseUrl}/charges/{chargeId}", requestOptions, options);
         }
 
         public virtual Task<Charge> UpdateAsync(string chargeId, ChargeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))

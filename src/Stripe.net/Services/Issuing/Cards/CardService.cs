@@ -29,29 +29,14 @@ namespace Stripe.Issuing
             return this.Post($"{classUrl}", requestOptions, options);
         }
 
-        public virtual CardDetails Details(string cardId, RequestOptions requestOptions = null)
-        {
-            return this.GetRequest<CardDetails>($"{classUrl}/{cardId}/details", null, requestOptions);
-        }
-
-        public virtual Card Get(string cardId, RequestOptions requestOptions = null)
-        {
-            return this.GetEntity($"{classUrl}/{cardId}", requestOptions);
-        }
-
-        public virtual StripeList<Card> List(CardListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.GetEntityList($"{classUrl}", requestOptions, options);
-        }
-
-        public virtual Card Update(string cardId, CardUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.Post($"{classUrl}/{cardId}", requestOptions, options);
-        }
-
         public virtual Task<Card> CreateAsync(CardCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.PostAsync($"{classUrl}", requestOptions, cancellationToken, options);
+        }
+
+        public virtual CardDetails Details(string cardId, RequestOptions requestOptions = null)
+        {
+            return this.GetRequest<CardDetails>($"{classUrl}/{cardId}/details", null, requestOptions);
         }
 
         public virtual Task<CardDetails> DetailsAsync(string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -59,14 +44,29 @@ namespace Stripe.Issuing
             return this.GetRequestAsync<CardDetails>($"{classUrl}/{cardId}/details", null, requestOptions, cancellationToken);
         }
 
+        public virtual Card Get(string cardId, RequestOptions requestOptions = null)
+        {
+            return this.GetEntity($"{classUrl}/{cardId}", requestOptions);
+        }
+
         public virtual Task<Card> GetAsync(string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityAsync($"{classUrl}/{cardId}", requestOptions, cancellationToken);
         }
 
+        public virtual StripeList<Card> List(CardListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.GetEntityList($"{classUrl}", requestOptions, options);
+        }
+
         public virtual Task<StripeList<Card>> ListAsync(CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityListAsync($"{classUrl}", requestOptions, cancellationToken, options);
+        }
+
+        public virtual Card Update(string cardId, CardUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Post($"{classUrl}/{cardId}", requestOptions, options);
         }
 
         public virtual Task<Card> UpdateAsync(string cardId, CardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
