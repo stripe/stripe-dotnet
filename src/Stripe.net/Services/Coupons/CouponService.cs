@@ -23,54 +23,56 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/coupons";
+
         public virtual Coupon Create(CouponCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/coupons", requestOptions, options);
+            return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<Coupon> CreateAsync(CouponCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/coupons", requestOptions, cancellationToken, options);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Coupon Delete(string couponId, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity($"{Urls.BaseUrl}/coupons/{couponId}", requestOptions);
+            return this.DeleteEntity(couponId, null, requestOptions);
         }
 
         public virtual Task<Coupon> DeleteAsync(string couponId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync($"{Urls.BaseUrl}/coupons/{couponId}", requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(couponId, null, requestOptions, cancellationToken);
         }
 
         public virtual Coupon Get(string couponId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/coupons/{couponId}", requestOptions);
+            return this.GetEntity(couponId, null, requestOptions);
         }
 
         public virtual Task<Coupon> GetAsync(string couponId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/coupons/{couponId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(couponId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Coupon> List(CouponListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/coupons", requestOptions, options);
+            return this.ListEntities(options, requestOptions);
         }
 
         public virtual Task<StripeList<Coupon>> ListAsync(CouponListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/coupons", requestOptions, cancellationToken, options);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Coupon Update(string couponId, CouponUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/coupons/{couponId}", requestOptions, options);
+            return this.UpdateEntity(couponId, options, requestOptions);
         }
 
         public virtual Task<Coupon> UpdateAsync(string couponId, CouponUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/coupons/{couponId}", requestOptions, cancellationToken, options);
+            return this.UpdateEntityAsync(couponId, options, requestOptions, cancellationToken);
         }
     }
 }

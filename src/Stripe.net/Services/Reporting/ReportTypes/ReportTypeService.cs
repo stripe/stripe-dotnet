@@ -10,8 +10,6 @@ namespace Stripe.Reporting
         IListable<ReportType, ReportTypeListOptions>,
         IRetrievable<ReportType>
     {
-        private static string classUrl = Urls.BaseUrl + "/reporting/report_types";
-
         public ReportTypeService()
             : base(null)
         {
@@ -22,24 +20,26 @@ namespace Stripe.Reporting
         {
         }
 
+        public override string BasePath => "/reporting/report_types";
+
         public virtual ReportType Get(string reportTypeId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{classUrl}/{reportTypeId}", requestOptions);
+            return this.GetEntity(reportTypeId, null, requestOptions);
         }
 
         public virtual Task<ReportType> GetAsync(string reportTypeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{classUrl}/{reportTypeId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(reportTypeId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ReportType> List(ReportTypeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{classUrl}", requestOptions, options);
+            return this.ListEntities(options, requestOptions);
         }
 
         public virtual Task<StripeList<ReportType>> ListAsync(ReportTypeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{classUrl}", requestOptions, cancellationToken, options);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
     }
 }

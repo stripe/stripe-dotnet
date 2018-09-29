@@ -11,8 +11,6 @@ namespace Stripe.Issuing
         IRetrievable<Authorization>,
         IUpdatable<Authorization, AuthorizationUpdateOptions>
     {
-        private static string classUrl = Urls.BaseUrl + "/issuing/authorizations";
-
         public AuthorizationService()
             : base(null)
         {
@@ -23,54 +21,56 @@ namespace Stripe.Issuing
         {
         }
 
+        public override string BasePath => "/issuing/authorizations";
+
         public virtual Authorization Approve(string authorizationId, AuthorizationApproveOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Post($"{classUrl}/{authorizationId}/approve", requestOptions, options);
+            return this.PostRequest<Authorization>($"{this.InstanceUrl(authorizationId)}/approve", options, requestOptions);
         }
 
         public virtual Task<Authorization> ApproveAsync(string authorizationId, AuthorizationApproveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{classUrl}/{authorizationId}/approve", requestOptions, cancellationToken, options);
+            return this.PostRequestAsync<Authorization>($"{this.InstanceUrl(authorizationId)}/approve", options, requestOptions, cancellationToken);
         }
 
         public virtual Authorization Decline(string authorizationId, AuthorizationDeclineOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Post($"{classUrl}/{authorizationId}/decline", requestOptions, options);
+            return this.PostRequest<Authorization>($"{this.InstanceUrl(authorizationId)}/decline", options, requestOptions);
         }
 
         public virtual Task<Authorization> DeclineAsync(string authorizationId, AuthorizationDeclineOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{classUrl}/{authorizationId}/decline", requestOptions, cancellationToken, options);
+            return this.PostRequestAsync<Authorization>($"{this.InstanceUrl(authorizationId)}/decline", options, requestOptions, cancellationToken);
         }
 
         public virtual Authorization Get(string authorizationId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{classUrl}/{authorizationId}", requestOptions);
+            return this.GetEntity(authorizationId, null, requestOptions);
         }
 
         public virtual Task<Authorization> GetAsync(string authorizationId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{classUrl}/{authorizationId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(authorizationId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Authorization> List(AuthorizationListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{classUrl}", requestOptions, options);
+            return this.ListEntities(options, requestOptions);
         }
 
         public virtual Task<StripeList<Authorization>> ListAsync(AuthorizationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{classUrl}", requestOptions, cancellationToken, options);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Authorization Update(string authorizationId, AuthorizationUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{classUrl}/{authorizationId}", requestOptions, options);
+            return this.UpdateEntity(authorizationId, options, requestOptions);
         }
 
         public virtual Task<Authorization> UpdateAsync(string authorizationId, AuthorizationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{classUrl}/{authorizationId}", requestOptions, cancellationToken, options);
+            return this.UpdateEntityAsync(authorizationId, options, requestOptions, cancellationToken);
         }
     }
 }

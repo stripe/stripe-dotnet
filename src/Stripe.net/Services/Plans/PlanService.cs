@@ -23,56 +23,58 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/plans";
+
         public bool ExpandProduct { get; set; }
 
         public virtual Plan Create(PlanCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/plans", requestOptions, options);
+            return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<Plan> CreateAsync(PlanCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/plans", requestOptions, cancellationToken, options);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Plan Delete(string planId, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity($"{Urls.BaseUrl}/plans/{planId}", requestOptions);
+            return this.DeleteEntity(planId, null, requestOptions);
         }
 
         public virtual Task<Plan> DeleteAsync(string planId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync($"{Urls.BaseUrl}/plans/{planId}", requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(planId, null, requestOptions, cancellationToken);
         }
 
         public virtual Plan Get(string planId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/plans/{planId}", requestOptions);
+            return this.GetEntity(planId, null, requestOptions);
         }
 
         public virtual Task<Plan> GetAsync(string planId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/plans/{planId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(planId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Plan> List(PlanListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/plans", requestOptions, options);
+            return this.ListEntities(options, requestOptions);
         }
 
         public virtual Task<StripeList<Plan>> ListAsync(PlanListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/plans", requestOptions, cancellationToken, options);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Plan Update(string planId, PlanUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/plans/{planId}", requestOptions, options);
+            return this.UpdateEntity(planId, options, requestOptions);
         }
 
         public virtual Task<Plan> UpdateAsync(string planId, PlanUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/plans/{planId}", requestOptions, cancellationToken, options);
+            return this.UpdateEntityAsync(planId, options, requestOptions, cancellationToken);
         }
     }
 }
