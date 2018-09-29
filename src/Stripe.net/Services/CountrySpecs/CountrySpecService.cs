@@ -19,24 +19,26 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/country_specs";
+
         public virtual CountrySpec Get(string country, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/country_specs/{country}", requestOptions);
+            return this.GetEntity(country, null, requestOptions);
         }
 
         public virtual Task<CountrySpec> GetAsync(string country, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/country_specs/{country}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(country, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<CountrySpec> List(CountrySpecListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/country_specs", requestOptions, options);
+            return this.ListEntities(options, requestOptions);
         }
 
         public virtual Task<StripeList<CountrySpec>> ListAsync(CountrySpecListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/country_specs", requestOptions, cancellationToken, options);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
     }
 }

@@ -19,24 +19,26 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/exchange_rates";
+
         public virtual ExchangeRate Get(string currency, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/exchange_rates/{currency}", requestOptions);
+            return this.GetEntity(currency, null, requestOptions);
         }
 
         public virtual Task<ExchangeRate> GetAsync(string currency, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/exchange_rates/{currency}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(currency, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ExchangeRate> List(ExchangeRateListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/exchange_rates", requestOptions, options);
+            return this.ListEntities(options, requestOptions);
         }
 
         public virtual Task<StripeList<ExchangeRate>> ListAsync(ExchangeRateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/exchange_rates", requestOptions, cancellationToken, options);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
     }
 }

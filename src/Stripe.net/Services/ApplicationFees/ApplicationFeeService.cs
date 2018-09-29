@@ -19,6 +19,8 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/application_fees";
+
         public bool ExpandAccount { get; set; }
 
         public bool ExpandApplication { get; set; }
@@ -31,22 +33,22 @@ namespace Stripe
 
         public virtual ApplicationFee Get(string applicationFeeId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/application_fees/{applicationFeeId}", requestOptions);
+            return this.GetEntity(applicationFeeId, null, requestOptions);
         }
 
         public virtual Task<ApplicationFee> GetAsync(string applicationFeeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/application_fees/{applicationFeeId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(applicationFeeId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ApplicationFee> List(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/application_fees", requestOptions, options);
+            return this.ListEntities(options, requestOptions);
         }
 
         public virtual Task<StripeList<ApplicationFee>> ListAsync(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/application_fees", requestOptions, cancellationToken, options);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
     }
 }

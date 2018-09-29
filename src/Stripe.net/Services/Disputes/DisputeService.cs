@@ -21,46 +21,48 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/disputes";
+
         public bool ExpandCharge { get; set; }
 
         public virtual Dispute Close(string disputeId, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/disputes/{disputeId}/close", requestOptions);
+            return this.PostRequest<Dispute>($"{this.InstanceUrl(disputeId)}/close", null, requestOptions);
         }
 
         public virtual Task<Dispute> CloseAsync(string disputeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/disputes/{disputeId}/close", requestOptions, cancellationToken);
+            return this.PostRequestAsync<Dispute>($"{this.InstanceUrl(disputeId)}/close", null, requestOptions, cancellationToken);
         }
 
         public virtual Dispute Get(string disputeId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/disputes/{disputeId}", requestOptions);
+            return this.GetEntity(disputeId, null, requestOptions);
         }
 
         public virtual Task<Dispute> GetAsync(string disputeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/disputes/{disputeId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(disputeId, null, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<Dispute> List(DisputeListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Dispute> List(DisputeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/disputes", requestOptions, listOptions);
+            return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Dispute>> ListAsync(DisputeListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Dispute>> ListAsync(DisputeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/disputes", requestOptions, cancellationToken, listOptions);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Dispute Update(string disputeId, DisputeUpdateOptions updateOptions, RequestOptions requestOptions = null)
+        public virtual Dispute Update(string disputeId, DisputeUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/disputes/{disputeId}", requestOptions, updateOptions);
+            return this.UpdateEntity(disputeId, options, requestOptions);
         }
 
-        public virtual Task<Dispute> UpdateAsync(string disputeId, DisputeUpdateOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Dispute> UpdateAsync(string disputeId, DisputeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/disputes/{disputeId}", requestOptions, cancellationToken, updateOptions);
+            return this.UpdateEntityAsync(disputeId, options, requestOptions, cancellationToken);
         }
     }
 }
