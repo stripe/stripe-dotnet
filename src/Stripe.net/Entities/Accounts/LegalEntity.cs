@@ -12,10 +12,10 @@ namespace Stripe
         public Address Address { get; set; }
 
         [JsonProperty("address_kana")]
-        public Address AddressKana { get; set; }
+        public AddressJapan AddressKana { get; set; }
 
         [JsonProperty("address_kanji")]
-        public Address AddressKanji { get; set; }
+        public AddressJapan AddressKanji { get; set; }
 
         [JsonProperty("business_name")]
         public string BusinessName { get; set; }
@@ -39,7 +39,7 @@ namespace Stripe
         public bool BusinessVatIdProvided { get; set; }
 
         [JsonProperty("dob")]
-        public BirthDay BirthDay { get; set; }
+        public BirthDay Dob { get; set; }
 
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -69,10 +69,10 @@ namespace Stripe
         public Address PersonalAddress { get; set; }
 
         [JsonProperty("personal_address_kana")]
-        public Address PersonalAddressKana { get; set; }
+        public AddressJapan PersonalAddressKana { get; set; }
 
         [JsonProperty("personal_address_kanji")]
-        public Address PersonalAddressKanji { get; set; }
+        public AddressJapan PersonalAddressKanji { get; set; }
 
         [JsonProperty("personal_id_number_provided")]
         public bool PersonalIdNumberProvided { get; set; }
@@ -81,7 +81,7 @@ namespace Stripe
         public string PhoneNumber { get; set; }
 
         [JsonProperty("ssn_last_4_provided")]
-        public bool SocialSecurityNumberLastFourProvided { get; set; }
+        public bool SsnLast4Provided { get; set; }
 
         [JsonProperty("tax_id_registrar")]
         public string TaxIdRegistrar { get; set; }
@@ -90,6 +90,6 @@ namespace Stripe
         public string Type { get; set; }
 
         [JsonProperty("verification")]
-        public LegalEntityVerification LegalEntityVerification { get; set; }
+        public LegalEntityVerification Verification { get; set; }
     }
 }

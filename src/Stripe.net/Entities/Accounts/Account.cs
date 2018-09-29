@@ -49,6 +49,9 @@ namespace Stripe
         [JsonProperty("currencies_supported")]
         public string[] CurrenciesSupported { get; set; }
 
+        [JsonProperty("keys")]
+        public CustomAccountKeys Keys { get; set; }
+
         [JsonProperty("debit_negative_balances")]
         public bool DebitNegativeBalances { get; set; }
 
@@ -82,6 +85,15 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("payouts_enabled")]
+        public bool PayoutsEnabled { get; set; }
+
+        [JsonProperty("payout_schedule")]
+        public PayoutSchedule PayoutSchedule { get; set; }
+
+        [JsonProperty("payout_statement_descriptor")]
+        public string PayoutStatementDescriptor { get; set; }
+
         [JsonProperty("product_description")]
         public string ProductDescription { get; set; }
 
@@ -97,28 +109,16 @@ namespace Stripe
         [JsonProperty("support_url")]
         public string SupportUrl { get; set; }
 
+        [JsonProperty("tos_acceptance")]
+        public TermsOfServiceAcceptance TosAcceptance { get; set; }
+
         [JsonProperty("timezone")]
         public string Timezone { get; set; }
-
-        [JsonProperty("tos_acceptance")]
-        public TermsOfServiceAcceptance TermsOfServiceAcceptance { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
-        [JsonProperty("payouts_enabled")]
-        public bool PayoutsEnabled { get; set; }
-
-        [JsonProperty("payout_schedule")]
-        public PayoutSchedule PayoutSchedule { get; set; }
-
-        [JsonProperty("payout_statement_descriptor")]
-        public string PayoutStatementDescriptor { get; set; }
-
         [JsonProperty("verification")]
-        public AccountVerification AccountVerification { get; set; }
-
-        [JsonProperty("keys")]
-        public CustomAccountKeys CustomAccountKeys { get; set; }
+        public AccountVerification Verification { get; set; }
      }
 }
