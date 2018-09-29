@@ -21,6 +21,8 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/payouts";
+
         public bool ExpandBalanceTransaction { get; set; }
 
         public bool ExpandDestination { get; set; }
@@ -29,52 +31,52 @@ namespace Stripe
 
         public virtual Payout Cancel(string payoutId, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/payouts/{payoutId}/cancel", requestOptions);
+            return this.PostRequest<Payout>($"{this.InstanceUrl(payoutId)}/cancel", null, requestOptions);
         }
 
         public virtual Task<Payout> CancelAsync(string payoutId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/payouts/{payoutId}/cancel", requestOptions, cancellationToken);
+            return this.PostRequestAsync<Payout>($"{this.InstanceUrl(payoutId)}/cancel", null, requestOptions, cancellationToken);
         }
 
         public virtual Payout Create(PayoutCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/payouts", requestOptions, options);
+            return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<Payout> CreateAsync(PayoutCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/payouts", requestOptions, cancellationToken, options);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Payout Get(string payoutId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/payouts/{payoutId}", requestOptions);
+            return this.GetEntity(payoutId, null, requestOptions);
         }
 
         public virtual Task<Payout> GetAsync(string payoutId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/payouts/{payoutId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(payoutId, null, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<Payout> List(PayoutListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Payout> List(PayoutListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/payouts", requestOptions, listOptions);
+            return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Payout>> ListAsync(PayoutListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Payout>> ListAsync(PayoutListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/payouts", requestOptions, cancellationToken, listOptions);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Payout Update(string payoutId, PayoutUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/payouts/{payoutId}", requestOptions, options);
+            return this.UpdateEntity(payoutId, options, requestOptions);
         }
 
         public virtual Task<Payout> UpdateAsync(string payoutId, PayoutUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/payouts/{payoutId}", requestOptions, cancellationToken, options);
+            return this.UpdateEntityAsync(payoutId, options, requestOptions, cancellationToken);
         }
     }
 }

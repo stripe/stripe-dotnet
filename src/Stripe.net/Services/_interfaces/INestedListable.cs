@@ -5,7 +5,7 @@ namespace Stripe
 
     public interface INestedListable<T, O>
         where T : StripeEntity
-        where O : BaseOptions
+        where O : ListOptions
     {
         StripeList<T> List(string parentId, O listOptions = null, RequestOptions requestOptions = null);
 

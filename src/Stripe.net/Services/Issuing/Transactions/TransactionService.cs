@@ -11,8 +11,6 @@ namespace Stripe.Issuing
         IRetrievable<Transaction>,
         IUpdatable<Transaction, TransactionUpdateOptions>
     {
-        private static string classUrl = Urls.BaseUrl + "/issuing/transactions";
-
         public TransactionService()
             : base(null)
         {
@@ -23,34 +21,36 @@ namespace Stripe.Issuing
         {
         }
 
+        public override string BasePath => "/issuing/transactions";
+
         public virtual Transaction Get(string transactionId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{classUrl}/{transactionId}", requestOptions);
+            return this.GetEntity(transactionId, null, requestOptions);
         }
 
         public virtual Task<Transaction> GetAsync(string transactionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{classUrl}/{transactionId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(transactionId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Transaction> List(TransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{classUrl}", requestOptions, options);
+            return this.ListEntities(options, requestOptions);
         }
 
         public virtual Task<StripeList<Transaction>> ListAsync(TransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{classUrl}", requestOptions, cancellationToken, options);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Transaction Update(string transactionId, TransactionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{classUrl}/{transactionId}", requestOptions, options);
+            return this.UpdateEntity(transactionId, options, requestOptions);
         }
 
         public virtual Task<Transaction> UpdateAsync(string transactionId, TransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{classUrl}/{transactionId}", requestOptions, cancellationToken, options);
+            return this.UpdateEntityAsync(transactionId, options, requestOptions, cancellationToken);
         }
     }
 }

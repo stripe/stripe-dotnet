@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class BankAccountService : Service<BankAccount>,
+    public class BankAccountService : ServiceNested<BankAccount>,
         INestedCreatable<BankAccount, BankAccountCreateOptions>,
         INestedDeletable<BankAccount>,
         INestedListable<BankAccount, BankAccountListOptions>,
@@ -22,66 +22,68 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/customers/{PARENT_ID}/sources";
+
         public bool ExpandCustomer { get; set; }
 
         public virtual BankAccount Create(string customerId, BankAccountCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, options);
+            return this.CreateNestedEntity(customerId, options, requestOptions);
         }
 
         public virtual Task<BankAccount> CreateAsync(string customerId, BankAccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, cancellationToken, options);
+            return this.CreateNestedEntityAsync(customerId, options, requestOptions, cancellationToken);
         }
 
         public virtual BankAccount Delete(string customerId, string bankAccountId, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}", requestOptions);
+            return this.DeleteNestedEntity(customerId, bankAccountId, null, requestOptions);
         }
 
         public virtual Task<BankAccount> DeleteAsync(string customerId, string bankAccountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}", requestOptions, cancellationToken);
+            return this.DeleteNestedEntityAsync(customerId, bankAccountId, null, requestOptions, cancellationToken);
         }
 
         public virtual BankAccount Get(string customerId, string bankAccountId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}", requestOptions);
+            return this.GetNestedEntity(customerId, bankAccountId, null, requestOptions);
         }
 
         public virtual Task<BankAccount> GetAsync(string customerId, string bankAccountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}", requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(customerId, bankAccountId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<BankAccount> List(string customerId, BankAccountListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, options);
+            return this.ListNestedEntities(customerId, options, requestOptions);
         }
 
         public virtual Task<StripeList<BankAccount>> ListAsync(string customerId, BankAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, cancellationToken, options);
+            return this.ListNestedEntitiesAsync(customerId, options, requestOptions, cancellationToken);
         }
 
         public virtual BankAccount Update(string customerId, string bankAccountId, BankAccountUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}", requestOptions, options);
+            return this.UpdateNestedEntity(customerId, bankAccountId, options, requestOptions);
         }
 
         public virtual Task<BankAccount> UpdateAsync(string customerId, string bankAccountId, BankAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}", requestOptions, cancellationToken, options);
+            return this.UpdateNestedEntityAsync(customerId, bankAccountId, options, requestOptions, cancellationToken);
         }
 
         public virtual BankAccount Verify(string customerId, string bankAccountId, BankAccountVerifyOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}/verify", requestOptions, options);
+            return this.PostRequest<BankAccount>($"{this.InstanceUrl(customerId, bankAccountId)}/verify", options, requestOptions);
         }
 
         public virtual Task<BankAccount> VerifyAsync(string customerId, string bankAccountId, BankAccountVerifyOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}/verify", requestOptions, cancellationToken, options);
+            return this.PostRequestAsync<BankAccount>($"{this.InstanceUrl(customerId, bankAccountId)}/verify", options, requestOptions, cancellationToken);
         }
     }
 }

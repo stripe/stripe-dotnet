@@ -19,14 +19,16 @@ namespace Stripe
         {
         }
 
-        public virtual ThreeDSecure Create(ThreeDSecureCreateOptions createOptions, RequestOptions requestOptions = null)
+        public override string BasePath => "/3d_secure";
+
+        public virtual ThreeDSecure Create(ThreeDSecureCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/3d_secure", requestOptions, createOptions);
+            return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<ThreeDSecure> CreateAsync(ThreeDSecureCreateOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ThreeDSecure> CreateAsync(ThreeDSecureCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/3d_secure", requestOptions, cancellationToken, createOptions);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
     }
 }
