@@ -21,8 +21,5 @@ namespace Stripe
 
         [JsonProperty("state")]
         public string State { get; set; }
-
-        [JsonProperty("town")]
-        public string Town { get; set; }
     }
 }
