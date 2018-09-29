@@ -23,56 +23,58 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/skus";
+
         public bool ExpandProduct { get; set; }
 
         public virtual Sku Create(SkuCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/skus", requestOptions, options);
+            return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<Sku> CreateAsync(SkuCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/skus", requestOptions, cancellationToken, options);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Sku Delete(string skuId, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions);
+            return this.DeleteEntity(skuId, null, requestOptions);
         }
 
         public virtual Task<Sku> DeleteAsync(string skuId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(skuId, null, requestOptions, cancellationToken);
         }
 
         public virtual Sku Get(string skuId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions);
+            return this.GetEntity(skuId, null, requestOptions);
         }
 
         public virtual Task<Sku> GetAsync(string skuId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(skuId, null, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<Sku> List(SkuListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Sku> List(SkuListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/skus", requestOptions, listOptions);
+            return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Sku>> ListAsync(SkuListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Sku>> ListAsync(SkuListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/skus", requestOptions, cancellationToken, listOptions);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Sku Update(string skuId, SkuUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, options);
+            return this.UpdateEntity(skuId, options, requestOptions);
         }
 
         public virtual Task<Sku> UpdateAsync(string skuId, SkuUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/skus/{WebUtility.UrlEncode(skuId)}", requestOptions, cancellationToken, options);
+            return this.UpdateEntityAsync(skuId, options, requestOptions, cancellationToken);
         }
     }
 }

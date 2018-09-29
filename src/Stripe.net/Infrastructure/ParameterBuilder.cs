@@ -10,6 +10,7 @@ namespace Stripe.Infrastructure
     internal static class ParameterBuilder
     {
         public static string ApplyAllParameters<T>(this Service<T> service, BaseOptions obj, string url, bool isListMethod = false)
+            where T : StripeEntity
         {
             // store the original url from the service call into requestString (e.g. https://api.stripe.com/v1/accounts/account_id)
             // before the stripe attributes get applied. all of the attributes that will get passed to stripe will be applied to this string,
