@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -43,6 +44,7 @@ namespace StripeTests
         public void Create()
         {
             var payout = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payouts");
             Assert.NotNull(payout);
             Assert.Equal("payout", payout.Object);
         }
@@ -51,6 +53,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var payout = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payouts");
             Assert.NotNull(payout);
             Assert.Equal("payout", payout.Object);
         }
@@ -59,6 +62,7 @@ namespace StripeTests
         public void Cancel()
         {
             var payout = this.service.Cancel(PayoutId);
+            this.AssertRequest(HttpMethod.Post, "/v1/payouts/po_123/cancel");
             Assert.NotNull(payout);
             Assert.Equal("payout", payout.Object);
         }
@@ -67,6 +71,7 @@ namespace StripeTests
         public async Task CancelAsync()
         {
             var payout = await this.service.CancelAsync(PayoutId);
+            this.AssertRequest(HttpMethod.Post, "/v1/payouts/po_123/cancel");
             Assert.NotNull(payout);
             Assert.Equal("payout", payout.Object);
         }
@@ -75,6 +80,7 @@ namespace StripeTests
         public void Get()
         {
             var payout = this.service.Get(PayoutId);
+            this.AssertRequest(HttpMethod.Get, "/v1/payouts/po_123");
             Assert.NotNull(payout);
             Assert.Equal("payout", payout.Object);
         }
@@ -83,6 +89,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var payout = await this.service.GetAsync(PayoutId);
+            this.AssertRequest(HttpMethod.Get, "/v1/payouts/po_123");
             Assert.NotNull(payout);
             Assert.Equal("payout", payout.Object);
         }
@@ -91,6 +98,7 @@ namespace StripeTests
         public void List()
         {
             var payouts = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/payouts");
             Assert.NotNull(payouts);
             Assert.Equal("list", payouts.Object);
             Assert.Single(payouts.Data);
@@ -101,6 +109,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var payouts = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/payouts");
             Assert.NotNull(payouts);
             Assert.Equal("list", payouts.Object);
             Assert.Single(payouts.Data);
@@ -111,6 +120,7 @@ namespace StripeTests
         public void Update()
         {
             var payout = this.service.Update(PayoutId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payouts/po_123");
             Assert.NotNull(payout);
             Assert.Equal("payout", payout.Object);
         }
@@ -119,6 +129,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var payout = await this.service.UpdateAsync(PayoutId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payouts/po_123");
             Assert.NotNull(payout);
             Assert.Equal("payout", payout.Object);
         }

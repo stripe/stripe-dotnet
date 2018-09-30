@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -8,7 +9,7 @@ namespace StripeTests
 
     public class TopupServiceTest : BaseStripeTest
     {
-        private const string TopupId = "po_123";
+        private const string TopupId = "tu_123";
 
         private TopupService service;
         private TopupCreateOptions createOptions;
@@ -44,6 +45,7 @@ namespace StripeTests
         public void Cancel()
         {
             var topup = this.service.Cancel(TopupId);
+            this.AssertRequest(HttpMethod.Post, "/v1/topups/tu_123/cancel");
             Assert.NotNull(topup);
             Assert.Equal("topup", topup.Object);
         }
@@ -52,6 +54,7 @@ namespace StripeTests
         public async Task CancelAsync()
         {
             var topup = await this.service.CancelAsync(TopupId);
+            this.AssertRequest(HttpMethod.Post, "/v1/topups/tu_123/cancel");
             Assert.NotNull(topup);
             Assert.Equal("topup", topup.Object);
         }
@@ -60,6 +63,7 @@ namespace StripeTests
         public void Create()
         {
             var topup = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/topups");
             Assert.NotNull(topup);
             Assert.Equal("topup", topup.Object);
         }
@@ -68,6 +72,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var topup = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/topups");
             Assert.NotNull(topup);
             Assert.Equal("topup", topup.Object);
         }
@@ -76,6 +81,7 @@ namespace StripeTests
         public void Get()
         {
             var topup = this.service.Get(TopupId);
+            this.AssertRequest(HttpMethod.Get, "/v1/topups/tu_123");
             Assert.NotNull(topup);
             Assert.Equal("topup", topup.Object);
         }
@@ -84,6 +90,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var topup = await this.service.GetAsync(TopupId);
+            this.AssertRequest(HttpMethod.Get, "/v1/topups/tu_123");
             Assert.NotNull(topup);
             Assert.Equal("topup", topup.Object);
         }
@@ -92,6 +99,7 @@ namespace StripeTests
         public void List()
         {
             var topups = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/topups");
             Assert.NotNull(topups);
             Assert.Equal("list", topups.Object);
             Assert.Single(topups.Data);
@@ -102,6 +110,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var topups = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/topups");
             Assert.NotNull(topups);
             Assert.Equal("list", topups.Object);
             Assert.Single(topups.Data);
@@ -112,6 +121,7 @@ namespace StripeTests
         public void Update()
         {
             var topup = this.service.Update(TopupId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/topups/tu_123");
             Assert.NotNull(topup);
             Assert.Equal("topup", topup.Object);
         }
@@ -120,6 +130,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var topup = await this.service.UpdateAsync(TopupId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/topups/tu_123");
             Assert.NotNull(topup);
             Assert.Equal("topup", topup.Object);
         }

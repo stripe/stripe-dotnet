@@ -3,6 +3,7 @@ namespace StripeTests
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Net.Http;
     using System.Reflection;
     using System.Threading.Tasks;
 
@@ -38,6 +39,7 @@ namespace StripeTests
         public void Create()
         {
             var file = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/files");
             Assert.NotNull(file);
             Assert.Equal("file", file.Object);
         }
@@ -46,6 +48,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var file = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/files");
             Assert.NotNull(file);
             Assert.Equal("file", file.Object);
         }
@@ -54,6 +57,7 @@ namespace StripeTests
         public void Get()
         {
             var file = this.service.Get(FileId);
+            this.AssertRequest(HttpMethod.Get, "/v1/files/file_123");
             Assert.NotNull(file);
             Assert.Equal("file", file.Object);
         }
@@ -62,6 +66,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var file = await this.service.GetAsync(FileId);
+            this.AssertRequest(HttpMethod.Get, "/v1/files/file_123");
             Assert.NotNull(file);
             Assert.Equal("file", file.Object);
         }
@@ -70,6 +75,7 @@ namespace StripeTests
         public void List()
         {
             var files = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/files");
             Assert.NotNull(files);
             Assert.Equal("list", files.Object);
             Assert.Single(files.Data);
@@ -80,6 +86,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var files = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/files");
             Assert.NotNull(files);
             Assert.Equal("list", files.Object);
             Assert.Single(files.Data);

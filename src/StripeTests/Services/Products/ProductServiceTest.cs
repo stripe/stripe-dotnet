@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -55,6 +56,7 @@ namespace StripeTests
         public void Create()
         {
             var product = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/products");
             Assert.NotNull(product);
             Assert.Equal("product", product.Object);
         }
@@ -63,6 +65,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var product = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/products");
             Assert.NotNull(product);
             Assert.Equal("product", product.Object);
         }
@@ -71,6 +74,7 @@ namespace StripeTests
         public void Delete()
         {
             var deleted = this.service.Delete(ProductId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/products/prod_123");
             Assert.NotNull(deleted);
         }
 
@@ -78,6 +82,7 @@ namespace StripeTests
         public async Task DeleteAsync()
         {
             var deleted = await this.service.DeleteAsync(ProductId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/products/prod_123");
             Assert.NotNull(deleted);
         }
 
@@ -85,6 +90,7 @@ namespace StripeTests
         public void Get()
         {
             var product = this.service.Get(ProductId);
+            this.AssertRequest(HttpMethod.Get, "/v1/products/prod_123");
             Assert.NotNull(product);
             Assert.Equal("product", product.Object);
         }
@@ -93,6 +99,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var product = await this.service.GetAsync(ProductId);
+            this.AssertRequest(HttpMethod.Get, "/v1/products/prod_123");
             Assert.NotNull(product);
             Assert.Equal("product", product.Object);
         }
@@ -101,6 +108,7 @@ namespace StripeTests
         public void List()
         {
             var products = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/products");
             Assert.NotNull(products);
             Assert.Equal("list", products.Object);
             Assert.Single(products.Data);
@@ -111,6 +119,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var products = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/products");
             Assert.NotNull(products);
             Assert.Equal("list", products.Object);
             Assert.Single(products.Data);
@@ -121,6 +130,7 @@ namespace StripeTests
         public void Update()
         {
             var product = this.service.Update(ProductId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/products/prod_123");
             Assert.NotNull(product);
             Assert.Equal("product", product.Object);
         }
@@ -129,6 +139,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var product = await this.service.UpdateAsync(ProductId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/products/prod_123");
             Assert.NotNull(product);
             Assert.Equal("product", product.Object);
         }
