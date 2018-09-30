@@ -1,6 +1,7 @@
 namespace StripeTests.Issuing
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe.Issuing;
@@ -36,6 +37,7 @@ namespace StripeTests.Issuing
         public void Get()
         {
             var transaction = this.service.Get(TransactionId);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/transactions/ipi_123");
             Assert.NotNull(transaction);
         }
 
@@ -43,6 +45,7 @@ namespace StripeTests.Issuing
         public async Task GetAsync()
         {
             var transaction = await this.service.GetAsync(TransactionId);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/transactions/ipi_123");
             Assert.NotNull(transaction);
         }
 
@@ -50,6 +53,7 @@ namespace StripeTests.Issuing
         public void List()
         {
             var transactions = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/transactions");
             Assert.NotNull(transactions);
         }
 
@@ -57,6 +61,7 @@ namespace StripeTests.Issuing
         public async Task ListAsync()
         {
             var transactions = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/transactions");
             Assert.NotNull(transactions);
         }
 
@@ -64,6 +69,7 @@ namespace StripeTests.Issuing
         public void Update()
         {
             var transaction = this.service.Update(TransactionId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/transactions/ipi_123");
             Assert.NotNull(transaction);
         }
 
@@ -71,6 +77,7 @@ namespace StripeTests.Issuing
         public async Task UpdateAsync()
         {
             var transaction = await this.service.UpdateAsync(TransactionId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/transactions/ipi_123");
             Assert.NotNull(transaction);
         }
     }

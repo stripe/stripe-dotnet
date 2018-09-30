@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -43,6 +44,7 @@ namespace StripeTests
         public void Create()
         {
             var transferReversal = this.service.Create(TransferId, this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/transfers/tr_123/reversals");
             Assert.NotNull(transferReversal);
             Assert.Equal("transfer_reversal", transferReversal.Object);
         }
@@ -51,6 +53,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var transferReversal = await this.service.CreateAsync(TransferId, this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/transfers/tr_123/reversals");
             Assert.NotNull(transferReversal);
             Assert.Equal("transfer_reversal", transferReversal.Object);
         }
@@ -59,6 +62,7 @@ namespace StripeTests
         public void Get()
         {
             var transferReversal = this.service.Get(TransferId, TransferReversalId);
+            this.AssertRequest(HttpMethod.Get, "/v1/transfers/tr_123/reversals/trr_123");
             Assert.NotNull(transferReversal);
             Assert.Equal("transfer_reversal", transferReversal.Object);
         }
@@ -67,6 +71,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var transferReversal = await this.service.GetAsync(TransferId, TransferReversalId);
+            this.AssertRequest(HttpMethod.Get, "/v1/transfers/tr_123/reversals/trr_123");
             Assert.NotNull(transferReversal);
             Assert.Equal("transfer_reversal", transferReversal.Object);
         }
@@ -75,6 +80,7 @@ namespace StripeTests
         public void List()
         {
             var transfers = this.service.List(TransferId, this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/transfers/tr_123/reversals");
             Assert.NotNull(transfers);
             Assert.Equal("list", transfers.Object);
             Assert.Single(transfers.Data);
@@ -85,6 +91,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var transfers = await this.service.ListAsync(TransferId, this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/transfers/tr_123/reversals");
             Assert.NotNull(transfers);
             Assert.Equal("list", transfers.Object);
             Assert.Single(transfers.Data);
@@ -95,6 +102,7 @@ namespace StripeTests
         public void Update()
         {
             var transferReversal = this.service.Update(TransferId, TransferReversalId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/transfers/tr_123/reversals/trr_123");
             Assert.NotNull(transferReversal);
             Assert.Equal("transfer_reversal", transferReversal.Object);
         }
@@ -103,6 +111,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var transferReversal = await this.service.UpdateAsync(TransferId, TransferReversalId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/transfers/tr_123/reversals/trr_123");
             Assert.NotNull(transferReversal);
             Assert.Equal("transfer_reversal", transferReversal.Object);
         }

@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -45,6 +46,7 @@ namespace StripeTests
             var applicationFeeRefund = this.service.Create(
                 ApplicationFeeId,
                 this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/application_fees/fee_123/refunds");
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
         }
@@ -55,6 +57,7 @@ namespace StripeTests
             var applicationFeeRefund = await this.service.CreateAsync(
                 ApplicationFeeId,
                 this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/application_fees/fee_123/refunds");
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
         }
@@ -63,6 +66,7 @@ namespace StripeTests
         public void Get()
         {
             var applicationFeeRefund = this.service.Get(ApplicationFeeId, ApplicationFeeRefundId);
+            this.AssertRequest(HttpMethod.Get, "/v1/application_fees/fee_123/refunds/fr_123");
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
         }
@@ -71,6 +75,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var applicationFeeRefund = await this.service.GetAsync(ApplicationFeeId, ApplicationFeeRefundId);
+            this.AssertRequest(HttpMethod.Get, "/v1/application_fees/fee_123/refunds/fr_123");
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
         }
@@ -79,6 +84,7 @@ namespace StripeTests
         public void List()
         {
             var applicationFeeRefunds = this.service.List(ApplicationFeeId, this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/application_fees/fee_123/refunds");
             Assert.NotNull(applicationFeeRefunds);
             Assert.Equal("list", applicationFeeRefunds.Object);
             Assert.Single(applicationFeeRefunds.Data);
@@ -89,6 +95,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var applicationFeeRefunds = await this.service.ListAsync(ApplicationFeeId, this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/application_fees/fee_123/refunds");
             Assert.NotNull(applicationFeeRefunds);
             Assert.Equal("list", applicationFeeRefunds.Object);
             Assert.Single(applicationFeeRefunds.Data);
@@ -102,6 +109,7 @@ namespace StripeTests
                 ApplicationFeeId,
                 ApplicationFeeRefundId,
                 this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/application_fees/fee_123/refunds/fr_123");
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
         }
@@ -113,6 +121,7 @@ namespace StripeTests
                 ApplicationFeeId,
                 ApplicationFeeRefundId,
                 this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/application_fees/fee_123/refunds/fr_123");
             Assert.NotNull(applicationFeeRefund);
             Assert.Equal("fee_refund", applicationFeeRefund.Object);
         }

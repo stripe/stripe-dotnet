@@ -2,6 +2,7 @@ namespace StripeTests
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -75,6 +76,7 @@ namespace StripeTests
         public void Create()
         {
             var source = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/sources");
             Assert.NotNull(source);
             Assert.Equal("source", source.Object);
         }
@@ -83,6 +85,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var source = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/sources");
             Assert.NotNull(source);
             Assert.Equal("source", source.Object);
         }
@@ -91,6 +94,7 @@ namespace StripeTests
         public void Detach()
         {
             var source = this.service.Detach(CustomerId, SourceId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/customers/cus_123/sources/src_123");
             Assert.NotNull(source);
             Assert.Equal("source", source.Object);
         }
@@ -99,6 +103,7 @@ namespace StripeTests
         public async Task DetachAsync()
         {
             var source = await this.service.DetachAsync(CustomerId, SourceId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/customers/cus_123/sources/src_123");
             Assert.NotNull(source);
             Assert.Equal("source", source.Object);
         }
@@ -107,6 +112,7 @@ namespace StripeTests
         public void Get()
         {
             var source = this.service.Get(SourceId);
+            this.AssertRequest(HttpMethod.Get, "/v1/sources/src_123");
             Assert.NotNull(source);
             Assert.Equal("source", source.Object);
         }
@@ -115,6 +121,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var source = await this.service.GetAsync(SourceId);
+            this.AssertRequest(HttpMethod.Get, "/v1/sources/src_123");
             Assert.NotNull(source);
             Assert.Equal("source", source.Object);
         }
@@ -123,6 +130,7 @@ namespace StripeTests
         public void List()
         {
             var sources = this.service.List(CustomerId, this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/customers/cus_123/sources");
             Assert.NotNull(sources);
             Assert.Equal("list", sources.Object);
             Assert.Single(sources.Data);
@@ -133,6 +141,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var sources = await this.service.ListAsync(CustomerId, this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/customers/cus_123/sources");
             Assert.NotNull(sources);
             Assert.Equal("list", sources.Object);
             Assert.Single(sources.Data);
@@ -143,6 +152,7 @@ namespace StripeTests
         public void Update()
         {
             var source = this.service.Update(SourceId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/sources/src_123");
             Assert.NotNull(source);
             Assert.Equal("source", source.Object);
         }
@@ -151,6 +161,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var source = await this.service.UpdateAsync(SourceId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/sources/src_123");
             Assert.NotNull(source);
             Assert.Equal("source", source.Object);
         }
