@@ -2,6 +2,7 @@ namespace StripeTests
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -28,6 +29,7 @@ namespace StripeTests
         public void Create()
         {
             var plan = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/subscription_items/si_123/usage_records");
             Assert.NotNull(plan);
             Assert.Equal("usage_record", plan.Object);
         }
@@ -36,6 +38,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var plan = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/subscription_items/si_123/usage_records");
             Assert.NotNull(plan);
             Assert.Equal("usage_record", plan.Object);
         }

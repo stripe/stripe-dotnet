@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -27,6 +28,7 @@ namespace StripeTests
         public void Get()
         {
             var applicationFee = this.service.Get(ApplicationFeeId);
+            this.AssertRequest(HttpMethod.Get, "/v1/application_fees/fee_123");
             Assert.NotNull(applicationFee);
             Assert.Equal("application_fee", applicationFee.Object);
         }
@@ -35,6 +37,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var applicationFee = await this.service.GetAsync(ApplicationFeeId);
+            this.AssertRequest(HttpMethod.Get, "/v1/application_fees/fee_123");
             Assert.NotNull(applicationFee);
             Assert.Equal("application_fee", applicationFee.Object);
         }
@@ -43,6 +46,7 @@ namespace StripeTests
         public void List()
         {
             var applicationFees = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/application_fees");
             Assert.NotNull(applicationFees);
             Assert.Equal("list", applicationFees.Object);
             Assert.Single(applicationFees.Data);
@@ -53,6 +57,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var applicationFees = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/application_fees");
             Assert.NotNull(applicationFees);
             Assert.Equal("list", applicationFees.Object);
             Assert.Single(applicationFees.Data);

@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -28,6 +29,7 @@ namespace StripeTests
         public void Create()
         {
             var ephemeralKey = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/ephemeral_keys");
             Assert.NotNull(ephemeralKey);
             Assert.Equal("ephemeral_key", ephemeralKey.Object);
             Assert.NotNull(ephemeralKey.RawJson);
@@ -37,6 +39,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var ephemeralKey = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/ephemeral_keys");
             Assert.NotNull(ephemeralKey);
             Assert.Equal("ephemeral_key", ephemeralKey.Object);
         }
@@ -45,6 +48,7 @@ namespace StripeTests
         public void Delete()
         {
             var deleted = this.service.Delete(EphemeralKeyId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/ephemeral_keys/ephkey_123");
             Assert.NotNull(deleted);
         }
 
@@ -52,6 +56,7 @@ namespace StripeTests
         public async Task DeleteAsync()
         {
             var deleted = await this.service.DeleteAsync(EphemeralKeyId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/ephemeral_keys/ephkey_123");
             Assert.NotNull(deleted);
         }
     }

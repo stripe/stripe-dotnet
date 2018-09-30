@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -27,6 +28,7 @@ namespace StripeTests
         public void Create()
         {
             var threeDSecure = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/3d_secure");
             Assert.NotNull(threeDSecure);
             Assert.Equal("three_d_secure", threeDSecure.Object);
         }
@@ -35,6 +37,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var threeDSecure = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/3d_secure");
             Assert.NotNull(threeDSecure);
             Assert.Equal("three_d_secure", threeDSecure.Object);
         }
