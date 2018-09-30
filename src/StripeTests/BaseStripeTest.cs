@@ -9,6 +9,8 @@ namespace StripeTests
     using System.Text;
     using System.Threading;
 
+    using Moq;
+    using Moq.Protected;
     using Stripe;
 
     public class BaseStripeTest
@@ -18,6 +20,8 @@ namespace StripeTests
         /// If you bump this, don't forget to bump `STRIPE_MOCK_VERSION` in appveyor.yml as well.
         /// </remarks>
         private const string MockMinimumVersion = "0.33.0";
+
+        private static Mock<HttpClientHandler> mockHandler = null;
 
         private static string port;
 
@@ -31,6 +35,9 @@ namespace StripeTests
             // initialized (it will be null anyway), but simply writing `initializer.Value` is not
             // a valid statement in C#.
             var initialized = initializer.Value;
+
+            // Reset the mock before each test
+            mockHandler.Invocations.Clear();
         }
 
         /// <summary>
@@ -110,6 +117,17 @@ namespace StripeTests
             return json;
         }
 
+        protected void AssertRequest(HttpMethod method, string path)
+        {
+            mockHandler.Protected().Verify(
+                "SendAsync",
+                Times.Once(),
+                ItExpr.Is<HttpRequestMessage>(m =>
+                    m.Method == method &&
+                    m.RequestUri.AbsolutePath == path),
+                ItExpr.IsAny<CancellationToken>());
+        }
+
         /// <summary>
         /// Checks that stripe-mock is running and that it's a recent enough version.
         /// </summary>
@@ -148,6 +166,12 @@ namespace StripeTests
             StripeConfiguration.SetApiBase($"http://localhost:{port}/v1");
             StripeConfiguration.SetFilesBase($"http://localhost:{port}/v1");
             StripeConfiguration.SetApiKey("sk_test_123");
+
+            mockHandler = new Mock<HttpClientHandler>()
+            {
+                CallBase = true
+            };
+            StripeConfiguration.HttpMessageHandler = mockHandler.Object;
 
             return null;
         }

@@ -2,6 +2,7 @@ namespace StripeTests.Reporting
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe.Reporting;
@@ -38,6 +39,7 @@ namespace StripeTests.Reporting
         public void Create()
         {
             var reportRun = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/reporting/report_runs");
             Assert.NotNull(reportRun);
         }
 
@@ -45,6 +47,7 @@ namespace StripeTests.Reporting
         public async Task CreateAsync()
         {
             var reportRun = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/reporting/report_runs");
             Assert.NotNull(reportRun);
         }
 
@@ -52,6 +55,7 @@ namespace StripeTests.Reporting
         public void Get()
         {
             var reportRun = this.service.Get(ReportRunId);
+            this.AssertRequest(HttpMethod.Get, "/v1/reporting/report_runs/frr_123");
             Assert.NotNull(reportRun);
         }
 
@@ -59,6 +63,7 @@ namespace StripeTests.Reporting
         public async Task GetAsync()
         {
             var reportRun = await this.service.GetAsync(ReportRunId);
+            this.AssertRequest(HttpMethod.Get, "/v1/reporting/report_runs/frr_123");
             Assert.NotNull(reportRun);
         }
 
@@ -66,6 +71,7 @@ namespace StripeTests.Reporting
         public void List()
         {
             var reportRuns = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/reporting/report_runs");
             Assert.NotNull(reportRuns);
         }
 
@@ -73,6 +79,7 @@ namespace StripeTests.Reporting
         public async Task ListAsync()
         {
             var reportRuns = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/reporting/report_runs");
             Assert.NotNull(reportRuns);
         }
     }

@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -25,6 +26,7 @@ namespace StripeTests
         public void Get()
         {
             var exchangeRate = this.service.Get("usd");
+            this.AssertRequest(HttpMethod.Get, "/v1/exchange_rates/usd");
             Assert.NotNull(exchangeRate);
             Assert.Equal("exchange_rate", exchangeRate.Object);
         }
@@ -33,6 +35,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var exchangeRate = await this.service.GetAsync("usd");
+            this.AssertRequest(HttpMethod.Get, "/v1/exchange_rates/usd");
             Assert.NotNull(exchangeRate);
             Assert.Equal("exchange_rate", exchangeRate.Object);
         }
@@ -41,6 +44,7 @@ namespace StripeTests
         public void List()
         {
             var exchangeRates = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/exchange_rates");
             Assert.NotNull(exchangeRates);
             Assert.Equal("list", exchangeRates.Object);
             Assert.Single(exchangeRates.Data);
@@ -51,6 +55,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var exchangeRates = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/exchange_rates");
             Assert.NotNull(exchangeRates);
             Assert.Equal("list", exchangeRates.Object);
             Assert.Single(exchangeRates.Data);

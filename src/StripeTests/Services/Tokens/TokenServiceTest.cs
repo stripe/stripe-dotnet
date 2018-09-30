@@ -2,6 +2,7 @@ namespace StripeTests
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -41,6 +42,7 @@ namespace StripeTests
         public void Create()
         {
             var token = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/tokens");
             Assert.NotNull(token);
             Assert.Equal("token", token.Object);
         }
@@ -49,6 +51,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var token = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/tokens");
             Assert.NotNull(token);
             Assert.Equal("token", token.Object);
         }
@@ -57,6 +60,7 @@ namespace StripeTests
         public void Get()
         {
             var token = this.service.Get(TokenId);
+            this.AssertRequest(HttpMethod.Get, "/v1/tokens/tok_123");
             Assert.NotNull(token);
             Assert.Equal("token", token.Object);
         }
@@ -65,6 +69,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var token = await this.service.GetAsync(TokenId);
+            this.AssertRequest(HttpMethod.Get, "/v1/tokens/tok_123");
             Assert.NotNull(token);
             Assert.Equal("token", token.Object);
         }

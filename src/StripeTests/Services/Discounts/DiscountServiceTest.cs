@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -19,6 +20,7 @@ namespace StripeTests
         public void DeleteCustomerDiscount()
         {
             var deleted = this.service.DeleteCustomerDiscount("cus_123");
+            this.AssertRequest(HttpMethod.Delete, "/v1/customers/cus_123/discount");
             Assert.NotNull(deleted);
         }
 
@@ -26,6 +28,7 @@ namespace StripeTests
         public async Task DeleteCustomerDiscountAsync()
         {
             var deleted = await this.service.DeleteCustomerDiscountAsync("cus_123");
+            this.AssertRequest(HttpMethod.Delete, "/v1/customers/cus_123/discount");
             Assert.NotNull(deleted);
         }
 
@@ -33,6 +36,7 @@ namespace StripeTests
         public void DeleteSubscriptionDiscount()
         {
             var deleted = this.service.DeleteSubscriptionDiscount("sub_123");
+            this.AssertRequest(HttpMethod.Delete, "/v1/subscriptions/sub_123/discount");
             Assert.NotNull(deleted);
         }
 
@@ -40,6 +44,7 @@ namespace StripeTests
         public async Task DeleteSubscriptionDiscountAsync()
         {
             var deleted = await this.service.DeleteSubscriptionDiscountAsync("sub_123");
+            this.AssertRequest(HttpMethod.Delete, "/v1/subscriptions/sub_123/discount");
             Assert.NotNull(deleted);
         }
     }
