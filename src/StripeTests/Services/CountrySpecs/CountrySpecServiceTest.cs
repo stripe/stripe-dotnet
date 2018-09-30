@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -27,6 +28,7 @@ namespace StripeTests
         public void Get()
         {
             var countrySpec = this.service.Get(CountrySpecId);
+            this.AssertRequest(HttpMethod.Get, "/v1/country_specs/US");
             Assert.NotNull(countrySpec);
             Assert.Equal("country_spec", countrySpec.Object);
         }
@@ -35,6 +37,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var countrySpec = await this.service.GetAsync(CountrySpecId);
+            this.AssertRequest(HttpMethod.Get, "/v1/country_specs/US");
             Assert.NotNull(countrySpec);
             Assert.Equal("country_spec", countrySpec.Object);
         }
@@ -43,6 +46,7 @@ namespace StripeTests
         public void List()
         {
             var countrySpecs = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/country_specs");
             Assert.NotNull(countrySpecs);
             Assert.Equal("list", countrySpecs.Object);
             Assert.Single(countrySpecs.Data);
@@ -53,6 +57,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var countrySpecs = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/country_specs");
             Assert.NotNull(countrySpecs);
             Assert.Equal("list", countrySpecs.Object);
             Assert.Single(countrySpecs.Data);

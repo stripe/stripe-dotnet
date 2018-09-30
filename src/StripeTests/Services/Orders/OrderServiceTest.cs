@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -56,6 +57,7 @@ namespace StripeTests
         public void Create()
         {
             var order = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/orders");
             Assert.NotNull(order);
             Assert.Equal("order", order.Object);
         }
@@ -64,6 +66,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var order = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/orders");
             Assert.NotNull(order);
             Assert.Equal("order", order.Object);
         }
@@ -72,6 +75,7 @@ namespace StripeTests
         public void Get()
         {
             var order = this.service.Get(OrderId);
+            this.AssertRequest(HttpMethod.Get, "/v1/orders/or_123");
             Assert.NotNull(order);
             Assert.Equal("order", order.Object);
         }
@@ -80,6 +84,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var order = await this.service.GetAsync(OrderId);
+            this.AssertRequest(HttpMethod.Get, "/v1/orders/or_123");
             Assert.NotNull(order);
             Assert.Equal("order", order.Object);
         }
@@ -88,6 +93,7 @@ namespace StripeTests
         public void List()
         {
             var orders = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/orders");
             Assert.NotNull(orders);
             Assert.Equal("list", orders.Object);
             Assert.Single(orders.Data);
@@ -98,6 +104,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var orders = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/orders");
             Assert.NotNull(orders);
             Assert.Equal("list", orders.Object);
             Assert.Single(orders.Data);
@@ -108,6 +115,7 @@ namespace StripeTests
         public void Pay()
         {
             var order = this.service.Pay(OrderId, this.payOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/orders/or_123/pay");
             Assert.NotNull(order);
             Assert.Equal("order", order.Object);
         }
@@ -116,6 +124,7 @@ namespace StripeTests
         public async Task PayAsync()
         {
             var order = await this.service.PayAsync(OrderId, this.payOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/orders/or_123/pay");
             Assert.NotNull(order);
             Assert.Equal("order", order.Object);
         }
@@ -124,6 +133,7 @@ namespace StripeTests
         public void Update()
         {
             var order = this.service.Update(OrderId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/orders/or_123");
             Assert.NotNull(order);
             Assert.Equal("order", order.Object);
         }
@@ -132,6 +142,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var order = await this.service.UpdateAsync(OrderId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/orders/or_123");
             Assert.NotNull(order);
             Assert.Equal("order", order.Object);
         }

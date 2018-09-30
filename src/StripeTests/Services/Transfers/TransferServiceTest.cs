@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -44,6 +45,7 @@ namespace StripeTests
         public void Create()
         {
             var transfer = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/transfers");
             Assert.NotNull(transfer);
             Assert.Equal("transfer", transfer.Object);
         }
@@ -52,6 +54,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var transfer = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/transfers");
             Assert.NotNull(transfer);
             Assert.Equal("transfer", transfer.Object);
         }
@@ -60,6 +63,7 @@ namespace StripeTests
         public void Get()
         {
             var transfer = this.service.Get(TransferId);
+            this.AssertRequest(HttpMethod.Get, "/v1/transfers/tr_123");
             Assert.NotNull(transfer);
             Assert.Equal("transfer", transfer.Object);
         }
@@ -68,6 +72,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var transfer = await this.service.GetAsync(TransferId);
+            this.AssertRequest(HttpMethod.Get, "/v1/transfers/tr_123");
             Assert.NotNull(transfer);
             Assert.Equal("transfer", transfer.Object);
         }
@@ -76,6 +81,7 @@ namespace StripeTests
         public void List()
         {
             var transfers = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/transfers");
             Assert.NotNull(transfers);
             Assert.Equal("list", transfers.Object);
             Assert.Single(transfers.Data);
@@ -86,6 +92,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var transfers = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/transfers");
             Assert.NotNull(transfers);
             Assert.Equal("list", transfers.Object);
             Assert.Single(transfers.Data);
@@ -96,6 +103,7 @@ namespace StripeTests
         public void Update()
         {
             var transfer = this.service.Update(TransferId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/transfers/tr_123");
             Assert.NotNull(transfer);
             Assert.Equal("transfer", transfer.Object);
         }
@@ -104,6 +112,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var transfer = await this.service.UpdateAsync(TransferId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/transfers/tr_123");
             Assert.NotNull(transfer);
             Assert.Equal("transfer", transfer.Object);
         }

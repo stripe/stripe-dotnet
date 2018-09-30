@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -65,6 +66,7 @@ namespace StripeTests
         public void Create()
         {
             var bankAccount = this.service.Create(CustomerId, this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/sources");
             Assert.NotNull(bankAccount);
             Assert.Equal("bank_account", bankAccount.Object);
         }
@@ -73,6 +75,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var bankAccount = await this.service.CreateAsync(CustomerId, this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/sources");
             Assert.NotNull(bankAccount);
             Assert.Equal("bank_account", bankAccount.Object);
         }
@@ -81,6 +84,7 @@ namespace StripeTests
         public void Delete()
         {
             var deleted = this.service.Delete(CustomerId, BankAccountId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/customers/cus_123/sources/ba_123");
             Assert.NotNull(deleted);
         }
 
@@ -88,6 +92,7 @@ namespace StripeTests
         public async Task DeleteAsync()
         {
             var deleted = await this.service.DeleteAsync(CustomerId, BankAccountId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/customers/cus_123/sources/ba_123");
             Assert.NotNull(deleted);
         }
 
@@ -95,6 +100,7 @@ namespace StripeTests
         public void Get()
         {
             var bankAccount = this.service.Get(CustomerId, BankAccountId);
+            this.AssertRequest(HttpMethod.Get, "/v1/customers/cus_123/sources/ba_123");
             Assert.NotNull(bankAccount);
             Assert.Equal("bank_account", bankAccount.Object);
         }
@@ -103,6 +109,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var bankAccount = await this.service.GetAsync(CustomerId, BankAccountId);
+            this.AssertRequest(HttpMethod.Get, "/v1/customers/cus_123/sources/ba_123");
             Assert.NotNull(bankAccount);
             Assert.Equal("bank_account", bankAccount.Object);
         }
@@ -111,6 +118,7 @@ namespace StripeTests
         public void List()
         {
             var bankAccounts = this.service.List(CustomerId, this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/customers/cus_123/sources");
             Assert.NotNull(bankAccounts);
             Assert.Equal("list", bankAccounts.Object);
             Assert.Single(bankAccounts.Data);
@@ -120,6 +128,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var bankAccounts = await this.service.ListAsync(CustomerId, this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/customers/cus_123/sources");
             Assert.NotNull(bankAccounts);
             Assert.Equal("list", bankAccounts.Object);
             Assert.Single(bankAccounts.Data);
@@ -131,6 +140,7 @@ namespace StripeTests
         public void Update()
         {
             var bankAccount = this.service.Update(CustomerId, BankAccountId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/sources/ba_123");
             Assert.NotNull(bankAccount);
         }
 
@@ -138,6 +148,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var bankAccount = await this.service.UpdateAsync(CustomerId, BankAccountId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/sources/ba_123");
             Assert.NotNull(bankAccount);
         }
 
@@ -145,6 +156,7 @@ namespace StripeTests
         public void Verify()
         {
             var bankAccount = this.service.Verify(CustomerId, BankAccountId, this.verifyOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/sources/ba_123/verify");
             Assert.NotNull(bankAccount);
         }
 
@@ -152,6 +164,7 @@ namespace StripeTests
         public async Task VerifyAsync()
         {
             var bankAccount = await this.service.VerifyAsync(CustomerId, BankAccountId, this.verifyOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/sources/ba_123/verify");
             Assert.NotNull(bankAccount);
         }
     }

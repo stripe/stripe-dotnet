@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -27,6 +28,7 @@ namespace StripeTests
         public void Get()
         {
             var evt = this.service.Get(EventId);
+            this.AssertRequest(HttpMethod.Get, "/v1/events/evt_123");
             Assert.NotNull(evt);
             Assert.Equal("event", evt.Object);
         }
@@ -35,6 +37,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var evt = await this.service.GetAsync(EventId);
+            this.AssertRequest(HttpMethod.Get, "/v1/events/evt_123");
             Assert.NotNull(evt);
             Assert.Equal("event", evt.Object);
         }
@@ -43,6 +46,7 @@ namespace StripeTests
         public void List()
         {
             var events = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/events");
             Assert.NotNull(events);
             Assert.Equal("list", events.Object);
             Assert.Single(events.Data);
@@ -53,6 +57,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var events = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/events");
             Assert.NotNull(events);
             Assert.Equal("list", events.Object);
             Assert.Single(events.Data);

@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -8,7 +9,7 @@ namespace StripeTests
 
     public class SkuServiceTest : BaseStripeTest
     {
-        private const string SkuId = "prod_123";
+        private const string SkuId = "sku_123";
 
         private SkuService service;
         private SkuCreateOptions createOptions;
@@ -61,6 +62,7 @@ namespace StripeTests
         public void Create()
         {
             var sku = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/skus");
             Assert.NotNull(sku);
             Assert.Equal("sku", sku.Object);
         }
@@ -69,6 +71,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var sku = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/skus");
             Assert.NotNull(sku);
             Assert.Equal("sku", sku.Object);
         }
@@ -77,6 +80,7 @@ namespace StripeTests
         public void Delete()
         {
             var deleted = this.service.Delete(SkuId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/skus/sku_123");
             Assert.NotNull(deleted);
         }
 
@@ -84,6 +88,7 @@ namespace StripeTests
         public async Task DeleteAsync()
         {
             var deleted = await this.service.DeleteAsync(SkuId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/skus/sku_123");
             Assert.NotNull(deleted);
         }
 
@@ -91,6 +96,7 @@ namespace StripeTests
         public void Get()
         {
             var sku = this.service.Get(SkuId);
+            this.AssertRequest(HttpMethod.Get, "/v1/skus/sku_123");
             Assert.NotNull(sku);
             Assert.Equal("sku", sku.Object);
         }
@@ -99,6 +105,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var sku = await this.service.GetAsync(SkuId);
+            this.AssertRequest(HttpMethod.Get, "/v1/skus/sku_123");
             Assert.NotNull(sku);
             Assert.Equal("sku", sku.Object);
         }
@@ -107,6 +114,7 @@ namespace StripeTests
         public void List()
         {
             var skus = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/skus");
             Assert.NotNull(skus);
             Assert.Equal("list", skus.Object);
             Assert.Single(skus.Data);
@@ -117,6 +125,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var skus = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/skus");
             Assert.NotNull(skus);
             Assert.Equal("list", skus.Object);
             Assert.Single(skus.Data);
@@ -127,6 +136,7 @@ namespace StripeTests
         public void Update()
         {
             var sku = this.service.Update(SkuId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/skus/sku_123");
             Assert.NotNull(sku);
             Assert.Equal("sku", sku.Object);
         }
@@ -135,6 +145,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var sku = await this.service.UpdateAsync(SkuId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/skus/sku_123");
             Assert.NotNull(sku);
             Assert.Equal("sku", sku.Object);
         }

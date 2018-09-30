@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -49,6 +50,7 @@ namespace StripeTests
         public void Create()
         {
             var plan = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/plans");
             Assert.NotNull(plan);
             Assert.Equal("plan", plan.Object);
         }
@@ -57,6 +59,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var plan = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/plans");
             Assert.NotNull(plan);
             Assert.Equal("plan", plan.Object);
         }
@@ -65,6 +68,7 @@ namespace StripeTests
         public void Delete()
         {
             var deleted = this.service.Delete(PlanId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/plans/plan_123");
             Assert.NotNull(deleted);
         }
 
@@ -72,6 +76,7 @@ namespace StripeTests
         public async Task DeleteAsync()
         {
             var deleted = await this.service.DeleteAsync(PlanId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/plans/plan_123");
             Assert.NotNull(deleted);
         }
 
@@ -79,6 +84,7 @@ namespace StripeTests
         public void Get()
         {
             var plan = this.service.Get(PlanId);
+            this.AssertRequest(HttpMethod.Get, "/v1/plans/plan_123");
             Assert.NotNull(plan);
             Assert.Equal("plan", plan.Object);
         }
@@ -87,6 +93,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var plan = await this.service.GetAsync(PlanId);
+            this.AssertRequest(HttpMethod.Get, "/v1/plans/plan_123");
             Assert.NotNull(plan);
             Assert.Equal("plan", plan.Object);
         }
@@ -95,6 +102,7 @@ namespace StripeTests
         public void List()
         {
             var plans = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/plans");
             Assert.NotNull(plans);
             Assert.Equal("list", plans.Object);
             Assert.Single(plans.Data);
@@ -105,6 +113,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var plans = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/plans");
             Assert.NotNull(plans);
             Assert.Equal("list", plans.Object);
             Assert.Single(plans.Data);
@@ -115,6 +124,7 @@ namespace StripeTests
         public void Update()
         {
             var plan = this.service.Update(PlanId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/plans/plan_123");
             Assert.NotNull(plan);
             Assert.Equal("plan", plan.Object);
         }
@@ -123,6 +133,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var plan = await this.service.UpdateAsync(PlanId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/plans/plan_123");
             Assert.NotNull(plan);
             Assert.Equal("plan", plan.Object);
         }

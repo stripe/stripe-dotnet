@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -49,6 +50,7 @@ namespace StripeTests
         public void Create()
         {
             var externalAccount = this.service.Create(AccountId, this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/external_accounts");
             Assert.NotNull(externalAccount);
             Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
             Assert.NotNull(externalAccount.BankAccount);
@@ -59,6 +61,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var externalAccount = await this.service.CreateAsync(AccountId, this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/external_accounts");
             Assert.NotNull(externalAccount);
             Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
             Assert.NotNull(externalAccount.BankAccount);
@@ -69,6 +72,7 @@ namespace StripeTests
         public void Delete()
         {
             var deleted = this.service.Delete(AccountId, ExternalAccountId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/accounts/acct_123/external_accounts/ba_123");
             Assert.NotNull(deleted);
         }
 
@@ -76,6 +80,7 @@ namespace StripeTests
         public async Task DeleteAsync()
         {
             var deleted = await this.service.DeleteAsync(AccountId, ExternalAccountId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/accounts/acct_123/external_accounts/ba_123");
             Assert.NotNull(deleted);
         }
 
@@ -83,6 +88,7 @@ namespace StripeTests
         public void Get()
         {
             var externalAccount = this.service.Get(AccountId, ExternalAccountId);
+            this.AssertRequest(HttpMethod.Get, "/v1/accounts/acct_123/external_accounts/ba_123");
             Assert.NotNull(externalAccount);
             Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
             Assert.NotNull(externalAccount.BankAccount);
@@ -93,6 +99,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var externalAccount = await this.service.GetAsync(AccountId, ExternalAccountId);
+            this.AssertRequest(HttpMethod.Get, "/v1/accounts/acct_123/external_accounts/ba_123");
             Assert.NotNull(externalAccount);
             Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
             Assert.NotNull(externalAccount.BankAccount);
@@ -105,6 +112,7 @@ namespace StripeTests
         public void List()
         {
             var externalAccounts = this.service.List(AccountId, this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/accounts/acct_123/external_accounts");
             Assert.NotNull(externalAccounts);
             Assert.Equal("list", externalAccounts.Object);
             Assert.Single(externalAccounts.Data);
@@ -114,6 +122,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var externalAccounts = await this.service.ListAsync(AccountId, this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/accounts/acct_123/external_accounts");
             Assert.NotNull(externalAccounts);
             Assert.Equal("list", externalAccounts.Object);
             Assert.Single(externalAccounts.Data);
@@ -123,6 +132,7 @@ namespace StripeTests
         public void Update()
         {
             var externalAccount = this.service.Update(AccountId, ExternalAccountId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/external_accounts/ba_123");
             Assert.NotNull(externalAccount);
             Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
             Assert.NotNull(externalAccount.BankAccount);
@@ -133,6 +143,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var externalAccount = await this.service.UpdateAsync(AccountId, ExternalAccountId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/external_accounts/ba_123");
             Assert.NotNull(externalAccount);
             Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
             Assert.NotNull(externalAccount.BankAccount);

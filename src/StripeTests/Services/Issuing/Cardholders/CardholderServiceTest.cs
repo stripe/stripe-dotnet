@@ -1,6 +1,7 @@
 namespace StripeTests.Issuing
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -56,6 +57,7 @@ namespace StripeTests.Issuing
         public void Create()
         {
             var cardholder = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/cardholders");
             Assert.NotNull(cardholder);
         }
 
@@ -63,6 +65,7 @@ namespace StripeTests.Issuing
         public async Task CreateAsync()
         {
             var cardholder = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/cardholders");
             Assert.NotNull(cardholder);
         }
 
@@ -70,6 +73,7 @@ namespace StripeTests.Issuing
         public void Get()
         {
             var cardholder = this.service.Get(CardholderId);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/cardholders/ich_123");
             Assert.NotNull(cardholder);
         }
 
@@ -77,6 +81,7 @@ namespace StripeTests.Issuing
         public async Task GetAsync()
         {
             var cardholder = await this.service.GetAsync(CardholderId);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/cardholders/ich_123");
             Assert.NotNull(cardholder);
         }
 
@@ -84,6 +89,7 @@ namespace StripeTests.Issuing
         public void List()
         {
             var cardholders = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/cardholders");
             Assert.NotNull(cardholders);
         }
 
@@ -91,6 +97,7 @@ namespace StripeTests.Issuing
         public async Task ListAsync()
         {
             var cardholders = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/cardholders");
             Assert.NotNull(cardholders);
         }
 
@@ -98,6 +105,7 @@ namespace StripeTests.Issuing
         public void Update()
         {
             var cardholder = this.service.Update(CardholderId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/cardholders/ich_123");
             Assert.NotNull(cardholder);
         }
 
@@ -105,6 +113,7 @@ namespace StripeTests.Issuing
         public async Task UpdateAsync()
         {
             var cardholder = await this.service.UpdateAsync(CardholderId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/cardholders/ich_123");
             Assert.NotNull(cardholder);
         }
     }
