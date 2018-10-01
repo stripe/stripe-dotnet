@@ -7,6 +7,9 @@ namespace Stripe
         [JsonProperty("bank_code")]
         public string BankCode { get; set; }
 
+        [JsonProperty("branch_code")]
+        public string BranchCode { get; set; }
+
         [JsonProperty("country")]
         public string Country { get; set; }
 
