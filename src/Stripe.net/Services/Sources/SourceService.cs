@@ -20,64 +20,66 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/sources";
+
         public virtual Source Attach(string customerId, SourceAttachOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, options);
+            return this.PostRequest<Source>($"{Urls.BaseUrl}/customers/{customerId}/sources", options, requestOptions);
         }
 
         public virtual Task<Source> AttachAsync(string customerId, SourceAttachOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, cancellationToken, options);
+            return this.PostRequestAsync<Source>($"{Urls.BaseUrl}/customers/{customerId}/sources", options, requestOptions, cancellationToken);
         }
 
         public virtual Source Create(SourceCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/sources", requestOptions, options);
+            return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<Source> CreateAsync(SourceCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/sources", requestOptions, cancellationToken, options);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Source Detach(string customerId, string sourceId, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity($"{Urls.BaseUrl}/customers/{customerId}/sources/{sourceId}", requestOptions);
+            return this.DeleteRequest<Source>($"{Urls.BaseUrl}/customers/{customerId}/sources/{sourceId}", null, requestOptions);
         }
 
         public virtual Task<Source> DetachAsync(string customerId, string sourceId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync($"{Urls.BaseUrl}/customers/{customerId}/sources/{sourceId}", requestOptions, cancellationToken);
+            return this.DeleteRequestAsync<Source>($"{Urls.BaseUrl}/customers/{customerId}/sources/{sourceId}", null, requestOptions, cancellationToken);
         }
 
         public virtual Source Get(string sourceId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions);
+            return this.GetEntity(sourceId, null, requestOptions);
         }
 
         public virtual Task<Source> GetAsync(string sourceId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(sourceId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Source> List(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, options);
+            return this.GetRequest<StripeList<Source>>($"{Urls.BaseUrl}/customers/{customerId}/sources", options, requestOptions);
         }
 
         public virtual Task<StripeList<Source>> ListAsync(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/customers/{customerId}/sources", requestOptions, cancellationToken, options);
+            return this.GetRequestAsync<StripeList<Source>>($"{Urls.BaseUrl}/customers/{customerId}/sources", options, requestOptions, cancellationToken);
         }
 
         public virtual Source Update(string sourceId, SourceUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions, options);
+            return this.UpdateEntity(sourceId, options, requestOptions);
         }
 
         public virtual Task<Source> UpdateAsync(string sourceId, SourceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/sources/{sourceId}", requestOptions, cancellationToken, options);
+            return this.UpdateEntityAsync(sourceId, options, requestOptions, cancellationToken);
         }
     }
 }

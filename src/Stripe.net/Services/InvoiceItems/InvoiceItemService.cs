@@ -22,6 +22,8 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/invoiceitems";
+
         public bool ExpandCustomer { get; set; }
 
         public bool ExpandInvoice { get; set; }
@@ -30,52 +32,52 @@ namespace Stripe
 
         public virtual InvoiceLineItem Create(InvoiceItemCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/invoiceitems", requestOptions, options);
+            return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<InvoiceLineItem> CreateAsync(InvoiceItemCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/invoiceitems", requestOptions, cancellationToken, options);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual InvoiceLineItem Delete(string invoiceitemId, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity($"{Urls.BaseUrl}/invoiceitems/{invoiceitemId}", requestOptions);
+            return this.DeleteEntity(invoiceitemId, null, requestOptions);
         }
 
         public virtual Task<InvoiceLineItem> DeleteAsync(string invoiceitemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync($"{Urls.BaseUrl}/invoiceitems/{invoiceitemId}", requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(invoiceitemId, null, requestOptions, cancellationToken);
         }
 
         public virtual InvoiceLineItem Get(string invoiceitemId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/invoiceitems/{invoiceitemId}", requestOptions);
+            return this.GetEntity(invoiceitemId, null, requestOptions);
         }
 
         public virtual Task<InvoiceLineItem> GetAsync(string invoiceitemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/invoiceitems/{invoiceitemId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(invoiceitemId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<InvoiceLineItem> List(InvoiceItemListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/invoiceitems", requestOptions, options);
+            return this.ListEntities(options, requestOptions);
         }
 
         public virtual Task<StripeList<InvoiceLineItem>> ListAsync(InvoiceItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/invoiceitems", requestOptions, cancellationToken, options);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual InvoiceLineItem Update(string invoiceitemId, InvoiceItemUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/invoiceitems/{invoiceitemId}", requestOptions, options);
+            return this.UpdateEntity(invoiceitemId, options, requestOptions);
         }
 
         public virtual Task<InvoiceLineItem> UpdateAsync(string invoiceitemId, InvoiceItemUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/invoiceitems/{invoiceitemId}", requestOptions, cancellationToken, options);
+            return this.UpdateEntityAsync(invoiceitemId, options, requestOptions, cancellationToken);
         }
     }
 }

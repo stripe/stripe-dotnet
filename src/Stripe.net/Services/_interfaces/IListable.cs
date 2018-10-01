@@ -5,7 +5,7 @@ namespace Stripe
 
     public interface IListable<T, O>
         where T : StripeEntity
-        where O : BaseOptions
+        where O : ListOptions
     {
         StripeList<T> List(O listOptions = null, RequestOptions requestOptions = null);
 

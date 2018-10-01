@@ -22,56 +22,58 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/subscriptions";
+
         public bool ExpandCustomer { get; set; }
 
         public virtual Subscription Cancel(string subscriptionId, SubscriptionCancelOptions options, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity($"{Urls.BaseUrl}/subscriptions/{subscriptionId}", requestOptions, options);
+            return this.DeleteEntity(subscriptionId, options, requestOptions);
         }
 
         public virtual Task<Subscription> CancelAsync(string subscriptionId, SubscriptionCancelOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync($"{Urls.BaseUrl}/subscriptions/{subscriptionId}", requestOptions, cancellationToken, options);
+            return this.DeleteEntityAsync(subscriptionId, options, requestOptions, cancellationToken);
         }
 
         public virtual Subscription Create(SubscriptionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/subscriptions", requestOptions, options);
+            return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<Subscription> CreateAsync(SubscriptionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/subscriptions", requestOptions, cancellationToken, options);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Subscription Get(string subscriptionId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/subscriptions/{subscriptionId}", requestOptions);
+            return this.GetEntity(subscriptionId, null, requestOptions);
         }
 
         public virtual Task<Subscription> GetAsync(string subscriptionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/subscriptions/{subscriptionId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(subscriptionId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Subscription> List(SubscriptionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/subscriptions", requestOptions, options);
+            return this.ListEntities(options, requestOptions);
         }
 
         public virtual Task<StripeList<Subscription>> ListAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/subscriptions", requestOptions, cancellationToken, options);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Subscription Update(string subscriptionId, SubscriptionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/subscriptions/{subscriptionId}", requestOptions, options);
+            return this.UpdateEntity(subscriptionId, options, requestOptions);
         }
 
         public virtual Task<Subscription> UpdateAsync(string subscriptionId, SubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/subscriptions/{subscriptionId}", requestOptions, cancellationToken, options);
+            return this.UpdateEntityAsync(subscriptionId, options, requestOptions, cancellationToken);
         }
     }
 }

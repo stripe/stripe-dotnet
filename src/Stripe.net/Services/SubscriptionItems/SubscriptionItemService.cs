@@ -22,54 +22,56 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/subscription_items";
+
         public virtual SubscriptionItem Create(SubscriptionItemCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/subscription_items", requestOptions, options);
+            return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<SubscriptionItem> CreateAsync(SubscriptionItemCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/subscription_items", requestOptions, cancellationToken, options);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual SubscriptionItem Delete(string subscriptionItemId, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions);
+            return this.DeleteEntity(subscriptionItemId, null, requestOptions);
         }
 
         public virtual Task<SubscriptionItem> DeleteAsync(string subscriptionItemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(subscriptionItemId, null, requestOptions, cancellationToken);
         }
 
         public virtual SubscriptionItem Get(string subscriptionItemId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions);
+            return this.GetEntity(subscriptionItemId, null, requestOptions);
         }
 
         public virtual Task<SubscriptionItem> GetAsync(string subscriptionItemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(subscriptionItemId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<SubscriptionItem> List(SubscriptionItemListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/subscription_items", requestOptions, options);
+            return this.ListEntities(options, requestOptions);
         }
 
         public virtual Task<StripeList<SubscriptionItem>> ListAsync(SubscriptionItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/subscription_items", requestOptions, cancellationToken, options);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual SubscriptionItem Update(string subscriptionItemId, SubscriptionItemUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions, options);
+            return this.UpdateEntity(subscriptionItemId, options, requestOptions);
         }
 
         public virtual Task<SubscriptionItem> UpdateAsync(string subscriptionItemId, SubscriptionItemUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/subscription_items/{subscriptionItemId}", requestOptions, cancellationToken, options);
+            return this.UpdateEntityAsync(subscriptionItemId, options, requestOptions, cancellationToken);
         }
     }
 }

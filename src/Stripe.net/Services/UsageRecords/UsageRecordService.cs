@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class UsageRecordService : Service<UsageRecord>,
+    public class UsageRecordService : ServiceNested<UsageRecord>,
         ICreatable<UsageRecord, UsageRecordCreateOptions>
     {
         public UsageRecordService()
@@ -18,14 +18,16 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/subscription_items/{PARENT_ID}/usage_records";
+
         public virtual UsageRecord Create(UsageRecordCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/subscription_items/{options.SubscriptionItem}/usage_records", requestOptions, options);
+            return this.CreateNestedEntity(options.SubscriptionItem, options, requestOptions);
         }
 
         public virtual Task<UsageRecord> CreateAsync(UsageRecordCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/subscription_items/{options.SubscriptionItem}/usage_records", requestOptions, cancellationToken, options);
+            return this.CreateNestedEntityAsync(options.SubscriptionItem, options, requestOptions, cancellationToken);
         }
     }
 }

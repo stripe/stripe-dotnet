@@ -21,58 +21,60 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/orders";
+
         public bool ExpandCharge { get; set; }
 
         public bool ExpandCustomer { get; set; }
 
         public virtual Order Create(OrderCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/orders", requestOptions, options);
+            return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<Order> CreateAsync(OrderCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/orders", requestOptions, cancellationToken, options);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Order Get(string orderId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/orders/{orderId}", requestOptions);
+            return this.GetEntity(orderId, null, requestOptions);
         }
 
         public virtual Task<Order> GetAsync(string orderId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/orders/{orderId}", requestOptions, cancellationToken);
+            return this.GetEntityAsync(orderId, null, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<Order> List(OrderListOptions listOptions = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Order> List(OrderListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntityList($"{Urls.BaseUrl}/orders", requestOptions, listOptions);
+            return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Order>> ListAsync(OrderListOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Order>> ListAsync(OrderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityListAsync($"{Urls.BaseUrl}/orders", requestOptions, cancellationToken, listOptions);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual Order Pay(string orderId, OrderPayOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/orders/{orderId}/pay", requestOptions, options);
+            return this.PostRequest<Order>($"{this.InstanceUrl(orderId)}/pay", options, requestOptions);
         }
 
         public virtual Task<Order> PayAsync(string orderId, OrderPayOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/orders/{orderId}/pay", requestOptions, cancellationToken, options);
+            return this.PostRequestAsync<Order>($"{this.InstanceUrl(orderId)}/pay", options, requestOptions, cancellationToken);
         }
 
         public virtual Order Update(string orderId, OrderUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Post($"{Urls.BaseUrl}/orders/{orderId}", requestOptions, options);
+            return this.UpdateEntity(orderId, options, requestOptions);
         }
 
         public virtual Task<Order> UpdateAsync(string orderId, OrderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostAsync($"{Urls.BaseUrl}/orders/{orderId}", requestOptions, cancellationToken, options);
+            return this.UpdateEntityAsync(orderId, options, requestOptions, cancellationToken);
         }
     }
 }

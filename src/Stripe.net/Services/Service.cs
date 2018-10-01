@@ -1,11 +1,14 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
+
     using Stripe.Infrastructure;
 
     public abstract class Service<EntityReturned>
+        where EntityReturned : StripeEntity
     {
         protected Service()
         {
@@ -18,44 +21,56 @@ namespace Stripe
 
         public string ApiKey { get; set; }
 
-        public virtual EntityReturned DeleteEntity(string url, RequestOptions requestOptions, BaseOptions options = null)
+        public abstract string BasePath { get; }
+
+        protected EntityReturned CreateEntity(BaseOptions options, RequestOptions requestOptions)
         {
-            return this.DeleteRequest<EntityReturned>(url, options, requestOptions);
+            return this.PostRequest<EntityReturned>(this.ClassUrl(), options, requestOptions);
         }
 
-        public Task<EntityReturned> DeleteEntityAsync(string url, RequestOptions requestOptions, CancellationToken cancellationToken, BaseOptions options = null)
+        protected Task<EntityReturned> CreateEntityAsync(BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
         {
-            return this.DeleteRequestAsync<EntityReturned>(url, options, requestOptions, cancellationToken);
+            return this.PostRequestAsync<EntityReturned>(this.ClassUrl(), options, requestOptions, cancellationToken);
         }
 
-        public EntityReturned GetEntity(string url, RequestOptions requestOptions, BaseOptions options = null)
+        protected EntityReturned DeleteEntity(string id, BaseOptions options, RequestOptions requestOptions)
         {
-            return this.GetRequest<EntityReturned>(url, options, requestOptions);
+            return this.DeleteRequest<EntityReturned>(this.InstanceUrl(id), options, requestOptions);
         }
 
-        public Task<EntityReturned> GetEntityAsync(string url, RequestOptions requestOptions, CancellationToken cancellationToken, BaseOptions options = null)
+        protected Task<EntityReturned> DeleteEntityAsync(string id, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
         {
-            return this.GetRequestAsync<EntityReturned>(url, options, requestOptions, cancellationToken);
+            return this.DeleteRequestAsync<EntityReturned>(this.InstanceUrl(id), options, requestOptions, cancellationToken);
         }
 
-        public StripeList<EntityReturned> GetEntityList(string url, RequestOptions requestOptions, BaseOptions options = null)
+        protected EntityReturned GetEntity(string id, BaseOptions options, RequestOptions requestOptions)
         {
-            return this.GetRequest<StripeList<EntityReturned>>(url, options, requestOptions);
+            return this.GetRequest<EntityReturned>(this.InstanceUrl(id), options, requestOptions);
         }
 
-        public Task<StripeList<EntityReturned>> GetEntityListAsync(string url, RequestOptions requestOptions, CancellationToken cancellationToken, BaseOptions options = null)
+        protected Task<EntityReturned> GetEntityAsync(string id, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
         {
-            return this.GetRequestAsync<StripeList<EntityReturned>>(url, options, requestOptions, cancellationToken);
+            return this.GetRequestAsync<EntityReturned>(this.InstanceUrl(id), options, requestOptions, cancellationToken);
         }
 
-        public EntityReturned Post(string url, RequestOptions requestOptions, BaseOptions options = null)
+        protected StripeList<EntityReturned> ListEntities(ListOptions options, RequestOptions requestOptions)
         {
-            return this.PostRequest<EntityReturned>(url, options, requestOptions);
+            return this.GetRequest<StripeList<EntityReturned>>(this.ClassUrl(), options, requestOptions);
         }
 
-        public Task<EntityReturned> PostAsync(string url, RequestOptions requestOptions, CancellationToken cancellationToken, BaseOptions options = null)
+        protected Task<StripeList<EntityReturned>> ListEntitiesAsync(ListOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
         {
-            return this.PostRequestAsync<EntityReturned>(url, options, requestOptions, cancellationToken);
+            return this.GetRequestAsync<StripeList<EntityReturned>>(this.ClassUrl(), options, requestOptions, cancellationToken);
+        }
+
+        protected EntityReturned UpdateEntity(string id, BaseOptions options, RequestOptions requestOptions)
+        {
+            return this.PostRequest<EntityReturned>(this.InstanceUrl(id), options, requestOptions);
+        }
+
+        protected Task<EntityReturned> UpdateEntityAsync(string id, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
+        {
+            return this.PostRequestAsync<EntityReturned>(this.InstanceUrl(id), options, requestOptions, cancellationToken);
         }
 
         protected T DeleteRequest<T>(string url, BaseOptions options, RequestOptions requestOptions)
@@ -122,6 +137,17 @@ namespace Stripe
             }
 
             return requestOptions;
+        }
+
+        protected virtual string ClassUrl(string baseUrl = null)
+        {
+            baseUrl = baseUrl ?? StripeConfiguration.GetApiBase();
+            return $"{baseUrl}{this.BasePath}";
+        }
+
+        protected virtual string InstanceUrl(string id, string baseUrl = null)
+        {
+            return $"{this.ClassUrl(baseUrl)}/{WebUtility.UrlEncode(id)}";
         }
     }
 }

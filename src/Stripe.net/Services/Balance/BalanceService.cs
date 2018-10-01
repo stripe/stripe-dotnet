@@ -9,8 +9,6 @@ namespace Stripe
     public class BalanceService : Service<Balance>,
         ISingletonRetrievable<Balance>
     {
-        private static string classUrl = Urls.BaseUrl + "/balance";
-
         public BalanceService()
             : base(null)
         {
@@ -21,14 +19,16 @@ namespace Stripe
         {
         }
 
+        public override string BasePath => "/balance";
+
         public virtual Balance Get(RequestOptions requestOptions = null)
         {
-            return this.GetEntity($"{Urls.BaseUrl}/balance", requestOptions);
+            return this.GetRequest<Balance>(this.ClassUrl(), null, requestOptions);
         }
 
         public virtual Task<Balance> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync($"{Urls.BaseUrl}/balance", requestOptions, cancellationToken);
+            return this.GetRequestAsync<Balance>(this.ClassUrl(), null, requestOptions, cancellationToken);
         }
     }
 }
