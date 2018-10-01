@@ -12,14 +12,14 @@ namespace Stripe
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        [JsonProperty("quantity")]
+        public int Quantity { get; set; }
+
         [JsonProperty("subscription_item")]
         public string SubscriptionItem { get; set; }
 
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Timestamp { get; set; }
-
-        [JsonProperty("quantity")]
-        public int Quantity { get; set; }
     }
 }
