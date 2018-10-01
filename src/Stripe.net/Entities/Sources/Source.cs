@@ -111,6 +111,12 @@ namespace Stripe
         [JsonProperty("ach_credit_transfer")]
         public SourceAchCreditTransfer AchCreditTransfer { get; set; }
 
+        [JsonProperty("ach_debit")]
+        public SourceAchDebit AchDebit { get; set; }
+
+        [JsonProperty("alipay")]
+        public SourceAlipay Alipay { get; set; }
+
         [JsonProperty("bancontact")]
         public SourceBancontact Bancontact { get; set; }
 
@@ -120,8 +126,20 @@ namespace Stripe
         [JsonProperty("card")]
         public SourceCard Card { get; set; }
 
+        [JsonProperty("eps")]
+        public SourceEps Eps { get; set; }
+
+        [JsonProperty("giropay")]
+        public SourceGiropay Giropay { get; set; }
+
         [JsonProperty("ideal")]
         public SourceIdeal Ideal { get; set; }
+
+        [JsonProperty("multibanco")]
+        public SourceMultibanco Multibanco { get; set; }
+
+        [JsonProperty("p24")]
+        public SourceP24 P24 { get; set; }
 
         [JsonProperty("sepa_credit_transfer")]
         public SourceSepaCreditTransfer SepaCreditTransfer { get; set; }
