@@ -70,7 +70,7 @@ namespace Stripe
         public string Email { get; set; }
 
         [JsonProperty("external_accounts")]
-        public StripeList<ExternalAccount> ExternalAccounts { get; set; }
+        public StripeList<IExternalAccount> ExternalAccounts { get; set; }
 
         [JsonProperty("keys")]
         public CustomAccountKeys Keys { get; set; }

@@ -4,7 +4,7 @@ namespace Stripe.Infrastructure
     using Newtonsoft.Json.Linq;
 
     internal static class StringOrObject<T>
-        where T : StripeEntityWithId
+        where T : IStripeEntityWithId
     {
         public static void Map(object value, Action<string> updateId, Action<T> updateObject)
         {
@@ -22,7 +22,7 @@ namespace Stripe.Infrastructure
             else if (value is string)
             {
                 updateId((string)value);
-                updateObject(null);
+                updateObject(default(T));
             }
         }
     }

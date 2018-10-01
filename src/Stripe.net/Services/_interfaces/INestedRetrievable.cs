@@ -4,7 +4,7 @@ namespace Stripe
     using System.Threading.Tasks;
 
     public interface INestedRetrievable<T>
-        where T : StripeEntity
+        where T : IStripeEntity
     {
         T Get(string parentId, string id, RequestOptions requestOptions = null);
 

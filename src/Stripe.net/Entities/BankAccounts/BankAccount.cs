@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class BankAccount : StripeEntityWithId, ISupportMetadata
+    public class BankAccount : StripeEntityWithId, ISupportMetadata, IExternalAccount
     {
         [JsonProperty("object")]
         public string Object { get; set; }

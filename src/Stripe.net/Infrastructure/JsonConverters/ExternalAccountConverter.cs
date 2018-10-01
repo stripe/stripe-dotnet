@@ -6,11 +6,9 @@ namespace Stripe.Infrastructure
 
     internal class ExternalAccountConverter : JsonConverter
     {
-        public override bool CanWrite => false;
-
         public override bool CanConvert(Type objectType)
         {
-            throw new NotImplementedException();
+            return objectType == typeof(IExternalAccount);
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
@@ -24,21 +22,17 @@ namespace Stripe.Infrastructure
         {
             var incoming = JObject.Load(reader);
 
-            var externalAccount = new ExternalAccount
-            {
-                Id = incoming.SelectToken("id").ToString()
-            };
+            var externalAccount = default(IExternalAccount);
 
-            if (incoming.SelectToken("object")?.ToString() == "bank_account")
+            var objectName = incoming.SelectToken("object")?.ToString();
+
+            if (objectName == "bank_account")
             {
-                externalAccount.Type = ExternalAccountType.BankAccount;
-                externalAccount.BankAccount = Mapper<BankAccount>.MapFromJson(incoming.ToString());
+                externalAccount = Mapper<BankAccount>.MapFromJson(incoming.ToString());
             }
-
-            if (incoming.SelectToken("object")?.ToString() == "card")
+            else if (objectName == "card")
             {
-                externalAccount.Type = ExternalAccountType.Card;
-                externalAccount.Card = Mapper<Card>.MapFromJson(incoming.ToString());
+                externalAccount = Mapper<Card>.MapFromJson(incoming.ToString());
             }
 
             return externalAccount;
