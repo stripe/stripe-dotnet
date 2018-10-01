@@ -30,10 +30,5 @@ namespace Stripe
 
         [JsonProperty("used")]
         public bool? Used { get; set; }
-
-        // TODO: remove
-        [Obsolete("This property is not valid on tokens and will be removed in a later version.")]
-        [JsonProperty("description")]
-        public string Description { get; set; }
     }
 }
