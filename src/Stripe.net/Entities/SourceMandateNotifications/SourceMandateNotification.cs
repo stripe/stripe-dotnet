@@ -8,7 +8,7 @@ namespace Stripe
     public class SourceMandateNotification : StripeEntityWithId
     {
         [JsonProperty("object")]
-        public string Object => "source_mandate_notification";
+        public string Object { get; set; }
 
         [JsonProperty("amount")]
         public int? Amount { get; set; }

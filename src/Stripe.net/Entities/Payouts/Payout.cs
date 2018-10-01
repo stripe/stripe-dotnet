@@ -8,7 +8,7 @@ namespace Stripe
     public class Payout : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
-        public string Object => "payout";
+        public string Object { get; set; }
 
         [JsonProperty("amount")]
         public int Amount { get; set; }

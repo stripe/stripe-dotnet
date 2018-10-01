@@ -8,7 +8,7 @@ namespace Stripe
     public class Product : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
-        public string Object => "product";
+        public string Object { get; set; }
 
         /// <summary>
         /// Whether or not the product is currently available for purchase.

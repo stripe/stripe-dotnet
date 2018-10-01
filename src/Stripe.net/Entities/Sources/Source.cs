@@ -11,7 +11,7 @@ namespace Stripe
     public class Source : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
-        public string Object => "source";
+        public string Object { get; set; }
 
         /// <summary>
         /// Amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for single-use sources.
