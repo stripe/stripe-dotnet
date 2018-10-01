@@ -2,7 +2,8 @@ version: 19.9.2.{build}
 image: Visual Studio 2017
 
 environment:
-  STRIPE_TEST_SK: sk_test_eBgAzVoEpJKfYjD9nf2YoyMM
+  COVERALLS_REPO_TOKEN:
+    secure: T0PmP8uyzCseacBCDRBlti2y9Tz5DL6fknea0MKWvbPYrzADmLY2/5kOTfYIsPUk
   # If you bump this, don't forget to bump `MinimumMockVersion` in `BaseStripeTest.cs` as well.
   STRIPE_MOCK_VERSION: 0.33.0
 
@@ -27,6 +28,7 @@ install:
       }
       $app = Start-Process -FilePath "stripe-mock\stripe-mock.exe" -NoNewWindow -PassThru
       Write-Host ("stripe-mock running, Id = $($app.Id)`n") -ForegroundColor Green
+  - dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
 
 before_build:
   - ps: Write-Host $("`n               HOST INFORMATION               `n") -BackgroundColor DarkCyan
@@ -48,11 +50,16 @@ after_build:
   - dotnet pack -c Release src\Stripe.net
 
 test_script:
-  - ps: Write-Host $("`n               RUNNING THE NEW XUNIT + STRIPE-MOCK TESTS               `n") -BackgroundColor DarkCyan
+  - ps: Write-Host $("`n               RUNNING TESTS               `n") -BackgroundColor DarkCyan
   - dotnet test src\StripeTests\StripeTests.csproj
 
+after_test:
+  - ps: Write-Host $("`n               RUNNING COVERAGE               `n") -BackgroundColor DarkCyan
+  - dotnet test -c Debug -f netcoreapp2.1 src/StripeTests/StripeTests.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+  - .\tools\csmacnz.Coveralls --opencover -i src/StripeTests/coverage.opencover.xml --useRelativePaths
+
 artifacts:
-  - path: '**\*.nupkg'
+  - path: 'src\Stripe.net\bin\Release\*.nupkg'
 
 # these commands tell appveyor to open an RDP session for debugging
 #init:
