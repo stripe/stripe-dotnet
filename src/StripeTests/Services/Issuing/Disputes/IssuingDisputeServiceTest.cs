@@ -1,6 +1,7 @@
 namespace StripeTests.Issuing
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe.Issuing;
@@ -51,6 +52,7 @@ namespace StripeTests.Issuing
         public void Create()
         {
             var dispute = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/disputes");
             Assert.NotNull(dispute);
         }
 
@@ -58,6 +60,7 @@ namespace StripeTests.Issuing
         public async Task CreateAsync()
         {
             var dispute = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/disputes");
             Assert.NotNull(dispute);
         }
 
@@ -65,6 +68,7 @@ namespace StripeTests.Issuing
         public void Get()
         {
             var dispute = this.service.Get(DisputeId);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/disputes/idp_123");
             Assert.NotNull(dispute);
         }
 
@@ -72,6 +76,7 @@ namespace StripeTests.Issuing
         public async Task GetAsync()
         {
             var dispute = await this.service.GetAsync(DisputeId);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/disputes/idp_123");
             Assert.NotNull(dispute);
         }
 
@@ -79,6 +84,7 @@ namespace StripeTests.Issuing
         public void List()
         {
             var disputes = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/disputes");
             Assert.NotNull(disputes);
         }
 
@@ -86,6 +92,7 @@ namespace StripeTests.Issuing
         public async Task ListAsync()
         {
             var disputes = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/disputes");
             Assert.NotNull(disputes);
         }
 
@@ -93,6 +100,7 @@ namespace StripeTests.Issuing
         public void Update()
         {
             var dispute = this.service.Update(DisputeId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/disputes/idp_123");
             Assert.NotNull(dispute);
         }
 
@@ -100,6 +108,7 @@ namespace StripeTests.Issuing
         public async Task UpdateAsync()
         {
             var dispute = await this.service.UpdateAsync(DisputeId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/disputes/idp_123");
             Assert.NotNull(dispute);
         }
     }

@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -27,6 +28,7 @@ namespace StripeTests
         public void Create()
         {
             var loginLink = this.service.Create(AccountId, this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/login_links");
             Assert.NotNull(loginLink);
             Assert.Equal("login_link", loginLink.Object);
         }
@@ -35,6 +37,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var loginLink = await this.service.CreateAsync(AccountId, this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/login_links");
             Assert.NotNull(loginLink);
             Assert.Equal("login_link", loginLink.Object);
         }

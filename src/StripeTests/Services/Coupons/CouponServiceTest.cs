@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -43,6 +44,7 @@ namespace StripeTests
         public void Create()
         {
             var coupon = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/coupons");
             Assert.NotNull(coupon);
             Assert.Equal("coupon", coupon.Object);
         }
@@ -51,6 +53,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var coupon = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/coupons");
             Assert.NotNull(coupon);
             Assert.Equal("coupon", coupon.Object);
         }
@@ -59,6 +62,7 @@ namespace StripeTests
         public void Delete()
         {
             var deleted = this.service.Delete(CouponId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/coupons/co_123");
             Assert.NotNull(deleted);
         }
 
@@ -66,6 +70,7 @@ namespace StripeTests
         public async Task DeleteAsync()
         {
             var deleted = await this.service.DeleteAsync(CouponId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/coupons/co_123");
             Assert.NotNull(deleted);
         }
 
@@ -73,6 +78,7 @@ namespace StripeTests
         public void Get()
         {
             var coupon = this.service.Get(CouponId);
+            this.AssertRequest(HttpMethod.Get, "/v1/coupons/co_123");
             Assert.NotNull(coupon);
             Assert.Equal("coupon", coupon.Object);
         }
@@ -81,6 +87,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var coupon = await this.service.GetAsync(CouponId);
+            this.AssertRequest(HttpMethod.Get, "/v1/coupons/co_123");
             Assert.NotNull(coupon);
             Assert.Equal("coupon", coupon.Object);
         }
@@ -89,6 +96,7 @@ namespace StripeTests
         public void List()
         {
             var coupons = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/coupons");
             Assert.NotNull(coupons);
             Assert.Equal("list", coupons.Object);
             Assert.Single(coupons.Data);
@@ -99,6 +107,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var coupons = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/coupons");
             Assert.NotNull(coupons);
             Assert.Equal("list", coupons.Object);
             Assert.Single(coupons.Data);
@@ -109,6 +118,7 @@ namespace StripeTests
         public void Update()
         {
             var coupon = this.service.Update(CouponId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/coupons/co_123");
             Assert.NotNull(coupon);
             Assert.Equal("coupon", coupon.Object);
         }
@@ -117,6 +127,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var coupon = await this.service.UpdateAsync(CouponId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/coupons/co_123");
             Assert.NotNull(coupon);
             Assert.Equal("coupon", coupon.Object);
         }

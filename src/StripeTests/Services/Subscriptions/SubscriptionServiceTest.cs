@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -60,6 +61,7 @@ namespace StripeTests
         public void Cancel()
         {
             var subscription = this.service.Cancel(SubscriptionId, this.cancelOptions);
+            this.AssertRequest(HttpMethod.Delete, "/v1/subscriptions/sub_123");
             Assert.NotNull(subscription);
             Assert.Equal("subscription", subscription.Object);
         }
@@ -68,6 +70,7 @@ namespace StripeTests
         public async Task CancelAsync()
         {
             var subscription = await this.service.CancelAsync(SubscriptionId, this.cancelOptions);
+            this.AssertRequest(HttpMethod.Delete, "/v1/subscriptions/sub_123");
             Assert.NotNull(subscription);
             Assert.Equal("subscription", subscription.Object);
         }
@@ -76,6 +79,7 @@ namespace StripeTests
         public void Create()
         {
             var subscription = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/subscriptions");
             Assert.NotNull(subscription);
             Assert.Equal("subscription", subscription.Object);
         }
@@ -84,6 +88,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var subscription = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/subscriptions");
             Assert.NotNull(subscription);
             Assert.Equal("subscription", subscription.Object);
         }
@@ -92,6 +97,7 @@ namespace StripeTests
         public void Get()
         {
             var subscription = this.service.Get(SubscriptionId);
+            this.AssertRequest(HttpMethod.Get, "/v1/subscriptions/sub_123");
             Assert.NotNull(subscription);
             Assert.Equal("subscription", subscription.Object);
         }
@@ -100,6 +106,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var subscription = await this.service.GetAsync(SubscriptionId);
+            this.AssertRequest(HttpMethod.Get, "/v1/subscriptions/sub_123");
             Assert.NotNull(subscription);
             Assert.Equal("subscription", subscription.Object);
         }
@@ -108,6 +115,7 @@ namespace StripeTests
         public void List()
         {
             var subscriptions = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/subscriptions");
             Assert.NotNull(subscriptions);
             Assert.Equal("list", subscriptions.Object);
             Assert.Single(subscriptions.Data);
@@ -118,6 +126,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var subscriptions = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/subscriptions");
             Assert.NotNull(subscriptions);
             Assert.Equal("list", subscriptions.Object);
             Assert.Single(subscriptions.Data);
@@ -128,6 +137,7 @@ namespace StripeTests
         public void Update()
         {
             var subscription = this.service.Update(SubscriptionId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/subscriptions/sub_123");
             Assert.NotNull(subscription);
             Assert.Equal("subscription", subscription.Object);
         }
@@ -136,6 +146,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var subscription = await this.service.UpdateAsync(SubscriptionId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/subscriptions/sub_123");
             Assert.NotNull(subscription);
             Assert.Equal("subscription", subscription.Object);
         }

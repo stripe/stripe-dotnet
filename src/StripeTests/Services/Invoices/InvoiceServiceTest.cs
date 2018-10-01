@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -63,6 +64,7 @@ namespace StripeTests
         public void Create()
         {
             var invoice = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -71,6 +73,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var invoice = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -79,6 +82,7 @@ namespace StripeTests
         public void Get()
         {
             var invoice = this.service.Get(InvoiceId);
+            this.AssertRequest(HttpMethod.Get, "/v1/invoices/in_123");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -87,6 +91,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var invoice = await this.service.GetAsync(InvoiceId);
+            this.AssertRequest(HttpMethod.Get, "/v1/invoices/in_123");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -95,6 +100,7 @@ namespace StripeTests
         public void List()
         {
             var invoices = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/invoices");
             Assert.NotNull(invoices);
             Assert.Equal("list", invoices.Object);
             Assert.Single(invoices.Data);
@@ -105,6 +111,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var invoices = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/invoices");
             Assert.NotNull(invoices);
             Assert.Equal("list", invoices.Object);
             Assert.Single(invoices.Data);
@@ -115,6 +122,7 @@ namespace StripeTests
         public void ListLineItems()
         {
             var invoices = this.service.ListLineItems(InvoiceId, this.listLineItemsOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/invoices/in_123/lines");
             Assert.NotNull(invoices);
             Assert.Equal("list", invoices.Object);
             Assert.Single(invoices.Data);
@@ -125,6 +133,7 @@ namespace StripeTests
         public async Task ListLineItemsAsync()
         {
             var invoices = await this.service.ListLineItemsAsync(InvoiceId, this.listLineItemsOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/invoices/in_123/lines");
             Assert.NotNull(invoices);
             Assert.Equal("list", invoices.Object);
             Assert.Single(invoices.Data);
@@ -135,6 +144,7 @@ namespace StripeTests
         public void ListUpcomingLineItems()
         {
             var invoices = this.service.ListUpcomingLineItems(this.upcomingOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/invoices/upcoming/lines");
             Assert.NotNull(invoices);
             Assert.Equal("list", invoices.Object);
             Assert.Single(invoices.Data);
@@ -145,6 +155,7 @@ namespace StripeTests
         public async Task ListUpcomingLineItemsAsync()
         {
             var invoices = await this.service.ListUpcomingLineItemsAsync(this.upcomingOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/invoices/upcoming/lines");
             Assert.NotNull(invoices);
             Assert.Equal("list", invoices.Object);
             Assert.Single(invoices.Data);
@@ -155,6 +166,7 @@ namespace StripeTests
         public void Pay()
         {
             var invoice = this.service.Pay(InvoiceId, this.payOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/pay");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -163,6 +175,7 @@ namespace StripeTests
         public async Task PayAsync()
         {
             var invoice = await this.service.PayAsync(InvoiceId, this.payOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/pay");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -171,6 +184,7 @@ namespace StripeTests
         public void Upcoming()
         {
             var invoice = this.service.Upcoming(this.upcomingOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/invoices/upcoming");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -179,6 +193,7 @@ namespace StripeTests
         public async Task UpcomingAsync()
         {
             var invoice = await this.service.UpcomingAsync(this.upcomingOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/invoices/upcoming");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -187,6 +202,7 @@ namespace StripeTests
         public void Update()
         {
             var invoice = this.service.Update(InvoiceId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -195,6 +211,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var invoice = await this.service.UpdateAsync(InvoiceId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }

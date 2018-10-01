@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -69,6 +70,7 @@ namespace StripeTests
         public void Cancel()
         {
             var intent = this.service.Cancel(PaymentIntentId, this.cancelOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents/pi_123/cancel");
             Assert.NotNull(intent);
             Assert.Equal("payment_intent", intent.Object);
         }
@@ -77,6 +79,7 @@ namespace StripeTests
         public async Task CancelAsync()
         {
             var intent = await this.service.CancelAsync(PaymentIntentId, this.cancelOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents/pi_123/cancel");
             Assert.NotNull(intent);
             Assert.Equal("payment_intent", intent.Object);
         }
@@ -85,6 +88,7 @@ namespace StripeTests
         public void Capture()
         {
             var intent = this.service.Capture(PaymentIntentId, this.captureOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents/pi_123/capture");
             Assert.NotNull(intent);
             Assert.Equal("payment_intent", intent.Object);
         }
@@ -93,6 +97,7 @@ namespace StripeTests
         public async Task CaptureAsync()
         {
             var intent = await this.service.CaptureAsync(PaymentIntentId, this.captureOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents/pi_123/capture");
             Assert.NotNull(intent);
             Assert.Equal("payment_intent", intent.Object);
         }
@@ -101,6 +106,7 @@ namespace StripeTests
         public void Confirm()
         {
             var intent = this.service.Confirm(PaymentIntentId, this.confirmOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents/pi_123/confirm");
             Assert.NotNull(intent);
             Assert.Equal("payment_intent", intent.Object);
         }
@@ -109,6 +115,7 @@ namespace StripeTests
         public async Task ConfirmAsync()
         {
             var intent = await this.service.ConfirmAsync(PaymentIntentId, this.confirmOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents/pi_123/confirm");
             Assert.NotNull(intent);
             Assert.Equal("payment_intent", intent.Object);
         }
@@ -117,6 +124,7 @@ namespace StripeTests
         public void Create()
         {
             var intent = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents");
             Assert.NotNull(intent);
             Assert.Equal("payment_intent", intent.Object);
         }
@@ -125,6 +133,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var intent = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents");
             Assert.NotNull(intent);
             Assert.Equal("payment_intent", intent.Object);
         }
@@ -133,6 +142,7 @@ namespace StripeTests
         public void Get()
         {
             var intent = this.service.Get(PaymentIntentId);
+            this.AssertRequest(HttpMethod.Get, "/v1/payment_intents/pi_123");
             Assert.NotNull(intent);
             Assert.Equal("payment_intent", intent.Object);
         }
@@ -141,6 +151,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var intent = await this.service.GetAsync(PaymentIntentId);
+            this.AssertRequest(HttpMethod.Get, "/v1/payment_intents/pi_123");
             Assert.NotNull(intent);
             Assert.Equal("payment_intent", intent.Object);
         }
@@ -149,6 +160,7 @@ namespace StripeTests
         public void List()
         {
             var intents = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/payment_intents");
             Assert.NotNull(intents);
             Assert.Equal("list", intents.Object);
             Assert.Single(intents.Data);
@@ -159,6 +171,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var intents = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/payment_intents");
             Assert.NotNull(intents);
             Assert.Equal("list", intents.Object);
             Assert.Single(intents.Data);
@@ -169,6 +182,7 @@ namespace StripeTests
         public void Update()
         {
             var intent = this.service.Update(PaymentIntentId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents/pi_123");
             Assert.NotNull(intent);
             Assert.Equal("payment_intent", intent.Object);
         }
@@ -177,6 +191,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var intent = await this.service.UpdateAsync(PaymentIntentId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents/pi_123");
             Assert.NotNull(intent);
             Assert.Equal("payment_intent", intent.Object);
         }

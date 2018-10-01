@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading.Tasks;
 
     using Stripe;
@@ -43,6 +44,7 @@ namespace StripeTests
         public void Create()
         {
             var fileLink = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/file_links");
             Assert.NotNull(fileLink);
             Assert.Equal("file_link", fileLink.Object);
         }
@@ -51,6 +53,7 @@ namespace StripeTests
         public async Task CreateAsync()
         {
             var fileLink = await this.service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/file_links");
             Assert.NotNull(fileLink);
             Assert.Equal("file_link", fileLink.Object);
         }
@@ -59,6 +62,7 @@ namespace StripeTests
         public void Get()
         {
             var fileLink = this.service.Get(FileLinkId);
+            this.AssertRequest(HttpMethod.Get, "/v1/file_links/link_123");
             Assert.NotNull(fileLink);
             Assert.Equal("file_link", fileLink.Object);
         }
@@ -67,6 +71,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var fileLink = await this.service.GetAsync(FileLinkId);
+            this.AssertRequest(HttpMethod.Get, "/v1/file_links/link_123");
             Assert.NotNull(fileLink);
             Assert.Equal("file_link", fileLink.Object);
         }
@@ -75,6 +80,7 @@ namespace StripeTests
         public void List()
         {
             var fileLinks = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/file_links");
             Assert.NotNull(fileLinks);
             Assert.Equal("list", fileLinks.Object);
             Assert.Single(fileLinks.Data);
@@ -85,6 +91,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var fileLinks = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/file_links");
             Assert.NotNull(fileLinks);
             Assert.Equal("list", fileLinks.Object);
             Assert.Single(fileLinks.Data);
@@ -95,6 +102,7 @@ namespace StripeTests
         public void Update()
         {
             var fileLink = this.service.Update(FileLinkId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/file_links/link_123");
             Assert.NotNull(fileLink);
             Assert.Equal("file_link", fileLink.Object);
         }
@@ -103,6 +111,7 @@ namespace StripeTests
         public async Task UpdateAsync()
         {
             var fileLink = await this.service.UpdateAsync(FileLinkId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/file_links/link_123");
             Assert.NotNull(fileLink);
             Assert.Equal("file_link", fileLink.Object);
         }
