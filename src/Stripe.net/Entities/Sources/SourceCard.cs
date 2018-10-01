@@ -4,12 +4,6 @@ namespace Stripe
 
     public class SourceCard : StripeEntity
     {
-        [JsonProperty("exp_month")]
-        public int ExpirationMonth { get; set; }
-
-        [JsonProperty("exp_year")]
-        public int ExpirationYear { get; set; }
-
         [JsonProperty("address_line1_check")]
         public string AddressLine1Check { get; set; }
 
@@ -25,6 +19,15 @@ namespace Stripe
         [JsonProperty("cvc_check")]
         public string CvcCheck { get; set; }
 
+        [JsonProperty("dynamic_last4")]
+        public string DynamicLast4 { get; set; }
+
+        [JsonProperty("exp_month")]
+        public int ExpMonth { get; set; }
+
+        [JsonProperty("exp_year")]
+        public int ExpYear { get; set; }
+
         [JsonProperty("fingerprint")]
         public string Fingerprint { get; set; }
 
@@ -34,13 +37,13 @@ namespace Stripe
         [JsonProperty("last4")]
         public string Last4 { get; set; }
 
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
         [JsonProperty("three_d_secure")]
         public string ThreeDSecure { get; set; }
 
         [JsonProperty("tokenization_method")]
         public string TokenizationMethod { get; set; }
-
-        [JsonProperty("dynamic_last4")]
-        public string DynamicLast4 { get; set; }
     }
 }

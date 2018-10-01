@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class SourceBancontact : StripeEntity
+    public class SourceGiropay : StripeEntity
     {
         [JsonProperty("bank_code")]
         public string BankCode { get; set; }
@@ -12,11 +12,5 @@ namespace Stripe
 
         [JsonProperty("bic")]
         public string Bic { get; set; }
-
-        [JsonProperty("iban_last4")]
-        public string IbanLast4 { get; set; }
-
-        [JsonProperty("preferred_language")]
-        public string PreferredLanguage { get; set; }
     }
 }

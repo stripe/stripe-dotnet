@@ -8,7 +8,7 @@ namespace Stripe
     public class SourceTransaction : StripeEntityWithId
     {
         [JsonProperty("object")]
-        public string Object => "source_transaction";
+        public string Object { get; set; }
 
         [JsonProperty("amount")]
         public int? Amount { get; set; }

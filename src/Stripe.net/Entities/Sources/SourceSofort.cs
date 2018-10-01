@@ -18,5 +18,8 @@ namespace Stripe
 
         [JsonProperty("iban_last4")]
         public string IbanLast4 { get; set; }
+
+        [JsonProperty("preferred_language")]
+        public string PreferredLanguage { get; set; }
     }
 }

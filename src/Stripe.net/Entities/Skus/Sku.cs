@@ -8,7 +8,7 @@ namespace Stripe
     public class Sku : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
-        public string Object => "sku";
+        public string Object { get; set; }
 
         /// <summary>
         /// Whether or not the SKU is available for purchase.
