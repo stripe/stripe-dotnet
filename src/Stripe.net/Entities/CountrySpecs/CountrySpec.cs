@@ -20,6 +20,9 @@ namespace Stripe
         [JsonProperty("supported_payment_methods")]
         public List<string> SupportedPaymentMethods { get; set; }
 
+        [JsonProperty("supported_transfer_countries")]
+        public List<string> SupportedTransferCountries { get; set; }
+
         [JsonProperty("verification_fields")]
         public Dictionary<string, Dictionary<string, List<string>>> VerificationFields { get; set; }
     }

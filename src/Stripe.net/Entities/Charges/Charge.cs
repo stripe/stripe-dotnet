@@ -261,6 +261,26 @@ namespace Stripe
         [JsonProperty("paid")]
         public bool Paid { get; set; }
 
+        #region Expandable PaymentIntent
+
+        /// <summary>
+        /// ID of the payment intent this charge is for if one exists.
+        /// </summary>
+        public string PaymentIntentId { get; set; }
+
+        [JsonIgnore]
+        public PaymentIntent PaymentIntent { get; set; }
+
+        [JsonProperty("payment_intent")]
+        internal object InternalPaymentIntent
+        {
+            set
+            {
+                StringOrObject<PaymentIntent>.Map(value, s => this.PaymentIntentId = s, o => this.PaymentIntent = o);
+            }
+        }
+        #endregion
+
         /// <summary>
         /// This is the email address that the receipt for this charge was sent to.
         /// </summary>

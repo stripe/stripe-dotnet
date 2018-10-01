@@ -40,10 +40,6 @@ namespace Stripe
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
-        [JsonProperty("expected_availability_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? ExpectedAvailabilityDate { get; set; }
-
         /// <summary>
         /// Three-letter ISO currency code representing the currency in which the Top-up was made.
         /// </summary>
@@ -52,6 +48,10 @@ namespace Stripe
 
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        [JsonProperty("expected_availability_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? ExpectedAvailabilityDate { get; set; }
 
         /// <summary>
         /// Error code explaining reason for topup failure if available (see the errors section for a list of codes).
@@ -91,5 +91,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        /// <summary>
+        /// A string that identifies this top-up as part of a group.
+        /// </summary>
+        [JsonProperty("transfer_group")]
+        public string TransferGroup { get; set; }
     }
 }
