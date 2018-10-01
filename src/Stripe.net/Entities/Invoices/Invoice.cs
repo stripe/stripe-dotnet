@@ -108,7 +108,7 @@ namespace Stripe
         public string InvoicePdf { get; set; }
 
         [JsonProperty("lines")]
-        public StripeList<InvoiceLineItem> InvoiceLineItems { get; set; }
+        public StripeList<InvoiceLineItem> Lines { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }

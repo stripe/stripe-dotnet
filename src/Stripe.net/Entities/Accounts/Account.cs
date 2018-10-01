@@ -46,12 +46,6 @@ namespace Stripe
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
-        [JsonProperty("currencies_supported")]
-        public string[] CurrenciesSupported { get; set; }
-
-        [JsonProperty("keys")]
-        public CustomAccountKeys Keys { get; set; }
-
         [JsonProperty("debit_negative_balances")]
         public bool DebitNegativeBalances { get; set; }
 
@@ -79,14 +73,14 @@ namespace Stripe
         [JsonProperty("external_accounts")]
         public StripeList<ExternalAccount> ExternalAccounts { get; set; }
 
+        [JsonProperty("keys")]
+        public CustomAccountKeys Keys { get; set; }
+
         [JsonProperty("legal_entity")]
         public LegalEntity LegalEntity { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
-
-        [JsonProperty("payouts_enabled")]
-        public bool PayoutsEnabled { get; set; }
 
         [JsonProperty("payout_schedule")]
         public PayoutSchedule PayoutSchedule { get; set; }
@@ -94,11 +88,17 @@ namespace Stripe
         [JsonProperty("payout_statement_descriptor")]
         public string PayoutStatementDescriptor { get; set; }
 
+        [JsonProperty("payouts_enabled")]
+        public bool PayoutsEnabled { get; set; }
+
         [JsonProperty("product_description")]
         public string ProductDescription { get; set; }
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
+
+        [JsonProperty("support_address")]
+        public Address SupportAddress { get; set; }
 
         [JsonProperty("support_email")]
         public string SupportEmail { get; set; }
@@ -109,11 +109,11 @@ namespace Stripe
         [JsonProperty("support_url")]
         public string SupportUrl { get; set; }
 
-        [JsonProperty("tos_acceptance")]
-        public TermsOfServiceAcceptance TosAcceptance { get; set; }
-
         [JsonProperty("timezone")]
         public string Timezone { get; set; }
+
+        [JsonProperty("tos_acceptance")]
+        public TermsOfServiceAcceptance TosAcceptance { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

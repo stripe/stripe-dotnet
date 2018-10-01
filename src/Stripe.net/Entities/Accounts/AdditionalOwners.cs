@@ -8,7 +8,7 @@ namespace Stripe
         public Address Address { get; set; }
 
         [JsonProperty("dob")]
-        public BirthDay BirthDay { get; set; }
+        public BirthDay Dob { get; set; }
 
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -16,7 +16,13 @@ namespace Stripe
         [JsonProperty("last_name")]
         public string LastName { get; set; }
 
+        [JsonProperty("maiden_name")]
+        public string MaidenName { get; set; }
+
+        [JsonProperty("personal_id_number_provided")]
+        public bool PersonalIdNumberProvided { get; set; }
+
         [JsonProperty("verification")]
-        public LegalEntityVerification LegalEntityVerification { get; set; }
+        public LegalEntityVerification Verification { get; set; }
     }
 }
