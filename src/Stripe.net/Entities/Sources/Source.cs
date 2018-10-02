@@ -32,7 +32,6 @@ namespace Stripe
         public SourceCodeVerification CodeVerification { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>
