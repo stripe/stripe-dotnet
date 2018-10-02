@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SourceBankAccount : INestedOptions, ISupportMetadata
+    public class SourceBankAccount : INestedOptions
     {
         [JsonProperty("object")]
         internal string Object => "bank_account";

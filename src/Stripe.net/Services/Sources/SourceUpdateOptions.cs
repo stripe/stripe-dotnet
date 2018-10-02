@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SourceUpdateOptions : BaseOptions, ISupportMetadata
+    public class SourceUpdateOptions : BaseOptions
     {
         /// <summary>
         /// Information about a mandate possiblity attached to a source object (generally for bank debits) as well as its acceptance status.

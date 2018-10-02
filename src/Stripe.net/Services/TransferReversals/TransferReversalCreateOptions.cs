@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class TransferReversalCreateOptions : BaseOptions, ISupportMetadata
+    public class TransferReversalCreateOptions : BaseOptions
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }

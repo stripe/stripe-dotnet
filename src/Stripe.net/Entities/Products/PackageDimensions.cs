@@ -3,7 +3,7 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
 
-    public class PackageDimensions
+    public class PackageDimensions : StripeEntity
     {
         [JsonProperty("height")]
         public decimal? Height { get; set; }

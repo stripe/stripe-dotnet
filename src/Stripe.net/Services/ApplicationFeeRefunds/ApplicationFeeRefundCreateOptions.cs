@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class ApplicationFeeRefundCreateOptions : BaseOptions, ISupportMetadata
+    public class ApplicationFeeRefundCreateOptions : BaseOptions
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }

@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class OrderPayOptions : BaseOptions, ISupportMetadata
+    public class OrderPayOptions : BaseOptions
     {
         /// <summary>
         /// The ID of an existing customer that will be charged in this request.

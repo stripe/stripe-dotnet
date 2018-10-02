@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class ExternalAccountCreateOptions : BaseOptions, ISupportMetadata
+    public class ExternalAccountCreateOptions : BaseOptions
     {
         [JsonProperty("external_account")]
         public string ExternalAccountTokenId { get; set; }

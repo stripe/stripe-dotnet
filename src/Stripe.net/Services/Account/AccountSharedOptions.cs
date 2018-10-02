@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public abstract class AccountSharedOptions : BaseOptions, ISupportMetadata
+    public abstract class AccountSharedOptions : BaseOptions
     {
         [JsonProperty("account_token")]
         public string AccountToken { get; set; }

@@ -5,7 +5,7 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class CardDetails : StripeEntity
+    public class CardDetails : StripeEntity, IHasObject
     {
         [JsonProperty("object")]
         public string Object { get; set; }

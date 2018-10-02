@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CustomerUpdateOptions : BaseOptions, ISupportMetadata
+    public class CustomerUpdateOptions : BaseOptions
     {
         [JsonProperty("account_balance")]
         public int? AccountBalance { get; set; }

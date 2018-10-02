@@ -10,8 +10,11 @@ namespace Stripe
     }
 
     [JsonConverter(typeof(ExternalAccountConverter))]
-    public class ExternalAccount : StripeEntityWithId
+    public class ExternalAccount : StripeEntity, IHasId
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         public ExternalAccountType Type { get; set; }
 
         public Card Card { get; set; }
