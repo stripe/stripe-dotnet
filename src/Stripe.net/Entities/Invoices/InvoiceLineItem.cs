@@ -17,7 +17,6 @@ namespace Stripe
         public string Currency { get; set; }
 
         [JsonProperty("date")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Date { get; set; }
 
         [JsonProperty("description")]

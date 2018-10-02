@@ -52,7 +52,6 @@ namespace Stripe
         /// <summary>
         /// Time at which the object was created.
         /// </summary>
-        [JsonConverter(typeof(DateTimeConverter))]
         [JsonProperty("created")]
         public DateTime Created { get; set; }
 
@@ -139,7 +138,6 @@ namespace Stripe
         [JsonProperty("status_transitions")]
         public StatusTransitions StatusTransitions { get; set; }
 
-        [JsonConverter(typeof(DateTimeConverter))]
         [JsonProperty("updated")]
         public DateTime Updated { get; set; }
 

@@ -14,11 +14,9 @@ namespace Stripe
         public int Amount { get; set; }
 
         [JsonProperty("available_on")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime AvailableOn { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("currency")]

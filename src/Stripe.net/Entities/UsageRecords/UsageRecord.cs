@@ -19,7 +19,6 @@ namespace Stripe
         public string SubscriptionItem { get; set; }
 
         [JsonProperty("timestamp")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Timestamp { get; set; }
     }
 }

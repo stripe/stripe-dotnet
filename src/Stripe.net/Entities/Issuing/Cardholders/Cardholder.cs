@@ -14,7 +14,6 @@ namespace Stripe.Issuing
         public Billing Billing { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("email")]
