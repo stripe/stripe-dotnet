@@ -7,7 +7,6 @@ namespace Stripe
     public class TermsOfServiceAcceptance : StripeEntity
     {
         [JsonProperty("date")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? Date { get; set; }
 
         [JsonProperty("ip")]
