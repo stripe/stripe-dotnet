@@ -10,7 +10,12 @@ namespace Stripe.Infrastructure
         {
             if (value is JObject)
             {
-                T item = ((JToken)value).ToObject<T>();
+                // We reserialize the JObject instance to a string so we can pass it to the Mapper
+                // class. This ensures our custom deserialization / converters are used even when
+                // deserializing expanded fields.
+                // TODO: We could probably avoid the unnecessary deserialization+reserialization
+                // with some refactoring.
+                T item = Mapper<T>.MapFromJson(value.ToString());
                 updateId(item.Id);
                 updateObject(item);
             }

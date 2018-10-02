@@ -14,7 +14,6 @@ namespace Stripe
         public int? AmountOff { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("currency")]
@@ -48,7 +47,6 @@ namespace Stripe
         public decimal? PercentOff { get; set; }
 
         [JsonProperty("redeem_by")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? RedeemBy { get; set; }
 
         [JsonProperty("times_redeemed")]
