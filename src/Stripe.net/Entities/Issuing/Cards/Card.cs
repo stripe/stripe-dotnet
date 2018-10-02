@@ -23,7 +23,6 @@ namespace Stripe.Issuing
         public Cardholder Cardholder { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("exp_month")]

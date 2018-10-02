@@ -43,7 +43,6 @@ namespace Stripe
         public string Country { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("debit_negative_balances")]

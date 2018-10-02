@@ -14,7 +14,6 @@ namespace Stripe
         public int Amount { get; set; }
 
         [JsonProperty("arrival_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime ArrivalDate { get; set; }
 
         [JsonProperty("automatic")]
@@ -37,7 +36,6 @@ namespace Stripe
         #endregion
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("currency")]

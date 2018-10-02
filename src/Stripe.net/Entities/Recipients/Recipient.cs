@@ -17,7 +17,6 @@ namespace Stripe
         public StripeList<Card> CardList { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         #region Expandable Default Card
