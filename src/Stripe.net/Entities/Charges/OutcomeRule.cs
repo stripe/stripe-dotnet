@@ -2,8 +2,11 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class OutcomeRule : StripeEntityWithId
+    public class OutcomeRule : StripeEntity, IHasId
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         [JsonProperty("action")]
         public string Action { get; set; }
 
