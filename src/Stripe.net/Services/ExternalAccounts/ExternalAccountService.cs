@@ -5,12 +5,12 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ExternalAccountService : ServiceNested<ExternalAccount>,
-        INestedCreatable<ExternalAccount, ExternalAccountCreateOptions>,
-        INestedDeletable<ExternalAccount>,
-        INestedListable<ExternalAccount, ExternalAccountListOptions>,
-        INestedRetrievable<ExternalAccount>,
-        INestedUpdatable<ExternalAccount, ExternalAccountUpdateOptions>
+    public class ExternalAccountService : ServiceNested<IExternalAccount>,
+        INestedCreatable<IExternalAccount, ExternalAccountCreateOptions>,
+        INestedDeletable<IExternalAccount>,
+        INestedListable<IExternalAccount, ExternalAccountListOptions>,
+        INestedRetrievable<IExternalAccount>,
+        INestedUpdatable<IExternalAccount, ExternalAccountUpdateOptions>
     {
         public ExternalAccountService()
             : base(null)
@@ -24,52 +24,52 @@ namespace Stripe
 
         public override string BasePath => "/accounts/{PARENT_ID}/external_accounts";
 
-        public virtual ExternalAccount Create(string accountId, ExternalAccountCreateOptions options, RequestOptions requestOptions = null)
+        public virtual IExternalAccount Create(string accountId, ExternalAccountCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.CreateNestedEntity(accountId, options, requestOptions);
         }
 
-        public virtual Task<ExternalAccount> CreateAsync(string accountId, ExternalAccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IExternalAccount> CreateAsync(string accountId, ExternalAccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.CreateNestedEntityAsync(accountId, options, requestOptions, cancellationToken);
         }
 
-        public virtual ExternalAccount Delete(string accountId, string externalAccountId, RequestOptions requestOptions = null)
+        public virtual IExternalAccount Delete(string accountId, string externalAccountId, RequestOptions requestOptions = null)
         {
             return this.DeleteNestedEntity(accountId, externalAccountId, null, requestOptions);
         }
 
-        public virtual Task<ExternalAccount> DeleteAsync(string accountId, string externalAccountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IExternalAccount> DeleteAsync(string accountId, string externalAccountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.DeleteNestedEntityAsync(accountId, externalAccountId, null, requestOptions, cancellationToken);
         }
 
-        public virtual ExternalAccount Get(string accountId, string externalAccountId, RequestOptions requestOptions = null)
+        public virtual IExternalAccount Get(string accountId, string externalAccountId, RequestOptions requestOptions = null)
         {
             return this.GetNestedEntity(accountId, externalAccountId, null, requestOptions);
         }
 
-        public virtual Task<ExternalAccount> GetAsync(string accountId, string externalAccountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IExternalAccount> GetAsync(string accountId, string externalAccountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetNestedEntityAsync(accountId, externalAccountId, null, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<ExternalAccount> List(string accountId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<IExternalAccount> List(string accountId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListNestedEntities(accountId, options, requestOptions);
         }
 
-        public virtual Task<StripeList<ExternalAccount>> ListAsync(string accountId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<IExternalAccount>> ListAsync(string accountId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListNestedEntitiesAsync(accountId, options, requestOptions, cancellationToken);
         }
 
-        public virtual ExternalAccount Update(string accountId, string externalAccountId, ExternalAccountUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual IExternalAccount Update(string accountId, string externalAccountId, ExternalAccountUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateNestedEntity(accountId, externalAccountId, options, requestOptions);
         }
 
-        public virtual Task<ExternalAccount> UpdateAsync(string accountId, string externalAccountId, ExternalAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IExternalAccount> UpdateAsync(string accountId, string externalAccountId, ExternalAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.UpdateNestedEntityAsync(accountId, externalAccountId, options, requestOptions, cancellationToken);
         }

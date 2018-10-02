@@ -49,23 +49,21 @@ namespace StripeTests
         [Fact]
         public void Create()
         {
-            var externalAccount = this.service.Create(AccountId, this.createOptions);
+            dynamic externalAccount = this.service.Create(AccountId, this.createOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/external_accounts");
             Assert.NotNull(externalAccount);
-            Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
-            Assert.NotNull(externalAccount.BankAccount);
-            Assert.Equal("bank_account", externalAccount.BankAccount.Object);
+            Assert.IsType<BankAccount>(externalAccount);
+            Assert.Equal("bank_account", externalAccount.Object);
         }
 
         [Fact]
         public async Task CreateAsync()
         {
-            var externalAccount = await this.service.CreateAsync(AccountId, this.createOptions);
+            dynamic externalAccount = await this.service.CreateAsync(AccountId, this.createOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/external_accounts");
             Assert.NotNull(externalAccount);
-            Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
-            Assert.NotNull(externalAccount.BankAccount);
-            Assert.Equal("bank_account", externalAccount.BankAccount.Object);
+            Assert.IsType<BankAccount>(externalAccount);
+            Assert.Equal("bank_account", externalAccount.Object);
         }
 
         [Fact]
@@ -87,23 +85,21 @@ namespace StripeTests
         [Fact]
         public void Get()
         {
-            var externalAccount = this.service.Get(AccountId, ExternalAccountId);
+            dynamic externalAccount = this.service.Get(AccountId, ExternalAccountId);
             this.AssertRequest(HttpMethod.Get, "/v1/accounts/acct_123/external_accounts/ba_123");
             Assert.NotNull(externalAccount);
-            Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
-            Assert.NotNull(externalAccount.BankAccount);
-            Assert.Equal("bank_account", externalAccount.BankAccount.Object);
+            Assert.IsType<BankAccount>(externalAccount);
+            Assert.Equal("bank_account", externalAccount.Object);
         }
 
         [Fact]
         public async Task GetAsync()
         {
-            var externalAccount = await this.service.GetAsync(AccountId, ExternalAccountId);
+            dynamic externalAccount = await this.service.GetAsync(AccountId, ExternalAccountId);
             this.AssertRequest(HttpMethod.Get, "/v1/accounts/acct_123/external_accounts/ba_123");
             Assert.NotNull(externalAccount);
-            Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
-            Assert.NotNull(externalAccount.BankAccount);
-            Assert.Equal("bank_account", externalAccount.BankAccount.Object);
+            Assert.IsType<BankAccount>(externalAccount);
+            Assert.Equal("bank_account", externalAccount.Object);
         }
 
         // stripe-mock does not return a bank account object on list today so we do not test
@@ -131,23 +127,21 @@ namespace StripeTests
         [Fact]
         public void Update()
         {
-            var externalAccount = this.service.Update(AccountId, ExternalAccountId, this.updateOptions);
+            dynamic externalAccount = this.service.Update(AccountId, ExternalAccountId, this.updateOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/external_accounts/ba_123");
             Assert.NotNull(externalAccount);
-            Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
-            Assert.NotNull(externalAccount.BankAccount);
-            Assert.Equal("bank_account", externalAccount.BankAccount.Object);
+            Assert.IsType<BankAccount>(externalAccount);
+            Assert.Equal("bank_account", externalAccount.Object);
         }
 
         [Fact]
         public async Task UpdateAsync()
         {
-            var externalAccount = await this.service.UpdateAsync(AccountId, ExternalAccountId, this.updateOptions);
+            dynamic externalAccount = await this.service.UpdateAsync(AccountId, ExternalAccountId, this.updateOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/accounts/acct_123/external_accounts/ba_123");
             Assert.NotNull(externalAccount);
-            Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
-            Assert.NotNull(externalAccount.BankAccount);
-            Assert.Equal("bank_account", externalAccount.BankAccount.Object);
+            Assert.IsType<BankAccount>(externalAccount);
+            Assert.Equal("bank_account", externalAccount.Object);
         }
     }
 }

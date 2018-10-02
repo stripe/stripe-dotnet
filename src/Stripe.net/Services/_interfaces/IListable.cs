@@ -4,7 +4,7 @@ namespace Stripe
     using System.Threading.Tasks;
 
     public interface IListable<T, O>
-        where T : StripeEntity
+        where T : IStripeEntity
         where O : ListOptions
     {
         StripeList<T> List(O listOptions = null, RequestOptions requestOptions = null);
