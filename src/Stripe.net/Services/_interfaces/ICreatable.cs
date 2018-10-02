@@ -4,7 +4,7 @@ namespace Stripe
     using System.Threading.Tasks;
 
     public interface ICreatable<T, O>
-        where T : StripeEntity
+        where T : IStripeEntity
         where O : BaseOptions
     {
         T Create(O createOptions, RequestOptions requestOptions = null);

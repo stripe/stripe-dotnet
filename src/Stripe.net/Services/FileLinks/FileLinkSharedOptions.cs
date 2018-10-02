@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class FileLinkSharedOptions : BaseOptions, ISupportMetadata
+    public class FileLinkSharedOptions : BaseOptions
     {
         /// <summary>
         /// A future timestamp after which the link will no longer be usable.

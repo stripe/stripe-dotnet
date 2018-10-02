@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PlanTransformUsage
+    public class PlanTransformUsage : StripeEntity
     {
         [JsonProperty("divide_by")]
         public int DivideBy { get; set; }

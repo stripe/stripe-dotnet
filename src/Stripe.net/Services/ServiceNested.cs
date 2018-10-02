@@ -8,7 +8,7 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     public abstract class ServiceNested<EntityReturned> : Service<EntityReturned>
-        where EntityReturned : StripeEntity
+        where EntityReturned : IStripeEntity
     {
         protected ServiceNested()
             : base(null)

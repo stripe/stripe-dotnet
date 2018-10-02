@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class DisputeUpdateOptions : BaseOptions, ISupportMetadata
+    public class DisputeUpdateOptions : BaseOptions
     {
         [JsonProperty("evidence")]
         public DisputeEvidenceOptions Evidence { get; set; }

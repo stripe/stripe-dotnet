@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class TransferCreateOptions : BaseOptions, ISupportMetadata
+    public class TransferCreateOptions : BaseOptions
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }

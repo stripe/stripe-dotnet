@@ -5,8 +5,11 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Order : StripeEntityWithId, ISupportMetadata
+    public class Order : StripeEntity, IHasId, IHasObject
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         [JsonProperty("object")]
         public string Object { get; set; }
 

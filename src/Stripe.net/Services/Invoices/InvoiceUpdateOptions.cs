@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class InvoiceUpdateOptions : BaseOptions, ISupportMetadata
+    public class InvoiceUpdateOptions : BaseOptions
     {
         [JsonProperty("application_fee")]
         public int? ApplicationFee { get; set; }

@@ -12,8 +12,11 @@ namespace Stripe
     }
 
     [JsonConverter(typeof(PaymentSourceConverter))]
-    public class PaymentSource : StripeEntityWithId
+    public class PaymentSource : StripeEntity, IHasId
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         public PaymentSourceType Type { get; set; }
 
         public Account Account { get; set; }
