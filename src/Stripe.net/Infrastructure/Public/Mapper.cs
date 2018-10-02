@@ -5,9 +5,14 @@ namespace Stripe
     using System.Reflection;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using Stripe.Infrastructure;
 
     public static class Mapper<T>
     {
+        private static JsonConverter[] converters = {
+            new DateTimeConverter(),
+        };
+
         public static List<T> MapCollectionFromJson(string json, string token = "data", StripeResponse stripeResponse = null)
         {
             var jObject = JObject.Parse(json);
@@ -29,7 +34,7 @@ namespace Stripe
         {
             var jsonToParse = string.IsNullOrEmpty(parentToken) ? json : JObject.Parse(json).SelectToken(parentToken).ToString();
 
-            var result = JsonConvert.DeserializeObject<T>(jsonToParse);
+            var result = JsonConvert.DeserializeObject<T>(jsonToParse, converters);
 
             // if necessary, we might need to apply the stripe response to nested properties for StripeList<T>
             ApplyStripeResponse(json, stripeResponse, result);
