@@ -6,7 +6,7 @@ namespace Stripe
     using Newtonsoft.Json;
 
     [JsonObject]
-    public class StripeList<T> : StripeEntity, IEnumerable<T>
+    public class StripeList<T> : StripeEntity, IHasObject, IEnumerable<T>
     {
         [JsonProperty("object")]
         public string Object { get; set; }

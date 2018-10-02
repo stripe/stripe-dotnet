@@ -3,8 +3,11 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class RecipientActiveAccount : StripeEntityWithId, ISupportMetadata
+    public class RecipientActiveAccount : StripeEntity, IHasId, IHasObject
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         [JsonProperty("object")]
         public string Object { get; set; }
 

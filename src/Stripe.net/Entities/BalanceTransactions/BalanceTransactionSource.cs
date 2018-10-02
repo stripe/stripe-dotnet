@@ -19,8 +19,11 @@ namespace Stripe
     }
 
     [JsonConverter(typeof(BalanceTransactionSourceConverter))]
-    public class BalanceTransactionSource : StripeEntityWithId
+    public class BalanceTransactionSource : StripeEntity, IHasId
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         public BalanceTransactionSourceType Type { get; set; }
 
         public ApplicationFee ApplicationFee { get; set; }

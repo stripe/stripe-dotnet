@@ -4,7 +4,7 @@ namespace Stripe.Infrastructure
     using Newtonsoft.Json.Linq;
 
     internal static class StringOrObject<T>
-        where T : StripeEntityWithId
+        where T : IHasId
     {
         public static void Map(object value, Action<string> updateId, Action<T> updateObject)
         {
@@ -22,7 +22,10 @@ namespace Stripe.Infrastructure
             else if (value is string)
             {
                 updateId((string)value);
-                updateObject(null);
+
+                // The default value for a reference type is null, but `T` is constrained to an
+                // interface here so we have to use `default(T)`.
+                updateObject(default(T));
             }
         }
     }

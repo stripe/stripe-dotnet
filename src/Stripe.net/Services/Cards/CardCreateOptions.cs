@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CardCreateOptions : BaseOptions, ISupportMetadata
+    public class CardCreateOptions : BaseOptions
     {
         [JsonProperty("source")]
         public string SourceToken { get; set; }

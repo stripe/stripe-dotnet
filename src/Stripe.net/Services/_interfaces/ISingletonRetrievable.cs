@@ -4,7 +4,7 @@ namespace Stripe
     using System.Threading.Tasks;
 
     public interface ISingletonRetrievable<T>
-        where T : StripeEntity
+        where T : IStripeEntity
     {
         T Get(RequestOptions requestOptions = null);
 

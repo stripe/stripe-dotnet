@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class LoginLink : StripeEntity
+    public class LoginLink : StripeEntity, IHasObject
     {
         [JsonProperty("object")]
         public string Object { get; set; }

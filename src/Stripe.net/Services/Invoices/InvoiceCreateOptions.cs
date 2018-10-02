@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class InvoiceCreateOptions : BaseOptions, ISupportMetadata
+    public class InvoiceCreateOptions : BaseOptions
     {
         /// <summary>
         /// A fee in cents that will be applied to the invoice and transferred to the application

@@ -4,8 +4,11 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Event : StripeEntityWithId
+    public class Event : StripeEntity, IHasId, IHasObject
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         [JsonProperty("object")]
         public string Object { get; set; }
 
@@ -27,27 +30,8 @@ namespace Stripe
         [JsonProperty("pending_webhooks")]
         public int PendingWebhooks { get; set; }
 
-        #region Request
-
-        /*
-         * This works like expandable properties. it's used for the event having just a string for the request id or
-         * the Request object for requests after the 2017-05-25 api release
-         */
-
-        public string RequestId { get; set; }
-
-        [JsonIgnore]
-        public EventRequest Request { get; set; }
-
         [JsonProperty("request")]
-        internal object InternalRequest
-        {
-            set
-            {
-                StringOrObject<EventRequest>.Map(value, s => this.RequestId = s, o => this.Request = o);
-            }
-        }
-        #endregion
+        public EventRequest Request { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

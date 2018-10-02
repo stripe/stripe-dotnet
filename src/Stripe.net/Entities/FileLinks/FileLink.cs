@@ -5,11 +5,11 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class FileLink : StripeEntityWithId, ISupportMetadata
+    public class FileLink : StripeEntity, IHasId, IHasObject
     {
-        /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
-        /// </summary>
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         [JsonProperty("object")]
         public string Object { get; set; }
 
