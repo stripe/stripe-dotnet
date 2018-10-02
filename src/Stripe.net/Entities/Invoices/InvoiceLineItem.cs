@@ -16,28 +16,6 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        #region Expandable Customer
-        public string CustomerId { get; set; }
-
-        [JsonIgnore]
-        public Customer Customer { get; set; }
-
-        /// <summary>
-        /// Whether this object is deleted or not.
-        /// </summary>
-        [JsonProperty("deleted")]
-        public bool Deleted { get; set; }
-
-        [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
-        #endregion
-
         [JsonProperty("date")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Date { get; set; }
@@ -48,21 +26,8 @@ namespace Stripe
         [JsonProperty("discountable")]
         public bool Discountable { get; set; }
 
-        #region Expandable Invoice
-        public string InvoiceId { get; set; }
-
-        [JsonIgnore]
-        public Invoice Invoice { get; set; }
-
-        [JsonProperty("invoice")]
-        internal object InternalInvoice
-        {
-            set
-            {
-                StringOrObject<Invoice>.Map(value, s => this.InvoiceId = s, o => this.Invoice = o);
-            }
-        }
-        #endregion
+        [JsonProperty("invoice_item")]
+        public string InvoiceItemId { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -82,29 +47,13 @@ namespace Stripe
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
 
-        #region Expandable Subscription
+        [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
 
-        [JsonIgnore]
-        public Subscription Subscription { get; set; }
-
-        [JsonProperty("subscription")]
-        internal object InternalSubscription
-        {
-            set
-            {
-                StringOrObject<Subscription>.Map(value, s => this.SubscriptionId = s, o => this.Subscription = o);
-            }
-        }
-        #endregion
-
         [JsonProperty("subscription_item")]
-        public string SubscriptionItem { get; set; }
+        public string SubscriptionItemId { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
-
-        [JsonProperty("unit_amount")]
-        public int? UnitAmount { get; set; }
     }
 }
