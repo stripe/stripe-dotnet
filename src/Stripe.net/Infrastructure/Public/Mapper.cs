@@ -9,7 +9,8 @@ namespace Stripe
 
     public static class Mapper<T>
     {
-        private static JsonConverter[] converters = {
+        private static JsonConverter[] converters =
+        {
             new DateTimeConverter(),
             new ExternalAccountConverter(),
         };
@@ -26,6 +27,11 @@ namespace Stripe
         public static List<T> MapCollectionFromJson(StripeResponse stripeResponse, string token = "data")
         {
             return MapCollectionFromJson(stripeResponse.ResponseJson, token, stripeResponse);
+        }
+
+        public static T MapFromJson(string json)
+        {
+            return MapFromJson(json, null, null);
         }
 
         // the ResponseJson on a list method is the entire list (as json) returned from stripe.
