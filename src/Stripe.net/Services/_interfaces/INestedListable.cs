@@ -4,7 +4,7 @@ namespace Stripe
     using System.Threading.Tasks;
 
     public interface INestedListable<T, O>
-        where T : StripeEntity
+        where T : IStripeEntity
         where O : ListOptions
     {
         StripeList<T> List(string parentId, O listOptions = null, RequestOptions requestOptions = null);

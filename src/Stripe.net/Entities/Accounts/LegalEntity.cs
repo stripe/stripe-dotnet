@@ -6,7 +6,7 @@ namespace Stripe
     public class LegalEntity : StripeEntity
     {
         [JsonProperty("additional_owners")]
-        public List<AdditionalOwners> AdditionalOwners { get; set; }
+        public List<AdditionalOwner> AdditionalOwners { get; set; }
 
         [JsonProperty("address")]
         public Address Address { get; set; }

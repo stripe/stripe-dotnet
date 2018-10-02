@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public abstract class SkuSharedOptions : BaseOptions, ISupportMetadata
+    public abstract class SkuSharedOptions : BaseOptions
     {
         /// <summary>
         /// Whether or not the SKU is currently available for purchase. Defaults to true.

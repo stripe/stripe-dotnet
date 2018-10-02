@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CardUpdateOptions : BaseOptions, ISupportMetadata
+    public class CardUpdateOptions : BaseOptions
     {
         [JsonProperty("exp_month")]
         public int? ExpMonth { get; set; }

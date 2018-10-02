@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class OrderCreateOptions : BaseOptions, ISupportMetadata
+    public class OrderCreateOptions : BaseOptions
     {
         /// <summary>
         /// REQUIRED: Three-letter ISO currency code, in lowercase. Must be a supported currency.

@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PlanCreateOptions : BaseOptions, ISupportMetadata
+    public class PlanCreateOptions : BaseOptions
     {
         [JsonProperty("id")]
         public string Id { get; set; }
