@@ -16,15 +16,24 @@ namespace Stripe.Infrastructure
                 // TODO: We could probably avoid the unnecessary deserialization+reserialization
                 // with some refactoring.
                 T item = Mapper<T>.MapFromJson(value.ToString());
-                updateId(item.Id);
-                updateObject(item);
+
+                if (item != null)
+                {
+                    updateId(item.Id);
+                    updateObject(item);
+                }
+                else
+                {
+                    // We were unable to deserialize the object, but make a last attempt to grab
+                    // the ID from the raw JObject.
+                    var id = ((JObject)value).SelectToken("id")?.ToString();
+                    updateId(id);
+                    updateObject(default(T));
+                }
             }
             else if (value is string)
             {
                 updateId((string)value);
-
-                // The default value for a reference type is null, but `T` is constrained to an
-                // interface here so we have to use `default(T)`.
                 updateObject(default(T));
             }
         }
