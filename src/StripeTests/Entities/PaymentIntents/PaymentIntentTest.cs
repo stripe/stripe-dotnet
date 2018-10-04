@@ -1,10 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
-    using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
@@ -46,8 +41,8 @@ namespace StripeTests
             Assert.Equal("customer", intent.Customer.Object);
 
             Assert.NotNull(intent.Source);
-            Assert.Equal(PaymentSourceType.Card, intent.Source.Type);
-            Assert.Equal("card", intent.Source.Card.Object);
+            Assert.IsType<Card>(intent.Source);
+            Assert.Equal("card", intent.Source.Object);
 
             Assert.NotNull(intent.TransferData);
             Assert.NotNull(intent.TransferData.Destination);

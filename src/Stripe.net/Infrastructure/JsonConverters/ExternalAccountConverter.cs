@@ -1,47 +1,15 @@
 namespace Stripe.Infrastructure
 {
     using System;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
+    using System.Collections.Generic;
 
-    internal class ExternalAccountConverter : JsonConverter
+    internal class ExternalAccountConverter : AbstractStripeObjectConverter<IExternalAccount>
     {
-        public override bool CanWrite => false;
-
-        public override bool CanConvert(Type objectType)
+        protected override Dictionary<string, Func<string, IExternalAccount>> ObjectsToMapperFuncs
+            => new Dictionary<string, Func<string, IExternalAccount>>()
         {
-            throw new NotImplementedException();
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            var incoming = JObject.FromObject(value);
-
-            incoming.WriteTo(writer);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            var incoming = JObject.Load(reader);
-
-            var externalAccount = new ExternalAccount
-            {
-                Id = incoming.SelectToken("id").ToString()
-            };
-
-            if (incoming.SelectToken("object")?.ToString() == "bank_account")
-            {
-                externalAccount.Type = ExternalAccountType.BankAccount;
-                externalAccount.BankAccount = Mapper<BankAccount>.MapFromJson(incoming.ToString());
-            }
-
-            if (incoming.SelectToken("object")?.ToString() == "card")
-            {
-                externalAccount.Type = ExternalAccountType.Card;
-                externalAccount.Card = Mapper<Card>.MapFromJson(incoming.ToString());
-            }
-
-            return externalAccount;
-        }
+            { "bank_account", Mapper<BankAccount>.MapFromJson },
+            { "card", Mapper<Card>.MapFromJson },
+        };
     }
 }

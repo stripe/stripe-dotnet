@@ -122,14 +122,14 @@ namespace Stripe
         public string SourceId { get; set; }
 
         [JsonIgnore]
-        public PaymentSource Source { get; set; }
+        public IPaymentSource Source { get; set; }
 
         [JsonProperty("source")]
         internal object InternalSource
         {
             set
             {
-                StringOrObject<PaymentSource>.Map(value, s => this.SourceId = s, o => this.Source = o);
+                StringOrObject<IPaymentSource>.Map(value, s => this.SourceId = s, o => this.Source = o);
             }
         }
         #endregion

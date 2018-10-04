@@ -1,0 +1,80 @@
+{
+  "api_version": "2018-09-24",
+  "created": 1538742675,
+  "data": {
+    "object": {
+      "account_balance": 0,
+      "created": 1538742657,
+      "currency": null,
+      "default_source": "card_1DHsSLKCFFPkgtRh2n45D5HN",
+      "delinquent": false,
+      "description": "Test customer",
+      "discount": null,
+      "email": null,
+      "id": "cus_DjL8lObxrWj04W",
+      "invoice_prefix": "EF4DEC0",
+      "livemode": false,
+      "metadata": {
+        "foo": "baz"
+      },
+      "object": "customer",
+      "shipping": null,
+      "sources": {
+        "data": [
+          {
+            "address_city": null,
+            "address_country": null,
+            "address_line1": null,
+            "address_line1_check": null,
+            "address_line2": null,
+            "address_state": null,
+            "address_zip": null,
+            "address_zip_check": null,
+            "brand": "Visa",
+            "country": "US",
+            "customer": "cus_DjL8lObxrWj04W",
+            "cvc_check": null,
+            "dynamic_last4": null,
+            "exp_month": 10,
+            "exp_year": 2019,
+            "fingerprint": "NrVafqTONZfbLkQK",
+            "funding": "credit",
+            "id": "card_1DHsSLKCFFPkgtRh2n45D5HN",
+            "last4": "4242",
+            "metadata": {},
+            "name": null,
+            "object": "card",
+            "tokenization_method": null
+          }
+        ],
+        "has_more": false,
+        "object": "list",
+        "total_count": 1,
+        "url": "/v1/customers/cus_DjL8lObxrWj04W/sources"
+      },
+      "subscriptions": {
+        "data": [],
+        "has_more": false,
+        "object": "list",
+        "total_count": 0,
+        "url": "/v1/customers/cus_DjL8lObxrWj04W/subscriptions"
+      },
+      "tax_info": null,
+      "tax_info_verification": null
+    },
+    "previous_attributes": {
+      "metadata": {
+        "foo": "bar"
+      }
+    }
+  },
+  "id": "evt_1DHsSdKCFFPkgtRhy4YMdffC",
+  "livemode": false,
+  "object": "event",
+  "pending_webhooks": 1,
+  "request": {
+    "id": "req_w9JioK0o4mriXj",
+    "idempotency_key": "364f382e-9469-4dc3-b4d0-83c930ade869"
+  },
+  "type": "customer.updated"
+}

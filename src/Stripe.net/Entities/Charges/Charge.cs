@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Charge : StripeEntity, IHasId, IHasObject
+    public class Charge : StripeEntity, IHasId, IHasObject, IBalanceTransactionSource
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -337,7 +337,7 @@ namespace Stripe
         /// For most Stripe users, the source of every charge is a credit or debit card. This hash is then the card object describing that card.
         /// </summary>
         [JsonProperty("source")]
-        public PaymentSource Source { get; set; }
+        public IPaymentSource Source { get; set; }
 
         #region Expandable Transfer
 
