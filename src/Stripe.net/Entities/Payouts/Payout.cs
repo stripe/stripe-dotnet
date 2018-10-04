@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Payout : StripeEntity, IHasId, IHasObject
+    public class Payout : StripeEntity, IHasId, IHasObject, IBalanceTransactionSource
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -51,14 +51,14 @@ namespace Stripe
         public string DestinationId { get; set; }
 
         [JsonIgnore]
-        public ExternalAccount Destination { get; set; }
+        public IExternalAccount Destination { get; set; }
 
         [JsonProperty("destination")]
         internal object InternalDestination
         {
             set
             {
-                StringOrObject<ExternalAccount>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
+                StringOrObject<IExternalAccount>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
             }
         }
         #endregion

@@ -2,11 +2,10 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Account : StripeEntity, IHasId, IHasObject
+    public class Account : StripeEntity, IHasId, IHasObject, IPaymentSource
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -73,7 +72,7 @@ namespace Stripe
         public string Email { get; set; }
 
         [JsonProperty("external_accounts")]
-        public StripeList<ExternalAccount> ExternalAccounts { get; set; }
+        public StripeList<IExternalAccount> ExternalAccounts { get; set; }
 
         [JsonProperty("keys")]
         public CustomAccountKeys Keys { get; set; }
