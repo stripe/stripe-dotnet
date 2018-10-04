@@ -59,7 +59,7 @@ after_test:
   - .\tools\csmacnz.Coveralls --opencover -i src/StripeTests/coverage.opencover.xml --useRelativePaths
 
 artifacts:
-  - path: '**\*.nupkg'
+  - path: 'src\Stripe.net\bin\Release\*.nupkg'
 
 # these commands tell appveyor to open an RDP session for debugging
 #init:
