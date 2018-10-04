@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class OrderItem : StripeEntity
+    public class OrderItem : StripeEntity, IHasObject
     {
         [JsonProperty("object")]
         public string Object { get; set; }

@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Topup : StripeEntity, IHasId, IHasObject
+    public class Topup : StripeEntity, IHasId, IHasObject, IBalanceTransactionSource
     {
         [JsonProperty("id")]
         public string Id { get; set; }

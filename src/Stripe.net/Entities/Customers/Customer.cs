@@ -37,14 +37,14 @@ namespace Stripe
         public string DefaultSourceId { get; set; }
 
         [JsonIgnore]
-        public PaymentSource DefaultSource { get; set; }
+        public IPaymentSource DefaultSource { get; set; }
 
         [JsonProperty("default_source")]
         internal object InternalDefaultSource
         {
             set
             {
-                StringOrObject<PaymentSource>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
+                StringOrObject<IPaymentSource>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
             }
         }
 
@@ -99,7 +99,7 @@ namespace Stripe
         /// The customer’s payment sources, if any
         /// </summary>
         [JsonProperty("sources")]
-        public StripeList<PaymentSource> Sources { get; set; }
+        public StripeList<IPaymentSource> Sources { get; set; }
 
         /// <summary>
         /// The customer’s current subscriptions, if any
