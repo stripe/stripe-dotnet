@@ -1,10 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
-    using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
@@ -42,9 +37,8 @@ namespace StripeTests
             Assert.Equal("balance_transaction", payout.BalanceTransaction.Object);
 
             Assert.NotNull(payout.Destination);
-            Assert.Equal(ExternalAccountType.BankAccount, payout.Destination.Type);
-            Assert.NotNull(payout.Destination.BankAccount);
-            Assert.Equal("bank_account", payout.Destination.BankAccount.Object);
+            Assert.IsType<BankAccount>(payout.Destination);
+            Assert.Equal("bank_account", payout.Destination.Object);
 
             Assert.NotNull(payout.FailureBalanceTransaction);
             Assert.Equal("balance_transaction", payout.FailureBalanceTransaction.Object);
