@@ -1,10 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
-    using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
@@ -14,11 +9,10 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = GetFixture("/v1/accounts/acct_123/external_accounts/ba_123");
-            var externalAccount = Mapper<ExternalAccount>.MapFromJson(json);
+            var externalAccount = Mapper<IExternalAccount>.MapFromJson(json);
             Assert.NotNull(externalAccount);
-            Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
-            Assert.NotNull(externalAccount.BankAccount);
-            Assert.Equal("bank_account", externalAccount.BankAccount.Object);
+            Assert.IsType<BankAccount>(externalAccount);
+            Assert.Equal("bank_account", externalAccount.Object);
         }
 
         [Fact]
@@ -30,14 +24,13 @@ namespace StripeTests
             };
 
             string json = GetFixture("/v1/accounts/acct_123/external_accounts/ba_123", expansions);
-            var externalAccount = Mapper<ExternalAccount>.MapFromJson(json);
+            var externalAccount = Mapper<IExternalAccount>.MapFromJson(json);
             Assert.NotNull(externalAccount);
-            Assert.Equal(ExternalAccountType.BankAccount, externalAccount.Type);
-            Assert.NotNull(externalAccount.BankAccount);
-            Assert.Equal("bank_account", externalAccount.BankAccount.Object);
+            Assert.IsType<BankAccount>(externalAccount);
+            Assert.Equal("bank_account", externalAccount.Object);
 
-            Assert.NotNull(externalAccount.BankAccount.Account);
-            Assert.Equal("account", externalAccount.BankAccount.Account.Object);
+            Assert.NotNull(externalAccount.Account);
+            Assert.Equal("account", externalAccount.Account.Object);
         }
     }
 }
