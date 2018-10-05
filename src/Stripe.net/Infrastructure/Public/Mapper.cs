@@ -14,6 +14,7 @@ namespace Stripe
             new DateTimeConverter(),
             new ExternalAccountConverter(),
             new PaymentSourceConverter(),
+            new StripeObjectConverter(),
         };
 
         public static List<T> MapCollectionFromJson(string json, string token = "data", StripeResponse stripeResponse = null)
