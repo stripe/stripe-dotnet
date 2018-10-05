@@ -14,6 +14,7 @@ namespace StripeTests
         private const string SourceId = "src_123";
 
         private SourceService service;
+        private SourceAttachOptions attachOptions;
         private SourceCreateOptions createOptions;
         private SourceUpdateOptions updateOptions;
         private SourceListOptions listOptions;
@@ -21,6 +22,11 @@ namespace StripeTests
         public SourceServiceTest()
         {
             this.service = new SourceService();
+
+            this.attachOptions = new SourceAttachOptions
+            {
+                Source = SourceId,
+            };
 
             this.createOptions = new SourceCreateOptions
             {
@@ -70,6 +76,28 @@ namespace StripeTests
             {
                 Limit = 1,
             };
+        }
+
+        [Fact]
+        public void Attach()
+        {
+            var source = this.service.Attach(CustomerId, this.attachOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/sources");
+            Assert.NotNull(source);
+
+            // We can't test the object returned as stripe-mock returns an Account
+            // Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
+        public async Task AttachAsync()
+        {
+            var source = await this.service.AttachAsync(CustomerId, this.attachOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/sources");
+            Assert.NotNull(source);
+
+            // We can't test the object returned as stripe-mock returns an Account
+            // Assert.Equal("source", source.Object);
         }
 
         [Fact]

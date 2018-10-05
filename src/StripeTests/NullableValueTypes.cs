@@ -11,7 +11,7 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-#if NETCOREAPP1_1
+#if NETCOREAPP
     public class NullableValueTypes
     {
         [Fact]
@@ -21,9 +21,10 @@ namespace StripeTests
 
             // Get all classes that implement INestedOptions
             var type = typeof(INestedOptions);
-            var optionsClasses = GetReferencingAssemblies("Stripe.net")
-                .SelectMany(assembly => assembly.ExportedTypes)
-                .Where(p => type.IsAssignableFrom(p));
+            var assembly = type.GetTypeInfo().Assembly;
+            var optionsClasses = assembly.DefinedTypes
+                .Where(t => t.IsClass && t.ImplementedInterfaces.Contains(type))
+                .Select(t => t.AsType());
 
             foreach (Type optionsClass in optionsClasses)
             {
@@ -70,28 +71,6 @@ namespace StripeTests
                 // Actually fail test
                 Assert.True(false, "Found at least one non-nullable value type");
             }
-        }
-
-        private static IEnumerable<Assembly> GetReferencingAssemblies(string assemblyName)
-        {
-            var assemblies = new List<Assembly>();
-            var dependencies = DependencyContext.Default.RuntimeLibraries;
-            foreach (var library in dependencies)
-            {
-                if (IsCandidateLibrary(library, assemblyName))
-                {
-                    var assembly = Assembly.Load(new AssemblyName(library.Name));
-                    assemblies.Add(assembly);
-                }
-            }
-
-            return assemblies;
-        }
-
-        private static bool IsCandidateLibrary(RuntimeLibrary library, string assemblyName)
-        {
-            return library.Name == assemblyName
-                || library.Dependencies.Any(d => d.Name.StartsWith(assemblyName));
         }
     }
 #endif
