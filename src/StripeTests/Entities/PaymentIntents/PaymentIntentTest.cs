@@ -50,9 +50,23 @@ namespace StripeTests
         }
 
         [Fact]
-        public void DeserializeNextSourceAction()
+        public void DeserializeNextSourceActionNull()
         {
-            var json = GetResourceAsString("api_fixtures.payment_intent_with_next_source_action.json");
+            var json = GetResourceAsString("api_fixtures.payment_intent.action_null.json");
+            var intent = Mapper<PaymentIntent>.MapFromJson(json);
+
+            Assert.NotNull(intent);
+            Assert.IsType<PaymentIntent>(intent);
+            Assert.NotNull(intent.Id);
+            Assert.Equal("payment_intent", intent.Object);
+
+            Assert.Null(intent.NextSourceAction);
+        }
+
+        [Fact]
+        public void DeserializeNextSourceActionAuthorizeWithUrl()
+        {
+            var json = GetResourceAsString("api_fixtures.payment_intent.action_authorize_with_url.json");
             var intent = Mapper<PaymentIntent>.MapFromJson(json);
 
             Assert.NotNull(intent);
@@ -61,7 +75,24 @@ namespace StripeTests
             Assert.Equal("payment_intent", intent.Object);
 
             Assert.Equal(PaymentIntentSourceActionType.AuthorizeWithUrl, intent.NextSourceAction.Type);
-            Assert.Equal("https://stripe.com", intent.NextSourceAction.AuthorizeWithUrl.Url);
+            var authorizeWithUrl = intent.NextSourceAction.Value as PaymentIntentSourceActionAuthorizeWithUrl;
+            Assert.NotNull(authorizeWithUrl);
+            Assert.Equal("https://stripe.com", authorizeWithUrl.Url);
+        }
+
+        [Fact]
+        public void DeserializeNextSourceActionUnknown()
+        {
+            var json = GetResourceAsString("api_fixtures.payment_intent.action_unknown.json");
+            var intent = Mapper<PaymentIntent>.MapFromJson(json);
+
+            Assert.NotNull(intent);
+            Assert.IsType<PaymentIntent>(intent);
+            Assert.NotNull(intent.Id);
+            Assert.Equal("payment_intent", intent.Object);
+
+            Assert.Equal(PaymentIntentSourceActionType.Unknown, intent.NextSourceAction.Type);
+            Assert.Null(intent.NextSourceAction.Value);
         }
     }
 }
