@@ -25,5 +25,14 @@
         /// </summary>
         [JsonProperty("shipping")]
         public StripeChargeShippingOptions Shipping { get; set; }
+
+        /// <summary>
+        /// A string that identifies this transaction as part of a group. <c>transfer_group</c> may
+        /// only be provided if it has not been set. See the
+        /// <see href="https://stripe.com/docs/connect/charges-transfers#grouping-transactions">Connect documentation</see>
+        /// for details.
+        /// </summary>
+        [JsonProperty("transfer_group")]
+        public string TransferGroup { get; set; }
     }
 }
