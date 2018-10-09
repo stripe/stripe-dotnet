@@ -1,5 +1,8 @@
 # Changelog
 
+## 19.10.0 - 2018-10-09
+* [#1327](https://github.com/stripe/stripe-dotnet/pull/1327) Add `TransferGroup` to `StripeChargeUpdateOptions`
+
 ## 19.9.2 - 2018-09-28
 * [#1297](https://github.com/stripe/stripe-dotnet/pull/1297) Add .NET Standard 2.0 target
 
