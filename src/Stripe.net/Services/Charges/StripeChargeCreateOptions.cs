@@ -58,7 +58,8 @@
         public StripeChargeLevel3Options Level3 { get; set; }
 
         /// <summary>
-        /// A string that identifies this transaction as part of a group. See the Connect documentation for details.
+        /// A string that identifies this transaction as part of a group. For details, see
+        /// <see href="https://stripe.com/docs/connect/charges-transfers#grouping-transactions">Grouping transactions</see>.
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
