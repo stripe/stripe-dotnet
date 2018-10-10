@@ -1,13 +1,17 @@
 namespace Stripe
 {
+    using System.Runtime.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using Stripe.Infrastructure;
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PaymentIntentSourceActionType
     {
         Unknown,
+
+        [EnumMember(Value = "authorize_with_url")]
         AuthorizeWithUrl,
-        None,
     }
 
     [JsonConverter(typeof(PaymentIntentSourceActionConverter))]
@@ -15,6 +19,6 @@ namespace Stripe
     {
         public PaymentIntentSourceActionType Type { get; set; }
 
-        public PaymentIntentSourceActionAuthorizeWithUrl AuthorizeWithUrl { get; set; }
+        public IPaymentIntentSourceActionValue Value { get; set; }
     }
 }
