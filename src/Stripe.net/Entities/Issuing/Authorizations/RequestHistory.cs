@@ -10,7 +10,7 @@ namespace Stripe.Issuing
         public bool Approved { get; set; }
 
         [JsonProperty("authorized_amount")]
-        public int AuthorizedAmount { get; set; }
+        public long AuthorizedAmount { get; set; }
 
         [JsonProperty("authorized_currency")]
         public string AuthorizedCurrency { get; set; }
@@ -19,7 +19,7 @@ namespace Stripe.Issuing
         public DateTime Created { get; set; }
 
         [JsonProperty("held_amount")]
-        public int HeldAmount { get; set; }
+        public long HeldAmount { get; set; }
 
         [JsonProperty("held_currency")]
         public string HeldCurrency { get; set; }

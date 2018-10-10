@@ -8,10 +8,10 @@ namespace Stripe.Issuing
         public string CardholderId { get; set; }
 
         [JsonProperty("exp_month")]
-        public int? ExpMonth { get; set; }
+        public long? ExpMonth { get; set; }
 
         [JsonProperty("exp_year")]
-        public int? ExpYear { get; set; }
+        public long? ExpYear { get; set; }
 
         [JsonProperty("last4")]
         public string Last4 { get; set; }

@@ -29,7 +29,7 @@ namespace Stripe
         public Plan Plan { get; set; }
 
         [JsonProperty("quantity")]
-        public int Quantity { get; set; }
+        public long Quantity { get; set; }
 
         [JsonProperty("subscription")]
         public string Subscription { get; set; }

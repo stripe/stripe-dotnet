@@ -17,13 +17,13 @@ namespace Stripe
         public List<string> AllowedSourceTypes { get; set; }
 
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         [JsonProperty("amount_capturable")]
-        public int? AmountCapturable { get; set; }
+        public long? AmountCapturable { get; set; }
 
         [JsonProperty("amount_received")]
-        public int? AmountReceived { get; set; }
+        public long? AmountReceived { get; set; }
 
         #region Expandable Application
         public string ApplicationId { get; set; }
@@ -42,7 +42,7 @@ namespace Stripe
         #endregion
 
         [JsonProperty("application_fee_amount")]
-        public int? ApplicationFeeAmount { get; set; }
+        public long? ApplicationFeeAmount { get; set; }
 
         [JsonProperty("canceled_at")]
         public DateTime? CanceledAt { get; set; }

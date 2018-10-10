@@ -10,7 +10,7 @@ namespace Stripe
         /// only up to the remaining, unrefunded amount of the charge.
         /// </summary>
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         /// <summary>
         /// REQUIRED. The identifier of the charge to refund.

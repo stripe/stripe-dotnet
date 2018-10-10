@@ -17,10 +17,10 @@ namespace Stripe
         /// A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a 0-decimal currency) representing the total amount for the order.
         /// </summary>
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("amount_returned")]
-        public int? AmountReturned { get; set; }
+        public long? AmountReturned { get; set; }
 
         /// <summary>
         /// ID of the Connect Application that created the order.
@@ -29,7 +29,7 @@ namespace Stripe
         public string Application { get; set; }
 
         [JsonProperty("application_fee")]
-        public int? ApplicationFee { get; set; }
+        public long? ApplicationFee { get; set; }
 
         #region Expandable Charge
 

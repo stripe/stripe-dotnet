@@ -14,19 +14,19 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("amount_due")]
-        public int AmountDue { get; set; }
+        public long AmountDue { get; set; }
 
         [JsonProperty("amount_paid")]
-        public int AmountPaid { get; set; }
+        public long AmountPaid { get; set; }
 
         [JsonProperty("amount_remaining")]
-        public int AmountRemaining { get; set; }
+        public long AmountRemaining { get; set; }
 
         [JsonProperty("application_fee")]
-        public int? ApplicationFee { get; set; }
+        public long? ApplicationFee { get; set; }
 
         [JsonProperty("attempt_count")]
-        public int AttemptCount { get; set; }
+        public long AttemptCount { get; set; }
 
         [JsonProperty("attempted")]
         public bool Attempted { get; set; }
@@ -97,7 +97,7 @@ namespace Stripe
         public DateTime? DueDate { get; set; }
 
         [JsonProperty("ending_balance")]
-        public int? EndingBalance { get; set; }
+        public long? EndingBalance { get; set; }
 
         [JsonProperty("forgiven")]
         public bool? Forgiven { get; set; }
@@ -139,7 +139,7 @@ namespace Stripe
         public string ReceiptNumber { get; set; }
 
         [JsonProperty("starting_balance")]
-        public int StartingBalance { get; set; }
+        public long StartingBalance { get; set; }
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
@@ -164,16 +164,16 @@ namespace Stripe
         public DateTime SubscriptionProrationDate { get; set; }
 
         [JsonProperty("subtotal")]
-        public int Subtotal { get; set; }
+        public long Subtotal { get; set; }
 
         [JsonProperty("tax")]
-        public int? Tax { get; set; }
+        public long? Tax { get; set; }
 
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
         [JsonProperty("total")]
-        public int Total { get; set; }
+        public long Total { get; set; }
 
         [JsonProperty("webhooks_delivered_at")]
         public DateTime? WebhooksDeliveredAt { get; set; }

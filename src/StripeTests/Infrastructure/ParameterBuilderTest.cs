@@ -37,7 +37,7 @@ namespace StripeTests
             var testObject = new TestOptionsWithList();
             var url = this.service.ApplyAllParameters(testObject, string.Empty, false);
 
-            Assert.Equal("?some_list[0][an_int]=1&some_list[0][a_string]=foo&some_list[1][an_int]=2&some_list[1][a_string]=bar", url);
+            Assert.Equal("?some_list[0][a_long]=1&some_list[0][a_string]=foo&some_list[1][a_long]=2&some_list[1][a_string]=bar", url);
         }
 
         [Fact]
@@ -179,24 +179,6 @@ namespace StripeTests
                     want = "?enum=TestTwo"
                 },
 
-                // Int
-                new
-                {
-                    data = new TestOptions
-                    {
-                        Int = 123,
-                    },
-                    want = "?int=123"
-                },
-                new
-                {
-                    data = new TestOptions
-                    {
-                        Int = 0,
-                    },
-                    want = "?int=0"
-                },
-
                 // List
                 new
                 {
@@ -233,6 +215,24 @@ namespace StripeTests
                             },
                     },
                     want = "?list[0][foo]=bar&list[1][foo]=baz"
+                },
+
+                // Long
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Long = 123,
+                    },
+                    want = "?long=123"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Long = 0,
+                    },
+                    want = "?long=0"
                 },
 
                 // String

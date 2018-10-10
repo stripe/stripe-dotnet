@@ -5,7 +5,7 @@ namespace StripeTests
 
     public class EventUtilityTest : BaseStripeTest
     {
-        private int eventTimestamp;
+        private long eventTimestamp;
         private string signature;
         private string json;
         private string secret;

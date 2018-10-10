@@ -6,7 +6,7 @@ namespace Stripe.Issuing
     public class DisputeCreateOptions : CardholderSharedOptions
     {
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         [JsonProperty("disputed_transaction")]
         public string DisputedTransactionId { get; set; }

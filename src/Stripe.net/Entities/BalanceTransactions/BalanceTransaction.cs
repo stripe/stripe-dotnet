@@ -14,7 +14,7 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("available_on")]
         public DateTime AvailableOn { get; set; }
@@ -32,13 +32,13 @@ namespace Stripe
         public decimal? ExchangeRate { get; set; }
 
         [JsonProperty("fee")]
-        public int Fee { get; set; }
+        public long Fee { get; set; }
 
         [JsonProperty("fee_details")]
         public List<Fee> FeeDetails { get; set; }
 
         [JsonProperty("net")]
-        public int Net { get; set; }
+        public long Net { get; set; }
 
         #region Expandable Source
         public string SourceId { get; set; }

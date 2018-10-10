@@ -25,6 +25,6 @@ namespace Stripe
         public string SubscriptionItemId { get; set; }
 
         [JsonProperty("total_usage")]
-        public int TotalUsage { get; set; }
+        public long TotalUsage { get; set; }
     }
 }

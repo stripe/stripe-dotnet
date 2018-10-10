@@ -14,18 +14,18 @@ namespace Stripe
         /// The total amount charged by you. The amount charged is expressed in the source’s currency.
         /// </summary>
         [JsonProperty("amount_charged")]
-        public int AmountCharged { get; set; }
+        public long AmountCharged { get; set; }
 
         /// <summary>
         /// The total amount received by the receiver source. AmountReceived = AmountReturned + AmountCharged is true at all times. The amount received is expressed in the source’s currency.
         /// </summary>
         [JsonProperty("amount_received")]
-        public int AmountReceived { get; set; }
+        public long AmountReceived { get; set; }
 
         /// <summary>
         /// The total amount that was returned to the customer. The amount returned is expressed in the source’s currency.
         /// </summary>
         [JsonProperty("amount_returned")]
-        public int AmountReturned { get; set; }
+        public long AmountReturned { get; set; }
     }
 }

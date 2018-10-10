@@ -28,7 +28,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         [JsonProperty("pending_webhooks")]
-        public int PendingWebhooks { get; set; }
+        public long PendingWebhooks { get; set; }
 
         [JsonProperty("request")]
         public EventRequest Request { get; set; }

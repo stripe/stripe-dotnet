@@ -14,6 +14,6 @@ namespace Stripe
         public string PlanId { get; set; }
 
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public long? Quantity { get; set; }
     }
 }

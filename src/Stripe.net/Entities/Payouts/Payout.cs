@@ -14,7 +14,7 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("arrival_date")]
         public DateTime ArrivalDate { get; set; }

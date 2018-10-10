@@ -20,7 +20,7 @@ namespace Stripe.Issuing
         public string AuthorizationMethod { get; set; }
 
         [JsonProperty("authorized_amount")]
-        public int AuthorizedAmount { get; set; }
+        public long AuthorizedAmount { get; set; }
 
         [JsonProperty("authorized_currency")]
         public string AuthorizedCurrency { get; set; }
@@ -51,7 +51,7 @@ namespace Stripe.Issuing
         public DateTime Created { get; set; }
 
         [JsonProperty("held_amount")]
-        public int HeldAmount { get; set; }
+        public long HeldAmount { get; set; }
 
         [JsonProperty("held_currency")]
         public string HeldCurrency { get; set; }
@@ -69,10 +69,10 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("pending_authorized_amount")]
-        public int PendingAuthorizedAmount { get; set; }
+        public long PendingAuthorizedAmount { get; set; }
 
         [JsonProperty("pending_held_amount")]
-        public int PendingHeldAmount { get; set; }
+        public long PendingHeldAmount { get; set; }
 
         [JsonProperty("request_history")]
         public List<RequestHistory> RequestHistory { get; set; }

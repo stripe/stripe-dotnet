@@ -9,7 +9,7 @@ namespace Stripe
         /// REQUIRED
         /// </summary>
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         /// <summary>
         /// REQUIRED

@@ -10,7 +10,7 @@ namespace Stripe
         /// A positive integer in the smallest currency unit (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a 0-decimal currency) representing how much to charge the card. The minimum amount is $0.50 US or equivalent in charge currency.
         /// </summary>
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         /// <summary>
         /// 3-letter ISO code for currency.
@@ -22,7 +22,7 @@ namespace Stripe
         /// A fee in cents that will be applied to the charge and transferred to the application owner's Stripe account. To use an application fee, the request must be made on behalf of another account (using RequestOptions available on all service methods), using the Stripe-Account header, an OAuth key, or the destination parameter. For more information, see the application fees documentation.
         /// </summary>
         [JsonProperty("application_fee")]
-        public int? ApplicationFee { get; set; }
+        public long? ApplicationFee { get; set; }
 
         /// <summary>
         /// Whether or not to immediately capture the charge. When false, the charge issues an authorization (or pre-authorization), and will need to be captured later. Uncaptured charges expire in 7 days. For more information, see authorizing charges and settling later.

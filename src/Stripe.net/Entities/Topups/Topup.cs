@@ -17,7 +17,7 @@ namespace Stripe
         /// A positive integer in the smallest currency unit (e.g., 100 cents to top up $1.00 or 100 to topup ¥100, a 0-decimal currency) representing how much to top up. The minimum amount is $0.50 US or equivalent in Top-up currency.
         /// </summary>
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         #region Expandable Balance Transaction
 

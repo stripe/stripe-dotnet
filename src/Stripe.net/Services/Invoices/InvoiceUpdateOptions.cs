@@ -8,7 +8,7 @@ namespace Stripe
     public class InvoiceUpdateOptions : BaseOptions
     {
         [JsonProperty("application_fee")]
-        public int? ApplicationFee { get; set; }
+        public long? ApplicationFee { get; set; }
 
         [JsonProperty("closed")]
         public bool? Closed { get; set; }

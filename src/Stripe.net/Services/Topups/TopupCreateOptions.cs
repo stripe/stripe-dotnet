@@ -10,7 +10,7 @@ namespace Stripe
         /// A positive integer in the smallest currency unit (e.g., 100 cents to top up $1.00 or 100 to top up ¥100, a 0-decimal currency) representing how much to top up your Stripe balance.
         /// </summary>
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         /// <summary>
         /// 3-letter ISO code for currency.

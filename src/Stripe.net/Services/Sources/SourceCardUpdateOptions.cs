@@ -5,9 +5,9 @@ namespace Stripe
     public class SourceCardUpdateOptions : INestedOptions
     {
         [JsonProperty("exp_month")]
-        public int? ExpMonth { get; set; }
+        public long? ExpMonth { get; set; }
 
         [JsonProperty("exp_year")]
-        public int? ExpYear { get; set; }
+        public long? ExpYear { get; set; }
     }
 }

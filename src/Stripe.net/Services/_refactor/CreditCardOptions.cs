@@ -5,10 +5,10 @@ namespace Stripe
     public class CreditCardOptions : BaseOptions, INestedOptions
     {
         [JsonProperty("exp_month")]
-        public int? ExpMonth { get; set; }
+        public long? ExpMonth { get; set; }
 
         [JsonProperty("exp_year")]
-        public int? ExpYear { get; set; }
+        public long? ExpYear { get; set; }
 
         [JsonProperty("number")]
         public string Number { get; set; }

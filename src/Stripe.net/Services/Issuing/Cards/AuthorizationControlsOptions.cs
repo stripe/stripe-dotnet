@@ -12,9 +12,9 @@ namespace Stripe.Issuing
         public List<string> BlockedCategories { get; set; }
 
         [JsonProperty("max_amount")]
-        public int? MaxAmount { get; set; }
+        public long? MaxAmount { get; set; }
 
         [JsonProperty("max_approvals")]
-        public int? MaxApprovals { get; set; }
+        public long? MaxApprovals { get; set; }
     }
 }

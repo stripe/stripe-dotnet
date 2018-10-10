@@ -16,7 +16,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         [JsonProperty("quantity")]
-        public int Quantity { get; set; }
+        public long Quantity { get; set; }
 
         [JsonProperty("subscription_item")]
         public string SubscriptionItem { get; set; }
