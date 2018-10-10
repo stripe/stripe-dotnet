@@ -9,13 +9,13 @@ namespace Stripe
         /// Amount to capture on the authorization
         /// </summary>
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         /// <summary>
         /// A fee in cents that will be applied to the charge and transferred to the application owner's Stripe account. To use an application fee, the request must be made on behalf of another account (using RequestOptions available on all service methods), using the Stripe-Account header, an OAuth key, or the destination parameter. For more information, see the application fees documentation.
         /// </summary>
         [JsonProperty("application_fee")]
-        public int? ApplicationFee { get; set; }
+        public long? ApplicationFee { get; set; }
 
         /// <summary>
         /// An optional dictionary containing a new destination amount to use. Can only be used with destination charges created with Stripe Connect.

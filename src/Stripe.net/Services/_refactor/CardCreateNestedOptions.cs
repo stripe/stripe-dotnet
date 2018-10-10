@@ -58,13 +58,13 @@ namespace Stripe
         /// REQUIRED: Two digit number representing the card's expiration month.
         /// </summary>
         [JsonProperty("exp_month")]
-        public int? ExpMonth { get; set; }
+        public long? ExpMonth { get; set; }
 
         /// <summary>
         /// REQUIRED: Two or four digit number representing the card's expiration year.
         /// </summary>
         [JsonProperty("exp_year")]
-        public int? ExpYear { get; set; }
+        public long? ExpYear { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to a card object. It can be useful for storing additional information about the card in a structured format.

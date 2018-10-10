@@ -29,10 +29,10 @@ namespace Stripe
         #endregion
 
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("amount_refunded")]
-        public int AmountRefunded { get; set; }
+        public long AmountRefunded { get; set; }
 
         #region Expandable Application
         public string ApplicationId { get; set; }

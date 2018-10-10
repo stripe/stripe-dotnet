@@ -14,7 +14,7 @@ namespace Stripe.Issuing
         public string Object { get; set; }
 
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("created")]
         public DateTime Created { get; set; }

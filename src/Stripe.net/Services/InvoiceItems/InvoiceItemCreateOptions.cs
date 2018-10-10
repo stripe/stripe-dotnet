@@ -6,7 +6,7 @@ namespace Stripe
     public class InvoiceItemCreateOptions : BaseOptions
     {
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -27,12 +27,12 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public long? Quantity { get; set; }
 
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
 
         [JsonProperty("unit_amount")]
-        public int? UnitAmount { get; set; }
+        public long? UnitAmount { get; set; }
     }
 }

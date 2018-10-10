@@ -5,12 +5,12 @@ namespace Stripe
     public class BirthDay : StripeEntity
     {
         [JsonProperty("day")]
-        public int? Day { get; set; }
+        public long? Day { get; set; }
 
         [JsonProperty("month")]
-        public int? Month { get; set; }
+        public long? Month { get; set; }
 
         [JsonProperty("year")]
-        public int? Year { get; set; }
+        public long? Year { get; set; }
     }
 }

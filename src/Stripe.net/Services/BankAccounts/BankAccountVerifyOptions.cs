@@ -5,6 +5,6 @@ namespace Stripe
     public class BankAccountVerifyOptions : BaseOptions
     {
         [JsonProperty("amounts")]
-        public int[] Amounts { get; set; }
+        public long[] Amounts { get; set; }
     }
 }

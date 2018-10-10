@@ -5,7 +5,7 @@ namespace Stripe
     public class ChargeLevel3LineItemOptions : INestedOptions
     {
         [JsonProperty("discount_amount")]
-        public int? DiscountAmount { get; set; }
+        public long? DiscountAmount { get; set; }
 
         [JsonProperty("product_code")]
         public string ProductCode { get; set; }
@@ -14,12 +14,12 @@ namespace Stripe
         public string ProductDescription { get; set; }
 
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public long? Quantity { get; set; }
 
         [JsonProperty("tax_amount")]
-        public int? TaxAmount { get; set; }
+        public long? TaxAmount { get; set; }
 
         [JsonProperty("unit_cost")]
-        public int? UnitCost { get; set; }
+        public long? UnitCost { get; set; }
     }
 }

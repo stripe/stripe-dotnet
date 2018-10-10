@@ -23,12 +23,12 @@ namespace Stripe
             return JsonConvert.DeserializeObject<T>((dataItem as JObject).ToString());
         }
 
-        public static Event ConstructEvent(string json, string stripeSignatureHeader, string secret, int tolerance = 300)
+        public static Event ConstructEvent(string json, string stripeSignatureHeader, string secret, long tolerance = 300)
         {
             return ConstructEvent(json, stripeSignatureHeader, secret, tolerance, DateTime.UtcNow.ConvertDateTimeToEpoch());
         }
 
-        public static Event ConstructEvent(string json, string stripeSignatureHeader, string secret, int tolerance, long utcNow)
+        public static Event ConstructEvent(string json, string stripeSignatureHeader, string secret, long tolerance, long utcNow)
         {
             var signatureItems = ParseStripeSignature(stripeSignatureHeader);
             var signature = string.Empty;

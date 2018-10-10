@@ -27,7 +27,7 @@ namespace Stripe
         /// Stripe’s evaluation of the riskiness of the payment. Possible values for evaluated payments are between 0 and 100.
         /// </summary>
         [JsonProperty("risk_score")]
-        public int RiskScore { get; set; }
+        public long RiskScore { get; set; }
 
         #region Expandable Rule
 

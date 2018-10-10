@@ -6,7 +6,7 @@ namespace Stripe
     public class InvoiceUpcomingInvoiceItemOption : INestedOptions
     {
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }

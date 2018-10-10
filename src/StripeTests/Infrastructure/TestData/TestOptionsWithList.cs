@@ -13,12 +13,12 @@ namespace StripeTests.Infrastructure.TestData
             {
                 new TestNestedOptions
                 {
-                    AnInt = 1,
+                    ALong = 1,
                     AString = "foo",
                 },
                 new TestNestedOptions
                 {
-                    AnInt = 2,
+                    ALong = 2,
                     AString = "bar",
                 },
             };

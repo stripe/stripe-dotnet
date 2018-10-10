@@ -17,6 +17,6 @@ namespace Stripe
         public DateTime? Timestamp { get; set; }
 
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public long? Quantity { get; set; }
     }
 }

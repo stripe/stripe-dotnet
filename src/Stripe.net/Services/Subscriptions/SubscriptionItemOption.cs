@@ -14,6 +14,6 @@ namespace Stripe
         /// Quantity for this item.
         /// </summary>
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public long? Quantity { get; set; }
     }
 }

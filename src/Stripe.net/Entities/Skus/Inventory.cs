@@ -8,7 +8,7 @@ namespace Stripe
     public class Inventory : StripeEntity
     {
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public long? Quantity { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

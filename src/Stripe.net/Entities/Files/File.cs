@@ -25,7 +25,7 @@ namespace Stripe
         public string Purpose { get; set; }
 
         [JsonProperty("size")]
-        public int Size { get; set; }
+        public long Size { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }

@@ -19,7 +19,7 @@ namespace Stripe
         /// Amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for single-use sources.
         /// </summary>
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         /// <summary>
         /// The client secret of the source. Used for client-side polling using a publishable key.

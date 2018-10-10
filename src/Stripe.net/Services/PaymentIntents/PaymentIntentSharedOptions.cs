@@ -6,10 +6,10 @@ namespace Stripe
     public class PaymentIntentSharedOptions : BaseOptions
     {
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         [JsonProperty("application_fee_amount")]
-        public int? ApplicationFeeAmount { get; set; }
+        public long? ApplicationFeeAmount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }

@@ -5,9 +5,9 @@ namespace Stripe
     public class PlanTier : StripeEntity
     {
         [JsonProperty("unit_amount")]
-        public int UnitAmount { get; set; }
+        public long UnitAmount { get; set; }
 
         [JsonProperty("up_to")]
-        public int? UpTo { get; set; }
+        public long? UpTo { get; set; }
     }
 }

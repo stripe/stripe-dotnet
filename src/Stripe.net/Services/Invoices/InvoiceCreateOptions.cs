@@ -14,7 +14,7 @@ namespace Stripe
         /// fees <see href="https://stripe.com/docs/connect/subscriptions#working-with-invoices">documentation</see>.
         /// </summary>
         [JsonProperty("application_fee")]
-        public int? ApplicationFee { get; set; }
+        public long? ApplicationFee { get; set; }
 
         /// <summary>
         /// One of <see cref="Billing" />. When charging automatically, Stripe will attempt to pay
@@ -36,7 +36,7 @@ namespace Stripe
         /// invoices where <c>billing=send_invoice</c>.
         /// </summary>
         [JsonProperty("days_until_due")]
-        public int? DaysUntilDue { get; set; }
+        public long? DaysUntilDue { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }

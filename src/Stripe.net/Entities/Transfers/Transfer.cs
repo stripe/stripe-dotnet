@@ -14,10 +14,10 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("amount_reversed")]
-        public int AmountReversed { get; set; }
+        public long AmountReversed { get; set; }
 
         #region Expandable Balance Transaction
         public string BalanceTransactionId { get; set; }

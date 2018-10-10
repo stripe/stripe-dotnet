@@ -7,7 +7,7 @@ namespace Stripe
     public class TransferReversalCreateOptions : BaseOptions
     {
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }

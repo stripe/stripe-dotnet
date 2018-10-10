@@ -6,7 +6,6 @@ namespace StripeTests.Infrastructure.TestData
 
     public class TestObjectDateTime
     {
-        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? Date { get; set; }
     }
 }

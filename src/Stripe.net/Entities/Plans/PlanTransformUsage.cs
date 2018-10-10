@@ -5,7 +5,7 @@ namespace Stripe
     public class PlanTransformUsage : StripeEntity
     {
         [JsonProperty("divide_by")]
-        public int DivideBy { get; set; }
+        public long DivideBy { get; set; }
 
         [JsonProperty("round")]
         public string Round { get; set; }
