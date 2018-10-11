@@ -8,7 +8,7 @@ namespace Stripe
     public class CustomerCreateOptions : BaseOptions
     {
         [JsonProperty("account_balance")]
-        public int? AccountBalance { get; set; }
+        public long? AccountBalance { get; set; }
 
         [JsonProperty("coupon")]
         public string CouponId { get; set; }
@@ -29,7 +29,7 @@ namespace Stripe
         public string PlanId { get; set; }
 
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public long? Quantity { get; set; }
 
         [JsonProperty("shipping")]
         public ShippingOptions Shipping { get; set; }

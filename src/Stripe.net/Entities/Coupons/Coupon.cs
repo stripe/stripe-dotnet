@@ -14,7 +14,7 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("amount_off")]
-        public int? AmountOff { get; set; }
+        public long? AmountOff { get; set; }
 
         [JsonProperty("created")]
         public DateTime Created { get; set; }
@@ -32,13 +32,13 @@ namespace Stripe
         public string Duration { get; set; }
 
         [JsonProperty("duration_in_months")]
-        public int? DurationInMonths { get; set; }
+        public long? DurationInMonths { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         [JsonProperty("max_redemptions")]
-        public int? MaxRedemptions { get; set; }
+        public long? MaxRedemptions { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -53,7 +53,7 @@ namespace Stripe
         public DateTime? RedeemBy { get; set; }
 
         [JsonProperty("times_redeemed")]
-        public int TimesRedeemed { get; private set; }
+        public long TimesRedeemed { get; private set; }
 
         [JsonProperty("valid")]
         public bool Valid { get; set; }

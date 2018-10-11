@@ -7,8 +7,8 @@ namespace StripeTests.Infrastructure.TestData
 
     public class TestNestedOptions : INestedOptions
     {
-        [JsonProperty("an_int")]
-        public int? AnInt { get; set; }
+        [JsonProperty("a_long")]
+        public long? ALong { get; set; }
 
         [JsonProperty("a_string")]
         public string AString { get; set; }

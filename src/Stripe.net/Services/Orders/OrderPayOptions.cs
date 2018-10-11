@@ -21,7 +21,7 @@ namespace Stripe
         /// A fee in cents that will be applied to the order and transferred to the application owner's Stripe account. To use an application fee, the request must be made on behalf of another account, using the Stripe-Account header or OAuth key. For more information, see the application fees documentation.
         /// </summary>
         [JsonProperty("application_fee")]
-        public int? ApplicationFee { get; set; }
+        public long? ApplicationFee { get; set; }
 
         /// <summary>
         /// The email address of the customer placing the order. If a customer is specified, that customer's email address will be used.

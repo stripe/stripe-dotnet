@@ -77,7 +77,7 @@ namespace Stripe
         /// The cost of the item as a positive integer in the smallest currency unit (that is, 100 cents to charge $1.00, or 100 to charge ¥100, Japanese Yen being a 0-decimal currency).
         /// </summary>
         [JsonProperty("price")]
-        public int Price { get; set; }
+        public long Price { get; set; }
 
         #region Expandable Product
 

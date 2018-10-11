@@ -6,7 +6,7 @@ namespace Stripe
     public class InventoryOptions : INestedOptions
     {
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public long? Quantity { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

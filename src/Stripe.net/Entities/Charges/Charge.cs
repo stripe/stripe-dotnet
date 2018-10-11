@@ -17,13 +17,13 @@ namespace Stripe
         /// A positive integer in the smallest currency unit (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a 0-decimal currency) representing how much to charge. The minimum amount is $0.50 US or equivalent in charge currency.
         /// </summary>
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         /// <summary>
         /// Amount in cents refunded (can be less than the amount attribute on the charge if a partial refund was issued).
         /// </summary>
         [JsonProperty("amount_refunded")]
-        public int AmountRefunded { get; set; }
+        public long AmountRefunded { get; set; }
 
         #region Expandable Application
         public string ApplicationId { get; set; }

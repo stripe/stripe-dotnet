@@ -11,7 +11,7 @@ namespace Stripe
         /// A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a 0-decimal currency) representing the total amount for the line item.
         /// </summary>
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         /// <summary>
         /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
@@ -35,7 +35,7 @@ namespace Stripe
         /// A positive integer representing the number of instances of parent that are included in this order item. Applicable/present only if type is sku.
         /// </summary>
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public long? Quantity { get; set; }
 
         /// <summary>
         /// The type of line item. One of sku, tax, shipping, or discount.

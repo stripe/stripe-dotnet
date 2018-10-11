@@ -68,13 +68,13 @@ namespace Stripe
         /// The expiration month of the card.
         /// </summary>
         [JsonProperty("exp_month")]
-        public int ExpMonth { get; set; }
+        public long ExpMonth { get; set; }
 
         /// <summary>
         /// The expiration year of the card.
         /// </summary>
         [JsonProperty("exp_year")]
-        public int ExpYear { get; set; }
+        public long ExpYear { get; set; }
 
         /// <summary>
         /// Uniquely identifies this particular card number. You can use this attribute to check whether two customers who've signed up with you are using the same card number, for example.

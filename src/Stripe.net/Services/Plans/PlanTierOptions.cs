@@ -7,7 +7,7 @@ namespace Stripe
     public class PlanTierOptions : INestedOptions
     {
         [JsonProperty("unit_amount")]
-        public int? UnitAmount { get; set; }
+        public long? UnitAmount { get; set; }
 
         #region UpTo
         public UpToOption UpTo { get; set; }
@@ -26,7 +26,7 @@ namespace Stripe
 
         public class UpToBound : UpToOption
         {
-            public int Bound { get; set; }
+            public long Bound { get; set; }
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Stripe
         public bool HasMore { get; set; }
 
         [JsonProperty("total_count")]
-        public int TotalCount { get; set; }
+        public long TotalCount { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }

@@ -44,11 +44,11 @@ namespace StripeTests.Infrastructure.TestData
         [JsonProperty("enum")]
         public TestEnum? Enum { get; set; }
 
-        [JsonProperty("int")]
-        public int? Int { get; set; }
-
         [JsonProperty("list")]
         public List<object> List { get; set; }
+
+        [JsonProperty("long")]
+        public long? Long { get; set; }
 
         [JsonProperty("string")]
         public string String { get; set; }

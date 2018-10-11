@@ -14,7 +14,7 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -47,7 +47,7 @@ namespace Stripe
         public bool Proration { get; set; }
 
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public long? Quantity { get; set; }
 
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }

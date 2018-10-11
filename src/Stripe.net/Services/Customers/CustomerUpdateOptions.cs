@@ -7,7 +7,7 @@ namespace Stripe
     public class CustomerUpdateOptions : BaseOptions
     {
         [JsonProperty("account_balance")]
-        public int? AccountBalance { get; set; }
+        public long? AccountBalance { get; set; }
 
         [JsonProperty("source")]
         public string SourceToken { get; set; }

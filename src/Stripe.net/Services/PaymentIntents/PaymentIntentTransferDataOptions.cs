@@ -5,7 +5,7 @@ namespace Stripe
     public class PaymentIntentTransferDataOptions : INestedOptions
     {
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         // This is only available on creation and not update
         [JsonProperty("destination")]

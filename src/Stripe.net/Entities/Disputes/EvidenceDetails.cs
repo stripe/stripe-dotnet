@@ -16,6 +16,6 @@ namespace Stripe
         public bool PastDue { get; set; }
 
         [JsonProperty("submission_count")]
-        public int SubmissionCount { get; set; }
+        public long SubmissionCount { get; set; }
     }
 }

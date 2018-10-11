@@ -8,16 +8,16 @@ namespace Stripe
         public string Address { get; set; }
 
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("amount_charged")]
-        public int AmountCharged { get; set; }
+        public long AmountCharged { get; set; }
 
         [JsonProperty("amount_received")]
-        public int AmountReceived { get; set; }
+        public long AmountReceived { get; set; }
 
         [JsonProperty("amount_returned")]
-        public int AmountReturned { get; set; }
+        public long AmountReturned { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }

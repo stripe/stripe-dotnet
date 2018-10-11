@@ -28,6 +28,6 @@ namespace Stripe
         /// The quantity you’d like to apply to the subscription item you’re creating.
         /// </summary>
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public long? Quantity { get; set; }
     }
 }

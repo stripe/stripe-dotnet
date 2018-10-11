@@ -29,6 +29,6 @@ namespace Stripe
         /// Integer representing the number of trial period days before the customer is charged for the first time.
         /// </summary>
         [JsonProperty("trial_period_days")]
-        public int? TrialPeriodDays { get; set; }
+        public long? TrialPeriodDays { get; set; }
     }
 }

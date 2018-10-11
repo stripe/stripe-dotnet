@@ -35,13 +35,13 @@ namespace StripeTests
         [Fact]
         public void InstantiatesABar()
         {
-            var json = "{\"object\": \"bar\", \"some_int\": 42}";
+            var json = "{\"object\": \"bar\", \"some_long\": 42}";
 
             var obj = JsonConvert.DeserializeObject<IFooOrBar>(json, this.converter);
 
             Assert.IsType<Bar>(obj);
             Assert.Equal("bar", obj.Object);
-            Assert.Equal(42, ((Bar)obj).SomeInt);
+            Assert.Equal(42, ((Bar)obj).SomeLong);
         }
 
         [Fact]
@@ -68,8 +68,8 @@ namespace StripeTests
             [JsonProperty("object")]
             public string Object { get; set; }
 
-            [JsonProperty("some_int")]
-            public int SomeInt { get; set; }
+            [JsonProperty("some_long")]
+            public long SomeLong { get; set; }
         }
 
         private class FooOrBarConverter : AbstractStripeObjectConverter<IFooOrBar>

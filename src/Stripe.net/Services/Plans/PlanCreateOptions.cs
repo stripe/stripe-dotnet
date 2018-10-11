@@ -15,7 +15,7 @@ namespace Stripe
         public string AggregateUsage { get; set; }
 
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         [JsonProperty("billing_scheme")]
         public string BillingScheme { get; set; }
@@ -27,7 +27,7 @@ namespace Stripe
         public string Interval { get; set; }
 
         [JsonProperty("interval_count")]
-        public int? IntervalCount { get; set; }
+        public long? IntervalCount { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -51,7 +51,7 @@ namespace Stripe
         public PlanTransformUsageOptions TransformUsage { get; set; }
 
         [JsonProperty("trial_period_days")]
-        public int? TrialPeriodDays { get; set; }
+        public long? TrialPeriodDays { get; set; }
 
         [JsonProperty("usage_type")]
         public string UsageType { get; set; }

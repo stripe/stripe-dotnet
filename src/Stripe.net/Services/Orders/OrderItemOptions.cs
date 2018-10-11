@@ -5,7 +5,7 @@ namespace Stripe
     public class OrderItemOptions : INestedOptions
     {
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -23,7 +23,7 @@ namespace Stripe
         /// The quantity of this order item. When type is sku, this is the number of instances of the SKU to be ordered.
         /// </summary>
         [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
+        public long? Quantity { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
