@@ -10,7 +10,7 @@ namespace StripeTests
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/events/evt_123");
+            var json = GetResourceAsString("api_fixtures.events.event_plan.json");
             var evt = Mapper<Event>.MapFromJson(json);
             Assert.NotNull(evt);
             Assert.IsType<Event>(evt);
@@ -19,7 +19,7 @@ namespace StripeTests
 
             Assert.NotNull(evt.Data);
             Assert.NotNull(evt.Data.Object);
-            Assert.IsType<Customer>(evt.Data.Object);
+            Assert.IsType<Plan>(evt.Data.Object);
         }
 
         [Fact]
