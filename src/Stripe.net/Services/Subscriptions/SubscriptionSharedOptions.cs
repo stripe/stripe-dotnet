@@ -20,6 +20,12 @@ namespace Stripe
         public Billing? Billing { get; set; }
 
         /// <summary>
+        /// Boolean indicating whether this subscription should cancel at the end of the current period.
+        /// </summary>
+        [JsonProperty("cancel_at_period_end")]
+        public bool? CancelAtPeriodEnd { get; set; }
+
+        /// <summary>
         /// The code of the coupon to apply to this subscription. A coupon applied to a subscription will only affect invoices created for that particular subscription.
         /// </summary>
         [JsonProperty("coupon")]
