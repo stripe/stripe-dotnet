@@ -89,7 +89,7 @@ namespace Stripe
         public string CustomerId { get; set; }
 
         [JsonProperty("source")]
-        public string SourceTokenOrExistingSourceId { get; set; }
+        public string SourceId { get; set; }
 
         [JsonProperty("source")]
         public CardCreateNestedOptions SourceCard { get; set; }
