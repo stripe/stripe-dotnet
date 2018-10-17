@@ -10,9 +10,6 @@ namespace Stripe
         [JsonProperty("action")]
         public string Action { get; set; }
 
-        [JsonIgnore]
-        public string SubscriptionItem { get; set; }
-
         [JsonProperty("timestamp")]
         public DateTime? Timestamp { get; set; }
 
