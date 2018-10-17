@@ -20,7 +20,6 @@ namespace StripeTests
             this.createOptions = new UsageRecordCreateOptions()
             {
                 Quantity = 10,
-                SubscriptionItem = "si_123",
                 Timestamp = DateTime.Now,
             };
         }
@@ -28,7 +27,7 @@ namespace StripeTests
         [Fact]
         public void Create()
         {
-            var plan = this.service.Create(this.createOptions);
+            var plan = this.service.Create("si_123", this.createOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/subscription_items/si_123/usage_records");
             Assert.NotNull(plan);
             Assert.Equal("usage_record", plan.Object);
@@ -37,7 +36,7 @@ namespace StripeTests
         [Fact]
         public async Task CreateAsync()
         {
-            var plan = await this.service.CreateAsync(this.createOptions);
+            var plan = await this.service.CreateAsync("si_123", this.createOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/subscription_items/si_123/usage_records");
             Assert.NotNull(plan);
             Assert.Equal("usage_record", plan.Object);
