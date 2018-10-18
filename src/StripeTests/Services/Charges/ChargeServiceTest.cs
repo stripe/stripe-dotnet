@@ -30,7 +30,7 @@ namespace StripeTests
             {
                 Amount = 123,
                 Currency = "usd",
-                SourceTokenOrExistingSourceId = "tok_123",
+                SourceId = "tok_123",
             };
 
             this.updateOptions = new ChargeUpdateOptions()
