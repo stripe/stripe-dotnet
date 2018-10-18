@@ -62,6 +62,22 @@ namespace Stripe
         [JsonProperty("days_until_due")]
         public long? DaysUntilDue { get; set; }
 
+        #region Expandable DefaultSource
+        public string DefaultSourceId { get; set; }
+
+        [JsonIgnore]
+        public IPaymentSource DefaultSource { get; set; }
+
+        [JsonProperty("default_source")]
+        internal object InternalDefaultSource
+        {
+            set
+            {
+                StringOrObject<IPaymentSource>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
+            }
+        }
+        #endregion
+
         [JsonProperty("discount")]
         public Discount Discount { get; set; }
 

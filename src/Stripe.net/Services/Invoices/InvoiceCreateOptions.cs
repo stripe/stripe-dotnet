@@ -16,6 +16,9 @@ namespace Stripe
         [JsonProperty("application_fee")]
         public long? ApplicationFee { get; set; }
 
+        [JsonProperty("auto_advance")]
+        public bool? AutoAdvance { get; set; }
+
         /// <summary>
         /// One of <see cref="Billing" />. When charging automatically, Stripe will attempt to pay
         /// this invoice using the default source attached to the customer. When sending an invoice,
@@ -37,6 +40,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("days_until_due")]
         public long? DaysUntilDue { get; set; }
+
+        [JsonProperty("default_source")]
+        public string DefaultSource { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }

@@ -39,6 +39,26 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
+        public virtual Invoice Delete(string invoiceId, RequestOptions requestOptions = null)
+        {
+            return this.DeleteEntity(invoiceId, null, requestOptions);
+        }
+
+        public virtual Task<Invoice> DeleteAsync(string invoiceId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.DeleteEntityAsync(invoiceId, null, requestOptions, cancellationToken);
+        }
+
+        public virtual Invoice FinalizeInvoice(string invoiceId, InvoiceFinalizeOptions options, RequestOptions requestOptions = null)
+        {
+            return this.PostRequest<Invoice>($"{this.InstanceUrl(invoiceId)}/finalize", options, requestOptions);
+        }
+
+        public virtual Task<Invoice> FinalizeInvoiceAsync(string invoiceId, InvoiceFinalizeOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostRequestAsync<Invoice>($"{this.InstanceUrl(invoiceId)}/finalize", options, requestOptions, cancellationToken);
+        }
+
         public virtual Invoice Get(string invoiceId, RequestOptions requestOptions = null)
         {
             return this.GetEntity(invoiceId, null, requestOptions);
@@ -79,6 +99,16 @@ namespace Stripe
             return this.GetRequestAsync<StripeList<InvoiceLineItem>>($"{this.InstanceUrl("upcoming")}/lines", options, requestOptions, true, cancellationToken);
         }
 
+        public virtual Invoice MarkUncollectible(string invoiceId, InvoiceMarkUncollectibleOptions options, RequestOptions requestOptions = null)
+        {
+            return this.PostRequest<Invoice>($"{this.InstanceUrl(invoiceId)}/mark_uncollectible", options, requestOptions);
+        }
+
+        public virtual Task<Invoice> MarkUncollectibleAsync(string invoiceId, InvoiceMarkUncollectibleOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostRequestAsync<Invoice>($"{this.InstanceUrl(invoiceId)}/mark_uncollectible", options, requestOptions, cancellationToken);
+        }
+
         public virtual Invoice Pay(string invoiceId, InvoicePayOptions options, RequestOptions requestOptions = null)
         {
             return this.PostRequest<Invoice>($"{this.InstanceUrl(invoiceId)}/pay", options, requestOptions);
@@ -87,6 +117,16 @@ namespace Stripe
         public virtual Task<Invoice> PayAsync(string invoiceId, InvoicePayOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.PostRequestAsync<Invoice>($"{this.InstanceUrl(invoiceId)}/pay", options, requestOptions, cancellationToken);
+        }
+
+        public virtual Invoice SendInvoice(string invoiceId, InvoiceSendOptions options, RequestOptions requestOptions = null)
+        {
+            return this.PostRequest<Invoice>($"{this.InstanceUrl(invoiceId)}/send", options, requestOptions);
+        }
+
+        public virtual Task<Invoice> SendInvoiceAsync(string invoiceId, InvoiceSendOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostRequestAsync<Invoice>($"{this.InstanceUrl(invoiceId)}/send", options, requestOptions, cancellationToken);
         }
 
         public virtual Invoice Upcoming(UpcomingInvoiceOptions options, RequestOptions requestOptions = null)
@@ -107,6 +147,16 @@ namespace Stripe
         public virtual Task<Invoice> UpdateAsync(string invoiceId, InvoiceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.UpdateEntityAsync(invoiceId, options, requestOptions, cancellationToken);
+        }
+
+        public virtual Invoice VoidInvoice(string invoiceId, InvoiceVoidOptions options, RequestOptions requestOptions = null)
+        {
+            return this.PostRequest<Invoice>($"{this.InstanceUrl(invoiceId)}/void", options, requestOptions);
+        }
+
+        public virtual Task<Invoice> VoidInvoiceAsync(string invoiceId, InvoiceVoidOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostRequestAsync<Invoice>($"{this.InstanceUrl(invoiceId)}/void", options, requestOptions, cancellationToken);
         }
     }
 }

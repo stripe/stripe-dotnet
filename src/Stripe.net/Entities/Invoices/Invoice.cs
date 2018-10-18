@@ -59,9 +59,6 @@ namespace Stripe
         }
         #endregion
 
-        [JsonProperty("closed")]
-        public bool? Closed { get; set; }
-
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
@@ -84,6 +81,22 @@ namespace Stripe
         [JsonProperty("date")]
         public DateTime? Date { get; set; }
 
+        #region Expandable DefaultSource
+        public string DefaultSourceId { get; set; }
+
+        [JsonIgnore]
+        public IPaymentSource DefaultSource { get; set; }
+
+        [JsonProperty("default_source")]
+        internal object InternalDefaultSource
+        {
+            set
+            {
+                StringOrObject<IPaymentSource>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
+            }
+        }
+        #endregion
+
         [JsonProperty("description")]
         public string Description { get; set; }
 
@@ -99,8 +112,8 @@ namespace Stripe
         [JsonProperty("ending_balance")]
         public long? EndingBalance { get; set; }
 
-        [JsonProperty("forgiven")]
-        public bool? Forgiven { get; set; }
+        [JsonProperty("finalized_at")]
+        public DateTime? FinalizedAt { get; set; }
 
         [JsonProperty("hosted_invoice_url")]
         public string HostedInvoiceUrl { get; set; }
@@ -143,6 +156,9 @@ namespace Stripe
 
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
 
         #region Expandable Subscription
         public string SubscriptionId { get; set; }
