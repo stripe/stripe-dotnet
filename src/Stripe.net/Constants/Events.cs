@@ -75,6 +75,11 @@ namespace Stripe
         public const string ChargeCaptured = "charge.captured";
 
         /// <summary>
+        /// Occurs whenever a previously uncaptured charge expires.
+        /// </summary>
+        public const string ChargeExpired = "charge.expired";
+
+        /// <summary>
         /// Occurs whenever a failed charge attempt occurs.
         /// </summary>
         public const string ChargeFailed = "charge.failed";
