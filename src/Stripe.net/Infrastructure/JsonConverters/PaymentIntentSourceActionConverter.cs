@@ -1,6 +1,7 @@
 namespace Stripe.Infrastructure
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -8,9 +9,15 @@ namespace Stripe.Infrastructure
     {
         public override bool CanWrite => false;
 
+        protected Dictionary<PaymentIntentSourceActionType, Func<string, IPaymentIntentSourceActionValue>> TypesToMapperFuncs
+            => new Dictionary<PaymentIntentSourceActionType, Func<string, IPaymentIntentSourceActionValue>>()
+        {
+            { PaymentIntentSourceActionType.AuthorizeWithUrl, Mapper<PaymentIntentSourceActionAuthorizeWithUrl>.MapFromJson },
+        };
+
         public override bool CanConvert(Type objectType)
         {
-            throw new NotImplementedException();
+            return objectType == typeof(PaymentIntentSourceAction);
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
@@ -22,27 +29,52 @@ namespace Stripe.Infrastructure
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var sourceAction = new PaymentIntentSourceAction();
-
             if (reader.TokenType == JsonToken.Null)
             {
-                sourceAction.Type = PaymentIntentSourceActionType.None;
-                return sourceAction;
+                return null;
             }
 
             var incoming = JObject.Load(reader);
+            var sourceAction = new PaymentIntentSourceAction();
 
-            if (incoming.SelectToken("type")?.ToString() == "authorize_with_url")
+            // Parse type
+            var typeString = incoming.SelectToken("type")?.ToString();
+            PaymentIntentSourceActionType type;
+            if (!TryParseEnum<PaymentIntentSourceActionType>(typeString, out type))
             {
-                sourceAction.Type = PaymentIntentSourceActionType.AuthorizeWithUrl;
-                sourceAction.AuthorizeWithUrl = Mapper<PaymentIntentSourceActionAuthorizeWithUrl>.MapFromJson(incoming.SelectToken("value")?.ToString());
+                type = PaymentIntentSourceActionType.Unknown;
+            }
+
+            sourceAction.Type = type;
+
+            // Parse value according to type
+            if (this.TypesToMapperFuncs.ContainsKey(type))
+            {
+                var mapperFunc = this.TypesToMapperFuncs[type];
+                var valueString = incoming.SelectToken("value")?.ToString();
+                sourceAction.Value = mapperFunc(valueString);
             }
             else
             {
-                sourceAction.Type = PaymentIntentSourceActionType.Unknown;
+                sourceAction.Value = null;
             }
 
             return sourceAction;
+        }
+
+        protected static bool TryParseEnum<T>(string str, out T value)
+        {
+            try
+            {
+                value = JsonConvert.DeserializeObject<T>($"\"{str}\"");
+            }
+            catch (JsonSerializationException)
+            {
+                value = default(T);
+                return false;
+            }
+
+            return true;
         }
     }
 }

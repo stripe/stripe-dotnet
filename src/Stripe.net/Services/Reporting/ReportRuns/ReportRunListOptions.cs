@@ -2,9 +2,7 @@ namespace Stripe.Reporting
 {
     using Newtonsoft.Json;
 
-    public class ReportRunListOptions : StripeListOptions
+    public class ReportRunListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("created")]
-        public StripeDateFilter Created { get; set; }
     }
 }

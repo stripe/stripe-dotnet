@@ -6,10 +6,12 @@ namespace Stripe.Issuing
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class DisputeService : StripeService
+    public class DisputeService : Service<Dispute>,
+        ICreatable<Dispute, DisputeCreateOptions>,
+        IListable<Dispute, DisputeListOptions>,
+        IRetrievable<Dispute>,
+        IUpdatable<Dispute, DisputeUpdateOptions>
     {
-        private static string classUrl = Urls.BaseUrl + "/issuing/disputes";
-
         public DisputeService()
             : base(null)
         {
@@ -20,72 +22,46 @@ namespace Stripe.Issuing
         {
         }
 
-        public virtual Dispute Create(DisputeCreateOptions createOptions, StripeRequestOptions requestOptions = null)
+        public override string BasePath => "/issuing/disputes";
+
+        public virtual Dispute Create(DisputeCreateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Dispute>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, classUrl, false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Dispute Update(string disputeId, DisputeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        public virtual Task<Dispute> CreateAsync(DisputeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Dispute>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, $"{classUrl}/{disputeId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Dispute Get(string disputeId, StripeRequestOptions requestOptions = null)
+        public virtual Dispute Get(string disputeId, RequestOptions requestOptions = null)
         {
-            return Mapper<Dispute>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{classUrl}/{disputeId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity(disputeId, null, requestOptions);
         }
 
-        public virtual StripeList<Dispute> List(DisputeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual Task<Dispute> GetAsync(string disputeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<Dispute>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityAsync(disputeId, null, requestOptions, cancellationToken);
         }
 
-        public virtual async Task<Dispute> CreateAsync(DisputeCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual StripeList<Dispute> List(DisputeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<Dispute>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, classUrl, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.ListEntities(options, requestOptions);
         }
 
-        public virtual async Task<Dispute> UpdateAsync(string disputeId, DisputeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Dispute>> ListAsync(DisputeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Dispute>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, $"{classUrl}/{disputeId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual async Task<Dispute> GetAsync(string disputeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Dispute Update(string disputeId, DisputeUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Dispute>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{classUrl}/{disputeId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.UpdateEntity(disputeId, options, requestOptions);
         }
 
-        public virtual async Task<StripeList<Dispute>> ListAsync(DisputeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Dispute> UpdateAsync(string disputeId, DisputeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<Dispute>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.UpdateEntityAsync(disputeId, options, requestOptions, cancellationToken);
         }
     }
 }

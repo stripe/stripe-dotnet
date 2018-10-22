@@ -37,7 +37,7 @@ namespace StripeTests
             var testObject = new TestOptionsWithList();
             var url = this.service.ApplyAllParameters(testObject, string.Empty, false);
 
-            Assert.Equal("?some_list[0][an_int]=1&some_list[0][a_string]=foo&some_list[1][an_int]=2&some_list[1][a_string]=bar", url);
+            Assert.Equal("?some_list[0][a_long]=1&some_list[0][a_string]=foo&some_list[1][a_long]=2&some_list[1][a_string]=bar", url);
         }
 
         [Fact]
@@ -45,35 +45,220 @@ namespace StripeTests
         {
             Assert.NotNull(this.service);
 
-            var testObject = new TestOptions
+            var testCases = new[]
             {
-                StringContainingText = "Foo",
-                StringWithDifferentName = "Foo",
-                Number = 42,
-                Metadata = new Dictionary<string, string>
+                // No data
+                new
                 {
-                    { "A", "Value-A" },
-                    { "B", "Value-B" },
+                    data = new TestOptions { },
+                    want = string.Empty
                 },
-                EqualDateFilter = new StripeDateFilter
+
+                // Array
+                new
                 {
-                    EqualTo = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
+                    data = new TestOptions
+                    {
+                            Array = new string[] { "1", "2", "3" },
+                    },
+                    want = "?array[0]=1&array[1]=2&array[2]=3"
                 },
-                LessThanDateFilter = new StripeDateFilter
+                new
                 {
-                    LessThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
+                    data = new TestOptions
+                    {
+                            Array = new string[] { },
+                    },
+                    want = "?array="
                 },
-                ComplexDateFilter = new StripeDateFilter
+
+                // Bool
+                new
                 {
-                    LessThan = DateTime.Parse("Mon, 01 Jan 2001 00:00:00Z"),
-                    GreaterThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
+                    data = new TestOptions
+                    {
+                        Bool = false,
+                    },
+                    want = "?bool=False"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Bool = true,
+                    },
+                    want = "?bool=True"
+                },
+
+                // DateRangeOptions
+                new
+                {
+                    data = new TestOptions
+                    {
+                        DateRangeOptions = new DateRangeOptions
+                        {
+                            LessThan = DateTime.Parse("Sat, 01 Jan 2000 05:00:00Z"),
+                            GreaterThanOrEqual = DateTime.Parse("Sat, 01 Jan 2000 00:00:00Z"),
+                        }
+                    },
+                    want = "?date_filter[gte]=946684800&date_filter[lt]=946702800"
+                },
+
+                // DateTime
+                new
+                {
+                    data = new TestOptions
+                    {
+                        DateTime = DateTime.Parse("Sat, 01 Jan 2000 00:00:00Z"),
+                    },
+                    want = "?datetime=946684800"
+                },
+
+                // Decimal
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Decimal = 1.2345m,
+                    },
+                    want = "?decimal=1.2345"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Decimal = 0.0m,
+                    },
+                    want = "?decimal=0.0"
+                },
+
+                // Dictionary
+                new
+                {
+                    data = new TestOptions
+                    {
+                            Dictionary = new Dictionary<string, object> { { "foo", "bar" } },
+                    },
+                    want = "?dictionary[foo]=bar"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                            Dictionary = new Dictionary<string, object> { { "empty", string.Empty } },
+                    },
+                    want = "?dictionary[empty]="
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                            Dictionary = new Dictionary<string, object>
+                            {
+                                { "foo", new Dictionary<string, object> { { "bar", "baz" } } },
+                            },
+                    },
+                    want = "?dictionary[foo][bar]=baz"
+                },
+
+                // Enum
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Enum = TestOptions.TestEnum.TestOne,
+                    },
+                    want = "?enum=test_one"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Enum = TestOptions.TestEnum.TestTwo,
+                    },
+                    want = "?enum=TestTwo"
+                },
+
+                // List
+                new
+                {
+                    data = new TestOptions
+                    {
+                            List = new List<object> { "foo", "bar" },
+                    },
+                    want = "?list[0]=foo&list[1]=bar"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                            List = new List<object> { string.Empty, 0 },
+                    },
+                    want = "?list[0]=&list[1]=0"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                            List = new List<object> { },
+                    },
+                    want = "?list="
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                            List = new List<object>
+                            {
+                                new Dictionary<string, object> { { "foo", "bar" } },
+                                new Dictionary<string, object> { { "foo", "baz" } },
+                            },
+                    },
+                    want = "?list[0][foo]=bar&list[1][foo]=baz"
+                },
+
+                // Long
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Long = 123,
+                    },
+                    want = "?long=123"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        Long = 0,
+                    },
+                    want = "?long=0"
+                },
+
+                // String
+                new
+                {
+                    data = new TestOptions
+                    {
+                        String = "foo",
+                    },
+                    want = "?string=foo"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        String = string.Empty,
+                    },
+                    want = "?string="
                 },
             };
-            var url = this.service.ApplyAllParameters(testObject, string.Empty, false);
-            Assert.Equal("?differentname=Foo&stringcontainingtext=Foo&number=42&metadata[A]=Value-A&metadata[B]=Value-B&dateequals=946702800&datelessthan[lt]=946702800&datecomplex[lt]=978307200&datecomplex[gt]=946702800", url);
-            Assert.DoesNotContain("StringWithoutAttribute=", url);
-            Assert.DoesNotContain("stringcontainingnull=", url);
-            Assert.DoesNotContain("nullnumber=", url);
+
+            foreach (var testCase in testCases)
+            {
+                var url = this.service.ApplyAllParameters(testCase.data, string.Empty, false);
+                Assert.Equal(testCase.want, url);
+            }
         }
 
         [Fact]
@@ -126,7 +311,7 @@ namespace StripeTests
             this.service.ExpandSimple = true;
             this.service.ExpandMultiWordProperty = true;
 
-            var url = this.service.ApplyAllParameters(new StripeBaseOptions(), string.Empty, false);
+            var url = this.service.ApplyAllParameters(new BaseOptions(), string.Empty, false);
             Assert.Equal("?expand[]=simple&expand[]=multi_word_property", url);
         }
 
@@ -138,14 +323,14 @@ namespace StripeTests
             this.service.ExpandSimple = true;
             this.service.ExpandMultiWordProperty = true;
 
-            var url = this.service.ApplyAllParameters(new StripeBaseOptions(), string.Empty, true);
+            var url = this.service.ApplyAllParameters(new BaseOptions(), string.Empty, true);
             Assert.Equal("?expand[]=data.simple&expand[]=data.multi_word_property", url);
         }
 
         [Fact]
         public void ExpandOptions()
         {
-            var obj = new StripeBaseOptions();
+            var obj = new BaseOptions();
             obj.AddExpand("example1.subexample1");
             obj.AddExpand("example2");
             obj.AddExpand("example3.subexample3");
@@ -165,41 +350,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void ThrowsIfDictionaryKeysAreNotStrings()
-        {
-            var obj = new TestUnencodableOptions
-            {
-                DictIntKeys = new Dictionary<int, string>
-                {
-                    { 1, "one" },
-                },
-            };
-
-            var exception = Assert.Throws<System.ArgumentException>(() =>
-                this.service.ApplyAllParameters(obj, string.Empty, false));
-
-            Assert.Contains("Expected System.String as dictionary key type", exception.Message);
-        }
-
-        [Fact]
-        public void ThrowsIfDictionaryValuesAreNotStrings()
-        {
-            var obj = new TestUnencodableOptions
-            {
-                DictIntValues = new Dictionary<string, int>
-                {
-                    { "one", 1 },
-                },
-            };
-
-            var exception = Assert.Throws<System.ArgumentException>(() =>
-                this.service.ApplyAllParameters(obj, string.Empty, false));
-
-            Assert.Contains("Expected System.String as dictionary value type", exception.Message);
-        }
-
-        [Fact]
-        public void ThrowsIfValueNotDeclaredInEnum()
+        public void DecodingShouldThrowIfValueNotDeclaredInEnum()
         {
             var json = "{\"enum\": \"unknown_value\"}";
 

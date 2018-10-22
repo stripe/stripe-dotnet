@@ -1,8 +1,8 @@
-﻿namespace Stripe
+namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class BankAccountCreateOptions : StripeBaseOptions
+    public class BankAccountCreateOptions : BaseOptions
     {
         [JsonProperty("source")]
         public string SourceToken { get; set; }

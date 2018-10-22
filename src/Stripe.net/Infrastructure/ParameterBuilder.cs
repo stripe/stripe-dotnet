@@ -1,16 +1,16 @@
-﻿namespace Stripe.Infrastructure
+namespace Stripe.Infrastructure
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Reflection;
     using System.Text.RegularExpressions;
-    using Newtonsoft.Json;
     using Stripe.Infrastructure.Middleware;
 
     internal static class ParameterBuilder
     {
-        public static string ApplyAllParameters(this StripeService service, StripeBaseOptions obj, string url, bool isListMethod = false)
+        public static string ApplyAllParameters<T>(this Service<T> service, BaseOptions obj, string url, bool isListMethod = false)
+            where T : IStripeEntity
         {
             // store the original url from the service call into requestString (e.g. https://api.stripe.com/v1/accounts/account_id)
             // before the stripe attributes get applied. all of the attributes that will get passed to stripe will be applied to this string,
@@ -20,26 +20,7 @@
             // obj = the options object passed from the service
             if (obj != null)
             {
-                foreach (var property in obj.GetType().GetRuntimeProperties())
-                {
-                    var value = property.GetValue(obj, null);
-                    if (value == null)
-                    {
-                        continue;
-                    }
-
-                    foreach (var attribute in property.GetCustomAttributes<JsonPropertyAttribute>())
-                    {
-                        if (value is INestedOptions)
-                        {
-                            ApplyNestedObjectProperties(ref requestString, value);
-                        }
-                        else
-                        {
-                            RequestStringBuilder.ProcessPlugins(ref requestString, attribute, property, value, obj);
-                        }
-                    }
-                }
+                RequestStringBuilder.CreateQuery(ref requestString, obj);
 
                 foreach (KeyValuePair<string, string> pair in obj.ExtraParams)
                 {
@@ -90,23 +71,6 @@
             RequestStringBuilder.ApplyParameterToRequestString(ref url, argument, value);
 
             return url;
-        }
-
-        private static void ApplyNestedObjectProperties(ref string requestString, object nestedObject)
-        {
-            foreach (var property in nestedObject.GetType().GetRuntimeProperties())
-            {
-                var value = property.GetValue(nestedObject, null);
-                if (value == null)
-                {
-                    continue;
-                }
-
-                foreach (var attribute in property.GetCustomAttributes<JsonPropertyAttribute>())
-                {
-                    RequestStringBuilder.ProcessPlugins(ref requestString, attribute, property, value, nestedObject);
-                }
-            }
         }
     }
 }

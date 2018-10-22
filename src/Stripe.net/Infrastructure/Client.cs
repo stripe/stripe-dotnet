@@ -1,4 +1,4 @@
-﻿namespace Stripe.Infrastructure
+namespace Stripe.Infrastructure
 {
     using System;
     using System.Collections.Generic;
@@ -31,6 +31,30 @@
             this.RequestMessage.Headers.Add("X-Stripe-Client-User-Agent", this.GetClientUserAgentString());
         }
 
+#if NET45
+        private static string GetMonoVersion()
+        {
+            Type monoRuntimeType = typeof(object).Assembly.GetType("Mono.Runtime");
+
+            if (monoRuntimeType != null)
+            {
+                MethodInfo getDisplayNameMethod = monoRuntimeType.GetMethod(
+                    "GetDisplayName",
+                    BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.ExactBinding,
+                    null,
+                    Type.EmptyTypes,
+                    null);
+
+                if (getDisplayNameMethod != null)
+                {
+                    return (string)getDisplayNameMethod.Invoke(null, null);
+                }
+            }
+
+            return null;
+        }
+#endif
+
         private string GetClientUserAgentString()
         {
             var values = new Dictionary<string, string>
@@ -45,7 +69,8 @@
             values.Add("os_version", Environment.OSVersion.ToString());
 
             string monoVersion = Client.GetMonoVersion();
-            if (monoVersion != null) {
+            if (monoVersion != null)
+            {
                 values.Add("mono_version", monoVersion);
             }
 #else
@@ -55,20 +80,5 @@
 
             return JsonConvert.SerializeObject(values, Formatting.None);
         }
-
-#if NET45
-        private static string GetMonoVersion()
-        {
-            Type monoRuntimeType;
-            MethodInfo getDisplayNameMethod;
-            if ((monoRuntimeType = typeof(object).Assembly.GetType("Mono.Runtime")) != null &&
-                (getDisplayNameMethod = monoRuntimeType.GetMethod("GetDisplayName",
-                BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.ExactBinding, null,
-                        Type.EmptyTypes, null)) != null) {
-                return (string)getDisplayNameMethod.Invoke(null, null);
-            }
-            return null;
-        }
-#endif
     }
 }

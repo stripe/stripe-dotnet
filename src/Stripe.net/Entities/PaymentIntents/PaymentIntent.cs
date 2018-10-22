@@ -5,8 +5,11 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class PaymentIntent : StripeEntityWithId, ISupportMetadata
+    public class PaymentIntent : StripeEntity, IHasId, IHasObject
     {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         [JsonProperty("object")]
         public string Object { get; set; }
 
@@ -14,42 +17,41 @@ namespace Stripe
         public List<string> AllowedSourceTypes { get; set; }
 
         [JsonProperty("amount")]
-        public int? Amount { get; set; }
+        public long? Amount { get; set; }
 
         [JsonProperty("amount_capturable")]
-        public int? AmountCapturable { get; set; }
+        public long? AmountCapturable { get; set; }
 
         [JsonProperty("amount_received")]
-        public int? AmountReceived { get; set; }
+        public long? AmountReceived { get; set; }
 
         #region Expandable Application
         public string ApplicationId { get; set; }
 
         [JsonIgnore]
-        public StripeApplication Application { get; set; }
+        public Application Application { get; set; }
 
         [JsonProperty("application")]
         internal object InternalApplication
         {
             set
             {
-                StringOrObject<StripeApplication>.Map(value, s => this.ApplicationId = s, o => this.Application = o);
+                StringOrObject<Application>.Map(value, s => this.ApplicationId = s, o => this.Application = o);
             }
         }
         #endregion
 
         [JsonProperty("application_fee_amount")]
-        public int? ApplicationFeeAmount { get; set; }
+        public long? ApplicationFeeAmount { get; set; }
 
         [JsonProperty("canceled_at")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
 
         [JsonProperty("capture_method")]
         public string CaptureMethod { get; set; }
 
         [JsonProperty("charges")]
-        public StripeList<StripeCharge> Charges { get; set; }
+        public StripeList<Charge> Charges { get; set; }
 
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
@@ -58,7 +60,6 @@ namespace Stripe
         public string ConfirmationMethod { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(StripeDateTimeConverter))]
         public DateTime? Created { get; set; }
 
         [JsonProperty("currency")]
@@ -68,14 +69,14 @@ namespace Stripe
         public string CustomerId { get; set; }
 
         [JsonIgnore]
-        public StripeCustomer Customer { get; set; }
+        public Customer Customer { get; set; }
 
         [JsonProperty("customer")]
         internal object InternalCustomer
         {
             set
             {
-                StringOrObject<StripeCustomer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
+                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
             }
         }
         #endregion
@@ -84,7 +85,7 @@ namespace Stripe
         public string Description { get; set; }
 
         [JsonProperty("livemode")]
-        public bool LiveMode { get; set; }
+        public bool Livemode { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -102,33 +103,33 @@ namespace Stripe
         public string ReviewId { get; set; }
 
         [JsonIgnore]
-        public StripeReview Review { get; set; }
+        public Review Review { get; set; }
 
         [JsonProperty("review")]
         internal object InternalReview
         {
             set
             {
-                StringOrObject<StripeReview>.Map(value, s => this.ReviewId = s, o => this.Review = o);
+                StringOrObject<Review>.Map(value, s => this.ReviewId = s, o => this.Review = o);
             }
         }
         #endregion
 
         [JsonProperty("shipping")]
-        public StripeShipping Shipping { get; set; }
+        public Shipping Shipping { get; set; }
 
         #region Expandable Source
         public string SourceId { get; set; }
 
         [JsonIgnore]
-        public Source Source { get; set; }
+        public IPaymentSource Source { get; set; }
 
         [JsonProperty("source")]
         internal object InternalSource
         {
             set
             {
-                StringOrObject<Source>.Map(value, s => this.SourceId = s, o => this.Source = o);
+                StringOrObject<IPaymentSource>.Map(value, s => this.SourceId = s, o => this.Source = o);
             }
         }
         #endregion

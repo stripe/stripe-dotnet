@@ -1,0 +1,66 @@
+{
+  "id": "pi_123",
+  "object": "payment_intent",
+  "allowed_source_types": [
+    "card"
+  ],
+  "amount": 1099,
+  "amount_capturable": 1000,
+  "amount_received": 0,
+  "application": null,
+  "application_fee": null,
+  "canceled_at": null,
+  "capture_method": "automatic",
+  "charges": {
+    "object": "list",
+    "data": [
+      {
+        "id": "ch_123",
+        "object": "charge"
+      }
+    ],
+    "has_more": false,
+    "total_count": 1,
+    "url": "/v1/charges?payment_intent=pi_123"
+  },
+  "client_secret": null,
+  "confirmation_method": "publishable",
+  "created": 123456789,
+  "currency": "usd",
+  "customer": null,
+  "description": "PaymentIntent Description",
+  "livemode": false,
+  "metadata": {
+    "order_id": "123456789"
+  },
+  "next_source_action": {
+    "type": "authorize_with_url",
+    "value": {
+      "url": "https://stripe.com"
+    }
+  },
+  "on_behalf_of": null,
+  "receipt_email": "test@stripe.com",
+  "return_url": null,
+  "shipping": {
+    "address": {
+      "city": "city",
+      "country": "USA",
+      "line1": "123 Main St",
+      "line2": "Apt B",
+      "postal_code": "90210",
+      "state": "NC"
+    },
+    "carrier": "Carrier",
+    "name": "Namey Namerson",
+    "phone": null,
+    "tracking_number": "12345"
+  },
+  "source": "src_123",
+  "statement_descriptor": "PaymentIntent Statement Descriptor",
+  "status": "succeeded",
+  "transfer_data": {
+    "amount": 1234
+  },
+  "transfer_group": null
+}

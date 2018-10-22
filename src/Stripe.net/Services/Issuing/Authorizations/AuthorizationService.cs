@@ -6,10 +6,11 @@ namespace Stripe.Issuing
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class AuthorizationService : StripeService
+    public class AuthorizationService : Service<Authorization>,
+        IListable<Authorization, AuthorizationListOptions>,
+        IRetrievable<Authorization>,
+        IUpdatable<Authorization, AuthorizationUpdateOptions>
     {
-        private static string classUrl = Urls.BaseUrl + "/issuing/authorizations";
-
         public AuthorizationService()
             : base(null)
         {
@@ -20,89 +21,56 @@ namespace Stripe.Issuing
         {
         }
 
-        public virtual Authorization Approve(string authorizationId, AuthorizationApproveOptions approveOptions = null, StripeRequestOptions requestOptions = null)
+        public override string BasePath => "/issuing/authorizations";
+
+        public virtual Authorization Approve(string authorizationId, AuthorizationApproveOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<Authorization>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(approveOptions, $"{classUrl}/{authorizationId}/approve", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.PostRequest<Authorization>($"{this.InstanceUrl(authorizationId)}/approve", options, requestOptions);
         }
 
-        public virtual Authorization Decline(string authorizationId, AuthorizationDeclineOptions declineOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual Task<Authorization> ApproveAsync(string authorizationId, AuthorizationApproveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Authorization>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(declineOptions, $"{classUrl}/{authorizationId}/decline", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.PostRequestAsync<Authorization>($"{this.InstanceUrl(authorizationId)}/approve", options, requestOptions, cancellationToken);
         }
 
-        public virtual Authorization Update(string authorizationId, AuthorizationUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        public virtual Authorization Decline(string authorizationId, AuthorizationDeclineOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<Authorization>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, $"{classUrl}/{authorizationId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.PostRequest<Authorization>($"{this.InstanceUrl(authorizationId)}/decline", options, requestOptions);
         }
 
-        public virtual Authorization Get(string authorizationId, StripeRequestOptions requestOptions = null)
+        public virtual Task<Authorization> DeclineAsync(string authorizationId, AuthorizationDeclineOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Authorization>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{classUrl}/{authorizationId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.PostRequestAsync<Authorization>($"{this.InstanceUrl(authorizationId)}/decline", options, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<Authorization> List(AuthorizationListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual Authorization Get(string authorizationId, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<Authorization>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity(authorizationId, null, requestOptions);
         }
 
-        public virtual async Task<Authorization> ApproveAsync(string authorizationId, AuthorizationApproveOptions approveOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Authorization> GetAsync(string authorizationId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Authorization>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(approveOptions, $"{classUrl}/{authorizationId}/approve", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityAsync(authorizationId, null, requestOptions, cancellationToken);
         }
 
-        public virtual async Task<Authorization> DeclineAsync(string authorizationId, AuthorizationDeclineOptions declineOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual StripeList<Authorization> List(AuthorizationListOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<Authorization>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(declineOptions, $"{classUrl}/{authorizationId}/decline", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.ListEntities(options, requestOptions);
         }
 
-        public virtual async Task<Authorization> UpdateAsync(string authorizationId, AuthorizationUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Authorization>> ListAsync(AuthorizationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Authorization>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, $"{classUrl}/{authorizationId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual async Task<Authorization> GetAsync(string authorizationId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Authorization Update(string authorizationId, AuthorizationUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Authorization>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{classUrl}/{authorizationId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.UpdateEntity(authorizationId, options, requestOptions);
         }
 
-        public virtual async Task<StripeList<Authorization>> ListAsync(AuthorizationListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Authorization> UpdateAsync(string authorizationId, AuthorizationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<Authorization>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.UpdateEntityAsync(authorizationId, options, requestOptions, cancellationToken);
         }
     }
 }

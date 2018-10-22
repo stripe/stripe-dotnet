@@ -7,48 +7,22 @@ namespace Stripe.Reporting
 
     public class ParametersOptions : INestedOptions
     {
-        [JsonProperty("parameters[connected_account]")]
+        [JsonProperty("connected_account")]
         public string ConnectedAccount { get; set; }
 
-        [JsonProperty("parameters[currency]")]
+        [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [JsonProperty("interval_end")]
         public DateTime? IntervalEnd { get; set; }
 
-        [JsonProperty("parameters[interval_end]")]
-        internal long? IntervalEndInternal
-        {
-            get
-            {
-                if (!this.IntervalEnd.HasValue)
-                {
-                    return null;
-                }
-
-                return EpochTime.ConvertDateTimeToEpoch(this.IntervalEnd.Value);
-            }
-        }
-
+        [JsonProperty("interval_start")]
         public DateTime? IntervalStart { get; set; }
 
-        [JsonProperty("parameters[interval_start]")]
-        internal long? IntervalStartInternal
-        {
-            get
-            {
-                if (!this.IntervalStart.HasValue)
-                {
-                    return null;
-                }
-
-                return EpochTime.ConvertDateTimeToEpoch(this.IntervalStart.Value);
-            }
-        }
-
-        [JsonProperty("parameters[payout]")]
+        [JsonProperty("payout")]
         public string Payout { get; set; }
 
-        [JsonProperty("parameters[reporting_category]")]
+        [JsonProperty("reporting_category")]
         public string ReportingCategory { get; set; }
     }
 }

@@ -6,10 +6,11 @@ namespace Stripe.Issuing
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class TransactionService : StripeService
+    public class TransactionService : Service<Transaction>,
+        IListable<Transaction, TransactionListOptions>,
+        IRetrievable<Transaction>,
+        IUpdatable<Transaction, TransactionUpdateOptions>
     {
-        private static string classUrl = Urls.BaseUrl + "/issuing/transactions";
-
         public TransactionService()
             : base(null)
         {
@@ -20,55 +21,36 @@ namespace Stripe.Issuing
         {
         }
 
-        public virtual Transaction Update(string transactionId, TransactionUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        public override string BasePath => "/issuing/transactions";
+
+        public virtual Transaction Get(string transactionId, RequestOptions requestOptions = null)
         {
-            return Mapper<Transaction>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, $"{classUrl}/{transactionId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity(transactionId, null, requestOptions);
         }
 
-        public virtual Transaction Get(string transactionId, StripeRequestOptions requestOptions = null)
+        public virtual Task<Transaction> GetAsync(string transactionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Transaction>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{classUrl}/{transactionId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityAsync(transactionId, null, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<Transaction> List(TransactionListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual StripeList<Transaction> List(TransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<Transaction>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.ListEntities(options, requestOptions);
         }
 
-        public virtual async Task<Transaction> UpdateAsync(string transactionId, TransactionUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Transaction>> ListAsync(TransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Transaction>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, $"{classUrl}/{transactionId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual async Task<Transaction> GetAsync(string transactionId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Transaction Update(string transactionId, TransactionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Transaction>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{classUrl}/{transactionId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.UpdateEntity(transactionId, options, requestOptions);
         }
 
-        public virtual async Task<StripeList<Transaction>> ListAsync(TransactionListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Transaction> UpdateAsync(string transactionId, TransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<Transaction>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.UpdateEntityAsync(transactionId, options, requestOptions, cancellationToken);
         }
     }
 }

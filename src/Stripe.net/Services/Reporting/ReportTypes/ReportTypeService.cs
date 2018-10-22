@@ -6,10 +6,10 @@ namespace Stripe.Reporting
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class ReportTypeService : StripeService
+    public class ReportTypeService : Service<ReportType>,
+        IListable<ReportType, ReportTypeListOptions>,
+        IRetrievable<ReportType>
     {
-        private static string classUrl = Urls.BaseUrl + "/reporting/report_types";
-
         public ReportTypeService()
             : base(null)
         {
@@ -20,38 +20,26 @@ namespace Stripe.Reporting
         {
         }
 
-        public virtual ReportType Get(string reportTypeId, StripeRequestOptions requestOptions = null)
+        public override string BasePath => "/reporting/report_types";
+
+        public virtual ReportType Get(string reportTypeId, RequestOptions requestOptions = null)
         {
-            return Mapper<ReportType>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{classUrl}/{reportTypeId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity(reportTypeId, null, requestOptions);
         }
 
-        public virtual StripeList<ReportType> List(ReportTypeListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual Task<ReportType> GetAsync(string reportTypeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<ReportType>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntityAsync(reportTypeId, null, requestOptions, cancellationToken);
         }
 
-        public virtual async Task<ReportType> GetAsync(string reportTypeId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual StripeList<ReportType> List(ReportTypeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<ReportType>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{classUrl}/{reportTypeId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.ListEntities(options, requestOptions);
         }
 
-        public virtual async Task<StripeList<ReportType>> ListAsync(ReportTypeListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<ReportType>> ListAsync(ReportTypeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<ReportType>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
     }
 }

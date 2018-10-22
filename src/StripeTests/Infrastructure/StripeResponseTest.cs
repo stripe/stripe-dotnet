@@ -6,11 +6,11 @@ namespace StripeTests
 
     public class StripeResponseTest : BaseStripeTest
     {
-        private StripeList<StripeCharge> charges;
+        private StripeList<Charge> charges;
 
         public StripeResponseTest()
         {
-            this.charges = new StripeChargeService().List();
+            this.charges = new ChargeService().List();
         }
 
         [Fact]

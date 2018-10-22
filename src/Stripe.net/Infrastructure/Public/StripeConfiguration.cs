@@ -1,4 +1,4 @@
-﻿namespace Stripe
+namespace Stripe
 {
     using System;
     using System.Net.Http;
@@ -7,12 +7,12 @@
 
     public static class StripeConfiguration
     {
-        public static string StripeApiVersion = "2018-08-23";
+        public static string StripeApiVersion = "2018-09-24";
 
         private static string apiKey;
         private static string apiBase;
-        private static string uploadsBase;
         private static string connectBase;
+        private static string filesBase;
 
         static StripeConfiguration()
         {
@@ -60,21 +60,6 @@
             apiBase = baseUrl;
         }
 
-        internal static string GetUploadsBase()
-        {
-            if (string.IsNullOrEmpty(uploadsBase))
-            {
-                uploadsBase = Urls.DefaultBaseUploadsUrl;
-            }
-
-            return uploadsBase;
-        }
-
-        public static void SetUploadsBase(string baseUrl)
-        {
-            uploadsBase = baseUrl;
-        }
-
         internal static string GetConnectBase()
         {
             if (string.IsNullOrEmpty(connectBase))
@@ -88,6 +73,21 @@
         public static void SetConnectBase(string baseUrl)
         {
             connectBase = baseUrl;
+        }
+
+        internal static string GetFilesBase()
+        {
+            if (string.IsNullOrEmpty(filesBase))
+            {
+                filesBase = Urls.DefaultBaseFilesUrl;
+            }
+
+            return filesBase;
+        }
+
+        public static void SetFilesBase(string baseUrl)
+        {
+            filesBase = baseUrl;
         }
     }
 }

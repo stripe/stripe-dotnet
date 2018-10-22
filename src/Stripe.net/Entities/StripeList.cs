@@ -1,4 +1,4 @@
-﻿namespace Stripe
+namespace Stripe
 {
     using System;
     using System.Collections;
@@ -6,7 +6,7 @@
     using Newtonsoft.Json;
 
     [JsonObject]
-    public class StripeList<T> : StripeEntity, IEnumerable<T>
+    public class StripeList<T> : StripeEntity, IHasObject, IEnumerable<T>
     {
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -21,7 +21,7 @@
         public bool HasMore { get; set; }
 
         [JsonProperty("total_count")]
-        public int TotalCount { get; set; }
+        public long TotalCount { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }

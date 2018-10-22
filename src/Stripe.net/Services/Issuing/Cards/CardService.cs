@@ -6,10 +6,12 @@ namespace Stripe.Issuing
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    public class CardService : StripeService
+    public class CardService : Service<Card>,
+        ICreatable<Card, CardCreateOptions>,
+        IListable<Card, CardListOptions>,
+        IRetrievable<Card>,
+        IUpdatable<Card, CardUpdateOptions>
     {
-        private static string classUrl = Urls.BaseUrl + "/issuing/cards";
-
         public CardService()
             : base(null)
         {
@@ -20,89 +22,56 @@ namespace Stripe.Issuing
         {
         }
 
-        public virtual Card Create(CardCreateOptions createOptions, StripeRequestOptions requestOptions = null)
+        public override string BasePath => "/issuing/cards";
+
+        public virtual Card Create(CardCreateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Card>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, classUrl, false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual CardDetails Details(string cardId, StripeRequestOptions requestOptions = null)
+        public virtual Task<Card> CreateAsync(CardCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<CardDetails>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{classUrl}/{cardId}/details", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Card Update(string cardId, CardUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
+        public virtual CardDetails Details(string cardId, RequestOptions requestOptions = null)
         {
-            return Mapper<Card>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, $"{classUrl}/{cardId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetRequest<CardDetails>($"{this.InstanceUrl(cardId)}/details", null, requestOptions);
         }
 
-        public virtual Card Get(string cardId, StripeRequestOptions requestOptions = null)
+        public virtual Task<CardDetails> DetailsAsync(string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Card>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{classUrl}/{cardId}", false),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetRequestAsync<CardDetails>($"{this.InstanceUrl(cardId)}/details", null, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<Card> List(CardListOptions listOptions = null, StripeRequestOptions requestOptions = null)
+        public virtual Card Get(string cardId, RequestOptions requestOptions = null)
         {
-            return Mapper<StripeList<Card>>.MapFromJson(
-                Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions)));
+            return this.GetEntity(cardId, null, requestOptions);
         }
 
-        public virtual async Task<Card> CreateAsync(CardCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Card> GetAsync(string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Card>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, classUrl, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.GetEntityAsync(cardId, null, requestOptions, cancellationToken);
         }
 
-        public virtual async Task<CardDetails> DetailsAsync(string cardId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual StripeList<Card> List(CardListOptions options = null, RequestOptions requestOptions = null)
         {
-            return Mapper<CardDetails>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{classUrl}/{cardId}/details", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.ListEntities(options, requestOptions);
         }
 
-        public virtual async Task<Card> UpdateAsync(string cardId, CardUpdateOptions updateOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Card>> ListAsync(CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<Card>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, $"{classUrl}/{cardId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual async Task<Card> GetAsync(string cardId, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Card Update(string cardId, CardUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<Card>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{classUrl}/{cardId}", false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.UpdateEntity(cardId, options, requestOptions);
         }
 
-        public virtual async Task<StripeList<Card>> ListAsync(CardListOptions listOptions = null, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Card> UpdateAsync(string cardId, CardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<StripeList<Card>>.MapFromJson(
-                await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, classUrl, true),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            return this.UpdateEntityAsync(cardId, options, requestOptions, cancellationToken);
         }
     }
 }
