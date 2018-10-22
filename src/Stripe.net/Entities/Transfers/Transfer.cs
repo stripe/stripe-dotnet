@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Transfer : StripeEntity, IHasId, IHasObject, IBalanceTransactionSource
+    public class Transfer : StripeEntity, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         [JsonProperty("id")]
         public string Id { get; set; }
