@@ -1,5 +1,50 @@
 # Changelog
 
+## 20.0.0 - 2018-10-22
+Major version release. Refer to our [migration guide for v20](https://github.com/stripe/stripe-dotnet/blob/master/v20_migration_guide.md) for a list of backwards incompatible changes to watch out for.
+
+Pull requests included in this release (cf. [#1293](https://github.com/stripe/stripe-dotnet/pull/1293)):
+* [#1275](https://github.com/stripe/stripe-java/pull/1275) Properly re-architecture the library to handle various source abstractions
+* [#1276](https://github.com/stripe/stripe-java/pull/1276) Rewrite parameter encoding logic
+* [#1282](https://github.com/stripe/stripe-java/pull/1282) Rename `SourceTransactionCanceled` constant to `SourceTransactionCreated`, add `SourceTransactionUpdated` constant
+* [#1283](https://github.com/stripe/stripe-java/pull/1283) Handle `DateTime`s directly in the encoder
+* [#1284](https://github.com/stripe/stripe-java/pull/1284) Remove `StripeDeleted` class, add `Deleted` property to deletable resource classes
+* [#1285](https://github.com/stripe/stripe-java/pull/1285) Rename `image` property to `Image` in `StripeSku` and `StripeSkuSharedOptions` classes
+* [#1252](https://github.com/stripe/stripe-java/pull/1252) Remove the `Stripe` prefix from all classes
+* [#1286](https://github.com/stripe/stripe-java/pull/1286) Rename `ScheduledQuery*` to `ScheduledQueryRun*`, move `ScheduledQueryRun` classes in `Stripe.Sigma` namespace
+* [#1287](https://github.com/stripe/stripe-java/pull/1287) Standardize method signatures in `InvoiceService` and `RefundService`
+* [#1288](https://github.com/stripe/stripe-java/pull/1288) Standardize method signatures in `FileUploadService`
+* [#1291](https://github.com/stripe/stripe-java/pull/1291) Move balance transaction methods out of `BalanceService` and into new `BalanceTransactionService` class
+* [#1269](https://github.com/stripe/stripe-java/pull/1269) Add interfaces to all services for standard CRUD methods
+* [#1298](https://github.com/stripe/stripe-java/pull/1298) Make all value types in options classes nullable
+* [#1302](https://github.com/stripe/stripe-java/pull/1302) Upgrade to API version 2018-09-24
+* [#1301](https://github.com/stripe/stripe-java/pull/1301) Update all options classes to match the API's nesting structure
+* [#1303](https://github.com/stripe/stripe-java/pull/1303) Rename `LiveMode` property to `Livemode` everywhere
+* [#1304](https://github.com/stripe/stripe-java/pull/1304) Sanitize source files
+* [#1306](https://github.com/stripe/stripe-java/pull/1306) Remove +x flag from source files
+* [#1305](https://github.com/stripe/stripe-java/pull/1305) Use `BasicService` as the parent class for all services
+* [#1307](https://github.com/stripe/stripe-java/pull/1307) Sort service methods alphabetically
+* [#1310](https://github.com/stripe/stripe-java/pull/1310) Verify requests in tests
+* [#1308](https://github.com/stripe/stripe-java/pull/1308) Standardize request method implementations in services
+* [#1309](https://github.com/stripe/stripe-java/pull/1309) Group resource class files in folders
+* [#1312](https://github.com/stripe/stripe-java/pull/1312) Group test files in folders to match main project's structure
+* [#1311](https://github.com/stripe/stripe-java/pull/1311) Add missing properties on resource and options class, rename a few properties
+* [#1315](https://github.com/stripe/stripe-java/pull/1315) Add `InvoiceItem` class, distinct from `InvoiceLineItem`
+* [#1316](https://github.com/stripe/stripe-java/pull/1316) Automatically convert Unix timestamps to `DateTime`s
+* [#1318](https://github.com/stripe/stripe-java/pull/1318) Create coverage report and upload to coveralls.io
+* [#1319](https://github.com/stripe/stripe-java/pull/1319) Fix artifacts path in `appveyor.yml`
+* [#1317](https://github.com/stripe/stripe-java/pull/1317) Revamp interfaces on Stripe resource classes
+* [#1320](https://github.com/stripe/stripe-java/pull/1320) Replace `ExternalAccount` and `PaymentSource` classes by `IExternalAccount`  and `IPaymentSource` interfaces
+* [#1321](https://github.com/stripe/stripe-java/pull/1321) Replace `BalanceTransactionSource` class by `IBalanceTransactionSource` interface
+* [#1322](https://github.com/stripe/stripe-java/pull/1322) Use `IHasObject` interface instead of `dynamic` for `data.object` attribute of event objects
+* [#1323](https://github.com/stripe/stripe-java/pull/1323) Fix remaining warnings in .NET Framework specific code
+* [#1328](https://github.com/stripe/stripe-java/pull/1328) Add some missing tests
+* [#1329](https://github.com/stripe/stripe-java/pull/1329) Use an interface for `PaymentIntentSourceAction`
+* [#1331](https://github.com/stripe/stripe-java/pull/1331) Use `long` instead of `int` for all integer numeric types
+* [#1340](https://github.com/stripe/stripe-java/pull/1340) Change the signature of request methods on `UsageRecordService` to accept a subscription item ID
+* [#1337](https://github.com/stripe/stripe-java/pull/1337) Rename `SourceTokenOrExistingSourceId` to `SourceId` in `ChargeCreationOptions` class
+* [#1345](https://github.com/stripe/stripe-java/pull/1345) Add `ChargeExpired` constant
+
 ## 19.10.0 - 2018-10-09
 * [#1327](https://github.com/stripe/stripe-dotnet/pull/1327) Add `TransferGroup` to `StripeChargeUpdateOptions`
 
