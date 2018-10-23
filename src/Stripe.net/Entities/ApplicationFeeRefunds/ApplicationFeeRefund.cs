@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ApplicationFeeRefund : StripeEntity, IHasId, IHasObject, IBalanceTransactionSource
+    public class ApplicationFeeRefund : StripeEntity, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         [JsonProperty("id")]
         public string Id { get; set; }
