@@ -1,5 +1,9 @@
 # Changelog
 
+## 20.1.0 - 2018-10-23
+* [#1347](https://github.com/stripe/stripe-dotnet/pull/1347) Add `IHasMetadata` interface to all resource classes that support metadata
+* [#1348](https://github.com/stripe/stripe-dotnet/pull/1348) Add `CardId` and `BankAccountId` to `TokenCreateOptions`
+
 ## 20.0.0 - 2018-10-22
 Major version release. Refer to our [migration guide for v20](https://github.com/stripe/stripe-dotnet/blob/master/v20_migration_guide.md) for a list of backwards incompatible changes to watch out for.
 
