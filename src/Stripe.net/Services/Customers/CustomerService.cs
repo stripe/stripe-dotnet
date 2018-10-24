@@ -27,7 +27,7 @@ namespace Stripe
 
         public bool ExpandDefaultSource { get; set; }
 
-        public bool ExpandDefaultCustomerBankAccount { get; set; }
+        public bool ExpandDefaultCustomerBankAccount { get; set; } // TODO: remove in next major version
 
         public virtual Customer Create(CustomerCreateOptions options, RequestOptions requestOptions = null)
         {

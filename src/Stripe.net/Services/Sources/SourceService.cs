@@ -64,12 +64,12 @@ namespace Stripe
 
         public virtual StripeList<Source> List(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetRequest<StripeList<Source>>($"{Urls.BaseUrl}/customers/{customerId}/sources", options, requestOptions);
+            return this.GetRequest<StripeList<Source>>($"{Urls.BaseUrl}/customers/{customerId}/sources", options, requestOptions, true);
         }
 
         public virtual Task<StripeList<Source>> ListAsync(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetRequestAsync<StripeList<Source>>($"{Urls.BaseUrl}/customers/{customerId}/sources", options, requestOptions, cancellationToken);
+            return this.GetRequestAsync<StripeList<Source>>($"{Urls.BaseUrl}/customers/{customerId}/sources", options, requestOptions, true, cancellationToken);
         }
 
         public virtual Source Update(string sourceId, SourceUpdateOptions options, RequestOptions requestOptions = null)
