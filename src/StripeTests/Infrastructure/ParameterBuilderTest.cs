@@ -153,6 +153,14 @@ namespace StripeTests
                 {
                     data = new TestOptions
                     {
+                            Dictionary = new Dictionary<string, object> { { "null", null } },
+                    },
+                    want = "?dictionary[null]="
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
                             Dictionary = new Dictionary<string, object>
                             {
                                 { "foo", new Dictionary<string, object> { { "bar", "baz" } } },
