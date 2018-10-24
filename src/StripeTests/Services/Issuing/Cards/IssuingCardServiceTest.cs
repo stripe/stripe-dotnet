@@ -22,6 +22,10 @@ namespace StripeTests.Issuing
 
             this.createOptions = new CardCreateOptions()
             {
+                AuthorizationControls = new AuthorizationControlsOptions
+                {
+                    MaxAmount = 123,
+                },
                 Currency = "usd",
                 Type = "virtual",
             };

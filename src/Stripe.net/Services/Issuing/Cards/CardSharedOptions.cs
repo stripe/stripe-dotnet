@@ -5,6 +5,9 @@ namespace Stripe.Issuing
 
     public class CardSharedOptions : BaseOptions
     {
+        [JsonProperty("authorization_controls")]
+        public AuthorizationControlsOptions AuthorizationControls { get; set; }
+
         [JsonProperty("billing")]
         public BillingOptions Billing { get; set; }
 
