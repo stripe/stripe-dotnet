@@ -42,22 +42,22 @@ namespace Stripe
 
         protected EntityReturned GetNestedEntity(string parentId, string id, BaseOptions options, RequestOptions requestOptions)
         {
-            return this.GetRequest<EntityReturned>(this.InstanceUrl(parentId, id), options, requestOptions);
+            return this.GetRequest<EntityReturned>(this.InstanceUrl(parentId, id), options, requestOptions, false);
         }
 
         protected Task<EntityReturned> GetNestedEntityAsync(string parentId, string id, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
         {
-            return this.GetRequestAsync<EntityReturned>(this.InstanceUrl(parentId, id), options, requestOptions, cancellationToken);
+            return this.GetRequestAsync<EntityReturned>(this.InstanceUrl(parentId, id), options, requestOptions, false, cancellationToken);
         }
 
         protected StripeList<EntityReturned> ListNestedEntities(string parentId, BaseOptions options, RequestOptions requestOptions)
         {
-            return this.GetRequest<StripeList<EntityReturned>>(this.ClassUrl(parentId), options, requestOptions);
+            return this.GetRequest<StripeList<EntityReturned>>(this.ClassUrl(parentId), options, requestOptions, true);
         }
 
         protected Task<StripeList<EntityReturned>> ListNestedEntitiesAsync(string parentId, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
         {
-            return this.GetRequestAsync<StripeList<EntityReturned>>(this.ClassUrl(parentId), options, requestOptions, cancellationToken);
+            return this.GetRequestAsync<StripeList<EntityReturned>>(this.ClassUrl(parentId), options, requestOptions, true, cancellationToken);
         }
 
         protected EntityReturned UpdateNestedEntity(string parentId, string id, BaseOptions options, RequestOptions requestOptions)

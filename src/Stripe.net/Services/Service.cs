@@ -45,22 +45,22 @@ namespace Stripe
 
         protected EntityReturned GetEntity(string id, BaseOptions options, RequestOptions requestOptions)
         {
-            return this.GetRequest<EntityReturned>(this.InstanceUrl(id), options, requestOptions);
+            return this.GetRequest<EntityReturned>(this.InstanceUrl(id), options, requestOptions, false);
         }
 
         protected Task<EntityReturned> GetEntityAsync(string id, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
         {
-            return this.GetRequestAsync<EntityReturned>(this.InstanceUrl(id), options, requestOptions, cancellationToken);
+            return this.GetRequestAsync<EntityReturned>(this.InstanceUrl(id), options, requestOptions, false, cancellationToken);
         }
 
         protected StripeList<EntityReturned> ListEntities(ListOptions options, RequestOptions requestOptions)
         {
-            return this.GetRequest<StripeList<EntityReturned>>(this.ClassUrl(), options, requestOptions);
+            return this.GetRequest<StripeList<EntityReturned>>(this.ClassUrl(), options, requestOptions, true);
         }
 
         protected Task<StripeList<EntityReturned>> ListEntitiesAsync(ListOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
         {
-            return this.GetRequestAsync<StripeList<EntityReturned>>(this.ClassUrl(), options, requestOptions, cancellationToken);
+            return this.GetRequestAsync<StripeList<EntityReturned>>(this.ClassUrl(), options, requestOptions, true, cancellationToken);
         }
 
         protected EntityReturned UpdateEntity(string id, BaseOptions options, RequestOptions requestOptions)
@@ -90,19 +90,19 @@ namespace Stripe
                     cancellationToken).ConfigureAwait(false));
         }
 
-        protected T GetRequest<T>(string url, BaseOptions options, RequestOptions requestOptions)
+        protected T GetRequest<T>(string url, BaseOptions options, RequestOptions requestOptions, bool isListMethod)
         {
             return Mapper<T>.MapFromJson(
                 Requestor.GetString(
-                    this.ApplyAllParameters(options, url),
+                    this.ApplyAllParameters(options, url, isListMethod),
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        protected async Task<T> GetRequestAsync<T>(string url, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
+        protected async Task<T> GetRequestAsync<T>(string url, BaseOptions options, RequestOptions requestOptions, bool isListMethod, CancellationToken cancellationToken)
         {
             return Mapper<T>.MapFromJson(
                 await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(options, url),
+                    this.ApplyAllParameters(options, url, isListMethod),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
         }

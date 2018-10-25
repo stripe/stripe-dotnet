@@ -95,6 +95,7 @@ namespace StripeTests
         [Fact]
         public void List()
         {
+            this.service.ExpandDefaultSource = true;
             var customers = this.service.List(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/customers");
             Assert.NotNull(customers);
@@ -106,6 +107,7 @@ namespace StripeTests
         [Fact]
         public async Task ListAsync()
         {
+            this.service.ExpandDefaultSource = true;
             var customers = await this.service.ListAsync(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/customers");
             Assert.NotNull(customers);

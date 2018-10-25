@@ -36,12 +36,12 @@ namespace Stripe.Issuing
 
         public virtual CardDetails Details(string cardId, RequestOptions requestOptions = null)
         {
-            return this.GetRequest<CardDetails>($"{this.InstanceUrl(cardId)}/details", null, requestOptions);
+            return this.GetRequest<CardDetails>($"{this.InstanceUrl(cardId)}/details", null, requestOptions, false);
         }
 
         public virtual Task<CardDetails> DetailsAsync(string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetRequestAsync<CardDetails>($"{this.InstanceUrl(cardId)}/details", null, requestOptions, cancellationToken);
+            return this.GetRequestAsync<CardDetails>($"{this.InstanceUrl(cardId)}/details", null, requestOptions, false, cancellationToken);
         }
 
         public virtual Card Get(string cardId, RequestOptions requestOptions = null)
