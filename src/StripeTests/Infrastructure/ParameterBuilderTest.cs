@@ -2,6 +2,8 @@ namespace StripeTests
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
+    using System.Threading;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Stripe;
@@ -367,5 +369,32 @@ namespace StripeTests
 
             Assert.Contains("Error converting value \"unknown_value\"", exception.Message);
         }
+
+        #if !NETCOREAPP1_1
+        [Fact]
+        public void IgnoresCulture()
+        {
+            var currentCulture = Thread.CurrentThread.CurrentCulture;
+
+            try
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
+
+                var dec = 123.45m;
+                Assert.Equal("123,45", dec.ToString());
+
+                var obj = new TestOptions
+                {
+                        Decimal = dec,
+                };
+                var url = this.service.ApplyAllParameters(obj, string.Empty, false);
+                Assert.Equal("?decimal=123.45", url);
+            }
+            finally
+            {
+                Thread.CurrentThread.CurrentCulture = currentCulture;
+            }
+        }
+        #endif
     }
 }
