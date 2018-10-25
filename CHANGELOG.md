@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.2.0 - 2018-10-25
+* [#1353](https://github.com/stripe/stripe-dotnet/pull/1353) Fix encoder to handle null values in dictionaries
+* [#1355](https://github.com/stripe/stripe-dotnet/pull/1355) Fix handling of `Expand*` properties in list requests
+* [#1356](https://github.com/stripe/stripe-dotnet/pull/1356) Add `AuthorizationControls` to `Issuing.CardCreateOptions` and `Issuing.CardUpdateOptions`
+* [#1358](https://github.com/stripe/stripe-dotnet/pull/1358) Ignore culture when encoding parameters
+
 ## 20.1.0 - 2018-10-23
 * [#1347](https://github.com/stripe/stripe-dotnet/pull/1347) Add `IHasMetadata` interface to all resource classes that support metadata
 * [#1348](https://github.com/stripe/stripe-dotnet/pull/1348) Add `CardId` and `BankAccountId` to `TokenCreateOptions`
