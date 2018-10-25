@@ -100,7 +100,7 @@ namespace Stripe.Infrastructure.Middleware
                 DateTime? dateTime = (DateTime)value;
                 if (dateTime.HasValue)
                 {
-                    flatParams.Add(new Parameter(keyPrefix, dateTime?.ConvertDateTimeToEpoch().ToString()));
+                    flatParams.Add(new Parameter(keyPrefix, dateTime?.ConvertDateTimeToEpoch().ToString(CultureInfo.InvariantCulture)));
                 }
             }
             else if (value == null)
@@ -111,7 +111,9 @@ namespace Stripe.Infrastructure.Middleware
             else
             {
                 flatParams = new List<Parameter>();
-                flatParams.Add(new Parameter(keyPrefix, value.ToString()));
+                flatParams.Add(new Parameter(
+                    keyPrefix,
+                    string.Format(CultureInfo.InvariantCulture, "{0}", value)));
             }
 
             return flatParams;
