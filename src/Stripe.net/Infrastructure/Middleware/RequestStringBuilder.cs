@@ -261,6 +261,11 @@ namespace Stripe.Infrastructure.Middleware
         /// <returns>True if the object is a dictionary, false otherwise.</returns>
         private static bool IsDictionary(object o)
         {
+            if (o == null)
+            {
+                return false;
+            }
+
             var type = o.GetType();
 
             if (!type.GetTypeInfo().IsGenericType)
@@ -283,6 +288,11 @@ namespace Stripe.Infrastructure.Middleware
         /// <returns>True if the object is a list, false otherwise.</returns>
         private static bool IsList(object o)
         {
+            if (o == null)
+            {
+                return false;
+            }
+
             var type = o.GetType();
 
             if (!type.GetTypeInfo().IsGenericType)
@@ -305,6 +315,11 @@ namespace Stripe.Infrastructure.Middleware
         /// <returns>True if the object is an array, false otherwise.</returns>
         private static bool IsArray(object o)
         {
+            if (o == null)
+            {
+                return false;
+            }
+
             var type = o.GetType();
             return type.IsArray;
         }
@@ -316,6 +331,11 @@ namespace Stripe.Infrastructure.Middleware
         /// <returns>True if the object is an enum (nullable or not), false otherwise.</returns>
         private static bool IsEnum(object o)
         {
+            if (o == null)
+            {
+                return false;
+            }
+
             var type = o.GetType();
 
             if (type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
