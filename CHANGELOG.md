@@ -1,5 +1,10 @@
 # Changelog
 
+## 20.3.0 - 2018-10-31
+* [#1332](https://github.com/stripe/stripe-dotnet/pull/1332) Add support for the `Person` resource
+* [#1342](https://github.com/stripe/stripe-dotnet/pull/1342) Add support for the `WebhookEndpoint` resource
+* [#1364](https://github.com/stripe/stripe-dotnet/pull/1364) Add support for `unit_label` on Product creation and `active` on Plan creation
+
 ## 20.2.0 - 2018-10-25
 * [#1353](https://github.com/stripe/stripe-dotnet/pull/1353) Fix encoder to handle null values in dictionaries
 * [#1355](https://github.com/stripe/stripe-dotnet/pull/1355) Fix handling of `Expand*` properties in list requests
