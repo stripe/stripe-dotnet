@@ -5,8 +5,14 @@ namespace Stripe
 
     public class PlanProductCreateOptions : INestedOptions
     {
+        [JsonProperty("active")]
+        public bool? Active { get; set; }
+
         [JsonProperty("id")]
         public string Id { get; set; }
+
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -14,7 +20,7 @@ namespace Stripe
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        [JsonProperty("unit_label")]
+        public string UnitLabel { get; set; }
     }
 }
