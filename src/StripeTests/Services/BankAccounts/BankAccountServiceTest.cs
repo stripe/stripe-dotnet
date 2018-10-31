@@ -68,7 +68,6 @@ namespace StripeTests
             var bankAccount = this.service.Create(CustomerId, this.createOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/sources");
             Assert.NotNull(bankAccount);
-            Assert.Equal("bank_account", bankAccount.Object);
         }
 
         [Fact]
@@ -77,7 +76,6 @@ namespace StripeTests
             var bankAccount = await this.service.CreateAsync(CustomerId, this.createOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/customers/cus_123/sources");
             Assert.NotNull(bankAccount);
-            Assert.Equal("bank_account", bankAccount.Object);
         }
 
         [Fact]
@@ -102,7 +100,6 @@ namespace StripeTests
             var bankAccount = this.service.Get(CustomerId, BankAccountId);
             this.AssertRequest(HttpMethod.Get, "/v1/customers/cus_123/sources/ba_123");
             Assert.NotNull(bankAccount);
-            Assert.Equal("bank_account", bankAccount.Object);
         }
 
         [Fact]
@@ -111,7 +108,6 @@ namespace StripeTests
             var bankAccount = await this.service.GetAsync(CustomerId, BankAccountId);
             this.AssertRequest(HttpMethod.Get, "/v1/customers/cus_123/sources/ba_123");
             Assert.NotNull(bankAccount);
-            Assert.Equal("bank_account", bankAccount.Object);
         }
 
         [Fact]
