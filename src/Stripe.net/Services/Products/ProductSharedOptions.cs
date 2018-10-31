@@ -72,6 +72,12 @@ namespace Stripe
         public string StatementDescriptor { get; set; }
 
         /// <summary>
+        /// A label that represents units of this product, such as seat(s), in Stripe and on customers’ receipts and invoices.
+        /// </summary>
+        [JsonProperty("unit_label")]
+        public string UnitLabel { get; set; }
+
+        /// <summary>
         /// A URL of a publicly-accessible webpage for this product.
         /// </summary>
         [JsonProperty("url")]

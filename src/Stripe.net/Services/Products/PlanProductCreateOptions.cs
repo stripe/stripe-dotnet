@@ -16,5 +16,8 @@ namespace Stripe
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("unit_label")]
+        public string UnitLabel { get; set; }
     }
 }
