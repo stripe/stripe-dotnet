@@ -14,6 +14,7 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("created")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>

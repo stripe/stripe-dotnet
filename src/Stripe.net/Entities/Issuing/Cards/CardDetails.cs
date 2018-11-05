@@ -27,6 +27,7 @@ namespace Stripe.Issuing
         #endregion
 
         [JsonProperty("created")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("cvc")]
