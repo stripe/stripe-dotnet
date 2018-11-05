@@ -16,5 +16,8 @@ namespace Stripe
 
         [JsonProperty("product")]
         public string ProductId { get; set; }
+
+        [JsonProperty("trial_period_days")]
+        public long? TrialPeriodDays { get; set; }
     }
 }
