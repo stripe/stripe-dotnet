@@ -1,5 +1,8 @@
 # Changelog
 
+## 20.4.0 - 2018-11-05
+* [#1366](https://github.com/stripe/stripe-dotnet/pull/1366) Add `TrialPeriodDays` to `PlanUpdateOptions`
+
 ## 20.3.0 - 2018-10-31
 * [#1332](https://github.com/stripe/stripe-dotnet/pull/1332) Add support for the `Person` resource
 * [#1342](https://github.com/stripe/stripe-dotnet/pull/1342) Add support for the `WebhookEndpoint` resource
