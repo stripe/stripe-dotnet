@@ -10,6 +10,7 @@ namespace Stripe
         public string DisabledReason { get; set; }
 
         [JsonProperty("due_by")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? DueBy { get; set; }
 
         [JsonProperty("fields_needed")]

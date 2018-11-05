@@ -13,6 +13,7 @@ namespace Stripe.Issuing
         public string Carrier { get; set; }
 
         [JsonProperty("eta")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Eta { get; set; }
 
         [JsonProperty("name")]
