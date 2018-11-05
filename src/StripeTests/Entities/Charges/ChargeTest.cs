@@ -1,9 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
@@ -19,6 +15,7 @@ namespace StripeTests
             Assert.IsType<Charge>(charge);
             Assert.NotNull(charge.Id);
             Assert.Equal("charge", charge.Object);
+            Assert.NotNull(charge.Source);
         }
 
         [Fact]
@@ -82,6 +79,18 @@ namespace StripeTests
 
             Assert.NotNull(charge.Transfer);
             Assert.Equal("transfer", charge.Transfer.Object);
+        }
+
+        [Fact]
+        public void DeserializeWithJsonConvert()
+        {
+            string json = GetFixture("/v1/charges/ch_123");
+            var charge = JsonConvert.DeserializeObject<Charge>(json);
+            Assert.NotNull(charge);
+            Assert.IsType<Charge>(charge);
+            Assert.NotNull(charge.Id);
+            Assert.Equal("charge", charge.Object);
+            Assert.NotNull(charge.Source);
         }
     }
 }

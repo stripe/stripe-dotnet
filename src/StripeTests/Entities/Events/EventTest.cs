@@ -1,7 +1,6 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
+    using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
@@ -37,6 +36,21 @@ namespace StripeTests
             Assert.NotNull(evt.Data.PreviousAttributes.metadata);
             Assert.NotNull(evt.Data.PreviousAttributes.metadata["foo"]);
             Assert.Equal("bar", (string)evt.Data.PreviousAttributes.metadata["foo"]);
+        }
+
+        [Fact]
+        public void DeserializeWithJsonConvert()
+        {
+            var json = GetResourceAsString("api_fixtures.events.event_plan.json");
+            var evt = JsonConvert.DeserializeObject<Event>(json);
+            Assert.NotNull(evt);
+            Assert.IsType<Event>(evt);
+            Assert.NotNull(evt.Id);
+            Assert.Equal("event", evt.Object);
+
+            Assert.NotNull(evt.Data);
+            Assert.NotNull(evt.Data.Object);
+            Assert.IsType<Plan>(evt.Data.Object);
         }
     }
 }

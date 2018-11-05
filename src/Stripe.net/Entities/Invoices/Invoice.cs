@@ -115,6 +115,7 @@ namespace Stripe
         public long? EndingBalance { get; set; }
 
         [JsonProperty("finalized_at")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? FinalizedAt { get; set; }
 
         [JsonProperty("hosted_invoice_url")]
