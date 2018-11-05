@@ -28,6 +28,9 @@ to `true`. We have also removed the `StripeDeleted` class.
       Charge. This can be a `Card`, `BankAccount`, `Source` or `Account`.
     * `IBalanceTransactionSource` represents all resources that can be the
       source of a Balance Transaction such as `Charge` or `Refund`.
+    * The `Data.Object` property of `Event` objects is now declared as
+      `IHasObject`. Previously, it was declared as `dynamic`. You can now
+      directly cast the property to the appropriate resource type.
 * `StripeSource` is now named `Source` as the other `Source` class was removed
   in favour of `IPaymentSource`. We have also added support for all existing
   source types and related properties or parameters.
@@ -38,8 +41,8 @@ to `true`. We have also removed the `StripeDeleted` class.
     * `BirthDay` becomes `Dob`.
     * `LegalEntityVerification` becomes `Verification`.
 * Most classes used as parameters for API methods with nested parameters have
-  been modified to reflect the structure in Stripe's REST API. For example 
-  `PersonalAddressLine1` on `StripeAccountLegalEntityOptions` has now been 
+  been modified to reflect the structure in Stripe's REST API. For example
+  `PersonalAddressLine1` on `StripeAccountLegalEntityOptions` has now been
   renamed to `Line1` on `AddressOptions` which is itself under `PersonalAddress`
   on `AccountLegalEntityOptions`.
 * We now have a dedicated service and related classes for the Invoice Item
