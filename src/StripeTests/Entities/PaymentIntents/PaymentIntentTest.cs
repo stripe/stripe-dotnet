@@ -74,10 +74,10 @@ namespace StripeTests
             Assert.NotNull(intent.Id);
             Assert.Equal("payment_intent", intent.Object);
 
-            Assert.Equal(PaymentIntentSourceActionType.AuthorizeWithUrl, intent.NextSourceAction.Type);
-            var authorizeWithUrl = intent.NextSourceAction.Value as PaymentIntentSourceActionAuthorizeWithUrl;
-            Assert.NotNull(authorizeWithUrl);
-            Assert.Equal("https://stripe.com", authorizeWithUrl.Url);
+            Assert.Equal("authorize_with_url", intent.NextSourceAction.Type);
+            Assert.NotNull(intent.NextSourceAction.AuthorizeWithUrl);
+            Assert.Equal("https://stripe.com", intent.NextSourceAction.AuthorizeWithUrl.Url);
+            Assert.Equal("https://stripe.com/return", intent.NextSourceAction.AuthorizeWithUrl.ReturnUrl);
         }
 
         [Fact]
@@ -91,8 +91,8 @@ namespace StripeTests
             Assert.NotNull(intent.Id);
             Assert.Equal("payment_intent", intent.Object);
 
-            Assert.Equal(PaymentIntentSourceActionType.Unknown, intent.NextSourceAction.Type);
-            Assert.Null(intent.NextSourceAction.Value);
+            Assert.Equal("foo", intent.NextSourceAction.Type);
+            Assert.Null(intent.NextSourceAction.AuthorizeWithUrl);
         }
     }
 }

@@ -23,11 +23,11 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("on_behalf_of")]
+        public string OnBehalfOf { get; set; }
+
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
-
-        [JsonProperty("return_url")]
-        public string ReturnUrl { get; set; }
 
         [JsonProperty("save_source_to_customer")]
         public bool? SaveSourceToCustomer { get; set; }
