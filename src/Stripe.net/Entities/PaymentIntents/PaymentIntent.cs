@@ -137,19 +137,13 @@ namespace Stripe
         public Shipping Shipping { get; set; }
 
         #region Expandable Source
-        public string SourceId { get; set; }
+        public string SourceId => this.InternalSource.Id;
 
         [JsonIgnore]
-        public IPaymentSource Source { get; set; }
+        public IPaymentSource Source => this.InternalSource.ExpandedObject;
 
         [JsonProperty("source")]
-        internal object InternalSource
-        {
-            set
-            {
-                StringOrObject<IPaymentSource>.Map(value, s => this.SourceId = s, o => this.Source = o);
-            }
-        }
+        internal ExpandableField<IPaymentSource> InternalSource { get; set; }
         #endregion
 
         [JsonProperty("statement_descriptor")]

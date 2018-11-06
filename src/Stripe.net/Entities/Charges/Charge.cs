@@ -26,38 +26,26 @@ namespace Stripe
         public long AmountRefunded { get; set; }
 
         #region Expandable Application
-        public string ApplicationId { get; set; }
+        public string ApplicationId => this.InternalApplication.Id;
 
         [JsonIgnore]
-        public Application Application { get; set; }
+        public Application Application => this.InternalApplication.ExpandedObject;
 
         [JsonProperty("application")]
-        internal object InternalApplication
-        {
-            set
-            {
-                StringOrObject<Application>.Map(value, s => this.ApplicationId = s, o => this.Application = o);
-            }
-        }
+        internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
         #region Expandable Application Fee
-        public string ApplicationFeeId { get; set; }
+        public string ApplicationFeeId => this.InternalApplicationFee.Id;
 
         /// <summary>
         /// The application fee (if any) for the charge. See the Connect documentation for details.
         /// </summary>
         [JsonIgnore]
-        public ApplicationFee ApplicationFee { get; set; }
+        public ApplicationFee ApplicationFee => this.InternalApplicationFee.ExpandedObject;
 
         [JsonProperty("application_fee")]
-        internal object InternalApplicationFee
-        {
-            set
-            {
-                StringOrObject<ApplicationFee>.Map(value, s => this.ApplicationFeeId = s, o => this.ApplicationFee = o);
-            }
-        }
+        internal ExpandableField<ApplicationFee> InternalApplicationFee { get; set; }
         #endregion
 
         #region Expandable Balance Transaction
@@ -65,19 +53,13 @@ namespace Stripe
         /// <summary>
         /// ID of the balance transaction that describes the impact of this charge on your account balance (not including refunds or disputes).
         /// </summary>
-        public string BalanceTransactionId { get; set; }
+        public string BalanceTransactionId => this.InternalBalanceTransaction.Id;
 
         [JsonIgnore]
-        public BalanceTransaction BalanceTransaction { get; set; }
+        public BalanceTransaction BalanceTransaction => this.InternalBalanceTransaction.ExpandedObject;
 
         [JsonProperty("balance_transaction")]
-        internal object InternalBalanceTransaction
-        {
-            set
-            {
-                StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
-            }
-        }
+        internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
         /// <summary>
@@ -101,19 +83,13 @@ namespace Stripe
         /// <summary>
         /// ID of the customer this charge is for if one exists.
         /// </summary>
-        public string CustomerId { get; set; }
+        public string CustomerId => this.InternalCustomer.Id;
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         [JsonProperty("description")]

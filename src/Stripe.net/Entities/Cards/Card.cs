@@ -13,19 +13,13 @@ namespace Stripe
         public string Object { get; set; }
 
         #region Expandable Account
-        public string AccountId { get; set; }
+        public string AccountId => this.InternalAccount.Id;
 
         [JsonIgnore]
-        public Account Account { get; set; }
+        public Account Account => this.InternalAccount.ExpandedObject;
 
         [JsonProperty("account")]
-        internal object InternalAccount
-        {
-            set
-            {
-                StringOrObject<Account>.Map(value, s => this.AccountId = s, o => this.Account = o);
-            }
-        }
+        internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
 
         [JsonProperty("address_city")]
@@ -65,19 +59,13 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
-        public string CustomerId { get; set; }
+        public string CustomerId => this.InternalCustomer.Id;
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         [JsonProperty("cvc_check")]
@@ -117,19 +105,13 @@ namespace Stripe
         public string Name { get; set; }
 
         #region Expandable Recipient
-        public string RecipientId { get; set; }
+        public string RecipientId => this.InternalRecipient.Id;
 
         [JsonIgnore]
-        public Recipient Recipient { get; set; }
+        public Recipient Recipient => this.InternalRecipient.ExpandedObject;
 
         [JsonProperty("recipient")]
-        internal object InternalRecipient
-        {
-            set
-            {
-                StringOrObject<Recipient>.Map(value, s => this.RecipientId = s, o => this.Recipient = o);
-            }
-        }
+        internal ExpandableField<Recipient> InternalRecipient { get; set; }
         #endregion
 
         [JsonProperty("three_d_secure")]

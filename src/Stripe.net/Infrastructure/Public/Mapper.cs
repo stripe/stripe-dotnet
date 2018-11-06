@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
@@ -9,13 +10,6 @@ namespace Stripe
 
     public static class Mapper<T>
     {
-        private static JsonConverter[] converters =
-        {
-            new BalanceTransactionSourceConverter(),
-            new ExternalAccountConverter(),
-            new PaymentSourceConverter(),
-        };
-
         public static List<T> MapCollectionFromJson(string json, string token = "data", StripeResponse stripeResponse = null)
         {
             var jObject = JObject.Parse(json);
@@ -42,6 +36,7 @@ namespace Stripe
         {
             var jsonToParse = string.IsNullOrEmpty(parentToken) ? json : JObject.Parse(json).SelectToken(parentToken).ToString();
 
+            var converters = GetConvertersForType(typeof(T));
             var result = JsonConvert.DeserializeObject<T>(jsonToParse, converters);
 
             // if necessary, we might need to apply the stripe response to nested properties for StripeList<T>
@@ -53,6 +48,26 @@ namespace Stripe
         public static T MapFromJson(StripeResponse stripeResponse, string parentToken = null)
         {
             return MapFromJson(stripeResponse.ResponseJson, parentToken, stripeResponse);
+        }
+
+        public static JsonConverter[] GetConvertersForType(Type type)
+        {
+            List<JsonConverter> converters = new List<JsonConverter>();
+
+            if (type == typeof(IBalanceTransactionSource))
+            {
+                converters.Add(new BalanceTransactionSourceConverter());
+            }
+            else if (type == typeof(IExternalAccount))
+            {
+                converters.Add(new ExternalAccountConverter());
+            }
+            else if (type == typeof(IPaymentSource))
+            {
+                converters.Add(new PaymentSourceConverter());
+            }
+
+            return converters.ToArray();
         }
 
         private static void ApplyStripeResponse(string json, StripeResponse stripeResponse, object obj)

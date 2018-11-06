@@ -4,6 +4,7 @@ namespace Stripe
     using System.Collections;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     [JsonObject]
     public class StripeList<T> : StripeEntity, IHasObject, IEnumerable<T>
@@ -11,7 +12,7 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("data")]
+        [JsonProperty("data", ItemConverterType = typeof(StripeListItemConverter))]
         public List<T> Data { get; set; }
 
         /// <summary>

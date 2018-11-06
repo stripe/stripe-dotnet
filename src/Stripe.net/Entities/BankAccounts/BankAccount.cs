@@ -14,19 +14,13 @@ namespace Stripe
         public string Object { get; set; }
 
         #region Expandable Account
-        public string AccountId { get; set; }
+        public string AccountId => this.InternalAccount.Id;
 
         [JsonIgnore]
-        public Account Account { get; set; }
+        public Account Account => this.InternalAccount.ExpandedObject;
 
         [JsonProperty("account")]
-        internal object InternalAccount
-        {
-            set
-            {
-                StringOrObject<Account>.Map(value, s => this.AccountId = s, o => this.Account = o);
-            }
-        }
+        internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
 
         [JsonProperty("account_holder_name")]
@@ -45,19 +39,13 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
-        public string CustomerId { get; set; }
+        public string CustomerId => this.InternalCustomer.Id;
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         [JsonProperty("default_for_currency")]

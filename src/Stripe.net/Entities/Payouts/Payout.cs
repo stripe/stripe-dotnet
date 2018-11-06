@@ -50,19 +50,13 @@ namespace Stripe
         public string Description { get; set; }
 
         #region Expandable Destination
-        public string DestinationId { get; set; }
+        public string DestinationId => this.InternalDestination.Id;
 
         [JsonIgnore]
-        public IExternalAccount Destination { get; set; }
+        public IExternalAccount Destination => this.InternalDestination.ExpandedObject;
 
         [JsonProperty("destination")]
-        internal object InternalDestination
-        {
-            set
-            {
-                StringOrObject<IExternalAccount>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
-            }
-        }
+        internal ExpandableField<IExternalAccount> InternalDestination { get; set; }
         #endregion
 
         #region Expandable Failure Balance Transaction

@@ -35,20 +35,13 @@ namespace Stripe
         /// ID of the default source attached to this customer
         /// <para>You can expand the DefaultSource by setting the ExpandDefaultSource property on the service to true</para>
         /// </summary>
-        public string DefaultSourceId { get; set; }
+        public string DefaultSourceId => this.InternalDefaultSource.Id;
 
         [JsonIgnore]
-        public IPaymentSource DefaultSource { get; set; }
+        public IPaymentSource DefaultSource => this.InternalDefaultSource.ExpandedObject;
 
         [JsonProperty("default_source")]
-        internal object InternalDefaultSource
-        {
-            set
-            {
-                StringOrObject<IPaymentSource>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
-            }
-        }
-
+        internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
         #endregion
 
         /// <summary>

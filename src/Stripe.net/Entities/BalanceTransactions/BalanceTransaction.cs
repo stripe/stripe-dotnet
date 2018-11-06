@@ -43,19 +43,13 @@ namespace Stripe
         public long Net { get; set; }
 
         #region Expandable Source
-        public string SourceId { get; set; }
+        public string SourceId => this.InternalSource.Id;
 
         [JsonIgnore]
-        public IBalanceTransactionSource Source { get; set; }
+        public IBalanceTransactionSource Source => this.InternalSource.ExpandedObject;
 
         [JsonProperty("source")]
-        internal object InternalSource
-        {
-            set
-            {
-                StringOrObject<IBalanceTransactionSource>.Map(value, s => this.SourceId = s, o => this.Source = o);
-            }
-        }
+        internal ExpandableField<IBalanceTransactionSource> InternalSource { get; set; }
         #endregion
 
         [JsonProperty("status")]
