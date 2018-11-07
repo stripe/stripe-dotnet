@@ -6,6 +6,9 @@ namespace Stripe
 
     public class PlanTierOptions : INestedOptions
     {
+        [JsonProperty("flat_amount")]
+        public long? FlatAmount { get; set; }
+
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }
 
