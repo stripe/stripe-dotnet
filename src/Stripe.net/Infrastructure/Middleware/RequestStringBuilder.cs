@@ -181,7 +181,7 @@ namespace Stripe.Infrastructure.Middleware
 
             foreach (KeyValuePair<string, object> entry in dictionary)
             {
-                string key = entry.Key;
+                string key = WebUtility.UrlEncode(entry.Key);
                 object value = entry.Value;
 
                 string newPrefix = NewPrefix(key, keyPrefix);
