@@ -47,6 +47,9 @@ namespace Stripe
         [JsonProperty("canceled_at")]
         public DateTime? CanceledAt { get; set; }
 
+        [JsonProperty("cancellation_reason")]
+        public string CancellationReason { get; set; }
+
         [JsonProperty("capture_method")]
         public string CaptureMethod { get; set; }
 
@@ -93,11 +96,24 @@ namespace Stripe
         [JsonProperty("next_source_action")]
         public PaymentIntentSourceAction NextSourceAction { get; set; }
 
+        #region Expandable OnBehalfOf (Account)
+        public string OnBehalfOfId { get; set; }
+
+        [JsonIgnore]
+        public Account OnBehalfOf { get; set; }
+
+        [JsonProperty("on_behalf_of")]
+        internal object InternalOnBehalfOf
+        {
+            set
+            {
+                StringOrObject<Account>.Map(value, s => this.OnBehalfOfId = s, o => this.OnBehalfOf = o);
+            }
+        }
+        #endregion
+
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
-
-        [JsonProperty("return_url")]
-        public string ReturnUrl { get; set; }
 
         #region Expandable Review
         public string ReviewId { get; set; }

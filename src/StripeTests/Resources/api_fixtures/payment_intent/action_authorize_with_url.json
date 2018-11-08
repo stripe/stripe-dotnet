@@ -34,10 +34,11 @@
     "order_id": "123456789"
   },
   "next_source_action": {
-    "type": "authorize_with_url",
-    "value": {
+    "authorize_with_url": {
+      "return_url": "https://stripe.com/return",
       "url": "https://stripe.com"
-    }
+    },
+    "type": "authorize_with_url"
   },
   "on_behalf_of": null,
   "receipt_email": "test@stripe.com",
