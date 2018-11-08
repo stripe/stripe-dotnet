@@ -396,5 +396,21 @@ namespace StripeTests
             }
         }
         #endif
+
+        [Fact]
+        public void UrlEncodesKeysAndValues()
+        {
+            var obj = new TestOptions
+            {
+                    Dictionary = new Dictionary<string, object>
+                    {
+                        { "#", "42" },
+                        { "bar&baz", "+foo?" },
+                    },
+                    String = "[éàü]",
+            };
+            var url = this.service.ApplyAllParameters(obj, string.Empty, false);
+            Assert.Equal("?dictionary[%23]=42&dictionary[bar%26baz]=%2Bfoo%3F&string=%5B%C3%A9%C3%A0%C3%BC%5D", url);
+        }
     }
 }
