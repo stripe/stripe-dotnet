@@ -19,11 +19,12 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
+            // Do not test expanding `source` as it is not supported by stripe-mock
+            // and will be auto-expanded in a future API version.
             string[] expansions =
             {
               "application",
               "customer",
-              "source",
               "transfer_data.destination",
             };
 
@@ -39,10 +40,6 @@ namespace StripeTests
 
             Assert.NotNull(intent.Customer);
             Assert.Equal("customer", intent.Customer.Object);
-
-            Assert.NotNull(intent.Source);
-            Assert.IsType<Card>(intent.Source);
-            Assert.Equal("card", intent.Source.Object);
 
             Assert.NotNull(intent.TransferData);
             Assert.NotNull(intent.TransferData.Destination);

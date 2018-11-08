@@ -10,8 +10,14 @@ namespace Stripe
         [JsonProperty("application_fee")]
         public long? ApplicationFee { get; set; }
 
+        [JsonProperty("auto_advance")]
+        public bool? AutoAdvance { get; set; }
+
         [JsonProperty("closed")]
         public bool? Closed { get; set; }
+
+        [JsonProperty("default_source")]
+        public string DefaultSource { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }

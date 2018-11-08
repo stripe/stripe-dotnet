@@ -37,6 +37,9 @@ namespace Stripe
         [JsonProperty("days_until_due")]
         public long? DaysUntilDue { get; set; }
 
+        [JsonProperty("default_source")]
+        public string DefaultSource { get; set; }
+
         /// <summary>
         /// A set of key/value pairs that you can attach to a subscription object. It can be useful for storing additional information about the subscription in a structured format.
         /// </summary>

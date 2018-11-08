@@ -18,18 +18,22 @@ namespace StripeTests
         private InvoiceListOptions listOptions;
         private InvoiceListLineItemsOptions listLineItemsOptions;
         private UpcomingInvoiceOptions upcomingOptions;
+        private InvoiceFinalizeOptions finalizeOptions;
+        private InvoiceMarkUncollectibleOptions markUncollectibleOptions;
+        private InvoiceSendOptions sendOptions;
+        private InvoiceVoidOptions voidOptions;
 
         public InvoiceServiceTest()
         {
             this.service = new InvoiceService();
 
-            this.createOptions = new InvoiceCreateOptions()
+            this.createOptions = new InvoiceCreateOptions
             {
                 CustomerId = "cus_123",
                 TaxPercent = 12.5m,
             };
 
-            this.updateOptions = new InvoiceUpdateOptions()
+            this.updateOptions = new InvoiceUpdateOptions
             {
                 Metadata = new Dictionary<string, string>()
                 {
@@ -37,26 +41,42 @@ namespace StripeTests
                 },
             };
 
-            this.payOptions = new InvoicePayOptions()
+            this.payOptions = new InvoicePayOptions
             {
                 Forgive = true,
                 SourceId = "src_123",
             };
 
-            this.listOptions = new InvoiceListOptions()
+            this.listOptions = new InvoiceListOptions
             {
                 Limit = 1,
             };
 
-            this.listLineItemsOptions = new InvoiceListLineItemsOptions()
+            this.listLineItemsOptions = new InvoiceListLineItemsOptions
             {
                 Limit = 1,
             };
 
-            this.upcomingOptions = new UpcomingInvoiceOptions()
+            this.upcomingOptions = new UpcomingInvoiceOptions
             {
                 CustomerId = "cus_123",
                 SubscriptionId = "sub_123",
+            };
+
+            this.finalizeOptions = new InvoiceFinalizeOptions
+            {
+            };
+
+            this.markUncollectibleOptions = new InvoiceMarkUncollectibleOptions
+            {
+            };
+
+            this.sendOptions = new InvoiceSendOptions
+            {
+            };
+
+            this.voidOptions = new InvoiceVoidOptions
+            {
             };
         }
 
@@ -74,6 +94,42 @@ namespace StripeTests
         {
             var invoice = await this.service.CreateAsync(this.createOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/invoices");
+            Assert.NotNull(invoice);
+            Assert.Equal("invoice", invoice.Object);
+        }
+
+        [Fact]
+        public void Delete()
+        {
+            var invoice = this.service.Delete(InvoiceId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/invoices/in_123");
+            Assert.NotNull(invoice);
+            Assert.Equal("invoice", invoice.Object);
+        }
+
+        [Fact]
+        public async Task DeleteAsync()
+        {
+            var invoice = await this.service.DeleteAsync(InvoiceId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/invoices/in_123");
+            Assert.NotNull(invoice);
+            Assert.Equal("invoice", invoice.Object);
+        }
+
+        [Fact]
+        public void FinalizeInvoice()
+        {
+            var invoice = this.service.FinalizeInvoice(InvoiceId, this.finalizeOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/finalize");
+            Assert.NotNull(invoice);
+            Assert.Equal("invoice", invoice.Object);
+        }
+
+        [Fact]
+        public async Task FinalizeInvoiceAsync()
+        {
+            var invoice = await this.service.FinalizeInvoiceAsync(InvoiceId, this.finalizeOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/finalize");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -163,6 +219,24 @@ namespace StripeTests
         }
 
         [Fact]
+        public void MarkUncollectible()
+        {
+            var invoice = this.service.MarkUncollectible(InvoiceId, this.markUncollectibleOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/mark_uncollectible");
+            Assert.NotNull(invoice);
+            Assert.Equal("invoice", invoice.Object);
+        }
+
+        [Fact]
+        public async Task MarkUncollectibleAsync()
+        {
+            var invoice = await this.service.MarkUncollectibleAsync(InvoiceId, this.markUncollectibleOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/mark_uncollectible");
+            Assert.NotNull(invoice);
+            Assert.Equal("invoice", invoice.Object);
+        }
+
+        [Fact]
         public void Pay()
         {
             var invoice = this.service.Pay(InvoiceId, this.payOptions);
@@ -176,6 +250,24 @@ namespace StripeTests
         {
             var invoice = await this.service.PayAsync(InvoiceId, this.payOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/pay");
+            Assert.NotNull(invoice);
+            Assert.Equal("invoice", invoice.Object);
+        }
+
+        [Fact]
+        public void SendInvoice()
+        {
+            var invoice = this.service.SendInvoice(InvoiceId, this.sendOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/send");
+            Assert.NotNull(invoice);
+            Assert.Equal("invoice", invoice.Object);
+        }
+
+        [Fact]
+        public async Task SendInvoiceAsync()
+        {
+            var invoice = await this.service.SendInvoiceAsync(InvoiceId, this.sendOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/send");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
@@ -212,6 +304,24 @@ namespace StripeTests
         {
             var invoice = await this.service.UpdateAsync(InvoiceId, this.updateOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123");
+            Assert.NotNull(invoice);
+            Assert.Equal("invoice", invoice.Object);
+        }
+
+        [Fact]
+        public void VoidInvoice()
+        {
+            var invoice = this.service.VoidInvoice(InvoiceId, this.voidOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/void");
+            Assert.NotNull(invoice);
+            Assert.Equal("invoice", invoice.Object);
+        }
+
+        [Fact]
+        public async Task VoidInvoiceAsync()
+        {
+            var invoice = await this.service.VoidInvoiceAsync(InvoiceId, this.voidOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/void");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
