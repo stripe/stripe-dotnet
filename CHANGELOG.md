@@ -1,5 +1,8 @@
 # Changelog
 
+## 20.4.1 - 2018-11-08
+* [#1377](https://github.com/stripe/stripe-dotnet/pull/1377) Fix an issue where dictionary keys (such as `Metadata` keys) weren't URL-encoded
+
 ## 20.4.0 - 2018-11-05
 * [#1366](https://github.com/stripe/stripe-dotnet/pull/1366) Add `TrialPeriodDays` to `PlanUpdateOptions`
 
