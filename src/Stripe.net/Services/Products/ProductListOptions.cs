@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class ProductListOptions : ListOptions
+    public class ProductListOptions : ListOptionsWithCreated
     {
         [JsonProperty("active")]
         public bool? Active { get; set; }
