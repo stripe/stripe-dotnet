@@ -6,5 +6,8 @@ namespace Stripe
     {
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
+
+        [JsonProperty("source")]
+        public ChargeSourceListOptions Source { get; set; }
     }
 }
