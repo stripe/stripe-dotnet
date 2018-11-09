@@ -34,10 +34,7 @@
     "order_id": "123456789"
   },
   "next_source_action": {
-    "type": "foo",
-    "value": {
-      "bar": [1, 2, 3]
-    }
+    "type": "foo"
   },
   "on_behalf_of": null,
   "receipt_email": "test@stripe.com",
