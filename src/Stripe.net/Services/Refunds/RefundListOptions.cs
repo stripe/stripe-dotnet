@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class RefundListOptions : ListOptions
+    public class RefundListOptions : ListOptionsWithCreated
     {
         [JsonProperty("charge")]
         public string ChargeId { get; set; }
