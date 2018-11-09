@@ -1,5 +1,10 @@
 # Changelog
 
+## 21.0.0 - 2018-11-08
+* [#1343](https://github.com/stripe/stripe-dotnet/pull/1343) Add new API endpoints for the `Invoice` resource.
+* [#1373](https://github.com/stripe/stripe-dotnet/pull/1373) Add support for `flat_amount` on `Plan`.
+* [#1372](https://github.com/stripe/stripe-dotnet/pull/1372) Support new properties and parameters for PaymentIntent: #1372
+
 ## 20.4.1 - 2018-11-08
 * [#1377](https://github.com/stripe/stripe-dotnet/pull/1377) Fix an issue where dictionary keys (such as `Metadata` keys) weren't URL-encoded
 
