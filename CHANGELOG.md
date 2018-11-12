@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.2.0 - 2018-11-12
+* [#1387](https://github.com/stripe/stripe-dotnet/pull/1387) Add XML comments to `IBalanceTransactionSource`, `IExternalAccount` and `IPaymentSource`
+* [#1388](https://github.com/stripe/stripe-dotnet/pull/1388) Add support for Terminal resources
+* [#1389](https://github.com/stripe/stripe-dotnet/pull/1389) Add support for providing `client_secret` when retrieving sources and payment intents
+* [#1390](https://github.com/stripe/stripe-dotnet/pull/1390) Rename files to fix warnings
+
 ## 21.1.0 - 2018-11-09
 * [#1383](https://github.com/stripe/stripe-dotnet/pull/1383) Add `Created` and `CreatedRange` to `CouponListOptions`, `ProductListOptions` and `RefundListOptions`
 * [#1385](https://github.com/stripe/stripe-dotnet/pull/1385) Add `Source` to `ChargeListOptions`
