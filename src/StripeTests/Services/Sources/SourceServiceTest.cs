@@ -159,6 +159,19 @@ namespace StripeTests
         }
 
         [Fact]
+        public void GetWithClientSecret()
+        {
+            var options = new SourceGetOptions
+            {
+                ClientSecret = "src_client_secret_123",
+            };
+            var source = this.service.Get(SourceId, options);
+            this.AssertRequest(HttpMethod.Get, "/v1/sources/src_123");
+            Assert.NotNull(source);
+            Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
         public void List()
         {
             var sources = this.service.List(CustomerId, this.listOptions);

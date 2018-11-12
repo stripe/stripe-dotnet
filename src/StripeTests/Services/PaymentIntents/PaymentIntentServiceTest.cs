@@ -157,6 +157,19 @@ namespace StripeTests
         }
 
         [Fact]
+        public void GetWithClientSecret()
+        {
+            var options = new PaymentIntentGetOptions
+            {
+                ClientSecret = "pi_client_secret_123",
+            };
+            var intent = this.service.Get(PaymentIntentId, options);
+            this.AssertRequest(HttpMethod.Get, "/v1/payment_intents/pi_123");
+            Assert.NotNull(intent);
+            Assert.Equal("payment_intent", intent.Object);
+        }
+
+        [Fact]
         public void List()
         {
             var intents = this.service.List(this.listOptions);
