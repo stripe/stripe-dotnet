@@ -1,0 +1,52 @@
+{
+  "id": "cus_123",
+  "object": "customer",
+  "account_balance": 0,
+  "created": 1234567890,
+  "currency": "usd",
+  "default_source": {
+    "id": "card_123",
+    "object": "card",
+    "metadata": {
+      "yet_another_iso_date": "2018-04-04T12:34:56Z"
+    }
+  },
+  "delinquent": false,
+  "description": "2018-01-01T12:34:56-07:00",
+  "discount": null,
+  "email": null,
+  "invoice_prefix": "F081586",
+  "livemode": false,
+  "metadata": {
+    "some_iso_date": "2018-02-02T12:34:56+02:00"
+  },
+  "shipping": null,
+  "sources": {
+    "data": [
+      {
+        "id": "card_123",
+        "object": "card",
+        "metadata": {
+          "yet_another_iso_date": "2018-04-04T12:34:56Z"
+        }
+      }
+    ],
+    "has_more": false,
+    "object": "list",
+    "url": "/v1/customers/cus_123/sources"
+  },
+  "subscriptions": {
+    "data": [
+      {
+        "id": "sub_123",
+        "object": "subscription",
+        "metadata": {
+          "another_iso_date": "2018-03-03T12:34:56+08:30"
+        }
+      }
+    ],
+    "has_more": false,
+    "object": "list",
+    "url": "/v1/customers/cus_123/subscriptions"
+  }
+}
