@@ -1,8 +1,6 @@
 namespace Stripe
 {
-    using System.Runtime.Serialization;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
     using Stripe.Infrastructure;
 
     public class PaymentIntentLastPaymentError : StripeEntity
@@ -26,6 +24,7 @@ namespace Stripe
         public string Param { get; set; }
 
         [JsonProperty("source")]
+        [JsonConverter(typeof(StripeObjectConverter))]
         public IPaymentSource Source { get; set; }
 
         [JsonProperty("type")]
