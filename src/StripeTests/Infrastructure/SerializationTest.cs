@@ -2,8 +2,7 @@ namespace StripeTests
 {
     using System;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using Stripe.Infrastructure;
+    using Stripe;
     using StripeTests.Infrastructure.TestData;
     using Xunit;
 
@@ -33,6 +32,18 @@ namespace StripeTests
 
             var reloaded = JsonConvert.DeserializeObject<TestObjectDateTime>(JsonConvert.SerializeObject(obj));
             Assert.Null(reloaded.Date);
+        }
+
+        [Fact]
+        public void Serialize()
+        {
+            var json = GetResourceAsString("api_fixtures.events.customer_updated.json");
+            var evt = JsonConvert.DeserializeObject<Event>(json);
+            var serialized = JsonConvert.SerializeObject(evt, Formatting.Indented);
+            var reserialized = JsonConvert.SerializeObject(
+                JsonConvert.DeserializeObject<Event>(serialized),
+                Formatting.Indented);
+            Assert.Equal(serialized, reserialized);
         }
     }
 }
