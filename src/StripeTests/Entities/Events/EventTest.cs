@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
@@ -9,7 +10,7 @@ namespace StripeTests
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.events.event_plan.json");
-            var evt = Mapper<Event>.MapFromJson(json);
+            var evt = JsonConvert.DeserializeObject<Event>(json);
             Assert.NotNull(evt);
             Assert.IsType<Event>(evt);
             Assert.NotNull(evt.Id);
@@ -24,7 +25,7 @@ namespace StripeTests
         public void DeserializePreviousAttributes()
         {
             var json = GetResourceAsString("api_fixtures.events.customer_updated.json");
-            var evt = Mapper<Event>.MapFromJson(json);
+            var evt = JsonConvert.DeserializeObject<Event>(json);
             Assert.NotNull(evt);
             Assert.IsType<Event>(evt);
             Assert.NotNull(evt.Id);
