@@ -1,5 +1,8 @@
 # Changelog
 
+## 21.3.0 - 2018-11-14
+* [#1393](https://github.com/stripe/stripe-dotnet/pull/1393) Add `last_payment_error` on `PaymentIntent`
+
 ## 21.2.0 - 2018-11-12
 * [#1387](https://github.com/stripe/stripe-dotnet/pull/1387) Add XML comments to `IBalanceTransactionSource`, `IExternalAccount` and `IPaymentSource`
 * [#1388](https://github.com/stripe/stripe-dotnet/pull/1388) Add support for Terminal resources
