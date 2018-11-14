@@ -1,5 +1,8 @@
 # Changelog
 
+## 21.4.0 - 2018-11-14
+* [#1394](https://github.com/stripe/stripe-dotnet/pull/1394) Add support for `type` when listing `Products`
+
 ## 21.3.0 - 2018-11-14
 * [#1393](https://github.com/stripe/stripe-dotnet/pull/1393) Add `last_payment_error` on `PaymentIntent`
 
