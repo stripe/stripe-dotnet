@@ -91,5 +91,23 @@ namespace StripeTests
             Assert.Equal("foo", intent.NextSourceAction.Type);
             Assert.Null(intent.NextSourceAction.AuthorizeWithUrl);
         }
+
+        [Fact]
+        public void DeserializeLastPaymentError()
+        {
+            var json = GetResourceAsString("api_fixtures.payment_intent.last_payment_error.json");
+            var intent = Mapper<PaymentIntent>.MapFromJson(json);
+
+            Assert.NotNull(intent);
+            Assert.IsType<PaymentIntent>(intent);
+            Assert.NotNull(intent.Id);
+            Assert.Equal("payment_intent", intent.Object);
+
+            var lastPaymentError = intent.LastPaymentError;
+            Assert.NotNull(lastPaymentError);
+            Assert.Equal("generic_decline", lastPaymentError.DeclineCode);
+            Assert.IsType<Card>(lastPaymentError.Source);
+            Assert.Equal("card_123", lastPaymentError.Source.Id);
+        }
     }
 }
