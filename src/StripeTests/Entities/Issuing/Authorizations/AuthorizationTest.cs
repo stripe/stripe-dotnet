@@ -1,11 +1,6 @@
 namespace StripeTests.Issuing
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Newtonsoft.Json;
-    using Stripe;
     using Stripe.Issuing;
     using Xunit;
 
@@ -15,7 +10,7 @@ namespace StripeTests.Issuing
         public void Deserialize()
         {
             string json = GetFixture("/v1/issuing/authorizations/iauth_123");
-            var authorization = Mapper<Authorization>.MapFromJson(json);
+            var authorization = JsonConvert.DeserializeObject<Authorization>(json);
             Assert.NotNull(authorization);
             Assert.IsType<Authorization>(authorization);
             Assert.NotNull(authorization.Id);
@@ -34,7 +29,7 @@ namespace StripeTests.Issuing
             };
 
             string json = GetFixture("/v1/issuing/authorizations/iauth_123", expansions);
-            var authorization = Mapper<Authorization>.MapFromJson(json);
+            var authorization = JsonConvert.DeserializeObject<Authorization>(json);
             Assert.NotNull(authorization);
             Assert.IsType<Authorization>(authorization);
             Assert.NotNull(authorization.Id);

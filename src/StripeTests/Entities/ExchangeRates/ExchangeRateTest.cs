@@ -1,9 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
@@ -14,7 +10,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = GetFixture("/v1/exchange_rates/usd");
-            var exchangeRate = Mapper<ExchangeRate>.MapFromJson(json);
+            var exchangeRate = JsonConvert.DeserializeObject<ExchangeRate>(json);
             Assert.NotNull(exchangeRate);
             Assert.IsType<ExchangeRate>(exchangeRate);
             Assert.NotNull(exchangeRate.Id);

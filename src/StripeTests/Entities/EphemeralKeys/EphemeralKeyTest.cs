@@ -1,9 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
@@ -14,7 +10,7 @@ namespace StripeTests
         public void Deserialize()
         {
             var json = GetResourceAsString("api_fixtures.ephemeral_key.json");
-            var ephemeralKey = Mapper<EphemeralKey>.MapFromJson(json);
+            var ephemeralKey = JsonConvert.DeserializeObject<EphemeralKey>(json);
 
             Assert.NotNull(ephemeralKey);
             Assert.NotNull(ephemeralKey.Id);

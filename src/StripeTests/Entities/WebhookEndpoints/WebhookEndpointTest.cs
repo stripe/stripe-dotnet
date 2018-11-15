@@ -1,9 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
@@ -14,7 +10,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = GetFixture("/v1/webhook_endpoints/we_123");
-            var endpoint = Mapper<WebhookEndpoint>.MapFromJson(json);
+            var endpoint = JsonConvert.DeserializeObject<WebhookEndpoint>(json);
             Assert.NotNull(endpoint);
             Assert.IsType<WebhookEndpoint>(endpoint);
             Assert.NotNull(endpoint.Id);

@@ -1,10 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.IO;
-    using System.Reflection;
-    using System.Text;
-
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;

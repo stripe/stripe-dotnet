@@ -1,7 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
     using Stripe;
     using Xunit;
 

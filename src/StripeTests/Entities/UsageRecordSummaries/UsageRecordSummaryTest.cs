@@ -1,9 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
@@ -14,7 +10,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = GetFixture("/v1/subscription_items/si_123/usage_record_summaries");
-            var summaries = Mapper<StripeList<UsageRecordSummary>>.MapFromJson(json);
+            var summaries = JsonConvert.DeserializeObject<StripeList<UsageRecordSummary>>(json);
             Assert.NotNull(summaries);
 
             var summary = summaries.Data[0];

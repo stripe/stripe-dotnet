@@ -1,9 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
@@ -14,7 +10,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = GetFixture("/v1/topups/tu_123");
-            var topup = Mapper<Topup>.MapFromJson(json);
+            var topup = JsonConvert.DeserializeObject<Topup>(json);
             Assert.NotNull(topup);
             Assert.IsType<Topup>(topup);
             Assert.NotNull(topup.Id);
@@ -31,7 +27,7 @@ namespace StripeTests
             };
 
             string json = GetFixture("/v1/topups/tu_123", expansions);
-            var topup = Mapper<Topup>.MapFromJson(json);
+            var topup = JsonConvert.DeserializeObject<Topup>(json);
             Assert.NotNull(topup);
             Assert.IsType<Topup>(topup);
             Assert.NotNull(topup.Id);
