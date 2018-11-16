@@ -1,5 +1,8 @@
 # Changelog
 
+## 21.4.1 - 2018-11-16
+* [#1395](https://github.com/stripe/stripe-dotnet/pull/1395) Fix deserialization of objects with `DateTime` properties
+
 ## 21.4.0 - 2018-11-14
 * [#1394](https://github.com/stripe/stripe-dotnet/pull/1394) Add support for `type` when listing `Products`
 
