@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
@@ -9,7 +10,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = GetFixture("/v1/payouts/po_123");
-            var payout = Mapper<Payout>.MapFromJson(json);
+            var payout = JsonConvert.DeserializeObject<Payout>(json);
             Assert.NotNull(payout);
             Assert.IsType<Payout>(payout);
             Assert.NotNull(payout.Id);
@@ -27,7 +28,7 @@ namespace StripeTests
             };
 
             string json = GetFixture("/v1/payouts/po_123", expansions);
-            var payout = Mapper<Payout>.MapFromJson(json);
+            var payout = JsonConvert.DeserializeObject<Payout>(json);
             Assert.NotNull(payout);
             Assert.IsType<Payout>(payout);
             Assert.NotNull(payout.Id);

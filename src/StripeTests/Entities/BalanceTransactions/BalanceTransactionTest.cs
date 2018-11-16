@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System;
+    using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
@@ -10,7 +11,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = GetFixture("/v1/balance/history/txn_123");
-            var balanceTransaction = Mapper<BalanceTransaction>.MapFromJson(json);
+            var balanceTransaction = JsonConvert.DeserializeObject<BalanceTransaction>(json);
             Assert.NotNull(balanceTransaction);
             Assert.IsType<BalanceTransaction>(balanceTransaction);
             Assert.NotNull(balanceTransaction.Id);
@@ -23,7 +24,7 @@ namespace StripeTests
             // We test all balance transaction possible source types to ensure the deserializer
             // works as expectes.
             var json = GetResourceAsString("api_fixtures.balance_transaction_with_expansion.json");
-            var balanceTransactions = Mapper<StripeList<BalanceTransaction>>.MapFromJson(json);
+            var balanceTransactions = JsonConvert.DeserializeObject<StripeList<BalanceTransaction>>(json);
 
             Assert.NotNull(balanceTransactions);
             Assert.NotNull(balanceTransactions.Data);

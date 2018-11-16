@@ -12,7 +12,6 @@ namespace Stripe
         private static JsonConverter[] converters =
         {
             new BalanceTransactionSourceConverter(),
-            new DateTimeConverter(),
             new ExternalAccountConverter(),
             new PaymentSourceConverter(),
             new StripeObjectConverter(),

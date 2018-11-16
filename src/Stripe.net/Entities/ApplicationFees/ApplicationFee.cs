@@ -83,6 +83,7 @@ namespace Stripe
         #endregion
 
         [JsonProperty("created")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("currency")]

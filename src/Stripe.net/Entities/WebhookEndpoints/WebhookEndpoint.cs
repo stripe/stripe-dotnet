@@ -20,6 +20,7 @@ namespace Stripe
         public bool Connect { get; set; }
 
         [JsonProperty("created")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("deleted")]

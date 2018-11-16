@@ -26,6 +26,7 @@ namespace Stripe
         }
 
         [JsonProperty("created")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>
@@ -35,6 +36,7 @@ namespace Stripe
         public bool Deleted { get; set; }
 
         [JsonProperty("expires")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Expires { get; set; }
 
         [JsonProperty("livemode")]

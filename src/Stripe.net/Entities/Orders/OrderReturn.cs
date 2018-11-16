@@ -20,6 +20,7 @@ namespace Stripe
         public long Amount { get; set; }
 
         [JsonProperty("created")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>

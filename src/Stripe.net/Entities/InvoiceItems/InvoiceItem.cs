@@ -36,6 +36,7 @@ namespace Stripe
         #endregion
 
         [JsonProperty("date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Date { get; set; }
 
         /// <summary>
