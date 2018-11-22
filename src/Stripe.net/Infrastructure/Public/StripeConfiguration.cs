@@ -30,12 +30,12 @@ namespace Stripe
 
         internal static string GetApiKey()
         {
+#if NET45
             if (string.IsNullOrEmpty(apiKey))
             {
-#if NET45
                 apiKey = System.Configuration.ConfigurationManager.AppSettings["StripeApiKey"];
-#endif
             }
+#endif
 
             return apiKey;
         }
