@@ -22,12 +22,12 @@ namespace StripeTests
             Assert.Equal("account", account.Object);
         }
 
-        [Fact]
+        /*[Fact]
         public void DeserializeWithExpansions()
         {
             string[] expansions =
             {
-              "business_logo",
+              "business_profile.logo",
             };
 
             string json = this.GetFixture("/v1/accounts/acct_123", expansions);
@@ -38,8 +38,8 @@ namespace StripeTests
             Assert.NotNull(account.Id);
             Assert.Equal("account", account.Object);
 
-            Assert.NotNull(account.BusinessLogo);
-            Assert.Equal("file", account.BusinessLogo.Object);
-        }
+            Assert.NotNull(account.BusinessProfile.Logo);
+            Assert.Equal("file", account.BusinessProfile.Logo.Object);
+        }*/
     }
 }

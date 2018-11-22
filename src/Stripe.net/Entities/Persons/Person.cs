@@ -33,7 +33,7 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         [JsonProperty("dob")]
-        public BirthDay Dob { get; set; }
+        public PersonDob Dob { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -81,6 +81,6 @@ namespace Stripe
         public bool SsnLast4Provided { get; set; }
 
         [JsonProperty("verification")]
-        public LegalEntityVerification Verification { get; set; }
+        public PersonVerification Verification { get; set; }
     }
 }

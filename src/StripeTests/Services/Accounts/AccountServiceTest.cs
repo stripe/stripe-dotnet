@@ -26,50 +26,52 @@ namespace StripeTests
             this.createOptions = new AccountCreateOptions
             {
                 Type = AccountType.Custom,
-                ExternalAccountId = "tok_visa_debit",
-                LegalEntity = new AccountLegalEntityOptions
+                BusinessProfile = new AccountBusinessProfileOptions
                 {
-                    AdditionalOwners = new List<AccountAdditionalOwner>
+                    Logo = "file_123",
+                    Name = "My Business Name",
+                    ProductDescription = "Payments APIs",
+                },
+                BusinessType = "company",
+                Company = new AccountCompanyOptions
+                {
+                    Address = new AddressOptions
                     {
-                        new AccountAdditionalOwner
+                        State = "CA",
+                        City = "City",
+                        Line1 = "Line1",
+                        Line2 = "Line2",
+                        PostalCode = "90210",
+                        Country = "US",
+                    },
+                    Name = "My Business Name",
+                },
+                ExternalAccountId = "tok_visa_debit",
+                RequestedCapabilities = new List<string>
+                {
+                    "platform_payments",
+                },
+                Settings = new AccountSettingsOptions
+                {
+                    Charge = new AccountSettingsChargeOptions
+                    {
+                        DeclineOn = new AccountSettingsChargeDeclineOnOptions
                         {
-                            // Verified this is encoded properly but stripe-mock does not
-                            // support dob at the moment for additional owners.
-                            // Dob = new AccountDobOptions
-                            // {
-                            //     Day = 1,
-                            //     Month = 1,
-                            //     Year = 1980,
-                            // },
-                            FirstName = "John",
-                            LastName = "Doe",
-                            Verification = new AccountVerificationOptions
-                            {
-                                DocumentBackId = "file_123",
-                                DocumentId = "file_234",
-                            },
+                            AvsFailure = false,
+                            CvcFailure = true,
                         },
-                        new AccountAdditionalOwner
-                        {
-                            Address = new AddressOptions
-                            {
-                                State = "CA",
-                                City = "City",
-                                Line1 = "Line1",
-                                Line2 = "Line2",
-                                PostalCode = "90210",
-                                Country = "US",
-                            },
-                            FirstName = "Jenny",
-                            LastName = "Rosen",
-                        }
+                        StatementDescriptorPrefix = "Stripe",
                     },
-                    Verification = new AccountVerificationOptions
+                    Payout = new AccountSettingsPayoutOptions
                     {
-                        DocumentBackId = "file_abc",
-                        DocumentId = "file_bcd",
+                        DebitNegativeBalances = true,
+                        Schedule = new AccountSettingsPayoutScheduleOptions
+                        {
+                            Interval = "month",
+                            MonthlyAnchor = "1",
+                        },
                     },
-                }
+                },
             };
 
             this.updateOptions = new AccountUpdateOptions

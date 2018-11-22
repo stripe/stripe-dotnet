@@ -12,8 +12,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
-
-        [JsonProperty("from_recipient")]
-        public string FromRecipient { get; set; }
     }
 }

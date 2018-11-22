@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class AccountDeclineOptions : INestedOptions
+    public class AccountSettingsChargeDeclineOnOptions : INestedOptions
     {
         [JsonProperty("avs_failure")]
         public bool? AvsFailure { get; set; }

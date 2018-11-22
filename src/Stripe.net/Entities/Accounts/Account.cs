@@ -13,44 +13,14 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        #region Expandable BusinessLogo
+        [JsonProperty("business_profile")]
+        public AccountBusinessProfile BusinessProfile { get; set; }
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) A logo for this account (at least 128px x 128px).
-        /// <para>Expandable.</para>
-        /// </summary>
-        [JsonIgnore]
-        public string BusinessLogoId { get; set; }
+        [JsonProperty("business_type")]
+        public string BusinessType { get; set; }
 
-        /// <summary>
-        /// (Expanded) A logo for this account (at least 128px x 128px).
-        /// </summary>
-        [JsonIgnore]
-        public File BusinessLogo { get; set; }
-
-        [JsonProperty("business_logo")]
-        internal object InternalBusinessLogo
-        {
-            get
-            {
-                return this.BusinessLogo ?? (object)this.BusinessLogoId;
-            }
-
-            set
-            {
-                StringOrObject<File>.Map(value, s => this.BusinessLogoId = s, o => this.BusinessLogo = o);
-            }
-        }
-        #endregion
-
-        [JsonProperty("business_name")]
-        public string BusinessName { get; set; }
-
-        [JsonProperty("business_primary_color")]
-        public string BusinessPrimaryColor { get; set; }
-
-        [JsonProperty("business_url")]
-        public string BusinessUrl { get; set; }
+        [JsonProperty("capabilities")]
+        public Dictionary<string, string> Capabilities { get; set; }
 
         [JsonProperty("charges_enabled")]
         public bool ChargesEnabled { get; set; }
@@ -61,12 +31,6 @@ namespace Stripe
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
-
-        [JsonProperty("debit_negative_balances")]
-        public bool DebitNegativeBalances { get; set; }
-
-        [JsonProperty("decline_charge_on")]
-        public DeclineChargeOn DeclineChargeOn { get; set; }
 
         [JsonProperty("default_currency")]
         public string DefaultCurrency { get; set; }
@@ -89,52 +53,28 @@ namespace Stripe
         [JsonProperty("external_accounts")]
         public StripeList<IExternalAccount> ExternalAccounts { get; set; }
 
-        [JsonProperty("keys")]
-        public CustomAccountKeys Keys { get; set; }
-
-        [JsonProperty("legal_entity")]
-        public LegalEntity LegalEntity { get; set; }
+        [JsonProperty("individual")]
+        public Person Individual { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        [JsonProperty("payout_schedule")]
-        public PayoutSchedule PayoutSchedule { get; set; }
-
-        [JsonProperty("payout_statement_descriptor")]
-        public string PayoutStatementDescriptor { get; set; }
-
         [JsonProperty("payouts_enabled")]
         public bool PayoutsEnabled { get; set; }
 
-        [JsonProperty("product_description")]
-        public string ProductDescription { get; set; }
+        [JsonProperty("requirements")]
+        public AccountRequirements Requirements { get; set; }
 
-        [JsonProperty("statement_descriptor")]
-        public string StatementDescriptor { get; set; }
-
-        [JsonProperty("support_address")]
-        public Address SupportAddress { get; set; }
-
-        [JsonProperty("support_email")]
-        public string SupportEmail { get; set; }
-
-        [JsonProperty("support_phone")]
-        public string SupportPhone { get; set; }
-
-        [JsonProperty("support_url")]
-        public string SupportUrl { get; set; }
+        [JsonProperty("settings")]
+        public AccountSettings Settings { get; set; }
 
         [JsonProperty("timezone")]
         public string Timezone { get; set; }
 
         [JsonProperty("tos_acceptance")]
-        public TermsOfServiceAcceptance TosAcceptance { get; set; }
+        public AccountTosAcceptance TosAcceptance { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
-
-        [JsonProperty("verification")]
-        public AccountVerification Verification { get; set; }
      }
 }

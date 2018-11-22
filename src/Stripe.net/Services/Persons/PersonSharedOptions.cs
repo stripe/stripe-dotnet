@@ -17,7 +17,7 @@ namespace Stripe
         public AddressJapanOptions AddressKanji { get; set; }
 
         [JsonProperty("dob")]
-        public AccountDobOptions Dob { get; set; }
+        public PersonDobOptions Dob { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }

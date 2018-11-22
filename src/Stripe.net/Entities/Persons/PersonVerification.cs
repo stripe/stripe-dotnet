@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class LegalEntityVerification : StripeEntity
+    public class PersonVerification : StripeEntity
     {
         [JsonProperty("details")]
         public string Details { get; set; }
