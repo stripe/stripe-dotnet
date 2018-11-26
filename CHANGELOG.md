@@ -1,5 +1,8 @@
 # Changelog
 
+## 21.5.0 - 2018-11-25
+* [#1405](https://github.com/stripe/stripe-dotnet/pull/1405) Add support for `issuing_card` when creating an `EphemeralKey`
+
 ## 21.4.1 - 2018-11-16
 * [#1395](https://github.com/stripe/stripe-dotnet/pull/1395) Fix deserialization of objects with `DateTime` properties
 
