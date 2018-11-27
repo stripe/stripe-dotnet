@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -37,6 +38,22 @@ namespace Stripe
 
         [JsonProperty("open")]
         public bool Open { get; set; }
+
+        #region Expandable PaymentIntent
+        public string PaymentIntentId { get; set; }
+
+        [JsonIgnore]
+        public PaymentIntent PaymentIntent { get; set; }
+
+        [JsonProperty("payment_intent")]
+        internal object InternalPaymentIntent
+        {
+            set
+            {
+                StringOrObject<PaymentIntent>.Map(value, s => this.PaymentIntentId = s, o => this.PaymentIntent = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("reason")]
         public string Reason { get; set; }

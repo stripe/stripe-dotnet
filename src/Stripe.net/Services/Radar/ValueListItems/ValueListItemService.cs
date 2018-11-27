@@ -33,24 +33,24 @@ namespace Stripe.Radar
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual ValueListItem Delete(string couponId, RequestOptions requestOptions = null)
+        public virtual ValueListItem Delete(string valueListItemId, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(couponId, null, requestOptions);
+            return this.DeleteEntity(valueListItemId, null, requestOptions);
         }
 
-        public virtual Task<ValueListItem> DeleteAsync(string couponId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ValueListItem> DeleteAsync(string valueListItemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(couponId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(valueListItemId, null, requestOptions, cancellationToken);
         }
 
-        public virtual ValueListItem Get(string couponId, RequestOptions requestOptions = null)
+        public virtual ValueListItem Get(string valueListItemId, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(couponId, null, requestOptions);
+            return this.GetEntity(valueListItemId, null, requestOptions);
         }
 
-        public virtual Task<ValueListItem> GetAsync(string couponId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ValueListItem> GetAsync(string valueListItemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(couponId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(valueListItemId, null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ValueListItem> List(ValueListItemListOptions options = null, RequestOptions requestOptions = null)
