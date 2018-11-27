@@ -1,5 +1,8 @@
 # Changelog
 
+## 21.6.0 - 2018-11-27
+* [#1386](https://github.com/stripe/stripe-dotnet/pull/1386) Add support for `ValueList` and `ValueListItem` for Radar
+
 ## 21.5.0 - 2018-11-25
 * [#1405](https://github.com/stripe/stripe-dotnet/pull/1405) Add support for `issuing_card` when creating an `EphemeralKey`
 
