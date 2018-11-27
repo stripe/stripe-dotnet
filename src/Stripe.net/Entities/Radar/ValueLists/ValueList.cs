@@ -17,6 +17,7 @@ namespace Stripe.Radar
         public string Alias { get; set; }
 
         [JsonProperty("created")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("created_by")]
@@ -41,6 +42,7 @@ namespace Stripe.Radar
         public string Name { get; set; }
 
         [JsonProperty("updated")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Updated { get; set; }
 
         [JsonProperty("updated_by")]

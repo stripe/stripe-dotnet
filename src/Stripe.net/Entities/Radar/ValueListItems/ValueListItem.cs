@@ -14,6 +14,7 @@ namespace Stripe.Radar
         public string Object { get; set; }
 
         [JsonProperty("created")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("created_by")]
