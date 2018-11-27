@@ -49,6 +49,8 @@ namespace Stripe.Infrastructure
             { "payout", Mapper<Payout>.MapFromJson },
             { "plan", Mapper<Plan>.MapFromJson },
             { "product", Mapper<Product>.MapFromJson },
+            { "radar.value_list", Mapper<Radar.ValueList>.MapFromJson },
+            { "radar.value_list_item", Mapper<Radar.ValueListItem>.MapFromJson },
             { "recipient", Mapper<Recipient>.MapFromJson },
             { "refund", Mapper<Refund>.MapFromJson },
             { "reporting.report_run", Mapper<Reporting.ReportRun>.MapFromJson },
