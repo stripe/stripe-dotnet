@@ -86,7 +86,39 @@ namespace Stripe
         [JsonProperty("receipt_number")]
         public string ReceiptNumber { get; set; }
 
+        #region Expandable Source Transfer Reversal
+        public string SourceTransferReversalId { get; set; }
+
+        [JsonIgnore]
+        public TransferReversal SourceTransferReversal { get; set; }
+
+        [JsonProperty("source_transfer_reversal")]
+        internal object InternalSourceTransferReversal
+        {
+            set
+            {
+                StringOrObject<TransferReversal>.Map(value, s => this.SourceTransferReversalId = s, o => this.SourceTransferReversal = o);
+            }
+        }
+        #endregion
+
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        #region Expandable  Transfer Reversal
+        public string TransferReversalId { get; set; }
+
+        [JsonIgnore]
+        public TransferReversal TransferReversal { get; set; }
+
+        [JsonProperty("transfer_reversal")]
+        internal object InternalTransferReversal
+        {
+            set
+            {
+                StringOrObject<TransferReversal>.Map(value, s => this.TransferReversalId = s, o => this.TransferReversal = o);
+            }
+        }
+        #endregion
     }
 }
