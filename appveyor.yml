@@ -1,4 +1,4 @@
-version: 21.6.0.{build}
+version: 21.7.0.{build}
 image: Visual Studio 2017
 
 environment:
