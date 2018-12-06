@@ -56,7 +56,7 @@
 * [#1348](https://github.com/stripe/stripe-dotnet/pull/1348) Add `CardId` and `BankAccountId` to `TokenCreateOptions`
 
 ## 20.0.0 - 2018-10-22
-Major version release. Refer to our [migration guide for v20](https://github.com/stripe/stripe-dotnet/blob/master/v20_migration_guide.md) for a list of backwards incompatible changes to watch out for.
+Major version release. Refer to our [migration guide for v20](https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v20) for a list of backwards incompatible changes to watch out for.
 
 Pull requests included in this release (cf. [#1293](https://github.com/stripe/stripe-dotnet/pull/1293)):
 * [#1275](https://github.com/stripe/stripe-dotnet/pull/1275) Properly re-architecture the library to handle various source abstractions
