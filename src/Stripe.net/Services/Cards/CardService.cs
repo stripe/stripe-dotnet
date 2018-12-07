@@ -1,10 +1,8 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class CardService : ServiceNested<Card>,
         INestedCreatable<Card, CardCreateOptions>,
@@ -67,6 +65,11 @@ namespace Stripe
         public virtual Task<StripeList<Card>> ListAsync(string customerId, CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListNestedEntitiesAsync(customerId, options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Card> ListAutoPaging(string customerId, CardListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListNestedEntitiesAutoPaging(customerId, options, requestOptions);
         }
 
         public virtual Card Update(string customerId, string cardId, CardUpdateOptions options, RequestOptions requestOptions = null)

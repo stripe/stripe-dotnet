@@ -1,10 +1,8 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class RefundService : Service<Refund>,
         ICreatable<Refund, RefundCreateOptions>,
@@ -58,6 +56,11 @@ namespace Stripe
         public virtual Task<StripeList<Refund>> ListAsync(RefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Refund> ListAutoPaging(RefundListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
         public virtual Refund Update(string refundId, RefundUpdateOptions options, RequestOptions requestOptions = null)

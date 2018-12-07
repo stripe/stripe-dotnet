@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -101,6 +102,14 @@ namespace StripeTests
             Assert.Equal("list", applicationFeeRefunds.Object);
             Assert.Single(applicationFeeRefunds.Data);
             Assert.Equal("fee_refund", applicationFeeRefunds.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var applicationFeeRefunds = this.service.ListAutoPaging(ApplicationFeeId, this.listOptions).ToList();
+            Assert.NotNull(applicationFeeRefunds);
+            Assert.Equal("fee_refund", applicationFeeRefunds[0].Object);
         }
 
         [Fact]

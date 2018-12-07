@@ -1,7 +1,6 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -29,23 +28,31 @@ namespace StripeTests
         [Fact]
         public void List()
         {
-            var sources = this.service.List(SourceId, this.listOptions);
+            var sourceTransactions = this.service.List(SourceId, this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/sources/src_123/source_transactions");
-            Assert.NotNull(sources);
-            Assert.Equal("list", sources.Object);
-            Assert.Single(sources.Data);
-            Assert.Equal("source_transaction", sources.Data[0].Object);
+            Assert.NotNull(sourceTransactions);
+            Assert.Equal("list", sourceTransactions.Object);
+            Assert.Single(sourceTransactions.Data);
+            Assert.Equal("source_transaction", sourceTransactions.Data[0].Object);
         }
 
         [Fact]
         public async Task ListAsync()
         {
-            var sources = await this.service.ListAsync(SourceId, this.listOptions);
+            var sourceTransactions = await this.service.ListAsync(SourceId, this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/sources/src_123/source_transactions");
-            Assert.NotNull(sources);
-            Assert.Equal("list", sources.Object);
-            Assert.Single(sources.Data);
-            Assert.Equal("source_transaction", sources.Data[0].Object);
+            Assert.NotNull(sourceTransactions);
+            Assert.Equal("list", sourceTransactions.Object);
+            Assert.Single(sourceTransactions.Data);
+            Assert.Equal("source_transaction", sourceTransactions.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var sourceTransactions = this.service.ListAutoPaging(SourceId, this.listOptions).ToList();
+            Assert.NotNull(sourceTransactions);
+            Assert.Equal("source_transaction", sourceTransactions[0].Object);
         }
     }
 }

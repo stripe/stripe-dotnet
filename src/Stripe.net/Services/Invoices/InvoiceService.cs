@@ -3,7 +3,6 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class InvoiceService : Service<Invoice>,
         ICreatable<Invoice, InvoiceCreateOptions>,
@@ -79,6 +78,11 @@ namespace Stripe
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
+        public virtual IEnumerable<Invoice> ListAutoPaging(InvoiceListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
+        }
+
         public virtual StripeList<InvoiceLineItem> ListLineItems(string invoiceId, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.GetRequest<StripeList<InvoiceLineItem>>($"{this.InstanceUrl(invoiceId)}/lines", options, requestOptions, true);
@@ -89,6 +93,11 @@ namespace Stripe
             return this.GetRequestAsync<StripeList<InvoiceLineItem>>($"{this.InstanceUrl(invoiceId)}/lines", options, requestOptions, true, cancellationToken);
         }
 
+        public virtual IEnumerable<InvoiceLineItem> ListLineItemsAutoPaging(string invoiceId, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl(invoiceId)}/lines", options, requestOptions);
+        }
+
         public virtual StripeList<InvoiceLineItem> ListUpcomingLineItems(UpcomingInvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.GetRequest<StripeList<InvoiceLineItem>>($"{this.InstanceUrl("upcoming")}/lines", options, requestOptions, true);
@@ -97,6 +106,11 @@ namespace Stripe
         public virtual Task<StripeList<InvoiceLineItem>> ListUpcomingLineItemsAsync(UpcomingInvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetRequestAsync<StripeList<InvoiceLineItem>>($"{this.InstanceUrl("upcoming")}/lines", options, requestOptions, true, cancellationToken);
+        }
+
+        public virtual IEnumerable<InvoiceLineItem> ListUpcomingLineItemsAutoPaging(UpcomingInvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl("upcoming")}/lines", options, requestOptions);
         }
 
         public virtual Invoice MarkUncollectible(string invoiceId, InvoiceMarkUncollectibleOptions options, RequestOptions requestOptions = null)

@@ -1,10 +1,8 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class AuthorizationService : Service<Authorization>,
         IListable<Authorization, AuthorizationListOptions>,
@@ -61,6 +59,11 @@ namespace Stripe.Issuing
         public virtual Task<StripeList<Authorization>> ListAsync(AuthorizationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Authorization> ListAutoPaging(AuthorizationListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
         public virtual Authorization Update(string authorizationId, AuthorizationUpdateOptions options, RequestOptions requestOptions = null)

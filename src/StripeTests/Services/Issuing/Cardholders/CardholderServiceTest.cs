@@ -1,6 +1,7 @@
 namespace StripeTests.Issuing
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -99,6 +100,13 @@ namespace StripeTests.Issuing
         {
             var cardholders = await this.service.ListAsync(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/issuing/cardholders");
+            Assert.NotNull(cardholders);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var cardholders = this.service.ListAutoPaging(this.listOptions).ToList();
             Assert.NotNull(cardholders);
         }
 

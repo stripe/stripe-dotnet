@@ -1,7 +1,7 @@
 namespace StripeTests.Radar
 {
-    using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -116,6 +116,14 @@ namespace StripeTests.Radar
             Assert.Equal("list", valueLists.Object);
             Assert.Single(valueLists.Data);
             Assert.Equal("radar.value_list", valueLists.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var valueLists = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(valueLists);
+            Assert.Equal("radar.value_list", valueLists[0].Object);
         }
 
         [Fact]

@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
@@ -80,6 +81,11 @@ namespace Stripe
         public virtual Task<StripeList<Source>> ListAsync(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetRequestAsync<StripeList<Source>>($"{Urls.BaseUrl}/customers/{customerId}/sources", options, requestOptions, true, cancellationToken);
+        }
+
+        public virtual IEnumerable<Source> ListAutoPaging(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<Source>($"{Urls.BaseUrl}/customers/{customerId}/sources", options, requestOptions);
         }
 
         public virtual Source Update(string sourceId, SourceUpdateOptions options, RequestOptions requestOptions = null)

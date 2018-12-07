@@ -2,6 +2,7 @@ namespace StripeTests
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -202,6 +203,13 @@ namespace StripeTests
 
             // We can't test the object returned as stripe-mock returns an Account
             // Assert.Equal("source", sources.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var sources = this.service.ListAutoPaging(CustomerId, this.listOptions).ToList();
+            Assert.NotNull(sources);
         }
 
         [Fact]

@@ -1,10 +1,8 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class ProductService : Service<Product>,
         ICreatable<Product, ProductCreateOptions>,
@@ -63,6 +61,11 @@ namespace Stripe
         public virtual Task<StripeList<Product>> ListAsync(ProductListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Product> ListAutoPaging(ProductListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
         public virtual Product Update(string productId, ProductUpdateOptions options, RequestOptions requestOptions = null)

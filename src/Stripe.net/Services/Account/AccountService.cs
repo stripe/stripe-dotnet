@@ -76,6 +76,11 @@ namespace Stripe
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
 
+        public virtual IEnumerable<Account> ListAutoPaging(AccountListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
+        }
+
         public virtual Account Reject(string accountId, AccountRejectOptions options, RequestOptions requestOptions = null)
         {
             return this.PostRequest<Account>($"{this.InstanceUrl(accountId)}/reject", options, requestOptions);

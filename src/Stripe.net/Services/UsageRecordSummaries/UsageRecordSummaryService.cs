@@ -3,7 +3,6 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class UsageRecordSummaryService : ServiceNested<UsageRecordSummary>,
         INestedListable<UsageRecordSummary, UsageRecordSummaryListOptions>
@@ -28,6 +27,11 @@ namespace Stripe
         public virtual Task<StripeList<UsageRecordSummary>> ListAsync(string subscriptionItemId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListNestedEntitiesAsync(subscriptionItemId, options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<UsageRecordSummary> ListAutoPaging(string subscriptionItemId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListNestedEntitiesAutoPaging(subscriptionItemId, options, requestOptions);
         }
     }
 }

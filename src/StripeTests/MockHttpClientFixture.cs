@@ -9,20 +9,20 @@ namespace StripeTests
 
     public class MockHttpClientFixture : IDisposable
     {
-        private readonly Mock<HttpClientHandler> mockHandler;
-
         private readonly HttpMessageHandler origHandler;
 
         public MockHttpClientFixture()
         {
-            this.mockHandler = new Mock<HttpClientHandler>
+            this.MockHandler = new Mock<HttpClientHandler>
             {
                 CallBase = true
             };
 
             this.origHandler = StripeConfiguration.HttpMessageHandler;
-            StripeConfiguration.HttpMessageHandler = this.mockHandler.Object;
+            StripeConfiguration.HttpMessageHandler = this.MockHandler.Object;
         }
+
+        public Mock<HttpClientHandler> MockHandler { get; }
 
         public void Dispose()
         {
@@ -30,11 +30,11 @@ namespace StripeTests
         }
 
         /// <summary>
-        /// Resets all invocations recorded for the mock client.
+        /// Resets the mock's state.
         /// </summary>
         public void Reset()
         {
-            this.mockHandler.Invocations.Clear();
+            this.MockHandler.Reset();
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace StripeTests
         /// </summary>
         public void AssertRequest(HttpMethod method, string path)
         {
-            this.mockHandler.Protected().Verify(
+            this.MockHandler.Protected().Verify(
                 "SendAsync",
                 Times.Once(),
                 ItExpr.Is<HttpRequestMessage>(m =>
