@@ -18,6 +18,7 @@ namespace StripeTests
         private InvoiceListOptions listOptions;
         private InvoiceListLineItemsOptions listLineItemsOptions;
         private UpcomingInvoiceOptions upcomingOptions;
+        private UpcomingInvoiceListLineItemsOptions upcomingListLineItemsOptions;
         private InvoiceFinalizeOptions finalizeOptions;
         private InvoiceMarkUncollectibleOptions markUncollectibleOptions;
         private InvoiceSendOptions sendOptions;
@@ -59,6 +60,13 @@ namespace StripeTests
 
             this.upcomingOptions = new UpcomingInvoiceOptions
             {
+                CustomerId = "cus_123",
+                SubscriptionId = "sub_123",
+            };
+
+            this.upcomingListLineItemsOptions = new UpcomingInvoiceListLineItemsOptions
+            {
+                Limit = 1,
                 CustomerId = "cus_123",
                 SubscriptionId = "sub_123",
             };
@@ -199,7 +207,7 @@ namespace StripeTests
         [Fact]
         public void ListUpcomingLineItems()
         {
-            var invoices = this.service.ListUpcomingLineItems(this.upcomingOptions);
+            var invoices = this.service.ListUpcomingLineItems(this.upcomingListLineItemsOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/invoices/upcoming/lines");
             Assert.NotNull(invoices);
             Assert.Equal("list", invoices.Object);
@@ -210,7 +218,7 @@ namespace StripeTests
         [Fact]
         public async Task ListUpcomingLineItemsAsync()
         {
-            var invoices = await this.service.ListUpcomingLineItemsAsync(this.upcomingOptions);
+            var invoices = await this.service.ListUpcomingLineItemsAsync(this.upcomingListLineItemsOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/invoices/upcoming/lines");
             Assert.NotNull(invoices);
             Assert.Equal("list", invoices.Object);
