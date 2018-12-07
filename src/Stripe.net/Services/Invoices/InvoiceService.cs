@@ -89,12 +89,12 @@ namespace Stripe
             return this.GetRequestAsync<StripeList<InvoiceLineItem>>($"{this.InstanceUrl(invoiceId)}/lines", options, requestOptions, true, cancellationToken);
         }
 
-        public virtual StripeList<InvoiceLineItem> ListUpcomingLineItems(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<InvoiceLineItem> ListUpcomingLineItems(UpcomingInvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.GetRequest<StripeList<InvoiceLineItem>>($"{this.InstanceUrl("upcoming")}/lines", options, requestOptions, true);
         }
 
-        public virtual Task<StripeList<InvoiceLineItem>> ListUpcomingLineItemsAsync(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<InvoiceLineItem>> ListUpcomingLineItemsAsync(UpcomingInvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetRequestAsync<StripeList<InvoiceLineItem>>($"{this.InstanceUrl("upcoming")}/lines", options, requestOptions, true, cancellationToken);
         }
