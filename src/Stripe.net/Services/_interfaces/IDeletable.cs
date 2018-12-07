@@ -4,7 +4,7 @@ namespace Stripe
     using System.Threading.Tasks;
 
     public interface IDeletable<T>
-        where T : IStripeEntity
+        where T : IStripeEntity, IHasId
     {
         T Delete(string id, RequestOptions requestOptions = null);
 

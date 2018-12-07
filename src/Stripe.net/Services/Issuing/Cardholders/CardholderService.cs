@@ -1,10 +1,8 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
-    using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class CardholderService : Service<Cardholder>,
         ICreatable<Cardholder, CardholderCreateOptions>,
@@ -52,6 +50,11 @@ namespace Stripe.Issuing
         public virtual Task<StripeList<Cardholder>> ListAsync(CardholderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Cardholder> ListAutoPaging(CardholderListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
         public virtual Cardholder Update(string cardholderId, CardholderUpdateOptions options, RequestOptions requestOptions = null)

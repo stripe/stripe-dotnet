@@ -1,7 +1,7 @@
 namespace StripeTests.Reporting
 {
     using System;
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -81,6 +81,13 @@ namespace StripeTests.Reporting
         {
             var reportRuns = await this.service.ListAsync(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/reporting/report_runs");
+            Assert.NotNull(reportRuns);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var reportRuns = this.service.ListAutoPaging(this.listOptions).ToList();
             Assert.NotNull(reportRuns);
         }
     }

@@ -3,7 +3,6 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class SubscriptionItemService : Service<SubscriptionItem>,
         ICreatable<SubscriptionItem, SubscriptionItemCreateOptions>,
@@ -62,6 +61,11 @@ namespace Stripe
         public virtual Task<StripeList<SubscriptionItem>> ListAsync(SubscriptionItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<SubscriptionItem> ListAutoPaging(SubscriptionItemListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
         public virtual SubscriptionItem Update(string subscriptionItemId, SubscriptionItemUpdateOptions options, RequestOptions requestOptions = null)

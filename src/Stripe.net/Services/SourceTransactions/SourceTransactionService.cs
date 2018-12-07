@@ -1,8 +1,8 @@
 namespace Stripe
 {
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class SourceTransactionService : ServiceNested<SourceTransaction>,
         INestedListable<SourceTransaction, SourceTransactionsListOptions>
@@ -27,6 +27,11 @@ namespace Stripe
         public virtual Task<StripeList<SourceTransaction>> ListAsync(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListNestedEntitiesAsync(sourceId, options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<SourceTransaction> ListAutoPaging(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListNestedEntitiesAutoPaging(sourceId, options, requestOptions);
         }
     }
 }

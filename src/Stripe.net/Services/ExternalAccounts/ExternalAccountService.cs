@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -60,6 +61,11 @@ namespace Stripe
         public virtual Task<StripeList<IExternalAccount>> ListAsync(string accountId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListNestedEntitiesAsync(accountId, options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<IExternalAccount> ListAutoPaging(string accountId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListNestedEntitiesAutoPaging(accountId, options, requestOptions);
         }
 
         public virtual IExternalAccount Update(string accountId, string externalAccountId, ExternalAccountUpdateOptions options, RequestOptions requestOptions = null)

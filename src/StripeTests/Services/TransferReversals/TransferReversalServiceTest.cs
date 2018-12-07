@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -80,23 +81,31 @@ namespace StripeTests
         [Fact]
         public void List()
         {
-            var transfers = this.service.List(TransferId, this.listOptions);
+            var transferReversals = this.service.List(TransferId, this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/transfers/tr_123/reversals");
-            Assert.NotNull(transfers);
-            Assert.Equal("list", transfers.Object);
-            Assert.Single(transfers.Data);
-            Assert.Equal("transfer_reversal", transfers.Data[0].Object);
+            Assert.NotNull(transferReversals);
+            Assert.Equal("list", transferReversals.Object);
+            Assert.Single(transferReversals.Data);
+            Assert.Equal("transfer_reversal", transferReversals.Data[0].Object);
         }
 
         [Fact]
         public async Task ListAsync()
         {
-            var transfers = await this.service.ListAsync(TransferId, this.listOptions);
+            var transferReversals = await this.service.ListAsync(TransferId, this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/transfers/tr_123/reversals");
-            Assert.NotNull(transfers);
-            Assert.Equal("list", transfers.Object);
-            Assert.Single(transfers.Data);
-            Assert.Equal("transfer_reversal", transfers.Data[0].Object);
+            Assert.NotNull(transferReversals);
+            Assert.Equal("list", transferReversals.Object);
+            Assert.Single(transferReversals.Data);
+            Assert.Equal("transfer_reversal", transferReversals.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var transferReversals = this.service.ListAutoPaging(TransferId, this.listOptions).ToList();
+            Assert.NotNull(transferReversals);
+            Assert.Equal("transfer_reversal", transferReversals[0].Object);
         }
 
         [Fact]

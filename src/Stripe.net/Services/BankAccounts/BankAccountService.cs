@@ -3,7 +3,6 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class BankAccountService : ServiceNested<BankAccount>,
         INestedCreatable<BankAccount, BankAccountCreateOptions>,
@@ -64,6 +63,11 @@ namespace Stripe
         public virtual Task<StripeList<BankAccount>> ListAsync(string customerId, BankAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListNestedEntitiesAsync(customerId, options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<BankAccount> ListAutoPaging(string customerId, BankAccountListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListNestedEntitiesAutoPaging(customerId, options, requestOptions);
         }
 
         public virtual BankAccount Update(string customerId, string bankAccountId, BankAccountUpdateOptions options, RequestOptions requestOptions = null)

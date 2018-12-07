@@ -239,9 +239,13 @@ namespace Stripe.Infrastructure
         {
             var result = new StripeResponse
             {
-                RequestId = response.Headers.Contains("Request-Id") ? response.Headers.GetValues("Request-Id").First() : "n/a",
-                RequestDate = Convert.ToDateTime(response.Headers.GetValues("Date").First(), CultureInfo.InvariantCulture),
-                ResponseJson = responseText
+                RequestId = response.Headers.Contains("Request-Id") ?
+                    response.Headers.GetValues("Request-Id").First() :
+                    "n/a",
+                RequestDate = response.Headers.Contains("Date") ?
+                    Convert.ToDateTime(response.Headers.GetValues("Date").First(), CultureInfo.InvariantCulture) :
+                    default(DateTime),
+                ResponseJson = responseText,
             };
 
             return result;

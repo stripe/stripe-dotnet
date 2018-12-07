@@ -3,7 +3,6 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class ExchangeRateService : Service<ExchangeRate>,
         IListable<ExchangeRate, ExchangeRateListOptions>,
@@ -39,6 +38,11 @@ namespace Stripe
         public virtual Task<StripeList<ExchangeRate>> ListAsync(ExchangeRateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<ExchangeRate> ListAutoPaging(ExchangeRateListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
     }
 }

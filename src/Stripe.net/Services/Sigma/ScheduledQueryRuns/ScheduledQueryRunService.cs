@@ -1,8 +1,8 @@
 namespace Stripe.Sigma
 {
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class ScheduledQueryRunService : Service<ScheduledQueryRun>,
         IListable<ScheduledQueryRun, ScheduledQueryRunListOptions>,
@@ -38,6 +38,11 @@ namespace Stripe.Sigma
         public virtual Task<StripeList<ScheduledQueryRun>> ListAsync(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<ScheduledQueryRun> ListAutoPaging(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
     }
 }

@@ -3,7 +3,6 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class OrderService : Service<Order>,
         ICreatable<Order, OrderCreateOptions>,
@@ -55,6 +54,11 @@ namespace Stripe
         public virtual Task<StripeList<Order>> ListAsync(OrderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Order> ListAutoPaging(OrderListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
         public virtual Order Pay(string orderId, OrderPayOptions options, RequestOptions requestOptions = null)

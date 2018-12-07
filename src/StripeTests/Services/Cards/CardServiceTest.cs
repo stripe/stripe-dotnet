@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -111,6 +112,13 @@ namespace StripeTests
             Assert.NotNull(cards);
             Assert.Equal("list", cards.Object);
             Assert.Single(cards.Data);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var cards = this.service.ListAutoPaging(CustomerId, this.listOptions).ToList();
+            Assert.NotNull(cards);
         }
 
         [Fact]

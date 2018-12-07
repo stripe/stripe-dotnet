@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -116,6 +117,14 @@ namespace StripeTests
             Assert.Equal("list", endpoints.Object);
             Assert.Single(endpoints.Data);
             Assert.Equal("webhook_endpoint", endpoints.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var endpoints = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(endpoints);
+            Assert.Equal("webhook_endpoint", endpoints[0].Object);
         }
 
         [Fact]
