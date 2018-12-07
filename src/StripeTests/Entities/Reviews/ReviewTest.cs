@@ -1,10 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
-    using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
@@ -20,7 +15,6 @@ namespace StripeTests
             Assert.NotNull(review.Id);
             Assert.Equal("review", review.Object);
         }
-
 
         [Fact]
         public void DeserializeWithExpansions()
