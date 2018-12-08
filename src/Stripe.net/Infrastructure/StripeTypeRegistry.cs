@@ -14,6 +14,7 @@ namespace Stripe.Infrastructure
         public static readonly ImmutableDictionary<string, Type> ObjectsToTypes = new Dictionary<string, Type>
         {
             { "account", typeof(Account) },
+            { "account_link", typeof(AccountLink) },
             { "apple_pay_domain", typeof(ApplePayDomain) },
             { "application", typeof(Application) },
             { "application_fee", typeof(ApplicationFee) },
