@@ -16,8 +16,9 @@ namespace StripeTests
         private SourceService service;
         private SourceAttachOptions attachOptions;
         private SourceCreateOptions createOptions;
-        private SourceUpdateOptions updateOptions;
         private SourceListOptions listOptions;
+        private SourceUpdateOptions updateOptions;
+        private SourceVerifyOptions verifyOptions;
 
         public SourceServiceTest()
         {
@@ -64,6 +65,11 @@ namespace StripeTests
                 },
             };
 
+            this.listOptions = new SourceListOptions
+            {
+                Limit = 1,
+            };
+
             this.updateOptions = new SourceUpdateOptions
             {
                 Metadata = new Dictionary<string, string>
@@ -72,9 +78,9 @@ namespace StripeTests
                 },
             };
 
-            this.listOptions = new SourceListOptions
+            this.verifyOptions = new SourceVerifyOptions
             {
-                Limit = 1,
+                Values = new List<string> { "32", "45" },
             };
         }
 
@@ -211,6 +217,24 @@ namespace StripeTests
         {
             var source = await this.service.UpdateAsync(SourceId, this.updateOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/sources/src_123");
+            Assert.NotNull(source);
+            Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
+        public void Verify()
+        {
+            var source = this.service.Verify(SourceId, this.verifyOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/sources/src_123/verify");
+            Assert.NotNull(source);
+            Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
+        public async Task VerifyAsync()
+        {
+            var source = await this.service.VerifyAsync(SourceId, this.verifyOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/sources/src_123/verify");
             Assert.NotNull(source);
             Assert.Equal("source", source.Object);
         }
