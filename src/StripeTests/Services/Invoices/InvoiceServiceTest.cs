@@ -35,7 +35,7 @@ namespace StripeTests
 
             this.updateOptions = new InvoiceUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },

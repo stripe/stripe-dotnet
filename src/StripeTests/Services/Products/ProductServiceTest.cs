@@ -20,7 +20,7 @@ namespace StripeTests
         {
             this.service = new ProductService();
 
-            this.createOptions = new ProductCreateOptions()
+            this.createOptions = new ProductCreateOptions
             {
                 Attributes = new string[]
                 {
@@ -38,15 +38,15 @@ namespace StripeTests
                 Type = "good",
             };
 
-            this.updateOptions = new ProductUpdateOptions()
+            this.updateOptions = new ProductUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new ProductListOptions()
+            this.listOptions = new ProductListOptions
             {
                 Limit = 1,
             };

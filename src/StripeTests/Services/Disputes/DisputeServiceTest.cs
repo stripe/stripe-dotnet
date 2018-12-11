@@ -19,15 +19,15 @@ namespace StripeTests
         {
             this.service = new DisputeService();
 
-            this.updateOptions = new DisputeUpdateOptions()
+            this.updateOptions = new DisputeUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new DisputeListOptions()
+            this.listOptions = new DisputeListOptions
             {
                 Limit = 1,
             };

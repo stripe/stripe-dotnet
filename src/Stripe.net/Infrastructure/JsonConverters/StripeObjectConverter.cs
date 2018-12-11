@@ -13,7 +13,7 @@ namespace Stripe.Infrastructure
     internal class StripeObjectConverter : AbstractStripeObjectConverter<IHasObject>
     {
         protected override Dictionary<string, Func<string, IHasObject>> ObjectsToMapperFuncs
-            => new Dictionary<string, Func<string, IHasObject>>()
+            => new Dictionary<string, Func<string, IHasObject>>
         {
             { "account", Mapper<Account>.MapFromJson },
             { "apple_pay_domain", Mapper<ApplePayDomain>.MapFromJson },

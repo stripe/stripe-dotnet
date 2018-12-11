@@ -66,13 +66,13 @@ namespace StripeTests
 
             this.updateOptions = new SourceUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new SourceListOptions()
+            this.listOptions = new SourceListOptions
             {
                 Limit = 1,
             };

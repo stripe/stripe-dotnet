@@ -21,22 +21,22 @@ namespace StripeTests.Radar
         {
             this.service = new ValueListService();
 
-            this.createOptions = new ValueListCreateOptions()
+            this.createOptions = new ValueListCreateOptions
             {
                 Alias = "alias",
                 ItemType = "ip_address",
                 Name = "name",
             };
 
-            this.updateOptions = new ValueListUpdateOptions()
+            this.updateOptions = new ValueListUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new ValueListListOptions()
+            this.listOptions = new ValueListListOptions
             {
                 Alias = "alias",
                 Limit = 1,

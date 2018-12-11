@@ -20,22 +20,22 @@ namespace StripeTests
         {
             this.service = new InvoiceItemService();
 
-            this.createOptions = new InvoiceItemCreateOptions()
+            this.createOptions = new InvoiceItemCreateOptions
             {
                 Amount = 123,
                 Currency = "usd",
                 CustomerId = "cus_123",
             };
 
-            this.updateOptions = new InvoiceItemUpdateOptions()
+            this.updateOptions = new InvoiceItemUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new InvoiceItemListOptions()
+            this.listOptions = new InvoiceItemListOptions
             {
                 Limit = 1,
             };

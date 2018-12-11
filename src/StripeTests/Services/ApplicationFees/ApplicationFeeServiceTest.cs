@@ -18,7 +18,7 @@ namespace StripeTests
         {
             this.service = new ApplicationFeeService();
 
-            this.listOptions = new ApplicationFeeListOptions()
+            this.listOptions = new ApplicationFeeListOptions
             {
                 Limit = 1,
             };

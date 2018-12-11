@@ -21,7 +21,7 @@ namespace StripeTests.Issuing
         {
             this.service = new CardholderService();
 
-            this.createOptions = new CardholderCreateOptions()
+            this.createOptions = new CardholderCreateOptions
             {
                 Billing = new BillingOptions
                 {
@@ -39,15 +39,15 @@ namespace StripeTests.Issuing
                 Type = "individual",
             };
 
-            this.updateOptions = new CardholderUpdateOptions()
+            this.updateOptions = new CardholderUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new CardholderListOptions()
+            this.listOptions = new CardholderListOptions
             {
                 Limit = 1,
             };

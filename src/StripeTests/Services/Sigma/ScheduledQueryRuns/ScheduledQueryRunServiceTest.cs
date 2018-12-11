@@ -18,7 +18,7 @@ namespace StripeTests
         {
             this.service = new ScheduledQueryRunService();
 
-            this.listOptions = new ScheduledQueryRunListOptions()
+            this.listOptions = new ScheduledQueryRunListOptions
             {
                 Limit = 1,
             };

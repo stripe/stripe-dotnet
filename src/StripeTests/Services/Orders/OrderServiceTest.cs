@@ -21,7 +21,7 @@ namespace StripeTests
         {
             this.service = new OrderService();
 
-            this.createOptions = new OrderCreateOptions()
+            this.createOptions = new OrderCreateOptions
             {
                 Currency = "usd",
                 Items = new List<OrderItemOptions>
@@ -34,20 +34,20 @@ namespace StripeTests
                 }
             };
 
-            this.updateOptions = new OrderUpdateOptions()
+            this.updateOptions = new OrderUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.payOptions = new OrderPayOptions()
+            this.payOptions = new OrderPayOptions
             {
                 CustomerId = "cus_123",
             };
 
-            this.listOptions = new OrderListOptions()
+            this.listOptions = new OrderListOptions
             {
                 Limit = 1,
             };

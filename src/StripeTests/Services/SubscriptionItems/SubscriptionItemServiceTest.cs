@@ -20,22 +20,22 @@ namespace StripeTests
         {
             this.service = new SubscriptionItemService();
 
-            this.createOptions = new SubscriptionItemCreateOptions()
+            this.createOptions = new SubscriptionItemCreateOptions
             {
                 PlanId = "plan_123",
                 Quantity = 1,
                 SubscriptionId = "sub_123",
             };
 
-            this.updateOptions = new SubscriptionItemUpdateOptions()
+            this.updateOptions = new SubscriptionItemUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new SubscriptionItemListOptions()
+            this.listOptions = new SubscriptionItemListOptions
             {
                 Limit = 1,
                 SubscriptionId = "sub_123",

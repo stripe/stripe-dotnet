@@ -19,7 +19,7 @@ namespace StripeTests
         {
             this.service = new SourceTransactionService();
 
-            this.listOptions = new SourceTransactionsListOptions()
+            this.listOptions = new SourceTransactionsListOptions
             {
                 Limit = 1,
             };

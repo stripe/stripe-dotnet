@@ -20,7 +20,7 @@ namespace StripeTests
         [Fact]
         public void Serialize()
         {
-            var options = new CouponCreateOptions()
+            var options = new CouponCreateOptions
             {
                 PercentOff = 25,
                 Duration = "forever",

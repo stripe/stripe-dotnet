@@ -167,7 +167,7 @@ namespace StripeTests
             StripeConfiguration.SetFilesBase($"http://localhost:{port}/v1");
             StripeConfiguration.SetApiKey("sk_test_123");
 
-            mockHandler = new Mock<HttpClientHandler>()
+            mockHandler = new Mock<HttpClientHandler>
             {
                 CallBase = true
             };

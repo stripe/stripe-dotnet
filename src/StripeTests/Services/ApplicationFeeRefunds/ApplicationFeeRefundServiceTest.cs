@@ -26,15 +26,15 @@ namespace StripeTests
                 Amount = 123,
             };
 
-            this.updateOptions = new ApplicationFeeRefundUpdateOptions()
+            this.updateOptions = new ApplicationFeeRefundUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new ApplicationFeeRefundListOptions()
+            this.listOptions = new ApplicationFeeRefundListOptions
             {
                 Limit = 1,
             };

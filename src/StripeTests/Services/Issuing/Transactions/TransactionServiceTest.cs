@@ -19,15 +19,15 @@ namespace StripeTests.Issuing
         {
             this.service = new TransactionService();
 
-            this.updateOptions = new TransactionUpdateOptions()
+            this.updateOptions = new TransactionUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new TransactionListOptions()
+            this.listOptions = new TransactionListOptions
             {
                 Limit = 1,
             };

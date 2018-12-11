@@ -17,7 +17,7 @@ namespace StripeTests
         {
             this.service = new UsageRecordService();
 
-            this.createOptions = new UsageRecordCreateOptions()
+            this.createOptions = new UsageRecordCreateOptions
             {
                 Quantity = 10,
                 Timestamp = DateTime.Now,

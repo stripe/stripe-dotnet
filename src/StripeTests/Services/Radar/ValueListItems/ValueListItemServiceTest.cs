@@ -20,13 +20,13 @@ namespace StripeTests.Radar
         {
             this.service = new ValueListItemService();
 
-            this.createOptions = new ValueListItemCreateOptions()
+            this.createOptions = new ValueListItemCreateOptions
             {
                 Value = "value",
                 ValueListId = "rsl_123",
             };
 
-            this.listOptions = new ValueListItemListOptions()
+            this.listOptions = new ValueListItemListOptions
             {
                 Limit = 1,
                 ValueListId = "rsl_123",

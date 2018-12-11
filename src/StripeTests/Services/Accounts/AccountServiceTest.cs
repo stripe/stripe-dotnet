@@ -70,9 +70,9 @@ namespace StripeTests
                 }
             };
 
-            this.updateOptions = new AccountUpdateOptions()
+            this.updateOptions = new AccountUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
@@ -83,7 +83,7 @@ namespace StripeTests
                 Reason = "terms_of_service"
             };
 
-            this.listOptions = new AccountListOptions()
+            this.listOptions = new AccountListOptions
             {
                 Limit = 1,
             };

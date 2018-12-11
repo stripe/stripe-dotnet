@@ -16,7 +16,7 @@ namespace StripeTests
         {
             this.service = new ExchangeRateService();
 
-            this.listOptions = new ExchangeRateListOptions()
+            this.listOptions = new ExchangeRateListOptions
             {
                 Limit = 1,
             };
