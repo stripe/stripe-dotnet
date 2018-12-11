@@ -7,7 +7,7 @@ namespace Stripe
 
     public static class StripeConfiguration
     {
-        public static string StripeApiVersion = "2018-11-08";
+        private static string stripeApiVersion = "2018-11-08";
 
         private static string apiKey;
         private static string apiBase;
@@ -17,6 +17,12 @@ namespace Stripe
         static StripeConfiguration()
         {
             StripeNetVersion = new AssemblyName(typeof(Requestor).GetTypeInfo().Assembly.FullName).Version.ToString(3);
+        }
+
+        public static string StripeApiVersion
+        {
+            get { return stripeApiVersion; }
+            set { stripeApiVersion = value; }
         }
 
         public static string StripeNetVersion { get; }
