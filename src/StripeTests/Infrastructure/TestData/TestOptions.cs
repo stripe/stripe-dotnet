@@ -9,10 +9,6 @@ namespace StripeTests.Infrastructure.TestData
 
     public class TestOptions : BaseOptions
     {
-        public TestOptions()
-        {
-        }
-
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TestEnum
         {

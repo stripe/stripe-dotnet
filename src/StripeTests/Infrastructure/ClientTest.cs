@@ -9,10 +9,6 @@ namespace StripeTests
 
     public class ClientTest : BaseStripeTest
     {
-        public ClientTest()
-        {
-        }
-
         [Fact]
         public void SetsUserAgent()
         {
