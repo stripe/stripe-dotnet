@@ -14,7 +14,7 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("active_account")]
-        public RecipientActiveAccount ActiveAccount { get; set; }
+        public BankAccount ActiveAccount { get; set; }
 
         [JsonProperty("cards")]
         public StripeList<Card> CardList { get; set; }
