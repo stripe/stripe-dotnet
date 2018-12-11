@@ -22,7 +22,7 @@ namespace StripeTests
 
             this.createOptions = new ProductCreateOptions
             {
-                Attributes = new string[]
+                Attributes = new []
                 {
                     "attr1",
                     "attr2",
