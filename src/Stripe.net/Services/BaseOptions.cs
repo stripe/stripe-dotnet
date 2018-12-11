@@ -4,8 +4,20 @@ namespace Stripe
 
     public class BaseOptions : INestedOptions
     {
-        public Dictionary<string, string> ExtraParams = new Dictionary<string, string>();
-        public List<string> Expand = new List<string>();
+        private Dictionary<string, string> extraParams = new Dictionary<string, string>();
+        private List<string> expand = new List<string>();
+
+        public Dictionary<string, string> ExtraParams
+        {
+            get { return this.extraParams; }
+            set { this.extraParams = value; }
+        }
+
+        public List<string> Expand
+        {
+            get { return this.expand; }
+            set { this.expand = value; }
+        }
 
         public void AddExtraParam(string key, string value)
         {
