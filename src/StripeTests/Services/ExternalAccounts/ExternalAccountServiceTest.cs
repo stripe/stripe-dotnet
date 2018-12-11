@@ -32,15 +32,15 @@ namespace StripeTests
                 }
             };
 
-            this.updateOptions = new ExternalAccountUpdateOptions()
+            this.updateOptions = new ExternalAccountUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new ExternalAccountListOptions()
+            this.listOptions = new ExternalAccountListOptions
             {
                 Limit = 1,
             };

@@ -20,20 +20,20 @@ namespace StripeTests
         {
             this.service = new FileLinkService();
 
-            this.createOptions = new FileLinkCreateOptions()
+            this.createOptions = new FileLinkCreateOptions
             {
                 FileId = "file_123",
             };
 
-            this.updateOptions = new FileLinkUpdateOptions()
+            this.updateOptions = new FileLinkUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new FileLinkListOptions()
+            this.listOptions = new FileLinkListOptions
             {
                 FileId = "file_123",
                 Limit = 1,

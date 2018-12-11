@@ -20,22 +20,22 @@ namespace StripeTests
         {
             this.service = new TopupService();
 
-            this.createOptions = new TopupCreateOptions()
+            this.createOptions = new TopupCreateOptions
             {
                 Amount = 123,
                 Currency = "usd",
                 StatementDescriptor = "descriptor",
             };
 
-            this.updateOptions = new TopupUpdateOptions()
+            this.updateOptions = new TopupUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new TopupListOptions()
+            this.listOptions = new TopupListOptions
             {
                 Limit = 1,
             };

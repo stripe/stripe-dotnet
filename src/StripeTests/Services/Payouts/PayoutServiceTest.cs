@@ -20,21 +20,21 @@ namespace StripeTests
         {
             this.service = new PayoutService();
 
-            this.createOptions = new PayoutCreateOptions()
+            this.createOptions = new PayoutCreateOptions
             {
                 Amount = 123,
                 Currency = "usd",
             };
 
-            this.updateOptions = new PayoutUpdateOptions()
+            this.updateOptions = new PayoutUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new PayoutListOptions()
+            this.listOptions = new PayoutListOptions
             {
                 Limit = 1,
             };

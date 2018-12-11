@@ -25,7 +25,7 @@ namespace StripeTests
             {
             };
 
-            this.createOptions = new SubscriptionCreateOptions()
+            this.createOptions = new SubscriptionCreateOptions
             {
                 CustomerId = "cus_123",
                 Items = new List<SubscriptionItemOption>
@@ -43,15 +43,15 @@ namespace StripeTests
                 },
             };
 
-            this.updateOptions = new SubscriptionUpdateOptions()
+            this.updateOptions = new SubscriptionUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new SubscriptionListOptions()
+            this.listOptions = new SubscriptionListOptions
             {
                 Limit = 1,
             };

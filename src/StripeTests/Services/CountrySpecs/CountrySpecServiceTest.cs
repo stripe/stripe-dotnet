@@ -18,7 +18,7 @@ namespace StripeTests
         {
             this.service = new CountrySpecService();
 
-            this.listOptions = new CountrySpecListOptions()
+            this.listOptions = new CountrySpecListOptions
             {
                 Limit = 1,
             };

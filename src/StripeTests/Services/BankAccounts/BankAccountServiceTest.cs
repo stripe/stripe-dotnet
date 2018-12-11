@@ -24,7 +24,7 @@ namespace StripeTests
 
             this.createOptions = new BankAccountCreateOptions
             {
-                SourceBankAccount = new SourceBankAccount()
+                SourceBankAccount = new SourceBankAccount
                 {
                     AccountNumber = "000123456789",
                     Country = "US",
@@ -39,15 +39,15 @@ namespace StripeTests
                 }
             };
 
-            this.updateOptions = new BankAccountUpdateOptions()
+            this.updateOptions = new BankAccountUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new BankAccountListOptions()
+            this.listOptions = new BankAccountListOptions
             {
                 Limit = 1,
             };

@@ -6,7 +6,7 @@ namespace Stripe.Infrastructure
     internal class BalanceTransactionSourceConverter : AbstractStripeObjectConverter<IBalanceTransactionSource>
     {
         protected override Dictionary<string, Func<string, IBalanceTransactionSource>> ObjectsToMapperFuncs
-            => new Dictionary<string, Func<string, IBalanceTransactionSource>>()
+            => new Dictionary<string, Func<string, IBalanceTransactionSource>>
         {
             { "application_fee", Mapper<ApplicationFee>.MapFromJson },
             { "charge", Mapper<Charge>.MapFromJson },

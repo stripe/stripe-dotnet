@@ -20,21 +20,21 @@ namespace StripeTests
         {
             this.service = new RefundService();
 
-            this.createOptions = new RefundCreateOptions()
+            this.createOptions = new RefundCreateOptions
             {
                 Amount = 123,
                 ChargeId = "ch_123",
             };
 
-            this.updateOptions = new RefundUpdateOptions()
+            this.updateOptions = new RefundUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new RefundListOptions()
+            this.listOptions = new RefundListOptions
             {
                 Limit = 1,
             };

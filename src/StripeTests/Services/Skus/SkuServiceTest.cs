@@ -20,7 +20,7 @@ namespace StripeTests
         {
             this.service = new SkuService();
 
-            this.createOptions = new SkuCreateOptions()
+            this.createOptions = new SkuCreateOptions
             {
                 Attributes = new Dictionary<string, string>
                 {
@@ -44,15 +44,15 @@ namespace StripeTests
                 Product = "prod_123",
             };
 
-            this.updateOptions = new SkuUpdateOptions()
+            this.updateOptions = new SkuUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new SkuListOptions()
+            this.listOptions = new SkuListOptions
             {
                 Limit = 1,
             };

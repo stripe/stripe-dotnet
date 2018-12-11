@@ -21,27 +21,27 @@ namespace StripeTests
         {
             this.service = new ChargeService();
 
-            this.captureOptions = new ChargeCaptureOptions()
+            this.captureOptions = new ChargeCaptureOptions
             {
                 Amount = 123,
             };
 
-            this.createOptions = new ChargeCreateOptions()
+            this.createOptions = new ChargeCreateOptions
             {
                 Amount = 123,
                 Currency = "usd",
                 SourceId = "tok_123",
             };
 
-            this.updateOptions = new ChargeUpdateOptions()
+            this.updateOptions = new ChargeUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new ChargeListOptions()
+            this.listOptions = new ChargeListOptions
             {
                 Limit = 1,
             };

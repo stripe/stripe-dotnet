@@ -20,7 +20,7 @@ namespace StripeTests
         [Fact]
         public void Serialize()
         {
-            var options = new SubscriptionCreateOptions()
+            var options = new SubscriptionCreateOptions
             {
                 CustomerId = "cus_123",
                 Items = new List<SubscriptionItemOption>

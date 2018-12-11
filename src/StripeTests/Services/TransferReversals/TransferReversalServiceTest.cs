@@ -21,20 +21,20 @@ namespace StripeTests
         {
             this.service = new TransferReversalService();
 
-            this.createOptions = new TransferReversalCreateOptions()
+            this.createOptions = new TransferReversalCreateOptions
             {
                 Amount = 123,
             };
 
-            this.updateOptions = new TransferReversalUpdateOptions()
+            this.updateOptions = new TransferReversalUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new TransferReversalListOptions()
+            this.listOptions = new TransferReversalListOptions
             {
                 Limit = 1,
             };

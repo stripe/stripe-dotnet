@@ -19,15 +19,15 @@ namespace StripeTests.Issuing
         {
             this.service = new AuthorizationService();
 
-            this.updateOptions = new AuthorizationUpdateOptions()
+            this.updateOptions = new AuthorizationUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new AuthorizationListOptions()
+            this.listOptions = new AuthorizationListOptions
             {
                 Limit = 1,
             };

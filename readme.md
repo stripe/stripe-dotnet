@@ -42,7 +42,7 @@ b) Pass the API key to [RequestOptions](#requestoptions):
 
 ```csharp
 var planService = new PlanService();
-planService.Get(*planId*, new RequestOptions() { ApiKey = "[your api key here]" });
+planService.Get(*planId*, new RequestOptions { ApiKey = "[your api key here]" });
 ```
 
 You can obtain your secret API key from the [API Settings](https://dashboard.stripe.com/account/apikeys) in the Dashboard.

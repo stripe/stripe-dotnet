@@ -20,21 +20,21 @@ namespace StripeTests
         {
             this.service = new CustomerService();
 
-            this.createOptions = new CustomerCreateOptions()
+            this.createOptions = new CustomerCreateOptions
             {
                 Email = "example@example.com",
                 SourceToken = "tok_123",
             };
 
-            this.updateOptions = new CustomerUpdateOptions()
+            this.updateOptions = new CustomerUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new CustomerListOptions()
+            this.listOptions = new CustomerListOptions
             {
                 Limit = 1,
             };

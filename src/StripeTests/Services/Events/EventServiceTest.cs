@@ -18,7 +18,7 @@ namespace StripeTests
         {
             this.service = new EventService();
 
-            this.listOptions = new EventListOptions()
+            this.listOptions = new EventListOptions
             {
                 Limit = 1,
             };

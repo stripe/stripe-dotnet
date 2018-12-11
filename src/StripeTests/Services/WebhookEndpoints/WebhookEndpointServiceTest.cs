@@ -20,7 +20,7 @@ namespace StripeTests
         {
             this.service = new WebhookEndpointService();
 
-            this.createOptions = new WebhookEndpointCreateOptions()
+            this.createOptions = new WebhookEndpointCreateOptions
             {
                 EnabledEvents = new string[]
                 {
@@ -29,7 +29,7 @@ namespace StripeTests
                 Url = "https://stripe.com",
             };
 
-            this.updateOptions = new WebhookEndpointUpdateOptions()
+            this.updateOptions = new WebhookEndpointUpdateOptions
             {
                 EnabledEvents = new string[]
                 {
@@ -37,7 +37,7 @@ namespace StripeTests
                 },
             };
 
-            this.listOptions = new WebhookEndpointListOptions()
+            this.listOptions = new WebhookEndpointListOptions
             {
                 Limit = 1,
             };

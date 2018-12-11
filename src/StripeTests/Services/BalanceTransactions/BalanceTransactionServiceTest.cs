@@ -18,7 +18,7 @@ namespace StripeTests
         {
             this.service = new BalanceTransactionService();
 
-            this.listOptions = new BalanceTransactionListOptions()
+            this.listOptions = new BalanceTransactionListOptions
             {
                 Limit = 1,
             };

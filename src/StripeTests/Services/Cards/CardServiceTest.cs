@@ -25,20 +25,20 @@ namespace StripeTests
         {
             this.service = new CardService();
 
-            this.createOptions = new CardCreateOptions()
+            this.createOptions = new CardCreateOptions
             {
                 SourceToken = "tok_123",
             };
 
-            this.updateOptions = new CardUpdateOptions()
+            this.updateOptions = new CardUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new CardListOptions()
+            this.listOptions = new CardListOptions
             {
                 Limit = 1,
             };

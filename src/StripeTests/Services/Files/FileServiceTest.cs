@@ -23,13 +23,13 @@ namespace StripeTests
         {
             this.service = new FileService();
 
-            this.createOptions = new FileCreateOptions()
+            this.createOptions = new FileCreateOptions
             {
                 File = typeof(FileServiceTest).GetTypeInfo().Assembly.GetManifestResourceStream(FileName),
                 Purpose = FilePurpose.BusinessLogo,
             };
 
-            this.listOptions = new FileListOptions()
+            this.listOptions = new FileListOptions
             {
                 Limit = 1,
             };

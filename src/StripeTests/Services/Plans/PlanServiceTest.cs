@@ -20,7 +20,7 @@ namespace StripeTests
         {
             this.service = new PlanService();
 
-            this.createOptions = new PlanCreateOptions()
+            this.createOptions = new PlanCreateOptions
             {
                 Amount = 123,
                 Currency = "usd",
@@ -32,15 +32,15 @@ namespace StripeTests
                 },
             };
 
-            this.updateOptions = new PlanUpdateOptions()
+            this.updateOptions = new PlanUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new PlanListOptions()
+            this.listOptions = new PlanListOptions
             {
                 Limit = 1,
             };

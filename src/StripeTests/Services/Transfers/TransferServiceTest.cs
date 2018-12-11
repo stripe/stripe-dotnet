@@ -20,22 +20,22 @@ namespace StripeTests
         {
             this.service = new TransferService();
 
-            this.createOptions = new TransferCreateOptions()
+            this.createOptions = new TransferCreateOptions
             {
                 Amount = 123,
                 Currency = "usd",
                 Destination = "acct_123",
             };
 
-            this.updateOptions = new TransferUpdateOptions()
+            this.updateOptions = new TransferUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new TransferListOptions()
+            this.listOptions = new TransferListOptions
             {
                 Limit = 1,
             };

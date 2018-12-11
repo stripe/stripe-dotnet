@@ -17,7 +17,7 @@ namespace StripeTests
         {
             this.service = new UsageRecordSummaryService();
 
-            this.listOptions = new UsageRecordSummaryListOptions()
+            this.listOptions = new UsageRecordSummaryListOptions
             {
                 Limit = 1,
             };

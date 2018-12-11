@@ -20,7 +20,7 @@ namespace StripeTests.Issuing
         {
             this.service = new DisputeService();
 
-            this.createOptions = new DisputeCreateOptions()
+            this.createOptions = new DisputeCreateOptions
             {
                 DisputedTransactionId = "ipi_123",
                 Evidence = new EvidenceOptions
@@ -34,15 +34,15 @@ namespace StripeTests.Issuing
                 Reason = "fraudulent",
             };
 
-            this.updateOptions = new DisputeUpdateOptions()
+            this.updateOptions = new DisputeUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new DisputeListOptions()
+            this.listOptions = new DisputeListOptions
             {
                 Limit = 1,
             };

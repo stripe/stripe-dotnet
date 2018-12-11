@@ -75,7 +75,7 @@ namespace StripeTests
         private class FooOrBarConverter : AbstractStripeObjectConverter<IFooOrBar>
         {
             protected override Dictionary<string, Func<string, IFooOrBar>> ObjectsToMapperFuncs =>
-                new Dictionary<string, Func<string, IFooOrBar>>()
+                new Dictionary<string, Func<string, IFooOrBar>>
             {
                 { "foo", Mapper<Foo>.MapFromJson },
                 { "bar", Mapper<Bar>.MapFromJson },

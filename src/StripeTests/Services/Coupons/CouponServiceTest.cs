@@ -20,21 +20,21 @@ namespace StripeTests
         {
             this.service = new CouponService();
 
-            this.createOptions = new CouponCreateOptions()
+            this.createOptions = new CouponCreateOptions
             {
                 PercentOff = 25,
                 Duration = "forever",
             };
 
-            this.updateOptions = new CouponUpdateOptions()
+            this.updateOptions = new CouponUpdateOptions
             {
-                Metadata = new Dictionary<string, string>()
+                Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
                 },
             };
 
-            this.listOptions = new CouponListOptions()
+            this.listOptions = new CouponListOptions
             {
                 Limit = 1,
             };

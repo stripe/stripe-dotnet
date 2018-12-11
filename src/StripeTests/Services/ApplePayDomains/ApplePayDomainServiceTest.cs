@@ -19,12 +19,12 @@ namespace StripeTests
         {
             this.service = new ApplePayDomainService();
 
-            this.createOptions = new ApplePayDomainCreateOptions()
+            this.createOptions = new ApplePayDomainCreateOptions
             {
                 DomainName = "example.com"
             };
 
-            this.listOptions = new ApplePayDomainListOptions()
+            this.listOptions = new ApplePayDomainListOptions
             {
                 Limit = 2,
             };

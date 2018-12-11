@@ -16,7 +16,7 @@ namespace StripeTests
         {
             this.service = new ThreeDSecureService();
 
-            this.createOptions = new ThreeDSecureCreateOptions()
+            this.createOptions = new ThreeDSecureCreateOptions
             {
                 Amount = 25,
                 Currency = "eur",
