@@ -9,8 +9,6 @@ namespace Stripe
 
     public static class Mapper<T>
     {
-        public static JsonSerializerSettings SerializerSettings = InitSerializerSettings();
-
         public static List<T> MapCollectionFromJson(string json, string token = "data", StripeResponse stripeResponse = null)
         {
             var jObject = JObject.Parse(json);
@@ -32,7 +30,7 @@ namespace Stripe
         {
             var jsonToParse = string.IsNullOrEmpty(parentToken) ? json : JObject.Parse(json).SelectToken(parentToken).ToString();
 
-            var result = JsonConvert.DeserializeObject<T>(jsonToParse, SerializerSettings);
+            var result = JsonConvert.DeserializeObject<T>(jsonToParse, StripeConfiguration.SerializerSettings);
 
             // if necessary, we might need to apply the stripe response to nested properties for StripeList<T>
             ApplyStripeResponse(json, stripeResponse, result);
@@ -61,18 +59,6 @@ namespace Stripe
             }
 
             stripeResponse.ObjectJson = json;
-        }
-
-        private static JsonSerializerSettings InitSerializerSettings()
-        {
-            return new JsonSerializerSettings
-            {
-                Converters = new List<JsonConverter>
-                {
-                    new StripeObjectConverter(),
-                },
-                DateParseHandling = DateParseHandling.None,
-            };
         }
     }
 }
