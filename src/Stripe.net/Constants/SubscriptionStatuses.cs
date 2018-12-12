@@ -2,10 +2,14 @@ namespace Stripe
 {
     public static class SubscriptionStatuses
     {
-        public const string Trialing = "trialing";
-        public const string Active = "active";
-        public const string PastDue = "past_due";
-        public const string Canceled = "canceled";
-        public const string Unpaid = "unpaid";
+        public static string Trialing => "trialing";
+
+        public static string Active => "active";
+
+        public static string PastDue => "past_due";
+
+        public static string Canceled => "canceled";
+
+        public static string Unpaid => "unpaid";
     }
 }
