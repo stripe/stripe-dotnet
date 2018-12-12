@@ -372,7 +372,7 @@ namespace Stripe.Infrastructure.Middleware
             }
             else
             {
-                int i = key.IndexOf("[");
+                int i = key.IndexOf("[", StringComparison.Ordinal);
                 if (i == -1)
                 {
                     return $"{keyPrefix}[{key}]";
