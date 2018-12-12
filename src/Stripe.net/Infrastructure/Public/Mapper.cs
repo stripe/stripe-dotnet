@@ -25,11 +25,6 @@ namespace Stripe
             return MapCollectionFromJson(stripeResponse.ResponseJson, token, stripeResponse);
         }
 
-        public static T MapFromJson(string json)
-        {
-            return MapFromJson(json, null, null);
-        }
-
         // the ResponseJson on a list method is the entire list (as json) returned from stripe.
         // the ObjectJson is so we can store only the json for a single object in the list on that entity for
         // logging and/or debugging
