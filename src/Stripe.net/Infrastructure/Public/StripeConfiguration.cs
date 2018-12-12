@@ -1,8 +1,10 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using System.Net.Http;
     using System.Reflection;
+    using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
     public static class StripeConfiguration
@@ -13,6 +15,7 @@ namespace Stripe
         private static string apiBase;
         private static string connectBase;
         private static string filesBase;
+        private static JsonSerializerSettings serializerSettings = DefaultSerializerSettings();
 
         static StripeConfiguration()
         {
@@ -23,6 +26,20 @@ namespace Stripe
         {
             get { return stripeApiVersion; }
             set { stripeApiVersion = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the settings used for deserializing JSON objects returned by Stripe's API.
+        /// It is highly recommended you do not change these settings, as doing so can produce
+        /// unexpected results. If you do change these settings, make sure that
+        /// <see cref="Stripe.Infrastructure.StripeObjectConverter"/> is among the converters,
+        /// otherwise the library will no longer be able to deserialize polymorphic resources
+        /// represented by interfaces (e.g. <see cref="IPaymentSource"/>).
+        /// </summary>
+        public static JsonSerializerSettings SerializerSettings
+        {
+            get { return serializerSettings; }
+            set { serializerSettings = value; }
         }
 
         public static string StripeNetVersion { get; }
@@ -94,6 +111,22 @@ namespace Stripe
         public static void SetFilesBase(string baseUrl)
         {
             filesBase = baseUrl;
+        }
+
+        /// <summary>
+        /// Returns a new instance of <see cref="Newtonsoft.Json.JsonSerializerSettings"/> with
+        /// the default settings used by Stripe.net.
+        /// <summary>
+        public static JsonSerializerSettings DefaultSerializerSettings()
+        {
+            return new JsonSerializerSettings
+            {
+                Converters = new List<JsonConverter>
+                {
+                    new StripeObjectConverter(),
+                },
+                DateParseHandling = DateParseHandling.None,
+            };
         }
     }
 }
