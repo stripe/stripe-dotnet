@@ -21,7 +21,7 @@ namespace StripeTests
         /// </remarks>
         private const string MockMinimumVersion = "0.38.0";
 
-        private static Mock<HttpClientHandler> mockHandler = null;
+        private static Mock<HttpClientHandler> mockHandler;
 
         private static string port;
 

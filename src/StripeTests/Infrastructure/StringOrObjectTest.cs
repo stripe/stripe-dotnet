@@ -10,10 +10,6 @@ namespace StripeTests
 
     public class StringOrObjectTest : BaseStripeTest
     {
-        public StringOrObjectTest()
-        {
-        }
-
         [Fact]
         public void HandlesObject()
         {

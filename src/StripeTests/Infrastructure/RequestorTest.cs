@@ -9,10 +9,6 @@ namespace StripeTests
 
     public class RequestorTest : BaseStripeTest
     {
-        public RequestorTest()
-        {
-        }
-
         [Fact]
         public void SetsHeaders()
         {

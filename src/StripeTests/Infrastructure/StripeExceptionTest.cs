@@ -9,10 +9,6 @@ namespace StripeTests
 
     public class StripeExceptionTest : BaseStripeTest
     {
-        public StripeExceptionTest()
-        {
-        }
-
         [Fact]
         public void SetsStripeResponse()
         {

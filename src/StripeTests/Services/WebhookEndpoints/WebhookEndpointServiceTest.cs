@@ -22,7 +22,7 @@ namespace StripeTests
 
             this.createOptions = new WebhookEndpointCreateOptions
             {
-                EnabledEvents = new string[]
+                EnabledEvents = new []
                 {
                     "charge.succeeded",
                 },

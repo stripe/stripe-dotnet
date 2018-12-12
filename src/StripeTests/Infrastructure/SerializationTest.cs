@@ -9,10 +9,6 @@ namespace StripeTests
 
     public class SerializationTest : BaseStripeTest
     {
-        public SerializationTest()
-        {
-        }
-
         [Fact]
         public void RoundtripDatetime()
         {
