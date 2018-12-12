@@ -6,7 +6,7 @@ namespace Stripe.Infrastructure
     {
         public static string GetMimeType(string fileName)
         {
-            switch (Path.GetExtension(fileName.ToLower()))
+            switch (Path.GetExtension(fileName.ToLowerInvariant()))
             {
                 case ".jpeg":
                 case ".jpg":
