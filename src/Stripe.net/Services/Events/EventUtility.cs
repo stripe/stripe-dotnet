@@ -78,7 +78,7 @@ namespace Stripe
             using (var cryptographer = new HMACSHA256(secretBytes))
             {
                 var hash = cryptographer.ComputeHash(payloadBytes);
-                return BitConverter.ToString(hash).Replace("-", string.Empty).ToLower();
+                return BitConverter.ToString(hash).Replace("-", string.Empty).ToLowerInvariant();
             }
         }
 
