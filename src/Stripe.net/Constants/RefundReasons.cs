@@ -2,9 +2,12 @@ namespace Stripe
 {
     public static class RefundReasons
     {
-        public const string Unknown = null;
-        public const string Duplicate = "duplicate";
-        public const string Fraudulent = "fraudulent";
-        public const string RequestedByCustomer = "requested_by_customer";
+        public static string Unknown => null;
+
+        public static string Duplicate => "duplicate";
+
+        public static string Fraudulent => "fraudulent";
+
+        public static string RequestedByCustomer => "requested_by_customer";
     }
 }
