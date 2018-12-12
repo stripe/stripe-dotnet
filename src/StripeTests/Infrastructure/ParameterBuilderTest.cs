@@ -381,7 +381,7 @@ namespace StripeTests
                 Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
 
                 var dec = 123.45m;
-                Assert.Equal("123,45", dec.ToString());
+                Assert.Equal("123,45", dec.ToString(CultureInfo.CurrentCulture));
 
                 var obj = new TestOptions
                 {
