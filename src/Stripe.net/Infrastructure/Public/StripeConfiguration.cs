@@ -116,7 +116,8 @@ namespace Stripe
         /// <summary>
         /// Returns a new instance of <see cref="Newtonsoft.Json.JsonSerializerSettings"/> with
         /// the default settings used by Stripe.net.
-        /// <summary>
+        /// </summary>
+        /// <returns>A <see cref="Newtonsoft.Json.JsonSerializerSettings"/> instance</returns>
         public static JsonSerializerSettings DefaultSerializerSettings()
         {
             return new JsonSerializerSettings
