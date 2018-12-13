@@ -12,17 +12,26 @@ namespace Stripe
         public string BillingAddress { get; set; }
 
         #region Expandable Cancellation Policy
-        public string CancellationPolicyFileId { get; set; }
 
+        /// <summary>
+        /// (ID of a <see cref="File"/>) Your subscription cancellation policy, as shown to the
+        /// customer.
+        /// <para>Expandable.</para>
+        /// </summary>
+        public string CancellationPolicyId { get; set; }
+
+        /// <summary>
+        /// (Expanded) Your subscription cancellation policy, as shown to the customer.
+        /// </summary>
         [JsonIgnore]
-        public File CancellationPolicyFile { get; set; }
+        public File CancellationPolicy { get; set; }
 
         [JsonProperty("cancellation_policy")]
         internal object InternalCancellationPolicy
         {
             set
             {
-                StringOrObject<File>.Map(value, s => this.CancellationPolicyFileId = s, o => this.CancellationPolicyFile = o);
+                StringOrObject<File>.Map(value, s => this.CancellationPolicyId = s, o => this.CancellationPolicy = o);
             }
         }
         #endregion
@@ -34,17 +43,30 @@ namespace Stripe
         public string CancellationRebuttal { get; set; }
 
         #region Expandable Customer Communication
-        public string CustomerCommunicationFileId { get; set; }
 
+        /// <summary>
+        /// (ID of a <see cref="File"/>) Any communication with the customer that you feel is
+        /// relevant to your case. Examples include emails proving that the customer received the
+        /// product or service, or demonstrating their use of or satisfaction with the product or
+        /// service.
+        /// <para>Expandable.</para>
+        /// </summary>
+        public string CustomerCommunicationId { get; set; }
+
+        /// <summary>
+        /// (Expanded) Any communication with the customer that you feel is relevant to your case.
+        /// Examples include emails proving that the customer received the product or service, or
+        /// demonstrating their use of or satisfaction with the product or service.
+        /// </summary>
         [JsonIgnore]
-        public File CustomerCommunicationFile { get; set; }
+        public File CustomerCommunication { get; set; }
 
         [JsonProperty("customer_communication")]
         internal object InternalCustomerCommunication
         {
             set
             {
-                StringOrObject<File>.Map(value, s => this.CustomerCommunicationFileId = s, o => this.CustomerCommunicationFile = o);
+                StringOrObject<File>.Map(value, s => this.CustomerCommunicationId = s, o => this.CustomerCommunication = o);
             }
         }
         #endregion
@@ -59,33 +81,55 @@ namespace Stripe
         public string CustomerPurchaseIPAddress { get; set; }
 
         #region Expandable Customer Signature
-        public string CustomerSignatureFileId { get; set; }
 
+        /// <summary>
+        /// (ID of a <see cref="File"/>) A relevant document or contract showing the customer’s
+        /// signature.
+        /// <para>Expandable.</para>
+        /// </summary>
+        public string CustomerSignatureId { get; set; }
+
+        /// <summary>
+        /// (Expanded) A relevant document or contract showing the customer’s signature.
+        /// </summary>
         [JsonIgnore]
-        public File CustomerSignatureFile { get; set; }
+        public File CustomerSignature { get; set; }
 
         [JsonProperty("customer_signature")]
-        internal object InternalCustomerSignatureFile
+        internal object InternalCustomerSignature
         {
             set
             {
-                StringOrObject<File>.Map(value, s => this.CustomerSignatureFileId = s, o => this.CustomerSignatureFile = o);
+                StringOrObject<File>.Map(value, s => this.CustomerSignatureId = s, o => this.CustomerSignature = o);
             }
         }
         #endregion
 
         #region Expandable Duplicate Charge Documentation
-        public string DuplicateChargeDocumentationFileId { get; set; }
 
+        /// <summary>
+        /// (ID of a <see cref="File"/>) Documentation for the prior charge that can uniquely
+        /// identify the charge, such as a receipt, shipping label, work order, etc. This document
+        /// should be paired with a similar document from the disputed payment that proves the two
+        /// payments are separate.
+        /// <para>Expandable.</para>
+        /// </summary>
+        public string DuplicateChargeDocumentationId { get; set; }
+
+        /// <summary>
+        /// (Expanded) Documentation for the prior charge that can uniquely  identify the charge,
+        /// such as a receipt, shipping label, work order, etc. This document should be paired with
+        /// a similar document from the disputed payment that proves the two payments are separate.
+        /// </summary>
         [JsonIgnore]
-        public File DuplicateChargeDocumentationFile { get; set; }
+        public File DuplicateChargeDocumentation { get; set; }
 
         [JsonProperty("duplicate_charge_documentation")]
-        internal object InternalDuplicateChargeDocumentationFile
+        internal object InternalDuplicateChargeDocumentation
         {
             set
             {
-                StringOrObject<File>.Map(value, s => this.DuplicateChargeDocumentationFileId = s, o => this.DuplicateChargeDocumentationFile = o);
+                StringOrObject<File>.Map(value, s => this.DuplicateChargeDocumentationId = s, o => this.DuplicateChargeDocumentation = o);
             }
         }
         #endregion
@@ -100,33 +144,50 @@ namespace Stripe
         public string ProductDescription { get; set; }
 
         #region Expandable Receipt
-        public string ReceiptFileId { get; set; }
 
+        /// <summary>
+        /// (ID of a <see cref="File"/>) Any receipt or message sent to the customer notifying them
+        /// of the charge.
+        /// <para>Expandable.</para>
+        /// </summary>
+        public string ReceiptId { get; set; }
+
+        /// <summary>
+        /// (Expanded) Any receipt or message sent to the customer notifying them of the charge.
+        /// </summary>
         [JsonIgnore]
-        public File ReceiptFile { get; set; }
+        public File Receipt { get; set; }
 
         [JsonProperty("receipt")]
-        internal object InternalReceiptFile
+        internal object InternalReceipt
         {
             set
             {
-                StringOrObject<File>.Map(value, s => this.ReceiptFileId = s, o => this.ReceiptFile = o);
+                StringOrObject<File>.Map(value, s => this.ReceiptId = s, o => this.Receipt = o);
             }
         }
         #endregion
 
         #region Expandable Refund Policy
-        public string RefundPolicyFileId { get; set; }
 
+        /// <summary>
+        /// (ID of a <see cref="File"/>) Your refund policy, as shown to the customer.
+        /// <para>Expandable.</para>
+        /// </summary>
+        public string RefundPolicyId { get; set; }
+
+        /// <summary>
+        /// (Expanded) Your refund policy, as shown to the customer.
+        /// </summary>
         [JsonIgnore]
-        public File RefundPolicyFile { get; set; }
+        public File RefundPolicy { get; set; }
 
         [JsonProperty("refund_policy")]
-        internal object InternalRefundPolicyFile
+        internal object InternalRefundPolicy
         {
             set
             {
-                StringOrObject<File>.Map(value, s => this.RefundPolicyFileId = s, o => this.RefundPolicyFile = o);
+                StringOrObject<File>.Map(value, s => this.RefundPolicyId = s, o => this.RefundPolicy = o);
             }
         }
         #endregion
@@ -141,17 +202,29 @@ namespace Stripe
         public string ServiceDate { get; set; }
 
         #region Expandable Service Documentation
-        public string ServiceDocumentationFileId { get; set; }
 
+        /// <summary>
+        /// (ID of a <see cref="File"/>) Documentation showing proof that a service was provided to
+        /// the customer. This could include a copy of a signed contract, work order, or other form
+        /// of written agreement.
+        /// <para>Expandable.</para>
+        /// </summary>
+        public string ServiceDocumentationId { get; set; }
+
+        /// <summary>
+        /// (Expanded) Documentation showing proof that a service was provided to  the customer.
+        /// This could include a copy of a signed contract, work order, or other form of written
+        /// agreement.
+        /// </summary>
         [JsonIgnore]
-        public File ServiceDocumentationFile { get; set; }
+        public File ServiceDocumentation { get; set; }
 
         [JsonProperty("service_documentation")]
-        internal object InternalServiceDocumentationFile
+        internal object InternalServiceDocumentation
         {
             set
             {
-                StringOrObject<File>.Map(value, s => this.ServiceDocumentationFileId = s, o => this.ServiceDocumentationFile = o);
+                StringOrObject<File>.Map(value, s => this.ServiceDocumentationId = s, o => this.ServiceDocumentation = o);
             }
         }
         #endregion
@@ -166,17 +239,31 @@ namespace Stripe
         public string ShippingDate { get; set; }
 
         #region Expandable Shipping Documentation
-        public string ShippingDocumentationFileId { get; set; }
 
+        /// <summary>
+        /// (ID of a <see cref="File"/>) Documentation showing proof that a product was shipped to
+        /// the customer at the same address the customer provided to you. This could include a copy
+        /// of the shipment receipt, shipping label, etc. It should show the customer’s full
+        /// shipping address, if possible.
+        /// <para>Expandable.</para>
+        /// </summary>
+        public string ShippingDocumentationId { get; set; }
+
+        /// <summary>
+        /// (Expanded) Documentation showing proof that a product was shipped to  the customer at
+        /// the same address the customer provided to you. This could include a copy of the shipment
+        /// receipt, shipping label, etc. It should show the customer’s full shipping address, if
+        /// possible.
+        /// </summary>
         [JsonIgnore]
-        public File ShippingDocumentationFile { get; set; }
+        public File ShippingDocumentation { get; set; }
 
         [JsonProperty("shipping_documentation")]
-        internal object InternalShippingDocumentationFile
+        internal object InternalShippingDocumentation
         {
             set
             {
-                StringOrObject<File>.Map(value, s => this.ShippingDocumentationFileId = s, o => this.ShippingDocumentationFile = o);
+                StringOrObject<File>.Map(value, s => this.ShippingDocumentationId = s, o => this.ShippingDocumentation = o);
             }
         }
         #endregion
@@ -185,8 +272,16 @@ namespace Stripe
         public string ShippingTrackingNumber { get; set; }
 
         #region Expandable Uncategorized File
+
+        /// <summary>
+        /// (ID of a <see cref="File"/>) Any additional evidence or statements.
+        /// <para>Expandable.</para>
+        /// </summary>
         public string UncategorizedFileId { get; set; }
 
+        /// <summary>
+        /// (Expanded) Any additional evidence or statements.
+        /// </summary>
         [JsonIgnore]
         public File UncategorizedFile { get; set; }
 
