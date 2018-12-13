@@ -61,7 +61,7 @@ namespace StripeTests
                 {
                     data = new TestOptions
                     {
-                            Array = new [] { "1", "2", "3" },
+                            Array = new[] { "1", "2", "3" },
                     },
                     want = "?array[0]=1&array[1]=2&array[2]=3"
                 },
