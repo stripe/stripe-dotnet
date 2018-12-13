@@ -2,9 +2,12 @@ namespace Stripe
 {
     public static class PlanIntervals
     {
-        public const string Day = "day";
-        public const string Week = "week";
-        public const string Month = "month";
-        public const string Year = "year";
+        public static string Day => "day";
+
+        public static string Week => "week";
+
+        public static string Month => "month";
+
+        public static string Year => "year";
     }
 }
