@@ -12,8 +12,18 @@ namespace Stripe
         public string DetailsCode { get; set; }
 
         #region Expandable Document
+
+        /// <summary>
+        /// (ID of a <see cref="File"/>) A photo (jpg or png) of the front of an identifying
+        /// document, either a passport or local ID card.
+        /// <para>Expandable.</para>
+        /// </summary>
         public string DocumentId { get; set; }
 
+        /// <summary>
+        /// (Expanded) A photo (jpg or png) of the front of an identifying document, either a
+        /// passport or local ID card.
+        /// </summary>
         [JsonIgnore]
         public File Document { get; set; }
 
@@ -28,8 +38,18 @@ namespace Stripe
         #endregion
 
         #region Expandable Document Back
-        public string DocumentIdBack { get; set; }
 
+        /// <summary>
+        /// (ID of a <see cref="File"/>) A photo (jpg or png) of the back of an identifying
+        /// document, either a passport or local ID card.
+        /// <para>Expandable.</para>
+        /// </summary>
+        public string DocumentBackId { get; set; }
+
+        /// <summary>
+        /// (Expanded) A photo (jpg or png) of the back of an identifying document, either a
+        /// passport or local ID card.
+        /// </summary>
         [JsonIgnore]
         public File DocumentBack { get; set; }
 
@@ -38,7 +58,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<File>.Map(value, s => this.DocumentIdBack = s, o => this.DocumentBack = o);
+                StringOrObject<File>.Map(value, s => this.DocumentBackId = s, o => this.DocumentBack = o);
             }
         }
         #endregion
