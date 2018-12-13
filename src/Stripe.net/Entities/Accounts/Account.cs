@@ -14,8 +14,16 @@ namespace Stripe
         public string Object { get; set; }
 
         #region Expandable BusinessLogo
-        public string BusinessLogoFileId { get; set; }
 
+        /// <summary>
+        /// (ID of a <see cref="File"/>) A logo for this account (at least 128px x 128px).
+        /// <para>Expandable.</para>
+        /// </summary>
+        public string BusinessLogoId { get; set; }
+
+        /// <summary>
+        /// (Expanded) A logo for this account (at least 128px x 128px).
+        /// </summary>
         [JsonIgnore]
         public File BusinessLogo { get; set; }
 
@@ -24,7 +32,7 @@ namespace Stripe
         {
             set
             {
-                StringOrObject<File>.Map(value, s => this.BusinessLogoFileId = s, o => this.BusinessLogo = o);
+                StringOrObject<File>.Map(value, s => this.BusinessLogoId = s, o => this.BusinessLogo = o);
             }
         }
         #endregion
