@@ -21,7 +21,7 @@ namespace Stripe
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted")]
-        public bool Deleted { get; set; }
+        public bool? Deleted { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
