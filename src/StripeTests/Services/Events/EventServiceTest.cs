@@ -11,8 +11,8 @@ namespace StripeTests
     {
         private const string EventId = "evt_123";
 
-        private EventService service;
-        private EventListOptions listOptions;
+        private readonly EventService service;
+        private readonly EventListOptions listOptions;
 
         public EventServiceTest()
         {

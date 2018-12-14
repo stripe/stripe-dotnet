@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string WebhookEndpointId = "we_123";
 
-        private WebhookEndpointService service;
-        private WebhookEndpointCreateOptions createOptions;
-        private WebhookEndpointUpdateOptions updateOptions;
-        private WebhookEndpointListOptions listOptions;
+        private readonly WebhookEndpointService service;
+        private readonly WebhookEndpointCreateOptions createOptions;
+        private readonly WebhookEndpointUpdateOptions updateOptions;
+        private readonly WebhookEndpointListOptions listOptions;
 
         public WebhookEndpointServiceTest()
         {

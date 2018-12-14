@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string RefundId = "re_123";
 
-        private RefundService service;
-        private RefundCreateOptions createOptions;
-        private RefundUpdateOptions updateOptions;
-        private RefundListOptions listOptions;
+        private readonly RefundService service;
+        private readonly RefundCreateOptions createOptions;
+        private readonly RefundUpdateOptions updateOptions;
+        private readonly RefundListOptions listOptions;
 
         public RefundServiceTest()
         {

@@ -11,10 +11,10 @@ namespace StripeTests.Issuing
     {
         private const string CardId = "ic_123";
 
-        private CardService service;
-        private CardCreateOptions createOptions;
-        private CardUpdateOptions updateOptions;
-        private CardListOptions listOptions;
+        private readonly CardService service;
+        private readonly CardCreateOptions createOptions;
+        private readonly CardUpdateOptions updateOptions;
+        private readonly CardListOptions listOptions;
 
         public IssuingCardServiceTest()
         {

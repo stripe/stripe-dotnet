@@ -10,8 +10,8 @@ namespace StripeTests
 
     public class UsageRecordSummaryServiceTest : BaseStripeTest
     {
-        private UsageRecordSummaryService service;
-        private UsageRecordSummaryListOptions listOptions;
+        private readonly UsageRecordSummaryService service;
+        private readonly UsageRecordSummaryListOptions listOptions;
 
         public UsageRecordSummaryServiceTest()
         {

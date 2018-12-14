@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string TransferId = "tr_123";
 
-        private TransferService service;
-        private TransferCreateOptions createOptions;
-        private TransferUpdateOptions updateOptions;
-        private TransferListOptions listOptions;
+        private readonly TransferService service;
+        private readonly TransferCreateOptions createOptions;
+        private readonly TransferUpdateOptions updateOptions;
+        private readonly TransferListOptions listOptions;
 
         public TransferServiceTest()
         {

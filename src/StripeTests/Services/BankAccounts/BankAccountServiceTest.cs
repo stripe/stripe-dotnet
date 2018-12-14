@@ -12,11 +12,11 @@ namespace StripeTests
         private const string CustomerId = "cus_123";
         private const string BankAccountId = "ba_123";
 
-        private BankAccountService service;
-        private BankAccountCreateOptions createOptions;
-        private BankAccountUpdateOptions updateOptions;
-        private BankAccountListOptions listOptions;
-        private BankAccountVerifyOptions verifyOptions;
+        private readonly BankAccountService service;
+        private readonly BankAccountCreateOptions createOptions;
+        private readonly BankAccountUpdateOptions updateOptions;
+        private readonly BankAccountListOptions listOptions;
+        private readonly BankAccountVerifyOptions verifyOptions;
 
         public BankAccountServiceTest()
         {

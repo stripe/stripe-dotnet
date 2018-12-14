@@ -11,8 +11,8 @@ namespace StripeTests
     {
         private const string CountrySpecId = "US";
 
-        private CountrySpecService service;
-        private CountrySpecListOptions listOptions;
+        private readonly CountrySpecService service;
+        private readonly CountrySpecListOptions listOptions;
 
         public CountrySpecServiceTest()
         {

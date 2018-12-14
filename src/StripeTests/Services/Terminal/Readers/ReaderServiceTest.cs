@@ -12,10 +12,10 @@ namespace StripeTests.Terminal
     {
         private const string ReaderId = "ds_123";
 
-        private ReaderService service;
-        private ReaderCreateOptions createOptions;
-        private ReaderListOptions listOptions;
-        private ReaderUpdateOptions updateOptions;
+        private readonly ReaderService service;
+        private readonly ReaderCreateOptions createOptions;
+        private readonly ReaderListOptions listOptions;
+        private readonly ReaderUpdateOptions updateOptions;
 
         public ReaderServiceTest()
         {

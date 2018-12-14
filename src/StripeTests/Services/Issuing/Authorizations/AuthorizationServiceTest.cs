@@ -11,9 +11,9 @@ namespace StripeTests.Issuing
     {
         private const string AuthorizationId = "iauth_123";
 
-        private AuthorizationService service;
-        private AuthorizationUpdateOptions updateOptions;
-        private AuthorizationListOptions listOptions;
+        private readonly AuthorizationService service;
+        private readonly AuthorizationUpdateOptions updateOptions;
+        private readonly AuthorizationListOptions listOptions;
 
         public AuthorizationServiceTest()
         {

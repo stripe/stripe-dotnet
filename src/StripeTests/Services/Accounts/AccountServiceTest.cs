@@ -11,11 +11,11 @@ namespace StripeTests
     {
         private const string AccountId = "acct_123";
 
-        private AccountService service;
-        private AccountCreateOptions createOptions;
-        private AccountUpdateOptions updateOptions;
-        private AccountListOptions listOptions;
-        private AccountRejectOptions rejectOptions;
+        private readonly AccountService service;
+        private readonly AccountCreateOptions createOptions;
+        private readonly AccountUpdateOptions updateOptions;
+        private readonly AccountListOptions listOptions;
+        private readonly AccountRejectOptions rejectOptions;
 
         public AccountServiceTest()
         {

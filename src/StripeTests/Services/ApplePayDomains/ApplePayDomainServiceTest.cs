@@ -11,9 +11,9 @@ namespace StripeTests
     {
         private const string DomainId = "apwc_123";
 
-        private ApplePayDomainService service;
-        private ApplePayDomainCreateOptions createOptions;
-        private ApplePayDomainListOptions listOptions;
+        private readonly ApplePayDomainService service;
+        private readonly ApplePayDomainCreateOptions createOptions;
+        private readonly ApplePayDomainListOptions listOptions;
 
         public ApplePayDomainServiceTest()
         {
