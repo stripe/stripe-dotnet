@@ -69,7 +69,7 @@ namespace Stripe
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted")]
-        public bool Deleted { get; set; }
+        public bool? Deleted { get; set; }
 
         [JsonProperty("details_submitted")]
         public bool DetailsSubmitted { get; set; }
