@@ -42,7 +42,7 @@ namespace Stripe
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted")]
-        public bool Deleted { get; set; }
+        public bool? Deleted { get; set; }
 
         /// <summary>
         /// The URL of an image for this SKU, meant to be displayable to the customer.

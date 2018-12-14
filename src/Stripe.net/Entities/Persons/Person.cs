@@ -30,7 +30,7 @@ namespace Stripe
         public DateTime Created { get; set; }
 
         [JsonProperty("deleted")]
-        public bool Deleted { get; set; }
+        public bool? Deleted { get; set; }
 
         [JsonProperty("dob")]
         public BirthDay Dob { get; set; }
