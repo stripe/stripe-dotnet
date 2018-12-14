@@ -41,8 +41,8 @@ build:
 
 build_script:
   - ps: Write-Host $("`n               BUILDING EVERYTHING               `n") -BackgroundColor DarkCyan
-  - dotnet build -c Release src\Stripe.net
-  - dotnet build -c Debug src\Stripe.net
+  - dotnet build src\Stripe.net -c Release /p:ContinuousIntegrationBuild=true
+  - dotnet build src\Stripe.net -c Debug
   - dotnet build src\StripeTests -c Debug
 
 after_build:
