@@ -12,10 +12,10 @@ namespace StripeTests
         private const string ApplicationFeeId = "fee_123";
         private const string ApplicationFeeRefundId = "fr_123";
 
-        private ApplicationFeeRefundService service;
-        private ApplicationFeeRefundCreateOptions createOptions;
-        private ApplicationFeeRefundUpdateOptions updateOptions;
-        private ApplicationFeeRefundListOptions listOptions;
+        private readonly ApplicationFeeRefundService service;
+        private readonly ApplicationFeeRefundCreateOptions createOptions;
+        private readonly ApplicationFeeRefundUpdateOptions updateOptions;
+        private readonly ApplicationFeeRefundListOptions listOptions;
 
         public ApplicationFeeRefundServiceTest()
         {

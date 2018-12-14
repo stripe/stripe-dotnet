@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string ProductId = "prod_123";
 
-        private ProductService service;
-        private ProductCreateOptions createOptions;
-        private ProductUpdateOptions updateOptions;
-        private ProductListOptions listOptions;
+        private readonly ProductService service;
+        private readonly ProductCreateOptions createOptions;
+        private readonly ProductUpdateOptions updateOptions;
+        private readonly ProductListOptions listOptions;
 
         public ProductServiceTest()
         {

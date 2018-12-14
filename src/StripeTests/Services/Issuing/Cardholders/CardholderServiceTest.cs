@@ -12,10 +12,10 @@ namespace StripeTests.Issuing
     {
         private const string CardholderId = "ich_123";
 
-        private CardholderService service;
-        private CardholderCreateOptions createOptions;
-        private CardholderUpdateOptions updateOptions;
-        private CardholderListOptions listOptions;
+        private readonly CardholderService service;
+        private readonly CardholderCreateOptions createOptions;
+        private readonly CardholderUpdateOptions updateOptions;
+        private readonly CardholderListOptions listOptions;
 
         public CardholderServiceTest()
         {

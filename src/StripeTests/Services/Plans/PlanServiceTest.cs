@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string PlanId = "plan_123";
 
-        private PlanService service;
-        private PlanCreateOptions createOptions;
-        private PlanUpdateOptions updateOptions;
-        private PlanListOptions listOptions;
+        private readonly PlanService service;
+        private readonly PlanCreateOptions createOptions;
+        private readonly PlanUpdateOptions updateOptions;
+        private readonly PlanListOptions listOptions;
 
         public PlanServiceTest()
         {

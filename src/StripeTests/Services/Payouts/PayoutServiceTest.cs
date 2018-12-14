@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string PayoutId = "po_123";
 
-        private PayoutService service;
-        private PayoutCreateOptions createOptions;
-        private PayoutUpdateOptions updateOptions;
-        private PayoutListOptions listOptions;
+        private readonly PayoutService service;
+        private readonly PayoutCreateOptions createOptions;
+        private readonly PayoutUpdateOptions updateOptions;
+        private readonly PayoutListOptions listOptions;
 
         public PayoutServiceTest()
         {

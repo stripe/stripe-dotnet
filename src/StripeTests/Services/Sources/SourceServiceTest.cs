@@ -13,12 +13,12 @@ namespace StripeTests
         private const string CustomerId = "cus_123";
         private const string SourceId = "src_123";
 
-        private SourceService service;
-        private SourceAttachOptions attachOptions;
-        private SourceCreateOptions createOptions;
-        private SourceListOptions listOptions;
-        private SourceUpdateOptions updateOptions;
-        private SourceVerifyOptions verifyOptions;
+        private readonly SourceService service;
+        private readonly SourceAttachOptions attachOptions;
+        private readonly SourceCreateOptions createOptions;
+        private readonly SourceListOptions listOptions;
+        private readonly SourceUpdateOptions updateOptions;
+        private readonly SourceVerifyOptions verifyOptions;
 
         public SourceServiceTest()
         {

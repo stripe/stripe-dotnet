@@ -10,7 +10,7 @@ namespace StripeTests
 
     public class CouponCreateOptionsTest : BaseStripeTest
     {
-        private CouponService service;
+        private readonly CouponService service;
 
         public CouponCreateOptionsTest()
         {

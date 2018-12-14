@@ -11,10 +11,10 @@ namespace StripeTests.Issuing
     {
         private const string DisputeId = "idp_123";
 
-        private DisputeService service;
-        private DisputeCreateOptions createOptions;
-        private DisputeUpdateOptions updateOptions;
-        private DisputeListOptions listOptions;
+        private readonly DisputeService service;
+        private readonly DisputeCreateOptions createOptions;
+        private readonly DisputeUpdateOptions updateOptions;
+        private readonly DisputeListOptions listOptions;
 
         public IssuingDisputeServiceTest()
         {
