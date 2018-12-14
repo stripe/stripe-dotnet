@@ -13,6 +13,7 @@ namespace Stripe
         public string Object { get; set; }
 
         #region Expandable Account
+        [JsonIgnore]
         public string AccountId { get; set; }
 
         [JsonIgnore]
@@ -21,6 +22,11 @@ namespace Stripe
         [JsonProperty("account")]
         internal object InternalAccount
         {
+            get
+            {
+                return this.Account ?? (object)this.AccountId;
+            }
+
             set
             {
                 StringOrObject<Account>.Map(value, s => this.AccountId = s, o => this.Account = o);
@@ -35,6 +41,7 @@ namespace Stripe
         public long AmountRefunded { get; set; }
 
         #region Expandable Application
+        [JsonIgnore]
         public string ApplicationId { get; set; }
 
         [JsonIgnore]
@@ -43,6 +50,11 @@ namespace Stripe
         [JsonProperty("application")]
         internal object InternalApplication
         {
+            get
+            {
+                return this.Application ?? (object)this.ApplicationId;
+            }
+
             set
             {
                 StringOrObject<Application>.Map(value, s => this.ApplicationId = s, o => this.Application = o);
@@ -51,6 +63,7 @@ namespace Stripe
         #endregion
 
         #region Expandable Balance Transaction
+        [JsonIgnore]
         public string BalanceTransactionId { get; set; }
 
         [JsonIgnore]
@@ -59,6 +72,11 @@ namespace Stripe
         [JsonProperty("balance_transaction")]
         internal object InternalBalanceTransaction
         {
+            get
+            {
+                return this.BalanceTransaction ?? (object)this.BalanceTransactionId;
+            }
+
             set
             {
                 StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
@@ -67,6 +85,7 @@ namespace Stripe
         #endregion
 
         #region Expandable Charge
+        [JsonIgnore]
         public string ChargeId { get; set; }
 
         [JsonIgnore]
@@ -75,6 +94,11 @@ namespace Stripe
         [JsonProperty("charge")]
         internal object InternalCharge
         {
+            get
+            {
+                return this.Charge ?? (object)this.ChargeId;
+            }
+
             set
             {
                 StringOrObject<Charge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
@@ -93,6 +117,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         #region Expandable Originating Transaction
+        [JsonIgnore]
         public string OriginatingTransactionId { get; set; }
 
         [JsonIgnore]
@@ -101,6 +126,11 @@ namespace Stripe
         [JsonProperty("originating_transaction")]
         internal object InternalOriginatingTransaction
         {
+            get
+            {
+                return this.OriginatingTransaction ?? (object)this.OriginatingTransactionId;
+            }
+
             set
             {
                 StringOrObject<Charge>.Map(value, s => this.OriginatingTransactionId = s, o => this.OriginatingTransaction = o);

@@ -34,14 +34,20 @@ namespace Stripe
         /// <summary>
         /// The ID of the Radar rule that matched the payment, if applicable.
         /// </summary>
+        [JsonIgnore]
         public string RuleId { get; set; }
 
         [JsonIgnore]
         public OutcomeRule Rule { get; set; }
 
         [JsonProperty("rule")]
-        internal object InternalOutcomeRule
+        internal object InternalRule
         {
+            get
+            {
+                return this.Rule ?? (object)this.RuleId;
+            }
+
             set
             {
                 StringOrObject<OutcomeRule>.Map(value, s => this.RuleId = s, o => this.Rule = o);

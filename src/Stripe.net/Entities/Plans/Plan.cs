@@ -35,7 +35,7 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted")]
+        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
         [JsonProperty("interval")]
@@ -59,6 +59,7 @@ namespace Stripe
         /// ID of the product linked to this plan
         /// <para>You can expand the Product by setting the ExpandProduct property on the service to true</para>
         /// </summary>
+        [JsonIgnore]
         public string ProductId { get; set; }
 
         [JsonIgnore]
@@ -67,6 +68,11 @@ namespace Stripe
         [JsonProperty("product")]
         internal object InternalProduct
         {
+            get
+            {
+                return this.Product ?? (object)this.ProductId;
+            }
+
             set
             {
                 StringOrObject<Product>.Map(value, s => this.ProductId = s, o => this.Product = o);

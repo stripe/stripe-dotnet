@@ -9,6 +9,7 @@ namespace Stripe
         public long Amount { get; set; }
 
         #region Expandable Destination (Account)
+        [JsonIgnore]
         public string DestinationId { get; set; }
 
         [JsonIgnore]
@@ -17,6 +18,11 @@ namespace Stripe
         [JsonProperty("destination")]
         internal object InternalDestination
         {
+            get
+            {
+                return this.Destination ?? (object)this.DestinationId;
+            }
+
             set
             {
                 StringOrObject<Account>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
