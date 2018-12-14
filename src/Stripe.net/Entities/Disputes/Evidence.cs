@@ -18,6 +18,7 @@ namespace Stripe
         /// customer.
         /// <para>Expandable.</para>
         /// </summary>
+        [JsonIgnore]
         public string CancellationPolicyId { get; set; }
 
         /// <summary>
@@ -29,6 +30,11 @@ namespace Stripe
         [JsonProperty("cancellation_policy")]
         internal object InternalCancellationPolicy
         {
+            get
+            {
+                return this.CancellationPolicy ?? (object)this.CancellationPolicyId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.CancellationPolicyId = s, o => this.CancellationPolicy = o);
@@ -51,6 +57,7 @@ namespace Stripe
         /// service.
         /// <para>Expandable.</para>
         /// </summary>
+        [JsonIgnore]
         public string CustomerCommunicationId { get; set; }
 
         /// <summary>
@@ -64,6 +71,11 @@ namespace Stripe
         [JsonProperty("customer_communication")]
         internal object InternalCustomerCommunication
         {
+            get
+            {
+                return this.CustomerCommunication ?? (object)this.CustomerCommunicationId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.CustomerCommunicationId = s, o => this.CustomerCommunication = o);
@@ -87,6 +99,7 @@ namespace Stripe
         /// signature.
         /// <para>Expandable.</para>
         /// </summary>
+        [JsonIgnore]
         public string CustomerSignatureId { get; set; }
 
         /// <summary>
@@ -98,6 +111,11 @@ namespace Stripe
         [JsonProperty("customer_signature")]
         internal object InternalCustomerSignature
         {
+            get
+            {
+                return this.CustomerSignature ?? (object)this.CustomerSignatureId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.CustomerSignatureId = s, o => this.CustomerSignature = o);
@@ -114,6 +132,7 @@ namespace Stripe
         /// payments are separate.
         /// <para>Expandable.</para>
         /// </summary>
+        [JsonIgnore]
         public string DuplicateChargeDocumentationId { get; set; }
 
         /// <summary>
@@ -127,6 +146,11 @@ namespace Stripe
         [JsonProperty("duplicate_charge_documentation")]
         internal object InternalDuplicateChargeDocumentation
         {
+            get
+            {
+                return this.DuplicateChargeDocumentation ?? (object)this.DuplicateChargeDocumentationId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.DuplicateChargeDocumentationId = s, o => this.DuplicateChargeDocumentation = o);
@@ -150,6 +174,7 @@ namespace Stripe
         /// of the charge.
         /// <para>Expandable.</para>
         /// </summary>
+        [JsonIgnore]
         public string ReceiptId { get; set; }
 
         /// <summary>
@@ -161,6 +186,11 @@ namespace Stripe
         [JsonProperty("receipt")]
         internal object InternalReceipt
         {
+            get
+            {
+                return this.Receipt ?? (object)this.ReceiptId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.ReceiptId = s, o => this.Receipt = o);
@@ -174,6 +204,7 @@ namespace Stripe
         /// (ID of a <see cref="File"/>) Your refund policy, as shown to the customer.
         /// <para>Expandable.</para>
         /// </summary>
+        [JsonIgnore]
         public string RefundPolicyId { get; set; }
 
         /// <summary>
@@ -185,6 +216,11 @@ namespace Stripe
         [JsonProperty("refund_policy")]
         internal object InternalRefundPolicy
         {
+            get
+            {
+                return this.RefundPolicy ?? (object)this.RefundPolicyId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.RefundPolicyId = s, o => this.RefundPolicy = o);
@@ -209,6 +245,7 @@ namespace Stripe
         /// of written agreement.
         /// <para>Expandable.</para>
         /// </summary>
+        [JsonIgnore]
         public string ServiceDocumentationId { get; set; }
 
         /// <summary>
@@ -222,6 +259,11 @@ namespace Stripe
         [JsonProperty("service_documentation")]
         internal object InternalServiceDocumentation
         {
+            get
+            {
+                return this.ServiceDocumentation ?? (object)this.ServiceDocumentationId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.ServiceDocumentationId = s, o => this.ServiceDocumentation = o);
@@ -247,6 +289,7 @@ namespace Stripe
         /// shipping address, if possible.
         /// <para>Expandable.</para>
         /// </summary>
+        [JsonIgnore]
         public string ShippingDocumentationId { get; set; }
 
         /// <summary>
@@ -261,6 +304,11 @@ namespace Stripe
         [JsonProperty("shipping_documentation")]
         internal object InternalShippingDocumentation
         {
+            get
+            {
+                return this.ShippingDocumentation ?? (object)this.ShippingDocumentationId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.ShippingDocumentationId = s, o => this.ShippingDocumentation = o);
@@ -277,6 +325,7 @@ namespace Stripe
         /// (ID of a <see cref="File"/>) Any additional evidence or statements.
         /// <para>Expandable.</para>
         /// </summary>
+        [JsonIgnore]
         public string UncategorizedFileId { get; set; }
 
         /// <summary>
@@ -288,6 +337,11 @@ namespace Stripe
         [JsonProperty("uncategorized_file")]
         internal object InternalUncategorizedFile
         {
+            get
+            {
+                return this.UncategorizedFile ?? (object)this.UncategorizedFileId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.UncategorizedFileId = s, o => this.UncategorizedFile = o);

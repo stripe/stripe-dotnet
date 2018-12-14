@@ -19,6 +19,7 @@ namespace Stripe
         /// (ID of a <see cref="File"/>) A logo for this account (at least 128px x 128px).
         /// <para>Expandable.</para>
         /// </summary>
+        [JsonIgnore]
         public string BusinessLogoId { get; set; }
 
         /// <summary>
@@ -30,6 +31,11 @@ namespace Stripe
         [JsonProperty("business_logo")]
         internal object InternalBusinessLogo
         {
+            get
+            {
+                return this.BusinessLogo ?? (object)this.BusinessLogoId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.BusinessLogoId = s, o => this.BusinessLogo = o);
@@ -68,7 +74,7 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted")]
+        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
         [JsonProperty("details_submitted")]

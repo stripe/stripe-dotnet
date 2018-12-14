@@ -13,6 +13,7 @@ namespace Stripe
         public string Object { get; set; }
 
         #region Expandable Account
+        [JsonIgnore]
         public string AccountId { get; set; }
 
         [JsonIgnore]
@@ -21,6 +22,11 @@ namespace Stripe
         [JsonProperty("account")]
         internal object InternalAccount
         {
+            get
+            {
+                return this.Account ?? (object)this.AccountId;
+            }
+
             set
             {
                 StringOrObject<Account>.Map(value, s => this.AccountId = s, o => this.Account = o);
@@ -65,6 +71,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
+        [JsonIgnore]
         public string CustomerId { get; set; }
 
         [JsonIgnore]
@@ -73,6 +80,11 @@ namespace Stripe
         [JsonProperty("customer")]
         internal object InternalCustomer
         {
+            get
+            {
+                return this.Customer ?? (object)this.CustomerId;
+            }
+
             set
             {
                 StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
@@ -89,7 +101,7 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted")]
+        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
         [JsonProperty("dynamic_last4")]
@@ -117,6 +129,7 @@ namespace Stripe
         public string Name { get; set; }
 
         #region Expandable Recipient
+        [JsonIgnore]
         public string RecipientId { get; set; }
 
         [JsonIgnore]
@@ -125,6 +138,11 @@ namespace Stripe
         [JsonProperty("recipient")]
         internal object InternalRecipient
         {
+            get
+            {
+                return this.Recipient ?? (object)this.RecipientId;
+            }
+
             set
             {
                 StringOrObject<Recipient>.Map(value, s => this.RecipientId = s, o => this.Recipient = o);
