@@ -11,11 +11,11 @@ namespace StripeTests
     {
         private const string ChargeId = "ch_123";
 
-        private ChargeService service;
-        private ChargeCaptureOptions captureOptions;
-        private ChargeCreateOptions createOptions;
-        private ChargeUpdateOptions updateOptions;
-        private ChargeListOptions listOptions;
+        private readonly ChargeService service;
+        private readonly ChargeCaptureOptions captureOptions;
+        private readonly ChargeCreateOptions createOptions;
+        private readonly ChargeUpdateOptions updateOptions;
+        private readonly ChargeListOptions listOptions;
 
         public ChargeServiceTest()
         {

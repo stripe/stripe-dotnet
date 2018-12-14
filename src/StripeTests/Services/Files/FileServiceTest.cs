@@ -15,9 +15,9 @@ namespace StripeTests
         private const string FileId = "file_123";
         private const string FileName = "StripeTests.Resources.file_upload_logo.png";
 
-        private FileService service;
-        private FileCreateOptions createOptions;
-        private FileListOptions listOptions;
+        private readonly FileService service;
+        private readonly FileCreateOptions createOptions;
+        private readonly FileListOptions listOptions;
 
         public FileServiceTest()
         {

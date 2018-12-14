@@ -9,8 +9,8 @@ namespace StripeTests
 
     public class ExchangeRateServiceTest : BaseStripeTest
     {
-        private ExchangeRateService service;
-        private ExchangeRateListOptions listOptions;
+        private readonly ExchangeRateService service;
+        private readonly ExchangeRateListOptions listOptions;
 
         public ExchangeRateServiceTest()
         {

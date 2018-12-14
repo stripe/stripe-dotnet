@@ -11,18 +11,18 @@ namespace StripeTests
     {
         private const string InvoiceId = "in_123";
 
-        private InvoiceService service;
-        private InvoiceCreateOptions createOptions;
-        private InvoiceUpdateOptions updateOptions;
-        private InvoicePayOptions payOptions;
-        private InvoiceListOptions listOptions;
-        private InvoiceListLineItemsOptions listLineItemsOptions;
-        private UpcomingInvoiceOptions upcomingOptions;
-        private UpcomingInvoiceListLineItemsOptions upcomingListLineItemsOptions;
-        private InvoiceFinalizeOptions finalizeOptions;
-        private InvoiceMarkUncollectibleOptions markUncollectibleOptions;
-        private InvoiceSendOptions sendOptions;
-        private InvoiceVoidOptions voidOptions;
+        private readonly InvoiceService service;
+        private readonly InvoiceCreateOptions createOptions;
+        private readonly InvoiceUpdateOptions updateOptions;
+        private readonly InvoicePayOptions payOptions;
+        private readonly InvoiceListOptions listOptions;
+        private readonly InvoiceListLineItemsOptions listLineItemsOptions;
+        private readonly UpcomingInvoiceOptions upcomingOptions;
+        private readonly UpcomingInvoiceListLineItemsOptions upcomingListLineItemsOptions;
+        private readonly InvoiceFinalizeOptions finalizeOptions;
+        private readonly InvoiceMarkUncollectibleOptions markUncollectibleOptions;
+        private readonly InvoiceSendOptions sendOptions;
+        private readonly InvoiceVoidOptions voidOptions;
 
         public InvoiceServiceTest()
         {

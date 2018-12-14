@@ -12,8 +12,8 @@ namespace StripeTests.Reporting
     {
         private const string ReportTypeId = "activity.summary.1";
 
-        private ReportTypeService service;
-        private ReportTypeListOptions listOptions;
+        private readonly ReportTypeService service;
+        private readonly ReportTypeListOptions listOptions;
 
         public ReportTypeServiceTest()
         {

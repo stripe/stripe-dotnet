@@ -13,7 +13,7 @@ namespace StripeTests
 
     public class ParameterBuilderTest : BaseStripeTest
     {
-        private TestService service;
+        private readonly TestService service;
 
         public ParameterBuilderTest()
         {

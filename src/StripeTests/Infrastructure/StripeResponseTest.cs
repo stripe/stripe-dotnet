@@ -6,7 +6,7 @@ namespace StripeTests
 
     public class StripeResponseTest : BaseStripeTest
     {
-        private StripeList<Charge> charges;
+        private readonly StripeList<Charge> charges;
 
         public StripeResponseTest()
         {

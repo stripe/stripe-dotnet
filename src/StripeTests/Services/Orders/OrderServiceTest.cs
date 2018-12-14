@@ -11,11 +11,11 @@ namespace StripeTests
     {
         private const string OrderId = "or_123";
 
-        private OrderService service;
-        private OrderCreateOptions createOptions;
-        private OrderUpdateOptions updateOptions;
-        private OrderPayOptions payOptions;
-        private OrderListOptions listOptions;
+        private readonly OrderService service;
+        private readonly OrderCreateOptions createOptions;
+        private readonly OrderUpdateOptions updateOptions;
+        private readonly OrderPayOptions payOptions;
+        private readonly OrderListOptions listOptions;
 
         public OrderServiceTest()
         {

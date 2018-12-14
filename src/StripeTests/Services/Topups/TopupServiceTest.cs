@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string TopupId = "tu_123";
 
-        private TopupService service;
-        private TopupCreateOptions createOptions;
-        private TopupUpdateOptions updateOptions;
-        private TopupListOptions listOptions;
+        private readonly TopupService service;
+        private readonly TopupCreateOptions createOptions;
+        private readonly TopupUpdateOptions updateOptions;
+        private readonly TopupListOptions listOptions;
 
         public TopupServiceTest()
         {
