@@ -11,8 +11,8 @@ namespace StripeTests
     {
         private const string ScheduledQueryId = "sqr_123";
 
-        private ScheduledQueryRunService service;
-        private ScheduledQueryRunListOptions listOptions;
+        private readonly ScheduledQueryRunService service;
+        private readonly ScheduledQueryRunListOptions listOptions;
 
         public ScheduledQueryRunServiceTest()
         {

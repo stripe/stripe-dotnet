@@ -10,7 +10,7 @@ namespace StripeTests
 
     public class SubscriptionCreateOptionsTest : BaseStripeTest
     {
-        private SubscriptionService service;
+        private readonly SubscriptionService service;
 
         public SubscriptionCreateOptionsTest()
         {

@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string SubscriptionItemId = "si_123";
 
-        private SubscriptionItemService service;
-        private SubscriptionItemCreateOptions createOptions;
-        private SubscriptionItemUpdateOptions updateOptions;
-        private SubscriptionItemListOptions listOptions;
+        private readonly SubscriptionItemService service;
+        private readonly SubscriptionItemCreateOptions createOptions;
+        private readonly SubscriptionItemUpdateOptions updateOptions;
+        private readonly SubscriptionItemListOptions listOptions;
 
         public SubscriptionItemServiceTest()
         {

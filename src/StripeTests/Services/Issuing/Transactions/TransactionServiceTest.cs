@@ -11,9 +11,9 @@ namespace StripeTests.Issuing
     {
         private const string TransactionId = "ipi_123";
 
-        private TransactionService service;
-        private TransactionUpdateOptions updateOptions;
-        private TransactionListOptions listOptions;
+        private readonly TransactionService service;
+        private readonly TransactionUpdateOptions updateOptions;
+        private readonly TransactionListOptions listOptions;
 
         public TransactionServiceTest()
         {

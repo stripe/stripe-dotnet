@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string SkuId = "sku_123";
 
-        private SkuService service;
-        private SkuCreateOptions createOptions;
-        private SkuUpdateOptions updateOptions;
-        private SkuListOptions listOptions;
+        private readonly SkuService service;
+        private readonly SkuCreateOptions createOptions;
+        private readonly SkuUpdateOptions updateOptions;
+        private readonly SkuListOptions listOptions;
 
         public SkuServiceTest()
         {

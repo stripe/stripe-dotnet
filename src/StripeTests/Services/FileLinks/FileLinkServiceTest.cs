@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string FileLinkId = "link_123";
 
-        private FileLinkService service;
-        private FileLinkCreateOptions createOptions;
-        private FileLinkUpdateOptions updateOptions;
-        private FileLinkListOptions listOptions;
+        private readonly FileLinkService service;
+        private readonly FileLinkCreateOptions createOptions;
+        private readonly FileLinkUpdateOptions updateOptions;
+        private readonly FileLinkListOptions listOptions;
 
         public FileLinkServiceTest()
         {

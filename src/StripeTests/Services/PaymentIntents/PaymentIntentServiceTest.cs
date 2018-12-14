@@ -11,13 +11,13 @@ namespace StripeTests
     {
         private const string PaymentIntentId = "pi_123";
 
-        private PaymentIntentService service;
-        private PaymentIntentCancelOptions cancelOptions;
-        private PaymentIntentCaptureOptions captureOptions;
-        private PaymentIntentConfirmOptions confirmOptions;
-        private PaymentIntentCreateOptions createOptions;
-        private PaymentIntentListOptions listOptions;
-        private PaymentIntentUpdateOptions updateOptions;
+        private readonly PaymentIntentService service;
+        private readonly PaymentIntentCancelOptions cancelOptions;
+        private readonly PaymentIntentCaptureOptions captureOptions;
+        private readonly PaymentIntentConfirmOptions confirmOptions;
+        private readonly PaymentIntentCreateOptions createOptions;
+        private readonly PaymentIntentListOptions listOptions;
+        private readonly PaymentIntentUpdateOptions updateOptions;
 
         public PaymentIntentServiceTest()
         {

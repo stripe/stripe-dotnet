@@ -12,8 +12,8 @@ namespace StripeTests
     {
         private const string TokenId = "tok_123";
 
-        private TokenService service;
-        private TokenCreateOptions createOptions;
+        private readonly TokenService service;
+        private readonly TokenCreateOptions createOptions;
 
         public TokenServiceTest()
         {

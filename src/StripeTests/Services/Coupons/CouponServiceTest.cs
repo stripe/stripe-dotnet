@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string CouponId = "co_123";
 
-        private CouponService service;
-        private CouponCreateOptions createOptions;
-        private CouponUpdateOptions updateOptions;
-        private CouponListOptions listOptions;
+        private readonly CouponService service;
+        private readonly CouponCreateOptions createOptions;
+        private readonly CouponUpdateOptions updateOptions;
+        private readonly CouponListOptions listOptions;
 
         public CouponServiceTest()
         {

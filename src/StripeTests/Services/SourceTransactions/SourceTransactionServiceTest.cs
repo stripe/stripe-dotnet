@@ -12,8 +12,8 @@ namespace StripeTests
     {
         private const string SourceId = "src_123";
 
-        private SourceTransactionService service;
-        private SourceTransactionsListOptions listOptions;
+        private readonly SourceTransactionService service;
+        private readonly SourceTransactionsListOptions listOptions;
 
         public SourceTransactionServiceTest()
         {

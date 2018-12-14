@@ -11,8 +11,8 @@ namespace StripeTests
     {
         private const string EphemeralKeyId = "ephkey_123";
 
-        private EphemeralKeyService service;
-        private EphemeralKeyCreateOptions createOptions;
+        private readonly EphemeralKeyService service;
+        private readonly EphemeralKeyCreateOptions createOptions;
 
         public EphemeralKeyServiceTest()
         {

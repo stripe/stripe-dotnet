@@ -11,8 +11,8 @@ namespace StripeTests
     {
         private const string ApplicationFeeId = "fee_123";
 
-        private ApplicationFeeService service;
-        private ApplicationFeeListOptions listOptions;
+        private readonly ApplicationFeeService service;
+        private readonly ApplicationFeeListOptions listOptions;
 
         public ApplicationFeeServiceTest()
         {
