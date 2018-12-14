@@ -11,9 +11,9 @@ namespace StripeTests
     {
         private const string DisputeId = "dp_123";
 
-        private DisputeService service;
-        private DisputeUpdateOptions updateOptions;
-        private DisputeListOptions listOptions;
+        private readonly DisputeService service;
+        private readonly DisputeUpdateOptions updateOptions;
+        private readonly DisputeListOptions listOptions;
 
         public DisputeServiceTest()
         {

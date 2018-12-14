@@ -12,9 +12,9 @@ namespace StripeTests.Reporting
     {
         private const string ReportRunId = "frr_123";
 
-        private ReportRunService service;
-        private ReportRunCreateOptions createOptions;
-        private ReportRunListOptions listOptions;
+        private readonly ReportRunService service;
+        private readonly ReportRunCreateOptions createOptions;
+        private readonly ReportRunListOptions listOptions;
 
         public ReportRunServiceTest()
         {

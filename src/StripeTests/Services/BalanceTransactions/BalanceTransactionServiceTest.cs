@@ -11,8 +11,8 @@ namespace StripeTests
     {
         private const string BalanceTransactionId = "txn_123";
 
-        private BalanceTransactionService service;
-        private BalanceTransactionListOptions listOptions;
+        private readonly BalanceTransactionService service;
+        private readonly BalanceTransactionListOptions listOptions;
 
         public BalanceTransactionServiceTest()
         {

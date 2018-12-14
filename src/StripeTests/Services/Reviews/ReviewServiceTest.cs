@@ -12,9 +12,9 @@ namespace StripeTests
     {
         private const string ReviewId = "prv_123";
 
-        private ReviewService service;
-        private ReviewApproveOptions approveOptions;
-        private ReviewListOptions listOptions;
+        private readonly ReviewService service;
+        private readonly ReviewApproveOptions approveOptions;
+        private readonly ReviewListOptions listOptions;
 
         public ReviewServiceTest()
         {

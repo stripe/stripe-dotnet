@@ -5,10 +5,10 @@ namespace StripeTests
 
     public class EventUtilityTest : BaseStripeTest
     {
-        private long eventTimestamp;
-        private string signature;
-        private string json;
-        private string secret;
+        private readonly long eventTimestamp;
+        private readonly string signature;
+        private readonly string json;
+        private readonly string secret;
 
         public EventUtilityTest()
         {

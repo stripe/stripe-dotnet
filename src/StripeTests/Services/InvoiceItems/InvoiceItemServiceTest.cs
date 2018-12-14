@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string InvoiceItemId = "ii_123";
 
-        private InvoiceItemService service;
-        private InvoiceItemCreateOptions createOptions;
-        private InvoiceItemUpdateOptions updateOptions;
-        private InvoiceItemListOptions listOptions;
+        private readonly InvoiceItemService service;
+        private readonly InvoiceItemCreateOptions createOptions;
+        private readonly InvoiceItemUpdateOptions updateOptions;
+        private readonly InvoiceItemListOptions listOptions;
 
         public InvoiceItemServiceTest()
         {

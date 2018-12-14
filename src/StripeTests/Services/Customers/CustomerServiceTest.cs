@@ -11,10 +11,10 @@ namespace StripeTests
     {
         private const string CustomerId = "cus_123";
 
-        private CustomerService service;
-        private CustomerCreateOptions createOptions;
-        private CustomerUpdateOptions updateOptions;
-        private CustomerListOptions listOptions;
+        private readonly CustomerService service;
+        private readonly CustomerCreateOptions createOptions;
+        private readonly CustomerUpdateOptions updateOptions;
+        private readonly CustomerListOptions listOptions;
 
         public CustomerServiceTest()
         {
