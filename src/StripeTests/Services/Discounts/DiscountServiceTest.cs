@@ -9,7 +9,7 @@ namespace StripeTests
 
     public class DiscountServiceTest : BaseStripeTest
     {
-        private DiscountService service;
+        private readonly DiscountService service;
 
         public DiscountServiceTest()
         {

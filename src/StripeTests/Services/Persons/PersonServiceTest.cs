@@ -12,10 +12,10 @@ namespace StripeTests
         private const string AccountId = "acct_123";
         private const string PersonId = "person_123";
 
-        private PersonService service;
-        private PersonCreateOptions createOptions;
-        private PersonUpdateOptions updateOptions;
-        private PersonListOptions listOptions;
+        private readonly PersonService service;
+        private readonly PersonCreateOptions createOptions;
+        private readonly PersonUpdateOptions updateOptions;
+        private readonly PersonListOptions listOptions;
 
         public PersonServiceTest()
         {

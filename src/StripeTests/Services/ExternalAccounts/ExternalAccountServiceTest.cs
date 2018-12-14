@@ -12,10 +12,10 @@ namespace StripeTests
         private const string AccountId = "acct_123";
         private const string ExternalAccountId = "ba_123";
 
-        private ExternalAccountService service;
-        private ExternalAccountCreateOptions createOptions;
-        private ExternalAccountUpdateOptions updateOptions;
-        private ExternalAccountListOptions listOptions;
+        private readonly ExternalAccountService service;
+        private readonly ExternalAccountCreateOptions createOptions;
+        private readonly ExternalAccountUpdateOptions updateOptions;
+        private readonly ExternalAccountListOptions listOptions;
 
         public ExternalAccountServiceTest()
         {

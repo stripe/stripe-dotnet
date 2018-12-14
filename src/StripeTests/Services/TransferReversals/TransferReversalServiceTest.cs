@@ -12,10 +12,10 @@ namespace StripeTests
         private const string TransferId = "tr_123";
         private const string TransferReversalId = "trr_123";
 
-        private TransferReversalService service;
-        private TransferReversalCreateOptions createOptions;
-        private TransferReversalUpdateOptions updateOptions;
-        private TransferReversalListOptions listOptions;
+        private readonly TransferReversalService service;
+        private readonly TransferReversalCreateOptions createOptions;
+        private readonly TransferReversalUpdateOptions updateOptions;
+        private readonly TransferReversalListOptions listOptions;
 
         public TransferReversalServiceTest()
         {

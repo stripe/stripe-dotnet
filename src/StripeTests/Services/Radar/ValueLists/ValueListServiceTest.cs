@@ -12,10 +12,10 @@ namespace StripeTests.Radar
     {
         private const string ValueListId = "rsl_123";
 
-        private ValueListService service;
-        private ValueListCreateOptions createOptions;
-        private ValueListUpdateOptions updateOptions;
-        private ValueListListOptions listOptions;
+        private readonly ValueListService service;
+        private readonly ValueListCreateOptions createOptions;
+        private readonly ValueListUpdateOptions updateOptions;
+        private readonly ValueListListOptions listOptions;
 
         public ValueListServiceTest()
         {
