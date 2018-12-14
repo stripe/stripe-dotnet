@@ -24,17 +24,17 @@ namespace Stripe
         public DateTime Created { get; set; }
 
         #region Expandable Default Card
-        public string StripeDefaultCardId { get; set; }
+        public string DefaultCardId { get; set; }
 
         [JsonIgnore]
-        public Card StripeDefaultCard { get; set; }
+        public Card DefaultCard { get; set; }
 
         [JsonProperty("default_card")]
         internal object InternalDefaultCard
         {
             set
             {
-                StringOrObject<Card>.Map(value, s => this.StripeDefaultCardId = s, o => this.StripeDefaultCard = o);
+                StringOrObject<Card>.Map(value, s => this.DefaultCardId = s, o => this.DefaultCard = o);
             }
         }
         #endregion
