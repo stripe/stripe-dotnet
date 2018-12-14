@@ -26,6 +26,7 @@ namespace Stripe
         public long? AmountReceived { get; set; }
 
         #region Expandable Application
+        [JsonIgnore]
         public string ApplicationId { get; set; }
 
         [JsonIgnore]
@@ -34,6 +35,11 @@ namespace Stripe
         [JsonProperty("application")]
         internal object InternalApplication
         {
+            get
+            {
+                return this.Application ?? (object)this.ApplicationId;
+            }
+
             set
             {
                 StringOrObject<Application>.Map(value, s => this.ApplicationId = s, o => this.Application = o);
@@ -71,6 +77,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
+        [JsonIgnore]
         public string CustomerId { get; set; }
 
         [JsonIgnore]
@@ -79,6 +86,11 @@ namespace Stripe
         [JsonProperty("customer")]
         internal object InternalCustomer
         {
+            get
+            {
+                return this.Customer ?? (object)this.CustomerId;
+            }
+
             set
             {
                 StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
@@ -102,6 +114,7 @@ namespace Stripe
         public PaymentIntentSourceAction NextSourceAction { get; set; }
 
         #region Expandable OnBehalfOf (Account)
+        [JsonIgnore]
         public string OnBehalfOfId { get; set; }
 
         [JsonIgnore]
@@ -110,6 +123,11 @@ namespace Stripe
         [JsonProperty("on_behalf_of")]
         internal object InternalOnBehalfOf
         {
+            get
+            {
+                return this.OnBehalfOf ?? (object)this.OnBehalfOfId;
+            }
+
             set
             {
                 StringOrObject<Account>.Map(value, s => this.OnBehalfOfId = s, o => this.OnBehalfOf = o);
@@ -121,6 +139,7 @@ namespace Stripe
         public string ReceiptEmail { get; set; }
 
         #region Expandable Review
+        [JsonIgnore]
         public string ReviewId { get; set; }
 
         [JsonIgnore]
@@ -129,6 +148,11 @@ namespace Stripe
         [JsonProperty("review")]
         internal object InternalReview
         {
+            get
+            {
+                return this.Review ?? (object)this.ReviewId;
+            }
+
             set
             {
                 StringOrObject<Review>.Map(value, s => this.ReviewId = s, o => this.Review = o);
@@ -140,6 +164,7 @@ namespace Stripe
         public Shipping Shipping { get; set; }
 
         #region Expandable Source
+        [JsonIgnore]
         public string SourceId { get; set; }
 
         [JsonIgnore]
@@ -148,6 +173,11 @@ namespace Stripe
         [JsonProperty("source")]
         internal object InternalSource
         {
+            get
+            {
+                return this.Source ?? (object)this.SourceId;
+            }
+
             set
             {
                 StringOrObject<IPaymentSource>.Map(value, s => this.SourceId = s, o => this.Source = o);

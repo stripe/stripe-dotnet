@@ -24,6 +24,7 @@ namespace Stripe
         public DateTime Created { get; set; }
 
         #region Expandable Default Card
+        [JsonIgnore]
         public string DefaultCardId { get; set; }
 
         [JsonIgnore]
@@ -32,6 +33,11 @@ namespace Stripe
         [JsonProperty("default_card")]
         internal object InternalDefaultCard
         {
+            get
+            {
+                return this.DefaultCard ?? (object)this.DefaultCardId;
+            }
+
             set
             {
                 StringOrObject<Card>.Map(value, s => this.DefaultCardId = s, o => this.DefaultCard = o);

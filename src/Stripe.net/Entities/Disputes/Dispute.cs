@@ -20,6 +20,7 @@ namespace Stripe
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         #region Expandable Charge
+        [JsonIgnore]
         public string ChargeId { get; set; }
 
         [JsonIgnore]
@@ -28,6 +29,11 @@ namespace Stripe
         [JsonProperty("charge")]
         internal object InternalCharge
         {
+            get
+            {
+                return this.Charge ?? (object)this.ChargeId;
+            }
+
             set
             {
                 StringOrObject<Charge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);

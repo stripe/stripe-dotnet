@@ -11,6 +11,7 @@ namespace Stripe.Issuing
         public string Object { get; set; }
 
         #region Expandable Card
+        [JsonIgnore]
         public string CardId { get; set; }
 
         [JsonIgnore]
@@ -19,6 +20,11 @@ namespace Stripe.Issuing
         [JsonProperty("card")]
         internal object InternalCard
         {
+            get
+            {
+                return this.Card ?? (object)this.CardId;
+            }
+
             set
             {
                 StringOrObject<Card>.Map(value, s => this.CardId = s, o => this.Card = o);

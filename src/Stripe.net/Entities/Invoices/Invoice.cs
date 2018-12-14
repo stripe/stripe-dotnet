@@ -44,6 +44,7 @@ namespace Stripe
         public string BillingReason { get; set; }
 
         #region Expandable Charge
+        [JsonIgnore]
         public string ChargeId { get; set; }
 
         [JsonIgnore]
@@ -52,6 +53,11 @@ namespace Stripe
         [JsonProperty("charge")]
         internal object InternalCharge
         {
+            get
+            {
+                return this.Charge ?? (object)this.ChargeId;
+            }
+
             set
             {
                 StringOrObject<Charge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
@@ -63,6 +69,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
+        [JsonIgnore]
         public string CustomerId { get; set; }
 
         [JsonIgnore]
@@ -71,6 +78,11 @@ namespace Stripe
         [JsonProperty("customer")]
         internal object InternalCustomer
         {
+            get
+            {
+                return this.Customer ?? (object)this.CustomerId;
+            }
+
             set
             {
                 StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
@@ -83,6 +95,7 @@ namespace Stripe
         public DateTime? Date { get; set; }
 
         #region Expandable DefaultSource
+        [JsonIgnore]
         public string DefaultSourceId { get; set; }
 
         [JsonIgnore]
@@ -91,6 +104,11 @@ namespace Stripe
         [JsonProperty("default_source")]
         internal object InternalDefaultSource
         {
+            get
+            {
+                return this.DefaultSource ?? (object)this.DefaultSourceId;
+            }
+
             set
             {
                 StringOrObject<IPaymentSource>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
@@ -167,6 +185,7 @@ namespace Stripe
         public string Status { get; set; }
 
         #region Expandable Subscription
+        [JsonIgnore]
         public string SubscriptionId { get; set; }
 
         [JsonIgnore]
@@ -175,6 +194,11 @@ namespace Stripe
         [JsonProperty("subscription")]
         internal object InternalSubscription
         {
+            get
+            {
+                return this.Subscription ?? (object)this.SubscriptionId;
+            }
+
             set
             {
                 StringOrObject<Subscription>.Map(value, s => this.SubscriptionId = s, o => this.Subscription = o);

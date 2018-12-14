@@ -20,6 +20,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
+        [JsonIgnore]
         public string CustomerId { get; set; }
 
         [JsonIgnore]
@@ -28,6 +29,11 @@ namespace Stripe
         [JsonProperty("customer")]
         internal object InternalCustomer
         {
+            get
+            {
+                return this.Customer ?? (object)this.CustomerId;
+            }
+
             set
             {
                 StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
@@ -42,7 +48,7 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted")]
+        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
         [JsonProperty("description")]
@@ -52,6 +58,7 @@ namespace Stripe
         public bool Discountable { get; set; }
 
         #region Expandable Invoice
+        [JsonIgnore]
         public string InvoiceId { get; set; }
 
         [JsonIgnore]
@@ -60,6 +67,11 @@ namespace Stripe
         [JsonProperty("invoice")]
         internal object InternalInvoice
         {
+            get
+            {
+                return this.Invoice ?? (object)this.InvoiceId;
+            }
+
             set
             {
                 StringOrObject<Invoice>.Map(value, s => this.InvoiceId = s, o => this.Invoice = o);
@@ -86,6 +98,7 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         #region Expandable Subscription
+        [JsonIgnore]
         public string SubscriptionId { get; set; }
 
         [JsonIgnore]
@@ -94,6 +107,11 @@ namespace Stripe
         [JsonProperty("subscription")]
         internal object InternalSubscription
         {
+            get
+            {
+                return this.Subscription ?? (object)this.SubscriptionId;
+            }
+
             set
             {
                 StringOrObject<Subscription>.Map(value, s => this.SubscriptionId = s, o => this.Subscription = o);
