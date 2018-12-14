@@ -6,6 +6,7 @@ namespace Stripe
 
     public abstract class StripeEntity : IStripeEntity
     {
+        [JsonIgnore]
         public StripeResponse StripeResponse { get; set; }
 
         /// <summary>Reports a Stripe object as a string.</summary>
