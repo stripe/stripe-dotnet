@@ -43,6 +43,11 @@ namespace Stripe
         [JsonProperty("default_source")]
         internal object InternalDefaultSource
         {
+            get
+            {
+                return this.DefaultSource ?? (object)this.DefaultSourceId;
+            }
+
             set
             {
                 StringOrObject<IPaymentSource>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);

@@ -17,6 +17,7 @@ namespace Stripe
         public long Amount { get; set; }
 
         #region Expandable Balance Transaction
+        [JsonIgnore]
         public string BalanceTransactionId { get; set; }
 
         [JsonIgnore]
@@ -25,6 +26,11 @@ namespace Stripe
         [JsonProperty("balance_transaction")]
         internal object InternalBalanceTransaction
         {
+            get
+            {
+                return this.BalanceTransaction ?? (object)this.BalanceTransactionId;
+            }
+
             set
             {
                 StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
@@ -33,6 +39,7 @@ namespace Stripe
         #endregion
 
         #region Expandable Charge
+        [JsonIgnore]
         public string ChargeId { get; set; }
 
         [JsonIgnore]
@@ -41,6 +48,11 @@ namespace Stripe
         [JsonProperty("charge")]
         internal object InternalCharge
         {
+            get
+            {
+                return this.Charge ?? (object)this.ChargeId;
+            }
+
             set
             {
                 StringOrObject<Charge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
@@ -59,6 +71,7 @@ namespace Stripe
         public string Description { get; set; }
 
         #region Expandable Failure Balance Transaction
+        [JsonIgnore]
         public string FailureBalanceTransactionId { get; set; }
 
         [JsonIgnore]
@@ -67,6 +80,11 @@ namespace Stripe
         [JsonProperty("failure_balance_transaction")]
         internal object InternalFailureBalanceTransaction
         {
+            get
+            {
+                return this.FailureBalanceTransaction ?? (object)this.FailureBalanceTransactionId;
+            }
+
             set
             {
                 StringOrObject<BalanceTransaction>.Map(value, s => this.FailureBalanceTransactionId = s, o => this.FailureBalanceTransaction = o);
@@ -87,6 +105,7 @@ namespace Stripe
         public string ReceiptNumber { get; set; }
 
         #region Expandable Source Transfer Reversal
+        [JsonIgnore]
         public string SourceTransferReversalId { get; set; }
 
         [JsonIgnore]
@@ -95,6 +114,11 @@ namespace Stripe
         [JsonProperty("source_transfer_reversal")]
         internal object InternalSourceTransferReversal
         {
+            get
+            {
+                return this.SourceTransferReversal ?? (object)this.SourceTransferReversalId;
+            }
+
             set
             {
                 StringOrObject<TransferReversal>.Map(value, s => this.SourceTransferReversalId = s, o => this.SourceTransferReversal = o);
@@ -106,6 +130,7 @@ namespace Stripe
         public string Status { get; set; }
 
         #region Expandable  Transfer Reversal
+        [JsonIgnore]
         public string TransferReversalId { get; set; }
 
         [JsonIgnore]
@@ -114,6 +139,11 @@ namespace Stripe
         [JsonProperty("transfer_reversal")]
         internal object InternalTransferReversal
         {
+            get
+            {
+                return this.TransferReversal ?? (object)this.TransferReversalId;
+            }
+
             set
             {
                 StringOrObject<TransferReversal>.Map(value, s => this.TransferReversalId = s, o => this.TransferReversal = o);

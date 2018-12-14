@@ -45,6 +45,7 @@ namespace Stripe
         /// <summary>
         /// ID of the file object this link points to.
         /// </summary>
+        [JsonIgnore]
         public string FileId { get; set; }
 
         /// <summary>
@@ -56,6 +57,11 @@ namespace Stripe
         [JsonProperty("file")]
         internal object InternalFile
         {
+            get
+            {
+                return this.File ?? (object)this.FileId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.FileId = s, o => this.File = o);
