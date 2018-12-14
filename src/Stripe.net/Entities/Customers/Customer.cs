@@ -43,6 +43,11 @@ namespace Stripe
         [JsonProperty("default_source")]
         internal object InternalDefaultSource
         {
+            get
+            {
+                return this.DefaultSource ?? (object)this.DefaultSourceId;
+            }
+
             set
             {
                 StringOrObject<IPaymentSource>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
@@ -60,7 +65,7 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted")]
+        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
         /// <summary>

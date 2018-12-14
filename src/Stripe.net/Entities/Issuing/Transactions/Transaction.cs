@@ -14,6 +14,7 @@ namespace Stripe.Issuing
         public string Object { get; set; }
 
         #region Expandable Authorization
+        [JsonIgnore]
         public string AuthorizationId { get; set; }
 
         [JsonIgnore]
@@ -22,6 +23,11 @@ namespace Stripe.Issuing
         [JsonProperty("authorization")]
         internal object InternalAuthorization
         {
+            get
+            {
+                return this.Authorization ?? (object)this.AuthorizationId;
+            }
+
             set
             {
                 StringOrObject<Authorization>.Map(value, s => this.AuthorizationId = s, o => this.Authorization = o);
@@ -30,6 +36,7 @@ namespace Stripe.Issuing
         #endregion
 
         #region Expandable BalanceTransaction
+        [JsonIgnore]
         public string BalanceTransactionId { get; set; }
 
         [JsonIgnore]
@@ -38,6 +45,11 @@ namespace Stripe.Issuing
         [JsonProperty("balance_transaction")]
         internal object InternalBalanceTransaction
         {
+            get
+            {
+                return this.BalanceTransaction ?? (object)this.BalanceTransactionId;
+            }
+
             set
             {
                 StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
@@ -46,6 +58,7 @@ namespace Stripe.Issuing
         #endregion
 
         #region Expandable Card
+        [JsonIgnore]
         public string CardId { get; set; }
 
         [JsonIgnore]
@@ -54,6 +67,11 @@ namespace Stripe.Issuing
         [JsonProperty("card")]
         internal object InternalCard
         {
+            get
+            {
+                return this.Card ?? (object)this.CardId;
+            }
+
             set
             {
                 StringOrObject<Card>.Map(value, s => this.CardId = s, o => this.Card = o);
@@ -62,6 +80,7 @@ namespace Stripe.Issuing
         #endregion
 
         #region Expandable Cardholder
+        [JsonIgnore]
         public string CardholderId { get; set; }
 
         [JsonIgnore]
@@ -70,6 +89,11 @@ namespace Stripe.Issuing
         [JsonProperty("cardholder")]
         internal object InternalCardholder
         {
+            get
+            {
+                return this.Cardholder ?? (object)this.CardholderId;
+            }
+
             set
             {
                 StringOrObject<Cardholder>.Map(value, s => this.CardholderId = s, o => this.Cardholder = o);
@@ -85,6 +109,7 @@ namespace Stripe.Issuing
         public string Currency { get; set; }
 
         #region Expandable Dispute
+        [JsonIgnore]
         public string DisputeId { get; set; }
 
         [JsonIgnore]
@@ -93,6 +118,11 @@ namespace Stripe.Issuing
         [JsonProperty("dispute")]
         internal object InternalDispute
         {
+            get
+            {
+                return this.Dispute ?? (object)this.DisputeId;
+            }
+
             set
             {
                 StringOrObject<Dispute>.Map(value, s => this.DisputeId = s, o => this.Dispute = o);

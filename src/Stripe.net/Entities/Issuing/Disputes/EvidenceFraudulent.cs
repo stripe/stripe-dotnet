@@ -9,6 +9,7 @@ namespace Stripe.Issuing
         public string DisputeExplanation { get; set; }
 
         #region Expandable UncategorizedFile
+        [JsonIgnore]
         public string UncategorizedFileId { get; set; }
 
         [JsonIgnore]
@@ -17,6 +18,11 @@ namespace Stripe.Issuing
         [JsonProperty("uncategorized_file")]
         internal object InternalUncategorizedFile
         {
+            get
+            {
+                return this.UncategorizedFile ?? (object)this.UncategorizedFileId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.UncategorizedFileId = s, o => this.UncategorizedFile = o);
