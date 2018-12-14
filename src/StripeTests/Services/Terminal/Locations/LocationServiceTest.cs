@@ -38,7 +38,6 @@ namespace StripeTests.Terminal
 
             this.listOptions = new LocationListOptions
             {
-                OperatorAccount = "acct_123",
             };
 
             this.updateOptions = new LocationUpdateOptions
