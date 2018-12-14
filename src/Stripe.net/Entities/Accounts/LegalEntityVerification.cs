@@ -18,6 +18,7 @@ namespace Stripe
         /// document, either a passport or local ID card.
         /// <para>Expandable.</para>
         /// </summary>
+        [JsonIgnore]
         public string DocumentId { get; set; }
 
         /// <summary>
@@ -30,6 +31,11 @@ namespace Stripe
         [JsonProperty("document")]
         internal object InternalDocument
         {
+            get
+            {
+                return this.Document ?? (object)this.DocumentId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.DocumentId = s, o => this.Document = o);
@@ -44,6 +50,7 @@ namespace Stripe
         /// document, either a passport or local ID card.
         /// <para>Expandable.</para>
         /// </summary>
+        [JsonIgnore]
         public string DocumentBackId { get; set; }
 
         /// <summary>
@@ -56,6 +63,11 @@ namespace Stripe
         [JsonProperty("document_back")]
         internal object InternalDocumentBack
         {
+            get
+            {
+                return this.DocumentBack ?? (object)this.DocumentBackId;
+            }
+
             set
             {
                 StringOrObject<File>.Map(value, s => this.DocumentBackId = s, o => this.DocumentBack = o);

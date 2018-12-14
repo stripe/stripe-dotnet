@@ -36,6 +36,7 @@ namespace Stripe.Issuing
         public string Status { get; set; }
 
         #region Expandable Transaction
+        [JsonIgnore]
         public string TransactionId { get; set; }
 
         [JsonIgnore]
@@ -44,6 +45,11 @@ namespace Stripe.Issuing
         [JsonProperty("transaction")]
         internal object InternalTransaction
         {
+            get
+            {
+                return this.Transaction ?? (object)this.TransactionId;
+            }
+
             set
             {
                 StringOrObject<Transaction>.Map(value, s => this.TransactionId = s, o => this.Transaction = o);

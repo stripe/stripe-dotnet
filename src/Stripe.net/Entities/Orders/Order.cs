@@ -37,6 +37,7 @@ namespace Stripe
         /// <para>The ID of the payment used to pay for the order. Present if the order status is paid, fulfilled, or refunded.</para>
         /// <para>Expandable</para>
         /// </summary>
+        [JsonIgnore]
         public string ChargeId { get; set; }
 
         [JsonIgnore]
@@ -45,6 +46,11 @@ namespace Stripe
         [JsonProperty("charge")]
         internal object InternalCharge
         {
+            get
+            {
+                return this.Charge ?? (object)this.ChargeId;
+            }
+
             set
             {
                 StringOrObject<Charge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
@@ -78,6 +84,11 @@ namespace Stripe
         [JsonProperty("customer")]
         internal object InternalCustomer
         {
+            get
+            {
+                return this.Customer ?? (object)this.CustomerId;
+            }
+
             set
             {
                 StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);

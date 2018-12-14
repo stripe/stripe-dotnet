@@ -32,6 +32,11 @@ namespace Stripe
         [JsonProperty("balance_transaction")]
         internal object InternalBalanceTransaction
         {
+            get
+            {
+                return this.BalanceTransaction ?? (object)this.BalanceTransactionId;
+            }
+
             set
             {
                 StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);

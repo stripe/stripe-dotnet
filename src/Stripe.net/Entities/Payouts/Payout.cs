@@ -24,6 +24,7 @@ namespace Stripe
         public bool Automatic { get; set; }
 
         #region Expandable Balance Transaction
+        [JsonIgnore]
         public string BalanceTransactionId { get; set; }
 
         [JsonIgnore]
@@ -32,6 +33,11 @@ namespace Stripe
         [JsonProperty("balance_transaction")]
         internal object InternalBalanceTransaction
         {
+            get
+            {
+                return this.BalanceTransaction ?? (object)this.BalanceTransactionId;
+            }
+
             set
             {
                 StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
@@ -50,6 +56,7 @@ namespace Stripe
         public string Description { get; set; }
 
         #region Expandable Destination
+        [JsonIgnore]
         public string DestinationId { get; set; }
 
         [JsonIgnore]
@@ -58,6 +65,11 @@ namespace Stripe
         [JsonProperty("destination")]
         internal object InternalDestination
         {
+            get
+            {
+                return this.Destination ?? (object)this.DestinationId;
+            }
+
             set
             {
                 StringOrObject<IExternalAccount>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
@@ -78,6 +90,11 @@ namespace Stripe
         [JsonProperty("failure_balance_transaction")]
         internal object InternalFailureBalanceTransaction
         {
+            get
+            {
+                return this.FailureBalanceTransaction ?? (object)this.FailureBalanceTransactionId;
+            }
+
             set
             {
                 StringOrObject<BalanceTransaction>.Map(value, s => this.FailureBalanceTransactionId = s, o => this.FailureBalanceTransaction = o);
