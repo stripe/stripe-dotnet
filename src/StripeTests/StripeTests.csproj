@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\netfx.props" />
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp1.1;netcoreapp2.1;net452</TargetFrameworks>
@@ -6,6 +7,12 @@
     <PackageId>StripeTests</PackageId>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="coverlet.msbuild" Version="2.3.0" />
