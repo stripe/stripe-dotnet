@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\netfx.props" />
 
   <PropertyGroup>
     <Description>Stripe.net is a sync/async .NET 4.5+ client, and a portable class library for the Stripe API.  (Official Library)</Description>
