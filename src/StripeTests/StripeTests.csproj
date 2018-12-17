@@ -6,6 +6,7 @@
     <AssemblyName>StripeTests</AssemblyName>
     <PackageId>StripeTests</PackageId>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>

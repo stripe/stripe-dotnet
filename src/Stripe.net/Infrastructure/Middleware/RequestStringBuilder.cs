@@ -389,14 +389,15 @@ namespace Stripe.Infrastructure.Middleware
         /// </summary>
         internal sealed class Parameter
         {
-            public readonly string Key;
-            public readonly string Value;
-
             public Parameter(string key, string value)
             {
                 this.Key = key;
                 this.Value = value;
             }
+
+            public string Key { get; }
+
+            public string Value { get; }
         }
     }
 }
