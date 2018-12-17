@@ -10,10 +10,10 @@
     <TargetFrameworks>netstandard1.2;netstandard2.0;net45</TargetFrameworks>
     <AssemblyName>Stripe.net</AssemblyName>
     <PackageId>Stripe.net</PackageId>
-    <PackageTags>stripe;payment;credit;cards;money;gateway;paypal;braintree</PackageTags>
+    <PackageTags>stripe;payment;credit;cards;money;gateway</PackageTags>
     <PackageIconUrl>http://i.imgur.com/UuBwQ33.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/stripe/stripe-dotnet</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.github.com/stripe/stripe-dotnet/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.2' ">$(PackageTargetFallback);netcoreapp1.0</PackageTargetFallback>
@@ -23,6 +23,10 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
+  </ItemGroup>
 
   <!--
        .NET Core (and the .NET Standard) refactors the API's surface so that it
