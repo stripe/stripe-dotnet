@@ -22,7 +22,7 @@ namespace StripeTests
 
         public StripeMockFixture()
         {
-            this.port = Environment.GetEnvironmentVariable("STRIPE_MOCK_PORT") ?? "12111";
+            this.port = StripeMockHandler.StartStripeMock().ToString();
             this.EnsureStripeMockMinimumVersion();
 
             this.origApiBase = StripeConfiguration.GetApiBase();
@@ -39,6 +39,8 @@ namespace StripeTests
             StripeConfiguration.SetApiBase(this.origApiBase);
             StripeConfiguration.SetFilesBase(this.origFilesBase);
             StripeConfiguration.SetApiKey(this.origApiKey);
+
+            StripeMockHandler.StopStripeMock();
         }
 
         /// <summary>

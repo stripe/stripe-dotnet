@@ -10,9 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="xunit.runner.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Update="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\openapi\**" LinkBase="openapi" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

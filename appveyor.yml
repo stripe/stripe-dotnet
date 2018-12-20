@@ -6,6 +6,7 @@ environment:
     secure: T0PmP8uyzCseacBCDRBlti2y9Tz5DL6fknea0MKWvbPYrzADmLY2/5kOTfYIsPUk
   # If you bump this, don't forget to bump `MinimumMockVersion` in `StripeMockFixture.cs` as well.
   STRIPE_MOCK_VERSION: 0.39.0
+  STRIPE_MOCK_PORT: 12111
 
 deploy:
 - provider: NuGet
@@ -26,7 +27,7 @@ install:
         7z.exe e -y -o"stripe-mock" "stripe-mock\stripe-mock.tar.gz" | Out-Null
         7z.exe x -y -o"stripe-mock" "stripe-mock\stripe-mock.tar" | Out-Null
       }
-      $app = Start-Process -FilePath "stripe-mock\stripe-mock.exe" -NoNewWindow -PassThru
+      $app = Start-Process -FilePath "stripe-mock\stripe-mock.exe" -ArgumentList "-http-port","$env:STRIPE_MOCK_PORT" -NoNewWindow -PassThru
       Write-Host ("stripe-mock running, Id = $($app.Id)`n") -ForegroundColor Green
   - dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
 
