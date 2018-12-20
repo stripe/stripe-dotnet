@@ -6,6 +6,11 @@ namespace StripeTests
 
     public class DiscountTest : BaseStripeTest
     {
+        public DiscountTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {

@@ -14,7 +14,8 @@ namespace StripeTests
         private readonly ScheduledQueryRunService service;
         private readonly ScheduledQueryRunListOptions listOptions;
 
-        public ScheduledQueryRunServiceTest()
+        public ScheduledQueryRunServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ScheduledQueryRunService();
 

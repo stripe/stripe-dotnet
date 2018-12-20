@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class SkuTest : BaseStripeTest
     {
+        public SkuTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/skus/sku_123");
+            string json = this.GetFixture("/v1/skus/sku_123");
             var sku = JsonConvert.DeserializeObject<Sku>(json);
             Assert.NotNull(sku);
             Assert.IsType<Sku>(sku);
@@ -25,7 +30,7 @@ namespace StripeTests
               "product",
             };
 
-            string json = GetFixture("/v1/skus/sku_123", expansions);
+            string json = this.GetFixture("/v1/skus/sku_123", expansions);
             var sku = JsonConvert.DeserializeObject<Sku>(json);
             Assert.NotNull(sku);
             Assert.IsType<Sku>(sku);

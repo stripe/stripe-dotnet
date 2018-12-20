@@ -16,7 +16,8 @@ namespace StripeTests
         private readonly SubscriptionItemUpdateOptions updateOptions;
         private readonly SubscriptionItemListOptions listOptions;
 
-        public SubscriptionItemServiceTest()
+        public SubscriptionItemServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new SubscriptionItemService();
 

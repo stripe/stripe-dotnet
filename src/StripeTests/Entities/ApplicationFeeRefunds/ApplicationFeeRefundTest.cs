@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class ApplicationFeeRefundTest : BaseStripeTest
     {
+        public ApplicationFeeRefundTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/application_fees/fee_123/refunds/fr_123");
+            string json = this.GetFixture("/v1/application_fees/fee_123/refunds/fr_123");
             var applicationFeeRefund = JsonConvert.DeserializeObject<ApplicationFeeRefund>(json);
             Assert.NotNull(applicationFeeRefund);
             Assert.IsType<ApplicationFeeRefund>(applicationFeeRefund);

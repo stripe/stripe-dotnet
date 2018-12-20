@@ -17,7 +17,8 @@ namespace StripeTests
         private readonly ExternalAccountUpdateOptions updateOptions;
         private readonly ExternalAccountListOptions listOptions;
 
-        public ExternalAccountServiceTest()
+        public ExternalAccountServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ExternalAccountService();
 

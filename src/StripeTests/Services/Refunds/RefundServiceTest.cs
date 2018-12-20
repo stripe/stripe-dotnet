@@ -16,7 +16,8 @@ namespace StripeTests
         private readonly RefundUpdateOptions updateOptions;
         private readonly RefundListOptions listOptions;
 
-        public RefundServiceTest()
+        public RefundServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new RefundService();
 

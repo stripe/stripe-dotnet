@@ -6,10 +6,15 @@ namespace StripeTests.Issuing
 
     public class AuthorizationTest : BaseStripeTest
     {
+        public AuthorizationTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/issuing/authorizations/iauth_123");
+            string json = this.GetFixture("/v1/issuing/authorizations/iauth_123");
             var authorization = JsonConvert.DeserializeObject<Authorization>(json);
             Assert.NotNull(authorization);
             Assert.IsType<Authorization>(authorization);
@@ -28,7 +33,7 @@ namespace StripeTests.Issuing
               "cardholder",
             };
 
-            string json = GetFixture("/v1/issuing/authorizations/iauth_123", expansions);
+            string json = this.GetFixture("/v1/issuing/authorizations/iauth_123", expansions);
             var authorization = JsonConvert.DeserializeObject<Authorization>(json);
             Assert.NotNull(authorization);
             Assert.IsType<Authorization>(authorization);

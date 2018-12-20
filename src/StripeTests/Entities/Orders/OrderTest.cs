@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class OrderTest : BaseStripeTest
     {
+        public OrderTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/orders/or_123");
+            string json = this.GetFixture("/v1/orders/or_123");
             var order = JsonConvert.DeserializeObject<Order>(json);
             Assert.NotNull(order);
             Assert.IsType<Order>(order);
@@ -26,7 +31,7 @@ namespace StripeTests
               "customer",
             };
 
-            string json = GetFixture("/v1/orders/or_123", expansions);
+            string json = this.GetFixture("/v1/orders/or_123", expansions);
             var order = JsonConvert.DeserializeObject<Order>(json);
             Assert.NotNull(order);
             Assert.IsType<Order>(order);

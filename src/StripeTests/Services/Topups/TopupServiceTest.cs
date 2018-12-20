@@ -16,7 +16,8 @@ namespace StripeTests
         private readonly TopupUpdateOptions updateOptions;
         private readonly TopupListOptions listOptions;
 
-        public TopupServiceTest()
+        public TopupServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new TopupService();
 

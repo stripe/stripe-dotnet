@@ -16,7 +16,8 @@ namespace StripeTests.Radar
         private readonly ValueListItemCreateOptions createOptions;
         private readonly ValueListItemListOptions listOptions;
 
-        public ValueListItemServiceTest()
+        public ValueListItemServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ValueListItemService();
 

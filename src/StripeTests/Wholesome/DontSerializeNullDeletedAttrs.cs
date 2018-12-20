@@ -9,7 +9,7 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class DontSerializeNullDeletedAttrs
+    public class DontSerializeNullDeletedAttrs : WholesomeTest
     {
         private const string AssertionMessage =
             "Found at least one invalid Deleted property. Make sure that the property " +
@@ -21,11 +21,7 @@ namespace StripeTests
             List<string> results = new List<string>();
 
             // Get all StripeEntity subclasses
-            var type = typeof(StripeEntity);
-            var assembly = type.GetTypeInfo().Assembly;
-            var entityClasses = assembly.DefinedTypes
-                .Where(t => t.IsClass && t.IsSubclassOf(type))
-                .Select(t => t.AsType());
+            var entityClasses = GetSubclassesOf(typeof(StripeEntity));
 
             foreach (Type entityClass in entityClasses)
             {

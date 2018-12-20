@@ -12,7 +12,8 @@ namespace StripeTests
     {
         private readonly SubscriptionService service;
 
-        public SubscriptionCreateOptionsTest()
+        public SubscriptionCreateOptionsTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new SubscriptionService();
         }
