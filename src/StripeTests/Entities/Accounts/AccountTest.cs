@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class AccountTest : BaseStripeTest
     {
+        public AccountTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/accounts/acct_123");
+            string json = this.GetFixture("/v1/accounts/acct_123");
             var account = JsonConvert.DeserializeObject<Account>(json);
             Assert.NotNull(account);
             Assert.IsType<Account>(account);
@@ -25,7 +30,7 @@ namespace StripeTests
               "business_logo",
             };
 
-            string json = GetFixture("/v1/accounts/acct_123", expansions);
+            string json = this.GetFixture("/v1/accounts/acct_123", expansions);
             var account = JsonConvert.DeserializeObject<Account>(json);
 
             Assert.NotNull(account);

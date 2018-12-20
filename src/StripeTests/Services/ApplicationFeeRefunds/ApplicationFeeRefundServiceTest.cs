@@ -17,7 +17,8 @@ namespace StripeTests
         private readonly ApplicationFeeRefundUpdateOptions updateOptions;
         private readonly ApplicationFeeRefundListOptions listOptions;
 
-        public ApplicationFeeRefundServiceTest()
+        public ApplicationFeeRefundServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ApplicationFeeRefundService();
 

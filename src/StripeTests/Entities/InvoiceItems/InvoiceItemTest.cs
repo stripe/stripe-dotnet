@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class InvoiceItemTest : BaseStripeTest
     {
+        public InvoiceItemTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/invoiceitems/ii_123");
+            string json = this.GetFixture("/v1/invoiceitems/ii_123");
             var invoiceItem = JsonConvert.DeserializeObject<InvoiceItem>(json);
             Assert.NotNull(invoiceItem);
             Assert.IsType<InvoiceItem>(invoiceItem);
@@ -27,7 +32,7 @@ namespace StripeTests
               "subscription",
             };
 
-            string json = GetFixture("/v1/invoiceitems/ii_123", expansions);
+            string json = this.GetFixture("/v1/invoiceitems/ii_123", expansions);
             var invoiceItem = JsonConvert.DeserializeObject<InvoiceItem>(json);
             Assert.NotNull(invoiceItem);
             Assert.IsType<InvoiceItem>(invoiceItem);

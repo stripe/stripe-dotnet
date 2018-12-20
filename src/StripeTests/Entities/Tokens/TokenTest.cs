@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class TokenTest : BaseStripeTest
     {
+        public TokenTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/tokens/tok_123");
+            string json = this.GetFixture("/v1/tokens/tok_123");
             var token = JsonConvert.DeserializeObject<Token>(json);
             Assert.NotNull(token);
             Assert.IsType<Token>(token);

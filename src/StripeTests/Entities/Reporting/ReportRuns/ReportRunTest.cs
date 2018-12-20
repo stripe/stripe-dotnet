@@ -6,10 +6,15 @@ namespace StripeTests.Reporting
 
     public class ReportRunTest : BaseStripeTest
     {
+        public ReportRunTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/reporting/report_runs/frr_123");
+            string json = this.GetFixture("/v1/reporting/report_runs/frr_123");
             var reportRun = JsonConvert.DeserializeObject<ReportRun>(json);
             Assert.NotNull(reportRun);
             Assert.IsType<ReportRun>(reportRun);

@@ -6,10 +6,15 @@ namespace StripeTests.Terminal
 
     public class ReaderTest : BaseStripeTest
     {
+        public ReaderTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/terminal/readers/ds_123");
+            string json = this.GetFixture("/v1/terminal/readers/ds_123");
             var reader = JsonConvert.DeserializeObject<Reader>(json);
             Assert.NotNull(reader);
             Assert.IsType<Reader>(reader);

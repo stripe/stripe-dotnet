@@ -6,10 +6,15 @@ namespace StripeTests.Issuing
 
     public class DisputeTest : BaseStripeTest
     {
+        public DisputeTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/issuing/disputes/idp_123");
+            string json = this.GetFixture("/v1/issuing/disputes/idp_123");
             var dispute = JsonConvert.DeserializeObject<Dispute>(json);
             Assert.NotNull(dispute);
             Assert.IsType<Dispute>(dispute);

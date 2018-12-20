@@ -17,7 +17,8 @@ namespace StripeTests
         private readonly ChargeUpdateOptions updateOptions;
         private readonly ChargeListOptions listOptions;
 
-        public ChargeServiceTest()
+        public ChargeServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ChargeService();
 

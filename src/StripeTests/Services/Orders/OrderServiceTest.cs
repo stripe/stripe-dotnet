@@ -17,7 +17,8 @@ namespace StripeTests
         private readonly OrderPayOptions payOptions;
         private readonly OrderListOptions listOptions;
 
-        public OrderServiceTest()
+        public OrderServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new OrderService();
 

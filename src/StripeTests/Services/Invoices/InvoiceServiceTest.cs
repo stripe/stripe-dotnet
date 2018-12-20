@@ -24,7 +24,8 @@ namespace StripeTests
         private readonly InvoiceSendOptions sendOptions;
         private readonly InvoiceVoidOptions voidOptions;
 
-        public InvoiceServiceTest()
+        public InvoiceServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new InvoiceService();
 

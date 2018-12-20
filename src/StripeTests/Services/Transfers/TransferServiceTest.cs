@@ -16,7 +16,8 @@ namespace StripeTests
         private readonly TransferUpdateOptions updateOptions;
         private readonly TransferListOptions listOptions;
 
-        public TransferServiceTest()
+        public TransferServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new TransferService();
 
