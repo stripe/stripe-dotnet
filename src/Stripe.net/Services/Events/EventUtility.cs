@@ -3,6 +3,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Runtime.CompilerServices;
     using System.Security.Cryptography;
     using System.Text;
     using Newtonsoft.Json;
@@ -82,6 +83,7 @@ namespace Stripe
             }
         }
 
+        [MethodImpl(MethodImplOptions.NoOptimization)]
         private static bool SecureCompare(string a, string b)
         {
             if (a.Length != b.Length)
