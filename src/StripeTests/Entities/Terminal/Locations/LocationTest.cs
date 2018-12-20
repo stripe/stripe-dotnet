@@ -6,10 +6,15 @@ namespace StripeTests.Terminal
 
     public class LocationTest : BaseStripeTest
     {
+        public LocationTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/terminal/locations/loc_123");
+            string json = this.GetFixture("/v1/terminal/locations/loc_123");
             var location = JsonConvert.DeserializeObject<Location>(json);
             Assert.NotNull(location);
             Assert.IsType<Location>(location);

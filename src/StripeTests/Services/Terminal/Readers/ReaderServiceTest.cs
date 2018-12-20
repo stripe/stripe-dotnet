@@ -17,7 +17,8 @@ namespace StripeTests.Terminal
         private readonly ReaderListOptions listOptions;
         private readonly ReaderUpdateOptions updateOptions;
 
-        public ReaderServiceTest()
+        public ReaderServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ReaderService();
 

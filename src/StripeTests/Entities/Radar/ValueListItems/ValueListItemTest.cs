@@ -11,10 +11,15 @@ namespace StripeTests.Radar
 
     public class ValueListItemTest : BaseStripeTest
     {
+        public ValueListItemTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/radar/value_list_items/rsli_123");
+            string json = this.GetFixture("/v1/radar/value_list_items/rsli_123");
             var valueListItem = Mapper<ValueListItem>.MapFromJson(json);
             Assert.NotNull(valueListItem);
             Assert.IsType<ValueListItem>(valueListItem);

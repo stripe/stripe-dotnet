@@ -12,7 +12,8 @@ namespace StripeTests
     {
         private readonly PlanService service;
 
-        public PlanCreateOptionsTest()
+        public PlanCreateOptionsTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new PlanService();
         }

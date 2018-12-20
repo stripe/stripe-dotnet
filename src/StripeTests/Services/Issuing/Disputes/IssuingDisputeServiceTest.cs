@@ -16,7 +16,8 @@ namespace StripeTests.Issuing
         private readonly DisputeUpdateOptions updateOptions;
         private readonly DisputeListOptions listOptions;
 
-        public IssuingDisputeServiceTest()
+        public IssuingDisputeServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new DisputeService();
 

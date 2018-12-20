@@ -16,7 +16,8 @@ namespace StripeTests
         private readonly PlanUpdateOptions updateOptions;
         private readonly PlanListOptions listOptions;
 
-        public PlanServiceTest()
+        public PlanServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new PlanService();
 

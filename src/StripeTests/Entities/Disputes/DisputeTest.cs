@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class DisputeTest : BaseStripeTest
     {
+        public DisputeTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/disputes/dp_123");
+            string json = this.GetFixture("/v1/disputes/dp_123");
             var dispute = JsonConvert.DeserializeObject<Dispute>(json);
             Assert.NotNull(dispute);
             Assert.IsType<Dispute>(dispute);
@@ -25,7 +30,7 @@ namespace StripeTests
               "charge",
             };
 
-            string json = GetFixture("/v1/disputes/dp_123", expansions);
+            string json = this.GetFixture("/v1/disputes/dp_123", expansions);
             var dispute = JsonConvert.DeserializeObject<Dispute>(json);
             Assert.NotNull(dispute);
             Assert.IsType<Dispute>(dispute);

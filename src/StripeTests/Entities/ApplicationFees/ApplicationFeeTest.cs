@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class ApplicationFeeTest : BaseStripeTest
     {
+        public ApplicationFeeTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/application_fees/fee_123");
+            string json = this.GetFixture("/v1/application_fees/fee_123");
             var applicationFee = JsonConvert.DeserializeObject<ApplicationFee>(json);
             Assert.NotNull(applicationFee);
             Assert.IsType<ApplicationFee>(applicationFee);
@@ -29,7 +34,7 @@ namespace StripeTests
               "originating_transaction",
             };
 
-            string json = GetFixture("/v1/application_fees/fee_123", expansions);
+            string json = this.GetFixture("/v1/application_fees/fee_123", expansions);
             var applicationFee = JsonConvert.DeserializeObject<ApplicationFee>(json);
             Assert.NotNull(applicationFee);
             Assert.IsType<ApplicationFee>(applicationFee);

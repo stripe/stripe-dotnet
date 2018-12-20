@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class UsageRecordSummaryTest : BaseStripeTest
     {
+        public UsageRecordSummaryTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/subscription_items/si_123/usage_record_summaries");
+            string json = this.GetFixture("/v1/subscription_items/si_123/usage_record_summaries");
             var summaries = JsonConvert.DeserializeObject<StripeList<UsageRecordSummary>>(json);
             Assert.NotNull(summaries);
 

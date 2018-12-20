@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class TopupTest : BaseStripeTest
     {
+        public TopupTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/topups/tu_123");
+            string json = this.GetFixture("/v1/topups/tu_123");
             var topup = JsonConvert.DeserializeObject<Topup>(json);
             Assert.NotNull(topup);
             Assert.IsType<Topup>(topup);
@@ -26,7 +31,7 @@ namespace StripeTests
               "source",
             };
 
-            string json = GetFixture("/v1/topups/tu_123", expansions);
+            string json = this.GetFixture("/v1/topups/tu_123", expansions);
             var topup = JsonConvert.DeserializeObject<Topup>(json);
             Assert.NotNull(topup);
             Assert.IsType<Topup>(topup);

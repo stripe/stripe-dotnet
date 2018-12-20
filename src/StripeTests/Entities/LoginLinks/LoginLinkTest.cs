@@ -6,6 +6,11 @@ namespace StripeTests
 
     public class LoginLinkTest : BaseStripeTest
     {
+        public LoginLinkTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {

@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class WebhookEndpointTest : BaseStripeTest
     {
+        public WebhookEndpointTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/webhook_endpoints/we_123");
+            string json = this.GetFixture("/v1/webhook_endpoints/we_123");
             var endpoint = JsonConvert.DeserializeObject<WebhookEndpoint>(json);
             Assert.NotNull(endpoint);
             Assert.IsType<WebhookEndpoint>(endpoint);

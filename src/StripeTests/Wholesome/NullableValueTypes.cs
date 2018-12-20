@@ -1,30 +1,23 @@
+#if NETCOREAPP
 namespace StripeTests
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-
-    using Microsoft.Extensions.DependencyModel;
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
-#if NETCOREAPP
-    public class NullableValueTypes
+    public class NullableValueTypes : WholesomeTest
     {
         [Fact]
-        public void EnsureAllValueTypesAreNullable()
+        public void Check()
         {
             List<string> results = new List<string>();
 
             // Get all classes that implement INestedOptions
-            var type = typeof(INestedOptions);
-            var assembly = type.GetTypeInfo().Assembly;
-            var optionsClasses = assembly.DefinedTypes
-                .Where(t => t.IsClass && t.ImplementedInterfaces.Contains(type))
-                .Select(t => t.AsType());
+            var optionsClasses = GetClassesWithInterface(typeof(INestedOptions));
 
             foreach (Type optionsClass in optionsClasses)
             {
@@ -73,5 +66,5 @@ namespace StripeTests
             }
         }
     }
-#endif
 }
+#endif

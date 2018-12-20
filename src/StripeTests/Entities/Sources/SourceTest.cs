@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class SourceTest : BaseStripeTest
     {
+        public SourceTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/sources/src_123");
+            string json = this.GetFixture("/v1/sources/src_123");
             var source = JsonConvert.DeserializeObject<Source>(json);
             Assert.NotNull(source);
             Assert.IsType<Source>(source);
