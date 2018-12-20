@@ -1,3 +1,4 @@
+#if NETCOREAPP
 namespace StripeTests
 {
     using System;
@@ -8,8 +9,7 @@ namespace StripeTests
     using Stripe.Infrastructure;
     using Xunit;
 
-#if NETCOREAPP
-    public class AllStripeObjectClassesPresentInDictionary
+    public class AllStripeObjectClassesPresentInDictionary : WholesomeTest
     {
         // Checks that all Stripe object classes (i.e. model classes that implement IHasObject)
         // have an entry in the Stripe.Util.ObjectsToTypes dictionary.
@@ -19,11 +19,7 @@ namespace StripeTests
             List<string> results = new List<string>();
 
             // Get all classes that implement IHasObject
-            var type = typeof(IHasObject);
-            var assembly = type.GetTypeInfo().Assembly;
-            var modelClasses = assembly.DefinedTypes
-                .Where(t => t.IsClass && t.ImplementedInterfaces.Contains(type))
-                .Select(t => t.AsType());
+            var modelClasses = GetClassesWithInterface(typeof(IHasObject));
 
             foreach (Type modelClass in modelClasses)
             {
@@ -59,5 +55,5 @@ namespace StripeTests
             }
         }
     }
-#endif
 }
+#endif

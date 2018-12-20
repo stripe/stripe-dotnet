@@ -14,7 +14,8 @@ namespace StripeTests
         private readonly CountrySpecService service;
         private readonly CountrySpecListOptions listOptions;
 
-        public CountrySpecServiceTest()
+        public CountrySpecServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new CountrySpecService();
 

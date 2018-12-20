@@ -14,7 +14,8 @@ namespace StripeTests
         private readonly LoginLinkService service;
         private readonly LoginLinkCreateOptions createOptions;
 
-        public LoginLinkServiceTest()
+        public LoginLinkServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new LoginLinkService();
 

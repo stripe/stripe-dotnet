@@ -10,7 +10,8 @@ namespace StripeTests
         private readonly string json;
         private readonly string secret;
 
-        public EventUtilityTest()
+        public EventUtilityTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.eventTimestamp = 1533204620;
             this.secret = "webhook_secret";

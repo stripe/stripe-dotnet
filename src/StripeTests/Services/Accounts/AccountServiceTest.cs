@@ -17,7 +17,8 @@ namespace StripeTests
         private readonly AccountListOptions listOptions;
         private readonly AccountRejectOptions rejectOptions;
 
-        public AccountServiceTest()
+        public AccountServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new AccountService();
 

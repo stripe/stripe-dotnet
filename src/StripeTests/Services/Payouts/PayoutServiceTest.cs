@@ -16,7 +16,8 @@ namespace StripeTests
         private readonly PayoutUpdateOptions updateOptions;
         private readonly PayoutListOptions listOptions;
 
-        public PayoutServiceTest()
+        public PayoutServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new PayoutService();
 

@@ -21,7 +21,8 @@ namespace StripeTests
         private readonly CardUpdateOptions updateOptions;
         private readonly CardListOptions listOptions;
 
-        public CardServiceTest()
+        public CardServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new CardService();
 

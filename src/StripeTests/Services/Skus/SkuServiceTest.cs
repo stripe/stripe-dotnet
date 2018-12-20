@@ -16,7 +16,8 @@ namespace StripeTests
         private readonly SkuUpdateOptions updateOptions;
         private readonly SkuListOptions listOptions;
 
-        public SkuServiceTest()
+        public SkuServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new SkuService();
 

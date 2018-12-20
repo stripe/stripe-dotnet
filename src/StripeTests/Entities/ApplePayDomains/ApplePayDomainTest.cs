@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class ApplePayDomainTest : BaseStripeTest
     {
+        public ApplePayDomainTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/apple_pay/domains/apwc_123");
+            string json = this.GetFixture("/v1/apple_pay/domains/apwc_123");
             var domain = JsonConvert.DeserializeObject<ApplePayDomain>(json);
             Assert.NotNull(domain);
             Assert.IsType<ApplePayDomain>(domain);
