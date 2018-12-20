@@ -12,7 +12,8 @@ namespace StripeTests
         private readonly ExchangeRateService service;
         private readonly ExchangeRateListOptions listOptions;
 
-        public ExchangeRateServiceTest()
+        public ExchangeRateServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ExchangeRateService();
 

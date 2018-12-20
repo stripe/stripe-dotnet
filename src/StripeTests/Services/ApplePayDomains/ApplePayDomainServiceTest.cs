@@ -15,7 +15,8 @@ namespace StripeTests
         private readonly ApplePayDomainCreateOptions createOptions;
         private readonly ApplePayDomainListOptions listOptions;
 
-        public ApplePayDomainServiceTest()
+        public ApplePayDomainServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ApplePayDomainService();
 

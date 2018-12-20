@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class PersonTest : BaseStripeTest
     {
+        public PersonTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/accounts/acct_123/persons/person_123");
+            string json = this.GetFixture("/v1/accounts/acct_123/persons/person_123");
             var person = JsonConvert.DeserializeObject<Person>(json);
             Assert.NotNull(person);
             Assert.IsType<Person>(person);

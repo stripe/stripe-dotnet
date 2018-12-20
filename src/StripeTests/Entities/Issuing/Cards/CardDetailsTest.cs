@@ -6,6 +6,11 @@ namespace StripeTests.Issuing
 
     public class CardDetailsTest : BaseStripeTest
     {
+        public CardDetailsTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {

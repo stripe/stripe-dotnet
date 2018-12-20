@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class PaymentIntentTest : BaseStripeTest
     {
+        public PaymentIntentTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/payment_intents/pi_123");
+            string json = this.GetFixture("/v1/payment_intents/pi_123");
             var intent = JsonConvert.DeserializeObject<PaymentIntent>(json);
             Assert.NotNull(intent);
             Assert.IsType<PaymentIntent>(intent);
@@ -29,7 +34,7 @@ namespace StripeTests
               "transfer_data.destination",
             };
 
-            string json = GetFixture("/v1/payment_intents/pi_123", expansions);
+            string json = this.GetFixture("/v1/payment_intents/pi_123", expansions);
             var intent = JsonConvert.DeserializeObject<PaymentIntent>(json);
             Assert.NotNull(intent);
             Assert.IsType<PaymentIntent>(intent);

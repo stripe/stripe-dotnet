@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class InvoiceLineItemTest : BaseStripeTest
     {
+        public InvoiceLineItemTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/invoices/in_123/lines");
+            string json = this.GetFixture("/v1/invoices/in_123/lines");
             var lineItems = JsonConvert.DeserializeObject<StripeList<InvoiceLineItem>>(json);
             Assert.NotNull(lineItems);
 

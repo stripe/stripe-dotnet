@@ -6,6 +6,11 @@ namespace StripeTests
 
     public class EventTest : BaseStripeTest
     {
+        public EventTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {

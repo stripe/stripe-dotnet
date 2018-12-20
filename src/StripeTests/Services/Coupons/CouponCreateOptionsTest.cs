@@ -12,7 +12,8 @@ namespace StripeTests
     {
         private readonly CouponService service;
 
-        public CouponCreateOptionsTest()
+        public CouponCreateOptionsTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new CouponService();
         }

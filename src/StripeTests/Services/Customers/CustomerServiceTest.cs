@@ -16,7 +16,8 @@ namespace StripeTests
         private readonly CustomerUpdateOptions updateOptions;
         private readonly CustomerListOptions listOptions;
 
-        public CustomerServiceTest()
+        public CustomerServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new CustomerService();
 

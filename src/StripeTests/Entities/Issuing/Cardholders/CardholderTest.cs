@@ -6,10 +6,15 @@ namespace StripeTests.Issuing
 
     public class CardholderTest : BaseStripeTest
     {
+        public CardholderTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/issuing/cardholders/ich_123");
+            string json = this.GetFixture("/v1/issuing/cardholders/ich_123");
             var cardholder = JsonConvert.DeserializeObject<Cardholder>(json);
             Assert.NotNull(cardholder);
             Assert.IsType<Cardholder>(cardholder);

@@ -5,10 +5,15 @@ namespace StripeTests
 
     public class ExternalAccountTest : BaseStripeTest
     {
+        public ExternalAccountTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/accounts/acct_123/external_accounts/ba_123");
+            string json = this.GetFixture("/v1/accounts/acct_123/external_accounts/ba_123");
             var externalAccount = Mapper<IExternalAccount>.MapFromJson(json);
             Assert.NotNull(externalAccount);
             Assert.IsType<BankAccount>(externalAccount);
@@ -23,7 +28,7 @@ namespace StripeTests
               "account",
             };
 
-            string json = GetFixture("/v1/accounts/acct_123/external_accounts/ba_123", expansions);
+            string json = this.GetFixture("/v1/accounts/acct_123/external_accounts/ba_123", expansions);
             var externalAccount = Mapper<IExternalAccount>.MapFromJson(json);
             Assert.NotNull(externalAccount);
             Assert.IsType<BankAccount>(externalAccount);

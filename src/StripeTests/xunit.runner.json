@@ -1,4 +1,5 @@
 {
   "appDomain": "denied",
-  "parallelizeTestCollections": false
+  "diagnosticMessages": true,
+  "longRunningTestSeconds": 10
 }
