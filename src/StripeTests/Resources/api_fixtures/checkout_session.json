@@ -1,0 +1,5 @@
+{
+  "id": "randomid",
+  "object": "checkout_session",
+  "livemode": false
+}
