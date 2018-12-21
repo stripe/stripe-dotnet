@@ -1,5 +1,8 @@
 # Changelog
 
+## 21.7.1 - 2018-12-21
+* [#1443](https://github.com/stripe/stripe-dotnet/pull/1443) Fix properties on `AuthorizationControls` to be nullable. This should be a breaking change but since Issuing is in beta and the code does not work, we released it as a patch
+
 ## 21.7.0 - 2018-11-28
 * [#1407](https://github.com/stripe/stripe-dotnet/pull/1407) Add support for the `Review` APIs
 * [#1408](https://github.com/stripe/stripe-dotnet/pull/1408) Add missing properties to the `Refund` resource
