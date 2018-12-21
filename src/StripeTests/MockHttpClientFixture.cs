@@ -9,9 +9,9 @@ namespace StripeTests
 
     public class MockHttpClientFixture : IDisposable
     {
-        private Mock<HttpClientHandler> mockHandler;
+        private readonly Mock<HttpClientHandler> mockHandler;
 
-        private HttpMessageHandler origHandler;
+        private readonly HttpMessageHandler origHandler;
 
         public MockHttpClientFixture()
         {
