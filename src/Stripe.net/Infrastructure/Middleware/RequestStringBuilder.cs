@@ -214,13 +214,10 @@ namespace Stripe.Infrastructure.Middleware
             }
             else
             {
-                var listEnumerator = list.GetEnumerator();
-
-                for (int i = 0; listEnumerator.MoveNext() == true; i++)
+                foreach (var item in list.Select((value, index) => new { value, index }))
                 {
-                    object value = listEnumerator.Current;
-                    string newPrefix = $"{keyPrefix}[{i}]";
-                    flatParams.AddRange(FlattenParamsValue(value, newPrefix));
+                    string newPrefix = $"{keyPrefix}[{item.index}]";
+                    flatParams.AddRange(FlattenParamsValue(item.value, newPrefix));
                 }
             }
 

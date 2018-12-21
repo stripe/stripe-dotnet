@@ -14,11 +14,11 @@ namespace StripeTests
         /// </remarks>
         private const string MockMinimumVersion = "0.39.0";
 
-        private string origApiBase;
-        private string origFilesBase;
-        private string origApiKey;
+        private readonly string origApiBase;
+        private readonly string origFilesBase;
+        private readonly string origApiKey;
 
-        private string port;
+        private readonly string port;
 
         public StripeMockFixture()
         {
