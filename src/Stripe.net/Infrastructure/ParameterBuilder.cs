@@ -54,12 +54,6 @@ namespace Stripe.Infrastructure
                     }
 
                     requestString = ApplyParameterToUrl(requestString, "expand[]", expandPropertyName);
-
-                    // note: I had no idea you could expand properties beyond the first level (up to 4 before stripe throws an exception).
-                    // something to consider adding to the project.
-                    //
-                    // example:
-                    // requestString = ApplyParameterToUrl(requestString, "expand[]", "data.charge.dispute.charge.dispute.charge.dispute");
                 }
             }
 
