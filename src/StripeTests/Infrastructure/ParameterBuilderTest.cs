@@ -354,7 +354,6 @@ namespace StripeTests
         {
             Assert.NotNull(this.service);
 
-            var testObject = new TestOptions();
             var url = this.service.ApplyAllParameters(null, "base_url", false);
             Assert.Equal("base_url", url);
         }
