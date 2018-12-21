@@ -6,10 +6,15 @@ namespace StripeTests.Issuing
 
     public class TransactionTest : BaseStripeTest
     {
+        public TransactionTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/issuing/transactions/ipi_123");
+            string json = this.GetFixture("/v1/issuing/transactions/ipi_123");
             var transaction = JsonConvert.DeserializeObject<Transaction>(json);
             Assert.NotNull(transaction);
             Assert.IsType<Transaction>(transaction);

@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class CouponTest : BaseStripeTest
     {
+        public CouponTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/coupons/co_123");
+            string json = this.GetFixture("/v1/coupons/co_123");
             var coupon = JsonConvert.DeserializeObject<Coupon>(json);
             Assert.NotNull(coupon);
             Assert.IsType<Coupon>(coupon);

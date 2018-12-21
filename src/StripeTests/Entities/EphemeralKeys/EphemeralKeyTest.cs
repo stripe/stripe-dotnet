@@ -6,6 +6,11 @@ namespace StripeTests
 
     public class EphemeralKeyTest : BaseStripeTest
     {
+        public EphemeralKeyTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {

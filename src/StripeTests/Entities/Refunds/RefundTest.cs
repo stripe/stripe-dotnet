@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class RefundTest : BaseStripeTest
     {
+        public RefundTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/refunds/re_123");
+            string json = this.GetFixture("/v1/refunds/re_123");
             var refund = JsonConvert.DeserializeObject<Refund>(json);
             Assert.NotNull(refund);
             Assert.IsType<Refund>(refund);
@@ -29,7 +34,7 @@ namespace StripeTests
               "transfer_reversal",
             };
 
-            string json = GetFixture("/v1/refunds/re_123", expansions);
+            string json = this.GetFixture("/v1/refunds/re_123", expansions);
             var refund = JsonConvert.DeserializeObject<Refund>(json);
             Assert.NotNull(refund);
             Assert.IsType<Refund>(refund);

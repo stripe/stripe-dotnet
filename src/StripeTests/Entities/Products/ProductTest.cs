@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class ProductTest : BaseStripeTest
     {
+        public ProductTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/products/prod_123");
+            string json = this.GetFixture("/v1/products/prod_123");
             var product = JsonConvert.DeserializeObject<Product>(json);
             Assert.NotNull(product);
             Assert.IsType<Product>(product);

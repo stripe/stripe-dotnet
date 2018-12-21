@@ -13,7 +13,8 @@ namespace StripeTests
         private readonly UsageRecordSummaryService service;
         private readonly UsageRecordSummaryListOptions listOptions;
 
-        public UsageRecordSummaryServiceTest()
+        public UsageRecordSummaryServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new UsageRecordSummaryService();
 

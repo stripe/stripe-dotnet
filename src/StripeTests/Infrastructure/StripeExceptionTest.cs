@@ -1,19 +1,16 @@
 namespace StripeTests
 {
-    using System.Linq;
-    using System.Net.Http;
-    using Newtonsoft.Json.Linq;
+    using System.Threading.Tasks;
     using Stripe;
-    using Stripe.Infrastructure;
     using Xunit;
 
     public class StripeExceptionTest : BaseStripeTest
     {
         [Fact]
-        public void SetsStripeResponse()
+        public async Task SetsStripeResponse()
         {
-            var exception = Assert.Throws<StripeException>(() =>
-                new CouponService().Create(new CouponCreateOptions()));
+            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
+                await new CouponService().CreateAsync(new CouponCreateOptions()));
 
             Assert.NotNull(exception);
             Assert.NotNull(exception.StripeError);

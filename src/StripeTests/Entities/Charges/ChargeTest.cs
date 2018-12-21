@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class ChargeTest : BaseStripeTest
     {
+        public ChargeTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/charges/ch_123");
+            string json = this.GetFixture("/v1/charges/ch_123");
             var charge = JsonConvert.DeserializeObject<Charge>(json);
             Assert.NotNull(charge);
             Assert.IsType<Charge>(charge);
@@ -36,7 +41,7 @@ namespace StripeTests
               "transfer",
             };
 
-            string json = GetFixture("/v1/charges/ch_123", expansions);
+            string json = this.GetFixture("/v1/charges/ch_123", expansions);
             var charge = JsonConvert.DeserializeObject<Charge>(json);
             Assert.NotNull(charge);
             Assert.IsType<Charge>(charge);

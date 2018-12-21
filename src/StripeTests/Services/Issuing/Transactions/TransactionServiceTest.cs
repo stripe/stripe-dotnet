@@ -15,7 +15,8 @@ namespace StripeTests.Issuing
         private readonly TransactionUpdateOptions updateOptions;
         private readonly TransactionListOptions listOptions;
 
-        public TransactionServiceTest()
+        public TransactionServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new TransactionService();
 

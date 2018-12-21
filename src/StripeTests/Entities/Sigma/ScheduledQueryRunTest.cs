@@ -6,10 +6,15 @@ namespace StripeTests.Sigma
 
     public class ScheduledQueryRunTest : BaseStripeTest
     {
+        public ScheduledQueryRunTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/sigma/scheduled_query_runs/sqr_123");
+            string json = this.GetFixture("/v1/sigma/scheduled_query_runs/sqr_123");
             var run = JsonConvert.DeserializeObject<ScheduledQueryRun>(json);
             Assert.NotNull(run);
             Assert.IsType<ScheduledQueryRun>(run);
