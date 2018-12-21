@@ -15,9 +15,9 @@ namespace Stripe.Issuing
         public string Currency { get; set; }
 
         [JsonProperty("max_amount")]
-        public long MaxAmount { get; set; }
+        public long? MaxAmount { get; set; }
 
         [JsonProperty("max_approvals")]
-        public long MaxApprovals { get; set; }
+        public long? MaxApprovals { get; set; }
     }
 }
