@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class ProductListOptions : ListOptionsWithCreated
@@ -8,7 +9,7 @@ namespace Stripe
         public bool? Active { get; set; }
 
         [JsonProperty("ids")]
-        public string[] Ids { get; set; }
+        public List<string> Ids { get; set; }
 
         [JsonProperty("shippable")]
         public bool? Shippable { get; set; }

@@ -23,7 +23,7 @@ namespace Stripe
         /// A list of up to 5 attributes that each SKU can provide values for (e.g. ["color", "size"]).
         /// </summary>
         [JsonProperty("attributes")]
-        public string[] Attributes { get; set; }
+        public List<string> Attributes { get; set; }
 
         /// <summary>
         /// A short one-line description of the product, meant to be displayable to the customer.
@@ -42,7 +42,7 @@ namespace Stripe
         /// An array of connect application identifiers that cannot purchase this product.
         /// </summary>
         [JsonProperty("deactivate_on")]
-        public string[] DeactivateOn { get; set; }
+        public List<string> DeactivateOn { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
@@ -60,7 +60,7 @@ namespace Stripe
         /// A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
         /// </summary>
         [JsonProperty("images")]
-        public string[] Images { get; set; }
+        public List<string> Images { get; set; }
 
         /// <summary>
         /// Flag indicating whether the object exists in live mode or test mode.

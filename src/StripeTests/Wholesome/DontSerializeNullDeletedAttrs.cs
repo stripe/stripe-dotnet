@@ -9,6 +9,12 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
+    /// <summary>
+    /// This test checks that <see cref="Stripe.StripeEntity" /> subclasses that have a
+    /// <code>Deleted</code> property have <see cref="Newtonsoft.Json.NullValueHandling" />
+    /// set to <see cref="Newtonsoft.Json.NullValueHandling.Ignore" /> so that the property is not
+    /// serialized when its value is <code>null</code>.
+    /// </summary>
     public class DontSerializeNullDeletedAttrs : WholesomeTest
     {
         private const string AssertionMessage =

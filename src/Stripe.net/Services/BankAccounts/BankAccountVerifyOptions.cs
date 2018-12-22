@@ -1,10 +1,11 @@
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class BankAccountVerifyOptions : BaseOptions
     {
         [JsonProperty("amounts")]
-        public long[] Amounts { get; set; }
+        public List<long> Amounts { get; set; }
     }
 }

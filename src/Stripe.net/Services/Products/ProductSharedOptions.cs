@@ -15,7 +15,7 @@ namespace Stripe
         /// A list of up to 5 alphanumeric attributes that each SKU can provide values for (e.g. ["color", "size"]).
         /// </summary>
         [JsonProperty("attributes")]
-        public string[] Attributes { get; set; }
+        public List<string> Attributes { get; set; }
 
         /// <summary>
         /// A short one-line description of the product, meant to be displayable to the customer.
@@ -27,7 +27,7 @@ namespace Stripe
         /// An array of Connect application names or identifiers that should not be able to order the SKUs for this product.
         /// </summary>
         [JsonProperty("deactivate_on")]
-        public string[] DeactivateOn { get; set; }
+        public List<string> DeactivateOn { get; set; }
 
         /// <summary>
         /// The product’s description, meant to be displayable to the customer.
@@ -39,7 +39,7 @@ namespace Stripe
         /// A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
         /// </summary>
         [JsonProperty("images")]
-        public string[] Images { get; set; }
+        public List<string> Images { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to a product object. It can be useful for storing additional information about the product in a structured format.

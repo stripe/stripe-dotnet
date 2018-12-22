@@ -27,7 +27,7 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         [JsonProperty("enabled_events")]
-        public string[] EnabledEvents { get; set; }
+        public List<string> EnabledEvents { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }

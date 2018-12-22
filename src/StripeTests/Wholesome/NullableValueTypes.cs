@@ -3,14 +3,21 @@ namespace StripeTests
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Reflection;
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
+    /// <summary>
+    /// This test checks that all properties in request parameter classes (i.e. classes that
+    /// implement <see cref="Stripe.INestedOptions" />) with value types are nullable. This ensures
+    /// that only values explicitly set by users are sent to Stripe's API.
+    /// </summary>
     public class NullableValueTypes : WholesomeTest
     {
+        private const string AssertionMessage =
+            "Found at least one non-nullable value type";
+
         [Fact]
         public void Check()
         {
@@ -49,21 +56,7 @@ namespace StripeTests
                 }
             }
 
-            if (results.Any())
-            {
-                // Sort results alphabetically
-                results = results.OrderBy(i => i).ToList();
-
-                // Display our own error message (because Assert.Empty truncates the results)
-                Console.WriteLine("Found non-nullable value types:");
-                foreach (string item in results)
-                {
-                    Console.WriteLine($"- {item}");
-                }
-
-                // Actually fail test
-                Assert.True(false, "Found at least one non-nullable value type");
-            }
+            AssertEmpty(results, AssertionMessage);
         }
     }
 }
