@@ -4,15 +4,20 @@ namespace StripeTests
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Reflection;
     using Stripe;
     using Stripe.Infrastructure;
     using Xunit;
 
+    /// <summary>
+    /// This test checks that all Stripe object classes (i.e. model classes that implement
+    /// <see cref="Stripe.IHasObject" />) have an entry in the
+    /// <see cref="Stripe.Infrastructure.StripeTypeRegistry.ObjectsToTypes" /> dictionary.
+    /// </summary>
     public class AllStripeObjectClassesPresentInDictionary : WholesomeTest
     {
-        // Checks that all Stripe object classes (i.e. model classes that implement IHasObject)
-        // have an entry in the Stripe.Util.ObjectsToTypes dictionary.
+        private const string AssertionMessage =
+            "Found at least one model class missing in ObjectsToTypes dictionary";
+
         [Fact]
         public void Check()
         {
@@ -38,21 +43,7 @@ namespace StripeTests
                 results.Add(modelClass.Name);
             }
 
-            if (results.Any())
-            {
-                // Sort results alphabetically
-                results = results.OrderBy(i => i).ToList();
-
-                // Display our own error message (because Assert.Empty truncates the results)
-                Console.WriteLine("Found IHasObject classes not present in ObjectsToTypes dictionary:");
-                foreach (string item in results)
-                {
-                    Console.WriteLine($"- {item}");
-                }
-
-                // Actually fail test
-                Assert.True(false, "Found at least one model class missing in ObjectsToTypes dictionary");
-            }
+            AssertEmpty(results, AssertionMessage);
         }
     }
 }
