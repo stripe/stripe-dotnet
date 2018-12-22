@@ -12,7 +12,7 @@ namespace Stripe
         public Dictionary<string, string> Attributes { get; set; }
 
         [JsonProperty("ids")]
-        public string[] Ids { get; set; }
+        public List<string> Ids { get; set; }
 
         [JsonProperty("in_stock")]
         public bool? InStock { get; set; }

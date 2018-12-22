@@ -55,7 +55,7 @@ namespace StripeTests
 
             this.verifyOptions = new BankAccountVerifyOptions
             {
-                Amounts = new long[]
+                Amounts = new List<long>
                 {
                     32,
                     45,
