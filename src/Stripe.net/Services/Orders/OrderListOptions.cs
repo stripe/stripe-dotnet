@@ -15,7 +15,7 @@ namespace Stripe
         /// Only return orders with the given IDs.
         /// </summary>
         [JsonProperty("ids")]
-        public string[] Ids { get; set; }
+        public List<string> Ids { get; set; }
 
         /// <summary>
         /// Only return orders that have the given status. One of created, paid, fulfilled, or refunded.
@@ -33,6 +33,6 @@ namespace Stripe
         /// Only return orders with the given upstream order IDs.
         /// </summary>
         [JsonProperty("upstream_ids")]
-        public string[] UpstreamIds { get; set; }
+        public List<string> UpstreamIds { get; set; }
     }
 }
