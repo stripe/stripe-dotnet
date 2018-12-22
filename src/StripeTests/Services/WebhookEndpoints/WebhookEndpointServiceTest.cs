@@ -23,7 +23,7 @@ namespace StripeTests
 
             this.createOptions = new WebhookEndpointCreateOptions
             {
-                EnabledEvents = new[]
+                EnabledEvents = new List<string>
                 {
                     "charge.succeeded",
                 },
@@ -32,7 +32,7 @@ namespace StripeTests
 
             this.updateOptions = new WebhookEndpointUpdateOptions
             {
-                EnabledEvents = new[]
+                EnabledEvents = new List<string>
                 {
                     "charge.succeeded",
                 },
