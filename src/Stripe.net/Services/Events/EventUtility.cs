@@ -14,9 +14,23 @@ namespace Stripe
     {
         internal static readonly UTF8Encoding SafeUTF8 = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
-        public static Event ParseEvent(string json)
+        public static Event ParseEvent(string json, bool throwOnApiVersionMismatch = true)
         {
-            return Mapper<Event>.MapFromJson(json);
+            var stripeEvent = Mapper<Event>.MapFromJson(json);
+
+            if (throwOnApiVersionMismatch &&
+                stripeEvent.ApiVersion != StripeConfiguration.StripeApiVersion)
+            {
+                throw new StripeException(
+                    $"Received event with API version {stripeEvent.ApiVersion}, but Stripe.net "
+                    + $"{StripeConfiguration.StripeNetVersion} expects API version "
+                    + $"{StripeConfiguration.StripeApiVersion}. You can disable this exception by "
+                    + "passing `throwOnApiVersionMismatch=false` to "
+                    + "`Stripe.EventUtility.ParseEvent` or `Stripe.EventUtility.ConstructEvent`, "
+                    + "but be wary that objects may be incorrectly deserialized.");
+            }
+
+            return stripeEvent;
         }
 
         public static T ParseEventDataItem<T>(dynamic dataItem)
@@ -24,12 +38,12 @@ namespace Stripe
             return JsonConvert.DeserializeObject<T>((dataItem as JObject).ToString());
         }
 
-        public static Event ConstructEvent(string json, string stripeSignatureHeader, string secret, long tolerance = 300)
+        public static Event ConstructEvent(string json, string stripeSignatureHeader, string secret, long tolerance = 300, bool throwOnApiVersionMismatch = true)
         {
-            return ConstructEvent(json, stripeSignatureHeader, secret, tolerance, DateTime.UtcNow.ConvertDateTimeToEpoch());
+            return ConstructEvent(json, stripeSignatureHeader, secret, tolerance, DateTime.UtcNow.ConvertDateTimeToEpoch(), throwOnApiVersionMismatch);
         }
 
-        public static Event ConstructEvent(string json, string stripeSignatureHeader, string secret, long tolerance, long utcNow)
+        public static Event ConstructEvent(string json, string stripeSignatureHeader, string secret, long tolerance, long utcNow, bool throwOnApiVersionMismatch = true)
         {
             var signatureItems = ParseStripeSignature(stripeSignatureHeader);
             var signature = string.Empty;
@@ -55,7 +69,7 @@ namespace Stripe
                 throw new StripeException("The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.");
             }
 
-            return Mapper<Event>.MapFromJson(json);
+            return ParseEvent(json, throwOnApiVersionMismatch);
         }
 
         private static ILookup<string, string> ParseStripeSignature(string stripeSignatureHeader)
