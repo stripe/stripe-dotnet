@@ -23,6 +23,8 @@ namespace StripeTests
 
             this.cancelOptions = new SubscriptionCancelOptions
             {
+                InvoiceNow = true,
+                Prorate = true,
             };
 
             this.createOptions = new SubscriptionCreateOptions
