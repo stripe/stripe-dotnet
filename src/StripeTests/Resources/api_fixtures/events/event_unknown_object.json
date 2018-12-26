@@ -1,0 +1,20 @@
+{
+  "id": "evt_123",
+  "object": "event",
+  "api_version": "2018-09-24",
+  "created": 1538742675,
+  "data": {
+    "object": {
+      "object": "foo",
+      "integer": 42,
+      "string": "Hello"
+    }
+  },
+  "livemode": false,
+  "pending_webhooks": 0,
+  "request": {
+    "id": "req_123",
+    "idempotency_key": "key-123"
+  },
+  "type": "foo.created"
+}

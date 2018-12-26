@@ -1,0 +1,13 @@
+{
+  "api_version": "2017-04-06",
+  "created": 1538742675,
+  "data": {
+    "object": null,
+  },
+  "id": "evt_123",
+  "livemode": false,
+  "object": "event",
+  "pending_webhooks": 0,
+  "request": "req_123",
+  "type": "ping"
+}
