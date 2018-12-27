@@ -7,6 +7,16 @@ namespace Stripe
 
     public class SubscriptionCancelOptions : BaseOptions
     {
-      // Empty for now but we will soon add new properties to the Cancel Subscription API
+        /// <summary>
+        /// Will generate a final invoice that invoices for any un-invoiced metered usage and new/pending proration invoice items.
+        /// </summary>
+        [JsonProperty("invoice_now")]
+        public bool? InvoiceNow { get; set; }
+
+        /// <summary>
+        /// Boolean (default <c>true</c>). Use with a <c>billing_cycle_anchor</c> timestamp to determine whether the customer will be invoiced a prorated amount until the anchor date. If <c>false</c>, the anchor period will be free (similar to a trial).
+        /// </summary>
+        [JsonProperty("prorate")]
+        public bool? Prorate { get; set; }
     }
 }
