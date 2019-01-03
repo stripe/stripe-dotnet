@@ -17,6 +17,7 @@ namespace Stripe.Infrastructure
         {
             { "account", Mapper<Account>.MapFromJson },
             { "apple_pay_domain", Mapper<ApplePayDomain>.MapFromJson },
+            { "application", Mapper<Application>.MapFromJson },
             { "application_fee", Mapper<ApplicationFee>.MapFromJson },
             { "balance", Mapper<Balance>.MapFromJson },
             { "balance_transaction", Mapper<BalanceTransaction>.MapFromJson },
