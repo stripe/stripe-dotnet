@@ -40,12 +40,5 @@ namespace Stripe.Radar
 
         [JsonProperty("name")]
         public string Name { get; set; }
-
-        [JsonProperty("updated")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Updated { get; set; }
-
-        [JsonProperty("updated_by")]
-        public string UpdatedBy { get; set; }
     }
 }
