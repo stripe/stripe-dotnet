@@ -39,7 +39,7 @@ namespace Stripe.Infrastructure
             var incoming = JObject.Load(reader);
             var obj = default(I);
             var objectName = incoming.SelectToken("object")?.ToString();
-            if (this.ObjectsToMapperFuncs.ContainsKey(objectName))
+            if (objectName != null && this.ObjectsToMapperFuncs.ContainsKey(objectName))
             {
                 var mapperFunc = this.ObjectsToMapperFuncs[objectName];
                 obj = mapperFunc(incoming.ToString());
