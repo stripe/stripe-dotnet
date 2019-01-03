@@ -1,5 +1,8 @@
 # Changelog
 
+## 21.8.1 - 2019-01-03
+* [#1453](https://github.com/stripe/stripe-dotnet/pull/1453) Fix an issue where a `System.ArgumentNullException` exception would be thrown when deserializing some events
+
 ## 21.8.0 - 2018-12-27
 * [#1449](https://github.com/stripe/stripe-dotnet/pull/1449) Add support for `invoice_now` and `prorate` option on Subscription cancelation
 
