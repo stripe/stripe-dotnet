@@ -1,5 +1,8 @@
 # Changelog
 
+## 21.9.0 - 2019-01-03
+* [#1455](https://github.com/stripe/stripe-dotnet/pull/1455) Add support for deserializing `account.application.*` events
+
 ## 21.8.1 - 2019-01-03
 * [#1453](https://github.com/stripe/stripe-dotnet/pull/1453) Fix an issue where a `System.ArgumentNullException` exception would be thrown when deserializing some events
 
