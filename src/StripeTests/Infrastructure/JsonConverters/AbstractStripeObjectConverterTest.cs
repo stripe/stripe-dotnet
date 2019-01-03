@@ -54,6 +54,16 @@ namespace StripeTests
             Assert.Null(obj);
         }
 
+        [Fact]
+        public void ReturnsNullWhenObjectKeyIsMissing()
+        {
+            var json = "{\"some_list\": [1, 2, 3]}";
+
+            var obj = JsonConvert.DeserializeObject<IFooOrBar>(json, this.converter);
+
+            Assert.Null(obj);
+        }
+
         private class Foo : IFooOrBar
         {
             [JsonProperty("object")]
