@@ -1,5 +1,39 @@
 # Changelog
 
+## 22.0.0 - 2019-01-07
+Major version release. Refer to our [migration guide for v22](https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v22) for a list of backwards incompatible changes to watch out for.
+
+Pull requests included in this release (cf. [#1416](https://github.com/stripe/stripe-dotnet/pull/1416)):
+* [#1413](https://github.com/stripe/stripe-dotnet/pull/1413) Allow paging on upcoming invoice line items
+* [#1417](https://github.com/stripe/stripe-dotnet/pull/1417) Add support for verifying sources
+* [#1418](https://github.com/stripe/stripe-dotnet/pull/1418) Replace `RecipientActiveAccount` with `BankAccount`
+* [#1396](https://github.com/stripe/stripe-dotnet/pull/1396) Fix deserialization logic for polymorphic types
+* [#1419](https://github.com/stripe/stripe-dotnet/pull/1419) Replace public fields with properties
+* [#1422](https://github.com/stripe/stripe-dotnet/pull/1422) Specify culture for string operations
+* [#1424](https://github.com/stripe/stripe-dotnet/pull/1424) Remove overlapping method overloads
+* [#1425](https://github.com/stripe/stripe-dotnet/pull/1425) Move `SerializerSettings` to `StripeConfiguration`
+* [#1426](https://github.com/stripe/stripe-dotnet/pull/1426) Remove UTF-8 BOMs
+* [#1423](https://github.com/stripe/stripe-dotnet/pull/1423) Replace constants with static read-only properties
+* [#1427](https://github.com/stripe/stripe-dotnet/pull/1427) Fix compiler warnings
+* [#1428](https://github.com/stripe/stripe-dotnet/pull/1428) Make `ObjectsToTypes` dictionary immutable
+* [#1429](https://github.com/stripe/stripe-dotnet/pull/1429) Remove `StripeList.TotalCount`
+* [#1430](https://github.com/stripe/stripe-dotnet/pull/1430) Rename some properties for consistency
+* [#1431](https://github.com/stripe/stripe-dotnet/pull/1431) Rename `StripeDefaultCard` to `DefaultCard` on Recipient
+* [#1434](https://github.com/stripe/stripe-dotnet/pull/1434) Make `Deleted` nullable on all Stripe objects
+* [#1436](https://github.com/stripe/stripe-dotnet/pull/1436) Make object instances in tests readonly
+* [#1435](https://github.com/stripe/stripe-dotnet/pull/1435) Enable SourceLink
+* [#1437](https://github.com/stripe/stripe-dotnet/pull/1437) Use Mono for .NET Framework targets on UNIX systems
+* [#1438](https://github.com/stripe/stripe-dotnet/pull/1438) Fix license packaging
+* [#1439](https://github.com/stripe/stripe-dotnet/pull/1439) Fix some remaining StyleCop rules violations
+* [#1433](https://github.com/stripe/stripe-dotnet/pull/1433) Fix JSON serialization of Stripe objects
+* [#1441](https://github.com/stripe/stripe-dotnet/pull/1442) Disable optimizations in `SecureCompare`
+* [#1444](https://github.com/stripe/stripe-dotnet/pull/1444) Refactor test infrastructure
+* [#1447](https://github.com/stripe/stripe-dotnet/pull/1447) Minor fixes
+* [#1446](https://github.com/stripe/stripe-dotnet/pull/1446) Force the use of lists over arrays
+* [#1451](https://github.com/stripe/stripe-dotnet/pull/1451) Remove `Updated` and `UpdatedBy` from `ValueList`
+* [#1450](https://github.com/stripe/stripe-dotnet/pull/1450) Better handling of API version mismatch when deserializing events
+* [#1414](https://github.com/stripe/stripe-dotnet/pull/1414) Add support for auto-pagination
+
 ## 21.9.0 - 2019-01-03
 * [#1455](https://github.com/stripe/stripe-dotnet/pull/1455) Add support for deserializing `account.application.*` events
 
