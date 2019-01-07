@@ -1,6 +1,7 @@
 namespace StripeTests.Issuing
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace StripeTests.Issuing
     {
         private const string DisputeId = "idp_123";
 
-        private DisputeService service;
-        private DisputeCreateOptions createOptions;
-        private DisputeUpdateOptions updateOptions;
-        private DisputeListOptions listOptions;
+        private readonly DisputeService service;
+        private readonly DisputeCreateOptions createOptions;
+        private readonly DisputeUpdateOptions updateOptions;
+        private readonly DisputeListOptions listOptions;
 
-        public IssuingDisputeServiceTest()
+        public IssuingDisputeServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new DisputeService();
 
@@ -93,6 +95,13 @@ namespace StripeTests.Issuing
         {
             var disputes = await this.service.ListAsync(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/issuing/disputes");
+            Assert.NotNull(disputes);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var disputes = this.service.ListAutoPaging(this.listOptions).ToList();
             Assert.NotNull(disputes);
         }
 

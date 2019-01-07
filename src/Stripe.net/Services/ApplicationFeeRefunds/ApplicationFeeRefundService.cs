@@ -3,7 +3,6 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class ApplicationFeeRefundService : ServiceNested<ApplicationFeeRefund>,
         INestedCreatable<ApplicationFeeRefund, ApplicationFeeRefundCreateOptions>,
@@ -55,6 +54,11 @@ namespace Stripe
         public virtual Task<StripeList<ApplicationFeeRefund>> ListAsync(string applicationFeeId, ApplicationFeeRefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListNestedEntitiesAsync(applicationFeeId, options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<ApplicationFeeRefund> ListAutoPaging(string applicationFeeId, ApplicationFeeRefundListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListNestedEntitiesAutoPaging(applicationFeeId, options, requestOptions);
         }
 
         public virtual ApplicationFeeRefund Update(string applicationFeeId, string refundId, ApplicationFeeRefundUpdateOptions options, RequestOptions requestOptions = null)

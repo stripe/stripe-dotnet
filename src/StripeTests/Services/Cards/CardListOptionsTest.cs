@@ -10,9 +10,10 @@ namespace StripeTests
 
     public class CardListOptionsTest : BaseStripeTest
     {
-        private CardService service;
+        private readonly CardService service;
 
-        public CardListOptionsTest()
+        public CardListOptionsTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new CardService();
         }

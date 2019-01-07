@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace StripeTests
     {
         private const string TopupId = "tu_123";
 
-        private TopupService service;
-        private TopupCreateOptions createOptions;
-        private TopupUpdateOptions updateOptions;
-        private TopupListOptions listOptions;
+        private readonly TopupService service;
+        private readonly TopupCreateOptions createOptions;
+        private readonly TopupUpdateOptions updateOptions;
+        private readonly TopupListOptions listOptions;
 
-        public TopupServiceTest()
+        public TopupServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new TopupService();
 
@@ -115,6 +117,14 @@ namespace StripeTests
             Assert.Equal("list", topups.Object);
             Assert.Single(topups.Data);
             Assert.Equal("topup", topups.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var topups = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(topups);
+            Assert.Equal("topup", topups[0].Object);
         }
 
         [Fact]

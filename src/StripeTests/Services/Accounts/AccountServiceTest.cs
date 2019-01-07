@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,13 +12,14 @@ namespace StripeTests
     {
         private const string AccountId = "acct_123";
 
-        private AccountService service;
-        private AccountCreateOptions createOptions;
-        private AccountUpdateOptions updateOptions;
-        private AccountListOptions listOptions;
-        private AccountRejectOptions rejectOptions;
+        private readonly AccountService service;
+        private readonly AccountCreateOptions createOptions;
+        private readonly AccountUpdateOptions updateOptions;
+        private readonly AccountListOptions listOptions;
+        private readonly AccountRejectOptions rejectOptions;
 
-        public AccountServiceTest()
+        public AccountServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new AccountService();
 
@@ -179,6 +181,14 @@ namespace StripeTests
             Assert.Equal("list", accounts.Object);
             Assert.Single(accounts.Data);
             Assert.Equal("account", accounts.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var accounts = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(accounts);
+            Assert.Equal("account", accounts[0].Object);
         }
 
         [Fact]

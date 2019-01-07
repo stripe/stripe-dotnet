@@ -214,13 +214,10 @@ namespace Stripe.Infrastructure.Middleware
             }
             else
             {
-                var listEnumerator = list.GetEnumerator();
-
-                for (int i = 0; listEnumerator.MoveNext() == true; i++)
+                foreach (var item in list.Select((value, index) => new { value, index }))
                 {
-                    object value = listEnumerator.Current;
-                    string newPrefix = $"{keyPrefix}[{i}]";
-                    flatParams.AddRange(FlattenParamsValue(value, newPrefix));
+                    string newPrefix = $"{keyPrefix}[{item.index}]";
+                    flatParams.AddRange(FlattenParamsValue(item.value, newPrefix));
                 }
             }
 
@@ -372,7 +369,7 @@ namespace Stripe.Infrastructure.Middleware
             }
             else
             {
-                int i = key.IndexOf("[");
+                int i = key.IndexOf("[", StringComparison.Ordinal);
                 if (i == -1)
                 {
                     return $"{keyPrefix}[{key}]";
@@ -389,14 +386,15 @@ namespace Stripe.Infrastructure.Middleware
         /// </summary>
         internal sealed class Parameter
         {
-            public readonly string Key;
-            public readonly string Value;
-
             public Parameter(string key, string value)
             {
                 this.Key = key;
                 this.Value = value;
             }
+
+            public string Key { get; }
+
+            public string Value { get; }
         }
     }
 }

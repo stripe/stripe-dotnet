@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,10 +11,11 @@ namespace StripeTests
     {
         private const string BalanceTransactionId = "txn_123";
 
-        private BalanceTransactionService service;
-        private BalanceTransactionListOptions listOptions;
+        private readonly BalanceTransactionService service;
+        private readonly BalanceTransactionListOptions listOptions;
 
-        public BalanceTransactionServiceTest()
+        public BalanceTransactionServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new BalanceTransactionService();
 
@@ -62,6 +63,14 @@ namespace StripeTests
             Assert.Equal("list", balanceTransactions.Object);
             Assert.Single(balanceTransactions.Data);
             Assert.Equal("balance_transaction", balanceTransactions.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var balanceTransactions = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(balanceTransactions);
+            Assert.Equal("balance_transaction", balanceTransactions[0].Object);
         }
     }
 }

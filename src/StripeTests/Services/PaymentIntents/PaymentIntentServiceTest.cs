@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,15 +12,16 @@ namespace StripeTests
     {
         private const string PaymentIntentId = "pi_123";
 
-        private PaymentIntentService service;
-        private PaymentIntentCancelOptions cancelOptions;
-        private PaymentIntentCaptureOptions captureOptions;
-        private PaymentIntentConfirmOptions confirmOptions;
-        private PaymentIntentCreateOptions createOptions;
-        private PaymentIntentListOptions listOptions;
-        private PaymentIntentUpdateOptions updateOptions;
+        private readonly PaymentIntentService service;
+        private readonly PaymentIntentCancelOptions cancelOptions;
+        private readonly PaymentIntentCaptureOptions captureOptions;
+        private readonly PaymentIntentConfirmOptions confirmOptions;
+        private readonly PaymentIntentCreateOptions createOptions;
+        private readonly PaymentIntentListOptions listOptions;
+        private readonly PaymentIntentUpdateOptions updateOptions;
 
-        public PaymentIntentServiceTest()
+        public PaymentIntentServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new PaymentIntentService();
 
@@ -189,6 +191,14 @@ namespace StripeTests
             Assert.Equal("list", intents.Object);
             Assert.Single(intents.Data);
             Assert.Equal("payment_intent", intents.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var intents = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(intents);
+            Assert.Equal("payment_intent", intents[0].Object);
         }
 
         [Fact]

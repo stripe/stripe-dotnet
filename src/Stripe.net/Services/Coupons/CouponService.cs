@@ -1,10 +1,8 @@
 namespace Stripe
 {
     using System.Collections.Generic;
-    using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class CouponService : Service<Coupon>,
         ICreatable<Coupon, CouponCreateOptions>,
@@ -63,6 +61,11 @@ namespace Stripe
         public virtual Task<StripeList<Coupon>> ListAsync(CouponListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Coupon> ListAutoPaging(CouponListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
         public virtual Coupon Update(string couponId, CouponUpdateOptions options, RequestOptions requestOptions = null)

@@ -5,12 +5,13 @@ namespace StripeTests
 
     public class EventUtilityTest : BaseStripeTest
     {
-        private long eventTimestamp;
-        private string signature;
-        private string json;
-        private string secret;
+        private readonly long eventTimestamp;
+        private readonly string signature;
+        private readonly string json;
+        private readonly string secret;
 
-        public EventUtilityTest()
+        public EventUtilityTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.eventTimestamp = 1533204620;
             this.secret = "webhook_secret";
@@ -23,7 +24,7 @@ namespace StripeTests
         {
             var tolerance = 300;
             var fakeCurrentTimestamp = this.eventTimestamp + 100;
-            var evt = EventUtility.ConstructEvent(this.json, this.signature, this.secret, tolerance, fakeCurrentTimestamp);
+            var evt = EventUtility.ConstructEvent(this.json, this.signature, this.secret, tolerance, fakeCurrentTimestamp, throwOnApiVersionMismatch: false);
 
             Assert.NotNull(evt);
             Assert.Equal("acct_123", evt.Account);
@@ -69,6 +70,39 @@ namespace StripeTests
                 EventUtility.ConstructEvent(this.json + "\ud802", this.signature, this.secret));
 
             Assert.Equal("The webhook cannot be processed because the signature cannot be safely calculated.", exception.Message);
+        }
+
+        [Fact]
+        public void AcceptsExpectedApiVersion()
+        {
+            var origApiVersion = StripeConfiguration.StripeApiVersion;
+
+            try
+            {
+                StripeConfiguration.StripeApiVersion = "2017-05-25";
+                var evt = EventUtility.ParseEvent(this.json);
+                Assert.Equal("2017-05-25", evt.ApiVersion);
+            }
+            finally
+            {
+                StripeConfiguration.StripeApiVersion = origApiVersion;
+            }
+        }
+
+        [Fact]
+        public void ThrowsOnApiVersionMismatch()
+        {
+            var exception = Assert.Throws<StripeException>(() =>
+                EventUtility.ParseEvent(this.json));
+
+            Assert.Contains("Received event with API version 2017-05-25", exception.Message);
+        }
+
+        [Fact]
+        public void CanDisableThrowOnApiVersionMismatch()
+        {
+            var evt = EventUtility.ParseEvent(this.json, false);
+            Assert.Equal("2017-05-25", evt.ApiVersion);
         }
     }
 }

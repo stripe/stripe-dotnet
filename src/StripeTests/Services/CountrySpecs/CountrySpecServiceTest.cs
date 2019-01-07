@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,10 +11,11 @@ namespace StripeTests
     {
         private const string CountrySpecId = "US";
 
-        private CountrySpecService service;
-        private CountrySpecListOptions listOptions;
+        private readonly CountrySpecService service;
+        private readonly CountrySpecListOptions listOptions;
 
-        public CountrySpecServiceTest()
+        public CountrySpecServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new CountrySpecService();
 
@@ -62,6 +63,14 @@ namespace StripeTests
             Assert.Equal("list", countrySpecs.Object);
             Assert.Single(countrySpecs.Data);
             Assert.Equal("country_spec", countrySpecs.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var countrySpecs = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(countrySpecs);
+            Assert.Equal("country_spec", countrySpecs[0].Object);
         }
     }
 }

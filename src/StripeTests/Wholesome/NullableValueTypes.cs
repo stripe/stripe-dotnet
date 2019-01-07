@@ -1,30 +1,30 @@
+#if NETCOREAPP
 namespace StripeTests
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Reflection;
-
-    using Microsoft.Extensions.DependencyModel;
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
-#if NETCOREAPP
-    public class NullableValueTypes
+    /// <summary>
+    /// This test checks that all properties in request parameter classes (i.e. classes that
+    /// implement <see cref="Stripe.INestedOptions" />) with value types are nullable. This ensures
+    /// that only values explicitly set by users are sent to Stripe's API.
+    /// </summary>
+    public class NullableValueTypes : WholesomeTest
     {
+        private const string AssertionMessage =
+            "Found at least one non-nullable value type";
+
         [Fact]
-        public void EnsureAllValueTypesAreNullable()
+        public void Check()
         {
             List<string> results = new List<string>();
 
             // Get all classes that implement INestedOptions
-            var type = typeof(INestedOptions);
-            var assembly = type.GetTypeInfo().Assembly;
-            var optionsClasses = assembly.DefinedTypes
-                .Where(t => t.IsClass && t.ImplementedInterfaces.Contains(type))
-                .Select(t => t.AsType());
+            var optionsClasses = GetClassesWithInterface(typeof(INestedOptions));
 
             foreach (Type optionsClass in optionsClasses)
             {
@@ -56,22 +56,8 @@ namespace StripeTests
                 }
             }
 
-            if (results.Any())
-            {
-                // Sort results alphabetically
-                results = results.OrderBy(i => i).ToList();
-
-                // Display our own error message (because Assert.Empty truncates the results)
-                Console.WriteLine("Found non-nullable value types:");
-                foreach (string item in results)
-                {
-                    Console.WriteLine($"- {item}");
-                }
-
-                // Actually fail test
-                Assert.True(false, "Found at least one non-nullable value type");
-            }
+            AssertEmpty(results, AssertionMessage);
         }
     }
-#endif
 }
+#endif

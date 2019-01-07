@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace StripeTests
     {
         private const string InvoiceItemId = "ii_123";
 
-        private InvoiceItemService service;
-        private InvoiceItemCreateOptions createOptions;
-        private InvoiceItemUpdateOptions updateOptions;
-        private InvoiceItemListOptions listOptions;
+        private readonly InvoiceItemService service;
+        private readonly InvoiceItemCreateOptions createOptions;
+        private readonly InvoiceItemUpdateOptions updateOptions;
+        private readonly InvoiceItemListOptions listOptions;
 
-        public InvoiceItemServiceTest()
+        public InvoiceItemServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new InvoiceItemService();
 
@@ -113,6 +115,14 @@ namespace StripeTests
             Assert.Equal("list", invoiceItems.Object);
             Assert.Single(invoiceItems.Data);
             Assert.Equal("invoiceitem", invoiceItems.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var invoiceItems = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(invoiceItems);
+            Assert.Equal("invoiceitem", invoiceItems[0].Object);
         }
 
         [Fact]

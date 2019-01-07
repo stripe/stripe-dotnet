@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class TransferReversalTest : BaseStripeTest
     {
+        public TransferReversalTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/transfers/tr_123/reversals/trr_123");
+            string json = this.GetFixture("/v1/transfers/tr_123/reversals/trr_123");
             var transferReversal = JsonConvert.DeserializeObject<TransferReversal>(json);
             Assert.NotNull(transferReversal);
             Assert.IsType<TransferReversal>(transferReversal);
@@ -26,7 +31,7 @@ namespace StripeTests
               "transfer",
             };
 
-            string json = GetFixture("/v1/transfers/tr_123/reversals/trr_123", expansions);
+            string json = this.GetFixture("/v1/transfers/tr_123/reversals/trr_123", expansions);
             var transferReversal = JsonConvert.DeserializeObject<TransferReversal>(json);
             Assert.NotNull(transferReversal);
             Assert.IsType<TransferReversal>(transferReversal);

@@ -44,6 +44,7 @@ namespace Stripe
         /// <para>The order that this return includes items from.</para>
         /// <para>Expandable</para>
         /// </summary>
+        [JsonIgnore]
         public string OrderId { get; set; }
 
         [JsonIgnore]
@@ -52,6 +53,11 @@ namespace Stripe
         [JsonProperty("order")]
         internal object InternalOrder
         {
+            get
+            {
+                return this.Order ?? (object)this.OrderId;
+            }
+
             set
             {
                 StringOrObject<Order>.Map(value, s => this.OrderId = s, o => this.Order = o);
@@ -73,6 +79,11 @@ namespace Stripe
         [JsonProperty("refund")]
         internal object InternalRefund
         {
+            get
+            {
+                return this.Refund ?? (object)this.RefundId;
+            }
+
             set
             {
                 StringOrObject<Refund>.Map(value, s => this.RefundId = s, o => this.Refund = o);

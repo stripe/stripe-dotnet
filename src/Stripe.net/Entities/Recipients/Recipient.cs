@@ -14,7 +14,7 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("active_account")]
-        public RecipientActiveAccount ActiveAccount { get; set; }
+        public BankAccount ActiveAccount { get; set; }
 
         [JsonProperty("cards")]
         public StripeList<Card> CardList { get; set; }
@@ -24,17 +24,23 @@ namespace Stripe
         public DateTime Created { get; set; }
 
         #region Expandable Default Card
-        public string StripeDefaultCardId { get; set; }
+        [JsonIgnore]
+        public string DefaultCardId { get; set; }
 
         [JsonIgnore]
-        public Card StripeDefaultCard { get; set; }
+        public Card DefaultCard { get; set; }
 
         [JsonProperty("default_card")]
         internal object InternalDefaultCard
         {
+            get
+            {
+                return this.DefaultCard ?? (object)this.DefaultCardId;
+            }
+
             set
             {
-                StringOrObject<Card>.Map(value, s => this.StripeDefaultCardId = s, o => this.StripeDefaultCard = o);
+                StringOrObject<Card>.Map(value, s => this.DefaultCardId = s, o => this.DefaultCard = o);
             }
         }
         #endregion

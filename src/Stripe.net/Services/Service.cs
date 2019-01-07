@@ -63,6 +63,11 @@ namespace Stripe
             return this.GetRequestAsync<StripeList<EntityReturned>>(this.ClassUrl(), options, requestOptions, true, cancellationToken);
         }
 
+        protected IEnumerable<EntityReturned> ListEntitiesAutoPaging(ListOptions options, RequestOptions requestOptions)
+        {
+            return this.ListRequestAutoPaging<EntityReturned>(this.ClassUrl(), options, requestOptions);
+        }
+
         protected EntityReturned UpdateEntity(string id, BaseOptions options, RequestOptions requestOptions)
         {
             return this.PostRequest<EntityReturned>(this.InstanceUrl(id), options, requestOptions);
@@ -105,6 +110,29 @@ namespace Stripe
                     this.ApplyAllParameters(options, url, isListMethod),
                     this.SetupRequestOptions(requestOptions),
                     cancellationToken).ConfigureAwait(false));
+        }
+
+        protected IEnumerable<T> ListRequestAutoPaging<T>(string url, ListOptions options, RequestOptions requestOptions)
+        {
+            var page = this.GetRequest<StripeList<T>>(url, options, requestOptions, true);
+
+            while (true)
+            {
+                string itemId = null;
+                foreach (var item in page)
+                {
+                    itemId = ((IHasId)item).Id;
+                    yield return item;
+                }
+
+                if (!page.HasMore || string.IsNullOrEmpty(itemId))
+                {
+                    break;
+                }
+
+                options.StartingAfter = itemId;
+                page = this.GetRequest<StripeList<T>>(this.ClassUrl(), options, requestOptions, true);
+            }
         }
 
         protected T PostRequest<T>(string url, BaseOptions options, RequestOptions requestOptions)

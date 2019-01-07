@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace StripeTests
     {
         private const string PlanId = "plan_123";
 
-        private PlanService service;
-        private PlanCreateOptions createOptions;
-        private PlanUpdateOptions updateOptions;
-        private PlanListOptions listOptions;
+        private readonly PlanService service;
+        private readonly PlanCreateOptions createOptions;
+        private readonly PlanUpdateOptions updateOptions;
+        private readonly PlanListOptions listOptions;
 
-        public PlanServiceTest()
+        public PlanServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new PlanService();
 
@@ -118,6 +120,14 @@ namespace StripeTests
             Assert.Equal("list", plans.Object);
             Assert.Single(plans.Data);
             Assert.Equal("plan", plans.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var plans = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(plans);
+            Assert.Equal("plan", plans[0].Object);
         }
 
         [Fact]

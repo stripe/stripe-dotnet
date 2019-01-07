@@ -1,6 +1,7 @@
 namespace StripeTests.Issuing
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace StripeTests.Issuing
     {
         private const string CardId = "ic_123";
 
-        private CardService service;
-        private CardCreateOptions createOptions;
-        private CardUpdateOptions updateOptions;
-        private CardListOptions listOptions;
+        private readonly CardService service;
+        private readonly CardCreateOptions createOptions;
+        private readonly CardUpdateOptions updateOptions;
+        private readonly CardListOptions listOptions;
 
-        public IssuingCardServiceTest()
+        public IssuingCardServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new CardService();
 
@@ -105,6 +107,13 @@ namespace StripeTests.Issuing
         {
             var cards = await this.service.ListAsync(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/issuing/cards");
+            Assert.NotNull(cards);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var cards = this.service.ListAutoPaging(this.listOptions).ToList();
             Assert.NotNull(cards);
         }
 

@@ -3,7 +3,6 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class TransferReversalService : ServiceNested<TransferReversal>,
         INestedCreatable<TransferReversal, TransferReversalCreateOptions>,
@@ -55,6 +54,11 @@ namespace Stripe
         public virtual Task<StripeList<TransferReversal>> ListAsync(string transferId, TransferReversalListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListNestedEntitiesAsync(transferId, options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<TransferReversal> ListAutoPaging(string transferId, TransferReversalListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListNestedEntitiesAutoPaging(transferId, options, requestOptions);
         }
 
         public virtual TransferReversal Update(string transferId,  string reversalId, TransferReversalUpdateOptions options, RequestOptions requestOptions = null)

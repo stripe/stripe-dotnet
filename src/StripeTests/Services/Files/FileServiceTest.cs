@@ -1,8 +1,6 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
+    using System.Linq;
     using System.Net.Http;
     using System.Reflection;
     using System.Threading.Tasks;
@@ -15,11 +13,12 @@ namespace StripeTests
         private const string FileId = "file_123";
         private const string FileName = "StripeTests.Resources.file_upload_logo.png";
 
-        private FileService service;
-        private FileCreateOptions createOptions;
-        private FileListOptions listOptions;
+        private readonly FileService service;
+        private readonly FileCreateOptions createOptions;
+        private readonly FileListOptions listOptions;
 
-        public FileServiceTest()
+        public FileServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new FileService();
 
@@ -91,6 +90,14 @@ namespace StripeTests
             Assert.Equal("list", files.Object);
             Assert.Single(files.Data);
             Assert.Equal("file", files.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var files = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(files);
+            Assert.Equal("file", files[0].Object);
         }
     }
 }

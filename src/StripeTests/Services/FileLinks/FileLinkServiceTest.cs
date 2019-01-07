@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace StripeTests
     {
         private const string FileLinkId = "link_123";
 
-        private FileLinkService service;
-        private FileLinkCreateOptions createOptions;
-        private FileLinkUpdateOptions updateOptions;
-        private FileLinkListOptions listOptions;
+        private readonly FileLinkService service;
+        private readonly FileLinkCreateOptions createOptions;
+        private readonly FileLinkUpdateOptions updateOptions;
+        private readonly FileLinkListOptions listOptions;
 
-        public FileLinkServiceTest()
+        public FileLinkServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new FileLinkService();
 
@@ -96,6 +98,14 @@ namespace StripeTests
             Assert.Equal("list", fileLinks.Object);
             Assert.Single(fileLinks.Data);
             Assert.Equal("file_link", fileLinks.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var domains = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(domains);
+            Assert.Equal("file_link", domains[0].Object);
         }
 
         [Fact]

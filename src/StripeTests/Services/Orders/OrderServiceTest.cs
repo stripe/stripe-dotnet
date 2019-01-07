@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,13 +12,14 @@ namespace StripeTests
     {
         private const string OrderId = "or_123";
 
-        private OrderService service;
-        private OrderCreateOptions createOptions;
-        private OrderUpdateOptions updateOptions;
-        private OrderPayOptions payOptions;
-        private OrderListOptions listOptions;
+        private readonly OrderService service;
+        private readonly OrderCreateOptions createOptions;
+        private readonly OrderUpdateOptions updateOptions;
+        private readonly OrderPayOptions payOptions;
+        private readonly OrderListOptions listOptions;
 
-        public OrderServiceTest()
+        public OrderServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new OrderService();
 
@@ -109,6 +111,14 @@ namespace StripeTests
             Assert.Equal("list", orders.Object);
             Assert.Single(orders.Data);
             Assert.Equal("order", orders.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var orders = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(orders);
+            Assert.Equal("order", orders[0].Object);
         }
 
         [Fact]

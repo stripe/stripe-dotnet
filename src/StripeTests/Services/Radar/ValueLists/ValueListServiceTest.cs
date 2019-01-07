@@ -1,7 +1,7 @@
 namespace StripeTests.Radar
 {
-    using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -12,12 +12,13 @@ namespace StripeTests.Radar
     {
         private const string ValueListId = "rsl_123";
 
-        private ValueListService service;
-        private ValueListCreateOptions createOptions;
-        private ValueListUpdateOptions updateOptions;
-        private ValueListListOptions listOptions;
+        private readonly ValueListService service;
+        private readonly ValueListCreateOptions createOptions;
+        private readonly ValueListUpdateOptions updateOptions;
+        private readonly ValueListListOptions listOptions;
 
-        public ValueListServiceTest()
+        public ValueListServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ValueListService();
 
@@ -115,6 +116,14 @@ namespace StripeTests.Radar
             Assert.Equal("list", valueLists.Object);
             Assert.Single(valueLists.Data);
             Assert.Equal("radar.value_list", valueLists.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var valueLists = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(valueLists);
+            Assert.Equal("radar.value_list", valueLists[0].Object);
         }
 
         [Fact]

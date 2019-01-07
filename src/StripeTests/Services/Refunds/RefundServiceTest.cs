@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace StripeTests
     {
         private const string RefundId = "re_123";
 
-        private RefundService service;
-        private RefundCreateOptions createOptions;
-        private RefundUpdateOptions updateOptions;
-        private RefundListOptions listOptions;
+        private readonly RefundService service;
+        private readonly RefundCreateOptions createOptions;
+        private readonly RefundUpdateOptions updateOptions;
+        private readonly RefundListOptions listOptions;
 
-        public RefundServiceTest()
+        public RefundServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new RefundService();
 
@@ -96,6 +98,14 @@ namespace StripeTests
             Assert.Equal("list", refunds.Object);
             Assert.Single(refunds.Data);
             Assert.Equal("refund", refunds.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var refunds = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(refunds);
+            Assert.Equal("refund", refunds[0].Object);
         }
 
         [Fact]

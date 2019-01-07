@@ -1,28 +1,35 @@
 namespace Stripe
 {
-    using System;
     using System.Collections;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     [JsonObject]
     public class StripeList<T> : StripeEntity, IHasObject, IEnumerable<T>
     {
+        /// <summary>
+        /// A string describing the object type returned.
+        /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("data")]
+        /// <summary>
+        /// A list containing the actual response elements, paginated by any request parameters.
+        /// </summary>
+        [JsonProperty("data", ItemConverterType = typeof(StripeObjectConverter))]
         public List<T> Data { get; set; }
 
         /// <summary>
-        /// This field is only valid in the context of paging.
+        /// Whether or not there are more elements available after this set. If <code>false</code>,
+        /// this set comprises the end of the list.
         /// </summary>
         [JsonProperty("has_more")]
         public bool HasMore { get; set; }
 
-        [JsonProperty("total_count")]
-        public long TotalCount { get; set; }
-
+        /// <summary>
+        /// The URL for accessing this list.
+        /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }
 

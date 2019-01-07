@@ -32,8 +32,8 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted")]
-        public bool Deleted { get; set; }
+        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
+        public bool? Deleted { get; set; }
 
         [JsonProperty("expires")]
         [JsonConverter(typeof(DateTimeConverter))]

@@ -1,15 +1,21 @@
 namespace StripeTests
 {
+    using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
     public class ChargeTest : BaseStripeTest
     {
+        public ChargeTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/charges/ch_123");
-            var charge = Mapper<Charge>.MapFromJson(json);
+            string json = this.GetFixture("/v1/charges/ch_123");
+            var charge = JsonConvert.DeserializeObject<Charge>(json);
             Assert.NotNull(charge);
             Assert.IsType<Charge>(charge);
             Assert.NotNull(charge.Id);
@@ -35,8 +41,8 @@ namespace StripeTests
               "transfer",
             };
 
-            string json = GetFixture("/v1/charges/ch_123", expansions);
-            var charge = Mapper<Charge>.MapFromJson(json);
+            string json = this.GetFixture("/v1/charges/ch_123", expansions);
+            var charge = JsonConvert.DeserializeObject<Charge>(json);
             Assert.NotNull(charge);
             Assert.IsType<Charge>(charge);
             Assert.NotNull(charge.Id);

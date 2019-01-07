@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace StripeTests
     {
         private const string CouponId = "co_123";
 
-        private CouponService service;
-        private CouponCreateOptions createOptions;
-        private CouponUpdateOptions updateOptions;
-        private CouponListOptions listOptions;
+        private readonly CouponService service;
+        private readonly CouponCreateOptions createOptions;
+        private readonly CouponUpdateOptions updateOptions;
+        private readonly CouponListOptions listOptions;
 
-        public CouponServiceTest()
+        public CouponServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new CouponService();
 
@@ -112,6 +114,14 @@ namespace StripeTests
             Assert.Equal("list", coupons.Object);
             Assert.Single(coupons.Data);
             Assert.Equal("coupon", coupons.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var coupons = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(coupons);
+            Assert.Equal("coupon", coupons[0].Object);
         }
 
         [Fact]

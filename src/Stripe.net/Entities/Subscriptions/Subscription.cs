@@ -46,6 +46,7 @@ namespace Stripe
         public DateTime? CurrentPeriodStart { get; set; }
 
         #region Expandable Customer
+        [JsonIgnore]
         public string CustomerId { get; set; }
 
         [JsonIgnore]
@@ -54,6 +55,11 @@ namespace Stripe
         [JsonProperty("customer")]
         internal object InternalCustomer
         {
+            get
+            {
+                return this.Customer ?? (object)this.CustomerId;
+            }
+
             set
             {
                 StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
@@ -68,6 +74,7 @@ namespace Stripe
         public long? DaysUntilDue { get; set; }
 
         #region Expandable DefaultSource
+        [JsonIgnore]
         public string DefaultSourceId { get; set; }
 
         [JsonIgnore]
@@ -76,6 +83,11 @@ namespace Stripe
         [JsonProperty("default_source")]
         internal object InternalDefaultSource
         {
+            get
+            {
+                return this.DefaultSource ?? (object)this.DefaultSourceId;
+            }
+
             set
             {
                 StringOrObject<IPaymentSource>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);

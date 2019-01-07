@@ -1,9 +1,6 @@
 namespace Stripe
 {
-    using System.Runtime.Serialization;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using Stripe.Infrastructure;
 
     public class PaymentIntentSourceAction : StripeEntity
     {

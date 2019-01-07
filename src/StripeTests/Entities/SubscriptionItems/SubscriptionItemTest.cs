@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class SubscriptionItemTest : BaseStripeTest
     {
+        public SubscriptionItemTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {
-            string json = GetFixture("/v1/subscription_items/si_123");
+            string json = this.GetFixture("/v1/subscription_items/si_123");
             var subscriptionItem = JsonConvert.DeserializeObject<SubscriptionItem>(json);
             Assert.NotNull(subscriptionItem);
             Assert.IsType<SubscriptionItem>(subscriptionItem);

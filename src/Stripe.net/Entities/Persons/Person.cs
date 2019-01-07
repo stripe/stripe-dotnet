@@ -29,8 +29,8 @@ namespace Stripe
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
-        [JsonProperty("deleted")]
-        public bool Deleted { get; set; }
+        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
+        public bool? Deleted { get; set; }
 
         [JsonProperty("dob")]
         public BirthDay Dob { get; set; }

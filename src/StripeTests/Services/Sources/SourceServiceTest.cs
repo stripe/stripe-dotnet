@@ -2,6 +2,7 @@ namespace StripeTests
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -13,13 +14,15 @@ namespace StripeTests
         private const string CustomerId = "cus_123";
         private const string SourceId = "src_123";
 
-        private SourceService service;
-        private SourceAttachOptions attachOptions;
-        private SourceCreateOptions createOptions;
-        private SourceUpdateOptions updateOptions;
-        private SourceListOptions listOptions;
+        private readonly SourceService service;
+        private readonly SourceAttachOptions attachOptions;
+        private readonly SourceCreateOptions createOptions;
+        private readonly SourceListOptions listOptions;
+        private readonly SourceUpdateOptions updateOptions;
+        private readonly SourceVerifyOptions verifyOptions;
 
-        public SourceServiceTest()
+        public SourceServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new SourceService();
 
@@ -64,6 +67,11 @@ namespace StripeTests
                 },
             };
 
+            this.listOptions = new SourceListOptions
+            {
+                Limit = 1,
+            };
+
             this.updateOptions = new SourceUpdateOptions
             {
                 Metadata = new Dictionary<string, string>
@@ -72,9 +80,9 @@ namespace StripeTests
                 },
             };
 
-            this.listOptions = new SourceListOptions
+            this.verifyOptions = new SourceVerifyOptions
             {
-                Limit = 1,
+                Values = new List<string> { "32", "45" },
             };
         }
 
@@ -198,6 +206,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void ListAutoPaging()
+        {
+            var sources = this.service.ListAutoPaging(CustomerId, this.listOptions).ToList();
+            Assert.NotNull(sources);
+        }
+
+        [Fact]
         public void Update()
         {
             var source = this.service.Update(SourceId, this.updateOptions);
@@ -211,6 +226,24 @@ namespace StripeTests
         {
             var source = await this.service.UpdateAsync(SourceId, this.updateOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/sources/src_123");
+            Assert.NotNull(source);
+            Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
+        public void Verify()
+        {
+            var source = this.service.Verify(SourceId, this.verifyOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/sources/src_123/verify");
+            Assert.NotNull(source);
+            Assert.Equal("source", source.Object);
+        }
+
+        [Fact]
+        public async Task VerifyAsync()
+        {
+            var source = await this.service.VerifyAsync(SourceId, this.verifyOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/sources/src_123/verify");
             Assert.NotNull(source);
             Assert.Equal("source", source.Object);
         }

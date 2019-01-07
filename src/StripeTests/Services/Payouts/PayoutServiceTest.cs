@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace StripeTests
     {
         private const string PayoutId = "po_123";
 
-        private PayoutService service;
-        private PayoutCreateOptions createOptions;
-        private PayoutUpdateOptions updateOptions;
-        private PayoutListOptions listOptions;
+        private readonly PayoutService service;
+        private readonly PayoutCreateOptions createOptions;
+        private readonly PayoutUpdateOptions updateOptions;
+        private readonly PayoutListOptions listOptions;
 
-        public PayoutServiceTest()
+        public PayoutServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new PayoutService();
 
@@ -114,6 +116,14 @@ namespace StripeTests
             Assert.Equal("list", payouts.Object);
             Assert.Single(payouts.Data);
             Assert.Equal("payout", payouts.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var payouts = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(payouts);
+            Assert.Equal("payout", payouts[0].Object);
         }
 
         [Fact]

@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace StripeTests
     {
         private const string SubscriptionItemId = "si_123";
 
-        private SubscriptionItemService service;
-        private SubscriptionItemCreateOptions createOptions;
-        private SubscriptionItemUpdateOptions updateOptions;
-        private SubscriptionItemListOptions listOptions;
+        private readonly SubscriptionItemService service;
+        private readonly SubscriptionItemCreateOptions createOptions;
+        private readonly SubscriptionItemUpdateOptions updateOptions;
+        private readonly SubscriptionItemListOptions listOptions;
 
-        public SubscriptionItemServiceTest()
+        public SubscriptionItemServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new SubscriptionItemService();
 
@@ -114,6 +116,14 @@ namespace StripeTests
             Assert.Equal("list", subscriptionItems.Object);
             Assert.Single(subscriptionItems.Data);
             Assert.Equal("subscription_item", subscriptionItems.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var subscriptionItems = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(subscriptionItems);
+            Assert.Equal("subscription_item", subscriptionItems[0].Object);
         }
 
         [Fact]

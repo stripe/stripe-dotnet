@@ -1,7 +1,6 @@
 namespace StripeTests.Reporting
 {
-    using System;
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -12,10 +11,11 @@ namespace StripeTests.Reporting
     {
         private const string ReportTypeId = "activity.summary.1";
 
-        private ReportTypeService service;
-        private ReportTypeListOptions listOptions;
+        private readonly ReportTypeService service;
+        private readonly ReportTypeListOptions listOptions;
 
-        public ReportTypeServiceTest()
+        public ReportTypeServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ReportTypeService();
 
@@ -53,6 +53,13 @@ namespace StripeTests.Reporting
         {
             var reportTypes = await this.service.ListAsync(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/reporting/report_types");
+            Assert.NotNull(reportTypes);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var reportTypes = this.service.ListAutoPaging(this.listOptions).ToList();
             Assert.NotNull(reportTypes);
         }
     }

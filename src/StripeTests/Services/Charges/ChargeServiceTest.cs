@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,13 +12,14 @@ namespace StripeTests
     {
         private const string ChargeId = "ch_123";
 
-        private ChargeService service;
-        private ChargeCaptureOptions captureOptions;
-        private ChargeCreateOptions createOptions;
-        private ChargeUpdateOptions updateOptions;
-        private ChargeListOptions listOptions;
+        private readonly ChargeService service;
+        private readonly ChargeCaptureOptions captureOptions;
+        private readonly ChargeCreateOptions createOptions;
+        private readonly ChargeUpdateOptions updateOptions;
+        private readonly ChargeListOptions listOptions;
 
-        public ChargeServiceTest()
+        public ChargeServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ChargeService();
 
@@ -121,6 +123,14 @@ namespace StripeTests
             Assert.Equal("list", charges.Object);
             Assert.Single(charges.Data);
             Assert.Equal("charge", charges.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var charges = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(charges);
+            Assert.Equal("charge", charges[0].Object);
         }
 
         [Fact]

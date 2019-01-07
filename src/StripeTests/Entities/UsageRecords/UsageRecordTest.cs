@@ -6,6 +6,11 @@ namespace StripeTests
 
     public class UsageRecordTest : BaseStripeTest
     {
+        public UsageRecordTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void Deserialize()
         {

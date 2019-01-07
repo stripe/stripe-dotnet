@@ -1,6 +1,7 @@
 namespace StripeTests.Issuing
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,11 +12,12 @@ namespace StripeTests.Issuing
     {
         private const string AuthorizationId = "iauth_123";
 
-        private AuthorizationService service;
-        private AuthorizationUpdateOptions updateOptions;
-        private AuthorizationListOptions listOptions;
+        private readonly AuthorizationService service;
+        private readonly AuthorizationUpdateOptions updateOptions;
+        private readonly AuthorizationListOptions listOptions;
 
-        public AuthorizationServiceTest()
+        public AuthorizationServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new AuthorizationService();
 
@@ -94,6 +96,13 @@ namespace StripeTests.Issuing
         {
             var authorizations = await this.service.ListAsync(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/issuing/authorizations");
+            Assert.NotNull(authorizations);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var authorizations = this.service.ListAutoPaging(this.listOptions).ToList();
             Assert.NotNull(authorizations);
         }
 

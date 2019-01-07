@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -12,12 +12,13 @@ namespace StripeTests
         private const string AccountId = "acct_123";
         private const string PersonId = "person_123";
 
-        private PersonService service;
-        private PersonCreateOptions createOptions;
-        private PersonUpdateOptions updateOptions;
-        private PersonListOptions listOptions;
+        private readonly PersonService service;
+        private readonly PersonCreateOptions createOptions;
+        private readonly PersonUpdateOptions updateOptions;
+        private readonly PersonListOptions listOptions;
 
-        public PersonServiceTest()
+        public PersonServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new PersonService();
 
@@ -110,23 +111,31 @@ namespace StripeTests
         [Fact]
         public void List()
         {
-            var transfers = this.service.List(AccountId, this.listOptions);
+            var persons = this.service.List(AccountId, this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/accounts/acct_123/persons");
-            Assert.NotNull(transfers);
-            Assert.Equal("list", transfers.Object);
-            Assert.Single(transfers.Data);
-            Assert.Equal("person", transfers.Data[0].Object);
+            Assert.NotNull(persons);
+            Assert.Equal("list", persons.Object);
+            Assert.Single(persons.Data);
+            Assert.Equal("person", persons.Data[0].Object);
         }
 
         [Fact]
         public async Task ListAsync()
         {
-            var transfers = await this.service.ListAsync(AccountId, this.listOptions);
+            var persons = await this.service.ListAsync(AccountId, this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/accounts/acct_123/persons");
-            Assert.NotNull(transfers);
-            Assert.Equal("list", transfers.Object);
-            Assert.Single(transfers.Data);
-            Assert.Equal("person", transfers.Data[0].Object);
+            Assert.NotNull(persons);
+            Assert.Equal("list", persons.Object);
+            Assert.Single(persons.Data);
+            Assert.Equal("person", persons.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var persons = this.service.ListAutoPaging(AccountId, this.listOptions).ToList();
+            Assert.NotNull(persons);
+            Assert.Equal("person", persons[0].Object);
         }
 
         [Fact]

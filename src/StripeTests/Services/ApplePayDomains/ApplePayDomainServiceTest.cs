@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,11 +11,12 @@ namespace StripeTests
     {
         private const string DomainId = "apwc_123";
 
-        private ApplePayDomainService service;
-        private ApplePayDomainCreateOptions createOptions;
-        private ApplePayDomainListOptions listOptions;
+        private readonly ApplePayDomainService service;
+        private readonly ApplePayDomainCreateOptions createOptions;
+        private readonly ApplePayDomainListOptions listOptions;
 
-        public ApplePayDomainServiceTest()
+        public ApplePayDomainServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ApplePayDomainService();
 
@@ -102,6 +103,14 @@ namespace StripeTests
             Assert.Equal("list", domains.Object);
             Assert.Single(domains.Data);
             Assert.Equal("apple_pay_domain", domains.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var domains = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(domains);
+            Assert.Equal("apple_pay_domain", domains[0].Object);
         }
     }
 }

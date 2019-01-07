@@ -1,8 +1,8 @@
 namespace Stripe
 {
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class ChargeService : Service<Charge>,
         ICreatable<Charge, ChargeCreateOptions>,
@@ -86,6 +86,11 @@ namespace Stripe
         public virtual Task<StripeList<Charge>> ListAsync(ChargeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Charge> ListAutoPaging(ChargeListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
         public virtual Charge Update(string chargeId, ChargeUpdateOptions options, RequestOptions requestOptions = null)

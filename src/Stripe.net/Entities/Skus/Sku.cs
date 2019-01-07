@@ -41,8 +41,8 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted")]
-        public bool Deleted { get; set; }
+        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
+        public bool? Deleted { get; set; }
 
         /// <summary>
         /// The URL of an image for this SKU, meant to be displayable to the customer.
@@ -85,6 +85,7 @@ namespace Stripe
         /// <summary>
         /// The ID of the product this SKU is associated with. The product must be currently active.
         /// </summary>
+        [JsonIgnore]
         public string ProductId { get; set; }
 
         [JsonIgnore]
@@ -93,6 +94,11 @@ namespace Stripe
         [JsonProperty("product")]
         internal object InternalProduct
         {
+            get
+            {
+                return this.Product ?? (object)this.ProductId;
+            }
+
             set
             {
                 StringOrObject<Product>.Map(value, s => this.ProductId = s, o => this.Product = o);

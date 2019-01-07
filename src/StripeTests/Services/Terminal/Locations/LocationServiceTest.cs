@@ -13,12 +13,13 @@ namespace StripeTests.Terminal
     {
         private const string LocationId = "loc_123";
 
-        private LocationService service;
-        private LocationCreateOptions createOptions;
-        private LocationListOptions listOptions;
-        private LocationUpdateOptions updateOptions;
+        private readonly LocationService service;
+        private readonly LocationCreateOptions createOptions;
+        private readonly LocationListOptions listOptions;
+        private readonly LocationUpdateOptions updateOptions;
 
-        public LocationServiceTest()
+        public LocationServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new LocationService();
 

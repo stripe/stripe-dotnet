@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
@@ -82,6 +83,11 @@ namespace Stripe
             return this.GetRequestAsync<StripeList<Source>>($"{Urls.BaseUrl}/customers/{customerId}/sources", options, requestOptions, true, cancellationToken);
         }
 
+        public virtual IEnumerable<Source> ListAutoPaging(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<Source>($"{Urls.BaseUrl}/customers/{customerId}/sources", options, requestOptions);
+        }
+
         public virtual Source Update(string sourceId, SourceUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(sourceId, options, requestOptions);
@@ -90,6 +96,16 @@ namespace Stripe
         public virtual Task<Source> UpdateAsync(string sourceId, SourceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.UpdateEntityAsync(sourceId, options, requestOptions, cancellationToken);
+        }
+
+        public virtual Source Verify(string sourceId, SourceVerifyOptions options, RequestOptions requestOptions = null)
+        {
+            return this.PostRequest<Source>($"{this.InstanceUrl(sourceId)}/verify", options, requestOptions);
+        }
+
+        public virtual Task<Source> VerifyAsync(string sourceId, SourceVerifyOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.PostRequestAsync<Source>($"{this.InstanceUrl(sourceId)}/verify", options, requestOptions, cancellationToken);
         }
     }
 }

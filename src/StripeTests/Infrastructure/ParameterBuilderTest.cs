@@ -13,7 +13,7 @@ namespace StripeTests
 
     public class ParameterBuilderTest : BaseStripeTest
     {
-        private TestService service;
+        private readonly TestService service;
 
         public ParameterBuilderTest()
         {
@@ -61,7 +61,7 @@ namespace StripeTests
                 {
                     data = new TestOptions
                     {
-                            Array = new [] { "1", "2", "3" },
+                            Array = new[] { "1", "2", "3" },
                     },
                     want = "?array[0]=1&array[1]=2&array[2]=3"
                 },
@@ -354,7 +354,6 @@ namespace StripeTests
         {
             Assert.NotNull(this.service);
 
-            var testObject = new TestOptions();
             var url = this.service.ApplyAllParameters(null, "base_url", false);
             Assert.Equal("base_url", url);
         }
@@ -381,7 +380,7 @@ namespace StripeTests
                 Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
 
                 var dec = 123.45m;
-                Assert.Equal("123,45", dec.ToString());
+                Assert.Equal("123,45", dec.ToString(CultureInfo.CurrentCulture));
 
                 var obj = new TestOptions
                 {

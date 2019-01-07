@@ -3,7 +3,6 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class PersonService : ServiceNested<Person>,
         INestedCreatable<Person, PersonCreateOptions>,
@@ -65,6 +64,11 @@ namespace Stripe
         public virtual Task<StripeList<Person>> ListAsync(string accountId, PersonListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListNestedEntitiesAsync(accountId, options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Person> ListAutoPaging(string accountId, PersonListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListNestedEntitiesAutoPaging(accountId, options, requestOptions);
         }
 
         public virtual Person Update(string accountId,  string personId, PersonUpdateOptions options, RequestOptions requestOptions = null)

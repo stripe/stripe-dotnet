@@ -1,7 +1,7 @@
 namespace StripeTests.Reporting
 {
     using System;
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -12,11 +12,12 @@ namespace StripeTests.Reporting
     {
         private const string ReportRunId = "frr_123";
 
-        private ReportRunService service;
-        private ReportRunCreateOptions createOptions;
-        private ReportRunListOptions listOptions;
+        private readonly ReportRunService service;
+        private readonly ReportRunCreateOptions createOptions;
+        private readonly ReportRunListOptions listOptions;
 
-        public ReportRunServiceTest()
+        public ReportRunServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ReportRunService();
 
@@ -80,6 +81,13 @@ namespace StripeTests.Reporting
         {
             var reportRuns = await this.service.ListAsync(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/reporting/report_runs");
+            Assert.NotNull(reportRuns);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var reportRuns = this.service.ListAutoPaging(this.listOptions).ToList();
             Assert.NotNull(reportRuns);
         }
     }

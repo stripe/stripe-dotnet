@@ -2,12 +2,6 @@
 <RuleSet Name="Rules for StyleCop.Analyzers" Description="Code analysis rules for Stripe.net" ToolsVersion="14.0">
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
     <!--
-      SA1401: FieldsMustBePrivate
-      This ones would introduce breaking changes
-    -->
-    <Rule Id="SA1401" Action="None" />
-
-    <!--
       Keep this rule disabled as it would force a header for each file
       and a copyright.
        - SA1633: FileMustHaveHeader
@@ -26,15 +20,11 @@
     <!--
       CS1591: Missing XML comment for publicly visible type or member 'Type_or_Member'
       SA1600: ElementsMustBeDocumented
-      SA1601: PartialElementsMustBeDocumented
-      SA1602: EnumerationItemsMustBeDocumented
       SA1623: PropertySummaryDocumentationMustMatchAccessors
       Documentation related warnings. We should fix those in the future.
     -->
     <Rule Id="CS1591" Action="None" />
     <Rule Id="SA1600" Action="None" />
-    <Rule Id="SA1601" Action="None" />
-    <Rule Id="SA1602" Action="None" />
     <Rule Id="SA1623" Action="None" />
   </Rules>
 </RuleSet>

@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace StripeTests
     {
         private const string TransferId = "tr_123";
 
-        private TransferService service;
-        private TransferCreateOptions createOptions;
-        private TransferUpdateOptions updateOptions;
-        private TransferListOptions listOptions;
+        private readonly TransferService service;
+        private readonly TransferCreateOptions createOptions;
+        private readonly TransferUpdateOptions updateOptions;
+        private readonly TransferListOptions listOptions;
 
-        public TransferServiceTest()
+        public TransferServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new TransferService();
 
@@ -97,6 +99,14 @@ namespace StripeTests
             Assert.Equal("list", transfers.Object);
             Assert.Single(transfers.Data);
             Assert.Equal("transfer", transfers.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var transfers = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(transfers);
+            Assert.Equal("transfer", transfers[0].Object);
         }
 
         [Fact]

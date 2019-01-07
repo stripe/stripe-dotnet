@@ -6,10 +6,15 @@ namespace StripeTests
 
     public class BankAccountTest : BaseStripeTest
     {
+        public BankAccountTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void DeserializeForAccount()
         {
-            string json = GetFixture("/v1/accounts/acct_123/external_accounts/ba_123");
+            string json = this.GetFixture("/v1/accounts/acct_123/external_accounts/ba_123");
             var bankAccount = JsonConvert.DeserializeObject<BankAccount>(json);
             Assert.NotNull(bankAccount);
             Assert.IsType<BankAccount>(bankAccount);
@@ -20,7 +25,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeForCustomer()
         {
-            string json = GetFixture("/v1/customers/cus_123/bank_accounts/ba_123");
+            string json = this.GetFixture("/v1/customers/cus_123/bank_accounts/ba_123");
             var bankAccount = JsonConvert.DeserializeObject<BankAccount>(json);
             Assert.NotNull(bankAccount);
             Assert.IsType<BankAccount>(bankAccount);
@@ -36,7 +41,7 @@ namespace StripeTests
               "customer",
             };
 
-            string json = GetFixture("/v1/customers/cus_123/bank_accounts/ba_123", expansions);
+            string json = this.GetFixture("/v1/customers/cus_123/bank_accounts/ba_123", expansions);
             var bankAccount = JsonConvert.DeserializeObject<BankAccount>(json);
             Assert.NotNull(bankAccount);
             Assert.IsType<BankAccount>(bankAccount);

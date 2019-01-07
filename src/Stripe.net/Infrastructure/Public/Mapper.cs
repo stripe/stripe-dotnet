@@ -9,14 +9,6 @@ namespace Stripe
 
     public static class Mapper<T>
     {
-        private static JsonConverter[] converters =
-        {
-            new BalanceTransactionSourceConverter(),
-            new ExternalAccountConverter(),
-            new PaymentSourceConverter(),
-            new StripeObjectConverter(),
-        };
-
         public static List<T> MapCollectionFromJson(string json, string token = "data", StripeResponse stripeResponse = null)
         {
             var jObject = JObject.Parse(json);
@@ -31,11 +23,6 @@ namespace Stripe
             return MapCollectionFromJson(stripeResponse.ResponseJson, token, stripeResponse);
         }
 
-        public static T MapFromJson(string json)
-        {
-            return MapFromJson(json, null, null);
-        }
-
         // the ResponseJson on a list method is the entire list (as json) returned from stripe.
         // the ObjectJson is so we can store only the json for a single object in the list on that entity for
         // logging and/or debugging
@@ -43,7 +30,7 @@ namespace Stripe
         {
             var jsonToParse = string.IsNullOrEmpty(parentToken) ? json : JObject.Parse(json).SelectToken(parentToken).ToString();
 
-            var result = JsonConvert.DeserializeObject<T>(jsonToParse, converters);
+            var result = JsonConvert.DeserializeObject<T>(jsonToParse, StripeConfiguration.SerializerSettings);
 
             // if necessary, we might need to apply the stripe response to nested properties for StripeList<T>
             ApplyStripeResponse(json, stripeResponse, result);

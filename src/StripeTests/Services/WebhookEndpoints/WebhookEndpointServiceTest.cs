@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,18 +12,19 @@ namespace StripeTests
     {
         private const string WebhookEndpointId = "we_123";
 
-        private WebhookEndpointService service;
-        private WebhookEndpointCreateOptions createOptions;
-        private WebhookEndpointUpdateOptions updateOptions;
-        private WebhookEndpointListOptions listOptions;
+        private readonly WebhookEndpointService service;
+        private readonly WebhookEndpointCreateOptions createOptions;
+        private readonly WebhookEndpointUpdateOptions updateOptions;
+        private readonly WebhookEndpointListOptions listOptions;
 
-        public WebhookEndpointServiceTest()
+        public WebhookEndpointServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new WebhookEndpointService();
 
             this.createOptions = new WebhookEndpointCreateOptions
             {
-                EnabledEvents = new []
+                EnabledEvents = new List<string>
                 {
                     "charge.succeeded",
                 },
@@ -31,7 +33,7 @@ namespace StripeTests
 
             this.updateOptions = new WebhookEndpointUpdateOptions
             {
-                EnabledEvents = new string[]
+                EnabledEvents = new List<string>
                 {
                     "charge.succeeded",
                 },
@@ -115,6 +117,14 @@ namespace StripeTests
             Assert.Equal("list", endpoints.Object);
             Assert.Single(endpoints.Data);
             Assert.Equal("webhook_endpoint", endpoints.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var endpoints = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(endpoints);
+            Assert.Equal("webhook_endpoint", endpoints[0].Object);
         }
 
         [Fact]

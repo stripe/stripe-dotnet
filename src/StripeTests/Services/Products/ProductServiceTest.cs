@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,18 +12,19 @@ namespace StripeTests
     {
         private const string ProductId = "prod_123";
 
-        private ProductService service;
-        private ProductCreateOptions createOptions;
-        private ProductUpdateOptions updateOptions;
-        private ProductListOptions listOptions;
+        private readonly ProductService service;
+        private readonly ProductCreateOptions createOptions;
+        private readonly ProductUpdateOptions updateOptions;
+        private readonly ProductListOptions listOptions;
 
-        public ProductServiceTest()
+        public ProductServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ProductService();
 
             this.createOptions = new ProductCreateOptions
             {
-                Attributes = new []
+                Attributes = new List<string>
                 {
                     "attr1",
                     "attr2",
@@ -124,6 +126,14 @@ namespace StripeTests
             Assert.Equal("list", products.Object);
             Assert.Single(products.Data);
             Assert.Equal("product", products.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var products = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(products);
+            Assert.Equal("product", products[0].Object);
         }
 
         [Fact]

@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -12,12 +13,13 @@ namespace StripeTests
         private const string AccountId = "acct_123";
         private const string ExternalAccountId = "ba_123";
 
-        private ExternalAccountService service;
-        private ExternalAccountCreateOptions createOptions;
-        private ExternalAccountUpdateOptions updateOptions;
-        private ExternalAccountListOptions listOptions;
+        private readonly ExternalAccountService service;
+        private readonly ExternalAccountCreateOptions createOptions;
+        private readonly ExternalAccountUpdateOptions updateOptions;
+        private readonly ExternalAccountListOptions listOptions;
 
-        public ExternalAccountServiceTest()
+        public ExternalAccountServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new ExternalAccountService();
 
@@ -122,6 +124,13 @@ namespace StripeTests
             Assert.NotNull(externalAccounts);
             Assert.Equal("list", externalAccounts.Object);
             Assert.Single(externalAccounts.Data);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var externalAccounts = this.service.ListAutoPaging(AccountId, this.listOptions).ToList();
+            Assert.NotNull(externalAccounts);
         }
 
         [Fact]

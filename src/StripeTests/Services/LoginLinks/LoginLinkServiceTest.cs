@@ -11,10 +11,11 @@ namespace StripeTests
     {
         private const string AccountId = "acct_123";
 
-        private LoginLinkService service;
-        private LoginLinkCreateOptions createOptions;
+        private readonly LoginLinkService service;
+        private readonly LoginLinkCreateOptions createOptions;
 
-        public LoginLinkServiceTest()
+        public LoginLinkServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new LoginLinkService();
 

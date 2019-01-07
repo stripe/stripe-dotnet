@@ -14,17 +14,31 @@ namespace Stripe
         public string Object { get; set; }
 
         #region Expandable BusinessLogo
-        public string BusinessLogoFileId { get; set; }
 
+        /// <summary>
+        /// (ID of a <see cref="File"/>) A logo for this account (at least 128px x 128px).
+        /// <para>Expandable.</para>
+        /// </summary>
+        [JsonIgnore]
+        public string BusinessLogoId { get; set; }
+
+        /// <summary>
+        /// (Expanded) A logo for this account (at least 128px x 128px).
+        /// </summary>
         [JsonIgnore]
         public File BusinessLogo { get; set; }
 
         [JsonProperty("business_logo")]
         internal object InternalBusinessLogo
         {
+            get
+            {
+                return this.BusinessLogo ?? (object)this.BusinessLogoId;
+            }
+
             set
             {
-                StringOrObject<File>.Map(value, s => this.BusinessLogoFileId = s, o => this.BusinessLogo = o);
+                StringOrObject<File>.Map(value, s => this.BusinessLogoId = s, o => this.BusinessLogo = o);
             }
         }
         #endregion
@@ -60,8 +74,8 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted")]
-        public bool Deleted { get; set; }
+        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
+        public bool? Deleted { get; set; }
 
         [JsonProperty("details_submitted")]
         public bool DetailsSubmitted { get; set; }

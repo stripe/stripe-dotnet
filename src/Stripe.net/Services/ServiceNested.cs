@@ -50,14 +50,19 @@ namespace Stripe
             return this.GetRequestAsync<EntityReturned>(this.InstanceUrl(parentId, id), options, requestOptions, false, cancellationToken);
         }
 
-        protected StripeList<EntityReturned> ListNestedEntities(string parentId, BaseOptions options, RequestOptions requestOptions)
+        protected StripeList<EntityReturned> ListNestedEntities(string parentId, ListOptions options, RequestOptions requestOptions)
         {
             return this.GetRequest<StripeList<EntityReturned>>(this.ClassUrl(parentId), options, requestOptions, true);
         }
 
-        protected Task<StripeList<EntityReturned>> ListNestedEntitiesAsync(string parentId, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
+        protected Task<StripeList<EntityReturned>> ListNestedEntitiesAsync(string parentId, ListOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
         {
             return this.GetRequestAsync<StripeList<EntityReturned>>(this.ClassUrl(parentId), options, requestOptions, true, cancellationToken);
+        }
+
+        protected IEnumerable<EntityReturned> ListNestedEntitiesAutoPaging(string parentId, ListOptions options, RequestOptions requestOptions)
+        {
+            return this.ListRequestAutoPaging<EntityReturned>(this.ClassUrl(parentId), options, requestOptions);
         }
 
         protected EntityReturned UpdateNestedEntity(string parentId, string id, BaseOptions options, RequestOptions requestOptions)

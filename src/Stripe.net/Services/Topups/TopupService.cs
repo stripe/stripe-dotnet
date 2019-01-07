@@ -1,8 +1,8 @@
 namespace Stripe
 {
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class TopupService : Service<Topup>,
         ICreatable<Topup, TopupCreateOptions>,
@@ -15,7 +15,7 @@ namespace Stripe
         {
         }
 
-        public TopupService(string apiKey = null)
+        public TopupService(string apiKey)
             : base(apiKey)
         {
         }
@@ -64,6 +64,11 @@ namespace Stripe
         public virtual Task<StripeList<Topup>> ListAsync(TopupListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Topup> ListAutoPaging(TopupListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
         public virtual Topup Update(string topupId, TopupUpdateOptions options, RequestOptions requestOptions = null)

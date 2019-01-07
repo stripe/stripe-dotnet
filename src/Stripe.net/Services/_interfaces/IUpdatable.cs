@@ -4,7 +4,7 @@ namespace Stripe
     using System.Threading.Tasks;
 
     public interface IUpdatable<T, O>
-        where T : IStripeEntity
+        where T : IStripeEntity, IHasId
         where O : BaseOptions
     {
         T Update(string id, O updateOptions, RequestOptions requestOptions = null);

@@ -1,6 +1,7 @@
 namespace StripeTests.Issuing
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,11 +12,12 @@ namespace StripeTests.Issuing
     {
         private const string TransactionId = "ipi_123";
 
-        private TransactionService service;
-        private TransactionUpdateOptions updateOptions;
-        private TransactionListOptions listOptions;
+        private readonly TransactionService service;
+        private readonly TransactionUpdateOptions updateOptions;
+        private readonly TransactionListOptions listOptions;
 
-        public TransactionServiceTest()
+        public TransactionServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new TransactionService();
 
@@ -62,6 +64,13 @@ namespace StripeTests.Issuing
         {
             var transactions = await this.service.ListAsync(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/issuing/transactions");
+            Assert.NotNull(transactions);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var transactions = this.service.ListAutoPaging(this.listOptions).ToList();
             Assert.NotNull(transactions);
         }
 

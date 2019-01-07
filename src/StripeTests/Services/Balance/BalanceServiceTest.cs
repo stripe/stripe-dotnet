@@ -9,9 +9,10 @@ namespace StripeTests
 
     public class BalanceServiceTest : BaseStripeTest
     {
-        private BalanceService service;
+        private readonly BalanceService service;
 
-        public BalanceServiceTest()
+        public BalanceServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new BalanceService();
         }

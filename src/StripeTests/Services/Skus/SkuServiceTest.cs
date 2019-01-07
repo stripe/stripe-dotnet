@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,12 +12,13 @@ namespace StripeTests
     {
         private const string SkuId = "sku_123";
 
-        private SkuService service;
-        private SkuCreateOptions createOptions;
-        private SkuUpdateOptions updateOptions;
-        private SkuListOptions listOptions;
+        private readonly SkuService service;
+        private readonly SkuCreateOptions createOptions;
+        private readonly SkuUpdateOptions updateOptions;
+        private readonly SkuListOptions listOptions;
 
-        public SkuServiceTest()
+        public SkuServiceTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new SkuService();
 
@@ -130,6 +132,14 @@ namespace StripeTests
             Assert.Equal("list", skus.Object);
             Assert.Single(skus.Data);
             Assert.Equal("sku", skus.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var skus = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(skus);
+            Assert.Equal("sku", skus[0].Object);
         }
 
         [Fact]

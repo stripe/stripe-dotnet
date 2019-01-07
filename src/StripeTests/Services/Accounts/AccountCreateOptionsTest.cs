@@ -10,9 +10,10 @@ namespace StripeTests
 
     public class AccountCreateOptionsTest : BaseStripeTest
     {
-        private AccountService service;
+        private readonly AccountService service;
 
-        public AccountCreateOptionsTest()
+        public AccountCreateOptionsTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
         {
             this.service = new AccountService();
         }
