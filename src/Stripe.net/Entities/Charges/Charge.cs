@@ -471,6 +471,9 @@ namespace Stripe
         }
         #endregion
 
+        [JsonProperty("transfer_data")]
+        public ChargeTransferData TransferData { get; set; }
+
         /// <summary>
         /// A string that identifies this transaction as part of a group. See the Connect documentation for details.
         /// </summary>

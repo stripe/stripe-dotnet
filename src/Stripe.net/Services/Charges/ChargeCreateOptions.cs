@@ -106,5 +106,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
+
+        [JsonProperty("transfer_data")]
+        public ChargeTransferDataOptions TransferData { get; set; }
     }
 }
