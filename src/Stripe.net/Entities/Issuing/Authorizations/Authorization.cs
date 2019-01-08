@@ -92,5 +92,8 @@ namespace Stripe.Issuing
 
         [JsonProperty("verification_data")]
         public VerificationData VerificationData { get; set; }
+
+        [JsonProperty("wallet_provider")]
+        public string WalletProvider { get; set; }
     }
 }
