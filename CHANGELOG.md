@@ -1,5 +1,9 @@
 # Changelog
 
+## 22.1.0 - 2019-01-08
+* [#1457](https://github.com/stripe/stripe-dotnet/pull/1457) Add support for `invoice` and `pending` when listing invoice items
+* [#1458](https://github.com/stripe/stripe-dotnet/pull/1458) Add support for `wallet_provider` on `Issuing.Authorization`
+
 ## 22.0.0 - 2019-01-07
 Major version release. Refer to our [migration guide for v22](https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v22) for a list of backwards incompatible changes to watch out for.
 
