@@ -72,6 +72,12 @@ namespace Stripe
         }
         #endregion
 
+        /// <summary>
+        /// The amount of the application application fee (if any) for the charge. See the Connect documentation for details.
+        /// </summary>
+        [JsonProperty("application_fee_amount")]
+        public long? ApplicationFeeAmount { get; set; }
+
         #region Expandable Balance Transaction
 
         /// <summary>
