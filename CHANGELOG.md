@@ -1,5 +1,8 @@
 # Changelog
 
+## 22.3.0 - 2019-01-09
+* [#1415](https://github.com/stripe/stripe-dotnet/pull/1415) Add support for the `AccountLink` resource
+
 ## 22.2.0 - 2019-01-09
 * [#1467](https://github.com/stripe/stripe-dotnet/pull/1467) Add support for new parameters under `invoice_items[]` for the Upcoming Invoice API
 
