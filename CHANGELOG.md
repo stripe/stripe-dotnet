@@ -1,5 +1,8 @@
 # Changelog
 
+## 22.2.0 - 2019-01-09
+* [#1467](https://github.com/stripe/stripe-dotnet/pull/1467) Add support for new parameters under `invoice_items[]` for the Upcoming Invoice API
+
 ## 22.1.0 - 2019-01-08
 * [#1457](https://github.com/stripe/stripe-dotnet/pull/1457) Add support for `invoice` and `pending` when listing invoice items
 * [#1458](https://github.com/stripe/stripe-dotnet/pull/1458) Add support for `wallet_provider` on `Issuing.Authorization`
