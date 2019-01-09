@@ -22,5 +22,14 @@ namespace Stripe
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("period")]
+        public InvoiceItemPeriodOptions Period { get; set; }
+
+        [JsonProperty("quantity")]
+        public long? Quantity { get; set; }
+
+        [JsonProperty("unit_amount")]
+        public long? UnitAmount { get; set; }
     }
 }
