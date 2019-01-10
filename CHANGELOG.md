@@ -1,5 +1,9 @@
 # Changelog
 
+## 22.4.0 - 2019-01-10
+* [#1456](https://github.com/stripe/stripe-dotnet/pull/1456) Add support for `transfer_data` and `application_fee_amount` on `Charge`
+* [#1468](https://github.com/stripe/stripe-dotnet/pull/1468) Add support for `validate` on `Customer` update and `Card` update and creation
+
 ## 22.3.0 - 2019-01-09
 * [#1415](https://github.com/stripe/stripe-dotnet/pull/1415) Add support for the `AccountLink` resource
 
