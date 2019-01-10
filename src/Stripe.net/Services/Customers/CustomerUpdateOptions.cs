@@ -9,12 +9,6 @@ namespace Stripe
         [JsonProperty("account_balance")]
         public long? AccountBalance { get; set; }
 
-        [JsonProperty("source")]
-        public string SourceToken { get; set; }
-
-        [JsonProperty("source")]
-        public CardCreateNestedOptions SourceCard { get; set; }
-
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
 
@@ -36,7 +30,16 @@ namespace Stripe
         [JsonProperty("shipping")]
         public ShippingOptions Shipping { get; set; }
 
+        [JsonProperty("source")]
+        public string SourceToken { get; set; }
+
+        [JsonProperty("source")]
+        public CardCreateNestedOptions SourceCard { get; set; }
+
         [JsonProperty("tax_info")]
         public CustomerTaxInfoOptions TaxInfo { get; set; }
+
+        [JsonProperty("validate")]
+        public bool? Validate { get; set; }
     }
 }
