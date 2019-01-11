@@ -45,8 +45,52 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        #region Expandable Destination Payment Refund
+        [JsonIgnore]
+        public string DestinationPaymentRefundId { get; set; }
+
+        [JsonIgnore]
+        public Refund DestinationPaymentRefund { get; set; }
+
+        [JsonProperty("destination_payment_refund")]
+        internal object InternalDestinationPaymentRefund
+        {
+            get
+            {
+                return this.DestinationPaymentRefund ?? (object)this.DestinationPaymentRefundId;
+            }
+
+            set
+            {
+                StringOrObject<Refund>.Map(value, s => this.DestinationPaymentRefundId = s, o => this.DestinationPaymentRefund = o);
+            }
+        }
+        #endregion
+
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        #region Expandable Source Refund
+        [JsonIgnore]
+        public string SourceRefundId { get; set; }
+
+        [JsonIgnore]
+        public Refund SourceRefund { get; set; }
+
+        [JsonProperty("source_refund")]
+        internal object InternalSourceRefund
+        {
+            get
+            {
+                return this.SourceRefund ?? (object)this.SourceRefundId;
+            }
+
+            set
+            {
+                StringOrObject<Refund>.Map(value, s => this.SourceRefundId = s, o => this.SourceRefund = o);
+            }
+        }
+        #endregion
 
         #region Expandable Transfer
         [JsonIgnore]
