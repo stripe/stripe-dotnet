@@ -237,6 +237,9 @@ namespace Stripe
         [JsonProperty("threshold_reason")]
         public InvoiceThresholdReason ThresholdReason { get; set; }
 
+        [JsonProperty("transfer_data")]
+        public InvoiceTransferData TransferData { get; set; }
+
         [JsonProperty("total")]
         public long Total { get; set; }
 
