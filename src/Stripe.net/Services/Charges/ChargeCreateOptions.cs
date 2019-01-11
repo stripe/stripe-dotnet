@@ -18,9 +18,7 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        /// <summary>
-        /// This is deprecated in favor of ApplicationFeeAmount.
-        /// </summary>
+        [Obsolete("Use ApplicationFeeAmount")]
         [JsonProperty("application_fee")]
         public long? ApplicationFee { get; set; }
 

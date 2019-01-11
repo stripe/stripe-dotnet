@@ -7,14 +7,18 @@ namespace Stripe
 
     public class InvoiceCreateOptions : BaseOptions
     {
+        [Obsolete("Use ApplicationFeeAmount")]
+        [JsonProperty("application_fee")]
+        public long? ApplicationFee { get; set; }
+
         /// <summary>
         /// A fee in cents that will be applied to the invoice and transferred to the application
         /// owner’s Stripe account. The request must be made with an OAuth key or the Stripe-Account
         /// header in order to take an application fee. For more information, see the application
         /// fees <see href="https://stripe.com/docs/connect/subscriptions#working-with-invoices">documentation</see>.
         /// </summary>
-        [JsonProperty("application_fee")]
-        public long? ApplicationFee { get; set; }
+        [JsonProperty("application_fee_amount")]
+        public long? ApplicationFeeAmount { get; set; }
 
         [JsonProperty("auto_advance")]
         public bool? AutoAdvance { get; set; }
