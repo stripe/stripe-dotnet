@@ -19,15 +19,16 @@ cache:
 
 install:
   - ps: |
-      If(!(Test-Path "stripe-mock"))
+      If(!(Test-Path ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}"))
       {
-        New-Item -Path . -Name "stripe-mock" -ItemType "directory" -Force | Out-Null
-        wget "https://github.com/stripe/stripe-mock/releases/download/v$($env:STRIPE_MOCK_VERSION)/stripe-mock_$($env:STRIPE_MOCK_VERSION)_windows_amd64.tar.gz" -OutFile "$($pwd)\stripe-mock\stripe-mock.tar.gz"
-        7z.exe e -y -o"stripe-mock" "stripe-mock\stripe-mock.tar.gz" | Out-Null
-        7z.exe x -y -o"stripe-mock" "stripe-mock\stripe-mock.tar" | Out-Null
+        New-Item -Name ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}" -ItemType "directory" -Force | Out-Null
+        wget "https://github.com/stripe/stripe-mock/releases/download/v${env:STRIPE_MOCK_VERSION}/stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.tar.gz" -OutFile ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.tar.gz"
+        7z.exe e -y -o".\stripe-mock" ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.tar.gz" | Out-Null
+        7z.exe x -y -o".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}" ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.tar" | Out-Null
       }
-      $app = Start-Process -FilePath "stripe-mock\stripe-mock.exe" -NoNewWindow -PassThru
+      $app = Start-Process -FilePath ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}\stripe-mock.exe" -NoNewWindow -PassThru
       Write-Host ("stripe-mock running, Id = $($app.Id)`n") -ForegroundColor Green
+      $env:PATH += ";" + (Get-Item -Path ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}").FullName
   - dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
 
 before_build:
