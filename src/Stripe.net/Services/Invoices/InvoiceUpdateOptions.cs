@@ -16,11 +16,23 @@ namespace Stripe
         [JsonProperty("closed")]
         public bool? Closed { get; set; }
 
+        /// <summary>
+        /// A list of up to 4 custom fields to be displayed on the invoice.
+        /// </summary>
+        [JsonProperty("custom_fields")]
+        public List<InvoiceCustomFieldOptions> CustomFields { get; set; }
+
         [JsonProperty("default_source")]
         public string DefaultSource { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Footer to be displayed on the invoice. This can be unset by updating the value to null and then saving.
+        /// </summary>
+        [JsonProperty("footer")]
+        public string Footer { get; set; }
 
         [JsonProperty("forgiven")]
         public bool? Forgiven { get; set; }
