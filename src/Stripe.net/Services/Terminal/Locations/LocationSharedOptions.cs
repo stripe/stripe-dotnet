@@ -9,5 +9,8 @@ namespace Stripe.Terminal
 
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
+
+        [JsonProperty("operator_account")]
+        public string OperatorAccount { get; set; }
     }
 }
