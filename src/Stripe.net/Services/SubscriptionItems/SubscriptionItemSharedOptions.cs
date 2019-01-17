@@ -7,6 +7,13 @@ namespace Stripe
     public abstract class SubscriptionItemSharedOptions : BaseOptions
     {
         /// <summary>
+        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
+        /// new billing period.
+        /// </summary>
+        [JsonProperty("billing_thresholds")]
+        public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
+
+        /// <summary>
         /// REQUIRED: The identifier of the plan to add to the subscription.
         /// </summary>
         [JsonProperty("plan")]
@@ -19,7 +26,9 @@ namespace Stripe
         public bool? Prorate { get; set; }
 
         /// <summary>
-        /// If set, the proration will be calculated as though the subscription was updated at the given time. This can be used to apply the same proration that was previewed with the upcoming invoice endpoint.
+        /// If set, the proration will be calculated as though the subscription was updated at the
+        /// given time. This can be used to apply the same proration that was previewed with the
+        /// upcoming invoice endpoint.
         /// </summary>
         [JsonProperty("proration_date")]
         public DateTime? ProrationDate { get; set; }
