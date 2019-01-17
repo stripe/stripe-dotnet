@@ -68,6 +68,9 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [JsonProperty("custom_fields")]
+        public List<InvoiceCustomField> CustomFields { get; set; }
+
         #region Expandable Customer
         [JsonIgnore]
         public string CustomerId { get; set; }
@@ -135,6 +138,9 @@ namespace Stripe
         [JsonProperty("finalized_at")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? FinalizedAt { get; set; }
+
+        [JsonProperty("footer")]
+        public string Footer { get; set; }
 
         [JsonProperty("hosted_invoice_url")]
         public string HostedInvoiceUrl { get; set; }

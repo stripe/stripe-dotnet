@@ -29,6 +29,12 @@ namespace Stripe
         public Billing? Billing { get; set; }
 
         /// <summary>
+        /// A list of up to 4 custom fields to be displayed on the invoice.
+        /// </summary>
+        [JsonProperty("custom_fields")]
+        public List<InvoiceCustomFieldOptions> CustomFields { get; set; }
+
+        /// <summary>
         /// REQUIRED
         /// </summary>
         [JsonProperty("customer")]
@@ -53,6 +59,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("due_date")]
         public DateTime? DueDate { get; set; }
+
+        /// <summary>
+        /// Footer to be displayed on the invoice. This can be unset by updating the value to null and then saving.
+        /// </summary>
+        [JsonProperty("footer")]
+        public string Footer { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
