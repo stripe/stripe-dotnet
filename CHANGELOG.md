@@ -1,5 +1,9 @@
 # Changelog
 
+## 22.5.0 - 2019-01-17
+* [#1471](https://github.com/stripe/stripe-dotnet/pull/1471) Add support for `custom_fields` and `footer` on `Invoice`
+* [#1472](https://github.com/stripe/stripe-dotnet/pull/1472) Add support for billing thresholds
+
 ## 22.4.0 - 2019-01-10
 * [#1456](https://github.com/stripe/stripe-dotnet/pull/1456) Add support for `transfer_data` and `application_fee_amount` on `Charge`
 * [#1468](https://github.com/stripe/stripe-dotnet/pull/1468) Add support for `validate` on `Customer` update and `Card` update and creation
