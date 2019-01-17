@@ -17,7 +17,10 @@ namespace Stripe
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
-        /// One of <see cref="Billing" />. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions.
+        /// One of <see cref="Billing" />. When charging automatically, Stripe will attempt to pay
+        /// this subscription at the end of the cycle using the default source attached to the
+        /// customer. When sending an invoice, Stripe will email your customer an invoice with
+        /// payment instructions.
         /// </summary>
         [JsonProperty("billing")]
         public Billing? Billing { get; set; }
@@ -25,6 +28,13 @@ namespace Stripe
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? BillingCycleAnchor { get; set; }
+
+        /// <summary>
+        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
+        /// new billing period
+        /// </summary>
+        [JsonProperty("billing_thresholds")]
+        public SubscriptionBillingThresholds BillingThresholds { get; set; }
 
         [JsonProperty("cancel_at_period_end")]
         public bool CancelAtPeriodEnd { get; set; }

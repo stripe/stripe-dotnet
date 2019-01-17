@@ -35,7 +35,10 @@ namespace Stripe
         public bool AutoAdvance { get; set; }
 
         /// <summary>
-        /// One of <see cref="Billing" />. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions.
+        /// One of <see cref="Billing" />. When charging automatically, Stripe will attempt to pay
+        /// this subscription at the end of the cycle using the default source attached to the
+        /// customer. When sending an invoice, Stripe will email your customer an invoice with
+        /// payment instructions.
         /// </summary>
         [JsonProperty("billing")]
         public Billing? Billing { get; set; }
@@ -126,7 +129,8 @@ namespace Stripe
         public Discount Discount { get; set; }
 
         /// <summary>
-        /// The date on which payment for this invoice is due. This value will be null for invoices where billing=charge_automatically.
+        /// The date on which payment for this invoice is due. This value will be null for invoices
+        /// where billing=charge_automatically.
         /// </summary>
         [JsonProperty("due_date")]
         [JsonConverter(typeof(DateTimeConverter))]
@@ -162,7 +166,8 @@ namespace Stripe
         public DateTime? NextPaymentAttempt { get; set; }
 
         /// <summary>
-        /// A unique, identifying string that appears on emails sent to the customer for this invoice.
+        /// A unique, identifying string that appears on emails sent to the customer for this
+        /// invoice.
         /// </summary>
         [JsonProperty("number")]
         public string Number { get; set; }
@@ -224,6 +229,13 @@ namespace Stripe
 
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
+
+        /// <summary>
+        /// If <code>billing_reason</code> is set to <code>subscription_threshold</code> this
+        /// returns more information on which threshold rules triggered the invoice.
+        /// </summary>
+        [JsonProperty("threshold_reason")]
+        public InvoiceThresholdReason ThresholdReason { get; set; }
 
         [JsonProperty("total")]
         public long Total { get; set; }

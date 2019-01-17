@@ -20,6 +20,12 @@ namespace Stripe
         public Billing? Billing { get; set; }
 
         /// <summary>
+        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a new billing period. Pass an empty string to remove previously-defined thresholds.
+        /// </summary>
+        [JsonProperty("billing_thresholds")]
+        public SubscriptionBillingThresholdsOptions BillingThresholds { get; set; }
+
+        /// <summary>
         /// Boolean indicating whether this subscription should cancel at the end of the current period.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
