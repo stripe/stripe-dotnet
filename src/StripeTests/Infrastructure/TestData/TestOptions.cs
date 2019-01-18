@@ -15,7 +15,7 @@ namespace StripeTests.Infrastructure.TestData
             [EnumMember(Value = "test_one")]
             TestOne,
 
-            // TestTwo doesn't define a serialization value
+            // TestTwo purposefully doesn't define a serialization value
             TestTwo,
         }
 
