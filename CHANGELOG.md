@@ -1,5 +1,10 @@
 # Changelog
 
+## 22.6.0 - 2019-01-17
+* [#1475](https://github.com/stripe/stripe-dotnet/pull/1475) Add `OperatorAccount` to Terminal options
+* [#1476](https://github.com/stripe/stripe-dotnet/pull/1476) Added `receipt_url` property to `Charge`
+* [#1477](https://github.com/stripe/stripe-dotnet/pull/1477) Added `paid_out_of_band` to `Invoice`
+
 ## 22.5.0 - 2019-01-17
 * [#1471](https://github.com/stripe/stripe-dotnet/pull/1471) Add support for `custom_fields` and `footer` on `Invoice`
 * [#1472](https://github.com/stripe/stripe-dotnet/pull/1472) Add support for billing thresholds
