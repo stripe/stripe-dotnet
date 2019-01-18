@@ -4,8 +4,8 @@ namespace Stripe
     using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
-
     using Stripe.Infrastructure;
+    using Stripe.Infrastructure.Extensions;
 
     public abstract class Service<EntityReturned>
         where EntityReturned : IStripeEntity
