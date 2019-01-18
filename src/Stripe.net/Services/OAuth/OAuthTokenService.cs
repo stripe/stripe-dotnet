@@ -31,18 +31,24 @@ namespace Stripe
 
         public virtual OAuthDeauthorize Deauthorize(string clientId, string stripeUserId, RequestOptions requestOptions = null)
         {
-            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.BaseConnectUrl}/oauth/deauthorize", "client_id", clientId);
-            url = ParameterBuilder.ApplyParameterToUrl(url, "stripe_user_id", stripeUserId);
-
-            return this.PostRequest<OAuthDeauthorize>(url, null, requestOptions);
+            // TODO: change this method's signature to accept a OAuthTokenDeauthorizeOptions directly
+            var options = new OAuthTokenDeauthorizeOptions
+            {
+                ClientId = clientId,
+                StripeUserId = stripeUserId,
+            };
+            return this.PostRequest<OAuthDeauthorize>($"{Urls.BaseConnectUrl}/oauth/deauthorize", options, requestOptions);
         }
 
         public virtual Task<OAuthDeauthorize> DeauthorizeAsync(string clientId, string stripeUserId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.BaseConnectUrl}/oauth/deauthorize", "client_id", clientId);
-            url = ParameterBuilder.ApplyParameterToUrl(url, "stripe_user_id", stripeUserId);
-
-            return this.PostRequestAsync<OAuthDeauthorize>(url, null, requestOptions, cancellationToken);
+            // TODO: change this method's signature to accept a OAuthTokenDeauthorizeOptions directly
+            var options = new OAuthTokenDeauthorizeOptions
+            {
+                ClientId = clientId,
+                StripeUserId = stripeUserId,
+            };
+            return this.PostRequestAsync<OAuthDeauthorize>($"{Urls.BaseConnectUrl}/oauth/deauthorize", options, requestOptions, cancellationToken);
         }
     }
 }
