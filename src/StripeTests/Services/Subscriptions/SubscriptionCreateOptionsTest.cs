@@ -1,23 +1,12 @@
 namespace StripeTests
 {
-    using System;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Stripe;
-    using Stripe.Infrastructure;
+    using Stripe.Infrastructure.Extensions;
     using Xunit;
 
     public class SubscriptionCreateOptionsTest : BaseStripeTest
     {
-        private readonly SubscriptionService service;
-
-        public SubscriptionCreateOptionsTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
-        {
-            this.service = new SubscriptionService();
-        }
-
         [Fact]
         public void Serialize()
         {
@@ -39,12 +28,11 @@ namespace StripeTests
                 },
             };
 
-            var url = this.service.ApplyAllParameters(options, string.Empty, false);
             Assert.Equal(
-                "?customer=cus_123" +
-                "&items[0][plan]=plan_123&items[0][quantity]=2" +
-                "&items[1][plan]=plan_124&items[1][quantity]=3",
-                url);
+                "customer=cus_123&" +
+                "items[0][plan]=plan_123&items[0][quantity]=2&" +
+                "items[1][plan]=plan_124&items[1][quantity]=3",
+                options.ToQueryString());
         }
     }
 }

@@ -1,23 +1,12 @@
 namespace StripeTests
 {
-    using System;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Stripe;
-    using Stripe.Infrastructure;
+    using Stripe.Infrastructure.Extensions;
     using Xunit;
 
     public class AccountCreateOptionsTest : BaseStripeTest
     {
-        private readonly AccountService service;
-
-        public AccountCreateOptionsTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
-        {
-            this.service = new AccountService();
-        }
-
         [Fact]
         public void SerializeAdditionalOwnersProperly()
         {
@@ -61,24 +50,23 @@ namespace StripeTests
                 },
             };
 
-            var url = this.service.ApplyAllParameters(options, string.Empty, false);
             Assert.Equal(
-                "?legal_entity[additional_owners][0][dob][day]=1" +
-                "&legal_entity[additional_owners][0][dob][month]=1" +
-                "&legal_entity[additional_owners][0][dob][year]=1980" +
-                "&legal_entity[additional_owners][0][first_name]=John" +
-                "&legal_entity[additional_owners][0][last_name]=Doe" +
-                "&legal_entity[additional_owners][0][verification][document_back]=file_234" +
-                "&legal_entity[additional_owners][0][verification][document]=file_123" +
-                "&legal_entity[additional_owners][1][address][city]=City" +
-                "&legal_entity[additional_owners][1][address][country]=US" +
-                "&legal_entity[additional_owners][1][address][line1]=Line1" +
-                "&legal_entity[additional_owners][1][address][line2]=Line2" +
-                "&legal_entity[additional_owners][1][address][postal_code]=90210" +
-                "&legal_entity[additional_owners][1][address][state]=CA" +
-                "&legal_entity[additional_owners][1][first_name]=Jenny" +
-                "&legal_entity[additional_owners][1][last_name]=Rosen",
-                url);
+                "legal_entity[additional_owners][0][dob][day]=1&" +
+                "legal_entity[additional_owners][0][dob][month]=1&" +
+                "legal_entity[additional_owners][0][dob][year]=1980&" +
+                "legal_entity[additional_owners][0][first_name]=John&" +
+                "legal_entity[additional_owners][0][last_name]=Doe&" +
+                "legal_entity[additional_owners][0][verification][document_back]=file_234&" +
+                "legal_entity[additional_owners][0][verification][document]=file_123&" +
+                "legal_entity[additional_owners][1][address][city]=City&" +
+                "legal_entity[additional_owners][1][address][country]=US&" +
+                "legal_entity[additional_owners][1][address][line1]=Line1&" +
+                "legal_entity[additional_owners][1][address][line2]=Line2&" +
+                "legal_entity[additional_owners][1][address][postal_code]=90210&" +
+                "legal_entity[additional_owners][1][address][state]=CA&" +
+                "legal_entity[additional_owners][1][first_name]=Jenny&" +
+                "legal_entity[additional_owners][1][last_name]=Rosen",
+                options.ToQueryString());
         }
 
         [Fact]
@@ -92,8 +80,7 @@ namespace StripeTests
                 },
             };
 
-            var url = this.service.ApplyAllParameters(options, string.Empty, false);
-            Assert.Equal("?legal_entity[additional_owners]=", url);
+            Assert.Equal("legal_entity[additional_owners]=", options.ToQueryString());
         }
     }
 }
