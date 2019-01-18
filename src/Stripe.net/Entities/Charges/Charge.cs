@@ -363,7 +363,16 @@ namespace Stripe
         public string ReceiptNumber { get; set; }
 
         /// <summary>
-        /// Whether or not the charge has been fully refunded. If the charge is only partially refunded, this attribute will still be false.
+        /// This is the URL to view the receipt for this charge. The receipt is kept up-to-date to
+        /// the latest state of the charge, including any refunds. If the charge is for an Invoice,
+        /// the receipt will be stylized as an Invoice receipt.
+        /// </summary>
+        [JsonProperty("receipt_url")]
+        public string ReceiptUrl { get; set; }
+
+        /// <summary>
+        /// Whether or not the charge has been fully refunded. If the charge is only partially
+        /// refunded, this attribute will still be false.
         /// </summary>
         [JsonProperty("refunded")]
         public bool Refunded { get; set; }
