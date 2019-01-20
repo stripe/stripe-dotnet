@@ -1,5 +1,8 @@
 # Changelog
 
+## 22.7.0 - 2019-01-19
+* [#1438](https://github.com/stripe/stripe-dotnet/pull/1438) Revert license change
+
 ## 22.6.0 - 2019-01-17
 * [#1475](https://github.com/stripe/stripe-dotnet/pull/1475) Add `OperatorAccount` to Terminal options
 * [#1476](https://github.com/stripe/stripe-dotnet/pull/1476) Added `receipt_url` property to `Charge`
