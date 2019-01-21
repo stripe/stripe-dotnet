@@ -25,24 +25,14 @@ namespace Stripe
 
         #region Expandable Balance Transaction
         [JsonIgnore]
-        public string BalanceTransactionId { get; set; }
+        public string BalanceTransactionId => this.InternalBalanceTransaction.Id;
 
         [JsonIgnore]
-        public BalanceTransaction BalanceTransaction { get; set; }
+        public BalanceTransaction BalanceTransaction => this.InternalBalanceTransaction.ExpandedObject;
 
         [JsonProperty("balance_transaction")]
-        internal object InternalBalanceTransaction
-        {
-            get
-            {
-                return this.BalanceTransaction ?? (object)this.BalanceTransactionId;
-            }
-
-            set
-            {
-                StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+        internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
         [JsonProperty("created")]
@@ -57,24 +47,14 @@ namespace Stripe
 
         #region Expandable Destination
         [JsonIgnore]
-        public string DestinationId { get; set; }
+        public string DestinationId => this.InternalDestination.Id;
 
         [JsonIgnore]
-        public IExternalAccount Destination { get; set; }
+        public IExternalAccount Destination => this.InternalDestination.ExpandedObject;
 
         [JsonProperty("destination")]
-        internal object InternalDestination
-        {
-            get
-            {
-                return this.Destination ?? (object)this.DestinationId;
-            }
-
-            set
-            {
-                StringOrObject<IExternalAccount>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<IExternalAccount>))]
+        internal ExpandableField<IExternalAccount> InternalDestination { get; set; }
         #endregion
 
         #region Expandable Failure Balance Transaction
@@ -82,24 +62,15 @@ namespace Stripe
         /// <summary>
         /// If the payout failed or was canceled, this will be the ID of the balance transaction that reversed the initial balance transaction, and puts the funds from the failed payout back in your balance.
         /// </summary>
-        public string FailureBalanceTransactionId { get; set; }
+        [JsonIgnore]
+        public string FailureBalanceTransactionId => this.InternalFailureBalanceTransaction.Id;
 
         [JsonIgnore]
-        public BalanceTransaction FailureBalanceTransaction { get; set; }
+        public BalanceTransaction FailureBalanceTransaction => this.InternalFailureBalanceTransaction.ExpandedObject;
 
         [JsonProperty("failure_balance_transaction")]
-        internal object InternalFailureBalanceTransaction
-        {
-            get
-            {
-                return this.FailureBalanceTransaction ?? (object)this.FailureBalanceTransactionId;
-            }
-
-            set
-            {
-                StringOrObject<BalanceTransaction>.Map(value, s => this.FailureBalanceTransactionId = s, o => this.FailureBalanceTransaction = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+        internal ExpandableField<BalanceTransaction> InternalFailureBalanceTransaction { get; set; }
         #endregion
 
         [JsonProperty("failure_code")]
