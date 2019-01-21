@@ -65,24 +65,14 @@ namespace Stripe
 
         #region Expandable Charge
         [JsonIgnore]
-        public string ChargeId { get; set; }
+        public string ChargeId => this.InternalCharge.Id;
 
         [JsonIgnore]
-        public Charge Charge { get; set; }
+        public Charge Charge => this.InternalCharge.ExpandedObject;
 
         [JsonProperty("charge")]
-        internal object InternalCharge
-        {
-            get
-            {
-                return this.Charge ?? (object)this.ChargeId;
-            }
-
-            set
-            {
-                StringOrObject<Charge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
+        internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
 
         [JsonProperty("created")]
@@ -97,24 +87,14 @@ namespace Stripe
 
         #region Expandable Customer
         [JsonIgnore]
-        public string CustomerId { get; set; }
+        public string CustomerId => this.InternalCustomer.Id;
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            get
-            {
-                return this.Customer ?? (object)this.CustomerId;
-            }
-
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         /// <summary>
@@ -182,47 +162,26 @@ namespace Stripe
         /// method.
         /// </summary>
         [JsonIgnore]
-        public string DefaultPaymentMethodId { get; set; }
+        public string DefaultPaymentMethodId => this.InternalDefaultPaymentMethod.Id;
 
         [JsonIgnore]
-        public PaymentMethod DefaultPaymentMethod { get; set; }
+        public PaymentMethod DefaultPaymentMethod => this.InternalDefaultPaymentMethod.ExpandedObject;
 
         [JsonProperty("default_payment_method")]
-        internal object InternalDefaultPaymentMethod
-        {
-            get
-            {
-                return this.DefaultPaymentMethod ?? (object)this.DefaultPaymentMethodId;
-            }
-
-            set
-            {
-                StringOrObject<PaymentMethod>.Map(value, s => this.DefaultPaymentMethodId = s, o => this.DefaultPaymentMethod = o);
-            }
-        }
-
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
+        internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
         #endregion
 
         #region Expandable DefaultSource
         [JsonIgnore]
-        public string DefaultSourceId { get; set; }
+        public string DefaultSourceId => this.InternalDefaultSource.Id;
 
         [JsonIgnore]
-        public IPaymentSource DefaultSource { get; set; }
+        public IPaymentSource DefaultSource => this.InternalDefaultSource.ExpandedObject;
 
         [JsonProperty("default_source")]
-        internal object InternalDefaultSource
-        {
-            get
-            {
-                return this.DefaultSource ?? (object)this.DefaultSourceId;
-            }
-
-            set
-            {
-                StringOrObject<IPaymentSource>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
+        internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
         #endregion
 
         /// <summary>
@@ -286,7 +245,7 @@ namespace Stripe
         /// ID of the PaymentIntent associated with this invoice.
         /// </summary>
         [JsonIgnore]
-        public string PaymentIntentId { get; set; }
+        public string PaymentIntentId => this.InternalPaymentIntent.Id;
 
         /// <summary>
         /// The PaymentIntent associated with this invoice. The PaymentIntent is generated when the
@@ -294,21 +253,11 @@ namespace Stripe
         /// invoice will cancel the PaymentIntent.
         /// </summary>
         [JsonIgnore]
-        public PaymentIntent PaymentIntent { get; set; }
+        public PaymentIntent PaymentIntent => this.InternalPaymentIntent.ExpandedObject;
 
         [JsonProperty("payment_intent")]
-        internal object InternalPaymentIntent
-        {
-            get
-            {
-                return this.PaymentIntent ?? (object)this.PaymentIntentId;
-            }
-
-            set
-            {
-                StringOrObject<PaymentIntent>.Map(value, s => this.PaymentIntentId = s, o => this.PaymentIntent = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
+        internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
         [JsonProperty("period_end")]
@@ -348,24 +297,14 @@ namespace Stripe
 
         #region Expandable Subscription
         [JsonIgnore]
-        public string SubscriptionId { get; set; }
+        public string SubscriptionId => this.InternalSubscription.Id;
 
         [JsonIgnore]
-        public Subscription Subscription { get; set; }
+        public Subscription Subscription => this.InternalSubscription.ExpandedObject;
 
         [JsonProperty("subscription")]
-        internal object InternalSubscription
-        {
-            get
-            {
-                return this.Subscription ?? (object)this.SubscriptionId;
-            }
-
-            set
-            {
-                StringOrObject<Subscription>.Map(value, s => this.SubscriptionId = s, o => this.Subscription = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
+        internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
 
         [JsonProperty("subscription_proration_date")]
