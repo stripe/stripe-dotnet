@@ -86,24 +86,14 @@ namespace Stripe
         /// The ID of the product this SKU is associated with. The product must be currently active.
         /// </summary>
         [JsonIgnore]
-        public string ProductId { get; set; }
+        public string ProductId => this.InternalProduct.Id;
 
         [JsonIgnore]
-        public Product Product { get; set; }
+        public Product Product => this.InternalProduct.ExpandedObject;
 
         [JsonProperty("product")]
-        internal object InternalProduct
-        {
-            get
-            {
-                return this.Product ?? (object)this.ProductId;
-            }
-
-            set
-            {
-                StringOrObject<Product>.Map(value, s => this.ProductId = s, o => this.Product = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Product>))]
+        internal ExpandableField<Product> InternalProduct { get; set; }
         #endregion
 
         [JsonProperty("updated")]

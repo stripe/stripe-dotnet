@@ -19,28 +19,18 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string DocumentId { get; set; }
+        public string DocumentId => this.InternalDocument.Id;
 
         /// <summary>
         /// (Expanded) A photo (jpg or png) of the front of an identifying document, either a
         /// passport or local ID card.
         /// </summary>
         [JsonIgnore]
-        public File Document { get; set; }
+        public File Document => this.InternalDocument.ExpandedObject;
 
         [JsonProperty("document")]
-        internal object InternalDocument
-        {
-            get
-            {
-                return this.Document ?? (object)this.DocumentId;
-            }
-
-            set
-            {
-                StringOrObject<File>.Map(value, s => this.DocumentId = s, o => this.Document = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+        internal ExpandableField<File> InternalDocument { get; set; }
         #endregion
 
         #region Expandable Document Back
@@ -51,28 +41,18 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string DocumentBackId { get; set; }
+        public string DocumentBackId => this.InternalDocumentBack.Id;
 
         /// <summary>
         /// (Expanded) A photo (jpg or png) of the back of an identifying document, either a
         /// passport or local ID card.
         /// </summary>
         [JsonIgnore]
-        public File DocumentBack { get; set; }
+        public File DocumentBack => this.InternalDocumentBack.ExpandedObject;
 
         [JsonProperty("document_back")]
-        internal object InternalDocumentBack
-        {
-            get
-            {
-                return this.DocumentBack ?? (object)this.DocumentBackId;
-            }
-
-            set
-            {
-                StringOrObject<File>.Map(value, s => this.DocumentBackId = s, o => this.DocumentBack = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+        internal ExpandableField<File> InternalDocumentBack { get; set; }
         #endregion
 
         [JsonProperty("status")]
