@@ -16,7 +16,9 @@ namespace Stripe
 
         public static Event ParseEvent(string json, bool throwOnApiVersionMismatch = true)
         {
-            var stripeEvent = Mapper<Event>.MapFromJson(json);
+            var stripeEvent = JsonConvert.DeserializeObject<Event>(
+                json,
+                StripeConfiguration.SerializerSettings);
 
             if (throwOnApiVersionMismatch &&
                 stripeEvent.ApiVersion != StripeConfiguration.StripeApiVersion)
