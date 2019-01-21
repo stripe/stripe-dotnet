@@ -8,24 +8,14 @@ namespace Stripe
     {
         #region Expandable Destination (Account)
         [JsonIgnore]
-        public string DestinationId { get; set; }
+        public string DestinationId => this.InternalDestination.Id;
 
         [JsonIgnore]
-        public Account Destination { get; set; }
+        public Account Destination => this.InternalDestination.ExpandedObject;
 
         [JsonProperty("destination")]
-        internal object InternalDestination
-        {
-            get
-            {
-                return this.Destination ?? (object)this.DestinationId;
-            }
-
-            set
-            {
-                StringOrObject<Account>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+        internal ExpandableField<Account> InternalDestination { get; set; }
         #endregion
 
         [Obsolete("Use PaymentIntent.ApplicationFeeAmount instead")]

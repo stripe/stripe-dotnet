@@ -27,21 +27,11 @@ namespace Stripe
         public string BalanceTransactionId { get; set; }
 
         [JsonIgnore]
-        public BalanceTransaction BalanceTransaction { get; set; }
+        public BalanceTransaction BalanceTransaction => this.InternalBalanceTransaction.ExpandedObject;
 
         [JsonProperty("balance_transaction")]
-        internal object InternalBalanceTransaction
-        {
-            get
-            {
-                return this.BalanceTransaction ?? (object)this.BalanceTransactionId;
-            }
-
-            set
-            {
-                StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+        internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
         [JsonProperty("created")]

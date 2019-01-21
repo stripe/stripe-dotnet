@@ -18,24 +18,14 @@ namespace Stripe
 
         #region Expandable Balance Transaction
         [JsonIgnore]
-        public string BalanceTransactionId { get; set; }
+        public string BalanceTransactionId => this.InternalBalanceTransaction.Id;
 
         [JsonIgnore]
-        public BalanceTransaction BalanceTransaction { get; set; }
+        public BalanceTransaction BalanceTransaction => this.InternalBalanceTransaction.ExpandedObject;
 
         [JsonProperty("balance_transaction")]
-        internal object InternalBalanceTransaction
-        {
-            get
-            {
-                return this.BalanceTransaction ?? (object)this.BalanceTransactionId;
-            }
-
-            set
-            {
-                StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+        internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
         [JsonProperty("created")]
@@ -47,24 +37,14 @@ namespace Stripe
 
         #region Expandable Destination Payment Refund
         [JsonIgnore]
-        public string DestinationPaymentRefundId { get; set; }
+        public string DestinationPaymentRefundId => this.InternalDestinationPaymentRefund.Id;
 
         [JsonIgnore]
-        public Refund DestinationPaymentRefund { get; set; }
+        public Refund DestinationPaymentRefund => this.InternalDestinationPaymentRefund.ExpandedObject;
 
         [JsonProperty("destination_payment_refund")]
-        internal object InternalDestinationPaymentRefund
-        {
-            get
-            {
-                return this.DestinationPaymentRefund ?? (object)this.DestinationPaymentRefundId;
-            }
-
-            set
-            {
-                StringOrObject<Refund>.Map(value, s => this.DestinationPaymentRefundId = s, o => this.DestinationPaymentRefund = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
+        internal ExpandableField<Refund> InternalDestinationPaymentRefund { get; set; }
         #endregion
 
         [JsonProperty("metadata")]
@@ -72,46 +52,26 @@ namespace Stripe
 
         #region Expandable Source Refund
         [JsonIgnore]
-        public string SourceRefundId { get; set; }
+        public string SourceRefundId => this.InternalSourceRefund.Id;
 
         [JsonIgnore]
-        public Refund SourceRefund { get; set; }
+        public Refund SourceRefund => this.InternalSourceRefund.ExpandedObject;
 
         [JsonProperty("source_refund")]
-        internal object InternalSourceRefund
-        {
-            get
-            {
-                return this.SourceRefund ?? (object)this.SourceRefundId;
-            }
-
-            set
-            {
-                StringOrObject<Refund>.Map(value, s => this.SourceRefundId = s, o => this.SourceRefund = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
+        internal ExpandableField<Refund> InternalSourceRefund { get; set; }
         #endregion
 
         #region Expandable Transfer
         [JsonIgnore]
-        public string TransferId { get; set; }
+        public string TransferId => this.InternalTransfer.Id;
 
         [JsonIgnore]
-        public Transfer Transfer { get; set; }
+        public Transfer Transfer => this.InternalTransfer.ExpandedObject;
 
         [JsonProperty("transfer")]
-        internal object InternalTransfer
-        {
-            get
-            {
-                return this.Transfer ?? (object)this.TransferId;
-            }
-
-            set
-            {
-                StringOrObject<Transfer>.Map(value, s => this.TransferId = s, o => this.Transfer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]
+        internal ExpandableField<Transfer> InternalTransfer { get; set; }
         #endregion
     }
 }
