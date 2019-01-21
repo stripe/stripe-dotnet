@@ -10,24 +10,14 @@ namespace Stripe.Issuing
 
         #region Expandable UncategorizedFile
         [JsonIgnore]
-        public string UncategorizedFileId { get; set; }
+        public string UncategorizedFileId => this.InternalUncategorizedFile.Id;
 
         [JsonIgnore]
-        public File UncategorizedFile { get; set; }
+        public File UncategorizedFile => this.InternalUncategorizedFile.ExpandedObject;
 
         [JsonProperty("uncategorized_file")]
-        internal object InternalUncategorizedFile
-        {
-            get
-            {
-                return this.UncategorizedFile ?? (object)this.UncategorizedFileId;
-            }
-
-            set
-            {
-                StringOrObject<File>.Map(value, s => this.UncategorizedFileId = s, o => this.UncategorizedFile = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+        internal ExpandableField<File> InternalUncategorizedFile { get; set; }
         #endregion
     }
 }
