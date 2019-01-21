@@ -25,28 +25,18 @@ namespace Stripe.Radar
         [JsonProperty("actionable")]
         public bool Actionable { get; set; }
 
-        #region Expandable Application
+        #region Expandable Charge
 
         /// <summary>ID of the charge this early fraud warning is for.</summary>
         [JsonIgnore]
-        public string ChargeId { get; set; }
+        public string ChargeId => this.InternalCharge.Id;
 
         [JsonIgnore]
-        public Charge Charge { get; set; }
+        public Charge Charge => this.InternalCharge.ExpandedObject;
 
-        [JsonProperty("application")]
-        internal object InternalCharge
-        {
-            get
-            {
-                return this.Charge ?? (object)this.ChargeId;
-            }
-
-            set
-            {
-                StringOrObject<Charge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
-            }
-        }
+        [JsonProperty("charge")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
+        internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
 
         /// <summary>Time at which the object was created.</summary>

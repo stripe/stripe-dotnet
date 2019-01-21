@@ -13,28 +13,18 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string BackId { get; set; }
+        public string BackId => this.InternalBack.Id;
 
         /// <summary>
         /// (Expanded) The back of an ID returned by a file upload with a <c>purpose</c>
         /// value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
-        public File Back { get; set; }
+        public File Back => this.InternalBack.ExpandedObject;
 
         [JsonProperty("back")]
-        internal object InternalBack
-        {
-            get
-            {
-                return this.Back ?? (object)this.BackId;
-            }
-
-            set
-            {
-                StringOrObject<File>.Map(value, s => this.BackId = s, o => this.Back = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+        internal ExpandableField<File> InternalBack { get; set; }
         #endregion
 
         /// <summary>
@@ -59,28 +49,18 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string FrontId { get; set; }
+        public string FrontId => this.InternalFront.Id;
 
         /// <summary>
         /// (Expanded) The front of an ID returned by a file upload with a <c>purpose</c>
         /// value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
-        public File Front { get; set; }
+        public File Front => this.InternalFront.ExpandedObject;
 
         [JsonProperty("front")]
-        internal object InternalFront
-        {
-            get
-            {
-                return this.Front ?? (object)this.FrontId;
-            }
-
-            set
-            {
-                StringOrObject<File>.Map(value, s => this.FrontId = s, o => this.Front = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+        internal ExpandableField<File> InternalFront { get; set; }
         #endregion
     }
 }
