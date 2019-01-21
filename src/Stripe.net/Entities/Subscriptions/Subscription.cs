@@ -57,24 +57,14 @@ namespace Stripe
 
         #region Expandable Customer
         [JsonIgnore]
-        public string CustomerId { get; set; }
+        public string CustomerId => this.InternalCustomer.Id;
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            get
-            {
-                return this.Customer ?? (object)this.CustomerId;
-            }
-
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         /// <summary>
@@ -85,24 +75,14 @@ namespace Stripe
 
         #region Expandable DefaultSource
         [JsonIgnore]
-        public string DefaultSourceId { get; set; }
+        public string DefaultSourceId => this.InternalDefaultSource.Id;
 
         [JsonIgnore]
-        public IPaymentSource DefaultSource { get; set; }
+        public IPaymentSource DefaultSource => this.InternalDefaultSource.ExpandedObject;
 
         [JsonProperty("default_source")]
-        internal object InternalDefaultSource
-        {
-            get
-            {
-                return this.DefaultSource ?? (object)this.DefaultSourceId;
-            }
-
-            set
-            {
-                StringOrObject<IPaymentSource>.Map(value, s => this.DefaultSourceId = s, o => this.DefaultSource = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
+        internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
         #endregion
 
         [JsonProperty("discount")]
