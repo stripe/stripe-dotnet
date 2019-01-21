@@ -48,24 +48,14 @@ namespace Stripe.Checkout
         /// ID of the customer this Session is for if one exists.
         /// </summary>
         [JsonIgnore]
-        public string CustomerId { get; set; }
+        public string CustomerId => this.InternalCustomer.Id;
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            get
-            {
-                return this.Customer ?? (object)this.CustomerId;
-            }
-
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         /// <summary>
@@ -100,24 +90,14 @@ namespace Stripe.Checkout
         /// The ID of the PaymentIntent created if SKUs or line items were provided.
         /// </summary>
         [JsonIgnore]
-        public string PaymentIntentId { get; set; }
+        public string PaymentIntentId => this.InternalPaymentIntent.Id;
 
         [JsonIgnore]
-        public PaymentIntent PaymentIntent { get; set; }
+        public PaymentIntent PaymentIntent => this.InternalPaymentIntent.ExpandedObject;
 
         [JsonProperty("payment_intent")]
-        internal object InternalPaymentIntent
-        {
-            get
-            {
-                return this.PaymentIntent ?? (object)this.PaymentIntentId;
-            }
-
-            set
-            {
-                StringOrObject<PaymentIntent>.Map(value, s => this.PaymentIntentId = s, o => this.PaymentIntent = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
+        internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
         /// <summary>
@@ -133,24 +113,14 @@ namespace Stripe.Checkout
         /// The ID of the subscription created if one or more plans were provided.
         /// </summary>
         [JsonIgnore]
-        public string SubscriptionId { get; set; }
+        public string SubscriptionId => this.InternalSubscription.Id;
 
         [JsonIgnore]
-        public Subscription Subscription { get; set; }
+        public Subscription Subscription => this.InternalSubscription.ExpandedObject;
 
         [JsonProperty("subscription")]
-        internal object InternalSubscription
-        {
-            get
-            {
-                return this.Subscription ?? (object)this.SubscriptionId;
-            }
-
-            set
-            {
-                StringOrObject<Subscription>.Map(value, s => this.SubscriptionId = s, o => this.Subscription = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
+        internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
 
         /// <summary>

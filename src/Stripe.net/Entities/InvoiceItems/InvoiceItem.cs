@@ -21,24 +21,14 @@ namespace Stripe
 
         #region Expandable Customer
         [JsonIgnore]
-        public string CustomerId { get; set; }
+        public string CustomerId => this.InternalCustomer.Id;
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            get
-            {
-                return this.Customer ?? (object)this.CustomerId;
-            }
-
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         [JsonProperty("date")]
@@ -59,24 +49,14 @@ namespace Stripe
 
         #region Expandable Invoice
         [JsonIgnore]
-        public string InvoiceId { get; set; }
+        public string InvoiceId => this.InternalInvoice.Id;
 
         [JsonIgnore]
-        public Invoice Invoice { get; set; }
+        public Invoice Invoice => this.InternalInvoice.ExpandedObject;
 
         [JsonProperty("invoice")]
-        internal object InternalInvoice
-        {
-            get
-            {
-                return this.Invoice ?? (object)this.InvoiceId;
-            }
-
-            set
-            {
-                StringOrObject<Invoice>.Map(value, s => this.InvoiceId = s, o => this.Invoice = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
+        internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
 
         [JsonProperty("livemode")]
@@ -99,24 +79,14 @@ namespace Stripe
 
         #region Expandable Subscription
         [JsonIgnore]
-        public string SubscriptionId { get; set; }
+        public string SubscriptionId => this.InternalSubscription.Id;
 
         [JsonIgnore]
-        public Subscription Subscription { get; set; }
+        public Subscription Subscription => this.InternalSubscription.ExpandedObject;
 
         [JsonProperty("subscription")]
-        internal object InternalSubscription
-        {
-            get
-            {
-                return this.Subscription ?? (object)this.SubscriptionId;
-            }
-
-            set
-            {
-                StringOrObject<Subscription>.Map(value, s => this.SubscriptionId = s, o => this.Subscription = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
+        internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
 
         [JsonProperty("subscription_item")]

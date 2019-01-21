@@ -21,24 +21,14 @@ namespace Stripe
 
         #region Expandable Balance Transaction
         [JsonIgnore]
-        public string BalanceTransactionId { get; set; }
+        public string BalanceTransactionId => this.InternalBalanceTransaction.Id;
 
         [JsonIgnore]
-        public BalanceTransaction BalanceTransaction { get; set; }
+        public BalanceTransaction BalanceTransaction => this.InternalBalanceTransaction.ExpandedObject;
 
         [JsonProperty("balance_transaction")]
-        internal object InternalBalanceTransaction
-        {
-            get
-            {
-                return this.BalanceTransaction ?? (object)this.BalanceTransactionId;
-            }
-
-            set
-            {
-                StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+        internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
         [JsonProperty("created")]
@@ -53,46 +43,26 @@ namespace Stripe
 
         #region Expandable Destination
         [JsonIgnore]
-        public string DestinationId { get; set; }
+        public string DestinationId => this.InternalDestination.Id;
 
         [JsonIgnore]
-        public Account Destination { get; set; }
+        public Account Destination => this.InternalDestination.ExpandedObject;
 
         [JsonProperty("destination")]
-        internal object InternalDestination
-        {
-            get
-            {
-                return this.Destination ?? (object)this.DestinationId;
-            }
-
-            set
-            {
-                StringOrObject<Account>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+        internal ExpandableField<Account> InternalDestination { get; set; }
         #endregion
 
         #region Expandable Destination Payment
         [JsonIgnore]
-        public string DestinationPaymentId { get; set; }
+        public string DestinationPaymentId => this.InternalDestinationPayment.Id;
 
         [JsonIgnore]
-        public Charge DestinationPayment { get; set; }
+        public Charge DestinationPayment => this.InternalDestinationPayment.ExpandedObject;
 
         [JsonProperty("destination_payment")]
-        internal object InternalDestinationPayment
-        {
-            get
-            {
-                return this.DestinationPayment ?? (object)this.DestinationPaymentId;
-            }
-
-            set
-            {
-                StringOrObject<Charge>.Map(value, s => this.DestinationPaymentId = s, o => this.DestinationPayment = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
+        internal ExpandableField<Charge> InternalDestinationPayment { get; set; }
         #endregion
 
         [JsonProperty("livemode")]
@@ -109,24 +79,14 @@ namespace Stripe
 
         #region Expandable Source Transaction
         [JsonIgnore]
-        public string SourceTransactionId { get; set; }
+        public string SourceTransactionId => this.InternalSourceTransaction.Id;
 
         [JsonIgnore]
-        public Charge SourceTransaction { get; set; }
+        public Charge SourceTransaction => this.InternalSourceTransaction.ExpandedObject;
 
         [JsonProperty("source_transaction")]
-        internal object InternalSourceTransaction
-        {
-            get
-            {
-                return this.SourceTransaction ?? (object)this.SourceTransactionId;
-            }
-
-            set
-            {
-                StringOrObject<Charge>.Map(value, s => this.SourceTransactionId = s, o => this.SourceTransaction = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
+        internal ExpandableField<Charge> InternalSourceTransaction { get; set; }
         #endregion
 
         [JsonProperty("source_type")]

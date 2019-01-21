@@ -27,49 +27,29 @@ namespace Stripe
 
         #region Expandable Application
         [JsonIgnore]
-        public string ApplicationId { get; set; }
+        public string ApplicationId => this.InternalApplication.Id;
 
         [JsonIgnore]
-        public Application Application { get; set; }
+        public Application Application => this.InternalApplication.ExpandedObject;
 
         [JsonProperty("application")]
-        internal object InternalApplication
-        {
-            get
-            {
-                return this.Application ?? (object)this.ApplicationId;
-            }
-
-            set
-            {
-                StringOrObject<Application>.Map(value, s => this.ApplicationId = s, o => this.Application = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
+        internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
         #region Expandable Application Fee
         [JsonIgnore]
-        public string ApplicationFeeId { get; set; }
+        public string ApplicationFeeId => this.InternalApplicationFee.Id;
 
         /// <summary>
         /// The application fee (if any) for the charge. See the Connect documentation for details.
         /// </summary>
         [JsonIgnore]
-        public ApplicationFee ApplicationFee { get; set; }
+        public ApplicationFee ApplicationFee => this.InternalApplicationFee.ExpandedObject;
 
         [JsonProperty("application_fee")]
-        internal object InternalApplicationFee
-        {
-            get
-            {
-                return this.ApplicationFee ?? (object)this.ApplicationFeeId;
-            }
-
-            set
-            {
-                StringOrObject<ApplicationFee>.Map(value, s => this.ApplicationFeeId = s, o => this.ApplicationFee = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<ApplicationFee>))]
+        internal ExpandableField<ApplicationFee> InternalApplicationFee { get; set; }
         #endregion
 
         /// <summary>
@@ -84,24 +64,14 @@ namespace Stripe
         /// ID of the balance transaction that describes the impact of this charge on your account balance (not including refunds or disputes).
         /// </summary>
         [JsonIgnore]
-        public string BalanceTransactionId { get; set; }
+        public string BalanceTransactionId => this.InternalBalanceTransaction.Id;
 
         [JsonIgnore]
-        public BalanceTransaction BalanceTransaction { get; set; }
+        public BalanceTransaction BalanceTransaction => this.InternalBalanceTransaction.ExpandedObject;
 
         [JsonProperty("balance_transaction")]
-        internal object InternalBalanceTransaction
-        {
-            get
-            {
-                return this.BalanceTransaction ?? (object)this.BalanceTransactionId;
-            }
-
-            set
-            {
-                StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+        internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
         /// <summary>
@@ -132,24 +102,14 @@ namespace Stripe
         /// ID of the customer this charge is for if one exists.
         /// </summary>
         [JsonIgnore]
-        public string CustomerId { get; set; }
+        public string CustomerId => this.InternalCustomer.Id;
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            get
-            {
-                return this.Customer ?? (object)this.CustomerId;
-            }
-
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         [JsonProperty("description")]
@@ -157,52 +117,32 @@ namespace Stripe
 
         #region Expandable Destination
         [JsonIgnore]
-        public string DestinationId { get; set; }
+        public string DestinationId => this.InternalDestination.Id;
 
         /// <summary>
         /// The account (if any) the charge was made on behalf of, with an automatic transfer. See the Connect documentation for details.
         /// </summary>
         [JsonIgnore]
-        public Account Destination { get; set; }
+        public Account Destination => this.InternalDestination.ExpandedObject;
 
         [JsonProperty("destination")]
-        internal object InternalDestination
-        {
-            get
-            {
-                return this.Destination ?? (object)this.DestinationId;
-            }
-
-            set
-            {
-                StringOrObject<Account>.Map(value, s => this.DestinationId = s, o => this.Destination = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+        internal ExpandableField<Account> InternalDestination { get; set; }
         #endregion
 
         #region Expandable Dispute
         [JsonIgnore]
-        public string DisputeId { get; set; }
+        public string DisputeId => this.InternalDispute.Id;
 
         /// <summary>
         /// Details about the dispute if the charge has been disputed.
         /// </summary>
         [JsonIgnore]
-        public Dispute Dispute { get; set; }
+        public Dispute Dispute => this.InternalDispute.ExpandedObject;
 
         [JsonProperty("dispute")]
-        internal object InternalDispute
-        {
-            get
-            {
-                return this.Dispute ?? (object)this.DisputeId;
-            }
-
-            set
-            {
-                StringOrObject<Dispute>.Map(value, s => this.DisputeId = s, o => this.Dispute = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Dispute>))]
+        internal ExpandableField<Dispute> InternalDispute { get; set; }
         #endregion
 
         /// <summary>
@@ -229,24 +169,14 @@ namespace Stripe
         /// ID of the invoice this charge is for if one exists.
         /// </summary>
         [JsonIgnore]
-        public string InvoiceId { get; set; }
+        public string InvoiceId => this.InternalInvoice.Id;
 
         [JsonIgnore]
-        public Invoice Invoice { get; set; }
+        public Invoice Invoice => this.InternalInvoice.ExpandedObject;
 
         [JsonProperty("invoice")]
-        internal object InternalInvoice
-        {
-            get
-            {
-                return this.Invoice ?? (object)this.InvoiceId;
-            }
-
-            set
-            {
-                StringOrObject<Invoice>.Map(value, s => this.InvoiceId = s, o => this.Invoice = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
+        internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
 
         [JsonProperty("livemode")]
@@ -265,24 +195,14 @@ namespace Stripe
         /// <para>To populate the OnBehalfOf entity, you need to set ExpandOnBehalfOf to true on your service before invoking a service method.</para>
         /// </summary>
         [JsonIgnore]
-        public string OnBehalfOfId { get; set; }
+        public string OnBehalfOfId => this.InternalOnBehalfOf.Id;
 
         [JsonIgnore]
-        public Account OnBehalfOf { get; set; }
+        public Account OnBehalfOf => this.InternalOnBehalfOf.ExpandedObject;
 
         [JsonProperty("on_behalf_of")]
-        internal object InternalOnBehalfOf
-        {
-            get
-            {
-                return this.OnBehalfOf ?? (object)this.OnBehalfOfId;
-            }
-
-            set
-            {
-                StringOrObject<Account>.Map(value, s => this.OnBehalfOfId = s, o => this.OnBehalfOf = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+        internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
 
         #region Expandable Order
@@ -291,24 +211,14 @@ namespace Stripe
         /// ID of the order this charge is for if one exists.
         /// </summary>
         [JsonIgnore]
-        public string OrderId { get; set; }
+        public string OrderId => this.InternalOrder.Id;
 
         [JsonIgnore]
-        public Order Order { get; set; }
+        public Order Order => this.InternalOrder.ExpandedObject;
 
         [JsonProperty("order")]
-        internal object InternalOrder
-        {
-            get
-            {
-                return this.Order ?? (object)this.OrderId;
-            }
-
-            set
-            {
-                StringOrObject<Order>.Map(value, s => this.OrderId = s, o => this.Order = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Order>))]
+        internal ExpandableField<Order> InternalOrder { get; set; }
         #endregion
 
         /// <summary>
@@ -336,24 +246,14 @@ namespace Stripe
         /// ID of the payment intent this charge is for if one exists.
         /// </summary>
         [JsonIgnore]
-        public string PaymentIntentId { get; set; }
+        public string PaymentIntentId => this.InternalPaymentIntent.Id;
 
         [JsonIgnore]
-        public PaymentIntent PaymentIntent { get; set; }
+        public PaymentIntent PaymentIntent => this.InternalPaymentIntent.ExpandedObject;
 
         [JsonProperty("payment_intent")]
-        internal object InternalPaymentIntent
-        {
-            get
-            {
-                return this.PaymentIntent ?? (object)this.PaymentIntentId;
-            }
-
-            set
-            {
-                StringOrObject<PaymentIntent>.Map(value, s => this.PaymentIntentId = s, o => this.PaymentIntent = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
+        internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
         /// <summary>
@@ -407,24 +307,14 @@ namespace Stripe
         /// ID of the review associated with this charge if one exists.
         /// </summary>
         [JsonIgnore]
-        public string ReviewId { get; set; }
+        public string ReviewId => this.InternalReview.Id;
 
         [JsonIgnore]
-        public Review Review { get; set; }
+        public Review Review => this.InternalReview.ExpandedObject;
 
         [JsonProperty("review")]
-        internal object InternalReview
-        {
-            get
-            {
-                return this.Review ?? (object)this.ReviewId;
-            }
-
-            set
-            {
-                StringOrObject<Review>.Map(value, s => this.ReviewId = s, o => this.Review = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Review>))]
+        internal ExpandableField<Review> InternalReview { get; set; }
         #endregion
 
         /// <summary>
@@ -446,24 +336,14 @@ namespace Stripe
         /// The transfer ID which created this charge. Only present if the charge came from another Stripe account. See the Connect documentation for details.
         /// </summary>
         [JsonIgnore]
-        public string SourceTransferId { get; set; }
+        public string SourceTransferId => this.InternalSourceTransfer.Id;
 
         [JsonIgnore]
-        public Transfer SourceTransfer { get; set; }
+        public Transfer SourceTransfer => this.InternalSourceTransfer.ExpandedObject;
 
         [JsonProperty("source_transfer")]
-        internal object InternalSourceTransfer
-        {
-            get
-            {
-                return this.SourceTransfer ?? (object)this.SourceTransferId;
-            }
-
-            set
-            {
-                StringOrObject<Transfer>.Map(value, s => this.SourceTransferId = s, o => this.SourceTransfer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]
+        internal ExpandableField<Transfer> InternalSourceTransfer { get; set; }
         #endregion
 
         /// <summary>
@@ -484,24 +364,14 @@ namespace Stripe
         /// ID of the transfer to the destination account (only applicable if the charge was created using the destination parameter).
         /// </summary>
         [JsonIgnore]
-        public string TransferId { get; set; }
+        public string TransferId => this.InternalTransfer.Id;
 
         [JsonIgnore]
-        public Transfer Transfer { get; set; }
+        public Transfer Transfer => this.InternalTransfer.ExpandedObject;
 
         [JsonProperty("transfer")]
-        internal object InternalTransfer
-        {
-            get
-            {
-                return this.Transfer ?? (object)this.TransferId;
-            }
-
-            set
-            {
-                StringOrObject<Transfer>.Map(value, s => this.TransferId = s, o => this.Transfer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]
+        internal ExpandableField<Transfer> InternalTransfer { get; set; }
         #endregion
 
         [JsonProperty("transfer_data")]

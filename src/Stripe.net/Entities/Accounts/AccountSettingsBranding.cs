@@ -1,7 +1,5 @@
 namespace Stripe
 {
-    using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -15,27 +13,17 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string IconId { get; set; }
+        public string IconId => this.InternalIcon.Id;
 
         /// <summary>
         /// (Expanded) An icon for the account. Must be square and at least 128px x 128px.
         /// </summary>
         [JsonIgnore]
-        public File Icon { get; set; }
+        public File Icon => this.InternalIcon.ExpandedObject;
 
         [JsonProperty("icon")]
-        internal object InternalIcon
-        {
-            get
-            {
-                return this.Icon ?? (object)this.IconId;
-            }
-
-            set
-            {
-                StringOrObject<File>.Map(value, s => this.IconId = s, o => this.Icon = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+        internal ExpandableField<File> InternalIcon { get; set; }
         #endregion
 
         #region Expandable Logo
@@ -47,28 +35,18 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string LogoId { get; set; }
+        public string LogoId => this.InternalLogo.Id;
 
         /// <summary>
         /// (Expanded)A logo for the account that will be used in Checkout instead of the icon and
         /// without the account’s name next to it if provided. Must be at least 128px x 128px.
         /// </summary>
         [JsonIgnore]
-        public File Logo { get; set; }
+        public File Logo => this.InternalLogo.ExpandedObject;
 
         [JsonProperty("logo")]
-        internal object InternalLogo
-        {
-            get
-            {
-                return this.Logo ?? (object)this.LogoId;
-            }
-
-            set
-            {
-                StringOrObject<File>.Map(value, s => this.LogoId = s, o => this.Logo = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+        internal ExpandableField<File> InternalLogo { get; set; }
         #endregion
 
         /// <summary>

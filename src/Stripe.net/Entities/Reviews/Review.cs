@@ -1,7 +1,6 @@
 namespace Stripe
 {
     using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -15,24 +14,14 @@ namespace Stripe
 
         #region Expandable Charge
         [JsonIgnore]
-        public string ChargeId { get; set; }
+        public string ChargeId => this.InternalCharge.Id;
 
         [JsonIgnore]
-        public Charge Charge { get; set; }
+        public Charge Charge => this.InternalCharge.ExpandedObject;
 
         [JsonProperty("charge")]
-        internal object InternalCharge
-        {
-            get
-            {
-                return this.Charge ?? (object)this.ChargeId;
-            }
-
-            set
-            {
-                StringOrObject<Charge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
+        internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
 
         [JsonProperty("created")]
@@ -47,24 +36,14 @@ namespace Stripe
 
         #region Expandable PaymentIntent
         [JsonIgnore]
-        public string PaymentIntentId { get; set; }
+        public string PaymentIntentId => this.InternalPaymentIntent.Id;
 
         [JsonIgnore]
-        public PaymentIntent PaymentIntent { get; set; }
+        public PaymentIntent PaymentIntent => this.InternalPaymentIntent.ExpandedObject;
 
         [JsonProperty("payment_intent")]
-        internal object InternalPaymentIntent
-        {
-            get
-            {
-                return this.PaymentIntent ?? (object)this.PaymentIntentId;
-            }
-
-            set
-            {
-                StringOrObject<PaymentIntent>.Map(value, s => this.PaymentIntentId = s, o => this.PaymentIntent = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
+        internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
         [JsonProperty("reason")]
