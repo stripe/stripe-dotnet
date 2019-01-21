@@ -1,11 +1,6 @@
 namespace StripeTests.Radar
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Newtonsoft.Json;
-    using Stripe;
     using Stripe.Radar;
     using Xunit;
 
@@ -20,7 +15,7 @@ namespace StripeTests.Radar
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/radar/value_lists/rsl_123");
-            var valueList = Mapper<ValueList>.MapFromJson(json);
+            var valueList = JsonConvert.DeserializeObject<ValueList>(json);
             Assert.NotNull(valueList);
             Assert.IsType<ValueList>(valueList);
             Assert.NotNull(valueList.Id);
