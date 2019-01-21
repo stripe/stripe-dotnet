@@ -44,24 +44,14 @@ namespace Stripe
         /// ID of the customer associated with that credit note.
         /// </summary>
         [JsonIgnore]
-        public string CustomerId { get; set; }
+        public string CustomerId => this.InternalCustomer.Id;
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            get
-            {
-                return this.Customer ?? (object)this.CustomerId;
-            }
-
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         #region Expandable Invoice
@@ -70,24 +60,14 @@ namespace Stripe
         /// ID of the invoice associated with that credit note.
         /// </summary>
         [JsonIgnore]
-        public string InvoiceId { get; set; }
+        public string InvoiceId => this.InternalInvoice.Id;
 
         [JsonIgnore]
-        public Invoice Invoice { get; set; }
+        public Invoice Invoice => this.InternalInvoice.ExpandedObject;
 
         [JsonProperty("invoice")]
-        internal object InternalInvoice
-        {
-            get
-            {
-                return this.Invoice ?? (object)this.InvoiceId;
-            }
-
-            set
-            {
-                StringOrObject<Invoice>.Map(value, s => this.InvoiceId = s, o => this.Invoice = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
+        internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
 
         /// <summary>
@@ -135,24 +115,14 @@ namespace Stripe
         /// ID of the refund associated with that credit note.
         /// </summary>
         [JsonIgnore]
-        public string RefundId { get; set; }
+        public string RefundId => this.InternalRefund.Id;
 
         [JsonIgnore]
-        public Refund Refund { get; set; }
+        public Refund Refund => this.InternalRefund.ExpandedObject;
 
         [JsonProperty("refund")]
-        internal object InternalRefund
-        {
-            get
-            {
-                return this.Refund ?? (object)this.RefundId;
-            }
-
-            set
-            {
-                StringOrObject<Refund>.Map(value, s => this.RefundId = s, o => this.Refund = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
+        internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion
 
         /// <summary>

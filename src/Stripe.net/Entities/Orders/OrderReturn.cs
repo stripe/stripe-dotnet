@@ -45,24 +45,14 @@ namespace Stripe
         /// <para>Expandable</para>
         /// </summary>
         [JsonIgnore]
-        public string OrderId { get; set; }
+        public string OrderId => this.InternalOrder.Id;
 
         [JsonIgnore]
-        public Order Order { get; set; }
+        public Order Order => this.InternalOrder.ExpandedObject;
 
         [JsonProperty("order")]
-        internal object InternalOrder
-        {
-            get
-            {
-                return this.Order ?? (object)this.OrderId;
-            }
-
-            set
-            {
-                StringOrObject<Order>.Map(value, s => this.OrderId = s, o => this.Order = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Order>))]
+        internal ExpandableField<Order> InternalOrder { get; set; }
         #endregion
 
         #region Expandable Refund
@@ -74,21 +64,11 @@ namespace Stripe
         public string RefundId { get; set; }
 
         [JsonIgnore]
-        public Refund Refund { get; set; }
+        public Refund Refund => this.InternalRefund.ExpandedObject;
 
         [JsonProperty("refund")]
-        internal object InternalRefund
-        {
-            get
-            {
-                return this.Refund ?? (object)this.RefundId;
-            }
-
-            set
-            {
-                StringOrObject<Refund>.Map(value, s => this.RefundId = s, o => this.Refund = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
+        internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion
     }
 }
