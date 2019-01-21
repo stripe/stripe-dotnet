@@ -24,24 +24,14 @@ namespace Stripe
 
         #region Expandable Application
         [JsonIgnore]
-        public string ApplicationId { get; set; }
+        public string ApplicationId => this.InternalApplication.Id;
 
         [JsonIgnore]
-        public Application Application { get; set; }
+        public Application Application => this.InternalApplication.ExpandedObject;
 
         [JsonProperty("application")]
-        internal object InternalApplication
-        {
-            get
-            {
-                return this.Application ?? (object)this.ApplicationId;
-            }
-
-            set
-            {
-                StringOrObject<Application>.Map(value, s => this.ApplicationId = s, o => this.Application = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
+        internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
         [JsonProperty("application_fee_amount")]
@@ -75,24 +65,14 @@ namespace Stripe
 
         #region Expandable Customer
         [JsonIgnore]
-        public string CustomerId { get; set; }
+        public string CustomerId => this.InternalCustomer.Id;
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            get
-            {
-                return this.Customer ?? (object)this.CustomerId;
-            }
-
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         [JsonProperty("description")]
@@ -112,24 +92,14 @@ namespace Stripe
 
         #region Expandable OnBehalfOf (Account)
         [JsonIgnore]
-        public string OnBehalfOfId { get; set; }
+        public string OnBehalfOfId => this.InternalOnBehalfOf.Id;
 
         [JsonIgnore]
-        public Account OnBehalfOf { get; set; }
+        public Account OnBehalfOf => this.InternalOnBehalfOf.ExpandedObject;
 
         [JsonProperty("on_behalf_of")]
-        internal object InternalOnBehalfOf
-        {
-            get
-            {
-                return this.OnBehalfOf ?? (object)this.OnBehalfOfId;
-            }
-
-            set
-            {
-                StringOrObject<Account>.Map(value, s => this.OnBehalfOfId = s, o => this.OnBehalfOf = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+        internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
 
         [JsonProperty("payment_method_types")]
@@ -140,24 +110,14 @@ namespace Stripe
 
         #region Expandable Review
         [JsonIgnore]
-        public string ReviewId { get; set; }
+        public string ReviewId => this.InternalReview.Id;
 
         [JsonIgnore]
-        public Review Review { get; set; }
+        public Review Review => this.InternalReview.ExpandedObject;
 
         [JsonProperty("review")]
-        internal object InternalReview
-        {
-            get
-            {
-                return this.Review ?? (object)this.ReviewId;
-            }
-
-            set
-            {
-                StringOrObject<Review>.Map(value, s => this.ReviewId = s, o => this.Review = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Review>))]
+        internal ExpandableField<Review> InternalReview { get; set; }
         #endregion
 
         [JsonProperty("shipping")]
@@ -165,24 +125,14 @@ namespace Stripe
 
         #region Expandable Source
         [JsonIgnore]
-        public string SourceId { get; set; }
+        public string SourceId => this.InternalSource.Id;
 
         [JsonIgnore]
-        public IPaymentSource Source { get; set; }
+        public IPaymentSource Source => this.InternalSource.ExpandedObject;
 
         [JsonProperty("source")]
-        internal object InternalSource
-        {
-            get
-            {
-                return this.Source ?? (object)this.SourceId;
-            }
-
-            set
-            {
-                StringOrObject<IPaymentSource>.Map(value, s => this.SourceId = s, o => this.Source = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
+        internal ExpandableField<IPaymentSource> InternalSource { get; set; }
         #endregion
 
         [JsonProperty("statement_descriptor")]
