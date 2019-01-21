@@ -21,24 +21,14 @@ namespace Stripe
 
         #region Expandable Charge
         [JsonIgnore]
-        public string ChargeId { get; set; }
+        public string ChargeId => this.InternalCharge.Id;
 
         [JsonIgnore]
-        public Charge Charge { get; set; }
+        public Charge Charge => this.InternalCharge.ExpandedObject;
 
         [JsonProperty("charge")]
-        internal object InternalCharge
-        {
-            get
-            {
-                return this.Charge ?? (object)this.ChargeId;
-            }
-
-            set
-            {
-                StringOrObject<Charge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
+        internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
 
         [JsonProperty("created")]

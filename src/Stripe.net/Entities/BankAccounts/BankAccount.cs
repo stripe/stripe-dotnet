@@ -1,6 +1,5 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -15,24 +14,14 @@ namespace Stripe
 
         #region Expandable Account
         [JsonIgnore]
-        public string AccountId { get; set; }
+        public string AccountId => this.InternalAccount.Id;
 
         [JsonIgnore]
-        public Account Account { get; set; }
+        public Account Account => this.InternalAccount.ExpandedObject;
 
         [JsonProperty("account")]
-        internal object InternalAccount
-        {
-            get
-            {
-                return this.Account ?? (object)this.AccountId;
-            }
-
-            set
-            {
-                StringOrObject<Account>.Map(value, s => this.AccountId = s, o => this.Account = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+        internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
 
         [JsonProperty("account_holder_name")]
@@ -52,24 +41,14 @@ namespace Stripe
 
         #region Expandable Customer
         [JsonIgnore]
-        public string CustomerId { get; set; }
+        public string CustomerId => this.InternalCustomer.Id;
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            get
-            {
-                return this.Customer ?? (object)this.CustomerId;
-            }
-
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         [JsonProperty("default_for_currency")]

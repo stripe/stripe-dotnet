@@ -18,25 +18,14 @@ namespace Stripe
         /// ID of the default payment method for the customer.
         /// </summary>
         [JsonIgnore]
-        public string DefaultPaymentMethodId { get; set; }
+        public string DefaultPaymentMethodId => this.InternalDefaultPaymentMethod.Id;
 
         [JsonIgnore]
-        public PaymentMethod DefaultPaymentMethod { get; set; }
+        public PaymentMethod DefaultPaymentMethod => this.InternalDefaultPaymentMethod.ExpandedObject;
 
         [JsonProperty("default_payment_method")]
-        internal object InternalDefaultPaymentMethod
-        {
-            get
-            {
-                return this.DefaultPaymentMethod ?? (object)this.DefaultPaymentMethodId;
-            }
-
-            set
-            {
-                StringOrObject<PaymentMethod>.Map(value, s => this.DefaultPaymentMethodId = s, o => this.DefaultPaymentMethod = o);
-            }
-        }
-
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
+        internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
         #endregion
 
         /// <summary>

@@ -18,90 +18,50 @@ namespace Stripe.Issuing
 
         #region Expandable Authorization
         [JsonIgnore]
-        public string AuthorizationId { get; set; }
+        public string AuthorizationId => this.InternalAuthorization.Id;
 
         [JsonIgnore]
-        public Authorization Authorization { get; set; }
+        public Authorization Authorization => this.InternalAuthorization.ExpandedObject;
 
         [JsonProperty("authorization")]
-        internal object InternalAuthorization
-        {
-            get
-            {
-                return this.Authorization ?? (object)this.AuthorizationId;
-            }
-
-            set
-            {
-                StringOrObject<Authorization>.Map(value, s => this.AuthorizationId = s, o => this.Authorization = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Authorization>))]
+        internal ExpandableField<Authorization> InternalAuthorization { get; set; }
         #endregion
 
         #region Expandable BalanceTransaction
         [JsonIgnore]
-        public string BalanceTransactionId { get; set; }
+        public string BalanceTransactionId => this.InternalBalanceTransaction.Id;
 
         [JsonIgnore]
-        public BalanceTransaction BalanceTransaction { get; set; }
+        public BalanceTransaction BalanceTransaction => this.InternalBalanceTransaction.ExpandedObject;
 
         [JsonProperty("balance_transaction")]
-        internal object InternalBalanceTransaction
-        {
-            get
-            {
-                return this.BalanceTransaction ?? (object)this.BalanceTransactionId;
-            }
-
-            set
-            {
-                StringOrObject<BalanceTransaction>.Map(value, s => this.BalanceTransactionId = s, o => this.BalanceTransaction = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+        internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
         #region Expandable Card
         [JsonIgnore]
-        public string CardId { get; set; }
+        public string CardId => this.InternalCard.Id;
 
         [JsonIgnore]
-        public Card Card { get; set; }
+        public Card Card => this.InternalCard.ExpandedObject;
 
         [JsonProperty("card")]
-        internal object InternalCard
-        {
-            get
-            {
-                return this.Card ?? (object)this.CardId;
-            }
-
-            set
-            {
-                StringOrObject<Card>.Map(value, s => this.CardId = s, o => this.Card = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
+        internal ExpandableField<Card> InternalCard { get; set; }
         #endregion
 
         #region Expandable Cardholder
         [JsonIgnore]
-        public string CardholderId { get; set; }
+        public string CardholderId => this.InternalCardholder.Id;
 
         [JsonIgnore]
-        public Cardholder Cardholder { get; set; }
+        public Cardholder Cardholder => this.InternalCardholder.ExpandedObject;
 
         [JsonProperty("cardholder")]
-        internal object InternalCardholder
-        {
-            get
-            {
-                return this.Cardholder ?? (object)this.CardholderId;
-            }
-
-            set
-            {
-                StringOrObject<Cardholder>.Map(value, s => this.CardholderId = s, o => this.Cardholder = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Cardholder>))]
+        internal ExpandableField<Cardholder> InternalCardholder { get; set; }
         #endregion
 
         [JsonProperty("created")]
@@ -113,24 +73,14 @@ namespace Stripe.Issuing
 
         #region Expandable Dispute
         [JsonIgnore]
-        public string DisputeId { get; set; }
+        public string DisputeId => this.InternalDispute.Id;
 
         [JsonIgnore]
-        public Dispute Dispute { get; set; }
+        public Dispute Dispute => this.InternalDispute.ExpandedObject;
 
         [JsonProperty("dispute")]
-        internal object InternalDispute
-        {
-            get
-            {
-                return this.Dispute ?? (object)this.DisputeId;
-            }
-
-            set
-            {
-                StringOrObject<Dispute>.Map(value, s => this.DisputeId = s, o => this.Dispute = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Dispute>))]
+        internal ExpandableField<Dispute> InternalDispute { get; set; }
         #endregion
 
         [JsonProperty("livemode")]

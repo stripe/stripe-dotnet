@@ -23,24 +23,14 @@ namespace Stripe
         /// The ID of the tax rate that was applied to get this tax amount.
         /// </summary>
         [JsonIgnore]
-        public string TaxRateId { get; set; }
+        public string TaxRateId => this.InternalTaxRate.Id;
 
         [JsonIgnore]
-        public TaxRate TaxRate { get; set; }
+        public TaxRate TaxRate => this.InternalTaxRate.ExpandedObject;
 
         [JsonProperty("tax_rate")]
-        internal object InternalTaxRate
-        {
-            get
-            {
-                return this.TaxRate ?? (object)this.TaxRateId;
-            }
-
-            set
-            {
-                StringOrObject<TaxRate>.Map(value, s => this.TaxRateId = s, o => this.TaxRate = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<TaxRate>))]
+        internal ExpandableField<TaxRate> InternalTaxRate { get; set; }
         #endregion
     }
 }
