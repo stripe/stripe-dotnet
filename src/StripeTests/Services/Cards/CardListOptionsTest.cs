@@ -1,30 +1,17 @@
 namespace StripeTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Stripe;
-    using Stripe.Infrastructure;
+    using Stripe.Infrastructure.Extensions;
     using Xunit;
 
     public class CardListOptionsTest : BaseStripeTest
     {
-        private readonly CardService service;
-
-        public CardListOptionsTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
-        {
-            this.service = new CardService();
-        }
-
         [Fact]
         public void SerializeObjectProperly()
         {
             var options = new CardListOptions();
 
-            var url = this.service.ApplyAllParameters(options, string.Empty, false);
-            Assert.Equal("?object=card", url);
+            Assert.Equal("object=card", options.ToQueryString());
         }
     }
 }

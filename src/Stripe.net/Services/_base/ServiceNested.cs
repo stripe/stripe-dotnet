@@ -5,8 +5,6 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    using Stripe.Infrastructure;
-
     public abstract class ServiceNested<EntityReturned> : Service<EntityReturned>
         where EntityReturned : IStripeEntity
     {
