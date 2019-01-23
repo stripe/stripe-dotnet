@@ -20,7 +20,7 @@ namespace Stripe.Issuing
         {
         }
 
-        public override string BasePath => "/issuing/cardholders";
+        public override string BasePath => "/v1/issuing/cardholders";
 
         public virtual Cardholder Create(CardholderCreateOptions options, RequestOptions requestOptions = null)
         {

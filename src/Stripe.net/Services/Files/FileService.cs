@@ -20,13 +20,13 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/files";
+        public override string BasePath => "/v1/files";
 
         public virtual File Create(FileCreateOptions options, RequestOptions requestOptions = null)
         {
             return Mapper<File>.MapFromJson(
                 Requestor.PostFile(
-                    this.ClassUrl(Urls.BaseFilesUrl),
+                    this.ClassUrl(StripeConfiguration.FilesBase),
                     options.File,
                     options.Purpose,
                     this.SetupRequestOptions(requestOptions)));
@@ -36,7 +36,7 @@ namespace Stripe
         {
             return Mapper<File>.MapFromJson(
                 await Requestor.PostFileAsync(
-                    this.ClassUrl(Urls.BaseFilesUrl),
+                    this.ClassUrl(StripeConfiguration.FilesBase),
                     options.File,
                     options.Purpose,
                     this.SetupRequestOptions(requestOptions),

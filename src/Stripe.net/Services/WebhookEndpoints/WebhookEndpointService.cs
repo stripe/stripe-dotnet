@@ -21,7 +21,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/webhook_endpoints";
+        public override string BasePath => "/v1/webhook_endpoints";
 
         public virtual WebhookEndpoint Create(WebhookEndpointCreateOptions options, RequestOptions requestOptions = null)
         {

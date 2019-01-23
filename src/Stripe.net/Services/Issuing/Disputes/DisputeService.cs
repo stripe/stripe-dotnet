@@ -20,7 +20,7 @@ namespace Stripe.Issuing
         {
         }
 
-        public override string BasePath => "/issuing/disputes";
+        public override string BasePath => "/v1/issuing/disputes";
 
         public virtual Dispute Create(DisputeCreateOptions options, RequestOptions requestOptions = null)
         {
