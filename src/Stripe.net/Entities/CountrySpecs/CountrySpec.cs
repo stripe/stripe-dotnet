@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CountrySpec : StripeEntity, IHasId, IHasObject
+    public class CountrySpec : StripeEntity<CountrySpec>, IHasId, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

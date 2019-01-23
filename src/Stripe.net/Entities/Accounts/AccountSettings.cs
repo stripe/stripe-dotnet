@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class AccountSettings : StripeEntity
+    public class AccountSettings : StripeEntity<AccountSettings>
     {
         /// <summary>
         /// Settings used to apply the account’s branding to email receipts, invoices, Checkout,

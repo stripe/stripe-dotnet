@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class SourceCardPresent : StripeEntity
+    public class SourceCardPresent : StripeEntity<SourceCardPresent>
     {
         [JsonProperty("application_cryptogram")]
         public string ApplicationCryptogram { get; set; }

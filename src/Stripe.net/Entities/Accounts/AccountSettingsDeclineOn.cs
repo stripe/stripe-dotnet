@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class AccountSettingsDeclineOn : StripeEntity
+    public class AccountSettingsDeclineOn : StripeEntity<AccountSettingsDeclineOn>
     {
         /// <summary>
         /// Whether Stripe automatically declines charges with an incorrect ZIP or postal code.
