@@ -19,7 +19,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/accounts/{PARENT_ID}/capabilities";
+        public override string BasePath => "/v1/accounts/{PARENT_ID}/capabilities";
 
         public bool ExpandAccount { get; set; }
 

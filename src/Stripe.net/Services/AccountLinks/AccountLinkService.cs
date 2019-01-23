@@ -19,7 +19,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/account_links";
+        public override string BasePath => "/v1/account_links";
 
         public virtual AccountLink Create(AccountLinkCreateOptions options, RequestOptions requestOptions = null)
         {

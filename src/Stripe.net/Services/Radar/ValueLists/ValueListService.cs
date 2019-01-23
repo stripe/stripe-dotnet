@@ -19,7 +19,7 @@ namespace Stripe.Radar
         {
         }
 
-        public override string BasePath => "/radar/value_lists";
+        public override string BasePath => "/v1/radar/value_lists";
 
         public virtual ValueList Create(ValueListCreateOptions options, RequestOptions requestOptions = null)
         {

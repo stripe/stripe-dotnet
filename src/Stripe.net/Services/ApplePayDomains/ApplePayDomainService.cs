@@ -20,7 +20,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/apple_pay/domains";
+        public override string BasePath => "/v1/apple_pay/domains";
 
         public virtual ApplePayDomain Create(ApplePayDomainCreateOptions options, RequestOptions requestOptions = null)
         {
