@@ -18,7 +18,7 @@ namespace Stripe.Terminal
         {
         }
 
-        public override string BasePath => "/terminal/readers";
+        public override string BasePath => "/v1/terminal/readers";
 
         public virtual Reader Create(ReaderCreateOptions options, RequestOptions requestOptions = null)
         {

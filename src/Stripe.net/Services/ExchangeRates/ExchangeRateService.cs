@@ -18,7 +18,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/exchange_rates";
+        public override string BasePath => "/v1/exchange_rates";
 
         public virtual ExchangeRate Get(string currency, RequestOptions requestOptions = null)
         {

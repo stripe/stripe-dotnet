@@ -18,7 +18,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/events";
+        public override string BasePath => "/v1/events";
 
         public virtual Event Get(string eventId, RequestOptions requestOptions = null)
         {
