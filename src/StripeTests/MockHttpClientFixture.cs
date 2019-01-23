@@ -1,8 +1,10 @@
 namespace StripeTests
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
+    using System.Threading.Tasks;
     using Moq;
     using Moq.Protected;
     using Stripe;
@@ -42,13 +44,33 @@ namespace StripeTests
         /// </summary>
         public void AssertRequest(HttpMethod method, string path)
         {
-            this.MockHandler.Protected().Verify(
-                "SendAsync",
-                Times.Once(),
-                ItExpr.Is<HttpRequestMessage>(m =>
-                    m.Method == method &&
-                    m.RequestUri.AbsolutePath == path),
-                ItExpr.IsAny<CancellationToken>());
+            this.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == method &&
+                        m.RequestUri.AbsolutePath == path),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        /// <summary>
+        /// Stubs an HTTP request with the specified method and path to return the specified status
+        /// code and response body.
+        /// </summary>
+        public void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response)
+        {
+            var responseMessage = new HttpResponseMessage(status);
+            responseMessage.Content = new StringContent(response);
+
+            this.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == method &&
+                        m.RequestUri.AbsolutePath == path),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(responseMessage));
         }
     }
 }
