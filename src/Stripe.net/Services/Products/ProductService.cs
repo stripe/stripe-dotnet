@@ -21,7 +21,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/products";
+        public override string BasePath => "/v1/products";
 
         public virtual Product Create(ProductCreateOptions options, RequestOptions requestOptions = null)
         {

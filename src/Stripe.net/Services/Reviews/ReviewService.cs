@@ -18,7 +18,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/reviews";
+        public override string BasePath => "/v1/reviews";
 
         public virtual Review Approve(string reviewId, ReviewApproveOptions options = null, RequestOptions requestOptions = null)
         {

@@ -19,7 +19,7 @@ namespace Stripe.Checkout
         {
         }
 
-        public override string BasePath => "/checkout/sessions";
+        public override string BasePath => "/v1/checkout/sessions";
 
         public virtual Session Create(SessionCreateOptions options, RequestOptions requestOptions = null)
         {

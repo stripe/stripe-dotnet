@@ -20,7 +20,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/credit_notes";
+        public override string BasePath => "/v1/credit_notes";
 
         public virtual CreditNote Create(CreditNoteCreateOptions options, RequestOptions requestOptions = null)
         {
