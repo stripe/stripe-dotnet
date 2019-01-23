@@ -4,7 +4,7 @@ namespace Stripe.Reporting
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Parameters : StripeEntity
+    public class Parameters : StripeEntity<Parameters>
     {
         [JsonProperty("connected_account")]
         public string ConnectedAccount { get; set; }

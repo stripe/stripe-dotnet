@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class TermsOfServiceAcceptance : StripeEntity
+    public class TermsOfServiceAcceptance : StripeEntity<TermsOfServiceAcceptance>
     {
         [JsonProperty("date")]
         [JsonConverter(typeof(DateTimeConverter))]

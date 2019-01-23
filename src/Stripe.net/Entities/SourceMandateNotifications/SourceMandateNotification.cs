@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SourceMandateNotification : StripeEntity, IHasId, IHasObject
+    public class SourceMandateNotification : StripeEntity<SourceMandateNotification>, IHasId, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

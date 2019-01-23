@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class StripeError : StripeEntity
+    public class StripeError : StripeEntity<StripeError>
     {
         /*
          * For regular API errors:

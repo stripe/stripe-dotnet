@@ -3,7 +3,7 @@ namespace Stripe.Issuing
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class AuthorizationControls : StripeEntity
+    public class AuthorizationControls : StripeEntity<AuthorizationControls>
     {
         [JsonProperty("allowed_categories")]
         public List<string> AllowedCategories { get; set; }

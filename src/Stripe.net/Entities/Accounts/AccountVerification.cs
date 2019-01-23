@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class AccountVerification : StripeEntity
+    public class AccountVerification : StripeEntity<AccountVerification>
     {
         [JsonProperty("disabled_reason")]
         public string DisabledReason { get; set; }

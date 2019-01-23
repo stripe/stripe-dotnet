@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SourceOwner : StripeEntity
+    public class SourceOwner : StripeEntity<SourceOwner>
     {
         /// <summary>
         /// Owner’s address.
