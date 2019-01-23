@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System.IO;
+    using System.Net;
     using System.Net.Http;
     using System.Reflection;
     using System.Text;
@@ -70,6 +71,24 @@ namespace StripeTests
             }
 
             this.MockHttpClientFixture.AssertRequest(method, path);
+        }
+
+        /// <summary>
+        /// Stubs an HTTP request with the specified method and path to return the specified status
+        /// code and response body.
+        /// </summary>
+        protected void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response)
+        {
+            if (this.MockHttpClientFixture == null)
+            {
+                throw new StripeTestException(
+                    "StubRequest called from a test class that doesn't have access to "
+                    + "MockHttpClientFixture. Make sure that the constructor for "
+                    + $"{this.GetType().Name} receives MockHttpClientFixture and calls the "
+                    + "base constructor.");
+            }
+
+            this.MockHttpClientFixture.StubRequest(method, path, status, response);
         }
 
         /// <summary>
