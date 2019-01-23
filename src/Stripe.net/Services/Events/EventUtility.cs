@@ -21,14 +21,14 @@ namespace Stripe
                 StripeConfiguration.SerializerSettings);
 
             if (throwOnApiVersionMismatch &&
-                stripeEvent.ApiVersion != StripeConfiguration.StripeApiVersion)
+                stripeEvent.ApiVersion != StripeConfiguration.ApiVersion)
             {
                 throw new StripeException(
                     $"Received event with API version {stripeEvent.ApiVersion}, but Stripe.net "
                     + $"{StripeConfiguration.StripeNetVersion} expects API version "
-                    + $"{StripeConfiguration.StripeApiVersion}. We recommend that you create a "
+                    + $"{StripeConfiguration.ApiVersion}. We recommend that you create a "
                     + "WebhookEndpoint with this API version. Otherwise, you can disable this "
-                    + "exception by passing `throwOnApiVersionMismatch=false` to "
+                    + "exception by passing `throwOnApiVersionMismatch: false` to "
                     + "`Stripe.EventUtility.ParseEvent` or `Stripe.EventUtility.ConstructEvent`, "
                     + "but be wary that objects may be incorrectly deserialized.");
             }

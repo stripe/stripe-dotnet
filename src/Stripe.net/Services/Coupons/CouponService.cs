@@ -21,7 +21,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/coupons";
+        public override string BasePath => "/v1/coupons";
 
         public virtual Coupon Create(CouponCreateOptions options, RequestOptions requestOptions = null)
         {
