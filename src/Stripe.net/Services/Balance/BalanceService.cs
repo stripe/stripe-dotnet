@@ -19,7 +19,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/balance";
+        public override string BasePath => "/v1/balance";
 
         public virtual Balance Get(RequestOptions requestOptions = null)
         {
