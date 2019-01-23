@@ -8,7 +8,7 @@ namespace Stripe.Infrastructure
     using Newtonsoft.Json;
 #if NET45
     using Microsoft.Win32;
-    #else
+#else
     using System.Runtime.InteropServices;
 #endif
 
