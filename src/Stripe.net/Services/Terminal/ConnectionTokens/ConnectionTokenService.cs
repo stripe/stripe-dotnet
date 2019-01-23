@@ -18,7 +18,7 @@ namespace Stripe.Terminal
         {
         }
 
-        public override string BasePath => "/terminal/connection_tokens";
+        public override string BasePath => "/v1/terminal/connection_tokens";
 
         public virtual ConnectionToken Create(ConnectionTokenCreateOptions options = null, RequestOptions requestOptions = null)
         {

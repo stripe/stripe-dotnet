@@ -18,7 +18,7 @@ namespace Stripe.Terminal
         {
         }
 
-        public override string BasePath => "/terminal/locations";
+        public override string BasePath => "/v1/terminal/locations";
 
         public virtual Location Create(LocationCreateOptions options, RequestOptions requestOptions = null)
         {
