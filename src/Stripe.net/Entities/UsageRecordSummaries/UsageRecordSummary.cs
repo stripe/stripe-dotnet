@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class UsageRecordSummary : StripeEntity, IHasId, IHasObject
+    public class UsageRecordSummary : StripeEntity<UsageRecordSummary>, IHasId, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

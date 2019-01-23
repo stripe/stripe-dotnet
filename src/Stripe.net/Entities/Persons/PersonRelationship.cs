@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PersonRelationship : StripeEntity
+    public class PersonRelationship : StripeEntity<PersonRelationship>
     {
         [JsonProperty("account_opener")]
         public bool AccountOpener { get; set; }
