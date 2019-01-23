@@ -18,7 +18,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/country_specs";
+        public override string BasePath => "/v1/country_specs";
 
         public virtual CountrySpec Get(string country, RequestOptions requestOptions = null)
         {

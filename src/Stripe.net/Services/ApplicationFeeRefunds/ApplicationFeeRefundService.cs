@@ -20,7 +20,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/application_fees/{PARENT_ID}/refunds";
+        public override string BasePath => "/v1/application_fees/{PARENT_ID}/refunds";
 
         public bool ExpandBalanceTransaction { get; set; }
 

@@ -33,20 +33,20 @@ namespace StripeTests
 
             this.EnsureStripeMockMinimumVersion();
 
-            this.origApiBase = StripeConfiguration.GetApiBase();
-            this.origFilesBase = StripeConfiguration.GetFilesBase();
-            this.origApiKey = StripeConfiguration.GetApiKey();
+            this.origApiBase = StripeConfiguration.ApiBase;
+            this.origFilesBase = StripeConfiguration.FilesBase;
+            this.origApiKey = StripeConfiguration.ApiKey;
 
-            StripeConfiguration.SetApiBase($"http://localhost:{this.port}/v1");
-            StripeConfiguration.SetFilesBase($"http://localhost:{this.port}/v1");
-            StripeConfiguration.SetApiKey("sk_test_123");
+            StripeConfiguration.ApiBase = $"http://localhost:{this.port}";
+            StripeConfiguration.FilesBase = $"http://localhost:{this.port}";
+            StripeConfiguration.ApiKey = "sk_test_123";
         }
 
         public void Dispose()
         {
-            StripeConfiguration.SetApiBase(this.origApiBase);
-            StripeConfiguration.SetFilesBase(this.origFilesBase);
-            StripeConfiguration.SetApiKey(this.origApiKey);
+            StripeConfiguration.ApiBase = this.origApiBase;
+            StripeConfiguration.FilesBase = this.origFilesBase;
+            StripeConfiguration.ApiKey = this.origApiKey;
 
             StripeMockHandler.StopStripeMock();
         }

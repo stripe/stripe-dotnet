@@ -19,7 +19,7 @@ namespace Stripe.Reporting
         {
         }
 
-        public override string BasePath => "/reporting/report_runs";
+        public override string BasePath => "/v1/reporting/report_runs";
 
         public virtual ReportRun Create(ReportRunCreateOptions options, RequestOptions requestOptions = null)
         {
