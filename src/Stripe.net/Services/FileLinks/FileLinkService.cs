@@ -20,7 +20,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/file_links";
+        public override string BasePath => "/v1/file_links";
 
         public virtual FileLink Create(FileLinkCreateOptions options, RequestOptions requestOptions = null)
         {

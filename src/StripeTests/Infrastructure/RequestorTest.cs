@@ -23,7 +23,7 @@ namespace StripeTests
             Assert.Equal($"Bearer {options.ApiKey}", request.Headers.GetValues("Authorization").FirstOrDefault());
             Assert.Equal(options.IdempotencyKey, request.Headers.GetValues("Idempotency-Key").FirstOrDefault());
             Assert.Equal(options.StripeConnectAccountId, request.Headers.GetValues("Stripe-Account").FirstOrDefault());
-            Assert.Equal(StripeConfiguration.StripeApiVersion, request.Headers.GetValues("Stripe-Version").FirstOrDefault());
+            Assert.Equal(StripeConfiguration.ApiVersion, request.Headers.GetValues("Stripe-Version").FirstOrDefault());
         }
     }
 }

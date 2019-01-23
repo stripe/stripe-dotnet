@@ -20,7 +20,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/subscription_schedules";
+        public override string BasePath => "/v1/subscription_schedules";
 
         public virtual SubscriptionSchedule Cancel(string scheduleId, SubscriptionScheduleCancelOptions options, RequestOptions requestOptions = null)
         {
