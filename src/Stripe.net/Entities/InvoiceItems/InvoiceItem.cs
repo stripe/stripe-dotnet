@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class InvoiceItem : StripeEntity, IHasId, IHasMetadata, IHasObject
+    public class InvoiceItem : StripeEntity<InvoiceItem>, IHasId, IHasMetadata, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

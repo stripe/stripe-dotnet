@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class AccountSettingsDashboard : StripeEntity
+    public class AccountSettingsDashboard : StripeEntity<AccountSettingsDashboard>
     {
         /// <summary>
         /// The display name for this account. This is used on the Stripe Dashboard to

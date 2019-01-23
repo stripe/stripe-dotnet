@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class InvoiceThresholdReason : StripeEntity
+    public class InvoiceThresholdReason : StripeEntity<InvoiceThresholdReason>
     {
         /// <summary>
         /// The total invoice amount threshold boundary if it triggered the threshold invoice.
