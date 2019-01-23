@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class Requirements : StripeEntity
+    public class Requirements : StripeEntity<Requirements>
     {
         [JsonProperty("currently_due")]
         public List<string> CurrentlyDue { get; set; }

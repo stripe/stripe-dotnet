@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class SourceRedirect : StripeEntity
+    public class SourceRedirect : StripeEntity<SourceRedirect>
     {
         /// <summary>
         /// The failure reason for the redirect. One of <see cref="RedirectFailureReason" />.

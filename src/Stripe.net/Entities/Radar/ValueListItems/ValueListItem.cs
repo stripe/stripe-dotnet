@@ -5,7 +5,7 @@ namespace Stripe.Radar
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ValueListItem : StripeEntity, IHasId, IHasObject
+    public class ValueListItem : StripeEntity<ValueListItem>, IHasId, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

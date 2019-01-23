@@ -6,7 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     [JsonObject]
-    public class StripeList<T> : StripeEntity, IHasObject, IEnumerable<T>
+    public class StripeList<T> : StripeEntity<StripeList<T>>, IHasObject, IEnumerable<T>
     {
         /// <summary>
         /// A string describing the object type returned.

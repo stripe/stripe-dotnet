@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class ChargeLevel3LineItem : StripeEntity
+    public class ChargeLevel3LineItem : StripeEntity<ChargeLevel3LineItem>
     {
         [JsonProperty("discount_amount")]
         public long? DiscountAmount { get; set; }

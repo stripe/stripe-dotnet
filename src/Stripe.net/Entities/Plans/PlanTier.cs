@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PlanTier : StripeEntity
+    public class PlanTier : StripeEntity<PlanTier>
     {
         [JsonProperty("flat_amount")]
         public long? FlatAmount { get; set; }
