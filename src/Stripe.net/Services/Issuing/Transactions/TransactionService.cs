@@ -19,7 +19,7 @@ namespace Stripe.Issuing
         {
         }
 
-        public override string BasePath => "/issuing/transactions";
+        public override string BasePath => "/v1/issuing/transactions";
 
         public virtual Transaction Get(string transactionId, RequestOptions requestOptions = null)
         {

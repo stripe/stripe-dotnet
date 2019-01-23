@@ -19,7 +19,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/3d_secure";
+        public override string BasePath => "/v1/3d_secure";
 
         public virtual ThreeDSecure Create(ThreeDSecureCreateOptions options, RequestOptions requestOptions = null)
         {

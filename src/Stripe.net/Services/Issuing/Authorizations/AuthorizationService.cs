@@ -19,7 +19,7 @@ namespace Stripe.Issuing
         {
         }
 
-        public override string BasePath => "/issuing/authorizations";
+        public override string BasePath => "/v1/issuing/authorizations";
 
         public virtual Authorization Approve(string authorizationId, AuthorizationApproveOptions options = null, RequestOptions requestOptions = null)
         {

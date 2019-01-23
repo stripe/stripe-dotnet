@@ -18,7 +18,7 @@ namespace Stripe.Radar
         {
         }
 
-        public override string BasePath => "/radar/early_fraud_warnings";
+        public override string BasePath => "/v1/radar/early_fraud_warnings";
 
         public virtual EarlyFraudWarning Get(string earlyFraudWarningId, RequestOptions requestOptions = null)
         {
