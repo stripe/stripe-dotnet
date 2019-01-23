@@ -18,7 +18,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/balance/history";
+        public override string BasePath => "/v1/balance/history";
 
         public bool ExpandSource { get; set; }
 

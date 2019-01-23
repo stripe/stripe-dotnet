@@ -18,7 +18,7 @@ namespace Stripe.Reporting
         {
         }
 
-        public override string BasePath => "/reporting/report_types";
+        public override string BasePath => "/v1/reporting/report_types";
 
         public virtual ReportType Get(string reportTypeId, RequestOptions requestOptions = null)
         {
