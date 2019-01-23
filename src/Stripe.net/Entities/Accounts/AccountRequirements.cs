@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class AccountRequirements : StripeEntity
+    public class AccountRequirements : StripeEntity<AccountRequirements>
     {
         /// <summary>
         /// The date the fields in <c>currently_due</c> must be collected by to keep payouts

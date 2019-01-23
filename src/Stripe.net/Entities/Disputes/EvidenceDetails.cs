@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class EvidenceDetails : StripeEntity
+    public class EvidenceDetails : StripeEntity<EvidenceDetails>
     {
         [JsonProperty("due_by")]
         [JsonConverter(typeof(DateTimeConverter))]

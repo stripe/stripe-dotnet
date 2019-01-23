@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class SourceCodeVerification : StripeEntity
+    public class SourceCodeVerification : StripeEntity<SourceCodeVerification>
     {
         /// <summary>
         /// The number of attempts remaining to authenticate the source object with a verification code.

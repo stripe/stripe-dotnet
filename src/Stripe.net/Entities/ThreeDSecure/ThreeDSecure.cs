@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ThreeDSecure : StripeEntity, IHasId, IHasObject
+    public class ThreeDSecure : StripeEntity<ThreeDSecure>, IHasId, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

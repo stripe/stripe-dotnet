@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SubscriptionScheduleCurrentPhase : StripeEntity
+    public class SubscriptionScheduleCurrentPhase : StripeEntity<SubscriptionScheduleCurrentPhase>
     {
         /// <summary>
         /// The end of the this phase of the subscription schedule.

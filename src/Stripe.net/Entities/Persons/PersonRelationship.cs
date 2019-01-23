@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PersonRelationship : StripeEntity
+    public class PersonRelationship : StripeEntity<PersonRelationship>
     {
         /// <summary>
         /// Whether the person opened the account. This person provides information about
