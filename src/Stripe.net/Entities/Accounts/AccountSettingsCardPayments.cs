@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class AccountSettingsCardPayments : StripeEntity
+    public class AccountSettingsCardPayments : StripeEntity<AccountSettingsCardPayments>
     {
         /// <summary>
         /// Automatically declines certain charge types regardless of whether the card issuer

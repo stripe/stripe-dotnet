@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class WebhookEndpoint : StripeEntity, IHasId, IHasObject
+    public class WebhookEndpoint : StripeEntity<WebhookEndpoint>, IHasId, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

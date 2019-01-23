@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class InvoiceThresholdReasonItemReason : StripeEntity
+    public class InvoiceThresholdReasonItemReason : StripeEntity<InvoiceThresholdReasonItemReason>
     {
         /// <summary>
         /// The IDs of the line items that triggered the threshold invoice.

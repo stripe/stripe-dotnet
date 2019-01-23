@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class EventData : StripeEntity
+    public class EventData : StripeEntity<EventData>
     {
         /// <summary>
         /// Object containing the API resource relevant to the event. For example, an

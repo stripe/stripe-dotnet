@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class AccountBusinessProfile : StripeEntity
+    public class AccountBusinessProfile : StripeEntity<AccountBusinessProfile>
     {
         /// <summary>
         /// The merchant category code for the account. MCCs are used to classify businesses based
