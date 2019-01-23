@@ -3,7 +3,7 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class EvidenceFraudulent : StripeEntity
+    public class EvidenceFraudulent : StripeEntity<EvidenceFraudulent>
     {
         [JsonProperty("dispute_explanation")]
         public string DisputeExplanation { get; set; }

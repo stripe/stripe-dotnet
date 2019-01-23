@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SubscriptionBillingThresholds : StripeEntity
+    public class SubscriptionBillingThresholds : StripeEntity<SubscriptionBillingThresholds>
     {
         /// <summary>
         /// Monetary threshold that triggers the subscription to advance to a new billing period.

@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SubscriptionSchedulePhaseItem : StripeEntity
+    public class SubscriptionSchedulePhaseItem : StripeEntity<SubscriptionSchedulePhaseItem>
     {
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a

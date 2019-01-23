@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class AccountTosAcceptance : StripeEntity
+    public class AccountTosAcceptance : StripeEntity<AccountTosAcceptance>
     {
         /// <summary>
         /// The Unix timestamp marking when the Stripe Services Agreement was accepted by the

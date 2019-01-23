@@ -52,7 +52,7 @@ namespace StripeTests
             Assert.Equal(expected, obj.ToJson().Replace("\r\n", "\n"));
         }
 
-        private class TestNestedObject : StripeEntity, IHasId
+        private class TestNestedObject : StripeEntity<TestNestedObject>, IHasId
         {
             [JsonProperty("id")]
             public string Id { get; set; }
@@ -61,7 +61,7 @@ namespace StripeTests
             public int Bar { get; set; }
         }
 
-        private class TestTopLevelObject : StripeEntity
+        private class TestTopLevelObject : StripeEntity<TestTopLevelObject>
         {
             [JsonIgnore]
             public string NestedId { get; set; }
