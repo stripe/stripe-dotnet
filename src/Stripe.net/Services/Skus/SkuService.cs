@@ -21,7 +21,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/skus";
+        public override string BasePath => "/v1/skus";
 
         public bool ExpandProduct { get; set; }
 

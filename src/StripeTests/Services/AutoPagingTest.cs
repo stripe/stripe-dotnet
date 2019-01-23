@@ -99,7 +99,7 @@ namespace StripeTests
 
         public class PageableService : Service<PageableModel>
         {
-            public override string BasePath => "/pageablemodels";
+            public override string BasePath => "/v1/pageablemodels";
 
             public IEnumerable<PageableModel> ListAutoPaging(ListOptions options)
             {
