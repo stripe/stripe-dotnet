@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SubscriptionTransferData : StripeEntity
+    public class SubscriptionTransferData : StripeEntity<SubscriptionTransferData>
     {
         #region Expandable Destination (Account)
         [JsonIgnore]

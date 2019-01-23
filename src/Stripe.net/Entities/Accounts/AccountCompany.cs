@@ -3,7 +3,7 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
 
-    public class AccountCompany : StripeEntity
+    public class AccountCompany : StripeEntity<AccountCompany>
     {
         /// <summary>
         /// The company’s primary address.

@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class PersonVerification : StripeEntity
+    public class PersonVerification : StripeEntity<PersonVerification>
     {
         /// <summary>
         /// A user-displayable string describing the verification state for this person. For

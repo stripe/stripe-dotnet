@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class PaymentIntentLastPaymentError : StripeEntity
+    public class PaymentIntentLastPaymentError : StripeEntity<PaymentIntentLastPaymentError>
     {
         [JsonProperty("charge")]
         public string ChargeId { get; set; }

@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CustomerInvoiceSettings : StripeEntity
+    public class CustomerInvoiceSettings : StripeEntity<CustomerInvoiceSettings>
     {
         /// <summary>
         /// Default custom fields to be displayed on invoices for this customer.

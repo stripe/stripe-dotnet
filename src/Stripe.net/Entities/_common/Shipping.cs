@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class Shipping : StripeEntity
+    public class Shipping : StripeEntity<Shipping>
     {
         [JsonProperty("address")]
         public Address Address { get; set; }

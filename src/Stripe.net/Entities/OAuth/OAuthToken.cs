@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class OAuthToken : StripeEntity
+    public class OAuthToken : StripeEntity<OAuthToken>
     {
         [JsonProperty("token_type")]
         public string TokenType { get; set; }

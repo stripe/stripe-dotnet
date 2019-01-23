@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class Balance : StripeEntity, IHasObject
+    public class Balance : StripeEntity<Balance>, IHasObject
     {
         [JsonProperty("object")]
         public string Object { get; set; }

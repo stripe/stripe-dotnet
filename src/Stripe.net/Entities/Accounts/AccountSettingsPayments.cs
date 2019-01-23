@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class AccountSettingsPayments : StripeEntity
+    public class AccountSettingsPayments : StripeEntity<AccountSettingsPayments>
     {
         /// <summary>
         /// The default text that appears on credit card statements when a charge is made. This

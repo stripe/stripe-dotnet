@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class AccountSettingsPayoutsSchedule : StripeEntity
+    public class AccountSettingsPayoutsSchedule : StripeEntity<AccountSettingsPayoutsSchedule>
     {
         /// <summary>
         /// The number of days charges for the account will be held before being paid out.

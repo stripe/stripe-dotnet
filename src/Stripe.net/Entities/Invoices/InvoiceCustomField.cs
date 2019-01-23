@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class InvoiceCustomField : StripeEntity
+    public class InvoiceCustomField : StripeEntity<InvoiceCustomField>
     {
         [JsonProperty("name")]
         public string Name { get; set; }

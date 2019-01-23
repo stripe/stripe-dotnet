@@ -91,7 +91,7 @@ namespace StripeTests
                     ItExpr.IsAny<CancellationToken>());
         }
 
-        public class PageableModel : StripeEntity, IHasId
+        public class PageableModel : StripeEntity<PageableModel>, IHasId
         {
             [JsonProperty("id")]
             public string Id { get; set; }
