@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class EphemeralKey : StripeEntity, IHasId, IHasObject
+    public class EphemeralKey : StripeEntity<EphemeralKey>, IHasId, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

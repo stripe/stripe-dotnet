@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class SourceBitcoin : StripeEntity
+    public class SourceBitcoin : StripeEntity<SourceBitcoin>
     {
         [JsonProperty("address")]
         public string Address { get; set; }

@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class BirthDay : StripeEntity
+    public class BirthDay : StripeEntity<BirthDay>
     {
         [JsonProperty("day")]
         public long? Day { get; set; }
