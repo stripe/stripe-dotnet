@@ -169,7 +169,7 @@ namespace Stripe
 
         protected virtual string ClassUrl(string baseUrl = null)
         {
-            baseUrl = baseUrl ?? StripeConfiguration.GetApiBase();
+            baseUrl = baseUrl ?? StripeConfiguration.ApiBase;
             return $"{baseUrl}{this.BasePath}";
         }
 

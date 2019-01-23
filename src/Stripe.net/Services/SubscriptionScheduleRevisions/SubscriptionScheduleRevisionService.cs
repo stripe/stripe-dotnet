@@ -18,7 +18,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/subscription_schedules/{PARENT_ID}/revisions";
+        public override string BasePath => "/v1/subscription_schedules/{PARENT_ID}/revisions";
 
         public virtual SubscriptionScheduleRevision Get(string scheduleId, string revisionId, RequestOptions requestOptions = null)
         {

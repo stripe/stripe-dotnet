@@ -20,7 +20,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/payment_methods";
+        public override string BasePath => "/v1/payment_methods";
 
         public bool ExpandCustomer { get; set; }
 
