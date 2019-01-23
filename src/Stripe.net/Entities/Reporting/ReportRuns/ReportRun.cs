@@ -5,7 +5,7 @@ namespace Stripe.Reporting
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ReportRun : StripeEntity, IHasId, IHasObject
+    public class ReportRun : StripeEntity<ReportRun>, IHasId, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

@@ -4,7 +4,7 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class RequestHistory : StripeEntity
+    public class RequestHistory : StripeEntity<RequestHistory>
     {
         [JsonProperty("approved")]
         public bool Approved { get; set; }

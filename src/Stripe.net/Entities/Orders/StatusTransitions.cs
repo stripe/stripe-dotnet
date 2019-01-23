@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class StatusTransitions : StripeEntity
+    public class StatusTransitions : StripeEntity<StatusTransitions>
     {
         [JsonProperty("canceled")]
         [JsonConverter(typeof(DateTimeConverter))]
