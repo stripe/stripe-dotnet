@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ChargeTransferData : StripeEntity
+    public class ChargeTransferData : StripeEntity<ChargeTransferData>
     {
         [JsonProperty("amount")]
         public long? Amount { get; set; }

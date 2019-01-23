@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SubscriptionScheduleRevision : StripeEntity, IHasId, IHasObject
+    public class SubscriptionScheduleRevision : StripeEntity<SubscriptionScheduleRevision>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.

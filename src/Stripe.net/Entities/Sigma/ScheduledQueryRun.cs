@@ -4,7 +4,7 @@ namespace Stripe.Sigma
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ScheduledQueryRun : StripeEntity, IHasId, IHasObject
+    public class ScheduledQueryRun : StripeEntity<ScheduledQueryRun>, IHasId, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

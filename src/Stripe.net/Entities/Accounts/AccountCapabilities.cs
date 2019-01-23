@@ -3,7 +3,7 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
 
-    public class AccountCapabilities : StripeEntity
+    public class AccountCapabilities : StripeEntity<AccountCapabilities>
     {
         /// <summary>
         /// The status of the card payments capability of the account, or whether the account can

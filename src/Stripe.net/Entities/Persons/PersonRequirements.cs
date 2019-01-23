@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PersonRequirements : StripeEntity
+    public class PersonRequirements : StripeEntity<PersonRequirements>
     {
         /// <summary>
         /// Fields that need to be collected to keep the person’s account enabled. If not collected
