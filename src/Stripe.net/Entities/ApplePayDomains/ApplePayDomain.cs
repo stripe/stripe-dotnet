@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ApplePayDomain : StripeEntity, IHasId, IHasObject
+    public class ApplePayDomain : StripeEntity<ApplePayDomain>, IHasId, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

@@ -2,7 +2,7 @@ namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
 
-    public class MerchantData : StripeEntity
+    public class MerchantData : StripeEntity<MerchantData>
     {
         [JsonProperty("category")]
         public string Category { get; set; }

@@ -5,7 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     [JsonConverter(typeof(EventConverter))]
-    public class Event : StripeEntity, IHasId, IHasObject
+    public class Event : StripeEntity<Event>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.

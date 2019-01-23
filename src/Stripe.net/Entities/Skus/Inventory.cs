@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Inventory : StripeEntity
+    public class Inventory : StripeEntity<Inventory>
     {
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }

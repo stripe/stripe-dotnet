@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class AccountSettingsPayouts : StripeEntity
+    public class AccountSettingsPayouts : StripeEntity<AccountSettingsPayouts>
     {
         /// <summary>
         /// A Boolean indicating if Stripe should try to reclaim negative balances from an attached

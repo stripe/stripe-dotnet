@@ -5,7 +5,7 @@ namespace Stripe.Terminal
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ConnectionToken : StripeEntity, IHasObject
+    public class ConnectionToken : StripeEntity<ConnectionToken>, IHasObject
     {
         [JsonProperty("object")]
         public string Object { get; set; }
