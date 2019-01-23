@@ -8,7 +8,7 @@ namespace Stripe
     /// <summary>
     /// Source objects allow you to accept a variety of payment methods. They represent a customer's payment instrument and can be used with the Source API just like a card object: once chargeable, they can be charged, or attached to customers.
     /// </summary>
-    public class Source : StripeEntity, IHasId, IHasMetadata, IHasObject, IPaymentSource
+    public class Source : StripeEntity<Source>, IHasId, IHasMetadata, IHasObject, IPaymentSource
     {
         [JsonProperty("id")]
         public string Id { get; set; }

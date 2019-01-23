@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Card : StripeEntity, IHasId, IHasMetadata, IHasObject, IExternalAccount, IPaymentSource
+    public class Card : StripeEntity<Card>, IHasId, IHasMetadata, IHasObject, IExternalAccount, IPaymentSource
     {
         [JsonProperty("id")]
         public string Id { get; set; }

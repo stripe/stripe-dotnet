@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class Dob : StripeEntity
+    public class Dob : StripeEntity<Dob>
     {
         /// <summary>
         /// The day of birth, between 1 and 31.

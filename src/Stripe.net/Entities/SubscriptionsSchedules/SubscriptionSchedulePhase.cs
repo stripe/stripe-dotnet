@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SubscriptionSchedulePhase : StripeEntity
+    public class SubscriptionSchedulePhase : StripeEntity<SubscriptionSchedulePhase>
     {
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal places. This
