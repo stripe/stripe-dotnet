@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class ExchangeRate : StripeEntity, IHasId, IHasObject
+    public class ExchangeRate : StripeEntity<ExchangeRate>, IHasId, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

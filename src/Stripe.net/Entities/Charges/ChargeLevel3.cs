@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class ChargeLevel3 : StripeEntity
+    public class ChargeLevel3 : StripeEntity<ChargeLevel3>
     {
         [JsonProperty("customer_reference")]
         public string CustomerReference { get; set; }

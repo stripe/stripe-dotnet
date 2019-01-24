@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PayoutSchedule : StripeEntity
+    public class PayoutSchedule : StripeEntity<PayoutSchedule>
     {
         [JsonProperty("delay_days")]
         public long DelayDays { get; set; }

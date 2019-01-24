@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Period : StripeEntity
+    public class Period : StripeEntity<Period>
     {
         [JsonProperty("start")]
         [JsonConverter(typeof(DateTimeConverter))]

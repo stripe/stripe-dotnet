@@ -4,7 +4,7 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class CardShipping : StripeEntity
+    public class CardShipping : StripeEntity<CardShipping>
     {
         [JsonProperty("address")]
         public Address Address { get; set; }

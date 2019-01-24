@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class LegalEntity : StripeEntity
+    public class LegalEntity : StripeEntity<LegalEntity>
     {
         [JsonProperty("additional_owners")]
         public List<AdditionalOwner> AdditionalOwners { get; set; }

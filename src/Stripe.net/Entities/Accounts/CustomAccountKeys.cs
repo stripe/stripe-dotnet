@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class CustomAccountKeys : StripeEntity
+    public class CustomAccountKeys : StripeEntity<CustomAccountKeys>
     {
         [JsonProperty("publishable")]
         public string Publishable { get; set; }

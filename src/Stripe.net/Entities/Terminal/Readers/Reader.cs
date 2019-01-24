@@ -5,7 +5,7 @@ namespace Stripe.Terminal
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Reader : StripeEntity, IHasObject
+    public class Reader : StripeEntity<Reader>, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }

@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentIntentSourceActionAuthorizeWithUrl : StripeEntity
+    public class PaymentIntentSourceActionAuthorizeWithUrl : StripeEntity<PaymentIntentSourceActionAuthorizeWithUrl>
     {
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
