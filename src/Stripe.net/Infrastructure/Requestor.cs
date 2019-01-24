@@ -20,10 +20,7 @@ namespace Stripe.Infrastructure
                     ? new HttpClient(StripeConfiguration.HttpMessageHandler)
                     : new HttpClient();
 
-            if (StripeConfiguration.HttpTimeSpan.HasValue)
-            {
-                HttpClient.Timeout = StripeConfiguration.HttpTimeSpan.Value;
-            }
+            HttpClient.Timeout = StripeConfiguration.HttpTimeout;
         }
 
         internal static HttpClient HttpClient { get; private set; }
@@ -120,7 +117,7 @@ namespace Stripe.Infrastructure
 
         internal static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, RequestOptions requestOptions)
         {
-            requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.GetApiKey();
+            requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.ApiKey;
 
 #if NET45
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
@@ -148,7 +145,7 @@ namespace Stripe.Infrastructure
             }
             else
             {
-                request.Headers.Add("Stripe-Version", StripeConfiguration.StripeApiVersion);
+                request.Headers.Add("Stripe-Version", StripeConfiguration.ApiVersion);
             }
 
             var client = new Client(request);

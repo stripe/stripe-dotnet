@@ -18,7 +18,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/tokens";
+        public override string BasePath => "/v1/tokens";
 
         public virtual Token Create(TokenCreateOptions options, RequestOptions requestOptions = null)
         {

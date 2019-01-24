@@ -22,7 +22,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/accounts";
+        public override string BasePath => "/v1/accounts";
 
         public bool ExpandBusinessLogo { get; set; }
 
@@ -58,12 +58,12 @@ namespace Stripe
 
         public virtual Account GetSelf(RequestOptions requestOptions = null)
         {
-            return this.GetRequest<Account>($"{Urls.BaseUrl}/account", null, requestOptions, false);
+            return this.GetRequest<Account>($"{StripeConfiguration.ApiBase}/v1/account", null, requestOptions, false);
         }
 
         public virtual Task<Account> GetSelfAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetRequestAsync<Account>($"{Urls.BaseUrl}/account", null, requestOptions, false, cancellationToken);
+            return this.GetRequestAsync<Account>($"{StripeConfiguration.ApiBase}/v1/account", null, requestOptions, false, cancellationToken);
         }
 
         public virtual StripeList<Account> List(AccountListOptions options = null, RequestOptions requestOptions = null)

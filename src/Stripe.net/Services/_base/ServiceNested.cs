@@ -75,7 +75,7 @@ namespace Stripe
 
         protected virtual string ClassUrl(string parentId, string baseUrl = null)
         {
-            baseUrl = baseUrl ?? StripeConfiguration.GetApiBase();
+            baseUrl = baseUrl ?? StripeConfiguration.ApiBase;
             return $"{baseUrl}{this.BasePath.Replace("{PARENT_ID}", parentId)}";
         }
 

@@ -18,7 +18,7 @@ namespace Stripe.Sigma
         {
         }
 
-        public override string BasePath => "/sigma/scheduled_query_runs";
+        public override string BasePath => "/v1/sigma/scheduled_query_runs";
 
         public virtual ScheduledQueryRun Get(string queryRunId, RequestOptions requestOptions = null)
         {

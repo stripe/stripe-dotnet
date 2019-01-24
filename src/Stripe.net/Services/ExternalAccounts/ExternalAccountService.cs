@@ -21,7 +21,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/accounts/{PARENT_ID}/external_accounts";
+        public override string BasePath => "/v1/accounts/{PARENT_ID}/external_accounts";
 
         public virtual IExternalAccount Create(string accountId, ExternalAccountCreateOptions options, RequestOptions requestOptions = null)
         {

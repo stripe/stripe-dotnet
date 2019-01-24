@@ -20,7 +20,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/transfers";
+        public override string BasePath => "/v1/transfers";
 
         public bool ExpandBalanceTransaction { get; set; }
 

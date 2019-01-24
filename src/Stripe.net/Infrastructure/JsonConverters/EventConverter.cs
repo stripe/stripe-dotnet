@@ -8,7 +8,7 @@ namespace Stripe.Infrastructure
     /// <summary>
     /// This converter is used to deserialize event objects regardless of which API version they're
     /// formatted with. In the general case, Stripe.net uses a specific API version
-    /// (<see cref="StripeConfiguration.StripeApiVersion"/>), but events are a special case: when
+    /// (<see cref="StripeConfiguration.ApiVersion"/>), but events are a special case: when
     /// receiving an event object via a webhook notification, the object will be formatted with
     /// the Stripe account's default API version which may be different than Stripe.net's API
     /// version.
