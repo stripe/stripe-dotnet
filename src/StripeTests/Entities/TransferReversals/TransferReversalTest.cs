@@ -28,6 +28,8 @@ namespace StripeTests
             string[] expansions =
             {
               "balance_transaction",
+              "destination_payment_refund",
+              "source_refund",
               "transfer",
             };
 
@@ -40,6 +42,12 @@ namespace StripeTests
 
             Assert.NotNull(transferReversal.BalanceTransaction);
             Assert.Equal("balance_transaction", transferReversal.BalanceTransaction.Object);
+
+            Assert.NotNull(transferReversal.DestinationPaymentRefund);
+            Assert.Equal("refund", transferReversal.DestinationPaymentRefund.Object);
+
+            Assert.NotNull(transferReversal.SourceRefund);
+            Assert.Equal("refund", transferReversal.SourceRefund.Object);
 
             Assert.NotNull(transferReversal.Transfer);
             Assert.Equal("transfer", transferReversal.Transfer.Object);
