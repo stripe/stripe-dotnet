@@ -1,5 +1,8 @@
 # Changelog
 
+## 22.8.0 - 2019-01-25
+* [#1470](https://github.com/stripe/stripe-dotnet/pull/1470) Add support for OAuth methods
+
 ## 22.7.0 - 2019-01-19
 * [#1438](https://github.com/stripe/stripe-dotnet/pull/1438) Revert license change
 
