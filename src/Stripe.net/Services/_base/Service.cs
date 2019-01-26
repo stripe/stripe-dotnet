@@ -211,12 +211,12 @@ namespace Stripe
         {
             options = this.SetupOptions(options, IsStripeList<T>());
             requestOptions = this.SetupRequestOptions(requestOptions);
-            var wr = Requestor.GetRequestMessage(
+            return await StripeConfiguration.StripeClient.RequestAsync<T>(
                 method,
                 path,
                 options,
-                requestOptions);
-            return await Requestor.ExecuteRequestAsync<T>(wr);
+                requestOptions,
+                cancellationToken);
         }
 
         protected IEnumerable<T> ListRequestAutoPaging<T>(
