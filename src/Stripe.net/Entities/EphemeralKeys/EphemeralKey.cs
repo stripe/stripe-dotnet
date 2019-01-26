@@ -22,7 +22,7 @@ namespace Stripe
         // that they'll be able to decode an object that's current according to their version.
         public string RawJson
         {
-            get { return this.StripeResponse?.ResponseJson; }
+            get { return this.StripeResponse?.Content; }
         }
 
         [JsonProperty("created")]
