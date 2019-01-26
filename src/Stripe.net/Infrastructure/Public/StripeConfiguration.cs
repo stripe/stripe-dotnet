@@ -2,7 +2,6 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using System.Net.Http;
     using System.Reflection;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -14,9 +13,11 @@ namespace Stripe
     {
         private static string apiKey;
 
+        private static IStripeClient stripeClient;
+
         static StripeConfiguration()
         {
-            StripeNetVersion = new AssemblyName(typeof(Requestor).GetTypeInfo().Assembly.FullName).Version.ToString(3);
+            StripeNetVersion = new AssemblyName(typeof(StripeConfiguration).GetTypeInfo().Assembly.FullName).Version.ToString(3);
         }
 
         /// <summary>API version used by Stripe.net.</summary>
@@ -71,12 +72,6 @@ namespace Stripe
         /// <summary>Gets or sets the base URL for Stripe's Files API.</summary>
         public static string FilesBase { get; set; } = DefaultFilesBase;
 
-        /// <summary>Gets or sets a custom <see cref="HttpMessageHandler"/>.</summary>
-        public static HttpMessageHandler HttpMessageHandler { get; set; }
-
-        /// <summary>Gets or sets the timespan to wait before the request times out.</summary>
-        public static TimeSpan HttpTimeout { get; set; } = DefaultHttpTimeout;
-
         /// <summary>
         /// Gets or sets the settings used for deserializing JSON objects returned by Stripe's API.
         /// It is highly recommended you do not change these settings, as doing so can produce
@@ -87,21 +82,39 @@ namespace Stripe
         /// </summary>
         public static JsonSerializerSettings SerializerSettings { get; set; } = DefaultSerializerSettings();
 
+        /// <summary>
+        /// Gets or sets a custom <see cref="StripeClient"/> for sending requests to Stripe's
+        /// API. You can use this to use a custom message handler, set proxy parameters, etc.
+        /// </summary>
+        /// <example>
+        /// To use a custom message handler:
+        /// <code>
+        /// System.Net.Http.HttpMessageHandler messageHandler = ...;
+        /// var httpClient = new System.Net.HttpClient(messageHandler);
+        /// var stripeClient = new Stripe.StripeClient(new Stripe.SystemNetHttpClient(httpClient));
+        /// Stripe.StripeConfiguration.StripeClient = stripeClient;
+        /// </code>
+        /// </example>
+        public static IStripeClient StripeClient
+        {
+            get
+            {
+                if (stripeClient == null)
+                {
+                    stripeClient = new StripeClient();
+                }
+
+                return stripeClient;
+            }
+
+            set
+            {
+                stripeClient = value;
+            }
+        }
+
         /// <summary>Gets the version of the Stripe.net client library.</summary>
         public static string StripeNetVersion { get; }
-
-        /// <summary>
-        /// Gets or sets the timespan to wait before the request times out.
-        /// This property is deprecated and will be removed in a future version, please use the
-        /// <see cref="HttpTimeout"/> property instead.
-        /// </summary>
-        // TODO: remove this property in a future major version
-        [Obsolete("Use StripeConfiguration.HttpTimeout instead.")]
-        public static TimeSpan? HttpTimeSpan
-        {
-            get { return HttpTimeout; }
-            set { HttpTimeout = value ?? DefaultHttpTimeout; }
-        }
 
         /// <summary>
         /// Returns a new instance of <see cref="Newtonsoft.Json.JsonSerializerSettings"/> with

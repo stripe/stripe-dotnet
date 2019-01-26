@@ -7,14 +7,14 @@ namespace StripeTests
     using StripeTests.Infrastructure.TestData;
     using Xunit;
 
-    public class RequestTest : BaseStripeTest
+    public class StripeRequestTest : BaseStripeTest
     {
         [Fact]
         public void Ctor_GetRequest()
         {
             var options = new TestOptions { String = "string!" };
             var requestOptions = new RequestOptions();
-            var request = new Request(HttpMethod.Get, "/get", options, requestOptions);
+            var request = new StripeRequest(HttpMethod.Get, "/get", options, requestOptions);
 
             Assert.Equal(HttpMethod.Get, request.Method);
             Assert.Equal($"{StripeConfiguration.ApiBase}/get?string=string!", request.Uri.ToString());
@@ -31,7 +31,7 @@ namespace StripeTests
         {
             var options = new TestOptions { String = "string!" };
             var requestOptions = new RequestOptions();
-            var request = new Request(HttpMethod.Post, "/post", options, requestOptions);
+            var request = new StripeRequest(HttpMethod.Post, "/post", options, requestOptions);
 
             Assert.Equal(HttpMethod.Post, request.Method);
             Assert.Equal($"{StripeConfiguration.ApiBase}/post", request.Uri.ToString());
@@ -50,7 +50,7 @@ namespace StripeTests
         {
             var options = new TestOptions { String = "string!" };
             var requestOptions = new RequestOptions();
-            var request = new Request(HttpMethod.Delete, "/delete", options, requestOptions);
+            var request = new StripeRequest(HttpMethod.Delete, "/delete", options, requestOptions);
 
             Assert.Equal(HttpMethod.Delete, request.Method);
             Assert.Equal($"{StripeConfiguration.ApiBase}/delete?string=string!", request.Uri.ToString());
@@ -73,7 +73,7 @@ namespace StripeTests
                 BaseUrl = "https://example.com",
                 StripeVersion = "2012-12-21",
             };
-            var request = new Request(HttpMethod.Get, "/get", null, requestOptions);
+            var request = new StripeRequest(HttpMethod.Get, "/get", null, requestOptions);
 
             Assert.Equal(HttpMethod.Get, request.Method);
             Assert.Equal("https://example.com/get", request.Uri.ToString());

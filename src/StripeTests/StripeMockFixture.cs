@@ -70,7 +70,7 @@ namespace StripeTests
                 url += $"?{query}";
             }
 
-            using (HttpClient client = new HttpClient())
+            using (System.Net.Http.HttpClient client = new System.Net.Http.HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization
                     = new System.Net.Http.Headers.AuthenticationHeaderValue(
@@ -117,7 +117,7 @@ namespace StripeTests
         {
             string url = $"http://localhost:{this.port}";
 
-            using (HttpClient client = new HttpClient())
+            using (System.Net.Http.HttpClient client = new System.Net.Http.HttpClient())
             {
                 HttpResponseMessage response;
 
