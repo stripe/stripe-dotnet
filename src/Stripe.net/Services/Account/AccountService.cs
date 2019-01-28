@@ -1,9 +1,9 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class AccountService : Service<Account>,
         ICreatable<Account, AccountCreateOptions>,
@@ -58,12 +58,12 @@ namespace Stripe
 
         public virtual Account GetSelf(RequestOptions requestOptions = null)
         {
-            return this.GetRequest<Account>($"{StripeConfiguration.ApiBase}/v1/account", null, requestOptions, false);
+            return this.Request(HttpMethod.Get, $"{StripeConfiguration.ApiBase}/v1/account", null, requestOptions);
         }
 
         public virtual Task<Account> GetSelfAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetRequestAsync<Account>($"{StripeConfiguration.ApiBase}/v1/account", null, requestOptions, false, cancellationToken);
+            return this.RequestAsync(HttpMethod.Get, $"{StripeConfiguration.ApiBase}/v1/account", null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Account> List(AccountListOptions options = null, RequestOptions requestOptions = null)
@@ -83,12 +83,12 @@ namespace Stripe
 
         public virtual Account Reject(string accountId, AccountRejectOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<Account>($"{this.InstanceUrl(accountId)}/reject", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(accountId)}/reject", options, requestOptions);
         }
 
         public virtual Task<Account> RejectAsync(string accountId, AccountRejectOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<Account>($"{this.InstanceUrl(accountId)}/reject", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(accountId)}/reject", options, requestOptions, cancellationToken);
         }
 
         public virtual Account Update(string accountId, AccountUpdateOptions options, RequestOptions requestOptions = null)
