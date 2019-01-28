@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -22,12 +23,12 @@ namespace Stripe
 
         public virtual Review Approve(string reviewId, ReviewApproveOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<Review>($"{this.InstanceUrl(reviewId)}/approve", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(reviewId)}/approve", options, requestOptions);
         }
 
         public virtual Task<Review> ApproveAsync(string reviewId, ReviewApproveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<Review>($"{this.InstanceUrl(reviewId)}/approve", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(reviewId)}/approve", options, requestOptions, cancellationToken);
         }
 
         public virtual Review Get(string reviewId, RequestOptions requestOptions = null)

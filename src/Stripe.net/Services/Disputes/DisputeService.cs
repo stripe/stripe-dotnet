@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -25,12 +26,12 @@ namespace Stripe
 
         public virtual Dispute Close(string disputeId, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<Dispute>($"{this.InstanceUrl(disputeId)}/close", null, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(disputeId)}/close", null, requestOptions);
         }
 
         public virtual Task<Dispute> CloseAsync(string disputeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<Dispute>($"{this.InstanceUrl(disputeId)}/close", null, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(disputeId)}/close", null, requestOptions, cancellationToken);
         }
 
         public virtual Dispute Get(string disputeId, RequestOptions requestOptions = null)
