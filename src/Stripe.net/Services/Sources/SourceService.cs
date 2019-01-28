@@ -26,12 +26,12 @@ namespace Stripe
 
         public virtual Source Attach(string customerId, SourceAttachOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Source>(HttpMethod.Post, $"{StripeConfiguration.ApiBase}/v1/customers/{customerId}/sources", options, requestOptions);
+            return this.Request<Source>(HttpMethod.Post, $"/v1/customers/{customerId}/sources", options, requestOptions);
         }
 
         public virtual Task<Source> AttachAsync(string customerId, SourceAttachOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.RequestAsync<Source>(HttpMethod.Post, $"{StripeConfiguration.ApiBase}/v1/customers/{customerId}/sources", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Source>(HttpMethod.Post, $"/v1/customers/{customerId}/sources", options, requestOptions, cancellationToken);
         }
 
         public virtual Source Create(SourceCreateOptions options, RequestOptions requestOptions = null)
@@ -46,12 +46,12 @@ namespace Stripe
 
         public virtual Source Detach(string customerId, string sourceId, RequestOptions requestOptions = null)
         {
-            return this.Request<Source>(HttpMethod.Delete, $"{StripeConfiguration.ApiBase}/v1/customers/{customerId}/sources/{sourceId}", null, requestOptions);
+            return this.Request<Source>(HttpMethod.Delete, $"/v1/customers/{customerId}/sources/{sourceId}", null, requestOptions);
         }
 
         public virtual Task<Source> DetachAsync(string customerId, string sourceId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.RequestAsync<Source>(HttpMethod.Delete, $"{StripeConfiguration.ApiBase}/v1/customers/{customerId}/sources/{sourceId}", null, requestOptions, cancellationToken);
+            return this.RequestAsync<Source>(HttpMethod.Delete, $"/v1/customers/{customerId}/sources/{sourceId}", null, requestOptions, cancellationToken);
         }
 
         public virtual Source Get(string sourceId, RequestOptions requestOptions = null)
@@ -76,17 +76,17 @@ namespace Stripe
 
         public virtual StripeList<Source> List(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Source>>(HttpMethod.Get, $"{StripeConfiguration.ApiBase}/v1/customers/{customerId}/sources", options, requestOptions);
+            return this.Request<StripeList<Source>>(HttpMethod.Get, $"/v1/customers/{customerId}/sources", options, requestOptions);
         }
 
         public virtual Task<StripeList<Source>> ListAsync(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.RequestAsync<StripeList<Source>>(HttpMethod.Get, $"{StripeConfiguration.ApiBase}/v1/customers/{customerId}/sources", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Source>>(HttpMethod.Get, $"/v1/customers/{customerId}/sources", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<Source> ListAutoPaging(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Source>($"{StripeConfiguration.ApiBase}/v1/customers/{customerId}/sources", options, requestOptions);
+            return this.ListRequestAutoPaging<Source>($"/v1/customers/{customerId}/sources", options, requestOptions);
         }
 
         public virtual Source Update(string sourceId, SourceUpdateOptions options, RequestOptions requestOptions = null)
