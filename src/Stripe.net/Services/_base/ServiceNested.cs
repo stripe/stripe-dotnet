@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using System.Net;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -18,59 +19,151 @@ namespace Stripe
         {
         }
 
-        protected EntityReturned CreateNestedEntity(string parentId, BaseOptions options, RequestOptions requestOptions)
+        protected EntityReturned CreateNestedEntity(
+            string parentId,
+            BaseOptions options,
+            RequestOptions requestOptions)
         {
-            return this.PostRequest<EntityReturned>(this.ClassUrl(parentId), options, requestOptions);
+            return this.Request(
+                HttpMethod.Post,
+                this.ClassUrl(parentId),
+                options,
+                requestOptions);
         }
 
-        protected Task<EntityReturned> CreateNestedEntityAsync(string parentId, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
+        protected Task<EntityReturned> CreateNestedEntityAsync(
+            string parentId,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken)
         {
-            return this.PostRequestAsync<EntityReturned>(this.ClassUrl(parentId), options, requestOptions, cancellationToken);
+            return this.RequestAsync(
+                HttpMethod.Post,
+                this.ClassUrl(parentId),
+                options,
+                requestOptions,
+                cancellationToken);
         }
 
-        protected EntityReturned DeleteNestedEntity(string parentId, string id, BaseOptions options, RequestOptions requestOptions)
+        protected EntityReturned DeleteNestedEntity(
+            string parentId,
+            string id,
+            BaseOptions options,
+            RequestOptions requestOptions)
         {
-            return this.DeleteRequest<EntityReturned>(this.InstanceUrl(parentId, id), options, requestOptions);
+            return this.Request(
+                HttpMethod.Delete,
+                this.InstanceUrl(parentId, id),
+                options,
+                requestOptions);
         }
 
-        protected Task<EntityReturned> DeleteNestedEntityAsync(string parentId, string id, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
+        protected Task<EntityReturned> DeleteNestedEntityAsync(
+            string parentId,
+            string id,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken)
         {
-            return this.DeleteRequestAsync<EntityReturned>(this.InstanceUrl(parentId, id), options, requestOptions, cancellationToken);
+            return this.RequestAsync(
+                HttpMethod.Delete,
+                this.InstanceUrl(parentId, id),
+                options,
+                requestOptions,
+                cancellationToken);
         }
 
-        protected EntityReturned GetNestedEntity(string parentId, string id, BaseOptions options, RequestOptions requestOptions)
+        protected EntityReturned GetNestedEntity(
+            string parentId,
+            string id,
+            BaseOptions options,
+            RequestOptions requestOptions)
         {
-            return this.GetRequest<EntityReturned>(this.InstanceUrl(parentId, id), options, requestOptions, false);
+            return this.Request(
+                HttpMethod.Get,
+                this.InstanceUrl(parentId, id),
+                options,
+                requestOptions);
         }
 
-        protected Task<EntityReturned> GetNestedEntityAsync(string parentId, string id, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
+        protected Task<EntityReturned> GetNestedEntityAsync(
+            string parentId,
+            string id,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken)
         {
-            return this.GetRequestAsync<EntityReturned>(this.InstanceUrl(parentId, id), options, requestOptions, false, cancellationToken);
+            return this.RequestAsync(
+                HttpMethod.Get,
+                this.InstanceUrl(parentId, id),
+                options,
+                requestOptions,
+                cancellationToken);
         }
 
-        protected StripeList<EntityReturned> ListNestedEntities(string parentId, ListOptions options, RequestOptions requestOptions)
+        protected StripeList<EntityReturned> ListNestedEntities(
+            string parentId,
+            ListOptions options,
+            RequestOptions requestOptions)
         {
-            return this.GetRequest<StripeList<EntityReturned>>(this.ClassUrl(parentId), options, requestOptions, true);
+            return this.Request<StripeList<EntityReturned>>(
+                HttpMethod.Get,
+                this.ClassUrl(parentId),
+                options,
+                requestOptions);
         }
 
-        protected Task<StripeList<EntityReturned>> ListNestedEntitiesAsync(string parentId, ListOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
+        protected Task<StripeList<EntityReturned>> ListNestedEntitiesAsync(
+            string parentId,
+            ListOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken)
         {
-            return this.GetRequestAsync<StripeList<EntityReturned>>(this.ClassUrl(parentId), options, requestOptions, true, cancellationToken);
+            return this.RequestAsync<StripeList<EntityReturned>>(
+                HttpMethod.Get,
+                this.ClassUrl(parentId),
+                options,
+                requestOptions,
+                cancellationToken);
         }
 
-        protected IEnumerable<EntityReturned> ListNestedEntitiesAutoPaging(string parentId, ListOptions options, RequestOptions requestOptions)
+        protected IEnumerable<EntityReturned> ListNestedEntitiesAutoPaging(
+            string parentId,
+            ListOptions options,
+            RequestOptions requestOptions)
         {
-            return this.ListRequestAutoPaging<EntityReturned>(this.ClassUrl(parentId), options, requestOptions);
+            return this.ListRequestAutoPaging<EntityReturned>(
+                this.ClassUrl(parentId),
+                options,
+                requestOptions);
         }
 
-        protected EntityReturned UpdateNestedEntity(string parentId, string id, BaseOptions options, RequestOptions requestOptions)
+        protected EntityReturned UpdateNestedEntity(
+            string parentId,
+            string id,
+            BaseOptions options,
+            RequestOptions requestOptions)
         {
-            return this.PostRequest<EntityReturned>(this.InstanceUrl(parentId, id), options, requestOptions);
+            return this.Request(
+                HttpMethod.Post,
+                this.InstanceUrl(parentId, id),
+                options,
+                requestOptions);
         }
 
-        protected Task<EntityReturned> UpdateNestedEntityAsync(string parentId, string id, BaseOptions options, RequestOptions requestOptions, CancellationToken cancellationToken)
+        protected Task<EntityReturned> UpdateNestedEntityAsync(
+            string parentId,
+            string id,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken)
         {
-            return this.PostRequestAsync<EntityReturned>(this.InstanceUrl(parentId, id), options, requestOptions, cancellationToken);
+            return this.RequestAsync(
+                HttpMethod.Post,
+                this.InstanceUrl(parentId, id),
+                options,
+                requestOptions,
+                cancellationToken);
         }
 
         protected virtual string ClassUrl(string parentId, string baseUrl = null)
