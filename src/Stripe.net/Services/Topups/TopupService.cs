@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -28,12 +29,12 @@ namespace Stripe
 
         public virtual Topup Cancel(string topupId, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<Topup>($"{this.InstanceUrl(topupId)}/cancel", null, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(topupId)}/cancel", null, requestOptions);
         }
 
         public virtual Task<Topup> CancelAsync(string topupId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<Topup>($"{this.InstanceUrl(topupId)}/cancel", null, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(topupId)}/cancel", null, requestOptions, cancellationToken);
         }
 
         public virtual Topup Create(TopupCreateOptions options, RequestOptions requestOptions = null)
