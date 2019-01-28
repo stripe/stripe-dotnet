@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -24,12 +25,12 @@ namespace Stripe
 
         public virtual SubscriptionSchedule Cancel(string scheduleId, SubscriptionScheduleCancelOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<SubscriptionSchedule>($"{this.InstanceUrl(scheduleId)}/cancel", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(scheduleId)}/cancel", options, requestOptions);
         }
 
         public virtual Task<SubscriptionSchedule> CancelAsync(string scheduleId, SubscriptionScheduleCancelOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<SubscriptionSchedule>($"{this.InstanceUrl(scheduleId)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(scheduleId)}/cancel", options, requestOptions, cancellationToken);
         }
 
         public virtual SubscriptionSchedule Create(SubscriptionScheduleCreateOptions options, RequestOptions requestOptions = null)
@@ -69,12 +70,12 @@ namespace Stripe
 
         public virtual SubscriptionSchedule Release(string scheduleId, SubscriptionScheduleReleaseOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<SubscriptionSchedule>($"{this.InstanceUrl(scheduleId)}/release", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(scheduleId)}/release", options, requestOptions);
         }
 
         public virtual Task<SubscriptionSchedule> ReleaseAsync(string scheduleId, SubscriptionScheduleReleaseOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<SubscriptionSchedule>($"{this.InstanceUrl(scheduleId)}/release", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(scheduleId)}/release", options, requestOptions, cancellationToken);
         }
 
         public virtual SubscriptionSchedule Update(string scheduleId, SubscriptionScheduleUpdateOptions options, RequestOptions requestOptions = null)
