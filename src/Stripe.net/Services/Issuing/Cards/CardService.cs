@@ -1,6 +1,7 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -34,12 +35,12 @@ namespace Stripe.Issuing
 
         public virtual CardDetails Details(string cardId, RequestOptions requestOptions = null)
         {
-            return this.GetRequest<CardDetails>($"{this.InstanceUrl(cardId)}/details", null, requestOptions, false);
+            return this.Request<CardDetails>(HttpMethod.Get, $"{this.InstanceUrl(cardId)}/details", null, requestOptions);
         }
 
         public virtual Task<CardDetails> DetailsAsync(string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetRequestAsync<CardDetails>($"{this.InstanceUrl(cardId)}/details", null, requestOptions, false, cancellationToken);
+            return this.RequestAsync<CardDetails>(HttpMethod.Get, $"{this.InstanceUrl(cardId)}/details", null, requestOptions, cancellationToken);
         }
 
         public virtual Card Get(string cardId, RequestOptions requestOptions = null)

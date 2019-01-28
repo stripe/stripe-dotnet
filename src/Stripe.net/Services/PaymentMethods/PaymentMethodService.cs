@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -26,12 +27,12 @@ namespace Stripe
 
         public virtual PaymentMethod Attach(string paymentMethodId, PaymentMethodAttachOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<PaymentMethod>($"{this.InstanceUrl(paymentMethodId)}/attach", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/attach", options, requestOptions);
         }
 
         public virtual Task<PaymentMethod> AttachAsync(string paymentMethodId, PaymentMethodAttachOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<PaymentMethod>($"{this.InstanceUrl(paymentMethodId)}/attach", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/attach", options, requestOptions, cancellationToken);
         }
 
         public virtual PaymentMethod Create(PaymentMethodCreateOptions options, RequestOptions requestOptions = null)
@@ -46,12 +47,12 @@ namespace Stripe
 
         public virtual PaymentMethod Detach(string paymentMethodId, PaymentMethodDetachOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<PaymentMethod>($"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions);
         }
 
         public virtual Task<PaymentMethod> DetachAsync(string paymentMethodId, PaymentMethodDetachOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<PaymentMethod>($"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions, cancellationToken);
         }
 
         public virtual PaymentMethod Get(string paymentMethodId, RequestOptions requestOptions = null)
