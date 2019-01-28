@@ -89,7 +89,7 @@ namespace Stripe.Infrastructure.FormEncoding
             {
                 throw new ArgumentException(
                     "key cannot be null or empty when value is neither an INestedOptions or an IDictionary",
-                    "key");
+                    nameof(key));
             }
 
             return string.Join(
@@ -118,15 +118,14 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <param name="value">The value for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested, if any.</param>
         /// <returns>The list of parameters</returns>
-        private static List<Parameter> FlattenParamsValue(object value, string keyPrefix)
+        private static List<KeyValuePair<string, string>> FlattenParamsValue(object value, string keyPrefix)
         {
-            List<Parameter> flatParams = null;
+            List<KeyValuePair<string, string>> flatParams = null;
 
             switch (value)
             {
                 case null:
-                    flatParams = new List<Parameter>();
-                    flatParams.Add(new Parameter(keyPrefix, string.Empty));
+                    flatParams = SingleParam(keyPrefix, string.Empty);
                     break;
 
                 case INestedOptions options:
@@ -174,9 +173,11 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <param name="options">The options class for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested, if any.</param>
         /// <returns>The list of parameters</returns>
-        private static List<Parameter> FlattenParamsOptions(INestedOptions options, string keyPrefix)
+        private static List<KeyValuePair<string, string>> FlattenParamsOptions(
+            INestedOptions options,
+            string keyPrefix)
         {
-            List<Parameter> flatParams = new List<Parameter>();
+            List<KeyValuePair<string, string>> flatParams = new List<KeyValuePair<string, string>>();
             if (options == null)
             {
                 return flatParams;
@@ -218,9 +219,11 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <param name="dictionary">The dictionary for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested, if any.</param>
         /// <returns>The list of parameters</returns>
-        private static List<Parameter> FlattenParamsDictionary(IDictionary dictionary, string keyPrefix)
+        private static List<KeyValuePair<string, string>> FlattenParamsDictionary(
+            IDictionary dictionary,
+            string keyPrefix)
         {
-            List<Parameter> flatParams = new List<Parameter>();
+            List<KeyValuePair<string, string>> flatParams = new List<KeyValuePair<string, string>>();
             if (dictionary == null)
             {
                 return flatParams;
@@ -247,9 +250,11 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <param name="list">The list for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested.</param>
         /// <returns>The list of parameters</returns>
-        private static List<Parameter> FlattenParamsList(IEnumerable list, string keyPrefix)
+        private static List<KeyValuePair<string, string>> FlattenParamsList(
+            IEnumerable list,
+            string keyPrefix)
         {
-            List<Parameter> flatParams = new List<Parameter>();
+            List<KeyValuePair<string, string>> flatParams = new List<KeyValuePair<string, string>>();
             if (list == null)
             {
                 return flatParams;
@@ -268,7 +273,7 @@ namespace Stripe.Infrastructure.FormEncoding
              * list might look like `a[0]=1&b[1]=2`. Emptying it would look like `a=`.) */
             if (!flatParams.Any())
             {
-                flatParams.Add(new Parameter(keyPrefix, string.Empty));
+                flatParams.Add(new KeyValuePair<string, string>(keyPrefix, string.Empty));
             }
 
             return flatParams;
@@ -278,10 +283,10 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <param name="key">The parameter's key.</param>
         /// <param name="value">The parameter's value.</param>
         /// <returns>A list containg the single parameter.</returns>
-        private static List<Parameter> SingleParam(string key, string value)
+        private static List<KeyValuePair<string, string>> SingleParam(string key, string value)
         {
-            List<Parameter> flatParams = new List<Parameter>();
-            flatParams.Add(new Parameter(key, value));
+            List<KeyValuePair<string, string>> flatParams = new List<KeyValuePair<string, string>>();
+            flatParams.Add(new KeyValuePair<string, string>(key, value));
             return flatParams;
         }
 
@@ -312,20 +317,6 @@ namespace Stripe.Infrastructure.FormEncoding
             {
                 return $"{keyPrefix}[{key.Substring(0, i)}]{key.Substring(i)}";
             }
-        }
-
-        /// <summary>Represents a parameter in a query string, i.e. a key/value pair.</summary>
-        internal sealed class Parameter
-        {
-            public Parameter(string key, string value)
-            {
-                this.Key = key;
-                this.Value = value;
-            }
-
-            public string Key { get; }
-
-            public string Value { get; }
         }
     }
 }
