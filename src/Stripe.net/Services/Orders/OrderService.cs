@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -63,12 +64,12 @@ namespace Stripe
 
         public virtual Order Pay(string orderId, OrderPayOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<Order>($"{this.InstanceUrl(orderId)}/pay", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/pay", options, requestOptions);
         }
 
         public virtual Task<Order> PayAsync(string orderId, OrderPayOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<Order>($"{this.InstanceUrl(orderId)}/pay", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/pay", options, requestOptions, cancellationToken);
         }
 
         public virtual Order Update(string orderId, OrderUpdateOptions options, RequestOptions requestOptions = null)

@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -30,12 +31,12 @@ namespace Stripe
 
         public virtual Payout Cancel(string payoutId, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<Payout>($"{this.InstanceUrl(payoutId)}/cancel", null, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(payoutId)}/cancel", null, requestOptions);
         }
 
         public virtual Task<Payout> CancelAsync(string payoutId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<Payout>($"{this.InstanceUrl(payoutId)}/cancel", null, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(payoutId)}/cancel", null, requestOptions, cancellationToken);
         }
 
         public virtual Payout Create(PayoutCreateOptions options, RequestOptions requestOptions = null)
