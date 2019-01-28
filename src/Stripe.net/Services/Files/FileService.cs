@@ -24,22 +24,26 @@ namespace Stripe
 
         public virtual File Create(FileCreateOptions options, RequestOptions requestOptions = null)
         {
+            requestOptions = this.SetupRequestOptions(requestOptions);
+            requestOptions.BaseUrl = StripeConfiguration.FilesBase;
             return Mapper<File>.MapFromJson(
                 Requestor.PostFile(
-                    this.ClassUrl(StripeConfiguration.FilesBase),
+                    StripeConfiguration.FilesBase + this.ClassUrl(),
                     options.File,
                     options.Purpose,
-                    this.SetupRequestOptions(requestOptions)));
+                    requestOptions));
         }
 
         public virtual async Task<File> CreateAsync(FileCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            requestOptions = this.SetupRequestOptions(requestOptions);
+            requestOptions.BaseUrl = StripeConfiguration.FilesBase;
             return Mapper<File>.MapFromJson(
                 await Requestor.PostFileAsync(
-                    this.ClassUrl(StripeConfiguration.FilesBase),
+                    StripeConfiguration.FilesBase + this.ClassUrl(),
                     options.File,
                     options.Purpose,
-                    this.SetupRequestOptions(requestOptions),
+                    requestOptions,
                     cancellationToken).ConfigureAwait(false));
         }
 
