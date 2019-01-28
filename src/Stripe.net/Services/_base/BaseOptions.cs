@@ -2,22 +2,15 @@ namespace Stripe
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Base class for Stripe options classes, i.e. classes representing parameters for Stripe
+    /// API requests.
+    /// </summary>
     public class BaseOptions : INestedOptions
     {
-        private Dictionary<string, string> extraParams = new Dictionary<string, string>();
-        private List<string> expand = new List<string>();
+        public Dictionary<string, string> ExtraParams { get; set; } = new Dictionary<string, string>();
 
-        public Dictionary<string, string> ExtraParams
-        {
-            get { return this.extraParams; }
-            set { this.extraParams = value; }
-        }
-
-        public List<string> Expand
-        {
-            get { return this.expand; }
-            set { this.expand = value; }
-        }
+        public List<string> Expand { get; set; } = new List<string>();
 
         public void AddExtraParam(string key, string value)
         {

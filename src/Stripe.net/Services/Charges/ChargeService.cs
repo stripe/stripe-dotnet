@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -50,12 +51,12 @@ namespace Stripe
 
         public virtual Charge Capture(string chargeId, ChargeCaptureOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<Charge>($"{this.InstanceUrl(chargeId)}/capture", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(chargeId)}/capture", options, requestOptions);
         }
 
         public virtual Task<Charge> CaptureAsync(string chargeId, ChargeCaptureOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<Charge>($"{this.InstanceUrl(chargeId)}/capture", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(chargeId)}/capture", options, requestOptions, cancellationToken);
         }
 
         public virtual Charge Create(ChargeCreateOptions options, RequestOptions requestOptions = null)
