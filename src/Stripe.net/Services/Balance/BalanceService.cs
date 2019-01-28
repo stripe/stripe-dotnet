@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
@@ -23,12 +24,12 @@ namespace Stripe
 
         public virtual Balance Get(RequestOptions requestOptions = null)
         {
-            return this.GetRequest<Balance>(this.ClassUrl(), null, requestOptions, false);
+            return this.Request(HttpMethod.Get, this.ClassUrl(), null, requestOptions);
         }
 
         public virtual Task<Balance> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetRequestAsync<Balance>(this.ClassUrl(), null, requestOptions, false, cancellationToken);
+            return this.RequestAsync(HttpMethod.Get, this.ClassUrl(), null, requestOptions, cancellationToken);
         }
     }
 }
