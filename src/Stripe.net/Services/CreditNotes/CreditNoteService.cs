@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -69,12 +70,12 @@ namespace Stripe
 
         public virtual CreditNote VoidCreditNote(string creditNoteId, CreditNoteVoidOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<CreditNote>($"{this.InstanceUrl(creditNoteId)}/void", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(creditNoteId)}/void", options, requestOptions);
         }
 
         public virtual Task<CreditNote> VoidCreditNoteAsync(string creditNoteId, CreditNoteVoidOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<CreditNote>($"{this.InstanceUrl(creditNoteId)}/void", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(creditNoteId)}/void", options, requestOptions, cancellationToken);
         }
     }
 }
