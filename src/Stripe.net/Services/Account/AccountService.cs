@@ -58,12 +58,12 @@ namespace Stripe
 
         public virtual Account GetSelf(RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Get, $"{StripeConfiguration.ApiBase}/v1/account", null, requestOptions);
+            return this.Request(HttpMethod.Get, "/v1/account", null, requestOptions);
         }
 
         public virtual Task<Account> GetSelfAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.RequestAsync(HttpMethod.Get, $"{StripeConfiguration.ApiBase}/v1/account", null, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Get, "/v1/account", null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Account> List(AccountListOptions options = null, RequestOptions requestOptions = null)
