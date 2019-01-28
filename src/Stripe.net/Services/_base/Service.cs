@@ -25,6 +25,8 @@ namespace Stripe
 
         public abstract string BasePath { get; }
 
+        public virtual string BaseUrl => StripeConfiguration.ApiBase;
+
         protected EntityReturned CreateEntity(BaseOptions options, RequestOptions requestOptions)
         {
             return this.Request(
@@ -207,8 +209,9 @@ namespace Stripe
             where T : IStripeEntity
         {
             requestOptions = this.SetupRequestOptions(requestOptions);
+            var url = requestOptions.BaseUrl + path;
             var wr = Requestor.GetRequestMessage(
-                this.ApplyAllParameters(options, path, IsStripeList<T>()),
+                this.ApplyAllParameters(options, url, IsStripeList<T>()),
                 method,
                 requestOptions);
             return Mapper<T>.MapFromJson(await Requestor.ExecuteRequestAsync(wr));
@@ -261,18 +264,19 @@ namespace Stripe
                 requestOptions.ApiKey = this.ApiKey;
             }
 
+            requestOptions.BaseUrl = requestOptions.BaseUrl ?? this.BaseUrl;
+
             return requestOptions;
         }
 
-        protected virtual string ClassUrl(string baseUrl = null)
+        protected virtual string ClassUrl()
         {
-            baseUrl = baseUrl ?? StripeConfiguration.ApiBase;
-            return $"{baseUrl}{this.BasePath}";
+            return this.BasePath;
         }
 
-        protected virtual string InstanceUrl(string id, string baseUrl = null)
+        protected virtual string InstanceUrl(string id)
         {
-            return $"{this.ClassUrl(baseUrl)}/{WebUtility.UrlEncode(id)}";
+            return $"{this.ClassUrl()}/{WebUtility.UrlEncode(id)}";
         }
 
         private static bool IsStripeList<T>()
