@@ -166,15 +166,14 @@ namespace Stripe
                 cancellationToken);
         }
 
-        protected virtual string ClassUrl(string parentId, string baseUrl = null)
+        protected virtual string ClassUrl(string parentId)
         {
-            baseUrl = baseUrl ?? StripeConfiguration.ApiBase;
-            return $"{baseUrl}{this.BasePath.Replace("{PARENT_ID}", parentId)}";
+            return this.BasePath.Replace("{PARENT_ID}", parentId);
         }
 
-        protected virtual string InstanceUrl(string parentId, string id, string baseUrl = null)
+        protected virtual string InstanceUrl(string parentId, string id)
         {
-            return $"{this.ClassUrl(parentId, baseUrl)}/{WebUtility.UrlEncode(id)}";
+            return $"{this.ClassUrl(parentId)}/{WebUtility.UrlEncode(id)}";
         }
     }
 }
