@@ -100,7 +100,7 @@ namespace Stripe.Infrastructure
             return ExecuteRequestAsync(wr, cancellationToken);
         }
 
-        private static async Task<StripeResponse> ExecuteRequestAsync(HttpRequestMessage requestMessage, CancellationToken cancellationToken = default(CancellationToken))
+        internal static async Task<StripeResponse> ExecuteRequestAsync(HttpRequestMessage requestMessage, CancellationToken cancellationToken = default(CancellationToken))
         {
             var response = await HttpClient.SendAsync(requestMessage, cancellationToken).ConfigureAwait(false);
             var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
