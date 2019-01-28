@@ -20,27 +20,17 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string BusinessLogoId { get; set; }
+        public string BusinessLogoId => this.InternalBusinessLogo.Id;
 
         /// <summary>
         /// (Expanded) A logo for this account (at least 128px x 128px).
         /// </summary>
         [JsonIgnore]
-        public File BusinessLogo { get; set; }
+        public File BusinessLogo => this.InternalBusinessLogo.ExpandedObject;
 
         [JsonProperty("business_logo")]
-        internal object InternalBusinessLogo
-        {
-            get
-            {
-                return this.BusinessLogo ?? (object)this.BusinessLogoId;
-            }
-
-            set
-            {
-                StringOrObject<File>.Map(value, s => this.BusinessLogoId = s, o => this.BusinessLogo = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+        internal ExpandableField<File> InternalBusinessLogo { get; set; }
         #endregion
 
         [JsonProperty("business_name")]
