@@ -66,6 +66,8 @@ namespace Stripe.Infrastructure
             { "source_transaction", typeof(SourceTransaction) },
             { "subscription", typeof(Subscription) },
             { "subscription_item", typeof(SubscriptionItem) },
+            { "subscription_schedule", typeof(SubscriptionSchedule) },
+            { "subscription_schedule_revision", typeof(SubscriptionScheduleRevision) },
             { "terminal.connection_token", typeof(Terminal.ConnectionToken) },
             { "terminal.location", typeof(Terminal.Location) },
             { "terminal.reader", typeof(Terminal.Reader) },

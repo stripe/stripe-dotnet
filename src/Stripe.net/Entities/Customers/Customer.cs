@@ -19,6 +19,9 @@ namespace Stripe
         [JsonProperty("account_balance")]
         public long AccountBalance { get; set; }
 
+        /// <summary>
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
@@ -74,6 +77,9 @@ namespace Stripe
         [JsonProperty("delinquent")]
         public bool Delinquent { get; set; }
 
+        /// <summary>
+        /// An arbitrary string attached to the object. Often useful for displaying to users.
+        /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
 
@@ -83,21 +89,42 @@ namespace Stripe
         [JsonProperty("discount")]
         public Discount Discount { get; set; }
 
+        /// <summary>
+        /// The customer’s email address.
+        /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
 
+        /// <summary>
+        /// The prefix for the customer used to generate unique invoice numbers.
+        /// </summary>
         [JsonProperty("invoice_prefix")]
         public string InvoicePrefix { get; set; }
 
+        /// <summary>
+        /// The customer’s default invoice settings.
+        /// </summary>
+        [JsonProperty("invoice_settings")]
+        public CustomerInvoiceSettings InvoiceSettings { get; set; }
+
+        /// <summary>
+        /// Has the value <code>true</code> if the object exists in live mode or the value
+        /// <code>false</code> if the object exists in test mode.
+        /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to a customer object. It can be useful for storing additional information about the customer in a structured format
+        /// A set of key/value pairs that you can attach to a customer object. It can be useful for
+        /// storing additional information about the customer in a structured format
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        /// Mailing and shipping address for the customer. Appears on invoices emailed to this
+        /// customer.
+        /// </summary>
         [JsonProperty("shipping")]
         public Shipping Shipping { get; set; }
 
@@ -113,9 +140,15 @@ namespace Stripe
         [JsonProperty("subscriptions")]
         public StripeList<Subscription> Subscriptions { get; set; }
 
+        /// <summary>
+        /// The customer’s tax information. Appears on invoices emailed to this customer.
+        /// </summary>
         [JsonProperty("tax_info")]
         public CustomerTaxInfo TaxInfo { get; set; }
 
+        /// <summary>
+        /// Describes the status of looking up the tax ID provided in <code>tax_info</code>.
+        /// </summary>
         [JsonProperty("tax_info_verification")]
         public CustomerTaxInfoVerification TaxInfoVerification { get; set; }
     }

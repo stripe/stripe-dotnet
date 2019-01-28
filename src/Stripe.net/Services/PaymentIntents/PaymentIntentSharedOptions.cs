@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
@@ -26,6 +27,9 @@ namespace Stripe
         [JsonProperty("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
+        [JsonProperty("payment_method_types")]
+        public List<string> PaymentMethodTypes { get; set; }
+
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
 
@@ -40,5 +44,9 @@ namespace Stripe
 
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
+
+        [Obsolete("Use PaymentMethodTypes")]
+        [JsonProperty("allowed_source_types")]
+        public List<string> AllowedSourceTypes { get; set; }
     }
 }
