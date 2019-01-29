@@ -24,6 +24,19 @@ namespace StripeTests
             Assert.Equal(options.IdempotencyKey, request.Headers.GetValues("Idempotency-Key").FirstOrDefault());
             Assert.Equal(options.StripeConnectAccountId, request.Headers.GetValues("Stripe-Account").FirstOrDefault());
             Assert.Equal(StripeConfiguration.ApiVersion, request.Headers.GetValues("Stripe-Version").FirstOrDefault());
+
+            Assert.Equal(
+                $"Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}",
+                request.Headers.UserAgent.ToString());
+
+            var json = request.Headers.GetValues("X-Stripe-Client-User-Agent").FirstOrDefault();
+            Assert.NotNull(json);
+            var data = JObject.Parse(json);
+            Assert.Equal(StripeConfiguration.StripeNetVersion, data["bindings_version"]);
+            Assert.Equal(".net", data["lang"]);
+            Assert.Equal("stripe", data["publisher"]);
+            Assert.NotNull(data["lang_version"]);
+            Assert.NotNull(data["os_version"]);
         }
     }
 }
