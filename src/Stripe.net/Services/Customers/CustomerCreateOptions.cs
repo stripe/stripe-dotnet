@@ -64,11 +64,23 @@ namespace Stripe
         [JsonProperty("shipping")]
         public ShippingOptions Shipping { get; set; }
 
+        /// <summary>
+        /// The source can either be a Token or a Source, as returned by
+        /// <a href="https://stripe.com/docs/elements">Elements</a>, or a
+        /// <see cref="CardCreateNestedOptions"/> containing a user’s credit card details. You must
+        /// provide a source if the customer does not already have a valid source attached, and you
+        /// are subscribing the customer to be charged automatically for a plan that is not free.
+        /// Passing <c>source</c> will create a new source object, make it the customer default
+        /// source, and delete the old customer default if one exists. If you want to add an
+        /// additional source, instead use
+        /// <see cref="CardService.Create(string, CardCreateOptions, RequestOptions)"/> to add the
+        /// card and then <see cref="CustomerService.Update(string, CustomerUpdateOptions, RequestOptions)"/>
+        /// to set it as the default. Whenever you attach a card to a customer, Stripe will
+        /// automatically validate the card.
+        /// </summary>
         [JsonProperty("source")]
-        public string SourceToken { get; set; }
-
-        [JsonProperty("source")]
-        public CardCreateNestedOptions SourceCard { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
 
         /// <summary>
         /// Describes the customer’s tax exemption status. One of <c>none</c>, <c>exempt</c>, or
@@ -90,35 +102,8 @@ namespace Stripe
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
-        #region Trial End
-
-        [JsonIgnore]
-        public DateTime? TrialEnd { get; set; }
-
-        [JsonIgnore]
-        public bool EndTrialNow { get; set; }
-
         [JsonProperty("trial_end")]
-        internal string TrialEndInternal
-        {
-            get
-            {
-                if (this.EndTrialNow)
-                {
-                    return "now";
-                }
-                else if (this.TrialEnd.HasValue)
-                {
-                    return EpochTime.ConvertDateTimeToEpoch(this.TrialEnd.Value).ToString();
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-
-        #endregion
+        public AnyOf<DateTime?, SubscriptionTrialEnd?> TrialEnd { get; set; }
 
         [JsonProperty("validate")]
         public bool? Validate { get; set; }

@@ -29,43 +29,16 @@ namespace Stripe
         [JsonProperty("invoice_items")]
         public List<InvoiceUpcomingInvoiceItemOption> InvoiceItems { get; set; }
 
-        #region SubscriptionBillingCycleAnchor
-
         /// <summary>
-        /// For new subscriptions, a future timestamp to anchor the subscription’s
-        /// <see href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</see>.
-        /// This is used to determine the date of the first full invoice, and, for plans with
-        /// <c>month</c> or <c>year</c> intervals, the day of the month for subsequent invoices.For
-        /// existing subscriptions, the value can only be set to <c>now</c> or <c>unchanged</c>.
+        /// For new subscriptions, a future <see cref="DateTime"/> to anchor the subscription’s
+        /// <a href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a>. This
+        /// is used to determine the date of the first full invoice, and, for plans with
+        /// <c>month</c> or <c>year</c> intervals, the day of the month for subsequent invoices. For
+        /// existing subscriptions, the value can only be set to one of
+        /// <see cref="Stripe.SubscriptionBillingCycleAnchor"/>.
         /// </summary>
-        [JsonIgnore]
-        public DateTime? SubscriptionBillingCycleAnchor { get; set; }
-
-        [JsonIgnore]
-        public bool SubscriptionBillingCycleAnchorNow { get; set; }
-
-        [JsonIgnore]
-        public bool SubscriptionBillingCycleAnchorUnchanged { get; set; }
-
         [JsonProperty("subscription_billing_cycle_anchor")]
-        internal string SubscriptionBillingCycleAnchorInternal
-        {
-            get
-            {
-                if (this.SubscriptionBillingCycleAnchorNow)
-                {
-                    return "now";
-                }
-
-                if (this.SubscriptionBillingCycleAnchorUnchanged)
-                {
-                    return "unchanged";
-                }
-
-                return this.SubscriptionBillingCycleAnchor?.ConvertDateTimeToEpoch().ToString();
-            }
-        }
-        #endregion
+        public AnyOf<DateTime?, SubscriptionBillingCycleAnchor?> SubscriptionBillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Boolean indicating whether this subscription should cancel at the end of the current

@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SourceCreateOptions : BaseOptions
     {
@@ -38,9 +39,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("flow")]
         public string Flow { get; set; }
-
-        [JsonProperty("card")]
-        public string CardId { get; set; }
 
         /// <summary>
         /// Information about a mandate possiblity attached to a source object (generally for bank debits) as well as its acceptance status.
@@ -105,7 +103,8 @@ namespace Stripe
         public SourceBancontactCreateOptions Bancontact { get; set; }
 
         [JsonProperty("card")]
-        public CreditCardOptions Card { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<string, CreditCardOptions> Card { get; set; }
 
         [JsonProperty("ideal")]
         public SourceIdealCreateOptions Ideal { get; set; }
