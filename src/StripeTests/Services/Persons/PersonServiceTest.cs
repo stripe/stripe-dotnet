@@ -30,7 +30,15 @@ namespace StripeTests
                     AccountOpener = true,
                     Owner = true,
                     PercentOwnership = 30.5m,
-                }
+                },
+                Verification = new PersonVerificationOptions
+                {
+                    Document = new PersonVerificationDocumentOptions
+                    {
+                        BackFileId = "file_123",
+                        FrontFileId = "file_345",
+                    },
+                },
             };
 
             this.updateOptions = new PersonUpdateOptions

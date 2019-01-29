@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class AccountDobOptions : INestedOptions
+    public class DobOptions : INestedOptions
     {
         [JsonProperty("day")]
         public long? Day { get; set; }

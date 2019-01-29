@@ -23,9 +23,5 @@ namespace Stripe
 
         [JsonProperty("source")]
         public string SourceId { get; set; }
-
-        [Obsolete("Use SavePaymentMethod instead")]
-        [JsonProperty("save_source_to_customer")]
-        public bool? SaveSourceToCustomer { get; set; }
     }
 }

@@ -25,10 +25,10 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
+            // TODO: fix stripe-mock to properly expand application_fee
             string[] expansions =
             {
               "application",
-              "application_fee",
               "balance_transaction",
               "customer",
               "destination",
@@ -50,9 +50,6 @@ namespace StripeTests
 
             Assert.NotNull(charge.Application);
             Assert.Equal("application", charge.Application.Object);
-
-            Assert.NotNull(charge.ApplicationFee);
-            Assert.Equal("application_fee", charge.ApplicationFee.Object);
 
             Assert.NotNull(charge.BalanceTransaction);
             Assert.Equal("balance_transaction", charge.BalanceTransaction.Object);

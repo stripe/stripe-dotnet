@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
@@ -26,50 +27,69 @@ namespace StripeTests
             this.createOptions = new AccountCreateOptions
             {
                 Type = AccountType.Custom,
-                ExternalAccountId = "tok_visa_debit",
-                LegalEntity = new AccountLegalEntityOptions
+                BusinessProfile = new AccountBusinessProfileOptions
                 {
-                    AdditionalOwners = new List<AccountAdditionalOwner>
+                    Name = "business name",
+                },
+                BusinessType = "company",
+                Company = new AccountCompanyOptions
+                {
+                    Address = new AddressOptions
                     {
-                        new AccountAdditionalOwner
+                        State = "CA",
+                        City = "City",
+                        Line1 = "Line1",
+                        Line2 = "Line2",
+                        PostalCode = "90210",
+                        Country = "US",
+                    },
+                    Name = "Company name",
+                },
+                ExternalAccountId = "tok_visa_debit",
+                RequestedCapabilities = new List<string>
+                {
+                    "card_payments",
+                    "platform_payments",
+                },
+                Settings = new AccountSettingsOptions
+                {
+                    Branding = new AccountSettingsBrandingOptions
+                    {
+                        LogoFileId = "file_123",
+                    },
+                    CardPayments = new AccountSettingsCardPaymentsOptions
+                    {
+                        DeclineOn = new AccountSettingsDeclineOnOptions
                         {
-                            // Verified this is encoded properly but stripe-mock does not
-                            // support dob at the moment for additional owners.
-                            // Dob = new AccountDobOptions
-                            // {
-                            //     Day = 1,
-                            //     Month = 1,
-                            //     Year = 1980,
-                            // },
-                            FirstName = "John",
-                            LastName = "Doe",
-                            Verification = new AccountVerificationOptions
-                            {
-                                DocumentBackId = "file_123",
-                                DocumentId = "file_234",
-                            },
+                            AvsFailure = true,
+                            CvcFailure = true,
                         },
-                        new AccountAdditionalOwner
-                        {
-                            Address = new AddressOptions
-                            {
-                                State = "CA",
-                                City = "City",
-                                Line1 = "Line1",
-                                Line2 = "Line2",
-                                PostalCode = "90210",
-                                Country = "US",
-                            },
-                            FirstName = "Jenny",
-                            LastName = "Rosen",
-                        }
+                        StatementDescriptorPrefix = "STR",
                     },
-                    Verification = new AccountVerificationOptions
+                    Dashboard = new AccountSettingsDashboardOptions
                     {
-                        DocumentBackId = "file_abc",
-                        DocumentId = "file_bcd",
+                        DisplayName = "dashboard_name",
                     },
-                }
+                    Payments = new AccountSettingsPaymentsOptions
+                    {
+                        StatementDescriptor = "STRIPE 123",
+                    },
+                    Payouts = new AccountSettingsPayoutsOptions
+                    {
+                        DebitNegativeBalances = true,
+                        Schedule = new AccountSettingsPayoutsScheduleOptions
+                        {
+                            Interval = "monthly",
+                            MonthlyAnchor = "10",
+                        },
+                    },
+                },
+                TosAcceptance = new AccountTosAcceptanceOptions
+                {
+                    Date = DateTime.Parse("Mon, 01 Jan 2001 00:00:00Z"),
+                    Ip = "127.0.0.1",
+                    UserAgent = "User-Agent",
+                },
             };
 
             this.updateOptions = new AccountUpdateOptions

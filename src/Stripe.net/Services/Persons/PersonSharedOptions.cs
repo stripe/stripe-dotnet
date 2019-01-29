@@ -17,7 +17,7 @@ namespace Stripe
         public AddressJapanOptions AddressKanji { get; set; }
 
         [JsonProperty("dob")]
-        public AccountDobOptions Dob { get; set; }
+        public DobOptions Dob { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -63,5 +63,8 @@ namespace Stripe
 
         [JsonProperty("ssn_last_4")]
         public string SSNLast4 { get; set; }
+
+        [JsonProperty("verification")]
+        public PersonVerificationOptions Verification { get; set; }
     }
 }

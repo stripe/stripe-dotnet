@@ -48,9 +48,5 @@ namespace Stripe
         [Obsolete("Use PaymentMethodTypes")]
         [JsonProperty("allowed_source_types")]
         public List<string> AllowedSourceTypes { get; set; }
-
-        [Obsolete("Use SavePaymentMethod instead")]
-        [JsonProperty("save_source_to_customer")]
-        public bool? SaveSourceToCustomer { get; set; }
     }
 }
