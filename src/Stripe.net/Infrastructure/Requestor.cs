@@ -1,6 +1,7 @@
 namespace Stripe.Infrastructure
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
     using System.Linq;
@@ -10,9 +11,16 @@ namespace Stripe.Infrastructure
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
+    using Newtonsoft.Json;
 
     internal static class Requestor
     {
+        private static readonly string UserAgentString
+            = $"Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}";
+
+        private static readonly string StripeClientUserAgentString
+            = BuildStripeClientUserAgentString();
+
         static Requestor()
         {
             HttpClient =
@@ -148,9 +156,8 @@ namespace Stripe.Infrastructure
                 request.Headers.Add("Stripe-Version", StripeConfiguration.ApiVersion);
             }
 
-            var client = new Client(request);
-            client.ApplyUserAgent();
-            client.ApplyClientData();
+            request.Headers.UserAgent.ParseAdd(UserAgentString);
+            request.Headers.Add("X-Stripe-Client-User-Agent", StripeClientUserAgentString);
 
             return request;
         }
@@ -250,6 +257,28 @@ namespace Stripe.Infrastructure
             };
 
             return result;
+        }
+
+        private static string BuildStripeClientUserAgentString()
+        {
+            var values = new Dictionary<string, string>
+            {
+                { "bindings_version", StripeConfiguration.StripeNetVersion },
+                { "lang", ".net" },
+                { "publisher", "stripe" },
+                { "lang_version", RuntimeInformation.GetLanguageVersion() },
+                { "os_version", RuntimeInformation.GetOSVersion() },
+            };
+
+#if NET45
+            string monoVersion = RuntimeInformation.GetMonoVersion();
+            if (!string.IsNullOrEmpty(monoVersion))
+            {
+                values.Add("mono_version", monoVersion);
+            }
+#endif
+
+            return JsonConvert.SerializeObject(values, Formatting.None);
         }
     }
 }
