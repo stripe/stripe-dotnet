@@ -44,7 +44,7 @@ namespace Stripe.Infrastructure
                 default:
                     throw new JsonSerializationException(string.Format(
                         "Unexpected value when converting ExpandableField. Expected IExpandableField, got {0}.",
-                        value.GetType().ToString()));
+                        value.GetType()));
             }
         }
 
