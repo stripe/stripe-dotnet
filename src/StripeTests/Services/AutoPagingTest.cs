@@ -45,7 +45,7 @@ namespace StripeTests
 
             // Call auto-paging method
             var service = new PageableService();
-            var options = new ListOptions()
+            var options = new ListOptions
             {
                 Limit = 2,
             };
