@@ -77,9 +77,9 @@ namespace StripeTests
         {
             var evt = Event.FromJson(this.json);
             evt.ApiVersion = StripeConfiguration.ApiVersion;
-            var json = evt.ToJson();
+            var serialized = evt.ToJson();
 
-            evt = EventUtility.ParseEvent(json);
+            evt = EventUtility.ParseEvent(serialized);
             Assert.Equal(StripeConfiguration.ApiVersion, evt.ApiVersion);
         }
 

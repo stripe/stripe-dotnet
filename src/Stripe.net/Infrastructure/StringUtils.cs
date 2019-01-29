@@ -2,7 +2,7 @@ namespace Stripe.Infrastructure
 {
     using System.Text.RegularExpressions;
 
-    internal class StringUtils
+    internal static class StringUtils
     {
         /// <summary>Converts the string to snake case.</summary>
         /// <param name="str">The string to convert.</param>
