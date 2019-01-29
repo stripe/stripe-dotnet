@@ -9,15 +9,15 @@ namespace StripeTests
 
     public class AccountLinkServiceTest : BaseStripeTest
     {
-        private AccountLinkService service;
-        private AccountLinkCreateOptions createOptions;
+        private readonly AccountLinkService service;
+        private readonly AccountLinkCreateOptions createOptions;
 
         public AccountLinkServiceTest(MockHttpClientFixture mockHttpClientFixture)
             : base(mockHttpClientFixture)
         {
             this.service = new AccountLinkService();
 
-            this.createOptions = new AccountLinkCreateOptions()
+            this.createOptions = new AccountLinkCreateOptions
             {
                 AccountId = "acct_123",
                 Collect = "eventually_due",
