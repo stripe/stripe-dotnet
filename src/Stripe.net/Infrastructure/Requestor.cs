@@ -12,6 +12,7 @@ namespace Stripe.Infrastructure
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     internal static class Requestor
     {
@@ -33,94 +34,22 @@ namespace Stripe.Infrastructure
 
         internal static HttpClient HttpClient { get; private set; }
 
-        public static StripeResponse GetString(string url, RequestOptions requestOptions)
-        {
-            var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
-
-            return ExecuteRequest(wr);
-        }
-
-        public static StripeResponse PostString(string url, RequestOptions requestOptions)
-        {
-            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
-
-            return ExecuteRequest(wr);
-        }
-
-        public static StripeResponse Delete(string url, RequestOptions requestOptions)
-        {
-            var wr = GetRequestMessage(url, HttpMethod.Delete, requestOptions);
-
-            return ExecuteRequest(wr);
-        }
-
-        public static StripeResponse PostFile(string url, Stream stream, string purpose, RequestOptions requestOptions)
-        {
-            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
-
-            ApplyMultiPartFileToRequest(wr, stream, purpose);
-
-            return ExecuteRequest(wr);
-        }
-
-        private static StripeResponse ExecuteRequest(HttpRequestMessage requestMessage)
-        {
-            var response = HttpClient.SendAsync(requestMessage).ConfigureAwait(false).GetAwaiter().GetResult();
-            var responseText = response.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-
-            var result = BuildResponseData(response, responseText);
-
-            if (response.IsSuccessStatusCode)
-            {
-                return result;
-            }
-
-            throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
-        }
-
-        public static Task<StripeResponse> GetStringAsync(string url, RequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var wr = GetRequestMessage(url, HttpMethod.Get, requestOptions);
-
-            return ExecuteRequestAsync(wr, cancellationToken);
-        }
-
-        public static Task<StripeResponse> PostStringAsync(string url, RequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
-
-            return ExecuteRequestAsync(wr, cancellationToken);
-        }
-
-        public static Task<StripeResponse> DeleteAsync(string url, RequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var wr = GetRequestMessage(url, HttpMethod.Delete, requestOptions);
-
-            return ExecuteRequestAsync(wr, cancellationToken);
-        }
-
-        public static Task<StripeResponse> PostFileAsync(string url, Stream stream, string purpose, RequestOptions requestOptions, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var wr = GetRequestMessage(url, HttpMethod.Post, requestOptions);
-
-            ApplyMultiPartFileToRequest(wr, stream, purpose);
-
-            return ExecuteRequestAsync(wr, cancellationToken);
-        }
-
-        internal static async Task<StripeResponse> ExecuteRequestAsync(HttpRequestMessage requestMessage, CancellationToken cancellationToken = default(CancellationToken))
+        internal static async Task<T> ExecuteRequestAsync<T>(HttpRequestMessage requestMessage, CancellationToken cancellationToken = default(CancellationToken))
+            where T : IStripeEntity
         {
             var response = await HttpClient.SendAsync(requestMessage, cancellationToken).ConfigureAwait(false);
             var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var result = BuildResponseData(response, responseText);
+            var stripeResponse = BuildResponseData(response, responseText);
 
             if (response.IsSuccessStatusCode)
             {
-                return result;
+                var obj = StripeEntity.FromJson<T>(responseText);
+                obj.StripeResponse = stripeResponse;
+                return obj;
             }
 
-            throw BuildStripeException(result, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
+            throw BuildStripeException(stripeResponse, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
 
         internal static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, RequestOptions requestOptions)
@@ -191,7 +120,7 @@ namespace Stripe.Infrastructure
             return $"Bearer {apiKey}";
         }
 
-        private static void ApplyMultiPartFileToRequest(HttpRequestMessage requestMessage, Stream stream, string purpose)
+        internal static void ApplyMultiPartFileToRequest(HttpRequestMessage requestMessage, Stream stream, string purpose)
         {
             requestMessage.Headers.ExpectContinue = true;
 
@@ -230,8 +159,9 @@ namespace Stripe.Infrastructure
         private static StripeException BuildStripeException(StripeResponse response, HttpStatusCode statusCode, string requestUri, string responseContent)
         {
             var stripeError = requestUri.Contains("oauth")
-                ? Mapper<StripeError>.MapFromJson(responseContent, null, response)
-                : Mapper<StripeError>.MapFromJson(responseContent, "error", response);
+                ? StripeError.FromJson(responseContent)
+                : StripeError.FromJson(JObject.Parse(responseContent)["error"].ToString());
+            stripeError.StripeResponse = response;
 
             string message = !string.IsNullOrEmpty(stripeError.Message)
                 ? stripeError.Message
