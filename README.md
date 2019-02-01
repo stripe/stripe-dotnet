@@ -90,17 +90,8 @@ The information that can be derived from the `StripeResponse` is available from 
 ```csharp
 public class StripeResponse
 {
-	// ResponseJson will always tell you the complete json Stripe returned to Stripe.net.
-	// this will be the same as the ObjectJson when you execute a create/get/delete call.
-	// however, if you execute a List() method, the ResponseJson will have the full api result
-	// from Stripe (a charge list with 10 charges, for example).
+	// ResponseJson contains the complete JSON string Stripe returned to Stripe.net.
 	public string ResponseJson { get; set; }
-
-	// when you call a List() method, the object json is the object in the response array that represents
-	// the entity. The ResponseJson will be the full array returned from Stripe on every entity, however,
-	// since that was the full response from Stripe. ObjectJson is always the same as ResponseJson when
-	// you are doing a regular create/get/delete, because you are dealing with a single object.
-	public string ObjectJson { get; set; }
 
 	// this is the request id of the call, as seen in the Stripe dashboard. I would recommend logging
 	// this and/or saving it to your database. this is very useful to help you find your request
