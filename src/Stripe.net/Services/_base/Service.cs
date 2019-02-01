@@ -214,7 +214,7 @@ namespace Stripe
                 this.ApplyAllParameters(options, url, IsStripeList<T>()),
                 method,
                 requestOptions);
-            return Mapper<T>.MapFromJson(await Requestor.ExecuteRequestAsync(wr));
+            return await Requestor.ExecuteRequestAsync<T>(wr);
         }
 
         protected IEnumerable<T> ListRequestAutoPaging<T>(

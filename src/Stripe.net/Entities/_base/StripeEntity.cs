@@ -26,7 +26,7 @@ namespace Stripe
         /// <param name="value">The object to deserialize.</param>
         /// <returns>The deserialized Stripe object from the JSON string.</returns>
         public static T FromJson<T>(string value)
-            where T : StripeEntity
+            where T : IStripeEntity
         {
             return JsonConvert.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
         }

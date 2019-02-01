@@ -1,6 +1,8 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.IO;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
@@ -24,27 +26,21 @@ namespace Stripe
 
         public virtual File Create(FileCreateOptions options, RequestOptions requestOptions = null)
         {
-            requestOptions = this.SetupRequestOptions(requestOptions);
-            requestOptions.BaseUrl = StripeConfiguration.FilesBase;
-            return Mapper<File>.MapFromJson(
-                Requestor.PostFile(
-                    StripeConfiguration.FilesBase + this.ClassUrl(),
-                    options.File,
-                    options.Purpose,
-                    requestOptions));
+            return this.CreateAsync(options, requestOptions)
+                .ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         public virtual async Task<File> CreateAsync(FileCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             requestOptions = this.SetupRequestOptions(requestOptions);
             requestOptions.BaseUrl = StripeConfiguration.FilesBase;
-            return Mapper<File>.MapFromJson(
-                await Requestor.PostFileAsync(
-                    StripeConfiguration.FilesBase + this.ClassUrl(),
-                    options.File,
-                    options.Purpose,
-                    requestOptions,
-                    cancellationToken).ConfigureAwait(false));
+            var url = requestOptions.BaseUrl + this.BasePath;
+            var wr = Requestor.GetRequestMessage(
+                url,
+                HttpMethod.Post,
+                requestOptions);
+            Requestor.ApplyMultiPartFileToRequest(wr, options.File, options.Purpose);
+            return await Requestor.ExecuteRequestAsync<File>(wr);
         }
 
         public virtual File Get(string fileId, RequestOptions requestOptions = null)
