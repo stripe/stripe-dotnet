@@ -47,7 +47,7 @@ namespace StripeTests
 
             var url = this.service.ApplyAllParameters(options, string.Empty, false);
             Assert.Equal(
-                "?expand[0]=simple&expand[1]=multi_word_property&expand[2]=foo&expand[3]=bar.baz",
+                "?expand[0]=foo&expand[1]=bar.baz&expand[2]=simple&expand[3]=multi_word_property",
                 url);
         }
     }
