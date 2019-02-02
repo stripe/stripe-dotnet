@@ -229,7 +229,11 @@ namespace Stripe.Infrastructure
                 ? Mapper<StripeError>.MapFromJson(responseContent, null, response)
                 : Mapper<StripeError>.MapFromJson(responseContent, "error", response);
 
-            return new StripeException(statusCode, stripeError, stripeError.Message)
+            string message = !string.IsNullOrEmpty(stripeError.Message)
+                ? stripeError.Message
+                : stripeError.ErrorDescription;
+
+            return new StripeException(statusCode, stripeError, message)
             {
                 StripeResponse = response
             };
