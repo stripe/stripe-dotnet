@@ -238,65 +238,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void EncodeDictionary()
-        {
-            var testCases = new[]
-            {
-                // No data
-                new
-                {
-                    data = new Dictionary<object, object> { },
-                    want = string.Empty
-                },
-
-                // Mixed key types
-                new
-                {
-                    data = new Dictionary<object, object>
-                    {
-                        { "1", "one" },
-                        { 2, "two" },
-                        { 3.14, "pi" },
-                    },
-                    want = "1=one&2=two&3.14=pi"
-                },
-
-                // Container values
-                new
-                {
-                    data = new Dictionary<object, object>
-                    {
-                        { "dictionary", new Dictionary<object, object> { { "foo", "bar" } } },
-                        { "list", new List<object> { 1, "two", 3.14 } },
-                        { "options", new TestOptions { String = "hello world" } },
-                    },
-                    want = "dictionary[foo]=bar&" +
-                        "list[0]=1&list[1]=two&list[2]=3.14&" +
-                        "options[string]=hello+world"
-                },
-            };
-
-            foreach (var testCase in testCases)
-            {
-                Assert.Equal(testCase.want, FormEncoder.EncodeDictionary(testCase.data));
-            }
-        }
-
-        [Fact]
-        public void EncodeList()
-        {
-            Assert.Null(FormEncoder.EncodeList(new List<object> { }, "list", false));
-
-            Assert.Equal(
-                "list=",
-                FormEncoder.EncodeList(new List<object> { }, "list", true));
-
-            Assert.Equal(
-                "list[0]=1&list[1]=two&list[2]=3.14",
-                FormEncoder.EncodeList(new List<object> { 1, "two", 3.14 }, "list"));
-        }
-
-        [Fact]
         public void EnumEncodeUnknownValue()
         {
             var options = new TestOptions
