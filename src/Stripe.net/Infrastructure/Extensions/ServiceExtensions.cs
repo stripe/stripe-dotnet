@@ -19,15 +19,16 @@ namespace Stripe.Infrastructure.Extensions
             where T : IStripeEntity
         {
             var expansions = service.Expansions(isListMethod);
-            if (options != null)
+            if (expansions.Any())
             {
-                expansions.AddRange(options.Expand);
+                options = options ?? new BaseOptions();
+                foreach (var expansion in expansions)
+                {
+                    options.AddExpand(expansion);
+                }
             }
 
-            return FormEncoder.AppendQueries(
-                baseUrl,
-                options?.ToQueryString(includeExtraParams: true, includeExpandParams: false),
-                FormEncoder.EncodeList(expansions, "expand"));
+            return FormEncoder.AppendQueries(baseUrl, options?.ToQueryString());
         }
 
         /// <summary>
