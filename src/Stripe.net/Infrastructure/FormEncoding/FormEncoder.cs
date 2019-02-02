@@ -24,32 +24,6 @@ namespace Stripe.Infrastructure.FormEncoding
             return EncodeValue(options, null);
         }
 
-        /// <summary>Creates the HTTP query string for a given dictionary.</summary>
-        /// <param name="dictionary">The dictionary for which to create the query string.</param>
-        /// <returns>The query string.</returns>
-        public static string EncodeDictionary(IDictionary dictionary)
-        {
-            return EncodeValue(dictionary, null);
-        }
-
-        /// <summary>Creates the HTTP query string for a given list.</summary>
-        /// <param name="list">The list for which to create the query string.</param>
-        /// <param name="key">The key to use for the list's elements.</param>
-        /// <param name="encodeEmptyList">
-        /// Whether to encode empty lists or not. If this parameter is <c>true</c> and the list
-        /// is empty, then the list is encoded as <c>key=</c>; otherwise, return <c>null</c>
-        /// </param>
-        /// <returns>The query string.</returns>
-        public static string EncodeList(IEnumerable list, string key, bool encodeEmptyList = false)
-        {
-            if (!encodeEmptyList && !list.Cast<object>().Any())
-            {
-                return null;
-            }
-
-            return EncodeValue(list, key);
-        }
-
         /// <summary>
         /// Join several query strings together, omitting <c>null</c> or empty strings.
         /// </summary>
@@ -185,6 +159,17 @@ namespace Stripe.Infrastructure.FormEncoding
 
             foreach (var property in options.GetType().GetRuntimeProperties())
             {
+                // `[JsonExtensionData]` tells the serializer to write the values contained in
+                // the collection as if they were class properties.
+                var extensionAttribute = property.GetCustomAttribute<JsonExtensionDataAttribute>();
+                if (extensionAttribute != null)
+                {
+                    var extensionValue = property.GetValue(options, null) as IDictionary;
+
+                    flatParams.AddRange(FlattenParamsDictionary(extensionValue, keyPrefix));
+                    continue;
+                }
+
                 // Skip properties not annotated with `[JsonProperty]`
                 var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
                 if (attribute == null)
