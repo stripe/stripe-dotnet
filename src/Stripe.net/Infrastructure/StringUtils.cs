@@ -1,5 +1,7 @@
 namespace Stripe.Infrastructure
 {
+    using System;
+    using System.Runtime.CompilerServices;
     using System.Text.RegularExpressions;
 
     internal static class StringUtils
@@ -11,6 +13,44 @@ namespace Stripe.Infrastructure
         {
             var tmp = Regex.Replace(str, "(.)([A-Z][a-z]+)", "$1_$2");
             return Regex.Replace(tmp, "([a-z0-9])([A-Z])", "$1_$2").ToLower();
+        }
+
+        /// <summary>
+        /// Determines whether the two specified <see cref="string"/> objects have the same value.
+        /// The comparison is done in constant time to prevent timing attacks.
+        /// </summary>
+        /// <param name="a">The first string to compare.</param>
+        /// <param name="b">The second string to compare.</param>
+        /// <returns>
+        /// <c>true</c> if the value of the <c>a</c> parameter is equal to the value of the <c>b</c>
+        /// parameter; otherwise, <c>false</c>.
+        /// </returns>
+        [MethodImpl(MethodImplOptions.NoOptimization)]
+        public static bool SecureEquals(string a, string b)
+        {
+            if (a == null)
+            {
+                throw new ArgumentNullException(nameof(a));
+            }
+
+            if (b == null)
+            {
+                throw new ArgumentNullException(nameof(b));
+            }
+
+            if (a.Length != b.Length)
+            {
+                return false;
+            }
+
+            var result = 0;
+
+            for (var i = 0; i < a.Length; i++)
+            {
+                result |= a[i] ^ b[i];
+            }
+
+            return result == 0;
         }
     }
 }
