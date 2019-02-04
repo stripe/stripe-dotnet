@@ -1,5 +1,8 @@
 # Changelog
 
+## 22.8.1 - 2019-02-04
+* [#1498](https://github.com/stripe/stripe-dotnet/pull/1498) Handle OAuth error messages in `StripeException`
+
 ## 22.8.0 - 2019-01-25
 * [#1470](https://github.com/stripe/stripe-dotnet/pull/1470) Add support for OAuth methods
 
