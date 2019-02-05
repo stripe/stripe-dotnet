@@ -18,7 +18,7 @@ namespace StripeTests
                 StripeConnectAccountId = "acct_123",
                 IdempotencyKey = "123",
             };
-            var request = Requestor.GetRequestMessage("http://localhost", HttpMethod.Get, options);
+            var request = Requestor.GetRequestMessage("http://localhost", HttpMethod.Get, null, options);
             Assert.NotNull(request);
             Assert.Equal($"Bearer {options.ApiKey}", request.Headers.GetValues("Authorization").FirstOrDefault());
             Assert.Equal(options.IdempotencyKey, request.Headers.GetValues("Idempotency-Key").FirstOrDefault());

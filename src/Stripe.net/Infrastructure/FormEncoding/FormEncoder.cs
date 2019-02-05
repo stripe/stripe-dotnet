@@ -4,8 +4,10 @@ namespace Stripe.Infrastructure.FormEncoding
     using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.IO;
     using System.Linq;
     using System.Net;
+    using System.Net.Http;
     using System.Reflection;
     using Newtonsoft.Json;
 
@@ -16,60 +18,56 @@ namespace Stripe.Infrastructure.FormEncoding
     /// </summary>
     internal static class FormEncoder
     {
+        /// <summary>Creates an <see cref="HttpContent"/> for a given options class.</summary>
+        /// <param name="options">The options class.</param>
+        /// <returns>The <see cref="HttpContent"/>.</returns>
+        public static HttpContent CreateHttpContent(BaseOptions options)
+        {
+            // If options is null, we create an empty FormUrlEncodedContent because we still
+            // want to send the Content-Type header.
+            if (options == null)
+            {
+                return new FormUrlEncodedContent(new List<KeyValuePair<string, string>>());
+            }
+
+            var flatParams = FlattenParamsValue(options, null);
+
+            // If all parameters have been encoded as strings, then the content can be represented
+            // with application/x-www-form-url-encoded encoding. Otherwise, use
+            // multipart/form-data encoding.
+            if (flatParams.All(kvp => kvp.Value is string))
+            {
+                var flatParamsString = flatParams
+                    .Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value as string));
+                return new FormUrlEncodedContent(flatParamsString);
+            }
+            else
+            {
+                return new MultipartFormDataContent(flatParams);
+            }
+        }
+
         /// <summary>Creates the HTTP query string for a given options class.</summary>
-        /// <param name="options">The options class for which to create the query string.</param>
+        /// <param name="options">The options class.</param>
         /// <returns>The query string.</returns>
-        public static string EncodeOptions(BaseOptions options)
+        public static string CreateQueryString(BaseOptions options)
         {
-            return EncodeValue(options, null);
+            var flatParams = FlattenParamsValue(options, null)
+                .Where(kvp => kvp.Value is string)
+                .Select(kvp => new KeyValuePair<string, string>(
+                    kvp.Key,
+                    kvp.Value as string));
+            return CreateQueryString(flatParams);
         }
 
-        /// <summary>
-        /// Join several query strings together, omitting <c>null</c> or empty strings.
-        /// </summary>
-        /// <param name="queries">One or more query strings to be joined.</param>
-        /// <returns>The joined query string.</returns>
-        public static string JoinQueries(params string[] queries)
+        /// <summary>Creates the HTTP query string for a collection of name/value tuples.</summary>
+        /// <param name="nameValueCollection">The collection of name/value tuples.</param>
+        /// <returns>The query string.</returns>
+        public static string CreateQueryString(IEnumerable<KeyValuePair<string, string>> nameValueCollection)
         {
-            return string.Join("&", queries.Where(q => !string.IsNullOrEmpty(q)));
-        }
-
-        /// <summary>Append one or more query strings to a URL.</summary>
-        /// <param name="url">The base URL.</param>
-        /// <param name="queries">One or more query strings to be appended to the URL.</param>
-        /// <returns>The full URL with all the query strings.</returns>
-        public static string AppendQueries(string url, params string[] queries)
-        {
-            var fullQuery = JoinQueries(queries);
-
-            if (!string.IsNullOrEmpty(fullQuery))
-            {
-                url += "?" + fullQuery;
-            }
-
-            return url;
-        }
-
-        /// <summary>Creates the HTTP query string for a given value.</summary>
-        /// <param name="value">The value to encode.</param>
-        /// <param name="key">
-        /// The key under which the value should be encoded. Optional if the value is a
-        /// <see cref="INestedOptions" /> or <see cref="IDictionary" />, required otherwise.
-        /// </param>
-        /// <returns>A string representing the value with form encoding.</returns>
-        private static string EncodeValue(object value, string key)
-        {
-            if (string.IsNullOrEmpty(key) && !(value is INestedOptions) && !(value is IDictionary))
-            {
-                throw new ArgumentException(
-                    "key cannot be null or empty when value is neither an INestedOptions or an IDictionary",
-                    nameof(key));
-            }
-
             return string.Join(
                 "&",
-                FlattenParamsValue(value, key)
-                    .Select(p => $"{UrlEncode(p.Key)}={UrlEncode(p.Value)}"));
+                nameValueCollection.Select(kvp => $"{UrlEncode(kvp.Key)}={UrlEncode(kvp.Value)}"));
         }
 
         /// <summary>URL-encodes a string.</summary>
@@ -92,9 +90,9 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <param name="value">The value for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested, if any.</param>
         /// <returns>The list of parameters</returns>
-        private static List<KeyValuePair<string, string>> FlattenParamsValue(object value, string keyPrefix)
+        private static List<KeyValuePair<string, object>> FlattenParamsValue(object value, string keyPrefix)
         {
-            List<KeyValuePair<string, string>> flatParams = null;
+            List<KeyValuePair<string, object>> flatParams = null;
 
             switch (value)
             {
@@ -111,6 +109,10 @@ namespace Stripe.Infrastructure.FormEncoding
                     break;
 
                 case string s:
+                    flatParams = SingleParam(keyPrefix, s);
+                    break;
+
+                case Stream s:
                     flatParams = SingleParam(keyPrefix, s);
                     break;
 
@@ -147,11 +149,11 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <param name="options">The options class for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested, if any.</param>
         /// <returns>The list of parameters</returns>
-        private static List<KeyValuePair<string, string>> FlattenParamsOptions(
+        private static List<KeyValuePair<string, object>> FlattenParamsOptions(
             INestedOptions options,
             string keyPrefix)
         {
-            List<KeyValuePair<string, string>> flatParams = new List<KeyValuePair<string, string>>();
+            List<KeyValuePair<string, object>> flatParams = new List<KeyValuePair<string, object>>();
             if (options == null)
             {
                 return flatParams;
@@ -204,11 +206,11 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <param name="dictionary">The dictionary for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested, if any.</param>
         /// <returns>The list of parameters</returns>
-        private static List<KeyValuePair<string, string>> FlattenParamsDictionary(
+        private static List<KeyValuePair<string, object>> FlattenParamsDictionary(
             IDictionary dictionary,
             string keyPrefix)
         {
-            List<KeyValuePair<string, string>> flatParams = new List<KeyValuePair<string, string>>();
+            List<KeyValuePair<string, object>> flatParams = new List<KeyValuePair<string, object>>();
             if (dictionary == null)
             {
                 return flatParams;
@@ -235,11 +237,11 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <param name="list">The list for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested.</param>
         /// <returns>The list of parameters</returns>
-        private static List<KeyValuePair<string, string>> FlattenParamsList(
+        private static List<KeyValuePair<string, object>> FlattenParamsList(
             IEnumerable list,
             string keyPrefix)
         {
-            List<KeyValuePair<string, string>> flatParams = new List<KeyValuePair<string, string>>();
+            List<KeyValuePair<string, object>> flatParams = new List<KeyValuePair<string, object>>();
             if (list == null)
             {
                 return flatParams;
@@ -258,7 +260,7 @@ namespace Stripe.Infrastructure.FormEncoding
              * list might look like `a[0]=1&b[1]=2`. Emptying it would look like `a=`.) */
             if (!flatParams.Any())
             {
-                flatParams.Add(new KeyValuePair<string, string>(keyPrefix, string.Empty));
+                flatParams.Add(new KeyValuePair<string, object>(keyPrefix, string.Empty));
             }
 
             return flatParams;
@@ -268,10 +270,10 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <param name="key">The parameter's key.</param>
         /// <param name="value">The parameter's value.</param>
         /// <returns>A list containg the single parameter.</returns>
-        private static List<KeyValuePair<string, string>> SingleParam(string key, string value)
+        private static List<KeyValuePair<string, object>> SingleParam(string key, object value)
         {
-            List<KeyValuePair<string, string>> flatParams = new List<KeyValuePair<string, string>>();
-            flatParams.Add(new KeyValuePair<string, string>(key, value));
+            List<KeyValuePair<string, object>> flatParams = new List<KeyValuePair<string, object>>();
+            flatParams.Add(new KeyValuePair<string, object>(key, value));
             return flatParams;
         }
 
