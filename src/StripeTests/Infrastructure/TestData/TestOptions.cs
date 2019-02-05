@@ -2,6 +2,7 @@ namespace StripeTests.Infrastructure.TestData
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -45,6 +46,9 @@ namespace StripeTests.Infrastructure.TestData
 
         [JsonProperty("long")]
         public long? Long { get; set; }
+
+        [JsonProperty("stream")]
+        public Stream Stream { get; set; }
 
         [JsonProperty("string")]
         public string String { get; set; }
