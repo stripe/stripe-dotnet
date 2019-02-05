@@ -26,21 +26,12 @@ namespace Stripe
 
         public virtual File Create(FileCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateAsync(options, requestOptions)
-                .ConfigureAwait(false).GetAwaiter().GetResult();
+            return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual async Task<File> CreateAsync(FileCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<File> CreateAsync(FileCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            requestOptions = this.SetupRequestOptions(requestOptions);
-            requestOptions.BaseUrl = StripeConfiguration.FilesBase;
-            var url = requestOptions.BaseUrl + this.BasePath;
-            var wr = Requestor.GetRequestMessage(
-                url,
-                HttpMethod.Post,
-                requestOptions);
-            Requestor.ApplyMultiPartFileToRequest(wr, options.File, options.Purpose);
-            return await Requestor.ExecuteRequestAsync<File>(wr);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual File Get(string fileId, RequestOptions requestOptions = null)
