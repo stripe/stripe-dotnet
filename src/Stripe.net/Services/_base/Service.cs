@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Reflection;
@@ -208,11 +209,13 @@ namespace Stripe
             CancellationToken cancellationToken = default(CancellationToken))
             where T : IStripeEntity
         {
+            options = this.SetupOptions(options, IsStripeList<T>());
             requestOptions = this.SetupRequestOptions(requestOptions);
             var url = requestOptions.BaseUrl + path;
             var wr = Requestor.GetRequestMessage(
-                this.ApplyAllParameters(options, url, IsStripeList<T>()),
+                url,
                 method,
+                options,
                 requestOptions);
             return await Requestor.ExecuteRequestAsync<T>(wr);
         }
@@ -250,6 +253,23 @@ namespace Stripe
                     options,
                     requestOptions);
             }
+        }
+
+        protected BaseOptions SetupOptions(BaseOptions options, bool isListMethod)
+        {
+            var serviceExpansions = this.Expansions(isListMethod);
+            if (!serviceExpansions.Any())
+            {
+                return options;
+            }
+
+            options = options ?? new BaseOptions();
+            foreach (var expansion in serviceExpansions)
+            {
+                options.AddExpand(expansion);
+            }
+
+            return options;
         }
 
         protected RequestOptions SetupRequestOptions(RequestOptions requestOptions)
