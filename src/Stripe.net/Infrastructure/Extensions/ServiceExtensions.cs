@@ -8,29 +8,6 @@ namespace Stripe.Infrastructure.Extensions
 
     internal static class ServiceExtensions
     {
-        /// <summary>Creates the full URL for a request.</summary>
-        /// <typeparam name="T">Entity type returned by the service.</typeparam>
-        /// <param name="service">The service sending the request.</param>
-        /// <param name="options">The request parameters.</param>
-        /// <param name="baseUrl">The base URL for the request.</param>
-        /// <param name="isListMethod">Whether the request is a list request or not.</param>
-        /// <returns>The full URL for the request.</returns>
-        public static string ApplyAllParameters<T>(this Service<T> service, BaseOptions options, string baseUrl, bool isListMethod = false)
-            where T : IStripeEntity
-        {
-            var expansions = service.Expansions(isListMethod);
-            if (expansions.Any())
-            {
-                options = options ?? new BaseOptions();
-                foreach (var expansion in expansions)
-                {
-                    options.AddExpand(expansion);
-                }
-            }
-
-            return FormEncoder.AppendQueries(baseUrl, options?.ToQueryString());
-        }
-
         /// <summary>
         /// Returns the list of attributes to expand in requests sent by the service.
         /// </summary>
