@@ -1,7 +1,7 @@
 {
     "id": "pi_123",
     "object": "payment_intent",
-    "allowed_source_types": [
+    "payment_method_types": [
         "card"
     ],
     "amount": 100,
@@ -50,7 +50,7 @@
         "type": "card_error"
     },
     "livemode": false,
-    "next_source_action": null,
+    "next_action": null,
     "on_behalf_of": null,
     "receipt_email": null,
     "return_url": null,
@@ -58,7 +58,7 @@
     "shipping": null,
     "source": null,
     "statement_descriptor": null,
-    "status": "requires_source",
+    "status": "requires_payment_method",
     "transfer_data": null,
     "transfer_group": null
 }

@@ -9,7 +9,7 @@ namespace Stripe
 
     public static class StripeConfiguration
     {
-        private static string stripeApiVersion = "2018-11-08";
+        private static string stripeApiVersion = "2019-02-11";
 
         private static string apiKey;
         private static string apiBase;

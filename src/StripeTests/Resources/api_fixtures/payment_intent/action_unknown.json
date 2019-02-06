@@ -1,7 +1,7 @@
 {
   "id": "pi_123",
   "object": "payment_intent",
-  "allowed_source_types": [
+  "payment_method_types": [
     "card"
   ],
   "amount": 1099,
@@ -33,7 +33,7 @@
   "metadata": {
     "order_id": "123456789"
   },
-  "next_source_action": {
+  "next_action": {
     "type": "foo"
   },
   "on_behalf_of": null,
@@ -55,7 +55,7 @@
   },
   "source": "src_123",
   "statement_descriptor": "PaymentIntent Statement Descriptor",
-  "status": "succeeded",
+  "status": "requires_action",
   "transfer_data": {
     "amount": 1234
   },
