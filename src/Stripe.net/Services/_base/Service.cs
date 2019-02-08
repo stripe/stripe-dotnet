@@ -211,10 +211,9 @@ namespace Stripe
         {
             options = this.SetupOptions(options, IsStripeList<T>());
             requestOptions = this.SetupRequestOptions(requestOptions);
-            var url = requestOptions.BaseUrl + path;
             var wr = Requestor.GetRequestMessage(
-                url,
                 method,
+                path,
                 options,
                 requestOptions);
             return await Requestor.ExecuteRequestAsync<T>(wr);
