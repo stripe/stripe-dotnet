@@ -23,6 +23,11 @@ namespace Stripe.Infrastructure
 
         static Requestor()
         {
+#if NET45
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+                | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+#endif
+
             HttpClient =
                 StripeConfiguration.HttpMessageHandler != null
                     ? new HttpClient(StripeConfiguration.HttpMessageHandler)
@@ -51,83 +56,31 @@ namespace Stripe.Infrastructure
             throw BuildStripeException(stripeResponse, response.StatusCode, requestMessage.RequestUri.AbsoluteUri, responseText);
         }
 
-        internal static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, BaseOptions options, RequestOptions requestOptions)
+        internal static HttpRequestMessage GetRequestMessage(
+            HttpMethod method,
+            string path,
+            BaseOptions options,
+            RequestOptions requestOptions)
         {
-            requestOptions.ApiKey = requestOptions.ApiKey ?? StripeConfiguration.ApiKey;
+            var request = new Request(method, path, options, requestOptions);
 
-#if NET45
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-#endif
+            var requestMessage = new HttpRequestMessage(request.Method, request.Uri);
 
-            var request = BuildRequest(method, url, options);
+            // User agent headers. These are the same for every request.
+            requestMessage.Headers.UserAgent.ParseAdd(UserAgentString);
+            requestMessage.Headers.Add("X-Stripe-Client-User-Agent", StripeClientUserAgentString);
 
-            request.Headers.Add(
-                "Authorization",
-                GetAuthorizationHeaderValue(requestOptions.ApiKey));
-
-            if (requestOptions.StripeConnectAccountId != null)
+            // Request headers
+            requestMessage.Headers.Authorization = request.AuthorizationHeader;
+            foreach (var header in request.StripeHeaders)
             {
-                request.Headers.Add("Stripe-Account", requestOptions.StripeConnectAccountId);
+                requestMessage.Headers.Add(header.Key, header.Value);
             }
 
-            if (requestOptions.IdempotencyKey != null)
-            {
-                request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
-            }
+            // Request body
+            requestMessage.Content = request.Content;
 
-            if (requestOptions.StripeVersion != null)
-            {
-                request.Headers.Add("Stripe-Version", requestOptions.StripeVersion);
-            }
-            else
-            {
-                request.Headers.Add("Stripe-Version", StripeConfiguration.ApiVersion);
-            }
-
-            request.Headers.UserAgent.ParseAdd(UserAgentString);
-            request.Headers.Add("X-Stripe-Client-User-Agent", StripeClientUserAgentString);
-
-            return request;
-        }
-
-        private static HttpRequestMessage BuildRequest(HttpMethod method, string url, BaseOptions options)
-        {
-            if (method != HttpMethod.Post)
-            {
-                var b = new StringBuilder();
-
-                b.Append(url);
-
-                var query = options != null ? FormEncoder.CreateQueryString(options) : null;
-                if (!string.IsNullOrEmpty(query))
-                {
-                    b.Append("?");
-                    b.Append(query);
-                }
-
-                return new HttpRequestMessage(method, new Uri(b.ToString()));
-            }
-
-            var postData = string.Empty;
-            var newUrl = url;
-
-            if (!string.IsNullOrEmpty(new Uri(url).Query))
-            {
-                postData = new Uri(url).Query.Substring(1);
-                newUrl = url.Substring(0, url.IndexOf("?", StringComparison.CurrentCultureIgnoreCase));
-            }
-
-            var request = new HttpRequestMessage(method, new Uri(newUrl))
-            {
-                Content = FormEncoder.CreateHttpContent(options),
-            };
-
-            return request;
-        }
-
-        private static string GetAuthorizationHeaderValue(string apiKey)
-        {
-            return $"Bearer {apiKey}";
+            return requestMessage;
         }
 
         private static StripeException BuildStripeException(StripeResponse response, HttpStatusCode statusCode, string requestUri, string responseContent)
