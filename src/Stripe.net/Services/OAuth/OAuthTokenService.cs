@@ -17,18 +17,18 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => null;
+        public override string BasePath => "/oauth/token";
 
         public override string BaseUrl => StripeConfiguration.ConnectBase;
 
         public virtual OAuthToken Create(OAuthTokenCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, "/oauth/token", options, requestOptions);
+            return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<OAuthToken> CreateAsync(OAuthTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.RequestAsync(HttpMethod.Post, "/oauth/token", options, requestOptions, cancellationToken);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
         public virtual OAuthDeauthorize Deauthorize(OAuthTokenDeauthorizeOptions options, RequestOptions requestOptions = null)
