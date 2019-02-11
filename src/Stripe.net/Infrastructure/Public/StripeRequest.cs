@@ -1,24 +1,23 @@
-namespace Stripe.Infrastructure
+namespace Stripe
 {
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
-    using Stripe.Infrastructure.Extensions;
     using Stripe.Infrastructure.FormEncoding;
 
     /// <summary>
     /// Represents a request to Stripe's API.
     /// </summary>
-    public class Request
+    public class StripeRequest
     {
-        /// <summary>Initializes a new instance of the <see cref="Request"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The path of the request.</param>
         /// <param name="options">The parameters of the request.</param>
         /// <param name="requestOptions">The special modifiers of the request.</param>
-        public Request(
+        public StripeRequest(
             HttpMethod method,
             string path,
             BaseOptions options,
@@ -61,6 +60,17 @@ namespace Stripe.Infrastructure
         /// For non-POST requests, this will be <c>null</c>.
         /// </summary>
         public HttpContent Content { get; }
+
+        /// <summary>Returns a string that represents the <see cref="StripeRequest"/>.</summary>
+        /// <returns>A string that represents the <see cref="StripeRequest"/>.</returns>
+        public override string ToString()
+        {
+            return string.Format(
+                "<{0} Method={1} Uri={2}>",
+                this.GetType().FullName,
+                this.Method,
+                this.Uri.ToString());
+        }
 
         private static Uri BuildUri(
             HttpMethod method,
