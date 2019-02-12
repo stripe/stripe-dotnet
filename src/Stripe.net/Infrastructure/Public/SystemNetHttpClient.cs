@@ -22,6 +22,8 @@ namespace Stripe
 
         private readonly System.Net.Http.HttpClient httpClient;
 
+        private readonly RequestTelemetry requestTelemetry = new RequestTelemetry();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemNetHttpClient"/> class.
         /// </summary>
@@ -60,8 +62,14 @@ namespace Stripe
         {
             var httpRequest = BuildRequestMessage(request);
 
+            this.requestTelemetry.MaybeAddTelemetryHeader(httpRequest.Headers);
+
+            var stopwatch = Stopwatch.StartNew();
             var response = await this.httpClient.SendAsync(httpRequest, cancellationToken)
                 .ConfigureAwait(false);
+            stopwatch.Stop();
+
+            this.requestTelemetry.MaybeEnqueueMetrics(response, stopwatch.ElapsedMilliseconds);
 
             var reader = new StreamReader(
                 await response.Content.ReadAsStreamAsync().ConfigureAwait(false));
