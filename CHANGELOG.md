@@ -1,5 +1,9 @@
 # Changelog
 
+## 22.9.0 - 2019-02-12
+* [#1491](https://github.com/stripe/stripe-dotnet/pull/1491) Add support for `SubscriptionSchedule` and `SubscriptionScheduleRevision`. Also add support for `InvoiceSettings` on `Customer
+* [#1512](https://github.com/stripe/stripe-dotnet/pull/1512) Add support for `TransferData.Amount` on `Charge`
+
 ## 22.8.1 - 2019-02-04
 * [#1498](https://github.com/stripe/stripe-dotnet/pull/1498) Handle OAuth error messages in `StripeException`
 
