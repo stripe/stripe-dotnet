@@ -13,9 +13,6 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("allowed_source_types")]
-        public List<string> AllowedSourceTypes { get; set; }
-
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
@@ -135,6 +132,9 @@ namespace Stripe
         }
         #endregion
 
+        [JsonProperty("payment_method_types")]
+        public List<string> PaymentMethodTypes { get; set; }
+
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
 
@@ -196,5 +196,9 @@ namespace Stripe
 
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
+
+        [Obsolete("Use PaymentMethodTypes")]
+        [JsonProperty("allowed_source_types")]
+        public List<string> AllowedSourceTypes { get; set; }
     }
 }

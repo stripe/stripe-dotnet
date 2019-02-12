@@ -5,9 +5,6 @@ namespace Stripe
 
     public class PaymentIntentCreateOptions : PaymentIntentSharedOptions
     {
-        [JsonProperty("allowed_source_types")]
-        public List<string> AllowedSourceTypes { get; set; }
-
         [JsonProperty("confirm")]
         public bool? Confirm { get; set; }
 
