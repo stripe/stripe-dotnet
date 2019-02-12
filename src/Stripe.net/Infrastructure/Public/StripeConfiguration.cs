@@ -69,6 +69,9 @@ namespace Stripe
         /// <summary>Gets or sets the base URL for Stripe's OAuth API.</summary>
         public static string ConnectBase { get; set; } = DefaultConnectBase;
 
+        /// <summary>Gets or sets a value indicating whether telemetry is enabled.</summary>
+        public static bool EnableTelemetry { get; set; } = false;
+
         /// <summary>Gets or sets the base URL for Stripe's Files API.</summary>
         public static string FilesBase { get; set; } = DefaultFilesBase;
 
