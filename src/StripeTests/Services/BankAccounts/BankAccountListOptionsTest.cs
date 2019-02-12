@@ -1,7 +1,7 @@
 namespace StripeTests
 {
     using Stripe;
-    using Stripe.Infrastructure.Extensions;
+    using Stripe.Infrastructure.FormEncoding;
     using Xunit;
 
     public class BankAccountListOptionsTest : BaseStripeTest
@@ -11,7 +11,7 @@ namespace StripeTests
         {
             var options = new BankAccountListOptions();
 
-            Assert.Equal("object=bank_account", options.ToQueryString());
+            Assert.Equal("object=bank_account", FormEncoder.CreateQueryString(options));
         }
     }
 }
