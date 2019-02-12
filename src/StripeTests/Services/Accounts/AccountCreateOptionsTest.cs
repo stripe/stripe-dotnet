@@ -2,7 +2,7 @@ namespace StripeTests
 {
     using System.Collections.Generic;
     using Stripe;
-    using Stripe.Infrastructure.Extensions;
+    using Stripe.Infrastructure.FormEncoding;
     using Xunit;
 
     public class AccountCreateOptionsTest : BaseStripeTest
@@ -66,7 +66,7 @@ namespace StripeTests
                 "legal_entity[additional_owners][1][address][state]=CA&" +
                 "legal_entity[additional_owners][1][first_name]=Jenny&" +
                 "legal_entity[additional_owners][1][last_name]=Rosen",
-                options.ToQueryString());
+                FormEncoder.CreateQueryString(options));
         }
 
         [Fact]
@@ -80,7 +80,7 @@ namespace StripeTests
                 },
             };
 
-            Assert.Equal("legal_entity[additional_owners]=", options.ToQueryString());
+            Assert.Equal("legal_entity[additional_owners]=", FormEncoder.CreateQueryString(options));
         }
     }
 }
