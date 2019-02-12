@@ -1,8 +1,7 @@
 namespace StripeTests
 {
-    using System.Collections.Generic;
     using Stripe;
-    using Stripe.Infrastructure.Extensions;
+    using Stripe.Infrastructure.FormEncoding;
     using Xunit;
 
     public class AccountCreateOptionsTest : BaseStripeTest
@@ -21,7 +20,7 @@ namespace StripeTests
 
             Assert.Equal(
                 "individual[first_name]=first+name&individual[last_name]=last+name",
-                options.ToQueryString());
+                FormEncoder.CreateQueryString(options));
         }
     }
 }
