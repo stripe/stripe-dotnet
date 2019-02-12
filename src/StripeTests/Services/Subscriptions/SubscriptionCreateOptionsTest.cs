@@ -2,7 +2,7 @@ namespace StripeTests
 {
     using System.Collections.Generic;
     using Stripe;
-    using Stripe.Infrastructure.Extensions;
+    using Stripe.Infrastructure.FormEncoding;
     using Xunit;
 
     public class SubscriptionCreateOptionsTest : BaseStripeTest
@@ -32,7 +32,7 @@ namespace StripeTests
                 "customer=cus_123&" +
                 "items[0][plan]=plan_123&items[0][quantity]=2&" +
                 "items[1][plan]=plan_124&items[1][quantity]=3",
-                options.ToQueryString());
+                FormEncoder.CreateQueryString(options));
         }
     }
 }

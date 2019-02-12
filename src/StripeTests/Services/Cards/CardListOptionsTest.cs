@@ -1,7 +1,7 @@
 namespace StripeTests
 {
     using Stripe;
-    using Stripe.Infrastructure.Extensions;
+    using Stripe.Infrastructure.FormEncoding;
     using Xunit;
 
     public class CardListOptionsTest : BaseStripeTest
@@ -11,7 +11,7 @@ namespace StripeTests
         {
             var options = new CardListOptions();
 
-            Assert.Equal("object=card", options.ToQueryString());
+            Assert.Equal("object=card", FormEncoder.CreateQueryString(options));
         }
     }
 }
