@@ -8,7 +8,6 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
-    using Stripe.Infrastructure.Extensions;
 
     public abstract class Service<EntityReturned>
         where EntityReturned : IStripeEntity
@@ -27,6 +26,12 @@ namespace Stripe
         public abstract string BasePath { get; }
 
         public virtual string BaseUrl => StripeConfiguration.ApiBase;
+
+        /// <summary>
+        /// Gets or sets the client used by this service to send requests. If <c>null</c>, then the
+        /// default client in <see cref="StripeConfiguration.StripeClient"/> is used instead.
+        /// </summary>
+        public IStripeClient Client { get; set; }
 
         protected EntityReturned CreateEntity(BaseOptions options, RequestOptions requestOptions)
         {
@@ -211,7 +216,8 @@ namespace Stripe
         {
             options = this.SetupOptions(options, IsStripeList<T>());
             requestOptions = this.SetupRequestOptions(requestOptions);
-            return await StripeConfiguration.StripeClient.RequestAsync<T>(
+            var client = this.Client ?? StripeConfiguration.StripeClient;
+            return await client.RequestAsync<T>(
                 method,
                 path,
                 options,
@@ -303,6 +309,22 @@ namespace Stripe
             var typeInfo = typeof(T).GetTypeInfo();
             return typeInfo.IsGenericType
                 && typeInfo.GetGenericTypeDefinition() == typeof(StripeList<>);
+        }
+
+        /// <summary>
+        /// Returns the list of attributes to expand in requests sent by the service.
+        /// </summary>
+        /// <param name="isListMethod">Whether the request is a list request or not.</param>
+        /// <returns>The list of attributes to expand.</returns>
+        public List<string> Expansions(bool isListMethod)
+        {
+            return this.GetType()
+                .GetRuntimeProperties()
+                .Where(p => p.Name.StartsWith("Expand") && p.PropertyType == typeof(bool))
+                .Where(p => (bool)p.GetValue(this, null))
+                .Select(p => StringUtils.ToSnakeCase(p.Name.Substring("Expand".Length)))
+                .Select(i => isListMethod ? $"data.{i}" : i)
+                .ToList();
         }
     }
 }
