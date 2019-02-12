@@ -5,6 +5,9 @@ namespace Stripe
 
     public class ChargeTransferData : StripeEntity
     {
+        [JsonProperty("amount")]
+        public long Amount { get; set; }
+
         #region Expandable Destination (Account)
         [JsonIgnore]
         public string DestinationId { get; set; }
