@@ -1,5 +1,12 @@
 # Changelog
 
+## 23.0.0 - 2019-02-12
+* [#1469](https://github.com/stripe/stripe-dotnet/pull/1469) Add support for `transfer_data[destination]` on `Subscription`.
+* [#1501](https://github.com/stripe/stripe-dotnet/pull/1501) Add support for API version `2019-02-11` with changes to Payment Intents
+  * The library is now pinned to API version `2019-02-11`.
+  * `PaymentIntentSourceAction`, `PaymentIntentSourceActionValueAuthorizeWithUrl` and `NextSourceAction` are now replaced by `PaymentIntentNextAction`, `PaymentIntentNextActionRedirectToUrl` and `NextAction` instead.
+  * `AllowedSourceTypes` is now replaced by `PaymentMethodTypes` instead.
+
 ## 22.9.0 - 2019-02-12
 * [#1491](https://github.com/stripe/stripe-dotnet/pull/1491) Add support for `SubscriptionSchedule` and `SubscriptionScheduleRevision`. Also add support for `InvoiceSettings` on `Customer
 * [#1512](https://github.com/stripe/stripe-dotnet/pull/1512) Add support for `TransferData.Amount` on `Charge`
