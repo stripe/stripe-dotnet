@@ -22,8 +22,15 @@ namespace Stripe
         [JsonProperty("amount_remaining")]
         public long AmountRemaining { get; set; }
 
+        [Obsolete("Use ApplicationFeeAmount")]
         [JsonProperty("application_fee")]
         public long? ApplicationFee { get; set; }
+
+        /// <summary>
+        /// The amount of the application application fee (if any) for the invoice. See the Connect documentation for details.
+        /// </summary>
+        [JsonProperty("application_fee_amount")]
+        public long? ApplicationFeeAmount { get; set; }
 
         [JsonProperty("attempt_count")]
         public long AttemptCount { get; set; }
@@ -236,6 +243,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("threshold_reason")]
         public InvoiceThresholdReason ThresholdReason { get; set; }
+
+        [JsonProperty("transfer_data")]
+        public InvoiceTransferData TransferData { get; set; }
 
         [JsonProperty("total")]
         public long Total { get; set; }
