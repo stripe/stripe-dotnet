@@ -53,7 +53,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void DeserializeNextSourceActionNull()
+        public void DeserializeNextActionNull()
         {
             var json = GetResourceAsString("api_fixtures.payment_intent.action_null.json");
             var intent = JsonConvert.DeserializeObject<PaymentIntent>(json);
@@ -63,13 +63,13 @@ namespace StripeTests
             Assert.NotNull(intent.Id);
             Assert.Equal("payment_intent", intent.Object);
 
-            Assert.Null(intent.NextSourceAction);
+            Assert.Null(intent.NextAction);
         }
 
         [Fact]
-        public void DeserializeNextSourceActionAuthorizeWithUrl()
+        public void DeserializeNextActionRedirectToUrl()
         {
-            var json = GetResourceAsString("api_fixtures.payment_intent.action_authorize_with_url.json");
+            var json = GetResourceAsString("api_fixtures.payment_intent.action_redirect_to_url.json");
             var intent = JsonConvert.DeserializeObject<PaymentIntent>(json);
 
             Assert.NotNull(intent);
@@ -77,14 +77,14 @@ namespace StripeTests
             Assert.NotNull(intent.Id);
             Assert.Equal("payment_intent", intent.Object);
 
-            Assert.Equal("authorize_with_url", intent.NextSourceAction.Type);
-            Assert.NotNull(intent.NextSourceAction.AuthorizeWithUrl);
-            Assert.Equal("https://stripe.com", intent.NextSourceAction.AuthorizeWithUrl.Url);
-            Assert.Equal("https://stripe.com/return", intent.NextSourceAction.AuthorizeWithUrl.ReturnUrl);
+            Assert.Equal("redirect_to_url", intent.NextAction.Type);
+            Assert.NotNull(intent.NextAction.RedirectToUrl);
+            Assert.Equal("https://stripe.com", intent.NextAction.RedirectToUrl.Url);
+            Assert.Equal("https://stripe.com/return", intent.NextAction.RedirectToUrl.ReturnUrl);
         }
 
         [Fact]
-        public void DeserializeNextSourceActionUnknown()
+        public void DeserializeNextActionUnknown()
         {
             var json = GetResourceAsString("api_fixtures.payment_intent.action_unknown.json");
             var intent = JsonConvert.DeserializeObject<PaymentIntent>(json);
@@ -94,8 +94,8 @@ namespace StripeTests
             Assert.NotNull(intent.Id);
             Assert.Equal("payment_intent", intent.Object);
 
-            Assert.Equal("foo", intent.NextSourceAction.Type);
-            Assert.Null(intent.NextSourceAction.AuthorizeWithUrl);
+            Assert.Equal("foo", intent.NextAction.Type);
+            Assert.Null(intent.NextAction.RedirectToUrl);
         }
 
         [Fact]
