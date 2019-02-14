@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class OrderItem : StripeEntity<OrderItem>, IHasObject
     {
@@ -25,11 +26,21 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        #region Expandable Parent
+
         /// <summary>
-        /// The ID of the associated object for this line item.
+        /// ID of the parent associated with this order item.
         /// </summary>
+        [JsonIgnore]
+        public string ParentId => this.InternalParent.Id;
+
+        [JsonIgnore]
+        public Sku Parent => this.InternalParent.ExpandedObject;
+
         [JsonProperty("parent")]
-        public string Parent { get; set; }
+        [JsonConverter(typeof(ExpandableFieldConverter<Sku>))]
+        internal ExpandableField<Sku> InternalParent { get; set; }
+        #endregion
 
         /// <summary>
         /// A positive integer representing the number of instances of parent that are included in this order item. Applicable/present only if type is sku.
