@@ -1,8 +1,11 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
+    using System.Net;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
@@ -10,7 +13,9 @@ namespace Stripe
 
     /// <summary>
     /// Standard client to make requests to Stripe's API, using
-    /// <see cref="System.Net.Http.HttpClient"/> to send HTTP requests.
+    /// <see cref="System.Net.Http.HttpClient"/> to send HTTP requests. It can gather telemetry
+    /// about request latency (via <see cref="RequestTelemetry"/>) and automatically retry failed
+    /// requests when it's safe to do so.
     /// </summary>
     public class SystemNetHttpClient : IHttpClient
     {
@@ -23,6 +28,10 @@ namespace Stripe
         private readonly System.Net.Http.HttpClient httpClient;
 
         private readonly RequestTelemetry requestTelemetry = new RequestTelemetry();
+
+        private readonly object randLock = new object();
+
+        private readonly Random rand = new Random();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemNetHttpClient"/> class.
@@ -60,16 +69,59 @@ namespace Stripe
             StripeRequest request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var httpRequest = BuildRequestMessage(request);
+            TimeSpan duration;
+            Exception requestException = null;
+            HttpResponseMessage response = null;
+            int retry = 0;
 
-            this.requestTelemetry.MaybeAddTelemetryHeader(httpRequest.Headers);
+            this.requestTelemetry.MaybeAddTelemetryHeader(request.StripeHeaders);
 
-            var stopwatch = Stopwatch.StartNew();
-            var response = await this.httpClient.SendAsync(httpRequest, cancellationToken)
-                .ConfigureAwait(false);
-            stopwatch.Stop();
+            while (true)
+            {
+                requestException = null;
 
-            this.requestTelemetry.MaybeEnqueueMetrics(response, stopwatch.ElapsedMilliseconds);
+                var httpRequest = BuildRequestMessage(request);
+
+                var stopwatch = Stopwatch.StartNew();
+
+                try
+                {
+                    response = await this.httpClient.SendAsync(httpRequest, cancellationToken)
+                        .ConfigureAwait(false);
+                }
+                catch (HttpRequestException exception)
+                {
+                    requestException = exception;
+                }
+                catch (OperationCanceledException exception)
+                    when (!cancellationToken.IsCancellationRequested)
+                {
+                    requestException = exception;
+                }
+
+                stopwatch.Stop();
+
+                duration = stopwatch.Elapsed;
+
+                if (!ShouldRetry(
+                    retry,
+                    requestException != null,
+                    request.Method,
+                    response?.StatusCode))
+                {
+                    break;
+                }
+
+                retry += 1;
+                await Task.Delay(this.SleepTime(retry));
+            }
+
+            if (requestException != null)
+            {
+                throw requestException;
+            }
+
+            this.requestTelemetry.MaybeEnqueueMetrics(response, duration);
 
             var reader = new StreamReader(
                 await response.Content.ReadAsStreamAsync().ConfigureAwait(false));
@@ -77,7 +129,10 @@ namespace Stripe
             return new StripeResponse(
                 response.StatusCode,
                 response.Headers,
-                await reader.ReadToEndAsync().ConfigureAwait(false));
+                await reader.ReadToEndAsync().ConfigureAwait(false))
+            {
+                NumRetries = retry,
+            };
         }
 
         private static System.Net.Http.HttpRequestMessage BuildRequestMessage(StripeRequest request)
@@ -121,6 +176,78 @@ namespace Stripe
 #endif
 
             return JsonConvert.SerializeObject(values, Formatting.None);
+        }
+
+        private static bool ShouldRetry(
+            int numRetries,
+            bool error,
+            HttpMethod method,
+            HttpStatusCode? statusCode)
+        {
+            // Do not retry if we are out of retries.
+            if (numRetries >= StripeConfiguration.MaxNetworkRetries)
+            {
+                return false;
+            }
+
+            // Retry on connection error.
+            if (error == true)
+            {
+                return true;
+            }
+
+            // Retry on conflict and availability errors.
+            if ((statusCode == HttpStatusCode.Conflict) ||
+                (statusCode == HttpStatusCode.ServiceUnavailable))
+            {
+                return true;
+            }
+
+            // Retry on 5xx's, except POST's, which our idempotency framework would just replay as
+            // 500's again anyway.
+            if (method != HttpMethod.Post && statusCode.HasValue && ((int)statusCode.Value >= 500))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private TimeSpan SleepTime(int numRetries)
+        {
+            // We disable sleeping in some cases for tests.
+            if (!StripeConfiguration.NetworkRetriesSleep)
+            {
+                return TimeSpan.Zero;
+            }
+
+            // Apply exponential backoff with MinNetworkRetriesDelay on the number of numRetries
+            // so far as inputs.
+            var delay = TimeSpan.FromTicks((long)(StripeConfiguration.MinNetworkRetriesDelay.Ticks
+                * Math.Pow(2, numRetries - 1)));
+
+            // Do not allow the number to exceed MaxNetworkRetriesDelay
+            if (delay > StripeConfiguration.MaxNetworkRetriesDelay)
+            {
+                delay = StripeConfiguration.MaxNetworkRetriesDelay;
+            }
+
+            // Apply some jitter by randomizing the value in the range of 75%-100%.
+            var jitter = 1.0;
+            lock (this.randLock)
+            {
+                jitter = (3.0 + this.rand.NextDouble()) / 4.0;
+            }
+
+            delay = TimeSpan.FromTicks((long)(delay.Ticks * jitter));
+
+            // But never sleep less than the base sleep seconds.
+            if (delay < StripeConfiguration.MinNetworkRetriesDelay)
+            {
+                delay = StripeConfiguration.MinNetworkRetriesDelay;
+            }
+
+            return delay;
         }
     }
 }
