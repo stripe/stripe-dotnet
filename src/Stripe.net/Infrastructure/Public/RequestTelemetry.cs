@@ -1,9 +1,10 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Concurrent;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
-    using System.Net.Http.Headers;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -21,9 +22,14 @@ namespace Stripe
         /// a <c>X-Stripe-Client-Telemetry</c> header with the item; otherwise, do nothing.
         /// </summary>
         /// <param name="headers">The request headers.</param>
-        public void MaybeAddTelemetryHeader(HttpHeaders headers)
+        public void MaybeAddTelemetryHeader(IDictionary<string, string> headers)
         {
             if (!StripeConfiguration.EnableTelemetry)
+            {
+                return;
+            }
+
+            if (headers.ContainsKey("X-Stripe-Client-Telemetry"))
             {
                 return;
             }
@@ -44,8 +50,8 @@ namespace Stripe
         /// otherwise, do nothing.
         /// </summary>
         /// <param name="response">The HTTP response message.</param>
-        /// <param name="durationMs">The request duration, in milliseconds.</param>
-        public void MaybeEnqueueMetrics(HttpResponseMessage response, long durationMs)
+        /// <param name="duration">The request duration.</param>
+        public void MaybeEnqueueMetrics(HttpResponseMessage response, TimeSpan duration)
         {
             if (!StripeConfiguration.EnableTelemetry)
             {
@@ -67,7 +73,7 @@ namespace Stripe
             var metrics = new RequestMetrics
             {
                 RequestId = requestId,
-                RequestDurationMs = durationMs,
+                RequestDurationMs = (long)duration.TotalMilliseconds,
             };
 
             this.prevRequestMetrics.Enqueue(metrics);
