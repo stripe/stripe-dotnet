@@ -44,7 +44,7 @@ namespace Stripe
         {
             var request = new StripeRequest(method, path, options, requestOptions);
 
-            var response = await this.HttpClient.MakeRequestAsync(request);
+            var response = await this.HttpClient.MakeRequestAsync(request, cancellationToken);
 
             return ProcessResponse<T>(response);
         }
@@ -70,11 +70,27 @@ namespace Stripe
 
         private static StripeException BuildStripeException(StripeResponse response)
         {
+            JObject jObject = null;
+
+            try
+            {
+                jObject = JObject.Parse(response.Content);
+            }
+            catch (Newtonsoft.Json.JsonException)
+            {
+                return BuildInvalidResponseException(response);
+            }
+
             // If the value of the `error` key is a string, then the error is an OAuth error
             // and we instantiate the StripeError object with the entire JSON.
             // Otherwise, it's a regular API error and we instantiate the StripeError object
             // with just the nested hash contained in the `error` key.
-            var errorToken = JObject.Parse(response.Content)["error"];
+            var errorToken = jObject["error"];
+            if (errorToken == null)
+            {
+                return BuildInvalidResponseException(response);
+            }
+
             var stripeError = errorToken.Type == JTokenType.String
                 ? StripeError.FromJson(response.Content)
                 : StripeError.FromJson(errorToken.ToString());
@@ -85,6 +101,17 @@ namespace Stripe
                 response.StatusCode,
                 stripeError,
                 stripeError.Message)
+            {
+                StripeResponse = response,
+            };
+        }
+
+        private static StripeException BuildInvalidResponseException(StripeResponse response)
+        {
+            return new StripeException(
+                response.StatusCode,
+                null,
+                $"Invalid response object from API: {response.Content}")
             {
                 StripeResponse = response,
             };
