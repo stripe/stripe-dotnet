@@ -12,6 +12,8 @@ namespace Stripe
     /// </summary>
     public class StripeRequest
     {
+        private BaseOptions options = null;
+
         /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The path of the request.</param>
@@ -23,6 +25,8 @@ namespace Stripe
             BaseOptions options,
             RequestOptions requestOptions)
         {
+            this.options = options;
+
             this.Method = method;
 
             this.Uri = BuildUri(method, path, options, requestOptions);
@@ -31,9 +35,7 @@ namespace Stripe
                 "Bearer",
                 requestOptions?.ApiKey ?? StripeConfiguration.ApiKey);
 
-            this.StripeHeaders = BuildStripeHeaders(requestOptions);
-
-            this.Content = BuildContent(method, options);
+            this.StripeHeaders = BuildStripeHeaders(method, requestOptions);
         }
 
         /// <summary>The HTTP method for the request (GET, POST or DELETE).</summary>
@@ -59,7 +61,8 @@ namespace Stripe
         /// <c>application/x-www-form-urlencoded</c> or a <c>multipart/form-data</c> payload.
         /// For non-POST requests, this will be <c>null</c>.
         /// </summary>
-        public HttpContent Content { get; }
+        /// <remarks>This getter creates a new instance every time it is called.</remarks>
+        public HttpContent Content => BuildContent(this.Method, this.options);
 
         /// <summary>Returns a string that represents the <see cref="StripeRequest"/>.</summary>
         /// <returns>A string that represents the <see cref="StripeRequest"/>.</returns>
@@ -96,7 +99,9 @@ namespace Stripe
             return new Uri(b.ToString());
         }
 
-        private static Dictionary<string, string> BuildStripeHeaders(RequestOptions requestOptions)
+        private static Dictionary<string, string> BuildStripeHeaders(
+            HttpMethod method,
+            RequestOptions requestOptions)
         {
             var stripeHeaders = new Dictionary<string, string>
             {
@@ -111,6 +116,10 @@ namespace Stripe
             if (!string.IsNullOrEmpty(requestOptions?.IdempotencyKey))
             {
                 stripeHeaders.Add("Idempotency-Key", requestOptions.IdempotencyKey);
+            }
+            else if (method == HttpMethod.Post)
+            {
+                stripeHeaders.Add("Idempotency-Key", Guid.NewGuid().ToString());
             }
 
             return stripeHeaders;
