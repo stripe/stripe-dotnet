@@ -53,12 +53,12 @@ namespace StripeTests
         {
             this.ResetStripeClient();
             var fakeServer = FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
-            fakeServer.DelayMilliseconds = 10;
+            fakeServer.Delay = TimeSpan.FromMilliseconds(20);
 
             StripeConfiguration.EnableTelemetry = true;
             var service = new BalanceService();
             service.Get();
-            fakeServer.DelayMilliseconds = 20;
+            fakeServer.Delay = TimeSpan.FromMilliseconds(40);
             service.Get();
             service.Get();
 
@@ -78,7 +78,7 @@ namespace StripeTests
                         TelemetryHeaderMatcher(
                             m.Headers,
                             (s) => s == "req_1",
-                            (d) => d >= 10)),
+                            (d) => d >= 15)),
                     ItExpr.IsAny<CancellationToken>());
 
             this.MockHttpClientFixture.MockHandler.Protected()
@@ -89,7 +89,7 @@ namespace StripeTests
                         TelemetryHeaderMatcher(
                             m.Headers,
                             (s) => s == "req_2",
-                            (d) => d >= 20)),
+                            (d) => d >= 30)),
                     ItExpr.IsAny<CancellationToken>());
         }
 
@@ -98,7 +98,7 @@ namespace StripeTests
         {
             this.ResetStripeClient();
             var fakeServer = FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
-            fakeServer.DelayMilliseconds = 10;
+            fakeServer.Delay = TimeSpan.FromMilliseconds(20);
 
             StripeConfiguration.EnableTelemetry = true;
             var service = new BalanceService();
@@ -125,7 +125,7 @@ namespace StripeTests
                         TelemetryHeaderMatcher(
                             m.Headers,
                             (s) => s == "req_1",
-                            (d) => d >= 10)),
+                            (d) => d >= 15)),
                     ItExpr.IsAny<CancellationToken>());
 
             this.MockHttpClientFixture.MockHandler.Protected()
@@ -136,7 +136,7 @@ namespace StripeTests
                         TelemetryHeaderMatcher(
                             m.Headers,
                             (s) => s == "req_2",
-                            (d) => d >= 10)),
+                            (d) => d >= 15)),
                     ItExpr.IsAny<CancellationToken>());
         }
 
@@ -174,7 +174,7 @@ namespace StripeTests
         {
             private object lockObject = new object();
 
-            public int DelayMilliseconds { get; set; } = 0;
+            public TimeSpan Delay { get; set; } = TimeSpan.Zero;
 
             public int RequestCount { get; protected set; }
 
@@ -200,7 +200,7 @@ namespace StripeTests
                     requestId = $"req_{this.RequestCount}";
                 }
 
-                await Task.Delay(this.DelayMilliseconds);
+                await Task.Delay(this.Delay);
 
                 return new HttpResponseMessage(HttpStatusCode.OK)
                 {
