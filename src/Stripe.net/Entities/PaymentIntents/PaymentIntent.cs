@@ -79,7 +79,7 @@ namespace Stripe
         public string Description { get; set; }
 
         [JsonProperty("last_payment_error")]
-        public PaymentIntentLastPaymentError LastPaymentError { get; set; }
+        public StripeError LastPaymentError { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
