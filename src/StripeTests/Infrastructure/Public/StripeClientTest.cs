@@ -88,6 +88,50 @@ namespace StripeTests
             Assert.Equal(response, exception.StripeResponse);
         }
 
+        [Fact]
+        public async Task RequestAsync_Error_InvalidJson()
+        {
+            var response = new StripeResponse(
+                HttpStatusCode.InternalServerError,
+                null,
+                "this isn't JSON");
+            this.httpClient.Response = response;
+
+            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
+                await this.stripeClient.RequestAsync<Charge>(
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    this.options,
+                    this.requestOptions));
+
+            Assert.NotNull(exception);
+            Assert.Equal(HttpStatusCode.InternalServerError, exception.HttpStatusCode);
+            Assert.Equal("Invalid response object from API: this isn't JSON", exception.Message);
+            Assert.Equal(response, exception.StripeResponse);
+        }
+
+        [Fact]
+        public async Task RequestAsync_Error_InvalidErrorObject()
+        {
+            var response = new StripeResponse(
+                HttpStatusCode.InternalServerError,
+                null,
+                "{}");
+            this.httpClient.Response = response;
+
+            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
+                await this.stripeClient.RequestAsync<Charge>(
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    this.options,
+                    this.requestOptions));
+
+            Assert.NotNull(exception);
+            Assert.Equal(HttpStatusCode.InternalServerError, exception.HttpStatusCode);
+            Assert.Equal("Invalid response object from API: {}", exception.Message);
+            Assert.Equal(response, exception.StripeResponse);
+        }
+
         private class DummyHttpClient : IHttpClient
         {
             public DummyHttpClient()
