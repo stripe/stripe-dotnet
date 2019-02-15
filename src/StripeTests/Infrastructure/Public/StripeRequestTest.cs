@@ -38,7 +38,7 @@ namespace StripeTests
             Assert.Equal($"Bearer {StripeConfiguration.ApiKey}", request.AuthorizationHeader.ToString());
             Assert.True(request.StripeHeaders.ContainsKey("Stripe-Version"));
             Assert.Equal(StripeConfiguration.ApiVersion, request.StripeHeaders["Stripe-Version"]);
-            Assert.False(request.StripeHeaders.ContainsKey("Idempotency-Key"));
+            Assert.True(request.StripeHeaders.ContainsKey("Idempotency-Key"));
             Assert.False(request.StripeHeaders.ContainsKey("Stripe-Account"));
             Assert.NotNull(request.Content);
             var content = await request.Content.ReadAsStringAsync();

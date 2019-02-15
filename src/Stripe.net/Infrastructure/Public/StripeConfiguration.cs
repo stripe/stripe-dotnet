@@ -33,7 +33,17 @@ namespace Stripe
         public static string DefaultFilesBase => "https://files.stripe.com";
 
         /// <summary>Default timespan before the request times out.</summary>
-        public static TimeSpan DefaultHttpTimeout => new TimeSpan(80 * TimeSpan.TicksPerSecond);
+        public static TimeSpan DefaultHttpTimeout => TimeSpan.FromSeconds(80);
+
+        /// <summary>
+        /// Maximum sleep time between tries to send HTTP requests after network failure.
+        /// </summary>
+        public static TimeSpan MaxNetworkRetriesDelay => TimeSpan.FromSeconds(5);
+
+        /// <summary>
+        /// Minimum sleep time between tries to send HTTP requests after network failure.
+        /// </summary>
+        public static TimeSpan MinNetworkRetriesDelay => TimeSpan.FromMilliseconds(500);
 
         /// <summary>Gets or sets the base URL for Stripe's API.</summary>
         public static string ApiBase { get; set; } = DefaultApiBase;
@@ -86,6 +96,12 @@ namespace Stripe
         public static JsonSerializerSettings SerializerSettings { get; set; } = DefaultSerializerSettings();
 
         /// <summary>
+        /// Gets or sets the maximum number of times that the library will retry requests that
+        /// appear to have failed due to an intermittent problem.
+        /// </summary>
+        public static int MaxNetworkRetries { get; set; } = 0;
+
+        /// <summary>
         /// Gets or sets a custom <see cref="StripeClient"/> for sending requests to Stripe's
         /// API. You can use this to use a custom message handler, set proxy parameters, etc.
         /// </summary>
@@ -118,6 +134,10 @@ namespace Stripe
 
         /// <summary>Gets the version of the Stripe.net client library.</summary>
         public static string StripeNetVersion { get; }
+
+        /// <summary>Gets or sets a value indicating whether to sleep between network retries.</summary>
+        /// <remarks>This is an internal property meant to be used in tests.</remarks>
+        internal static bool NetworkRetriesSleep { get; set; } = true;
 
         /// <summary>
         /// Returns a new instance of <see cref="Newtonsoft.Json.JsonSerializerSettings"/> with
