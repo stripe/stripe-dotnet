@@ -65,6 +65,8 @@ namespace Stripe
         [Obsolete("Use Date instead")]
         public DateTime RequestDate => this.Date?.DateTime ?? default(DateTime);
 
+        internal int NumRetries { get; set; }
+
         /// <summary>Returns a string that represents the <see cref="StripeResponse"/>.</summary>
         /// <returns>A string that represents the <see cref="StripeResponse"/>.</returns>
         public override string ToString()
