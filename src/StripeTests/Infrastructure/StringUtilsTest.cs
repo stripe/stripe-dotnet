@@ -48,5 +48,29 @@ namespace StripeTests
                     StringUtils.SecureEquals(testCase.data.a, testCase.data.b));
             }
         }
+
+        [Fact]
+        public void ContainsWhitespace()
+        {
+            var testCases = new[]
+            {
+                new { data = "sk_test_123", want = false },
+                new { data = "sk_test_4eC39HqLyjWDarjtT1zdp7dc", want = false },
+                new { data = "abc", want = false },
+                new { data = "sk-test-123", want = false },
+                new { data = string.Empty, want = false },
+                new { data = "sk_test_123\n", want = true },
+                new { data = "\nsk_test_123", want = true },
+                new { data = "sk_test_\n123", want = true },
+                new { data = "sk_test_123 ", want = true },
+                new { data = " sk_test_123", want = true },
+                new { data = "sk_test_ 123", want = true },
+            };
+
+            foreach (var testCase in testCases)
+            {
+                Assert.Equal(testCase.want, StringUtils.ContainsWhitespace(testCase.data));
+            }
+        }
     }
 }
