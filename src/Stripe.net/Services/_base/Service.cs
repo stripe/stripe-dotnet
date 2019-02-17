@@ -284,7 +284,7 @@ namespace Stripe
                 requestOptions = new RequestOptions();
             }
 
-            if (!string.IsNullOrEmpty(this.ApiKey))
+            if (string.IsNullOrEmpty(requestOptions.ApiKey) && !string.IsNullOrEmpty(this.ApiKey))
             {
                 requestOptions.ApiKey = this.ApiKey;
             }
