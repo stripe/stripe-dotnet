@@ -3,7 +3,6 @@ namespace StripeTests
     using System.Net.Http;
     using System.Threading.Tasks;
     using Stripe;
-    using Stripe.Infrastructure;
     using StripeTests.Infrastructure.TestData;
     using Xunit;
 
@@ -85,6 +84,77 @@ namespace StripeTests
             Assert.True(request.StripeHeaders.ContainsKey("Stripe-Account"));
             Assert.Equal("acct_456", request.StripeHeaders["Stripe-Account"]);
             Assert.Null(request.Content);
+        }
+
+        [Fact]
+        public void Ctor_ThrowsIfApiKeyIsNull()
+        {
+            var origKey = StripeConfiguration.ApiKey;
+
+            try
+            {
+                StripeConfiguration.ApiKey = null;
+
+                var options = new TestOptions();
+                var requestOptions = new RequestOptions();
+
+                var exception = Assert.Throws<StripeException>(() =>
+                    new StripeRequest(HttpMethod.Get, "/get", options, requestOptions));
+
+                Assert.Contains("No API key provided.", exception.Message);
+            }
+            finally
+            {
+                StripeConfiguration.ApiKey = origKey;
+            }
+        }
+
+        [Fact]
+        public void Ctor_ThrowsIfApiKeyIsEmpty()
+        {
+            var origKey = StripeConfiguration.ApiKey;
+
+            try
+            {
+                StripeConfiguration.ApiKey = string.Empty;
+
+                var options = new TestOptions();
+                var requestOptions = new RequestOptions();
+
+                var exception = Assert.Throws<StripeException>(() =>
+                    new StripeRequest(HttpMethod.Get, "/get", options, requestOptions));
+
+                Assert.Contains("No API key provided.", exception.Message);
+            }
+            finally
+            {
+                StripeConfiguration.ApiKey = origKey;
+            }
+        }
+
+        [Fact]
+        public void Ctor_ThrowsIfApiKeyContainsWhitespace()
+        {
+            var origKey = StripeConfiguration.ApiKey;
+
+            try
+            {
+                StripeConfiguration.ApiKey = "sk_test_123\n";
+
+                var options = new TestOptions();
+                var requestOptions = new RequestOptions();
+
+                var exception = Assert.Throws<StripeException>(() =>
+                    new StripeRequest(HttpMethod.Get, "/get", options, requestOptions));
+
+                Assert.Contains(
+                    "Your API key is invalid, as it contains whitespace.",
+                    exception.Message);
+            }
+            finally
+            {
+                StripeConfiguration.ApiKey = origKey;
+            }
         }
     }
 }
