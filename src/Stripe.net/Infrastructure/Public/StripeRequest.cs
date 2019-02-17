@@ -5,6 +5,7 @@ namespace Stripe
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
+    using Stripe.Infrastructure;
     using Stripe.Infrastructure.FormEncoding;
 
     /// <summary>
@@ -31,9 +32,7 @@ namespace Stripe
 
             this.Uri = BuildUri(method, path, options, requestOptions);
 
-            this.AuthorizationHeader = new AuthenticationHeaderValue(
-                "Bearer",
-                requestOptions?.ApiKey ?? StripeConfiguration.ApiKey);
+            this.AuthorizationHeader = BuildAuthorizationHeader(requestOptions);
 
             this.StripeHeaders = BuildStripeHeaders(method, requestOptions);
         }
@@ -97,6 +96,33 @@ namespace Stripe
             }
 
             return new Uri(b.ToString());
+        }
+
+        private static AuthenticationHeaderValue BuildAuthorizationHeader(
+            RequestOptions requestOptions)
+        {
+            string apiKey = requestOptions?.ApiKey ?? StripeConfiguration.ApiKey;
+
+            if (string.IsNullOrEmpty(apiKey))
+            {
+                var message = "No API key provided. Set your API key using "
+                    + "`StripeConfiguration.ApiKey = \"<API-KEY>\"`. You can generate API keys "
+                    + "from the Stripe Dashboard. See "
+                    + "https://stripe.com/docs/api/authentication for details or contact support "
+                    + "at https://support.stripe.com/email if you have any questions.";
+                throw new StripeException(message);
+            }
+
+            if (StringUtils.ContainsWhitespace(apiKey))
+            {
+                var message = "Your API key is invalid, as it contains whitespace. You can "
+                    + "double-check your API key from the Stripe Dashboard. See "
+                    + "https://stripe.com/docs/api/authentication for details or contact support "
+                    + "at https://support.stripe.com/email if you have any questions.";
+                throw new StripeException(message);
+            }
+
+            return new AuthenticationHeaderValue("Bearer", apiKey);
         }
 
         private static Dictionary<string, string> BuildStripeHeaders(

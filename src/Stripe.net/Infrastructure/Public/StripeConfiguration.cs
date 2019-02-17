@@ -70,10 +70,7 @@ namespace Stripe
                 return apiKey;
             }
 
-            set
-            {
-                apiKey = value;
-            }
+            set => apiKey = value;
         }
 
         /// <summary>Gets or sets the base URL for Stripe's OAuth API.</summary>
@@ -126,10 +123,7 @@ namespace Stripe
                 return stripeClient;
             }
 
-            set
-            {
-                stripeClient = value;
-            }
+            set => stripeClient = value;
         }
 
         /// <summary>Gets the version of the Stripe.net client library.</summary>
