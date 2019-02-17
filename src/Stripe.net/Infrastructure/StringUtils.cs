@@ -6,6 +6,8 @@ namespace Stripe.Infrastructure
 
     internal static class StringUtils
     {
+        private static Regex whitespaceRegex = new Regex(@"\s", RegexOptions.CultureInvariant);
+
         /// <summary>Converts the string to snake case.</summary>
         /// <param name="str">The string to convert.</param>
         /// <returns>A string with the contents of the input string converted to snake_case.</returns>
@@ -51,6 +53,22 @@ namespace Stripe.Infrastructure
             }
 
             return result == 0;
+        }
+
+        /// <summary>Checks whether a string contains any whitespace characters or not.</summary>
+        /// <param name="str">The string to check.</param>
+        /// <returns>
+        /// <c>true</c> if the string contains any whitespace characters; otherwise, <c>false</c>.
+        /// </returns>
+        /// <exception name="ArgumentNullException">Thrown if <c>str</c> is <c>null</c>.</exception>
+        public static bool ContainsWhitespace(string str)
+        {
+            if (str == null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
+            return whitespaceRegex.IsMatch(str);
         }
     }
 }
