@@ -1,5 +1,9 @@
 # Changelog
 
+## 23.1.0 - 2019-02-18
+* [#1523](https://github.com/stripe/stripe-dotnet/pull/1523) Add support for `save_payment_method` when creating, updating and confirming a `PaymentIntent`
+* [#1524](https://github.com/stripe/stripe-dotnet/pull/1524) Add support for `requested_capabilities` when creating or updating an `Account` and `capabilities` on the `Account` resource
+
 ## 23.0.0 - 2019-02-12
 * [#1469](https://github.com/stripe/stripe-dotnet/pull/1469) Add support for `transfer_data[destination]` on `Subscription`.
 * [#1501](https://github.com/stripe/stripe-dotnet/pull/1501) Add support for API version `2019-02-11` with changes to Payment Intents
