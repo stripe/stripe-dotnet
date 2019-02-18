@@ -33,8 +33,8 @@ namespace Stripe
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
 
-        [JsonProperty("save_source_to_customer")]
-        public bool? SaveSourceToCustomer { get; set; }
+        [JsonProperty("save_payment_method")]
+        public bool? SavePaymentMethod { get; set; }
 
         [JsonProperty("source")]
         public string SourceId { get; set; }
@@ -48,5 +48,9 @@ namespace Stripe
         [Obsolete("Use PaymentMethodTypes")]
         [JsonProperty("allowed_source_types")]
         public List<string> AllowedSourceTypes { get; set; }
+
+        [Obsolete("Use SavePaymentMethod instead")]
+        [JsonProperty("save_source_to_customer")]
+        public bool? SaveSourceToCustomer { get; set; }
     }
 }

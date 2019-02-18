@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
@@ -17,10 +18,14 @@ namespace Stripe
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
 
-        [JsonProperty("save_source_to_customer")]
-        public bool? SaveSourceToCustomer { get; set; }
+        [JsonProperty("save_payment_method")]
+        public bool? SavePaymentMethod { get; set; }
 
         [JsonProperty("source")]
         public string SourceId { get; set; }
+
+        [Obsolete("Use SavePaymentMethod instead")]
+        [JsonProperty("save_source_to_customer")]
+        public bool? SaveSourceToCustomer { get; set; }
     }
 }
