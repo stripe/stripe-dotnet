@@ -58,6 +58,9 @@ namespace Stripe
         [JsonProperty("product_description")]
         public string ProductDescription { get; set; }
 
+        [JsonProperty("requested_capabilities")]
+        public List<string> RequestedCapabilities { get; set; }
+
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 

@@ -52,6 +52,13 @@ namespace Stripe
         [JsonProperty("business_url")]
         public string BusinessUrl { get; set; }
 
+        /// <summary>
+        /// A hash containing the set of capabilities that was requested for this account and their
+        /// associated states.
+        /// </summary>
+        [JsonProperty("capabilities")]
+        public AccountCapabilities Capabilities { get; set; }
+
         [JsonProperty("charges_enabled")]
         public bool ChargesEnabled { get; set; }
 
