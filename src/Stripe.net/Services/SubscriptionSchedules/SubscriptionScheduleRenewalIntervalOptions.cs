@@ -1,9 +1,8 @@
 namespace Stripe
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SubscriptionScheduleRenewalIntervalOptions : StripeEntity
+    public class SubscriptionScheduleRenewalIntervalOptions : INestedOptions
     {
         /// <summary>
         /// Interval at which to renew the subscription schedule for when it ends. Possible values
