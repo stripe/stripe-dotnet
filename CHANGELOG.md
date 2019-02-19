@@ -1,5 +1,8 @@
 # Changelog
 
+## 23.2.0 - 2019-02-19
+* [#1526](https://github.com/stripe/stripe-dotnet/pull/1526) Add support for `card_present` sources
+
 ## 23.1.0 - 2019-02-18
 * [#1523](https://github.com/stripe/stripe-dotnet/pull/1523) Add support for `save_payment_method` when creating, updating and confirming a `PaymentIntent`
 * [#1524](https://github.com/stripe/stripe-dotnet/pull/1524) Add support for `requested_capabilities` when creating or updating an `Account` and `capabilities` on the `Account` resource
