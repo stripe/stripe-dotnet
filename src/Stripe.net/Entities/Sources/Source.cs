@@ -129,6 +129,9 @@ namespace Stripe
         [JsonProperty("card")]
         public SourceCard Card { get; set; }
 
+        [JsonProperty("card_present")]
+        public SourceCardPresent CardPresent { get; set; }
+
         [JsonProperty("eps")]
         public SourceEps Eps { get; set; }
 
