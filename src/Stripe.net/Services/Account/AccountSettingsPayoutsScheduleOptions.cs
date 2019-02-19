@@ -2,16 +2,16 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PayoutSchedule : StripeEntity
+    public class AccountSettingsPayoutsScheduleOptions : INestedOptions
     {
         [JsonProperty("delay_days")]
-        public long DelayDays { get; set; }
+        public string DelayDays { get; set; }
 
         [JsonProperty("interval")]
         public string Interval { get; set; }
 
         [JsonProperty("monthly_anchor")]
-        public long MonthlyAnchor { get; set; }
+        public string MonthlyAnchor { get; set; }
 
         [JsonProperty("weekly_anchor")]
         public string WeeklyAnchor { get; set; }

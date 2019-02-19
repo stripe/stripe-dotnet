@@ -7,13 +7,13 @@ namespace Stripe
         [JsonProperty("country")]
         public string Country { get; set; }
 
+        [JsonProperty("individual")]
+        public PersonCreateOptions Individual { get; set; }
+
         /// <summary>
         /// One of <see cref="AccountType"/>
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
-
-        [JsonProperty("from_recipient")]
-        public string FromRecipient { get; set; }
     }
 }
