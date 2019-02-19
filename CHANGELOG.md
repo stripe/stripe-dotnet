@@ -1,5 +1,18 @@
 # Changelog
 
+## 24.0.0 - 2019-02-19
+* [#1492](https://github.com/stripe/stripe-dotnet/pull/1492) Changes related to the new API version `2019-02-19`:
+  * The library is now pinned to API version `2019-02-19`
+  * Numerous changes to the `Account` resource and APIs:
+    * The `legal_entity` property on the Account API resource has been replaced with `individual`, `company`, and `business_type`.
+    * The `verification` hash has been replaced with a `requirements` hash.
+    * Multiple top-level properties were moved to the `settings` hash.
+    * The `keys` property on `Account` has been removed. Platforms should authenticate as their connected accounts with their own key via the `Stripe-Account` [header](https://stripe.com/docs/connect/authentication#authentication-via-the-stripe-account-header).
+  * The `Birthday` class is now named `Dob`.
+  * The `TermsOfServiceAcceptance` class is now named `AccountTosAcceptance`.
+  * The `requested_capabilities` property on `Account` creation is now required for accounts in the US.
+  * The deprecated parameter `save_source_to_customer` on `PaymentIntent` has now been removed. Use `save_payment_method` instead.
+
 ## 23.2.0 - 2019-02-19
 * [#1526](https://github.com/stripe/stripe-dotnet/pull/1526) Add support for `card_present` sources
 
