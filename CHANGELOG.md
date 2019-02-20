@@ -1,5 +1,8 @@
 # Changelog
 
+## 24.0.2 - 2019-02-20
+* [#1531](https://github.com/stripe/stripe-dotnet/pull/1531) Fix deserialization of `ChargeTransferData.Amount` when it is `null`
+
 ## 24.0.1 - 2019-02-20
 * [#1527](https://github.com/stripe/stripe-dotnet/pull/1527) Fix encoding for `SubscriptionScheduleInvoiceSettingsOptions` and `SubscriptionScheduleRenewalIntervalOptions`
 * [#1530](https://github.com/stripe/stripe-dotnet/pull/1530) Fix pinned API version to `2019-02-19`
