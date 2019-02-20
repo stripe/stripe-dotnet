@@ -13,12 +13,6 @@ namespace Stripe
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
 
-        [JsonProperty("invoice")]
-        public string Invoice { get; set; }
-
-        [JsonProperty("invoice_charge_reason")]
-        public string InvoiceChargeReason { get; set; }
-
         [JsonProperty("payment_method")]
         public string PaymentMethodId { get; set; }
 
