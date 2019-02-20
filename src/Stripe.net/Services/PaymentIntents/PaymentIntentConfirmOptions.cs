@@ -6,12 +6,6 @@ namespace Stripe
 
     public class PaymentIntentConfirmOptions : BaseOptions
     {
-        [JsonProperty("invoice")]
-        public string Invoice { get; set; }
-
-        [JsonProperty("invoice_charge_reason")]
-        public string InvoiceChargeReason { get; set; }
-
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
 
