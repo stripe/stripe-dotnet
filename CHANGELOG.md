@@ -1,5 +1,9 @@
 # Changelog
 
+## 24.0.1 - 2019-02-20
+* [#1527](https://github.com/stripe/stripe-dotnet/pull/1527) Fix encoding for `SubscriptionScheduleInvoiceSettingsOptions` and `SubscriptionScheduleRenewalIntervalOptions`
+* [#1530](https://github.com/stripe/stripe-dotnet/pull/1530) Fix pinned API version to `2019-02-19`
+
 ## 24.0.0 - 2019-02-19
 * [#1492](https://github.com/stripe/stripe-dotnet/pull/1492) Changes related to the new API version `2019-02-19`:
   * The library is now pinned to API version `2019-02-19`
