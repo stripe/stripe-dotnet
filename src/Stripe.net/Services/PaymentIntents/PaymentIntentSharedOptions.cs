@@ -36,6 +36,9 @@ namespace Stripe
         [JsonProperty("save_payment_method")]
         public bool? SavePaymentMethod { get; set; }
 
+        [JsonProperty("shipping")]
+        public ChargeShippingOptions Shipping { get; set; }
+
         [JsonProperty("source")]
         public string SourceId { get; set; }
 
