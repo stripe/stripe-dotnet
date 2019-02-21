@@ -134,10 +134,6 @@ namespace StripeTests
 
         private class DummyHttpClient : IHttpClient
         {
-            public DummyHttpClient()
-            {
-            }
-
             public StripeResponse Response { get; set; }
 
             public Task<StripeResponse> MakeRequestAsync(
