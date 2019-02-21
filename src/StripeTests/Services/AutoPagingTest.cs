@@ -1,6 +1,5 @@
 namespace StripeTests
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
@@ -41,7 +40,7 @@ namespace StripeTests
                 .Returns(Task.FromResult(response1))
                 .Returns(Task.FromResult(response2))
                 .Returns(Task.FromResult(response3))
-                .Throws(new Exception("Unexpected invocation!"));
+                .Throws(new StripeTestException("Unexpected invocation!"));
 
             // Call auto-paging method
             var service = new PageableService();

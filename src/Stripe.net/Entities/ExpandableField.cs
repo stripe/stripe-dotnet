@@ -1,8 +1,6 @@
 namespace Stripe
 {
     using System;
-    using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     /// <summary>Represents a generic expandable field.</summary>
     /// <typeparam name="T">Type of the field when expanded.</typeparam>
@@ -10,7 +8,6 @@ namespace Stripe
         where T : IHasId
     {
         private string id;
-        private T expandedObject;
 
         /// <summary>Gets or sets the ID.</summary>
         /// <value>The ID.</value>
@@ -33,11 +30,7 @@ namespace Stripe
 
         /// <summary>Gets or sets the expanded object.</summary>
         /// <value>The expanded object.</value>
-        public T ExpandedObject
-        {
-            get => this.expandedObject;
-            set => this.expandedObject = value;
-        }
+        public T ExpandedObject { get; set; }
 
         object IExpandableField.ExpandedObject
         {
@@ -45,6 +38,6 @@ namespace Stripe
             set => this.ExpandedObject = (T)value;
         }
 
-        bool IExpandableField.IsExpanded => this.expandedObject != null;
+        bool IExpandableField.IsExpanded => this.ExpandedObject != null;
     }
 }

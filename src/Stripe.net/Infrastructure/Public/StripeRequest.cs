@@ -12,7 +12,7 @@ namespace Stripe
     /// </summary>
     public class StripeRequest
     {
-        private BaseOptions options = null;
+        private readonly BaseOptions options;
 
         /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
         /// <param name="method">The HTTP method.</param>

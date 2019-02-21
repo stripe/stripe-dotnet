@@ -55,7 +55,7 @@ namespace Stripe
             // We set the User-Agent and X-Stripe-Client-User-Agent headers in each request
             // message rather than through the client's <c>DefaultRequestHeaders</c> because we
             // want these headers to be present even when a custom HTTP client is used.
-            return new System.Net.Http.HttpClient()
+            return new System.Net.Http.HttpClient
             {
                 Timeout = StripeConfiguration.DefaultHttpTimeout,
             };
@@ -113,7 +113,7 @@ namespace Stripe
                 }
 
                 retry += 1;
-                await Task.Delay(this.SleepTime(retry));
+                await Task.Delay(this.SleepTime(retry)).ConfigureAwait(false);
             }
 
             if (requestException != null)
