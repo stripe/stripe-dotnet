@@ -66,6 +66,7 @@ namespace Stripe
         /// <summary>
         /// The customer used for the order.
         /// </summary>
+        [JsonIgnore]
         public string CustomerId { get; set; }
 
         [JsonIgnore]
