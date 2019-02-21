@@ -3,7 +3,6 @@ namespace StripeTests
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Reflection;
     using Newtonsoft.Json;
     using Stripe;
@@ -25,7 +24,7 @@ namespace StripeTests
 
             // Get all classes that derive from StripeEntity or implement INestedOptions
             var stripeClasses = GetSubclassesOf(typeof(StripeEntity));
-            stripeClasses.Concat(GetClassesWithInterface(typeof(INestedOptions)));
+            stripeClasses.AddRange(GetClassesWithInterface(typeof(INestedOptions)));
 
             foreach (Type stripeClass in stripeClasses)
             {
