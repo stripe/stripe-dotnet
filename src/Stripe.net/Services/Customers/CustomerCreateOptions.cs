@@ -103,8 +103,10 @@ namespace Stripe
 
         #region Trial End
 
+        [JsonIgnore]
         public DateTime? TrialEnd { get; set; }
 
+        [JsonIgnore]
         public bool EndTrialNow { get; set; }
 
         [JsonProperty("trial_end")]
