@@ -231,7 +231,7 @@ namespace StripeTests
                 .Returns<HttpRequestMessage, CancellationToken>(async (_, t) =>
                     {
                         requestCount += 1;
-                        await Task.Delay(TimeSpan.FromSeconds(1), t);
+                        await Task.Delay(TimeSpan.FromSeconds(1), t).ConfigureAwait(false);
                         return new HttpResponseMessage(HttpStatusCode.OK)
                         {
                             Content = new StringContent("{}", Encoding.UTF8),
