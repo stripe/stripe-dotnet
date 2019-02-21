@@ -80,7 +80,7 @@ namespace Stripe
         public static string ConnectBase { get; set; } = DefaultConnectBase;
 
         /// <summary>Gets or sets a value indicating whether telemetry is enabled.</summary>
-        public static bool EnableTelemetry { get; set; } = false;
+        public static bool EnableTelemetry { get; set; }
 
         /// <summary>Gets or sets the base URL for Stripe's Files API.</summary>
         public static string FilesBase { get; set; } = DefaultFilesBase;
@@ -99,7 +99,7 @@ namespace Stripe
         /// Gets or sets the maximum number of times that the library will retry requests that
         /// appear to have failed due to an intermittent problem.
         /// </summary>
-        public static int MaxNetworkRetries { get; set; } = 0;
+        public static int MaxNetworkRetries { get; set; }
 
         /// <summary>
         /// Gets or sets a custom <see cref="StripeClient"/> for sending requests to Stripe's
