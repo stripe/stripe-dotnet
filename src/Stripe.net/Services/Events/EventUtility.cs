@@ -6,7 +6,6 @@ namespace Stripe
     using System.Security.Cryptography;
     using System.Text;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -159,7 +158,7 @@ namespace Stripe
         {
             return stripeSignatureHeader.Trim()
                 .Split(',')
-                .Select(item => item.Trim().Split(new char[] { '=' }, 2))
+                .Select(item => item.Trim().Split(new[] { '=' }, 2))
                 .ToLookup(item => item[0], item => item[1]);
         }
 
