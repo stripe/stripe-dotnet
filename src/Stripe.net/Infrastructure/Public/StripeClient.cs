@@ -62,7 +62,16 @@ namespace Stripe
                 throw BuildStripeException(response);
             }
 
-            var obj = StripeEntity.FromJson<T>(response.Content);
+            T obj;
+            try
+            {
+                obj = StripeEntity.FromJson<T>(response.Content);
+            }
+            catch (Newtonsoft.Json.JsonException)
+            {
+                throw BuildInvalidResponseException(response);
+            }
+
             obj.StripeResponse = response;
 
             return obj;
@@ -111,7 +120,7 @@ namespace Stripe
             return new StripeException(
                 response.StatusCode,
                 null,
-                $"Invalid response object from API: {response.Content}")
+                $"Invalid response object from API: \"{response.Content}\"")
             {
                 StripeResponse = response,
             };
