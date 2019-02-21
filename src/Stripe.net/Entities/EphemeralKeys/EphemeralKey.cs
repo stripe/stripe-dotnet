@@ -16,15 +16,6 @@ namespace Stripe
         [JsonProperty("associated_objects")]
         public List<EphemeralKeyAssociatedObject> AssociatedObjects { get; set; }
 
-        // RawJson is the raw JSON data of the response that was used to initialize this
-        // ephemeral key. When working with mobile clients that might only understand
-        // one version of the API you should prefer to send this value back to them so
-        // that they'll be able to decode an object that's current according to their version.
-        public string RawJson
-        {
-            get { return this.StripeResponse?.Content; }
-        }
-
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
@@ -41,5 +32,14 @@ namespace Stripe
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// <see cref="RawJson"/> is the raw JSON data of the response that was used to initialize
+        /// this ephemeral key. When working with mobile clients that might only understand
+        /// one version of the API you should prefer to send this value back to them so
+        /// that they'll be able to decode an object that's current according to their version.
+        /// </summary>
+        [JsonIgnore]
+        public string RawJson => this.StripeResponse?.Content;
     }
 }

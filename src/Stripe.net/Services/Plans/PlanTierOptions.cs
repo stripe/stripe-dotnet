@@ -1,7 +1,5 @@
 namespace Stripe
 {
-    using System;
-    using System.Reflection;
     using Newtonsoft.Json;
 
     public class PlanTierOptions : INestedOptions
@@ -13,6 +11,7 @@ namespace Stripe
         public long? UnitAmount { get; set; }
 
         #region UpTo
+        [JsonIgnore]
         public UpToOption UpTo { get; set; }
 
         [JsonProperty("up_to")]

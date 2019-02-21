@@ -61,6 +61,7 @@ namespace Stripe
         /// <para>The ID of the refund issued for this return.</para>
         /// <para>Expandable</para>
         /// </summary>
+        [JsonIgnore]
         public string RefundId { get; set; }
 
         [JsonIgnore]
