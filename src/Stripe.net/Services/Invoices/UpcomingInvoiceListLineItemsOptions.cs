@@ -38,10 +38,13 @@ namespace Stripe
         /// <c>month</c> or <c>year</c> intervals, the day of the month for subsequent invoices.For
         /// existing subscriptions, the value can only be set to <c>now</c> or <c>unchanged</c>.
         /// </summary>
+        [JsonIgnore]
         public DateTime? SubscriptionBillingCycleAnchor { get; set; }
 
+        [JsonIgnore]
         public bool SubscriptionBillingCycleAnchorNow { get; set; }
 
+        [JsonIgnore]
         public bool SubscriptionBillingCycleAnchorUnchanged { get; set; }
 
         [JsonProperty("subscription_billing_cycle_anchor")]
