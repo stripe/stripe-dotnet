@@ -31,7 +31,7 @@ namespace StripeTests
         public void TelemetryDisabled()
         {
             this.ResetStripeClient();
-            var fakeServer = FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
+            FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
 
             StripeConfiguration.EnableTelemetry = false;
             var service = new BalanceService();
@@ -172,7 +172,7 @@ namespace StripeTests
 
         private class FakeServer
         {
-            private object lockObject = new object();
+            private readonly object lockObject = new object();
 
             public TimeSpan Delay { get; set; } = TimeSpan.Zero;
 
@@ -200,7 +200,7 @@ namespace StripeTests
                     requestId = $"req_{this.RequestCount}";
                 }
 
-                await Task.Delay(this.Delay);
+                await Task.Delay(this.Delay).ConfigureAwait(false);
 
                 return new HttpResponseMessage(HttpStatusCode.OK)
                 {
