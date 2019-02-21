@@ -5,6 +5,7 @@ namespace Stripe
     using System.Runtime.CompilerServices;
     using Newtonsoft.Json;
 
+    [JsonObject(MemberSerialization.OptIn)]
     public abstract class StripeEntity : IStripeEntity
     {
         [JsonIgnore]
