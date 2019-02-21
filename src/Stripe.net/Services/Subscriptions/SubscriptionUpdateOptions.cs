@@ -3,13 +3,14 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class SubscriptionUpdateOptions : SubscriptionSharedOptions
     {
         #region BillingCycleAnchor
+        [JsonIgnore]
         public bool BillingCycleAnchorNow { get; set; }
 
+        [JsonIgnore]
         public bool BillingCycleAnchorUnchanged { get; set; }
 
         [JsonProperty("billing_cycle_anchor")]
