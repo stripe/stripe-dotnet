@@ -11,17 +11,17 @@ namespace Stripe
         [JsonProperty("billing")]
         public Billing? Billing { get; set; }
 
-        [JsonProperty("customer")]
-        public string CustomerId { get; set; }
-
-        [JsonProperty("date")]
-        public DateTime? Date { get; set; }
+        [JsonProperty("created")]
+        public DateTime? Created { get; set; }
 
         /// <summary>
-        /// A filter on the list based on the object date field.
+        /// A filter on the list based on the object created field.
         /// </summary>
-        [JsonProperty("date")]
-        public DateRangeOptions DateRange { get; set; }
+        [JsonProperty("created")]
+        public DateRangeOptions CreatedRange { get; set; }
+
+        [JsonProperty("customer")]
+        public string CustomerId { get; set; }
 
         [JsonProperty("due_date")]
         public DateTime? DueDate { get; set; }
@@ -40,5 +40,13 @@ namespace Stripe
 
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
+
+        [Obsolete("Use Created instead")]
+        [JsonProperty("date")]
+        public DateTime? Date { get; set; }
+
+        [Obsolete("Use CreatedRange instead")]
+        [JsonProperty("date")]
+        public DateRangeOptions DateRange { get; set; }
     }
 }
