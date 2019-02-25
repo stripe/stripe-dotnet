@@ -48,6 +48,7 @@ namespace Stripe.Infrastructure
             { "order_item", typeof(OrderItem) },
             { "order_return", typeof(OrderReturn) },
             { "payment_intent", typeof(PaymentIntent) },
+            { "payment_method", typeof(PaymentMethod) },
             { "payout", typeof(Payout) },
             { "person", typeof(Person) },
             { "plan", typeof(Plan) },

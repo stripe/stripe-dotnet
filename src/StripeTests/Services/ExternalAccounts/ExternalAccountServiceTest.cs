@@ -25,13 +25,7 @@ namespace StripeTests
 
             this.createOptions = new ExternalAccountCreateOptions
             {
-                ExternalAccountBankAccount = new AccountBankAccountOptions
-                {
-                    AccountNumber = "000123456789",
-                    Country = "US",
-                    Currency = "usd",
-                    RoutingNumber = "110000000",
-                }
+                ExternalAccountTokenId = "btok_123",
             };
 
             this.updateOptions = new ExternalAccountUpdateOptions

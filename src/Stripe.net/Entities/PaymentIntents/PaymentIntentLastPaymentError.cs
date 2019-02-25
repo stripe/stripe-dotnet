@@ -23,6 +23,12 @@ namespace Stripe
         [JsonProperty("param")]
         public string Param { get; set; }
 
+        [JsonProperty("payment_intent")]
+        public PaymentIntent PaymentIntent { get; set; }
+
+        [JsonProperty("payment_method")]
+        public PaymentMethod PaymentMethod { get; set; }
+
         [JsonProperty("source")]
         [JsonConverter(typeof(StripeObjectConverter))]
         public IPaymentSource Source { get; set; }

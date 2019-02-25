@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class StripeError : StripeEntity
     {
@@ -22,6 +23,16 @@ namespace Stripe
 
         [JsonProperty("param")]
         public string Parameter { get; set; }
+
+        [JsonProperty("payment_intent")]
+        public PaymentIntent PaymentIntent { get; set; }
+
+        [JsonProperty("payment_method")]
+        public PaymentMethod PaymentMethod { get; set; }
+
+        [JsonProperty("source")]
+        [JsonConverter(typeof(StripeObjectConverter))]
+        public IPaymentSource Source { get; set; }
 
         [JsonProperty("type")]
         public string ErrorType { get; set; }

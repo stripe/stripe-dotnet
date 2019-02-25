@@ -19,6 +19,9 @@ namespace Stripe
         [JsonProperty("invoice_charge_reason")]
         public string InvoiceChargeReason { get; set; }
 
+        [JsonProperty("payment_method")]
+        public string PaymentMethodId { get; set; }
+
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
 
