@@ -115,6 +115,28 @@ namespace Stripe
         [JsonProperty("items")]
         public StripeList<SubscriptionItem> Items { get; set; }
 
+        #region Expandable LatestInvoice
+        [JsonIgnore]
+        public string LatestInvoiceId { get; set; }
+
+        [JsonIgnore]
+        public Invoice LatestInvoice { get; set; }
+
+        [JsonProperty("latest_invoice")]
+        internal object InternalLatestInvoice
+        {
+            get
+            {
+                return this.LatestInvoice ?? (object)this.LatestInvoiceId;
+            }
+
+            set
+            {
+                StringOrObject<Invoice>.Map(value, s => this.LatestInvoiceId = s, o => this.LatestInvoice = o);
+            }
+        }
+        #endregion
+
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
