@@ -13,6 +13,9 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("api_version")]
+        public string ApiVersion { get; set; }
+
         [JsonProperty("application")]
         public string ApplicationId { get; set; }
 
