@@ -1,5 +1,11 @@
 # Changelog
 
+## 24.1.0 - 2019-02-28
+* [#1533](https://github.com/stripe/stripe-dotnet/pull/1533) Add support for `client_secret` and `shipping` on `PaymentIntent` confirmation
+* [#1539](https://github.com/stripe/stripe-dotnet/pull/1539) Add support for `status_transitions` and `created` on `Invoice`
+* [#1545](https://github.com/stripe/stripe-dotnet/pull/1545) Add support for `latest_invoice` on `Subscription`
+* [#1546](https://github.com/stripe/stripe-dotnet/pull/1546) Add support for `api_version` on `WebhookEndpoint`
+
 ## 24.0.2 - 2019-02-20
 * [#1531](https://github.com/stripe/stripe-dotnet/pull/1531) Fix deserialization of `ChargeTransferData.Amount` when it is `null`
 
