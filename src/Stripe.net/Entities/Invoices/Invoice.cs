@@ -22,10 +22,6 @@ namespace Stripe
         [JsonProperty("amount_remaining")]
         public long AmountRemaining { get; set; }
 
-        [Obsolete("Use ApplicationFeeAmount")]
-        [JsonProperty("application_fee")]
-        public long? ApplicationFee { get; set; }
-
         /// <summary>
         /// The amount of the application application fee (if any) for the invoice. See the Connect documentation for details.
         /// </summary>
@@ -75,6 +71,10 @@ namespace Stripe
         }
         #endregion
 
+        [JsonProperty("created")]
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime Created { get; set; }
+
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
@@ -102,10 +102,6 @@ namespace Stripe
             }
         }
         #endregion
-
-        [JsonProperty("date")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? Date { get; set; }
 
         #region Expandable DefaultSource
         [JsonIgnore]
@@ -202,6 +198,9 @@ namespace Stripe
         [JsonProperty("status")]
         public string Status { get; set; }
 
+        [JsonProperty("status_transitions")]
+        public InvoiceStatusTransitions StatusTransitions { get; set; }
+
         #region Expandable Subscription
         [JsonIgnore]
         public string SubscriptionId { get; set; }
@@ -253,5 +252,14 @@ namespace Stripe
         [JsonProperty("webhooks_delivered_at")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? WebhooksDeliveredAt { get; set; }
+
+        [Obsolete("Use ApplicationFeeAmount instead")]
+        [JsonProperty("application_fee")]
+        public long? ApplicationFee { get; set; }
+
+        [Obsolete("Use Created instead")]
+        [JsonProperty("date")]
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? Date { get; set; }
     }
 }
