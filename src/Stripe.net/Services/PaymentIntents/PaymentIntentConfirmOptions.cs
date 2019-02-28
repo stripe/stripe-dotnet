@@ -6,6 +6,13 @@ namespace Stripe
 
     public class PaymentIntentConfirmOptions : BaseOptions
     {
+        /// <summary>
+        /// The client secret of the PaymentIntent. Required if a publishable key is used to
+        /// confirm the payment intent.
+        /// </summary>
+        [JsonProperty("client_secret")]
+        public string ClientSecret { get; set; }
+
         [JsonProperty("invoice")]
         public string Invoice { get; set; }
 
@@ -20,6 +27,9 @@ namespace Stripe
 
         [JsonProperty("save_payment_method")]
         public bool? SavePaymentMethod { get; set; }
+
+        [JsonProperty("shipping")]
+        public ChargeShippingOptions Shipping { get; set; }
 
         [JsonProperty("source")]
         public string SourceId { get; set; }

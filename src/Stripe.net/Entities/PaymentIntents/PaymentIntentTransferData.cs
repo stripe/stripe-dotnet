@@ -1,13 +1,11 @@
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
     public class PaymentIntentTransferData : StripeEntity
     {
-        [JsonProperty("amount")]
-        public long Amount { get; set; }
-
         #region Expandable Destination (Account)
         [JsonIgnore]
         public string DestinationId { get; set; }
@@ -29,5 +27,9 @@ namespace Stripe
             }
         }
         #endregion
+
+        [Obsolete("Use PaymentIntent.ApplicationFeeAmount instead")]
+        [JsonProperty("amount")]
+        public long? Amount { get; set; }
     }
 }
