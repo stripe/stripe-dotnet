@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
 
     public class SubscriptionListOptions : ListOptionsWithCreated
@@ -9,6 +10,30 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing")]
         public Billing? Billing { get; set; }
+
+        /// <summary>
+        /// A filter on the list based on the object current_period_end field.
+        /// </summary>
+        [JsonProperty("current_period_end")]
+        public DateTime? CurrentPeriodEnd { get; set; }
+
+        /// <summary>
+        /// A filter on the list based on the object current_period_end field.
+        /// </summary>
+        [JsonProperty("current_period_end")]
+        public DateRangeOptions CurrentPeriodEndRange { get; set; }
+
+        /// <summary>
+        /// A filter on the list based on the object current_period_start field.
+        /// </summary>
+        [JsonProperty("current_period_start")]
+        public DateTime? CurrentPeriodStart { get; set; }
+
+        /// <summary>
+        /// A filter on the list based on the object current_period_start field.
+        /// </summary>
+        [JsonProperty("current_period_start")]
+        public DateRangeOptions CurrentPeriodStartRange { get; set; }
 
         /// <summary>
         /// The ID of the customer whose subscriptions will be retrieved.
