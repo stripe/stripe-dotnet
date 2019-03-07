@@ -1,5 +1,8 @@
 # Changelog
 
+## 24.3.0 - 2019-03-06
+* [#1548](https://github.com/stripe/stripe-dotnet/pull/1548) Add support for `backdate_start_date` and `cancel_at` on `Subscription`
+
 ## 24.2.0 - 2019-03-05
 * [#1547](https://github.com/stripe/stripe-dotnet/pull/1547) Add support for `current_period_end` and `current_period_start` when listing `Invoice`s
 
