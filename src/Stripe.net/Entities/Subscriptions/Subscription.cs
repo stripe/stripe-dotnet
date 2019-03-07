@@ -36,6 +36,13 @@ namespace Stripe
         [JsonProperty("billing_thresholds")]
         public SubscriptionBillingThresholds BillingThresholds { get; set; }
 
+        /// <summary>
+        /// A date in the future at which the subscription will automatically get canceled.
+        /// </summary>
+        [JsonProperty("cancel_at")]
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? CancelAt { get; set; }
+
         [JsonProperty("cancel_at_period_end")]
         public bool CancelAtPeriodEnd { get; set; }
 
