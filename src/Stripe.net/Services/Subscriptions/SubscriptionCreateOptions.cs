@@ -8,7 +8,17 @@ namespace Stripe
     public class SubscriptionCreateOptions : SubscriptionSharedOptions
     {
         /// <summary>
-        /// A future date to anchor the subscription’s <see href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</see>. This is used to determine the date of the first full invoice, and, for plans with <c>month</c> or <c>year</c> intervals, the day of the month for subsequent invoices.
+        /// For new subscriptions, a past timestamp to backdate the subscription’s start date to.
+        /// If set, the first invoice will contain a proration for the timespan between the start
+        /// date and the current time. Can be combined with trials and the billing cycle anchor.
+        /// </summary>
+        [JsonProperty("backdate_start_date")]
+        public DateTime? BackdateStartDate { get; set; }
+
+        /// <summary>
+        /// A future date to anchor the subscription’s <see href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</see>.
+        /// This is used to determine the date of the first full invoice, and, for plans with
+        /// <c>month</c> or <c>year</c> intervals, the day of the month for subsequent invoices.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         public DateTime? BillingCycleAnchor { get; set; }

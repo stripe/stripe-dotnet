@@ -26,6 +26,13 @@ namespace Stripe
         public SubscriptionBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
+        /// A timestamp at which the subscription should cancel. If set to a date before the
+        /// current period ends this will cause a proration if <code>prorate=true</code>.
+        /// </summary>
+        [JsonProperty("cancel_at")]
+        public DateTime? CancelAt { get; set; }
+
+        /// <summary>
         /// Boolean indicating whether this subscription should cancel at the end of the current period.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
