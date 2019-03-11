@@ -1,5 +1,8 @@
 # Changelog
 
+## 24.4.0 - 2019-03-11
+* [#1550](https://github.com/stripe/stripe-dotnet/pull/1550) Add support for `amount` on `Issuing.Transaction`
+
 ## 24.3.0 - 2019-03-06
 * [#1548](https://github.com/stripe/stripe-dotnet/pull/1548) Add support for `backdate_start_date` and `cancel_at` on `Subscription`
 
