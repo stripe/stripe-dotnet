@@ -13,6 +13,9 @@ namespace Stripe.Issuing
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("amount")]
+        public long Amount { get; set; }
+
         #region Expandable Authorization
         [JsonIgnore]
         public string AuthorizationId { get; set; }
