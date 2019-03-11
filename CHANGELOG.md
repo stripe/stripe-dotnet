@@ -1,5 +1,8 @@
 # Changelog
 
+## 24.4.1 - 2019-03-11
+* Fix 24.4.0 release. The version that was pushed to NuGet did not include the changes from 24.4.0.
+
 ## 24.4.0 - 2019-03-11
 * [#1550](https://github.com/stripe/stripe-dotnet/pull/1550) Add support for `amount` on `Issuing.Transaction`
 
