@@ -1,5 +1,8 @@
 # Changelog
 
+## 24.5.0 - 2019-03-13
+* [#1551](https://github.com/stripe/stripe-dotnet/pull/1551) Add support for `columns` on `ReportRun` and `default_columns` on `ReportType`
+
 ## 24.4.1 - 2019-03-11
 * Fix 24.4.0 release. The version that was pushed to NuGet did not include the changes from 24.4.0.
 
