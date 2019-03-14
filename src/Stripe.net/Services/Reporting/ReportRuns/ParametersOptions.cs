@@ -7,6 +7,9 @@ namespace Stripe.Reporting
 
     public class ParametersOptions : INestedOptions
     {
+        [JsonProperty("columns")]
+        public List<string> Columns { get; set; }
+
         [JsonProperty("connected_account")]
         public string ConnectedAccount { get; set; }
 

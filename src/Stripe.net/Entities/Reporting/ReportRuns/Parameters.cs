@@ -1,11 +1,15 @@
 namespace Stripe.Reporting
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
     public class Parameters : StripeEntity
     {
+        [JsonProperty("columns")]
+        public List<string> Columns { get; set; }
+
         [JsonProperty("connected_account")]
         public string ConnectedAccount { get; set; }
 

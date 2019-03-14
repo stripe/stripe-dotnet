@@ -21,6 +21,9 @@ namespace Stripe.Reporting
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime DataAvailableStart { get; set; }
 
+        [JsonProperty("default_columns")]
+        public List<string> DefaultColumns { get; set; }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
