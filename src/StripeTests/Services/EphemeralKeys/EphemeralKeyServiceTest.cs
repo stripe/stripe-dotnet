@@ -22,7 +22,7 @@ namespace StripeTests
             this.createOptions = new EphemeralKeyCreateOptions
             {
                 CustomerId = "cus_123",
-                StripeVersion = "2017-05-25",
+                StripeVersion = StripeConfiguration.StripeApiVersion,
             };
         }
 

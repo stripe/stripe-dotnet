@@ -142,10 +142,6 @@ namespace Stripe
         [JsonProperty("ending_balance")]
         public long? EndingBalance { get; set; }
 
-        [JsonProperty("finalized_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? FinalizedAt { get; set; }
-
         [JsonProperty("footer")]
         public string Footer { get; set; }
 
@@ -252,14 +248,5 @@ namespace Stripe
         [JsonProperty("webhooks_delivered_at")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? WebhooksDeliveredAt { get; set; }
-
-        [Obsolete("Use ApplicationFeeAmount instead")]
-        [JsonProperty("application_fee")]
-        public long? ApplicationFee { get; set; }
-
-        [Obsolete("Use Created instead")]
-        [JsonProperty("date")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? Date { get; set; }
     }
 }

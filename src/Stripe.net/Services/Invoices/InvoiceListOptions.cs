@@ -40,13 +40,5 @@ namespace Stripe
 
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
-
-        [Obsolete("Use Created instead")]
-        [JsonProperty("date")]
-        public DateTime? Date { get; set; }
-
-        [Obsolete("Use CreatedRange instead")]
-        [JsonProperty("date")]
-        public DateRangeOptions DateRange { get; set; }
     }
 }
