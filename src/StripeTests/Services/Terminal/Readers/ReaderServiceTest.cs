@@ -57,6 +57,22 @@ namespace StripeTests.Terminal
         }
 
         [Fact]
+        public void Delete()
+        {
+            var deleted = this.service.Delete(ReaderId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/terminal/readers/ds_123");
+            Assert.NotNull(deleted);
+        }
+
+        [Fact]
+        public async Task DeleteAsync()
+        {
+            var deleted = await this.service.DeleteAsync(ReaderId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/terminal/readers/ds_123");
+            Assert.NotNull(deleted);
+        }
+
+        [Fact]
         public void Get()
         {
             var reader = this.service.Get(ReaderId);

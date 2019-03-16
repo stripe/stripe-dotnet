@@ -30,6 +30,16 @@ namespace Stripe.Terminal
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
+        public virtual Reader Delete(string readerId, RequestOptions requestOptions = null)
+        {
+            return this.DeleteEntity(readerId, null, requestOptions);
+        }
+
+        public virtual Task<Reader> DeleteAsync(string readerId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.DeleteEntityAsync(readerId, null, requestOptions, cancellationToken);
+        }
+
         public virtual Reader Get(string readerId, RequestOptions requestOptions = null)
         {
             return this.GetEntity(readerId, null, requestOptions);

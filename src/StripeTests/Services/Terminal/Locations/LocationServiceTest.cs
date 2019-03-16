@@ -64,6 +64,22 @@ namespace StripeTests.Terminal
         }
 
         [Fact]
+        public void Delete()
+        {
+            var deleted = this.service.Delete(LocationId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/terminal/locations/loc_123");
+            Assert.NotNull(deleted);
+        }
+
+        [Fact]
+        public async Task DeleteAsync()
+        {
+            var deleted = await this.service.DeleteAsync(LocationId);
+            this.AssertRequest(HttpMethod.Delete, "/v1/terminal/locations/loc_123");
+            Assert.NotNull(deleted);
+        }
+
+        [Fact]
         public void Get()
         {
             var location = this.service.Get(LocationId);
