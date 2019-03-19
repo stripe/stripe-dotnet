@@ -1,5 +1,9 @@
 # Changelog
 
+## 24.6.0 - 2019-03-18
+* [#1541](https://github.com/stripe/stripe-dotnet/pull/1541) Add support for the `PaymentMethod` resource and APIs
+* [#1554](https://github.com/stripe/stripe-dotnet/pull/1554) Add support for deleting a Terminal `Location` and `Reader`
+
 ## 24.5.0 - 2019-03-13
 * [#1551](https://github.com/stripe/stripe-dotnet/pull/1551) Add support for `columns` on `ReportRun` and `default_columns` on `ReportType`
 
