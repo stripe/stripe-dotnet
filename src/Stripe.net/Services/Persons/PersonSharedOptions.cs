@@ -52,6 +52,9 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("person_token")]
+        public string PersonToken { get; set; }
+
         [JsonProperty("personal_id_number")]
         public string PersonalIdNumber { get; set; }
 
