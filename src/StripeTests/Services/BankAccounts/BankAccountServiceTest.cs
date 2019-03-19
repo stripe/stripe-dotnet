@@ -26,19 +26,7 @@ namespace StripeTests
 
             this.createOptions = new BankAccountCreateOptions
             {
-                SourceBankAccount = new SourceBankAccount
-                {
-                    AccountNumber = "000123456789",
-                    Country = "US",
-                    Currency = "usd",
-                    AccountHolderName = "John Doe",
-                    AccountHolderType = BankAccountHolderType.Company,
-                    RoutingNumber = "110000000",
-                    Metadata = new Dictionary<string, string>
-                    {
-                        { "key", "value" },
-                    },
-                }
+                SourceToken = "btok_123",
             };
 
             this.updateOptions = new BankAccountUpdateOptions

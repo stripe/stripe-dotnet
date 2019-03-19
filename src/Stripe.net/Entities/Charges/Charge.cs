@@ -105,6 +105,12 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Billing details of the payment method used in the payment.
+        /// </summary>
+        [JsonProperty("billing_details")]
+        public BillingDetails BillingDetails { get; set; }
+
+        /// <summary>
         /// If the charge was created without capturing, this boolean represents whether or not it is still uncaptured or has since been captured.
         /// </summary>
         [JsonProperty("captured")]
@@ -349,6 +355,18 @@ namespace Stripe
             }
         }
         #endregion
+
+        /// <summary>
+        /// ID of the PaymentMethod associated with this charge.
+        /// </summary>
+        [JsonProperty("payment_method")]
+        public string PaymentMethodId { get; set; }
+
+        /// <summary>
+        /// Transaction-specific details of the payment method used in the payment.
+        /// </summary>
+        [JsonProperty("payment_method_details")]
+        public ChargePaymentMethodDetails PaymentMethodDetails { get; set; }
 
         /// <summary>
         /// This is the email address that the receipt for this charge was sent to.

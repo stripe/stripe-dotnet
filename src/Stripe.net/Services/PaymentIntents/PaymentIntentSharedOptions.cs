@@ -27,6 +27,9 @@ namespace Stripe
         [JsonProperty("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
+        [JsonProperty("payment_method")]
+        public string PaymentMethodId { get; set; }
+
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 

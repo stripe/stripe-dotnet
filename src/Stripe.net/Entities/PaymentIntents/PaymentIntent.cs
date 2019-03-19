@@ -132,6 +132,28 @@ namespace Stripe
         }
         #endregion
 
+        #region Expandable PaymentMethod
+        [JsonIgnore]
+        public string PaymentMethodId { get; set; }
+
+        [JsonIgnore]
+        public PaymentMethod PaymentMethod { get; set; }
+
+        [JsonProperty("payment_method")]
+        internal object InternalPaymentMethod
+        {
+            get
+            {
+                return this.PaymentMethod ?? (object)this.PaymentMethodId;
+            }
+
+            set
+            {
+                StringOrObject<PaymentMethod>.Map(value, s => this.PaymentMethodId = s, o => this.PaymentMethod = o);
+            }
+        }
+        #endregion
+
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
