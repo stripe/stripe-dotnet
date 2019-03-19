@@ -26,7 +26,7 @@ install:
         7z.exe e -y -o".\stripe-mock" ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.tar.gz" | Out-Null
         7z.exe x -y -o".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}" ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.tar" | Out-Null
       }
-      $app = Start-Process -FilePath ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}\stripe-mock.exe" -NoNewWindow -PassThru
+      $app = Start-Process -FilePath ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}\stripe-mock.exe" -ArgumentList "-strict-version-check" -NoNewWindow -PassThru
       Write-Host ("stripe-mock running, Id = $($app.Id)`n") -ForegroundColor Green
       $env:PATH += ";" + (Get-Item -Path ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}").FullName
   - dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
