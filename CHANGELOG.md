@@ -1,5 +1,11 @@
 # Changelog
 
+## 24.7.0 - 2019-03-19
+* [#1552](https://github.com/stripe/stripe-dotnet/pull/1552) Add support for API version [2019-03-14](https://stripe.com/docs/upgrades#2019-03-14):
+  * The library is now pinned to API version `2019-03-14`.
+  * Subscriptions are now created with `status: "incomplete"` if the first payment fails.
+  * `PaymentIntentLastPaymentError` was removed in favour of `StripeError`.
+
 ## 24.6.0 - 2019-03-18
 * [#1541](https://github.com/stripe/stripe-dotnet/pull/1541) Add support for the `PaymentMethod` resource and APIs
 * [#1554](https://github.com/stripe/stripe-dotnet/pull/1554) Add support for deleting a Terminal `Location` and `Reader`
