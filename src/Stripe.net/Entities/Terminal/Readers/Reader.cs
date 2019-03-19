@@ -13,6 +13,12 @@ namespace Stripe.Terminal
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        /// <summary>
+        /// Whether this object is deleted or not.
+        /// </summary>
+        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
+        public bool? Deleted { get; set; }
+
         [JsonProperty("device_sw_version")]
         public string DeviceSwVersion { get; set; }
 
