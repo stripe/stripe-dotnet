@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.1.0 - 2019-03-22
+* [#1557](https://github.com/stripe/stripe-dotnet/pull/1557) Add support for `person_token` on `Person` creation
+
 ## 25.0.0 - 2019-03-19
 * [#1552](https://github.com/stripe/stripe-dotnet/pull/1552) Add support for API version [2019-03-14](https://stripe.com/docs/upgrades#2019-03-14):
   * The library is now pinned to API version `2019-03-14`.
