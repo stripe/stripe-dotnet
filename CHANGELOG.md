@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.2.0 - 2019-03-25
+* [#1559](https://github.com/stripe/stripe-dotnet/pull/1559) Added `Incomplete` and `IncompleteExpired` subscription statuses
+
 ## 25.1.0 - 2019-03-22
 * [#1557](https://github.com/stripe/stripe-dotnet/pull/1557) Add support for `person_token` on `Person` creation
 
