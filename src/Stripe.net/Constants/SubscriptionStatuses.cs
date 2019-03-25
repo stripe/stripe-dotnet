@@ -11,9 +11,9 @@ namespace Stripe
         public static string Canceled => "canceled";
 
         public static string Unpaid => "unpaid";
-        
+
         public static string Incomplete => "incomplete";
-        
+
         public static string IncompleteExpired => "incomplete_expired";
     }
 }
