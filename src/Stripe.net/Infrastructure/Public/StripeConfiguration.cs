@@ -12,6 +12,7 @@ namespace Stripe
     public static class StripeConfiguration
     {
         private static string apiKey;
+        private static string clientId;
 
         private static IStripeClient stripeClient;
 
@@ -71,6 +72,31 @@ namespace Stripe
             }
 
             set => apiKey = value;
+        }
+
+#if NET45 || NETSTANDARD2_0
+        /// <summary>Gets or sets the client ID.</summary>
+        /// <remarks>
+        /// You can also set the client ID using the <c>StripeClientId</c> key in
+        /// <see cref="System.Configuration.ConfigurationManager.AppSettings"/>.
+        /// </remarks>
+#else
+        /// <summary>Gets or sets the client ID.</summary>
+#endif
+        public static string ClientId
+        {
+            get
+            {
+#if NET45 || NETSTANDARD2_0
+                if (string.IsNullOrEmpty(apiKey))
+                {
+                    clientId = System.Configuration.ConfigurationManager.AppSettings["StripeClientId"];
+                }
+#endif
+                return clientId;
+            }
+
+            set => clientId = value;
         }
 
         /// <summary>Gets or sets the base URL for Stripe's OAuth API.</summary>

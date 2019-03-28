@@ -17,6 +17,7 @@ namespace StripeTests
         private readonly string origApiBase;
         private readonly string origFilesBase;
         private readonly string origApiKey;
+        private readonly string origClientId;
 
         private readonly string port;
 
@@ -36,10 +37,12 @@ namespace StripeTests
             this.origApiBase = StripeConfiguration.ApiBase;
             this.origFilesBase = StripeConfiguration.FilesBase;
             this.origApiKey = StripeConfiguration.ApiKey;
+            this.origClientId = StripeConfiguration.ClientId;
 
             StripeConfiguration.ApiBase = $"http://localhost:{this.port}";
             StripeConfiguration.FilesBase = $"http://localhost:{this.port}";
             StripeConfiguration.ApiKey = "sk_test_123";
+            StripeConfiguration.ClientId = "ca_123";
         }
 
         public void Dispose()
@@ -47,6 +50,7 @@ namespace StripeTests
             StripeConfiguration.ApiBase = this.origApiBase;
             StripeConfiguration.FilesBase = this.origFilesBase;
             StripeConfiguration.ApiKey = this.origApiKey;
+            StripeConfiguration.ClientId = this.origClientId;
 
             StripeMockHandler.StopStripeMock();
         }
