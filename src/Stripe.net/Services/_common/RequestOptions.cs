@@ -8,7 +8,6 @@ namespace Stripe
         /// <summary>Idempotency key for safely retrying requests.</summary>
         public string IdempotencyKey { get; set; }
 
-        /// <summary>For Connect requests, the connected account's ID.</summary>
         public string StripeConnectAccountId { get; set; }
 
         /// <summary>The base URL for the request.</summary>
