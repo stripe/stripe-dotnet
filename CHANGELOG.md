@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.3.0 - 2019-03-29
+* [#1562](https://github.com/stripe/stripe-dotnet/pull/1562) Add support for `submit` when updating a `Dispute`
+
 ## 25.2.0 - 2019-03-25
 * [#1559](https://github.com/stripe/stripe-dotnet/pull/1559) Added `Incomplete` and `IncompleteExpired` subscription statuses
 
