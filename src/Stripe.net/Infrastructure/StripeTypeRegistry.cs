@@ -26,6 +26,7 @@ namespace Stripe.Infrastructure
             { "checkout.session", typeof(Checkout.Session) },
             { "country_spec", typeof(CountrySpec) },
             { "coupon", typeof(Coupon) },
+            { "credit_note", typeof(CreditNote) },
             { "customer", typeof(Customer) },
             { "discount", typeof(Discount) },
             { "dispute", typeof(Dispute) },
