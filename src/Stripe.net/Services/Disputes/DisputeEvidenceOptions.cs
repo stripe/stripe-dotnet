@@ -36,7 +36,7 @@ namespace Stripe
         public string CustomerSignatureFileId { get; set; }
 
         [JsonProperty("duplicate_charge_documentation")]
-        public string DuplicateChargeDocumentation { get; set; }
+        public string DuplicateChargeDocumentationFileId { get; set; }
 
         [JsonProperty("duplicate_charge_explanation")]
         public string DuplicateChargeExplanation { get; set; }
