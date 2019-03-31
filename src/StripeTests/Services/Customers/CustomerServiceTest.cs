@@ -28,8 +28,18 @@ namespace StripeTests
                 SourceToken = "tok_123",
             };
 
+            var updatedCustomFields = new NonConsecutiveList<InvoiceCustomFieldOptions>();
+            updatedCustomFields[1] = new InvoiceCustomFieldOptions
+            {
+                Name = "name",
+                Value = "value",
+            };
             this.updateOptions = new CustomerUpdateOptions
             {
+                InvoiceSettings = new CustomerInvoiceSettingsOptions
+                {
+                    CustomFields = updatedCustomFields,
+                },
                 Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },

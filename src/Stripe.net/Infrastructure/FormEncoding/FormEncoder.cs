@@ -104,6 +104,10 @@ namespace Stripe.Infrastructure.FormEncoding
                     flatParams = FlattenParamsOptions(options, keyPrefix);
                     break;
 
+                case INonConsecutiveList nonConsecutiveList:
+                    flatParams = FlattenParamsDictionary(nonConsecutiveList.Dictionary, keyPrefix);
+                    break;
+
                 case IDictionary dictionary:
                     flatParams = FlattenParamsDictionary(dictionary, keyPrefix);
                     break;
