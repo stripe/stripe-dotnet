@@ -31,6 +31,7 @@ namespace StripeTests
             {
               "application",
               "customer",
+              "invoice",
               "payment_method",
               "transfer_data.destination",
             };
@@ -47,6 +48,9 @@ namespace StripeTests
 
             Assert.NotNull(intent.Customer);
             Assert.Equal("customer", intent.Customer.Object);
+
+            Assert.NotNull(intent.Invoice);
+            Assert.Equal("invoice", intent.Invoice.Object);
 
             Assert.NotNull(intent.PaymentMethod);
             Assert.Equal("payment_method", intent.PaymentMethod.Object);

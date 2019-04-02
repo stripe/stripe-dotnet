@@ -90,6 +90,33 @@ namespace Stripe
         [JsonProperty("days_until_due")]
         public long? DaysUntilDue { get; set; }
 
+        #region Expandable DefaultPaymentMethod
+
+        /// <summary>
+        /// ID of the default payment method for the subscription.
+        /// </summary>
+        [JsonIgnore]
+        public string DefaultPaymentMethodId { get; set; }
+
+        [JsonIgnore]
+        public PaymentMethod DefaultPaymentMethod { get; set; }
+
+        [JsonProperty("default_payment_method")]
+        internal object InternalDefaultPaymentMethod
+        {
+            get
+            {
+                return this.DefaultPaymentMethod ?? (object)this.DefaultPaymentMethodId;
+            }
+
+            set
+            {
+                StringOrObject<PaymentMethod>.Map(value, s => this.DefaultPaymentMethodId = s, o => this.DefaultPaymentMethod = o);
+            }
+        }
+
+        #endregion
+
         #region Expandable DefaultSource
         [JsonIgnore]
         public string DefaultSourceId { get; set; }

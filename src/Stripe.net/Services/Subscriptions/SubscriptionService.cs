@@ -24,6 +24,12 @@ namespace Stripe
 
         public bool ExpandCustomer { get; set; }
 
+        public bool ExpandDefaultPaymentMethod { get; set; }
+
+        public bool ExpandDefaultSource { get; set; }
+
+        public bool ExpandLatestInvoice { get; set; }
+
         public virtual Subscription Cancel(string subscriptionId, SubscriptionCancelOptions options, RequestOptions requestOptions = null)
         {
             return this.DeleteEntity(subscriptionId, options, requestOptions);

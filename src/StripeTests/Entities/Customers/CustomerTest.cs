@@ -26,6 +26,25 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
+            string[] expansions =
+            {
+              "invoice_settings.default_payment_method",
+            };
+
+            string json = this.GetFixture("/v1/customers/cus_123", expansions);
+            var customer = JsonConvert.DeserializeObject<Customer>(json);
+            Assert.NotNull(customer);
+            Assert.IsType<Customer>(customer);
+            Assert.NotNull(customer.Id);
+            Assert.Equal("customer", customer.Object);
+
+            Assert.NotNull(customer.InvoiceSettings.DefaultPaymentMethod);
+            Assert.Equal("payment_method", customer.InvoiceSettings.DefaultPaymentMethod.Object);
+        }
+
+        [Fact]
+        public void DeserializeWithExpansionsDefaultSource()
+        {
             var json = GetResourceAsString("api_fixtures.customer_with_expansions.json");
             var customer = JsonConvert.DeserializeObject<Customer>(json);
 

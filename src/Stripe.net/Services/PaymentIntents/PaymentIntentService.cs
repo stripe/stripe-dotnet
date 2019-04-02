@@ -26,6 +26,12 @@ namespace Stripe
 
         public bool ExpandCustomer { get; set; }
 
+        public bool ExpandOnBehalfOf { get; set; }
+
+        public bool ExpandPaymentMethod { get; set; }
+
+        public bool ExpandReview { get; set; }
+
         public bool ExpandSource { get; set; }
 
         public virtual PaymentIntent Cancel(string paymentIntentId, PaymentIntentCancelOptions options, RequestOptions requestOptions = null)

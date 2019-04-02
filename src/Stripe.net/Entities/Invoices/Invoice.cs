@@ -103,6 +103,36 @@ namespace Stripe
         }
         #endregion
 
+        #region Expandable DefaultPaymentMethod
+
+        /// <summary>
+        /// ID of the default payment method for the invoice. It must belong to the customer
+        /// associated with the invoice and be in a chargeable state. If not set, defaults to the
+        /// subscription’s default payment method, if any, or to the customer’s default payment
+        /// method.
+        /// </summary>
+        [JsonIgnore]
+        public string DefaultPaymentMethodId { get; set; }
+
+        [JsonIgnore]
+        public PaymentMethod DefaultPaymentMethod { get; set; }
+
+        [JsonProperty("default_payment_method")]
+        internal object InternalDefaultPaymentMethod
+        {
+            get
+            {
+                return this.DefaultPaymentMethod ?? (object)this.DefaultPaymentMethodId;
+            }
+
+            set
+            {
+                StringOrObject<PaymentMethod>.Map(value, s => this.DefaultPaymentMethodId = s, o => this.DefaultPaymentMethod = o);
+            }
+        }
+
+        #endregion
+
         #region Expandable DefaultSource
         [JsonIgnore]
         public string DefaultSourceId { get; set; }
@@ -173,6 +203,14 @@ namespace Stripe
 
         [JsonProperty("paid")]
         public bool Paid { get; set; }
+
+        /// <summary>
+        /// The PaymentIntent associated with this invoice. The PaymentIntent is generated when the
+        /// invoice is finalized, and can then be used to pay the invoice. Note that voiding an
+        /// invoice will cancel the PaymentIntent.
+        /// </summary>
+        [JsonProperty("payment_intent")]
+        public PaymentIntent PaymentIntent { get; set; }
 
         [JsonProperty("period_end")]
         [JsonConverter(typeof(DateTimeConverter))]

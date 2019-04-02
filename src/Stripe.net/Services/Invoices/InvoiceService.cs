@@ -26,6 +26,8 @@ namespace Stripe
 
         public bool ExpandCustomer { get; set; }
 
+        public bool ExpandDefaultPaymentMethod { get; set; }
+
         public bool ExpandSubscription { get; set; }
 
         public virtual Invoice Create(InvoiceCreateOptions options, RequestOptions requestOptions = null)
