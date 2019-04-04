@@ -115,5 +115,8 @@ namespace Stripe
 
         [JsonProperty("three_d_secure")]
         public SourceThreeDSecureCreateOptions ThreeDSecure { get; set; }
+
+        [JsonProperty("au_becs_debit")]
+        public SourceBecsDebitCreateOptions BecsDebit { get; set; }
     }
 }

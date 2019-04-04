@@ -20,5 +20,14 @@ namespace Stripe
 
         [JsonProperty("user_agent")]
         public string UserAgent { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("online")]
+        public SourceMandateOnlineOptions Online { get; set; }
+
+        [JsonProperty("offline")]
+        public SourceMandateOfflineOptions Offline { get; set; }
     }
 }
