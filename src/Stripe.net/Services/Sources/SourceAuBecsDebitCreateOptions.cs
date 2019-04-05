@@ -2,12 +2,12 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class SourceBecsDebitCreateOptions : INestedOptions
+    public class SourceAuBecsDebitCreateOptions : INestedOptions
     {
-        [JsonProperty("bsb_number")]
-        public string BsbNumber { get; set; }
-
         [JsonProperty("account_number")]
         public string AccountNumber { get; set; }
+
+        [JsonProperty("bsb_number")]
+        public string BsbNumber { get; set; }
     }
 }

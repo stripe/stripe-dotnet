@@ -98,6 +98,9 @@ namespace Stripe
            Below we group all Source type specific paramters
         */
 
+        [JsonProperty("au_becs_debit")]
+        public SourceAuBecsDebitCreateOptions AuBecsDebit { get; set; }
+
         [JsonProperty("bancontact")]
         public SourceBancontactCreateOptions Bancontact { get; set; }
 
@@ -115,8 +118,5 @@ namespace Stripe
 
         [JsonProperty("three_d_secure")]
         public SourceThreeDSecureCreateOptions ThreeDSecure { get; set; }
-
-        [JsonProperty("au_becs_debit")]
-        public SourceBecsDebitCreateOptions BecsDebit { get; set; }
     }
 }

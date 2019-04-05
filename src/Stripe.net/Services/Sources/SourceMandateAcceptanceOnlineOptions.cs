@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SourceMandateOnlineOptions : INestedOptions
+    public class SourceMandateAcceptanceOnlineOptions : INestedOptions
     {
         [JsonProperty("date")]
         public DateTime? Date { get; set; }

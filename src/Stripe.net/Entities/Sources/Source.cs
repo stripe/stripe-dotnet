@@ -120,6 +120,9 @@ namespace Stripe
         [JsonProperty("alipay")]
         public SourceAlipay Alipay { get; set; }
 
+        [JsonProperty("au_becs_debit")]
+        public SourceAuBecsDebit AuBecsDebit { get; set; }
+
         [JsonProperty("bancontact")]
         public SourceBancontact Bancontact { get; set; }
 
@@ -158,8 +161,5 @@ namespace Stripe
 
         [JsonProperty("three_d_secure")]
         public SourceThreeDSecure ThreeDSecure { get; set; }
-
-        [JsonProperty("au_becs_debit")]
-        public SourceBecsDebit AuBecsDebit { get; set; }
     }
 }

@@ -15,19 +15,19 @@ namespace Stripe
         [JsonProperty("notification_method")]
         public string NotificationMethod { get; set; }
 
+        [JsonProperty("offline")]
+        public SourceMandateAcceptanceOfflineOptions Offline { get; set; }
+
+        [JsonProperty("online")]
+        public SourceMandateAcceptanceOnlineOptions Online { get; set; }
+
         [JsonProperty("status")]
         public string Status { get; set; }
-
-        [JsonProperty("user_agent")]
-        public string UserAgent { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
-        [JsonProperty("online")]
-        public SourceMandateOnlineOptions Online { get; set; }
-
-        [JsonProperty("offline")]
-        public SourceMandateOfflineOptions Offline { get; set; }
+        [JsonProperty("user_agent")]
+        public string UserAgent { get; set; }
     }
 }
