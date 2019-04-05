@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.4.0 - 2019-04-05
+* [#1568](https://github.com/stripe/stripe-dotnet/pull/1568) Add BECS Source Type
+
 ## 25.3.0 - 2019-03-29
 * [#1562](https://github.com/stripe/stripe-dotnet/pull/1562) Add support for `submit` when updating a `Dispute`
 
