@@ -13,6 +13,9 @@ namespace Stripe
         [JsonProperty("address_kanji")]
         public AddressJapanOptions AddressKanji { get; set; }
 
+        [JsonProperty("categories")]
+        public AccountCompanyCategories Categories { get; set; }
+
         [JsonProperty("directors_provided")]
         public bool? DirectorsProvided { get; set; }
 

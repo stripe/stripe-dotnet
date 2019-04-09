@@ -24,6 +24,12 @@ namespace Stripe
         public AddressJapan AddressKanji { get; set; }
 
         /// <summary>
+        /// Specific information about the categories associated with this company.
+        /// </summary>
+        [JsonProperty("categories")]
+        public AccountCompanyCategories Categories { get; set; }
+
+        /// <summary>
         /// Whether information was collected from the company’s directors.
         /// </summary>
         [JsonProperty("directors_provided")]
