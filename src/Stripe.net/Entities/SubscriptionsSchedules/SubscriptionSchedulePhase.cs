@@ -47,6 +47,12 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// The default tax rates which apply to the phase of this subscription schedule.
+        /// </summary>
+        [JsonProperty("default_tax_rates")]
+        public List<TaxRate> DefaultTaxRates { get; set; }
+
+        /// <summary>
         /// The end of this phase of the subscription schedule.
         /// </summary>
         [JsonProperty("end_date")]
@@ -70,6 +76,7 @@ namespace Stripe
         /// If provided, each invoice created during this phase of the subscription schedule will
         /// apply the tax rate, increasing the amount billed to the customer.
         /// </summary>
+        [Obsolete("Use DefaultTaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 

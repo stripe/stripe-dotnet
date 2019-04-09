@@ -48,5 +48,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("quantity")]
         public long Quantity { get; set; }
+
+        /// <summary>
+        /// The tax rates which apply to this specific item on the phase for a subscription
+        /// schedule.
+        /// </summary>
+        [JsonProperty("tax_rates")]
+        public List<TaxRate> TaxRates { get; set; }
     }
 }

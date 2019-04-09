@@ -25,6 +25,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
+            // TODO: assert that tax_rate is not null. Today stripe-mock does not support this
             string[] expansions =
             {
               "charge",

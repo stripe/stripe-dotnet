@@ -41,6 +41,12 @@ namespace Stripe
         [JsonProperty("default_source")]
         public string DefaultSource { get; set; }
 
+        /// <summary>
+        /// Ids of the tax rates to apply to this subscription.
+        /// </summary>
+        [JsonProperty("default_tax_rates")]
+        public List<TaxRate> DefaultTaxRates { get; set; }
+
         [JsonProperty("description")]
         public string Description { get; set; }
 
@@ -63,6 +69,7 @@ namespace Stripe
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
+        [Obsolete("Use DefaultTaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 

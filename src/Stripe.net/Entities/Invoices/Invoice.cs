@@ -158,6 +158,14 @@ namespace Stripe
         public Shipping CustomerShipping { get; set; }
 
         /// <summary>
+        /// The customer’s tax exempt status. Until the invoice is finalized, this field will equal
+        /// customer.tax_exempt. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_tax_exempt")]
+        public string CustomerTaxExempt { get; set; }
+
+        /// <summary>
         /// The customer’s tax ids. Until the invoice is finalized, this field will equal
         /// <c>customer.tax_ids</c>. Once the invoice is finalized, this field will no longer be
         /// updated.
@@ -216,6 +224,12 @@ namespace Stripe
             }
         }
         #endregion
+
+        /// <summary>
+        /// Tax rates applied to the invoice.
+        /// </summary>
+        [JsonProperty("default_tax_rates")]
+        public List<TaxRate> DefaultTaxRates { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -364,15 +378,22 @@ namespace Stripe
         [JsonProperty("tax")]
         public long? Tax { get; set; }
 
+        [Obsolete("Use DefaultTaxRates instead")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
         /// <summary>
-        /// If <c>billing_reason</c> is set to <c>subscription_threshold</c> this
+        /// If <code>billing_reason</code> is set to <code>subscription_threshold</code> this
         /// returns more information on which threshold rules triggered the invoice.
         /// </summary>
         [JsonProperty("threshold_reason")]
         public InvoiceThresholdReason ThresholdReason { get; set; }
+
+        /// <summary>
+        /// The tax amounts which apply to this invoice.
+        /// </summary>
+        [JsonProperty("total_tax_amounts")]
+        public List<InvoiceTaxAmount> TotalTaxAmounts { get; set; }
 
         [JsonProperty("transfer_data")]
         public InvoiceTransferData TransferData { get; set; }

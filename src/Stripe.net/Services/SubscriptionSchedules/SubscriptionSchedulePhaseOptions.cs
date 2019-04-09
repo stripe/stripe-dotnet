@@ -22,6 +22,12 @@ namespace Stripe
         public string CouponId { get; set; }
 
         /// <summary>
+        /// Ids of the tax rates to apply to this phase on the subscription schedule.
+        /// </summary>
+        [JsonProperty("default_tax_rates")]
+        public List<TaxRate> DefaultTaxRates { get; set; }
+
+        /// <summary>
         /// The date at which this phase of the subscription schedule ends. If set,
         /// <c>iterations</c> must not be set.
         /// </summary>
@@ -50,11 +56,12 @@ namespace Stripe
         /// and added as tax to the final amount each billing period. For example, a plan which
         /// charges $10/month with a <c>tax_percent</c> of 20.0 will charge $12 per invoice.
         /// </summary>
+        [Obsolete("Use DefaultTaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
         /// <summary>
-        /// If set to <c>true</c> the entire phase is counted as a trial and the customer
+        /// If set to <code>true</code> the entire phase is counted as a trial and the customer
         /// will not be charged for any fees.
         /// </summary>
         [JsonProperty("trial")]

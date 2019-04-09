@@ -165,6 +165,13 @@ namespace Stripe
         public StripeList<Subscription> Subscriptions { get; set; }
 
         /// <summary>
+        /// Describes the customer’s tax exemption status. One of <code>none</code>,
+        /// <code>exempt</code>, or <code>reverse</code>.
+        /// </summary>
+        [JsonProperty("tax_exempt")]
+        public string TaxExempt { get; set; }
+
+        /// <summary>
         /// The customer’s current tax ids, if any.
         /// </summary>
         [JsonProperty("tax_ids")]

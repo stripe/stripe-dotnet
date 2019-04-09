@@ -113,8 +113,16 @@ namespace Stripe
         /// that tax percent. If set, one of <c>subscription_items</c> or
         /// <c>subscription is required</c>.
         /// </summary>
+        [Obsolete("Use SubscriptionTaxRates")]
         [JsonProperty("subscription_tax_percent")]
         public decimal? SubscriptionTaxPercent { get; set; }
+
+        /// <summary>
+        /// If provided, the invoice returned will preview updating or creating a subscription with
+        /// those tax rates applied.
+        /// </summary>
+        [JsonProperty("subscription_tax_rates")]
+        public List<TaxRate> SubscriptionTaxRates { get; set; }
 
         /// <summary>
         /// If provided, the invoice returned will preview updating or creating a subscription with
