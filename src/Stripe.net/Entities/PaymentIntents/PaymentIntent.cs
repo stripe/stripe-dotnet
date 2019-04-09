@@ -98,6 +98,28 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        #region Expandable Invoice
+        [JsonIgnore]
+        public string InvoiceId { get; set; }
+
+        [JsonIgnore]
+        public Invoice Invoice { get; set; }
+
+        [JsonProperty("invoice")]
+        internal object InternalInvoice
+        {
+            get
+            {
+                return this.Invoice ?? (object)this.InvoiceId;
+            }
+
+            set
+            {
+                StringOrObject<Invoice>.Map(value, s => this.InvoiceId = s, o => this.Invoice = o);
+            }
+        }
+        #endregion
+
         [JsonProperty("last_payment_error")]
         public StripeError LastPaymentError { get; set; }
 

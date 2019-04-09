@@ -28,6 +28,7 @@ namespace StripeTests
             string[] expansions =
             {
               "customer",
+              "default_payment_method",
               "latest_invoice",
             };
 
@@ -40,6 +41,9 @@ namespace StripeTests
 
             Assert.NotNull(subscription.Customer);
             Assert.Equal("customer", subscription.Customer.Object);
+
+            Assert.NotNull(subscription.DefaultPaymentMethod);
+            Assert.Equal("payment_method", subscription.DefaultPaymentMethod.Object);
 
             Assert.NotNull(subscription.LatestInvoice);
             Assert.Equal("invoice", subscription.LatestInvoice.Object);
