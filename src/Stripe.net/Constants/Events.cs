@@ -495,6 +495,16 @@ namespace Stripe
         public static string SourceTransactionUpdated => "source.transaction.updated";
 
         /// <summary>
+        /// Occurs whenever a tax rate is created.
+        /// </summary>
+        public static string TaxRateCreated => "tax_rate.created";
+
+        /// <summary>
+        /// Occurs whenever a tax rate changes.
+        /// </summary>
+        public static string TaxRateUpdated => "tax_rate.updated";
+
+        /// <summary>
         /// Occurs whenever a new transfer is created.
         /// </summary>
         public static string TransferCreated => "transfer.created";
