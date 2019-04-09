@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.5.0 - 2019-04-09
+* [#1567](https://github.com/stripe/stripe-dotnet/pull/1567) Add support for `PaymentIntent` and `PaymentMethod` on `Customer`, `Invoice` and `Subscription`
+
 ## 25.4.0 - 2019-04-05
 * [#1568](https://github.com/stripe/stripe-dotnet/pull/1568) Add BECS Source Type
 
