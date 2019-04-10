@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.6.0 - 2019-04-09
+* [#1573](https://github.com/stripe/stripe-dotnet/pull/1573) Add support for the `confirmation_method` parameter on `PaymentIntent` creation
+
 ## 25.5.0 - 2019-04-09
 * [#1567](https://github.com/stripe/stripe-dotnet/pull/1567) Add support for `PaymentIntent` and `PaymentMethod` on `Customer`, `Invoice` and `Subscription`
 
