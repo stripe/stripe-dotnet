@@ -33,8 +33,8 @@ namespace Stripe
         public SubscriptionScheduleInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
-        /// Has the value <code>true</code> if the object exists in live mode or the value
-        /// <code>false</code> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value
+        /// <c>false</c> if the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -53,14 +53,14 @@ namespace Stripe
 
         /// <summary>
         /// Interval and duration at which the subscription schedule renews for when it ends if
-        /// <code>renewal_behavior</code> is <code>renew</code>.
+        /// <c>renewal_behavior</c> is <c>renew</c>.
         /// </summary>
         [JsonProperty("renewal_behavior")]
         public string RenewalBehavior { get; set; }
 
         /// <summary>
         /// Interval and duration at which the subscription schedule renews for when it ends if
-        /// <code>renewal_behavior</code> is <code>renew</code>.
+        /// <c>renewal_behavior</c> is <c>renew</c>.
         /// </summary>
         [JsonProperty("renewal_interval")]
         public SubscriptionScheduleRenewalInterval RenewalInterval { get; set; }

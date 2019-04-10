@@ -12,11 +12,11 @@ namespace Stripe
         public long? AmountGte { get; set; }
 
         /// <summary>
-        /// Indicates if the <code>billing_cycle_anchor</code> should be reset when a threshold is
-        /// reached. If true, <code>billing_cycle_anchor</code> will be updated to the date/time
+        /// Indicates if the <c>billing_cycle_anchor</c> should be reset when a threshold is
+        /// reached. If true, <c>billing_cycle_anchor</c> will be updated to the date/time
         /// the threshold was last reached; otherwise, the value will remain unchanged. This value
         /// may not be true if the subscription contains items with plans that have
-        /// <code>aggregate_usage=last_ever</code>.
+        /// <c>aggregate_usage=last_ever</c>.
         /// </summary>
         [JsonProperty("reset_billing_cycle_anchor")]
         public bool? ResetBillingCycleAnchor { get; set; }

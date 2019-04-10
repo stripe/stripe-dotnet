@@ -9,15 +9,15 @@ namespace Stripe
 
         /// <summary>
         /// (ID of a <see cref="File"/>) The back of an ID returned by a file upload with a
-        /// <code>purpose</code> value of <code>identity_document</code>.
+        /// <c>purpose</c> value of <c>identity_document</c>.
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
         public string BackId { get; set; }
 
         /// <summary>
-        /// (Expanded) The back of an ID returned by a file upload with a <code>purpose</code>
-        /// value of <code>identity_document</code>.
+        /// (Expanded) The back of an ID returned by a file upload with a <c>purpose</c>
+        /// value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
         public File Back { get; set; }
@@ -55,15 +55,15 @@ namespace Stripe
 
         /// <summary>
         /// (ID of a <see cref="File"/>) The front of an ID returned by a file upload with a
-        /// <code>purpose</code> value of <code>identity_document</code>.
+        /// <c>purpose</c> value of <c>identity_document</c>.
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
         public string FrontId { get; set; }
 
         /// <summary>
-        /// (Expanded) The front of an ID returned by a file upload with a <code>purpose</code>
-        /// value of <code>identity_document</code>.
+        /// (Expanded) The front of an ID returned by a file upload with a <c>purpose</c>
+        /// value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
         public File Front { get; set; }

@@ -21,7 +21,7 @@ namespace Stripe
         public List<T> Data { get; set; }
 
         /// <summary>
-        /// Whether or not there are more elements available after this set. If <code>false</code>,
+        /// Whether or not there are more elements available after this set. If <c>false</c>,
         /// this set comprises the end of the list.
         /// </summary>
         [JsonProperty("has_more")]

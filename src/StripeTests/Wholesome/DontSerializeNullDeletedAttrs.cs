@@ -11,9 +11,9 @@ namespace StripeTests
 
     /// <summary>
     /// This test checks that <see cref="Stripe.StripeEntity" /> subclasses that have a
-    /// <code>Deleted</code> property have <see cref="Newtonsoft.Json.NullValueHandling" />
+    /// <c>Deleted</c> property have <see cref="Newtonsoft.Json.NullValueHandling" />
     /// set to <see cref="Newtonsoft.Json.NullValueHandling.Ignore" /> so that the property is not
-    /// serialized when its value is <code>null</code>.
+    /// serialized when its value is <c>null</c>.
     /// </summary>
     public class DontSerializeNullDeletedAttrs : WholesomeTest
     {

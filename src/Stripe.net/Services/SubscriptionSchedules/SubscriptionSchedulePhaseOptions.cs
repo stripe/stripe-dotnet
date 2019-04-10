@@ -23,16 +23,16 @@ namespace Stripe
 
         /// <summary>
         /// The date at which this phase of the subscription schedule ends. If set,
-        /// <code>iterations</code> must not be set.
+        /// <c>iterations</c> must not be set.
         /// </summary>
         [JsonProperty("end_date")]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Integer representing the multiplier applied to the plan interval. For example,
-        /// <code>iterations=2</code> applied to a plan with <code>interval=month</code> and
-        /// <code>interval_count=3</code> results in a phase of duration 2 * 3 months = 6 months.
-        /// If set, <code>end_date</code> must not be set.
+        /// <c>iterations=2</c> applied to a plan with <c>interval=month</c> and
+        /// <c>interval_count=3</c> results in a phase of duration 2 * 3 months = 6 months.
+        /// If set, <c>end_date</c> must not be set.
         /// </summary>
         [JsonProperty("iterations")]
         public long? Iterations { get; set; }
@@ -48,13 +48,13 @@ namespace Stripe
         /// A non-negative decimal (with at most four decimal places) between 0 and 100. This
         /// represents the percentage of the subscription invoice subtotal that will be calculated
         /// and added as tax to the final amount each billing period. For example, a plan which
-        /// charges $10/month with a <code>tax_percent</code> of 20.0 will charge $12 per invoice.
+        /// charges $10/month with a <c>tax_percent</c> of 20.0 will charge $12 per invoice.
         /// </summary>
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
         /// <summary>
-        /// If set to <code>true</code> the entire phase is counted as a trial and the customer
+        /// If set to <c>true</c> the entire phase is counted as a trial and the customer
         /// will not be charged for any fees.
         /// </summary>
         [JsonProperty("trial")]
@@ -62,7 +62,7 @@ namespace Stripe
 
         /// <summary>
         /// Sets the phase to trialing from the start date to this date. Must be before the phase
-        /// end date, can not be combined with <code>trial</code>.
+        /// end date, can not be combined with <c>trial</c>.
         /// </summary>
         [JsonProperty("trial_end")]
         public DateTime? TrialEnd { get; set; }

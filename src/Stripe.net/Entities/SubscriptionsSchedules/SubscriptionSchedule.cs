@@ -60,7 +60,7 @@ namespace Stripe
 
         /// <summary>
         /// Object representing the start and end dates for the current phase of the subscription
-        /// schedule, if it is <code>active</code>.
+        /// schedule, if it is <c>active</c>.
         /// </summary>
         [JsonProperty("current_phase")]
         public SubscriptionScheduleCurrentPhase CurrentPhase { get; set; }
@@ -102,8 +102,8 @@ namespace Stripe
         public SubscriptionScheduleInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
-        /// Has the value <code>true</code> if the object exists in live mode or the value
-        /// <code>false</code> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value
+        /// <c>false</c> if the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -142,7 +142,7 @@ namespace Stripe
 
         /// <summary>
         /// Interval and duration at which the subscription schedule renews for when it ends if
-        /// <code>renewal_behavior</code> is <code>renew</code>.
+        /// <c>renewal_behavior</c> is <c>renew</c>.
         /// </summary>
         [JsonProperty("renewal_interval")]
         public SubscriptionScheduleRenewalInterval RenewalInterval { get; set; }
@@ -154,8 +154,8 @@ namespace Stripe
         public string RevisionId { get; set; }
 
         /// <summary>
-        /// Possible values are <code>active</code>, <code>canceled</code>, <code>completed</code>,
-        /// <code>not_started</code>, <code>released</code> and <code>renewal_behavior</code>.
+        /// Possible values are <c>active</c>, <c>canceled</c>, <c>completed</c>,
+        /// <c>not_started</c>, <c>released</c> and <c>renewal_behavior</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

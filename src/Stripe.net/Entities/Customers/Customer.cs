@@ -108,8 +108,8 @@ namespace Stripe
         public CustomerInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
-        /// Has the value <code>true</code> if the object exists in live mode or the value
-        /// <code>false</code> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value
+        /// <c>false</c> if the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -147,7 +147,7 @@ namespace Stripe
         public CustomerTaxInfo TaxInfo { get; set; }
 
         /// <summary>
-        /// Describes the status of looking up the tax ID provided in <code>tax_info</code>.
+        /// Describes the status of looking up the tax ID provided in <c>tax_info</c>.
         /// </summary>
         [JsonProperty("tax_info_verification")]
         public CustomerTaxInfoVerification TaxInfoVerification { get; set; }

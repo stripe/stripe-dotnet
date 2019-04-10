@@ -53,8 +53,8 @@ namespace StripeTests
 
         /// <summary>
         /// Gets fixture data with expansions specified. Expansions are specified the same way as
-        /// they are in the normal API like <code>customer</code> or <code>data.customer</code>.
-        /// Use the special <code>*</code> character to specify that all fields should be
+        /// they are in the normal API like <c>customer</c> or <c>data.customer</c>.
+        /// Use the special <c>*</c> character to specify that all fields should be
         /// expanded.
         /// </summary>
         /// <param name="path">API path to use to get a fixture for stripe-mock</param>

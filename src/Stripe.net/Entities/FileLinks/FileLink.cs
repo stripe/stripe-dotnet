@@ -34,8 +34,8 @@ namespace Stripe
         public DateTime ExpiresAt { get; set; }
 
         /// <summary>
-        /// Has the value <code>true</code> if the object exists in live mode or the value
-        /// <code>false</code> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value
+        /// <c>false</c> if the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
