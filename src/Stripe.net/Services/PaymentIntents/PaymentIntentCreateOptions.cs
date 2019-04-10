@@ -11,6 +11,9 @@ namespace Stripe
         [JsonProperty("confirm")]
         public bool? Confirm { get; set; }
 
+        [JsonProperty("confirmation_method")]
+        public string ConfirmationMethod { get; set; }
+
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
 
