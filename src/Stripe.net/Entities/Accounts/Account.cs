@@ -26,7 +26,7 @@ namespace Stripe
         public AccountBusinessProfile BusinessProfile { get; set; }
 
         /// <summary>
-        /// The business type. Can be <code>company</code> or <code>individual</code>.
+        /// The business type. Can be <c>company</c> or <c>individual</c>.
         /// </summary>
         [JsonProperty("business_type")]
         public string BusinessType { get; set; }
@@ -46,7 +46,7 @@ namespace Stripe
 
         /// <summary>
         /// Information about the company or business. This field is null unless
-        /// <code>business_type</code> is set to <code>company</code>.
+        /// <c>business_type</c> is set to <c>company</c>.
         /// </summary>
         [JsonProperty("company")]
         public AccountCompany Company { get; set; }
@@ -98,7 +98,7 @@ namespace Stripe
 
         /// <summary>
         /// Information about the person represented by the account. This field is null unless
-        /// <code>business_type</code> is set to <code>individual</code>.
+        /// <c>business_type</c> is set to <c>individual</c>.
         /// </summary>
         [JsonProperty("individual")]
         public Person Individual { get; set; }
@@ -136,8 +136,8 @@ namespace Stripe
         public AccountTosAcceptance TosAcceptance { get; set; }
 
         /// <summary>
-        /// The Stripe account type. Can be <code>standard</code>, <code>express</code>, or
-        /// <code>custom</code>.
+        /// The Stripe account type. Can be <c>standard</c>, <c>express</c>, or
+        /// <c>custom</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

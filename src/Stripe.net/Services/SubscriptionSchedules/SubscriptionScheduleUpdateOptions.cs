@@ -9,7 +9,7 @@ namespace Stripe
     {
         /// <summary>
         /// If the update changes the current phase, indicates if the changes should be prorated.
-        /// Defaults to <code>true</code>.
+        /// Defaults to <c>true</c>.
         /// </summary>
         [JsonProperty("prorate")]
         public bool? Prorate { get; set; }

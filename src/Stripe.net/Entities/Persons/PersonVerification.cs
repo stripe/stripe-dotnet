@@ -15,8 +15,8 @@ namespace Stripe
 
         /// <summary>
         /// A machine-readable code specifying the verification state for this person. One of
-        /// <code>document_name_mismatch</code>, <code>failed_keyed_identity</code>, or
-        /// <code>failed_other</code>.
+        /// <c>document_name_mismatch</c>, <c>failed_keyed_identity</c>, or
+        /// <c>failed_other</c>.
         /// </summary>
         [JsonProperty("details_code")]
         public string DetailsCode { get; set; }
@@ -28,8 +28,8 @@ namespace Stripe
         public PersonVerificationDocument Document { get; set; }
 
         /// <summary>
-        /// The state of verification for this person. Possible values are <code>unverified</code>,
-        /// <code>pending</code>, or <code>verified</code>.
+        /// The state of verification for this person. Possible values are <c>unverified</c>,
+        /// <c>pending</c>, or <c>verified</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

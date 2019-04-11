@@ -14,8 +14,8 @@ namespace Stripe
         public bool? InvoiceNow { get; set; }
 
         /// <summary>
-        /// If the subscription schedule is <code>active</code>, indicates if the cancellation
-        /// should be prorated. Defaults to <code>true</code>.
+        /// If the subscription schedule is <c>active</c>, indicates if the cancellation
+        /// should be prorated. Defaults to <c>true</c>.
         /// </summary>
         [JsonProperty("prorate")]
         public bool? Prorate { get; set; }

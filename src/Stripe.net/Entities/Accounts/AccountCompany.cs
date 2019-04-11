@@ -66,7 +66,7 @@ namespace Stripe
         public bool TaxIdProvided { get; set; }
 
         /// <summary>
-        /// The jurisdiction in which the <code>tax_id</code> is registered (Germany-based
+        /// The jurisdiction in which the <c>tax_id</c> is registered (Germany-based
         /// companies only).
         /// </summary>
         [JsonProperty("tax_id_registrar")]

@@ -27,7 +27,7 @@ namespace Stripe
 
         /// <summary>
         /// A timestamp at which the subscription should cancel. If set to a date before the
-        /// current period ends this will cause a proration if <code>prorate=true</code>.
+        /// current period ends this will cause a proration if <c>prorate=true</c>.
         /// </summary>
         [JsonProperty("cancel_at")]
         public DateTime? CancelAt { get; set; }

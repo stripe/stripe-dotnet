@@ -8,7 +8,7 @@ namespace Stripe
     public class AccountRequirements : StripeEntity
     {
         /// <summary>
-        /// The date the fields in <code>currently_due</code> must be collected by to keep payouts
+        /// The date the fields in <c>currently_due</c> must be collected by to keep payouts
         /// enabled for the account. These fields might block payouts sooner if the next threshold
         /// is reached before these fields are collected.
         /// </summary>
@@ -18,7 +18,7 @@ namespace Stripe
 
         /// <summary>
         /// The fields that need to be collected to keep the account enabled. If not collected by
-        /// the <code>current_deadline</code>, these fields are moved to <code>past_due</code> and
+        /// the <c>current_deadline</c>, these fields are moved to <c>past_due</c> and
         /// the account is disabled.
         /// </summary>
         [JsonProperty("currently_due")]
@@ -33,14 +33,14 @@ namespace Stripe
 
         /// <summary>
         /// The fields that need to be collected assuming all volume thresholds are reached. As
-        /// fields are needed, they are moved to <code>currently_due</code> and the
-        /// <code>current_deadline</code> is set.
+        /// fields are needed, they are moved to <c>currently_due</c> and the
+        /// <c>current_deadline</c> is set.
         /// </summary>
         [JsonProperty("eventually_due")]
         public List<string> EventuallyDue { get; set; }
 
         /// <summary>
-        /// The fields that weren’t collected by the <code>currently_due</code>. These fields need
+        /// The fields that weren’t collected by the <c>currently_due</c>. These fields need
         /// to be collected to enable payouts for the account.
         /// </summary>
         [JsonProperty("past_due")]

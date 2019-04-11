@@ -22,10 +22,10 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Whether to immediately submit evidence to the bank. If <code>false</code>, evidence is
+        /// Whether to immediately submit evidence to the bank. If <c>false</c>, evidence is
         /// staged on the dispute. Staged evidence is visible in the API and Dashboard, and can be
         /// submitted to the bank by making another request with this attribute set to
-        /// <code>true</code> (the default).
+        /// <c>true</c> (the default).
         /// </summary>
         [JsonProperty("submit")]
         public bool? Submit { get; set; }

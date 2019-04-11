@@ -11,19 +11,19 @@ namespace Stripe
         public long? Limit { get; set; }
 
         /// <summary>
-        /// A cursor for use in pagination. <code>starting_after</code> is an object ID that defines
+        /// A cursor for use in pagination. <c>starting_after</c> is an object ID that defines
         /// your place in the list. For instance, if you make a list request and receive 100
-        /// objects, ending with <code>obj_foo</code>, your subsequent call can include
-        /// <code>starting_after=obj_foo</code> in order to fetch the next page of the list.
+        /// objects, ending with <c>obj_foo</c>, your subsequent call can include
+        /// <c>starting_after=obj_foo</c> in order to fetch the next page of the list.
         /// </summary>
         [JsonProperty("starting_after")]
         public string StartingAfter { get; set; }
 
         /// <summary>
-        /// A cursor for use in pagination. <code>ending_before</code> is an object ID that defines
+        /// A cursor for use in pagination. <c>ending_before</c> is an object ID that defines
         /// your place in the list. For instance, if you make a list request and receive 100
-        /// objects, starting with <code>obj_bar</code>, your subsequent call can include
-        /// <code>ending_before=obj_bar</code> in order to fetch the previous page of the list.
+        /// objects, starting with <c>obj_bar</c>, your subsequent call can include
+        /// <c>ending_before=obj_bar</c> in order to fetch the previous page of the list.
         /// </summary>
         [JsonProperty("ending_before")]
         public string EndingBefore { get; set; }

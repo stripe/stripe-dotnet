@@ -38,7 +38,7 @@ namespace Stripe
         /// <summary>
         /// List representing phases of the subscription schedule. Each phase can be customized to
         /// have different durations, plans, and coupons. If there are multiple phases, the
-        /// <code>end_date</code> of one phase will always equal the <code>start_date</code> of the
+        /// <c>end_date</c> of one phase will always equal the <c>start_date</c> of the
         /// next phase.
         /// </summary>
         [JsonProperty("phases")]
@@ -46,11 +46,11 @@ namespace Stripe
 
         /// <summary>
         /// Configures how the subscription schedule behaves when it ends. Possible values are
-        /// <code>none</code>, <code>release</code>, or <code>renew</code>. <code>renew</code> will
+        /// <c>none</c>, <c>release</c>, or <c>renew</c>. <c>renew</c> will
         /// create a new subscription schedule revision by adding a new phase using the most recent
-        /// phase’s plans applied to a duration set by <code>renewal_interval</code>.
-        /// <code>none</code> will stop the subscription schedule and cancel the underlying
-        /// subscription. <code>release</code> will stop the subscription schedule, but keep the
+        /// phase’s plans applied to a duration set by <c>renewal_interval</c>.
+        /// <c>none</c> will stop the subscription schedule and cancel the underlying
+        /// subscription. <c>release</c> will stop the subscription schedule, but keep the
         /// underlying subscription running.
         /// </summary>
         [JsonProperty("renewal_behavior")]
@@ -58,7 +58,7 @@ namespace Stripe
 
         /// <summary>
         /// Configuration for renewing the subscription schedule when it ends. Must be set if
-        /// <code>renewal_behavior</code> is <code>renew</code>. Otherwise, must not be set.
+        /// <c>renewal_behavior</c> is <c>renew</c>. Otherwise, must not be set.
         /// </summary>
         [JsonProperty("renewal_interval")]
         public SubscriptionScheduleRenewalIntervalOptions RenewalInterval { get; set; }

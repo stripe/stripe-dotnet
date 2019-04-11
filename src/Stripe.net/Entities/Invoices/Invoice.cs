@@ -271,7 +271,7 @@ namespace Stripe
         public decimal? TaxPercent { get; set; }
 
         /// <summary>
-        /// If <code>billing_reason</code> is set to <code>subscription_threshold</code> this
+        /// If <c>billing_reason</c> is set to <c>subscription_threshold</c> this
         /// returns more information on which threshold rules triggered the invoice.
         /// </summary>
         [JsonProperty("threshold_reason")]

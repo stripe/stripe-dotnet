@@ -6,7 +6,7 @@ namespace Stripe
     {
         /// <summary>
         /// Interval at which to renew the subscription schedule for when it ends. Possible values
-        /// are <code>day</code>, <code>week</code>, <code>month</code>, or <code>year</code>.
+        /// are <c>day</c>, <c>week</c>, <c>month</c>, or <c>year</c>.
         /// </summary>
         [JsonProperty("interval")]
         public string Interval { get; set; }
