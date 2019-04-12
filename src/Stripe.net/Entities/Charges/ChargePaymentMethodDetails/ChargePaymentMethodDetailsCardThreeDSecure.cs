@@ -5,5 +5,10 @@ namespace Stripe
 
     public class ChargePaymentMethodDetailsCardThreeDSecure : StripeEntity
     {
+        [JsonProperty("succeeded")]
+        public bool Succeeded { get; set; }
+
+        [JsonProperty("version")]
+        public string Version { get; set; }
     }
 }
