@@ -70,6 +70,13 @@ namespace Stripe
         [JsonProperty("source")]
         public CardCreateNestedOptions SourceCard { get; set; }
 
+        /// <summary>
+        /// The customer’s tax IDs.
+        /// </summary>
+        [JsonProperty("tax_id_data")]
+        public List<CustomerTaxIdDataOptions> TaxIdData { get; set; }
+
+        [Obsolete("Use TaxIdData")]
         [JsonProperty("tax_info")]
         public CustomerTaxInfoOptions TaxInfo { get; set; }
 

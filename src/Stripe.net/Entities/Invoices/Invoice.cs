@@ -149,6 +149,14 @@ namespace Stripe
         [JsonProperty("customer_shipping")]
         public Shipping CustomerShipping { get; set; }
 
+        /// <summary>
+        /// The customer’s tax ids. Until the invoice is finalized, this field will equal
+        /// <c>customer.tax_ids</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_tax_ids")]
+        public List<InvoiceCustomerTaxId> CustomerTaxIds { get; set; }
+
         #region Expandable DefaultPaymentMethod
 
         /// <summary>
