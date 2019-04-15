@@ -204,13 +204,36 @@ namespace Stripe
         [JsonProperty("paid")]
         public bool Paid { get; set; }
 
+        #region Expandable PaymentIntent
+
+        /// <summary>
+        /// ID of the PaymentIntent associated with this invoice.
+        /// </summary>
+        [JsonIgnore]
+        public string PaymentIntentId { get; set; }
+
         /// <summary>
         /// The PaymentIntent associated with this invoice. The PaymentIntent is generated when the
         /// invoice is finalized, and can then be used to pay the invoice. Note that voiding an
         /// invoice will cancel the PaymentIntent.
         /// </summary>
-        [JsonProperty("payment_intent")]
+        [JsonIgnore]
         public PaymentIntent PaymentIntent { get; set; }
+
+        [JsonProperty("payment_intent")]
+        internal object InternalPaymentIntent
+        {
+            get
+            {
+                return this.PaymentIntent ?? (object)this.PaymentIntentId;
+            }
+
+            set
+            {
+                StringOrObject<PaymentIntent>.Map(value, s => this.PaymentIntentId = s, o => this.PaymentIntent = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("period_end")]
         [JsonConverter(typeof(DateTimeConverter))]
