@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.7.0 - 2019-04-15
+* [#1580](https://github.com/stripe/stripe-dotnet/pull/1580) Make `payment_intent` on `Invoice` expandable instead of being auto-expanded
+
 ## 25.6.0 - 2019-04-09
 * [#1573](https://github.com/stripe/stripe-dotnet/pull/1573) Add support for the `confirmation_method` parameter on `PaymentIntent` creation
 
