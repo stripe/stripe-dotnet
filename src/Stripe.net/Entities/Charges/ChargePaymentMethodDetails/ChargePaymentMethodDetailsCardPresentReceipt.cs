@@ -15,10 +15,10 @@ namespace Stripe
         public string AuthorizationCode { get; set; }
 
         [JsonProperty("authorization_response_code")]
-        public long AuthorizationResponseCode { get; set; }
+        public string AuthorizationResponseCode { get; set; }
 
         [JsonProperty("cardholder_verification_method")]
-        public long CardholderVerificationMethod { get; set; }
+        public string CardholderVerificationMethod { get; set; }
 
         [JsonProperty("dedicated_file_name")]
         public string DedicatedFileName { get; set; }
