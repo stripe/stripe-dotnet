@@ -1,5 +1,9 @@
 # Changelog
 
+## 25.7.1 - 2019-04-16
+* [#1582](https://github.com/stripe/stripe-dotnet/pull/1582) Fix `AuthorizationResponseCode` and `CardholderVerificationMethod` on `ChargePaymentMethodDetailsCardPresentReceipt` to be `string` instead of `long`
+* [#1583](https://github.com/stripe/stripe-dotnet/pull/1583) Fix `BillingDetailsOptions` to support `Email`, `Name` and `Phone` and remove the other invalid properties for `PaymentMethod` create and update
+
 ## 25.7.0 - 2019-04-15
 * [#1580](https://github.com/stripe/stripe-dotnet/pull/1580) Make `payment_intent` on `Invoice` expandable instead of being auto-expanded
 
