@@ -1,5 +1,10 @@
 # Changelog
 
+## 25.8.0 - 2019-04-16
+* [#1440](https://github.com/stripe/stripe-dotnet/pull/1440) Add support for the Checkout `Session` resource and APIs
+* [#1577](https://github.com/stripe/stripe-dotnet/pull/1577) Add support for `Version` and `Succeeded` properties in `ChargePaymentMethodDetailsCardThreeDSecure`
+* [#1581](https://github.com/stripe/stripe-dotnet/pull/1581) Add support for passing `PaymentMethodId` on `Customer` creation
+
 ## 25.7.1 - 2019-04-16
 * [#1582](https://github.com/stripe/stripe-dotnet/pull/1582) Fix `AuthorizationResponseCode` and `CardholderVerificationMethod` on `ChargePaymentMethodDetailsCardPresentReceipt` to be `string` instead of `long`
 * [#1583](https://github.com/stripe/stripe-dotnet/pull/1583) Fix `BillingDetailsOptions` to support `Email`, `Name` and `Phone` and remove the other invalid properties for `PaymentMethod` create and update
