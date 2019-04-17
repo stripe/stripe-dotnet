@@ -23,6 +23,7 @@ namespace Stripe.Infrastructure
             { "bank_account", typeof(BankAccount) },
             { "card", typeof(Card) },
             { "charge", typeof(Charge) },
+            { "checkout.session", typeof(Checkout.Session) },
             { "country_spec", typeof(CountrySpec) },
             { "coupon", typeof(Coupon) },
             { "customer", typeof(Customer) },
