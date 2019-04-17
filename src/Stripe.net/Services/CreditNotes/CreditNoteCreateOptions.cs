@@ -39,6 +39,13 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Reason for issuing this credit note, one of <c>duplicate</c>, <c>fraudulent</c>,
+        /// <c>order_change</c>, or <c>product_unsatisfactory</c>.
+        /// </summary>
+        [JsonProperty("reason")]
+        public string Reason { get; set; }
+
+        /// <summary>
         /// ID of an existing refund to link this credit note to.
         /// </summary>
         [JsonProperty("refund")]
@@ -50,13 +57,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("refund_amount")]
         public long? RefundAmount { get; set; }
-
-        /// <summary>
-        /// Reason for issuing this credit note, one of <code>duplicate</code>,
-        /// <code>fraudulent</code>, <code>order_change</code>, or
-        /// <code>product_unsatisfactory</code>.
-        /// </summary>
-        [JsonProperty("reason")]
-        public string Reason { get; set; }
     }
 }

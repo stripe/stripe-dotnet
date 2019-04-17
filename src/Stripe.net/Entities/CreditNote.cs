@@ -91,8 +91,8 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Has the value <code>true</code> if the object exists in live mode or the value
-        /// <code>false</code> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c>
+        /// if the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -123,9 +123,8 @@ namespace Stripe
         public string Pdf { get; set; }
 
         /// <summary>
-        /// Reason for issuing this credit note, one of <code>duplicate</code>,
-        /// <code>fraudulent</code>, <code>order_change</code>, or
-        /// <code>product_unsatisfactory</code>.
+        /// Reason for issuing this credit note, one of <c>duplicate</c>, <c>fraudulent</c>,
+        /// <c>order_change</c>, or <c>product_unsatisfactory</c>.
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; set; }
@@ -157,13 +156,13 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Status of this credit note, one of <code>issued</code> or <code>void</code>.
+        /// Status of this credit note, one of <c>issued</c> or <c>void</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// Type of this credit note, one of <code>post_payment</code> or <code>pre_payment</code>.
+        /// Type of this credit note, one of <c>post_payment</c> or <c>pre_payment</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
