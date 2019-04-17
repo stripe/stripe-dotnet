@@ -13,6 +13,9 @@ namespace Stripe.Issuing
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("authorization_controls")]
+        public AuthorizationControls AuthorizationControls { get; set; }
+
         [JsonProperty("billing")]
         public Billing Billing { get; set; }
 
