@@ -1,5 +1,9 @@
 # Changelog
 
+## 25.9.0 - 2019-04-18
+* [#1564](https://github.com/stripe/stripe-dotnet/pull/1564) Add support for the `CreditNote` resource and APIs
+* [#1574](https://github.com/stripe/stripe-dotnet/pull/1574) Add support for `Address`, `Name`, `Phone` and `PreferredLocales` on `Customer` and related fields on `Invoice`
+
 ## 25.8.0 - 2019-04-16
 * [#1440](https://github.com/stripe/stripe-dotnet/pull/1440) Add support for the Checkout `Session` resource and APIs
 * [#1577](https://github.com/stripe/stripe-dotnet/pull/1577) Add support for `Version` and `Succeeded` properties in `ChargePaymentMethodDetailsCardThreeDSecure`
