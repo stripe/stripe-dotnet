@@ -150,6 +150,21 @@ namespace Stripe
         public static string CouponUpdated => "coupon.updated";
 
         /// <summary>
+        /// Occurs whenever a credit note is created.
+        /// </summary>
+        public static string CreditNoteCreated => "credit_note.created";
+
+        /// <summary>
+        /// Occurs whenever a credit note is updated.
+        /// </summary>
+        public static string CreditNoteUpdated => "credit_note.updated";
+
+        /// <summary>
+        /// Occurs whenever a credit note is voided.
+        /// </summary>
+        public static string CreditNoteVoided => "credit_note.voided";
+
+        /// <summary>
         /// Occurs whenever a new customer is created.
         /// </summary>
         public static string CustomerCreated => "customer.created";
