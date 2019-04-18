@@ -20,6 +20,12 @@ namespace Stripe
         public long AccountBalance { get; set; }
 
         /// <summary>
+        /// The customer’s address.
+        /// </summary>
+        [JsonProperty("address")]
+        public Address Address { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
@@ -120,6 +126,24 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The customer’s full name or business name.
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The customer’s phone number.
+        /// </summary>
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+
+        /// <summary>
+        /// The customer’s preferred locales (languages), ordered by preference.
+        /// </summary>
+        [JsonProperty("preferred_locales")]
+        public List<string> PreferredLocales { get; set; }
 
         /// <summary>
         /// Mailing and shipping address for the customer. Appears on invoices emailed to this

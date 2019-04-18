@@ -13,6 +13,20 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        /// <summary>
+        /// The country of the business associated with this invoice, most often the business
+        /// creating the invoice.
+        /// </summary>
+        [JsonProperty("account_country")]
+        public string AccountCountry { get; set; }
+
+        /// <summary>
+        /// The public name of the business associated with this invoice, most often the business
+        /// creating the invoice
+        /// </summary>
+        [JsonProperty("account_name")]
+        public string AccountName { get; set; }
+
         [JsonProperty("amount_due")]
         public long AmountDue { get; set; }
 
@@ -102,6 +116,38 @@ namespace Stripe
             }
         }
         #endregion
+
+        /// <summary>
+        /// The customer’s address. Until the invoice is finalized, this field will equal
+        /// <c>customer.address</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_address")]
+        public Address CustomerAddress { get; set; }
+
+        /// <summary>
+        /// The customer’s name. Until the invoice is finalized, this field will equal
+        /// <c>customer.name</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_name")]
+        public string CustomerName { get; set; }
+
+        /// <summary>
+        /// The customer’s phone number. Until the invoice is finalized, this field will equal
+        /// <c>customer.phone</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_phone")]
+        public string CustomerPhone { get; set; }
+
+        /// <summary>
+        /// The customer’s shipping information. Until the invoice is finalized, this field will
+        /// equal <c>customer.shipping</c>. Once the invoice is finalized, this field will no
+        /// longer be updated.
+        /// </summary>
+        [JsonProperty("customer_shipping")]
+        public Shipping CustomerShipping { get; set; }
 
         #region Expandable DefaultPaymentMethod
 
