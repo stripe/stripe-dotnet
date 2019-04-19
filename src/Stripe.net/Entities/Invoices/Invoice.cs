@@ -126,6 +126,14 @@ namespace Stripe
         public Address CustomerAddress { get; set; }
 
         /// <summary>
+        /// The customer’s email. Until the invoice is finalized, this field will equal
+        /// <c>customer.email</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_email")]
+        public string CustomerEmail { get; set; }
+
+        /// <summary>
         /// The customer’s name. Until the invoice is finalized, this field will equal
         /// <c>customer.name</c>. Once the invoice is finalized, this field will no longer be
         /// updated.
