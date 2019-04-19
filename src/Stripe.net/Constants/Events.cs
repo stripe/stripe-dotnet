@@ -385,6 +385,21 @@ namespace Stripe
         public static string PayoutUpdated => "payout.updated";
 
         /// <summary>
+        /// Occurs whenever a person is created.
+        /// </summary>
+        public static string PersonCreated => "person.created";
+
+        /// <summary>
+        /// Occurs whenever a person is deleted.
+        /// </summary>
+        public static string PersonDeleted => "person.deleted";
+
+        /// <summary>
+        /// Occurs whenever a person is updated.
+        /// </summary>
+        public static string PersonUpdated => "person.updated";
+
+        /// <summary>
         /// Occurs whenever a plan is created.
         /// </summary>
         public static string PlanCreated => "plan.created";
