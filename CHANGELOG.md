@@ -1,5 +1,10 @@
 # Changelog
 
+## 25.10.0 - 2019-04-22
+* [#1578](https://github.com/stripe/stripe-dotnet/pull/1578) Add support for the `TaxId` resource and APIs
+* [#1587](https://github.com/stripe/stripe-dotnet/pull/1587) Add missing `person.*` events
+* [#1588](https://github.com/stripe/stripe-dotnet/pull/1588) Add `CustomerEmail` to `Invoice`
+
 ## 25.9.0 - 2019-04-18
 * [#1564](https://github.com/stripe/stripe-dotnet/pull/1564) Add support for the `CreditNote` resource and APIs
 * [#1574](https://github.com/stripe/stripe-dotnet/pull/1574) Add support for `Address`, `Name`, `Phone` and `PreferredLocales` on `Customer` and related fields on `Invoice`
