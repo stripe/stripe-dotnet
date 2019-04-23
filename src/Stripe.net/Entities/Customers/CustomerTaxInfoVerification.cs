@@ -1,7 +1,9 @@
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
 
+    [Obsolete("Use Customer.TaxIds instead.")]
     public class CustomerTaxInfoVerification : StripeEntity
     {
         [JsonProperty("status")]

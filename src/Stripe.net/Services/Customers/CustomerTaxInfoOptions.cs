@@ -1,7 +1,9 @@
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
 
+    [Obsolete("Use CustomerTaxIdDataOptions instead.")]
     public class CustomerTaxInfoOptions : INestedOptions
     {
         [JsonProperty("tax_id")]

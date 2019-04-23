@@ -165,14 +165,22 @@ namespace Stripe
         public StripeList<Subscription> Subscriptions { get; set; }
 
         /// <summary>
+        /// The customer’s current tax ids, if any.
+        /// </summary>
+        [JsonProperty("tax_ids")]
+        public StripeList<TaxId> TaxIds { get; set; }
+
+        /// <summary>
         /// The customer’s tax information. Appears on invoices emailed to this customer.
         /// </summary>
+        [Obsolete("Use TaxIds")]
         [JsonProperty("tax_info")]
         public CustomerTaxInfo TaxInfo { get; set; }
 
         /// <summary>
         /// Describes the status of looking up the tax ID provided in <c>tax_info</c>.
         /// </summary>
+        [Obsolete("Use TaxIds")]
         [JsonProperty("tax_info_verification")]
         public CustomerTaxInfoVerification TaxInfoVerification { get; set; }
     }
