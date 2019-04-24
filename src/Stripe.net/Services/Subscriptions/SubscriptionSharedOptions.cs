@@ -60,6 +60,12 @@ namespace Stripe
         public string DefaultSource { get; set; }
 
         /// <summary>
+        /// Ids of the tax rates to apply to this subscription.
+        /// </summary>
+        [JsonProperty("default_tax_rates")]
+        public List<string> DefaultTaxRates { get; set; }
+
+        /// <summary>
         /// A set of key/value pairs that you can attach to a subscription object. It can be useful for storing additional information about the subscription in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
@@ -74,6 +80,7 @@ namespace Stripe
         /// <summary>
         /// A non-negative decimal (with at most four decimal places) between 0 and 100. This represents the percentage of the subscription invoice subtotal that will be calculated and added as tax to the final amount each billing period. For example, a plan which charges $10/month with a <c>tax_percent</c> of 20.0 will charge $12 per invoice.
         /// </summary>
+        [Obsolete("Use DefaultTaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 

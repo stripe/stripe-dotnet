@@ -34,5 +34,11 @@ namespace Stripe
 
         [JsonProperty("subscription")]
         public string Subscription { get; set; }
+
+        /// <summary>
+        /// The tax rates which apply to the subscription item.
+        /// </summary>
+        [JsonProperty("tax_rates")]
+        public List<TaxRate> TaxRates { get; set; }
     }
 }

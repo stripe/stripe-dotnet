@@ -139,6 +139,12 @@ namespace Stripe
         }
         #endregion
 
+        /// <summary>
+        /// The default tax rates that apply to this subscription.
+        /// </summary>
+        [JsonProperty("default_tax_rates")]
+        public List<TaxRate> DefaultTaxRates { get; set; }
+
         [JsonProperty("discount")]
         public Discount Discount { get; set; }
 
@@ -190,6 +196,7 @@ namespace Stripe
         [JsonProperty("status")]
         public string Status { get; set; }
 
+        [Obsolete("Use DefaultTaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 

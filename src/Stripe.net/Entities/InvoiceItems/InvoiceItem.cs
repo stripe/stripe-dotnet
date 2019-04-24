@@ -122,6 +122,12 @@ namespace Stripe
         [JsonProperty("subscription_item")]
         public string SubscriptionItemId { get; set; }
 
+        /// <summary>
+        /// The tax rates which apply to the invoice item.
+        /// </summary>
+        [JsonProperty("tax_rates")]
+        public List<TaxRate> TaxRates { get; set; }
+
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }
     }
