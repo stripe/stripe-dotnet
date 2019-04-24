@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.11.0 - 2019-04-24
+* [#1572](https://github.com/stripe/stripe-dotnet/pull/1572) Add support for the `TaxRate` resource and APIs
+
 ## 25.10.0 - 2019-04-22
 * [#1578](https://github.com/stripe/stripe-dotnet/pull/1578) Add support for the `TaxId` resource and APIs
 * [#1587](https://github.com/stripe/stripe-dotnet/pull/1587) Add missing `person.*` events
