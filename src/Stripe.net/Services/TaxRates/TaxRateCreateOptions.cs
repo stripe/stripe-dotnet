@@ -14,14 +14,15 @@ namespace Stripe
         public bool? Active { get; set; }
 
         /// <summary>
-        /// An arbitrary string attached to the object. Often useful for displaying to users.
+        /// An arbitrary string attached to the tax rate for your internal use only. It will not be
+        /// visible to your customers.
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
 
         /// <summary>
-        /// The name of the tax rate. This will not be shown to users and could be useful for you
-        /// to identify it internally.
+        /// The display name of the tax rates as it will appear to your customer on their receipt
+        /// email, PDF, and the hosted invoice page.
         /// </summary>
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }

@@ -72,6 +72,13 @@ namespace Stripe
         public bool? SubscriptionCancelAtPeriodEnd { get; set; }
 
         /// <summary>
+        /// If provided, the invoice returned will preview updating or creating a subscription with
+        /// those tax rates applied.
+        /// </summary>
+        [JsonProperty("subscription_default_tax_rates")]
+        public List<string> SubscriptionDefaultTaxRates { get; set; }
+
+        /// <summary>
         /// The identifier of the subscription for which you’d like to retrieve the upcoming
         /// invoice. If not provided, but a <c>subscription_items</c> is provided, you will preview
         /// creating a subscription with those items. If neither <c>subscription</c> nor
@@ -113,16 +120,9 @@ namespace Stripe
         /// that tax percent. If set, one of <c>subscription_items</c> or
         /// <c>subscription is required</c>.
         /// </summary>
-        [Obsolete("Use SubscriptionTaxRates")]
+        [Obsolete("Use SubscriptionDefaultTaxRates")]
         [JsonProperty("subscription_tax_percent")]
         public decimal? SubscriptionTaxPercent { get; set; }
-
-        /// <summary>
-        /// If provided, the invoice returned will preview updating or creating a subscription with
-        /// those tax rates applied.
-        /// </summary>
-        [JsonProperty("subscription_tax_rates")]
-        public List<string> SubscriptionTaxRates { get; set; }
 
         /// <summary>
         /// If provided, the invoice returned will preview updating or creating a subscription with

@@ -71,8 +71,8 @@ namespace Stripe
         public CardCreateNestedOptions SourceCard { get; set; }
 
         /// <summary>
-        /// Describes the customer’s tax exemption status. One of <code>none</code>,
-        /// <code>exempt</code>, or <code>reverse</code>.
+        /// Describes the customer’s tax exemption status. One of <c>none</c>, <c>exempt</c>, or
+        /// <c>reverse</c>.
         /// </summary>
         [JsonProperty("tax_exempt")]
         public string TaxExempt { get; set; }

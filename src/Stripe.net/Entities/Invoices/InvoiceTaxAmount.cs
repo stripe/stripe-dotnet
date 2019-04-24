@@ -26,7 +26,7 @@ namespace Stripe
         public string TaxRateId { get; set; }
 
         [JsonIgnore]
-        public Account TaxRate { get; set; }
+        public TaxRate TaxRate { get; set; }
 
         [JsonProperty("tax_rate")]
         internal object InternalTaxRate
@@ -38,7 +38,7 @@ namespace Stripe
 
             set
             {
-                StringOrObject<Account>.Map(value, s => this.TaxRateId = s, o => this.TaxRate = o);
+                StringOrObject<TaxRate>.Map(value, s => this.TaxRateId = s, o => this.TaxRate = o);
             }
         }
         #endregion

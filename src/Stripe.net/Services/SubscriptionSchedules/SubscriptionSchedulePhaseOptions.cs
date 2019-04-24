@@ -61,8 +61,8 @@ namespace Stripe
         public decimal? TaxPercent { get; set; }
 
         /// <summary>
-        /// If set to <code>true</code> the entire phase is counted as a trial and the customer
-        /// will not be charged for any fees.
+        /// If set to <c>true</c> the entire phase is counted as a trial and the customer will not
+        /// be charged for any fees.
         /// </summary>
         [JsonProperty("trial")]
         public bool? Trial { get; set; }

@@ -140,7 +140,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Tax rates applied to the invoice.
+        /// The default tax rates that apply to this subscription.
         /// </summary>
         [JsonProperty("default_tax_rates")]
         public List<TaxRate> DefaultTaxRates { get; set; }

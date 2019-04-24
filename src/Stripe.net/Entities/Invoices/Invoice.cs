@@ -119,56 +119,56 @@ namespace Stripe
 
         /// <summary>
         /// The customer’s address. Until the invoice is finalized, this field will equal
-        /// <c>customer.address</c>. Once the invoice is finalized, this field will no longer be
-        /// updated.
+        /// <see cref="Customer.Address" />. Once the invoice is finalized, this field will no
+        /// longer be updated.
         /// </summary>
         [JsonProperty("customer_address")]
         public Address CustomerAddress { get; set; }
 
         /// <summary>
         /// The customer’s email. Until the invoice is finalized, this field will equal
-        /// <c>customer.email</c>. Once the invoice is finalized, this field will no longer be
-        /// updated.
+        /// <see cref="Customer.Email" />. Once the invoice is finalized, this field will no longer
+        /// be updated.
         /// </summary>
         [JsonProperty("customer_email")]
         public string CustomerEmail { get; set; }
 
         /// <summary>
         /// The customer’s name. Until the invoice is finalized, this field will equal
-        /// <c>customer.name</c>. Once the invoice is finalized, this field will no longer be
-        /// updated.
+        /// <see cref="Customer.Name" />. Once the invoice is finalized, this field will no longer
+        /// be updated.
         /// </summary>
         [JsonProperty("customer_name")]
         public string CustomerName { get; set; }
 
         /// <summary>
         /// The customer’s phone number. Until the invoice is finalized, this field will equal
-        /// <c>customer.phone</c>. Once the invoice is finalized, this field will no longer be
-        /// updated.
+        /// <see cref="Customer.Phone" />. Once the invoice is finalized, this field will no longer
+        /// be updated.
         /// </summary>
         [JsonProperty("customer_phone")]
         public string CustomerPhone { get; set; }
 
         /// <summary>
         /// The customer’s shipping information. Until the invoice is finalized, this field will
-        /// equal <c>customer.shipping</c>. Once the invoice is finalized, this field will no
-        /// longer be updated.
+        /// equal <see cref="Customer.Shipping" />. Once the invoice is finalized, this field will
+        /// no longer be updated.
         /// </summary>
         [JsonProperty("customer_shipping")]
         public Shipping CustomerShipping { get; set; }
 
         /// <summary>
         /// The customer’s tax exempt status. Until the invoice is finalized, this field will equal
-        /// customer.tax_exempt. Once the invoice is finalized, this field will no longer be
-        /// updated.
+        /// <see cref="Customer.TaxExempt" />. Once the invoice is finalized, this field will no
+        /// longer be updated.
         /// </summary>
         [JsonProperty("customer_tax_exempt")]
         public string CustomerTaxExempt { get; set; }
 
         /// <summary>
         /// The customer’s tax ids. Until the invoice is finalized, this field will equal
-        /// <c>customer.tax_ids</c>. Once the invoice is finalized, this field will no longer be
-        /// updated.
+        /// <see cref="Customer.TaxIds" />. Once the invoice is finalized, this field will no
+        /// longer be updated.
         /// </summary>
         [JsonProperty("customer_tax_ids")]
         public List<InvoiceCustomerTaxId> CustomerTaxIds { get; set; }
@@ -383,7 +383,7 @@ namespace Stripe
         public decimal? TaxPercent { get; set; }
 
         /// <summary>
-        /// If <code>billing_reason</code> is set to <code>subscription_threshold</code> this
+        /// If <see cref="BillingReason" /> is set to <c>subscription_threshold</c> this
         /// returns more information on which threshold rules triggered the invoice.
         /// </summary>
         [JsonProperty("threshold_reason")]
