@@ -28,6 +28,6 @@ namespace Stripe
         /// Ids of the tax rates to apply to this item for a phase on the subscription schedule.
         /// </summary>
         [JsonProperty("tax_rates")]
-        public List<TaxRate> TaxRates { get; set; }
+        public List<string> TaxRates { get; set; }
     }
 }

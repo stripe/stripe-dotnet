@@ -63,7 +63,7 @@ namespace Stripe
         /// Ids of the tax rates to apply to this subscription.
         /// </summary>
         [JsonProperty("default_tax_rates")]
-        public List<TaxRate> DefaultTaxRates { get; set; }
+        public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to a subscription object. It can be useful for storing additional information about the subscription in a structured format.

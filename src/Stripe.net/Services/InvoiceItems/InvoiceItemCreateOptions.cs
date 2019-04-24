@@ -36,7 +36,7 @@ namespace Stripe
         /// Ids of the tax rates to apply to this invoice item.
         /// </summary>
         [JsonProperty("tax_rates")]
-        public List<TaxRate> TaxRates { get; set; }
+        public List<string> TaxRates { get; set; }
 
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }

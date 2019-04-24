@@ -25,7 +25,7 @@ namespace Stripe
         /// Ids of the tax rates to apply to this phase on the subscription schedule.
         /// </summary>
         [JsonProperty("default_tax_rates")]
-        public List<TaxRate> DefaultTaxRates { get; set; }
+        public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
         /// The date at which this phase of the subscription schedule ends. If set,

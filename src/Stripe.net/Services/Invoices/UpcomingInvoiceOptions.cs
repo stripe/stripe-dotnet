@@ -76,7 +76,7 @@ namespace Stripe
         /// those tax rates applied.
         /// </summary>
         [JsonProperty("subscription_default_tax_rates")]
-        public List<TaxRate> SubscriptionDefaultTaxRates { get; set; }
+        public List<string> SubscriptionDefaultTaxRates { get; set; }
 
         /// <summary>
         /// The identifier of the subscription for which you’d like to retrieve the upcoming

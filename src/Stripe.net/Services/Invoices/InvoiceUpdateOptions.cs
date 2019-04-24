@@ -45,7 +45,7 @@ namespace Stripe
         /// Ids of the tax rates to apply to this subscription.
         /// </summary>
         [JsonProperty("default_tax_rates")]
-        public List<TaxRate> DefaultTaxRates { get; set; }
+        public List<string> DefaultTaxRates { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }

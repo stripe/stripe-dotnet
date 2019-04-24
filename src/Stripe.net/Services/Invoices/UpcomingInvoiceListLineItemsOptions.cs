@@ -122,7 +122,7 @@ namespace Stripe
         /// those tax rates applied.
         /// </summary>
         [JsonProperty("subscription_tax_rates")]
-        public List<TaxRate> SubscriptionTaxRates { get; set; }
+        public List<string> SubscriptionTaxRates { get; set; }
 
         /// <summary>
         /// If provided, the invoice returned will preview updating or creating a subscription with
