@@ -135,6 +135,11 @@ namespace Stripe
         public static string ChargeDisputeUpdated => "charge.dispute.updated";
 
         /// <summary>
+        /// Occurs when a Checkout Session has been successfully completed.
+        /// </summary>
+        public const string CheckoutSessionCompleted = "checkout.session.completed";
+
+        /// <summary>
         /// Occurs whenever a coupon is created.
         /// </summary>
         public static string CouponCreated => "coupon.created";
