@@ -10,6 +10,11 @@ namespace Stripe
         public static string AccountUpdated => "account.updated";
 
         /// <summary>
+        /// Occurs whenever a user authorizes an application. Sent to the related application only.
+        /// </summary>
+        public static string AccountApplicationAuthorized => "account.application.authorized";
+
+        /// <summary>
         /// Occurs whenever a user deauthorizes an application. Sent to the related application only.
         /// </summary>
         public static string AccountApplicationDeauthorized => "account.application.deauthorized";
@@ -52,21 +57,25 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever a receiver has been created.
         /// </summary>
+        [Obsolete]
         public static string BitcoinReceiverCreated => "bitcoin.receiver.created";
 
         /// <summary>
         /// Occurs whenever a receiver is filled (that is, when it has received enough bitcoin to process a payment of the same amount).
         /// </summary>
+        [Obsolete]
         public static string BitcoinReceiverFilled => "bitcoin.receiver.filled";
 
         /// <summary>
         /// Occurs whenever a receiver is updated.
         /// </summary>
+        [Obsolete]
         public static string BitcoinReceiverUpdated => "bitcoin.receiver.updated";
 
         /// <summary>
         /// Occurs whenever bitcoin is pushed to a receiver.
         /// </summary>
+        [Obsolete]
         public static string BitcoinReceiverTransactionUpdated => "bitcoin.receiver.transaction.created";
 
         /// <summary>
@@ -90,11 +99,6 @@ namespace Stripe
         public static string ChargePending => "charge.pending";
 
         /// <summary>
-        /// Occurs whenever a refund is updated on selected payment methods.
-        /// </summary>
-        public static string ChargeRefundUpdated => "charge.refund.updated";
-
-        /// <summary>
         /// Occurs whenever a charge is refunded, including partial refunds.
         /// </summary>
         public static string ChargeRefunded => "charge.refunded";
@@ -110,17 +114,20 @@ namespace Stripe
         public static string ChargeUpdated => "charge.updated";
 
         /// <summary>
-        /// Occurs when the dispute is closed and the dispute status changes to charge_refunded, lost, warning_closed, or won.
+        /// Occurs when the dispute is closed and the dispute status changes to
+        /// <c>charge_refunded</c>, <c>lost</c>, <c>warning_closed</c>, or <c>won</c>.
         /// </summary>
         public static string ChargeDisputeClosed => "charge.dispute.closed";
 
         /// <summary>
-        /// Occurs whenever a customer disputes a charge with their bank (chargeback).
+        /// Occurs whenever a customer disputes a charge with their bank.
         /// </summary>
         public static string ChargeDisputeCreated => "charge.dispute.created";
 
         /// <summary>
-        /// Occurs when funds are reinstated to your account after a dispute is won.
+        /// Occurs when funds are reinstated to your account after a dispute is closed. This
+        /// includes <a href="https://stripe.com/docs/disputes#disputes-on-partially-refunded-payments">partially
+        /// refunded payments</a>.
         /// </summary>
         public static string ChargeDisputeFundsReinstated => "charge.dispute.funds_reinstated";
 
@@ -133,6 +140,16 @@ namespace Stripe
         /// Occurs when the dispute is updated (usually with evidence).
         /// </summary>
         public static string ChargeDisputeUpdated => "charge.dispute.updated";
+
+        /// <summary>
+        /// Occurs whenever a refund is updated on selected payment methods.
+        /// </summary>
+        public static string ChargeRefundUpdated => "charge.refund.updated";
+
+        /// <summary>
+        /// Occurs when a Checkout Session has been successfully completed.
+        /// </summary>
+        public static string CheckoutSessionCompleted => "checkout.session.completed";
 
         /// <summary>
         /// Occurs whenever a coupon is created.
@@ -235,17 +252,46 @@ namespace Stripe
         public static string CustomerSubscriptionUpdated => "customer.subscription.updated";
 
         /// <summary>
-        /// Occurs whenever a new invoice is created. If you are using webhooks, Stripe will wait one hour after they have all succeeded to attempt to pay the invoice; the only exception here is on the first invoice, which gets created and paid immediately when you subscribe a customer to a plan. If your webhooks do not all respond successfully, Stripe will continue retrying the webhooks every hour and will not attempt to pay the invoice. After 3 days, Stripe will attempt to pay the invoice regardless of whether or not your webhooks have succeeded.
+        /// Occurs whenever a new Stripe-generated file is available for your account.
+        /// </summary>
+        public static string FileCreated => "file.created";
+
+        /// <summary>
+        /// Occurs whenever a new invoice is created. To learn how webhooks can be used with this
+        /// event, and how they can affect it, see
+        /// <a href="https://stripe.com/docs/subscriptions/webhooks">Using Webhooks with
+        /// Subscriptions</a>.
         /// </summary>
         public static string InvoiceCreated => "invoice.created";
 
         /// <summary>
-        /// Occurs whenever an invoice attempts to be paid, and the payment fails. This can occur either due to a declined payment, or because the customer has no active card. A particular case of note is that if a customer with no active card reaches the end of its free trial, an invoice.payment_failed notification will occur.
+        /// Occurs whenever a draft invoice is deleted.
+        /// </summary>
+        public static string InvoiceDeleted => "invoice.deleted";
+
+        /// <summary>
+        /// Occurs whenever a draft invoice is finalized and updated to be an open invoice.
+        /// </summary>
+        public static string InvoiceFinalized => "invoice.finalized";
+
+        /// <summary>
+        /// Occurs whenever an invoice is marked uncollectible.
+        /// </summary>
+        public static string InvoiceMarkedUncollectible => "invoice.marked_uncollectible";
+
+        /// <summary>
+        /// Occurs whenever an invoice payment attempt requires further user action to complete.
+        /// </summary>
+        public static string InvoicePaymentActionRequired => "invoice.payment_action_required";
+
+        /// <summary>
+        /// Occurs whenever an invoice payment attempt fails, due either to a declined payment or
+        /// to the lack of a stored payment method.
         /// </summary>
         public static string InvoicePaymentFailed => "invoice.payment_failed";
 
         /// <summary>
-        /// Occurs whenever an invoice attempts to be paid, and the payment succeeds.
+        /// Occurs whenever an invoice payment attempt succeeds.
         /// </summary>
         public static string InvoicePaymentSucceeded => "invoice.payment_succeeded";
 
@@ -255,14 +301,23 @@ namespace Stripe
         public static string InvoiceSent => "invoice.sent";
 
         /// <summary>
-        /// Occurs X number of days before a subscription is scheduled to create an invoice that is charged automatically, where X is determined by your subscriptions settings.
+        /// Occurs X number of days before a subscription is scheduled to create an invoice that is
+        /// automatically charged—where X is determined by your
+        /// <a href="https://dashboard.stripe.com/account/billing/automatic">subscriptions
+        /// settings</a>. Note: The received <see cref="Invoice"/> object will not have an invoice
+        /// ID.
         /// </summary>
         public static string InvoiceUpcoming => "invoice.upcoming";
 
         /// <summary>
-        /// Occurs whenever an invoice changes (for example, the amount could change).
+        /// Occurs whenever an invoice changes (e.g., the invoice amount).
         /// </summary>
         public static string InvoiceUpdated => "invoice.updated";
+
+        /// <summary>
+        /// Occurs whenever an invoice is voided.
+        /// </summary>
+        public static string InvoiceVoided => "invoice.voided";
 
         /// <summary>
         /// Occurs whenever an invoice item is created.
@@ -360,6 +415,46 @@ namespace Stripe
         public static string OrderReturnCreated => "order_return.created";
 
         /// <summary>
+        /// Occurs when a <see cref="PaymentIntent"/> has funds to be captured. Check the
+        /// <see cref="PaymentIntent.AmountCapturable"/> property on the PaymentIntent to determine
+        /// the amount that can be captured. You may capture the PaymentIntent with an
+        /// <see cref="PaymentIntentCaptureOptions.AmountToCapture"/> value up to the specified
+        /// amount. <a href="https://stripe.com/docs/api/payment_intents/capture">Learn more about
+        /// capturing PaymentIntents.</a>
+        /// </summary>
+        public static string PaymentIntentAmountCapturableUpdated => "payment_intent.amount_capturable_updated";
+
+        /// <summary>
+        /// Occurs when a new PaymentIntent is created.
+        /// </summary>
+        public static string PaymentIntentCreated => "payment_intent.created";
+
+        /// <summary>
+        /// Occurs when a PaymentIntent has failed the attempt to create a source or a payment.
+        /// </summary>
+        public static string PaymentIntentPaymentFailed => "payment_intent.payment_failed";
+
+        /// <summary>
+        /// Occurs when a PaymentIntent has been successfully fulfilled.
+        /// </summary>
+        public static string PaymentIntentSucceeded => "payment_intent.succeeded";
+
+        /// <summary>
+        /// Occurs whenever a new payment method is attached to a customer.
+        /// </summary>
+        public static string PaymentMethodAttached => "payment_method.attached";
+
+        /// <summary>
+        /// Occurs whenever a card payment method's details are automatically updated by CAU.
+        /// </summary>
+        public static string PaymentMethodCardAutomaticallyUpdated => "payment_method.card_automatically_updated";
+
+        /// <summary>
+        /// Occurs whenever a payment method is detached from a customer.
+        /// </summary>
+        public static string PaymentMethodDetached => "payment_method.detached";
+
+        /// <summary>
         /// Occurs whenever a payout is canceled.
         /// </summary>
         public static string PayoutCanceled => "payout.canceled";
@@ -375,12 +470,14 @@ namespace Stripe
         public static string PayoutFailed => "payout.failed";
 
         /// <summary>
-        /// Occurs whenever a payout is expected to be available in the destination bank account. If the payout failed, a payout.failed webhook will additionally be sent at a later time.
+        /// Occurs whenever a payout is *expected* to be available in the destination account.
+        /// If the payout fails, a <see cref="PayoutFailed"/> notification is also sent, at a later
+        /// time.
         /// </summary>
         public static string PayoutPaid => "payout.paid";
 
         /// <summary>
-        /// Occurs whenever the metadata of a payout is updated.
+        /// Occurs whenever a payout's metadata is updated.
         /// </summary>
         public static string PayoutUpdated => "payout.updated";
 
@@ -445,7 +542,24 @@ namespace Stripe
         public static string RecipientUpdated => "recipient.updated";
 
         /// <summary>
-        /// Occurs whenever a review is closed. The review's reason field will indicate why the review was closed (e.g. approved, refunded, refunded_as_fraud, disputed.
+        /// Occurs whenever a requested <see cref="Reporting.ReportRun"/> failed to complete.
+        /// </summary>
+        public static string ReportingReportRunFailed => "reporting.report_run.failed";
+
+        /// <summary>
+        /// Occurs whenever a requested <see cref="Reporting.ReportRun"/> completed succesfully.
+        /// </summary>
+        public static string ReportingReportRunSucceeded => "reporting.report_run.succeeded";
+
+        /// <summary>
+        /// Occurs whenever a requested <see cref="Reporting.ReportType"/> is updated (typically to
+        /// indicate that a new day's data has come available).
+        /// </summary>
+        public static string ReportingReportTypeUpdated => "reporting.report_type.updated";
+
+        /// <summary>
+        /// Occurs whenever a review is closed. The review's reason field indicates why:
+        /// <c>approved</c>, <c>disputed</c>, <c>refunded</c>, or <c>refunded_as_fraud</c>.
         /// </summary>
         public static string ReviewClosed => "review.closed";
 
@@ -485,6 +599,17 @@ namespace Stripe
         public static string SourceFailed => "source.failed";
 
         /// <summary>
+        /// Occurs whenever a source mandate notification method is set to manual.
+        /// </summary>
+        public static string SourceMandateNotification => "source.mandate_notification";
+
+        /// <summary>
+        /// Occurs whenever the refund attributes are required on a receiver source to process a
+        /// refund or a mispayment.
+        /// </summary>
+        public static string SourceRefundAttributesRequired => "source.refund_attributes_required";
+
+        /// <summary>
         /// Occurs whenever a source transaction is created.
         /// </summary>
         public static string SourceTransactionCreated => "source.transaction.created";
@@ -503,6 +628,31 @@ namespace Stripe
         /// Occurs whenever a tax rate changes.
         /// </summary>
         public static string TaxRateUpdated => "tax_rate.updated";
+
+        /// <summary>
+        /// Occurs whenever a top-up is canceled.
+        /// </summary>
+        public static string TopupCanceled => "topup.canceled";
+
+        /// <summary>
+        /// Occurs whenever a top-up is created.
+        /// </summary>
+        public static string TopupCreated => "topup.created";
+
+        /// <summary>
+        /// Occurs whenever a top-up fails.
+        /// </summary>
+        public static string TopupFailed => "topup.failed";
+
+        /// <summary>
+        /// Occurs whenever a top-up is reversed.
+        /// </summary>
+        public static string TopupReversed => "topup.reversed";
+
+        /// <summary>
+        /// Occurs whenever a top-up succeeds.
+        /// </summary>
+        public static string TopupSucceeded => "topup.succeeded";
 
         /// <summary>
         /// Occurs whenever a new transfer is created.
