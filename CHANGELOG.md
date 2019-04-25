@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.12.0 - 2019-04-24
+* [#1593](https://github.com/stripe/stripe-dotnet/pull/1593) Add missing event types
+
 ## 25.11.0 - 2019-04-24
 * [#1572](https://github.com/stripe/stripe-dotnet/pull/1572) Add support for the `TaxRate` resource and APIs
 
