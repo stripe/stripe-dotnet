@@ -98,6 +98,9 @@ namespace Stripe
            Below we group all Source type specific paramters
         */
 
+        [JsonProperty("acss_debit")]
+        public SourceAcssDebitCreateOptions AcssDebit { get; set; }
+
         [JsonProperty("au_becs_debit")]
         public SourceAuBecsDebitCreateOptions AuBecsDebit { get; set; }
 
