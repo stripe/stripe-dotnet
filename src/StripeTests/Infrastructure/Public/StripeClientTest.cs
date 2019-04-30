@@ -22,7 +22,7 @@ namespace StripeTests
             {
                 Amount = 123,
                 Currency = "usd",
-                SourceId = "tok_visa",
+                Source = "tok_visa",
             };
             this.requestOptions = new RequestOptions();
         }

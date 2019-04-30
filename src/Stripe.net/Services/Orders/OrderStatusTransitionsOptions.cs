@@ -2,31 +2,40 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class OrderStatusTransitionsOptions : INestedOptions
     {
+        /// <summary>
+        /// A filter on the list based on the object <c>canceled</c> field. The value can be a
+        /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
+        /// </summary>
         [JsonProperty("canceled")]
-        public DateTime? Canceled { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Canceled { get; set; }
 
-        [JsonProperty("canceled")]
-        public DateRangeOptions CanceledRange { get; set; }
-
+        /// <summary>
+        /// A filter on the list based on the object <c>fulfilled</c> field. The value can be a
+        /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
+        /// </summary>
         [JsonProperty("fulfilled")]
-        public DateTime? Fulfilled { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Fulfilled { get; set; }
 
-        [JsonProperty("fulfilled")]
-        public DateRangeOptions FulfilledRange { get; set; }
-
+        /// <summary>
+        /// A filter on the list based on the object <c>paid</c> field. The value can be a
+        /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
+        /// </summary>
         [JsonProperty("paid")]
-        public DateTime? Paid { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Paid { get; set; }
 
-        [JsonProperty("paid")]
-        public DateRangeOptions PaidRange { get; set; }
-
+        /// <summary>
+        /// A filter on the list based on the object <c>returned</c> field. The value can be a
+        /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
+        /// </summary>
         [JsonProperty("returned")]
-        public DateTime? Returned { get; set; }
-
-        [JsonProperty("returned")]
-        public DateRangeOptions ReturnedRange { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Returned { get; set; }
     }
 }
