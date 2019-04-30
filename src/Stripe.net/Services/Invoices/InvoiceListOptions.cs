@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class InvoiceListOptions : ListOptions
     {
@@ -11,26 +12,36 @@ namespace Stripe
         [JsonProperty("billing")]
         public Billing? Billing { get; set; }
 
-        [JsonProperty("created")]
-        public DateTime? Created { get; set; }
-
         /// <summary>
-        /// A filter on the list based on the object created field.
+        /// A filter on the list based on the object <c>created</c> field. The value can be a
+        /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
         /// </summary>
         [JsonProperty("created")]
-        public DateRangeOptions CreatedRange { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
+        /// <summary>
+        /// Only return invoices for the customer specified by this customer ID.
+        /// </summary>
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
 
-        [JsonProperty("due_date")]
-        public DateTime? DueDate { get; set; }
+        /// <summary>
+        /// A filter on the list based on the object <c>date</c> field. The value can be a
+        /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
+        /// </summary>
+        [Obsolete("Use Created instead")]
+        [JsonProperty("date")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Date { get; set; }
 
         /// <summary>
-        /// A filter on the list based on the object due_date field.
+        /// A filter on the list based on the object <c>due_date</c> field. The value can be a
+        /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
         /// </summary>
         [JsonProperty("due_date")]
-        public DateRangeOptions DueDateRange { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> DueDate { get; set; }
 
         /// <summary>
         /// A filter on the list based on the object paid field.
@@ -38,6 +49,9 @@ namespace Stripe
         [JsonProperty("paid")]
         public bool? Paid { get; set; }
 
+        /// <summary>
+        /// Only return invoices for the subscription specified by this subscription ID.
+        /// </summary>
         [JsonProperty("subscription")]
         public string SubscriptionId { get; set; }
     }
