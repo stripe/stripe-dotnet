@@ -17,15 +17,12 @@ namespace StripeTests
                     new PlanTierOptions
                     {
                         UnitAmount = 1000,
-                        UpTo = new PlanTierOptions.UpToBound
-                        {
-                            Bound = 10
-                        }
+                        UpTo = 10,
                     },
                     new PlanTierOptions
                     {
                         UnitAmount = 2000,
-                        UpTo = new PlanTierOptions.UpToInf()
+                        UpTo = PlanTierUpTo.Inf,
                     }
                 },
             };

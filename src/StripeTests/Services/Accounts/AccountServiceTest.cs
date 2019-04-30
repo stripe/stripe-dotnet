@@ -45,7 +45,7 @@ namespace StripeTests
                     },
                     Name = "Company name",
                 },
-                ExternalAccountId = "tok_visa_debit",
+                ExternalAccount = "tok_visa_debit",
                 RequestedCapabilities = new List<string>
                 {
                     "card_payments",

@@ -105,6 +105,24 @@ namespace StripeTests
                     want = string.Empty
                 },
 
+                // AnyOf
+                new
+                {
+                    data = new TestOptions
+                    {
+                        AnyOf = "foo",
+                    },
+                    want = "any_of=foo"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        AnyOf = new Dictionary<string, string> { { "foo", "bar" } },
+                    },
+                    want = "any_of[foo]=bar"
+                },
+
                 // Array
                 new
                 {
