@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.13.0 - 2019-04-29
+* [#1595](https://github.com/stripe/stripe-dotnet/pull/1595) Add support for ACSS debit Sources
+
 ## 25.12.0 - 2019-04-24
 * [#1593](https://github.com/stripe/stripe-dotnet/pull/1593) Add missing event types
 
