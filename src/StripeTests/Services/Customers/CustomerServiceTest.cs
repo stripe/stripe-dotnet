@@ -25,7 +25,7 @@ namespace StripeTests
             this.createOptions = new CustomerCreateOptions
             {
                 Email = "example@example.com",
-                SourceToken = "tok_123",
+                Source = "tok_123",
             };
 
             this.updateOptions = new CustomerUpdateOptions

@@ -2,20 +2,17 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PayoutListOptions : ListOptionsWithCreated
     {
         /// <summary>
-        /// A filter on the list based on the object <c>arrival_date</c> field.
+        /// A filter on the list based on the object <c>arrival_date</c> field. The value can be a
+        /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
         /// </summary>
         [JsonProperty("arrival_date")]
-        public DateTime? ArrivalDate { get; set; }
-
-        /// <summary>
-        /// A filter on the list based on the object <c>arrival_date</c> field.
-        /// </summary>
-        [JsonProperty("arrival_date")]
-        public DateRangeOptions ArrivalDateRange { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> ArrivalDate { get; set; }
 
         /// <summary>
         /// The ID of an external account - only return payouts sent to this external account.

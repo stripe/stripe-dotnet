@@ -26,7 +26,7 @@ namespace StripeTests
 
             this.createOptions = new BankAccountCreateOptions
             {
-                SourceToken = "btok_123",
+                Source = "btok_123",
             };
 
             this.updateOptions = new BankAccountUpdateOptions
