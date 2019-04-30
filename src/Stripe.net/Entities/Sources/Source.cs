@@ -117,6 +117,9 @@ namespace Stripe
         [JsonProperty("ach_debit")]
         public SourceAchDebit AchDebit { get; set; }
 
+        [JsonProperty("acss_debit")]
+        public SourceAcssDebit AcssDebit { get; set; }
+
         [JsonProperty("alipay")]
         public SourceAlipay Alipay { get; set; }
 
