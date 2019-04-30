@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PlanCreateOptions : BaseOptions
     {
@@ -35,11 +36,14 @@ namespace Stripe
         [JsonProperty("nickname")]
         public string Nickname { get; set; }
 
+        /// <summary>
+        /// The product whose pricing the created plan will represent. This can either be the ID of
+        /// an existing product, or a <see cref="PlanProductCreateOptions"/> instance containing
+        /// fields used to create a service product.
+        /// </summary>
         [JsonProperty("product")]
-        public PlanProductCreateOptions Product { get; set; }
-
-        [JsonProperty("product")]
-        public string ProductId { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<string, PlanProductCreateOptions> Product { get; set; }
 
         [JsonProperty("tiers")]
         public List<PlanTierOptions> Tiers { get; set; }

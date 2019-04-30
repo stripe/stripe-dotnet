@@ -29,7 +29,7 @@ namespace StripeTests
 
             this.createOptions = new CardCreateOptions
             {
-                SourceToken = "tok_123",
+                Source = "tok_123",
             };
 
             this.updateOptions = new CardUpdateOptions

@@ -7,6 +7,7 @@ namespace StripeTests.Infrastructure.TestData
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Stripe;
+    using Stripe.Infrastructure;
 
     public class TestOptions : BaseOptions
     {
@@ -19,6 +20,10 @@ namespace StripeTests.Infrastructure.TestData
             // TestTwo purposefully doesn't define a serialization value
             TestTwo,
         }
+
+        [JsonProperty("any_of")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<string, Dictionary<string, string>> AnyOf { get; set; }
 
         [JsonProperty("array")]
         public string[] Array { get; set; }

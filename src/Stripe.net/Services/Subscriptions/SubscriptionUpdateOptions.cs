@@ -6,32 +6,14 @@ namespace Stripe
 
     public class SubscriptionUpdateOptions : SubscriptionSharedOptions
     {
-        #region BillingCycleAnchor
-        [JsonIgnore]
-        public bool BillingCycleAnchorNow { get; set; }
-
-        [JsonIgnore]
-        public bool BillingCycleAnchorUnchanged { get; set; }
-
+        /// <summary>
+        /// One of <see cref="SubscriptionBillingCycleAnchor"/>. Setting the value to
+        /// <see cref="SubscriptionBillingCycleAnchor.Now"/> resets the subscription’s billing
+        /// cycle anchor to the current time. For more information, see the billing cycle
+        /// <a href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
+        /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-        internal string BillingCycleAnchorInternal
-        {
-            get
-            {
-                if (this.BillingCycleAnchorNow)
-                {
-                    return "now";
-                }
-
-                if (this.BillingCycleAnchorUnchanged)
-                {
-                    return "unchanged";
-                }
-
-                return null;
-            }
-        }
-        #endregion
+        public SubscriptionBillingCycleAnchor? BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// List of subscription items, each with an attached plan.
