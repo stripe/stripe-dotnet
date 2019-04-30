@@ -84,20 +84,16 @@ namespace Stripe
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
-        #region TrialEnd
-
         /// <summary>
-        /// Date representing the end of the trial period the customer will get before being charged for the first time. Set <see cref="EndTrialNow"/> to <c>true</c> to end the customer’s trial immediately.
+        /// <see cref="DateTime"/> representing the end of the trial period the customer will get
+        /// before being charged for the first time. This will always overwrite any trials that
+        /// might apply via a subscribed plan. If set, <see cref="TrialEnd"/> will override the
+        /// default trial period of the plan the customer is being subscribed to. The special value
+        /// <see cref="SubscriptionTrialEnd.Now"/> can be provided to end the customer’s trial
+        /// immediately.
         /// </summary>
-        [JsonIgnore]
-        public DateTime? TrialEnd { get; set; }
-
-        [JsonIgnore]
-        public bool EndTrialNow { get; set; }
-
         [JsonProperty("trial_end")]
-        internal string TrialEndInternal => this.EndTrialNow ? "now" : this.TrialEnd?.ConvertDateTimeToEpoch().ToString();
-        #endregion
+        public AnyOf<DateTime?, SubscriptionTrialEnd?> TrialEnd { get; set; }
 
         /// <summary>
         /// Boolean. Decide whether to use the default trial on the plan when creating a subscription.

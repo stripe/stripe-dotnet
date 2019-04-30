@@ -25,7 +25,7 @@ namespace StripeTests
 
             this.createOptions = new ExternalAccountCreateOptions
             {
-                ExternalAccountTokenId = "btok_123",
+                ExternalAccount = "btok_123",
             };
 
             this.updateOptions = new ExternalAccountUpdateOptions

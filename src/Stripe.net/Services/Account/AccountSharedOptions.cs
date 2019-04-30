@@ -1,6 +1,5 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -25,14 +24,22 @@ namespace Stripe
         [JsonProperty("email")]
         public string Email { get; set; }
 
+        /// <summary>
+        /// <para>
+        /// A card or bank account to attach to the account. You can provide either a token, like
+        /// the ones returned by <a href="https://stripe.com/docs/stripe.js">Stripe.js</a>, or a
+        /// <see cref="AccountBankAccountOptions"/> or <see cref="AccountCardOptions"/> instance.
+        /// </para>
+        /// <para>
+        /// By default, providing an external account sets it as the new default external account
+        /// for its currency, and deletes the old default if one exists. To add additional external
+        /// accounts without replacing the existing default for the currency, use the bank account
+        /// or card creation API.
+        /// </para>
+        /// </summary>
         [JsonProperty("external_account")]
-        public string ExternalAccountId { get; set; }
-
-        [JsonProperty("external_account")]
-        public AccountCardOptions ExternalCardAccount { get; set; }
-
-        [JsonProperty("external_account")]
-        public AccountBankAccountOptions ExternalBankAccount { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<string, AccountBankAccountOptions, AccountCardOptions> ExternalAccount { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
