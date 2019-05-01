@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
     using System.Reflection;
@@ -25,6 +26,14 @@ namespace StripeTests
             this.createOptions = new FileCreateOptions
             {
                 File = typeof(FileServiceTest).GetTypeInfo().Assembly.GetManifestResourceStream(FileName),
+                FileLinkData = new FileLinkDataOptions
+                {
+                    Create = true,
+                    Metadata = new Dictionary<string, string>
+                    {
+                        { "key", "value" },
+                    },
+                },
                 Purpose = FilePurpose.BusinessLogo,
             };
 
