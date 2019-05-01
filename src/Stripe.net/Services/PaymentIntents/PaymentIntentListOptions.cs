@@ -6,5 +6,7 @@ namespace Stripe
 
     public class PaymentIntentListOptions : ListOptionsWithCreated
     {
+        [JsonProperty("customer")]
+        public string CustomerId { get; set; }
     }
 }
