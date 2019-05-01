@@ -14,6 +14,12 @@ namespace Stripe.Issuing
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("replacement_for")]
+        public string ReplacementFor { get; set; }
+
+        [JsonProperty("replacement_reason")]
+        public string ReplacementReason { get; set; }
+
         [JsonProperty("shipping")]
         public CardShippingOptions Shipping { get; set; }
 

@@ -47,6 +47,31 @@ namespace Stripe.Issuing
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        #region Expandable ReplacementFor
+        [JsonIgnore]
+        public string ReplacementForId { get; set; }
+
+        [JsonIgnore]
+        public Card ReplacementFor { get; set; }
+
+        [JsonProperty("replacement_for")]
+        internal object InternalReplacementFor
+        {
+            get
+            {
+                return this.ReplacementFor ?? (object)this.ReplacementForId;
+            }
+
+            set
+            {
+                StringOrObject<Card>.Map(value, s => this.ReplacementForId = s, o => this.ReplacementFor = o);
+            }
+        }
+        #endregion
+
+        [JsonProperty("replacement_reason")]
+        public string ReplacementReason { get; set; }
+
         [JsonProperty("shipping")]
         public CardShipping Shipping { get; set; }
 
