@@ -19,12 +19,6 @@ namespace Stripe
     /// </summary>
     public class SystemNetHttpClient : IHttpClient
     {
-        private static readonly string UserAgentString
-            = $"Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}";
-
-        private static readonly string StripeClientUserAgentString
-            = BuildStripeClientUserAgentString();
-
         private readonly System.Net.Http.HttpClient httpClient;
 
         private readonly RequestTelemetry requestTelemetry = new RequestTelemetry();
@@ -32,6 +26,10 @@ namespace Stripe
         private readonly object randLock = new object();
 
         private readonly Random rand = new Random();
+
+        private string stripeClientUserAgentString;
+
+        private string userAgentString;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemNetHttpClient"/> class.
@@ -43,6 +41,7 @@ namespace Stripe
         public SystemNetHttpClient(System.Net.Http.HttpClient httpClient = null)
         {
             this.httpClient = httpClient ?? BuildDefaultSystemNetHttpClient();
+            this.InitUserAgentStrings();
         }
 
         /// <summary>
@@ -59,6 +58,16 @@ namespace Stripe
             {
                 Timeout = StripeConfiguration.DefaultHttpTimeout,
             };
+        }
+
+        /// <summary>
+        /// Initializes the strings used for the <c>User-Agent</c> and
+        /// <c>X-Stripe-Client-User-Agent</c> headers.
+        /// </summary>
+        public void InitUserAgentStrings()
+        {
+            this.stripeClientUserAgentString = BuildStripeClientUserAgentString();
+            this.userAgentString = BuildUserAgentString();
         }
 
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
@@ -80,7 +89,7 @@ namespace Stripe
             {
                 requestException = null;
 
-                var httpRequest = BuildRequestMessage(request);
+                var httpRequest = this.BuildRequestMessage(request);
 
                 var stopwatch = Stopwatch.StartNew();
 
@@ -135,30 +144,9 @@ namespace Stripe
             };
         }
 
-        private static System.Net.Http.HttpRequestMessage BuildRequestMessage(StripeRequest request)
-        {
-            var requestMessage = new System.Net.Http.HttpRequestMessage(request.Method, request.Uri);
-
-            // Standard headers
-            requestMessage.Headers.UserAgent.ParseAdd(UserAgentString);
-            requestMessage.Headers.Authorization = request.AuthorizationHeader;
-
-            // Custom headers
-            requestMessage.Headers.Add("X-Stripe-Client-User-Agent", StripeClientUserAgentString);
-            foreach (var header in request.StripeHeaders)
-            {
-                requestMessage.Headers.Add(header.Key, header.Value);
-            }
-
-            // Request body
-            requestMessage.Content = request.Content;
-
-            return requestMessage;
-        }
-
         private static string BuildStripeClientUserAgentString()
         {
-            var values = new Dictionary<string, string>
+            var values = new Dictionary<string, object>
             {
                 { "bindings_version", StripeConfiguration.StripeNetVersion },
                 { "lang", ".net" },
@@ -175,7 +163,24 @@ namespace Stripe
             }
 #endif
 
+            if (StripeConfiguration.AppInfo != null)
+            {
+                values.Add("application", StripeConfiguration.AppInfo);
+            }
+
             return JsonConvert.SerializeObject(values, Formatting.None);
+        }
+
+        private static string BuildUserAgentString()
+        {
+            var userAgent = $"Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}";
+
+            if (StripeConfiguration.AppInfo != null)
+            {
+                userAgent += " " + StripeConfiguration.AppInfo.FormatUserAgent();
+            }
+
+            return userAgent;
         }
 
         private static bool ShouldRetry(
@@ -211,6 +216,27 @@ namespace Stripe
             }
 
             return false;
+        }
+
+        private System.Net.Http.HttpRequestMessage BuildRequestMessage(StripeRequest request)
+        {
+            var requestMessage = new System.Net.Http.HttpRequestMessage(request.Method, request.Uri);
+
+            // Standard headers
+            requestMessage.Headers.TryAddWithoutValidation("User-Agent", this.userAgentString);
+            requestMessage.Headers.Authorization = request.AuthorizationHeader;
+
+            // Custom headers
+            requestMessage.Headers.Add("X-Stripe-Client-User-Agent", this.stripeClientUserAgentString);
+            foreach (var header in request.StripeHeaders)
+            {
+                requestMessage.Headers.Add(header.Key, header.Value);
+            }
+
+            // Request body
+            requestMessage.Content = request.Content;
+
+            return requestMessage;
         }
 
         private TimeSpan SleepTime(int numRetries)

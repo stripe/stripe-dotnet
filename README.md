@@ -124,6 +124,21 @@ var chargesYesterday = chargeService.List(new ChargeListOptions {
 });
 ```
 
+### Writing a Plugin
+
+If you're writing a plugin that uses the library, we'd appreciate it if you identified using `StripeConfiguration.AppInfo`:
+
+```c#
+StripeConfiguration.AppInfo = new AppInfo
+{
+    Name = "MyAwesomePlugin",
+    URL = "https://myawesomeplugin.info",
+    Version = "1.2.34",
+};
+```
+
+This information is passed along when the library makes calls to the Stripe API. Note that while Name is always required, URL and Version are optional.
+
 ## Contribution Guidelines
 
 We welcome contributions from anyone interested in Stripe or Stripe.net development. If you'd like to submit a pull request, it's best to start with an issue to describe what you'd like to build.
