@@ -12,6 +12,9 @@ namespace Stripe
     public static class StripeConfiguration
     {
         private static string apiKey;
+
+        private static AppInfo appInfo;
+
         private static string clientId;
 
         private static IStripeClient stripeClient;
@@ -154,6 +157,31 @@ namespace Stripe
 
         /// <summary>Gets the version of the Stripe.net client library.</summary>
         public static string StripeNetVersion { get; }
+
+        /// <summary>
+        /// Sets information about the "app" which this integration belongs to. This should be
+        /// reserved for plugins that wish to identify themselves with Stripe.
+        /// </summary>
+        public static AppInfo AppInfo
+        {
+            internal get => appInfo;
+
+            set
+            {
+                if ((value != null) && string.IsNullOrEmpty(value.Name))
+                {
+                    throw new ArgumentException("AppInfo.Name cannot be empty");
+                }
+
+                appInfo = value;
+
+                // This is run when the client is first initialized, but we need to reinitialize
+                // now that we have some app info.
+                // This is done through ugly casting because we don't want to make this part of
+                // the IStripeClient and IHTTP client interfaces.
+                ((StripeClient as StripeClient)?.HttpClient as SystemNetHttpClient)?.InitUserAgentStrings();
+            }
+        }
 
         /// <summary>Gets or sets a value indicating whether to sleep between network retries.</summary>
         /// <remarks>This is an internal property meant to be used in tests.</remarks>
