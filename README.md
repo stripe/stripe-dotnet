@@ -1,24 +1,29 @@
 # Stripe.net
-[![Build status](https://ci.appveyor.com/api/projects/status/rg0pg5tlr1a6f8tf/branch/master?svg=true)](https://ci.appveyor.com/project/stripe/stripe-dotnet) [![NuGet](https://img.shields.io/nuget/v/stripe.net.svg)](https://www.nuget.org/packages/Stripe.net/)
+[![NuGet](https://img.shields.io/nuget/v/stripe.net.svg)](https://www.nuget.org/packages/Stripe.net/)
+[![Build Status](https://ci.appveyor.com/api/projects/status/rg0pg5tlr1a6f8tf/branch/master?svg=true)](https://ci.appveyor.com/project/stripe/stripe-dotnet)
 [![Coverage Status](https://coveralls.io/repos/github/stripe/stripe-dotnet/badge.svg?branch=master)](https://coveralls.io/github/stripe/stripe-dotnet?branch=master)
 
-The official Stripe library, supporting .NET Standard 1.2+, .NET Core 1.0+, and .NET Framework 4.5+
-
-## Documentation
-
-See the [.NET API docs](https://stripe.com/docs/api/dotnet#intro).
+The official [Stripe][stripe] .NET library, supporting .NET Standard 1.2+, .NET Core 1.0+, and .NET Framework 4.5+.
 
 ## Installation
 
-### Install Stripe.net via NuGet
+Using the [.NET Core command-line interface (CLI) tools][dotnet-core-cli-tools]:
 
-From the command line:
+```sh
+dotnet install Stripe.net
+```
 
-	nuget install Stripe.net
+Using the [NuGet Command Line Interface (CLI)][nuget-cli]:
 
-From Package Manager:
+```sh
+nuget install Stripe.net
+```
 
-	PM> Install-Package Stripe.net
+Using the [Package Manager Console][package-manager-console]:
+
+```powershell
+Install-Package Stripe.net
+```
 
 From within Visual Studio:
 
@@ -26,121 +31,127 @@ From within Visual Studio:
 2. Right-click on a project within your solution.
 3. Click on *Manage NuGet Packages...*
 4. Click on the *Browse* tab and search for "Stripe.net".
-5. Click on the Stripe.net package, select the appropriate version in the right-tab and click *Install*.
+5. Click on the Stripe.net package, select the appropriate version in the
+   right-tab and click *Install*.
 
-### Set the API Key for your project
+## Documentation
 
-You can configure the Stripe.net package to use your secret API key in one of two ways:
+For a comprehensive list of examples, check out the [API
+documentation][api-docs].
 
-a) In your application initialization, set your API key (only once once during startup):
+## Usage
 
-```csharp
-StripeConfiguration.ApiKey = "[your api key here]";
-```
+### Per-request configuration
 
-b) Pass the API key to [RequestOptions](#requestoptions):
+All of the service methods accept an optional `RequestOptions` object. This is
+used if you want to set an [idempotency key][idempotency-keys], if you are
+using [Stripe Connect][connect-auth], or if you want to pass the secret API
+key on each method.
 
-```csharp
-var planService = new PlanService();
-planService.Get(*planId*, new RequestOptions { ApiKey = "[your api key here]" });
-```
-
-You can obtain your secret API key from the [API Settings](https://dashboard.stripe.com/account/apikeys) in the Dashboard.
-
-### Xamarin/Mono Developers (Optional)
-
-If you are using Xamarin/Mono, you may want to provide your own `HttpMessageHandler`. You can do so by passing an instance to `StripeConfiguration.HttpMessageHandler` on your application's startup. See [this thread](https://github.com/stripe/stripe-dotnet/issues/567) for details.
-
-## Additional Resources
-
-- [Stripe.net Fundamentals with ASP.NET (MVC)](https://app.pluralsight.com/library/courses/stripe-fundamentals-with-asp-net-mvc) [_PluralSight: Craig McKeachie_]
-
-## Support
-
-* Make sure to review open [issues](https://github.com/stripe/stripe-dotnet/issues) and [pull requests](https://github.com/stripe/stripe-dotnet/pulls) before opening a new issue.
-* Feel free to leave a comment or [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments) on any existing issues.
-* For all other support requests, please [reach out to Stripe](https://support.stripe.com/email) via email.
-
-## Helpful Library Information
-
-### Request Options
-
-All of the service methods accept an optional `RequestOptions` object. This is used if you need an [Idempotency Key](https://stripe.com/docs/api?lang=curl#idempotent_requests), if you are using [Stripe Connect](https://stripe.com/docs/connect/authentication#authentication-via-the-stripe-account-header), or if you want to pass the secret API key on each method.
-
-```csharp
+```c#
 var requestOptions = new RequestOptions();
-requestOptions.ApiKey = "SECRET API KEY";                        // (optional) set the api key on a per-request basis
-requestOptions.IdempotencyKey = "SOME STRING";                   // (optional) create an idempotent request
-requestOptions.StripeConnectAccountId = "CONNECTED ACCOUNT ID";  // (optional) authenticate as a connected account
+requestOptions.ApiKey = "SECRET API KEY";
+requestOptions.IdempotencyKey = "SOME STRING";
+requestOptions.StripeAccount = "CONNECTED ACCOUNT ID";
 ```
 
-### Responses
+### Using a custom `HttpClient`
 
-The [`StripeResponse`](./src/Stripe.net/Infrastructure/public/StripeResponse.cs) object is an attribute (with the same name) attached to all entities in Stripe.net when they are returned from a service call.
+You can configure the library with your own custom `HttpClient`:
 
-**Example: Access the StripeResponse**
-```csharp
-var chargeService = new ChargeService();
-StripeCharge charge = chargeService.Create(...);
-StripeResponse response = charge.StripeResponse;
+```c#
+StripeConfiguration.StripeClient = new StripeClient(new SystemNetHttpClient(httpClient));
 ```
 
-The information that can be derived from the `StripeResponse` is available from the [StripeResponse Class](https://github.com/stripe/stripe-dotnet/blob/master/src/Stripe.net/Infrastructure/Public/StripeResponse.cs).
+For example, you can use this to send requests to Stripe's API through a proxy
+server:
 
-```csharp
-public class StripeResponse
+```c#
+using System.Net;
+using System.Net.Http;
+using Stripe;
+
+var handler = new HttpClientHandler
 {
-	// ResponseJson contains the complete JSON string Stripe returned to Stripe.net.
-	public string ResponseJson { get; set; }
+	Proxy = new WebProxy(proxyUrl),
+};
+var httpClient = new System.Net.HttpClient(handler);
 
-	// this is the request id of the call, as seen in the Stripe dashboard. I would recommend logging
-	// this and/or saving it to your database. this is very useful to help you find your request
-	// in the dashboard, or ask Stripe a question about your api call
-	public string RequestId { get; set; }
-
-	// this is the request date and time of the call. I would also recommend logging this and/or
-	// saving it to your database, as it tells you when Stripe processed the request.
-	public DateTime RequestDate { get; set; }
-}
+StripeConfiguration.StripeClient = new StripeClient(new SystemNetHttpClient(httpClient));
 ```
 
-### Date Filtering
+### Configuring automatic retries
 
-Many of the `List()`-methods support parameters to filter by date.  You can use the `DateFilter` class to combine the filters to make more interesting and complex queries.
+The library can be configured to automatically retry requests that fail due to
+an intermittent network problem or other knowingly non-deterministic errors:
 
-**Example: Interesting Queries with DateFilter**
-```csharp
-var chargeService = new ChargeService();
-
-var chargesToday = chargeService.List(new ChargeListOptions {
-	Created = new DateFilter { GreaterThanOrEqual = DateTime.UtcNow.Date }
-});
-
-var chargesYesterday = chargeService.List(new ChargeListOptions {
-	Created = new DateFilter {
-		GreaterThanOrEqual = DateTime.Now.AddDays(-1).Date,
-		LessThan = DateTime.Now.Date
-	}
-});
+```c#
+StripeConfiguration.MaxNetworkRetries = 2;
 ```
 
-### Writing a Plugin
+[Idempotency keys][idempotency-keys] are added to requests to guarantee that
+retries are safe.
 
-If you're writing a plugin that uses the library, we'd appreciate it if you identified using `StripeConfiguration.AppInfo`:
+### Writing a plugin
+
+If you're writing a plugin that uses the library, we'd appreciate it if you
+identified using `StripeConfiguration.AppInfo`:
 
 ```c#
 StripeConfiguration.AppInfo = new AppInfo
 {
-    Name = "MyAwesomePlugin",
-    URL = "https://myawesomeplugin.info",
-    Version = "1.2.34",
+	Name = "MyAwesomePlugin",
+	Url = "https://myawesomeplugin.info",
+	Version = "1.2.34",
 };
 ```
 
-This information is passed along when the library makes calls to the Stripe API. Note that while Name is always required, URL and Version are optional.
+This information is passed along when the library makes calls to the Stripe
+API. Note that while `Name` is always required, `Url` and `Version` are
+optional.
 
-## Contribution Guidelines
+## Development
 
-We welcome contributions from anyone interested in Stripe or Stripe.net development. If you'd like to submit a pull request, it's best to start with an issue to describe what you'd like to build.
+The test suite depends on [stripe-mock][stripe-mock], so make sure to fetch
+and run it from a background terminal
+([stripe-mock's README][stripe-mock-usage] also contains instructions for
+installing via Homebrew and other methods):
 
-Once you've written your pull request, **please make sure you test your changes**.
+```sh
+go get -u github.com/stripe/stripe-mock
+stripe-mock
+```
+
+Run all tests:
+
+```sh
+dotnet test
+```
+
+Run some tests, filtering by name:
+
+```sh
+dotnet test --filter FullyQualifiedName~InvoiceServiceTest
+```
+
+Run tests for a single target framework:
+
+```sh
+dotnet test --framework netcoreapp2.1
+```
+
+For any requests, bug or comments, please [open an issue][issues] or [submit a
+pull request][pulls].
+
+[api-docs]: https://stripe.com/docs/api?lang=dotnet
+[api-keys]: https://dashboard.stripe.com/apikeys
+[connect-auth]: https://stripe.com/docs/connect/authentication#authentication-via-the-stripe-account-header
+[dotnet-core-cli-tools]: https://docs.microsoft.com/en-us/dotnet/core/tools/
+[idempotency-keys]: https://stripe.com/docs/api/idempotent_requests?lang=dotnet
+[issues]: https://github.com/stripe/stripe-dotnet/issues/new
+[nuget-cli]: https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference
+[package-manager-console]: https://docs.microsoft.com/en-us/nuget/tools/package-manager-console
+[pulls]: https://github.com/stripe/stripe-dotnet/pulls
+[stripe]: https://stripe.com
+[stripe-mock]: https://github.com/stripe/stripe-mock
+[stripe-mock-usage]: https://github.com/stripe/stripe-mock#usage
