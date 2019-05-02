@@ -1,16 +1,47 @@
 namespace Stripe
 {
+    using System;
+
     public class RequestOptions
     {
-        /// <summary>The API key to use for the request.</summary>
+        /// <summary>
+        /// Gets or sets the <a href="https://stripe.com/docs/api/authentication?lang=dotnet">API
+        /// key</a> to use for the request.
+        /// </summary>
         public string ApiKey { get; set; }
 
-        /// <summary>Idempotency key for safely retrying requests.</summary>
+        /// <summary>
+        /// Get or sets the <a href="https://stripe.com/docs/api/idempotent_requests">idempotency
+        /// key</a> to use for the request.
+        /// </summary>
         public string IdempotencyKey { get; set; }
 
-        public string StripeConnectAccountId { get; set; }
+        /// <summary>
+        /// Get or sets the
+        /// <a href="https://stripe.com/docs/connect/authentication#authentication-via-the-stripe-account-header">ID
+        /// of the connected account</a> to use for the request.
+        /// </summary>
+        public string StripeAccount { get; set; }
 
-        /// <summary>The base URL for the request.</summary>
+        /// <summary>
+        /// <para>
+        /// Get or sets the
+        /// <a href="https://stripe.com/docs/connect/authentication#authentication-via-the-stripe-account-header">ID
+        /// of the connected account</a> to use for the request.
+        /// </para>
+        /// <para>
+        /// This property is deprecated and will be removed in a future version, please use the
+        /// <see cref="StripeAccount"/> property accessors instead.
+        /// </para>
+        /// </summary>
+        [Obsolete("Use StripeAccount instead.")]
+        public string StripeConnectAccountId
+        {
+            get => this.StripeAccount;
+            set => this.StripeAccount = value;
+        }
+
+        /// <summary>Gets or sets the base URL for the request.</summary>
         /// <remarks>
         /// This is an internal property. It is set by services or individual request methods when
         /// they need to send a request to a non-standard destination, e.g. <c>files.stripe.com</c>
@@ -18,7 +49,7 @@ namespace Stripe
         /// </remarks>
         internal string BaseUrl { get; set; }
 
-        /// <summary>The API version for the request.</summary>
+        /// <summary>Gets or sets the API version for the request.</summary>
         /// <remarks>
         /// This is an internal property. For most requests, the API version is always set to the
         /// library's pinned version (<see cref="StripeConfiguration.ApiVersion"/>). This property

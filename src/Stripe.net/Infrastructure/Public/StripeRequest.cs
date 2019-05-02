@@ -134,9 +134,9 @@ namespace Stripe
                 { "Stripe-Version", requestOptions?.StripeVersion ?? StripeConfiguration.ApiVersion },
             };
 
-            if (!string.IsNullOrEmpty(requestOptions?.StripeConnectAccountId))
+            if (!string.IsNullOrEmpty(requestOptions?.StripeAccount))
             {
-                stripeHeaders.Add("Stripe-Account", requestOptions.StripeConnectAccountId);
+                stripeHeaders.Add("Stripe-Account", requestOptions.StripeAccount);
             }
 
             if (!string.IsNullOrEmpty(requestOptions?.IdempotencyKey))
