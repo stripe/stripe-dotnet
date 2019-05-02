@@ -68,7 +68,7 @@ namespace StripeTests
             {
                 ApiKey = "sk_override",
                 IdempotencyKey = "idempotency_key",
-                StripeConnectAccountId = "acct_456",
+                StripeAccount = "acct_456",
                 BaseUrl = "https://example.com",
                 StripeVersion = "2012-12-21",
             };
