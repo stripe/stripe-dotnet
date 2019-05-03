@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.14.0 - 2019-05-02
+* [#1600](https://github.com/stripe/stripe-dotnet/pull/1600) Add support for `CustomerId` on `PaymentIntentListOptions`
+
 ## 25.13.0 - 2019-04-29
 * [#1595](https://github.com/stripe/stripe-dotnet/pull/1595) Add support for ACSS debit Sources
 
