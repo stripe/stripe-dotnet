@@ -4,7 +4,7 @@ namespace Stripe
 
     public class SourceP24 : StripeEntity
     {
-        [JsonProperty("Reference")]
+        [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 }

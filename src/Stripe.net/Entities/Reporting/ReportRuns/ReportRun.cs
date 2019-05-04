@@ -26,7 +26,7 @@ namespace Stripe.Reporting
         [JsonProperty("parameters")]
         public Parameters Parameters { get; set; }
 
-        [JsonProperty("reportType")]
+        [JsonProperty("report_type")]
         public string ReportType { get; set; }
 
         [JsonProperty("result")]
