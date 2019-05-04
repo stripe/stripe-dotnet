@@ -7,7 +7,7 @@ namespace Stripe
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
 
-        [JsonProperty("Timezone")]
+        [JsonProperty("timezone")]
         public string Timezone { get; set; }
     }
 }

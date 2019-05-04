@@ -7,7 +7,7 @@ namespace Stripe
         [JsonProperty("entity")]
         public string Entity { get; set; }
 
-        [JsonProperty("Reference")]
+        [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 }
