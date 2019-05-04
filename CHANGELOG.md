@@ -1,5 +1,9 @@
 # Changelog
 
+## 25.15.0 - 2019-05-03
+* [#1601](https://github.com/stripe/stripe-dotnet/pull/1601) Add support for `ReplacementFor` and `ReplacementReason` on Issuing `Card` creation
+* [#1605](https://github.com/stripe/stripe-dotnet/pull/1605) Fix multiple properties to have the right JSON name.
+
 ## 25.14.0 - 2019-05-02
 * [#1600](https://github.com/stripe/stripe-dotnet/pull/1600) Add support for `CustomerId` on `PaymentIntentListOptions`
 
