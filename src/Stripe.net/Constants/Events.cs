@@ -455,6 +455,11 @@ namespace Stripe
         public static string PaymentMethodDetached => "payment_method.detached";
 
         /// <summary>
+        /// Occurs whenever a payment method is updated via the API.
+        /// </summary>
+        public static string PaymentMethodUpdated => "payment_method.updated";
+
+        /// <summary>
         /// Occurs whenever a payout is canceled.
         /// </summary>
         public static string PayoutCanceled => "payout.canceled";
@@ -569,6 +574,11 @@ namespace Stripe
         public static string ReviewOpened => "review.opened";
 
         /// <summary>
+        /// Occurs whenever a Sigma scheduled query run finishes.
+        /// </summary>
+        public static string SigmaScheduleQueryRunCreated => "sigma.scheduled_query_run.created";
+
+        /// <summary>
         /// Occurs whenever a SKU is created.
         /// </summary>
         public static string SkuCreated => "sku.created";
@@ -618,6 +628,42 @@ namespace Stripe
         /// Occurs whenever a source transaction is updated.
         /// </summary>
         public static string SourceTransactionUpdated => "source.transaction.updated";
+
+        /// <summary>
+        /// Occurs whenever a subscription schedule is canceled due to the underlying subscription
+        /// being canceled because of delinquency.
+        /// </summary>
+        public static string SubscriptionScheduleAborted => "subscription_schedule.aborted";
+
+        /// <summary>
+        /// Occurs whenever a subscription schedule is canceled.
+        /// </summary>
+        public static string SubscriptionScheduleCanceled => "subscription_schedule.canceled";
+
+        /// <summary>
+        /// Occurs whenever a new subscription schedule is completed.
+        /// </summary>
+        public static string SubscriptionScheduleCompleted => "subscription_schedule.completed";
+
+        /// <summary>
+        /// Occurs whenever a new subscription schedule is created.
+        /// </summary>
+        public static string SubscriptionScheduleCreated => "subscription_schedule.created";
+
+        /// <summary>
+        /// Occurs 7 days before a subscription schedule will expire.
+        /// </summary>
+        public static string SubscriptionScheduleExpiring => "subscription_schedule.expiring";
+
+        /// <summary>
+        /// Occurs whenever a new subscription schedule is released.
+        /// </summary>
+        public static string SubscriptionScheduleReleased => "subscription_schedule.released";
+
+        /// <summary>
+        /// Occurs whenever a subscription schedule is updated.
+        /// </summary>
+        public static string SubscriptionScheduleUpdated => "subscription_schedule.updated";
 
         /// <summary>
         /// Occurs whenever a tax rate is created.
