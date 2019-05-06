@@ -1,5 +1,9 @@
 # Changelog
 
+## 25.16.0 - 2019-05-06
+* [#1607](https://github.com/stripe/stripe-dotnet/pull/1607) Support listing Charges by PaymentIntent id
+* [#1608](https://github.com/stripe/stripe-dotnet/pull/1608) Add missing constants for known Events
+
 ## 25.15.0 - 2019-05-03
 * [#1601](https://github.com/stripe/stripe-dotnet/pull/1601) Add support for `ReplacementFor` and `ReplacementReason` on Issuing `Card` creation
 * [#1605](https://github.com/stripe/stripe-dotnet/pull/1605) Fix multiple properties to have the right JSON name.
