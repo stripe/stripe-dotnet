@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.16.1 - 2019-05-07
+* [#1610](https://github.com/stripe/stripe-dotnet/pull/1610) Mark `OperatorAccount` as deprecated across all Terminal APIs
+
 ## 25.16.0 - 2019-05-06
 * [#1607](https://github.com/stripe/stripe-dotnet/pull/1607) Support listing Charges by PaymentIntent id
 * [#1608](https://github.com/stripe/stripe-dotnet/pull/1608) Add missing constants for known Events
