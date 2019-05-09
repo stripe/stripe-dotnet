@@ -21,6 +21,7 @@ namespace Stripe.Infrastructure
             { "balance", typeof(Balance) },
             { "balance_transaction", typeof(BalanceTransaction) },
             { "bank_account", typeof(BankAccount) },
+            { "capability", typeof(Capability) },
             { "card", typeof(Card) },
             { "charge", typeof(Charge) },
             { "checkout.session", typeof(Checkout.Session) },
