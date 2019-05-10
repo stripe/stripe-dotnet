@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.17.0 - 2019-05-10
+* [#1613](https://github.com/stripe/stripe-dotnet/pull/1613) Add `StartDate` to `Subscription`
+
 ## 25.16.1 - 2019-05-07
 * [#1610](https://github.com/stripe/stripe-dotnet/pull/1610) Mark `OperatorAccount` as deprecated across all Terminal APIs
 
