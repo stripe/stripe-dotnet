@@ -189,9 +189,18 @@ namespace Stripe
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
 
+        [Obsolete("Use StartDate")]
         [JsonProperty("start")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? Start { get; set; }
+
+        /// <summary>
+        /// Date when the subscription was first created. The date might differ from the
+        /// <c>created</c> date due to backdating.
+        /// </summary>
+        [JsonProperty("start_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? StartDate { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
