@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
@@ -301,6 +302,13 @@ namespace Stripe
 
         protected virtual string InstanceUrl(string id)
         {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                throw new ArgumentException(
+                    "The resource ID cannot be null or whitespace.",
+                    nameof(id));
+            }
+
             return $"{this.ClassUrl()}/{WebUtility.UrlEncode(id)}";
         }
 

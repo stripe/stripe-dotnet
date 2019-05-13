@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
@@ -168,11 +169,32 @@ namespace Stripe
 
         protected virtual string ClassUrl(string parentId)
         {
+            if (string.IsNullOrWhiteSpace(parentId))
+            {
+                throw new ArgumentException(
+                    "The parent resource ID cannot be null or whitespace.",
+                    nameof(parentId));
+            }
+
             return this.BasePath.Replace("{PARENT_ID}", parentId);
         }
 
         protected virtual string InstanceUrl(string parentId, string id)
         {
+            if (string.IsNullOrWhiteSpace(parentId))
+            {
+                throw new ArgumentException(
+                    "The parent resource ID cannot be null or whitespace.",
+                    nameof(parentId));
+            }
+
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                throw new ArgumentException(
+                    "The resource ID cannot be null or whitespace.",
+                    nameof(id));
+            }
+
             return $"{this.ClassUrl(parentId)}/{WebUtility.UrlEncode(id)}";
         }
     }
