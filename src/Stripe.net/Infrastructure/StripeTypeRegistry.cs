@@ -2,7 +2,6 @@ namespace Stripe.Infrastructure
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.Immutable;
     using System.Reflection;
 
     internal static class StripeTypeRegistry
@@ -11,7 +10,7 @@ namespace Stripe.Infrastructure
         /// Dictionary mapping the values contained in the `object` key of JSON payloads returned
         /// by Stripe's API to concrete types of model classes.
         /// </summary>
-        public static readonly ImmutableDictionary<string, Type> ObjectsToTypes = new Dictionary<string, Type>
+        public static readonly IDictionary<string, Type> ObjectsToTypes = new Dictionary<string, Type>
         {
             { "account", typeof(Account) },
             { "account_link", typeof(AccountLink) },
@@ -84,7 +83,7 @@ namespace Stripe.Infrastructure
             { "usage_record", typeof(UsageRecord) },
             { "usage_record_summary", typeof(UsageRecordSummary) },
             { "webhook_endpoint", typeof(WebhookEndpoint) },
-        }.ToImmutableDictionary();
+        };
 
         /// <summary>
         /// Returns the concrete type to use, given a potential type and the value of the `object`

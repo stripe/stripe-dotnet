@@ -2,7 +2,6 @@ namespace Stripe.Infrastructure.FormEncoding
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.Immutable;
 
     internal static class MimeTypes
     {
@@ -22,7 +21,7 @@ namespace Stripe.Infrastructure.FormEncoding
             { ".png", "image/png" },
             { ".xls", "application/vnd.ms-excel" },
             { ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" },
-        }.ToImmutableDictionary();
+        };
 
         /// <summary>Gets the content type for a given file extension.</summary>
         /// <param name="extension">The file extension.</param>
