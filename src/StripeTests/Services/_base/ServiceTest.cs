@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -22,6 +23,33 @@ namespace StripeTests
 
             Assert.Contains("simple", client.LastOptions.Expand);
             Assert.Contains("multi_word_property", client.LastOptions.Expand);
+        }
+
+        [Fact]
+        public void Get_ThrowsIfIdIsNull()
+        {
+            var client = new TestClient();
+            var service = new TestService { Client = client };
+
+            Assert.Throws<ArgumentException>(() => service.Get(null));
+        }
+
+        [Fact]
+        public void Get_ThrowsIfIdIsEmpty()
+        {
+            var client = new TestClient();
+            var service = new TestService { Client = client };
+
+            Assert.Throws<ArgumentException>(() => service.Get(string.Empty));
+        }
+
+        [Fact]
+        public void Get_ThrowsIfIdIsWhitespace()
+        {
+            var client = new TestClient();
+            var service = new TestService { Client = client };
+
+            Assert.Throws<ArgumentException>(() => service.Get(" "));
         }
 
         [Fact]
