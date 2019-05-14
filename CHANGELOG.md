@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.18.0 - 2019-05-14
+* [#1612](https://github.com/stripe/stripe-dotnet/pull/1612) Add support for the `Capability` resource and APIs
+
 ## 25.17.0 - 2019-05-10
 * [#1613](https://github.com/stripe/stripe-dotnet/pull/1613) Add `StartDate` to `Subscription`
 
