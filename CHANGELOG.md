@@ -1,5 +1,9 @@
 # Changelog
 
+## 25.19.0 - 2019-05-16
+* [#1617](https://github.com/stripe/stripe-dotnet/pull/1617) Add `OffSession` parameter to `PaymentIntent`
+* [#1618](https://github.com/stripe/stripe-dotnet/pull/1618) Add support for kana and kanji variations of statement descriptors
+
 ## 25.18.0 - 2019-05-14
 * [#1612](https://github.com/stripe/stripe-dotnet/pull/1612) Add support for the `Capability` resource and APIs
 
