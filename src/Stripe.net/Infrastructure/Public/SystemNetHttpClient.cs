@@ -44,6 +44,19 @@ namespace Stripe
             this.InitUserAgentStrings();
         }
 
+        /// <summary>Default timespan before the request times out.</summary>
+        public static TimeSpan DefaultHttpTimeout => TimeSpan.FromSeconds(80);
+
+        /// <summary>
+        /// Maximum sleep time between tries to send HTTP requests after network failure.
+        /// </summary>
+        public static TimeSpan MaxNetworkRetriesDelay => TimeSpan.FromSeconds(5);
+
+        /// <summary>
+        /// Minimum sleep time between tries to send HTTP requests after network failure.
+        /// </summary>
+        public static TimeSpan MinNetworkRetriesDelay => TimeSpan.FromMilliseconds(500);
+
         /// <summary>
         /// Initializes a new instance of the <see cref="System.Net.Http.HttpClient"/> class
         /// with default parameters.
@@ -56,7 +69,7 @@ namespace Stripe
             // want these headers to be present even when a custom HTTP client is used.
             return new System.Net.Http.HttpClient
             {
-                Timeout = StripeConfiguration.DefaultHttpTimeout,
+                Timeout = DefaultHttpTimeout,
             };
         }
 
@@ -249,13 +262,13 @@ namespace Stripe
 
             // Apply exponential backoff with MinNetworkRetriesDelay on the number of numRetries
             // so far as inputs.
-            var delay = TimeSpan.FromTicks((long)(StripeConfiguration.MinNetworkRetriesDelay.Ticks
+            var delay = TimeSpan.FromTicks((long)(MinNetworkRetriesDelay.Ticks
                 * Math.Pow(2, numRetries - 1)));
 
             // Do not allow the number to exceed MaxNetworkRetriesDelay
-            if (delay > StripeConfiguration.MaxNetworkRetriesDelay)
+            if (delay > MaxNetworkRetriesDelay)
             {
-                delay = StripeConfiguration.MaxNetworkRetriesDelay;
+                delay = MaxNetworkRetriesDelay;
             }
 
             // Apply some jitter by randomizing the value in the range of 75%-100%.
@@ -268,9 +281,9 @@ namespace Stripe
             delay = TimeSpan.FromTicks((long)(delay.Ticks * jitter));
 
             // But never sleep less than the base sleep seconds.
-            if (delay < StripeConfiguration.MinNetworkRetriesDelay)
+            if (delay < MinNetworkRetriesDelay)
             {
-                delay = StripeConfiguration.MinNetworkRetriesDelay;
+                delay = MinNetworkRetriesDelay;
             }
 
             return delay;
