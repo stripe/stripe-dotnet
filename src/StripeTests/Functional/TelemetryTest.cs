@@ -24,38 +24,15 @@ namespace StripeTests
         public void Dispose()
         {
             this.ResetStripeClient();
-            StripeConfiguration.EnableTelemetry = false;
         }
 
         [Fact]
-        public void TelemetryDisabled()
-        {
-            this.ResetStripeClient();
-            FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
-
-            StripeConfiguration.EnableTelemetry = false;
-            var service = new BalanceService();
-            service.Get();
-            service.Get();
-            service.Get();
-
-            this.MockHttpClientFixture.MockHandler.Protected()
-                .Verify(
-                    "SendAsync",
-                    Times.Exactly(3),
-                    ItExpr.Is<HttpRequestMessage>(m =>
-                        !m.Headers.Contains("X-Stripe-Client-Telemetry")),
-                    ItExpr.IsAny<CancellationToken>());
-        }
-
-        [Fact]
-        public void TelemetryEnabled()
+        public void TelemetryWorks()
         {
             this.ResetStripeClient();
             var fakeServer = FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
             fakeServer.Delay = TimeSpan.FromMilliseconds(20);
 
-            StripeConfiguration.EnableTelemetry = true;
             var service = new BalanceService();
             service.Get();
             fakeServer.Delay = TimeSpan.FromMilliseconds(40);
@@ -100,7 +77,6 @@ namespace StripeTests
             var fakeServer = FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
             fakeServer.Delay = TimeSpan.FromMilliseconds(20);
 
-            StripeConfiguration.EnableTelemetry = true;
             var service = new BalanceService();
 
             // the first 2 requests will not contain telemetry
