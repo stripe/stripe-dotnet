@@ -36,19 +36,6 @@ namespace Stripe
         /// <summary>Default base URL for Stripe's Files API.</summary>
         public static string DefaultFilesBase => "https://files.stripe.com";
 
-        /// <summary>Default timespan before the request times out.</summary>
-        public static TimeSpan DefaultHttpTimeout => TimeSpan.FromSeconds(80);
-
-        /// <summary>
-        /// Maximum sleep time between tries to send HTTP requests after network failure.
-        /// </summary>
-        public static TimeSpan MaxNetworkRetriesDelay => TimeSpan.FromSeconds(5);
-
-        /// <summary>
-        /// Minimum sleep time between tries to send HTTP requests after network failure.
-        /// </summary>
-        public static TimeSpan MinNetworkRetriesDelay => TimeSpan.FromMilliseconds(500);
-
         /// <summary>Gets or sets the base URL for Stripe's API.</summary>
         public static string ApiBase { get; set; } = DefaultApiBase;
 
