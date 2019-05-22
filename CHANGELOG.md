@@ -1,5 +1,8 @@
 # Changelog
 
+## 25.19.1 - 2019-05-22
+* [#1624](https://github.com/stripe/stripe-dotnet/pull/1624) Update comment for `TaxId.Type` with new possible types
+
 ## 25.19.0 - 2019-05-16
 * [#1617](https://github.com/stripe/stripe-dotnet/pull/1617) Add `OffSession` parameter to `PaymentIntent`
 * [#1618](https://github.com/stripe/stripe-dotnet/pull/1618) Add support for kana and kanji variations of statement descriptors
