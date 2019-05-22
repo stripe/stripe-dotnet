@@ -9,6 +9,18 @@ namespace Stripe
     /// </summary>
     public interface IStripeClient
     {
+        /// <summary>Gets the base URL for Stripe's API.</summary>
+        /// <value>The base URL for Stripe's API.</value>
+        string ApiBase { get; }
+
+        /// <summary>Gets the base URL for Stripe's OAuth API.</summary>
+        /// <value>The base URL for Stripe's OAuth API.</value>
+        string ConnectBase { get; }
+
+        /// <summary>Gets the base URL for Stripe's Files API.</summary>
+        /// <value>The base URL for Stripe's Files API.</value>
+        string FilesBase { get; }
+
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
         /// <typeparam name="T">Type of the Stripe entity returned by the API.</typeparam>
         /// <param name="method">The HTTP method.</param>

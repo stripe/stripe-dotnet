@@ -21,6 +21,27 @@ namespace Stripe
             this.HttpClient = httpClient ?? BuildDefaultHttpClient();
         }
 
+        /// <summary>Default base URL for Stripe's API.</summary>
+        public static string DefaultApiBase => "https://api.stripe.com";
+
+        /// <summary>Default base URL for Stripe's OAuth API.</summary>
+        public static string DefaultConnectBase => "https://connect.stripe.com";
+
+        /// <summary>Default base URL for Stripe's Files API.</summary>
+        public static string DefaultFilesBase => "https://files.stripe.com";
+
+        /// <summary>Gets or sets the base URL for Stripe's API.</summary>
+        /// <value>The base URL for Stripe's API.</value>
+        public string ApiBase { get; set; } = DefaultApiBase;
+
+        /// <summary>Gets or sets the base URL for Stripe's OAuth API.</summary>
+        /// <value>The base URL for Stripe's OAuth API.</value>
+        public string ConnectBase { get; set; } = DefaultConnectBase;
+
+        /// <summary>Gets or sets the base URL for Stripe's Files API.</summary>
+        /// <value>The base URL for Stripe's Files API.</value>
+        public string FilesBase { get; set; } = DefaultFilesBase;
+
         /// <summary>Gets the <see cref="IHttpClient"/> used to send HTTP requests.</summary>
         /// <value>The <see cref="IHttpClient"/> used to send HTTP requests.</value>
         public IHttpClient HttpClient { get; }
@@ -42,7 +63,7 @@ namespace Stripe
             CancellationToken cancellationToken = default(CancellationToken))
             where T : IStripeEntity
         {
-            var request = new StripeRequest(method, path, options, requestOptions);
+            var request = new StripeRequest(this, method, path, options, requestOptions);
 
             var response = await this.HttpClient.MakeRequestAsync(request, cancellationToken);
 

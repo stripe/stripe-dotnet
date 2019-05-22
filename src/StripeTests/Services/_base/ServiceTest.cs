@@ -68,6 +68,12 @@ namespace StripeTests
 
         private class TestClient : IStripeClient
         {
+            public string ApiBase { get; }
+
+            public string ConnectBase { get; }
+
+            public string FilesBase { get; }
+
             public BaseOptions LastOptions { get; protected set; }
 
             public Task<T> RequestAsync<T>(
