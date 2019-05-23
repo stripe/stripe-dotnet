@@ -56,6 +56,7 @@ namespace Stripe.Infrastructure
             { "person", typeof(Person) },
             { "plan", typeof(Plan) },
             { "product", typeof(Product) },
+            { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
             { "radar.value_list", typeof(Radar.ValueList) },
             { "radar.value_list_item", typeof(Radar.ValueListItem) },
             { "recipient", typeof(Recipient) },
