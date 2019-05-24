@@ -1,5 +1,9 @@
 # Changelog
 
+## 25.20.0 - 2019-05-24
+* [#1626](https://github.com/stripe/stripe-dotnet/pull/1626) Add support for `radar.early_warning_fraud` resource
+* [#1629](https://github.com/stripe/stripe-dotnet/pull/1629) Add missing `description` parameter to `PayoutCreateOptions`
+
 ## 25.19.1 - 2019-05-22
 * [#1624](https://github.com/stripe/stripe-dotnet/pull/1624) Update comment for `TaxId.Type` with new possible types
 
