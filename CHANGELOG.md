@@ -1,5 +1,8 @@
 # Changelog
 
+## 26.0.0 - 2019-05-24
+* [#1628](https://github.com/stripe/stripe-dotnet/pull/1628) Pin library to API version `2019-05-16`
+
 ## 25.20.0 - 2019-05-24
 * [#1626](https://github.com/stripe/stripe-dotnet/pull/1626) Add support for `radar.early_warning_fraud` resource
 * [#1629](https://github.com/stripe/stripe-dotnet/pull/1629) Add missing `description` parameter to `PayoutCreateOptions`
