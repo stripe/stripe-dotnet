@@ -49,7 +49,15 @@ namespace Stripe
                 return apiKey;
             }
 
-            set => apiKey = value;
+            set
+            {
+                if (value != apiKey)
+                {
+                    StripeClient = null;
+                }
+
+                apiKey = value;
+            }
         }
 
 #if NET45 || NETSTANDARD2_0
@@ -74,7 +82,15 @@ namespace Stripe
                 return clientId;
             }
 
-            set => clientId = value;
+            set
+            {
+                if (value != clientId)
+                {
+                    StripeClient = null;
+                }
+
+                clientId = value;
+            }
         }
 
         /// <summary>
@@ -102,7 +118,9 @@ namespace Stripe
         /// <code>
         /// System.Net.Http.HttpMessageHandler messageHandler = ...;
         /// var httpClient = new System.Net.HttpClient(messageHandler);
-        /// var stripeClient = new Stripe.StripeClient(httpClient: new Stripe.SystemNetHttpClient(httpClient));
+        /// var stripeClient = new Stripe.StripeClient(
+        ///     stripeApiKey,
+        ///     httpClient: new Stripe.SystemNetHttpClient(httpClient));
         /// Stripe.StripeConfiguration.StripeClient = stripeClient;
         /// </code>
         /// </example>
@@ -112,7 +130,7 @@ namespace Stripe
             {
                 if (stripeClient == null)
                 {
-                    stripeClient = new StripeClient();
+                    stripeClient = BuildDefaultStripeClient();
                 }
 
                 return stripeClient;
@@ -182,6 +200,30 @@ namespace Stripe
         public static void SetApiKey(string newApiKey)
         {
             ApiKey = newApiKey;
+        }
+
+        private static StripeClient BuildDefaultStripeClient()
+        {
+            if (string.IsNullOrEmpty(ApiKey))
+            {
+                var message = "No API key provided. Set your API key using "
+                    + "`StripeConfiguration.ApiKey = \"<API-KEY>\"`. You can generate API keys "
+                    + "from the Stripe Dashboard. See "
+                    + "https://stripe.com/docs/api/authentication for details or contact support "
+                    + "at https://support.stripe.com/email if you have any questions.";
+                throw new StripeException(message);
+            }
+
+            if (StringUtils.ContainsWhitespace(ApiKey))
+            {
+                var message = "Your API key is invalid, as it contains whitespace. You can "
+                    + "double-check your API key from the Stripe Dashboard. See "
+                    + "https://stripe.com/docs/api/authentication for details or contact support "
+                    + "at https://support.stripe.com/email if you have any questions.";
+                throw new StripeException(message);
+            }
+
+            return new StripeClient(ApiKey, ClientId);
         }
     }
 }

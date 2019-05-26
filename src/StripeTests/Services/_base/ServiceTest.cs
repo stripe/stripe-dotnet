@@ -70,6 +70,10 @@ namespace StripeTests
         {
             public string ApiBase { get; }
 
+            public string ApiKey { get; }
+
+            public string ClientId { get; }
+
             public string ConnectBase { get; }
 
             public string FilesBase { get; }

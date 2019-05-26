@@ -44,6 +44,7 @@ namespace StripeTests
         {
             var options = new OAuthAuthorizeUrlOptions
             {
+                ClientId = "ca_my_client_id",
                 Scope = "read_write",
                 State = "csrf_token",
                 StripeUser = new OAuthAuthorizeUrlStripeUserOptions
@@ -61,7 +62,7 @@ namespace StripeTests
             Assert.Equal("/oauth/authorize", uri.AbsolutePath);
 
             var query = this.ParseQueryString(uri.Query);
-            Assert.Equal("ca_123", query["client_id"]);
+            Assert.Equal("ca_my_client_id", query["client_id"]);
             Assert.Equal("code", query["response_type"]);
             Assert.Equal("read_write", query["scope"]);
             Assert.Equal("csrf_token", query["state"]);
@@ -88,6 +89,17 @@ namespace StripeTests
         }
 
         [Fact]
+        public void AuthorizeUrl_UseClientIdFromStripeClientIfNotProvided()
+        {
+            var options = new OAuthAuthorizeUrlOptions { Scope = "read_write" };
+
+            var uri = this.service.AuthorizeUrl(options);
+
+            var query = this.ParseQueryString(uri.Query);
+            Assert.Equal(StripeConfiguration.StripeClient.ClientId, query["client_id"]);
+        }
+
+        [Fact]
         public void Create()
         {
             // stripe-mock doesn't support OAuth endpoints, so stub the request
@@ -97,7 +109,7 @@ namespace StripeTests
             var oauthToken = this.service.Create(this.createOptions);
             this.AssertRequest(HttpMethod.Post, "/oauth/token");
             Assert.NotNull(oauthToken);
-            Assert.Equal("sk_test_access_token", oauthToken.AccessToken);
+            Assert.Equal("acct_test_token", oauthToken.StripeUserId);
         }
 
         [Fact]

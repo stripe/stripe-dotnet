@@ -14,9 +14,6 @@ namespace StripeTests
         /// </remarks>
         private const string MockMinimumVersion = "0.57.0";
 
-        private readonly string origApiKey;
-        private readonly string origClientId;
-
         private readonly string port;
 
         public StripeMockFixture()
@@ -31,19 +28,10 @@ namespace StripeTests
             }
 
             this.EnsureStripeMockMinimumVersion();
-
-            this.origApiKey = StripeConfiguration.ApiKey;
-            this.origClientId = StripeConfiguration.ClientId;
-
-            StripeConfiguration.ApiKey = "sk_test_123";
-            StripeConfiguration.ClientId = "ca_123";
         }
 
         public void Dispose()
         {
-            StripeConfiguration.ApiKey = this.origApiKey;
-            StripeConfiguration.ClientId = this.origClientId;
-
             StripeMockHandler.StopStripeMock();
         }
 
@@ -57,7 +45,10 @@ namespace StripeTests
         /// </param>
         public StripeClient BuildStripeClient(IHttpClient httpClient = null)
         {
-            return new StripeClient(httpClient: httpClient)
+            return new StripeClient(
+                "sk_test_123",
+                "ca_123",
+                httpClient: httpClient)
             {
                 ApiBase = $"http://localhost:{this.port}",
                 FilesBase = $"http://localhost:{this.port}",

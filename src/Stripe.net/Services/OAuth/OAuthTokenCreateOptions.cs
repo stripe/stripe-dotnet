@@ -24,7 +24,7 @@ namespace Stripe
         /// depends on whether the <c>client_id</c> used was production or development).
         /// </summary>
         [JsonProperty("client_secret")]
-        public string ClientSecret { get; set; } = StripeConfiguration.ApiKey;
+        public string ClientSecret { get; set; }
 
         /// <summary>The value of the <c>code</c>, depending on the <c>grant_type</c>.</summary>
         [JsonProperty("code")]

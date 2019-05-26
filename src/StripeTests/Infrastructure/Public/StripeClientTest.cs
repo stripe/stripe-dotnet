@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -17,7 +18,9 @@ namespace StripeTests
         public StripeClientTest()
         {
             this.httpClient = new DummyHttpClient();
-            this.stripeClient = new StripeClient(this.httpClient);
+            this.stripeClient = new StripeClient(
+                "sk_test_123",
+                httpClient: this.httpClient);
             this.options = new ChargeCreateOptions
             {
                 Amount = 123,
@@ -25,6 +28,26 @@ namespace StripeTests
                 Source = "tok_visa",
             };
             this.requestOptions = new RequestOptions();
+        }
+
+        [Fact]
+        public void Ctor_ThrowsIfApiKeyIsNull()
+        {
+            Assert.Throws<ArgumentNullException>(() => new StripeClient(null));
+        }
+
+        [Fact]
+        public void Ctor_ThrowsIfApiKeyIsEmpty()
+        {
+            var exception = Assert.Throws<ArgumentException>(() => new StripeClient(string.Empty));
+            Assert.Contains("API key cannot be the empty string.", exception.Message);
+        }
+
+        [Fact]
+        public void Ctor_ThrowsIfApiKeyContainsWhitespace()
+        {
+            var exception = Assert.Throws<ArgumentException>(() => new StripeClient("sk_test_123\n"));
+            Assert.Contains("API key cannot contain whitespace.", exception.Message);
         }
 
         [Fact]
