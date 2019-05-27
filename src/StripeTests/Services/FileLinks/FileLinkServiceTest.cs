@@ -17,8 +17,10 @@ namespace StripeTests
         private readonly FileLinkUpdateOptions updateOptions;
         private readonly FileLinkListOptions listOptions;
 
-        public FileLinkServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public FileLinkServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new FileLinkService();
 

@@ -21,8 +21,10 @@ namespace StripeTests
         private readonly SourceUpdateOptions updateOptions;
         private readonly SourceVerifyOptions verifyOptions;
 
-        public SourceServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public SourceServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new SourceService();
 

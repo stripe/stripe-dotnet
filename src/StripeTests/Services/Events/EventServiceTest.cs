@@ -14,8 +14,10 @@ namespace StripeTests
         private readonly EventService service;
         private readonly EventListOptions listOptions;
 
-        public EventServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public EventServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new EventService();
 

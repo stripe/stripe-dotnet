@@ -19,8 +19,10 @@ namespace StripeTests
         private readonly SubscriptionScheduleReleaseOptions releaseOptions;
         private readonly SubscriptionScheduleUpdateOptions updateOptions;
 
-        public SubscriptionScheduleServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public SubscriptionScheduleServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new SubscriptionScheduleService();
 

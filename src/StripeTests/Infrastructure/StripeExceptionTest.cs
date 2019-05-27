@@ -6,6 +6,11 @@ namespace StripeTests
 
     public class StripeExceptionTest : BaseStripeTest
     {
+        public StripeExceptionTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public async Task SetsStripeResponse()
         {

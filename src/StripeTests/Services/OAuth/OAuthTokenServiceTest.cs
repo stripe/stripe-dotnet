@@ -19,8 +19,10 @@ namespace StripeTests
         private readonly OAuthTokenCreateOptions createOptions;
         private readonly OAuthDeauthorizeOptions deauthorizeOptions;
 
-        public OAuthTokenServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public OAuthTokenServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new OAuthTokenService();
 

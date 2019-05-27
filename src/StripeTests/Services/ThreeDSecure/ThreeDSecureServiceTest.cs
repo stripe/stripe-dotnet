@@ -12,8 +12,10 @@ namespace StripeTests
         private readonly ThreeDSecureService service;
         private readonly ThreeDSecureCreateOptions createOptions;
 
-        public ThreeDSecureServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public ThreeDSecureServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ThreeDSecureService();
 

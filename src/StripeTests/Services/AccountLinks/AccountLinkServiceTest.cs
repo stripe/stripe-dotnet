@@ -12,8 +12,10 @@ namespace StripeTests
         private readonly AccountLinkService service;
         private readonly AccountLinkCreateOptions createOptions;
 
-        public AccountLinkServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public AccountLinkServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new AccountLinkService();
 

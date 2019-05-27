@@ -11,8 +11,10 @@ namespace StripeTests
     {
         private readonly BalanceService service;
 
-        public BalanceServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public BalanceServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new BalanceService();
         }
