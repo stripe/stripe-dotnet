@@ -16,8 +16,10 @@ namespace StripeTests.Issuing
         private readonly AuthorizationUpdateOptions updateOptions;
         private readonly AuthorizationListOptions listOptions;
 
-        public AuthorizationServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public AuthorizationServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new AuthorizationService();
 

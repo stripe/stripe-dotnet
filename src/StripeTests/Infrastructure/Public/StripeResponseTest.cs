@@ -8,8 +8,8 @@ namespace StripeTests
 
     public class StripeResponseTest : BaseStripeTest
     {
-        public StripeResponseTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public StripeResponseTest(StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
         {
         }
 

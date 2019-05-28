@@ -19,8 +19,10 @@ namespace StripeTests
         private readonly PaymentMethodListOptions listOptions;
         private readonly PaymentMethodUpdateOptions updateOptions;
 
-        public PaymentMethodServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public PaymentMethodServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new PaymentMethodService();
 

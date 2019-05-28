@@ -1,6 +1,5 @@
 namespace StripeTests
 {
-    using System;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -8,31 +7,22 @@ namespace StripeTests
     using Moq;
     using Moq.Protected;
     using Stripe;
-    using Stripe.Infrastructure;
 
-    public class MockHttpClientFixture : IDisposable
+    public class MockHttpClientFixture
     {
-        private readonly IStripeClient origClient;
-
         public MockHttpClientFixture()
         {
             this.MockHandler = new Mock<HttpClientHandler>
             {
                 CallBase = true
             };
-            var httpClient = new System.Net.Http.HttpClient(this.MockHandler.Object);
-            var stripeClient = new StripeClient(new Stripe.SystemNetHttpClient(httpClient));
-
-            this.origClient = StripeConfiguration.StripeClient;
-            StripeConfiguration.StripeClient = stripeClient;
+            this.HttpClient = new SystemNetHttpClient(
+                new System.Net.Http.HttpClient(this.MockHandler.Object));
         }
 
         public Mock<HttpClientHandler> MockHandler { get; }
 
-        public void Dispose()
-        {
-            StripeConfiguration.StripeClient = this.origClient;
-        }
+        public SystemNetHttpClient HttpClient { get; }
 
         /// <summary>
         /// Resets the mock's state.

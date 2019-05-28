@@ -14,8 +14,10 @@ namespace StripeTests
         private readonly EphemeralKeyService service;
         private readonly EphemeralKeyCreateOptions createOptions;
 
-        public EphemeralKeyServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public EphemeralKeyServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new EphemeralKeyService();
 

@@ -19,8 +19,10 @@ namespace StripeTests
         private readonly BankAccountListOptions listOptions;
         private readonly BankAccountVerifyOptions verifyOptions;
 
-        public BankAccountServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public BankAccountServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new BankAccountService();
 
