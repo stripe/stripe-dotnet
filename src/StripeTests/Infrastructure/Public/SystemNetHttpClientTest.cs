@@ -32,7 +32,12 @@ namespace StripeTests
                 .Returns(Task.FromResult(responseMessage));
             var client = new SystemNetHttpClient(
                 new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
-            var request = new StripeRequest(HttpMethod.Post, "/foo", null, null);
+            var request = new StripeRequest(
+                StripeConfiguration.StripeClient,
+                HttpMethod.Post,
+                "/foo",
+                null,
+                null);
 
             var response = await client.MakeRequestAsync(request);
 
@@ -66,7 +71,12 @@ namespace StripeTests
 
                 var client = new SystemNetHttpClient(
                     new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
-                var request = new StripeRequest(HttpMethod.Post, "/foo", null, null);
+                var request = new StripeRequest(
+                    StripeConfiguration.StripeClient,
+                    HttpMethod.Post,
+                    "/foo",
+                    null,
+                    null);
                 await client.MakeRequestAsync(request);
 
                 this.MockHttpClientFixture.MockHandler.Protected()

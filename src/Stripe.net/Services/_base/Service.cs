@@ -13,6 +13,8 @@ namespace Stripe
     public abstract class Service<EntityReturned>
         where EntityReturned : IStripeEntity
     {
+        private IStripeClient client;
+
         protected Service()
         {
         }
@@ -26,13 +28,17 @@ namespace Stripe
 
         public abstract string BasePath { get; }
 
-        public virtual string BaseUrl => StripeConfiguration.ApiBase;
+        public virtual string BaseUrl => this.Client.ApiBase;
 
         /// <summary>
         /// Gets or sets the client used by this service to send requests. If <c>null</c>, then the
         /// default client in <see cref="StripeConfiguration.StripeClient"/> is used instead.
         /// </summary>
-        public IStripeClient Client { get; set; }
+        public IStripeClient Client
+        {
+            get => this.client ?? StripeConfiguration.StripeClient;
+            set => this.client = value;
+        }
 
         protected EntityReturned CreateEntity(BaseOptions options, RequestOptions requestOptions)
         {
@@ -217,8 +223,7 @@ namespace Stripe
         {
             options = this.SetupOptions(options, IsStripeList<T>());
             requestOptions = this.SetupRequestOptions(requestOptions);
-            var client = this.Client ?? StripeConfiguration.StripeClient;
-            return await client.RequestAsync<T>(
+            return await this.Client.RequestAsync<T>(
                 method,
                 path,
                 options,

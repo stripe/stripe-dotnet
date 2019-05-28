@@ -16,21 +16,28 @@ namespace Stripe
         private readonly BaseOptions options;
 
         /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
+        /// <param name="client">The client creating the request.</param>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The path of the request.</param>
         /// <param name="options">The parameters of the request.</param>
         /// <param name="requestOptions">The special modifiers of the request.</param>
         public StripeRequest(
+            IStripeClient client,
             HttpMethod method,
             string path,
             BaseOptions options,
             RequestOptions requestOptions)
         {
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
             this.options = options;
 
             this.Method = method;
 
-            this.Uri = BuildUri(method, path, options, requestOptions);
+            this.Uri = BuildUri(client, method, path, options, requestOptions);
 
             this.AuthorizationHeader = BuildAuthorizationHeader(requestOptions);
 
@@ -75,6 +82,7 @@ namespace Stripe
         }
 
         private static Uri BuildUri(
+            IStripeClient client,
             HttpMethod method,
             string path,
             BaseOptions options,
@@ -82,7 +90,7 @@ namespace Stripe
         {
             var b = new StringBuilder();
 
-            b.Append(requestOptions?.BaseUrl ?? StripeConfiguration.ApiBase);
+            b.Append(requestOptions?.BaseUrl ?? client.ApiBase);
             b.Append(path);
 
             if ((method != HttpMethod.Post) && (options != null))
