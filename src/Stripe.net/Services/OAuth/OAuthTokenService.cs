@@ -21,7 +21,7 @@ namespace Stripe
 
         public override string BasePath => "/oauth/token";
 
-        public override string BaseUrl => StripeConfiguration.ConnectBase;
+        public override string BaseUrl => this.Client.ConnectBase;
 
         public virtual Uri AuthorizeUrl(OAuthAuthorizeUrlOptions options, bool express = false)
         {
@@ -31,7 +31,7 @@ namespace Stripe
                 path = "/express" + path;
             }
 
-            return new Uri(StripeConfiguration.ConnectBase + path + "?" +
+            return new Uri(this.Client.ConnectBase + path + "?" +
                 FormEncoder.CreateQueryString(options));
         }
 

@@ -27,18 +27,6 @@ namespace Stripe
         /// <summary>API version used by Stripe.net.</summary>
         public static string ApiVersion => "2019-05-16";
 
-        /// <summary>Default base URL for Stripe's API.</summary>
-        public static string DefaultApiBase => "https://api.stripe.com";
-
-        /// <summary>Default base URL for Stripe's OAuth API.</summary>
-        public static string DefaultConnectBase => "https://connect.stripe.com";
-
-        /// <summary>Default base URL for Stripe's Files API.</summary>
-        public static string DefaultFilesBase => "https://files.stripe.com";
-
-        /// <summary>Gets or sets the base URL for Stripe's API.</summary>
-        public static string ApiBase { get; set; } = DefaultApiBase;
-
 #if NET45 || NETSTANDARD2_0
         /// <summary>Gets or sets the API key.</summary>
         /// <remarks>
@@ -88,12 +76,6 @@ namespace Stripe
 
             set => clientId = value;
         }
-
-        /// <summary>Gets or sets the base URL for Stripe's OAuth API.</summary>
-        public static string ConnectBase { get; set; } = DefaultConnectBase;
-
-        /// <summary>Gets or sets the base URL for Stripe's Files API.</summary>
-        public static string FilesBase { get; set; } = DefaultFilesBase;
 
         /// <summary>
         /// Gets or sets the settings used for deserializing JSON objects returned by Stripe's API.
@@ -191,18 +173,6 @@ namespace Stripe
         // TODO: remove everything below this in a future major version
 
         /// <summary>
-        /// Sets the base URL.for Stripe's API.
-        /// This method is deprecated and will be removed in a future version, please use the
-        /// <see cref="ApiBase"/> property setter instead.
-        /// </summary>
-        /// <param name="baseUrl">Base URL.for Stripe's API.</param>
-        [Obsolete("Use StripeConfiguration.ApiBase getter instead.")]
-        public static void SetApiBase(string baseUrl)
-        {
-            ApiBase = baseUrl;
-        }
-
-        /// <summary>
         /// Sets the API key.
         /// This method is deprecated and will be removed in a future version, please use the
         /// <see cref="ApiKey"/> property setter instead.
@@ -212,30 +182,6 @@ namespace Stripe
         public static void SetApiKey(string newApiKey)
         {
             ApiKey = newApiKey;
-        }
-
-        /// <summary>
-        /// Sets the base URL.for Stripe's OAuth API.
-        /// This method is deprecated and will be removed in a future version, please use the
-        /// <see cref="ConnectBase"/> property setter instead.
-        /// </summary>
-        /// <param name="baseUrl">Base URL.for Stripe's OAuth API.</param>
-        [Obsolete("Use StripeConfiguration.ConnectBase setter instead.")]
-        public static void SetConnectBase(string baseUrl)
-        {
-            ConnectBase = baseUrl;
-        }
-
-        /// <summary>
-        /// Sets the base URL.for Stripe's Files API.
-        /// This method is deprecated and will be removed in a future version, please use the
-        /// <see cref="FilesBase"/> property setter instead.
-        /// </summary>
-        /// <param name="baseUrl">Base URL.for Stripe's Files API.</param>
-        [Obsolete("Use StripeConfiguration.FilesBase setter instead.")]
-        public static void SetFilesBase(string baseUrl)
-        {
-            FilesBase = baseUrl;
         }
     }
 }

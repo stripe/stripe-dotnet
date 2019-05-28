@@ -24,14 +24,14 @@ namespace Stripe
         public virtual File Create(FileCreateOptions options, RequestOptions requestOptions = null)
         {
             requestOptions = this.SetupRequestOptions(requestOptions);
-            requestOptions.BaseUrl = requestOptions.BaseUrl ?? StripeConfiguration.FilesBase;
+            requestOptions.BaseUrl = requestOptions.BaseUrl ?? this.Client.FilesBase;
             return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<File> CreateAsync(FileCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             requestOptions = this.SetupRequestOptions(requestOptions);
-            requestOptions.BaseUrl = requestOptions.BaseUrl ?? StripeConfiguration.FilesBase;
+            requestOptions.BaseUrl = requestOptions.BaseUrl ?? this.Client.FilesBase;
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
