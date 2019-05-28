@@ -16,8 +16,10 @@ namespace StripeTests
         private readonly CapabilityUpdateOptions updateOptions;
         private readonly CapabilityListOptions listOptions;
 
-        public CapabilityServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public CapabilityServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new CapabilityService();
 

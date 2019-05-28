@@ -18,8 +18,10 @@ namespace StripeTests.Terminal
         private readonly LocationListOptions listOptions;
         private readonly LocationUpdateOptions updateOptions;
 
-        public LocationServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public LocationServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new LocationService();
 

@@ -14,19 +14,24 @@ namespace StripeTests
 
     public class SystemNetHttpClientTest : BaseStripeTest
     {
+        public SystemNetHttpClientTest(MockHttpClientFixture mockHttpClientFixture)
+            : base(mockHttpClientFixture)
+        {
+        }
+
         [Fact]
         public async Task MakeRequestAsync()
         {
             var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
             responseMessage.Content = new StringContent("Hello world!");
-            var mockHandler = new Mock<HttpClientHandler>();
-            mockHandler.Protected()
+            this.MockHttpClientFixture.MockHandler.Protected()
                 .Setup<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
                     ItExpr.IsAny<CancellationToken>())
                 .Returns(Task.FromResult(responseMessage));
-            var client = new SystemNetHttpClient(new System.Net.Http.HttpClient(mockHandler.Object));
+            var client = new SystemNetHttpClient(
+                new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
             var request = new StripeRequest(HttpMethod.Post, "/foo", null, null);
 
             var response = await client.MakeRequestAsync(request);
@@ -52,19 +57,19 @@ namespace StripeTests
 
                 var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
                 responseMessage.Content = new StringContent("Hello world!");
-                var mockHandler = new Mock<HttpClientHandler>();
-                mockHandler.Protected()
+                this.MockHttpClientFixture.MockHandler.Protected()
                     .Setup<Task<HttpResponseMessage>>(
                         "SendAsync",
                         ItExpr.IsAny<HttpRequestMessage>(),
                         ItExpr.IsAny<CancellationToken>())
                     .Returns(Task.FromResult(responseMessage));
 
-                var client = new SystemNetHttpClient(new System.Net.Http.HttpClient(mockHandler.Object));
+                var client = new SystemNetHttpClient(
+                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
                 var request = new StripeRequest(HttpMethod.Post, "/foo", null, null);
                 await client.MakeRequestAsync(request);
 
-                mockHandler.Protected()
+                this.MockHttpClientFixture.MockHandler.Protected()
                     .Verify(
                         "SendAsync",
                         Times.Once(),

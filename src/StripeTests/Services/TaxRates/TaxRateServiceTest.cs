@@ -17,8 +17,10 @@ namespace StripeTests
         private readonly TaxRateUpdateOptions updateOptions;
         private readonly TaxRateListOptions listOptions;
 
-        public TaxRateServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public TaxRateServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new TaxRateService();
 

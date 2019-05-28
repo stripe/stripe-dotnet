@@ -11,8 +11,10 @@ namespace StripeTests
     {
         private readonly DiscountService service;
 
-        public DiscountServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public DiscountServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new DiscountService();
         }

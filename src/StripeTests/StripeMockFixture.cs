@@ -56,6 +56,19 @@ namespace StripeTests
         }
 
         /// <summary>
+        /// Creates and returns a new instance of <see cref="StripeClient"/> suitable for use with
+        /// stripe-mock.
+        /// </summary>
+        /// <param name="httpClient">
+        /// The <see cref="IHttpClient"/> client to use. If <c>null</c>, an HTTP client will be
+        /// created with default parameters.
+        /// </param>
+        public StripeClient BuildStripeClient(IHttpClient httpClient = null)
+        {
+            return new StripeClient(httpClient: httpClient);
+        }
+
+        /// <summary>
         /// Gets fixture data with expansions specified. Expansions are specified the same way as
         /// they are in the normal API like <c>customer</c> or <c>data.customer</c>.
         /// Use the special <c>*</c> character to specify that all fields should be

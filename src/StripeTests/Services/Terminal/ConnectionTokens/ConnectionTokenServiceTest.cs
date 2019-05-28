@@ -13,8 +13,10 @@ namespace StripeTests.Terminal
         private readonly ConnectionTokenService service;
         private readonly ConnectionTokenCreateOptions createOptions;
 
-        public ConnectionTokenServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public ConnectionTokenServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ConnectionTokenService();
 

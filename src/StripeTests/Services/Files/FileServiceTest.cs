@@ -18,8 +18,10 @@ namespace StripeTests
         private readonly FileCreateOptions createOptions;
         private readonly FileListOptions listOptions;
 
-        public FileServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public FileServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new FileService();
 

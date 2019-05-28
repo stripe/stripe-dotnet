@@ -14,8 +14,10 @@ namespace StripeTests
         private readonly ApplicationFeeService service;
         private readonly ApplicationFeeListOptions listOptions;
 
-        public ApplicationFeeServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public ApplicationFeeServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ApplicationFeeService();
 

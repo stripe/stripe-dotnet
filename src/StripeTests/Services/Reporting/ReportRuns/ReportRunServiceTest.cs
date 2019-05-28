@@ -16,9 +16,11 @@ namespace StripeTests.Reporting
         private readonly ReportRunCreateOptions createOptions;
         private readonly ReportRunListOptions listOptions;
 
-        public ReportRunServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
-        {
+        public ReportRunServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
+       {
             this.service = new ReportRunService();
 
             this.createOptions = new ReportRunCreateOptions

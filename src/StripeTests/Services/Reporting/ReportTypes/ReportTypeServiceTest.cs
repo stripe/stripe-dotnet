@@ -14,8 +14,10 @@ namespace StripeTests.Reporting
         private readonly ReportTypeService service;
         private readonly ReportTypeListOptions listOptions;
 
-        public ReportTypeServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public ReportTypeServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
             this.service = new ReportTypeService();
 
