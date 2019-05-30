@@ -22,7 +22,7 @@ namespace StripeTests
         [Fact]
         public void Date()
         {
-            var response = new AccountService().GetSelf().StripeResponse;
+            var response = new AccountService { Client = this.StripeClient }.GetSelf().StripeResponse;
 
             Assert.NotNull(response.Date);
         }
@@ -31,7 +31,7 @@ namespace StripeTests
         public void IdempotencyKey_Present()
         {
             var requestOptions = new RequestOptions { IdempotencyKey = "idempotency_key" };
-            var response = new AccountService().GetSelf(requestOptions).StripeResponse;
+            var response = new AccountService { Client = this.StripeClient }.GetSelf(requestOptions).StripeResponse;
 
             Assert.Equal("idempotency_key", response.IdempotencyKey);
         }
@@ -39,7 +39,7 @@ namespace StripeTests
         [Fact]
         public void IdempotencyKey_Absent()
         {
-            var response = new AccountService().GetSelf().StripeResponse;
+            var response = new AccountService { Client = this.StripeClient }.GetSelf().StripeResponse;
 
             Assert.Null(response.IdempotencyKey);
         }
@@ -47,7 +47,7 @@ namespace StripeTests
         [Fact]
         public void RequestId()
         {
-            var response = new AccountService().GetSelf().StripeResponse;
+            var response = new AccountService { Client = this.StripeClient }.GetSelf().StripeResponse;
 
             Assert.NotNull(response.RequestId);
         }

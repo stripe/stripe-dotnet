@@ -22,7 +22,7 @@ namespace StripeTests
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new SkuService();
+            this.service = new SkuService { Client = this.StripeClient };
 
             this.createOptions = new SkuCreateOptions
             {

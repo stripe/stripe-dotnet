@@ -30,7 +30,7 @@ namespace StripeTests
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new InvoiceService();
+            this.service = new InvoiceService { Client = this.StripeClient };
 
             this.createOptions = new InvoiceCreateOptions
             {

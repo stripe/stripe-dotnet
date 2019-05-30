@@ -20,7 +20,7 @@ namespace StripeTests.Radar
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new ValueListItemService();
+            this.service = new ValueListItemService { Client = this.StripeClient };
 
             this.createOptions = new ValueListItemCreateOptions
             {

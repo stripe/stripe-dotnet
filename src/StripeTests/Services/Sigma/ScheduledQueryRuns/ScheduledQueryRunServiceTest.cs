@@ -19,7 +19,7 @@ namespace StripeTests
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new ScheduledQueryRunService();
+            this.service = new ScheduledQueryRunService { Client = this.StripeClient };
 
             this.listOptions = new ScheduledQueryRunListOptions
             {

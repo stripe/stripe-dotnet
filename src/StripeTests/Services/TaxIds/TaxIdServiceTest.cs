@@ -21,7 +21,7 @@ namespace StripeTests
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new TaxIdService();
+            this.service = new TaxIdService { Client = this.StripeClient };
 
             this.createOptions = new TaxIdCreateOptions
             {

@@ -19,7 +19,7 @@ namespace StripeTests
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new EventService();
+            this.service = new EventService { Client = this.StripeClient };
 
             this.listOptions = new EventListOptions
             {

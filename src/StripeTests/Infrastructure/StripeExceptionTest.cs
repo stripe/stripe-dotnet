@@ -15,7 +15,10 @@ namespace StripeTests
         public async Task SetsStripeResponse()
         {
             var exception = await Assert.ThrowsAsync<StripeException>(async () =>
-                await new CouponService().CreateAsync(new CouponCreateOptions()));
+            {
+                await new CouponService { Client = this.StripeClient }
+                    .CreateAsync(new CouponCreateOptions());
+            });
 
             Assert.NotNull(exception);
             Assert.NotNull(exception.StripeError);
