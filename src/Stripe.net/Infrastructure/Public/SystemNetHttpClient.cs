@@ -21,6 +21,10 @@ namespace Stripe
     {
         private readonly System.Net.Http.HttpClient httpClient;
 
+        private readonly int maxNetworkRetries;
+
+        private readonly AppInfo appInfo;
+
         private readonly RequestTelemetry requestTelemetry = new RequestTelemetry();
 
         private readonly object randLock = new object();
@@ -38,10 +42,25 @@ namespace Stripe
         /// The <see cref="System.Net.Http.HttpClient"/> client to use. If <c>null</c>, an HTTP
         /// client will be created with default parameters.
         /// </param>
-        public SystemNetHttpClient(System.Net.Http.HttpClient httpClient = null)
+        /// <param name="maxNetworkRetries">
+        /// The maximum number of times the client will retry requests that fail due to an
+        /// intermittent problem
+        /// </param>
+        /// <param name="appInfo">
+        /// Information about the "app" which this integration belongs to. This should be reserved
+        /// for plugins that wish to identify themselves with Stripe.
+        /// </param>
+        public SystemNetHttpClient(
+            System.Net.Http.HttpClient httpClient = null,
+            int maxNetworkRetries = 0,
+            AppInfo appInfo = null)
         {
             this.httpClient = httpClient ?? BuildDefaultSystemNetHttpClient();
-            this.InitUserAgentStrings();
+            this.maxNetworkRetries = maxNetworkRetries;
+            this.appInfo = appInfo;
+
+            this.stripeClientUserAgentString = this.BuildStripeClientUserAgentString();
+            this.userAgentString = this.BuildUserAgentString();
         }
 
         /// <summary>Default timespan before the request times out.</summary>
@@ -58,6 +77,13 @@ namespace Stripe
         public static TimeSpan MinNetworkRetriesDelay => TimeSpan.FromMilliseconds(500);
 
         /// <summary>
+        /// Gets or sets a value indicating whether the client should sleep between automatic
+        /// request retries.
+        /// </summary>
+        /// <remarks>This is an internal property meant to be used in tests only.</remarks>
+        internal bool NetworkRetriesSleep { get; set; } = true;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="System.Net.Http.HttpClient"/> class
         /// with default parameters.
         /// </summary>
@@ -65,22 +91,12 @@ namespace Stripe
         public static System.Net.Http.HttpClient BuildDefaultSystemNetHttpClient()
         {
             // We set the User-Agent and X-Stripe-Client-User-Agent headers in each request
-            // message rather than through the client's <c>DefaultRequestHeaders</c> because we
+            // message rather than through the client's `DefaultRequestHeaders` because we
             // want these headers to be present even when a custom HTTP client is used.
             return new System.Net.Http.HttpClient
             {
                 Timeout = DefaultHttpTimeout,
             };
-        }
-
-        /// <summary>
-        /// Initializes the strings used for the <c>User-Agent</c> and
-        /// <c>X-Stripe-Client-User-Agent</c> headers.
-        /// </summary>
-        public void InitUserAgentStrings()
-        {
-            this.stripeClientUserAgentString = BuildStripeClientUserAgentString();
-            this.userAgentString = BuildUserAgentString();
         }
 
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
@@ -125,7 +141,7 @@ namespace Stripe
 
                 duration = stopwatch.Elapsed;
 
-                if (!ShouldRetry(
+                if (!this.ShouldRetry(
                     retry,
                     requestException != null,
                     request.Method,
@@ -157,7 +173,7 @@ namespace Stripe
             };
         }
 
-        private static string BuildStripeClientUserAgentString()
+        private string BuildStripeClientUserAgentString()
         {
             var values = new Dictionary<string, object>
             {
@@ -176,34 +192,34 @@ namespace Stripe
             }
 #endif
 
-            if (StripeConfiguration.AppInfo != null)
+            if (this.appInfo != null)
             {
-                values.Add("application", StripeConfiguration.AppInfo);
+                values.Add("application", this.appInfo);
             }
 
             return JsonConvert.SerializeObject(values, Formatting.None);
         }
 
-        private static string BuildUserAgentString()
+        private string BuildUserAgentString()
         {
             var userAgent = $"Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}";
 
-            if (StripeConfiguration.AppInfo != null)
+            if (this.appInfo != null)
             {
-                userAgent += " " + StripeConfiguration.AppInfo.FormatUserAgent();
+                userAgent += " " + this.appInfo.FormatUserAgent();
             }
 
             return userAgent;
         }
 
-        private static bool ShouldRetry(
+        private bool ShouldRetry(
             int numRetries,
             bool error,
             HttpMethod method,
             HttpStatusCode? statusCode)
         {
             // Do not retry if we are out of retries.
-            if (numRetries >= StripeConfiguration.MaxNetworkRetries)
+            if (numRetries >= this.maxNetworkRetries)
             {
                 return false;
             }
@@ -255,7 +271,7 @@ namespace Stripe
         private TimeSpan SleepTime(int numRetries)
         {
             // We disable sleeping in some cases for tests.
-            if (!StripeConfiguration.NetworkRetriesSleep)
+            if (!this.NetworkRetriesSleep)
             {
                 return TimeSpan.Zero;
             }

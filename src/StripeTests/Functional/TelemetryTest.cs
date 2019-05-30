@@ -14,26 +14,21 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class TelemetryTest : BaseStripeTest, IDisposable
+    public class TelemetryTest : BaseStripeTest
     {
         public TelemetryTest(MockHttpClientFixture mockHttpClientFixture)
             : base(mockHttpClientFixture)
         {
         }
 
-        public void Dispose()
-        {
-            this.ResetStripeClient();
-        }
-
         [Fact]
         public void TelemetryWorks()
         {
-            this.ResetStripeClient();
+            this.MockHttpClientFixture.Reset();
             var fakeServer = FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
             fakeServer.Delay = TimeSpan.FromMilliseconds(20);
 
-            var service = new BalanceService();
+            var service = new BalanceService { Client = this.StripeClient };
             service.Get();
             fakeServer.Delay = TimeSpan.FromMilliseconds(40);
             service.Get();
@@ -73,11 +68,11 @@ namespace StripeTests
         [Fact]
         public async Task TelemetryWorksWithConcurrentRequests()
         {
-            this.ResetStripeClient();
+            this.MockHttpClientFixture.Reset();
             var fakeServer = FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
             fakeServer.Delay = TimeSpan.FromMilliseconds(20);
 
-            var service = new BalanceService();
+            var service = new BalanceService { Client = this.StripeClient };
 
             // the first 2 requests will not contain telemetry
             await Task.WhenAll(service.GetAsync(), service.GetAsync());
@@ -133,19 +128,6 @@ namespace StripeTests
             var duration = (long)deserialized["last_request_metrics"]["request_duration_ms"];
 
             return requestIdMatcher(requestId) && durationMatcher(duration);
-        }
-
-        private void ResetStripeClient()
-        {
-            this.MockHttpClientFixture.Reset();
-
-            var httpClient = new System.Net.Http.HttpClient(
-                this.MockHttpClientFixture.MockHandler.Object);
-            var stripeClient = new StripeClient(
-                "sk_test_123",
-                httpClient: new Stripe.SystemNetHttpClient(httpClient));
-
-            StripeConfiguration.StripeClient = stripeClient;
         }
 
         private class FakeServer
