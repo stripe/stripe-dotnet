@@ -13,18 +13,11 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class SystemNetHttpClientTest : BaseStripeTest, IDisposable
+    public class SystemNetHttpClientTest : BaseStripeTest
     {
         public SystemNetHttpClientTest(MockHttpClientFixture mockHttpClientFixture)
             : base(mockHttpClientFixture)
         {
-            // TODO: don't use StripeConfiguration
-            StripeConfiguration.StripeClient = this.StripeClient;
-        }
-
-        public void Dispose()
-        {
-            StripeConfiguration.StripeClient = null;
         }
 
         [Fact]
@@ -41,7 +34,7 @@ namespace StripeTests
             var client = new SystemNetHttpClient(
                 new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
             var request = new StripeRequest(
-                StripeConfiguration.StripeClient,
+                this.StripeClient,
                 HttpMethod.Post,
                 "/foo",
                 null,
@@ -56,48 +49,40 @@ namespace StripeTests
         [Fact]
         public async Task UserAgentIncludesAppInfo()
         {
-            var origAppInfo = StripeConfiguration.AppInfo;
-
-            try
+            var appInfo = new AppInfo
             {
-                StripeConfiguration.AppInfo = new AppInfo
-                {
-                    Name = "MyAwesomeApp",
-                    PartnerId = "pp_123",
-                    Version = "1.2.34",
-                    Url = "https://myawesomeapp.info"
-                };
+                Name = "MyAwesomeApp",
+                PartnerId = "pp_123",
+                Version = "1.2.34",
+                Url = "https://myawesomeapp.info"
+            };
 
-                var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-                responseMessage.Content = new StringContent("Hello world!");
-                this.MockHttpClientFixture.MockHandler.Protected()
-                    .Setup<Task<HttpResponseMessage>>(
-                        "SendAsync",
-                        ItExpr.IsAny<HttpRequestMessage>(),
-                        ItExpr.IsAny<CancellationToken>())
-                    .Returns(Task.FromResult(responseMessage));
+            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
+            responseMessage.Content = new StringContent("Hello world!");
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(responseMessage));
 
-                var client = new SystemNetHttpClient(
-                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
-                var request = new StripeRequest(
-                    StripeConfiguration.StripeClient,
-                    HttpMethod.Post,
-                    "/foo",
-                    null,
-                    null);
-                await client.MakeRequestAsync(request);
+            var client = new SystemNetHttpClient(
+                httpClient: new HttpClient(this.MockHttpClientFixture.MockHandler.Object),
+                appInfo: appInfo);
+            var request = new StripeRequest(
+                this.StripeClient,
+                HttpMethod.Post,
+                "/foo",
+                null,
+                null);
+            await client.MakeRequestAsync(request);
 
-                this.MockHttpClientFixture.MockHandler.Protected()
-                    .Verify(
-                        "SendAsync",
-                        Times.Once(),
-                        ItExpr.Is<HttpRequestMessage>(m => this.VerifyHeaders(m.Headers)),
-                        ItExpr.IsAny<CancellationToken>());
-            }
-            finally
-            {
-                StripeConfiguration.AppInfo = origAppInfo;
-            }
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m => this.VerifyHeaders(m.Headers)),
+                    ItExpr.IsAny<CancellationToken>());
         }
 
         private bool VerifyHeaders(HttpRequestHeaders headers)
