@@ -17,7 +17,7 @@ namespace Stripe
         /// <see href="https://dashboard.stripe.com/account/applications/settings">application settings</see>.
         /// </summary>
         [JsonProperty("client_id")]
-        public string ClientId { get; set; } = StripeConfiguration.ClientId;
+        public string ClientId { get; set; }
 
         /// <summary>The only option at the moment is <c>code</c>.</summary>
         [JsonProperty("response_type")]
