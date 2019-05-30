@@ -75,7 +75,9 @@ namespace StripeTests
                 // Set up StripeClient with the mock HTTP client
                 var httpClient = new SystemNetHttpClient(
                     new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
-                StripeConfiguration.StripeClient = new StripeClient(httpClient: httpClient);
+                StripeConfiguration.StripeClient = new StripeClient(
+                    "sk_test_123",
+                    httpClient: httpClient);
 
                 // Reset the mock before each test
                 this.MockHttpClientFixture.Reset();

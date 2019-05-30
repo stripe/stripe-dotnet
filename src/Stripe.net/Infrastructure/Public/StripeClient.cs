@@ -1,10 +1,12 @@
 namespace Stripe
 {
+    using System;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json.Linq;
+    using Stripe.Infrastructure;
 
     /// <summary>
     /// A Stripe client, used to issue requests to Stripe's API and deserialize responses.
@@ -12,12 +14,38 @@ namespace Stripe
     public class StripeClient : IStripeClient
     {
         /// <summary>Initializes a new instance of the <see cref="StripeClient"/> class.</summary>
+        /// <param name="apiKey">The API key used by the client to make requests.</param>
+        /// <param name="clientId">The client ID used by the client in OAuth requests.</param>
         /// <param name="httpClient">
         /// The <see cref="IHttpClient"/> client to use. If <c>null</c>, an HTTP client will be
         /// created with default parameters.
         /// </param>
-        public StripeClient(IHttpClient httpClient = null)
+        /// <exception cref="ArgumentNullException">if <c>apiKey</c> is <c>null</c></exception>
+        /// <exception cref="ArgumentException">
+        /// if <c>apiKey</c> is empty or contains whitespace
+        /// </exception>
+        public StripeClient(
+            string apiKey,
+            string clientId = null,
+            IHttpClient httpClient = null)
         {
+            if (apiKey == null)
+            {
+                throw new ArgumentNullException(nameof(apiKey));
+            }
+
+            if (apiKey.Length == 0)
+            {
+                throw new ArgumentException("API key cannot be the empty string.", nameof(apiKey));
+            }
+
+            if (StringUtils.ContainsWhitespace(apiKey))
+            {
+                throw new ArgumentException("API key cannot contain whitespace.", nameof(apiKey));
+            }
+
+            this.ApiKey = apiKey;
+            this.ClientId = clientId;
             this.HttpClient = httpClient ?? BuildDefaultHttpClient();
         }
 
@@ -33,6 +61,14 @@ namespace Stripe
         /// <summary>Gets or sets the base URL for Stripe's API.</summary>
         /// <value>The base URL for Stripe's API.</value>
         public string ApiBase { get; set; } = DefaultApiBase;
+
+        /// <summary>Gets the API key used by the client to send requests.</summary>
+        /// <value>The API key used by the client to send requests.</value>
+        public string ApiKey { get; }
+
+        /// <summary>Gets the client ID used by the client in OAuth requests.</summary>
+        /// <value>The client ID used by the client in OAuth requests.</value>
+        public string ClientId { get; }
 
         /// <summary>Gets or sets the base URL for Stripe's OAuth API.</summary>
         /// <value>The base URL for Stripe's OAuth API.</value>

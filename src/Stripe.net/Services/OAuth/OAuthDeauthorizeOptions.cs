@@ -9,7 +9,7 @@ namespace Stripe
         /// The account must be connected to this application.
         /// </summary>
         [JsonProperty("client_id")]
-        public string ClientId { get; set; } = StripeConfiguration.ClientId;
+        public string ClientId { get; set; }
 
         /// <summary>The account you'd like to disconnect from.</summary>
         [JsonProperty("stripe_user_id")]

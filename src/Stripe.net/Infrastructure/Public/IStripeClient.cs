@@ -13,6 +13,14 @@ namespace Stripe
         /// <value>The base URL for Stripe's API.</value>
         string ApiBase { get; }
 
+        /// <summary>Gets the API key used by the client to send requests.</summary>
+        /// <value>The API key used by the client to send requests.</value>
+        string ApiKey { get; }
+
+        /// <summary>Gets the client ID used by the client in OAuth requests.</summary>
+        /// <value>The client ID used by the client in OAuth requests.</value>
+        string ClientId { get; }
+
         /// <summary>Gets the base URL for Stripe's OAuth API.</summary>
         /// <value>The base URL for Stripe's OAuth API.</value>
         string ConnectBase { get; }
