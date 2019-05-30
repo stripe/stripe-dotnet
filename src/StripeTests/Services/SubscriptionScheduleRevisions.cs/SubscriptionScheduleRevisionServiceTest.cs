@@ -20,7 +20,7 @@ namespace StripeTests
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new SubscriptionScheduleRevisionService();
+            this.service = new SubscriptionScheduleRevisionService { Client = this.StripeClient };
 
             this.listOptions = new SubscriptionScheduleRevisionListOptions
             {

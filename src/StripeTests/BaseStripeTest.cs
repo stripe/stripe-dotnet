@@ -59,7 +59,7 @@ namespace StripeTests
                 // Set up StripeClient to use stripe-mock with the mock HTTP client
                 var httpClient = new SystemNetHttpClient(
                     new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
-                StripeConfiguration.StripeClient = this.StripeMockFixture.BuildStripeClient(
+                this.StripeClient = this.StripeMockFixture.BuildStripeClient(
                     httpClient: httpClient);
 
                 // Reset the mock before each test
@@ -68,14 +68,14 @@ namespace StripeTests
             else if (this.StripeMockFixture != null)
             {
                 // Set up StripeClient to use stripe-mock
-                StripeConfiguration.StripeClient = this.StripeMockFixture.BuildStripeClient();
+                this.StripeClient = this.StripeMockFixture.BuildStripeClient();
             }
             else if (this.MockHttpClientFixture != null)
             {
                 // Set up StripeClient with the mock HTTP client
                 var httpClient = new SystemNetHttpClient(
                     new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
-                StripeConfiguration.StripeClient = new StripeClient(
+                this.StripeClient = new StripeClient(
                     "sk_test_123",
                     httpClient: httpClient);
 
@@ -85,9 +85,11 @@ namespace StripeTests
             else
             {
                 // Use the default StripeClient
-                StripeConfiguration.StripeClient = null;
+                this.StripeClient = new StripeClient("sk_test_123");
             }
         }
+
+        protected IStripeClient StripeClient { get; }
 
         protected MockHttpClientFixture MockHttpClientFixture { get; }
 

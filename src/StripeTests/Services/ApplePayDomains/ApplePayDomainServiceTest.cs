@@ -20,7 +20,7 @@ namespace StripeTests
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new ApplePayDomainService();
+            this.service = new ApplePayDomainService { Client = this.StripeClient };
 
             this.createOptions = new ApplePayDomainCreateOptions
             {

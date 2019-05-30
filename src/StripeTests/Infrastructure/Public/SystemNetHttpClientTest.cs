@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
@@ -12,11 +13,18 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class SystemNetHttpClientTest : BaseStripeTest
+    public class SystemNetHttpClientTest : BaseStripeTest, IDisposable
     {
         public SystemNetHttpClientTest(MockHttpClientFixture mockHttpClientFixture)
             : base(mockHttpClientFixture)
         {
+            // TODO: don't use StripeConfiguration
+            StripeConfiguration.StripeClient = this.StripeClient;
+        }
+
+        public void Dispose()
+        {
+            StripeConfiguration.StripeClient = null;
         }
 
         [Fact]

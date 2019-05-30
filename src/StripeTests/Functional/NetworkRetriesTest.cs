@@ -17,12 +17,14 @@ namespace StripeTests
         {
             StripeConfiguration.MaxNetworkRetries = 2;
             StripeConfiguration.NetworkRetriesSleep = false;
+            StripeConfiguration.StripeClient = this.StripeClient;
         }
 
         public void Dispose()
         {
             StripeConfiguration.MaxNetworkRetries = 0;
             StripeConfiguration.NetworkRetriesSleep = true;
+            StripeConfiguration.StripeClient = null;
             this.MockHttpClientFixture.Reset();
         }
 
