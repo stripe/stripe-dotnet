@@ -10,23 +10,22 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class NetworkRetriesTest : BaseStripeTest, IDisposable
+    public class NetworkRetriesTest : BaseStripeTest
     {
         public NetworkRetriesTest(MockHttpClientFixture mockHttpClientFixture)
             : base(mockHttpClientFixture)
         {
-            StripeConfiguration.MaxNetworkRetries = 2;
-            StripeConfiguration.NetworkRetriesSleep = false;
-            StripeConfiguration.StripeClient = this.StripeClient;
+            var httpClient = new SystemNetHttpClient(
+                httpClient: new System.Net.Http.HttpClient(
+                    this.MockHttpClientFixture.MockHandler.Object),
+                maxNetworkRetries: 2)
+            {
+                NetworkRetriesSleep = false,
+            };
+            this.StripeClient = new StripeClient("sk_test_123", httpClient: httpClient);
         }
 
-        public void Dispose()
-        {
-            StripeConfiguration.MaxNetworkRetries = 0;
-            StripeConfiguration.NetworkRetriesSleep = true;
-            StripeConfiguration.StripeClient = null;
-            this.MockHttpClientFixture.Reset();
-        }
+        private new IStripeClient StripeClient { get; }
 
         [Fact]
         public void RetryOnConflict()
@@ -48,7 +47,7 @@ namespace StripeTests
                     }))
                 .Throws(new StripeTestException("Unexpected invocation"));
 
-            var service = new BalanceService();
+            var service = new BalanceService { Client = this.StripeClient };
             var balance = service.Get();
 
             Assert.NotNull(balance);
@@ -75,7 +74,7 @@ namespace StripeTests
                     }))
                 .Throws(new StripeTestException("Unexpected invocation"));
 
-            var service = new BalanceService();
+            var service = new BalanceService { Client = this.StripeClient };
             var balance = service.Get();
 
             Assert.NotNull(balance);
@@ -102,7 +101,7 @@ namespace StripeTests
                     }))
                 .Throws(new StripeTestException("Unexpected invocation"));
 
-            var service = new BalanceService();
+            var service = new BalanceService { Client = this.StripeClient };
             var balance = service.Get();
 
             Assert.NotNull(balance);
@@ -129,7 +128,7 @@ namespace StripeTests
                     })
                 .Throws(new StripeTestException("Unexpected invocation"));
 
-            var service = new CustomerService();
+            var service = new CustomerService { Client = this.StripeClient };
             Assert.Throws<StripeException>(() => service.Create(null));
 
             Assert.Equal(1, requestCount);
@@ -151,7 +150,7 @@ namespace StripeTests
                     }))
                 .Throws(new StripeTestException("Unexpected invocation"));
 
-            var service = new BalanceService();
+            var service = new BalanceService { Client = this.StripeClient };
             var balance = service.Get();
 
             Assert.NotNull(balance);
@@ -171,7 +170,7 @@ namespace StripeTests
                 .Throws(new HttpRequestException("Connection error 3"))
                 .Throws(new StripeTestException("Unexpected invocation"));
 
-            var service = new BalanceService();
+            var service = new BalanceService { Client = this.StripeClient };
             var exception = Assert.Throws<HttpRequestException>(() => service.Get());
 
             Assert.NotNull(exception);
@@ -194,7 +193,7 @@ namespace StripeTests
                     }))
                 .Throws(new StripeTestException("Unexpected invocation"));
 
-            var service = new BalanceService();
+            var service = new BalanceService { Client = this.StripeClient };
             var balance = service.Get();
 
             Assert.NotNull(balance);
@@ -214,7 +213,7 @@ namespace StripeTests
                 .Throws(new TaskCanceledException("Timeout 3"))
                 .Throws(new StripeTestException("Unexpected invocation"));
 
-            var service = new BalanceService();
+            var service = new BalanceService { Client = this.StripeClient };
             var exception = Assert.Throws<TaskCanceledException>(() => service.Get());
 
             Assert.NotNull(exception);
@@ -240,7 +239,7 @@ namespace StripeTests
                         };
                     });
 
-            var service = new BalanceService();
+            var service = new BalanceService { Client = this.StripeClient };
             var source = new CancellationTokenSource();
             source.CancelAfter(TimeSpan.FromMilliseconds(10));
             await Assert.ThrowsAsync<TaskCanceledException>(async () =>

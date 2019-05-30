@@ -17,6 +17,8 @@ namespace Stripe
 
         private static string clientId;
 
+        private static int maxNetworkRetries;
+
         private static IStripeClient stripeClient;
 
         static StripeConfiguration()
@@ -107,7 +109,20 @@ namespace Stripe
         /// Gets or sets the maximum number of times that the library will retry requests that
         /// appear to have failed due to an intermittent problem.
         /// </summary>
-        public static int MaxNetworkRetries { get; set; }
+        public static int MaxNetworkRetries
+        {
+            get => maxNetworkRetries;
+
+            set
+            {
+                if (value != maxNetworkRetries)
+                {
+                    StripeClient = null;
+                }
+
+                maxNetworkRetries = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets a custom <see cref="StripeClient"/> for sending requests to Stripe's
@@ -157,19 +172,14 @@ namespace Stripe
                     throw new ArgumentException("AppInfo.Name cannot be empty");
                 }
 
-                appInfo = value;
+                if (value != appInfo)
+                {
+                    StripeClient = null;
+                }
 
-                // This is run when the client is first initialized, but we need to reinitialize
-                // now that we have some app info.
-                // This is done through ugly casting because we don't want to make this part of
-                // the IStripeClient and IHTTP client interfaces.
-                ((StripeClient as StripeClient)?.HttpClient as SystemNetHttpClient)?.InitUserAgentStrings();
+                appInfo = value;
             }
         }
-
-        /// <summary>Gets or sets a value indicating whether to sleep between network retries.</summary>
-        /// <remarks>This is an internal property meant to be used in tests.</remarks>
-        internal static bool NetworkRetriesSleep { get; set; } = true;
 
         /// <summary>
         /// Returns a new instance of <see cref="Newtonsoft.Json.JsonSerializerSettings"/> with
@@ -188,14 +198,13 @@ namespace Stripe
             };
         }
 
-        // TODO: remove everything below this in a future major version
-
         /// <summary>
         /// Sets the API key.
         /// This method is deprecated and will be removed in a future version, please use the
         /// <see cref="ApiKey"/> property setter instead.
         /// </summary>
         /// <param name="newApiKey">API key.</param>
+        // TODO; remove this method in a future major version
         [Obsolete("Use StripeConfiguration.ApiKey setter instead.")]
         public static void SetApiKey(string newApiKey)
         {
@@ -223,7 +232,11 @@ namespace Stripe
                 throw new StripeException(message);
             }
 
-            return new StripeClient(ApiKey, ClientId);
+            var httpClient = new SystemNetHttpClient(
+                httpClient: null,
+                maxNetworkRetries: MaxNetworkRetries,
+                appInfo: AppInfo);
+            return new StripeClient(ApiKey, ClientId, httpClient: httpClient);
         }
     }
 }
