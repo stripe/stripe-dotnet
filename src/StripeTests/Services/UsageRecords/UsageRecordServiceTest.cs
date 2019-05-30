@@ -18,7 +18,7 @@ namespace StripeTests
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new UsageRecordService();
+            this.service = new UsageRecordService { Client = this.StripeClient };
 
             this.createOptions = new UsageRecordCreateOptions
             {

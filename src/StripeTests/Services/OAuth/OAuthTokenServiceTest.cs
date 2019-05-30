@@ -24,7 +24,7 @@ namespace StripeTests
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new OAuthTokenService();
+            this.service = new OAuthTokenService { Client = this.StripeClient };
 
             this.createOptions = new OAuthTokenCreateOptions
             {
@@ -96,7 +96,7 @@ namespace StripeTests
             var uri = this.service.AuthorizeUrl(options);
 
             var query = this.ParseQueryString(uri.Query);
-            Assert.Equal(StripeConfiguration.StripeClient.ClientId, query["client_id"]);
+            Assert.Equal(this.StripeClient.ClientId, query["client_id"]);
         }
 
         [Fact]
