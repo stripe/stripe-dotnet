@@ -48,11 +48,9 @@ namespace StripeTests
             return new StripeClient(
                 "sk_test_123",
                 "ca_123",
-                httpClient: httpClient)
-            {
-                ApiBase = $"http://localhost:{this.port}",
-                FilesBase = $"http://localhost:{this.port}",
-            };
+                httpClient: httpClient,
+                apiBase: $"http://localhost:{this.port}",
+                filesBase: $"http://localhost:{this.port}");
         }
 
         /// <summary>
