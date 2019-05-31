@@ -12,10 +12,9 @@ namespace StripeTests
 
         public StripeRequestTest()
         {
-            this.stripeClient = new StripeClient("sk_test_123")
-            {
-                ApiBase = "https://client.example.com"
-            };
+            this.stripeClient = new StripeClient(
+                "sk_test_123",
+                apiBase: "https://client.example.com");
         }
 
         [Fact]
