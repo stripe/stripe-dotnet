@@ -16,8 +16,8 @@ namespace Stripe
         {
         }
 
-        public WebhookEndpointService(string apiKey)
-            : base(apiKey)
+        public WebhookEndpointService(IStripeClient client)
+            : base(client)
         {
         }
 

@@ -25,7 +25,7 @@ namespace StripeTests
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new PaymentIntentService { Client = this.StripeClient };
+            this.service = new PaymentIntentService(this.StripeClient);
 
             this.cancelOptions = new PaymentIntentCancelOptions
             {

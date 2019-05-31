@@ -15,8 +15,8 @@ namespace Stripe
         {
         }
 
-        public FileLinkService(string apiKey)
-            : base(apiKey)
+        public FileLinkService(IStripeClient client)
+            : base(client)
         {
         }
 

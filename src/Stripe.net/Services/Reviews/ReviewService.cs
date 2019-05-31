@@ -14,8 +14,8 @@ namespace Stripe
         {
         }
 
-        public ReviewService(string apiKey)
-            : base(apiKey)
+        public ReviewService(IStripeClient client)
+            : base(client)
         {
         }
 

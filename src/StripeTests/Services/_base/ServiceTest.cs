@@ -15,7 +15,7 @@ namespace StripeTests
         public void Get_ExpandProperties()
         {
             var client = new TestClient();
-            var service = new TestService { Client = client };
+            var service = new TestService(client);
 
             service.ExpandSimple = true;
             service.ExpandMultiWordProperty = true;
@@ -29,7 +29,7 @@ namespace StripeTests
         public void Get_ThrowsIfIdIsNull()
         {
             var client = new TestClient();
-            var service = new TestService { Client = client };
+            var service = new TestService(client);
 
             Assert.Throws<ArgumentException>(() => service.Get(null));
         }
@@ -38,7 +38,7 @@ namespace StripeTests
         public void Get_ThrowsIfIdIsEmpty()
         {
             var client = new TestClient();
-            var service = new TestService { Client = client };
+            var service = new TestService(client);
 
             Assert.Throws<ArgumentException>(() => service.Get(string.Empty));
         }
@@ -47,7 +47,7 @@ namespace StripeTests
         public void Get_ThrowsIfIdIsWhitespace()
         {
             var client = new TestClient();
-            var service = new TestService { Client = client };
+            var service = new TestService(client);
 
             Assert.Throws<ArgumentException>(() => service.Get(" "));
         }
@@ -56,7 +56,7 @@ namespace StripeTests
         public void List_ExpandProperties()
         {
             var client = new TestClient();
-            var service = new TestService { Client = client };
+            var service = new TestService(client);
 
             service.ExpandSimple = true;
             service.ExpandMultiWordProperty = true;
@@ -103,6 +103,11 @@ namespace StripeTests
             IListable<TestEntity, ListOptions>,
             IRetrievable<TestEntity>
         {
+            public TestService(IStripeClient client)
+                : base(client)
+            {
+            }
+
             public override string BasePath => "/v1/test_entities";
 
             public bool ExpandSimple { get; set; }

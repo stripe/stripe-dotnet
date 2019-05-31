@@ -17,7 +17,7 @@ namespace StripeTests
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new ThreeDSecureService { Client = this.StripeClient };
+            this.service = new ThreeDSecureService(this.StripeClient);
 
             this.createOptions = new ThreeDSecureCreateOptions
             {

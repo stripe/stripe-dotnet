@@ -15,8 +15,8 @@ namespace Stripe
         {
         }
 
-        public PersonService(string apiKey)
-            : base(apiKey)
+        public PersonService(IStripeClient client)
+            : base(client)
         {
         }
 

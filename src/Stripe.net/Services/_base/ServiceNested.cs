@@ -15,8 +15,8 @@ namespace Stripe
         {
         }
 
-        protected ServiceNested(string apiKey)
-            : base(apiKey)
+        protected ServiceNested(IStripeClient client)
+            : base(client)
         {
         }
 

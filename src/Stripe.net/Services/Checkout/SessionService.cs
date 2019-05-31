@@ -14,8 +14,8 @@ namespace Stripe.Checkout
         {
         }
 
-        public SessionService(string apiKey)
-            : base(apiKey)
+        public SessionService(IStripeClient client)
+            : base(client)
         {
         }
 

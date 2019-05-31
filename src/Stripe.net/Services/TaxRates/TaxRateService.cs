@@ -15,8 +15,8 @@ namespace Stripe
         {
         }
 
-        public TaxRateService(string apiKey)
-            : base(apiKey)
+        public TaxRateService(IStripeClient client)
+            : base(client)
         {
         }
 

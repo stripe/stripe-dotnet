@@ -14,8 +14,8 @@ namespace Stripe
         {
         }
 
-        public OAuthTokenService(string apiKey)
-            : base(apiKey)
+        public OAuthTokenService(IStripeClient client)
+            : base(client)
         {
         }
 

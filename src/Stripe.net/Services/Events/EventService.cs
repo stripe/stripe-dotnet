@@ -13,8 +13,8 @@ namespace Stripe
         {
         }
 
-        public EventService(string apiKey)
-            : base(apiKey)
+        public EventService(IStripeClient client)
+            : base(client)
         {
         }
 

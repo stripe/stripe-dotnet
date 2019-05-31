@@ -16,8 +16,8 @@ namespace Stripe
         {
         }
 
-        public PaymentIntentService(string apiKey)
-            : base(apiKey)
+        public PaymentIntentService(IStripeClient client)
+            : base(client)
         {
         }
 

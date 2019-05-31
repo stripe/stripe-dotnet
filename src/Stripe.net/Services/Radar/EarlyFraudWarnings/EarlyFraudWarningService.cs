@@ -13,8 +13,8 @@ namespace Stripe.Radar
         {
         }
 
-        public EarlyFraudWarningService(string apiKey)
-            : base(apiKey)
+        public EarlyFraudWarningService(IStripeClient client)
+            : base(client)
         {
         }
 

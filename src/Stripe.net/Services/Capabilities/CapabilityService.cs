@@ -14,8 +14,8 @@ namespace Stripe
         {
         }
 
-        public CapabilityService(string apiKey)
-            : base(apiKey)
+        public CapabilityService(IStripeClient client)
+            : base(client)
         {
         }
 

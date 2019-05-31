@@ -13,8 +13,8 @@ namespace Stripe
         {
         }
 
-        public SubscriptionScheduleRevisionService(string apiKey)
-            : base(apiKey)
+        public SubscriptionScheduleRevisionService(IStripeClient client)
+            : base(client)
         {
         }
 

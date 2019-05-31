@@ -43,7 +43,7 @@ namespace StripeTests
                 .Throws(new StripeTestException("Unexpected invocation!"));
 
             // Call auto-paging method
-            var service = new PageableService { Client = this.StripeClient };
+            var service = new PageableService(this.StripeClient);
             var options = new ListOptions
             {
                 Limit = 2,
@@ -98,6 +98,11 @@ namespace StripeTests
 
         public class PageableService : Service<PageableModel>
         {
+            public PageableService(IStripeClient client)
+                : base(client)
+            {
+            }
+
             public override string BasePath => "/v1/pageablemodels";
 
             public IEnumerable<PageableModel> ListAutoPaging(ListOptions options)

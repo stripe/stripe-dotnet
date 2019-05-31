@@ -15,8 +15,8 @@ namespace Stripe
         {
         }
 
-        public TransferReversalService(string apiKey)
-            : base(apiKey)
+        public TransferReversalService(IStripeClient client)
+            : base(client)
         {
         }
 

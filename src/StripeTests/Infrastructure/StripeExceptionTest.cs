@@ -16,7 +16,7 @@ namespace StripeTests
         {
             var exception = await Assert.ThrowsAsync<StripeException>(async () =>
             {
-                await new CouponService { Client = this.StripeClient }
+                await new CouponService(this.StripeClient)
                     .CreateAsync(new CouponCreateOptions());
             });
 

@@ -13,8 +13,8 @@ namespace Stripe
         {
         }
 
-        public ApplicationFeeService(string apiKey)
-            : base(apiKey)
+        public ApplicationFeeService(IStripeClient client)
+            : base(client)
         {
         }
 

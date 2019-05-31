@@ -19,7 +19,7 @@ namespace StripeTests
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new EphemeralKeyService { Client = this.StripeClient };
+            this.service = new EphemeralKeyService(this.StripeClient);
 
             this.createOptions = new EphemeralKeyCreateOptions
             {

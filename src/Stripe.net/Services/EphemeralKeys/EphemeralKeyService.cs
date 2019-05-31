@@ -14,8 +14,8 @@ namespace Stripe
         {
         }
 
-        public EphemeralKeyService(string apiKey)
-            : base(apiKey)
+        public EphemeralKeyService(IStripeClient client)
+            : base(client)
         {
         }
 
