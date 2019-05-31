@@ -13,9 +13,7 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        /// <summary>
-        /// Current balance, if any, being stored on the customer’s account. If negative, the customer has credit to apply to the next invoice. If positive, the customer has an amount owed that will be added to the next invoice. The balance does not refer to any unpaid invoices; it solely takes into account amounts that have yet to be successfully applied to any invoice. This balance is only taken into account for recurring billing purposes (i.e., subscriptions, invoices, invoice items)
-        /// </summary>
+        [Obsolete("Use Balance")]
         [JsonProperty("account_balance")]
         public long AccountBalance { get; set; }
 
@@ -24,6 +22,16 @@ namespace Stripe
         /// </summary>
         [JsonProperty("address")]
         public Address Address { get; set; }
+
+        /// <summary>
+        /// Current balance, if any, being stored on the customer. If negative, the customer has
+        /// credit to apply to their next invoice. If positive, the customer has an amount owed that
+        /// will be added to their next invoice. The balance does not refer to any unpaid invoices;
+        /// it solely takes into account amounts that have yet to be successfully applied to any
+        /// invoice. This balance is only taken into account as invoices are finalized.
+        /// </summary>
+        [JsonProperty("balance")]
+        public long Balance { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
