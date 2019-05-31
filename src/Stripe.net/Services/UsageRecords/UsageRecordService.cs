@@ -13,8 +13,8 @@ namespace Stripe
         {
         }
 
-        public UsageRecordService(string apiKey)
-            : base(apiKey)
+        public UsageRecordService(IStripeClient client)
+            : base(client)
         {
         }
 

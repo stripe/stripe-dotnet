@@ -16,8 +16,8 @@ namespace Stripe
         {
         }
 
-        public TopupService(string apiKey)
-            : base(apiKey)
+        public TopupService(IStripeClient client)
+            : base(client)
         {
         }
 

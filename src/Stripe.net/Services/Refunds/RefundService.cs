@@ -15,8 +15,8 @@ namespace Stripe
         {
         }
 
-        public RefundService(string apiKey)
-            : base(apiKey)
+        public RefundService(IStripeClient client)
+            : base(client)
         {
         }
 

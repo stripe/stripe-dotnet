@@ -20,7 +20,7 @@ namespace StripeTests.Radar
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new EarlyFraudWarningService { Client = this.StripeClient };
+            this.service = new EarlyFraudWarningService(this.StripeClient);
 
             this.listOptions = new EarlyFraudWarningListOptions
             {

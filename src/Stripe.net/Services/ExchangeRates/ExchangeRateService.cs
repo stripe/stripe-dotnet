@@ -13,8 +13,8 @@ namespace Stripe
         {
         }
 
-        public ExchangeRateService(string apiKey)
-            : base(apiKey)
+        public ExchangeRateService(IStripeClient client)
+            : base(client)
         {
         }
 

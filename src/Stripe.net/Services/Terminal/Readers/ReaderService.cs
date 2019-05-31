@@ -13,8 +13,8 @@ namespace Stripe.Terminal
         {
         }
 
-        public ReaderService(string apiKey)
-            : base(apiKey)
+        public ReaderService(IStripeClient client)
+            : base(client)
         {
         }
 

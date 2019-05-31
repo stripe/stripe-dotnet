@@ -15,8 +15,8 @@ namespace Stripe
         {
         }
 
-        public DisputeService(string apiKey)
-            : base(apiKey)
+        public DisputeService(IStripeClient client)
+            : base(client)
         {
         }
 

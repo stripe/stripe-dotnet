@@ -15,8 +15,8 @@ namespace Stripe
         {
         }
 
-        public ApplePayDomainService(string apiKey)
-            : base(apiKey)
+        public ApplePayDomainService(IStripeClient client)
+            : base(client)
         {
         }
 

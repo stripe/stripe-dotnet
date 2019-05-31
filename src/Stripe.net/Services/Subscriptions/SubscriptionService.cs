@@ -15,8 +15,8 @@ namespace Stripe
         {
         }
 
-        public SubscriptionService(string apiKey)
-            : base(apiKey)
+        public SubscriptionService(IStripeClient client)
+            : base(client)
         {
         }
 

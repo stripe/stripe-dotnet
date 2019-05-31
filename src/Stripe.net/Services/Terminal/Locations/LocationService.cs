@@ -13,8 +13,8 @@ namespace Stripe.Terminal
         {
         }
 
-        public LocationService(string apiKey)
-            : base(apiKey)
+        public LocationService(IStripeClient client)
+            : base(client)
         {
         }
 

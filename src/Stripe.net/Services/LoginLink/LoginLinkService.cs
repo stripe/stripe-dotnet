@@ -13,8 +13,8 @@ namespace Stripe
         {
         }
 
-        public LoginLinkService(string apiKey)
-            : base(apiKey)
+        public LoginLinkService(IStripeClient client)
+            : base(client)
         {
         }
 

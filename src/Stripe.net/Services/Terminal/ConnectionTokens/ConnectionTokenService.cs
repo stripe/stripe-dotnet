@@ -13,8 +13,8 @@ namespace Stripe.Terminal
         {
         }
 
-        public ConnectionTokenService(string apiKey)
-            : base(apiKey)
+        public ConnectionTokenService(IStripeClient client)
+            : base(client)
         {
         }
 
