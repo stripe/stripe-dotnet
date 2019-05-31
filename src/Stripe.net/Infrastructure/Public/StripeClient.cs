@@ -20,6 +20,15 @@ namespace Stripe
         /// The <see cref="IHttpClient"/> client to use. If <c>null</c>, an HTTP client will be
         /// created with default parameters.
         /// </param>
+        /// <param name="apiBase">
+        /// The base URL for Stripe's API. Defaults to <see cref="DefaultApiBase"/>
+        /// </param>
+        /// <param name="connectBase">
+        /// The base URL for Stripe's OAuth API. Defaults to <see cref="DefaultConnectBase"/>
+        /// </param>
+        /// <param name="filesBase">
+        /// The base URL for Stripe's Files API. Defaults to <see cref="DefaultFilesBase"/>
+        /// </param>
         /// <exception cref="ArgumentNullException">if <c>apiKey</c> is <c>null</c></exception>
         /// <exception cref="ArgumentException">
         /// if <c>apiKey</c> is empty or contains whitespace
@@ -27,7 +36,10 @@ namespace Stripe
         public StripeClient(
             string apiKey,
             string clientId = null,
-            IHttpClient httpClient = null)
+            IHttpClient httpClient = null,
+            string apiBase = null,
+            string connectBase = null,
+            string filesBase = null)
         {
             if (apiKey == null)
             {
@@ -47,6 +59,9 @@ namespace Stripe
             this.ApiKey = apiKey;
             this.ClientId = clientId;
             this.HttpClient = httpClient ?? BuildDefaultHttpClient();
+            this.ApiBase = apiBase ?? DefaultApiBase;
+            this.ConnectBase = connectBase ?? DefaultConnectBase;
+            this.FilesBase = filesBase ?? DefaultFilesBase;
         }
 
         /// <summary>Default base URL for Stripe's API.</summary>
@@ -58,9 +73,9 @@ namespace Stripe
         /// <summary>Default base URL for Stripe's Files API.</summary>
         public static string DefaultFilesBase => "https://files.stripe.com";
 
-        /// <summary>Gets or sets the base URL for Stripe's API.</summary>
+        /// <summary>Gets the base URL for Stripe's API.</summary>
         /// <value>The base URL for Stripe's API.</value>
-        public string ApiBase { get; set; } = DefaultApiBase;
+        public string ApiBase { get; }
 
         /// <summary>Gets the API key used by the client to send requests.</summary>
         /// <value>The API key used by the client to send requests.</value>
@@ -70,13 +85,13 @@ namespace Stripe
         /// <value>The client ID used by the client in OAuth requests.</value>
         public string ClientId { get; }
 
-        /// <summary>Gets or sets the base URL for Stripe's OAuth API.</summary>
+        /// <summary>Gets the base URL for Stripe's OAuth API.</summary>
         /// <value>The base URL for Stripe's OAuth API.</value>
-        public string ConnectBase { get; set; } = DefaultConnectBase;
+        public string ConnectBase { get; }
 
-        /// <summary>Gets or sets the base URL for Stripe's Files API.</summary>
+        /// <summary>Gets the base URL for Stripe's Files API.</summary>
         /// <value>The base URL for Stripe's Files API.</value>
-        public string FilesBase { get; set; } = DefaultFilesBase;
+        public string FilesBase { get; }
 
         /// <summary>Gets the <see cref="IHttpClient"/> used to send HTTP requests.</summary>
         /// <value>The <see cref="IHttpClient"/> used to send HTTP requests.</value>
