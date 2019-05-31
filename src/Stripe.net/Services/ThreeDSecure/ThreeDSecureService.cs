@@ -14,8 +14,8 @@ namespace Stripe
         {
         }
 
-        public ThreeDSecureService(string apiKey)
-            : base(apiKey)
+        public ThreeDSecureService(IStripeClient client)
+            : base(client)
         {
         }
 

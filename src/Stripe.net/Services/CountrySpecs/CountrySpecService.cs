@@ -13,8 +13,8 @@ namespace Stripe
         {
         }
 
-        public CountrySpecService(string apiKey)
-            : base(apiKey)
+        public CountrySpecService(IStripeClient client)
+            : base(client)
         {
         }
 

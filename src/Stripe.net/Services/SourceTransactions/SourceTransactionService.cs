@@ -12,8 +12,8 @@ namespace Stripe
         {
         }
 
-        public SourceTransactionService(string apiKey)
-            : base(apiKey)
+        public SourceTransactionService(IStripeClient client)
+            : base(client)
         {
         }
 

@@ -28,7 +28,7 @@ namespace StripeTests
             var fakeServer = FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
             fakeServer.Delay = TimeSpan.FromMilliseconds(20);
 
-            var service = new BalanceService { Client = this.StripeClient };
+            var service = new BalanceService(this.StripeClient);
             service.Get();
             fakeServer.Delay = TimeSpan.FromMilliseconds(40);
             service.Get();
@@ -72,7 +72,7 @@ namespace StripeTests
             var fakeServer = FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
             fakeServer.Delay = TimeSpan.FromMilliseconds(20);
 
-            var service = new BalanceService { Client = this.StripeClient };
+            var service = new BalanceService(this.StripeClient);
 
             // the first 2 requests will not contain telemetry
             await Task.WhenAll(service.GetAsync(), service.GetAsync());

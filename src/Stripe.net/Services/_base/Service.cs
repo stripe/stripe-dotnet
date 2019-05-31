@@ -10,34 +10,44 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
+    /// <summary>Abstract base class for all services.</summary>
+    /// <typeparam name="EntityReturned">
+    /// The type of <see cref="IStripeEntity"/> that this service returns.
+    /// </typeparam>
     public abstract class Service<EntityReturned>
         where EntityReturned : IStripeEntity
     {
         private IStripeClient client;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Service{EntityReturned}"/> class.
+        /// </summary>
         protected Service()
         {
         }
 
-        protected Service(string apiKey)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Service{EntityReturned}"/> class with a
+        /// custom <see cref="IStripeClient"/>.
+        /// </summary>
+        /// <param name="client">The client used by the service to send requests.</param>
+        protected Service(IStripeClient client)
         {
-            this.ApiKey = apiKey;
+            this.client = client;
         }
-
-        public string ApiKey { get; set; }
 
         public abstract string BasePath { get; }
 
         public virtual string BaseUrl => this.Client.ApiBase;
 
         /// <summary>
-        /// Gets or sets the client used by this service to send requests. If <c>null</c>, then the
-        /// default client in <see cref="StripeConfiguration.StripeClient"/> is used instead.
+        /// Gets the client used by this service to send requests. If no client was set when the
+        /// service instance was created, then the default client in
+        /// <see cref="StripeConfiguration.StripeClient"/> is used instead.
         /// </summary>
         public IStripeClient Client
         {
             get => this.client ?? StripeConfiguration.StripeClient;
-            set => this.client = value;
         }
 
         protected EntityReturned CreateEntity(BaseOptions options, RequestOptions requestOptions)
@@ -288,11 +298,6 @@ namespace Stripe
             if (requestOptions == null)
             {
                 requestOptions = new RequestOptions();
-            }
-
-            if (string.IsNullOrEmpty(requestOptions.ApiKey) && !string.IsNullOrEmpty(this.ApiKey))
-            {
-                requestOptions.ApiKey = this.ApiKey;
             }
 
             requestOptions.BaseUrl = requestOptions.BaseUrl ?? this.BaseUrl;

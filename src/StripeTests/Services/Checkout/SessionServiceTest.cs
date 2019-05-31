@@ -19,7 +19,7 @@ namespace StripeTests.Checkout
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new SessionService { Client = this.StripeClient };
+            this.service = new SessionService(this.StripeClient);
 
             this.createOptions = new SessionCreateOptions
             {

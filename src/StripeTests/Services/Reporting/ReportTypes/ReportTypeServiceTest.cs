@@ -19,7 +19,7 @@ namespace StripeTests.Reporting
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new ReportTypeService { Client = this.StripeClient };
+            this.service = new ReportTypeService(this.StripeClient);
 
             this.listOptions = new ReportTypeListOptions
             {

@@ -15,8 +15,8 @@ namespace Stripe.Issuing
         {
         }
 
-        public CardholderService(string apiKey)
-            : base(apiKey)
+        public CardholderService(IStripeClient client)
+            : base(client)
         {
         }
 

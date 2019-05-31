@@ -14,8 +14,8 @@ namespace Stripe.Radar
         {
         }
 
-        public ValueListService(string apiKey)
-            : base(apiKey)
+        public ValueListService(IStripeClient client)
+            : base(client)
         {
         }
 

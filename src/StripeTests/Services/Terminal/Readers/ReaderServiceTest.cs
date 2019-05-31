@@ -22,7 +22,7 @@ namespace StripeTests.Terminal
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new ReaderService { Client = this.StripeClient };
+            this.service = new ReaderService(this.StripeClient);
 
             this.createOptions = new ReaderCreateOptions
             {

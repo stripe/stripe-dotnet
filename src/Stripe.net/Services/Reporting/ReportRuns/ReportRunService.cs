@@ -14,8 +14,8 @@ namespace Stripe.Reporting
         {
         }
 
-        public ReportRunService(string apiKey)
-            : base(apiKey)
+        public ReportRunService(IStripeClient client)
+            : base(client)
         {
         }
 

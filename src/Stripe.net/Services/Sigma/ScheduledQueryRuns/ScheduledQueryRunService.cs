@@ -13,8 +13,8 @@ namespace Stripe.Sigma
         {
         }
 
-        public ScheduledQueryRunService(string apiKey)
-            : base(apiKey)
+        public ScheduledQueryRunService(IStripeClient client)
+            : base(client)
         {
         }
 

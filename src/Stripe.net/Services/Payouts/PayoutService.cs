@@ -16,8 +16,8 @@ namespace Stripe
         {
         }
 
-        public PayoutService(string apiKey)
-            : base(apiKey)
+        public PayoutService(IStripeClient client)
+            : base(client)
         {
         }
 

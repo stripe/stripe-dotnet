@@ -16,8 +16,8 @@ namespace Stripe
         {
         }
 
-        public CreditNoteService(string apiKey)
-            : base(apiKey)
+        public CreditNoteService(IStripeClient client)
+            : base(client)
         {
         }
 
