@@ -2,12 +2,12 @@ namespace Stripe
 {
     public static class SourceFlow
     {
-        public static string Redirect => "redirect";
+        public const string Redirect = "redirect";
 
-        public static string Receiver => "receiver";
+        public const string Receiver = "receiver";
 
-        public static string CodeVerification => "code_verification";
+        public const string CodeVerification = "code_verification";
 
-        public static string None => "none";
+        public const string None = "none";
     }
 }

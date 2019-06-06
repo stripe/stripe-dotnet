@@ -5,11 +5,11 @@ namespace Stripe
         /// <summary>
         /// Standard is the default method.
         /// </summary>
-        public static string Standard => "standard";
+        public const string Standard = "standard";
 
         /// <summary>
         /// Only supported for transfers to debit cards.
         /// </summary>
-        public static string Instant => "instant";
+        public const string Instant = "instant";
     }
 }

@@ -2,8 +2,8 @@ namespace Stripe
 {
     public static class AccountType
     {
-        public static string Custom => "custom";
+        public const string Custom = "custom";
 
-        public static string Standard => "standard";
+        public const string Standard = "standard";
     }
 }
