@@ -7,7 +7,7 @@ namespace Stripe
     public class FileLinkService : Service<FileLink>,
         ICreatable<FileLink, FileLinkCreateOptions>,
         IListable<FileLink, FileLinkListOptions>,
-        IRetrievable<FileLink>,
+        IRetrievable<FileLink, FileLinkGetOptions>,
         IUpdatable<FileLink, FileLinkUpdateOptions>
     {
         public FileLinkService()
@@ -32,14 +32,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual FileLink Get(string fileLinkId, RequestOptions requestOptions = null)
+        public virtual FileLink Get(string fileLinkId, FileLinkGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(fileLinkId, null, requestOptions);
+            return this.GetEntity(fileLinkId, options, requestOptions);
         }
 
-        public virtual Task<FileLink> GetAsync(string fileLinkId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<FileLink> GetAsync(string fileLinkId, FileLinkGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(fileLinkId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(fileLinkId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<FileLink> List(FileLinkListOptions options = null, RequestOptions requestOptions = null)

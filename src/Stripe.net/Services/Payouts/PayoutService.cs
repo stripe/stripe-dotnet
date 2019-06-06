@@ -8,7 +8,7 @@ namespace Stripe
     public class PayoutService : Service<Payout>,
         ICreatable<Payout, PayoutCreateOptions>,
         IListable<Payout, PayoutListOptions>,
-        IRetrievable<Payout>,
+        IRetrievable<Payout, PayoutGetOptions>,
         IUpdatable<Payout, PayoutUpdateOptions>
     {
         public PayoutService()
@@ -49,14 +49,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Payout Get(string payoutId, RequestOptions requestOptions = null)
+        public virtual Payout Get(string payoutId, PayoutGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(payoutId, null, requestOptions);
+            return this.GetEntity(payoutId, options, requestOptions);
         }
 
-        public virtual Task<Payout> GetAsync(string payoutId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Payout> GetAsync(string payoutId, PayoutGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(payoutId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(payoutId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Payout> List(PayoutListOptions options = null, RequestOptions requestOptions = null)

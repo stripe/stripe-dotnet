@@ -7,7 +7,7 @@ namespace Stripe.Reporting
     public class ReportRunService : Service<ReportRun>,
         ICreatable<ReportRun, ReportRunCreateOptions>,
         IListable<ReportRun, ReportRunListOptions>,
-        IRetrievable<ReportRun>
+        IRetrievable<ReportRun, ReportRunGetOptions>
     {
         public ReportRunService()
             : base(null)
@@ -31,14 +31,14 @@ namespace Stripe.Reporting
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual ReportRun Get(string reportRunId, RequestOptions requestOptions = null)
+        public virtual ReportRun Get(string reportRunId, ReportRunGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(reportRunId, null, requestOptions);
+            return this.GetEntity(reportRunId, options, requestOptions);
         }
 
-        public virtual Task<ReportRun> GetAsync(string reportRunId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ReportRun> GetAsync(string reportRunId, ReportRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(reportRunId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(reportRunId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ReportRun> List(ReportRunListOptions options = null, RequestOptions requestOptions = null)

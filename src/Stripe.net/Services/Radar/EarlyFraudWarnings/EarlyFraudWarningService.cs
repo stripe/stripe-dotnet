@@ -6,7 +6,7 @@ namespace Stripe.Radar
 
     public class EarlyFraudWarningService : Service<EarlyFraudWarning>,
         IListable<EarlyFraudWarning, EarlyFraudWarningListOptions>,
-        IRetrievable<EarlyFraudWarning>
+        IRetrievable<EarlyFraudWarning, EarlyFraudWarningGetOptions>
     {
         public EarlyFraudWarningService()
             : base(null)
@@ -20,14 +20,14 @@ namespace Stripe.Radar
 
         public override string BasePath => "/v1/radar/early_fraud_warnings";
 
-        public virtual EarlyFraudWarning Get(string earlyFraudWarningId, RequestOptions requestOptions = null)
+        public virtual EarlyFraudWarning Get(string earlyFraudWarningId, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(earlyFraudWarningId, null, requestOptions);
+            return this.GetEntity(earlyFraudWarningId, options, requestOptions);
         }
 
-        public virtual Task<EarlyFraudWarning> GetAsync(string earlyFraudWarningId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<EarlyFraudWarning> GetAsync(string earlyFraudWarningId, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(earlyFraudWarningId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(earlyFraudWarningId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<EarlyFraudWarning> List(EarlyFraudWarningListOptions options = null, RequestOptions requestOptions = null)

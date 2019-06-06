@@ -8,7 +8,7 @@ namespace Stripe
     public class OrderService : Service<Order>,
         ICreatable<Order, OrderCreateOptions>,
         IListable<Order, OrderListOptions>,
-        IRetrievable<Order>,
+        IRetrievable<Order, OrderGetOptions>,
         IUpdatable<Order, OrderUpdateOptions>
     {
         public OrderService()
@@ -37,14 +37,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Order Get(string orderId, RequestOptions requestOptions = null)
+        public virtual Order Get(string orderId, OrderGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(orderId, null, requestOptions);
+            return this.GetEntity(orderId, options, requestOptions);
         }
 
-        public virtual Task<Order> GetAsync(string orderId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Order> GetAsync(string orderId, OrderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(orderId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(orderId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Order> List(OrderListOptions options = null, RequestOptions requestOptions = null)

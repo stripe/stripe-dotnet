@@ -8,7 +8,7 @@ namespace Stripe
     public class PaymentMethodService : Service<PaymentMethod>,
         ICreatable<PaymentMethod, PaymentMethodCreateOptions>,
         IListable<PaymentMethod, PaymentMethodListOptions>,
-        IRetrievable<PaymentMethod>,
+        IRetrievable<PaymentMethod, PaymentMethodGetOptions>,
         IUpdatable<PaymentMethod, PaymentMethodUpdateOptions>
     {
         public PaymentMethodService()
@@ -55,14 +55,14 @@ namespace Stripe
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions, cancellationToken);
         }
 
-        public virtual PaymentMethod Get(string paymentMethodId, RequestOptions requestOptions = null)
+        public virtual PaymentMethod Get(string paymentMethodId, PaymentMethodGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(paymentMethodId, null, requestOptions);
+            return this.GetEntity(paymentMethodId, options, requestOptions);
         }
 
-        public virtual Task<PaymentMethod> GetAsync(string paymentMethodId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<PaymentMethod> GetAsync(string paymentMethodId, PaymentMethodGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(paymentMethodId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(paymentMethodId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<PaymentMethod> List(PaymentMethodListOptions options = null, RequestOptions requestOptions = null)

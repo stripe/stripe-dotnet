@@ -7,7 +7,7 @@ namespace Stripe
     public class SubscriptionService : Service<Subscription>,
         ICreatable<Subscription, SubscriptionCreateOptions>,
         IListable<Subscription, SubscriptionListOptions>,
-        IRetrievable<Subscription>,
+        IRetrievable<Subscription, SubscriptionGetOptions>,
         IUpdatable<Subscription, SubscriptionUpdateOptions>
     {
         public SubscriptionService()
@@ -50,14 +50,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Subscription Get(string subscriptionId, RequestOptions requestOptions = null)
+        public virtual Subscription Get(string subscriptionId, SubscriptionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(subscriptionId, null, requestOptions);
+            return this.GetEntity(subscriptionId, options, requestOptions);
         }
 
-        public virtual Task<Subscription> GetAsync(string subscriptionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Subscription> GetAsync(string subscriptionId, SubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(subscriptionId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(subscriptionId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Subscription> List(SubscriptionListOptions options = null, RequestOptions requestOptions = null)

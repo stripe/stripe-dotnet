@@ -7,7 +7,7 @@ namespace Stripe
     public class TransferService : Service<Transfer>,
         ICreatable<Transfer, TransferCreateOptions>,
         IListable<Transfer, TransferListOptions>,
-        IRetrievable<Transfer>,
+        IRetrievable<Transfer, TransferGetOptions>,
         IUpdatable<Transfer, TransferUpdateOptions>
     {
         public TransferService()
@@ -40,14 +40,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Transfer Get(string transferId, RequestOptions requestOptions = null)
+        public virtual Transfer Get(string transferId, TransferGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(transferId, null, requestOptions);
+            return this.GetEntity(transferId, options, requestOptions);
         }
 
-        public virtual Task<Transfer> GetAsync(string transferId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Transfer> GetAsync(string transferId, TransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(transferId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(transferId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Transfer> List(TransferListOptions options = null, RequestOptions requestOptions = null)

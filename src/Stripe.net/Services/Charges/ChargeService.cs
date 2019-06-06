@@ -8,7 +8,7 @@ namespace Stripe
     public class ChargeService : Service<Charge>,
         ICreatable<Charge, ChargeCreateOptions>,
         IListable<Charge, ChargeListOptions>,
-        IRetrievable<Charge>,
+        IRetrievable<Charge, ChargeGetOptions>,
         IUpdatable<Charge, ChargeUpdateOptions>
     {
         public ChargeService()
@@ -69,14 +69,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Charge Get(string chargeId, RequestOptions requestOptions = null)
+        public virtual Charge Get(string chargeId, ChargeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(chargeId, null, requestOptions);
+            return this.GetEntity(chargeId, options, requestOptions);
         }
 
-        public virtual Task<Charge> GetAsync(string chargeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Charge> GetAsync(string chargeId, ChargeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(chargeId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(chargeId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Charge> List(ChargeListOptions options = null, RequestOptions requestOptions = null)

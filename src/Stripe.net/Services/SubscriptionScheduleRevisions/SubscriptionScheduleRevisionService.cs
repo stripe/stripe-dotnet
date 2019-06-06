@@ -6,7 +6,7 @@ namespace Stripe
 
     public class SubscriptionScheduleRevisionService : ServiceNested<SubscriptionScheduleRevision>,
         INestedListable<SubscriptionScheduleRevision, SubscriptionScheduleRevisionListOptions>,
-        INestedRetrievable<SubscriptionScheduleRevision>
+        INestedRetrievable<SubscriptionScheduleRevision, SubscriptionScheduleRevisionGetOptions>
     {
         public SubscriptionScheduleRevisionService()
             : base(null)
@@ -20,14 +20,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/subscription_schedules/{PARENT_ID}/revisions";
 
-        public virtual SubscriptionScheduleRevision Get(string scheduleId, string revisionId, RequestOptions requestOptions = null)
+        public virtual SubscriptionScheduleRevision Get(string scheduleId, string revisionId, SubscriptionScheduleRevisionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(scheduleId, revisionId, null, requestOptions);
+            return this.GetNestedEntity(scheduleId, revisionId, options, requestOptions);
         }
 
-        public virtual Task<SubscriptionScheduleRevision> GetAsync(string scheduleId, string revisionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SubscriptionScheduleRevision> GetAsync(string scheduleId, string revisionId, SubscriptionScheduleRevisionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetNestedEntityAsync(scheduleId, revisionId, null, requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(scheduleId, revisionId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<SubscriptionScheduleRevision> List(string scheduleId, SubscriptionScheduleRevisionListOptions options = null, RequestOptions requestOptions = null)

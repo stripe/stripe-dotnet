@@ -7,7 +7,7 @@ namespace Stripe
     public class TaxIdService : ServiceNested<TaxId>,
         INestedCreatable<TaxId, TaxIdCreateOptions>,
         INestedListable<TaxId, TaxIdListOptions>,
-        INestedRetrievable<TaxId>
+        INestedRetrievable<TaxId, TaxIdGetOptions>
     {
         public TaxIdService()
             : base(null)
@@ -43,14 +43,14 @@ namespace Stripe
             return this.DeleteNestedEntityAsync(customerId, taxIdId, null, requestOptions, cancellationToken);
         }
 
-        public virtual TaxId Get(string customerId, string taxIdId, RequestOptions requestOptions = null)
+        public virtual TaxId Get(string customerId, string taxIdId, TaxIdGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(customerId, taxIdId, null, requestOptions);
+            return this.GetNestedEntity(customerId, taxIdId, options, requestOptions);
         }
 
-        public virtual Task<TaxId> GetAsync(string customerId, string taxIdId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<TaxId> GetAsync(string customerId, string taxIdId, TaxIdGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetNestedEntityAsync(customerId, taxIdId, null, requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(customerId, taxIdId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<TaxId> List(string customerId, TaxIdListOptions options = null, RequestOptions requestOptions = null)

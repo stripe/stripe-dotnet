@@ -7,7 +7,7 @@ namespace Stripe
     public class TaxRateService : Service<TaxRate>,
         ICreatable<TaxRate, TaxRateCreateOptions>,
         IListable<TaxRate, TaxRateListOptions>,
-        IRetrievable<TaxRate>,
+        IRetrievable<TaxRate, TaxRateGetOptions>,
         IUpdatable<TaxRate, TaxRateUpdateOptions>
     {
         public TaxRateService()
@@ -34,14 +34,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual TaxRate Get(string taxRateId, RequestOptions requestOptions = null)
+        public virtual TaxRate Get(string taxRateId, TaxRateGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(taxRateId, null, requestOptions);
+            return this.GetEntity(taxRateId, options, requestOptions);
         }
 
-        public virtual Task<TaxRate> GetAsync(string taxRateId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<TaxRate> GetAsync(string taxRateId, TaxRateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(taxRateId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(taxRateId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<TaxRate> List(TaxRateListOptions options = null, RequestOptions requestOptions = null)

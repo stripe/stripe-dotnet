@@ -6,7 +6,7 @@ namespace Stripe
 
     public class CapabilityService : ServiceNested<Capability>,
         INestedListable<Capability, CapabilityListOptions>,
-        INestedRetrievable<Capability>,
+        INestedRetrievable<Capability, CapabilityGetOptions>,
         INestedUpdatable<Capability, CapabilityUpdateOptions>
     {
         public CapabilityService()
@@ -23,14 +23,14 @@ namespace Stripe
 
         public bool ExpandAccount { get; set; }
 
-        public virtual Capability Get(string accountId, string capabilityId, RequestOptions requestOptions = null)
+        public virtual Capability Get(string accountId, string capabilityId, CapabilityGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(accountId, capabilityId, null, requestOptions);
+            return this.GetNestedEntity(accountId, capabilityId, options, requestOptions);
         }
 
-        public virtual Task<Capability> GetAsync(string accountId, string capabilityId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Capability> GetAsync(string accountId, string capabilityId, CapabilityGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetNestedEntityAsync(accountId, capabilityId, null, requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(accountId, capabilityId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Capability> List(string accountId, CapabilityListOptions options = null, RequestOptions requestOptions = null)

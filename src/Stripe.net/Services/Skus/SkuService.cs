@@ -8,7 +8,7 @@ namespace Stripe
         ICreatable<Sku, SkuCreateOptions>,
         IDeletable<Sku>,
         IListable<Sku, SkuListOptions>,
-        IRetrievable<Sku>,
+        IRetrievable<Sku, SkuGetOptions>,
         IUpdatable<Sku, SkuUpdateOptions>
     {
         public SkuService()
@@ -45,14 +45,14 @@ namespace Stripe
             return this.DeleteEntityAsync(skuId, null, requestOptions, cancellationToken);
         }
 
-        public virtual Sku Get(string skuId, RequestOptions requestOptions = null)
+        public virtual Sku Get(string skuId, SkuGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(skuId, null, requestOptions);
+            return this.GetEntity(skuId, options, requestOptions);
         }
 
-        public virtual Task<Sku> GetAsync(string skuId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Sku> GetAsync(string skuId, SkuGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(skuId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(skuId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Sku> List(SkuListOptions options = null, RequestOptions requestOptions = null)

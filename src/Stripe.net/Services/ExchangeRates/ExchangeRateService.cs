@@ -6,7 +6,7 @@ namespace Stripe
 
     public class ExchangeRateService : Service<ExchangeRate>,
         IListable<ExchangeRate, ExchangeRateListOptions>,
-        IRetrievable<ExchangeRate>
+        IRetrievable<ExchangeRate, ExchangeRateGetOptions>
     {
         public ExchangeRateService()
             : base(null)
@@ -20,14 +20,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/exchange_rates";
 
-        public virtual ExchangeRate Get(string currency, RequestOptions requestOptions = null)
+        public virtual ExchangeRate Get(string currency, ExchangeRateGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(currency, null, requestOptions);
+            return this.GetEntity(currency, options, requestOptions);
         }
 
-        public virtual Task<ExchangeRate> GetAsync(string currency, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ExchangeRate> GetAsync(string currency, ExchangeRateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(currency, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(currency, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ExchangeRate> List(ExchangeRateListOptions options = null, RequestOptions requestOptions = null)

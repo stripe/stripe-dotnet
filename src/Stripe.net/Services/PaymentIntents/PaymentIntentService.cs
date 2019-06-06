@@ -8,7 +8,7 @@ namespace Stripe
     public class PaymentIntentService : Service<PaymentIntent>,
         ICreatable<PaymentIntent, PaymentIntentCreateOptions>,
         IListable<PaymentIntent, PaymentIntentListOptions>,
-        IRetrievable<PaymentIntent>,
+        IRetrievable<PaymentIntent, PaymentIntentGetOptions>,
         IUpdatable<PaymentIntent, PaymentIntentUpdateOptions>
     {
         public PaymentIntentService()
@@ -75,22 +75,12 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual PaymentIntent Get(string paymentIntentId, RequestOptions requestOptions = null)
-        {
-            return this.Get(paymentIntentId, null, requestOptions);
-        }
-
-        public virtual Task<PaymentIntent> GetAsync(string paymentIntentId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return this.GetAsync(paymentIntentId, null, requestOptions, cancellationToken);
-        }
-
-        public virtual PaymentIntent Get(string paymentIntentId, PaymentIntentGetOptions options, RequestOptions requestOptions = null)
+        public virtual PaymentIntent Get(string paymentIntentId, PaymentIntentGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.GetEntity(paymentIntentId, options, requestOptions);
         }
 
-        public virtual Task<PaymentIntent> GetAsync(string paymentIntentId, PaymentIntentGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<PaymentIntent> GetAsync(string paymentIntentId, PaymentIntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityAsync(paymentIntentId, options, requestOptions, cancellationToken);
         }

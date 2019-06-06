@@ -6,7 +6,7 @@ namespace Stripe
 
     public class TokenService : Service<Token>,
         ICreatable<Token, TokenCreateOptions>,
-        IRetrievable<Token>
+        IRetrievable<Token, TokenGetOptions>
     {
         public TokenService()
             : base(null)
@@ -30,14 +30,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Token Get(string tokenId, RequestOptions requestOptions = null)
+        public virtual Token Get(string tokenId, TokenGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(tokenId, null, requestOptions);
+            return this.GetEntity(tokenId, options, requestOptions);
         }
 
-        public virtual Task<Token> GetAsync(string tokenId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Token> GetAsync(string tokenId, TokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(tokenId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(tokenId, options, requestOptions, cancellationToken);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Stripe
         ICreatable<InvoiceItem, InvoiceItemCreateOptions>,
         IDeletable<InvoiceItem>,
         IListable<InvoiceItem, InvoiceItemListOptions>,
-        IRetrievable<InvoiceItem>,
+        IRetrievable<InvoiceItem, InvoiceItemGetOptions>,
         IUpdatable<InvoiceItem, InvoiceItemUpdateOptions>
     {
         public InvoiceItemService()
@@ -49,14 +49,14 @@ namespace Stripe
             return this.DeleteEntityAsync(invoiceitemId, null, requestOptions, cancellationToken);
         }
 
-        public virtual InvoiceItem Get(string invoiceitemId, RequestOptions requestOptions = null)
+        public virtual InvoiceItem Get(string invoiceitemId, InvoiceItemGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(invoiceitemId, null, requestOptions);
+            return this.GetEntity(invoiceitemId, options, requestOptions);
         }
 
-        public virtual Task<InvoiceItem> GetAsync(string invoiceitemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<InvoiceItem> GetAsync(string invoiceitemId, InvoiceItemGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(invoiceitemId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(invoiceitemId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<InvoiceItem> List(InvoiceItemListOptions options = null, RequestOptions requestOptions = null)
