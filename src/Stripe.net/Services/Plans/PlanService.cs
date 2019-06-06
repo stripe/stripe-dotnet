@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace Stripe
 
         public override string BasePath => "/v1/plans";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandProduct { get; set; }
 
         public virtual Plan Create(PlanCreateOptions options, RequestOptions requestOptions = null)

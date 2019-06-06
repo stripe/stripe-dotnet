@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -22,8 +23,10 @@ namespace Stripe
 
         public override string BasePath => "/v1/accounts/{PARENT_ID}/persons";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandBalanceTransaction { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandTransfer { get; set; }
 
         public virtual Person Create(string accountId, PersonCreateOptions options = null, RequestOptions requestOptions = null)

@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -22,10 +23,13 @@ namespace Stripe
 
         public override string BasePath => "/v1/refunds";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandBalanceTransaction { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCharge { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandFailureBalanceTransaction { get; set; }
 
         public virtual Refund Create(RefundCreateOptions options, RequestOptions requestOptions = null)

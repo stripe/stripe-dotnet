@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -22,6 +23,7 @@ namespace Stripe
 
         public override string BasePath => "/v1/disputes";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCharge { get; set; }
 
         public virtual Dispute Close(string disputeId, RequestOptions requestOptions = null)

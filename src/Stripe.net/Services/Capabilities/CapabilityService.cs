@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace Stripe
 
         public override string BasePath => "/v1/accounts/{PARENT_ID}/capabilities";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandAccount { get; set; }
 
         public virtual Capability Get(string accountId, string capabilityId, CapabilityGetOptions options = null, RequestOptions requestOptions = null)
