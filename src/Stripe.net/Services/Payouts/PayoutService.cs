@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -23,10 +24,13 @@ namespace Stripe
 
         public override string BasePath => "/v1/payouts";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandBalanceTransaction { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandDestination { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandFailureBalanceTransaction { get; set; }
 
         public virtual Payout Cancel(string payoutId, RequestOptions requestOptions = null)

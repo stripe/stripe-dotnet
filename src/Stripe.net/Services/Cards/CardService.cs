@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -23,8 +24,10 @@ namespace Stripe
 
         public override string BasePath => "/v1/customers/{PARENT_ID}/sources";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCustomer { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandRecipient { get; set; }
 
         public virtual Card Create(string customerId, CardCreateOptions options, RequestOptions requestOptions = null)

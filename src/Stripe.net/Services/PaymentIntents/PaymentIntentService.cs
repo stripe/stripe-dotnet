@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -23,16 +24,22 @@ namespace Stripe
 
         public override string BasePath => "/v1/payment_intents";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandApplication { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCustomer { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandOnBehalfOf { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandPaymentMethod { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandReview { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandSource { get; set; }
 
         public virtual PaymentIntent Cancel(string paymentIntentId, PaymentIntentCancelOptions options, RequestOptions requestOptions = null)

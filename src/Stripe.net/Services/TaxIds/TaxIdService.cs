@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace Stripe
 
         public override string BasePath => "/v1/customers/{PARENT_ID}/tax_ids";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCustomer { get; set; }
 
         public virtual TaxId Create(string customerId, TaxIdCreateOptions options = null, RequestOptions requestOptions = null)
