@@ -285,10 +285,7 @@ namespace Stripe
             }
 
             options = options ?? new BaseOptions();
-            foreach (var expansion in serviceExpansions)
-            {
-                options.AddExpand(expansion);
-            }
+            options.AddRangeExpand(serviceExpansions);
 
             return options;
         }
