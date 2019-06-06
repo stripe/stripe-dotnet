@@ -6,7 +6,7 @@ namespace Stripe
 
     public class BalanceTransactionService : Service<BalanceTransaction>,
         IListable<BalanceTransaction, BalanceTransactionListOptions>,
-        IRetrievable<BalanceTransaction>
+        IRetrievable<BalanceTransaction, BalanceTransactionGetOptions>
     {
         public BalanceTransactionService()
             : base(null)
@@ -22,14 +22,14 @@ namespace Stripe
 
         public bool ExpandSource { get; set; }
 
-        public virtual BalanceTransaction Get(string balanceTransactionId, RequestOptions requestOptions = null)
+        public virtual BalanceTransaction Get(string balanceTransactionId, BalanceTransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(balanceTransactionId, null, requestOptions);
+            return this.GetEntity(balanceTransactionId, options, requestOptions);
         }
 
-        public virtual Task<BalanceTransaction> GetAsync(string balanceTransactionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<BalanceTransaction> GetAsync(string balanceTransactionId, BalanceTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(balanceTransactionId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(balanceTransactionId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<BalanceTransaction> List(BalanceTransactionListOptions options = null, RequestOptions requestOptions = null)

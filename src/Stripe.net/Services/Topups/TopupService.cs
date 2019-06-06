@@ -8,7 +8,7 @@ namespace Stripe
     public class TopupService : Service<Topup>,
         ICreatable<Topup, TopupCreateOptions>,
         IListable<Topup, TopupListOptions>,
-        IRetrievable<Topup>,
+        IRetrievable<Topup, TopupGetOptions>,
         IUpdatable<Topup, TopupUpdateOptions>
     {
         public TopupService()
@@ -47,14 +47,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Topup Get(string topupId, RequestOptions requestOptions = null)
+        public virtual Topup Get(string topupId, TopupGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(topupId, null, requestOptions);
+            return this.GetEntity(topupId, options, requestOptions);
         }
 
-        public virtual Task<Topup> GetAsync(string topupId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Topup> GetAsync(string topupId, TopupGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(topupId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(topupId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Topup> List(TopupListOptions options = null, RequestOptions requestOptions = null)

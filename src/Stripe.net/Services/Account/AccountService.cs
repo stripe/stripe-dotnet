@@ -9,7 +9,7 @@ namespace Stripe
         ICreatable<Account, AccountCreateOptions>,
         IDeletable<Account>,
         IListable<Account, AccountListOptions>,
-        IRetrievable<Account>,
+        IRetrievable<Account, AccountGetOptions>,
         IUpdatable<Account, AccountUpdateOptions>
     {
         public AccountService()
@@ -46,14 +46,14 @@ namespace Stripe
             return this.DeleteEntityAsync(accountId, null, requestOptions, cancellationToken);
         }
 
-        public virtual Account Get(string accountId, RequestOptions requestOptions = null)
+        public virtual Account Get(string accountId, AccountGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(accountId, null, requestOptions);
+            return this.GetEntity(accountId, options, requestOptions);
         }
 
-        public virtual Task<Account> GetAsync(string accountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Account> GetAsync(string accountId, AccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(accountId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(accountId, options, requestOptions, cancellationToken);
         }
 
         public virtual Account GetSelf(RequestOptions requestOptions = null)

@@ -7,7 +7,7 @@ namespace Stripe
 
     public class ReviewService : Service<Review>,
         IListable<Review, ReviewListOptions>,
-        IRetrievable<Review>
+        IRetrievable<Review, ReviewGetOptions>
     {
         public ReviewService()
             : base(null)
@@ -31,14 +31,14 @@ namespace Stripe
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(reviewId)}/approve", options, requestOptions, cancellationToken);
         }
 
-        public virtual Review Get(string reviewId, RequestOptions requestOptions = null)
+        public virtual Review Get(string reviewId, ReviewGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(reviewId, null, requestOptions);
+            return this.GetEntity(reviewId, options, requestOptions);
         }
 
-        public virtual Task<Review> GetAsync(string reviewId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Review> GetAsync(string reviewId, ReviewGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(reviewId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(reviewId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Review> List(ReviewListOptions options = null, RequestOptions requestOptions = null)

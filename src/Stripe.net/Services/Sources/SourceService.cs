@@ -8,7 +8,7 @@ namespace Stripe
 
     public class SourceService : Service<Source>,
         ICreatable<Source, SourceCreateOptions>,
-        IRetrievable<Source>,
+        IRetrievable<Source, SourceGetOptions>,
         IUpdatable<Source, SourceUpdateOptions>,
         INestedListable<Source, SourceListOptions>
     {
@@ -54,22 +54,12 @@ namespace Stripe
             return this.RequestAsync<Source>(HttpMethod.Delete, $"/v1/customers/{customerId}/sources/{sourceId}", null, requestOptions, cancellationToken);
         }
 
-        public virtual Source Get(string sourceId, RequestOptions requestOptions = null)
-        {
-            return this.Get(sourceId, null, requestOptions);
-        }
-
-        public virtual Task<Source> GetAsync(string sourceId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return this.GetAsync(sourceId, null, requestOptions, cancellationToken);
-        }
-
-        public virtual Source Get(string sourceId, SourceGetOptions options, RequestOptions requestOptions = null)
+        public virtual Source Get(string sourceId, SourceGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.GetEntity(sourceId, options, requestOptions);
         }
 
-        public virtual Task<Source> GetAsync(string sourceId, SourceGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Source> GetAsync(string sourceId, SourceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityAsync(sourceId, options, requestOptions, cancellationToken);
         }

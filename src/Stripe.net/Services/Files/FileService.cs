@@ -7,7 +7,7 @@ namespace Stripe
     public class FileService : Service<File>,
         ICreatable<File, FileCreateOptions>,
         IListable<File, FileListOptions>,
-        IRetrievable<File>
+        IRetrievable<File, FileGetOptions>
     {
         public FileService()
             : base(null)
@@ -35,14 +35,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual File Get(string fileId, RequestOptions requestOptions = null)
+        public virtual File Get(string fileId, FileGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(fileId, null, requestOptions);
+            return this.GetEntity(fileId, options, requestOptions);
         }
 
-        public virtual Task<File> GetAsync(string fileId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<File> GetAsync(string fileId, FileGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(fileId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(fileId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<File> List(FileListOptions options = null, RequestOptions requestOptions = null)

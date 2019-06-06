@@ -8,7 +8,7 @@ namespace Stripe
     public class CreditNoteService : Service<CreditNote>,
         ICreatable<CreditNote, CreditNoteCreateOptions>,
         IListable<CreditNote, CreditNoteListOptions>,
-        IRetrievable<CreditNote>,
+        IRetrievable<CreditNote, CreditNoteGetOptions>,
         IUpdatable<CreditNote, CreditNoteUpdateOptions>
     {
         public CreditNoteService()
@@ -33,14 +33,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual CreditNote Get(string creditNoteId, RequestOptions requestOptions = null)
+        public virtual CreditNote Get(string creditNoteId, CreditNoteGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(creditNoteId, null, requestOptions);
+            return this.GetEntity(creditNoteId, options, requestOptions);
         }
 
-        public virtual Task<CreditNote> GetAsync(string creditNoteId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<CreditNote> GetAsync(string creditNoteId, CreditNoteGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(creditNoteId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(creditNoteId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<CreditNote> List(CreditNoteListOptions options = null, RequestOptions requestOptions = null)

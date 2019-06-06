@@ -8,7 +8,7 @@ namespace Stripe
     public class InvoiceService : Service<Invoice>,
         ICreatable<Invoice, InvoiceCreateOptions>,
         IListable<Invoice, InvoiceListOptions>,
-        IRetrievable<Invoice>,
+        IRetrievable<Invoice, InvoiceGetOptions>,
         IUpdatable<Invoice, InvoiceUpdateOptions>
     {
         public InvoiceService()
@@ -61,14 +61,14 @@ namespace Stripe
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(invoiceId)}/finalize", options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice Get(string invoiceId, RequestOptions requestOptions = null)
+        public virtual Invoice Get(string invoiceId, InvoiceGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(invoiceId, null, requestOptions);
+            return this.GetEntity(invoiceId, options, requestOptions);
         }
 
-        public virtual Task<Invoice> GetAsync(string invoiceId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Invoice> GetAsync(string invoiceId, InvoiceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(invoiceId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(invoiceId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Invoice> List(InvoiceListOptions options = null, RequestOptions requestOptions = null)

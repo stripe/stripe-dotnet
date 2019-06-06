@@ -7,7 +7,7 @@ namespace Stripe
     public class PersonService : ServiceNested<Person>,
         INestedCreatable<Person, PersonCreateOptions>,
         INestedListable<Person, PersonListOptions>,
-        INestedRetrievable<Person>,
+        INestedRetrievable<Person, PersonGetOptions>,
         INestedUpdatable<Person, PersonUpdateOptions>
     {
         public PersonService()
@@ -46,14 +46,14 @@ namespace Stripe
             return this.DeleteNestedEntityAsync(accountId, personId, null, requestOptions, cancellationToken);
         }
 
-        public virtual Person Get(string accountId, string personId, RequestOptions requestOptions = null)
+        public virtual Person Get(string accountId, string personId, PersonGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(accountId, personId, null, requestOptions);
+            return this.GetNestedEntity(accountId, personId, options, requestOptions);
         }
 
-        public virtual Task<Person> GetAsync(string accountId, string personId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Person> GetAsync(string accountId, string personId, PersonGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetNestedEntityAsync(accountId, personId, null, requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(accountId, personId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Person> List(string accountId, PersonListOptions options = null, RequestOptions requestOptions = null)

@@ -8,7 +8,7 @@ namespace Stripe
         ICreatable<Plan, PlanCreateOptions>,
         IDeletable<Plan>,
         IListable<Plan, PlanListOptions>,
-        IRetrievable<Plan>,
+        IRetrievable<Plan, PlanGetOptions>,
         IUpdatable<Plan, PlanUpdateOptions>
     {
         public PlanService()
@@ -45,14 +45,14 @@ namespace Stripe
             return this.DeleteEntityAsync(planId, null, requestOptions, cancellationToken);
         }
 
-        public virtual Plan Get(string planId, RequestOptions requestOptions = null)
+        public virtual Plan Get(string planId, PlanGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(planId, null, requestOptions);
+            return this.GetEntity(planId, options, requestOptions);
         }
 
-        public virtual Task<Plan> GetAsync(string planId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Plan> GetAsync(string planId, PlanGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(planId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(planId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Plan> List(PlanListOptions options = null, RequestOptions requestOptions = null)

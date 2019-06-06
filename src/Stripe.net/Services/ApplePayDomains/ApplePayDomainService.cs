@@ -8,7 +8,7 @@ namespace Stripe
         ICreatable<ApplePayDomain, ApplePayDomainCreateOptions>,
         IDeletable<ApplePayDomain>,
         IListable<ApplePayDomain, ApplePayDomainListOptions>,
-        IRetrievable<ApplePayDomain>
+        IRetrievable<ApplePayDomain, ApplePayDomainGetOptions>
     {
         public ApplePayDomainService()
             : base(null)
@@ -42,14 +42,14 @@ namespace Stripe
             return this.DeleteEntityAsync(domainId, null, requestOptions, cancellationToken);
         }
 
-        public virtual ApplePayDomain Get(string domainId, RequestOptions requestOptions = null)
+        public virtual ApplePayDomain Get(string domainId, ApplePayDomainGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(domainId, null, requestOptions);
+            return this.GetEntity(domainId, options, requestOptions);
         }
 
-        public virtual Task<ApplePayDomain> GetAsync(string domainId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ApplePayDomain> GetAsync(string domainId, ApplePayDomainGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(domainId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(domainId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ApplePayDomain> List(ApplePayDomainListOptions options = null, RequestOptions requestOptions = null)

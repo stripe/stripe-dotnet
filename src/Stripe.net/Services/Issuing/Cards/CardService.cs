@@ -8,7 +8,7 @@ namespace Stripe.Issuing
     public class CardService : Service<Card>,
         ICreatable<Card, CardCreateOptions>,
         IListable<Card, CardListOptions>,
-        IRetrievable<Card>,
+        IRetrievable<Card, CardGetOptions>,
         IUpdatable<Card, CardUpdateOptions>
     {
         public CardService()
@@ -43,14 +43,14 @@ namespace Stripe.Issuing
             return this.RequestAsync<CardDetails>(HttpMethod.Get, $"{this.InstanceUrl(cardId)}/details", null, requestOptions, cancellationToken);
         }
 
-        public virtual Card Get(string cardId, RequestOptions requestOptions = null)
+        public virtual Card Get(string cardId, CardGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(cardId, null, requestOptions);
+            return this.GetEntity(cardId, options, requestOptions);
         }
 
-        public virtual Task<Card> GetAsync(string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Card> GetAsync(string cardId, CardGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(cardId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(cardId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Card> List(CardListOptions options = null, RequestOptions requestOptions = null)

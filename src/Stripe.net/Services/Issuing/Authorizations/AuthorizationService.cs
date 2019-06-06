@@ -7,7 +7,7 @@ namespace Stripe.Issuing
 
     public class AuthorizationService : Service<Authorization>,
         IListable<Authorization, AuthorizationListOptions>,
-        IRetrievable<Authorization>,
+        IRetrievable<Authorization, AuthorizationGetOptions>,
         IUpdatable<Authorization, AuthorizationUpdateOptions>
     {
         public AuthorizationService()
@@ -42,14 +42,14 @@ namespace Stripe.Issuing
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(authorizationId)}/decline", options, requestOptions, cancellationToken);
         }
 
-        public virtual Authorization Get(string authorizationId, RequestOptions requestOptions = null)
+        public virtual Authorization Get(string authorizationId, AuthorizationGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(authorizationId, null, requestOptions);
+            return this.GetEntity(authorizationId, options, requestOptions);
         }
 
-        public virtual Task<Authorization> GetAsync(string authorizationId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Authorization> GetAsync(string authorizationId, AuthorizationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(authorizationId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(authorizationId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Authorization> List(AuthorizationListOptions options = null, RequestOptions requestOptions = null)

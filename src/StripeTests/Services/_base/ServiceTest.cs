@@ -101,7 +101,7 @@ namespace StripeTests
 
         private class TestService : Service<TestEntity>,
             IListable<TestEntity, ListOptions>,
-            IRetrievable<TestEntity>
+            IRetrievable<TestEntity, BaseOptions>
         {
             public TestService(IStripeClient client)
                 : base(client)
@@ -114,14 +114,14 @@ namespace StripeTests
 
             public bool ExpandMultiWordProperty { get; set; }
 
-            public virtual TestEntity Get(string id, RequestOptions requestOptions = null)
+            public virtual TestEntity Get(string id, BaseOptions options = null, RequestOptions requestOptions = null)
             {
-                return this.GetEntity(id, null, requestOptions);
+                return this.GetEntity(id, options, requestOptions);
             }
 
-            public virtual Task<TestEntity> GetAsync(string id, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+            public virtual Task<TestEntity> GetAsync(string id, BaseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
             {
-                return this.GetEntityAsync(id, null, requestOptions, cancellationToken);
+                return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
             }
 
             public virtual StripeList<TestEntity> List(ListOptions options = null, RequestOptions requestOptions = null)

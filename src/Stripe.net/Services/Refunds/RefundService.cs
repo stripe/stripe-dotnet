@@ -7,7 +7,7 @@ namespace Stripe
     public class RefundService : Service<Refund>,
         ICreatable<Refund, RefundCreateOptions>,
         IListable<Refund, RefundListOptions>,
-        IRetrievable<Refund>,
+        IRetrievable<Refund, RefundGetOptions>,
         IUpdatable<Refund, RefundUpdateOptions>
     {
         public RefundService()
@@ -38,14 +38,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Refund Get(string refundId, RequestOptions requestOptions = null)
+        public virtual Refund Get(string refundId, RefundGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(refundId, null, requestOptions);
+            return this.GetEntity(refundId, options, requestOptions);
         }
 
-        public virtual Task<Refund> GetAsync(string refundId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Refund> GetAsync(string refundId, RefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(refundId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(refundId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Refund> List(RefundListOptions options = null, RequestOptions requestOptions = null)

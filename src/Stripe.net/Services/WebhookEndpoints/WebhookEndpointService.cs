@@ -8,7 +8,7 @@ namespace Stripe
         ICreatable<WebhookEndpoint, WebhookEndpointCreateOptions>,
         IDeletable<WebhookEndpoint>,
         IListable<WebhookEndpoint, WebhookEndpointListOptions>,
-        IRetrievable<WebhookEndpoint>,
+        IRetrievable<WebhookEndpoint, WebhookEndpointGetOptions>,
         IUpdatable<WebhookEndpoint, WebhookEndpointUpdateOptions>
     {
         public WebhookEndpointService()
@@ -43,14 +43,14 @@ namespace Stripe
             return this.DeleteEntityAsync(endpointId, null, requestOptions, cancellationToken);
         }
 
-        public virtual WebhookEndpoint Get(string endpointId, RequestOptions requestOptions = null)
+        public virtual WebhookEndpoint Get(string endpointId, WebhookEndpointGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(endpointId, null, requestOptions);
+            return this.GetEntity(endpointId, options, requestOptions);
         }
 
-        public virtual Task<WebhookEndpoint> GetAsync(string endpointId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<WebhookEndpoint> GetAsync(string endpointId, WebhookEndpointGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(endpointId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(endpointId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<WebhookEndpoint> List(WebhookEndpointListOptions options = null, RequestOptions requestOptions = null)

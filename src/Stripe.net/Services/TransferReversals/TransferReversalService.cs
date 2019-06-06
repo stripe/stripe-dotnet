@@ -7,7 +7,7 @@ namespace Stripe
     public class TransferReversalService : ServiceNested<TransferReversal>,
         INestedCreatable<TransferReversal, TransferReversalCreateOptions>,
         INestedListable<TransferReversal, TransferReversalListOptions>,
-        INestedRetrievable<TransferReversal>,
+        INestedRetrievable<TransferReversal, TransferReversalGetOptions>,
         INestedUpdatable<TransferReversal, TransferReversalUpdateOptions>
     {
         public TransferReversalService()
@@ -36,14 +36,14 @@ namespace Stripe
             return this.CreateNestedEntityAsync(transferId, options, requestOptions, cancellationToken);
         }
 
-        public virtual TransferReversal Get(string transferId, string reversalId, RequestOptions requestOptions = null)
+        public virtual TransferReversal Get(string transferId, string reversalId, TransferReversalGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(transferId, reversalId, null, requestOptions);
+            return this.GetNestedEntity(transferId, reversalId, options, requestOptions);
         }
 
-        public virtual Task<TransferReversal> GetAsync(string transferId, string reversalId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<TransferReversal> GetAsync(string transferId, string reversalId, TransferReversalGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetNestedEntityAsync(transferId, reversalId, null, requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(transferId, reversalId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<TransferReversal> List(string transferId, TransferReversalListOptions options = null, RequestOptions requestOptions = null)
