@@ -1,5 +1,9 @@
 # Changelog
 
+## 26.1.0 - 2019-06-06
+* [#1637](https://github.com/stripe/stripe-dotnet/pull/1637) Add support for `Location` on Terminal `ConnectionToken`
+* [#1638](https://github.com/stripe/stripe-dotnet/pull/1638) Add support for `Balance` and deprecate `AccountBalance` on Customer 
+
 ## 26.0.0 - 2019-05-24
 * [#1628](https://github.com/stripe/stripe-dotnet/pull/1628) Pin library to API version `2019-05-16`
 
