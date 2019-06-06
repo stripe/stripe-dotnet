@@ -36,6 +36,22 @@ namespace Stripe
         }
 
         /// <summary>
+        /// Adds a collection of <c>expand</c> values to the request, to request expansion of
+        /// specific fields in the response. When requesting expansions in a list request, don't
+        /// forget to prefix the field names with <c>data.</c>.
+        /// </summary>
+        /// <param name="values">The collection of names of the fields to expand.</param>
+        public void AddRangeExpand(IEnumerable<string> values)
+        {
+            if (this.Expand == null)
+            {
+                this.Expand = new List<string>();
+            }
+
+            this.Expand.AddRange(values);
+        }
+
+        /// <summary>
         /// Adds an extra parameter to the request. This can be useful if you need to use
         /// parameters not available in regular options classes, e.g. for beta features.
         /// </summary>
