@@ -1,4 +1,5 @@
 # Stripe.net
+
 [![NuGet](https://img.shields.io/nuget/v/stripe.net.svg)](https://www.nuget.org/packages/Stripe.net/)
 [![Build Status](https://ci.appveyor.com/api/projects/status/rg0pg5tlr1a6f8tf/branch/master?svg=true)](https://ci.appveyor.com/project/stripe/stripe-dotnet)
 [![Coverage Status](https://coveralls.io/repos/github/stripe/stripe-dotnet/badge.svg?branch=master)](https://coveralls.io/github/stripe/stripe-dotnet?branch=master)
@@ -60,25 +61,14 @@ requestOptions.StripeAccount = "CONNECTED ACCOUNT ID";
 You can configure the library with your own custom `HttpClient`:
 
 ```c#
-StripeConfiguration.StripeClient = new StripeClient(httpClient: new SystemNetHttpClient(httpClient));
+StripeConfiguration.StripeClient = new StripeClient(
+    apiKey,
+    httpClient: new SystemNetHttpClient(httpClient));
 ```
 
-For example, you can use this to send requests to Stripe's API through a proxy
-server:
-
-```c#
-using System.Net;
-using System.Net.Http;
-using Stripe;
-
-var handler = new HttpClientHandler
-{
-	Proxy = new WebProxy(proxyUrl),
-};
-var httpClient = new System.Net.HttpClient(handler);
-
-StripeConfiguration.StripeClient = new StripeClient(httpClient: new SystemNetHttpClient(httpClient));
-```
+Please refer to the [Advanced client usage][advanced-client-usage] wiki page
+to see more examples of using custom clients, e.g. for using a proxy server, a
+custom message handler, etc.
 
 ### Configuring automatic retries
 
@@ -100,9 +90,9 @@ identified using `StripeConfiguration.AppInfo`:
 ```c#
 StripeConfiguration.AppInfo = new AppInfo
 {
-	Name = "MyAwesomePlugin",
-	Url = "https://myawesomeplugin.info",
-	Version = "1.2.34",
+    Name = "MyAwesomePlugin",
+    Url = "https://myawesomeplugin.info",
+    Version = "1.2.34",
 };
 ```
 
@@ -143,6 +133,7 @@ dotnet test --framework netcoreapp2.1
 For any requests, bug or comments, please [open an issue][issues] or [submit a
 pull request][pulls].
 
+[advanced-client-usage]: https://github.com/stripe/stripe-dotnet/wiki/Advanced-client-usage
 [api-docs]: https://stripe.com/docs/api?lang=dotnet
 [api-keys]: https://dashboard.stripe.com/apikeys
 [connect-auth]: https://stripe.com/docs/connect/authentication#authentication-via-the-stripe-account-header
