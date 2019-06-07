@@ -1,5 +1,62 @@
 # Changelog
 
+## 27.0.0 - 2019-06-07
+Major version release. Refer to our [migration guide for v27](https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v27) for a list of backwards incompatible changes to watch out for.
+
+Pull requests included in this release (cf. [#1482](https://github.com/stripe/stripe-dotnet/pull/1482)):
+* [#1480](https://github.com/stripe/stripe-dotnet/pull/1480) Remove unnecessary uses of `Mapper`
+* [#1478](https://github.com/stripe/stripe-dotnet/pull/1478) Better serialization
+* [#1483](https://github.com/stripe/stripe-dotnet/pull/1483) Standardize signature of `OAuthTokenService.Deauthorize`
+* [#1484](https://github.com/stripe/stripe-dotnet/pull/1484) New `FromJson` method
+* [#1485](https://github.com/stripe/stripe-dotnet/pull/1485) Modernize `StripeConfiguration`
+* [#1488](https://github.com/stripe/stripe-dotnet/pull/1488) Simplify `Service` request methods
+* [#1489](https://github.com/stripe/stripe-dotnet/pull/1489) Replace `Parameter` custom class with `KeyValuePair<string, string>`
+* [#1490](https://github.com/stripe/stripe-dotnet/pull/1490) Move base URLs out of resource services where possible
+* [#1481](https://github.com/stripe/stripe-dotnet/pull/1481) Rewrite expandable field handling
+* [#1493](https://github.com/stripe/stripe-dotnet/pull/1493) Refactor `Client` class
+* [#1494](https://github.com/stripe/stripe-dotnet/pull/1494) Minor code fixes
+* [#1496](https://github.com/stripe/stripe-dotnet/pull/1496) Remove `Mapper` class
+* [#1500](https://github.com/stripe/stripe-dotnet/pull/1500) Minor improvements in `EventUtility`
+* [#1499](https://github.com/stripe/stripe-dotnet/pull/1499) Simplify handling of `Expand` and `ExtraParams`
+* [#1504](https://github.com/stripe/stripe-dotnet/pull/1504) More request encoding refactoring
+* [#1508](https://github.com/stripe/stripe-dotnet/pull/1508) Introduce new `Request` class to represent requests to Stripe's API
+* [#1509](https://github.com/stripe/stripe-dotnet/pull/1509) Fixes to `FileService` and `OAuthTokenService`
+* [#1487](https://github.com/stripe/stripe-dotnet/pull/1487) Replace `Requestor` with `StripeClient` and `HttpClient`
+* [#1511](https://github.com/stripe/stripe-dotnet/pull/1511) Remove extension methods
+* [#1513](https://github.com/stripe/stripe-dotnet/pull/1513) Add support for telemetry
+* [#1516](https://github.com/stripe/stripe-dotnet/pull/1516) Make `parent` on `OrderItem` expandable
+* [#1519](https://github.com/stripe/stripe-dotnet/pull/1519) Add missing attributes to `StripeError`
+* [#1518](https://github.com/stripe/stripe-dotnet/pull/1518) Automatic request retries
+* [#1534](https://github.com/stripe/stripe-dotnet/pull/1534) Remove parameters are internal only on `PaymentIntent`
+* [#1537](https://github.com/stripe/stripe-dotnet/pull/1537) Various minor cleanups
+* [#1536](https://github.com/stripe/stripe-dotnet/pull/1536) Check validity of JSON in OK responses
+* [#1520](https://github.com/stripe/stripe-dotnet/pull/1520) API key validation
+* [#1538](https://github.com/stripe/stripe-dotnet/pull/1538) Enforce that all properties have a Json attribute
+* [#1542](https://github.com/stripe/stripe-dotnet/pull/1542) Improved OAuth support
+* [#1563](https://github.com/stripe/stripe-dotnet/pull/1563) Rename `DuplicateChargeDocumentation` to be more consistent with `FileId`
+* [#1495](https://github.com/stripe/stripe-dotnet/pull/1495) `AnyOf<>` generic class to handle polymorphic parameters
+* [#1598](https://github.com/stripe/stripe-dotnet/pull/1598) Add support for `file_link_data`
+* [#1596](https://github.com/stripe/stripe-dotnet/pull/1596) Add support for passing application information
+* [#1603](https://github.com/stripe/stripe-dotnet/pull/1603) Rename `StripeConnectAccountId` to `StripeAccount`
+* [#1602](https://github.com/stripe/stripe-dotnet/pull/1602) Update README
+* [#1609](https://github.com/stripe/stripe-dotnet/pull/1609) Add wholesome test to check JSON names
+* [#1615](https://github.com/stripe/stripe-dotnet/pull/1615) Remove `System.Collections.Immutable` dependency
+* [#1616](https://github.com/stripe/stripe-dotnet/pull/1616) Raise `ArgumentException` on null or empty IDs
+* [#1623](https://github.com/stripe/stripe-dotnet/pull/1623) Move default values for `SystemNetHttpClient`
+* [#1622](https://github.com/stripe/stripe-dotnet/pull/1622) Remove `StripeConfiguration.EnableTelemetry` flag
+* [#1631](https://github.com/stripe/stripe-dotnet/pull/1631) Refactor `StripeClient` setup in tests
+* [#1632](https://github.com/stripe/stripe-dotnet/pull/1632) Set base URLs in StripeClient instead of StripeConfiguration
+* [#1633](https://github.com/stripe/stripe-dotnet/pull/1633) Add support for setting API key and client ID in `StripeClient`
+* [#1634](https://github.com/stripe/stripe-dotnet/pull/1634) Use `StripeClient` instance in tests
+* [#1635](https://github.com/stripe/stripe-dotnet/pull/1635) Add support for setting `MaxNetworkRetries` and `AppInfo` in `SystemNetHttpClient`
+* [#1640](https://github.com/stripe/stripe-dotnet/pull/1640) Make base URLs in `StripeClient` readonly
+* [#1639](https://github.com/stripe/stripe-dotnet/pull/1639) Make client in services readonly
+* [#1643](https://github.com/stripe/stripe-dotnet/pull/1643) Add `AddRangeExpand` method to `BaseOptions`
+* [#1644](https://github.com/stripe/stripe-dotnet/pull/1644) Add options classes for `Get`/`GetAsync` methods
+* [#1646](https://github.com/stripe/stripe-dotnet/pull/1646) Deprecate `Expand` properties on services
+* [#1647](https://github.com/stripe/stripe-dotnet/pull/1647) Use constants instead of static strings
+* [#1648](https://github.com/stripe/stripe-dotnet/pull/1648) Update `README.md`
+
 ## 26.1.0 - 2019-06-06
 * [#1637](https://github.com/stripe/stripe-dotnet/pull/1637) Add support for `Location` on Terminal `ConnectionToken`
 * [#1638](https://github.com/stripe/stripe-dotnet/pull/1638) Add support for `Balance` and deprecate `AccountBalance` on Customer 
