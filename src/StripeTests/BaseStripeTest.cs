@@ -1,40 +1,95 @@
 namespace StripeTests
 {
     using System.IO;
+    using System.Net;
     using System.Net.Http;
     using System.Reflection;
     using System.Text;
+    using Stripe;
     using Xunit;
 
     [Collection("stripe-mock tests")]
     public class BaseStripeTest
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseStripeTest"/> with no fixtures.
+        /// </summary>
         public BaseStripeTest()
             : this(null, null)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseStripeTest"/> with the
+        /// <see cref="StripeMockFixture"/> fixture. Use this constructor for tests that need to
+        /// send requests to stripe-mock, but don't need mocking capabilities (i.e. don't need to
+        /// assert or stub HTTP requests).
+        /// </summary>
         public BaseStripeTest(StripeMockFixture stripeMockFixture)
             : this(stripeMockFixture, null)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseStripeTest"/> with the
+        /// <see cref="MockHttpClientFixture"/> fixture. Use this constructor for tests that need
+        /// mocking capabilities (i.e. need to assert or stub HTTP requests) but don't need to send
+        /// requests to stripe-mock.
+        /// </summary>
         public BaseStripeTest(MockHttpClientFixture mockHttpClientFixture)
             : this(null, mockHttpClientFixture)
         {
         }
 
-        public BaseStripeTest(StripeMockFixture stripeMockFixture, MockHttpClientFixture mockHttpClientFixture)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseStripeTest"/> with both the
+        /// <see cref="StripeMockFixture"/> and the <see cref="MockHttpClientFixture"/> fixtures.
+        /// Use this constructor for tests that need to send requests to stripe-mock and also need
+        /// mocking capabilities (i.e. need to assert or stub HTTP requests).
+        /// </summary>
+        public BaseStripeTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
         {
             this.StripeMockFixture = stripeMockFixture;
             this.MockHttpClientFixture = mockHttpClientFixture;
 
-            if (this.MockHttpClientFixture != null)
+            if ((this.StripeMockFixture != null) && (this.MockHttpClientFixture != null))
             {
+                // Set up StripeClient to use stripe-mock with the mock HTTP client
+                var httpClient = new SystemNetHttpClient(
+                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
+                this.StripeClient = this.StripeMockFixture.BuildStripeClient(
+                    httpClient: httpClient);
+
                 // Reset the mock before each test
                 this.MockHttpClientFixture.Reset();
             }
+            else if (this.StripeMockFixture != null)
+            {
+                // Set up StripeClient to use stripe-mock
+                this.StripeClient = this.StripeMockFixture.BuildStripeClient();
+            }
+            else if (this.MockHttpClientFixture != null)
+            {
+                // Set up StripeClient with the mock HTTP client
+                var httpClient = new SystemNetHttpClient(
+                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
+                this.StripeClient = new StripeClient(
+                    "sk_test_123",
+                    httpClient: httpClient);
+
+                // Reset the mock before each test
+                this.MockHttpClientFixture.Reset();
+            }
+            else
+            {
+                // Use the default StripeClient
+                this.StripeClient = new StripeClient("sk_test_123");
+            }
         }
+
+        protected IStripeClient StripeClient { get; }
 
         protected MockHttpClientFixture MockHttpClientFixture { get; }
 
@@ -70,6 +125,24 @@ namespace StripeTests
             }
 
             this.MockHttpClientFixture.AssertRequest(method, path);
+        }
+
+        /// <summary>
+        /// Stubs an HTTP request with the specified method and path to return the specified status
+        /// code and response body.
+        /// </summary>
+        protected void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response)
+        {
+            if (this.MockHttpClientFixture == null)
+            {
+                throw new StripeTestException(
+                    "StubRequest called from a test class that doesn't have access to "
+                    + "MockHttpClientFixture. Make sure that the constructor for "
+                    + $"{this.GetType().Name} receives MockHttpClientFixture and calls the "
+                    + "base constructor.");
+            }
+
+            this.MockHttpClientFixture.StubRequest(method, path, status, response);
         }
 
         /// <summary>

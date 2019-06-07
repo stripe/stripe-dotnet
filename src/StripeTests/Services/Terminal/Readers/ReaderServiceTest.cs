@@ -17,10 +17,12 @@ namespace StripeTests.Terminal
         private readonly ReaderListOptions listOptions;
         private readonly ReaderUpdateOptions updateOptions;
 
-        public ReaderServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public ReaderServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new ReaderService();
+            this.service = new ReaderService(this.StripeClient);
 
             this.createOptions = new ReaderCreateOptions
             {

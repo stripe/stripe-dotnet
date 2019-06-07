@@ -17,10 +17,12 @@ namespace StripeTests
         private readonly InvoiceItemUpdateOptions updateOptions;
         private readonly InvoiceItemListOptions listOptions;
 
-        public InvoiceItemServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public InvoiceItemServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new InvoiceItemService();
+            this.service = new InvoiceItemService(this.StripeClient);
 
             this.createOptions = new InvoiceItemCreateOptions
             {

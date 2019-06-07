@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -7,7 +8,7 @@ namespace Stripe
     public class RefundService : Service<Refund>,
         ICreatable<Refund, RefundCreateOptions>,
         IListable<Refund, RefundListOptions>,
-        IRetrievable<Refund>,
+        IRetrievable<Refund, RefundGetOptions>,
         IUpdatable<Refund, RefundUpdateOptions>
     {
         public RefundService()
@@ -15,17 +16,20 @@ namespace Stripe
         {
         }
 
-        public RefundService(string apiKey)
-            : base(apiKey)
+        public RefundService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/refunds";
+        public override string BasePath => "/v1/refunds";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandBalanceTransaction { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCharge { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandFailureBalanceTransaction { get; set; }
 
         public virtual Refund Create(RefundCreateOptions options, RequestOptions requestOptions = null)
@@ -38,14 +42,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Refund Get(string refundId, RequestOptions requestOptions = null)
+        public virtual Refund Get(string refundId, RefundGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(refundId, null, requestOptions);
+            return this.GetEntity(refundId, options, requestOptions);
         }
 
-        public virtual Task<Refund> GetAsync(string refundId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Refund> GetAsync(string refundId, RefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(refundId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(refundId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Refund> List(RefundListOptions options = null, RequestOptions requestOptions = null)

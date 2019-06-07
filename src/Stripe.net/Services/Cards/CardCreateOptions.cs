@@ -1,8 +1,8 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CardCreateOptions : BaseOptions
     {
@@ -12,11 +12,15 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        /// REQUIRED. Either a token, like the ones returned by
+        /// <a href="https://stripe.com/docs/stripe.js">Stripe.js</a>, or a
+        /// <see cref="CardCreateNestedOptions"/> instance containing a user’s card
+        /// details.
+        /// </summary>
         [JsonProperty("source")]
-        public string SourceToken { get; set; }
-
-        [JsonProperty("source")]
-        public CardCreateNestedOptions SourceCard { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
 
         [JsonProperty("validate")]
         public bool? Validate { get; set; }

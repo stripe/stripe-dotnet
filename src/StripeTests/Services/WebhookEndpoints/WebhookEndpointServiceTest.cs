@@ -17,10 +17,12 @@ namespace StripeTests
         private readonly WebhookEndpointUpdateOptions updateOptions;
         private readonly WebhookEndpointListOptions listOptions;
 
-        public WebhookEndpointServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public WebhookEndpointServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new WebhookEndpointService();
+            this.service = new WebhookEndpointService(this.StripeClient);
 
             this.createOptions = new WebhookEndpointCreateOptions
             {

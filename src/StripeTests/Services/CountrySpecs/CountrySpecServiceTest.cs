@@ -14,10 +14,12 @@ namespace StripeTests
         private readonly CountrySpecService service;
         private readonly CountrySpecListOptions listOptions;
 
-        public CountrySpecServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public CountrySpecServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new CountrySpecService();
+            this.service = new CountrySpecService(this.StripeClient);
 
             this.listOptions = new CountrySpecListOptions
             {

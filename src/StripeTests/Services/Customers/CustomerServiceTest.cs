@@ -17,15 +17,17 @@ namespace StripeTests
         private readonly CustomerUpdateOptions updateOptions;
         private readonly CustomerListOptions listOptions;
 
-        public CustomerServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public CustomerServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new CustomerService();
+            this.service = new CustomerService(this.StripeClient);
 
             this.createOptions = new CustomerCreateOptions
             {
                 Email = "example@example.com",
-                SourceToken = "tok_123",
+                Source = "tok_123",
             };
 
             this.updateOptions = new CustomerUpdateOptions

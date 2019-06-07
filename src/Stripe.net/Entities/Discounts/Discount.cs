@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Discount : StripeEntity, IHasObject
+    public class Discount : StripeEntity<Discount>, IHasObject
     {
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -14,24 +14,14 @@ namespace Stripe
 
         #region Expandable Customer
         [JsonIgnore]
-        public string CustomerId { get; set; }
+        public string CustomerId => this.InternalCustomer.Id;
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            get
-            {
-                return this.Customer ?? (object)this.CustomerId;
-            }
-
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         /// <summary>
@@ -50,24 +40,14 @@ namespace Stripe
 
         #region Expandable Subscription
         [JsonIgnore]
-        public string SubscriptionId { get; set; }
+        public string SubscriptionId => this.InternalSubscription.Id;
 
         [JsonIgnore]
-        public Subscription Subscription { get; set; }
+        public Subscription Subscription => this.InternalSubscription.ExpandedObject;
 
         [JsonProperty("subscription")]
-        internal object InternalSubscription
-        {
-            get
-            {
-                return this.Subscription ?? (object)this.SubscriptionId;
-            }
-
-            set
-            {
-                StringOrObject<Subscription>.Map(value, s => this.SubscriptionId = s, o => this.Subscription = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
+        internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
     }
 }

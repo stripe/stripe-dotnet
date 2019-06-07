@@ -20,10 +20,12 @@ namespace StripeTests
         private readonly PaymentIntentListOptions listOptions;
         private readonly PaymentIntentUpdateOptions updateOptions;
 
-        public PaymentIntentServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public PaymentIntentServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new PaymentIntentService();
+            this.service = new PaymentIntentService(this.StripeClient);
 
             this.cancelOptions = new PaymentIntentCancelOptions
             {

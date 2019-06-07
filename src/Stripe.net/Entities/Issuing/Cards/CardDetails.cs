@@ -1,35 +1,24 @@
 namespace Stripe.Issuing
 {
     using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class CardDetails : StripeEntity, IHasObject
+    public class CardDetails : StripeEntity<CardDetails>, IHasObject
     {
         [JsonProperty("object")]
         public string Object { get; set; }
 
         #region Expandable Card
         [JsonIgnore]
-        public string CardId { get; set; }
+        public string CardId => this.InternalCard.Id;
 
         [JsonIgnore]
-        public Card Card { get; set; }
+        public Card Card => this.InternalCard.ExpandedObject;
 
         [JsonProperty("card")]
-        internal object InternalCard
-        {
-            get
-            {
-                return this.Card ?? (object)this.CardId;
-            }
-
-            set
-            {
-                StringOrObject<Card>.Map(value, s => this.CardId = s, o => this.Card = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
+        internal ExpandableField<Card> InternalCard { get; set; }
         #endregion
 
         [JsonProperty("created")]

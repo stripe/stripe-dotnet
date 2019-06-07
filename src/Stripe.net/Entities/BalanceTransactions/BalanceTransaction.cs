@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class BalanceTransaction : StripeEntity, IHasId, IHasObject
+    public class BalanceTransaction : StripeEntity<BalanceTransaction>, IHasId, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -44,24 +44,14 @@ namespace Stripe
 
         #region Expandable Source
         [JsonIgnore]
-        public string SourceId { get; set; }
+        public string SourceId => this.InternalSource.Id;
 
         [JsonIgnore]
-        public IBalanceTransactionSource Source { get; set; }
+        public IBalanceTransactionSource Source => this.InternalSource.ExpandedObject;
 
         [JsonProperty("source")]
-        internal object InternalSource
-        {
-            get
-            {
-                return this.Source ?? (object)this.SourceId;
-            }
-
-            set
-            {
-                StringOrObject<IBalanceTransactionSource>.Map(value, s => this.SourceId = s, o => this.Source = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<IBalanceTransactionSource>))]
+        internal ExpandableField<IBalanceTransactionSource> InternalSource { get; set; }
         #endregion
 
         [JsonProperty("status")]

@@ -15,10 +15,12 @@ namespace StripeTests
         private readonly TokenService service;
         private readonly TokenCreateOptions createOptions;
 
-        public TokenServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public TokenServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new TokenService();
+            this.service = new TokenService(this.StripeClient);
 
             this.createOptions = new TokenCreateOptions
             {

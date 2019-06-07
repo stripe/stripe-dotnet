@@ -12,12 +12,12 @@ namespace Stripe
         {
         }
 
-        public UsageRecordSummaryService(string apiKey)
-            : base(apiKey)
+        public UsageRecordSummaryService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/subscription_items/{PARENT_ID}/usage_record_summaries";
+        public override string BasePath => "/v1/subscription_items/{PARENT_ID}/usage_record_summaries";
 
         public virtual StripeList<UsageRecordSummary> List(string subscriptionItemId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null)
         {

@@ -5,7 +5,7 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Authorization : StripeEntity, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
+    public class Authorization : StripeEntity<Authorization>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -33,24 +33,14 @@ namespace Stripe.Issuing
 
         #region Expandable Cardholder
         [JsonIgnore]
-        public string CardholderId { get; set; }
+        public string CardholderId => this.InternalCardholder.Id;
 
         [JsonIgnore]
-        public Cardholder Cardholder { get; set; }
+        public Cardholder Cardholder => this.InternalCardholder.ExpandedObject;
 
         [JsonProperty("cardholder")]
-        internal object InternalCardholder
-        {
-            get
-            {
-                return this.Cardholder ?? (object)this.CardholderId;
-            }
-
-            set
-            {
-                StringOrObject<Cardholder>.Map(value, s => this.CardholderId = s, o => this.Cardholder = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Cardholder>))]
+        internal ExpandableField<Cardholder> InternalCardholder { get; set; }
         #endregion
 
         [JsonProperty("created")]

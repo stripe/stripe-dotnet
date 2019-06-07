@@ -14,10 +14,12 @@ namespace StripeTests.Checkout
         private readonly SessionService service;
         private readonly SessionCreateOptions createOptions;
 
-        public SessionServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public SessionServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new SessionService();
+            this.service = new SessionService(this.StripeClient);
 
             this.createOptions = new SessionCreateOptions
             {

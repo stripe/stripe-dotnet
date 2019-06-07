@@ -6,28 +6,28 @@ namespace Stripe.Sigma
 
     public class ScheduledQueryRunService : Service<ScheduledQueryRun>,
         IListable<ScheduledQueryRun, ScheduledQueryRunListOptions>,
-        IRetrievable<ScheduledQueryRun>
+        IRetrievable<ScheduledQueryRun, ScheduledQueryRunGetOptions>
     {
         public ScheduledQueryRunService()
             : base(null)
         {
         }
 
-        public ScheduledQueryRunService(string apiKey)
-            : base(apiKey)
+        public ScheduledQueryRunService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/sigma/scheduled_query_runs";
+        public override string BasePath => "/v1/sigma/scheduled_query_runs";
 
-        public virtual ScheduledQueryRun Get(string queryRunId, RequestOptions requestOptions = null)
+        public virtual ScheduledQueryRun Get(string queryRunId, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(queryRunId, null, requestOptions);
+            return this.GetEntity(queryRunId, options, requestOptions);
         }
 
-        public virtual Task<ScheduledQueryRun> GetAsync(string queryRunId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ScheduledQueryRun> GetAsync(string queryRunId, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(queryRunId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(queryRunId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ScheduledQueryRun> List(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null)

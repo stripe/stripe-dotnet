@@ -14,15 +14,17 @@ namespace StripeTests
         private readonly EphemeralKeyService service;
         private readonly EphemeralKeyCreateOptions createOptions;
 
-        public EphemeralKeyServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public EphemeralKeyServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new EphemeralKeyService();
+            this.service = new EphemeralKeyService(this.StripeClient);
 
             this.createOptions = new EphemeralKeyCreateOptions
             {
                 CustomerId = "cus_123",
-                StripeVersion = StripeConfiguration.StripeApiVersion,
+                StripeVersion = StripeConfiguration.ApiVersion,
             };
         }
 

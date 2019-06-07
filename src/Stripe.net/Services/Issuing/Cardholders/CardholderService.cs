@@ -7,7 +7,7 @@ namespace Stripe.Issuing
     public class CardholderService : Service<Cardholder>,
         ICreatable<Cardholder, CardholderCreateOptions>,
         IListable<Cardholder, CardholderListOptions>,
-        IRetrievable<Cardholder>,
+        IRetrievable<Cardholder, CardholderGetOptions>,
         IUpdatable<Cardholder, CardholderUpdateOptions>
     {
         public CardholderService()
@@ -15,12 +15,12 @@ namespace Stripe.Issuing
         {
         }
 
-        public CardholderService(string apiKey)
-            : base(apiKey)
+        public CardholderService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/issuing/cardholders";
+        public override string BasePath => "/v1/issuing/cardholders";
 
         public virtual Cardholder Create(CardholderCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -32,14 +32,14 @@ namespace Stripe.Issuing
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Cardholder Get(string cardholderId, RequestOptions requestOptions = null)
+        public virtual Cardholder Get(string cardholderId, CardholderGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(cardholderId, null, requestOptions);
+            return this.GetEntity(cardholderId, options, requestOptions);
         }
 
-        public virtual Task<Cardholder> GetAsync(string cardholderId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Cardholder> GetAsync(string cardholderId, CardholderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(cardholderId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(cardholderId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Cardholder> List(CardholderListOptions options = null, RequestOptions requestOptions = null)

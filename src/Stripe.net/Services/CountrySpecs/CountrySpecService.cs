@@ -6,28 +6,28 @@ namespace Stripe
 
     public class CountrySpecService : Service<CountrySpec>,
         IListable<CountrySpec, CountrySpecListOptions>,
-        IRetrievable<CountrySpec>
+        IRetrievable<CountrySpec, CountrySpecGetOptions>
     {
         public CountrySpecService()
             : base(null)
         {
         }
 
-        public CountrySpecService(string apiKey)
-            : base(apiKey)
+        public CountrySpecService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/country_specs";
+        public override string BasePath => "/v1/country_specs";
 
-        public virtual CountrySpec Get(string country, RequestOptions requestOptions = null)
+        public virtual CountrySpec Get(string country, CountrySpecGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(country, null, requestOptions);
+            return this.GetEntity(country, options, requestOptions);
         }
 
-        public virtual Task<CountrySpec> GetAsync(string country, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<CountrySpec> GetAsync(string country, CountrySpecGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(country, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(country, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<CountrySpec> List(CountrySpecListOptions options = null, RequestOptions requestOptions = null)

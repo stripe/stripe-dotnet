@@ -3,54 +3,46 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class FileService : Service<File>,
         ICreatable<File, FileCreateOptions>,
         IListable<File, FileListOptions>,
-        IRetrievable<File>
+        IRetrievable<File, FileGetOptions>
     {
         public FileService()
             : base(null)
         {
         }
 
-        public FileService(string apiKey)
-            : base(apiKey)
+        public FileService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/files";
+        public override string BasePath => "/v1/files";
 
         public virtual File Create(FileCreateOptions options, RequestOptions requestOptions = null)
         {
-            return Mapper<File>.MapFromJson(
-                Requestor.PostFile(
-                    this.ClassUrl(Urls.BaseFilesUrl),
-                    options.File,
-                    options.Purpose,
-                    this.SetupRequestOptions(requestOptions)));
+            requestOptions = this.SetupRequestOptions(requestOptions);
+            requestOptions.BaseUrl = requestOptions.BaseUrl ?? this.Client.FilesBase;
+            return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual async Task<File> CreateAsync(FileCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<File> CreateAsync(FileCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return Mapper<File>.MapFromJson(
-                await Requestor.PostFileAsync(
-                    this.ClassUrl(Urls.BaseFilesUrl),
-                    options.File,
-                    options.Purpose,
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
+            requestOptions = this.SetupRequestOptions(requestOptions);
+            requestOptions.BaseUrl = requestOptions.BaseUrl ?? this.Client.FilesBase;
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual File Get(string fileId, RequestOptions requestOptions = null)
+        public virtual File Get(string fileId, FileGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(fileId, null, requestOptions);
+            return this.GetEntity(fileId, options, requestOptions);
         }
 
-        public virtual Task<File> GetAsync(string fileId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<File> GetAsync(string fileId, FileGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(fileId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(fileId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<File> List(FileListOptions options = null, RequestOptions requestOptions = null)

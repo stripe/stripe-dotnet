@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class FileLink : StripeEntity, IHasId, IHasMetadata, IHasObject
+    public class FileLink : StripeEntity<FileLink>, IHasId, IHasMetadata, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -46,27 +46,17 @@ namespace Stripe
         /// ID of the file object this link points to.
         /// </summary>
         [JsonIgnore]
-        public string FileId { get; set; }
+        public string FileId => this.InternalFile.Id;
 
         /// <summary>
         /// The file object this link points to (if expanded).
         /// </summary>
         [JsonIgnore]
-        public File File { get; set; }
+        public File File => this.InternalFile.ExpandedObject;
 
         [JsonProperty("file")]
-        internal object InternalFile
-        {
-            get
-            {
-                return this.File ?? (object)this.FileId;
-            }
-
-            set
-            {
-                StringOrObject<File>.Map(value, s => this.FileId = s, o => this.File = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+        internal ExpandableField<File> InternalFile { get; set; }
         #endregion
 
         /// <summary>

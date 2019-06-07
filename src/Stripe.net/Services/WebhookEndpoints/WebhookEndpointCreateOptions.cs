@@ -10,7 +10,7 @@ namespace Stripe
         /// <summary>
         /// Events sent to this endpoint will be generated with this API version instead of your
         /// account's default API version. We recommend that you set this to the API version that
-        /// the library is pinned to in <c>StripeConfiguration.stripeApiVersion</c>
+        /// the library is pinned to in <see cref="StripeConfiguration.ApiVersion"/>.
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; set; }

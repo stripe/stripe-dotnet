@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SubscriptionSchedulePhaseItem : StripeEntity
+    public class SubscriptionSchedulePhaseItem : StripeEntity<SubscriptionSchedulePhaseItem>
     {
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
@@ -20,27 +20,17 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string PlanId { get; set; }
+        public string PlanId => this.InternalPlan.Id;
 
         /// <summary>
         /// (Expanded) The <see cref="Plan"/> included in the phase for this subscription schedule.
         /// </summary>
         [JsonIgnore]
-        public Plan Plan { get; set; }
+        public Plan Plan => this.InternalPlan.ExpandedObject;
 
         [JsonProperty("plan")]
-        internal object InternalPlan
-        {
-            get
-            {
-                return this.Plan ?? (object)this.PlanId;
-            }
-
-            set
-            {
-                StringOrObject<Plan>.Map(value, s => this.PlanId = s, o => this.Plan = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Plan>))]
+        internal ExpandableField<Plan> InternalPlan { get; set; }
         #endregion
 
         /// <summary>

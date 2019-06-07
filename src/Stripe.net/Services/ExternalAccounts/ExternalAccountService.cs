@@ -8,7 +8,7 @@ namespace Stripe
         INestedCreatable<IExternalAccount, ExternalAccountCreateOptions>,
         INestedDeletable<IExternalAccount>,
         INestedListable<IExternalAccount, ExternalAccountListOptions>,
-        INestedRetrievable<IExternalAccount>,
+        INestedRetrievable<IExternalAccount, ExternalAccountGetOptions>,
         INestedUpdatable<IExternalAccount, ExternalAccountUpdateOptions>
     {
         public ExternalAccountService()
@@ -16,12 +16,12 @@ namespace Stripe
         {
         }
 
-        public ExternalAccountService(string apiKey)
-            : base(apiKey)
+        public ExternalAccountService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/accounts/{PARENT_ID}/external_accounts";
+        public override string BasePath => "/v1/accounts/{PARENT_ID}/external_accounts";
 
         public virtual IExternalAccount Create(string accountId, ExternalAccountCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -43,14 +43,14 @@ namespace Stripe
             return this.DeleteNestedEntityAsync(accountId, externalAccountId, null, requestOptions, cancellationToken);
         }
 
-        public virtual IExternalAccount Get(string accountId, string externalAccountId, RequestOptions requestOptions = null)
+        public virtual IExternalAccount Get(string accountId, string externalAccountId, ExternalAccountGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(accountId, externalAccountId, null, requestOptions);
+            return this.GetNestedEntity(accountId, externalAccountId, options, requestOptions);
         }
 
-        public virtual Task<IExternalAccount> GetAsync(string accountId, string externalAccountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IExternalAccount> GetAsync(string accountId, string externalAccountId, ExternalAccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetNestedEntityAsync(accountId, externalAccountId, null, requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(accountId, externalAccountId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<IExternalAccount> List(string accountId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null)

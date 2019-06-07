@@ -2,10 +2,12 @@ namespace StripeTests.Infrastructure.TestData
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Stripe;
+    using Stripe.Infrastructure;
 
     public class TestOptions : BaseOptions
     {
@@ -15,9 +17,13 @@ namespace StripeTests.Infrastructure.TestData
             [EnumMember(Value = "test_one")]
             TestOne,
 
-            // TestTwo doesn't define a serialization value
+            // TestTwo purposefully doesn't define a serialization value
             TestTwo,
         }
+
+        [JsonProperty("any_of")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<string, Dictionary<string, string>> AnyOf { get; set; }
 
         [JsonProperty("array")]
         public string[] Array { get; set; }
@@ -45,6 +51,9 @@ namespace StripeTests.Infrastructure.TestData
 
         [JsonProperty("long")]
         public long? Long { get; set; }
+
+        [JsonProperty("stream")]
+        public Stream Stream { get; set; }
 
         [JsonProperty("string")]
         public string String { get; set; }

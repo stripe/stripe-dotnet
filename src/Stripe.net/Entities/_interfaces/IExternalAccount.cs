@@ -15,8 +15,8 @@ namespace Stripe
     /// </summary>
     public interface IExternalAccount : IStripeEntity, IHasId, IHasObject
     {
-        Account Account { get; set; }
+        Account Account { get; }
 
-        string AccountId { get; set; }
+        string AccountId { get; }
     }
 }

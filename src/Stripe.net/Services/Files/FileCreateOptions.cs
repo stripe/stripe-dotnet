@@ -1,6 +1,5 @@
 namespace Stripe
 {
-    using System.Collections.Generic;
     using System.IO;
     using Newtonsoft.Json;
 
@@ -12,6 +11,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("file")]
         public Stream File { get; set; }
+
+        /// <summary>
+        /// Optional parameters to automatically create a <see cref="FileLink"/> for the newly
+        /// created file.
+        /// </summary>
+        [JsonProperty("file_link_data")]
+        public FileLinkDataOptions FileLinkData { get; set; }
 
         /// <summary>
         /// REQUIRED. The purpose of the uploaded file. Possible values are <c>business_logo</c>,

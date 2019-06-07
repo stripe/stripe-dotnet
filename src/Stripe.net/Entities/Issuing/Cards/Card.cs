@@ -5,7 +5,7 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Card : StripeEntity, IHasId, IHasMetadata, IHasObject
+    public class Card : StripeEntity<Card>, IHasId, IHasMetadata, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -49,24 +49,14 @@ namespace Stripe.Issuing
 
         #region Expandable ReplacementFor
         [JsonIgnore]
-        public string ReplacementForId { get; set; }
+        public string ReplacementForId => this.InternalReplacementFor.Id;
 
         [JsonIgnore]
-        public Card ReplacementFor { get; set; }
+        public Card ReplacementFor => this.InternalReplacementFor.ExpandedObject;
 
         [JsonProperty("replacement_for")]
-        internal object InternalReplacementFor
-        {
-            get
-            {
-                return this.ReplacementFor ?? (object)this.ReplacementForId;
-            }
-
-            set
-            {
-                StringOrObject<Card>.Map(value, s => this.ReplacementForId = s, o => this.ReplacementFor = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
+        internal ExpandableField<Card> InternalReplacementFor { get; set; }
         #endregion
 
         [JsonProperty("replacement_reason")]

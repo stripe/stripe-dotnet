@@ -14,12 +14,12 @@ namespace Stripe.Checkout
         {
         }
 
-        public SessionService(string apiKey)
-            : base(apiKey)
+        public SessionService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/checkout/sessions";
+        public override string BasePath => "/v1/checkout/sessions";
 
         public virtual Session Create(SessionCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -31,14 +31,14 @@ namespace Stripe.Checkout
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Session Get(string sessionId, RequestOptions requestOptions = null)
+        public virtual Session Get(string sessionId, SessionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(sessionId, null, requestOptions);
+            return this.GetEntity(sessionId, options, requestOptions);
         }
 
-        public virtual Task<Session> GetAsync(string sessionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Session> GetAsync(string sessionId, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(sessionId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(sessionId, options, requestOptions, cancellationToken);
         }
     }
 }

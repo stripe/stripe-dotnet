@@ -13,12 +13,12 @@ namespace Stripe.Terminal
         {
         }
 
-        public ConnectionTokenService(string apiKey)
-            : base(apiKey)
+        public ConnectionTokenService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/terminal/connection_tokens";
+        public override string BasePath => "/v1/terminal/connection_tokens";
 
         public virtual ConnectionToken Create(ConnectionTokenCreateOptions options = null, RequestOptions requestOptions = null)
         {

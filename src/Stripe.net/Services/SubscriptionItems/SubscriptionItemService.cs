@@ -8,7 +8,7 @@ namespace Stripe
         ICreatable<SubscriptionItem, SubscriptionItemCreateOptions>,
         IDeletable<SubscriptionItem>,
         IListable<SubscriptionItem, SubscriptionItemListOptions>,
-        IRetrievable<SubscriptionItem>,
+        IRetrievable<SubscriptionItem, SubscriptionItemGetOptions>,
         IUpdatable<SubscriptionItem, SubscriptionItemUpdateOptions>
     {
         public SubscriptionItemService()
@@ -16,12 +16,12 @@ namespace Stripe
         {
         }
 
-        public SubscriptionItemService(string apiKey)
-            : base(apiKey)
+        public SubscriptionItemService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/subscription_items";
+        public override string BasePath => "/v1/subscription_items";
 
         public virtual SubscriptionItem Create(SubscriptionItemCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -43,14 +43,14 @@ namespace Stripe
             return this.DeleteEntityAsync(subscriptionItemId, null, requestOptions, cancellationToken);
         }
 
-        public virtual SubscriptionItem Get(string subscriptionItemId, RequestOptions requestOptions = null)
+        public virtual SubscriptionItem Get(string subscriptionItemId, SubscriptionItemGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(subscriptionItemId, null, requestOptions);
+            return this.GetEntity(subscriptionItemId, options, requestOptions);
         }
 
-        public virtual Task<SubscriptionItem> GetAsync(string subscriptionItemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SubscriptionItem> GetAsync(string subscriptionItemId, SubscriptionItemGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(subscriptionItemId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(subscriptionItemId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<SubscriptionItem> List(SubscriptionItemListOptions options = null, RequestOptions requestOptions = null)

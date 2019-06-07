@@ -13,12 +13,12 @@ namespace Stripe
         {
         }
 
-        public LoginLinkService(string apiKey)
-            : base(apiKey)
+        public LoginLinkService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/accounts/{PARENT_ID}/login_links";
+        public override string BasePath => "/v1/accounts/{PARENT_ID}/login_links";
 
         public virtual LoginLink Create(string accountId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null)
         {

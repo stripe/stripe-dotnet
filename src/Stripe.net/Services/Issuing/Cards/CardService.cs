@@ -1,13 +1,14 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
     public class CardService : Service<Card>,
         ICreatable<Card, CardCreateOptions>,
         IListable<Card, CardListOptions>,
-        IRetrievable<Card>,
+        IRetrievable<Card, CardGetOptions>,
         IUpdatable<Card, CardUpdateOptions>
     {
         public CardService()
@@ -15,12 +16,12 @@ namespace Stripe.Issuing
         {
         }
 
-        public CardService(string apiKey)
-            : base(apiKey)
+        public CardService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/issuing/cards";
+        public override string BasePath => "/v1/issuing/cards";
 
         public virtual Card Create(CardCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -34,22 +35,22 @@ namespace Stripe.Issuing
 
         public virtual CardDetails Details(string cardId, RequestOptions requestOptions = null)
         {
-            return this.GetRequest<CardDetails>($"{this.InstanceUrl(cardId)}/details", null, requestOptions, false);
+            return this.Request<CardDetails>(HttpMethod.Get, $"{this.InstanceUrl(cardId)}/details", null, requestOptions);
         }
 
         public virtual Task<CardDetails> DetailsAsync(string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetRequestAsync<CardDetails>($"{this.InstanceUrl(cardId)}/details", null, requestOptions, false, cancellationToken);
+            return this.RequestAsync<CardDetails>(HttpMethod.Get, $"{this.InstanceUrl(cardId)}/details", null, requestOptions, cancellationToken);
         }
 
-        public virtual Card Get(string cardId, RequestOptions requestOptions = null)
+        public virtual Card Get(string cardId, CardGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(cardId, null, requestOptions);
+            return this.GetEntity(cardId, options, requestOptions);
         }
 
-        public virtual Task<Card> GetAsync(string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Card> GetAsync(string cardId, CardGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(cardId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(cardId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Card> List(CardListOptions options = null, RequestOptions requestOptions = null)

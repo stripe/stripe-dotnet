@@ -17,10 +17,12 @@ namespace StripeTests
         private readonly ProductUpdateOptions updateOptions;
         private readonly ProductListOptions listOptions;
 
-        public ProductServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public ProductServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new ProductService();
+            this.service = new ProductService(this.StripeClient);
 
             this.createOptions = new ProductCreateOptions
             {

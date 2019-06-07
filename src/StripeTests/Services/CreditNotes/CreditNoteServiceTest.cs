@@ -18,10 +18,12 @@ namespace StripeTests
         private readonly CreditNoteListOptions listOptions;
         private readonly CreditNoteVoidOptions voidOptions;
 
-        public CreditNoteServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public CreditNoteServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new CreditNoteService();
+            this.service = new CreditNoteService(this.StripeClient);
 
             this.createOptions = new CreditNoteCreateOptions
             {

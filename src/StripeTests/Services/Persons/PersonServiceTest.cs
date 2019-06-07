@@ -17,10 +17,12 @@ namespace StripeTests
         private readonly PersonUpdateOptions updateOptions;
         private readonly PersonListOptions listOptions;
 
-        public PersonServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public PersonServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new PersonService();
+            this.service = new PersonService(this.StripeClient);
 
             this.createOptions = new PersonCreateOptions
             {

@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SubscriptionListOptions : ListOptionsWithCreated
     {
@@ -12,28 +13,20 @@ namespace Stripe
         public Billing? Billing { get; set; }
 
         /// <summary>
-        /// A filter on the list based on the object current_period_end field.
+        /// A filter on the list based on the object <c>current_period_end</c> field. The value can
+        /// be a <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
         /// </summary>
         [JsonProperty("current_period_end")]
-        public DateTime? CurrentPeriodEnd { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodEnd { get; set; }
 
         /// <summary>
-        /// A filter on the list based on the object current_period_end field.
-        /// </summary>
-        [JsonProperty("current_period_end")]
-        public DateRangeOptions CurrentPeriodEndRange { get; set; }
-
-        /// <summary>
-        /// A filter on the list based on the object current_period_start field.
+        /// A filter on the list based on the object <c>current_period_start</c> field. The value
+        /// can be a <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
         /// </summary>
         [JsonProperty("current_period_start")]
-        public DateTime? CurrentPeriodStart { get; set; }
-
-        /// <summary>
-        /// A filter on the list based on the object current_period_start field.
-        /// </summary>
-        [JsonProperty("current_period_start")]
-        public DateRangeOptions CurrentPeriodStartRange { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodStart { get; set; }
 
         /// <summary>
         /// The ID of the customer whose subscriptions will be retrieved.

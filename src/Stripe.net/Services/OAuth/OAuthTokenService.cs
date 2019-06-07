@@ -1,8 +1,10 @@
 namespace Stripe
 {
+    using System;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
+    using Stripe.Infrastructure.FormEncoding;
 
     public class OAuthTokenService : Service<OAuthToken>,
         ICreatable<OAuthToken, OAuthTokenCreateOptions>
@@ -12,37 +14,99 @@ namespace Stripe
         {
         }
 
-        public OAuthTokenService(string apiKey)
-            : base(apiKey)
+        public OAuthTokenService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => null;
+        public override string BasePath => "/oauth/token";
+
+        public override string BaseUrl => this.Client.ConnectBase;
+
+        public virtual Uri AuthorizeUrl(OAuthAuthorizeUrlOptions options, bool express = false)
+        {
+            string path = "/oauth/authorize";
+            if (express)
+            {
+                path = "/express" + path;
+            }
+
+            options = this.SetupOAuthAuthorizeUrlOptions(options);
+
+            return new Uri(this.Client.ConnectBase + path + "?" +
+                FormEncoder.CreateQueryString(options));
+        }
 
         public virtual OAuthToken Create(OAuthTokenCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<OAuthToken>($"{Urls.BaseConnectUrl}/oauth/token", options, requestOptions);
+            options = this.SetupOAuthTokenCreateOptions(options);
+            return this.CreateEntity(options, requestOptions);
         }
 
         public virtual Task<OAuthToken> CreateAsync(OAuthTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<OAuthToken>($"{Urls.BaseConnectUrl}/oauth/token", options, requestOptions, cancellationToken);
+            options = this.SetupOAuthTokenCreateOptions(options);
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual OAuthDeauthorize Deauthorize(string clientId, string stripeUserId, RequestOptions requestOptions = null)
+        public virtual OAuthDeauthorize Deauthorize(OAuthDeauthorizeOptions options, RequestOptions requestOptions = null)
         {
-            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.BaseConnectUrl}/oauth/deauthorize", "client_id", clientId);
-            url = ParameterBuilder.ApplyParameterToUrl(url, "stripe_user_id", stripeUserId);
-
-            return this.PostRequest<OAuthDeauthorize>(url, null, requestOptions);
+            options = this.SetupOAuthDeauthorizeOptions(options);
+            return this.Request<OAuthDeauthorize>(HttpMethod.Post, "/oauth/deauthorize", options, requestOptions);
         }
 
-        public virtual Task<OAuthDeauthorize> DeauthorizeAsync(string clientId, string stripeUserId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<OAuthDeauthorize> DeauthorizeAsync(OAuthDeauthorizeOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var url = ParameterBuilder.ApplyParameterToUrl($"{Urls.BaseConnectUrl}/oauth/deauthorize", "client_id", clientId);
-            url = ParameterBuilder.ApplyParameterToUrl(url, "stripe_user_id", stripeUserId);
+            options = this.SetupOAuthDeauthorizeOptions(options);
+            return this.RequestAsync<OAuthDeauthorize>(HttpMethod.Post, "/oauth/deauthorize", options, requestOptions, cancellationToken);
+        }
 
-            return this.PostRequestAsync<OAuthDeauthorize>(url, null, requestOptions, cancellationToken);
+        private OAuthAuthorizeUrlOptions SetupOAuthAuthorizeUrlOptions(
+            OAuthAuthorizeUrlOptions options)
+        {
+            if (options == null)
+            {
+                options = new OAuthAuthorizeUrlOptions();
+            }
+
+            if (options.ClientId == null)
+            {
+                options.ClientId = this.Client.ClientId;
+            }
+
+            return options;
+        }
+
+        private OAuthTokenCreateOptions SetupOAuthTokenCreateOptions(
+            OAuthTokenCreateOptions options)
+        {
+            if (options == null)
+            {
+                options = new OAuthTokenCreateOptions();
+            }
+
+            if (options.ClientSecret == null)
+            {
+                options.ClientSecret = this.Client.ApiKey;
+            }
+
+            return options;
+        }
+
+        private OAuthDeauthorizeOptions SetupOAuthDeauthorizeOptions(
+            OAuthDeauthorizeOptions options)
+        {
+            if (options == null)
+            {
+                options = new OAuthDeauthorizeOptions();
+            }
+
+            if (options.ClientId == null)
+            {
+                options.ClientId = this.Client.ClientId;
+            }
+
+            return options;
         }
     }
 }

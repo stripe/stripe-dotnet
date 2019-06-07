@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -7,7 +8,7 @@ namespace Stripe
     public class PersonService : ServiceNested<Person>,
         INestedCreatable<Person, PersonCreateOptions>,
         INestedListable<Person, PersonListOptions>,
-        INestedRetrievable<Person>,
+        INestedRetrievable<Person, PersonGetOptions>,
         INestedUpdatable<Person, PersonUpdateOptions>
     {
         public PersonService()
@@ -15,15 +16,17 @@ namespace Stripe
         {
         }
 
-        public PersonService(string apiKey)
-            : base(apiKey)
+        public PersonService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/accounts/{PARENT_ID}/persons";
+        public override string BasePath => "/v1/accounts/{PARENT_ID}/persons";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandBalanceTransaction { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandTransfer { get; set; }
 
         public virtual Person Create(string accountId, PersonCreateOptions options = null, RequestOptions requestOptions = null)
@@ -46,14 +49,14 @@ namespace Stripe
             return this.DeleteNestedEntityAsync(accountId, personId, null, requestOptions, cancellationToken);
         }
 
-        public virtual Person Get(string accountId, string personId, RequestOptions requestOptions = null)
+        public virtual Person Get(string accountId, string personId, PersonGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(accountId, personId, null, requestOptions);
+            return this.GetNestedEntity(accountId, personId, options, requestOptions);
         }
 
-        public virtual Task<Person> GetAsync(string accountId, string personId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Person> GetAsync(string accountId, string personId, PersonGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetNestedEntityAsync(accountId, personId, null, requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(accountId, personId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Person> List(string accountId, PersonListOptions options = null, RequestOptions requestOptions = null)

@@ -8,7 +8,7 @@ namespace Stripe
         ICreatable<Product, ProductCreateOptions>,
         IDeletable<Product>,
         IListable<Product, ProductListOptions>,
-        IRetrievable<Product>,
+        IRetrievable<Product, ProductGetOptions>,
         IUpdatable<Product, ProductUpdateOptions>
     {
         public ProductService()
@@ -16,12 +16,12 @@ namespace Stripe
         {
         }
 
-        public ProductService(string apiKey)
-            : base(apiKey)
+        public ProductService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/products";
+        public override string BasePath => "/v1/products";
 
         public virtual Product Create(ProductCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -43,14 +43,14 @@ namespace Stripe
             return this.DeleteEntityAsync(productId, null, requestOptions, cancellationToken);
         }
 
-        public virtual Product Get(string productId, RequestOptions requestOptions = null)
+        public virtual Product Get(string productId, ProductGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(productId, null, requestOptions);
+            return this.GetEntity(productId, options, requestOptions);
         }
 
-        public virtual Task<Product> GetAsync(string productId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Product> GetAsync(string productId, ProductGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(productId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(productId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Product> List(ProductListOptions options = null, RequestOptions requestOptions = null)

@@ -15,10 +15,12 @@ namespace StripeTests
         private readonly ReviewApproveOptions approveOptions;
         private readonly ReviewListOptions listOptions;
 
-        public ReviewServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public ReviewServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new ReviewService();
+            this.service = new ReviewService(this.StripeClient);
 
             this.approveOptions = new ReviewApproveOptions
             {

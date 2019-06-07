@@ -19,10 +19,12 @@ namespace StripeTests
         private readonly AccountListOptions listOptions;
         private readonly AccountRejectOptions rejectOptions;
 
-        public AccountServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public AccountServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new AccountService();
+            this.service = new AccountService(this.StripeClient);
 
             this.createOptions = new AccountCreateOptions
             {
@@ -45,7 +47,7 @@ namespace StripeTests
                     },
                     Name = "Company name",
                 },
-                ExternalAccountId = "tok_visa_debit",
+                ExternalAccount = "tok_visa_debit",
                 RequestedCapabilities = new List<string>
                 {
                     "card_payments",

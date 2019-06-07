@@ -1,13 +1,15 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
     public class OrderService : Service<Order>,
         ICreatable<Order, OrderCreateOptions>,
         IListable<Order, OrderListOptions>,
-        IRetrievable<Order>,
+        IRetrievable<Order, OrderGetOptions>,
         IUpdatable<Order, OrderUpdateOptions>
     {
         public OrderService()
@@ -15,15 +17,17 @@ namespace Stripe
         {
         }
 
-        public OrderService(string apiKey)
-            : base(apiKey)
+        public OrderService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/orders";
+        public override string BasePath => "/v1/orders";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCharge { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCustomer { get; set; }
 
         public virtual Order Create(OrderCreateOptions options, RequestOptions requestOptions = null)
@@ -36,14 +40,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Order Get(string orderId, RequestOptions requestOptions = null)
+        public virtual Order Get(string orderId, OrderGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(orderId, null, requestOptions);
+            return this.GetEntity(orderId, options, requestOptions);
         }
 
-        public virtual Task<Order> GetAsync(string orderId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Order> GetAsync(string orderId, OrderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(orderId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(orderId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Order> List(OrderListOptions options = null, RequestOptions requestOptions = null)
@@ -63,12 +67,12 @@ namespace Stripe
 
         public virtual Order Pay(string orderId, OrderPayOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<Order>($"{this.InstanceUrl(orderId)}/pay", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/pay", options, requestOptions);
         }
 
         public virtual Task<Order> PayAsync(string orderId, OrderPayOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<Order>($"{this.InstanceUrl(orderId)}/pay", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/pay", options, requestOptions, cancellationToken);
         }
 
         public virtual Order Update(string orderId, OrderUpdateOptions options, RequestOptions requestOptions = null)

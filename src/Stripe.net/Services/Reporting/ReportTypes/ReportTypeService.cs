@@ -6,28 +6,28 @@ namespace Stripe.Reporting
 
     public class ReportTypeService : Service<ReportType>,
         IListable<ReportType, ReportTypeListOptions>,
-        IRetrievable<ReportType>
+        IRetrievable<ReportType, ReportTypeGetOptions>
     {
         public ReportTypeService()
             : base(null)
         {
         }
 
-        public ReportTypeService(string apiKey)
-            : base(apiKey)
+        public ReportTypeService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/reporting/report_types";
+        public override string BasePath => "/v1/reporting/report_types";
 
-        public virtual ReportType Get(string reportTypeId, RequestOptions requestOptions = null)
+        public virtual ReportType Get(string reportTypeId, ReportTypeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(reportTypeId, null, requestOptions);
+            return this.GetEntity(reportTypeId, options, requestOptions);
         }
 
-        public virtual Task<ReportType> GetAsync(string reportTypeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ReportType> GetAsync(string reportTypeId, ReportTypeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(reportTypeId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(reportTypeId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ReportType> List(ReportTypeListOptions options = null, RequestOptions requestOptions = null)

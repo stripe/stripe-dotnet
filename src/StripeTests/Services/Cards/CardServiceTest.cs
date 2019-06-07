@@ -22,14 +22,16 @@ namespace StripeTests
         private readonly CardUpdateOptions updateOptions;
         private readonly CardListOptions listOptions;
 
-        public CardServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public CardServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new CardService();
+            this.service = new CardService(this.StripeClient);
 
             this.createOptions = new CardCreateOptions
             {
-                SourceToken = "tok_123",
+                Source = "tok_123",
             };
 
             this.updateOptions = new CardUpdateOptions

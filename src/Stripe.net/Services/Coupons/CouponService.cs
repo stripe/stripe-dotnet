@@ -8,7 +8,7 @@ namespace Stripe
         ICreatable<Coupon, CouponCreateOptions>,
         IDeletable<Coupon>,
         IListable<Coupon, CouponListOptions>,
-        IRetrievable<Coupon>,
+        IRetrievable<Coupon, CouponGetOptions>,
         IUpdatable<Coupon, CouponUpdateOptions>
     {
         public CouponService()
@@ -16,12 +16,12 @@ namespace Stripe
         {
         }
 
-        public CouponService(string apiKey)
-            : base(apiKey)
+        public CouponService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/coupons";
+        public override string BasePath => "/v1/coupons";
 
         public virtual Coupon Create(CouponCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -43,14 +43,14 @@ namespace Stripe
             return this.DeleteEntityAsync(couponId, null, requestOptions, cancellationToken);
         }
 
-        public virtual Coupon Get(string couponId, RequestOptions requestOptions = null)
+        public virtual Coupon Get(string couponId, CouponGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(couponId, null, requestOptions);
+            return this.GetEntity(couponId, options, requestOptions);
         }
 
-        public virtual Task<Coupon> GetAsync(string couponId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Coupon> GetAsync(string couponId, CouponGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(couponId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(couponId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Coupon> List(CouponListOptions options = null, RequestOptions requestOptions = null)

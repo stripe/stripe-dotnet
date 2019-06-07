@@ -2,24 +2,14 @@ namespace StripeTests
 {
     using System;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Stripe;
-    using Stripe.Infrastructure;
+    using Stripe.Infrastructure.FormEncoding;
     using Xunit;
 
     public class SubscriptionCreateOptionsTest : BaseStripeTest
     {
-        private readonly SubscriptionService service;
-
-        public SubscriptionCreateOptionsTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
-        {
-            this.service = new SubscriptionService();
-        }
-
         [Fact]
-        public void Serialize()
+        public void SerializeItems()
         {
             var options = new SubscriptionCreateOptions
             {
@@ -39,12 +29,33 @@ namespace StripeTests
                 },
             };
 
-            var url = this.service.ApplyAllParameters(options, string.Empty, false);
             Assert.Equal(
-                "?customer=cus_123" +
-                "&items[0][plan]=plan_123&items[0][quantity]=2" +
-                "&items[1][plan]=plan_124&items[1][quantity]=3",
-                url);
+                "customer=cus_123&" +
+                "items[0][plan]=plan_123&items[0][quantity]=2&" +
+                "items[1][plan]=plan_124&items[1][quantity]=3",
+                FormEncoder.CreateQueryString(options));
+        }
+
+        [Fact]
+        public void SerializeTrialEndDateTime()
+        {
+            var options = new SubscriptionCreateOptions
+            {
+                TrialEnd = DateTime.Parse("Fri, 13 Feb 2009 23:31:30Z"),
+            };
+
+            Assert.Equal("trial_end=1234567890", FormEncoder.CreateQueryString(options));
+        }
+
+        [Fact]
+        public void SerializeTrialEndNow()
+        {
+            var options = new SubscriptionCreateOptions
+            {
+                TrialEnd = SubscriptionTrialEnd.Now,
+            };
+
+            Assert.Equal("trial_end=now", FormEncoder.CreateQueryString(options));
         }
     }
 }

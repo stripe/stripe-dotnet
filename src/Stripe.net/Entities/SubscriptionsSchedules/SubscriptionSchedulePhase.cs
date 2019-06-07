@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SubscriptionSchedulePhase : StripeEntity
+    public class SubscriptionSchedulePhase : StripeEntity<SubscriptionSchedulePhase>
     {
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal places. This
@@ -22,28 +22,18 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string CouponId { get; set; }
+        public string CouponId => this.InternalCoupon.Id;
 
         /// <summary>
         /// (Expanded) The <see cref="Coupon"/> associated with this phase for the subscription
         /// schedule.
         /// </summary>
         [JsonIgnore]
-        public Coupon Coupon { get; set; }
+        public Coupon Coupon => this.InternalCoupon.ExpandedObject;
 
         [JsonProperty("coupon")]
-        internal object InternalCoupon
-        {
-            get
-            {
-                return this.Coupon ?? (object)this.CouponId;
-            }
-
-            set
-            {
-                StringOrObject<Coupon>.Map(value, s => this.CouponId = s, o => this.Coupon = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Coupon>))]
+        internal ExpandableField<Coupon> InternalCoupon { get; set; }
         #endregion
 
         /// <summary>

@@ -7,19 +7,19 @@ namespace Stripe.Radar
     public class ValueListItemService : Service<ValueListItem>,
         ICreatable<ValueListItem, ValueListItemCreateOptions>,
         IListable<ValueListItem, ValueListItemListOptions>,
-        IRetrievable<ValueListItem>
+        IRetrievable<ValueListItem, ValueListItemGetOptions>
     {
         public ValueListItemService()
             : base(null)
         {
         }
 
-        public ValueListItemService(string apiKey)
-            : base(apiKey)
+        public ValueListItemService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/radar/value_list_items";
+        public override string BasePath => "/v1/radar/value_list_items";
 
         public virtual ValueListItem Create(ValueListItemCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -41,14 +41,14 @@ namespace Stripe.Radar
             return this.DeleteEntityAsync(valueListItemId, null, requestOptions, cancellationToken);
         }
 
-        public virtual ValueListItem Get(string valueListItemId, RequestOptions requestOptions = null)
+        public virtual ValueListItem Get(string valueListItemId, ValueListItemGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(valueListItemId, null, requestOptions);
+            return this.GetEntity(valueListItemId, options, requestOptions);
         }
 
-        public virtual Task<ValueListItem> GetAsync(string valueListItemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ValueListItem> GetAsync(string valueListItemId, ValueListItemGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(valueListItemId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(valueListItemId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ValueListItem> List(ValueListItemListOptions options = null, RequestOptions requestOptions = null)

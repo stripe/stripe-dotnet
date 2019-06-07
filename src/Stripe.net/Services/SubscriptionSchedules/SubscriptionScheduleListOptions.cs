@@ -2,20 +2,25 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SubscriptionScheduleListOptions : ListOptionsWithCreated
     {
+        /// <summary>
+        /// A filter on the list based on the object <c>canceled_at</c> field. The value can be a
+        /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
+        /// </summary>
         [JsonProperty("canceled_at")]
-        public DateTime? CanceledAt { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> CanceledAt { get; set; }
 
-        [JsonProperty("canceled_at")]
-        public DateRangeOptions CanceledAtRange { get; set; }
-
+        /// <summary>
+        /// A filter on the list based on the object <c>completed_at</c> field. The value can be a
+        /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
+        /// </summary>
         [JsonProperty("completed_at")]
-        public DateTime? CompletedAt { get; set; }
-
-        [JsonProperty("completed_at")]
-        public DateRangeOptions CompletedAtRange { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> CompletedAt { get; set; }
 
         /// <summary>
         /// Only return subscription schedules for the given customer.
@@ -23,11 +28,13 @@ namespace Stripe
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
 
+        /// <summary>
+        /// A filter on the list based on the object <c>released_at</c> field. The value can be a
+        /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
+        /// </summary>
         [JsonProperty("released_at")]
-        public DateTime? ReleasedAt { get; set; }
-
-        [JsonProperty("released_at")]
-        public DateRangeOptions ReleasedAtRange { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> ReleasedAt { get; set; }
 
         /// <summary>
         /// Only return subscription schedules that have not started yet.

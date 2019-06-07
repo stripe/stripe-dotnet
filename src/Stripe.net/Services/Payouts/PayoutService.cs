@@ -1,13 +1,15 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
     public class PayoutService : Service<Payout>,
         ICreatable<Payout, PayoutCreateOptions>,
         IListable<Payout, PayoutListOptions>,
-        IRetrievable<Payout>,
+        IRetrievable<Payout, PayoutGetOptions>,
         IUpdatable<Payout, PayoutUpdateOptions>
     {
         public PayoutService()
@@ -15,27 +17,30 @@ namespace Stripe
         {
         }
 
-        public PayoutService(string apiKey)
-            : base(apiKey)
+        public PayoutService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/payouts";
+        public override string BasePath => "/v1/payouts";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandBalanceTransaction { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandDestination { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandFailureBalanceTransaction { get; set; }
 
         public virtual Payout Cancel(string payoutId, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<Payout>($"{this.InstanceUrl(payoutId)}/cancel", null, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(payoutId)}/cancel", null, requestOptions);
         }
 
         public virtual Task<Payout> CancelAsync(string payoutId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<Payout>($"{this.InstanceUrl(payoutId)}/cancel", null, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(payoutId)}/cancel", null, requestOptions, cancellationToken);
         }
 
         public virtual Payout Create(PayoutCreateOptions options, RequestOptions requestOptions = null)
@@ -48,14 +53,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Payout Get(string payoutId, RequestOptions requestOptions = null)
+        public virtual Payout Get(string payoutId, PayoutGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(payoutId, null, requestOptions);
+            return this.GetEntity(payoutId, options, requestOptions);
         }
 
-        public virtual Task<Payout> GetAsync(string payoutId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Payout> GetAsync(string payoutId, PayoutGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(payoutId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(payoutId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Payout> List(PayoutListOptions options = null, RequestOptions requestOptions = null)

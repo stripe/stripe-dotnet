@@ -15,10 +15,12 @@ namespace StripeTests
         private readonly ApplePayDomainCreateOptions createOptions;
         private readonly ApplePayDomainListOptions listOptions;
 
-        public ApplePayDomainServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public ApplePayDomainServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new ApplePayDomainService();
+            this.service = new ApplePayDomainService(this.StripeClient);
 
             this.createOptions = new ApplePayDomainCreateOptions
             {

@@ -6,28 +6,28 @@ namespace Stripe
 
     public class EventService : Service<Event>,
         IListable<Event, EventListOptions>,
-        IRetrievable<Event>
+        IRetrievable<Event, EventGetOptions>
     {
         public EventService()
             : base(null)
         {
         }
 
-        public EventService(string apiKey)
-            : base(apiKey)
+        public EventService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/events";
+        public override string BasePath => "/v1/events";
 
-        public virtual Event Get(string eventId, RequestOptions requestOptions = null)
+        public virtual Event Get(string eventId, EventGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(eventId, null, requestOptions);
+            return this.GetEntity(eventId, options, requestOptions);
         }
 
-        public virtual Task<Event> GetAsync(string eventId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Event> GetAsync(string eventId, EventGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(eventId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(eventId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Event> List(EventListOptions options = null, RequestOptions requestOptions = null)

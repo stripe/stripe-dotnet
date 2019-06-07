@@ -16,10 +16,12 @@ namespace StripeTests
         private readonly TaxIdCreateOptions createOptions;
         private readonly TaxIdListOptions listOptions;
 
-        public TaxIdServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public TaxIdServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new TaxIdService();
+            this.service = new TaxIdService(this.StripeClient);
 
             this.createOptions = new TaxIdCreateOptions
             {

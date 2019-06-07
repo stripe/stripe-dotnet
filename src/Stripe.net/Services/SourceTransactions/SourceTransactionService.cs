@@ -12,12 +12,12 @@ namespace Stripe
         {
         }
 
-        public SourceTransactionService(string apiKey)
-            : base(apiKey)
+        public SourceTransactionService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/sources/{PARENT_ID}/source_transactions";
+        public override string BasePath => "/v1/sources/{PARENT_ID}/source_transactions";
 
         public virtual StripeList<SourceTransaction> List(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null)
         {

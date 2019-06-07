@@ -1,8 +1,8 @@
 namespace Stripe
 {
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class DiscountService : Service<Discount>
     {
@@ -11,8 +11,8 @@ namespace Stripe
         {
         }
 
-        public DiscountService(string apiKey)
-            : base(apiKey)
+        public DiscountService(IStripeClient client)
+            : base(client)
         {
         }
 
@@ -20,22 +20,22 @@ namespace Stripe
 
         public virtual Discount DeleteCustomerDiscount(string customerId, RequestOptions requestOptions = null)
         {
-            return this.DeleteRequest<Discount>($"{Urls.BaseUrl}/customers/{customerId}/discount", null, requestOptions);
+            return this.Request(HttpMethod.Delete, $"/v1/customers/{customerId}/discount", null, requestOptions);
         }
 
         public virtual Task<Discount> DeleteCustomerDiscountAsync(string customerId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteRequestAsync<Discount>($"{Urls.BaseUrl}/customers/{customerId}/discount", null, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Delete, $"/v1/customers/{customerId}/discount", null, requestOptions, cancellationToken);
         }
 
         public virtual Discount DeleteSubscriptionDiscount(string subscriptionId, RequestOptions requestOptions = null)
         {
-            return this.DeleteRequest<Discount>($"{Urls.BaseUrl}/subscriptions/{subscriptionId}/discount", null, requestOptions);
+            return this.Request(HttpMethod.Delete, $"/v1/subscriptions/{subscriptionId}/discount", null, requestOptions);
         }
 
         public virtual Task<Discount> DeleteSubscriptionDiscountAsync(string subscriptionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteRequestAsync<Discount>($"{Urls.BaseUrl}/subscriptions/{subscriptionId}/discount", null, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Delete, $"/v1/subscriptions/{subscriptionId}/discount", null, requestOptions, cancellationToken);
         }
     }
 }

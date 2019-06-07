@@ -18,10 +18,12 @@ namespace StripeTests
         private readonly ChargeUpdateOptions updateOptions;
         private readonly ChargeListOptions listOptions;
 
-        public ChargeServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public ChargeServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new ChargeService();
+            this.service = new ChargeService(this.StripeClient);
 
             this.captureOptions = new ChargeCaptureOptions
             {
@@ -32,7 +34,7 @@ namespace StripeTests
             {
                 Amount = 123,
                 Currency = "usd",
-                SourceId = "tok_123",
+                Source = "tok_123",
             };
 
             this.updateOptions = new ChargeUpdateOptions

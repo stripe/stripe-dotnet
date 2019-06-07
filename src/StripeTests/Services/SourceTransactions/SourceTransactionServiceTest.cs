@@ -14,10 +14,12 @@ namespace StripeTests
         private readonly SourceTransactionService service;
         private readonly SourceTransactionsListOptions listOptions;
 
-        public SourceTransactionServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public SourceTransactionServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new SourceTransactionService();
+            this.service = new SourceTransactionService(this.StripeClient);
 
             this.listOptions = new SourceTransactionsListOptions
             {

@@ -1,6 +1,5 @@
 namespace StripeTests
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
@@ -41,11 +40,11 @@ namespace StripeTests
                 .Returns(Task.FromResult(response1))
                 .Returns(Task.FromResult(response2))
                 .Returns(Task.FromResult(response3))
-                .Throws(new Exception("Unexpected invocation!"));
+                .Throws(new StripeTestException("Unexpected invocation!"));
 
             // Call auto-paging method
-            var service = new PageableService();
-            var options = new ListOptions()
+            var service = new PageableService(this.StripeClient);
+            var options = new ListOptions
             {
                 Limit = 2,
             };
@@ -91,7 +90,7 @@ namespace StripeTests
                     ItExpr.IsAny<CancellationToken>());
         }
 
-        public class PageableModel : StripeEntity, IHasId
+        public class PageableModel : StripeEntity<PageableModel>, IHasId
         {
             [JsonProperty("id")]
             public string Id { get; set; }
@@ -99,7 +98,12 @@ namespace StripeTests
 
         public class PageableService : Service<PageableModel>
         {
-            public override string BasePath => "/pageablemodels";
+            public PageableService(IStripeClient client)
+                : base(client)
+            {
+            }
+
+            public override string BasePath => "/v1/pageablemodels";
 
             public IEnumerable<PageableModel> ListAutoPaging(ListOptions options)
             {

@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace Stripe
         INestedCreatable<Card, CardCreateOptions>,
         INestedDeletable<Card>,
         INestedListable<Card, CardListOptions>,
-        INestedRetrievable<Card>,
+        INestedRetrievable<Card, CardGetOptions>,
         INestedUpdatable<Card, CardUpdateOptions>
     {
         public CardService()
@@ -16,15 +17,17 @@ namespace Stripe
         {
         }
 
-        public CardService(string apiKey)
-            : base(apiKey)
+        public CardService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/customers/{PARENT_ID}/sources";
+        public override string BasePath => "/v1/customers/{PARENT_ID}/sources";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCustomer { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandRecipient { get; set; }
 
         public virtual Card Create(string customerId, CardCreateOptions options, RequestOptions requestOptions = null)
@@ -47,14 +50,14 @@ namespace Stripe
             return this.DeleteNestedEntityAsync(customerId, cardId, null, requestOptions, cancellationToken);
         }
 
-        public virtual Card Get(string customerId, string cardId, RequestOptions requestOptions = null)
+        public virtual Card Get(string customerId, string cardId, CardGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(customerId, cardId, null, requestOptions);
+            return this.GetNestedEntity(customerId, cardId, options, requestOptions);
         }
 
-        public virtual Task<Card> GetAsync(string customerId, string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Card> GetAsync(string customerId, string cardId, CardGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetNestedEntityAsync(customerId, cardId, null, requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(customerId, cardId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Card> List(string customerId, CardListOptions options = null, RequestOptions requestOptions = null)

@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SubscriptionScheduleInvoiceSettings : StripeEntity
+    public class SubscriptionScheduleInvoiceSettings : StripeEntity<SubscriptionScheduleInvoiceSettings>
     {
         /// <summary>
         /// The number of days from which the invoice is created until it is due.

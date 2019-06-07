@@ -1,7 +1,7 @@
 namespace Stripe
 {
-    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class TaxRateListOptions : ListOptionsWithCreated
     {
@@ -18,15 +18,11 @@ namespace Stripe
         public bool? Inclusive { get; set; }
 
         /// <summary>
-        /// A filter on the list based on the object percentage field.
+        /// A filter on the list based on the object <c>percentage</c> field. The value can be a
+        /// <see cref="decimal"/> or a <see cref="TaxRatePercentageRangeOptions"/>.
         /// </summary>
         [JsonProperty("percentage")]
-        public decimal? Percentage { get; set; }
-
-        /// <summary>
-        /// A filter on the list based on the object percentage field.
-        /// </summary>
-        [JsonProperty("percentage")]
-        public TaxRatePercentageRangeOptions PercentageRange { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<decimal?, TaxRatePercentageRangeOptions> Percentage { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -7,7 +8,7 @@ namespace Stripe
     public class TaxRateService : Service<TaxRate>,
         ICreatable<TaxRate, TaxRateCreateOptions>,
         IListable<TaxRate, TaxRateListOptions>,
-        IRetrievable<TaxRate>,
+        IRetrievable<TaxRate, TaxRateGetOptions>,
         IUpdatable<TaxRate, TaxRateUpdateOptions>
     {
         public TaxRateService()
@@ -15,13 +16,14 @@ namespace Stripe
         {
         }
 
-        public TaxRateService(string apiKey)
-            : base(apiKey)
+        public TaxRateService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/tax_rates";
+        public override string BasePath => "/v1/tax_rates";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCustomer { get; set; }
 
         public virtual TaxRate Create(TaxRateCreateOptions options, RequestOptions requestOptions = null)
@@ -34,14 +36,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual TaxRate Get(string taxRateId, RequestOptions requestOptions = null)
+        public virtual TaxRate Get(string taxRateId, TaxRateGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(taxRateId, null, requestOptions);
+            return this.GetEntity(taxRateId, options, requestOptions);
         }
 
-        public virtual Task<TaxRate> GetAsync(string taxRateId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<TaxRate> GetAsync(string taxRateId, TaxRateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(taxRateId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(taxRateId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<TaxRate> List(TaxRateListOptions options = null, RequestOptions requestOptions = null)

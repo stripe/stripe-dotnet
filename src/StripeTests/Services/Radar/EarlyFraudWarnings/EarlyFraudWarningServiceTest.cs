@@ -15,10 +15,12 @@ namespace StripeTests.Radar
         private readonly EarlyFraudWarningService service;
         private readonly EarlyFraudWarningListOptions listOptions;
 
-        public EarlyFraudWarningServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public EarlyFraudWarningServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new EarlyFraudWarningService();
+            this.service = new EarlyFraudWarningService(this.StripeClient);
 
             this.listOptions = new EarlyFraudWarningListOptions
             {

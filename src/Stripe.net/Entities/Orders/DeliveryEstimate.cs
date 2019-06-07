@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class DeliveryEstimate : StripeEntity
+    public class DeliveryEstimate : StripeEntity<DeliveryEstimate>
     {
         /// <summary>
         /// If type is "exact", date will be the expected delivery date in the format YYYY-MM-DD.

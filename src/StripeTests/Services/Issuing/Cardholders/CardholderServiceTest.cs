@@ -18,10 +18,12 @@ namespace StripeTests.Issuing
         private readonly CardholderUpdateOptions updateOptions;
         private readonly CardholderListOptions listOptions;
 
-        public CardholderServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public CardholderServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new CardholderService();
+            this.service = new CardholderService(this.StripeClient);
 
             this.createOptions = new CardholderCreateOptions
             {

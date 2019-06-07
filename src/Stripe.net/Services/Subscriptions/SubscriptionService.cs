@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -7,7 +8,7 @@ namespace Stripe
     public class SubscriptionService : Service<Subscription>,
         ICreatable<Subscription, SubscriptionCreateOptions>,
         IListable<Subscription, SubscriptionListOptions>,
-        IRetrievable<Subscription>,
+        IRetrievable<Subscription, SubscriptionGetOptions>,
         IUpdatable<Subscription, SubscriptionUpdateOptions>
     {
         public SubscriptionService()
@@ -15,19 +16,23 @@ namespace Stripe
         {
         }
 
-        public SubscriptionService(string apiKey)
-            : base(apiKey)
+        public SubscriptionService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/subscriptions";
+        public override string BasePath => "/v1/subscriptions";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCustomer { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandDefaultPaymentMethod { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandDefaultSource { get; set; }
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandLatestInvoice { get; set; }
 
         public virtual Subscription Cancel(string subscriptionId, SubscriptionCancelOptions options, RequestOptions requestOptions = null)
@@ -50,14 +55,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Subscription Get(string subscriptionId, RequestOptions requestOptions = null)
+        public virtual Subscription Get(string subscriptionId, SubscriptionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(subscriptionId, null, requestOptions);
+            return this.GetEntity(subscriptionId, options, requestOptions);
         }
 
-        public virtual Task<Subscription> GetAsync(string subscriptionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Subscription> GetAsync(string subscriptionId, SubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(subscriptionId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(subscriptionId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Subscription> List(SubscriptionListOptions options = null, RequestOptions requestOptions = null)

@@ -7,7 +7,7 @@ namespace Stripe.Issuing
     public class DisputeService : Service<Dispute>,
         ICreatable<Dispute, DisputeCreateOptions>,
         IListable<Dispute, DisputeListOptions>,
-        IRetrievable<Dispute>,
+        IRetrievable<Dispute, DisputeGetOptions>,
         IUpdatable<Dispute, DisputeUpdateOptions>
     {
         public DisputeService()
@@ -15,12 +15,12 @@ namespace Stripe.Issuing
         {
         }
 
-        public DisputeService(string apiKey)
-            : base(apiKey)
+        public DisputeService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/issuing/disputes";
+        public override string BasePath => "/v1/issuing/disputes";
 
         public virtual Dispute Create(DisputeCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -32,14 +32,14 @@ namespace Stripe.Issuing
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Dispute Get(string disputeId, RequestOptions requestOptions = null)
+        public virtual Dispute Get(string disputeId, DisputeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(disputeId, null, requestOptions);
+            return this.GetEntity(disputeId, options, requestOptions);
         }
 
-        public virtual Task<Dispute> GetAsync(string disputeId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Dispute> GetAsync(string disputeId, DisputeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(disputeId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(disputeId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Dispute> List(DisputeListOptions options = null, RequestOptions requestOptions = null)

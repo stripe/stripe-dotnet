@@ -14,10 +14,12 @@ namespace StripeTests
         private readonly BalanceTransactionService service;
         private readonly BalanceTransactionListOptions listOptions;
 
-        public BalanceTransactionServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public BalanceTransactionServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new BalanceTransactionService();
+            this.service = new BalanceTransactionService(this.StripeClient);
 
             this.listOptions = new BalanceTransactionListOptions
             {

@@ -10,8 +10,8 @@ namespace StripeTests
         private readonly string json;
         private readonly string secret;
 
-        public EventUtilityTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public EventUtilityTest()
+            : base()
         {
             this.eventTimestamp = 1533204620;
             this.secret = "webhook_secret";
@@ -75,18 +75,12 @@ namespace StripeTests
         [Fact]
         public void AcceptsExpectedApiVersion()
         {
-            var origApiVersion = StripeConfiguration.StripeApiVersion;
+            var evt = Event.FromJson(this.json);
+            evt.ApiVersion = StripeConfiguration.ApiVersion;
+            var serialized = evt.ToJson();
 
-            try
-            {
-                StripeConfiguration.StripeApiVersion = "2017-05-25";
-                var evt = EventUtility.ParseEvent(this.json);
-                Assert.Equal("2017-05-25", evt.ApiVersion);
-            }
-            finally
-            {
-                StripeConfiguration.StripeApiVersion = origApiVersion;
-            }
+            evt = EventUtility.ParseEvent(serialized);
+            Assert.Equal(StripeConfiguration.ApiVersion, evt.ApiVersion);
         }
 
         [Fact]

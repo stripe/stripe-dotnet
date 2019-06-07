@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class EventRequest : StripeEntity
+    public class EventRequest : StripeEntity<EventRequest>
     {
         /// <summary>
         /// ID of the API request that caused the event. If null, the event was automatic (e.g.,

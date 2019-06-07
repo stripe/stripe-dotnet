@@ -14,10 +14,6 @@ namespace StripeTests
         /// </remarks>
         private const string MockMinimumVersion = "0.57.0";
 
-        private readonly string origApiBase;
-        private readonly string origFilesBase;
-        private readonly string origApiKey;
-
         private readonly string port;
 
         public StripeMockFixture()
@@ -32,23 +28,29 @@ namespace StripeTests
             }
 
             this.EnsureStripeMockMinimumVersion();
-
-            this.origApiBase = StripeConfiguration.GetApiBase();
-            this.origFilesBase = StripeConfiguration.GetFilesBase();
-            this.origApiKey = StripeConfiguration.GetApiKey();
-
-            StripeConfiguration.SetApiBase($"http://localhost:{this.port}/v1");
-            StripeConfiguration.SetFilesBase($"http://localhost:{this.port}/v1");
-            StripeConfiguration.SetApiKey("sk_test_123");
         }
 
         public void Dispose()
         {
-            StripeConfiguration.SetApiBase(this.origApiBase);
-            StripeConfiguration.SetFilesBase(this.origFilesBase);
-            StripeConfiguration.SetApiKey(this.origApiKey);
-
             StripeMockHandler.StopStripeMock();
+        }
+
+        /// <summary>
+        /// Creates and returns a new instance of <see cref="StripeClient"/> suitable for use with
+        /// stripe-mock.
+        /// </summary>
+        /// <param name="httpClient">
+        /// The <see cref="IHttpClient"/> client to use. If <c>null</c>, an HTTP client will be
+        /// created with default parameters.
+        /// </param>
+        public StripeClient BuildStripeClient(IHttpClient httpClient = null)
+        {
+            return new StripeClient(
+                "sk_test_123",
+                "ca_123",
+                httpClient: httpClient,
+                apiBase: $"http://localhost:{this.port}",
+                filesBase: $"http://localhost:{this.port}");
         }
 
         /// <summary>
@@ -70,7 +72,7 @@ namespace StripeTests
                 url += $"?{query}";
             }
 
-            using (HttpClient client = new HttpClient())
+            using (System.Net.Http.HttpClient client = new System.Net.Http.HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization
                     = new System.Net.Http.Headers.AuthenticationHeaderValue(
@@ -117,7 +119,7 @@ namespace StripeTests
         {
             string url = $"http://localhost:{this.port}";
 
-            using (HttpClient client = new HttpClient())
+            using (System.Net.Http.HttpClient client = new System.Net.Http.HttpClient())
             {
                 HttpResponseMessage response;
 

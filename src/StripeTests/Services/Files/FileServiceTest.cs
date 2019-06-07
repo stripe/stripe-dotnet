@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
     using System.Reflection;
@@ -17,14 +18,24 @@ namespace StripeTests
         private readonly FileCreateOptions createOptions;
         private readonly FileListOptions listOptions;
 
-        public FileServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public FileServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new FileService();
+            this.service = new FileService(this.StripeClient);
 
             this.createOptions = new FileCreateOptions
             {
                 File = typeof(FileServiceTest).GetTypeInfo().Assembly.GetManifestResourceStream(FileName),
+                FileLinkData = new FileLinkDataOptions
+                {
+                    Create = true,
+                    Metadata = new Dictionary<string, string>
+                    {
+                        { "key", "value" },
+                    },
+                },
                 Purpose = FilePurpose.BusinessLogo,
             };
 

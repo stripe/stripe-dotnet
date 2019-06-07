@@ -18,10 +18,12 @@ namespace StripeTests
         private readonly TransferReversalUpdateOptions updateOptions;
         private readonly TransferReversalListOptions listOptions;
 
-        public TransferReversalServiceTest(MockHttpClientFixture mockHttpClientFixture)
-            : base(mockHttpClientFixture)
+        public TransferReversalServiceTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new TransferReversalService();
+            this.service = new TransferReversalService(this.StripeClient);
 
             this.createOptions = new TransferReversalCreateOptions
             {

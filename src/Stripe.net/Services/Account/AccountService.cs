@@ -1,15 +1,16 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class AccountService : Service<Account>,
         ICreatable<Account, AccountCreateOptions>,
         IDeletable<Account>,
         IListable<Account, AccountListOptions>,
-        IRetrievable<Account>,
+        IRetrievable<Account, AccountGetOptions>,
         IUpdatable<Account, AccountUpdateOptions>
     {
         public AccountService()
@@ -17,13 +18,14 @@ namespace Stripe
         {
         }
 
-        public AccountService(string apiKey)
-            : base(apiKey)
+        public AccountService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/accounts";
+        public override string BasePath => "/v1/accounts";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandBusinessLogo { get; set; }
 
         public virtual Account Create(AccountCreateOptions options, RequestOptions requestOptions = null)
@@ -46,24 +48,24 @@ namespace Stripe
             return this.DeleteEntityAsync(accountId, null, requestOptions, cancellationToken);
         }
 
-        public virtual Account Get(string accountId, RequestOptions requestOptions = null)
+        public virtual Account Get(string accountId, AccountGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(accountId, null, requestOptions);
+            return this.GetEntity(accountId, options, requestOptions);
         }
 
-        public virtual Task<Account> GetAsync(string accountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Account> GetAsync(string accountId, AccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(accountId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(accountId, options, requestOptions, cancellationToken);
         }
 
         public virtual Account GetSelf(RequestOptions requestOptions = null)
         {
-            return this.GetRequest<Account>($"{Urls.BaseUrl}/account", null, requestOptions, false);
+            return this.Request(HttpMethod.Get, "/v1/account", null, requestOptions);
         }
 
         public virtual Task<Account> GetSelfAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetRequestAsync<Account>($"{Urls.BaseUrl}/account", null, requestOptions, false, cancellationToken);
+            return this.RequestAsync(HttpMethod.Get, "/v1/account", null, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Account> List(AccountListOptions options = null, RequestOptions requestOptions = null)
@@ -83,12 +85,12 @@ namespace Stripe
 
         public virtual Account Reject(string accountId, AccountRejectOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<Account>($"{this.InstanceUrl(accountId)}/reject", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(accountId)}/reject", options, requestOptions);
         }
 
         public virtual Task<Account> RejectAsync(string accountId, AccountRejectOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<Account>($"{this.InstanceUrl(accountId)}/reject", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(accountId)}/reject", options, requestOptions, cancellationToken);
         }
 
         public virtual Account Update(string accountId, AccountUpdateOptions options, RequestOptions requestOptions = null)

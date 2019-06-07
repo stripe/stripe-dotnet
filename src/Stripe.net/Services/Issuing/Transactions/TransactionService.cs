@@ -6,7 +6,7 @@ namespace Stripe.Issuing
 
     public class TransactionService : Service<Transaction>,
         IListable<Transaction, TransactionListOptions>,
-        IRetrievable<Transaction>,
+        IRetrievable<Transaction, TransactionGetOptions>,
         IUpdatable<Transaction, TransactionUpdateOptions>
     {
         public TransactionService()
@@ -14,21 +14,21 @@ namespace Stripe.Issuing
         {
         }
 
-        public TransactionService(string apiKey)
-            : base(apiKey)
+        public TransactionService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/issuing/transactions";
+        public override string BasePath => "/v1/issuing/transactions";
 
-        public virtual Transaction Get(string transactionId, RequestOptions requestOptions = null)
+        public virtual Transaction Get(string transactionId, TransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(transactionId, null, requestOptions);
+            return this.GetEntity(transactionId, options, requestOptions);
         }
 
-        public virtual Task<Transaction> GetAsync(string transactionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Transaction> GetAsync(string transactionId, TransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(transactionId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(transactionId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Transaction> List(TransactionListOptions options = null, RequestOptions requestOptions = null)

@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Recipient : StripeEntity, IHasId, IHasMetadata, IHasObject
+    public class Recipient : StripeEntity<Recipient>, IHasId, IHasMetadata, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -25,24 +25,14 @@ namespace Stripe
 
         #region Expandable Default Card
         [JsonIgnore]
-        public string DefaultCardId { get; set; }
+        public string DefaultCardId => this.InternalDefaultCard.Id;
 
         [JsonIgnore]
-        public Card DefaultCard { get; set; }
+        public Card DefaultCard => this.InternalDefaultCard.ExpandedObject;
 
         [JsonProperty("default_card")]
-        internal object InternalDefaultCard
-        {
-            get
-            {
-                return this.DefaultCard ?? (object)this.DefaultCardId;
-            }
-
-            set
-            {
-                StringOrObject<Card>.Map(value, s => this.DefaultCardId = s, o => this.DefaultCard = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
+        internal ExpandableField<Card> InternalDefaultCard { get; set; }
         #endregion
 
         [JsonProperty("description")]

@@ -1,6 +1,8 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -8,7 +10,7 @@ namespace Stripe
         INestedCreatable<BankAccount, BankAccountCreateOptions>,
         INestedDeletable<BankAccount>,
         INestedListable<BankAccount, BankAccountListOptions>,
-        INestedRetrievable<BankAccount>,
+        INestedRetrievable<BankAccount, BankAccountGetOptions>,
         INestedUpdatable<BankAccount, BankAccountUpdateOptions>
     {
         public BankAccountService()
@@ -16,13 +18,14 @@ namespace Stripe
         {
         }
 
-        public BankAccountService(string apiKey)
-            : base(apiKey)
+        public BankAccountService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/customers/{PARENT_ID}/sources";
+        public override string BasePath => "/v1/customers/{PARENT_ID}/sources";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCustomer { get; set; }
 
         public virtual BankAccount Create(string customerId, BankAccountCreateOptions options, RequestOptions requestOptions = null)
@@ -45,14 +48,14 @@ namespace Stripe
             return this.DeleteNestedEntityAsync(customerId, bankAccountId, null, requestOptions, cancellationToken);
         }
 
-        public virtual BankAccount Get(string customerId, string bankAccountId, RequestOptions requestOptions = null)
+        public virtual BankAccount Get(string customerId, string bankAccountId, BankAccountGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(customerId, bankAccountId, null, requestOptions);
+            return this.GetNestedEntity(customerId, bankAccountId, options, requestOptions);
         }
 
-        public virtual Task<BankAccount> GetAsync(string customerId, string bankAccountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<BankAccount> GetAsync(string customerId, string bankAccountId, BankAccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetNestedEntityAsync(customerId, bankAccountId, null, requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(customerId, bankAccountId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<BankAccount> List(string customerId, BankAccountListOptions options = null, RequestOptions requestOptions = null)
@@ -82,12 +85,12 @@ namespace Stripe
 
         public virtual BankAccount Verify(string customerId, string bankAccountId, BankAccountVerifyOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<BankAccount>($"{this.InstanceUrl(customerId, bankAccountId)}/verify", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(customerId, bankAccountId)}/verify", options, requestOptions);
         }
 
         public virtual Task<BankAccount> VerifyAsync(string customerId, string bankAccountId, BankAccountVerifyOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<BankAccount>($"{this.InstanceUrl(customerId, bankAccountId)}/verify", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(customerId, bankAccountId)}/verify", options, requestOptions, cancellationToken);
         }
     }
 }

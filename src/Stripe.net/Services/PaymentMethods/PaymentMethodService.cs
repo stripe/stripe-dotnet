@@ -1,13 +1,15 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
     public class PaymentMethodService : Service<PaymentMethod>,
         ICreatable<PaymentMethod, PaymentMethodCreateOptions>,
         IListable<PaymentMethod, PaymentMethodListOptions>,
-        IRetrievable<PaymentMethod>,
+        IRetrievable<PaymentMethod, PaymentMethodGetOptions>,
         IUpdatable<PaymentMethod, PaymentMethodUpdateOptions>
     {
         public PaymentMethodService()
@@ -15,23 +17,24 @@ namespace Stripe
         {
         }
 
-        public PaymentMethodService(string apiKey)
-            : base(apiKey)
+        public PaymentMethodService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/payment_methods";
+        public override string BasePath => "/v1/payment_methods";
 
+        [Obsolete("Use BaseOptions.AddExpand instead.")]
         public bool ExpandCustomer { get; set; }
 
         public virtual PaymentMethod Attach(string paymentMethodId, PaymentMethodAttachOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<PaymentMethod>($"{this.InstanceUrl(paymentMethodId)}/attach", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/attach", options, requestOptions);
         }
 
         public virtual Task<PaymentMethod> AttachAsync(string paymentMethodId, PaymentMethodAttachOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<PaymentMethod>($"{this.InstanceUrl(paymentMethodId)}/attach", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/attach", options, requestOptions, cancellationToken);
         }
 
         public virtual PaymentMethod Create(PaymentMethodCreateOptions options, RequestOptions requestOptions = null)
@@ -46,22 +49,22 @@ namespace Stripe
 
         public virtual PaymentMethod Detach(string paymentMethodId, PaymentMethodDetachOptions options, RequestOptions requestOptions = null)
         {
-            return this.PostRequest<PaymentMethod>($"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions);
         }
 
         public virtual Task<PaymentMethod> DetachAsync(string paymentMethodId, PaymentMethodDetachOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.PostRequestAsync<PaymentMethod>($"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions, cancellationToken);
         }
 
-        public virtual PaymentMethod Get(string paymentMethodId, RequestOptions requestOptions = null)
+        public virtual PaymentMethod Get(string paymentMethodId, PaymentMethodGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(paymentMethodId, null, requestOptions);
+            return this.GetEntity(paymentMethodId, options, requestOptions);
         }
 
-        public virtual Task<PaymentMethod> GetAsync(string paymentMethodId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<PaymentMethod> GetAsync(string paymentMethodId, PaymentMethodGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(paymentMethodId, null, requestOptions, cancellationToken);
+            return this.GetEntityAsync(paymentMethodId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<PaymentMethod> List(PaymentMethodListOptions options = null, RequestOptions requestOptions = null)

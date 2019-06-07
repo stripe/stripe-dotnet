@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Outcome : StripeEntity
+    public class Outcome : StripeEntity<Outcome>
     {
         /// <summary>
         /// Possible values are approved_by_network, declined_by_network, not_sent_to_network, and reversed_after_approval. The value reversed_after_approval indicates the payment was blocked by Stripe after bank authorization, and may temporarily appear as “pending” on a cardholder’s statement.
@@ -35,24 +35,14 @@ namespace Stripe
         /// The ID of the Radar rule that matched the payment, if applicable.
         /// </summary>
         [JsonIgnore]
-        public string RuleId { get; set; }
+        public string RuleId => this.InternalRule.Id;
 
         [JsonIgnore]
-        public OutcomeRule Rule { get; set; }
+        public OutcomeRule Rule => this.InternalRule.ExpandedObject;
 
         [JsonProperty("rule")]
-        internal object InternalRule
-        {
-            get
-            {
-                return this.Rule ?? (object)this.RuleId;
-            }
-
-            set
-            {
-                StringOrObject<OutcomeRule>.Map(value, s => this.RuleId = s, o => this.Rule = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<OutcomeRule>))]
+        internal ExpandableField<OutcomeRule> InternalRule { get; set; }
         #endregion
 
         /// <summary>

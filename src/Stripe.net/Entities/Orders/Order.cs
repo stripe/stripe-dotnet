@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Order : StripeEntity, IHasId, IHasMetadata, IHasObject
+    public class Order : StripeEntity<Order>, IHasId, IHasMetadata, IHasObject
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -38,24 +38,14 @@ namespace Stripe
         /// <para>Expandable</para>
         /// </summary>
         [JsonIgnore]
-        public string ChargeId { get; set; }
+        public string ChargeId => this.InternalCharge.Id;
 
         [JsonIgnore]
-        public Charge Charge { get; set; }
+        public Charge Charge => this.InternalCharge.ExpandedObject;
 
         [JsonProperty("charge")]
-        internal object InternalCharge
-        {
-            get
-            {
-                return this.Charge ?? (object)this.ChargeId;
-            }
-
-            set
-            {
-                StringOrObject<Charge>.Map(value, s => this.ChargeId = s, o => this.Charge = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
+        internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
 
         /// <summary>
@@ -76,24 +66,15 @@ namespace Stripe
         /// <summary>
         /// The customer used for the order.
         /// </summary>
+        [JsonIgnore]
         public string CustomerId { get; set; }
 
         [JsonIgnore]
-        public Customer Customer { get; set; }
+        public Customer Customer => this.InternalCustomer.ExpandedObject;
 
         [JsonProperty("customer")]
-        internal object InternalCustomer
-        {
-            get
-            {
-                return this.Customer ?? (object)this.CustomerId;
-            }
-
-            set
-            {
-                StringOrObject<Customer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
-            }
-        }
+        [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
         /// <summary>

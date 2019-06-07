@@ -14,12 +14,12 @@ namespace Stripe
         {
         }
 
-        public EphemeralKeyService(string apiKey)
-            : base(apiKey)
+        public EphemeralKeyService(IStripeClient client)
+            : base(client)
         {
         }
 
-        public override string BasePath => "/ephemeral_keys";
+        public override string BasePath => "/v1/ephemeral_keys";
 
         public virtual EphemeralKey Create(EphemeralKeyCreateOptions options, RequestOptions requestOptions = null)
         {
