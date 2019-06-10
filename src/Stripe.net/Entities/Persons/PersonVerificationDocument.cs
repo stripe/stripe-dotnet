@@ -13,14 +13,22 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string BackId => this.InternalBack.Id;
+        public string BackId
+        {
+            get => this.InternalBack.Id;
+            set => this.InternalBack.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) The back of an ID returned by a file upload with a <c>purpose</c>
         /// value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
-        public File Back => this.InternalBack.ExpandedObject;
+        public File Back
+        {
+            get => this.InternalBack.ExpandedObject;
+            set => this.InternalBack.ExpandedObject = value;
+        }
 
         [JsonProperty("back")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
@@ -49,14 +57,22 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string FrontId => this.InternalFront.Id;
+        public string FrontId
+        {
+            get => this.InternalFront.Id;
+            set => this.InternalFront.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) The front of an ID returned by a file upload with a <c>purpose</c>
         /// value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
-        public File Front => this.InternalFront.ExpandedObject;
+        public File Front
+        {
+            get => this.InternalFront.ExpandedObject;
+            set => this.InternalFront.ExpandedObject = value;
+        }
 
         [JsonProperty("front")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]

@@ -22,14 +22,22 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string CouponId => this.InternalCoupon.Id;
+        public string CouponId
+        {
+            get => this.InternalCoupon.Id;
+            set => this.InternalCoupon.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) The <see cref="Coupon"/> associated with this phase for the subscription
         /// schedule.
         /// </summary>
         [JsonIgnore]
-        public Coupon Coupon => this.InternalCoupon.ExpandedObject;
+        public Coupon Coupon
+        {
+            get => this.InternalCoupon.ExpandedObject;
+            set => this.InternalCoupon.ExpandedObject = value;
+        }
 
         [JsonProperty("coupon")]
         [JsonConverter(typeof(ExpandableFieldConverter<Coupon>))]

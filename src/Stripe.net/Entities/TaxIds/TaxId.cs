@@ -38,10 +38,18 @@ namespace Stripe
         /// ID of the customer this tax ID is for if one exists.
         /// </summary>
         [JsonIgnore]
-        public string CustomerId => this.InternalCustomer.Id;
+        public string CustomerId
+        {
+            get => this.InternalCustomer.Id;
+            set => this.InternalCustomer.Id = value;
+        }
 
         [JsonIgnore]
-        public Customer Customer => this.InternalCustomer.ExpandedObject;
+        public Customer Customer
+        {
+            get => this.InternalCustomer.ExpandedObject;
+            set => this.InternalCustomer.ExpandedObject = value;
+        }
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]

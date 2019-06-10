@@ -13,13 +13,21 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string IconId => this.InternalIcon.Id;
+        public string IconId
+        {
+            get => this.InternalIcon.Id;
+            set => this.InternalIcon.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) An icon for the account. Must be square and at least 128px x 128px.
         /// </summary>
         [JsonIgnore]
-        public File Icon => this.InternalIcon.ExpandedObject;
+        public File Icon
+        {
+            get => this.InternalIcon.ExpandedObject;
+            set => this.InternalIcon.ExpandedObject = value;
+        }
 
         [JsonProperty("icon")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
@@ -35,14 +43,22 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string LogoId => this.InternalLogo.Id;
+        public string LogoId
+        {
+            get => this.InternalLogo.Id;
+            set => this.InternalLogo.Id = value;
+        }
 
         /// <summary>
         /// (Expanded)A logo for the account that will be used in Checkout instead of the icon and
         /// without the account’s name next to it if provided. Must be at least 128px x 128px.
         /// </summary>
         [JsonIgnore]
-        public File Logo => this.InternalLogo.ExpandedObject;
+        public File Logo
+        {
+            get => this.InternalLogo.ExpandedObject;
+            set => this.InternalLogo.ExpandedObject = value;
+        }
 
         [JsonProperty("logo")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]

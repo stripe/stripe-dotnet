@@ -60,10 +60,18 @@ namespace Stripe
         /// <para>You can expand the Product by setting the ExpandProduct property on the service to true</para>
         /// </summary>
         [JsonIgnore]
-        public string ProductId => this.InternalProduct.Id;
+        public string ProductId
+        {
+            get => this.InternalProduct.Id;
+            set => this.InternalProduct.Id = value;
+        }
 
         [JsonIgnore]
-        public Product Product => this.InternalProduct.ExpandedObject;
+        public Product Product
+        {
+            get => this.InternalProduct.ExpandedObject;
+            set => this.InternalProduct.ExpandedObject = value;
+        }
 
         [JsonProperty("product")]
         [JsonConverter(typeof(ExpandableFieldConverter<Product>))]

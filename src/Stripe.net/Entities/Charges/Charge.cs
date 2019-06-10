@@ -27,10 +27,18 @@ namespace Stripe
 
         #region Expandable Application
         [JsonIgnore]
-        public string ApplicationId => this.InternalApplication.Id;
+        public string ApplicationId
+        {
+            get => this.InternalApplication.Id;
+            set => this.InternalApplication.Id = value;
+        }
 
         [JsonIgnore]
-        public Application Application => this.InternalApplication.ExpandedObject;
+        public Application Application
+        {
+            get => this.InternalApplication.ExpandedObject;
+            set => this.InternalApplication.ExpandedObject = value;
+        }
 
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
@@ -39,13 +47,21 @@ namespace Stripe
 
         #region Expandable Application Fee
         [JsonIgnore]
-        public string ApplicationFeeId => this.InternalApplicationFee.Id;
+        public string ApplicationFeeId
+        {
+            get => this.InternalApplicationFee.Id;
+            set => this.InternalApplicationFee.Id = value;
+        }
 
         /// <summary>
         /// The application fee (if any) for the charge. See the Connect documentation for details.
         /// </summary>
         [JsonIgnore]
-        public ApplicationFee ApplicationFee => this.InternalApplicationFee.ExpandedObject;
+        public ApplicationFee ApplicationFee
+        {
+            get => this.InternalApplicationFee.ExpandedObject;
+            set => this.InternalApplicationFee.ExpandedObject = value;
+        }
 
         [JsonProperty("application_fee")]
         [JsonConverter(typeof(ExpandableFieldConverter<ApplicationFee>))]
@@ -64,10 +80,18 @@ namespace Stripe
         /// ID of the balance transaction that describes the impact of this charge on your account balance (not including refunds or disputes).
         /// </summary>
         [JsonIgnore]
-        public string BalanceTransactionId => this.InternalBalanceTransaction.Id;
+        public string BalanceTransactionId
+        {
+            get => this.InternalBalanceTransaction.Id;
+            set => this.InternalBalanceTransaction.Id = value;
+        }
 
         [JsonIgnore]
-        public BalanceTransaction BalanceTransaction => this.InternalBalanceTransaction.ExpandedObject;
+        public BalanceTransaction BalanceTransaction
+        {
+            get => this.InternalBalanceTransaction.ExpandedObject;
+            set => this.InternalBalanceTransaction.ExpandedObject = value;
+        }
 
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
@@ -102,10 +126,18 @@ namespace Stripe
         /// ID of the customer this charge is for if one exists.
         /// </summary>
         [JsonIgnore]
-        public string CustomerId => this.InternalCustomer.Id;
+        public string CustomerId
+        {
+            get => this.InternalCustomer.Id;
+            set => this.InternalCustomer.Id = value;
+        }
 
         [JsonIgnore]
-        public Customer Customer => this.InternalCustomer.ExpandedObject;
+        public Customer Customer
+        {
+            get => this.InternalCustomer.ExpandedObject;
+            set => this.InternalCustomer.ExpandedObject = value;
+        }
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
@@ -117,13 +149,21 @@ namespace Stripe
 
         #region Expandable Destination
         [JsonIgnore]
-        public string DestinationId => this.InternalDestination.Id;
+        public string DestinationId
+        {
+            get => this.InternalDestination.Id;
+            set => this.InternalDestination.Id = value;
+        }
 
         /// <summary>
         /// The account (if any) the charge was made on behalf of, with an automatic transfer. See the Connect documentation for details.
         /// </summary>
         [JsonIgnore]
-        public Account Destination => this.InternalDestination.ExpandedObject;
+        public Account Destination
+        {
+            get => this.InternalDestination.ExpandedObject;
+            set => this.InternalDestination.ExpandedObject = value;
+        }
 
         [JsonProperty("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
@@ -132,13 +172,21 @@ namespace Stripe
 
         #region Expandable Dispute
         [JsonIgnore]
-        public string DisputeId => this.InternalDispute.Id;
+        public string DisputeId
+        {
+            get => this.InternalDispute.Id;
+            set => this.InternalDispute.Id = value;
+        }
 
         /// <summary>
         /// Details about the dispute if the charge has been disputed.
         /// </summary>
         [JsonIgnore]
-        public Dispute Dispute => this.InternalDispute.ExpandedObject;
+        public Dispute Dispute
+        {
+            get => this.InternalDispute.ExpandedObject;
+            set => this.InternalDispute.ExpandedObject = value;
+        }
 
         [JsonProperty("dispute")]
         [JsonConverter(typeof(ExpandableFieldConverter<Dispute>))]
@@ -169,10 +217,18 @@ namespace Stripe
         /// ID of the invoice this charge is for if one exists.
         /// </summary>
         [JsonIgnore]
-        public string InvoiceId => this.InternalInvoice.Id;
+        public string InvoiceId
+        {
+            get => this.InternalInvoice.Id;
+            set => this.InternalInvoice.Id = value;
+        }
 
         [JsonIgnore]
-        public Invoice Invoice => this.InternalInvoice.ExpandedObject;
+        public Invoice Invoice
+        {
+            get => this.InternalInvoice.ExpandedObject;
+            set => this.InternalInvoice.ExpandedObject = value;
+        }
 
         [JsonProperty("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
@@ -195,10 +251,18 @@ namespace Stripe
         /// <para>To populate the OnBehalfOf entity, you need to set ExpandOnBehalfOf to true on your service before invoking a service method.</para>
         /// </summary>
         [JsonIgnore]
-        public string OnBehalfOfId => this.InternalOnBehalfOf.Id;
+        public string OnBehalfOfId
+        {
+            get => this.InternalOnBehalfOf.Id;
+            set => this.InternalOnBehalfOf.Id = value;
+        }
 
         [JsonIgnore]
-        public Account OnBehalfOf => this.InternalOnBehalfOf.ExpandedObject;
+        public Account OnBehalfOf
+        {
+            get => this.InternalOnBehalfOf.ExpandedObject;
+            set => this.InternalOnBehalfOf.ExpandedObject = value;
+        }
 
         [JsonProperty("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
@@ -211,10 +275,18 @@ namespace Stripe
         /// ID of the order this charge is for if one exists.
         /// </summary>
         [JsonIgnore]
-        public string OrderId => this.InternalOrder.Id;
+        public string OrderId
+        {
+            get => this.InternalOrder.Id;
+            set => this.InternalOrder.Id = value;
+        }
 
         [JsonIgnore]
-        public Order Order => this.InternalOrder.ExpandedObject;
+        public Order Order
+        {
+            get => this.InternalOrder.ExpandedObject;
+            set => this.InternalOrder.ExpandedObject = value;
+        }
 
         [JsonProperty("order")]
         [JsonConverter(typeof(ExpandableFieldConverter<Order>))]
@@ -246,10 +318,18 @@ namespace Stripe
         /// ID of the payment intent this charge is for if one exists.
         /// </summary>
         [JsonIgnore]
-        public string PaymentIntentId => this.InternalPaymentIntent.Id;
+        public string PaymentIntentId
+        {
+            get => this.InternalPaymentIntent.Id;
+            set => this.InternalPaymentIntent.Id = value;
+        }
 
         [JsonIgnore]
-        public PaymentIntent PaymentIntent => this.InternalPaymentIntent.ExpandedObject;
+        public PaymentIntent PaymentIntent
+        {
+            get => this.InternalPaymentIntent.ExpandedObject;
+            set => this.InternalPaymentIntent.ExpandedObject = value;
+        }
 
         [JsonProperty("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
@@ -307,10 +387,18 @@ namespace Stripe
         /// ID of the review associated with this charge if one exists.
         /// </summary>
         [JsonIgnore]
-        public string ReviewId => this.InternalReview.Id;
+        public string ReviewId
+        {
+            get => this.InternalReview.Id;
+            set => this.InternalReview.Id = value;
+        }
 
         [JsonIgnore]
-        public Review Review => this.InternalReview.ExpandedObject;
+        public Review Review
+        {
+            get => this.InternalReview.ExpandedObject;
+            set => this.InternalReview.ExpandedObject = value;
+        }
 
         [JsonProperty("review")]
         [JsonConverter(typeof(ExpandableFieldConverter<Review>))]
@@ -336,10 +424,18 @@ namespace Stripe
         /// The transfer ID which created this charge. Only present if the charge came from another Stripe account. See the Connect documentation for details.
         /// </summary>
         [JsonIgnore]
-        public string SourceTransferId => this.InternalSourceTransfer.Id;
+        public string SourceTransferId
+        {
+            get => this.InternalSourceTransfer.Id;
+            set => this.InternalSourceTransfer.Id = value;
+        }
 
         [JsonIgnore]
-        public Transfer SourceTransfer => this.InternalSourceTransfer.ExpandedObject;
+        public Transfer SourceTransfer
+        {
+            get => this.InternalSourceTransfer.ExpandedObject;
+            set => this.InternalSourceTransfer.ExpandedObject = value;
+        }
 
         [JsonProperty("source_transfer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]
@@ -364,10 +460,18 @@ namespace Stripe
         /// ID of the transfer to the destination account (only applicable if the charge was created using the destination parameter).
         /// </summary>
         [JsonIgnore]
-        public string TransferId => this.InternalTransfer.Id;
+        public string TransferId
+        {
+            get => this.InternalTransfer.Id;
+            set => this.InternalTransfer.Id = value;
+        }
 
         [JsonIgnore]
-        public Transfer Transfer => this.InternalTransfer.ExpandedObject;
+        public Transfer Transfer
+        {
+            get => this.InternalTransfer.ExpandedObject;
+            set => this.InternalTransfer.ExpandedObject = value;
+        }
 
         [JsonProperty("transfer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]

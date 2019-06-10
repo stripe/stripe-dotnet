@@ -20,13 +20,21 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string PlanId => this.InternalPlan.Id;
+        public string PlanId
+        {
+            get => this.InternalPlan.Id;
+            set => this.InternalPlan.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) The <see cref="Plan"/> included in the phase for this subscription schedule.
         /// </summary>
         [JsonIgnore]
-        public Plan Plan => this.InternalPlan.ExpandedObject;
+        public Plan Plan
+        {
+            get => this.InternalPlan.ExpandedObject;
+            set => this.InternalPlan.ExpandedObject = value;
+        }
 
         [JsonProperty("plan")]
         [JsonConverter(typeof(ExpandableFieldConverter<Plan>))]

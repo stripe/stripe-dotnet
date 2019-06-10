@@ -32,10 +32,18 @@ namespace Stripe
         /// ID of the parent associated with this order item.
         /// </summary>
         [JsonIgnore]
-        public string ParentId => this.InternalParent.Id;
+        public string ParentId
+        {
+            get => this.InternalParent.Id;
+            set => this.InternalParent.Id = value;
+        }
 
         [JsonIgnore]
-        public Sku Parent => this.InternalParent.ExpandedObject;
+        public Sku Parent
+        {
+            get => this.InternalParent.ExpandedObject;
+            set => this.InternalParent.ExpandedObject = value;
+        }
 
         [JsonProperty("parent")]
         [JsonConverter(typeof(ExpandableFieldConverter<Sku>))]

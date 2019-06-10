@@ -11,10 +11,18 @@ namespace Stripe.Issuing
 
         #region Expandable Card
         [JsonIgnore]
-        public string CardId => this.InternalCard.Id;
+        public string CardId
+        {
+            get => this.InternalCard.Id;
+            set => this.InternalCard.Id = value;
+        }
 
         [JsonIgnore]
-        public Card Card => this.InternalCard.ExpandedObject;
+        public Card Card
+        {
+            get => this.InternalCard.ExpandedObject;
+            set => this.InternalCard.ExpandedObject = value;
+        }
 
         [JsonProperty("card")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]

@@ -25,10 +25,18 @@ namespace Stripe
         /// ID of the account the capability is associated with.
         /// </summary>
         [JsonIgnore]
-        public string AccountId => this.InternalAccount.Id;
+        public string AccountId
+        {
+            get => this.InternalAccount.Id;
+            set => this.InternalAccount.Id = value;
+        }
 
         [JsonIgnore]
-        public Account Account => this.InternalAccount.ExpandedObject;
+        public Account Account
+        {
+            get => this.InternalAccount.ExpandedObject;
+            set => this.InternalAccount.ExpandedObject = value;
+        }
 
         [JsonProperty("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]

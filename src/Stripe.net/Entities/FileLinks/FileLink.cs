@@ -46,13 +46,21 @@ namespace Stripe
         /// ID of the file object this link points to.
         /// </summary>
         [JsonIgnore]
-        public string FileId => this.InternalFile.Id;
+        public string FileId
+        {
+            get => this.InternalFile.Id;
+            set => this.InternalFile.Id = value;
+        }
 
         /// <summary>
         /// The file object this link points to (if expanded).
         /// </summary>
         [JsonIgnore]
-        public File File => this.InternalFile.ExpandedObject;
+        public File File
+        {
+            get => this.InternalFile.ExpandedObject;
+            set => this.InternalFile.ExpandedObject = value;
+        }
 
         [JsonProperty("file")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]

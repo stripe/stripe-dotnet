@@ -44,10 +44,18 @@ namespace Stripe
         /// ID of the customer associated with that credit note.
         /// </summary>
         [JsonIgnore]
-        public string CustomerId => this.InternalCustomer.Id;
+        public string CustomerId
+        {
+            get => this.InternalCustomer.Id;
+            set => this.InternalCustomer.Id = value;
+        }
 
         [JsonIgnore]
-        public Customer Customer => this.InternalCustomer.ExpandedObject;
+        public Customer Customer
+        {
+            get => this.InternalCustomer.ExpandedObject;
+            set => this.InternalCustomer.ExpandedObject = value;
+        }
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
@@ -60,10 +68,18 @@ namespace Stripe
         /// ID of the invoice associated with that credit note.
         /// </summary>
         [JsonIgnore]
-        public string InvoiceId => this.InternalInvoice.Id;
+        public string InvoiceId
+        {
+            get => this.InternalInvoice.Id;
+            set => this.InternalInvoice.Id = value;
+        }
 
         [JsonIgnore]
-        public Invoice Invoice => this.InternalInvoice.ExpandedObject;
+        public Invoice Invoice
+        {
+            get => this.InternalInvoice.ExpandedObject;
+            set => this.InternalInvoice.ExpandedObject = value;
+        }
 
         [JsonProperty("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
@@ -115,10 +131,18 @@ namespace Stripe
         /// ID of the refund associated with that credit note.
         /// </summary>
         [JsonIgnore]
-        public string RefundId => this.InternalRefund.Id;
+        public string RefundId
+        {
+            get => this.InternalRefund.Id;
+            set => this.InternalRefund.Id = value;
+        }
 
         [JsonIgnore]
-        public Refund Refund => this.InternalRefund.ExpandedObject;
+        public Refund Refund
+        {
+            get => this.InternalRefund.ExpandedObject;
+            set => this.InternalRefund.ExpandedObject = value;
+        }
 
         [JsonProperty("refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]

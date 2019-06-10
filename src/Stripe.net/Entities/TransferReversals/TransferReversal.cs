@@ -18,10 +18,18 @@ namespace Stripe
 
         #region Expandable Balance Transaction
         [JsonIgnore]
-        public string BalanceTransactionId => this.InternalBalanceTransaction.Id;
+        public string BalanceTransactionId
+        {
+            get => this.InternalBalanceTransaction.Id;
+            set => this.InternalBalanceTransaction.Id = value;
+        }
 
         [JsonIgnore]
-        public BalanceTransaction BalanceTransaction => this.InternalBalanceTransaction.ExpandedObject;
+        public BalanceTransaction BalanceTransaction
+        {
+            get => this.InternalBalanceTransaction.ExpandedObject;
+            set => this.InternalBalanceTransaction.ExpandedObject = value;
+        }
 
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
@@ -37,10 +45,18 @@ namespace Stripe
 
         #region Expandable Destination Payment Refund
         [JsonIgnore]
-        public string DestinationPaymentRefundId => this.InternalDestinationPaymentRefund.Id;
+        public string DestinationPaymentRefundId
+        {
+            get => this.InternalDestinationPaymentRefund.Id;
+            set => this.InternalDestinationPaymentRefund.Id = value;
+        }
 
         [JsonIgnore]
-        public Refund DestinationPaymentRefund => this.InternalDestinationPaymentRefund.ExpandedObject;
+        public Refund DestinationPaymentRefund
+        {
+            get => this.InternalDestinationPaymentRefund.ExpandedObject;
+            set => this.InternalDestinationPaymentRefund.ExpandedObject = value;
+        }
 
         [JsonProperty("destination_payment_refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
@@ -52,10 +68,18 @@ namespace Stripe
 
         #region Expandable Source Refund
         [JsonIgnore]
-        public string SourceRefundId => this.InternalSourceRefund.Id;
+        public string SourceRefundId
+        {
+            get => this.InternalSourceRefund.Id;
+            set => this.InternalSourceRefund.Id = value;
+        }
 
         [JsonIgnore]
-        public Refund SourceRefund => this.InternalSourceRefund.ExpandedObject;
+        public Refund SourceRefund
+        {
+            get => this.InternalSourceRefund.ExpandedObject;
+            set => this.InternalSourceRefund.ExpandedObject = value;
+        }
 
         [JsonProperty("source_refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
@@ -64,10 +88,18 @@ namespace Stripe
 
         #region Expandable Transfer
         [JsonIgnore]
-        public string TransferId => this.InternalTransfer.Id;
+        public string TransferId
+        {
+            get => this.InternalTransfer.Id;
+            set => this.InternalTransfer.Id = value;
+        }
 
         [JsonIgnore]
-        public Transfer Transfer => this.InternalTransfer.ExpandedObject;
+        public Transfer Transfer
+        {
+            get => this.InternalTransfer.ExpandedObject;
+            set => this.InternalTransfer.ExpandedObject = value;
+        }
 
         [JsonProperty("transfer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]

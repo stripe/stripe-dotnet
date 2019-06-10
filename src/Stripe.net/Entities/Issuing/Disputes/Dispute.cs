@@ -37,10 +37,18 @@ namespace Stripe.Issuing
 
         #region Expandable Transaction
         [JsonIgnore]
-        public string TransactionId => this.InternalTransaction.Id;
+        public string TransactionId
+        {
+            get => this.InternalTransaction.Id;
+            set => this.InternalTransaction.Id = value;
+        }
 
         [JsonIgnore]
-        public Transaction Transaction => this.InternalTransaction.ExpandedObject;
+        public Transaction Transaction
+        {
+            get => this.InternalTransaction.ExpandedObject;
+            set => this.InternalTransaction.ExpandedObject = value;
+        }
 
         [JsonProperty("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]

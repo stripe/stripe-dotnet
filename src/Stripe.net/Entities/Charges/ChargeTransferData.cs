@@ -10,10 +10,18 @@ namespace Stripe
 
         #region Expandable Destination (Account)
         [JsonIgnore]
-        public string DestinationId => this.InternalDestination.Id;
+        public string DestinationId
+        {
+            get => this.InternalDestination.Id;
+            set => this.InternalDestination.Id = value;
+        }
 
         [JsonIgnore]
-        public Account Destination => this.InternalDestination.ExpandedObject;
+        public Account Destination
+        {
+            get => this.InternalDestination.ExpandedObject;
+            set => this.InternalDestination.ExpandedObject = value;
+        }
 
         [JsonProperty("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]

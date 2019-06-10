@@ -49,10 +49,18 @@ namespace Stripe.Issuing
 
         #region Expandable ReplacementFor
         [JsonIgnore]
-        public string ReplacementForId => this.InternalReplacementFor.Id;
+        public string ReplacementForId
+        {
+            get => this.InternalReplacementFor.Id;
+            set => this.InternalReplacementFor.Id = value;
+        }
 
         [JsonIgnore]
-        public Card ReplacementFor => this.InternalReplacementFor.ExpandedObject;
+        public Card ReplacementFor
+        {
+            get => this.InternalReplacementFor.ExpandedObject;
+            set => this.InternalReplacementFor.ExpandedObject = value;
+        }
 
         [JsonProperty("replacement_for")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]

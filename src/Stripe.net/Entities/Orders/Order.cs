@@ -38,10 +38,18 @@ namespace Stripe
         /// <para>Expandable</para>
         /// </summary>
         [JsonIgnore]
-        public string ChargeId => this.InternalCharge.Id;
+        public string ChargeId
+        {
+            get => this.InternalCharge.Id;
+            set => this.InternalCharge.Id = value;
+        }
 
         [JsonIgnore]
-        public Charge Charge => this.InternalCharge.ExpandedObject;
+        public Charge Charge
+        {
+            get => this.InternalCharge.ExpandedObject;
+            set => this.InternalCharge.ExpandedObject = value;
+        }
 
         [JsonProperty("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
@@ -70,7 +78,11 @@ namespace Stripe
         public string CustomerId { get; set; }
 
         [JsonIgnore]
-        public Customer Customer => this.InternalCustomer.ExpandedObject;
+        public Customer Customer
+        {
+            get => this.InternalCustomer.ExpandedObject;
+            set => this.InternalCustomer.ExpandedObject = value;
+        }
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]

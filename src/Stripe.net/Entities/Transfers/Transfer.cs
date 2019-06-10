@@ -21,10 +21,18 @@ namespace Stripe
 
         #region Expandable Balance Transaction
         [JsonIgnore]
-        public string BalanceTransactionId => this.InternalBalanceTransaction.Id;
+        public string BalanceTransactionId
+        {
+            get => this.InternalBalanceTransaction.Id;
+            set => this.InternalBalanceTransaction.Id = value;
+        }
 
         [JsonIgnore]
-        public BalanceTransaction BalanceTransaction => this.InternalBalanceTransaction.ExpandedObject;
+        public BalanceTransaction BalanceTransaction
+        {
+            get => this.InternalBalanceTransaction.ExpandedObject;
+            set => this.InternalBalanceTransaction.ExpandedObject = value;
+        }
 
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
@@ -43,10 +51,18 @@ namespace Stripe
 
         #region Expandable Destination
         [JsonIgnore]
-        public string DestinationId => this.InternalDestination.Id;
+        public string DestinationId
+        {
+            get => this.InternalDestination.Id;
+            set => this.InternalDestination.Id = value;
+        }
 
         [JsonIgnore]
-        public Account Destination => this.InternalDestination.ExpandedObject;
+        public Account Destination
+        {
+            get => this.InternalDestination.ExpandedObject;
+            set => this.InternalDestination.ExpandedObject = value;
+        }
 
         [JsonProperty("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
@@ -55,10 +71,18 @@ namespace Stripe
 
         #region Expandable Destination Payment
         [JsonIgnore]
-        public string DestinationPaymentId => this.InternalDestinationPayment.Id;
+        public string DestinationPaymentId
+        {
+            get => this.InternalDestinationPayment.Id;
+            set => this.InternalDestinationPayment.Id = value;
+        }
 
         [JsonIgnore]
-        public Charge DestinationPayment => this.InternalDestinationPayment.ExpandedObject;
+        public Charge DestinationPayment
+        {
+            get => this.InternalDestinationPayment.ExpandedObject;
+            set => this.InternalDestinationPayment.ExpandedObject = value;
+        }
 
         [JsonProperty("destination_payment")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
@@ -79,10 +103,18 @@ namespace Stripe
 
         #region Expandable Source Transaction
         [JsonIgnore]
-        public string SourceTransactionId => this.InternalSourceTransaction.Id;
+        public string SourceTransactionId
+        {
+            get => this.InternalSourceTransaction.Id;
+            set => this.InternalSourceTransaction.Id = value;
+        }
 
         [JsonIgnore]
-        public Charge SourceTransaction => this.InternalSourceTransaction.ExpandedObject;
+        public Charge SourceTransaction
+        {
+            get => this.InternalSourceTransaction.ExpandedObject;
+            set => this.InternalSourceTransaction.ExpandedObject = value;
+        }
 
         [JsonProperty("source_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]

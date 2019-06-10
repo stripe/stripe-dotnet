@@ -14,10 +14,18 @@ namespace Stripe
 
         #region Expandable Account
         [JsonIgnore]
-        public string AccountId => this.InternalAccount.Id;
+        public string AccountId
+        {
+            get => this.InternalAccount.Id;
+            set => this.InternalAccount.Id = value;
+        }
 
         [JsonIgnore]
-        public Account Account => this.InternalAccount.ExpandedObject;
+        public Account Account
+        {
+            get => this.InternalAccount.ExpandedObject;
+            set => this.InternalAccount.ExpandedObject = value;
+        }
 
         [JsonProperty("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
@@ -32,10 +40,18 @@ namespace Stripe
 
         #region Expandable Application
         [JsonIgnore]
-        public string ApplicationId => this.InternalApplication.Id;
+        public string ApplicationId
+        {
+            get => this.InternalApplication.Id;
+            set => this.InternalApplication.Id = value;
+        }
 
         [JsonIgnore]
-        public Application Application => this.InternalApplication.ExpandedObject;
+        public Application Application
+        {
+            get => this.InternalApplication.ExpandedObject;
+            set => this.InternalApplication.ExpandedObject = value;
+        }
 
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
@@ -44,10 +60,18 @@ namespace Stripe
 
         #region Expandable Balance Transaction
         [JsonIgnore]
-        public string BalanceTransactionId => this.InternalBalanceTransaction.Id;
+        public string BalanceTransactionId
+        {
+            get => this.InternalBalanceTransaction.Id;
+            set => this.InternalBalanceTransaction.Id = value;
+        }
 
         [JsonIgnore]
-        public BalanceTransaction BalanceTransaction => this.InternalBalanceTransaction.ExpandedObject;
+        public BalanceTransaction BalanceTransaction
+        {
+            get => this.InternalBalanceTransaction.ExpandedObject;
+            set => this.InternalBalanceTransaction.ExpandedObject = value;
+        }
 
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
@@ -56,10 +80,18 @@ namespace Stripe
 
         #region Expandable Charge
         [JsonIgnore]
-        public string ChargeId => this.InternalCharge.Id;
+        public string ChargeId
+        {
+            get => this.InternalCharge.Id;
+            set => this.InternalCharge.Id = value;
+        }
 
         [JsonIgnore]
-        public Charge Charge => this.InternalCharge.ExpandedObject;
+        public Charge Charge
+        {
+            get => this.InternalCharge.ExpandedObject;
+            set => this.InternalCharge.ExpandedObject = value;
+        }
 
         [JsonProperty("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
@@ -78,10 +110,18 @@ namespace Stripe
 
         #region Expandable Originating Transaction
         [JsonIgnore]
-        public string OriginatingTransactionId => this.InternalOriginatingTransaction.Id;
+        public string OriginatingTransactionId
+        {
+            get => this.InternalOriginatingTransaction.Id;
+            set => this.InternalOriginatingTransaction.Id = value;
+        }
 
         [JsonIgnore]
-        public Charge OriginatingTransaction => this.InternalOriginatingTransaction.ExpandedObject;
+        public Charge OriginatingTransaction
+        {
+            get => this.InternalOriginatingTransaction.ExpandedObject;
+            set => this.InternalOriginatingTransaction.ExpandedObject = value;
+        }
 
         [JsonProperty("originating_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
