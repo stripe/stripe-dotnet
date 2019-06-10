@@ -1,5 +1,9 @@
 # Changelog
 
+## 27.1.1 - 2019-06-10
+* [#1656](https://github.com/stripe/stripe-dotnet/pull/1656) Fix JSON property name for `Person.IdNumberProvided`
+* [#1657](https://github.com/stripe/stripe-dotnet/pull/1657) Fix file creation requests
+
 ## 27.1.0 - 2019-06-10
 * [#1655](https://github.com/stripe/stripe-dotnet/pull/1655) Add setters for expandable fields properties
 
