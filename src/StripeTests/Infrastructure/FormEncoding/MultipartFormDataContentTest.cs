@@ -43,11 +43,11 @@ namespace StripeTests
             var content = new MultipartFormDataContent(source, "test-boundary");
 
             var stream = await content.ReadAsStreamAsync();
-            Assert.Equal(131, stream.Length);
+            Assert.Equal(133, stream.Length);
             var result = new StreamReader(stream).ReadToEnd();
             Assert.Equal(
                 "--test-boundary\r\nContent-Type: text/plain; charset=utf-8\r\n"
-                + "Content-Disposition: form-data; name=key\r\n\r\nvalueク\r\n--test-boundary--\r\n",
+                + "Content-Disposition: form-data; name=\"key\"\r\n\r\nvalueク\r\n--test-boundary--\r\n",
                 result);
         }
 
@@ -61,11 +61,11 @@ namespace StripeTests
             var content = new MultipartFormDataContent(source, "test-boundary");
 
             var stream = await content.ReadAsStreamAsync();
-            Assert.Equal(172, stream.Length);
+            Assert.Equal(174, stream.Length);
             var result = new StreamReader(stream).ReadToEnd();
             Assert.Equal(
                 "--test-boundary\r\n"
-                + "Content-Disposition: form-data; name=key; filename=blob; filename*=utf-8''blob\r\n"
+                + "Content-Disposition: form-data; name=\"key\"; filename=blob; filename*=utf-8''blob\r\n"
                 + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
                 + "--test-boundary--\r\n",
                 result);
@@ -82,14 +82,14 @@ namespace StripeTests
             var content = new MultipartFormDataContent(source, "test-boundary");
 
             var stream = await content.ReadAsStreamAsync();
-            Assert.Equal(295, stream.Length);
+            Assert.Equal(299, stream.Length);
             var result = new StreamReader(stream).ReadToEnd();
             Assert.Equal(
                 "--test-boundary\r\n"
-                + "Content-Disposition: form-data; name=stream; filename=blob; filename*=utf-8''blob\r\n"
+                + "Content-Disposition: form-data; name=\"stream\"; filename=blob; filename*=utf-8''blob\r\n"
                 + "Content-Type: application/octet-stream\r\n\r\nHello クWorld!\r\n"
                 + "--test-boundary\r\nContent-Type: text/plain; charset=utf-8\r\n"
-                + "Content-Disposition: form-data; name=string\r\n\r\nString!ク\r\n--test-boundary--\r\n",
+                + "Content-Disposition: form-data; name=\"string\"\r\n\r\nString!ク\r\n--test-boundary--\r\n",
                 result);
         }
 

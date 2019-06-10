@@ -71,7 +71,7 @@ namespace StripeTests
             Assert.Equal(1, content.Headers.ContentType.Parameters.Count);
 
             var stream = await content.ReadAsStreamAsync();
-            Assert.Equal(760, stream.Length);
+            Assert.Equal(764, stream.Length);
             var result = new StreamReader(stream).ReadToEnd();
 
             // The boundary will be a random GUID, so we just check for substrings.
@@ -86,10 +86,10 @@ namespace StripeTests
                 "Content-Type: text/plain; charset=utf-8\r\nContent-Disposition: form-data; name=\"list[2]\"\r\n\r\n3\r\n",
                 result);
             Assert.Contains(
-                "Content-Disposition: form-data; name=stream; filename=blob; filename*=utf-8''blob\r\nContent-Type: application/octet-stream\r\n\r\nHello World!\r\n",
+                "Content-Disposition: form-data; name=\"stream\"; filename=blob; filename*=utf-8''blob\r\nContent-Type: application/octet-stream\r\n\r\nHello World!\r\n",
                 result);
             Assert.Contains(
-                "Content-Type: text/plain; charset=utf-8\r\nContent-Disposition: form-data; name=string\r\n\r\nString!\r\n",
+                "Content-Type: text/plain; charset=utf-8\r\nContent-Disposition: form-data; name=\"string\"\r\n\r\nString!\r\n",
                 result);
         }
 
