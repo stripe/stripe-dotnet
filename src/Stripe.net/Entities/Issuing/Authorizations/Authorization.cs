@@ -33,10 +33,18 @@ namespace Stripe.Issuing
 
         #region Expandable Cardholder
         [JsonIgnore]
-        public string CardholderId => this.InternalCardholder.Id;
+        public string CardholderId
+        {
+            get => this.InternalCardholder.Id;
+            set => this.InternalCardholder.Id = value;
+        }
 
         [JsonIgnore]
-        public Cardholder Cardholder => this.InternalCardholder.ExpandedObject;
+        public Cardholder Cardholder
+        {
+            get => this.InternalCardholder.ExpandedObject;
+            set => this.InternalCardholder.ExpandedObject = value;
+        }
 
         [JsonProperty("cardholder")]
         [JsonConverter(typeof(ExpandableFieldConverter<Cardholder>))]

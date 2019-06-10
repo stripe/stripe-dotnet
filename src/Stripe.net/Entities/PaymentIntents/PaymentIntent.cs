@@ -24,10 +24,18 @@ namespace Stripe
 
         #region Expandable Application
         [JsonIgnore]
-        public string ApplicationId => this.InternalApplication.Id;
+        public string ApplicationId
+        {
+            get => this.InternalApplication.Id;
+            set => this.InternalApplication.Id = value;
+        }
 
         [JsonIgnore]
-        public Application Application => this.InternalApplication.ExpandedObject;
+        public Application Application
+        {
+            get => this.InternalApplication.ExpandedObject;
+            set => this.InternalApplication.ExpandedObject = value;
+        }
 
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
@@ -65,10 +73,18 @@ namespace Stripe
 
         #region Expandable Customer
         [JsonIgnore]
-        public string CustomerId => this.InternalCustomer.Id;
+        public string CustomerId
+        {
+            get => this.InternalCustomer.Id;
+            set => this.InternalCustomer.Id = value;
+        }
 
         [JsonIgnore]
-        public Customer Customer => this.InternalCustomer.ExpandedObject;
+        public Customer Customer
+        {
+            get => this.InternalCustomer.ExpandedObject;
+            set => this.InternalCustomer.ExpandedObject = value;
+        }
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
@@ -80,10 +96,18 @@ namespace Stripe
 
         #region Expandable Invoice
         [JsonIgnore]
-        public string InvoiceId => this.InternalInvoice.Id;
+        public string InvoiceId
+        {
+            get => this.InternalInvoice.Id;
+            set => this.InternalInvoice.Id = value;
+        }
 
         [JsonIgnore]
-        public Invoice Invoice => this.InternalInvoice.ExpandedObject;
+        public Invoice Invoice
+        {
+            get => this.InternalInvoice.ExpandedObject;
+            set => this.InternalInvoice.ExpandedObject = value;
+        }
 
         [JsonProperty("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
@@ -104,10 +128,18 @@ namespace Stripe
 
         #region Expandable OnBehalfOf (Account)
         [JsonIgnore]
-        public string OnBehalfOfId => this.InternalOnBehalfOf.Id;
+        public string OnBehalfOfId
+        {
+            get => this.InternalOnBehalfOf.Id;
+            set => this.InternalOnBehalfOf.Id = value;
+        }
 
         [JsonIgnore]
-        public Account OnBehalfOf => this.InternalOnBehalfOf.ExpandedObject;
+        public Account OnBehalfOf
+        {
+            get => this.InternalOnBehalfOf.ExpandedObject;
+            set => this.InternalOnBehalfOf.ExpandedObject = value;
+        }
 
         [JsonProperty("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
@@ -116,10 +148,18 @@ namespace Stripe
 
         #region Expandable PaymentMethod
         [JsonIgnore]
-        public string PaymentMethodId => this.InternalPaymentMethod.Id;
+        public string PaymentMethodId
+        {
+            get => this.InternalPaymentMethod.Id;
+            set => this.InternalPaymentMethod.Id = value;
+        }
 
         [JsonIgnore]
-        public PaymentMethod PaymentMethod => this.InternalPaymentMethod.ExpandedObject;
+        public PaymentMethod PaymentMethod
+        {
+            get => this.InternalPaymentMethod.ExpandedObject;
+            set => this.InternalPaymentMethod.ExpandedObject = value;
+        }
 
         [JsonProperty("payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
@@ -134,10 +174,18 @@ namespace Stripe
 
         #region Expandable Review
         [JsonIgnore]
-        public string ReviewId => this.InternalReview.Id;
+        public string ReviewId
+        {
+            get => this.InternalReview.Id;
+            set => this.InternalReview.Id = value;
+        }
 
         [JsonIgnore]
-        public Review Review => this.InternalReview.ExpandedObject;
+        public Review Review
+        {
+            get => this.InternalReview.ExpandedObject;
+            set => this.InternalReview.ExpandedObject = value;
+        }
 
         [JsonProperty("review")]
         [JsonConverter(typeof(ExpandableFieldConverter<Review>))]
@@ -149,10 +197,18 @@ namespace Stripe
 
         #region Expandable Source
         [JsonIgnore]
-        public string SourceId => this.InternalSource.Id;
+        public string SourceId
+        {
+            get => this.InternalSource.Id;
+            set => this.InternalSource.Id = value;
+        }
 
         [JsonIgnore]
-        public IPaymentSource Source => this.InternalSource.ExpandedObject;
+        public IPaymentSource Source
+        {
+            get => this.InternalSource.ExpandedObject;
+            set => this.InternalSource.ExpandedObject = value;
+        }
 
         [JsonProperty("source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]

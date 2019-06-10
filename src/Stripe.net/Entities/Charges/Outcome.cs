@@ -35,10 +35,18 @@ namespace Stripe
         /// The ID of the Radar rule that matched the payment, if applicable.
         /// </summary>
         [JsonIgnore]
-        public string RuleId => this.InternalRule.Id;
+        public string RuleId
+        {
+            get => this.InternalRule.Id;
+            set => this.InternalRule.Id = value;
+        }
 
         [JsonIgnore]
-        public OutcomeRule Rule => this.InternalRule.ExpandedObject;
+        public OutcomeRule Rule
+        {
+            get => this.InternalRule.ExpandedObject;
+            set => this.InternalRule.ExpandedObject = value;
+        }
 
         [JsonProperty("rule")]
         [JsonConverter(typeof(ExpandableFieldConverter<OutcomeRule>))]

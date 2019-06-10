@@ -19,13 +19,21 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string CancellationPolicyId => this.InternalCancellationPolicy.Id;
+        public string CancellationPolicyId
+        {
+            get => this.InternalCancellationPolicy.Id;
+            set => this.InternalCancellationPolicy.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) Your subscription cancellation policy, as shown to the customer.
         /// </summary>
         [JsonIgnore]
-        public File CancellationPolicy => this.InternalCancellationPolicy.ExpandedObject;
+        public File CancellationPolicy
+        {
+            get => this.InternalCancellationPolicy.ExpandedObject;
+            set => this.InternalCancellationPolicy.ExpandedObject = value;
+        }
 
         [JsonProperty("cancellation_policy")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
@@ -48,7 +56,11 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string CustomerCommunicationId => this.InternalCustomerCommunication.Id;
+        public string CustomerCommunicationId
+        {
+            get => this.InternalCustomerCommunication.Id;
+            set => this.InternalCustomerCommunication.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) Any communication with the customer that you feel is relevant to your case.
@@ -56,7 +68,11 @@ namespace Stripe
         /// demonstrating their use of or satisfaction with the product or service.
         /// </summary>
         [JsonIgnore]
-        public File CustomerCommunication => this.InternalCustomerCommunication.ExpandedObject;
+        public File CustomerCommunication
+        {
+            get => this.InternalCustomerCommunication.ExpandedObject;
+            set => this.InternalCustomerCommunication.ExpandedObject = value;
+        }
 
         [JsonProperty("customer_communication")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
@@ -80,13 +96,21 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string CustomerSignatureId => this.InternalCustomerSignature.Id;
+        public string CustomerSignatureId
+        {
+            get => this.InternalCustomerSignature.Id;
+            set => this.InternalCustomerSignature.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) A relevant document or contract showing the customer’s signature.
         /// </summary>
         [JsonIgnore]
-        public File CustomerSignature => this.InternalCustomerSignature.ExpandedObject;
+        public File CustomerSignature
+        {
+            get => this.InternalCustomerSignature.ExpandedObject;
+            set => this.InternalCustomerSignature.ExpandedObject = value;
+        }
 
         [JsonProperty("customer_signature")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
@@ -103,7 +127,11 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string DuplicateChargeDocumentationId => this.InternalDuplicateChargeDocumentation.Id;
+        public string DuplicateChargeDocumentationId
+        {
+            get => this.InternalDuplicateChargeDocumentation.Id;
+            set => this.InternalDuplicateChargeDocumentation.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) Documentation for the prior charge that can uniquely  identify the charge,
@@ -111,7 +139,11 @@ namespace Stripe
         /// a similar document from the disputed payment that proves the two payments are separate.
         /// </summary>
         [JsonIgnore]
-        public File DuplicateChargeDocumentation => this.InternalDuplicateChargeDocumentation.ExpandedObject;
+        public File DuplicateChargeDocumentation
+        {
+            get => this.InternalDuplicateChargeDocumentation.ExpandedObject;
+            set => this.InternalDuplicateChargeDocumentation.ExpandedObject = value;
+        }
 
         [JsonProperty("duplicate_charge_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
@@ -135,13 +167,21 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string ReceiptId => this.InternalReceipt.Id;
+        public string ReceiptId
+        {
+            get => this.InternalReceipt.Id;
+            set => this.InternalReceipt.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) Any receipt or message sent to the customer notifying them of the charge.
         /// </summary>
         [JsonIgnore]
-        public File Receipt => this.InternalReceipt.ExpandedObject;
+        public File Receipt
+        {
+            get => this.InternalReceipt.ExpandedObject;
+            set => this.InternalReceipt.ExpandedObject = value;
+        }
 
         [JsonProperty("receipt")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
@@ -155,13 +195,21 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string RefundPolicyId => this.InternalRefundPolicy.Id;
+        public string RefundPolicyId
+        {
+            get => this.InternalRefundPolicy.Id;
+            set => this.InternalRefundPolicy.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) Your refund policy, as shown to the customer.
         /// </summary>
         [JsonIgnore]
-        public File RefundPolicy => this.InternalRefundPolicy.ExpandedObject;
+        public File RefundPolicy
+        {
+            get => this.InternalRefundPolicy.ExpandedObject;
+            set => this.InternalRefundPolicy.ExpandedObject = value;
+        }
 
         [JsonProperty("refund_policy")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
@@ -186,7 +234,11 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string ServiceDocumentationId => this.InternalServiceDocumentation.Id;
+        public string ServiceDocumentationId
+        {
+            get => this.InternalServiceDocumentation.Id;
+            set => this.InternalServiceDocumentation.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) Documentation showing proof that a service was provided to  the customer.
@@ -194,7 +246,11 @@ namespace Stripe
         /// agreement.
         /// </summary>
         [JsonIgnore]
-        public File ServiceDocumentation => this.InternalServiceDocumentation.ExpandedObject;
+        public File ServiceDocumentation
+        {
+            get => this.InternalServiceDocumentation.ExpandedObject;
+            set => this.InternalServiceDocumentation.ExpandedObject = value;
+        }
 
         [JsonProperty("service_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
@@ -220,7 +276,11 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string ShippingDocumentationId => this.InternalShippingDocumentation.Id;
+        public string ShippingDocumentationId
+        {
+            get => this.InternalShippingDocumentation.Id;
+            set => this.InternalShippingDocumentation.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) Documentation showing proof that a product was shipped to  the customer at
@@ -229,7 +289,11 @@ namespace Stripe
         /// possible.
         /// </summary>
         [JsonIgnore]
-        public File ShippingDocumentation => this.InternalShippingDocumentation.ExpandedObject;
+        public File ShippingDocumentation
+        {
+            get => this.InternalShippingDocumentation.ExpandedObject;
+            set => this.InternalShippingDocumentation.ExpandedObject = value;
+        }
 
         [JsonProperty("shipping_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
@@ -246,13 +310,21 @@ namespace Stripe
         /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
-        public string UncategorizedFileId => this.InternalUncategorizedFile.Id;
+        public string UncategorizedFileId
+        {
+            get => this.InternalUncategorizedFile.Id;
+            set => this.InternalUncategorizedFile.Id = value;
+        }
 
         /// <summary>
         /// (Expanded) Any additional evidence or statements.
         /// </summary>
         [JsonIgnore]
-        public File UncategorizedFile => this.InternalUncategorizedFile.ExpandedObject;
+        public File UncategorizedFile
+        {
+            get => this.InternalUncategorizedFile.ExpandedObject;
+            set => this.InternalUncategorizedFile.ExpandedObject = value;
+        }
 
         [JsonProperty("uncategorized_file")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]

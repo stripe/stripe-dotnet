@@ -14,10 +14,18 @@ namespace Stripe
 
         #region Expandable Customer
         [JsonIgnore]
-        public string CustomerId => this.InternalCustomer.Id;
+        public string CustomerId
+        {
+            get => this.InternalCustomer.Id;
+            set => this.InternalCustomer.Id = value;
+        }
 
         [JsonIgnore]
-        public Customer Customer => this.InternalCustomer.ExpandedObject;
+        public Customer Customer
+        {
+            get => this.InternalCustomer.ExpandedObject;
+            set => this.InternalCustomer.ExpandedObject = value;
+        }
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
@@ -40,10 +48,18 @@ namespace Stripe
 
         #region Expandable Subscription
         [JsonIgnore]
-        public string SubscriptionId => this.InternalSubscription.Id;
+        public string SubscriptionId
+        {
+            get => this.InternalSubscription.Id;
+            set => this.InternalSubscription.Id = value;
+        }
 
         [JsonIgnore]
-        public Subscription Subscription => this.InternalSubscription.ExpandedObject;
+        public Subscription Subscription
+        {
+            get => this.InternalSubscription.ExpandedObject;
+            set => this.InternalSubscription.ExpandedObject = value;
+        }
 
         [JsonProperty("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]

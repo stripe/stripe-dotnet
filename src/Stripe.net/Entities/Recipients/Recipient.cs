@@ -25,10 +25,18 @@ namespace Stripe
 
         #region Expandable Default Card
         [JsonIgnore]
-        public string DefaultCardId => this.InternalDefaultCard.Id;
+        public string DefaultCardId
+        {
+            get => this.InternalDefaultCard.Id;
+            set => this.InternalDefaultCard.Id = value;
+        }
 
         [JsonIgnore]
-        public Card DefaultCard => this.InternalDefaultCard.ExpandedObject;
+        public Card DefaultCard
+        {
+            get => this.InternalDefaultCard.ExpandedObject;
+            set => this.InternalDefaultCard.ExpandedObject = value;
+        }
 
         [JsonProperty("default_card")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]

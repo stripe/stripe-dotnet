@@ -14,10 +14,18 @@ namespace Stripe
 
         #region Expandable Account
         [JsonIgnore]
-        public string AccountId => this.InternalAccount.Id;
+        public string AccountId
+        {
+            get => this.InternalAccount.Id;
+            set => this.InternalAccount.Id = value;
+        }
 
         [JsonIgnore]
-        public Account Account => this.InternalAccount.ExpandedObject;
+        public Account Account
+        {
+            get => this.InternalAccount.ExpandedObject;
+            set => this.InternalAccount.ExpandedObject = value;
+        }
 
         [JsonProperty("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
@@ -62,10 +70,18 @@ namespace Stripe
 
         #region Expandable Customer
         [JsonIgnore]
-        public string CustomerId => this.InternalCustomer.Id;
+        public string CustomerId
+        {
+            get => this.InternalCustomer.Id;
+            set => this.InternalCustomer.Id = value;
+        }
 
         [JsonIgnore]
-        public Customer Customer => this.InternalCustomer.ExpandedObject;
+        public Customer Customer
+        {
+            get => this.InternalCustomer.ExpandedObject;
+            set => this.InternalCustomer.ExpandedObject = value;
+        }
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
@@ -110,10 +126,18 @@ namespace Stripe
 
         #region Expandable Recipient
         [JsonIgnore]
-        public string RecipientId => this.InternalRecipient.Id;
+        public string RecipientId
+        {
+            get => this.InternalRecipient.Id;
+            set => this.InternalRecipient.Id = value;
+        }
 
         [JsonIgnore]
-        public Recipient Recipient => this.InternalRecipient.ExpandedObject;
+        public Recipient Recipient
+        {
+            get => this.InternalRecipient.ExpandedObject;
+            set => this.InternalRecipient.ExpandedObject = value;
+        }
 
         [JsonProperty("recipient")]
         [JsonConverter(typeof(ExpandableFieldConverter<Recipient>))]

@@ -25,10 +25,18 @@ namespace Stripe
 
         #region Expandable Balance Transaction
         [JsonIgnore]
-        public string BalanceTransactionId => this.InternalBalanceTransaction.Id;
+        public string BalanceTransactionId
+        {
+            get => this.InternalBalanceTransaction.Id;
+            set => this.InternalBalanceTransaction.Id = value;
+        }
 
         [JsonIgnore]
-        public BalanceTransaction BalanceTransaction => this.InternalBalanceTransaction.ExpandedObject;
+        public BalanceTransaction BalanceTransaction
+        {
+            get => this.InternalBalanceTransaction.ExpandedObject;
+            set => this.InternalBalanceTransaction.ExpandedObject = value;
+        }
 
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
@@ -47,10 +55,18 @@ namespace Stripe
 
         #region Expandable Destination
         [JsonIgnore]
-        public string DestinationId => this.InternalDestination.Id;
+        public string DestinationId
+        {
+            get => this.InternalDestination.Id;
+            set => this.InternalDestination.Id = value;
+        }
 
         [JsonIgnore]
-        public IExternalAccount Destination => this.InternalDestination.ExpandedObject;
+        public IExternalAccount Destination
+        {
+            get => this.InternalDestination.ExpandedObject;
+            set => this.InternalDestination.ExpandedObject = value;
+        }
 
         [JsonProperty("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<IExternalAccount>))]
@@ -63,10 +79,18 @@ namespace Stripe
         /// If the payout failed or was canceled, this will be the ID of the balance transaction that reversed the initial balance transaction, and puts the funds from the failed payout back in your balance.
         /// </summary>
         [JsonIgnore]
-        public string FailureBalanceTransactionId => this.InternalFailureBalanceTransaction.Id;
+        public string FailureBalanceTransactionId
+        {
+            get => this.InternalFailureBalanceTransaction.Id;
+            set => this.InternalFailureBalanceTransaction.Id = value;
+        }
 
         [JsonIgnore]
-        public BalanceTransaction FailureBalanceTransaction => this.InternalFailureBalanceTransaction.ExpandedObject;
+        public BalanceTransaction FailureBalanceTransaction
+        {
+            get => this.InternalFailureBalanceTransaction.ExpandedObject;
+            set => this.InternalFailureBalanceTransaction.ExpandedObject = value;
+        }
 
         [JsonProperty("failure_balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
