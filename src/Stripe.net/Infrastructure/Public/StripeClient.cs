@@ -116,7 +116,8 @@ namespace Stripe
         {
             var request = new StripeRequest(this, method, path, options, requestOptions);
 
-            var response = await this.HttpClient.MakeRequestAsync(request, cancellationToken);
+            var response = await this.HttpClient.MakeRequestAsync(request, cancellationToken)
+                .ConfigureAwait(false);
 
             return ProcessResponse<T>(response);
         }

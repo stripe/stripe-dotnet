@@ -238,7 +238,7 @@ namespace Stripe
                 path,
                 options,
                 requestOptions,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
         }
 
         protected IEnumerable<T> ListRequestAutoPaging<T>(
