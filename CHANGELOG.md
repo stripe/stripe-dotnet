@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.1.2 - 2019-06-10
+* [#1658](https://github.com/stripe/stripe-dotnet/pull/1658) Add `ConfigureAwait(false)` to all async calls
+
 ## 27.1.1 - 2019-06-10
 * [#1656](https://github.com/stripe/stripe-dotnet/pull/1656) Fix JSON property name for `Person.IdNumberProvided`
 * [#1657](https://github.com/stripe/stripe-dotnet/pull/1657) Fix file creation requests
