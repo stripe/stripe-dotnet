@@ -66,6 +66,11 @@ namespace Stripe.Infrastructure.FormEncoding
             return content;
         }
 
+        private static string QuoteString(string value)
+        {
+            return "\"" + value + "\"";
+        }
+
         private void ProcessParameters(IEnumerable<KeyValuePair<string, object>> nameValueCollection)
         {
             foreach (var kvp in nameValueCollection)
@@ -73,11 +78,11 @@ namespace Stripe.Infrastructure.FormEncoding
                 switch (kvp.Value)
                 {
                     case string s:
-                        this.Add(CreateStringContent(s), kvp.Key);
+                        this.Add(CreateStringContent(s), QuoteString(kvp.Key));
                         break;
 
                     case Stream s:
-                        this.Add(CreateStreamContent(s, kvp.Key));
+                        this.Add(CreateStreamContent(s, QuoteString(kvp.Key)));
                         break;
 
                     default:
