@@ -95,7 +95,7 @@ namespace Stripe
         /// <summary>
         /// Whether the person’s id_number was provided.
         /// </summary>
-        [JsonProperty("id_number_provider")]
+        [JsonProperty("id_number_provided")]
         public bool IdNumberProvided { get; set; }
 
         /// <summary>
