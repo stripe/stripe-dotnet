@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.1.0 - 2019-06-10
+* [#1655](https://github.com/stripe/stripe-dotnet/pull/1655) Add setters for expandable fields properties
+
 ## 27.0.0 - 2019-06-07
 Major version release. Refer to our [migration guide for v27](https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v27) for a list of backwards incompatible changes to watch out for.
 
