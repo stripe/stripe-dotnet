@@ -34,15 +34,15 @@ namespace Stripe
         [JsonIgnore]
         public string ParentId
         {
-            get => this.InternalParent.Id;
-            set => this.InternalParent.Id = value;
+            get => this.InternalParent?.Id;
+            set => this.InternalParent = SetExpandableFieldId(value, this.InternalParent);
         }
 
         [JsonIgnore]
         public Sku Parent
         {
-            get => this.InternalParent.ExpandedObject;
-            set => this.InternalParent.ExpandedObject = value;
+            get => this.InternalParent?.ExpandedObject;
+            set => this.InternalParent = SetExpandableFieldObject(value, this.InternalParent);
         }
 
         [JsonProperty("parent")]

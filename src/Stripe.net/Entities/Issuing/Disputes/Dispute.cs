@@ -39,15 +39,15 @@ namespace Stripe.Issuing
         [JsonIgnore]
         public string TransactionId
         {
-            get => this.InternalTransaction.Id;
-            set => this.InternalTransaction.Id = value;
+            get => this.InternalTransaction?.Id;
+            set => this.InternalTransaction = SetExpandableFieldId(value, this.InternalTransaction);
         }
 
         [JsonIgnore]
         public Transaction Transaction
         {
-            get => this.InternalTransaction.ExpandedObject;
-            set => this.InternalTransaction.ExpandedObject = value;
+            get => this.InternalTransaction?.ExpandedObject;
+            set => this.InternalTransaction = SetExpandableFieldObject(value, this.InternalTransaction);
         }
 
         [JsonProperty("transaction")]

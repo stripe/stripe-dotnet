@@ -58,5 +58,31 @@ namespace StripeTests
             Assert.IsType<Card>(customer.DefaultSource);
             Assert.Equal("card", customer.DefaultSource.Object);
         }
+
+        [Fact]
+        public void DefaultSourceId_Setter()
+        {
+            var customer = new Customer
+            {
+                DefaultSourceId = "card_123",
+            };
+
+            Assert.Equal("card_123", customer.DefaultSourceId);
+            Assert.Null(customer.DefaultSource);
+        }
+
+        [Fact]
+        public void DefaultSource_Setter()
+        {
+            var customer = new Customer
+            {
+                DefaultSource = new Card { Id = "card_123", Object = "card" },
+            };
+
+            Assert.Equal("card_123", customer.DefaultSourceId);
+            Assert.NotNull(customer.DefaultSource);
+            Assert.Equal("card_123", customer.DefaultSource.Id);
+            Assert.Equal("card", customer.DefaultSource.Object);
+        }
     }
 }

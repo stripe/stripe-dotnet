@@ -30,8 +30,8 @@ namespace Stripe
         [JsonIgnore]
         public BalanceTransaction BalanceTransaction
         {
-            get => this.InternalBalanceTransaction.ExpandedObject;
-            set => this.InternalBalanceTransaction.ExpandedObject = value;
+            get => this.InternalBalanceTransaction?.ExpandedObject;
+            set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
         }
 
         [JsonProperty("balance_transaction")]

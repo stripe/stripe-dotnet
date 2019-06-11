@@ -26,15 +26,15 @@ namespace Stripe
         [JsonIgnore]
         public string ApplicationId
         {
-            get => this.InternalApplication.Id;
-            set => this.InternalApplication.Id = value;
+            get => this.InternalApplication?.Id;
+            set => this.InternalApplication = SetExpandableFieldId(value, this.InternalApplication);
         }
 
         [JsonIgnore]
         public Application Application
         {
-            get => this.InternalApplication.ExpandedObject;
-            set => this.InternalApplication.ExpandedObject = value;
+            get => this.InternalApplication?.ExpandedObject;
+            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
         }
 
         [JsonProperty("application")]
@@ -75,15 +75,15 @@ namespace Stripe
         [JsonIgnore]
         public string CustomerId
         {
-            get => this.InternalCustomer.Id;
-            set => this.InternalCustomer.Id = value;
+            get => this.InternalCustomer?.Id;
+            set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
         }
 
         [JsonIgnore]
         public Customer Customer
         {
-            get => this.InternalCustomer.ExpandedObject;
-            set => this.InternalCustomer.ExpandedObject = value;
+            get => this.InternalCustomer?.ExpandedObject;
+            set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
         [JsonProperty("customer")]
@@ -98,15 +98,15 @@ namespace Stripe
         [JsonIgnore]
         public string InvoiceId
         {
-            get => this.InternalInvoice.Id;
-            set => this.InternalInvoice.Id = value;
+            get => this.InternalInvoice?.Id;
+            set => this.InternalInvoice = SetExpandableFieldId(value, this.InternalInvoice);
         }
 
         [JsonIgnore]
         public Invoice Invoice
         {
-            get => this.InternalInvoice.ExpandedObject;
-            set => this.InternalInvoice.ExpandedObject = value;
+            get => this.InternalInvoice?.ExpandedObject;
+            set => this.InternalInvoice = SetExpandableFieldObject(value, this.InternalInvoice);
         }
 
         [JsonProperty("invoice")]
@@ -130,15 +130,15 @@ namespace Stripe
         [JsonIgnore]
         public string OnBehalfOfId
         {
-            get => this.InternalOnBehalfOf.Id;
-            set => this.InternalOnBehalfOf.Id = value;
+            get => this.InternalOnBehalfOf?.Id;
+            set => this.InternalOnBehalfOf = SetExpandableFieldId(value, this.InternalOnBehalfOf);
         }
 
         [JsonIgnore]
         public Account OnBehalfOf
         {
-            get => this.InternalOnBehalfOf.ExpandedObject;
-            set => this.InternalOnBehalfOf.ExpandedObject = value;
+            get => this.InternalOnBehalfOf?.ExpandedObject;
+            set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
         }
 
         [JsonProperty("on_behalf_of")]
@@ -150,15 +150,15 @@ namespace Stripe
         [JsonIgnore]
         public string PaymentMethodId
         {
-            get => this.InternalPaymentMethod.Id;
-            set => this.InternalPaymentMethod.Id = value;
+            get => this.InternalPaymentMethod?.Id;
+            set => this.InternalPaymentMethod = SetExpandableFieldId(value, this.InternalPaymentMethod);
         }
 
         [JsonIgnore]
         public PaymentMethod PaymentMethod
         {
-            get => this.InternalPaymentMethod.ExpandedObject;
-            set => this.InternalPaymentMethod.ExpandedObject = value;
+            get => this.InternalPaymentMethod?.ExpandedObject;
+            set => this.InternalPaymentMethod = SetExpandableFieldObject(value, this.InternalPaymentMethod);
         }
 
         [JsonProperty("payment_method")]
@@ -176,15 +176,15 @@ namespace Stripe
         [JsonIgnore]
         public string ReviewId
         {
-            get => this.InternalReview.Id;
-            set => this.InternalReview.Id = value;
+            get => this.InternalReview?.Id;
+            set => this.InternalReview = SetExpandableFieldId(value, this.InternalReview);
         }
 
         [JsonIgnore]
         public Review Review
         {
-            get => this.InternalReview.ExpandedObject;
-            set => this.InternalReview.ExpandedObject = value;
+            get => this.InternalReview?.ExpandedObject;
+            set => this.InternalReview = SetExpandableFieldObject(value, this.InternalReview);
         }
 
         [JsonProperty("review")]
@@ -199,15 +199,15 @@ namespace Stripe
         [JsonIgnore]
         public string SourceId
         {
-            get => this.InternalSource.Id;
-            set => this.InternalSource.Id = value;
+            get => this.InternalSource?.Id;
+            set => this.InternalSource = SetExpandableFieldId(value, this.InternalSource);
         }
 
         [JsonIgnore]
         public IPaymentSource Source
         {
-            get => this.InternalSource.ExpandedObject;
-            set => this.InternalSource.ExpandedObject = value;
+            get => this.InternalSource?.ExpandedObject;
+            set => this.InternalSource = SetExpandableFieldObject(value, this.InternalSource);
         }
 
         [JsonProperty("source")]

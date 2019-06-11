@@ -27,15 +27,15 @@ namespace Stripe
         [JsonIgnore]
         public string DefaultCardId
         {
-            get => this.InternalDefaultCard.Id;
-            set => this.InternalDefaultCard.Id = value;
+            get => this.InternalDefaultCard?.Id;
+            set => this.InternalDefaultCard = SetExpandableFieldId(value, this.InternalDefaultCard);
         }
 
         [JsonIgnore]
         public Card DefaultCard
         {
-            get => this.InternalDefaultCard.ExpandedObject;
-            set => this.InternalDefaultCard.ExpandedObject = value;
+            get => this.InternalDefaultCard?.ExpandedObject;
+            set => this.InternalDefaultCard = SetExpandableFieldObject(value, this.InternalDefaultCard);
         }
 
         [JsonProperty("default_card")]

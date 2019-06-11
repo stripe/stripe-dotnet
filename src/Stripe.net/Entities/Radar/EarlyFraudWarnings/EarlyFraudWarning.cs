@@ -31,15 +31,15 @@ namespace Stripe.Radar
         [JsonIgnore]
         public string ChargeId
         {
-            get => this.InternalCharge.Id;
-            set => this.InternalCharge.Id = value;
+            get => this.InternalCharge?.Id;
+            set => this.InternalCharge = SetExpandableFieldId(value, this.InternalCharge);
         }
 
         [JsonIgnore]
         public Charge Charge
         {
-            get => this.InternalCharge.ExpandedObject;
-            set => this.InternalCharge.ExpandedObject = value;
+            get => this.InternalCharge?.ExpandedObject;
+            set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
         }
 
         [JsonProperty("charge")]

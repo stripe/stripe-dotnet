@@ -40,15 +40,15 @@ namespace Stripe
         [JsonIgnore]
         public string ChargeId
         {
-            get => this.InternalCharge.Id;
-            set => this.InternalCharge.Id = value;
+            get => this.InternalCharge?.Id;
+            set => this.InternalCharge = SetExpandableFieldId(value, this.InternalCharge);
         }
 
         [JsonIgnore]
         public Charge Charge
         {
-            get => this.InternalCharge.ExpandedObject;
-            set => this.InternalCharge.ExpandedObject = value;
+            get => this.InternalCharge?.ExpandedObject;
+            set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
         }
 
         [JsonProperty("charge")]
@@ -80,8 +80,8 @@ namespace Stripe
         [JsonIgnore]
         public Customer Customer
         {
-            get => this.InternalCustomer.ExpandedObject;
-            set => this.InternalCustomer.ExpandedObject = value;
+            get => this.InternalCustomer?.ExpandedObject;
+            set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
         [JsonProperty("customer")]

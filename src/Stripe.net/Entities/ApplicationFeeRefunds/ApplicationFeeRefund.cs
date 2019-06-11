@@ -20,15 +20,15 @@ namespace Stripe
         [JsonIgnore]
         public string BalanceTransactionId
         {
-            get => this.InternalBalanceTransaction.Id;
-            set => this.InternalBalanceTransaction.Id = value;
+            get => this.InternalBalanceTransaction?.Id;
+            set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
         }
 
         [JsonIgnore]
         public BalanceTransaction BalanceTransaction
         {
-            get => this.InternalBalanceTransaction.ExpandedObject;
-            set => this.InternalBalanceTransaction.ExpandedObject = value;
+            get => this.InternalBalanceTransaction?.ExpandedObject;
+            set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
         }
 
         [JsonProperty("balance_transaction")]
@@ -47,15 +47,15 @@ namespace Stripe
         [JsonIgnore]
         public string FeeId
         {
-            get => this.InternalFee.Id;
-            set => this.InternalFee.Id = value;
+            get => this.InternalFee?.Id;
+            set => this.InternalFee = SetExpandableFieldId(value, this.InternalFee);
         }
 
         [JsonIgnore]
         public ApplicationFee Fee
         {
-            get => this.InternalFee.ExpandedObject;
-            set => this.InternalFee.ExpandedObject = value;
+            get => this.InternalFee?.ExpandedObject;
+            set => this.InternalFee = SetExpandableFieldObject(value, this.InternalFee);
         }
 
         [JsonProperty("fee")]

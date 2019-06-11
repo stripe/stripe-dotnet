@@ -13,15 +13,15 @@ namespace Stripe.Issuing
         [JsonIgnore]
         public string CardId
         {
-            get => this.InternalCard.Id;
-            set => this.InternalCard.Id = value;
+            get => this.InternalCard?.Id;
+            set => this.InternalCard = SetExpandableFieldId(value, this.InternalCard);
         }
 
         [JsonIgnore]
         public Card Card
         {
-            get => this.InternalCard.ExpandedObject;
-            set => this.InternalCard.ExpandedObject = value;
+            get => this.InternalCard?.ExpandedObject;
+            set => this.InternalCard = SetExpandableFieldObject(value, this.InternalCard);
         }
 
         [JsonProperty("card")]

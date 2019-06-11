@@ -27,15 +27,15 @@ namespace Stripe
         [JsonIgnore]
         public string AccountId
         {
-            get => this.InternalAccount.Id;
-            set => this.InternalAccount.Id = value;
+            get => this.InternalAccount?.Id;
+            set => this.InternalAccount = SetExpandableFieldId(value, this.InternalAccount);
         }
 
         [JsonIgnore]
         public Account Account
         {
-            get => this.InternalAccount.ExpandedObject;
-            set => this.InternalAccount.ExpandedObject = value;
+            get => this.InternalAccount?.ExpandedObject;
+            set => this.InternalAccount = SetExpandableFieldObject(value, this.InternalAccount);
         }
 
         [JsonProperty("account")]

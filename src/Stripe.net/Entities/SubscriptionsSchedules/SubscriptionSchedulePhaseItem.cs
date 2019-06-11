@@ -22,8 +22,8 @@ namespace Stripe
         [JsonIgnore]
         public string PlanId
         {
-            get => this.InternalPlan.Id;
-            set => this.InternalPlan.Id = value;
+            get => this.InternalPlan?.Id;
+            set => this.InternalPlan = SetExpandableFieldId(value, this.InternalPlan);
         }
 
         /// <summary>
@@ -32,8 +32,8 @@ namespace Stripe
         [JsonIgnore]
         public Plan Plan
         {
-            get => this.InternalPlan.ExpandedObject;
-            set => this.InternalPlan.ExpandedObject = value;
+            get => this.InternalPlan?.ExpandedObject;
+            set => this.InternalPlan = SetExpandableFieldObject(value, this.InternalPlan);
         }
 
         [JsonProperty("plan")]

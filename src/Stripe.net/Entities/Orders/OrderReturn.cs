@@ -47,15 +47,15 @@ namespace Stripe
         [JsonIgnore]
         public string OrderId
         {
-            get => this.InternalOrder.Id;
-            set => this.InternalOrder.Id = value;
+            get => this.InternalOrder?.Id;
+            set => this.InternalOrder = SetExpandableFieldId(value, this.InternalOrder);
         }
 
         [JsonIgnore]
         public Order Order
         {
-            get => this.InternalOrder.ExpandedObject;
-            set => this.InternalOrder.ExpandedObject = value;
+            get => this.InternalOrder?.ExpandedObject;
+            set => this.InternalOrder = SetExpandableFieldObject(value, this.InternalOrder);
         }
 
         [JsonProperty("order")]
@@ -75,8 +75,8 @@ namespace Stripe
         [JsonIgnore]
         public Refund Refund
         {
-            get => this.InternalRefund.ExpandedObject;
-            set => this.InternalRefund.ExpandedObject = value;
+            get => this.InternalRefund?.ExpandedObject;
+            set => this.InternalRefund = SetExpandableFieldObject(value, this.InternalRefund);
         }
 
         [JsonProperty("refund")]

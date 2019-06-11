@@ -23,15 +23,15 @@ namespace Stripe
         [JsonIgnore]
         public string CustomerId
         {
-            get => this.InternalCustomer.Id;
-            set => this.InternalCustomer.Id = value;
+            get => this.InternalCustomer?.Id;
+            set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
         }
 
         [JsonIgnore]
         public Customer Customer
         {
-            get => this.InternalCustomer.ExpandedObject;
-            set => this.InternalCustomer.ExpandedObject = value;
+            get => this.InternalCustomer?.ExpandedObject;
+            set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
         [JsonProperty("customer")]
@@ -59,15 +59,15 @@ namespace Stripe
         [JsonIgnore]
         public string InvoiceId
         {
-            get => this.InternalInvoice.Id;
-            set => this.InternalInvoice.Id = value;
+            get => this.InternalInvoice?.Id;
+            set => this.InternalInvoice = SetExpandableFieldId(value, this.InternalInvoice);
         }
 
         [JsonIgnore]
         public Invoice Invoice
         {
-            get => this.InternalInvoice.ExpandedObject;
-            set => this.InternalInvoice.ExpandedObject = value;
+            get => this.InternalInvoice?.ExpandedObject;
+            set => this.InternalInvoice = SetExpandableFieldObject(value, this.InternalInvoice);
         }
 
         [JsonProperty("invoice")]
@@ -97,15 +97,15 @@ namespace Stripe
         [JsonIgnore]
         public string SubscriptionId
         {
-            get => this.InternalSubscription.Id;
-            set => this.InternalSubscription.Id = value;
+            get => this.InternalSubscription?.Id;
+            set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
         }
 
         [JsonIgnore]
         public Subscription Subscription
         {
-            get => this.InternalSubscription.ExpandedObject;
-            set => this.InternalSubscription.ExpandedObject = value;
+            get => this.InternalSubscription?.ExpandedObject;
+            set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
         }
 
         [JsonProperty("subscription")]

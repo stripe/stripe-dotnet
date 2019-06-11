@@ -27,15 +27,15 @@ namespace Stripe
         [JsonIgnore]
         public string BalanceTransactionId
         {
-            get => this.InternalBalanceTransaction.Id;
-            set => this.InternalBalanceTransaction.Id = value;
+            get => this.InternalBalanceTransaction?.Id;
+            set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
         }
 
         [JsonIgnore]
         public BalanceTransaction BalanceTransaction
         {
-            get => this.InternalBalanceTransaction.ExpandedObject;
-            set => this.InternalBalanceTransaction.ExpandedObject = value;
+            get => this.InternalBalanceTransaction?.ExpandedObject;
+            set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
         }
 
         [JsonProperty("balance_transaction")]
@@ -57,15 +57,15 @@ namespace Stripe
         [JsonIgnore]
         public string DestinationId
         {
-            get => this.InternalDestination.Id;
-            set => this.InternalDestination.Id = value;
+            get => this.InternalDestination?.Id;
+            set => this.InternalDestination = SetExpandableFieldId(value, this.InternalDestination);
         }
 
         [JsonIgnore]
         public IExternalAccount Destination
         {
-            get => this.InternalDestination.ExpandedObject;
-            set => this.InternalDestination.ExpandedObject = value;
+            get => this.InternalDestination?.ExpandedObject;
+            set => this.InternalDestination = SetExpandableFieldObject(value, this.InternalDestination);
         }
 
         [JsonProperty("destination")]
@@ -81,15 +81,15 @@ namespace Stripe
         [JsonIgnore]
         public string FailureBalanceTransactionId
         {
-            get => this.InternalFailureBalanceTransaction.Id;
-            set => this.InternalFailureBalanceTransaction.Id = value;
+            get => this.InternalFailureBalanceTransaction?.Id;
+            set => this.InternalFailureBalanceTransaction = SetExpandableFieldId(value, this.InternalFailureBalanceTransaction);
         }
 
         [JsonIgnore]
         public BalanceTransaction FailureBalanceTransaction
         {
-            get => this.InternalFailureBalanceTransaction.ExpandedObject;
-            set => this.InternalFailureBalanceTransaction.ExpandedObject = value;
+            get => this.InternalFailureBalanceTransaction?.ExpandedObject;
+            set => this.InternalFailureBalanceTransaction = SetExpandableFieldObject(value, this.InternalFailureBalanceTransaction);
         }
 
         [JsonProperty("failure_balance_transaction")]

@@ -15,8 +15,8 @@ namespace Stripe
         [JsonIgnore]
         public string IconId
         {
-            get => this.InternalIcon.Id;
-            set => this.InternalIcon.Id = value;
+            get => this.InternalIcon?.Id;
+            set => this.InternalIcon = SetExpandableFieldId(value, this.InternalIcon);
         }
 
         /// <summary>
@@ -25,8 +25,8 @@ namespace Stripe
         [JsonIgnore]
         public File Icon
         {
-            get => this.InternalIcon.ExpandedObject;
-            set => this.InternalIcon.ExpandedObject = value;
+            get => this.InternalIcon?.ExpandedObject;
+            set => this.InternalIcon = SetExpandableFieldObject(value, this.InternalIcon);
         }
 
         [JsonProperty("icon")]
@@ -45,8 +45,8 @@ namespace Stripe
         [JsonIgnore]
         public string LogoId
         {
-            get => this.InternalLogo.Id;
-            set => this.InternalLogo.Id = value;
+            get => this.InternalLogo?.Id;
+            set => this.InternalLogo = SetExpandableFieldId(value, this.InternalLogo);
         }
 
         /// <summary>
@@ -56,8 +56,8 @@ namespace Stripe
         [JsonIgnore]
         public File Logo
         {
-            get => this.InternalLogo.ExpandedObject;
-            set => this.InternalLogo.ExpandedObject = value;
+            get => this.InternalLogo?.ExpandedObject;
+            set => this.InternalLogo = SetExpandableFieldObject(value, this.InternalLogo);
         }
 
         [JsonProperty("logo")]
