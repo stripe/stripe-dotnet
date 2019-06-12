@@ -122,6 +122,30 @@ namespace StripeTests
                     },
                     want = "any_of[foo]=bar"
                 },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        AnyOf = null, // AnyOf itself is null
+                    },
+                    want = string.Empty
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        AnyOf = (string)null, // AnyOf is not null but AnyOf.Value is null
+                    },
+                    want = string.Empty
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        AnyOf = (Dictionary<string, string>)null, // same as above, AnyOf.Value is null
+                    },
+                    want = string.Empty
+                },
 
                 // Array
                 new
