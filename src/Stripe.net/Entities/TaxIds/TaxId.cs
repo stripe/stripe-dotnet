@@ -40,15 +40,15 @@ namespace Stripe
         [JsonIgnore]
         public string CustomerId
         {
-            get => this.InternalCustomer.Id;
-            set => this.InternalCustomer.Id = value;
+            get => this.InternalCustomer?.Id;
+            set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
         }
 
         [JsonIgnore]
         public Customer Customer
         {
-            get => this.InternalCustomer.ExpandedObject;
-            set => this.InternalCustomer.ExpandedObject = value;
+            get => this.InternalCustomer?.ExpandedObject;
+            set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
         }
 
         [JsonProperty("customer")]

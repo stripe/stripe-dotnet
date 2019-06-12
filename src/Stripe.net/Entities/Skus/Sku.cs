@@ -88,15 +88,15 @@ namespace Stripe
         [JsonIgnore]
         public string ProductId
         {
-            get => this.InternalProduct.Id;
-            set => this.InternalProduct.Id = value;
+            get => this.InternalProduct?.Id;
+            set => this.InternalProduct = SetExpandableFieldId(value, this.InternalProduct);
         }
 
         [JsonIgnore]
         public Product Product
         {
-            get => this.InternalProduct.ExpandedObject;
-            set => this.InternalProduct.ExpandedObject = value;
+            get => this.InternalProduct?.ExpandedObject;
+            set => this.InternalProduct = SetExpandableFieldObject(value, this.InternalProduct);
         }
 
         [JsonProperty("product")]

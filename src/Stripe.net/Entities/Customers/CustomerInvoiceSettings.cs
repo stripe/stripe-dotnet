@@ -20,15 +20,15 @@ namespace Stripe
         [JsonIgnore]
         public string DefaultPaymentMethodId
         {
-            get => this.InternalDefaultPaymentMethod.Id;
-            set => this.InternalDefaultPaymentMethod.Id = value;
+            get => this.InternalDefaultPaymentMethod?.Id;
+            set => this.InternalDefaultPaymentMethod = SetExpandableFieldId(value, this.InternalDefaultPaymentMethod);
         }
 
         [JsonIgnore]
         public PaymentMethod DefaultPaymentMethod
         {
-            get => this.InternalDefaultPaymentMethod.ExpandedObject;
-            set => this.InternalDefaultPaymentMethod.ExpandedObject = value;
+            get => this.InternalDefaultPaymentMethod?.ExpandedObject;
+            set => this.InternalDefaultPaymentMethod = SetExpandableFieldObject(value, this.InternalDefaultPaymentMethod);
         }
 
         [JsonProperty("default_payment_method")]

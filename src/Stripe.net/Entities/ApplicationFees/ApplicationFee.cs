@@ -16,15 +16,15 @@ namespace Stripe
         [JsonIgnore]
         public string AccountId
         {
-            get => this.InternalAccount.Id;
-            set => this.InternalAccount.Id = value;
+            get => this.InternalAccount?.Id;
+            set => this.InternalAccount = SetExpandableFieldId(value, this.InternalAccount);
         }
 
         [JsonIgnore]
         public Account Account
         {
-            get => this.InternalAccount.ExpandedObject;
-            set => this.InternalAccount.ExpandedObject = value;
+            get => this.InternalAccount?.ExpandedObject;
+            set => this.InternalAccount = SetExpandableFieldObject(value, this.InternalAccount);
         }
 
         [JsonProperty("account")]
@@ -42,15 +42,15 @@ namespace Stripe
         [JsonIgnore]
         public string ApplicationId
         {
-            get => this.InternalApplication.Id;
-            set => this.InternalApplication.Id = value;
+            get => this.InternalApplication?.Id;
+            set => this.InternalApplication = SetExpandableFieldId(value, this.InternalApplication);
         }
 
         [JsonIgnore]
         public Application Application
         {
-            get => this.InternalApplication.ExpandedObject;
-            set => this.InternalApplication.ExpandedObject = value;
+            get => this.InternalApplication?.ExpandedObject;
+            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
         }
 
         [JsonProperty("application")]
@@ -62,15 +62,15 @@ namespace Stripe
         [JsonIgnore]
         public string BalanceTransactionId
         {
-            get => this.InternalBalanceTransaction.Id;
-            set => this.InternalBalanceTransaction.Id = value;
+            get => this.InternalBalanceTransaction?.Id;
+            set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
         }
 
         [JsonIgnore]
         public BalanceTransaction BalanceTransaction
         {
-            get => this.InternalBalanceTransaction.ExpandedObject;
-            set => this.InternalBalanceTransaction.ExpandedObject = value;
+            get => this.InternalBalanceTransaction?.ExpandedObject;
+            set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
         }
 
         [JsonProperty("balance_transaction")]
@@ -82,15 +82,15 @@ namespace Stripe
         [JsonIgnore]
         public string ChargeId
         {
-            get => this.InternalCharge.Id;
-            set => this.InternalCharge.Id = value;
+            get => this.InternalCharge?.Id;
+            set => this.InternalCharge = SetExpandableFieldId(value, this.InternalCharge);
         }
 
         [JsonIgnore]
         public Charge Charge
         {
-            get => this.InternalCharge.ExpandedObject;
-            set => this.InternalCharge.ExpandedObject = value;
+            get => this.InternalCharge?.ExpandedObject;
+            set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
         }
 
         [JsonProperty("charge")]
@@ -112,15 +112,15 @@ namespace Stripe
         [JsonIgnore]
         public string OriginatingTransactionId
         {
-            get => this.InternalOriginatingTransaction.Id;
-            set => this.InternalOriginatingTransaction.Id = value;
+            get => this.InternalOriginatingTransaction?.Id;
+            set => this.InternalOriginatingTransaction = SetExpandableFieldId(value, this.InternalOriginatingTransaction);
         }
 
         [JsonIgnore]
         public Charge OriginatingTransaction
         {
-            get => this.InternalOriginatingTransaction.ExpandedObject;
-            set => this.InternalOriginatingTransaction.ExpandedObject = value;
+            get => this.InternalOriginatingTransaction?.ExpandedObject;
+            set => this.InternalOriginatingTransaction = SetExpandableFieldObject(value, this.InternalOriginatingTransaction);
         }
 
         [JsonProperty("originating_transaction")]

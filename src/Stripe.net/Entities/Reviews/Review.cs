@@ -16,15 +16,15 @@ namespace Stripe
         [JsonIgnore]
         public string ChargeId
         {
-            get => this.InternalCharge.Id;
-            set => this.InternalCharge.Id = value;
+            get => this.InternalCharge?.Id;
+            set => this.InternalCharge = SetExpandableFieldId(value, this.InternalCharge);
         }
 
         [JsonIgnore]
         public Charge Charge
         {
-            get => this.InternalCharge.ExpandedObject;
-            set => this.InternalCharge.ExpandedObject = value;
+            get => this.InternalCharge?.ExpandedObject;
+            set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
         }
 
         [JsonProperty("charge")]
@@ -46,15 +46,15 @@ namespace Stripe
         [JsonIgnore]
         public string PaymentIntentId
         {
-            get => this.InternalPaymentIntent.Id;
-            set => this.InternalPaymentIntent.Id = value;
+            get => this.InternalPaymentIntent?.Id;
+            set => this.InternalPaymentIntent = SetExpandableFieldId(value, this.InternalPaymentIntent);
         }
 
         [JsonIgnore]
         public PaymentIntent PaymentIntent
         {
-            get => this.InternalPaymentIntent.ExpandedObject;
-            set => this.InternalPaymentIntent.ExpandedObject = value;
+            get => this.InternalPaymentIntent?.ExpandedObject;
+            set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
         }
 
         [JsonProperty("payment_intent")]

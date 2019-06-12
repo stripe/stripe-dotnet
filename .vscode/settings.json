@@ -3,6 +3,7 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "window.title": "${rootName}${separator}${activeEditorMedium}",
   "[csharp]": {
     "editor.detectIndentation": false,
     "editor.insertSpaces": true,

@@ -57,6 +57,60 @@ namespace Stripe
                 StripeConfiguration.SerializerSettings);
         }
 
+        /// <summary>
+        /// Sets a string ID on an expandable field. If the expandable field does not exist,
+        /// a new one is initialized. If the expandable field exists and already contains an
+        /// expanded object, and the ID within the expanded object does not match the new string ID,
+        /// expanded object is discarded.
+        /// </summary>
+        /// <typeparam name="T">Type of the expanded object.</typeparam>
+        /// <param name="id">The string ID.</param>
+        /// <param name="expandable">The expandable field.</param>
+        /// <returns>The expandable field with its ID set to the provided string ID.</returns>
+        protected static ExpandableField<T> SetExpandableFieldId<T>(
+            string id,
+            ExpandableField<T> expandable)
+            where T : IHasId
+        {
+            if (expandable == null)
+            {
+                expandable = new ExpandableField<T>();
+                expandable.Id = id;
+            }
+            else if (expandable.Id != id)
+            {
+                expandable.ExpandedObject = default(T);
+                expandable.Id = id;
+            }
+
+            return expandable;
+        }
+
+        /// <summary>
+        /// Sets an expanded object on an expandable field. If the expandable field does not exist,
+        /// a new one is initialized.
+        /// </summary>
+        /// <typeparam name="T">Type of the expanded object.</typeparam>
+        /// <param name="obj">The expanded object.</param>
+        /// <param name="expandable">The expandable field.</param>
+        /// <returns>
+        /// The expandable field with its expanded object set to the provided object.
+        /// </returns>
+        protected static ExpandableField<T> SetExpandableFieldObject<T>(
+            T obj,
+            ExpandableField<T> expandable)
+            where T : IHasId
+        {
+            if (expandable == null)
+            {
+                expandable = new ExpandableField<T>();
+            }
+
+            expandable.ExpandedObject = obj;
+
+            return expandable;
+        }
+
         private object GetIdString()
         {
             foreach (var property in this.GetType().GetTypeInfo().DeclaredProperties)

@@ -12,15 +12,15 @@ namespace Stripe.Issuing
         [JsonIgnore]
         public string UncategorizedFileId
         {
-            get => this.InternalUncategorizedFile.Id;
-            set => this.InternalUncategorizedFile.Id = value;
+            get => this.InternalUncategorizedFile?.Id;
+            set => this.InternalUncategorizedFile = SetExpandableFieldId(value, this.InternalUncategorizedFile);
         }
 
         [JsonIgnore]
         public File UncategorizedFile
         {
-            get => this.InternalUncategorizedFile.ExpandedObject;
-            set => this.InternalUncategorizedFile.ExpandedObject = value;
+            get => this.InternalUncategorizedFile?.ExpandedObject;
+            set => this.InternalUncategorizedFile = SetExpandableFieldObject(value, this.InternalUncategorizedFile);
         }
 
         [JsonProperty("uncategorized_file")]

@@ -37,15 +37,15 @@ namespace Stripe
         [JsonIgnore]
         public string RuleId
         {
-            get => this.InternalRule.Id;
-            set => this.InternalRule.Id = value;
+            get => this.InternalRule?.Id;
+            set => this.InternalRule = SetExpandableFieldId(value, this.InternalRule);
         }
 
         [JsonIgnore]
         public OutcomeRule Rule
         {
-            get => this.InternalRule.ExpandedObject;
-            set => this.InternalRule.ExpandedObject = value;
+            get => this.InternalRule?.ExpandedObject;
+            set => this.InternalRule = SetExpandableFieldObject(value, this.InternalRule);
         }
 
         [JsonProperty("rule")]

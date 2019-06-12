@@ -24,8 +24,8 @@ namespace Stripe
         [JsonIgnore]
         public string CouponId
         {
-            get => this.InternalCoupon.Id;
-            set => this.InternalCoupon.Id = value;
+            get => this.InternalCoupon?.Id;
+            set => this.InternalCoupon = SetExpandableFieldId(value, this.InternalCoupon);
         }
 
         /// <summary>
@@ -35,8 +35,8 @@ namespace Stripe
         [JsonIgnore]
         public Coupon Coupon
         {
-            get => this.InternalCoupon.ExpandedObject;
-            set => this.InternalCoupon.ExpandedObject = value;
+            get => this.InternalCoupon?.ExpandedObject;
+            set => this.InternalCoupon = SetExpandableFieldObject(value, this.InternalCoupon);
         }
 
         [JsonProperty("coupon")]

@@ -20,15 +20,15 @@ namespace Stripe
         [JsonIgnore]
         public string BalanceTransactionId
         {
-            get => this.InternalBalanceTransaction.Id;
-            set => this.InternalBalanceTransaction.Id = value;
+            get => this.InternalBalanceTransaction?.Id;
+            set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
         }
 
         [JsonIgnore]
         public BalanceTransaction BalanceTransaction
         {
-            get => this.InternalBalanceTransaction.ExpandedObject;
-            set => this.InternalBalanceTransaction.ExpandedObject = value;
+            get => this.InternalBalanceTransaction?.ExpandedObject;
+            set => this.InternalBalanceTransaction = SetExpandableFieldObject(value, this.InternalBalanceTransaction);
         }
 
         [JsonProperty("balance_transaction")]
@@ -40,15 +40,15 @@ namespace Stripe
         [JsonIgnore]
         public string ChargeId
         {
-            get => this.InternalCharge.Id;
-            set => this.InternalCharge.Id = value;
+            get => this.InternalCharge?.Id;
+            set => this.InternalCharge = SetExpandableFieldId(value, this.InternalCharge);
         }
 
         [JsonIgnore]
         public Charge Charge
         {
-            get => this.InternalCharge.ExpandedObject;
-            set => this.InternalCharge.ExpandedObject = value;
+            get => this.InternalCharge?.ExpandedObject;
+            set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
         }
 
         [JsonProperty("charge")]
@@ -70,15 +70,15 @@ namespace Stripe
         [JsonIgnore]
         public string FailureBalanceTransactionId
         {
-            get => this.InternalFailureBalanceTransaction.Id;
-            set => this.InternalFailureBalanceTransaction.Id = value;
+            get => this.InternalFailureBalanceTransaction?.Id;
+            set => this.InternalFailureBalanceTransaction = SetExpandableFieldId(value, this.InternalFailureBalanceTransaction);
         }
 
         [JsonIgnore]
         public BalanceTransaction FailureBalanceTransaction
         {
-            get => this.InternalFailureBalanceTransaction.ExpandedObject;
-            set => this.InternalFailureBalanceTransaction.ExpandedObject = value;
+            get => this.InternalFailureBalanceTransaction?.ExpandedObject;
+            set => this.InternalFailureBalanceTransaction = SetExpandableFieldObject(value, this.InternalFailureBalanceTransaction);
         }
 
         [JsonProperty("failure_balance_transaction")]
@@ -102,15 +102,15 @@ namespace Stripe
         [JsonIgnore]
         public string SourceTransferReversalId
         {
-            get => this.InternalSourceTransferReversal.Id;
-            set => this.InternalSourceTransferReversal.Id = value;
+            get => this.InternalSourceTransferReversal?.Id;
+            set => this.InternalSourceTransferReversal = SetExpandableFieldId(value, this.InternalSourceTransferReversal);
         }
 
         [JsonIgnore]
         public TransferReversal SourceTransferReversal
         {
-            get => this.InternalSourceTransferReversal.ExpandedObject;
-            set => this.InternalSourceTransferReversal.ExpandedObject = value;
+            get => this.InternalSourceTransferReversal?.ExpandedObject;
+            set => this.InternalSourceTransferReversal = SetExpandableFieldObject(value, this.InternalSourceTransferReversal);
         }
 
         [JsonProperty("source_transfer_reversal")]
@@ -125,15 +125,15 @@ namespace Stripe
         [JsonIgnore]
         public string TransferReversalId
         {
-            get => this.InternalTransferReversal.Id;
-            set => this.InternalTransferReversal.Id = value;
+            get => this.InternalTransferReversal?.Id;
+            set => this.InternalTransferReversal = SetExpandableFieldId(value, this.InternalTransferReversal);
         }
 
         [JsonIgnore]
         public TransferReversal TransferReversal
         {
-            get => this.InternalTransferReversal.ExpandedObject;
-            set => this.InternalTransferReversal.ExpandedObject = value;
+            get => this.InternalTransferReversal?.ExpandedObject;
+            set => this.InternalTransferReversal = SetExpandableFieldObject(value, this.InternalTransferReversal);
         }
 
         [JsonProperty("transfer_reversal")]

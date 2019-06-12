@@ -48,8 +48,8 @@ namespace Stripe
         [JsonIgnore]
         public string FileId
         {
-            get => this.InternalFile.Id;
-            set => this.InternalFile.Id = value;
+            get => this.InternalFile?.Id;
+            set => this.InternalFile = SetExpandableFieldId(value, this.InternalFile);
         }
 
         /// <summary>
@@ -58,8 +58,8 @@ namespace Stripe
         [JsonIgnore]
         public File File
         {
-            get => this.InternalFile.ExpandedObject;
-            set => this.InternalFile.ExpandedObject = value;
+            get => this.InternalFile?.ExpandedObject;
+            set => this.InternalFile = SetExpandableFieldObject(value, this.InternalFile);
         }
 
         [JsonProperty("file")]

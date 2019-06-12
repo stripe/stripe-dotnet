@@ -51,15 +51,15 @@ namespace Stripe.Issuing
         [JsonIgnore]
         public string ReplacementForId
         {
-            get => this.InternalReplacementFor.Id;
-            set => this.InternalReplacementFor.Id = value;
+            get => this.InternalReplacementFor?.Id;
+            set => this.InternalReplacementFor = SetExpandableFieldId(value, this.InternalReplacementFor);
         }
 
         [JsonIgnore]
         public Card ReplacementFor
         {
-            get => this.InternalReplacementFor.ExpandedObject;
-            set => this.InternalReplacementFor.ExpandedObject = value;
+            get => this.InternalReplacementFor?.ExpandedObject;
+            set => this.InternalReplacementFor = SetExpandableFieldObject(value, this.InternalReplacementFor);
         }
 
         [JsonProperty("replacement_for")]

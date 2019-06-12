@@ -12,15 +12,15 @@ namespace Stripe
         [JsonIgnore]
         public string DestinationId
         {
-            get => this.InternalDestination.Id;
-            set => this.InternalDestination.Id = value;
+            get => this.InternalDestination?.Id;
+            set => this.InternalDestination = SetExpandableFieldId(value, this.InternalDestination);
         }
 
         [JsonIgnore]
         public Account Destination
         {
-            get => this.InternalDestination.ExpandedObject;
-            set => this.InternalDestination.ExpandedObject = value;
+            get => this.InternalDestination?.ExpandedObject;
+            set => this.InternalDestination = SetExpandableFieldObject(value, this.InternalDestination);
         }
 
         [JsonProperty("destination")]

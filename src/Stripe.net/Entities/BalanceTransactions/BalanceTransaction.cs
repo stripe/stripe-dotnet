@@ -46,15 +46,15 @@ namespace Stripe
         [JsonIgnore]
         public string SourceId
         {
-            get => this.InternalSource.Id;
-            set => this.InternalSource.Id = value;
+            get => this.InternalSource?.Id;
+            set => this.InternalSource = SetExpandableFieldId(value, this.InternalSource);
         }
 
         [JsonIgnore]
         public IBalanceTransactionSource Source
         {
-            get => this.InternalSource.ExpandedObject;
-            set => this.InternalSource.ExpandedObject = value;
+            get => this.InternalSource?.ExpandedObject;
+            set => this.InternalSource = SetExpandableFieldObject(value, this.InternalSource);
         }
 
         [JsonProperty("source")]
