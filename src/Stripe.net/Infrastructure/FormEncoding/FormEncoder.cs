@@ -101,7 +101,7 @@ namespace Stripe.Infrastructure.FormEncoding
                     break;
 
                 case IAnyOf anyOf:
-                    flatParams = FlattenParamsValue(anyOf.Value, keyPrefix);
+                    flatParams = FlattenParamsAnyOf(anyOf, keyPrefix);
                     break;
 
                 case INestedOptions options:
@@ -140,6 +140,32 @@ namespace Stripe.Infrastructure.FormEncoding
                         string.Format(CultureInfo.InvariantCulture, "{0}", value));
                     break;
             }
+
+            return flatParams;
+        }
+
+        /// <summary>
+        /// Returns a list of parameters for a given <see cref="IAnyOf"/> instance.
+        /// </summary>
+        /// <param name="anyOf">The instance for which to create the list of parameters.</param>
+        /// <param name="keyPrefix">The key under which new keys should be nested, if any.</param>
+        /// <returns>The list of parameters.</returns>
+        private static List<KeyValuePair<string, object>> FlattenParamsAnyOf(
+            IAnyOf anyOf,
+            string keyPrefix)
+        {
+            List<KeyValuePair<string, object>> flatParams = new List<KeyValuePair<string, object>>();
+
+            // If the value contained within the `AnyOf` instance is null, we don't encode it in the
+            // request. We do this to mimic the behavior of regular (non-`AnyOf`) properties in
+            // options classes, which are skipped by the encoder when they have a null value
+            // because it's the default value (cf. FlattenParamsOptions).
+            if (anyOf.Value == null)
+            {
+                return flatParams;
+            }
+
+            flatParams.AddRange(FlattenParamsValue(anyOf.Value, keyPrefix));
 
             return flatParams;
         }

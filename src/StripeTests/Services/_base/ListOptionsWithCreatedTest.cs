@@ -37,7 +37,7 @@ namespace StripeTests
                 Created = (DateTime?)null,
             };
 
-            Assert.Equal("created=", FormEncoder.CreateQueryString(options));
+            Assert.Equal(string.Empty, FormEncoder.CreateQueryString(options));
         }
 
         [Fact]
