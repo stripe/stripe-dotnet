@@ -63,7 +63,7 @@ namespace Stripe
         public List<string> PreferredLocales { get; set; }
 
         [JsonProperty("shipping")]
-        public ShippingOptions Shipping { get; set; }
+        public AnyOf<ShippingOptions, EmptyValue> Shipping { get; set; }
 
         /// <summary>
         /// A Token’s or a Source’s ID, as returned by
