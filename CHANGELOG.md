@@ -1,5 +1,9 @@
 # Changelog
 
+## 27.1.3 - 2019-06-12
+* [#1660](https://github.com/stripe/stripe-dotnet/pull/1660) Fix possible NRE in expandable field accessors
+* [#1661](https://github.com/stripe/stripe-dotnet/pull/1661) Fix handling of null values with `AnyOf`
+
 ## 27.1.2 - 2019-06-10
 * [#1658](https://github.com/stripe/stripe-dotnet/pull/1658) Add `ConfigureAwait(false)` to all async calls
 
