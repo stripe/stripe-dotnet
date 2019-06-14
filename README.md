@@ -112,7 +112,7 @@ go get -u github.com/stripe/stripe-mock
 stripe-mock
 ```
 
-Run all tests:
+Run all tests from the `src/StripeTests` directory:
 
 ```sh
 dotnet test
