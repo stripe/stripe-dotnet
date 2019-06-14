@@ -1,5 +1,9 @@
 # Changelog
 
+## 27.2.0 - 2019-06-14
+* [#1664](https://github.com/stripe/stripe-dotnet/pull/1664) Add support for `MerchantAmount` `MerchantCurrency` to Issuing `Transaction`
+* [#1665](https://github.com/stripe/stripe-dotnet/pull/1665) Add support for `SubmitType` to Checkout `Session`
+
 ## 27.1.3 - 2019-06-12
 * [#1660](https://github.com/stripe/stripe-dotnet/pull/1660) Fix possible NRE in expandable field accessors
 * [#1661](https://github.com/stripe/stripe-dotnet/pull/1661) Fix handling of null values with `AnyOf`
