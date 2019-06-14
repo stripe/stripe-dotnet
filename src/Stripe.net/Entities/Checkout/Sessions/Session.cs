@@ -148,6 +148,17 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
+        /// Describes the type of transaction being performed by Checkout in
+        /// order to customize relevant text on the page, such as the Submit
+        /// button. <c>submit_type</c> can only be specified on checkout
+        /// sessions using line items or a SKU, and not checkout sessions for
+        /// subscriptions. Supported values are <c>auto</c>, <c>book</c>,
+        /// <c>donate</c>, or <c>pay</c>.
+        /// </summary>
+        [JsonProperty("submit_type")]
+        public string SubmitType { get; set; }
+
+        /// <summary>
         /// The URL the customer will be directed to after a successful payment.
         /// </summary>
         [JsonProperty("success_url")]
