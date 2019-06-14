@@ -3,7 +3,7 @@
 [Oo]bj/
 *.nupkg
 
-# user 
+# user
 *.user
 *.userprefs
 .vs

@@ -126,6 +126,12 @@ namespace Stripe.Issuing
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        [JsonProperty("merchant_amount")]
+        public long MerchantAmount { get; set; }
+
+        [JsonProperty("merchant_currency")]
+        public string MerchantCurrency { get; set; }
+
         [JsonProperty("merchant_data")]
         public MerchantData MerchantData { get; set; }
 
