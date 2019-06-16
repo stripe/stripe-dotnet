@@ -25,6 +25,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
+            // TODO: Fix stripe-mock to expand customer balance transaction
             string[] expansions =
             {
               "customer",
@@ -32,7 +33,7 @@ namespace StripeTests
               "refund",
             };
 
-            string json = this.GetFixture("/v1/credit_notes/cn_123", expansions);
+            string json = this.GetFixture("/v1/credit_notes/cn_123456", expansions);
             var creditNote = JsonConvert.DeserializeObject<CreditNote>(json);
             Assert.NotNull(creditNote);
             Assert.IsType<CreditNote>(creditNote);
