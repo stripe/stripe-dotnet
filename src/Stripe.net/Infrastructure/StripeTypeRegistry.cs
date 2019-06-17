@@ -28,6 +28,7 @@ namespace Stripe.Infrastructure
             { "coupon", typeof(Coupon) },
             { "credit_note", typeof(CreditNote) },
             { "customer", typeof(Customer) },
+            { "customer_balance_transaction", typeof(CustomerBalanceTransaction) },
             { "discount", typeof(Discount) },
             { "dispute", typeof(Dispute) },
             { "ephemeral_key", typeof(EphemeralKey) },
