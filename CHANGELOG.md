@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.3.0 - 2019-06-17
+* [#1606](https://github.com/stripe/stripe-dotnet/pull/1606) Add support for `CustomerBalanceTransaction` resource and APIs
+
 ## 27.2.0 - 2019-06-14
 * [#1664](https://github.com/stripe/stripe-dotnet/pull/1664) Add support for `MerchantAmount` `MerchantCurrency` to Issuing `Transaction`
 * [#1665](https://github.com/stripe/stripe-dotnet/pull/1665) Add support for `SubmitType` to Checkout `Session`
