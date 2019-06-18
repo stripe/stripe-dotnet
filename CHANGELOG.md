@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.3.1 - 2019-06-17
+* [#1668](https://github.com/stripe/stripe-dotnet/pull/1668) Manually enable TLS 1.2 for .NET Framework 4.5
+
 ## 27.3.0 - 2019-06-17
 * [#1606](https://github.com/stripe/stripe-dotnet/pull/1606) Add support for `CustomerBalanceTransaction` resource and APIs
 
