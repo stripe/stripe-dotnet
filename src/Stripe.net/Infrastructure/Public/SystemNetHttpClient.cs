@@ -55,6 +55,12 @@ namespace Stripe
             int maxNetworkRetries = 0,
             AppInfo appInfo = null)
         {
+#if NET45
+            // With .NET Framework 4.5, it's necessary to manually enable support for TLS 1.2.
+            ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol |
+                SecurityProtocolType.Tls12;
+#endif
+
             this.httpClient = httpClient ?? BuildDefaultSystemNetHttpClient();
             this.maxNetworkRetries = maxNetworkRetries;
             this.appInfo = appInfo;
