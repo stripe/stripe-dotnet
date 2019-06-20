@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.3.2 - 2019-06-20
+* [#1671](https://github.com/stripe/stripe-dotnet/pull/1671) Use own JSON encoding options for telemetry data
+
 ## 27.3.1 - 2019-06-17
 * [#1668](https://github.com/stripe/stripe-dotnet/pull/1668) Manually enable TLS 1.2 for .NET Framework 4.5
 
