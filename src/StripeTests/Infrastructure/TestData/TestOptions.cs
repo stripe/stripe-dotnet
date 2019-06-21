@@ -57,5 +57,18 @@ namespace StripeTests.Infrastructure.TestData
 
         [JsonProperty("string")]
         public string String { get; set; }
+
+        [JsonProperty("string_enum")]
+        public TestStringEnum StringEnum { get; set; }
+
+        public class TestStringEnum : StringEnum
+        {
+            public static readonly TestStringEnum Foo = new TestStringEnum("foo");
+
+            private TestStringEnum(string value)
+                : base(value)
+            {
+            }
+        }
     }
 }

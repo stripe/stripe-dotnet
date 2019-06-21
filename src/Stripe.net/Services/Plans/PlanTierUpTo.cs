@@ -1,14 +1,13 @@
 namespace Stripe
 {
-    using System.Runtime.Serialization;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PlanTierUpTo
+    public class PlanTierUpTo : StringEnum
     {
         /// <summary>Use this value to define a fallback tier.</summary>
-        [EnumMember(Value = "inf")]
-        Inf,
+        public static readonly PlanTierUpTo Inf = new PlanTierUpTo("inf");
+
+        private PlanTierUpTo(string value)
+            : base(value)
+        {
+        }
     }
 }
