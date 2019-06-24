@@ -415,6 +415,11 @@ namespace Stripe
         public const string OrderReturnCreated = "order_return.created";
 
         /// <summary>
+        /// Occurs whenever a payment is created.
+        /// </summary>
+        public const string PaymentCreated = "payment.created";
+
+        /// <summary>
         /// Occurs when a <see cref="PaymentIntent"/> has funds to be captured. Check the
         /// <see cref="PaymentIntent.AmountCapturable"/> property on the PaymentIntent to determine
         /// the amount that can be captured. You may capture the PaymentIntent with an
