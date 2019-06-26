@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.4.0 - 2019-06-26
+* [#1680](https://github.com/stripe/stripe-dotnet/pull/1680) Allow null API key in `StripeClient`
+
 ## 27.3.2 - 2019-06-20
 * [#1671](https://github.com/stripe/stripe-dotnet/pull/1671) Use own JSON encoding options for telemetry data
 
