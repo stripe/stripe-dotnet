@@ -93,6 +93,54 @@ namespace Stripe
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
+        #region Expandable DefaultPaymentMethod
+
+        /// <summary>
+        /// ID of the default payment method for the subscription schedule.
+        /// </summary>
+        [JsonIgnore]
+        public string DefaultPaymentMethodId
+        {
+            get => this.InternalDefaultPaymentMethod?.Id;
+            set => this.InternalDefaultPaymentMethod = SetExpandableFieldId(value, this.InternalDefaultPaymentMethod);
+        }
+
+        [JsonIgnore]
+        public PaymentMethod DefaultPaymentMethod
+        {
+            get => this.InternalDefaultPaymentMethod?.ExpandedObject;
+            set => this.InternalDefaultPaymentMethod = SetExpandableFieldObject(value, this.InternalDefaultPaymentMethod);
+        }
+
+        [JsonProperty("default_payment_method")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
+        internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
+        #endregion
+
+        #region Expandable DefaultSource
+
+        /// <summary>
+        /// ID of the default source for the subscription schedule.
+        /// </summary>
+        [JsonIgnore]
+        public string DefaultSourceId
+        {
+            get => this.InternalDefaultSource?.Id;
+            set => this.InternalDefaultSource = SetExpandableFieldId(value, this.InternalDefaultSource);
+        }
+
+        [JsonIgnore]
+        public IPaymentSource DefaultSource
+        {
+            get => this.InternalDefaultSource?.ExpandedObject;
+            set => this.InternalDefaultSource = SetExpandableFieldObject(value, this.InternalDefaultSource);
+        }
+
+        [JsonProperty("default_source")]
+        [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
+        internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
+        #endregion
+
         /// <summary>
         /// The schedule's default invoice settings.
         /// </summary>

@@ -24,6 +24,18 @@ namespace Stripe
         public SubscriptionBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
+        /// ID of the default payment method for the subscription schedule.
+        /// </summary>
+        [JsonProperty("default_payment_method")]
+        public string DefaultPaymentMethodId { get; set; }
+
+        /// <summary>
+        /// ID of the default source for the subscription schedule.
+        /// </summary>
+        [JsonProperty("default_source")]
+        public string DefaultSourceId { get; set; }
+
+        /// <summary>
         /// Define the default settings applied to invoices created by this subscription schedule.
         /// </summary>
         [JsonProperty("invoice_settings")]
