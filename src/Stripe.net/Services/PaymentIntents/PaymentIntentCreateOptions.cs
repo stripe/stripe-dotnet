@@ -20,6 +20,9 @@ namespace Stripe
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
 
+        [JsonProperty("setup_future_usage")]
+        public string SetupFutureUsage { get; set; }
+
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
     }

@@ -56,8 +56,19 @@ namespace Stripe
         [JsonProperty("payment_intent")]
         public PaymentIntent PaymentIntent { get; set; }
 
+        /// <summary>
+        /// The <see cref="Stripe.PaymentMethod"/> object for errors returned on a request
+        /// involving a <see cref="Stripe.PaymentMethod"/>.
+        /// </summary>
         [JsonProperty("payment_method")]
         public PaymentMethod PaymentMethod { get; set; }
+
+        /// <summary>
+        /// The <see cref="Stripe.SetupIntent"/> object for errors returned on a request
+        /// involving a <see cref="Stripe.SetupIntent"/>.
+        /// </summary>
+        [JsonProperty("setup_intent")]
+        public SetupIntent SetupIntent { get; set; }
 
         /// <summary>
         /// The source object for errors returned on a request involving a source.
