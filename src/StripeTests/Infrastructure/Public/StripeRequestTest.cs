@@ -117,5 +117,17 @@ namespace StripeTests
             Assert.Equal("acct_456", request.StripeHeaders["Stripe-Account"]);
             Assert.Null(request.Content);
         }
+
+        [Fact]
+        public void Ctor_ThrowsIfApiKeyIsNull()
+        {
+            var client = new StripeClient(null);
+            var requestOptions = new RequestOptions();
+
+            var exception = Assert.Throws<StripeException>(() =>
+                new StripeRequest(client, HttpMethod.Get, "/get", null, requestOptions));
+
+            Assert.Contains("No API key provided.", exception.Message);
+        }
     }
 }

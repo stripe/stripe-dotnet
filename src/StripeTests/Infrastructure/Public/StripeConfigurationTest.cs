@@ -11,7 +11,7 @@ namespace StripeTests
     public class StripeConfigurationTest : BaseStripeTest
     {
         [Fact]
-        public void StripeClient_Getter_CreatesNewStripeClientIfNull()
+        public void StripeClient_Getter_CreatesNewStripeClientIfNullAndApiKeyIsSet()
         {
             var origApiKey = StripeConfiguration.ApiKey;
             var origClientId = StripeConfiguration.ClientId;
@@ -35,7 +35,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void StripeClient_Getter_ThrowsIfClientIsNullAndApiKeyIsNull()
+        public void StripeClient_Getter_CreatesNewStripeClientIfNullAndApiKeyIsNull()
         {
             var origApiKey = StripeConfiguration.ApiKey;
 
@@ -44,9 +44,9 @@ namespace StripeTests
                 StripeConfiguration.ApiKey = null;
                 StripeConfiguration.StripeClient = null;
 
-                var exception = Assert.Throws<StripeException>(() =>
-                    StripeConfiguration.StripeClient);
-                Assert.Contains("No API key provided.", exception.Message);
+                var client = StripeConfiguration.StripeClient;
+                Assert.NotNull(client);
+                Assert.Null(client.ApiKey);
             }
             finally
             {
@@ -66,7 +66,7 @@ namespace StripeTests
 
                 var exception = Assert.Throws<StripeException>(() =>
                     StripeConfiguration.StripeClient);
-                Assert.Contains("No API key provided.", exception.Message);
+                Assert.Contains("Your API key is invalid, as it is an empty string.", exception.Message);
             }
             finally
             {

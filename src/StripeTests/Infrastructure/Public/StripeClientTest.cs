@@ -31,9 +31,11 @@ namespace StripeTests
         }
 
         [Fact]
-        public void Ctor_ThrowsIfApiKeyIsNull()
+        public void Ctor_DoesNotThrowsIfApiKeyIsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => new StripeClient(null));
+            var client = new StripeClient(null);
+            Assert.NotNull(client);
+            Assert.Null(client.ApiKey);
         }
 
         [Fact]
