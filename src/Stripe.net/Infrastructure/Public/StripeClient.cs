@@ -34,24 +34,19 @@ namespace Stripe
         /// if <c>apiKey</c> is empty or contains whitespace
         /// </exception>
         public StripeClient(
-            string apiKey,
+            string apiKey = null,
             string clientId = null,
             IHttpClient httpClient = null,
             string apiBase = null,
             string connectBase = null,
             string filesBase = null)
         {
-            if (apiKey == null)
-            {
-                throw new ArgumentNullException(nameof(apiKey));
-            }
-
-            if (apiKey.Length == 0)
+            if (apiKey != null && apiKey.Length == 0)
             {
                 throw new ArgumentException("API key cannot be the empty string.", nameof(apiKey));
             }
 
-            if (StringUtils.ContainsWhitespace(apiKey))
+            if (apiKey != null && StringUtils.ContainsWhitespace(apiKey))
             {
                 throw new ArgumentException("API key cannot contain whitespace.", nameof(apiKey));
             }

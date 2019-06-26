@@ -111,6 +111,17 @@ namespace Stripe
             RequestOptions requestOptions)
         {
             string apiKey = requestOptions?.ApiKey ?? client.ApiKey;
+
+            if (apiKey == null)
+            {
+                var message = "No API key provided. Set your API key using "
+                    + "`StripeConfiguration.ApiKey = \"<API-KEY>\"`. You can generate API keys "
+                    + "from the Stripe Dashboard. See "
+                    + "https://stripe.com/docs/api/authentication for details or contact support "
+                    + "at https://support.stripe.com/email if you have any questions.";
+                throw new StripeException(message);
+            }
+
             return new AuthenticationHeaderValue("Bearer", apiKey);
         }
 

@@ -5,6 +5,9 @@ namespace Stripe
     using System.Reflection;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET45 || NETSTANDARD2_0
+    using System.Configuration;
+#endif
 
     /// <summary>
     /// Global configuration class for Stripe.net settings.
@@ -43,9 +46,10 @@ namespace Stripe
             get
             {
 #if NET45 || NETSTANDARD2_0
-                if (string.IsNullOrEmpty(apiKey))
+                if (string.IsNullOrEmpty(apiKey) &&
+                    !string.IsNullOrEmpty(ConfigurationManager.AppSettings["StripeApiKey"]))
                 {
-                    apiKey = System.Configuration.ConfigurationManager.AppSettings["StripeApiKey"];
+                    apiKey = ConfigurationManager.AppSettings["StripeApiKey"];
                 }
 #endif
                 return apiKey;
@@ -76,9 +80,10 @@ namespace Stripe
             get
             {
 #if NET45 || NETSTANDARD2_0
-                if (string.IsNullOrEmpty(apiKey))
+                if (string.IsNullOrEmpty(apiKey) &&
+                    !string.IsNullOrEmpty(ConfigurationManager.AppSettings["StripeClientId"]))
                 {
-                    clientId = System.Configuration.ConfigurationManager.AppSettings["StripeClientId"];
+                    clientId = ConfigurationManager.AppSettings["StripeClientId"];
                 }
 #endif
                 return clientId;
@@ -213,17 +218,16 @@ namespace Stripe
 
         private static StripeClient BuildDefaultStripeClient()
         {
-            if (string.IsNullOrEmpty(ApiKey))
+            if (ApiKey != null && ApiKey.Length == 0)
             {
-                var message = "No API key provided. Set your API key using "
-                    + "`StripeConfiguration.ApiKey = \"<API-KEY>\"`. You can generate API keys "
-                    + "from the Stripe Dashboard. See "
+                var message = "Your API key is invalid, as it is an empty string. You can "
+                    + "double-check your API key from the Stripe Dashboard. See "
                     + "https://stripe.com/docs/api/authentication for details or contact support "
                     + "at https://support.stripe.com/email if you have any questions.";
                 throw new StripeException(message);
             }
 
-            if (StringUtils.ContainsWhitespace(ApiKey))
+            if (ApiKey != null && StringUtils.ContainsWhitespace(ApiKey))
             {
                 var message = "Your API key is invalid, as it contains whitespace. You can "
                     + "double-check your API key from the Stripe Dashboard. See "
