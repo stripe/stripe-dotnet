@@ -10,7 +10,7 @@ environment:
 deploy:
 - provider: NuGet
   api_key:
-    secure: 2+Gqp6u9nwfDPD/Fw6T5vcW4A9qsTSQNysK1f4ZXa7r+2a3/d/f1f2dZYWvwke7F
+    secure: uqwi9JhNCLRscQzn7n4Ugb5KzsIfcH2cnFC50kKLUII+RhP8NRyVG87qbHe9/KIz
   on:
     appveyor_repo_tag: true
 
