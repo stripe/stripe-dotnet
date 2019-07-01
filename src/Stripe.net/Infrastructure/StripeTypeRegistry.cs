@@ -65,6 +65,7 @@ namespace Stripe.Infrastructure
             { "reporting.report_run", typeof(Reporting.ReportRun) },
             { "reporting.report_type", typeof(Reporting.ReportType) },
             { "scheduled_query_run", typeof(Sigma.ScheduledQueryRun) },
+            { "setup_intent", typeof(SetupIntent) },
             { "sku", typeof(Sku) },
             { "source", typeof(Source) },
             { "source_mandate_notification", typeof(SourceMandateNotification) },

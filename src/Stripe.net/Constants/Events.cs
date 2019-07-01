@@ -579,6 +579,21 @@ namespace Stripe
         public const string ReviewOpened = "review.opened";
 
         /// <summary>
+        /// Occurs when a new SetupIntent is created.
+        /// </summary>
+        public const string SetupIntentCreated = "setup_intent.created";
+
+        /// <summary>
+        /// Occurs when a SetupIntent has failed the attempt to setup a payment method.
+        /// </summary>
+        public const string SetupIntentSetupFailed = "setup_intent.setup_failed";
+
+        /// <summary>
+        /// Occurs when a SetupIntent has successfully setup a payment method.
+        /// </summary>
+        public const string SetupIntentSucceeded = "setup_intent.succeeded";
+
+        /// <summary>
         /// Occurs whenever a Sigma scheduled query run finishes.
         /// </summary>
         public const string SigmaScheduleQueryRunCreated = "sigma.scheduled_query_run.created";
