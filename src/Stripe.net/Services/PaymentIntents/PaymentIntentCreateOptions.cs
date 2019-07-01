@@ -15,7 +15,7 @@ namespace Stripe
         public string ConfirmationMethod { get; set; }
 
         [JsonProperty("off_session")]
-        public string OffSession { get; set; }
+        public AnyOf<bool?, string> OffSession { get; set; }
 
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
