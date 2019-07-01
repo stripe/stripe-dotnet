@@ -11,7 +11,7 @@ The official [Stripe][stripe] .NET library, supporting .NET Standard 1.2+, .NET 
 Using the [.NET Core command-line interface (CLI) tools][dotnet-core-cli-tools]:
 
 ```sh
-dotnet install Stripe.net
+dotnet add package Stripe.net
 ```
 
 Using the [NuGet Command Line Interface (CLI)][nuget-cli]:
