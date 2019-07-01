@@ -1,5 +1,9 @@
 # Changelog
 
+## 27.5.0 - 2019-07-01
+* [#1682](https://github.com/stripe/stripe-dotnet/pull/1682) Add support for the `SetupIntent` resource and APIs
+* [#1684](https://github.com/stripe/stripe-dotnet/pull/1684) Add `DefaultSource` and `DefaultPaymentMethod` on `SubscriptionSchedule`
+
 ## 27.4.0 - 2019-06-26
 * [#1680](https://github.com/stripe/stripe-dotnet/pull/1680) Allow null API key in `StripeClient`
 
