@@ -14,7 +14,7 @@ namespace Stripe
         public string ClientSecret { get; set; }
 
         [JsonProperty("off_session")]
-        public string OffSession { get; set; }
+        public AnyOf<bool?, string> OffSession { get; set; }
 
         [JsonProperty("payment_method")]
         public string PaymentMethodId { get; set; }
