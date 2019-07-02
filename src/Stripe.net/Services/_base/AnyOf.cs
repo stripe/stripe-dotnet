@@ -16,10 +16,8 @@ namespace Stripe
         /// <returns>The type of the current <see cref="AnyOf"/> object.</returns>
         public abstract Type Type { get; }
 
-        public override bool Equals(object other) => this.Value.Equals(other);
-
-        public override int GetHashCode() => this.Value.GetHashCode();
-
+        /// <summary>Returns a string that represents the current object.</summary>
+        /// <returns>A string that represents the current object.</returns>
         public override string ToString() => this.Value.ToString();
     }
 
