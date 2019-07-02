@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.8.0 - 2019-07-02
+* [#1688](https://github.com/stripe/stripe-dotnet/pull/1688) Remove `Equals` and `GetHashCode` methods from `AnyOf`
+
 ## 27.7.0 - 2019-07-02
 * [#1679](https://github.com/stripe/stripe-dotnet/pull/1679) Add `CollectionMethod` for `Invoice` and `Subscription`
 
