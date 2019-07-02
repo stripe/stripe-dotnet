@@ -80,6 +80,23 @@ namespace Stripe
         public bool? SavePaymentMethod { get; set; }
 
         /// <summary>
+        /// Indicates that you intend to make future payments with this PaymentIntent’s payment
+        /// method.
+        /// If present, the payment method used with this PaymentIntent can be attached to a
+        /// Customer, even after the transaction completes.
+        /// Use <c>on_session</c> if you intend to only reuse the payment method when your customer
+        /// is present in your checkout flow. Use <c>off_session</c> if your customer may or may
+        /// not be in your checkout flow.
+        /// Stripe uses this to dynamically optimize your payment flow and comply with regional
+        /// legislation and network rules. For example, if your customer is impacted by SCA, using
+        /// <c>off_session</c> will ensure that they are authenticated while processing this
+        /// PaymentIntent. You will then be able to make later off-session payments for this
+        /// customer.
+        /// </summary>
+        [JsonProperty("setup_future_usage")]
+        public string SetupFutureUsage { get; set; }
+
+        /// <summary>
         /// Shipping information for this PaymentIntent.
         /// </summary>
         [JsonProperty("shipping")]
