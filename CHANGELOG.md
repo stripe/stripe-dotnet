@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.7.0 - 2019-07-02
+* [#1679](https://github.com/stripe/stripe-dotnet/pull/1679) Add `CollectionMethod` for `Invoice` and `Subscription`
+
 ## 27.6.0 - 2019-07-01
 * [#1686](https://github.com/stripe/stripe-dotnet/pull/1686) Allow `OffSession` to be a bool or a string on `PaymentIntent` creation and confirmation
 
