@@ -20,13 +20,22 @@ namespace Stripe
         public bool? AutoAdvance { get; set; }
 
         /// <summary>
-        /// One of <see cref="Billing" />. When charging automatically, Stripe will attempt to pay
-        /// this invoice using the default source attached to the customer. When sending an invoice,
-        /// Stripe will email this invoice to the customer with payment instructions. Defaults to
-        /// <c>charge_automatically</c>.
+        /// This field has been renamed to collection_method and will be removed
+        /// in a future API version.
         /// </summary>
+        [Obsolete("Use CollectionMethod")]
         [JsonProperty("billing")]
         public Billing? Billing { get; set; }
+
+        /// <summary>
+        /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When
+        /// charging automatically, Stripe will attempt to pay this invoice
+        /// using the default source attached to the customer. When sending an
+        /// invoice, Stripe will email this invoice to the customer with payment
+        /// instructions. Defaults to <c>charge_automatically</c>.
+        /// </summary>
+        [JsonProperty("collection_method")]
+        public string CollectionMethod { get; set; }
 
         /// <summary>
         /// A list of up to 4 custom fields to be displayed on the invoice.

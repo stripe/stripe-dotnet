@@ -14,8 +14,10 @@ namespace Stripe
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
-        /// One of <see cref="Billing" />. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions. Defaults to <c>charge_automatically</c>.
+        /// This field has been renamed to <c>CollectionMethod</c> and will be removed
+        /// in a future API version.
         /// </summary>
+        [Obsolete("Use CollectionMethod")]
         [JsonProperty("billing")]
         public Billing? Billing { get; set; }
 
@@ -37,6 +39,17 @@ namespace Stripe
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
         public bool? CancelAtPeriodEnd { get; set; }
+
+        /// <summary>
+        /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When
+        /// charging automatically, Stripe will attempt to pay this invoice
+        /// using the default source attached to the customer. When sending an
+        /// invoice, Stripe will email invoices for this subscription to the
+        /// customer with payment instructions. Defaults to
+        /// <c>charge_automatically</c>.
+        /// </summary>
+        [JsonProperty("collection_method")]
+        public string CollectionMethod { get; set; }
 
         /// <summary>
         /// The code of the coupon to apply to this subscription. A coupon applied to a subscription will only affect invoices created for that particular subscription.

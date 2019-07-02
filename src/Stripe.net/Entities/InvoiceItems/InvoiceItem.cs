@@ -122,6 +122,13 @@ namespace Stripe
         [JsonProperty("tax_rates")]
         public List<TaxRate> TaxRates { get; set; }
 
+        /// <summary>
+        /// Set to <c>true</c> if we grouped proration items into one,
+        /// <c>false</c> if not.
+        /// </summary>
+        [JsonProperty("unified_proration")]
+        public bool UnifiedProration { get; set; }
+
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }
     }
