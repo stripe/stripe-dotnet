@@ -20,6 +20,13 @@ namespace Stripe
         public bool? AutoAdvance { get; set; }
 
         /// <summary>
+        /// Either <c>charge_automatically</c> or <c>send_invoice</c>. This
+        /// field can be updated only on <c>draft</c> invoices.
+        /// </summary>
+        [JsonProperty("collection_method")]
+        public string CollectionMethod { get; set; }
+
+        /// <summary>
         /// A list of up to 4 custom fields to be displayed on the invoice.
         /// </summary>
         [JsonProperty("custom_fields")]

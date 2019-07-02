@@ -1,9 +1,15 @@
 namespace Stripe
 {
+    using System;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
+    /// <summary>
+    /// The field this enum was used for has been renamed to
+    /// <c>CollectionMethod</c> and now accepts string.
+    /// </summary>
+    [Obsolete("Use CollectionMethod instead")]
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Billing
     {

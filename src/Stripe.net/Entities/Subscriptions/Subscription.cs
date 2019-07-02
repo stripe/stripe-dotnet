@@ -17,11 +17,10 @@ namespace Stripe
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
-        /// One of <see cref="Billing" />. When charging automatically, Stripe will attempt to pay
-        /// this subscription at the end of the cycle using the default source attached to the
-        /// customer. When sending an invoice, Stripe will email your customer an invoice with
-        /// payment instructions.
+        /// This field has been renamed to <c>CollectionMethod</c> and will be removed
+        /// in a future API version.
         /// </summary>
+        [Obsolete("Use CollectionMethod")]
         [JsonProperty("billing")]
         public Billing? Billing { get; set; }
 
@@ -49,6 +48,16 @@ namespace Stripe
         [JsonProperty("canceled_at")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
+
+        /// <summary>
+        /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When
+        /// charging automatically, Stripe will attempt to pay this subscription
+        /// at the end of the cycle using the default source attached to the
+        /// customer.  When sending an invoice, Stripe will email your customer
+        /// an invoice with payment instructions.
+        /// </summary>
+        [JsonProperty("collection_method")]
+        public string CollectionMethod { get; set; }
 
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]

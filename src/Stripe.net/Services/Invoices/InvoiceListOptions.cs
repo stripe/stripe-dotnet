@@ -7,10 +7,18 @@ namespace Stripe
     public class InvoiceListOptions : ListOptions
     {
         /// <summary>
-        /// The billing mode of the invoice to retrieve. One of <see cref="Billing" />.
+        /// This field has been renamed to <c>CollectionMethod</c> and will be removed
+        /// in a future API version.
         /// </summary>
+        [Obsolete("Use CollectionMethod")]
         [JsonProperty("billing")]
         public Billing? Billing { get; set; }
+
+        /// <summary>
+        /// Either <c>charge_automatically</c>, or <c>send_invoice</c>.
+        /// </summary>
+        [JsonProperty("collection_method")]
+        public string CollectionMethod { get; set; }
 
         /// <summary>
         /// A filter on the list based on the object <c>created</c> field. The value can be a
