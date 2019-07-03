@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.8.1 - 2019-07-03
+* [#1689](https://github.com/stripe/stripe-dotnet/pull/1689) Add documentation for the `PaymentIntent` resource and APIs
+
 ## 27.8.0 - 2019-07-02
 * [#1688](https://github.com/stripe/stripe-dotnet/pull/1688) Remove `Equals` and `GetHashCode` methods from `AnyOf`
 
