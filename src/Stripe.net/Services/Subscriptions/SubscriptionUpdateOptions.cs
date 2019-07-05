@@ -13,7 +13,7 @@ namespace Stripe
         /// <a href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-        public SubscriptionBillingCycleAnchor? BillingCycleAnchor { get; set; }
+        public SubscriptionBillingCycleAnchor BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// List of subscription items, each with an attached plan.

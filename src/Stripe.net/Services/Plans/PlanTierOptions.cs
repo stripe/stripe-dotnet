@@ -23,6 +23,6 @@ namespace Stripe
         /// tier.
         /// </summary>
         [JsonProperty("up_to")]
-        public AnyOf<long?, PlanTierUpTo?> UpTo { get; set; }
+        public AnyOf<long?, PlanTierUpTo> UpTo { get; set; }
     }
 }
