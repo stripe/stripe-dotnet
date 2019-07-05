@@ -353,6 +353,24 @@ namespace StripeTests
                     },
                     want = "string="
                 },
+
+                // StringEnum
+                new
+                {
+                    data = new TestOptions
+                    {
+                        StringEnum = TestOptions.TestStringEnum.Foo,
+                    },
+                    want = "string_enum=foo"
+                },
+                new
+                {
+                    data = new TestOptions
+                    {
+                        StringEnum = null,
+                    },
+                    want = string.Empty,
+                },
             };
 
             foreach (var testCase in testCases)
