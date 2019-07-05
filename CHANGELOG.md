@@ -1,5 +1,9 @@
 # Changelog
 
+## 27.9.0 - 2019-07-05
+* [#1687](https://github.com/stripe/stripe-dotnet/pull/1687) Add support for `SetupFutureUsage` on `PaymentIntent` update and confirm
+* [#1693](https://github.com/stripe/stripe-dotnet/pull/1693) Add support for `SetupFutureUsage` on Checkout `Session`
+
 ## 27.8.1 - 2019-07-03
 * [#1689](https://github.com/stripe/stripe-dotnet/pull/1689) Add documentation for the `PaymentIntent` resource and APIs
 
