@@ -133,7 +133,7 @@ namespace Stripe
         /// immediately.
         /// </summary>
         [JsonProperty("trial_end")]
-        public AnyOf<DateTime?, SubscriptionTrialEnd?> TrialEnd { get; set; }
+        public AnyOf<DateTime?, SubscriptionTrialEnd> TrialEnd { get; set; }
 
         /// <summary>
         /// Boolean. Decide whether to use the default trial on the plan when creating a subscription.

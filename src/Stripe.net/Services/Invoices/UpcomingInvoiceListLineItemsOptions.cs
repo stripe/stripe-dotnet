@@ -45,7 +45,7 @@ namespace Stripe
         /// <see cref="Stripe.SubscriptionBillingCycleAnchor"/>.
         /// </summary>
         [JsonProperty("subscription_billing_cycle_anchor")]
-        public AnyOf<DateTime?, SubscriptionBillingCycleAnchor?> SubscriptionBillingCycleAnchor { get; set; }
+        public AnyOf<DateTime?, SubscriptionBillingCycleAnchor> SubscriptionBillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Time at which the subscription would cancel.
