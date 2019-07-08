@@ -5,6 +5,9 @@ namespace Stripe
 
     public class SetupIntentCreateOptions : BaseOptions
     {
+        [JsonProperty("confirm")]
+        public bool? Confirm { get; set; }
+
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
 
@@ -22,6 +25,9 @@ namespace Stripe
 
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
+
+        [JsonProperty("return_url")]
+        public string ReturnUrl { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }
