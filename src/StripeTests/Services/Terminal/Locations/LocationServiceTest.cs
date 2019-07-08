@@ -2,6 +2,7 @@ namespace StripeTests.Terminal
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -111,6 +112,14 @@ namespace StripeTests.Terminal
             var locations = await this.service.ListAsync(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/terminal/locations");
             Assert.NotNull(locations);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var locations = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(locations);
+            Assert.Equal("terminal.location", locations[0].Object);
         }
 
         [Fact]
