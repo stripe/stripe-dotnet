@@ -258,7 +258,7 @@ namespace Stripe
                 string itemId = null;
                 foreach (var item in page)
                 {
-                    itemId = ((IHasId)item).Id;
+                    itemId = (item as IHasId)?.Id;
                     yield return item;
                 }
 
