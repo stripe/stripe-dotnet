@@ -1,12 +1,17 @@
 namespace Stripe.Terminal
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
     public class LocationService : Service<Location>,
-        ICreatable<Location, LocationCreateOptions>
+        ICreatable<Location, LocationCreateOptions>,
+        IDeletable<Location>,
+        IListable<Location, LocationListOptions>,
+        IRetrievable<Location, LocationGetOptions>,
+        IUpdatable<Location, LocationUpdateOptions>
     {
         public LocationService()
             : base(null)
@@ -58,6 +63,11 @@ namespace Stripe.Terminal
         public virtual Task<StripeList<Location>> ListAsync(LocationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Location> ListAutoPaging(LocationListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
         public virtual Location Update(string locationId, LocationUpdateOptions options, RequestOptions requestOptions = null)

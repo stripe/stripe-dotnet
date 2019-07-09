@@ -1,12 +1,17 @@
 namespace Stripe.Terminal
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
     public class ReaderService : Service<Reader>,
-        ICreatable<Reader, ReaderCreateOptions>
+        ICreatable<Reader, ReaderCreateOptions>,
+        IDeletable<Reader>,
+        IListable<Reader, ReaderListOptions>,
+        IRetrievable<Reader, ReaderGetOptions>,
+        IUpdatable<Reader, ReaderUpdateOptions>
     {
         public ReaderService()
             : base(null)
@@ -58,6 +63,11 @@ namespace Stripe.Terminal
         public virtual Task<StripeList<Reader>> ListAsync(ReaderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Reader> ListAutoPaging(ReaderListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
         public virtual Reader Update(string readerId, ReaderUpdateOptions options, RequestOptions requestOptions = null)
