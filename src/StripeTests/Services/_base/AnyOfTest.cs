@@ -7,7 +7,7 @@ namespace StripeTests
     public class AnyOfTest : BaseStripeTest
     {
         [Fact]
-        public void Variant2Types()
+        public void Ctor_Variant2Types()
         {
             var testCases = new[]
             {
@@ -51,7 +51,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void Variant3Types()
+        public void Ctor_Variant3Types()
         {
             var someClass = new SomeClass { SomeString = "foo" };
             var testCases = new[]
@@ -107,6 +107,28 @@ namespace StripeTests
             }
         }
 
+        [Fact]
+        public void ImplicitOperator_ReturnsNullForNullValuesRegardlessOfType()
+        {
+            var testCases = new[]
+            {
+                new Container(),
+                new Container { AnyOf2 = null },
+                new Container { AnyOf2 = (AnyOf<int, string>)null },
+                new Container { AnyOf2 = (string)null },
+                new Container { AnyOf3 = null },
+                new Container { AnyOf3 = (AnyOf<int, string, SomeClass>)null },
+                new Container { AnyOf3 = (string)null },
+                new Container { AnyOf3 = (SomeClass)null },
+            };
+
+            foreach (var testCase in testCases)
+            {
+                Assert.Null(testCase.AnyOf2);
+                Assert.Null(testCase.AnyOf3);
+            }
+        }
+
         private class TestCase
         {
             public IAnyOf AnyOf { get; set; }
@@ -119,6 +141,13 @@ namespace StripeTests
         private class SomeClass
         {
             public string SomeString { get; set; }
+        }
+
+        private class Container
+        {
+            public AnyOf<int, string> AnyOf2 { get; set; }
+
+            public AnyOf<int, string, SomeClass> AnyOf3 { get; set; }
         }
     }
 }

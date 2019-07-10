@@ -18,7 +18,7 @@ namespace Stripe
 
         /// <summary>Returns a string that represents the current object.</summary>
         /// <returns>A string that represents the current object.</returns>
-        public override string ToString() => this.Value.ToString();
+        public override string ToString() => this.Value == null ? "AnyOf(null)" : this.Value.ToString();
     }
 
     /// <summary>
@@ -103,14 +103,14 @@ namespace Stripe
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2>(T1 value) => new AnyOf<T1, T2>(value);
+        public static implicit operator AnyOf<T1, T2>(T1 value) => value == null ? null : new AnyOf<T1, T2>(value);
 
         /// <summary>
         /// Converts a value of type <c>T2</c> to an <see cref="AnyOf{T1, T2}"/> object.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2>(T2 value) => new AnyOf<T1, T2>(value);
+        public static implicit operator AnyOf<T1, T2>(T2 value) => value == null ? null : new AnyOf<T1, T2>(value);
 
         /// <summary>
         /// Converts an <see cref="AnyOf{T1, T2}"/> object to a value of type <c>T1</c>,
@@ -236,21 +236,21 @@ namespace Stripe
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2, T3}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2, T3>(T1 value) => new AnyOf<T1, T2, T3>(value);
+        public static implicit operator AnyOf<T1, T2, T3>(T1 value) => value == null ? null : new AnyOf<T1, T2, T3>(value);
 
         /// <summary>
         /// Converts a value of type <c>T2</c> to an <see cref="AnyOf{T1, T2, T3}"/> object.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2, T3}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2, T3>(T2 value) => new AnyOf<T1, T2, T3>(value);
+        public static implicit operator AnyOf<T1, T2, T3>(T2 value) => value == null ? null : new AnyOf<T1, T2, T3>(value);
 
         /// <summary>
         /// Converts a value of type <c>T3</c> to an <see cref="AnyOf{T1, T2, T3}"/> object.
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>An <see cref="AnyOf{T1, T2, T3}"/> object that holds the value.</returns>
-        public static implicit operator AnyOf<T1, T2, T3>(T3 value) => new AnyOf<T1, T2, T3>(value);
+        public static implicit operator AnyOf<T1, T2, T3>(T3 value) => value == null ? null : new AnyOf<T1, T2, T3>(value);
 
         /// <summary>
         /// Converts an <see cref="AnyOf{T1, T2, T3}"/> object to a value of type <c>T1</c>,
