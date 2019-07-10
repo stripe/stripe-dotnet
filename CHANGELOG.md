@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.10.0 - 2019-07-09
+* [#1696](https://github.com/stripe/stripe-dotnet/pull/1696) Add support for `Confirm` and `ReturnUrl` on `SetupIntent` creation
+
 ## 27.9.1 - 2019-07-09
 * [#1702](https://github.com/stripe/stripe-dotnet/pull/1702) Don't create `AnyOf` instances with null values
 
