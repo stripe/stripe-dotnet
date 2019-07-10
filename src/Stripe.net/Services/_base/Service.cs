@@ -258,6 +258,15 @@ namespace Stripe
                 string itemId = null;
                 foreach (var item in page)
                 {
+                    // Elements in `StripeList` instances are decoded by `StripeObjectConverter`,
+                    // which returns `null` for objects it doesn't know how to decode.
+                    // When auto-paginating, we simply ignore these null elements but still return
+                    // other elements.
+                    if (item == null)
+                    {
+                        continue;
+                    }
+
                     itemId = ((IHasId)item).Id;
                     yield return item;
                 }
