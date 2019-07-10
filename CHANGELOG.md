@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.9.1 - 2019-07-09
+* [#1702](https://github.com/stripe/stripe-dotnet/pull/1702) Don't create `AnyOf` instances with null values
+
 ## 27.9.0 - 2019-07-05
 * [#1687](https://github.com/stripe/stripe-dotnet/pull/1687) Add support for `SetupFutureUsage` on `PaymentIntent` update and confirm
 * [#1693](https://github.com/stripe/stripe-dotnet/pull/1693) Add support for `SetupFutureUsage` on Checkout `Session`
