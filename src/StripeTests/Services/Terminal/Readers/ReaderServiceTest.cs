@@ -1,10 +1,8 @@
 namespace StripeTests.Terminal
 {
-    using System;
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     using Stripe.Terminal;
     using Xunit;
 
@@ -104,6 +102,14 @@ namespace StripeTests.Terminal
             var readers = await this.service.ListAsync(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/terminal/readers");
             Assert.NotNull(readers);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var readers = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(readers);
+            Assert.Equal("terminal.reader", readers[0].Object);
         }
 
         [Fact]
