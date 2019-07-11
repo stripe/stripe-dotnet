@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.11.0 - 2019-07-11
+* [#1705](https://github.com/stripe/stripe-dotnet/pull/1705) Fix missing interfaces
+
 ## 27.10.0 - 2019-07-09
 * [#1696](https://github.com/stripe/stripe-dotnet/pull/1696) Add support for `Confirm` and `ReturnUrl` on `SetupIntent` creation
 
