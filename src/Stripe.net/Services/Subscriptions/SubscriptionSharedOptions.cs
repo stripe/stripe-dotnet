@@ -85,6 +85,33 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Indicates if a customer is on session while an invoice payment is attempted.
+        /// </summary>
+        [JsonProperty("off_session")]
+        public bool? OffSession { get; set; }
+
+        /// <summary>
+        /// <para>
+        /// Use <c>allow_incomplete</c> to create subscriptions with <c>status=incomplete</c> if its
+        /// first invoice cannot be paid. Creating subscriptions with this status allows you to
+        /// manage scenarios where additional user actions are needed to pay a subscription's
+        /// invoice. For example, SCA regulation may require 3DS authentication to complete payment.
+        /// See the <a href="https://stripe.com/docs/billing/migration/strong-customer-authentication">SCA Migration Guide</a>
+        /// for Billing to learn more. This is the default behavior.
+        /// </para>
+        /// <para>
+        /// Use <c>error_if_incomplete</c> if you want Stripe to return an HTTP 402 status code if
+        /// a subscription's first invoice cannot be paid. For example, if a payment method requires
+        /// 3DS authentication due to SCA regulation and further user action is needed, this
+        /// parameter does not create a subscription and returns an error instead. This was the
+        /// default behavior for API versions prior to 2019-03-14. See the <a href="https://stripe.com/docs/upgrades#2019-03-14">changelog</a>
+        /// to learn more.
+        /// </para>
+        /// </summary>
+        [JsonProperty("payment_behavior")]
+        public string PaymentBehavior { get; set; }
+
+        /// <summary>
         /// Boolean (default <c>true</c>). Use with a <c>billing_cycle_anchor</c> timestamp to determine whether the customer will be invoiced a prorated amount until the anchor date. If <c>false</c>, the anchor period will be free (similar to a trial).
         /// </summary>
         [JsonProperty("prorate")]

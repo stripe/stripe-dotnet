@@ -183,6 +183,33 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        #region Expandable PendingSetupIntent
+
+        /// <summary>
+        /// ID of the pending SetupIntent associated with this subscription.
+        /// </summary>
+        [JsonIgnore]
+        public string PendingSetupIntentId
+        {
+            get => this.InternalPendingSetupIntent?.Id;
+            set => this.InternalPendingSetupIntent = SetExpandableFieldId(value, this.InternalPendingSetupIntent);
+        }
+
+        /// <summary>
+        /// The pending SetupIntent associated with this subscription if any.
+        /// </summary>
+        [JsonIgnore]
+        public SetupIntent PendingSetupIntent
+        {
+            get => this.InternalPendingSetupIntent?.ExpandedObject;
+            set => this.InternalPendingSetupIntent = SetExpandableFieldObject(value, this.InternalPendingSetupIntent);
+        }
+
+        [JsonProperty("pending_setup_intent")]
+        [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
+        internal ExpandableField<SetupIntent> InternalPendingSetupIntent { get; set; }
+        #endregion
+
         [JsonProperty("plan")]
         public Plan Plan { get; set; }
 
