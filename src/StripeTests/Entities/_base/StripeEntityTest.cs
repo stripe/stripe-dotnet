@@ -141,6 +141,18 @@ namespace StripeTests
             Assert.Equal(42, o.Nested.Bar);
         }
 
+        [Fact]
+        public void ExtraFields()
+        {
+            var json = "{\"integer\": 234, \"string\": \"String!\", \"extra_string\": \"Hello!\", \"extra_object\": {\"array\": [{\"foo\": \"Foo!\"}]}}";
+
+            var o = StripeEntity.FromJson<TestEntity>(json);
+
+            Assert.NotNull(o);
+            Assert.Equal("Hello!", o.ExtraFields["extra_string"]);
+            Assert.Equal("Foo!", o.ExtraFields["extra_object"]["array"][0]["foo"]);
+        }
+
         private class TestEntity : StripeEntity<TestEntity>
         {
             [JsonProperty("integer")]

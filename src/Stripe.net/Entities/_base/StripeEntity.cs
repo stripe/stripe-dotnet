@@ -1,13 +1,19 @@
 namespace Stripe
 {
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
     using System.Runtime.CompilerServices;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     [JsonObject(MemberSerialization.OptIn)]
     public abstract class StripeEntity : IStripeEntity
     {
+        /// <summary>Dictionary containing extra resource fields.</summary>
+        [JsonExtensionData]
+        public IDictionary<string, JToken> ExtraFields { get; set; }
+
         [JsonIgnore]
         public StripeResponse StripeResponse { get; set; }
 
