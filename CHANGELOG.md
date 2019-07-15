@@ -1,5 +1,13 @@
 # Changelog
 
+## 27.12.0 - 2019-07-15
+* [#1706](https://github.com/stripe/stripe-dotnet/pull/1706) Various changes relaed to SCA for Billing
+  * Add support for `PendingSetupIntent` on `Subscription`
+  * Add support for `PaymentBehavior` on `Subscription` creation and update
+  * Add support for `PaymentBehavior` on `SubscriptionItem` update
+  * Add support for `OffSession` when paying an `Invoice`
+  * Add support for `OffSession` on `Subscription` creation and update
+
 ## 27.11.0 - 2019-07-11
 * [#1705](https://github.com/stripe/stripe-dotnet/pull/1705) Fix missing interfaces
 
