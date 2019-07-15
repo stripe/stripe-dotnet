@@ -105,6 +105,12 @@ namespace Stripe
         public string PaymentMethodId { get; set; }
 
         /// <summary>
+        /// Payment-method-specific configuration for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+        public PaymentIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
+
+        /// <summary>
         /// The list of payment method types (e.g. card) that this PaymentIntent is allowed to use.
         /// </summary>
         [JsonProperty("payment_method_types")]
