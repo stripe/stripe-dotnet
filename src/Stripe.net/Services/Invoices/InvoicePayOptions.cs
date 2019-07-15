@@ -18,6 +18,12 @@ namespace Stripe
         public bool? PaidOutOfBand { get; set; }
 
         /// <summary>
+        /// Indicates if a customer is on session while an invoice payment is attempted.
+        /// </summary>
+        [JsonProperty("off_session")]
+        public bool? OffSession { get; set; }
+
+        /// <summary>
         /// ID of the payment method to use for paying the invoice.
         /// </summary>
         [JsonProperty("payment_method")]
