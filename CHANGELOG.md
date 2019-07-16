@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.13.0 - 2019-07-15
+* [#1708](https://github.com/stripe/stripe-dotnet/pull/1708) Add support for `PaymentMethodOptions` on `PaymentIntent` and `SetupIntent`
+
 ## 27.12.0 - 2019-07-15
 * [#1706](https://github.com/stripe/stripe-dotnet/pull/1706) Various changes relaed to SCA for Billing
   * Add support for `PendingSetupIntent` on `Subscription`
