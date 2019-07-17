@@ -184,5 +184,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// The time that the credit note was voided.
+        /// </summary>
+        [JsonProperty("voided_at")]
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime VoidedAt { get; set; }
     }
 }
