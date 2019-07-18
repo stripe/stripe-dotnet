@@ -62,17 +62,17 @@ namespace Stripe
 
         public virtual StripeList<Card> List(string customerId, CardListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntities(customerId, options, requestOptions);
+            return this.ListNestedEntities(customerId, options ?? new CardListOptions(), requestOptions);
         }
 
         public virtual Task<StripeList<Card>> ListAsync(string customerId, CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.ListNestedEntitiesAsync(customerId, options, requestOptions, cancellationToken);
+            return this.ListNestedEntitiesAsync(customerId, options ?? new CardListOptions(), requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<Card> ListAutoPaging(string customerId, CardListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntitiesAutoPaging(customerId, options, requestOptions);
+            return this.ListNestedEntitiesAutoPaging(customerId, options ?? new CardListOptions(), requestOptions);
         }
 
         public virtual Card Update(string customerId, string cardId, CardUpdateOptions options, RequestOptions requestOptions = null)
