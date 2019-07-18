@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.14.0 - 2019-07-17
+* [#1710](https://github.com/stripe/stripe-dotnet/pull/1710) Add support for `VoidedAt` on `CreditNote`
+
 ## 27.13.0 - 2019-07-15
 * [#1708](https://github.com/stripe/stripe-dotnet/pull/1708) Add support for `PaymentMethodOptions` on `PaymentIntent` and `SetupIntent`
 
