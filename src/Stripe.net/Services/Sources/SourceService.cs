@@ -66,17 +66,17 @@ namespace Stripe
 
         public virtual StripeList<Source> List(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Source>>(HttpMethod.Get, $"/v1/customers/{customerId}/sources", options, requestOptions);
+            return this.Request<StripeList<Source>>(HttpMethod.Get, $"/v1/customers/{customerId}/sources", options ?? new SourceListOptions(), requestOptions);
         }
 
         public virtual Task<StripeList<Source>> ListAsync(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.RequestAsync<StripeList<Source>>(HttpMethod.Get, $"/v1/customers/{customerId}/sources", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Source>>(HttpMethod.Get, $"/v1/customers/{customerId}/sources", options ?? new SourceListOptions(), requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<Source> ListAutoPaging(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Source>($"/v1/customers/{customerId}/sources", options, requestOptions);
+            return this.ListRequestAutoPaging<Source>($"/v1/customers/{customerId}/sources", options ?? new SourceListOptions(), requestOptions);
         }
 
         public virtual Source Update(string sourceId, SourceUpdateOptions options, RequestOptions requestOptions = null)
