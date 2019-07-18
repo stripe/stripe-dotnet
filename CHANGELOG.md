@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.14.1 - 2019-07-18
+* [#1703](https://github.com/stripe/stripe-dotnet/pull/1703) Ignore null elements when autopaginating
+
 ## 27.14.0 - 2019-07-17
 * [#1710](https://github.com/stripe/stripe-dotnet/pull/1710) Add support for `VoidedAt` on `CreditNote`
 
