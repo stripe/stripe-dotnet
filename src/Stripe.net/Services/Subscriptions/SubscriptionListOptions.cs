@@ -7,14 +7,6 @@ namespace Stripe
     public class SubscriptionListOptions : ListOptionsWithCreated
     {
         /// <summary>
-        /// This field has been renamed to <c>CollectionMethod</c> and will be removed
-        /// in a future API version.
-        /// </summary>
-        [Obsolete("Use CollectionMethod")]
-        [JsonProperty("billing")]
-        public Billing? Billing { get; set; }
-
-        /// <summary>
         /// A filter on the list based on the collection method for
         /// subscriptions. Either <c>charge_automatically</c>, or
         /// <c>send_invoice</c>.
