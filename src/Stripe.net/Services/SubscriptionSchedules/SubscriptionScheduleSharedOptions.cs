@@ -8,14 +8,6 @@ namespace Stripe
     public abstract class SubscriptionScheduleSharedOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// This field has been renamed to <c>CollectionMethod</c> and will be removed
-        /// in a future API version.
-        /// </summary>
-        [Obsolete("Use CollectionMethod")]
-        [JsonProperty("billing")]
-        public Billing? Billing { get; set; }
-
-        /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period. Pass an empty string to remove previously-defined thresholds.
         /// </summary>
