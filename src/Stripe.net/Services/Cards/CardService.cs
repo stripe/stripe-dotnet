@@ -24,12 +24,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/customers/{PARENT_ID}/sources";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandCustomer { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandRecipient { get; set; }
-
         public virtual Card Create(string customerId, CardCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.CreateNestedEntity(customerId, options, requestOptions);

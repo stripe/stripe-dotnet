@@ -44,7 +44,6 @@ namespace StripeTests
 
             // Call auto-paging method
             var service = new PageableService(this.StripeClient);
-            service.ExpandFoo = true;
             var options = new ListOptions
             {
                 Limit = 2,
@@ -67,7 +66,7 @@ namespace StripeTests
                     ItExpr.Is<HttpRequestMessage>(m =>
                         m.Method == HttpMethod.Get &&
                         m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&expand[0]=data.foo"),
+                        m.RequestUri.Query == "?limit=2"),
                     ItExpr.IsAny<CancellationToken>());
 
             this.MockHttpClientFixture.MockHandler.Protected()
@@ -77,7 +76,7 @@ namespace StripeTests
                     ItExpr.Is<HttpRequestMessage>(m =>
                         m.Method == HttpMethod.Get &&
                         m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&starting_after=pm_124&expand[0]=data.foo"),
+                        m.RequestUri.Query == "?limit=2&starting_after=pm_124"),
                     ItExpr.IsAny<CancellationToken>());
 
             this.MockHttpClientFixture.MockHandler.Protected()
@@ -87,7 +86,7 @@ namespace StripeTests
                     ItExpr.Is<HttpRequestMessage>(m =>
                         m.Method == HttpMethod.Get &&
                         m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
-                        m.RequestUri.Query == "?limit=2&starting_after=pm_126&expand[0]=data.foo"),
+                        m.RequestUri.Query == "?limit=2&starting_after=pm_126"),
                     ItExpr.IsAny<CancellationToken>());
         }
 
@@ -170,8 +169,6 @@ namespace StripeTests
                 : base(client)
             {
             }
-
-            public bool ExpandFoo { get; set; }
 
             public override string BasePath => "/v1/pageablemodels";
 

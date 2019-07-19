@@ -99,7 +99,6 @@ namespace StripeTests
         [Fact]
         public void List()
         {
-            this.service.ExpandDefaultSource = true;
             var customers = this.service.List(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/customers");
             Assert.NotNull(customers);
@@ -111,7 +110,6 @@ namespace StripeTests
         [Fact]
         public async Task ListAsync()
         {
-            this.service.ExpandDefaultSource = true;
             var customers = await this.service.ListAsync(this.listOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/customers");
             Assert.NotNull(customers);
@@ -123,7 +121,6 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            this.service.ExpandDefaultSource = true;
             var customers = this.service.ListAutoPaging(this.listOptions).ToList();
             Assert.NotNull(customers);
             Assert.Equal("customer", customers[0].Object);
