@@ -51,14 +51,6 @@ namespace Stripe
         [JsonProperty("auto_advance")]
         public bool AutoAdvance { get; set; }
 
-        /// <summary>
-        /// This field has been renamed to <c>CollectionMethod</c> and will be removed
-        /// in a future API version.
-        /// </summary>
-        [Obsolete("Use CollectionMethod")]
-        [JsonProperty("billing")]
-        public Billing? Billing { get; set; }
-
         [JsonProperty("billing_reason")]
         public string BillingReason { get; set; }
 

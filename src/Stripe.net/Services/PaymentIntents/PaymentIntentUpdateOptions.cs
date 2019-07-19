@@ -130,13 +130,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
-
-        [Obsolete("Use PaymentMethodTypes")]
-        [JsonProperty("allowed_source_types")]
-        public List<string> AllowedSourceTypes { get; set; }
-
-        [Obsolete("This field was never supported in the API so marking as deprecated/")]
-        [JsonProperty("on_behalf_of")]
-        public string OnBehalfOf { get; set; }
     }
 }

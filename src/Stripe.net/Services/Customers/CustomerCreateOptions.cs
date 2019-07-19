@@ -7,10 +7,6 @@ namespace Stripe
 
     public class CustomerCreateOptions : BaseOptions
     {
-        [Obsolete("Use Balance")]
-        [JsonProperty("account_balance")]
-        public long? AccountBalance { get; set; }
-
         /// <summary>
         /// The customer’s address.
         /// </summary>
@@ -105,10 +101,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_id_data")]
         public List<CustomerTaxIdDataOptions> TaxIdData { get; set; }
-
-        [Obsolete("Use TaxIdData")]
-        [JsonProperty("tax_info")]
-        public CustomerTaxInfoOptions TaxInfo { get; set; }
 
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
