@@ -403,9 +403,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
-
-        [Obsolete("Use PaymentMethodTypes")]
-        [JsonProperty("allowed_source_types")]
-        public List<string> AllowedSourceTypes { get; set; }
     }
 }

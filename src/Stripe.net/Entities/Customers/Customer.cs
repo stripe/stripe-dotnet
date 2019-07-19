@@ -13,10 +13,6 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [Obsolete("Use Balance")]
-        [JsonProperty("account_balance")]
-        public long AccountBalance { get; set; }
-
         /// <summary>
         /// The customer’s address.
         /// </summary>
@@ -181,19 +177,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_ids")]
         public StripeList<TaxId> TaxIds { get; set; }
-
-        /// <summary>
-        /// The customer’s tax information. Appears on invoices emailed to this customer.
-        /// </summary>
-        [Obsolete("Use TaxIds")]
-        [JsonProperty("tax_info")]
-        public CustomerTaxInfo TaxInfo { get; set; }
-
-        /// <summary>
-        /// Describes the status of looking up the tax ID provided in <c>tax_info</c>.
-        /// </summary>
-        [Obsolete("Use TaxIds")]
-        [JsonProperty("tax_info_verification")]
-        public CustomerTaxInfoVerification TaxInfoVerification { get; set; }
     }
 }
