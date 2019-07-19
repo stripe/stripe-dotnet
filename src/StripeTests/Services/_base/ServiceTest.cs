@@ -12,6 +12,7 @@ namespace StripeTests
     public class ServiceTest : BaseStripeTest
     {
         [Fact]
+<<<<<<< HEAD
         public void Get_ExpandProperties()
         {
             var client = new TestClient();
@@ -27,6 +28,8 @@ namespace StripeTests
         }
 
         [Fact]
+=======
+>>>>>>> Remove all Expand* fields (#1715)
         public void Get_ThrowsIfIdIsNull()
         {
             var client = new TestClient();
@@ -51,30 +54,6 @@ namespace StripeTests
             var service = new TestService(client);
 
             Assert.Throws<ArgumentException>(() => service.Get(" "));
-        }
-
-        [Fact]
-        public void List_ExpandProperties()
-        {
-            var client = new TestClient();
-            var service = new TestService(client);
-
-            service.ExpandSimple = true;
-            service.ExpandMultiWordProperty = true;
-            var options = new ListOptions();
-
-            service.List(options);
-
-            Assert.Equal(2, client.LastOptions.Expand.Count);
-            Assert.Contains("data.simple", client.LastOptions.Expand);
-            Assert.Contains("data.multi_word_property", client.LastOptions.Expand);
-
-            // Do a second request to check that expand properties are not duplicated
-            service.List(options);
-
-            Assert.Equal(2, client.LastOptions.Expand.Count);
-            Assert.Contains("data.simple", client.LastOptions.Expand);
-            Assert.Contains("data.multi_word_property", client.LastOptions.Expand);
         }
 
         private class TestClient : IStripeClient
@@ -120,10 +99,6 @@ namespace StripeTests
             }
 
             public override string BasePath => "/v1/test_entities";
-
-            public bool ExpandSimple { get; set; }
-
-            public bool ExpandMultiWordProperty { get; set; }
 
             public virtual TestEntity Get(string id, BaseOptions options = null, RequestOptions requestOptions = null)
             {

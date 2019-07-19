@@ -23,12 +23,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/application_fees/{PARENT_ID}/refunds";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandBalanceTransaction { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandFee { get; set; }
-
         public virtual ApplicationFeeRefund Create(string applicationFeeId, ApplicationFeeRefundCreateOptions options = null, RequestOptions requestOptions = null)
         {
             return this.CreateNestedEntity(applicationFeeId, options, requestOptions);

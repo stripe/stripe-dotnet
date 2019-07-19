@@ -24,11 +24,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/customers";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandDefaultSource { get; set; }
-
-        public bool ExpandDefaultCustomerBankAccount { get; set; } // TODO: remove in next major version
-
         public virtual Customer Create(CustomerCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.CreateEntity(options, requestOptions);
