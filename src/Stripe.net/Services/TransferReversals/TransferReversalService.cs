@@ -23,12 +23,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/transfers/{PARENT_ID}/reversals";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandBalanceTransaction { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandTransfer { get; set; }
-
         public virtual TransferReversal Create(string transferId, TransferReversalCreateOptions options = null, RequestOptions requestOptions = null)
         {
             return this.CreateNestedEntity(transferId, options, requestOptions);

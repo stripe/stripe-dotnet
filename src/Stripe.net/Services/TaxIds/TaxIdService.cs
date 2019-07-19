@@ -22,9 +22,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/customers/{PARENT_ID}/tax_ids";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandCustomer { get; set; }
-
         public virtual TaxId Create(string customerId, TaxIdCreateOptions options = null, RequestOptions requestOptions = null)
         {
             return this.CreateNestedEntity(customerId, options, requestOptions);

@@ -23,18 +23,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/subscriptions";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandCustomer { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandDefaultPaymentMethod { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandDefaultSource { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandLatestInvoice { get; set; }
-
         public virtual Subscription Cancel(string subscriptionId, SubscriptionCancelOptions options, RequestOptions requestOptions = null)
         {
             return this.DeleteEntity(subscriptionId, options, requestOptions);
