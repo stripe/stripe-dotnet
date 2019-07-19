@@ -248,7 +248,6 @@ namespace Stripe
 
         /// <summary>
         /// The account (if any) the charge was made on behalf of without triggering an automatic transfer. See the Connect documentation for details.
-        /// <para>To populate the OnBehalfOf entity, you need to set ExpandOnBehalfOf to true on your service before invoking a service method.</para>
         /// </summary>
         [JsonIgnore]
         public string OnBehalfOfId

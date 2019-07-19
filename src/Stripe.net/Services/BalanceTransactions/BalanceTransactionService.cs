@@ -21,9 +21,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/balance/history";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandSource { get; set; }
-
         public virtual BalanceTransaction Get(string balanceTransactionId, BalanceTransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.GetEntity(balanceTransactionId, options, requestOptions);

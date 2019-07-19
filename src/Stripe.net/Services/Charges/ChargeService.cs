@@ -24,45 +24,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/charges";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandApplication { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandApplicationFee { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandBalanceTransaction { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandCustomer { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandDestination { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandDispute { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandInvoice { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandOnBehalfOf { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandOrder { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandReview { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandSourceTransfer { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandTransfer { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandBusinessLogo { get; set; }
-
         public virtual Charge Capture(string chargeId, ChargeCaptureOptions options, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(chargeId)}/capture", options, requestOptions);

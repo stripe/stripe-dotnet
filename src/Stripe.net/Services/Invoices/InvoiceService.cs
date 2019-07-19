@@ -24,18 +24,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/invoices";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandCharge { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandCustomer { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandDefaultPaymentMethod { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandSubscription { get; set; }
-
         public virtual Invoice Create(InvoiceCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.CreateEntity(options, requestOptions);
