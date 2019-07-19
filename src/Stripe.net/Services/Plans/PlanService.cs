@@ -24,9 +24,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/plans";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandProduct { get; set; }
-
         public virtual Plan Create(PlanCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.CreateEntity(options, requestOptions);

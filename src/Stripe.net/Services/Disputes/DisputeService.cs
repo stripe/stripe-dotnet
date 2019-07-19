@@ -23,9 +23,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/disputes";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandCharge { get; set; }
-
         public virtual Dispute Close(string disputeId, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(disputeId)}/close", null, requestOptions);
