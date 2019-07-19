@@ -12,6 +12,13 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Indicates if your customer is on session in case this update causes an invoice to
+        /// be created.
+        /// </summary>
+        [JsonProperty("off_session")]
+        public bool? OffSession { get; set; }
+
+        /// <summary>
         /// Use <c>error_if_incomplete</c> if you want Stripe to return an HTTP 402 status code if
         /// the invoice caused by the update cannot be paid. Otherwise use <c>allow_incomplete</c>.
         /// </summary>
