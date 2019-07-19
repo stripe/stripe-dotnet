@@ -24,12 +24,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/topups";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandBalanceTransaction { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandSource { get; set; }
-
         public virtual Topup Cancel(string topupId, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(topupId)}/cancel", null, requestOptions);

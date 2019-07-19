@@ -21,21 +21,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/application_fees";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandAccount { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandApplication { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandBalanceTransaction { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandCharge { get; set; }
-
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandOriginatingTransaction { get; set; }
-
         public virtual ApplicationFee Get(string applicationFeeId, ApplicationFeeGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.GetEntity(applicationFeeId, options, requestOptions);

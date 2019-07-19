@@ -23,9 +23,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/tax_rates";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandCustomer { get; set; }
-
         public virtual TaxRate Create(TaxRateCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.CreateEntity(options, requestOptions);

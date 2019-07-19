@@ -22,8 +22,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/customers/{PARENT_ID}/balance_transactions";
 
-        public bool ExpandCustomer { get; set; }
-
         public virtual CustomerBalanceTransaction Create(string customerId, CustomerBalanceTransactionCreateOptions options = null, RequestOptions requestOptions = null)
         {
             return this.CreateNestedEntity(customerId, options, requestOptions);
