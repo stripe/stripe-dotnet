@@ -1,5 +1,9 @@
 # Changelog
 
+## 27.15.0 - 2019-07-19
+* [#1711](https://github.com/stripe/stripe-dotnet/pull/1711) Add `Customer` filter when listing `CreditNote`
+* [#1712](https://github.com/stripe/stripe-dotnet/pull/1712) Add `OffSession` parameter when updating `SubscriptionItem`
+
 ## 27.14.1 - 2019-07-18
 * [#1703](https://github.com/stripe/stripe-dotnet/pull/1703) Ignore null elements when autopaginating
 
