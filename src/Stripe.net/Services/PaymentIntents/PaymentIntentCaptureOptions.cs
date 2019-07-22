@@ -23,6 +23,13 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
+        /// Extra information about a PaymentIntent. This will appear on your customer’s statement
+        /// when this PaymentIntent succeeds in creating a charge.
+        /// </summary>
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
+
+        /// <summary>
         /// The parameters used to automatically create a Transfer when the payment succeeds. For
         /// more information, see the PaymentIntents <a href="https://stripe.com/docs/payments/payment-intents/use-cases#connected-accounts">
         /// use case for connected accounts</a>.
