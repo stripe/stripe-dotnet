@@ -1,7 +1,10 @@
 # Changelog
 
+## 27.16.1 - 2019-07-23
+* [#1718](https://github.com/stripe/stripe-dotnet/pull/1718) Fix `NullReferenceException` when auto-paginating without parameters
+
 ## 27.16.0 - 2019-07-22
-* [#902](https://github.com/stripe/stripe-dotnet/pull/902) Add support for `StatementDescriptor` on `PaymentIntent` capture
+* [#1716](https://github.com/stripe/stripe-dotnet/pull/1716) Add support for `StatementDescriptor` on `PaymentIntent` capture
 
 ## 27.15.0 - 2019-07-19
 * [#1711](https://github.com/stripe/stripe-dotnet/pull/1711) Add `Customer` filter when listing `CreditNote`
