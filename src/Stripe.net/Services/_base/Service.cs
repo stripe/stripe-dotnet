@@ -276,7 +276,9 @@ namespace Stripe
                     break;
                 }
 
+                options = options ?? new ListOptions();
                 options.StartingAfter = itemId;
+
                 page = this.Request<StripeList<T>>(
                     HttpMethod.Get,
                     url,
