@@ -90,6 +90,73 @@ namespace StripeTests
                     ItExpr.IsAny<CancellationToken>());
         }
 
+        [Fact]
+        public void ListAutoPaging_NoParams()
+        {
+            // Set up stubbed requests
+            var response1 = new HttpResponseMessage(HttpStatusCode.OK);
+            response1.Content = new StringContent(GetResourceAsString("pageable_models.0.json"));
+            var response2 = new HttpResponseMessage(HttpStatusCode.OK);
+            response2.Content = new StringContent(GetResourceAsString("pageable_models.1.json"));
+            var response3 = new HttpResponseMessage(HttpStatusCode.OK);
+            response3.Content = new StringContent(GetResourceAsString("pageable_models.2.json"));
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .SetupSequence<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Get &&
+                        m.RequestUri.AbsolutePath == "/v1/pageablemodels"),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(response1))
+                .Returns(Task.FromResult(response2))
+                .Returns(Task.FromResult(response3))
+                .Throws(new StripeTestException("Unexpected invocation!"));
+
+            // Call auto-paging method
+            var service = new PageableService(this.StripeClient);
+            var models = service.ListAutoPaging().ToList();
+
+            // Check results
+            Assert.Equal(5, models.Count);
+            Assert.Equal("pm_123", models[0].Id);
+            Assert.Equal("pm_124", models[1].Id);
+            Assert.Equal("pm_125", models[2].Id);
+            Assert.Equal("pm_126", models[3].Id);
+            Assert.Equal("pm_127", models[4].Id);
+
+            // Check invocations
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Get &&
+                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
+                        m.RequestUri.Query == string.Empty),
+                    ItExpr.IsAny<CancellationToken>());
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Get &&
+                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
+                        m.RequestUri.Query == "?starting_after=pm_124"),
+                    ItExpr.IsAny<CancellationToken>());
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Get &&
+                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
+                        m.RequestUri.Query == "?starting_after=pm_126"),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
         public class PageableModel : StripeEntity<PageableModel>, IHasId
         {
             [JsonProperty("id")]
@@ -105,7 +172,7 @@ namespace StripeTests
 
             public override string BasePath => "/v1/pageablemodels";
 
-            public IEnumerable<PageableModel> ListAutoPaging(ListOptions options)
+            public IEnumerable<PageableModel> ListAutoPaging(ListOptions options = null)
             {
                 return this.ListEntitiesAutoPaging(options, null);
             }
