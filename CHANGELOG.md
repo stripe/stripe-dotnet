@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.17.0 - 2019-07-25
+* [#1719](https://github.com/stripe/stripe-dotnet/pull/1719) Add support for `Authenticated` on Charge for 3DS results in `ChargePaymentMethodDetailsCardThreeDSecure`
+
 ## 27.16.1 - 2019-07-23
 * [#1718](https://github.com/stripe/stripe-dotnet/pull/1718) Fix `NullReferenceException` when auto-paginating without parameters
 
