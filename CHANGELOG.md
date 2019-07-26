@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.18.0 - 2019-07-26
+* [#1722](https://github.com/stripe/stripe-dotnet/pull/1722) Add support for `Metadata` on `SubscriptionItemOption`
+
 ## 27.17.0 - 2019-07-25
 * [#1719](https://github.com/stripe/stripe-dotnet/pull/1719) Add support for `Authenticated` on Charge for 3DS results in `ChargePaymentMethodDetailsCardThreeDSecure`
 
