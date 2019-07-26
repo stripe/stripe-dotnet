@@ -6,6 +6,14 @@ namespace Stripe
     public class SubscriptionItemOption : INestedOptions
     {
         /// <summary>
+        /// A set of key/value pairs that you can attach to a charge object. It can be useful for
+        /// storing additional information about the customer in a structured format. It's often a
+        /// good idea to store an email address in metadata for tracking later.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
         /// Plan ID for this item.
         /// </summary>
         [JsonProperty("plan")]
