@@ -31,7 +31,7 @@ namespace StripeTests
         public void Get()
         {
             var balanceTransaction = this.service.Get(BalanceTransactionId);
-            this.AssertRequest(HttpMethod.Get, "/v1/balance/history/txn_123");
+            this.AssertRequest(HttpMethod.Get, "/v1/balance_transactions/txn_123");
             Assert.NotNull(balanceTransaction);
             Assert.Equal("balance_transaction", balanceTransaction.Object);
         }
@@ -40,7 +40,7 @@ namespace StripeTests
         public async Task GetAsync()
         {
             var balanceTransaction = await this.service.GetAsync(BalanceTransactionId);
-            this.AssertRequest(HttpMethod.Get, "/v1/balance/history/txn_123");
+            this.AssertRequest(HttpMethod.Get, "/v1/balance_transactions/txn_123");
             Assert.NotNull(balanceTransaction);
             Assert.Equal("balance_transaction", balanceTransaction.Object);
         }
@@ -49,7 +49,7 @@ namespace StripeTests
         public void List()
         {
             var balanceTransactions = this.service.List(this.listOptions);
-            this.AssertRequest(HttpMethod.Get, "/v1/balance/history");
+            this.AssertRequest(HttpMethod.Get, "/v1/balance_transactions");
             Assert.NotNull(balanceTransactions);
             Assert.Equal("list", balanceTransactions.Object);
             Assert.Single(balanceTransactions.Data);
@@ -60,7 +60,7 @@ namespace StripeTests
         public async Task ListAsync()
         {
             var balanceTransactions = await this.service.ListAsync(this.listOptions);
-            this.AssertRequest(HttpMethod.Get, "/v1/balance/history");
+            this.AssertRequest(HttpMethod.Get, "/v1/balance_transactions");
             Assert.NotNull(balanceTransactions);
             Assert.Equal("list", balanceTransactions.Object);
             Assert.Single(balanceTransactions.Data);
