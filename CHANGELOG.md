@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.19.0 - 2019-07-30
+* [#1724](https://github.com/stripe/stripe-dotnet/pull/1724) Move the List `BalanceTransaction` API to `/v1/balance_transactions`
+
 ## 27.18.0 - 2019-07-26
 * [#1722](https://github.com/stripe/stripe-dotnet/pull/1722) Add support for `Metadata` on `SubscriptionItemOption`
 
