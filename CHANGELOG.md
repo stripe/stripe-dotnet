@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.20.0 - 2019-07-31
+* [#1727](https://github.com/stripe/stripe-dotnet/pull/1727) Add missing Radar events
+
 ## 27.19.0 - 2019-07-30
 * [#1724](https://github.com/stripe/stripe-dotnet/pull/1724) Move the List `BalanceTransaction` API to `/v1/balance_transactions`
 
