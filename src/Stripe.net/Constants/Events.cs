@@ -537,6 +537,16 @@ namespace Stripe
         public const string ProductUpdated = "product.updated";
 
         /// <summary>
+        /// Occurs whenever an early fraud warning is created.
+        /// </summary>
+        public const string RadarEarlyFraudWarningCreated = "radar.early_fraud_warning.created";
+
+        /// <summary>
+        /// Occurs whenever an early fraud warning is updated.
+        /// </summary>
+        public const string RadarEarlyFraudWarningUpdated = "radar.early_fraud_warning.updated";
+
+        /// <summary>
         /// Occurs whenever a recipient is created.
         /// </summary>
         public const string RecipientCreated = "recipient.created";
