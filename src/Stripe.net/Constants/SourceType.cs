@@ -20,6 +20,8 @@ namespace Stripe
 
         public const string Ideal = "ideal";
 
+        public const string Klarna = "klarna";
+
         public const string P24 = "p24";
 
         public const string SepaCreditTransfer = "sepa_credit_transfer";

@@ -66,6 +66,14 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Information about the items and shipping associated with the source.
+        /// Required for transactional credit (for example Klarna) sources
+        /// before you can charge it.
+        /// </summary>
+        [JsonProperty("source_order")]
+        public SourceSourceOrder SourceOrder { get; set; }
+
+        /// <summary>
         /// Information about the owner of the payment instrument that may be used or required by particular source types.
         /// </summary>
         [JsonProperty("owner")]
@@ -96,7 +104,7 @@ namespace Stripe
         public string Status { get; set; }
 
         /// <summary>
-        /// The type of the source. The type is a payment method, one of card, three_d_secure, giropay, sepa_debit, ideal, sofort, or bancontact.
+        /// The type of the source. The type is a payment method, one of card, three_d_secure, giropay, sepa_debit, ideal, klarna, sofort, or bancontact.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -146,6 +154,9 @@ namespace Stripe
 
         [JsonProperty("ideal")]
         public SourceIdeal Ideal { get; set; }
+
+        [JsonProperty("klarna")]
+        public SourceKlarna Klarna { get; set; }
 
         [JsonProperty("multibanco")]
         public SourceMultibanco Multibanco { get; set; }
