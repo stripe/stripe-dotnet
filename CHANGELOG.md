@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.21.0 - 2019-08-01
+* [#1723](https://github.com/stripe/stripe-dotnet/pull/1723) Add support for Klarna on Sources
+
 ## 27.20.0 - 2019-07-31
 * [#1727](https://github.com/stripe/stripe-dotnet/pull/1727) Add missing Radar events
 
