@@ -175,6 +175,15 @@ namespace Stripe
         public string StatementDescriptor { get; set; }
 
         /// <summary>
+        /// Provides information about the charge that customers see on their statements.
+        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
+        /// on the account to form the complete statement descriptor. Maximum 22 characters for the
+        /// concatenated descriptor.
+        /// </summary>
+        [JsonProperty("statement_descriptor_suffix")]
+        public string StatementDescriptorSuffix { get; set; }
+
+        /// <summary>
         /// The data with which to automatically create a Transfer when the payment is finalized.
         /// See the PaymentIntents <a href="https://stripe.com/docs/payments/payment-intents/use-cases#connected-accounts">
         /// use case for connected accounts</a> for details.

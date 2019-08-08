@@ -371,6 +371,15 @@ namespace Stripe
         public string StatementDescriptor { get; set; }
 
         /// <summary>
+        /// Provides information about the charge that customers see on their statements.
+        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
+        /// on the account to form the complete statement descriptor. Maximum 22 characters for the
+        /// concatenated descriptor.
+        /// </summary>
+        [JsonProperty("statement_descriptor_suffix")]
+        public string StatementDescriptorSuffix { get; set; }
+
+        /// <summary>
         /// Status of this PaymentIntent, one of <c>requires_payment_method</c>,
         /// <c>requires_confirmation</c>, <c>requires_action</c>, <c>processing</c>,
         /// <c>requires_capture</c>, <c>canceled</c>, or <c>succeeded</c>. Read more about each
