@@ -1,5 +1,11 @@
 # Changelog
 
+## 27.23.0 - 2019-08-08
+* [#1732](https://github.com/stripe/stripe-dotnet/pull/1732)
+  * Add support for `PaymentMethodDetails.Card.Moto` on `Charge`
+  * Add support `StatementDescriptorSuffix` on `Charge` and `PaymentIntent`
+  * Add support `SubscriptionData.ApplicationFeePercent` on Checkout `Session`
+
 ## 27.22.0 - 2019-08-08
 * [#1733](https://github.com/stripe/stripe-dotnet/pull/1733) Add missing `IHas*` interfaces everywhere
 
