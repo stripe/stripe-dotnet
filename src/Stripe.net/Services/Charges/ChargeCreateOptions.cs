@@ -116,6 +116,15 @@ namespace Stripe
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
+        /// <summary>
+        /// Provides information about the charge that customers see on their statements.
+        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
+        /// on the account to form the complete statement descriptor. Maximum 22 characters for the
+        /// concatenated descriptor.
+        /// </summary>
+        [JsonProperty("statement_descriptor_suffix")]
+        public string StatementDescriptorSuffix { get; set; }
+
         [JsonProperty("transfer_data")]
         public ChargeTransferDataOptions TransferData { get; set; }
     }
