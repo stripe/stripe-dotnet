@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CustomerBalanceTransactionUpdateOptions : BaseOptions
+    public class CustomerBalanceTransactionUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.

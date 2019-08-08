@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CreditNoteCreateOptions : BaseOptions
+    public class CreditNoteCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Credit note amount.

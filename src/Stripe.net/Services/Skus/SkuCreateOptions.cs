@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class SkuCreateOptions : SkuSharedOptions
+    public class SkuCreateOptions : SkuSharedOptions, IHasId
     {
         /// <summary>
         /// The identifier for the SKU. Must be unique. If not provided, an identifier will be randomly generated.

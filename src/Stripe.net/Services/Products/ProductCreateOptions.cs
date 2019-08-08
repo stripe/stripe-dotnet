@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class ProductCreateOptions : ProductSharedOptions
+    public class ProductCreateOptions : ProductSharedOptions, IHasId
     {
         /// <summary>
         /// The identifier for the product. Must be unique. If not provided, an identifier will be randomly generated.

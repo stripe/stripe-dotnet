@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SubscriptionItemOption : INestedOptions
+    public class SubscriptionItemOption : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// A set of key/value pairs that you can attach to a charge object. It can be useful for

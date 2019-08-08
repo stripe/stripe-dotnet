@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PayoutUpdateOptions : BaseOptions
+    public class PayoutUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// A set of key-value pairs that you can attach to a payout object. It can be useful for

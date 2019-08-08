@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class DisputeEvidenceOptions : INestedOptions
+    public class DisputeEvidenceOptions : INestedOptions, IHasMetadata
     {
         [JsonProperty("access_activity_log")]
         public string AccessActivityLog { get; set; }
@@ -43,6 +43,9 @@ namespace Stripe
 
         [JsonProperty("duplicate_charge_id")]
         public string DuplicateChargeFileId { get; set; }
+
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("product_description")]
         public string ProductDescription { get; set; }
@@ -85,8 +88,5 @@ namespace Stripe
 
         [JsonProperty("uncategorized_text")]
         public string UncategorizedText { get; set; }
-
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
     }
 }

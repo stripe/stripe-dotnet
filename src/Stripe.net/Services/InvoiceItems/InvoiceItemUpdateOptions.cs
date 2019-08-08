@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class InvoiceItemUpdateOptions : BaseOptions
+    public class InvoiceItemUpdateOptions : BaseOptions, IHasMetadata
     {
         [JsonProperty("amount")]
         public long? Amount { get; set; }

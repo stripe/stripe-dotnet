@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class BankAccountUpdateOptions : BaseOptions
+    public class BankAccountUpdateOptions : BaseOptions, IHasMetadata
     {
         [JsonProperty("account_holder_name")]
         public string AccountHolderName { get; set; }

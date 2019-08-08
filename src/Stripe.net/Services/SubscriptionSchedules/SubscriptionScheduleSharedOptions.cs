@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public abstract class SubscriptionScheduleSharedOptions : BaseOptions
+    public abstract class SubscriptionScheduleSharedOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// This field has been renamed to <c>CollectionMethod</c> and will be removed

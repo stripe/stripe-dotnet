@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SetupIntentUpdateOptions : BaseOptions
+    public class SetupIntentUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// <para>

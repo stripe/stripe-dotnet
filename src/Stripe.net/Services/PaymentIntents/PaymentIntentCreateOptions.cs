@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PaymentIntentCreateOptions : BaseOptions
+    public class PaymentIntentCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// A positive integer representing how much to charge in the smallest currency unit (e.g.,

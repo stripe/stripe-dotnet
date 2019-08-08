@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class CreditNoteUpdateOptions : BaseOptions
+    public class CreditNoteUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Credit note memo.

@@ -3,7 +3,7 @@ namespace Stripe.Issuing
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CardSharedOptions : BaseOptions
+    public class CardSharedOptions : BaseOptions, IHasMetadata
     {
         [JsonProperty("authorization_controls")]
         public AuthorizationControlsOptions AuthorizationControls { get; set; }

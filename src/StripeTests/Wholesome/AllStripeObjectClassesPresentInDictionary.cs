@@ -23,8 +23,9 @@ namespace StripeTests
         {
             List<string> results = new List<string>();
 
-            // Get all classes that implement IHasObject
-            var modelClasses = GetClassesWithInterface(typeof(IHasObject));
+            // Get all StripeEntity subclasses that implement IHasObject
+            var modelClasses = GetSubclassesOf(typeof(StripeEntity))
+                .Intersect(GetClassesWithInterface(typeof(IHasObject)));
 
             foreach (Type modelClass in modelClasses)
             {

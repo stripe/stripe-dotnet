@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public abstract class ProductSharedOptions : BaseOptions
+    public abstract class ProductSharedOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Whether or not the product is currently available for purchase. Defaults to true.

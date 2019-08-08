@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class FileLinkDataOptions : BaseOptions
+    public class FileLinkDataOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Set this to <c>true</c> to create a file link for the newly created file. Creating a

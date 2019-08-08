@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class CardCreateOptions : BaseOptions
+    public class CardCreateOptions : BaseOptions, IHasMetadata
     {
         [JsonProperty("default_for_currency")]
         public bool? DefaultForCurrency { get; set; }

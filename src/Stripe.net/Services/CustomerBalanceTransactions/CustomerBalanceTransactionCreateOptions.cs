@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CustomerBalanceTransactionCreateOptions : BaseOptions
+    public class CustomerBalanceTransactionCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// The amount to apply to the customer’s balance. Pass a negative amount to credit the

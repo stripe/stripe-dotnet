@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class PaymentMethodCreateOptions : BaseOptions
+    public class PaymentMethodCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Billing information associated with the PaymentMethod that may be used or required by
