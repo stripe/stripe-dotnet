@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class TaxRateUpdateOptions : BaseOptions
+    public class TaxRateUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Whether the tax rate is currently available for new subscriptions.

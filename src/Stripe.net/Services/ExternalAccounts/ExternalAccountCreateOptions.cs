@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ExternalAccountCreateOptions : BaseOptions
+    public class ExternalAccountCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// REQUIRED. Either a token, like the ones returned by

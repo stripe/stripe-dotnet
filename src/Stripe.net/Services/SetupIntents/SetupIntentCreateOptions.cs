@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SetupIntentCreateOptions : BaseOptions
+    public class SetupIntentCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Set to <c>true</c> to attempt to confirm this SetupIntent immediately. This parameter

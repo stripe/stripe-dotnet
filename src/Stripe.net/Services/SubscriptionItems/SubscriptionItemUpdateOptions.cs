@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SubscriptionItemUpdateOptions : SubscriptionItemSharedOptions
+    public class SubscriptionItemUpdateOptions : SubscriptionItemSharedOptions, IHasMetadata
     {
         /// <summary>
         /// A set of key/value pairs that you can attach to a subscription object. It can be useful for storing additional information about the subscription in a structured format.

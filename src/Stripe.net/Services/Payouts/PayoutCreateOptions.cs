@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PayoutCreateOptions : BaseOptions
+    public class PayoutCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// REQUIRED. A positive integer in cents representing how much to payout.

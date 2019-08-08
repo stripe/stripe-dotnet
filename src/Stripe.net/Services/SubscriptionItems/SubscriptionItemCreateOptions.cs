@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SubscriptionItemCreateOptions : SubscriptionItemSharedOptions
+    public class SubscriptionItemCreateOptions : SubscriptionItemSharedOptions, IHasMetadata
     {
         /// <summary>
         /// REQUIRED: The identifier of the subscription to modify.

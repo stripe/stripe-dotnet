@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class CustomerUpdateOptions : BaseOptions
+    public class CustomerUpdateOptions : BaseOptions, IHasMetadata
     {
         [Obsolete("Use Balance")]
         [JsonProperty("account_balance")]

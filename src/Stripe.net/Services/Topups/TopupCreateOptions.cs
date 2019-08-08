@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class TopupCreateOptions : BaseOptions
+    public class TopupCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// A positive integer in the smallest currency unit (e.g., 100 cents to top up $1.00 or 100 to top up ¥100, a 0-decimal currency) representing how much to top up your Stripe balance.

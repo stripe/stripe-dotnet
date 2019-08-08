@@ -5,7 +5,7 @@ namespace Stripe.Checkout
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SessionSubscriptionDataOptions : INestedOptions
+    public class SessionSubscriptionDataOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// List of items, each with an attached plan.

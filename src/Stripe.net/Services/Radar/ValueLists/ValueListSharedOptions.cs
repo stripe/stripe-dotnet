@@ -3,7 +3,7 @@ namespace Stripe.Radar
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class ValueListSharedOptions : BaseOptions
+    public class ValueListSharedOptions : BaseOptions, IHasMetadata
     {
         [JsonProperty("alias")]
         public string Alias { get; set; }

@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class RefundCreateOptions : BaseOptions
+    public class RefundCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// A positive integer in cents representing how much of this charge to refund. Can refund

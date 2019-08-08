@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SourceCreateOptions : BaseOptions
+    public class SourceCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// REQUIRED: The type of the source to create. One of type <see cref="SourceType"/>

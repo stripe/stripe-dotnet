@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CardUpdateOptions : BaseOptions
+    public class CardUpdateOptions : BaseOptions, IHasMetadata
     {
         [JsonProperty("address_city")]
         public string AddressCity { get; set; }

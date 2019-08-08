@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public abstract class PersonSharedOptions : BaseOptions
+    public abstract class PersonSharedOptions : BaseOptions, IHasMetadata
     {
         [JsonProperty("address")]
         public AddressOptions Address { get; set; }

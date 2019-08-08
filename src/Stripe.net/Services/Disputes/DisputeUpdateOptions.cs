@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class DisputeUpdateOptions : BaseOptions
+    public class DisputeUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Evidence to upload, to respond to a dispute. Updating any field in the hash will submit

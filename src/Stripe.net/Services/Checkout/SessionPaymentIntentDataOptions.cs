@@ -3,7 +3,7 @@ namespace Stripe.Checkout
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SessionPaymentIntentDataOptions : INestedOptions
+    public class SessionPaymentIntentDataOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The amount of the application fee (if any) that will be applied to the payment and

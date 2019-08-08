@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CardCreateNestedOptions : INestedOptions
+    public class CardCreateNestedOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The type of payment source. Should be "card".
