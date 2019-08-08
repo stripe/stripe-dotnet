@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class ShippingMethod : StripeEntity<ShippingMethod>
+    public class ShippingMethod : StripeEntity<ShippingMethod>, IHasId
     {
         [JsonProperty("id")]
         public string Id { get; set; }

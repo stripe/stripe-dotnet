@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class PlanCreateOptions : BaseOptions
+    public class PlanCreateOptions : BaseOptions, IHasId
     {
         [JsonProperty("id")]
         public string Id { get; set; }
