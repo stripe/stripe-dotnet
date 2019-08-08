@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.22.0 - 2019-08-08
+* [#1733](https://github.com/stripe/stripe-dotnet/pull/1733) Add missing `IHas*` interfaces everywhere
+
 ## 27.21.0 - 2019-08-01
 * [#1723](https://github.com/stripe/stripe-dotnet/pull/1723) Add support for Klarna on Sources
 
