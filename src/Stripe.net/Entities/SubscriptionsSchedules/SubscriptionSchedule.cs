@@ -203,12 +203,6 @@ namespace Stripe
         public SubscriptionScheduleRenewalInterval RenewalInterval { get; set; }
 
         /// <summary>
-        /// ID of the current revision of the subscription schedule.
-        /// </summary>
-        [JsonProperty("revision")]
-        public string RevisionId { get; set; }
-
-        /// <summary>
         /// Possible values are <c>active</c>, <c>canceled</c>, <c>completed</c>,
         /// <c>not_started</c>, <c>released</c> and <c>renewal_behavior</c>.
         /// </summary>
