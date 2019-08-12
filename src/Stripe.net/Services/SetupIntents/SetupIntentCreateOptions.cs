@@ -24,7 +24,7 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users. This
@@ -51,7 +51,7 @@ namespace Stripe
         /// attach to this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method")]
-        public string PaymentMethodId { get; set; }
+        public string PaymentMethod { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for this SetupIntent.

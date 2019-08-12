@@ -48,7 +48,7 @@ namespace StripeTests
 
             this.payOptions = new OrderPayOptions
             {
-                CustomerId = "cus_123",
+                Customer = "cus_123",
             };
 
             this.listOptions = new OrderListOptions

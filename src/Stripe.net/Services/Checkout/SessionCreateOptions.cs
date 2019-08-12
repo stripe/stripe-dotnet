@@ -42,7 +42,7 @@ namespace Stripe.Checkout
         /// <c>LineItems</c>. Usage with <c>SubscriptionData</c> is not yet available.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// A list of items your customer is purchasing.

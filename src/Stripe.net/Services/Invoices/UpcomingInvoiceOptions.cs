@@ -15,13 +15,13 @@ namespace Stripe
         /// previewed without a coupon by passing this value as an empty string.
         /// </summary>
         [JsonProperty("coupon")]
-        public string CouponId { get; set; }
+        public string Coupon { get; set; }
 
         /// <summary>
         /// REQUIRED
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// List of invoice items to add or update in the upcoming invoice preview.
@@ -62,7 +62,7 @@ namespace Stripe
         /// among the customer’s subscriptions.
         /// </summary>
         [JsonProperty("subscription")]
-        public string SubscriptionId { get; set; }
+        public string Subscription { get; set; }
 
         /// <summary>
         /// List of subscription items, each with an attached plan.

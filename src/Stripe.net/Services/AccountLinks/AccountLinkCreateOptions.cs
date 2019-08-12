@@ -8,7 +8,7 @@ namespace Stripe
     public class AccountLinkCreateOptions : BaseOptions
     {
         [JsonProperty("account")]
-        public string AccountId { get; set; }
+        public string Account { get; set; }
 
         [JsonProperty("collect")]
         public string Collect { get; set; }

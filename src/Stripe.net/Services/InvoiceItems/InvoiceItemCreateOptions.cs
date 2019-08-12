@@ -12,7 +12,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -21,7 +21,7 @@ namespace Stripe
         public bool? Discountable { get; set; }
 
         [JsonProperty("invoice")]
-        public string InvoiceId { get; set; }
+        public string Invoice { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -30,7 +30,7 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         [JsonProperty("subscription")]
-        public string SubscriptionId { get; set; }
+        public string Subscription { get; set; }
 
         /// <summary>
         /// Ids of the tax rates to apply to this invoice item.

@@ -28,7 +28,7 @@ namespace StripeTests
 
             this.attachOptions = new PaymentMethodAttachOptions
             {
-                CustomerId = "cus_123",
+                Customer = "cus_123",
             };
 
             this.createOptions = new PaymentMethodCreateOptions
@@ -46,7 +46,7 @@ namespace StripeTests
 
             this.listOptions = new PaymentMethodListOptions
             {
-                CustomerId = "cus_123",
+                Customer = "cus_123",
                 Type = "card",
             };
 
