@@ -5,9 +5,9 @@ namespace Stripe
     public class PersonVerificationDocumentOptions : INestedOptions
     {
         [JsonProperty("back")]
-        public string BackFileId { get; set; }
+        public string Back { get; set; }
 
         [JsonProperty("front")]
-        public string FrontFileId { get; set; }
+        public string Front { get; set; }
     }
 }

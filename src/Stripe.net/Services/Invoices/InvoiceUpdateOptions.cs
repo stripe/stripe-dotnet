@@ -43,7 +43,7 @@ namespace Stripe
         /// ID of the default payment method for the invoice.
         /// </summary>
         [JsonProperty("default_payment_method")]
-        public string DefaultPaymentMethodId { get; set; }
+        public string DefaultPaymentMethod { get; set; }
 
         [JsonProperty("default_source")]
         public string DefaultSource { get; set; }

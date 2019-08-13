@@ -27,7 +27,7 @@ namespace Stripe
         /// connected account.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// This is a <c>FPX</c> PaymentMethod available in Malaysia
@@ -48,7 +48,7 @@ namespace Stripe
         /// This only works with Stripe Connect.
         /// </summary>
         [JsonProperty("payment_method")]
-        public string PaymentMethodId { get; set; }
+        public string PaymentMethod { get; set; }
 
         /// <summary>
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with

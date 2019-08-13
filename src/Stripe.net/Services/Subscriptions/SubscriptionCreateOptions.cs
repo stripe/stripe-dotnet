@@ -27,7 +27,7 @@ namespace Stripe
         /// REQUIRED: The identifier of the customer to subscribe.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// List of subscription items, each with an attached plan.

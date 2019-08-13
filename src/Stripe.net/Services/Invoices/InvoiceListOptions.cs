@@ -24,7 +24,7 @@ namespace Stripe
         /// Only return invoices for the customer specified by this customer ID.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// A filter on the list based on the object <c>due_date</c> field. The value can be a
@@ -44,6 +44,6 @@ namespace Stripe
         /// Only return invoices for the subscription specified by this subscription ID.
         /// </summary>
         [JsonProperty("subscription")]
-        public string SubscriptionId { get; set; }
+        public string Subscription { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace StripeTests
 
             this.createOptions = new SubscriptionScheduleCreateOptions
             {
-                CustomerId = "cus_123",
+                Customer = "cus_123",
             };
 
             this.releaseOptions = new SubscriptionScheduleReleaseOptions

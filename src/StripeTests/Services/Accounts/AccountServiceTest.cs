@@ -65,7 +65,7 @@ namespace StripeTests
                 {
                     Branding = new AccountSettingsBrandingOptions
                     {
-                        LogoFileId = "file_123",
+                        Logo = "file_123",
                     },
                     CardPayments = new AccountSettingsCardPaymentsOptions
                     {

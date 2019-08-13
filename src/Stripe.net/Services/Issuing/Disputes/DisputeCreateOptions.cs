@@ -9,7 +9,7 @@ namespace Stripe.Issuing
         public long? Amount { get; set; }
 
         [JsonProperty("disputed_transaction")]
-        public string DisputedTransactionId { get; set; }
+        public string DisputedTransaction { get; set; }
 
         [JsonProperty("evidence")]
         public EvidenceOptions Evidence { get; set; }

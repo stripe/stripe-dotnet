@@ -33,17 +33,17 @@ namespace StripeTests
 
             this.createOptions = new SubscriptionCreateOptions
             {
-                CustomerId = "cus_123",
+                Customer = "cus_123",
                 Items = new List<SubscriptionItemOption>
                 {
                     new SubscriptionItemOption
                     {
-                        PlanId = "plan_123",
+                        Plan = "plan_123",
                         Quantity = 2
                     },
                     new SubscriptionItemOption
                     {
-                        PlanId = "plan_124",
+                        Plan = "plan_124",
                         Quantity = 3
                     },
                 },

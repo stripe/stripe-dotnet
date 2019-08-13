@@ -5,10 +5,10 @@ namespace Stripe.Issuing
     public class AuthorizationListOptions : ListOptionsWithCreated
     {
         [JsonProperty("cardholder")]
-        public string CardholderId { get; set; }
+        public string Cardholder { get; set; }
 
         [JsonProperty("card")]
-        public string CardId { get; set; }
+        public string Card { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }

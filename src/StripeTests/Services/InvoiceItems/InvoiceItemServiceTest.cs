@@ -28,7 +28,7 @@ namespace StripeTests
             {
                 Amount = 123,
                 Currency = "usd",
-                CustomerId = "cus_123",
+                Customer = "cus_123",
             };
 
             this.updateOptions = new InvoiceItemUpdateOptions

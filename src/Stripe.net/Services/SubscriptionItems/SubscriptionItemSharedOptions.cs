@@ -18,7 +18,7 @@ namespace Stripe
         /// REQUIRED: The identifier of the plan to add to the subscription.
         /// </summary>
         [JsonProperty("plan")]
-        public string PlanId { get; set; }
+        public string Plan { get; set; }
 
         /// <summary>
         /// Flag indicating whether to prorate switching plans during a billing cycle.

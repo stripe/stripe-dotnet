@@ -9,13 +9,13 @@ namespace Stripe
         /// The ID of an existing customer that will be charged in this request.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// A payment source to be charged, such as a credit card. If you also pass a customer ID, the source must be the ID of a source belonging to the customer. Otherwise, if you do not pass a customer ID, the source you provide must either be a token, like the ones returned by Stripe.js.
         /// </summary>
         [JsonProperty("source")]
-        public string SourceId { get; set; }
+        public string Source { get; set; }
 
         /// <summary>
         /// A fee in cents that will be applied to the order and transferred to the application owner's Stripe account. To use an application fee, the request must be made on behalf of another account, using the Stripe-Account header or OAuth key. For more information, see the application fees documentation.

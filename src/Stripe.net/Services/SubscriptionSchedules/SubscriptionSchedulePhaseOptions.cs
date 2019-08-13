@@ -37,7 +37,7 @@ namespace Stripe
         /// subscription will only affect invoices created for that particular subscription.
         /// </summary>
         [JsonProperty("coupon")]
-        public string CouponId { get; set; }
+        public string Coupon { get; set; }
 
         /// <summary>
         /// ID of the default payment method for the subscription schedule.

@@ -5,7 +5,7 @@ namespace Stripe
     public class PaymentMethodListOptions : ListOptions
     {
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

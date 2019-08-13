@@ -26,7 +26,7 @@ namespace StripeTests
 
             this.createOptions = new FileLinkCreateOptions
             {
-                FileId = "file_123",
+                File = "file_123",
             };
 
             this.updateOptions = new FileLinkUpdateOptions
@@ -39,7 +39,7 @@ namespace StripeTests
 
             this.listOptions = new FileLinkListOptions
             {
-                FileId = "file_123",
+                File = "file_123",
                 Limit = 1,
             };
         }

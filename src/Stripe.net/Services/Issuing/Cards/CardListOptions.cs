@@ -5,7 +5,7 @@ namespace Stripe.Issuing
     public class CardListOptions : ListOptionsWithCreated
     {
         [JsonProperty("cardholder")]
-        public string CardholderId { get; set; }
+        public string Cardholder { get; set; }
 
         [JsonProperty("exp_month")]
         public long? ExpMonth { get; set; }
@@ -17,7 +17,7 @@ namespace Stripe.Issuing
         public string Last4 { get; set; }
 
         [JsonProperty("source")]
-        public string SourceId { get; set; }
+        public string Source { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
