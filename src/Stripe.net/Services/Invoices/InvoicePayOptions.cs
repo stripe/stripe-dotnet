@@ -27,9 +27,9 @@ namespace Stripe
         /// ID of the payment method to use for paying the invoice.
         /// </summary>
         [JsonProperty("payment_method")]
-        public string PaymentMethodId { get; set; }
+        public string PaymentMethod { get; set; }
 
         [JsonProperty("source")]
-        public string SourceId { get; set; }
+        public string Source { get; set; }
     }
 }

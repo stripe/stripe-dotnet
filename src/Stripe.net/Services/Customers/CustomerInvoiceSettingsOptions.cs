@@ -15,7 +15,7 @@ namespace Stripe
         /// ID of the default payment method for the customer.
         /// </summary>
         [JsonProperty("default_payment_method")]
-        public string DefaultPaymentMethodId { get; set; }
+        public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
         /// Default footer to be displayed on invoices for this customer.

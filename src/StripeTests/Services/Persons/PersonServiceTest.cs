@@ -37,8 +37,8 @@ namespace StripeTests
                 {
                     Document = new PersonVerificationDocumentOptions
                     {
-                        BackFileId = "file_123",
-                        FrontFileId = "file_345",
+                        Back = "file_123",
+                        Front = "file_345",
                     },
                 },
             };

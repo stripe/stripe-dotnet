@@ -11,6 +11,6 @@ namespace Stripe
         /// The ID of the file.
         /// </summary>
         [JsonProperty("file")]
-        public string FileId { get; set; }
+        public string File { get; set; }
     }
 }
