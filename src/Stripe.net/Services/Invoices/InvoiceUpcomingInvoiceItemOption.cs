@@ -36,7 +36,7 @@ namespace Stripe
         /// Ids of the tax rates to apply to this invoice item.
         /// </summary>
         [JsonProperty("invoiceitem")]
-        public string InvoiceItemId { get; set; }
+        public string InvoiceItem { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to an object. It can be useful for storing

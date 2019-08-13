@@ -87,7 +87,7 @@ namespace Stripe
         /// The ID of an existing customer that will be charged in this request.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// A payment source to be charged. This can be the ID of a card (i.e., credit or debit

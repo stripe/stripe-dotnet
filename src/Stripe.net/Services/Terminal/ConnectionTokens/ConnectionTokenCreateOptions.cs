@@ -6,6 +6,6 @@ namespace Stripe.Terminal
     public class ConnectionTokenCreateOptions : BaseOptions
     {
         [JsonProperty("location")]
-        public string LocationId { get; set; }
+        public string Location { get; set; }
     }
 }

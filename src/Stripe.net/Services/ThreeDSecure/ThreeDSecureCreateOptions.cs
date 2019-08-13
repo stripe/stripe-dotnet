@@ -20,6 +20,6 @@ namespace Stripe
         public string CardTokenOrCardId { get; set; }
 
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
     }
 }

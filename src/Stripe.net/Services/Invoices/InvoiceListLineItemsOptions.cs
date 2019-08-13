@@ -6,18 +6,18 @@ namespace Stripe
     public class InvoiceListLineItemsOptions : ListOptions
     {
         [JsonProperty("coupon")]
-        public string CouponId { get; set; }
+        public string Coupon { get; set; }
 
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         [JsonProperty("subscription")]
-        public string SubscriptionId { get; set; }
+        public string Subscription { get; set; }
 
         [JsonProperty("subscription_items")]
         public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
 
         [JsonProperty("subscription_plan")]
-        public string SubscriptionPlanId { get; set; }
+        public string SubscriptionPlan { get; set; }
     }
 }

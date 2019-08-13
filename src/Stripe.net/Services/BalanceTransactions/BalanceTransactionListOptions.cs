@@ -18,10 +18,10 @@ namespace Stripe
         public string Currency { get; set; }
 
         [JsonProperty("payout")]
-        public string PayoutId { get; set; }
+        public string Payout { get; set; }
 
         [JsonProperty("source")]
-        public string SourceId { get; set; }
+        public string Source { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

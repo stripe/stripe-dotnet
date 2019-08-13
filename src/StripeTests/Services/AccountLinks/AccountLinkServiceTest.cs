@@ -21,7 +21,7 @@ namespace StripeTests
 
             this.createOptions = new AccountLinkCreateOptions
             {
-                AccountId = "acct_123",
+                Account = "acct_123",
                 Collect = "eventually_due",
                 FailureUrl = "https://stripe.com/failure",
                 SuccessUrl = "https://stripe.com/success",

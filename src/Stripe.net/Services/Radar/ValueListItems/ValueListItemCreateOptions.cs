@@ -9,6 +9,6 @@ namespace Stripe.Radar
         public string Value { get; set; }
 
         [JsonProperty("value_list")]
-        public string ValueListId { get; set; }
+        public string ValueList { get; set; }
     }
 }

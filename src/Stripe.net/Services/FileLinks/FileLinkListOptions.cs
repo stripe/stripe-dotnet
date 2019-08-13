@@ -8,6 +8,6 @@ namespace Stripe
         public bool? Expired { get; set; }
 
         [JsonProperty("file")]
-        public string FileId { get; set; }
+        public string File { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace Stripe
         /// ID of the invoice.
         /// </summary>
         [JsonProperty("invoice")]
-        public string InvoiceId { get; set; }
+        public string Invoice { get; set; }
 
         /// <summary>
         /// Credit note memo.
@@ -47,7 +47,7 @@ namespace Stripe
         /// ID of an existing refund to link this credit note to.
         /// </summary>
         [JsonProperty("refund")]
-        public string RefundId { get; set; }
+        public string Refund { get; set; }
 
         /// <summary>
         /// Amount to refund. If set, a refund will be created for the charge associated with the

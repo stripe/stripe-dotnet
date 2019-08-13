@@ -29,13 +29,13 @@ namespace Stripe
         /// ID of the default payment method for the subscription schedule.
         /// </summary>
         [JsonProperty("default_payment_method")]
-        public string DefaultPaymentMethodId { get; set; }
+        public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
         /// ID of the default source for the subscription schedule.
         /// </summary>
         [JsonProperty("default_source")]
-        public string DefaultSourceId { get; set; }
+        public string DefaultSource { get; set; }
 
         /// <summary>
         /// Behavior of the subscription schedule and underlying subscription when it ends. Possible

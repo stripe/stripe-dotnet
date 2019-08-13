@@ -39,7 +39,7 @@ namespace Stripe
         /// REQUIRED
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// The number of days from which the invoice is created until it is due. Only valid for
@@ -52,7 +52,7 @@ namespace Stripe
         /// ID of the default payment method for the invoice.
         /// </summary>
         [JsonProperty("default_payment_method")]
-        public string DefaultPaymentMethodId { get; set; }
+        public string DefaultPaymentMethod { get; set; }
 
         [JsonProperty("default_source")]
         public string DefaultSource { get; set; }
@@ -97,7 +97,7 @@ namespace Stripe
         /// invoice items that pertain to other subscriptions.
         /// </summary>
         [JsonProperty("subscription")]
-        public string SubscriptionId { get; set; }
+        public string Subscription { get; set; }
 
         /// <summary>
         /// The percent tax rate applied to the invoice, represented as a decimal number.
