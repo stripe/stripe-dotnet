@@ -5,6 +5,6 @@ namespace Stripe
     public class ApplicationFeeListOptions : ListOptionsWithCreated
     {
         [JsonProperty("charge")]
-        public string ChargeId { get; set; }
+        public string Charge { get; set; }
     }
 }

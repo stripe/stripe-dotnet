@@ -8,6 +8,6 @@ namespace Stripe
         /// Only return PaymentIntents for the customer specified by this customer ID.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
     }
 }

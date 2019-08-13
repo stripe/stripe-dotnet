@@ -11,7 +11,7 @@ namespace Stripe
         /// The identifier of the customer to create the subscription schedule for.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// Migrate an existing subscription to be managed by a subscription schedule. If this
@@ -20,7 +20,7 @@ namespace Stripe
         /// be set since their values will be inferred from the subscription.
         /// </summary>
         [JsonProperty("from_subscription")]
-        public string FromSubscriptionId { get; set; }
+        public string FromSubscription { get; set; }
 
         /// <summary>
         /// The date at which the subscription schedule starts.

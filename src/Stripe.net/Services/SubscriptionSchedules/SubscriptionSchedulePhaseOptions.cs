@@ -19,7 +19,7 @@ namespace Stripe
         /// subscription will only affect invoices created for that particular subscription.
         /// </summary>
         [JsonProperty("coupon")]
-        public string CouponId { get; set; }
+        public string Coupon { get; set; }
 
         /// <summary>
         /// Ids of the tax rates to apply to this phase on the subscription schedule.

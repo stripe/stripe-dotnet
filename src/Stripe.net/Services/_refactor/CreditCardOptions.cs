@@ -49,6 +49,6 @@ namespace Stripe
         /// This parameter is used to create a Source from an issuing card mostly in Test mode.
         /// </summary>
         [JsonProperty("issuing_card")]
-        public string IssuingCardId { get; set; }
+        public string IssuingCard { get; set; }
     }
 }

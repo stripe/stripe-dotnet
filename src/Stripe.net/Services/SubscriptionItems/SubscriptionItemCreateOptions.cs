@@ -9,7 +9,7 @@ namespace Stripe
         /// REQUIRED: The identifier of the subscription to modify.
         /// </summary>
         [JsonProperty("subscription")]
-        public string SubscriptionId { get; set; }
+        public string Subscription { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

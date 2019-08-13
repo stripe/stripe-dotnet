@@ -26,9 +26,9 @@ namespace StripeTests
 
             this.createOptions = new SubscriptionItemCreateOptions
             {
-                PlanId = "plan_123",
+                Plan = "plan_123",
                 Quantity = 1,
-                SubscriptionId = "sub_123",
+                Subscription = "sub_123",
             };
 
             this.updateOptions = new SubscriptionItemUpdateOptions
@@ -42,7 +42,7 @@ namespace StripeTests
             this.listOptions = new SubscriptionItemListOptions
             {
                 Limit = 1,
-                SubscriptionId = "sub_123",
+                Subscription = "sub_123",
             };
         }
 

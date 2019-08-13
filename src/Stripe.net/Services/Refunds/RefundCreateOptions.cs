@@ -16,7 +16,7 @@ namespace Stripe
         /// REQUIRED. The identifier of the charge to refund.
         /// </summary>
         [JsonProperty("charge")]
-        public string ChargeId { get; set; }
+        public string Charge { get; set; }
 
         /// <summary>
         /// A set of key-value pairs that you can attach to a <c>Refund</c> object. This can be

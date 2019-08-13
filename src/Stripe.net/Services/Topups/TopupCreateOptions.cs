@@ -38,7 +38,7 @@ namespace Stripe
         /// Top-ups</see>).
         /// </summary>
         [JsonProperty("source")]
-        public string SourceId { get; set; }
+        public string Source { get; set; }
 
         /// <summary>
         /// Extra information about a top-up for the source’s bank statement. Limited to 15 ASCII

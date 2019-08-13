@@ -11,6 +11,6 @@ namespace Stripe
         /// Only return plans for the given product.
         /// </summary>
         [JsonProperty("product")]
-        public string ProductId { get; set; }
+        public string Product { get; set; }
     }
 }
