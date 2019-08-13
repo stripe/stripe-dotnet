@@ -18,7 +18,7 @@ namespace Stripe
         /// attach to this SetupIntent
         /// </summary>
         [JsonProperty("payment_method")]
-        public string PaymentMethodId { get; set; }
+        public string PaymentMethod { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for this SetupIntent.

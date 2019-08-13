@@ -12,7 +12,7 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         [JsonProperty("plan")]
-        public string PlanId { get; set; }
+        public string Plan { get; set; }
 
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }

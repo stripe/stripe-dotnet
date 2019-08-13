@@ -15,7 +15,7 @@ namespace Stripe
         /// Customers</a>.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// The card this token will represent. If you also pass in a customer, the card must be the

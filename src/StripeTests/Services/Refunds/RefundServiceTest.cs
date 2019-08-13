@@ -27,7 +27,7 @@ namespace StripeTests
             this.createOptions = new RefundCreateOptions
             {
                 Amount = 123,
-                ChargeId = "ch_123",
+                Charge = "ch_123",
             };
 
             this.updateOptions = new RefundUpdateOptions

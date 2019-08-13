@@ -12,7 +12,7 @@ namespace Stripe
         public string BillingAddress { get; set; }
 
         [JsonProperty("cancellation_policy")]
-        public string CancellationPolicyFileId { get; set; }
+        public string CancellationPolicy { get; set; }
 
         [JsonProperty("cancellation_policy_disclosure")]
         public string CancellationPolicyDisclosure { get; set; }
@@ -21,7 +21,7 @@ namespace Stripe
         public string CancellationRebuttal { get; set; }
 
         [JsonProperty("customer_communication")]
-        public string CustomerCommunicationFileId { get; set; }
+        public string CustomerCommunication { get; set; }
 
         [JsonProperty("customer_email_address")]
         public string CustomerEmailAddress { get; set; }
@@ -33,16 +33,16 @@ namespace Stripe
         public string CustomerPurchaseIPAddress { get; set; }
 
         [JsonProperty("customer_signature")]
-        public string CustomerSignatureFileId { get; set; }
+        public string CustomerSignature { get; set; }
 
         [JsonProperty("duplicate_charge_documentation")]
-        public string DuplicateChargeDocumentationFileId { get; set; }
+        public string DuplicateChargeDocumentation { get; set; }
 
         [JsonProperty("duplicate_charge_explanation")]
         public string DuplicateChargeExplanation { get; set; }
 
         [JsonProperty("duplicate_charge_id")]
-        public string DuplicateChargeFileId { get; set; }
+        public string DuplicateChargeId { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -51,10 +51,10 @@ namespace Stripe
         public string ProductDescription { get; set; }
 
         [JsonProperty("receipt")]
-        public string ReceiptFileId { get; set; }
+        public string Receipt { get; set; }
 
         [JsonProperty("refund_policy")]
-        public string RefundPolicyFileId { get; set; }
+        public string RefundPolicy { get; set; }
 
         [JsonProperty("refund_policy_disclosure")]
         public string RefundPolicyDisclosure { get; set; }
@@ -66,7 +66,7 @@ namespace Stripe
         public string ServiceDate { get; set; }
 
         [JsonProperty("service_documentation")]
-        public string ServiceDocumentationFileId { get; set; }
+        public string ServiceDocumentation { get; set; }
 
         [JsonProperty("shipping_address")]
         public string ShippingAddress { get; set; }
@@ -84,7 +84,7 @@ namespace Stripe
         public string ShippingTrackingNumber { get; set; }
 
         [JsonProperty("uncategorized_file")]
-        public string UncategorizedFileId { get; set; }
+        public string UncategorizedFile { get; set; }
 
         [JsonProperty("uncategorized_text")]
         public string UncategorizedText { get; set; }

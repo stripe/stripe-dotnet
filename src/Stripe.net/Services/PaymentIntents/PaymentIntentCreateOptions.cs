@@ -65,7 +65,7 @@ namespace Stripe
         /// PaymentIntent.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
@@ -102,7 +102,7 @@ namespace Stripe
         /// attach to this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method")]
-        public string PaymentMethodId { get; set; }
+        public string PaymentMethod { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for this PaymentIntent.
@@ -162,10 +162,10 @@ namespace Stripe
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
-        /// ID of the Source to use with this PaymentIntent. Prefer using <see cref="PaymentMethodId"/>.
+        /// ID of the Source to use with this PaymentIntent. Prefer using <see cref="PaymentMethod"/>.
         /// </summary>
         [JsonProperty("source")]
-        public string SourceId { get; set; }
+        public string Source { get; set; }
 
         /// <summary>
         /// Extra information about a PaymentIntent. This will appear on your customer’s statement
