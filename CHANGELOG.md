@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.25.1 - 2019-08-14
+* [#1745](https://github.com/stripe/stripe-dotnet/pull/1745) Fix duplicate expand values issue
+
 ## 27.25.0 - 2019-08-14
 * [#1742](https://github.com/stripe/stripe-dotnet/pull/1742) Support passing `Metadata` on `BankAccount` creation
 
