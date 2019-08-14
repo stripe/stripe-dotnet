@@ -41,7 +41,7 @@ namespace Stripe
         public string Name { get; set; }
 
         [JsonProperty("metadata")]
-        public object MetaData { get; set; }
+        public object Metadata { get; set; }
 
         /* Issuing-specific parameter */
 

@@ -30,7 +30,7 @@ namespace Stripe
         public string CustomerName { get; set; }
 
         [JsonProperty("customer_purchase_ip")]
-        public string CustomerPurchaseIPAddress { get; set; }
+        public string CustomerPurchaseIP { get; set; }
 
         [JsonProperty("customer_signature")]
         public string CustomerSignature { get; set; }
