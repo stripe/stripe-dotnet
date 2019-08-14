@@ -21,6 +21,7 @@ namespace StripeTests
             service.ExpandMultiWordProperty = true;
             service.Get("foo");
 
+            Assert.Equal(2, client.LastOptions.Expand.Count);
             Assert.Contains("simple", client.LastOptions.Expand);
             Assert.Contains("multi_word_property", client.LastOptions.Expand);
         }
@@ -60,8 +61,18 @@ namespace StripeTests
 
             service.ExpandSimple = true;
             service.ExpandMultiWordProperty = true;
-            service.List();
+            var options = new ListOptions();
 
+            service.List(options);
+
+            Assert.Equal(2, client.LastOptions.Expand.Count);
+            Assert.Contains("data.simple", client.LastOptions.Expand);
+            Assert.Contains("data.multi_word_property", client.LastOptions.Expand);
+
+            // Do a second request to check that expand properties are not duplicated
+            service.List(options);
+
+            Assert.Equal(2, client.LastOptions.Expand.Count);
             Assert.Contains("data.simple", client.LastOptions.Expand);
             Assert.Contains("data.multi_word_property", client.LastOptions.Expand);
         }
