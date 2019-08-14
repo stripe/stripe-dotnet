@@ -1,5 +1,11 @@
 # Changelog
 
+## 28.0.0 - 2019-08-14
+* [#1747](https://github.com/stripe/stripe-dotnet/pull/1747) Move to API version [`2019-08-14`](https://stripe.com/docs/upgrades#2019-08-14)
+  * Rename `platform_payments` to `transfers` in `Account`
+  * Introduce `executive` as a relationship on `Person`
+* [#1746](https://github.com/stripe/stripe-dotnet/pull/1746) Fix argument names in `SetupIntentService` methods
+
 ## 27.25.1 - 2019-08-14
 * [#1745](https://github.com/stripe/stripe-dotnet/pull/1745) Fix duplicate expand values issue
 
