@@ -24,24 +24,24 @@ namespace Stripe
 
         public override string BasePath => "/v1/setup_intents";
 
-        public virtual SetupIntent Cancel(string paymentIntentId, SetupIntentCancelOptions options, RequestOptions requestOptions = null)
+        public virtual SetupIntent Cancel(string setupIntentId, SetupIntentCancelOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentIntentId)}/cancel", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/cancel", options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> CancelAsync(string paymentIntentId, SetupIntentCancelOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SetupIntent> CancelAsync(string setupIntentId, SetupIntentCancelOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentIntentId)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/cancel", options, requestOptions, cancellationToken);
         }
 
-        public virtual SetupIntent Confirm(string paymentIntentId, SetupIntentConfirmOptions options, RequestOptions requestOptions = null)
+        public virtual SetupIntent Confirm(string setupIntentId, SetupIntentConfirmOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentIntentId)}/confirm", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/confirm", options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> ConfirmAsync(string paymentIntentId, SetupIntentConfirmOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SetupIntent> ConfirmAsync(string setupIntentId, SetupIntentConfirmOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentIntentId)}/confirm", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/confirm", options, requestOptions, cancellationToken);
         }
 
         public virtual SetupIntent Create(SetupIntentCreateOptions options, RequestOptions requestOptions = null)
@@ -54,14 +54,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual SetupIntent Get(string paymentIntentId, SetupIntentGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual SetupIntent Get(string setupIntentId, SetupIntentGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(paymentIntentId, options, requestOptions);
+            return this.GetEntity(setupIntentId, options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> GetAsync(string paymentIntentId, SetupIntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SetupIntent> GetAsync(string setupIntentId, SetupIntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(paymentIntentId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(setupIntentId, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<SetupIntent> List(SetupIntentListOptions options = null, RequestOptions requestOptions = null)
@@ -79,14 +79,14 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-        public virtual SetupIntent Update(string paymentIntentId, SetupIntentUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual SetupIntent Update(string setupIntentId, SetupIntentUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(paymentIntentId, options, requestOptions);
+            return this.UpdateEntity(setupIntentId, options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> UpdateAsync(string paymentIntentId, SetupIntentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SetupIntent> UpdateAsync(string setupIntentId, SetupIntentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.UpdateEntityAsync(paymentIntentId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(setupIntentId, options, requestOptions, cancellationToken);
         }
     }
 }
