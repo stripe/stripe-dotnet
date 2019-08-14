@@ -1,5 +1,8 @@
 # Changelog
 
+## 27.25.0 - 2019-08-14
+* [#1742](https://github.com/stripe/stripe-dotnet/pull/1742) Support passing `Metadata` on `BankAccount` creation
+
 ## 27.24.0 - 2019-08-09
 * [#1734](https://github.com/stripe/stripe-dotnet/pull/1734) Remove `SubscriptionScheduleRevision`.
   * Note that this is technically a breaking change, however we've chosen to release it as a minor version in light of the fact that this resource and its API methods were virtually unused.
