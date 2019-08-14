@@ -77,7 +77,7 @@ namespace Stripe
         /// <summary>
         /// If your platform is designated for one
         /// <see href="https://stripe.com/docs/connect/capabilities-overview">Capability</see>
-        /// (either <c>card_payments</c> or <c>platform_payments</c>), you won’t need to specify
+        /// (either <c>card_payments</c> or <c>transfers</c>), you won’t need to specify
         /// additional Capabilities. However, if your platform supports both, you can add a
         /// Capability to an individual Express account by including the
         /// <see cref="SuggestedCapabilities"/> parameter in your OAuth link.

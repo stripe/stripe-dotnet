@@ -10,7 +10,7 @@ namespace Stripe
         /// using the <see cref="OAuthAuthorizeUrlOptions.SuggestedCapabilities"/> parameter, you
         /// can verify that Stripe applied the suggested Capability in this POST request by
         /// including <see cref="AssertCapabilities"/> and identifying that <c>card_payments</c> or
-        /// <c>platform_payments</c> match. A request error will be returned if the suggested
+        /// <c>transfers</c> match. A request error will be returned if the suggested
         /// <see href="https://stripe.com/docs/connect/capabilities-overview">Capability</see>
         /// doesn’t match the assertion: in this case, it’s recommended to end the onboarding flow
         /// with a failure.

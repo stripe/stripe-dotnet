@@ -19,10 +19,10 @@ namespace Stripe
         public string LegacyPayments { get; set; }
 
         /// <summary>
-        /// The status of the platform payments capability of the account, or whether your platform
-        /// can process charges on behalf of the account.
+        /// The status of the transfers capability of the account, or whether your platform can
+        /// transfer funds to the account.
         /// </summary>
-        [JsonProperty("platform_payments")]
-        public string PlatformPayments { get; set; }
+        [JsonProperty("transfers")]
+        public string Transfers { get; set; }
     }
 }
