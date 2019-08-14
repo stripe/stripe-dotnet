@@ -8,6 +8,6 @@ namespace Stripe
         public string Iban { get; set; }
 
         [JsonProperty("ideal")]
-        public string IdealSource { get; set; }
+        public string Ideal { get; set; }
     }
 }
