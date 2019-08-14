@@ -296,7 +296,16 @@ namespace Stripe
             }
 
             options = options ?? new BaseOptions();
-            options.AddRangeExpand(serviceExpansions);
+
+            if (options.Expand == null)
+            {
+                options.Expand = new List<string>();
+            }
+
+            // Compute the union instead of using `AddRangeExpand` to avoid adding duplicate
+            // values in the list, in case `SetupOptions` has already been called on this options
+            // instance.
+            options.Expand = options.Expand.Union(serviceExpansions).ToList();
 
             return options;
         }
