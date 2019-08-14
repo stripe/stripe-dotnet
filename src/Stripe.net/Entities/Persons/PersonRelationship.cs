@@ -18,6 +18,13 @@ namespace Stripe
         public bool Director { get; set; }
 
         /// <summary>
+        /// Whether the person has significant responsibility to control, manage, or direct the
+        /// organization.
+        /// </summary>
+        [JsonProperty("executive")]
+        public bool Executive { get; set; }
+
+        /// <summary>
         /// Whether the person is an owner of the account’s legal entity..
         /// </summary>
         [JsonProperty("owner")]

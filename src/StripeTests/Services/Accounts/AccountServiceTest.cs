@@ -51,7 +51,7 @@ namespace StripeTests
                 RequestedCapabilities = new List<string>
                 {
                     "card_payments",
-                    "platform_payments",
+                    "transfers",
                 },
                 Settings = new AccountSettingsOptions
                 {
