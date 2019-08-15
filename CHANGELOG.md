@@ -1,5 +1,10 @@
 # Changelog
 
+## 28.1.0 - 2019-08-15
+* [#1748](https://github.com/stripe/stripe-dotnet/pull/1748)
+  * Add support for `PIN` on Issuing `Card` to reflect the status of a card's PIN
+  * Add support for `Executive` on Person create, update and list
+
 ## 28.0.0 - 2019-08-14
 * [#1747](https://github.com/stripe/stripe-dotnet/pull/1747) Move to API version [`2019-08-14`](https://stripe.com/docs/upgrades#2019-08-14)
   * Rename `platform_payments` to `transfers` in `Account`
