@@ -1,5 +1,8 @@
 # Changelog
 
+## 28.2.0 - 2019-08-16
+* [#1750](https://github.com/stripe/stripe-dotnet/pull/1750) Make `ChargePaymentMethodDetailsCard.Moto` nullable
+
 ## 28.1.0 - 2019-08-15
 * [#1748](https://github.com/stripe/stripe-dotnet/pull/1748)
   * Add support for `PIN` on Issuing `Card` to reflect the status of a card's PIN
