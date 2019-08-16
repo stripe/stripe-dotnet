@@ -62,7 +62,7 @@ namespace Stripe
         /// True if this payment was marked as MOTO and out of scope for SCA.
         /// </summary>
         [JsonProperty("moto")]
-        public bool Moto { get; set; }
+        public bool? Moto { get; set; }
 
         /// <summary>
         /// Populated if this transaction used 3D Secure authentication.
