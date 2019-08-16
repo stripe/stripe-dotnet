@@ -231,7 +231,6 @@ namespace Stripe
             CancellationToken cancellationToken = default(CancellationToken))
             where T : IStripeEntity
         {
-            options = this.SetupOptions(options, IsStripeList<T>());
             requestOptions = this.SetupRequestOptions(requestOptions);
             return await this.Client.RequestAsync<T>(
                 method,
@@ -287,29 +286,6 @@ namespace Stripe
             }
         }
 
-        protected BaseOptions SetupOptions(BaseOptions options, bool isListMethod)
-        {
-            var serviceExpansions = this.Expansions(isListMethod);
-            if (!serviceExpansions.Any())
-            {
-                return options;
-            }
-
-            options = options ?? new BaseOptions();
-
-            if (options.Expand == null)
-            {
-                options.Expand = new List<string>();
-            }
-
-            // Compute the union instead of using `AddRangeExpand` to avoid adding duplicate
-            // values in the list, in case `SetupOptions` has already been called on this options
-            // instance.
-            options.Expand = options.Expand.Union(serviceExpansions).ToList();
-
-            return options;
-        }
-
         protected RequestOptions SetupRequestOptions(RequestOptions requestOptions)
         {
             if (requestOptions == null)
@@ -344,22 +320,6 @@ namespace Stripe
             var typeInfo = typeof(T).GetTypeInfo();
             return typeInfo.IsGenericType
                 && typeInfo.GetGenericTypeDefinition() == typeof(StripeList<>);
-        }
-
-        /// <summary>
-        /// Returns the list of attributes to expand in requests sent by the service.
-        /// </summary>
-        /// <param name="isListMethod">Whether the request is a list request or not.</param>
-        /// <returns>The list of attributes to expand.</returns>
-        public List<string> Expansions(bool isListMethod)
-        {
-            return this.GetType()
-                .GetRuntimeProperties()
-                .Where(p => p.Name.StartsWith("Expand") && p.PropertyType == typeof(bool))
-                .Where(p => (bool)p.GetValue(this, null))
-                .Select(p => StringUtils.ToSnakeCase(p.Name.Substring("Expand".Length)))
-                .Select(i => isListMethod ? $"data.{i}" : i)
-                .ToList();
         }
     }
 }
