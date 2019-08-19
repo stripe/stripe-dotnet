@@ -7,7 +7,7 @@ namespace Stripe
     public class SourceCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// REQUIRED: The type of the source to create. One of type <see cref="SourceType"/>
+        /// REQUIRED: The type of the source to create. One of type <see cref="SourceType"/>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -29,7 +29,7 @@ namespace Stripe
 
         /// <summary>
         /// The customer associated with the Source that you are trying to share with a Connected account.
-        /// This only works with Stripe Connect as documented here: https://stripe.com/docs/sources/connect#shared-card-sources
+        /// This only works with Stripe Connect as documented <a href="https://stripe.com/docs/sources/connect#shared-card-sources">here</a>.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
@@ -54,7 +54,7 @@ namespace Stripe
 
         /// <summary>
         /// The id of the Source that you are trying to share with a Connected account.
-        /// This only works with Stripe Connect as documented here: https://stripe.com/docs/sources/connect#shared-card-sources
+        /// This only works with Stripe Connect as documented <a href="https://stripe.com/docs/sources/connect#shared-card-sources">here</a>.
         /// </summary>
         [JsonProperty("original_source")]
         public string OriginalSource { get; set; }

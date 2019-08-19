@@ -8,9 +8,10 @@ namespace StripeTests
 
     public class StripeMockFixture : IDisposable
     {
-        /// <value>Minimum required version of stripe-mock</value>
+        /// <value>Minimum required version of stripe-mock.</value>
         /// <remarks>
-        /// If you bump this, don't forget to bump `STRIPE_MOCK_VERSION` in `appveyor.yml` as well.
+        /// If you bump this, don't forget to bump <c>STRIPE_MOCK_VERSION</c> in <c>appveyor.yml</c>
+        /// as well.
         /// </remarks>
         private const string MockMinimumVersion = "0.67.0";
 
@@ -43,6 +44,7 @@ namespace StripeTests
         /// The <see cref="IHttpClient"/> client to use. If <c>null</c>, an HTTP client will be
         /// created with default parameters.
         /// </param>
+        /// <returns>The new <see cref="StripeClient"/> instance.</returns>
         public StripeClient BuildStripeClient(IHttpClient httpClient = null)
         {
             return new StripeClient(
@@ -59,9 +61,9 @@ namespace StripeTests
         /// Use the special <c>*</c> character to specify that all fields should be
         /// expanded.
         /// </summary>
-        /// <param name="path">API path to use to get a fixture for stripe-mock</param>
-        /// <param name="expansions">Set of expansions that should be applied</param>
-        /// <returns>Fixture data encoded as JSON</returns>
+        /// <param name="path">API path to use to get a fixture for stripe-mock.</param>
+        /// <param name="expansions">Set of expansions that should be applied.</param>
+        /// <returns>Fixture data encoded as JSON.</returns>
         public string GetFixture(string path, string[] expansions = null)
         {
             string url = $"http://localhost:{this.port}{path}";
@@ -107,7 +109,7 @@ namespace StripeTests
         /// </summary>
         /// <param name="a">A version string (e.g. "1.2.3").</param>
         /// <param name="b">Another version string.</param>
-        /// <returns>-1 if a > b, 1 if a < b, 0 if a == b</returns>
+        /// <returns>-1 if a &gt; b, 1 if a &lt; b, 0 if a == b.</returns>
         private static int CompareVersions(string a, string b)
         {
             var version1 = new Version(a);

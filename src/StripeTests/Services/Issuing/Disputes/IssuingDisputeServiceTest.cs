@@ -33,7 +33,7 @@ namespace StripeTests.Issuing
                     {
                         DisputeExplanation = "Explanation",
                         UncategorizedFile = "file_123",
-                    }
+                    },
                 },
                 Reason = "fraudulent",
             };

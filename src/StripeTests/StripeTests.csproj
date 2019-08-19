@@ -6,6 +6,7 @@
     <AssemblyName>StripeTests</AssemblyName>
     <PackageId>StripeTests</PackageId>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
@@ -18,7 +19,7 @@
     <PackageReference Include="coverlet.msbuild" Version="2.7.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.1.0" />
     <PackageReference Include="Moq" Version="4.10.1" />
-    <PackageReference Include="Stylecop.Analyzers" Version="1.0.2">
+    <PackageReference Include="Stylecop.Analyzers" Version="1.1.118">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

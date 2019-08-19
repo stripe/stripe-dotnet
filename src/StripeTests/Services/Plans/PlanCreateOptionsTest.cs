@@ -23,7 +23,7 @@ namespace StripeTests
                     {
                         UnitAmount = 2000,
                         UpTo = PlanTierUpTo.Inf,
-                    }
+                    },
                 },
             };
 
@@ -51,7 +51,7 @@ namespace StripeTests
                         UnitAmountDecimal = 0.004m,
                         FlatAmountDecimal = 0.24m,
                         UpTo = PlanTierUpTo.Inf,
-                    }
+                    },
                 },
             };
 

@@ -22,7 +22,7 @@ namespace Stripe
         /// <summary>
         /// REQUIRED. The purpose of the uploaded file. Possible values are <c>business_logo</c>,
         /// <c>customer_signature</c>, <c>dispute_evidence</c>, <c>identity_document</c>,
-        /// <c>pci_document</c>, or <c>tax_document_user_upload</c>
+        /// <c>pci_document</c>, or <c>tax_document_user_upload</c>.
         /// </summary>
         [JsonProperty("purpose")]
         public string Purpose { get; set; }

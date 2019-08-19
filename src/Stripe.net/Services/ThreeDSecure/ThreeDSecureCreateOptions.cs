@@ -14,7 +14,7 @@ namespace Stripe
         public string ReturnUrl { get; set; }
 
         /// <summary>
-        /// If you pass a card id, you must also pass the customer id
+        /// If you pass a card id, you must also pass the customer id.
         /// </summary>
         [JsonProperty("card")]
         public string CardTokenOrCardId { get; set; }

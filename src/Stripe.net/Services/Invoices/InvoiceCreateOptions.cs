@@ -36,7 +36,7 @@ namespace Stripe
         public List<InvoiceCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
-        /// REQUIRED
+        /// REQUIRED.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }

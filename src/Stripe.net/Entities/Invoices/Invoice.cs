@@ -22,7 +22,7 @@ namespace Stripe
 
         /// <summary>
         /// The public name of the business associated with this invoice, most often the business
-        /// creating the invoice
+        /// creating the invoice.
         /// </summary>
         [JsonProperty("account_name")]
         public string AccountName { get; set; }

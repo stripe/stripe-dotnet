@@ -16,8 +16,8 @@ namespace Stripe
         /// <summary>
         /// The amount of the application fee (if any) that will be applied to the payment and
         /// transferred to the application owner’s Stripe account. For more information, see the
-        /// PaymentIntents \<a href="https://stripe.com/docs/payments/payment-intents/use-cases#connected-accounts">use
-        /// case for connected accounts</a>/
+        /// PaymentIntents <a href="https://stripe.com/docs/payments/payment-intents/use-cases#connected-accounts">use
+        /// case for connected accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
