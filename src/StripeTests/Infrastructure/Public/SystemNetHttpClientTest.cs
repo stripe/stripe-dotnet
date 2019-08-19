@@ -54,7 +54,7 @@ namespace StripeTests
                 Name = "MyAwesomeApp",
                 PartnerId = "pp_123",
                 Version = "1.2.34",
-                Url = "https://myawesomeapp.info"
+                Url = "https://myawesomeapp.info",
             };
 
             var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);

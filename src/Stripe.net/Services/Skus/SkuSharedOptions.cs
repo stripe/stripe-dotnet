@@ -12,8 +12,9 @@ namespace Stripe
         public bool? Active { get; set; }
 
         /// <summary>
-        /// A dictionary of attributes and values for the attributes defined by the product. If, for example, a product’s attributes are ["size", "gender"], a valid SKU has the following dictionary of attributes: {"size": "Medium", "gender": "Unisex"}.
-        /// This dictionary encoding is handled in a custom parser in DictionaryPlugin.cs
+        /// A dictionary of attributes and values for the attributes defined by the product. If, for
+        /// example, a product’s attributes are <c>["size", "gender"]</c>, a valid SKU has the
+        /// following dictionary of attributes: <c>{"size": "Medium", "gender": "Unisex"}</c>.
         /// </summary>
         [JsonProperty("attributes")]
         public Dictionary<string, string> Attributes { get; set; }

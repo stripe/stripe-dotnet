@@ -113,7 +113,7 @@ namespace Stripe
         public static implicit operator AnyOf<T1, T2>(T2 value) => value == null ? null : new AnyOf<T1, T2>(value);
 
         /// <summary>
-        /// Converts an <see cref="AnyOf{T1, T2}"/> object to a value of type <c>T1</c>,
+        /// Converts an <see cref="AnyOf{T1, T2}"/> object to a value of type <c>T1</c>.
         /// </summary>
         /// <param name="anyOf">The <see cref="AnyOf{T1, T2}"/> object to convert.</param>
         /// <returns>
@@ -253,7 +253,7 @@ namespace Stripe
         public static implicit operator AnyOf<T1, T2, T3>(T3 value) => value == null ? null : new AnyOf<T1, T2, T3>(value);
 
         /// <summary>
-        /// Converts an <see cref="AnyOf{T1, T2, T3}"/> object to a value of type <c>T1</c>,
+        /// Converts an <see cref="AnyOf{T1, T2, T3}"/> object to a value of type <c>T1</c>.
         /// </summary>
         /// <param name="anyOf">The <see cref="AnyOf{T1, T2, T3}"/> object to convert.</param>
         /// <returns>
@@ -263,7 +263,7 @@ namespace Stripe
         public static implicit operator T1(AnyOf<T1, T2, T3> anyOf) => anyOf.value1;
 
         /// <summary>
-        /// Converts an <see cref="AnyOf{T1, T2, T3}"/> object to a value of type <c>T2</c>,
+        /// Converts an <see cref="AnyOf{T1, T2, T3}"/> object to a value of type <c>T2</c>.
         /// </summary>
         /// <param name="anyOf">The <see cref="AnyOf{T1, T2, T3}"/> object to convert.</param>
         /// <returns>
@@ -273,7 +273,7 @@ namespace Stripe
         public static implicit operator T2(AnyOf<T1, T2, T3> anyOf) => anyOf.value2;
 
         /// <summary>
-        /// Converts an <see cref="AnyOf{T1, T2, T3}"/> object to a value of type <c>T3</c>,
+        /// Converts an <see cref="AnyOf{T1, T2, T3}"/> object to a value of type <c>T3</c>.
         /// </summary>
         /// <param name="anyOf">The <see cref="AnyOf{T1, T2, T3}"/> object to convert.</param>
         /// <returns>

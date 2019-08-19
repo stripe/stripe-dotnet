@@ -71,7 +71,7 @@ namespace StripeTests
                 {
                     Id = "id_123",
                     Bar = 42,
-                }
+                },
             };
 
             var expected =

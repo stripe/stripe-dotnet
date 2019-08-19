@@ -457,7 +457,7 @@ namespace Stripe
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
-        /// The status of the payment is either succeeded, pending, or failed
+        /// The status of the payment is either <c>succeeded</c>, <c>pending</c>, or <c>failed</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

@@ -18,7 +18,7 @@ namespace Stripe
         public string Coupon { get; set; }
 
         /// <summary>
-        /// REQUIRED
+        /// REQUIRED.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }

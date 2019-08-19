@@ -104,7 +104,7 @@ namespace StripeTests
 
             this.rejectOptions = new AccountRejectOptions
             {
-                Reason = "terms_of_service"
+                Reason = "terms_of_service",
             };
 
             this.listOptions = new AccountListOptions

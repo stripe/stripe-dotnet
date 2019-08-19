@@ -42,7 +42,7 @@ namespace Stripe
 
         /// <summary>
         /// <para>The order that this return includes items from.</para>
-        /// <para>Expandable</para>
+        /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
         public string OrderId
@@ -67,7 +67,7 @@ namespace Stripe
 
         /// <summary>
         /// <para>The ID of the refund issued for this return.</para>
-        /// <para>Expandable</para>
+        /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
         public string RefundId { get; set; }

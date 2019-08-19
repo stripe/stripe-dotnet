@@ -6,7 +6,7 @@ namespace Stripe
     public class ChargeCaptureOptions : BaseOptions
     {
         /// <summary>
-        /// Amount to capture on the authorization
+        /// Amount to capture on the authorization.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }

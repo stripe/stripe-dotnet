@@ -23,7 +23,7 @@ namespace StripeTests
                     {
                         UnitAmount = 2000,
                         UpTo = PlanTierUpTo.Inf,
-                    }
+                    },
                 },
             };
 

@@ -56,7 +56,7 @@ namespace StripeTests.Checkout
                             PostalCode = "90210",
                             Country = "US",
                         },
-                    }
+                    },
                 },
                 PaymentMethodTypes = new List<string>
                 {

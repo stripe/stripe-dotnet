@@ -28,7 +28,7 @@ namespace Stripe
         /// useful for storing additional information about the external account in a structured
         /// format.
         /// </summary>
-         [JsonProperty("metadata")]
+        [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
    }
 }

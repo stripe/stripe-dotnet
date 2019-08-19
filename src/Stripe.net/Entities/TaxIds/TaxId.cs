@@ -71,7 +71,7 @@ namespace Stripe
 
         /// <summary>
         /// Type of the tax ID, one of <c>au_abn</c>, <c>eu_vat</c>, <c>in_gst</c>, <c>no_vat</c>,
-        /// <c>nz_gst</c>, or <c>unknown</c>
+        /// <c>nz_gst</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
