@@ -23,7 +23,7 @@ namespace StripeTests
 
             this.createOptions = new LoginLinkCreateOptions
             {
-                RedirectUrl = "https://stripe.com/redirect?param=value"
+                RedirectUrl = "https://stripe.com/redirect?param=value",
             };
         }
 

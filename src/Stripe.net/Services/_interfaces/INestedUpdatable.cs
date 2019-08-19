@@ -3,12 +3,12 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public interface INestedUpdatable<T, O>
-        where T : IStripeEntity, IHasId
-        where O : BaseOptions
+    public interface INestedUpdatable<TEntity, TOptions>
+        where TEntity : IStripeEntity, IHasId
+        where TOptions : BaseOptions
     {
-        T Update(string parentId, string id, O updateOptions, RequestOptions requestOptions = null);
+        TEntity Update(string parentId, string id, TOptions updateOptions, RequestOptions requestOptions = null);
 
-        Task<T> UpdateAsync(string parentId, string id, O updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<TEntity> UpdateAsync(string parentId, string id, TOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

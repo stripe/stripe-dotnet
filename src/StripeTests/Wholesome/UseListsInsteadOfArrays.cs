@@ -9,8 +9,8 @@ namespace StripeTests
     using Xunit;
 
     /// <summary>
-    /// This wholesome test ensures that lists (as in `List<>`) are used instead of arrays (`[]`)
-    /// in Stripe entities and options classes.
+    /// This wholesome test ensures that lists (as in <see cref="List{T}"/>) are used instead of
+    /// arrays (<c>[]</c>) in Stripe entities and options classes.
     /// </summary>
     public class UseListsInsteadOfArrays : WholesomeTest
     {

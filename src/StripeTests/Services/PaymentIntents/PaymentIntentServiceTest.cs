@@ -53,7 +53,7 @@ namespace StripeTests
                 {
                     Amount = 100,
                     Destination = "acct_123",
-                }
+                },
             };
 
             this.listOptions = new PaymentIntentListOptions

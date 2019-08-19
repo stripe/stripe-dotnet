@@ -30,7 +30,7 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// This is a <c>FPX</c> PaymentMethod available in Malaysia
+        /// This is a <c>FPX</c> PaymentMethod available in Malaysia.
         /// </summary>
         [JsonProperty("fpx")]
         public PaymentMethodFpxCreateOptions Fpx { get; set; }

@@ -33,7 +33,7 @@ namespace Stripe
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
-        /// new billing period
+        /// new billing period.
         /// </summary>
         [JsonProperty("billing_thresholds")]
         public SubscriptionBillingThresholds BillingThresholds { get; set; }

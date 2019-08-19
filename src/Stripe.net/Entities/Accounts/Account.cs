@@ -130,7 +130,7 @@ namespace Stripe
         public AccountSettings Settings { get; set; }
 
         /// <summary>
-        /// Details on the acceptance of the Stripe Services Agreement
+        /// Details on the acceptance of the Stripe Services Agreement.
         /// </summary>
         [JsonProperty("tos_acceptance")]
         public AccountTosAcceptance TosAcceptance { get; set; }

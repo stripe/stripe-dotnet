@@ -52,8 +52,8 @@ namespace StripeTests
                         {
                             BackFileId = "file_back",
                             FrontFileId = "file_front",
-                        }
-                    }
+                        },
+                    },
                 },
                 ExternalAccount = "tok_visa_debit",
                 RequestedCapabilities = new List<string>
@@ -112,7 +112,7 @@ namespace StripeTests
 
             this.rejectOptions = new AccountRejectOptions
             {
-                Reason = "terms_of_service"
+                Reason = "terms_of_service",
             };
 
             this.listOptions = new AccountListOptions

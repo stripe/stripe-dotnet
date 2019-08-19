@@ -90,7 +90,8 @@ namespace Stripe
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// The status of the payment is either succeeded, pending, or failed
+        /// The status of the top-up is either <c>canceled</c>, <c>failed</c>, <c>pending</c>,
+        /// <c>reversed</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

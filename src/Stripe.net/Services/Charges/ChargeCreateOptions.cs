@@ -47,7 +47,7 @@ namespace Stripe
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
-        /// Extra information about the charge passing level III data to card networks
+        /// Extra information about the charge passing level III data to card networks.
         /// </summary>
         [JsonProperty("level3")]
         public ChargeLevel3Options Level3 { get; set; }

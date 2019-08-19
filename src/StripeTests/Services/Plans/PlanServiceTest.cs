@@ -57,7 +57,7 @@ namespace StripeTests
                     {
                         UnitAmountDecimal = 0.03m,
                         UpTo = PlanTierUpTo.Inf,
-                    }
+                    },
                 },
             };
 

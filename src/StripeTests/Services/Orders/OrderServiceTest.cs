@@ -33,9 +33,9 @@ namespace StripeTests
                     new OrderItemOptions
                     {
                         Parent = "sku_123",
-                        Quantity = 1
+                        Quantity = 1,
                     },
-                }
+                },
             };
 
             this.updateOptions = new OrderUpdateOptions

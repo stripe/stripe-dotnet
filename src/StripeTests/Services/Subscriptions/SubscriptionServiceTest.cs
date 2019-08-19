@@ -39,12 +39,12 @@ namespace StripeTests
                     new SubscriptionItemOption
                     {
                         Plan = "plan_123",
-                        Quantity = 2
+                        Quantity = 2,
                     },
                     new SubscriptionItemOption
                     {
                         Plan = "plan_124",
-                        Quantity = 3
+                        Quantity = 3,
                     },
                 },
             };

@@ -35,7 +35,7 @@ namespace Stripe
 
         /// <summary>
         /// <para>The ID of the payment used to pay for the order. Present if the order status is paid, fulfilled, or refunded.</para>
-        /// <para>Expandable</para>
+        /// <para>Expandable.</para>
         /// </summary>
         [JsonIgnore]
         public string ChargeId

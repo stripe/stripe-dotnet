@@ -14,7 +14,8 @@ namespace StripeTests
         private static int port = -1;
 
         /// <summary>
-        /// The port on which stripe-mock is listening, or -1 if no stripe-mock process was started.
+        /// Gets the port on which stripe-mock is listening, or -1 if no stripe-mock process was
+        /// started.
         /// </summary>
         public static int Port { get => port; }
 

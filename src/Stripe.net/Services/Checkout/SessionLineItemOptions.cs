@@ -6,7 +6,7 @@ namespace Stripe.Checkout
     public class SessionLineItemOptions : INestedOptions
     {
         /// <summary>
-        /// Per item amount to be collected
+        /// The amount to be collected per unit of the line item.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
