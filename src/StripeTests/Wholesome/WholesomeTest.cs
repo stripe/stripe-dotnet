@@ -17,7 +17,9 @@ namespace StripeTests
         /// <summary>
         /// Verifies that a list of strings is empty. If not, display the sorted contents of the
         /// list and fail the test with the provided message.
-        /// <summary>
+        /// </summary>
+        /// <param name="results">The list of strings to check.</param>
+        /// <param name="message">The message to display if the list is not empty.</param>
         protected static void AssertEmpty(List<string> results, string message)
         {
             if (results.Any())
@@ -40,6 +42,8 @@ namespace StripeTests
         /// <summary>
         /// Returns the list of classes that are subclasses of the provided type.
         /// </summary>
+        /// <param name="parentClass">The parent class.</param>
+        /// <returns>The list of classes that are subclasses of the provided type.</returns>
         protected static List<Type> GetSubclassesOf(Type parentClass)
         {
             var assembly = parentClass.GetTypeInfo().Assembly;
@@ -52,6 +56,8 @@ namespace StripeTests
         /// <summary>
         /// Returns the list of classes that implement the provided interface.
         /// </summary>
+        /// <param name="implementedInterface">The implemented interface.</param>
+        /// <returns>The list of classes that implement the provided interface.</returns>
         protected static List<Type> GetClassesWithInterface(Type implementedInterface)
         {
             var assembly = implementedInterface.GetTypeInfo().Assembly;

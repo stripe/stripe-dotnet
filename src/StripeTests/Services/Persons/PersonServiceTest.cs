@@ -51,7 +51,7 @@ namespace StripeTests
                     AccountOpener = true,
                     Owner = true,
                     PercentOwnership = 30.5m,
-                }
+                },
             };
 
             this.listOptions = new PersonListOptions
@@ -60,7 +60,7 @@ namespace StripeTests
                 Relationship = new PersonRelationshipListOptions
                 {
                     Director = true,
-                }
+                },
             };
         }
 

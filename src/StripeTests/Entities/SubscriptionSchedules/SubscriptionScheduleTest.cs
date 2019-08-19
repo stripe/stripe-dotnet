@@ -30,7 +30,7 @@ namespace StripeTests
             {
               "customer",
               "phases.plans.plan",
-              "subscription"
+              "subscription",
             };
 
             string json = this.GetFixture("/v1/subscription_schedules/sub_sched_123", expansions);

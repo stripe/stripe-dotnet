@@ -56,7 +56,7 @@ namespace Stripe
         #region Expandable Product
 
         /// <summary>
-        /// ID of the product linked to this plan
+        /// ID of the product linked to this plan.
         /// </summary>
         [JsonIgnore]
         public string ProductId

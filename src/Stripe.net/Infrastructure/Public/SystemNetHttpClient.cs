@@ -44,7 +44,7 @@ namespace Stripe
         /// </param>
         /// <param name="maxNetworkRetries">
         /// The maximum number of times the client will retry requests that fail due to an
-        /// intermittent problem
+        /// intermittent problem.
         /// </param>
         /// <param name="appInfo">
         /// Information about the "app" which this integration belongs to. This should be reserved

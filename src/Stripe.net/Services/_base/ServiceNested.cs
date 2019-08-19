@@ -7,8 +7,8 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public abstract class ServiceNested<EntityReturned> : Service<EntityReturned>
-        where EntityReturned : IStripeEntity
+    public abstract class ServiceNested<TEntityReturned> : Service<TEntityReturned>
+        where TEntityReturned : IStripeEntity
     {
         protected ServiceNested()
             : base(null)
@@ -20,7 +20,7 @@ namespace Stripe
         {
         }
 
-        protected EntityReturned CreateNestedEntity(
+        protected TEntityReturned CreateNestedEntity(
             string parentId,
             BaseOptions options,
             RequestOptions requestOptions)
@@ -32,7 +32,7 @@ namespace Stripe
                 requestOptions);
         }
 
-        protected Task<EntityReturned> CreateNestedEntityAsync(
+        protected Task<TEntityReturned> CreateNestedEntityAsync(
             string parentId,
             BaseOptions options,
             RequestOptions requestOptions,
@@ -46,7 +46,7 @@ namespace Stripe
                 cancellationToken);
         }
 
-        protected EntityReturned DeleteNestedEntity(
+        protected TEntityReturned DeleteNestedEntity(
             string parentId,
             string id,
             BaseOptions options,
@@ -59,7 +59,7 @@ namespace Stripe
                 requestOptions);
         }
 
-        protected Task<EntityReturned> DeleteNestedEntityAsync(
+        protected Task<TEntityReturned> DeleteNestedEntityAsync(
             string parentId,
             string id,
             BaseOptions options,
@@ -74,7 +74,7 @@ namespace Stripe
                 cancellationToken);
         }
 
-        protected EntityReturned GetNestedEntity(
+        protected TEntityReturned GetNestedEntity(
             string parentId,
             string id,
             BaseOptions options,
@@ -87,7 +87,7 @@ namespace Stripe
                 requestOptions);
         }
 
-        protected Task<EntityReturned> GetNestedEntityAsync(
+        protected Task<TEntityReturned> GetNestedEntityAsync(
             string parentId,
             string id,
             BaseOptions options,
@@ -102,25 +102,25 @@ namespace Stripe
                 cancellationToken);
         }
 
-        protected StripeList<EntityReturned> ListNestedEntities(
+        protected StripeList<TEntityReturned> ListNestedEntities(
             string parentId,
             ListOptions options,
             RequestOptions requestOptions)
         {
-            return this.Request<StripeList<EntityReturned>>(
+            return this.Request<StripeList<TEntityReturned>>(
                 HttpMethod.Get,
                 this.ClassUrl(parentId),
                 options,
                 requestOptions);
         }
 
-        protected Task<StripeList<EntityReturned>> ListNestedEntitiesAsync(
+        protected Task<StripeList<TEntityReturned>> ListNestedEntitiesAsync(
             string parentId,
             ListOptions options,
             RequestOptions requestOptions,
             CancellationToken cancellationToken)
         {
-            return this.RequestAsync<StripeList<EntityReturned>>(
+            return this.RequestAsync<StripeList<TEntityReturned>>(
                 HttpMethod.Get,
                 this.ClassUrl(parentId),
                 options,
@@ -128,18 +128,18 @@ namespace Stripe
                 cancellationToken);
         }
 
-        protected IEnumerable<EntityReturned> ListNestedEntitiesAutoPaging(
+        protected IEnumerable<TEntityReturned> ListNestedEntitiesAutoPaging(
             string parentId,
             ListOptions options,
             RequestOptions requestOptions)
         {
-            return this.ListRequestAutoPaging<EntityReturned>(
+            return this.ListRequestAutoPaging<TEntityReturned>(
                 this.ClassUrl(parentId),
                 options,
                 requestOptions);
         }
 
-        protected EntityReturned UpdateNestedEntity(
+        protected TEntityReturned UpdateNestedEntity(
             string parentId,
             string id,
             BaseOptions options,
@@ -152,7 +152,7 @@ namespace Stripe
                 requestOptions);
         }
 
-        protected Task<EntityReturned> UpdateNestedEntityAsync(
+        protected Task<TEntityReturned> UpdateNestedEntityAsync(
             string parentId,
             string id,
             BaseOptions options,

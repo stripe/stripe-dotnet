@@ -17,7 +17,7 @@ namespace Stripe
         public string Earliest { get; set; }
 
         /// <summary>
-        /// If type is "range", latest will be the latest delivery date in the format YYYY-MM-DD
+        /// If type is "range", latest will be the latest delivery date in the format YYYY-MM-DD.
         /// </summary>
         [JsonProperty("latest")]
         public string Latest { get; set; }
