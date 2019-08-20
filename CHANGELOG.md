@@ -1,5 +1,8 @@
 # Changelog
 
+## 28.3.0 - 2019-08-20
+* [#1756](https://github.com/stripe/stripe-dotnet/pull/1756) Add missing `StartDate` parameter for `SubscriptionSchedule` Update
+
 ## 28.2.0 - 2019-08-16
 * [#1750](https://github.com/stripe/stripe-dotnet/pull/1750) Make `ChargePaymentMethodDetailsCard.Moto` nullable
 
