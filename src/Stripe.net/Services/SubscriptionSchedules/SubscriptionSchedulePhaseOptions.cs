@@ -51,6 +51,12 @@ namespace Stripe
         public List<SubscriptionSchedulePhaseItemOptions> Plans { get; set; }
 
         /// <summary>
+        /// The date at which this phase of the subscription schedule starts.
+        /// </summary>
+        [JsonProperty("start_date")]
+        public DateTime? StartDate { get; set; }
+
+        /// <summary>
         /// A non-negative decimal (with at most four decimal places) between 0 and 100. This
         /// represents the percentage of the subscription invoice subtotal that will be calculated
         /// and added as tax to the final amount each billing period. For example, a plan which
