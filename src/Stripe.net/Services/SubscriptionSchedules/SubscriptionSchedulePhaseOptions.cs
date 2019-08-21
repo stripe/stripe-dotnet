@@ -3,6 +3,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SubscriptionSchedulePhaseOptions : INestedOptions
     {
@@ -32,6 +33,7 @@ namespace Stripe
         /// <c>iterations</c> must not be set.
         /// </summary>
         [JsonProperty("end_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
@@ -72,6 +74,7 @@ namespace Stripe
         /// end date, can not be combined with <c>trial</c>.
         /// </summary>
         [JsonProperty("trial_end")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
     }
 }

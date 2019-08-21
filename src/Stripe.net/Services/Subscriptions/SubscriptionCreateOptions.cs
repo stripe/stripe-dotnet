@@ -13,6 +13,7 @@ namespace Stripe
         /// date and the current time. Can be combined with trials and the billing cycle anchor.
         /// </summary>
         [JsonProperty("backdate_start_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? BackdateStartDate { get; set; }
 
         /// <summary>
@@ -21,6 +22,7 @@ namespace Stripe
         /// <c>month</c> or <c>year</c> intervals, the day of the month for subsequent invoices.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>

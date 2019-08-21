@@ -3,6 +3,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PaymentIntentCreateOptions : BaseOptions, IHasMetadata
     {
@@ -87,6 +88,7 @@ namespace Stripe
         /// charge them later</a>.
         /// </summary>
         [JsonProperty("off_session")]
+        [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<bool?, string> OffSession { get; set; }
 
         /// <summary>

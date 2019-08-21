@@ -1,7 +1,6 @@
 namespace Stripe
 {
     using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -11,6 +10,7 @@ namespace Stripe
         public string Action { get; set; }
 
         [JsonProperty("timestamp")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? Timestamp { get; set; }
 
         [JsonProperty("quantity")]
