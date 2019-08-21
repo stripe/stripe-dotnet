@@ -15,6 +15,23 @@ namespace Stripe
         [JsonProperty("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
+        /// <summary>
+        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
+        /// new billing period
+        /// </summary>
+        [JsonProperty("billing_thresholds")]
+        public SubscriptionBillingThresholds BillingThresholds { get; set; }
+
+        /// <summary>
+        /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging
+        /// automatically, Stripe will attempt to pay this subscription at the
+        /// end of the cycle using the default source attached to the customer.
+        /// When sending an invoice, Stripe will email your customer an invoice
+        /// with payment instructions.
+        /// </summary>
+        [JsonProperty("collection_method")]
+        public string CollectionMethod { get; set; }
+
         #region Expandable Coupon
 
         /// <summary>
@@ -44,6 +61,30 @@ namespace Stripe
         internal ExpandableField<Coupon> InternalCoupon { get; set; }
         #endregion
 
+        #region Expandable DefaultPaymentMethod
+
+        /// <summary>
+        /// ID of the default payment method for the subscription schedule.
+        /// </summary>
+        [JsonIgnore]
+        public string DefaultPaymentMethodId
+        {
+            get => this.InternalDefaultPaymentMethod?.Id;
+            set => this.InternalDefaultPaymentMethod = SetExpandableFieldId(value, this.InternalDefaultPaymentMethod);
+        }
+
+        [JsonIgnore]
+        public PaymentMethod DefaultPaymentMethod
+        {
+            get => this.InternalDefaultPaymentMethod?.ExpandedObject;
+            set => this.InternalDefaultPaymentMethod = SetExpandableFieldObject(value, this.InternalDefaultPaymentMethod);
+        }
+
+        [JsonProperty("default_payment_method")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
+        internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
+        #endregion
+
         /// <summary>
         /// The default tax rates which apply to the phase of this subscription schedule.
         /// </summary>
@@ -56,6 +97,12 @@ namespace Stripe
         [JsonProperty("end_date")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? EndDate { get; set; }
+
+        /// <summary>
+        /// The default invoice settings for this phase.
+        /// </summary>
+        [JsonProperty("invoice_settings")]
+        public SubscriptionScheduleInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
         /// Plans to subscribe during this phase of the subscription schedule.
