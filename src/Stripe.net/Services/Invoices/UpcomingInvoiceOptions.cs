@@ -30,6 +30,13 @@ namespace Stripe
         public List<InvoiceUpcomingInvoiceItemOption> InvoiceItems { get; set; }
 
         /// <summary>
+        /// The identifier of the unstarted schedule whose upcoming invoice you’d like to retrieve.
+        /// Cannot be used with subscription or subscription fields.
+        /// </summary>
+        [JsonProperty("schedule")]
+        public string Schedule { get; set; }
+
+        /// <summary>
         /// For new subscriptions, a future <see cref="DateTime"/> to anchor the subscription’s
         /// <a href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a>. This
         /// is used to determine the date of the first full invoice, and, for plans with
@@ -41,11 +48,24 @@ namespace Stripe
         public AnyOf<DateTime?, SubscriptionBillingCycleAnchor?> SubscriptionBillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// Time at which the subscription would cancel.
+        /// </summary>
+        [JsonProperty("subscription_cancel_at")]
+        public DateTime? SubscriptionCancelAt { get; set; }
+
+        /// <summary>
         /// Boolean indicating whether this subscription should cancel at the end of the current
         /// period.
         /// </summary>
         [JsonProperty("subscription_cancel_at_period_end")]
         public bool? SubscriptionCancelAtPeriodEnd { get; set; }
+
+        /// <summary>
+        /// Boolean indicating whether the invoice returned would preview cancelling the
+        /// subscription immediately.
+        /// </summary>
+        [JsonProperty("subscription_cancel_now")]
+        public bool? SubscriptionCancelNow { get; set; }
 
         /// <summary>
         /// If provided, the invoice returned will preview updating or creating a subscription with

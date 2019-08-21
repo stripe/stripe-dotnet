@@ -25,7 +25,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            // TODO: support expanding "phases.coupon" and "phases.plans.plan" with stripe-mock
+            // TODO: support expanding "phases.coupon" and "phases.plans.plan" and others with stripe-mock
             string[] expansions =
             {
               "customer",

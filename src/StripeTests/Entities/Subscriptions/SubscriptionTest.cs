@@ -25,7 +25,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            // TODO: Add support for expanding pending_setup_intent in the future.
+            // TODO: Add support for expanding pending_setup_intent and schedule in the future.
             string[] expansions =
             {
               "customer",
