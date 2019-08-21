@@ -1,5 +1,12 @@
 # Changelog
 
+## 28.4.0 - 2019-08-21
+* [#1758](https://github.com/stripe/stripe-dotnet/pull/1758) A few Billing changes
+  * Add support for `Schedule` to `Subscription`
+  * Add missing parameters to `UpcomingInvoiceOptions` and `UpcomingInvoiceListLineItemsOptions`: `Schedule`, `SubscriptionCancelAt` and `SubscriptionCancelNow`
+  * Add missing properties and parameters for a `SubscriptionSchedule` phase: `BillingThresholds`, `CollectionMethod`, `DefaultPaymentMethod` and `InvoiceSettings`
+* [#1760](https://github.com/stripe/stripe-dotnet/pull/1760) Add support for `Mode` and `SetupIntent` on Checkout `Session`
+
 ## 28.3.0 - 2019-08-20
 * [#1756](https://github.com/stripe/stripe-dotnet/pull/1756) Add missing `StartDate` parameter for `SubscriptionSchedule` Update
 
