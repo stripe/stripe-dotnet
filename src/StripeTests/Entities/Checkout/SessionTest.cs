@@ -26,6 +26,7 @@ namespace StripeTests.Checkout
         [Fact]
         public void DeserializeWithExpansions()
         {
+            // TODO: support expanding setup_intent in the future
             string[] expansions =
             {
               "customer",

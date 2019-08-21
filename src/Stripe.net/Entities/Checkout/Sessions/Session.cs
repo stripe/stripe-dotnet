@@ -54,6 +54,9 @@ namespace Stripe.Checkout
             set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
         }
 
+        /// <summary>
+        /// Customer this Session is for (if it was expanded).
+        /// </summary>
         [JsonIgnore]
         public Customer Customer
         {
@@ -92,6 +95,13 @@ namespace Stripe.Checkout
         [JsonProperty("locale")]
         public string Locale { get; set; }
 
+        /// <summary>
+        /// The mode of the Checkout Session which can be <c>payment</c>, <c>setup</c>, or
+        /// <c>subscription</c>.
+        /// </summary>
+        [JsonProperty("mode")]
+        public string Mode { get; set; }
+
         #region Expandable PaymentIntent
 
         /// <summary>
@@ -104,6 +114,9 @@ namespace Stripe.Checkout
             set => this.InternalPaymentIntent = SetExpandableFieldId(value, this.InternalPaymentIntent);
         }
 
+        /// <summary>
+        /// PaymentIntent created if SKUs or line items were provided (if it was expanded).
+        /// </summary>
         [JsonIgnore]
         public PaymentIntent PaymentIntent
         {
@@ -123,6 +136,33 @@ namespace Stripe.Checkout
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
+        #region Expandable SetupIntent
+
+        /// <summary>
+        /// The ID of the SetupIntent created if mode was set to <c>setup</c>.
+        /// </summary>
+        [JsonIgnore]
+        public string SetupIntentId
+        {
+            get => this.InternalSetupIntent?.Id;
+            set => this.InternalSetupIntent = SetExpandableFieldId(value, this.InternalSetupIntent);
+        }
+
+        /// <summary>
+        /// The SetupIntent created if mode was set to <c>setup</c> (if it was expanded).
+        /// </summary>
+        [JsonIgnore]
+        public SetupIntent SetupIntent
+        {
+            get => this.InternalSetupIntent?.ExpandedObject;
+            set => this.InternalSetupIntent = SetExpandableFieldObject(value, this.InternalSetupIntent);
+        }
+
+        [JsonProperty("setup_intent")]
+        [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
+        internal ExpandableField<SetupIntent> InternalSetupIntent { get; set; }
+        #endregion
+
         #region Expandable Subscription
 
         /// <summary>
@@ -135,6 +175,9 @@ namespace Stripe.Checkout
             set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
         }
 
+        /// <summary>
+        /// The subscription created if one or more plans were provided (if it was expanded).
+        /// </summary>
         [JsonIgnore]
         public Subscription Subscription
         {

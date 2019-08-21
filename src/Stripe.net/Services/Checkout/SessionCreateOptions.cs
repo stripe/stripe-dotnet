@@ -58,8 +58,14 @@ namespace Stripe.Checkout
         public string Locale { get; set; }
 
         /// <summary>
-        /// The list of payment method types (e.g. card) that this Checkout Session is allowed to
-        /// use.
+        /// The mode of the Checkout Session which can be <c>payment</c>, <c>setup</c>, or
+        /// <c>subscription</c>.
+        /// </summary>
+        [JsonProperty("mode")]
+        public string Mode { get; set; }
+
+        /// <summary>
+        /// A subset of parameters to be passed to PaymentIntent creation.
         /// </summary>
         [JsonProperty("payment_intent_data")]
         public SessionPaymentIntentDataOptions PaymentIntentData { get; set; }
@@ -70,6 +76,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
+
+        /// <summary>
+        /// A subset of parameters to be passed to SetupIntent creation.
+        /// </summary>
+        [JsonProperty("setup_intent_data")]
+        public SessionSetupIntentDataOptions SetupIntentData { get; set; }
 
         /// <summary>
         /// Describes the type of transaction being performed by Checkout in
