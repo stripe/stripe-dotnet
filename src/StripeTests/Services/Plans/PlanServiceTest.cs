@@ -26,7 +26,7 @@ namespace StripeTests
 
             this.createOptions = new PlanCreateOptions
             {
-                Amount = 123,
+                AmountDecimal = 0.01234567890m, // Ensure decimals work
                 Currency = "usd",
                 Interval = "month",
                 Nickname = "Plan Nickmame",
