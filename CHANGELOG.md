@@ -1,5 +1,8 @@
 # Changelog
 
+## 28.5.0 - 2019-08-22
+* [#1763](https://github.com/stripe/stripe-dotnet/pull/1763) Add support for decimal amounts on `InvoiceItem` and `Plan` and missing `Period`
+
 ## 28.4.0 - 2019-08-21
 * [#1758](https://github.com/stripe/stripe-dotnet/pull/1758) A few Billing changes
   * Add support for `Schedule` to `Subscription`
