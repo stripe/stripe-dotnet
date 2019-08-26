@@ -45,5 +45,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("past_due")]
         public List<string> PastDue { get; set; }
+
+        /// <summary>
+        /// Additional fields that may be required depending on the results of verification or
+        /// review for provided requirements. If any of these fields become required, they appear in
+        /// <see cref="CurrentlyDue"/> or <see cref="PastDue"/>.
+        /// </summary>
+        [JsonProperty("pending_verification")]
+        public List<string> PendingVerification { get; set; }
     }
 }
