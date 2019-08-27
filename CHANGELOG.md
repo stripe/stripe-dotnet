@@ -1,5 +1,8 @@
 # Changelog
 
+## 28.6.0 - 2019-08-26
+* [#1767](https://github.com/stripe/stripe-dotnet/pull/1767) Add `PendingVerification` on `Account`, `Person` and `Capability`
+
 ## 28.5.0 - 2019-08-22
 * [#1763](https://github.com/stripe/stripe-dotnet/pull/1763) Add support for decimal amounts on `InvoiceItem` and `Plan` and missing `Period`
 
