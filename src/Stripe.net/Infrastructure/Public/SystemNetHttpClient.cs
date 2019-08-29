@@ -25,6 +25,8 @@ namespace Stripe
 
         private readonly AppInfo appInfo;
 
+        private readonly bool enableTelemetry;
+
         private readonly RequestTelemetry requestTelemetry = new RequestTelemetry();
 
         private readonly object randLock = new object();
@@ -50,10 +52,14 @@ namespace Stripe
         /// Information about the "app" which this integration belongs to. This should be reserved
         /// for plugins that wish to identify themselves with Stripe.
         /// </param>
+        /// <param name="enableTelemetry">
+        /// Whether to enable request latency telemetry or not.
+        /// </param>
         public SystemNetHttpClient(
             System.Net.Http.HttpClient httpClient = null,
             int maxNetworkRetries = 0,
-            AppInfo appInfo = null)
+            AppInfo appInfo = null,
+            bool enableTelemetry = true)
         {
 #if NET45
             // With .NET Framework 4.5, it's necessary to manually enable support for TLS 1.2.
@@ -64,6 +70,7 @@ namespace Stripe
             this.httpClient = httpClient ?? BuildDefaultSystemNetHttpClient();
             this.maxNetworkRetries = maxNetworkRetries;
             this.appInfo = appInfo;
+            this.enableTelemetry = enableTelemetry;
 
             this.stripeClientUserAgentString = this.BuildStripeClientUserAgentString();
             this.userAgentString = this.BuildUserAgentString();
@@ -118,7 +125,10 @@ namespace Stripe
             HttpResponseMessage response = null;
             int retry = 0;
 
-            this.requestTelemetry.MaybeAddTelemetryHeader(request.StripeHeaders);
+            if (this.enableTelemetry)
+            {
+                this.requestTelemetry.MaybeAddTelemetryHeader(request.StripeHeaders);
+            }
 
             while (true)
             {
@@ -165,7 +175,10 @@ namespace Stripe
                 throw requestException;
             }
 
-            this.requestTelemetry.MaybeEnqueueMetrics(response, duration);
+            if (this.enableTelemetry)
+            {
+                this.requestTelemetry.MaybeEnqueueMetrics(response, duration);
+            }
 
             var reader = new StreamReader(
                 await response.Content.ReadAsStreamAsync().ConfigureAwait(false));
