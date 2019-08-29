@@ -20,6 +20,8 @@ namespace Stripe
 
         private static string clientId;
 
+        private static bool enableTelemetry = true;
+
         private static int maxNetworkRetries;
 
         private static IStripeClient stripeClient;
@@ -126,6 +128,24 @@ namespace Stripe
                 }
 
                 maxNetworkRetries = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the flag enabling request latency telemetry. Enabled by default.
+        /// </summary>
+        public static bool EnableTelemetry
+        {
+            get => enableTelemetry;
+
+            set
+            {
+                if (value != enableTelemetry)
+                {
+                    StripeClient = null;
+                }
+
+                enableTelemetry = value;
             }
         }
 
@@ -239,7 +259,8 @@ namespace Stripe
             var httpClient = new SystemNetHttpClient(
                 httpClient: null,
                 maxNetworkRetries: MaxNetworkRetries,
-                appInfo: AppInfo);
+                appInfo: AppInfo,
+                enableTelemetry: EnableTelemetry);
             return new StripeClient(ApiKey, ClientId, httpClient: httpClient);
         }
     }

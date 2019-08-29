@@ -111,6 +111,34 @@ namespace StripeTests
                     ItExpr.IsAny<CancellationToken>());
         }
 
+        [Fact]
+        public void NoTelemetryWhenDisabled()
+        {
+            var mockHandler = new Mock<HttpClientHandler> { CallBase = true };
+            var httpClient = new SystemNetHttpClient(
+                new System.Net.Http.HttpClient(mockHandler.Object),
+                enableTelemetry: false);
+            var stripeClient = new StripeClient("sk_test_123", httpClient: httpClient);
+
+            mockHandler.Reset();
+            var fakeServer = FakeServer.ForMockHandler(mockHandler);
+            fakeServer.Delay = TimeSpan.FromMilliseconds(20);
+
+            var service = new BalanceService(stripeClient);
+            service.Get();
+            fakeServer.Delay = TimeSpan.FromMilliseconds(40);
+            service.Get();
+            service.Get();
+
+            mockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Exactly(3),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        !m.Headers.Contains("X-Stripe-Client-Telemetry")),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
         private static bool TelemetryHeaderMatcher(
             HttpHeaders headers,
             Func<string, bool> requestIdMatcher,
