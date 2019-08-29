@@ -1,5 +1,8 @@
 # Changelog
 
+## 28.7.0 - 2019-08-29
+* [#1771](https://github.com/stripe/stripe-dotnet/pull/1771) Add `StripeConfiguration.EnableTelemetry` flag
+
 ## 28.6.0 - 2019-08-26
 * [#1767](https://github.com/stripe/stripe-dotnet/pull/1767) Add `PendingVerification` on `Account`, `Person` and `Capability`
 
