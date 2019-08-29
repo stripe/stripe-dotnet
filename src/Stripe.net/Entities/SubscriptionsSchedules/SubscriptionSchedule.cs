@@ -151,6 +151,13 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Behavior of the subscription schedule and underlying subscription when it ends. Possible
+        /// values are <c>cancel</c>, <c>none</c>, <c>release</c> and <c>renew</c>.
+        /// </summary>
+        [JsonProperty("end_behavior")]
+        public string EndBehavior { get; set; }
+
+        /// <summary>
         /// The schedule's default invoice settings.
         /// </summary>
         [JsonProperty("invoice_settings")]
