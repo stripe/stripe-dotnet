@@ -1,5 +1,8 @@
 # Changelog
 
+## 28.8.0 - 2019-08-29
+* [#1770](https://github.com/stripe/stripe-dotnet/pull/1770) Add support for `EndBehavior` on `SubscriptionSchedule`
+
 ## 28.7.0 - 2019-08-29
 * [#1771](https://github.com/stripe/stripe-dotnet/pull/1771) Add `StripeConfiguration.EnableTelemetry` flag
 
