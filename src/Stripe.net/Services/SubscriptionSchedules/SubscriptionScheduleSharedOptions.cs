@@ -46,6 +46,13 @@ namespace Stripe
         public string DefaultSourceId { get; set; }
 
         /// <summary>
+        /// Behavior of the subscription schedule and underlying subscription when it ends. Possible
+        /// values are <c>cancel</c>, <c>none</c>, <c>release</c> and <c>renew</c>.
+        /// </summary>
+        [JsonProperty("end_behavior")]
+        public string EndBehavior { get; set; }
+
+        /// <summary>
         /// Define the default settings applied to invoices created by this subscription schedule.
         /// </summary>
         [JsonProperty("invoice_settings")]
