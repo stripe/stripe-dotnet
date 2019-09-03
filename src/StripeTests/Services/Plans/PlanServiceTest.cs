@@ -14,6 +14,7 @@ namespace StripeTests
 
         private readonly PlanService service;
         private readonly PlanCreateOptions createOptions;
+        private readonly PlanCreateOptions createDecimalTierOptions;
         private readonly PlanUpdateOptions updateOptions;
         private readonly PlanListOptions listOptions;
 
@@ -36,6 +37,30 @@ namespace StripeTests
                 },
             };
 
+            this.createDecimalTierOptions = new PlanCreateOptions
+            {
+                Currency = "usd",
+                Interval = "month",
+                Nickname = "Plan Nickmame",
+                Product = new PlanProductCreateOptions
+                {
+                    Name = "Product Name",
+                },
+                Tiers = new List<PlanTierOptions>
+                {
+                    new PlanTierOptions
+                    {
+                        UnitAmountDecimal = 0.04m,
+                        UpTo = 10,
+                    },
+                    new PlanTierOptions
+                    {
+                        UnitAmountDecimal = 0.03m,
+                        UpTo = PlanTierUpTo.Inf,
+                    }
+                },
+            };
+
             this.updateOptions = new PlanUpdateOptions
             {
                 Metadata = new Dictionary<string, string>
@@ -54,6 +79,24 @@ namespace StripeTests
         public void Create()
         {
             var plan = this.service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/plans");
+            Assert.NotNull(plan);
+            Assert.Equal("plan", plan.Object);
+        }
+
+        [Fact]
+        public void Create_DecimalTiers()
+        {
+            var plan = this.service.Create(this.createDecimalTierOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/plans");
+            Assert.NotNull(plan);
+            Assert.Equal("plan", plan.Object);
+        }
+
+        [Fact]
+        public async Task CreateAsync_DecimalTiers()
+        {
+            var plan = await this.service.CreateAsync(this.createDecimalTierOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/plans");
             Assert.NotNull(plan);
             Assert.Equal("plan", plan.Object);
