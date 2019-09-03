@@ -1,5 +1,8 @@
 # Changelog
 
+## 28.9.0 - 2019-09-03
+* [#1774](https://github.com/stripe/stripe-dotnet/pull/1774) Add decimal properties to `PlanTierOptions`
+
 ## 28.8.0 - 2019-08-29
 * [#1770](https://github.com/stripe/stripe-dotnet/pull/1770) Add support for `EndBehavior` on `SubscriptionSchedule`
 
