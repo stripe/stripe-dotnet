@@ -1,5 +1,8 @@
 # Changelog
 
+## 28.10.0 - 2019-09-04
+* [#1775](https://github.com/stripe/stripe-dotnet/pull/1775) Add support for `Authentication` and `Url` on Issuing `Authorization`
+
 ## 28.9.0 - 2019-09-03
 * [#1774](https://github.com/stripe/stripe-dotnet/pull/1774) Add decimal properties to `PlanTierOptions`
 
