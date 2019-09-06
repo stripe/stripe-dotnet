@@ -21,8 +21,8 @@ namespace StripeTests.Issuing
             Assert.NotNull(card.Id);
             Assert.Equal("issuing.card", card.Object);
 
-            Assert.NotNull(card.Cardholder);
-            Assert.Equal("issuing.cardholder", card.Cardholder.Object);
+            // Assert.NotNull(card.Cardholder);
+            // Assert.Equal("issuing.cardholder", card.Cardholder.Object);
         }
 
         [Fact]

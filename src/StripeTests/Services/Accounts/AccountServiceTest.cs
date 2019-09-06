@@ -46,6 +46,14 @@ namespace StripeTests
                         Country = "US",
                     },
                     Name = "Company name",
+                    Verification = new AccountCompanyVerificationOptions
+                    {
+                        Document = new AccountCompanyVerificationDocumentOptions
+                        {
+                            BackFileId = "file_back",
+                            FrontFileId = "file_front",
+                        }
+                    }
                 },
                 ExternalAccount = "tok_visa_debit",
                 RequestedCapabilities = new List<string>

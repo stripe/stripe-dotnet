@@ -35,6 +35,11 @@ namespace StripeTests
                 },
                 Verification = new PersonVerificationOptions
                 {
+                    AdditionalDocument = new PersonVerificationDocumentOptions
+                    {
+                        BackFileId = "file_abc",
+                        FrontFileId = "file_def",
+                    },
                     Document = new PersonVerificationDocumentOptions
                     {
                         BackFileId = "file_123",

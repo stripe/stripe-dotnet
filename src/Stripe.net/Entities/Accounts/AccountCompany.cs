@@ -77,5 +77,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("vat_id_provided")]
         public bool VatIdProvided { get; set; }
+
+        /// <summary>
+        /// Information on the verification state of the company.
+        /// </summary>
+        [JsonProperty("verification")]
+        public AccountCompanyVerification Verification { get; set; }
     }
 }
