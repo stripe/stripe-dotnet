@@ -6,6 +6,13 @@ namespace Stripe
     public class PersonVerification : StripeEntity<PersonVerification>
     {
         /// <summary>
+        /// A document showing address, either a passport, local ID card, or utility bill from a
+        /// well-known utility company.
+        /// </summary>
+        [JsonProperty("additional_document")]
+        public PersonVerificationDocument AdditionalDocument { get; set; }
+
+        /// <summary>
         /// A user-displayable string describing the verification state for this person. For
         /// example, if a document is uploaded and the picture is too fuzzy, this may say “Identity
         /// document is too unclear to read”.
