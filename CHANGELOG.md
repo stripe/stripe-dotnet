@@ -1,5 +1,8 @@
 # Changelog
 
+## 28.11.0 - 2019-09-09
+* [#1778](https://github.com/stripe/stripe-dotnet/pull/1778) Changes to `Account` and `Person` for identity verification
+
 ## 28.10.0 - 2019-09-04
 * [#1775](https://github.com/stripe/stripe-dotnet/pull/1775) Add support for `Authentication` and `Url` on Issuing `Authorization`
 
