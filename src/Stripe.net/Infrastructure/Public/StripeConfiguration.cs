@@ -32,7 +32,7 @@ namespace Stripe
         }
 
         /// <summary>API version used by Stripe.net.</summary>
-        public static string ApiVersion => "2019-08-14";
+        public static string ApiVersion => "2019-09-09";
 
 #if NET45 || NETSTANDARD2_0
         /// <summary>Gets or sets the API key.</summary>
