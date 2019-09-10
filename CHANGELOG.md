@@ -1,5 +1,8 @@
 # Changelog
 
+## 29.0.0 - 2019-09-10
+* [#1780](https://github.com/stripe/stripe-dotnet/pull/1780) Bump API version to [`2019-09-09`](https://stripe.com/docs/upgrades#2019-09-09)
+
 ## 28.11.0 - 2019-09-09
 * [#1778](https://github.com/stripe/stripe-dotnet/pull/1778) Changes to `Account` and `Person` for identity verification
 
