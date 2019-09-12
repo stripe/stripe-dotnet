@@ -190,6 +190,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("voided_at")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime VoidedAt { get; set; }
+        public DateTime? VoidedAt { get; set; }
     }
 }
