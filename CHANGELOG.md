@@ -1,5 +1,9 @@
 # Changelog
 
+## 29.0.1 - 2019-09-12
+* [#1783](https://github.com/stripe/stripe-dotnet/pull/1783) Allow `VoidedAt` on `CreditNote` to be nullable
+  * This is technically a breaking change, but we're releasing as a patch version as the non-nullable type made it impossible to deserialize `credit_note` objects in most cases.
+
 ## 29.0.0 - 2019-09-10
 * [#1780](https://github.com/stripe/stripe-dotnet/pull/1780) Bump API version to [`2019-09-09`](https://stripe.com/docs/upgrades#2019-09-09)
 
