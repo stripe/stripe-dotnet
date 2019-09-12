@@ -40,5 +40,20 @@ namespace StripeTests
             Assert.NotNull(plan.Product);
             Assert.Equal("product", plan.Product.Object);
         }
+
+        // Custom test to ensure PlanTier is deserialized properly
+        // TODO: Remove this test on the next major version
+        [Fact]
+        public void DeserializePlanTier()
+        {
+            var json = GetResourceAsString("api_fixtures.plan_with_tier.json");
+            var plan = JsonConvert.DeserializeObject<Plan>(json);
+            Assert.NotNull(plan);
+            Assert.IsType<Plan>(plan);
+            Assert.NotNull(plan.Id);
+            Assert.Equal("plan", plan.Object);
+            Assert.Equal(199, plan.Tiers[0].UnitAmountDecimal);
+            Assert.Equal(199, plan.Tiers[0].UnitAmountDecinal);
+        }
     }
 }

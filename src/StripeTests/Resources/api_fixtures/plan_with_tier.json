@@ -1,0 +1,40 @@
+{
+  "id": "plan_123",
+  "object": "plan",
+  "active": true,
+  "aggregate_usage": null,
+  "amount": null,
+  "amount_decimal": null,
+  "billing_scheme": "tiered",
+  "created": 1568312769,
+  "currency": "cad",
+  "interval": "month",
+  "interval_count": 1,
+  "livemode": false,
+  "metadata": {
+  },
+  "name": "tier",
+  "nickname": "tier",
+  "product": "prod_123",
+  "statement_descriptor": null,
+  "tiers": [
+    {
+      "amount": 199,
+      "flat_amount": null,
+      "flat_amount_decimal": null,
+      "unit_amount_decimal": "199",
+      "up_to": 10
+    },
+    {
+      "amount": 99,
+      "flat_amount": null,
+      "flat_amount_decimal": null,
+      "unit_amount_decimal": "99",
+      "up_to": null
+    }
+  ],
+  "tiers_mode": "graduated",
+  "transform_usage": null,
+  "trial_period_days": null,
+  "usage_type": "licensed"
+}

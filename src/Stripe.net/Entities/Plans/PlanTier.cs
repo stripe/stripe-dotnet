@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
 
     public class PlanTier : StripeEntity<PlanTier>
@@ -28,12 +29,20 @@ namespace Stripe
         /// places.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
-        public decimal? UnitAmountDecinal { get; set; }
+        public decimal? UnitAmountDecimal { get; set; }
 
         /// <summary>
         /// Up to and including to this quantity will be contained in the tier.
         /// </summary>
         [JsonProperty("up_to")]
         public long? UpTo { get; set; }
+
+        [Obsolete("Use UnitAmountDecimal instead")]
+        [JsonIgnore]
+        public decimal? UnitAmountDecinal
+        {
+            get => this.UnitAmountDecimal;
+            set => this.UnitAmountDecimal = value;
+        }
     }
 }
