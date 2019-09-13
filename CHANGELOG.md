@@ -1,5 +1,8 @@
 # Changelog
 
+## 29.1.0 - 2019-09-13
+* [#1785](https://github.com/stripe/stripe-dotnet/pull/1785) Properly name `UnitAmountDecimal` on `PlanTier`
+
 ## 29.0.1 - 2019-09-12
 * [#1783](https://github.com/stripe/stripe-dotnet/pull/1783) Allow `VoidedAt` on `CreditNote` to be nullable
   * This is technically a breaking change, but we're releasing as a patch version as the non-nullable type made it impossible to deserialize `credit_note` objects in most cases.
