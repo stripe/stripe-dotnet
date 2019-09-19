@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ChargePaymentMethodDetailsCardWalletMasterpass : StripeEntity
+    public class ChargePaymentMethodDetailsCardWalletMasterpass : StripeEntity<ChargePaymentMethodDetailsCardWalletMasterpass>
     {
         [JsonProperty("billing_address")]
         public Address BillingAddress { get; set; }

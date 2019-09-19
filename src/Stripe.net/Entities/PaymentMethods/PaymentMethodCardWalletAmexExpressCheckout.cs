@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentMethodCardWalletAmexExpressCheckout : StripeEntity
+    public class PaymentMethodCardWalletAmexExpressCheckout : StripeEntity<PaymentMethodCardWalletAmexExpressCheckout>
     {
     }
 }

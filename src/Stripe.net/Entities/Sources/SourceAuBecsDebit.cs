@@ -3,7 +3,7 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
 
-    public class SourceAuBecsDebit : StripeEntity
+    public class SourceAuBecsDebit : StripeEntity<SourceAuBecsDebit>
     {
         [Obsolete("This property is deprecated, Account Number will not be returned from Stripe API.")]
         [JsonProperty("account_number")]

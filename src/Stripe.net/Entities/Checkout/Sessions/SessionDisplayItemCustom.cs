@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SessionDisplayItemCustom : StripeEntity
+    public class SessionDisplayItemCustom : StripeEntity<SessionDisplayItemCustom>
     {
         /// <summary>
         /// The description of the line item.

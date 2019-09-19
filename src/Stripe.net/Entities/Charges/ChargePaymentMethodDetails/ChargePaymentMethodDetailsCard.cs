@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ChargePaymentMethodDetailsCard : StripeEntity
+    public class ChargePaymentMethodDetailsCard : StripeEntity<ChargePaymentMethodDetailsCard>
     {
         /// <summary>
         /// Card brand. Can be <c>amex</c>, <c>diners</c>, <c>discover</c>, <c>jcb</c>,

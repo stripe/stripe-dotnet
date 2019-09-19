@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class InvoiceTaxAmount : StripeEntity
+    public class InvoiceTaxAmount : StripeEntity<InvoiceTaxAmount>
     {
         /// <summary>
         /// The amount, in cents, of the tax.
