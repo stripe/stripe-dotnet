@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ChargePaymentMethodDetailsCardPresentReceipt : StripeEntity
+    public class ChargePaymentMethodDetailsCardPresentReceipt : StripeEntity<ChargePaymentMethodDetailsCardPresentReceipt>
     {
         [JsonProperty("application_cryptogram")]
         public string ApplicationCryptogram { get; set; }

@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class SourceKlarna : StripeEntity<SourceIdeal>
+    public class SourceKlarna : StripeEntity<SourceKlarna>
     {
         [JsonProperty("background_image_url")]
         public string BackgroundImageUrl { get; set; }
