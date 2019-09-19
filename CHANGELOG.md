@@ -1,5 +1,8 @@
 # Changelog
 
+## 29.2.0 - 2019-09-19
+* [#1786](https://github.com/stripe/stripe-dotnet/pull/1786) Properly pass the type in `StripeEntity`
+
 ## 29.1.0 - 2019-09-13
 * [#1785](https://github.com/stripe/stripe-dotnet/pull/1785) Properly name `UnitAmountDecimal` on `PlanTier`
 
