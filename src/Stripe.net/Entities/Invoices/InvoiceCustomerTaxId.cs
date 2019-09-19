@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class InvoiceCustomerTaxId : StripeEntity
+    public class InvoiceCustomerTaxId : StripeEntity<InvoiceCustomerTaxId>
     {
         /// <summary>
         /// Type of the tax ID, one of <c>eu_vat</c>, <c>nz_gst</c>, <c>au_abn</c>, or

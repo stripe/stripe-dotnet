@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ChargePaymentMethodDetails : StripeEntity
+    public class ChargePaymentMethodDetails : StripeEntity<ChargePaymentMethodDetails>
     {
         [JsonProperty("ach_credit_transfer")]
         public ChargePaymentMethodDetailsAchCreditTransfer AchCreditTransfer { get; set; }

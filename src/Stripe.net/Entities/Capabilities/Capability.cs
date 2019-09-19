@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Capability : StripeEntity, IHasId, IHasObject
+    public class Capability : StripeEntity<Capability>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.

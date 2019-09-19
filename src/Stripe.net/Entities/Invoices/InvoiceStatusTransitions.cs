@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class InvoiceStatusTransitions : StripeEntity
+    public class InvoiceStatusTransitions : StripeEntity<InvoiceStatusTransitions>
     {
         [JsonProperty("finalized_at")]
         [JsonConverter(typeof(DateTimeConverter))]

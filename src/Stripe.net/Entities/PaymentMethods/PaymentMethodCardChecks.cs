@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentMethodCardChecks : StripeEntity
+    public class PaymentMethodCardChecks : StripeEntity<PaymentMethodCardChecks>
     {
         [JsonProperty("address_line1_check")]
         public string AddressLine1Check { get; set; }

@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ChargePaymentMethodDetailsSofort : StripeEntity
+    public class ChargePaymentMethodDetailsSofort : StripeEntity<ChargePaymentMethodDetailsSofort>
     {
         [JsonProperty("bank_code")]
         public string BankCode { get; set; }

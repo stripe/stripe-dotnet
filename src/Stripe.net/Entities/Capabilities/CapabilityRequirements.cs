@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class CapabilityRequirements : StripeEntity
+    public class CapabilityRequirements : StripeEntity<CapabilityRequirements>
     {
         /// <summary>
         /// The date the fields in <c>currently_due</c> must be collected by to keep the capability

@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class TaxIdVerification : StripeEntity
+    public class TaxIdVerification : StripeEntity<TaxIdVerification>
     {
         /// <summary>
         /// Verification status, one of <c>pending</c>, <c>unavailable</c>, <c>unverified</c>, or
