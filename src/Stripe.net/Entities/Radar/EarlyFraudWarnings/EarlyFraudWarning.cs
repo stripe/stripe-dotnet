@@ -5,7 +5,7 @@ namespace Stripe.Radar
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class EarlyFraudWarning : StripeEntity, IHasId, IHasObject
+    public class EarlyFraudWarning : StripeEntity<EarlyFraudWarning>, IHasId, IHasObject
     {
         /// <summary>Unique identifier for the object.</summary>
         [JsonProperty("id")]

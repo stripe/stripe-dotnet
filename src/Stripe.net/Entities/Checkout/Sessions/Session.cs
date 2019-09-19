@@ -5,7 +5,7 @@ namespace Stripe.Checkout
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Session : StripeEntity, IHasId, IHasObject
+    public class Session : StripeEntity<Session>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
