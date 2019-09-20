@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
 
     public class SourceAuBecsDebit : StripeEntity
@@ -13,7 +14,11 @@ namespace Stripe
         [JsonProperty("fingerprint")]
         public string Fingerprint { get; set; }
 
+        [Obsolete("This property is deprecated, please use Last4 going forward.")]
         [JsonProperty("last3")]
         public string Last3 { get; set; }
+
+        [JsonProperty("last4")]
+        public string Last4 { get; set; }
     }
 }
