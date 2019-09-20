@@ -24,6 +24,7 @@ namespace Stripe
         /// details.
         /// </summary>
         [JsonProperty("card")]
+        [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, CreditCardOptions> Card { get; set; }
 
         /// <summary>
