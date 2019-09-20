@@ -1,7 +1,6 @@
 namespace Stripe
 {
     using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -26,6 +25,7 @@ namespace Stripe
         /// The date at which the subscription schedule starts.
         /// </summary>
         [JsonProperty("start_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? StartDate { get; set; }
     }
 }

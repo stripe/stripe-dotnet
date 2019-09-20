@@ -106,6 +106,7 @@ namespace Stripe
         public decimal? TaxPercent { get; set; }
 
         [JsonProperty("trial_end")]
+        [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, SubscriptionTrialEnd> TrialEnd { get; set; }
 
         [JsonProperty("validate")]

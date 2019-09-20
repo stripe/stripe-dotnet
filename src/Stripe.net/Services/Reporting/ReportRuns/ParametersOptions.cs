@@ -17,9 +17,11 @@ namespace Stripe.Reporting
         public string Currency { get; set; }
 
         [JsonProperty("interval_end")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? IntervalEnd { get; set; }
 
         [JsonProperty("interval_start")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? IntervalStart { get; set; }
 
         [JsonProperty("payout")]

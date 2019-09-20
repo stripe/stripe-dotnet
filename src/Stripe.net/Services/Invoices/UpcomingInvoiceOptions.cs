@@ -45,12 +45,14 @@ namespace Stripe
         /// <see cref="Stripe.SubscriptionBillingCycleAnchor"/>.
         /// </summary>
         [JsonProperty("subscription_billing_cycle_anchor")]
+        [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, SubscriptionBillingCycleAnchor> SubscriptionBillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Time at which the subscription would cancel.
         /// </summary>
         [JsonProperty("subscription_cancel_at")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? SubscriptionCancelAt { get; set; }
 
         /// <summary>
@@ -109,6 +111,7 @@ namespace Stripe
         /// be set to false.
         /// </summary>
         [JsonProperty("subscription_proration_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? SubscriptionProrationDate { get; set; }
 
         /// <summary>
@@ -126,6 +129,7 @@ namespace Stripe
         /// required.
         /// </summary>
         [JsonProperty("subscription_trial_end")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? SubscriptionTrialEnd { get; set; }
 
         /// <summary>

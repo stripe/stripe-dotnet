@@ -35,6 +35,7 @@ namespace Stripe
         public string Name { get; set; }
 
         [JsonProperty("redeem_by")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? RedeemBy { get; set; }
     }
 }

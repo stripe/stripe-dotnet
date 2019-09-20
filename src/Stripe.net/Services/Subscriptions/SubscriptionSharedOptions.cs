@@ -24,6 +24,7 @@ namespace Stripe
         /// current period ends this will cause a proration if <c>prorate=true</c>.
         /// </summary>
         [JsonProperty("cancel_at")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
@@ -125,6 +126,7 @@ namespace Stripe
         /// immediately.
         /// </summary>
         [JsonProperty("trial_end")]
+        [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, SubscriptionTrialEnd> TrialEnd { get; set; }
 
         /// <summary>
