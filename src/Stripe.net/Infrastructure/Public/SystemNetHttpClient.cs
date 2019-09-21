@@ -4,8 +4,10 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
+    using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
@@ -160,8 +162,8 @@ namespace Stripe
                 if (!this.ShouldRetry(
                     retry,
                     requestException != null,
-                    request.Method,
-                    response?.StatusCode))
+                    response?.StatusCode,
+                    response?.Headers))
                 {
                     break;
                 }
@@ -234,8 +236,8 @@ namespace Stripe
         private bool ShouldRetry(
             int numRetries,
             bool error,
-            HttpMethod method,
-            HttpStatusCode? statusCode)
+            HttpStatusCode? statusCode,
+            HttpHeaders headers)
         {
             // Do not retry if we are out of retries.
             if (numRetries >= this.maxNetworkRetries)
@@ -249,16 +251,33 @@ namespace Stripe
                 return true;
             }
 
-            // Retry on conflict and availability errors.
-            if ((statusCode == HttpStatusCode.Conflict) ||
-                (statusCode == HttpStatusCode.ServiceUnavailable))
+            // The API may ask us not to retry (eg; if doing so would be a no-op)
+            // or advise us to retry (eg; in cases of lock timeouts); we defer to that.
+            if (headers != null && headers.Contains("Stripe-Should-Retry"))
+            {
+                var value = headers.GetValues("Stripe-Should-Retry").First();
+
+                switch (value)
+                {
+                    case "true":
+                        return true;
+                    case "false":
+                        return false;
+                }
+            }
+
+            // Retry on conflict errors.
+            if (statusCode == HttpStatusCode.Conflict)
             {
                 return true;
             }
 
-            // Retry on 5xx's, except POST's, which our idempotency framework would just replay as
-            // 500's again anyway.
-            if (method != HttpMethod.Post && statusCode.HasValue && ((int)statusCode.Value >= 500))
+            // Retry on 500, 503, and other internal errors.
+            //
+            // Note that we expect the Stripe-Should-Retry header to be false
+            // in most cases when a 500 is returned, since our idempotency framework
+            // would typically replay it anyway.
+            if (statusCode.HasValue && ((int)statusCode.Value >= 500))
             {
                 return true;
             }
