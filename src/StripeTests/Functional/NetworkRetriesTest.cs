@@ -3,6 +3,7 @@ namespace StripeTests
     using System;
     using System.Net;
     using System.Net.Http;
+    using System.Reflection;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
@@ -26,6 +27,12 @@ namespace StripeTests
         }
 
         private new IStripeClient StripeClient { get; }
+
+        /* We really should be testing the behavior when the response has a `Stripe-Should-Retry`
+         * header, however .NET makes it basically impossible to test this because:
+         * 1. `HttpResponseMessage` doesn't let you set `Headers`, and
+         * 2. `HttpResponseHeaders` is a sealed class with no public constructor.
+         */
 
         [Fact]
         public void RetryOnConflict()
@@ -82,7 +89,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void RetryOnInternalServerErrorIfNotPost()
+        public void RetryOnInternalServerError()
         {
             this.MockHttpClientFixture.MockHandler.Protected()
                 .SetupSequence<Task<HttpResponseMessage>>(
@@ -106,32 +113,6 @@ namespace StripeTests
 
             Assert.NotNull(balance);
             Assert.Equal(1, balance.StripeResponse.NumRetries);
-        }
-
-        [Fact]
-        public void DoNotRetryOnInternalServerErrorIfPost()
-        {
-            var requestCount = 0;
-            this.MockHttpClientFixture.MockHandler.Protected()
-                .SetupSequence<Task<HttpResponseMessage>>(
-                    "SendAsync",
-                    ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .Returns(() =>
-                    {
-                        requestCount += 1;
-                        return Task.FromResult(
-                            new HttpResponseMessage(HttpStatusCode.InternalServerError)
-                            {
-                                Content = new StringContent("{}", Encoding.UTF8),
-                            });
-                    })
-                .Throws(new StripeTestException("Unexpected invocation"));
-
-            var service = new CustomerService(this.StripeClient);
-            Assert.Throws<StripeException>(() => service.Create(null));
-
-            Assert.Equal(1, requestCount);
         }
 
         [Fact]
