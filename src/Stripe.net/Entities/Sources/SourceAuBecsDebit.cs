@@ -5,6 +5,7 @@ namespace Stripe
 
     public class SourceAuBecsDebit : StripeEntity
     {
+        [Obsolete("This property is deprecated, Account Number will not be returned from Stripe API.")]
         [JsonProperty("account_number")]
         public string AccountNumber { get; set; }
 
