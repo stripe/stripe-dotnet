@@ -1,5 +1,8 @@
 # Changelog
 
+## 29.2.1 - 2019-09-23
+* [#1791](https://github.com/stripe/stripe-dotnet/pull/1791) Add support for `Stripe-Should-Retry` header
+
 ## 29.2.0 - 2019-09-19
 * [#1786](https://github.com/stripe/stripe-dotnet/pull/1786) Properly pass the type in `StripeEntity`
 
