@@ -22,6 +22,9 @@ namespace Stripe
         [JsonProperty("card_present")]
         public PaymentMethodCardPresent CardPresent { get; set; }
 
+        [JsonProperty("fpx")]
+        public PaymentMethodFpx Fpx { get; set; }
+
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? Created { get; set; }

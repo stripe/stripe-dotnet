@@ -32,6 +32,9 @@ namespace Stripe
         [JsonProperty("eps")]
         public ChargePaymentMethodDetailsEps Eps { get; set; }
 
+        [JsonProperty("fpx")]
+        public ChargePaymentMethodDetailsFpx Fpx { get; set; }
+
         [JsonProperty("giropay")]
         public ChargePaymentMethodDetailsGiropay Giropay { get; set; }
 

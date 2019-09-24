@@ -22,6 +22,9 @@ namespace Stripe
         [JsonProperty("card")]
         public PaymentMethodCardCreateOptions Card { get; set; }
 
+        [JsonProperty("fpx")]
+        public PaymentMethodFpxCreateOptions Fpx { get; set; }
+
         /// <summary>
         /// The customer associated with the PaymentMethod that you are trying to share with a
         /// connected account.
