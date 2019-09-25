@@ -22,15 +22,18 @@ namespace Stripe
         [JsonProperty("card")]
         public PaymentMethodCardCreateOptions Card { get; set; }
 
-        [JsonProperty("fpx")]
-        public PaymentMethodFpxCreateOptions Fpx { get; set; }
-
         /// <summary>
         /// The customer associated with the PaymentMethod that you are trying to share with a
         /// connected account.
         /// </summary>
         [JsonProperty("customer")]
         public string CustomerId { get; set; }
+
+        /// <summary>
+        /// This is a <c>FPX</c> PaymentMethod available in Malaysia
+        /// </summary>
+        [JsonProperty("fpx")]
+        public PaymentMethodFpxCreateOptions Fpx { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to a charge object. It can be useful for

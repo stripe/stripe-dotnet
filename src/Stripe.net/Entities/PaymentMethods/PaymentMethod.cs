@@ -22,9 +22,6 @@ namespace Stripe
         [JsonProperty("card_present")]
         public PaymentMethodCardPresent CardPresent { get; set; }
 
-        [JsonProperty("fpx")]
-        public PaymentMethodFpx Fpx { get; set; }
-
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? Created { get; set; }
@@ -52,6 +49,9 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
+
+        [JsonProperty("fpx")]
+        public PaymentMethodFpx Fpx { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
