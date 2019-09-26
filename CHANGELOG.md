@@ -1,5 +1,8 @@
 # Changelog
 
+## 29.4.0 - 2019-09-26
+* [#1794](https://github.com/stripe/stripe-dotnet/pull/1794) Add support for FPX payment method
+
 ## 29.3.0 - 2019-09-25
 * [#1789](https://github.com/stripe/stripe-dotnet/pull/1789) Add `Last4` in AU BECS `Source`
 
