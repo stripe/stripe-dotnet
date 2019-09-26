@@ -50,6 +50,9 @@ namespace Stripe
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
+        [JsonProperty("fpx")]
+        public PaymentMethodFpx Fpx { get; set; }
+
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 

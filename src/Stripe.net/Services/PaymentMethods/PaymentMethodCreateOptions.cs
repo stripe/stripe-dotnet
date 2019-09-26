@@ -30,6 +30,12 @@ namespace Stripe
         public string CustomerId { get; set; }
 
         /// <summary>
+        /// This is a <c>FPX</c> PaymentMethod available in Malaysia
+        /// </summary>
+        [JsonProperty("fpx")]
+        public PaymentMethodFpxCreateOptions Fpx { get; set; }
+
+        /// <summary>
         /// A set of key/value pairs that you can attach to a charge object. It can be useful for
         /// storing additional information about the customer in a structured format. It's often a
         /// good idea to store an email address in metadata for tracking later.
