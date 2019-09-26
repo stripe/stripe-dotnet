@@ -1,5 +1,8 @@
 # Changelog
 
+## 29.3.0 - 2019-09-25
+* [#1789](https://github.com/stripe/stripe-dotnet/pull/1789) Add `Last4` in AU BECS `Source`
+
 ## 29.2.1 - 2019-09-23
 * [#1791](https://github.com/stripe/stripe-dotnet/pull/1791) Add support for `Stripe-Should-Retry` header
 
