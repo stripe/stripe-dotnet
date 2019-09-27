@@ -1,5 +1,8 @@
 # Changelog
 
+## 29.5.0 - 2019-09-27
+* [#1797](https://github.com/stripe/stripe-dotnet/pull/1797) Support `Status` filter when listing Terminal `Reader`s
+
 ## 29.4.0 - 2019-09-26
 * [#1794](https://github.com/stripe/stripe-dotnet/pull/1794) Add support for FPX payment method
 
