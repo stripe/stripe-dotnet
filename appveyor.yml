@@ -56,7 +56,7 @@ test_script:
 
 after_test:
   - ps: Write-Host $("`n               RUNNING COVERAGE               `n") -BackgroundColor DarkCyan
-  - dotnet test -c Debug -f netcoreapp2.1 src/StripeTests/StripeTests.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+  - dotnet test -c Debug -f netcoreapp2.1 src/StripeTests/StripeTests.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
   - ps: |
       # Secure env vars are not available on all branches, so make sure the
       # token is available before invoking Coveralls.
