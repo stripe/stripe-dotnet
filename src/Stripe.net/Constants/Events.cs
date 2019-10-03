@@ -430,6 +430,11 @@ namespace Stripe
         public const string PaymentIntentAmountCapturableUpdated = "payment_intent.amount_capturable_updated";
 
         /// <summary>
+        /// Occurs when a PaymentIntent is canceled.
+        /// </summary>
+        public const string PaymentIntentCanceled = "payment_intent.canceled";
+
+        /// <summary>
         /// Occurs when a new PaymentIntent is created.
         /// </summary>
         public const string PaymentIntentCreated = "payment_intent.created";
@@ -587,6 +592,11 @@ namespace Stripe
         /// Occurs whenever a review is opened.
         /// </summary>
         public const string ReviewOpened = "review.opened";
+
+        /// <summary>
+        /// Occurs when a SetupIntent is canceled.
+        /// </summary>
+        public const string SetupIntentCanceled = "setup_intent.canceled";
 
         /// <summary>
         /// Occurs when a new SetupIntent is created.
