@@ -1,5 +1,10 @@
 # Changelog
 
+## 29.6.0 - 2019-10-03
+* [#1800](https://github.com/stripe/stripe-dotnet/pull/1800) Add `PaymentIntentCanceled` and `SetupIntentCanceled` constants
+* [#1799](https://github.com/stripe/stripe-dotnet/pull/1799) Start testing .NET Core 3.0
+* [#1798](https://github.com/stripe/stripe-dotnet/pull/1798) Exclude auto-implemented properties from code coverage
+
 ## 29.5.0 - 2019-09-27
 * [#1797](https://github.com/stripe/stripe-dotnet/pull/1797) Support `Status` filter when listing Terminal `Reader`s
 
