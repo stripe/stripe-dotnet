@@ -44,7 +44,7 @@ namespace Stripe
         /// ID of the default payment method for the subscription schedule.
         /// </summary>
         [JsonProperty("default_payment_method")]
-        public string DefaultPaymentMethodId { get; set; }
+        public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
         /// Ids of the tax rates to apply to this phase on the subscription schedule.
