@@ -8,6 +8,7 @@ namespace StripeTests
     using System.Text.RegularExpressions;
     using Newtonsoft.Json;
     using Stripe;
+    using Stripe.Infrastructure;
     using Xunit;
 
     /// <summary>
@@ -20,7 +21,7 @@ namespace StripeTests
         private const string AssertionMessage =
             "Found at least one JsonProperty name mismatched with its property name.";
 
-        [Fact(Skip="Not all properties are compliant yet")]
+        [Fact]
         public void Check()
         {
             List<string> results = new List<string>();
@@ -35,18 +36,28 @@ namespace StripeTests
                     var propType = property.PropertyType;
 
                     // Skip properties that don't have a `JsonProperty` attribute
-                    var attribute = property.GetCustomAttribute<JsonPropertyAttribute>();
-                    if (attribute == null)
+                    var jsonPropertyAttribute = property.GetCustomAttribute<JsonPropertyAttribute>();
+                    if (jsonPropertyAttribute == null)
                     {
                         continue;
                     }
 
                     var snakeCasedPropName = Stripe.Infrastructure.StringUtils.ToSnakeCase(property.Name);
 
-                    if (attribute.PropertyName != snakeCasedPropName)
+                    // Skip properties when the property name matches the JSON name
+                    if (jsonPropertyAttribute.PropertyName == snakeCasedPropName)
                     {
-                        results.Add($"{stripeClass.Name}.{property.Name}: {attribute.PropertyName} != {snakeCasedPropName}");
+                        continue;
                     }
+
+                    // Skip properties that have a `AllowNameMismatch` attribute
+                    var allowMismatchAttribute = property.GetCustomAttribute<AllowNameMismatch>();
+                    if (allowMismatchAttribute != null)
+                    {
+                        continue;
+                    }
+
+                    results.Add($"{stripeClass.Name}.{property.Name}: {jsonPropertyAttribute.PropertyName} != {snakeCasedPropName}");
                 }
             }
 

@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class InvoiceUpcomingInvoiceItemOption : INestedOptions, IHasMetadata
     {
@@ -36,6 +37,7 @@ namespace Stripe
         /// Ids of the tax rates to apply to this invoice item.
         /// </summary>
         [JsonProperty("invoiceitem")]
+        [AllowNameMismatch]
         public string InvoiceItem { get; set; }
 
         /// <summary>

@@ -8,18 +8,22 @@ namespace Stripe
     {
         [JsonProperty("gt")]
         [JsonConverter(typeof(DateTimeConverter))]
+        [AllowNameMismatch]
         public DateTime? GreaterThan { get; set; }
 
         [JsonProperty("gte")]
         [JsonConverter(typeof(DateTimeConverter))]
+        [AllowNameMismatch]
         public DateTime? GreaterThanOrEqual { get; set; }
 
         [JsonProperty("lt")]
         [JsonConverter(typeof(DateTimeConverter))]
+        [AllowNameMismatch]
         public DateTime? LessThan { get; set; }
 
         [JsonProperty("lte")]
         [JsonConverter(typeof(DateTimeConverter))]
+        [AllowNameMismatch]
         public DateTime? LessThanOrEqual { get; set; }
     }
 }
