@@ -45,26 +45,6 @@ namespace Stripe
         /// <value>The ID of the request, as returned by Stripe.</value>
         public string RequestId => MaybeGetHeader(this.Headers, "Request-Id");
 
-        /// <summary>
-        /// Gets the body of the response.
-        /// This method is deprecated and will be removed in a future version, please use the
-        /// <see cref="Content"/> property getter instead.
-        /// </summary>
-        /// <value>The body of the response.</value>
-        // TODO: remove this in a future a major version
-        [Obsolete("Use Content instead")]
-        public string ResponseJson => this.Content;
-
-        /// <summary>
-        /// Gets the date of the request, as returned by Stripe.
-        /// This method is deprecated and will be removed in a future version, please use the
-        /// <see cref="Date"/> property getter instead.
-        /// </summary>
-        /// <value>The date of the request, as returned by Stripe.</value>
-        // TODO: remove this in a future a major version
-        [Obsolete("Use Date instead")]
-        public DateTime RequestDate => this.Date?.DateTime ?? default(DateTime);
-
         internal int NumRetries { get; set; }
 
         /// <summary>Returns a string that represents the <see cref="StripeResponse"/>.</summary>
