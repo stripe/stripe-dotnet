@@ -50,8 +50,8 @@ namespace StripeTests
                     {
                         Document = new AccountCompanyVerificationDocumentOptions
                         {
-                            BackFileId = "file_back",
-                            FrontFileId = "file_front",
+                            Back = "file_back",
+                            Front = "file_front",
                         },
                     },
                 },
