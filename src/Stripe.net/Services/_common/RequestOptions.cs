@@ -23,24 +23,6 @@ namespace Stripe
         /// </summary>
         public string StripeAccount { get; set; }
 
-        /// <summary>
-        /// <para>
-        /// Get or sets the
-        /// <a href="https://stripe.com/docs/connect/authentication#authentication-via-the-stripe-account-header">ID
-        /// of the connected account</a> to use for the request.
-        /// </para>
-        /// <para>
-        /// This property is deprecated and will be removed in a future version, please use the
-        /// <see cref="StripeAccount"/> property accessors instead.
-        /// </para>
-        /// </summary>
-        [Obsolete("Use StripeAccount instead.")]
-        public string StripeConnectAccountId
-        {
-            get => this.StripeAccount;
-            set => this.StripeAccount = value;
-        }
-
         /// <summary>Gets or sets the base URL for the request.</summary>
         /// <remarks>
         /// This is an internal property. It is set by services or individual request methods when

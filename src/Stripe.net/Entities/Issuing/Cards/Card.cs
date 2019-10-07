@@ -139,9 +139,5 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
-
-        [Obsolete("This property has never been filled and should be ignored.")]
-        [JsonProperty("billing")]
-        public Billing Billing { get; set; }
     }
 }
