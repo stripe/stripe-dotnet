@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ThreeDSecureCreateOptions : BaseOptions
     {
@@ -17,6 +18,7 @@ namespace Stripe
         /// If you pass a card id, you must also pass the customer id.
         /// </summary>
         [JsonProperty("card")]
+        [AllowNameMismatch]
         public string CardTokenOrCardId { get; set; }
 
         [JsonProperty("customer")]
