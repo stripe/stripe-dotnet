@@ -29,9 +29,9 @@ namespace StripeTests
                 FirstName = "John",
                 Relationship = new PersonRelationshipOptions
                 {
-                    AccountOpener = true,
                     Owner = true,
                     PercentOwnership = 30.5m,
+                    Representative = true,
                 },
                 Verification = new PersonVerificationOptions
                 {
@@ -53,9 +53,9 @@ namespace StripeTests
                 FirstName = "John",
                 Relationship = new PersonRelationshipOptions
                 {
-                    AccountOpener = true,
                     Owner = true,
                     PercentOwnership = 30.5m,
+                    Representative = true,
                 },
             };
 

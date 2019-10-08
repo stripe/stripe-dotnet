@@ -5,13 +5,6 @@ namespace Stripe
     public class PersonRelationshipListOptions : INestedOptions
     {
         /// <summary>
-        /// A filter on the list of people returned based on whether these people are the account
-        /// opener of the account’s company.
-        /// </summary>
-        [JsonProperty("account_opener")]
-        public bool? AccountOpener { get; set; }
-
-        /// <summary>
         /// A filter on the list of people returned based on whether these people are directors of
         /// the account’s company.
         /// </summary>
@@ -31,5 +24,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("owner")]
         public bool? Owner { get; set; }
+
+        /// <summary>
+        /// A filter on the list of people to find the account representative.
+        /// </summary>
+        [JsonProperty("representative")]
+        public bool? Representative { get; set; }
     }
 }
