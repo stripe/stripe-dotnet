@@ -36,6 +36,7 @@ namespace StripeTests
                 {
                     { "key", "value" },
                 },
+                Name = "Jenny Rosen",
             };
 
             this.listOptions = new ExternalAccountListOptions
