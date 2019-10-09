@@ -45,7 +45,7 @@ namespace Stripe
         /// Quantity of the plan to which the customer should be subscribed.
         /// </summary>
         [JsonProperty("quantity")]
-        public long Quantity { get; set; }
+        public long? Quantity { get; set; }
 
         /// <summary>
         /// The tax rates which apply to this specific item on the phase for a subscription
