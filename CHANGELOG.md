@@ -1,5 +1,30 @@
 # Changelog
 
+## 30.0.0 - 2019-10-08
+* [#1694](https://github.com/stripe/stripe-dotnet/pull/1694)
+Major version release. Refer to our [migration guide for v30](https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v30) for a list of backwards incompatible changes to watch out for.
+
+Pull requests included in this release (cf. [#1694](https://github.com/stripe/stripe-dotnet/pull/1694)) (⚠️ = breaking changes):
+* [#1675](https://github.com/stripe/stripe-dotnet/pull/1675) ⚠️ Better string enums
+* [#1699](https://github.com/stripe/stripe-dotnet/pull/1699) ⚠️ Init options with forced parameter values
+* [#1713](https://github.com/stripe/stripe-dotnet/pull/1713) ⚠️ Remove various deprecated parameters and properties
+* [#1715](https://github.com/stripe/stripe-dotnet/pull/1715) ⚠️ Remove support for `ExpandXXX` on each service
+* [#1736](https://github.com/stripe/stripe-dotnet/pull/1736) ⚠️ Properly use `SetupIntentPaymentMethodOptionsCardOptions` in `SetupIntentPaymentMethodOptionsOptions`
+* [#1738](https://github.com/stripe/stripe-dotnet/pull/1738) ⚠️ Removed `Id` and `FileId` suffixes to stay as close to the API as possible
+* [#1744](https://github.com/stripe/stripe-dotnet/pull/1744) Add a test to ensure that JSON names match property names
+* [#1739](https://github.com/stripe/stripe-dotnet/pull/1739) ⚠️ Renaming a few more fields for consistency
+* [#1751](https://github.com/stripe/stripe-dotnet/pull/1751) Remove dead code for service expansions
+* [#1752](https://github.com/stripe/stripe-dotnet/pull/1752) Bump Stylecop.Analyzers to latest version
+* [#1755](https://github.com/stripe/stripe-dotnet/pull/1755) Bump SourceLink and create symbol package
+* [#1788](https://github.com/stripe/stripe-dotnet/pull/1788) Add a test to ensure all resources inherit from `StripeEntity<>` and fix all the ones not doing it yet
+* [#1761](https://github.com/stripe/stripe-dotnet/pull/1761) ⚠️ Add a wholesome test to ensure proper JSON converters are applied
+* [#1802](https://github.com/stripe/stripe-dotnet/pull/1802) ⚠️ Remove more deprecated stuff
+* [#1803](https://github.com/stripe/stripe-dotnet/pull/1803) ⚠️ Remove more `Id`/`FileId` suffixes
+* [#1805](https://github.com/stripe/stripe-dotnet/pull/1805) ⚠️ Rename `SourceThreeDSecureCreateOptions.CardId` to `SourceThreeDSecureCreateOptions.Card`
+* [#1806](https://github.com/stripe/stripe-dotnet/pull/1806) ⚠️ Fix `ExternalAccountUpdateOptions`
+* [#1804](https://github.com/stripe/stripe-dotnet/pull/1804) Enable test for JSON<->property name consistency
+* [#1807](https://github.com/stripe/stripe-dotnet/pull/1807) ⚠️ Rename `AccountOpener` to `Representative` and move to latest API version `2019-10-08`
+
 ## 29.6.0 - 2019-10-03
 * [#1800](https://github.com/stripe/stripe-dotnet/pull/1800) Add `PaymentIntentCanceled` and `SetupIntentCanceled` constants
 * [#1799](https://github.com/stripe/stripe-dotnet/pull/1799) Start testing .NET Core 3.0
