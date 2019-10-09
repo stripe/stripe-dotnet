@@ -1,5 +1,8 @@
 # Changelog
 
+## 30.0.1 - 2019-10-09
+* [#1809](https://github.com/stripe/stripe-dotnet/pull/1809) Fix `Quantity` to be nullable on `SubscriptionSchedulePhaseItem`
+
 ## 30.0.0 - 2019-10-08
 * [#1694](https://github.com/stripe/stripe-dotnet/pull/1694)
 Major version release. Refer to our [migration guide for v30](https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v30) for a list of backwards incompatible changes to watch out for.
