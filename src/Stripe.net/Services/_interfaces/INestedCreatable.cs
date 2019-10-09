@@ -3,12 +3,12 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public interface INestedCreatable<T, O>
-        where T : IStripeEntity
-        where O : BaseOptions
+    public interface INestedCreatable<TEntity, TOptions>
+        where TEntity : IStripeEntity
+        where TOptions : BaseOptions
     {
-        T Create(string parentId, O createOptions, RequestOptions requestOptions = null);
+        TEntity Create(string parentId, TOptions createOptions, RequestOptions requestOptions = null);
 
-        Task<T> CreateAsync(string parentId, O createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<TEntity> CreateAsync(string parentId, TOptions createOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

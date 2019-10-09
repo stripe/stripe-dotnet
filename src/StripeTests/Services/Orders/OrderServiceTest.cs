@@ -33,9 +33,9 @@ namespace StripeTests
                     new OrderItemOptions
                     {
                         Parent = "sku_123",
-                        Quantity = 1
+                        Quantity = 1,
                     },
-                }
+                },
             };
 
             this.updateOptions = new OrderUpdateOptions
@@ -48,7 +48,7 @@ namespace StripeTests
 
             this.payOptions = new OrderPayOptions
             {
-                CustomerId = "cus_123",
+                Customer = "cus_123",
             };
 
             this.listOptions = new OrderListOptions

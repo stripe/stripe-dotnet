@@ -25,9 +25,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/customers/{PARENT_ID}/sources";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandCustomer { get; set; }
-
         public virtual BankAccount Create(string customerId, BankAccountCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.CreateNestedEntity(customerId, options, requestOptions);
@@ -60,17 +57,17 @@ namespace Stripe
 
         public virtual StripeList<BankAccount> List(string customerId, BankAccountListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntities(customerId, options, requestOptions);
+            return this.ListNestedEntities(customerId, options ?? new BankAccountListOptions(), requestOptions);
         }
 
         public virtual Task<StripeList<BankAccount>> ListAsync(string customerId, BankAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.ListNestedEntitiesAsync(customerId, options, requestOptions, cancellationToken);
+            return this.ListNestedEntitiesAsync(customerId, options ?? new BankAccountListOptions(), requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<BankAccount> ListAutoPaging(string customerId, BankAccountListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntitiesAutoPaging(customerId, options, requestOptions);
+            return this.ListNestedEntitiesAutoPaging(customerId, options ?? new BankAccountListOptions(), requestOptions);
         }
 
         public virtual BankAccount Update(string customerId, string bankAccountId, BankAccountUpdateOptions options, RequestOptions requestOptions = null)

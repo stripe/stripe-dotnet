@@ -28,7 +28,7 @@ namespace Stripe
         /// line items of the plan in active subscriptions will be affected.
         /// </summary>
         [JsonProperty("product")]
-        public string ProductId { get; set; }
+        public string Product { get; set; }
 
         /// <summary>
         /// Default number of trial days when subscribing a customer to this plan using

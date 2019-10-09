@@ -5,10 +5,10 @@ namespace Stripe
     public class InvoiceItemListOptions : ListOptionsWithCreated
     {
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         [JsonProperty("invoice")]
-        public string InvoiceId { get; set; }
+        public string Invoice { get; set; }
 
         [JsonProperty("pending")]
         public bool? Pending { get; set; }

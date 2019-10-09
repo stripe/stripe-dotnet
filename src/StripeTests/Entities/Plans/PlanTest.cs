@@ -53,7 +53,6 @@ namespace StripeTests
             Assert.NotNull(plan.Id);
             Assert.Equal("plan", plan.Object);
             Assert.Equal(199, plan.Tiers[0].UnitAmountDecimal);
-            Assert.Equal(199, plan.Tiers[0].UnitAmountDecinal);
         }
     }
 }

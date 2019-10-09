@@ -15,13 +15,13 @@ namespace Stripe
         /// previewed without a coupon by passing this value as an empty string.
         /// </summary>
         [JsonProperty("coupon")]
-        public string CouponId { get; set; }
+        public string Coupon { get; set; }
 
         /// <summary>
-        /// REQUIRED
+        /// REQUIRED.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// List of invoice items to add or update in the upcoming invoice preview.
@@ -45,12 +45,14 @@ namespace Stripe
         /// <see cref="Stripe.SubscriptionBillingCycleAnchor"/>.
         /// </summary>
         [JsonProperty("subscription_billing_cycle_anchor")]
-        public AnyOf<DateTime?, SubscriptionBillingCycleAnchor?> SubscriptionBillingCycleAnchor { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, SubscriptionBillingCycleAnchor> SubscriptionBillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Time at which the subscription would cancel.
         /// </summary>
         [JsonProperty("subscription_cancel_at")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? SubscriptionCancelAt { get; set; }
 
         /// <summary>
@@ -82,7 +84,7 @@ namespace Stripe
         /// among the customer’s subscriptions.
         /// </summary>
         [JsonProperty("subscription")]
-        public string SubscriptionId { get; set; }
+        public string Subscription { get; set; }
 
         /// <summary>
         /// List of subscription items, each with an attached plan.
@@ -109,6 +111,7 @@ namespace Stripe
         /// be set to false.
         /// </summary>
         [JsonProperty("subscription_proration_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? SubscriptionProrationDate { get; set; }
 
         /// <summary>
@@ -126,6 +129,7 @@ namespace Stripe
         /// required.
         /// </summary>
         [JsonProperty("subscription_trial_end")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? SubscriptionTrialEnd { get; set; }
 
         /// <summary>

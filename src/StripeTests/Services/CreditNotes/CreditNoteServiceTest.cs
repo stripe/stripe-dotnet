@@ -28,7 +28,7 @@ namespace StripeTests
             this.createOptions = new CreditNoteCreateOptions
             {
                 Amount = 100,
-                InvoiceId = "in_123",
+                Invoice = "in_123",
                 Reason = "duplicate",
             };
 
@@ -43,7 +43,7 @@ namespace StripeTests
             this.listOptions = new CreditNoteListOptions
             {
                 Limit = 1,
-                InvoiceId = "in_123",
+                Invoice = "in_123",
             };
 
             this.voidOptions = new CreditNoteVoidOptions

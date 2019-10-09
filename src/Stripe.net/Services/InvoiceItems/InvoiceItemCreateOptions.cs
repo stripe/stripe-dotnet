@@ -22,7 +22,7 @@ namespace Stripe
         /// The ID of the customer who will be billed when this invoice item is billed.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// An arbitrary string which you can attach to the invoice item. The description is
@@ -43,7 +43,7 @@ namespace Stripe
         /// will be added to the preview of the upcoming invoice.
         /// </summary>
         [JsonProperty("invoice")]
-        public string InvoiceId { get; set; }
+        public string Invoice { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to an object. It can be useful for storing
@@ -72,7 +72,7 @@ namespace Stripe
         /// context of a particular subscription.
         /// </summary>
         [JsonProperty("subscription")]
-        public string SubscriptionId { get; set; }
+        public string Subscription { get; set; }
 
         /// <summary>
         /// The tax rates which apply to the invoice item. When set, the <see cref="Invoice.DefaultTaxRates"/>

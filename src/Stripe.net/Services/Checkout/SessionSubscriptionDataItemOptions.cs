@@ -8,7 +8,7 @@ namespace Stripe
         /// Plan ID for this item.
         /// </summary>
         [JsonProperty("plan")]
-        public string PlanId { get; set; }
+        public string Plan { get; set; }
 
         /// <summary>
         /// Quantity for this item.

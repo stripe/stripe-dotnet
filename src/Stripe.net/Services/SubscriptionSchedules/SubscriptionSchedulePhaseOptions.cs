@@ -3,6 +3,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SubscriptionSchedulePhaseOptions : INestedOptions
     {
@@ -37,13 +38,13 @@ namespace Stripe
         /// subscription will only affect invoices created for that particular subscription.
         /// </summary>
         [JsonProperty("coupon")]
-        public string CouponId { get; set; }
+        public string Coupon { get; set; }
 
         /// <summary>
         /// ID of the default payment method for the subscription schedule.
         /// </summary>
         [JsonProperty("default_payment_method")]
-        public string DefaultPaymentMethodId { get; set; }
+        public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
         /// Ids of the tax rates to apply to this phase on the subscription schedule.
@@ -56,6 +57,7 @@ namespace Stripe
         /// <c>iterations</c> must not be set.
         /// </summary>
         [JsonProperty("end_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
@@ -84,6 +86,7 @@ namespace Stripe
         /// The date at which this phase of the subscription schedule starts.
         /// </summary>
         [JsonProperty("start_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? StartDate { get; set; }
 
         /// <summary>
@@ -108,6 +111,7 @@ namespace Stripe
         /// end date, can not be combined with <c>trial</c>.
         /// </summary>
         [JsonProperty("trial_end")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
     }
 }

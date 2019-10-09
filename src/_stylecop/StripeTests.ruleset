@@ -8,11 +8,15 @@
     <Rule Id="CS0618" Action="None" />
 
     <!--
+      CS1591: Missing XML comment for publicly visible type or member 'Type_or_Member'
+      SA1600: ElementsMustBeDocumented
+      SA1602: EnumerationItemsMustBeDocumented
       SA1633: FileMustHaveHeader
-      SA1652: EnableXmlDocumentationOutput
       Documentation related warnings, not applicable to tests.
     -->
+    <Rule Id="CS1591" Action="None" />
+    <Rule Id="SA1600" Action="None" />
+    <Rule Id="SA1602" Action="None" />
     <Rule Id="SA1633" Action="None" />
-    <Rule Id="SA1652" Action="None" />
   </Rules>
 </RuleSet>

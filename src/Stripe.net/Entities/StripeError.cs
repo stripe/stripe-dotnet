@@ -23,7 +23,7 @@ namespace Stripe
         /// <summary>
         /// For card errors resulting from a card issuer decline, a short string indicating the
         /// <a href="https://stripe.com//docs/declines#issuer-declines">card issuer's reason for the
-        /// decline</a>
+        /// decline</a>.
         /// </summary>
         [JsonProperty("decline_code")]
         public string DeclineCode { get; set; }
@@ -80,7 +80,7 @@ namespace Stripe
         /// <summary>
         /// The type of error returned. One of <c>api_connection_error</c>, <c>api_error</c>,
         /// <c>authentication_error</c>, <c>card_error</c>, <c>idempotency_error</c>,
-        /// <c>invalid_request_error</c>, or <c>rate_limit_error</c>
+        /// <c>invalid_request_error</c>, or <c>rate_limit_error</c>.
         /// </summary>
         [JsonProperty("type")]
         public string ErrorType { get; set; }

@@ -7,10 +7,6 @@ namespace Stripe
 
     public class CustomerCreateOptions : BaseOptions, IHasMetadata
     {
-        [Obsolete("Use Balance")]
-        [JsonProperty("account_balance")]
-        public long? AccountBalance { get; set; }
-
         /// <summary>
         /// The customer’s address.
         /// </summary>
@@ -28,7 +24,7 @@ namespace Stripe
         public long? Balance { get; set; }
 
         [JsonProperty("coupon")]
-        public string CouponId { get; set; }
+        public string Coupon { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -52,7 +48,7 @@ namespace Stripe
         public string Name { get; set; }
 
         [JsonProperty("payment_method")]
-        public string PaymentMethodId { get; set; }
+        public string PaymentMethod { get; set; }
 
         /// <summary>
         /// The customer’s phone number.
@@ -61,7 +57,7 @@ namespace Stripe
         public string Phone { get; set; }
 
         [JsonProperty("plan")]
-        public string PlanId { get; set; }
+        public string Plan { get; set; }
 
         /// <summary>
         /// The customer’s preferred locales (languages), ordered by preference.
@@ -106,15 +102,12 @@ namespace Stripe
         [JsonProperty("tax_id_data")]
         public List<CustomerTaxIdDataOptions> TaxIdData { get; set; }
 
-        [Obsolete("Use TaxIdData")]
-        [JsonProperty("tax_info")]
-        public CustomerTaxInfoOptions TaxInfo { get; set; }
-
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
         [JsonProperty("trial_end")]
-        public AnyOf<DateTime?, SubscriptionTrialEnd?> TrialEnd { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, SubscriptionTrialEnd> TrialEnd { get; set; }
 
         [JsonProperty("validate")]
         public bool? Validate { get; set; }

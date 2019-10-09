@@ -3,6 +3,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PaymentIntentCreateOptions : BaseOptions, IHasMetadata
     {
@@ -16,8 +17,8 @@ namespace Stripe
         /// <summary>
         /// The amount of the application fee (if any) that will be applied to the payment and
         /// transferred to the application owner’s Stripe account. For more information, see the
-        /// PaymentIntents \<a href="https://stripe.com/docs/payments/payment-intents/use-cases#connected-accounts">use
-        /// case for connected accounts</a>/
+        /// PaymentIntents <a href="https://stripe.com/docs/payments/payment-intents/use-cases#connected-accounts">use
+        /// case for connected accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
@@ -65,7 +66,7 @@ namespace Stripe
         /// PaymentIntent.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
@@ -87,6 +88,7 @@ namespace Stripe
         /// charge them later</a>.
         /// </summary>
         [JsonProperty("off_session")]
+        [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<bool?, string> OffSession { get; set; }
 
         /// <summary>
@@ -102,7 +104,7 @@ namespace Stripe
         /// attach to this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method")]
-        public string PaymentMethodId { get; set; }
+        public string PaymentMethod { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for this PaymentIntent.
@@ -162,10 +164,10 @@ namespace Stripe
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
-        /// ID of the Source to use with this PaymentIntent. Prefer using <see cref="PaymentMethodId"/>.
+        /// ID of the Source to use with this PaymentIntent. Prefer using <see cref="PaymentMethod"/>.
         /// </summary>
         [JsonProperty("source")]
-        public string SourceId { get; set; }
+        public string Source { get; set; }
 
         /// <summary>
         /// Extra information about a PaymentIntent. This will appear on your customer’s statement
@@ -198,9 +200,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
-
-        [Obsolete("Use PaymentMethodTypes")]
-        [JsonProperty("allowed_source_types")]
-        public List<string> AllowedSourceTypes { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PlanTierOptions : INestedOptions
     {
@@ -37,6 +38,7 @@ namespace Stripe
         /// tier.
         /// </summary>
         [JsonProperty("up_to")]
-        public AnyOf<long?, PlanTierUpTo?> UpTo { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<long?, PlanTierUpTo> UpTo { get; set; }
     }
 }

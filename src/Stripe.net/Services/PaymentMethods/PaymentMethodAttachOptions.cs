@@ -8,6 +8,6 @@ namespace Stripe
     public class PaymentMethodAttachOptions : BaseOptions
     {
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
     }
 }

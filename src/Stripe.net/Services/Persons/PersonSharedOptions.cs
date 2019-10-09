@@ -1,6 +1,5 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -65,6 +64,7 @@ namespace Stripe
         public PersonRelationshipOptions Relationship { get; set; }
 
         [JsonProperty("ssn_last_4")]
+        [AllowNameMismatch]
         public string SSNLast4 { get; set; }
 
         [JsonProperty("verification")]

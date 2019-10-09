@@ -11,7 +11,7 @@ namespace Stripe
         public PersonCreateOptions Individual { get; set; }
 
         /// <summary>
-        /// One of <see cref="AccountType"/>
+        /// One of <see cref="AccountType"/>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

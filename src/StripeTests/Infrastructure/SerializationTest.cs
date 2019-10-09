@@ -27,7 +27,7 @@ namespace StripeTests
         {
             var obj = new TestObjectDateTime
             {
-                Date = null
+                Date = null,
             };
 
             var reloaded = JsonConvert.DeserializeObject<TestObjectDateTime>(JsonConvert.SerializeObject(obj));

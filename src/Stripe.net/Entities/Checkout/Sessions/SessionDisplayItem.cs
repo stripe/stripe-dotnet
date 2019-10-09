@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class SessionDisplayItem : StripeEntity
+    public class SessionDisplayItem : StripeEntity<SessionDisplayItem>
     {
         /// <summary>
         /// Amount for the display item.

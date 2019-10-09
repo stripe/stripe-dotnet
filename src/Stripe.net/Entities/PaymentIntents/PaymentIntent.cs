@@ -365,7 +365,7 @@ namespace Stripe
 
         /// <summary>
         /// Extra information about a PaymentIntent. This will appear on your customer’s statement
-        /// when this PaymentIntent succeeds in creating a charge
+        /// when this PaymentIntent succeeds in creating a charge.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
@@ -403,9 +403,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
-
-        [Obsolete("Use PaymentMethodTypes")]
-        [JsonProperty("allowed_source_types")]
-        public List<string> AllowedSourceTypes { get; set; }
     }
 }

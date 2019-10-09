@@ -5,13 +5,6 @@ namespace Stripe
     public class PersonRelationship : StripeEntity<PersonRelationship>
     {
         /// <summary>
-        /// Whether the person opened the account. This person provides information about
-        /// themselves, and general information about the account.
-        /// </summary>
-        [JsonProperty("account_opener")]
-        public bool AccountOpener { get; set; }
-
-        /// <summary>
         /// Whether the person is a director of the account’s legal entity..
         /// </summary>
         [JsonProperty("director")]
@@ -35,6 +28,16 @@ namespace Stripe
         /// </summary>
         [JsonProperty("percent_ownership")]
         public decimal? PercentOwnership { get; set; }
+
+        /// <summary>
+        /// Whether the person is authorized as the primary representative of the account. This is
+        /// the person nominated by the business to provide information about themselves, and
+        /// general information about the account. There can only be one representative at any given
+        /// time. At the time the account is created, this person should be set to the person
+        /// responsible for opening the account.
+        /// </summary>
+        [JsonProperty("representative")]
+        public bool Representative { get; set; }
 
         /// <summary>
         /// The person’s title (e.g., CEO, Support Engineer).

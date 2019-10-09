@@ -24,9 +24,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/payment_methods";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandCustomer { get; set; }
-
         public virtual PaymentMethod Attach(string paymentMethodId, PaymentMethodAttachOptions options, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/attach", options, requestOptions);

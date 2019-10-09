@@ -2,10 +2,12 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class AccountTosAcceptanceOptions : INestedOptions
     {
         [JsonProperty("date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? Date { get; set; }
 
         [JsonProperty("ip")]

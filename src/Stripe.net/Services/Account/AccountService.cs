@@ -25,9 +25,6 @@ namespace Stripe
 
         public override string BasePath => "/v1/accounts";
 
-        [Obsolete("Use BaseOptions.AddExpand instead.")]
-        public bool ExpandBusinessLogo { get; set; }
-
         public virtual Account Create(AccountCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.CreateEntity(options, requestOptions);

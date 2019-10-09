@@ -9,6 +9,6 @@ namespace Stripe
         /// Configuration for any card payments attempted on this SetupIntent.
         /// </summary>
         [JsonProperty("card")]
-        public PaymentIntentPaymentMethodOptionsCardOptions Card { get; set; }
+        public SetupIntentPaymentMethodOptionsCardOptions Card { get; set; }
     }
 }

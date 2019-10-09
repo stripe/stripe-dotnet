@@ -14,7 +14,7 @@ namespace StripeTests
         {
             this.MockHandler = new Mock<HttpClientHandler>
             {
-                CallBase = true
+                CallBase = true,
             };
             this.HttpClient = new SystemNetHttpClient(
                 new System.Net.Http.HttpClient(this.MockHandler.Object));
@@ -35,6 +35,8 @@ namespace StripeTests
         /// <summary>
         /// Asserts that a single HTTP request was made with the specified method and path.
         /// </summary>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="path">The HTTP path.</param>
         public void AssertRequest(HttpMethod method, string path)
         {
             this.MockHandler.Protected()
@@ -51,6 +53,10 @@ namespace StripeTests
         /// Stubs an HTTP request with the specified method and path to return the specified status
         /// code and response body.
         /// </summary>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="path">The HTTP path.</param>
+        /// <param name="status">The status code to return.</param>
+        /// <param name="response">The response body to return.</param>
         public void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response)
         {
             var responseMessage = new HttpResponseMessage(status);

@@ -21,17 +21,17 @@ namespace Stripe
         /// created with default parameters.
         /// </param>
         /// <param name="apiBase">
-        /// The base URL for Stripe's API. Defaults to <see cref="DefaultApiBase"/>
+        /// The base URL for Stripe's API. Defaults to <see cref="DefaultApiBase"/>.
         /// </param>
         /// <param name="connectBase">
-        /// The base URL for Stripe's OAuth API. Defaults to <see cref="DefaultConnectBase"/>
+        /// The base URL for Stripe's OAuth API. Defaults to <see cref="DefaultConnectBase"/>.
         /// </param>
         /// <param name="filesBase">
-        /// The base URL for Stripe's Files API. Defaults to <see cref="DefaultFilesBase"/>
+        /// The base URL for Stripe's Files API. Defaults to <see cref="DefaultFilesBase"/>.
         /// </param>
-        /// <exception cref="ArgumentNullException">if <c>apiKey</c> is <c>null</c></exception>
+        /// <exception cref="ArgumentNullException">if <c>apiKey</c> is <c>null</c>.</exception>
         /// <exception cref="ArgumentException">
-        /// if <c>apiKey</c> is empty or contains whitespace
+        /// if <c>apiKey</c> is empty or contains whitespace.
         /// </exception>
         public StripeClient(
             string apiKey = null,

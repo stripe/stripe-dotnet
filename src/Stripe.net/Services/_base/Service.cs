@@ -11,11 +11,11 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>Abstract base class for all services.</summary>
-    /// <typeparam name="EntityReturned">
+    /// <typeparam name="TEntityReturned">
     /// The type of <see cref="IStripeEntity"/> that this service returns.
     /// </typeparam>
-    public abstract class Service<EntityReturned>
-        where EntityReturned : IStripeEntity
+    public abstract class Service<TEntityReturned>
+        where TEntityReturned : IStripeEntity
     {
         private IStripeClient client;
 
@@ -50,7 +50,7 @@ namespace Stripe
             get => this.client ?? StripeConfiguration.StripeClient;
         }
 
-        protected EntityReturned CreateEntity(BaseOptions options, RequestOptions requestOptions)
+        protected TEntityReturned CreateEntity(BaseOptions options, RequestOptions requestOptions)
         {
             return this.Request(
                 HttpMethod.Post,
@@ -59,7 +59,7 @@ namespace Stripe
                 requestOptions);
         }
 
-        protected Task<EntityReturned> CreateEntityAsync(
+        protected Task<TEntityReturned> CreateEntityAsync(
             BaseOptions options,
             RequestOptions requestOptions,
             CancellationToken cancellationToken)
@@ -72,7 +72,7 @@ namespace Stripe
                 cancellationToken);
         }
 
-        protected EntityReturned DeleteEntity(
+        protected TEntityReturned DeleteEntity(
             string id,
             BaseOptions options,
             RequestOptions requestOptions)
@@ -84,7 +84,7 @@ namespace Stripe
                 requestOptions);
         }
 
-        protected Task<EntityReturned> DeleteEntityAsync(
+        protected Task<TEntityReturned> DeleteEntityAsync(
             string id,
             BaseOptions options,
             RequestOptions requestOptions,
@@ -98,7 +98,7 @@ namespace Stripe
                 cancellationToken);
         }
 
-        protected EntityReturned GetEntity(
+        protected TEntityReturned GetEntity(
             string id,
             BaseOptions options,
             RequestOptions requestOptions)
@@ -110,7 +110,7 @@ namespace Stripe
                 requestOptions);
         }
 
-        protected Task<EntityReturned> GetEntityAsync(
+        protected Task<TEntityReturned> GetEntityAsync(
             string id,
             BaseOptions options,
             RequestOptions requestOptions,
@@ -124,23 +124,23 @@ namespace Stripe
                 cancellationToken);
         }
 
-        protected StripeList<EntityReturned> ListEntities(
+        protected StripeList<TEntityReturned> ListEntities(
             ListOptions options,
             RequestOptions requestOptions)
         {
-            return this.Request<StripeList<EntityReturned>>(
+            return this.Request<StripeList<TEntityReturned>>(
                 HttpMethod.Get,
                 this.ClassUrl(),
                 options,
                 requestOptions);
         }
 
-        protected Task<StripeList<EntityReturned>> ListEntitiesAsync(
+        protected Task<StripeList<TEntityReturned>> ListEntitiesAsync(
             ListOptions options,
             RequestOptions requestOptions,
             CancellationToken cancellationToken)
         {
-            return this.RequestAsync<StripeList<EntityReturned>>(
+            return this.RequestAsync<StripeList<TEntityReturned>>(
                 HttpMethod.Get,
                 this.ClassUrl(),
                 options,
@@ -148,17 +148,17 @@ namespace Stripe
                 cancellationToken);
         }
 
-        protected IEnumerable<EntityReturned> ListEntitiesAutoPaging(
+        protected IEnumerable<TEntityReturned> ListEntitiesAutoPaging(
             ListOptions options,
             RequestOptions requestOptions)
         {
-            return this.ListRequestAutoPaging<EntityReturned>(
+            return this.ListRequestAutoPaging<TEntityReturned>(
                 this.ClassUrl(),
                 options,
                 requestOptions);
         }
 
-        protected EntityReturned UpdateEntity(
+        protected TEntityReturned UpdateEntity(
             string id,
             BaseOptions options,
             RequestOptions requestOptions)
@@ -170,7 +170,7 @@ namespace Stripe
                 requestOptions);
         }
 
-        protected Task<EntityReturned> UpdateEntityAsync(
+        protected Task<TEntityReturned> UpdateEntityAsync(
             string id,
             BaseOptions options,
             RequestOptions requestOptions,
@@ -184,27 +184,27 @@ namespace Stripe
                 cancellationToken);
         }
 
-        protected EntityReturned Request(
+        protected TEntityReturned Request(
             HttpMethod method,
             string path,
             BaseOptions options,
             RequestOptions requestOptions)
         {
-            return this.Request<EntityReturned>(
+            return this.Request<TEntityReturned>(
                 method,
                 path,
                 options,
                 requestOptions);
         }
 
-        protected Task<EntityReturned> RequestAsync(
+        protected Task<TEntityReturned> RequestAsync(
             HttpMethod method,
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.RequestAsync<EntityReturned>(
+            return this.RequestAsync<TEntityReturned>(
                 method,
                 path,
                 options,
@@ -231,7 +231,6 @@ namespace Stripe
             CancellationToken cancellationToken = default(CancellationToken))
             where T : IStripeEntity
         {
-            options = this.SetupOptions(options, IsStripeList<T>());
             requestOptions = this.SetupRequestOptions(requestOptions);
             return await this.Client.RequestAsync<T>(
                 method,
@@ -287,29 +286,6 @@ namespace Stripe
             }
         }
 
-        protected BaseOptions SetupOptions(BaseOptions options, bool isListMethod)
-        {
-            var serviceExpansions = this.Expansions(isListMethod);
-            if (!serviceExpansions.Any())
-            {
-                return options;
-            }
-
-            options = options ?? new BaseOptions();
-
-            if (options.Expand == null)
-            {
-                options.Expand = new List<string>();
-            }
-
-            // Compute the union instead of using `AddRangeExpand` to avoid adding duplicate
-            // values in the list, in case `SetupOptions` has already been called on this options
-            // instance.
-            options.Expand = options.Expand.Union(serviceExpansions).ToList();
-
-            return options;
-        }
-
         protected RequestOptions SetupRequestOptions(RequestOptions requestOptions)
         {
             if (requestOptions == null)
@@ -344,22 +320,6 @@ namespace Stripe
             var typeInfo = typeof(T).GetTypeInfo();
             return typeInfo.IsGenericType
                 && typeInfo.GetGenericTypeDefinition() == typeof(StripeList<>);
-        }
-
-        /// <summary>
-        /// Returns the list of attributes to expand in requests sent by the service.
-        /// </summary>
-        /// <param name="isListMethod">Whether the request is a list request or not.</param>
-        /// <returns>The list of attributes to expand.</returns>
-        public List<string> Expansions(bool isListMethod)
-        {
-            return this.GetType()
-                .GetRuntimeProperties()
-                .Where(p => p.Name.StartsWith("Expand") && p.PropertyType == typeof(bool))
-                .Where(p => (bool)p.GetValue(this, null))
-                .Select(p => StringUtils.ToSnakeCase(p.Name.Substring("Expand".Length)))
-                .Select(i => isListMethod ? $"data.{i}" : i)
-                .ToList();
         }
     }
 }

@@ -16,13 +16,13 @@ namespace Stripe
         /// REQUIRED. The identifier of the charge to refund.
         /// </summary>
         [JsonProperty("charge")]
-        public string ChargeId { get; set; }
+        public string Charge { get; set; }
 
         /// <summary>
         /// A set of key-value pairs that you can attach to a <c>Refund</c> object. This can be
         /// useful for storing additional information about the refund in a structured format. You
         /// can unset individual keys if you POST an empty value for that key. You can clear all
-        /// keys if you POST an empty value for <c>metadata</c>
+        /// keys if you POST an empty value for <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

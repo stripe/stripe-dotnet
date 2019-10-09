@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class InvoiceUpcomingInvoiceItemOption : INestedOptions, IHasMetadata
     {
@@ -36,7 +37,8 @@ namespace Stripe
         /// Ids of the tax rates to apply to this invoice item.
         /// </summary>
         [JsonProperty("invoiceitem")]
-        public string InvoiceItemId { get; set; }
+        [AllowNameMismatch]
+        public string InvoiceItem { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to an object. It can be useful for storing

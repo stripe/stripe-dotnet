@@ -9,11 +9,11 @@ namespace Stripe
         /// Plan ID for this item.
         /// </summary>
         [JsonProperty("plan")]
-        public string PlanId { get; set; }
+        public string Plan { get; set; }
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
-        /// new billing period
+        /// new billing period.
         /// </summary>
         [JsonProperty("billing_thresholds")]
         public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }

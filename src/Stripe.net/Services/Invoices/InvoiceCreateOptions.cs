@@ -20,14 +20,6 @@ namespace Stripe
         public bool? AutoAdvance { get; set; }
 
         /// <summary>
-        /// This field has been renamed to collection_method and will be removed
-        /// in a future API version.
-        /// </summary>
-        [Obsolete("Use CollectionMethod")]
-        [JsonProperty("billing")]
-        public Billing? Billing { get; set; }
-
-        /// <summary>
         /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When
         /// charging automatically, Stripe will attempt to pay this invoice
         /// using the default source attached to the customer. When sending an
@@ -44,10 +36,10 @@ namespace Stripe
         public List<InvoiceCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
-        /// REQUIRED
+        /// REQUIRED.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// The number of days from which the invoice is created until it is due. Only valid for
@@ -60,7 +52,7 @@ namespace Stripe
         /// ID of the default payment method for the invoice.
         /// </summary>
         [JsonProperty("default_payment_method")]
-        public string DefaultPaymentMethodId { get; set; }
+        public string DefaultPaymentMethod { get; set; }
 
         [JsonProperty("default_source")]
         public string DefaultSource { get; set; }
@@ -79,6 +71,7 @@ namespace Stripe
         /// <c>billing=send_invoice</c>.
         /// </summary>
         [JsonProperty("due_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? DueDate { get; set; }
 
         /// <summary>
@@ -105,7 +98,7 @@ namespace Stripe
         /// invoice items that pertain to other subscriptions.
         /// </summary>
         [JsonProperty("subscription")]
-        public string SubscriptionId { get; set; }
+        public string Subscription { get; set; }
 
         /// <summary>
         /// The percent tax rate applied to the invoice, represented as a decimal number.

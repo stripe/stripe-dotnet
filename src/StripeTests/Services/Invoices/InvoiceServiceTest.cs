@@ -34,7 +34,7 @@ namespace StripeTests
 
             this.createOptions = new InvoiceCreateOptions
             {
-                CustomerId = "cus_123",
+                Customer = "cus_123",
                 TaxPercent = 12.5m,
             };
 
@@ -49,7 +49,7 @@ namespace StripeTests
             this.payOptions = new InvoicePayOptions
             {
                 Forgive = true,
-                SourceId = "src_123",
+                Source = "src_123",
             };
 
             this.listOptions = new InvoiceListOptions
@@ -64,15 +64,15 @@ namespace StripeTests
 
             this.upcomingOptions = new UpcomingInvoiceOptions
             {
-                CustomerId = "cus_123",
-                SubscriptionId = "sub_123",
+                Customer = "cus_123",
+                Subscription = "sub_123",
             };
 
             this.upcomingListLineItemsOptions = new UpcomingInvoiceListLineItemsOptions
             {
                 Limit = 1,
-                CustomerId = "cus_123",
-                SubscriptionId = "sub_123",
+                Customer = "cus_123",
+                Subscription = "sub_123",
             };
 
             this.finalizeOptions = new InvoiceFinalizeOptions

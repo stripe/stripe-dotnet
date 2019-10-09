@@ -13,6 +13,7 @@ namespace Stripe
         /// date and the current time. Can be combined with trials and the billing cycle anchor.
         /// </summary>
         [JsonProperty("backdate_start_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? BackdateStartDate { get; set; }
 
         /// <summary>
@@ -21,13 +22,14 @@ namespace Stripe
         /// <c>month</c> or <c>year</c> intervals, the day of the month for subsequent invoices.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// REQUIRED: The identifier of the customer to subscribe.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// List of subscription items, each with an attached plan.

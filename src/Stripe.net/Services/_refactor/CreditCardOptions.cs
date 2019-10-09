@@ -41,7 +41,7 @@ namespace Stripe
         public string Name { get; set; }
 
         [JsonProperty("metadata")]
-        public object MetaData { get; set; }
+        public object Metadata { get; set; }
 
         /* Issuing-specific parameter */
 
@@ -49,6 +49,6 @@ namespace Stripe
         /// This parameter is used to create a Source from an issuing card mostly in Test mode.
         /// </summary>
         [JsonProperty("issuing_card")]
-        public string IssuingCardId { get; set; }
+        public string IssuingCard { get; set; }
     }
 }

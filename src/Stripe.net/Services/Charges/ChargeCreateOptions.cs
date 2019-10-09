@@ -19,10 +19,6 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        [Obsolete("Use ApplicationFeeAmount")]
-        [JsonProperty("application_fee")]
-        public long? ApplicationFee { get; set; }
-
         /// <summary>
         /// A fee in cents that will be applied to the charge and transferred to the application owner's Stripe account. To use an application fee, the request must be made on behalf of another account (using RequestOptions available on all service methods), using the Stripe-Account header, an OAuth key, or the destination parameter. For more information, see the application fees documentation.
         /// </summary>
@@ -51,7 +47,7 @@ namespace Stripe
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
-        /// Extra information about the charge passing level III data to card networks
+        /// Extra information about the charge passing level III data to card networks.
         /// </summary>
         [JsonProperty("level3")]
         public ChargeLevel3Options Level3 { get; set; }
@@ -91,7 +87,7 @@ namespace Stripe
         /// The ID of an existing customer that will be charged in this request.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// A payment source to be charged. This can be the ID of a card (i.e., credit or debit

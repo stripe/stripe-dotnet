@@ -29,21 +29,21 @@ namespace StripeTests
                 FirstName = "John",
                 Relationship = new PersonRelationshipOptions
                 {
-                    AccountOpener = true,
                     Owner = true,
                     PercentOwnership = 30.5m,
+                    Representative = true,
                 },
                 Verification = new PersonVerificationOptions
                 {
                     AdditionalDocument = new PersonVerificationDocumentOptions
                     {
-                        BackFileId = "file_abc",
-                        FrontFileId = "file_def",
+                        Back = "file_abc",
+                        Front = "file_def",
                     },
                     Document = new PersonVerificationDocumentOptions
                     {
-                        BackFileId = "file_123",
-                        FrontFileId = "file_345",
+                        Back = "file_123",
+                        Front = "file_345",
                     },
                 },
             };
@@ -53,10 +53,10 @@ namespace StripeTests
                 FirstName = "John",
                 Relationship = new PersonRelationshipOptions
                 {
-                    AccountOpener = true,
                     Owner = true,
                     PercentOwnership = 30.5m,
-                }
+                    Representative = true,
+                },
             };
 
             this.listOptions = new PersonListOptions
@@ -65,7 +65,7 @@ namespace StripeTests
                 Relationship = new PersonRelationshipListOptions
                 {
                     Director = true,
-                }
+                },
             };
         }
 

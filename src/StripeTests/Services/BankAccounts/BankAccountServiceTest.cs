@@ -50,7 +50,7 @@ namespace StripeTests
                 {
                     32,
                     45,
-                }
+                },
             };
         }
 

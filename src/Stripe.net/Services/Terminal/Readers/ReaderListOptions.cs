@@ -17,9 +17,5 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
-
-        [Obsolete("This feature has been deprecated and should not be used moving forward.")]
-        [JsonProperty("operator_account")]
-        public string OperatorAccount { get; set; }
     }
 }

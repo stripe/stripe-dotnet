@@ -49,7 +49,7 @@ namespace StripeTests
                 {
                     Id = "id_not_expanded",
                     ExpandedObject = null,
-                }
+                },
             };
 
             var expected = "{\n  \"nested\": \"id_not_expanded\"\n}";
@@ -70,7 +70,7 @@ namespace StripeTests
                 {
                     Id = nested.Id,
                     ExpandedObject = nested,
-                }
+                },
             };
 
             var expected =
@@ -87,7 +87,7 @@ namespace StripeTests
                 {
                     Id = null,
                     ExpandedObject = null,
-                }
+                },
             };
 
             var expected = "{\n  \"nested\": null\n}";

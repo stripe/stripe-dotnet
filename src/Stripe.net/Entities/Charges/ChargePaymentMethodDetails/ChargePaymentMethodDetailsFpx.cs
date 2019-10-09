@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ChargePaymentMethodDetailsFpx : StripeEntity
+    public class ChargePaymentMethodDetailsFpx : StripeEntity<ChargePaymentMethodDetailsFpx>
     {
         [JsonProperty("account_holder_type")]
         public string AccountHolderType { get; set; }

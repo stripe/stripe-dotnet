@@ -18,7 +18,7 @@ namespace Stripe
         /// REQUIRED: The identifier of the plan to add to the subscription.
         /// </summary>
         [JsonProperty("plan")]
-        public string PlanId { get; set; }
+        public string Plan { get; set; }
 
         /// <summary>
         /// Flag indicating whether to prorate switching plans during a billing cycle.
@@ -32,6 +32,7 @@ namespace Stripe
         /// upcoming invoice endpoint.
         /// </summary>
         [JsonProperty("proration_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? ProrationDate { get; set; }
 
         /// <summary>

@@ -26,7 +26,7 @@ namespace Stripe
         /// Only return subscription schedules for the given customer.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// A filter on the list based on the object <c>released_at</c> field. The value can be a

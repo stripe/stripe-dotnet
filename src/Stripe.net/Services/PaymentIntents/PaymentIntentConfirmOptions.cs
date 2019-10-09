@@ -3,6 +3,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PaymentIntentConfirmOptions : BaseOptions
     {
@@ -20,6 +21,7 @@ namespace Stripe
         /// charge them later</a>.
         /// </summary>
         [JsonProperty("off_session")]
+        [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<bool?, string> OffSession { get; set; }
 
         /// <summary>
@@ -27,7 +29,7 @@ namespace Stripe
         /// attach to this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method")]
-        public string PaymentMethodId { get; set; }
+        public string PaymentMethod { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for this PaymentIntent.
@@ -90,9 +92,9 @@ namespace Stripe
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
-        /// ID of the Source to use with this PaymentIntent. Prefer using <see cref="PaymentMethodId"/>.
+        /// ID of the Source to use with this PaymentIntent. Prefer using <see cref="PaymentMethod"/>.
         /// </summary>
         [JsonProperty("source")]
-        public string SourceId { get; set; }
+        public string Source { get; set; }
     }
 }

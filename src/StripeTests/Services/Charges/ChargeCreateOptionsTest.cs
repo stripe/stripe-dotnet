@@ -16,7 +16,7 @@ namespace StripeTests
                 new
                 {
                     data = new ChargeCreateOptions { },
-                    want = string.Empty
+                    want = string.Empty,
                 },
 
                 // Source is a non-null, non-empty string
@@ -26,7 +26,7 @@ namespace StripeTests
                     {
                         Source = "tok_visa",
                     },
-                    want = "source=tok_visa"
+                    want = "source=tok_visa",
                 },
 
                 // Source is a non-null, empty string
@@ -36,7 +36,7 @@ namespace StripeTests
                     {
                         Source = string.Empty,
                     },
-                    want = "source="
+                    want = "source=",
                 },
 
                 // Source is a null string
@@ -46,7 +46,7 @@ namespace StripeTests
                     {
                         Source = (string)null,
                     },
-                    want = string.Empty
+                    want = string.Empty,
                 },
 
                 // Source is a non-null CardCreateNestedOptions
@@ -61,7 +61,7 @@ namespace StripeTests
                             ExpYear = 2030,
                         },
                     },
-                    want = "source[object]=card&source[exp_month]=1&source[exp_year]=2030&source[number]=4242424242424242"
+                    want = "source[object]=card&source[exp_month]=1&source[exp_year]=2030&source[number]=4242424242424242",
                 },
 
                 // Source is a null CardCreateNestedOptions
@@ -71,7 +71,7 @@ namespace StripeTests
                     {
                         Source = (CardCreateNestedOptions)null,
                     },
-                    want = string.Empty
+                    want = string.Empty,
                 },
 
                 // Source is null
@@ -81,7 +81,7 @@ namespace StripeTests
                     {
                         Source = null,
                     },
-                    want = string.Empty
+                    want = string.Empty,
                 },
             };
 

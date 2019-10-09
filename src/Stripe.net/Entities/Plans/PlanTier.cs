@@ -36,13 +36,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("up_to")]
         public long? UpTo { get; set; }
-
-        [Obsolete("Use UnitAmountDecimal instead")]
-        [JsonIgnore]
-        public decimal? UnitAmountDecinal
-        {
-            get => this.UnitAmountDecimal;
-            set => this.UnitAmountDecimal = value;
-        }
     }
 }

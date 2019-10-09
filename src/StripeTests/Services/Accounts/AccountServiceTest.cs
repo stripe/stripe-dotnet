@@ -50,10 +50,10 @@ namespace StripeTests
                     {
                         Document = new AccountCompanyVerificationDocumentOptions
                         {
-                            BackFileId = "file_back",
-                            FrontFileId = "file_front",
-                        }
-                    }
+                            Back = "file_back",
+                            Front = "file_front",
+                        },
+                    },
                 },
                 ExternalAccount = "tok_visa_debit",
                 RequestedCapabilities = new List<string>
@@ -65,7 +65,7 @@ namespace StripeTests
                 {
                     Branding = new AccountSettingsBrandingOptions
                     {
-                        LogoFileId = "file_123",
+                        Logo = "file_123",
                     },
                     CardPayments = new AccountSettingsCardPaymentsOptions
                     {
@@ -112,7 +112,7 @@ namespace StripeTests
 
             this.rejectOptions = new AccountRejectOptions
             {
-                Reason = "terms_of_service"
+                Reason = "terms_of_service",
             };
 
             this.listOptions = new AccountListOptions

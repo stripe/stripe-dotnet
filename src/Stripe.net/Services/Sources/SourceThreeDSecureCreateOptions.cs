@@ -8,6 +8,6 @@ namespace Stripe
         public string Customer { get; set; }
 
         [JsonProperty("card")]
-        public string CardId { get; set; }
+        public string Card { get; set; }
     }
 }

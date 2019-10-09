@@ -7,6 +7,7 @@ namespace Stripe
     public class SourceMandateAcceptanceOnlineOptions : INestedOptions
     {
         [JsonProperty("date")]
+        [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? Date { get; set; }
 
         [JsonProperty("ip")]

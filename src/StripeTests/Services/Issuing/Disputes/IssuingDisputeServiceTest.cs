@@ -26,14 +26,14 @@ namespace StripeTests.Issuing
 
             this.createOptions = new DisputeCreateOptions
             {
-                DisputedTransactionId = "ipi_123",
+                DisputedTransaction = "ipi_123",
                 Evidence = new EvidenceOptions
                 {
                     Fraudulent = new EvidenceDetailsOptions
                     {
                         DisputeExplanation = "Explanation",
                         UncategorizedFile = "file_123",
-                    }
+                    },
                 },
                 Reason = "fraudulent",
             };

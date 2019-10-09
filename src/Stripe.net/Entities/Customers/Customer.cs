@@ -13,10 +13,6 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [Obsolete("Use Balance")]
-        [JsonProperty("account_balance")]
-        public long AccountBalance { get; set; }
-
         /// <summary>
         /// The customer’s address.
         /// </summary>
@@ -41,7 +37,7 @@ namespace Stripe
         public DateTime Created { get; set; }
 
         /// <summary>
-        /// The currency the customer can be charged in for recurring billing purposes
+        /// The currency the customer can be charged in for recurring billing purposes.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -49,7 +45,7 @@ namespace Stripe
         #region Expandable DefaultSource
 
         /// <summary>
-        /// ID of the default source attached to this customer
+        /// ID of the default source attached to this customer.
         /// </summary>
         [JsonIgnore]
         public string DefaultSourceId
@@ -71,7 +67,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Warning: this is not in the documentation
+        /// Warning: this is not in the documentation.
         /// </summary>
         [JsonProperty("default_source_type")]
         public string DefaultSourceType { get; set; }
@@ -83,7 +79,7 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// Whether or not the latest charge for the customer’s latest invoice has failed
+        /// Whether or not the latest charge for the customer’s latest invoice has failed.
         /// </summary>
         [JsonProperty("delinquent")]
         public bool Delinquent { get; set; }
@@ -95,7 +91,7 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// Describes the current discount active on the customer, if there is one
+        /// Describes the current discount active on the customer, if there is one.
         /// </summary>
         [JsonProperty("discount")]
         public Discount Discount { get; set; }
@@ -127,7 +123,7 @@ namespace Stripe
 
         /// <summary>
         /// A set of key/value pairs that you can attach to a customer object. It can be useful for
-        /// storing additional information about the customer in a structured format
+        /// storing additional information about the customer in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -158,13 +154,13 @@ namespace Stripe
         public Shipping Shipping { get; set; }
 
         /// <summary>
-        /// The customer’s payment sources, if any
+        /// The customer’s payment sources, if any.
         /// </summary>
         [JsonProperty("sources")]
         public StripeList<IPaymentSource> Sources { get; set; }
 
         /// <summary>
-        /// The customer’s current subscriptions, if any
+    /// The customer’s current subscriptions, if any.
         /// </summary>
         [JsonProperty("subscriptions")]
         public StripeList<Subscription> Subscriptions { get; set; }
@@ -181,19 +177,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_ids")]
         public StripeList<TaxId> TaxIds { get; set; }
-
-        /// <summary>
-        /// The customer’s tax information. Appears on invoices emailed to this customer.
-        /// </summary>
-        [Obsolete("Use TaxIds")]
-        [JsonProperty("tax_info")]
-        public CustomerTaxInfo TaxInfo { get; set; }
-
-        /// <summary>
-        /// Describes the status of looking up the tax ID provided in <c>tax_info</c>.
-        /// </summary>
-        [Obsolete("Use TaxIds")]
-        [JsonProperty("tax_info_verification")]
-        public CustomerTaxInfoVerification TaxInfoVerification { get; set; }
     }
 }

@@ -89,7 +89,7 @@ namespace Stripe.Infrastructure.FormEncoding
         /// </summary>
         /// <param name="value">The value for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested, if any.</param>
-        /// <returns>The list of parameters</returns>
+        /// <returns>The list of parameters.</returns>
         private static List<KeyValuePair<string, object>> FlattenParamsValue(object value, string keyPrefix)
         {
             List<KeyValuePair<string, object>> flatParams = null;
@@ -178,7 +178,7 @@ namespace Stripe.Infrastructure.FormEncoding
         /// </summary>
         /// <param name="options">The options class for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested, if any.</param>
-        /// <returns>The list of parameters</returns>
+        /// <returns>The list of parameters.</returns>
         private static List<KeyValuePair<string, object>> FlattenParamsOptions(
             INestedOptions options,
             string keyPrefix)
@@ -235,7 +235,7 @@ namespace Stripe.Infrastructure.FormEncoding
         /// </summary>
         /// <param name="dictionary">The dictionary for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested, if any.</param>
-        /// <returns>The list of parameters</returns>
+        /// <returns>The list of parameters.</returns>
         private static List<KeyValuePair<string, object>> FlattenParamsDictionary(
             IDictionary dictionary,
             string keyPrefix)
@@ -266,7 +266,7 @@ namespace Stripe.Infrastructure.FormEncoding
         /// </summary>
         /// <param name="list">The list for which to create the list of parameters.</param>
         /// <param name="keyPrefix">The key under which new keys should be nested.</param>
-        /// <returns>The list of parameters</returns>
+        /// <returns>The list of parameters.</returns>
         private static List<KeyValuePair<string, object>> FlattenParamsList(
             IEnumerable list,
             string keyPrefix)

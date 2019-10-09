@@ -41,7 +41,7 @@ namespace Stripe.Issuing
         public string PostalCode { get; set; }
 
         /// <summary>
-        /// State where the seller is locateds
+        /// State where the seller is located.
         /// </summary>
         [JsonProperty("state")]
         public string State { get; set; }
