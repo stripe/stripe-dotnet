@@ -6,6 +6,12 @@ namespace Stripe.Terminal
     public class ReaderListOptions : ListOptions
     {
         /// <summary>
+        /// Filters readers by device type.
+        /// </summary>
+        [JsonProperty("device_type")]
+        public string DeviceType { get; set; }
+
+        /// <summary>
         /// A location ID to filter the response list to only readers at the specific location.
         /// </summary>
         [JsonProperty("location")]
