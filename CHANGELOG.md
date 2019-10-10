@@ -1,5 +1,8 @@
 # Changelog
 
+## 31.0.0 - 2019-10-10
+* [#1812](https://github.com/stripe/stripe-dotnet/pull/1812) Remove the `Card.ThreeDSecure` property
+
 ## 30.1.0 - 2019-10-09
 * [#1810](https://github.com/stripe/stripe-dotnet/pull/1810) Add `DeviceType` filter when listing Terminal `Reader`s
 
