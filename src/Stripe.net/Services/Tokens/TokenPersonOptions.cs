@@ -1,11 +1,10 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public abstract class PersonSharedOptions : BaseOptions, IHasMetadata
+    public class TokenPersonOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// The person’s address.
@@ -104,16 +103,6 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// A person token, used to securely provide details to the person.
-        /// </summary>
-        [JsonProperty("person_token")]
-        public string PersonToken { get; set; }
-
-        [Obsolete("This field was never supported. Use IdNumber instead")]
-        [JsonProperty("personal_id_number")]
-        public string PersonalIdNumber { get; set; }
-
-        /// <summary>
         /// The person’s phone number.
         /// </summary>
         [JsonProperty("phone")]
@@ -123,7 +112,7 @@ namespace Stripe
         /// The relationship that this person has with the account’s legal entity.
         /// </summary>
         [JsonProperty("relationship")]
-        public PersonRelationshipOptions Relationship { get; set; }
+        public TokenPersonRelationshipOptions Relationship { get; set; }
 
         /// <summary>
         /// The last 4 digits of the person’s social security number.
@@ -136,6 +125,6 @@ namespace Stripe
         /// The person’s verification status.
         /// </summary>
         [JsonProperty("verification")]
-        public PersonVerificationOptions Verification { get; set; }
+        public TokenPersonVerificationOptions Verification { get; set; }
     }
 }
