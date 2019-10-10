@@ -1,5 +1,8 @@
 # Changelog
 
+## 30.1.0 - 2019-10-09
+* [#1810](https://github.com/stripe/stripe-dotnet/pull/1810) Add `DeviceType` filter when listing Terminal `Reader`s
+
 ## 30.0.1 - 2019-10-09
 * [#1809](https://github.com/stripe/stripe-dotnet/pull/1809) Fix `Quantity` to be nullable on `SubscriptionSchedulePhaseItem`
 
