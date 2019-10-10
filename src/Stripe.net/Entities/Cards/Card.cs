@@ -144,9 +144,6 @@ namespace Stripe
         internal ExpandableField<Recipient> InternalRecipient { get; set; }
         #endregion
 
-        [JsonProperty("three_d_secure")]
-        public string ThreeDSecure { get; set; }
-
         [JsonProperty("tokenization_method")]
         public string TokenizationMethod { get; set; }
 
