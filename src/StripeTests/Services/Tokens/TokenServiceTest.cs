@@ -14,6 +14,7 @@ namespace StripeTests
 
         private readonly TokenService service;
         private readonly TokenCreateOptions createOptions;
+        private readonly TokenCreateOptions createPersonOptions;
 
         public TokenServiceTest(
             StripeMockFixture stripeMockFixture,
@@ -39,6 +40,42 @@ namespace StripeTests
                     Number = "4242424242424242",
                 },
             };
+
+            this.createPersonOptions = new TokenCreateOptions
+            {
+                Person = new TokenPersonOptions
+                {
+                    Address = new AddressOptions
+                    {
+                        State = "CA",
+                        City = "City",
+                        Line1 = "Line1",
+                        Line2 = "Line2",
+                        PostalCode = "90210",
+                        Country = "US",
+                    },
+                    FirstName = "John",
+                    Relationship = new TokenPersonRelationshipOptions
+                    {
+                        Owner = true,
+                        PercentOwnership = 30.5m,
+                        Representative = true,
+                    },
+                    Verification = new TokenPersonVerificationOptions
+                    {
+                        AdditionalDocument = new TokenPersonVerificationDocumentOptions
+                        {
+                            Back = "file_abc",
+                            Front = "file_def",
+                        },
+                        Document = new TokenPersonVerificationDocumentOptions
+                        {
+                            Back = "file_123",
+                            Front = "file_345",
+                        },
+                    },
+                },
+            };
         }
 
         [Fact]
@@ -48,6 +85,15 @@ namespace StripeTests
             this.AssertRequest(HttpMethod.Post, "/v1/tokens");
             Assert.NotNull(token);
             Assert.Equal("token", token.Object);
+        }
+
+        [Fact]
+        public void CreateTokenPerson()
+        {
+            var tokenPerson = this.service.Create(this.createPersonOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/tokens");
+            Assert.NotNull(tokenPerson);
+            Assert.Equal("token", tokenPerson.Object);
         }
 
         [Fact]

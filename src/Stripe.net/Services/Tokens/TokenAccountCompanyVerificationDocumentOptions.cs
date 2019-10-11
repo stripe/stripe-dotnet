@@ -2,18 +2,18 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PersonVerificationDocumentOptions : INestedOptions
+    public class TokenAccountCompanyVerificationDocumentOptions : INestedOptions
     {
         /// <summary>
         /// The back of a document returned by a file upload with a <c>purpose</c> value of
-        /// <c>identity_document</c>.
+        /// <c>additional_verification</c>.
         /// </summary>
         [JsonProperty("back")]
         public string Back { get; set; }
 
         /// <summary>
         /// The front of a document returned by a file upload with a <c>purpose</c> value of
-        /// <c>identity_document</c>.
+        /// <c>additional_verification</c>.
         /// </summary>
         [JsonProperty("front")]
         public string Front { get; set; }

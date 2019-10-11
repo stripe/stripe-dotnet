@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PersonVerificationDocumentOptions : INestedOptions
+    public class TokenPersonVerificationDocumentOptions : INestedOptions
     {
         /// <summary>
         /// The back of a document returned by a file upload with a <c>purpose</c> value of
