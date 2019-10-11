@@ -1,5 +1,8 @@
 # Changelog
 
+## 31.1.0 - 2019-10-10
+* [#1813](https://github.com/stripe/stripe-dotnet/pull/1813) Add support for Account and Person `Token` creation
+
 ## 31.0.0 - 2019-10-10
 * [#1812](https://github.com/stripe/stripe-dotnet/pull/1812) Remove the `Card.ThreeDSecure` property
 
