@@ -39,6 +39,14 @@ namespace Stripe.Checkout
         public DateTime? TrialEnd { get; set; }
 
         /// <summary>
+        /// Indicates if a plan’s <see cref="Plan.TrialPeriodDays"/> should be applied to the
+        /// subscription. Setting <c>TrialEnd</c> on <c>DubscriptionData</c> is preferred. Defaults
+        /// to <c>false</c>.
+        /// </summary>
+        [JsonProperty("trial_from_plan")]
+        public bool? TrialFromPlan { get; set; }
+
+        /// <summary>
         /// Integer representing the number of trial period days before the customer is charged for the first time.
         /// </summary>
         [JsonProperty("trial_period_days")]
