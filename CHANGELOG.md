@@ -1,5 +1,13 @@
 # Changelog
 
+## 31.2.0 - 2019-10-17
+* [#1814](https://github.com/stripe/stripe-dotnet/pull/1814) Add various API changes
+  * `Requirements` and `IsDefault` on Issuing `Cardholder`.
+  * Fix the name of `PhoneNumber` on Issuing `Cardholder`. 
+  * `PaymentMethodDetails.AuBecsDebit` on `Charge`.
+  * `PaymentBehavior` on `SubscriptionItem` creation is now supported.
+  * `SubscriptionData.TrialFromPlan` is now supported on Checkout `Session` creation.
+
 ## 31.1.0 - 2019-10-10
 * [#1813](https://github.com/stripe/stripe-dotnet/pull/1813) Add support for Account and Person `Token` creation
 
