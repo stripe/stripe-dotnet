@@ -15,6 +15,14 @@ namespace Stripe
         public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
+        /// Use <c>error_if_incomplete</c> if you want Stripe to return an HTTP 402 status code if
+        /// the invoice caused by the item creation  cannot be paid. Otherwise use
+        /// <c>allow_incomplete</c>.
+        /// </summary>
+        [JsonProperty("payment_behavior")]
+        public string PaymentBehavior { get; set; }
+
+        /// <summary>
         /// REQUIRED: The identifier of the plan to add to the subscription.
         /// </summary>
         [JsonProperty("plan")]
