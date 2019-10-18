@@ -189,12 +189,6 @@ namespace Stripe
         public string ReleasedSubscriptionId { get; set; }
 
         /// <summary>
-        /// Behavior of the subscription schedule and underlying subscription when it ends.
-        /// </summary>
-        [JsonProperty("renewal_behavior")]
-        public string RenewalBehavior { get; set; }
-
-        /// <summary>
         /// Interval and duration at which the subscription schedule renews for when it ends if
         /// <c>renewal_behavior</c> is <c>renew</c>.
         /// </summary>
@@ -203,7 +197,7 @@ namespace Stripe
 
         /// <summary>
         /// Possible values are <c>active</c>, <c>canceled</c>, <c>completed</c>,
-        /// <c>not_started</c>, <c>released</c> and <c>renewal_behavior</c>.
+        /// <c>not_started</c> and <c>released</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
