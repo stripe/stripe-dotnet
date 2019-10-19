@@ -64,24 +64,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("phases")]
         public List<SubscriptionSchedulePhaseOptions> Phases { get; set; }
-
-        /// <summary>
-        /// Configures how the subscription schedule behaves when it ends. Possible values are
-        /// <c>none</c>, <c>release</c>, or <c>renew</c>. <c>renew</c> will
-        /// create a new subscription schedule revision by adding a new phase using the most recent
-        /// phase’s plans applied to a duration set by <c>renewal_interval</c>.
-        /// <c>none</c> will stop the subscription schedule and cancel the underlying
-        /// subscription. <c>release</c> will stop the subscription schedule, but keep the
-        /// underlying subscription running.
-        /// </summary>
-        [JsonProperty("renewal_behavior")]
-        public string RenewalBehavior { get; set; }
-
-        /// <summary>
-        /// Configuration for renewing the subscription schedule when it ends. Must be set if
-        /// <c>renewal_behavior</c> is <c>renew</c>. Otherwise, must not be set.
-        /// </summary>
-        [JsonProperty("renewal_interval")]
-        public SubscriptionScheduleRenewalIntervalOptions RenewalInterval { get; set; }
     }
 }
