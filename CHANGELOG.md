@@ -1,5 +1,11 @@
 # Changelog
 
+## 32.0.0 - 2019-10-18
+* [#1815](https://github.com/stripe/stripe-dotnet/pull/1815) Multiple breaking changes:
+  * Pin to the latest API version `2019-10-17`
+  * Remove `RenewalBehavior` on `SubscriptionSchedule`
+  * Remove `RenewalInterval` as a parameter on `SubscriptionSchedule`
+
 ## 31.2.0 - 2019-10-17
 * [#1814](https://github.com/stripe/stripe-dotnet/pull/1814) Add various API changes
   * `Requirements` and `IsDefault` on Issuing `Cardholder`.
