@@ -53,6 +53,12 @@ namespace Stripe
         public string Funding { get; set; }
 
         /// <summary>
+        /// Installment details for this payment (Mexico only).
+        /// </summary>
+        [JsonProperty("installments")]
+        public ChargePaymentMethodDetailsCardInstallments Installments { get; set; }
+
+        /// <summary>
         /// The last four digits of the card.
         /// </summary>
         [JsonProperty("last4")]
