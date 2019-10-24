@@ -10,7 +10,7 @@ namespace Stripe
         /// Installment details for this payment (Mexico only).
         /// </summary>
         [JsonProperty("installments")]
-        public string Installments { get; set; }
+        public PaymentIntentPaymentMethodOptionsCardInstallments Installments { get; set; }
 
         /// <summary>
         /// We strongly recommend that you rely on our SCA engine to automatically prompt your
