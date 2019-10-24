@@ -1,5 +1,9 @@
 # Changelog
 
+## 32.1.0 - 2019-10-23
+* [#1819](https://github.com/stripe/stripe-dotnet/pull/1819) Add support for `PendingInvoiceItemInterval` on `Subscription`
+* [#1818](https://github.com/stripe/stripe-dotnet/pull/1818) Add support for installments for MX accounts
+
 ## 32.0.0 - 2019-10-18
 * [#1815](https://github.com/stripe/stripe-dotnet/pull/1815) Multiple breaking changes:
   * Pin to the latest API version `2019-10-17`
