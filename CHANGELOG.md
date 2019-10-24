@@ -1,5 +1,9 @@
 # Changelog
 
+## 32.1.1 - 2019-10-24
+* [#1821](https://github.com/stripe/stripe-dotnet/pull/1821) Fix installments to use the correct type
+* [#1820](https://github.com/stripe/stripe-dotnet/pull/1820) Contributor Convenant
+
 ## 32.1.0 - 2019-10-23
 * [#1819](https://github.com/stripe/stripe-dotnet/pull/1819) Add support for `PendingInvoiceItemInterval` on `Subscription`
 * [#1818](https://github.com/stripe/stripe-dotnet/pull/1818) Add support for installments for MX accounts
