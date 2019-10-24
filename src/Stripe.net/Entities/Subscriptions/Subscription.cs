@@ -240,6 +240,20 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        /// Specifies the approximate timestamp on which any pending invoice items will be billed
+        /// according to the schedule provided at <c>PendingInvoiceItemInterval</c>.
+        /// </summary>
+        [JsonProperty("next_pending_invoice_item_invoice")]
+        public long? NextPendingInvoiceItemInvoice { get; set; }
+
+        /// <summary>
+        /// Specifies an interval for how often to bill for any pending invoice items. It is
+        /// analogous to creating an invoice for the given subscription at the specified interval.
+        /// </summary>
+        [JsonProperty("pending_invoice_item_interval")]
+        public SubscriptionPendingInvoiceItemInterval PendingInvoiceItemInterval { get; set; }
+
         #region Expandable PendingSetupIntent
 
         /// <summary>

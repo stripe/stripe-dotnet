@@ -78,6 +78,13 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Specifies an interval for how often to bill for any pending invoice items. It is
+        /// analogous to creating an invoice for the given subscription at the specified interval.
+        /// </summary>
+        [JsonProperty("pending_invoice_item_interval")]
+        public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
+
+        /// <summary>
         /// Indicates if a customer is on session while an invoice payment is attempted.
         /// </summary>
         [JsonProperty("off_session")]
