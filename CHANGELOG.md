@@ -1,5 +1,8 @@
 # Changelog
 
+## 32.1.2 - 2019-10-24
+* [#1822](https://github.com/stripe/stripe-dotnet/pull/1822) Add missing `Installments` option in `PaymentIntentPaymentMethodOptionsCardOptions`
+
 ## 32.1.1 - 2019-10-24
 * [#1821](https://github.com/stripe/stripe-dotnet/pull/1821) Fix installments to use the correct type
 * [#1820](https://github.com/stripe/stripe-dotnet/pull/1820) Contributor Convenant
