@@ -6,6 +6,7 @@ namespace Stripe
     using System.Linq;
     using System.Net.Http;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     /// <summary>
     /// Helper class used by <see cref="SystemNetHttpClient"/> to manage request telemetry.
@@ -37,7 +38,7 @@ namespace Stripe
 
             var payload = new ClientTelemetryPayload { LastRequestMetrics = requestMetrics };
 
-            headers.Add("X-Stripe-Client-Telemetry", JsonConvert.SerializeObject(payload, Formatting.None));
+            headers.Add("X-Stripe-Client-Telemetry", JsonUtils.SerializeObject(payload, Formatting.None));
         }
 
         /// <summary>

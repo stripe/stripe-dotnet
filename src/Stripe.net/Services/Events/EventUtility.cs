@@ -5,7 +5,6 @@ namespace Stripe
     using System.Linq;
     using System.Security.Cryptography;
     using System.Text;
-    using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -36,7 +35,7 @@ namespace Stripe
         /// </remarks>
         public static Event ParseEvent(string json, bool throwOnApiVersionMismatch = true)
         {
-            var stripeEvent = JsonConvert.DeserializeObject<Event>(
+            var stripeEvent = JsonUtils.DeserializeObject<Event>(
                 json,
                 StripeConfiguration.SerializerSettings);
 
