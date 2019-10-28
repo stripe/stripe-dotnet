@@ -37,6 +37,6 @@ namespace Stripe.Reporting
 
         [JsonProperty("succeeded_at")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime SucceededAt { get; set; }
+        public DateTime? SucceededAt { get; set; }
     }
 }
