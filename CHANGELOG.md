@@ -1,5 +1,9 @@
 # Changelog
 
+## 32.1.3 - 2019-10-28
+* [#1824](https://github.com/stripe/stripe-dotnet/pull/1824) Fix `SucceededAt` on `ReportRun` to be nullable
+    * This is technically a breaking change, but we're releasing as a patch version as the non-nullable type made it impossible to deserialize `report_run` objects in many cases.
+
 ## 32.1.2 - 2019-10-24
 * [#1822](https://github.com/stripe/stripe-dotnet/pull/1822) Add missing `Installments` option in `PaymentIntentPaymentMethodOptionsCardOptions`
 
