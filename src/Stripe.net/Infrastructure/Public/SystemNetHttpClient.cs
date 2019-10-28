@@ -218,7 +218,7 @@ namespace Stripe
                 values.Add("application", this.appInfo);
             }
 
-            return JsonConvert.SerializeObject(values, Formatting.None);
+            return JsonUtils.SerializeObject(values, Formatting.None);
         }
 
         private string BuildUserAgentString()

@@ -131,7 +131,7 @@ namespace Stripe.Infrastructure.FormEncoding
                     break;
 
                 case Enum e:
-                    flatParams = SingleParam(keyPrefix, JsonConvert.SerializeObject(e).Trim('"'));
+                    flatParams = SingleParam(keyPrefix, JsonUtils.SerializeObject(e).Trim('"'));
                     break;
 
                 default:

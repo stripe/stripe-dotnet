@@ -4,6 +4,7 @@ namespace Stripe
     using System.Reflection;
     using System.Runtime.CompilerServices;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     [JsonObject(MemberSerialization.OptIn)]
     public abstract class StripeEntity : IStripeEntity
@@ -19,7 +20,7 @@ namespace Stripe
         /// <returns>The deserialized Stripe object from the JSON string.</returns>
         public static IHasObject FromJson(string value)
         {
-            return JsonConvert.DeserializeObject<IHasObject>(value, StripeConfiguration.SerializerSettings);
+            return JsonUtils.DeserializeObject<IHasObject>(value, StripeConfiguration.SerializerSettings);
         }
 
         /// <summary>Deserializes the JSON to the specified Stripe object type.</summary>
@@ -29,7 +30,7 @@ namespace Stripe
         public static T FromJson<T>(string value)
             where T : IStripeEntity
         {
-            return JsonConvert.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
+            return JsonUtils.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
         }
 
         /// <summary>Reports a Stripe object as a string.</summary>
@@ -51,7 +52,7 @@ namespace Stripe
         /// <returns>An indented JSON string represensation of the object.</returns>
         public string ToJson()
         {
-            return JsonConvert.SerializeObject(
+            return JsonUtils.SerializeObject(
                 this,
                 Formatting.Indented,
                 StripeConfiguration.SerializerSettings);
