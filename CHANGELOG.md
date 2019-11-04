@@ -1,5 +1,8 @@
 # Changelog
 
+## 32.2.0 - 2019-11-04
+* [#1829](https://github.com/stripe/stripe-dotnet/pull/1829) Add support for `UseStripeSdk` on `PaymentIntent` create and confirm
+
 ## 32.1.3 - 2019-10-28
 * [#1824](https://github.com/stripe/stripe-dotnet/pull/1824) Fix `SucceededAt` on `ReportRun` to be nullable
     * This is technically a breaking change, but we're releasing as a patch version as the non-nullable type made it impossible to deserialize `report_run` objects in many cases.
