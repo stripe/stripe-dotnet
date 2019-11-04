@@ -53,11 +53,17 @@ namespace Stripe
         [JsonProperty("fpx")]
         public PaymentMethodFpx Fpx { get; set; }
 
+        [JsonProperty("ideal")]
+        public PaymentMethodIdeal Ideal { get; set; }
+
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("sepa_debit")]
+        public PaymentMethodSepaDebit SepaDebit { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
