@@ -96,5 +96,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("source")]
         public string Source { get; set; }
+
+        /// <summary>
+        /// Set to <c>true</c> only when using manual confirmation and the iOS or Android SDKs to
+        /// handle additional authentication steps.
+        /// </summary>
+        [JsonProperty("use_stripe_sdk")]
+        public bool? UseStripeSdk { get; set; }
     }
 }
