@@ -31,8 +31,10 @@ namespace StripeTests
             {
               "application",
               "customer",
+              "mandate",
               "on_behalf_of",
               "payment_method",
+              "single_use_mandate",
             };
 
             string json = this.GetFixture("/v1/setup_intents/seti_123", expansions);
@@ -48,8 +50,14 @@ namespace StripeTests
             Assert.NotNull(intent.Customer);
             Assert.Equal("customer", intent.Customer.Object);
 
+            Assert.NotNull(intent.Mandate);
+            Assert.Equal("mandate", intent.Mandate.Object);
+
             Assert.NotNull(intent.OnBehalfOf);
             Assert.Equal("account", intent.OnBehalfOf.Object);
+
+            Assert.NotNull(intent.SingleUseMandate);
+            Assert.Equal("mandate", intent.SingleUseMandate.Object);
 
             Assert.NotNull(intent.PaymentMethod);
             Assert.Equal("payment_method", intent.PaymentMethod.Object);

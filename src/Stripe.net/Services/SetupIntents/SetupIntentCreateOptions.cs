@@ -34,6 +34,12 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// This hash contains details about the Mandate to create.
+        /// </summary>
+        [JsonProperty("mandate_data")]
+        public SetupIntentMandateDataOptions MandateData { get; set; }
+
+        /// <summary>
         /// A set of key/value pairs that you can attach to an order object. It can be useful for
         /// storing additional information about the order in a structured format.
         /// </summary>
@@ -74,6 +80,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
+
+        /// <summary>
+        /// If this hash is populated, this SetupIntent will generate a single use Mandate on
+        /// success.
+        /// </summary>
+        [JsonProperty("single_use")]
+        public SetupIntentSingleUseOptions SingleUse { get; set; }
 
         /// <summary>
         /// Indicates how the payment method is intended to be used in the future. Use
