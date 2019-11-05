@@ -15,6 +15,18 @@ namespace Stripe
         public string ClientSecret { get; set; }
 
         /// <summary>
+        /// ID of the mandate to be used for this payment.
+        /// </summary>
+        [JsonProperty("mandate")]
+        public string Mandate { get; set; }
+
+        /// <summary>
+        /// This hash contains details about the Mandate to create.
+        /// </summary>
+        [JsonProperty("mandate_data")]
+        public PaymentIntentMandateDataOptions MandateData { get; set; }
+
+        /// <summary>
         /// Set to <c>true</c> to indicate that the customer is not in your checkout flow during
         /// this payment attempt, and therefore is unable to authenticate. This parameter is
         /// intended for scenarios where you collect card details and <a href="https://stripe.com/docs/payments/cards/reusing-cards">

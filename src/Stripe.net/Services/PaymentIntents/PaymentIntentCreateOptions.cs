@@ -75,6 +75,18 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// ID of the mandate to be used for this payment.
+        /// </summary>
+        [JsonProperty("mandate")]
+        public string Mandate { get; set; }
+
+        /// <summary>
+        /// This hash contains details about the Mandate to create.
+        /// </summary>
+        [JsonProperty("mandate_data")]
+        public PaymentIntentMandateDataOptions MandateData { get; set; }
+
+        /// <summary>
         /// Set of key-value pairs that you can attach to an object. This can be useful for storing
         /// additional information about the object in a structured format.
         /// </summary>
