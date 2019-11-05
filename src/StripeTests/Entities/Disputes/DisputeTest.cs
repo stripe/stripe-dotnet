@@ -28,6 +28,7 @@ namespace StripeTests
             string[] expansions =
             {
               "charge",
+              "payment_intent",
             };
 
             string json = this.GetFixture("/v1/disputes/dp_123", expansions);
@@ -39,6 +40,9 @@ namespace StripeTests
 
             Assert.NotNull(dispute.Charge);
             Assert.Equal("charge", dispute.Charge.Object);
+
+            Assert.NotNull(dispute.PaymentIntent);
+            Assert.Equal("payment_intent", dispute.PaymentIntent.Object);
         }
     }
 }

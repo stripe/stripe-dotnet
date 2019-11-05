@@ -92,6 +92,26 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        #region Expandable PaymentIntent
+        [JsonIgnore]
+        public string PaymentIntentId
+        {
+            get => this.InternalPaymentIntent?.Id;
+            set => this.InternalPaymentIntent = SetExpandableFieldId(value, this.InternalPaymentIntent);
+        }
+
+        [JsonIgnore]
+        public PaymentIntent PaymentIntent
+        {
+            get => this.InternalPaymentIntent?.ExpandedObject;
+            set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
+        }
+
+        [JsonProperty("payment_intent")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
+        internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
+        #endregion
+
         [JsonProperty("reason")]
         public string Reason { get; set; }
 

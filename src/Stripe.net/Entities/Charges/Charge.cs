@@ -194,6 +194,12 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Whether the charge has been disputed. More than one dispute may exist on this charge.
+        /// </summary>
+        [JsonProperty("disputed")]
+        public bool Disputed { get; set; }
+
+        /// <summary>
         /// Error code explaining reason for charge failure if available (see the errors section for a list of codes).
         /// </summary>
         [JsonProperty("failure_code")]

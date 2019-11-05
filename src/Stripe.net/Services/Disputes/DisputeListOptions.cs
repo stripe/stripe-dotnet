@@ -7,5 +7,10 @@ namespace Stripe
     /// </summary>
     public class DisputeListOptions : ListOptionsWithCreated
     {
+        /// <summary>
+        /// Only return disputes that are associated with the Charge specified by this Charge ID.
+        /// </summary>
+        [JsonProperty("charge")]
+        public string Charge { get; set; }
     }
 }
