@@ -20,29 +20,12 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
-        /// new billing period.
-        /// </summary>
-        [JsonProperty("billing_thresholds")]
-        public SubscriptionBillingThresholds BillingThresholds { get; set; }
-
-        /// <summary>
         /// Time at which the subscription schedule was canceled. Measured in seconds since the
         /// Unix epoch.
         /// </summary>
         [JsonProperty("canceled_at")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
-
-        /// <summary>
-        /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging
-        /// automatically, Stripe will attempt to pay this subscription at the
-        /// end of the cycle using the default source attached to the customer.
-        /// When sending an invoice, Stripe will email your customer an invoice
-        /// with payment instructions.
-        /// </summary>
-        [JsonProperty("collection_method")]
-        public string CollectionMethod { get; set; }
 
         /// <summary>
         /// Time at which the subscription schedule was completed. Measured in seconds since the
@@ -94,53 +77,11 @@ namespace Stripe
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
-        #region Expandable DefaultPaymentMethod
-
         /// <summary>
-        /// ID of the default payment method for the subscription schedule.
+        /// Object representing the subscription schedule’s default settings.
         /// </summary>
-        [JsonIgnore]
-        public string DefaultPaymentMethodId
-        {
-            get => this.InternalDefaultPaymentMethod?.Id;
-            set => this.InternalDefaultPaymentMethod = SetExpandableFieldId(value, this.InternalDefaultPaymentMethod);
-        }
-
-        [JsonIgnore]
-        public PaymentMethod DefaultPaymentMethod
-        {
-            get => this.InternalDefaultPaymentMethod?.ExpandedObject;
-            set => this.InternalDefaultPaymentMethod = SetExpandableFieldObject(value, this.InternalDefaultPaymentMethod);
-        }
-
-        [JsonProperty("default_payment_method")]
-        [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
-        internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
-        #endregion
-
-        #region Expandable DefaultSource
-
-        /// <summary>
-        /// ID of the default source for the subscription schedule.
-        /// </summary>
-        [JsonIgnore]
-        public string DefaultSourceId
-        {
-            get => this.InternalDefaultSource?.Id;
-            set => this.InternalDefaultSource = SetExpandableFieldId(value, this.InternalDefaultSource);
-        }
-
-        [JsonIgnore]
-        public IPaymentSource DefaultSource
-        {
-            get => this.InternalDefaultSource?.ExpandedObject;
-            set => this.InternalDefaultSource = SetExpandableFieldObject(value, this.InternalDefaultSource);
-        }
-
-        [JsonProperty("default_source")]
-        [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
-        internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
-        #endregion
+        [JsonProperty("default_settings")]
+        public SubscriptionScheduleDefaultSettings DefaultSettings { get; set; }
 
         /// <summary>
         /// Behavior of the subscription schedule and underlying subscription when it ends. Possible
@@ -148,12 +89,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("end_behavior")]
         public string EndBehavior { get; set; }
-
-        /// <summary>
-        /// The schedule's default invoice settings.
-        /// </summary>
-        [JsonProperty("invoice_settings")]
-        public SubscriptionScheduleInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value
