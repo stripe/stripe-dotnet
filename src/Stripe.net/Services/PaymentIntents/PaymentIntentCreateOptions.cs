@@ -88,8 +88,7 @@ namespace Stripe
         /// charge them later</a>.
         /// </summary>
         [JsonProperty("off_session")]
-        [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<bool?, string> OffSession { get; set; }
+        public bool? OffSession { get; set; }
 
         /// <summary>
         /// The Stripe account ID for which these funds are intended. For details, see the
