@@ -21,8 +21,7 @@ namespace Stripe
         /// charge them later</a>.
         /// </summary>
         [JsonProperty("off_session")]
-        [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<bool?, string> OffSession { get; set; }
+        public bool? OffSession { get; set; }
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, BankAccount, or saved Source object) to

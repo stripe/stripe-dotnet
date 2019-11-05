@@ -15,13 +15,6 @@ namespace StripeTests
             };
 
             Assert.Equal("off_session=True", FormEncoder.CreateQueryString(options_bool));
-
-            var options_enum = new PaymentIntentCreateOptions
-            {
-                OffSession = "one_off",
-            };
-
-            Assert.Equal("off_session=one_off", FormEncoder.CreateQueryString(options_enum));
         }
     }
 }
