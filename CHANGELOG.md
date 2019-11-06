@@ -1,5 +1,8 @@
 # Changelog
 
+## 33.1.0 - 2019-11-06
+* [#1830](https://github.com/stripe/stripe-dotnet/pull/1830) Add support for iDEAL and SEPA debit on `PaymentMethod`
+
 ## 33.0.0 - 2019-11-05
 * [#1826](https://github.com/stripe/stripe-dotnet/pull/1826) Move to the latest API version and add new changes
   * Move to API version `2019-11-05`
