@@ -36,6 +36,13 @@ namespace Stripe
         public PaymentMethodFpxCreateOptions Fpx { get; set; }
 
         /// <summary>
+        /// If this is an <c>ideal</c> PaymentMethod, this contains details about the iDEAL payment
+        /// method.
+        /// </summary>
+        [JsonProperty("ideal")]
+        public PaymentMethodIdealCreateOptions Ideal { get; set; }
+
+        /// <summary>
         /// A set of key/value pairs that you can attach to a charge object. It can be useful for
         /// storing additional information about the customer in a structured format. It's often a
         /// good idea to store an email address in metadata for tracking later.
@@ -49,6 +56,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_method")]
         public string PaymentMethod { get; set; }
+
+        /// <summary>
+        /// If this is a <c>sepa_debit</c> PaymentMethod, this contains details about the SEPA debit
+        /// bank account.
+        /// </summary>
+        [JsonProperty("sepa_debit")]
+        public PaymentMethodSepaDebitCreateOptions SepaDebit { get; set; }
 
         /// <summary>
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with

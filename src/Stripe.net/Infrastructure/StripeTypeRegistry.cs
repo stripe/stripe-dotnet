@@ -47,6 +47,7 @@ namespace Stripe.Infrastructure
             { "issuing.transaction", typeof(Issuing.Transaction) },
             { "line_item", typeof(InvoiceLineItem) },
             { "login_link", typeof(LoginLink) },
+            { "mandate", typeof(Mandate) },
             { "order", typeof(Order) },
             { "order_item", typeof(OrderItem) },
             { "order_return", typeof(OrderReturn) },

@@ -14,6 +14,12 @@ namespace Stripe
         public string ClientSecret { get; set; }
 
         /// <summary>
+        /// This hash contains details about the Mandate to create.
+        /// </summary>
+        [JsonProperty("mandate_data")]
+        public SetupIntentMandateDataOptions MandateData { get; set; }
+
+        /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, BankAccount, or saved Source object) to
         /// attach to this SetupIntent.
         /// </summary>

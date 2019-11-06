@@ -390,6 +390,11 @@ namespace Stripe
         public const string IssuingTransactionUpdated = "issuing_transaction.updated";
 
         /// <summary>
+        /// Occurs whenever a mandate is updated.
+        /// </summary>
+        public const string MandateUpdated = "mandate.updated";
+
+        /// <summary>
         /// Occurs whenever an order is created.
         /// </summary>
         public const string OrderCreated = "order.created";
