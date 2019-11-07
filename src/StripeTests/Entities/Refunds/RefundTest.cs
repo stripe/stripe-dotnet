@@ -30,6 +30,7 @@ namespace StripeTests
               "balance_transaction",
               "charge",
               "failure_balance_transaction",
+              "payment_intent",
               "source_transfer_reversal",
               "transfer_reversal",
             };
@@ -49,6 +50,9 @@ namespace StripeTests
 
             Assert.NotNull(refund.FailureBalanceTransaction);
             Assert.Equal("balance_transaction", refund.FailureBalanceTransaction.Object);
+
+            Assert.NotNull(refund.PaymentIntent);
+            Assert.Equal("payment_intent", refund.PaymentIntent.Object);
 
             Assert.NotNull(refund.SourceTransferReversal);
             Assert.Equal("transfer_reversal", refund.SourceTransferReversal.Object);

@@ -13,7 +13,7 @@ namespace Stripe
         public long? Amount { get; set; }
 
         /// <summary>
-        /// REQUIRED. The identifier of the charge to refund.
+        /// The ID of the Charge to refund.
         /// </summary>
         [JsonProperty("charge")]
         public string Charge { get; set; }
@@ -26,6 +26,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The ID of the PaymentIntent to refund.
+        /// </summary>
+        [JsonProperty("payment_intent")]
+        public string PaymentIntent { get; set; }
 
         /// <summary>
         /// String indicating the reason for the refund. If set, possible values are
