@@ -1,5 +1,12 @@
 # Changelog
 
+## 33.2.0 - 2019-11-06
+* [#1831](https://github.com/stripe/stripe-dotnet/pull/1831) Multiple API changes
+  * Add `Disputed` to `Charge`
+  * Add `PaymentIntent` to `Refund` and `Dispute`
+  * Add `Charge` to `DisputeListParams`
+  * Add `PaymentIntent` to `RefundListParams` and `RefundParams`
+
 ## 33.1.0 - 2019-11-06
 * [#1830](https://github.com/stripe/stripe-dotnet/pull/1830) Add support for iDEAL and SEPA debit on `PaymentMethod`
 
