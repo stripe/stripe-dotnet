@@ -5,7 +5,7 @@ environment:
   COVERALLS_REPO_TOKEN:
     secure: T0PmP8uyzCseacBCDRBlti2y9Tz5DL6fknea0MKWvbPYrzADmLY2/5kOTfYIsPUk
   # If you bump this, don't forget to bump `MinimumMockVersion` in `StripeMockFixture.cs` as well.
-  STRIPE_MOCK_VERSION: 0.73.0
+  STRIPE_MOCK_VERSION: 0.74.0
 
 deploy:
 - provider: NuGet
@@ -22,9 +22,8 @@ install:
       If(!(Test-Path ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}"))
       {
         New-Item -Name ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}" -ItemType "directory" -Force | Out-Null
-        wget "https://github.com/stripe/stripe-mock/releases/download/v${env:STRIPE_MOCK_VERSION}/stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.tar.gz" -OutFile ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.tar.gz"
-        7z.exe e -y -o".\stripe-mock" ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.tar.gz" | Out-Null
-        7z.exe x -y -o".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}" ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.tar" | Out-Null
+        wget "https://github.com/stripe/stripe-mock/releases/download/v${env:STRIPE_MOCK_VERSION}/stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.zip" -OutFile ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.zip"
+        7z.exe x -y -o".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}" ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}_windows_amd64.zip" | Out-Null
       }
       $app = Start-Process -FilePath ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}\stripe-mock.exe" -ArgumentList "-strict-version-check" -NoNewWindow -PassThru
       Write-Host ("stripe-mock running, Id = $($app.Id)`n") -ForegroundColor Green
