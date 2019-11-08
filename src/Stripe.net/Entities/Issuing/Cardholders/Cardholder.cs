@@ -26,6 +26,12 @@ namespace Stripe.Issuing
         public Billing Billing { get; set; }
 
         /// <summary>
+        /// Additional information about a business entity cardholder.
+        /// </summary>
+        [JsonProperty("company")]
+        public CardholderCompany Company { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
@@ -37,6 +43,12 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Additional information about an individual cardholder.
+        /// </summary>
+        [JsonProperty("individual")]
+        public CardholderIndividual Individual { get; set; }
 
         /// <summary>
         /// Whether or not this cardholder is the default cardholder.
