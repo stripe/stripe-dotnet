@@ -37,7 +37,29 @@ namespace StripeTests.Issuing
                         PostalCode = "90210",
                         State = "CA",
                     },
-                    Name = "Billing Name",
+                },
+                Company = new CardholderCompanyOptions
+                {
+                    TaxId = "123",
+                },
+                Individual = new CardholderIndividualOptions
+                {
+                    Dob = new CardholderIndividualDobOptions
+                    {
+                        Day = 1,
+                        Month = 1,
+                        Year = 1980,
+                    },
+                    FirstName = "John",
+                    LastName = "Doe",
+                    Verification = new CardholderIndividualVerificationOptions
+                    {
+                        Document = new CardholderIndividualVerificationDocumentOptions
+                        {
+                            Back = "file_123",
+                            Front = "file_234",
+                        },
+                    },
                 },
                 Name = "John Doe",
                 Type = "individual",

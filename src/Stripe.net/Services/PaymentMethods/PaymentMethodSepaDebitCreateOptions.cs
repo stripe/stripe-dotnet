@@ -5,7 +5,7 @@ namespace Stripe
     public class PaymentMethodSepaDebitCreateOptions : INestedOptions
     {
         /// <summary>
-        /// Card security code. It is highly recommended to always include this value.
+        /// IBAN associated with this payment method. This only works on creation.
         /// </summary>
         [JsonProperty("iban")]
         public string Iban { get; set; }
