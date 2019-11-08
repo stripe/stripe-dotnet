@@ -1,5 +1,9 @@
 # Changelog
 
+## 33.3.0 - 2019-11-07
+* [#1835](https://github.com/stripe/stripe-dotnet/pull/1835) Add support for Issuing Cardholder verification
+* [#1836](https://github.com/stripe/stripe-dotnet/pull/1836) stripe-mock Windows binary is now a ZIP
+
 ## 33.2.0 - 2019-11-06
 * [#1831](https://github.com/stripe/stripe-dotnet/pull/1831) Multiple API changes
   * Add `Disputed` to `Charge`
