@@ -6,7 +6,7 @@ namespace Stripe.Reporting
     public class ReportRunCreateOptions : BaseOptions
     {
         [JsonProperty("parameters")]
-        public ParametersOptions Parameters { get; set; }
+        public ReportRunParametersOptions Parameters { get; set; }
 
         [JsonProperty("report_type")]
         public string ReportType { get; set; }
