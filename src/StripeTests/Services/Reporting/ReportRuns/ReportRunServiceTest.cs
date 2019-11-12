@@ -25,7 +25,7 @@ namespace StripeTests.Reporting
 
             this.createOptions = new ReportRunCreateOptions
             {
-                Parameters = new ParametersOptions
+                Parameters = new ReportRunParametersOptions
                 {
                     ConnectedAccount = "acct_123",
                     IntervalStart = DateTime.Now,
