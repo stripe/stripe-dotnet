@@ -132,7 +132,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? Created { get; set; }
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Three-letter ISO currency code, in lowercase. Must be a supported currency.

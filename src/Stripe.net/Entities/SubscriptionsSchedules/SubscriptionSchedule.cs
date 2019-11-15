@@ -40,7 +40,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? Created { get; set; }
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Object representing the start and end dates for the current phase of the subscription

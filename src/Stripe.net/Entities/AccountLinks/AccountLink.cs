@@ -12,7 +12,7 @@ namespace Stripe
 
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? Created { get; set; }
+        public DateTime Created { get; set; }
 
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(DateTimeConverter))]
