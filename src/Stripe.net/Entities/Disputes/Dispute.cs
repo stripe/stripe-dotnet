@@ -41,7 +41,7 @@ namespace Stripe
 
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? Created { get; set; }
+        public DateTime Created { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
