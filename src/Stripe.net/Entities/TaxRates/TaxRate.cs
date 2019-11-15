@@ -30,7 +30,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? Created { get; set; }
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the tax rate for your internal use only. It will not be
