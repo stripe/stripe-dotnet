@@ -1,5 +1,8 @@
 # Changelog
 
+## 33.4.0 - 2019-11-19
+* [#1842](https://github.com/stripe/stripe-dotnet/pull/1842) Add support for `ViolatedAuthorizationControls` on Issuing `Authorization`
+
 ## 33.3.0 - 2019-11-07
 * [#1835](https://github.com/stripe/stripe-dotnet/pull/1835) Add support for Issuing Cardholder verification
 * [#1836](https://github.com/stripe/stripe-dotnet/pull/1836) stripe-mock Windows binary is now a ZIP
