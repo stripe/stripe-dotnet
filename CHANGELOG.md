@@ -1,5 +1,8 @@
 # Changelog
 
+## 33.5.0 - 2019-11-21
+* [#1845](https://github.com/stripe/stripe-dotnet/pull/1845) Add `PaymentIntent` filter when listing `Dispute`s
+
 ## 33.4.0 - 2019-11-19
 * [#1842](https://github.com/stripe/stripe-dotnet/pull/1842) Add support for `ViolatedAuthorizationControls` on Issuing `Authorization`
 
