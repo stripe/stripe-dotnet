@@ -12,5 +12,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("charge")]
         public string Charge { get; set; }
+
+        /// <summary>
+        /// Only return disputes that are associated with the PaymentIntent specified by this PaymentIntent ID.
+        /// </summary>
+        [JsonProperty("payment_intent")]
+        public string PaymentIntent { get; set; }
     }
 }
