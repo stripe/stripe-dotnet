@@ -1,5 +1,8 @@
 # Changelog
 
+## 33.6.0 - 2019-11-22
+* [#1847](https://github.com/stripe/stripe-dotnet/pull/1847) Add support for `SubscriptionScheduleStartDate.Now`
+
 ## 33.5.0 - 2019-11-21
 * [#1845](https://github.com/stripe/stripe-dotnet/pull/1845) Add `PaymentIntent` filter when listing `Dispute`s
 
