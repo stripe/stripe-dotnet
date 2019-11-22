@@ -25,7 +25,7 @@ namespace Stripe
         /// The date at which the subscription schedule starts.
         /// </summary>
         [JsonProperty("start_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? StartDate { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, SubscriptionScheduleStartDate> StartDate { get; set; }
     }
 }
