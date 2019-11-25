@@ -25,10 +25,10 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            // TODO: Fix stripe-mock to expand customer balance transaction
             string[] expansions =
             {
               "customer",
+              "customer_balance_transaction",
               "invoice",
               "refund",
             };
@@ -42,6 +42,9 @@ namespace StripeTests
 
             Assert.NotNull(creditNote.Customer);
             Assert.Equal("customer", creditNote.Customer.Object);
+
+            Assert.NotNull(creditNote.CustomerBalanceTransaction);
+            Assert.Equal("customer_balance_transaction", creditNote.CustomerBalanceTransaction.Object);
 
             Assert.NotNull(creditNote.Invoice);
             Assert.Equal("invoice", creditNote.Invoice.Object);
