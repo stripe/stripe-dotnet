@@ -1,5 +1,8 @@
 # Changelog
 
+## 33.7.0 - 2019-11-25
+* [#1849](https://github.com/stripe/stripe-dotnet/pull/1849) Add support for `OutOfBandAmount` on `CreditNote` creation
+
 ## 33.6.0 - 2019-11-22
 * [#1847](https://github.com/stripe/stripe-dotnet/pull/1847) Add support for `SubscriptionScheduleStartDate.Now`
 
