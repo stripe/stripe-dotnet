@@ -109,10 +109,6 @@ namespace Stripe
         [JsonProperty("person_token")]
         public string PersonToken { get; set; }
 
-        [Obsolete("This field was never supported. Use IdNumber instead")]
-        [JsonProperty("personal_id_number")]
-        public string PersonalIdNumber { get; set; }
-
         /// <summary>
         /// The person’s phone number.
         /// </summary>
