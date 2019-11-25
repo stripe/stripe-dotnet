@@ -26,11 +26,11 @@ namespace StripeTests.Checkout
         [Fact]
         public void DeserializeWithExpansions()
         {
-            // TODO: support expanding setup_intent in the future
             string[] expansions =
             {
               "customer",
               "payment_intent",
+              "setup_intent",
               "subscription",
             };
 
@@ -46,6 +46,9 @@ namespace StripeTests.Checkout
 
             Assert.NotNull(session.PaymentIntent);
             Assert.Equal("payment_intent", session.PaymentIntent.Object);
+
+            Assert.NotNull(session.SetupIntent);
+            Assert.Equal("setup_intent", session.SetupIntent.Object);
 
             Assert.NotNull(session.Subscription);
             Assert.Equal("subscription", session.Subscription.Object);
