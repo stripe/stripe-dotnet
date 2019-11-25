@@ -37,6 +37,12 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The integer amount representing the amount that is credited outside of Stripe.
+        /// </summary>
+        [JsonProperty("out_of_band_amount")]
+        public long? OutOfBandAmount { get; set; }
+
+        /// <summary>
         /// Reason for issuing this credit note, one of <c>duplicate</c>, <c>fraudulent</c>,
         /// <c>order_change</c>, or <c>product_unsatisfactory</c>.
         /// </summary>
