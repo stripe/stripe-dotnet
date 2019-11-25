@@ -32,12 +32,6 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// List of subscription items, each with an attached plan.
-        /// </summary>
-        [JsonProperty("items")]
-        public List<SubscriptionItemOption> Items { get; set; }
-
-        /// <summary>
         /// Integer representing the number of trial period days before the customer is charged for the first time.
         /// </summary>
         [JsonProperty("trial_period_days")]

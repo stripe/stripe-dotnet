@@ -27,7 +27,7 @@ namespace Stripe
         /// List of invoice items to add or update in the upcoming invoice preview.
         /// </summary>
         [JsonProperty("invoice_items")]
-        public List<InvoiceUpcomingInvoiceItemOption> InvoiceItems { get; set; }
+        public List<InvoiceUpcomingInvoiceItemOptions> InvoiceItems { get; set; }
 
         /// <summary>
         /// The identifier of the unstarted schedule whose upcoming invoice you’d like to retrieve.
