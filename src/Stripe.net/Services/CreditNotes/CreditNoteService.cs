@@ -68,12 +68,12 @@ namespace Stripe
             return this.UpdateEntityAsync(creditNoteId, options, requestOptions, cancellationToken);
         }
 
-        public virtual CreditNote VoidCreditNote(string creditNoteId, CreditNoteVoidOptions options, RequestOptions requestOptions = null)
+        public virtual CreditNote VoidCreditNote(string creditNoteId, CreditNoteVoidOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(creditNoteId)}/void", options, requestOptions);
         }
 
-        public virtual Task<CreditNote> VoidCreditNoteAsync(string creditNoteId, CreditNoteVoidOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<CreditNote> VoidCreditNoteAsync(string creditNoteId, CreditNoteVoidOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(creditNoteId)}/void", options, requestOptions, cancellationToken);
         }

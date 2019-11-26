@@ -80,12 +80,12 @@ namespace Stripe
             return this.UpdateNestedEntityAsync(customerId, bankAccountId, options, requestOptions, cancellationToken);
         }
 
-        public virtual BankAccount Verify(string customerId, string bankAccountId, BankAccountVerifyOptions options, RequestOptions requestOptions = null)
+        public virtual BankAccount Verify(string customerId, string bankAccountId, BankAccountVerifyOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(customerId, bankAccountId)}/verify", options, requestOptions);
         }
 
-        public virtual Task<BankAccount> VerifyAsync(string customerId, string bankAccountId, BankAccountVerifyOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<BankAccount> VerifyAsync(string customerId, string bankAccountId, BankAccountVerifyOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(customerId, bankAccountId)}/verify", options, requestOptions, cancellationToken);
         }

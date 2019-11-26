@@ -24,22 +24,22 @@ namespace Stripe
 
         public override string BasePath => "/v1/setup_intents";
 
-        public virtual SetupIntent Cancel(string setupIntentId, SetupIntentCancelOptions options, RequestOptions requestOptions = null)
+        public virtual SetupIntent Cancel(string setupIntentId, SetupIntentCancelOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/cancel", options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> CancelAsync(string setupIntentId, SetupIntentCancelOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SetupIntent> CancelAsync(string setupIntentId, SetupIntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/cancel", options, requestOptions, cancellationToken);
         }
 
-        public virtual SetupIntent Confirm(string setupIntentId, SetupIntentConfirmOptions options, RequestOptions requestOptions = null)
+        public virtual SetupIntent Confirm(string setupIntentId, SetupIntentConfirmOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/confirm", options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> ConfirmAsync(string setupIntentId, SetupIntentConfirmOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SetupIntent> ConfirmAsync(string setupIntentId, SetupIntentConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/confirm", options, requestOptions, cancellationToken);
         }
