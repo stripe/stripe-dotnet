@@ -252,8 +252,23 @@ namespace Stripe
                 options,
                 requestOptions);
 
+            options = options ?? new ListOptions();
+            bool iterateBackward = false;
+
+            // Backward iterating activates if we have an `EndingBefore`
+            // constraint and not a `StartingAfter` constraint
+            if (!string.IsNullOrEmpty(options.EndingBefore) && string.IsNullOrEmpty(options.StartingAfter))
+            {
+                iterateBackward = true;
+            }
+
             while (true)
             {
+                if (iterateBackward)
+                {
+                    page.Reverse();
+                }
+
                 string itemId = null;
                 foreach (var item in page)
                 {
@@ -275,8 +290,14 @@ namespace Stripe
                     break;
                 }
 
-                options = options ?? new ListOptions();
-                options.StartingAfter = itemId;
+                if (iterateBackward)
+                {
+                    options.EndingBefore = itemId;
+                }
+                else
+                {
+                    options.StartingAfter = itemId;
+                }
 
                 page = this.Request<StripeList<T>>(
                     HttpMethod.Get,
