@@ -58,6 +58,16 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
+        public virtual CreditNote Preview(CreditNotePreviewOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Get, $"{this.ClassUrl()}/preview", options, requestOptions);
+        }
+
+        public virtual Task<CreditNote> PreviewAsync(CreditNotePreviewOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.RequestAsync(HttpMethod.Get, $"{this.ClassUrl()}/preview", options, requestOptions, cancellationToken);
+        }
+
         public virtual CreditNote Update(string creditNoteId, CreditNoteUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(creditNoteId, options, requestOptions);

@@ -16,6 +16,7 @@ namespace StripeTests
         private readonly CreditNoteCreateOptions createOptions;
         private readonly CreditNoteUpdateOptions updateOptions;
         private readonly CreditNoteListOptions listOptions;
+        private readonly CreditNotePreviewOptions previewOptions;
         private readonly CreditNoteVoidOptions voidOptions;
 
         public CreditNoteServiceTest(
@@ -43,6 +44,12 @@ namespace StripeTests
             this.listOptions = new CreditNoteListOptions
             {
                 Limit = 1,
+                Invoice = "in_123",
+            };
+
+            this.previewOptions = new CreditNotePreviewOptions
+            {
+                Amount = 1000,
                 Invoice = "in_123",
             };
 
@@ -131,6 +138,24 @@ namespace StripeTests
         {
             var creditNote = await this.service.UpdateAsync(CreditNoteId, this.updateOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/credit_notes/cn_123");
+            Assert.NotNull(creditNote);
+            Assert.Equal("credit_note", creditNote.Object);
+        }
+
+        [Fact]
+        public void Preview()
+        {
+            var creditNote = this.service.Preview(this.previewOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/credit_notes/preview");
+            Assert.NotNull(creditNote);
+            Assert.Equal("credit_note", creditNote.Object);
+        }
+
+        [Fact]
+        public async Task PreviewAsync()
+        {
+            var creditNote = await this.service.PreviewAsync(this.previewOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/credit_notes/preview");
             Assert.NotNull(creditNote);
             Assert.Equal("credit_note", creditNote.Object);
         }
