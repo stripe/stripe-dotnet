@@ -1,5 +1,10 @@
 # Changelog
 
+## 33.8.0 - 2019-11-26
+* [#1856](https://github.com/stripe/stripe-dotnet/pull/1856) Add support for `CreditNote` preview
+* [#1855](https://github.com/stripe/stripe-dotnet/pull/1855) Default optional options for custom actions to null
+* [#1854](https://github.com/stripe/stripe-dotnet/pull/1854) Add support for reverse auto-pagination passing `EndingBefore`
+
 ## 33.7.0 - 2019-11-25
 * [#1849](https://github.com/stripe/stripe-dotnet/pull/1849) Add support for `OutOfBandAmount` on `CreditNote` creation
 
