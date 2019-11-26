@@ -42,5 +42,14 @@ namespace Stripe
         {
             return this.Data.GetEnumerator();
         }
+
+        /// <summary>
+        /// Reverse the order of the items in Data to support backward iteration
+        /// in autopagination with EndingBefore.
+        /// </summary>
+        public void Reverse()
+        {
+            this.Data.Reverse();
+        }
     }
 }

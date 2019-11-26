@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
@@ -154,6 +155,135 @@ namespace StripeTests
                         m.Method == HttpMethod.Get &&
                         m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
                         m.RequestUri.Query == "?starting_after=pm_126"),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
+        public void ListAutoPaging_StartingAfter()
+        {
+            // Set up stubbed requests
+            var response1 = new HttpResponseMessage(HttpStatusCode.OK);
+            response1.Content = new StringContent(GetResourceAsString("pageable_models.1.json"));
+            var response2 = new HttpResponseMessage(HttpStatusCode.OK);
+            response2.Content = new StringContent(GetResourceAsString("pageable_models.2.json"));
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .SetupSequence<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Get &&
+                        m.RequestUri.AbsolutePath == "/v1/pageablemodels"),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(response1))
+                .Returns(Task.FromResult(response2))
+                .Throws(new StripeTestException("Unexpected invocation!"));
+
+            // Call auto-paging method
+            var service = new PageableService(this.StripeClient);
+            var options = new ListOptions
+            {
+                Limit = 2,
+                StartingAfter = "pm_124",
+            };
+            var models = service.ListAutoPaging(options).ToList();
+
+            // Check results
+            Assert.Equal(3, models.Count);
+            Assert.Equal("pm_125", models[0].Id);
+            Assert.Equal("pm_126", models[1].Id);
+            Assert.Equal("pm_127", models[2].Id);
+
+            // Check invocations
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Get &&
+                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
+                        m.RequestUri.Query == "?limit=2&starting_after=pm_124"),
+                    ItExpr.IsAny<CancellationToken>());
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Get &&
+                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
+                        m.RequestUri.Query == "?limit=2&starting_after=pm_126"),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
+        public void ListAutoPaging_EndingBefore()
+        {
+            // Set up stubbed requests
+            var response1 = new HttpResponseMessage(HttpStatusCode.OK);
+            response1.Content = new StringContent(GetResourceAsString("pageable_models.1.json"));
+            var response2 = new HttpResponseMessage(HttpStatusCode.OK);
+            response2.Content = new StringContent(GetResourceAsString("pageable_models.0.json"));
+            var response3 = new HttpResponseMessage(HttpStatusCode.OK);
+            response3.Content = new StringContent(GetResourceAsString("pageable_models.0b.json"));
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .SetupSequence<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Get &&
+                        m.RequestUri.AbsolutePath == "/v1/pageablemodels"),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(response1))
+                .Returns(Task.FromResult(response2))
+                .Returns(Task.FromResult(response3))
+                .Throws(new StripeTestException("Unexpected invocation!"));
+
+            // Call auto-paging method
+            var service = new PageableService(this.StripeClient);
+            var options = new ListOptions
+            {
+                Limit = 2,
+                EndingBefore = "pm_127",
+            };
+            var models = service.ListAutoPaging(options).ToList();
+
+            // Check results
+            Assert.Equal(5, models.Count);
+            Assert.Equal("pm_126", models[0].Id);
+            Assert.Equal("pm_125", models[1].Id);
+            Assert.Equal("pm_124", models[2].Id);
+            Assert.Equal("pm_123", models[3].Id);
+            Assert.Equal("pm_122", models[4].Id);
+
+            // Check invocations
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Get &&
+                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
+                        m.RequestUri.Query == "?limit=2&ending_before=pm_127"),
+                    ItExpr.IsAny<CancellationToken>());
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Get &&
+                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
+                        m.RequestUri.Query == "?limit=2&ending_before=pm_125"),
+                    ItExpr.IsAny<CancellationToken>());
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Method == HttpMethod.Get &&
+                        m.RequestUri.AbsolutePath == "/v1/pageablemodels" &&
+                        m.RequestUri.Query == "?limit=2&ending_before=pm_123"),
                     ItExpr.IsAny<CancellationToken>());
         }
 
