@@ -24,32 +24,32 @@ namespace Stripe
 
         public override string BasePath => "/v1/payment_intents";
 
-        public virtual PaymentIntent Cancel(string paymentIntentId, PaymentIntentCancelOptions options, RequestOptions requestOptions = null)
+        public virtual PaymentIntent Cancel(string paymentIntentId, PaymentIntentCancelOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentIntentId)}/cancel", options, requestOptions);
         }
 
-        public virtual Task<PaymentIntent> CancelAsync(string paymentIntentId, PaymentIntentCancelOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<PaymentIntent> CancelAsync(string paymentIntentId, PaymentIntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentIntentId)}/cancel", options, requestOptions, cancellationToken);
         }
 
-        public virtual PaymentIntent Capture(string paymentIntentId, PaymentIntentCaptureOptions options, RequestOptions requestOptions = null)
+        public virtual PaymentIntent Capture(string paymentIntentId, PaymentIntentCaptureOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentIntentId)}/capture", options, requestOptions);
         }
 
-        public virtual Task<PaymentIntent> CaptureAsync(string paymentIntentId, PaymentIntentCaptureOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<PaymentIntent> CaptureAsync(string paymentIntentId, PaymentIntentCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentIntentId)}/capture", options, requestOptions, cancellationToken);
         }
 
-        public virtual PaymentIntent Confirm(string paymentIntentId, PaymentIntentConfirmOptions options, RequestOptions requestOptions = null)
+        public virtual PaymentIntent Confirm(string paymentIntentId, PaymentIntentConfirmOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentIntentId)}/confirm", options, requestOptions);
         }
 
-        public virtual Task<PaymentIntent> ConfirmAsync(string paymentIntentId, PaymentIntentConfirmOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<PaymentIntent> ConfirmAsync(string paymentIntentId, PaymentIntentConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentIntentId)}/confirm", options, requestOptions, cancellationToken);
         }

@@ -59,12 +59,12 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-        public virtual Order Pay(string orderId, OrderPayOptions options, RequestOptions requestOptions = null)
+        public virtual Order Pay(string orderId, OrderPayOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/pay", options, requestOptions);
         }
 
-        public virtual Task<Order> PayAsync(string orderId, OrderPayOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Order> PayAsync(string orderId, OrderPayOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/pay", options, requestOptions, cancellationToken);
         }

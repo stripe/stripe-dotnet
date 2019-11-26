@@ -44,12 +44,12 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual PaymentMethod Detach(string paymentMethodId, PaymentMethodDetachOptions options, RequestOptions requestOptions = null)
+        public virtual PaymentMethod Detach(string paymentMethodId, PaymentMethodDetachOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions);
         }
 
-        public virtual Task<PaymentMethod> DetachAsync(string paymentMethodId, PaymentMethodDetachOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<PaymentMethod> DetachAsync(string paymentMethodId, PaymentMethodDetachOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions, cancellationToken);
         }

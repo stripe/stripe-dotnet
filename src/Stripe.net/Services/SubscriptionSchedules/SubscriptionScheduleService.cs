@@ -23,12 +23,12 @@ namespace Stripe
 
         public override string BasePath => "/v1/subscription_schedules";
 
-        public virtual SubscriptionSchedule Cancel(string scheduleId, SubscriptionScheduleCancelOptions options, RequestOptions requestOptions = null)
+        public virtual SubscriptionSchedule Cancel(string scheduleId, SubscriptionScheduleCancelOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(scheduleId)}/cancel", options, requestOptions);
         }
 
-        public virtual Task<SubscriptionSchedule> CancelAsync(string scheduleId, SubscriptionScheduleCancelOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SubscriptionSchedule> CancelAsync(string scheduleId, SubscriptionScheduleCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(scheduleId)}/cancel", options, requestOptions, cancellationToken);
         }
@@ -68,12 +68,12 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-        public virtual SubscriptionSchedule Release(string scheduleId, SubscriptionScheduleReleaseOptions options, RequestOptions requestOptions = null)
+        public virtual SubscriptionSchedule Release(string scheduleId, SubscriptionScheduleReleaseOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(scheduleId)}/release", options, requestOptions);
         }
 
-        public virtual Task<SubscriptionSchedule> ReleaseAsync(string scheduleId, SubscriptionScheduleReleaseOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SubscriptionSchedule> ReleaseAsync(string scheduleId, SubscriptionScheduleReleaseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(scheduleId)}/release", options, requestOptions, cancellationToken);
         }
