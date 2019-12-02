@@ -1,5 +1,8 @@
 # Changelog
 
+## 33.9.0 - 2019-12-02
+* [#1861](https://github.com/stripe/stripe-dotnet/pull/1861) Allow filtering Invoices by `Status`
+
 ## 33.8.0 - 2019-11-26
 * [#1856](https://github.com/stripe/stripe-dotnet/pull/1856) Add support for `CreditNote` preview
 * [#1855](https://github.com/stripe/stripe-dotnet/pull/1855) Default optional options for custom actions to null
