@@ -41,6 +41,14 @@ namespace Stripe
         public bool? Paid { get; set; }
 
         /// <summary>
+        /// Only return invoices with a given status. Must be one of
+        /// <c>draft</c>, <c>open</c>, <c>paid</c>, <c>uncollectible</c>, or
+        /// <c>void</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        /// <summary>
         /// Only return invoices for the subscription specified by this subscription ID.
         /// </summary>
         [JsonProperty("subscription")]
