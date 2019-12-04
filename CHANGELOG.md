@@ -37,7 +37,7 @@
 ## 33.0.0 - 2019-11-05
 * [#1826](https://github.com/stripe/stripe-dotnet/pull/1826) Move to the latest API version and add new changes
   * Move to API version `2019-11-05`
-  * Add `DefaultSettings` on `SubscritionSchedule`
+  * Add `DefaultSettings` on `SubscriptionSchedule`
   * Remove `BillingThresholds`, `CollectionMethod`, `DefaultPaymentMethod` and `DefaultSource` and `invoice_settings` from `SubscriptionSchedule`
   * `OffSession` on `PaymentIntent` is now always a boolean
   * Disabling using global settings when serializing or deserializing JSON.
