@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.1.0 - 2019-12-04
+* [#1866](https://github.com/stripe/stripe-dotnet/pull/1866) Add `Network` and `GeneratedCard` on `Charge` for card and card-present transactions
+
 ## 34.0.0 - 2019-12-03
 * [#1838](https://github.com/stripe/stripe-dotnet/pull/1838) Major version released with the following breaking changes in it:
   * [#1863](https://github.com/stripe/stripe-dotnet/pull/1863) ⚠️  Pin to API version `2019-12-03`
