@@ -3,8 +3,28 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SubscriptionItemOption : INestedOptions, IHasMetadata
+    public class SubscriptionItemOptions : IHasId, INestedOptions, IHasMetadata
     {
+        /// <summary>
+        /// SubscriptionItem to update. This parameter is only available on update.
+        /// </summary>
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Delete all usage for a given subscription item. Only allowed when <c>deleted</c> is set
+        /// to true and the current plan’s <c>usage_type</c> is metered.  This parameter is only
+        /// available on update.
+        /// </summary>
+        [JsonProperty("clear_usage")]
+        public bool? ClearUsage { get; set; }
+
+        /// <summary>
+        /// Delete the specified item if set to true. This parameter is only available on update.
+        /// </summary>
+        [JsonProperty("deleted")]
+        public bool? Deleted { get; set; }
+
         /// <summary>
         /// A set of key/value pairs that you can attach to a charge object. It can be useful for
         /// storing additional information about the customer in a structured format. It's often a

@@ -39,7 +39,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? Created { get; set; }
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// Object containing data associated with the event.

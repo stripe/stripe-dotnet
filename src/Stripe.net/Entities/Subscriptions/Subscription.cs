@@ -67,7 +67,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? Created { get; set; }
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// End of the current period that the subscription has been invoiced for. At the end of

@@ -25,12 +25,12 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            // TODO: Add support for expanding pending_setup_intent and schedule in the future.
             string[] expansions =
             {
               "customer",
               "default_payment_method",
               "latest_invoice",
+              "pending_setup_intent",
             };
 
             string json = this.GetFixture("/v1/subscriptions/sub_123", expansions);
@@ -48,6 +48,9 @@ namespace StripeTests
 
             Assert.NotNull(subscription.LatestInvoice);
             Assert.Equal("invoice", subscription.LatestInvoice.Object);
+
+            Assert.NotNull(subscription.PendingSetupIntent);
+            Assert.Equal("setup_intent", subscription.PendingSetupIntent.Object);
         }
     }
 }

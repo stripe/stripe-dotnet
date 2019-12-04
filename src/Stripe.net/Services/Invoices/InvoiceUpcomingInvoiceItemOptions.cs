@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class InvoiceUpcomingInvoiceItemOption : INestedOptions, IHasMetadata
+    public class InvoiceUpcomingInvoiceItemOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The integer amount in cents of previewed invoice item.

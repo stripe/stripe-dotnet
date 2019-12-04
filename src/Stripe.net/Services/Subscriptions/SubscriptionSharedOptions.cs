@@ -78,11 +78,10 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Specifies an interval for how often to bill for any pending invoice items. It is
-        /// analogous to creating an invoice for the given subscription at the specified interval.
+        /// List of subscription items, each with an attached plan.
         /// </summary>
-        [JsonProperty("pending_invoice_item_interval")]
-        public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
+        [JsonProperty("items")]
+        public List<SubscriptionItemOptions> Items { get; set; }
 
         /// <summary>
         /// Indicates if a customer is on session while an invoice payment is attempted.
@@ -110,6 +109,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_behavior")]
         public string PaymentBehavior { get; set; }
+
+        /// <summary>
+        /// Specifies an interval for how often to bill for any pending invoice items. It is
+        /// analogous to creating an invoice for the given subscription at the specified interval.
+        /// </summary>
+        [JsonProperty("pending_invoice_item_interval")]
+        public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
 
         /// <summary>
         /// Boolean (default <c>true</c>). Use with a <c>billing_cycle_anchor</c> timestamp to determine whether the customer will be invoiced a prorated amount until the anchor date. If <c>false</c>, the anchor period will be free (similar to a trial).

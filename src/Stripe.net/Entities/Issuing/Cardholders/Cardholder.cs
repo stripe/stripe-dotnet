@@ -75,14 +75,6 @@ namespace Stripe.Issuing
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [Obsolete("Use PhoneNumber instead")]
-        [JsonIgnore]
-        public string PhonNumber
-        {
-            get => this.PhoneNumber;
-            set => this.PhoneNumber = value;
-        }
-
         /// <summary>
         /// The cardholder’s phone number.
         /// </summary>

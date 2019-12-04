@@ -34,14 +34,14 @@ namespace StripeTests
             this.createOptions = new SubscriptionCreateOptions
             {
                 Customer = "cus_123",
-                Items = new List<SubscriptionItemOption>
+                Items = new List<SubscriptionItemOptions>
                 {
-                    new SubscriptionItemOption
+                    new SubscriptionItemOptions
                     {
                         Plan = "plan_123",
                         Quantity = 2,
                     },
-                    new SubscriptionItemOption
+                    new SubscriptionItemOptions
                     {
                         Plan = "plan_124",
                         Quantity = 3,
