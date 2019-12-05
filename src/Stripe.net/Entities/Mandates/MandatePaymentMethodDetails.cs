@@ -5,6 +5,13 @@ namespace Stripe
     public class MandatePaymentMethodDetails : StripeEntity<MandatePaymentMethodDetails>
     {
         /// <summary>
+        /// If this mandate is associated with a AU BECS Debit payment method, this hash contains
+        /// mandate information specific to the AU BECS Debit payment method.
+        /// </summary>
+        [JsonProperty("au_becs_debit")]
+        public MandatePaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
+
+        /// <summary>
         /// If this mandate is associated with a card payment method, this hash contains mandate
         /// information specific to the card payment method.
         /// </summary>
