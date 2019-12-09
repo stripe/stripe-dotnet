@@ -15,6 +15,8 @@ namespace Stripe
         internal static readonly UTF8Encoding SafeUTF8
             = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
+        private const int DefaultTimeTolerance = 300;
+
         /// <summary>
         /// Parses a JSON string from a Stripe webhook into a <see cref="Event"/> object.
         /// </summary>
@@ -80,7 +82,7 @@ namespace Stripe
             string json,
             string stripeSignatureHeader,
             string secret,
-            long tolerance = 300,
+            long tolerance = DefaultTimeTolerance,
             bool throwOnApiVersionMismatch = true)
         {
             return ConstructEvent(
@@ -122,18 +124,29 @@ namespace Stripe
             long utcNow,
             bool throwOnApiVersionMismatch = true)
         {
+            ValidateSignature(json, stripeSignatureHeader, secret, tolerance, utcNow);
+            return ParseEvent(json, throwOnApiVersionMismatch);
+        }
+
+        public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long tolerance = DefaultTimeTolerance)
+        {
+            ValidateSignature(json, stripeSignatureHeader, secret, tolerance, DateTime.UtcNow.ConvertDateTimeToEpoch());
+        }
+
+        public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long tolerance, long utcNow)
+        {
             var signatureItems = ParseStripeSignature(stripeSignatureHeader);
             var signature = string.Empty;
 
             try
             {
-               signature = ComputeSignature(secret, signatureItems["t"].FirstOrDefault(), json);
+                signature = ComputeSignature(secret, signatureItems["t"].FirstOrDefault(), json);
             }
             catch (EncoderFallbackException ex)
             {
-               throw new StripeException(
-                   "The webhook cannot be processed because the signature cannot be safely calculated.",
-                   ex);
+                throw new StripeException(
+                    "The webhook cannot be processed because the signature cannot be safely calculated.",
+                    ex);
             }
 
             if (!IsSignaturePresent(signature, signatureItems["v1"]))
@@ -149,8 +162,6 @@ namespace Stripe
                 throw new StripeException(
                     "The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.");
             }
-
-            return ParseEvent(json, throwOnApiVersionMismatch);
         }
 
         private static ILookup<string, string> ParseStripeSignature(string stripeSignatureHeader)
