@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.3.0 - 2019-12-09
+* [#1872](https://github.com/stripe/stripe-dotnet/pull/1872) Add support for AU BECS Debit on PaymentMethod
+
 ## 34.2.0 - 2019-12-09
 * [#1869](https://github.com/stripe/stripe-dotnet/pull/1869) Add `EventUtility.ValidateSignature` method
 
