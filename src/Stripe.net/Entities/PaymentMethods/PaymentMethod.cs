@@ -13,6 +13,9 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("au_becs_debit")]
+        public PaymentMethodAuBecsDebit AuBecsDebit { get; set; }
+
         [JsonProperty("billing_details")]
         public BillingDetails BillingDetails { get; set; }
 
