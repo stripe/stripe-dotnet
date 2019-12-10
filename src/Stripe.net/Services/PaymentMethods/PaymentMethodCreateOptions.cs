@@ -8,6 +8,13 @@ namespace Stripe
     public class PaymentMethodCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// This is a <c>au_becs_debit</c> PaymentMethod available in Australia.
+        /// Teh create option contains details about the bank account.
+        /// </summary>
+        [JsonProperty("au_becs_debit")]
+        public PaymentMethodAuBecsDebitCreateOptions AuBecsDebit { get; set; }
+
+        /// <summary>
         /// Billing information associated with the PaymentMethod that may be used or required by
         /// particular types of payment methods.
         /// </summary>
