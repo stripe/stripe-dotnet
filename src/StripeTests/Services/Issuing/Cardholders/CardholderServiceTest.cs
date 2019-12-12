@@ -27,6 +27,21 @@ namespace StripeTests.Issuing
 
             this.createOptions = new CardholderCreateOptions
             {
+                AuthorizationControls = new CardholderAuthorizationControlsOptions
+                {
+                    SpendingLimits = new List<CardholderAuthorizationControlsSpendingLimitOptions>
+                    {
+                        new CardholderAuthorizationControlsSpendingLimitOptions
+                        {
+                            Amount = 1000,
+                            Categories = new List<string>
+                            {
+                                "financial_institutions",
+                            },
+                            Interval = "all_time",
+                        },
+                    },
+                },
                 Billing = new BillingOptions
                 {
                     Address = new AddressOptions

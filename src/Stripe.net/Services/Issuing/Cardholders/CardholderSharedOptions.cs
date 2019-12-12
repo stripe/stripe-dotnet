@@ -6,6 +6,12 @@ namespace Stripe.Issuing
     public class CardholderSharedOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// Spending rules that give you control over how your cardholders can make charges.
+        /// </summary>
+        [JsonProperty("authorization_controls")]
+        public CardholderAuthorizationControlsOptions AuthorizationControls { get; set; }
+
+        /// <summary>
         /// The cardholder’s billing address.
         /// </summary>
         [JsonProperty("billing")]
