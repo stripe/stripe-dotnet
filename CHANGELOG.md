@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.5.0 - 2019-12-13
+* [#1878](https://github.com/stripe/stripe-dotnet/pull/1878) Mark `Connect` as obsolete on `WebhookEndpoint` and add documentation
+
 ## 34.4.0 - 2019-12-12
 * [#1877](https://github.com/stripe/stripe-dotnet/pull/1877) Add support for `AuthorizationControls` on Issuing `Cardholder`
 
