@@ -2,15 +2,16 @@ namespace Stripe.Infrastructure
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Reflection;
 
-    internal static class StripeTypeRegistry
+    public static class StripeTypeRegistry
     {
         /// <summary>
         /// Dictionary mapping the values contained in the `object` key of JSON payloads returned
         /// by Stripe's API to concrete types of model classes.
         /// </summary>
-        public static readonly IDictionary<string, Type> ObjectsToTypes = new Dictionary<string, Type>
+        public static readonly IReadOnlyDictionary<string, Type> ObjectsToTypes = new ReadOnlyDictionary<string, Type>(new Dictionary<string, Type>
         {
             { "account", typeof(Account) },
             { "account_link", typeof(AccountLink) },
@@ -87,7 +88,7 @@ namespace Stripe.Infrastructure
             { "usage_record", typeof(UsageRecord) },
             { "usage_record_summary", typeof(UsageRecordSummary) },
             { "webhook_endpoint", typeof(WebhookEndpoint) },
-        };
+        });
 
         /// <summary>
         /// Returns the concrete type to use, given a potential type and the value of the `object`
