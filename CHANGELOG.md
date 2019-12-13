@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.4.0 - 2019-12-12
+* [#1877](https://github.com/stripe/stripe-dotnet/pull/1877) Add support for `AuthorizationControls` on Issuing `Cardholder`
+
 ## 34.3.0 - 2019-12-09
 * [#1872](https://github.com/stripe/stripe-dotnet/pull/1872) Add support for AU BECS Debit on PaymentMethod
 

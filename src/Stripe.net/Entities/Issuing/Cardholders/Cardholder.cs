@@ -20,6 +20,12 @@ namespace Stripe.Issuing
         public string Object { get; set; }
 
         /// <summary>
+        /// Spending rules that give you control over how your cardholder can make charges.
+        /// </summary>
+        [JsonProperty("authorization_controls")]
+        public CardholderAuthorizationControls AuthorizationControls { get; set; }
+
+        /// <summary>
         /// The cardholder’s billing address.
         /// </summary>
         [JsonProperty("billing")]
