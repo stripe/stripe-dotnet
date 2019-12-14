@@ -5,13 +5,12 @@ namespace StripeTests
     using System.Collections.Generic;
     using System.Linq;
     using Stripe;
-    using Stripe.Infrastructure;
     using Xunit;
 
     /// <summary>
     /// This test checks that all Stripe object classes (i.e. model classes that implement
     /// <see cref="Stripe.IHasObject" />) have an entry in the
-    /// <see cref="Stripe.Infrastructure.StripeTypeRegistry.ObjectsToTypes" /> dictionary.
+    /// <see cref="Stripe.StripeTypeRegistry.ObjectsToTypes" /> dictionary.
     /// </summary>
     public class AllStripeObjectClassesPresentInDictionary : WholesomeTest
     {
