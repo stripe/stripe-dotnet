@@ -2,7 +2,6 @@ namespace StripeTests
 {
     using System;
     using Stripe;
-    using Stripe.Infrastructure;
     using Xunit;
 
     public class StripeTypeRegistryTest : BaseStripeTest
