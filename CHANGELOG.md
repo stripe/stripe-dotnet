@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.6.0 - 2019-12-17
+* [#1881](https://github.com/stripe/stripe-dotnet/pull/1881) Make `StripeTypeRegistry.ObjectsToTypes` dictionary public
+
 ## 34.5.0 - 2019-12-13
 * [#1878](https://github.com/stripe/stripe-dotnet/pull/1878) Mark `Connect` as obsolete on `WebhookEndpoint` and add documentation
 
