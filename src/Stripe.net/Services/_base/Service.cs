@@ -48,6 +48,7 @@ namespace Stripe
         public IStripeClient Client
         {
             get => this.client ?? StripeConfiguration.StripeClient;
+            set => this.client = value;
         }
 
         protected TEntityReturned CreateEntity(BaseOptions options, RequestOptions requestOptions)
