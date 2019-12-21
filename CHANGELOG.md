@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.8.0 - 2019-12-21
+* [#1888](https://github.com/stripe/stripe-dotnet/pull/1888) Adds `ExecutivesProvided` to `Account`
+
 ## 34.7.0 - 2019-12-19
 * [#1887](https://github.com/stripe/stripe-dotnet/pull/1887) Add support for `Metadata` and `Livemode` to Terminal `Reader` and `Location`
 
