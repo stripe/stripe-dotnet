@@ -5,7 +5,7 @@ namespace Stripe
 
     public interface IUpdatable<TEntity, TOptions>
         where TEntity : IStripeEntity, IHasId
-        where TOptions : BaseOptions
+        where TOptions : BaseOptions, new()
     {
         TEntity Update(string id, TOptions updateOptions, RequestOptions requestOptions = null);
 
