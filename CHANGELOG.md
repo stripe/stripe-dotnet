@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.9.0 - 2019-12-24
+* [#1890](https://github.com/stripe/stripe-dotnet/pull/1890) Add `new()` constraint to options generic types
+
 ## 34.8.0 - 2019-12-21
 * [#1888](https://github.com/stripe/stripe-dotnet/pull/1888) Adds `ExecutivesProvided` to `Account`
 
