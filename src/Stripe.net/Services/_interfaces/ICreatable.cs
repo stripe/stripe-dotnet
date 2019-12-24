@@ -5,7 +5,7 @@ namespace Stripe
 
     public interface ICreatable<TEntity, TOptions>
         where TEntity : IStripeEntity
-        where TOptions : BaseOptions
+        where TOptions : BaseOptions, new()
     {
         TEntity Create(TOptions createOptions, RequestOptions requestOptions = null);
 

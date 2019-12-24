@@ -5,7 +5,7 @@ namespace Stripe
 
     public interface INestedRetrievable<TEntity, TOptions>
         where TEntity : IStripeEntity, IHasId
-        where TOptions : BaseOptions
+        where TOptions : BaseOptions, new()
     {
         TEntity Get(string parentId, string id, TOptions retrieveOptions, RequestOptions requestOptions = null);
 

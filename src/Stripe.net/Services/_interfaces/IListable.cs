@@ -6,7 +6,7 @@ namespace Stripe
 
     public interface IListable<TEntity, TOptions>
         where TEntity : IStripeEntity, IHasId
-        where TOptions : ListOptions
+        where TOptions : ListOptions, new()
     {
         StripeList<TEntity> List(TOptions listOptions = null, RequestOptions requestOptions = null);
 
