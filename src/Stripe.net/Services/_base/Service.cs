@@ -41,10 +41,14 @@ namespace Stripe
         public virtual string BaseUrl => this.Client.ApiBase;
 
         /// <summary>
-        /// Gets the client used by this service to send requests. If no client was set when the
+        /// Gets or sets the client used by this service to send requests. If no client was set when the
         /// service instance was created, then the default client in
         /// <see cref="StripeConfiguration.StripeClient"/> is used instead.
         /// </summary>
+        /// <remarks>
+        /// Setting the client at runtime may not be thread-safe.
+        /// If you wish to use a custom client, it is recommended that you pass it to the service's constructor and not change it during the service's lifetime.
+        /// </remarks>
         public IStripeClient Client
         {
             get => this.client ?? StripeConfiguration.StripeClient;
