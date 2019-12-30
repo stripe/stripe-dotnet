@@ -20,7 +20,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// A hash containing all the evidence related to the dispute. This
-        /// should have a single key, equal to the provided <c>Reason</c>, mapping to
+        /// should have a single key, equal to the provided <see cref="Reason"/>, mapping to
         /// an appropriate evidence object.
         /// </summary>
         [JsonProperty("evidence")]
@@ -35,7 +35,7 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The reason for the dispute. One of other or fraudulent.
+        /// The reason for the dispute. One of <c>other</c> or <c>fraudulent</c>.
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; set; }

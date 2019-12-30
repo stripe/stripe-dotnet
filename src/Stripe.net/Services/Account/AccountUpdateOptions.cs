@@ -6,6 +6,10 @@ namespace Stripe
 
     public class AccountUpdateOptions : BaseOptions, IHasMetadata
     {
+        /// <summary>
+        /// An <a href="https://stripe.com/docs/api/tokens/create_account">account token</a>,
+        /// used to securely provide details to the account.
+        /// </summary>
         [JsonProperty("account_token")]
         public string AccountToken { get; set; }
 
@@ -23,7 +27,7 @@ namespace Stripe
 
         /// <summary>
         /// Information about the company or business. This field is null
-        /// unless <c>BusinessType</c> is set to <c>company</c>.
+        /// unless <see cref="BusinessType"/> is set to <c>company</c>.
         /// </summary>
         [JsonProperty("company")]
         public AccountCompanyOptions Company { get; set; }
@@ -63,7 +67,7 @@ namespace Stripe
 
         /// <summary>
         /// Information about the person represented by the account. This field
-        /// is null unless <c>BusinessType</c> is set to <c>individual</c>.
+        /// is null unless <see cref="BusinessType"/> is set to <c>individual</c>.
         /// </summary>
         [JsonProperty("individual")]
         public PersonUpdateOptions Individual { get; set; }

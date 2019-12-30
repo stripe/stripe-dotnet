@@ -45,7 +45,7 @@ namespace Stripe.Issuing
         public string ReplacementFor { get; set; }
 
         /// <summary>
-        /// If <c>ReplacementFor</c> is specified, this should indicate why
+        /// If <see cref="ReplacementFor"/> is specified, this should indicate why
         /// that card is being replaced.
         /// </summary>
         [JsonProperty("replacement_reason")]

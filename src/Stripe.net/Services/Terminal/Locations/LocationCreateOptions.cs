@@ -7,9 +7,15 @@ namespace Stripe.Terminal
 
     public class LocationCreateOptions : BaseOptions, IHasMetadata
     {
+        /// <summary>
+        /// The full address of the location.
+        /// </summary>
         [JsonProperty("address")]
         public AddressOptions Address { get; set; }
 
+        /// <summary>
+        /// A name for the location.
+        /// </summary>
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
 

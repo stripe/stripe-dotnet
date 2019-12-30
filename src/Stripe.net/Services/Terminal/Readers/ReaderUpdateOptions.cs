@@ -7,6 +7,9 @@ namespace Stripe.Terminal
 
     public class ReaderUpdateOptions : BaseOptions, IHasMetadata
     {
+        /// <summary>
+        /// The new label of the reader.
+        /// </summary>
         [JsonProperty("label")]
         public string Label { get; set; }
 
