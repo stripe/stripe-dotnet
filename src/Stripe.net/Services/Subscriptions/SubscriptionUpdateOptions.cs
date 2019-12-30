@@ -132,9 +132,7 @@ namespace Stripe
         /// Use <c>error_if_incomplete</c> if you want Stripe to return an HTTP 402 status code if
         /// a subscription's first invoice cannot be paid. For example, if a payment method requires
         /// 3DS authentication due to SCA regulation and further user action is needed, this
-        /// parameter does not create a subscription and returns an error instead. This was the
-        /// default behavior for API versions prior to 2019-03-14. See the <a href="https://stripe.com/docs/upgrades#2019-03-14">changelog</a>
-        /// to learn more.
+        /// parameter does not create a subscription and returns an error instead.
         /// </para>
         /// </summary>
         [JsonProperty("payment_behavior")]
