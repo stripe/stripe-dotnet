@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.10.0 - 2019-12-30
+* [#1885](https://github.com/stripe/stripe-dotnet/pull/1885) Add public `Service.Client` setter
+
 ## 34.9.0 - 2019-12-24
 * [#1890](https://github.com/stripe/stripe-dotnet/pull/1890) Add `new()` constraint to options generic types
 
