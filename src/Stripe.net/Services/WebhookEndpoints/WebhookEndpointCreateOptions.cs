@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class WebhookEndpointCreateOptions : WebhookEndpointSharedOptions
+    public class WebhookEndpointCreateOptions : BaseOptions
     {
         /// <summary>
         /// Events sent to this endpoint will be generated with this API version instead of your
@@ -20,5 +20,17 @@ namespace Stripe
         /// </summary>
         [JsonProperty("connect")]
         public bool? Connect { get; set; }
+
+        /// <summary>
+        /// The list of events to enable for this endpoint.
+        /// </summary>
+        [JsonProperty("enabled_events")]
+        public List<string> EnabledEvents { get; set; }
+
+        /// <summary>
+        /// The URL of the webhook endpoint.
+        /// </summary>
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 }
