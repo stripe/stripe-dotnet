@@ -45,6 +45,12 @@ namespace Stripe.Issuing
         public DateTime Created { get; set; }
 
         /// <summary>
+        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
         /// The expiration month of the card.
         /// </summary>
         [JsonProperty("exp_month")]

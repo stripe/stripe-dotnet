@@ -28,7 +28,18 @@ namespace StripeTests.Issuing
             {
                 AuthorizationControls = new AuthorizationControlsOptions
                 {
-                    MaxAmount = 123,
+                    SpendingLimits = new List<CardAuthorizationControlsSpendingLimitOptions>
+                    {
+                        new CardAuthorizationControlsSpendingLimitOptions
+                        {
+                            Amount = 1000,
+                            Categories = new List<string>
+                            {
+                                "financial_institutions",
+                            },
+                            Interval = "all_time",
+                        },
+                    },
                 },
                 Currency = "usd",
                 Type = "virtual",
