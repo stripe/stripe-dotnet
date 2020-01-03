@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.10.1 - 2020-01-03
+* [#1891](https://github.com/stripe/stripe-dotnet/pull/1891) Internal cleanup of the library to remove SharedOptions classes and define parameters in their respective Create or Update options classes.
+
 ## 34.10.0 - 2019-12-30
 * [#1885](https://github.com/stripe/stripe-dotnet/pull/1885) Add public `Service.Client` setter
 
