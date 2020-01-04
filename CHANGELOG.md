@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.11.0 - 2020-01-03
+* [#1892](https://github.com/stripe/stripe-dotnet/pull/1892) Improve support for `SpendingLimits` on Issuing `Card`
+
 ## 34.10.1 - 2020-01-03
 * [#1891](https://github.com/stripe/stripe-dotnet/pull/1891) Internal cleanup of the library to remove SharedOptions classes and define parameters in their respective Create or Update options classes.
 
