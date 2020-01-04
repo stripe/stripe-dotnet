@@ -1,5 +1,6 @@
 namespace Stripe.Issuing
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
@@ -12,6 +13,7 @@ namespace Stripe.Issuing
         [JsonProperty("authorization_controls")]
         public AuthorizationControlsOptions AuthorizationControls { get; set; }
 
+        [Obsolete("This parameter does not exist and was added to the library incorrectly.")]
         [JsonProperty("billing")]
         public BillingOptions Billing { get; set; }
 
