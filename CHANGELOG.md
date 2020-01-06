@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.12.0 - 2020-01-06
+* [#1893](https://github.com/stripe/stripe-dotnet/pull/1893) Add `ReportingCategory` to `BalanceTransaction`
+
 ## 34.11.0 - 2020-01-03
 * [#1892](https://github.com/stripe/stripe-dotnet/pull/1892) Improve support for `SpendingLimits` on Issuing `Card`
 
