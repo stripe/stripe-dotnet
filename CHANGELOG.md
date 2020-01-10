@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.13.0 - 2020-01-10
+* [#1894](https://github.com/stripe/stripe-dotnet/pull/1894) Fix sepa debit deserialization on MandatePaymentMethodDetails
+
 ## 34.12.0 - 2020-01-06
 * [#1893](https://github.com/stripe/stripe-dotnet/pull/1893) Add `ReportingCategory` to `BalanceTransaction`
 
