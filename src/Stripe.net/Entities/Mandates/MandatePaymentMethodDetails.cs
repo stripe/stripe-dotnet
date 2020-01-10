@@ -22,7 +22,7 @@ namespace Stripe
         /// If this mandate is associated with a SEPA debit payment method, this hash contains
         /// mandate information specific to the SEPA debit payment method.
         /// </summary>
-        [JsonProperty("offline")]
+        [JsonProperty("sepa_debit")]
         public MandatePaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
         /// <summary>
