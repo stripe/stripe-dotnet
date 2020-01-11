@@ -45,9 +45,24 @@ namespace Stripe
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? CancelAt { get; set; }
 
+        /// <summary>
+        /// If the subscription has been canceled with the <c>AtPeriodEnd</c> flag
+        /// set to true, <c>CancelAtPeriodEnd</c> on the subscription will be true.
+        /// You can use this attribute to determine whether a subscription that
+        /// has a status of active is scheduled to be canceled at the end of
+        /// the current period.
+        /// </summary>
         [JsonProperty("cancel_at_period_end")]
         public bool CancelAtPeriodEnd { get; set; }
 
+        /// <summary>
+        /// If the subscription has been canceled, the date of that
+        /// cancellation. If the subscription was canceled with
+        /// <c>CancelAtPeriodEnd</c>, <c>CanceledAt</c> will still reflect the
+        /// date of the initial cancellation request, not the end of the
+        /// subscription period when the subscription is automatically moved to
+        /// a canceled state.
+        /// </summary>
         [JsonProperty("canceled_at")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
@@ -280,6 +295,13 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
         internal ExpandableField<SetupIntent> InternalPendingSetupIntent { get; set; }
         #endregion
+
+        /// <summary>
+        /// If specified, deferred upgrade changes that will be applied to the
+        /// subscription once the latest_invoice has been paid.
+        /// </summary>
+        [JsonProperty("pending_update")]
+        public SubscriptionPendingUpdate PendingUpdate { get; set; }
 
         /// <summary>
         /// Plan the customer is subscribed to. Only set if the subscription contains a single plan.
