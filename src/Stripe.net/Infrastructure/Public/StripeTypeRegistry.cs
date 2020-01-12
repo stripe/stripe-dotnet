@@ -28,6 +28,7 @@ namespace Stripe
             { "country_spec", typeof(CountrySpec) },
             { "coupon", typeof(Coupon) },
             { "credit_note", typeof(CreditNote) },
+            { "credit_note_line_item", typeof(CreditNoteLineItem) },
             { "customer", typeof(Customer) },
             { "customer_balance_transaction", typeof(CustomerBalanceTransaction) },
             { "discount", typeof(Discount) },

@@ -16,7 +16,9 @@ namespace StripeTests
         private readonly CreditNoteCreateOptions createOptions;
         private readonly CreditNoteUpdateOptions updateOptions;
         private readonly CreditNoteListOptions listOptions;
+        private readonly CreditNoteListLineItemsOptions listLineItemsOptions;
         private readonly CreditNotePreviewOptions previewOptions;
+        private readonly CreditNoteListPreviewLineItemsOptions listPreviewLineItemsOptions;
         private readonly CreditNoteVoidOptions voidOptions;
 
         public CreditNoteServiceTest(
@@ -47,7 +49,18 @@ namespace StripeTests
                 Invoice = "in_123",
             };
 
+            this.listLineItemsOptions = new CreditNoteListLineItemsOptions
+            {
+                Limit = 1,
+            };
+
             this.previewOptions = new CreditNotePreviewOptions
+            {
+                Amount = 1000,
+                Invoice = "in_123",
+            };
+
+            this.listPreviewLineItemsOptions = new CreditNoteListPreviewLineItemsOptions
             {
                 Amount = 1000,
                 Invoice = "in_123",
@@ -125,21 +138,33 @@ namespace StripeTests
         }
 
         [Fact]
-        public void Update()
+        public void ListLineItems()
         {
-            var creditNote = this.service.Update(CreditNoteId, this.updateOptions);
-            this.AssertRequest(HttpMethod.Post, "/v1/credit_notes/cn_123");
-            Assert.NotNull(creditNote);
-            Assert.Equal("credit_note", creditNote.Object);
+            var lineItems = this.service.ListLineItems(CreditNoteId, this.listLineItemsOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/credit_notes/cn_123/lines");
+            Assert.NotNull(lineItems);
+            Assert.Equal("list", lineItems.Object);
+            Assert.Single(lineItems.Data);
+            Assert.Equal("credit_note_line_item", lineItems.Data[0].Object);
         }
 
         [Fact]
-        public async Task UpdateAsync()
+        public async Task ListLineItemsAsync()
         {
-            var creditNote = await this.service.UpdateAsync(CreditNoteId, this.updateOptions);
-            this.AssertRequest(HttpMethod.Post, "/v1/credit_notes/cn_123");
-            Assert.NotNull(creditNote);
-            Assert.Equal("credit_note", creditNote.Object);
+            var lineItems = await this.service.ListLineItemsAsync(CreditNoteId, this.listLineItemsOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/credit_notes/cn_123/lines");
+            Assert.NotNull(lineItems);
+            Assert.Equal("list", lineItems.Object);
+            Assert.Single(lineItems.Data);
+            Assert.Equal("credit_note_line_item", lineItems.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListLineItemsAutoPaging()
+        {
+            var lineItems = this.service.ListLineItemsAutoPaging(CreditNoteId, this.listLineItemsOptions).ToList();
+            Assert.NotNull(lineItems);
+            Assert.Equal("credit_note_line_item", lineItems[0].Object);
         }
 
         [Fact]
@@ -156,6 +181,54 @@ namespace StripeTests
         {
             var creditNote = await this.service.PreviewAsync(this.previewOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/credit_notes/preview");
+            Assert.NotNull(creditNote);
+            Assert.Equal("credit_note", creditNote.Object);
+        }
+
+        [Fact]
+        public void ListPreviewLineItems()
+        {
+            var lineItems = this.service.ListPreviewLineItems(this.listPreviewLineItemsOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/credit_notes/preview/lines");
+            Assert.NotNull(lineItems);
+            Assert.Equal("list", lineItems.Object);
+            Assert.Single(lineItems.Data);
+            Assert.Equal("credit_note_line_item", lineItems.Data[0].Object);
+        }
+
+        [Fact]
+        public async Task ListPreviewLineItemsAsync()
+        {
+            var lineItems = await this.service.ListPreviewLineItemsAsync(this.listPreviewLineItemsOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/credit_notes/preview/lines");
+            Assert.NotNull(lineItems);
+            Assert.Equal("list", lineItems.Object);
+            Assert.Single(lineItems.Data);
+            Assert.Equal("credit_note_line_item", lineItems.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListPreviewLineItemsAutoPaging()
+        {
+            var lineItems = this.service.ListPreviewLineItemsAutoPaging(this.listPreviewLineItemsOptions).ToList();
+            Assert.NotNull(lineItems);
+            Assert.Equal("credit_note_line_item", lineItems[0].Object);
+        }
+
+        [Fact]
+        public void Update()
+        {
+            var creditNote = this.service.Update(CreditNoteId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/credit_notes/cn_123");
+            Assert.NotNull(creditNote);
+            Assert.Equal("credit_note", creditNote.Object);
+        }
+
+        [Fact]
+        public async Task UpdateAsync()
+        {
+            var creditNote = await this.service.UpdateAsync(CreditNoteId, this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/credit_notes/cn_123");
             Assert.NotNull(creditNote);
             Assert.Equal("credit_note", creditNote.Object);
         }
