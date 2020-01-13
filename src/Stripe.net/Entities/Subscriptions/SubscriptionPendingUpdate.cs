@@ -29,7 +29,7 @@ namespace Stripe
         /// be set if the update is applied.
         /// </summary>
         [JsonProperty("subscription_items")]
-        public StripeList<SubscriptionItem> SubscriptionItems { get; set; }
+        public List<SubscriptionItem> SubscriptionItems { get; set; }
 
         /// <summary>
         /// Unix timestamp representing the end of the trial period the
