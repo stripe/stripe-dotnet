@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.14.0 - 2020-01-14
+* [#1896](https://github.com/stripe/stripe-dotnet/pull/1896) Add support for `CreditNoteLineItem`
+
 ## 34.13.0 - 2020-01-10
 * [#1894](https://github.com/stripe/stripe-dotnet/pull/1894) Fix sepa debit deserialization on MandatePaymentMethodDetails
 
