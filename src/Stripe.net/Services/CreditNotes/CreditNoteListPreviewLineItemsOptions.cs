@@ -1,9 +1,11 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
-    public class CreditNoteCreateOptions : BaseOptions, IHasMetadata
+    public class CreditNoteListPreviewLineItemsOptions : ListOptions, IHasMetadata
     {
         /// <summary>
         /// Credit note amount.
@@ -22,12 +24,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("invoice")]
         public string Invoice { get; set; }
-
-        /// <summary>
-        /// Line items that make up the credit note.
-        /// </summary>
-        [JsonProperty("lines")]
-        public List<CreditNoteLineOptions> Lines { get; set; }
 
         /// <summary>
         /// Credit note memo.

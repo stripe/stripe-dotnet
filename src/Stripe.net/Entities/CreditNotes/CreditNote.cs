@@ -86,6 +86,12 @@ namespace Stripe
         internal ExpandableField<CustomerBalanceTransaction> InternalCustomerBalanceTransaction { get; set; }
         #endregion
 
+        /// <summary>
+        /// The integer amount representing the amount of the discount that was credited.
+        /// </summary>
+        [JsonProperty("discount_amount")]
+        public long DiscountAmount { get; set; }
+
         #region Expandable Invoice
 
         /// <summary>
@@ -109,6 +115,12 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
+
+        /// <summary>
+        /// Line items that make up the credit note.
+        /// </summary>
+        [JsonProperty("lines")]
+        public StripeList<CreditNoteLineItem> Lines { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c>
@@ -135,6 +147,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("number")]
         public string Number { get; set; }
+
+        /// <summary>
+        /// Amount that was credited outside of Stripe.
+        /// </summary>
+        [JsonProperty("out_of_band_amount")]
+        public long OutOfBandAmount { get; set; }
 
         /// <summary>
         /// The link to download the PDF of the credit note.
@@ -178,6 +196,26 @@ namespace Stripe
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        /// <summary>
+        /// The integer amount in **%s** representing the amount of the credit note, excluding tax
+        /// and discount.
+        /// </summary>
+        [JsonProperty("subtotal")]
+        public long Subtotal { get; set; }
+
+        /// <summary>
+        /// The aggregate amounts calculated per tax rate for all line items.
+        /// </summary>
+        [JsonProperty("tax_amounts")]
+        public List<CreditNoteTaxAmount> TaxAmounts { get; set; }
+
+        /// <summary>
+        /// The integer amount in **%s** representing the total amount of the credit note, including
+        /// tax and discount.
+        /// </summary>
+        [JsonProperty("total")]
+        public long Total { get; set; }
 
         /// <summary>
         /// Type of this credit note, one of <c>post_payment</c> or <c>pre_payment</c>.

@@ -31,7 +31,6 @@ namespace StripeTests
               "application_fee",
               "balance_transaction",
               "customer",
-              "dispute",
               "invoice",
               "on_behalf_of",
               "order",
@@ -58,9 +57,6 @@ namespace StripeTests
 
             Assert.NotNull(charge.Customer);
             Assert.Equal("customer", charge.Customer.Object);
-
-            Assert.NotNull(charge.Dispute);
-            Assert.Equal("dispute", charge.Dispute.Object);
 
             Assert.NotNull(charge.Invoice);
             Assert.Equal("invoice", charge.Invoice.Object);

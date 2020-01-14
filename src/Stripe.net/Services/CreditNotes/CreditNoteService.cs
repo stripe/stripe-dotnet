@@ -58,6 +58,36 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
+        public virtual StripeList<CreditNoteLineItem> ListLineItems(string creditnoteId, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeList<CreditNoteLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(creditnoteId)}/lines", options, requestOptions);
+        }
+
+        public virtual Task<StripeList<CreditNoteLineItem>> ListLineItemsAsync(string creditnoteId, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.RequestAsync<StripeList<CreditNoteLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(creditnoteId)}/lines", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<CreditNoteLineItem> ListLineItemsAutoPaging(string creditnoteId, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<CreditNoteLineItem>($"{this.InstanceUrl(creditnoteId)}/lines", options, requestOptions);
+        }
+
+        public virtual StripeList<CreditNoteLineItem> ListPreviewLineItems(CreditNoteListPreviewLineItemsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeList<CreditNoteLineItem>>(HttpMethod.Get, $"{this.InstanceUrl("preview")}/lines", options, requestOptions);
+        }
+
+        public virtual Task<StripeList<CreditNoteLineItem>> ListPreviewLineItemsAsync(CreditNoteListPreviewLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.RequestAsync<StripeList<CreditNoteLineItem>>(HttpMethod.Get, $"{this.InstanceUrl("preview")}/lines", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<CreditNoteLineItem> ListPreviewLineItemsAutoPaging(CreditNoteListPreviewLineItemsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<CreditNoteLineItem>($"{this.InstanceUrl("preview")}/lines", options, requestOptions);
+        }
+
         public virtual CreditNote Preview(CreditNotePreviewOptions options, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Get, $"{this.ClassUrl()}/preview", options, requestOptions);
