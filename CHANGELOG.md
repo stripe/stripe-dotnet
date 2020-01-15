@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.15.0 - 2020-01-15
+* [#1895](https://github.com/stripe/stripe-dotnet/pull/1895) Add support for `PendingUpdate` and `ProrationBehavior` on `Subscription` APIs.
+
 ## 34.14.0 - 2020-01-14
 * [#1896](https://github.com/stripe/stripe-dotnet/pull/1896) Add support for `CreditNoteLineItem`
 
