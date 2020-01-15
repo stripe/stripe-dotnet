@@ -22,7 +22,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? ExpiresAt { get; set; }
+        public DateTime ExpiresAt { get; set; }
 
         /// <summary>
         /// List of subscription items, each with an attached plan, that will
@@ -47,6 +47,6 @@ namespace Stripe
         /// flag to true together with <see cref="TrialEnd"/> is not allowed.
         /// </summary>
         [JsonProperty("trial_from_plan")]
-        public bool TrialFromPlan { get; set; }
+        public bool? TrialFromPlan { get; set; }
     }
 }
