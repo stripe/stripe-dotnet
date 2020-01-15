@@ -180,6 +180,17 @@ namespace Stripe
         [JsonProperty("prorate")]
         public bool? Prorate { get; set; }
 
+        /// <summary>
+        /// Determines how to handle
+        /// <a href="https://stripe.com/docs/billing/subscriptions/billing-cycle#prorations">prorations</a>
+        /// when the billing cycle changes. The value defaults to
+        /// <c>create_prorations</c>, indicating that proration invoice items
+        /// should be created. Prorations can be disabled by setting the value
+        /// to <c>none</c>.
+        /// </summary>
+        [JsonProperty("proration_behavior")]
+        public string ProrationBehavior { get; set; }
+
         [Obsolete("Use Items")]
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }

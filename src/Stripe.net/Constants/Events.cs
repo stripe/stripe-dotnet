@@ -242,6 +242,18 @@ namespace Stripe
         public const string CustomerSubscriptionDeleted = "customer.subscription.deleted";
 
         /// <summary>
+        /// Occurs whenever a customer's subscription's pending update is
+        /// applied, and the subscription is updated.
+        /// </summary>
+        public const string CustomerSubscriptionPendingUpdateApplied = "customer.subscription.pending_update_applied";
+
+        /// <summary>
+        /// Occurs whenever a customer's subscription's pending update expires
+        /// before the related invoice is paid.
+        /// </summary>
+        public const string CustomerSubscriptionPendingUpdateExpired = "customer.subscription.pending_update_expired";
+
+        /// <summary>
         /// Occurs three days before the trial period of a subscription is scheduled to end.
         /// </summary>
         public const string CustomerSubscriptionTrialWillEnd = "customer.subscription.trial_will_end";

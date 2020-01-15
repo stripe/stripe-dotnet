@@ -43,6 +43,17 @@ namespace Stripe
         public bool? Prorate { get; set; }
 
         /// <summary>
+        /// Determines how to handle
+        /// <a href="https://stripe.com/docs/billing/subscriptions/billing-cycle#prorations">prorations</a>
+        /// when the billing cycle changes. The value defaults to
+        /// <c>create_prorations</c>, indicating that proration invoice items should
+        /// be created. Prorations can be disabled by setting the value to
+        /// <c>none</c>.
+        /// </summary>
+        [JsonProperty("proration_behavior")]
+        public string ProrationBehavior { get; set; }
+
+        /// <summary>
         /// If set, the proration will be calculated as though the subscription was updated at the
         /// given time. This can be used to apply the same proration that was previewed with the
         /// upcoming invoice endpoint.
