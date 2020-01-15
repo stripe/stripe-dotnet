@@ -46,11 +46,12 @@ namespace Stripe
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
-        /// If the subscription has been canceled with the <c>AtPeriodEnd</c> flag
-        /// set to true, <c>CancelAtPeriodEnd</c> on the subscription will be true.
-        /// You can use this attribute to determine whether a subscription that
-        /// has a status of active is scheduled to be canceled at the end of
-        /// the current period.
+        /// If the subscription has been canceled with the
+        /// <see cref="CancelAtPeriodEnd" /> flag set to true,
+        /// <see cref="CancelAtPeriodEnd" /> on the
+        /// subscription will be true.  You can use this attribute to determine
+        /// whether a subscription that has a status of active is scheduled to
+        /// be canceled at the end of the current period.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
         public bool CancelAtPeriodEnd { get; set; }
@@ -58,7 +59,7 @@ namespace Stripe
         /// <summary>
         /// If the subscription has been canceled, the date of that
         /// cancellation. If the subscription was canceled with
-        /// <c>CancelAtPeriodEnd</c>, <c>CanceledAt</c> will still reflect the
+        /// <see cref="CancelAtPeriodEnd" />, <see cref="CanceledAt" /> will still reflect the
         /// date of the initial cancellation request, not the end of the
         /// subscription period when the subscription is automatically moved to
         /// a canceled state.
@@ -298,7 +299,7 @@ namespace Stripe
 
         /// <summary>
         /// If specified, deferred upgrade changes that will be applied to the
-        /// subscription once the latest_invoice has been paid.
+        /// subscription once the <see cref="LatestInvoice" /> has been paid.
         /// </summary>
         [JsonProperty("pending_update")]
         public SubscriptionPendingUpdate PendingUpdate { get; set; }

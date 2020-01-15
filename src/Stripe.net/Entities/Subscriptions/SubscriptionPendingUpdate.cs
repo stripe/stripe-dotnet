@@ -9,7 +9,7 @@ namespace Stripe
     {
         /// <summary>
         /// If the update is applied, determines the date of the first full
-        /// invoice, and, for plans with <c>month</c> or year <c>intervals</c>,
+        /// invoice, and, for plans with <c>month</c> or <c>year</c> intervals,
         /// the day of the month for subsequent invoices.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
@@ -41,10 +41,10 @@ namespace Stripe
         public DateTime? TrialEnd { get; set; }
 
         /// <summary>
-        /// Indicates if a <see cref="Plan" />’s <c>TrialPeriodDays</c> should
-        /// be applied to the subscription. Setting <see cref="TrialEnd" /> per
+        /// Indicates if a <see cref="Plan.TrialPeriodDays"/> should
+        /// be applied to the subscription. Setting <see cref="TrialEnd"/> per
         /// subscription is preferred, and this defaults to false. Setting this
-        /// flag to true together with trial_end is not allowed.
+        /// flag to true together with <see cref="TrialEnd"/> is not allowed.
         /// </summary>
         [JsonProperty("trial_from_plan")]
         public bool TrialFromPlan { get; set; }
