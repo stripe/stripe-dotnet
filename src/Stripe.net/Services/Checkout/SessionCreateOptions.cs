@@ -5,7 +5,7 @@ namespace Stripe.Checkout
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SessionCreateOptions : BaseOptions
+    public class SessionCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Specify whether Checkout should collect the customer’s billing address. If set to
@@ -56,6 +56,13 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; }
+
+        /// <summary>
+        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
+        /// additional information about the object in a structured format.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The mode of the Checkout Session which can be <c>payment</c>, <c>setup</c>, or
