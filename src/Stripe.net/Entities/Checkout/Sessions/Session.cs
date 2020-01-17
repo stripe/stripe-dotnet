@@ -5,7 +5,7 @@ namespace Stripe.Checkout
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Session : StripeEntity<Session>, IHasId, IHasObject
+    public class Session : StripeEntity<Session>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -94,6 +94,14 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; }
+
+        /// <summary>
+        /// A set of key/value pairs that you can attach to an object. It can
+        /// be useful for storing additional information about the object in a
+        /// structured format.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The mode of the Checkout Session which can be <c>payment</c>, <c>setup</c>, or
