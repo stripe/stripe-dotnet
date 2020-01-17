@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.16.0 - 2020-01-17
+* [#1899](https://github.com/stripe/stripe-dotnet/pull/1899) Add support for `Metadata` on Checkout `Session`
+
 ## 34.15.0 - 2020-01-15
 * [#1895](https://github.com/stripe/stripe-dotnet/pull/1895) Add support for `PendingUpdate` and `ProrationBehavior` on `Subscription` APIs.
 
