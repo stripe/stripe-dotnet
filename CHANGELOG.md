@@ -1,5 +1,9 @@
 # Changelog
 
+## 34.16.1 - 2020-01-22
+* [#1902](https://github.com/stripe/stripe-dotnet/pull/1902) Make `OutOfBandAmount` nullable on  `CreditNote`
+    * This is technically a breaking change, but we're releasing as a patch version as the non-nullable type made it impossible to deserialize `credit_note` objects in many cases.
+
 ## 34.16.0 - 2020-01-17
 * [#1899](https://github.com/stripe/stripe-dotnet/pull/1899) Add support for `Metadata` on Checkout `Session`
 
