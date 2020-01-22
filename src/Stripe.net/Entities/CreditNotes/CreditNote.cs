@@ -152,7 +152,7 @@ namespace Stripe
         /// Amount that was credited outside of Stripe.
         /// </summary>
         [JsonProperty("out_of_band_amount")]
-        public long OutOfBandAmount { get; set; }
+        public long? OutOfBandAmount { get; set; }
 
         /// <summary>
         /// The link to download the PDF of the credit note.
