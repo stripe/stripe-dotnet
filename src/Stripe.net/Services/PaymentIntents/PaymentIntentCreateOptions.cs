@@ -75,6 +75,13 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// If true, Stripe will automatically fail the payment if it requires
+        /// an extra action from the user. Default is false.
+        /// </summary>
+        [JsonProperty("error_on_requires_action")]
+        public bool? ErrorOnRequiresAction { get; set; }
+
+        /// <summary>
         /// ID of the mandate to be used for this payment.
         /// </summary>
         [JsonProperty("mandate")]
