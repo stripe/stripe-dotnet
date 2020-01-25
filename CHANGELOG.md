@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.17.0 - 2020-01-24
+* [#1905](https://github.com/stripe/stripe-dotnet/pull/1905) Add support for `Shipping.Speed` and `Shipping.TrackingURL` on Issuing `Card`
+
 ## 34.16.1 - 2020-01-22
 * [#1902](https://github.com/stripe/stripe-dotnet/pull/1902) Make `OutOfBandAmount` nullable on  `CreditNote`
     * This is technically a breaking change, but we're releasing as a patch version as the non-nullable type made it impossible to deserialize `credit_note` objects in many cases.
