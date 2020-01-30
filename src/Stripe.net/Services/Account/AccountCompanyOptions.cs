@@ -70,6 +70,12 @@ namespace Stripe
         public string Phone { get; set; }
 
         /// <summary>
+        /// The category identifying the legal structure of the company or legal entity.
+        /// </summary>
+        [JsonProperty("structure")]
+        public string Structure { get; set; }
+
+        /// <summary>
         /// The business ID number of the company, as appropriate for the company’s country.
         /// (Examples are an Employer ID Number in the U.S., a Business Number in Canada, or a
         /// Company Number in the UK.).

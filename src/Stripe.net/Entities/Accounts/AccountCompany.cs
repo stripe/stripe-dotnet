@@ -69,6 +69,12 @@ namespace Stripe
         public string Phone { get; set; }
 
         /// <summary>
+        /// The category identifying the legal structure of the company or legal entity.
+        /// </summary>
+        [JsonProperty("structure")]
+        public string Structure { get; set; }
+
+        /// <summary>
         /// Whether the company’s business ID number was provided.
         /// </summary>
         [JsonProperty("tax_id_provided")]
