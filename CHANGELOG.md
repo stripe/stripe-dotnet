@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.18.0 - 2020-01-30
+* [#1906](https://github.com/stripe/stripe-dotnet/pull/1906) Add support for `Structure` on `Account`
+
 ## 34.17.0 - 2020-01-24
 * [#1905](https://github.com/stripe/stripe-dotnet/pull/1905) Add support for `Shipping.Speed` and `Shipping.TrackingURL` on Issuing `Card`
 
