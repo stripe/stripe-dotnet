@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.19.0 - 2020-02-03
+* [#1903](https://github.com/stripe/stripe-dotnet/pull/1903) Adds support for `ErrorOnRequiresAction` on `PaymentIntent`
+
 ## 34.18.0 - 2020-01-30
 * [#1906](https://github.com/stripe/stripe-dotnet/pull/1906) Add support for `Structure` on `Account`
 
