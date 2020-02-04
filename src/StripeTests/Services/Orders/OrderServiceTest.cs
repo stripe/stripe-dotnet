@@ -16,6 +16,7 @@ namespace StripeTests
         private readonly OrderCreateOptions createOptions;
         private readonly OrderUpdateOptions updateOptions;
         private readonly OrderPayOptions payOptions;
+        private readonly OrderReturnOptions returnOptions;
         private readonly OrderListOptions listOptions;
 
         public OrderServiceTest(
@@ -38,12 +39,9 @@ namespace StripeTests
                 },
             };
 
-            this.updateOptions = new OrderUpdateOptions
+            this.listOptions = new OrderListOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
+                Limit = 1,
             };
 
             this.payOptions = new OrderPayOptions
@@ -51,9 +49,24 @@ namespace StripeTests
                 Customer = "cus_123",
             };
 
-            this.listOptions = new OrderListOptions
+            this.returnOptions = new OrderReturnOptions
             {
-                Limit = 1,
+                Items = new List<OrderReturnItemOptions>
+                {
+                    new OrderReturnItemOptions
+                    {
+                        Parent = "sku_123",
+                        Quantity = 1,
+                    },
+                },
+            };
+
+            this.updateOptions = new OrderUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "key", "value" },
+                },
             };
         }
 
@@ -139,6 +152,24 @@ namespace StripeTests
             this.AssertRequest(HttpMethod.Post, "/v1/orders/or_123/pay");
             Assert.NotNull(order);
             Assert.Equal("order", order.Object);
+        }
+
+        [Fact]
+        public void Return()
+        {
+            var orderReturn = this.service.Return(OrderId, this.returnOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/orders/or_123/returns");
+            Assert.NotNull(orderReturn);
+            Assert.Equal("order_return", orderReturn.Object);
+        }
+
+        [Fact]
+        public async Task ReturnAsync()
+        {
+            var orderReturn = await this.service.ReturnAsync(OrderId, this.returnOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/orders/or_123/returns");
+            Assert.NotNull(orderReturn);
+            Assert.Equal("order_return", orderReturn.Object);
         }
 
         [Fact]
