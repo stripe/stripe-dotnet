@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.20.0 - 2020-02-05
+* [#1908](https://github.com/stripe/stripe-dotnet/pull/1908) Add support for returning orders
+
 ## 34.19.0 - 2020-02-03
 * [#1903](https://github.com/stripe/stripe-dotnet/pull/1903) Adds support for `ErrorOnRequiresAction` on `PaymentIntent`
 
