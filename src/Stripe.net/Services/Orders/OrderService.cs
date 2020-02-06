@@ -69,6 +69,16 @@ namespace Stripe
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/pay", options, requestOptions, cancellationToken);
         }
 
+        public virtual OrderReturn Return(string orderId, OrderReturnOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<OrderReturn>(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/returns", options, requestOptions);
+        }
+
+        public virtual Task<OrderReturn> ReturnAsync(string orderId, OrderReturnOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.RequestAsync<OrderReturn>(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/returns", options, requestOptions, cancellationToken);
+        }
+
         public virtual Order Update(string orderId, OrderUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(orderId, options, requestOptions);
