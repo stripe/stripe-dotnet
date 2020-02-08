@@ -1,8 +1,11 @@
 namespace Stripe.Radar
 {
+    using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Stripe.Infrastructure;
 
     public class EarlyFraudWarningService : Service<EarlyFraudWarning>,
         IListable<EarlyFraudWarning, EarlyFraudWarningListOptions>,
