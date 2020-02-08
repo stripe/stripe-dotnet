@@ -31,14 +31,14 @@ namespace Stripe.Checkout
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Session Get(string sessionId, SessionGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Session Get(string id, SessionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(sessionId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Session> GetAsync(string sessionId, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Session> GetAsync(string id, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(sessionId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }
