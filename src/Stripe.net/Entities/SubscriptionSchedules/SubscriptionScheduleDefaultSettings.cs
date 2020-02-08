@@ -7,28 +7,14 @@ namespace Stripe
 
     public class SubscriptionScheduleDefaultSettings : StripeEntity<SubscriptionScheduleDefaultSettings>
     {
-        /// <summary>
-        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
-        /// new billing period.
-        /// </summary>
         [JsonProperty("billing_thresholds")]
         public SubscriptionBillingThresholds BillingThresholds { get; set; }
 
-        /// <summary>
-        /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging
-        /// automatically, Stripe will attempt to pay this subscription at the
-        /// end of the cycle using the default source attached to the customer.
-        /// When sending an invoice, Stripe will email your customer an invoice
-        /// with payment instructions.
-        /// </summary>
         [JsonProperty("collection_method")]
         public string CollectionMethod { get; set; }
 
         #region Expandable DefaultPaymentMethod
 
-        /// <summary>
-        /// ID of the default payment method for the subscription schedule.
-        /// </summary>
         [JsonIgnore]
         public string DefaultPaymentMethodId
         {
@@ -48,9 +34,6 @@ namespace Stripe
         internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
         #endregion
 
-        /// <summary>
-        /// The schedule's default invoice settings.
-        /// </summary>
         [JsonProperty("invoice_settings")]
         public SubscriptionScheduleInvoiceSettings InvoiceSettings { get; set; }
     }

@@ -32,9 +32,6 @@ namespace Stripe
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
-        /// <summary>
-        /// Whether this object is deleted or not.
-        /// </summary>
         [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
