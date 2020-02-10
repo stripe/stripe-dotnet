@@ -4,15 +4,9 @@ namespace Stripe
 
     public class SessionSubscriptionDataItemOptions : INestedOptions
     {
-        /// <summary>
-        /// Plan ID for this item.
-        /// </summary>
         [JsonProperty("plan")]
         public string Plan { get; set; }
 
-        /// <summary>
-        /// Quantity for this item.
-        /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
     }

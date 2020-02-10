@@ -31,9 +31,6 @@ namespace Stripe
 
         #region Expandable Customer
 
-        /// <summary>
-        /// ID of the customer this charge is for if one exists.
-        /// </summary>
         [JsonIgnore]
         public string CustomerId
         {

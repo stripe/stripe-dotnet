@@ -6,10 +6,6 @@ namespace Stripe
 
     public class BalanceTransactionListOptions : ListOptionsWithCreated
     {
-        /// <summary>
-        /// A filter on the list based on the object available_on field. The value can be a
-        /// <see cref="DateTime"/> or a <see cref="DateRangeOptions"/>.
-        /// </summary>
         [JsonProperty("available_on")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> AvailableOn { get; set; }

@@ -7,11 +7,6 @@ namespace Stripe
     {
         #region Expandable Back
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) The back of an ID returned by a file upload with a
-        /// <c>purpose</c> value of <c>identity_document</c>.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string BackId
         {
@@ -19,10 +14,6 @@ namespace Stripe
             set => this.InternalBack = SetExpandableFieldId(value, this.InternalBack);
         }
 
-        /// <summary>
-        /// (Expanded) The back of an ID returned by a file upload with a <c>purpose</c>
-        /// value of <c>identity_document</c>.
-        /// </summary>
         [JsonIgnore]
         public File Back
         {
@@ -35,27 +26,14 @@ namespace Stripe
         internal ExpandableField<File> InternalBack { get; set; }
         #endregion
 
-        /// <summary>
-        /// A user-displayable string describing the verification state of this document. For
-        /// example, if a document is uploaded and the picture is too fuzzy, this may say “Identity
-        /// document is too unclear to read”.
-        /// </summary>
         [JsonProperty("details")]
         public string Details { get; set; }
 
-        /// <summary>
-        /// A machine-readable code specifying the verification state for this document.
-        /// </summary>
         [JsonProperty("details_code")]
         public string DetailsCode { get; set; }
 
         #region Expandable Front
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) The front of an ID returned by a file upload with a
-        /// <c>purpose</c> value of <c>identity_document</c>.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string FrontId
         {
@@ -63,10 +41,6 @@ namespace Stripe
             set => this.InternalFront = SetExpandableFieldId(value, this.InternalFront);
         }
 
-        /// <summary>
-        /// (Expanded) The front of an ID returned by a file upload with a <c>purpose</c>
-        /// value of <c>identity_document</c>.
-        /// </summary>
         [JsonIgnore]
         public File Front
         {

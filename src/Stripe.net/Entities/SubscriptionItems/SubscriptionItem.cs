@@ -17,9 +17,6 @@ namespace Stripe
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
-        /// <summary>
-        /// Whether this object is deleted or not.
-        /// </summary>
         [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
@@ -35,9 +32,6 @@ namespace Stripe
         [JsonProperty("subscription")]
         public string Subscription { get; set; }
 
-        /// <summary>
-        /// The tax rates which apply to the subscription item.
-        /// </summary>
         [JsonProperty("tax_rates")]
         public List<TaxRate> TaxRates { get; set; }
     }

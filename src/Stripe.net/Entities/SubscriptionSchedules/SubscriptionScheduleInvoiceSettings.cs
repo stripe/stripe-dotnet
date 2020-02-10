@@ -7,9 +7,6 @@ namespace Stripe
 
     public class SubscriptionScheduleInvoiceSettings : StripeEntity<SubscriptionScheduleInvoiceSettings>
     {
-        /// <summary>
-        /// The number of days from which the invoice is created until it is due.
-        /// </summary>
         [JsonProperty("days_until_due")]
         public long? DaysUntilDue { get; set; }
     }

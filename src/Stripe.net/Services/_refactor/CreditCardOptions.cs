@@ -45,9 +45,6 @@ namespace Stripe
 
         /* Issuing-specific parameter */
 
-        /// <summary>
-        /// This parameter is used to create a Source from an issuing card mostly in Test mode.
-        /// </summary>
         [JsonProperty("issuing_card")]
         public string IssuingCard { get; set; }
     }
