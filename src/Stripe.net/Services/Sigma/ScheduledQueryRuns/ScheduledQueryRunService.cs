@@ -20,14 +20,14 @@ namespace Stripe.Sigma
 
         public override string BasePath => "/v1/sigma/scheduled_query_runs";
 
-        public virtual ScheduledQueryRun Get(string queryRunId, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual ScheduledQueryRun Get(string id, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(queryRunId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<ScheduledQueryRun> GetAsync(string queryRunId, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ScheduledQueryRun> GetAsync(string id, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(queryRunId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ScheduledQueryRun> List(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null)

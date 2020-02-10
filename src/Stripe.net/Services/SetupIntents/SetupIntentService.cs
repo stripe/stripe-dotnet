@@ -24,24 +24,24 @@ namespace Stripe
 
         public override string BasePath => "/v1/setup_intents";
 
-        public virtual SetupIntent Cancel(string setupIntentId, SetupIntentCancelOptions options = null, RequestOptions requestOptions = null)
+        public virtual SetupIntent Cancel(string id, SetupIntentCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/cancel", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> CancelAsync(string setupIntentId, SetupIntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SetupIntent> CancelAsync(string id, SetupIntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
-        public virtual SetupIntent Confirm(string setupIntentId, SetupIntentConfirmOptions options = null, RequestOptions requestOptions = null)
+        public virtual SetupIntent Confirm(string id, SetupIntentConfirmOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/confirm", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/confirm", options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> ConfirmAsync(string setupIntentId, SetupIntentConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SetupIntent> ConfirmAsync(string id, SetupIntentConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/confirm", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/confirm", options, requestOptions, cancellationToken);
         }
 
         public virtual SetupIntent Create(SetupIntentCreateOptions options, RequestOptions requestOptions = null)
@@ -54,14 +54,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual SetupIntent Get(string setupIntentId, SetupIntentGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual SetupIntent Get(string id, SetupIntentGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(setupIntentId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> GetAsync(string setupIntentId, SetupIntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SetupIntent> GetAsync(string id, SetupIntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(setupIntentId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<SetupIntent> List(SetupIntentListOptions options = null, RequestOptions requestOptions = null)
@@ -79,14 +79,14 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-        public virtual SetupIntent Update(string setupIntentId, SetupIntentUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual SetupIntent Update(string id, SetupIntentUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(setupIntentId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> UpdateAsync(string setupIntentId, SetupIntentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SetupIntent> UpdateAsync(string id, SetupIntentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(setupIntentId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

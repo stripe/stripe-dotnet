@@ -33,14 +33,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual File Get(string fileId, FileGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual File Get(string id, FileGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(fileId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<File> GetAsync(string fileId, FileGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<File> GetAsync(string id, FileGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(fileId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<File> List(FileListOptions options = null, RequestOptions requestOptions = null)
