@@ -34,24 +34,24 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Customer Delete(string customerId, RequestOptions requestOptions = null)
+        public virtual Customer Delete(string id, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(customerId, null, requestOptions);
+            return this.DeleteEntity(id, null, requestOptions);
         }
 
-        public virtual Task<Customer> DeleteAsync(string customerId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Customer> DeleteAsync(string id, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(customerId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(id, null, requestOptions, cancellationToken);
         }
 
-        public virtual Customer Get(string customerId, CustomerGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Customer Get(string id, CustomerGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(customerId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Customer> GetAsync(string customerId, CustomerGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Customer> GetAsync(string id, CustomerGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(customerId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Customer> List(CustomerListOptions options = null, RequestOptions requestOptions = null)
@@ -69,14 +69,14 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-        public virtual Customer Update(string customerId, CustomerUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Customer Update(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(customerId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Customer> UpdateAsync(string customerId, CustomerUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Customer> UpdateAsync(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.UpdateEntityAsync(customerId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

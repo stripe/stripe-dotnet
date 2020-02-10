@@ -19,19 +19,19 @@ namespace Stripe
 
         public override string BasePath => "/v1/subscription_items/{PARENT_ID}/usage_record_summaries";
 
-        public virtual StripeList<UsageRecordSummary> List(string subscriptionItemId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<UsageRecordSummary> List(string parentId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntities(subscriptionItemId, options, requestOptions);
+            return this.ListNestedEntities(parentId, options, requestOptions);
         }
 
-        public virtual Task<StripeList<UsageRecordSummary>> ListAsync(string subscriptionItemId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<UsageRecordSummary>> ListAsync(string parentId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.ListNestedEntitiesAsync(subscriptionItemId, options, requestOptions, cancellationToken);
+            return this.ListNestedEntitiesAsync(parentId, options, requestOptions, cancellationToken);
         }
 
-        public virtual IEnumerable<UsageRecordSummary> ListAutoPaging(string subscriptionItemId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<UsageRecordSummary> ListAutoPaging(string parentId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntitiesAutoPaging(subscriptionItemId, options, requestOptions);
+            return this.ListNestedEntitiesAutoPaging(parentId, options, requestOptions);
         }
     }
 }

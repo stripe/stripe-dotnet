@@ -35,24 +35,24 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Account Delete(string accountId, RequestOptions requestOptions = null)
+        public virtual Account Delete(string id, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(accountId, null, requestOptions);
+            return this.DeleteEntity(id, null, requestOptions);
         }
 
-        public virtual Task<Account> DeleteAsync(string accountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Account> DeleteAsync(string id, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(accountId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(id, null, requestOptions, cancellationToken);
         }
 
-        public virtual Account Get(string accountId, AccountGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Account Get(string id, AccountGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(accountId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Account> GetAsync(string accountId, AccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Account> GetAsync(string id, AccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(accountId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual Account GetSelf(RequestOptions requestOptions = null)
@@ -80,24 +80,24 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-        public virtual Account Reject(string accountId, AccountRejectOptions options, RequestOptions requestOptions = null)
+        public virtual Account Reject(string id, AccountRejectOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(accountId)}/reject", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/reject", options, requestOptions);
         }
 
-        public virtual Task<Account> RejectAsync(string accountId, AccountRejectOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Account> RejectAsync(string id, AccountRejectOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(accountId)}/reject", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/reject", options, requestOptions, cancellationToken);
         }
 
-        public virtual Account Update(string accountId, AccountUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Account Update(string id, AccountUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(accountId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Account> UpdateAsync(string accountId, AccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Account> UpdateAsync(string id, AccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.UpdateEntityAsync(accountId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

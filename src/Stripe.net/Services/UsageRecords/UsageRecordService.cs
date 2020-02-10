@@ -20,14 +20,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/subscription_items/{PARENT_ID}/usage_records";
 
-        public virtual UsageRecord Create(string subscriptionItemId, UsageRecordCreateOptions options, RequestOptions requestOptions = null)
+        public virtual UsageRecord Create(string parentId, UsageRecordCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateNestedEntity(subscriptionItemId, options, requestOptions);
+            return this.CreateNestedEntity(parentId, options, requestOptions);
         }
 
-        public virtual Task<UsageRecord> CreateAsync(string subscriptionItemId, UsageRecordCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<UsageRecord> CreateAsync(string parentId, UsageRecordCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.CreateNestedEntityAsync(subscriptionItemId, options, requestOptions, cancellationToken);
+            return this.CreateNestedEntityAsync(parentId, options, requestOptions, cancellationToken);
         }
     }
 }

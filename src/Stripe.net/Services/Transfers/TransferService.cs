@@ -33,14 +33,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Transfer Get(string transferId, TransferGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Transfer Get(string id, TransferGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(transferId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Transfer> GetAsync(string transferId, TransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Transfer> GetAsync(string id, TransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.GetEntityAsync(transferId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Transfer> List(TransferListOptions options = null, RequestOptions requestOptions = null)
@@ -58,14 +58,14 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-        public virtual Transfer Update(string transferId, TransferUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Transfer Update(string id, TransferUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(transferId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Transfer> UpdateAsync(string transferId, TransferUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Transfer> UpdateAsync(string id, TransferUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.UpdateEntityAsync(transferId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }
