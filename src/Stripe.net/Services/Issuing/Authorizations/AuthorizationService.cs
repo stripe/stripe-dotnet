@@ -1,9 +1,11 @@
 namespace Stripe.Issuing
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Stripe.Infrastructure;
 
     public class AuthorizationService : Service<Authorization>,
         IListable<Authorization, AuthorizationListOptions>,

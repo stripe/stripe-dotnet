@@ -5,6 +5,7 @@ namespace Stripe
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Stripe.Infrastructure;
 
     public class SetupIntentService : Service<SetupIntent>,
         ICreatable<SetupIntent, SetupIntentCreateOptions>,
