@@ -13,15 +13,9 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        /// <summary>
-        /// The ID of the SKU being ordered.
-        /// </summary>
         [JsonProperty("parent")]
         public string Parent { get; set; }
 
-        /// <summary>
-        /// The quantity of this order item. When type is sku, this is the number of instances of the SKU to be ordered.
-        /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
 

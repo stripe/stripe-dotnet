@@ -32,9 +32,6 @@ namespace Stripe.Radar
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
-        /// <summary>
-        /// A set of key/value pairs that you can attach to a charge object. It can be useful for storing additional information about the charge in a structured format.
-        /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 

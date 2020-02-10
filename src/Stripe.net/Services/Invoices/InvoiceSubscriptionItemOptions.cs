@@ -17,9 +17,6 @@ namespace Stripe
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
 
-        /// <summary>
-        /// Ids of the tax rates to apply to this subscription item.
-        /// </summary>
         [JsonProperty("tax_rates")]
         public List<string> TaxRates { get; set; }
     }
