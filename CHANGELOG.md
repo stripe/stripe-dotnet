@@ -1,5 +1,10 @@
 # Changelog
 
+## 34.20.1 - 2020-02-11
+* [#1919](https://github.com/stripe/stripe-dotnet/pull/1919) Use a static instance for default `HttpClient`
+* [#1914](https://github.com/stripe/stripe-dotnet/pull/1914) Remove specialize private setter on `Coupon`
+* [#1911](https://github.com/stripe/stripe-dotnet/pull/1911) Rename a couple directories and files to follow convention
+
 ## 34.20.0 - 2020-02-05
 * [#1908](https://github.com/stripe/stripe-dotnet/pull/1908) Add support for returning orders
 
