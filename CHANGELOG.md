@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.22.0 - 2020-02-12
+* [#1921](https://github.com/stripe/stripe-dotnet/pull/1921) Add support for `Amount` on `SessionPaymentIntentTransferDataOptions`
+
 ## 34.21.0 - 2020-02-12
 * [#1920](https://github.com/stripe/stripe-dotnet/pull/1920) Add `PaymentMethodOptions` when updating a `PaymentIntent` and a `SetupIntent`
 
