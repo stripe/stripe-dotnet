@@ -21,6 +21,9 @@ namespace Stripe
     /// </summary>
     public class SystemNetHttpClient : IHttpClient
     {
+        private static readonly Lazy<System.Net.Http.HttpClient> LazyDefaultHttpClient
+            = new Lazy<System.Net.Http.HttpClient>(BuildDefaultSystemNetHttpClient);
+
         private readonly System.Net.Http.HttpClient httpClient;
 
         private readonly int maxNetworkRetries;
@@ -69,7 +72,7 @@ namespace Stripe
                 SecurityProtocolType.Tls12;
 #endif
 
-            this.httpClient = httpClient ?? BuildDefaultSystemNetHttpClient();
+            this.httpClient = httpClient ?? LazyDefaultHttpClient.Value;
             this.maxNetworkRetries = maxNetworkRetries;
             this.appInfo = appInfo;
             this.enableTelemetry = enableTelemetry;
