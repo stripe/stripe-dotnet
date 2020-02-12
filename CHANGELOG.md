@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.21.0 - 2020-02-12
+* [#1920](https://github.com/stripe/stripe-dotnet/pull/1920) Add `PaymentMethodOptions` when updating a `PaymentIntent` and a `SetupIntent`
+
 ## 34.20.1 - 2020-02-11
 * [#1919](https://github.com/stripe/stripe-dotnet/pull/1919) Use a static instance for default `HttpClient`
 * [#1914](https://github.com/stripe/stripe-dotnet/pull/1914) Remove specialize private setter on `Coupon`
