@@ -40,6 +40,12 @@ namespace Stripe
         public string PaymentMethod { get; set; }
 
         /// <summary>
+        /// Payment-method-specific configuration for this SetupIntent.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+        public SetupIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
+
+        /// <summary>
         /// The list of payment method types that this SetupIntent is allowed to set up. If this is
         /// not provided, defaults to card.
         /// </summary>
