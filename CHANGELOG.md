@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.23.0 - 2020-02-17
+* [#1923](https://github.com/stripe/stripe-dotnet/pull/1923) Add support for `additional_verification` as a valid `purpose` on `File`
+
 ## 34.22.0 - 2020-02-12
 * [#1921](https://github.com/stripe/stripe-dotnet/pull/1921) Add support for `Amount` on `SessionPaymentIntentTransferDataOptions`
 
