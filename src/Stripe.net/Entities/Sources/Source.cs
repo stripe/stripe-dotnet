@@ -175,5 +175,8 @@ namespace Stripe
 
         [JsonProperty("three_d_secure")]
         public SourceThreeDSecure ThreeDSecure { get; set; }
+
+        [JsonProperty("wechat")]
+        public SourceWechat Wechat { get; set; }
     }
 }
