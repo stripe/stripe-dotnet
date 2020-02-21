@@ -216,6 +216,19 @@ namespace Stripe
             }
 #endif
 
+            var stripeNetTargetFramework =
+#if NET45
+                "net45"
+#elif NETSTANDARD1_2
+                "netstandard1.2"
+#elif NETSTANDARD2_0
+                "netstandard2.0"
+#else
+                "unknown"
+#endif
+            ;
+            values.Add("stripe_net_target_framework", stripeNetTargetFramework);
+
             if (this.appInfo != null)
             {
                 values.Add("application", this.appInfo);
