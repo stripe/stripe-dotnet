@@ -1,5 +1,10 @@
 # Changelog
 
+## 34.25.0 - 2020-02-21
+* [#1926](https://github.com/stripe/stripe-dotnet/pull/1926) Add support for `ProrationBehavior` on `SubscriptionSchedule`
+* [#1927](https://github.com/stripe/stripe-dotnet/pull/1927) Add support for `Timezone` on `ReportRun`
+* [#1910](https://github.com/stripe/stripe-dotnet/pull/1910) Add support for Wechat on `Source`
+
 ## 34.24.0 - 2020-02-20
 * [#1925](https://github.com/stripe/stripe-dotnet/pull/1925) Add `stripe_net_target_framework` key to extended user agent
 * [#1924](https://github.com/stripe/stripe-dotnet/pull/1924) Bump dependencies
