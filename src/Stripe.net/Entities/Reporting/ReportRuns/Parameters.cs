@@ -29,5 +29,8 @@ namespace Stripe.Reporting
 
         [JsonProperty("reporting_category")]
         public string ReportingCategory { get; set; }
+
+        [JsonProperty("timezone")]
+        public string Timezone { get; set; }
     }
 }
