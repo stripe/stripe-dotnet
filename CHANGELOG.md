@@ -1,5 +1,9 @@
 # Changelog
 
+## 34.24.0 - 2020-02-20
+* [#1925](https://github.com/stripe/stripe-dotnet/pull/1925) Add `stripe_net_target_framework` key to extended user agent
+* [#1924](https://github.com/stripe/stripe-dotnet/pull/1924) Bump dependencies
+
 ## 34.23.0 - 2020-02-17
 * [#1923](https://github.com/stripe/stripe-dotnet/pull/1923) Add support for `additional_verification` as a valid `purpose` on `File`
 
