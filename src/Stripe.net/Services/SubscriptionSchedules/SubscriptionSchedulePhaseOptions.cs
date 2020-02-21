@@ -83,6 +83,14 @@ namespace Stripe
         public List<SubscriptionSchedulePhaseItemOptions> Plans { get; set; }
 
         /// <summary>
+        /// If the update changes the current phase, indicates if the changes should be prorated.
+        /// Valid values are <c>create_prorations</c> or <c>none</c>, and the default value is
+        /// <c>create_prorations</c>.
+        /// </summary>
+        [JsonProperty("proration_behavior")]
+        public string ProrationBehavior { get; set; }
+
+        /// <summary>
         /// The date at which this phase of the subscription schedule starts.
         /// </summary>
         [JsonProperty("start_date")]
