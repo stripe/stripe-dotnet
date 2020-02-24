@@ -1,6 +1,7 @@
 namespace StripeTests.Checkout
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -13,6 +14,7 @@ namespace StripeTests.Checkout
         private const string SessionId = "cs_123";
         private readonly SessionService service;
         private readonly SessionCreateOptions createOptions;
+        private readonly SessionListOptions listOptions;
 
         public SessionServiceTest(
             StripeMockFixture stripeMockFixture,
@@ -64,6 +66,11 @@ namespace StripeTests.Checkout
                 },
                 SuccessUrl = "https://stripe.com/success",
             };
+
+            this.listOptions = new SessionListOptions
+            {
+                Limit = 1,
+            };
         }
 
         [Fact]
@@ -100,6 +107,36 @@ namespace StripeTests.Checkout
             this.AssertRequest(HttpMethod.Get, "/v1/checkout/sessions/cs_123");
             Assert.NotNull(session);
             Assert.Equal("checkout.session", session.Object);
+        }
+
+        [Fact]
+        public void List()
+        {
+            var intents = this.service.List(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/checkout/sessions");
+            Assert.NotNull(intents);
+            Assert.Equal("list", intents.Object);
+            Assert.Single(intents.Data);
+            Assert.Equal("checkout.session", intents.Data[0].Object);
+        }
+
+        [Fact]
+        public async Task ListAsync()
+        {
+            var intents = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/checkout/sessions");
+            Assert.NotNull(intents);
+            Assert.Equal("list", intents.Object);
+            Assert.Single(intents.Data);
+            Assert.Equal("checkout.session", intents.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var intents = this.service.ListAutoPaging(this.listOptions).ToList();
+            Assert.NotNull(intents);
+            Assert.Equal("checkout.session", intents[0].Object);
         }
     }
 }
