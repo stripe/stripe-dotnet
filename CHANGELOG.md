@@ -1,5 +1,8 @@
 # Changelog
 
+## 34.26.0 - 2020-02-24
+* [#1928](https://github.com/stripe/stripe-dotnet/pull/1928) Add support for listing Checkout `Session` and passing tax rate information
+
 ## 34.25.0 - 2020-02-21
 * [#1926](https://github.com/stripe/stripe-dotnet/pull/1926) Add support for `ProrationBehavior` on `SubscriptionSchedule`
 * [#1927](https://github.com/stripe/stripe-dotnet/pull/1927) Add support for `Timezone` on `ReportRun`
