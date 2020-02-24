@@ -18,6 +18,14 @@ namespace Stripe.Checkout
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
+        /// The tax rates that will apply to any subscription item that does
+        /// not have tax rates set. Invoices created will have their
+        /// default tax rates populated from the subscription.
+        /// </summary>
+        [JsonProperty("default_tax_rates")]
+        public List<string> DefaultTaxRates { get; set; }
+
+        /// <summary>
         /// List of items, each with an attached plan.
         /// </summary>
         [JsonProperty("items")]

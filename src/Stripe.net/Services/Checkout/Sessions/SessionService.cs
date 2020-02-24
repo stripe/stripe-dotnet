@@ -1,5 +1,6 @@
 namespace Stripe.Checkout
 {
+    using System;
     using System.Collections.Generic;
     using System.Net;
     using System.Threading;
@@ -7,7 +8,9 @@ namespace Stripe.Checkout
     using Stripe.Infrastructure;
 
     public class SessionService : Service<Session>,
-        ICreatable<Session, SessionCreateOptions>
+        ICreatable<Session, SessionCreateOptions>,
+        IListable<Session, SessionListOptions>,
+        IRetrievable<Session, SessionGetOptions>
     {
         public SessionService()
             : base(null)
@@ -39,6 +42,21 @@ namespace Stripe.Checkout
         public virtual Task<Session> GetAsync(string sessionId, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             return this.GetEntityAsync(sessionId, options, requestOptions, cancellationToken);
+        }
+
+        public virtual StripeList<Session> List(SessionListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntities(options, requestOptions);
+        }
+
+        public virtual Task<StripeList<Session>> ListAsync(SessionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Session> ListAutoPaging(SessionListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
         }
     }
 }

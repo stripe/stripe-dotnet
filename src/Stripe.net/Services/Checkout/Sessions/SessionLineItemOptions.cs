@@ -40,5 +40,11 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
+
+        /// <summary>
+        /// The tax rates which apply to this line item. This is only allowed in subscription mode.
+        /// </summary>
+        [JsonProperty("tax_rates")]
+        public List<string> TaxRates { get; set; }
     }
 }
