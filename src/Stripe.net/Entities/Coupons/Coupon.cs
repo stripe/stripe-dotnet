@@ -52,7 +52,7 @@ namespace Stripe
         public DateTime? RedeemBy { get; set; }
 
         [JsonProperty("times_redeemed")]
-        public long TimesRedeemed { get; private set; }
+        public long TimesRedeemed { get; set; }
 
         [JsonProperty("valid")]
         public bool Valid { get; set; }
