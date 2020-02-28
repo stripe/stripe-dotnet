@@ -7,7 +7,7 @@
     <VersionPrefix>34.26.0</VersionPrefix>
     <Version>34.26.0</Version>
     <Authors>Stripe, Jayme Davis</Authors>
-    <TargetFrameworks>netstandard1.2;netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <AssemblyName>Stripe.net</AssemblyName>
     <PackageId>Stripe.net</PackageId>
     <PackageTags>stripe;payment;credit;cards;money;gateway;paypal;braintree</PackageTags>
@@ -16,8 +16,6 @@
     <PackageLicenseUrl>https://raw.github.com/stripe/stripe-dotnet/master/LICENSE</PackageLicenseUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
-    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.2' ">$(PackageTargetFallback);netcoreapp1.0</PackageTargetFallback>
-    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.2' ">1.6.1</NetStandardImplicitPackageVersion>
     <SignAssembly>True</SignAssembly>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -26,21 +24,6 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
-
-  <!--
-       .NET Core (and the .NET Standard) refactors the API's surface so that it
-       exists in a collection of smaller assemblies. As part of traditional
-       .NET (e.g., net45), System.Console existed as part of the standard
-       System assembly, but for the new standard it was added to its own.
-
-       Here we conditionally include System.Console for the .NET Standard
-       target (which also allows us to use it in .NET Core).
-
-       Reference: https://github.com/dotnet/corefx/issues/683
-  -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.2'">
-    <PackageReference Include="System.Console" Version="4.3.0" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
@@ -68,10 +51,6 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.2'">
-    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">

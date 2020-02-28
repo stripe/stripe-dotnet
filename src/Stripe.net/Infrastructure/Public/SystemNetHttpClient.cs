@@ -219,8 +219,6 @@ namespace Stripe
             var stripeNetTargetFramework =
 #if NET45
                 "net45"
-#elif NETSTANDARD1_2
-                "netstandard1.2"
 #elif NETSTANDARD2_0
                 "netstandard2.0"
 #else
