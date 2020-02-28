@@ -8,7 +8,7 @@ namespace Stripe
 
     public class AccountService : Service<Account>,
         ICreatable<Account, AccountCreateOptions>,
-        IDeletable<Account>,
+        IDeletable<Account, AccountDeleteOptions>,
         IListable<Account, AccountListOptions>,
         IRetrievable<Account, AccountGetOptions>,
         IUpdatable<Account, AccountUpdateOptions>
@@ -35,14 +35,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Account Delete(string accountId, RequestOptions requestOptions = null)
+        public virtual Account Delete(string accountId, AccountDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(accountId, null, requestOptions);
+            return this.DeleteEntity(accountId, options, requestOptions);
         }
 
-        public virtual Task<Account> DeleteAsync(string accountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Account> DeleteAsync(string accountId, AccountDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(accountId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(accountId, options, requestOptions, cancellationToken);
         }
 
         public virtual Account Get(string accountId, AccountGetOptions options = null, RequestOptions requestOptions = null)

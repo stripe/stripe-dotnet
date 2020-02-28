@@ -6,7 +6,7 @@ namespace Stripe
 
     public class ExternalAccountService : ServiceNested<IExternalAccount>,
         INestedCreatable<IExternalAccount, ExternalAccountCreateOptions>,
-        INestedDeletable<IExternalAccount>,
+        INestedDeletable<IExternalAccount, ExternalAccountDeleteOptions>,
         INestedListable<IExternalAccount, ExternalAccountListOptions>,
         INestedRetrievable<IExternalAccount, ExternalAccountGetOptions>,
         INestedUpdatable<IExternalAccount, ExternalAccountUpdateOptions>
@@ -33,14 +33,14 @@ namespace Stripe
             return this.CreateNestedEntityAsync(accountId, options, requestOptions, cancellationToken);
         }
 
-        public virtual IExternalAccount Delete(string accountId, string externalAccountId, RequestOptions requestOptions = null)
+        public virtual IExternalAccount Delete(string accountId, string externalAccountId, ExternalAccountDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteNestedEntity(accountId, externalAccountId, null, requestOptions);
+            return this.DeleteNestedEntity(accountId, externalAccountId, options, requestOptions);
         }
 
-        public virtual Task<IExternalAccount> DeleteAsync(string accountId, string externalAccountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IExternalAccount> DeleteAsync(string accountId, string externalAccountId, ExternalAccountDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteNestedEntityAsync(accountId, externalAccountId, null, requestOptions, cancellationToken);
+            return this.DeleteNestedEntityAsync(accountId, externalAccountId, options, requestOptions, cancellationToken);
         }
 
         public virtual IExternalAccount Get(string accountId, string externalAccountId, ExternalAccountGetOptions options = null, RequestOptions requestOptions = null)

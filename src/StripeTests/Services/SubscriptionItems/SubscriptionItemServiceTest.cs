@@ -14,6 +14,7 @@ namespace StripeTests
 
         private readonly SubscriptionItemService service;
         private readonly SubscriptionItemCreateOptions createOptions;
+        private readonly SubscriptionItemDeleteOptions deleteOptions;
         private readonly SubscriptionItemUpdateOptions updateOptions;
         private readonly SubscriptionItemListOptions listOptions;
 
@@ -29,6 +30,11 @@ namespace StripeTests
                 Plan = "plan_123",
                 Quantity = 1,
                 Subscription = "sub_123",
+            };
+
+            this.deleteOptions = new SubscriptionItemDeleteOptions
+            {
+                ClearUsage = true,
             };
 
             this.updateOptions = new SubscriptionItemUpdateOptions
@@ -67,7 +73,7 @@ namespace StripeTests
         [Fact]
         public void Delete()
         {
-            var deleted = this.service.Delete(SubscriptionItemId);
+            var deleted = this.service.Delete(SubscriptionItemId, this.deleteOptions);
             this.AssertRequest(HttpMethod.Delete, "/v1/subscription_items/si_123");
             Assert.NotNull(deleted);
         }
@@ -75,7 +81,7 @@ namespace StripeTests
         [Fact]
         public async Task DeleteAsync()
         {
-            var deleted = await this.service.DeleteAsync(SubscriptionItemId);
+            var deleted = await this.service.DeleteAsync(SubscriptionItemId, this.deleteOptions);
             this.AssertRequest(HttpMethod.Delete, "/v1/subscription_items/si_123");
             Assert.NotNull(deleted);
         }
