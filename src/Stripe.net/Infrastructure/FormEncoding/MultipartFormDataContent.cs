@@ -46,14 +46,12 @@ namespace Stripe.Infrastructure.FormEncoding
             var fileName = "blob";
             var extension = string.Empty;
 
-#if NET45 || NETSTANDARD2_0
             FileStream fileStream = value as FileStream;
             if ((fileStream != null) && (!string.IsNullOrEmpty(fileStream.Name)))
             {
                 fileName = fileStream.Name;
                 extension = Path.GetExtension(fileName);
             }
-#endif
 
             var content = new StreamContent(value);
             content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
