@@ -2,7 +2,7 @@
   <Import Project="..\..\netfx.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0;netcoreapp3.1;net452</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.0;netcoreapp3.1;net45</TargetFrameworks>
     <AssemblyName>StripeTests</AssemblyName>
     <PackageId>StripeTests</PackageId>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="coverlet.msbuild" Version="2.8.0" />
-    <PackageReference Include="Moq" Version="4.10.1" />
+    <PackageReference Include="Moq" Version="4.13.1" />
     <PackageReference Include="Stylecop.Analyzers" Version="1.1.118">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -26,7 +26,7 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
