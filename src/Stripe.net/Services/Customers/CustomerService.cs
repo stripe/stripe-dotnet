@@ -7,7 +7,7 @@ namespace Stripe
 
     public class CustomerService : Service<Customer>,
         ICreatable<Customer, CustomerCreateOptions>,
-        IDeletable<Customer>,
+        IDeletable<Customer, CustomerDeleteOptions>,
         IListable<Customer, CustomerListOptions>,
         IRetrievable<Customer, CustomerGetOptions>,
         IUpdatable<Customer, CustomerUpdateOptions>
@@ -34,14 +34,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Customer Delete(string customerId, RequestOptions requestOptions = null)
+        public virtual Customer Delete(string customerId, CustomerDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(customerId, null, requestOptions);
+            return this.DeleteEntity(customerId, options, requestOptions);
         }
 
-        public virtual Task<Customer> DeleteAsync(string customerId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Customer> DeleteAsync(string customerId, CustomerDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(customerId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(customerId, options, requestOptions, cancellationToken);
         }
 
         public virtual Customer Get(string customerId, CustomerGetOptions options = null, RequestOptions requestOptions = null)

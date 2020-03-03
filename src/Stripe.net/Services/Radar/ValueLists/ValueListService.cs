@@ -6,6 +6,7 @@ namespace Stripe.Radar
 
     public class ValueListService : Service<ValueList>,
         ICreatable<ValueList, ValueListCreateOptions>,
+        IDeletable<ValueList, ValueListDeleteOptions>,
         IListable<ValueList, ValueListListOptions>,
         IRetrievable<ValueList, ValueListGetOptions>
     {
@@ -31,14 +32,14 @@ namespace Stripe.Radar
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual ValueList Delete(string valueListId, RequestOptions requestOptions = null)
+        public virtual ValueList Delete(string valueListId, ValueListDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(valueListId, null, requestOptions);
+            return this.DeleteEntity(valueListId, options, requestOptions);
         }
 
-        public virtual Task<ValueList> DeleteAsync(string valueListId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ValueList> DeleteAsync(string valueListId, ValueListDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(valueListId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(valueListId, options, requestOptions, cancellationToken);
         }
 
         public virtual ValueList Get(string valueListId, ValueListGetOptions options = null, RequestOptions requestOptions = null)

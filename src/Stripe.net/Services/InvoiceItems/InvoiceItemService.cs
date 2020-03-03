@@ -7,7 +7,7 @@ namespace Stripe
 
     public class InvoiceItemService : Service<InvoiceItem>,
         ICreatable<InvoiceItem, InvoiceItemCreateOptions>,
-        IDeletable<InvoiceItem>,
+        IDeletable<InvoiceItem, InvoiceItemDeleteOptions>,
         IListable<InvoiceItem, InvoiceItemListOptions>,
         IRetrievable<InvoiceItem, InvoiceItemGetOptions>,
         IUpdatable<InvoiceItem, InvoiceItemUpdateOptions>
@@ -34,14 +34,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual InvoiceItem Delete(string invoiceitemId, RequestOptions requestOptions = null)
+        public virtual InvoiceItem Delete(string invoiceitemId, InvoiceItemDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(invoiceitemId, null, requestOptions);
+            return this.DeleteEntity(invoiceitemId, options, requestOptions);
         }
 
-        public virtual Task<InvoiceItem> DeleteAsync(string invoiceitemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<InvoiceItem> DeleteAsync(string invoiceitemId, InvoiceItemDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(invoiceitemId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(invoiceitemId, options, requestOptions, cancellationToken);
         }
 
         public virtual InvoiceItem Get(string invoiceitemId, InvoiceItemGetOptions options = null, RequestOptions requestOptions = null)

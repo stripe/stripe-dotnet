@@ -8,7 +8,7 @@ namespace Stripe.Terminal
 
     public class ReaderService : Service<Reader>,
         ICreatable<Reader, ReaderCreateOptions>,
-        IDeletable<Reader>,
+        IDeletable<Reader, ReaderDeleteOptions>,
         IListable<Reader, ReaderListOptions>,
         IRetrievable<Reader, ReaderGetOptions>,
         IUpdatable<Reader, ReaderUpdateOptions>
@@ -35,14 +35,14 @@ namespace Stripe.Terminal
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Reader Delete(string readerId, RequestOptions requestOptions = null)
+        public virtual Reader Delete(string readerId, ReaderDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(readerId, null, requestOptions);
+            return this.DeleteEntity(readerId, options, requestOptions);
         }
 
-        public virtual Task<Reader> DeleteAsync(string readerId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Reader> DeleteAsync(string readerId, ReaderDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(readerId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(readerId, options, requestOptions, cancellationToken);
         }
 
         public virtual Reader Get(string readerId, ReaderGetOptions options = null, RequestOptions requestOptions = null)

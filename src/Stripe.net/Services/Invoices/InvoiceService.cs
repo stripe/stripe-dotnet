@@ -8,6 +8,7 @@ namespace Stripe
 
     public class InvoiceService : Service<Invoice>,
         ICreatable<Invoice, InvoiceCreateOptions>,
+        IDeletable<Invoice, InvoiceDeleteOptions>,
         IListable<Invoice, InvoiceListOptions>,
         IRetrievable<Invoice, InvoiceGetOptions>,
         IUpdatable<Invoice, InvoiceUpdateOptions>
@@ -34,14 +35,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice Delete(string invoiceId, RequestOptions requestOptions = null)
+        public virtual Invoice Delete(string invoiceId, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(invoiceId, null, requestOptions);
+            return this.DeleteEntity(invoiceId, options, requestOptions);
         }
 
-        public virtual Task<Invoice> DeleteAsync(string invoiceId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Invoice> DeleteAsync(string invoiceId, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(invoiceId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(invoiceId, options, requestOptions, cancellationToken);
         }
 
         public virtual Invoice FinalizeInvoice(string invoiceId, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null)

@@ -6,7 +6,7 @@ namespace Stripe
 
     public class CouponService : Service<Coupon>,
         ICreatable<Coupon, CouponCreateOptions>,
-        IDeletable<Coupon>,
+        IDeletable<Coupon, CouponDeleteOptions>,
         IListable<Coupon, CouponListOptions>,
         IRetrievable<Coupon, CouponGetOptions>,
         IUpdatable<Coupon, CouponUpdateOptions>
@@ -33,14 +33,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Coupon Delete(string couponId, RequestOptions requestOptions = null)
+        public virtual Coupon Delete(string couponId, CouponDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(couponId, null, requestOptions);
+            return this.DeleteEntity(couponId, options, requestOptions);
         }
 
-        public virtual Task<Coupon> DeleteAsync(string couponId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Coupon> DeleteAsync(string couponId, CouponDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(couponId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(couponId, options, requestOptions, cancellationToken);
         }
 
         public virtual Coupon Get(string couponId, CouponGetOptions options = null, RequestOptions requestOptions = null)

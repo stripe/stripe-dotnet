@@ -7,7 +7,7 @@ namespace Stripe
 
     public class CardService : ServiceNested<Card>,
         INestedCreatable<Card, CardCreateOptions>,
-        INestedDeletable<Card>,
+        INestedDeletable<Card, CardDeleteOptions>,
         INestedListable<Card, CardListOptions>,
         INestedRetrievable<Card, CardGetOptions>,
         INestedUpdatable<Card, CardUpdateOptions>
@@ -34,14 +34,14 @@ namespace Stripe
             return this.CreateNestedEntityAsync(customerId, options, requestOptions, cancellationToken);
         }
 
-        public virtual Card Delete(string customerId, string cardId, RequestOptions requestOptions = null)
+        public virtual Card Delete(string customerId, string cardId, CardDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteNestedEntity(customerId, cardId, null, requestOptions);
+            return this.DeleteNestedEntity(customerId, cardId, options, requestOptions);
         }
 
-        public virtual Task<Card> DeleteAsync(string customerId, string cardId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Card> DeleteAsync(string customerId, string cardId, CardDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteNestedEntityAsync(customerId, cardId, null, requestOptions, cancellationToken);
+            return this.DeleteNestedEntityAsync(customerId, cardId, options, requestOptions, cancellationToken);
         }
 
         public virtual Card Get(string customerId, string cardId, CardGetOptions options = null, RequestOptions requestOptions = null)
