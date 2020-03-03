@@ -135,6 +135,12 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
+        /// The suffix of the customer’s next invoice number.
+        /// </summary>
+        [JsonProperty("next_invoice_sequence")]
+        public long NextInvoiceSequence { get; set; }
+
+        /// <summary>
         /// The customer’s phone number.
         /// </summary>
         [JsonProperty("phone")]

@@ -47,6 +47,12 @@ namespace Stripe
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// The suffix of the customer’s next invoice number.
+        /// </summary>
+        [JsonProperty("next_invoice_sequence")]
+        public long? NextInvoiceSequence { get; set; }
+
         [JsonProperty("payment_method")]
         public string PaymentMethod { get; set; }
 
