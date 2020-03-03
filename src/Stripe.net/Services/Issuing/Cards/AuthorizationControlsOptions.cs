@@ -19,10 +19,6 @@ namespace Stripe.Issuing
         [JsonProperty("blocked_categories")]
         public List<string> BlockedCategories { get; set; }
 
-        [Obsolete("Use SpendingLimits instead.")]
-        [JsonProperty("max_amount")]
-        public long? MaxAmount { get; set; }
-
         /// <summary>
         /// Maximum count of approved authorizations on this card. Counts all authorizations
         /// retroactively.

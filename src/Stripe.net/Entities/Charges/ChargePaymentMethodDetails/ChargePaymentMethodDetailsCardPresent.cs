@@ -61,14 +61,6 @@ namespace Stripe
         [JsonProperty("generated_card")]
         public string GeneratedCard { get; set; }
 
-        [Obsolete("Use GeneratedCard instead.")]
-        [JsonIgnore]
-        public string GeneratedCardId
-        {
-            get => this.GeneratedCard;
-            set => this.GeneratedCardId = value;
-        }
-
         /// <summary>
         /// The last four digits of the card.
         /// </summary>
