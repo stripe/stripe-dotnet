@@ -78,5 +78,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        [JsonProperty("ip")]
+        public string Ip { get; set; }
+
+        [JsonProperty("user_agent")]
+        public string UserAgent { get; set; }
+
     }
 }
