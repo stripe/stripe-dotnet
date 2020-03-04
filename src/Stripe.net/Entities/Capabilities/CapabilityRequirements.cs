@@ -32,6 +32,13 @@ namespace Stripe
         public string DisabledReason { get; set; }
 
         /// <summary>
+        /// The fields that need to be collected again because validation or verification failed
+        /// for some reason.
+        /// </summary>
+        [JsonProperty("errors")]
+        public List<AccountRequirementsError> Errors { get; set; }
+
+        /// <summary>
         /// The fields that need to be collected assuming all volume thresholds are reached. As
         /// they become required, these fields appear in <c>currently_due</c> as well, and the
         /// <c>current_deadline</c> is set.
