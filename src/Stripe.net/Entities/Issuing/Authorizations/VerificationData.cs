@@ -27,5 +27,11 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("cvc_check")]
         public string CvcCheck { get; set; }
+
+        /// <summary>
+        /// One of <c>match</c>, <c>mismatch</c>, or <c>not_provided</c>.
+        /// </summary>
+        [JsonProperty("expiry_check")]
+        public string ExpiryCheck { get; set; }
     }
 }
