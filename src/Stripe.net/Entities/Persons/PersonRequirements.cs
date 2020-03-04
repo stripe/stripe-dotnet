@@ -14,6 +14,13 @@ namespace Stripe
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
+        /// The fields that need to be collected again because validation or verification failed
+        /// for some reason.
+        /// </summary>
+        [JsonProperty("errors")]
+        public List<AccountRequirementsError> Errors { get; set; }
+
+        /// <summary>
         /// Fields that need to be collected assuming all volume thresholds are reached. As fields
         /// are needed, they are moved to <c>currently_due</c> and the account’s
         /// <c>current_deadline</c> is set.
