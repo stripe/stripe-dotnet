@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.2.0 - 2020-03-04
+* [#1942](https://github.com/stripe/stripe-dotnet/pull/1942) Add support for `ExpiryCheck` on Issuing `Authorization`
+
 ## 35.1.0 - 2020-03-04
 * [#1940](https://github.com/stripe/stripe-dotnet/pull/1940) Add support for `Errors` in `Requirements` on `Account`, `Capability` and `Person`
 * [#1941](https://github.com/stripe/stripe-dotnet/pull/1941) Add support for `payment_intent.processing`
