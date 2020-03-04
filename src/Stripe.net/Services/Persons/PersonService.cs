@@ -7,6 +7,7 @@ namespace Stripe
 
     public class PersonService : ServiceNested<Person>,
         INestedCreatable<Person, PersonCreateOptions>,
+        INestedDeletable<Person, PersonDeleteOptions>,
         INestedListable<Person, PersonListOptions>,
         INestedRetrievable<Person, PersonGetOptions>,
         INestedUpdatable<Person, PersonUpdateOptions>
@@ -33,14 +34,14 @@ namespace Stripe
             return this.CreateNestedEntityAsync(accountId, options, requestOptions, cancellationToken);
         }
 
-        public virtual Person Delete(string accountId, string personId, RequestOptions requestOptions = null)
+        public virtual Person Delete(string accountId, string personId, PersonDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteNestedEntity(accountId, personId, null, requestOptions);
+            return this.DeleteNestedEntity(accountId, personId, options, requestOptions);
         }
 
-        public virtual Task<Person> DeleteAsync(string accountId, string personId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Person> DeleteAsync(string accountId, string personId, PersonDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteNestedEntityAsync(accountId, personId, null, requestOptions, cancellationToken);
+            return this.DeleteNestedEntityAsync(accountId, personId, options, requestOptions, cancellationToken);
         }
 
         public virtual Person Get(string accountId, string personId, PersonGetOptions options = null, RequestOptions requestOptions = null)

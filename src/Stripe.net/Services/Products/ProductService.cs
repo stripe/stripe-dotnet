@@ -6,7 +6,7 @@ namespace Stripe
 
     public class ProductService : Service<Product>,
         ICreatable<Product, ProductCreateOptions>,
-        IDeletable<Product>,
+        IDeletable<Product, ProductDeleteOptions>,
         IListable<Product, ProductListOptions>,
         IRetrievable<Product, ProductGetOptions>,
         IUpdatable<Product, ProductUpdateOptions>
@@ -33,14 +33,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Product Delete(string productId, RequestOptions requestOptions = null)
+        public virtual Product Delete(string productId, ProductDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(productId, null, requestOptions);
+            return this.DeleteEntity(productId, options, requestOptions);
         }
 
-        public virtual Task<Product> DeleteAsync(string productId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Product> DeleteAsync(string productId, ProductDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(productId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(productId, options, requestOptions, cancellationToken);
         }
 
         public virtual Product Get(string productId, ProductGetOptions options = null, RequestOptions requestOptions = null)

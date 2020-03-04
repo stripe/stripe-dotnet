@@ -1,4 +1,3 @@
-#if NETCOREAPP
 namespace StripeTests
 {
     using System;
@@ -57,4 +56,3 @@ namespace StripeTests
         }
     }
 }
-#endif

@@ -2,12 +2,10 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Configuration;
     using System.Reflection;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET45 || NETSTANDARD2_0
-    using System.Configuration;
-#endif
 
     /// <summary>
     /// Global configuration class for Stripe.net settings.
@@ -32,28 +30,23 @@ namespace Stripe
         }
 
         /// <summary>API version used by Stripe.net.</summary>
-        public static string ApiVersion => "2019-12-03";
+        public static string ApiVersion => "2020-03-02";
 
-#if NET45 || NETSTANDARD2_0
         /// <summary>Gets or sets the API key.</summary>
         /// <remarks>
         /// You can also set the API key using the <c>StripeApiKey</c> key in
         /// <see cref="System.Configuration.ConfigurationManager.AppSettings"/>.
         /// </remarks>
-#else
-        /// <summary>Gets or sets the API key.</summary>
-#endif
         public static string ApiKey
         {
             get
             {
-#if NET45 || NETSTANDARD2_0
                 if (string.IsNullOrEmpty(apiKey) &&
                     !string.IsNullOrEmpty(ConfigurationManager.AppSettings["StripeApiKey"]))
                 {
                     apiKey = ConfigurationManager.AppSettings["StripeApiKey"];
                 }
-#endif
+
                 return apiKey;
             }
 
@@ -68,26 +61,21 @@ namespace Stripe
             }
         }
 
-#if NET45 || NETSTANDARD2_0
         /// <summary>Gets or sets the client ID.</summary>
         /// <remarks>
         /// You can also set the client ID using the <c>StripeClientId</c> key in
         /// <see cref="System.Configuration.ConfigurationManager.AppSettings"/>.
         /// </remarks>
-#else
-        /// <summary>Gets or sets the client ID.</summary>
-#endif
         public static string ClientId
         {
             get
             {
-#if NET45 || NETSTANDARD2_0
                 if (string.IsNullOrEmpty(apiKey) &&
                     !string.IsNullOrEmpty(ConfigurationManager.AppSettings["StripeClientId"]))
                 {
                     clientId = ConfigurationManager.AppSettings["StripeClientId"];
                 }
-#endif
+
                 return clientId;
             }
 

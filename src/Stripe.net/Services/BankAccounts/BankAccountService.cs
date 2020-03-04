@@ -8,7 +8,7 @@ namespace Stripe
 
     public class BankAccountService : ServiceNested<BankAccount>,
         INestedCreatable<BankAccount, BankAccountCreateOptions>,
-        INestedDeletable<BankAccount>,
+        INestedDeletable<BankAccount, BankAccountDeleteOptions>,
         INestedListable<BankAccount, BankAccountListOptions>,
         INestedRetrievable<BankAccount, BankAccountGetOptions>,
         INestedUpdatable<BankAccount, BankAccountUpdateOptions>
@@ -35,14 +35,14 @@ namespace Stripe
             return this.CreateNestedEntityAsync(customerId, options, requestOptions, cancellationToken);
         }
 
-        public virtual BankAccount Delete(string customerId, string bankAccountId, RequestOptions requestOptions = null)
+        public virtual BankAccount Delete(string customerId, string bankAccountId, BankAccountDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteNestedEntity(customerId, bankAccountId, null, requestOptions);
+            return this.DeleteNestedEntity(customerId, bankAccountId, options, requestOptions);
         }
 
-        public virtual Task<BankAccount> DeleteAsync(string customerId, string bankAccountId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<BankAccount> DeleteAsync(string customerId, string bankAccountId, BankAccountDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteNestedEntityAsync(customerId, bankAccountId, null, requestOptions, cancellationToken);
+            return this.DeleteNestedEntityAsync(customerId, bankAccountId, options, requestOptions, cancellationToken);
         }
 
         public virtual BankAccount Get(string customerId, string bankAccountId, BankAccountGetOptions options = null, RequestOptions requestOptions = null)

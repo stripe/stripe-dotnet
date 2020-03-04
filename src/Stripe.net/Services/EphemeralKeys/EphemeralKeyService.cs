@@ -7,7 +7,7 @@ namespace Stripe
 
     public class EphemeralKeyService : Service<EphemeralKey>,
         ICreatable<EphemeralKey, EphemeralKeyCreateOptions>,
-        IDeletable<EphemeralKey>
+        IDeletable<EphemeralKey, EphemeralKeyDeleteOptions>
     {
         public EphemeralKeyService()
             : base(null)
@@ -46,14 +46,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual EphemeralKey Delete(string keyId, RequestOptions requestOptions = null)
+        public virtual EphemeralKey Delete(string keyId, EphemeralKeyDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(keyId, null, requestOptions);
+            return this.DeleteEntity(keyId, options, requestOptions);
         }
 
-        public virtual Task<EphemeralKey> DeleteAsync(string keyId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<EphemeralKey> DeleteAsync(string keyId, EphemeralKeyDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(keyId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(keyId, options, requestOptions, cancellationToken);
         }
     }
 }

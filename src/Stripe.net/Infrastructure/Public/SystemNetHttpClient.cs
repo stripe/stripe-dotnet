@@ -21,6 +21,16 @@ namespace Stripe
     /// </summary>
     public class SystemNetHttpClient : IHttpClient
     {
+        private const string StripeNetTargetFramework =
+#if NETSTANDARD2_0
+            "netstandard2.0"
+#elif NET45
+            "net45"
+#else
+            "unknown"
+#endif
+        ;
+
         private static readonly Lazy<System.Net.Http.HttpClient> LazyDefaultHttpClient
             = new Lazy<System.Net.Http.HttpClient>(BuildDefaultSystemNetHttpClient);
 
@@ -204,30 +214,10 @@ namespace Stripe
                 { "bindings_version", StripeConfiguration.StripeNetVersion },
                 { "lang", ".net" },
                 { "publisher", "stripe" },
-                { "lang_version", RuntimeInformation.GetLanguageVersion() },
+                { "lang_version", RuntimeInformation.GetRuntimeVersion() },
                 { "os_version", RuntimeInformation.GetOSVersion() },
+                { "stripe_net_target_framework", StripeNetTargetFramework },
             };
-
-#if NET45
-            string monoVersion = RuntimeInformation.GetMonoVersion();
-            if (!string.IsNullOrEmpty(monoVersion))
-            {
-                values.Add("mono_version", monoVersion);
-            }
-#endif
-
-            var stripeNetTargetFramework =
-#if NET45
-                "net45"
-#elif NETSTANDARD1_2
-                "netstandard1.2"
-#elif NETSTANDARD2_0
-                "netstandard2.0"
-#else
-                "unknown"
-#endif
-            ;
-            values.Add("stripe_net_target_framework", stripeNetTargetFramework);
 
             if (this.appInfo != null)
             {

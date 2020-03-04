@@ -5,7 +5,7 @@ environment:
   COVERALLS_REPO_TOKEN:
     secure: T0PmP8uyzCseacBCDRBlti2y9Tz5DL6fknea0MKWvbPYrzADmLY2/5kOTfYIsPUk
   # If you bump this, don't forget to bump `MinimumMockVersion` in `StripeMockFixture.cs` as well.
-  STRIPE_MOCK_VERSION: 0.82.0
+  STRIPE_MOCK_VERSION: 0.83.0
 
 deploy:
 - provider: NuGet
@@ -55,12 +55,12 @@ test_script:
 
 after_test:
   - ps: Write-Host $("`n               RUNNING COVERAGE               `n") -BackgroundColor DarkCyan
-  - dotnet test -c Debug -f netcoreapp3.0 src/StripeTests/StripeTests.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
+  - dotnet test -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
   - ps: |
       # Secure env vars are not available on all branches, so make sure the
       # token is available before invoking Coveralls.
       if (Test-Path env:COVERALLS_REPO_TOKEN) {
-        .\tools\csmacnz.Coveralls --opencover -i src/StripeTests/coverage.netcoreapp3.0.opencover.xml --useRelativePaths
+        .\tools\csmacnz.Coveralls --opencover -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml --useRelativePaths
       }
 
 artifacts:

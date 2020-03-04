@@ -8,7 +8,7 @@ namespace Stripe.Terminal
 
     public class LocationService : Service<Location>,
         ICreatable<Location, LocationCreateOptions>,
-        IDeletable<Location>,
+        IDeletable<Location, LocationDeleteOptions>,
         IListable<Location, LocationListOptions>,
         IRetrievable<Location, LocationGetOptions>,
         IUpdatable<Location, LocationUpdateOptions>
@@ -35,14 +35,14 @@ namespace Stripe.Terminal
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Location Delete(string locationId, RequestOptions requestOptions = null)
+        public virtual Location Delete(string locationId, LocationDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(locationId, null, requestOptions);
+            return this.DeleteEntity(locationId, options, requestOptions);
         }
 
-        public virtual Task<Location> DeleteAsync(string locationId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Location> DeleteAsync(string locationId, LocationDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(locationId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(locationId, options, requestOptions, cancellationToken);
         }
 
         public virtual Location Get(string locationId, LocationGetOptions options = null, RequestOptions requestOptions = null)

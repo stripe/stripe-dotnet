@@ -399,7 +399,6 @@ namespace StripeTests
             Assert.Contains("enum=test_one", FormEncoder.CreateQueryString(options));
         }
 
-        #if !NETCOREAPP1_1
         [Fact]
         public void IgnoresCulture()
         {
@@ -420,7 +419,6 @@ namespace StripeTests
                 Thread.CurrentThread.CurrentCulture = currentCulture;
             }
         }
-        #endif
 
         [Fact]
         public void UrlEncodesKeysAndValues()

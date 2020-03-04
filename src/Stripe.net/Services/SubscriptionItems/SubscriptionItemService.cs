@@ -6,7 +6,7 @@ namespace Stripe
 
     public class SubscriptionItemService : Service<SubscriptionItem>,
         ICreatable<SubscriptionItem, SubscriptionItemCreateOptions>,
-        IDeletable<SubscriptionItem>,
+        IDeletable<SubscriptionItem, SubscriptionItemDeleteOptions>,
         IListable<SubscriptionItem, SubscriptionItemListOptions>,
         IRetrievable<SubscriptionItem, SubscriptionItemGetOptions>,
         IUpdatable<SubscriptionItem, SubscriptionItemUpdateOptions>
@@ -33,14 +33,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual SubscriptionItem Delete(string subscriptionItemId, RequestOptions requestOptions = null)
+        public virtual SubscriptionItem Delete(string subscriptionItemId, SubscriptionItemDeleteOptions options, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(subscriptionItemId, null, requestOptions);
+            return this.DeleteEntity(subscriptionItemId, options, requestOptions);
         }
 
-        public virtual Task<SubscriptionItem> DeleteAsync(string subscriptionItemId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SubscriptionItem> DeleteAsync(string subscriptionItemId, SubscriptionItemDeleteOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.DeleteEntityAsync(subscriptionItemId, null, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(subscriptionItemId, options, requestOptions, cancellationToken);
         }
 
         public virtual SubscriptionItem Get(string subscriptionItemId, SubscriptionItemGetOptions options = null, RequestOptions requestOptions = null)
