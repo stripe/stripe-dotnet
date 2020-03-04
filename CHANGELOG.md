@@ -1,5 +1,9 @@
 # Changelog
 
+## 35.1.0 - 2020-03-04
+* [#1940](https://github.com/stripe/stripe-dotnet/pull/1940) Add support for `Errors` in `Requirements` on `Account`, `Capability` and `Person`
+* [#1941](https://github.com/stripe/stripe-dotnet/pull/1941) Add support for `payment_intent.processing`
+
 ## 35.0.0 - 2020-03-03
 Major version release for new API version `2020-03-02`.
 
