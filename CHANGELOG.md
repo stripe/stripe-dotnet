@@ -1,5 +1,17 @@
 # Changelog
 
+## 35.0.0 - 2020-03-03
+Major version release for new API version `2020-03-02`.
+
+Pull requests included in this release (cf. [#1934](https://github.com/stripe/stripe-dotnet/pull/1934)) (⚠️ = breaking changes):
+
+* [#1933](https://github.com/stripe/stripe-dotnet/pull/1933) ⚠️ Drop support for .NET Standard 1.2
+* [#1935](https://github.com/stripe/stripe-dotnet/pull/1935) Remove conditional compilation macros in tests
+* [#1932](https://github.com/stripe/stripe-dotnet/pull/1932) ⚠️ Add support for passing parameters when deleting a Subscription Item
+* [#1936](https://github.com/stripe/stripe-dotnet/pull/1936) Get accurate runtime version
+* [#1937](https://github.com/stripe/stripe-dotnet/pull/1937) ⚠️ Move to API version `2020-03-02` and remove deprecated properties
+* [#1938](https://github.com/stripe/stripe-dotnet/pull/1938) Add support for `NextInvoiceSequence` on `Customer`
+
 ## 34.26.0 - 2020-02-24
 * [#1928](https://github.com/stripe/stripe-dotnet/pull/1928) Add support for listing Checkout `Session` and passing tax rate information
 
