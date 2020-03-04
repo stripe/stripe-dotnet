@@ -462,6 +462,11 @@ namespace Stripe
         public const string PaymentIntentPaymentFailed = "payment_intent.payment_failed";
 
         /// <summary>
+        /// Occurs when a PaymentIntent has started processing.
+        /// </summary>
+        public const string PaymentIntentProcessing = "payment_intent.processing";
+
+        /// <summary>
         /// Occurs when a PaymentIntent has been successfully fulfilled.
         /// </summary>
         public const string PaymentIntentSucceeded = "payment_intent.succeeded";
