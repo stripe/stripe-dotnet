@@ -1,5 +1,9 @@
 # Changelog
 
+## 35.3.0 - 2020-03-04
+* [#1945](https://github.com/stripe/stripe-dotnet/pull/1945) Add support for `Description`, `Iin` and `Issuer` on `PaymentMethod`
+* [#1944](https://github.com/stripe/stripe-dotnet/pull/1944) Add support for `Metadata` on `WebhookEndpoint`
+
 ## 35.2.0 - 2020-03-04
 * [#1942](https://github.com/stripe/stripe-dotnet/pull/1942) Add support for `ExpiryCheck` on Issuing `Authorization`
 
