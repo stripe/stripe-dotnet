@@ -44,5 +44,12 @@ namespace Stripe
         {
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
+
+#if !NET45
+        public virtual IAsyncEnumerable<ExchangeRate> ListAutoPagingAsync(ExchangeRateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+        }
+#endif
     }
 }

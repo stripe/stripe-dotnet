@@ -106,10 +106,20 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var taxRates = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(taxRates);
-            Assert.Equal("tax_rate", taxRates[0].Object);
+            var taxRate = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(taxRate);
+            Assert.Equal("tax_rate", taxRate.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var taxRate = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(taxRate);
+            Assert.Equal("tax_rate", taxRate.Object);
+        }
+#endif
 
         [Fact]
         public void Update()

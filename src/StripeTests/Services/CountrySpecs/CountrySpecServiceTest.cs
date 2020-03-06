@@ -70,9 +70,19 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var countrySpecs = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(countrySpecs);
-            Assert.Equal("country_spec", countrySpecs[0].Object);
+            var countrySpec = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(countrySpec);
+            Assert.Equal("country_spec", countrySpec.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var countrySpec = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(countrySpec);
+            Assert.Equal("country_spec", countrySpec.Object);
+        }
+#endif
     }
 }

@@ -104,9 +104,20 @@ namespace StripeTests.Issuing
         [Fact]
         public void ListAutoPaging()
         {
-            var authorizations = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(authorizations);
+            var authorization = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(authorization);
+            Assert.Equal("issuing.authorization", authorization.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var authorization = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(authorization);
+            Assert.Equal("issuing.authorization", authorization.Object);
+        }
+#endif
 
         [Fact]
         public void Update()

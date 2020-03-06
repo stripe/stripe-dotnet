@@ -33,5 +33,12 @@ namespace Stripe
         {
             return this.ListNestedEntitiesAutoPaging(subscriptionItemId, options, requestOptions);
         }
+
+#if !NET45
+        public virtual IAsyncEnumerable<UsageRecordSummary> ListAutoPagingAsync(string subscriptionItemId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListNestedEntitiesAutoPagingAsync(subscriptionItemId, options, requestOptions, cancellationToken);
+        }
+#endif
     }
 }

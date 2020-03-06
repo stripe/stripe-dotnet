@@ -72,9 +72,20 @@ namespace StripeTests.Issuing
         [Fact]
         public void ListAutoPaging()
         {
-            var transactions = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(transactions);
+            var transaction = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(transaction);
+            Assert.Equal("issuing.transaction", transaction.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var transaction = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(transaction);
+            Assert.Equal("issuing.transaction", transaction.Object);
+        }
+#endif
 
         [Fact]
         public void Update()
