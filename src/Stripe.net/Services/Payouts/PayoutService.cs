@@ -29,7 +29,7 @@ namespace Stripe
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(payoutId)}/cancel", null, requestOptions);
         }
 
-        public virtual Task<Payout> CancelAsync(string payoutId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Payout> CancelAsync(string payoutId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(payoutId)}/cancel", null, requestOptions, cancellationToken);
         }
@@ -39,7 +39,7 @@ namespace Stripe
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<Payout> CreateAsync(PayoutCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Payout> CreateAsync(PayoutCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -49,7 +49,7 @@ namespace Stripe
             return this.GetEntity(payoutId, options, requestOptions);
         }
 
-        public virtual Task<Payout> GetAsync(string payoutId, PayoutGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Payout> GetAsync(string payoutId, PayoutGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(payoutId, options, requestOptions, cancellationToken);
         }
@@ -59,7 +59,7 @@ namespace Stripe
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Payout>> ListAsync(PayoutListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Payout>> ListAsync(PayoutListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -74,7 +74,7 @@ namespace Stripe
             return this.UpdateEntity(payoutId, options, requestOptions);
         }
 
-        public virtual Task<Payout> UpdateAsync(string payoutId, PayoutUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Payout> UpdateAsync(string payoutId, PayoutUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(payoutId, options, requestOptions, cancellationToken);
         }

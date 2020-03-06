@@ -27,7 +27,7 @@ namespace Stripe
             return this.CreateNestedEntity(customerId, options, requestOptions);
         }
 
-        public virtual Task<CustomerBalanceTransaction> CreateAsync(string customerId, CustomerBalanceTransactionCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<CustomerBalanceTransaction> CreateAsync(string customerId, CustomerBalanceTransactionCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateNestedEntityAsync(customerId, options, requestOptions, cancellationToken);
         }
@@ -37,7 +37,7 @@ namespace Stripe
             return this.GetNestedEntity(customerId, transactionId, options, requestOptions);
         }
 
-        public virtual Task<CustomerBalanceTransaction> GetAsync(string customerId, string transactionId, CustomerBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<CustomerBalanceTransaction> GetAsync(string customerId, string transactionId, CustomerBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetNestedEntityAsync(customerId, transactionId, options, requestOptions, cancellationToken);
         }
@@ -47,7 +47,7 @@ namespace Stripe
             return this.ListNestedEntities(customerId, options, requestOptions);
         }
 
-        public virtual Task<StripeList<CustomerBalanceTransaction>> ListAsync(string customerId, CustomerBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<CustomerBalanceTransaction>> ListAsync(string customerId, CustomerBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListNestedEntitiesAsync(customerId, options, requestOptions, cancellationToken);
         }
@@ -62,7 +62,7 @@ namespace Stripe
             return this.UpdateNestedEntity(customerId, transactionId, options, requestOptions);
         }
 
-        public virtual Task<CustomerBalanceTransaction> UpdateAsync(string customerId, string transactionId, CustomerBalanceTransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<CustomerBalanceTransaction> UpdateAsync(string customerId, string transactionId, CustomerBalanceTransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateNestedEntityAsync(customerId, transactionId, options, requestOptions, cancellationToken);
         }

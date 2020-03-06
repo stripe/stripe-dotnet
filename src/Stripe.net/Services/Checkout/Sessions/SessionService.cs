@@ -29,7 +29,7 @@ namespace Stripe.Checkout
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<Session> CreateAsync(SessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Session> CreateAsync(SessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -39,7 +39,7 @@ namespace Stripe.Checkout
             return this.GetEntity(sessionId, options, requestOptions);
         }
 
-        public virtual Task<Session> GetAsync(string sessionId, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Session> GetAsync(string sessionId, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(sessionId, options, requestOptions, cancellationToken);
         }
@@ -49,7 +49,7 @@ namespace Stripe.Checkout
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Session>> ListAsync(SessionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Session>> ListAsync(SessionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }

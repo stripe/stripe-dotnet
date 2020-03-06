@@ -28,7 +28,7 @@ namespace Stripe
             return this.DeleteEntity(subscriptionId, options, requestOptions);
         }
 
-        public virtual Task<Subscription> CancelAsync(string subscriptionId, SubscriptionCancelOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Subscription> CancelAsync(string subscriptionId, SubscriptionCancelOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.DeleteEntityAsync(subscriptionId, options, requestOptions, cancellationToken);
         }
@@ -38,7 +38,7 @@ namespace Stripe
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<Subscription> CreateAsync(SubscriptionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Subscription> CreateAsync(SubscriptionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -48,7 +48,7 @@ namespace Stripe
             return this.GetEntity(subscriptionId, options, requestOptions);
         }
 
-        public virtual Task<Subscription> GetAsync(string subscriptionId, SubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Subscription> GetAsync(string subscriptionId, SubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(subscriptionId, options, requestOptions, cancellationToken);
         }
@@ -58,7 +58,7 @@ namespace Stripe
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Subscription>> ListAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Subscription>> ListAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -73,7 +73,7 @@ namespace Stripe
             return this.UpdateEntity(subscriptionId, options, requestOptions);
         }
 
-        public virtual Task<Subscription> UpdateAsync(string subscriptionId, SubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Subscription> UpdateAsync(string subscriptionId, SubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(subscriptionId, options, requestOptions, cancellationToken);
         }

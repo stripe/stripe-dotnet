@@ -27,7 +27,7 @@ namespace Stripe
             return this.GetNestedEntity(accountId, capabilityId, options, requestOptions);
         }
 
-        public virtual Task<Capability> GetAsync(string accountId, string capabilityId, CapabilityGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Capability> GetAsync(string accountId, string capabilityId, CapabilityGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetNestedEntityAsync(accountId, capabilityId, options, requestOptions, cancellationToken);
         }
@@ -37,7 +37,7 @@ namespace Stripe
             return this.ListNestedEntities(accountId, options, requestOptions);
         }
 
-        public virtual Task<StripeList<Capability>> ListAsync(string accountId, CapabilityListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Capability>> ListAsync(string accountId, CapabilityListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListNestedEntitiesAsync(accountId, options, requestOptions, cancellationToken);
         }
@@ -52,7 +52,7 @@ namespace Stripe
             return this.UpdateNestedEntity(accountId, capabilityId, options, requestOptions);
         }
 
-        public virtual Task<Capability> UpdateAsync(string accountId,  string capabilityId, CapabilityUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Capability> UpdateAsync(string accountId,  string capabilityId, CapabilityUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateNestedEntityAsync(accountId, capabilityId, options, requestOptions, cancellationToken);
         }

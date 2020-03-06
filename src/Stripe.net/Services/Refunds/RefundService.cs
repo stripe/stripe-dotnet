@@ -28,7 +28,7 @@ namespace Stripe
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<Refund> CreateAsync(RefundCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Refund> CreateAsync(RefundCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -38,7 +38,7 @@ namespace Stripe
             return this.GetEntity(refundId, options, requestOptions);
         }
 
-        public virtual Task<Refund> GetAsync(string refundId, RefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Refund> GetAsync(string refundId, RefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(refundId, options, requestOptions, cancellationToken);
         }
@@ -48,7 +48,7 @@ namespace Stripe
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Refund>> ListAsync(RefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Refund>> ListAsync(RefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -63,7 +63,7 @@ namespace Stripe
             return this.UpdateEntity(refundId, options, requestOptions);
         }
 
-        public virtual Task<Refund> UpdateAsync(string refundId, RefundUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Refund> UpdateAsync(string refundId, RefundUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(refundId, options, requestOptions, cancellationToken);
         }

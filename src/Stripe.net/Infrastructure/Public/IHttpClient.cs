@@ -15,6 +15,6 @@ namespace Stripe
         /// <returns>The task object representing the asynchronous operation.</returns>
         Task<StripeResponse> MakeRequestAsync(
             StripeRequest request,
-            CancellationToken cancellationToken = default(CancellationToken));
+            CancellationToken cancellationToken = default);
     }
 }

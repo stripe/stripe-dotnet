@@ -25,7 +25,7 @@ namespace Stripe
             return this.GetEntity(currency, options, requestOptions);
         }
 
-        public virtual Task<ExchangeRate> GetAsync(string currency, ExchangeRateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ExchangeRate> GetAsync(string currency, ExchangeRateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(currency, options, requestOptions, cancellationToken);
         }
@@ -35,7 +35,7 @@ namespace Stripe
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<ExchangeRate>> ListAsync(ExchangeRateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<ExchangeRate>> ListAsync(ExchangeRateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }

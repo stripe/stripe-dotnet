@@ -24,7 +24,7 @@ namespace Stripe
             return this.ListNestedEntities(sourceId, options, requestOptions);
         }
 
-        public virtual Task<StripeList<SourceTransaction>> ListAsync(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<SourceTransaction>> ListAsync(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListNestedEntitiesAsync(sourceId, options, requestOptions, cancellationToken);
         }

@@ -25,7 +25,7 @@ namespace Stripe.Terminal
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<ConnectionToken> CreateAsync(ConnectionTokenCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ConnectionToken> CreateAsync(ConnectionTokenCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }

@@ -43,7 +43,7 @@ namespace Stripe
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<OAuthToken> CreateAsync(OAuthTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<OAuthToken> CreateAsync(OAuthTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             options = this.SetupOAuthTokenCreateOptions(options);
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
@@ -55,7 +55,7 @@ namespace Stripe
             return this.Request<OAuthDeauthorize>(HttpMethod.Post, "/oauth/deauthorize", options, requestOptions);
         }
 
-        public virtual Task<OAuthDeauthorize> DeauthorizeAsync(OAuthDeauthorizeOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<OAuthDeauthorize> DeauthorizeAsync(OAuthDeauthorizeOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             options = this.SetupOAuthDeauthorizeOptions(options);
             return this.RequestAsync<OAuthDeauthorize>(HttpMethod.Post, "/oauth/deauthorize", options, requestOptions, cancellationToken);

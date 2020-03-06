@@ -29,7 +29,7 @@ namespace Stripe
             return this.CreateNestedEntity(accountId, options, requestOptions);
         }
 
-        public virtual Task<Person> CreateAsync(string accountId, PersonCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Person> CreateAsync(string accountId, PersonCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateNestedEntityAsync(accountId, options, requestOptions, cancellationToken);
         }
@@ -39,7 +39,7 @@ namespace Stripe
             return this.DeleteNestedEntity(accountId, personId, options, requestOptions);
         }
 
-        public virtual Task<Person> DeleteAsync(string accountId, string personId, PersonDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Person> DeleteAsync(string accountId, string personId, PersonDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.DeleteNestedEntityAsync(accountId, personId, options, requestOptions, cancellationToken);
         }
@@ -49,7 +49,7 @@ namespace Stripe
             return this.GetNestedEntity(accountId, personId, options, requestOptions);
         }
 
-        public virtual Task<Person> GetAsync(string accountId, string personId, PersonGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Person> GetAsync(string accountId, string personId, PersonGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetNestedEntityAsync(accountId, personId, options, requestOptions, cancellationToken);
         }
@@ -59,7 +59,7 @@ namespace Stripe
             return this.ListNestedEntities(accountId, options, requestOptions);
         }
 
-        public virtual Task<StripeList<Person>> ListAsync(string accountId, PersonListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Person>> ListAsync(string accountId, PersonListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListNestedEntitiesAsync(accountId, options, requestOptions, cancellationToken);
         }
@@ -74,7 +74,7 @@ namespace Stripe
             return this.UpdateNestedEntity(accountId, personId, options, requestOptions);
         }
 
-        public virtual Task<Person> UpdateAsync(string accountId,  string personId, PersonUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Person> UpdateAsync(string accountId,  string personId, PersonUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateNestedEntityAsync(accountId, personId, options, requestOptions, cancellationToken);
         }

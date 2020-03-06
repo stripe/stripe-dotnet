@@ -27,7 +27,7 @@ namespace Stripe.Radar
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<ValueList> CreateAsync(ValueListCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ValueList> CreateAsync(ValueListCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -37,7 +37,7 @@ namespace Stripe.Radar
             return this.DeleteEntity(valueListId, options, requestOptions);
         }
 
-        public virtual Task<ValueList> DeleteAsync(string valueListId, ValueListDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ValueList> DeleteAsync(string valueListId, ValueListDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.DeleteEntityAsync(valueListId, options, requestOptions, cancellationToken);
         }
@@ -47,7 +47,7 @@ namespace Stripe.Radar
             return this.GetEntity(valueListId, options, requestOptions);
         }
 
-        public virtual Task<ValueList> GetAsync(string valueListId, ValueListGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ValueList> GetAsync(string valueListId, ValueListGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(valueListId, options, requestOptions, cancellationToken);
         }
@@ -57,7 +57,7 @@ namespace Stripe.Radar
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<ValueList>> ListAsync(ValueListListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<ValueList>> ListAsync(ValueListListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -72,7 +72,7 @@ namespace Stripe.Radar
             return this.UpdateEntity(valueListId, options, requestOptions);
         }
 
-        public virtual Task<ValueList> UpdateAsync(string valueListId, ValueListUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ValueList> UpdateAsync(string valueListId, ValueListUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(valueListId, options, requestOptions, cancellationToken);
         }

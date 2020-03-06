@@ -28,7 +28,7 @@ namespace Stripe
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<WebhookEndpoint> CreateAsync(WebhookEndpointCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<WebhookEndpoint> CreateAsync(WebhookEndpointCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -38,7 +38,7 @@ namespace Stripe
             return this.DeleteEntity(endpointId, options, requestOptions);
         }
 
-        public virtual Task<WebhookEndpoint> DeleteAsync(string endpointId, WebhookEndpointDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<WebhookEndpoint> DeleteAsync(string endpointId, WebhookEndpointDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.DeleteEntityAsync(endpointId, options, requestOptions, cancellationToken);
         }
@@ -48,7 +48,7 @@ namespace Stripe
             return this.GetEntity(endpointId, options, requestOptions);
         }
 
-        public virtual Task<WebhookEndpoint> GetAsync(string endpointId, WebhookEndpointGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<WebhookEndpoint> GetAsync(string endpointId, WebhookEndpointGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(endpointId, options, requestOptions, cancellationToken);
         }
@@ -58,7 +58,7 @@ namespace Stripe
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<WebhookEndpoint>> ListAsync(WebhookEndpointListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<WebhookEndpoint>> ListAsync(WebhookEndpointListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -73,7 +73,7 @@ namespace Stripe
             return this.UpdateEntity(endpointId, options, requestOptions);
         }
 
-        public virtual Task<WebhookEndpoint> UpdateAsync(string endpointId, WebhookEndpointUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<WebhookEndpoint> UpdateAsync(string endpointId, WebhookEndpointUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(endpointId, options, requestOptions, cancellationToken);
         }

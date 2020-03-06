@@ -30,7 +30,7 @@ namespace Stripe.Terminal
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<Location> CreateAsync(LocationCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Location> CreateAsync(LocationCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -40,7 +40,7 @@ namespace Stripe.Terminal
             return this.DeleteEntity(locationId, options, requestOptions);
         }
 
-        public virtual Task<Location> DeleteAsync(string locationId, LocationDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Location> DeleteAsync(string locationId, LocationDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.DeleteEntityAsync(locationId, options, requestOptions, cancellationToken);
         }
@@ -50,7 +50,7 @@ namespace Stripe.Terminal
             return this.GetEntity(locationId, options, requestOptions);
         }
 
-        public virtual Task<Location> GetAsync(string locationId, LocationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Location> GetAsync(string locationId, LocationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(locationId, options, requestOptions, cancellationToken);
         }
@@ -60,7 +60,7 @@ namespace Stripe.Terminal
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Location>> ListAsync(LocationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Location>> ListAsync(LocationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -75,7 +75,7 @@ namespace Stripe.Terminal
             return this.UpdateEntity(locationId, options, requestOptions);
         }
 
-        public virtual Task<Location> UpdateAsync(string locationId, LocationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Location> UpdateAsync(string locationId, LocationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(locationId, options, requestOptions, cancellationToken);
         }

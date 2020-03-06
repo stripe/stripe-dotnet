@@ -106,7 +106,7 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
             where T : IStripeEntity
         {
             var request = new StripeRequest(this, method, path, options, requestOptions);

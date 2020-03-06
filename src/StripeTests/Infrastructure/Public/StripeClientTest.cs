@@ -182,7 +182,7 @@ namespace StripeTests
 
             public Task<StripeResponse> MakeRequestAsync(
                 StripeRequest request,
-                CancellationToken cancellationToken = default(CancellationToken))
+                CancellationToken cancellationToken = default)
             {
                 if (this.Response == null)
                 {

@@ -9,6 +9,6 @@ namespace Stripe
     {
         TEntity Get(string id, TOptions retrieveOptions = null, RequestOptions requestOptions = null);
 
-        Task<TEntity> GetAsync(string id, TOptions retrieveOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<TEntity> GetAsync(string id, TOptions retrieveOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
     }
 }

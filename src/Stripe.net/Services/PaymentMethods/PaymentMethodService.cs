@@ -29,7 +29,7 @@ namespace Stripe
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/attach", options, requestOptions);
         }
 
-        public virtual Task<PaymentMethod> AttachAsync(string paymentMethodId, PaymentMethodAttachOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<PaymentMethod> AttachAsync(string paymentMethodId, PaymentMethodAttachOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/attach", options, requestOptions, cancellationToken);
         }
@@ -39,7 +39,7 @@ namespace Stripe
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<PaymentMethod> CreateAsync(PaymentMethodCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<PaymentMethod> CreateAsync(PaymentMethodCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -49,7 +49,7 @@ namespace Stripe
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions);
         }
 
-        public virtual Task<PaymentMethod> DetachAsync(string paymentMethodId, PaymentMethodDetachOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<PaymentMethod> DetachAsync(string paymentMethodId, PaymentMethodDetachOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(paymentMethodId)}/detach", options, requestOptions, cancellationToken);
         }
@@ -59,7 +59,7 @@ namespace Stripe
             return this.GetEntity(paymentMethodId, options, requestOptions);
         }
 
-        public virtual Task<PaymentMethod> GetAsync(string paymentMethodId, PaymentMethodGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<PaymentMethod> GetAsync(string paymentMethodId, PaymentMethodGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(paymentMethodId, options, requestOptions, cancellationToken);
         }
@@ -69,7 +69,7 @@ namespace Stripe
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<PaymentMethod>> ListAsync(PaymentMethodListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<PaymentMethod>> ListAsync(PaymentMethodListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -84,7 +84,7 @@ namespace Stripe
             return this.UpdateEntity(paymentMethodId, options, requestOptions);
         }
 
-        public virtual Task<PaymentMethod> UpdateAsync(string paymentMethodId, PaymentMethodUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<PaymentMethod> UpdateAsync(string paymentMethodId, PaymentMethodUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(paymentMethodId, options, requestOptions, cancellationToken);
         }

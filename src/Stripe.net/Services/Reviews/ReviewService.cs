@@ -26,7 +26,7 @@ namespace Stripe
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(reviewId)}/approve", options, requestOptions);
         }
 
-        public virtual Task<Review> ApproveAsync(string reviewId, ReviewApproveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Review> ApproveAsync(string reviewId, ReviewApproveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(reviewId)}/approve", options, requestOptions, cancellationToken);
         }
@@ -36,7 +36,7 @@ namespace Stripe
             return this.GetEntity(reviewId, options, requestOptions);
         }
 
-        public virtual Task<Review> GetAsync(string reviewId, ReviewGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Review> GetAsync(string reviewId, ReviewGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(reviewId, options, requestOptions, cancellationToken);
         }
@@ -46,7 +46,7 @@ namespace Stripe
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Review>> ListAsync(ReviewListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Review>> ListAsync(ReviewListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }

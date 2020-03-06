@@ -28,7 +28,7 @@ namespace Stripe
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(scheduleId)}/cancel", options, requestOptions);
         }
 
-        public virtual Task<SubscriptionSchedule> CancelAsync(string scheduleId, SubscriptionScheduleCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SubscriptionSchedule> CancelAsync(string scheduleId, SubscriptionScheduleCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(scheduleId)}/cancel", options, requestOptions, cancellationToken);
         }
@@ -38,7 +38,7 @@ namespace Stripe
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<SubscriptionSchedule> CreateAsync(SubscriptionScheduleCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SubscriptionSchedule> CreateAsync(SubscriptionScheduleCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -48,7 +48,7 @@ namespace Stripe
             return this.GetEntity(scheduleId, options, requestOptions);
         }
 
-        public virtual Task<SubscriptionSchedule> GetAsync(string scheduleId, SubscriptionScheduleGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SubscriptionSchedule> GetAsync(string scheduleId, SubscriptionScheduleGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(scheduleId, options, requestOptions, cancellationToken);
         }
@@ -58,7 +58,7 @@ namespace Stripe
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<SubscriptionSchedule>> ListAsync(SubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<SubscriptionSchedule>> ListAsync(SubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -73,7 +73,7 @@ namespace Stripe
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(scheduleId)}/release", options, requestOptions);
         }
 
-        public virtual Task<SubscriptionSchedule> ReleaseAsync(string scheduleId, SubscriptionScheduleReleaseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SubscriptionSchedule> ReleaseAsync(string scheduleId, SubscriptionScheduleReleaseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(scheduleId)}/release", options, requestOptions, cancellationToken);
         }
@@ -83,7 +83,7 @@ namespace Stripe
             return this.UpdateEntity(scheduleId, options, requestOptions);
         }
 
-        public virtual Task<SubscriptionSchedule> UpdateAsync(string scheduleId, SubscriptionScheduleUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SubscriptionSchedule> UpdateAsync(string scheduleId, SubscriptionScheduleUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(scheduleId, options, requestOptions, cancellationToken);
         }

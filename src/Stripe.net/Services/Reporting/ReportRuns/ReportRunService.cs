@@ -26,7 +26,7 @@ namespace Stripe.Reporting
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<ReportRun> CreateAsync(ReportRunCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ReportRun> CreateAsync(ReportRunCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -36,7 +36,7 @@ namespace Stripe.Reporting
             return this.GetEntity(reportRunId, options, requestOptions);
         }
 
-        public virtual Task<ReportRun> GetAsync(string reportRunId, ReportRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ReportRun> GetAsync(string reportRunId, ReportRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(reportRunId, options, requestOptions, cancellationToken);
         }
@@ -46,7 +46,7 @@ namespace Stripe.Reporting
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<ReportRun>> ListAsync(ReportRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<ReportRun>> ListAsync(ReportRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }

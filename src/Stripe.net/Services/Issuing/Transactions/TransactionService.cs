@@ -26,7 +26,7 @@ namespace Stripe.Issuing
             return this.GetEntity(transactionId, options, requestOptions);
         }
 
-        public virtual Task<Transaction> GetAsync(string transactionId, TransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Transaction> GetAsync(string transactionId, TransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(transactionId, options, requestOptions, cancellationToken);
         }
@@ -36,7 +36,7 @@ namespace Stripe.Issuing
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Transaction>> ListAsync(TransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Transaction>> ListAsync(TransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -51,7 +51,7 @@ namespace Stripe.Issuing
             return this.UpdateEntity(transactionId, options, requestOptions);
         }
 
-        public virtual Task<Transaction> UpdateAsync(string transactionId, TransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Transaction> UpdateAsync(string transactionId, TransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(transactionId, options, requestOptions, cancellationToken);
         }

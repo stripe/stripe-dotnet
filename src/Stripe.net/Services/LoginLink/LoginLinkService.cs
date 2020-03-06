@@ -25,7 +25,7 @@ namespace Stripe
             return this.CreateNestedEntity(accountId, options, requestOptions);
         }
 
-        public virtual Task<LoginLink> CreateAsync(string accountId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<LoginLink> CreateAsync(string accountId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateNestedEntityAsync(accountId, options, requestOptions, cancellationToken);
         }

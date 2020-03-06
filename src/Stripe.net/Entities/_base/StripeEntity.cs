@@ -80,7 +80,7 @@ namespace Stripe
             }
             else if (expandable.Id != id)
             {
-                expandable.ExpandedObject = default(T);
+                expandable.ExpandedObject = default;
                 expandable.Id = id;
             }
 

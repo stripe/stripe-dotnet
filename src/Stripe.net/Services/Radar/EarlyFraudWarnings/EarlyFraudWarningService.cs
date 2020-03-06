@@ -25,7 +25,7 @@ namespace Stripe.Radar
             return this.GetEntity(earlyFraudWarningId, options, requestOptions);
         }
 
-        public virtual Task<EarlyFraudWarning> GetAsync(string earlyFraudWarningId, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<EarlyFraudWarning> GetAsync(string earlyFraudWarningId, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(earlyFraudWarningId, options, requestOptions, cancellationToken);
         }
@@ -35,7 +35,7 @@ namespace Stripe.Radar
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<EarlyFraudWarning>> ListAsync(EarlyFraudWarningListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<EarlyFraudWarning>> ListAsync(EarlyFraudWarningListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }

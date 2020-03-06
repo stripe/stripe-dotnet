@@ -9,6 +9,6 @@ namespace Stripe
     {
         TEntity Update(string parentId, string id, TOptions updateOptions, RequestOptions requestOptions = null);
 
-        Task<TEntity> UpdateAsync(string parentId, string id, TOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<TEntity> UpdateAsync(string parentId, string id, TOptions updateOptions, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
     }
 }
