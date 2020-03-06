@@ -27,7 +27,7 @@ namespace Stripe
             return this.Request(HttpMethod.Get, this.ClassUrl(), null, requestOptions);
         }
 
-        public virtual Task<Balance> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Balance> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Get, this.ClassUrl(), null, requestOptions, cancellationToken);
         }

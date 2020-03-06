@@ -29,7 +29,7 @@ namespace Stripe
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<Order> CreateAsync(OrderCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Order> CreateAsync(OrderCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -39,7 +39,7 @@ namespace Stripe
             return this.GetEntity(orderId, options, requestOptions);
         }
 
-        public virtual Task<Order> GetAsync(string orderId, OrderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Order> GetAsync(string orderId, OrderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(orderId, options, requestOptions, cancellationToken);
         }
@@ -49,7 +49,7 @@ namespace Stripe
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Order>> ListAsync(OrderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Order>> ListAsync(OrderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -64,7 +64,7 @@ namespace Stripe
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/pay", options, requestOptions);
         }
 
-        public virtual Task<Order> PayAsync(string orderId, OrderPayOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Order> PayAsync(string orderId, OrderPayOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/pay", options, requestOptions, cancellationToken);
         }
@@ -74,7 +74,7 @@ namespace Stripe
             return this.Request<OrderReturn>(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/returns", options, requestOptions);
         }
 
-        public virtual Task<OrderReturn> ReturnAsync(string orderId, OrderReturnOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<OrderReturn> ReturnAsync(string orderId, OrderReturnOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<OrderReturn>(HttpMethod.Post, $"{this.InstanceUrl(orderId)}/returns", options, requestOptions, cancellationToken);
         }
@@ -84,7 +84,7 @@ namespace Stripe
             return this.UpdateEntity(orderId, options, requestOptions);
         }
 
-        public virtual Task<Order> UpdateAsync(string orderId, OrderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Order> UpdateAsync(string orderId, OrderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(orderId, options, requestOptions, cancellationToken);
         }

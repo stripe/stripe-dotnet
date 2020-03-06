@@ -27,7 +27,7 @@ namespace Stripe.Issuing
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(authorizationId)}/approve", options, requestOptions);
         }
 
-        public virtual Task<Authorization> ApproveAsync(string authorizationId, AuthorizationApproveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Authorization> ApproveAsync(string authorizationId, AuthorizationApproveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(authorizationId)}/approve", options, requestOptions, cancellationToken);
         }
@@ -37,7 +37,7 @@ namespace Stripe.Issuing
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(authorizationId)}/decline", options, requestOptions);
         }
 
-        public virtual Task<Authorization> DeclineAsync(string authorizationId, AuthorizationDeclineOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Authorization> DeclineAsync(string authorizationId, AuthorizationDeclineOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(authorizationId)}/decline", options, requestOptions, cancellationToken);
         }
@@ -47,7 +47,7 @@ namespace Stripe.Issuing
             return this.GetEntity(authorizationId, options, requestOptions);
         }
 
-        public virtual Task<Authorization> GetAsync(string authorizationId, AuthorizationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Authorization> GetAsync(string authorizationId, AuthorizationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(authorizationId, options, requestOptions, cancellationToken);
         }
@@ -57,7 +57,7 @@ namespace Stripe.Issuing
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Authorization>> ListAsync(AuthorizationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Authorization>> ListAsync(AuthorizationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -72,7 +72,7 @@ namespace Stripe.Issuing
             return this.UpdateEntity(authorizationId, options, requestOptions);
         }
 
-        public virtual Task<Authorization> UpdateAsync(string authorizationId, AuthorizationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Authorization> UpdateAsync(string authorizationId, AuthorizationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(authorizationId, options, requestOptions, cancellationToken);
         }

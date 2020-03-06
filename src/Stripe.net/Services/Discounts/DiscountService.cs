@@ -23,7 +23,7 @@ namespace Stripe
             return this.Request(HttpMethod.Delete, $"/v1/customers/{customerId}/discount", null, requestOptions);
         }
 
-        public virtual Task<Discount> DeleteCustomerDiscountAsync(string customerId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Discount> DeleteCustomerDiscountAsync(string customerId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Delete, $"/v1/customers/{customerId}/discount", null, requestOptions, cancellationToken);
         }
@@ -33,7 +33,7 @@ namespace Stripe
             return this.Request(HttpMethod.Delete, $"/v1/subscriptions/{subscriptionId}/discount", null, requestOptions);
         }
 
-        public virtual Task<Discount> DeleteSubscriptionDiscountAsync(string subscriptionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Discount> DeleteSubscriptionDiscountAsync(string subscriptionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Delete, $"/v1/subscriptions/{subscriptionId}/discount", null, requestOptions, cancellationToken);
         }

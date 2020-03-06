@@ -28,7 +28,7 @@ namespace Stripe
             return this.CreateNestedEntity(accountId, options, requestOptions);
         }
 
-        public virtual Task<IExternalAccount> CreateAsync(string accountId, ExternalAccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IExternalAccount> CreateAsync(string accountId, ExternalAccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateNestedEntityAsync(accountId, options, requestOptions, cancellationToken);
         }
@@ -38,7 +38,7 @@ namespace Stripe
             return this.DeleteNestedEntity(accountId, externalAccountId, options, requestOptions);
         }
 
-        public virtual Task<IExternalAccount> DeleteAsync(string accountId, string externalAccountId, ExternalAccountDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IExternalAccount> DeleteAsync(string accountId, string externalAccountId, ExternalAccountDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.DeleteNestedEntityAsync(accountId, externalAccountId, options, requestOptions, cancellationToken);
         }
@@ -48,7 +48,7 @@ namespace Stripe
             return this.GetNestedEntity(accountId, externalAccountId, options, requestOptions);
         }
 
-        public virtual Task<IExternalAccount> GetAsync(string accountId, string externalAccountId, ExternalAccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IExternalAccount> GetAsync(string accountId, string externalAccountId, ExternalAccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetNestedEntityAsync(accountId, externalAccountId, options, requestOptions, cancellationToken);
         }
@@ -58,7 +58,7 @@ namespace Stripe
             return this.ListNestedEntities(accountId, options, requestOptions);
         }
 
-        public virtual Task<StripeList<IExternalAccount>> ListAsync(string accountId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<IExternalAccount>> ListAsync(string accountId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListNestedEntitiesAsync(accountId, options, requestOptions, cancellationToken);
         }
@@ -73,7 +73,7 @@ namespace Stripe
             return this.UpdateNestedEntity(accountId, externalAccountId, options, requestOptions);
         }
 
-        public virtual Task<IExternalAccount> UpdateAsync(string accountId, string externalAccountId, ExternalAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<IExternalAccount> UpdateAsync(string accountId, string externalAccountId, ExternalAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateNestedEntityAsync(accountId, externalAccountId, options, requestOptions, cancellationToken);
         }

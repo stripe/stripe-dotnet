@@ -25,7 +25,7 @@ namespace Stripe.Sigma
             return this.GetEntity(queryRunId, options, requestOptions);
         }
 
-        public virtual Task<ScheduledQueryRun> GetAsync(string queryRunId, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<ScheduledQueryRun> GetAsync(string queryRunId, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(queryRunId, options, requestOptions, cancellationToken);
         }
@@ -35,7 +35,7 @@ namespace Stripe.Sigma
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<ScheduledQueryRun>> ListAsync(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<ScheduledQueryRun>> ListAsync(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }

@@ -26,7 +26,7 @@ namespace Stripe
             return this.GetEntity(mandateId, options, requestOptions);
         }
 
-        public virtual Task<Mandate> GetAsync(string mandateId, MandateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Mandate> GetAsync(string mandateId, MandateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(mandateId, options, requestOptions, cancellationToken);
         }

@@ -207,7 +207,7 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<TEntityReturned>(
                 method,
@@ -233,7 +233,7 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
             where T : IStripeEntity
         {
             requestOptions = this.SetupRequestOptions(requestOptions);

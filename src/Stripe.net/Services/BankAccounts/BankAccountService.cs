@@ -30,7 +30,7 @@ namespace Stripe
             return this.CreateNestedEntity(customerId, options, requestOptions);
         }
 
-        public virtual Task<BankAccount> CreateAsync(string customerId, BankAccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<BankAccount> CreateAsync(string customerId, BankAccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateNestedEntityAsync(customerId, options, requestOptions, cancellationToken);
         }
@@ -40,7 +40,7 @@ namespace Stripe
             return this.DeleteNestedEntity(customerId, bankAccountId, options, requestOptions);
         }
 
-        public virtual Task<BankAccount> DeleteAsync(string customerId, string bankAccountId, BankAccountDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<BankAccount> DeleteAsync(string customerId, string bankAccountId, BankAccountDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.DeleteNestedEntityAsync(customerId, bankAccountId, options, requestOptions, cancellationToken);
         }
@@ -50,7 +50,7 @@ namespace Stripe
             return this.GetNestedEntity(customerId, bankAccountId, options, requestOptions);
         }
 
-        public virtual Task<BankAccount> GetAsync(string customerId, string bankAccountId, BankAccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<BankAccount> GetAsync(string customerId, string bankAccountId, BankAccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetNestedEntityAsync(customerId, bankAccountId, options, requestOptions, cancellationToken);
         }
@@ -60,7 +60,7 @@ namespace Stripe
             return this.ListNestedEntities(customerId, options ?? new BankAccountListOptions(), requestOptions);
         }
 
-        public virtual Task<StripeList<BankAccount>> ListAsync(string customerId, BankAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<BankAccount>> ListAsync(string customerId, BankAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListNestedEntitiesAsync(customerId, options ?? new BankAccountListOptions(), requestOptions, cancellationToken);
         }
@@ -75,7 +75,7 @@ namespace Stripe
             return this.UpdateNestedEntity(customerId, bankAccountId, options, requestOptions);
         }
 
-        public virtual Task<BankAccount> UpdateAsync(string customerId, string bankAccountId, BankAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<BankAccount> UpdateAsync(string customerId, string bankAccountId, BankAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateNestedEntityAsync(customerId, bankAccountId, options, requestOptions, cancellationToken);
         }
@@ -85,7 +85,7 @@ namespace Stripe
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(customerId, bankAccountId)}/verify", options, requestOptions);
         }
 
-        public virtual Task<BankAccount> VerifyAsync(string customerId, string bankAccountId, BankAccountVerifyOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<BankAccount> VerifyAsync(string customerId, string bankAccountId, BankAccountVerifyOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(customerId, bankAccountId)}/verify", options, requestOptions, cancellationToken);
         }

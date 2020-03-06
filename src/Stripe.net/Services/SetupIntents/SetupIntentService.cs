@@ -29,7 +29,7 @@ namespace Stripe
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/cancel", options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> CancelAsync(string setupIntentId, SetupIntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SetupIntent> CancelAsync(string setupIntentId, SetupIntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/cancel", options, requestOptions, cancellationToken);
         }
@@ -39,7 +39,7 @@ namespace Stripe
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/confirm", options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> ConfirmAsync(string setupIntentId, SetupIntentConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SetupIntent> ConfirmAsync(string setupIntentId, SetupIntentConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(setupIntentId)}/confirm", options, requestOptions, cancellationToken);
         }
@@ -49,7 +49,7 @@ namespace Stripe
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> CreateAsync(SetupIntentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SetupIntent> CreateAsync(SetupIntentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -59,7 +59,7 @@ namespace Stripe
             return this.GetEntity(setupIntentId, options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> GetAsync(string setupIntentId, SetupIntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SetupIntent> GetAsync(string setupIntentId, SetupIntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(setupIntentId, options, requestOptions, cancellationToken);
         }
@@ -69,7 +69,7 @@ namespace Stripe
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<SetupIntent>> ListAsync(SetupIntentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<SetupIntent>> ListAsync(SetupIntentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -84,7 +84,7 @@ namespace Stripe
             return this.UpdateEntity(setupIntentId, options, requestOptions);
         }
 
-        public virtual Task<SetupIntent> UpdateAsync(string setupIntentId, SetupIntentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<SetupIntent> UpdateAsync(string setupIntentId, SetupIntentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(setupIntentId, options, requestOptions, cancellationToken);
         }

@@ -27,7 +27,7 @@ namespace Stripe.Issuing
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<Cardholder> CreateAsync(CardholderCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Cardholder> CreateAsync(CardholderCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -37,7 +37,7 @@ namespace Stripe.Issuing
             return this.GetEntity(cardholderId, options, requestOptions);
         }
 
-        public virtual Task<Cardholder> GetAsync(string cardholderId, CardholderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Cardholder> GetAsync(string cardholderId, CardholderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(cardholderId, options, requestOptions, cancellationToken);
         }
@@ -47,7 +47,7 @@ namespace Stripe.Issuing
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Cardholder>> ListAsync(CardholderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Cardholder>> ListAsync(CardholderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -62,7 +62,7 @@ namespace Stripe.Issuing
             return this.UpdateEntity(cardholderId, options, requestOptions);
         }
 
-        public virtual Task<Cardholder> UpdateAsync(string cardholderId, CardholderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Cardholder> UpdateAsync(string cardholderId, CardholderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(cardholderId, options, requestOptions, cancellationToken);
         }

@@ -133,7 +133,7 @@ namespace Stripe
         /// <returns>The task object representing the asynchronous operation.</returns>
         public async Task<StripeResponse> MakeRequestAsync(
             StripeRequest request,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             TimeSpan duration;
             Exception requestException = null;

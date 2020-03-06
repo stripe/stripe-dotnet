@@ -9,6 +9,6 @@ namespace Stripe
     {
         TEntity Delete(string id, TOptions options = null, RequestOptions requestOptions = null);
 
-        Task<TEntity> DeleteAsync(string id, TOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<TEntity> DeleteAsync(string id, TOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
     }
 }

@@ -57,7 +57,7 @@ namespace StripeTests
                 string path,
                 BaseOptions options,
                 RequestOptions requestOptions,
-                CancellationToken cancellationToken = default(CancellationToken))
+                CancellationToken cancellationToken = default)
                 where T : IStripeEntity
             {
                 this.LastOptions = options;
@@ -87,7 +87,7 @@ namespace StripeTests
                 return this.GetEntity(id, options, requestOptions);
             }
 
-            public virtual Task<TestEntity> GetAsync(string id, BaseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+            public virtual Task<TestEntity> GetAsync(string id, BaseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
             {
                 return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
             }
@@ -97,7 +97,7 @@ namespace StripeTests
                 return this.ListEntities(options, requestOptions);
             }
 
-            public virtual Task<StripeList<TestEntity>> ListAsync(ListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+            public virtual Task<StripeList<TestEntity>> ListAsync(ListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
             {
                 return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
             }

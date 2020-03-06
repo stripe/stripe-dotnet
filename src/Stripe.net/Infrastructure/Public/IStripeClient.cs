@@ -43,7 +43,7 @@ namespace Stripe
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
             where T : IStripeEntity;
     }
 }

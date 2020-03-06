@@ -27,7 +27,7 @@ namespace Stripe.Issuing
             return this.CreateEntity(options, requestOptions);
         }
 
-        public virtual Task<Dispute> CreateAsync(DisputeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Dispute> CreateAsync(DisputeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
@@ -37,7 +37,7 @@ namespace Stripe.Issuing
             return this.GetEntity(disputeId, options, requestOptions);
         }
 
-        public virtual Task<Dispute> GetAsync(string disputeId, DisputeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Dispute> GetAsync(string disputeId, DisputeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.GetEntityAsync(disputeId, options, requestOptions, cancellationToken);
         }
@@ -47,7 +47,7 @@ namespace Stripe.Issuing
             return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<StripeList<Dispute>> ListAsync(DisputeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<StripeList<Dispute>> ListAsync(DisputeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
         }
@@ -62,7 +62,7 @@ namespace Stripe.Issuing
             return this.UpdateEntity(disputeId, options, requestOptions);
         }
 
-        public virtual Task<Dispute> UpdateAsync(string disputeId, DisputeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual Task<Dispute> UpdateAsync(string disputeId, DisputeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(disputeId, options, requestOptions, cancellationToken);
         }
