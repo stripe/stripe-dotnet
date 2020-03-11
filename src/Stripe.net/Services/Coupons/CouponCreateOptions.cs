@@ -16,9 +16,6 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        [JsonProperty("percent_off")]
-        public decimal? PercentOff { get; set; }
-
         [JsonProperty("duration")]
         public string Duration { get; set; }
 
@@ -33,6 +30,9 @@ namespace Stripe
 
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        [JsonProperty("percent_off")]
+        public decimal? PercentOff { get; set; }
 
         [JsonProperty("redeem_by")]
         [JsonConverter(typeof(DateTimeConverter))]

@@ -7,9 +7,6 @@ namespace Stripe
 
     public class SourceCreateOptions : BaseOptions, IHasMetadata
     {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
         [JsonProperty("alipay")]
         public string Alipay { get; set; }
 
@@ -37,11 +34,11 @@ namespace Stripe
         [JsonProperty("owner")]
         public SourceOwnerOptions Owner { get; set; }
 
-        [JsonProperty("redirect")]
-        public SourceRedirectOptions Redirect { get; set; }
-
         [JsonProperty("receiver")]
         public SourceReceiverOptions Receiver { get; set; }
+
+        [JsonProperty("redirect")]
+        public SourceRedirectOptions Redirect { get; set; }
 
         [JsonProperty("source_order")]
         public SourceSourceOrderOptions SourceOrder { get; set; }
@@ -51,6 +48,9 @@ namespace Stripe
 
         [JsonProperty("token")]
         public string Token { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }

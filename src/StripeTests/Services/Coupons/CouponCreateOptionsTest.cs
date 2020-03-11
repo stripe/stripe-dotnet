@@ -15,7 +15,7 @@ namespace StripeTests
                 Duration = "forever",
             };
 
-            Assert.Equal("percent_off=25&duration=forever", FormEncoder.CreateQueryString(options));
+            Assert.Equal("duration=forever&percent_off=25", FormEncoder.CreateQueryString(options));
         }
     }
 }
