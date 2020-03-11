@@ -117,8 +117,7 @@ namespace Stripe
         [JsonProperty("customer_tax_ids")]
         public List<InvoiceCustomerTaxId> CustomerTaxIds { get; set; }
 
-        #region Expandable DefaultPaymentMethod
-
+        #region Expandable Default Payment Method
         [JsonIgnore]
         public string DefaultPaymentMethodId
         {
@@ -138,7 +137,7 @@ namespace Stripe
         internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
         #endregion
 
-        #region Expandable DefaultSource
+        #region Expandable Default Source
         [JsonIgnore]
         public string DefaultSourceId
         {
@@ -202,8 +201,7 @@ namespace Stripe
         [JsonProperty("paid")]
         public bool Paid { get; set; }
 
-        #region Expandable PaymentIntent
-
+        #region Expandable Payment Intent
         [JsonIgnore]
         public string PaymentIntentId
         {

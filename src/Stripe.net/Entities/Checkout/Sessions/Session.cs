@@ -61,8 +61,7 @@ namespace Stripe.Checkout
         [JsonProperty("mode")]
         public string Mode { get; set; }
 
-        #region Expandable PaymentIntent
-
+        #region Expandable Payment Intent
         [JsonIgnore]
         public string PaymentIntentId
         {
@@ -85,8 +84,7 @@ namespace Stripe.Checkout
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
-        #region Expandable SetupIntent
-
+        #region Expandable Setup Intent
         [JsonIgnore]
         public string SetupIntentId
         {
@@ -107,7 +105,6 @@ namespace Stripe.Checkout
         #endregion
 
         #region Expandable Subscription
-
         [JsonIgnore]
         public string SubscriptionId
         {

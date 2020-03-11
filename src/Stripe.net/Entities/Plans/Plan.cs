@@ -54,7 +54,6 @@ namespace Stripe
         public string Nickname { get; set; }
 
         #region Expandable Product
-
         [JsonIgnore]
         public string ProductId
         {

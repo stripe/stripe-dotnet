@@ -17,7 +17,6 @@ namespace Stripe
         public long Amount { get; set; }
 
         #region Expandable Balance Transaction
-
         [JsonIgnore]
         public string BalanceTransactionId { get; set; }
 

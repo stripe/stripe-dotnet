@@ -26,7 +26,6 @@ namespace Stripe
         public long? ApplicationFee { get; set; }
 
         #region Expandable Charge
-
         [JsonIgnore]
         public string ChargeId
         {
@@ -54,7 +53,6 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
-
         [JsonIgnore]
         public string CustomerId { get; set; }
 

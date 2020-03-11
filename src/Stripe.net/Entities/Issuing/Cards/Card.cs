@@ -50,8 +50,7 @@ namespace Stripe.Issuing
         [JsonProperty("pin")]
         public CardPin Pin { get; set; }
 
-        #region Expandable ReplacementFor
-
+        #region Expandable Replacement For
         [JsonIgnore]
         public string ReplacementForId
         {

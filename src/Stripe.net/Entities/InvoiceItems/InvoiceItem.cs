@@ -20,7 +20,6 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
-
         [JsonIgnore]
         public string CustomerId
         {
@@ -54,7 +53,6 @@ namespace Stripe
         public bool Discountable { get; set; }
 
         #region Expandable Invoice
-
         [JsonIgnore]
         public string InvoiceId
         {
@@ -93,7 +91,6 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         #region Expandable Subscription
-
         [JsonIgnore]
         public string SubscriptionId
         {

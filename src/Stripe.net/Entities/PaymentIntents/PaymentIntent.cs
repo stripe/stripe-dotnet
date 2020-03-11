@@ -23,7 +23,6 @@ namespace Stripe
         public long? AmountReceived { get; set; }
 
         #region Expandable Application
-
         [JsonIgnore]
         public string ApplicationId
         {
@@ -73,7 +72,6 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
-
         [JsonIgnore]
         public string CustomerId
         {
@@ -97,7 +95,6 @@ namespace Stripe
         public string Description { get; set; }
 
         #region Expandable Invoice
-
         [JsonIgnore]
         public string InvoiceId
         {
@@ -129,8 +126,7 @@ namespace Stripe
         [JsonProperty("next_action")]
         public PaymentIntentNextAction NextAction { get; set; }
 
-        #region Expandable OnBehalfOf (Account)
-
+        #region Expandable On Behalf Of
         [JsonIgnore]
         public string OnBehalfOfId
         {
@@ -150,8 +146,7 @@ namespace Stripe
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
 
-        #region Expandable PaymentMethod
-
+        #region Expandable Payment Method
         [JsonIgnore]
         public string PaymentMethodId
         {
@@ -181,7 +176,6 @@ namespace Stripe
         public string ReceiptEmail { get; set; }
 
         #region Expandable Review
-
         [JsonIgnore]
         public string ReviewId
         {
@@ -208,7 +202,6 @@ namespace Stripe
         public Shipping Shipping { get; set; }
 
         #region Expandable Source
-
         [JsonIgnore]
         public string SourceId
         {
