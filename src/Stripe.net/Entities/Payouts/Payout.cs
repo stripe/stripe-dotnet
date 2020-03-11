@@ -74,7 +74,6 @@ namespace Stripe
         #endregion
 
         #region Expandable Failure Balance Transaction
-
         [JsonIgnore]
         public string FailureBalanceTransactionId
         {
@@ -118,7 +117,6 @@ namespace Stripe
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        // example: bank_account
         [JsonProperty("type")]
         public string Type { get; set; }
     }

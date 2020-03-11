@@ -36,7 +36,7 @@ namespace Stripe.Issuing
         internal ExpandableField<Authorization> InternalAuthorization { get; set; }
         #endregion
 
-        #region Expandable BalanceTransaction
+        #region Expandable Balance Transaction
         [JsonIgnore]
         public string BalanceTransactionId
         {

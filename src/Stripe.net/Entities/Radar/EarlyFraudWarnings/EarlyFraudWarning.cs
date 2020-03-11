@@ -17,7 +17,6 @@ namespace Stripe.Radar
         public bool Actionable { get; set; }
 
         #region Expandable Charge
-
         [JsonIgnore]
         public string ChargeId
         {

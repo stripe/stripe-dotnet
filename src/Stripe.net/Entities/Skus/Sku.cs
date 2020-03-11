@@ -48,7 +48,6 @@ namespace Stripe
         public long Price { get; set; }
 
         #region Expandable Product
-
         [JsonIgnore]
         public string ProductId
         {

@@ -30,7 +30,6 @@ namespace Stripe
         public DateTime Created { get; set; }
 
         #region Expandable Customer
-
         [JsonIgnore]
         public string CustomerId
         {

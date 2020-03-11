@@ -14,7 +14,6 @@ namespace Stripe
         public string Object { get; set; }
 
         #region Expandable Application
-
         [JsonIgnore]
         public string ApplicationId
         {
@@ -45,7 +44,6 @@ namespace Stripe
         public DateTime Created { get; set; }
 
         #region Expandable Customer
-
         [JsonIgnore]
         public string CustomerId
         {
@@ -75,7 +73,6 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         #region Expandable Mandate
-
         [JsonIgnore]
         public string MandateId
         {
@@ -101,8 +98,7 @@ namespace Stripe
         [JsonProperty("next_action")]
         public SetupIntentNextAction NextAction { get; set; }
 
-        #region Expandable OnBehalfOf (Account)
-
+        #region Expandable On Behalf Of
         [JsonIgnore]
         public string OnBehalfOfId
         {
@@ -122,8 +118,7 @@ namespace Stripe
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
 
-        #region Expandable PaymentMethod
-
+        #region Expandable Payment Method
         [JsonIgnore]
         public string PaymentMethodId
         {
@@ -149,8 +144,7 @@ namespace Stripe
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
-        #region Expandable SingleUseMandate
-
+        #region Expandable Single Use Mandate
         [JsonIgnore]
         public string SingleUseMandateId
         {

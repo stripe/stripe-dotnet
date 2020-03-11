@@ -26,8 +26,7 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        #region Expandable DefaultSource
-
+        #region Expandable Default Source
         [JsonIgnore]
         public string DefaultSourceId
         {

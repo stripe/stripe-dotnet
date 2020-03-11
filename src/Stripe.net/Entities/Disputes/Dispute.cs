@@ -61,7 +61,7 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        #region Expandable PaymentIntent
+        #region Expandable Payment Intent
         [JsonIgnore]
         public string PaymentIntentId
         {
