@@ -46,5 +46,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
+
+        /// <summary>
+        /// A string that identifies this top-up as part of a group.
+        /// </summary>
+        [JsonProperty("transfer_group")]
+        public string TransferGroup { get; set; }
     }
 }
