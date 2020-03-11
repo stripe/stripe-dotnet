@@ -7,11 +7,11 @@ namespace Stripe.Issuing
 
     public class AuthorizationListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("cardholder")]
-        public string Cardholder { get; set; }
-
         [JsonProperty("card")]
         public string Card { get; set; }
+
+        [JsonProperty("cardholder")]
+        public string Cardholder { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
