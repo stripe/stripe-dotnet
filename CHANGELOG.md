@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.5.0 - 2020-03-12
+* [#1953](https://github.com/stripe/stripe-dotnet/pull/1953) Add support for `Shipping` and `ShippingAddressCollection` on Checkout `Session`
+
 ## 35.4.0 - 2020-03-12
 * [#1951](https://github.com/stripe/stripe-dotnet/pull/1951) Add multiple missing features
   * `DomainName` filter when listing `ApplePayDomain`
