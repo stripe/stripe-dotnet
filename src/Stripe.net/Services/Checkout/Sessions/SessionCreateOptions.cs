@@ -91,6 +91,13 @@ namespace Stripe.Checkout
         public SessionSetupIntentDataOptions SetupIntentData { get; set; }
 
         /// <summary>
+        /// When set, provides configuration for Checkout to collect a shipping address from a
+        /// customer.
+        /// </summary>
+        [JsonProperty("shipping_address_collection")]
+        public SessionShippingAddressCollectionOptions ShippingAddressCollection { get; set; }
+
+        /// <summary>
         /// Describes the type of transaction being performed by Checkout in
         /// order to customize relevant text on the page, such as the Submit
         /// button. <c>submit_type</c> can only be specified on checkout
