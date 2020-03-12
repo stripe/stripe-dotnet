@@ -1,5 +1,6 @@
 namespace Stripe.Issuing
 {
+    using System;
     using Newtonsoft.Json;
 
     public class VerificationData : StripeEntity<VerificationData>
@@ -19,6 +20,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// One of <c>success</c>, <c>failure</c>, <c>exempt</c>, or <c>none</c>.
         /// </summary>
+        [Obsolete("Use ThreeDSecure instead")]
         [JsonProperty("authentication")]
         public string Authentication { get; set; }
 
@@ -33,5 +35,11 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("expiry_check")]
         public string ExpiryCheck { get; set; }
+
+        /// <summary>
+        /// 3D Secure details on this authorization.
+        /// </summary>
+        [JsonProperty("three_d_secure")]
+        public AuthorizationVerificationDataThreeDSecure ThreeDSecure { get; set; }
     }
 }
