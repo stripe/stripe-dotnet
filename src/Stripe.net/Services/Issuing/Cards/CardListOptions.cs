@@ -16,6 +16,9 @@ namespace Stripe.Issuing
         [JsonProperty("last4")]
         public string Last4 { get; set; }
 
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
         [JsonProperty("source")]
         public string Source { get; set; }
 

@@ -4,5 +4,7 @@ namespace Stripe
 
     public class ApplePayDomainListOptions : ListOptions
     {
+        [JsonProperty("domain_name")]
+        public string DomainName { get; set; }
     }
 }
