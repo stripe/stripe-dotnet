@@ -1,5 +1,15 @@
 # Changelog
 
+## 35.4.0 - 2020-03-12
+* [#1951](https://github.com/stripe/stripe-dotnet/pull/1951) Add multiple missing features
+  * `DomainName` filter when listing `ApplePayDomain`
+  * `Name` filter when listing Issuing `Card`
+  * `Amount` on `Source` Update
+  * `TransferGroup` on `Topup` creation
+  * `Description` on `Topup` update
+  * `Status` filter when listing `Topup`
+* [#1952](https://github.com/stripe/stripe-dotnet/pull/1952) Add support for `ThreeDSecure` on Issuing `Authorization`
+
 ## 35.3.0 - 2020-03-04
 * [#1945](https://github.com/stripe/stripe-dotnet/pull/1945) Add support for `Description`, `Iin` and `Issuer` on `PaymentMethod`
 * [#1944](https://github.com/stripe/stripe-dotnet/pull/1944) Add support for `Metadata` on `WebhookEndpoint`
