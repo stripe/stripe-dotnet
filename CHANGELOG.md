@@ -1,5 +1,11 @@
 # Changelog
 
+## 35.6.0 - 2020-03-13
+* [#1955](https://github.com/stripe/stripe-dotnet/pull/1955) Multiple changes for Issuing APIs
+  * Rename `Speed` to `Service` on Issuing `Card`
+  * Rename `WalletProvider` to `Wallet` and `AddressZipCheck` to `AddressPostalCodeCheck` on Issuing `Authorization`
+  * Mark `IsDefault` as deprecated on Issuing `Cardholder`
+
 ## 35.5.0 - 2020-03-12
 * [#1953](https://github.com/stripe/stripe-dotnet/pull/1953) Add support for `Shipping` and `ShippingAddressCollection` on Checkout `Session`
 
