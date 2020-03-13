@@ -56,9 +56,7 @@ namespace Stripe.Issuing
         [JsonProperty("individual")]
         public CardholderIndividual Individual { get; set; }
 
-        /// <summary>
-        /// Whether or not this cardholder is the default cardholder.
-        /// </summary>
+        [Obsolete("This property is considered deprecated.")]
         [JsonProperty("is_default")]
         public bool IsDefault { get; set; }
 

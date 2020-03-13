@@ -91,6 +91,11 @@ namespace Stripe.Issuing
         [JsonProperty("verification_data")]
         public VerificationData VerificationData { get; set; }
 
+
+        [JsonProperty("wallet")]
+        public string Wallet { get; set; }
+
+        [Obsolete("Use Wallet instead")]
         [JsonProperty("wallet_provider")]
         public string WalletProvider { get; set; }
     }
