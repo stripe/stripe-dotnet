@@ -1,5 +1,6 @@
 namespace Stripe.Issuing
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
@@ -35,9 +36,7 @@ namespace Stripe.Issuing
         [JsonProperty("individual")]
         public CardholderIndividualOptions Individual { get; set; }
 
-        /// <summary>
-        /// Whether or not this cardholder is the default cardholder.
-        /// </summary>
+        [Obsolete("This parameter is considered deprecated.")]
         [JsonProperty("is_default")]
         public bool? IsDefault { get; set; }
 

@@ -1,5 +1,6 @@
 namespace Stripe.Issuing
 {
+    using System;
     using Newtonsoft.Json;
 
     public class CardShippingOptions : INestedOptions
@@ -20,6 +21,10 @@ namespace Stripe.Issuing
         /// Shipment speed. One of <c>express</c>, <c>overnight</c>, or
         /// <c>standard</c>. Defaults to <c>standard</c>.
         /// </summary>
+        [JsonProperty("service")]
+        public string Service { get; set; }
+
+        [Obsolete("Use Service instead")]
         [JsonProperty("speed")]
         public string Speed { get; set; }
 

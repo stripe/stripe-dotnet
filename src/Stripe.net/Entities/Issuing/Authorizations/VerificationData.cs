@@ -14,6 +14,10 @@ namespace Stripe.Issuing
         /// <summary>
         /// One of <c>match</c>, <c>mismatch</c>, or <c>not_provided</c>.
         /// </summary>
+        [JsonProperty("address_postal_code_check")]
+        public string AddressPostalCodeCheck { get; set; }
+
+        [Obsolete("Use AddressPostalCodeCheck instead")]
         [JsonProperty("address_zip_check")]
         public string AddressZipCheck { get; set; }
 
