@@ -8,20 +8,22 @@ namespace Stripe.Issuing
     public class RequestHistory : StripeEntity<RequestHistory>
     {
         /// <summary>
+        /// The total amount in the card's currency that was authorized or rejected.
+        /// </summary>
+        [JsonProperty("amount")]
+        public long Amount { get; set; }
+
+        /// <summary>
         /// Whether this request was approved.
         /// </summary>
         [JsonProperty("approved")]
         public bool Approved { get; set; }
 
-        /// <summary>
-        /// The amount that was authorized at the time of this request.
-        /// </summary>
+        [Obsolete("This field is considered deprecated.")]
         [JsonProperty("authorized_amount")]
         public long AuthorizedAmount { get; set; }
 
-        /// <summary>
-        /// The currency that was presented to the cardholder for the authorization.
-        /// </summary>
+        [Obsolete("This field is considered deprecated.")]
         [JsonProperty("authorized_currency")]
         public string AuthorizedCurrency { get; set; }
 
@@ -32,18 +34,26 @@ namespace Stripe.Issuing
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
-        /// <summary>
-        /// The amount Stripe held from your account to fund the authorization, if the request was
-        /// approved.
-        /// </summary>
+        [Obsolete("This field is considered deprecated.")]
         [JsonProperty("held_amount")]
         public long HeldAmount { get; set; }
 
-        /// <summary>
-        /// The currency of the held amount.
-        /// </summary>
+        [Obsolete("This field is considered deprecated.")]
         [JsonProperty("held_currency")]
         public string HeldCurrency { get; set; }
+
+        /// <summary>
+        /// The total amount that was authorized or rejected in the local
+        /// <see cref="MerchantCurrency"/>.
+        /// </summary>
+        [JsonProperty("merchant_amount")]
+        public long MerchantAmount { get; set; }
+
+        /// <summary>
+        /// The currency of the held amount. This will always be the card currency.
+        /// </summary>
+        [JsonProperty("merchant_currency")]
+        public string MerchantCurrency { get; set; }
 
         /// <summary>
         /// The reason for the approval or decline.
