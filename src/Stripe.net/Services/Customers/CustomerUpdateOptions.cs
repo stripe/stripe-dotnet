@@ -5,13 +5,13 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class CustomerUpdateOptions : BaseOptions, IHasMetadata
+    public class CustomerUpdateOptions : BaseOptions
     {
         /// <summary>
         /// The customer’s address.
         /// </summary>
         [JsonProperty("address")]
-        public AddressOptions Address { get; set; }
+        public AnyOf<AddressOptions, EmptyParam> Address { get; set; }
 
         /// <summary>
         /// Current balance, if any, being stored on the customer. If negative, the customer has
@@ -24,16 +24,16 @@ namespace Stripe
         public long? Balance { get; set; }
 
         [JsonProperty("coupon")]
-        public string Coupon { get; set; }
+        public AnyOf<string, EmptyParam> Coupon { get; set; }
 
         [JsonProperty("default_source")]
-        public string DefaultSource { get; set; }
+        public AnyOf<string, EmptyParam> DefaultSource { get; set; }
 
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public AnyOf<string, EmptyParam> Description { get; set; }
 
         [JsonProperty("email")]
-        public string Email { get; set; }
+        public AnyOf<string, EmptyParam> Email { get; set; }
 
         [JsonProperty("invoice_prefix")]
         public string InvoicePrefix { get; set; }
@@ -42,13 +42,13 @@ namespace Stripe
         public CustomerInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
+        public AnyOf<Dictionary<string, string>, EmptyParam> Metadata { get; set; }
 
         /// <summary>
         /// The customer’s full name or business name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; }
+        public AnyOf<string, EmptyParam> Name { get; set; }
 
         /// <summary>
         /// The suffix of the customer’s next invoice number.
@@ -69,7 +69,7 @@ namespace Stripe
         public List<string> PreferredLocales { get; set; }
 
         [JsonProperty("shipping")]
-        public ShippingOptions Shipping { get; set; }
+        public AnyOf<ShippingOptions, EmptyParam> Shipping { get; set; }
 
         /// <summary>
         /// A Token’s or a Source’s ID, as returned by
@@ -82,14 +82,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("source")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
+        public AnyOf<string, CardCreateNestedOptions, EmptyParam> Source { get; set; }
 
         /// <summary>
         /// Describes the customer’s tax exemption status. One of <c>none</c>,  <c>exempt</c>, or
         /// <c>reverse</c>.
         /// </summary>
         [JsonProperty("tax_exempt")]
-        public string TaxExempt { get; set; }
+        public AnyOf<string, EmptyParam> TaxExempt { get; set; }
 
         [JsonProperty("validate")]
         public bool? Validate { get; set; }
