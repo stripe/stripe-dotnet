@@ -80,6 +80,13 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
+#if !NET45
+        public virtual IAsyncEnumerable<Invoice> ListAutoPagingAsync(InvoiceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+        }
+#endif
+
         public virtual StripeList<InvoiceLineItem> ListLineItems(string invoiceId, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(invoiceId)}/lines", options, requestOptions);
@@ -95,6 +102,13 @@ namespace Stripe
             return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl(invoiceId)}/lines", options, requestOptions);
         }
 
+#if !NET45
+        public virtual IAsyncEnumerable<InvoiceLineItem> ListLineItemsAutoPagingAsync(string invoiceId, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"{this.InstanceUrl(invoiceId)}/lines", options, requestOptions, cancellationToken);
+        }
+#endif
+
         public virtual StripeList<InvoiceLineItem> ListUpcomingLineItems(UpcomingInvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl("upcoming")}/lines", options, requestOptions);
@@ -109,6 +123,13 @@ namespace Stripe
         {
             return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl("upcoming")}/lines", options, requestOptions);
         }
+
+#if !NET45
+        public virtual IAsyncEnumerable<InvoiceLineItem> ListUpcomingLineItemsAutoPagingAsync(UpcomingInvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"{this.InstanceUrl("upcoming")}/lines", options, requestOptions, cancellationToken);
+        }
+#endif
 
         public virtual Invoice MarkUncollectible(string invoiceId, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null)
         {

@@ -132,10 +132,20 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var creditNotes = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(creditNotes);
-            Assert.Equal("credit_note", creditNotes[0].Object);
+            var creditNote = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(creditNote);
+            Assert.Equal("credit_note", creditNote.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var creditNote = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(creditNote);
+            Assert.Equal("credit_note", creditNote.Object);
+        }
+#endif
 
         [Fact]
         public void ListLineItems()
@@ -162,10 +172,20 @@ namespace StripeTests
         [Fact]
         public void ListLineItemsAutoPaging()
         {
-            var lineItems = this.service.ListLineItemsAutoPaging(CreditNoteId, this.listLineItemsOptions).ToList();
-            Assert.NotNull(lineItems);
-            Assert.Equal("credit_note_line_item", lineItems[0].Object);
+            var lineItem = this.service.ListLineItemsAutoPaging(CreditNoteId, this.listLineItemsOptions).First();
+            Assert.NotNull(lineItem);
+            Assert.Equal("credit_note_line_item", lineItem.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListLineItemsAutoPagingAsync()
+        {
+            var lineItem = await this.service.ListLineItemsAutoPagingAsync(CreditNoteId, this.listLineItemsOptions).FirstAsync();
+            Assert.NotNull(lineItem);
+            Assert.Equal("credit_note_line_item", lineItem.Object);
+        }
+#endif
 
         [Fact]
         public void Preview()
@@ -210,10 +230,20 @@ namespace StripeTests
         [Fact]
         public void ListPreviewLineItemsAutoPaging()
         {
-            var lineItems = this.service.ListPreviewLineItemsAutoPaging(this.listPreviewLineItemsOptions).ToList();
-            Assert.NotNull(lineItems);
-            Assert.Equal("credit_note_line_item", lineItems[0].Object);
+            var lineItem = this.service.ListPreviewLineItemsAutoPaging(this.listPreviewLineItemsOptions).First();
+            Assert.NotNull(lineItem);
+            Assert.Equal("credit_note_line_item", lineItem.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListPreviewLineItemsAutoPagingAsync()
+        {
+            var lineItem = await this.service.ListPreviewLineItemsAutoPagingAsync(this.listPreviewLineItemsOptions).FirstAsync();
+            Assert.NotNull(lineItem);
+            Assert.Equal("credit_note_line_item", lineItem.Object);
+        }
+#endif
 
         [Fact]
         public void Update()

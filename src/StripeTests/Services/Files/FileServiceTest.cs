@@ -106,9 +106,19 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var files = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(files);
-            Assert.Equal("file", files[0].Object);
+            var file = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(file);
+            Assert.Equal("file", file.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var file = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(file);
+            Assert.Equal("file", file.Object);
+        }
+#endif
     }
 }

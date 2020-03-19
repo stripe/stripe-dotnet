@@ -6,9 +6,11 @@ namespace Stripe
     using System.Net;
     using System.Net.Http;
     using System.Reflection;
+#if !NET45
+    using System.Runtime.CompilerServices;
+#endif
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     /// <summary>Abstract base class for all services.</summary>
     /// <typeparam name="TEntityReturned">
@@ -163,6 +165,20 @@ namespace Stripe
                 requestOptions);
         }
 
+#if !NET45
+        protected IAsyncEnumerable<TEntityReturned> ListEntitiesAutoPagingAsync(
+            ListOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken)
+        {
+            return this.ListRequestAutoPagingAsync<TEntityReturned>(
+                this.ClassUrl(),
+                options,
+                requestOptions,
+                cancellationToken);
+        }
+#endif
+
         protected TEntityReturned UpdateEntity(
             string id,
             BaseOptions options,
@@ -245,6 +261,91 @@ namespace Stripe
                 cancellationToken).ConfigureAwait(false);
         }
 
+#if !NET45
+        protected IEnumerable<T> ListRequestAutoPaging<T>(
+            string url,
+            ListOptions options,
+            RequestOptions requestOptions)
+            where T : IStripeEntity
+        {
+            return this.ListRequestAutoPagingAsync<T>(url, options, requestOptions)
+                .ToEnumerable();
+        }
+
+        protected async IAsyncEnumerable<T> ListRequestAutoPagingAsync<T>(
+            string url,
+            ListOptions options,
+            RequestOptions requestOptions,
+            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+            where T : IStripeEntity
+        {
+            var page = await this.RequestAsync<StripeList<T>>(
+                HttpMethod.Get,
+                url,
+                options,
+                requestOptions,
+                cancellationToken);
+
+            options = options ?? new ListOptions();
+            bool iterateBackward = false;
+
+            // Backward iterating activates if we have an `EndingBefore`
+            // constraint and not a `StartingAfter` constraint
+            if (!string.IsNullOrEmpty(options.EndingBefore) && string.IsNullOrEmpty(options.StartingAfter))
+            {
+                iterateBackward = true;
+            }
+
+            while (true)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+
+                if (iterateBackward)
+                {
+                    page.Reverse();
+                }
+
+                string itemId = null;
+                foreach (var item in page)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+
+                    // Elements in `StripeList` instances are decoded by `StripeObjectConverter`,
+                    // which returns `null` for objects it doesn't know how to decode.
+                    // When auto-paginating, we simply ignore these null elements but still return
+                    // other elements.
+                    if (item == null)
+                    {
+                        continue;
+                    }
+
+                    itemId = ((IHasId)item).Id;
+                    yield return item;
+                }
+
+                if (!page.HasMore || string.IsNullOrEmpty(itemId))
+                {
+                    break;
+                }
+
+                if (iterateBackward)
+                {
+                    options.EndingBefore = itemId;
+                }
+                else
+                {
+                    options.StartingAfter = itemId;
+                }
+
+                page = await this.RequestAsync<StripeList<T>>(
+                    HttpMethod.Get,
+                    url,
+                    options,
+                    requestOptions,
+                    cancellationToken);
+            }
+        }
+#else
         protected IEnumerable<T> ListRequestAutoPaging<T>(
             string url,
             ListOptions options,
@@ -311,6 +412,7 @@ namespace Stripe
                     requestOptions);
             }
         }
+#endif
 
         protected RequestOptions SetupRequestOptions(RequestOptions requestOptions)
         {

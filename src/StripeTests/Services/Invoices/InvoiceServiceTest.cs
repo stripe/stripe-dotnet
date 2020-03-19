@@ -189,10 +189,20 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var invoices = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(invoices);
-            Assert.Equal("invoice", invoices[0].Object);
+            var invoice = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(invoice);
+            Assert.Equal("invoice", invoice.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var invoice = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(invoice);
+            Assert.Equal("invoice", invoice.Object);
+        }
+#endif
 
         [Fact]
         public void ListLineItems()
@@ -219,10 +229,20 @@ namespace StripeTests
         [Fact]
         public void ListLineItemsAutoPaging()
         {
-            var lineItems = this.service.ListLineItemsAutoPaging(InvoiceId, this.listLineItemsOptions).ToList();
-            Assert.NotNull(lineItems);
-            Assert.Equal("line_item", lineItems[0].Object);
+            var lineItem = this.service.ListLineItemsAutoPaging(InvoiceId, this.listLineItemsOptions).First();
+            Assert.NotNull(lineItem);
+            Assert.Equal("line_item", lineItem.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListLineItemsAutoPagingAsync()
+        {
+            var lineItem = await this.service.ListLineItemsAutoPagingAsync(InvoiceId, this.listLineItemsOptions).FirstAsync();
+            Assert.NotNull(lineItem);
+            Assert.Equal("line_item", lineItem.Object);
+        }
+#endif
 
         [Fact]
         public void ListUpcomingLineItems()
@@ -249,10 +269,20 @@ namespace StripeTests
         [Fact]
         public void ListUpcomingLineItemsAutoPaging()
         {
-            var lineItems = this.service.ListUpcomingLineItemsAutoPaging(this.upcomingListLineItemsOptions).ToList();
-            Assert.NotNull(lineItems);
-            Assert.Equal("line_item", lineItems[0].Object);
+            var lineItem = this.service.ListUpcomingLineItemsAutoPaging(this.upcomingListLineItemsOptions).First();
+            Assert.NotNull(lineItem);
+            Assert.Equal("line_item", lineItem.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListUpcomingLineItemsAutoPagingAsync()
+        {
+            var lineItem = await this.service.ListUpcomingLineItemsAutoPagingAsync(this.upcomingListLineItemsOptions).FirstAsync();
+            Assert.NotNull(lineItem);
+            Assert.Equal("line_item", lineItem.Object);
+        }
+#endif
 
         [Fact]
         public void MarkUncollectible()

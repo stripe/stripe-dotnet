@@ -47,6 +47,13 @@ namespace Stripe
             return this.ListNestedEntitiesAutoPaging(accountId, options, requestOptions);
         }
 
+#if !NET45
+        public virtual IAsyncEnumerable<Capability> ListAutoPagingAsync(string accountId, CapabilityListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListNestedEntitiesAutoPagingAsync(accountId, options, requestOptions, cancellationToken);
+        }
+#endif
+
         public virtual Capability Update(string accountId,  string capabilityId, CapabilityUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateNestedEntity(accountId, capabilityId, options, requestOptions);

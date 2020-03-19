@@ -57,6 +57,13 @@ namespace Stripe
             return this.ListNestedEntitiesAutoPaging(customerId, options, requestOptions);
         }
 
+#if !NET45
+        public virtual IAsyncEnumerable<CustomerBalanceTransaction> ListAutoPagingAsync(string customerId, CustomerBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListNestedEntitiesAutoPagingAsync(customerId, options, requestOptions, cancellationToken);
+        }
+#endif
+
         public virtual CustomerBalanceTransaction Update(string customerId, string transactionId, CustomerBalanceTransactionUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateNestedEntity(customerId, transactionId, options, requestOptions);

@@ -13,5 +13,9 @@ namespace Stripe
         Task<StripeList<TEntity>> ListAsync(string parentId, TOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
 
         IEnumerable<TEntity> ListAutoPaging(string parentId, TOptions listOptions = null, RequestOptions requestOptions = null);
+
+#if !NET45
+        IAsyncEnumerable<TEntity> ListAutoPagingAsync(string parentId, TOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+#endif
     }
 }
