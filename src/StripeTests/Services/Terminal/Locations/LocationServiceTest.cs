@@ -114,10 +114,20 @@ namespace StripeTests.Terminal
         [Fact]
         public void ListAutoPaging()
         {
-            var locations = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(locations);
-            Assert.Equal("terminal.location", locations[0].Object);
+            var location = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(location);
+            Assert.Equal("terminal.location", location.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var location = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(location);
+            Assert.Equal("terminal.location", location.Object);
+        }
+#endif
 
         [Fact]
         public void Update()

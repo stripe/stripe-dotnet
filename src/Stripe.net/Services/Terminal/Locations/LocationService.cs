@@ -70,6 +70,13 @@ namespace Stripe.Terminal
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
+#if !NET45
+        public virtual IAsyncEnumerable<Location> ListAutoPagingAsync(LocationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+        }
+#endif
+
         public virtual Location Update(string locationId, LocationUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(locationId, options, requestOptions);

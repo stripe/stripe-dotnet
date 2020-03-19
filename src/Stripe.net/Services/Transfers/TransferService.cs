@@ -58,6 +58,13 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
+#if !NET45
+        public virtual IAsyncEnumerable<Transfer> ListAutoPagingAsync(TransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+        }
+#endif
+
         public virtual Transfer Update(string transferId, TransferUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(transferId, options, requestOptions);

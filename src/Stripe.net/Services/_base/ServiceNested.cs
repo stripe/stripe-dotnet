@@ -139,6 +139,21 @@ namespace Stripe
                 requestOptions);
         }
 
+#if !NET45
+        protected IAsyncEnumerable<TEntityReturned> ListNestedEntitiesAutoPagingAsync(
+            string parentId,
+            ListOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken)
+        {
+            return this.ListRequestAutoPagingAsync<TEntityReturned>(
+                this.ClassUrl(parentId),
+                options,
+                requestOptions,
+                cancellationToken);
+        }
+#endif
+
         protected TEntityReturned UpdateNestedEntity(
             string parentId,
             string id,

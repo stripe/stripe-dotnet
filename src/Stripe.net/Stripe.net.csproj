@@ -6,6 +6,13 @@
     <AssemblyTitle>Stripe.net</AssemblyTitle>
     <VersionPrefix>35.10.0</VersionPrefix>
     <Version>35.10.0</Version>
+    <VersionPrefix>35.7.0</VersionPrefix>
+    <Version>35.7.0</Version>
+    <VersionPrefix>35.6.0</VersionPrefix>
+    <Version>35.6.0</Version>
+    <LangVersion>8</LangVersion>
+    <VersionPrefix>35.3.0</VersionPrefix>
+    <Version>35.3.0</Version>
     <Authors>Stripe, Jayme Davis</Authors>
     <TargetFrameworks>netstandard2.0;net461;net45</TargetFrameworks>
     <AssemblyName>Stripe.net</AssemblyName>
@@ -39,11 +46,15 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+    <PackageReference Include="System.Linq.Async" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0" />
     <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+    <PackageReference Include="System.Linq.Async" Version="4.0.0" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>

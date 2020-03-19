@@ -119,9 +119,18 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var cards = this.service.ListAutoPaging(CustomerId, this.listOptions).ToList();
-            Assert.NotNull(cards);
+            var card = this.service.ListAutoPaging(CustomerId, this.listOptions).First();
+            Assert.NotNull(card);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var card = await this.service.ListAutoPagingAsync(CustomerId, this.listOptions).FirstAsync();
+            Assert.NotNull(card);
+        }
+#endif
 
         [Fact]
         public void Update()

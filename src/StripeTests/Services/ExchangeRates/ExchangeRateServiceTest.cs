@@ -68,9 +68,19 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var exchangeRates = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(exchangeRates);
-            Assert.Equal("exchange_rate", exchangeRates[0].Object);
+            var exchangeRate = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(exchangeRate);
+            Assert.Equal("exchange_rate", exchangeRate.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var exchangeRate = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(exchangeRate);
+            Assert.Equal("exchange_rate", exchangeRate.Object);
+        }
+#endif
     }
 }

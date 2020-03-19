@@ -112,9 +112,19 @@ namespace StripeTests.Radar
         [Fact]
         public void ListAutoPaging()
         {
-            var valueListItems = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(valueListItems);
-            Assert.Equal("radar.value_list_item", valueListItems[0].Object);
+            var valueListItem = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(valueListItem);
+            Assert.Equal("radar.value_list_item", valueListItem.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var valueListItem = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(valueListItem);
+            Assert.Equal("radar.value_list_item", valueListItem.Object);
+        }
+#endif
     }
 }

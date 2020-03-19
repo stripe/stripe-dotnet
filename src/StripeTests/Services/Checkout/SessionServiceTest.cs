@@ -134,9 +134,19 @@ namespace StripeTests.Checkout
         [Fact]
         public void ListAutoPaging()
         {
-            var intents = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(intents);
-            Assert.Equal("checkout.session", intents[0].Object);
+            var intent = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(intent);
+            Assert.Equal("checkout.session", intent.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var intent = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(intent);
+            Assert.Equal("checkout.session", intent.Object);
+        }
+#endif
     }
 }

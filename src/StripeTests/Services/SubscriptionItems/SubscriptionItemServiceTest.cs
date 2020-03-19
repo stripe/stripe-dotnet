@@ -129,10 +129,20 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var subscriptionItems = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(subscriptionItems);
-            Assert.Equal("subscription_item", subscriptionItems[0].Object);
+            var subscriptionItem = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(subscriptionItem);
+            Assert.Equal("subscription_item", subscriptionItem.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var subscriptionItem = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(subscriptionItem);
+            Assert.Equal("subscription_item", subscriptionItem.Object);
+        }
+#endif
 
         [Fact]
         public void Update()

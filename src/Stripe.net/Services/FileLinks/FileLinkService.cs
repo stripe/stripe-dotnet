@@ -57,6 +57,13 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
+#if !NET45
+        public virtual IAsyncEnumerable<FileLink> ListAutoPagingAsync(FileLinkListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+        }
+#endif
+
         public virtual FileLink Update(string fileLinkId, FileLinkUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(fileLinkId, options, requestOptions);
