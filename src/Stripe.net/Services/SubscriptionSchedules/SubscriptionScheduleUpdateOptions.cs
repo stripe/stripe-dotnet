@@ -25,11 +25,6 @@ namespace Stripe
         [JsonProperty("prorate")]
         public bool? Prorate { get; set; }
 
-        /// <summary>
-        /// If the update changes the current phase, indicates if the changes should be prorated.
-        /// Valid values are <c>create_prorations</c> or <c>none</c>, and the default value is
-        /// <c>create_prorations</c>.
-        /// </summary>
         [JsonProperty("proration_behavior")]
         public string ProrationBehavior { get; set; }
     }

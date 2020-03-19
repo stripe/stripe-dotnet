@@ -104,16 +104,9 @@ namespace Stripe.Checkout
         internal ExpandableField<SetupIntent> InternalSetupIntent { get; set; }
         #endregion
 
-        /// <summary>
-        /// Shipping information for this Checkout Session.
-        /// </summary>
         [JsonProperty("shipping")]
         public Shipping Shipping { get; set; }
 
-        /// <summary>
-        /// When set, provides configuration for Checkout to collect a shipping address from a
-        /// customer.
-        /// </summary>
         [JsonProperty("shipping_address_collection")]
         public SessionShippingAddressCollection ShippingAddressCollection { get; set; }
 

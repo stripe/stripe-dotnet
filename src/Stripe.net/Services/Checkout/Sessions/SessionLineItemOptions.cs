@@ -1,4 +1,4 @@
-namespace Stripe.Checkout
+src/Stripe.net/Services/Checkout/Sessions/SessionLineItemOptions.csnamespace Stripe.Checkout
 {
     using System;
     using System.Collections.Generic;
@@ -25,9 +25,6 @@ namespace Stripe.Checkout
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
 
-        /// <summary>
-        /// The tax rates which apply to this line item. This is only allowed in subscription mode.
-        /// </summary>
         [JsonProperty("tax_rates")]
         public List<string> TaxRates { get; set; }
     }
