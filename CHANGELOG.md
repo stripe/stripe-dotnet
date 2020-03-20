@@ -1,5 +1,14 @@
 # Changelog
 
+## 35.7.0 - 2020-03-20
+* [#1960](https://github.com/stripe/stripe-dotnet/pull/1960) Add new fields to Issuing `Card` and `Authorization`
+  * Add `Amount` and `AmountCurrency` to `Authorization`
+  * Add `MerchantAmount` and `MerchantCurrency` to `Authorization`
+  * Add `PendingRequest` to `Authorization`
+  * Add `ReplacedBy` to `Card`
+  * Add `Amount` and `Metadata` to `AuthorizationApproveOptions`
+  * Add `Metadata` to `AuthorizationDeclineOptions`
+
 ## 35.6.0 - 2020-03-13
 * [#1955](https://github.com/stripe/stripe-dotnet/pull/1955) Multiple changes for Issuing APIs
   * Rename `Speed` to `Service` on Issuing `Card`
