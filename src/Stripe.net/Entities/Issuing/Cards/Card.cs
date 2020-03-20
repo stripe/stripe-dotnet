@@ -93,6 +93,33 @@ namespace Stripe.Issuing
         [JsonProperty("pin")]
         public CardPin Pin { get; set; }
 
+        #region Expandable ReplacedBy
+
+        /// <summary>
+        /// ID of the latest <see cref="Card"/> that replaces this card, if any.
+        /// </summary>
+        [JsonIgnore]
+        public string ReplacedById
+        {
+            get => this.InternalReplacedBy?.Id;
+            set => this.InternalReplacedBy = SetExpandableFieldId(value, this.InternalReplacedBy);
+        }
+
+        /// <summary>
+        /// (Expanded) The latest <see cref="Card"/> that replaces this card, if any.
+        /// </summary>
+        [JsonIgnore]
+        public Card ReplacedBy
+        {
+            get => this.InternalReplacedBy?.ExpandedObject;
+            set => this.InternalReplacedBy = SetExpandableFieldObject(value, this.InternalReplacedBy);
+        }
+
+        [JsonProperty("replaced_by")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
+        internal ExpandableField<Card> InternalReplacedBy { get; set; }
+        #endregion
+
         #region Expandable ReplacementFor
 
         /// <summary>

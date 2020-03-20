@@ -20,6 +20,12 @@ namespace Stripe.Issuing
         public string Object { get; set; }
 
         /// <summary>
+        /// The total amount in the card's currency that was authorized or rejected.
+        /// </summary>
+        [JsonProperty("amount")]
+        public long Amount { get; set; }
+
+        /// <summary>
         /// Whether the authorization has been approved.
         /// </summary>
         [JsonProperty("approved")]
@@ -32,16 +38,11 @@ namespace Stripe.Issuing
         [JsonProperty("authorization_method")]
         public string AuthorizationMethod { get; set; }
 
-        /// <summary>
-        /// The amount that has been authorized. This will be 0 when the object is created, and
-        /// increase after it has been approved.
-        /// </summary>
+        [Obsolete]
         [JsonProperty("authorized_amount")]
         public long AuthorizedAmount { get; set; }
 
-        /// <summary>
-        /// The currency that was presented to the cardholder for the authorization.
-        /// </summary>
+        [Obsolete]
         [JsonProperty("authorized_currency")]
         public string AuthorizedCurrency { get; set; }
 
@@ -92,24 +93,20 @@ namespace Stripe.Issuing
         public DateTime Created { get; set; }
 
         /// <summary>
-        /// The amount the authorization is expected to be in the currency it's held in. When Stripe
-        /// holds funds from you, this is the amount reserved for the authorization. This will be 0
-        /// when the object is created, and increase after it has been approved. For multi-currency
-        /// transactions, held_amount can be used to determine the expected exchange rate.
+        /// Three-letter ISO currency code. Must be a supported currency.
         /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        [Obsolete]
         [JsonProperty("held_amount")]
         public long HeldAmount { get; set; }
 
-        /// <summary>
-        /// The currency of the held amount. This will always be the card currency.
-        /// </summary>
+        [Obsolete]
         [JsonProperty("held_currency")]
         public string HeldCurrency { get; set; }
 
-        /// <summary>
-        /// If set to <c>true</c>, you may provide <see cref="HeldAmount"/> to control how much to
-        /// hold for the authorization.
-        /// </summary>
+        [Obsolete]
         [JsonProperty("is_held_amount_controllable")]
         public bool IsHeldAmountControllable { get; set; }
 
@@ -119,6 +116,19 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// The total amount that was authorized or rejected in the local
+        /// <see cref="MerchantCurrency"/>.
+        /// </summary>
+        [JsonProperty("merchant_amount")]
+        public long MerchantAmount { get; set; }
+
+        /// <summary>
+        /// The currency of the held amount. This will always be the card currency.
+        /// </summary>
+        [JsonProperty("merchant_currency")]
+        public string MerchantCurrency { get; set; }
 
         /// <summary>
         /// Details about the merchant (grocery store, e-commerce website, etc.) where the card
@@ -133,25 +143,26 @@ namespace Stripe.Issuing
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        /// <summary>
-        /// The amount the user is requesting to be authorized. This field will only be non-zero
-        /// during an issuing.authorization.request webhook.
-        /// </summary>
+        [Obsolete]
         [JsonProperty("pending_authorized_amount")]
         public long PendingAuthorizedAmount { get; set; }
 
-        /// <summary>
-        /// The additional amount Stripe will hold if the authorization is approved. This field will
-        /// only be non-zero during an issuing.authorization.request webhook.
-        /// </summary>
+        [Obsolete]
         [JsonProperty("pending_held_amount")]
         public long PendingHeldAmount { get; set; }
 
         /// <summary>
+        /// The pending authorization request. This field will only be non-null during an
+        /// <see cref="Events.IssuingAuthorizationRequest" /> webhook.
+        /// </summary>
+        [JsonProperty("pending_request")]
+        public AuthorizationPendingRequest PendingRequest { get; set; }
+
+        /// <summary>
         /// History of every time the authorization was approved/denied (whether approved/denied by
-        /// you directly, or by Stripe based on your authorization_controls). If the merchant
+        /// you directly, or by Stripe based on your authorization controls). If the merchant
         /// changes the authorization by performing an incremental authorization or partial capture,
-        /// you can look at request_history to see the previous states of the authorization.
+        /// you can look at the request history to see the previous states of the authorization.
         /// </summary>
         [JsonProperty("request_history")]
         public List<RequestHistory> RequestHistory { get; set; }
