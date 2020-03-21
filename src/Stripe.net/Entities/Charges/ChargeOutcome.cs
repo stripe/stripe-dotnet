@@ -3,7 +3,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Outcome : StripeEntity<Outcome>
+    public class ChargeOutcome : StripeEntity<ChargeOutcome>
     {
         /// <summary>
         /// Possible values are approved_by_network, declined_by_network, not_sent_to_network, and reversed_after_approval. The value reversed_after_approval indicates the payment was blocked by Stripe after bank authorization, and may temporarily appear as “pending” on a cardholder’s statement.
@@ -42,15 +42,15 @@ namespace Stripe
         }
 
         [JsonIgnore]
-        public OutcomeRule Rule
+        public ChargeOutcomeRule Rule
         {
             get => this.InternalRule?.ExpandedObject;
             set => this.InternalRule = SetExpandableFieldObject(value, this.InternalRule);
         }
 
         [JsonProperty("rule")]
-        [JsonConverter(typeof(ExpandableFieldConverter<OutcomeRule>))]
-        internal ExpandableField<OutcomeRule> InternalRule { get; set; }
+        [JsonConverter(typeof(ExpandableFieldConverter<ChargeOutcomeRule>))]
+        internal ExpandableField<ChargeOutcomeRule> InternalRule { get; set; }
         #endregion
 
         /// <summary>

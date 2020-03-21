@@ -317,7 +317,7 @@ namespace Stripe
         /// Details about whether the payment was accepted, and why.
         /// </summary>
         [JsonProperty("outcome")]
-        public Outcome Outcome { get; set; }
+        public ChargeOutcome Outcome { get; set; }
 
         /// <summary>
         /// true if the charge succeeded, or was successfully authorized for later capture.
