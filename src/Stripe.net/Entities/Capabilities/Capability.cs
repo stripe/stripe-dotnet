@@ -54,7 +54,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("requested_at")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime RequestedAt { get; set; }
+        public DateTime? RequestedAt { get; set; }
 
         /// <summary>
         /// Information about the requirements for this capability, including what information
