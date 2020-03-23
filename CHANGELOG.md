@@ -1,5 +1,9 @@
 # Changelog
 
+## 35.7.1 - 2020-03-23
+* [#1963](https://github.com/stripe/stripe-dotnet/pull/1963) Support RequestedAt being nullable
+    * This is technically a breaking change, but we're releasing as a patch version as the non-nullable type made it impossible to deserialize `Capability` objects in many cases.
+
 ## 35.7.0 - 2020-03-20
 * [#1960](https://github.com/stripe/stripe-dotnet/pull/1960) Add new fields to Issuing `Card` and `Authorization`
   * Add `Amount` and `AmountCurrency` to `Authorization`
