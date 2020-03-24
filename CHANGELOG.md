@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.9.0 - 2020-03-24
+* [#1965](https://github.com/stripe/stripe-dotnet/pull/1965) Add support for `PauseCollection` on `Subscription`
+
 ## 35.8.0 - 2020-03-23
 * [#1964](https://github.com/stripe/stripe-dotnet/pull/1964) Add new capabilities for AU Becs Debit and tax reporting
 
