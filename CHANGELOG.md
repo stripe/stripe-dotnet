@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.8.0 - 2020-03-23
+* [#1964](https://github.com/stripe/stripe-dotnet/pull/1964) Add new capabilities for AU Becs Debit and tax reporting
+
 ## 35.7.1 - 2020-03-23
 * [#1963](https://github.com/stripe/stripe-dotnet/pull/1963) Support RequestedAt being nullable
     * This is technically a breaking change, but we're releasing as a patch version as the non-nullable type made it impossible to deserialize `Capability` objects in many cases.
