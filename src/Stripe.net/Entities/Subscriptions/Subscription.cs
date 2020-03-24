@@ -264,6 +264,12 @@ namespace Stripe
         public long? NextPendingInvoiceItemInvoice { get; set; }
 
         /// <summary>
+        /// If specified, payment collection for this subscription will be paused.
+        /// </summary>
+        [JsonProperty("pause_collection")]
+        public SubscriptionPauseCollection PauseCollection { get; set; }
+
+        /// <summary>
         /// Specifies an interval for how often to bill for any pending invoice items. It is
         /// analogous to creating an invoice for the given subscription at the specified interval.
         /// </summary>

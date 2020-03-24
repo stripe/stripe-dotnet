@@ -120,6 +120,12 @@ namespace Stripe
         public bool? OffSession { get; set; }
 
         /// <summary>
+        /// If specified, payment collection for this subscription will be paused.
+        /// </summary>
+        [JsonProperty("pause_collection")]
+        public SubscriptionPauseCollectionOptions PauseCollection { get; set; }
+
+        /// <summary>
         /// <para>
         /// Use <c>allow_incomplete</c> to create subscriptions with <c>status=incomplete</c> if its
         /// first invoice cannot be paid. Creating subscriptions with this status allows you to
