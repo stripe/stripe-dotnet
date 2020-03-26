@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.10.0 - 2020-03-26
+* [#1966](https://github.com/stripe/stripe-dotnet/pull/1966) Add support for `SpendingControls` on Issuing `Card` and `Cardholder`
+
 ## 35.9.0 - 2020-03-24
 * [#1965](https://github.com/stripe/stripe-dotnet/pull/1965) Add support for `PauseCollection` on `Subscription`
 
