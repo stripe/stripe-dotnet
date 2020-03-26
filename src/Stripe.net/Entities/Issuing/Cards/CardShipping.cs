@@ -43,7 +43,7 @@ namespace Stripe.Issuing
         public string Status { get; set; }
 
         /// <summary>
-        /// Shipment speed. One of <c>express</c>, <c>overnight</c>, or
+        /// Shipment speed. One of <c>express</c>, <c>priority</c>, or
         /// <c>standard</c>. Defaults to <c>standard</c>.
         /// </summary>
         [JsonProperty("service")]

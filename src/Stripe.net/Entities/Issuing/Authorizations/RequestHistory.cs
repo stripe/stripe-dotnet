@@ -61,10 +61,7 @@ namespace Stripe.Issuing
         [JsonProperty("reason")]
         public string Reason { get; set; }
 
-        /// <summary>
-        /// When an authorization is declined due to authorization controls, this list contains
-        /// details about the authorization controls that were violated. Otherwise, it is empty.
-        /// </summary>
+        [Obsolete]
         [JsonProperty("violated_authorization_controls")]
         public List<AuthorizationRequestHistoryViolatedAuthorizationControl> ViolatedAuthorizationControls { get; set; }
     }

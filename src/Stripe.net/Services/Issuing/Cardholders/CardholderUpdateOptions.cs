@@ -6,9 +6,7 @@ namespace Stripe.Issuing
 
     public class CardholderUpdateOptions : BaseOptions, IHasMetadata
     {
-        /// <summary>
-        /// Spending rules that give you control over how your cardholders can make charges.
-        /// </summary>
+        [Obsolete("Use SpendingControls instead.")]
         [JsonProperty("authorization_controls")]
         public CardholderAuthorizationControlsOptions AuthorizationControls { get; set; }
 
@@ -19,7 +17,7 @@ namespace Stripe.Issuing
         public BillingOptions Billing { get; set; }
 
         /// <summary>
-        /// Additional information about a business entity cardholder.
+        /// Additional information about a company cardholder.
         /// </summary>
         [JsonProperty("company")]
         public CardholderCompanyOptions Company { get; set; }
@@ -36,7 +34,7 @@ namespace Stripe.Issuing
         [JsonProperty("individual")]
         public CardholderIndividualOptions Individual { get; set; }
 
-        [Obsolete("This parameter is considered deprecated.")]
+        [Obsolete]
         [JsonProperty("is_default")]
         public bool? IsDefault { get; set; }
 
@@ -48,9 +46,7 @@ namespace Stripe.Issuing
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        /// <summary>
-        /// The cardholder’s name. This will be printed on cards issued to them.
-        /// </summary>
+        [Obsolete]
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -60,6 +56,12 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Spending controls that give you control over how your cardholders can make charges.
+        /// </summary>
+        [JsonProperty("spending_controls")]
+        public CardholderSpendingControlsOptions SpendingControls { get; set; }
 
         /// <summary>
         /// Specifies whether to permit authorizations on this cardholder’s cards. Possible values

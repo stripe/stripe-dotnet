@@ -6,9 +6,7 @@ namespace Stripe.Issuing
 
     public class CardholderCreateOptions : BaseOptions, IHasMetadata
     {
-        /// <summary>
-        /// Spending rules that give you control over how your cardholders can make charges.
-        /// </summary>
+        [Obsolete("Use SpendingControls instead.")]
         [JsonProperty("authorization_controls")]
         public CardholderAuthorizationControlsOptions AuthorizationControls { get; set; }
 
@@ -36,7 +34,7 @@ namespace Stripe.Issuing
         [JsonProperty("individual")]
         public CardholderIndividualOptions Individual { get; set; }
 
-        [Obsolete("This parameter is considered deprecated.")]
+        [Obsolete]
         [JsonProperty("is_default")]
         public bool? IsDefault { get; set; }
 
@@ -62,6 +60,12 @@ namespace Stripe.Issuing
         public string PhoneNumber { get; set; }
 
         /// <summary>
+        /// Spending controls that give you control over how your cardholders can make charges.
+        /// </summary>
+        [JsonProperty("spending_controls")]
+        public CardholderSpendingControlsOptions SpendingControls { get; set; }
+
+        /// <summary>
         /// Specifies whether to permit authorizations on this cardholder’s cards. Possible values
         /// are <c>active</c> or <c>inactive</c>.
         /// </summary>
@@ -69,7 +73,7 @@ namespace Stripe.Issuing
         public string Status { get; set; }
 
         /// <summary>
-        /// The type of cardholder. Possible values are <c>individual</c> or <c>business_entity</c>.
+        /// The type of cardholder. Possible values are <c>company</c> or <c>individual</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

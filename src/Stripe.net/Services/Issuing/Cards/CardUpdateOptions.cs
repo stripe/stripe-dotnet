@@ -26,6 +26,12 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Spending controls that give you some control over how your cards can be used.
+        /// </summary>
+        [JsonProperty("spending_controls")]
+        public CardSpendingControlsOptions SpendingControls { get; set; }
+
+        /// <summary>
         /// Whether authorizations can be approved on this card. Defaults to <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]
