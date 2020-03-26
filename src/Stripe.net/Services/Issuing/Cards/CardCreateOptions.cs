@@ -6,10 +6,7 @@ namespace Stripe.Issuing
 
     public class CardCreateOptions : BaseOptions, IHasMetadata
     {
-        /// <summary>
-        /// Spending rules that give you some control over how your cards can
-        /// be used.
-        /// </summary>
+        [Obsolete("Use SpendingControls instead.")]
         [JsonProperty("authorization_controls")]
         public AuthorizationControlsOptions AuthorizationControls { get; set; }
 
@@ -37,6 +34,7 @@ namespace Stripe.Issuing
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [Obsolete]
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -58,6 +56,12 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("shipping")]
         public CardShippingOptions Shipping { get; set; }
+
+        /// <summary>
+        /// Spending controls that give you some control over how your cards can be used.
+        /// </summary>
+        [JsonProperty("spending_controls")]
+        public CardSpendingControlsOptions SpendingControls { get; set; }
 
         /// <summary>
         /// Whether authorizations can be approved on this card. Defaults to <c>inactive</c>.

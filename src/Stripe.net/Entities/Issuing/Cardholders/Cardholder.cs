@@ -19,9 +19,7 @@ namespace Stripe.Issuing
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        /// <summary>
-        /// Spending rules that give you control over how your cardholder can make charges.
-        /// </summary>
+        [Obsolete("Use SpendingControls instead.")]
         [JsonProperty("authorization_controls")]
         public CardholderAuthorizationControls AuthorizationControls { get; set; }
 
@@ -56,7 +54,7 @@ namespace Stripe.Issuing
         [JsonProperty("individual")]
         public CardholderIndividual Individual { get; set; }
 
-        [Obsolete("This property is considered deprecated.")]
+        [Obsolete]
         [JsonProperty("is_default")]
         public bool IsDefault { get; set; }
 
@@ -90,6 +88,12 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("requirements")]
         public CardholderRequirements Requirements { get; set; }
+
+        /// <summary>
+        /// Spending rules that give you control over how your cardholders can make charges.
+        /// </summary>
+        [JsonProperty("spending_controls")]
+        public CardholderSpendingControls SpendingControls { get; set; }
 
         /// <summary>
         /// One of <c>active</c>, <c>inactive</c>, or <c>blocked</c>.

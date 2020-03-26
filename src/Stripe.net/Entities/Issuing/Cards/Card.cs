@@ -19,9 +19,7 @@ namespace Stripe.Issuing
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        /// <summary>
-        /// Spending rules that give you some control over how your cards can be used.
-        /// </summary>
+        [Obsolete("Use SpendingControls instead.")]
         [JsonProperty("authorization_controls")]
         public AuthorizationControls AuthorizationControls { get; set; }
 
@@ -81,9 +79,7 @@ namespace Stripe.Issuing
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        /// <summary>
-        /// The name of the cardholder, printed on the card.
-        /// </summary>
+        [Obsolete]
         [JsonProperty("name")]
         public string Name { get; set; }
 
@@ -159,6 +155,12 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("shipping")]
         public CardShipping Shipping { get; set; }
+
+        /// <summary>
+        /// Spending rules that give you some control over how this card can be used.
+        /// </summary>
+        [JsonProperty("spending_controls")]
+        public CardSpendingControls SpendingControls { get; set; }
 
         /// <summary>
         /// One of <c>active</c>, <c>inactive</c>, <c>canceled</c>, <c>lost</c>, <c>stolen</c>, or

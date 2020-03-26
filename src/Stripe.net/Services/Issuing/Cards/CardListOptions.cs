@@ -1,5 +1,6 @@
 namespace Stripe.Issuing
 {
+    using System;
     using Newtonsoft.Json;
 
     public class CardListOptions : ListOptionsWithCreated
@@ -16,9 +17,11 @@ namespace Stripe.Issuing
         [JsonProperty("last4")]
         public string Last4 { get; set; }
 
+        [Obsolete]
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [Obsolete]
         [JsonProperty("source")]
         public string Source { get; set; }
 

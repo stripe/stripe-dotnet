@@ -26,11 +26,13 @@ namespace StripeTests.Issuing
 
             this.createOptions = new CardCreateOptions
             {
-                AuthorizationControls = new AuthorizationControlsOptions
+                Cardholder = "ich_123",
+                Currency = "usd",
+                SpendingControls = new CardSpendingControlsOptions
                 {
-                    SpendingLimits = new List<CardAuthorizationControlsSpendingLimitOptions>
+                    SpendingLimits = new List<CardSpendingControlsSpendingLimitOptions>
                     {
-                        new CardAuthorizationControlsSpendingLimitOptions
+                        new CardSpendingControlsSpendingLimitOptions
                         {
                             Amount = 1000,
                             Categories = new List<string>
@@ -41,7 +43,6 @@ namespace StripeTests.Issuing
                         },
                     },
                 },
-                Currency = "usd",
                 Type = "virtual",
             };
 

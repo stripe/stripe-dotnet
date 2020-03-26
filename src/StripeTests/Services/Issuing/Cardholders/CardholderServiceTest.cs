@@ -27,21 +27,6 @@ namespace StripeTests.Issuing
 
             this.createOptions = new CardholderCreateOptions
             {
-                AuthorizationControls = new CardholderAuthorizationControlsOptions
-                {
-                    SpendingLimits = new List<CardholderAuthorizationControlsSpendingLimitOptions>
-                    {
-                        new CardholderAuthorizationControlsSpendingLimitOptions
-                        {
-                            Amount = 1000,
-                            Categories = new List<string>
-                            {
-                                "financial_institutions",
-                            },
-                            Interval = "all_time",
-                        },
-                    },
-                },
                 Billing = new BillingOptions
                 {
                     Address = new AddressOptions
@@ -52,10 +37,6 @@ namespace StripeTests.Issuing
                         PostalCode = "90210",
                         State = "CA",
                     },
-                },
-                Company = new CardholderCompanyOptions
-                {
-                    TaxId = "123",
                 },
                 Individual = new CardholderIndividualOptions
                 {
@@ -77,6 +58,21 @@ namespace StripeTests.Issuing
                     },
                 },
                 Name = "John Doe",
+                SpendingControls = new CardholderSpendingControlsOptions
+                {
+                    SpendingLimits = new List<CardholderSpendingControlsSpendingLimitOptions>
+                    {
+                        new CardholderSpendingControlsSpendingLimitOptions
+                        {
+                            Amount = 1000,
+                            Categories = new List<string>
+                            {
+                                "financial_institutions",
+                            },
+                            Interval = "all_time",
+                        },
+                    },
+                },
                 Type = "individual",
             };
 
