@@ -4,10 +4,16 @@ namespace Stripe.Issuing
 
     public class TransactionListOptions : ListOptionsWithCreated
     {
-        [JsonProperty("cardholder")]
-        public string Cardholder { get; set; }
-
+        /// <summary>
+        /// Only return transactions that belong to the given card.
+        /// </summary>
         [JsonProperty("card")]
         public string Card { get; set; }
+
+        /// <summary>
+        /// Only return transactions that belong to the given cardholder.
+        /// </summary>
+        [JsonProperty("cardholder")]
+        public string Cardholder { get; set; }
     }
 }

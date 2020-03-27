@@ -24,10 +24,6 @@ namespace Stripe.Issuing
         [JsonProperty("service")]
         public string Service { get; set; }
 
-        [Obsolete("Use Service instead")]
-        [JsonProperty("speed")]
-        public string Speed { get; set; }
-
         /// <summary>
         /// Packaging options. One of <c>bulk</c> or <c>individual</c>.
         /// </summary>

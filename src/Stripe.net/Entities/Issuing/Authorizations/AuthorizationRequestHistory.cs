@@ -5,7 +5,7 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class RequestHistory : StripeEntity<RequestHistory>
+    public class AuthorizationRequestHistory : StripeEntity<AuthorizationRequestHistory>
     {
         /// <summary>
         /// The total amount in the card's currency that was authorized or rejected.
@@ -19,14 +19,6 @@ namespace Stripe.Issuing
         [JsonProperty("approved")]
         public bool Approved { get; set; }
 
-        [Obsolete("This field is considered deprecated.")]
-        [JsonProperty("authorized_amount")]
-        public long AuthorizedAmount { get; set; }
-
-        [Obsolete("This field is considered deprecated.")]
-        [JsonProperty("authorized_currency")]
-        public string AuthorizedCurrency { get; set; }
-
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
@@ -34,13 +26,11 @@ namespace Stripe.Issuing
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
-        [Obsolete("This field is considered deprecated.")]
-        [JsonProperty("held_amount")]
-        public long HeldAmount { get; set; }
-
-        [Obsolete("This field is considered deprecated.")]
-        [JsonProperty("held_currency")]
-        public string HeldCurrency { get; set; }
+        /// <summary>
+        /// The total amount in the card's currency that was authorized or rejected.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
 
         /// <summary>
         /// The total amount that was authorized or rejected in the local
@@ -50,7 +40,8 @@ namespace Stripe.Issuing
         public long MerchantAmount { get; set; }
 
         /// <summary>
-        /// The currency of the held amount. This will always be the card currency.
+        /// The currency that was collected by the merchant and presented to the cardholder for the
+        /// authorization.
         /// </summary>
         [JsonProperty("merchant_currency")]
         public string MerchantCurrency { get; set; }
@@ -60,9 +51,5 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; set; }
-
-        [Obsolete]
-        [JsonProperty("violated_authorization_controls")]
-        public List<AuthorizationRequestHistoryViolatedAuthorizationControl> ViolatedAuthorizationControls { get; set; }
     }
 }

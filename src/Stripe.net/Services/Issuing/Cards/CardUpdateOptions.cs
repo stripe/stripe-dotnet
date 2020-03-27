@@ -7,18 +7,7 @@ namespace Stripe.Issuing
     public class CardUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// Spending rules that give you some control over how your cards can
-        /// be used.
-        /// </summary>
-        [JsonProperty("authorization_controls")]
-        public AuthorizationControlsOptions AuthorizationControls { get; set; }
-
-        [Obsolete("This parameter does not exist and was added to the library incorrectly.")]
-        [JsonProperty("billing")]
-        public BillingOptions Billing { get; set; }
-
-        /// <summary>
-        /// Reason why the card is being canceled.
+        /// Reason why the <see cref="Status"/> of this card is <c>canceled</c>.
         /// </summary>
         [JsonProperty("cancellation_reason")]
         public string CancellationReason { get; set; }
