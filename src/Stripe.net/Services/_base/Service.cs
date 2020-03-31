@@ -2,7 +2,6 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Reflection;
@@ -11,6 +10,7 @@ namespace Stripe
 #endif
     using System.Threading;
     using System.Threading.Tasks;
+    using Stripe.Infrastructure;
 
     /// <summary>Abstract base class for all services.</summary>
     /// <typeparam name="TEntityReturned">
@@ -268,8 +268,8 @@ namespace Stripe
             RequestOptions requestOptions)
             where T : IStripeEntity
         {
-            return this.ListRequestAutoPagingAsync<T>(url, options, requestOptions)
-                .ToEnumerable();
+            return AsyncUtils.ToEnumerable(
+                this.ListRequestAutoPagingAsync<T>(url, options, requestOptions));
         }
 
         protected async IAsyncEnumerable<T> ListRequestAutoPagingAsync<T>(
