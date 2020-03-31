@@ -1,5 +1,10 @@
 # Changelog
 
+## 35.11.0 - 2020-03-30
+* [#1970](https://github.com/stripe/stripe-dotnet/pull/1970) Add `RawJObject` getter to `StripeEntity`
+* [#1973](https://github.com/stripe/stripe-dotnet/pull/1973) Support for asynchronous autopagination
+* [#1972](https://github.com/stripe/stripe-dotnet/pull/1972) Add `net461` as a target framework
+
 ## 35.10.0 - 2020-03-26
 * [#1966](https://github.com/stripe/stripe-dotnet/pull/1966) Add support for `SpendingControls` on Issuing `Card` and `Cardholder`
 
