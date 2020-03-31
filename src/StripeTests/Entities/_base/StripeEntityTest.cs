@@ -5,8 +5,14 @@ namespace StripeTests
     using Stripe.Infrastructure;
     using Xunit;
 
-    public class StripeEntityTest
+    public class StripeEntityTest : BaseStripeTest
     {
+        public StripeEntityTest(
+            StripeMockFixture stripeMockFixture)
+            : base(stripeMockFixture)
+        {
+        }
+
         [Fact]
         public void FromJsonAuto()
         {
@@ -139,6 +145,29 @@ namespace StripeTests
             Assert.NotNull(o.Nested);
             Assert.Equal("id_expanded", o.Nested.Id);
             Assert.Equal(42, o.Nested.Bar);
+        }
+
+        [Fact]
+        public void RawJObject()
+        {
+            var service = new SubscriptionService(this.StripeClient);
+            var subscription = service.Get("sub_123");
+
+            Assert.NotNull(subscription);
+
+            // Access `id`, a string element
+            Assert.Equal(subscription.Id, subscription.RawJObject["id"]);
+
+            // Access `created`, a number element
+            Assert.Equal(subscription.Created, subscription.RawJObject["created"]);
+
+            // Access `plan[id]`, a nested string element
+            Assert.Equal(subscription.Plan.Id, subscription.RawJObject["plan"]["id"]);
+
+            // Access `items[data][0][id]`, a deeply nested string element
+            Assert.Equal(
+                subscription.Items.Data[0].Id,
+                subscription.RawJObject["items"]["data"][0]["id"]);
         }
 
         private class TestEntity : StripeEntity<TestEntity>
