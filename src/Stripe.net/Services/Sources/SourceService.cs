@@ -79,6 +79,13 @@ namespace Stripe
             return this.ListRequestAutoPaging<Source>($"/v1/customers/{customerId}/sources", options ?? new SourceListOptions(), requestOptions);
         }
 
+#if !NET45
+        public virtual IAsyncEnumerable<Source> ListAutoPagingAsync(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<Source>($"/v1/customers/{customerId}/sources", options ?? new SourceListOptions(), requestOptions, cancellationToken);
+        }
+#endif
+
         public virtual Source Update(string sourceId, SourceUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(sourceId, options, requestOptions);

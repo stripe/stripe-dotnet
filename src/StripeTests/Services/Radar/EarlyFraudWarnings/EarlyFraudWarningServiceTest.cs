@@ -72,9 +72,19 @@ namespace StripeTests.Radar
         [Fact]
         public void ListAutoPaging()
         {
-            var warnings = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(warnings);
-            Assert.Equal("radar.early_fraud_warning", warnings[0].Object);
+            var warning = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(warning);
+            Assert.Equal("radar.early_fraud_warning", warning.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var warning = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(warning);
+            Assert.Equal("radar.early_fraud_warning", warning.Object);
+        }
+#endif
     }
 }

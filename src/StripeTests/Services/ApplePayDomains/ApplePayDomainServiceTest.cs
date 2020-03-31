@@ -110,9 +110,19 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var domains = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(domains);
-            Assert.Equal("apple_pay_domain", domains[0].Object);
+            var domain = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(domain);
+            Assert.Equal("apple_pay_domain", domain.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var domain = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(domain);
+            Assert.Equal("apple_pay_domain", domain.Object);
+        }
+#endif
     }
 }

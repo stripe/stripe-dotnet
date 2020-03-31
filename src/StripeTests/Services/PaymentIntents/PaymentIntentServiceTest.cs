@@ -198,10 +198,20 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var intents = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(intents);
-            Assert.Equal("payment_intent", intents[0].Object);
+            var intent = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(intent);
+            Assert.Equal("payment_intent", intent.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var intent = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(intent);
+            Assert.Equal("payment_intent", intent.Object);
+        }
+#endif
 
         [Fact]
         public void Update()

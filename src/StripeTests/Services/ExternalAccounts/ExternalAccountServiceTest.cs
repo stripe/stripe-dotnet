@@ -126,9 +126,18 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var externalAccounts = this.service.ListAutoPaging(AccountId, this.listOptions).ToList();
-            Assert.NotNull(externalAccounts);
+            var externalAccount = this.service.ListAutoPaging(AccountId, this.listOptions).First();
+            Assert.NotNull(externalAccount);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var externalAccount = await this.service.ListAutoPagingAsync(AccountId, this.listOptions).FirstAsync();
+            Assert.NotNull(externalAccount);
+        }
+#endif
 
         [Fact]
         public void Update()

@@ -124,10 +124,20 @@ namespace StripeTests
         [Fact]
         public void ListAutoPaging()
         {
-            var endpoints = this.service.ListAutoPaging(this.listOptions).ToList();
-            Assert.NotNull(endpoints);
-            Assert.Equal("webhook_endpoint", endpoints[0].Object);
+            var endpoint = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(endpoint);
+            Assert.Equal("webhook_endpoint", endpoint.Object);
         }
+
+#if !NET45
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var endpoint = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(endpoint);
+            Assert.Equal("webhook_endpoint", endpoint.Object);
+        }
+#endif
 
         [Fact]
         public void Update()
