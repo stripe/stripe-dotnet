@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.11.1 - 2020-03-31
+* [#1976](https://github.com/stripe/stripe-dotnet/pull/1976) Remove System.Linq.Async dependency
+
 ## 35.11.0 - 2020-03-30
 * [#1970](https://github.com/stripe/stripe-dotnet/pull/1970) Add `RawJObject` getter to `StripeEntity`
 * [#1973](https://github.com/stripe/stripe-dotnet/pull/1973) Support for asynchronous autopagination
