@@ -24,6 +24,8 @@ namespace Stripe
         private const string StripeNetTargetFramework =
 #if NETSTANDARD2_0
             "netstandard2.0"
+#elif NET461
+            "net461"
 #elif NET45
             "net45"
 #else
