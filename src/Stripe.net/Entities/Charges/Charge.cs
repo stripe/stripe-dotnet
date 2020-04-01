@@ -220,10 +220,10 @@ namespace Stripe
         public string FailureMessage { get; set; }
 
         /// <summary>
-        /// Hash with information on fraud assessments for the charge. Assessments reported by you have the key user_report and, if set, possible values of safe and fraudulent. Assessments from Stripe have the key stripe_report and, if set, the value fraudulent.
+        /// Information on fraud assessments for the charge.
         /// </summary>
         [JsonProperty("fraud_details")]
-        public Dictionary<string, string> FraudDetails { get; set; }
+        public ChargeFraudDetails FraudDetails { get; set; }
 
         #region Expandable Invoice
 

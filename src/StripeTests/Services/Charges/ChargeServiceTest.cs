@@ -39,9 +39,9 @@ namespace StripeTests
 
             this.updateOptions = new ChargeUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
+                FraudDetails = new ChargeFraudDetailsOptions
                 {
-                    { "key", "value" },
+                    UserReport = "safe",
                 },
             };
 
