@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.12.0 - 2020-04-03
+* [#1978](https://github.com/stripe/stripe-dotnet/pull/1978) Add `CalculatedStatementDescriptor` on `Charge`
+
 ## 35.11.1 - 2020-03-31
 * [#1976](https://github.com/stripe/stripe-dotnet/pull/1976) Remove System.Linq.Async dependency
 
