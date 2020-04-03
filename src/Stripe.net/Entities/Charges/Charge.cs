@@ -105,6 +105,14 @@ namespace Stripe
         public BillingDetails BillingDetails { get; set; }
 
         /// <summary>
+        /// The full statement descriptor that is passed to card networks, and that is displayed on
+        /// your customers' credit card and bank statements. Allows you to see what the statement
+        /// descriptor looks like after the static and dynamic portions are combined.
+        /// </summary>
+        [JsonProperty("calculated_statement_descriptor")]
+        public string CalculatedStatementDescriptor { get; set; }
+
+        /// <summary>
         /// If the charge was created without capturing, this boolean represents whether or not it is still uncaptured or has since been captured.
         /// </summary>
         [JsonProperty("captured")]
