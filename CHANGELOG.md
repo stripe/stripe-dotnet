@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.12.1 - 2020-04-08
+* [#1982](https://github.com/stripe/stripe-dotnet/pull/1982) Fix deadlock in `AsyncUtils.ToEnumerable()`
+
 ## 35.12.0 - 2020-04-03
 * [#1978](https://github.com/stripe/stripe-dotnet/pull/1978) Add `CalculatedStatementDescriptor` on `Charge`
 
