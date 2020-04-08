@@ -53,7 +53,7 @@ namespace Stripe.Infrastructure
 
             if (!awaiter.IsCompleted)
             {
-                task.AsTask().GetAwaiter().GetResult();
+                task.AsTask().ConfigureAwait(false).GetAwaiter().GetResult();
                 return;
             }
 
@@ -66,7 +66,7 @@ namespace Stripe.Infrastructure
 
             if (!awaiter.IsCompleted)
             {
-                return task.AsTask().GetAwaiter().GetResult();
+                return task.AsTask().ConfigureAwait(false).GetAwaiter().GetResult();
             }
 
             return awaiter.GetResult();
