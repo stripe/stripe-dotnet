@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.13.0 - 2020-04-09
+* [#1987](https://github.com/stripe/stripe-dotnet/pull/1987) Add missing properties on `Review`
+
 ## 35.12.1 - 2020-04-08
 * [#1982](https://github.com/stripe/stripe-dotnet/pull/1982) Fix deadlock in `AsyncUtils.ToEnumerable()`
 
