@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -173,6 +174,58 @@ namespace StripeTests
             Assert.NotNull(exception);
             Assert.Equal(HttpStatusCode.InternalServerError, exception.HttpStatusCode);
             Assert.Equal("Invalid response object from API: \"{}\"", exception.Message);
+            Assert.Equal(response, exception.StripeResponse);
+        }
+
+        [Fact]
+        public async Task RawRequestAsync_OkResponse()
+        {
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var options = new Dictionary<string, object>
+            {
+                { "amount", 123 },
+                { "currency", "usd" },
+                { "source", "tok_visa" },
+            };
+
+            var charge = await this.stripeClient.RawRequestAsync(
+                HttpMethod.Post,
+                "/v1/charges",
+                options,
+                this.requestOptions);
+
+            Assert.NotNull(charge);
+            Assert.Equal("ch_123", charge["id"]);
+        }
+
+        [Fact]
+        public async Task RawRequestAsync_ApiError()
+        {
+            var response = new StripeResponse(
+                HttpStatusCode.PaymentRequired,
+                null,
+                "{\"error\": {\"type\": \"card_error\"}}");
+            this.httpClient.Response = response;
+
+            var options = new Dictionary<string, object>
+            {
+                { "amount", 123 },
+                { "currency", "usd" },
+                { "source", "tok_visa" },
+            };
+
+            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
+                await this.stripeClient.RawRequestAsync(
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    options,
+                    this.requestOptions));
+
+            Assert.NotNull(exception);
+            Assert.Equal(HttpStatusCode.PaymentRequired, exception.HttpStatusCode);
+            Assert.Equal("card_error", exception.StripeError.ErrorType);
             Assert.Equal(response, exception.StripeResponse);
         }
 

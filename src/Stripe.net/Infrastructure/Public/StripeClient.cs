@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -117,6 +118,36 @@ namespace Stripe
             return ProcessResponse<T>(response);
         }
 
+        /// <summary>
+        /// Sends a request to Stripe's API as an asynchronous operation, passing a raw dictionary
+        /// for the request parameters and getting a raw dictionary for the response.
+        /// </summary>
+        /// <remarks>
+        /// This method is meant to be used when accessing API endpoints that don't have a dedicated
+        /// service method. This should very rarely be needed.
+        /// </remarks>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="path">The path of the request.</param>
+        /// <param name="options">The parameters of the request.</param>
+        /// <param name="requestOptions">The special modifiers of the request.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>The task object representing the asynchronous operation.</returns>
+        /// <exception cref="StripeException">Thrown if the request fails.</exception>
+        public async Task<IDictionary<string, object>> RawRequestAsync(
+            HttpMethod method,
+            string path,
+            IDictionary<string, object> options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken = default)
+        {
+            var request = new StripeRequest(this, method, path, BaseOptions.FromDictionary(options), requestOptions);
+
+            var response = await this.HttpClient.MakeRequestAsync(request, cancellationToken)
+                .ConfigureAwait(false);
+
+            return RawProcessResponse(response);
+        }
+
         private static IHttpClient BuildDefaultHttpClient()
         {
             return new SystemNetHttpClient();
@@ -141,6 +172,26 @@ namespace Stripe
             }
 
             obj.StripeResponse = response;
+
+            return obj;
+        }
+
+        private static IDictionary<string, object> RawProcessResponse(StripeResponse response)
+        {
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw BuildStripeException(response);
+            }
+
+            IDictionary<string, object> obj;
+            try
+            {
+                obj = JsonUtils.DeserializeObject<Dictionary<string, object>>(response.Content);
+            }
+            catch (Newtonsoft.Json.JsonException)
+            {
+                throw BuildInvalidResponseException(response);
+            }
 
             return obj;
         }

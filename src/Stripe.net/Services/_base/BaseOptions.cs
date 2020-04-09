@@ -61,5 +61,25 @@ namespace Stripe
         {
             this.ExtraParams.Add(key, value);
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseOptions"/> class from a dictionary.
+        /// </summary>
+        /// <param name="dict">The dictionary.</param>
+        /// <returns>The new instance.</returns>
+        internal static BaseOptions FromDictionary(IDictionary<string, object> dict)
+        {
+            var options = new BaseOptions();
+
+            if (dict != null)
+            {
+                foreach (KeyValuePair<string, object> entry in dict)
+                {
+                    options.AddExtraParam(entry.Key, entry.Value);
+                }
+            }
+
+            return options;
+        }
     }
 }

@@ -5,7 +5,6 @@ namespace Stripe
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
-    using Stripe.Infrastructure;
     using Stripe.Infrastructure.FormEncoding;
 
     /// <summary>
