@@ -5,7 +5,7 @@ environment:
   COVERALLS_REPO_TOKEN:
     secure: T0PmP8uyzCseacBCDRBlti2y9Tz5DL6fknea0MKWvbPYrzADmLY2/5kOTfYIsPUk
   # If you bump this, don't forget to bump `MinimumMockVersion` in `StripeMockFixture.cs` as well.
-  STRIPE_MOCK_VERSION: 0.85.0
+  STRIPE_MOCK_VERSION: 0.86.0
 
 deploy:
 - provider: NuGet
