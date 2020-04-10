@@ -18,6 +18,12 @@ namespace Stripe.Issuing
         public BillingOptions Billing { get; set; }
 
         /// <summary>
+        /// Reason why the card is being canceled.
+        /// </summary>
+        [JsonProperty("cancellation_reason")]
+        public string CancellationReason { get; set; }
+
+        /// <summary>
         /// A set of key-value pairs that you can attach to an object. It
         /// can be useful for storing additional information about the object
         /// in a structured format.
