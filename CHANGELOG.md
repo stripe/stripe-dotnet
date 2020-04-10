@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.14.0 - 2020-04-10
+* [#1988](https://github.com/stripe/stripe-dotnet/pull/1988) Add support for `CancellationReason` on Issuing `Card`
+
 ## 35.13.0 - 2020-04-09
 * [#1987](https://github.com/stripe/stripe-dotnet/pull/1987) Add missing properties on `Review`
 
