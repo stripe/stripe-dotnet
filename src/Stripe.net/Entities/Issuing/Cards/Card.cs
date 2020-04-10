@@ -30,6 +30,12 @@ namespace Stripe.Issuing
         public string Brand { get; set; }
 
         /// <summary>
+        /// The reason why the card was canceled. One of <c>lost</c> or <c>stolen</c>.
+        /// </summary>
+        [JsonProperty("cancellation_reason")]
+        public string CancellationReason { get; set; }
+
+        /// <summary>
         /// The Cardholder object to which the card belongs.
         /// </summary>
         [JsonProperty("cardholder")]
@@ -145,7 +151,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// Why the card that this card replaces (if any) needed to be replaced. One of
-        /// <c>damage</c>, <c>expiration</c>, <c>loss</c>, or <c>theft</c>.
+        /// <c>damaged</c>, <c>expired</c>, <c>lost</c>, or <c>stolen</c>.
         /// </summary>
         [JsonProperty("replacement_reason")]
         public string ReplacementReason { get; set; }
