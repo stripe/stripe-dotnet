@@ -36,7 +36,7 @@ namespace Stripe.Sigma
         /// If the query run was not successful, this field contains information about the failure.
         /// </summary>
         [JsonProperty("error")]
-        public string Error { get; set; }
+        public ScheduledQueryRunError Error { get; set; }
 
         /// <summary>
         /// The file object representing the results of the query.
