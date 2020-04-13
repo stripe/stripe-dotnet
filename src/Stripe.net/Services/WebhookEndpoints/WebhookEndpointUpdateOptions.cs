@@ -5,6 +5,12 @@ namespace Stripe
 
     public class WebhookEndpointUpdateOptions : BaseOptions, IHasMetadata
     {
+        /// <summary>
+        /// An optional description of what the wehbook is used for.
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
         [JsonProperty("disabled")]
         public bool? Disabled { get; set; }
 

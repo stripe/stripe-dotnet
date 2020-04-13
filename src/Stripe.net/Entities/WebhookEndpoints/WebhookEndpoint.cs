@@ -49,6 +49,12 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
+        /// An optional description of what the wehbook is used for.
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        /// <summary>
         /// The list of events to enable for this endpoint.
         /// </summary>
         [JsonProperty("enabled_events")]
