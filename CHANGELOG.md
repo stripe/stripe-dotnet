@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.16.0 - 2020-04-13
+* [#1997](https://github.com/stripe/stripe-dotnet/pull/1997) Add `Description` on `WebhookEndpoint`
+
 ## 35.15.0 - 2020-04-13
 * [#1996](https://github.com/stripe/stripe-dotnet/pull/1996) Add missing events for `TaxId` and `Capability`
 
