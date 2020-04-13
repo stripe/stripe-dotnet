@@ -79,6 +79,11 @@ namespace Stripe
         public const string BitcoinReceiverTransactionUpdated = "bitcoin.receiver.transaction.created";
 
         /// <summary>
+        /// Occurs whenever a capability has new requirements or a new status.
+        /// </summary>
+        public const string CapabilityUpdated = "capability.updated";
+
+        /// <summary>
         /// Occurs whenever a previously uncaptured charge is captured.
         /// </summary>
         public const string ChargeCaptured = "charge.captured";
@@ -262,6 +267,21 @@ namespace Stripe
         /// Occurs three days before the trial period of a subscription is scheduled to end.
         /// </summary>
         public const string CustomerSubscriptionUpdated = "customer.subscription.updated";
+
+        /// <summary>
+        /// Occurs whenever a tax ID is created for a customer.
+        /// </summary>
+        public const string CustomerTaxIdCreated = "customer.tax_id.created";
+
+        /// <summary>
+        /// Occurs whenever a tax ID is deleted from a customer.
+        /// </summary>
+        public const string CustomerTaxIdDeleted = "customer.tax_id.deleted";
+
+        /// <summary>
+        /// Occurs whenever a customer's tax ID is updated.
+        /// </summary>
+        public const string CustomerTaxIdUpdated = "customer.tax_id.updated";
 
         /// <summary>
         /// Occurs whenever a new Stripe-generated file is available for your account.
