@@ -1,4 +1,4 @@
-version: 35.14.0.{build}
+version: 35.15.0.{build}
 image: Visual Studio 2019
 
 environment:

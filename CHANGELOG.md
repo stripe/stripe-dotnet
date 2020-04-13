@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.15.0 - 2020-04-13
+* [#1996](https://github.com/stripe/stripe-dotnet/pull/1996) Add missing events for `TaxId` and `Capability`
+
 ## 35.14.0 - 2020-04-10
 * [#1988](https://github.com/stripe/stripe-dotnet/pull/1988) Add support for `CancellationReason` on Issuing `Card`
 
