@@ -1,5 +1,8 @@
 # Changelog
 
+## 35.17.0 - 2020-04-14
+* [#1999](https://github.com/stripe/stripe-dotnet/pull/1999) Add support for `SecondaryColor` on `Account`
+
 ## 35.16.0 - 2020-04-13
 * [#1997](https://github.com/stripe/stripe-dotnet/pull/1997) Add `Description` on `WebhookEndpoint`
 
