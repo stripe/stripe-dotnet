@@ -70,5 +70,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("primary_color")]
         public string PrimaryColor { get; set; }
+
+        /// <summary>
+        /// A CSS hex color value representing the secondary branding color for this account.
+        /// </summary>
+        [JsonProperty("secondary_color")]
+        public string SecondaryColor { get; set; }
     }
 }
