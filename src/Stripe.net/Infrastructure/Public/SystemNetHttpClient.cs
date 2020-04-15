@@ -38,11 +38,7 @@ namespace Stripe
 
         private readonly System.Net.Http.HttpClient httpClient;
 
-        private readonly int maxNetworkRetries;
-
         private readonly AppInfo appInfo;
-
-        private readonly bool enableTelemetry;
 
         private readonly RequestTelemetry requestTelemetry = new RequestTelemetry();
 
@@ -85,9 +81,9 @@ namespace Stripe
 #endif
 
             this.httpClient = httpClient ?? LazyDefaultHttpClient.Value;
-            this.maxNetworkRetries = maxNetworkRetries;
+            this.MaxNetworkRetries = maxNetworkRetries;
             this.appInfo = appInfo;
-            this.enableTelemetry = enableTelemetry;
+            this.EnableTelemetry = enableTelemetry;
 
             this.stripeClientUserAgentString = this.BuildStripeClientUserAgentString();
             this.userAgentString = this.BuildUserAgentString();
@@ -109,12 +105,12 @@ namespace Stripe
         /// <summary>
         /// Gets whether telemetry was enabled for this client.
         /// </summary>
-        public bool EnableTelemetry { get => this.enableTelemetry; }
+        public bool EnableTelemetry { get; }
 
         /// <summary>
         /// Gets how many network retries were configured for this client.
         /// </summary>
-        public int MaxNetworkRetries { get => this.maxNetworkRetries; }
+        public int MaxNetworkRetries { get; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the client should sleep between automatic
