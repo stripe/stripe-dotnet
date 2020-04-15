@@ -107,6 +107,16 @@ namespace Stripe
         public static TimeSpan MinNetworkRetriesDelay => TimeSpan.FromMilliseconds(500);
 
         /// <summary>
+        /// Gets whether telemetry was enabled for this client.
+        /// </summary>
+        public bool EnableTelemetry { get => this.enableTelemetry; }
+
+        /// <summary>
+        /// Gets how many network retries were configured for this client.
+        /// </summary>
+        public int MaxNetworkRetries { get => this.maxNetworkRetries; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the client should sleep between automatic
         /// request retries.
         /// </summary>
@@ -142,7 +152,7 @@ namespace Stripe
             HttpResponseMessage response = null;
             int retry = 0;
 
-            if (this.enableTelemetry)
+            if (this.EnableTelemetry)
             {
                 this.requestTelemetry.MaybeAddTelemetryHeader(request.StripeHeaders);
             }
@@ -192,7 +202,7 @@ namespace Stripe
                 throw requestException;
             }
 
-            if (this.enableTelemetry)
+            if (this.EnableTelemetry)
             {
                 this.requestTelemetry.MaybeEnqueueMetrics(response, duration);
             }
@@ -248,7 +258,7 @@ namespace Stripe
             HttpHeaders headers)
         {
             // Do not retry if we are out of retries.
-            if (numRetries >= this.maxNetworkRetries)
+            if (numRetries >= this.MaxNetworkRetries)
             {
                 return false;
             }
