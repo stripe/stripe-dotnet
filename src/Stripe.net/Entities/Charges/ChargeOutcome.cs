@@ -42,15 +42,15 @@ namespace Stripe
         }
 
         [JsonIgnore]
-        public ChargeOutcomeRule Rule
+        public Radar.Rule Rule
         {
             get => this.InternalRule?.ExpandedObject;
             set => this.InternalRule = SetExpandableFieldObject(value, this.InternalRule);
         }
 
         [JsonProperty("rule")]
-        [JsonConverter(typeof(ExpandableFieldConverter<ChargeOutcomeRule>))]
-        internal ExpandableField<ChargeOutcomeRule> InternalRule { get; set; }
+        [JsonConverter(typeof(ExpandableFieldConverter<Radar.Rule>))]
+        internal ExpandableField<Radar.Rule> InternalRule { get; set; }
         #endregion
 
         /// <summary>
