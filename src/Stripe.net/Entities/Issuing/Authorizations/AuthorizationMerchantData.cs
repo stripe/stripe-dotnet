@@ -2,7 +2,7 @@ namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
 
-    public class MerchantData : StripeEntity<MerchantData>
+    public class AuthorizationMerchantData : StripeEntity<AuthorizationMerchantData>
     {
         /// <summary>
         /// A categorization of the seller’s type of business.
@@ -45,11 +45,5 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("state")]
         public string State { get; set; }
-
-        /// <summary>
-        /// The url an online purchase was made from.
-        /// </summary>
-        [JsonProperty("url")]
-        public string Url { get; set; }
     }
 }

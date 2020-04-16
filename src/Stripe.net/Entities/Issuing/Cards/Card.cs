@@ -19,10 +19,6 @@ namespace Stripe.Issuing
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [Obsolete("Use SpendingControls instead.")]
-        [JsonProperty("authorization_controls")]
-        public AuthorizationControls AuthorizationControls { get; set; }
-
         /// <summary>
         /// The brand of the card.
         /// </summary>
@@ -80,20 +76,13 @@ namespace Stripe.Issuing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to a subscription schedule object.
+        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
+        /// additional information about the object in a structured format. Individual keys can be
+        /// unset by posting an empty value to them. All keys can be unset by posting an empty
+        /// value to metadata.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
-
-        [Obsolete]
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Metadata about the PIN on the card.
-        /// </summary>
-        [JsonProperty("pin")]
-        public CardPin Pin { get; set; }
 
         #region Expandable ReplacedBy
 
@@ -169,8 +158,7 @@ namespace Stripe.Issuing
         public CardSpendingControls SpendingControls { get; set; }
 
         /// <summary>
-        /// One of <c>active</c>, <c>inactive</c>, <c>canceled</c>, <c>lost</c>, <c>stolen</c>, or
-        /// <c>pending</c>.
+        /// One of <c>active</c>, <c>canceled</c>, <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

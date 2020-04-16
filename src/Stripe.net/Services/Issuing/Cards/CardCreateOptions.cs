@@ -6,14 +6,6 @@ namespace Stripe.Issuing
 
     public class CardCreateOptions : BaseOptions, IHasMetadata
     {
-        [Obsolete("Use SpendingControls instead.")]
-        [JsonProperty("authorization_controls")]
-        public AuthorizationControlsOptions AuthorizationControls { get; set; }
-
-        [Obsolete("This parameter does not exist and was added to the library incorrectly.")]
-        [JsonProperty("billing")]
-        public BillingOptions Billing { get; set; }
-
         /// <summary>
         /// The Cardholder object with which the card will be associated.
         /// </summary>
@@ -33,10 +25,6 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
-
-        [Obsolete]
-        [JsonProperty("name")]
-        public string Name { get; set; }
 
         /// <summary>
         /// The card this is meant to be a replacement for (if any).

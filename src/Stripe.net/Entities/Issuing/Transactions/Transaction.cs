@@ -7,16 +7,29 @@ namespace Stripe.Issuing
 
     public class Transaction : StripeEntity<Transaction>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
+        /// <summary>
+        /// Unique identifier for the object.
+        /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// String representing the object’s type. Objects of the same type share the same value.
+        /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        /// <summary>
+        /// The transaction amount, which will be reflected in your balance.
+        /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         #region Expandable Authorization
+
+        /// <summary>
+        /// ID of the <see cref="Authorization"/> associated with this transaction.
+        /// </summary>
         [JsonIgnore]
         public string AuthorizationId
         {
@@ -24,6 +37,9 @@ namespace Stripe.Issuing
             set => this.InternalAuthorization = SetExpandableFieldId(value, this.InternalAuthorization);
         }
 
+        /// <summary>
+        /// (Expanded) The <see cref="Authorization"/> associated with this transaction.
+        /// </summary>
         [JsonIgnore]
         public Authorization Authorization
         {
@@ -37,6 +53,10 @@ namespace Stripe.Issuing
         #endregion
 
         #region Expandable BalanceTransaction
+
+        /// <summary>
+        /// ID of the <see cref="BalanceTransaction"/> associated with this transaction.
+        /// </summary>
         [JsonIgnore]
         public string BalanceTransactionId
         {
@@ -44,6 +64,9 @@ namespace Stripe.Issuing
             set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
         }
 
+        /// <summary>
+        /// (Expanded) The <see cref="BalanceTransaction"/> associated with this transaction.
+        /// </summary>
         [JsonIgnore]
         public BalanceTransaction BalanceTransaction
         {
@@ -57,6 +80,10 @@ namespace Stripe.Issuing
         #endregion
 
         #region Expandable Card
+
+        /// <summary>
+        /// ID of the <see cref="Card"/> associated with this transaction.
+        /// </summary>
         [JsonIgnore]
         public string CardId
         {
@@ -64,6 +91,9 @@ namespace Stripe.Issuing
             set => this.InternalCard = SetExpandableFieldId(value, this.InternalCard);
         }
 
+        /// <summary>
+        /// (Expanded) The <see cref="Card"/> associated with this transaction.
+        /// </summary>
         [JsonIgnore]
         public Card Card
         {
@@ -77,6 +107,10 @@ namespace Stripe.Issuing
         #endregion
 
         #region Expandable Cardholder
+
+        /// <summary>
+        /// ID of the <see cref="Cardholder"/> associated with this transaction.
+        /// </summary>
         [JsonIgnore]
         public string CardholderId
         {
@@ -84,6 +118,9 @@ namespace Stripe.Issuing
             set => this.InternalCardholder = SetExpandableFieldId(value, this.InternalCardholder);
         }
 
+        /// <summary>
+        /// (Expanded) The <see cref="Cardholder"/> associated with this transaction.
+        /// </summary>
         [JsonIgnore]
         public Cardholder Cardholder
         {
@@ -96,48 +133,57 @@ namespace Stripe.Issuing
         internal ExpandableField<Cardholder> InternalCardholder { get; set; }
         #endregion
 
+        /// <summary>
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
+        /// <summary>
+        /// Currency associated with this transaction.
+        /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        #region Expandable Dispute
-        [JsonIgnore]
-        public string DisputeId
-        {
-            get => this.InternalDispute?.Id;
-            set => this.InternalDispute = SetExpandableFieldId(value, this.InternalDispute);
-        }
-
-        [JsonIgnore]
-        public Dispute Dispute
-        {
-            get => this.InternalDispute?.ExpandedObject;
-            set => this.InternalDispute = SetExpandableFieldObject(value, this.InternalDispute);
-        }
-
-        [JsonProperty("dispute")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Dispute>))]
-        internal ExpandableField<Dispute> InternalDispute { get; set; }
-        #endregion
-
+        /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value
+        /// <c>false</c> if the object exists in test mode.
+        /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        /// <summary>
+        /// The amount that the merchant will receive.
+        /// </summary>
         [JsonProperty("merchant_amount")]
         public long MerchantAmount { get; set; }
 
+        /// <summary>
+        /// The currency with which the merchant is taking payment.
+        /// </summary>
         [JsonProperty("merchant_currency")]
         public string MerchantCurrency { get; set; }
 
+        /// <summary>
+        /// Details about the merchant (grocery store, e-commerce website, etc.) where the payment
+        /// happened.
+        /// </summary>
         [JsonProperty("merchant_data")]
-        public MerchantData MerchantData { get; set; }
+        public AuthorizationMerchantData MerchantData { get; set; }
 
+        /// <summary>
+        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
+        /// additional information about the object in a structured format. Individual keys can be
+        /// unset by posting an empty value to them. All keys can be unset by posting an empty
+        /// value to metadata.
+        /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        /// The nature of the transaction. One of <c>capture</c>, or <c>refund</c>.
+        /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
     }
