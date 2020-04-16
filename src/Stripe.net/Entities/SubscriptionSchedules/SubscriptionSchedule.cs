@@ -124,13 +124,6 @@ namespace Stripe
         public string ReleasedSubscriptionId { get; set; }
 
         /// <summary>
-        /// Interval and duration at which the subscription schedule renews for when it ends if
-        /// <c>renewal_behavior</c> is <c>renew</c>.
-        /// </summary>
-        [JsonProperty("renewal_interval")]
-        public SubscriptionScheduleRenewalInterval RenewalInterval { get; set; }
-
-        /// <summary>
         /// Possible values are <c>active</c>, <c>canceled</c>, <c>completed</c>,
         /// <c>not_started</c> and <c>released</c>.
         /// </summary>

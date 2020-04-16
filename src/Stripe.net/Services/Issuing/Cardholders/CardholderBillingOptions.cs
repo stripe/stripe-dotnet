@@ -3,13 +3,9 @@ namespace Stripe.Issuing
     using System;
     using Newtonsoft.Json;
 
-    public class BillingOptions : INestedOptions
+    public class CardholderBillingOptions : INestedOptions
     {
         [JsonProperty("address")]
         public AddressOptions Address { get; set; }
-
-        [Obsolete]
-        [JsonProperty("name")]
-        public string Name { get; set; }
     }
 }

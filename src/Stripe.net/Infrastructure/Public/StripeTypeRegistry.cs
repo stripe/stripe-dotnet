@@ -44,7 +44,6 @@ namespace Stripe
             { "issuing.authorization", typeof(Issuing.Authorization) },
             { "issuing.card", typeof(Issuing.Card) },
             { "issuing.cardholder", typeof(Issuing.Cardholder) },
-            { "issuing.card_details", typeof(Issuing.CardDetails) },
             { "issuing.dispute", typeof(Issuing.Dispute) },
             { "issuing.transaction", typeof(Issuing.Transaction) },
             { "line_item", typeof(InvoiceLineItem) },

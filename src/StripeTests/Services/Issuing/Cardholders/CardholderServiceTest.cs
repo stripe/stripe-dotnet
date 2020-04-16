@@ -27,7 +27,7 @@ namespace StripeTests.Issuing
 
             this.createOptions = new CardholderCreateOptions
             {
-                Billing = new BillingOptions
+                Billing = new CardholderBillingOptions
                 {
                     Address = new AddressOptions
                     {

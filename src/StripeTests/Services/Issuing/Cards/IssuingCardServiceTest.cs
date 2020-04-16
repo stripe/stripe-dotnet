@@ -77,22 +77,6 @@ namespace StripeTests.Issuing
         }
 
         [Fact]
-        public void Details()
-        {
-            var cardDetails = this.service.Details(CardId);
-            this.AssertRequest(HttpMethod.Get, "/v1/issuing/cards/ic_123/details");
-            Assert.NotNull(cardDetails);
-        }
-
-        [Fact]
-        public async Task DetailsAsync()
-        {
-            var cardDetails = await this.service.DetailsAsync(CardId);
-            this.AssertRequest(HttpMethod.Get, "/v1/issuing/cards/ic_123/details");
-            Assert.NotNull(cardDetails);
-        }
-
-        [Fact]
         public void Get()
         {
             var card = this.service.Get(CardId);

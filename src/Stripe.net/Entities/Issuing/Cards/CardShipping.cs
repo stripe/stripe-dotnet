@@ -33,15 +33,6 @@ namespace Stripe.Issuing
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("phone")]
-        public string Phone { get; set; }
-
-        /// <summary>
-        /// The delivery status of the card.
-        /// </summary>
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
         /// <summary>
         /// Shipment speed. One of <c>express</c>, <c>priority</c>, or
         /// <c>standard</c>. Defaults to <c>standard</c>.
@@ -49,9 +40,11 @@ namespace Stripe.Issuing
         [JsonProperty("service")]
         public string Service { get; set; }
 
-        [Obsolete("Use Service instead")]
-        [JsonProperty("speed")]
-        public string Speed { get; set; }
+        /// <summary>
+        /// The delivery status of the card.
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; set; }
 
         /// <summary>
         /// A tracking number for a card shipment.

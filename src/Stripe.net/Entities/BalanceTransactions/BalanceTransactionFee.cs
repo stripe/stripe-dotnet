@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class Fee : StripeEntity<Fee>
+    public class BalanceTransactionFee : StripeEntity<BalanceTransactionFee>
     {
         [JsonProperty("amount")]
         public long Amount { get; set; }

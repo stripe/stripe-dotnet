@@ -24,7 +24,7 @@ namespace Stripe.Reporting
         public bool Livemode { get; set; }
 
         [JsonProperty("parameters")]
-        public Parameters Parameters { get; set; }
+        public ReportRunParameters Parameters { get; set; }
 
         [JsonProperty("report_type")]
         public string ReportType { get; set; }

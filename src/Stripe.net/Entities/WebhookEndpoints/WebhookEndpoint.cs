@@ -31,10 +31,6 @@ namespace Stripe
         [JsonProperty("application")]
         public string Application { get; set; }
 
-        [Obsolete("This property was never returned. Use Application instead")]
-        [JsonProperty("connect")]
-        public bool Connect { get; set; }
-
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>

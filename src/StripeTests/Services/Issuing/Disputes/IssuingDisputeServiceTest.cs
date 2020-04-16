@@ -26,18 +26,10 @@ namespace StripeTests.Issuing
 
             this.createOptions = new DisputeCreateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
             };
 
             this.updateOptions = new DisputeUpdateOptions
             {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "key", "value" },
-                },
             };
 
             this.listOptions = new DisputeListOptions
