@@ -1,4 +1,4 @@
-namespace Stripe
+namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
 

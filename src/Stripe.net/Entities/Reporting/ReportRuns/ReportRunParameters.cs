@@ -5,7 +5,7 @@ namespace Stripe.Reporting
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Parameters : StripeEntity<Parameters>
+    public class ReportRunParameters : StripeEntity<ReportRunParameters>
     {
         [JsonProperty("columns")]
         public List<string> Columns { get; set; }
