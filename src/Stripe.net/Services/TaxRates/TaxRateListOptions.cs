@@ -16,13 +16,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("inclusive")]
         public bool? Inclusive { get; set; }
-
-        /// <summary>
-        /// A filter on the list based on the object <c>percentage</c> field. The value can be a
-        /// <see cref="decimal"/> or a <see cref="TaxRatePercentageRangeOptions"/>.
-        /// </summary>
-        [JsonProperty("percentage")]
-        [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<decimal?, TaxRatePercentageRangeOptions> Percentage { get; set; }
     }
 }
