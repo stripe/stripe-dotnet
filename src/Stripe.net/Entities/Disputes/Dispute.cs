@@ -47,10 +47,10 @@ namespace Stripe
         public string Currency { get; set; }
 
         [JsonProperty("evidence")]
-        public Evidence Evidence { get; set; }
+        public DisputeEvidence Evidence { get; set; }
 
         [JsonProperty("evidence_details")]
-        public EvidenceDetails EvidenceDetails { get; set; }
+        public DisputeEvidenceDetails EvidenceDetails { get; set; }
 
         [JsonProperty("is_charge_refundable")]
         public bool IsChargeRefundable { get; set; }

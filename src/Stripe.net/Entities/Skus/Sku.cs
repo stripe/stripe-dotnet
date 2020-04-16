@@ -54,7 +54,7 @@ namespace Stripe
         /// Description of the SKU’s inventory.
         /// </summary>
         [JsonProperty("inventory")]
-        public Inventory Inventory { get; set; }
+        public SkuInventory Inventory { get; set; }
 
         /// <summary>
         /// Flag indicating whether the object exists in live mode or test mode.

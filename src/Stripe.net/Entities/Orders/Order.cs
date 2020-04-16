@@ -167,7 +167,7 @@ namespace Stripe
         /// when paying it.
         /// </summary>
         [JsonProperty("shipping_methods")]
-        public List<ShippingMethod> ShippingMethods { get; set; }
+        public List<OrderShippingMethod> ShippingMethods { get; set; }
 
         /// <summary>
         /// Current order status. One of created, paid, canceled, fulfilled, or
@@ -180,7 +180,7 @@ namespace Stripe
         /// The timestamps at which the order status was updated.
         /// </summary>
         [JsonProperty("status_transitions")]
-        public StatusTransitions StatusTransitions { get; set; }
+        public OrderStatusTransitions StatusTransitions { get; set; }
 
         /// <summary>
         /// Time at which the object was last updated. Measured in seconds

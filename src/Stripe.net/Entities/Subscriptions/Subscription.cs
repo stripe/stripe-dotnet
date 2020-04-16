@@ -261,7 +261,8 @@ namespace Stripe
         /// according to the schedule provided at <c>PendingInvoiceItemInterval</c>.
         /// </summary>
         [JsonProperty("next_pending_invoice_item_invoice")]
-        public long? NextPendingInvoiceItemInvoice { get; set; }
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? NextPendingInvoiceItemInvoice { get; set; }
 
         /// <summary>
         /// If specified, payment collection for this subscription will be paused.

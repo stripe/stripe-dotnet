@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class ShippingMethod : StripeEntity<ShippingMethod>, IHasId
+    public class OrderShippingMethod : StripeEntity<OrderShippingMethod>, IHasId
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -23,7 +23,7 @@ namespace Stripe
         /// The estimated delivery date for the given shipping method. Can be either a specific date or a range.
         /// </summary>
         [JsonProperty("delivery_estimate")]
-        public DeliveryEstimate DeliveryEstimate { get; set; }
+        public OrderShippingMethodDeliveryEstimate DeliveryEstimate { get; set; }
 
         /// <summary>
         /// Description of the line item, meant to be displayable to the user (e.g., "Express shipping").
