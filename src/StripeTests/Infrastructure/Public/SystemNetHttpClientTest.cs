@@ -85,6 +85,26 @@ namespace StripeTests
                     ItExpr.IsAny<CancellationToken>());
         }
 
+        [Fact]
+        public void CanInspectMaxNetworkRetries()
+        {
+            var client = new SystemNetHttpClient(
+                httpClient: new HttpClient(this.MockHttpClientFixture.MockHandler.Object),
+                maxNetworkRetries: 2);
+
+            Assert.Equal(2, client.MaxNetworkRetries);
+        }
+
+        [Fact]
+        public void CanInspectEnableTelemetry()
+        {
+            var client = new SystemNetHttpClient(
+                httpClient: new HttpClient(this.MockHttpClientFixture.MockHandler.Object),
+                enableTelemetry: true);
+
+            Assert.True(client.EnableTelemetry);
+        }
+
         private bool VerifyHeaders(HttpRequestHeaders headers)
         {
             var userAgent = headers.UserAgent.ToString();

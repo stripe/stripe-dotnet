@@ -38,11 +38,7 @@ namespace Stripe
 
         private readonly System.Net.Http.HttpClient httpClient;
 
-        private readonly int maxNetworkRetries;
-
         private readonly AppInfo appInfo;
-
-        private readonly bool enableTelemetry;
 
         private readonly RequestTelemetry requestTelemetry = new RequestTelemetry();
 
@@ -85,9 +81,9 @@ namespace Stripe
 #endif
 
             this.httpClient = httpClient ?? LazyDefaultHttpClient.Value;
-            this.maxNetworkRetries = maxNetworkRetries;
+            this.MaxNetworkRetries = maxNetworkRetries;
             this.appInfo = appInfo;
-            this.enableTelemetry = enableTelemetry;
+            this.EnableTelemetry = enableTelemetry;
 
             this.stripeClientUserAgentString = this.BuildStripeClientUserAgentString();
             this.userAgentString = this.BuildUserAgentString();
@@ -105,6 +101,16 @@ namespace Stripe
         /// Minimum sleep time between tries to send HTTP requests after network failure.
         /// </summary>
         public static TimeSpan MinNetworkRetriesDelay => TimeSpan.FromMilliseconds(500);
+
+        /// <summary>
+        /// Gets whether telemetry was enabled for this client.
+        /// </summary>
+        public bool EnableTelemetry { get; }
+
+        /// <summary>
+        /// Gets how many network retries were configured for this client.
+        /// </summary>
+        public int MaxNetworkRetries { get; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the client should sleep between automatic
@@ -142,7 +148,7 @@ namespace Stripe
             HttpResponseMessage response = null;
             int retry = 0;
 
-            if (this.enableTelemetry)
+            if (this.EnableTelemetry)
             {
                 this.requestTelemetry.MaybeAddTelemetryHeader(request.StripeHeaders);
             }
@@ -192,7 +198,7 @@ namespace Stripe
                 throw requestException;
             }
 
-            if (this.enableTelemetry)
+            if (this.EnableTelemetry)
             {
                 this.requestTelemetry.MaybeEnqueueMetrics(response, duration);
             }
@@ -248,7 +254,7 @@ namespace Stripe
             HttpHeaders headers)
         {
             // Do not retry if we are out of retries.
-            if (numRetries >= this.maxNetworkRetries)
+            if (numRetries >= this.MaxNetworkRetries)
             {
                 return false;
             }
