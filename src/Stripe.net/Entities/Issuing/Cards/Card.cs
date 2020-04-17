@@ -51,6 +51,13 @@ namespace Stripe.Issuing
         public string Currency { get; set; }
 
         /// <summary>
+        /// The card’s CVC. For security reasons, this is only available for virtual cards, and will
+        /// be omitted unless you explicitly expand it in the request.
+        /// </summary>
+        [JsonProperty("cvc")]
+        public string Cvc { get; set; }
+
+        /// <summary>
         /// The expiration month of the card.
         /// </summary>
         [JsonProperty("exp_month")]
@@ -83,6 +90,13 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The full unredacted card number. For security reasons, this is only available for
+        /// virtual cards, and will be omitted unless you explicitly expand it in the request.
+        /// </summary>
+        [JsonProperty("number")]
+        public string Number { get; set; }
 
         #region Expandable ReplacedBy
 
