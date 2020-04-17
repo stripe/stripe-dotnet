@@ -1,5 +1,10 @@
 # Changelog
 
+## 36.1.0 - 2020-04-16
+* [#2004](https://github.com/stripe/stripe-dotnet/pull/2004) Add `InstitutionNumber` and `TransitNumber` on `ChargePaymentMethodDetailsAcssDebit`
+* [#2000](https://github.com/stripe/stripe-dotnet/pull/2000) Ability to inspect the configuration of SystemNetHttpClient
+* [#2003](https://github.com/stripe/stripe-dotnet/pull/2003) Add support for `Cvc` and `Number` on Issuing `Card`
+
 ## 36.0.0 - 2020-04-16
 * [#1993](https://github.com/stripe/stripe-dotnet/pull/1993) Multiple breaking API changes while removing deprecated Issuing features
   * [#1992](https://github.com/stripe/stripe-dotnet/pull/1992), [#1994](https://github.com/stripe/stripe-dotnet/pull/1994) Change `Error` on `ScheduledQueryRun` from `string` to `ScheduledQueryRunError`
