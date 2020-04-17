@@ -20,7 +20,7 @@ namespace Stripe
 
         private static bool enableTelemetry = true;
 
-        private static int maxNetworkRetries;
+        private static int maxNetworkRetries = SystemNetHttpClient.DefaultMaxNumberRetries;
 
         private static IStripeClient stripeClient;
 
