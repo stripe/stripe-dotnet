@@ -1,5 +1,8 @@
 # Changelog
 
+## 36.2.0 - 2020-04-17
+* [#2007](https://github.com/stripe/stripe-dotnet/pull/2007) Add `CardholderName` to `ChargePaymentMethodDetailsCardPresent`
+
 ## 36.1.0 - 2020-04-16
 * [#2004](https://github.com/stripe/stripe-dotnet/pull/2004) Add `InstitutionNumber` and `TransitNumber` on `ChargePaymentMethodDetailsAcssDebit`
 * [#2000](https://github.com/stripe/stripe-dotnet/pull/2000) Ability to inspect the configuration of SystemNetHttpClient
