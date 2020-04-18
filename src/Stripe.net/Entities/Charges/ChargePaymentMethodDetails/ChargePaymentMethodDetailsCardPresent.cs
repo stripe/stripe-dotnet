@@ -14,6 +14,12 @@ namespace Stripe
         public string Brand { get; set; }
 
         /// <summary>
+        /// The cardholder name as read from the card.
+        /// </summary>
+        [JsonProperty("cardholder_name")]
+        public string CardholderName { get; set; }
+
+        /// <summary>
         /// Two-letter ISO code representing the country of the card. You could use this attribute
         /// to get a sense of the international breakdown of cards you’ve collected.
         /// </summary>
