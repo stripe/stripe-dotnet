@@ -29,6 +29,9 @@ namespace Stripe
             set => this.InternalTaxRate = SetExpandableFieldId(value, this.InternalTaxRate);
         }
 
+        /// <summary>
+        /// (Expanded) The tax rate that was applied to get this tax amount.
+        /// </summary>
         [JsonIgnore]
         public TaxRate TaxRate
         {

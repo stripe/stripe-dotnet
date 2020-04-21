@@ -6,6 +6,11 @@ namespace Stripe
     public class InvoiceTransferData : StripeEntity<InvoiceTransferData>
     {
         #region Expandable Destination (Account)
+
+        /// <summary>
+        /// The ID of the account where funds from the payment will be transferred to upon payment
+        /// success.
+        /// </summary>
         [JsonIgnore]
         public string DestinationId
         {
@@ -13,6 +18,10 @@ namespace Stripe
             set => this.InternalDestination = SetExpandableFieldId(value, this.InternalDestination);
         }
 
+        /// <summary>
+        /// (Expanded) The account where funds from the payment will be transferred to upon payment
+        /// success.
+        /// </summary>
         [JsonIgnore]
         public Account Destination
         {
