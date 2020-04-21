@@ -1,5 +1,9 @@
 # Changelog
 
+## 36.3.0 - 2020-04-21
+* [#2005](https://github.com/stripe/stripe-dotnet/pull/2005) Swallow exceptions when gathering runtime information to avoid raising an error when generating the user agent details for a request
+* [#2011](https://github.com/stripe/stripe-dotnet/pull/2011) Add `Deleted` on `Invoice` and all missing docstrings
+
 ## 36.2.0 - 2020-04-17
 * [#2007](https://github.com/stripe/stripe-dotnet/pull/2007) Add `CardholderName` to `ChargePaymentMethodDetailsCardPresent`
 
