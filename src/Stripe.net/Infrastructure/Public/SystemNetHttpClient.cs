@@ -222,10 +222,23 @@ namespace Stripe
                 { "bindings_version", StripeConfiguration.StripeNetVersion },
                 { "lang", ".net" },
                 { "publisher", "stripe" },
-                { "lang_version", RuntimeInformation.GetRuntimeVersion() },
-                { "os_version", RuntimeInformation.GetOSVersion() },
                 { "stripe_net_target_framework", StripeNetTargetFramework },
             };
+
+            // The following values are in a try/catch block on the off chance that the
+            // RuntimeInformation methods fail in an unexpected way. This should ~never happen, but
+            // if it does it should not prevent users from sending requests.
+            // See https://github.com/stripe/stripe-dotnet/issues/1986 for context.
+            try
+            {
+                values.Add("lang_version", RuntimeInformation.GetRuntimeVersion());
+                values.Add("os_version", RuntimeInformation.GetOSVersion());
+            }
+            catch (Exception)
+            {
+                values.Add("lang_version", "(unknown)");
+                values.Add("os_version", "(unknown)");
+            }
 
             if (this.appInfo != null)
             {
