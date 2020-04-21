@@ -43,6 +43,12 @@ namespace Stripe
         public string Plan { get; set; }
 
         /// <summary>
+        /// Filter for subscriptions that contain this recurring price ID.
+        /// </summary>
+        [JsonProperty("price")]
+        public string Price { get; set; }
+
+        /// <summary>
         /// The status of the subscriptions to retrieve. One of <see cref="SubscriptionStatuses"/> or <c>all</c>. Passing in a value of <c>canceled</c> will return all canceled subscriptions, including those belonging to deleted customers. Passing in a value of <c>all</c> will return subscriptions of all statuses.
         /// </summary>
         [JsonProperty("status")]

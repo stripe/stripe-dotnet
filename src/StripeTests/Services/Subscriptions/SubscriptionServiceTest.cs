@@ -38,12 +38,22 @@ namespace StripeTests
                 {
                     new SubscriptionItemOptions
                     {
-                        Plan = "plan_123",
+                        Price = "price_123",
                         Quantity = 2,
                     },
                     new SubscriptionItemOptions
                     {
-                        Plan = "plan_124",
+                        PriceData = new SubscriptionItemPriceDataOptions
+                        {
+                            Currency = "usd",
+                            Product = "prod_123",
+                            Recurring = new SubscriptionItemPriceDataRecurringOptions
+                            {
+                                Interval = "day",
+                                IntervalCount = 15,
+                            },
+                            UnitAmountDecimal = 0.01234567890m, // Ensure decimals work
+                        },
                         Quantity = 3,
                     },
                 },

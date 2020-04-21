@@ -58,6 +58,7 @@ namespace Stripe
             { "payout", typeof(Payout) },
             { "person", typeof(Person) },
             { "plan", typeof(Plan) },
+            { "price", typeof(Price) },
             { "product", typeof(Product) },
             { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
             { "radar.value_list", typeof(Radar.ValueList) },

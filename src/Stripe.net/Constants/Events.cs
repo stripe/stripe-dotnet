@@ -569,6 +569,21 @@ namespace Stripe
         public const string PlanUpdated = "plan.updated";
 
         /// <summary>
+        /// Occurs whenever a price is created.
+        /// </summary>
+        public const string PriceCreated = "price.created";
+
+        /// <summary>
+        /// Occurs whenever a price is deleted.
+        /// </summary>
+        public const string PriceDeleted = "price.deleted";
+
+        /// <summary>
+        /// Occurs whenever a price is updated.
+        /// </summary>
+        public const string PriceUpdated = "price.updated";
+
+        /// <summary>
         /// Occurs whenever a product is created.
         /// </summary>
         public const string ProductCreated = "product.created";

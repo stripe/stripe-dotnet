@@ -44,6 +44,12 @@ namespace Stripe
         [JsonProperty("plan")]
         public Plan Plan { get; set; }
 
+        /// <summary>
+        /// The price associated with the invoice line item.
+        /// </summary>
+        [JsonProperty("price")]
+        public Price Price { get; set; }
+
         [JsonProperty("proration")]
         public bool Proration { get; set; }
 

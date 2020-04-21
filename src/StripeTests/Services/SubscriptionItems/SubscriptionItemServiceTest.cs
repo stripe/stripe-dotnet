@@ -27,7 +27,17 @@ namespace StripeTests
 
             this.createOptions = new SubscriptionItemCreateOptions
             {
-                Plan = "plan_123",
+                PriceData = new SubscriptionItemPriceDataOptions
+                {
+                    Currency = "usd",
+                    Product = "prod_123",
+                    Recurring = new SubscriptionItemPriceDataRecurringOptions
+                    {
+                        Interval = "day",
+                        IntervalCount = 15,
+                    },
+                    UnitAmountDecimal = 0.01234567890m, // Ensure decimals work
+                },
                 Quantity = 1,
                 Subscription = "sub_123",
             };

@@ -41,6 +41,34 @@ namespace Stripe
         internal ExpandableField<Plan> InternalPlan { get; set; }
         #endregion
 
+        #region Expandable Price
+
+        /// <summary>
+        /// ID of the <see cref="Price"/> included in the phase for this subscription schedule.
+        /// <para>Expandable.</para>
+        /// </summary>
+        [JsonIgnore]
+        public string PriceId
+        {
+            get => this.InternalPrice?.Id;
+            set => this.InternalPrice = SetExpandableFieldId(value, this.InternalPrice);
+        }
+
+        /// <summary>
+        /// (Expanded) The <see cref="Price"/> included in the phase for this subscription schedule.
+        /// </summary>
+        [JsonIgnore]
+        public Price Price
+        {
+            get => this.InternalPrice?.ExpandedObject;
+            set => this.InternalPrice = SetExpandableFieldObject(value, this.InternalPrice);
+        }
+
+        [JsonProperty("price")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Price>))]
+        internal ExpandableField<Price> InternalPrice { get; set; }
+        #endregion
+
         /// <summary>
         /// Quantity of the plan to which the customer should be subscribed.
         /// </summary>

@@ -139,6 +139,12 @@ namespace Stripe
         public Plan Plan { get; set; }
 
         /// <summary>
+        /// The price associated with the invoice item.
+        /// </summary>
+        [JsonProperty("price")]
+        public Price Price { get; set; }
+
+        /// <summary>
         /// Whether the invoice item was created automatically as a proration adjustment when the
         /// customer switched plans.
         /// </summary>
