@@ -18,6 +18,13 @@ namespace Stripe.Checkout
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
+        /// The code of the coupon to apply to this subscription. A coupon applied to a subscription
+        /// will only affect invoices created for that particular subscription.
+        /// </summary>
+        [JsonProperty("coupon")]
+        public string Coupon { get; set; }
+
+        /// <summary>
         /// The tax rates that will apply to any subscription item that does
         /// not have tax rates set. Invoices created will have their
         /// default tax rates populated from the subscription.
