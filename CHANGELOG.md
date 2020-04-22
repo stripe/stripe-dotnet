@@ -1,5 +1,8 @@
 # Changelog
 
+## 36.5.0 - 2020-04-22
+* [#2014](https://github.com/stripe/stripe-dotnet/pull/2014) Add support for `Coupon` for subscriptions on Checkout
+
 ## 36.4.0 - 2020-04-22
 * [#1998](https://github.com/stripe/stripe-dotnet/pull/1998) Add support for the `BillingPortal` namespace and the `Session` API and resource
 
