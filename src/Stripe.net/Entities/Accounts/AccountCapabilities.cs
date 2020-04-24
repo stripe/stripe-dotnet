@@ -13,11 +13,25 @@ namespace Stripe
         public string AuBecsDebitPayments { get; set; }
 
         /// <summary>
+        /// The status of the card issuing capability of the account, or whether you can use Issuing
+        /// to distribute funds on cards.
+        /// </summary>
+        [JsonProperty("card_issuing")]
+        public string CardIssuing { get; set; }
+
+        /// <summary>
         /// The status of the card payments capability of the account, or whether the account can
         /// directly process credit and debit card charges.
         /// </summary>
         [JsonProperty("card_payments")]
         public string CardPayments { get; set; }
+
+        /// <summary>
+        /// The status of the JCB payments capability of the account, or whether the account (Japan
+        /// only) can directly process JCB credit card charges in JPY currency.
+        /// </summary>
+        [JsonProperty("jcb_payments")]
+        public string JcbPayments { get; set; }
 
         /// <summary>
         /// The status of the legacy payments capability of the account.
