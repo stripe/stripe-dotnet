@@ -1,5 +1,8 @@
 # Changelog
 
+## 36.6.0 - 2020-04-23
+* [#2017](https://github.com/stripe/stripe-dotnet/pull/2017) Add `CardIssuing` and `JcbPayments` as capabilities on `Account`
+
 ## 36.5.0 - 2020-04-22
 * [#2014](https://github.com/stripe/stripe-dotnet/pull/2014) Add support for `Coupon` for subscriptions on Checkout
 
