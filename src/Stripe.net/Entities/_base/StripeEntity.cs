@@ -1,6 +1,8 @@
 namespace Stripe
 {
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using System.Reflection;
     using System.Runtime.CompilerServices;
     using Newtonsoft.Json;
@@ -150,6 +152,29 @@ namespace Stripe
             expandable.ExpandedObject = obj;
 
             return expandable;
+        }
+
+        protected static List<ExpandableField<T>> SetExpandableArrayIds<T>(List<string> ids)
+            where T : IHasId
+        {
+            return ids?.Select((id) =>
+            {
+                var expandable = new ExpandableField<T>();
+                expandable.Id = id;
+                return expandable;
+            }).ToList();
+        }
+
+        protected static List<ExpandableField<T>> SetExpandableArrayObjects<T>(List<T> objects)
+            where T : IHasId
+        {
+            return objects?.Select((obj) =>
+            {
+                var expandable = new ExpandableField<T>();
+                expandable.Id = obj.Id;
+                expandable.ExpandedObject = obj;
+                return expandable;
+            }).ToList();
         }
 
         private object GetIdString()
