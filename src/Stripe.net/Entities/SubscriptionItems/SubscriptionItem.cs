@@ -29,6 +29,12 @@ namespace Stripe
         [JsonProperty("plan")]
         public Plan Plan { get; set; }
 
+        /// <summary>
+        /// The price associated with the subscription item.
+        /// </summary>
+        [JsonProperty("price")]
+        public Price Price { get; set; }
+
         [JsonProperty("quantity")]
         public long Quantity { get; set; }
 

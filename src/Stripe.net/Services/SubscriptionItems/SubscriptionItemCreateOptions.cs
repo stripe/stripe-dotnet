@@ -31,10 +31,22 @@ namespace Stripe
         public string PaymentBehavior { get; set; }
 
         /// <summary>
-        /// REQUIRED: The identifier of the plan to add to the subscription.
+        /// The ID of the plan to add to the subscription.
         /// </summary>
         [JsonProperty("plan")]
         public string Plan { get; set; }
+
+        /// <summary>
+        /// The ID of the price object.
+        /// </summary>
+        [JsonProperty("price")]
+        public string Price { get; set; }
+
+        /// <summary>
+        /// Data used to generate a new price object inline.
+        /// </summary>
+        [JsonProperty("price_data")]
+        public SubscriptionItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
         /// Flag indicating whether to prorate switching plans during a billing cycle.

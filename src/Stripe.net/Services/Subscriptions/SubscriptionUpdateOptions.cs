@@ -8,6 +8,13 @@ namespace Stripe
     public class SubscriptionUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// A list of prices and quantities that will generate invoice items appended to the first
+        /// invoice for this subscription. You may pass up to 10 items.
+        /// </summary>
+        [JsonProperty("add_invoice_items")]
+        public List<SubscriptionAddInvoiceItemOptions> AddInvoiceItems { get; set; }
+
+        /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal
         /// places. This represents the percentage of the subscription invoice
         /// subtotal that will be transferred to the application owner’s Stripe

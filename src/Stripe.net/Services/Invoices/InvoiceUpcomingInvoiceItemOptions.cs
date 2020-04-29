@@ -54,6 +54,18 @@ namespace Stripe
         public InvoiceItemPeriodOptions Period { get; set; }
 
         /// <summary>
+        /// The ID of the price object.
+        /// </summary>
+        [JsonProperty("price")]
+        public string Price { get; set; }
+
+        /// <summary>
+        /// The ID of the price object.
+        /// </summary>
+        [JsonProperty("price_data")]
+        public InvoiceItemPriceDataOptions PriceData { get; set; }
+
+        /// <summary>
         /// Non-negative integer. The quantity of units for the invoice item.
         /// </summary>
         [JsonProperty("quantity")]
