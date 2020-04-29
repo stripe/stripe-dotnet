@@ -1,5 +1,8 @@
 # Changelog
 
+## 36.7.0 - 2020-04-29
+* [#2010](https://github.com/stripe/stripe-dotnet/pull/2010) Add support for the `Price` resource and APIs
+
 ## 36.6.0 - 2020-04-23
 * [#2017](https://github.com/stripe/stripe-dotnet/pull/2017) Add `CardIssuing` and `JcbPayments` as capabilities on `Account`
 
