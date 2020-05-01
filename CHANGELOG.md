@@ -1,5 +1,8 @@
 # Changelog
 
+## 36.8.0 - 2020-05-01
+* [#2018](https://github.com/stripe/stripe-dotnet/pull/2018) Add support for `Issuing` on `Balance`
+
 ## 36.7.0 - 2020-04-29
 * [#2010](https://github.com/stripe/stripe-dotnet/pull/2010) Add support for the `Price` resource and APIs
 
