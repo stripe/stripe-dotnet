@@ -125,6 +125,12 @@ namespace Stripe
         public string PaymentMethod { get; set; }
 
         /// <summary>
+        /// Payment-method-specific data used to create a payment method for this payment intent.
+        /// </summary>
+        [JsonProperty("payment_method_data")]
+        public PaymentIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
+
+        /// <summary>
         /// Payment-method-specific configuration for this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]
