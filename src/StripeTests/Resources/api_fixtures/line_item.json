@@ -1,0 +1,25 @@
+{
+  "amount_subtotal": 12345,
+  "amount_total": 23456,
+  "currency": "usd",
+  "description": "description",
+  "id": "li_123",
+  "object": "item",
+  "price": {
+    "id": "price_123",
+    "object": "price"
+  },
+  "quantity": 1,
+  "taxes": [
+    {
+      "amount": 111,
+      "inclusive": true,
+      "tax_rate": "txr_123"
+    },
+    {
+      "amount": 222,
+      "inclusive": false,
+      "tax_rate": "txr_ABC"
+    }
+  ]
+}

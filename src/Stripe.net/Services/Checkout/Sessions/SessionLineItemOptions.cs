@@ -36,6 +36,18 @@ namespace Stripe.Checkout
         public string Name { get; set; }
 
         /// <summary>
+        /// The ID of the price object associated with the line item.
+        /// </summary>
+        [JsonProperty("price")]
+        public string Price { get; set; }
+
+        /// <summary>
+        /// The details of the price object created inline for this line item.
+        /// </summary>
+        [JsonProperty("price_data")]
+        public SessionLineItemPriceDataOptions PriceData { get; set; }
+
+        /// <summary>
         /// Quantity of the line item being purchased.
         /// </summary>
         [JsonProperty("quantity")]
