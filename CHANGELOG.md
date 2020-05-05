@@ -1,5 +1,8 @@
 # Changelog
 
+## 36.8.1 - 2020-05-05
+* [#2025](https://github.com/stripe/stripe-dotnet/pull/2025) Mark `Metadata` on `CreditNoteLineOptions` as obsolete
+
 ## 36.8.0 - 2020-05-01
 * [#2018](https://github.com/stripe/stripe-dotnet/pull/2018) Add support for `Issuing` on `Balance`
 
