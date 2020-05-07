@@ -1,5 +1,9 @@
 # Changelog
 
+## 36.9.0 - 2020-05-07
+* [#2028](https://github.com/stripe/stripe-dotnet/pull/2028) Add support for `SupportAddress` on `Account` create and update
+* [#2026](https://github.com/stripe/stripe-dotnet/pull/2026) Fix parameters supported in `Recurring` for `PriceData` across the API
+
 ## 36.8.1 - 2020-05-05
 * [#2025](https://github.com/stripe/stripe-dotnet/pull/2025) Mark `Metadata` on `CreditNoteLineOptions` as obsolete
 
