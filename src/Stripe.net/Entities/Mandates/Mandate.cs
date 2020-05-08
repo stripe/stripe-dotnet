@@ -1,7 +1,5 @@
 namespace Stripe
 {
-    using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -22,8 +20,7 @@ namespace Stripe
         [JsonProperty("multi_use")]
         public MandateMultiUse MultiUse { get; set; }
 
-        #region Expandable PaymentMethod
-
+        #region Expandable Payment Method
         [JsonIgnore]
         public string PaymentMethodId
         {

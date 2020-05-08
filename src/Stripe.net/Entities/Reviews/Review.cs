@@ -16,7 +16,6 @@ namespace Stripe
         public string BillingZip { get; set; }
 
         #region Expandable Charge
-
         [JsonIgnore]
         public string ChargeId
         {
@@ -47,7 +46,7 @@ namespace Stripe
         public string IpAddress { get; set; }
 
         [JsonProperty("ip_address_location")]
-        public ReviewLocation IpAddressLocation { get; set; }
+        public ReviewIpAddressLocation IpAddressLocation { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -58,8 +57,7 @@ namespace Stripe
         [JsonProperty("opened_reason")]
         public string OpenedReason { get; set; }
 
-        #region Expandable PaymentIntent
-
+        #region Expandable Payment Intent
         [JsonIgnore]
         public string PaymentIntentId
         {

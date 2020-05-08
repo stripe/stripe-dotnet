@@ -1,8 +1,7 @@
 namespace Stripe
 {
-    using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     using Stripe.Infrastructure;
 
     public class PaymentMethodCreateOptions : BaseOptions, IHasMetadata
@@ -14,7 +13,8 @@ namespace Stripe
         public BillingDetailsOptions BillingDetails { get; set; }
 
         [JsonProperty("card")]
-        public PaymentMethodCardCreateOptions Card { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<PaymentMethodCardCreateOptions, PaymentMethodCardCreateOptions> Card { get; set; }
 
         [JsonProperty("customer")]
         public string Customer { get; set; }

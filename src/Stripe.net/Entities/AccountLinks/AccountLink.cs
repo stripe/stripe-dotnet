@@ -1,7 +1,6 @@
 namespace Stripe
 {
     using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -16,9 +15,9 @@ namespace Stripe
 
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? ExpiresAt { get; set; }
+        public DateTime ExpiresAt { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
-     }
+    }
 }

@@ -1,7 +1,7 @@
 namespace Stripe
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class SetupIntentUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -22,8 +22,5 @@ namespace Stripe
 
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
-
-        [JsonProperty("usage")]
-        public string Usage { get; set; }
     }
 }

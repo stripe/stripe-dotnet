@@ -1,9 +1,11 @@
 namespace Stripe.Issuing
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
-    public class DisputeUpdateOptions : BaseOptions
+    public class DisputeUpdateOptions : BaseOptions, IHasMetadata
     {
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
     }
 }

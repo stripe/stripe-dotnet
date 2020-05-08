@@ -1,8 +1,7 @@
 namespace Stripe
 {
-    using Newtonsoft.Json;
 
-    public class AccountListOptions : ListOptions
+    public class AccountListOptions : ListOptionsWithCreated
     {
     }
 }

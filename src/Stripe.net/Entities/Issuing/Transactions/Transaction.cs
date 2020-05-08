@@ -17,7 +17,6 @@ namespace Stripe.Issuing
         public long Amount { get; set; }
 
         #region Expandable Authorization
-
         [JsonIgnore]
         public string AuthorizationId
         {
@@ -37,8 +36,7 @@ namespace Stripe.Issuing
         internal ExpandableField<Authorization> InternalAuthorization { get; set; }
         #endregion
 
-        #region Expandable BalanceTransaction
-
+        #region Expandable Balance Transaction
         [JsonIgnore]
         public string BalanceTransactionId
         {
@@ -59,7 +57,6 @@ namespace Stripe.Issuing
         #endregion
 
         #region Expandable Card
-
         [JsonIgnore]
         public string CardId
         {
@@ -80,7 +77,6 @@ namespace Stripe.Issuing
         #endregion
 
         #region Expandable Cardholder
-
         [JsonIgnore]
         public string CardholderId
         {
@@ -117,7 +113,7 @@ namespace Stripe.Issuing
         public string MerchantCurrency { get; set; }
 
         [JsonProperty("merchant_data")]
-        public AuthorizationMerchantData MerchantData { get; set; }
+        public TransactionMerchantData MerchantData { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

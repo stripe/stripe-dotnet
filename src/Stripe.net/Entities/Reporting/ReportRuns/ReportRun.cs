@@ -1,7 +1,6 @@
 namespace Stripe.Reporting
 {
     using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -24,7 +23,7 @@ namespace Stripe.Reporting
         public bool Livemode { get; set; }
 
         [JsonProperty("parameters")]
-        public ReportRunParameters Parameters { get; set; }
+        public Parameters Parameters { get; set; }
 
         [JsonProperty("report_type")]
         public string ReportType { get; set; }

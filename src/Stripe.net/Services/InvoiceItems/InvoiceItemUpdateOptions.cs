@@ -1,6 +1,5 @@
 namespace Stripe
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class InvoiceItemUpdateOptions : BaseOptions, IHasMetadata
@@ -18,7 +17,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("period")]
-        public InvoiceItemPeriodOptions Period { get; set; }
+        public PeriodOptions Period { get; set; }
 
         [JsonProperty("price")]
         public string Price { get; set; }
@@ -36,6 +35,6 @@ namespace Stripe
         public long? UnitAmount { get; set; }
 
         [JsonProperty("unit_amount_decimal")]
-        public decimal? UnitAmountDecimal { get; set; }
+        public string UnitAmountDecimal { get; set; }
     }
 }

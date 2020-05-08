@@ -29,7 +29,6 @@ namespace Stripe.Issuing
         public Card Card { get; set; }
 
         #region Expandable Cardholder
-
         [JsonIgnore]
         public string CardholderId
         {

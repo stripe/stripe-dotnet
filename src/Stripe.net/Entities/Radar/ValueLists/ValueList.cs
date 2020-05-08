@@ -23,6 +23,9 @@ namespace Stripe.Radar
         [JsonProperty("created_by")]
         public string CreatedBy { get; set; }
 
+        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
+        public bool? Deleted { get; set; }
+
         [JsonProperty("item_type")]
         public string ItemType { get; set; }
 

@@ -92,10 +92,13 @@ namespace Stripe
         public string CvcCheck { get; set; }
 
         [JsonProperty("default_for_currency")]
-        public bool DefaultForCurrency { get; set; }
+        public bool? DefaultForCurrency { get; set; }
 
         [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
 
         [JsonProperty("dynamic_last4")]
         public string DynamicLast4 { get; set; }
@@ -111,6 +114,12 @@ namespace Stripe
 
         [JsonProperty("funding")]
         public string Funding { get; set; }
+
+        [JsonProperty("iin")]
+        public string Iin { get; set; }
+
+        [JsonProperty("issuer")]
+        public string Issuer { get; set; }
 
         [JsonProperty("last4")]
         public string Last4 { get; set; }
@@ -143,15 +152,5 @@ namespace Stripe
 
         [JsonProperty("tokenization_method")]
         public string TokenizationMethod { get; set; }
-
-        // The properties below are for internal use only and not returned as part of standard API requests.
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("iin")]
-        public string IIN { get; set; }
-
-        [JsonProperty("issuer")]
-        public string Issuer { get; set; }
     }
 }

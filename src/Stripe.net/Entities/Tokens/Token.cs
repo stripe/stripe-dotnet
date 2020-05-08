@@ -32,6 +32,6 @@ namespace Stripe
         public string Type { get; set; }
 
         [JsonProperty("used")]
-        public bool? Used { get; set; }
+        public bool Used { get; set; }
     }
 }

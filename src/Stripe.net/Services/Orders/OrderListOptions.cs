@@ -1,7 +1,7 @@
 namespace Stripe
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class OrderListOptions : ListOptionsWithCreated
     {
@@ -15,7 +15,7 @@ namespace Stripe
         public string Status { get; set; }
 
         [JsonProperty("status_transitions")]
-        public OrderStatusTransitionsOptions StatusTransitions { get; set; }
+        public StatusTransitionsOptions StatusTransitions { get; set; }
 
         [JsonProperty("upstream_ids")]
         public List<string> UpstreamIds { get; set; }

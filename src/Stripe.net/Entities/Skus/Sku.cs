@@ -33,7 +33,7 @@ namespace Stripe
         public string Image { get; set; }
 
         [JsonProperty("inventory")]
-        public SkuInventory Inventory { get; set; }
+        public Inventory Inventory { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -48,7 +48,6 @@ namespace Stripe
         public long Price { get; set; }
 
         #region Expandable Product
-
         [JsonIgnore]
         public string ProductId
         {

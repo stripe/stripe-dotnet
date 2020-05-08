@@ -1,6 +1,5 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -33,14 +32,24 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Refund Get(string refundId, RefundGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Refund Get(string id, RefundGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(refundId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Refund> GetAsync(string refundId, RefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Refund> GetAsync(string id, RefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(refundId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+        }
+
+        public virtual Refund Get(string id, RefundGetOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.GetEntity(id, options, requestOptions);
+        }
+
+        public virtual Task<Refund> GetAsync(string id, RefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Refund> List(RefundListOptions options = null, RequestOptions requestOptions = null)
@@ -58,21 +67,29 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-#if !NET45
-        public virtual IAsyncEnumerable<Refund> ListAutoPagingAsync(RefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual StripeList<Refund> List(RefundListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
-        }
-#endif
-
-        public virtual Refund Update(string refundId, RefundUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.UpdateEntity(refundId, options, requestOptions);
+            return this.ListEntities(options, requestOptions);
         }
 
-        public virtual Task<Refund> UpdateAsync(string refundId, RefundUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Refund>> ListAsync(RefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(refundId, options, requestOptions, cancellationToken);
+            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Refund> ListAutoPaging(RefundListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListEntitiesAutoPaging(options, requestOptions);
+        }
+
+        public virtual Refund Update(string id, RefundUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.UpdateEntity(id, options, requestOptions);
+        }
+
+        public virtual Task<Refund> UpdateAsync(string id, RefundUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

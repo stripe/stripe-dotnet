@@ -1,7 +1,5 @@
 namespace Stripe
 {
-    using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class SourceUpdateOptions : BaseOptions, IHasMetadata
@@ -20,8 +18,5 @@ namespace Stripe
 
         [JsonProperty("source_order")]
         public SourceSourceOrderOptions SourceOrder { get; set; }
-
-        [JsonProperty("card")]
-        public SourceCardUpdateOptions Card { get; set; }
     }
 }

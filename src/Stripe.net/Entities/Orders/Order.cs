@@ -26,7 +26,6 @@ namespace Stripe
         public long? ApplicationFee { get; set; }
 
         #region Expandable Charge
-
         [JsonIgnore]
         public string ChargeId
         {
@@ -54,9 +53,12 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
-
         [JsonIgnore]
-        public string CustomerId { get; set; }
+        public string CustomerId
+        {
+            get => this.InternalCustomer?.Id;
+            set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
+        }
 
         [JsonIgnore]
         public Customer Customer
@@ -77,7 +79,7 @@ namespace Stripe
         public string ExternalCouponCode { get; set; }
 
         [JsonProperty("items")]
-        public List<OrderItem> OrderItems { get; set; }
+        public List<OrderItem> Items { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -95,17 +97,17 @@ namespace Stripe
         public Shipping Shipping { get; set; }
 
         [JsonProperty("shipping_methods")]
-        public List<OrderShippingMethod> ShippingMethods { get; set; }
+        public List<ShippingMethod> ShippingMethods { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("status_transitions")]
-        public OrderStatusTransitions StatusTransitions { get; set; }
+        public StatusTransitions StatusTransitions { get; set; }
 
         [JsonProperty("updated")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Updated { get; set; }
+        public DateTime? Updated { get; set; }
 
         [JsonProperty("upstream_id")]
         public string UpstreamId { get; set; }

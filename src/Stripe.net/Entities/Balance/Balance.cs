@@ -15,7 +15,7 @@ namespace Stripe
         public List<BalanceAmount> ConnectReserved { get; set; }
 
         [JsonProperty("issuing")]
-        public BalanceDetails Issuing { get; set; }
+        public BalanceIssuing Issuing { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }

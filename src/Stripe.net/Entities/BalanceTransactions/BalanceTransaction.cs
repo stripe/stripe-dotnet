@@ -34,10 +34,10 @@ namespace Stripe
         public decimal? ExchangeRate { get; set; }
 
         [JsonProperty("fee")]
-        public long BalanceTransactionFee { get; set; }
+        public long Fee { get; set; }
 
         [JsonProperty("fee_details")]
-        public List<BalanceTransactionFee> FeeDetails { get; set; }
+        public List<BalanceTransactionFeeDetail> FeeDetails { get; set; }
 
         [JsonProperty("net")]
         public long Net { get; set; }
@@ -46,7 +46,6 @@ namespace Stripe
         public string ReportingCategory { get; set; }
 
         #region Expandable Source
-
         [JsonIgnore]
         public string SourceId
         {
