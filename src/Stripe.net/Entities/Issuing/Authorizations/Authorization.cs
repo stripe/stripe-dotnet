@@ -29,7 +29,6 @@ namespace Stripe.Issuing
         public Card Card { get; set; }
 
         #region Expandable Cardholder
-
         [JsonIgnore]
         public string CardholderId
         {
@@ -66,7 +65,7 @@ namespace Stripe.Issuing
         public string MerchantCurrency { get; set; }
 
         [JsonProperty("merchant_data")]
-        public AuthorizationMerchantData MerchantData { get; set; }
+        public MerchantData MerchantData { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -75,7 +74,7 @@ namespace Stripe.Issuing
         public AuthorizationPendingRequest PendingRequest { get; set; }
 
         [JsonProperty("request_history")]
-        public List<AuthorizationRequestHistory> RequestHistory { get; set; }
+        public List<RequestHistory> RequestHistory { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -84,7 +83,7 @@ namespace Stripe.Issuing
         public List<Transaction> Transactions { get; set; }
 
         [JsonProperty("verification_data")]
-        public AuthorizationVerificationData VerificationData { get; set; }
+        public VerificationData VerificationData { get; set; }
 
         [JsonProperty("wallet")]
         public string Wallet { get; set; }

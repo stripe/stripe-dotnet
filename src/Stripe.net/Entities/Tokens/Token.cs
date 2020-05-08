@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -32,6 +33,6 @@ namespace Stripe
         public string Type { get; set; }
 
         [JsonProperty("used")]
-        public bool? Used { get; set; }
+        public bool Used { get; set; }
     }
 }

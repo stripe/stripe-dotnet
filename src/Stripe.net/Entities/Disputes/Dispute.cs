@@ -14,7 +14,7 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("amount")]
-        public long? Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("balance_transactions")]
         public List<BalanceTransaction> BalanceTransactions { get; set; }
@@ -47,10 +47,10 @@ namespace Stripe
         public string Currency { get; set; }
 
         [JsonProperty("evidence")]
-        public DisputeEvidence Evidence { get; set; }
+        public Evidence Evidence { get; set; }
 
         [JsonProperty("evidence_details")]
-        public DisputeEvidenceDetails EvidenceDetails { get; set; }
+        public EvidenceDetails EvidenceDetails { get; set; }
 
         [JsonProperty("is_charge_refundable")]
         public bool IsChargeRefundable { get; set; }
@@ -61,7 +61,10 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        #region Expandable PaymentIntent
+        [JsonProperty("network_reason_code")]
+        public string NetworkReasonCode { get; set; }
+
+        #region Expandable Payment Intent
         [JsonIgnore]
         public string PaymentIntentId
         {

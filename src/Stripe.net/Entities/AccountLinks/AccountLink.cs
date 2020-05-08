@@ -16,9 +16,9 @@ namespace Stripe
 
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? ExpiresAt { get; set; }
+        public DateTime ExpiresAt { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
-     }
+    }
 }

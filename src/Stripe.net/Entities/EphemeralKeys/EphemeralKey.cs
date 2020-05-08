@@ -13,15 +13,9 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        [JsonProperty("associated_objects")]
-        public List<EphemeralKeyAssociatedObject> AssociatedObjects { get; set; }
-
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
-
-        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
-        public bool? Deleted { get; set; }
 
         [JsonProperty("expires")]
         [JsonConverter(typeof(DateTimeConverter))]
@@ -30,7 +24,7 @@ namespace Stripe
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
-        [JsonIgnore]
-        public string RawJson => this.StripeResponse?.Content;
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
     }
 }

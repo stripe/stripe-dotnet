@@ -1,10 +1,10 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    [JsonConverter(typeof(EventConverter))]
     public class Event : StripeEntity<Event>, IHasId, IHasObject
     {
         [JsonProperty("id")]

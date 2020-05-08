@@ -1,8 +1,11 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Stripe.Infrastructure;
 
     public class WebhookEndpointService : Service<WebhookEndpoint>,
         ICreatable<WebhookEndpoint, WebhookEndpointCreateOptions>,
@@ -33,24 +36,24 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual WebhookEndpoint Delete(string endpointId, WebhookEndpointDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual WebhookEndpoint Delete(string id, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(endpointId, options, requestOptions);
+            return this.DeleteEntity(id, null, requestOptions);
         }
 
-        public virtual Task<WebhookEndpoint> DeleteAsync(string endpointId, WebhookEndpointDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<WebhookEndpoint> DeleteAsync(string id, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(endpointId, options, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(id, null, requestOptions, cancellationToken);
         }
 
-        public virtual WebhookEndpoint Get(string endpointId, WebhookEndpointGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual WebhookEndpoint Get(string id, WebhookEndpointGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(endpointId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<WebhookEndpoint> GetAsync(string endpointId, WebhookEndpointGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<WebhookEndpoint> GetAsync(string id, WebhookEndpointGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(endpointId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<WebhookEndpoint> List(WebhookEndpointListOptions options = null, RequestOptions requestOptions = null)
@@ -68,21 +71,14 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-#if !NET45
-        public virtual IAsyncEnumerable<WebhookEndpoint> ListAutoPagingAsync(WebhookEndpointListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual WebhookEndpoint Update(string id, WebhookEndpointUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
-        }
-#endif
-
-        public virtual WebhookEndpoint Update(string endpointId, WebhookEndpointUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.UpdateEntity(endpointId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<WebhookEndpoint> UpdateAsync(string endpointId, WebhookEndpointUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<WebhookEndpoint> UpdateAsync(string id, WebhookEndpointUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(endpointId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

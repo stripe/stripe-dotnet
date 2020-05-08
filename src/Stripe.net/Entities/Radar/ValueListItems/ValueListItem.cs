@@ -20,6 +20,9 @@ namespace Stripe.Radar
         [JsonProperty("created_by")]
         public string CreatedBy { get; set; }
 
+        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
+        public bool? Deleted { get; set; }
+
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
@@ -27,6 +30,6 @@ namespace Stripe.Radar
         public string Value { get; set; }
 
         [JsonProperty("value_list")]
-        public string ValueListId { get; set; }
+        public string ValueList { get; set; }
     }
 }

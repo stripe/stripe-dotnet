@@ -24,7 +24,6 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
-
         [JsonIgnore]
         public string CustomerId
         {
@@ -44,8 +43,7 @@ namespace Stripe
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
-        #region Expandable CustomerBalanceTransaction
-
+        #region Expandable Customer Balance Transaction
         [JsonIgnore]
         public string CustomerBalanceTransactionId
         {
@@ -69,7 +67,6 @@ namespace Stripe
         public long DiscountAmount { get; set; }
 
         #region Expandable Invoice
-
         [JsonIgnore]
         public string InvoiceId
         {
@@ -114,7 +111,6 @@ namespace Stripe
         public string Reason { get; set; }
 
         #region Expandable Refund
-
         [JsonIgnore]
         public string RefundId
         {

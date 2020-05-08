@@ -8,7 +8,7 @@ namespace Stripe
     public class CustomerUpdateOptions : BaseOptions, IHasMetadata
     {
         [JsonProperty("address")]
-        public AddressOptions Address { get; set; }
+        public CustomerAddressOptions Address { get; set; }
 
         [JsonProperty("balance")]
         public long? Balance { get; set; }
@@ -47,16 +47,16 @@ namespace Stripe
         public List<string> PreferredLocales { get; set; }
 
         [JsonProperty("shipping")]
-        public ShippingOptions Shipping { get; set; }
+        public CustomerShippingOptions Shipping { get; set; }
 
         [JsonProperty("source")]
-        [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
+        public string Source { get; set; }
 
         [JsonProperty("tax_exempt")]
         public string TaxExempt { get; set; }
 
-        [JsonProperty("validate")]
-        public bool? Validate { get; set; }
+        [JsonProperty("trial_end")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, string> TrialEnd { get; set; }
     }
 }

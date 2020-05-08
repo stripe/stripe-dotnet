@@ -16,11 +16,11 @@ namespace Stripe.Checkout
         [JsonProperty("client_reference_id")]
         public string ClientReferenceId { get; set; }
 
-        [JsonProperty("customer_email")]
-        public string CustomerEmail { get; set; }
-
         [JsonProperty("customer")]
         public string Customer { get; set; }
+
+        [JsonProperty("customer_email")]
+        public string CustomerEmail { get; set; }
 
         [JsonProperty("line_items")]
         public List<SessionLineItemOptions> LineItems { get; set; }

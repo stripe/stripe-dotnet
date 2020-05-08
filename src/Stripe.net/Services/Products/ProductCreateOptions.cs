@@ -1,7 +1,9 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ProductCreateOptions : BaseOptions, IHasId, IHasMetadata
     {
@@ -33,7 +35,7 @@ namespace Stripe
         public string Name { get; set; }
 
         [JsonProperty("package_dimensions")]
-        public PackageDimensionOptions PackageDimensions { get; set; }
+        public PackageDimensionsOptions PackageDimensions { get; set; }
 
         [JsonProperty("shippable")]
         public bool? Shippable { get; set; }

@@ -3,11 +3,12 @@ namespace Stripe.Issuing
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CardholderUpdateOptions : BaseOptions, IHasMetadata
     {
         [JsonProperty("billing")]
-        public CardholderBillingOptions Billing { get; set; }
+        public BillingOptions Billing { get; set; }
 
         [JsonProperty("company")]
         public CardholderCompanyOptions Company { get; set; }

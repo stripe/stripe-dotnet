@@ -2,8 +2,10 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Stripe.Infrastructure;
 
     public class SubscriptionService : Service<Subscription>,
         ICreatable<Subscription, SubscriptionCreateOptions>,
@@ -23,14 +25,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/subscriptions";
 
-        public virtual Subscription Cancel(string subscriptionId, SubscriptionCancelOptions options, RequestOptions requestOptions = null)
+        public virtual Subscription Cancel(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(subscriptionId, options, requestOptions);
+            return this.Request(HttpMethod.Delete, $"{this.InstanceUrl(id)}", options, requestOptions);
         }
 
-        public virtual Task<Subscription> CancelAsync(string subscriptionId, SubscriptionCancelOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Subscription> CancelAsync(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(subscriptionId, options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Delete, $"{this.InstanceUrl(id)}", options, requestOptions, cancellationToken);
         }
 
         public virtual Subscription Create(SubscriptionCreateOptions options, RequestOptions requestOptions = null)
@@ -43,14 +45,24 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Subscription Get(string subscriptionId, SubscriptionGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual DeletedDiscount DeleteDiscount(string id, SubscriptionDeleteDiscountOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(subscriptionId, options, requestOptions);
+            return this.Request<DeletedDiscount>(HttpMethod.Delete, $"{this.InstanceUrl(id)}/discount", options, requestOptions);
         }
 
-        public virtual Task<Subscription> GetAsync(string subscriptionId, SubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<DeletedDiscount> DeleteDiscountAsync(string id, SubscriptionDeleteDiscountOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(subscriptionId, options, requestOptions, cancellationToken);
+            return this.RequestAsync<DeletedDiscount>(HttpMethod.Delete, $"{this.InstanceUrl(id)}/discount", options, requestOptions, cancellationToken);
+        }
+
+        public virtual Subscription Get(string id, SubscriptionGetOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.GetEntity(id, options, requestOptions);
+        }
+
+        public virtual Task<Subscription> GetAsync(string id, SubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Subscription> List(SubscriptionListOptions options = null, RequestOptions requestOptions = null)
@@ -68,21 +80,14 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-#if !NET45
-        public virtual IAsyncEnumerable<Subscription> ListAutoPagingAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Subscription Update(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
-        }
-#endif
-
-        public virtual Subscription Update(string subscriptionId, SubscriptionUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.UpdateEntity(subscriptionId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Subscription> UpdateAsync(string subscriptionId, SubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Subscription> UpdateAsync(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(subscriptionId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

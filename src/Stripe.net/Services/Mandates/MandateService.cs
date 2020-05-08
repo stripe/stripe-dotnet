@@ -5,6 +5,7 @@ namespace Stripe
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Stripe.Infrastructure;
 
     public class MandateService : Service<Mandate>,
         IRetrievable<Mandate, MandateGetOptions>
@@ -21,14 +22,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/mandates";
 
-        public virtual Mandate Get(string mandateId, MandateGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Mandate Get(string id, MandateGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(mandateId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Mandate> GetAsync(string mandateId, MandateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Mandate> GetAsync(string id, MandateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(mandateId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

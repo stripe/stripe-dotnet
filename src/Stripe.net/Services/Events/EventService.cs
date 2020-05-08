@@ -1,8 +1,11 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Stripe.Infrastructure;
 
     public class EventService : Service<Event>,
         IListable<Event, EventListOptions>,
@@ -20,14 +23,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/events";
 
-        public virtual Event Get(string eventId, EventGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Event Get(string id, EventGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(eventId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Event> GetAsync(string eventId, EventGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Event> GetAsync(string id, EventGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(eventId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Event> List(EventListOptions options = null, RequestOptions requestOptions = null)
@@ -44,12 +47,5 @@ namespace Stripe
         {
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
-
-#if !NET45
-        public virtual IAsyncEnumerable<Event> ListAutoPagingAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
-        }
-#endif
     }
 }

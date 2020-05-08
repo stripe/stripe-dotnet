@@ -1,7 +1,9 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class OrderUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -15,7 +17,7 @@ namespace Stripe
         public string SelectedShippingMethod { get; set; }
 
         [JsonProperty("shipping")]
-        public OrderUpdateShippingOptions Shipping { get; set; }
+        public ShippingOptions Shipping { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }

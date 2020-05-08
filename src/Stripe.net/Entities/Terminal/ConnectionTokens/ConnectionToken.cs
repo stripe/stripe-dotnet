@@ -11,7 +11,7 @@ namespace Stripe.Terminal
         public string Object { get; set; }
 
         [JsonProperty("location")]
-        public string LocationId { get; set; }
+        public string Location { get; set; }
 
         [JsonProperty("secret")]
         public string Secret { get; set; }

@@ -70,5 +70,5 @@ namespace Stripe
 
         [JsonProperty("type")]
         public string Type { get; set; }
-     }
+    }
 }

@@ -67,21 +67,12 @@ namespace Stripe
         [JsonProperty("pending_invoice_item_interval")]
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
 
-        [Obsolete("Use Items")]
-        [JsonProperty("plan")]
-        public string Plan { get; set; }
-
         [JsonProperty("prorate")]
         public bool? Prorate { get; set; }
 
         [JsonProperty("proration_behavior")]
         public string ProrationBehavior { get; set; }
 
-        [Obsolete("Use Items")]
-        [JsonProperty("quantity")]
-        public long? Quantity { get; set; }
-
-        [Obsolete("Use DefaultTaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
@@ -90,7 +81,7 @@ namespace Stripe
 
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<DateTime?, SubscriptionTrialEnd> TrialEnd { get; set; }
+        public AnyOf<DateTime?, string> TrialEnd { get; set; }
 
         [JsonProperty("trial_from_plan")]
         public bool? TrialFromPlan { get; set; }

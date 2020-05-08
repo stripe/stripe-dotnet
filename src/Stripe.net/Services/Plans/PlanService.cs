@@ -2,8 +2,10 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Stripe.Infrastructure;
 
     public class PlanService : Service<Plan>,
         ICreatable<Plan, PlanCreateOptions>,
@@ -34,24 +36,24 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Plan Delete(string planId, PlanDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual Plan Delete(string id, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(planId, options, requestOptions);
+            return this.DeleteEntity(id, null, requestOptions);
         }
 
-        public virtual Task<Plan> DeleteAsync(string planId, PlanDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Plan> DeleteAsync(string id, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(planId, options, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(id, null, requestOptions, cancellationToken);
         }
 
-        public virtual Plan Get(string planId, PlanGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Plan Get(string id, PlanGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(planId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Plan> GetAsync(string planId, PlanGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Plan> GetAsync(string id, PlanGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(planId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Plan> List(PlanListOptions options = null, RequestOptions requestOptions = null)
@@ -69,21 +71,14 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-#if !NET45
-        public virtual IAsyncEnumerable<Plan> ListAutoPagingAsync(PlanListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Plan Update(string id, PlanUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
-        }
-#endif
-
-        public virtual Plan Update(string planId, PlanUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.UpdateEntity(planId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Plan> UpdateAsync(string planId, PlanUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Plan> UpdateAsync(string id, PlanUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(planId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

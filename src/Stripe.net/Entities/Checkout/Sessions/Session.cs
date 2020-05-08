@@ -23,7 +23,6 @@ namespace Stripe.Checkout
         public string ClientReferenceId { get; set; }
 
         #region Expandable Customer
-
         [JsonIgnore]
         public string CustomerId
         {
@@ -61,8 +60,7 @@ namespace Stripe.Checkout
         [JsonProperty("mode")]
         public string Mode { get; set; }
 
-        #region Expandable PaymentIntent
-
+        #region Expandable Payment Intent
         [JsonIgnore]
         public string PaymentIntentId
         {
@@ -85,8 +83,7 @@ namespace Stripe.Checkout
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
-        #region Expandable SetupIntent
-
+        #region Expandable Setup Intent
         [JsonIgnore]
         public string SetupIntentId
         {
@@ -112,8 +109,10 @@ namespace Stripe.Checkout
         [JsonProperty("shipping_address_collection")]
         public SessionShippingAddressCollection ShippingAddressCollection { get; set; }
 
-        #region Expandable Subscription
+        [JsonProperty("submit_type")]
+        public string SubmitType { get; set; }
 
+        #region Expandable Subscription
         [JsonIgnore]
         public string SubscriptionId
         {
@@ -132,9 +131,6 @@ namespace Stripe.Checkout
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
-
-        [JsonProperty("submit_type")]
-        public string SubmitType { get; set; }
 
         [JsonProperty("success_url")]
         public string SuccessUrl { get; set; }

@@ -18,7 +18,7 @@ namespace Stripe
 
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? BillingCycleAnchor { get; set; }
+        public DateTime BillingCycleAnchor { get; set; }
 
         [JsonProperty("billing_thresholds")]
         public SubscriptionBillingThresholds BillingThresholds { get; set; }
@@ -43,14 +43,13 @@ namespace Stripe
 
         [JsonProperty("current_period_end")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? CurrentPeriodEnd { get; set; }
+        public DateTime CurrentPeriodEnd { get; set; }
 
         [JsonProperty("current_period_start")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? CurrentPeriodStart { get; set; }
+        public DateTime CurrentPeriodStart { get; set; }
 
         #region Expandable Customer
-
         [JsonIgnore]
         public string CustomerId
         {
@@ -73,8 +72,7 @@ namespace Stripe
         [JsonProperty("days_until_due")]
         public long? DaysUntilDue { get; set; }
 
-        #region Expandable DefaultPaymentMethod
-
+        #region Expandable Default Payment Method
         [JsonIgnore]
         public string DefaultPaymentMethodId
         {
@@ -94,8 +92,7 @@ namespace Stripe
         internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
         #endregion
 
-        #region Expandable DefaultSource
-
+        #region Expandable Default Source
         [JsonIgnore]
         public string DefaultSourceId
         {
@@ -128,8 +125,7 @@ namespace Stripe
         [JsonProperty("items")]
         public StripeList<SubscriptionItem> Items { get; set; }
 
-        #region Expandable LatestInvoice
-
+        #region Expandable Latest Invoice
         [JsonIgnore]
         public string LatestInvoiceId
         {
@@ -165,8 +161,7 @@ namespace Stripe
         [JsonProperty("pending_invoice_item_interval")]
         public SubscriptionPendingInvoiceItemInterval PendingInvoiceItemInterval { get; set; }
 
-        #region Expandable PendingSetupIntent
-
+        #region Expandable Pending Setup Intent
         [JsonIgnore]
         public string PendingSetupIntentId
         {
@@ -196,7 +191,6 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         #region Expandable Schedule
-
         [JsonIgnore]
         public string ScheduleId
         {
@@ -218,12 +212,11 @@ namespace Stripe
 
         [JsonProperty("start_date")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? StartDate { get; set; }
+        public DateTime StartDate { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        [Obsolete("Use DefaultTaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 

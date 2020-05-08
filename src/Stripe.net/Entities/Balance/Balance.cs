@@ -1,7 +1,9 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class Balance : StripeEntity<Balance>, IHasObject
     {
@@ -15,7 +17,7 @@ namespace Stripe
         public List<BalanceAmount> ConnectReserved { get; set; }
 
         [JsonProperty("issuing")]
-        public BalanceDetails Issuing { get; set; }
+        public BalanceIssuing Issuing { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }

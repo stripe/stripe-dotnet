@@ -1,8 +1,11 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Stripe.Infrastructure;
 
     public class FileLinkService : Service<FileLink>,
         ICreatable<FileLink, FileLinkCreateOptions>,
@@ -32,14 +35,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual FileLink Get(string fileLinkId, FileLinkGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual FileLink Get(string id, FileLinkGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(fileLinkId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<FileLink> GetAsync(string fileLinkId, FileLinkGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<FileLink> GetAsync(string id, FileLinkGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(fileLinkId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<FileLink> List(FileLinkListOptions options = null, RequestOptions requestOptions = null)
@@ -57,21 +60,14 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-#if !NET45
-        public virtual IAsyncEnumerable<FileLink> ListAutoPagingAsync(FileLinkListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual FileLink Update(string id, FileLinkUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
-        }
-#endif
-
-        public virtual FileLink Update(string fileLinkId, FileLinkUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.UpdateEntity(fileLinkId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<FileLink> UpdateAsync(string fileLinkId, FileLinkUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<FileLink> UpdateAsync(string id, FileLinkUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(fileLinkId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

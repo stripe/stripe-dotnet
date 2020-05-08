@@ -14,7 +14,7 @@ namespace Stripe.Issuing
         public string Object { get; set; }
 
         [JsonProperty("billing")]
-        public CardholderBilling Billing { get; set; }
+        public Billing Billing { get; set; }
 
         [JsonProperty("company")]
         public CardholderCompany Company { get; set; }

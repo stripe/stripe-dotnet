@@ -50,8 +50,7 @@ namespace Stripe.Issuing
         [JsonProperty("number")]
         public string Number { get; set; }
 
-        #region Expandable ReplacedBy
-
+        #region Expandable Replaced By
         [JsonIgnore]
         public string ReplacedById
         {
@@ -71,8 +70,7 @@ namespace Stripe.Issuing
         internal ExpandableField<Card> InternalReplacedBy { get; set; }
         #endregion
 
-        #region Expandable ReplacementFor
-
+        #region Expandable Replacement For
         [JsonIgnore]
         public string ReplacementForId
         {

@@ -14,7 +14,8 @@ namespace Stripe
         public BillingDetailsOptions BillingDetails { get; set; }
 
         [JsonProperty("card")]
-        public PaymentMethodCardCreateOptions Card { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<PaymentMethodCardCreateOptions, PaymentMethodCardCreateOptions> Card { get; set; }
 
         [JsonProperty("customer")]
         public string Customer { get; set; }

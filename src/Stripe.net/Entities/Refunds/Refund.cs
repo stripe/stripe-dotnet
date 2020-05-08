@@ -92,7 +92,7 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        #region Expandable PaymentIntent
+        #region Expandable Payment Intent
         [JsonIgnore]
         public string PaymentIntentId
         {
@@ -141,7 +141,7 @@ namespace Stripe
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        #region Expandable  Transfer Reversal
+        #region Expandable Transfer Reversal
         [JsonIgnore]
         public string TransferReversalId
         {

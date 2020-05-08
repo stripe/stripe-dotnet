@@ -1,7 +1,9 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CountrySpec : StripeEntity<CountrySpec>, IHasId, IHasObject
     {
@@ -27,6 +29,6 @@ namespace Stripe
         public List<string> SupportedTransferCountries { get; set; }
 
         [JsonProperty("verification_fields")]
-        public Dictionary<string, Dictionary<string, List<string>>> VerificationFields { get; set; }
+        public CountrySpecVerificationFields VerificationFields { get; set; }
     }
 }

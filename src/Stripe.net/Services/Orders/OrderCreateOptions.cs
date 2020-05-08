@@ -1,15 +1,17 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class OrderCreateOptions : BaseOptions, IHasMetadata
     {
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
 
         [JsonProperty("customer")]
         public string Customer { get; set; }
