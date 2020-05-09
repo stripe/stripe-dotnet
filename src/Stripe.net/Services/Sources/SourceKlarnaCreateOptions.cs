@@ -64,6 +64,9 @@ namespace Stripe
         [JsonProperty("payment_method_categories")]
         public string PaymentMethodCategories { get; set; }
 
+        [JsonProperty("product")]
+        public string Product { get; set; }
+
         [JsonProperty("purchase_country")]
         public string PurchaseCountry { get; set; }
 
