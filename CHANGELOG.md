@@ -1,5 +1,8 @@
 # Changelog
 
+## 36.10.0 - 2020-05-11
+* [#2031](https://github.com/stripe/stripe-dotnet/pull/2031) Add support for `Product` for Klarna `Source`
+
 ## 36.9.0 - 2020-05-07
 * [#2028](https://github.com/stripe/stripe-dotnet/pull/2028) Add support for `SupportAddress` on `Account` create and update
 * [#2026](https://github.com/stripe/stripe-dotnet/pull/2026) Fix parameters supported in `Recurring` for `PriceData` across the API
