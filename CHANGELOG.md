@@ -1,5 +1,8 @@
 # Changelog
 
+## 36.11.0 - 2020-05-12
+* [#2020](https://github.com/stripe/stripe-dotnet/pull/2020) Add support for the `LineItem` resource and APIs
+
 ## 36.10.0 - 2020-05-11
 * [#2031](https://github.com/stripe/stripe-dotnet/pull/2031) Add support for `Product` for Klarna `Source`
 
