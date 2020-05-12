@@ -15,6 +15,7 @@ namespace StripeTests.Checkout
         private readonly SessionService service;
         private readonly SessionCreateOptions createOptions;
         private readonly SessionListOptions listOptions;
+        private readonly SessionListLineItemsOptions listLineItemsOptions;
 
         public SessionServiceTest(
             StripeMockFixture stripeMockFixture,
@@ -31,14 +32,36 @@ namespace StripeTests.Checkout
                 {
                     new SessionLineItemOptions
                     {
-                        Amount = 1234,
-                        Currency = "usd",
-                        Description = "item1",
                         Images = new List<string>
                         {
                             "https://stripe.com/image1",
                         },
+                        PriceData = new SessionLineItemPriceDataOptions
+                        {
+                            Currency = "usd",
+                            Product = "prod_123",
+                            UnitAmountDecimal = 0.01234567890m, // Ensure decimals work
+                        },
                         Name = "item name",
+                        Quantity = 2,
+                    },
+                    new SessionLineItemOptions
+                    {
+                        Images = new List<string>
+                        {
+                            "https://stripe.com/image1",
+                        },
+                        PriceData = new SessionLineItemPriceDataOptions
+                        {
+                            Currency = "usd",
+                            Product = "prod_ABC",
+                            Recurring = new SessionLineItemPriceDataRecurringOptions
+                            {
+                                Interval = "day",
+                                IntervalCount = 15,
+                            },
+                            UnitAmountDecimal = 0.01234567890m, // Ensure decimals work
+                        },
                         Quantity = 2,
                     },
                 },
@@ -68,6 +91,11 @@ namespace StripeTests.Checkout
             };
 
             this.listOptions = new SessionListOptions
+            {
+                Limit = 1,
+            };
+
+            this.listLineItemsOptions = new SessionListLineItemsOptions
             {
                 Limit = 1,
             };
@@ -146,6 +174,46 @@ namespace StripeTests.Checkout
             var intent = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
             Assert.NotNull(intent);
             Assert.Equal("checkout.session", intent.Object);
+        }
+#endif
+
+        [Fact]
+        public void ListLineItems()
+        {
+            var lineItems = this.service.ListLineItems(SessionId, this.listLineItemsOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/checkout/sessions/cs_123/line_items");
+            Assert.NotNull(lineItems);
+            Assert.Equal("list", lineItems.Object);
+            Assert.Single(lineItems.Data);
+            Assert.Equal("item", lineItems.Data[0].Object);
+        }
+
+        [Fact]
+        public async Task ListLineItemsAsync()
+        {
+            var lineItems = await this.service.ListLineItemsAsync(SessionId, this.listLineItemsOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/checkout/sessions/cs_123/line_items");
+            Assert.NotNull(lineItems);
+            Assert.Equal("list", lineItems.Object);
+            Assert.Single(lineItems.Data);
+            Assert.Equal("item", lineItems.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListLineItemsAutoPaging()
+        {
+            var lineItem = this.service.ListLineItemsAutoPaging(SessionId, this.listLineItemsOptions).First();
+            Assert.NotNull(lineItem);
+            Assert.Equal("item", lineItem.Object);
+        }
+
+#if !NET45
+        [Fact]
+        public async Task ListLineItemsAutoPagingAsync()
+        {
+            var lineItem = await this.service.ListLineItemsAutoPagingAsync(SessionId, this.listLineItemsOptions).FirstAsync();
+            Assert.NotNull(lineItem);
+            Assert.Equal("item", lineItem.Object);
         }
 #endif
     }
