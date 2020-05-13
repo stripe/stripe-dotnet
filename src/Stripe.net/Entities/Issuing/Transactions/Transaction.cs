@@ -182,6 +182,12 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Additional purchase information that is optionally provided by the merchant.
+        /// </summary>
+        [JsonProperty("purchase_details")]
+        public TransactionPurchaseDetails PurchaseDetails { get; set; }
+
+        /// <summary>
         /// The nature of the transaction. One of <c>capture</c>, or <c>refund</c>.
         /// </summary>
         [JsonProperty("type")]
