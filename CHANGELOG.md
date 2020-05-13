@@ -1,5 +1,9 @@
 # Changelog
 
+## 36.12.0 - 2020-05-13
+* [#2019](https://github.com/stripe/stripe-dotnet/pull/2019) Add support for `PaymentMethodData` on `PaymentIntent`
+* [#2033](https://github.com/stripe/stripe-dotnet/pull/2033) Add support for `PurchaseDetails` on Issuing `Transaction`
+
 ## 36.11.0 - 2020-05-12
 * [#2020](https://github.com/stripe/stripe-dotnet/pull/2020) Add support for the `LineItem` resource and APIs
 
