@@ -439,13 +439,13 @@ namespace Stripe
         /// Total amount of all post-payment credit notes issued for this invoice.
         /// </summary>
         [JsonProperty("post_payment_credit_notes_amount")]
-        public long? PostPaymentCreditNotesAmount { get; set; }
+        public long PostPaymentCreditNotesAmount { get; set; }
 
         /// <summary>
         /// Total amount of all pre-payment credit notes issued for this invoice.
         /// </summary>
         [JsonProperty("pre_payment_credit_notes_amount")]
-        public long? PrePaymentCreditNotesAmount { get; set; }
+        public long PrePaymentCreditNotesAmount { get; set; }
 
         /// <summary>
         /// This is the transaction number that appears on email receipts sent for this invoice.

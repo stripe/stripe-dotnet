@@ -6,25 +6,11 @@
   "created": 1533204620,
   "data": {
     "object": {
-      "id": "ii_123",
-      "object": "invoiceitem",
-      "amount": 1000,
-      "currency": "usd",
-      "customer": "cus_123",
-      "date": 1533204620,
-      "description": "Test Invoice Item",
-      "discountable": false,
-      "invoice": "in_123",
+      "id": "cus_123",
+      "object": "customer",
+      "email": "test@stripe.com",
       "livemode": false,
-      "metadata": {},
-      "period": {
-        "start": 1533204620,
-        "end": 1533204620
-      },
-      "plan": null,
-      "proration": false,
-      "quantity": null,
-      "subscription": null
+      "metadata": {}
     }
   },
   "livemode": false,
@@ -33,5 +19,5 @@
     "id": "req_123",
     "idempotency_key": "idempotency-key-123"
   },
-  "type": "invoiceitem.created"
+  "type": "customer.created"
 }
