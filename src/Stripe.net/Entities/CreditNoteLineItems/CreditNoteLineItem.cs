@@ -55,7 +55,7 @@ namespace Stripe
         /// The number of units of product being credited.
         /// </summary>
         [JsonProperty("quantity")]
-        public long Quantity { get; set; }
+        public long? Quantity { get; set; }
 
         /// <summary>
         /// The amount of tax calculated per tax rate for this line item.
