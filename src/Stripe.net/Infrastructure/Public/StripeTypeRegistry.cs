@@ -36,7 +36,6 @@ namespace Stripe
             { "dispute", typeof(Dispute) },
             { "ephemeral_key", typeof(EphemeralKey) },
             { "event", typeof(Event) },
-            { "exchange_rate", typeof(ExchangeRate) },
             { "fee_refund", typeof(ApplicationFeeRefund) },
             { "file", typeof(File) },
             { "file_link", typeof(FileLink) },
