@@ -18,10 +18,6 @@ namespace Stripe
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [Obsolete("Use AccountSettingsBrandingOptions.PrimaryColor instead.")]
-        [JsonProperty("primary_color")]
-        public string PrimaryColor { get; set; }
-
         /// <summary>
         /// Internal-only description of the product sold by, or service provided by, the business.
         /// Used by Stripe for risk and underwriting purposes.
