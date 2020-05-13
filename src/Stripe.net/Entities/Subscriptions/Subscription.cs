@@ -91,14 +91,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("current_period_end")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? CurrentPeriodEnd { get; set; }
+        public DateTime CurrentPeriodEnd { get; set; }
 
         /// <summary>
         /// Start of the current period that the subscription has been invoiced for.
         /// </summary>
         [JsonProperty("current_period_start")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? CurrentPeriodStart { get; set; }
+        public DateTime CurrentPeriodStart { get; set; }
 
         #region Expandable Customer
 
@@ -357,7 +357,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("start_date")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? StartDate { get; set; }
+        public DateTime StartDate { get; set; }
 
         /// <summary>
         /// Possible values are <c>incomplete</c>, <c>incomplete_expired</c>, <c>trialing</c>,

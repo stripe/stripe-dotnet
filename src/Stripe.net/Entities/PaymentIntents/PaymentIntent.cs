@@ -23,19 +23,19 @@ namespace Stripe
         /// Amount intended to be collected by this PaymentIntent.
         /// </summary>
         [JsonProperty("amount")]
-        public long? Amount { get; set; }
+        public long Amount { get; set; }
 
         /// <summary>
         /// Amount that can be captured from this PaymentIntent.
         /// </summary>
         [JsonProperty("amount_capturable")]
-        public long? AmountCapturable { get; set; }
+        public long AmountCapturable { get; set; }
 
         /// <summary>
         /// Amount that was collected by this PaymentIntent.
         /// </summary>
         [JsonProperty("amount_received")]
-        public long? AmountReceived { get; set; }
+        public long AmountReceived { get; set; }
 
         #region Expandable Application
 

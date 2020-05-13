@@ -156,7 +156,7 @@ namespace Stripe
         /// of the subscription that the proration was computed for.
         /// </summary>
         [JsonProperty("quantity")]
-        public long? Quantity { get; set; }
+        public long Quantity { get; set; }
 
         #region Expandable Subscription
 
@@ -190,7 +190,7 @@ namespace Stripe
         /// ID of the subscription item associated with this invoice item.
         /// </summary>
         [JsonProperty("subscription_item")]
-        public string SubscriptionItemId { get; set; }
+        public string SubscriptionItem { get; set; }
 
         /// <summary>
         /// The tax rates which apply to the invoice item. When set, the <see cref="Invoice.DefaultTaxRates"/>
