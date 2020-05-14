@@ -32,7 +32,7 @@ namespace Stripe
         /// The card used to create this 3DS source.
         /// </summary>
         [JsonProperty("card")]
-        public string CardId { get; set; }
+        public string Card { get; set; }
 
         /// <summary>
         /// Two-letter ISO code representing the country of the card.
@@ -44,7 +44,7 @@ namespace Stripe
         /// The ID of the customer to which the card belongs, if any.
         /// </summary>
         [JsonProperty("customer")]
-        public string CustomerId { get; set; }
+        public string Customer { get; set; }
 
         /// <summary>
         /// If a CVC was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`.
@@ -92,7 +92,7 @@ namespace Stripe
         /// This is an internal property that is not returned in standard API requests.
         /// </summary>
         [JsonProperty("iin")]
-        public string IIN { get; set; }
+        public string Iin { get; set; }
 
         /// <summary>
         /// This is an internal property that is not returned in standard API requests.

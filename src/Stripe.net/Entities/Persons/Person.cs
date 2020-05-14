@@ -23,7 +23,7 @@ namespace Stripe
         /// The account the person is associated with.
         /// </summary>
         [JsonProperty("account")]
-        public string AccountId { get; set; }
+        public string Account { get; set; }
 
         /// <summary>
         /// The person’s address.

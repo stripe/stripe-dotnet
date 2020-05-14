@@ -152,7 +152,7 @@ namespace Stripe
         public string Description { get; set; }
 
         [JsonProperty("iin")]
-        public string IIN { get; set; }
+        public string Iin { get; set; }
 
         [JsonProperty("issuer")]
         public string Issuer { get; set; }

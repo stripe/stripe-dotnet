@@ -106,7 +106,7 @@ namespace StripeTests
 
             Assert.NotNull(exception);
             Assert.Equal(HttpStatusCode.PaymentRequired, exception.HttpStatusCode);
-            Assert.Equal("card_error", exception.StripeError.ErrorType);
+            Assert.Equal("card_error", exception.StripeError.Type);
             Assert.Equal(response, exception.StripeResponse);
         }
 
