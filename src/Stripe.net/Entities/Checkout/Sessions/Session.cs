@@ -85,7 +85,7 @@ namespace Stripe.Checkout
         /// The line items associated with this session.
         /// </summary>
         [JsonProperty("line_items")]
-        public List<LineItem> LineItems { get; set; }
+        public StripeList<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value
