@@ -1,5 +1,8 @@
 # Changelog
 
+## 36.12.1 - 2020-05-13
+* [#2041](https://github.com/stripe/stripe-dotnet/pull/2041) Fix `LineItems` on Checkout `Session` to be a `StripeList`
+
 ## 36.12.0 - 2020-05-13
 * [#2019](https://github.com/stripe/stripe-dotnet/pull/2019) Add support for `PaymentMethodData` on `PaymentIntent`
 * [#2033](https://github.com/stripe/stripe-dotnet/pull/2033) Add support for `PurchaseDetails` on Issuing `Transaction`
