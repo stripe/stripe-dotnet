@@ -30,6 +30,7 @@ namespace StripeTests.Checkout
             {
               "customer",
               "payment_intent",
+              "line_items",
               "setup_intent",
               "subscription",
             };
@@ -43,6 +44,9 @@ namespace StripeTests.Checkout
 
             Assert.NotNull(session.Customer);
             Assert.Equal("customer", session.Customer.Object);
+
+            Assert.NotNull(session.LineItems);
+            Assert.Equal("item", session.LineItems.Data[0].Object);
 
             Assert.NotNull(session.PaymentIntent);
             Assert.Equal("payment_intent", session.PaymentIntent.Object);
