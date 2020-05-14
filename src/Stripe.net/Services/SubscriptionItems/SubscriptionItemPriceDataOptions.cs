@@ -15,7 +15,7 @@ namespace Stripe
         /// The ID of the product that this price will belong to.
         /// </summary>
         [JsonProperty("product")]
-        internal string Product { get; set; }
+        public string Product { get; set; }
 
         /// <summary>
         /// The recurring components of a price such as its interval.
