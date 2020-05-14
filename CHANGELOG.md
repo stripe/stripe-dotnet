@@ -1,5 +1,9 @@
 # Changelog
 
+## 36.12.2 - 2020-05-13
+* [#2044](https://github.com/stripe/stripe-dotnet/pull/2044) Fix `Taxes` on `LineItem` to be de-serialized properly
+* [#2043](https://github.com/stripe/stripe-dotnet/pull/2043) Fix parameter classes to pass `Product` or `ProductData` on `Price`
+
 ## 36.12.1 - 2020-05-13
 * [#2041](https://github.com/stripe/stripe-dotnet/pull/2041) Fix `LineItems` on Checkout `Session` to be a `StripeList`
 
