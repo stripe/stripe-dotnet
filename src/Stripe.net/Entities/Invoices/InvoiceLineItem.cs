@@ -30,7 +30,7 @@ namespace Stripe
         public bool Discountable { get; set; }
 
         [JsonProperty("invoice_item")]
-        public string InvoiceItemId { get; set; }
+        public string InvoiceItem { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -57,10 +57,10 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         [JsonProperty("subscription")]
-        public string SubscriptionId { get; set; }
+        public string Subscription { get; set; }
 
         [JsonProperty("subscription_item")]
-        public string SubscriptionItemId { get; set; }
+        public string SubscriptionItem { get; set; }
 
         /// <summary>
         /// The tax amounts which apply to this line item.

@@ -13,7 +13,7 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("invoice")]
-        public string InvoiceId { get; set; }
+        public string Invoice { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -22,7 +22,7 @@ namespace Stripe
         public Period Period { get; set; }
 
         [JsonProperty("subscription_item")]
-        public string SubscriptionItemId { get; set; }
+        public string SubscriptionItem { get; set; }
 
         [JsonProperty("total_usage")]
         public long TotalUsage { get; set; }

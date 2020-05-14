@@ -15,7 +15,7 @@ namespace Stripe
         public long AmountCharged { get; set; }
 
         [JsonProperty("amount_received")]
-        public long AmountReceivd { get; set; }
+        public long AmountReceived { get; set; }
 
         [JsonProperty("amount_returned")]
         public long AmountReturned { get; set; }
