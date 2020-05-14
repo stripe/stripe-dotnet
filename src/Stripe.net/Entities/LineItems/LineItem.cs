@@ -80,7 +80,7 @@ namespace Stripe
         /// <summary>
         /// Details of all taxes applied to this line item.
         /// </summary>
-        [JsonProperty("tiers")]
+        [JsonProperty("taxes")]
         public List<LineItemTax> Taxes { get; set; }
     }
 }
