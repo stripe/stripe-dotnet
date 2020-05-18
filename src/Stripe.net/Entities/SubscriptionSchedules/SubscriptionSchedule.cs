@@ -121,7 +121,7 @@ namespace Stripe
         /// ID of the subscription once managed by the subscription schedule (if it is released).
         /// </summary>
         [JsonProperty("released_subscription")]
-        public string ReleasedSubscriptionId { get; set; }
+        public string ReleasedSubscription { get; set; }
 
         /// <summary>
         /// Possible values are <c>active</c>, <c>canceled</c>, <c>completed</c>,

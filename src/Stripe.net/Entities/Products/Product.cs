@@ -17,7 +17,7 @@ namespace Stripe
         /// Whether or not the product is currently available for purchase.
         /// </summary>
         [JsonProperty("active")]
-        public bool? Active { get; set; }
+        public bool Active { get; set; }
 
         /// <summary>
         /// A list of up to 5 attributes that each SKU can provide values for (e.g. ["color", "size"]).

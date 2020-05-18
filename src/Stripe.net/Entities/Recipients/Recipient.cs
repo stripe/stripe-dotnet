@@ -17,7 +17,7 @@ namespace Stripe
         public BankAccount ActiveAccount { get; set; }
 
         [JsonProperty("cards")]
-        public StripeList<Card> CardList { get; set; }
+        public StripeList<Card> Cards { get; set; }
 
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]

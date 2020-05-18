@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -86,7 +87,7 @@ namespace Stripe
         public string CustomerName { get; set; }
 
         [JsonProperty("customer_purchase_ip")]
-        public string CustomerPurchaseIP { get; set; }
+        public string CustomerPurchaseIp { get; set; }
 
         #region Expandable Customer Signature
 

@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CreditNoteLineOptions : INestedOptions, IHasMetadata
+    public class CreditNoteLineOptions : INestedOptions
     {
         /// <summary>
         /// The line item amount to credit. Only valid when <see cref="Type"/> is
@@ -27,10 +27,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("invoice_line_item")]
         public string InvoiceLineItem { get; set; }
-
-        [Obsolete("This parameter is not supported.")]
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The line item quantity to credit.

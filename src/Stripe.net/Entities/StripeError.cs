@@ -11,7 +11,7 @@ namespace Stripe
 
         /// <summary>For card errors, the ID of the failed charge.</summary>
         [JsonProperty("charge")]
-        public string ChargeId { get; set; }
+        public string Charge { get; set; }
 
         /// <summary>
         /// For some errors that could be handled programmatically, a short string indicating the
@@ -47,7 +47,7 @@ namespace Stripe
         /// you can use this to display a message near the correct form field.
         /// </summary>
         [JsonProperty("param")]
-        public string Parameter { get; set; }
+        public string Param { get; set; }
 
         /// <summary>
         /// The <see cref="Stripe.PaymentIntent"/> object for errors returned on a request
@@ -83,7 +83,7 @@ namespace Stripe
         /// <c>invalid_request_error</c>, or <c>rate_limit_error</c>.
         /// </summary>
         [JsonProperty("type")]
-        public string ErrorType { get; set; }
+        public string Type { get; set; }
 
         /*
          * For OAuth Errors:

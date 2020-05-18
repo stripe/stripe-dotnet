@@ -92,7 +92,7 @@ namespace Stripe
         public string CvcCheck { get; set; }
 
         [JsonProperty("default_for_currency")]
-        public bool DefaultForCurrency { get; set; }
+        public bool? DefaultForCurrency { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
@@ -152,7 +152,7 @@ namespace Stripe
         public string Description { get; set; }
 
         [JsonProperty("iin")]
-        public string IIN { get; set; }
+        public string Iin { get; set; }
 
         [JsonProperty("issuer")]
         public string Issuer { get; set; }

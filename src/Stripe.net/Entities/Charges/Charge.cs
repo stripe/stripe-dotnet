@@ -116,7 +116,7 @@ namespace Stripe
         /// If the charge was created without capturing, this boolean represents whether or not it is still uncaptured or has since been captured.
         /// </summary>
         [JsonProperty("captured")]
-        public bool? Captured { get; set; }
+        public bool Captured { get; set; }
 
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
@@ -353,7 +353,7 @@ namespace Stripe
         /// ID of the PaymentMethod associated with this charge.
         /// </summary>
         [JsonProperty("payment_method")]
-        public string PaymentMethodId { get; set; }
+        public string PaymentMethod { get; set; }
 
         /// <summary>
         /// Transaction-specific details of the payment method used in the payment.

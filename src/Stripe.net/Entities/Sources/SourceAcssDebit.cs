@@ -14,7 +14,7 @@ namespace Stripe
         public string BankAddressLine2 { get; set; }
 
         [JsonProperty("bank_address_postal_code")]
-        public string BankAddressLinePostalCode { get; set; }
+        public string BankAddressPostalCode { get; set; }
 
         [JsonProperty("bank_name")]
         public string BankName { get; set; }

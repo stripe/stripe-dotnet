@@ -121,7 +121,7 @@ namespace Stripe
         /// List of items constituting the order.
         /// </summary>
         [JsonProperty("items")]
-        public List<OrderItem> OrderItems { get; set; }
+        public List<OrderItem> Items { get; set; }
 
         /// <summary>
         /// Has the value true if the object exists in live mode or the value

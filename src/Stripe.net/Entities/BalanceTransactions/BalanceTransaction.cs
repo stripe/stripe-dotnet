@@ -61,13 +61,13 @@ namespace Stripe
         /// Fees (in cents) paid for this transaction.
         /// </summary>
         [JsonProperty("fee")]
-        public long BalanceTransactionFee { get; set; }
+        public long Fee { get; set; }
 
         /// <summary>
         /// Detailed breakdown of fees (in cents) paid for this transaction.
         /// </summary>
         [JsonProperty("fee_details")]
-        public List<BalanceTransactionFee> FeeDetails { get; set; }
+        public List<BalanceTransactionFeeDetail> FeeDetails { get; set; }
 
         /// <summary>
         /// Net amount of the transaction, in cents.
