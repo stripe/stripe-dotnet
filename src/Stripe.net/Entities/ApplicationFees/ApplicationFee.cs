@@ -13,6 +13,7 @@ namespace Stripe
         public string Object { get; set; }
 
         #region Expandable Account
+
         [JsonIgnore]
         public string AccountId
         {
@@ -39,6 +40,7 @@ namespace Stripe
         public long AmountRefunded { get; set; }
 
         #region Expandable Application
+
         [JsonIgnore]
         public string ApplicationId
         {
@@ -58,7 +60,8 @@ namespace Stripe
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
-        #region Expandable Balance Transaction
+        #region Expandable BalanceTransaction
+
         [JsonIgnore]
         public string BalanceTransactionId
         {
@@ -79,6 +82,7 @@ namespace Stripe
         #endregion
 
         #region Expandable Charge
+
         [JsonIgnore]
         public string ChargeId
         {
@@ -108,7 +112,8 @@ namespace Stripe
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
-        #region Expandable Originating Transaction
+        #region Expandable OriginatingTransaction
+
         [JsonIgnore]
         public string OriginatingTransactionId
         {

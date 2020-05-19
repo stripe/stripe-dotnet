@@ -26,6 +26,7 @@ namespace Stripe
         public long AmountRefunded { get; set; }
 
         #region Expandable Application
+
         [JsonIgnore]
         public string ApplicationId
         {
@@ -45,7 +46,8 @@ namespace Stripe
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
-        #region Expandable Application Fee
+        #region Expandable ApplicationFee
+
         [JsonIgnore]
         public string ApplicationFeeId
         {
@@ -74,7 +76,7 @@ namespace Stripe
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
-        #region Expandable Balance Transaction
+        #region Expandable BalanceTransaction
 
         /// <summary>
         /// ID of the balance transaction that describes the impact of this charge on your account balance (not including refunds or disputes).
@@ -156,6 +158,7 @@ namespace Stripe
         public string Description { get; set; }
 
         #region Expandable Destination
+
         [JsonIgnore]
         public string DestinationId
         {
@@ -179,6 +182,7 @@ namespace Stripe
         #endregion
 
         #region Expandable Dispute
+
         [JsonIgnore]
         public string DisputeId
         {
@@ -258,7 +262,7 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        #region Expandable OnBehalfOf (Account)
+        #region Expandable OnBehalfOf
 
         /// <summary>
         /// The account (if any) the charge was made on behalf of without triggering an automatic transfer. See the Connect documentation for details.
@@ -431,7 +435,7 @@ namespace Stripe
         [JsonConverter(typeof(StripeObjectConverter))]
         public IPaymentSource Source { get; set; }
 
-        #region Expandable Transfer
+        #region Expandable SourceTransfer
 
         /// <summary>
         /// The transfer ID which created this charge. Only present if the charge came from another Stripe account. See the Connect documentation for details.

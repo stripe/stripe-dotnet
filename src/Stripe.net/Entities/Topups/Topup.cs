@@ -19,7 +19,7 @@ namespace Stripe
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
-        #region Expandable Balance Transaction
+        #region Expandable BalanceTransaction
 
         /// <summary>
         /// ID of the balance transaction that describes the impact of this Top-up on your account balance (not including refunds or disputes).

@@ -224,7 +224,7 @@ namespace Stripe
         [JsonProperty("next_action")]
         public PaymentIntentNextAction NextAction { get; set; }
 
-        #region Expandable OnBehalfOf (Account)
+        #region Expandable OnBehalfOf
 
         /// <summary>
         /// The account (if any) for which the funds of the PaymentIntent are intended.

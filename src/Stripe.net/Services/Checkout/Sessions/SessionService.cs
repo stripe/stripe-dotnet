@@ -1,12 +1,9 @@
 namespace Stripe.Checkout
 {
-    using System;
     using System.Collections.Generic;
-    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class SessionService : Service<Session>,
         ICreatable<Session, SessionCreateOptions>,

@@ -270,6 +270,7 @@ namespace Stripe
         #endregion
 
         #region Expandable DefaultSource
+
         [JsonIgnore]
         public string DefaultSourceId
         {
@@ -298,7 +299,7 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
+        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
         /// <summary>

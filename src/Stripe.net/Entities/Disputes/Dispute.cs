@@ -20,6 +20,7 @@ namespace Stripe
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         #region Expandable Charge
+
         [JsonIgnore]
         public string ChargeId
         {
@@ -62,6 +63,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         #region Expandable PaymentIntent
+
         [JsonIgnore]
         public string PaymentIntentId
         {

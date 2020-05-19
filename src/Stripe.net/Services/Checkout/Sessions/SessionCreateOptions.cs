@@ -1,9 +1,7 @@
 namespace Stripe.Checkout
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class SessionCreateOptions : BaseOptions, IHasMetadata
     {
@@ -31,18 +29,18 @@ namespace Stripe.Checkout
         public string ClientReferenceId { get; set; }
 
         /// <summary>
-        /// The email address used to create the customer object. If you already know your
-        /// customer’s email address, use this attribute to prefill it on Checkout.
-        /// </summary>
-        [JsonProperty("customer_email")]
-        public string CustomerEmail { get; set; }
-
-        /// <summary>
         /// ID of the customer this Checkout Session is for if one exists. May only be used with
         /// <c>LineItems</c>. Usage with <c>SubscriptionData</c> is not yet available.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
+
+        /// <summary>
+        /// The email address used to create the customer object. If you already know your
+        /// customer’s email address, use this attribute to prefill it on Checkout.
+        /// </summary>
+        [JsonProperty("customer_email")]
+        public string CustomerEmail { get; set; }
 
         /// <summary>
         /// A list of items your customer is purchasing.

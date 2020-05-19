@@ -154,7 +154,7 @@ namespace Stripe
         [JsonProperty("next_action")]
         public SetupIntentNextAction NextAction { get; set; }
 
-        #region Expandable OnBehalfOf (Account)
+        #region Expandable OnBehalfOf
 
         /// <summary>
         /// ID of the account (if any) for which the setup is intended.

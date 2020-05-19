@@ -33,13 +33,6 @@ namespace Stripe
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
-        /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
-        /// </summary>
-        [JsonProperty("livemode")]
-        public bool Livemode { get; set; }
-
         #region Expandable File
 
         /// <summary>
@@ -66,6 +59,13 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalFile { get; set; }
         #endregion
+
+        /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value
+        /// <c>false</c> if the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+        public bool Livemode { get; set; }
 
         /// <summary>
         /// Set of key-value pairs that you can attach to an object. This can be useful for storing
