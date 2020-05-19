@@ -1,6 +1,5 @@
 namespace Stripe.Checkout
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -190,6 +189,17 @@ namespace Stripe.Checkout
         [JsonProperty("shipping_address_collection")]
         public SessionShippingAddressCollection ShippingAddressCollection { get; set; }
 
+        /// <summary>
+        /// Describes the type of transaction being performed by Checkout in
+        /// order to customize relevant text on the page, such as the Submit
+        /// button. <c>submit_type</c> can only be specified on checkout
+        /// sessions using line items or a SKU, and not checkout sessions for
+        /// subscriptions. Supported values are <c>auto</c>, <c>book</c>,
+        /// <c>donate</c>, or <c>pay</c>.
+        /// </summary>
+        [JsonProperty("submit_type")]
+        public string SubmitType { get; set; }
+
         #region Expandable Subscription
 
         /// <summary>
@@ -216,17 +226,6 @@ namespace Stripe.Checkout
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
-
-        /// <summary>
-        /// Describes the type of transaction being performed by Checkout in
-        /// order to customize relevant text on the page, such as the Submit
-        /// button. <c>submit_type</c> can only be specified on checkout
-        /// sessions using line items or a SKU, and not checkout sessions for
-        /// subscriptions. Supported values are <c>auto</c>, <c>book</c>,
-        /// <c>donate</c>, or <c>pay</c>.
-        /// </summary>
-        [JsonProperty("submit_type")]
-        public string SubmitType { get; set; }
 
         /// <summary>
         /// The URL the customer will be directed to after a successful payment.

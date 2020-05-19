@@ -16,7 +16,8 @@ namespace Stripe
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
-        #region Expandable Balance Transaction
+        #region Expandable BalanceTransaction
+
         [JsonIgnore]
         public string BalanceTransactionId
         {
@@ -37,6 +38,7 @@ namespace Stripe
         #endregion
 
         #region Expandable Charge
+
         [JsonIgnore]
         public string ChargeId
         {
@@ -66,7 +68,8 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        #region Expandable Failure Balance Transaction
+        #region Expandable FailureBalanceTransaction
+
         [JsonIgnore]
         public string FailureBalanceTransactionId
         {
@@ -93,6 +96,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         #region Expandable PaymentIntent
+
         [JsonIgnore]
         public string PaymentIntentId
         {
@@ -118,7 +122,8 @@ namespace Stripe
         [JsonProperty("receipt_number")]
         public string ReceiptNumber { get; set; }
 
-        #region Expandable Source Transfer Reversal
+        #region Expandable SourceTransferReversal
+
         [JsonIgnore]
         public string SourceTransferReversalId
         {
@@ -141,7 +146,8 @@ namespace Stripe
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        #region Expandable  Transfer Reversal
+        #region Expandable TransferReversal
+
         [JsonIgnore]
         public string TransferReversalId
         {

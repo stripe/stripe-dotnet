@@ -13,6 +13,7 @@ namespace Stripe
         public string Object { get; set; }
 
         #region Expandable Account
+
         [JsonIgnore]
         public string AccountId
         {
@@ -69,6 +70,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
+
         [JsonIgnore]
         public string CustomerId
         {
@@ -97,7 +99,7 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
+        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
         [JsonProperty("dynamic_last4")]
@@ -125,6 +127,7 @@ namespace Stripe
         public string Name { get; set; }
 
         #region Expandable Recipient
+
         [JsonIgnore]
         public string RecipientId
         {

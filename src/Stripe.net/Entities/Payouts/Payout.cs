@@ -23,7 +23,8 @@ namespace Stripe
         [JsonProperty("automatic")]
         public bool Automatic { get; set; }
 
-        #region Expandable Balance Transaction
+        #region Expandable BalanceTransaction
+
         [JsonIgnore]
         public string BalanceTransactionId
         {
@@ -54,6 +55,7 @@ namespace Stripe
         public string Description { get; set; }
 
         #region Expandable Destination
+
         [JsonIgnore]
         public string DestinationId
         {
@@ -73,7 +75,7 @@ namespace Stripe
         internal ExpandableField<IExternalAccount> InternalDestination { get; set; }
         #endregion
 
-        #region Expandable Failure Balance Transaction
+        #region Expandable FailureBalanceTransaction
 
         /// <summary>
         /// If the payout failed or was canceled, this will be the ID of the balance transaction that reversed the initial balance transaction, and puts the funds from the failed payout back in your balance.
@@ -121,7 +123,6 @@ namespace Stripe
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        // example: bank_account
         [JsonProperty("type")]
         public string Type { get; set; }
     }

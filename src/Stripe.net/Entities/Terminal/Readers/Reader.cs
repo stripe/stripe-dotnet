@@ -1,9 +1,7 @@
 namespace Stripe.Terminal
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class Reader : StripeEntity<Reader>, IHasId, IHasMetadata, IHasObject
     {
@@ -16,7 +14,7 @@ namespace Stripe.Terminal
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
+        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
         [JsonProperty("device_sw_version")]

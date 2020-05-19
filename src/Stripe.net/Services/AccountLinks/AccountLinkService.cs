@@ -1,10 +1,7 @@
 namespace Stripe
 {
-    using System.Collections.Generic;
-    using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class AccountLinkService : Service<AccountLink>,
         ICreatable<AccountLink, AccountLinkCreateOptions>
