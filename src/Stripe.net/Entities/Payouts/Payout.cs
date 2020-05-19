@@ -75,9 +75,6 @@ namespace Stripe
 
         #region Expandable Failure Balance Transaction
 
-        /// <summary>
-        /// If the payout failed or was canceled, this will be the ID of the balance transaction that reversed the initial balance transaction, and puts the funds from the failed payout back in your balance.
-        /// </summary>
         [JsonIgnore]
         public string FailureBalanceTransactionId
         {
