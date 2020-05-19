@@ -1,5 +1,12 @@
 # Changelog
 
+## 37.1.0 - 2020-05-18
+* [#2047](https://github.com/stripe/stripe-dotnet/pull/2047) Multiple API changes
+  * Add `BalanceTransactions` as a a list of `BalanceTransaction` on Issuing `Dispute`
+  * Add `Fingerprint` and `TransactionId` in `ChargePaymentMethodDetailsAlipay` on `Charge`
+  * Add `Amount` in `InvoiceTransferData` and `InvoiceTransferDataOptions` on `Invoice`
+  * Add `AmountPercent` in `SubscriptionTransferData` and `SubscriptionTransferDataOptions` on `Subscription`
+
 ## 37.0.0 - 2020-05-18
 * [#2039](https://github.com/stripe/stripe-dotnet/pull/2039) Major version released with the following breaking changes in it:
   * [#2036](https://github.com/stripe/stripe-dotnet/pull/2036) Fix `Quantity` to be nullable on `CreditNoteLineItem`
