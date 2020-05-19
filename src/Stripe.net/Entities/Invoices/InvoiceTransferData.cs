@@ -5,6 +5,13 @@ namespace Stripe
 
     public class InvoiceTransferData : StripeEntity<InvoiceTransferData>
     {
+        /// <summary>
+        /// The amount that will be transferred automatically when the invoice is paid. If no amount
+        /// is set, the full amount is transferred.
+        /// </summary>
+        [JsonProperty("amount")]
+        public long? Amount { get; set; }
+
         #region Expandable Destination (Account)
 
         /// <summary>
