@@ -1,12 +1,12 @@
 namespace Stripe
 {
-    using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class PaymentMethodUpdateOptions : BaseOptions, IHasMetadata
     {
+        [JsonProperty("au_becs_debit")]
+        public PaymentMethodAuBecsDebitUpdateOptions AuBecsDebit { get; set; }
+
         [JsonProperty("billing_details")]
         public BillingDetailsOptions BillingDetails { get; set; }
 
@@ -15,5 +15,8 @@ namespace Stripe
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("sepa_debit")]
+        public PaymentMethodSepaDebitUpdateOptions SepaDebit { get; set; }
     }
 }

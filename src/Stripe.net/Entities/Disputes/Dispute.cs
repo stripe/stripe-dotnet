@@ -14,12 +14,13 @@ namespace Stripe
         public string Object { get; set; }
 
         [JsonProperty("amount")]
-        public long? Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("balance_transactions")]
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         #region Expandable Charge
+
         [JsonIgnore]
         public string ChargeId
         {
@@ -61,7 +62,11 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("network_reason_code")]
+        public string NetworkReasonCode { get; set; }
+
         #region Expandable PaymentIntent
+
         [JsonIgnore]
         public string PaymentIntentId
         {

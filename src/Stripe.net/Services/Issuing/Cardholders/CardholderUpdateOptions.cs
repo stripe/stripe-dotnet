@@ -1,8 +1,7 @@
 namespace Stripe.Issuing
 {
-    using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class CardholderUpdateOptions : BaseOptions, IHasMetadata
     {

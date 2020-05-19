@@ -141,6 +141,7 @@ namespace Stripe
         #endregion
 
         #region Expandable DefaultSource
+
         [JsonIgnore]
         public string DefaultSourceId
         {
@@ -279,8 +280,7 @@ namespace Stripe
         #endregion
 
         [JsonProperty("subscription_proration_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime SubscriptionProrationDate { get; set; }
+        public long SubscriptionProrationDate { get; set; }
 
         [JsonProperty("subtotal")]
         public long Subtotal { get; set; }
@@ -288,7 +288,6 @@ namespace Stripe
         [JsonProperty("tax")]
         public long? Tax { get; set; }
 
-        [Obsolete("Use DefaultTaxRates instead")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 
@@ -299,7 +298,7 @@ namespace Stripe
         public long Total { get; set; }
 
         [JsonProperty("total_tax_amounts")]
-        public List<InvoiceTaxAmount> TotalTaxAmounts { get; set; }
+        public List<InvoiceTotalTaxAmount> TotalTaxAmounts { get; set; }
 
         [JsonProperty("transfer_data")]
         public InvoiceTransferData TransferData { get; set; }

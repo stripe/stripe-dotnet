@@ -1,8 +1,7 @@
 namespace Stripe
 {
-    using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System;
     using Stripe.Infrastructure;
 
     public class SubscriptionItemUpdateOptions : BaseOptions, IHasMetadata

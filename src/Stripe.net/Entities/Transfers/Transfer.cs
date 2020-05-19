@@ -19,7 +19,8 @@ namespace Stripe
         [JsonProperty("amount_reversed")]
         public long AmountReversed { get; set; }
 
-        #region Expandable Balance Transaction
+        #region Expandable BalanceTransaction
+
         [JsonIgnore]
         public string BalanceTransactionId
         {
@@ -50,6 +51,7 @@ namespace Stripe
         public string Description { get; set; }
 
         #region Expandable Destination
+
         [JsonIgnore]
         public string DestinationId
         {
@@ -69,7 +71,8 @@ namespace Stripe
         internal ExpandableField<Account> InternalDestination { get; set; }
         #endregion
 
-        #region Expandable Destination Payment
+        #region Expandable DestinationPayment
+
         [JsonIgnore]
         public string DestinationPaymentId
         {
@@ -101,7 +104,8 @@ namespace Stripe
         [JsonProperty("reversed")]
         public bool Reversed { get; set; }
 
-        #region Expandable Source Transaction
+        #region Expandable SourceTransaction
+
         [JsonIgnore]
         public string SourceTransactionId
         {

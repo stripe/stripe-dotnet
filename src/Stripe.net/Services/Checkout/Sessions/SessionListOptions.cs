@@ -2,7 +2,7 @@ namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
 
-    public class SessionListOptions : ListOptionsWithCreated
+    public class SessionListOptions : ListOptions
     {
         [JsonProperty("payment_intent")]
         public string PaymentIntent { get; set; }

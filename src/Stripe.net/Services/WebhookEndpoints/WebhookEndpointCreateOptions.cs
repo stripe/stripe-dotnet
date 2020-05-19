@@ -1,9 +1,7 @@
 namespace Stripe
 {
-    using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using System.Collections.Generic;
 
     public class WebhookEndpointCreateOptions : BaseOptions, IHasMetadata
     {

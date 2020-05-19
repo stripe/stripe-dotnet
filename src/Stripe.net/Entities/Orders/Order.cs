@@ -56,7 +56,11 @@ namespace Stripe
         #region Expandable Customer
 
         [JsonIgnore]
-        public string CustomerId { get; set; }
+        public string CustomerId
+        {
+            get => this.InternalCustomer?.Id;
+            set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
+        }
 
         [JsonIgnore]
         public Customer Customer
@@ -95,17 +99,17 @@ namespace Stripe
         public Shipping Shipping { get; set; }
 
         [JsonProperty("shipping_methods")]
-        public List<OrderShippingMethod> ShippingMethods { get; set; }
+        public List<ShippingMethod> ShippingMethods { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("status_transitions")]
-        public OrderStatusTransitions StatusTransitions { get; set; }
+        public StatusTransitions StatusTransitions { get; set; }
 
         [JsonProperty("updated")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Updated { get; set; }
+        public DateTime? Updated { get; set; }
 
         [JsonProperty("upstream_id")]
         public string UpstreamId { get; set; }

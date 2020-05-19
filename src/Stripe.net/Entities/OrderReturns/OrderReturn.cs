@@ -53,7 +53,11 @@ namespace Stripe
         #region Expandable Refund
 
         [JsonIgnore]
-        public string RefundId { get; set; }
+        public string RefundId
+        {
+            get => this.InternalRefund?.Id;
+            set => this.InternalRefund = SetExpandableFieldId(value, this.InternalRefund);
+        }
 
         [JsonIgnore]
         public Refund Refund

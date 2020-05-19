@@ -117,7 +117,7 @@ namespace Stripe.Issuing
         public string MerchantCurrency { get; set; }
 
         [JsonProperty("merchant_data")]
-        public AuthorizationMerchantData MerchantData { get; set; }
+        public TransactionMerchantData MerchantData { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

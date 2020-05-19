@@ -47,7 +47,7 @@ namespace Stripe
         public string IpAddress { get; set; }
 
         [JsonProperty("ip_address_location")]
-        public ReviewLocation IpAddressLocation { get; set; }
+        public ReviewIpAddressLocation IpAddressLocation { get; set; }
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }

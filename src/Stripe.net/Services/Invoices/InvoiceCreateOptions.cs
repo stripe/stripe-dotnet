@@ -1,8 +1,8 @@
 namespace Stripe
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
     public class InvoiceCreateOptions : BaseOptions, IHasMetadata
@@ -53,7 +53,6 @@ namespace Stripe
         [JsonProperty("subscription")]
         public string Subscription { get; set; }
 
-        [Obsolete("Use DefaultTaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 

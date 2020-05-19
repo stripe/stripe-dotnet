@@ -20,14 +20,14 @@ namespace Stripe.Reporting
 
         public override string BasePath => "/v1/reporting/report_types";
 
-        public virtual ReportType Get(string reportTypeId, ReportTypeGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual ReportType Get(string id, ReportTypeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(reportTypeId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<ReportType> GetAsync(string reportTypeId, ReportTypeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ReportType> GetAsync(string id, ReportTypeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(reportTypeId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ReportType> List(ReportTypeListOptions options = null, RequestOptions requestOptions = null)
@@ -44,12 +44,5 @@ namespace Stripe.Reporting
         {
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
-
-#if !NET45
-        public virtual IAsyncEnumerable<ReportType> ListAutoPagingAsync(ReportTypeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
-        }
-#endif
     }
 }

@@ -24,9 +24,6 @@ namespace Stripe
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
-        [JsonProperty("livemode")]
-        public bool Livemode { get; set; }
-
         #region Expandable File
 
         [JsonIgnore]
@@ -47,6 +44,9 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
         internal ExpandableField<File> InternalFile { get; set; }
         #endregion
+
+        [JsonProperty("livemode")]
+        public bool Livemode { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

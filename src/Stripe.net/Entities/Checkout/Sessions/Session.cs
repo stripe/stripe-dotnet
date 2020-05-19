@@ -1,6 +1,5 @@
 namespace Stripe.Checkout
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -115,6 +114,9 @@ namespace Stripe.Checkout
         [JsonProperty("shipping_address_collection")]
         public SessionShippingAddressCollection ShippingAddressCollection { get; set; }
 
+        [JsonProperty("submit_type")]
+        public string SubmitType { get; set; }
+
         #region Expandable Subscription
 
         [JsonIgnore]
@@ -135,9 +137,6 @@ namespace Stripe.Checkout
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
-
-        [JsonProperty("submit_type")]
-        public string SubmitType { get; set; }
 
         [JsonProperty("success_url")]
         public string SuccessUrl { get; set; }

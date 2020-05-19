@@ -1,7 +1,7 @@
 namespace Stripe
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     using Stripe.Infrastructure;
 
     public class PlanCreateOptions : BaseOptions, IHasId, IHasMetadata
@@ -16,7 +16,7 @@ namespace Stripe
         public long? Amount { get; set; }
 
         [JsonProperty("amount_decimal")]
-        public decimal? AmountDecimal { get; set; }
+        public string AmountDecimal { get; set; }
 
         [JsonProperty("billing_scheme")]
         public string BillingScheme { get; set; }

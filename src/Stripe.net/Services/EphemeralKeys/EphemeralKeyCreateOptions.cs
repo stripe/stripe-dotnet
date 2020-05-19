@@ -1,9 +1,6 @@
 namespace Stripe
 {
-    using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class EphemeralKeyCreateOptions : BaseOptions
     {
@@ -12,8 +9,5 @@ namespace Stripe
 
         [JsonProperty("issuing_card")]
         public string IssuingCard { get; set; }
-
-        [JsonIgnore]
-        public string StripeVersion { get; set; }
     }
 }

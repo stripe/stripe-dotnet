@@ -1,12 +1,8 @@
 namespace Stripe.Checkout
 {
-    using System;
     using System.Collections.Generic;
-    using System.Net;
-    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class SessionService : Service<Session>,
         ICreatable<Session, SessionCreateOptions>,
@@ -35,14 +31,14 @@ namespace Stripe.Checkout
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Session Get(string sessionId, SessionGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Session Get(string id, SessionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(sessionId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Session> GetAsync(string sessionId, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Session> GetAsync(string id, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(sessionId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Session> List(SessionListOptions options = null, RequestOptions requestOptions = null)
@@ -59,34 +55,5 @@ namespace Stripe.Checkout
         {
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
-
-#if !NET45
-        public virtual IAsyncEnumerable<Session> ListAutoPagingAsync(SessionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
-        }
-#endif
-
-        public virtual StripeList<LineItem> ListLineItems(string sessionId, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"{this.InstanceUrl(sessionId)}/line_items", options, requestOptions);
-        }
-
-        public virtual Task<StripeList<LineItem>> ListLineItemsAsync(string sessionId, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"{this.InstanceUrl(sessionId)}/line_items", options, requestOptions, cancellationToken);
-        }
-
-        public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(string sessionId, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<LineItem>($"{this.InstanceUrl(sessionId)}/line_items", options, requestOptions);
-        }
-
-#if !NET45
-        public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string sessionId, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<LineItem>($"{this.InstanceUrl(sessionId)}/line_items", options, requestOptions, cancellationToken);
-        }
-#endif
     }
 }

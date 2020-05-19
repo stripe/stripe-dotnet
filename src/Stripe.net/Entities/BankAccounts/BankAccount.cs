@@ -13,6 +13,7 @@ namespace Stripe
         public string Object { get; set; }
 
         #region Expandable Account
+
         [JsonIgnore]
         public string AccountId
         {
@@ -48,6 +49,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
+
         [JsonIgnore]
         public string CustomerId
         {

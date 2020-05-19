@@ -18,7 +18,7 @@ namespace Stripe
 
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? BillingCycleAnchor { get; set; }
+        public DateTime BillingCycleAnchor { get; set; }
 
         [JsonProperty("billing_thresholds")]
         public SubscriptionBillingThresholds BillingThresholds { get; set; }
@@ -223,7 +223,6 @@ namespace Stripe
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        [Obsolete("Use DefaultTaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
 

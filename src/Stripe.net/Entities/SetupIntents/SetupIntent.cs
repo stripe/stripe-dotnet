@@ -101,7 +101,7 @@ namespace Stripe
         [JsonProperty("next_action")]
         public SetupIntentNextAction NextAction { get; set; }
 
-        #region Expandable OnBehalfOf (Account)
+        #region Expandable OnBehalfOf
 
         [JsonIgnore]
         public string OnBehalfOfId

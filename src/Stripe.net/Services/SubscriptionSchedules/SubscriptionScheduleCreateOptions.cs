@@ -1,8 +1,7 @@
 namespace Stripe
 {
-    using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     using Stripe.Infrastructure;
 
     public class SubscriptionScheduleCreateOptions : BaseOptions, IHasMetadata
@@ -19,9 +18,6 @@ namespace Stripe
         [JsonProperty("from_subscription")]
         public string FromSubscription { get; set; }
 
-        [JsonProperty("invoice_settings")]
-        public SubscriptionScheduleInvoiceSettingsOptions InvoiceSettings { get; set; }
-
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
@@ -30,6 +26,6 @@ namespace Stripe
 
         [JsonProperty("start_date")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<DateTime?, SubscriptionScheduleStartDate> StartDate { get; set; }
+        public AnyOf<long?, string> StartDate { get; set; }
     }
 }

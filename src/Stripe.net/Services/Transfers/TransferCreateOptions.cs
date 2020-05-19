@@ -1,8 +1,7 @@
 namespace Stripe
 {
-    using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class TransferCreateOptions : BaseOptions, IHasMetadata
     {
@@ -24,10 +23,10 @@ namespace Stripe
         [JsonProperty("source_transaction")]
         public string SourceTransaction { get; set; }
 
-        [JsonProperty("transfer_group")]
-        public string TransferGroup { get; set; }
-
         [JsonProperty("source_type")]
         public string SourceType { get; set; }
+
+        [JsonProperty("transfer_group")]
+        public string TransferGroup { get; set; }
     }
 }

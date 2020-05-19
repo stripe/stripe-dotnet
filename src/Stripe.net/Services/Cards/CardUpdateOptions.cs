@@ -1,10 +1,15 @@
 namespace Stripe
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class CardUpdateOptions : BaseOptions, IHasMetadata
     {
+        [JsonProperty("account_holder_name")]
+        public string AccountHolderName { get; set; }
+
+        [JsonProperty("account_holder_type")]
+        public string AccountHolderType { get; set; }
+
         [JsonProperty("address_city")]
         public string AddressCity { get; set; }
 
@@ -23,19 +28,19 @@ namespace Stripe
         [JsonProperty("address_zip")]
         public string AddressZip { get; set; }
 
+        [JsonProperty("default_for_currency")]
+        public bool? DefaultForCurrency { get; set; }
+
         [JsonProperty("exp_month")]
-        public long? ExpMonth { get; set; }
+        public string ExpMonth { get; set; }
 
         [JsonProperty("exp_year")]
-        public long? ExpYear { get; set; }
+        public string ExpYear { get; set; }
 
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
-
-        [JsonProperty("validate")]
-        public bool? Validate { get; set; }
     }
 }

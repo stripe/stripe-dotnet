@@ -13,6 +13,7 @@ namespace Stripe
         public string Object { get; set; }
 
         #region Expandable Account
+
         [JsonIgnore]
         public string AccountId
         {
@@ -69,6 +70,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Customer
+
         [JsonIgnore]
         public string CustomerId
         {
@@ -97,6 +99,9 @@ namespace Stripe
         [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
         [JsonProperty("dynamic_last4")]
         public string DynamicLast4 { get; set; }
 
@@ -112,6 +117,12 @@ namespace Stripe
         [JsonProperty("funding")]
         public string Funding { get; set; }
 
+        [JsonProperty("iin")]
+        public string Iin { get; set; }
+
+        [JsonProperty("issuer")]
+        public string Issuer { get; set; }
+
         [JsonProperty("last4")]
         public string Last4 { get; set; }
 
@@ -122,6 +133,7 @@ namespace Stripe
         public string Name { get; set; }
 
         #region Expandable Recipient
+
         [JsonIgnore]
         public string RecipientId
         {
@@ -143,15 +155,5 @@ namespace Stripe
 
         [JsonProperty("tokenization_method")]
         public string TokenizationMethod { get; set; }
-
-        // The properties below are for internal use only and not returned as part of standard API requests.
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("iin")]
-        public string Iin { get; set; }
-
-        [JsonProperty("issuer")]
-        public string Issuer { get; set; }
     }
 }

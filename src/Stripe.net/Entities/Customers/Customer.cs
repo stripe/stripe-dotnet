@@ -47,14 +47,11 @@ namespace Stripe
         internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
         #endregion
 
-        [JsonProperty("default_source_type")]
-        public string DefaultSourceType { get; set; }
-
         [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
         [JsonProperty("delinquent")]
-        public bool Delinquent { get; set; }
+        public bool? Delinquent { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }

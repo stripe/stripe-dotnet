@@ -1,8 +1,7 @@
 namespace Stripe
 {
-    using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     using Stripe.Infrastructure;
 
     public class PaymentIntentCreateOptions : BaseOptions, IHasMetadata
@@ -44,16 +43,14 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("off_session")]
-        public bool? OffSession { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<bool?, string> OffSession { get; set; }
 
         [JsonProperty("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
         [JsonProperty("payment_method")]
         public string PaymentMethod { get; set; }
-
-        [JsonProperty("payment_method_data")]
-        public PaymentIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         [JsonProperty("payment_method_options")]
         public PaymentIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
@@ -74,7 +71,7 @@ namespace Stripe
         public string SetupFutureUsage { get; set; }
 
         [JsonProperty("shipping")]
-        public ChargeShippingOptions Shipping { get; set; }
+        public ShippingOptions Shipping { get; set; }
 
         [JsonProperty("source")]
         public string Source { get; set; }
