@@ -91,7 +91,11 @@ namespace Stripe
         /// The customer used for the order.
         /// </summary>
         [JsonIgnore]
-        public string CustomerId { get; set; }
+        public string CustomerId
+        {
+            get => this.InternalCustomer?.Id;
+            set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
+        }
 
         [JsonIgnore]
         public Customer Customer

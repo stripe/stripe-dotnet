@@ -102,6 +102,10 @@ namespace Stripe
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
+        // This property is not returned as part of standard API requests.
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
         [JsonProperty("dynamic_last4")]
         public string DynamicLast4 { get; set; }
 
@@ -116,6 +120,14 @@ namespace Stripe
 
         [JsonProperty("funding")]
         public string Funding { get; set; }
+
+        // This property is not returned as part of standard API requests.
+        [JsonProperty("iin")]
+        public string Iin { get; set; }
+
+        // This property is not returned as part of standard API requests.
+        [JsonProperty("issuer")]
+        public string Issuer { get; set; }
 
         [JsonProperty("last4")]
         public string Last4 { get; set; }
@@ -149,15 +161,5 @@ namespace Stripe
 
         [JsonProperty("tokenization_method")]
         public string TokenizationMethod { get; set; }
-
-        // The properties below are for internal use only and not returned as part of standard API requests.
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("iin")]
-        public string Iin { get; set; }
-
-        [JsonProperty("issuer")]
-        public string Issuer { get; set; }
     }
 }

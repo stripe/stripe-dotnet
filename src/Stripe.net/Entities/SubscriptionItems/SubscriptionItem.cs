@@ -7,12 +7,28 @@ namespace Stripe
 
     public class SubscriptionItem : StripeEntity<SubscriptionItem>, IHasId, IHasMetadata, IHasObject
     {
+        /// <summary>
+        /// Unique identifier for the object.
+        /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// String representing the object’s type. Objects of the same type share the same value.
+        /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        /// <summary>
+        /// Define thresholds at which an invoice will be sent, and the related subscription
+        /// advanced to a new billing period.
+        /// </summary>
+        [JsonProperty("billing_thresholds")]
+        public SubscriptionItemBillingThresholds BillingThresholds { get; set; }
+
+        /// <summary>
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
@@ -20,12 +36,19 @@ namespace Stripe
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
-        [JsonProperty("deleted", NullValueHandling=NullValueHandling.Ignore)]
+        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
+        /// <summary>
+        /// A set of key/value pairs that you can attach to an order object. It can be useful for
+        /// storing additional information about the order in a structured format.
+        /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        /// Plan the customer is subscribed to.
+        /// </summary>
         [JsonProperty("plan")]
         public Plan Plan { get; set; }
 
@@ -35,9 +58,15 @@ namespace Stripe
         [JsonProperty("price")]
         public Price Price { get; set; }
 
+        /// <summary>
+        /// The quantity of the plan to which the customer should be subscribed.
+        /// </summary>
         [JsonProperty("quantity")]
         public long Quantity { get; set; }
 
+        /// <summary>
+        /// The subscription this subscription item belongs to.
+        /// </summary>
         [JsonProperty("subscription")]
         public string Subscription { get; set; }
 
