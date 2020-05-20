@@ -115,6 +115,14 @@ namespace Stripe
         public decimal? TaxPercent { get; set; }
 
         /// <summary>
+        /// The account (if any) the subscription's payments will be attributed
+        /// to for tax reporting, and where funds from each payment will be
+        /// transferred to for each of the subscription's invoices.
+        /// </summary>
+        [JsonProperty("transfer_data")]
+        public SubscriptionTransferDataOptions TransferData { get; set; }
+
+        /// <summary>
         /// If set to <c>true</c> the entire phase is counted as a trial and the customer will not
         /// be charged for any fees.
         /// </summary>
