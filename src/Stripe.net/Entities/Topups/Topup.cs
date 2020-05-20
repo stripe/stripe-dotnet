@@ -25,7 +25,11 @@ namespace Stripe
         /// ID of the balance transaction that describes the impact of this Top-up on your account balance (not including refunds or disputes).
         /// </summary>
         [JsonIgnore]
-        public string BalanceTransactionId { get; set; }
+        public string BalanceTransactionId
+        {
+            get => this.InternalBalanceTransaction?.Id;
+            set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
+        }
 
         [JsonIgnore]
         public BalanceTransaction BalanceTransaction

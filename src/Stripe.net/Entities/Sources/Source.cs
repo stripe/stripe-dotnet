@@ -10,17 +10,50 @@ namespace Stripe
     /// </summary>
     public class Source : StripeEntity<Source>, IHasId, IHasMetadata, IHasObject, IPaymentSource
     {
+        /// <summary>
+        /// Unique identifier for the object.
+        /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// String representing the object’s type. Objects of the same type share the same value.
+        /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
+
+        [JsonProperty("ach_credit_transfer")]
+        public SourceAchCreditTransfer AchCreditTransfer { get; set; }
+
+        [JsonProperty("ach_debit")]
+        public SourceAchDebit AchDebit { get; set; }
+
+        [JsonProperty("acss_debit")]
+        public SourceAcssDebit AcssDebit { get; set; }
+
+        [JsonProperty("alipay")]
+        public SourceAlipay Alipay { get; set; }
 
         /// <summary>
         /// Amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for single-use sources.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
+
+        [JsonProperty("au_becs_debit")]
+        public SourceAuBecsDebit AuBecsDebit { get; set; }
+
+        [JsonProperty("bancontact")]
+        public SourceBancontact Bancontact { get; set; }
+
+        [JsonProperty("bitcoin")]
+        public SourceBitcoin Bitcoin { get; set; }
+
+        [JsonProperty("card")]
+        public SourceCard Card { get; set; }
+
+        [JsonProperty("card_present")]
+        public SourceCardPresent CardPresent { get; set; }
 
         /// <summary>
         /// The client secret of the source. Used for client-side polling using a publishable key.
@@ -50,20 +83,52 @@ namespace Stripe
         [JsonProperty("customer")]
         public string Customer { get; set; }
 
+        [JsonProperty("eps")]
+        public SourceEps Eps { get; set; }
+
         /// <summary>
         /// The authentication flow of the source. Flow is one of redirect, receiver, code_verification, none.
         /// </summary>
         [JsonProperty("flow")]
         public string Flow { get; set; }
 
+        [JsonProperty("giropay")]
+        public SourceGiropay Giropay { get; set; }
+
+        [JsonProperty("ideal")]
+        public SourceIdeal Ideal { get; set; }
+
+        [JsonProperty("klarna")]
+        public SourceKlarna Klarna { get; set; }
+
+        /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value
+        /// <c>false</c> if the object exists in test mode.
+        /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to a source object. It can be useful for storing additional information about the source in a structured format.
+        /// A set of key/value pairs that you can attach to an order object. It can be useful for
+        /// storing additional information about the order in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("multibanco")]
+        public SourceMultibanco Multibanco { get; set; }
+
+        [JsonProperty("p24")]
+        public SourceP24 P24 { get; set; }
+
+        [JsonProperty("sepa_credit_transfer")]
+        public SourceSepaCreditTransfer SepaCreditTransfer { get; set; }
+
+        [JsonProperty("sepa_debit")]
+        public SourceSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("sofort")]
+        public SourceSofort Sofort { get; set; }
 
         /// <summary>
         /// Information about the items and shipping associated with the source.
@@ -103,6 +168,9 @@ namespace Stripe
         [JsonProperty("status")]
         public string Status { get; set; }
 
+        [JsonProperty("three_d_secure")]
+        public SourceThreeDSecure ThreeDSecure { get; set; }
+
         /// <summary>
         /// The type of the source. The type is a payment method, one of card, three_d_secure, giropay, sepa_debit, ideal, klarna, sofort, or bancontact.
         /// </summary>
@@ -114,67 +182,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("usage")]
         public string Usage { get; set; }
-
-        /*
-         * Type-specific attributes
-         */
-
-        [JsonProperty("ach_credit_transfer")]
-        public SourceAchCreditTransfer AchCreditTransfer { get; set; }
-
-        [JsonProperty("ach_debit")]
-        public SourceAchDebit AchDebit { get; set; }
-
-        [JsonProperty("acss_debit")]
-        public SourceAcssDebit AcssDebit { get; set; }
-
-        [JsonProperty("alipay")]
-        public SourceAlipay Alipay { get; set; }
-
-        [JsonProperty("au_becs_debit")]
-        public SourceAuBecsDebit AuBecsDebit { get; set; }
-
-        [JsonProperty("bancontact")]
-        public SourceBancontact Bancontact { get; set; }
-
-        [JsonProperty("bitcoin")]
-        public SourceBitcoin Bitcoin { get; set; }
-
-        [JsonProperty("card")]
-        public SourceCard Card { get; set; }
-
-        [JsonProperty("card_present")]
-        public SourceCardPresent CardPresent { get; set; }
-
-        [JsonProperty("eps")]
-        public SourceEps Eps { get; set; }
-
-        [JsonProperty("giropay")]
-        public SourceGiropay Giropay { get; set; }
-
-        [JsonProperty("ideal")]
-        public SourceIdeal Ideal { get; set; }
-
-        [JsonProperty("klarna")]
-        public SourceKlarna Klarna { get; set; }
-
-        [JsonProperty("multibanco")]
-        public SourceMultibanco Multibanco { get; set; }
-
-        [JsonProperty("p24")]
-        public SourceP24 P24 { get; set; }
-
-        [JsonProperty("sepa_credit_transfer")]
-        public SourceSepaCreditTransfer SepaCreditTransfer { get; set; }
-
-        [JsonProperty("sepa_debit")]
-        public SourceSepaDebit SepaDebit { get; set; }
-
-        [JsonProperty("sofort")]
-        public SourceSofort Sofort { get; set; }
-
-        [JsonProperty("three_d_secure")]
-        public SourceThreeDSecure ThreeDSecure { get; set; }
 
         [JsonProperty("wechat")]
         public SourceWechat Wechat { get; set; }

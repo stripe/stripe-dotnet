@@ -7,9 +7,15 @@ namespace Stripe
 
     public class Charge : StripeEntity<Charge>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
+        /// <summary>
+        /// Unique identifier for the object.
+        /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// String representing the object’s type. Objects of the same type share the same value.
+        /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
@@ -75,6 +81,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
+
+        /// <summary>
+        /// Authorization code on the charge. This property is not returned as part of standard API
+        /// requests.
+        /// </summary>
+        [JsonProperty("authorization_code")]
+        public string AuthorizationCode { get; set; }
 
         #region Expandable BalanceTransaction
 
@@ -512,9 +525,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
-
-        // The properties below are for internal use only and not returned as part of standard API requests.
-        [JsonProperty("authorization_code")]
-        public string AuthorizationCode { get; set; }
     }
 }

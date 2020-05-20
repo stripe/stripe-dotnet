@@ -11,7 +11,7 @@ namespace Stripe
     public class BaseOptions : INestedOptions
     {
         /// <summary>Specifies which fields in the response should be expanded.</summary>
-        [JsonProperty("expand", NullValueHandling=NullValueHandling.Ignore)]
+        [JsonProperty("expand", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Expand { get; set; }
 
         /// <summary>Dictionary containing extra request parameters.</summary>
