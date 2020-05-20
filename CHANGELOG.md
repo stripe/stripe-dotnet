@@ -1,5 +1,13 @@
 # Changelog
 
+## 37.2.0 - 2020-05-20
+* [#2051](https://github.com/stripe/stripe-dotnet/pull/2051) Enable TLS 1.2 on all runtimes
+* [#2053](https://github.com/stripe/stripe-dotnet/pull/2053) Add multiple missing features and better docs
+  * Add `NetworkReasonCode` on `Dispute` which is a gated feature
+  * Fix `RefundId` on `OrderReturn`, `CustomerId` on `Order` and `BalanceTransactionId` on `Topup` to be deserialized properly
+  * Add `Deleted` on `ValueList` and `ValueListItem`
+  * Add `BillingThresholds` on `SubscriptionItem`
+
 ## 37.1.0 - 2020-05-18
 * [#2047](https://github.com/stripe/stripe-dotnet/pull/2047) Multiple API changes
   * Add `BalanceTransactions` as a a list of `BalanceTransaction` on Issuing `Dispute`
