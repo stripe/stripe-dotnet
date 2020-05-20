@@ -50,6 +50,15 @@ namespace Stripe
 
         private string userAgentString;
 
+        static SystemNetHttpClient()
+        {
+            // Enable support for TLS 1.2, as Stripe's API requires it. This should only be
+            // necessary for .NET Framework 4.5 as more recent runtimes should have TLS 1.2 enabled
+            // by default, but it can be disabled in some environments.
+            ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol |
+                SecurityProtocolType.Tls12;
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemNetHttpClient"/> class.
         /// </summary>
@@ -74,12 +83,6 @@ namespace Stripe
             AppInfo appInfo = null,
             bool enableTelemetry = true)
         {
-#if NET45
-            // With .NET Framework 4.5, it's necessary to manually enable support for TLS 1.2.
-            ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol |
-                SecurityProtocolType.Tls12;
-#endif
-
             this.httpClient = httpClient ?? LazyDefaultHttpClient.Value;
             this.MaxNetworkRetries = maxNetworkRetries;
             this.appInfo = appInfo;
