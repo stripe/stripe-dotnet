@@ -1,5 +1,11 @@
 # Changelog
 
+## 37.3.0 - 2020-05-20
+* [#2054](https://github.com/stripe/stripe-dotnet/pull/2054) Multiple API changes
+  * Add `PaymentMethodTypeInteracPresent` as a `Type` on `PaymentMethod`
+  * Add `ChargePaymentMethodDetailsInteracPresent` on `Charge`
+  * Add `TransferData ` on `SubscriptionSchedule`
+
 ## 37.2.0 - 2020-05-20
 * [#2051](https://github.com/stripe/stripe-dotnet/pull/2051) Enable TLS 1.2 on all runtimes
 * [#2053](https://github.com/stripe/stripe-dotnet/pull/2053) Add multiple missing features and better docs
