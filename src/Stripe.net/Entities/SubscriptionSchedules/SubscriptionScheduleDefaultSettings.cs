@@ -53,5 +53,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("invoice_settings")]
         public SubscriptionScheduleInvoiceSettings InvoiceSettings { get; set; }
+
+        /// <summary>
+        /// The account (if any) the subscription's payments will be
+        /// attributed to for tax reporting, and where funds from each
+        /// payment will be transferred to for each of the subscription's
+        /// invoices.
+        /// </summary>
+        [JsonProperty("transfer_data")]
+        public SubscriptionTransferData TransferData { get; set; }
     }
 }

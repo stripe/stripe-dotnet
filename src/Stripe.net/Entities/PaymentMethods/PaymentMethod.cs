@@ -59,6 +59,9 @@ namespace Stripe
         [JsonProperty("ideal")]
         public PaymentMethodIdeal Ideal { get; set; }
 
+        [JsonProperty("interac_present")]
+        public PaymentMethodInteracPresent InteracPresent { get; set; }
+
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 

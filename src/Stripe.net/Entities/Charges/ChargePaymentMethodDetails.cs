@@ -44,6 +44,9 @@ namespace Stripe
         [JsonProperty("ideal")]
         public ChargePaymentMethodDetailsIdeal Ideal { get; set; }
 
+        [JsonProperty("interac_present")]
+        public ChargePaymentMethodDetailsInteracPresent InteracPresent { get; set; }
+
         [JsonProperty("klarna")]
         public ChargePaymentMethodDetailsKlarna Klarna { get; set; }
 

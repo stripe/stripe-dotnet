@@ -50,6 +50,12 @@ namespace Stripe
         public PaymentMethodIdealCreateOptions Ideal { get; set; }
 
         /// <summary>
+        /// If this is an `interac_present` PaymentMethod, this hash contains details about the Interac Present payment method.
+        /// </summary>
+        [JsonProperty("interac_present")]
+        public PaymentMethodInteracPresentCreateOptions InteracPresent { get; set; }
+
+        /// <summary>
         /// A set of key/value pairs that you can attach to a charge object. It can be useful for
         /// storing additional information about the customer in a structured format. It's often a
         /// good idea to store an email address in metadata for tracking later.
