@@ -13,6 +13,18 @@ namespace Stripe
         public bool Authenticated { get; set; }
 
         /// <summary>
+        /// Indicates the outcome of 3D Secure authentication.
+        /// </summary>
+        [JsonProperty("result")]
+        public string Result { get; set; }
+
+        /// <summary>
+        /// Additional information about why 3D Secure succeeded or failed.
+        /// </summary>
+        [JsonProperty("result_reason")]
+        public string ResultReason { get; set; }
+
+        /// <summary>
         /// Whether or not 3D Secure succeeded.
         /// </summary>
         [JsonProperty("succeeded")]
