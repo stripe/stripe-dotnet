@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.4.0 - 2020-05-22
+* [#2055](https://github.com/stripe/stripe-dotnet/pull/2055) Add support for `Result` and `ResultReason` in `ChargePaymentMethodDetailsCardThreeDSecure`
+
 ## 37.3.0 - 2020-05-20
 * [#2054](https://github.com/stripe/stripe-dotnet/pull/2054) Multiple API changes
   * Add `PaymentMethodTypeInteracPresent` as a `Type` on `PaymentMethod`
