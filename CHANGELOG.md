@@ -1,5 +1,9 @@
 # Changelog
 
+## 37.5.0 - 2020-05-28
+* [#2057](https://github.com/stripe/stripe-dotnet/pull/2057) Add support for `ProductData` on `SessionLineItemPriceDataOptions`
+* [#2056](https://github.com/stripe/stripe-dotnet/pull/2056) Add `AuthenticationFlow` in `ChargePaymentMethodDetailsCardThreeDSecure`
+
 ## 37.4.0 - 2020-05-22
 * [#2055](https://github.com/stripe/stripe-dotnet/pull/2055) Add support for `Result` and `ResultReason` in `ChargePaymentMethodDetailsCardThreeDSecure`
 
