@@ -19,6 +19,12 @@ namespace Stripe
         public string Product { get; set; }
 
         /// <summary>
+        /// Data used to generate a new product object inline.
+        /// </summary>
+        [JsonProperty("product_data")]
+        public SessionLineItemPriceDataProductDataOptions ProductData { get; set; }
+
+        /// <summary>
         /// The recurring components of a price such as its interval.
         /// </summary>
         [JsonProperty("recurring")]
