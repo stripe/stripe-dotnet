@@ -13,6 +13,14 @@ namespace Stripe
         public bool Authenticated { get; set; }
 
         /// <summary>
+        /// For authenticated transactions: whether issuing bank authenticated the cardholder with a
+        /// traditional challenge screen, or with device data via the 3DS2 frictionless flow. One of
+        /// <c>challenge</c> or <c>frictionless</c>.
+        /// </summary>
+        [JsonProperty("authentication_flow")]
+        public string AuthenticationFlow { get; set; }
+
+        /// <summary>
         /// Indicates the outcome of 3D Secure authentication.
         /// </summary>
         [JsonProperty("result")]
