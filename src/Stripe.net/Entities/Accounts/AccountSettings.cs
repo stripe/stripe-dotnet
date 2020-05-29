@@ -8,6 +8,12 @@ namespace Stripe
     public class AccountSettings : StripeEntity<AccountSettings>
     {
         /// <summary>
+        /// Settings specific to card charging on the account.
+        /// </summary>
+        [JsonProperty("bacs_debit_payments")]
+        public AccountSettingsBacsDebitPayments BacsDebitPayments { get; set; }
+
+        /// <summary>
         /// Settings used to apply the account’s branding to email receipts, invoices, Checkout,
         /// and other products.
         /// </summary>
