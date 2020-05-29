@@ -12,13 +12,16 @@ namespace Stripe
         public ChargePaymentMethodDetailsAchDebit AchDebit { get; set; }
 
         [JsonProperty("acss_debit")]
-        public ChargePaymentMethodDetailsAchDebit AcssDebit { get; set; }
+        public ChargePaymentMethodDetailsAcssDebit AcssDebit { get; set; }
 
         [JsonProperty("alipay")]
         public ChargePaymentMethodDetailsAlipay Alipay { get; set; }
 
         [JsonProperty("au_becs_debit")]
         public ChargePaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
+
+        [JsonProperty("bacs_debit")]
+        public ChargePaymentMethodDetailsBacsDebit BacsDebit { get; set; }
 
         [JsonProperty("bancontact")]
         public ChargePaymentMethodDetailsBancontact Bancontact { get; set; }
