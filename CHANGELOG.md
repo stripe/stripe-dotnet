@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.6.0 - 2020-05-29
+* [#2058](https://github.com/stripe/stripe-dotnet/pull/2058) Add support for BACS Debit as a `PaymentMethod`. Also fixed `AcssDebit` on `ChargePaymentMethodDetails` to be `ChargePaymentMethodDetailsAcssDebit`.
+
 ## 37.5.0 - 2020-05-28
 * [#2057](https://github.com/stripe/stripe-dotnet/pull/2057) Add support for `ProductData` on `SessionLineItemPriceDataOptions`
 * [#2056](https://github.com/stripe/stripe-dotnet/pull/2056) Add `AuthenticationFlow` in `ChargePaymentMethodDetailsCardThreeDSecure`
