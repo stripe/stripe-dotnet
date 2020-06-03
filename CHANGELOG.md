@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.8.0 - 2020-06-03
+* [#2065](https://github.com/stripe/stripe-dotnet/pull/2065) Add support for `TransferGroup` on Checkout `Session`
+
 ## 37.7.0 - 2020-06-03
 * [#2064](https://github.com/stripe/stripe-dotnet/pull/2064) Add support for `CheckoutSessionAsyncPaymentFailed` and `CheckoutSessionAsyncPaymentSucceeded` on `Event`
 * [#2063](https://github.com/stripe/stripe-dotnet/pull/2063) Add support for BACS Debit as a `Capability` on `Account`
