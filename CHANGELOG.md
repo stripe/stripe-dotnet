@@ -1,5 +1,11 @@
 # Changelog
 
+## 37.7.0 - 2020-06-03
+* [#2064](https://github.com/stripe/stripe-dotnet/pull/2064) Add support for `CheckoutSessionAsyncPaymentFailed` and `CheckoutSessionAsyncPaymentSucceeded` on `Event`
+* [#2063](https://github.com/stripe/stripe-dotnet/pull/2063) Add support for BACS Debit as a `Capability` on `Account`
+* [#2062](https://github.com/stripe/stripe-dotnet/pull/2062) Add support for Bancontact, EPS, Giropay and P24 on `PaymentMethod`
+* [#2061](https://github.com/stripe/stripe-dotnet/pull/2061) Add support for `Settings.SepaDebitPayments.CreditorId` on `Account`
+
 ## 37.6.0 - 2020-05-29
 * [#2058](https://github.com/stripe/stripe-dotnet/pull/2058) Add support for BACS Debit as a `PaymentMethod`. Also fixed `AcssDebit` on `ChargePaymentMethodDetails` to be `ChargePaymentMethodDetailsAcssDebit`.
 
