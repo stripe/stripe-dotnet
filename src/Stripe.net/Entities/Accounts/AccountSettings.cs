@@ -8,7 +8,7 @@ namespace Stripe
     public class AccountSettings : StripeEntity<AccountSettings>
     {
         /// <summary>
-        /// Settings specific to card charging on the account.
+        /// Settings specific to BACS debit charging on the account.
         /// </summary>
         [JsonProperty("bacs_debit_payments")]
         public AccountSettingsBacsDebitPayments BacsDebitPayments { get; set; }
@@ -43,5 +43,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payouts")]
         public AccountSettingsPayouts Payouts { get; set; }
+
+        /// <summary>
+        /// Settings specific to SEPA Debit charging on the account.
+        /// </summary>
+        [JsonProperty("sepa_debit_payments")]
+        public AccountSettingsSepaDebitPayments SepaDebitPayments { get; set; }
     }
 }
