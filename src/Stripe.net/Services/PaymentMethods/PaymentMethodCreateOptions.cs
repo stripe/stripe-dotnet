@@ -8,18 +8,22 @@ namespace Stripe
     public class PaymentMethodCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// This is a <c>au_becs_debit</c> PaymentMethod available in Australia.
-        /// Teh create option contains details about the bank account.
+        /// Parameters specific to AU BECS Debit PaymentMethod.
         /// </summary>
         [JsonProperty("au_becs_debit")]
         public PaymentMethodAuBecsDebitCreateOptions AuBecsDebit { get; set; }
 
         /// <summary>
-        /// This is a <c>au_becs_debit</c> PaymentMethod available in Australia.
-        /// Teh create option contains details about the bank account.
+        /// Parameters specific to BACS Debit PaymentMethod.
         /// </summary>
         [JsonProperty("bacs_debit")]
         public PaymentMethodBacsDebitCreateOptions BacsDebit { get; set; }
+
+        /// <summary>
+        /// Parameters specific to Bancontact PaymentMethod.
+        /// </summary>
+        [JsonProperty("bancontact")]
+        public PaymentMethodBancontactCreateOptions Bancontact { get; set; }
 
         /// <summary>
         /// Billing information associated with the PaymentMethod that may be used or required by
@@ -29,9 +33,7 @@ namespace Stripe
         public BillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
-        /// If this is a <c>card</c> PaymentMethod, raw card details. You must meet the requirements
-        /// for PCI compliance. We strongly recommend using Stripe.js instead of interacting with
-        /// this API directly.
+        /// Parameters specific to Card PaymentMethod.
         /// </summary>
         [JsonProperty("card")]
         public PaymentMethodCardCreateOptions Card { get; set; }
@@ -44,20 +46,31 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// This is a <c>FPX</c> PaymentMethod available in Malaysia.
+        /// Parameters specific to Eps PaymentMethod.
+        /// </summary>
+        [JsonProperty("eps")]
+        public PaymentMethodEpsCreateOptions Eps { get; set; }
+
+        /// <summary>
+        /// Parameters specific to FPX PaymentMethod.
         /// </summary>
         [JsonProperty("fpx")]
         public PaymentMethodFpxCreateOptions Fpx { get; set; }
 
         /// <summary>
-        /// If this is an <c>ideal</c> PaymentMethod, this contains details about the iDEAL payment
-        /// method.
+        /// Parameters specific to Giropay PaymentMethod.
+        /// </summary>
+        [JsonProperty("giropay")]
+        public PaymentMethodGiropayCreateOptions Giropay { get; set; }
+
+        /// <summary>
+        /// Parameters specific to iDEAL PaymentMethod.
         /// </summary>
         [JsonProperty("ideal")]
         public PaymentMethodIdealCreateOptions Ideal { get; set; }
 
         /// <summary>
-        /// If this is an `interac_present` PaymentMethod, this hash contains details about the Interac Present payment method.
+        /// Parameters specific to Interac Present PaymentMethod.
         /// </summary>
         [JsonProperty("interac_present")]
         public PaymentMethodInteracPresentCreateOptions InteracPresent { get; set; }
@@ -71,6 +84,12 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Parameters specific to P24 PaymentMethod.
+        /// </summary>
+        [JsonProperty("p24")]
+        public PaymentMethodP24CreateOptions P24 { get; set; }
+
+        /// <summary>
         /// The id of the PaymentMethod that you are trying to share with a Connected account.
         /// This only works with Stripe Connect.
         /// </summary>
@@ -78,8 +97,7 @@ namespace Stripe
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// If this is a <c>sepa_debit</c> PaymentMethod, this contains details about the SEPA debit
-        /// bank account.
+        /// Parameters specific to SEPA Debit PaymentMethod.
         /// </summary>
         [JsonProperty("sepa_debit")]
         public PaymentMethodSepaDebitCreateOptions SepaDebit { get; set; }
