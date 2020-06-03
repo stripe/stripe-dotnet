@@ -152,6 +152,16 @@ namespace Stripe
         public const string ChargeRefundUpdated = "charge.refund.updated";
 
         /// <summary>
+        /// Occurs when a Checkout Session asynchronous payment has failed.
+        /// </summary>
+        public const string CheckoutSessionAsyncPaymentFailed = "checkout.session.async_payment_failed";
+
+        /// <summary>
+        /// Occurs when a Checkout Session asynchronous payment has succeeded.
+        /// </summary>
+        public const string CheckoutSessionAsyncPaymentSucceeded = "checkout.session.async_payment_succeeded";
+
+        /// <summary>
         /// Occurs when a Checkout Session has been successfully completed.
         /// </summary>
         public const string CheckoutSessionCompleted = "checkout.session.completed";
