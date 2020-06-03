@@ -13,6 +13,13 @@ namespace Stripe
         public string AuBecsDebitPayments { get; set; }
 
         /// <summary>
+        /// The status of the Bacs Direct Debits payments capability of the account, or whether the
+        /// account can directly process Bacs Direct Debits charges.
+        /// </summary>
+        [JsonProperty("bacs_debit_payments")]
+        public string BacsDebitPayments { get; set; }
+
+        /// <summary>
         /// The status of the card issuing capability of the account, or whether you can use Issuing
         /// to distribute funds on cards.
         /// </summary>
