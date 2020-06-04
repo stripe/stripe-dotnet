@@ -1,6 +1,5 @@
 namespace Stripe
 {
-    using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -12,7 +11,7 @@ namespace Stripe
         [JsonProperty("billing_address")]
         public string BillingAddress { get; set; }
 
-        #region Expandable Cancellation Policy
+        #region Expandable CancellationPolicy
 
         /// <summary>
         /// (ID of a <see cref="File"/>) Your subscription cancellation policy, as shown to the
@@ -47,7 +46,7 @@ namespace Stripe
         [JsonProperty("cancellation_rebuttal")]
         public string CancellationRebuttal { get; set; }
 
-        #region Expandable Customer Communication
+        #region Expandable CustomerCommunication
 
         /// <summary>
         /// (ID of a <see cref="File"/>) Any communication with the customer that you feel is
@@ -89,7 +88,7 @@ namespace Stripe
         [JsonProperty("customer_purchase_ip")]
         public string CustomerPurchaseIp { get; set; }
 
-        #region Expandable Customer Signature
+        #region Expandable CustomerSignature
 
         /// <summary>
         /// (ID of a <see cref="File"/>) A relevant document or contract showing the customer’s
@@ -118,7 +117,7 @@ namespace Stripe
         internal ExpandableField<File> InternalCustomerSignature { get; set; }
         #endregion
 
-        #region Expandable Duplicate Charge Documentation
+        #region Expandable DuplicateChargeDocumentation
 
         /// <summary>
         /// (ID of a <see cref="File"/>) Documentation for the prior charge that can uniquely
@@ -189,7 +188,7 @@ namespace Stripe
         internal ExpandableField<File> InternalReceipt { get; set; }
         #endregion
 
-        #region Expandable Refund Policy
+        #region Expandable RefundPolicy
 
         /// <summary>
         /// (ID of a <see cref="File"/>) Your refund policy, as shown to the customer.
@@ -226,7 +225,7 @@ namespace Stripe
         [JsonProperty("service_date")]
         public string ServiceDate { get; set; }
 
-        #region Expandable Service Documentation
+        #region Expandable ServiceDocumentation
 
         /// <summary>
         /// (ID of a <see cref="File"/>) Documentation showing proof that a service was provided to
@@ -267,7 +266,7 @@ namespace Stripe
         [JsonProperty("shipping_date")]
         public string ShippingDate { get; set; }
 
-        #region Expandable Shipping Documentation
+        #region Expandable ShippingDocumentation
 
         /// <summary>
         /// (ID of a <see cref="File"/>) Documentation showing proof that a product was shipped to
@@ -304,7 +303,7 @@ namespace Stripe
         [JsonProperty("shipping_tracking_number")]
         public string ShippingTrackingNumber { get; set; }
 
-        #region Expandable Uncategorized File
+        #region Expandable UncategorizedFile
 
         /// <summary>
         /// (ID of a <see cref="File"/>) Any additional evidence or statements.

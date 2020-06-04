@@ -6,12 +6,6 @@ namespace Stripe
 
     public class SourceCreateOptions : BaseOptions, IHasMetadata
     {
-        /// <summary>
-        /// REQUIRED: The type of the source to create. One of type <see cref="SourceType"/>.
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
         [JsonProperty("alipay")]
         public string Alipay { get; set; }
 
@@ -94,6 +88,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("token")]
         public string Token { get; set; }
+
+        /// <summary>
+        /// REQUIRED: The type of the source to create. One of type <see cref="SourceType"/>.
+        /// </summary>
+        [JsonProperty("type")]
+        public string Type { get; set; }
 
         /// <summary>
         /// One of <see cref="SourceUsage" />. Whether this source should be reusable or not. Some source types may or may not be reusable by construction, while other may leave the option at creation. If an incompatible value is passed, an error will be returned.

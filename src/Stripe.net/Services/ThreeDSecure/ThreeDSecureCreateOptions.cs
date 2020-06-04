@@ -8,12 +8,6 @@ namespace Stripe
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("return_url")]
-        public string ReturnUrl { get; set; }
-
         /// <summary>
         /// If you pass a card id, you must also pass the customer id.
         /// </summary>
@@ -21,7 +15,13 @@ namespace Stripe
         [AllowNameMismatch]
         public string CardTokenOrCardId { get; set; }
 
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
         [JsonProperty("customer")]
         public string Customer { get; set; }
+
+        [JsonProperty("return_url")]
+        public string ReturnUrl { get; set; }
     }
 }

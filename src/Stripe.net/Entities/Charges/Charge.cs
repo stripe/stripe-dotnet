@@ -266,6 +266,13 @@ namespace Stripe
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
 
+        /// <summary>
+        /// Details about the level III data associated with the Charge.
+        /// This is a gated property and most integrations can not access it.
+        /// </summary>
+        [JsonProperty("level3")]
+        public ChargeLevel3 Level3 { get; set; }
+
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
@@ -322,13 +329,6 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<Order>))]
         internal ExpandableField<Order> InternalOrder { get; set; }
         #endregion
-
-        /// <summary>
-        /// Details about the level III data associated with the Charge.
-        /// This is a gated property and most integrations can not access it.
-        /// </summary>
-        [JsonProperty("level3")]
-        public ChargeLevel3 Level3 { get; set; }
 
         /// <summary>
         /// Details about whether the payment was accepted, and why.

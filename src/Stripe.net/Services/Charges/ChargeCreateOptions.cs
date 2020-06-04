@@ -13,12 +13,6 @@ namespace Stripe
         public long? Amount { get; set; }
 
         /// <summary>
-        /// 3-letter ISO code for currency.
-        /// </summary>
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        /// <summary>
         /// A fee in cents that will be applied to the charge and transferred to the application owner's Stripe account. To use an application fee, the request must be made on behalf of another account (using RequestOptions available on all service methods), using the Stripe-Account header, an OAuth key, or the destination parameter. For more information, see the application fees documentation.
         /// </summary>
         [JsonProperty("application_fee_amount")]
@@ -29,6 +23,18 @@ namespace Stripe
         /// </summary>
         [JsonProperty("capture")]
         public bool? Capture { get; set; }
+
+        /// <summary>
+        /// 3-letter ISO code for currency.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// The ID of an existing customer that will be charged in this request.
+        /// </summary>
+        [JsonProperty("customer")]
+        public string Customer { get; set; }
 
         /// <summary>
         /// An arbitrary string which you can attach to a charge object. It is displayed when in the web interface alongside the charge. Note that if you use Stripe to send automatic email receipts to your customers, your receipt emails will include the description of the charge(s) that they are describing.
@@ -52,23 +58,16 @@ namespace Stripe
         public ChargeLevel3Options Level3 { get; set; }
 
         /// <summary>
-        /// A string that identifies this transaction as part of a group. For details, see
-        /// <see href="https://stripe.com/docs/connect/charges-transfers#grouping-transactions">Grouping transactions</see>.
+        /// A set of key/value pairs that you can attach to a charge object. It can be useful for storing additional information about the customer in a structured format. It's often a good idea to store an email address in metadata for tracking later.
         /// </summary>
-        [JsonProperty("transfer_group")]
-        public string TransferGroup { get; set; }
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The Stripe account ID that these funds are intended for. Automatically set if you use the destination parameter. See the Connect documentation for details.
         /// </summary>
         [JsonProperty("on_behalf_of")]
         public string OnBehalfOf { get; set; }
-
-        /// <summary>
-        /// A set of key/value pairs that you can attach to a charge object. It can be useful for storing additional information about the customer in a structured format. It's often a good idea to store an email address in metadata for tracking later.
-        /// </summary>
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The email address to send this charge's receipt to. The receipt will not be sent until the charge is paid. If this charge is for a customer, the email address specified here will override the customer's email address. Receipts will not be sent for test mode charges. If receipt_email is specified for a charge in live mode, a receipt will be sent regardless of your email settings.
@@ -81,12 +80,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("shipping")]
         public ChargeShippingOptions Shipping { get; set; }
-
-        /// <summary>
-        /// The ID of an existing customer that will be charged in this request.
-        /// </summary>
-        [JsonProperty("customer")]
-        public string Customer { get; set; }
 
         /// <summary>
         /// A payment source to be charged. This can be the ID of a card (i.e., credit or debit
@@ -122,5 +115,12 @@ namespace Stripe
 
         [JsonProperty("transfer_data")]
         public ChargeTransferDataOptions TransferData { get; set; }
+
+        /// <summary>
+        /// A string that identifies this transaction as part of a group. For details, see
+        /// <see href="https://stripe.com/docs/connect/charges-transfers#grouping-transactions">Grouping transactions</see>.
+        /// </summary>
+        [JsonProperty("transfer_group")]
+        public string TransferGroup { get; set; }
     }
 }

@@ -118,8 +118,26 @@ namespace Stripe
         [JsonProperty("multibanco")]
         public SourceMultibanco Multibanco { get; set; }
 
+        /// <summary>
+        /// Information about the owner of the payment instrument that may be used or required by particular source types.
+        /// </summary>
+        [JsonProperty("owner")]
+        public SourceOwner Owner { get; set; }
+
         [JsonProperty("p24")]
         public SourceP24 P24 { get; set; }
+
+        /// <summary>
+        /// Information related to the receiver flow. Present if the source is a receiver (flow is receiver).
+        /// </summary>
+        [JsonProperty("receiver")]
+        public SourceReceiver Receiver { get; set; }
+
+        /// <summary>
+        /// Information related to the redirect flow. Present if the source is authenticated by a redirect (flow is redirect).
+        /// </summary>
+        [JsonProperty("redirect")]
+        public SourceRedirect Redirect { get; set; }
 
         [JsonProperty("sepa_credit_transfer")]
         public SourceSepaCreditTransfer SepaCreditTransfer { get; set; }
@@ -137,24 +155,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("source_order")]
         public SourceSourceOrder SourceOrder { get; set; }
-
-        /// <summary>
-        /// Information about the owner of the payment instrument that may be used or required by particular source types.
-        /// </summary>
-        [JsonProperty("owner")]
-        public SourceOwner Owner { get; set; }
-
-        /// <summary>
-        /// Information related to the receiver flow. Present if the source is a receiver (flow is receiver).
-        /// </summary>
-        [JsonProperty("receiver")]
-        public SourceReceiver Receiver { get; set; }
-
-        /// <summary>
-        /// Information related to the redirect flow. Present if the source is authenticated by a redirect (flow is redirect).
-        /// </summary>
-        [JsonProperty("redirect")]
-        public SourceRedirect Redirect { get; set; }
 
         /// <summary>
         /// Extra information about a source. This will appear on your customer’s statement every time you charge the source.

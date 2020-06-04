@@ -1,9 +1,7 @@
 namespace Stripe.Terminal
 {
-    using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class ConnectionTokenService : Service<ConnectionToken>,
         ICreatable<ConnectionToken, ConnectionTokenCreateOptions>
