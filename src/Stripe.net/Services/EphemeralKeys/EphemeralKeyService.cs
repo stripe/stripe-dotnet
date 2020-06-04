@@ -1,9 +1,7 @@
 namespace Stripe
 {
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class EphemeralKeyService : Service<EphemeralKey>,
         ICreatable<EphemeralKey, EphemeralKeyCreateOptions>,

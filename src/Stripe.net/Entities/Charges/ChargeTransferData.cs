@@ -8,7 +8,7 @@ namespace Stripe
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
-        #region Expandable Destination (Account)
+        #region Expandable Destination
         [JsonIgnore]
         public string DestinationId
         {

@@ -14,7 +14,7 @@ namespace Stripe
         [JsonProperty("amount_percent")]
         public decimal? AmountPercent { get; set; }
 
-        #region Expandable Destination (Account)
+        #region Expandable Destination
 
         /// <summary>
         /// The account where funds from the payment will be transferred to upon payment success.

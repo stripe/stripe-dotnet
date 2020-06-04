@@ -1,10 +1,8 @@
 namespace Stripe.Terminal
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class LocationService : Service<Location>,
         ICreatable<Location, LocationCreateOptions>,

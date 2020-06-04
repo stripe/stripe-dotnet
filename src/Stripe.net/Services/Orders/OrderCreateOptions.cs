@@ -6,16 +6,16 @@ namespace Stripe
     public class OrderCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// REQUIRED: Three-letter ISO currency code, in lowercase. Must be a supported currency.
-        /// </summary>
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        /// <summary>
         /// A coupon code that represents a discount to be applied to this order. Must be one-time duration and in tbe same currency as the order.
         /// </summary>
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
+
+        /// <summary>
+        /// REQUIRED: Three-letter ISO currency code, in lowercase. Must be a supported currency.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
 
         /// <summary>
         /// The ID of an existing customer to use for this order. If provided, the customer email and shipping address will be used to create the order. Subsequently, the customer will also be charged to pay the order. If email or shipping are also provided, they will override the values retrieved from the customer object.

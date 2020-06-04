@@ -1,10 +1,8 @@
 namespace Stripe.Terminal
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Stripe.Infrastructure;
 
     public class ReaderService : Service<Reader>,
         ICreatable<Reader, ReaderCreateOptions>,

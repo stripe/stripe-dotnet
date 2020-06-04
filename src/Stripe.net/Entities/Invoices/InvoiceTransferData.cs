@@ -12,7 +12,7 @@ namespace Stripe
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
-        #region Expandable Destination (Account)
+        #region Expandable Destination
 
         /// <summary>
         /// The ID of the account where funds from the payment will be transferred to upon payment

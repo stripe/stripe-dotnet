@@ -1,6 +1,5 @@
 namespace Stripe
 {
-    using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -13,7 +12,7 @@ namespace Stripe
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
-        #region Expandable Destination (Account)
+        #region Expandable Destination
 
         /// <summary>
         /// ID of the account (if any) the payment will be attributed to for tax reporting, and
