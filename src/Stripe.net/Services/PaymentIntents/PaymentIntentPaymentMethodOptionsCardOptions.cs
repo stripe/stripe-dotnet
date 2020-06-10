@@ -19,6 +19,13 @@ namespace Stripe
         public bool? Moto { get; set; }
 
         /// <summary>
+        /// Selected network to process this PaymentIntent on. Depends on the available networks of
+        /// the card attached to the PaymentIntent. Can be only set confirm-time.
+        /// </summary>
+        [JsonProperty("network")]
+        public string Network { get; set; }
+
+        /// <summary>
         /// Control when to request 3D Secure on this PaymentIntent.
         /// </summary>
         [JsonProperty("request_three_d_secure")]

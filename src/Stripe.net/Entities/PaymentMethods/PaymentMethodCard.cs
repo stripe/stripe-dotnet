@@ -79,6 +79,12 @@ namespace Stripe
         public string Last4 { get; set; }
 
         /// <summary>
+        /// Contains information about card networks that can be used to process the payment.
+        /// </summary>
+        [JsonProperty("networks")]
+        public PaymentMethodCardNetworks Networks { get; set; }
+
+        /// <summary>
         /// Contains details on how this Card maybe be used for 3D Secure authentication.
         /// </summary>
         [JsonProperty("three_d_secure_usage")]
