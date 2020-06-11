@@ -25,6 +25,12 @@ namespace Stripe
         public string Last4 { get; set; }
 
         /// <summary>
+        /// ID of the mandate used to make this payment.
+        /// </summary>
+        [JsonProperty("mandate")]
+        public string Mandate { get; set; }
+
+        /// <summary>
         /// Transit number of the bank account.
         /// </summary>
         [JsonProperty("transit_number")]
