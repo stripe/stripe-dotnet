@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.9.0 - 2020-06-10
+* [#2069](https://github.com/stripe/stripe-dotnet/pull/2069) Add support for Cartes Bancaires payments on `PaymentIntent` and `PaymentMethod`
+
 ## 37.8.0 - 2020-06-03
 * [#2065](https://github.com/stripe/stripe-dotnet/pull/2065) Add support for `TransferGroup` on Checkout `Session`
 
