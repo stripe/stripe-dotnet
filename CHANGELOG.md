@@ -1,5 +1,9 @@
 # Changelog
 
+## 37.10.0 - 2020-06-11
+* [#2072](https://github.com/stripe/stripe-dotnet/pull/2072) Add support for `Mandate` in `ChargePaymentMethodDetailsAcssDebit`
+* [#2073](https://github.com/stripe/stripe-dotnet/pull/2073) Add support for `Transaction` on Issuing `Dispute`
+
 ## 37.9.0 - 2020-06-10
 * [#2069](https://github.com/stripe/stripe-dotnet/pull/2069) Add support for Cartes Bancaires payments on `PaymentIntent` and `PaymentMethod`
 
