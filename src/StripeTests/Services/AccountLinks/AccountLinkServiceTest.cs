@@ -23,8 +23,8 @@ namespace StripeTests
             {
                 Account = "acct_123",
                 Collect = "eventually_due",
-                FailureUrl = "https://stripe.com/failure",
-                SuccessUrl = "https://stripe.com/success",
+                RefreshUrl = "https://stripe.com/refresh",
+                ReturnUrl = "https://stripe.com/return",
                 Type = "custom_account_verification",
             };
         }
