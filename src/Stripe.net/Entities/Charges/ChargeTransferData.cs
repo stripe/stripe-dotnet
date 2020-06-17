@@ -9,6 +9,7 @@ namespace Stripe
         public long? Amount { get; set; }
 
         #region Expandable Destination
+
         [JsonIgnore]
         public string DestinationId
         {
