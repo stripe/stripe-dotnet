@@ -6,12 +6,6 @@ namespace Stripe
     public class SubscriptionItemOptions : IHasId, INestedOptions, IHasMetadata
     {
         /// <summary>
-        /// SubscriptionItem to update. This parameter is only available on update.
-        /// </summary>
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        /// <summary>
         /// Delete all usage for a given subscription item. Only allowed when <c>deleted</c> is set
         /// to true and the current plan’s <c>usage_type</c> is metered.  This parameter is only
         /// available on update.
@@ -24,6 +18,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("deleted")]
         public bool? Deleted { get; set; }
+
+        /// <summary>
+        /// SubscriptionItem to update. This parameter is only available on update.
+        /// </summary>
+        [JsonProperty("id")]
+        public string Id { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to a charge object. It can be useful for
