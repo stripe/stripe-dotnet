@@ -28,6 +28,7 @@ install:
       $app = Start-Process -FilePath ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}\stripe-mock.exe" -ArgumentList "-strict-version-check" -NoNewWindow -PassThru
       Write-Host ("stripe-mock running, Id = $($app.Id)`n") -ForegroundColor Green
       $env:PATH += ";" + (Get-Item -Path ".\stripe-mock\stripe-mock_${env:STRIPE_MOCK_VERSION}").FullName
+  - dotnet tool install dotnet-format --version 4.1.131201 --tool-path tools
   - dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
 
 before_build:
@@ -54,6 +55,8 @@ test_script:
   - dotnet test src\StripeTests\StripeTests.csproj
 
 after_test:
+  - ps: Write-Host $("`n               RUNNING FORMAT CHECK               `n") -BackgroundColor DarkCyan
+  - .\tools\dotnet-format --check src/Stripe.net.sln
   - ps: Write-Host $("`n               RUNNING COVERAGE               `n") -BackgroundColor DarkCyan
   - dotnet test -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
   - ps: |

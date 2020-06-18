@@ -130,6 +130,14 @@ Run tests for a single target framework:
 dotnet test --framework netcoreapp2.1
 ```
 
+The library uses [`dotnet-format`][dotnet-format] for code formatting. Code
+must be formatted before PRs are submitted, otherwise CI will fail. Run the
+formatter with:
+
+```sh
+dotnet format src/Stripe.net.sln
+```
+
 For any requests, bug or comments, please [open an issue][issues] or [submit a
 pull request][pulls].
 
@@ -138,6 +146,7 @@ pull request][pulls].
 [api-keys]: https://dashboard.stripe.com/apikeys
 [connect-auth]: https://stripe.com/docs/connect/authentication#authentication-via-the-stripe-account-header
 [dotnet-core-cli-tools]: https://docs.microsoft.com/en-us/dotnet/core/tools/
+[dotnet-format]: https://github.com/dotnet/format
 [idempotency-keys]: https://stripe.com/docs/api/idempotent_requests?lang=dotnet
 [issues]: https://github.com/stripe/stripe-dotnet/issues/new
 [nuget-cli]: https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference
