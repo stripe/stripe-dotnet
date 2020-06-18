@@ -1,5 +1,9 @@
 # Changelog
 
+## 37.11.0 - 2020-06-18
+* [#2074](https://github.com/stripe/stripe-dotnet/pull/2074) Add support for `RefreshURL` and `ReturnURL` on `AccountLink`
+* [#2077](https://github.com/stripe/stripe-dotnet/pull/2077) Add support for `IssuingDisputeFundsReinstated` event type.
+
 ## 37.10.0 - 2020-06-11
 * [#2072](https://github.com/stripe/stripe-dotnet/pull/2072) Add support for `Mandate` in `ChargePaymentMethodDetailsAcssDebit`
 * [#2073](https://github.com/stripe/stripe-dotnet/pull/2073) Add support for `Transaction` on Issuing `Dispute`
