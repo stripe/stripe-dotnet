@@ -172,7 +172,7 @@ namespace Stripe
         public StripeList<IPaymentSource> Sources { get; set; }
 
         /// <summary>
-    /// The customer’s current subscriptions, if any.
+        /// The customer’s current subscriptions, if any.
         /// </summary>
         [JsonProperty("subscriptions")]
         public StripeList<Subscription> Subscriptions { get; set; }

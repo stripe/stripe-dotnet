@@ -54,12 +54,12 @@ namespace Stripe
         }
 #endif
 
-        public virtual Capability Update(string accountId,  string capabilityId, CapabilityUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Capability Update(string accountId, string capabilityId, CapabilityUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateNestedEntity(accountId, capabilityId, options, requestOptions);
         }
 
-        public virtual Task<Capability> UpdateAsync(string accountId,  string capabilityId, CapabilityUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Capability> UpdateAsync(string accountId, string capabilityId, CapabilityUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateNestedEntityAsync(accountId, capabilityId, options, requestOptions, cancellationToken);
         }

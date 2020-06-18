@@ -65,12 +65,12 @@ namespace Stripe
         }
 #endif
 
-        public virtual TransferReversal Update(string transferId,  string reversalId, TransferReversalUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual TransferReversal Update(string transferId, string reversalId, TransferReversalUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateNestedEntity(transferId, reversalId, options, requestOptions);
         }
 
-        public virtual Task<TransferReversal> UpdateAsync(string transferId,  string reversalId, TransferReversalUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<TransferReversal> UpdateAsync(string transferId, string reversalId, TransferReversalUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateNestedEntityAsync(transferId, reversalId, options, requestOptions, cancellationToken);
         }
