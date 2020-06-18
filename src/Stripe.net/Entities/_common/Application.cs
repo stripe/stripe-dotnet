@@ -12,5 +12,5 @@ namespace Stripe
 
         [JsonProperty("name")]
         public string Name { get; set; }
-     }
+    }
 }

@@ -23,4 +23,4 @@ namespace Stripe
         [JsonProperty("source_types")]
         public Dictionary<string, long> SourceTypes { get; set; }
     }
- }
+}

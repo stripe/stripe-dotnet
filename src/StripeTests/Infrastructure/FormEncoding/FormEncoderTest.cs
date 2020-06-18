@@ -425,12 +425,12 @@ namespace StripeTests
         {
             var options = new TestOptions
             {
-                    Dictionary = new Dictionary<string, object>
+                Dictionary = new Dictionary<string, object>
                     {
                         { "#", "1 2 3" },
                         { "bar&baz", "+foo?" },
                     },
-                    String = "[éàü]",
+                String = "[éàü]",
             };
             Assert.Equal(
                 "dictionary[%23]=1+2+3&dictionary[bar%26baz]=%2Bfoo%3F&string=[%C3%A9%C3%A0%C3%BC]",

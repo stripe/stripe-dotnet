@@ -11,4 +11,4 @@ namespace Stripe
         [JsonProperty("available")]
         public List<BalanceAmount> Available { get; set; }
     }
- }
+}
