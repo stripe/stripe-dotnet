@@ -417,6 +417,11 @@ namespace Stripe
         public const string IssuingDisputeCreated = "issuing_dispute.created";
 
         /// <summary>
+        /// Occurs whenever an issuing dispute's funds are reinstate.
+        /// </summary>
+        public const string IssuingDisputeFundsReinstated = "issuing_dispute.funds_reinstated";
+
+        /// <summary>
         /// Occurs whenever an issuing dispute is updated.
         /// </summary>
         public const string IssuingDisputeUpdated = "issuing_dispute.updated";
