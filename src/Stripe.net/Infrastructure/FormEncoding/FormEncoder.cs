@@ -75,10 +75,10 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <returns>The URL-encoded string.</returns>
         private static string UrlEncode(string value)
         {
+            // Don't use strict form encoding by changing the square bracket control
+            // characters back to their literals. This is fine by the server, and
+            // makes these parameter strings easier to read.
             return WebUtility.UrlEncode(value)
-                /* Don't use strict form encoding by changing the square bracket control
-                 * characters back to their literals. This is fine by the server, and
-                 * makes these parameter strings easier to read. */
                 .Replace("%5B", "[")
                 .Replace("%5D", "]");
         }
@@ -285,9 +285,9 @@ namespace Stripe.Infrastructure.FormEncoding
                 index += 1;
             }
 
-            /* Because application/x-www-form-urlencoded cannot represent an empty list, convention
-             * is to take the list parameter and just set it to an empty string. (E.g. A regular
-             * list might look like `a[0]=1&b[1]=2`. Emptying it would look like `a=`.) */
+            // Because application/x-www-form-urlencoded cannot represent an empty list, convention
+            // is to take the list parameter and just set it to an empty string. (E.g. A regular
+            // list might look like `a[0]=1&b[1]=2`. Emptying it would look like `a=`.)
             if (!flatParams.Any())
             {
                 flatParams.Add(new KeyValuePair<string, object>(keyPrefix, string.Empty));
