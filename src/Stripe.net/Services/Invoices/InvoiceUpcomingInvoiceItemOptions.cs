@@ -60,7 +60,7 @@ namespace Stripe
         public string Price { get; set; }
 
         /// <summary>
-        /// The ID of the price object.
+        /// Data used to generate a new price object inline.
         /// </summary>
         [JsonProperty("price_data")]
         public InvoiceItemPriceDataOptions PriceData { get; set; }
