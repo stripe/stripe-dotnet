@@ -1,5 +1,9 @@
 # Changelog
 
+## 37.12.0 - 2020-06-22
+* [#2083](https://github.com/stripe/stripe-dotnet/pull/2083) Add `SubscriptionStartDate` to the Upcoming Invoice API
+* [#2082](https://github.com/stripe/stripe-dotnet/pull/2082) Add support for `Price` on Upcoming Invoice API
+
 ## 37.11.0 - 2020-06-18
 * [#2074](https://github.com/stripe/stripe-dotnet/pull/2074) Add support for `RefreshURL` and `ReturnURL` on `AccountLink`
 * [#2077](https://github.com/stripe/stripe-dotnet/pull/2077) Add support for `IssuingDisputeFundsReinstated` event type.
