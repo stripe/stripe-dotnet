@@ -126,6 +126,13 @@ namespace Stripe
         public DateTime? SubscriptionProrationDate { get; set; }
 
         /// <summary>
+        /// Date a subscription is intended to start (can be future or past).
+        /// </summary>
+        [JsonProperty("subscription_start_date")]
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? SubscriptionStartDate { get; set; }
+
+        /// <summary>
         /// If provided, the invoice returned will preview updating or creating a subscription with
         /// that tax percent. If set, one of <c>subscription_items</c> or
         /// <c>subscription is required</c>.
