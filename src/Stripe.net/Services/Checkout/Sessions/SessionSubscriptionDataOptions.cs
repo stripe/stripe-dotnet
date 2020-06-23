@@ -55,7 +55,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Indicates if a plan’s <see cref="Plan.TrialPeriodDays"/> should be applied to the
-        /// subscription. Setting <c>TrialEnd</c> on <c>DubscriptionData</c> is preferred. Defaults
+        /// subscription. Setting <c>TrialEnd</c> on <c>SubscriptionData</c> is preferred. Defaults
         /// to <c>false</c>.
         /// </summary>
         [JsonProperty("trial_from_plan")]
