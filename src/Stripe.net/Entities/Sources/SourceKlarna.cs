@@ -73,6 +73,9 @@ namespace Stripe
         [JsonProperty("redirect_url")]
         public string RedirectUrl { get; set; }
 
+        [JsonProperty("shipping_delay")]
+        public long ShippingDelay { get; set; }
+
         [JsonProperty("shipping_first_name")]
         public string ShippingFirstName { get; set; }
 
