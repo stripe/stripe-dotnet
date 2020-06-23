@@ -44,6 +44,12 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        /// <summary>
+        /// The discounts applied to the line item.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<LineItemDiscount> Discounts { get; set; }
+
         #region Expandable Price
 
         /// <summary>
