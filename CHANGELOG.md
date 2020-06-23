@@ -1,5 +1,11 @@
 # Changelog
 
+## 37.13.0 - 2020-06-23
+* [#2086](https://github.com/stripe/stripe-dotnet/pull/2086) Add support for `Discounts` on `LineItem`
+* [#2087](https://github.com/stripe/stripe-dotnet/pull/2087) Add support for `ShippingDelay` on `Source` for Klarna
+* [#2088](https://github.com/stripe/stripe-dotnet/pull/2088) Add missing values in `FilePurpose`
+* [#2085](https://github.com/stripe/stripe-dotnet/pull/2085) Fixed typo in `SessionSubscriptionDataOptions`
+
 ## 37.12.0 - 2020-06-22
 * [#2083](https://github.com/stripe/stripe-dotnet/pull/2083) Add `SubscriptionStartDate` to the Upcoming Invoice API
 * [#2082](https://github.com/stripe/stripe-dotnet/pull/2082) Add support for `Price` on Upcoming Invoice API
