@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.14.0 - 2020-06-24
+* [#2090](https://github.com/stripe/stripe-dotnet/pull/2090) Add support for `invoice.paid` event
+
 ## 37.13.0 - 2020-06-23
 * [#2086](https://github.com/stripe/stripe-dotnet/pull/2086) Add support for `Discounts` on `LineItem`
 * [#2087](https://github.com/stripe/stripe-dotnet/pull/2087) Add support for `ShippingDelay` on `Source` for Klarna
