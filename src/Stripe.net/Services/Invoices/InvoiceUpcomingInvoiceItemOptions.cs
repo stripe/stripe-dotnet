@@ -34,7 +34,8 @@ namespace Stripe
         public bool? Discountable { get; set; }
 
         /// <summary>
-        /// Ids of the tax rates to apply to this invoice item.
+        /// The ID of the invoice item to update in preview. If not specified, a new invoice item
+        /// will be added to the preview of the upcoming invoice.
         /// </summary>
         [JsonProperty("invoiceitem")]
         [AllowNameMismatch]
