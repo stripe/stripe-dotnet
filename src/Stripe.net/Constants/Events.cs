@@ -322,6 +322,12 @@ namespace Stripe
         public const string InvoiceMarkedUncollectible = "invoice.marked_uncollectible";
 
         /// <summary>
+        /// Occurs whenever an invoice payment attempt succeeds or an invoice is marked as paid
+        /// out-of-band.
+        /// </summary>
+        public const string InvoicePaid = "invoice.paid";
+
+        /// <summary>
         /// Occurs whenever an invoice payment attempt requires further user action to complete.
         /// </summary>
         public const string InvoicePaymentActionRequired = "invoice.payment_action_required";
