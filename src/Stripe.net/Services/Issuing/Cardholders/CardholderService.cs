@@ -32,14 +32,14 @@ namespace Stripe.Issuing
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Cardholder Get(string cardholderId, CardholderGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Cardholder Get(string id, CardholderGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(cardholderId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Cardholder> GetAsync(string cardholderId, CardholderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Cardholder> GetAsync(string id, CardholderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(cardholderId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Cardholder> List(CardholderListOptions options = null, RequestOptions requestOptions = null)
@@ -64,14 +64,14 @@ namespace Stripe.Issuing
         }
 #endif
 
-        public virtual Cardholder Update(string cardholderId, CardholderUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Cardholder Update(string id, CardholderUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(cardholderId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Cardholder> UpdateAsync(string cardholderId, CardholderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Cardholder> UpdateAsync(string id, CardholderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(cardholderId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }
