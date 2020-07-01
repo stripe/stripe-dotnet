@@ -67,11 +67,9 @@ namespace Stripe
             return this.ListNestedEntitiesAutoPaging(parentId, options, requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<TaxId> ListAutoPagingAsync(string parentId, TaxIdListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListNestedEntitiesAutoPagingAsync(parentId, options, requestOptions, cancellationToken);
         }
-#endif
     }
 }

@@ -70,12 +70,10 @@ namespace Stripe
             return this.ListNestedEntitiesAutoPaging(parentId, options ?? new BankAccountListOptions(), requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<BankAccount> ListAutoPagingAsync(string parentId, BankAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListNestedEntitiesAutoPagingAsync(parentId, options ?? new BankAccountListOptions(), requestOptions, cancellationToken);
         }
-#endif
 
         public virtual BankAccount Update(string parentId, string id, BankAccountUpdateOptions options, RequestOptions requestOptions = null)
         {
