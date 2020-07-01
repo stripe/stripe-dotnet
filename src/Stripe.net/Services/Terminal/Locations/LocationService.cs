@@ -33,24 +33,24 @@ namespace Stripe.Terminal
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Location Delete(string locationId, LocationDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual Location Delete(string id, LocationDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(locationId, options, requestOptions);
+            return this.DeleteEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Location> DeleteAsync(string locationId, LocationDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Location> DeleteAsync(string id, LocationDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(locationId, options, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public virtual Location Get(string locationId, LocationGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Location Get(string id, LocationGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(locationId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Location> GetAsync(string locationId, LocationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Location> GetAsync(string id, LocationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(locationId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Location> List(LocationListOptions options = null, RequestOptions requestOptions = null)
@@ -75,14 +75,14 @@ namespace Stripe.Terminal
         }
 #endif
 
-        public virtual Location Update(string locationId, LocationUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Location Update(string id, LocationUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(locationId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Location> UpdateAsync(string locationId, LocationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Location> UpdateAsync(string id, LocationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(locationId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

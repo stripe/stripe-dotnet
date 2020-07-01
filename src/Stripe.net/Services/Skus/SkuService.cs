@@ -33,24 +33,24 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Sku Delete(string skuId, SkuDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual Sku Delete(string id, SkuDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(skuId, options, requestOptions);
+            return this.DeleteEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Sku> DeleteAsync(string skuId, SkuDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Sku> DeleteAsync(string id, SkuDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(skuId, options, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public virtual Sku Get(string skuId, SkuGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Sku Get(string id, SkuGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(skuId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Sku> GetAsync(string skuId, SkuGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Sku> GetAsync(string id, SkuGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(skuId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Sku> List(SkuListOptions options = null, RequestOptions requestOptions = null)
@@ -75,14 +75,14 @@ namespace Stripe
         }
 #endif
 
-        public virtual Sku Update(string skuId, SkuUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Sku Update(string id, SkuUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(skuId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Sku> UpdateAsync(string skuId, SkuUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Sku> UpdateAsync(string id, SkuUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(skuId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }
