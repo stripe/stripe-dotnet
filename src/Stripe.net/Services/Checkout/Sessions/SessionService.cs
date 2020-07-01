@@ -57,12 +57,10 @@ namespace Stripe.Checkout
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<Session> ListAutoPagingAsync(SessionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
-#endif
 
         public virtual StripeList<LineItem> ListLineItems(string id, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
@@ -79,11 +77,9 @@ namespace Stripe.Checkout
             return this.ListRequestAutoPaging<LineItem>($"{this.InstanceUrl(id)}/line_items", options, requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<LineItem>($"{this.InstanceUrl(id)}/line_items", options, requestOptions, cancellationToken);
         }
-#endif
     }
 }
