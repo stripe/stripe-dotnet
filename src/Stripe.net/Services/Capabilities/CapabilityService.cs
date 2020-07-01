@@ -21,46 +21,46 @@ namespace Stripe
 
         public override string BasePath => "/v1/accounts/{PARENT_ID}/capabilities";
 
-        public virtual Capability Get(string accountId, string capabilityId, CapabilityGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Capability Get(string parentId, string id, CapabilityGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(accountId, capabilityId, options, requestOptions);
+            return this.GetNestedEntity(parentId, id, options, requestOptions);
         }
 
-        public virtual Task<Capability> GetAsync(string accountId, string capabilityId, CapabilityGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Capability> GetAsync(string parentId, string id, CapabilityGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetNestedEntityAsync(accountId, capabilityId, options, requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<Capability> List(string accountId, CapabilityListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Capability> List(string parentId, CapabilityListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntities(accountId, options, requestOptions);
+            return this.ListNestedEntities(parentId, options, requestOptions);
         }
 
-        public virtual Task<StripeList<Capability>> ListAsync(string accountId, CapabilityListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Capability>> ListAsync(string parentId, CapabilityListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAsync(accountId, options, requestOptions, cancellationToken);
+            return this.ListNestedEntitiesAsync(parentId, options, requestOptions, cancellationToken);
         }
 
-        public virtual IEnumerable<Capability> ListAutoPaging(string accountId, CapabilityListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Capability> ListAutoPaging(string parentId, CapabilityListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntitiesAutoPaging(accountId, options, requestOptions);
+            return this.ListNestedEntitiesAutoPaging(parentId, options, requestOptions);
         }
 
 #if !NET45
-        public virtual IAsyncEnumerable<Capability> ListAutoPagingAsync(string accountId, CapabilityListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Capability> ListAutoPagingAsync(string parentId, CapabilityListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAutoPagingAsync(accountId, options, requestOptions, cancellationToken);
+            return this.ListNestedEntitiesAutoPagingAsync(parentId, options, requestOptions, cancellationToken);
         }
 #endif
 
-        public virtual Capability Update(string accountId, string capabilityId, CapabilityUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Capability Update(string parentId, string id, CapabilityUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateNestedEntity(accountId, capabilityId, options, requestOptions);
+            return this.UpdateNestedEntity(parentId, id, options, requestOptions);
         }
 
-        public virtual Task<Capability> UpdateAsync(string accountId, string capabilityId, CapabilityUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Capability> UpdateAsync(string parentId, string id, CapabilityUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateNestedEntityAsync(accountId, capabilityId, options, requestOptions, cancellationToken);
+            return this.UpdateNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
         }
     }
 }
