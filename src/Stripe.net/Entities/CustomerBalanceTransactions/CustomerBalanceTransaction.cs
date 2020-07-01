@@ -33,7 +33,7 @@ namespace Stripe
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
-        #region Expandable Credit Note
+        #region Expandable CreditNote
 
         /// <summary>
         /// ID of the credit note associated with that customer balance transaction.
