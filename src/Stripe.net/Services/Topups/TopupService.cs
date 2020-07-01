@@ -23,14 +23,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/topups";
 
-        public virtual Topup Cancel(string topupId, RequestOptions requestOptions = null)
+        public virtual Topup Cancel(string id, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(topupId)}/cancel", null, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", null, requestOptions);
         }
 
-        public virtual Task<Topup> CancelAsync(string topupId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Topup> CancelAsync(string id, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(topupId)}/cancel", null, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", null, requestOptions, cancellationToken);
         }
 
         public virtual Topup Create(TopupCreateOptions options, RequestOptions requestOptions = null)
@@ -43,14 +43,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Topup Get(string topupId, TopupGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Topup Get(string id, TopupGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(topupId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Topup> GetAsync(string topupId, TopupGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Topup> GetAsync(string id, TopupGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(topupId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Topup> List(TopupListOptions options = null, RequestOptions requestOptions = null)
@@ -75,14 +75,14 @@ namespace Stripe
         }
 #endif
 
-        public virtual Topup Update(string topupId, TopupUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Topup Update(string id, TopupUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(topupId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Topup> UpdateAsync(string topupId, TopupUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Topup> UpdateAsync(string id, TopupUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(topupId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

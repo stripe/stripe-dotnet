@@ -33,14 +33,14 @@ namespace Stripe
             return this.CreateNestedEntityAsync(applicationFeeId, options, requestOptions, cancellationToken);
         }
 
-        public virtual ApplicationFeeRefund Get(string applicationFeeId, string refundId, ApplicationFeeRefundGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual ApplicationFeeRefund Get(string applicationFeeId, string id, ApplicationFeeRefundGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(applicationFeeId, refundId, options, requestOptions);
+            return this.GetNestedEntity(applicationFeeId, id, options, requestOptions);
         }
 
-        public virtual Task<ApplicationFeeRefund> GetAsync(string applicationFeeId, string refundId, ApplicationFeeRefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ApplicationFeeRefund> GetAsync(string applicationFeeId, string id, ApplicationFeeRefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetNestedEntityAsync(applicationFeeId, refundId, options, requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(applicationFeeId, id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ApplicationFeeRefund> List(string applicationFeeId, ApplicationFeeRefundListOptions options = null, RequestOptions requestOptions = null)
@@ -65,14 +65,14 @@ namespace Stripe
         }
 #endif
 
-        public virtual ApplicationFeeRefund Update(string applicationFeeId, string refundId, ApplicationFeeRefundUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual ApplicationFeeRefund Update(string applicationFeeId, string id, ApplicationFeeRefundUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateNestedEntity(applicationFeeId, refundId, options, requestOptions);
+            return this.UpdateNestedEntity(applicationFeeId, id, options, requestOptions);
         }
 
-        public virtual Task<ApplicationFeeRefund> UpdateAsync(string applicationFeeId, string refundId, ApplicationFeeRefundUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ApplicationFeeRefund> UpdateAsync(string applicationFeeId, string id, ApplicationFeeRefundUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateNestedEntityAsync(applicationFeeId, refundId, options, requestOptions, cancellationToken);
+            return this.UpdateNestedEntityAsync(applicationFeeId, id, options, requestOptions, cancellationToken);
         }
     }
 }
