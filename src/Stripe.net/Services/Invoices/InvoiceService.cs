@@ -34,34 +34,34 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice Delete(string invoiceId, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice Delete(string id, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(invoiceId, options, requestOptions);
+            return this.DeleteEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Invoice> DeleteAsync(string invoiceId, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> DeleteAsync(string id, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(invoiceId, options, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice FinalizeInvoice(string invoiceId, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice FinalizeInvoice(string id, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(invoiceId)}/finalize", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/finalize", options, requestOptions);
         }
 
-        public virtual Task<Invoice> FinalizeInvoiceAsync(string invoiceId, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> FinalizeInvoiceAsync(string id, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(invoiceId)}/finalize", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/finalize", options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice Get(string invoiceId, InvoiceGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice Get(string id, InvoiceGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(invoiceId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Invoice> GetAsync(string invoiceId, InvoiceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> GetAsync(string id, InvoiceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(invoiceId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Invoice> List(InvoiceListOptions options = null, RequestOptions requestOptions = null)
@@ -86,25 +86,25 @@ namespace Stripe
         }
 #endif
 
-        public virtual StripeList<InvoiceLineItem> ListLineItems(string invoiceId, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<InvoiceLineItem> ListLineItems(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(invoiceId)}/lines", options, requestOptions);
+            return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/lines", options, requestOptions);
         }
 
-        public virtual Task<StripeList<InvoiceLineItem>> ListLineItemsAsync(string invoiceId, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<InvoiceLineItem>> ListLineItemsAsync(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(invoiceId)}/lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/lines", options, requestOptions, cancellationToken);
         }
 
-        public virtual IEnumerable<InvoiceLineItem> ListLineItemsAutoPaging(string invoiceId, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<InvoiceLineItem> ListLineItemsAutoPaging(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl(invoiceId)}/lines", options, requestOptions);
+            return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl(id)}/lines", options, requestOptions);
         }
 
 #if !NET45
-        public virtual IAsyncEnumerable<InvoiceLineItem> ListLineItemsAutoPagingAsync(string invoiceId, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<InvoiceLineItem> ListLineItemsAutoPagingAsync(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"{this.InstanceUrl(invoiceId)}/lines", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"{this.InstanceUrl(id)}/lines", options, requestOptions, cancellationToken);
         }
 #endif
 
@@ -130,34 +130,34 @@ namespace Stripe
         }
 #endif
 
-        public virtual Invoice MarkUncollectible(string invoiceId, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice MarkUncollectible(string id, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(invoiceId)}/mark_uncollectible", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/mark_uncollectible", options, requestOptions);
         }
 
-        public virtual Task<Invoice> MarkUncollectibleAsync(string invoiceId, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> MarkUncollectibleAsync(string id, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(invoiceId)}/mark_uncollectible", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/mark_uncollectible", options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice Pay(string invoiceId, InvoicePayOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice Pay(string id, InvoicePayOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(invoiceId)}/pay", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/pay", options, requestOptions);
         }
 
-        public virtual Task<Invoice> PayAsync(string invoiceId, InvoicePayOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> PayAsync(string id, InvoicePayOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(invoiceId)}/pay", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/pay", options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice SendInvoice(string invoiceId, InvoiceSendOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice SendInvoice(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(invoiceId)}/send", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/send", options, requestOptions);
         }
 
-        public virtual Task<Invoice> SendInvoiceAsync(string invoiceId, InvoiceSendOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> SendInvoiceAsync(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(invoiceId)}/send", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/send", options, requestOptions, cancellationToken);
         }
 
         public virtual Invoice Upcoming(UpcomingInvoiceOptions options, RequestOptions requestOptions = null)
@@ -170,24 +170,24 @@ namespace Stripe
             return this.RequestAsync(HttpMethod.Get, $"{this.InstanceUrl("upcoming")}", options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice Update(string invoiceId, InvoiceUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Invoice Update(string id, InvoiceUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(invoiceId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Invoice> UpdateAsync(string invoiceId, InvoiceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> UpdateAsync(string id, InvoiceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(invoiceId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice VoidInvoice(string invoiceId, InvoiceVoidOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice VoidInvoice(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(invoiceId)}/void", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/void", options, requestOptions);
         }
 
-        public virtual Task<Invoice> VoidInvoiceAsync(string invoiceId, InvoiceVoidOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> VoidInvoiceAsync(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(invoiceId)}/void", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/void", options, requestOptions, cancellationToken);
         }
     }
 }
