@@ -75,7 +75,6 @@ namespace StripeTests
             Assert.Equal("application_fee", applicationFee.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -83,6 +82,5 @@ namespace StripeTests
             Assert.NotNull(applicationFee);
             Assert.Equal("application_fee", applicationFee.Object);
         }
-#endif
     }
 }

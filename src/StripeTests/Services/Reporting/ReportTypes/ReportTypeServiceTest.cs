@@ -65,13 +65,11 @@ namespace StripeTests.Reporting
             Assert.NotNull(reportType);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
             var reportType = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
             Assert.NotNull(reportType);
         }
-#endif
     }
 }
