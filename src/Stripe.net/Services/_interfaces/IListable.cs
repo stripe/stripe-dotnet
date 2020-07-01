@@ -14,8 +14,6 @@ namespace Stripe
 
         IEnumerable<TEntity> ListAutoPaging(TOptions listOptions = null, RequestOptions requestOptions = null);
 
-#if !NET45
         IAsyncEnumerable<TEntity> ListAutoPagingAsync(TOptions listOptions = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
-#endif
     }
 }

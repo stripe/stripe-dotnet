@@ -141,7 +141,6 @@ namespace StripeTests
             Assert.Equal("subscription_schedule", subscription.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -149,7 +148,6 @@ namespace StripeTests
             Assert.NotNull(subscription);
             Assert.Equal("subscription_schedule", subscription.Object);
         }
-#endif
 
         [Fact]
         public void Release()

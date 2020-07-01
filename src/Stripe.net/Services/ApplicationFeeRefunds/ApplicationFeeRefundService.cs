@@ -58,12 +58,10 @@ namespace Stripe
             return this.ListNestedEntitiesAutoPaging(applicationFeeId, options, requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<ApplicationFeeRefund> ListAutoPagingAsync(string applicationFeeId, ApplicationFeeRefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListNestedEntitiesAutoPagingAsync(applicationFeeId, options, requestOptions, cancellationToken);
         }
-#endif
 
         public virtual ApplicationFeeRefund Update(string applicationFeeId, string id, ApplicationFeeRefundUpdateOptions options, RequestOptions requestOptions = null)
         {

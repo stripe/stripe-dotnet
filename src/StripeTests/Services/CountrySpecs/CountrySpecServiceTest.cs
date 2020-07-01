@@ -75,7 +75,6 @@ namespace StripeTests
             Assert.Equal("country_spec", countrySpec.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -83,6 +82,5 @@ namespace StripeTests
             Assert.NotNull(countrySpec);
             Assert.Equal("country_spec", countrySpec.Object);
         }
-#endif
     }
 }

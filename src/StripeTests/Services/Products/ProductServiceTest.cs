@@ -138,7 +138,6 @@ namespace StripeTests
             Assert.Equal("product", product.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -146,7 +145,6 @@ namespace StripeTests
             Assert.NotNull(product);
             Assert.Equal("product", product.Object);
         }
-#endif
 
         [Fact]
         public void Update()

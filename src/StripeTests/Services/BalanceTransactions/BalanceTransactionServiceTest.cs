@@ -75,7 +75,6 @@ namespace StripeTests
             Assert.Equal("balance_transaction", balanceTransaction.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -83,6 +82,5 @@ namespace StripeTests
             Assert.NotNull(balanceTransaction);
             Assert.Equal("balance_transaction", balanceTransaction.Object);
         }
-#endif
     }
 }
