@@ -228,19 +228,35 @@ namespace Stripe
                 { "stripe_net_target_framework", StripeNetTargetFramework },
             };
 
-            // The following values are in a try/catch block on the off chance that the
+            // The following values are in try/catch blocks on the off chance that the
             // RuntimeInformation methods fail in an unexpected way. This should ~never happen, but
             // if it does it should not prevent users from sending requests.
             // See https://github.com/stripe/stripe-dotnet/issues/1986 for context.
             try
             {
                 values.Add("lang_version", RuntimeInformation.GetRuntimeVersion());
-                values.Add("os_version", RuntimeInformation.GetOSVersion());
             }
             catch (Exception)
             {
                 values.Add("lang_version", "(unknown)");
+            }
+
+            try
+            {
+                values.Add("os_version", RuntimeInformation.GetOSVersion());
+            }
+            catch (Exception)
+            {
                 values.Add("os_version", "(unknown)");
+            }
+
+            try
+            {
+                values.Add("newtonsoft_json_version", RuntimeInformation.GetNewtonsoftJsonVersion());
+            }
+            catch (Exception)
+            {
+                values.Add("newtonsoft_json_version", "(unknown)");
             }
 
             if (this.appInfo != null)
