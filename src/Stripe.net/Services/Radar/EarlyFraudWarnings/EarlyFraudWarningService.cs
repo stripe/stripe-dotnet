@@ -20,14 +20,14 @@ namespace Stripe.Radar
 
         public override string BasePath => "/v1/radar/early_fraud_warnings";
 
-        public virtual EarlyFraudWarning Get(string earlyFraudWarningId, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual EarlyFraudWarning Get(string id, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(earlyFraudWarningId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<EarlyFraudWarning> GetAsync(string earlyFraudWarningId, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<EarlyFraudWarning> GetAsync(string id, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(earlyFraudWarningId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<EarlyFraudWarning> List(EarlyFraudWarningListOptions options = null, RequestOptions requestOptions = null)
