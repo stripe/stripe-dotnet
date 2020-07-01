@@ -128,7 +128,6 @@ namespace StripeTests.Radar
             Assert.Equal("radar.value_list", valueList.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -136,7 +135,6 @@ namespace StripeTests.Radar
             Assert.NotNull(valueList);
             Assert.Equal("radar.value_list", valueList.Object);
         }
-#endif
 
         [Fact]
         public void Update()

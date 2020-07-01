@@ -119,7 +119,6 @@ namespace StripeTests.Terminal
             Assert.Equal("terminal.location", location.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -127,7 +126,6 @@ namespace StripeTests.Terminal
             Assert.NotNull(location);
             Assert.Equal("terminal.location", location.Object);
         }
-#endif
 
         [Fact]
         public void Update()

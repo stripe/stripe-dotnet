@@ -116,7 +116,6 @@ namespace StripeTests.Issuing
             Assert.Equal("issuing.card", card.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -124,7 +123,6 @@ namespace StripeTests.Issuing
             Assert.NotNull(card);
             Assert.Equal("issuing.card", card.Object);
         }
-#endif
 
         [Fact]
         public void Update()
