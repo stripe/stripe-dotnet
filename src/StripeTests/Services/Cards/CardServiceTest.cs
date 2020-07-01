@@ -123,14 +123,12 @@ namespace StripeTests
             Assert.NotNull(card);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
             var card = await this.service.ListAutoPagingAsync(CustomerId, this.listOptions).FirstAsync();
             Assert.NotNull(card);
         }
-#endif
 
         [Fact]
         public void Update()

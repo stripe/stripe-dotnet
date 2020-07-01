@@ -58,12 +58,10 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<CreditNote> ListAutoPagingAsync(CreditNoteListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
-#endif
 
         public virtual StripeList<CreditNoteLineItem> ListLineItems(string creditnoteId, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
@@ -80,12 +78,10 @@ namespace Stripe
             return this.ListRequestAutoPaging<CreditNoteLineItem>($"{this.InstanceUrl(creditnoteId)}/lines", options, requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<CreditNoteLineItem> ListLineItemsAutoPagingAsync(string creditnoteId, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<CreditNoteLineItem>($"{this.InstanceUrl(creditnoteId)}/lines", options, requestOptions, cancellationToken);
         }
-#endif
 
         public virtual StripeList<CreditNoteLineItem> ListPreviewLineItems(CreditNoteListPreviewLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
@@ -102,12 +98,10 @@ namespace Stripe
             return this.ListRequestAutoPaging<CreditNoteLineItem>($"{this.InstanceUrl("preview")}/lines", options, requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<CreditNoteLineItem> ListPreviewLineItemsAutoPagingAsync(CreditNoteListPreviewLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<CreditNoteLineItem>($"{this.InstanceUrl("preview")}/lines", options, requestOptions, cancellationToken);
         }
-#endif
 
         public virtual CreditNote Preview(CreditNotePreviewOptions options, RequestOptions requestOptions = null)
         {

@@ -1,4 +1,3 @@
-#if !NET45
 namespace Stripe.Infrastructure
 {
     using System;
@@ -73,4 +72,3 @@ namespace Stripe.Infrastructure
         }
     }
 }
-#endif

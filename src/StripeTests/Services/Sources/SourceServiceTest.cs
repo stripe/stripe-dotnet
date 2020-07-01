@@ -214,14 +214,12 @@ namespace StripeTests
             Assert.NotNull(source);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
             var source = await this.service.ListAutoPagingAsync(CustomerId, this.listOptions).FirstAsync();
             Assert.NotNull(source);
         }
-#endif
 
         [Fact]
         public void Update()
