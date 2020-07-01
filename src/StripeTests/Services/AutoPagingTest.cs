@@ -287,7 +287,6 @@ namespace StripeTests
                     ItExpr.IsAny<CancellationToken>());
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -635,7 +634,6 @@ namespace StripeTests
                         m.RequestUri.Query == "?limit=2&starting_after=pm_124"),
                     ItExpr.IsAny<CancellationToken>());
         }
-#endif
 
         public class PageableModel : StripeEntity<PageableModel>, IHasId
         {
@@ -657,12 +655,10 @@ namespace StripeTests
                 return this.ListEntitiesAutoPaging(options, requestOptions);
             }
 
-#if !NET45
             public IAsyncEnumerable<PageableModel> ListAutoPagingAsync(ListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
             {
                 return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
             }
-#endif
         }
     }
 }

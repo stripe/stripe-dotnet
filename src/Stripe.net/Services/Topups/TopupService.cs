@@ -68,12 +68,10 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<Topup> ListAutoPagingAsync(TopupListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
-#endif
 
         public virtual Topup Update(string id, TopupUpdateOptions options, RequestOptions requestOptions = null)
         {

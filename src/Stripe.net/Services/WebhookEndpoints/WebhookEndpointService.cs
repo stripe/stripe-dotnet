@@ -68,12 +68,10 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<WebhookEndpoint> ListAutoPagingAsync(WebhookEndpointListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
-#endif
 
         public virtual WebhookEndpoint Update(string id, WebhookEndpointUpdateOptions options, RequestOptions requestOptions = null)
         {
