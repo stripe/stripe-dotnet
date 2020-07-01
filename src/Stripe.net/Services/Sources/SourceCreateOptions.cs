@@ -60,16 +60,16 @@ namespace Stripe
         public SourceOwnerOptions Owner { get; set; }
 
         /// <summary>
-        /// <para>Parameters required for the redirect flow. Required if the source is authenticated by a redirect (flow is redirect).</para>
-        /// </summary>
-        [JsonProperty("redirect")]
-        public SourceRedirectOptions Redirect { get; set; }
-
-        /// <summary>
         /// Optional parameters for the receiver flow. Can be set only if the source is a receiver.
         /// </summary>
         [JsonProperty("receiver")]
         public SourceReceiverOptions Receiver { get; set; }
+
+        /// <summary>
+        /// <para>Parameters required for the redirect flow. Required if the source is authenticated by a redirect (flow is redirect).</para>
+        /// </summary>
+        [JsonProperty("redirect")]
+        public SourceRedirectOptions Redirect { get; set; }
 
         /// <summary>
         /// Information about the items and shipping associated with the source.

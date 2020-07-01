@@ -30,6 +30,15 @@ namespace Stripe
         public bool? DirectorsProvided { get; set; }
 
         /// <summary>
+        /// Whether the company’s executives have been provided.
+        /// Set this Boolean to true after creating all the company’s
+        /// executives with the Persons API for accounts with a
+        /// <c>relationship.executive</c> requirement.
+        /// </summary>
+        [JsonProperty("executives_provided")]
+        public bool? ExecutivesProvided { get; set; }
+
+        /// <summary>
         /// The company’s legal name.
         /// </summary>
         [JsonProperty("name")]
@@ -59,6 +68,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("phone")]
         public string Phone { get; set; }
+
+        /// <summary>
+        /// The category identifying the legal structure of the company or legal entity.
+        /// </summary>
+        [JsonProperty("structure")]
+        public string Structure { get; set; }
 
         /// <summary>
         /// The business ID number of the company, as appropriate for the company’s country.
