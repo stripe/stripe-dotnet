@@ -107,12 +107,10 @@ namespace StripeTests
                 return this.ListEntitiesAutoPaging(options, requestOptions);
             }
 
-#if !NET45
             public virtual IAsyncEnumerable<TestEntity> ListAutoPagingAsync(ListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
             {
                 return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
             }
-#endif
         }
     }
 }

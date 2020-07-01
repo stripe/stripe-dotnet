@@ -5,9 +5,7 @@ namespace Stripe
     using System.Net;
     using System.Net.Http;
     using System.Reflection;
-#if !NET45
     using System.Runtime.CompilerServices;
-#endif
     using System.Threading;
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
@@ -165,7 +163,6 @@ namespace Stripe
                 requestOptions);
         }
 
-#if !NET45
         protected IAsyncEnumerable<TEntityReturned> ListEntitiesAutoPagingAsync(
             ListOptions options,
             RequestOptions requestOptions,
@@ -177,7 +174,6 @@ namespace Stripe
                 requestOptions,
                 cancellationToken);
         }
-#endif
 
         protected TEntityReturned UpdateEntity(
             string id,
@@ -261,7 +257,6 @@ namespace Stripe
                 cancellationToken).ConfigureAwait(false);
         }
 
-#if !NET45
         protected IEnumerable<T> ListRequestAutoPaging<T>(
             string url,
             ListOptions options,
@@ -345,74 +340,6 @@ namespace Stripe
                     cancellationToken);
             }
         }
-#else
-        protected IEnumerable<T> ListRequestAutoPaging<T>(
-            string url,
-            ListOptions options,
-            RequestOptions requestOptions)
-            where T : IStripeEntity
-        {
-            var page = this.Request<StripeList<T>>(
-                HttpMethod.Get,
-                url,
-                options,
-                requestOptions);
-
-            options = options ?? new ListOptions();
-            bool iterateBackward = false;
-
-            // Backward iterating activates if we have an `EndingBefore`
-            // constraint and not a `StartingAfter` constraint
-            if (!string.IsNullOrEmpty(options.EndingBefore) && string.IsNullOrEmpty(options.StartingAfter))
-            {
-                iterateBackward = true;
-            }
-
-            while (true)
-            {
-                if (iterateBackward)
-                {
-                    page.Reverse();
-                }
-
-                string itemId = null;
-                foreach (var item in page)
-                {
-                    // Elements in `StripeList` instances are decoded by `StripeObjectConverter`,
-                    // which returns `null` for objects it doesn't know how to decode.
-                    // When auto-paginating, we simply ignore these null elements but still return
-                    // other elements.
-                    if (item == null)
-                    {
-                        continue;
-                    }
-
-                    itemId = ((IHasId)item).Id;
-                    yield return item;
-                }
-
-                if (!page.HasMore || string.IsNullOrEmpty(itemId))
-                {
-                    break;
-                }
-
-                if (iterateBackward)
-                {
-                    options.EndingBefore = itemId;
-                }
-                else
-                {
-                    options.StartingAfter = itemId;
-                }
-
-                page = this.Request<StripeList<T>>(
-                    HttpMethod.Get,
-                    url,
-                    options,
-                    requestOptions);
-            }
-        }
-#endif
 
         protected RequestOptions SetupRequestOptions(RequestOptions requestOptions)
         {

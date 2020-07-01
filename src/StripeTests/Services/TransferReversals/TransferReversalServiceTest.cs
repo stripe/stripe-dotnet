@@ -110,7 +110,6 @@ namespace StripeTests
             Assert.Equal("transfer_reversal", transferReversal.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -118,7 +117,6 @@ namespace StripeTests
             Assert.NotNull(transferReversal);
             Assert.Equal("transfer_reversal", transferReversal.Object);
         }
-#endif
 
         [Fact]
         public void Update()

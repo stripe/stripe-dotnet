@@ -136,7 +136,6 @@ namespace StripeTests
             Assert.Equal("order", order.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -144,7 +143,6 @@ namespace StripeTests
             Assert.NotNull(order);
             Assert.Equal("order", order.Object);
         }
-#endif
 
         [Fact]
         public void Pay()

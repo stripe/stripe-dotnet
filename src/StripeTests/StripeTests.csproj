@@ -2,7 +2,7 @@
   <Import Project="..\..\netfx.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;netcoreapp2.0;net461;net45</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;netcoreapp2.0;net461</TargetFrameworks>
     <AssemblyName>StripeTests</AssemblyName>
     <LangVersion>8</LangVersion>
     <PackageId>StripeTests</PackageId>
@@ -37,10 +37,6 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
     <PackageReference Include="System.Linq.Async" Version="4.0.0" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 
