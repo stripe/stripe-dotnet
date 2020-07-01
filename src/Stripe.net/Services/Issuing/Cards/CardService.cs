@@ -32,14 +32,14 @@ namespace Stripe.Issuing
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Card Get(string cardId, CardGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Card Get(string id, CardGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(cardId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Card> GetAsync(string cardId, CardGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Card> GetAsync(string id, CardGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(cardId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Card> List(CardListOptions options = null, RequestOptions requestOptions = null)
@@ -64,14 +64,14 @@ namespace Stripe.Issuing
         }
 #endif
 
-        public virtual Card Update(string cardId, CardUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Card Update(string id, CardUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(cardId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Card> UpdateAsync(string cardId, CardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Card> UpdateAsync(string id, CardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(cardId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }
