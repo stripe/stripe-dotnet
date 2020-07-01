@@ -68,12 +68,10 @@ namespace Stripe
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<SubscriptionSchedule> ListAutoPagingAsync(SubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
-#endif
 
         public virtual SubscriptionSchedule Release(string id, SubscriptionScheduleReleaseOptions options = null, RequestOptions requestOptions = null)
         {

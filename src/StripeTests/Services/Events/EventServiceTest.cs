@@ -75,7 +75,6 @@ namespace StripeTests
             Assert.Equal("event", evt.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -83,6 +82,5 @@ namespace StripeTests
             Assert.NotNull(evt);
             Assert.Equal("event", evt.Object);
         }
-#endif
     }
 }

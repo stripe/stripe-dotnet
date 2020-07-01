@@ -56,11 +56,9 @@ namespace Stripe.Reporting
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<ReportRun> ListAutoPagingAsync(ReportRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
-#endif
     }
 }

@@ -81,7 +81,6 @@ namespace StripeTests
             Assert.Equal("capability", capabilitie.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -89,7 +88,6 @@ namespace StripeTests
             Assert.NotNull(capabilitie);
             Assert.Equal("capability", capabilitie.Object);
         }
-#endif
 
         [Fact]
         public void Update()
