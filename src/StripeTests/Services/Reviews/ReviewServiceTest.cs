@@ -97,7 +97,6 @@ namespace StripeTests
             Assert.Equal("review", review.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -105,6 +104,5 @@ namespace StripeTests
             Assert.NotNull(review);
             Assert.Equal("review", review.Object);
         }
-#endif
     }
 }
