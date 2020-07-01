@@ -23,14 +23,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/charges";
 
-        public virtual Charge Capture(string chargeId, ChargeCaptureOptions options = null, RequestOptions requestOptions = null)
+        public virtual Charge Capture(string id, ChargeCaptureOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(chargeId)}/capture", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/capture", options, requestOptions);
         }
 
-        public virtual Task<Charge> CaptureAsync(string chargeId, ChargeCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Charge> CaptureAsync(string id, ChargeCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(chargeId)}/capture", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/capture", options, requestOptions, cancellationToken);
         }
 
         public virtual Charge Create(ChargeCreateOptions options, RequestOptions requestOptions = null)
@@ -43,14 +43,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Charge Get(string chargeId, ChargeGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Charge Get(string id, ChargeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(chargeId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Charge> GetAsync(string chargeId, ChargeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Charge> GetAsync(string id, ChargeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(chargeId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Charge> List(ChargeListOptions options = null, RequestOptions requestOptions = null)
@@ -75,14 +75,14 @@ namespace Stripe
         }
 #endif
 
-        public virtual Charge Update(string chargeId, ChargeUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Charge Update(string id, ChargeUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(chargeId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Charge> UpdateAsync(string chargeId, ChargeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Charge> UpdateAsync(string id, ChargeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(chargeId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

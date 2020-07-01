@@ -33,24 +33,24 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Coupon Delete(string couponId, CouponDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual Coupon Delete(string id, CouponDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(couponId, options, requestOptions);
+            return this.DeleteEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Coupon> DeleteAsync(string couponId, CouponDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Coupon> DeleteAsync(string id, CouponDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(couponId, options, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public virtual Coupon Get(string couponId, CouponGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Coupon Get(string id, CouponGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(couponId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Coupon> GetAsync(string couponId, CouponGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Coupon> GetAsync(string id, CouponGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(couponId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Coupon> List(CouponListOptions options = null, RequestOptions requestOptions = null)
@@ -75,14 +75,14 @@ namespace Stripe
         }
 #endif
 
-        public virtual Coupon Update(string couponId, CouponUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Coupon Update(string id, CouponUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(couponId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Coupon> UpdateAsync(string couponId, CouponUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Coupon> UpdateAsync(string id, CouponUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(couponId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

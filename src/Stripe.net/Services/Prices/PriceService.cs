@@ -32,14 +32,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Price Get(string priceId, PriceGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Price Get(string id, PriceGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(priceId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Price> GetAsync(string priceId, PriceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Price> GetAsync(string id, PriceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(priceId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Price> List(PriceListOptions options = null, RequestOptions requestOptions = null)
@@ -64,14 +64,14 @@ namespace Stripe
         }
 #endif
 
-        public virtual Price Update(string priceId, PriceUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Price Update(string id, PriceUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(priceId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Price> UpdateAsync(string priceId, PriceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Price> UpdateAsync(string id, PriceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(priceId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }
