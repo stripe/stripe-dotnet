@@ -75,7 +75,6 @@ namespace StripeTests
             Assert.Equal("scheduled_query_run", run.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -83,6 +82,5 @@ namespace StripeTests
             Assert.NotNull(run);
             Assert.Equal("scheduled_query_run", run.Object);
         }
-#endif
     }
 }
