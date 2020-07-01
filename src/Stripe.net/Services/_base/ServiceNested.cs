@@ -139,7 +139,6 @@ namespace Stripe
                 requestOptions);
         }
 
-#if !NET45
         protected IAsyncEnumerable<TEntityReturned> ListNestedEntitiesAutoPagingAsync(
             string parentId,
             ListOptions options,
@@ -152,7 +151,6 @@ namespace Stripe
                 requestOptions,
                 cancellationToken);
         }
-#endif
 
         protected TEntityReturned UpdateNestedEntity(
             string parentId,

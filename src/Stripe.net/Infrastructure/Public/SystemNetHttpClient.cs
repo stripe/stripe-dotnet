@@ -29,8 +29,6 @@ namespace Stripe
             "netstandard2.0"
 #elif NET461
             "net461"
-#elif NET45
-            "net45"
 #else
             "unknown"
 #endif

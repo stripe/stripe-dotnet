@@ -109,7 +109,6 @@ namespace StripeTests.Issuing
             Assert.Equal("issuing.authorization", authorization.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -117,7 +116,6 @@ namespace StripeTests.Issuing
             Assert.NotNull(authorization);
             Assert.Equal("issuing.authorization", authorization.Object);
         }
-#endif
 
         [Fact]
         public void Update()
