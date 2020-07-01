@@ -77,7 +77,6 @@ namespace StripeTests.Radar
             Assert.Equal("radar.early_fraud_warning", warning.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -85,6 +84,5 @@ namespace StripeTests.Radar
             Assert.NotNull(warning);
             Assert.Equal("radar.early_fraud_warning", warning.Object);
         }
-#endif
     }
 }
