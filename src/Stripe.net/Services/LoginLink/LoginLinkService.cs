@@ -20,14 +20,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/accounts/{PARENT_ID}/login_links";
 
-        public virtual LoginLink Create(string accountId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null)
+        public virtual LoginLink Create(string id, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.CreateNestedEntity(accountId, options, requestOptions);
+            return this.CreateNestedEntity(id, options, requestOptions);
         }
 
-        public virtual Task<LoginLink> CreateAsync(string accountId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<LoginLink> CreateAsync(string id, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateNestedEntityAsync(accountId, options, requestOptions, cancellationToken);
+            return this.CreateNestedEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

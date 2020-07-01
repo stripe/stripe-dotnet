@@ -32,24 +32,24 @@ namespace Stripe.Radar
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual ValueListItem Delete(string valueListItemId, ValueListItemDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual ValueListItem Delete(string id, ValueListItemDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(valueListItemId, options, requestOptions);
+            return this.DeleteEntity(id, options, requestOptions);
         }
 
-        public virtual Task<ValueListItem> DeleteAsync(string valueListItemId, ValueListItemDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ValueListItem> DeleteAsync(string id, ValueListItemDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(valueListItemId, options, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public virtual ValueListItem Get(string valueListItemId, ValueListItemGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual ValueListItem Get(string id, ValueListItemGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(valueListItemId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<ValueListItem> GetAsync(string valueListItemId, ValueListItemGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ValueListItem> GetAsync(string id, ValueListItemGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(valueListItemId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ValueListItem> List(ValueListItemListOptions options = null, RequestOptions requestOptions = null)
