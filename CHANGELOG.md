@@ -1,5 +1,9 @@
 # Changelog
 
+## 37.15.0 - 2020-07-01
+* [#2100](https://github.com/stripe/stripe-dotnet/pull/2100) Adds misc missing fields across resources
+* [#2091](https://github.com/stripe/stripe-dotnet/pull/2091) Fix incorrect documentation on the Upcoming Invoice parameters
+
 ## 37.14.0 - 2020-06-24
 * [#2090](https://github.com/stripe/stripe-dotnet/pull/2090) Add support for `invoice.paid` event
 
