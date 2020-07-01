@@ -167,7 +167,6 @@ namespace StripeTests.Checkout
             Assert.Equal("checkout.session", intent.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -175,7 +174,6 @@ namespace StripeTests.Checkout
             Assert.NotNull(intent);
             Assert.Equal("checkout.session", intent.Object);
         }
-#endif
 
         [Fact]
         public void ListLineItems()
@@ -207,7 +205,6 @@ namespace StripeTests.Checkout
             Assert.Equal("item", lineItem.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListLineItemsAutoPagingAsync()
         {
@@ -215,6 +212,5 @@ namespace StripeTests.Checkout
             Assert.NotNull(lineItem);
             Assert.Equal("item", lineItem.Object);
         }
-#endif
     }
 }

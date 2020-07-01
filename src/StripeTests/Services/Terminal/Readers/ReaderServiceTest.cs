@@ -112,7 +112,6 @@ namespace StripeTests.Terminal
             Assert.Equal("terminal.reader", reader.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -120,7 +119,6 @@ namespace StripeTests.Terminal
             Assert.NotNull(reader);
             Assert.Equal("terminal.reader", reader.Object);
         }
-#endif
 
         [Fact]
         public void Update()

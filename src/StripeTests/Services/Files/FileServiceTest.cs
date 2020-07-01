@@ -111,7 +111,6 @@ namespace StripeTests
             Assert.Equal("file", file.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -119,6 +118,5 @@ namespace StripeTests
             Assert.NotNull(file);
             Assert.Equal("file", file.Object);
         }
-#endif
     }
 }
