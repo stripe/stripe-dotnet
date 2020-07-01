@@ -56,7 +56,6 @@ namespace StripeTests
             Assert.Equal("usage_record_summary", summarie.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -64,6 +63,5 @@ namespace StripeTests
             Assert.NotNull(summarie);
             Assert.Equal("usage_record_summary", summarie.Object);
         }
-#endif
     }
 }

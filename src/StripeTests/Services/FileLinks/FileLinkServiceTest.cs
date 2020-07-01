@@ -110,7 +110,6 @@ namespace StripeTests
             Assert.Equal("file_link", domain.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -118,7 +117,6 @@ namespace StripeTests
             Assert.NotNull(domain);
             Assert.Equal("file_link", domain.Object);
         }
-#endif
 
         [Fact]
         public void Update()
