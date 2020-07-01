@@ -118,6 +118,13 @@ namespace Stripe
         public List<SubscriptionSchedulePhaseItem> Plans { get; set; }
 
         /// <summary>
+        /// Controls whether or not the subscription schedule will prorate when transitioning
+        /// to this phase. Values are <c>create_prorations</c> and <c>none</c>.
+        /// </summary>
+        [JsonProperty("proration_behavior")]
+        public string ProrationBehavior { get; set; }
+
+        /// <summary>
         /// The start of this phase of the subscription schedule.
         /// </summary>
         [JsonProperty("start_date")]
