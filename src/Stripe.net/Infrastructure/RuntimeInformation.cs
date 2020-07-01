@@ -63,6 +63,15 @@ namespace Stripe.Infrastructure
             return Unknown;
         }
 
+        /// <summary>Returns a string with the Newtonsoft.Json assembly version number.</summary>
+        /// <returns>A string with the Newtonsoft.Json assembly version number.</returns>
+        public static string GetNewtonsoftJsonVersion()
+        {
+            var assembly = Assembly.GetAssembly(typeof(Newtonsoft.Json.JsonConvert));
+            var fileVersion = FileVersionInfo.GetVersionInfo(assembly.Location);
+            return fileVersion.FileVersion;
+        }
+
         internal static string GetMonoVersion()
         {
             var monoRuntimeType = Type.GetType("Mono.Runtime");
