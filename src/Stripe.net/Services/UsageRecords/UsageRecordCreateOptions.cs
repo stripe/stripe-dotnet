@@ -9,11 +9,11 @@ namespace Stripe
         [JsonProperty("action")]
         public string Action { get; set; }
 
+        [JsonProperty("quantity")]
+        public long? Quantity { get; set; }
+
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime? Timestamp { get; set; }
-
-        [JsonProperty("quantity")]
-        public long? Quantity { get; set; }
     }
 }

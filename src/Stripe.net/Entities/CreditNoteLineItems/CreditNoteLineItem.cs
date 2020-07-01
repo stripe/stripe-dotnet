@@ -1,9 +1,7 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class CreditNoteLineItem : StripeEntity<CreditNoteLineItem>, IHasId, IHasObject
     {
