@@ -20,14 +20,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/application_fees";
 
-        public virtual ApplicationFee Get(string applicationFeeId, ApplicationFeeGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual ApplicationFee Get(string id, ApplicationFeeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(applicationFeeId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<ApplicationFee> GetAsync(string applicationFeeId, ApplicationFeeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ApplicationFee> GetAsync(string id, ApplicationFeeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(applicationFeeId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ApplicationFee> List(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null)

@@ -24,66 +24,66 @@ namespace Stripe
 
         public override string BasePath => "/v1/customers/{PARENT_ID}/sources";
 
-        public virtual Card Create(string customerId, CardCreateOptions options, RequestOptions requestOptions = null)
+        public virtual Card Create(string parentId, CardCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateNestedEntity(customerId, options, requestOptions);
+            return this.CreateNestedEntity(parentId, options, requestOptions);
         }
 
-        public virtual Task<Card> CreateAsync(string customerId, CardCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Card> CreateAsync(string parentId, CardCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateNestedEntityAsync(customerId, options, requestOptions, cancellationToken);
+            return this.CreateNestedEntityAsync(parentId, options, requestOptions, cancellationToken);
         }
 
-        public virtual Card Delete(string customerId, string cardId, CardDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual Card Delete(string parentId, string id, CardDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteNestedEntity(customerId, cardId, options, requestOptions);
+            return this.DeleteNestedEntity(parentId, id, options, requestOptions);
         }
 
-        public virtual Task<Card> DeleteAsync(string customerId, string cardId, CardDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Card> DeleteAsync(string parentId, string id, CardDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteNestedEntityAsync(customerId, cardId, options, requestOptions, cancellationToken);
+            return this.DeleteNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
         }
 
-        public virtual Card Get(string customerId, string cardId, CardGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual Card Get(string parentId, string id, CardGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(customerId, cardId, options, requestOptions);
+            return this.GetNestedEntity(parentId, id, options, requestOptions);
         }
 
-        public virtual Task<Card> GetAsync(string customerId, string cardId, CardGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Card> GetAsync(string parentId, string id, CardGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetNestedEntityAsync(customerId, cardId, options, requestOptions, cancellationToken);
+            return this.GetNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<Card> List(string customerId, CardListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Card> List(string parentId, CardListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntities(customerId, options ?? new CardListOptions(), requestOptions);
+            return this.ListNestedEntities(parentId, options ?? new CardListOptions(), requestOptions);
         }
 
-        public virtual Task<StripeList<Card>> ListAsync(string customerId, CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Card>> ListAsync(string parentId, CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAsync(customerId, options ?? new CardListOptions(), requestOptions, cancellationToken);
+            return this.ListNestedEntitiesAsync(parentId, options ?? new CardListOptions(), requestOptions, cancellationToken);
         }
 
-        public virtual IEnumerable<Card> ListAutoPaging(string customerId, CardListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Card> ListAutoPaging(string parentId, CardListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntitiesAutoPaging(customerId, options ?? new CardListOptions(), requestOptions);
+            return this.ListNestedEntitiesAutoPaging(parentId, options ?? new CardListOptions(), requestOptions);
         }
 
 #if !NET45
-        public virtual IAsyncEnumerable<Card> ListAutoPagingAsync(string customerId, CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Card> ListAutoPagingAsync(string parentId, CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAutoPagingAsync(customerId, options ?? new CardListOptions(), requestOptions, cancellationToken);
+            return this.ListNestedEntitiesAutoPagingAsync(parentId, options ?? new CardListOptions(), requestOptions, cancellationToken);
         }
 #endif
 
-        public virtual Card Update(string customerId, string cardId, CardUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual Card Update(string parentId, string id, CardUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateNestedEntity(customerId, cardId, options, requestOptions);
+            return this.UpdateNestedEntity(parentId, id, options, requestOptions);
         }
 
-        public virtual Task<Card> UpdateAsync(string customerId, string cardId, CardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Card> UpdateAsync(string parentId, string id, CardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateNestedEntityAsync(customerId, cardId, options, requestOptions, cancellationToken);
+            return this.UpdateNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
         }
     }
 }
