@@ -21,6 +21,9 @@ namespace Stripe
     /// </summary>
     public class SystemNetHttpClient : IHttpClient
     {
+        /// <summary>Default maximum number of retries made by the client.</summary>
+        public const int DefaultMaxNumberRetries = 2;
+
         private const string StripeNetTargetFramework =
 #if NETSTANDARD2_0
             "netstandard2.0"
@@ -79,7 +82,7 @@ namespace Stripe
         /// </param>
         public SystemNetHttpClient(
             System.Net.Http.HttpClient httpClient = null,
-            int maxNetworkRetries = 0,
+            int maxNetworkRetries = DefaultMaxNumberRetries,
             AppInfo appInfo = null,
             bool enableTelemetry = true)
         {
