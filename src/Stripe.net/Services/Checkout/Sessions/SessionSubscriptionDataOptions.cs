@@ -50,7 +50,7 @@ namespace Stripe.Checkout
         /// being charged for the first time. Has to be at least 48h in the future.
         /// </summary>
         [JsonProperty("trial_end")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
 
         /// <summary>

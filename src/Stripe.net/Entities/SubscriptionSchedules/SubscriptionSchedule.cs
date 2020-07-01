@@ -24,7 +24,7 @@ namespace Stripe
         /// Unix epoch.
         /// </summary>
         [JsonProperty("canceled_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
@@ -32,14 +32,14 @@ namespace Stripe
         /// Unix epoch.
         /// </summary>
         [JsonProperty("completed_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CompletedAt { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Stripe
         /// Unix epoch.
         /// </summary>
         [JsonProperty("released_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ReleasedAt { get; set; }
 
         /// <summary>

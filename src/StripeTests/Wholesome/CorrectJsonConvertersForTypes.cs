@@ -49,7 +49,7 @@ namespace StripeTests
                     Type[] expectedGenericTypeArguments = null;
                     if (propType == typeof(DateTime))
                     {
-                        expectedConverterType = typeof(DateTimeConverter);
+                        expectedConverterType = typeof(UnixDateTimeConverter);
                     }
                     else if (typeof(IAnyOf).GetTypeInfo().IsAssignableFrom(propType.GetTypeInfo()))
                     {
