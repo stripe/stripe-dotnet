@@ -129,14 +129,12 @@ namespace StripeTests
             Assert.NotNull(bankAccount);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
             var bankAccount = await this.service.ListAutoPagingAsync(CustomerId, this.listOptions).FirstAsync();
             Assert.NotNull(bankAccount);
         }
-#endif
 
         // stripe-mock does not return a bank account object on update today so we do not test
         // the returned value's object

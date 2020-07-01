@@ -137,7 +137,6 @@ namespace StripeTests
             Assert.Equal("credit_note", creditNote.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -145,7 +144,6 @@ namespace StripeTests
             Assert.NotNull(creditNote);
             Assert.Equal("credit_note", creditNote.Object);
         }
-#endif
 
         [Fact]
         public void ListLineItems()
@@ -177,7 +175,6 @@ namespace StripeTests
             Assert.Equal("credit_note_line_item", lineItem.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListLineItemsAutoPagingAsync()
         {
@@ -185,7 +182,6 @@ namespace StripeTests
             Assert.NotNull(lineItem);
             Assert.Equal("credit_note_line_item", lineItem.Object);
         }
-#endif
 
         [Fact]
         public void Preview()
@@ -235,7 +231,6 @@ namespace StripeTests
             Assert.Equal("credit_note_line_item", lineItem.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListPreviewLineItemsAutoPagingAsync()
         {
@@ -243,7 +238,6 @@ namespace StripeTests
             Assert.NotNull(lineItem);
             Assert.Equal("credit_note_line_item", lineItem.Object);
         }
-#endif
 
         [Fact]
         public void Update()

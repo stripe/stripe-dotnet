@@ -115,7 +115,6 @@ namespace StripeTests
             Assert.Equal("apple_pay_domain", domain.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -123,6 +122,5 @@ namespace StripeTests
             Assert.NotNull(domain);
             Assert.Equal("apple_pay_domain", domain.Object);
         }
-#endif
     }
 }

@@ -129,7 +129,6 @@ namespace StripeTests
             Assert.Equal("webhook_endpoint", endpoint.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -137,7 +136,6 @@ namespace StripeTests
             Assert.NotNull(endpoint);
             Assert.Equal("webhook_endpoint", endpoint.Object);
         }
-#endif
 
         [Fact]
         public void Update()
