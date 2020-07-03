@@ -8,7 +8,7 @@ namespace Stripe
         /// The status of the mandate on the network and whether it's been accepted or revoked.
         /// </summary>
         [JsonProperty("network_status")]
-        public long NetworkStatus { get; set; }
+        public string NetworkStatus { get; set; }
 
         /// <summary>
         /// The reference associated with the mandate.
