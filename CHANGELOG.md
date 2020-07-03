@@ -1,5 +1,9 @@
 # Changelog
 
+## 37.15.1 - 2020-07-03
+* [#2106](https://github.com/stripe/stripe-dotnet/pull/2106) Fix `Mandate` deserialization for BACS Debit where `NetworkStatus` is now a string
+* [#2103](https://github.com/stripe/stripe-dotnet/pull/2103) Add Newtonsoft.Json version to X-Stripe-Client-User-Agent
+
 ## 37.15.0 - 2020-07-01
 * [#2100](https://github.com/stripe/stripe-dotnet/pull/2100) Adds misc missing fields across resources
 * [#2091](https://github.com/stripe/stripe-dotnet/pull/2091) Fix incorrect documentation on the Upcoming Invoice parameters
