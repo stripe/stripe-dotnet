@@ -9,7 +9,7 @@ namespace Stripe.Issuing
         /// Maximum amount allowed to spend per time interval.
         /// </summary>
         [JsonProperty("amount")]
-        public long? Amount { get; set; }
+        public long Amount { get; set; }
 
         /// <summary>
         /// Categories on which to apply the spending limit. Leave this empty to limit all charges.
