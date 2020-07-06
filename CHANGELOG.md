@@ -1,5 +1,10 @@
 # Changelog
 
+## 37.16.0 - 2020-07-06
+* [#2108](https://github.com/stripe/stripe-dotnet/pull/2108) Multiple API changes
+  * Add `Network` on `PaymentMethodCardOptions`
+  * Add `RefundAttributesMethod` and `RefundAttributesStatus` on `SourceReceiver`
+
 ## 37.15.1 - 2020-07-03
 * [#2106](https://github.com/stripe/stripe-dotnet/pull/2106) Fix `Mandate` deserialization for BACS Debit where `NetworkStatus` is now a string
 * [#2103](https://github.com/stripe/stripe-dotnet/pull/2103) Add Newtonsoft.Json version to X-Stripe-Client-User-Agent
