@@ -5,6 +5,6 @@ namespace Stripe
     public class PaymentMethodCardThreeDSecureUsage : StripeEntity<PaymentMethodCardThreeDSecureUsage>
     {
         [JsonProperty("supported")]
-        public bool? Supported { get; set; }
+        public bool Supported { get; set; }
     }
 }
