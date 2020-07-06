@@ -9,7 +9,7 @@ namespace Stripe
         /// your customer will make to their credit card.
         /// </summary>
         [JsonProperty("count")]
-        public long Count { get; set; }
+        public long? Count { get; set; }
 
         /// <summary>
         /// For <c>fixed_count</c> installment plans, this is the interval between installment
