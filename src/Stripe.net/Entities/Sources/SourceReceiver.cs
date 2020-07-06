@@ -27,5 +27,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amount_returned")]
         public long AmountReturned { get; set; }
+
+        /// <summary>
+        /// Type of refund attribute method, one of <c>email</c>, <c>manual</c>,
+        /// or <c>none</c>.
+        /// </summary>
+        [JsonProperty("refund_attributes_method")]
+        public string RefundAttributesMethod { get; set; }
+
+        /// <summary>
+        /// Type of refund attribute status, one of <c>missing</c>, <c>requested</c>, or
+        /// <c>available</c>.
+        /// </summary>
+        [JsonProperty("refund_attributes_status")]
+        public string RefundAttributesStatus { get; set; }
     }
 }
