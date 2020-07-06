@@ -10,7 +10,7 @@ namespace Stripe
         /// charge amount is transferred to the destination account.
         /// </summary>
         [JsonProperty("amount")]
-        public long? Amount { get; set; }
+        public long Amount { get; set; }
 
         #region Expandable Destination
 
