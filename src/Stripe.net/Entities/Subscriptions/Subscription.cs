@@ -29,7 +29,7 @@ namespace Stripe
 
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime? BillingCycleAnchor { get; set; }
+        public DateTime BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
