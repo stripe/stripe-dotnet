@@ -34,7 +34,7 @@ namespace Stripe
         /// the number of instances of the SKU to be ordered.
         /// </summary>
         [JsonProperty("quantity")]
-        public long? Quantity { get; set; }
+        public long Quantity { get; set; }
 
         /// <summary>
         /// The type of this order item.

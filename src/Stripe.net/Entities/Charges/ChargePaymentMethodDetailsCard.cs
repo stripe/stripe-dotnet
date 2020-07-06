@@ -35,13 +35,13 @@ namespace Stripe
         /// Two-digit number representing the card's expiration month.
         /// </summary>
         [JsonProperty("exp_month")]
-        public long ExpMonth { get; set; }
+        public long? ExpMonth { get; set; }
 
         /// <summary>
         /// Four-digit number representing the card's expiration year.
         /// </summary>
         [JsonProperty("exp_year")]
-        public long ExpYear { get; set; }
+        public long? ExpYear { get; set; }
 
         /// <summary>
         /// Uniquely identifies this particular card number. You can use this attribute to check
