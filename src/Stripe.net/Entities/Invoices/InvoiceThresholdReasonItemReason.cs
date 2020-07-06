@@ -15,6 +15,6 @@ namespace Stripe
         /// The quantity threshold boundary that applied to the given line item.
         /// </summary>
         [JsonProperty("usage_gte")]
-        public long? UsageGte { get; set; }
+        public long UsageGte { get; set; }
     }
 }

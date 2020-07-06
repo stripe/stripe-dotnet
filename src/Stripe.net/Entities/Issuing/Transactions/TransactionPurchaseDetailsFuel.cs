@@ -22,7 +22,7 @@ namespace Stripe.Issuing
         /// decimal places.
         /// </summary>
         [JsonProperty("unit_cost_decimal")]
-        public decimal? UnitCostDecimal { get; set; }
+        public decimal UnitCostDecimal { get; set; }
 
         /// <summary>
         /// The volume of the fuel that was pumped, represented as a decimal string with at most 12

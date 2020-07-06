@@ -20,7 +20,7 @@ namespace Stripe
         /// True if the cardholder went through the authentication flow and their bank indicated that authentication succeeded.
         /// </summary>
         [JsonProperty("authenticated")]
-        public bool Authenticated { get; set; }
+        public bool? Authenticated { get; set; }
 
         /// <summary>
         /// Card brand. Can be `American Express`, `Diners Club`, `Discover`, `JCB`, `MasterCard`, `UnionPay`, `Visa`, or `Unknown`.
@@ -68,13 +68,13 @@ namespace Stripe
         /// The expiration month of the card.
         /// </summary>
         [JsonProperty("exp_month")]
-        public long ExpMonth { get; set; }
+        public long? ExpMonth { get; set; }
 
         /// <summary>
         /// The expiration year of the card.
         /// </summary>
         [JsonProperty("exp_year")]
-        public long ExpYear { get; set; }
+        public long? ExpYear { get; set; }
 
         /// <summary>
         /// Uniquely identifies this particular card number. You can use this attribute to check whether two customers who've signed up with you are using the same card number, for example.
