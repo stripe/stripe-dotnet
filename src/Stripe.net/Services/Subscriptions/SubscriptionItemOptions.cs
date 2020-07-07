@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SubscriptionItemOptions : IHasId, INestedOptions, IHasMetadata
+    public class SubscriptionItemOptions : INestedOptions, IHasId, IHasMetadata
     {
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
