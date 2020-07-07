@@ -8,7 +8,8 @@ namespace Stripe.Radar
         ICreatable<ValueList, ValueListCreateOptions>,
         IDeletable<ValueList, ValueListDeleteOptions>,
         IListable<ValueList, ValueListListOptions>,
-        IRetrievable<ValueList, ValueListGetOptions>
+        IRetrievable<ValueList, ValueListGetOptions>,
+        IUpdatable<ValueList, ValueListUpdateOptions>
     {
         public ValueListService()
             : base(null)
