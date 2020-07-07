@@ -1,6 +1,6 @@
 namespace Stripe
 {
-    public class TaxRateGetOptions : ListOptionsWithCreated
+    public class TaxRateGetOptions : BaseOptions
     {
     }
 }
