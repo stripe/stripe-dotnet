@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SubscriptionItemOptions : IHasId, INestedOptions, IHasMetadata
+    public class SubscriptionItemOptions : INestedOptions, IHasId, IHasMetadata
     {
         /// <summary>
         /// Delete all usage for a given subscription item. Only allowed when <c>deleted</c> is set
