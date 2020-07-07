@@ -4,7 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class TokenPersonOptions : BaseOptions, IHasMetadata
+    public class TokenPersonOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The person's address.
