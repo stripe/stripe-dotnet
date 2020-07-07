@@ -1,6 +1,6 @@
 namespace Stripe
 {
-    public class AccountListOptions : ListOptions
+    public class AccountListOptions : ListOptionsWithCreated
     {
     }
 }
