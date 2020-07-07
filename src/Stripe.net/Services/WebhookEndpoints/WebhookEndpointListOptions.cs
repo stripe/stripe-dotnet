@@ -1,6 +1,6 @@
 namespace Stripe
 {
-    public class WebhookEndpointListOptions : ListOptionsWithCreated
+    public class WebhookEndpointListOptions : ListOptions
     {
     }
 }

@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class InvoiceSubscriptionItemOptions : BaseOptions, IHasId, IHasMetadata
+    public class InvoiceSubscriptionItemOptions : INestedOptions, IHasId, IHasMetadata
     {
         /// <summary>
         /// Subscription item to update.
