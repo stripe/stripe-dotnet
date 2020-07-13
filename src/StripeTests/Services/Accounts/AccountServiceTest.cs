@@ -76,10 +76,6 @@ namespace StripeTests
                         },
                         StatementDescriptorPrefix = "STR",
                     },
-                    Dashboard = new AccountSettingsDashboardOptions
-                    {
-                        DisplayName = "dashboard_name",
-                    },
                     Payments = new AccountSettingsPaymentsOptions
                     {
                         StatementDescriptor = "STRIPE 123",
