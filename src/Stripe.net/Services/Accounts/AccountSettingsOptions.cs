@@ -10,9 +10,6 @@ namespace Stripe
         [JsonProperty("card_payments")]
         public AccountSettingsCardPaymentsOptions CardPayments { get; set; }
 
-        [JsonProperty("dashboard")]
-        public AccountSettingsDashboardOptions Dashboard { get; set; }
-
         [JsonProperty("payments")]
         public AccountSettingsPaymentsOptions Payments { get; set; }
 
