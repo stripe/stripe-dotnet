@@ -1,6 +1,5 @@
 namespace Stripe.Checkout
 {
-    using System;
     using Newtonsoft.Json;
 
     public class SessionPaymentIntentTransferDataOptions : INestedOptions

@@ -6,12 +6,6 @@ namespace Stripe
     public class InvoiceSubscriptionItemOptions : BaseOptions, IHasId, IHasMetadata
     {
         /// <summary>
-        /// Subscription item to update.
-        /// </summary>
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period.
         /// </summary>
@@ -30,6 +24,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("deleted")]
         public bool? Deleted { get; set; }
+
+        /// <summary>
+        /// Subscription item to update.
+        /// </summary>
+        [JsonProperty("id")]
+        public string Id { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to a charge object. It can be useful for

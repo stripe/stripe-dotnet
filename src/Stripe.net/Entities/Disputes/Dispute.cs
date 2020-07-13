@@ -62,7 +62,6 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        // This property is not returned as part of standard API requests.
         [JsonProperty("network_reason_code")]
         public string NetworkReasonCode { get; set; }
 
