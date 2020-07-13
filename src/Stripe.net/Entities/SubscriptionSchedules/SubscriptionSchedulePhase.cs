@@ -23,6 +23,16 @@ namespace Stripe
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
+        /// Possible values are <c>phase_start</c> or <c>automatic</c>. If
+        /// <c>phase_start</c> then billing cycle anchor of the
+        /// subscription is set to the start of the phase when entering
+        /// the phase. If <c>automatic</c> then the billing cycle anchor
+        /// is automatically modified as needed when entering the phase.
+        /// </summary>
+        [JsonProperty("billing_cycle_anchor")]
+        public string BillingCycleAnchor { get; set; }
+
+        /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period.
         /// </summary>
