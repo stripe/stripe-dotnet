@@ -43,10 +43,12 @@ namespace StripeTests
                     {
                         Date = DateTime.Parse("Mon, 01 Jan 2001 00:00:00Z"),
                         Ip = "127.0.0.1",
-                        NotificationMethod = "manual",
                         Status = "accepted",
                         UserAgent = "User-Agent",
                     },
+                    NotificationMethod = "manual",
+                    Amount = 1000,
+                    Currency = "USD",
                 },
                 Owner = new SourceOwnerOptions
                 {
