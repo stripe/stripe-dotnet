@@ -51,11 +51,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
-
-        /// <summary>
-        /// This feature is not yet available in the API.
-        /// </summary>
-        [JsonProperty("usage")]
-        public string Usage { get; set; }
     }
 }
