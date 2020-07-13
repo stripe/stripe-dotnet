@@ -20,12 +20,6 @@ namespace Stripe
         public string EndBehavior { get; set; }
 
         /// <summary>
-        /// Define the default settings applied to invoices created by this subscription schedule.
-        /// </summary>
-        [JsonProperty("invoice_settings")]
-        public SubscriptionScheduleInvoiceSettingsOptions InvoiceSettings { get; set; }
-
-        /// <summary>
         /// A set of key/value pairs that you can attach to a subscription schedule object.
         /// </summary>
         [JsonProperty("metadata")]
