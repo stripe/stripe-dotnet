@@ -5,10 +5,10 @@ namespace Stripe
     public class SourceRedirect : StripeEntity<SourceRedirect>
     {
         /// <summary>
-        /// The failure reason for the redirect. One of <see cref="RedirectFailureReason" />.
+        /// The failure reason for the redirect. One of <c>declined</c>, <c>processing_error</c>, or <c>user_abort</c>.
         /// </summary>
         [JsonProperty("failure_reason")]
-        public RedirectFailureReason? FailureReason { get; set; }
+        public string FailureReason { get; set; }
 
         /// <summary>
         /// The URL you provide to redirect the customer to after they authenticated their payment.
