@@ -13,9 +13,6 @@ namespace Stripe
         [JsonProperty("ip")]
         public string Ip { get; set; }
 
-        [JsonProperty("notification_method")]
-        public string NotificationMethod { get; set; }
-
         [JsonProperty("offline")]
         public SourceMandateAcceptanceOfflineOptions Offline { get; set; }
 
