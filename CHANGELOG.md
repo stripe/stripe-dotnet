@@ -1,5 +1,10 @@
 # Changelog
 
+## 37.17.0 - 2020-07-13
+* [#2114](https://github.com/stripe/stripe-dotnet/pull/2114) Adds `BillingCycleAnchor` to default_settings and phases for `SubscriptionSchedules`
+* [#2112](https://github.com/stripe/stripe-dotnet/pull/2112) Removes unused imports, alphabetizes, and removes some comments
+* [#2111](https://github.com/stripe/stripe-dotnet/pull/2111) Add support for `Metadata` on Issuing `Dispute`
+
 ## 37.16.0 - 2020-07-06
 * [#2108](https://github.com/stripe/stripe-dotnet/pull/2108) Multiple API changes
   * Add `Network` on `PaymentMethodCardOptions`
