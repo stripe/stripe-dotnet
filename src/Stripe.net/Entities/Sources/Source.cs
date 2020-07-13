@@ -46,9 +46,6 @@ namespace Stripe
         [JsonProperty("bancontact")]
         public SourceBancontact Bancontact { get; set; }
 
-        [JsonProperty("bitcoin")]
-        public SourceBitcoin Bitcoin { get; set; }
-
         [JsonProperty("card")]
         public SourceCard Card { get; set; }
 
