@@ -173,7 +173,7 @@ namespace Stripe
         [JsonProperty("pending_invoice_item_interval")]
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
 
-        [Obsolete("Use Items")]
+        [Obsolete("Use Items instead.")]
         [JsonProperty("plan")]
         public string Plan { get; set; }
 
@@ -198,7 +198,7 @@ namespace Stripe
         [JsonProperty("proration_behavior")]
         public string ProrationBehavior { get; set; }
 
-        [Obsolete("Use Items")]
+        [Obsolete("Use Items instead.")]
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
 
