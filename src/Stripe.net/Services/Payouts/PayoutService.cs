@@ -23,14 +23,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/payouts";
 
-        public virtual Payout Cancel(string id, RequestOptions requestOptions = null)
+        public virtual Payout Cancel(string id, PayoutCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", null, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions);
         }
 
-        public virtual Task<Payout> CancelAsync(string id, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Payout> CancelAsync(string id, PayoutCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", null, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         public virtual Payout Create(PayoutCreateOptions options, RequestOptions requestOptions = null)
