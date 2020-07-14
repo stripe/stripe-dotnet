@@ -38,7 +38,7 @@ namespace Stripe
         /// If the update changes the current phase, indicates if the changes should be prorated.
         /// Defaults to <c>true</c>.
         /// </summary>
-        [Obsolete("Use ProrationBehavior instead")]
+        [Obsolete("Use ProrationBehavior instead.")]
         [JsonProperty("prorate")]
         public bool? Prorate { get; set; }
 
