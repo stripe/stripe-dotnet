@@ -22,14 +22,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/disputes";
 
-        public virtual Dispute Close(string id, RequestOptions requestOptions = null)
+        public virtual Dispute Close(string id, DisputeCloseOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/close", null, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/close", options, requestOptions);
         }
 
-        public virtual Task<Dispute> CloseAsync(string id, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Dispute> CloseAsync(string id, DisputeCloseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/close", null, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/close", options, requestOptions, cancellationToken);
         }
 
         public virtual Dispute Get(string id, DisputeGetOptions options = null, RequestOptions requestOptions = null)
