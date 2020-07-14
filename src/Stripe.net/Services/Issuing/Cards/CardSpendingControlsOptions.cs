@@ -22,12 +22,5 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("spending_limits")]
         public List<CardSpendingControlsSpendingLimitOptions> SpendingLimits { get; set; }
-
-        /// <summary>
-        /// Currency for the amounts within <see cref="SpendingLimits"/>. Locked to the currency of
-        /// the card.
-        /// </summary>
-        [JsonProperty("spending_limits_currency")]
-        public string SpendingLimitsCurrency { get; set; }
     }
 }
