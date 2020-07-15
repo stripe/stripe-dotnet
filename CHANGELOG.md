@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.18.0 - 2020-07-15
+* [#2117](https://github.com/stripe/stripe-dotnet/pull/2117) Add support for `AmountTotal`, `AmountSubtotal`, `Currency` and `TotalDetails` on Checkout `Session`
+
 ## 37.17.0 - 2020-07-13
 * [#2114](https://github.com/stripe/stripe-dotnet/pull/2114) Adds `BillingCycleAnchor` to default_settings and phases for `SubscriptionSchedules`
 * [#2112](https://github.com/stripe/stripe-dotnet/pull/2112) Removes unused imports, alphabetizes, and removes some comments
