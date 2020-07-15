@@ -19,6 +19,18 @@ namespace Stripe.Checkout
         public string Object { get; set; }
 
         /// <summary>
+        /// Total of all items before discounts or taxes are applied.
+        /// </summary>
+        [JsonProperty("amount_subtotal")]
+        public long? AmountSubtotal { get; set; }
+
+        /// <summary>
+        /// Total of all items after discounts and taxes are applied.
+        /// </summary>
+        [JsonProperty("amount_total")]
+        public long? AmountTotal { get; set; }
+
+        /// <summary>
         /// Specify whether Checkout should collect the customer’s billing address. If set to
         /// <c>required</c>, Checkout will always collect the customer’s billing address. If left
         /// blank or set to <c>auto</c> Checkout will only collect the billing address when
@@ -40,6 +52,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("client_reference_id")]
         public string ClientReferenceId { get; set; }
+
+        /// <summary>
+        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
 
         #region Expandable Customer
 
@@ -232,5 +250,11 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("success_url")]
         public string SuccessUrl { get; set; }
+
+        /// <summary>
+        /// Tax and discount details for the computed total amount.
+        /// </summary>
+        [JsonProperty("total_details")]
+        public SessionTotalDetails TotalDetails { get; set; }
     }
 }
