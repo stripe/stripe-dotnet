@@ -77,10 +77,6 @@ namespace Stripe
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
-        [Obsolete("Use DefaultTaxRates")]
-        [JsonProperty("tax_percent")]
-        public decimal? TaxPercent { get; set; }
-
         [JsonProperty("transfer_data")]
         public InvoiceTransferDataOptions TransferData { get; set; }
     }
