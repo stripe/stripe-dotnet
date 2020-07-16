@@ -366,10 +366,6 @@ namespace Stripe
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        [Obsolete("Use DefaultTaxRates")]
-        [JsonProperty("tax_percent")]
-        public decimal? TaxPercent { get; set; }
-
         /// <summary>
         /// If specified, the funds from the subscription's invoices will be transferred to the
         /// destination and the ID of the resulting transfers will be found on the resulting
