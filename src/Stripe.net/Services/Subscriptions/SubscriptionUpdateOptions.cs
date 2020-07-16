@@ -201,18 +201,6 @@ namespace Stripe
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
 
-        /// <summary>
-        /// A non-negative decimal (with at most four decimal places) between 0
-        /// and 100. This represents the percentage of the subscription invoice
-        /// subtotal that will be calculated and added as tax to the final
-        /// amount each billing period. For example, a plan which charges
-        /// $10/month with a <c>tax_percent</c> of 20.0 will charge $12 per
-        /// invoice.
-        /// </summary>
-        [Obsolete("Use DefaultTaxRates")]
-        [JsonProperty("tax_percent")]
-        public decimal? TaxPercent { get; set; }
-
         [JsonProperty("transfer_data")]
         public SubscriptionTransferDataOptions TransferData { get; set; }
 

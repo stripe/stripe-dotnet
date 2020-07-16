@@ -100,13 +100,6 @@ namespace Stripe
         [JsonProperty("subscription")]
         public string Subscription { get; set; }
 
-        /// <summary>
-        /// The percent tax rate applied to the invoice, represented as a decimal number.
-        /// </summary>
-        [Obsolete("Use DefaultTaxRates")]
-        [JsonProperty("tax_percent")]
-        public decimal? TaxPercent { get; set; }
-
         [JsonProperty("transfer_data")]
         public InvoiceTransferDataOptions TransferData { get; set; }
     }
