@@ -557,10 +557,6 @@ namespace Stripe
         [JsonProperty("tax")]
         public long? Tax { get; set; }
 
-        [Obsolete("Use DefaultTaxRates instead")]
-        [JsonProperty("tax_percent")]
-        public decimal? TaxPercent { get; set; }
-
         /// <summary>
         /// If <see cref="BillingReason" /> is set to <c>subscription_threshold</c> this
         /// returns more information on which threshold rules triggered the invoice.
