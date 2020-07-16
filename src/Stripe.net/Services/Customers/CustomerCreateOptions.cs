@@ -108,9 +108,6 @@ namespace Stripe
         [JsonProperty("tax_id_data")]
         public List<CustomerTaxIdDataOptions> TaxIdData { get; set; }
 
-        [JsonProperty("tax_percent")]
-        public decimal? TaxPercent { get; set; }
-
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, SubscriptionTrialEnd> TrialEnd { get; set; }
