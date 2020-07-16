@@ -35,7 +35,6 @@ namespace StripeTests
             this.createOptions = new InvoiceCreateOptions
             {
                 Customer = "cus_123",
-                TaxPercent = 12.5m,
             };
 
             this.updateOptions = new InvoiceUpdateOptions
