@@ -142,14 +142,6 @@ namespace Stripe
         public DateTime StartDate { get; set; }
 
         /// <summary>
-        /// If provided, each invoice created during this phase of the subscription schedule will
-        /// apply the tax rate, increasing the amount billed to the customer.
-        /// </summary>
-        [Obsolete("Use DefaultTaxRates")]
-        [JsonProperty("tax_percent")]
-        public decimal? TaxPercent { get; set; }
-
-        /// <summary>
         /// The account (if any) the subscription's payments will be attributed
         /// to for tax reporting, and where funds from each payment will be
         /// transferred to for each of the subscription's invoices.
