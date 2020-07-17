@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.19.0 - 2020-07-16
+* [#2119](https://github.com/stripe/stripe-dotnet/pull/2119) Add support for `Deleted` on `LineItem`
+
 ## 37.18.0 - 2020-07-15
 * [#2117](https://github.com/stripe/stripe-dotnet/pull/2117) Add support for `AmountTotal`, `AmountSubtotal`, `Currency` and `TotalDetails` on Checkout `Session`
 
