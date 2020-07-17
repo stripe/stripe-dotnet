@@ -37,6 +37,12 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
+        /// Whether this object is deleted or not.
+        /// </summary>
+        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Deleted { get; set; }
+
+        /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// Defaults to product name.
         /// </summary>
