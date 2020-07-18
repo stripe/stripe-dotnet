@@ -109,6 +109,14 @@ namespace Stripe
         public string Phone { get; set; }
 
         /// <summary>
+        /// Indicates if the person or any of their representatives, family members, or other
+        /// closely related persons, declares that they hold or have held an important public job or
+        /// function, in any jurisdiction.
+        /// </summary>
+        [JsonProperty("political_exposure")]
+        public string PoliticalExposure { get; set; }
+
+        /// <summary>
         /// The relationship that this person has with the account’s legal entity.
         /// </summary>
         [JsonProperty("relationship")]
