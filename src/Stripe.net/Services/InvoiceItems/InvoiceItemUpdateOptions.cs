@@ -27,6 +27,14 @@ namespace Stripe
         public bool? Discountable { get; set; }
 
         /// <summary>
+        /// The coupons to redeem into discounts for the invoice item. If not specified, inherits
+        /// the discount from the invoice's customer. Pass an empty string to avoid inheriting any
+        /// discounts.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<InvoiceItemDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// A set of key/value pairs that you can attach to an object. It can be useful for storing
         /// additional information about the object in a structured format.
         /// </summary>
