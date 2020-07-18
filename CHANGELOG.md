@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.20.0 - 2020-07-17
+* [#2120](https://github.com/stripe/stripe-dotnet/pull/2120) Add support for `PoliticalExposure` on `Person`
+
 ## 37.19.0 - 2020-07-16
 * [#2119](https://github.com/stripe/stripe-dotnet/pull/2119) Add support for `Deleted` on `LineItem`
 
