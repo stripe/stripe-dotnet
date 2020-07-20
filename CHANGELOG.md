@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.21.0 - 2020-07-20
+* [#2123](https://github.com/stripe/stripe-dotnet/pull/2123) Add `Capabilities` to `Account` create and update
+
 ## 37.20.0 - 2020-07-17
 * [#2120](https://github.com/stripe/stripe-dotnet/pull/2120) Add support for `PoliticalExposure` on `Person`
 
