@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -24,6 +25,18 @@ namespace Stripe
         /// </summary>
         [JsonProperty("business_type")]
         public string BusinessType { get; set; }
+
+        /// <summary>
+        /// Each key of the dictionary represents a capability,
+        /// and each capability maps to its settings (e.g. whether
+        /// it has been requested or not). Each capability will be
+        /// inactive until you have provided its specific
+        /// requirements and Stripe has verified them. An account
+        /// may have some of its requested capabilities be active
+        /// and some be inactive.
+        /// </summary>
+        [JsonProperty("capabilities")]
+        public AccountCapabilitiesOptions Capabilities { get; set; }
 
         /// <summary>
         /// Information about the company or business. This field is null
@@ -91,12 +104,7 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        /// <summary>
-        /// The set of capabilities you want to unlock for this account. Each
-        /// capability will be inactive until you have provided its specific
-        /// requirements and Stripe has verified them. An account may have some
-        /// of its requested capabilities be active and some be inactive.
-        /// </summary>
+        [Obsolete("Use Capabilities instead.")]
         [JsonProperty("requested_capabilities")]
         public List<string> RequestedCapabilities { get; set; }
 
