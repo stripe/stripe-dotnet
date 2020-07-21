@@ -23,12 +23,12 @@ namespace Stripe
 
         public override string BasePath => "/v1/accounts/{PARENT_ID}/external_accounts";
 
-        public virtual IExternalAccount Create(string parentId, ExternalAccountCreateOptions options, RequestOptions requestOptions = null)
+        public virtual IExternalAccount Create(string parentId, ExternalAccountCreateOptions options = null, RequestOptions requestOptions = null)
         {
             return this.CreateNestedEntity(parentId, options, requestOptions);
         }
 
-        public virtual Task<IExternalAccount> CreateAsync(string parentId, ExternalAccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<IExternalAccount> CreateAsync(string parentId, ExternalAccountCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.CreateNestedEntityAsync(parentId, options, requestOptions, cancellationToken);
         }
