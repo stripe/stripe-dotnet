@@ -23,14 +23,14 @@ namespace Stripe
 
         public override string BasePath => "/v1/sources";
 
-        public virtual Source Attach(string customerId, SourceAttachOptions options, RequestOptions requestOptions = null)
+        public virtual Source Attach(string parentId, SourceAttachOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Source>(HttpMethod.Post, $"/v1/customers/{customerId}/sources", options, requestOptions);
+            return this.Request<Source>(HttpMethod.Post, $"/v1/customers/{parentId}/sources", options, requestOptions);
         }
 
-        public virtual Task<Source> AttachAsync(string customerId, SourceAttachOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Source> AttachAsync(string parentId, SourceAttachOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Source>(HttpMethod.Post, $"/v1/customers/{customerId}/sources", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Source>(HttpMethod.Post, $"/v1/customers/{parentId}/sources", options, requestOptions, cancellationToken);
         }
 
         public virtual Source Create(SourceCreateOptions options, RequestOptions requestOptions = null)
@@ -43,14 +43,14 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Source Detach(string customerId, string id, RequestOptions requestOptions = null)
+        public virtual Source Detach(string parentId, string id, SourceDetachOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Source>(HttpMethod.Delete, $"/v1/customers/{customerId}/sources/{id}", null, requestOptions);
+            return this.Request<Source>(HttpMethod.Delete, $"/v1/customers/{parentId}/sources/{id}", null, requestOptions);
         }
 
-        public virtual Task<Source> DetachAsync(string customerId, string id, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Source> DetachAsync(string parentId, string id, SourceDetachOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Source>(HttpMethod.Delete, $"/v1/customers/{customerId}/sources/{id}", null, requestOptions, cancellationToken);
+            return this.RequestAsync<Source>(HttpMethod.Delete, $"/v1/customers/{parentId}/sources/{id}", null, requestOptions, cancellationToken);
         }
 
         public virtual Source Get(string id, SourceGetOptions options = null, RequestOptions requestOptions = null)
@@ -63,24 +63,24 @@ namespace Stripe
             return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<Source> List(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<Source> List(string parentId, SourceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Source>>(HttpMethod.Get, $"/v1/customers/{customerId}/sources", options ?? new SourceListOptions(), requestOptions);
+            return this.Request<StripeList<Source>>(HttpMethod.Get, $"/v1/customers/{parentId}/sources", options ?? new SourceListOptions(), requestOptions);
         }
 
-        public virtual Task<StripeList<Source>> ListAsync(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<Source>> ListAsync(string parentId, SourceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Source>>(HttpMethod.Get, $"/v1/customers/{customerId}/sources", options ?? new SourceListOptions(), requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Source>>(HttpMethod.Get, $"/v1/customers/{parentId}/sources", options ?? new SourceListOptions(), requestOptions, cancellationToken);
         }
 
-        public virtual IEnumerable<Source> ListAutoPaging(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<Source> ListAutoPaging(string parentId, SourceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Source>($"/v1/customers/{customerId}/sources", options ?? new SourceListOptions(), requestOptions);
+            return this.ListRequestAutoPaging<Source>($"/v1/customers/{parentId}/sources", options ?? new SourceListOptions(), requestOptions);
         }
 
-        public virtual IAsyncEnumerable<Source> ListAutoPagingAsync(string customerId, SourceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<Source> ListAutoPagingAsync(string parentId, SourceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Source>($"/v1/customers/{customerId}/sources", options ?? new SourceListOptions(), requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Source>($"/v1/customers/{parentId}/sources", options ?? new SourceListOptions(), requestOptions, cancellationToken);
         }
 
         public virtual Source Update(string id, SourceUpdateOptions options, RequestOptions requestOptions = null)
@@ -93,12 +93,12 @@ namespace Stripe
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public virtual Source Verify(string id, SourceVerifyOptions options, RequestOptions requestOptions = null)
+        public virtual Source Verify(string id, SourceVerifyOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Source>(HttpMethod.Post, $"{this.InstanceUrl(id)}/verify", options, requestOptions);
         }
 
-        public virtual Task<Source> VerifyAsync(string id, SourceVerifyOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Source> VerifyAsync(string id, SourceVerifyOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Source>(HttpMethod.Post, $"{this.InstanceUrl(id)}/verify", options, requestOptions, cancellationToken);
         }

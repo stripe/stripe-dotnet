@@ -22,12 +22,12 @@ namespace Stripe
 
         public override string BasePath => "/v1/subscriptions";
 
-        public virtual Subscription Cancel(string id, SubscriptionCancelOptions options, RequestOptions requestOptions = null)
+        public virtual Subscription Cancel(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null)
         {
             return this.DeleteEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Subscription> CancelAsync(string id, SubscriptionCancelOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Subscription> CancelAsync(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
         }
