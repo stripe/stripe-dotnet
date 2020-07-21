@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.22.0 - 2020-07-21
+* [#2125](https://github.com/stripe/stripe-dotnet/pull/2125) Add `Pii` on `Token` creation
+
 ## 37.21.0 - 2020-07-20
 * [#2123](https://github.com/stripe/stripe-dotnet/pull/2123) Add `Capabilities` to `Account` create and update
 
