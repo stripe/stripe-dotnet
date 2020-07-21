@@ -22,12 +22,6 @@ namespace Stripe
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
-        /// <summary>
-        /// An optional dictionary containing a new destination amount to use. Can only be used with destination charges created with Stripe Connect.
-        /// </summary>
-        [JsonProperty("destination")]
-        public ChargeDestinationOptions Destination { get; set; }
-
         [JsonProperty("exchange_rate")]
         public decimal? ExchangeRate { get; set; }
 
