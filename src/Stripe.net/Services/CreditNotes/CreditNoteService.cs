@@ -63,24 +63,24 @@ namespace Stripe
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<CreditNoteLineItem> ListLineItems(string creditnoteId, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<CreditNoteLineItem> ListLineItems(string id, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<CreditNoteLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(creditnoteId)}/lines", options, requestOptions);
+            return this.Request<StripeList<CreditNoteLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/lines", options, requestOptions);
         }
 
-        public virtual Task<StripeList<CreditNoteLineItem>> ListLineItemsAsync(string creditnoteId, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<CreditNoteLineItem>> ListLineItemsAsync(string id, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<CreditNoteLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(creditnoteId)}/lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CreditNoteLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/lines", options, requestOptions, cancellationToken);
         }
 
-        public virtual IEnumerable<CreditNoteLineItem> ListLineItemsAutoPaging(string creditnoteId, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<CreditNoteLineItem> ListLineItemsAutoPaging(string id, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<CreditNoteLineItem>($"{this.InstanceUrl(creditnoteId)}/lines", options, requestOptions);
+            return this.ListRequestAutoPaging<CreditNoteLineItem>($"{this.InstanceUrl(id)}/lines", options, requestOptions);
         }
 
-        public virtual IAsyncEnumerable<CreditNoteLineItem> ListLineItemsAutoPagingAsync(string creditnoteId, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<CreditNoteLineItem> ListLineItemsAutoPagingAsync(string id, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<CreditNoteLineItem>($"{this.InstanceUrl(creditnoteId)}/lines", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<CreditNoteLineItem>($"{this.InstanceUrl(id)}/lines", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<CreditNoteLineItem> ListPreviewLineItems(CreditNoteListPreviewLineItemsOptions options = null, RequestOptions requestOptions = null)
