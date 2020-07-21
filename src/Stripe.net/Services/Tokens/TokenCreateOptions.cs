@@ -48,5 +48,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("person")]
         public TokenPersonOptions Person { get; set; }
+
+        /// <summary>
+        /// The PII this token will represent.
+        /// </summary>
+        [JsonProperty("pii")]
+        public TokenPiiOptions Pii { get; set; }
     }
 }
