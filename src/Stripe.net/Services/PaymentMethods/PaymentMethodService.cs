@@ -23,12 +23,12 @@ namespace Stripe
 
         public override string BasePath => "/v1/payment_methods";
 
-        public virtual PaymentMethod Attach(string id, PaymentMethodAttachOptions options, RequestOptions requestOptions = null)
+        public virtual PaymentMethod Attach(string id, PaymentMethodAttachOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/attach", options, requestOptions);
         }
 
-        public virtual Task<PaymentMethod> AttachAsync(string id, PaymentMethodAttachOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<PaymentMethod> AttachAsync(string id, PaymentMethodAttachOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/attach", options, requestOptions, cancellationToken);
         }
