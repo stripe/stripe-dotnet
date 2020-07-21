@@ -58,5 +58,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
         public string StatementDescriptorSuffix { get; set; }
+
+        /// <summary>
+        /// An optional dictionary including the account to automatically transfer to as part of a
+        /// destination charge.
+        /// </summary>
+        [JsonProperty("transfer_data")]
+        public ChargeTransferDataOptions TransferData { get; set; }
+
+        /// <summary>
+        /// A string that identifies this transaction as part of a group. <c>TransferGroup</c> may
+        /// only be provided if it has not been set. See the Connect documentation for details.
+        /// </summary>
+        [JsonProperty("transfer_group")]
+        public string TransferGroup { get; set; }
     }
 }
