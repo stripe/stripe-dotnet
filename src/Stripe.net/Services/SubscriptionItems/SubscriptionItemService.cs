@@ -33,12 +33,12 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual SubscriptionItem Delete(string id, SubscriptionItemDeleteOptions options, RequestOptions requestOptions = null)
+        public virtual SubscriptionItem Delete(string id, SubscriptionItemDeleteOptions options = null, RequestOptions requestOptions = null)
         {
             return this.DeleteEntity(id, options, requestOptions);
         }
 
-        public virtual Task<SubscriptionItem> DeleteAsync(string id, SubscriptionItemDeleteOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<SubscriptionItem> DeleteAsync(string id, SubscriptionItemDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
         }
