@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.23.0 - 2020-07-21
+* [#2127](https://github.com/stripe/stripe-dotnet/pull/2127) Adds `TransferData` and `TransferGroup` to `Charge` capture
+
 ## 37.22.0 - 2020-07-21
 * [#2125](https://github.com/stripe/stripe-dotnet/pull/2125) Add `Pii` on `Token` creation
 
