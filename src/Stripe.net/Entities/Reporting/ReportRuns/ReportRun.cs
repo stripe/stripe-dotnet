@@ -13,7 +13,7 @@ namespace Stripe.Reporting
         public string Object { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("error")]
@@ -35,7 +35,7 @@ namespace Stripe.Reporting
         public string Status { get; set; }
 
         [JsonProperty("succeeded_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? SucceededAt { get; set; }
     }
 }

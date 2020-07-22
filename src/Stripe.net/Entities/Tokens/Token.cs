@@ -22,7 +22,7 @@ namespace Stripe
         public string ClientIp { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         [JsonProperty("livemode")]

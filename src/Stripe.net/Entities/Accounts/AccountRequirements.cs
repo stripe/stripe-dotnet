@@ -13,7 +13,7 @@ namespace Stripe
         /// is reached before these fields are collected.
         /// </summary>
         [JsonProperty("current_deadline")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CurrentDeadline { get; set; }
 
         /// <summary>

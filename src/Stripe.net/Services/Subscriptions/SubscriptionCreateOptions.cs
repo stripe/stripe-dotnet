@@ -33,7 +33,7 @@ namespace Stripe
         /// anchor.
         /// </summary>
         [JsonProperty("backdate_start_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? BackdateStartDate { get; set; }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stripe
         /// <c>month</c> or <c>year</c> intervals, the day of the month for subsequent invoices.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Stripe
         /// current period ends this will cause a proration if <c>prorate=true</c>.
         /// </summary>
         [JsonProperty("cancel_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CancelAt { get; set; }
 
         /// <summary>

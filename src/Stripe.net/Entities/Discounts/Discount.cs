@@ -39,11 +39,11 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         [JsonProperty("end")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? End { get; set; }
 
         [JsonProperty("start")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Start { get; set; }
 
         #region Expandable Subscription
