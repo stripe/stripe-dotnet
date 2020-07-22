@@ -127,7 +127,7 @@ namespace Stripe.Infrastructure.FormEncoding
                 case DateTime dateTime:
                     flatParams = SingleParam(
                         keyPrefix,
-                        dateTime.ConvertDateTimeToEpoch().ToString(CultureInfo.InvariantCulture));
+                        ((DateTimeOffset)dateTime).ToUnixTimeSeconds().ToString(CultureInfo.InvariantCulture));
                     break;
 
                 case Enum e:
