@@ -22,14 +22,14 @@ namespace Stripe.Sigma
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>
         /// When the query was run, Sigma contained a snapshot of your Stripe data at this time.
         /// </summary>
         [JsonProperty("data_load_time")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime DataLoadTime { get; set; }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Stripe.Sigma
         /// Time at which the result expires and is no longer available for download.
         /// </summary>
         [JsonProperty("result_available_until")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime ResultAvailableUntil { get; set; }
 
         /// <summary>

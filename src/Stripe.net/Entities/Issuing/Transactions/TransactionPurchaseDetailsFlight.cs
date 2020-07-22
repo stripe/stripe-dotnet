@@ -11,7 +11,7 @@ namespace Stripe.Issuing
         /// The time that the flight departed.
         /// </summary>
         [JsonProperty("departure_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? DepartureAt { get; set; }
 
         /// <summary>

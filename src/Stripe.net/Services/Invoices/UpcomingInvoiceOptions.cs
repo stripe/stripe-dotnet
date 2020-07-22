@@ -60,7 +60,7 @@ namespace Stripe
         /// Time at which the subscription would cancel.
         /// </summary>
         [JsonProperty("subscription_cancel_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? SubscriptionCancelAt { get; set; }
 
         /// <summary>
@@ -130,14 +130,14 @@ namespace Stripe
         /// be set to false.
         /// </summary>
         [JsonProperty("subscription_proration_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? SubscriptionProrationDate { get; set; }
 
         /// <summary>
         /// Date a subscription is intended to start (can be future or past).
         /// </summary>
         [JsonProperty("subscription_start_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? SubscriptionStartDate { get; set; }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Stripe
         /// required.
         /// </summary>
         [JsonProperty("subscription_trial_end")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? SubscriptionTrialEnd { get; set; }
 
         /// <summary>

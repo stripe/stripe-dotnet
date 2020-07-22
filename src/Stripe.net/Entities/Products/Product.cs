@@ -35,7 +35,7 @@ namespace Stripe
         /// Time at which the object was created.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Stripe
         public string UnitLabel { get; set; }
 
         [JsonProperty("updated")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Updated { get; set; }
 
         /// <summary>

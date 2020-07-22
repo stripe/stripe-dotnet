@@ -73,7 +73,7 @@ namespace Stripe
         /// <c>iterations</c> must not be set.
         /// </summary>
         [JsonProperty("end_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Stripe
         /// The date at which this phase of the subscription schedule starts.
         /// </summary>
         [JsonProperty("start_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? StartDate { get; set; }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Stripe
         /// end date, can not be combined with <c>trial</c>.
         /// </summary>
         [JsonProperty("trial_end")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
     }
 }
