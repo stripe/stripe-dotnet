@@ -78,7 +78,7 @@ namespace Stripe
         /// upcoming invoice endpoint.
         /// </summary>
         [JsonProperty("proration_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ProrationDate { get; set; }
 
         /// <summary>

@@ -14,11 +14,11 @@ namespace Stripe.Reporting
         public string Object { get; set; }
 
         [JsonProperty("data_available_end")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime DataAvailableEnd { get; set; }
 
         [JsonProperty("data_available_start")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime DataAvailableStart { get; set; }
 
         [JsonProperty("default_columns")]
@@ -28,7 +28,7 @@ namespace Stripe.Reporting
         public string Name { get; set; }
 
         [JsonProperty("updated")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Updated { get; set; }
 
         [JsonProperty("version")]

@@ -52,7 +52,7 @@ namespace Stripe
         /// Time at which the capability was requested. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("requested_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? RequestedAt { get; set; }
 
         /// <summary>

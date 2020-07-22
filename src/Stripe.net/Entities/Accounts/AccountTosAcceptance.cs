@@ -11,7 +11,7 @@ namespace Stripe
         /// account representative.
         /// </summary>
         [JsonProperty("date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Date { get; set; }
 
         /// <summary>

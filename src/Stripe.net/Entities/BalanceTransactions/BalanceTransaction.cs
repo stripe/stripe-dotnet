@@ -29,14 +29,14 @@ namespace Stripe
         /// The date the transaction's net funds will become available in the Stripe balance.
         /// </summary>
         [JsonProperty("available_on")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime AvailableOn { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>

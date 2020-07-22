@@ -7,19 +7,19 @@ namespace Stripe
     public class OrderStatusTransitions : StripeEntity<OrderStatusTransitions>
     {
         [JsonProperty("canceled")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Canceled { get; set; }
 
         [JsonProperty("fulfiled")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Fulfiled { get; set; }
 
         [JsonProperty("paid")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Paid { get; set; }
 
         [JsonProperty("returned")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Returned { get; set; }
     }
 }

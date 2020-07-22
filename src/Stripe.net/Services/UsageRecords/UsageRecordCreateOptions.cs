@@ -13,7 +13,7 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         [JsonProperty("timestamp")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Timestamp { get; set; }
     }
 }
