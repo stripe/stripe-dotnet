@@ -13,7 +13,7 @@ namespace Stripe
         /// the day of the month for subsequent invoices.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Stripe
         /// discarded and no longer applied.
         /// </summary>
         [JsonProperty("expires_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime ExpiresAt { get; set; }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Stripe
         /// update is applied.
         /// </summary>
         [JsonProperty("trial_end")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
 
         /// <summary>

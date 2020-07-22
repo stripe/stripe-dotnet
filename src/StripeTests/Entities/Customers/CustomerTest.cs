@@ -1,8 +1,8 @@
 namespace StripeTests
 {
+    using System;
     using Newtonsoft.Json;
     using Stripe;
-    using Stripe.Infrastructure;
     using Xunit;
 
     public class CustomerTest : BaseStripeTest
@@ -52,7 +52,7 @@ namespace StripeTests
             Assert.IsType<Customer>(customer);
             Assert.NotNull(customer.Id);
             Assert.Equal("customer", customer.Object);
-            Assert.Equal(EpochTime.ConvertEpochToDateTime(1234567890), customer.Created);
+            Assert.Equal(1234567890, ((DateTimeOffset)customer.Created).ToUnixTimeSeconds());
 
             Assert.NotNull(customer.DefaultSource);
             Assert.IsType<Card>(customer.DefaultSource);

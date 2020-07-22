@@ -62,7 +62,7 @@ namespace Stripe
         /// <c>billing=send_invoice</c>.
         /// </summary>
         [JsonProperty("due_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? DueDate { get; set; }
 
         /// <summary>

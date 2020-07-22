@@ -10,7 +10,7 @@ namespace Stripe.Issuing
         /// The time of checking into the lodging.
         /// </summary>
         [JsonProperty("check_in_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CheckInAt { get; set; }
 
         /// <summary>

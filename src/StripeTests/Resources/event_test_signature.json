@@ -8,6 +8,7 @@
     "object": {
       "id": "cus_123",
       "object": "customer",
+      "created": 123456789,
       "email": "test@stripe.com",
       "livemode": false,
       "metadata": {}
