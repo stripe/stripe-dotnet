@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.24.0 - 2020-07-22
+* [#2129](https://github.com/stripe/stripe-dotnet/pull/2129) Add `CarteBancairesPayments` as a `Capability`
+
 ## 37.23.0 - 2020-07-21
 * [#2127](https://github.com/stripe/stripe-dotnet/pull/2127) Adds `TransferData` and `TransferGroup` to `Charge` capture
 
