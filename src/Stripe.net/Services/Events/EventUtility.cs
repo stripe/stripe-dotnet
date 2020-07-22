@@ -90,7 +90,7 @@ namespace Stripe
                 stripeSignatureHeader,
                 secret,
                 tolerance,
-                DateTime.UtcNow.ConvertDateTimeToEpoch(),
+                DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
                 throwOnApiVersionMismatch);
         }
 
@@ -130,7 +130,7 @@ namespace Stripe
 
         public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long tolerance = DefaultTimeTolerance)
         {
-            ValidateSignature(json, stripeSignatureHeader, secret, tolerance, DateTime.UtcNow.ConvertDateTimeToEpoch());
+            ValidateSignature(json, stripeSignatureHeader, secret, tolerance, DateTimeOffset.UtcNow.ToUnixTimeSeconds());
         }
 
         public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long tolerance, long utcNow)

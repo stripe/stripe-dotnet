@@ -85,7 +85,7 @@ namespace Stripe
         /// redeem_by date, the coupon can no longer be applied to new customers.
         /// </summary>
         [JsonProperty("redeem_by")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? RedeemBy { get; set; }
     }
 }
