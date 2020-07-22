@@ -74,7 +74,7 @@ namespace Stripe
         /// was canceled. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("canceled_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>

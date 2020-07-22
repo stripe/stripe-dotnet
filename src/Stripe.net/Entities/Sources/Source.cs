@@ -65,7 +65,7 @@ namespace Stripe
         public SourceCodeVerification CodeVerification { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>

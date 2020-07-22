@@ -7,11 +7,11 @@ namespace Stripe
     public class Period : StripeEntity<Period>
     {
         [JsonProperty("start")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Start { get; set; }
 
         [JsonProperty("end")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? End { get; set; }
     }
 }
