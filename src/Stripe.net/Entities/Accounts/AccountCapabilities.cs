@@ -33,6 +33,13 @@ namespace Stripe
         public string CardPayments { get; set; }
 
         /// <summary>
+        /// The status of the Cartes Bancaires payments capability of the account, or whether the
+        /// account can directly process Cartes Bancaires card charges in EUR currency.
+        /// </summary>
+        [JsonProperty("cartes_bancaires_payments")]
+        public string CartesBancairesPayments { get; set; }
+
+        /// <summary>
         /// The status of the JCB payments capability of the account, or whether the account (Japan
         /// only) can directly process JCB credit card charges in JPY currency.
         /// </summary>
