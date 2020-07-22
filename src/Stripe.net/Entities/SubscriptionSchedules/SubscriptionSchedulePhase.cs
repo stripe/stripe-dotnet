@@ -112,7 +112,7 @@ namespace Stripe
         /// The end of this phase of the subscription schedule.
         /// </summary>
         [JsonProperty("end_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime EndDate { get; set; }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Stripe
         /// The start of this phase of the subscription schedule.
         /// </summary>
         [JsonProperty("start_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime StartDate { get; set; }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Stripe
         /// When the trial ends within the phase.
         /// </summary>
         [JsonProperty("trial_end")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
     }
 }

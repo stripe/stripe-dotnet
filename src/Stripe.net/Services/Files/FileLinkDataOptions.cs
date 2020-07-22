@@ -20,7 +20,7 @@ namespace Stripe
         /// A future timestamp after which the link will no longer be usable.
         /// </summary>
         [JsonProperty("expires_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
