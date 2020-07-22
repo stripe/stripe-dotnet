@@ -2,7 +2,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class TokenPersonOptions : INestedOptions, IHasMetadata
     {
@@ -126,8 +125,7 @@ namespace Stripe
         /// The last 4 digits of the person’s social security number.
         /// </summary>
         [JsonProperty("ssn_last_4")]
-        [AllowNameMismatch]
-        public string SSNLast4 { get; set; }
+        public string SsnLast4 { get; set; }
 
         /// <summary>
         /// The person’s verification status.
