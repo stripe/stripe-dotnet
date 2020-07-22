@@ -12,7 +12,7 @@ namespace Stripe
         /// enabled for the account.
         /// </summary>
         [JsonProperty("current_deadline")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CurrentDeadline { get; set; }
 
         /// <summary>

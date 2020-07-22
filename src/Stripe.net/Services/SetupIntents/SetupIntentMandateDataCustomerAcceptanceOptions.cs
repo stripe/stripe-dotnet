@@ -10,7 +10,7 @@ namespace Stripe
         /// <see cref="DateTime"/> at which the customer accepted the Mandate.
         /// </summary>
         [JsonProperty("accepted_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? AcceptedAt { get; set; }
 
         /// <summary>
