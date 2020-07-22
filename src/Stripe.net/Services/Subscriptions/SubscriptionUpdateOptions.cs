@@ -48,7 +48,7 @@ namespace Stripe
         /// proration for that period.
         /// </summary>
         [JsonProperty("cancel_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace Stripe
         /// calculations.
         /// </summary>
         [JsonProperty("proration_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ProrationDate { get; set; }
 
         [Obsolete("Use Items instead.")]

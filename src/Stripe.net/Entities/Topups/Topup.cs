@@ -44,7 +44,7 @@ namespace Stripe
         #endregion
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Stripe
         public string Description { get; set; }
 
         [JsonProperty("expected_availability_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpectedAvailabilityDate { get; set; }
 
         /// <summary>

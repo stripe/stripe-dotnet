@@ -139,7 +139,7 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace Stripe
         /// where billing=charge_automatically.
         /// </summary>
         [JsonProperty("due_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? DueDate { get; set; }
 
         /// <summary>
@@ -405,7 +405,7 @@ namespace Stripe
         /// where <see cref="CollectionMethod" /> is set to <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("next_payment_attempt")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? NextPaymentAttempt { get; set; }
 
         /// <summary>
@@ -455,14 +455,14 @@ namespace Stripe
         /// End of the usage period during which invoice items were added to this invoice.
         /// </summary>
         [JsonProperty("period_end")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime PeriodEnd { get; set; }
 
         /// <summary>
         /// Start of the usage period during which invoice items were added to this invoice.
         /// </summary>
         [JsonProperty("period_start")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime PeriodStart { get; set; }
 
         /// <summary>
@@ -541,7 +541,7 @@ namespace Stripe
         /// prorations.
         /// </summary>
         [JsonProperty("subscription_proration_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime SubscriptionProrationDate { get; set; }
 
         /// <summary>
@@ -596,7 +596,7 @@ namespace Stripe
         /// deliver, this will be set while the invoice is being created.
         /// </summary>
         [JsonProperty("webhooks_delivered_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? WebhooksDeliveredAt { get; set; }
     }
 }
