@@ -1,7 +1,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class PersonVerification : StripeEntity<PersonVerification>
     {

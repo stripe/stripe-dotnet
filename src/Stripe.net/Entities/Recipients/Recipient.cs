@@ -23,7 +23,8 @@ namespace Stripe
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
-        #region Expandable Default Card
+        #region Expandable DefaultCard
+
         [JsonIgnore]
         public string DefaultCardId
         {
