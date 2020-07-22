@@ -35,7 +35,7 @@ namespace Stripe
         public decimal? PercentOff { get; set; }
 
         [JsonProperty("redeem_by")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? RedeemBy { get; set; }
     }
 }

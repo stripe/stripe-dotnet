@@ -17,7 +17,7 @@ namespace Stripe
         public List<EphemeralKeyAssociatedObject> AssociatedObjects { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         [JsonProperty("expires")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Expires { get; set; }
 
         [JsonProperty("livemode")]

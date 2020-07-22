@@ -28,7 +28,7 @@ namespace Stripe
         public decimal? ApplicationFeePercent { get; set; }
 
         [JsonProperty("billing_cycle_anchor")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stripe
         /// A date in the future at which the subscription will automatically get canceled.
         /// </summary>
         [JsonProperty("cancel_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Stripe
         /// a canceled state.
         /// </summary>
         [JsonProperty("canceled_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>
@@ -90,14 +90,14 @@ namespace Stripe
         /// this period, a new invoice will be created.
         /// </summary>
         [JsonProperty("current_period_end")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime CurrentPeriodEnd { get; set; }
 
         /// <summary>
         /// Start of the current period that the subscription has been invoiced for.
         /// </summary>
         [JsonProperty("current_period_start")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime CurrentPeriodStart { get; set; }
 
         #region Expandable Customer
@@ -207,7 +207,7 @@ namespace Stripe
         /// If the subscription has ended, the date the subscription ended.
         /// </summary>
         [JsonProperty("ended_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EndedAt { get; set; }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Stripe
         /// according to the schedule provided at <c>PendingInvoiceItemInterval</c>.
         /// </summary>
         [JsonProperty("next_pending_invoice_item_invoice")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? NextPendingInvoiceItemInvoice { get; set; }
 
         /// <summary>
@@ -356,7 +356,7 @@ namespace Stripe
         /// <c>created</c> date due to backdating.
         /// </summary>
         [JsonProperty("start_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime StartDate { get; set; }
 
         /// <summary>
@@ -378,14 +378,14 @@ namespace Stripe
         /// If the subscription has a trial, the end of that trial.
         /// </summary>
         [JsonProperty("trial_end")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
 
         /// <summary>
         /// If the subscription has a trial, the beginning of that trial.
         /// </summary>
         [JsonProperty("trial_start")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialStart { get; set; }
     }
 }

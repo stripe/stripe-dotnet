@@ -29,7 +29,7 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Stripe
         /// The time that the credit note was voided.
         /// </summary>
         [JsonProperty("voided_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? VoidedAt { get; set; }
     }
 }

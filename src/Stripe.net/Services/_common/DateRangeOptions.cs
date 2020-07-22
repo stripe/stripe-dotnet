@@ -7,22 +7,22 @@ namespace Stripe
     public class DateRangeOptions : INestedOptions
     {
         [JsonProperty("gt")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         [AllowNameMismatch]
         public DateTime? GreaterThan { get; set; }
 
         [JsonProperty("gte")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         [AllowNameMismatch]
         public DateTime? GreaterThanOrEqual { get; set; }
 
         [JsonProperty("lt")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         [AllowNameMismatch]
         public DateTime? LessThan { get; set; }
 
         [JsonProperty("lte")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         [AllowNameMismatch]
         public DateTime? LessThanOrEqual { get; set; }
     }
