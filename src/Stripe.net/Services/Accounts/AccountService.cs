@@ -54,16 +54,6 @@ namespace Stripe
             return this.GetEntityAsync(accountId, options, requestOptions, cancellationToken);
         }
 
-        public virtual Account GetSelf(RequestOptions requestOptions = null)
-        {
-            return this.Request(HttpMethod.Get, "/v1/account", null, requestOptions);
-        }
-
-        public virtual Task<Account> GetSelfAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync(HttpMethod.Get, "/v1/account", null, requestOptions, cancellationToken);
-        }
-
         public virtual StripeList<Account> List(AccountListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListEntities(options, requestOptions);
@@ -104,6 +94,16 @@ namespace Stripe
         public virtual Task<Account> UpdateAsync(string accountId, AccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(accountId, options, requestOptions, cancellationToken);
+        }
+
+        public virtual Account GetSelf(RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Get, "/v1/account", null, requestOptions);
+        }
+
+        public virtual Task<Account> GetSelfAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Get, "/v1/account", null, requestOptions, cancellationToken);
         }
     }
 }
