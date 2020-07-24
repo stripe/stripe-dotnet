@@ -18,7 +18,7 @@ namespace Stripe
         /// for some reason.
         /// </summary>
         [JsonProperty("errors")]
-        public List<AccountRequirementsError> Errors { get; set; }
+        public List<PersonRequirementsError> Errors { get; set; }
 
         /// <summary>
         /// Fields that need to be collected assuming all volume thresholds are reached. As fields
