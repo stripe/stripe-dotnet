@@ -44,6 +44,9 @@ namespace Stripe
         internal ExpandableField<Card> InternalDefaultCard { get; set; }
         #endregion
 
+        [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Deleted { get; set; }
+
         [JsonProperty("description")]
         public string Description { get; set; }
 
@@ -56,14 +59,50 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        #region Expandable MigratedTo
+
+        [JsonIgnore]
+        public string MigratedToId
+        {
+            get => this.InternalMigratedTo?.Id;
+            set => this.InternalMigratedTo = SetExpandableFieldId(value, this.InternalMigratedTo);
+        }
+
+        [JsonIgnore]
+        public Account MigratedTo
+        {
+            get => this.InternalMigratedTo?.ExpandedObject;
+            set => this.InternalMigratedTo = SetExpandableFieldObject(value, this.InternalMigratedTo);
+        }
+
         [JsonProperty("migrated_to")]
-        public string MigratedTo { get; set; }
+        [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+        internal ExpandableField<Account> InternalMigratedTo { get; set; }
+        #endregion
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        #region Expandable RolledBackFrom
+
+        [JsonIgnore]
+        public string RolledBackFromId
+        {
+            get => this.InternalRolledBackFrom?.Id;
+            set => this.InternalRolledBackFrom = SetExpandableFieldId(value, this.InternalRolledBackFrom);
+        }
+
+        [JsonIgnore]
+        public Account RolledBackFrom
+        {
+            get => this.InternalRolledBackFrom?.ExpandedObject;
+            set => this.InternalRolledBackFrom = SetExpandableFieldObject(value, this.InternalRolledBackFrom);
+        }
+
         [JsonProperty("rolled_back_from")]
-        public string RolledBackFrom { get; set; }
+        [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+        internal ExpandableField<Account> InternalRolledBackFrom { get; set; }
+        #endregion
 
         [JsonProperty("type")]
         public string Type { get; set; }
