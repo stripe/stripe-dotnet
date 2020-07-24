@@ -2,7 +2,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class LineItem : StripeEntity<LineItem>, IHasId, IHasObject
     {
@@ -55,32 +54,11 @@ namespace Stripe
         [JsonProperty("discounts")]
         public List<LineItemDiscount> Discounts { get; set; }
 
-        #region Expandable Price
-
         /// <summary>
-        /// ID of the price linked to this line item.
+        /// The price used to generate the line item.
         /// </summary>
-        [JsonIgnore]
-        public string PriceId
-        {
-            get => this.InternalPrice?.Id;
-            set => this.InternalPrice = SetExpandableFieldId(value, this.InternalPrice);
-        }
-
-        /// <summary>
-        /// (Expanded) The price linked to this line item (if it was expanded).
-        /// </summary>
-        [JsonIgnore]
-        public Price Price
-        {
-            get => this.InternalPrice?.ExpandedObject;
-            set => this.InternalPrice = SetExpandableFieldObject(value, this.InternalPrice);
-        }
-
         [JsonProperty("price")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Price>))]
-        internal ExpandableField<Price> InternalPrice { get; set; }
-        #endregion
+        public Price Price { get; set; }
 
         /// <summary>
         /// Quantity associated with the line item.
