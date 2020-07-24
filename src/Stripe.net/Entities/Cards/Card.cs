@@ -135,27 +135,6 @@ namespace Stripe
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        #region Expandable Recipient
-
-        [JsonIgnore]
-        public string RecipientId
-        {
-            get => this.InternalRecipient?.Id;
-            set => this.InternalRecipient = SetExpandableFieldId(value, this.InternalRecipient);
-        }
-
-        [JsonIgnore]
-        public Recipient Recipient
-        {
-            get => this.InternalRecipient?.ExpandedObject;
-            set => this.InternalRecipient = SetExpandableFieldObject(value, this.InternalRecipient);
-        }
-
-        [JsonProperty("recipient")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Recipient>))]
-        internal ExpandableField<Recipient> InternalRecipient { get; set; }
-        #endregion
-
         [JsonProperty("tokenization_method")]
         public string TokenizationMethod { get; set; }
     }
