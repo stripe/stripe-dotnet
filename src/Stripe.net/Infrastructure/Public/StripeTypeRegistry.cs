@@ -63,7 +63,6 @@ namespace Stripe
             { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
             { "radar.value_list", typeof(Radar.ValueList) },
             { "radar.value_list_item", typeof(Radar.ValueListItem) },
-            { "recipient", typeof(Recipient) },
             { "refund", typeof(Refund) },
             { "review", typeof(Review) },
             { "reporting.report_run", typeof(Reporting.ReportRun) },
