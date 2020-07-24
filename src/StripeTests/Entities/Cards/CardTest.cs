@@ -28,7 +28,6 @@ namespace StripeTests
             string[] expansions =
             {
               "customer",
-              "recipient",
             };
 
             string json = this.GetFixture("/v1/customers/cus_123/cards/card_123", expansions);
@@ -40,9 +39,6 @@ namespace StripeTests
 
             Assert.NotNull(card.Customer);
             Assert.Equal("customer", card.Customer.Object);
-
-            Assert.NotNull(card.Recipient);
-            Assert.Equal("recipient", card.Recipient.Object);
         }
     }
 }
