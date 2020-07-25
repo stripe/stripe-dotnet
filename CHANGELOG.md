@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.25.0 - 2020-07-24
+* [#2141](https://github.com/stripe/stripe-dotnet/pull/2141) Add support for `FPXPayments` as a `Capability` on `Account` create and update
+
 ## 37.24.0 - 2020-07-22
 * [#2129](https://github.com/stripe/stripe-dotnet/pull/2129) Add `CarteBancairesPayments` as a `Capability`
 
