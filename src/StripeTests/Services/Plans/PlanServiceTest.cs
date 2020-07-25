@@ -31,7 +31,7 @@ namespace StripeTests
                 Currency = "usd",
                 Interval = "month",
                 Nickname = "Plan Nickmame",
-                Product = new PlanProductCreateOptions
+                Product = new PlanProductOptions
                 {
                     Name = "Product Name",
                 },
@@ -42,7 +42,7 @@ namespace StripeTests
                 Currency = "usd",
                 Interval = "month",
                 Nickname = "Plan Nickmame",
-                Product = new PlanProductCreateOptions
+                Product = new PlanProductOptions
                 {
                     Name = "Product Name",
                 },
