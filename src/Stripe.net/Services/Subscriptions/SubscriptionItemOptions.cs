@@ -6,6 +6,14 @@ namespace Stripe
     public class SubscriptionItemOptions : IHasId, INestedOptions, IHasMetadata
     {
         /// <summary>
+        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
+        /// new billing period. When updating, pass an empty string to remove previously-defined
+        /// thresholds.
+        /// </summary>
+        [JsonProperty("billing_thresholds")]
+        public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
+
+        /// <summary>
         /// Delete all usage for a given subscription item. Only allowed when <c>deleted</c> is set
         /// to true and the current plan’s <c>usage_type</c> is metered.  This parameter is only
         /// available on update.
