@@ -12,7 +12,7 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataAuBecsDebitOptions AuBecsDebit { get; set; }
 
         /// <summary>
-        /// If this is a Bacs Debig PaymentMethod, this hash contains details about the Bacs Direct
+        /// If this is a Bacs Debit PaymentMethod, this hash contains details about the Bacs Direct
         /// Debit bank account.
         /// </summary>
         [JsonProperty("bacs_debit")]
@@ -30,12 +30,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_details")]
         public BillingDetailsOptions BillingDetails { get; set; }
-
-        /// <summary>
-        /// The details associated with the card payment method for this payment intent.
-        /// </summary>
-        [JsonProperty("card")]
-        public PaymentIntentPaymentMethodDataCardOptions Card { get; set; }
 
         /// <summary>
         /// If this is an EPS PaymentMethod, this hash contains details about the EPS payment
