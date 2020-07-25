@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentMethodBacsDebitCreateOptions : INestedOptions
+    public class PaymentMethodBacsDebitOptions : INestedOptions
     {
         /// <summary>
         /// Account number of the bank account that the funds will be debited from.

@@ -9,19 +9,19 @@ namespace Stripe
         /// Parameters specific to AU BECS Debit PaymentMethod.
         /// </summary>
         [JsonProperty("au_becs_debit")]
-        public PaymentMethodAuBecsDebitCreateOptions AuBecsDebit { get; set; }
+        public PaymentMethodAuBecsDebitOptions AuBecsDebit { get; set; }
 
         /// <summary>
         /// Parameters specific to BACS Debit PaymentMethod.
         /// </summary>
         [JsonProperty("bacs_debit")]
-        public PaymentMethodBacsDebitCreateOptions BacsDebit { get; set; }
+        public PaymentMethodBacsDebitOptions BacsDebit { get; set; }
 
         /// <summary>
         /// Parameters specific to Bancontact PaymentMethod.
         /// </summary>
         [JsonProperty("bancontact")]
-        public PaymentMethodBancontactCreateOptions Bancontact { get; set; }
+        public PaymentMethodBancontactOptions Bancontact { get; set; }
 
         /// <summary>
         /// Billing information associated with the PaymentMethod that may be used or required by
@@ -34,7 +34,7 @@ namespace Stripe
         /// Parameters specific to Card PaymentMethod.
         /// </summary>
         [JsonProperty("card")]
-        public PaymentMethodCardCreateOptions Card { get; set; }
+        public PaymentMethodCardOptions Card { get; set; }
 
         /// <summary>
         /// The customer associated with the PaymentMethod that you are trying to share with a
@@ -47,31 +47,31 @@ namespace Stripe
         /// Parameters specific to Eps PaymentMethod.
         /// </summary>
         [JsonProperty("eps")]
-        public PaymentMethodEpsCreateOptions Eps { get; set; }
+        public PaymentMethodEpsOptions Eps { get; set; }
 
         /// <summary>
         /// Parameters specific to FPX PaymentMethod.
         /// </summary>
         [JsonProperty("fpx")]
-        public PaymentMethodFpxCreateOptions Fpx { get; set; }
+        public PaymentMethodFpxOptions Fpx { get; set; }
 
         /// <summary>
         /// Parameters specific to Giropay PaymentMethod.
         /// </summary>
         [JsonProperty("giropay")]
-        public PaymentMethodGiropayCreateOptions Giropay { get; set; }
+        public PaymentMethodGiropayOptions Giropay { get; set; }
 
         /// <summary>
         /// Parameters specific to iDEAL PaymentMethod.
         /// </summary>
         [JsonProperty("ideal")]
-        public PaymentMethodIdealCreateOptions Ideal { get; set; }
+        public PaymentMethodIdealOptions Ideal { get; set; }
 
         /// <summary>
         /// Parameters specific to Interac Present PaymentMethod.
         /// </summary>
         [JsonProperty("interac_present")]
-        public PaymentMethodInteracPresentCreateOptions InteracPresent { get; set; }
+        public PaymentMethodInteracPresentOptions InteracPresent { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to a charge object. It can be useful for
@@ -85,7 +85,7 @@ namespace Stripe
         /// Parameters specific to P24 PaymentMethod.
         /// </summary>
         [JsonProperty("p24")]
-        public PaymentMethodP24CreateOptions P24 { get; set; }
+        public PaymentMethodP24Options P24 { get; set; }
 
         /// <summary>
         /// The id of the PaymentMethod that you are trying to share with a Connected account.
@@ -98,7 +98,7 @@ namespace Stripe
         /// Parameters specific to SEPA Debit PaymentMethod.
         /// </summary>
         [JsonProperty("sepa_debit")]
-        public PaymentMethodSepaDebitCreateOptions SepaDebit { get; set; }
+        public PaymentMethodSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
