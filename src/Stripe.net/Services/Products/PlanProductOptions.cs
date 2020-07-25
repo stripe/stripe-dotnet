@@ -3,7 +3,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PlanProductCreateOptions : INestedOptions, IHasId, IHasMetadata
+    public class PlanProductOptions : INestedOptions, IHasId, IHasMetadata
     {
         [JsonProperty("active")]
         public bool? Active { get; set; }

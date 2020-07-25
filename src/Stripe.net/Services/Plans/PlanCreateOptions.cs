@@ -90,12 +90,12 @@ namespace Stripe
 
         /// <summary>
         /// The product whose pricing the created plan will represent. This can either be the ID of
-        /// an existing product, or a <see cref="PlanProductCreateOptions"/> instance containing
+        /// an existing product, or a <see cref="PlanProductOptions"/> instance containing
         /// fields used to create a service product.
         /// </summary>
         [JsonProperty("product")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<string, PlanProductCreateOptions> Product { get; set; }
+        public AnyOf<string, PlanProductOptions> Product { get; set; }
 
         /// <summary>
         /// Each element represents a pricing tier. This parameter requires <see cref="BillingScheme"/>
