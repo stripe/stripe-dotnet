@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentMethodFpxCreateOptions : INestedOptions
+    public class PaymentMethodFpxOptions : INestedOptions
     {
         /// <summary>
         /// Account holder type for FPX transaction. Can be one of "individual" or "company".
