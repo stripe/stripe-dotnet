@@ -4,9 +4,6 @@ namespace Stripe
 
     public class OrderShippingMethod : StripeEntity<OrderShippingMethod>, IHasId
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
         /// <summary>
         /// A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a 0-decimal currency) representing the total amount for the line item.
         /// </summary>
@@ -30,5 +27,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 }
