@@ -5,6 +5,9 @@ namespace Stripe
 
     public class PaymentMethodUpdateOptions : BaseOptions, IHasMetadata
     {
+        [JsonProperty("au_becs_debit")]
+        public PaymentMethodAuBecsDebitOptions AuBecsDebit { get; set; }
+
         /// <summary>
         /// Billing information associated with the PaymentMethod that may be used or required by
         /// particular types of payment methods.
@@ -16,7 +19,7 @@ namespace Stripe
         /// If this is a <c>card</c> PaymentMethod, new values associated with the card.
         /// </summary>
         [JsonProperty("card")]
-        public PaymentMethodCardUpdateOptions Card { get; set; }
+        public PaymentMethodCardOptions Card { get; set; }
 
         /// <summary>
         /// A set of key/value pairs that you can attach to a charge object. It can be useful for
@@ -25,5 +28,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("sepa_debit")]
+        public PaymentMethodSepaDebitOptions SepaDebit { get; set; }
     }
 }
