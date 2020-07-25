@@ -17,10 +17,10 @@ namespace Stripe
         [JsonProperty("shipping_address_zip")]
         public string ShippingAddressZip { get; set; }
 
-        [JsonProperty("shipping_from_zip")]
-        public string ShippingFromZip { get; set; }
-
         [JsonProperty("shipping_amount")]
         public long? ShippingAmount { get; set; }
+
+        [JsonProperty("shipping_from_zip")]
+        public string ShippingFromZip { get; set; }
     }
 }
