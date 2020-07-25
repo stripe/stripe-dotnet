@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentMethodIdealCreateOptions : INestedOptions
+    public class PaymentMethodIdealOptions : INestedOptions
     {
         /// <summary>
         /// The customer's bank.
