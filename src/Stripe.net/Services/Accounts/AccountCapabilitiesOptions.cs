@@ -35,6 +35,12 @@ namespace Stripe
         public AccountCapabilitiesCartesBancairesPaymentsOptions CartesBancairesPayments { get; set; }
 
         /// <summary>
+        /// The fpx_payments capability.
+        /// </summary>
+        [JsonProperty("fpx_payments")]
+        public AccountCapabilitiesFpxPaymentsOptions FpxPayments { get; set; }
+
+        /// <summary>
         /// The jcb_payments capability.
         /// </summary>
         [JsonProperty("jcb_payments")]
