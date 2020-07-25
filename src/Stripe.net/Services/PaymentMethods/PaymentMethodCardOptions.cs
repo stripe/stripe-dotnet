@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentIntentPaymentMethodDataCardOptions : INestedOptions
+    public class PaymentMethodCardOptions : INestedOptions
     {
         /// <summary>
         /// Card security code. It is highly recommended to always include this value.
