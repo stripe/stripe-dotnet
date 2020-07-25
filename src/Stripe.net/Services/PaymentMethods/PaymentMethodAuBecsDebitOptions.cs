@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentMethodAuBecsDebitCreateOptions : INestedOptions
+    public class PaymentMethodAuBecsDebitOptions : INestedOptions
     {
         [JsonProperty("account_number")]
         public string AccountNumber { get; set; }

@@ -33,7 +33,7 @@ namespace StripeTests
 
             this.createOptions = new PaymentMethodCreateOptions
             {
-                Card = new PaymentMethodCardCreateOptions
+                Card = new PaymentMethodCardOptions
                 {
                     Token = "tok_123",
                 },
