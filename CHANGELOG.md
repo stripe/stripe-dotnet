@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.26.0 - 2020-07-25
+* [#2143](https://github.com/stripe/stripe-dotnet/pull/2143) Add `FpxPayments` to `AccountCapabilities` on `Account`
+
 ## 37.25.0 - 2020-07-24
 * [#2141](https://github.com/stripe/stripe-dotnet/pull/2141) Add support for `FPXPayments` as a `Capability` on `Account` create and update
 
