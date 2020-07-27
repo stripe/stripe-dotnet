@@ -55,30 +55,6 @@ namespace Stripe
         public const string BalanceAvailable = "balance.available";
 
         /// <summary>
-        /// Occurs whenever a receiver has been created.
-        /// </summary>
-        [Obsolete]
-        public const string BitcoinReceiverCreated = "bitcoin.receiver.created";
-
-        /// <summary>
-        /// Occurs whenever a receiver is filled (that is, when it has received enough bitcoin to process a payment of the same amount).
-        /// </summary>
-        [Obsolete]
-        public const string BitcoinReceiverFilled = "bitcoin.receiver.filled";
-
-        /// <summary>
-        /// Occurs whenever a receiver is updated.
-        /// </summary>
-        [Obsolete]
-        public const string BitcoinReceiverUpdated = "bitcoin.receiver.updated";
-
-        /// <summary>
-        /// Occurs whenever bitcoin is pushed to a receiver.
-        /// </summary>
-        [Obsolete]
-        public const string BitcoinReceiverTransactionUpdated = "bitcoin.receiver.transaction.created";
-
-        /// <summary>
         /// Occurs whenever a capability has new requirements or a new status.
         /// </summary>
         public const string CapabilityUpdated = "capability.updated";
