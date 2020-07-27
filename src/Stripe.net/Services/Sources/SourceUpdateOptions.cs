@@ -12,6 +12,12 @@ namespace Stripe
         public long? Amount { get; set; }
 
         /// <summary>
+        /// Properties that can be updated on a Card Source.
+        /// </summary>
+        [JsonProperty("card")]
+        public SourceCardUpdateOptions Card { get; set; }
+
+        /// <summary>
         /// Information about a mandate possiblity attached to a source object (generally for bank debits) as well as its acceptance status.
         /// </summary>
         [JsonProperty("mandate")]
@@ -36,11 +42,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("source_order")]
         public SourceSourceOrderOptions SourceOrder { get; set; }
-
-        /// <summary>
-        /// Properties that can be updated on a Card Source.
-        /// </summary>
-        [JsonProperty("card")]
-        public SourceCardUpdateOptions Card { get; set; }
     }
 }
