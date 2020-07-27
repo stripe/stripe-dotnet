@@ -10,8 +10,6 @@ namespace Stripe
 
         public const string Bancontact = "bancontact";
 
-        public const string Bitcoin = "bitcoin";
-
         public const string Card = "card";
 
         public const string Eps = "eps";
