@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -24,12 +25,12 @@ namespace Stripe
 
         public virtual Subscription Cancel(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(id, options, requestOptions);
+            return this.Request(HttpMethod.Delete, $"{this.InstanceUrl(id)}", options, requestOptions);
         }
 
         public virtual Task<Subscription> CancelAsync(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Delete, $"{this.InstanceUrl(id)}", options, requestOptions, cancellationToken);
         }
 
         public virtual Subscription Create(SubscriptionCreateOptions options, RequestOptions requestOptions = null)
