@@ -88,7 +88,7 @@ namespace Stripe
         public Source Source { get; set; }
 
         /// <summary>
-        /// Extra information about a topup. This will appear on your customer’s credit card statement.
+        /// Extra information about a topup. This will appear on your customer's credit card statement.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }

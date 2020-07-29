@@ -47,7 +47,7 @@ namespace Stripe
         public List<string> EventuallyDue { get; set; }
 
         /// <summary>
-        /// The fields that weren’t collected by the <c>currently_due</c>. These fields need to be
+        /// The fields that weren't collected by the <c>currently_due</c>. These fields need to be
         /// collected to enable the capability for the account.
         /// </summary>
         [JsonProperty("past_due")]

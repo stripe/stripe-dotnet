@@ -14,7 +14,7 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// Object representing the subscription schedule’s default settings.
+        /// Object representing the subscription schedule's default settings.
         /// </summary>
         [JsonProperty("default_settings")]
         public SubscriptionScheduleDefaultSettingsOptions DefaultSettings { get; set; }
@@ -28,8 +28,8 @@ namespace Stripe
 
         /// <summary>
         /// Migrate an existing subscription to be managed by a subscription schedule. If this
-        /// parameter is set, a subscription schedule will be created using the subscription’s
-        /// plan(s), set to auto-renew using the subscription’s interval. Other parameters cannot
+        /// parameter is set, a subscription schedule will be created using the subscription's
+        /// plan(s), set to auto-renew using the subscription's interval. Other parameters cannot
         /// be set since their values will be inferred from the subscription.
         /// </summary>
         [JsonProperty("from_subscription")]

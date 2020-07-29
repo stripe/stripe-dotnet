@@ -14,7 +14,7 @@ namespace Stripe
 
         /// <summary>
         /// Delete all usage for a given subscription item. Only allowed when <c>deleted</c> is set
-        /// to true and the current plan’s <c>usage_type</c> is metered.
+        /// to true and the current plan's <c>usage_type</c> is metered.
         /// </summary>
         [JsonProperty("clear_usage")]
         public bool? ClearUsage { get; set; }

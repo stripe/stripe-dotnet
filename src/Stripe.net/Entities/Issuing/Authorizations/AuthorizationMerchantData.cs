@@ -5,7 +5,7 @@ namespace Stripe.Issuing
     public class AuthorizationMerchantData : StripeEntity<AuthorizationMerchantData>
     {
         /// <summary>
-        /// A categorization of the seller’s type of business.
+        /// A categorization of the seller's type of business.
         /// </summary>
         [JsonProperty("category")]
         public string Category { get; set; }

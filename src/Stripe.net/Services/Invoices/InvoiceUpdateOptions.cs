@@ -9,7 +9,7 @@ namespace Stripe
     {
         /// <summary>
         /// A fee in cents that will be applied to the invoice and transferred to the application
-        /// owner’s Stripe account. The request must be made with an OAuth key or the Stripe-Account
+        /// owner's Stripe account. The request must be made with an OAuth key or the Stripe-Account
         /// header in order to take an application fee. For more information, see the application
         /// fees <see href="https://stripe.com/docs/connect/subscriptions#working-with-invoices">documentation</see>.
         /// </summary>

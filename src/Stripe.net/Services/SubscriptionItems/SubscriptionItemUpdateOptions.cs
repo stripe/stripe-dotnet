@@ -82,7 +82,7 @@ namespace Stripe
         public DateTime? ProrationDate { get; set; }
 
         /// <summary>
-        /// The quantity you’d like to apply to the subscription item you’re creating.
+        /// The quantity you'd like to apply to the subscription item you're creating.
         /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }

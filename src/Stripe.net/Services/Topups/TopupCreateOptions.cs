@@ -40,7 +40,7 @@ namespace Stripe
         public string Source { get; set; }
 
         /// <summary>
-        /// Extra information about a top-up for the source’s bank statement. Limited to 15 ASCII
+        /// Extra information about a top-up for the source's bank statement. Limited to 15 ASCII
         /// characters.
         /// </summary>
         [JsonProperty("statement_descriptor")]

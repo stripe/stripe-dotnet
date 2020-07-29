@@ -12,13 +12,13 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
         /// <summary>
-        /// Details about the customer’s acceptance of the mandate.
+        /// Details about the customer's acceptance of the mandate.
         /// </summary>
         [JsonProperty("customer_acceptance")]
         public MandateCustomerAcceptance CustomerAcceptance { get; set; }

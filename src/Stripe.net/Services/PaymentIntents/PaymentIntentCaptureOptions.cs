@@ -14,7 +14,7 @@ namespace Stripe
 
         /// <summary>
         /// The amount of the application fee (if any) that will be applied to the payment and
-        /// transferred to the application owner’s Stripe account. For more information, see the
+        /// transferred to the application owner's Stripe account. For more information, see the
         /// PaymentIntents <a href="https://stripe.com/docs/payments/payment-intents/use-cases#connected-accounts">use
         /// case for connected accounts</a>.
         /// </summary>
@@ -22,7 +22,7 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
-        /// Extra information about a PaymentIntent. This will appear on your customer’s statement
+        /// Extra information about a PaymentIntent. This will appear on your customer's statement
         /// when this PaymentIntent succeeds in creating a charge.
         /// </summary>
         [JsonProperty("statement_descriptor")]
@@ -30,7 +30,7 @@ namespace Stripe
 
         /// <summary>
         /// Provides information about the charge that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
+        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that's set
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>

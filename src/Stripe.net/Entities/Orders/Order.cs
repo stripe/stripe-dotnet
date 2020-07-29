@@ -14,7 +14,7 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type
+        /// String representing the object's type. Objects of the same type
         /// share the same value.
         /// </summary>
         [JsonProperty("object")]
@@ -42,7 +42,7 @@ namespace Stripe
 
         /// <summary>
         /// A fee in cents that will be applied to the order and transferred to
-        /// the application owner’s Stripe account.
+        /// the application owner's Stripe account.
         /// </summary>
         [JsonProperty("application_fee")]
         public long? ApplicationFee { get; set; }
@@ -195,7 +195,7 @@ namespace Stripe
         public DateTime Updated { get; set; }
 
         /// <summary>
-        /// The merchant’s order ID if it is different from the Stripe order ID.
+        /// The merchant's order ID if it is different from the Stripe order ID.
         /// </summary>
         [JsonProperty("upstream_id")]
         public string UpstreamId { get; set; }

@@ -26,20 +26,20 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The product’s name, meant to be displayable to the customer. Whenever this product is
+        /// The product's name, meant to be displayable to the customer. Whenever this product is
         /// sold via a subscription, name will show up on associated invoice line item descriptions.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// An arbitrary string to be displayed on your customer’s credit card or bank statement.
+        /// An arbitrary string to be displayed on your customer's credit card or bank statement.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// A label that represents units of this product in Stripe and on customers’ receipts and
+        /// A label that represents units of this product in Stripe and on customers' receipts and
         /// invoices. When set, this will be included in associated invoice line item descriptions.
         /// </summary>
         [JsonProperty("unit_label")]

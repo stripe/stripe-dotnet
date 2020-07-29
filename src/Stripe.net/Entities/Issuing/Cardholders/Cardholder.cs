@@ -14,13 +14,13 @@ namespace Stripe.Issuing
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
         /// <summary>
-        /// The cardholder’s billing address.
+        /// The cardholder's billing address.
         /// </summary>
         [JsonProperty("billing")]
         public CardholderBilling Billing { get; set; }
@@ -39,7 +39,7 @@ namespace Stripe.Issuing
         public DateTime Created { get; set; }
 
         /// <summary>
-        /// The cardholder’s email address.
+        /// The cardholder's email address.
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -67,13 +67,13 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The cardholder’s name. This will be printed on cards issued to them.
+        /// The cardholder's name. This will be printed on cards issued to them.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// The cardholder’s phone number.
+        /// The cardholder's phone number.
         /// </summary>
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }

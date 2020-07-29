@@ -5,7 +5,7 @@ namespace Stripe
     public class TokenPersonRelationshipOptions : INestedOptions
     {
         /// <summary>
-        /// Whether the person is a director of the account’s legal entity..
+        /// Whether the person is a director of the account's legal entity..
         /// </summary>
         [JsonProperty("director")]
         public bool? Director { get; set; }
@@ -18,13 +18,13 @@ namespace Stripe
         public bool? Executive { get; set; }
 
         /// <summary>
-        /// Whether the person is an owner of the account’s legal entity..
+        /// Whether the person is an owner of the account's legal entity..
         /// </summary>
         [JsonProperty("owner")]
         public bool? Owner { get; set; }
 
         /// <summary>
-        /// The percent owned by the person of the account’s legal entity.
+        /// The percent owned by the person of the account's legal entity.
         /// </summary>
         [JsonProperty("percent_ownership")]
         public decimal? PercentOwnership { get; set; }
@@ -40,7 +40,7 @@ namespace Stripe
         public bool? Representative { get; set; }
 
         /// <summary>
-        /// The person’s title (e.g., CEO, Support Engineer).
+        /// The person's title (e.g., CEO, Support Engineer).
         /// </summary>
         [JsonProperty("title")]
         public string Title { get; set; }

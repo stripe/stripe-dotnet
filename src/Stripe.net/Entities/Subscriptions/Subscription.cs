@@ -14,7 +14,7 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -22,7 +22,7 @@ namespace Stripe
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal places. This
         /// represents the percentage of the subscription invoice subtotal that will be transferred
-        /// to the application owner’s Stripe account.
+        /// to the application owner's Stripe account.
         /// </summary>
         [JsonProperty("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
@@ -371,7 +371,7 @@ namespace Stripe
         public decimal? TaxPercent { get; set; }
 
         /// <summary>
-        /// If specified, the funds from the subscription’s invoices will be transferred to the
+        /// If specified, the funds from the subscription's invoices will be transferred to the
         /// destination and the ID of the resulting transfers will be found on the resulting
         /// charges.
         /// </summary>

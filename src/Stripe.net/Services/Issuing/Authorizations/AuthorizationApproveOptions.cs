@@ -6,7 +6,7 @@ namespace Stripe.Issuing
     public class AuthorizationApproveOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// If the authorization’s <c>pending_request.is_amount_controllable</c> property is
+        /// If the authorization's <c>pending_request.is_amount_controllable</c> property is
         /// <c>true</c>, you may provide this value to control how much to hold for the
         /// authorization. Must be positive (use decline to decline an authorization request).
         /// </summary>

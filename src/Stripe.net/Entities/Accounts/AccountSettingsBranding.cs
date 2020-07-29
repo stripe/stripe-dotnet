@@ -38,7 +38,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of a <see cref="File"/>) A logo for the account that will be used in Checkout
-        /// instead of the icon and without the account’s name next to it if provided. Must be at
+        /// instead of the icon and without the account's name next to it if provided. Must be at
         /// least 128px x 128px.
         /// <para>Expandable.</para>
         /// </summary>
@@ -51,7 +51,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)A logo for the account that will be used in Checkout instead of the icon and
-        /// without the account’s name next to it if provided. Must be at least 128px x 128px.
+        /// without the account's name next to it if provided. Must be at least 128px x 128px.
         /// </summary>
         [JsonIgnore]
         public File Logo

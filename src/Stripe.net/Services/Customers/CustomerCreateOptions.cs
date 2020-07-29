@@ -8,7 +8,7 @@ namespace Stripe
     public class CustomerCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The customer’s address.
+        /// The customer's address.
         /// </summary>
         [JsonProperty("address")]
         public AddressOptions Address { get; set; }
@@ -42,13 +42,13 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The customer’s full name or business name.
+        /// The customer's full name or business name.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// The suffix of the customer’s next invoice number.
+        /// The suffix of the customer's next invoice number.
         /// </summary>
         [JsonProperty("next_invoice_sequence")]
         public long? NextInvoiceSequence { get; set; }
@@ -57,7 +57,7 @@ namespace Stripe
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// The customer’s phone number.
+        /// The customer's phone number.
         /// </summary>
         [JsonProperty("phone")]
         public string Phone { get; set; }
@@ -66,7 +66,7 @@ namespace Stripe
         public string Plan { get; set; }
 
         /// <summary>
-        /// The customer’s preferred locales (languages), ordered by preference.
+        /// The customer's preferred locales (languages), ordered by preference.
         /// </summary>
         [JsonProperty("preferred_locales")]
         public List<string> PreferredLocales { get; set; }
@@ -80,7 +80,7 @@ namespace Stripe
         /// <summary>
         /// The source can either be a Token or a Source, as returned by
         /// <a href="https://stripe.com/docs/elements">Elements</a>, or a
-        /// <see cref="CardCreateNestedOptions"/> containing a user’s credit card details. You must
+        /// <see cref="CardCreateNestedOptions"/> containing a user's credit card details. You must
         /// provide a source if the customer does not already have a valid source attached, and you
         /// are subscribing the customer to be charged automatically for a plan that is not free.
         /// Passing <c>source</c> will create a new source object, make it the customer default
@@ -96,14 +96,14 @@ namespace Stripe
         public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
 
         /// <summary>
-        /// Describes the customer’s tax exemption status. One of <c>none</c>, <c>exempt</c>, or
+        /// Describes the customer's tax exemption status. One of <c>none</c>, <c>exempt</c>, or
         /// <c>reverse</c>.
         /// </summary>
         [JsonProperty("tax_exempt")]
         public string TaxExempt { get; set; }
 
         /// <summary>
-        /// The customer’s tax IDs.
+        /// The customer's tax IDs.
         /// </summary>
         [JsonProperty("tax_id_data")]
         public List<CustomerTaxIdDataOptions> TaxIdData { get; set; }

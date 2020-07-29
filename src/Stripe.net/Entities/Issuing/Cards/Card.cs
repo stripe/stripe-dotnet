@@ -14,7 +14,7 @@ namespace Stripe.Issuing
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -51,7 +51,7 @@ namespace Stripe.Issuing
         public string Currency { get; set; }
 
         /// <summary>
-        /// The card’s CVC. For security reasons, this is only available for virtual cards, and will
+        /// The card's CVC. For security reasons, this is only available for virtual cards, and will
         /// be omitted unless you explicitly expand it in the request.
         /// </summary>
         [JsonProperty("cvc")]

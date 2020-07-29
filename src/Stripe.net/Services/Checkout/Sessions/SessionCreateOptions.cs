@@ -6,8 +6,8 @@ namespace Stripe.Checkout
     public class SessionCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// Specify whether Checkout should collect the customer’s billing address. If set to
-        /// <c>required</c>, Checkout will always collect the customer’s billing address. If left
+        /// Specify whether Checkout should collect the customer's billing address. If set to
+        /// <c>required</c>, Checkout will always collect the customer's billing address. If left
         /// blank or set to <c>auto</c> Checkout will only collect the billing address when
         /// necessary.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The email address used to create the customer object. If you already know your
-        /// customer’s email address, use this attribute to prefill it on Checkout.
+        /// customer's email address, use this attribute to prefill it on Checkout.
         /// </summary>
         [JsonProperty("customer_email")]
         public string CustomerEmail { get; set; }
@@ -50,7 +50,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The IETF language tag of the locale Checkout is displayed in. If blank or <c>auto</c>,
-        /// the browser’s locale is used.
+        /// the browser's locale is used.
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; }

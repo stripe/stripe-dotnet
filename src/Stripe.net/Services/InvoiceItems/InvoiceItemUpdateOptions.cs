@@ -7,7 +7,7 @@ namespace Stripe
     {
         /// <summary>
         /// The integer amount in cents of the charge to be applied to the upcoming invoice. If you
-        /// want to apply a credit to the customer’s account, pass a negative amount.
+        /// want to apply a credit to the customer's account, pass a negative amount.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
@@ -67,7 +67,7 @@ namespace Stripe
         /// <summary>
         /// The integer unit amount in cents of the charge to be applied to the upcoming invoice.
         /// This value will be multiplied by the quantity to get the full amount. If you want to
-        /// apply a credit to the customer’s account, pass a negative value.
+        /// apply a credit to the customer's account, pass a negative value.
         /// </summary>
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }

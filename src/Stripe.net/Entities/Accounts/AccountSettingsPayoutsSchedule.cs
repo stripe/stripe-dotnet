@@ -26,7 +26,7 @@ namespace Stripe
         public long MonthlyAnchor { get; set; }
 
         /// <summary>
-        /// The day of the week funds will be paid out, of the style ‘monday’, ‘tuesday’, etc.
+        /// The day of the week funds will be paid out, of the style 'monday', 'tuesday', etc.
         /// Only shown if interval is <c>weekly</c>.
         /// </summary>
         [JsonProperty("weekly_anchor")]

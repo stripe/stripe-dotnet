@@ -12,7 +12,7 @@ namespace Stripe
         /// including <see cref="AssertCapabilities"/> and identifying that <c>card_payments</c> or
         /// <c>transfers</c> match. A request error will be returned if the suggested
         /// <see href="https://stripe.com/docs/connect/capabilities-overview">Capability</see>
-        /// doesn’t match the assertion: in this case, it’s recommended to end the onboarding flow
+        /// doesn't match the assertion: in this case, it's recommended to end the onboarding flow
         /// with a failure.
         /// </summary>
         [JsonProperty("assert_capabilities")]

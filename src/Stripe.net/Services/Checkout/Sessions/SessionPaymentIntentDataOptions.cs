@@ -7,7 +7,7 @@ namespace Stripe.Checkout
     {
         /// <summary>
         /// The amount of the application fee (if any) that will be applied to the payment and
-        /// transferred to the application owner’s Stripe account.
+        /// transferred to the application owner's Stripe account.
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
@@ -44,7 +44,7 @@ namespace Stripe.Checkout
         public string ReceiptEmail { get; set; }
 
         /// <summary>
-        /// Indicates that you intend to make future payments with this PaymentIntent’s payment
+        /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         /// If present, the payment method used with this PaymentIntent can be attached to a
         /// Customer, even after the transaction completes.
@@ -67,7 +67,7 @@ namespace Stripe.Checkout
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
-        /// Extra information about the payment. This will appear on your customer’s statement when
+        /// Extra information about the payment. This will appear on your customer's statement when
         /// this payment succeeds in creating a charge.
         /// </summary>
         [JsonProperty("statement_descriptor")]
@@ -75,7 +75,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Provides information about the charge that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
+        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that's set
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>

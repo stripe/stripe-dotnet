@@ -53,7 +53,7 @@ namespace Stripe.Issuing
         public string TrackingNumber { get; set; }
 
         /// <summary>
-        /// A link to the shipping carrier’s site where you can view detailed
+        /// A link to the shipping carrier's site where you can view detailed
         /// information about a card shipment.
         /// </summary>
         [JsonProperty("tracking_url")]

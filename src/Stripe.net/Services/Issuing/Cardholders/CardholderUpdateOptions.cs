@@ -6,7 +6,7 @@ namespace Stripe.Issuing
     public class CardholderUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The cardholder’s billing address.
+        /// The cardholder's billing address.
         /// </summary>
         [JsonProperty("billing")]
         public CardholderBillingOptions Billing { get; set; }
@@ -18,7 +18,7 @@ namespace Stripe.Issuing
         public CardholderCompanyOptions Company { get; set; }
 
         /// <summary>
-        /// The cardholder’s email address.
+        /// The cardholder's email address.
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -38,7 +38,7 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The cardholder’s phone number. This will be transformed to E.164 if it is not provided
+        /// The cardholder's phone number. This will be transformed to E.164 if it is not provided
         /// in that format already.
         /// </summary>
         [JsonProperty("phone_number")]
@@ -51,7 +51,7 @@ namespace Stripe.Issuing
         public CardholderSpendingControlsOptions SpendingControls { get; set; }
 
         /// <summary>
-        /// Specifies whether to permit authorizations on this cardholder’s cards. Possible values
+        /// Specifies whether to permit authorizations on this cardholder's cards. Possible values
         /// are <c>active</c> or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]

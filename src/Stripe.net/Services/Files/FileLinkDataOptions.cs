@@ -9,7 +9,7 @@ namespace Stripe
     {
         /// <summary>
         /// Set this to <c>true</c> to create a file link for the newly created file. Creating a
-        /// link is only possible when the file’s purpose is one of the following:
+        /// link is only possible when the file's purpose is one of the following:
         /// <c>business_icon</c>, <c>business_logo</c>, <c>customer_signature</c>,
         /// <c>dispute_evidence</c>, <c>pci_document</c>, or <c>tax_document_user_upload</c>.
         /// </summary>

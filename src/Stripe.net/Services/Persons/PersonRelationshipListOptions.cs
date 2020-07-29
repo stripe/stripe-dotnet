@@ -6,21 +6,21 @@ namespace Stripe
     {
         /// <summary>
         /// A filter on the list of people returned based on whether these people are directors of
-        /// the account’s company.
+        /// the account's company.
         /// </summary>
         [JsonProperty("director")]
         public bool? Director { get; set; }
 
         /// <summary>
         /// A filter on the list of people returned based on whether these people are executives of
-        /// the account’s company.
+        /// the account's company.
         /// </summary>
         [JsonProperty("executive")]
         public bool? Executive { get; set; }
 
         /// <summary>
         /// A filter on the list of people returned based on whether these people are owners of the
-        /// account’s company.
+        /// account's company.
         /// </summary>
         [JsonProperty("owner")]
         public bool? Owner { get; set; }

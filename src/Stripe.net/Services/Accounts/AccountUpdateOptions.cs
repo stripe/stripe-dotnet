@@ -48,7 +48,7 @@ namespace Stripe
         /// <summary>
         /// Three-letter ISO currency code representing the default currency
         /// for the account. This must be a currency that Stripe supports in
-        /// the account’s country.
+        /// the account's country.
         /// </summary>
         [JsonProperty("default_currency")]
         public string DefaultCurrency { get; set; }
@@ -104,7 +104,7 @@ namespace Stripe
         public AccountSettingsOptions Settings { get; set; }
 
         /// <summary>
-        /// Details on the account’s acceptance of the
+        /// Details on the account's acceptance of the
         /// <a href="https://stripe.com/docs/connect/updating-accounts#tos-acceptance">Stripe Services Agreement</a>.
         /// </summary>
         [JsonProperty("tos_acceptance")]

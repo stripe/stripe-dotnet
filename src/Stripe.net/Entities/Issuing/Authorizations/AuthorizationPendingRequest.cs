@@ -6,7 +6,7 @@ namespace Stripe.Issuing
     {
         /// <summary>
         /// The additional amount Stripe will hold if the authorization is approved, in the
-        /// currency, which is always the card’s currency.
+        /// currency, which is always the card's currency.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }

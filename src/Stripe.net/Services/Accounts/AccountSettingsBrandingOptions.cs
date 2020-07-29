@@ -12,7 +12,7 @@ namespace Stripe
 
         /// <summary>
         /// ID of the file used as a logo for the account in Checkout instead of the icon and
-        /// without the account’s name next to it if provided.
+        /// without the account's name next to it if provided.
         /// </summary>
         [JsonProperty("logo")]
         public string Logo { get; set; }

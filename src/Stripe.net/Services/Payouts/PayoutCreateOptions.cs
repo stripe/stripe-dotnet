@@ -58,7 +58,7 @@ namespace Stripe
         public string SourceType { get; set; }
 
         /// <summary>
-        /// A string to be displayed on the recipient’s bank or card statement. This may be at most
+        /// A string to be displayed on the recipient's bank or card statement. This may be at most
         /// 22 characters. Attempting to use a <c>statement_descriptor</c> longer than 22
         /// characters will return an error. Note: Most banks will truncate this information and/or
         /// display it inconsistently. Some may not display it at all.

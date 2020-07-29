@@ -14,7 +14,7 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -52,7 +52,7 @@ namespace Stripe
         public AccountCompany Company { get; set; }
 
         /// <summary>
-        /// The account’s country.
+        /// The account's country.
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; set; }
@@ -66,7 +66,7 @@ namespace Stripe
 
         /// <summary>
         /// Three-letter ISO currency code representing the default currency for the account. This
-        /// must be a currency that Stripe supports in the account’s country.
+        /// must be a currency that Stripe supports in the account's country.
         /// </summary>
         [JsonProperty("default_currency")]
         public string DefaultCurrency { get; set; }
@@ -85,7 +85,7 @@ namespace Stripe
         public bool DetailsSubmitted { get; set; }
 
         /// <summary>
-        /// The primary user’s email address.
+        /// The primary user's email address.
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }

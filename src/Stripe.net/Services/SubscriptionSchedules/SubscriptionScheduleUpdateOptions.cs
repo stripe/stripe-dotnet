@@ -7,7 +7,7 @@ namespace Stripe
     public class SubscriptionScheduleUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// Object representing the subscription schedule’s default settings.
+        /// Object representing the subscription schedule's default settings.
         /// </summary>
         [JsonProperty("default_settings")]
         public SubscriptionScheduleDefaultSettingsOptions DefaultSettings { get; set; }

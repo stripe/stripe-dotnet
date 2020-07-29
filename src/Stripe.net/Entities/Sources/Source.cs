@@ -17,7 +17,7 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -157,7 +157,7 @@ namespace Stripe
         public SourceSourceOrder SourceOrder { get; set; }
 
         /// <summary>
-        /// Extra information about a source. This will appear on your customer’s statement every time you charge the source.
+        /// Extra information about a source. This will appear on your customer's statement every time you charge the source.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }

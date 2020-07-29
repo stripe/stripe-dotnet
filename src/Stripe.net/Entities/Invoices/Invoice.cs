@@ -14,7 +14,7 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -181,7 +181,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The customer’s address. Until the invoice is finalized, this field will equal
+        /// The customer's address. Until the invoice is finalized, this field will equal
         /// <see cref="Customer.Address" />. Once the invoice is finalized, this field will no
         /// longer be updated.
         /// </summary>
@@ -189,7 +189,7 @@ namespace Stripe
         public Address CustomerAddress { get; set; }
 
         /// <summary>
-        /// The customer’s email. Until the invoice is finalized, this field will equal
+        /// The customer's email. Until the invoice is finalized, this field will equal
         /// <see cref="Customer.Email" />. Once the invoice is finalized, this field will no longer
         /// be updated.
         /// </summary>
@@ -197,7 +197,7 @@ namespace Stripe
         public string CustomerEmail { get; set; }
 
         /// <summary>
-        /// The customer’s name. Until the invoice is finalized, this field will equal
+        /// The customer's name. Until the invoice is finalized, this field will equal
         /// <see cref="Customer.Name" />. Once the invoice is finalized, this field will no longer
         /// be updated.
         /// </summary>
@@ -205,7 +205,7 @@ namespace Stripe
         public string CustomerName { get; set; }
 
         /// <summary>
-        /// The customer’s phone number. Until the invoice is finalized, this field will equal
+        /// The customer's phone number. Until the invoice is finalized, this field will equal
         /// <see cref="Customer.Phone" />. Once the invoice is finalized, this field will no longer
         /// be updated.
         /// </summary>
@@ -213,7 +213,7 @@ namespace Stripe
         public string CustomerPhone { get; set; }
 
         /// <summary>
-        /// The customer’s shipping information. Until the invoice is finalized, this field will
+        /// The customer's shipping information. Until the invoice is finalized, this field will
         /// equal <see cref="Customer.Shipping" />. Once the invoice is finalized, this field will
         /// no longer be updated.
         /// </summary>
@@ -221,7 +221,7 @@ namespace Stripe
         public Shipping CustomerShipping { get; set; }
 
         /// <summary>
-        /// The customer’s tax exempt status. Until the invoice is finalized, this field will equal
+        /// The customer's tax exempt status. Until the invoice is finalized, this field will equal
         /// <see cref="Customer.TaxExempt" />. Once the invoice is finalized, this field will no
         /// longer be updated.
         /// </summary>
@@ -229,7 +229,7 @@ namespace Stripe
         public string CustomerTaxExempt { get; set; }
 
         /// <summary>
-        /// The customer’s tax ids. Until the invoice is finalized, this field will equal
+        /// The customer's tax ids. Until the invoice is finalized, this field will equal
         /// <see cref="Customer.TaxIds" />. Once the invoice is finalized, this field will no
         /// longer be updated.
         /// </summary>
@@ -241,7 +241,7 @@ namespace Stripe
         /// <summary>
         /// ID of the default payment method for the invoice. It must belong to the customer
         /// associated with the invoice and be in a chargeable state. If not set, defaults to the
-        /// subscription’s default payment method, if any, or to the customer’s default payment
+        /// subscription's default payment method, if any, or to the customer's default payment
         /// method.
         /// </summary>
         [JsonIgnore]
@@ -254,7 +254,7 @@ namespace Stripe
         /// <summary>
         ///  (Expanded) The default payment method for the invoice. It must belong to the customer
         /// associated with the invoice and be in a chargeable state. If not set, defaults to the
-        /// subscription’s default payment method, if any, or to the customer’s default payment
+        /// subscription's default payment method, if any, or to the customer's default payment
         /// method.
         /// </summary>
         [JsonIgnore]

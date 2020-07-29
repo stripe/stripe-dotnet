@@ -5,13 +5,13 @@ namespace Stripe
     public class ChargePaymentMethodDetailsIdeal : StripeEntity<ChargePaymentMethodDetailsIdeal>
     {
         /// <summary>
-        /// The customer’s bank.
+        /// The customer's bank.
         /// </summary>
         [JsonProperty("bank")]
         public string Bank { get; set; }
 
         /// <summary>
-        /// The Bank Identifier Code of the customer’s bank.
+        /// The Bank Identifier Code of the customer's bank.
         /// </summary>
         [JsonProperty("bic")]
         public string Bic { get; set; }
@@ -23,7 +23,7 @@ namespace Stripe
         public string IbanLast4 { get; set; }
 
         /// <summary>
-        /// Owner’s verified full name. Values are verified or provided by iDEAL directly (if
+        /// Owner's verified full name. Values are verified or provided by iDEAL directly (if
         /// supported) at the time of authorization or settlement. They cannot be set or mutated.
         /// </summary>
         [JsonProperty("verified_name")]

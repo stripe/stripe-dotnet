@@ -18,7 +18,7 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
-        /// Internal-only description of the product sold or service provided by the business. It’s
+        /// Internal-only description of the product sold or service provided by the business. It's
         /// used by Stripe for risk and underwriting purposes.
         /// </summary>
         [JsonProperty("product_description")]
@@ -49,7 +49,7 @@ namespace Stripe
         public string SupportUrl { get; set; }
 
         /// <summary>
-        /// The business’s publicly available website.
+        /// The business's publicly available website.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }

@@ -78,7 +78,7 @@ namespace Stripe
         public SourceSourceOrderOptions SourceOrder { get; set; }
 
         /// <summary>
-        /// An arbitrary string to be displayed on your customer’s statement.
+        /// An arbitrary string to be displayed on your customer's statement.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
