@@ -13,7 +13,7 @@ namespace Stripe.Sigma
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -65,7 +65,7 @@ namespace Stripe.Sigma
         public string Sql { get; set; }
 
         /// <summary>
-        /// The query’s execution status, which will be <c>completed</c> for successful runs, and
+        /// The query's execution status, which will be <c>completed</c> for successful runs, and
         /// <c>canceled</c>, <c>failed</c>, or <c>timed_out</c> otherwise.
         /// </summary>
         [JsonProperty("status")]

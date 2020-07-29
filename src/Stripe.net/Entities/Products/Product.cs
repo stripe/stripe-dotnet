@@ -51,7 +51,7 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// The product’s description, meant to be displayable to the customer.
+        /// The product's description, meant to be displayable to the customer.
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -75,7 +75,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The product’s name, meant to be displayable to the customer.
+        /// The product's name, meant to be displayable to the customer.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }

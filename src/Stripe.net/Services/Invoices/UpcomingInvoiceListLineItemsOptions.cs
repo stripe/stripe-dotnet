@@ -11,7 +11,7 @@ namespace Stripe
         /// The code of the coupon to apply. If <c>subscription</c> or <c>subscription_items</c> is
         /// provided, the invoice returned will preview updating or creating a subscription with
         /// that coupon. Otherwise, it will preview applying that coupon to the customer for the
-        /// next upcoming invoice from among the customer’s subscriptions. The invoice can be
+        /// next upcoming invoice from among the customer's subscriptions. The invoice can be
         /// previewed without a coupon by passing this value as an empty string.
         /// </summary>
         [JsonProperty("coupon")]
@@ -30,14 +30,14 @@ namespace Stripe
         public List<InvoiceUpcomingInvoiceItemOptions> InvoiceItems { get; set; }
 
         /// <summary>
-        /// The identifier of the unstarted schedule whose upcoming invoice you’d like to retrieve.
+        /// The identifier of the unstarted schedule whose upcoming invoice you'd like to retrieve.
         /// Cannot be used with subscription or subscription fields.
         /// </summary>
         [JsonProperty("schedule")]
         public string Schedule { get; set; }
 
         /// <summary>
-        /// For new subscriptions, a future <see cref="DateTime"/> to anchor the subscription’s
+        /// For new subscriptions, a future <see cref="DateTime"/> to anchor the subscription's
         /// <a href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a>. This
         /// is used to determine the date of the first full invoice, and, for plans with
         /// <c>month</c> or <c>year</c> intervals, the day of the month for subsequent invoices. For
@@ -77,11 +77,11 @@ namespace Stripe
         public List<string> SubscriptionDefaultTaxRates { get; set; }
 
         /// <summary>
-        /// The identifier of the subscription for which you’d like to retrieve the upcoming
+        /// The identifier of the subscription for which you'd like to retrieve the upcoming
         /// invoice. If not provided, but a <c>subscription_items</c> is provided, you will preview
         /// creating a subscription with those items. If neither <c>subscription</c> nor
         /// <c>subscription_items</c> is provided, you will retrieve the next upcoming invoice from
-        /// among the customer’s subscriptions.
+        /// among the customer's subscriptions.
         /// </summary>
         [JsonProperty("subscription")]
         public string Subscription { get; set; }
@@ -133,7 +133,7 @@ namespace Stripe
         public DateTime? SubscriptionTrialEnd { get; set; }
 
         /// <summary>
-        /// Indicates if a plan’s <c>trial_period_days</c> should be applied to the subscription.
+        /// Indicates if a plan's <c>trial_period_days</c> should be applied to the subscription.
         /// Setting <c>subscription_trial_end</c> per subscription is preferred, and this defaults
         /// to <c>false</c>. Setting this flag to <c>true</c> together with
         /// <c>subscription_trial_end</c> is not allowed.

@@ -15,7 +15,7 @@ namespace Stripe
 
         /// <summary>
         /// The amount of the application fee (if any) that will be applied to the payment and
-        /// transferred to the application owner’s Stripe account. For more information, see the
+        /// transferred to the application owner's Stripe account. For more information, see the
         /// PaymentIntents <a href="https://stripe.com/docs/payments/payment-intents/use-cases#connected-accounts">use
         /// case for connected accounts</a>.
         /// </summary>
@@ -148,13 +148,13 @@ namespace Stripe
         public string ReceiptEmail { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
 
         /// <summary>
-        /// If the PaymentIntent has a payment_method and a customer or if you’re attaching a
+        /// If the PaymentIntent has a payment_method and a customer or if you're attaching a
         /// payment method to the PaymentIntent in this request, you can pass this as <c>true</c>
         /// to save the payment method to the customer. Defaults to <c>false</c>.
         /// If the payment method is already saved to a customer, this does nothing. If this type
@@ -164,7 +164,7 @@ namespace Stripe
         public bool? SavePaymentMethod { get; set; }
 
         /// <summary>
-        /// Indicates that you intend to make future payments with this PaymentIntent’s payment
+        /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         /// If present, the payment method used with this PaymentIntent can be attached to a
         /// Customer, even after the transaction completes.
@@ -193,7 +193,7 @@ namespace Stripe
         public string Source { get; set; }
 
         /// <summary>
-        /// Extra information about a PaymentIntent. This will appear on your customer’s statement
+        /// Extra information about a PaymentIntent. This will appear on your customer's statement
         /// when this PaymentIntent succeeds in creating a charge.
         /// </summary>
         [JsonProperty("statement_descriptor")]
@@ -201,7 +201,7 @@ namespace Stripe
 
         /// <summary>
         /// Provides information about the charge that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
+        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that's set
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>

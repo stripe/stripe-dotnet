@@ -20,7 +20,7 @@ namespace Stripe
 
         /// <summary>
         /// The text that appears on the bank account statement for payouts. If not set, this
-        /// efaults to the platform’s bank descriptor as set in the Dashboard.
+        /// efaults to the platform's bank descriptor as set in the Dashboard.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }

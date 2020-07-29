@@ -30,7 +30,7 @@ namespace Stripe
         public List<string> DeactivateOn { get; set; }
 
         /// <summary>
-        /// The product’s description, meant to be displayable to the customer.
+        /// The product's description, meant to be displayable to the customer.
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -48,7 +48,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// REQUIRED: The product’s name, meant to be displayable to the customer.
+        /// REQUIRED: The product's name, meant to be displayable to the customer.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -72,7 +72,7 @@ namespace Stripe
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// A label that represents units of this product, such as seat(s), in Stripe and on customers’ receipts and invoices.
+        /// A label that represents units of this product, such as seat(s), in Stripe and on customers' receipts and invoices.
         /// </summary>
         [JsonProperty("unit_label")]
         public string UnitLabel { get; set; }

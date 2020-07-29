@@ -14,7 +14,7 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -78,7 +78,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Object representing the subscription schedule’s default settings.
+        /// Object representing the subscription schedule's default settings.
         /// </summary>
         [JsonProperty("default_settings")]
         public SubscriptionScheduleDefaultSettings DefaultSettings { get; set; }
@@ -104,7 +104,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Configuration for the subscription schedule’s phases.
+        /// Configuration for the subscription schedule's phases.
         /// </summary>
         [JsonProperty("phases")]
         public List<SubscriptionSchedulePhase> Phases { get; set; }

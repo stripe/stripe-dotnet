@@ -13,7 +13,7 @@ namespace Stripe.Checkout
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -31,8 +31,8 @@ namespace Stripe.Checkout
         public long? AmountTotal { get; set; }
 
         /// <summary>
-        /// Specify whether Checkout should collect the customer’s billing address. If set to
-        /// <c>required</c>, Checkout will always collect the customer’s billing address. If left
+        /// Specify whether Checkout should collect the customer's billing address. If set to
+        /// <c>required</c>, Checkout will always collect the customer's billing address. If left
         /// blank or set to <c>auto</c> Checkout will only collect the billing address when
         /// necessary.
         /// </summary>
@@ -113,7 +113,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The IETF language tag of the locale Checkout is displayed in. If blank or <c>auto</c>,
-        /// the browser’s locale is used.
+        /// the browser's locale is used.
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; }

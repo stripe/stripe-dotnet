@@ -14,7 +14,7 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -56,7 +56,7 @@ namespace Stripe
 
         /// <summary>
         /// Number of webhooks that have yet to be successfully delivered (i.e., to return a 20x
-        /// response) to the URLs you’ve specified.
+        /// response) to the URLs you've specified.
         /// </summary>
         [JsonProperty("pending_webhooks")]
         public long PendingWebhooks { get; set; }

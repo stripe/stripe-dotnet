@@ -14,7 +14,7 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -26,7 +26,7 @@ namespace Stripe
         public long Amount { get; set; }
 
         /// <summary>
-        /// The date the transaction’s net funds will become available in the Stripe balance.
+        /// The date the transaction's net funds will become available in the Stripe balance.
         /// </summary>
         [JsonProperty("available_on")]
         [JsonConverter(typeof(DateTimeConverter))]
@@ -108,7 +108,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// If the transaction’s net funds are available in the Stripe balance
+        /// If the transaction's net funds are available in the Stripe balance
         /// yet. Either <c>available</c> or <c>pending</c>.
         /// </summary>
         [JsonProperty("status")]

@@ -46,11 +46,11 @@ namespace Stripe
         [JsonProperty("default_for_currency")]
         public bool? DefaultForCurrency { get; set; }
 
-        /// <summary>Two digit number representing the card’s expiration month.</summary>
+        /// <summary>Two digit number representing the card's expiration month.</summary>
         [JsonProperty("exp_month")]
         public long? ExpMonth { get; set; }
 
-        /// <summary>Four digit number representing the card’s expiration year.</summary>
+        /// <summary>Four digit number representing the card's expiration year.</summary>
         [JsonProperty("exp_year")]
         public long? ExpYear { get; set; }
 

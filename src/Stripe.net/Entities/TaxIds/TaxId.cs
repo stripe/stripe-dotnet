@@ -13,7 +13,7 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -82,7 +82,7 @@ namespace Stripe
         public string Value { get; set; }
 
         /// <summary>
-        /// The persons’s verification status.
+        /// The persons's verification status.
         /// </summary>
         [JsonProperty("verification")]
         public TaxIdVerification Verification { get; set; }

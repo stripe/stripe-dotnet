@@ -14,7 +14,7 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -317,7 +317,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Indicates that you intend to make future payments with this PaymentIntent’s payment
+        /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         /// If present, the payment method used with this PaymentIntent can be attached to a
         /// Customer, even after the transaction completes.
@@ -364,7 +364,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Extra information about a PaymentIntent. This will appear on your customer’s statement
+        /// Extra information about a PaymentIntent. This will appear on your customer's statement
         /// when this PaymentIntent succeeds in creating a charge.
         /// </summary>
         [JsonProperty("statement_descriptor")]
@@ -372,7 +372,7 @@ namespace Stripe
 
         /// <summary>
         /// Provides information about the charge that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
+        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that's set
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>

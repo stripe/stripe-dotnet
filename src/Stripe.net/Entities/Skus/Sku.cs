@@ -20,7 +20,7 @@ namespace Stripe
         public bool Active { get; set; }
 
         /// <summary>
-        /// A dictionary of attributes and values for the attributes defined by the product. If, for example, a product’s attributes are ["size", "gender"], a valid SKU has the following dictionary of attributes: {"size": "Medium", "gender": "Unisex"}.
+        /// A dictionary of attributes and values for the attributes defined by the product. If, for example, a product's attributes are ["size", "gender"], a valid SKU has the following dictionary of attributes: {"size": "Medium", "gender": "Unisex"}.
         /// </summary>
         [JsonProperty("attributes")]
         public Dictionary<string, string> Attributes { get; set; }
@@ -51,7 +51,7 @@ namespace Stripe
         public string Image { get; set; }
 
         /// <summary>
-        /// Description of the SKU’s inventory.
+        /// Description of the SKU's inventory.
         /// </summary>
         [JsonProperty("inventory")]
         public SkuInventory Inventory { get; set; }

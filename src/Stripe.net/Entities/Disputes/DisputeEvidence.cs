@@ -91,7 +91,7 @@ namespace Stripe
         #region Expandable CustomerSignature
 
         /// <summary>
-        /// (ID of a <see cref="File"/>) A relevant document or contract showing the customer’s
+        /// (ID of a <see cref="File"/>) A relevant document or contract showing the customer's
         /// signature.
         /// <para>Expandable.</para>
         /// </summary>
@@ -103,7 +103,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) A relevant document or contract showing the customer’s signature.
+        /// (Expanded) A relevant document or contract showing the customer's signature.
         /// </summary>
         [JsonIgnore]
         public File CustomerSignature
@@ -271,7 +271,7 @@ namespace Stripe
         /// <summary>
         /// (ID of a <see cref="File"/>) Documentation showing proof that a product was shipped to
         /// the customer at the same address the customer provided to you. This could include a copy
-        /// of the shipment receipt, shipping label, etc. It should show the customer’s full
+        /// of the shipment receipt, shipping label, etc. It should show the customer's full
         /// shipping address, if possible.
         /// <para>Expandable.</para>
         /// </summary>
@@ -285,7 +285,7 @@ namespace Stripe
         /// <summary>
         /// (Expanded) Documentation showing proof that a product was shipped to  the customer at
         /// the same address the customer provided to you. This could include a copy of the shipment
-        /// receipt, shipping label, etc. It should show the customer’s full shipping address, if
+        /// receipt, shipping label, etc. It should show the customer's full shipping address, if
         /// possible.
         /// </summary>
         [JsonIgnore]

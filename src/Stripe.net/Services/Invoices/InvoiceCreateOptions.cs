@@ -9,7 +9,7 @@ namespace Stripe
     {
         /// <summary>
         /// A fee in cents that will be applied to the invoice and transferred to the application
-        /// owner’s Stripe account. The request must be made with an OAuth key or the Stripe-Account
+        /// owner's Stripe account. The request must be made with an OAuth key or the Stripe-Account
         /// header in order to take an application fee. For more information, see the application
         /// fees <see href="https://stripe.com/docs/connect/subscriptions#working-with-invoices">documentation</see>.
         /// </summary>
@@ -84,10 +84,10 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Extra information about a charge for the customer’s credit card statement. It must
+        /// Extra information about a charge for the customer's credit card statement. It must
         /// contain at least one letter. If not specified and this invoice is part of a
         /// subscription, the default <c>statement_descriptor</c> will be set to the first
-        /// subscription item’s product’s <c>statement_descriptor</c>.
+        /// subscription item's product's <c>statement_descriptor</c>.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }

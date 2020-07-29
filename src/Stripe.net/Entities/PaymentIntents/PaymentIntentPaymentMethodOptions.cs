@@ -11,7 +11,7 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsBancontact Bancontact { get; set; }
 
         /// <summary>
-        /// If the PaymentIntent’s supported payment method types include <c>card</c>, this hash
+        /// If the PaymentIntent's supported payment method types include <c>card</c>, this hash
         /// contains the configurations that will be applied to each payment attempt of that type.
         /// </summary>
         [JsonProperty("card")]

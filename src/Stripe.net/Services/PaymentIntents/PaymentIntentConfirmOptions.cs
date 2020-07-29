@@ -74,7 +74,7 @@ namespace Stripe
 
         /// <summary>
         /// The URL to redirect your customer back to after they authenticate or cancel their
-        /// payment on the payment method’s app or site. If you’d prefer to redirect to a mobile
+        /// payment on the payment method's app or site. If you'd prefer to redirect to a mobile
         /// application, you can alternatively supply an application URI scheme. This parameter is
         /// only used for cards and other redirect-based payment methods.
         /// </summary>
@@ -82,7 +82,7 @@ namespace Stripe
         public string ReturnUrl { get; set; }
 
         /// <summary>
-        /// If the PaymentIntent has a payment_method and a customer or if you’re attaching a
+        /// If the PaymentIntent has a payment_method and a customer or if you're attaching a
         /// payment method to the PaymentIntent in this request, you can pass this as <c>true</c>
         /// to save the payment method to the customer. Defaults to <c>false</c>.
         /// If the payment method is already saved to a customer, this does nothing. If this type
@@ -92,7 +92,7 @@ namespace Stripe
         public bool? SavePaymentMethod { get; set; }
 
         /// <summary>
-        /// Indicates that you intend to make future payments with this PaymentIntent’s payment
+        /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         /// If present, the payment method used with this PaymentIntent can be attached to a
         /// Customer, even after the transaction completes.

@@ -7,7 +7,7 @@ namespace Stripe
     public class CustomerUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The customer’s address.
+        /// The customer's address.
         /// </summary>
         [JsonProperty("address")]
         public AddressOptions Address { get; set; }
@@ -44,25 +44,25 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The customer’s full name or business name.
+        /// The customer's full name or business name.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// The suffix of the customer’s next invoice number.
+        /// The suffix of the customer's next invoice number.
         /// </summary>
         [JsonProperty("next_invoice_sequence")]
         public long? NextInvoiceSequence { get; set; }
 
         /// <summary>
-        /// The customer’s phone number.
+        /// The customer's phone number.
         /// </summary>
         [JsonProperty("phone")]
         public string Phone { get; set; }
 
         /// <summary>
-        /// The customer’s preferred locales (languages), ordered by preference.
+        /// The customer's preferred locales (languages), ordered by preference.
         /// </summary>
         [JsonProperty("preferred_locales")]
         public List<string> PreferredLocales { get; set; }
@@ -71,7 +71,7 @@ namespace Stripe
         public ShippingOptions Shipping { get; set; }
 
         /// <summary>
-        /// A Token’s or a Source’s ID, as returned by
+        /// A Token's or a Source's ID, as returned by
         /// <a href="https://stripe.com/docs/elements">Elements</a>. Passing <c>source</c> will
         /// create a new source object, make it the new customer default source, and delete the old\
         /// customer default if one exists. If you want to add additional sources instead of
@@ -84,7 +84,7 @@ namespace Stripe
         public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
 
         /// <summary>
-        /// Describes the customer’s tax exemption status. One of <c>none</c>,  <c>exempt</c>, or
+        /// Describes the customer's tax exemption status. One of <c>none</c>,  <c>exempt</c>, or
         /// <c>reverse</c>.
         /// </summary>
         [JsonProperty("tax_exempt")]

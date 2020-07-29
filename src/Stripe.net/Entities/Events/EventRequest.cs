@@ -6,7 +6,7 @@ namespace Stripe
     {
         /// <summary>
         /// ID of the API request that caused the event. If null, the event was automatic (e.g.,
-        /// Stripe’s automatic subscription handling). Request logs are available in the
+        /// Stripe's automatic subscription handling). Request logs are available in the
         /// <a href="https://dashboard.stripe.com/logs">dashboard</a>, but currently not in the API.
         /// </summary>
         [JsonProperty("id")]

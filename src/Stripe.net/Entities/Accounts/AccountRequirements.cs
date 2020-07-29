@@ -25,7 +25,7 @@ namespace Stripe
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
-        /// If the account is disabled, this string describes why the account can’t create charges
+        /// If the account is disabled, this string describes why the account can't create charges
         /// or receive payouts.
         /// </summary>
         [JsonProperty("disabled_reason")]
@@ -47,7 +47,7 @@ namespace Stripe
         public List<string> EventuallyDue { get; set; }
 
         /// <summary>
-        /// The fields that weren’t collected by the <c>currently_due</c>. These fields need
+        /// The fields that weren't collected by the <c>currently_due</c>. These fields need
         /// to be collected to enable payouts for the account.
         /// </summary>
         [JsonProperty("past_due")]

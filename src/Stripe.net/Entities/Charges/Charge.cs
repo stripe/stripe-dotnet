@@ -14,7 +14,7 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
@@ -473,14 +473,14 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Extra information about a charge. This will appear on your customer’s credit card statement.
+        /// Extra information about a charge. This will appear on your customer's credit card statement.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
         /// Provides information about the charge that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
+        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that's set
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>

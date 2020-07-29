@@ -26,7 +26,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The product’s name, meant to be displayable to the customer. Whenever this product is
+        /// The product's name, meant to be displayable to the customer. Whenever this product is
         /// sold via a subscription, name will show up on associated invoice line item descriptions.
         /// </summary>
         [JsonProperty("name")]

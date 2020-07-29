@@ -20,7 +20,7 @@ namespace Stripe
         /// <summary>
         /// REQUIRED. Either a token, like the ones returned by
         /// <a href="https://stripe.com/docs/stripe.js">Stripe.js</a>, or a
-        /// <see cref="CardCreateNestedOptions"/> instance containing a user’s card
+        /// <see cref="CardCreateNestedOptions"/> instance containing a user's card
         /// details.
         /// </summary>
         [JsonProperty("source")]

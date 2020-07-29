@@ -19,7 +19,7 @@ namespace Stripe
 
         /// <summary>
         /// Two-letter ISO code representing the country of the card. You could use this attribute
-        /// to get a sense of the international breakdown of cards you’ve collected.
+        /// to get a sense of the international breakdown of cards you've collected.
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; set; }
@@ -31,20 +31,20 @@ namespace Stripe
         public string EmvAuthData { get; set; }
 
         /// <summary>
-        /// Two-digit number representing the card’s expiration month.
+        /// Two-digit number representing the card's expiration month.
         /// </summary>
         [JsonProperty("exp_month")]
         public long ExpMonth { get; set; }
 
         /// <summary>
-        /// Four-digit number representing the card’s expiration year.
+        /// Four-digit number representing the card's expiration year.
         /// </summary>
         [JsonProperty("exp_year")]
         public long ExpYear { get; set; }
 
         /// <summary>
         /// Uniquely identifies this particular card number. You can use this attribute to check
-        /// whether two customers who’ve signed up with you are using the same card number, for
+        /// whether two customers who've signed up with you are using the same card number, for
         /// example.
         /// </summary>
         [JsonProperty("fingerprint")]

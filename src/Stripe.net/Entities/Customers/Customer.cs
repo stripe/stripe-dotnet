@@ -14,13 +14,13 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
         /// <summary>
-        /// The customer’s address.
+        /// The customer's address.
         /// </summary>
         [JsonProperty("address")]
         public Address Address { get; set; }
@@ -85,7 +85,7 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// Whether or not the latest charge for the customer’s latest invoice has failed.
+        /// Whether or not the latest charge for the customer's latest invoice has failed.
         /// </summary>
         [JsonProperty("delinquent")]
         public bool Delinquent { get; set; }
@@ -103,7 +103,7 @@ namespace Stripe
         public Discount Discount { get; set; }
 
         /// <summary>
-        /// The customer’s email address.
+        /// The customer's email address.
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -115,7 +115,7 @@ namespace Stripe
         public string InvoicePrefix { get; set; }
 
         /// <summary>
-        /// The customer’s default invoice settings.
+        /// The customer's default invoice settings.
         /// </summary>
         [JsonProperty("invoice_settings")]
         public CustomerInvoiceSettings InvoiceSettings { get; set; }
@@ -135,25 +135,25 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The customer’s full name or business name.
+        /// The customer's full name or business name.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// The suffix of the customer’s next invoice number.
+        /// The suffix of the customer's next invoice number.
         /// </summary>
         [JsonProperty("next_invoice_sequence")]
         public long NextInvoiceSequence { get; set; }
 
         /// <summary>
-        /// The customer’s phone number.
+        /// The customer's phone number.
         /// </summary>
         [JsonProperty("phone")]
         public string Phone { get; set; }
 
         /// <summary>
-        /// The customer’s preferred locales (languages), ordered by preference.
+        /// The customer's preferred locales (languages), ordered by preference.
         /// </summary>
         [JsonProperty("preferred_locales")]
         public List<string> PreferredLocales { get; set; }
@@ -166,26 +166,26 @@ namespace Stripe
         public Shipping Shipping { get; set; }
 
         /// <summary>
-        /// The customer’s payment sources, if any.
+        /// The customer's payment sources, if any.
         /// </summary>
         [JsonProperty("sources")]
         public StripeList<IPaymentSource> Sources { get; set; }
 
         /// <summary>
-        /// The customer’s current subscriptions, if any.
+        /// The customer's current subscriptions, if any.
         /// </summary>
         [JsonProperty("subscriptions")]
         public StripeList<Subscription> Subscriptions { get; set; }
 
         /// <summary>
-        /// Describes the customer’s tax exemption status. One of <c>none</c>, <c>exempt</c>, or
+        /// Describes the customer's tax exemption status. One of <c>none</c>, <c>exempt</c>, or
         /// <c>reverse</c>.
         /// </summary>
         [JsonProperty("tax_exempt")]
         public string TaxExempt { get; set; }
 
         /// <summary>
-        /// The customer’s current tax ids, if any.
+        /// The customer's current tax ids, if any.
         /// </summary>
         [JsonProperty("tax_ids")]
         public StripeList<TaxId> TaxIds { get; set; }

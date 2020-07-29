@@ -49,7 +49,7 @@ namespace Stripe
         public string SupportUrl { get; set; }
 
         /// <summary>
-        /// The business’s publicly available website.
+        /// The business's publicly available website.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }

@@ -16,7 +16,7 @@ namespace Stripe
         /// <summary>
         /// REQUIRED. Either a token, like the ones returned by
         /// <a href="https://stripe.com/docs/stripe.js">Stripe.js</a>, or a
-        /// <see cref="SourceBankAccount"/> instance containing a user’s bank account
+        /// <see cref="SourceBankAccount"/> instance containing a user's bank account
         /// details.
         /// </summary>
         [JsonProperty("source")]

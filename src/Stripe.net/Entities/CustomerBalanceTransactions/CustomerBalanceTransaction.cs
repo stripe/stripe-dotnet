@@ -14,14 +14,14 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object’s type. Objects of the same type share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
         /// <summary>
-        /// The amount of the transaction. A negative value is a credit for the customer’s balance,
-        /// and a positive value is a debit to the customer’s balance.
+        /// The amount of the transaction. A negative value is a credit for the customer's balance,
+        /// and a positive value is a debit to the customer's balance.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -94,9 +94,9 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// The customer’s balance after the transaction was applied. A negative value decrease the
-        /// amount due on the customer’s next invoice. A positive value increase the amount due on
-        /// the customer’s next invoice.
+        /// The customer's balance after the transaction was applied. A negative value decrease the
+        /// amount due on the customer's next invoice. A positive value increase the amount due on
+        /// the customer's next invoice.
         /// </summary>
         [JsonProperty("ending_balance")]
         public long EndingBalance { get; set; }

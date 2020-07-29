@@ -49,7 +49,7 @@ namespace Stripe
         /// The country in which the account holder resides, or in which the
         /// business is legally established. This should be an ISO 3166-1
         /// alpha-2 country code. For example, if you are in the United States
-        /// and the business for which you’re creating an account is legally
+        /// and the business for which you're creating an account is legally
         /// represented in Canada, you would use CA as the country for the
         /// account being created.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Stripe
         /// <summary>
         /// Three-letter ISO currency code representing the default currency
         /// for the account. This must be a currency that Stripe supports in
-        /// the account’s country.
+        /// the account's country.
         /// </summary>
         [JsonProperty("default_currency")]
         public string DefaultCurrency { get; set; }
@@ -115,7 +115,7 @@ namespace Stripe
         public AccountSettingsOptions Settings { get; set; }
 
         /// <summary>
-        /// Details on the account’s acceptance of the
+        /// Details on the account's acceptance of the
         /// <a href="https://stripe.com/docs/connect/updating-accounts#tos-acceptance">Stripe Services Agreement</a>.
         /// </summary>
         [JsonProperty("tos_acceptance")]

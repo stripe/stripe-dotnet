@@ -7,7 +7,7 @@ namespace Stripe
     public class SubscriptionItemDeleteOptions : BaseOptions
     {
         /// <summary>
-        /// Delete all usage for the given subscription item. Only allowed when the current plan’s
+        /// Delete all usage for the given subscription item. Only allowed when the current plan's
         /// <c>usage_type</c> is metered.
         /// </summary>
         [JsonProperty("clear_usage")]

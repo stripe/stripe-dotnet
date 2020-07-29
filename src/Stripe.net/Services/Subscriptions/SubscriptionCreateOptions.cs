@@ -17,7 +17,7 @@ namespace Stripe
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal
         /// places. This represents the percentage of the subscription invoice
-        /// subtotal that will be transferred to the application owner’s Stripe
+        /// subtotal that will be transferred to the application owner's Stripe
         /// account. The request must be made with an OAuth key in order to set
         /// an application fee percentage. For more information, see the
         /// application fees <see href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</see>.
@@ -27,7 +27,7 @@ namespace Stripe
 
         /// <summary>
         /// For new subscriptions, a past timestamp to backdate the
-        /// subscription’s start date to.  If set, the first invoice will
+        /// subscription's start date to.  If set, the first invoice will
         /// contain a proration for the timespan between the start date and the
         /// current time. Can be combined with trials and the billing cycle
         /// anchor.
@@ -110,7 +110,7 @@ namespace Stripe
         /// <summary>
         /// ID of the default payment source for the subscription. It must
         /// belong to the customer associated with the subscription and be in a
-        /// chargeable state. If not set, defaults to the customer’s default
+        /// chargeable state. If not set, defaults to the customer's default
         /// source.
         /// </summary>
         [JsonProperty("default_source")]
@@ -222,7 +222,7 @@ namespace Stripe
         /// before being charged for the first time. This will always overwrite any trials that
         /// might apply via a subscribed plan. If set, <see cref="TrialEnd"/> will override the
         /// default trial period of the plan the customer is being subscribed to. The special value
-        /// <see cref="SubscriptionTrialEnd.Now"/> can be provided to end the customer’s trial
+        /// <see cref="SubscriptionTrialEnd.Now"/> can be provided to end the customer's trial
         /// immediately.
         /// </summary>
         [JsonProperty("trial_end")]
