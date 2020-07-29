@@ -25,7 +25,7 @@ namespace StripeTests
                 Collect = "eventually_due",
                 RefreshUrl = "https://stripe.com/refresh",
                 ReturnUrl = "https://stripe.com/return",
-                Type = "custom_account_verification",
+                Type = "account_onboarding",
             };
         }
 
