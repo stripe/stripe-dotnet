@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -28,6 +29,40 @@ namespace Stripe
 
         [JsonProperty("discountable")]
         public bool Discountable { get; set; }
+
+        #region Expandable Discounts
+
+        /// <summary>
+        /// Ids of the discounts applied to the invoice line item. Line item discounts are applied
+        /// before invoice discounts.
+        /// </summary>
+        [JsonIgnore]
+        public List<string> DiscountIds
+        {
+            get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayIds<Discount>(value);
+        }
+
+        /// <summary>
+        /// The discounts applied to the invoice line item. Line item discounts are applied before
+        /// invoice discounts.
+        /// </summary>
+        [JsonIgnore]
+        public List<Discount> Discounts
+        {
+            get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
+        #endregion
+
+        /// <summary>
+        /// The amount of discount calculated per discount for this line item.
+        /// </summary>
+        [JsonProperty("discount_amounts")]
+        public List<CreditNoteLineItemDiscountAmount> DiscountAmounts { get; set; }
 
         [JsonProperty("invoice_item")]
         public string InvoiceItem { get; set; }

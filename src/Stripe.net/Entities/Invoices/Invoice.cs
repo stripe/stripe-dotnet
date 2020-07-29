@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -315,6 +316,34 @@ namespace Stripe
         [JsonProperty("discount")]
         public Discount Discount { get; set; }
 
+        #region Expandable Discounts
+
+        /// <summary>
+        /// Ids of the discounts applied to the invoice. Line item discounts are applied before
+        /// invoice discounts.
+        /// </summary>
+        [JsonIgnore]
+        public List<string> DiscountIds
+        {
+            get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayIds<Discount>(value);
+        }
+
+        /// <summary>
+        /// The discounts applied to the invoice. Line item discounts are applied before invoice
+        /// discounts.
+        /// </summary>
+        [JsonIgnore]
+        public List<Discount> Discounts
+        {
+            get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
+        #endregion
+
         /// <summary>
         /// The date on which payment for this invoice is due. This value will be null for invoices
         /// where billing=charge_automatically.
@@ -544,6 +573,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("total")]
         public long Total { get; set; }
+
+        /// <summary>
+        /// The aggregate amounts calculated per discount for all line items.
+        /// </summary>
+        [JsonProperty("total_discount_amounts")]
+        public List<InvoiceDiscountAmount> TotalDiscountAmounts { get; set; }
 
         /// <summary>
         /// The aggregate amounts calculated per tax rate for all line items.

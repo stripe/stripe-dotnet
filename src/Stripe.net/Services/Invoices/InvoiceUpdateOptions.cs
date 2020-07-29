@@ -58,6 +58,14 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// The coupons to redeem into discounts for the invoice. If not specified, inherits the
+        /// discount from the invoice's customer. Pass an empty string to avoid inheriting any
+        /// discounts.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<InvoiceDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// The date on which payment for this invoice is due. Only valid for invoices where
         /// <c>billing=send_invoice</c>.
         /// </summary>

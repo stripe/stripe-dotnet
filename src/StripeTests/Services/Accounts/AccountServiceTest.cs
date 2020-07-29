@@ -34,6 +34,17 @@ namespace StripeTests
                     Name = "business name",
                 },
                 BusinessType = "company",
+                Capabilities = new AccountCapabilitiesOptions
+                {
+                    CardPayments = new AccountCapabilitiesCardPaymentsOptions
+                    {
+                        Requested = true,
+                    },
+                    Transfers = new AccountCapabilitiesTransfersOptions
+                    {
+                        Requested = true,
+                    },
+                },
                 Company = new AccountCompanyOptions
                 {
                     Address = new AddressOptions
@@ -56,11 +67,6 @@ namespace StripeTests
                     },
                 },
                 ExternalAccount = "tok_visa_debit",
-                RequestedCapabilities = new List<string>
-                {
-                    "card_payments",
-                    "transfers",
-                },
                 Settings = new AccountSettingsOptions
                 {
                     Branding = new AccountSettingsBrandingOptions

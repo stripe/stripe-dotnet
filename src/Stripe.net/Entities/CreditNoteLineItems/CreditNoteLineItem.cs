@@ -37,6 +37,12 @@ namespace Stripe
         public long DiscountAmount { get; set; }
 
         /// <summary>
+        /// The amount of discount calculated per discount for this line item.
+        /// </summary>
+        [JsonProperty("discount_amounts")]
+        public List<CreditNoteLineItemDiscountAmount> DiscountAmounts { get; set; }
+
+        /// <summary>
         /// ID of the invoice line item being credited.
         /// </summary>
         [JsonProperty("invoice_line_item")]

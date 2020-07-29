@@ -92,6 +92,12 @@ namespace Stripe
         [JsonProperty("discount_amount")]
         public long DiscountAmount { get; set; }
 
+        /// <summary>
+        /// The aggregate amounts calculated per discount for all line items.
+        /// </summary>
+        [JsonProperty("discount_amounts")]
+        public List<CreditNoteDiscountAmount> DiscountAmounts { get; set; }
+
         #region Expandable Invoice
 
         /// <summary>
