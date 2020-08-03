@@ -274,7 +274,8 @@ namespace Stripe
         public const string CustomerSubscriptionTrialWillEnd = "customer.subscription.trial_will_end";
 
         /// <summary>
-        /// Occurs three days before the trial period of a subscription is scheduled to end.
+        /// Occurs whenever a subscription changes (e.g., switching from one plan to another,
+        /// or changing the status from trial to active).
         /// </summary>
         public const string CustomerSubscriptionUpdated = "customer.subscription.updated";
 
