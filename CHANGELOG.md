@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.28.0 - 2020-08-04
+* [#2152](https://github.com/stripe/stripe-dotnet/pull/2152) Add support for `AccountType` in `ChargePaymentMethodDetailsCardPresentReceipt`
+
 ## 37.27.0 - 2020-07-29
 * [#2121](https://github.com/stripe/stripe-dotnet/pull/2121) Add support for multiple coupons on Billing APIs
   * Add support for arrays of expandable API resources otherwise returning an array of strings by default
