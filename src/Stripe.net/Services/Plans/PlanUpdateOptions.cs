@@ -24,8 +24,8 @@ namespace Stripe
         public string Nickname { get; set; }
 
         /// <summary>
-        /// The product the plan belongs to. Note that after updating, statement descriptors and
-        /// line items of the plan in active subscriptions will be affected.
+        /// The product the plan belongs to. This cannot be changed once it has been used in a
+        /// subscription or subscription schedule.
         /// </summary>
         [JsonProperty("product")]
         public string Product { get; set; }

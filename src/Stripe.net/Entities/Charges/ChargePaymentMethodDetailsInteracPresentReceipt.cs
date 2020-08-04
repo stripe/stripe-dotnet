@@ -5,7 +5,7 @@
     public class ChargePaymentMethodDetailsInteracPresentReceipt : StripeEntity<ChargePaymentMethodDetailsInteracPresentReceipt>
     {
         /// <summary>
-        /// For Interac transactions - the source account type of the funds.
+        /// The type of account being debited or credited.
         /// </summary>
         [JsonProperty("account_type")]
         public string AccountType { get; set; }
