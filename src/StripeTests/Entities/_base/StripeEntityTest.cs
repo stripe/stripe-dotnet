@@ -161,9 +161,6 @@ namespace StripeTests
             // Access `created`, a number element
             Assert.Equal(subscription.Created, subscription.RawJObject["created"]);
 
-            // Access `plan[id]`, a nested string element
-            Assert.Equal(subscription.Plan.Id, subscription.RawJObject["plan"]["id"]);
-
             // Access `items[data][0][id]`, a deeply nested string element
             Assert.Equal(
                 subscription.Items.Data[0].Id,

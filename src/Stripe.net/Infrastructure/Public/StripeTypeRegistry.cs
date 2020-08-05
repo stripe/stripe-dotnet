@@ -60,6 +60,7 @@ namespace Stripe
             { "plan", typeof(Plan) },
             { "price", typeof(Price) },
             { "product", typeof(Product) },
+            { "promotion_code", typeof(PromotionCode) },
             { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
             { "radar.value_list", typeof(Radar.ValueList) },
             { "radar.value_list_item", typeof(Radar.ValueListItem) },
