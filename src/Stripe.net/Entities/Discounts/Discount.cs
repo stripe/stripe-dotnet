@@ -79,6 +79,37 @@ namespace Stripe
         [JsonProperty("invoice_item")]
         public string InvoiceItem { get; set; }
 
+        #region Expandable PromotionCode
+
+        /// <summary>
+        /// (ID of the PromotionCode)
+        /// The promotion code applied to create this discount.
+        /// </summary>
+        [JsonIgnore]
+        public string PromotionCodeId
+        {
+            get => this.InternalPromotionCode?.Id;
+            set => this.InternalPromotionCode = SetExpandableFieldId(value, this.InternalPromotionCode);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The promotion code applied to create this discount.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public PromotionCode PromotionCode
+        {
+            get => this.InternalPromotionCode?.ExpandedObject;
+            set => this.InternalPromotionCode = SetExpandableFieldObject(value, this.InternalPromotionCode);
+        }
+
+        [JsonProperty("promotion_code")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PromotionCode>))]
+        internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
+        #endregion
+
         /// <summary>
         /// Date that the coupon was applied.
         /// </summary>
