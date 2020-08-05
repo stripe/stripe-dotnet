@@ -7,7 +7,8 @@ namespace Stripe.Checkout
     public class Session : StripeEntity<Session>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the object.
+        /// Unique identifier for the object. Used to pass to <c>redirectToCheckout</c> in
+        /// Stripe.js.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -17,6 +18,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
+
+        /// <summary>
+        /// Enables user redeemable promotion codes.
+        /// </summary>
+        [JsonProperty("allow_promotion_codes")]
+        public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
         /// Total of all items before discounts or taxes are applied.
@@ -31,30 +38,29 @@ namespace Stripe.Checkout
         public long? AmountTotal { get; set; }
 
         /// <summary>
-        /// Specify whether Checkout should collect the customer's billing address. If set to
-        /// <c>required</c>, Checkout will always collect the customer's billing address. If left
-        /// blank or set to <c>auto</c> Checkout will only collect the billing address when
-        /// necessary.
+        /// Describes whether Checkout should collect the customer's billing address.
         /// </summary>
         [JsonProperty("billing_address_collection")]
         public string BillingAddressCollection { get; set; }
 
         /// <summary>
-        /// The URL the customer will be directed to if they decide to go back to your website.
+        /// The URL the customer will be directed to if they decide to cancel payment and return to
+        /// your website.
         /// </summary>
         [JsonProperty("cancel_url")]
         public string CancelUrl { get; set; }
 
         /// <summary>
-        /// A unique string to reference the Checkout Session. This can be a customer ID, a cart
-        /// ID, or similar. It is included in the <c>checkout.session.completed</c> webhook and can
-        /// be used to fulfill the purchase.
+        /// A unique string to reference the Checkout Session. This can be a customer ID, a cart ID,
+        /// or similar, and can be used to reconcile the session with your internal systems.
         /// </summary>
         [JsonProperty("client_reference_id")]
         public string ClientReferenceId { get; set; }
 
         /// <summary>
-        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -62,7 +68,11 @@ namespace Stripe.Checkout
         #region Expandable Customer
 
         /// <summary>
-        /// ID of the customer this Session is for if one exists.
+        /// (ID of the Customer)
+        /// The ID of the customer for this session. For Checkout Sessions in <c>payment</c> or
+        /// <c>subscription</c> mode, Checkout will create a new customer object based on
+        /// information provided during the session unless an existing customer was provided when
+        /// the session was created.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -72,7 +82,13 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// Customer this Session is for (if it was expanded).
+        /// (Expanded)
+        /// The ID of the customer for this session. For Checkout Sessions in <c>payment</c> or
+        /// <c>subscription</c> mode, Checkout will create a new customer object based on
+        /// information provided during the session unless an existing customer was provided when
+        /// the session was created.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Customer Customer
@@ -87,26 +103,30 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
-        /// The email address used to create the customer object.
+        /// If provided, this value will be used when the Customer object is created. If not
+        /// provided, customers will be asked to enter their email address. Use this parameter to
+        /// prefill customer data if you already have an email on file. To access information about
+        /// the customer once a session is complete, use the <c>customer</c> attribute.
         /// </summary>
         [JsonProperty("customer_email")]
         public string CustomerEmail { get; set; }
 
         /// <summary>
-        /// The line items, plans, or SKUs that were purchased by the customer.
+        /// The line items, plans, or SKUs purchased by the customer. Prefer using
+        /// <c>line_items</c>.
         /// </summary>
         [JsonProperty("display_items")]
         public List<SessionDisplayItem> DisplayItems { get; set; }
 
         /// <summary>
-        /// The line items associated with this session.
+        /// The line items purchased by the customer.
         /// </summary>
         [JsonProperty("line_items")]
         public StripeList<LineItem> LineItems { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -119,15 +139,15 @@ namespace Stripe.Checkout
         public string Locale { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to an object. It can
-        /// be useful for storing additional information about the object in a
-        /// structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The mode of the Checkout Session which can be <c>payment</c>, <c>setup</c>, or
+        /// The mode of the Checkout Session, one of <c>payment</c>, <c>setup</c>, or
         /// <c>subscription</c>.
         /// </summary>
         [JsonProperty("mode")]
@@ -136,7 +156,8 @@ namespace Stripe.Checkout
         #region Expandable PaymentIntent
 
         /// <summary>
-        /// The ID of the PaymentIntent created if SKUs or line items were provided.
+        /// (ID of the PaymentIntent)
+        /// The ID of the PaymentIntent for Checkout Sessions in <c>payment</c> mode.
         /// </summary>
         [JsonIgnore]
         public string PaymentIntentId
@@ -146,7 +167,10 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// PaymentIntent created if SKUs or line items were provided (if it was expanded).
+        /// (Expanded)
+        /// The ID of the PaymentIntent for Checkout Sessions in <c>payment</c> mode.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public PaymentIntent PaymentIntent
@@ -161,8 +185,8 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
-        /// The list of payment method types (e.g. card) that this Checkout Session is allowed to
-        /// use.
+        /// A list of the types of payment methods (e.g. card) this Checkout Session is allowed to
+        /// accept.
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
@@ -170,7 +194,8 @@ namespace Stripe.Checkout
         #region Expandable SetupIntent
 
         /// <summary>
-        /// The ID of the SetupIntent created if mode was set to <c>setup</c>.
+        /// (ID of the SetupIntent)
+        /// The ID of the SetupIntent for Checkout Sessions in <c>setup</c> mode.
         /// </summary>
         [JsonIgnore]
         public string SetupIntentId
@@ -180,7 +205,10 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// The SetupIntent created if mode was set to <c>setup</c> (if it was expanded).
+        /// (Expanded)
+        /// The ID of the SetupIntent for Checkout Sessions in <c>setup</c> mode.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public SetupIntent SetupIntent
@@ -208,12 +236,10 @@ namespace Stripe.Checkout
         public SessionShippingAddressCollection ShippingAddressCollection { get; set; }
 
         /// <summary>
-        /// Describes the type of transaction being performed by Checkout in
-        /// order to customize relevant text on the page, such as the Submit
-        /// button. <c>submit_type</c> can only be specified on checkout
-        /// sessions using line items or a SKU, and not checkout sessions for
-        /// subscriptions. Supported values are <c>auto</c>, <c>book</c>,
-        /// <c>donate</c>, or <c>pay</c>.
+        /// Describes the type of transaction being performed by Checkout in order to customize
+        /// relevant text on the page, such as the submit button. <c>submit_type</c> can only be
+        /// specified on Checkout Sessions in <c>payment</c> mode, but not Checkout Sessions in
+        /// <c>subscription</c> or <c>setup</c> mode.
         /// </summary>
         [JsonProperty("submit_type")]
         public string SubmitType { get; set; }
@@ -221,7 +247,8 @@ namespace Stripe.Checkout
         #region Expandable Subscription
 
         /// <summary>
-        /// The ID of the subscription created if one or more plans were provided.
+        /// (ID of the Subscription)
+        /// The ID of the subscription for Checkout Sessions in <c>subscription</c> mode.
         /// </summary>
         [JsonIgnore]
         public string SubscriptionId
@@ -231,7 +258,10 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// The subscription created if one or more plans were provided (if it was expanded).
+        /// (Expanded)
+        /// The ID of the subscription for Checkout Sessions in <c>subscription</c> mode.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Subscription Subscription
@@ -246,7 +276,8 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
-        /// The URL the customer will be directed to after a successful payment.
+        /// The URL the customer will be directed to after the payment or subscription creation is
+        /// successful.
         /// </summary>
         [JsonProperty("success_url")]
         public string SuccessUrl { get; set; }

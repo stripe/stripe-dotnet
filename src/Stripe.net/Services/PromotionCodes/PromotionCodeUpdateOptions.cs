@@ -3,8 +3,15 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CouponUpdateOptions : BaseOptions, IHasMetadata
+    public class PromotionCodeUpdateOptions : BaseOptions, IHasMetadata
     {
+        /// <summary>
+        /// Whether the promotion code is currently active. A promotion code can only be reactivated
+        /// when the coupon is still valid and the promotion code is otherwise redeemable.
+        /// </summary>
+        [JsonProperty("active")]
+        public bool? Active { get; set; }
+
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
@@ -13,12 +20,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
-
-        /// <summary>
-        /// Name of the coupon displayed to customers on, for instance invoices, or receipts. By
-        /// default the <c>id</c> is shown if <c>name</c> is not set.
-        /// </summary>
-        [JsonProperty("name")]
-        public string Name { get; set; }
     }
 }

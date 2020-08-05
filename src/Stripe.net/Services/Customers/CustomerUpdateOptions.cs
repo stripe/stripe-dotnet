@@ -13,11 +13,9 @@ namespace Stripe
         public AddressOptions Address { get; set; }
 
         /// <summary>
-        /// Current balance, if any, being stored on the customer. If negative, the customer has
-        /// credit to apply to their next invoice. If positive, the customer has an amount owed that
-        /// will be added to their next invoice. The balance does not refer to any unpaid invoices;
-        /// it solely takes into account amounts that have yet to be successfully applied to any
-        /// invoice. This balance is only taken into account as invoices are finalized.
+        /// An integer amount in %s that represents the customer's current balance, which affect the
+        /// customer's future invoices. A negative amount represents a credit that decreases the
+        /// amount due on an invoice; a positive amount increases the amount due on an invoice.
         /// </summary>
         [JsonProperty("balance")]
         public long? Balance { get; set; }
@@ -25,21 +23,54 @@ namespace Stripe
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
 
+        /// <summary>
+        /// If you are using payment methods created via the PaymentMethods API, see the <a
+        /// href="https://stripe.com/docs/api/customers/update#update_customer-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
+        /// parameter.
+        ///
+        /// Provide the ID of a payment source already attached to this customer to make it this
+        /// customer's default payment source.
+        ///
+        /// If you want to add a new payment source and make it the default, see the <a
+        /// href="https://stripe.com/docs/api/customers/update#update_customer-source">source</a>
+        /// property.
+        /// </summary>
         [JsonProperty("default_source")]
         public string DefaultSource { get; set; }
 
+        /// <summary>
+        /// An arbitrary string that you can attach to a customer object. It is displayed alongside
+        /// the customer in the dashboard.
+        /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        /// <summary>
+        /// Customer's email address. It's displayed alongside the customer in your dashboard and
+        /// can be useful for searching and tracking. This may be up to <em>512 characters</em>.
+        /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
 
+        /// <summary>
+        /// The prefix for the customer used to generate unique invoice numbers. Must be 3–12
+        /// uppercase letters or numbers.
+        /// </summary>
         [JsonProperty("invoice_prefix")]
         public string InvoicePrefix { get; set; }
 
+        /// <summary>
+        /// Default invoice settings for this customer.
+        /// </summary>
         [JsonProperty("invoice_settings")]
         public CustomerInvoiceSettingsOptions InvoiceSettings { get; set; }
 
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
+        /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
@@ -50,7 +81,7 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
-        /// The suffix of the customer's next invoice number.
+        /// The sequence to be used on the customer's next invoice. Defaults to 1.
         /// </summary>
         [JsonProperty("next_invoice_sequence")]
         public long? NextInvoiceSequence { get; set; }
@@ -62,30 +93,31 @@ namespace Stripe
         public string Phone { get; set; }
 
         /// <summary>
-        /// The customer's preferred locales (languages), ordered by preference.
+        /// Customer's preferred languages, ordered by preference.
         /// </summary>
         [JsonProperty("preferred_locales")]
         public List<string> PreferredLocales { get; set; }
 
+        /// <summary>
+        /// The API ID of a promotion code to apply to the customer. The customer will have a
+        /// discount applied on all recurring payments. Charges you create through the API will not
+        /// have the discount.
+        /// </summary>
+        [JsonProperty("promotion_code")]
+        public string PromotionCode { get; set; }
+
+        /// <summary>
+        /// The customer's shipping information. Appears on invoices emailed to this customer.
+        /// </summary>
         [JsonProperty("shipping")]
         public ShippingOptions Shipping { get; set; }
 
-        /// <summary>
-        /// A Token's or a Source's ID, as returned by
-        /// <a href="https://stripe.com/docs/elements">Elements</a>. Passing <c>source</c> will
-        /// create a new source object, make it the new customer default source, and delete the old\
-        /// customer default if one exists. If you want to add additional sources instead of
-        /// replacing the existing default, use
-        /// <see cref="CardService.Create(string, CardCreateOptions, RequestOptions)"/>. Whenever
-        /// you attach a card to a customer, Stripe will automatically validate the card.
-        /// </summary>
         [JsonProperty("source")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
 
         /// <summary>
-        /// Describes the customer's tax exemption status. One of <c>none</c>,  <c>exempt</c>, or
-        /// <c>reverse</c>.
+        /// The customer's tax exemption. One of <c>none</c>, <c>exempt</c>, or <c>reverse</c>.
         /// </summary>
         [JsonProperty("tax_exempt")]
         public string TaxExempt { get; set; }
