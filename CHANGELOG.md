@@ -1,5 +1,12 @@
 # Changelog
 
+## 37.29.0 - 2020-08-05
+* [#2153](https://github.com/stripe/stripe-dotnet/pull/2153) Multiple API Changes
+  * Add the `PromotionCode` resource and APIs
+  * Add support for `AllowPromotionCodes` on Checkout `Session`
+  * Add support for `AppliesTo` on `Coupon`
+  * Add support for `PromotionCode` on `Customer` and `Subscription` creation or update
+
 ## 37.28.0 - 2020-08-04
 * [#2152](https://github.com/stripe/stripe-dotnet/pull/2152) Add support for `AccountType` in `ChargePaymentMethodDetailsCardPresentReceipt`
 
