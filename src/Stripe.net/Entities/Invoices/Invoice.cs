@@ -37,28 +37,28 @@ namespace Stripe
         /// <summary>
         /// Final amount due at this time for this invoice. If the invoice's total is smaller than
         /// the minimum charge amount, for example, or if there is account credit that can be
-        /// applied to the invoice, the <see cref="AmountDue" /> may be 0. If there is a positive
-        /// <see cref="StartingBalance" /> for the invoice (the customer owes money), the
-        /// <see cref="AmountDue" /> will also take that into account. The charge that gets
-        /// generated for the invoice will be for the amount specified in <see cref="AmountDue" />.
+        /// applied to the invoice, the <c>amount_due</c> may be 0. If there is a positive
+        /// <c>starting_balance</c> for the invoice (the customer owes money), the <c>amount_due</c>
+        /// will also take that into account. The charge that gets generated for the invoice will be
+        /// for the amount specified in <c>amount_due</c>.
         /// </summary>
         [JsonProperty("amount_due")]
         public long AmountDue { get; set; }
 
         /// <summary>
-        /// The amount that was paid.
+        /// The amount, in %s, that was paid.
         /// </summary>
         [JsonProperty("amount_paid")]
         public long AmountPaid { get; set; }
 
         /// <summary>
-        /// The amount that was paid.
+        /// The amount remaining, in %s, that is due.
         /// </summary>
         [JsonProperty("amount_remaining")]
         public long AmountRemaining { get; set; }
 
         /// <summary>
-        /// The fee in that will be applied to the invoice and transferred to the application
+        /// The fee in %s that will be applied to the invoice and transferred to the application
         /// owner's Stripe account when the invoice is paid.
         /// </summary>
         [JsonProperty("application_fee_amount")]
@@ -82,18 +82,25 @@ namespace Stripe
         public bool Attempted { get; set; }
 
         /// <summary>
-        /// Controls whether Stripe will perform automatic collection of the invoice. When
-        /// <c>false</c>, the invoice's state will not automatically advance without an explicit
-        /// action.
+        /// Controls whether Stripe will perform <a
+        /// href="https://stripe.com/docs/billing/invoices/workflow/#auto_advance">automatic
+        /// collection</a> of the invoice. When <c>false</c>, the invoice's state will not
+        /// automatically advance without an explicit action.
         /// </summary>
         [JsonProperty("auto_advance")]
         public bool AutoAdvance { get; set; }
 
         /// <summary>
-        /// Indicates the reason why the invoice was created. One of
-        /// <c>automatic_pending_invoice_item_invoice</c>, <c>manual</c>, <c>subscription</c>,
-        /// <c>subscription_create</c>, <c>subscription_cycle</c>, <c>subscription_threshold</c>,
-        /// <c>subscription_update</c>, or <c>upcoming</c>.
+        /// Indicates the reason why the invoice was created. <c>subscription_cycle</c> indicates an
+        /// invoice created by a subscription advancing into a new period.
+        /// <c>subscription_create</c> indicates an invoice created due to creating a subscription.
+        /// <c>subscription_update</c> indicates an invoice created due to updating a subscription.
+        /// <c>subscription</c> is set for all old invoices to indicate either a change to a
+        /// subscription or a period advancement. <c>manual</c> is set for all invoices unrelated to
+        /// a subscription (for example: created via the invoice editor). The <c>upcoming</c> value
+        /// is reserved for simulated invoices per the upcoming invoice endpoint.
+        /// <c>subscription_threshold</c> indicates an invoice created due to a billing threshold
+        /// being reached.
         /// </summary>
         [JsonProperty("billing_reason")]
         public string BillingReason { get; set; }
@@ -101,6 +108,7 @@ namespace Stripe
         #region Expandable Charge
 
         /// <summary>
+        /// (ID of the Charge)
         /// ID of the latest charge generated for this invoice, if any.
         /// </summary>
         [JsonIgnore]
@@ -111,7 +119,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) The latest charge generated for this invoice, if any.
+        /// (Expanded)
+        /// ID of the latest charge generated for this invoice, if any.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Charge Charge
@@ -126,11 +137,10 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When
-        /// charging automatically, Stripe will attempt to pay this invoice
-        /// using the default source attached to the customer. When sending an
-        /// invoice, Stripe will email this invoice to the customer with payment
-        /// instructions. Defaults to <c>charge_automatically</c>.
+        /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
+        /// Stripe will attempt to pay this invoice using the default source attached to the
+        /// customer. When sending an invoice, Stripe will email this invoice to the customer with
+        /// payment instructions.
         /// </summary>
         [JsonProperty("collection_method")]
         public string CollectionMethod { get; set; }
@@ -143,7 +153,9 @@ namespace Stripe
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -157,6 +169,7 @@ namespace Stripe
         #region Expandable Customer
 
         /// <summary>
+        /// (ID of the Customer)
         /// The ID of the customer who will be billed.
         /// </summary>
         [JsonIgnore]
@@ -167,7 +180,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) T)he customer who will be billed.
+        /// (Expanded)
+        /// The ID of the customer who will be billed.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Customer Customer
@@ -183,55 +199,55 @@ namespace Stripe
 
         /// <summary>
         /// The customer's address. Until the invoice is finalized, this field will equal
-        /// <see cref="Customer.Address" />. Once the invoice is finalized, this field will no
-        /// longer be updated.
+        /// <c>customer.address</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
         /// </summary>
         [JsonProperty("customer_address")]
         public Address CustomerAddress { get; set; }
 
         /// <summary>
         /// The customer's email. Until the invoice is finalized, this field will equal
-        /// <see cref="Customer.Email" />. Once the invoice is finalized, this field will no longer
-        /// be updated.
+        /// <c>customer.email</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
         /// </summary>
         [JsonProperty("customer_email")]
         public string CustomerEmail { get; set; }
 
         /// <summary>
         /// The customer's name. Until the invoice is finalized, this field will equal
-        /// <see cref="Customer.Name" />. Once the invoice is finalized, this field will no longer
-        /// be updated.
+        /// <c>customer.name</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
         /// </summary>
         [JsonProperty("customer_name")]
         public string CustomerName { get; set; }
 
         /// <summary>
         /// The customer's phone number. Until the invoice is finalized, this field will equal
-        /// <see cref="Customer.Phone" />. Once the invoice is finalized, this field will no longer
-        /// be updated.
+        /// <c>customer.phone</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
         /// </summary>
         [JsonProperty("customer_phone")]
         public string CustomerPhone { get; set; }
 
         /// <summary>
         /// The customer's shipping information. Until the invoice is finalized, this field will
-        /// equal <see cref="Customer.Shipping" />. Once the invoice is finalized, this field will
-        /// no longer be updated.
+        /// equal <c>customer.shipping</c>. Once the invoice is finalized, this field will no longer
+        /// be updated.
         /// </summary>
         [JsonProperty("customer_shipping")]
         public Shipping CustomerShipping { get; set; }
 
         /// <summary>
         /// The customer's tax exempt status. Until the invoice is finalized, this field will equal
-        /// <see cref="Customer.TaxExempt" />. Once the invoice is finalized, this field will no
-        /// longer be updated.
+        /// <c>customer.tax_exempt</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
         /// </summary>
         [JsonProperty("customer_tax_exempt")]
         public string CustomerTaxExempt { get; set; }
 
         /// <summary>
-        /// The customer's tax ids. Until the invoice is finalized, this field will equal
-        /// <see cref="Customer.TaxIds" />. Once the invoice is finalized, this field will no
+        /// The customer's tax IDs. Until the invoice is finalized, this field will contain the same
+        /// tax IDs as <c>customer.tax_ids</c>. Once the invoice is finalized, this field will no
         /// longer be updated.
         /// </summary>
         [JsonProperty("customer_tax_ids")]
@@ -240,10 +256,10 @@ namespace Stripe
         #region Expandable DefaultPaymentMethod
 
         /// <summary>
+        /// (ID of the PaymentMethod)
         /// ID of the default payment method for the invoice. It must belong to the customer
-        /// associated with the invoice and be in a chargeable state. If not set, defaults to the
-        /// subscription's default payment method, if any, or to the customer's default payment
-        /// method.
+        /// associated with the invoice. If not set, defaults to the subscription's default payment
+        /// method, if any, or to the default payment method in the customer's invoice settings.
         /// </summary>
         [JsonIgnore]
         public string DefaultPaymentMethodId
@@ -253,10 +269,12 @@ namespace Stripe
         }
 
         /// <summary>
-        ///  (Expanded) The default payment method for the invoice. It must belong to the customer
-        /// associated with the invoice and be in a chargeable state. If not set, defaults to the
-        /// subscription's default payment method, if any, or to the customer's default payment
-        /// method.
+        /// (Expanded)
+        /// ID of the default payment method for the invoice. It must belong to the customer
+        /// associated with the invoice. If not set, defaults to the subscription's default payment
+        /// method, if any, or to the default payment method in the customer's invoice settings.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public PaymentMethod DefaultPaymentMethod
@@ -272,6 +290,12 @@ namespace Stripe
 
         #region Expandable DefaultSource
 
+        /// <summary>
+        /// (ID of the IPaymentSource)
+        /// ID of the default payment source for the invoice. It must belong to the customer
+        /// associated with the invoice and be in a chargeable state. If not set, defaults to the
+        /// subscription's default source, if any, or to the customer's default source.
+        /// </summary>
         [JsonIgnore]
         public string DefaultSourceId
         {
@@ -279,6 +303,14 @@ namespace Stripe
             set => this.InternalDefaultSource = SetExpandableFieldId(value, this.InternalDefaultSource);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the default payment source for the invoice. It must belong to the customer
+        /// associated with the invoice and be in a chargeable state. If not set, defaults to the
+        /// subscription's default source, if any, or to the customer's default source.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public IPaymentSource DefaultSource
         {
@@ -292,7 +324,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Tax rates applied to the invoice.
+        /// The tax rates applied to this invoice, if any.
         /// </summary>
         [JsonProperty("default_tax_rates")]
         public List<TaxRate> DefaultTaxRates { get; set; }
@@ -316,37 +348,9 @@ namespace Stripe
         [JsonProperty("discount")]
         public Discount Discount { get; set; }
 
-        #region Expandable Discounts
-
         /// <summary>
-        /// Ids of the discounts applied to the invoice. Line item discounts are applied before
-        /// invoice discounts.
-        /// </summary>
-        [JsonIgnore]
-        public List<string> DiscountIds
-        {
-            get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
-            set => this.InternalDiscounts = SetExpandableArrayIds<Discount>(value);
-        }
-
-        /// <summary>
-        /// The discounts applied to the invoice. Line item discounts are applied before invoice
-        /// discounts.
-        /// </summary>
-        [JsonIgnore]
-        public List<Discount> Discounts
-        {
-            get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
-            set => this.InternalDiscounts = SetExpandableArrayObjects(value);
-        }
-
-        [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
-        internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
-        #endregion
-
-        /// <summary>
-        /// The date on which payment for this invoice is due. This value will be null for invoices
-        /// where billing=charge_automatically.
+        /// The date on which payment for this invoice is due. This value will be <c>null</c> for
+        /// invoices where <c>collection_method=charge_automatically</c>.
         /// </summary>
         [JsonProperty("due_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -381,28 +385,30 @@ namespace Stripe
         public string InvoicePdf { get; set; }
 
         /// <summary>
-        /// The individual line items that make up the invoice.
+        /// The individual line items that make up the invoice. <c>lines</c> is sorted as follows:
+        /// invoice items in reverse chronological order, followed by the subscription, if any.
         /// </summary>
         [JsonProperty("lines")]
         public StripeList<InvoiceLineItem> Lines { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The time at which payment will next be attempted. This value will be null for invoices
-        /// where <see cref="CollectionMethod" /> is set to <c>send_invoice</c>.
+        /// The time at which payment will next be attempted. This value will be <c>null</c> for
+        /// invoices where <c>collection_method=send_invoice</c>.
         /// </summary>
         [JsonProperty("next_payment_attempt")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -410,7 +416,7 @@ namespace Stripe
 
         /// <summary>
         /// A unique, identifying string that appears on emails sent to the customer for this
-        /// invoice.
+        /// invoice. This starts with the customer's unique invoice_prefix if it is specified.
         /// </summary>
         [JsonProperty("number")]
         public string Number { get; set; }
@@ -425,7 +431,10 @@ namespace Stripe
         #region Expandable PaymentIntent
 
         /// <summary>
-        /// ID of the PaymentIntent associated with this invoice.
+        /// (ID of the PaymentIntent)
+        /// The PaymentIntent associated with this invoice. The PaymentIntent is generated when the
+        /// invoice is finalized, and can then be used to pay the invoice. Note that voiding an
+        /// invoice will cancel the PaymentIntent.
         /// </summary>
         [JsonIgnore]
         public string PaymentIntentId
@@ -435,9 +444,12 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) The PaymentIntent associated with this invoice. The PaymentIntent is
-        /// generated when the invoice is finalized, and can then be used to pay the invoice. Note
-        /// that voiding an invoice will cancel the PaymentIntent.
+        /// (Expanded)
+        /// The PaymentIntent associated with this invoice. The PaymentIntent is generated when the
+        /// invoice is finalized, and can then be used to pay the invoice. Note that voiding an
+        /// invoice will cancel the PaymentIntent.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public PaymentIntent PaymentIntent
@@ -498,21 +510,21 @@ namespace Stripe
 
         /// <summary>
         /// The status of the invoice, one of <c>draft</c>, <c>open</c>, <c>paid</c>,
-        /// <c>uncollectible</c>, or <c>void</c>.
+        /// <c>uncollectible</c>, or <c>void</c>. <a
+        /// href="https://stripe.com/docs/billing/invoices/workflow#workflow-overview">Learn
+        /// more.</a>
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        /// <summary>
-        /// The timestamps at which the invoice status was updated.
-        /// </summary>
         [JsonProperty("status_transitions")]
         public InvoiceStatusTransitions StatusTransitions { get; set; }
 
         #region Expandable Subscription
 
         /// <summary>
-        /// ID of the subscription that this invoice was prepared for, if any.
+        /// (ID of the Subscription)
+        /// The subscription that this invoice was prepared for, if any.
         /// </summary>
         [JsonIgnore]
         public string SubscriptionId
@@ -522,7 +534,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) The subscription that this invoice was prepared for, if any.
+        /// (Expanded)
+        /// The subscription that this invoice was prepared for, if any.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Subscription Subscription
@@ -546,21 +561,18 @@ namespace Stripe
 
         /// <summary>
         /// Total of all subscriptions, invoice items, and prorations on the invoice before any
-        /// discount or tax is applied.
+        /// invoice level discount or tax is applied. Item discounts are already incorporated.
         /// </summary>
         [JsonProperty("subtotal")]
         public long Subtotal { get; set; }
 
         /// <summary>
-        /// The amount of tax on this invoice. This is the sum of all the tax amounts on this invoice.
+        /// The amount of tax on this invoice. This is the sum of all the tax amounts on this
+        /// invoice.
         /// </summary>
         [JsonProperty("tax")]
         public long? Tax { get; set; }
 
-        /// <summary>
-        /// If <see cref="BillingReason" /> is set to <c>subscription_threshold</c> this
-        /// returns more information on which threshold rules triggered the invoice.
-        /// </summary>
         [JsonProperty("threshold_reason")]
         public InvoiceThresholdReason ThresholdReason { get; set; }
 
@@ -571,7 +583,7 @@ namespace Stripe
         public long Total { get; set; }
 
         /// <summary>
-        /// The aggregate amounts calculated per discount for all line items.
+        /// The aggregate amounts calculated per discount across all line items.
         /// </summary>
         [JsonProperty("total_discount_amounts")]
         public List<InvoiceDiscountAmount> TotalDiscountAmounts { get; set; }
@@ -583,20 +595,49 @@ namespace Stripe
         public List<InvoiceTaxAmount> TotalTaxAmounts { get; set; }
 
         /// <summary>
-        /// If specified, the funds from the invoice will be transferred to the destination and the
-        /// ID of the resulting transfer will be found on the invoice's charge.
+        /// The account (if any) the payment will be attributed to for tax reporting, and where
+        /// funds from the payment will be transferred to for the invoice.
         /// </summary>
         [JsonProperty("transfer_data")]
         public InvoiceTransferData TransferData { get; set; }
 
         /// <summary>
         /// Invoices are automatically paid or sent 1 hour after webhooks are delivered, or until
-        /// all webhook delivery attempts have been exhausted. This field tracks the time when
-        /// webhooks for this invoice were successfully delivered. If the invoice had no webhooks to
-        /// deliver, this will be set while the invoice is being created.
+        /// all webhook delivery attempts have <a
+        /// href="https://stripe.com/docs/billing/webhooks#understand">been exhausted</a>. This
+        /// field tracks the time when webhooks for this invoice were successfully delivered. If the
+        /// invoice had no webhooks to deliver, this will be set while the invoice is being created.
         /// </summary>
         [JsonProperty("webhooks_delivered_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? WebhooksDeliveredAt { get; set; }
+
+        #region Expandable Discounts
+
+        /// <summary>
+        /// Ids of the discounts applied to the invoice. Line item discounts are applied before
+        /// invoice discounts.
+        /// </summary>
+        [JsonIgnore]
+        public List<string> DiscountIds
+        {
+            get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayIds<Discount>(value);
+        }
+
+        /// <summary>
+        /// The discounts applied to the invoice. Line item discounts are applied before invoice
+        /// discounts.
+        /// </summary>
+        [JsonIgnore]
+        public List<Discount> Discounts
+        {
+            get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
+        #endregion
     }
 }
