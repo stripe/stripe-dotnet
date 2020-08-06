@@ -39,7 +39,7 @@ namespace Stripe
         /// <c>redeems_by</c>, then this value cannot be after the coupon's <c>redeems_by</c>.
         /// </summary>
         [JsonProperty("expires_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
