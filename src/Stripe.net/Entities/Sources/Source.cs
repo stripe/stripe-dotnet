@@ -66,7 +66,7 @@ namespace Stripe
 
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The currency associated with the source. This is the currency for which the source will be chargeable once ready. Required for single-use sources.

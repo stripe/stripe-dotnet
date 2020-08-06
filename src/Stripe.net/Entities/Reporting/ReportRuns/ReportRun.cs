@@ -14,7 +14,7 @@ namespace Stripe.Reporting
 
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("error")]
         public string Error { get; set; }

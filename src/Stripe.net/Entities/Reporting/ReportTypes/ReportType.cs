@@ -15,11 +15,11 @@ namespace Stripe.Reporting
 
         [JsonProperty("data_available_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime DataAvailableEnd { get; set; }
+        public DateTime DataAvailableEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("data_available_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime DataAvailableStart { get; set; }
+        public DateTime DataAvailableStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("default_columns")]
         public List<string> DefaultColumns { get; set; }
@@ -29,7 +29,7 @@ namespace Stripe.Reporting
 
         [JsonProperty("updated")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Updated { get; set; }
+        public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("version")]
         public long Version { get; set; }

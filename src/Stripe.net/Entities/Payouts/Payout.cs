@@ -18,7 +18,7 @@ namespace Stripe
 
         [JsonProperty("arrival_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime ArrivalDate { get; set; }
+        public DateTime ArrivalDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("automatic")]
         public bool Automatic { get; set; }
@@ -46,7 +46,7 @@ namespace Stripe
 
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("currency")]
         public string Currency { get; set; }

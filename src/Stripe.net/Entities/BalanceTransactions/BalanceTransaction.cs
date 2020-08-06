@@ -30,14 +30,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("available_on")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime AvailableOn { get; set; }
+        public DateTime AvailableOn { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Three-letter ISO currency code, in lowercase.
