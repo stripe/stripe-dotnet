@@ -65,7 +65,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this object is deleted or not.
