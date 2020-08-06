@@ -29,7 +29,7 @@ namespace Stripe
 
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime BillingCycleAnchor { get; set; }
+        public DateTime BillingCycleAnchor { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
@@ -83,7 +83,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// End of the current period that the subscription has been invoiced for. At the end of
@@ -91,14 +91,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("current_period_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime CurrentPeriodEnd { get; set; }
+        public DateTime CurrentPeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Start of the current period that the subscription has been invoiced for.
         /// </summary>
         [JsonProperty("current_period_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime CurrentPeriodStart { get; set; }
+        public DateTime CurrentPeriodStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         #region Expandable Customer
 
@@ -357,7 +357,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("start_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime StartDate { get; set; }
+        public DateTime StartDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Possible values are <c>incomplete</c>, <c>incomplete_expired</c>, <c>trialing</c>,

@@ -42,7 +42,7 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Three-letter ISO currency code, in lowercase. Must be a supported currency.

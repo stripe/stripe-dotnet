@@ -22,7 +22,7 @@ namespace Stripe
 
         [JsonProperty("date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("description")]
         public string Description { get; set; }

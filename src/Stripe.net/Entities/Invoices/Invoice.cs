@@ -140,7 +140,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
@@ -456,14 +456,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("period_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime PeriodEnd { get; set; }
+        public DateTime PeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Start of the usage period during which invoice items were added to this invoice.
         /// </summary>
         [JsonProperty("period_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime PeriodStart { get; set; }
+        public DateTime PeriodStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Total amount of all post-payment credit notes issued for this invoice.
@@ -542,7 +542,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscription_proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime SubscriptionProrationDate { get; set; }
+        public DateTime SubscriptionProrationDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Total of all subscriptions, invoice items, and prorations on the invoice before any
