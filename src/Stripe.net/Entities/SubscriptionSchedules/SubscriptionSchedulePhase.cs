@@ -69,7 +69,7 @@ namespace Stripe
 
         [JsonProperty("end_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime EndDate { get; set; }
+        public DateTime EndDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("invoice_settings")]
         public SubscriptionSchedulePhaseInvoiceSettings InvoiceSettings { get; set; }
@@ -82,7 +82,7 @@ namespace Stripe
 
         [JsonProperty("start_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime StartDate { get; set; }
+        public DateTime StartDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("transfer_data")]
         public SubscriptionSchedulePhaseTransferData TransferData { get; set; }
