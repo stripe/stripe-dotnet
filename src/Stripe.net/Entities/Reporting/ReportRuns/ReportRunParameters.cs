@@ -18,11 +18,11 @@ namespace Stripe.Reporting
 
         [JsonProperty("interval_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime IntervalEnd { get; set; }
+        public DateTime IntervalEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("interval_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime IntervalStart { get; set; }
+        public DateTime IntervalStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("payout")]
         public string Payout { get; set; }
