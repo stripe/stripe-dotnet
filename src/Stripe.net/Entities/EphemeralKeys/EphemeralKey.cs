@@ -18,7 +18,7 @@ namespace Stripe
 
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this object is deleted or not.
@@ -28,7 +28,7 @@ namespace Stripe
 
         [JsonProperty("expires")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Expires { get; set; }
+        public DateTime Expires { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }

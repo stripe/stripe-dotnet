@@ -23,6 +23,6 @@ namespace Stripe
 
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Timestamp { get; set; }
+        public DateTime Timestamp { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

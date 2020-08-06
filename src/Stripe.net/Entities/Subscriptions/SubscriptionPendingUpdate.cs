@@ -22,7 +22,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime ExpiresAt { get; set; }
+        public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// List of subscription items, each with an attached plan, that will

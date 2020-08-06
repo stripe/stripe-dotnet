@@ -11,7 +11,7 @@ namespace Stripe
 
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("url")]
         public string Url { get; set; }

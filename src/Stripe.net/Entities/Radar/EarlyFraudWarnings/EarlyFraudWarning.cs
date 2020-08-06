@@ -49,7 +49,7 @@ namespace Stripe.Radar
         /// <summary>Time at which the object was created.</summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The type of fraud labelled by the issuer. One of <c>card_never_received</c>,

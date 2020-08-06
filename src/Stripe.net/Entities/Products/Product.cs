@@ -36,7 +36,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// An array of connect application identifiers that cannot purchase this product.
@@ -112,7 +112,7 @@ namespace Stripe
 
         [JsonProperty("updated")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Updated { get; set; }
+        public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// A URL of a publicly-accessible webpage for this product.

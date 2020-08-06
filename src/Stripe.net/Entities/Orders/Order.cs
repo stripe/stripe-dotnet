@@ -77,7 +77,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// 3-letter ISO code representing the currency in which the order was made.
@@ -192,7 +192,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("updated")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Updated { get; set; }
+        public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The merchant's order ID if it is different from the Stripe order ID.
