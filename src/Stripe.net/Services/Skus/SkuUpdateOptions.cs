@@ -35,7 +35,7 @@ namespace Stripe
         /// Description of the SKU's inventory.
         /// </summary>
         [JsonProperty("inventory")]
-        public InventoryOptions Inventory { get; set; }
+        public SkuInventoryOptions Inventory { get; set; }
 
         /// <summary>
         /// Set of key/value pairs that you can attach to an object. It can be useful for storing additional information about the object in a structured format.
@@ -47,7 +47,7 @@ namespace Stripe
         /// The dimensions of this SKU for shipping purposes.
         /// </summary>
         [JsonProperty("package_dimensions")]
-        public PackageDimensionOptions PackageDimensions { get; set; }
+        public SkuPackageDimensionsOptions PackageDimensions { get; set; }
 
         /// <summary>
         /// The cost of the item as a positive integer in the smallest currency unit (that is, 100 cents to charge $1.00, or 100 to charge ¥100, Japanese Yen being a 0-decimal currency).
