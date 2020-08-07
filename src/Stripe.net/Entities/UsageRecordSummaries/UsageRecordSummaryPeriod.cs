@@ -4,14 +4,14 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Period : StripeEntity<Period>
+    public class UsageRecordSummaryPeriod : StripeEntity<UsageRecordSummaryPeriod>
     {
-        [JsonProperty("start")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime? Start { get; set; }
-
         [JsonProperty("end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? End { get; set; }
+
+        [JsonProperty("start")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? Start { get; set; }
     }
 }

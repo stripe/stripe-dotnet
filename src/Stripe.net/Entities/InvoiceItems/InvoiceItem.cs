@@ -158,7 +158,7 @@ namespace Stripe
         /// Period this invoice item was created for.
         /// </summary>
         [JsonProperty("period")]
-        public Period Period { get; set; }
+        public InvoiceItemPeriod Period { get; set; }
 
         /// <summary>
         /// If the invoice item is a proration, the plan of the subscription that the proration was
