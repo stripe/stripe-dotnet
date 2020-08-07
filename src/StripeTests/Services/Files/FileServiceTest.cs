@@ -28,7 +28,7 @@ namespace StripeTests
             this.createOptions = new FileCreateOptions
             {
                 File = typeof(FileServiceTest).GetTypeInfo().Assembly.GetManifestResourceStream(FileName),
-                FileLinkData = new FileLinkDataOptions
+                FileLinkData = new FileFileLinkDataOptions
                 {
                     Create = true,
                     Metadata = new Dictionary<string, string>

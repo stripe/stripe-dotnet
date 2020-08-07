@@ -17,7 +17,7 @@ namespace Stripe
         /// created file.
         /// </summary>
         [JsonProperty("file_link_data")]
-        public FileLinkDataOptions FileLinkData { get; set; }
+        public FileFileLinkDataOptions FileLinkData { get; set; }
 
         /// <summary>
         /// REQUIRED. The purpose of the uploaded file. Possible values are <c>business_logo</c>,
