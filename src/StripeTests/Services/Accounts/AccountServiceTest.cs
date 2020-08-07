@@ -75,7 +75,7 @@ namespace StripeTests
                     },
                     CardPayments = new AccountSettingsCardPaymentsOptions
                     {
-                        DeclineOn = new AccountSettingsDeclineOnOptions
+                        DeclineOn = new AccountSettingsCardPaymentsDeclineOnOptions
                         {
                             AvsFailure = true,
                             CvcFailure = true,

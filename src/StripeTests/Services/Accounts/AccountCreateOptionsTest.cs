@@ -11,7 +11,7 @@ namespace StripeTests
         {
             var options = new AccountCreateOptions
             {
-                Individual = new PersonCreateOptions
+                Individual = new AccountIndividualOptions
                 {
                     FirstName = "first name",
                     LastName = "last name",
