@@ -17,7 +17,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         [JsonProperty("period")]
-        public Period Period { get; set; }
+        public UsageRecordSummaryPeriod Period { get; set; }
 
         [JsonProperty("subscription_item")]
         public string SubscriptionItem { get; set; }
