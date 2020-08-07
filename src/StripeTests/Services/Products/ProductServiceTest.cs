@@ -32,7 +32,7 @@ namespace StripeTests
                     "attr2",
                 },
                 Name = "product name",
-                PackageDimensions = new PackageDimensionOptions
+                PackageDimensions = new ProductPackageDimensionsOptions
                 {
                     Height = 100,
                     Length = 100,
