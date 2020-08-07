@@ -70,7 +70,7 @@ namespace Stripe
         /// own package_dimensions.
         /// </summary>
         [JsonProperty("package_dimensions")]
-        public PackageDimensionOptions PackageDimensions { get; set; }
+        public ProductPackageDimensionsOptions PackageDimensions { get; set; }
 
         /// <summary>
         /// Whether this product is shipped (i.e. physical goods). Defaults to true.

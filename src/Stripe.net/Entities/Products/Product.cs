@@ -84,7 +84,7 @@ namespace Stripe
         /// The dimensions of this product for shipping purposes. A SKU associated with this product can override this value by having its own package_dimensions.
         /// </summary>
         [JsonProperty("package_dimensions")]
-        public PackageDimensions PackageDimensions { get; set; }
+        public ProductPackageDimensions PackageDimensions { get; set; }
 
         /// <summary>
         /// Whether this product is a shipped good.

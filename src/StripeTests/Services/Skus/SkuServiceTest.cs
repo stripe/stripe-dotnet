@@ -32,12 +32,12 @@ namespace StripeTests
                     { "attr2", "value2" },
                 },
                 Currency = "usd",
-                Inventory = new InventoryOptions
+                Inventory = new SkuInventoryOptions
                 {
                     Quantity = 100,
                     Type = "finite",
                 },
-                PackageDimensions = new PackageDimensionOptions
+                PackageDimensions = new SkuPackageDimensionsOptions
                 {
                     Height = 100,
                     Length = 100,
