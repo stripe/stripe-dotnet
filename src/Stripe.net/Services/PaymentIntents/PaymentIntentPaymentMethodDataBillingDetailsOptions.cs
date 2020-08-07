@@ -2,10 +2,10 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class BillingDetails : StripeEntity<BillingDetails>
+    public class PaymentIntentPaymentMethodDataBillingDetailsOptions : INestedOptions
     {
         [JsonProperty("address")]
-        public Address Address { get; set; }
+        public AddressOptions Address { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
