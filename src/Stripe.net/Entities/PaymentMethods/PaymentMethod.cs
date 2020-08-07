@@ -44,7 +44,7 @@ namespace Stripe
         /// Billing details associated with this PaymentMethod.
         /// </summary>
         [JsonProperty("billing_details")]
-        public BillingDetails BillingDetails { get; set; }
+        public PaymentMethodBillingDetails BillingDetails { get; set; }
 
         /// <summary>
         /// Properties specific to Card PaymentMethod.
