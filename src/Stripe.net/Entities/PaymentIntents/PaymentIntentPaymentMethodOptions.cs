@@ -4,6 +4,9 @@ namespace Stripe
 
     public class PaymentIntentPaymentMethodOptions : StripeEntity<PaymentIntentPaymentMethodOptions>
     {
+        [JsonProperty("alipay")]
+        public PaymentIntentPaymentMethodOptionsAlipay Alipay { get; set; }
+
         /// <summary>
         /// Configuration specific to Bancontact for this PaymentIntent.
         /// </summary>

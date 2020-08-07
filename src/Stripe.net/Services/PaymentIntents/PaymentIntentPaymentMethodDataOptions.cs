@@ -5,6 +5,9 @@ namespace Stripe
 
     public class PaymentIntentPaymentMethodDataOptions : INestedOptions, IHasMetadata
     {
+        [JsonProperty("alipay")]
+        public PaymentIntentPaymentMethodDataAlipayOptions Alipay { get; set; }
+
         /// <summary>
         /// The details associated with the AU BECS Debit payment method for this payment intent.
         /// </summary>

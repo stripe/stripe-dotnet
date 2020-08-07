@@ -19,6 +19,9 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("alipay")]
+        public PaymentMethodAlipay Alipay { get; set; }
+
         /// <summary>
         /// Properties specific to AU BECS Debit PaymentMethod.
         /// </summary>
