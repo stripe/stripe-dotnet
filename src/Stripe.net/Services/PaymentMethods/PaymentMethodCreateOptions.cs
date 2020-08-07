@@ -5,6 +5,9 @@ namespace Stripe
 
     public class PaymentMethodCreateOptions : BaseOptions, IHasMetadata
     {
+        [JsonProperty("alipay")]
+        public PaymentMethodAlipayOptions Alipay { get; set; }
+
         /// <summary>
         /// Parameters specific to AU BECS Debit PaymentMethod.
         /// </summary>

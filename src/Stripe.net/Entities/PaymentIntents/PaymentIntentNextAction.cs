@@ -4,6 +4,9 @@ namespace Stripe
 
     public class PaymentIntentNextAction : StripeEntity<PaymentIntentNextAction>
     {
+        [JsonProperty("alipay_handle_redirect")]
+        public PaymentIntentNextActionAlipayHandleRedirect AlipayHandleRedirect { get; set; }
+
         /// <summary>
         /// Contains instructions for authenticating a payment by redirecting your customer to
         /// another page or application.
