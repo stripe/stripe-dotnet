@@ -10,7 +10,7 @@ namespace Stripe
         /// Default custom fields to be displayed on invoices for this customer.
         /// </summary>
         [JsonProperty("custom_fields")]
-        public List<InvoiceCustomField> CustomFields { get; set; }
+        public List<CustomerInvoiceSettingsCustomField> CustomFields { get; set; }
 
         #region Expandable DefaultPaymentMethod
 
