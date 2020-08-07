@@ -32,7 +32,7 @@ namespace Stripe
         /// Billing information associated with the payment method for this payment intent.
         /// </summary>
         [JsonProperty("billing_details")]
-        public BillingDetailsOptions BillingDetails { get; set; }
+        public PaymentIntentPaymentMethodDataBillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
         /// If this is an EPS PaymentMethod, this hash contains details about the EPS payment
