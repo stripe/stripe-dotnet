@@ -9,7 +9,7 @@ namespace Stripe
         /// Default custom fields to be displayed on invoices for this customer.
         /// </summary>
         [JsonProperty("custom_fields")]
-        public List<InvoiceCustomFieldOptions> CustomFields { get; set; }
+        public List<CustomerInvoiceSettingsCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
         /// ID of the default payment method for the customer.
