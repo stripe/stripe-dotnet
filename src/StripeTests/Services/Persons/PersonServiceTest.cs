@@ -35,7 +35,7 @@ namespace StripeTests
                 },
                 Verification = new PersonVerificationOptions
                 {
-                    AdditionalDocument = new PersonVerificationDocumentOptions
+                    AdditionalDocument = new PersonVerificationAdditionalDocumentOptions
                     {
                         Back = "file_abc",
                         Front = "file_def",

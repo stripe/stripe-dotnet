@@ -25,7 +25,7 @@ namespace StripeTests
 
             this.createOptions = new TokenCreateOptions
             {
-                Card = new CreditCardOptions
+                Card = new TokenCardOptions
                 {
                     AddressCity = "City",
                     AddressCountry = "US",
@@ -63,7 +63,7 @@ namespace StripeTests
                     },
                     Verification = new TokenPersonVerificationOptions
                     {
-                        AdditionalDocument = new TokenPersonVerificationDocumentOptions
+                        AdditionalDocument = new TokenPersonVerificationAdditionalDocumentOptions
                         {
                             Back = "file_abc",
                             Front = "file_def",
