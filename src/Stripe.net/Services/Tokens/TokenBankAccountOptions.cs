@@ -2,7 +2,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class BankAccountOptions : INestedOptions
+    public class TokenBankAccountOptions : INestedOptions
     {
         [JsonProperty("account_holder_name")]
         public string AccountHolderName { get; set; }
