@@ -117,7 +117,7 @@ namespace Stripe
         /// Billing details of the payment method used in the payment.
         /// </summary>
         [JsonProperty("billing_details")]
-        public BillingDetails BillingDetails { get; set; }
+        public ChargeBillingDetails BillingDetails { get; set; }
 
         /// <summary>
         /// The full statement descriptor that is passed to card networks, and that is displayed on
