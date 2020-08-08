@@ -10,7 +10,7 @@ namespace Stripe
         /// new billing period.
         /// </summary>
         [JsonProperty("billing_thresholds")]
-        public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
+        public InvoiceSubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
         /// Delete all usage for a given subscription item. Only allowed when <c>deleted</c> is set
@@ -55,7 +55,7 @@ namespace Stripe
         /// Data used to generate a new price object inline.
         /// </summary>
         [JsonProperty("price_data")]
-        public SubscriptionItemPriceDataOptions PriceData { get; set; }
+        public InvoiceSubscriptionItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
         /// Boolean indicating whether the invoice returned would preview cancelling the
