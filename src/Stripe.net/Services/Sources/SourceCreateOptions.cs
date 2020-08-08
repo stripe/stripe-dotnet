@@ -116,7 +116,7 @@ namespace Stripe
 
         [JsonProperty("card")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<string, CreditCardOptions> Card { get; set; }
+        public AnyOf<string, SourceCardOptions> Card { get; set; }
 
         [JsonProperty("ideal")]
         public SourceIdealCreateOptions Ideal { get; set; }
