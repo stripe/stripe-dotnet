@@ -86,7 +86,7 @@ namespace Stripe.Checkout
         /// The parameters used to automatically create a Transfer when the payment succeeds.
         /// </summary>
         [JsonProperty("transfer_data")]
-        public SessionPaymentIntentTransferDataOptions TransferData { get; set; }
+        public SessionPaymentIntentDataTransferDataOptions TransferData { get; set; }
 
         /// <summary>
         /// A string that identifies the resulting payment as part of a group. See the
