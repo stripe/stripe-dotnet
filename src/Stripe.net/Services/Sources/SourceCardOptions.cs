@@ -2,17 +2,8 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class CreditCardOptions : BaseOptions, INestedOptions
+    public class SourceCardOptions : INestedOptions
     {
-        [JsonProperty("exp_month")]
-        public long? ExpMonth { get; set; }
-
-        [JsonProperty("exp_year")]
-        public long? ExpYear { get; set; }
-
-        [JsonProperty("number")]
-        public string Number { get; set; }
-
         [JsonProperty("address_city")]
         public string AddressCity { get; set; }
 
@@ -37,18 +28,16 @@ namespace Stripe
         [JsonProperty("cvc")]
         public string Cvc { get; set; }
 
+        [JsonProperty("exp_month")]
+        public long? ExpMonth { get; set; }
+
+        [JsonProperty("exp_year")]
+        public long? ExpYear { get; set; }
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("metadata")]
-        public object Metadata { get; set; }
-
-        /* Issuing-specific parameter */
-
-        /// <summary>
-        /// This parameter is used to create a Source from an issuing card mostly in Test mode.
-        /// </summary>
-        [JsonProperty("issuing_card")]
-        public string IssuingCard { get; set; }
+        [JsonProperty("number")]
+        public string Number { get; set; }
     }
 }
