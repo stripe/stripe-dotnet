@@ -44,12 +44,12 @@ namespace Stripe
             return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice FinalizeInvoice(string id, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice FinalizeInvoice(string id, InvoiceFinalizeInvoiceOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/finalize", options, requestOptions);
         }
 
-        public virtual Task<Invoice> FinalizeInvoiceAsync(string id, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> FinalizeInvoiceAsync(string id, InvoiceFinalizeInvoiceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/finalize", options, requestOptions, cancellationToken);
         }
@@ -84,44 +84,24 @@ namespace Stripe
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<InvoiceLineItem> ListLineItems(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<InvoiceLineItem> ListInvoiceLineItems(string id, InvoiceListInvoiceLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/lines", options, requestOptions);
         }
 
-        public virtual Task<StripeList<InvoiceLineItem>> ListLineItemsAsync(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<InvoiceLineItem>> ListInvoiceLineItemsAsync(string id, InvoiceListInvoiceLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/lines", options, requestOptions, cancellationToken);
         }
 
-        public virtual IEnumerable<InvoiceLineItem> ListLineItemsAutoPaging(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<InvoiceLineItem> ListInvoiceLineItemsAutoPaging(string id, InvoiceListInvoiceLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl(id)}/lines", options, requestOptions);
         }
 
-        public virtual IAsyncEnumerable<InvoiceLineItem> ListLineItemsAutoPagingAsync(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<InvoiceLineItem> ListInvoiceLineItemsAutoPagingAsync(string id, InvoiceListInvoiceLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"{this.InstanceUrl(id)}/lines", options, requestOptions, cancellationToken);
-        }
-
-        public virtual StripeList<InvoiceLineItem> ListUpcomingLineItems(UpcomingInvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl("upcoming")}/lines", options, requestOptions);
-        }
-
-        public virtual Task<StripeList<InvoiceLineItem>> ListUpcomingLineItemsAsync(UpcomingInvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl("upcoming")}/lines", options, requestOptions, cancellationToken);
-        }
-
-        public virtual IEnumerable<InvoiceLineItem> ListUpcomingLineItemsAutoPaging(UpcomingInvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl("upcoming")}/lines", options, requestOptions);
-        }
-
-        public virtual IAsyncEnumerable<InvoiceLineItem> ListUpcomingLineItemsAutoPagingAsync(UpcomingInvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"{this.InstanceUrl("upcoming")}/lines", options, requestOptions, cancellationToken);
         }
 
         public virtual Invoice MarkUncollectible(string id, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null)
@@ -144,24 +124,44 @@ namespace Stripe
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/pay", options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice SendInvoice(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice SendInvoice(string id, InvoiceSendInvoiceOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/send", options, requestOptions);
         }
 
-        public virtual Task<Invoice> SendInvoiceAsync(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> SendInvoiceAsync(string id, InvoiceSendInvoiceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/send", options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice Upcoming(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice Upcoming(InvoiceUpcomingOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Get, $"{this.InstanceUrl("upcoming")}", options, requestOptions);
         }
 
-        public virtual Task<Invoice> UpcomingAsync(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> UpcomingAsync(InvoiceUpcomingOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Get, $"{this.InstanceUrl("upcoming")}", options, requestOptions, cancellationToken);
+        }
+
+        public virtual StripeList<InvoiceLineItem> UpcomingListInvoiceLineItems(InvoiceUpcomingListInvoiceLineItemsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl("upcoming")}/lines", options, requestOptions);
+        }
+
+        public virtual Task<StripeList<InvoiceLineItem>> UpcomingListInvoiceLineItemsAsync(InvoiceUpcomingListInvoiceLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl("upcoming")}/lines", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<InvoiceLineItem> UpcomingListInvoiceLineItemsAutoPaging(InvoiceUpcomingListInvoiceLineItemsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl("upcoming")}/lines", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<InvoiceLineItem> UpcomingListInvoiceLineItemsAutoPagingAsync(InvoiceUpcomingListInvoiceLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"{this.InstanceUrl("upcoming")}/lines", options, requestOptions, cancellationToken);
         }
 
         public virtual Invoice Update(string id, InvoiceUpdateOptions options, RequestOptions requestOptions = null)
@@ -174,12 +174,12 @@ namespace Stripe
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public virtual Invoice VoidInvoice(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null)
+        public virtual Invoice VoidInvoice(string id, InvoiceVoidInvoiceOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/void", options, requestOptions);
         }
 
-        public virtual Task<Invoice> VoidInvoiceAsync(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Invoice> VoidInvoiceAsync(string id, InvoiceVoidInvoiceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/void", options, requestOptions, cancellationToken);
         }

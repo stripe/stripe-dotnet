@@ -14,7 +14,7 @@ namespace StripeTests
             {
                 new
                 {
-                    options = new UpcomingInvoiceListLineItemsOptions
+                    options = new InvoiceUpcomingListInvoiceLineItemsOptions
                     {
                         SubscriptionBillingCycleAnchor = DateTime.Parse("Fri, 13 Feb 2009 23:31:30Z"),
                     },
@@ -22,7 +22,7 @@ namespace StripeTests
                 },
                 new
                 {
-                    options = new UpcomingInvoiceListLineItemsOptions
+                    options = new InvoiceUpcomingListInvoiceLineItemsOptions
                     {
                         SubscriptionBillingCycleAnchor = SubscriptionBillingCycleAnchor.Now,
                     },
@@ -30,7 +30,7 @@ namespace StripeTests
                 },
                 new
                 {
-                    options = new UpcomingInvoiceListLineItemsOptions
+                    options = new InvoiceUpcomingListInvoiceLineItemsOptions
                     {
                         SubscriptionBillingCycleAnchor = SubscriptionBillingCycleAnchor.Unchanged,
                     },
