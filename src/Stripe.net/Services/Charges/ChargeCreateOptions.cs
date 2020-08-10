@@ -46,7 +46,7 @@ namespace Stripe
         /// If specified, the charge will be attributed to the destination account for tax reporting, and the funds from the charge will be transferred to the destination account.
         /// </summary>
         [JsonProperty("destination")]
-        public ChargeDestinationCreateOptions Destination { get; set; }
+        public ChargeDestinationOptions Destination { get; set; }
 
         [JsonProperty("exchange_rate")]
         public decimal? ExchangeRate { get; set; }
