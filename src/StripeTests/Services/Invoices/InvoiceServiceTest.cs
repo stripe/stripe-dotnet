@@ -130,7 +130,7 @@ namespace StripeTests
         [Fact]
         public void FinalizeInvoice()
         {
-            var invoice = this.service.FinalizeInvoice(InvoiceId, this.finalizeOptions);
+            var invoice = this.service.Finalize(InvoiceId, this.finalizeOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/finalize");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
@@ -139,7 +139,7 @@ namespace StripeTests
         [Fact]
         public async Task FinalizeInvoiceAsync()
         {
-            var invoice = await this.service.FinalizeInvoiceAsync(InvoiceId, this.finalizeOptions);
+            var invoice = await this.service.FinalizeAsync(InvoiceId, this.finalizeOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/finalize");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
@@ -314,18 +314,18 @@ namespace StripeTests
         }
 
         [Fact]
-        public void SendInvoice()
+        public void Send()
         {
-            var invoice = this.service.SendInvoice(InvoiceId, this.sendOptions);
+            var invoice = this.service.Send(InvoiceId, this.sendOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/send");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
 
         [Fact]
-        public async Task SendInvoiceAsync()
+        public async Task SendAsync()
         {
-            var invoice = await this.service.SendInvoiceAsync(InvoiceId, this.sendOptions);
+            var invoice = await this.service.SendAsync(InvoiceId, this.sendOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/send");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
@@ -368,18 +368,18 @@ namespace StripeTests
         }
 
         [Fact]
-        public void VoidInvoice()
+        public void Void()
         {
-            var invoice = this.service.VoidInvoice(InvoiceId, this.voidOptions);
+            var invoice = this.service.Void(InvoiceId, this.voidOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/void");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
 
         [Fact]
-        public async Task VoidInvoiceAsync()
+        public async Task VoidAsync()
         {
-            var invoice = await this.service.VoidInvoiceAsync(InvoiceId, this.voidOptions);
+            var invoice = await this.service.VoidAsync(InvoiceId, this.voidOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/invoices/in_123/void");
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
