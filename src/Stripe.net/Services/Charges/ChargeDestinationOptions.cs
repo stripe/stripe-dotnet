@@ -4,6 +4,9 @@ namespace Stripe
 
     public class ChargeDestinationOptions : INestedOptions
     {
+        [JsonProperty("account")]
+        public string Account { get; set; }
+
         /// <summary>
         /// The amount to transfer to the destination account.
         /// </summary>
