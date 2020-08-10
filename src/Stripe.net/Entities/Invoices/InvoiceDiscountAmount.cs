@@ -5,17 +5,11 @@ namespace Stripe
 
     public class InvoiceDiscountAmount : StripeEntity<InvoiceDiscountAmount>
     {
-        /// <summary>
-        /// The amount, in cents, of the tax.
-        /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         #region Expandable Discount
 
-        /// <summary>
-        /// The ID of the discount that was applied to get this discount amount.
-        /// </summary>
         [JsonIgnore]
         public string DiscountId
         {
@@ -23,9 +17,6 @@ namespace Stripe
             set => this.InternalDiscount = SetExpandableFieldId(value, this.InternalDiscount);
         }
 
-        /// <summary>
-        /// The discount that was applied to get this discount amount.
-        /// </summary>
         [JsonIgnore]
         public Discount Discount
         {

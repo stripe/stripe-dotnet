@@ -5,19 +5,11 @@ namespace Stripe
 
     public class InvoiceTransferData : StripeEntity<InvoiceTransferData>
     {
-        /// <summary>
-        /// The amount that will be transferred automatically when the invoice is paid. If no amount
-        /// is set, the full amount is transferred.
-        /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
         #region Expandable Destination
 
-        /// <summary>
-        /// The ID of the account where funds from the payment will be transferred to upon payment
-        /// success.
-        /// </summary>
         [JsonIgnore]
         public string DestinationId
         {
@@ -25,10 +17,6 @@ namespace Stripe
             set => this.InternalDestination = SetExpandableFieldId(value, this.InternalDestination);
         }
 
-        /// <summary>
-        /// (Expanded) The account where funds from the payment will be transferred to upon payment
-        /// success.
-        /// </summary>
         [JsonIgnore]
         public Account Destination
         {

@@ -4,9 +4,6 @@ namespace Stripe
 
     public class AccountCompanyVerificationOptions : INestedOptions
     {
-        /// <summary>
-        /// A document verifying the business.
-        /// </summary>
         [JsonProperty("document")]
         public AccountCompanyVerificationDocumentOptions Document { get; set; }
     }

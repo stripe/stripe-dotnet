@@ -5,23 +5,14 @@ namespace Stripe
 
     public class InvoiceTaxAmount : StripeEntity<InvoiceTaxAmount>
     {
-        /// <summary>
-        /// The amount, in cents, of the tax.
-        /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
-        /// <summary>
-        /// This specifies if the tax rate is inclusive or exclusive.
-        /// </summary>
         [JsonProperty("inclusive")]
         public bool Inclusive { get; set; }
 
         #region Expandable TaxRate
 
-        /// <summary>
-        /// The ID of the tax rate that was applied to get this tax amount.
-        /// </summary>
         [JsonIgnore]
         public string TaxRateId
         {
@@ -29,9 +20,6 @@ namespace Stripe
             set => this.InternalTaxRate = SetExpandableFieldId(value, this.InternalTaxRate);
         }
 
-        /// <summary>
-        /// (Expanded) The tax rate that was applied to get this tax amount.
-        /// </summary>
         [JsonIgnore]
         public TaxRate TaxRate
         {
