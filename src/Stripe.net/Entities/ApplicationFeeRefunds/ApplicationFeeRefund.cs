@@ -16,7 +16,8 @@ namespace Stripe
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
-        #region Expandable Balance Transaction
+        #region Expandable BalanceTransaction
+
         [JsonIgnore]
         public string BalanceTransactionId
         {
@@ -44,6 +45,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         #region Expandable Fee
+
         [JsonIgnore]
         public string FeeId
         {
