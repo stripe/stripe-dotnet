@@ -1,8 +1,9 @@
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SourceCardOptions : INestedOptions
+    public class SourceCardOptions : INestedOptions, IHasMetadata
     {
         [JsonProperty("address_city")]
         public string AddressCity { get; set; }
@@ -39,5 +40,8 @@ namespace Stripe
 
         [JsonProperty("number")]
         public string Number { get; set; }
+
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
     }
 }
