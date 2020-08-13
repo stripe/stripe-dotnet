@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.31.0 - 2020-08-13
+* [#2179](https://github.com/stripe/stripe-dotnet/pull/2179) Add support for `BankName` on `ChargePaymentMethodDetailsAcssDebit`
+
 ## 37.30.0 - 2020-08-07
 * [#2162](https://github.com/stripe/stripe-dotnet/pull/2162) Adds support for `Alipay` on `PaymentIntent` and `PaymentMethod`
 
