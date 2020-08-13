@@ -5,6 +5,12 @@ namespace Stripe
     public class ChargePaymentMethodDetailsAcssDebit : StripeEntity<ChargePaymentMethodDetailsAcssDebit>
     {
         /// <summary>
+        /// Name of the bank associated with the bank account.
+        /// </summary>
+        [JsonProperty("bank_name")]
+        public string BankName { get; set; }
+
+        /// <summary>
         /// Uniquely identifies this particular bank account. You can use this attribute to check
         /// whether two bank accounts are the same.
         /// </summary>
