@@ -7,6 +7,12 @@ namespace Stripe
     {
         #region Expandable Back
 
+        /// <summary>
+        /// (ID of the File)
+        /// The back of a document returned by a <a
+        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>additional_verification</c>.
+        /// </summary>
         [JsonIgnore]
         public string BackId
         {
@@ -14,6 +20,14 @@ namespace Stripe
             set => this.InternalBack = SetExpandableFieldId(value, this.InternalBack);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The back of a document returned by a <a
+        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>additional_verification</c>.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public File Back
         {
@@ -26,14 +40,32 @@ namespace Stripe
         internal ExpandableField<File> InternalBack { get; set; }
         #endregion
 
+        /// <summary>
+        /// A user-displayable string describing the verification state of this document.
+        /// </summary>
         [JsonProperty("details")]
         public string Details { get; set; }
 
+        /// <summary>
+        /// One of <c>document_corrupt</c>, <c>document_expired</c>, <c>document_failed_copy</c>,
+        /// <c>document_failed_greyscale</c>, <c>document_failed_other</c>,
+        /// <c>document_failed_test_mode</c>, <c>document_fraudulent</c>,
+        /// <c>document_incomplete</c>, <c>document_invalid</c>, <c>document_manipulated</c>,
+        /// <c>document_not_readable</c>, <c>document_not_uploaded</c>,
+        /// <c>document_type_not_supported</c>, or <c>document_too_large</c>. A machine-readable
+        /// code specifying the verification state for this document.
+        /// </summary>
         [JsonProperty("details_code")]
         public string DetailsCode { get; set; }
 
         #region Expandable Front
 
+        /// <summary>
+        /// (ID of the File)
+        /// The front of a document returned by a <a
+        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>additional_verification</c>.
+        /// </summary>
         [JsonIgnore]
         public string FrontId
         {
@@ -41,6 +73,14 @@ namespace Stripe
             set => this.InternalFront = SetExpandableFieldId(value, this.InternalFront);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The front of a document returned by a <a
+        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>additional_verification</c>.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public File Front
         {
