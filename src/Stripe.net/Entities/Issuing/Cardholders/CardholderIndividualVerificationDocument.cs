@@ -7,11 +7,6 @@ namespace Stripe.Issuing
     {
         #region Expandable Back
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) The back of an ID returned by a file upload with a
-        /// <c>purpose</c> value of <c>identity_document</c>.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string BackId
         {
@@ -19,10 +14,6 @@ namespace Stripe.Issuing
             set => this.InternalBack = SetExpandableFieldId(value, this.InternalBack);
         }
 
-        /// <summary>
-        /// (Expanded) The back of an ID returned by a file upload with a <c>purpose</c>
-        /// value of <c>identity_document</c>.
-        /// </summary>
         [JsonIgnore]
         public File Back
         {
@@ -37,11 +28,6 @@ namespace Stripe.Issuing
 
         #region Expandable Front
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) The front of an ID returned by a file upload with a
-        /// <c>purpose</c> value of <c>identity_document</c>.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string FrontId
         {
@@ -49,10 +35,6 @@ namespace Stripe.Issuing
             set => this.InternalFront = SetExpandableFieldId(value, this.InternalFront);
         }
 
-        /// <summary>
-        /// (Expanded) The front of an ID returned by a file upload with a <c>purpose</c>
-        /// value of <c>identity_document</c>.
-        /// </summary>
         [JsonIgnore]
         public File Front
         {

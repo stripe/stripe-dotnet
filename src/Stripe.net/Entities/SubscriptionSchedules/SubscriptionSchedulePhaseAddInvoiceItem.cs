@@ -7,9 +7,6 @@ namespace Stripe
     {
         #region Expandable Price
 
-        /// <summary>
-        /// ID of the Price associated with this invoice item.
-        /// </summary>
         [JsonIgnore]
         public string PriceId
         {
@@ -17,9 +14,6 @@ namespace Stripe
             set => this.InternalPrice = SetExpandableFieldId(value, this.InternalPrice);
         }
 
-        /// <summary>
-        /// (Expanded) The Price associated with this invoice item.
-        /// </summary>
         [JsonIgnore]
         public Price Price
         {
@@ -32,9 +26,6 @@ namespace Stripe
         internal ExpandableField<Price> InternalPrice { get; set; }
         #endregion
 
-        /// <summary>
-        /// Quantity for this item.
-        /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
     }
