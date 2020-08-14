@@ -72,9 +72,6 @@ namespace Stripe
         [JsonProperty("default_for_currency")]
         public bool? DefaultForCurrency { get; set; }
 
-        /// <summary>
-        /// Whether this object is deleted or not.
-        /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 

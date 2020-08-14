@@ -13,11 +13,6 @@ namespace Stripe
 
         #region Expandable CancellationPolicy
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) Your subscription cancellation policy, as shown to the
-        /// customer.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string CancellationPolicyId
         {
@@ -25,9 +20,6 @@ namespace Stripe
             set => this.InternalCancellationPolicy = SetExpandableFieldId(value, this.InternalCancellationPolicy);
         }
 
-        /// <summary>
-        /// (Expanded) Your subscription cancellation policy, as shown to the customer.
-        /// </summary>
         [JsonIgnore]
         public File CancellationPolicy
         {
@@ -48,13 +40,6 @@ namespace Stripe
 
         #region Expandable CustomerCommunication
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) Any communication with the customer that you feel is
-        /// relevant to your case. Examples include emails proving that the customer received the
-        /// product or service, or demonstrating their use of or satisfaction with the product or
-        /// service.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string CustomerCommunicationId
         {
@@ -62,11 +47,6 @@ namespace Stripe
             set => this.InternalCustomerCommunication = SetExpandableFieldId(value, this.InternalCustomerCommunication);
         }
 
-        /// <summary>
-        /// (Expanded) Any communication with the customer that you feel is relevant to your case.
-        /// Examples include emails proving that the customer received the product or service, or
-        /// demonstrating their use of or satisfaction with the product or service.
-        /// </summary>
         [JsonIgnore]
         public File CustomerCommunication
         {
@@ -90,11 +70,6 @@ namespace Stripe
 
         #region Expandable CustomerSignature
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) A relevant document or contract showing the customer's
-        /// signature.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string CustomerSignatureId
         {
@@ -102,9 +77,6 @@ namespace Stripe
             set => this.InternalCustomerSignature = SetExpandableFieldId(value, this.InternalCustomerSignature);
         }
 
-        /// <summary>
-        /// (Expanded) A relevant document or contract showing the customer's signature.
-        /// </summary>
         [JsonIgnore]
         public File CustomerSignature
         {
@@ -119,13 +91,6 @@ namespace Stripe
 
         #region Expandable DuplicateChargeDocumentation
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) Documentation for the prior charge that can uniquely
-        /// identify the charge, such as a receipt, shipping label, work order, etc. This document
-        /// should be paired with a similar document from the disputed payment that proves the two
-        /// payments are separate.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string DuplicateChargeDocumentationId
         {
@@ -133,11 +98,6 @@ namespace Stripe
             set => this.InternalDuplicateChargeDocumentation = SetExpandableFieldId(value, this.InternalDuplicateChargeDocumentation);
         }
 
-        /// <summary>
-        /// (Expanded) Documentation for the prior charge that can uniquely  identify the charge,
-        /// such as a receipt, shipping label, work order, etc. This document should be paired with
-        /// a similar document from the disputed payment that proves the two payments are separate.
-        /// </summary>
         [JsonIgnore]
         public File DuplicateChargeDocumentation
         {
@@ -161,11 +121,6 @@ namespace Stripe
 
         #region Expandable Receipt
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) Any receipt or message sent to the customer notifying them
-        /// of the charge.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string ReceiptId
         {
@@ -173,9 +128,6 @@ namespace Stripe
             set => this.InternalReceipt = SetExpandableFieldId(value, this.InternalReceipt);
         }
 
-        /// <summary>
-        /// (Expanded) Any receipt or message sent to the customer notifying them of the charge.
-        /// </summary>
         [JsonIgnore]
         public File Receipt
         {
@@ -190,10 +142,6 @@ namespace Stripe
 
         #region Expandable RefundPolicy
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) Your refund policy, as shown to the customer.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string RefundPolicyId
         {
@@ -201,9 +149,6 @@ namespace Stripe
             set => this.InternalRefundPolicy = SetExpandableFieldId(value, this.InternalRefundPolicy);
         }
 
-        /// <summary>
-        /// (Expanded) Your refund policy, as shown to the customer.
-        /// </summary>
         [JsonIgnore]
         public File RefundPolicy
         {
@@ -227,12 +172,6 @@ namespace Stripe
 
         #region Expandable ServiceDocumentation
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) Documentation showing proof that a service was provided to
-        /// the customer. This could include a copy of a signed contract, work order, or other form
-        /// of written agreement.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string ServiceDocumentationId
         {
@@ -240,11 +179,6 @@ namespace Stripe
             set => this.InternalServiceDocumentation = SetExpandableFieldId(value, this.InternalServiceDocumentation);
         }
 
-        /// <summary>
-        /// (Expanded) Documentation showing proof that a service was provided to  the customer.
-        /// This could include a copy of a signed contract, work order, or other form of written
-        /// agreement.
-        /// </summary>
         [JsonIgnore]
         public File ServiceDocumentation
         {
@@ -268,13 +202,6 @@ namespace Stripe
 
         #region Expandable ShippingDocumentation
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) Documentation showing proof that a product was shipped to
-        /// the customer at the same address the customer provided to you. This could include a copy
-        /// of the shipment receipt, shipping label, etc. It should show the customer's full
-        /// shipping address, if possible.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string ShippingDocumentationId
         {
@@ -282,12 +209,6 @@ namespace Stripe
             set => this.InternalShippingDocumentation = SetExpandableFieldId(value, this.InternalShippingDocumentation);
         }
 
-        /// <summary>
-        /// (Expanded) Documentation showing proof that a product was shipped to  the customer at
-        /// the same address the customer provided to you. This could include a copy of the shipment
-        /// receipt, shipping label, etc. It should show the customer's full shipping address, if
-        /// possible.
-        /// </summary>
         [JsonIgnore]
         public File ShippingDocumentation
         {
@@ -305,10 +226,6 @@ namespace Stripe
 
         #region Expandable UncategorizedFile
 
-        /// <summary>
-        /// (ID of a <see cref="File"/>) Any additional evidence or statements.
-        /// <para>Expandable.</para>
-        /// </summary>
         [JsonIgnore]
         public string UncategorizedFileId
         {
@@ -316,9 +233,6 @@ namespace Stripe
             set => this.InternalUncategorizedFile = SetExpandableFieldId(value, this.InternalUncategorizedFile);
         }
 
-        /// <summary>
-        /// (Expanded) Any additional evidence or statements.
-        /// </summary>
         [JsonIgnore]
         public File UncategorizedFile
         {
