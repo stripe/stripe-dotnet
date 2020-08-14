@@ -5,11 +5,18 @@ namespace Stripe
 
     public class CreditNoteLineItemDiscountAmount : StripeEntity<CreditNoteLineItemDiscountAmount>
     {
+        /// <summary>
+        /// The amount, in %s, of the discount.
+        /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         #region Expandable Discount
 
+        /// <summary>
+        /// (ID of the Discount)
+        /// The discount that was applied to get this discount amount.
+        /// </summary>
         [JsonIgnore]
         public string DiscountId
         {
@@ -17,6 +24,12 @@ namespace Stripe
             set => this.InternalDiscount = SetExpandableFieldId(value, this.InternalDiscount);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The discount that was applied to get this discount amount.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Discount Discount
         {

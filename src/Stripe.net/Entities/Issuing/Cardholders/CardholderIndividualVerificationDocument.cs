@@ -7,6 +7,12 @@ namespace Stripe.Issuing
     {
         #region Expandable Back
 
+        /// <summary>
+        /// (ID of the File)
+        /// The back of a document returned by a <a
+        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>identity_document</c>.
+        /// </summary>
         [JsonIgnore]
         public string BackId
         {
@@ -14,6 +20,14 @@ namespace Stripe.Issuing
             set => this.InternalBack = SetExpandableFieldId(value, this.InternalBack);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The back of a document returned by a <a
+        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>identity_document</c>.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public File Back
         {
@@ -28,6 +42,12 @@ namespace Stripe.Issuing
 
         #region Expandable Front
 
+        /// <summary>
+        /// (ID of the File)
+        /// The front of a document returned by a <a
+        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>identity_document</c>.
+        /// </summary>
         [JsonIgnore]
         public string FrontId
         {
@@ -35,6 +55,14 @@ namespace Stripe.Issuing
             set => this.InternalFront = SetExpandableFieldId(value, this.InternalFront);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The front of a document returned by a <a
+        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>identity_document</c>.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public File Front
         {

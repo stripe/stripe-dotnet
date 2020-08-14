@@ -16,6 +16,7 @@ namespace StripeTests
         {
             string json = this.GetFixture("/v1/products/prod_123");
             var product = JsonConvert.DeserializeObject<Product>(json);
+
             Assert.NotNull(product);
             Assert.IsType<Product>(product);
             Assert.NotNull(product.Id);

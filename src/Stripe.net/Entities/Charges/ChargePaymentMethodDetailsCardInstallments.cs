@@ -4,6 +4,9 @@ namespace Stripe
 
     public class ChargePaymentMethodDetailsCardInstallments : StripeEntity<ChargePaymentMethodDetailsCardInstallments>
     {
+        /// <summary>
+        /// Installment plan selected for the payment.
+        /// </summary>
         [JsonProperty("plan")]
         public PaymentIntentPaymentMethodOptionsCardInstallmentsPlan Plan { get; set; }
     }
