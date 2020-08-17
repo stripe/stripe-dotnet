@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.32.0 - 2020-08-17
+* [#2182](https://github.com/stripe/stripe-dotnet/pull/2182) Add support for `PaymentIntentRequiresAction` on `Event`
+
 ## 37.31.0 - 2020-08-13
 * [#2179](https://github.com/stripe/stripe-dotnet/pull/2179) Add support for `BankName` on `ChargePaymentMethodDetailsAcssDebit`
 
