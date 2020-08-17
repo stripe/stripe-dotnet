@@ -509,6 +509,11 @@ namespace Stripe
         public const string PaymentIntentProcessing = "payment_intent.processing";
 
         /// <summary>
+        /// Occurs when a PaymentIntent transitions to requires_action state.
+        /// </summary>
+        public const string PaymentIntentRequiresAction = "payment_intent.requires_action";
+
+        /// <summary>
         /// Occurs when a PaymentIntent has been successfully fulfilled.
         /// </summary>
         public const string PaymentIntentSucceeded = "payment_intent.succeeded";
