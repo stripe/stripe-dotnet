@@ -25,6 +25,14 @@ namespace Stripe.Issuing
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
+        /// <summary>
+        /// Detailed breakdown of amount components. These amounts are denominated in
+        /// <c>currency</c> and in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// </summary>
+        [JsonProperty("amount_details")]
+        public TransactionAmountDetails AmountDetails { get; set; }
+
         #region Expandable Authorization
 
         /// <summary>

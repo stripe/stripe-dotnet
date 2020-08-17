@@ -13,6 +13,14 @@ namespace Stripe.Issuing
         public long Amount { get; set; }
 
         /// <summary>
+        /// Detailed breakdown of amount components. These amounts are denominated in
+        /// <c>currency</c> and in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// </summary>
+        [JsonProperty("amount_details")]
+        public AuthorizationRequestHistoryAmountDetails AmountDetails { get; set; }
+
+        /// <summary>
         /// Whether this request was approved.
         /// </summary>
         [JsonProperty("approved")]
