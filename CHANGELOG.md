@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.33.0 - 2020-08-17
+* [#2184](https://github.com/stripe/stripe-dotnet/pull/2184) Add support for `AmountDetails` on Issuing `Authorization` and `Transaction`
+
 ## 37.32.0 - 2020-08-17
 * [#2182](https://github.com/stripe/stripe-dotnet/pull/2182) Add support for `PaymentIntentRequiresAction` on `Event`
 
