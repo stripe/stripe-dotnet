@@ -16,6 +16,10 @@ namespace Stripe
         [JsonConverter(typeof(DateTimeConverter))]
         public DateTime Created { get; set; }
 
+        [JsonProperty("expires_at")]
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? ExpiresAt { get; set; }
+
         [JsonProperty("filename")]
         public string Filename { get; set; }
 
