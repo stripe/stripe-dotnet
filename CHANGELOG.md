@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.34.0 - 2020-08-19
+* [#2185](https://github.com/stripe/stripe-dotnet/pull/2185) Add support for `ExpiresAt` on `File`
+
 ## 37.33.0 - 2020-08-17
 * [#2184](https://github.com/stripe/stripe-dotnet/pull/2184) Add support for `AmountDetails` on Issuing `Authorization` and `Transaction`
 
