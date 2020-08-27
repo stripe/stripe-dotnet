@@ -37,5 +37,8 @@ namespace Stripe
 
         [JsonProperty("ach_credit_transfer")]
         public SourceTransactionAchCreditTransfer AchCreditTransfer { get; set; }
+
+        [JsonProperty("sepa_credit_transfer")]
+        public SourceTransactionSepaCreditTransfer SepaCreditTransfer { get; set; }
     }
 }
