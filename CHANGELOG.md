@@ -1,5 +1,8 @@
 # Changelog
 
+## 37.35.0 - 2020-08-27
+* [#2186](https://github.com/stripe/stripe-dotnet/pull/2186) Add support for `SepaCreditTransfer` in `SourceTransaction`
+
 ## 37.34.0 - 2020-08-19
 * [#2185](https://github.com/stripe/stripe-dotnet/pull/2185) Add support for `ExpiresAt` on `File`
 
