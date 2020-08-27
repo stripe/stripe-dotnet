@@ -94,6 +94,13 @@ namespace Stripe
         public SubscriptionSchedulePhaseInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
+        /// List of configuration items, each with an attached price, to apply during this phase of
+        /// the subscription schedule.
+        /// </summary>
+        [JsonProperty("items")]
+        public List<SubscriptionSchedulePhaseItemOptions> Items { get; set; }
+
+        /// <summary>
         /// Integer representing the multiplier applied to the price interval. For example,
         /// <c>iterations=2</c> applied to a price with <c>interval=month</c> and
         /// <c>interval_count=3</c> results in a phase of duration <c>2 * 3 months = 6 months</c>.
@@ -101,13 +108,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("iterations")]
         public long? Iterations { get; set; }
-
-        /// <summary>
-        /// List of configuration items, each with an attached price, to apply during this phase of
-        /// the subscription schedule.
-        /// </summary>
-        [JsonProperty("plans")]
-        public List<SubscriptionSchedulePhaseItemOptions> Plans { get; set; }
 
         /// <summary>
         /// If a subscription schedule will create prorations when transitioning to this phase.

@@ -11,7 +11,7 @@ namespace Stripe
         /// thresholds.
         /// </summary>
         [JsonProperty("billing_thresholds")]
-        public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
+        public SubscriptionSchedulePhaseItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
         /// The plan ID to subscribe to. You may specify the same ID in <c>plan</c> and
@@ -31,7 +31,7 @@ namespace Stripe
         /// object inline.
         /// </summary>
         [JsonProperty("price_data")]
-        public SubscriptionItemPriceDataOptions PriceData { get; set; }
+        public SubscriptionSchedulePhaseItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
         /// Quantity for the given price. Can be set only if the price's <c>usage_type</c> is

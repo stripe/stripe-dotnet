@@ -77,14 +77,6 @@ namespace Stripe
         public SubscriptionItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
-        /// This field has been renamed to <c>proration_behavior</c>. <c>prorate=true</c> can be
-        /// replaced with <c>proration_behavior=create_prorations</c> and <c>prorate=false</c> can
-        /// be replaced with <c>proration_behavior=none</c>.
-        /// </summary>
-        [JsonProperty("prorate")]
-        public bool? Prorate { get; set; }
-
-        /// <summary>
         /// Determines how to handle <a
         /// href="https://stripe.com/docs/subscriptions/billing-cycle#prorations">prorations</a>
         /// when the billing cycle changes (e.g., when switching plans, resetting

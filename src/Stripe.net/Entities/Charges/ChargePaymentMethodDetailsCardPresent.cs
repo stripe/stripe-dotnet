@@ -83,8 +83,9 @@ namespace Stripe
         public string Network { get; set; }
 
         /// <summary>
-        /// How were card details read in this transaction. Can be contact_emv, contactless_emv,
-        /// magnetic_stripe_fallback, magnetic_stripe_track2, or contactless_magstripe_mode.
+        /// How card details were read in this transaction.
+        /// One of: <c>contact_emv</c>, <c>contactless_emv</c>, <c>contactless_magstripe_mode</c>,
+        /// <c>magnetic_stripe_fallback</c>, or <c>magnetic_stripe_track2</c>.
         /// </summary>
         [JsonProperty("read_method")]
         public string ReadMethod { get; set; }

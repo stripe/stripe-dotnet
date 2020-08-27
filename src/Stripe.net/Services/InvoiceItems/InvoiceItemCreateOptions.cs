@@ -51,7 +51,7 @@ namespace Stripe
         /// The ID of an existing invoice to add this invoice item to. When left blank, the invoice
         /// item will be added to the next upcoming scheduled invoice. This is useful when adding
         /// invoice items in response to an invoice.created webhook. You can only add invoice items
-        /// to draft invoices.
+        /// to draft invoices and there is a maximum of 250 items per invoice.
         /// </summary>
         [JsonProperty("invoice")]
         public string Invoice { get; set; }

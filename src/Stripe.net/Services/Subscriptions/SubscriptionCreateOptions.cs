@@ -175,24 +175,12 @@ namespace Stripe
         [JsonProperty("pending_invoice_item_interval")]
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
 
-        [Obsolete("Use Items instead.")]
-        [JsonProperty("plan")]
-        public string Plan { get; set; }
-
         /// <summary>
         /// The API ID of a promotion code to apply to this subscription. A promotion code applied
         /// to a subscription will only affect invoices created for that particular subscription.
         /// </summary>
         [JsonProperty("promotion_code")]
         public string PromotionCode { get; set; }
-
-        /// <summary>
-        /// This field has been renamed to <c>proration_behavior</c>. <c>prorate=true</c> can be
-        /// replaced with <c>proration_behavior=create_prorations</c> and <c>prorate=false</c> can
-        /// be replaced with <c>proration_behavior=none</c>.
-        /// </summary>
-        [JsonProperty("prorate")]
-        public bool? Prorate { get; set; }
 
         /// <summary>
         /// Determines how to handle <a
@@ -207,10 +195,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("proration_behavior")]
         public string ProrationBehavior { get; set; }
-
-        [Obsolete("Use Items instead.")]
-        [JsonProperty("quantity")]
-        public long? Quantity { get; set; }
 
         /// <summary>
         /// If specified, the funds from the subscription's invoices will be transferred to the
