@@ -5,13 +5,6 @@ namespace Stripe
     public class ChargePaymentMethodDetailsCardThreeDSecure : StripeEntity<ChargePaymentMethodDetailsCardThreeDSecure>
     {
         /// <summary>
-        /// Whether or not authentication was performed. 3D Secure will succeed without
-        /// authentication when the card is not enrolled.
-        /// </summary>
-        [JsonProperty("authenticated")]
-        public bool Authenticated { get; set; }
-
-        /// <summary>
         /// For authenticated transactions: how the customer was authenticated by the issuing bank.
         /// One of: <c>challenge</c>, or <c>frictionless</c>.
         /// </summary>
@@ -34,12 +27,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("result_reason")]
         public string ResultReason { get; set; }
-
-        /// <summary>
-        /// Whether or not 3D Secure succeeded.
-        /// </summary>
-        [JsonProperty("succeeded")]
-        public bool Succeeded { get; set; }
 
         /// <summary>
         /// The version of 3D Secure that was used.

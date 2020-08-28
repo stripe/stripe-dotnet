@@ -13,20 +13,21 @@ namespace Stripe
         /// Passing <c>forgive=false</c> will fail the charge if the source hasn't been pre-funded
         /// with the right amount. An example for this case is with ACH Credit Transfers and wires:
         /// if the amount wired is less than the amount due by a small amount, you might want to
-        /// forgive the difference.
+        /// forgive the difference. Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("forgive")]
         public bool? Forgive { get; set; }
 
         /// <summary>
         /// Indicates if a customer is on or off-session while an invoice payment is attempted.
+        /// Defaults to <c>true</c> (off-session).
         /// </summary>
         [JsonProperty("off_session")]
         public bool? OffSession { get; set; }
 
         /// <summary>
         /// Boolean representing whether an invoice is paid outside of Stripe. This will result in
-        /// no charge being made.
+        /// no charge being made. Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("paid_out_of_band")]
         public bool? PaidOutOfBand { get; set; }

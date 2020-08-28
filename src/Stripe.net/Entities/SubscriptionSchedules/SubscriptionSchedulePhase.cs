@@ -137,10 +137,11 @@ namespace Stripe
         public SubscriptionSchedulePhaseInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
-        /// Plans to subscribe during this phase of the subscription schedule.
+        /// Subscription items to configure the subscription to during this phase of the
+        /// subscription schedule.
         /// </summary>
-        [JsonProperty("plans")]
-        public List<SubscriptionSchedulePhaseItem> Plans { get; set; }
+        [JsonProperty("items")]
+        public List<SubscriptionSchedulePhaseItem> Items { get; set; }
 
         /// <summary>
         /// If the subscription schedule will prorate when transitioning to this phase. Possible

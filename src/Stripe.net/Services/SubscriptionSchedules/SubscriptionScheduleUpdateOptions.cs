@@ -1,6 +1,5 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
@@ -40,15 +39,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("phases")]
         public List<SubscriptionSchedulePhaseOptions> Phases { get; set; }
-
-        /// <summary>
-        /// This field has been renamed to <c>proration_behavior</c>. <c>prorate=true</c> can be
-        /// replaced with <c>proration_behavior=create_prorations</c> and <c>prorate=false</c> can
-        /// be replaced with <c>proration_behavior=none</c>.
-        /// </summary>
-        [Obsolete("Use ProrationBehavior instead.")]
-        [JsonProperty("prorate")]
-        public bool? Prorate { get; set; }
 
         /// <summary>
         /// If the update changes the current phase, indicates if the changes should be prorated.

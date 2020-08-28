@@ -113,13 +113,6 @@ namespace Stripe.Checkout
         public string CustomerEmail { get; set; }
 
         /// <summary>
-        /// The line items, plans, or SKUs purchased by the customer. Prefer using
-        /// <c>line_items</c>.
-        /// </summary>
-        [JsonProperty("display_items")]
-        public List<SessionDisplayItem> DisplayItems { get; set; }
-
-        /// <summary>
         /// The line items purchased by the customer.
         /// </summary>
         [JsonProperty("line_items")]

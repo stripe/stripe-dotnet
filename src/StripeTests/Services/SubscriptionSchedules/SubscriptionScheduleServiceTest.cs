@@ -36,6 +36,23 @@ namespace StripeTests
             {
                 Customer = "cus_123",
                 StartDate = SubscriptionScheduleStartDate.Now,
+                DefaultSettings = new SubscriptionScheduleDefaultSettingsOptions
+                {
+                    CollectionMethod = "send_invoice",
+                },
+                Phases = new List<SubscriptionSchedulePhaseOptions>
+                {
+                    new SubscriptionSchedulePhaseOptions
+                    {
+                        Items = new List<SubscriptionSchedulePhaseItemOptions>
+                        {
+                            new SubscriptionSchedulePhaseItemOptions
+                            {
+                                Price = "price_123",
+                            },
+                        },
+                    },
+                },
             };
 
             this.releaseOptions = new SubscriptionScheduleReleaseOptions
