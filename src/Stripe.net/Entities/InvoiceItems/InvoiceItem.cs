@@ -244,13 +244,6 @@ namespace Stripe
         public List<TaxRate> TaxRates { get; set; }
 
         /// <summary>
-        /// For prorations this indicates whether Stripe automatically grouped multiple related
-        /// debit and credit line items into a single combined line item.
-        /// </summary>
-        [JsonProperty("unified_proration")]
-        public bool UnifiedProration { get; set; }
-
-        /// <summary>
         /// Unit Amount (in the <c>currency</c> specified) of the invoice item.
         /// </summary>
         [JsonProperty("unit_amount")]

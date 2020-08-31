@@ -355,22 +355,6 @@ namespace Stripe
         [JsonProperty("pending_update")]
         public SubscriptionPendingUpdate PendingUpdate { get; set; }
 
-        /// <summary>
-        /// Hash describing the plan the customer is subscribed to. Only set if the subscription
-        /// contains a single plan.
-        /// </summary>
-        [JsonProperty("plan")]
-        public Plan Plan { get; set; }
-
-        /// <summary>
-        /// The quantity of the plan to which the customer is subscribed. For example, if your plan
-        /// is $10/user/month, and your customer has 5 users, you could pass 5 as the quantity to
-        /// have the customer charged $50 (5 x $10) monthly. Only set if the subscription contains a
-        /// single plan.
-        /// </summary>
-        [JsonProperty("quantity")]
-        public long? Quantity { get; set; }
-
         #region Expandable Schedule
 
         /// <summary>

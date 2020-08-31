@@ -79,25 +79,6 @@ namespace Stripe
         public string ReturnUrl { get; set; }
 
         /// <summary>
-        /// If the PaymentIntent has a <c>payment_method</c> and a <c>customer</c> or if you're
-        /// attaching a payment method to the PaymentIntent in this request, you can pass
-        /// <c>save_payment_method=true</c> to save the payment method to the customer immediately.
-        ///
-        /// If the payment method is already saved to a customer, this parameter does nothing. If
-        /// this type of payment method cannot be saved to a customer, the request will error.
-        ///
-        /// Saving a payment method using this parameter is <em>not recommended</em> because it will
-        /// save the payment method even if it cannot be charged (e.g. the user made a typo). To
-        /// ensure that only payment methods which are likely to be chargeable are saved to a
-        /// customer, use the
-        /// (setup_future_usage)[#payment_intents/object#payment_intent_object-setup_future_usage]
-        /// property, which saves the payment method after the PaymentIntent has been confirmed and
-        /// all required actions by the customer are complete.
-        /// </summary>
-        [JsonProperty("save_payment_method")]
-        public bool? SavePaymentMethod { get; set; }
-
-        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
@@ -125,16 +106,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("shipping")]
         public ChargeShippingOptions Shipping { get; set; }
-
-        /// <summary>
-        /// This is a legacy field that will be removed in the future. It is the ID of the Source
-        /// object to attach to this PaymentIntent. Please use the <c>payment_method</c> field
-        /// instead, which also supports Cards and <a
-        /// href="https://stripe.com/docs/payments/payment-methods#compatibility">compatible
-        /// Source</a> objects.
-        /// </summary>
-        [JsonProperty("source")]
-        public string Source { get; set; }
 
         /// <summary>
         /// Set to <c>true</c> only when using manual confirmation and the iOS or Android SDKs to

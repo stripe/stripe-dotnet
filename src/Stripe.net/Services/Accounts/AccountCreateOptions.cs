@@ -1,6 +1,5 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -88,16 +87,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
-
-        /// <summary>
-        /// (Deprecated) Alternative to <c>capabilities</c>. The set of capabilities you want to
-        /// unlock for this account. Each capability will be inactive until you have provided its
-        /// specific requirements and Stripe has verified them. An account may have some of its
-        /// requested capabilities be active and some be inactive.
-        /// </summary>
-        [Obsolete("Use Capabilities instead.")]
-        [JsonProperty("requested_capabilities")]
-        public List<string> RequestedCapabilities { get; set; }
 
         /// <summary>
         /// Options for customizing how the account functions within Stripe.

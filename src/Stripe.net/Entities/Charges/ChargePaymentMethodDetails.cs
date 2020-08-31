@@ -25,9 +25,6 @@ namespace Stripe
         [JsonProperty("bancontact")]
         public ChargePaymentMethodDetailsBancontact Bancontact { get; set; }
 
-        [JsonProperty("bitcoin")]
-        public ChargePaymentMethodDetailsBitcoin Bitcoin { get; set; }
-
         [JsonProperty("card")]
         public ChargePaymentMethodDetailsCard Card { get; set; }
 
