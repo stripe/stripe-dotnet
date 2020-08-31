@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.1.0 - 2020-08-31
+* [#2190](https://github.com/stripe/stripe-dotnet/pull/2190) Add support for `PaymentMethodAutomaticallyUpdated` on `Event`
+
 ## 39.0.0 - 2020-08-31
 * [#2189](https://github.com/stripe/stripe-dotnet/pull/2189) Multiple API changes
     
