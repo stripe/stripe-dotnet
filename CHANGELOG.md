@@ -2,6 +2,7 @@
 
 ## 39.0.0 - 2020-08-31
 * [#2189](https://github.com/stripe/stripe-dotnet/pull/2189) Multiple API changes
+    
     Major version release for API version 2020-08-27 continued, a few changes were missing from the previous release.
 
     Pull requests included in this release (⚠️ = breaking changes):
@@ -15,6 +16,7 @@
 
 ## 38.0.0 - 2020-08-31
 * [#2098](https://github.com/stripe/stripe-dotnet/pull/2098) stripe-dotnet v38.0
+    
     Major version release for new API version 2020-08-27.
 
     ⚠️  Prefer v39.0.0 over this release. v39.0.0 contains the complete changeset.
