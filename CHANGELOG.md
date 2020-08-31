@@ -1,49 +1,68 @@
 # Changelog
 
+## 39.0.0 - 2020-08-31
+* [#2189](https://github.com/stripe/stripe-dotnet/pull/2189) Multiple API changes
+    Major version release for API version 2020-08-27 continued, a few changes were missing from the previous release.
+
+    Pull requests included in this release (⚠️ = breaking changes):
+
+    * ⚠️ Removes `Bitcoin` from `ChargePaymentMethodDetails`
+    * ⚠️ Removes `UnifiedProration` from `InvoiceItem` and `InvoiceLineItem`
+    * ⚠️ Removes `Plan` from `Quantity` from `Subscription`
+    * ⚠️ Removes `FailureUrl` and `SuccessUrl` from `AccountLinkCreateOptions`
+    * ⚠️ Removes `RequestedCapabilities` from `AccountCreateOptions` and `AccountUpdateOptions`
+    * ⚠️ Removes `SavePaymentMethod` and `Source` from `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, and `PaymentIntentUpdateOptions`
+
 ## 38.0.0 - 2020-08-31
 * [#2098](https://github.com/stripe/stripe-dotnet/pull/2098) stripe-dotnet v38.0
+    Major version release for new API version 2020-08-27.
+
+    ⚠️  Prefer v39.0.0 over this release. v39.0.0 contains the complete changeset.
+
+    Pull requests included in this release (⚠️ = breaking changes):
+
     * Set default value on non-nullable `DateTime` properties for deserializing with `UnixDateTimeConverter`
     * [#2006](https://github.com/stripe/stripe-dotnet/pull/2006) Default the number of network retries to 2
-    * [#2097](https://github.com/stripe/stripe-dotnet/pull/2097) Correct namespaces for Issuing and Checkout (breaking)
-    * [#2098](https://github.com/stripe/stripe-dotnet/pull/2098) Remove `ThreeDSecure` and `Bitcoin` resources (breaking)
-    * [#2099](https://github.com/stripe/stripe-dotnet/pull/2099) and [#2036](https://github.com/stripe/stripe-dotnet/pull/2036) Rename all arguments names for services methods to use `id` and `parentId` and be consistent (breaking)
-    * [#2101](https://github.com/stripe/stripe-dotnet/pull/2101) Drop support for .NET Framework 4.5 and require .NET Framework 4.6.1 at a minimum (breaking)
-    * [#2102](https://github.com/stripe/stripe-dotnet/pull/2102) Update Newtonsoft.Json for netstandard2.0 target (breaking)
-    * [#2104](https://github.com/stripe/stripe-dotnet/pull/2104) Prepare future migration to Newtonsoft.Json's `UnixDateTimeConverter` (breaking)
-    * [#2109](https://github.com/stripe/stripe-dotnet/pull/2109) Fix various properties to be explicitly nullable or not nullable  (breaking)
-    * [#2110](https://github.com/stripe/stripe-dotnet/pull/2110) Add missing interface to a few services and fix some options inheritance to match the API  (breaking)
-    * [#2113](https://github.com/stripe/stripe-dotnet/pull/2113) Moves `notification_method` from `SourceMandateAcceptanceOptions` to `SourceMandateOptions`  (breaking)
-    * [#2113](https://github.com/stripe/stripe-dotnet/pull/2113) Removes `paid` from `InvoiceListOptions` (breaking)
-    * [#2113](https://github.com/stripe/stripe-dotnet/pull/2113) Removes metadata from `DisputeEvidenceOptions` (breaking)
-    * [#2113](https://github.com/stripe/stripe-dotnet/pull/2113) Updates `InvoiceListOptions` to use `ListOptionsWithCreated` base class  (breaking)
-    * [#2118](https://github.com/stripe/stripe-dotnet/pull/2118) Remove deprecated tax_percent field from Customer, Invoice, Subscription, and SubscriptionSchedule (breaking)
-    * [#2124](https://github.com/stripe/stripe-dotnet/pull/2124) Set service method options parameter defaults to `null` (breaking)
-    * [#2128](https://github.com/stripe/stripe-dotnet/pull/2128) Removes `Destination` from `ChargeCaptureOptions` (breaking)
-    * [#2131](https://github.com/stripe/stripe-dotnet/pull/2131) Changes SSNLast4 to SsnLast4 to match all other naming (breaking)
-    * [#2136](https://github.com/stripe/stripe-dotnet/pull/2136) Makes `Price` and `Rate` included by default on `LineItem` and `LineItemTax` respectively (breaking)
-    * [#2140](https://github.com/stripe/stripe-dotnet/pull/2140) Removes `Recipient` (breaking)
-    * [#2142](https://github.com/stripe/stripe-dotnet/pull/2142) Stop sharing from `PaymentIntentPaymentMethodDataOptions` (breaking)
-    * [#2142](https://github.com/stripe/stripe-dotnet/pull/2142) Stop sharing sub hashes from `PaymentMethodCreateOptions` and `PaymentMethodUpdateOptions` (breaking)
-    * [#2144](https://github.com/stripe/stripe-dotnet/pull/2144) Rename nested `PlanProductCreateOptions` to `PlanProductOptions` (breaking)
-    * [#2156](https://github.com/stripe/stripe-dotnet/pull/2156) Unshare `SubscriptionSchedule` objects (breaking)
-    * [#2159](https://github.com/stripe/stripe-dotnet/pull/2159) Unshare `Account` objects (breaking)
-    * [#2160](https://github.com/stripe/stripe-dotnet/pull/2160) Unshare `TokenAccountIndividual` objects (breaking)
-    * [#2163](https://github.com/stripe/stripe-dotnet/pull/2163) Unshare `CustomerInvoiceSettings` objects (breaking)
-    * [#2164](https://github.com/stripe/stripe-dotnet/pull/2164) Unshare `Sku` and `Product` objects (breaking)
-    * [#2165](https://github.com/stripe/stripe-dotnet/pull/2165) Removes `date` from `InvoiceLineItem` (breaking)
-    * [#2165](https://github.com/stripe/stripe-dotnet/pull/2165) Renames `InvoiceTaxAmount` to `InvoiceLineItemTaxAmount` on `InvoiceLineItem` (breaking)
-    * [#2165](https://github.com/stripe/stripe-dotnet/pull/2165) Unshare `Period` Objects (breaking)
-    * [#2165](https://github.com/stripe/stripe-dotnet/pull/2165) Unshared `CreditNoteLineItemDiscountAmount` and uses a new `InvoiceLineItemDiscountAmount` on `InvoiceLineItem` (breaking)
-    * [#2166](https://github.com/stripe/stripe-dotnet/pull/2166) Update `LoginLinkService` to use new `parentId` pattern (breaking)
-    * [#2167](https://github.com/stripe/stripe-dotnet/pull/2167) Rename `FileLinkData` to `FileFileLinkData` (breaking)
-    * [#2168](https://github.com/stripe/stripe-dotnet/pull/2168) Unshare `BillingDetails` objects (breaking)
-    * [#2169](https://github.com/stripe/stripe-dotnet/pull/2169) Unshare `SubscriptionItem` objects (breaking)
-    * [#2170](https://github.com/stripe/stripe-dotnet/pull/2170) Merge nested `SourceCardUpdateOptions` to `SourceCardOptions` (breaking)
-    * [#2171](https://github.com/stripe/stripe-dotnet/pull/2171) Move `SessionLineItemPriceDataProductDataOptions` into the `Checkout` namespace (breaking)
-    * [#2171](https://github.com/stripe/stripe-dotnet/pull/2171) Rename `SessionPaymentIntentTransferDataOptions` to `SessionPaymentIntentDataTransferDataOptions` (breaking)
-    * [#2176](https://github.com/stripe/stripe-dotnet/pull/2176) Use new `parentId` pattern in the `ApplicationFeeRefundService` (breaking)
-    * [#2178](https://github.com/stripe/stripe-dotnet/pull/2178) Unshare `ChargeDestinationOptions` (breaking)
-    * [#2181](https://github.com/stripe/stripe-dotnet/pull/2181) Updates doc strings to match the OpenAPI spec
+    * [#2097](https://github.com/stripe/stripe-dotnet/pull/2097) Correct namespaces for Issuing and Checkout
+    * [#2098](https://github.com/stripe/stripe-dotnet/pull/2098) ⚠️ Remove `ThreeDSecure` and `Bitcoin` resources
+    * [#2099](https://github.com/stripe/stripe-dotnet/pull/2099) ⚠️ and [#2036](https://github.com/stripe/stripe-dotnet/pull/2036) Rename all arguments names for services methods to use `id` and `parentId` and be consistent
+    * [#2101](https://github.com/stripe/stripe-dotnet/pull/2101) ⚠️ Drop support for .NET Framework 4.5 and require .NET Framework 4.6.1 at a minimum
+    * [#2102](https://github.com/stripe/stripe-dotnet/pull/2102) ⚠️ Update Newtonsoft.Json for netstandard2.0 target
+    * [#2104](https://github.com/stripe/stripe-dotnet/pull/2104) ⚠️ Prepare future migration to Newtonsoft.Json's `UnixDateTimeConverter`
+    * [#2109](https://github.com/stripe/stripe-dotnet/pull/2109) ⚠️ Fix various properties to be explicitly nullable or not nullable
+    * [#2110](https://github.com/stripe/stripe-dotnet/pull/2110) ⚠️ Add missing interface to a few services and fix some options inheritance to match the API
+    * [#2113](https://github.com/stripe/stripe-dotnet/pull/2113) ⚠️ Moves `notification_method` from `SourceMandateAcceptanceOptions` to `SourceMandateOptions`
+    * [#2113](https://github.com/stripe/stripe-dotnet/pull/2113) ⚠️ Removes `paid` from `InvoiceListOptions`
+    * [#2113](https://github.com/stripe/stripe-dotnet/pull/2113) ⚠️ Removes metadata from `DisputeEvidenceOptions`
+    * [#2113](https://github.com/stripe/stripe-dotnet/pull/2113) ⚠️ Updates `InvoiceListOptions` to use `ListOptionsWithCreated` base class
+    * [#2118](https://github.com/stripe/stripe-dotnet/pull/2118) ⚠️ Remove deprecated tax_percent field from Customer, Invoice, Subscription, and SubscriptionSchedule
+    * [#2124](https://github.com/stripe/stripe-dotnet/pull/2124) ⚠️ Set service method options parameter defaults to `null`
+    * [#2128](https://github.com/stripe/stripe-dotnet/pull/2128) ⚠️ Removes `Destination` from `ChargeCaptureOptions`
+    * [#2131](https://github.com/stripe/stripe-dotnet/pull/2131) ⚠️ Changes SSNLast4 to SsnLast4 to match all other naming
+    * [#2136](https://github.com/stripe/stripe-dotnet/pull/2136) ⚠️ Makes `Price` and `Rate` included by default on `LineItem` and `LineItemTax` respectively
+    * [#2140](https://github.com/stripe/stripe-dotnet/pull/2140) ⚠️ Removes `Recipient`
+    * [#2142](https://github.com/stripe/stripe-dotnet/pull/2142) ⚠️ Stop sharing from `PaymentIntentPaymentMethodDataOptions`
+    * [#2142](https://github.com/stripe/stripe-dotnet/pull/2142) ⚠️ Stop sharing sub hashes from `PaymentMethodCreateOptions` and `PaymentMethodUpdateOptions`
+    * [#2144](https://github.com/stripe/stripe-dotnet/pull/2144) ⚠️ Rename nested `PlanProductCreateOptions` to `PlanProductOptions`
+    * [#2156](https://github.com/stripe/stripe-dotnet/pull/2156) ⚠️ Unshare `SubscriptionSchedule` objects
+    * [#2159](https://github.com/stripe/stripe-dotnet/pull/2159) ⚠️ Unshare `Account` objects
+    * [#2160](https://github.com/stripe/stripe-dotnet/pull/2160) ⚠️ Unshare `TokenAccountIndividual` objects
+    * [#2163](https://github.com/stripe/stripe-dotnet/pull/2163) ⚠️ Unshare `CustomerInvoiceSettings` objects
+    * [#2164](https://github.com/stripe/stripe-dotnet/pull/2164) ⚠️ Unshare `Sku` and `Product` objects
+    * [#2165](https://github.com/stripe/stripe-dotnet/pull/2165) ⚠️ Removes `date` from `InvoiceLineItem`
+    * [#2165](https://github.com/stripe/stripe-dotnet/pull/2165) ⚠️ Renames `InvoiceTaxAmount` to `InvoiceLineItemTaxAmount` on `InvoiceLineItem`
+    * [#2165](https://github.com/stripe/stripe-dotnet/pull/2165) ⚠️ Unshare `Period` Objects
+    * [#2165](https://github.com/stripe/stripe-dotnet/pull/2165) ⚠️ Unshared `CreditNoteLineItemDiscountAmount` and uses a new `InvoiceLineItemDiscountAmount` on `InvoiceLineItem`
+    * [#2166](https://github.com/stripe/stripe-dotnet/pull/2166) ⚠️ Update `LoginLinkService` to use new `parentId` pattern
+    * [#2167](https://github.com/stripe/stripe-dotnet/pull/2167) ⚠️ Rename `FileLinkData` to `FileFileLinkData`
+    * [#2168](https://github.com/stripe/stripe-dotnet/pull/2168) ⚠️ Unshare `BillingDetails` objects
+    * [#2169](https://github.com/stripe/stripe-dotnet/pull/2169) ⚠️ Unshare `SubscriptionItem` objects
+    * [#2170](https://github.com/stripe/stripe-dotnet/pull/2170) ⚠️ Merge nested `SourceCardUpdateOptions` to `SourceCardOptions`
+    * [#2171](https://github.com/stripe/stripe-dotnet/pull/2171) ⚠️ Move `SessionLineItemPriceDataProductDataOptions` into the `Checkout` namespace
+    * [#2171](https://github.com/stripe/stripe-dotnet/pull/2171) ⚠️ Rename `SessionPaymentIntentTransferDataOptions` to `SessionPaymentIntentDataTransferDataOptions`
+    * [#2176](https://github.com/stripe/stripe-dotnet/pull/2176) ⚠️ Use new `parentId` pattern in the `ApplicationFeeRefundService`
+    * [#2178](https://github.com/stripe/stripe-dotnet/pull/2178) ⚠️ Unshare `ChargeDestinationOptions`
+    * [#2181](https://github.com/stripe/stripe-dotnet/pull/2181) ⚠️ Updates doc strings to match the OpenAPI spec
 
 ## 37.35.0 - 2020-08-27
 * [#2186](https://github.com/stripe/stripe-dotnet/pull/2186) Add support for `SepaCreditTransfer` in `SourceTransaction`
