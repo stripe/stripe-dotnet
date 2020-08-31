@@ -315,9 +315,7 @@ namespace Stripe
         /// </summary>
         public const string InvoicePaymentFailed = "invoice.payment_failed";
 
-        /// <summary>
-        /// Occurs whenever an invoice payment attempt succeeds.
-        /// </summary>
+        [Obsolete("Use InvoicePaid instead.")]
         public const string InvoicePaymentSucceeded = "invoice.payment_succeeded";
 
         /// <summary>
@@ -500,8 +498,11 @@ namespace Stripe
         public const string PaymentMethodAttached = "payment_method.attached";
 
         /// <summary>
-        /// Occurs whenever a card payment method's details are automatically updated by CAU.
+        /// Occurs whenever a payment method's details are automatically updated by the network.
         /// </summary>
+        public const string PaymentMethodAutomaticallyUpdated = "payment_method.automatically_updated";
+
+        [Obsolete("Use PaymentMethodAutomaticallyUpdated instead.")]
         public const string PaymentMethodCardAutomaticallyUpdated = "payment_method.card_automatically_updated";
 
         /// <summary>
