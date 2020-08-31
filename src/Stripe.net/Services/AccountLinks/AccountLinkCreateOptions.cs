@@ -1,6 +1,5 @@
 namespace Stripe
 {
-    using System;
     using Newtonsoft.Json;
 
     public class AccountLinkCreateOptions : BaseOptions
@@ -20,13 +19,6 @@ namespace Stripe
         public string Collect { get; set; }
 
         /// <summary>
-        /// Alternate name for refresh_url to ensure backwards compatibility.
-        /// </summary>
-        [Obsolete("Use RefreshUrl instead.")]
-        [JsonProperty("failure_url")]
-        public string FailureUrl { get; set; }
-
-        /// <summary>
         /// The URL that the user will be redirected to if the account link is no longer valid. Your
         /// <c>refresh_url</c> should trigger a method on your server to create a new account link
         /// using this API, with the same parameters, and redirect the user to the new account link.
@@ -39,13 +31,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
-
-        /// <summary>
-        /// Alternate name for return_url to ensure backwards compatibility.
-        /// </summary>
-        [Obsolete("Use ReturnUrl instead.")]
-        [JsonProperty("success_url")]
-        public string SuccessUrl { get; set; }
 
         /// <summary>
         /// The type of account link the user is requesting. Possible values are

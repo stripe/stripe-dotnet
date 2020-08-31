@@ -19,7 +19,7 @@ namespace Stripe.Issuing
         public string Object { get; set; }
 
         /// <summary>
-        /// List of balance transactions associated with this dispute.
+        /// List of balance transactions associated with the dispute.
         /// </summary>
         [JsonProperty("balance_transactions")]
         public List<BalanceTransaction> BalanceTransactions { get; set; }

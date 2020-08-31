@@ -166,12 +166,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
-
-        /// <summary>
-        /// For prorations this indicates whether Stripe automatically grouped multiple related
-        /// debit and credit line items into a single combined line item.
-        /// </summary>
-        [JsonProperty("unified_proration")]
-        public bool UnifiedProration { get; set; }
     }
 }

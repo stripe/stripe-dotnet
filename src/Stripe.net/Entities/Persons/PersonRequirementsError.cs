@@ -17,18 +17,22 @@ namespace Stripe
         /// <c>verification_document_failed_test_mode</c>, <c>verification_document_fraudulent</c>,
         /// <c>verification_document_id_number_mismatch</c>,
         /// <c>verification_document_id_number_missing</c>, <c>verification_document_incomplete</c>,
-        /// <c>verification_document_invalid</c>, <c>verification_document_manipulated</c>,
-        /// <c>verification_document_missing_back</c>, <c>verification_document_missing_front</c>,
-        /// <c>verification_document_name_mismatch</c>, <c>verification_document_name_missing</c>,
+        /// <c>verification_document_invalid</c>,
+        /// <c>verification_document_issue_or_expiry_date_missing</c>,
+        /// <c>verification_document_manipulated</c>, <c>verification_document_missing_back</c>,
+        /// <c>verification_document_missing_front</c>, <c>verification_document_name_mismatch</c>,
+        /// <c>verification_document_name_missing</c>,
         /// <c>verification_document_nationality_mismatch</c>,
-        /// <c>verification_document_not_readable</c>, <c>verification_document_not_uploaded</c>,
-        /// <c>verification_document_photo_mismatch</c>, <c>verification_document_too_large</c>,
-        /// <c>verification_document_type_not_supported</c>,
+        /// <c>verification_document_not_readable</c>, <c>verification_document_not_signed</c>,
+        /// <c>verification_document_not_uploaded</c>, <c>verification_document_photo_mismatch</c>,
+        /// <c>verification_document_too_large</c>, <c>verification_document_type_not_supported</c>,
         /// <c>verification_failed_address_match</c>,
         /// <c>verification_failed_business_iec_number</c>,
         /// <c>verification_failed_document_match</c>, <c>verification_failed_id_number_match</c>,
         /// <c>verification_failed_keyed_identity</c>, <c>verification_failed_keyed_match</c>,
-        /// <c>verification_failed_name_match</c>, or <c>verification_failed_other</c>.
+        /// <c>verification_failed_name_match</c>, <c>verification_failed_other</c>,
+        /// <c>verification_failed_tax_id_match</c>, or
+        /// <c>verification_failed_tax_id_not_issued</c>.
         /// </summary>
         [JsonProperty("code")]
         public string Code { get; set; }
