@@ -5,7 +5,7 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsCardInstallmentsOptions : INestedOptions
     {
         /// <summary>
-        /// Setting to <c>true</c> enables installments for this PaymentIntent. This will cause the
+        /// Setting to true enables installments for this PaymentIntent. This will cause the
         /// response to contain a list of available installment plans. Setting to false will prevent
         /// any selected plan from applying to a charge.
         /// </summary>

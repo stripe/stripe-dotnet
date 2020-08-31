@@ -17,8 +17,8 @@ namespace Stripe
         public long? Amount { get; set; }
 
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }

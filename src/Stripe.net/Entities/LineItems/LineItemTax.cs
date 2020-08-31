@@ -1,41 +1,25 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class LineItemTax : StripeEntity<LineItemTax>
     {
         /// <summary>
-        /// Amount of tax for this line item.
+        /// Amount of tax applied for this rate.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
-        #region Expandable TaxRate
-
         /// <summary>
-        /// ID of the tax rate applied to this line item.
+        /// Tax rates can be applied to <a
+        /// href="https://stripe.com/docs/billing/invoices/tax-rates">invoices</a>, <a
+        /// href="https://stripe.com/docs/billing/subscriptions/taxes">subscriptions</a> and <a
+        /// href="https://stripe.com/docs/payments/checkout/set-up-a-subscription#tax-rates">Checkout
+        /// Sessions</a> to collect tax.
+        ///
+        /// Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax Rates</a>.
         /// </summary>
-        [JsonIgnore]
-        public string TaxRateId
-        {
-            get => this.InternalTaxRate?.Id;
-            set => this.InternalTaxRate = SetExpandableFieldId(value, this.InternalTaxRate);
-        }
-
-        /// <summary>
-        /// (Expanded) The tax rate applied to this line item. (if it was expanded).
-        /// </summary>
-        [JsonIgnore]
-        public TaxRate TaxRate
-        {
-            get => this.InternalTaxRate?.ExpandedObject;
-            set => this.InternalTaxRate = SetExpandableFieldObject(value, this.InternalTaxRate);
-        }
-
-        [JsonProperty("tax_rate")]
-        [JsonConverter(typeof(ExpandableFieldConverter<TaxRate>))]
-        internal ExpandableField<TaxRate> InternalTaxRate { get; set; }
-        #endregion
+        [JsonProperty("rate")]
+        public TaxRate Rate { get; set; }
     }
 }

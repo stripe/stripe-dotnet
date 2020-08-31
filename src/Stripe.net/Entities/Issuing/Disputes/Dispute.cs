@@ -25,8 +25,8 @@ namespace Stripe.Issuing
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -34,7 +34,8 @@ namespace Stripe.Issuing
         #region Expandable Transaction
 
         /// <summary>
-        /// ID of the transaction being disputed.
+        /// (ID of the Transaction)
+        /// The transaction being disputed.
         /// </summary>
         [JsonIgnore]
         public string TransactionId
@@ -44,7 +45,10 @@ namespace Stripe.Issuing
         }
 
         /// <summary>
+        /// (Expanded)
         /// The transaction being disputed.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Transaction Transaction

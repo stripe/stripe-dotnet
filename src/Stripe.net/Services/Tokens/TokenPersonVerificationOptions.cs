@@ -9,7 +9,7 @@ namespace Stripe
         /// well-known utility company.
         /// </summary>
         [JsonProperty("additional_document")]
-        public TokenPersonVerificationDocumentOptions AdditionalDocument { get; set; }
+        public TokenPersonVerificationAdditionalDocumentOptions AdditionalDocument { get; set; }
 
         /// <summary>
         /// An identifying document, either a passport or local ID card.

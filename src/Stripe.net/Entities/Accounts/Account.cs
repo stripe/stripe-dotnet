@@ -20,21 +20,19 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Optional information related to the business.
+        /// Business information about the account.
         /// </summary>
         [JsonProperty("business_profile")]
         public AccountBusinessProfile BusinessProfile { get; set; }
 
         /// <summary>
-        /// The business type. Can be <c>company</c> or <c>individual</c>.
+        /// The business type.
+        /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
+        /// <c>non_profit</c>.
         /// </summary>
         [JsonProperty("business_type")]
         public string BusinessType { get; set; }
 
-        /// <summary>
-        /// A hash containing the set of capabilities that was requested for this account and their
-        /// associated states.
-        /// </summary>
         [JsonProperty("capabilities")]
         public AccountCapabilities Capabilities { get; set; }
 
@@ -44,10 +42,6 @@ namespace Stripe
         [JsonProperty("charges_enabled")]
         public bool ChargesEnabled { get; set; }
 
-        /// <summary>
-        /// Information about the company or business. This field is null unless
-        /// <c>business_type</c> is set to <c>company</c>.
-        /// </summary>
         [JsonProperty("company")]
         public AccountCompany Company { get; set; }
 
@@ -61,12 +55,13 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Three-letter ISO currency code representing the default currency for the account. This
-        /// must be a currency that Stripe supports in the account's country.
+        /// must be a currency that <a href="https://stripe.com/docs/payouts">Stripe supports in the
+        /// account's country</a>.
         /// </summary>
         [JsonProperty("default_currency")]
         public string DefaultCurrency { get; set; }
@@ -97,15 +92,19 @@ namespace Stripe
         public StripeList<IExternalAccount> ExternalAccounts { get; set; }
 
         /// <summary>
-        /// Information about the person represented by the account. This field is null unless
-        /// <c>business_type</c> is set to <c>individual</c>.
+        /// This is an object representing a person associated with a Stripe account.
+        ///
+        /// Related guide: <a
+        /// href="https://stripe.com/docs/connect/identity-verification-api#person-information">Handling
+        /// Identity Verification with the API</a>.
         /// </summary>
         [JsonProperty("individual")]
         public Person Individual { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -116,28 +115,21 @@ namespace Stripe
         [JsonProperty("payouts_enabled")]
         public bool PayoutsEnabled { get; set; }
 
-        /// <summary>
-        /// Information about the requirements for the account, including what information needs to
-        /// be collected, and by when.
-        /// </summary>
         [JsonProperty("requirements")]
         public AccountRequirements Requirements { get; set; }
 
         /// <summary>
-        /// Account options for customizing how the account functions within Stripe.
+        /// Options for customizing how the account functions within Stripe.
         /// </summary>
         [JsonProperty("settings")]
         public AccountSettings Settings { get; set; }
 
-        /// <summary>
-        /// Details on the acceptance of the Stripe Services Agreement.
-        /// </summary>
         [JsonProperty("tos_acceptance")]
         public AccountTosAcceptance TosAcceptance { get; set; }
 
         /// <summary>
-        /// The Stripe account type. Can be <c>standard</c>, <c>express</c>, or
-        /// <c>custom</c>.
+        /// The Stripe account type. Can be <c>standard</c>, <c>express</c>, or <c>custom</c>.
+        /// One of: <c>custom</c>, <c>express</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

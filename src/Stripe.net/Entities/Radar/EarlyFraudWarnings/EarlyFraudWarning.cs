@@ -6,7 +6,9 @@ namespace Stripe.Radar
 
     public class EarlyFraudWarning : StripeEntity<EarlyFraudWarning>, IHasId, IHasObject
     {
-        /// <summary>Unique identifier for the object.</summary>
+        /// <summary>
+        /// Unique identifier for the object.
+        /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
 
@@ -26,7 +28,10 @@ namespace Stripe.Radar
 
         #region Expandable Charge
 
-        /// <summary>ID of the charge this early fraud warning is for.</summary>
+        /// <summary>
+        /// (ID of the Charge)
+        /// ID of the charge this early fraud warning is for, optionally expanded.
+        /// </summary>
         [JsonIgnore]
         public string ChargeId
         {
@@ -34,6 +39,12 @@ namespace Stripe.Radar
             set => this.InternalCharge = SetExpandableFieldId(value, this.InternalCharge);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the charge this early fraud warning is for, optionally expanded.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Charge Charge
         {
@@ -46,10 +57,12 @@ namespace Stripe.Radar
         internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
 
-        /// <summary>Time at which the object was created.</summary>
+        /// <summary>
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The type of fraud labelled by the issuer. One of <c>card_never_received</c>,
@@ -61,8 +74,8 @@ namespace Stripe.Radar
         public string FraudType { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c>
-        /// if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }

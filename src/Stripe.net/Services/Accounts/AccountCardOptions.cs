@@ -8,21 +8,6 @@ namespace Stripe
         [JsonProperty("object")]
         internal string Object => "card";
 
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("default_for_currency")]
-        public bool? DefaultForCurrency { get; set; }
-
-        [JsonProperty("exp_month")]
-        public long? ExpMonth { get; set; }
-
-        [JsonProperty("exp_year")]
-        public long? ExpYear { get; set; }
-
-        [JsonProperty("number")]
-        public string Number { get; set; }
-
         [JsonProperty("address_city")]
         public string AddressCity { get; set; }
 
@@ -41,13 +26,33 @@ namespace Stripe
         [JsonProperty("address_zip")]
         public string AddressZip { get; set; }
 
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
         [JsonProperty("cvc")]
         public string Cvc { get; set; }
 
+        [JsonProperty("default_for_currency")]
+        public bool? DefaultForCurrency { get; set; }
+
+        [JsonProperty("exp_month")]
+        public long? ExpMonth { get; set; }
+
+        [JsonProperty("exp_year")]
+        public long? ExpYear { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
+        /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        [JsonProperty("number")]
+        public string Number { get; set; }
     }
 }

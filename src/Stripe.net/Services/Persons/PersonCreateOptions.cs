@@ -1,9 +1,7 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class PersonCreateOptions : BaseOptions, IHasMetadata
     {
@@ -56,16 +54,17 @@ namespace Stripe
         public string FirstNameKanji { get; set; }
 
         /// <summary>
-        /// The person's gender (International regulations require either <c>male</c> or
-        /// <c>female</c>).
+        /// The person's gender (International regulations require either "male" or "female").
         /// </summary>
         [JsonProperty("gender")]
         public string Gender { get; set; }
 
         /// <summary>
-        /// The person's ID number, as appropriate for their country. For example, a social
-        /// security number in the U.S., social insurance number in Canada, etc. Instead of the
-        /// number itself, you can also provide a PII token provided by Stripe.js.
+        /// The person's ID number, as appropriate for their country. For example, a social security
+        /// number in the U.S., social insurance number in Canada, etc. Instead of the number
+        /// itself, you can also provide a <a
+        /// href="https://stripe.com/docs/stripe.js#collecting-pii-data">PII token provided by
+        /// Stripe.js</a>.
         /// </summary>
         [JsonProperty("id_number")]
         public string IdNumber { get; set; }
@@ -95,16 +94,17 @@ namespace Stripe
         public string MaidenName { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format. Individual keys can be
-        /// unset by posting an empty value to them. All keys can be unset by posting an empty
-        /// value to metadata.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// A person token, used to securely provide details to the person.
+        /// A <a href="https://stripe.com/docs/connect/account-tokens">person token</a>, used to
+        /// securely provide details to the person.
         /// </summary>
         [JsonProperty("person_token")]
         public string PersonToken { get; set; }
@@ -130,11 +130,10 @@ namespace Stripe
         public PersonRelationshipOptions Relationship { get; set; }
 
         /// <summary>
-        /// The last 4 digits of the person's social security number.
+        /// The last four digits of the person's Social Security number (U.S. only).
         /// </summary>
         [JsonProperty("ssn_last_4")]
-        [AllowNameMismatch]
-        public string SSNLast4 { get; set; }
+        public string SsnLast4 { get; set; }
 
         /// <summary>
         /// The person's verification status.

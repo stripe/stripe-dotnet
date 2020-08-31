@@ -6,7 +6,9 @@ namespace Stripe
     public class TaxRateUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// Whether the tax rate is currently available for new subscriptions.
+        /// Flag determining whether the tax rate is active or inactive (archived). Inactive tax
+        /// rates cannot be used with new applications or Checkout Sessions, but will still work for
+        /// subscriptions and invoices that already have it set.
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; }
@@ -19,8 +21,7 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// The display name of the tax rates as it will appear to your customer on their receipt
-        /// email, PDF, and the hosted invoice page.
+        /// The display name of the tax rate, which will be shown to users.
         /// </summary>
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
@@ -32,8 +33,10 @@ namespace Stripe
         public string Jurisdiction { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to a subscription object. It can be useful
-        /// for storing additional information about the subscription in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

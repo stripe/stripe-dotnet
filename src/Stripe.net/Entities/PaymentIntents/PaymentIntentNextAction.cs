@@ -7,10 +7,6 @@ namespace Stripe
         [JsonProperty("alipay_handle_redirect")]
         public PaymentIntentNextActionAlipayHandleRedirect AlipayHandleRedirect { get; set; }
 
-        /// <summary>
-        /// Contains instructions for authenticating a payment by redirecting your customer to
-        /// another page or application.
-        /// </summary>
         [JsonProperty("redirect_to_url")]
         public PaymentIntentNextActionRedirectToUrl RedirectToUrl { get; set; }
 

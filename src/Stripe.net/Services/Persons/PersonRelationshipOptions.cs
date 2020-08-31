@@ -5,7 +5,9 @@ namespace Stripe
     public class PersonRelationshipOptions : INestedOptions
     {
         /// <summary>
-        /// Whether the person is a director of the account's legal entity..
+        /// Whether the person is a director of the account's legal entity. Currently only required
+        /// for accounts in the EU. Directors are typically members of the governing board of the
+        /// company, or responsible for ensuring the company meets its regulatory obligations.
         /// </summary>
         [JsonProperty("director")]
         public bool? Director { get; set; }
@@ -18,7 +20,7 @@ namespace Stripe
         public bool? Executive { get; set; }
 
         /// <summary>
-        /// Whether the person is an owner of the account's legal entity..
+        /// Whether the person is an owner of the account’s legal entity.
         /// </summary>
         [JsonProperty("owner")]
         public bool? Owner { get; set; }

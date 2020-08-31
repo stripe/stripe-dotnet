@@ -22,30 +22,31 @@ namespace Stripe.BillingPortal
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// ID of the customer this Session is for.
+        /// The ID of the customer for this session.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The URL to which Stripe should send customers when they click on the link to return to your website.
+        /// The URL to which Stripe should send customers when they click on the link to return to
+        /// your website.
         /// </summary>
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
 
         /// <summary>
-        /// The URL to which the PortalSession is accessible by.
+        /// The short-lived URL of the session giving customers access to the customer portal.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }

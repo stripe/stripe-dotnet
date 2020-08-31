@@ -11,8 +11,7 @@ namespace Stripe
         public long? FlatAmount { get; set; }
 
         /// <summary>
-        /// Same as <see cref="FlatAmount"/>, but contains a decimal value with at most 12 decimal
-        /// places.
+        /// Same as <c>flat_amount</c>, but contains a decimal value with at most 12 decimal places.
         /// </summary>
         [JsonProperty("flat_amount_decimal")]
         public decimal? FlatAmountDecimal { get; set; }
@@ -24,8 +23,7 @@ namespace Stripe
         public long? UnitAmount { get; set; }
 
         /// <summary>
-        /// Same as <see cref="UnitAmount"/>, but contains a decimal value with at most 12 decimal
-        /// places.
+        /// Same as <c>unit_amount</c>, but contains a decimal value with at most 12 decimal places.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }

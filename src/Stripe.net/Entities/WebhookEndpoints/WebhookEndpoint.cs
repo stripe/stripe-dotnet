@@ -35,8 +35,8 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this object is deleted or not.
@@ -45,33 +45,37 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// An optional description of what the wehbook is used for.
+        /// An optional description of what the webhook is used for.
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
 
         /// <summary>
-        /// The list of events to enable for this endpoint.
+        /// The list of events to enable for this endpoint. <c>['*']</c> indicates that all events
+        /// are enabled, except those that require explicit selection.
         /// </summary>
         [JsonProperty("enabled_events")]
         public List<string> EnabledEvents { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The endpoint's secret, used to generate webhook signatures. Only returned at creation.
+        /// The endpoint's secret, used to generate <a
+        /// href="https://stripe.com/docs/webhooks/signatures">webhook signatures</a>. Only returned
+        /// at creation.
         /// </summary>
         [JsonProperty("secret")]
         public string Secret { get; set; }

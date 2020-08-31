@@ -33,8 +33,8 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// If <c>amount_off</c> has been set, the three-letter <a
@@ -53,6 +53,7 @@ namespace Stripe
         /// <summary>
         /// One of <c>forever</c>, <c>once</c>, and <c>repeating</c>. Describes how long a customer
         /// who applies this coupon will get the discount.
+        /// One of: <c>forever</c>, <c>once</c>, or <c>repeating</c>.
         /// </summary>
         [JsonProperty("duration")]
         public string Duration { get; set; }
@@ -104,7 +105,7 @@ namespace Stripe
         /// Date after which the coupon can no longer be redeemed.
         /// </summary>
         [JsonProperty("redeem_by")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? RedeemBy { get; set; }
 
         /// <summary>

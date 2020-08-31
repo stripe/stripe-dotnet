@@ -35,7 +35,6 @@ namespace StripeTests
             this.createOptions = new InvoiceCreateOptions
             {
                 Customer = "cus_123",
-                TaxPercent = 12.5m,
             };
 
             this.updateOptions = new InvoiceUpdateOptions
@@ -194,7 +193,6 @@ namespace StripeTests
             Assert.Equal("invoice", invoice.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -202,7 +200,6 @@ namespace StripeTests
             Assert.NotNull(invoice);
             Assert.Equal("invoice", invoice.Object);
         }
-#endif
 
         [Fact]
         public void ListLineItems()
@@ -234,7 +231,6 @@ namespace StripeTests
             Assert.Equal("line_item", lineItem.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListLineItemsAutoPagingAsync()
         {
@@ -242,7 +238,6 @@ namespace StripeTests
             Assert.NotNull(lineItem);
             Assert.Equal("line_item", lineItem.Object);
         }
-#endif
 
         [Fact]
         public void ListUpcomingLineItems()
@@ -274,7 +269,6 @@ namespace StripeTests
             Assert.Equal("line_item", lineItem.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListUpcomingLineItemsAutoPagingAsync()
         {
@@ -282,7 +276,6 @@ namespace StripeTests
             Assert.NotNull(lineItem);
             Assert.Equal("line_item", lineItem.Object);
         }
-#endif
 
         [Fact]
         public void MarkUncollectible()

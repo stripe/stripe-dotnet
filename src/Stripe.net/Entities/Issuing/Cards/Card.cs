@@ -26,13 +26,18 @@ namespace Stripe.Issuing
         public string Brand { get; set; }
 
         /// <summary>
-        /// The reason why the card was canceled. One of <c>lost</c> or <c>stolen</c>.
+        /// The reason why the card was canceled.
+        /// One of: <c>lost</c>, or <c>stolen</c>.
         /// </summary>
         [JsonProperty("cancellation_reason")]
         public string CancellationReason { get; set; }
 
         /// <summary>
-        /// The Cardholder object to which the card belongs.
+        /// An Issuing <c>Cardholder</c> object represents an individual or business entity who is
+        /// <a href="https://stripe.com/docs/issuing">issued</a> cards.
+        ///
+        /// Related guide: <a href="https://stripe.com/docs/issuing/cards#create-cardholder">How to
+        /// create a Cardholder</a>.
         /// </summary>
         [JsonProperty("cardholder")]
         public Cardholder Cardholder { get; set; }
@@ -41,18 +46,24 @@ namespace Stripe.Issuing
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
         /// <summary>
         /// The card's CVC. For security reasons, this is only available for virtual cards, and will
-        /// be omitted unless you explicitly expand it in the request.
+        /// be omitted unless you explicitly request it with <a
+        /// href="https://stripe.com/docs/api/expanding_objects">the <c>expand</c> parameter</a>.
+        /// Additionally, it's only available via the <a
+        /// href="https://stripe.com/docs/api/issuing/cards/retrieve">"Retrieve a card"
+        /// endpoint</a>, not via "List all cards" or any other endpoint.
         /// </summary>
         [JsonProperty("cvc")]
         public string Cvc { get; set; }
@@ -76,24 +87,27 @@ namespace Stripe.Issuing
         public string Last4 { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format. Individual keys can be
-        /// unset by posting an empty value to them. All keys can be unset by posting an empty
-        /// value to metadata.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The full unredacted card number. For security reasons, this is only available for
-        /// virtual cards, and will be omitted unless you explicitly expand it in the request.
+        /// virtual cards, and will be omitted unless you explicitly request it with <a
+        /// href="https://stripe.com/docs/api/expanding_objects">the <c>expand</c> parameter</a>.
+        /// Additionally, it's only available via the <a
+        /// href="https://stripe.com/docs/api/issuing/cards/retrieve">"Retrieve a card"
+        /// endpoint</a>, not via "List all cards" or any other endpoint.
         /// </summary>
         [JsonProperty("number")]
         public string Number { get; set; }
@@ -101,7 +115,8 @@ namespace Stripe.Issuing
         #region Expandable ReplacedBy
 
         /// <summary>
-        /// ID of the latest <see cref="Card"/> that replaces this card, if any.
+        /// (ID of the Card)
+        /// The latest card that replaces this card, if any.
         /// </summary>
         [JsonIgnore]
         public string ReplacedById
@@ -111,7 +126,10 @@ namespace Stripe.Issuing
         }
 
         /// <summary>
-        /// (Expanded) The latest <see cref="Card"/> that replaces this card, if any.
+        /// (Expanded)
+        /// The latest card that replaces this card, if any.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Card ReplacedBy
@@ -128,7 +146,8 @@ namespace Stripe.Issuing
         #region Expandable ReplacementFor
 
         /// <summary>
-        /// ID of the <see cref="Card"/> that this card replaces.
+        /// (ID of the Card)
+        /// The card this card replaces, if any.
         /// </summary>
         [JsonIgnore]
         public string ReplacementForId
@@ -138,7 +157,10 @@ namespace Stripe.Issuing
         }
 
         /// <summary>
-        /// (Expanded) The <see cref="Card"/> that this card replaces.
+        /// (Expanded)
+        /// The card this card replaces, if any.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Card ReplacementFor
@@ -153,8 +175,8 @@ namespace Stripe.Issuing
         #endregion
 
         /// <summary>
-        /// Why the card that this card replaces (if any) needed to be replaced. One of
-        /// <c>damaged</c>, <c>expired</c>, <c>lost</c>, or <c>stolen</c>.
+        /// The reason why the previous card needed to be replaced.
+        /// One of: <c>damaged</c>, <c>expired</c>, <c>lost</c>, or <c>stolen</c>.
         /// </summary>
         [JsonProperty("replacement_reason")]
         public string ReplacementReason { get; set; }
@@ -165,20 +187,19 @@ namespace Stripe.Issuing
         [JsonProperty("shipping")]
         public CardShipping Shipping { get; set; }
 
-        /// <summary>
-        /// Spending rules that give you some control over how this card can be used.
-        /// </summary>
         [JsonProperty("spending_controls")]
         public CardSpendingControls SpendingControls { get; set; }
 
         /// <summary>
-        /// One of <c>active</c>, <c>canceled</c>, <c>inactive</c>.
+        /// Whether authorizations can be approved on this card.
+        /// One of: <c>active</c>, <c>canceled</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// One of <c>virtual</c> or p<c>hysical</c>.
+        /// The type of the card.
+        /// One of: <c>physical</c>, or <c>virtual</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

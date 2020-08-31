@@ -4,22 +4,15 @@ namespace Stripe
 
     public class SetupIntentConfirmOptions : BaseOptions
     {
-        /// <summary>
-        /// The client secret of the SetupIntent. Required if a publishable key is used to
-        /// confirm the setup intent.
-        /// </summary>
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
 
-        /// <summary>
-        /// This hash contains details about the Mandate to create.
-        /// </summary>
         [JsonProperty("mandate_data")]
         public SetupIntentMandateDataOptions MandateData { get; set; }
 
         /// <summary>
-        /// ID of the payment method (a PaymentMethod, Card, BankAccount, or saved Source object) to
-        /// attach to this SetupIntent.
+        /// ID of the payment method (a PaymentMethod, Card, or saved Source object) to attach to
+        /// this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method")]
         public string PaymentMethod { get; set; }

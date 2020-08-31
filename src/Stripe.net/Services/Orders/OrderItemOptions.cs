@@ -20,7 +20,8 @@ namespace Stripe
         public string Parent { get; set; }
 
         /// <summary>
-        /// The quantity of this order item. When type is sku, this is the number of instances of the SKU to be ordered.
+        /// The quantity of this order item. When type is <c>sku</c>, this is the number of
+        /// instances of the SKU to be ordered.
         /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }

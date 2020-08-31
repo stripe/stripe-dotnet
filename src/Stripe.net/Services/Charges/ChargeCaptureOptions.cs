@@ -5,54 +5,47 @@ namespace Stripe
     public class ChargeCaptureOptions : BaseOptions
     {
         /// <summary>
-        /// Amount to capture on the authorization.
+        /// The amount to capture, which must be less than or equal to the original amount. Any
+        /// additional amount will be automatically refunded.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
-        /// This is deprecated in favor of ApplicationFeeAmount.
+        /// An application fee to add on to this charge.
         /// </summary>
         [JsonProperty("application_fee")]
         public long? ApplicationFee { get; set; }
 
         /// <summary>
-        /// A fee in cents that will be applied to the charge and transferred to the application owner's Stripe account. To use an application fee, the request must be made on behalf of another account (using RequestOptions available on all service methods), using the Stripe-Account header, an OAuth key, or the destination parameter. For more information, see the application fees documentation.
+        /// An application fee amount to add on to this charge, which must be less than or equal to
+        /// the original amount.
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
-
-        /// <summary>
-        /// An optional dictionary containing a new destination amount to use. Can only be used with destination charges created with Stripe Connect.
-        /// </summary>
-        [JsonProperty("destination")]
-        public ChargeDestinationOptions Destination { get; set; }
 
         [JsonProperty("exchange_rate")]
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
-        /// Email address that will receive an email receipt confirming the transaction.
+        /// The email address to send this charge's receipt to. This will override the
+        /// previously-specified email address for this charge, if one was set. Receipts will not be
+        /// sent in test mode.
         /// </summary>
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
 
         /// <summary>
-        /// An arbitrary string to be displayed on your customer's credit card statement. This may
-        /// be up to 22 characters. As an example, if your website is <c>RunClub</c> and the item
-        /// you're charging for is a race ticket, you may want to specify a
-        /// <c>statement_descriptor</c> of <c>RunClub 5K race ticket</c>. The statement description
-        /// may not include <c>&lt;&gt;"'</c> characters, and will appear on your customer's
-        /// statement in capital letters. Non-ASCII characters are automatically stripped. While
-        /// most banks display this information consistently, some may display it incorrectly or not
-        /// at all.
+        /// For card charges, use <c>statement_descriptor_suffix</c> instead. Otherwise, you can use
+        /// this value as the complete description of a charge on your customers’ statements. Must
+        /// contain at least one letter, maximum 22 characters.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
         /// Provides information about the charge that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that's set
+        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>
@@ -61,14 +54,17 @@ namespace Stripe
 
         /// <summary>
         /// An optional dictionary including the account to automatically transfer to as part of a
-        /// destination charge.
+        /// destination charge. <a href="https://stripe.com/docs/connect/destination-charges">See
+        /// the Connect documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_data")]
         public ChargeTransferDataOptions TransferData { get; set; }
 
         /// <summary>
-        /// A string that identifies this transaction as part of a group. <c>TransferGroup</c> may
-        /// only be provided if it has not been set. See the Connect documentation for details.
+        /// A string that identifies this transaction as part of a group. <c>transfer_group</c> may
+        /// only be provided if it has not been set. See the <a
+        /// href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect
+        /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }

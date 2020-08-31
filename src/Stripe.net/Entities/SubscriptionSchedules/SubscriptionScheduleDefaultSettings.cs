@@ -6,9 +6,12 @@ namespace Stripe
     public class SubscriptionScheduleDefaultSettings : StripeEntity<SubscriptionScheduleDefaultSettings>
     {
         /// <summary>
-        /// Can be set to <c>phase_start</c> to set the anchor to the start of the phase
-        /// or <c>automatic</c> to automatically change it if needed. Cannot be set to
-        /// <c>phase_start</c> if this phase specifies a trial.
+        /// Possible values are <c>phase_start</c> or <c>automatic</c>. If <c>phase_start</c> then
+        /// billing cycle anchor of the subscription is set to the start of the phase when entering
+        /// the phase. If <c>automatic</c> then the billing cycle anchor is automatically modified
+        /// as needed when entering the phase. For more information, see the billing cycle <a
+        /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
+        /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         public string BillingCycleAnchor { get; set; }
@@ -18,14 +21,14 @@ namespace Stripe
         /// new billing period.
         /// </summary>
         [JsonProperty("billing_thresholds")]
-        public SubscriptionBillingThresholds BillingThresholds { get; set; }
+        public SubscriptionScheduleDefaultSettingsBillingThresholds BillingThresholds { get; set; }
 
         /// <summary>
-        /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging
-        /// automatically, Stripe will attempt to pay this subscription at the
-        /// end of the cycle using the default source attached to the customer.
-        /// When sending an invoice, Stripe will email your customer an invoice
-        /// with payment instructions.
+        /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
+        /// Stripe will attempt to pay the underlying subscription at the end of each billing cycle
+        /// using the default source attached to the customer. When sending an invoice, Stripe will
+        /// email your customer an invoice with payment instructions.
+        /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]
         public string CollectionMethod { get; set; }
@@ -33,7 +36,9 @@ namespace Stripe
         #region Expandable DefaultPaymentMethod
 
         /// <summary>
-        /// ID of the default payment method for the subscription schedule.
+        /// (ID of the PaymentMethod)
+        /// ID of the default payment method for the subscription schedule. If not set, invoices
+        /// will use the default payment method in the customer's invoice settings.
         /// </summary>
         [JsonIgnore]
         public string DefaultPaymentMethodId
@@ -42,6 +47,13 @@ namespace Stripe
             set => this.InternalDefaultPaymentMethod = SetExpandableFieldId(value, this.InternalDefaultPaymentMethod);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the default payment method for the subscription schedule. If not set, invoices
+        /// will use the default payment method in the customer's invoice settings.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public PaymentMethod DefaultPaymentMethod
         {
@@ -55,18 +67,17 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The schedule's default invoice settings.
+        /// The subscription schedule's default invoice settings.
         /// </summary>
         [JsonProperty("invoice_settings")]
-        public SubscriptionScheduleInvoiceSettings InvoiceSettings { get; set; }
+        public SubscriptionScheduleDefaultSettingsInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
-        /// The account (if any) the subscription's payments will be
-        /// attributed to for tax reporting, and where funds from each
-        /// payment will be transferred to for each of the subscription's
-        /// invoices.
+        /// The account (if any) the associated subscription's payments will be attributed to for
+        /// tax reporting, and where funds from each payment will be transferred to for each of the
+        /// subscription's invoices.
         /// </summary>
         [JsonProperty("transfer_data")]
-        public SubscriptionTransferData TransferData { get; set; }
+        public SubscriptionScheduleDefaultSettingsTransferData TransferData { get; set; }
     }
 }

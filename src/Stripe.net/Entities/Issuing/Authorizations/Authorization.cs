@@ -20,7 +20,9 @@ namespace Stripe.Issuing
         public string Object { get; set; }
 
         /// <summary>
-        /// The total amount in the card's currency that was authorized or rejected.
+        /// The total amount that was authorized or rejected. This amount is in the card's currency
+        /// and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency
+        /// unit</a>.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -40,8 +42,9 @@ namespace Stripe.Issuing
         public bool Approved { get; set; }
 
         /// <summary>
-        /// How the card details were provided. The possible values are <c>keyed_in</c>,
-        /// <c>swipe</c>, <c>chip</c>, <c>contactless</c> or <c>online</c>.
+        /// How the card details were provided.
+        /// One of: <c>chip</c>, <c>contactless</c>, <c>keyed_in</c>, <c>online</c>, or
+        /// <c>swipe</c>.
         /// </summary>
         [JsonProperty("authorization_method")]
         public string AuthorizationMethod { get; set; }
@@ -53,7 +56,8 @@ namespace Stripe.Issuing
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         /// <summary>
-        /// Card associated with this authorization.
+        /// You can <a href="https://stripe.com/docs/issuing/cards">create physical or virtual
+        /// cards</a> that are issued to cardholders.
         /// </summary>
         [JsonProperty("card")]
         public Card Card { get; set; }
@@ -61,7 +65,8 @@ namespace Stripe.Issuing
         #region Expandable Cardholder
 
         /// <summary>
-        /// ID of the cardholder to whom this authorization belongs.
+        /// (ID of the Cardholder)
+        /// The cardholder to whom this authorization belongs.
         /// </summary>
         [JsonIgnore]
         public string CardholderId
@@ -71,7 +76,10 @@ namespace Stripe.Issuing
         }
 
         /// <summary>
+        /// (Expanded)
         /// The cardholder to whom this authorization belongs.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Cardholder Cardholder
@@ -89,84 +97,84 @@ namespace Stripe.Issuing
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Three-letter ISO currency code. Must be a supported currency.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The total amount that was authorized or rejected in the local
-        /// <see cref="MerchantCurrency"/>.
+        /// The total amount that was authorized or rejected. This amount is in the
+        /// <c>merchant_currency</c> and in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("merchant_amount")]
         public long MerchantAmount { get; set; }
 
         /// <summary>
-        /// The currency of the held amount. This will always be the card currency.
+        /// The currency that was presented to the cardholder for the authorization. Three-letter <a
+        /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in
+        /// lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("merchant_currency")]
         public string MerchantCurrency { get; set; }
 
-        /// <summary>
-        /// Details about the merchant (grocery store, e-commerce website, etc.) where the card
-        /// authorization happened.
-        /// </summary>
         [JsonProperty("merchant_data")]
         public AuthorizationMerchantData MerchantData { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format. Individual keys can be
-        /// unset by posting an empty value to them. All keys can be unset by posting an empty
-        /// value to metadata.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The pending authorization request. This field will only be non-null during an
-        /// <see cref="Events.IssuingAuthorizationRequest" /> webhook.
+        /// <c>issuing_authorization.request</c> webhook.
         /// </summary>
         [JsonProperty("pending_request")]
         public AuthorizationPendingRequest PendingRequest { get; set; }
 
         /// <summary>
         /// History of every time the authorization was approved/denied (whether approved/denied by
-        /// you directly, or by Stripe based on your authorization controls). If the merchant
-        /// changes the authorization by performing an incremental authorization or partial capture,
-        /// you can look at the request history to see the previous states of the authorization.
+        /// you directly or by Stripe based on your <c>spending_controls</c>). If the merchant
+        /// changes the authorization by performing an <a
+        /// href="https://stripe.com/docs/issuing/purchases/authorizations">incremental
+        /// authorization or partial capture</a>, you can look at this field to see the previous
+        /// states of the authorization.
         /// </summary>
         [JsonProperty("request_history")]
         public List<AuthorizationRequestHistory> RequestHistory { get; set; }
 
         /// <summary>
-        /// The current status of the authorization in its lifecycle. One of <c>pending</c>,
-        /// <c>closed</c>, or <c>reversed</c>.
+        /// The current status of the authorization in its lifecycle.
+        /// One of: <c>closed</c>, <c>pending</c>, or <c>reversed</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// List of transactions associated with this authorization.
+        /// List of <a href="https://stripe.com/docs/api/issuing/transactions">transactions</a>
+        /// associated with this authorization.
         /// </summary>
         [JsonProperty("transactions")]
         public List<Transaction> Transactions { get; set; }
 
-        /// <summary>
-        /// Verifications that Stripe performed on information that the cardholder provided to the
-        /// merchant.
-        /// </summary>
         [JsonProperty("verification_data")]
         public AuthorizationVerificationData VerificationData { get; set; }
 

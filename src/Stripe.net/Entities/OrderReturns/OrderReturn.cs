@@ -14,30 +14,30 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// String representing the object's type. Objects of the same type
-        /// share the same value.
+        /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
         /// <summary>
-        /// A positive integer in the smallest currency unit (that is, 100
-        /// cents for $1.00, or 1 for ¥1, Japanese Yen being a 0-decimal
-        /// currency) representing the total amount for the returned line item.
+        /// A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for
+        /// ¥1, Japanese Yen being a zero-decimal currency) representing the total amount for the
+        /// returned line item.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         /// <summary>
-        /// Time at which the object was created. Measured in seconds since the
-        /// Unix epoch.
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// 3-letter ISO code representing the currency of the return.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -49,8 +49,8 @@ namespace Stripe
         public List<OrderItem> Items { get; set; }
 
         /// <summary>
-        /// Has the value true if the object exists in live mode or the value
-        /// false if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -58,8 +58,8 @@ namespace Stripe
         #region Expandable Order
 
         /// <summary>
-        /// <para>The order that this return includes items from.</para>
-        /// <para>Expandable.</para>
+        /// (ID of the Order)
+        /// The order that this return includes items from.
         /// </summary>
         [JsonIgnore]
         public string OrderId
@@ -68,6 +68,12 @@ namespace Stripe
             set => this.InternalOrder = SetExpandableFieldId(value, this.InternalOrder);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The order that this return includes items from.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Order Order
         {
@@ -83,8 +89,8 @@ namespace Stripe
         #region Expandable Refund
 
         /// <summary>
-        /// <para>The ID of the refund issued for this return.</para>
-        /// <para>Expandable.</para>
+        /// (ID of the Refund)
+        /// The ID of the refund issued for this return.
         /// </summary>
         [JsonIgnore]
         public string RefundId
@@ -93,6 +99,12 @@ namespace Stripe
             set => this.InternalRefund = SetExpandableFieldId(value, this.InternalRefund);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the refund issued for this return.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Refund Refund
         {

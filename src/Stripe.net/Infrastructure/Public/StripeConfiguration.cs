@@ -20,7 +20,7 @@ namespace Stripe
 
         private static bool enableTelemetry = true;
 
-        private static int maxNetworkRetries;
+        private static int maxNetworkRetries = SystemNetHttpClient.DefaultMaxNumberRetries;
 
         private static IStripeClient stripeClient;
 
@@ -30,7 +30,7 @@ namespace Stripe
         }
 
         /// <summary>API version used by Stripe.net.</summary>
-        public static string ApiVersion => "2020-03-02";
+        public static string ApiVersion => "2020-08-27";
 
         /// <summary>Gets or sets the API key.</summary>
         /// <remarks>

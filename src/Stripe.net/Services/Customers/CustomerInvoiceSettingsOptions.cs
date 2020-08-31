@@ -6,13 +6,15 @@ namespace Stripe
     public class CustomerInvoiceSettingsOptions : INestedOptions
     {
         /// <summary>
-        /// Default custom fields to be displayed on invoices for this customer.
+        /// Default custom fields to be displayed on invoices for this customer. When updating, pass
+        /// an empty string to remove previously-defined fields.
         /// </summary>
         [JsonProperty("custom_fields")]
-        public List<InvoiceCustomFieldOptions> CustomFields { get; set; }
+        public List<CustomerInvoiceSettingsCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
-        /// ID of the default payment method for the customer.
+        /// ID of a payment method that's attached to the customer, to be used as the customer's
+        /// default payment method for subscriptions and invoices.
         /// </summary>
         [JsonProperty("default_payment_method")]
         public string DefaultPaymentMethod { get; set; }

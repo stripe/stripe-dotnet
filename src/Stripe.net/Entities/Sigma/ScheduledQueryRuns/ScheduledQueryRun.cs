@@ -22,19 +22,16 @@ namespace Stripe.Sigma
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// When the query was run, Sigma contained a snapshot of your Stripe data at this time.
         /// </summary>
         [JsonProperty("data_load_time")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime DataLoadTime { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime DataLoadTime { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
-        /// <summary>
-        /// If the query run was not successful, this field contains information about the failure.
-        /// </summary>
         [JsonProperty("error")]
         public ScheduledQueryRunError Error { get; set; }
 
@@ -45,8 +42,8 @@ namespace Stripe.Sigma
         public File File { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -55,8 +52,8 @@ namespace Stripe.Sigma
         /// Time at which the result expires and is no longer available for download.
         /// </summary>
         [JsonProperty("result_available_until")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime ResultAvailableUntil { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime ResultAvailableUntil { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// SQL for the query.

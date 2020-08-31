@@ -4,11 +4,16 @@ namespace Stripe
 
     public class PaymentIntentPaymentMethodOptionsOptions : INestedOptions
     {
+        /// <summary>
+        /// If this is a <c>alipay</c> PaymentMethod, this sub-hash contains details about the
+        /// Alipay payment method options.
+        /// </summary>
         [JsonProperty("alipay")]
         public PaymentIntentPaymentMethodOptionsAlipayOptions Alipay { get; set; }
 
         /// <summary>
-        /// Configuration for any Bancontact payments attempted on this PaymentIntent.
+        /// If this is a <c>bancontact</c> PaymentMethod, this sub-hash contains details about the
+        /// Bancontact payment method options.
         /// </summary>
         [JsonProperty("bancontact")]
         public PaymentIntentPaymentMethodOptionsBancontactOptions Bancontact { get; set; }

@@ -32,7 +32,7 @@ namespace StripeTests
                     "attr2",
                 },
                 Name = "product name",
-                PackageDimensions = new PackageDimensionOptions
+                PackageDimensions = new ProductPackageDimensionsOptions
                 {
                     Height = 100,
                     Length = 100,
@@ -138,7 +138,6 @@ namespace StripeTests
             Assert.Equal("product", product.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -146,7 +145,6 @@ namespace StripeTests
             Assert.NotNull(product);
             Assert.Equal("product", product.Object);
         }
-#endif
 
         [Fact]
         public void Update()

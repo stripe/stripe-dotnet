@@ -21,7 +21,7 @@ namespace Stripe
 
         /// <summary>
         /// The amount of the transaction. A negative value is a credit for the customer's balance,
-        /// and a positive value is a debit to the customer's balance.
+        /// and a positive value is a debit to the customer's <c>balance</c>.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -30,13 +30,14 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         #region Expandable CreditNote
 
         /// <summary>
-        /// ID of the credit note associated with that customer balance transaction.
+        /// (ID of the CreditNote)
+        /// The ID of the credit note (if any) related to the transaction.
         /// </summary>
         [JsonIgnore]
         public string CreditNoteId
@@ -45,6 +46,12 @@ namespace Stripe
             set => this.InternalCreditNote = SetExpandableFieldId(value, this.InternalCreditNote);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the credit note (if any) related to the transaction.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public CreditNote CreditNote
         {
@@ -58,7 +65,9 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -66,7 +75,8 @@ namespace Stripe
         #region Expandable Customer
 
         /// <summary>
-        /// ID of the customer associated with this customer balance transaction.
+        /// (ID of the Customer)
+        /// The ID of the customer the transaction belongs to.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -75,6 +85,12 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the customer the transaction belongs to.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Customer Customer
         {
@@ -94,9 +110,9 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// The customer's balance after the transaction was applied. A negative value decrease the
-        /// amount due on the customer's next invoice. A positive value increase the amount due on
-        /// the customer's next invoice.
+        /// The customer's <c>balance</c> after the transaction was applied. A negative value
+        /// decreases the amount due on the customer's next invoice. A positive value increases the
+        /// amount due on the customer's next invoice.
         /// </summary>
         [JsonProperty("ending_balance")]
         public long EndingBalance { get; set; }
@@ -104,7 +120,8 @@ namespace Stripe
         #region Expandable Invoice
 
         /// <summary>
-        /// ID of the invoice this charge is for if one exists.
+        /// (ID of the Invoice)
+        /// The ID of the invoice (if any) related to the transaction.
         /// </summary>
         [JsonIgnore]
         public string InvoiceId
@@ -113,6 +130,12 @@ namespace Stripe
             set => this.InternalInvoice = SetExpandableFieldId(value, this.InternalInvoice);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the invoice (if any) related to the transaction.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Invoice Invoice
         {
@@ -126,23 +149,29 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Transaction type: <c>adjustment</c>, <c> applied_to_invoice</c>, <c> credit_note</c>,
-        /// <c> initial</c>, <c> invoice_too_large</c>, <c> invoice_too_small</c>, or
-        /// <c>unspent_receiver_credit</c>.
+        /// Transaction type: <c>adjustment</c>, <c>applied_to_invoice</c>, <c>credit_note</c>,
+        /// <c>initial</c>, <c>invoice_too_large</c>, <c>invoice_too_small</c>,
+        /// <c>unspent_receiver_credit</c>, or <c>unapplied_from_invoice</c>. See the <a
+        /// href="https://stripe.com/docs/billing/customer/balance#types">Customer Balance page</a>
+        /// to learn more about transaction types.
+        /// One of: <c>adjustment</c>, <c>applied_to_invoice</c>, <c>credit_note</c>,
+        /// <c>initial</c>, <c>invoice_too_large</c>, <c>invoice_too_small</c>, <c>migration</c>,
+        /// <c>unapplied_from_invoice</c>, or <c>unspent_receiver_credit</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

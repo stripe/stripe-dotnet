@@ -8,7 +8,8 @@ namespace Stripe.Radar
         ICreatable<ValueList, ValueListCreateOptions>,
         IDeletable<ValueList, ValueListDeleteOptions>,
         IListable<ValueList, ValueListListOptions>,
-        IRetrievable<ValueList, ValueListGetOptions>
+        IRetrievable<ValueList, ValueListGetOptions>,
+        IUpdatable<ValueList, ValueListUpdateOptions>
     {
         public ValueListService()
             : base(null)
@@ -32,24 +33,24 @@ namespace Stripe.Radar
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual ValueList Delete(string valueListId, ValueListDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual ValueList Delete(string id, ValueListDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(valueListId, options, requestOptions);
+            return this.DeleteEntity(id, options, requestOptions);
         }
 
-        public virtual Task<ValueList> DeleteAsync(string valueListId, ValueListDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ValueList> DeleteAsync(string id, ValueListDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(valueListId, options, requestOptions, cancellationToken);
+            return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public virtual ValueList Get(string valueListId, ValueListGetOptions options = null, RequestOptions requestOptions = null)
+        public virtual ValueList Get(string id, ValueListGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(valueListId, options, requestOptions);
+            return this.GetEntity(id, options, requestOptions);
         }
 
-        public virtual Task<ValueList> GetAsync(string valueListId, ValueListGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ValueList> GetAsync(string id, ValueListGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(valueListId, options, requestOptions, cancellationToken);
+            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ValueList> List(ValueListListOptions options = null, RequestOptions requestOptions = null)
@@ -67,21 +68,19 @@ namespace Stripe.Radar
             return this.ListEntitiesAutoPaging(options, requestOptions);
         }
 
-#if !NET45
         public virtual IAsyncEnumerable<ValueList> ListAutoPagingAsync(ValueListListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
-#endif
 
-        public virtual ValueList Update(string valueListId, ValueListUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual ValueList Update(string id, ValueListUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(valueListId, options, requestOptions);
+            return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<ValueList> UpdateAsync(string valueListId, ValueListUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ValueList> UpdateAsync(string id, ValueListUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(valueListId, options, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

@@ -7,13 +7,18 @@ namespace Stripe.Checkout
     {
         /// <summary>
         /// The amount of the application fee (if any) that will be applied to the payment and
-        /// transferred to the application owner's Stripe account.
+        /// transferred to the application owner's Stripe account. To use an application fee, the
+        /// request must be made on behalf of another account, using the <c>Stripe-Account</c>
+        /// header or an OAuth key. For more information, see the PaymentIntents <a
+        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
-        /// Capture method of this PaymentIntent, one of <c>automatic</c> or <c>manual</c>.
+        /// Controls when the funds will be captured from the customer's account.
+        /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("capture_method")]
         public string CaptureMethod { get; set; }
@@ -25,37 +30,42 @@ namespace Stripe.Checkout
         public string Description { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The Stripe account ID for which these funds are intended.
+        /// The Stripe account ID for which these funds are intended. For details, see the
+        /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
+        /// for connected accounts</a>.
         /// </summary>
         [JsonProperty("on_behalf_of")]
         public string OnBehalfOf { get; set; }
 
         /// <summary>
-        /// Email address that the receipt for the resulting payment will be sent to.
+        /// Email address that the receipt for the resulting payment will be sent to. If
+        /// <c>receipt_email</c> is specified for a payment in live mode, a receipt will be sent
+        /// regardless of your <a href="https://dashboard.stripe.com/account/emails">email
+        /// settings</a>.
         /// </summary>
         [JsonProperty("receipt_email")]
         public string ReceiptEmail { get; set; }
 
         /// <summary>
-        /// Indicates that you intend to make future payments with this PaymentIntent's payment
-        /// method.
-        /// If present, the payment method used with this PaymentIntent can be attached to a
-        /// Customer, even after the transaction completes.
-        /// Use <c>on_session</c> if you intend to only reuse the payment method when your customer
-        /// is present in your checkout flow. Use <c>off_session</c> if your customer may or may
-        /// not be in your checkout flow.
-        /// Stripe uses this to dynamically optimize your payment flow and comply with regional
-        /// legislation and network rules. For example, if your customer is impacted by SCA, using
-        /// <c>off_session</c> will ensure that they are authenticated while processing this
-        /// PaymentIntent. You will then be able to make later off-session payments for this
-        /// customer.
+        /// Indicates that you intend to make future payments with the payment method collected by
+        /// this Checkout Session.
+        ///
+        /// When setting this to <c>off_session</c>, Checkout will show a notice to the customer
+        /// that their payment details will be saved and used for future payments.
+        ///
+        /// When processing card payments, Checkout also uses <c>setup_future_usage</c> to
+        /// dynamically optimize your payment flow and comply with regional legislation and network
+        /// rules, such as SCA.
+        /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
@@ -75,7 +85,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Provides information about the charge that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that's set
+        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>
@@ -83,10 +93,13 @@ namespace Stripe.Checkout
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
-        /// The parameters used to automatically create a Transfer when the payment succeeds.
+        /// The parameters used to automatically create a Transfer when the payment succeeds. For
+        /// more information, see the PaymentIntents <a
+        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
-        public SessionPaymentIntentTransferDataOptions TransferData { get; set; }
+        public SessionPaymentIntentDataTransferDataOptions TransferData { get; set; }
 
         /// <summary>
         /// A string that identifies the resulting payment as part of a group. See the

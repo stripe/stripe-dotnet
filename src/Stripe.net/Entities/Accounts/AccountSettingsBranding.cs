@@ -8,9 +8,9 @@ namespace Stripe
         #region Expandable Icon
 
         /// <summary>
-        /// (ID of a <see cref="File"/>) An icon for the account. Must be square and at least 128px
-        /// x 128px.
-        /// <para>Expandable.</para>
+        /// (ID of the File)
+        /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>) An icon
+        /// for the account. Must be square and at least 128px x 128px.
         /// </summary>
         [JsonIgnore]
         public string IconId
@@ -20,7 +20,11 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) An icon for the account. Must be square and at least 128px x 128px.
+        /// (Expanded)
+        /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>) An icon
+        /// for the account. Must be square and at least 128px x 128px.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public File Icon
@@ -37,10 +41,10 @@ namespace Stripe
         #region Expandable Logo
 
         /// <summary>
-        /// (ID of a <see cref="File"/>) A logo for the account that will be used in Checkout
-        /// instead of the icon and without the account's name next to it if provided. Must be at
-        /// least 128px x 128px.
-        /// <para>Expandable.</para>
+        /// (ID of the File)
+        /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>) A logo
+        /// for the account that will be used in Checkout instead of the icon and without the
+        /// account's name next to it if provided. Must be at least 128px x 128px.
         /// </summary>
         [JsonIgnore]
         public string LogoId
@@ -50,8 +54,12 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded)A logo for the account that will be used in Checkout instead of the icon and
-        /// without the account's name next to it if provided. Must be at least 128px x 128px.
+        /// (Expanded)
+        /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>) A logo
+        /// for the account that will be used in Checkout instead of the icon and without the
+        /// account's name next to it if provided. Must be at least 128px x 128px.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public File Logo

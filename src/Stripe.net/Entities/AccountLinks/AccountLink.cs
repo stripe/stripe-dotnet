@@ -16,15 +16,15 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The timestamp at which this account link will expire.
         /// </summary>
         [JsonProperty("expires_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime ExpiresAt { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The URL for the account link.

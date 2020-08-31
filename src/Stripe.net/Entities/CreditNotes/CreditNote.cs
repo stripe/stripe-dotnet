@@ -20,7 +20,8 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Credit note amount.
+        /// The integer amount in <strong>%s</strong> representing the total amount of the credit
+        /// note, including tax.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -29,11 +30,13 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -41,7 +44,8 @@ namespace Stripe
         #region Expandable Customer
 
         /// <summary>
-        /// ID of the customer associated with that credit note.
+        /// (ID of the Customer)
+        /// ID of the customer.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -50,6 +54,12 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the customer.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Customer Customer
         {
@@ -65,7 +75,8 @@ namespace Stripe
         #region Expandable CustomerBalanceTransaction
 
         /// <summary>
-        /// ID of the customer balance transaction related to this credit note.
+        /// (ID of the CustomerBalanceTransaction)
+        /// Customer balance transaction related to this credit note.
         /// </summary>
         [JsonIgnore]
         public string CustomerBalanceTransactionId
@@ -74,6 +85,12 @@ namespace Stripe
             set => this.InternalCustomerBalanceTransaction = SetExpandableFieldId(value, this.InternalCustomerBalanceTransaction);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// Customer balance transaction related to this credit note.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public CustomerBalanceTransaction CustomerBalanceTransaction
         {
@@ -87,7 +104,8 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The integer amount representing the amount of the discount that was credited.
+        /// The integer amount in <strong>%s</strong> representing the total amount of discount that
+        /// was credited.
         /// </summary>
         [JsonProperty("discount_amount")]
         public long DiscountAmount { get; set; }
@@ -101,7 +119,8 @@ namespace Stripe
         #region Expandable Invoice
 
         /// <summary>
-        /// ID of the invoice associated with that credit note.
+        /// (ID of the Invoice)
+        /// ID of the invoice.
         /// </summary>
         [JsonIgnore]
         public string InvoiceId
@@ -110,6 +129,12 @@ namespace Stripe
             set => this.InternalInvoice = SetExpandableFieldId(value, this.InternalInvoice);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the invoice.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Invoice Invoice
         {
@@ -129,27 +154,29 @@ namespace Stripe
         public StripeList<CreditNoteLineItem> Lines { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c>
-        /// if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Credit note memo.
+        /// Customer-facing text that appears on the credit note PDF.
         /// </summary>
         [JsonProperty("memo")]
         public string Memo { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to an order object. It can be useful for
-        /// storing additional information about the order in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Credit note number.
+        /// A unique number that identifies this particular credit note and appears on the PDF of
+        /// the credit note and its associated invoice.
         /// </summary>
         [JsonProperty("number")]
         public string Number { get; set; }
@@ -169,6 +196,8 @@ namespace Stripe
         /// <summary>
         /// Reason for issuing this credit note, one of <c>duplicate</c>, <c>fraudulent</c>,
         /// <c>order_change</c>, or <c>product_unsatisfactory</c>.
+        /// One of: <c>duplicate</c>, <c>fraudulent</c>, <c>order_change</c>, or
+        /// <c>product_unsatisfactory</c>.
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; set; }
@@ -176,7 +205,8 @@ namespace Stripe
         #region Expandable Refund
 
         /// <summary>
-        /// ID of the refund associated with that credit note.
+        /// (ID of the Refund)
+        /// Refund related to this credit note.
         /// </summary>
         [JsonIgnore]
         public string RefundId
@@ -185,6 +215,12 @@ namespace Stripe
             set => this.InternalRefund = SetExpandableFieldId(value, this.InternalRefund);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// Refund related to this credit note.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Refund Refund
         {
@@ -198,14 +234,17 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Status of this credit note, one of <c>issued</c> or <c>void</c>.
+        /// Status of this credit note, one of <c>issued</c> or <c>void</c>. Learn more about <a
+        /// href="https://stripe.com/docs/billing/invoices/credit-notes#voiding">voiding credit
+        /// notes</a>.
+        /// One of: <c>issued</c>, or <c>void</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// The integer amount in **%s** representing the amount of the credit note, excluding tax
-        /// and discount.
+        /// The integer amount in <strong>%s</strong> representing the amount of the credit note,
+        /// excluding tax and invoice level discounts.
         /// </summary>
         [JsonProperty("subtotal")]
         public long Subtotal { get; set; }
@@ -217,14 +256,17 @@ namespace Stripe
         public List<CreditNoteTaxAmount> TaxAmounts { get; set; }
 
         /// <summary>
-        /// The integer amount in **%s** representing the total amount of the credit note, including
-        /// tax and discount.
+        /// The integer amount in <strong>%s</strong> representing the total amount of the credit
+        /// note, including tax and all discount.
         /// </summary>
         [JsonProperty("total")]
         public long Total { get; set; }
 
         /// <summary>
-        /// Type of this credit note, one of <c>post_payment</c> or <c>pre_payment</c>.
+        /// Type of this credit note, one of <c>pre_payment</c> or <c>post_payment</c>. A
+        /// <c>pre_payment</c> credit note means it was issued when the invoice was open. A
+        /// <c>post_payment</c> credit note means it was issued when the invoice was paid.
+        /// One of: <c>post_payment</c>, or <c>pre_payment</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -233,7 +275,7 @@ namespace Stripe
         /// The time that the credit note was voided.
         /// </summary>
         [JsonProperty("voided_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? VoidedAt { get; set; }
     }
 }

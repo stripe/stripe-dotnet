@@ -7,7 +7,7 @@ namespace Stripe
     public class Capability : StripeEntity<Capability>, IHasId, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the object.
+        /// The identifier for the capability.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -21,7 +21,8 @@ namespace Stripe
         #region Expandable Account
 
         /// <summary>
-        /// ID of the account the capability is associated with.
+        /// (ID of the Account)
+        /// The account for which the capability enables functionality.
         /// </summary>
         [JsonIgnore]
         public string AccountId
@@ -30,6 +31,12 @@ namespace Stripe
             set => this.InternalAccount = SetExpandableFieldId(value, this.InternalAccount);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The account for which the capability enables functionality.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Account Account
         {
@@ -52,18 +59,16 @@ namespace Stripe
         /// Time at which the capability was requested. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("requested_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? RequestedAt { get; set; }
 
-        /// <summary>
-        /// Information about the requirements for this capability, including what information
-        /// needs to be collected, and by when.
-        /// </summary>
         [JsonProperty("requirements")]
         public CapabilityRequirements Requirements { get; set; }
 
         /// <summary>
         /// The status of the capability. Can be <c>active</c>, <c>inactive</c>, <c>pending</c>, or
+        /// <c>unrequested</c>.
+        /// One of: <c>active</c>, <c>disabled</c>, <c>inactive</c>, <c>pending</c>, or
         /// <c>unrequested</c>.
         /// </summary>
         [JsonProperty("status")]

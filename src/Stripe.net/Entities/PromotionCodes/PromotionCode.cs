@@ -48,8 +48,8 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         #region Expandable Customer
 
@@ -86,7 +86,7 @@ namespace Stripe
         /// Date at which the promotion code can no longer be redeemed.
         /// </summary>
         [JsonProperty("expires_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>

@@ -119,7 +119,6 @@ namespace StripeTests
             Assert.Equal("tax_id", person.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -127,6 +126,5 @@ namespace StripeTests
             Assert.NotNull(person);
             Assert.Equal("tax_id", person.Object);
         }
-#endif
     }
 }

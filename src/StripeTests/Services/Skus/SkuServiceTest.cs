@@ -32,12 +32,12 @@ namespace StripeTests
                     { "attr2", "value2" },
                 },
                 Currency = "usd",
-                Inventory = new InventoryOptions
+                Inventory = new SkuInventoryOptions
                 {
                     Quantity = 100,
                     Type = "finite",
                 },
-                PackageDimensions = new PackageDimensionOptions
+                PackageDimensions = new SkuPackageDimensionsOptions
                 {
                     Height = 100,
                     Length = 100,
@@ -144,7 +144,6 @@ namespace StripeTests
             Assert.Equal("sku", sku.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -152,7 +151,6 @@ namespace StripeTests
             Assert.NotNull(sku);
             Assert.Equal("sku", sku.Object);
         }
-#endif
 
         [Fact]
         public void Update()

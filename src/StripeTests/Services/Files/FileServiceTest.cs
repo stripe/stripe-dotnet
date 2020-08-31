@@ -28,7 +28,7 @@ namespace StripeTests
             this.createOptions = new FileCreateOptions
             {
                 File = typeof(FileServiceTest).GetTypeInfo().Assembly.GetManifestResourceStream(FileName),
-                FileLinkData = new FileLinkDataOptions
+                FileLinkData = new FileFileLinkDataOptions
                 {
                     Create = true,
                     Metadata = new Dictionary<string, string>
@@ -111,7 +111,6 @@ namespace StripeTests
             Assert.Equal("file", file.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -119,6 +118,5 @@ namespace StripeTests
             Assert.NotNull(file);
             Assert.Equal("file", file.Object);
         }
-#endif
     }
 }

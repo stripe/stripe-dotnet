@@ -7,14 +7,20 @@ namespace Stripe
 
     public class Topup : StripeEntity<Topup>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
+        /// <summary>
+        /// Unique identifier for the object.
+        /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// String representing the object's type. Objects of the same type share the same value.
+        /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
         /// <summary>
-        /// A positive integer in the smallest currency unit (e.g., 100 cents to top up $1.00 or 100 to topup ¥100, a 0-decimal currency) representing how much to top up. The minimum amount is $0.50 US or equivalent in Top-up currency.
+        /// Amount transferred.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -22,7 +28,9 @@ namespace Stripe
         #region Expandable BalanceTransaction
 
         /// <summary>
-        /// ID of the balance transaction that describes the impact of this Top-up on your account balance (not including refunds or disputes).
+        /// (ID of the BalanceTransaction)
+        /// ID of the balance transaction that describes the impact of this top-up on your account
+        /// balance. May not be specified depending on status of top-up.
         /// </summary>
         [JsonIgnore]
         public string BalanceTransactionId
@@ -31,6 +39,13 @@ namespace Stripe
             set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the balance transaction that describes the impact of this top-up on your account
+        /// balance. May not be specified depending on status of top-up.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public BalanceTransaction BalanceTransaction
         {
@@ -43,52 +58,79 @@ namespace Stripe
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
+        /// <summary>
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Three-letter ISO currency code representing the currency in which the Top-up was made.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        /// <summary>
+        /// An arbitrary string attached to the object. Often useful for displaying to users.
+        /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        /// <summary>
+        /// Date the funds are expected to arrive in your Stripe account for payouts. This factors
+        /// in delays like weekends or bank holidays. May not be specified depending on status of
+        /// top-up.
+        /// </summary>
         [JsonProperty("expected_availability_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpectedAvailabilityDate { get; set; }
 
         /// <summary>
-        /// Error code explaining reason for topup failure if available (see the errors section for a list of codes).
+        /// Error code explaining reason for top-up failure if available (see <a
+        /// href="https://stripe.com/docs/api#errors">the errors section</a> for a list of codes).
         /// </summary>
         [JsonProperty("failure_code")]
         public string FailureCode { get; set; }
 
         /// <summary>
-        /// Message to user further explaining reason for topup failure if available.
+        /// Message to user further explaining reason for top-up failure if available.
         /// </summary>
         [JsonProperty("failure_message")]
         public string FailureMessage { get; set; }
 
+        /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to a topup object. It can be useful for storing additional information about the topup in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// For most Stripe users, the source of every Top-up is a bank account. This hash is then the source object describing that bank account.
+        /// <c>Source</c> objects allow you to accept a variety of payment methods. They represent a
+        /// customer's payment instrument, and can be used with the Stripe API just like a
+        /// <c>Card</c> object: once chargeable, they can be charged, or can be attached to
+        /// customers.
+        ///
+        /// Related guides: <a href="https://stripe.com/docs/sources">Sources API</a> and <a
+        /// href="https://stripe.com/docs/sources/customers">Sources &amp; Customers</a>.
         /// </summary>
         [JsonProperty("source")]
         public Source Source { get; set; }
 
         /// <summary>
-        /// Extra information about a topup. This will appear on your customer's credit card statement.
+        /// Extra information about a top-up. This will appear on your source's bank statement. It
+        /// must contain at least one letter.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
@@ -96,6 +138,8 @@ namespace Stripe
         /// <summary>
         /// The status of the top-up is either <c>canceled</c>, <c>failed</c>, <c>pending</c>,
         /// <c>reversed</c>, or <c>succeeded</c>.
+        /// One of: <c>canceled</c>, <c>failed</c>, <c>pending</c>, <c>reversed</c>, or
+        /// <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

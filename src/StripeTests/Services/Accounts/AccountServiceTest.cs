@@ -75,16 +75,12 @@ namespace StripeTests
                     },
                     CardPayments = new AccountSettingsCardPaymentsOptions
                     {
-                        DeclineOn = new AccountSettingsDeclineOnOptions
+                        DeclineOn = new AccountSettingsCardPaymentsDeclineOnOptions
                         {
                             AvsFailure = true,
                             CvcFailure = true,
                         },
                         StatementDescriptorPrefix = "STR",
-                    },
-                    Dashboard = new AccountSettingsDashboardOptions
-                    {
-                        DisplayName = "dashboard_name",
                     },
                     Payments = new AccountSettingsPaymentsOptions
                     {
@@ -227,7 +223,6 @@ namespace StripeTests
             Assert.Equal("account", account.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -235,7 +230,6 @@ namespace StripeTests
             Assert.NotNull(account);
             Assert.Equal("account", account.Object);
         }
-#endif
 
         [Fact]
         public void Reject()

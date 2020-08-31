@@ -1,4 +1,4 @@
-namespace Stripe
+namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -8,9 +8,10 @@ namespace Stripe
         #region Expandable Back
 
         /// <summary>
-        /// (ID of a <see cref="File"/>) The back of an ID returned by a file upload with a
-        /// <c>purpose</c> value of <c>identity_document</c>.
-        /// <para>Expandable.</para>
+        /// (ID of the File)
+        /// The back of a document returned by a <a
+        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
         public string BackId
@@ -20,8 +21,12 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) The back of an ID returned by a file upload with a <c>purpose</c>
+        /// (Expanded)
+        /// The back of a document returned by a <a
+        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
         /// value of <c>identity_document</c>.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public File Back
@@ -38,9 +43,10 @@ namespace Stripe
         #region Expandable Front
 
         /// <summary>
-        /// (ID of a <see cref="File"/>) The front of an ID returned by a file upload with a
-        /// <c>purpose</c> value of <c>identity_document</c>.
-        /// <para>Expandable.</para>
+        /// (ID of the File)
+        /// The front of a document returned by a <a
+        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
+        /// value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
         public string FrontId
@@ -50,8 +56,12 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) The front of an ID returned by a file upload with a <c>purpose</c>
+        /// (Expanded)
+        /// The front of a document returned by a <a
+        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
         /// value of <c>identity_document</c>.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public File Front

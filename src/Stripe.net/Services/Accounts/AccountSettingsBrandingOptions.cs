@@ -5,14 +5,16 @@ namespace Stripe
     public class AccountSettingsBrandingOptions : INestedOptions
     {
         /// <summary>
-        /// ID of the file used as an icon for the account.
+        /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>) An icon
+        /// for the account. Must be square and at least 128px x 128px.
         /// </summary>
         [JsonProperty("icon")]
         public string Icon { get; set; }
 
         /// <summary>
-        /// ID of the file used as a logo for the account in Checkout instead of the icon and
-        /// without the account's name next to it if provided.
+        /// (ID of a <a href="https://stripe.com/docs/guides/file-upload">file upload</a>) A logo
+        /// for the account that will be used in Checkout instead of the icon and without the
+        /// account's name next to it if provided. Must be at least 128px x 128px.
         /// </summary>
         [JsonProperty("logo")]
         public string Logo { get; set; }

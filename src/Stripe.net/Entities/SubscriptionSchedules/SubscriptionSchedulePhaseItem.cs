@@ -7,17 +7,17 @@ namespace Stripe
     public class SubscriptionSchedulePhaseItem : StripeEntity<SubscriptionSchedulePhaseItem>
     {
         /// <summary>
-        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
-        /// new billing period.
+        /// Define thresholds at which an invoice will be sent, and the related subscription
+        /// advanced to a new billing period.
         /// </summary>
         [JsonProperty("billing_thresholds")]
-        public SubscriptionItemBillingThresholds BillingThresholds { get; set; }
+        public SubscriptionSchedulePhaseItemBillingThresholds BillingThresholds { get; set; }
 
         #region Expandable Plan
 
         /// <summary>
-        /// ID of the <see cref="Plan"/> included in the phase for this subscription schedule.
-        /// <para>Expandable.</para>
+        /// (ID of the Plan)
+        /// ID of the plan to which the customer should be subscribed.
         /// </summary>
         [JsonIgnore]
         public string PlanId
@@ -27,7 +27,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) The <see cref="Plan"/> included in the phase for this subscription schedule.
+        /// (Expanded)
+        /// ID of the plan to which the customer should be subscribed.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Plan Plan
@@ -44,8 +47,8 @@ namespace Stripe
         #region Expandable Price
 
         /// <summary>
-        /// ID of the <see cref="Price"/> included in the phase for this subscription schedule.
-        /// <para>Expandable.</para>
+        /// (ID of the Price)
+        /// ID of the price to which the customer should be subscribed.
         /// </summary>
         [JsonIgnore]
         public string PriceId
@@ -55,7 +58,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) The <see cref="Price"/> included in the phase for this subscription schedule.
+        /// (Expanded)
+        /// ID of the price to which the customer should be subscribed.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Price Price
@@ -73,11 +79,11 @@ namespace Stripe
         /// Quantity of the plan to which the customer should be subscribed.
         /// </summary>
         [JsonProperty("quantity")]
-        public long? Quantity { get; set; }
+        public long Quantity { get; set; }
 
         /// <summary>
-        /// The tax rates which apply to this specific item on the phase for a subscription
-        /// schedule.
+        /// The tax rates which apply to this <c>phase_item</c>. When set, the
+        /// <c>default_tax_rates</c> on the phase do not apply to this <c>phase_item</c>.
         /// </summary>
         [JsonProperty("tax_rates")]
         public List<TaxRate> TaxRates { get; set; }

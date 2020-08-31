@@ -5,8 +5,9 @@ namespace Stripe
     public class AccountBusinessProfile : StripeEntity<AccountBusinessProfile>
     {
         /// <summary>
-        /// The merchant category code for the account. MCCs are used to classify businesses based
-        /// on the goods or services they provide.
+        /// <a href="https://stripe.com/docs/connect/setting-mcc">The merchant category code for the
+        /// account</a>. MCCs are used to classify businesses based on the goods or services they
+        /// provide.
         /// </summary>
         [JsonProperty("mcc")]
         public string Mcc { get; set; }

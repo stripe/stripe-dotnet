@@ -26,7 +26,7 @@ namespace Stripe
 
         /// <summary>
         /// Card description. (Only for internal use only and not typically available in standard
-        /// API requests).
+        /// API requests.).
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -45,8 +45,9 @@ namespace Stripe
 
         /// <summary>
         /// Uniquely identifies this particular card number. You can use this attribute to check
-        /// whether two customers who've signed up with you are using the same card number, for
-        /// example.
+        /// whether two customers who’ve signed up with you are using the same card number,for
+        /// example. For payment methods that tokenize card information (Apple Pay, Google Pay), the
+        /// tokenized number might be provided instead of the underlying card number.
         /// </summary>
         [JsonProperty("fingerprint")]
         public string Fingerprint { get; set; }
@@ -60,20 +61,23 @@ namespace Stripe
 
         /// <summary>
         /// Issuer identification number of the card. (Only for internal use only and not typically
-        /// available in standard API requests).
+        /// available in standard API requests.).
         /// </summary>
         [JsonProperty("iin")]
         public string Iin { get; set; }
 
         /// <summary>
         /// Installment details for this payment (Mexico only).
+        ///
+        /// For more information, see the <a
+        /// href="https://stripe.com/docs/payments/installments">installments integration guide</a>.
         /// </summary>
         [JsonProperty("installments")]
         public ChargePaymentMethodDetailsCardInstallments Installments { get; set; }
 
         /// <summary>
         /// Issuer bank name of the card. (Only for internal use only and not typically available in
-        /// standard API requests).
+        /// standard API requests.).
         /// </summary>
         [JsonProperty("issuer")]
         public string Issuer { get; set; }
@@ -91,9 +95,9 @@ namespace Stripe
         public bool? Moto { get; set; }
 
         /// <summary>
-        /// Identifies which network this charge was processed on. Can be<c>amex</c>, <c>diners</c>,
-        /// <c>discover</c>, <c>interac</c>, <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>,
-        /// <c>visa</c>, or <c>unknown</c>.
+        /// Identifies which network this charge was processed on. Can be <c>amex</c>,
+        /// <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>, <c>interac</c>, <c>jcb</c>,
+        /// <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("network")]
         public string Network { get; set; }

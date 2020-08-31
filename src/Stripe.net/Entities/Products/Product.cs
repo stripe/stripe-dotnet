@@ -7,39 +7,48 @@ namespace Stripe
 
     public class Product : StripeEntity<Product>, IHasId, IHasMetadata, IHasObject
     {
+        /// <summary>
+        /// Unique identifier for the object.
+        /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// String representing the object's type. Objects of the same type share the same value.
+        /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
         /// <summary>
-        /// Whether or not the product is currently available for purchase.
+        /// Whether the product is currently available for purchase.
         /// </summary>
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         /// <summary>
-        /// A list of up to 5 attributes that each SKU can provide values for (e.g. ["color", "size"]).
+        /// A list of up to 5 attributes that each SKU can provide values for (e.g., <c>["color",
+        /// "size"]</c>).
         /// </summary>
         [JsonProperty("attributes")]
         public List<string> Attributes { get; set; }
 
         /// <summary>
         /// A short one-line description of the product, meant to be displayable to the customer.
+        /// Only applicable to products of <c>type=good</c>.
         /// </summary>
         [JsonProperty("caption")]
         public string Caption { get; set; }
 
         /// <summary>
-        /// Time at which the object was created.
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// An array of connect application identifiers that cannot purchase this product.
+        /// An array of connect application identifiers that cannot purchase this product. Only
+        /// applicable to products of <c>type=good</c>.
         /// </summary>
         [JsonProperty("deactivate_on")]
         public List<string> DeactivateOn { get; set; }
@@ -51,71 +60,90 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// The product's description, meant to be displayable to the customer.
+        /// The product's description, meant to be displayable to the customer. Use this field to
+        /// optionally store a long form explanation of the product being sold for your own
+        /// rendering purposes.
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
 
         /// <summary>
-        /// A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
+        /// A list of up to 8 URLs of images for this product, meant to be displayable to the
+        /// customer.
         /// </summary>
         [JsonProperty("images")]
         public List<string> Images { get; set; }
 
         /// <summary>
-        /// Flag indicating whether the object exists in live mode or test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of key/value pairs that you can attach to an object. It can be useful for storing additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The product's name, meant to be displayable to the customer.
+        /// The product's name, meant to be displayable to the customer. Whenever this product is
+        /// sold via a subscription, name will show up on associated invoice line item descriptions.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// The dimensions of this product for shipping purposes. A SKU associated with this product can override this value by having its own package_dimensions.
+        /// The dimensions of this product for shipping purposes. A SKU associated with this product
+        /// can override this value by having its own <c>package_dimensions</c>. Only applicable to
+        /// products of <c>type=good</c>.
         /// </summary>
         [JsonProperty("package_dimensions")]
-        public PackageDimensions PackageDimensions { get; set; }
+        public ProductPackageDimensions PackageDimensions { get; set; }
 
         /// <summary>
-        /// Whether this product is a shipped good.
+        /// Whether this product is a shipped good. Only applicable to products of <c>type=good</c>.
         /// </summary>
         [JsonProperty("shippable")]
         public bool? Shippable { get; set; }
 
         /// <summary>
-        /// What appears on a customer's credit card statement.
+        /// Extra information about a product which will appear on your customer's credit card
+        /// statement. In the case that multiple products are billed at once, the first statement
+        /// descriptor will be used.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// The type of the Product. Either 'good' or 'service'.
+        /// The type of the product. The product is either of type <c>good</c>, which is eligible
+        /// for use with Orders and SKUs, or <c>service</c>, which is eligible for use with
+        /// Subscriptions and Plans.
+        /// One of: <c>good</c>, or <c>service</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// This represents a unit of this product, such as a seat or API call, on customers' receipts and invoices.
+        /// A label that represents units of this product in Stripe and on customers’ receipts and
+        /// invoices. When set, this will be included in associated invoice line item descriptions.
         /// </summary>
         [JsonProperty("unit_label")]
         public string UnitLabel { get; set; }
 
+        /// <summary>
+        /// Time at which the object was last updated. Measured in seconds since the Unix epoch.
+        /// </summary>
         [JsonProperty("updated")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Updated { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// A URL of a publicly-accessible webpage for this product.
+        /// A URL of a publicly-accessible webpage for this product. Only applicable to products of
+        /// <c>type=good</c>.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }

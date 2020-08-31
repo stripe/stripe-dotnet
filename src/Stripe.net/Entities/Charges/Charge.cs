@@ -20,19 +20,30 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// A positive integer in the smallest currency unit (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a 0-decimal currency) representing how much to charge. The minimum amount is $0.50 US or equivalent in charge currency.
+        /// Amount intended to be collected by this payment. A positive integer representing how
+        /// much to charge in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
+        /// currency unit</a> (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal
+        /// currency). The minimum amount is $0.50 US or <a
+        /// href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">equivalent
+        /// in charge currency</a>. The amount value supports up to eight digits (e.g., a value of
+        /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         /// <summary>
-        /// Amount in cents refunded (can be less than the amount attribute on the charge if a partial refund was issued).
+        /// Amount in %s refunded (can be less than the amount attribute on the charge if a partial
+        /// refund was issued).
         /// </summary>
         [JsonProperty("amount_refunded")]
         public long AmountRefunded { get; set; }
 
         #region Expandable Application
 
+        /// <summary>
+        /// (ID of the Application)
+        /// ID of the Connect application that created the charge.
+        /// </summary>
         [JsonIgnore]
         public string ApplicationId
         {
@@ -40,6 +51,12 @@ namespace Stripe
             set => this.InternalApplication = SetExpandableFieldId(value, this.InternalApplication);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the Connect application that created the charge.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Application Application
         {
@@ -54,6 +71,12 @@ namespace Stripe
 
         #region Expandable ApplicationFee
 
+        /// <summary>
+        /// (ID of the ApplicationFee)
+        /// The application fee (if any) for the charge. <a
+        /// href="https://stripe.com/docs/connect/direct-charges#collecting-fees">See the Connect
+        /// documentation</a> for details.
+        /// </summary>
         [JsonIgnore]
         public string ApplicationFeeId
         {
@@ -62,7 +85,12 @@ namespace Stripe
         }
 
         /// <summary>
-        /// The application fee (if any) for the charge. See the Connect documentation for details.
+        /// (Expanded)
+        /// The application fee (if any) for the charge. <a
+        /// href="https://stripe.com/docs/connect/direct-charges#collecting-fees">See the Connect
+        /// documentation</a> for details.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public ApplicationFee ApplicationFee
@@ -77,14 +105,15 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The amount of the application application fee (if any) for the charge. See the Connect documentation for details.
+        /// The amount of the application fee (if any) for the charge. <a
+        /// href="https://stripe.com/docs/connect/direct-charges#collecting-fees">See the Connect
+        /// documentation</a> for details.
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
-        /// Authorization code on the charge. This property is not returned as part of standard API
-        /// requests.
+        /// Authorization code on the charge.
         /// </summary>
         [JsonProperty("authorization_code")]
         public string AuthorizationCode { get; set; }
@@ -92,7 +121,9 @@ namespace Stripe
         #region Expandable BalanceTransaction
 
         /// <summary>
-        /// ID of the balance transaction that describes the impact of this charge on your account balance (not including refunds or disputes).
+        /// (ID of the BalanceTransaction)
+        /// ID of the balance transaction that describes the impact of this charge on your account
+        /// balance (not including refunds or disputes).
         /// </summary>
         [JsonIgnore]
         public string BalanceTransactionId
@@ -101,6 +132,13 @@ namespace Stripe
             set => this.InternalBalanceTransaction = SetExpandableFieldId(value, this.InternalBalanceTransaction);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the balance transaction that describes the impact of this charge on your account
+        /// balance (not including refunds or disputes).
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public BalanceTransaction BalanceTransaction
         {
@@ -113,11 +151,8 @@ namespace Stripe
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
-        /// <summary>
-        /// Billing details of the payment method used in the payment.
-        /// </summary>
         [JsonProperty("billing_details")]
-        public BillingDetails BillingDetails { get; set; }
+        public ChargeBillingDetails BillingDetails { get; set; }
 
         /// <summary>
         /// The full statement descriptor that is passed to card networks, and that is displayed on
@@ -128,17 +163,23 @@ namespace Stripe
         public string CalculatedStatementDescriptor { get; set; }
 
         /// <summary>
-        /// If the charge was created without capturing, this boolean represents whether or not it is still uncaptured or has since been captured.
+        /// If the charge was created without capturing, this Boolean represents whether it is still
+        /// uncaptured or has since been captured.
         /// </summary>
         [JsonProperty("captured")]
         public bool Captured { get; set; }
 
+        /// <summary>
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Three-letter ISO currency code representing the currency in which the charge was made.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -146,6 +187,7 @@ namespace Stripe
         #region Expandable Customer
 
         /// <summary>
+        /// (ID of the Customer)
         /// ID of the customer this charge is for if one exists.
         /// </summary>
         [JsonIgnore]
@@ -155,6 +197,12 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the customer this charge is for if one exists.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Customer Customer
         {
@@ -167,11 +215,19 @@ namespace Stripe
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
+        /// <summary>
+        /// An arbitrary string attached to the object. Often useful for displaying to users.
+        /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
 
         #region Expandable Destination
 
+        /// <summary>
+        /// (ID of the Account)
+        /// ID of an existing, connected Stripe account to transfer funds to if <c>transfer_data</c>
+        /// was specified in the charge request.
+        /// </summary>
         [JsonIgnore]
         public string DestinationId
         {
@@ -180,7 +236,11 @@ namespace Stripe
         }
 
         /// <summary>
-        /// The account (if any) the charge was made on behalf of, with an automatic transfer. See the Connect documentation for details.
+        /// (Expanded)
+        /// ID of an existing, connected Stripe account to transfer funds to if <c>transfer_data</c>
+        /// was specified in the charge request.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Account Destination
@@ -196,6 +256,10 @@ namespace Stripe
 
         #region Expandable Dispute
 
+        /// <summary>
+        /// (ID of the Dispute)
+        /// Details about the dispute if the charge has been disputed.
+        /// </summary>
         [JsonIgnore]
         public string DisputeId
         {
@@ -204,7 +268,10 @@ namespace Stripe
         }
 
         /// <summary>
+        /// (Expanded)
         /// Details about the dispute if the charge has been disputed.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Dispute Dispute
@@ -219,13 +286,14 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Whether the charge has been disputed. More than one dispute may exist on this charge.
+        /// Whether the charge has been disputed.
         /// </summary>
         [JsonProperty("disputed")]
         public bool Disputed { get; set; }
 
         /// <summary>
-        /// Error code explaining reason for charge failure if available (see the errors section for a list of codes).
+        /// Error code explaining reason for charge failure if available (see <a
+        /// href="https://stripe.com/docs/api#errors">the errors section</a> for a list of codes).
         /// </summary>
         [JsonProperty("failure_code")]
         public string FailureCode { get; set; }
@@ -245,6 +313,7 @@ namespace Stripe
         #region Expandable Invoice
 
         /// <summary>
+        /// (ID of the Invoice)
         /// ID of the invoice this charge is for if one exists.
         /// </summary>
         [JsonIgnore]
@@ -254,6 +323,12 @@ namespace Stripe
             set => this.InternalInvoice = SetExpandableFieldId(value, this.InternalInvoice);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the invoice this charge is for if one exists.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Invoice Invoice
         {
@@ -266,18 +341,20 @@ namespace Stripe
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
 
-        /// <summary>
-        /// Details about the level III data associated with the Charge.
-        /// This is a gated property and most integrations can not access it.
-        /// </summary>
         [JsonProperty("level3")]
         public ChargeLevel3 Level3 { get; set; }
 
+        /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to a charge object. It can be useful for storing additional information about the charge in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -285,7 +362,10 @@ namespace Stripe
         #region Expandable OnBehalfOf
 
         /// <summary>
-        /// The account (if any) the charge was made on behalf of without triggering an automatic transfer. See the Connect documentation for details.
+        /// (ID of the Account)
+        /// The account (if any) the charge was made on behalf of without triggering an automatic
+        /// transfer. See the <a href="https://stripe.com/docs/connect/charges-transfers">Connect
+        /// documentation</a> for details.
         /// </summary>
         [JsonIgnore]
         public string OnBehalfOfId
@@ -294,6 +374,14 @@ namespace Stripe
             set => this.InternalOnBehalfOf = SetExpandableFieldId(value, this.InternalOnBehalfOf);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The account (if any) the charge was made on behalf of without triggering an automatic
+        /// transfer. See the <a href="https://stripe.com/docs/connect/charges-transfers">Connect
+        /// documentation</a> for details.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Account OnBehalfOf
         {
@@ -309,6 +397,7 @@ namespace Stripe
         #region Expandable Order
 
         /// <summary>
+        /// (ID of the Order)
         /// ID of the order this charge is for if one exists.
         /// </summary>
         [JsonIgnore]
@@ -318,6 +407,12 @@ namespace Stripe
             set => this.InternalOrder = SetExpandableFieldId(value, this.InternalOrder);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the order this charge is for if one exists.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Order Order
         {
@@ -331,13 +426,14 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Details about whether the payment was accepted, and why.
+        /// Details about whether the payment was accepted, and why. See <a
+        /// href="https://stripe.com/docs/declines">understanding declines</a> for details.
         /// </summary>
         [JsonProperty("outcome")]
         public ChargeOutcome Outcome { get; set; }
 
         /// <summary>
-        /// true if the charge succeeded, or was successfully authorized for later capture.
+        /// <c>true</c> if the charge succeeded, or was successfully authorized for later capture.
         /// </summary>
         [JsonProperty("paid")]
         public bool Paid { get; set; }
@@ -345,7 +441,8 @@ namespace Stripe
         #region Expandable PaymentIntent
 
         /// <summary>
-        /// ID of the payment intent this charge is for if one exists.
+        /// (ID of the PaymentIntent)
+        /// ID of the PaymentIntent associated with this charge, if one exists.
         /// </summary>
         [JsonIgnore]
         public string PaymentIntentId
@@ -354,6 +451,12 @@ namespace Stripe
             set => this.InternalPaymentIntent = SetExpandableFieldId(value, this.InternalPaymentIntent);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the PaymentIntent associated with this charge, if one exists.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public PaymentIntent PaymentIntent
         {
@@ -367,13 +470,13 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// ID of the PaymentMethod associated with this charge.
+        /// ID of the payment method used in this charge.
         /// </summary>
         [JsonProperty("payment_method")]
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// Transaction-specific details of the payment method used in the payment.
+        /// Details about the payment method at the time of the transaction.
         /// </summary>
         [JsonProperty("payment_method_details")]
         public ChargePaymentMethodDetails PaymentMethodDetails { get; set; }
@@ -385,7 +488,8 @@ namespace Stripe
         public string ReceiptEmail { get; set; }
 
         /// <summary>
-        /// This is the transaction number that appears on email receipts sent for this charge.
+        /// This is the transaction number that appears on email receipts sent for this charge. This
+        /// attribute will be <c>null</c> until a receipt has been sent.
         /// </summary>
         [JsonProperty("receipt_number")]
         public string ReceiptNumber { get; set; }
@@ -399,8 +503,8 @@ namespace Stripe
         public string ReceiptUrl { get; set; }
 
         /// <summary>
-        /// Whether or not the charge has been fully refunded. If the charge is only partially
-        /// refunded, this attribute will still be false.
+        /// Whether the charge has been fully refunded. If the charge is only partially refunded,
+        /// this attribute will still be false.
         /// </summary>
         [JsonProperty("refunded")]
         public bool Refunded { get; set; }
@@ -414,6 +518,7 @@ namespace Stripe
         #region Expandable Review
 
         /// <summary>
+        /// (ID of the Review)
         /// ID of the review associated with this charge if one exists.
         /// </summary>
         [JsonIgnore]
@@ -423,6 +528,12 @@ namespace Stripe
             set => this.InternalReview = SetExpandableFieldId(value, this.InternalReview);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the review associated with this charge if one exists.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Review Review
         {
@@ -442,7 +553,9 @@ namespace Stripe
         public Shipping Shipping { get; set; }
 
         /// <summary>
-        /// For most Stripe users, the source of every charge is a credit or debit card. This hash is then the card object describing that card.
+        /// This is a legacy field that will be removed in the future. It contains the Source, Card,
+        /// or BankAccount object used for the charge. For details about the payment method used for
+        /// this charge, refer to <c>payment_method</c> or <c>payment_method_details</c> instead.
         /// </summary>
         [JsonProperty("source")]
         [JsonConverter(typeof(StripeObjectConverter))]
@@ -451,7 +564,10 @@ namespace Stripe
         #region Expandable SourceTransfer
 
         /// <summary>
-        /// The transfer ID which created this charge. Only present if the charge came from another Stripe account. See the Connect documentation for details.
+        /// (ID of the Transfer)
+        /// The transfer ID which created this charge. Only present if the charge came from another
+        /// Stripe account. <a href="https://stripe.com/docs/connect/destination-charges">See the
+        /// Connect documentation</a> for details.
         /// </summary>
         [JsonIgnore]
         public string SourceTransferId
@@ -460,6 +576,14 @@ namespace Stripe
             set => this.InternalSourceTransfer = SetExpandableFieldId(value, this.InternalSourceTransfer);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The transfer ID which created this charge. Only present if the charge came from another
+        /// Stripe account. <a href="https://stripe.com/docs/connect/destination-charges">See the
+        /// Connect documentation</a> for details.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Transfer SourceTransfer
         {
@@ -473,14 +597,16 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Extra information about a charge. This will appear on your customer's credit card statement.
+        /// For card charges, use <c>statement_descriptor_suffix</c> instead. Otherwise, you can use
+        /// this value as the complete description of a charge on your customers’ statements. Must
+        /// contain at least one letter, maximum 22 characters.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
         /// Provides information about the charge that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that's set
+        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
         /// on the account to form the complete statement descriptor. Maximum 22 characters for the
         /// concatenated descriptor.
         /// </summary>
@@ -496,7 +622,9 @@ namespace Stripe
         #region Expandable Transfer
 
         /// <summary>
-        /// ID of the transfer to the destination account (only applicable if the charge was created using the destination parameter).
+        /// (ID of the Transfer)
+        /// ID of the transfer to the <c>destination</c> account (only applicable if the charge was
+        /// created using the <c>destination</c> parameter).
         /// </summary>
         [JsonIgnore]
         public string TransferId
@@ -505,6 +633,13 @@ namespace Stripe
             set => this.InternalTransfer = SetExpandableFieldId(value, this.InternalTransfer);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the transfer to the <c>destination</c> account (only applicable if the charge was
+        /// created using the <c>destination</c> parameter).
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Transfer Transfer
         {
@@ -517,11 +652,18 @@ namespace Stripe
         internal ExpandableField<Transfer> InternalTransfer { get; set; }
         #endregion
 
+        /// <summary>
+        /// An optional dictionary including the account to automatically transfer to as part of a
+        /// destination charge. <a href="https://stripe.com/docs/connect/destination-charges">See
+        /// the Connect documentation</a> for details.
+        /// </summary>
         [JsonProperty("transfer_data")]
         public ChargeTransferData TransferData { get; set; }
 
         /// <summary>
-        /// A string that identifies this transaction as part of a group. See the Connect documentation for details.
+        /// A string that identifies this transaction as part of a group. See the <a
+        /// href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect
+        /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }

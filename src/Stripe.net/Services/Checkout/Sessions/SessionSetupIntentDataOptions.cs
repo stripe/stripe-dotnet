@@ -12,14 +12,16 @@ namespace Stripe.Checkout
         public string Description { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The Stripe account ID for which the Session is going to set up a PaymentMethod for.
+        /// The Stripe account for which the setup is intended.
         /// </summary>
         [JsonProperty("on_behalf_of")]
         public string OnBehalfOf { get; set; }

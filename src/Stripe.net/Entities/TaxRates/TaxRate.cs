@@ -20,7 +20,9 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Whether the tax rate is currently available for new subscriptions.
+        /// Defaults to <c>true</c>. When set to <c>false</c>, this tax rate cannot be used with new
+        /// applications or Checkout Sessions, but will still work for subscriptions and invoices
+        /// that already have it set.
         /// </summary>
         [JsonProperty("active")]
         public bool Active { get; set; }
@@ -29,8 +31,8 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// An arbitrary string attached to the tax rate for your internal use only. It will not be
@@ -59,15 +61,16 @@ namespace Stripe
         public string Jurisdiction { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c>
-        /// if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

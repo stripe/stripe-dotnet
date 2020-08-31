@@ -25,9 +25,6 @@ namespace Stripe
         [JsonProperty("account")]
         public string Account { get; set; }
 
-        /// <summary>
-        /// The person's address.
-        /// </summary>
         [JsonProperty("address")]
         public Address Address { get; set; }
 
@@ -47,8 +44,8 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this object is deleted or not.
@@ -56,9 +53,6 @@ namespace Stripe
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Deleted { get; set; }
 
-        /// <summary>
-        /// The person's date of birth.
-        /// </summary>
         [JsonProperty("dob")]
         public Dob Dob { get; set; }
 
@@ -87,13 +81,13 @@ namespace Stripe
         public string FirstNameKanji { get; set; }
 
         /// <summary>
-        /// The person's gender (International regulations require either “male” or “female”).
+        /// The person's gender (International regulations require either "male" or "female").
         /// </summary>
         [JsonProperty("gender")]
         public string Gender { get; set; }
 
         /// <summary>
-        /// Whether the person's id_number was provided.
+        /// Whether the person's <c>id_number</c> was provided.
         /// </summary>
         [JsonProperty("id_number_provided")]
         public bool IdNumberProvided { get; set; }
@@ -123,8 +117,9 @@ namespace Stripe
         public string MaidenName { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -139,13 +134,11 @@ namespace Stripe
         /// Indicates if the person or any of their representatives, family members, or other
         /// closely related persons, declares that they hold or have held an important public job or
         /// function, in any jurisdiction.
+        /// One of: <c>existing</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("political_exposure")]
         public string PoliticalExposure { get; set; }
 
-        /// <summary>
-        /// Describes the person's relationship to the account.
-        /// </summary>
         [JsonProperty("relationship")]
         public PersonRelationship Relationship { get; set; }
 
@@ -157,14 +150,12 @@ namespace Stripe
         public PersonRequirements Requirements { get; set; }
 
         /// <summary>
-        /// Whether the last 4 digits of this person's SSN have been provided.
+        /// Whether the last four digits of the person's Social Security number have been provided
+        /// (U.S. only).
         /// </summary>
         [JsonProperty("ssn_last_4_provided")]
         public bool SsnLast4Provided { get; set; }
 
-        /// <summary>
-        /// The persons's verification status.
-        /// </summary>
         [JsonProperty("verification")]
         public PersonVerification Verification { get; set; }
     }

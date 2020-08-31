@@ -10,9 +10,10 @@ namespace Stripe.Checkout
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal places. This
         /// represents the percentage of the subscription invoice subtotal that will be transferred
-        /// to the application owner's Stripe account. The request must be made with an OAuth key in
-        /// order to set an application fee percentage. For more information, see the application
-        /// fees <see href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</see>.
+        /// to the application owner's Stripe account. To use an application fee percent, the
+        /// request must be made on behalf of another account, using the <c>Stripe-Account</c>
+        /// header or an OAuth key. For more information, see the application fees <a
+        /// href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</a>.
         /// </summary>
         [JsonProperty("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
@@ -25,44 +26,48 @@ namespace Stripe.Checkout
         public string Coupon { get; set; }
 
         /// <summary>
-        /// The tax rates that will apply to any subscription item that does
-        /// not have tax rates set. Invoices created will have their
-        /// default tax rates populated from the subscription.
+        /// The tax rates that will apply to any subscription item that does not have
+        /// <c>tax_rates</c> set. Invoices created will have their <c>default_tax_rates</c>
+        /// populated from the subscription.
         /// </summary>
         [JsonProperty("default_tax_rates")]
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
-        /// List of items, each with an attached plan.
+        /// A list of items, each with an attached plan, that the customer is subscribing to. Prefer
+        /// using <c>line_items</c>.
         /// </summary>
         [JsonProperty("items")]
         public List<SessionSubscriptionDataItemOptions> Items { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Unix timestamp representing the end of the trial period the customer will get before
-        /// being charged for the first time. Has to be at least 48h in the future.
+        /// being charged for the first time. Has to be at least 48 hours in the future.
         /// </summary>
         [JsonProperty("trial_end")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
 
         /// <summary>
-        /// Indicates if a plan's <see cref="Plan.TrialPeriodDays"/> should be applied to the
-        /// subscription. Setting <c>TrialEnd</c> on <c>SubscriptionData</c> is preferred. Defaults
-        /// to <c>false</c>.
+        /// Indicates if a plan’s <c>trial_period_days</c> should be applied to the subscription.
+        /// Setting <c>trial_end</c> on <c>subscription_data</c> is preferred. Defaults to
+        /// <c>false</c>.
         /// </summary>
         [JsonProperty("trial_from_plan")]
         public bool? TrialFromPlan { get; set; }
 
         /// <summary>
-        /// Integer representing the number of trial period days before the customer is charged for the first time.
+        /// Integer representing the number of trial period days before the customer is charged for
+        /// the first time. Has to be at least 1.
         /// </summary>
         [JsonProperty("trial_period_days")]
         public long? TrialPeriodDays { get; set; }

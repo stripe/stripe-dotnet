@@ -12,7 +12,7 @@ namespace Stripe.Issuing
         public string Type { get; set; }
 
         /// <summary>
-        /// The units for <see cref="VolumeDecimal"/>. One of <c>us_gallon</c> or <c>liter</c>.
+        /// The units for <c>volume_decimal</c>. One of <c>us_gallon</c> or <c>liter</c>.
         /// </summary>
         [JsonProperty("unit")]
         public string Unit { get; set; }
@@ -22,7 +22,7 @@ namespace Stripe.Issuing
         /// decimal places.
         /// </summary>
         [JsonProperty("unit_cost_decimal")]
-        public decimal? UnitCostDecimal { get; set; }
+        public decimal UnitCostDecimal { get; set; }
 
         /// <summary>
         /// The volume of the fuel that was pumped, represented as a decimal string with at most 12

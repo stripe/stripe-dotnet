@@ -19,14 +19,11 @@ namespace Stripe.Issuing
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        /// <summary>
-        /// The cardholder's billing address.
-        /// </summary>
         [JsonProperty("billing")]
         public CardholderBilling Billing { get; set; }
 
         /// <summary>
-        /// Additional information about a business entity cardholder.
+        /// Additional information about a <c>company</c> cardholder.
         /// </summary>
         [JsonProperty("company")]
         public CardholderCompany Company { get; set; }
@@ -35,8 +32,8 @@ namespace Stripe.Issuing
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The cardholder's email address.
@@ -45,23 +42,22 @@ namespace Stripe.Issuing
         public string Email { get; set; }
 
         /// <summary>
-        /// Additional information about an individual cardholder.
+        /// Additional information about an <c>individual</c> cardholder.
         /// </summary>
         [JsonProperty("individual")]
         public CardholderIndividual Individual { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format. Individual keys can be
-        /// unset by posting an empty value to them. All keys can be unset by posting an empty
-        /// value to metadata.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -78,26 +74,27 @@ namespace Stripe.Issuing
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
 
-        /// <summary>
-        /// Information about verification requirements for the cardholder, including what information needs to be collected.
-        /// </summary>
         [JsonProperty("requirements")]
         public CardholderRequirements Requirements { get; set; }
 
         /// <summary>
-        /// Spending rules that give you control over how your cardholders can make charges.
+        /// Rules that control spending across this cardholder's cards. Refer to our <a
+        /// href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for
+        /// more details.
         /// </summary>
         [JsonProperty("spending_controls")]
         public CardholderSpendingControls SpendingControls { get; set; }
 
         /// <summary>
-        /// One of <c>active</c>, <c>inactive</c>, or <c>blocked</c>.
+        /// Specifies whether to permit authorizations on this cardholder's cards.
+        /// One of: <c>active</c>, <c>blocked</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
 
         /// <summary>
         /// One of <c>individual</c> or <c>company</c>.
+        /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

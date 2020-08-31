@@ -20,7 +20,9 @@ namespace Stripe.Issuing
         public string Object { get; set; }
 
         /// <summary>
-        /// The transaction amount, which will be reflected in your balance.
+        /// The transaction amount, which will be reflected in your balance. This amount is in your
+        /// currency and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
+        /// currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -36,7 +38,8 @@ namespace Stripe.Issuing
         #region Expandable Authorization
 
         /// <summary>
-        /// ID of the <see cref="Authorization"/> associated with this transaction.
+        /// (ID of the Authorization)
+        /// The <c>Authorization</c> object that led to this transaction.
         /// </summary>
         [JsonIgnore]
         public string AuthorizationId
@@ -46,7 +49,10 @@ namespace Stripe.Issuing
         }
 
         /// <summary>
-        /// (Expanded) The <see cref="Authorization"/> associated with this transaction.
+        /// (Expanded)
+        /// The <c>Authorization</c> object that led to this transaction.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Authorization Authorization
@@ -63,7 +69,9 @@ namespace Stripe.Issuing
         #region Expandable BalanceTransaction
 
         /// <summary>
-        /// ID of the <see cref="BalanceTransaction"/> associated with this transaction.
+        /// (ID of the BalanceTransaction)
+        /// ID of the <a href="https://stripe.com/docs/api/balance_transactions">balance
+        /// transaction</a> associated with this transaction.
         /// </summary>
         [JsonIgnore]
         public string BalanceTransactionId
@@ -73,7 +81,11 @@ namespace Stripe.Issuing
         }
 
         /// <summary>
-        /// (Expanded) The <see cref="BalanceTransaction"/> associated with this transaction.
+        /// (Expanded)
+        /// ID of the <a href="https://stripe.com/docs/api/balance_transactions">balance
+        /// transaction</a> associated with this transaction.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public BalanceTransaction BalanceTransaction
@@ -90,7 +102,8 @@ namespace Stripe.Issuing
         #region Expandable Card
 
         /// <summary>
-        /// ID of the <see cref="Card"/> associated with this transaction.
+        /// (ID of the Card)
+        /// The card used to make this transaction.
         /// </summary>
         [JsonIgnore]
         public string CardId
@@ -100,7 +113,10 @@ namespace Stripe.Issuing
         }
 
         /// <summary>
-        /// (Expanded) The <see cref="Card"/> associated with this transaction.
+        /// (Expanded)
+        /// The card used to make this transaction.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Card Card
@@ -117,7 +133,8 @@ namespace Stripe.Issuing
         #region Expandable Cardholder
 
         /// <summary>
-        /// ID of the <see cref="Cardholder"/> associated with this transaction.
+        /// (ID of the Cardholder)
+        /// The cardholder to whom this transaction belongs.
         /// </summary>
         [JsonIgnore]
         public string CardholderId
@@ -127,7 +144,10 @@ namespace Stripe.Issuing
         }
 
         /// <summary>
-        /// (Expanded) The <see cref="Cardholder"/> associated with this transaction.
+        /// (Expanded)
+        /// The cardholder to whom this transaction belongs.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Cardholder Cardholder
@@ -145,24 +165,29 @@ namespace Stripe.Issuing
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Currency associated with this transaction.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The amount that the merchant will receive.
+        /// The amount that the merchant will receive, denominated in <c>merchant_currency</c> and
+        /// in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency
+        /// unit</a>. It will be different from <c>amount</c> if the merchant is taking payment in a
+        /// different currency.
         /// </summary>
         [JsonProperty("merchant_amount")]
         public long MerchantAmount { get; set; }
@@ -173,18 +198,13 @@ namespace Stripe.Issuing
         [JsonProperty("merchant_currency")]
         public string MerchantCurrency { get; set; }
 
-        /// <summary>
-        /// Details about the merchant (grocery store, e-commerce website, etc.) where the payment
-        /// happened.
-        /// </summary>
         [JsonProperty("merchant_data")]
         public AuthorizationMerchantData MerchantData { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format. Individual keys can be
-        /// unset by posting an empty value to them. All keys can be unset by posting an empty
-        /// value to metadata.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -196,7 +216,8 @@ namespace Stripe.Issuing
         public TransactionPurchaseDetails PurchaseDetails { get; set; }
 
         /// <summary>
-        /// The nature of the transaction. One of <c>capture</c>, or <c>refund</c>.
+        /// The nature of the transaction.
+        /// One of: <c>capture</c>, or <c>refund</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

@@ -12,8 +12,8 @@ namespace Stripe
         public List<SourceSourceOrderItemOptions> Items { get; set; }
 
         /// <summary>
-        /// The shipping address for the order. Present if the order is for
-        /// goods to be shipped.
+        /// Shipping address for the order. Required if any of the SKUs are for products that have
+        /// <c>shippable</c> set to true.
         /// </summary>
         [JsonProperty("shipping")]
         public ChargeShippingOptions Shipping { get; set; }

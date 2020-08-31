@@ -2,7 +2,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class LineItem : StripeEntity<LineItem>, IHasId, IHasObject
     {
@@ -31,7 +30,9 @@ namespace Stripe
         public long? AmountTotal { get; set; }
 
         /// <summary>
-        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -55,41 +56,35 @@ namespace Stripe
         [JsonProperty("discounts")]
         public List<LineItemDiscount> Discounts { get; set; }
 
-        #region Expandable Price
-
         /// <summary>
-        /// ID of the price linked to this line item.
+        /// Prices define the unit cost, currency, and (optional) billing cycle for both recurring
+        /// and one-time purchases of products. <a
+        /// href="https://stripe.com/docs/api#products">Products</a> help you track inventory or
+        /// provisioning, and prices help you track payment terms. Different physical goods or
+        /// levels of service should be represented by products, and pricing options should be
+        /// represented by prices. This approach lets you change prices without having to change
+        /// your provisioning scheme.
+        ///
+        /// For example, you might have a single "gold" product that has prices for $10/month,
+        /// $100/year, and €9 once.
+        ///
+        /// Related guides: <a
+        /// href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up a
+        /// subscription</a>, <a href="https://stripe.com/docs/billing/invoices/create">create an
+        /// invoice</a>, and more about <a
+        /// href="https://stripe.com/docs/billing/prices-guide">products and prices</a>.
         /// </summary>
-        [JsonIgnore]
-        public string PriceId
-        {
-            get => this.InternalPrice?.Id;
-            set => this.InternalPrice = SetExpandableFieldId(value, this.InternalPrice);
-        }
-
-        /// <summary>
-        /// (Expanded) The price linked to this line item (if it was expanded).
-        /// </summary>
-        [JsonIgnore]
-        public Price Price
-        {
-            get => this.InternalPrice?.ExpandedObject;
-            set => this.InternalPrice = SetExpandableFieldObject(value, this.InternalPrice);
-        }
-
         [JsonProperty("price")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Price>))]
-        internal ExpandableField<Price> InternalPrice { get; set; }
-        #endregion
+        public Price Price { get; set; }
 
         /// <summary>
-        /// Quantity associated with the line item.
+        /// The quantity of products being purchased.
         /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
 
         /// <summary>
-        /// Details of all taxes applied to this line item.
+        /// The taxes applied to the line item.
         /// </summary>
         [JsonProperty("taxes")]
         public List<LineItemTax> Taxes { get; set; }

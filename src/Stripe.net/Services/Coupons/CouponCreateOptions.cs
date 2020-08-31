@@ -30,6 +30,7 @@ namespace Stripe
         /// <summary>
         /// Specifies how long the discount will be in effect. Can be <c>forever</c>, <c>once</c>,
         /// or <c>repeating</c>.
+        /// One of: <c>forever</c>, <c>once</c>, or <c>repeating</c>.
         /// </summary>
         [JsonProperty("duration")]
         public string Duration { get; set; }
@@ -85,7 +86,7 @@ namespace Stripe
         /// redeem_by date, the coupon can no longer be applied to new customers.
         /// </summary>
         [JsonProperty("redeem_by")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? RedeemBy { get; set; }
     }
 }

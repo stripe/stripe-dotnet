@@ -6,6 +6,7 @@ namespace Stripe
     {
         /// <summary>
         /// The type of account being debited or credited.
+        /// One of: <c>checking</c>, <c>credit</c>, <c>prepaid</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("account_type")]
         public string AccountType { get; set; }

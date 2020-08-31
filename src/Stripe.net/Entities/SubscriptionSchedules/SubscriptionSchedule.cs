@@ -20,11 +20,11 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Time at which the subscription schedule was canceled. Measured in seconds since the
-        /// Unix epoch.
+        /// Time at which the subscription schedule was canceled. Measured in seconds since the Unix
+        /// epoch.
         /// </summary>
         [JsonProperty("canceled_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
@@ -32,15 +32,15 @@ namespace Stripe
         /// Unix epoch.
         /// </summary>
         [JsonProperty("completed_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CompletedAt { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Object representing the start and end dates for the current phase of the subscription
@@ -52,8 +52,8 @@ namespace Stripe
         #region Expandable Customer
 
         /// <summary>
-        /// ID of the <see cref="Customer"/> associated with the subscription schedule.
-        /// <para>Expandable.</para>
+        /// (ID of the Customer)
+        /// ID of the customer who owns the subscription schedule.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -63,7 +63,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) The <see cref="Customer"/> associated with the subscription schedule.
+        /// (Expanded)
+        /// ID of the customer who owns the subscription schedule.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Customer Customer
@@ -77,28 +80,28 @@ namespace Stripe
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
-        /// <summary>
-        /// Object representing the subscription schedule's default settings.
-        /// </summary>
         [JsonProperty("default_settings")]
         public SubscriptionScheduleDefaultSettings DefaultSettings { get; set; }
 
         /// <summary>
         /// Behavior of the subscription schedule and underlying subscription when it ends. Possible
-        /// values are <c>cancel</c>, <c>none</c>, <c>release</c> and <c>renew</c>.
+        /// values are <c>release</c> and <c>cancel</c>.
+        /// One of: <c>cancel</c>, <c>none</c>, <c>release</c>, or <c>renew</c>.
         /// </summary>
         [JsonProperty("end_behavior")]
         public string EndBehavior { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to a subscription schedule object.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -110,11 +113,11 @@ namespace Stripe
         public List<SubscriptionSchedulePhase> Phases { get; set; }
 
         /// <summary>
-        /// Time at which the subscription schedule was released. Measured in seconds since the
-        /// Unix epoch.
+        /// Time at which the subscription schedule was released. Measured in seconds since the Unix
+        /// epoch.
         /// </summary>
         [JsonProperty("released_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ReleasedAt { get; set; }
 
         /// <summary>
@@ -124,8 +127,13 @@ namespace Stripe
         public string ReleasedSubscription { get; set; }
 
         /// <summary>
-        /// Possible values are <c>active</c>, <c>canceled</c>, <c>completed</c>,
-        /// <c>not_started</c> and <c>released</c>.
+        /// The present status of the subscription schedule. Possible values are <c>not_started</c>,
+        /// <c>active</c>, <c>completed</c>, <c>released</c>, and <c>canceled</c>. You can read more
+        /// about the different states in our <a
+        /// href="https://stripe.com/docs/billing/subscriptions/subscription-schedules">behavior
+        /// guide</a>.
+        /// One of: <c>active</c>, <c>canceled</c>, <c>completed</c>, <c>not_started</c>, or
+        /// <c>released</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -133,8 +141,8 @@ namespace Stripe
         #region Expandable Subscription
 
         /// <summary>
-        /// ID of the <see cref="Subscription"/> associated with the subscription schedule.
-        /// <para>Expandable.</para>
+        /// (ID of the Subscription)
+        /// ID of the subscription managed by the subscription schedule.
         /// </summary>
         [JsonIgnore]
         public string SubscriptionId
@@ -144,7 +152,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) The <see cref="Subscription"/> associated with the subscription schedule.
+        /// (Expanded)
+        /// ID of the subscription managed by the subscription schedule.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Subscription Subscription

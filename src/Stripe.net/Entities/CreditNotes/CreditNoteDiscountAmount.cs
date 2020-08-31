@@ -6,7 +6,7 @@ namespace Stripe
     public class CreditNoteDiscountAmount : StripeEntity<CreditNoteDiscountAmount>
     {
         /// <summary>
-        /// The amount, in cents, of the tax.
+        /// The amount, in %s, of the discount.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -14,7 +14,8 @@ namespace Stripe
         #region Expandable Discount
 
         /// <summary>
-        /// The ID of the discount that was applied to get this discount amount.
+        /// (ID of the Discount)
+        /// The discount that was applied to get this discount amount.
         /// </summary>
         [JsonIgnore]
         public string DiscountId
@@ -24,7 +25,10 @@ namespace Stripe
         }
 
         /// <summary>
+        /// (Expanded)
         /// The discount that was applied to get this discount amount.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Discount Discount

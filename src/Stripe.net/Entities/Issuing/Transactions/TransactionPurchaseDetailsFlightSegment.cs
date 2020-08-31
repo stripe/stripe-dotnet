@@ -5,7 +5,7 @@ namespace Stripe.Issuing
     public class TransactionPurchaseDetailsFlightSegment : StripeEntity<TransactionPurchaseDetailsFlightSegment>
     {
         /// <summary>
-        /// The flight's destination airport code.
+        /// The three-letter IATA airport code of the flight's destination.
         /// </summary>
         [JsonProperty("arrival_airport_code")]
         public string ArrivalAirportCode { get; set; }
@@ -17,7 +17,7 @@ namespace Stripe.Issuing
         public string Carrier { get; set; }
 
         /// <summary>
-        /// The airport code that the flight departed from.
+        /// The three-letter IATA airport code that the flight departed from.
         /// </summary>
         [JsonProperty("departure_airport_code")]
         public string DepartureAirportCode { get; set; }

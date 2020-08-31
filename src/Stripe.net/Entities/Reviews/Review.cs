@@ -27,7 +27,8 @@ namespace Stripe
         #region Expandable Charge
 
         /// <summary>
-        /// ID of the charge associated with this review.
+        /// (ID of the Charge)
+        /// The charge associated with this review.
         /// </summary>
         [JsonIgnore]
         public string ChargeId
@@ -37,7 +38,10 @@ namespace Stripe
         }
 
         /// <summary>
+        /// (Expanded)
         /// The charge associated with this review.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Charge Charge
@@ -54,6 +58,7 @@ namespace Stripe
         /// <summary>
         /// The reason the review was closed, or null if it has not yet been closed. One of
         /// <c>approved</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, or <c>disputed</c>.
+        /// One of: <c>approved</c>, <c>disputed</c>, <c>refunded</c>, or <c>refunded_as_fraud</c>.
         /// </summary>
         [JsonProperty("closed_reason")]
         public string ClosedReason { get; set; }
@@ -62,8 +67,8 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The IP address where the payment originated.
@@ -80,8 +85,8 @@ namespace Stripe
         public ReviewLocation IpAddressLocation { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
@@ -94,6 +99,7 @@ namespace Stripe
 
         /// <summary>
         /// The reason the review was opened. One of <c>rule</c> or <c>manual</c>.
+        /// One of: <c>manual</c>, or <c>rule</c>.
         /// </summary>
         [JsonProperty("opened_reason")]
         public string OpenedReason { get; set; }
@@ -101,7 +107,8 @@ namespace Stripe
         #region Expandable PaymentIntent
 
         /// <summary>
-        /// ID of the PaymentIntent associated with this review, if one exists.
+        /// (ID of the PaymentIntent)
+        /// The PaymentIntent ID associated with this review, if one exists.
         /// </summary>
         [JsonIgnore]
         public string PaymentIntentId
@@ -111,7 +118,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// PaymentIntent associated with this review, if one exists.
+        /// (Expanded)
+        /// The PaymentIntent ID associated with this review, if one exists.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public PaymentIntent PaymentIntent

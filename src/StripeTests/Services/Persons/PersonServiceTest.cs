@@ -35,7 +35,7 @@ namespace StripeTests
                 },
                 Verification = new PersonVerificationOptions
                 {
-                    AdditionalDocument = new PersonVerificationDocumentOptions
+                    AdditionalDocument = new PersonVerificationAdditionalDocumentOptions
                     {
                         Back = "file_abc",
                         Front = "file_def",
@@ -153,7 +153,6 @@ namespace StripeTests
             Assert.Equal("person", person.Object);
         }
 
-#if !NET45
         [Fact]
         public async Task ListAutoPagingAsync()
         {
@@ -161,7 +160,6 @@ namespace StripeTests
             Assert.NotNull(person);
             Assert.Equal("person", person.Object);
         }
-#endif
 
         [Fact]
         public void Update()

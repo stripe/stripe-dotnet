@@ -1,4 +1,4 @@
-﻿namespace Stripe
+namespace Stripe
 {
     using Newtonsoft.Json;
 
@@ -6,6 +6,7 @@
     {
         /// <summary>
         /// The type of account being debited or credited.
+        /// One of: <c>checking</c>, <c>savings</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("account_type")]
         public string AccountType { get; set; }

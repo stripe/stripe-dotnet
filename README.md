@@ -4,7 +4,7 @@
 [![Build Status](https://ci.appveyor.com/api/projects/status/rg0pg5tlr1a6f8tf/branch/master?svg=true)](https://ci.appveyor.com/project/stripe/stripe-dotnet)
 [![Coverage Status](https://coveralls.io/repos/github/stripe/stripe-dotnet/badge.svg?branch=master)](https://coveralls.io/github/stripe/stripe-dotnet?branch=master)
 
-The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 2.0+, and .NET Framework 4.5+.
+The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 2.0+, and .NET Framework 4.6.1+.
 
 ## Installation
 
@@ -70,17 +70,19 @@ Please refer to the [Advanced client usage][advanced-client-usage] wiki page
 to see more examples of using custom clients, e.g. for using a proxy server, a
 custom message handler, etc.
 
-### Configuring automatic retries
+### Automatic retries
 
-The library can be configured to automatically retry requests that fail due to
-an intermittent network problem or other knowingly non-deterministic errors:
+The library automatically retries requests on intermittent failures like on a
+connection error, timeout, or on certain API responses like a status `409
+Conflict`. [Idempotency keys][idempotency-keys] are always added to requests to
+make any such subsequent retries safe.
+
+By default, it will perform up to two retries. That number can be configured
+with `StripeConfiguration.MaxNetworkRetries`:
 
 ```c#
-StripeConfiguration.MaxNetworkRetries = 2;
+StripeConfiguration.MaxNetworkRetries = 0; // Zero retries
 ```
-
-[Idempotency keys][idempotency-keys] are added to requests to guarantee that
-retries are safe.
 
 ### Writing a plugin
 

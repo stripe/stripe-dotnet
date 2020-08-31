@@ -13,6 +13,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Specify whether Checkout should collect the customer's billing address.
+        /// One of: <c>auto</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("billing_address_collection")]
         public string BillingAddressCollection { get; set; }
@@ -64,6 +65,11 @@ namespace Stripe.Checkout
         /// <summary>
         /// The IETF language tag of the locale Checkout is displayed in. If blank or <c>auto</c>,
         /// the browser's locale is used.
+        /// One of: <c>auto</c>, <c>bg</c>, <c>cs</c>, <c>da</c>, <c>de</c>, <c>el</c>, <c>en</c>,
+        /// <c>en-GB</c>, <c>es</c>, <c>es-419</c>, <c>et</c>, <c>fi</c>, <c>fr</c>, <c>fr-CA</c>,
+        /// <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>,
+        /// <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>, <c>pt-BR</c>, <c>ro</c>, <c>ru</c>,
+        /// <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>tr</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -81,6 +87,7 @@ namespace Stripe.Checkout
         /// The mode of the Checkout Session, one of <c>payment</c>, <c>setup</c>, or
         /// <c>subscription</c>. Required when using prices or <c>setup</c> mode. Pass
         /// <c>subscription</c> if Checkout session includes at least one recurring item.
+        /// One of: <c>payment</c>, <c>setup</c>, or <c>subscription</c>.
         /// </summary>
         [JsonProperty("mode")]
         public string Mode { get; set; }
@@ -126,6 +133,7 @@ namespace Stripe.Checkout
         /// relevant text on the page, such as the submit button. <c>submit_type</c> can only be
         /// specified on Checkout Sessions in <c>payment</c> mode, but not Checkout Sessions in
         /// <c>subscription</c> or <c>setup</c> mode.
+        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, or <c>pay</c>.
         /// </summary>
         [JsonProperty("submit_type")]
         public string SubmitType { get; set; }

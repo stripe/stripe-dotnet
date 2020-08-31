@@ -31,7 +31,7 @@ namespace Stripe
         /// and the current time. Can be combined with trials and the billing cycle anchor.
         /// </summary>
         [JsonProperty("backdate_start_date")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? BackdateStartDate { get; set; }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Stripe
         /// or <c>year</c> intervals, the day of the month for subsequent invoices.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Stripe
         /// proration for that period.
         /// </summary>
         [JsonProperty("cancel_at")]
-        [JsonConverter(typeof(DateTimeConverter))]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
@@ -73,6 +73,7 @@ namespace Stripe
         /// Stripe will attempt to pay this subscription at the end of the cycle using the default
         /// source attached to the customer. When sending an invoice, Stripe will email your
         /// customer an invoice with payment instructions. Defaults to <c>charge_automatically</c>.
+        /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]
         public string CollectionMethod { get; set; }
@@ -160,6 +161,8 @@ namespace Stripe
         ///
         /// <c>pending_if_incomplete</c> is only used with updates and cannot be passed when
         /// creating a subscription.
+        /// One of: <c>allow_incomplete</c>, <c>error_if_incomplete</c>, or
+        /// <c>pending_if_incomplete</c>.
         /// </summary>
         [JsonProperty("payment_behavior")]
         public string PaymentBehavior { get; set; }
@@ -172,24 +175,12 @@ namespace Stripe
         [JsonProperty("pending_invoice_item_interval")]
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
 
-        [Obsolete("Use Items instead.")]
-        [JsonProperty("plan")]
-        public string Plan { get; set; }
-
         /// <summary>
         /// The API ID of a promotion code to apply to this subscription. A promotion code applied
         /// to a subscription will only affect invoices created for that particular subscription.
         /// </summary>
         [JsonProperty("promotion_code")]
         public string PromotionCode { get; set; }
-
-        /// <summary>
-        /// This field has been renamed to <c>proration_behavior</c>. <c>prorate=true</c> can be
-        /// replaced with <c>proration_behavior=create_prorations</c> and <c>prorate=false</c> can
-        /// be replaced with <c>proration_behavior=none</c>.
-        /// </summary>
-        [JsonProperty("prorate")]
-        public bool? Prorate { get; set; }
 
         /// <summary>
         /// Determines how to handle <a
@@ -200,23 +191,10 @@ namespace Stripe
         /// Passing <c>create_prorations</c> will cause proration invoice items to be created when
         /// applicable. Prorations can be disabled by passing <c>none</c>. If no value is passed,
         /// the default is <c>create_prorations</c>.
+        /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
         public string ProrationBehavior { get; set; }
-
-        [Obsolete("Use Items instead.")]
-        [JsonProperty("quantity")]
-        public long? Quantity { get; set; }
-
-        /// <summary>
-        /// A non-negative decimal (with at most four decimal places) between 0 and 100. This
-        /// represents the percentage of the subscription invoice subtotal that will be calculated
-        /// and added as tax to the final amount each billing period. For example, a plan which
-        /// charges $10/month with a <c>tax_percent</c> of 20.0 will charge $12 per invoice.
-        /// </summary>
-        [Obsolete("Use DefaultTaxRates")]
-        [JsonProperty("tax_percent")]
-        public decimal? TaxPercent { get; set; }
 
         /// <summary>
         /// If specified, the funds from the subscription's invoices will be transferred to the

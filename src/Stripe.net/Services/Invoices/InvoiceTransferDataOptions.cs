@@ -12,7 +12,7 @@ namespace Stripe
         public long? Amount { get; set; }
 
         /// <summary>
-        /// The account where funds from the payment will be transferred to upon payment success.
+        /// ID of an existing, connected Stripe account.
         /// </summary>
         [JsonProperty("destination")]
         public string Destination { get; set; }

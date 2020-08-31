@@ -5,8 +5,11 @@ namespace Stripe.Issuing
     public class AuthorizationPendingRequest : StripeEntity<AuthorizationPendingRequest>
     {
         /// <summary>
-        /// The additional amount Stripe will hold if the authorization is approved, in the
-        /// currency, which is always the card's currency.
+        /// The additional amount Stripe will hold if the authorization is approved, in the card's
+        /// <a
+        /// href="https://stripe.com/docs/api#issuing_authorization_object-pending-request-currency">currency</a>
+        /// and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency
+        /// unit</a>.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -28,15 +31,17 @@ namespace Stripe.Issuing
         public string Currency { get; set; }
 
         /// <summary>
-        /// If set <c>true</c>, you may provide <c>Amount</c> to control how much to hold for the
-        /// authorization.
+        /// If set <c>true</c>, you may provide <a
+        /// href="https://stripe.com/docs/api/issuing/authorizations/approve#approve_issuing_authorization-amount">amount</a>
+        /// to control how much to hold for the authorization.
         /// </summary>
         [JsonProperty("is_amount_controllable")]
         public bool IsAmountControllable { get; set; }
 
         /// <summary>
-        /// The amount the merchant is requesting to be authorized in the
-        /// <see cref="MerchantCurrency"/>.
+        /// The amount the merchant is requesting to be authorized in the <c>merchant_currency</c>.
+        /// The amount is in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
+        /// currency unit</a>.
         /// </summary>
         [JsonProperty("merchant_amount")]
         public long MerchantAmount { get; set; }

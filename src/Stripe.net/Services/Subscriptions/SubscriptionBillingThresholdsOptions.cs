@@ -11,8 +11,8 @@ namespace Stripe
         public long? AmountGte { get; set; }
 
         /// <summary>
-        /// Indicates if the <c>billing_reason</c>  should be reset when a threshold is
-        /// reached. If true, <c>billing_reason</c>  will be updated to the date/time the
+        /// Indicates if the <c>billing_cycle_anchor</c> should be reset when a threshold is
+        /// reached. If true, <c>billing_cycle_anchor</c> will be updated to the date/time the
         /// threshold was last reached; otherwise, the value will remain unchanged.
         /// </summary>
         [JsonProperty("reset_billing_cycle_anchor")]

@@ -10,12 +10,14 @@ namespace Stripe
         /// Default custom fields to be displayed on invoices for this customer.
         /// </summary>
         [JsonProperty("custom_fields")]
-        public List<InvoiceCustomField> CustomFields { get; set; }
+        public List<CustomerInvoiceSettingsCustomField> CustomFields { get; set; }
 
         #region Expandable DefaultPaymentMethod
 
         /// <summary>
-        /// ID of the default payment method for the customer.
+        /// (ID of the PaymentMethod)
+        /// ID of a payment method that's attached to the customer, to be used as the customer's
+        /// default payment method for subscriptions and invoices.
         /// </summary>
         [JsonIgnore]
         public string DefaultPaymentMethodId
@@ -24,6 +26,13 @@ namespace Stripe
             set => this.InternalDefaultPaymentMethod = SetExpandableFieldId(value, this.InternalDefaultPaymentMethod);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of a payment method that's attached to the customer, to be used as the customer's
+        /// default payment method for subscriptions and invoices.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public PaymentMethod DefaultPaymentMethod
         {

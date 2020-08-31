@@ -5,108 +5,121 @@ namespace Stripe
 
     public class PaymentMethodCreateOptions : BaseOptions, IHasMetadata
     {
+        /// <summary>
+        /// If this is an <c>Alipay</c> PaymentMethod, this hash contains details about the Alipay
+        /// payment method.
+        /// </summary>
         [JsonProperty("alipay")]
         public PaymentMethodAlipayOptions Alipay { get; set; }
 
         /// <summary>
-        /// Parameters specific to AU BECS Debit PaymentMethod.
+        /// If this is an <c>au_becs_debit</c> PaymentMethod, this hash contains details about the
+        /// bank account.
         /// </summary>
         [JsonProperty("au_becs_debit")]
-        public PaymentMethodAuBecsDebitCreateOptions AuBecsDebit { get; set; }
+        public PaymentMethodAuBecsDebitOptions AuBecsDebit { get; set; }
 
         /// <summary>
-        /// Parameters specific to BACS Debit PaymentMethod.
+        /// If this is a <c>bacs_debit</c> PaymentMethod, this hash contains details about the Bacs
+        /// Direct Debit bank account.
         /// </summary>
         [JsonProperty("bacs_debit")]
-        public PaymentMethodBacsDebitCreateOptions BacsDebit { get; set; }
+        public PaymentMethodBacsDebitOptions BacsDebit { get; set; }
 
         /// <summary>
-        /// Parameters specific to Bancontact PaymentMethod.
+        /// If this is a <c>bancontact</c> PaymentMethod, this hash contains details about the
+        /// Bancontact payment method.
         /// </summary>
         [JsonProperty("bancontact")]
-        public PaymentMethodBancontactCreateOptions Bancontact { get; set; }
+        public PaymentMethodBancontactOptions Bancontact { get; set; }
 
         /// <summary>
         /// Billing information associated with the PaymentMethod that may be used or required by
         /// particular types of payment methods.
         /// </summary>
         [JsonProperty("billing_details")]
-        public BillingDetailsOptions BillingDetails { get; set; }
+        public PaymentMethodBillingDetailsOptions BillingDetails { get; set; }
 
-        /// <summary>
-        /// Parameters specific to Card PaymentMethod.
-        /// </summary>
         [JsonProperty("card")]
-        public PaymentMethodCardCreateOptions Card { get; set; }
+        public PaymentMethodCardOptions Card { get; set; }
 
         /// <summary>
-        /// The customer associated with the PaymentMethod that you are trying to share with a
-        /// connected account.
+        /// The <c>Customer</c> to whom the original PaymentMethod is attached.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
 
         /// <summary>
-        /// Parameters specific to Eps PaymentMethod.
+        /// If this is an <c>eps</c> PaymentMethod, this hash contains details about the EPS payment
+        /// method.
         /// </summary>
         [JsonProperty("eps")]
-        public PaymentMethodEpsCreateOptions Eps { get; set; }
+        public PaymentMethodEpsOptions Eps { get; set; }
 
         /// <summary>
-        /// Parameters specific to FPX PaymentMethod.
+        /// If this is an <c>fpx</c> PaymentMethod, this hash contains details about the FPX payment
+        /// method.
         /// </summary>
         [JsonProperty("fpx")]
-        public PaymentMethodFpxCreateOptions Fpx { get; set; }
+        public PaymentMethodFpxOptions Fpx { get; set; }
 
         /// <summary>
-        /// Parameters specific to Giropay PaymentMethod.
+        /// If this is a <c>giropay</c> PaymentMethod, this hash contains details about the Giropay
+        /// payment method.
         /// </summary>
         [JsonProperty("giropay")]
-        public PaymentMethodGiropayCreateOptions Giropay { get; set; }
+        public PaymentMethodGiropayOptions Giropay { get; set; }
 
         /// <summary>
-        /// Parameters specific to iDEAL PaymentMethod.
+        /// If this is an <c>ideal</c> PaymentMethod, this hash contains details about the iDEAL
+        /// payment method.
         /// </summary>
         [JsonProperty("ideal")]
-        public PaymentMethodIdealCreateOptions Ideal { get; set; }
+        public PaymentMethodIdealOptions Ideal { get; set; }
 
         /// <summary>
-        /// Parameters specific to Interac Present PaymentMethod.
+        /// If this is an <c>interac_present</c> PaymentMethod, this hash contains details about the
+        /// Interac Present payment method.
         /// </summary>
         [JsonProperty("interac_present")]
-        public PaymentMethodInteracPresentCreateOptions InteracPresent { get; set; }
+        public PaymentMethodInteracPresentOptions InteracPresent { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to a charge object. It can be useful for
-        /// storing additional information about the customer in a structured format. It's often a
-        /// good idea to store an email address in metadata for tracking later.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Parameters specific to P24 PaymentMethod.
+        /// If this is a <c>p24</c> PaymentMethod, this hash contains details about the P24 payment
+        /// method.
         /// </summary>
         [JsonProperty("p24")]
-        public PaymentMethodP24CreateOptions P24 { get; set; }
+        public PaymentMethodP24Options P24 { get; set; }
 
         /// <summary>
-        /// The id of the PaymentMethod that you are trying to share with a Connected account.
-        /// This only works with Stripe Connect.
+        /// The PaymentMethod to share.
         /// </summary>
         [JsonProperty("payment_method")]
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// Parameters specific to SEPA Debit PaymentMethod.
+        /// If this is a <c>sepa_debit</c> PaymentMethod, this hash contains details about the SEPA
+        /// debit bank account.
         /// </summary>
         [JsonProperty("sepa_debit")]
-        public PaymentMethodSepaDebitCreateOptions SepaDebit { get; set; }
+        public PaymentMethodSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
+        /// One of: <c>alipay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
+        /// <c>card</c>, <c>card_present</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>ideal</c>,
+        /// <c>p24</c>, or <c>sepa_debit</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

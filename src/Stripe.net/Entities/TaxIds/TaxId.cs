@@ -28,13 +28,14 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         #region Expandable Customer
 
         /// <summary>
-        /// ID of the customer this tax ID is for if one exists.
+        /// (ID of the Customer)
+        /// ID of the customer.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -43,6 +44,12 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// ID of the customer.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Customer Customer
         {
@@ -62,15 +69,26 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Type of the tax ID, one of <c>au_abn</c>, <c>eu_vat</c>, <c>in_gst</c>, <c>no_vat</c>,
-        /// <c>nz_gst</c>, or <c>unknown</c>.
+        /// Type of the tax ID, one of <c>ae_trn</c>, <c>au_abn</c>, <c>br_cnpj</c>, <c>br_cpf</c>,
+        /// <c>ca_bn</c>, <c>ca_qst</c>, <c>ch_vat</c>, <c>cl_tin</c>, <c>es_cif</c>, <c>eu_vat</c>,
+        /// <c>hk_br</c>, <c>id_npwp</c>, <c>in_gst</c>, <c>jp_cn</c>, <c>kr_brn</c>, <c>li_uid</c>,
+        /// <c>mx_rfc</c>, <c>my_frp</c>, <c>my_itn</c>, <c>my_sst</c>, <c>no_vat</c>,
+        /// <c>nz_gst</c>, <c>ru_inn</c>, <c>sa_vat</c>, <c>sg_gst</c>, <c>sg_uen</c>,
+        /// <c>th_vat</c>, <c>tw_vat</c>, <c>us_ein</c>, or <c>za_vat</c>. Note that some legacy tax
+        /// IDs have type <c>unknown</c>.
+        /// One of: <c>ae_trn</c>, <c>au_abn</c>, <c>br_cnpj</c>, <c>br_cpf</c>, <c>ca_bn</c>,
+        /// <c>ca_qst</c>, <c>ch_vat</c>, <c>cl_tin</c>, <c>es_cif</c>, <c>eu_vat</c>, <c>hk_br</c>,
+        /// <c>id_npwp</c>, <c>in_gst</c>, <c>jp_cn</c>, <c>kr_brn</c>, <c>li_uid</c>,
+        /// <c>mx_rfc</c>, <c>my_frp</c>, <c>my_itn</c>, <c>my_sst</c>, <c>no_vat</c>,
+        /// <c>nz_gst</c>, <c>ru_inn</c>, <c>sa_vat</c>, <c>sg_gst</c>, <c>sg_uen</c>,
+        /// <c>th_vat</c>, <c>tw_vat</c>, <c>unknown</c>, <c>us_ein</c>, or <c>za_vat</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -82,7 +100,7 @@ namespace Stripe
         public string Value { get; set; }
 
         /// <summary>
-        /// The persons's verification status.
+        /// Tax ID verification information.
         /// </summary>
         [JsonProperty("verification")]
         public TaxIdVerification Verification { get; set; }

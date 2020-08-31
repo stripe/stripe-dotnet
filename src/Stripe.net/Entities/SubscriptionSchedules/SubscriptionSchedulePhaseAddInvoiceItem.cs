@@ -8,7 +8,8 @@ namespace Stripe
         #region Expandable Price
 
         /// <summary>
-        /// ID of the Price associated with this invoice item.
+        /// (ID of the Price)
+        /// ID of the price used to generate the invoice item.
         /// </summary>
         [JsonIgnore]
         public string PriceId
@@ -18,7 +19,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// (Expanded) The Price associated with this invoice item.
+        /// (Expanded)
+        /// ID of the price used to generate the invoice item.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Price Price
@@ -33,7 +37,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Quantity for this item.
+        /// The quantity of the invoice item.
         /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }

@@ -7,48 +7,53 @@ namespace Stripe
     public class PlanCreateOptions : BaseOptions, IHasId, IHasMetadata
     {
         /// <summary>
-        /// Whether the plan is currently available for new subscriptions.
+        /// Whether the plan is currently available for new subscriptions. Defaults to <c>true</c>.
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; }
 
         /// <summary>
-        /// Specifies a usage aggregation strategy for plans where <see cref="UsageType"/> is
-        /// <c>metered</c>. Allowed values are <c>sum</c> for summing up all usage during a period,
-        /// <c>last_during_period</c> for picking the last usage record reported within a period,
-        /// <c>last_ever</c> for picking the last usage record ever (across period bounds) or
-        /// <c>max</c> which picks the usage record with the maximum reported usage during a
-        /// period. Defaults to <c>sum</c>.
+        /// Specifies a usage aggregation strategy for plans of <c>usage_type=metered</c>. Allowed
+        /// values are <c>sum</c> for summing up all usage during a period,
+        /// <c>last_during_period</c> for using the last usage record reported within a period,
+        /// <c>last_ever</c> for using the last usage record ever (across period bounds) or
+        /// <c>max</c> which uses the usage record with the maximum reported usage during a period.
+        /// Defaults to <c>sum</c>.
+        /// One of: <c>last_during_period</c>, <c>last_ever</c>, <c>max</c>, or <c>sum</c>.
         /// </summary>
         [JsonProperty("aggregate_usage")]
         public string AggregateUsage { get; set; }
 
         /// <summary>
-        /// The amount in cents to be charged on the interval specified.
+        /// A positive integer in %s (or 0 for a free plan) representing how much to charge on a
+        /// recurring basis.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
-        /// Same as <see cref="Amount"/>, but contains a decimal value with at most 12 decimal
-        /// places.
+        /// Same as <c>amount</c>, but accepts a decimal value with at most 12 decimal places. Only
+        /// one of <c>amount</c> and <c>amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("amount_decimal")]
         public decimal? AmountDecimal { get; set; }
 
         /// <summary>
         /// Describes how to compute the price per period. Either <c>per_unit</c> or <c>tiered</c>.
-        /// <c>per_unit</c> indicates that the fixed amount (specified in amount) will be charged
-        /// per unit in quantity (for plans with usage_type=licensed), or per unit of total usage
-        /// (for plans with usage_type=metered). <c>tiered</c> indicates that the unit pricing will
-        /// be computed using a tiering strategy as defined using the <see cref="Tiers"/> and
-        /// <see cref="TiersMode"/> attributes.
+        /// <c>per_unit</c> indicates that the fixed amount (specified in <c>amount</c>) will be
+        /// charged per unit in <c>quantity</c> (for plans with <c>usage_type=licensed</c>), or per
+        /// unit of total usage (for plans with <c>usage_type=metered</c>). <c>tiered</c> indicates
+        /// that the unit pricing will be computed using a tiering strategy as defined using the
+        /// <c>tiers</c> and <c>tiers_mode</c> attributes.
+        /// One of: <c>per_unit</c>, or <c>tiered</c>.
         /// </summary>
         [JsonProperty("billing_scheme")]
         public string BillingScheme { get; set; }
 
         /// <summary>
-        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -63,21 +68,26 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// One of <c>day</c>, <c>week</c>, <c>month</c> or <c>year</c>. The frequency with which a
-        /// subscription should be billed.
+        /// Specifies billing frequency. Either <c>day</c>, <c>week</c>, <c>month</c> or
+        /// <c>year</c>.
+        /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
         [JsonProperty("interval")]
         public string Interval { get; set; }
 
         /// <summary>
-        /// The number of intervals (specified in the interval property) between subscription
-        /// billings.
+        /// The number of intervals between subscription billings. For example,
+        /// <c>interval=month</c> and <c>interval_count=3</c> bills every 3 months. Maximum of one
+        /// year interval allowed (1 year, 12 months, or 52 weeks).
         /// </summary>
         [JsonProperty("interval_count")]
         public long? IntervalCount { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to a subscription object.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -88,49 +98,47 @@ namespace Stripe
         [JsonProperty("nickname")]
         public string Nickname { get; set; }
 
-        /// <summary>
-        /// The product whose pricing the created plan will represent. This can either be the ID of
-        /// an existing product, or a <see cref="PlanProductCreateOptions"/> instance containing
-        /// fields used to create a service product.
-        /// </summary>
         [JsonProperty("product")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<string, PlanProductCreateOptions> Product { get; set; }
+        public AnyOf<string, PlanProductOptions> Product { get; set; }
 
         /// <summary>
-        /// Each element represents a pricing tier. This parameter requires <see cref="BillingScheme"/>
-        /// to be set to <c>tiered</c>.
+        /// Each element represents a pricing tier. This parameter requires <c>billing_scheme</c> to
+        /// be set to <c>tiered</c>. See also the documentation for <c>billing_scheme</c>.
         /// </summary>
         [JsonProperty("tiers")]
         public List<PlanTierOptions> Tiers { get; set; }
 
         /// <summary>
         /// Defines if the tiering price should be <c>graduated</c> or <c>volume</c> based. In
-        /// volume-based tiering, the maximum quantity within a period determines the per unit
-        /// price, in <c>graduated</c> tiering pricing can successively change as the quantity
+        /// <c>volume</c>-based tiering, the maximum quantity within a period determines the per
+        /// unit price, in <c>graduated</c> tiering pricing can successively change as the quantity
         /// grows.
+        /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
         [JsonProperty("tiers_mode")]
         public string TiersMode { get; set; }
 
         /// <summary>
-        /// Apply a transformation to the reported usage or set quantity before computing the
-        /// billed price. Cannot be combined with <see cref="Tiers"/>.
+        /// Apply a transformation to the reported usage or set quantity before computing the billed
+        /// price. Cannot be combined with <c>tiers</c>.
         /// </summary>
         [JsonProperty("transform_usage")]
         public PlanTransformUsageOptions TransformUsage { get; set; }
 
         /// <summary>
-        /// Default number of trial days when subscribing a customer to this plan using
-        /// <c>trial_from_plan=true</c>.
+        /// Default number of trial days when subscribing a customer to this plan using <a
+        /// href="https://stripe.com/docs/api#create_subscription-trial_from_plan"><c>trial_from_plan=true</c></a>.
         /// </summary>
         [JsonProperty("trial_period_days")]
         public long? TrialPeriodDays { get; set; }
 
-        /// <summary>Configures how the quantity per period should be determined, can be either
-        /// <c>metered</c> or <c>licensed</c>. <c>licensed</c> will automatically bill the quantity
-        /// set for a plan when adding it to a subscription, <c>metered</c> will aggregate the total
-        /// usage based on usage records. Defaults to <c>licensed</c>.
+        /// <summary>
+        /// Configures how the quantity per period should be determined. Can be either
+        /// <c>metered</c> or <c>licensed</c>. <c>licensed</c> automatically bills the
+        /// <c>quantity</c> set when adding it to a subscription. <c>metered</c> aggregates the
+        /// total usage based on usage records. Defaults to <c>licensed</c>.
+        /// One of: <c>licensed</c>, or <c>metered</c>.
         /// </summary>
         [JsonProperty("usage_type")]
         public string UsageType { get; set; }

@@ -17,7 +17,9 @@ namespace Stripe
         public string Application { get; set; }
 
         /// <summary>
-        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -29,7 +31,7 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// Type of the fee, one of <c>application_fee</c>, <c>stripe_fee</c> or <c>tax</c>.
+        /// Type of the fee, one of: <c>application_fee</c>, <c>stripe_fee</c> or <c>tax</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

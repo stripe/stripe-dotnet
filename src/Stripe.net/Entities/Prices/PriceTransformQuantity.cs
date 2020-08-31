@@ -12,6 +12,7 @@ namespace Stripe
 
         /// <summary>
         /// After division, either round the result <c>up</c> or <c>down</c>.
+        /// One of: <c>down</c>, or <c>up</c>.
         /// </summary>
         [JsonProperty("round")]
         public string Round { get; set; }

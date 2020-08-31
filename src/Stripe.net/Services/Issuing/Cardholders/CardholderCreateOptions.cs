@@ -12,7 +12,7 @@ namespace Stripe.Issuing
         public CardholderBillingOptions Billing { get; set; }
 
         /// <summary>
-        /// Additional information about a business entity cardholder.
+        /// Additional information about a <c>company</c> cardholder.
         /// </summary>
         [JsonProperty("company")]
         public CardholderCompanyOptions Company { get; set; }
@@ -24,15 +24,16 @@ namespace Stripe.Issuing
         public string Email { get; set; }
 
         /// <summary>
-        /// Additional information about an individual cardholder.
+        /// Additional information about an <c>individual</c> cardholder.
         /// </summary>
         [JsonProperty("individual")]
         public CardholderIndividualOptions Individual { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to a charge object. It can be useful for
-        /// storing additional information about the customer in a structured format. It's often a
-        /// good idea to store an email address in metadata for tracking later.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -44,27 +45,32 @@ namespace Stripe.Issuing
         public string Name { get; set; }
 
         /// <summary>
-        /// The cardholder's phone number. This will be transformed to E.164 if it is not provided
-        /// in that format already.
+        /// The cardholder's phone number. This will be transformed to <a
+        /// href="https://en.wikipedia.org/wiki/E.164">E.164</a> if it is not provided in that
+        /// format already.
         /// </summary>
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        /// Spending controls that give you control over how your cardholders can make charges.
+        /// Rules that control spending across this cardholder's cards. Refer to our <a
+        /// href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for
+        /// more details.
         /// </summary>
         [JsonProperty("spending_controls")]
         public CardholderSpendingControlsOptions SpendingControls { get; set; }
 
         /// <summary>
-        /// Specifies whether to permit authorizations on this cardholder's cards. Possible values
-        /// are <c>active</c> or <c>inactive</c>.
+        /// Specifies whether to permit authorizations on this cardholder's cards. Defaults to
+        /// <c>active</c>.
+        /// One of: <c>active</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// The type of cardholder. Possible values are <c>company</c> or <c>individual</c>.
+        /// One of <c>individual</c> or <c>company</c>.
+        /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

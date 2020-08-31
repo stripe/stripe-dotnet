@@ -21,14 +21,16 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Amount (in the currency specified) of the invoice item. This should always be equal to
-        /// <c>unit_amount * quantity</c>.
+        /// Amount (in the <c>currency</c> specified) of the invoice item. This should always be
+        /// equal to <c>unit_amount * quantity</c>.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         /// <summary>
-        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -36,7 +38,8 @@ namespace Stripe
         #region Expandable Customer
 
         /// <summary>
-        /// ID of the customer who will be billed when this invoice item is billed.
+        /// (ID of the Customer)
+        /// The ID of the customer who will be billed when this invoice item is billed.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -46,7 +49,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// The customer who will be billed when this invoice item is billed (if it was expanded).
+        /// (Expanded)
+        /// The ID of the customer who will be billed when this invoice item is billed.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Customer Customer
@@ -61,11 +67,11 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Date at which the invoice item was created.
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("date")]
-        [JsonConverter(typeof(DateTimeConverter))]
-        public DateTime Date { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Date { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this object is deleted or not.
@@ -80,8 +86,7 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// If <c>true</c>, discounts will apply to this invoice item. Always <c>false</c> for
-        /// prorations.
+        /// If true, discounts will apply to this invoice item. Always false for prorations.
         /// </summary>
         [JsonProperty("discountable")]
         public bool Discountable { get; set; }
@@ -89,8 +94,9 @@ namespace Stripe
         #region Expandable Discounts
 
         /// <summary>
-        /// Ids of the discounts which apply to the invoice item. Item discounts are applied before
-        /// invoice discounts.
+        /// (IDs of the Discounts)
+        /// The discounts which apply to the invoice item. Item discounts are applied before invoice
+        /// discounts. Use <c>expand[]=discounts</c> to expand each discount.
         /// </summary>
         [JsonIgnore]
         public List<string> DiscountIds
@@ -100,8 +106,11 @@ namespace Stripe
         }
 
         /// <summary>
+        /// (Expanded)
         /// The discounts which apply to the invoice item. Item discounts are applied before invoice
-        /// discounts.
+        /// discounts. Use <c>expand[]=discounts</c> to expand each discount.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public List<Discount> Discounts
@@ -117,7 +126,8 @@ namespace Stripe
         #region Expandable Invoice
 
         /// <summary>
-        /// ID of the invoice this invoice item belongs to.
+        /// (ID of the Invoice)
+        /// The ID of the invoice this invoice item belongs to.
         /// </summary>
         [JsonIgnore]
         public string InvoiceId
@@ -127,7 +137,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// The invoice this invoice item belongs to (if it was expanded).
+        /// (Expanded)
+        /// The ID of the invoice this invoice item belongs to.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Invoice Invoice
@@ -142,23 +155,22 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value
-        /// <c>false</c> if the object exists in test mode.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A set of key/value pairs that you can attach to a subscription object.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        /// <summary>
-        /// Period this invoice item was created for.
-        /// </summary>
         [JsonProperty("period")]
-        public Period Period { get; set; }
+        public InvoiceItemPeriod Period { get; set; }
 
         /// <summary>
         /// If the invoice item is a proration, the plan of the subscription that the proration was
@@ -168,7 +180,7 @@ namespace Stripe
         public Plan Plan { get; set; }
 
         /// <summary>
-        /// The price associated with the invoice item.
+        /// The price of the invoice item.
         /// </summary>
         [JsonProperty("price")]
         public Price Price { get; set; }
@@ -190,7 +202,8 @@ namespace Stripe
         #region Expandable Subscription
 
         /// <summary>
-        /// ID of the subscription that this invoice item has been created for, if any.
+        /// (ID of the Subscription)
+        /// The subscription that this invoice item has been created for, if any.
         /// </summary>
         [JsonIgnore]
         public string SubscriptionId
@@ -200,8 +213,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// The subscription that this invoice item has been created for, if any (if it was
-        /// expanded).
+        /// (Expanded)
+        /// The subscription that this invoice item has been created for, if any.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Subscription Subscription
@@ -216,14 +231,14 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// ID of the subscription item associated with this invoice item.
+        /// The subscription item that this invoice item has been created for, if any.
         /// </summary>
         [JsonProperty("subscription_item")]
         public string SubscriptionItem { get; set; }
 
         /// <summary>
-        /// The tax rates which apply to the invoice item. When set, the <see cref="Invoice.DefaultTaxRates"/>
-        /// on the invoice do not apply to this invoice item.
+        /// The tax rates which apply to the invoice item. When set, the <c>default_tax_rates</c> on
+        /// the invoice do not apply to this invoice item.
         /// </summary>
         [JsonProperty("tax_rates")]
         public List<TaxRate> TaxRates { get; set; }
@@ -236,14 +251,13 @@ namespace Stripe
         public bool UnifiedProration { get; set; }
 
         /// <summary>
-        /// Unit Amount (in the currency specified) of the invoice item.
+        /// Unit Amount (in the <c>currency</c> specified) of the invoice item.
         /// </summary>
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
-        /// Same as <see cref="UnitAmount"/>, but contains a decimal value with at most 12 decimal
-        /// places.
+        /// Same as <c>unit_amount</c>, but contains a decimal value with at most 12 decimal places.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }

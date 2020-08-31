@@ -13,7 +13,7 @@ namespace Stripe
 
         /// <summary>
         /// For <c>fixed_count</c> installment plans, this is the interval between installment
-        /// payments your customer will make to their credit card.
+        /// payments your customer will make to their credit card. One of <c>month</c>.
         /// </summary>
         [JsonProperty("interval")]
         public string Interval { get; set; }

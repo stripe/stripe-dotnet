@@ -17,6 +17,7 @@ namespace Stripe
         #region Expandable Destination
 
         /// <summary>
+        /// (ID of the Account)
         /// The account where funds from the payment will be transferred to upon payment success.
         /// </summary>
         [JsonIgnore]
@@ -27,8 +28,10 @@ namespace Stripe
         }
 
         /// <summary>
-        /// The account where funds from the payment will be transferred to upon payment success (if
-        /// it was expanded).
+        /// (Expanded)
+        /// The account where funds from the payment will be transferred to upon payment success.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Account Destination
