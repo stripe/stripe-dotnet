@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.1.1 - 2020-08-31
+* [#2191](https://github.com/stripe/stripe-dotnet/pull/2191) Fix the release of stripe-dotnet to push a *.snupkg archive
+
 ## 39.1.0 - 2020-08-31
 * [#2190](https://github.com/stripe/stripe-dotnet/pull/2190) Add support for `PaymentMethodAutomaticallyUpdated` on `Event`
 
