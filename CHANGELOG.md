@@ -1,37 +1,21 @@
 # Changelog
 
-## 39.1.1 - 2020-08-31
-* [#2191](https://github.com/stripe/stripe-dotnet/pull/2191) Fix the release of stripe-dotnet to push a *.snupkg archive
-
-## 39.1.0 - 2020-08-31
-* [#2190](https://github.com/stripe/stripe-dotnet/pull/2190) Add support for `PaymentMethodAutomaticallyUpdated` on `Event`
-
-## 39.0.0 - 2020-08-31
-* [#2189](https://github.com/stripe/stripe-dotnet/pull/2189) Multiple API changes
+## 39.1.2 - 2020-09-01
     
-    Major version release for API version 2020-08-27 continued, a few changes were missing from the previous release.
-
-    Pull requests included in this release (⚠️ = breaking changes):
-
-    * ⚠️ Removes `Bitcoin` from `ChargePaymentMethodDetails`
-    * ⚠️ Removes `UnifiedProration` from `InvoiceItem` and `InvoiceLineItem`
-    * ⚠️ Removes `Plan` from `Quantity` from `Subscription`
-    * ⚠️ Removes `FailureUrl` and `SuccessUrl` from `AccountLinkCreateOptions`
-    * ⚠️ Removes `RequestedCapabilities` from `AccountCreateOptions` and `AccountUpdateOptions`
-    * ⚠️ Removes `SavePaymentMethod` and `Source` from `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, and `PaymentIntentUpdateOptions`
-
-## 38.0.0 - 2020-08-31
-* [#2098](https://github.com/stripe/stripe-dotnet/pull/2098) stripe-dotnet v38.0
-    
-    Major version release for new API version 2020-08-27.
-
-    ⚠️  Prefer v39.0.0 over this release. v39.0.0 contains the complete changeset.
+    Major version release for API version 2020-08-27.
 
     Pull requests included in this release (⚠️ = breaking changes):
 
     * Set default value on non-nullable `DateTime` properties for deserializing with `UnixDateTimeConverter`
+    * [#2190](https://github.com/stripe/stripe-dotnet/pull/2190) Add support for `PaymentMethodAutomaticallyUpdated` on `Event`
     * [#2006](https://github.com/stripe/stripe-dotnet/pull/2006) Default the number of network retries to 2
     * [#2097](https://github.com/stripe/stripe-dotnet/pull/2097) Correct namespaces for Issuing and Checkout
+    * [#2189](https://github.com/stripe/stripe-dotnet/pull/2189) ⚠️ Removes `Bitcoin` from `ChargePaymentMethodDetails`
+    * [#2189](https://github.com/stripe/stripe-dotnet/pull/2189) ⚠️ Removes `UnifiedProration` from `InvoiceItem` and `InvoiceLineItem`
+    * [#2189](https://github.com/stripe/stripe-dotnet/pull/2189) ⚠️ Removes `Plan` from `Quantity` from `Subscription`
+    * [#2189](https://github.com/stripe/stripe-dotnet/pull/2189) ⚠️ Removes `FailureUrl` and `SuccessUrl` from `AccountLinkCreateOptions`
+    * [#2189](https://github.com/stripe/stripe-dotnet/pull/2189) ⚠️ Removes `RequestedCapabilities` from `AccountCreateOptions` and `AccountUpdateOptions`
+    * [#2189](https://github.com/stripe/stripe-dotnet/pull/2189) ⚠️ Removes `SavePaymentMethod` and `Source` from `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, and `PaymentIntentUpdateOptions`
     * [#2098](https://github.com/stripe/stripe-dotnet/pull/2098) ⚠️ Remove `ThreeDSecure` and `Bitcoin` resources
     * [#2099](https://github.com/stripe/stripe-dotnet/pull/2099) ⚠️ and [#2036](https://github.com/stripe/stripe-dotnet/pull/2036) Rename all arguments names for services methods to use `id` and `parentId` and be consistent
     * [#2101](https://github.com/stripe/stripe-dotnet/pull/2101) ⚠️ Drop support for .NET Framework 4.5 and require .NET Framework 4.6.1 at a minimum
@@ -71,6 +55,7 @@
     * [#2176](https://github.com/stripe/stripe-dotnet/pull/2176) ⚠️ Use new `parentId` pattern in the `ApplicationFeeRefundService`
     * [#2178](https://github.com/stripe/stripe-dotnet/pull/2178) ⚠️ Unshare `ChargeDestinationOptions`
     * [#2181](https://github.com/stripe/stripe-dotnet/pull/2181) ⚠️ Updates doc strings to match the OpenAPI spec
+    * [#2193](https://github.com/stripe/stripe-dotnet/pull/2193) Configure license and icon within repo
 
 ## 37.35.0 - 2020-08-27
 * [#2186](https://github.com/stripe/stripe-dotnet/pull/2186) Add support for `SepaCreditTransfer` in `SourceTransaction`
