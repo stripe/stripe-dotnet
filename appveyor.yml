@@ -67,7 +67,7 @@ after_test:
       }
 
 artifacts:
-  - path: 'src\Stripe.net\bin\Release\*.snupkg'
+  - path: 'src\Stripe.net\bin\Release\*.nupkg'
 
 # these commands tell appveyor to open an RDP session for debugging
 #init:
