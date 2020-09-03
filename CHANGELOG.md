@@ -1,5 +1,12 @@
 # Changelog
 
+## 39.2.0 - 2020-09-03
+* [#2198](https://github.com/stripe/stripe-dotnet/pull/2198) Multiple API changes
+  * Improve support for the Issuing `Dispute` APIs. Added the Submit API, missing parameters on creation, update and list and returned evidence details
+  * Add support for `dispute` on Issuing `Transaction`
+  * Add `AvailablePayoutMethods` on `BankAccount`
+  * Add `PaymentStatus` on Checkout `Session`
+
 ## 39.1.2 - 2020-09-01
     
     Major version release for API version 2020-08-27.
