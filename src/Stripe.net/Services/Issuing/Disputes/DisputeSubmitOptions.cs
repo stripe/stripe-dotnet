@@ -3,14 +3,8 @@ namespace Stripe.Issuing
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class DisputeUpdateOptions : BaseOptions, IHasMetadata
+    public class DisputeSubmitOptions : BaseOptions, IHasMetadata
     {
-        /// <summary>
-        /// A hash containing all the evidence related to the dispute.
-        /// </summary>
-        [JsonProperty("evidence")]
-        public DisputeEvidenceOptions Evidence { get; set; }
-
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the

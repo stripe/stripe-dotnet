@@ -1,5 +1,6 @@
 namespace StripeTests.Issuing
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
@@ -14,6 +15,7 @@ namespace StripeTests.Issuing
 
         private readonly DisputeService service;
         private readonly DisputeCreateOptions createOptions;
+        private readonly DisputeSubmitOptions submitOptions;
         private readonly DisputeUpdateOptions updateOptions;
         private readonly DisputeListOptions listOptions;
 
@@ -26,10 +28,35 @@ namespace StripeTests.Issuing
 
             this.createOptions = new DisputeCreateOptions
             {
+                Evidence = new DisputeEvidenceOptions
+                {
+                    NotReceived = new DisputeEvidenceNotReceivedOptions
+                    {
+                        AdditionalDocumentation = "file_123",
+                        ExpectedAt = DateTime.Now,
+                        Explanation = "Dispute explanation",
+                        ProductDescription = "Product description",
+                        ProductType = "merchandise",
+                    },
+                    Reason = "not_received",
+                },
+                Transaction = "ipi_123",
+            };
+
+            this.submitOptions = new DisputeSubmitOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "key", "value" },
+                },
             };
 
             this.updateOptions = new DisputeUpdateOptions
             {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "key", "value" },
+                },
             };
 
             this.listOptions = new DisputeListOptions
@@ -100,6 +127,22 @@ namespace StripeTests.Issuing
             var dispute = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
             Assert.NotNull(dispute);
             Assert.Equal("issuing.dispute", dispute.Object);
+        }
+
+        [Fact]
+        public void Submit()
+        {
+            var dispute = this.service.Submit(DisputeId, this.submitOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/disputes/idp_123/submit");
+            Assert.NotNull(dispute);
+        }
+
+        [Fact]
+        public async Task SubmitAsync()
+        {
+            var dispute = await this.service.SubmitAsync(DisputeId, this.submitOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/disputes/idp_123/submit");
+            Assert.NotNull(dispute);
         }
 
         [Fact]

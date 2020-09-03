@@ -176,6 +176,37 @@ namespace Stripe.Issuing
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        #region Expandable Dispute
+
+        /// <summary>
+        /// (ID of the Dispute)
+        /// If you've disputed the transaction, the ID of the dispute.
+        /// </summary>
+        [JsonIgnore]
+        public string DisputeId
+        {
+            get => this.InternalDispute?.Id;
+            set => this.InternalDispute = SetExpandableFieldId(value, this.InternalDispute);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// If you've disputed the transaction, the ID of the dispute.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Dispute Dispute
+        {
+            get => this.InternalDispute?.ExpandedObject;
+            set => this.InternalDispute = SetExpandableFieldObject(value, this.InternalDispute);
+        }
+
+        [JsonProperty("dispute")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Dispute>))]
+        internal ExpandableField<Dispute> InternalDispute { get; set; }
+        #endregion
+
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
@@ -217,7 +248,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The nature of the transaction.
-        /// One of: <c>capture</c>, or <c>refund</c>.
+        /// One of: <c>capture</c>, <c>dispute</c>, or <c>refund</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

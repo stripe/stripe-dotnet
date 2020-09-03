@@ -42,8 +42,7 @@ namespace Stripe.Reporting
         public ReportRunParameters Parameters { get; set; }
 
         /// <summary>
-        /// The ID of the <a
-        /// href="https://stripe.com/docs/reporting/statements/api#report-types">report type</a> to
+        /// The ID of the <a href="https://stripe.com/docs/reports/report-types">report type</a> to
         /// run, such as <c>"balance.summary.1"</c>.
         /// </summary>
         [JsonProperty("report_type")]

@@ -102,9 +102,8 @@ namespace Stripe
         public string AddressZipCheck { get; set; }
 
         /// <summary>
-        /// A set of available payout methods for this card. Will be either <c>["standard"]</c> or
-        /// <c>["standard", "instant"]</c>. Only values from this set should be passed as the
-        /// <c>method</c> when creating a transfer.
+        /// A set of available payout methods for this card. Only values from this set should be
+        /// passed as the <c>method</c> when creating a payout.
         /// </summary>
         [JsonProperty("available_payout_methods")]
         public List<string> AvailablePayoutMethods { get; set; }
