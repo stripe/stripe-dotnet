@@ -191,6 +191,15 @@ namespace Stripe.Checkout
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
+        /// <summary>
+        /// The payment status of the Checkout Session, one of <c>paid</c>, <c>unpaid</c>, or
+        /// <c>no_payment_required</c>. You can use this value to decide when to fulfill your
+        /// customer's order.
+        /// One of: <c>no_payment_required</c>, <c>paid</c>, or <c>unpaid</c>.
+        /// </summary>
+        [JsonProperty("payment_status")]
+        public string PaymentStatus { get; set; }
+
         #region Expandable SetupIntent
 
         /// <summary>

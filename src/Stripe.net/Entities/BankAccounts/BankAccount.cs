@@ -63,6 +63,13 @@ namespace Stripe
         public string AccountHolderType { get; set; }
 
         /// <summary>
+        /// A set of available payout methods for this bank account. Only values from this set
+        /// should be passed as the <c>method</c> when creating a payout.
+        /// </summary>
+        [JsonProperty("available_payout_methods")]
+        public List<string> AvailablePayoutMethods { get; set; }
+
+        /// <summary>
         /// Name of the bank associated with the routing number (e.g., <c>WELLS FARGO</c>).
         /// </summary>
         [JsonProperty("bank_name")]
