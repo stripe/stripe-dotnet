@@ -116,13 +116,16 @@ namespace Stripe
         [JsonProperty("sepa_debit")]
         public PaymentMethodSepaDebit SepaDebit { get; set; }
 
+        [JsonProperty("sofort")]
+        public PaymentMethodSofort Sofort { get; set; }
+
         /// <summary>
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
         /// One of: <c>alipay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
-        /// <c>card</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>ideal</c>, <c>p24</c>, or
-        /// <c>sepa_debit</c>.
+        /// <c>card</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>ideal</c>, <c>p24</c>,
+        /// <c>sepa_debit</c>, or <c>sofort</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

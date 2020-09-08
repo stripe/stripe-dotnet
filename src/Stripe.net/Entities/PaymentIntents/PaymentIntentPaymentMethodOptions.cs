@@ -12,5 +12,8 @@ namespace Stripe
 
         [JsonProperty("card")]
         public PaymentIntentPaymentMethodOptionsCard Card { get; set; }
+
+        [JsonProperty("sofort")]
+        public PaymentIntentPaymentMethodOptionsSofort Sofort { get; set; }
     }
 }
