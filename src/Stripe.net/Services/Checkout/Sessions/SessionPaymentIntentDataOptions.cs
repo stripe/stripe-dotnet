@@ -6,12 +6,13 @@ namespace Stripe.Checkout
     public class SessionPaymentIntentDataOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
-        /// The amount of the application fee (if any) that will be applied to the payment and
-        /// transferred to the application owner's Stripe account. To use an application fee, the
-        /// request must be made on behalf of another account, using the <c>Stripe-Account</c>
-        /// header or an OAuth key. For more information, see the PaymentIntents <a
-        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
-        /// accounts</a>.
+        /// The amount of the application fee (if any) that will be requested to be applied to the
+        /// payment and transferred to the application owner's Stripe account. The amount of the
+        /// application fee collected will be capped at the total payment amount. To use an
+        /// application fee, the request must be made on behalf of another account, using the
+        /// <c>Stripe-Account</c> header or an OAuth key. For more information, see the
+        /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
+        /// for connected accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }

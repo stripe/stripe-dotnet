@@ -76,7 +76,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The amount of the application fee (if any) for the resulting payment. See the
+        /// The amount of the application fee (if any) requested for the resulting payment. See the
         /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
         /// for connected accounts</a> for details.
         /// </summary>

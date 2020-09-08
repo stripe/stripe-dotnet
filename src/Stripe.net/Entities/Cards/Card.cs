@@ -160,7 +160,11 @@ namespace Stripe
 
         /// <summary>
         /// If a CVC was provided, results of the check: <c>pass</c>, <c>fail</c>,
-        /// <c>unavailable</c>, or <c>unchecked</c>.
+        /// <c>unavailable</c>, or <c>unchecked</c>. A result of unchecked indicates that CVC was
+        /// provided but hasn't been checked yet. Checks are typically performed when attaching a
+        /// card to a Customer object, or when creating a charge. For more details, see <a
+        /// href="https://support.stripe.com/questions/check-if-a-card-is-valid-without-a-charge">Check
+        /// if a card is valid without a charge</a>.
         /// </summary>
         [JsonProperty("cvc_check")]
         public string CvcCheck { get; set; }

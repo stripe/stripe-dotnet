@@ -105,7 +105,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The amount of the application fee (if any) for the charge. <a
+        /// The amount of the application fee (if any) requested for the charge. <a
         /// href="https://stripe.com/docs/connect/direct-charges#collecting-fees">See the Connect
         /// documentation</a> for details.
         /// </summary>

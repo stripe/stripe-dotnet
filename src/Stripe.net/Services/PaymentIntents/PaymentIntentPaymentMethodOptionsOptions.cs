@@ -23,5 +23,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("card")]
         public PaymentIntentPaymentMethodOptionsCardOptions Card { get; set; }
+
+        /// <summary>
+        /// If this is a <c>sofort</c> PaymentMethod, this sub-hash contains details about the
+        /// SOFORT payment method options.
+        /// </summary>
+        [JsonProperty("sofort")]
+        public PaymentIntentPaymentMethodOptionsSofortOptions Sofort { get; set; }
     }
 }
