@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.3.0 - 2020-09-08
+* [#2199](https://github.com/stripe/stripe-dotnet/pull/2199) Add support for Sofort on `PaymentMethod` and `PaymentIntent`
+
 ## 39.2.0 - 2020-09-03
 * [#2198](https://github.com/stripe/stripe-dotnet/pull/2198) Multiple API changes
   * Improve support for the Issuing `Dispute` APIs. Added the Submit API, missing parameters on creation, update and list and returned evidence details
