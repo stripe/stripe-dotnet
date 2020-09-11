@@ -603,6 +603,16 @@ namespace Stripe
         public const string ProductUpdated = "product.updated";
 
         /// <summary>
+        /// Occurs whenever a promotion code is created.
+        /// </summary>
+        public const string PromotionCodeCreated = "promotion_code.created";
+
+        /// <summary>
+        /// Occurs whenever a promotion code is updated.
+        /// </summary>
+        public const string PromotionCodeUpdated = "promotion_code.updated";
+
+        /// <summary>
         /// Occurs whenever an early fraud warning is created.
         /// </summary>
         public const string RadarEarlyFraudWarningCreated = "radar.early_fraud_warning.created";
