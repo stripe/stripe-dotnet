@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.4.0 - 2020-09-13
+* [#2203](https://github.com/stripe/stripe-dotnet/pull/2203) Add support for `promotion_code.created` and `promotion_code.updated` on `Event`
+
 ## 39.3.0 - 2020-09-08
 * [#2199](https://github.com/stripe/stripe-dotnet/pull/2199) Add support for Sofort on `PaymentMethod` and `PaymentIntent`
 
