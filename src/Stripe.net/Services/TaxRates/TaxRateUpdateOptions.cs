@@ -27,7 +27,8 @@ namespace Stripe
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// The jurisdiction for the tax rate.
+        /// The jurisdiction for the tax rate. You can use this label field for tax reporting
+        /// purposes. It also appears on your customer’s invoice.
         /// </summary>
         [JsonProperty("jurisdiction")]
         public string Jurisdiction { get; set; }

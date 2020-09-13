@@ -6,7 +6,7 @@ namespace Stripe.Issuing
     public class DisputeCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// A hash containing all the evidence related to the dispute.
+        /// Evidence provided for the dispute.
         /// </summary>
         [JsonProperty("evidence")]
         public DisputeEvidenceOptions Evidence { get; set; }
