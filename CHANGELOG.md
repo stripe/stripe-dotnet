@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.5.0 - 2020-09-21
+* [#2204](https://github.com/stripe/stripe-dotnet/pull/2204) Add support for `AmountCaptured` on `Charge`
+* [#2205](https://github.com/stripe/stripe-dotnet/pull/2205) Add support for `CheckoutSession` on `Discount`
+
 ## 39.4.0 - 2020-09-13
 * [#2203](https://github.com/stripe/stripe-dotnet/pull/2203) Add support for `promotion_code.created` and `promotion_code.updated` on `Event`
 
