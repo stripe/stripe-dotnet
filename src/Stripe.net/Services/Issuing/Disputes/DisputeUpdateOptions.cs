@@ -1,3 +1,4 @@
+// File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
