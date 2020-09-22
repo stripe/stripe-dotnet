@@ -148,9 +148,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// The URL to which Stripe should send customers when payment or setup is complete. If
         /// you’d like access to the Checkout Session for the successful payment, read more about it
-        /// in our guide on <a
-        /// href="https://stripe.com/docs/payments/checkout/accept-a-payment#payment-success">fulfilling
-        /// your payments with webhooks</a>.
+        /// in the guide on <a
+        /// href="https://stripe.com/docs/payments/checkout/fulfill-orders">fulfilling orders</a>.
         /// </summary>
         [JsonProperty("success_url")]
         public string SuccessUrl { get; set; }

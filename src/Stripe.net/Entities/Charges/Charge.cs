@@ -32,6 +32,13 @@ namespace Stripe
         public long Amount { get; set; }
 
         /// <summary>
+        /// Amount in %s captured (can be less than the amount attribute on the charge if a partial
+        /// capture was made).
+        /// </summary>
+        [JsonProperty("amount_captured")]
+        public long AmountCaptured { get; set; }
+
+        /// <summary>
         /// Amount in %s refunded (can be less than the amount attribute on the charge if a partial
         /// refund was issued).
         /// </summary>
