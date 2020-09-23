@@ -245,7 +245,7 @@ namespace Stripe
         public List<TaxRate> TaxRates { get; set; }
 
         /// <summary>
-        /// Unit Amount (in the <c>currency</c> specified) of the invoice item.
+        /// Unit amount (in the <c>currency</c> specified) of the invoice item.
         /// </summary>
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }

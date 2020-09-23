@@ -7,9 +7,8 @@ namespace Stripe
     public class InvoiceItemUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The integer amount in <strong>%s</strong> of the charge to be applied to the upcoming
-        /// invoice. If you want to apply a credit to the customer's account, pass a negative
-        /// amount.
+        /// The integer amount in %s of the charge to be applied to the upcoming invoice. If you
+        /// want to apply a credit to the customer's account, pass a negative amount.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
@@ -80,17 +79,16 @@ namespace Stripe
         public List<string> TaxRates { get; set; }
 
         /// <summary>
-        /// The integer unit amount in <strong>%s</strong> of the charge to be applied to the
-        /// upcoming invoice. This unit_amount will be multiplied by the quantity to get the full
-        /// amount. If you want to apply a credit to the customer's account, pass a negative
-        /// unit_amount.
+        /// The integer unit amount in %s of the charge to be applied to the upcoming invoice. This
+        /// unit_amount will be multiplied by the quantity to get the full amount. If you want to
+        /// apply a credit to the customer's account, pass a negative unit_amount.
         /// </summary>
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
-        /// Same as <c>unit_amount</c>, but accepts a decimal value with at most 12 decimal places.
-        /// Only one of <c>unit_amount</c> and <c>unit_amount_decimal</c> can be set.
+        /// Same as <c>unit_amount</c>, but accepts a decimal value in %s with at most 12 decimal
+        /// places. Only one of <c>unit_amount</c> and <c>unit_amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }

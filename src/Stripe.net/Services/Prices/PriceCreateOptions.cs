@@ -110,8 +110,8 @@ namespace Stripe
         public long? UnitAmount { get; set; }
 
         /// <summary>
-        /// Same as <c>unit_amount</c>, but accepts a decimal value with at most 12 decimal places.
-        /// Only one of <c>unit_amount</c> and <c>unit_amount_decimal</c> can be set.
+        /// Same as <c>unit_amount</c>, but accepts a decimal value in %s with at most 12 decimal
+        /// places. Only one of <c>unit_amount</c> and <c>unit_amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }

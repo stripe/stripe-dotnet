@@ -19,8 +19,8 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// The integer amount in <strong>%s</strong> representing the gross amount being credited
-        /// for this line item, excluding (exclusive) tax and discounts.
+        /// The integer amount in %s representing the gross amount being credited for this line
+        /// item, excluding (exclusive) tax and discounts.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -32,8 +32,7 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// The integer amount in <strong>%s</strong> representing the discount being credited for
-        /// this line item.
+        /// The integer amount in %s representing the discount being credited for this line item.
         /// </summary>
         [JsonProperty("discount_amount")]
         public long DiscountAmount { get; set; }
