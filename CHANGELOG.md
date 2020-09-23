@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.6.0 - 2020-09-23
+* [#2208](https://github.com/stripe/stripe-dotnet/pull/2208) Add support for `IssuingDisputeClosed` and `IssuingDisputeSubmitted` on `Event`
+* [#2207](https://github.com/stripe/stripe-dotnet/pull/2207) Add support for `InstantAvailable` on `Balance`
+
 ## 39.5.0 - 2020-09-21
 * [#2204](https://github.com/stripe/stripe-dotnet/pull/2204) Add support for `AmountCaptured` on `Charge`
 * [#2205](https://github.com/stripe/stripe-dotnet/pull/2205) Add support for `CheckoutSession` on `Discount`
