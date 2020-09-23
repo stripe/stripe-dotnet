@@ -393,6 +393,11 @@ namespace Stripe
         public const string IssuingCardholderUpdated = "issuing_cardholder.updated";
 
         /// <summary>
+        /// Occurs whenever a dispute is closed.
+        /// </summary>
+        public const string IssuingDisputeClosed = "issuing_dispute.closed";
+
+        /// <summary>
         /// Occurs whenever an issuing dispute is created.
         /// </summary>
         public const string IssuingDisputeCreated = "issuing_dispute.created";
@@ -401,6 +406,11 @@ namespace Stripe
         /// Occurs whenever an issuing dispute's funds are reinstate.
         /// </summary>
         public const string IssuingDisputeFundsReinstated = "issuing_dispute.funds_reinstated";
+
+        /// <summary>
+        /// Occurs whenever a dispute is submitted.
+        /// </summary>
+        public const string IssuingDisputeSubmitted = "issuing_dispute.submitted";
 
         /// <summary>
         /// Occurs whenever an issuing dispute is updated.
