@@ -29,6 +29,12 @@ namespace Stripe
         [JsonProperty("connect_reserved")]
         public List<BalanceAmount> ConnectReserved { get; set; }
 
+        /// <summary>
+        /// Funds that can be paid out using Instant Payouts.
+        /// </summary>
+        [JsonProperty("instant_available")]
+        public List<BalanceInstantAvailable> InstantAvailable { get; set; }
+
         [JsonProperty("issuing")]
         public BalanceDetails Issuing { get; set; }
 

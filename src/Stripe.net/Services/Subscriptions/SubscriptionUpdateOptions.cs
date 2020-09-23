@@ -86,16 +86,23 @@ namespace Stripe
 
         /// <summary>
         /// ID of the default payment method for the subscription. It must belong to the customer
-        /// associated with the subscription. If not set, invoices will use the default payment
-        /// method in the customer's invoice settings.
+        /// associated with the subscription. This takes precedence over <c>default_source</c>. If
+        /// neither are set, invoices will use the customer's <a
+        /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
+        /// or <a
+        /// href="https://stripe.com/docs/api/customers/object#customer_object-default_source">default_source</a>.
         /// </summary>
         [JsonProperty("default_payment_method")]
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
         /// ID of the default payment source for the subscription. It must belong to the customer
-        /// associated with the subscription and be in a chargeable state. If not set, defaults to
-        /// the customer's default source.
+        /// associated with the subscription and be in a chargeable state. If
+        /// <c>default_payment_method</c> is also set, <c>default_payment_method</c> will take
+        /// precedence. If neither are set, invoices will use the customer's <a
+        /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
+        /// or <a
+        /// href="https://stripe.com/docs/api/customers/object#customer_object-default_source">default_source</a>.
         /// </summary>
         [JsonProperty("default_source")]
         public string DefaultSource { get; set; }
