@@ -8,6 +8,9 @@ namespace Stripe
         [JsonProperty("alipay_handle_redirect")]
         public PaymentIntentNextActionAlipayHandleRedirect AlipayHandleRedirect { get; set; }
 
+        [JsonProperty("oxxo_display_details")]
+        public PaymentIntentNextActionOxxoDisplayDetails OxxoDisplayDetails { get; set; }
+
         [JsonProperty("redirect_to_url")]
         public PaymentIntentNextActionRedirectToUrl RedirectToUrl { get; set; }
 
