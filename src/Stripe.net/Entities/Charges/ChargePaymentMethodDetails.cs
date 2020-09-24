@@ -53,6 +53,9 @@ namespace Stripe
         [JsonProperty("multibanco")]
         public ChargePaymentMethodDetailsMultibanco Multibanco { get; set; }
 
+        [JsonProperty("oxxo")]
+        public ChargePaymentMethodDetailsOxxo Oxxo { get; set; }
+
         [JsonProperty("p24")]
         public ChargePaymentMethodDetailsP24 P24 { get; set; }
 

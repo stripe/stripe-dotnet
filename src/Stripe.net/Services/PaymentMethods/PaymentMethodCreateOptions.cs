@@ -95,6 +95,13 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// If this is an <c>oxxo</c> PaymentMethod, this hash contains details about the OXXO
+        /// payment method.
+        /// </summary>
+        [JsonProperty("oxxo")]
+        public PaymentMethodOxxoOptions Oxxo { get; set; }
+
+        /// <summary>
         /// If this is a <c>p24</c> PaymentMethod, this hash contains details about the P24 payment
         /// method.
         /// </summary>
@@ -126,8 +133,8 @@ namespace Stripe
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
         /// One of: <c>alipay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
-        /// <c>card</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>ideal</c>, <c>p24</c>,
-        /// <c>sepa_debit</c>, or <c>sofort</c>.
+        /// <c>card</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>ideal</c>, <c>oxxo</c>,
+        /// <c>p24</c>, <c>sepa_debit</c>, or <c>sofort</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

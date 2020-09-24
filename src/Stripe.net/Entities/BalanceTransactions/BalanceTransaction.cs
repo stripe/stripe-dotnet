@@ -134,28 +134,30 @@ namespace Stripe
         /// <summary>
         /// Transaction type: <c>adjustment</c>, <c>advance</c>, <c>advance_funding</c>,
         /// <c>anticipation_repayment</c>, <c>application_fee</c>, <c>application_fee_refund</c>,
-        /// <c>charge</c>, <c>connect_collection_transfer</c>, <c>issuing_authorization_hold</c>,
-        /// <c>issuing_authorization_release</c>, <c>issuing_dispute</c>,
-        /// <c>issuing_transaction</c>, <c>payment</c>, <c>payment_failure_refund</c>,
-        /// <c>payment_refund</c>, <c>payout</c>, <c>payout_cancel</c>, <c>payout_failure</c>,
-        /// <c>refund</c>, <c>refund_failure</c>, <c>reserve_transaction</c>, <c>reserved_funds</c>,
-        /// <c>stripe_fee</c>, <c>stripe_fx_fee</c>, <c>tax_fee</c>, <c>topup</c>,
-        /// <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>,
-        /// or <c>transfer_refund</c>. <a
+        /// <c>charge</c>, <c>connect_collection_transfer</c>, <c>contribution</c>,
+        /// <c>issuing_authorization_hold</c>, <c>issuing_authorization_release</c>,
+        /// <c>issuing_dispute</c>, <c>issuing_transaction</c>, <c>payment</c>,
+        /// <c>payment_failure_refund</c>, <c>payment_refund</c>, <c>payout</c>,
+        /// <c>payout_cancel</c>, <c>payout_failure</c>, <c>refund</c>, <c>refund_failure</c>,
+        /// <c>reserve_transaction</c>, <c>reserved_funds</c>, <c>stripe_fee</c>,
+        /// <c>stripe_fx_fee</c>, <c>tax_fee</c>, <c>topup</c>, <c>topup_reversal</c>,
+        /// <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>, or
+        /// <c>transfer_refund</c>. <a
         /// href="https://stripe.com/docs/reports/balance-transaction-types">Learn more</a> about
         /// balance transaction types and what they represent. If you are looking to classify
         /// transactions for accounting purposes, you might want to consider
         /// <c>reporting_category</c> instead.
         /// One of: <c>adjustment</c>, <c>advance</c>, <c>advance_funding</c>,
         /// <c>anticipation_repayment</c>, <c>application_fee</c>, <c>application_fee_refund</c>,
-        /// <c>charge</c>, <c>connect_collection_transfer</c>, <c>issuing_authorization_hold</c>,
-        /// <c>issuing_authorization_release</c>, <c>issuing_dispute</c>,
-        /// <c>issuing_transaction</c>, <c>payment</c>, <c>payment_failure_refund</c>,
-        /// <c>payment_refund</c>, <c>payout</c>, <c>payout_cancel</c>, <c>payout_failure</c>,
-        /// <c>refund</c>, <c>refund_failure</c>, <c>reserve_transaction</c>, <c>reserved_funds</c>,
-        /// <c>stripe_fee</c>, <c>stripe_fx_fee</c>, <c>tax_fee</c>, <c>topup</c>,
-        /// <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>,
-        /// or <c>transfer_refund</c>.
+        /// <c>charge</c>, <c>connect_collection_transfer</c>, <c>contribution</c>,
+        /// <c>issuing_authorization_hold</c>, <c>issuing_authorization_release</c>,
+        /// <c>issuing_dispute</c>, <c>issuing_transaction</c>, <c>payment</c>,
+        /// <c>payment_failure_refund</c>, <c>payment_refund</c>, <c>payout</c>,
+        /// <c>payout_cancel</c>, <c>payout_failure</c>, <c>refund</c>, <c>refund_failure</c>,
+        /// <c>reserve_transaction</c>, <c>reserved_funds</c>, <c>stripe_fee</c>,
+        /// <c>stripe_fx_fee</c>, <c>tax_fee</c>, <c>topup</c>, <c>topup_reversal</c>,
+        /// <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>, or
+        /// <c>transfer_refund</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
