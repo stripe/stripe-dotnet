@@ -2,7 +2,6 @@
 
 ## 39.7.0 - 2020-09-24
 * [#2209](https://github.com/stripe/stripe-dotnet/pull/2209) Add support for OXXO on `PaymentMethod` and `PaymentIntent`
-  * Add support for OXXO
 
 ## 39.6.0 - 2020-09-23
 * [#2208](https://github.com/stripe/stripe-dotnet/pull/2208) Add support for `IssuingDisputeClosed` and `IssuingDisputeSubmitted` on `Event`
