@@ -54,6 +54,12 @@ namespace Stripe
         public AccountCapabilitiesLegacyPaymentsOptions LegacyPayments { get; set; }
 
         /// <summary>
+        /// The oxxo_payments capability.
+        /// </summary>
+        [JsonProperty("oxxo_payments")]
+        public AccountCapabilitiesOxxoPaymentsOptions OxxoPayments { get; set; }
+
+        /// <summary>
         /// The tax_reporting_us_1099_k capability.
         /// </summary>
         [JsonProperty("tax_reporting_us_1099_k")]

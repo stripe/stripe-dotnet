@@ -69,6 +69,14 @@ namespace Stripe
         public string LegacyPayments { get; set; }
 
         /// <summary>
+        /// The status of the OXXO payments capability of the account, or whether the account can
+        /// directly process OXXO charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("oxxo_payments")]
+        public string OxxoPayments { get; set; }
+
+        /// <summary>
         /// The status of the tax reporting 1099-K (US) capability of the account.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
