@@ -22,8 +22,8 @@ namespace Stripe
         /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account. The amount of the
-        /// application fee collected will be capped at the total payment amount. Must be greater
-        /// than zero when provided. For more information, see the PaymentIntents <a
+        /// application fee collected will be capped at the total payment amount. For more
+        /// information, see the PaymentIntents <a
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
