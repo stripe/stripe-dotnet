@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.8.0 - 2020-09-28
+* [#2210](https://github.com/stripe/stripe-dotnet/pull/2210) Add support for `oxxo_payments` capability on `Account`
+
 ## 39.7.0 - 2020-09-24
 * [#2209](https://github.com/stripe/stripe-dotnet/pull/2209) Add support for OXXO on `PaymentMethod` and `PaymentIntent`
 
