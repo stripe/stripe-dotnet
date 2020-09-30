@@ -1,0 +1,17 @@
+{
+  "id": "setatt_123",
+  "object": "setup_attempt",
+  "application": "ca_123",
+  "created": 1562004309,
+  "customer": "cus_123",
+  "livemode": false,
+  "on_behalf_of": "acct_123",
+  "payment_method": "pm_123",
+  "payment_method_details": {
+    "type": "card"
+  },
+  "setup_error": null,
+  "setup_intent": "seti_123",
+  "status": "succeeded",
+  "usage": "off_session"
+}
