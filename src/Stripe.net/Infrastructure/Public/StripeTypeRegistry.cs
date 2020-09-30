@@ -69,6 +69,7 @@ namespace Stripe
             { "reporting.report_run", typeof(Reporting.ReportRun) },
             { "reporting.report_type", typeof(Reporting.ReportType) },
             { "scheduled_query_run", typeof(Sigma.ScheduledQueryRun) },
+            { "setup_attempt", typeof(SetupAttempt) },
             { "setup_intent", typeof(SetupIntent) },
             { "sku", typeof(Sku) },
             { "source", typeof(Source) },
