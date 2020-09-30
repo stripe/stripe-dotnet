@@ -42,8 +42,8 @@ namespace Stripe
         [JsonProperty("subscription_items")]
         public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
 
-        [JsonProperty("subscription_prorate")]
-        public bool? SubscriptionProrate { get; set; }
+        [JsonProperty("subscription_proration_behavior")]
+        public string SubscriptionProrationBehavior { get; set; }
 
         [JsonProperty("subscription_proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
