@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.9.0 - 2020-09-29
+* [#2211](https://github.com/stripe/stripe-dotnet/pull/2211) Add support for the `SetupAttempt` resource and List API
+
 ## 39.8.0 - 2020-09-28
 * [#2210](https://github.com/stripe/stripe-dotnet/pull/2210) Add support for `oxxo_payments` capability on `Account`
 
