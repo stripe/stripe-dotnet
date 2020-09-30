@@ -128,6 +128,37 @@ namespace Stripe
         [JsonProperty("last_setup_error")]
         public StripeError LastSetupError { get; set; }
 
+        #region Expandable LatestAttempt
+
+        /// <summary>
+        /// (ID of the SetupAttempt)
+        /// The most recent SetupAttempt for this SetupIntent.
+        /// </summary>
+        [JsonIgnore]
+        public string LatestAttemptId
+        {
+            get => this.InternalLatestAttempt?.Id;
+            set => this.InternalLatestAttempt = SetExpandableFieldId(value, this.InternalLatestAttempt);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The most recent SetupAttempt for this SetupIntent.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public SetupAttempt LatestAttempt
+        {
+            get => this.InternalLatestAttempt?.ExpandedObject;
+            set => this.InternalLatestAttempt = SetExpandableFieldObject(value, this.InternalLatestAttempt);
+        }
+
+        [JsonProperty("latest_attempt")]
+        [JsonConverter(typeof(ExpandableFieldConverter<SetupAttempt>))]
+        internal ExpandableField<SetupAttempt> InternalLatestAttempt { get; set; }
+        #endregion
+
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.

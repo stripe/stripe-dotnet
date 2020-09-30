@@ -51,8 +51,9 @@ namespace Stripe.Reporting
         /// Category of balance transactions to be included in the report run.
         /// One of: <c>advance</c>, <c>advance_funding</c>, <c>anticipation_repayment</c>,
         /// <c>charge</c>, <c>charge_failure</c>, <c>connect_collection_transfer</c>,
-        /// <c>connect_reserved_funds</c>, <c>dispute</c>, <c>dispute_reversal</c>, <c>fee</c>,
-        /// <c>financing_paydown</c>, <c>financing_paydown_reversal</c>, <c>financing_payout</c>,
+        /// <c>connect_reserved_funds</c>, <c>contribution</c>, <c>dispute</c>,
+        /// <c>dispute_reversal</c>, <c>fee</c>, <c>financing_paydown</c>,
+        /// <c>financing_paydown_reversal</c>, <c>financing_payout</c>,
         /// <c>financing_payout_reversal</c>, <c>issuing_authorization_hold</c>,
         /// <c>issuing_authorization_release</c>, <c>issuing_dispute</c>,
         /// <c>issuing_transaction</c>, <c>network_cost</c>, <c>other_adjustment</c>,
