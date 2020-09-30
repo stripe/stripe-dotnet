@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.10.0 - 2020-09-30
+* [#2212](https://github.com/stripe/stripe-dotnet/pull/2212) Add support for `SubscriptionProrationBehavior` on `UpcomingInvoiceListLineItemsOptions`
+
 ## 39.9.0 - 2020-09-29
 * [#2211](https://github.com/stripe/stripe-dotnet/pull/2211) Add support for the `SetupAttempt` resource and List API
 
