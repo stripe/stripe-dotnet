@@ -39,7 +39,6 @@ namespace StripeTests
                     Weight = 100,
                     Width = 100,
                 },
-                Type = "good",
             };
 
             this.updateOptions = new ProductUpdateOptions
