@@ -18,6 +18,12 @@ namespace Stripe
         public AccountCapabilitiesBacsDebitPaymentsOptions BacsDebitPayments { get; set; }
 
         /// <summary>
+        /// The bancontact_payments capability.
+        /// </summary>
+        [JsonProperty("bancontact_payments")]
+        public AccountCapabilitiesBancontactPaymentsOptions BancontactPayments { get; set; }
+
+        /// <summary>
         /// The card_issuing capability.
         /// </summary>
         [JsonProperty("card_issuing")]
@@ -36,10 +42,28 @@ namespace Stripe
         public AccountCapabilitiesCartesBancairesPaymentsOptions CartesBancairesPayments { get; set; }
 
         /// <summary>
+        /// The eps_payments capability.
+        /// </summary>
+        [JsonProperty("eps_payments")]
+        public AccountCapabilitiesEpsPaymentsOptions EpsPayments { get; set; }
+
+        /// <summary>
         /// The fpx_payments capability.
         /// </summary>
         [JsonProperty("fpx_payments")]
         public AccountCapabilitiesFpxPaymentsOptions FpxPayments { get; set; }
+
+        /// <summary>
+        /// The giropay_payments capability.
+        /// </summary>
+        [JsonProperty("giropay_payments")]
+        public AccountCapabilitiesGiropayPaymentsOptions GiropayPayments { get; set; }
+
+        /// <summary>
+        /// The ideal_payments capability.
+        /// </summary>
+        [JsonProperty("ideal_payments")]
+        public AccountCapabilitiesIdealPaymentsOptions IdealPayments { get; set; }
 
         /// <summary>
         /// The jcb_payments capability.
@@ -58,6 +82,24 @@ namespace Stripe
         /// </summary>
         [JsonProperty("oxxo_payments")]
         public AccountCapabilitiesOxxoPaymentsOptions OxxoPayments { get; set; }
+
+        /// <summary>
+        /// The p24_payments capability.
+        /// </summary>
+        [JsonProperty("p24_payments")]
+        public AccountCapabilitiesP24PaymentsOptions P24Payments { get; set; }
+
+        /// <summary>
+        /// The sepa_debit_payments capability.
+        /// </summary>
+        [JsonProperty("sepa_debit_payments")]
+        public AccountCapabilitiesSepaDebitPaymentsOptions SepaDebitPayments { get; set; }
+
+        /// <summary>
+        /// The sofort_payments capability.
+        /// </summary>
+        [JsonProperty("sofort_payments")]
+        public AccountCapabilitiesSofortPaymentsOptions SofortPayments { get; set; }
 
         /// <summary>
         /// The tax_reporting_us_1099_k capability.
