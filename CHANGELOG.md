@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.11.0 - 2020-10-02
+* [#2215](https://github.com/stripe/stripe-dotnet/pull/2215) Add support for `TosAcceptance.ServiceAgreement` on `Account`
+* [#2214](https://github.com/stripe/stripe-dotnet/pull/2214) Add support for new payments capabilities on `Account`
+
 ## 39.10.0 - 2020-09-30
 * [#2212](https://github.com/stripe/stripe-dotnet/pull/2212) Add support for `SubscriptionProrationBehavior` on `UpcomingInvoiceListLineItemsOptions`
 
