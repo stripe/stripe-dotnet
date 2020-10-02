@@ -28,17 +28,17 @@ namespace Stripe
         public string Reason { get; set; }
 
         /// <summary>
-        /// Stripe's evaluation of the riskiness of the payment. Possible values for evaluated
+        /// Stripe Radar's evaluation of the riskiness of the payment. Possible values for evaluated
         /// payments are <c>normal</c>, <c>elevated</c>, <c>highest</c>. For non-card payments, and
         /// card-based payments predating the public assignment of risk levels, this field will have
         /// the value <c>not_assessed</c>. In the event of an error in the evaluation, this field
-        /// will have the value <c>unknown</c>.
+        /// will have the value <c>unknown</c>. This field is only available with Radar.
         /// </summary>
         [JsonProperty("risk_level")]
         public string RiskLevel { get; set; }
 
         /// <summary>
-        /// Stripe's evaluation of the riskiness of the payment. Possible values for evaluated
+        /// Stripe Radar's evaluation of the riskiness of the payment. Possible values for evaluated
         /// payments are between 0 and 100. For non-card payments, card-based payments predating the
         /// public assignment of risk scores, or in the event of an error during evaluation, this
         /// field will not be present. This field is only available with Radar for Fraud Teams.
