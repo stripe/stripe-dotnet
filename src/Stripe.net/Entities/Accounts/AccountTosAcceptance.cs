@@ -8,23 +8,28 @@ namespace Stripe
     public class AccountTosAcceptance : StripeEntity<AccountTosAcceptance>
     {
         /// <summary>
-        /// The Unix timestamp marking when the Stripe Services Agreement was accepted by the
-        /// account representative.
+        /// The Unix timestamp marking when the account representative accepted their service
+        /// agreement.
         /// </summary>
         [JsonProperty("date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Date { get; set; }
 
         /// <summary>
-        /// The IP address from which the Stripe Services Agreement was accepted by the account
-        /// representative.
+        /// The IP address from which the account representative accepted their service agreement.
         /// </summary>
         [JsonProperty("ip")]
         public string Ip { get; set; }
 
         /// <summary>
-        /// The user agent of the browser from which the Stripe Services Agreement was accepted by
-        /// the account representative.
+        /// The user's service agreement type.
+        /// </summary>
+        [JsonProperty("service_agreement")]
+        public string ServiceAgreement { get; set; }
+
+        /// <summary>
+        /// The user agent of the browser from which the account representative accepted their
+        /// service agreement.
         /// </summary>
         [JsonProperty("user_agent")]
         public string UserAgent { get; set; }
