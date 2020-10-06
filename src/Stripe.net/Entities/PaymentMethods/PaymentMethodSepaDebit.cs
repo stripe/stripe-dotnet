@@ -31,6 +31,12 @@ namespace Stripe
         public string Fingerprint { get; set; }
 
         /// <summary>
+        /// Information about the object that generated this PaymentMethod.
+        /// </summary>
+        [JsonProperty("generated_from")]
+        public PaymentMethodSepaDebitGeneratedFrom GeneratedFrom { get; set; }
+
+        /// <summary>
         /// Last four characters of the IBAN.
         /// </summary>
         [JsonProperty("last4")]
