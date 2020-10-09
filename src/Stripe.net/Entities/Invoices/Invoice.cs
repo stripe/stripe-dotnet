@@ -349,7 +349,8 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// Describes the current discount applied to this invoice, if there is one.
+        /// Describes the current discount applied to this invoice, if there is one. Not populated
+        /// if there are multiple discounts.
         /// </summary>
         [JsonProperty("discount")]
         public Discount Discount { get; set; }
