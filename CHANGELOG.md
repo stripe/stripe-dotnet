@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.13.0 - 2020-10-09
+* [#999](https://github.com/stripe/stripe-dotnet/pull/999) Add support for internal-only properties `description`, `iin`, and `issuer` on `ChargePaymentMethodDetailsCardPresent` and `ChargePaymentMethodDetailsInteracPresent`.
+
 ## 39.12.0 - 2020-10-08
 * [#2216](https://github.com/stripe/stripe-dotnet/pull/2216) Support `Bancontact/iDEAL/Sofort -> SEPA DD`
   * Add support for generated_sepa_debit and generated_sepa_debit_mandate to ChargePaymentMethodDetailsBancontact, ChargePaymentMethodDetailsIdeal, and ChargePaymentMethodDetailsSofort.
