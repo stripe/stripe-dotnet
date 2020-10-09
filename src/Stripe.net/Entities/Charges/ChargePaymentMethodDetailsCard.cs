@@ -26,8 +26,8 @@ namespace Stripe
         public string Country { get; set; }
 
         /// <summary>
-        /// Card description. (Only for internal use only and not typically available in standard
-        /// API requests.).
+        /// Card description. (For internal use only and not typically available in standard API
+        /// requests.).
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -61,7 +61,7 @@ namespace Stripe
         public string Funding { get; set; }
 
         /// <summary>
-        /// Issuer identification number of the card. (Only for internal use only and not typically
+        /// Issuer identification number of the card. (For internal use only and not typically
         /// available in standard API requests.).
         /// </summary>
         [JsonProperty("iin")]
@@ -77,7 +77,7 @@ namespace Stripe
         public ChargePaymentMethodDetailsCardInstallments Installments { get; set; }
 
         /// <summary>
-        /// Issuer bank name of the card. (Only for internal use only and not typically available in
+        /// Issuer bank name of the card. (For internal use only and not typically available in
         /// standard API requests.).
         /// </summary>
         [JsonProperty("issuer")]
