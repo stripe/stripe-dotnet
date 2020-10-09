@@ -1,5 +1,11 @@
 # Changelog
 
+## 39.12.0 - 2020-10-08
+* [#2216](https://github.com/stripe/stripe-dotnet/pull/2216) Support `Bancontact/iDEAL/Sofort -> SEPA DD`
+  * Add support for generated_sepa_debit and generated_sepa_debit_mandate to ChargePaymentMethodDetailsBancontact, ChargePaymentMethodDetailsIdeal, and ChargePaymentMethodDetailsSofort.
+  * Add support for generated_from to PaymentMethodSepaDebit
+  * Add support for bancontact, ideal, and sofort to SetupAttemptPaymentMethodDetails
+
 ## 39.11.0 - 2020-10-02
 * [#2215](https://github.com/stripe/stripe-dotnet/pull/2215) Add support for `TosAcceptance.ServiceAgreement` on `Account`
 * [#2214](https://github.com/stripe/stripe-dotnet/pull/2214) Add support for new payments capabilities on `Account`
