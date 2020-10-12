@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.14.0 - 2020-10-12
+* [#2221](https://github.com/stripe/stripe-dotnet/pull/2221) Add support for `setup_intent.requires_action` on Event
+
 ## 39.13.0 - 2020-10-09
 * [#999](https://github.com/stripe/stripe-dotnet/pull/999) Add support for internal-only properties `description`, `iin`, and `issuer` on `ChargePaymentMethodDetailsCardPresent` and `ChargePaymentMethodDetailsInteracPresent`.
 
