@@ -685,6 +685,11 @@ namespace Stripe
         public const string SetupIntentCreated = "setup_intent.created";
 
         /// <summary>
+        /// Occurs when a SetupIntent is in <c>requires_action</c> state.
+        /// </summary>
+        public const string SetupIntentRequiresAction = "setup_intent.requires_action";
+
+        /// <summary>
         /// Occurs when a SetupIntent has failed the attempt to setup a payment method.
         /// </summary>
         public const string SetupIntentSetupFailed = "setup_intent.setup_failed";
