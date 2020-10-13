@@ -28,6 +28,13 @@ namespace Stripe
         public string Country { get; set; }
 
         /// <summary>
+        /// Card description. (For internal use only and not typically available in standard API
+        /// requests.).
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Authorization response cryptogram.
         /// </summary>
         [JsonProperty("emv_auth_data")]
@@ -68,6 +75,20 @@ namespace Stripe
         /// </summary>
         [JsonProperty("generated_card")]
         public string GeneratedCard { get; set; }
+
+        /// <summary>
+        /// Issuer identification number of the card. (For internal use only and not typically
+        /// available in standard API requests.).
+        /// </summary>
+        [JsonProperty("iin")]
+        public string Iin { get; set; }
+
+        /// <summary>
+        /// Issuer bank name of the card. (For internal use only and not typically available in
+        /// standard API requests.).
+        /// </summary>
+        [JsonProperty("issuer")]
+        public string Issuer { get; set; }
 
         /// <summary>
         /// The last four digits of the card.
