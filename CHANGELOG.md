@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.15.0 - 2020-10-12
+* [#2222](https://github.com/stripe/stripe-dotnet/pull/2222) Add support for `Description`, `Iin` and `Issuer` in `PaymentMethodDetails` for `CardPresent` and `InteracPresent` on `Charge`
+
 ## 39.14.0 - 2020-10-12
 * [#2221](https://github.com/stripe/stripe-dotnet/pull/2221) Add support for `setup_intent.requires_action` on Event
 
