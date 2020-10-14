@@ -201,6 +201,68 @@ namespace Stripe
         [JsonProperty("method")]
         public string Method { get; set; }
 
+        #region Expandable OriginalPayout
+
+        /// <summary>
+        /// (ID of the Payout)
+        /// If the payout reverses another, this is the ID of the original payout.
+        /// </summary>
+        [JsonIgnore]
+        public string OriginalPayoutId
+        {
+            get => this.InternalOriginalPayout?.Id;
+            set => this.InternalOriginalPayout = SetExpandableFieldId(value, this.InternalOriginalPayout);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// If the payout reverses another, this is the ID of the original payout.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Payout OriginalPayout
+        {
+            get => this.InternalOriginalPayout?.ExpandedObject;
+            set => this.InternalOriginalPayout = SetExpandableFieldObject(value, this.InternalOriginalPayout);
+        }
+
+        [JsonProperty("original_payout")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Payout>))]
+        internal ExpandableField<Payout> InternalOriginalPayout { get; set; }
+        #endregion
+
+        #region Expandable ReversedBy
+
+        /// <summary>
+        /// (ID of the Payout)
+        /// If the payout was reversed, this is the ID of the payout that reverses this payout.
+        /// </summary>
+        [JsonIgnore]
+        public string ReversedById
+        {
+            get => this.InternalReversedBy?.Id;
+            set => this.InternalReversedBy = SetExpandableFieldId(value, this.InternalReversedBy);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// If the payout was reversed, this is the ID of the payout that reverses this payout.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Payout ReversedBy
+        {
+            get => this.InternalReversedBy?.ExpandedObject;
+            set => this.InternalReversedBy = SetExpandableFieldObject(value, this.InternalReversedBy);
+        }
+
+        [JsonProperty("reversed_by")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Payout>))]
+        internal ExpandableField<Payout> InternalReversedBy { get; set; }
+        #endregion
+
         /// <summary>
         /// The source balance this payout came from. One of <c>card</c>, <c>fpx</c>, or
         /// <c>bank_account</c>.
