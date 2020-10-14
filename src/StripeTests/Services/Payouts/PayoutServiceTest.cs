@@ -137,6 +137,24 @@ namespace StripeTests
         }
 
         [Fact]
+        public void Reverse()
+        {
+            var payout = this.service.Reverse(PayoutId);
+            this.AssertRequest(HttpMethod.Post, "/v1/payouts/po_123/reverse");
+            Assert.NotNull(payout);
+            Assert.Equal("payout", payout.Object);
+        }
+
+        [Fact]
+        public async Task ReverseAsync()
+        {
+            var payout = await this.service.ReverseAsync(PayoutId);
+            this.AssertRequest(HttpMethod.Post, "/v1/payouts/po_123/reverse");
+            Assert.NotNull(payout);
+            Assert.Equal("payout", payout.Object);
+        }
+
+        [Fact]
         public void Update()
         {
             var payout = this.service.Update(PayoutId, this.updateOptions);
