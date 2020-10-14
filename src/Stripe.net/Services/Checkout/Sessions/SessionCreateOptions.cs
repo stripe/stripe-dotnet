@@ -53,6 +53,13 @@ namespace Stripe.Checkout
         public string CustomerEmail { get; set; }
 
         /// <summary>
+        /// The coupon or promotion code to apply to this session. Currently, only up to one may be
+        /// specified.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SessionDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// A list of items the customer is purchasing. Use this parameter to pass one-time or
         /// recurring <a href="https://stripe.com/docs/api/prices">Prices</a>. One-time Prices in
         /// <c>subscription</c> mode will be on the initial invoice only.
