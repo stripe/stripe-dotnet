@@ -8,7 +8,7 @@
     <Version>39.23.0</Version>
     <LangVersion>8</LangVersion>
     <Authors>Stripe, Jayme Davis</Authors>
-    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <TargetFrameworks>net5.0;netstandard2.0;net461</TargetFrameworks>
     <AssemblyName>Stripe.net</AssemblyName>
     <PackageId>Stripe.net</PackageId>
     <PackageTags>stripe;payment;credit;cards;money;gateway;paypal;braintree</PackageTags>
@@ -38,6 +38,11 @@
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\_stylecop\StyleCopRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+  </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0" />
