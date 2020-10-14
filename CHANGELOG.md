@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.16.0 - 2020-10-14
+* [#2224](https://github.com/stripe/stripe-dotnet/pull/2224) Add support for the Payout Reverse API
+
 ## 39.15.0 - 2020-10-12
 * [#2222](https://github.com/stripe/stripe-dotnet/pull/2222) Add support for `Description`, `Iin` and `Issuer` in `PaymentMethodDetails` for `CardPresent` and `InteracPresent` on `Charge`
 
