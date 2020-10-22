@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -42,5 +43,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
+
+        /// <summary>
+        /// The tax rates which apply to the item. When set, the <c>default_tax_rates</c> do not
+        /// apply to this item.
+        /// </summary>
+        [JsonProperty("tax_rates")]
+        public List<TaxRate> TaxRates { get; set; }
     }
 }

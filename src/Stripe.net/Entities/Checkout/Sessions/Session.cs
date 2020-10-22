@@ -147,8 +147,7 @@ namespace Stripe.Checkout
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The mode of the Checkout Session, one of <c>payment</c>, <c>setup</c>, or
-        /// <c>subscription</c>.
+        /// The mode of the Checkout Session.
         /// One of: <c>payment</c>, <c>setup</c>, or <c>subscription</c>.
         /// </summary>
         [JsonProperty("mode")]
