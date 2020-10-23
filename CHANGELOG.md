@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.18.0 - 2020-10-23
+* [#2231](https://github.com/stripe/stripe-dotnet/pull/2231) Add support for passing `Bank` for P24 on `PaymentIntent` or `PaymentMethod`
+
 ## 39.17.0 - 2020-10-22
 * [#2230](https://github.com/stripe/stripe-dotnet/pull/2230) Support passing `TaxRates` when creating invoice items through `Subscription` or `SubscriptionSchedule`
 * [#2225](https://github.com/stripe/stripe-dotnet/pull/2225) Add support for `discounts` to `SessionCreateOptions`
