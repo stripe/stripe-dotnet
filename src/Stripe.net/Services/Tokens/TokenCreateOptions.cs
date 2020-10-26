@@ -33,6 +33,12 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// The updated CVC value this token will represent.
+        /// </summary>
+        [JsonProperty("cvc_update")]
+        public TokenCvcUpdateOptions CvcUpdate { get; set; }
+
+        /// <summary>
         /// Information for the person this token will represent.
         /// </summary>
         [JsonProperty("person")]
