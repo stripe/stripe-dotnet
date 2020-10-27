@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.20.0 - 2020-10-27
+* [#2233](https://github.com/stripe/stripe-dotnet/pull/2233) Add `PreferredLocales` on `Charge` for payments made via Interac Present transactions
+
 ## 39.19.0 - 2020-10-26
 * [#2232](https://github.com/stripe/stripe-dotnet/pull/2232) Multiple API changes
   * Add support for passing `CvcToken` in `PaymentIntentPaymentMethodOptionsCardOptions ` on `PaymentIntent`
