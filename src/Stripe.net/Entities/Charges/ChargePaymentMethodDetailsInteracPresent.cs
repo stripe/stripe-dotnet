@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class ChargePaymentMethodDetailsInteracPresent : StripeEntity<ChargePaymentMethodDetailsInteracPresent>
@@ -102,6 +103,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("network")]
         public string Network { get; set; }
+
+        /// <summary>
+        /// EMV tag 5F2D. Preferred languages specified by the integrated circuit chip.
+        /// </summary>
+        [JsonProperty("preferred_locales")]
+        public List<string> PreferredLocales { get; set; }
 
         /// <summary>
         /// How card details were read in this transaction.

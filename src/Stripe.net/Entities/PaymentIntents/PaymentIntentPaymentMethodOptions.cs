@@ -17,6 +17,9 @@ namespace Stripe
         [JsonProperty("oxxo")]
         public PaymentIntentPaymentMethodOptionsOxxo Oxxo { get; set; }
 
+        [JsonProperty("p24")]
+        public PaymentIntentPaymentMethodOptionsP24 P24 { get; set; }
+
         [JsonProperty("sofort")]
         public PaymentIntentPaymentMethodOptionsSofort Sofort { get; set; }
     }
