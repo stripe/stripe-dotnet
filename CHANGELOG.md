@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.21.0 - 2020-10-29
+* [#2239](https://github.com/stripe/stripe-dotnet/pull/2239) Avoid async in autopagination when NET461
+
 ## 39.20.0 - 2020-10-27
 * [#2233](https://github.com/stripe/stripe-dotnet/pull/2233) Add `PreferredLocales` on `Charge` for payments made via Interac Present transactions
 
