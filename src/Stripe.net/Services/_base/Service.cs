@@ -263,10 +263,84 @@ namespace Stripe
             RequestOptions requestOptions)
             where T : IStripeEntity
         {
+#if NET461
+            return
+                this.ListRequestAutoPagingSync<T>(url, options, requestOptions);
+#else
             return AsyncUtils.ToEnumerable(
                 this.ListRequestAutoPagingAsync<T>(url, options, requestOptions));
+#endif
         }
 
+#if NET461
+        protected IEnumerable<T> ListRequestAutoPagingSync<T>(
+            string url,
+            ListOptions options,
+            RequestOptions requestOptions)
+            where T : IStripeEntity
+        {
+            var page = this.Request<StripeList<T>>(
+                HttpMethod.Get,
+                url,
+                options,
+                requestOptions);
+
+            options = options ?? new ListOptions();
+            bool iterateBackward = false;
+
+            // Backward iterating activates if we have an `EndingBefore`
+            // constraint and not a `StartingAfter` constraint
+            if (!string.IsNullOrEmpty(options.EndingBefore) && string.IsNullOrEmpty(options.StartingAfter))
+            {
+                iterateBackward = true;
+            }
+
+            while (true)
+            {
+                if (iterateBackward)
+                {
+                    page.Reverse();
+                }
+
+                string itemId = null;
+                foreach (var item in page)
+                {
+                    // Elements in `StripeList` instances are decoded by `StripeObjectConverter`,
+                    // which returns `null` for objects it doesn't know how to decode.
+                    // When auto-paginating, we simply ignore these null elements but still return
+                    // other elements.
+                    if (item == null)
+                    {
+                        continue;
+                    }
+
+                    itemId = ((IHasId)item).Id;
+                    yield return item;
+                }
+
+                if (!page.HasMore || string.IsNullOrEmpty(itemId))
+                {
+                    break;
+                }
+
+                if (iterateBackward)
+                {
+                    options.EndingBefore = itemId;
+                }
+                else
+                {
+                    options.StartingAfter = itemId;
+                }
+
+                page = this.Request<StripeList<T>>(
+                    HttpMethod.Get,
+                    url,
+                    options,
+                    requestOptions);
+            }
+        }
+
+#endif
         protected async IAsyncEnumerable<T> ListRequestAutoPagingAsync<T>(
             string url,
             ListOptions options,
