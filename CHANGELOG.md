@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.22.0 - 2020-11-04
+* [#2243](https://github.com/stripe/stripe-dotnet/pull/2243) Add support for `RegistrationNumber` in `AccountCompany` on `Account`
+
 ## 39.21.0 - 2020-10-29
 * [#2239](https://github.com/stripe/stripe-dotnet/pull/2239) Avoid async in autopagination when NET461
 
