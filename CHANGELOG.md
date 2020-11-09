@@ -1,5 +1,12 @@
 # Changelog
 
+## 39.23.0 - 2020-11-09
+* [#2245](https://github.com/stripe/stripe-dotnet/pull/2245) Add constant for `invoice.finalizaton_error` as an `Event`
+* [#2244](https://github.com/stripe/stripe-dotnet/pull/2244) Multiple API changes
+  * Add support for `LastFinalizationError` on `Invoice`
+  * Add support for Issuing `Dispute` to `IBalanceTransactionSource` to support proper deserialization on the `BalanceTransaction.Source`
+  * Add support for `PaymentMethodType` on `StripeError`
+
 ## 39.22.0 - 2020-11-04
 * [#2243](https://github.com/stripe/stripe-dotnet/pull/2243) Add support for `RegistrationNumber` in `AccountCompany` on `Account`
 
