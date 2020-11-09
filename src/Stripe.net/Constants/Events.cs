@@ -289,7 +289,12 @@ namespace Stripe
         public const string InvoiceDeleted = "invoice.deleted";
 
         /// <summary>
-        /// Occurs whenever a draft invoice is finalized and updated to be an open invoice.
+        /// Occurs whenever a draft invoice cannot be finalized.
+        /// </summary>
+        public const string InvoiceFinalizationError = "invoice.finalization_error";
+
+        /// <summary>
+        ///  Occurs whenever a draft invoice is finalized and updated to be an open invoice.
         /// </summary>
         public const string InvoiceFinalized = "invoice.finalized";
 
