@@ -424,6 +424,13 @@ namespace Stripe
         public string InvoicePdf { get; set; }
 
         /// <summary>
+        /// The error encountered during the previous attempt to finalize the invoice. This field is
+        /// cleared when the invoice is successfully finalized.
+        /// </summary>
+        [JsonProperty("last_finalization_error")]
+        public StripeError LastFinalizationError { get; set; }
+
+        /// <summary>
         /// The individual line items that make up the invoice. <c>lines</c> is sorted as follows:
         /// invoice items in reverse chronological order, followed by the subscription, if any.
         /// </summary>

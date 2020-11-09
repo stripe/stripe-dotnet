@@ -6,7 +6,7 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class Dispute : StripeEntity<Dispute>, IHasId, IHasMetadata, IHasObject
+    public class Dispute : StripeEntity<Dispute>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.

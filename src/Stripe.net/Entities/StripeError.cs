@@ -64,6 +64,13 @@ namespace Stripe
         public PaymentMethod PaymentMethod { get; set; }
 
         /// <summary>
+        /// If the error is specific to the type of payment method, the payment method type that had
+        /// a problem. This field is only populated for invoice-related errors.
+        /// </summary>
+        [JsonProperty("payment_method_type")]
+        public string PaymentMethodType { get; set; }
+
+        /// <summary>
         /// The <see cref="Stripe.SetupIntent"/> object for errors returned on a request
         /// involving a <see cref="Stripe.SetupIntent"/>.
         /// </summary>
