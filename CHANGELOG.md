@@ -1,5 +1,10 @@
 # Changelog
 
+## 7.63.0 - 2020-11-17
+* [#2250](https://github.com/stripe/stripe-dotnet/pull/2250) Multiple API changes
+  * Added support for sepa_debit on SetupIntentPaymentMethodOptions
+* [#2248](https://github.com/stripe/stripe-dotnet/pull/2248) Mark `SubscriptionProrate` as obsolete on `UpcomingInvoiceOptions`
+
 ## 39.23.0 - 2020-11-09
 * [#2245](https://github.com/stripe/stripe-dotnet/pull/2245) Add constant for `invoice.finalizaton_error` as an `Event`
 * [#2244](https://github.com/stripe/stripe-dotnet/pull/2244) Multiple API changes
