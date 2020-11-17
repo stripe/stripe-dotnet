@@ -10,5 +10,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("card")]
         public SetupIntentPaymentMethodOptionsCardOptions Card { get; set; }
+
+        /// <summary>
+        /// If this is a <c>sepa_debit</c> SetupIntent, this sub-hash contains details about the
+        /// Sepa Debit payment method options.
+        /// </summary>
+        [JsonProperty("sepa_debit")]
+        public SetupIntentPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
     }
 }

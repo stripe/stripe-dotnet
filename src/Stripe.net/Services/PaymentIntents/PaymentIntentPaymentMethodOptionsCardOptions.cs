@@ -6,6 +6,14 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsCardOptions : INestedOptions
     {
         /// <summary>
+        /// A single-use <c>cvc_update</c> Token that represents a card CVC value. When provided,
+        /// the CVC value will be verified during the card payment attempt. This parameter can only
+        /// be provided during confirmation.
+        /// </summary>
+        [JsonProperty("cvc_token")]
+        public string CvcToken { get; set; }
+
+        /// <summary>
         /// Installment configuration for payments attempted on this PaymentIntent (Mexico Only).
         ///
         /// For more information, see the <a

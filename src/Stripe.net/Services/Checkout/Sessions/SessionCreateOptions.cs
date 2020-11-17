@@ -92,8 +92,7 @@ namespace Stripe.Checkout
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The mode of the Checkout Session, one of <c>payment</c>, <c>setup</c>, or
-        /// <c>subscription</c>. Required when using prices or <c>setup</c> mode. Pass
+        /// The mode of the Checkout Session. Required when using prices or <c>setup</c> mode. Pass
         /// <c>subscription</c> if Checkout session includes at least one recurring item.
         /// One of: <c>payment</c>, <c>setup</c>, or <c>subscription</c>.
         /// </summary>

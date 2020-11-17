@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class ChargePaymentMethodDetailsInteracPresent : StripeEntity<ChargePaymentMethodDetailsInteracPresent>
@@ -27,8 +28,8 @@ namespace Stripe
         public string Country { get; set; }
 
         /// <summary>
-        /// Card description. (For internal use only and not typically available in standard API
-        /// requests.).
+        /// A high-level description of the type of cards issued in this range. (For internal use
+        /// only and not typically available in standard API requests.).
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -53,7 +54,7 @@ namespace Stripe
 
         /// <summary>
         /// Uniquely identifies this particular card number. You can use this attribute to check
-        /// whether two customers who’ve signed up with you are using the same card number,for
+        /// whether two customers who’ve signed up with you are using the same card number, for
         /// example. For payment methods that tokenize card information (Apple Pay, Google Pay), the
         /// tokenized number might be provided instead of the underlying card number.
         /// </summary>
@@ -83,8 +84,8 @@ namespace Stripe
         public string Iin { get; set; }
 
         /// <summary>
-        /// Issuer bank name of the card. (For internal use only and not typically available in
-        /// standard API requests.).
+        /// The name of the card's issuing bank. (For internal use only and not typically available
+        /// in standard API requests.).
         /// </summary>
         [JsonProperty("issuer")]
         public string Issuer { get; set; }
@@ -102,6 +103,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("network")]
         public string Network { get; set; }
+
+        /// <summary>
+        /// EMV tag 5F2D. Preferred languages specified by the integrated circuit chip.
+        /// </summary>
+        [JsonProperty("preferred_locales")]
+        public List<string> PreferredLocales { get; set; }
 
         /// <summary>
         /// How card details were read in this transaction.

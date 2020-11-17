@@ -76,6 +76,15 @@ namespace Stripe
         public string Phone { get; set; }
 
         /// <summary>
+        /// The identification number given to a company when it is registered or incorporated, if
+        /// distinct from the identification number used for filing taxes. (Examples are the CIN for
+        /// companies and LLP IN for partnerships in India, and the Company Registration Number in
+        /// Hong Kong).
+        /// </summary>
+        [JsonProperty("registration_number")]
+        public string RegistrationNumber { get; set; }
+
+        /// <summary>
         /// The category identifying the legal structure of the company or legal entity. See <a
         /// href="https://stripe.com/docs/connect/identity-verification#business-structure">Business
         /// structure</a> for more details.

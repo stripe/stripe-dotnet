@@ -62,8 +62,8 @@ namespace Stripe
         /// <summary>
         /// If the subscription has been canceled, the date of that cancellation. If the
         /// subscription was canceled with <c>cancel_at_period_end</c>, <c>canceled_at</c> will
-        /// still reflect the date of the initial cancellation request, not the end of the
-        /// subscription period when the subscription is automatically moved to a canceled state.
+        /// reflect the time of the most recent update request, not the end of the subscription
+        /// period when the subscription is automatically moved to a canceled state.
         /// </summary>
         [JsonProperty("canceled_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
