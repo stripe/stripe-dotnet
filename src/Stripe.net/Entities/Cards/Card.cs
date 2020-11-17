@@ -188,8 +188,8 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// Card description. (For internal use only and not typically available in standard API
-        /// requests.).
+        /// A high-level description of the type of cards issued in this range. (For internal use
+        /// only and not typically available in standard API requests.).
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -236,8 +236,8 @@ namespace Stripe
         public string Iin { get; set; }
 
         /// <summary>
-        /// Issuer bank name of the card. (For internal use only and not typically available in
-        /// standard API requests.).
+        /// The name of the card's issuing bank. (For internal use only and not typically available
+        /// in standard API requests.).
         /// </summary>
         [JsonProperty("issuer")]
         public string Issuer { get; set; }

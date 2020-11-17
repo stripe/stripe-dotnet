@@ -7,5 +7,8 @@ namespace Stripe
     {
         [JsonProperty("card")]
         public SetupIntentPaymentMethodOptionsCard Card { get; set; }
+
+        [JsonProperty("sepa_debit")]
+        public SetupIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
     }
 }

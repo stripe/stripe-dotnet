@@ -77,9 +77,12 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The amount of the application fee (if any) requested for the resulting payment. See the
-        /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
-        /// for connected accounts</a> for details.
+        /// The amount of the application fee (if any) that will be requested to be applied to the
+        /// payment and transferred to the application owner's Stripe account. The amount of the
+        /// application fee collected will be capped at the total payment amount. For more
+        /// information, see the PaymentIntents <a
+        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
@@ -123,8 +126,9 @@ namespace Stripe
         /// stored, logged, embedded in URLs, or exposed to anyone other than the customer. Make
         /// sure that you have TLS enabled on any page that includes the client secret.
         ///
-        /// Refer to our docs to <a href="https://stripe.com/docs/payments/accept-a-payment">accept
-        /// a payment</a> and learn about how <c>client_secret</c> should be handled.
+        /// Refer to our docs to <a
+        /// href="https://stripe.com/docs/payments/accept-a-payment?integration=elements">accept a
+        /// payment</a> and learn about how <c>client_secret</c> should be handled.
         /// </summary>
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
