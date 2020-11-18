@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.25.0 - 2020-11-18
+* [#2252](https://github.com/stripe/stripe-dotnet/pull/2252) Add support for `grabpay` on `PaymentMethod`.
+
 ## 39.24.0 - 2020-11-17
 * [#2250](https://github.com/stripe/stripe-dotnet/pull/2250) Multiple API changes
   * Added support for sepa_debit on SetupIntentPaymentMethodOptions
