@@ -41,6 +41,9 @@ namespace Stripe
         [JsonProperty("giropay")]
         public ChargePaymentMethodDetailsGiropay Giropay { get; set; }
 
+        [JsonProperty("grabpay")]
+        public ChargePaymentMethodDetailsGrabpay Grabpay { get; set; }
+
         [JsonProperty("ideal")]
         public ChargePaymentMethodDetailsIdeal Ideal { get; set; }
 

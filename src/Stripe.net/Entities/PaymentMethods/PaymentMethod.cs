@@ -90,6 +90,9 @@ namespace Stripe
         [JsonProperty("giropay")]
         public PaymentMethodGiropay Giropay { get; set; }
 
+        [JsonProperty("grabpay")]
+        public PaymentMethodGrabpay Grabpay { get; set; }
+
         [JsonProperty("ideal")]
         public PaymentMethodIdeal Ideal { get; set; }
 
@@ -128,8 +131,8 @@ namespace Stripe
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
         /// One of: <c>alipay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
-        /// <c>card</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>ideal</c>, <c>oxxo</c>,
-        /// <c>p24</c>, <c>sepa_debit</c>, or <c>sofort</c>.
+        /// <c>card</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>,
+        /// <c>oxxo</c>, <c>p24</c>, <c>sepa_debit</c>, or <c>sofort</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

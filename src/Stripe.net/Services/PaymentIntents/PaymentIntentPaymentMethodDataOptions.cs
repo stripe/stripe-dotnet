@@ -63,6 +63,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataGiropayOptions Giropay { get; set; }
 
         /// <summary>
+        /// If this is a <c>grabpay</c> PaymentMethod, this hash contains details about the GrabPay
+        /// payment method.
+        /// </summary>
+        [JsonProperty("grabpay")]
+        public PaymentIntentPaymentMethodDataGrabpayOptions Grabpay { get; set; }
+
+        /// <summary>
         /// If this is an <c>ideal</c> PaymentMethod, this hash contains details about the iDEAL
         /// payment method.
         /// </summary>
@@ -118,8 +125,8 @@ namespace Stripe
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
         /// One of: <c>alipay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
-        /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>ideal</c>, <c>oxxo</c>, <c>p24</c>,
-        /// <c>sepa_debit</c>, or <c>sofort</c>.
+        /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>oxxo</c>,
+        /// <c>p24</c>, <c>sepa_debit</c>, or <c>sofort</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
