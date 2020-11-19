@@ -1,11 +1,14 @@
 # Changelog
 
+## 39.26.0 - 2020-11-19
+* [#2254](https://github.com/stripe/stripe-dotnet/pull/2254) Add support for mandate_options on SetupIntent.payment_method_options.sepa_debit.
+
 ## 39.25.0 - 2020-11-18
-* [#2252](https://github.com/stripe/stripe-dotnet/pull/2252) Add support for `grabpay` on `PaymentMethod`.
+* [#2252](https://github.com/stripe/stripe-dotnet/pull/2252) Add support for `grabpay` on `PaymentMethod`
 
 ## 39.24.0 - 2020-11-17
 * [#2250](https://github.com/stripe/stripe-dotnet/pull/2250) Multiple API changes
-  * Added support for sepa_debit on SetupIntentPaymentMethodOptions
+  * Add support for sepa_debit on SetupIntentPaymentMethodOptions
 * [#2248](https://github.com/stripe/stripe-dotnet/pull/2248) Mark `SubscriptionProrate` as obsolete on `UpcomingInvoiceOptions`
 
 ## 39.23.0 - 2020-11-09
