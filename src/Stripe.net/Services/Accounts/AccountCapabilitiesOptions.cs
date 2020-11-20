@@ -60,6 +60,12 @@ namespace Stripe
         public AccountCapabilitiesGiropayPaymentsOptions GiropayPayments { get; set; }
 
         /// <summary>
+        /// The grabpay_payments capability.
+        /// </summary>
+        [JsonProperty("grabpay_payments")]
+        public AccountCapabilitiesGrabpayPaymentsOptions GrabpayPayments { get; set; }
+
+        /// <summary>
         /// The ideal_payments capability.
         /// </summary>
         [JsonProperty("ideal_payments")]

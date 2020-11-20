@@ -78,6 +78,14 @@ namespace Stripe
         public string GiropayPayments { get; set; }
 
         /// <summary>
+        /// The status of the GrabPay payments capability of the account, or whether the account can
+        /// directly process GrabPay charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("grabpay_payments")]
+        public string GrabpayPayments { get; set; }
+
+        /// <summary>
         /// The status of the iDEAL payments capability of the account, or whether the account can
         /// directly process iDEAL charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
