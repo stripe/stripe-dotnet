@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.27.0 - 2020-11-20
+* [#2255](https://github.com/stripe/stripe-dotnet/pull/2255) Add support for `GrabpayPayments` as a capability on `Account`
+
 ## 39.26.0 - 2020-11-19
 * [#2254](https://github.com/stripe/stripe-dotnet/pull/2254) Add support for mandate_options on SetupIntent.payment_method_options.sepa_debit.
 
