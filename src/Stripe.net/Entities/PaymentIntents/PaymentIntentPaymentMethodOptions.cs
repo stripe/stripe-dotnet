@@ -20,6 +20,9 @@ namespace Stripe
         [JsonProperty("p24")]
         public PaymentIntentPaymentMethodOptionsP24 P24 { get; set; }
 
+        [JsonProperty("sepa_debit")]
+        public PaymentIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
+
         [JsonProperty("sofort")]
         public PaymentIntentPaymentMethodOptionsSofort Sofort { get; set; }
     }

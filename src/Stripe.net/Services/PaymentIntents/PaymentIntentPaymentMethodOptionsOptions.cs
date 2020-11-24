@@ -40,6 +40,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsP24Options P24 { get; set; }
 
         /// <summary>
+        /// If this is a <c>sepa_debit</c> PaymentIntent, this sub-hash contains details about the
+        /// SEPA Debit payment method options.
+        /// </summary>
+        [JsonProperty("sepa_debit")]
+        public PaymentIntentPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
+
+        /// <summary>
         /// If this is a <c>sofort</c> PaymentMethod, this sub-hash contains details about the
         /// SOFORT payment method options.
         /// </summary>
