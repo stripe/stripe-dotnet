@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.28.0 - 2020-11-24
+* [#2257](https://github.com/stripe/stripe-dotnet/pull/2257) Multiple API changes
+  * Add support for `AccountTaxIds` on `Invoice`
+  * Add support for `SepaDebit` in `PaymentMethodOptions` on `PaymentIntent`
+
 ## 39.27.0 - 2020-11-20
 * [#2255](https://github.com/stripe/stripe-dotnet/pull/2255) Add support for `GrabpayPayments` as a capability on `Account`
 
