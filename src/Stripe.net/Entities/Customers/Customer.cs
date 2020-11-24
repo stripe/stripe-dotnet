@@ -102,10 +102,14 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// When the customer's latest invoice is billed by charging automatically, delinquent is
-        /// true if the invoice's latest charge is failed. When the customer's latest invoice is
-        /// billed by sending an invoice, delinquent is true if the invoice is not paid by its due
-        /// date.
+        /// When the customer's latest invoice is billed by charging automatically,
+        /// <c>delinquent</c> is <c>true</c> if the invoice's latest charge failed. When the
+        /// customer's latest invoice is billed by sending an invoice, <c>delinquent</c> is
+        /// <c>true</c> if the invoice isn't paid by its due date.
+        ///
+        /// If an invoice is marked uncollectible by <a
+        /// href="https://stripe.com/docs/billing/automatic-collection">dunning</a>,
+        /// <c>delinquent</c> doesn't get reset to <c>false</c>.
         /// </summary>
         [JsonProperty("delinquent")]
         public bool Delinquent { get; set; }

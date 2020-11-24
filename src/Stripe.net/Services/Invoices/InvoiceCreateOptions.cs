@@ -9,6 +9,13 @@ namespace Stripe
     public class InvoiceCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// The account tax IDs associated with the invoice. Only editable when the invoice is a
+        /// draft.
+        /// </summary>
+        [JsonProperty("account_tax_ids")]
+        public List<string> AccountTaxIds { get; set; }
+
+        /// <summary>
         /// A fee in %s that will be applied to the invoice and transferred to the application
         /// owner's Stripe account. The request must be made with an OAuth key or the Stripe-Account
         /// header in order to take an application fee. For more information, see the application

@@ -35,6 +35,38 @@ namespace Stripe
         [JsonProperty("account_name")]
         public string AccountName { get; set; }
 
+        #region Expandable AccountTaxIds
+
+        /// <summary>
+        /// (IDs of the AccountTaxIds)
+        /// The account tax IDs associated with the invoice. Only editable when the invoice is a
+        /// draft.
+        /// </summary>
+        [JsonIgnore]
+        public List<string> AccountTaxIdIds
+        {
+            get => this.InternalAccountTaxIds?.Select((x) => x.Id).ToList();
+            set => this.InternalAccountTaxIds = SetExpandableArrayIds<TaxId>(value);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The account tax IDs associated with the invoice. Only editable when the invoice is a
+        /// draft.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public List<TaxId> AccountTaxIds
+        {
+            get => this.InternalAccountTaxIds?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalAccountTaxIds = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("account_tax_ids", ItemConverterType = typeof(ExpandableFieldConverter<TaxId>))]
+        internal List<ExpandableField<TaxId>> InternalAccountTaxIds { get; set; }
+        #endregion
+
         /// <summary>
         /// Final amount due at this time for this invoice. If the invoice's total is smaller than
         /// the minimum charge amount, for example, or if there is account credit that can be
