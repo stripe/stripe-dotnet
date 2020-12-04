@@ -38,7 +38,7 @@ namespace Stripe.Checkout
         /// to prefill the email field on the Checkout page. If the customer changes their email on
         /// the Checkout page, the Customer object will be updated with the new email. If blank for
         /// Checkout Sessions in <c>payment</c> or <c>subscription</c> mode, Checkout will create a
-        /// new customer object based on information provided during the session.
+        /// new customer object based on information provided during the payment flow.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
@@ -53,7 +53,7 @@ namespace Stripe.Checkout
         public string CustomerEmail { get; set; }
 
         /// <summary>
-        /// The coupon or promotion code to apply to this session. Currently, only up to one may be
+        /// The coupon or promotion code to apply to this Session. Currently, only up to one may be
         /// specified.
         /// </summary>
         [JsonProperty("discounts")]
@@ -93,7 +93,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The mode of the Checkout Session. Required when using prices or <c>setup</c> mode. Pass
-        /// <c>subscription</c> if Checkout session includes at least one recurring item.
+        /// <c>subscription</c> if the Checkout Session includes at least one recurring item.
         /// One of: <c>payment</c>, <c>setup</c>, or <c>subscription</c>.
         /// </summary>
         [JsonProperty("mode")]
@@ -107,7 +107,7 @@ namespace Stripe.Checkout
         public SessionPaymentIntentDataOptions PaymentIntentData { get; set; }
 
         /// <summary>
-        /// A list of the types of payment methods (e.g., <c>card</c>) this Checkout session can
+        /// A list of the types of payment methods (e.g., <c>card</c>) this Checkout Session can
         /// accept.
         ///
         /// Read more about the supported payment methods and their requirements in our <a
