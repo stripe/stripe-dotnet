@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.29.0 - 2020-12-03
+* [#2260](https://github.com/stripe/stripe-dotnet/pull/2260) Add support for `Documents` on `Account` create and update
+
 ## 39.28.0 - 2020-11-24
 * [#2257](https://github.com/stripe/stripe-dotnet/pull/2257) Multiple API changes
   * Add support for `AccountTaxIds` on `Invoice`
