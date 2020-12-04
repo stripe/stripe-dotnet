@@ -53,6 +53,12 @@ namespace Stripe
         public string DefaultCurrency { get; set; }
 
         /// <summary>
+        /// Documents that may be submitted to satisfy various informational requests.
+        /// </summary>
+        [JsonProperty("documents")]
+        public AccountDocumentsOptions Documents { get; set; }
+
+        /// <summary>
         /// The email address of the account holder. This is only to make the account easier to
         /// identify to you. Stripe will never directly email Custom accounts.
         /// </summary>

@@ -49,9 +49,10 @@ namespace Stripe
         /// <summary>
         /// The <a href="https://stripe.com/docs/file-upload#uploading-a-file">purpose</a> of the
         /// uploaded file.
-        /// One of: <c>additional_verification</c>, <c>business_icon</c>, <c>business_logo</c>,
-        /// <c>customer_signature</c>, <c>dispute_evidence</c>, <c>identity_document</c>,
-        /// <c>pci_document</c>, or <c>tax_document_user_upload</c>.
+        /// One of: <c>account_requirement</c>, <c>additional_verification</c>,
+        /// <c>business_icon</c>, <c>business_logo</c>, <c>customer_signature</c>,
+        /// <c>dispute_evidence</c>, <c>identity_document</c>, <c>pci_document</c>, or
+        /// <c>tax_document_user_upload</c>.
         /// </summary>
         [JsonProperty("purpose")]
         public string Purpose { get; set; }
