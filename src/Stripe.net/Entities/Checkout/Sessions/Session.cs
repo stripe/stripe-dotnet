@@ -54,7 +54,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// A unique string to reference the Checkout Session. This can be a customer ID, a cart ID,
-        /// or similar, and can be used to reconcile the session with your internal systems.
+        /// or similar, and can be used to reconcile the Session with your internal systems.
         /// </summary>
         [JsonProperty("client_reference_id")]
         public string ClientReferenceId { get; set; }
@@ -71,10 +71,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (ID of the Customer)
-        /// The ID of the customer for this session. For Checkout Sessions in <c>payment</c> or
+        /// The ID of the customer for this Session. For Checkout Sessions in <c>payment</c> or
         /// <c>subscription</c> mode, Checkout will create a new customer object based on
-        /// information provided during the session unless an existing customer was provided when
-        /// the session was created.
+        /// information provided during the payment flow unless an existing customer was provided
+        /// when the Session was created.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -85,10 +85,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the customer for this session. For Checkout Sessions in <c>payment</c> or
+        /// The ID of the customer for this Session. For Checkout Sessions in <c>payment</c> or
         /// <c>subscription</c> mode, Checkout will create a new customer object based on
-        /// information provided during the session unless an existing customer was provided when
-        /// the session was created.
+        /// information provided during the payment flow unless an existing customer was provided
+        /// when the Session was created.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -108,7 +108,7 @@ namespace Stripe.Checkout
         /// If provided, this value will be used when the Customer object is created. If not
         /// provided, customers will be asked to enter their email address. Use this parameter to
         /// prefill customer data if you already have an email on file. To access information about
-        /// the customer once a session is complete, use the <c>customer</c> attribute.
+        /// the customer once the payment flow is complete, use the <c>customer</c> attribute.
         /// </summary>
         [JsonProperty("customer_email")]
         public string CustomerEmail { get; set; }
