@@ -21,13 +21,15 @@ namespace Stripe.Infrastructure
 
         internal static bool IsFullFramework => FrameworkDescription.StartsWith(".NET Framework", StringComparison.OrdinalIgnoreCase);
 
-        internal static bool IsNetCore => FrameworkDescription.StartsWith(".NET Core", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(typeof(object).Assembly.Location);
+        internal static bool IsNetCore
+            => ((Environment.Version.Major >= 5) || FrameworkDescription.StartsWith(".NET Core", StringComparison.OrdinalIgnoreCase))
+                && !string.IsNullOrEmpty(typeof(object).Assembly.Location);
 
         /// <summary>
         /// "The north star for CoreRT is to be a flavor of .NET Core" -> CoreRT reports .NET Core everywhere.
         /// </summary>
         internal static bool IsCoreRT
-            => FrameworkDescription.StartsWith(".NET Core", StringComparison.OrdinalIgnoreCase)
+            => ((Environment.Version.Major >= 5) || FrameworkDescription.StartsWith(".NET Core", StringComparison.OrdinalIgnoreCase))
                && string.IsNullOrEmpty(typeof(object).Assembly.Location); // but it's merged to a single .exe and .Location returns null here ;)
 
         internal static bool IsRunningInContainer => string.Equals(Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER"), "true");
@@ -110,27 +112,7 @@ namespace Stripe.Infrastructure
 
         internal static string MapToReleaseVersion(string servicingVersion)
         {
-            // the following code assumes that .NET 4.5 is the oldest supported version
-            if (string.Compare(servicingVersion, "4.5.1") < 0)
-            {
-                return "4.5";
-            }
-
-            if (string.Compare(servicingVersion, "4.5.2") < 0)
-            {
-                return "4.5.1";
-            }
-
-            if (string.Compare(servicingVersion, "4.6") < 0)
-            {
-                return "4.5.2";
-            }
-
-            if (string.Compare(servicingVersion, "4.6.1") < 0)
-            {
-                return "4.6";
-            }
-
+            // the following code assumes that .NET 4.6.1 is the oldest supported version
             if (string.Compare(servicingVersion, "4.6.2") < 0)
             {
                 return "4.6.1";
@@ -161,15 +143,30 @@ namespace Stripe.Infrastructure
 
         internal static string GetNetCoreVersion()
         {
-            string runtimeVersion = TryGetCoreRuntimeVersion(out var version) ? version.ToString() : "?";
+            if (TryGetCoreRuntimeVersion(out var version) && version >= new Version(5, 0))
+            {
+                return $".NET {version}";
+            }
+            else
+            {
+                string runtimeVersion = version != default ? version.ToString() : "?";
 
-            return $".NET Core {runtimeVersion}";
+                return $".NET Core {runtimeVersion}";
+            }
         }
 
         internal static bool TryGetCoreRuntimeVersion(out Version version)
         {
             // we can't just use System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription
             // because it can be null and it reports versions like 4.6.* for .NET Core 2.*
+
+            // for .NET 5+ we can use Environment.Version
+            if (Environment.Version.Major >= 5)
+            {
+                version = Environment.Version;
+                return true;
+            }
+
             string runtimeDirectory = System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory();
             if (TryGetVersionFromRuntimeDirectory(runtimeDirectory, out version))
             {
