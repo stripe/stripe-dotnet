@@ -7,6 +7,14 @@ namespace Stripe
     public class SubscriptionScheduleDefaultSettings : StripeEntity<SubscriptionScheduleDefaultSettings>
     {
         /// <summary>
+        /// A non-negative decimal between 0 and 100, with at most two decimal places. This
+        /// represents the percentage of the subscription invoice subtotal that will be transferred
+        /// to the application owner's Stripe account during this phase of the schedule.
+        /// </summary>
+        [JsonProperty("application_fee_percent")]
+        public decimal? ApplicationFeePercent { get; set; }
+
+        /// <summary>
         /// Possible values are <c>phase_start</c> or <c>automatic</c>. If <c>phase_start</c> then
         /// billing cycle anchor of the subscription is set to the start of the phase when entering
         /// the phase. If <c>automatic</c> then the billing cycle anchor is automatically modified
