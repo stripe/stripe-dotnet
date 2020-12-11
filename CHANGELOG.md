@@ -1,5 +1,12 @@
 # Changelog
 
+## 39.30.0 - 2020-12-10
+* [#2262](https://github.com/stripe/stripe-dotnet/pull/2262) Multiple API Changes
+  * Add support for passing `Bank` for eps on `PaymentIntent` or `PaymentMethod`.
+  * Add support for passing `tos_shown_and_accepted` on `PaymentIntent`.
+* [#2246](https://github.com/stripe/stripe-dotnet/pull/2246) Add .NET 5.0 target
+* [#2261](https://github.com/stripe/stripe-dotnet/pull/2261) Update the package description
+
 ## 39.29.0 - 2020-12-03
 * [#2260](https://github.com/stripe/stripe-dotnet/pull/2260) Add support for `Documents` on `Account` create and update
 
