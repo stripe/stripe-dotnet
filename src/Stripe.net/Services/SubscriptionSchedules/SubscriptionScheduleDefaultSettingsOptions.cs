@@ -6,6 +6,17 @@ namespace Stripe
     public class SubscriptionScheduleDefaultSettingsOptions : INestedOptions
     {
         /// <summary>
+        /// A non-negative decimal between 0 and 100, with at most two decimal places. This
+        /// represents the percentage of the subscription invoice subtotal that will be transferred
+        /// to the application owner's Stripe account. The request must be made by a platform
+        /// account on a connected account in order to set an application fee percentage. For more
+        /// information, see the application fees <a
+        /// href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</a>.
+        /// </summary>
+        [JsonProperty("application_fee_percent")]
+        public decimal? ApplicationFeePercent { get; set; }
+
+        /// <summary>
         /// Can be set to <c>phase_start</c> to set the anchor to the start of the phase or
         /// <c>automatic</c> to automatically change it if needed. Cannot be set to
         /// <c>phase_start</c> if this phase specifies a trial. For more information, see the
