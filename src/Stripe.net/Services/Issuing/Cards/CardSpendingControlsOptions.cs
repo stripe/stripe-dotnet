@@ -25,7 +25,9 @@ namespace Stripe.Issuing
         public List<string> BlockedCategories { get; set; }
 
         /// <summary>
-        /// Limit spending with amount-based rules.
+        /// Limit spending with amount-based rules that apply across any cards this card replaced
+        /// (i.e., its <c>replacement_for</c> card and <em>that</em> card's <c>replacement_for</c>
+        /// card, up the chain).
         /// </summary>
         [JsonProperty("spending_limits")]
         public List<CardSpendingControlsSpendingLimitOptions> SpendingLimits { get; set; }

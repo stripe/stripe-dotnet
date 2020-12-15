@@ -11,6 +11,9 @@ namespace Stripe
         [JsonProperty("card")]
         public SetupAttemptPaymentMethodDetailsCard Card { get; set; }
 
+        [JsonProperty("card_present")]
+        public SetupAttemptPaymentMethodDetailsCardPresent CardPresent { get; set; }
+
         [JsonProperty("ideal")]
         public SetupAttemptPaymentMethodDetailsIdeal Ideal { get; set; }
 
