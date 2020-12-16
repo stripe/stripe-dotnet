@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.31.0 - 2020-12-15
+* [#2263](https://github.com/stripe/stripe-dotnet/pull/2263) API Updates
+  * Added support for card_present on SetupAttempt.payment_method_details
+
 ## 39.30.0 - 2020-12-10
 * [#2262](https://github.com/stripe/stripe-dotnet/pull/2262) Multiple API Changes
   * Add support for passing `Bank` for eps on `PaymentIntent` or `PaymentMethod`.
