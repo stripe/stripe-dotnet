@@ -117,7 +117,7 @@
   * Add `PaymentStatus` on Checkout `Session`
 
 ## 39.1.2 - 2020-09-01
-    
+
     Major version release for API version 2020-08-27.
 
     Pull requests included in this release (⚠️ = breaking changes):
@@ -172,6 +172,11 @@
     * [#2178](https://github.com/stripe/stripe-dotnet/pull/2178) ⚠️ Unshare `ChargeDestinationOptions`
     * [#2181](https://github.com/stripe/stripe-dotnet/pull/2181) ⚠️ Updates doc strings to match the OpenAPI spec
     * [#2193](https://github.com/stripe/stripe-dotnet/pull/2193) Configure license and icon within repo
+
+
+## 38.0.0  and 39.0.0 - 2020-08-27
+
+We experienced multiple errors during the release of 38.0.0 and 39.0.0 that could not be reverted. The next major version after 37.X is the version 39.1.2 above.
 
 ## 37.35.0 - 2020-08-27
 * [#2186](https://github.com/stripe/stripe-dotnet/pull/2186) Add support for `SepaCreditTransfer` in `SourceTransaction`
