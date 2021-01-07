@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.32.0 - 2021-01-07
+* [#2271](https://github.com/stripe/stripe-dotnet/pull/2271) API Updates
+  * Added support for `company_registration_verification`, `company_ministerial_decree`, `company_memorandum_of_association`, `company_license` and `company_tax_id_verification` on `Account#update.documents` and `Account#create.documents`
+* [#2266](https://github.com/stripe/stripe-dotnet/pull/2266) Improve the changelog to cover the issue with 37.X and 38.X not being released
+
 ## 39.31.0 - 2020-12-15
 * [#2263](https://github.com/stripe/stripe-dotnet/pull/2263) API Updates
   * Added support for card_present on SetupAttempt.payment_method_details
