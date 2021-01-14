@@ -132,7 +132,7 @@ namespace Stripe
         public DateTime EndDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The subscription schedule's default invoice settings.
+        /// The invoice settings applicable during this phase.
         /// </summary>
         [JsonProperty("invoice_settings")]
         public SubscriptionSchedulePhaseInvoiceSettings InvoiceSettings { get; set; }

@@ -31,6 +31,14 @@ namespace Stripe.Checkout
         public string Description { get; set; }
 
         /// <summary>
+        /// The <a href="https://stripe.com/docs/api/tax_rates">tax rates</a> that will be applied
+        /// to this line item depending on the customer's billing/shipping address. We currently
+        /// support the following countries: US, GB, AU, and all countries in the EU.
+        /// </summary>
+        [JsonProperty("dynamic_tax_rates")]
+        public List<string> DynamicTaxRates { get; set; }
+
+        /// <summary>
         /// A list of image URLs representing this line item. Each image can be up to 5 MB in size.
         /// If passing <c>price</c> or <c>price_data</c>, specify images on the associated product
         /// instead.
@@ -68,7 +76,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The <a href="https://stripe.com/docs/api/tax_rates">tax rates</a> which apply to this
-        /// line item. This is only allowed in subscription mode.
+        /// line item.
         /// </summary>
         [JsonProperty("tax_rates")]
         public List<string> TaxRates { get; set; }
