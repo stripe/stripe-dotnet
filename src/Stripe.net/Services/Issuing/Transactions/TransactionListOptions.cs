@@ -10,5 +10,8 @@ namespace Stripe.Issuing
 
         [JsonProperty("cardholder")]
         public string Cardholder { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 }

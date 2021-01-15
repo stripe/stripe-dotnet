@@ -29,6 +29,13 @@ namespace Stripe
         public bool Active { get; set; }
 
         /// <summary>
+        /// Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO
+        /// 3166-1 alpha-2</a>).
+        /// </summary>
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
@@ -82,5 +89,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("percentage")]
         public decimal Percentage { get; set; }
+
+        /// <summary>
+        /// <a href="https://en.wikipedia.org/wiki/ISO_3166-2:US">ISO 3166-2 subdivision code</a>,
+        /// without country prefix. For example, "NY" for New York, United States.
+        /// </summary>
+        [JsonProperty("state")]
+        public string State { get; set; }
     }
 }

@@ -105,6 +105,13 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
+        /// The customer details including the customer's tax exempt status and the customer's tax
+        /// IDs.
+        /// </summary>
+        [JsonProperty("customer_details")]
+        public SessionCustomerDetails CustomerDetails { get; set; }
+
+        /// <summary>
         /// If provided, this value will be used when the Customer object is created. If not
         /// provided, customers will be asked to enter their email address. Use this parameter to
         /// prefill customer data if you already have an email on file. To access information about
