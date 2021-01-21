@@ -1,5 +1,12 @@
 # Changelog
 
+## 39.33.0 - 2021-01-21
+* [#2274](https://github.com/stripe/stripe-dotnet/pull/2274) API Updates
+  * Added support for `dynamic_tax_rates` on `SessionLineItemOptions`
+  * Added support for `customer_details` on `Checkout.Session`
+  * Added support for `type` on `TransactionListOptions`
+  * Added support for `country` and `state` on `TaxRateCreateOptions`, `TaxRateUpdateOptions` and `TaxRate`
+
 ## 39.32.0 - 2021-01-07
 * [#2271](https://github.com/stripe/stripe-dotnet/pull/2271) API Updates
   * Added support for `company_registration_verification`, `company_ministerial_decree`, `company_memorandum_of_association`, `company_license` and `company_tax_id_verification` on `Account#update.documents` and `Account#create.documents`
