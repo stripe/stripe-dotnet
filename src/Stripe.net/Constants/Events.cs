@@ -847,6 +847,16 @@ namespace Stripe
         public const string TransferUpdated = "transfer.updated";
 
         /// <summary>
+        /// Occurs after a transfer is paid. For Instant Payouts, the event will typically be sent within 30 minutes.
+        /// </summary>
+        public const string TransferPaid = "transfer.paid";
+
+        /// <summary>
+        /// Occurs whenever a transfer failed.
+        /// </summary>
+        public const string TransferFailed = "transfer.failed";
+
+        /// <summary>
         /// May be sent by Stripe at any time to see if a provided webhook URL is working.
         /// </summary>
         public const string Ping = "ping";
