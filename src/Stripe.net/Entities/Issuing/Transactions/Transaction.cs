@@ -249,7 +249,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The nature of the transaction.
-        /// One of: <c>capture</c>, <c>dispute</c>, or <c>refund</c>.
+        /// One of: <c>capture</c>, or <c>refund</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

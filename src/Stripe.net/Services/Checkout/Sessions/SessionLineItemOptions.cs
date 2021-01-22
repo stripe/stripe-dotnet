@@ -69,7 +69,8 @@ namespace Stripe.Checkout
         public SessionLineItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
-        /// The quantity of the line item being purchased.
+        /// The quantity of the line item being purchased. Quantity should not be defined when
+        /// <c>recurring.usage_type=metered</c>.
         /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
