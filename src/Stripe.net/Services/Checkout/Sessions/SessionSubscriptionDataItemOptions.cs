@@ -13,7 +13,8 @@ namespace Stripe.Checkout
         public string Plan { get; set; }
 
         /// <summary>
-        /// Quantity for this item.
+        /// The quantity of the subscription item being purchased. Quantity should not be defined
+        /// when <c>recurring.usage_type=metered</c>.
         /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }

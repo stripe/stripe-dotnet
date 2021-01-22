@@ -19,7 +19,7 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Total before any discounts or taxes is applied.
+        /// Total before any discounts or taxes are applied.
         /// </summary>
         [JsonProperty("amount_subtotal")]
         public long? AmountSubtotal { get; set; }
@@ -58,22 +58,7 @@ namespace Stripe
         public List<LineItemDiscount> Discounts { get; set; }
 
         /// <summary>
-        /// Prices define the unit cost, currency, and (optional) billing cycle for both recurring
-        /// and one-time purchases of products. <a
-        /// href="https://stripe.com/docs/api#products">Products</a> help you track inventory or
-        /// provisioning, and prices help you track payment terms. Different physical goods or
-        /// levels of service should be represented by products, and pricing options should be
-        /// represented by prices. This approach lets you change prices without having to change
-        /// your provisioning scheme.
-        ///
-        /// For example, you might have a single "gold" product that has prices for $10/month,
-        /// $100/year, and €9 once.
-        ///
-        /// Related guides: <a
-        /// href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up a
-        /// subscription</a>, <a href="https://stripe.com/docs/billing/invoices/create">create an
-        /// invoice</a>, and more about <a
-        /// href="https://stripe.com/docs/billing/prices-guide">products and prices</a>.
+        /// The price used to generate the line item.
         /// </summary>
         [JsonProperty("price")]
         public Price Price { get; set; }
