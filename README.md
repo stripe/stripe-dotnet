@@ -38,7 +38,8 @@ From within Visual Studio:
 ## Documentation
 
 For a comprehensive list of examples, check out the [API
-documentation][api-docs].
+documentation][api-docs]. See [video demonstrations][youtube-playlist] covering
+how to use the library.
 
 ## Usage
 
@@ -157,3 +158,4 @@ pull request][pulls].
 [stripe]: https://stripe.com
 [stripe-mock]: https://github.com/stripe/stripe-mock
 [stripe-mock-usage]: https://github.com/stripe/stripe-mock#usage
+[youtube-playlist]: https://www.youtube.com/playlist?list=PLy1nL-pvL2M4cNNoUtjWevYSci4ubsbhC
