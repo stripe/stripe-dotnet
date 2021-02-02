@@ -21,8 +21,8 @@ namespace Stripe.Issuing
         public string Object { get; set; }
 
         /// <summary>
-        /// Disputed amount. Usually the amount of the <c>disputed_transaction</c>, but can differ
-        /// (usually because of currency fluctuation).
+        /// Disputed amount. Usually the amount of the <c>transaction</c>, but can differ (usually
+        /// because of currency fluctuation).
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -41,7 +41,7 @@ namespace Stripe.Issuing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The currency the <c>disputed_transaction</c> was made in.
+        /// The currency the <c>transaction</c> was made in.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }

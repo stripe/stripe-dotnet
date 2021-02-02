@@ -104,6 +104,14 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The country where the person is a national. Two-letter country code (<a
+        /// href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>), or "XX"
+        /// if unavailable.
+        /// </summary>
+        [JsonProperty("nationality")]
+        public string Nationality { get; set; }
+
+        /// <summary>
         /// A <a href="https://stripe.com/docs/connect/account-tokens">person token</a>, used to
         /// securely provide details to the person.
         /// </summary>
