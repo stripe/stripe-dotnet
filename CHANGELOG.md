@@ -1,5 +1,13 @@
 # Changelog
 
+## 39.34.0 - 2021-02-03
+* [#2279](https://github.com/stripe/stripe-dotnet/pull/2279) Add `nationality` to Person
+* [#2278](https://github.com/stripe/stripe-dotnet/pull/2278) Add link to playlist from README
+* [#2277](https://github.com/stripe/stripe-dotnet/pull/2277) API Updates
+  * Add support for `nationality` on `Person`, `PersonUpdateOptions`, `PersonCreateOptions` and `TokenCreateParams.person`
+
+
+
 ## 39.33.0 - 2021-01-21
 * [#2274](https://github.com/stripe/stripe-dotnet/pull/2274) API Updates
   * Added support for `dynamic_tax_rates` on `SessionLineItemOptions`
