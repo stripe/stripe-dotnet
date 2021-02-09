@@ -33,7 +33,7 @@ namespace Stripe
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or <a
-        /// href="https://stripe.com/docs/payments/payment-methods#compatibility">compatible
+        /// href="https://stripe.com/docs/payments/payment-methods/transitioning#compatibility">compatible
         /// Source</a> object) to attach to this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method")]
