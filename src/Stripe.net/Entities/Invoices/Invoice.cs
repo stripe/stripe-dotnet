@@ -541,6 +541,9 @@ namespace Stripe
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
+        [JsonProperty("payment_settings")]
+        public InvoicePaymentSettings PaymentSettings { get; set; }
+
         /// <summary>
         /// End of the usage period during which invoice items were added to this invoice.
         /// </summary>

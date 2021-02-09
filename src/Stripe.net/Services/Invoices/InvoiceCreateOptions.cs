@@ -124,6 +124,13 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Configuration settings for the PaymentIntent that is generated when the invoice is
+        /// finalized.
+        /// </summary>
+        [JsonProperty("payment_settings")]
+        public InvoicePaymentSettingsOptions PaymentSettings { get; set; }
+
+        /// <summary>
         /// Extra information about a charge for the customer's credit card statement. It must
         /// contain at least one letter. If not specified and this invoice is part of a
         /// subscription, the default <c>statement_descriptor</c> will be set to the first
