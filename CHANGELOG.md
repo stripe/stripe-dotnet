@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.35.0 - 2021-02-08
+* [#2282](https://github.com/stripe/stripe-dotnet/pull/2282) API Updates
+  * Add support for `afterpay_clearpay_payments` on `Account.capabilities`
+  * Add support for `payment_settings` on `Invoice`
+
 ## 39.34.0 - 2021-02-03
 * [#2279](https://github.com/stripe/stripe-dotnet/pull/2279) Add `nationality` to Person
 * [#2278](https://github.com/stripe/stripe-dotnet/pull/2278) Add link to playlist from README
