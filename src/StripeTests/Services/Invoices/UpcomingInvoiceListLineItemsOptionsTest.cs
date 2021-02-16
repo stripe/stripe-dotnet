@@ -36,6 +36,22 @@ namespace StripeTests
                     },
                     want = "subscription_billing_cycle_anchor=unchanged",
                 },
+                new
+                {
+                    options = new UpcomingInvoiceListLineItemsOptions
+                    {
+                        SubscriptionTrialEnd = DateTime.Parse("Fri, 13 Feb 2009 23:31:30Z"),
+                    },
+                    want = "subscription_trial_end=1234567890",
+                },
+                new
+                {
+                    options = new UpcomingInvoiceListLineItemsOptions
+                    {
+                        SubscriptionTrialEnd = SubscriptionTrialEnd.Now,
+                    },
+                    want = "subscription_trial_end=now",
+                },
             };
 
             foreach (var testCase in testCases)

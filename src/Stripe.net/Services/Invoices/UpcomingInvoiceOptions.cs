@@ -61,8 +61,8 @@ namespace Stripe
         public DateTime? SubscriptionStartDate { get; set; }
 
         [JsonProperty("subscription_trial_end")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime? SubscriptionTrialEnd { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, SubscriptionTrialEnd> SubscriptionTrialEnd { get; set; }
 
         [JsonProperty("subscription_trial_from_plan")]
         public bool? SubscriptionTrialFromPlan { get; set; }
