@@ -119,6 +119,15 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The account (if any) for which the funds of the invoice payment are intended. If set,
+        /// the invoice will be presented with the branding and support information of the specified
+        /// account. See the <a href="https://stripe.com/docs/billing/invoices/connect">Invoices
+        /// with Connect</a> documentation for details.
+        /// </summary>
+        [JsonProperty("on_behalf_of")]
+        public string OnBehalfOf { get; set; }
+
+        /// <summary>
         /// Configuration settings for the PaymentIntent that is generated when the invoice is
         /// finalized.
         /// </summary>
