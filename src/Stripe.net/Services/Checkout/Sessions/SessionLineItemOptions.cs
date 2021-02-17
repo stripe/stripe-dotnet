@@ -7,6 +7,13 @@ namespace Stripe.Checkout
     public class SessionLineItemOptions : INestedOptions
     {
         /// <summary>
+        /// When set, provides configuration for this item’s quantity to be adjusted by the customer
+        /// during Checkout.
+        /// </summary>
+        [JsonProperty("adjustable_quantity")]
+        public SessionLineItemAdjustableQuantityOptions AdjustableQuantity { get; set; }
+
+        /// <summary>
         /// The amount to be collected per unit of the line item. If specified, must also pass
         /// <c>currency</c> and <c>name</c>.
         /// </summary>
