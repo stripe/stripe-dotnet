@@ -152,12 +152,12 @@ namespace Stripe.Issuing
         public AuthorizationPendingRequest PendingRequest { get; set; }
 
         /// <summary>
-        /// History of every time the authorization was approved/denied (whether approved/denied by
-        /// you directly or by Stripe based on your <c>spending_controls</c>). If the merchant
-        /// changes the authorization by performing an <a
+        /// History of every time <c>pending_request</c> was approved/denied, either by you directly
+        /// or by Stripe (e.g. based on your <c>spending_controls</c>). If the merchant changes the
+        /// authorization by performing an <a
         /// href="https://stripe.com/docs/issuing/purchases/authorizations">incremental
-        /// authorization or partial capture</a>, you can look at this field to see the previous
-        /// states of the authorization.
+        /// authorization</a>, you can look at this field to see the previous requests for the
+        /// authorization.
         /// </summary>
         [JsonProperty("request_history")]
         public List<AuthorizationRequestHistory> RequestHistory { get; set; }

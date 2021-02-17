@@ -8,10 +8,10 @@ namespace Stripe.Issuing
     public class AuthorizationRequestHistory : StripeEntity<AuthorizationRequestHistory>
     {
         /// <summary>
-        /// The authorization amount in your card's currency and in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
-        /// Stripe held this amount from your account to fund the authorization if the request was
-        /// approved.
+        /// The <c>pending_request.amount</c> at the time of the request, presented in your card's
+        /// currency and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
+        /// currency unit</a>. Stripe held this amount from your account to fund the authorization
+        /// if the request was approved.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -46,7 +46,7 @@ namespace Stripe.Issuing
         public string Currency { get; set; }
 
         /// <summary>
-        /// The amount that was authorized at the time of this request. This amount is in the
+        /// The <c>pending_request.merchant_amount</c> at the time of the request, presented in the
         /// <c>merchant_currency</c> and in the <a
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>

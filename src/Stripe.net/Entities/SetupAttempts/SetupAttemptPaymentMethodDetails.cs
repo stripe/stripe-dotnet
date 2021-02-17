@@ -5,6 +5,12 @@ namespace Stripe
 
     public class SetupAttemptPaymentMethodDetails : StripeEntity<SetupAttemptPaymentMethodDetails>
     {
+        [JsonProperty("au_becs_debit")]
+        public SetupAttemptPaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
+
+        [JsonProperty("bacs_debit")]
+        public SetupAttemptPaymentMethodDetailsBacsDebit BacsDebit { get; set; }
+
         [JsonProperty("bancontact")]
         public SetupAttemptPaymentMethodDetailsBancontact Bancontact { get; set; }
 
@@ -16,6 +22,9 @@ namespace Stripe
 
         [JsonProperty("ideal")]
         public SetupAttemptPaymentMethodDetailsIdeal Ideal { get; set; }
+
+        [JsonProperty("sepa_debit")]
+        public SetupAttemptPaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
         [JsonProperty("sofort")]
         public SetupAttemptPaymentMethodDetailsSofort Sofort { get; set; }
