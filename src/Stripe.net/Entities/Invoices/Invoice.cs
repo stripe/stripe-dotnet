@@ -499,6 +499,43 @@ namespace Stripe
         [JsonProperty("number")]
         public string Number { get; set; }
 
+        #region Expandable OnBehalfOf
+
+        /// <summary>
+        /// (ID of the Account)
+        /// The account (if any) for which the funds of the invoice payment are intended. If set,
+        /// the invoice will be presented with the branding and support information of the specified
+        /// account. See the <a href="https://stripe.com/docs/billing/invoices/connect">Invoices
+        /// with Connect</a> documentation for details.
+        /// </summary>
+        [JsonIgnore]
+        public string OnBehalfOfId
+        {
+            get => this.InternalOnBehalfOf?.Id;
+            set => this.InternalOnBehalfOf = SetExpandableFieldId(value, this.InternalOnBehalfOf);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The account (if any) for which the funds of the invoice payment are intended. If set,
+        /// the invoice will be presented with the branding and support information of the specified
+        /// account. See the <a href="https://stripe.com/docs/billing/invoices/connect">Invoices
+        /// with Connect</a> documentation for details.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Account OnBehalfOf
+        {
+            get => this.InternalOnBehalfOf?.ExpandedObject;
+            set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
+        }
+
+        [JsonProperty("on_behalf_of")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+        internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
+        #endregion
+
         /// <summary>
         /// Whether payment was successfully collected for this invoice. An invoice can be paid
         /// (most commonly) with a charge or with credit from the customer's account balance.
