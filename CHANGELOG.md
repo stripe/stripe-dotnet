@@ -1,5 +1,11 @@
 # Changelog
 
+## 39.36.0 - 2021-02-16
+* [#2288](https://github.com/stripe/stripe-dotnet/pull/2288) API Updates
+  * Add support for `afterpay_clearpay` on `PaymentMethod`, `PaymentIntentPaymentMethodData`, and `ChargePaymentMethodDetails`.
+  * Add support for `adjustable_quantity` on `SessionLineItemOptions`
+  * Add support for `bacs_debit`, `au_becs_debit` and `sepa_debit` on `SetupAttempt.payment_method_details`
+
 ## 39.35.0 - 2021-02-08
 * [#2282](https://github.com/stripe/stripe-dotnet/pull/2282) API Updates
   * Add support for `afterpay_clearpay_payments` on `Account.capabilities`
