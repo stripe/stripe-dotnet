@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.37.0 - 2021-02-17
+* [#2289](https://github.com/stripe/stripe-dotnet/pull/2289) API Updates
+  * Added support for on_behalf_of to Invoice
+
 ## 39.36.0 - 2021-02-16
 * [#2288](https://github.com/stripe/stripe-dotnet/pull/2288) API Updates
   * Add support for `afterpay_clearpay` on `PaymentMethod`, `PaymentIntentPaymentMethodData`, and `ChargePaymentMethodDetails`.
