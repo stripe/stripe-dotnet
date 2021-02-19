@@ -1,0 +1,40 @@
+{
+  "active": true,
+  "application": null,
+  "business_profile": {
+    "headline": null,
+    "privacy_policy_url": "https://example.com",
+    "terms_of_service_url": "https://example.com"
+  },
+  "created": 1234567890,
+  "default_return_url": null,
+  "features": {
+    "customer_update": {
+      "allowed_updates": [
+        "address"
+      ],
+      "enabled": true
+    },
+    "invoice_history": {
+      "enabled": true
+    },
+    "payment_method_update": {
+      "enabled": false
+    },
+    "subscription_cancel": {
+      "enabled": false,
+      "mode": "at_period_end",
+      "proration_behavior": "none"
+    },
+    "subscription_update": {
+      "default_allowed_updates": [],
+      "enabled": false,
+      "proration_behavior": "none"
+    }
+  },
+  "id": "bpc_GDJCj6v0s7LYkbm",
+  "is_default": true,
+  "livemode": true,
+  "object": "billing_portal.configuration",
+  "updated": 1234567890
+}
