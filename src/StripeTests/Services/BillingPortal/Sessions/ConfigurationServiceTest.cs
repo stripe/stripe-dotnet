@@ -11,9 +11,10 @@ namespace StripeTests.BillingPortal
 
     public class ConfigurationServiceTest : BaseStripeTest
     {
-        private const string ConfigurationId = "pts_123";
+        private const string ConfigurationId = "bpc_123";
         private readonly ConfigurationService service;
         private readonly ConfigurationCreateOptions createOptions;
+        private readonly ConfigurationUpdateOptions updateOptions;
 
         public ConfigurationServiceTest(
             StripeMockFixture stripeMockFixture,
@@ -33,10 +34,14 @@ namespace StripeTests.BillingPortal
                 {
                   CustomerUpdate = new ConfigurationFeaturesCustomerUpdateOptions
                   {
-                    AllowedUpdates = ["address"],
+                    AllowedUpdates = new List<string> { "address" },
                     Enabled = true,
-                  }
+                  },
                 },
+            };
+            this.updateOptions = new ConfigurationUpdateOptions
+            {
+              Active = false,
             };
         }
 
@@ -45,6 +50,15 @@ namespace StripeTests.BillingPortal
         {
             var configuration = this.service.Create(this.createOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/billing_portal/configurations");
+            Assert.NotNull(configuration);
+            Assert.Equal("billing_portal.configuration", configuration.Object);
+        }
+
+        [Fact]
+        public void Update()
+        {
+            var configuration = this.service.Update("bpc_123", this.updateOptions);
+            this.AssertRequest(HttpMethod.Post, "/v1/billing_portal/configurations/bpc_123");
             Assert.NotNull(configuration);
             Assert.Equal("billing_portal.configuration", configuration.Object);
         }
