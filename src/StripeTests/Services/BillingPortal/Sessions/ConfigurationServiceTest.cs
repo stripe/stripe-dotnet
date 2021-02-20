@@ -15,6 +15,7 @@ namespace StripeTests.BillingPortal
         private readonly ConfigurationService service;
         private readonly ConfigurationCreateOptions createOptions;
         private readonly ConfigurationUpdateOptions updateOptions;
+        private readonly ConfigurationListOptions listOptions;
 
         public ConfigurationServiceTest(
             StripeMockFixture stripeMockFixture,
@@ -43,6 +44,10 @@ namespace StripeTests.BillingPortal
             {
               Active = false,
             };
+            this.listOptions = new ConfigurationListOptions
+            {
+              Active = true,
+            };
         }
 
         [Fact]
@@ -68,6 +73,51 @@ namespace StripeTests.BillingPortal
         {
             var configuration = await this.service.CreateAsync(this.createOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/billing_portal/configurations");
+            Assert.NotNull(configuration);
+            Assert.Equal("billing_portal.configuration", configuration.Object);
+        }
+
+        [Fact]
+        public void Get()
+        {
+            var configuration = this.service.Get(ConfigurationId);
+            this.AssertRequest(HttpMethod.Get, "/v1/billing_portal/configurations/bpc_123");
+            Assert.NotNull(configuration);
+            Assert.Equal("billing_portal.configuration", configuration.Object);
+        }
+
+        [Fact]
+        public async Task GetAsync()
+        {
+            var configuration = await this.service.GetAsync(ConfigurationId);
+            this.AssertRequest(HttpMethod.Get, "/v1/billing_portal/configurations/bpc_123");
+            Assert.NotNull(configuration);
+            Assert.Equal("billing_portal.configuration", configuration.Object);
+        }
+
+        [Fact]
+        public async Task ListAsync()
+        {
+            var configurations = await this.service.ListAsync(this.listOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/billing_portal/configurations");
+            Assert.NotNull(configurations);
+            Assert.Equal("list", configurations.Object);
+            Assert.Single(configurations.Data);
+            Assert.Equal("billing_portal.configuration", configurations.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListAutoPaging()
+        {
+            var configuration = this.service.ListAutoPaging(this.listOptions).First();
+            Assert.NotNull(configuration);
+            Assert.Equal("billing_portal.configuration", configuration.Object);
+        }
+
+        [Fact]
+        public async Task ListAutoPagingAsync()
+        {
+            var configuration = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
             Assert.NotNull(configuration);
             Assert.Equal("billing_portal.configuration", configuration.Object);
         }
