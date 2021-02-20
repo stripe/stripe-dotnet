@@ -28,25 +28,25 @@ namespace StripeTests.BillingPortal
             {
                 BusinessProfile = new ConfigurationBusinessProfileOptions
                 {
-                  PrivacyPolicyUrl = "https://example.com/privacy",
-                  TermsOfServiceUrl = "https://example.com/tos",
+                    PrivacyPolicyUrl = "https://example.com/privacy",
+                    TermsOfServiceUrl = "https://example.com/tos",
                 },
                 Features = new ConfigurationFeaturesOptions
                 {
-                  CustomerUpdate = new ConfigurationFeaturesCustomerUpdateOptions
-                  {
-                    AllowedUpdates = new List<string> { "address" },
-                    Enabled = true,
-                  },
+                    CustomerUpdate = new ConfigurationFeaturesCustomerUpdateOptions
+                    {
+                        AllowedUpdates = new List<string> { "address" },
+                        Enabled = true,
+                    },
                 },
             };
             this.updateOptions = new ConfigurationUpdateOptions
             {
-              Active = false,
+                Active = false,
             };
             this.listOptions = new ConfigurationListOptions
             {
-              Active = true,
+                Active = true,
             };
         }
 
