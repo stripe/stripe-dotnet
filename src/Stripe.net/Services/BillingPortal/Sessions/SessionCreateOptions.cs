@@ -35,9 +35,7 @@ namespace Stripe.BillingPortal
 
         /// <summary>
         /// The default URL to redirect customers to when they click on the portal's link to return
-        /// to your website. This field is required if the configuration's <a
-        /// href="https://stripe.com/docs/api/customer_portal/configuration#portal_configuration_object-default_return_url"><c>default_return_url</c></a>
-        /// is not set.
+        /// to your website.
         /// </summary>
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
