@@ -22,6 +22,7 @@ namespace Stripe
             { "balance_transaction", typeof(BalanceTransaction) },
             { "bank_account", typeof(BankAccount) },
             { "billing_portal.session", typeof(BillingPortal.Session) },
+            { "billing_portal.configuration", typeof(BillingPortal.Configuration) },
             { "capability", typeof(Capability) },
             { "card", typeof(Card) },
             { "charge", typeof(Charge) },

@@ -39,14 +39,15 @@ namespace Stripe
         public string AggregateUsage { get; set; }
 
         /// <summary>
-        /// The unit amount in %s to be charged, represented as a whole integer if possible.
+        /// The unit amount in %s to be charged, represented as a whole integer if possible. Only
+        /// set if <c>billing_scheme=per_unit</c>.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
         /// The unit amount in %s to be charged, represented as a decimal string with at most 12
-        /// decimal places.
+        /// decimal places. Only set if <c>billing_scheme=per_unit</c>.
         /// </summary>
         [JsonProperty("amount_decimal")]
         public decimal? AmountDecimal { get; set; }
