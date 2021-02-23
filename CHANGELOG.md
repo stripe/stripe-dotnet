@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.38.0 - 2021-02-22
+* [#2290](https://github.com/stripe/stripe-dotnet/pull/2290) Add support for billing portal configuration API
+
 ## 39.37.0 - 2021-02-17
 * [#2289](https://github.com/stripe/stripe-dotnet/pull/2289) API Updates
   * Added support for on_behalf_of to Invoice
