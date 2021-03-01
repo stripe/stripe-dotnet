@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.39.0 - 2021-03-01
+* [#2287](https://github.com/stripe/stripe-dotnet/pull/2287) Add enum support for SubscriptionTrialEnd on the Upcoming Invoice API
+
 ## 39.38.0 - 2021-02-22
 * [#2290](https://github.com/stripe/stripe-dotnet/pull/2290) Add support for billing portal configuration API
 
