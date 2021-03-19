@@ -81,7 +81,8 @@ namespace Stripe
         public bool DetailsSubmitted { get; set; }
 
         /// <summary>
-        /// The primary user's email address.
+        /// An email address associated with the account. You can treat this as metadata: it is not
+        /// used for authentication or messaging account holders.
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }

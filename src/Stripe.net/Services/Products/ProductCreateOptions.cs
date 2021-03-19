@@ -71,16 +71,13 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
-        /// The dimensions of this product for shipping purposes. A SKU associated with this product
-        /// can override this value by having its own <c>package_dimensions</c>. May only be set if
-        /// type=<c>good</c>.
+        /// The dimensions of this product for shipping purposes.
         /// </summary>
         [JsonProperty("package_dimensions")]
         public ProductPackageDimensionsOptions PackageDimensions { get; set; }
 
         /// <summary>
-        /// Whether this product is shipped (i.e., physical goods). Defaults to <c>true</c>. May
-        /// only be set if type=<c>good</c>.
+        /// Whether this product is shipped (i.e., physical goods).
         /// </summary>
         [JsonProperty("shippable")]
         public bool? Shippable { get; set; }
@@ -116,8 +113,7 @@ namespace Stripe
         public string UnitLabel { get; set; }
 
         /// <summary>
-        /// A URL of a publicly-accessible webpage for this product. May only be set if
-        /// type=<c>good</c>.
+        /// A URL of a publicly-accessible webpage for this product.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }

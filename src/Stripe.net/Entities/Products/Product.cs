@@ -98,15 +98,13 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
-        /// The dimensions of this product for shipping purposes. A SKU associated with this product
-        /// can override this value by having its own <c>package_dimensions</c>. Only applicable to
-        /// products of <c>type=good</c>.
+        /// The dimensions of this product for shipping purposes.
         /// </summary>
         [JsonProperty("package_dimensions")]
         public ProductPackageDimensions PackageDimensions { get; set; }
 
         /// <summary>
-        /// Whether this product is a shipped good. Only applicable to products of <c>type=good</c>.
+        /// Whether this product is shipped (i.e., physical goods).
         /// </summary>
         [JsonProperty("shippable")]
         public bool? Shippable { get; set; }
@@ -143,8 +141,7 @@ namespace Stripe
         public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// A URL of a publicly-accessible webpage for this product. Only applicable to products of
-        /// <c>type=good</c>.
+        /// A URL of a publicly-accessible webpage for this product.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }

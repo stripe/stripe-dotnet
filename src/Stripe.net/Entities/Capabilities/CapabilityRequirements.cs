@@ -27,7 +27,17 @@ namespace Stripe
         /// <summary>
         /// If the capability is disabled, this string describes why. Possible values are
         /// <c>requirement.fields_needed</c>, <c>pending.onboarding</c>, <c>pending.review</c>,
-        /// <c>rejected_fraud</c>, or <c>rejected.other</c>.
+        /// <c>rejected_fraud</c>, <c>rejected.unsupported_business</c> or <c>rejected.other</c>.
+        ///
+        /// <c>rejected.unsupported_business</c> means that the account's business is not supported
+        /// by the capability. For example, payment methods may restrict the businesses they support
+        /// in their terms of service:.
+        ///
+        /// - <a href="https://stripe.com/afterpay-clearpay/legal#restricted-businesses">Afterpay
+        /// Clearpay's terms of service</a>.
+        ///
+        /// If you believe that the rejection is in error, please contact support@stripe.com for
+        /// assistance.
         /// </summary>
         [JsonProperty("disabled_reason")]
         public string DisabledReason { get; set; }
