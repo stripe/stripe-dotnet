@@ -82,7 +82,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// A brief description of the plan, hidden from customers.
+        /// A brief description of the price, hidden from customers.
         /// </summary>
         [JsonProperty("nickname")]
         public string Nickname { get; set; }
