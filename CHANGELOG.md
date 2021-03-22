@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.40.0 - 2021-03-22
+* [#2295](https://github.com/stripe/stripe-dotnet/pull/2295) API Updates
+  * Added support for `shipping_rates` on `SessionCreateOptions`
+  * Added support for `amount_shipping` on `Checkout.SessionTotalDetails`
+
 ## 39.39.0 - 2021-03-01
 * [#2287](https://github.com/stripe/stripe-dotnet/pull/2287) Add enum support for SubscriptionTrialEnd on the Upcoming Invoice API
 
