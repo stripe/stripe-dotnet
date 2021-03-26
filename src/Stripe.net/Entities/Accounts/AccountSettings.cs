@@ -11,6 +11,9 @@ namespace Stripe
         [JsonProperty("branding")]
         public AccountSettingsBranding Branding { get; set; }
 
+        [JsonProperty("card_issuing")]
+        public AccountSettingsCardIssuing CardIssuing { get; set; }
+
         [JsonProperty("card_payments")]
         public AccountSettingsCardPayments CardPayments { get; set; }
 

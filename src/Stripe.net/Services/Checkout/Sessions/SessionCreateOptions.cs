@@ -77,7 +77,8 @@ namespace Stripe.Checkout
         /// <c>en-GB</c>, <c>es</c>, <c>es-419</c>, <c>et</c>, <c>fi</c>, <c>fr</c>, <c>fr-CA</c>,
         /// <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>,
         /// <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>, <c>pt-BR</c>, <c>ro</c>, <c>ru</c>,
-        /// <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>tr</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
+        /// <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>, <c>tr</c>, <c>zh</c>, <c>zh-HK</c>, or
+        /// <c>zh-TW</c>.
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; }
