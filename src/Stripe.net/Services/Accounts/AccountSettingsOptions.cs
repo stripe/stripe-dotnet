@@ -13,6 +13,12 @@ namespace Stripe
         public AccountSettingsBrandingOptions Branding { get; set; }
 
         /// <summary>
+        /// Settings specific to the account's use of the Card Issuing product.
+        /// </summary>
+        [JsonProperty("card_issuing")]
+        public AccountSettingsCardIssuingOptions CardIssuing { get; set; }
+
+        /// <summary>
         /// Settings specific to card charging on the account.
         /// </summary>
         [JsonProperty("card_payments")]
