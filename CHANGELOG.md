@@ -1,9 +1,14 @@
 # Changelog
 
+## 39.41.0 - 2021-03-26
+* [#2297](https://github.com/stripe/stripe-dotnet/pull/2297) API Updates
+  * Add support for `AccountSettings.CardIssuing`, `AccountSettingsCardIssuing.TosAcceptance`
+  * Add support for `AccountSettingsOptions.CardIssuing`, `AccountSettingsCardIssuingOptions.TosAcceptance`
+
 ## 39.40.0 - 2021-03-22
 * [#2295](https://github.com/stripe/stripe-dotnet/pull/2295) API Updates
-  * Added support for `shipping_rates` on `SessionCreateOptions`
-  * Added support for `amount_shipping` on `Checkout.SessionTotalDetails`
+  * Add support for `shipping_rates` on `SessionCreateOptions`
+  * Add support for `amount_shipping` on `Checkout.SessionTotalDetails`
 
 ## 39.39.0 - 2021-03-01
 * [#2287](https://github.com/stripe/stripe-dotnet/pull/2287) Add enum support for SubscriptionTrialEnd on the Upcoming Invoice API
@@ -13,7 +18,7 @@
 
 ## 39.37.0 - 2021-02-17
 * [#2289](https://github.com/stripe/stripe-dotnet/pull/2289) API Updates
-  * Added support for on_behalf_of to Invoice
+  * Add support for on_behalf_of to Invoice
 
 ## 39.36.0 - 2021-02-16
 * [#2288](https://github.com/stripe/stripe-dotnet/pull/2288) API Updates
@@ -36,19 +41,19 @@
 
 ## 39.33.0 - 2021-01-21
 * [#2274](https://github.com/stripe/stripe-dotnet/pull/2274) API Updates
-  * Added support for `dynamic_tax_rates` on `SessionLineItemOptions`
-  * Added support for `customer_details` on `Checkout.Session`
-  * Added support for `type` on `TransactionListOptions`
-  * Added support for `country` and `state` on `TaxRateCreateOptions`, `TaxRateUpdateOptions` and `TaxRate`
+  * Add support for `dynamic_tax_rates` on `SessionLineItemOptions`
+  * Add support for `customer_details` on `Checkout.Session`
+  * Add support for `type` on `TransactionListOptions`
+  * Add support for `country` and `state` on `TaxRateCreateOptions`, `TaxRateUpdateOptions` and `TaxRate`
 
 ## 39.32.0 - 2021-01-07
 * [#2271](https://github.com/stripe/stripe-dotnet/pull/2271) API Updates
-  * Added support for `company_registration_verification`, `company_ministerial_decree`, `company_memorandum_of_association`, `company_license` and `company_tax_id_verification` on `Account#update.documents` and `Account#create.documents`
+  * Add support for `company_registration_verification`, `company_ministerial_decree`, `company_memorandum_of_association`, `company_license` and `company_tax_id_verification` on `Account#update.documents` and `Account#create.documents`
 * [#2266](https://github.com/stripe/stripe-dotnet/pull/2266) Improve the changelog to cover the issue with 37.X and 38.X not being released
 
 ## 39.31.0 - 2020-12-15
 * [#2263](https://github.com/stripe/stripe-dotnet/pull/2263) API Updates
-  * Added support for card_present on SetupAttempt.payment_method_details
+  * Add support for card_present on SetupAttempt.payment_method_details
 
 ## 39.30.0 - 2020-12-10
 * [#2262](https://github.com/stripe/stripe-dotnet/pull/2262) Multiple API Changes
