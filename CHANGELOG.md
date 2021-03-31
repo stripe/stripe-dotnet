@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.42.0 - 2021-03-31
+* [#2299](https://github.com/stripe/stripe-dotnet/pull/2299) API Updates
+  * Added support for `transfer_data` on `Checkout.SessionSubscriptionDataOptions`
+
 ## 39.41.0 - 2021-03-26
 * [#2297](https://github.com/stripe/stripe-dotnet/pull/2297) API Updates
   * Add support for `AccountSettings.CardIssuing`, `AccountSettingsCardIssuing.TosAcceptance`
