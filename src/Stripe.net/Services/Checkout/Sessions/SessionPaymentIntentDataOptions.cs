@@ -58,8 +58,9 @@ namespace Stripe.Checkout
         public string ReceiptEmail { get; set; }
 
         /// <summary>
-        /// Indicates that you intend to make future payments with the payment method collected by
-        /// this Checkout Session.
+        /// Indicates that you intend to <a
+        /// href="https://stripe.com/docs/payments/payment-intents#future-usage">make future
+        /// payments</a> with the payment method collected by this Checkout Session.
         ///
         /// When setting this to <c>on_session</c>, Checkout will show a notice to the customer that
         /// their payment details will be saved.
