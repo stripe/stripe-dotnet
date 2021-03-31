@@ -34,7 +34,8 @@ namespace Stripe.Reporting
         public string Error { get; set; }
 
         /// <summary>
-        /// Always <c>true</c>: reports can only be run on live-mode data.
+        /// <c>true</c> if the report is run on live mode data and <c>false</c> if it is run on test
+        /// mode data.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }

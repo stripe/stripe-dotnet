@@ -51,6 +51,14 @@ namespace Stripe.Checkout
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// If specified, the funds from the subscription's invoices will be transferred to the
+        /// destination and the ID of the resulting transfers will be found on the resulting
+        /// charges.
+        /// </summary>
+        [JsonProperty("transfer_data")]
+        public SessionSubscriptionDataTransferDataOptions TransferData { get; set; }
+
+        /// <summary>
         /// Unix timestamp representing the end of the trial period the customer will get before
         /// being charged for the first time. Has to be at least 48 hours in the future.
         /// </summary>

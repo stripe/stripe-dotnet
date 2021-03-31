@@ -61,11 +61,14 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// A list of items the customer is purchasing. Use this parameter to pass one-time or
-        /// recurring <a href="https://stripe.com/docs/api/prices">Prices</a>. One-time Prices in
-        /// <c>subscription</c> mode will be on the initial invoice only.
+        /// recurring <a href="https://stripe.com/docs/api/prices">Prices</a>.
         ///
-        /// There is a maximum of 100 line items, however it is recommended to consolidate line
-        /// items if there are more than a few dozen.
+        /// For <c>payment</c> mode, there is a maximum of 100 line items, however it is recommended
+        /// to consolidate line items if there are more than a few dozen.
+        ///
+        /// For <c>subscription</c> mode, there is a maximum of 20 line items with recurring Prices
+        /// and 20 line items with one-time Prices. Line items with one-time Prices in will be on
+        /// the initial invoice only.
         /// </summary>
         [JsonProperty("line_items")]
         public List<SessionLineItemOptions> LineItems { get; set; }
