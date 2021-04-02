@@ -217,6 +217,9 @@ namespace Stripe
         /// whether two customers who’ve signed up with you are using the same card number, for
         /// example. For payment methods that tokenize card information (Apple Pay, Google Pay), the
         /// tokenized number might be provided instead of the underlying card number.
+        ///
+        /// <em>Starting May 1, 2021, card fingerprint in India for Connect will change to allow two
+        /// fingerprints for the same card --- one for India and one for the rest of the world.</em>.
         /// </summary>
         [JsonProperty("fingerprint")]
         public string Fingerprint { get; set; }
