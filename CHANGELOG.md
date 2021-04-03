@@ -1,8 +1,12 @@
 # Changelog
 
+## 39.43.0 - 2021-04-02
+* [#2302](https://github.com/stripe/stripe-dotnet/pull/2302) API Updates
+  * Add support for `subscription_pause` on `BillingPortal.ConfigurationFeaturesOptions` and `BillingPortal.ConfigurationFeatures`
+
 ## 39.42.0 - 2021-03-31
 * [#2299](https://github.com/stripe/stripe-dotnet/pull/2299) API Updates
-  * Added support for `transfer_data` on `Checkout.SessionSubscriptionDataOptions`
+  * Add support for `transfer_data` on `Checkout.SessionSubscriptionDataOptions`
 
 ## 39.41.0 - 2021-03-26
 * [#2297](https://github.com/stripe/stripe-dotnet/pull/2297) API Updates
