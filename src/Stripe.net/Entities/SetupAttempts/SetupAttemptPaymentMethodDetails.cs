@@ -5,6 +5,9 @@ namespace Stripe
 
     public class SetupAttemptPaymentMethodDetails : StripeEntity<SetupAttemptPaymentMethodDetails>
     {
+        [JsonProperty("acss_debit")]
+        public SetupAttemptPaymentMethodDetailsAcssDebit AcssDebit { get; set; }
+
         [JsonProperty("au_becs_debit")]
         public SetupAttemptPaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
 

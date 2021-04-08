@@ -5,6 +5,9 @@ namespace Stripe
 
     public class PaymentIntentPaymentMethodOptions : StripeEntity<PaymentIntentPaymentMethodOptions>
     {
+        [JsonProperty("acss_debit")]
+        public PaymentIntentPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
+
         [JsonProperty("alipay")]
         public PaymentIntentPaymentMethodOptionsAlipay Alipay { get; set; }
 
