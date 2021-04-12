@@ -193,6 +193,13 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
+        /// Payment-method-specific configuration for the PaymentIntent or SetupIntent of this
+        /// CheckoutSession.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+        public SessionPaymentMethodOptions PaymentMethodOptions { get; set; }
+
+        /// <summary>
         /// A list of the types of payment methods (e.g. card) this Checkout Session is allowed to
         /// accept.
         /// </summary>
