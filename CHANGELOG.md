@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.45.0 - 2021-04-16
+* [#2307](https://github.com/stripe/stripe-dotnet/pull/2307) API Updates
+  * Add support for `currency` on `SessionPaymentMethodOptionsAcssDebit`.
+
 ## 39.44.0 - 2021-04-12
 * [#2303](https://github.com/stripe/stripe-dotnet/pull/2303) API Updates
   * Add support for `acss_debit_payments` on `AccountCapabilities`
