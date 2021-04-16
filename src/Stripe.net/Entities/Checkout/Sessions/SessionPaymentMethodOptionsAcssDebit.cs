@@ -14,5 +14,8 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("verification_method")]
         public string VerificationMethod { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
     }
 }
