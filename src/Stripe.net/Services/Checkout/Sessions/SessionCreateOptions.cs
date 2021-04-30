@@ -34,11 +34,24 @@ namespace Stripe.Checkout
         public string ClientReferenceId { get; set; }
 
         /// <summary>
-        /// ID of an existing customer, if one exists. The email stored on the customer will be used
-        /// to prefill the email field on the Checkout page. If the customer changes their email on
-        /// the Checkout page, the Customer object will be updated with the new email. If blank for
-        /// Checkout Sessions in <c>payment</c> or <c>subscription</c> mode, Checkout will create a
-        /// new customer object based on information provided during the payment flow.
+        /// ID of an existing Customer, if one exists. In <c>payment</c> mode, the customer’s most
+        /// recent card payment method will be used to prefill the email, name, card details, and
+        /// billing address on the Checkout page. In <c>subscription</c> mode, the customer’s <a
+        /// href="https://stripe.com/docs/api/customers/update#update_customer-invoice_settings-default_payment_method">default
+        /// payment method</a> will be used if it’s a card, and otherwise the most recent card will
+        /// be used. A valid billing address is required for Checkout to prefill the customer's card
+        /// details.
+        ///
+        /// If the customer changes their email on the Checkout page, the Customer object will be
+        /// updated with the new email.
+        ///
+        /// If blank for Checkout Sessions in <c>payment</c> or <c>subscription</c> mode, Checkout
+        /// will create a new Customer object based on information provided during the payment flow.
+        ///
+        /// You can set <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/create#create_checkout_session-payment_intent_data-setup_future_usage"><c>payment_intent_data.setup_future_usage</c></a>
+        /// to have Checkout automatically attach the payment method to the Customer you pass in for
+        /// future reuse.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
@@ -61,11 +74,14 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// A list of items the customer is purchasing. Use this parameter to pass one-time or
-        /// recurring <a href="https://stripe.com/docs/api/prices">Prices</a>. One-time Prices in
-        /// <c>subscription</c> mode will be on the initial invoice only.
+        /// recurring <a href="https://stripe.com/docs/api/prices">Prices</a>.
         ///
-        /// There is a maximum of 100 line items, however it is recommended to consolidate line
-        /// items if there are more than a few dozen.
+        /// For <c>payment</c> mode, there is a maximum of 100 line items, however it is recommended
+        /// to consolidate line items if there are more than a few dozen.
+        ///
+        /// For <c>subscription</c> mode, there is a maximum of 20 line items with recurring Prices
+        /// and 20 line items with one-time Prices. Line items with one-time Prices in will be on
+        /// the initial invoice only.
         /// </summary>
         [JsonProperty("line_items")]
         public List<SessionLineItemOptions> LineItems { get; set; }
@@ -77,7 +93,8 @@ namespace Stripe.Checkout
         /// <c>en-GB</c>, <c>es</c>, <c>es-419</c>, <c>et</c>, <c>fi</c>, <c>fr</c>, <c>fr-CA</c>,
         /// <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>,
         /// <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>, <c>pt-BR</c>, <c>ro</c>, <c>ru</c>,
-        /// <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>tr</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
+        /// <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>, <c>tr</c>, <c>zh</c>, <c>zh-HK</c>, or
+        /// <c>zh-TW</c>.
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -107,6 +124,12 @@ namespace Stripe.Checkout
         public SessionPaymentIntentDataOptions PaymentIntentData { get; set; }
 
         /// <summary>
+        /// Payment-method-specific configuration.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+        public SessionPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
+
+        /// <summary>
         /// A list of the types of payment methods (e.g., <c>card</c>) this Checkout Session can
         /// accept.
         ///
@@ -134,6 +157,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("shipping_address_collection")]
         public SessionShippingAddressCollectionOptions ShippingAddressCollection { get; set; }
+
+        /// <summary>
+        /// The shipping rate to apply to this Session. Currently, only up to one may be specified.
+        /// </summary>
+        [JsonProperty("shipping_rates")]
+        public List<string> ShippingRates { get; set; }
 
         /// <summary>
         /// Describes the type of transaction being performed by Checkout in order to customize

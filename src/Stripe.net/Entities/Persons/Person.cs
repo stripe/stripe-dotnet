@@ -126,6 +126,12 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The country where the person is a national.
+        /// </summary>
+        [JsonProperty("nationality")]
+        public string Nationality { get; set; }
+
+        /// <summary>
         /// The person's phone number.
         /// </summary>
         [JsonProperty("phone")]

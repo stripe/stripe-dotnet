@@ -82,7 +82,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// A brief description of the plan, hidden from customers.
+        /// A brief description of the price, hidden from customers.
         /// </summary>
         [JsonProperty("nickname")]
         public string Nickname { get; set; }
@@ -156,14 +156,15 @@ namespace Stripe
         public string Type { get; set; }
 
         /// <summary>
-        /// The unit amount in %s to be charged, represented as a whole integer if possible.
+        /// The unit amount in %s to be charged, represented as a whole integer if possible. Only
+        /// set if <c>billing_scheme=per_unit</c>.
         /// </summary>
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
         /// The unit amount in %s to be charged, represented as a decimal string with at most 12
-        /// decimal places.
+        /// decimal places. Only set if <c>billing_scheme=per_unit</c>.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }

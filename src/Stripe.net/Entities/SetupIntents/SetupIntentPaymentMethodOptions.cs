@@ -5,6 +5,9 @@ namespace Stripe
 
     public class SetupIntentPaymentMethodOptions : StripeEntity<SetupIntentPaymentMethodOptions>
     {
+        [JsonProperty("acss_debit")]
+        public SetupIntentPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
+
         [JsonProperty("card")]
         public SetupIntentPaymentMethodOptionsCard Card { get; set; }
 

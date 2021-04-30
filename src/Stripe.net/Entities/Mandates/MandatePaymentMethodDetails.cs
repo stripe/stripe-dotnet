@@ -5,6 +5,9 @@ namespace Stripe
 
     public class MandatePaymentMethodDetails : StripeEntity<MandatePaymentMethodDetails>
     {
+        [JsonProperty("acss_debit")]
+        public MandatePaymentMethodDetailsAcssDebit AcssDebit { get; set; }
+
         [JsonProperty("au_becs_debit")]
         public MandatePaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
 

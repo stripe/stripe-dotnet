@@ -19,7 +19,8 @@ namespace Stripe
         /// A fee in %s that will be applied to the invoice and transferred to the application
         /// owner's Stripe account. The request must be made with an OAuth key or the Stripe-Account
         /// header in order to take an application fee. For more information, see the application
-        /// fees <a href="https://stripe.com/docs/connect/subscriptions#invoices">documentation</a>.
+        /// fees <a
+        /// href="https://stripe.com/docs/billing/invoices/connect#collecting-fees">documentation</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
@@ -121,6 +122,22 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The account (if any) for which the funds of the invoice payment are intended. If set,
+        /// the invoice will be presented with the branding and support information of the specified
+        /// account. See the <a href="https://stripe.com/docs/billing/invoices/connect">Invoices
+        /// with Connect</a> documentation for details.
+        /// </summary>
+        [JsonProperty("on_behalf_of")]
+        public string OnBehalfOf { get; set; }
+
+        /// <summary>
+        /// Configuration settings for the PaymentIntent that is generated when the invoice is
+        /// finalized.
+        /// </summary>
+        [JsonProperty("payment_settings")]
+        public InvoicePaymentSettingsOptions PaymentSettings { get; set; }
 
         /// <summary>
         /// Extra information about a charge for the customer's credit card statement. It must

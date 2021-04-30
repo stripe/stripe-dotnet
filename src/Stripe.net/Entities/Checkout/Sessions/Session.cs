@@ -105,6 +105,13 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
+        /// The customer details including the customer's tax exempt status and the customer's tax
+        /// IDs.
+        /// </summary>
+        [JsonProperty("customer_details")]
+        public SessionCustomerDetails CustomerDetails { get; set; }
+
+        /// <summary>
         /// If provided, this value will be used when the Customer object is created. If not
         /// provided, customers will be asked to enter their email address. Use this parameter to
         /// prefill customer data if you already have an email on file. To access information about
@@ -133,7 +140,8 @@ namespace Stripe.Checkout
         /// <c>en-GB</c>, <c>es</c>, <c>es-419</c>, <c>et</c>, <c>fi</c>, <c>fr</c>, <c>fr-CA</c>,
         /// <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>,
         /// <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>, <c>pt-BR</c>, <c>ro</c>, <c>ru</c>,
-        /// <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>tr</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
+        /// <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>, <c>tr</c>, <c>zh</c>, <c>zh-HK</c>, or
+        /// <c>zh-TW</c>.
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -183,6 +191,13 @@ namespace Stripe.Checkout
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
+
+        /// <summary>
+        /// Payment-method-specific configuration for the PaymentIntent or SetupIntent of this
+        /// CheckoutSession.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+        public SessionPaymentMethodOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
         /// A list of the types of payment methods (e.g. card) this Checkout Session is allowed to

@@ -6,6 +6,18 @@ namespace Stripe
     public class AccountCapabilitiesOptions : INestedOptions
     {
         /// <summary>
+        /// The acss_debit_payments capability.
+        /// </summary>
+        [JsonProperty("acss_debit_payments")]
+        public AccountCapabilitiesAcssDebitPaymentsOptions AcssDebitPayments { get; set; }
+
+        /// <summary>
+        /// The afterpay_clearpay_payments capability.
+        /// </summary>
+        [JsonProperty("afterpay_clearpay_payments")]
+        public AccountCapabilitiesAfterpayClearpayPaymentsOptions AfterpayClearpayPayments { get; set; }
+
+        /// <summary>
         /// The au_becs_debit_payments capability.
         /// </summary>
         [JsonProperty("au_becs_debit_payments")]

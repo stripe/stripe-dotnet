@@ -14,6 +14,9 @@ namespace Stripe
         [JsonProperty("acss_debit")]
         public ChargePaymentMethodDetailsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("afterpay_clearpay")]
+        public ChargePaymentMethodDetailsAfterpayClearpay AfterpayClearpay { get; set; }
+
         [JsonProperty("alipay")]
         public ChargePaymentMethodDetailsAlipay Alipay { get; set; }
 
@@ -70,12 +73,12 @@ namespace Stripe
 
         /// <summary>
         /// The type of transaction-specific details of the payment method used in the payment, one
-        /// of <c>ach_credit_transfer</c>, <c>ach_debit</c>, <c>alipay</c>, <c>au_becs_debit</c>,
-        /// <c>bancontact</c>, <c>card</c>, <c>card_present</c>, <c>eps</c>, <c>giropay</c>,
-        /// <c>ideal</c>, <c>klarna</c>, <c>multibanco</c>, <c>p24</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>stripe_account</c>, or <c>wechat</c>. An additional hash is included
-        /// on <c>payment_method_details</c> with a name matching this value. It contains
-        /// information specific to the payment method.
+        /// of <c>ach_credit_transfer</c>, <c>ach_debit</c>, <c>acss_debit</c>, <c>alipay</c>,
+        /// <c>au_becs_debit</c>, <c>bancontact</c>, <c>card</c>, <c>card_present</c>, <c>eps</c>,
+        /// <c>giropay</c>, <c>ideal</c>, <c>klarna</c>, <c>multibanco</c>, <c>p24</c>,
+        /// <c>sepa_debit</c>, <c>sofort</c>, <c>stripe_account</c>, or <c>wechat</c>. An additional
+        /// hash is included on <c>payment_method_details</c> with a name matching this value. It
+        /// contains information specific to the payment method.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

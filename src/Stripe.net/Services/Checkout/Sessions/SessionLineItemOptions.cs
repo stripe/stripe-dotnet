@@ -7,6 +7,13 @@ namespace Stripe.Checkout
     public class SessionLineItemOptions : INestedOptions
     {
         /// <summary>
+        /// When set, provides configuration for this item’s quantity to be adjusted by the customer
+        /// during Checkout.
+        /// </summary>
+        [JsonProperty("adjustable_quantity")]
+        public SessionLineItemAdjustableQuantityOptions AdjustableQuantity { get; set; }
+
+        /// <summary>
         /// The amount to be collected per unit of the line item. If specified, must also pass
         /// <c>currency</c> and <c>name</c>.
         /// </summary>
@@ -29,6 +36,14 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// The <a href="https://stripe.com/docs/api/tax_rates">tax rates</a> that will be applied
+        /// to this line item depending on the customer's billing/shipping address. We currently
+        /// support the following countries: US, GB, AU, and all countries in the EU.
+        /// </summary>
+        [JsonProperty("dynamic_tax_rates")]
+        public List<string> DynamicTaxRates { get; set; }
 
         /// <summary>
         /// A list of image URLs representing this line item. Each image can be up to 5 MB in size.
@@ -61,14 +76,15 @@ namespace Stripe.Checkout
         public SessionLineItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
-        /// The quantity of the line item being purchased.
+        /// The quantity of the line item being purchased. Quantity should not be defined when
+        /// <c>recurring.usage_type=metered</c>.
         /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
 
         /// <summary>
         /// The <a href="https://stripe.com/docs/api/tax_rates">tax rates</a> which apply to this
-        /// line item. This is only allowed in subscription mode.
+        /// line item.
         /// </summary>
         [JsonProperty("tax_rates")]
         public List<string> TaxRates { get; set; }

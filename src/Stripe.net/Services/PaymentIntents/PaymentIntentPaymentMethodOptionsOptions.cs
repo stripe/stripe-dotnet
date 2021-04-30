@@ -6,6 +6,13 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsOptions : INestedOptions
     {
         /// <summary>
+        /// If this is a <c>acss_debit</c> PaymentMethod, this sub-hash contains details about the
+        /// ACSS Debit payment method options.
+        /// </summary>
+        [JsonProperty("acss_debit")]
+        public PaymentIntentPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
+
+        /// <summary>
         /// If this is a <c>alipay</c> PaymentMethod, this sub-hash contains details about the
         /// Alipay payment method options.
         /// </summary>

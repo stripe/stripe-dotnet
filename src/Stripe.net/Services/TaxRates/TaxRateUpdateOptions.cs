@@ -15,6 +15,13 @@ namespace Stripe
         public bool? Active { get; set; }
 
         /// <summary>
+        /// Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO
+        /// 3166-1 alpha-2</a>).
+        /// </summary>
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        /// <summary>
         /// An arbitrary string attached to the tax rate for your internal use only. It will not be
         /// visible to your customers.
         /// </summary>
@@ -42,5 +49,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// <a href="https://en.wikipedia.org/wiki/ISO_3166-2:US">ISO 3166-2 subdivision code</a>,
+        /// without country prefix. For example, "NY" for New York, United States.
+        /// </summary>
+        [JsonProperty("state")]
+        public string State { get; set; }
     }
 }

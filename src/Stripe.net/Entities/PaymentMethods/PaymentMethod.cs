@@ -20,6 +20,12 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("acss_debit")]
+        public PaymentMethodAcssDebit AcssDebit { get; set; }
+
+        [JsonProperty("afterpay_clearpay")]
+        public PaymentMethodAfterpayClearpay AfterpayClearpay { get; set; }
+
         [JsonProperty("alipay")]
         public PaymentMethodAlipay Alipay { get; set; }
 
@@ -130,10 +136,11 @@ namespace Stripe
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
-        /// One of: <c>alipay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
-        /// <c>card</c>, <c>card_present</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
-        /// <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>, <c>oxxo</c>, <c>p24</c>,
-        /// <c>sepa_debit</c>, or <c>sofort</c>.
+        /// One of: <c>acss_debit</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
+        /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>card</c>,
+        /// <c>card_present</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
+        /// <c>ideal</c>, <c>interac_present</c>, <c>oxxo</c>, <c>p24</c>, <c>sepa_debit</c>, or
+        /// <c>sofort</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

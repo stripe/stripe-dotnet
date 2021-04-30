@@ -1,5 +1,86 @@
 # Changelog
 
+## 39.45.0 - 2021-04-16
+* [#2307](https://github.com/stripe/stripe-dotnet/pull/2307) API Updates
+  * Add support for `currency` on `SessionPaymentMethodOptionsAcssDebit`.
+
+## 39.44.0 - 2021-04-12
+* [#2303](https://github.com/stripe/stripe-dotnet/pull/2303) API Updates
+  * Add support for `acss_debit_payments` on `AccountCapabilities`
+  * Add support for `acss_debit` on `SetupIntentPaymentMethodOptionsOptions`, `SetupAttemptPaymentMethodDetailsOptions`, `PaymentMethod`, `PaymentMethodOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodDataOptions`, and `MandatePaymentMethodDetails`, and `Checkout.SessionPaymentMethodOptions`.
+  * Add `acss_debit` to the `type` enum of `PaymentMethod`, `PaymentIntent` and `Checkout.SessionCreateOptions.payment_method_types`.
+  * Add support for `verify_with_microdeposits` on `PaymentIntentNextAction` and `SetupIntentNextAction`
+
+## 39.43.0 - 2021-04-02
+* [#2302](https://github.com/stripe/stripe-dotnet/pull/2302) API Updates
+  * Add support for `subscription_pause` on `BillingPortal.ConfigurationFeaturesOptions` and `BillingPortal.ConfigurationFeatures`
+
+## 39.42.0 - 2021-03-31
+* [#2299](https://github.com/stripe/stripe-dotnet/pull/2299) API Updates
+  * Add support for `transfer_data` on `Checkout.SessionSubscriptionDataOptions`
+
+## 39.41.0 - 2021-03-26
+* [#2297](https://github.com/stripe/stripe-dotnet/pull/2297) API Updates
+  * Add support for `AccountSettings.CardIssuing`, `AccountSettingsCardIssuing.TosAcceptance`
+  * Add support for `AccountSettingsOptions.CardIssuing`, `AccountSettingsCardIssuingOptions.TosAcceptance`
+
+## 39.40.0 - 2021-03-22
+* [#2295](https://github.com/stripe/stripe-dotnet/pull/2295) API Updates
+  * Add support for `shipping_rates` on `SessionCreateOptions`
+  * Add support for `amount_shipping` on `Checkout.SessionTotalDetails`
+
+## 39.39.0 - 2021-03-01
+* [#2287](https://github.com/stripe/stripe-dotnet/pull/2287) Add enum support for SubscriptionTrialEnd on the Upcoming Invoice API
+
+## 39.38.0 - 2021-02-22
+* [#2290](https://github.com/stripe/stripe-dotnet/pull/2290) Add support for billing portal configuration API
+
+## 39.37.0 - 2021-02-17
+* [#2289](https://github.com/stripe/stripe-dotnet/pull/2289) API Updates
+  * Add support for on_behalf_of to Invoice
+
+## 39.36.0 - 2021-02-16
+* [#2288](https://github.com/stripe/stripe-dotnet/pull/2288) API Updates
+  * Add support for `afterpay_clearpay` on `PaymentMethod`, `PaymentIntentPaymentMethodData`, and `ChargePaymentMethodDetails`.
+  * Add support for `adjustable_quantity` on `SessionLineItemOptions`
+  * Add support for `bacs_debit`, `au_becs_debit` and `sepa_debit` on `SetupAttempt.payment_method_details`
+
+## 39.35.0 - 2021-02-08
+* [#2282](https://github.com/stripe/stripe-dotnet/pull/2282) API Updates
+  * Add support for `afterpay_clearpay_payments` on `Account.capabilities`
+  * Add support for `payment_settings` on `Invoice`
+
+## 39.34.0 - 2021-02-03
+* [#2279](https://github.com/stripe/stripe-dotnet/pull/2279) Add `nationality` to Person
+* [#2278](https://github.com/stripe/stripe-dotnet/pull/2278) Add link to playlist from README
+* [#2277](https://github.com/stripe/stripe-dotnet/pull/2277) API Updates
+  * Add support for `nationality` on `Person`, `PersonUpdateOptions`, `PersonCreateOptions` and `TokenCreateParams.person`
+
+
+
+## 39.33.0 - 2021-01-21
+* [#2274](https://github.com/stripe/stripe-dotnet/pull/2274) API Updates
+  * Add support for `dynamic_tax_rates` on `SessionLineItemOptions`
+  * Add support for `customer_details` on `Checkout.Session`
+  * Add support for `type` on `TransactionListOptions`
+  * Add support for `country` and `state` on `TaxRateCreateOptions`, `TaxRateUpdateOptions` and `TaxRate`
+
+## 39.32.0 - 2021-01-07
+* [#2271](https://github.com/stripe/stripe-dotnet/pull/2271) API Updates
+  * Add support for `company_registration_verification`, `company_ministerial_decree`, `company_memorandum_of_association`, `company_license` and `company_tax_id_verification` on `Account#update.documents` and `Account#create.documents`
+* [#2266](https://github.com/stripe/stripe-dotnet/pull/2266) Improve the changelog to cover the issue with 37.X and 38.X not being released
+
+## 39.31.0 - 2020-12-15
+* [#2263](https://github.com/stripe/stripe-dotnet/pull/2263) API Updates
+  * Add support for card_present on SetupAttempt.payment_method_details
+
+## 39.30.0 - 2020-12-10
+* [#2262](https://github.com/stripe/stripe-dotnet/pull/2262) Multiple API Changes
+  * Add support for passing `Bank` for eps on `PaymentIntent` or `PaymentMethod`.
+  * Add support for passing `tos_shown_and_accepted` on `PaymentIntent`.
+* [#2246](https://github.com/stripe/stripe-dotnet/pull/2246) Add .NET 5.0 target
+* [#2261](https://github.com/stripe/stripe-dotnet/pull/2261) Update the package description
+
 ## 39.29.0 - 2020-12-03
 * [#2260](https://github.com/stripe/stripe-dotnet/pull/2260) Add support for `Documents` on `Account` create and update
 
@@ -106,7 +187,7 @@
   * Add `PaymentStatus` on Checkout `Session`
 
 ## 39.1.2 - 2020-09-01
-    
+
     Major version release for API version 2020-08-27.
 
     Pull requests included in this release (⚠️ = breaking changes):
@@ -161,6 +242,11 @@
     * [#2178](https://github.com/stripe/stripe-dotnet/pull/2178) ⚠️ Unshare `ChargeDestinationOptions`
     * [#2181](https://github.com/stripe/stripe-dotnet/pull/2181) ⚠️ Updates doc strings to match the OpenAPI spec
     * [#2193](https://github.com/stripe/stripe-dotnet/pull/2193) Configure license and icon within repo
+
+
+## 38.0.0  and 39.0.0 - 2020-08-27
+
+We experienced multiple errors during the release of 38.0.0 and 39.0.0 that could not be reverted. The next major version after 37.X is the version 39.1.2 above.
 
 ## 37.35.0 - 2020-08-27
 * [#2186](https://github.com/stripe/stripe-dotnet/pull/2186) Add support for `SepaCreditTransfer` in `SourceTransaction`

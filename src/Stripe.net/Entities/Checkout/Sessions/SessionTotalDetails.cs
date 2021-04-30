@@ -12,6 +12,12 @@ namespace Stripe.Checkout
         public long AmountDiscount { get; set; }
 
         /// <summary>
+        /// This is the sum of all the line item shipping amounts.
+        /// </summary>
+        [JsonProperty("amount_shipping")]
+        public long? AmountShipping { get; set; }
+
+        /// <summary>
         /// This is the sum of all the line item tax amounts.
         /// </summary>
         [JsonProperty("amount_tax")]

@@ -6,6 +6,22 @@ namespace Stripe
     public class AccountCapabilities : StripeEntity<AccountCapabilities>
     {
         /// <summary>
+        /// The status of the ACSS Direct Debits payments capability of the account, or whether the
+        /// account can directly process ACSS Direct Debits charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("acss_debit_payments")]
+        public string AcssDebitPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Afterpay Clearpay capability of the account, or whether the account
+        /// can directly process Afterpay Clearpay charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("afterpay_clearpay_payments")]
+        public string AfterpayClearpayPayments { get; set; }
+
+        /// <summary>
         /// The status of the BECS Direct Debit (AU) payments capability of the account, or whether
         /// the account can directly process BECS Direct Debit (AU) charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

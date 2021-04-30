@@ -15,10 +15,13 @@ namespace Stripe
         public PaymentIntentNextActionRedirectToUrl RedirectToUrl { get; set; }
 
         /// <summary>
-        /// Type of the next action to perform, one of <c>redirect_to_url</c> or
-        /// <c>use_stripe_sdk</c>.
+        /// Type of the next action to perform, one of <c>redirect_to_url</c>,
+        /// <c>use_stripe_sdk</c>, <c>alipay_handle_redirect</c>, or <c>oxxo_display_details</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        [JsonProperty("verify_with_microdeposits")]
+        public PaymentIntentNextActionVerifyWithMicrodeposits VerifyWithMicrodeposits { get; set; }
     }
 }
