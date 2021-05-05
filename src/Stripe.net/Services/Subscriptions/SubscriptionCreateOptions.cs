@@ -160,6 +160,16 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/migration/strong-customer-authentication">SCA
         /// Migration Guide</a> for Billing to learn more. This is the default behavior.
         ///
+        /// Use <c>default_incomplete</c> to create Subscriptions with <c>status=incomplete</c> when
+        /// the first invoice requires payment, otherwise start as active. Subscriptions transition
+        /// to <c>status=active</c> when successfully confirming the payment intent on the first
+        /// invoice. This allows simpler management of scenarios where additional user actions are
+        /// needed to pay a subscription’s invoice. Such as failed payments, <a
+        /// href="https://stripe.com/docs/billing/migration/strong-customer-authentication">SCA
+        /// regulation</a>, or collecting a mandate for a bank debit payment method. If the payment
+        /// intent is not confirmed within 23 hours subscriptions transition to
+        /// <c>status=expired_incomplete</c>, which is a terminal state.
+        ///
         /// Use <c>error_if_incomplete</c> if you want Stripe to return an HTTP 402 status code if a
         /// subscription's first invoice cannot be paid. For example, if a payment method requires
         /// 3DS authentication due to SCA regulation and further user action is needed, this
@@ -169,8 +179,8 @@ namespace Stripe
         ///
         /// <c>pending_if_incomplete</c> is only used with updates and cannot be passed when
         /// creating a subscription.
-        /// One of: <c>allow_incomplete</c>, <c>error_if_incomplete</c>, or
-        /// <c>pending_if_incomplete</c>.
+        /// One of: <c>allow_incomplete</c>, <c>default_incomplete</c>, <c>error_if_incomplete</c>,
+        /// or <c>pending_if_incomplete</c>.
         /// </summary>
         [JsonProperty("payment_behavior")]
         public string PaymentBehavior { get; set; }

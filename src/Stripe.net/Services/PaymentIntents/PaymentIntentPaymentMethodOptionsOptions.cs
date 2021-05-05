@@ -33,6 +33,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsCardOptions Card { get; set; }
 
         /// <summary>
+        /// If this is a <c>card_present</c> PaymentMethod, this sub-hash contains details about the
+        /// Card Present payment method options.
+        /// </summary>
+        [JsonProperty("card_present")]
+        public PaymentIntentPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
+
+        /// <summary>
         /// If this is a <c>oxxo</c> PaymentMethod, this sub-hash contains details about the OXXO
         /// payment method options.
         /// </summary>
