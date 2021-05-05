@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.47.0 - 2021-05-05
+* [#2314](https://github.com/stripe/stripe-dotnet/pull/2314) API Updates
+  * Add support for `payment_intent` on `Radar.EarlyFraudWarning`
+
 ## 39.46.0 - 2021-05-05
 * [#2312](https://github.com/stripe/stripe-dotnet/pull/2312) API Updates
   * Add support for `card_present` on `PaymentIntentPaymentMethodOptionsOptions`, and `PaymentIntentMethodOptions`
