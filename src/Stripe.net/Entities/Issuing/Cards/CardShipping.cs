@@ -12,7 +12,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The delivery company that shipped a card.
-        /// One of: <c>fedex</c>, or <c>usps</c>.
+        /// One of: <c>dhl</c>, <c>fedex</c>, <c>royal_mail</c>, or <c>usps</c>.
         /// </summary>
         [JsonProperty("carrier")]
         public string Carrier { get; set; }

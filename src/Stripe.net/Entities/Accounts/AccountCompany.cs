@@ -83,7 +83,7 @@ namespace Stripe
         /// <c>incorporated_non_profit</c>, <c>limited_liability_partnership</c>,
         /// <c>multi_member_llc</c>, <c>private_company</c>, <c>private_corporation</c>,
         /// <c>private_partnership</c>, <c>public_company</c>, <c>public_corporation</c>,
-        /// <c>public_partnership</c>, <c>sole_proprietorship</c>,
+        /// <c>public_partnership</c>, <c>single_member_llc</c>, <c>sole_proprietorship</c>,
         /// <c>tax_exempt_government_instrumentality</c>, <c>unincorporated_association</c>, or
         /// <c>unincorporated_non_profit</c>.
         /// </summary>

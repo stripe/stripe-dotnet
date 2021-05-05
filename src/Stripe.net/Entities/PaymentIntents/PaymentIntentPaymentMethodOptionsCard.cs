@@ -15,8 +15,8 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsCardInstallments Installments { get; set; }
 
         /// <summary>
-        /// Selected network to process this PaymentIntent on. Depends on the available networks of
-        /// the card attached to the PaymentIntent. Can be only set confirm-time.
+        /// Selected network to process this payment intent on. Depends on the available networks of
+        /// the card attached to the payment intent. Can be only set confirm-time.
         /// One of: <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
         /// <c>interac</c>, <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>unknown</c>, or
         /// <c>visa</c>.
