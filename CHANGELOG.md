@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.46.0 - 2021-05-05
+* [#2312](https://github.com/stripe/stripe-dotnet/pull/2312) API Updates
+  * Add support for `card_present` on `PaymentIntentPaymentMethodOptionsOptions`, and `PaymentIntentMethodOptions`
+  * Add `default_incomplete` as a new `payment_behavior` of `SubscriptionOptions` and `SubscriptionItemOptions`.
+
 ## 39.45.0 - 2021-04-16
 * [#2307](https://github.com/stripe/stripe-dotnet/pull/2307) API Updates
   * Add support for `currency` on `SessionPaymentMethodOptionsAcssDebit`.
