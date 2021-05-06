@@ -8,6 +8,9 @@ namespace Stripe
         [JsonProperty("acss_debit")]
         public PaymentIntentPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("afterpay_clearpay")]
+        public PaymentIntentPaymentMethodOptionsAfterpayClearpay AfterpayClearpay { get; set; }
+
         [JsonProperty("alipay")]
         public PaymentIntentPaymentMethodOptionsAlipay Alipay { get; set; }
 
