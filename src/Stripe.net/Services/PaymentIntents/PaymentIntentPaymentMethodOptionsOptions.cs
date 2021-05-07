@@ -13,6 +13,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
 
         /// <summary>
+        /// If this is a <c>afterpay_clearpay</c> PaymentMethod, this sub-hash contains details
+        /// about the Afterpay Clearpay payment method options.
+        /// </summary>
+        [JsonProperty("afterpay_clearpay")]
+        public PaymentIntentPaymentMethodOptionsAfterpayClearpayOptions AfterpayClearpay { get; set; }
+
+        /// <summary>
         /// If this is a <c>alipay</c> PaymentMethod, this sub-hash contains details about the
         /// Alipay payment method options.
         /// </summary>
