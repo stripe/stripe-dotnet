@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.48.0 - 2021-05-06
+* [#2315](https://github.com/stripe/stripe-dotnet/pull/2315) API Updates
+  * Added support for `reference` on `ChargePaymentMethodDetailsAfterpayClearpay`
+  * Added support for `afterpay_clearpay` on `PaymentIntentPaymentMethodOptions` and `PaymentIntentPaymentMethodOptionsOptions`.
+
 ## 39.47.0 - 2021-05-05
 * [#2314](https://github.com/stripe/stripe-dotnet/pull/2314) API Updates
   * Add support for `payment_intent` on `Radar.EarlyFraudWarning`
