@@ -6,7 +6,7 @@ namespace Stripe
     public class ChargePaymentMethodDetailsAfterpayClearpay : StripeEntity<ChargePaymentMethodDetailsAfterpayClearpay>
     {
         /// <summary>
-        /// Order identifier shown to the customer in Afterpay’s online portal.
+        /// Order identifier shown to the merchant in Afterpay’s online portal.
         /// </summary>
         [JsonProperty("reference")]
         public string Reference { get; set; }

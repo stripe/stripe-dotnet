@@ -51,8 +51,9 @@ namespace Stripe
         /// uploaded file.
         /// One of: <c>account_requirement</c>, <c>additional_verification</c>,
         /// <c>business_icon</c>, <c>business_logo</c>, <c>customer_signature</c>,
-        /// <c>dispute_evidence</c>, <c>identity_document</c>, <c>pci_document</c>, or
-        /// <c>tax_document_user_upload</c>.
+        /// <c>dispute_evidence</c>, <c>document_provider_identity_document</c>,
+        /// <c>finance_report_run</c>, <c>identity_document</c>, <c>pci_document</c>,
+        /// <c>sigma_scheduled_query</c>, or <c>tax_document_user_upload</c>.
         /// </summary>
         [JsonProperty("purpose")]
         public string Purpose { get; set; }

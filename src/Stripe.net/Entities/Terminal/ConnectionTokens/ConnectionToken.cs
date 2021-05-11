@@ -12,7 +12,10 @@ namespace Stripe.Terminal
         public string Object { get; set; }
 
         /// <summary>
-        /// The id of the location that this connection token is scoped to.
+        /// The id of the location that this connection token is scoped to. Note that location
+        /// scoping only applies to internet-connected readers. For more details, see <a
+        /// href="https://stripe.com/docs/terminal/readers/fleet-management#connection-tokens">the
+        /// docs on scoping connection tokens</a>.
         /// </summary>
         [JsonProperty("location")]
         public string Location { get; set; }
