@@ -9,25 +9,28 @@ namespace Stripe
     public class CapabilityRequirements : StripeEntity<CapabilityRequirements>
     {
         /// <summary>
-        /// The date the fields in <c>currently_due</c> must be collected by to keep the capability
-        /// enabled for the account.
+        /// Date by which the fields in <c>currently_due</c> must be collected to keep the
+        /// capability enabled for the account. These fields may disable the capability sooner if
+        /// the next threshold is reached before they are collected.
         /// </summary>
         [JsonProperty("current_deadline")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CurrentDeadline { get; set; }
 
         /// <summary>
-        /// The fields that need to be collected to keep the capability enabled. If not collected by
-        /// the <c>current_deadline</c>, these fields appear in <c>past_due</c> as well, and the
+        /// Fields that need to be collected to keep the capability enabled. If not collected by
+        /// <c>current_deadline</c>, these fields appear in <c>past_due</c> as well, and the
         /// capability is disabled.
         /// </summary>
         [JsonProperty("currently_due")]
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
-        /// If the capability is disabled, this string describes why. Possible values are
-        /// <c>requirement.fields_needed</c>, <c>pending.onboarding</c>, <c>pending.review</c>,
-        /// <c>rejected_fraud</c>, <c>rejected.unsupported_business</c> or <c>rejected.other</c>.
+        /// If the capability is disabled, this string describes why. Can be
+        /// <c>requirements.past_due</c>, <c>requirements.pending_verification</c>, <c>listed</c>,
+        /// <c>platform_paused</c>, <c>rejected.fraud</c>, <c>rejected.listed</c>,
+        /// <c>rejected.terms_of_service</c>, <c>rejected.other</c>, <c>under_review</c>, or
+        /// <c>other</c>.
         ///
         /// <c>rejected.unsupported_business</c> means that the account's business is not supported
         /// by the capability. For example, payment methods may restrict the businesses they support
@@ -43,32 +46,31 @@ namespace Stripe
         public string DisabledReason { get; set; }
 
         /// <summary>
-        /// The fields that are <c>currently_due</c> and need to be collected again because
-        /// validation or verification failed for some reason.
+        /// Fields that are <c>currently_due</c> and need to be collected again because validation
+        /// or verification failed.
         /// </summary>
         [JsonProperty("errors")]
         public List<AccountRequirementsError> Errors { get; set; }
 
         /// <summary>
-        /// The fields that need to be collected assuming all volume thresholds are reached. As they
-        /// become required, these fields appear in <c>currently_due</c> as well, and the
-        /// <c>current_deadline</c> is set.
+        /// Fields that need to be collected assuming all volume thresholds are reached. As they
+        /// become required, they appear in <c>currently_due</c> as well, and
+        /// <c>current_deadline</c> becomes set.
         /// </summary>
         [JsonProperty("eventually_due")]
         public List<string> EventuallyDue { get; set; }
 
         /// <summary>
-        /// The fields that weren't collected by the <c>current_deadline</c>. These fields need to
-        /// be collected to enable the capability for the account.
+        /// Fields that weren't collected by <c>current_deadline</c>. These fields need to be
+        /// collected to enable the capability on the account.
         /// </summary>
         [JsonProperty("past_due")]
         public List<string> PastDue { get; set; }
 
         /// <summary>
-        /// Fields that may become required depending on the results of verification or review. An
-        /// empty array unless an asynchronous verification is pending. If verification fails, the
-        /// fields in this array become required and move to <c>currently_due</c> or
-        /// <c>past_due</c>.
+        /// Fields that may become required depending on the results of verification or review. Will
+        /// be an empty array unless an asynchronous verification is pending. If verification fails,
+        /// these fields become required and move to <c>currently_due</c> or <c>past_due</c>.
         /// </summary>
         [JsonProperty("pending_verification")]
         public List<string> PendingVerification { get; set; }

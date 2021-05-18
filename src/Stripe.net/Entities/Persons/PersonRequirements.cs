@@ -15,32 +15,31 @@ namespace Stripe
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
-        /// The fields that are <c>currently_due</c> and need to be collected again because
-        /// validation or verification failed for some reason.
+        /// Fields that are <c>currently_due</c> and need to be collected again because validation
+        /// or verification failed.
         /// </summary>
         [JsonProperty("errors")]
         public List<PersonRequirementsError> Errors { get; set; }
 
         /// <summary>
-        /// Fields that need to be collected assuming all volume thresholds are reached. As fields
-        /// are needed, they are moved to <c>currently_due</c> and the account's
-        /// <c>current_deadline</c> is set.
+        /// Fields that need to be collected assuming all volume thresholds are reached. As they
+        /// become required, they appear in <c>currently_due</c> as well, and the account's
+        /// <c>current_deadline</c> becomes set.
         /// </summary>
         [JsonProperty("eventually_due")]
         public List<string> EventuallyDue { get; set; }
 
         /// <summary>
         /// Fields that weren't collected by the account's <c>current_deadline</c>. These fields
-        /// need to be collected to enable payouts for the person's account.
+        /// need to be collected to enable the person's account.
         /// </summary>
         [JsonProperty("past_due")]
         public List<string> PastDue { get; set; }
 
         /// <summary>
-        /// Fields that may become required depending on the results of verification or review. An
-        /// empty array unless an asynchronous verification is pending. If verification fails, the
-        /// fields in this array become required and move to <c>currently_due</c> or
-        /// <c>past_due</c>.
+        /// Fields that may become required depending on the results of verification or review. Will
+        /// be an empty array unless an asynchronous verification is pending. If verification fails,
+        /// these fields become required and move to <c>currently_due</c> or <c>past_due</c>.
         /// </summary>
         [JsonProperty("pending_verification")]
         public List<string> PendingVerification { get; set; }
