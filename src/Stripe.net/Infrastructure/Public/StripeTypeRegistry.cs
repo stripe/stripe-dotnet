@@ -42,6 +42,8 @@ namespace Stripe
             { "file_link", typeof(FileLink) },
             { "invoice", typeof(Invoice) },
             { "invoiceitem", typeof(InvoiceItem) },
+            { "identity.verification_session", typeof(Identity.VerificationSession) },
+            { "identity.verification_report", typeof(Identity.VerificationReport) },
             { "issuing.authorization", typeof(Issuing.Authorization) },
             { "issuing.card", typeof(Issuing.Card) },
             { "issuing.cardholder", typeof(Issuing.Cardholder) },
