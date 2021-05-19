@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Identity
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class VerificationReport : StripeEntity<VerificationReport>, IHasId, IHasObject
     {
@@ -21,7 +23,8 @@ namespace Stripe.Identity
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        public long Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Result from a document check.

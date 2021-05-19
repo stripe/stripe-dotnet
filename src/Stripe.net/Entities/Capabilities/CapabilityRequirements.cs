@@ -70,7 +70,7 @@ namespace Stripe
         /// <summary>
         /// Fields that may become required depending on the results of verification or review. Will
         /// be an empty array unless an asynchronous verification is pending. If verification fails,
-        /// these fields become required and move to <c>currently_due</c> or <c>past_due</c>.
+        /// these fields move to <c>eventually_due</c>, <c>currently_due</c>, or <c>past_due</c>.
         /// </summary>
         [JsonProperty("pending_verification")]
         public List<string> PendingVerification { get; set; }
