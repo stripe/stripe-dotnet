@@ -32,7 +32,7 @@ namespace StripeTests.Identity
         public void Get()
         {
             var verificationReport = this.service.Get(VerificationReportId);
-            this.AssertRequest(HttpMethod.Get, "/v1/identity/verification_sessions/vs_123");
+            this.AssertRequest(HttpMethod.Get, "/v1/identity/verification_reports/vr_123");
             Assert.NotNull(verificationReport);
         }
 
@@ -40,7 +40,7 @@ namespace StripeTests.Identity
         public async Task GetAsync()
         {
             var verificationReport = await this.service.GetAsync(VerificationReportId);
-            this.AssertRequest(HttpMethod.Get, "/v1/identity/verification_sessions/vs_123");
+            this.AssertRequest(HttpMethod.Get, "/v1/identity/verification_reports/vr_123");
             Assert.NotNull(verificationReport);
         }
 
@@ -48,7 +48,7 @@ namespace StripeTests.Identity
         public void List()
         {
             var verificationReports = this.service.List(this.listOptions);
-            this.AssertRequest(HttpMethod.Get, "/v1/identity/verification_sessions");
+            this.AssertRequest(HttpMethod.Get, "/v1/identity/verification_reports");
             Assert.NotNull(verificationReports);
         }
 
@@ -56,7 +56,7 @@ namespace StripeTests.Identity
         public async Task ListAsync()
         {
             var verificationReports = await this.service.ListAsync(this.listOptions);
-            this.AssertRequest(HttpMethod.Get, "/v1/identity/verification_sessions");
+            this.AssertRequest(HttpMethod.Get, "/v1/identity/verification_reports");
             Assert.NotNull(verificationReports);
         }
     }

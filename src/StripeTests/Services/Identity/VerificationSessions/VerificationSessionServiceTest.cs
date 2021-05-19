@@ -103,7 +103,7 @@ namespace StripeTests.Identity
         public async Task CreateAsync()
         {
             var verificationSession = await this.service.CreateAsync(this.createOptions);
-            this.AssertRequest(HttpMethod.Post, "/v1/identity/verification_sessions/vs_123");
+            this.AssertRequest(HttpMethod.Post, "/v1/identity/verification_sessions");
             Assert.NotNull(verificationSession);
         }
 
