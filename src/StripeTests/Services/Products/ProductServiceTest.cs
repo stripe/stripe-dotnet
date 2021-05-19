@@ -26,11 +26,6 @@ namespace StripeTests
 
             this.createOptions = new ProductCreateOptions
             {
-                Attributes = new List<string>
-                {
-                    "attr1",
-                    "attr2",
-                },
                 Name = "product name",
                 PackageDimensions = new ProductPackageDimensionsOptions
                 {
