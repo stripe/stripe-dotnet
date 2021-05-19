@@ -27,7 +27,7 @@ namespace StripeTests.Identity
         {
             string[] expansions =
             {
-              "cardholder",
+              "last_verification_report",
             };
 
             string json = this.GetFixture("/v1/identity/verification_sessions/vs_123", expansions);
@@ -36,6 +36,10 @@ namespace StripeTests.Identity
             Assert.IsType<VerificationSession>(verificationSession);
             Assert.NotNull(verificationSession.Id);
             Assert.Equal("identity.verification_session", verificationSession.Object);
+
+            Assert.IsType<VerificationReport>(verificationSession.LastVerificationReport);
+            Assert.NotNull(verificationSession.LastVerificationReport.Id);
+            Assert.Equal("identity.verification_report", verificationSession.LastVerificationReport.Object);
         }
     }
 }
