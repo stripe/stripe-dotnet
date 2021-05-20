@@ -1,9 +1,13 @@
 # Changelog
 
+## 39.49.0 - 2021-05-19
+* [#2319](https://github.com/stripe/stripe-dotnet/pull/2319) API Updates
+  * Add support for Identity VerificationSession and VerificationReport APIs
+
 ## 39.48.0 - 2021-05-06
 * [#2315](https://github.com/stripe/stripe-dotnet/pull/2315) API Updates
-  * Added support for `reference` on `ChargePaymentMethodDetailsAfterpayClearpay`
-  * Added support for `afterpay_clearpay` on `PaymentIntentPaymentMethodOptions` and `PaymentIntentPaymentMethodOptionsOptions`.
+  * Add support for `reference` on `ChargePaymentMethodDetailsAfterpayClearpay`
+  * Add support for `afterpay_clearpay` on `PaymentIntentPaymentMethodOptions` and `PaymentIntentPaymentMethodOptionsOptions`.
 
 ## 39.47.0 - 2021-05-05
 * [#2314](https://github.com/stripe/stripe-dotnet/pull/2314) API Updates
