@@ -296,14 +296,14 @@ namespace Stripe
         public const string IdentityVerificationSessionRedacted = "identity.verification_session.redacted";
 
         /// <summary>
-        /// Occurs whenever a VerificationSession is verified.
-        /// </summary>
-        public const string IdentityVerificationSessionVerified = "identity.verification_session.verified";
-
-        /// <summary>
         /// Occurs whenever a VerificationSession transitions to require user input.
         /// </summary>
         public const string IdentityVerificationSessionRequiresInput = "identity.verification_session.requires_input";
+
+        /// <summary>
+        /// Occurs whenever a VerificationSession is verified.
+        /// </summary>
+        public const string IdentityVerificationSessionVerified = "identity.verification_session.verified";
 
         /// <summary>
         /// Occurs whenever a new invoice is created. To learn how webhooks can be used with this
