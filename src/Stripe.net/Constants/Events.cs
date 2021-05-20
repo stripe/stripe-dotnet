@@ -290,7 +290,15 @@ namespace Stripe
         /// </summary>
         public const string IdentityVerificationSessionProcessing = "identity.verification_session.processing";
 
+        /// <summary>
+        /// Occurs whenever a VerificationSession is redacted.
+        /// </summary>
         public const string IdentityVerificationSessionRedacted = "identity.verification_session.redacted";
+
+        /// <summary>
+        /// Occurs whenever a VerificationSession is verified.
+        /// </summary>
+        public const string IdentityVerificationSessionVerified = "identity.verification_session.verified";
 
         /// <summary>
         /// Occurs whenever a VerificationSession transitions to require user input.
