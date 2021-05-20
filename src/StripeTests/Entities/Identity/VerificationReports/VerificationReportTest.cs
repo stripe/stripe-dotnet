@@ -14,7 +14,7 @@ namespace StripeTests.Identity
         [Fact]
         public void Deserialize()
         {
-            string json = this.GetFixture("/v1/identity/verification_reports/vs_123");
+            string json = this.GetFixture("/v1/identity/verification_reports/vr_123");
             var verificationReport = JsonConvert.DeserializeObject<VerificationReport>(json);
             Assert.NotNull(verificationReport);
             Assert.IsType<VerificationReport>(verificationReport);
