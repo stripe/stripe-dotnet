@@ -16,20 +16,20 @@ namespace Stripe.Identity
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// An optional hash of configuration options for each verification rule that is requested.
+        /// A set of options for the session’s verification checks.
         /// </summary>
         [JsonProperty("options")]
         public VerificationSessionOptionsOptions Options { get; set; }
 
         /// <summary>
-        /// The URL the user will be redirected to after Stripe collects the required identity
-        /// information.
+        /// The URL that the user will be redirected to upon completing the verification flow.
         /// </summary>
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
 
         /// <summary>
-        /// The primary type of verification being performed with this Session.
+        /// The type of <a href="https://stripe.com/docs/identity/verification-checks">verification
+        /// check</a> to be performed.
         /// One of: <c>document</c>, or <c>id_number</c>.
         /// </summary>
         [JsonProperty("type")]

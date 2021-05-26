@@ -31,6 +31,12 @@ namespace Stripe
         public DobOptions Dob { get; set; }
 
         /// <summary>
+        /// Documents that may be submitted to satisfy various informational requests.
+        /// </summary>
+        [JsonProperty("documents")]
+        public TokenPersonDocumentsOptions Documents { get; set; }
+
+        /// <summary>
         /// The person's email address.
         /// </summary>
         [JsonProperty("email")]

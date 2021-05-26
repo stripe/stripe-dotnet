@@ -16,13 +16,14 @@ namespace Stripe.Identity
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// New configuration options.
+        /// A set of options for the session’s verification checks.
         /// </summary>
         [JsonProperty("options")]
         public VerificationSessionOptionsOptions Options { get; set; }
 
         /// <summary>
-        /// New verification type.
+        /// The type of <a href="https://stripe.com/docs/identity/verification-checks">verification
+        /// check</a> to be performed.
         /// One of: <c>document</c>, or <c>id_number</c>.
         /// </summary>
         [JsonProperty("type")]
