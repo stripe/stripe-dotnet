@@ -21,8 +21,14 @@ namespace Stripe.Identity
         public string Object { get; set; }
 
         /// <summary>
-        /// This string value can be passed to stripe.js to embed a verification flow directly into
-        /// your app.
+        /// The short-lived client secret used by Stripe.js to <a
+        /// href="https://stripe.com/docs/js/identity/modal">show a verification modal</a> inside
+        /// your app. This client secret expires after 24 hours and can only be used once. Don’t
+        /// store it, log it, embed it in a URL, or expose it to anyone other than the user. Make
+        /// sure that you have TLS enabled on any page that includes the client secret. Refer to our
+        /// docs on <a
+        /// href="https://stripe.com/docs/identity/verification-sessions#client-secret">passing the
+        /// client secret to the frontend</a> to learn more.
         /// </summary>
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
@@ -35,7 +41,8 @@ namespace Stripe.Identity
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Hash of details on the last error encountered in the verification process.
+        /// If present, this property tells you the last error encountered when processing the
+        /// verification.
         /// </summary>
         [JsonProperty("last_error")]
         public VerificationSessionLastError LastError { get; set; }
@@ -44,7 +51,9 @@ namespace Stripe.Identity
 
         /// <summary>
         /// (ID of the VerificationReport)
-        /// Link to the most recent completed VerificationReport for this Session.
+        /// ID of the most recent VerificationReport. <a
+        /// href="https://stripe.com/docs/identity/verification-checks">Learn more about accessing
+        /// detailed verification results.</a>.
         /// </summary>
         [JsonIgnore]
         public string LastVerificationReportId
@@ -55,7 +64,9 @@ namespace Stripe.Identity
 
         /// <summary>
         /// (Expanded)
-        /// Link to the most recent completed VerificationReport for this Session.
+        /// ID of the most recent VerificationReport. <a
+        /// href="https://stripe.com/docs/identity/verification-checks">Learn more about accessing
+        /// detailed verification results.</a>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -97,31 +108,35 @@ namespace Stripe.Identity
         public VerificationSessionRedaction Redaction { get; set; }
 
         /// <summary>
-        /// Status of this VerificationSession. Read more about each <a
-        /// href="https://stripe.com/docs/identity/how-sessions-work">VerificationSession
-        /// status</a>.
+        /// Status of this VerificationSession. <a
+        /// href="https://stripe.com/docs/identity/how-sessions-work">Learn more about the lifecycle
+        /// of sessions</a>.
         /// One of: <c>canceled</c>, <c>processing</c>, <c>requires_input</c>, or <c>verified</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// Type of report requested.
+        /// The type of <a href="https://stripe.com/docs/identity/verification-checks">verification
+        /// check</a> to be performed.
         /// One of: <c>document</c>, or <c>id_number</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// Link to the Stripe-hosted identity verification portal that you can send a user to for
-        /// verification.
+        /// The short-lived URL that you use to redirect a user to Stripe to submit their identity
+        /// information. This URL expires after 24 hours and can only be used once. Don’t store it,
+        /// log it, send it in emails or expose it to anyone other than the user. Refer to our docs
+        /// on <a
+        /// href="https://stripe.com/docs/identity/verify-identity-documents?platform=web&amp;type=redirect">verifying
+        /// identity documents</a> to learn how to redirect users to Stripe.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }
 
         /// <summary>
-        /// Hash of verified data about this person that results from a successful verification
-        /// report.
+        /// The user’s verified data.
         /// </summary>
         [JsonProperty("verified_outputs")]
         public VerificationSessionVerifiedOutputs VerifiedOutputs { get; set; }

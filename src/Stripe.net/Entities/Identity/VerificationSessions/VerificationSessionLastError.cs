@@ -20,8 +20,7 @@ namespace Stripe.Identity
         public string Code { get; set; }
 
         /// <summary>
-        /// A human-readable message giving the reason for the failure. These messages can be shown
-        /// to your users.
+        /// A message that explains the reason for verification or user-session failure.
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; set; }
