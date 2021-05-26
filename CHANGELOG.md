@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.50.0 - 2021-05-26
+* [#2323](https://github.com/stripe/stripe-dotnet/pull/2323) API Updates
+  * Added support for `documents` on `PersonUpdateOptions`, `PersonCreateOptions` and `TokenPersonOptions`
+
 ## 39.49.0 - 2021-05-19
 * [#2319](https://github.com/stripe/stripe-dotnet/pull/2319) API Updates
   * Add support for Identity VerificationSession and VerificationReport APIs
