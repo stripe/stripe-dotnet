@@ -118,6 +118,12 @@ namespace Stripe
         public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
 
         /// <summary>
+        /// Tax details about the customer.
+        /// </summary>
+        [JsonProperty("tax")]
+        public CustomerTaxOptions Tax { get; set; }
+
+        /// <summary>
         /// The customer's tax exemption. One of <c>none</c>, <c>exempt</c>, or <c>reverse</c>.
         /// </summary>
         [JsonProperty("tax_exempt")]

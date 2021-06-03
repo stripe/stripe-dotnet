@@ -199,6 +199,9 @@ namespace Stripe
         [JsonProperty("subscriptions")]
         public StripeList<Subscription> Subscriptions { get; set; }
 
+        [JsonProperty("tax")]
+        public CustomerTax Tax { get; set; }
+
         /// <summary>
         /// Describes the customer's tax exemption status. One of <c>none</c>, <c>exempt</c>, or
         /// <c>reverse</c>. When set to <c>reverse</c>, invoice and receipt PDFs include the text

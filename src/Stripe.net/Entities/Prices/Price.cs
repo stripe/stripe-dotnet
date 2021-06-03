@@ -125,6 +125,15 @@ namespace Stripe
         public PriceRecurring Recurring { get; set; }
 
         /// <summary>
+        /// Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One
+        /// of <c>inclusive</c>, <c>exclusive</c>, or <c>unspecified</c>. Once specified as either
+        /// <c>inclusive</c> or <c>exclusive</c>, it cannot be changed.
+        /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
+        /// </summary>
+        [JsonProperty("tax_behavior")]
+        public string TaxBehavior { get; set; }
+
+        /// <summary>
         /// Each element represents a pricing tier. This parameter requires <c>billing_scheme</c> to
         /// be set to <c>tiered</c>. See also the documentation for <c>billing_scheme</c>.
         /// </summary>

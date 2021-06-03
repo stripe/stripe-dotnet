@@ -12,6 +12,9 @@ namespace Stripe.Checkout
         [JsonProperty("allow_promotion_codes")]
         public bool? AllowPromotionCodes { get; set; }
 
+        [JsonProperty("automatic_tax")]
+        public SessionAutomaticTaxOptions AutomaticTax { get; set; }
+
         /// <summary>
         /// Specify whether Checkout should collect the customer's billing address.
         /// One of: <c>auto</c>, or <c>required</c>.
@@ -64,6 +67,13 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("customer_email")]
         public string CustomerEmail { get; set; }
+
+        /// <summary>
+        /// Controls what fields on Customer can be updated by the Checkout Session. Can only be
+        /// provided when <c>customer</c> is provided.
+        /// </summary>
+        [JsonProperty("customer_update")]
+        public SessionCustomerUpdateOptions CustomerUpdate { get; set; }
 
         /// <summary>
         /// The coupon or promotion code to apply to this Session. Currently, only up to one may be

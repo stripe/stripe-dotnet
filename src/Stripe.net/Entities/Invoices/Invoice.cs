@@ -123,6 +123,9 @@ namespace Stripe
         [JsonProperty("auto_advance")]
         public bool AutoAdvance { get; set; }
 
+        [JsonProperty("automatic_tax")]
+        public InvoiceAutomaticTax AutomaticTax { get; set; }
+
         /// <summary>
         /// Indicates the reason why the invoice was created. <c>subscription_cycle</c> indicates an
         /// invoice created by a subscription advancing into a new period.

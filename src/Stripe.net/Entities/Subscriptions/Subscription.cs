@@ -28,6 +28,9 @@ namespace Stripe
         [JsonProperty("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
+        [JsonProperty("automatic_tax")]
+        public SubscriptionAutomaticTax AutomaticTax { get; set; }
+
         /// <summary>
         /// Determines the date of the first full invoice, and, for plans with <c>month</c> or
         /// <c>year</c> intervals, the day of the month for subsequent invoices.

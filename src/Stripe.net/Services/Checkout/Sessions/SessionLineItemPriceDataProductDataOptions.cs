@@ -36,5 +36,11 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// A <a href="https://stripe.com/docs/tax/tax-codes">tax code</a> ID.
+        /// </summary>
+        [JsonProperty("tax_code")]
+        public string TaxCode { get; set; }
     }
 }

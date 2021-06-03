@@ -38,6 +38,9 @@ namespace Stripe.Checkout
         [JsonProperty("amount_total")]
         public long? AmountTotal { get; set; }
 
+        [JsonProperty("automatic_tax")]
+        public SessionAutomaticTax AutomaticTax { get; set; }
+
         /// <summary>
         /// Describes whether Checkout should collect the customer's billing address.
         /// One of: <c>auto</c>, or <c>required</c>.

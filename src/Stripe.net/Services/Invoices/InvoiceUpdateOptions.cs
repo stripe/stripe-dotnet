@@ -34,6 +34,12 @@ namespace Stripe
         public bool? AutoAdvance { get; set; }
 
         /// <summary>
+        /// Settings for automatic tax lookup for this invoice.
+        /// </summary>
+        [JsonProperty("automatic_tax")]
+        public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
+
+        /// <summary>
         /// Either <c>charge_automatically</c> or <c>send_invoice</c>. This field can be updated
         /// only on <c>draft</c> invoices.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
