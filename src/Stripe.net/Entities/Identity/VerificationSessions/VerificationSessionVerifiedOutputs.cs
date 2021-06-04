@@ -30,7 +30,7 @@ namespace Stripe.Identity
         public string IdNumber { get; set; }
 
         /// <summary>
-        /// The user's veriifed id number type.
+        /// The user's verified id number type.
         /// One of: <c>br_cpf</c>, <c>sg_nric</c>, or <c>us_ssn</c>.
         /// </summary>
         [JsonProperty("id_number_type")]

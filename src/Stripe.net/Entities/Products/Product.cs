@@ -117,6 +117,37 @@ namespace Stripe
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
+        #region Expandable TaxCode
+
+        /// <summary>
+        /// (ID of the TaxCode)
+        /// A <a href="https://stripe.com/docs/tax/tax-codes">tax code</a> ID.
+        /// </summary>
+        [JsonIgnore]
+        public string TaxCodeId
+        {
+            get => this.InternalTaxCode?.Id;
+            set => this.InternalTaxCode = SetExpandableFieldId(value, this.InternalTaxCode);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// A <a href="https://stripe.com/docs/tax/tax-codes">tax code</a> ID.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public TaxCode TaxCode
+        {
+            get => this.InternalTaxCode?.ExpandedObject;
+            set => this.InternalTaxCode = SetExpandableFieldObject(value, this.InternalTaxCode);
+        }
+
+        [JsonProperty("tax_code")]
+        [JsonConverter(typeof(ExpandableFieldConverter<TaxCode>))]
+        internal ExpandableField<TaxCode> InternalTaxCode { get; set; }
+        #endregion
+
         /// <summary>
         /// The type of the product. The product is either of type <c>good</c>, which is eligible
         /// for use with Orders and SKUs, or <c>service</c>, which is eligible for use with

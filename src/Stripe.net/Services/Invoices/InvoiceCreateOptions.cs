@@ -35,6 +35,12 @@ namespace Stripe
         public bool? AutoAdvance { get; set; }
 
         /// <summary>
+        /// Settings for automatic tax lookup for this invoice.
+        /// </summary>
+        [JsonProperty("automatic_tax")]
+        public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
+
+        /// <summary>
         /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
         /// Stripe will attempt to pay this invoice using the default source attached to the
         /// customer. When sending an invoice, Stripe will email this invoice to the customer with

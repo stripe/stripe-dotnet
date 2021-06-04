@@ -27,6 +27,12 @@ namespace Stripe
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
+        /// Automatic tax settings for this subscription.
+        /// </summary>
+        [JsonProperty("automatic_tax")]
+        public SubscriptionAutomaticTaxOptions AutomaticTax { get; set; }
+
+        /// <summary>
         /// Either <c>now</c> or <c>unchanged</c>. Setting the value to <c>now</c> resets the
         /// subscription's billing cycle anchor to the current time. For more information, see the
         /// billing cycle <a
