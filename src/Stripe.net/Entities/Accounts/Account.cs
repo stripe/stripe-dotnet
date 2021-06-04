@@ -46,6 +46,9 @@ namespace Stripe
         [JsonProperty("company")]
         public AccountCompany Company { get; set; }
 
+        [JsonProperty("controller")]
+        public AccountController Controller { get; set; }
+
         /// <summary>
         /// The account's country.
         /// </summary>
