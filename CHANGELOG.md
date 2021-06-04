@@ -1,5 +1,16 @@
 # Changelog
 
+## 39.51.0 - 2021-06-04
+* [#2325](https://github.com/stripe/stripe-dotnet/pull/2325) API Updates
+  * Add support for new `TaxCode` API.
+  * Add support for `TaxCode` on `Product` API, and `PriceProductDataOptions`
+  * Add support for `Tax` on `Customer` API
+  * Add support for `AutomaticTax` on Checkout `Session` API, `Invoice` API, `SubscriptionScheduleDefaultSettings` API, `SubscriptionSchedulePhase` API, `SubscriptionCreateOptions`, and `SubscriptionUpdateOptions`
+  * Add support for `TaxBehavior` on `Price` API, Checkout `SessionLineItemPriceDataOptions`, `InvoiceSubscriptionItemPriceDataOptions`, `SubscriptionSchedulePhaseAddInvoiceItemPriceDataOptions`, `SubscriptionSchedulePhaseItemPriceDataOptions`, and `SubscriptionAddInvoiceItemPriceDataOptions`
+  * Add support for `TaxType` on `TaxRate` API
+  * Add support for `CustomerUpdate` on Checkout `SessionCreateOptions`
+
+
 ## 39.50.0 - 2021-05-26
 * [#2323](https://github.com/stripe/stripe-dotnet/pull/2323) API Updates
   * Added support for `documents` on `PersonUpdateOptions`, `PersonCreateOptions` and `TokenPersonOptions`
