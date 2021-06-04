@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.52.0 - 2021-06-04
+* [#2326](https://github.com/stripe/stripe-dotnet/pull/2326) API Updates
+  * Add support for `Controller` on `Account`
+
 ## 39.51.0 - 2021-06-04
 * [#2325](https://github.com/stripe/stripe-dotnet/pull/2325) API Updates
   * Add support for new `TaxCode` API.
