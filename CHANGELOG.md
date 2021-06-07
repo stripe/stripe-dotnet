@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.53.0 - 2021-06-07
+* [#2327](https://github.com/stripe/stripe-dotnet/pull/2327) API Updates
+  * Added support for `tax_id_collection` on `Session#create` and `Checkout.Session`
+  * Added `Secret` property to `EphemeralKey`
+
 ## 39.52.0 - 2021-06-04
 * [#2326](https://github.com/stripe/stripe-dotnet/pull/2326) API Updates
   * Add support for `Controller` on `Account`
