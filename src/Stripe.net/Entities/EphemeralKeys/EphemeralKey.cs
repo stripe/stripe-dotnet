@@ -50,6 +50,12 @@ namespace Stripe
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        /// <summary>
+        /// The key's secret. You can use this value to make authorized requests to the Stripe API.
+        /// </summary>
+        [JsonProperty("secret")]
+        public string Secret { get; set; }
+
         [JsonIgnore]
         public string RawJson => this.StripeResponse?.Content;
     }

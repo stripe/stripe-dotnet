@@ -310,6 +310,9 @@ namespace Stripe.Checkout
         [JsonProperty("success_url")]
         public string SuccessUrl { get; set; }
 
+        [JsonProperty("tax_id_collection")]
+        public SessionTaxIdCollection TaxIdCollection { get; set; }
+
         /// <summary>
         /// Tax and discount details for the computed total amount.
         /// </summary>

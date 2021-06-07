@@ -199,5 +199,8 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("success_url")]
         public string SuccessUrl { get; set; }
+
+        [JsonProperty("tax_id_collection")]
+        public SessionTaxIdCollectionOptions TaxIdCollection { get; set; }
     }
 }
