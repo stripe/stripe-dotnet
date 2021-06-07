@@ -56,6 +56,9 @@ namespace Stripe.Terminal
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        /// <summary>
+        /// The location identifier of the reader.
+        /// </summary>
         [JsonProperty("location")]
         public string Location { get; set; }
 
