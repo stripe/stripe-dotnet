@@ -3,7 +3,6 @@ namespace Stripe.Terminal
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class Reader : StripeEntity<Reader>, IHasId, IHasMetadata, IHasObject
     {
@@ -57,36 +56,8 @@ namespace Stripe.Terminal
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
-        #region Expandable Location
-
-        /// <summary>
-        /// (ID of the Location)
-        /// The location identifier of the reader.
-        /// </summary>
-        [JsonIgnore]
-        public string LocationId
-        {
-            get => this.InternalLocation?.Id;
-            set => this.InternalLocation = SetExpandableFieldId(value, this.InternalLocation);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// The location identifier of the reader.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-        public Location Location
-        {
-            get => this.InternalLocation?.ExpandedObject;
-            set => this.InternalLocation = SetExpandableFieldObject(value, this.InternalLocation);
-        }
-
         [JsonProperty("location")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Location>))]
-        internal ExpandableField<Location> InternalLocation { get; set; }
-        #endregion
+        public string Location { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
