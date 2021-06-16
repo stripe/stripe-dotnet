@@ -8,7 +8,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
-        /// currency</a>.
+        /// currency</a>. This is only accepted for Checkout Sessions in <c>setup</c> mode.
         /// One of: <c>cad</c>, or <c>usd</c>.
         /// </summary>
         [JsonProperty("currency")]

@@ -14,7 +14,7 @@ namespace Stripe.Issuing
         public string Cardholder { get; set; }
 
         /// <summary>
-        /// The currency for the card. This currently must be <c>usd</c>.
+        /// The currency for the card.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }

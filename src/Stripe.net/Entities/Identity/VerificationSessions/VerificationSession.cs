@@ -52,8 +52,8 @@ namespace Stripe.Identity
         /// <summary>
         /// (ID of the VerificationReport)
         /// ID of the most recent VerificationReport. <a
-        /// href="https://stripe.com/docs/identity/verification-checks">Learn more about accessing
-        /// detailed verification results.</a>.
+        /// href="https://stripe.com/docs/identity/verification-sessions#results">Learn more about
+        /// accessing detailed verification results.</a>.
         /// </summary>
         [JsonIgnore]
         public string LastVerificationReportId
@@ -65,8 +65,8 @@ namespace Stripe.Identity
         /// <summary>
         /// (Expanded)
         /// ID of the most recent VerificationReport. <a
-        /// href="https://stripe.com/docs/identity/verification-checks">Learn more about accessing
-        /// detailed verification results.</a>.
+        /// href="https://stripe.com/docs/identity/verification-sessions#results">Learn more about
+        /// accessing detailed verification results.</a>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
