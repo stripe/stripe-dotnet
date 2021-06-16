@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.54.0 - 2021-06-16
+* [#2330](https://github.com/stripe/stripe-dotnet/pull/2330) API Updates
+  * Add support for `url` on Checkout `Session`
+
 ## 39.53.0 - 2021-06-07
 * [#2327](https://github.com/stripe/stripe-dotnet/pull/2327) API Updates
   * Added support for `tax_id_collection` on `Session#create` and `Checkout.Session`
