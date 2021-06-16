@@ -200,6 +200,9 @@ namespace Stripe.Checkout
         [JsonProperty("success_url")]
         public string SuccessUrl { get; set; }
 
+        /// <summary>
+        /// Controls tax ID collection settings for the session.
+        /// </summary>
         [JsonProperty("tax_id_collection")]
         public SessionTaxIdCollectionOptions TaxIdCollection { get; set; }
     }

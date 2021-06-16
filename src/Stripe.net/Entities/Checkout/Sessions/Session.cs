@@ -318,5 +318,11 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("total_details")]
         public SessionTotalDetails TotalDetails { get; set; }
+
+        /// <summary>
+        /// The URL to the Checkout Session.
+        /// </summary>
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 }

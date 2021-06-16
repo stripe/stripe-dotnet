@@ -77,7 +77,7 @@ namespace Stripe
         public string CollectionMethod { get; set; }
 
         /// <summary>
-        /// The code of the coupon to apply to this subscription. A coupon applied to a subscription
+        /// The ID of the coupon to apply to this subscription. A coupon applied to a subscription
         /// will only affect invoices created for that particular subscription.
         /// </summary>
         [JsonProperty("coupon")]
