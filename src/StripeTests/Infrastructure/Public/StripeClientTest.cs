@@ -1,8 +1,10 @@
 namespace StripeTests
 {
     using System;
+    using System.IO;
     using System.Net;
     using System.Net.Http;
+    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
     using Stripe;
@@ -176,9 +178,106 @@ namespace StripeTests
             Assert.Equal(response, exception.StripeResponse);
         }
 
+        [Fact]
+        public async Task RequestStreamingAsync_OkResponse_InvalidJson()
+        {
+            var streamedResponse = new StripeStreamedResponse(
+                HttpStatusCode.OK,
+                null,
+                StringToStream("this isn't JSON"));
+            this.httpClient.StreamedResponse = streamedResponse;
+
+            var stream = await this.stripeClient.RequestStreamingAsync(
+                HttpMethod.Post,
+                "/v1/charges",
+                this.options,
+                this.requestOptions);
+
+            Assert.NotNull(stream);
+            Assert.Equal("this isn't JSON", StreamToString(stream));
+        }
+
+        [Fact]
+        public async Task RequestStreamingAsync_ApiError()
+        {
+            var streamedResponse = new StripeStreamedResponse(
+                HttpStatusCode.PaymentRequired,
+                null,
+                StringToStream("{\"error\": {\"type\": \"card_error\"}}"));
+            this.httpClient.StreamedResponse = streamedResponse;
+
+            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
+                await this.stripeClient.RequestStreamingAsync(
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    this.options,
+                    this.requestOptions));
+
+            Assert.NotNull(exception);
+            Assert.Equal(HttpStatusCode.PaymentRequired, exception.HttpStatusCode);
+            Assert.Equal("card_error", exception.StripeError.Type);
+            Assert.Equal(await streamedResponse.ToStripeResponseAsync(), exception.StripeResponse);
+        }
+
+        [Fact]
+        public async Task RequestStreamingAsync_OAuthError()
+        {
+            var streamedResponse = new StripeStreamedResponse(
+                HttpStatusCode.BadRequest,
+                null,
+                StringToStream("{\"error\": \"invalid_request\"}"));
+            this.httpClient.StreamedResponse = streamedResponse;
+
+            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
+                await this.stripeClient.RequestStreamingAsync(
+                    HttpMethod.Post,
+                    "/oauth/token",
+                    this.options,
+                    this.requestOptions));
+
+            Assert.NotNull(exception);
+            Assert.Equal(HttpStatusCode.BadRequest, exception.HttpStatusCode);
+            Assert.Equal("invalid_request", exception.StripeError.Error);
+            Assert.Equal(await streamedResponse.ToStripeResponseAsync(), exception.StripeResponse);
+        }
+
+        [Fact]
+        public async Task RequestStreamingAsync_Error_InvalidErrorObject()
+        {
+            var streamedResponse = new StripeStreamedResponse(
+                HttpStatusCode.InternalServerError,
+                null,
+                StringToStream("{}"));
+            this.httpClient.StreamedResponse = streamedResponse;
+
+            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
+                await this.stripeClient.RequestStreamingAsync(
+                    HttpMethod.Post,
+                    "/v1/charges",
+                    this.options,
+                    this.requestOptions));
+
+            Assert.NotNull(exception);
+            Assert.Equal(HttpStatusCode.InternalServerError, exception.HttpStatusCode);
+            Assert.Equal("Invalid response object from API: \"{}\"", exception.Message);
+            Assert.Equal(await streamedResponse.ToStripeResponseAsync(), exception.StripeResponse);
+        }
+
+        private static Stream StringToStream(string content)
+        {
+            return new MemoryStream(Encoding.UTF8.GetBytes(content));
+        }
+
+        private static string StreamToString(Stream stream)
+        {
+            return new StreamReader(stream, Encoding.UTF8).ReadToEnd();
+        }
+
         private class DummyHttpClient : IHttpClient
         {
             public StripeResponse Response { get; set; }
+
+            public StripeStreamedResponse StreamedResponse { get; set; }
 
             public Task<StripeResponse> MakeRequestAsync(
                 StripeRequest request,
@@ -190,6 +289,18 @@ namespace StripeTests
                 }
 
                 return Task.FromResult<StripeResponse>(this.Response);
+            }
+
+            public Task<StripeStreamedResponse> MakeStreamingRequestAsync(
+                StripeRequest request,
+                CancellationToken cancellationToken = default)
+            {
+                if (this.StreamedResponse == null)
+                {
+                    throw new StripeTestException("StreamedResponse is null");
+                }
+
+                return Task.FromResult(this.StreamedResponse);
             }
         }
     }
