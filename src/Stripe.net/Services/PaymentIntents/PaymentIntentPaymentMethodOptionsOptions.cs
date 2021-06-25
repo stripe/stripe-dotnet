@@ -34,6 +34,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsBancontactOptions Bancontact { get; set; }
 
         /// <summary>
+        /// If this is a <c>boleto</c> PaymentMethod, this sub-hash contains details about the
+        /// Boleto payment method options.
+        /// </summary>
+        [JsonProperty("boleto")]
+        public PaymentIntentPaymentMethodOptionsBoletoOptions Boleto { get; set; }
+
+        /// <summary>
         /// Configuration for any card payments attempted on this PaymentIntent.
         /// </summary>
         [JsonProperty("card")]
