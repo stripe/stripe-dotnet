@@ -17,6 +17,9 @@ namespace Stripe
         [JsonProperty("bancontact")]
         public PaymentIntentPaymentMethodOptionsBancontact Bancontact { get; set; }
 
+        [JsonProperty("boleto")]
+        public PaymentIntentPaymentMethodOptionsBoleto Boleto { get; set; }
+
         [JsonProperty("card")]
         public PaymentIntentPaymentMethodOptionsCard Card { get; set; }
 
