@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.55.0 - 2021-06-25
+* [#2336](https://github.com/stripe/stripe-dotnet/pull/2336) API Updates
+  * Added support for `boleto` on `ChargePaymentMethodDetails`, `PaymentIntentPaymentMethodOptions`, `PaymentMethod`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, and `PaymentMethodCreateOptions`.
+  * Added support for `boleto_display_details` on `PaymentIntentNextAction`
+
 ## 39.54.0 - 2021-06-16
 * [#2330](https://github.com/stripe/stripe-dotnet/pull/2330) API Updates
   * Add support for `url` on Checkout `Session`
