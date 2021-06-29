@@ -46,6 +46,14 @@ namespace Stripe
         public string BancontactPayments { get; set; }
 
         /// <summary>
+        /// The status of the boleto payments capability of the account, or whether the account can
+        /// directly process boleto charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("boleto_payments")]
+        public string BoletoPayments { get; set; }
+
+        /// <summary>
         /// The status of the card issuing capability of the account, or whether you can use Issuing
         /// to distribute funds on cards.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
