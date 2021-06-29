@@ -163,9 +163,16 @@ namespace Stripe
         /// One of: <c>acss_debit</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>boleto</c>, <c>card</c>,
         /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>oxxo</c>,
-        /// <c>p24</c>, <c>sepa_debit</c>, or <c>sofort</c>.
+        /// <c>p24</c>, <c>sepa_debit</c>, <c>sofort</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// If this is an <c>wechat_pay</c> PaymentMethod, this hash contains details about the
+        /// wechat_pay payment method.
+        /// </summary>
+        [JsonProperty("wechat_pay")]
+        public PaymentMethodWechatPayOptions WechatPay { get; set; }
     }
 }

@@ -10,5 +10,11 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("acss_debit")]
         public SessionPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
+
+        /// <summary>
+        /// contains details about the Wechat Pay payment method options.
+        /// </summary>
+        [JsonProperty("wechat_pay")]
+        public SessionPaymentMethodOptionsWechatPayOptions WechatPay { get; set; }
     }
 }

@@ -37,5 +37,8 @@ namespace Stripe
 
         [JsonProperty("sofort")]
         public PaymentIntentPaymentMethodOptionsSofort Sofort { get; set; }
+
+        [JsonProperty("wechat_pay")]
+        public PaymentIntentPaymentMethodOptionsWechatPay WechatPay { get; set; }
     }
 }
