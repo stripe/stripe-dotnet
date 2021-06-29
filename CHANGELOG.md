@@ -1,5 +1,11 @@
 # Changelog
 
+## 39.56.0 - 2021-06-29
+* [#2339](https://github.com/stripe/stripe-dotnet/pull/2339) API Updates
+  * Added support for `boleto_payments` on `AccountCapabilities`
+  * Added support for `boleto` and `oxxo` on `Checkout.SessionPaymentMethodOptions`
+* [#2333](https://github.com/stripe/stripe-dotnet/pull/2333) Add infrastructure for handling streaming binary responses
+
 ## 39.55.0 - 2021-06-25
 * [#2336](https://github.com/stripe/stripe-dotnet/pull/2336) API Updates
   * Added support for `boleto` on `ChargePaymentMethodDetails`, `PaymentIntentPaymentMethodOptions`, `PaymentMethod`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, and `PaymentMethodCreateOptions`.
