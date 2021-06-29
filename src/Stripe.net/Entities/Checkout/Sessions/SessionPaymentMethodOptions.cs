@@ -7,5 +7,11 @@ namespace Stripe.Checkout
     {
         [JsonProperty("acss_debit")]
         public SessionPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
+
+        [JsonProperty("boleto")]
+        public SessionPaymentMethodOptionsBoleto Boleto { get; set; }
+
+        [JsonProperty("oxxo")]
+        public SessionPaymentMethodOptionsOxxo Oxxo { get; set; }
     }
 }

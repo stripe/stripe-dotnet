@@ -36,6 +36,12 @@ namespace Stripe
         public AccountCapabilitiesBancontactPaymentsOptions BancontactPayments { get; set; }
 
         /// <summary>
+        /// The boleto_payments capability.
+        /// </summary>
+        [JsonProperty("boleto_payments")]
+        public AccountCapabilitiesBoletoPaymentsOptions BoletoPayments { get; set; }
+
+        /// <summary>
         /// The card_issuing capability.
         /// </summary>
         [JsonProperty("card_issuing")]
