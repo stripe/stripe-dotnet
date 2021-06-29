@@ -16,5 +16,9 @@ namespace Stripe
         Task<StripeResponse> MakeRequestAsync(
             StripeRequest request,
             CancellationToken cancellationToken = default);
+
+        Task<StripeStreamedResponse> MakeStreamingRequestAsync(
+            StripeRequest request,
+            CancellationToken cancellationToken = default);
     }
 }

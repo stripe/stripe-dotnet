@@ -149,8 +149,41 @@ namespace Stripe
             StripeRequest request,
             CancellationToken cancellationToken = default)
         {
+            var (response, retries) = await this.SendHttpRequest(request, cancellationToken);
+
+            var reader = new StreamReader(
+                await response.Content.ReadAsStreamAsync().ConfigureAwait(false));
+
+            return new StripeResponse(
+                response.StatusCode,
+                response.Headers,
+                await reader.ReadToEndAsync().ConfigureAwait(false))
+            {
+                NumRetries = retries,
+            };
+        }
+
+        public async Task<StripeStreamedResponse> MakeStreamingRequestAsync(
+            StripeRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            var (response, retries) = await this.SendHttpRequest(request, cancellationToken);
+
+            return new StripeStreamedResponse(
+                response.StatusCode,
+                response.Headers,
+                await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+            {
+                NumRetries = retries,
+            };
+        }
+
+        private async Task<(HttpResponseMessage responseMessage, int retries)> SendHttpRequest(
+            StripeRequest request,
+            CancellationToken cancellationToken)
+        {
             TimeSpan duration;
-            Exception requestException = null;
+            Exception requestException;
             HttpResponseMessage response = null;
             int retry = 0;
 
@@ -209,16 +242,7 @@ namespace Stripe
                 this.requestTelemetry.MaybeEnqueueMetrics(response, duration);
             }
 
-            var reader = new StreamReader(
-                await response.Content.ReadAsStreamAsync().ConfigureAwait(false));
-
-            return new StripeResponse(
-                response.StatusCode,
-                response.Headers,
-                await reader.ReadToEndAsync().ConfigureAwait(false))
-            {
-                NumRetries = retry,
-            };
+            return (response, retry);
         }
 
         private string BuildStripeClientUserAgentString()

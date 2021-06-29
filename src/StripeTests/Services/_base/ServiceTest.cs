@@ -2,6 +2,7 @@ namespace StripeTests
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -62,6 +63,17 @@ namespace StripeTests
             {
                 this.LastOptions = options;
                 return Task.FromResult(default(T));
+            }
+
+            public Task<Stream> RequestStreamingAsync(
+                HttpMethod method,
+                string path,
+                BaseOptions options,
+                RequestOptions requestOptions,
+                CancellationToken cancellationToken = default)
+            {
+                this.LastOptions = options;
+                return Task.FromResult(Stream.Null);
             }
         }
 
