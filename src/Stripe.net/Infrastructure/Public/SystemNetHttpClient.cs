@@ -149,7 +149,7 @@ namespace Stripe
             StripeRequest request,
             CancellationToken cancellationToken = default)
         {
-            var (response, retries) = await this.SendHttpRequest(request, cancellationToken);
+            var (response, retries) = await this.SendHttpRequest(request, cancellationToken).ConfigureAwait(false);
 
             var reader = new StreamReader(
                 await response.Content.ReadAsStreamAsync().ConfigureAwait(false));
