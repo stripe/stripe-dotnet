@@ -80,5 +80,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sofort")]
         public PaymentIntentPaymentMethodOptionsSofortOptions Sofort { get; set; }
+
+        /// <summary>
+        /// If this is a <c>wechat_pay</c> PaymentMethod, this sub-hash contains details about the
+        /// WeChat Pay payment method options.
+        /// </summary>
+        [JsonProperty("wechat_pay")]
+        public PaymentIntentPaymentMethodOptionsWechatPayOptions WechatPay { get; set; }
     }
 }

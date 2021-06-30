@@ -22,5 +22,11 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("oxxo")]
         public SessionPaymentMethodOptionsOxxoOptions Oxxo { get; set; }
+
+        /// <summary>
+        /// contains details about the Wechat Pay payment method options.
+        /// </summary>
+        [JsonProperty("wechat_pay")]
+        public SessionPaymentMethodOptionsWechatPayOptions WechatPay { get; set; }
     }
 }
