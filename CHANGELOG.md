@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.57.0 - 2021-06-30
+* [#2340](https://github.com/stripe/stripe-dotnet/pull/2340) API Updates
+  * Add support for `WechatPay` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, and `PaymentMethod`
+  * Add support for `WechatPayDisplayQrCode`, `WechatPayRedirectToAndroidApp`, and `WechatPayRedirectToIosApp` on `PaymentIntentNextAction`
+
 ## 39.56.1 - 2021-06-30
 * [#2343](https://github.com/stripe/stripe-dotnet/pull/2343) Fix another missing `ConfigureAwait` call
 * [#2342](https://github.com/stripe/stripe-dotnet/pull/2342) Add missing `ConfigureAwait` call to `SystemNetHttpClient.SendHttpRequest`
