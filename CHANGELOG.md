@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.56.1 - 2021-06-30
+* [#2343](https://github.com/stripe/stripe-dotnet/pull/2343) Fix another missing `ConfigureAwait` call
+* [#2342](https://github.com/stripe/stripe-dotnet/pull/2342) Add missing `ConfigureAwait` call to `SystemNetHttpClient.SendHttpRequest`
+
 ## 39.56.0 - 2021-06-29
 * [#2339](https://github.com/stripe/stripe-dotnet/pull/2339) API Updates
   * Added support for `boleto_payments` on `AccountCapabilities`
