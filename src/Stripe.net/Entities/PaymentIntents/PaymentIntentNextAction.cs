@@ -26,5 +26,14 @@ namespace Stripe
 
         [JsonProperty("verify_with_microdeposits")]
         public PaymentIntentNextActionVerifyWithMicrodeposits VerifyWithMicrodeposits { get; set; }
+
+        [JsonProperty("wechat_pay_display_qr_code")]
+        public PaymentIntentNextActionWechatPayDisplayQrCode WechatPayDisplayQrCode { get; set; }
+
+        [JsonProperty("wechat_pay_redirect_to_android_app")]
+        public PaymentIntentNextActionWechatPayRedirectToAndroidApp WechatPayRedirectToAndroidApp { get; set; }
+
+        [JsonProperty("wechat_pay_redirect_to_ios_app")]
+        public PaymentIntentNextActionWechatPayRedirectToIosApp WechatPayRedirectToIosApp { get; set; }
     }
 }
