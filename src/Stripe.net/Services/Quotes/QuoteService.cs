@@ -115,6 +115,16 @@ namespace Stripe
             return this.ListRequestAutoPagingAsync<LineItem>($"{this.InstanceUrl(id)}/line_items", options, requestOptions, cancellationToken);
         }
 
+        public virtual Quote Update(string id, QuoteUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.UpdateEntity(id, options, requestOptions);
+        }
+
+        public virtual Task<Quote> UpdateAsync(string id, QuoteUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
+        }
+
         public virtual Stream Pdf(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null)
         {
             requestOptions = this.SetupRequestOptionsForPdfRequest(requestOptions);
@@ -140,16 +150,6 @@ namespace Stripe
             }
 
             return requestOptions;
-        }
-
-        public virtual Quote Update(string id, QuoteUpdateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.UpdateEntity(id, options, requestOptions);
-        }
-
-        public virtual Task<Quote> UpdateAsync(string id, QuoteUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }
