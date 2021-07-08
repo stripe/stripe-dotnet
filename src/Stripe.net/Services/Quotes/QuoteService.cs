@@ -55,12 +55,12 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Quote FinalizeQuote(string id, QuoteFinalizeQuoteOptions options = null, RequestOptions requestOptions = null)
+        public virtual Quote FinalizeQuote(string id, QuoteFinalizeOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/finalize", options, requestOptions);
         }
 
-        public virtual Task<Quote> FinalizeQuoteAsync(string id, QuoteFinalizeQuoteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Quote> FinalizeQuoteAsync(string id, QuoteFinalizeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/finalize", options, requestOptions, cancellationToken);
         }
@@ -117,12 +117,29 @@ namespace Stripe
 
         public virtual Stream Pdf(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null)
         {
+            requestOptions = this.SetupRequestOptionsForPdfRequest(requestOptions);
             return this.RequestStreaming(HttpMethod.Get, $"{this.InstanceUrl(id)}/pdf", options, requestOptions);
         }
 
         public virtual Task<Stream> PdfAsync(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
+            requestOptions = this.SetupRequestOptionsForPdfRequest(requestOptions);
             return this.RequestStreamingAsync(HttpMethod.Get, $"{this.InstanceUrl(id)}/pdf", options, requestOptions, cancellationToken);
+        }
+
+        private RequestOptions SetupRequestOptionsForPdfRequest(RequestOptions requestOptions)
+        {
+            if (requestOptions == null)
+            {
+                requestOptions = new RequestOptions();
+            }
+
+            if (requestOptions.BaseUrl == null)
+            {
+                requestOptions.BaseUrl = this.Client.FilesBase;
+            }
+
+            return requestOptions;
         }
 
         public virtual Quote Update(string id, QuoteUpdateOptions options, RequestOptions requestOptions = null)
