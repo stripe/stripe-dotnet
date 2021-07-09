@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.58.0 - 2021-07-09
+* [#2345](https://github.com/stripe/stripe-dotnet/pull/2345) API Updates
+  * Add support for new resource `Quote`
+  * Add support for `Quote` on `Invoice`
+
 ## 39.57.0 - 2021-06-30
 * [#2340](https://github.com/stripe/stripe-dotnet/pull/2340) API Updates
   * Add support for `WechatPay` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, and `PaymentMethod`
