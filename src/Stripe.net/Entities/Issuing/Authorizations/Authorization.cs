@@ -180,7 +180,7 @@ namespace Stripe.Issuing
         public AuthorizationVerificationData VerificationData { get; set; }
 
         /// <summary>
-        /// What, if any, digital wallet was used for this authorization. One of <c>apple_pay</c>,
+        /// The digital wallet used for this authorization. One of <c>apple_pay</c>,
         /// <c>google_pay</c>, or <c>samsung_pay</c>.
         /// </summary>
         [JsonProperty("wallet")]

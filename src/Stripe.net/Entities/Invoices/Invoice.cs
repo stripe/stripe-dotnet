@@ -138,8 +138,9 @@ namespace Stripe
         /// <c>subscription_threshold</c> indicates an invoice created due to a billing threshold
         /// being reached.
         /// One of: <c>automatic_pending_invoice_item_invoice</c>, <c>manual</c>,
-        /// <c>subscription</c>, <c>subscription_create</c>, <c>subscription_cycle</c>,
-        /// <c>subscription_threshold</c>, <c>subscription_update</c>, or <c>upcoming</c>.
+        /// <c>quote_accept</c>, <c>subscription</c>, <c>subscription_create</c>,
+        /// <c>subscription_cycle</c>, <c>subscription_threshold</c>, <c>subscription_update</c>, or
+        /// <c>upcoming</c>.
         /// </summary>
         [JsonProperty("billing_reason")]
         public string BillingReason { get; set; }
@@ -609,6 +610,37 @@ namespace Stripe
         /// </summary>
         [JsonProperty("pre_payment_credit_notes_amount")]
         public long PrePaymentCreditNotesAmount { get; set; }
+
+        #region Expandable Quote
+
+        /// <summary>
+        /// (ID of the Quote)
+        /// The quote this invoice was generated from.
+        /// </summary>
+        [JsonIgnore]
+        public string QuoteId
+        {
+            get => this.InternalQuote?.Id;
+            set => this.InternalQuote = SetExpandableFieldId(value, this.InternalQuote);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The quote this invoice was generated from.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Quote Quote
+        {
+            get => this.InternalQuote?.ExpandedObject;
+            set => this.InternalQuote = SetExpandableFieldObject(value, this.InternalQuote);
+        }
+
+        [JsonProperty("quote")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Quote>))]
+        internal ExpandableField<Quote> InternalQuote { get; set; }
+        #endregion
 
         /// <summary>
         /// This is the transaction number that appears on email receipts sent for this invoice.
