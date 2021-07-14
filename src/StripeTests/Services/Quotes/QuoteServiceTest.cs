@@ -23,6 +23,7 @@ namespace StripeTests
         private readonly QuoteCancelOptions cancelOptions;
         private readonly QuoteFinalizeOptions finalizeOptions;
         private readonly QuoteListLineItemsOptions listLineItemsOptions;
+        private readonly QuoteListComputedUpfrontLineItemsOptions listComputedUpfrontLineItemsOptions;
         private readonly QuotePdfOptions pdfOptions;
 
         public QuoteServiceTest(
@@ -79,6 +80,11 @@ namespace StripeTests
             };
 
             this.listLineItemsOptions = new QuoteListLineItemsOptions
+            {
+                Limit = 1,
+            };
+
+            this.listComputedUpfrontLineItemsOptions = new QuoteListComputedUpfrontLineItemsOptions
             {
                 Limit = 1,
             };
@@ -250,6 +256,44 @@ namespace StripeTests
         public async Task ListLineItemsAutoPagingAsync()
         {
             var lineItem = await this.service.ListLineItemsAutoPagingAsync(QuoteId, this.listLineItemsOptions).FirstAsync();
+            Assert.NotNull(lineItem);
+            Assert.Equal("item", lineItem.Object);
+        }
+
+        [Fact]
+        public void ListComputedUpfrontLineItems()
+        {
+            var lineItems = this.service.ListComputedUpfrontLineItems(QuoteId, this.listComputedUpfrontLineItemsOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/quotes/qt_123/computed_upfront_line_items");
+            Assert.NotNull(lineItems);
+            Assert.Equal("list", lineItems.Object);
+            Assert.Single(lineItems.Data);
+            Assert.Equal("item", lineItems.Data[0].Object);
+        }
+
+        [Fact]
+        public async Task ListComputedUpfrontLineItemsAsync()
+        {
+            var lineItems = await this.service.ListComputedUpfrontLineItemsAsync(QuoteId, this.listComputedUpfrontLineItemsOptions);
+            this.AssertRequest(HttpMethod.Get, "/v1/quotes/qt_123/computed_upfront_line_items");
+            Assert.NotNull(lineItems);
+            Assert.Equal("list", lineItems.Object);
+            Assert.Single(lineItems.Data);
+            Assert.Equal("item", lineItems.Data[0].Object);
+        }
+
+        [Fact]
+        public void ListComputedUpfrontLineItemsAutoPaging()
+        {
+            var lineItem = this.service.ListComputedUpfrontLineItemsAutoPaging(QuoteId, this.listComputedUpfrontLineItemsOptions).First();
+            Assert.NotNull(lineItem);
+            Assert.Equal("item", lineItem.Object);
+        }
+
+        [Fact]
+        public async Task ListComputedUpfrontLineItemsAutoPagingAsync()
+        {
+            var lineItem = await this.service.ListComputedUpfrontLineItemsAutoPagingAsync(QuoteId, this.listComputedUpfrontLineItemsOptions).FirstAsync();
             Assert.NotNull(lineItem);
             Assert.Equal("item", lineItem.Object);
         }
