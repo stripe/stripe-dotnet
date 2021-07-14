@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.59.0 - 2021-07-14
+* [#2346](https://github.com/stripe/stripe-dotnet/pull/2346) API Updates
+  * Add support for `ListComputedUpfrontLineItems` method on resource `Quote`
+
 ## 39.58.0 - 2021-07-09
 * [#2345](https://github.com/stripe/stripe-dotnet/pull/2345) API Updates
   * Add support for new resource `Quote`
