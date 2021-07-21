@@ -88,6 +88,12 @@ namespace Stripe
         public long? NextInvoiceSequence { get; set; }
 
         /// <summary>
+        /// Payment settings to pass to invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("payment_settings")]
+        public CustomerPaymentSettingsOptions PaymentSettings { get; set; }
+
+        /// <summary>
         /// The customer's phone number.
         /// </summary>
         [JsonProperty("phone")]
