@@ -26,6 +26,9 @@ namespace Stripe
         [JsonProperty("card_present")]
         public PaymentIntentPaymentMethodOptionsCardPresent CardPresent { get; set; }
 
+        [JsonProperty("ideal")]
+        public PaymentIntentPaymentMethodOptionsIdeal Ideal { get; set; }
+
         [JsonProperty("oxxo")]
         public PaymentIntentPaymentMethodOptionsOxxo Oxxo { get; set; }
 

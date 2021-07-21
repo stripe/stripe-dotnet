@@ -7,8 +7,7 @@ namespace Stripe
     public class CreditNoteLineOptions : INestedOptions
     {
         /// <summary>
-        /// The line item amount to credit. Only valid when <c>type</c> is <c>invoice_line_item</c>
-        /// and the referenced invoice line item does not have a quantity, only an amount.
+        /// The line item amount to credit. Only valid when <c>type</c> is <c>invoice_line_item</c>.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }

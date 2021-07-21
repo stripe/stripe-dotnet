@@ -70,8 +70,8 @@ namespace Stripe
         /// The person's ID number, as appropriate for their country. For example, a social security
         /// number in the U.S., social insurance number in Canada, etc. Instead of the number
         /// itself, you can also provide a <a
-        /// href="https://stripe.com/docs/stripe.js#collecting-pii-data">PII token provided by
-        /// Stripe.js</a>.
+        /// href="https://stripe.com/docs/js/tokens_sources/create_token?type=pii">PII token
+        /// provided by Stripe.js</a>.
         /// </summary>
         [JsonProperty("id_number")]
         public string IdNumber { get; set; }
