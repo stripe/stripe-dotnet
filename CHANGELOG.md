@@ -1,5 +1,12 @@
 # Changelog
 
+## 39.60.0 - 2021-07-20
+* [#2349](https://github.com/stripe/stripe-dotnet/pull/2349) API Updates
+  * Add support for `Wallet` on `IssuingTransaction`
+  * Add support for `Ideal` on `PaymentIntentPaymentMethodOptionsOptions` 
+
+* [#2348](https://github.com/stripe/stripe-dotnet/pull/2348) Remove unused API error types from docs.
+
 ## 39.59.0 - 2021-07-14
 * [#2346](https://github.com/stripe/stripe-dotnet/pull/2346) API Updates
   * Add support for `ListComputedUpfrontLineItems` method on resource `Quote`
