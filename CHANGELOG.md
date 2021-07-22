@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.61.0 - 2021-07-22
+* [#2350](https://github.com/stripe/stripe-dotnet/pull/2350) API Updates
+  * Add support for `PaymentSettings` on `SubscriptionCreateOptions`, `SubscriptionUpdateOptions`, and `Subscription`
+
 ## 39.60.0 - 2021-07-20
 * [#2349](https://github.com/stripe/stripe-dotnet/pull/2349) API Updates
   * Add support for `Wallet` on `IssuingTransaction`
