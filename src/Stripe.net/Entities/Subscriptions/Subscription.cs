@@ -317,6 +317,12 @@ namespace Stripe
         public SubscriptionPauseCollection PauseCollection { get; set; }
 
         /// <summary>
+        /// Payment settings passed on to invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("payment_settings")]
+        public SubscriptionPaymentSettings PaymentSettings { get; set; }
+
+        /// <summary>
         /// Specifies an interval for how often to bill for any pending invoice items. It is
         /// analogous to calling <a href="https://stripe.com/docs/api#create_invoice">Create an
         /// invoice</a> for the given subscription at the specified interval.

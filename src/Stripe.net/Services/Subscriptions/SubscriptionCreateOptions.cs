@@ -174,7 +174,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/migration/strong-customer-authentication">SCA
         /// regulation</a>, or collecting a mandate for a bank debit payment method. If the payment
         /// intent is not confirmed within 23 hours subscriptions transition to
-        /// <c>status=expired_incomplete</c>, which is a terminal state.
+        /// <c>status=incomplete_expired</c>, which is a terminal state.
         ///
         /// Use <c>error_if_incomplete</c> if you want Stripe to return an HTTP 402 status code if a
         /// subscription's first invoice cannot be paid. For example, if a payment method requires
@@ -190,6 +190,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_behavior")]
         public string PaymentBehavior { get; set; }
+
+        /// <summary>
+        /// Payment settings to pass to invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("payment_settings")]
+        public SubscriptionPaymentSettingsOptions PaymentSettings { get; set; }
 
         /// <summary>
         /// Specifies an interval for how often to bill for any pending invoice items. It is
