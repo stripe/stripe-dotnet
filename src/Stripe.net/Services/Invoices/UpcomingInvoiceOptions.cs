@@ -13,6 +13,12 @@ namespace Stripe
         [JsonProperty("customer")]
         public string Customer { get; set; }
 
+        /// <summary>
+        /// Details about the customer you want to invoice.
+        /// </summary>
+        [JsonProperty("customer_details")]
+        public InvoiceCustomerDetailsOptions CustomerDetails { get; set; }
+
         [JsonProperty("discounts")]
         public List<InvoiceDiscountOptions> Discounts { get; set; }
 
