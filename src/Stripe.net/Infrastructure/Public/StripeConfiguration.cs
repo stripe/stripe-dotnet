@@ -30,7 +30,7 @@ namespace Stripe
         }
 
         /// <summary>API version used by Stripe.net.</summary>
-        public static string ApiVersion => "2020-08-27";
+        public static string ApiVersion => "2020-08-27;search_api_beta=v1";
 
         /// <summary>Gets or sets the API key.</summary>
         /// <remarks>

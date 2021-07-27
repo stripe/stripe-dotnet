@@ -367,7 +367,7 @@ namespace Stripe
                     options,
                     requestOptions);
             }
-        }
+}
 
 #endif
         protected async IAsyncEnumerable<T> ListRequestAutoPagingAsync<T>(
@@ -436,6 +436,124 @@ namespace Stripe
                 }
 
                 page = await this.RequestAsync<StripeList<T>>(
+                    HttpMethod.Get,
+                    url,
+                    options,
+                    requestOptions,
+                    cancellationToken);
+            }
+        }
+
+        protected IEnumerable<T> SearchRequestAutoPaging<T>(
+            string url,
+            SearchOptions options,
+            RequestOptions requestOptions)
+            where T : IStripeEntity
+        {
+#if NET461
+            return
+                this.SearchRequestAutoPagingSync<T>(url, options, requestOptions);
+#else
+            return AsyncUtils.ToEnumerable(
+                this.SearchRequestAutoPagingAsync<T>(url, options, requestOptions));
+#endif
+        }
+
+#if NET461
+        protected IEnumerable<T> SearchRequestAutoPagingSync<T>(
+            string url,
+            SearchOptions options,
+            RequestOptions requestOptions)
+            where T : IStripeEntity
+        {
+            var page = this.Request<StripeSearchResult<T>>(
+                HttpMethod.Get,
+                url,
+                options,
+                requestOptions);
+
+            options = options ?? new SearchOptions();
+
+            while (true)
+            {
+                string itemId = null;
+                foreach (var item in page)
+                {
+                    // Elements in `StripeList` instances are decoded by `StripeObjectConverter`,
+                    // which returns `null` for objects it doesn't know how to decode.
+                    // When auto-paginating, we simply ignore these null elements but still return
+                    // other elements.
+                    if (item == null)
+                    {
+                        continue;
+                    }
+
+                    itemId = ((IHasId)item).Id;
+                    yield return item;
+                }
+
+                if (!page.HasMore || string.IsNullOrEmpty(itemId))
+                {
+                    break;
+                }
+
+                options.NextPage = page.NextPage;
+
+                page = this.Request<StripeSearchResult<T>>(
+                    HttpMethod.Get,
+                    url,
+                    options,
+                    requestOptions);
+            }
+}
+
+#endif
+        protected async IAsyncEnumerable<T> SearchRequestAutoPagingAsync<T>(
+            string url,
+            SearchOptions options,
+            RequestOptions requestOptions,
+            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+            where T : IStripeEntity
+        {
+            var page = await this.RequestAsync<StripeSearchResult<T>>(
+                HttpMethod.Get,
+                url,
+                options,
+                requestOptions,
+                cancellationToken);
+
+            options = options ?? new SearchOptions();
+
+            while (true)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+
+                string itemId = null;
+                foreach (var item in page)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+
+                    // Elements in `StripeList` instances are decoded by `StripeObjectConverter`,
+                    // which returns `null` for objects it doesn't know how to decode.
+                    // When auto-paginating, we simply ignore these null elements but still return
+                    // other elements.
+                    if (item == null)
+                    {
+                        continue;
+                    }
+
+                    itemId = ((IHasId)item).Id;
+                    yield return item;
+                }
+
+                if (!page.HasMore || string.IsNullOrEmpty(itemId))
+                {
+                    break;
+                }
+
+                options.NextPage = page.NextPage;
+
+                page = await this.RequestAsync<StripeSearchResult<T>>(
                     HttpMethod.Get,
                     url,
                     options,
