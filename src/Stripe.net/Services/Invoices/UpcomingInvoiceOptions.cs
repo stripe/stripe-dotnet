@@ -7,6 +7,12 @@ namespace Stripe
 
     public class UpcomingInvoiceOptions : BaseOptions
     {
+        /// <summary>
+        /// Settings for automatic tax lookup for this invoice.
+        /// </summary>
+        [JsonProperty("automatic_tax")]
+        public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
+
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
 
