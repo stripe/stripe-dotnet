@@ -1,5 +1,91 @@
 # Changelog
 
+## 39.61.0 - 2021-07-22
+* [#2350](https://github.com/stripe/stripe-dotnet/pull/2350) API Updates
+  * Add support for `PaymentSettings` on `SubscriptionCreateOptions`, `SubscriptionUpdateOptions`, and `Subscription`
+
+## 39.60.0 - 2021-07-20
+* [#2349](https://github.com/stripe/stripe-dotnet/pull/2349) API Updates
+  * Add support for `Wallet` on `IssuingTransaction`
+  * Add support for `Ideal` on `PaymentIntentPaymentMethodOptionsOptions` 
+
+* [#2348](https://github.com/stripe/stripe-dotnet/pull/2348) Remove unused API error types from docs.
+
+## 39.59.0 - 2021-07-14
+* [#2346](https://github.com/stripe/stripe-dotnet/pull/2346) API Updates
+  * Add support for `ListComputedUpfrontLineItems` method on resource `Quote`
+
+## 39.58.0 - 2021-07-09
+* [#2345](https://github.com/stripe/stripe-dotnet/pull/2345) API Updates
+  * Add support for new resource `Quote`
+  * Add support for `Quote` on `Invoice`
+
+## 39.57.0 - 2021-06-30
+* [#2340](https://github.com/stripe/stripe-dotnet/pull/2340) API Updates
+  * Add support for `WechatPay` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, and `PaymentMethod`
+  * Add support for `WechatPayDisplayQrCode`, `WechatPayRedirectToAndroidApp`, and `WechatPayRedirectToIosApp` on `PaymentIntentNextAction`
+
+## 39.56.1 - 2021-06-30
+* [#2343](https://github.com/stripe/stripe-dotnet/pull/2343) Fix another missing `ConfigureAwait` call
+* [#2342](https://github.com/stripe/stripe-dotnet/pull/2342) Add missing `ConfigureAwait` call to `SystemNetHttpClient.SendHttpRequest`
+
+## 39.56.0 - 2021-06-29
+* [#2339](https://github.com/stripe/stripe-dotnet/pull/2339) API Updates
+  * Added support for `boleto_payments` on `AccountCapabilities`
+  * Added support for `boleto` and `oxxo` on `Checkout.SessionPaymentMethodOptions`
+* [#2333](https://github.com/stripe/stripe-dotnet/pull/2333) Add infrastructure for handling streaming binary responses
+
+## 39.55.0 - 2021-06-25
+* [#2336](https://github.com/stripe/stripe-dotnet/pull/2336) API Updates
+  * Added support for `boleto` on `ChargePaymentMethodDetails`, `PaymentIntentPaymentMethodOptions`, `PaymentMethod`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, and `PaymentMethodCreateOptions`.
+  * Added support for `boleto_display_details` on `PaymentIntentNextAction`
+
+## 39.54.0 - 2021-06-16
+* [#2330](https://github.com/stripe/stripe-dotnet/pull/2330) API Updates
+  * Add support for `url` on Checkout `Session`
+
+## 39.53.0 - 2021-06-07
+* [#2327](https://github.com/stripe/stripe-dotnet/pull/2327) API Updates
+  * Added support for `tax_id_collection` on `Session#create` and `Checkout.Session`
+  * Added `Secret` property to `EphemeralKey`
+
+## 39.52.0 - 2021-06-04
+* [#2326](https://github.com/stripe/stripe-dotnet/pull/2326) API Updates
+  * Add support for `Controller` on `Account`
+
+## 39.51.0 - 2021-06-04
+* [#2325](https://github.com/stripe/stripe-dotnet/pull/2325) API Updates
+  * Add support for new `TaxCode` API.
+  * Add support for `TaxCode` on `Product` API, and `PriceProductDataOptions`
+  * Add support for `Tax` on `Customer` API
+  * Add support for `AutomaticTax` on Checkout `Session` API, `Invoice` API, `SubscriptionScheduleDefaultSettings` API, `SubscriptionSchedulePhase` API, `SubscriptionCreateOptions`, and `SubscriptionUpdateOptions`
+  * Add support for `TaxBehavior` on `Price` API, Checkout `SessionLineItemPriceDataOptions`, `InvoiceSubscriptionItemPriceDataOptions`, `SubscriptionSchedulePhaseAddInvoiceItemPriceDataOptions`, `SubscriptionSchedulePhaseItemPriceDataOptions`, and `SubscriptionAddInvoiceItemPriceDataOptions`
+  * Add support for `TaxType` on `TaxRate` API
+  * Add support for `CustomerUpdate` on Checkout `SessionCreateOptions`
+
+
+## 39.50.0 - 2021-05-26
+* [#2323](https://github.com/stripe/stripe-dotnet/pull/2323) API Updates
+  * Added support for `documents` on `PersonUpdateOptions`, `PersonCreateOptions` and `TokenPersonOptions`
+
+## 39.49.0 - 2021-05-19
+* [#2319](https://github.com/stripe/stripe-dotnet/pull/2319) API Updates
+  * Add support for Identity VerificationSession and VerificationReport APIs
+
+## 39.48.0 - 2021-05-06
+* [#2315](https://github.com/stripe/stripe-dotnet/pull/2315) API Updates
+  * Add support for `reference` on `ChargePaymentMethodDetailsAfterpayClearpay`
+  * Add support for `afterpay_clearpay` on `PaymentIntentPaymentMethodOptions` and `PaymentIntentPaymentMethodOptionsOptions`.
+
+## 39.47.0 - 2021-05-05
+* [#2314](https://github.com/stripe/stripe-dotnet/pull/2314) API Updates
+  * Add support for `payment_intent` on `Radar.EarlyFraudWarning`
+
+## 39.46.0 - 2021-05-05
+* [#2312](https://github.com/stripe/stripe-dotnet/pull/2312) API Updates
+  * Add support for `card_present` on `PaymentIntentPaymentMethodOptionsOptions`, and `PaymentIntentMethodOptions`
+  * Add `default_incomplete` as a new `payment_behavior` of `SubscriptionOptions` and `SubscriptionItemOptions`.
+
 ## 39.45.0 - 2021-04-16
 * [#2307](https://github.com/stripe/stripe-dotnet/pull/2307) API Updates
   * Add support for `currency` on `SessionPaymentMethodOptionsAcssDebit`.

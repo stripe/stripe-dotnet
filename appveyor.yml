@@ -1,16 +1,16 @@
-version: 39.45.0.{build}
+version: 39.61.0.{build}
 image: Visual Studio 2019
 
 environment:
   COVERALLS_REPO_TOKEN:
     secure: T0PmP8uyzCseacBCDRBlti2y9Tz5DL6fknea0MKWvbPYrzADmLY2/5kOTfYIsPUk
   # If you bump this, don't forget to bump `MinimumMockVersion` in `StripeMockFixture.cs` as well.
-  STRIPE_MOCK_VERSION: 0.103.0
+  STRIPE_MOCK_VERSION: 0.109.0
 
 deploy:
 - provider: NuGet
   api_key:
-    secure: MUfmwJ3G3G8iXKyBRO09vjWUw73hFzBZYFeeHUcxubRUweWWg+werHwT6qJc7rTL
+    secure: 0Ebqx5ZWpVXF+XtFMOjgYWyNXl+xHCHpab7HtzJOSS6IAjWxQc2v+yqO62nH2PN9
   on:
     appveyor_repo_tag: true
 

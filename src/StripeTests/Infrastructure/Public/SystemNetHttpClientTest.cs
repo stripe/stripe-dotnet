@@ -1,6 +1,5 @@
 namespace StripeTests
 {
-    using System;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
@@ -43,6 +42,34 @@ namespace StripeTests
             var response = await client.MakeRequestAsync(request);
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.Equal("Hello world!", response.Content);
+        }
+
+        [Fact]
+        public async Task MakeStreamingRequestAsync()
+        {
+            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
+            responseMessage.Content = new StringContent("Hello world!");
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(responseMessage));
+            var client = new SystemNetHttpClient(
+                new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
+            var request = new StripeRequest(
+                this.StripeClient,
+                HttpMethod.Post,
+                "/foo",
+                null,
+                null);
+
+            var streamedResponse = await client.MakeStreamingRequestAsync(request);
+
+            Assert.Equal(HttpStatusCode.OK, streamedResponse.StatusCode);
+
+            var response = await streamedResponse.ToStripeResponseAsync();
             Assert.Equal("Hello world!", response.Content);
         }
 

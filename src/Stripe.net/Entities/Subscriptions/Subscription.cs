@@ -28,6 +28,9 @@ namespace Stripe
         [JsonProperty("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
+        [JsonProperty("automatic_tax")]
+        public SubscriptionAutomaticTax AutomaticTax { get; set; }
+
         /// <summary>
         /// Determines the date of the first full invoice, and, for plans with <c>month</c> or
         /// <c>year</c> intervals, the day of the month for subsequent invoices.
@@ -312,6 +315,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("pause_collection")]
         public SubscriptionPauseCollection PauseCollection { get; set; }
+
+        /// <summary>
+        /// Payment settings passed on to invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("payment_settings")]
+        public SubscriptionPaymentSettings PaymentSettings { get; set; }
 
         /// <summary>
         /// Specifies an interval for how often to bill for any pending invoice items. It is

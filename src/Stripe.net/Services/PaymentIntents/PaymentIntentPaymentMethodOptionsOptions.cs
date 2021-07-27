@@ -13,6 +13,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
 
         /// <summary>
+        /// If this is a <c>afterpay_clearpay</c> PaymentMethod, this sub-hash contains details
+        /// about the Afterpay Clearpay payment method options.
+        /// </summary>
+        [JsonProperty("afterpay_clearpay")]
+        public PaymentIntentPaymentMethodOptionsAfterpayClearpayOptions AfterpayClearpay { get; set; }
+
+        /// <summary>
         /// If this is a <c>alipay</c> PaymentMethod, this sub-hash contains details about the
         /// Alipay payment method options.
         /// </summary>
@@ -27,10 +34,31 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsBancontactOptions Bancontact { get; set; }
 
         /// <summary>
+        /// If this is a <c>boleto</c> PaymentMethod, this sub-hash contains details about the
+        /// Boleto payment method options.
+        /// </summary>
+        [JsonProperty("boleto")]
+        public PaymentIntentPaymentMethodOptionsBoletoOptions Boleto { get; set; }
+
+        /// <summary>
         /// Configuration for any card payments attempted on this PaymentIntent.
         /// </summary>
         [JsonProperty("card")]
         public PaymentIntentPaymentMethodOptionsCardOptions Card { get; set; }
+
+        /// <summary>
+        /// If this is a <c>card_present</c> PaymentMethod, this sub-hash contains details about the
+        /// Card Present payment method options.
+        /// </summary>
+        [JsonProperty("card_present")]
+        public PaymentIntentPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
+
+        /// <summary>
+        /// If this is a <c>ideal</c> PaymentMethod, this sub-hash contains details about the Ideal
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("ideal")]
+        public PaymentIntentPaymentMethodOptionsIdealOptions Ideal { get; set; }
 
         /// <summary>
         /// If this is a <c>oxxo</c> PaymentMethod, this sub-hash contains details about the OXXO
@@ -59,5 +87,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sofort")]
         public PaymentIntentPaymentMethodOptionsSofortOptions Sofort { get; set; }
+
+        /// <summary>
+        /// If this is a <c>wechat_pay</c> PaymentMethod, this sub-hash contains details about the
+        /// WeChat Pay payment method options.
+        /// </summary>
+        [JsonProperty("wechat_pay")]
+        public PaymentIntentPaymentMethodOptionsWechatPayOptions WechatPay { get; set; }
     }
 }

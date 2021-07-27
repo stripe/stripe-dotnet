@@ -10,6 +10,13 @@ namespace Stripe
         /// This is a legacy parameter that will be removed in the future. It is a hash that does
         /// not accept any keys.
         /// </summary>
+        [JsonProperty("acss_debit")]
+        public PaymentMethodAcssDebitOptions AcssDebit { get; set; }
+
+        /// <summary>
+        /// This is a legacy parameter that will be removed in the future. It is a hash that does
+        /// not accept any keys.
+        /// </summary>
         [JsonProperty("au_becs_debit")]
         public PaymentMethodAuBecsDebitOptions AuBecsDebit { get; set; }
 

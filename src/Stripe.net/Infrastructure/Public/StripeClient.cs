@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System;
+    using System.IO;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -115,6 +116,28 @@ namespace Stripe
                 .ConfigureAwait(false);
 
             return ProcessResponse<T>(response);
+        }
+
+        /// <inheritdoc/>
+        public async Task<Stream> RequestStreamingAsync(
+            HttpMethod method,
+            string path,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken = default)
+        {
+            var request = new StripeRequest(this, method, path, options, requestOptions);
+
+            var response = await this.HttpClient.MakeStreamingRequestAsync(request, cancellationToken)
+                .ConfigureAwait(false);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return response.Body;
+            }
+
+            var readResponse = await response.ToStripeResponseAsync().ConfigureAwait(false);
+            throw BuildStripeException(readResponse);
         }
 
         private static IHttpClient BuildDefaultHttpClient()

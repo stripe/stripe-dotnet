@@ -8,14 +8,26 @@ namespace Stripe
         [JsonProperty("acss_debit")]
         public PaymentIntentPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("afterpay_clearpay")]
+        public PaymentIntentPaymentMethodOptionsAfterpayClearpay AfterpayClearpay { get; set; }
+
         [JsonProperty("alipay")]
         public PaymentIntentPaymentMethodOptionsAlipay Alipay { get; set; }
 
         [JsonProperty("bancontact")]
         public PaymentIntentPaymentMethodOptionsBancontact Bancontact { get; set; }
 
+        [JsonProperty("boleto")]
+        public PaymentIntentPaymentMethodOptionsBoleto Boleto { get; set; }
+
         [JsonProperty("card")]
         public PaymentIntentPaymentMethodOptionsCard Card { get; set; }
+
+        [JsonProperty("card_present")]
+        public PaymentIntentPaymentMethodOptionsCardPresent CardPresent { get; set; }
+
+        [JsonProperty("ideal")]
+        public PaymentIntentPaymentMethodOptionsIdeal Ideal { get; set; }
 
         [JsonProperty("oxxo")]
         public PaymentIntentPaymentMethodOptionsOxxo Oxxo { get; set; }
@@ -28,5 +40,8 @@ namespace Stripe
 
         [JsonProperty("sofort")]
         public PaymentIntentPaymentMethodOptionsSofort Sofort { get; set; }
+
+        [JsonProperty("wechat_pay")]
+        public PaymentIntentPaymentMethodOptionsWechatPay WechatPay { get; set; }
     }
 }

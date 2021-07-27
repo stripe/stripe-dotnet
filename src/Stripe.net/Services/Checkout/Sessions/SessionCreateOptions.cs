@@ -12,6 +12,9 @@ namespace Stripe.Checkout
         [JsonProperty("allow_promotion_codes")]
         public bool? AllowPromotionCodes { get; set; }
 
+        [JsonProperty("automatic_tax")]
+        public SessionAutomaticTaxOptions AutomaticTax { get; set; }
+
         /// <summary>
         /// Specify whether Checkout should collect the customer's billing address.
         /// One of: <c>auto</c>, or <c>required</c>.
@@ -66,6 +69,13 @@ namespace Stripe.Checkout
         public string CustomerEmail { get; set; }
 
         /// <summary>
+        /// Controls what fields on Customer can be updated by the Checkout Session. Can only be
+        /// provided when <c>customer</c> is provided.
+        /// </summary>
+        [JsonProperty("customer_update")]
+        public SessionCustomerUpdateOptions CustomerUpdate { get; set; }
+
+        /// <summary>
         /// The coupon or promotion code to apply to this Session. Currently, only up to one may be
         /// specified.
         /// </summary>
@@ -91,10 +101,10 @@ namespace Stripe.Checkout
         /// the browser's locale is used.
         /// One of: <c>auto</c>, <c>bg</c>, <c>cs</c>, <c>da</c>, <c>de</c>, <c>el</c>, <c>en</c>,
         /// <c>en-GB</c>, <c>es</c>, <c>es-419</c>, <c>et</c>, <c>fi</c>, <c>fr</c>, <c>fr-CA</c>,
-        /// <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>,
-        /// <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>, <c>pt-BR</c>, <c>ro</c>, <c>ru</c>,
-        /// <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>, <c>tr</c>, <c>zh</c>, <c>zh-HK</c>, or
-        /// <c>zh-TW</c>.
+        /// <c>hr</c>, <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>ko</c>, <c>lt</c>, <c>lv</c>,
+        /// <c>ms</c>, <c>mt</c>, <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>, <c>pt-BR</c>,
+        /// <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>, <c>tr</c>, <c>vi</c>,
+        /// <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -189,5 +199,11 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("success_url")]
         public string SuccessUrl { get; set; }
+
+        /// <summary>
+        /// Controls tax ID collection settings for the session.
+        /// </summary>
+        [JsonProperty("tax_id_collection")]
+        public SessionTaxIdCollectionOptions TaxIdCollection { get; set; }
     }
 }

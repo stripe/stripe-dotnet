@@ -38,6 +38,9 @@ namespace Stripe.Checkout
         [JsonProperty("amount_total")]
         public long? AmountTotal { get; set; }
 
+        [JsonProperty("automatic_tax")]
+        public SessionAutomaticTax AutomaticTax { get; set; }
+
         /// <summary>
         /// Describes whether Checkout should collect the customer's billing address.
         /// One of: <c>auto</c>, or <c>required</c>.
@@ -106,7 +109,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The customer details including the customer's tax exempt status and the customer's tax
-        /// IDs.
+        /// IDs. Only present on Sessions in <c>payment</c> or <c>subscription</c> mode.
         /// </summary>
         [JsonProperty("customer_details")]
         public SessionCustomerDetails CustomerDetails { get; set; }
@@ -138,10 +141,10 @@ namespace Stripe.Checkout
         /// the browser's locale is used.
         /// One of: <c>auto</c>, <c>bg</c>, <c>cs</c>, <c>da</c>, <c>de</c>, <c>el</c>, <c>en</c>,
         /// <c>en-GB</c>, <c>es</c>, <c>es-419</c>, <c>et</c>, <c>fi</c>, <c>fr</c>, <c>fr-CA</c>,
-        /// <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>,
-        /// <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>, <c>pt-BR</c>, <c>ro</c>, <c>ru</c>,
-        /// <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>, <c>tr</c>, <c>zh</c>, <c>zh-HK</c>, or
-        /// <c>zh-TW</c>.
+        /// <c>hr</c>, <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>ko</c>, <c>lt</c>, <c>lv</c>,
+        /// <c>ms</c>, <c>mt</c>, <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>, <c>pt-BR</c>,
+        /// <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>, <c>tr</c>, <c>vi</c>,
+        /// <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -307,10 +310,19 @@ namespace Stripe.Checkout
         [JsonProperty("success_url")]
         public string SuccessUrl { get; set; }
 
+        [JsonProperty("tax_id_collection")]
+        public SessionTaxIdCollection TaxIdCollection { get; set; }
+
         /// <summary>
         /// Tax and discount details for the computed total amount.
         /// </summary>
         [JsonProperty("total_details")]
         public SessionTotalDetails TotalDetails { get; set; }
+
+        /// <summary>
+        /// The URL to the Checkout Session.
+        /// </summary>
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 }

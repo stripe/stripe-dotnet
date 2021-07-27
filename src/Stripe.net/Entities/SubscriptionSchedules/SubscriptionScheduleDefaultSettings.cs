@@ -14,6 +14,9 @@ namespace Stripe
         [JsonProperty("application_fee_percent")]
         public decimal? ApplicationFeePercent { get; set; }
 
+        [JsonProperty("automatic_tax")]
+        public SubscriptionScheduleDefaultSettingsAutomaticTax AutomaticTax { get; set; }
+
         /// <summary>
         /// Possible values are <c>phase_start</c> or <c>automatic</c>. If <c>phase_start</c> then
         /// billing cycle anchor of the subscription is set to the start of the phase when entering

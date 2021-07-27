@@ -85,9 +85,8 @@ namespace Stripe
         public IPaymentSource Source { get; set; }
 
         /// <summary>
-        /// The type of error returned. One of <c>api_connection_error</c>, <c>api_error</c>,
-        /// <c>authentication_error</c>, <c>card_error</c>, <c>idempotency_error</c>,
-        /// <c>invalid_request_error</c>, or <c>rate_limit_error</c>.
+        /// The type of error returned. One of <c>api_error</c>, <c>card_error</c>,
+        /// <c>idempotency_error</c>, or <c>invalid_request_error</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

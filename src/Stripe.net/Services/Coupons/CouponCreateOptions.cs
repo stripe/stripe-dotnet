@@ -29,8 +29,8 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
-        /// Specifies how long the discount will be in effect. Can be <c>forever</c>, <c>once</c>,
-        /// or <c>repeating</c>.
+        /// Specifies how long the discount will be in effect if used on a subscription. Can be
+        /// <c>forever</c>, <c>once</c>, or <c>repeating</c>. Defaults to <c>once</c>.
         /// One of: <c>forever</c>, <c>once</c>, or <c>repeating</c>.
         /// </summary>
         [JsonProperty("duration")]

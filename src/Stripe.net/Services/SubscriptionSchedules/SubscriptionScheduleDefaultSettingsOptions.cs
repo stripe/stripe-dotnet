@@ -17,6 +17,12 @@ namespace Stripe
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
+        /// Default settings for automatic tax computation.
+        /// </summary>
+        [JsonProperty("automatic_tax")]
+        public SubscriptionScheduleDefaultSettingsAutomaticTaxOptions AutomaticTax { get; set; }
+
+        /// <summary>
         /// Can be set to <c>phase_start</c> to set the anchor to the start of the phase or
         /// <c>automatic</c> to automatically change it if needed. Cannot be set to
         /// <c>phase_start</c> if this phase specifies a trial. For more information, see the

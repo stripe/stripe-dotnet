@@ -27,6 +27,12 @@ namespace Stripe
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
+        /// Automatic tax settings for this subscription.
+        /// </summary>
+        [JsonProperty("automatic_tax")]
+        public SubscriptionAutomaticTaxOptions AutomaticTax { get; set; }
+
+        /// <summary>
         /// Either <c>now</c> or <c>unchanged</c>. Setting the value to <c>now</c> resets the
         /// subscription's billing cycle anchor to the current time. For more information, see the
         /// billing cycle <a
@@ -71,7 +77,7 @@ namespace Stripe
         public string CollectionMethod { get; set; }
 
         /// <summary>
-        /// The code of the coupon to apply to this subscription. A coupon applied to a subscription
+        /// The ID of the coupon to apply to this subscription. A coupon applied to a subscription
         /// will only affect invoices created for that particular subscription.
         /// </summary>
         [JsonProperty("coupon")]
@@ -151,6 +157,13 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/migration/strong-customer-authentication">SCA
         /// Migration Guide</a> for Billing to learn more. This is the default behavior.
         ///
+        /// Use <c>default_incomplete</c> to transition the subscription to <c>status=past_due</c>
+        /// when payment is required and await explicit confirmation of the invoice's payment
+        /// intent. This allows simpler management of scenarios where additional user actions are
+        /// needed to pay a subscription’s invoice. Such as failed payments, <a
+        /// href="https://stripe.com/docs/billing/migration/strong-customer-authentication">SCA
+        /// regulation</a>, or collecting a mandate for a bank debit payment method.
+        ///
         /// Use <c>pending_if_incomplete</c> to update the subscription using <a
         /// href="https://stripe.com/docs/billing/subscriptions/pending-updates">pending
         /// updates</a>. When you use <c>pending_if_incomplete</c> you can only pass the parameters
@@ -164,11 +177,17 @@ namespace Stripe
         /// does not update the subscription and returns an error instead. This was the default
         /// behavior for API versions prior to 2019-03-14. See the <a
         /// href="https://stripe.com/docs/upgrades#2019-03-14">changelog</a> to learn more.
-        /// One of: <c>allow_incomplete</c>, <c>error_if_incomplete</c>, or
-        /// <c>pending_if_incomplete</c>.
+        /// One of: <c>allow_incomplete</c>, <c>default_incomplete</c>, <c>error_if_incomplete</c>,
+        /// or <c>pending_if_incomplete</c>.
         /// </summary>
         [JsonProperty("payment_behavior")]
         public string PaymentBehavior { get; set; }
+
+        /// <summary>
+        /// Payment settings to pass to invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("payment_settings")]
+        public SubscriptionPaymentSettingsOptions PaymentSettings { get; set; }
 
         /// <summary>
         /// Specifies an interval for how often to bill for any pending invoice items. It is

@@ -8,6 +8,9 @@ namespace Stripe
         [JsonProperty("alipay_handle_redirect")]
         public PaymentIntentNextActionAlipayHandleRedirect AlipayHandleRedirect { get; set; }
 
+        [JsonProperty("boleto_display_details")]
+        public PaymentIntentNextActionBoletoDisplayDetails BoletoDisplayDetails { get; set; }
+
         [JsonProperty("oxxo_display_details")]
         public PaymentIntentNextActionOxxoDisplayDetails OxxoDisplayDetails { get; set; }
 
@@ -23,5 +26,14 @@ namespace Stripe
 
         [JsonProperty("verify_with_microdeposits")]
         public PaymentIntentNextActionVerifyWithMicrodeposits VerifyWithMicrodeposits { get; set; }
+
+        [JsonProperty("wechat_pay_display_qr_code")]
+        public PaymentIntentNextActionWechatPayDisplayQrCode WechatPayDisplayQrCode { get; set; }
+
+        [JsonProperty("wechat_pay_redirect_to_android_app")]
+        public PaymentIntentNextActionWechatPayRedirectToAndroidApp WechatPayRedirectToAndroidApp { get; set; }
+
+        [JsonProperty("wechat_pay_redirect_to_ios_app")]
+        public PaymentIntentNextActionWechatPayRedirectToIosApp WechatPayRedirectToIosApp { get; set; }
     }
 }

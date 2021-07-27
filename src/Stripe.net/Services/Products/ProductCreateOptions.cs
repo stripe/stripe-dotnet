@@ -96,6 +96,12 @@ namespace Stripe
         public string StatementDescriptor { get; set; }
 
         /// <summary>
+        /// A <a href="https://stripe.com/docs/tax/tax-codes">tax code</a> ID.
+        /// </summary>
+        [JsonProperty("tax_code")]
+        public string TaxCode { get; set; }
+
+        /// <summary>
         /// The type of the product. Defaults to <c>service</c> if not explicitly specified,
         /// enabling use of this product with Subscriptions and Plans. Set this parameter to
         /// <c>good</c> to use this product with Orders and SKUs. On API versions before

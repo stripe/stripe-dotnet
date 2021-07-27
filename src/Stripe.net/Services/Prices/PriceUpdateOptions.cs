@@ -40,6 +40,15 @@ namespace Stripe
         public PriceRecurringOptions Recurring { get; set; }
 
         /// <summary>
+        /// Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One
+        /// of <c>inclusive</c>, <c>exclusive</c>, or <c>unspecified</c>. Once specified as either
+        /// <c>inclusive</c> or <c>exclusive</c>, it cannot be changed.
+        /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
+        /// </summary>
+        [JsonProperty("tax_behavior")]
+        public string TaxBehavior { get; set; }
+
+        /// <summary>
         /// If set to true, will atomically remove the lookup key from the existing price, and
         /// assign it to this price.
         /// </summary>

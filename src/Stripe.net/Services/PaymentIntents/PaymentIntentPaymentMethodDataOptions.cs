@@ -56,6 +56,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataBillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
+        /// If this is a <c>boleto</c> PaymentMethod, this hash contains details about the Boleto
+        /// payment method.
+        /// </summary>
+        [JsonProperty("boleto")]
+        public PaymentIntentPaymentMethodDataBoletoOptions Boleto { get; set; }
+
+        /// <summary>
         /// If this is an <c>eps</c> PaymentMethod, this hash contains details about the EPS payment
         /// method.
         /// </summary>
@@ -139,11 +146,18 @@ namespace Stripe
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
         /// One of: <c>acss_debit</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
-        /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>eps</c>, <c>fpx</c>,
-        /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>oxxo</c>, <c>p24</c>,
-        /// <c>sepa_debit</c>, or <c>sofort</c>.
+        /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>boleto</c>, <c>eps</c>,
+        /// <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>oxxo</c>, <c>p24</c>,
+        /// <c>sepa_debit</c>, <c>sofort</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// If this is an <c>wechat_pay</c> PaymentMethod, this hash contains details about the
+        /// wechat_pay payment method.
+        /// </summary>
+        [JsonProperty("wechat_pay")]
+        public PaymentIntentPaymentMethodDataWechatPayOptions WechatPay { get; set; }
     }
 }

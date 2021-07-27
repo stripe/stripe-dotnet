@@ -29,6 +29,9 @@ namespace Stripe
         [JsonProperty("bancontact")]
         public ChargePaymentMethodDetailsBancontact Bancontact { get; set; }
 
+        [JsonProperty("boleto")]
+        public ChargePaymentMethodDetailsBoleto Boleto { get; set; }
+
         [JsonProperty("card")]
         public ChargePaymentMethodDetailsCard Card { get; set; }
 
@@ -85,5 +88,8 @@ namespace Stripe
 
         [JsonProperty("wechat")]
         public ChargePaymentMethodDetailsWechat Wechat { get; set; }
+
+        [JsonProperty("wechat_pay")]
+        public ChargePaymentMethodDetailsWechatPay WechatPay { get; set; }
     }
 }

@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Net;
     using System.Net.Http;
     using System.Reflection;
@@ -240,6 +241,16 @@ namespace Stripe
                 .ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
+        protected Stream RequestStreaming(
+            HttpMethod method,
+            string path,
+            BaseOptions options,
+            RequestOptions requestOptions)
+        {
+            return this.RequestStreamingAsync(method, path, options, requestOptions)
+                .ConfigureAwait(false).GetAwaiter().GetResult();
+        }
+
         protected async Task<T> RequestAsync<T>(
             HttpMethod method,
             string path,
@@ -255,6 +266,24 @@ namespace Stripe
                 options,
                 requestOptions,
                 cancellationToken).ConfigureAwait(false);
+        }
+
+        protected async Task<Stream> RequestStreamingAsync(
+            HttpMethod method,
+            string path,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken = default)
+        {
+            requestOptions = this.SetupRequestOptions(requestOptions);
+            var stream = await this.Client.RequestStreamingAsync(
+                    method,
+                    path,
+                    options,
+                    requestOptions,
+                    cancellationToken)
+                .ConfigureAwait(false);
+            return stream;
         }
 
         protected IEnumerable<T> ListRequestAutoPaging<T>(

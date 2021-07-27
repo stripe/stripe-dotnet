@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System.IO;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -45,5 +46,20 @@ namespace Stripe
             RequestOptions requestOptions,
             CancellationToken cancellationToken = default)
             where T : IStripeEntity;
+
+        /// <summary>Sends a request to Stripe's API as an asynchronous operation and returns a <see cref="Stream"/> as the response.</summary>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="path">The path of the request.</param>
+        /// <param name="options">The parameters of the request.</param>
+        /// <param name="requestOptions">The special modifiers of the request.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A task object with the Stream of the response body on success..</returns>
+        /// <exception cref="StripeException">Thrown if the request fails.</exception>
+        Task<Stream> RequestStreamingAsync(
+            HttpMethod method,
+            string path,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken = default);
     }
 }

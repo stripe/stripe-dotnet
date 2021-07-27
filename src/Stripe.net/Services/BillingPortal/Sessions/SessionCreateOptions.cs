@@ -6,7 +6,7 @@ namespace Stripe.BillingPortal
     public class SessionCreateOptions : BaseOptions
     {
         /// <summary>
-        /// The <a
+        /// The ID of an existing <a
         /// href="https://stripe.com/docs/api/customer_portal/configuration">configuration</a> to
         /// use for this session, describing its functionality and features. If not specified, the
         /// session uses the default configuration.

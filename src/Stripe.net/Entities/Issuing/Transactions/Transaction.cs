@@ -253,5 +253,13 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// The digital wallet used for this transaction. One of <c>apple_pay</c>,
+        /// <c>google_pay</c>, or <c>samsung_pay</c>.
+        /// One of: <c>apple_pay</c>, <c>google_pay</c>, or <c>samsung_pay</c>.
+        /// </summary>
+        [JsonProperty("wallet")]
+        public string Wallet { get; set; }
     }
 }

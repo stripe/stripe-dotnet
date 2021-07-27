@@ -96,5 +96,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("state")]
         public string State { get; set; }
+
+        /// <summary>
+        /// The high-level tax type, such as <c>vat</c> or <c>sales_tax</c>.
+        /// One of: <c>gst</c>, <c>hst</c>, <c>pst</c>, <c>qst</c>, <c>sales_tax</c>, or <c>vat</c>.
+        /// </summary>
+        [JsonProperty("tax_type")]
+        public string TaxType { get; set; }
     }
 }
