@@ -14,6 +14,12 @@ namespace Stripe.Issuing
         public string Category { get; set; }
 
         /// <summary>
+        /// The merchant category code for the seller’s business.
+        /// </summary>
+        [JsonProperty("category_code")]
+        public string CategoryCode { get; set; }
+
+        /// <summary>
         /// City where the seller is located.
         /// </summary>
         [JsonProperty("city")]
