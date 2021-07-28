@@ -64,6 +64,13 @@ namespace Stripe
         public string AccountHolderType { get; set; }
 
         /// <summary>
+        /// The bank account type. This can only be <c>checking</c> or <c>savings</c> in most
+        /// countries. In Japan, this can only be <c>futsu</c> or <c>toza</c>.
+        /// </summary>
+        [JsonProperty("account_type")]
+        public string AccountType { get; set; }
+
+        /// <summary>
         /// A set of available payout methods for this bank account. Only values from this set
         /// should be passed as the <c>method</c> when creating a payout.
         /// </summary>

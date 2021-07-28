@@ -28,6 +28,14 @@ namespace Stripe
         public string AccountNumber { get; set; }
 
         /// <summary>
+        /// The bank account type. This can only be <c>checking</c> or <c>savings</c> in most
+        /// countries. In Japan, this can only be <c>futsu</c> or <c>toza</c>.
+        /// One of: <c>checking</c>, <c>futsu</c>, <c>savings</c>, or <c>toza</c>.
+        /// </summary>
+        [JsonProperty("account_type")]
+        public string AccountType { get; set; }
+
+        /// <summary>
         /// The country in which the bank account is located.
         /// </summary>
         [JsonProperty("country")]
