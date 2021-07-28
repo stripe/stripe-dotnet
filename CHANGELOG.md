@@ -1,5 +1,13 @@
 # Changelog
 
+## 39.62.0 - 2021-07-28
+* [#2356](https://github.com/stripe/stripe-dotnet/pull/2356) API Updates
+  * Add support for `AccountType` on `BankAccount`, `ExternalAccountUpdateOptions`, and `TokenBankAccountOptions`
+* [#2354](https://github.com/stripe/stripe-dotnet/pull/2354) Adding automatic tax to Upcoming Invoice Options
+* [#2355](https://github.com/stripe/stripe-dotnet/pull/2355) Adding customer details to Upcoming Invoice Options
+* [#2351](https://github.com/stripe/stripe-dotnet/pull/2351) API Updates
+  * Add support for `CategoryCode` on `Issuing` `AuthorizationMerchantData` and `Issuing` `TransactionMerchantData`
+
 ## 39.61.0 - 2021-07-22
 * [#2350](https://github.com/stripe/stripe-dotnet/pull/2350) API Updates
   * Add support for `PaymentSettings` on `SubscriptionCreateOptions`, `SubscriptionUpdateOptions`, and `Subscription`
