@@ -20,6 +20,14 @@ namespace Stripe
         public string AccountHolderType { get; set; }
 
         /// <summary>
+        /// The bank account type. This can only be <c>checking</c> or <c>savings</c> in most
+        /// countries. In Japan, this can only be <c>futsu</c> or <c>toza</c>.
+        /// One of: <c>checking</c>, <c>futsu</c>, <c>savings</c>, or <c>toza</c>.
+        /// </summary>
+        [JsonProperty("account_type")]
+        public string AccountType { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
