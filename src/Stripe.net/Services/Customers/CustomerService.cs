@@ -10,6 +10,7 @@ namespace Stripe
         IDeletable<Customer, CustomerDeleteOptions>,
         IListable<Customer, CustomerListOptions>,
         IRetrievable<Customer, CustomerGetOptions>,
+        ISearchable<Customer, CustomerSearchOptions>,
         IUpdatable<Customer, CustomerUpdateOptions>
     {
         public CustomerService()
@@ -72,6 +73,26 @@ namespace Stripe
         public virtual IAsyncEnumerable<Customer> ListAutoPagingAsync(CustomerListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual StripeSearchResult<Customer> Search(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeSearchResult<Customer>>(HttpMethod.Get, "/v1/search/customers", options, requestOptions);
+        }
+
+        public virtual Task<StripeSearchResult<Customer>> SearchAsync(CustomerSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeSearchResult<Customer>>(HttpMethod.Get, "/v1/search/customers", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Customer> SearchAutoPaging(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.SearchRequestAutoPaging<Customer>("/v1/search/customers", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<Customer> SearchAutoPagingAsync(CustomerSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.SearchRequestAutoPagingAsync<Customer>("/v1/search/customers", options, requestOptions, cancellationToken);
         }
 
         public virtual Customer Update(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null)

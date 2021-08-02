@@ -9,8 +9,8 @@ namespace Stripe
     public class ChargeService : Service<Charge>,
         ICreatable<Charge, ChargeCreateOptions>,
         IListable<Charge, ChargeListOptions>,
-        ISearchable<Charge, ChargeSearchOptions>,
         IRetrievable<Charge, ChargeGetOptions>,
+        ISearchable<Charge, ChargeSearchOptions>,
         IUpdatable<Charge, ChargeUpdateOptions>
     {
         public ChargeService()

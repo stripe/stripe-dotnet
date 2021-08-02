@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class ChargeSearchOptions : BaseOptions
+    public class CustomerSearchOptions : BaseOptions
     {
         [JsonProperty("include_count")]
         public bool? IncludeCount { get; set; }
