@@ -71,6 +71,20 @@ namespace Stripe.BillingPortal
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// The IETF language tag of the locale Customer Portal is displayed in. If blank or auto,
+        /// the customer’s <c>preferred_locales</c> or browser’s locale is used.
+        /// One of: <c>auto</c>, <c>bg</c>, <c>cs</c>, <c>da</c>, <c>de</c>, <c>el</c>, <c>en</c>,
+        /// <c>en-AU</c>, <c>en-CA</c>, <c>en-GB</c>, <c>en-IE</c>, <c>en-IN</c>, <c>en-NZ</c>,
+        /// <c>en-SG</c>, <c>es</c>, <c>es-419</c>, <c>et</c>, <c>fi</c>, <c>fil</c>, <c>fr</c>,
+        /// <c>fr-CA</c>, <c>hr</c>, <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>ko</c>,
+        /// <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>, <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>,
+        /// <c>pt-BR</c>, <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>,
+        /// <c>tr</c>, <c>vi</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
+        /// </summary>
+        [JsonProperty("locale")]
+        public string Locale { get; set; }
+
+        /// <summary>
         /// The account for which the session was created on behalf of. When specified, only
         /// subscriptions and invoices with this <c>on_behalf_of</c> account appear in the portal.
         /// For more information, see the <a
