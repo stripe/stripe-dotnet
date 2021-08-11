@@ -12,6 +12,10 @@ namespace Stripe.Checkout
         [JsonProperty("allow_promotion_codes")]
         public bool? AllowPromotionCodes { get; set; }
 
+        /// <summary>
+        /// Settings for automatic tax lookup for this session and resulting payments, invoices, and
+        /// subscriptions.
+        /// </summary>
         [JsonProperty("automatic_tax")]
         public SessionAutomaticTaxOptions AutomaticTax { get; set; }
 

@@ -7,7 +7,6 @@ namespace Stripe
     {
         /// <summary>
         /// Language shown to the payer on redirect.
-        /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, <c>it</c>, <c>nl</c>, or <c>pl</c>.
         /// </summary>
         [JsonProperty("preferred_language")]
         public string PreferredLanguage { get; set; }
