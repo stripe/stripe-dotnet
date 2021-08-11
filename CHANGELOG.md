@@ -2,7 +2,7 @@
 
 ## 39.63.0 - 2021-08-11
 * [#2358](https://github.com/stripe/stripe-dotnet/pull/2358) API Updates
-* Add support for `Locale` on `BillingPortalSessionCreateOptions` and `BillingPortalSession`
+  * Add support for `Locale` on `BillingPortalSessionCreateOptions` and `BillingPortalSession`
 
 ## 39.62.0 - 2021-07-28
 * [#2356](https://github.com/stripe/stripe-dotnet/pull/2356) API Updates
