@@ -6,6 +6,13 @@ namespace Stripe.BillingPortal
     public class ConfigurationFeaturesSubscriptionCancelOptions : INestedOptions
     {
         /// <summary>
+        /// Whether the cancellation reasons will be collected in the portal and which options are
+        /// exposed to the customer.
+        /// </summary>
+        [JsonProperty("cancellation_reason")]
+        public ConfigurationFeaturesSubscriptionCancelCancellationReasonOptions CancellationReason { get; set; }
+
+        /// <summary>
         /// Whether the feature is enabled.
         /// </summary>
         [JsonProperty("enabled")]
