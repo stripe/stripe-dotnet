@@ -71,6 +71,9 @@ namespace Stripe
         [JsonProperty("sepa_debit")]
         public ChargePaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
+        [JsonProperty("sofort")]
+        public ChargePaymentMethodDetailsSofort Sofort { get; set; }
+
         [JsonProperty("stripe_account")]
         public ChargePaymentMethodDetailsStripeAccount StripeAccount { get; set; }
 
