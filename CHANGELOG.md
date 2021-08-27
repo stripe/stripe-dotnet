@@ -1,5 +1,11 @@
 # Changelog
 
+## 39.64.0 - 2021-08-27
+* [#2365](https://github.com/stripe/stripe-dotnet/pull/2365) API Updates
+  * Add support for `CancellationReason` on `BillingPortalConfigurationFeaturesSubscriptionCancelOptions` and `BillingPortalConfigurationFeaturesSubscriptionCancel`
+  * Add support for `Sofort` to `ChargePaymentMethodDetails`
+  * Add support for `GeneratedSepaDebit` and `PreferredLanguage` to `ChargePaymentMethodDetailsSofort`
+
 ## 39.63.0 - 2021-08-11
 * [#2358](https://github.com/stripe/stripe-dotnet/pull/2358) API Updates
   * Add support for `Locale` on `BillingPortalSessionCreateOptions` and `BillingPortalSession`
