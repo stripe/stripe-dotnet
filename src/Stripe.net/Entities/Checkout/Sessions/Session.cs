@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -19,6 +20,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
+
+        /// <summary>
+        /// When set, provides configuration for actions to take if this Checkout Session expires.
+        /// </summary>
+        [JsonProperty("after_expiration")]
+        public SessionAfterExpiration AfterExpiration { get; set; }
 
         /// <summary>
         /// Enables user redeemable promotion codes.
@@ -61,6 +68,19 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("client_reference_id")]
         public string ClientReferenceId { get; set; }
+
+        /// <summary>
+        /// Results of <c>consent_collection</c> for this session.
+        /// </summary>
+        [JsonProperty("consent")]
+        public SessionConsent Consent { get; set; }
+
+        /// <summary>
+        /// When set, provides configuration for the Checkout Session to gather active consent from
+        /// customers.
+        /// </summary>
+        [JsonProperty("consent_collection")]
+        public SessionConsentCollection ConsentCollection { get; set; }
 
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
@@ -122,6 +142,13 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("customer_email")]
         public string CustomerEmail { get; set; }
+
+        /// <summary>
+        /// The timestamp at which the Checkout Session will expire.
+        /// </summary>
+        [JsonProperty("expires_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The line items purchased by the customer.
@@ -217,6 +244,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("payment_status")]
         public string PaymentStatus { get; set; }
+
+        /// <summary>
+        /// The ID of the original expired Checkout Session that triggered the recovery flow.
+        /// </summary>
+        [JsonProperty("recovered_from")]
+        public string RecoveredFrom { get; set; }
 
         #region Expandable SetupIntent
 

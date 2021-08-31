@@ -1,11 +1,19 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SessionCreateOptions : BaseOptions, IHasMetadata
     {
+        /// <summary>
+        /// Configure actions after a Checkout Session has expired.
+        /// </summary>
+        [JsonProperty("after_expiration")]
+        public SessionAfterExpirationOptions AfterExpiration { get; set; }
+
         /// <summary>
         /// Enables user redeemable promotion codes.
         /// </summary>
@@ -39,6 +47,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("client_reference_id")]
         public string ClientReferenceId { get; set; }
+
+        /// <summary>
+        /// Configure fields for the Checkout Session to gather active consent from customers.
+        /// </summary>
+        [JsonProperty("consent_collection")]
+        public SessionConsentCollectionOptions ConsentCollection { get; set; }
 
         /// <summary>
         /// ID of an existing Customer, if one exists. In <c>payment</c> mode, the customer’s most
@@ -85,6 +99,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("discounts")]
         public List<SessionDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
+        /// The Epoch time in seconds at which the Checkout Session will expire. It can be anywhere
+        /// from 1 to 24 hours after Checkout Session creation. By default, this value is 24 hours
+        /// from creation.
+        /// </summary>
+        [JsonProperty("expires_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
         /// A list of items the customer is purchasing. Use this parameter to pass one-time or
