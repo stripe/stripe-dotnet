@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.65.0 - 2021-09-01
+* [#2366](https://github.com/stripe/stripe-dotnet/pull/2366) API Updates
+  * Add support for `AfterExpiration`, `ConsentCollection`, and `ExpiresAt` on `CheckoutSessionCreateOptions` and `CheckoutSession`
+  * Add support for `Consent` and `RecoveredFrom` on `CheckoutSession`
 ## 39.64.0 - 2021-08-27
 * [#2365](https://github.com/stripe/stripe-dotnet/pull/2365) API Updates
   * Add support for `CancellationReason` on `BillingPortalConfigurationFeaturesSubscriptionCancelOptions` and `BillingPortalConfigurationFeaturesSubscriptionCancel`
