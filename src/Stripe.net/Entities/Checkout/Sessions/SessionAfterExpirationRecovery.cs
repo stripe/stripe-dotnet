@@ -12,7 +12,7 @@ namespace Stripe.Checkout
         /// <c>false</c>.
         /// </summary>
         [JsonProperty("allow_promotion_codes")]
-        public bool? AllowPromotionCodes { get; set; }
+        public bool AllowPromotionCodes { get; set; }
 
         /// <summary>
         /// If <c>true</c>, a recovery url will be generated to recover this Checkout Session if it
@@ -20,7 +20,7 @@ namespace Stripe.Checkout
         /// object upon expiration.
         /// </summary>
         [JsonProperty("enabled")]
-        public bool? Enabled { get; set; }
+        public bool Enabled { get; set; }
 
         /// <summary>
         /// The timestamp at which the recovery URL will expire.
