@@ -82,6 +82,13 @@ namespace Stripe
         public string FirstNameKanji { get; set; }
 
         /// <summary>
+        /// Information about the upcoming new requirements for this person, including what
+        /// information needs to be collected, and by when.
+        /// </summary>
+        [JsonProperty("future_requirements")]
+        public PersonFutureRequirements FutureRequirements { get; set; }
+
+        /// <summary>
         /// The person's gender (International regulations require either "male" or "female").
         /// </summary>
         [JsonProperty("gender")]

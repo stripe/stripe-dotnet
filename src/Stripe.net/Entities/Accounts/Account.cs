@@ -96,6 +96,9 @@ namespace Stripe
         [JsonProperty("external_accounts")]
         public StripeList<IExternalAccount> ExternalAccounts { get; set; }
 
+        [JsonProperty("future_requirements")]
+        public AccountFutureRequirements FutureRequirements { get; set; }
+
         /// <summary>
         /// This is an object representing a person associated with a Stripe account.
         ///

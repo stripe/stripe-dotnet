@@ -9,6 +9,13 @@ namespace Stripe
     public class CapabilityRequirements : StripeEntity<CapabilityRequirements>
     {
         /// <summary>
+        /// Fields that are due and can be satisfied by providing the corresponding alternative
+        /// fields instead.
+        /// </summary>
+        [JsonProperty("alternatives")]
+        public List<CapabilityRequirementsAlternative> Alternatives { get; set; }
+
+        /// <summary>
         /// Date by which the fields in <c>currently_due</c> must be collected to keep the
         /// capability enabled for the account. These fields may disable the capability sooner if
         /// the next threshold is reached before they are collected.
