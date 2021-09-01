@@ -50,6 +50,9 @@ namespace Stripe
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
 
+        [JsonProperty("future_requirements")]
+        public CapabilityFutureRequirements FutureRequirements { get; set; }
+
         /// <summary>
         /// Whether the capability has been requested.
         /// </summary>
