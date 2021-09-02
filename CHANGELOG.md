@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.66.0 - 2021-09-01
+* [#2367](https://github.com/stripe/stripe-dotnet/pull/2367) API Updates
+  * Add support for `FutureRequirements` on `Account`, `Capability`, and `Person`
+  * Add support for `Alternatives` on `AccountRequirements`, `CapabilityRequirements`, and `PersonRequirements`
+
 ## 39.65.0 - 2021-09-01
 * [#2366](https://github.com/stripe/stripe-dotnet/pull/2366) API Updates
   * Add support for `AfterExpiration`, `ConsentCollection`, and `ExpiresAt` on `CheckoutSessionCreateOptions` and `CheckoutSession`
