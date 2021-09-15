@@ -15,7 +15,10 @@ namespace Stripe
         /// <summary>
         /// The cardholder name as read from the card, in <a
         /// href="https://en.wikipedia.org/wiki/ISO/IEC_7813">ISO 7813</a> format. May include
-        /// alphanumeric characters, special characters and first/last name separator (<c>/</c>).
+        /// alphanumeric characters, special characters and first/last name separator (<c>/</c>). In
+        /// some cases, the cardholder name may not be available depending on how the issuer has
+        /// configured the card. Cardholder name is typically not available on swipe or contactless
+        /// payments, such as those made with Apple Pay and Google Pay.
         /// </summary>
         [JsonProperty("cardholder_name")]
         public string CardholderName { get; set; }

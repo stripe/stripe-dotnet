@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class SessionPaymentMethodOptionsAcssDebitMandateOptions : StripeEntity<SessionPaymentMethodOptionsAcssDebitMandateOptions>
@@ -10,6 +11,13 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("custom_mandate_url")]
         public string CustomMandateUrl { get; set; }
+
+        /// <summary>
+        /// List of Stripe products where this mandate can be selected automatically. Returned when
+        /// the Session is in <c>setup</c> mode.
+        /// </summary>
+        [JsonProperty("default_for")]
+        public List<string> DefaultFor { get; set; }
 
         /// <summary>
         /// Description of the interval. Only required if the 'payment_schedule' parameter is
