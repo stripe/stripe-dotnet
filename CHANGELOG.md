@@ -1,5 +1,11 @@
 # Changelog
 
+## 39.67.0 - 2021-09-15
+* [#2370](https://github.com/stripe/stripe-dotnet/pull/2370) API Updates
+  * Add support for `DefaultFor` on `CheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsOptions`, `CheckoutSessionPaymentMethodOptionsAcssDebitMandateOptions`, `MandatePaymentMethodDetailsAcssDebit`, `SetupIntentPaymentMethodOptionsAcssDebitMandateOptionsOptions`, and `SetupIntentPaymentMethodOptionsAcssDebitMandateOptions`
+  * Add support for `AcssDebit` on `InvoicePaymentSettingsPaymentMethodOptionsOptions`, `InvoicePaymentSettingsPaymentMethodOptions`, `SubscriptionPaymentSettingsPaymentMethodOptionsOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptions`
+  * Add support for `Livemode` on `ReportingReportType`
+
 ## 39.66.0 - 2021-09-01
 * [#2367](https://github.com/stripe/stripe-dotnet/pull/2367) API Updates
   * Add support for `FutureRequirements` on `Account`, `Capability`, and `Person`
