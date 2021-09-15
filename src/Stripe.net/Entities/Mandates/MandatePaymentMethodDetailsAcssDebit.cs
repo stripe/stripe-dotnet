@@ -1,10 +1,17 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class MandatePaymentMethodDetailsAcssDebit : StripeEntity<MandatePaymentMethodDetailsAcssDebit>
     {
+        /// <summary>
+        /// List of Stripe products where this mandate can be selected automatically.
+        /// </summary>
+        [JsonProperty("default_for")]
+        public List<string> DefaultFor { get; set; }
+
         /// <summary>
         /// Description of the interval. Only required if the 'payment_schedule' parameter is
         /// 'interval' or 'combined'.

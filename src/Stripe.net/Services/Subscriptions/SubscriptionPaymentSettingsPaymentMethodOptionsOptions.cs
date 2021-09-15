@@ -6,6 +6,13 @@ namespace Stripe
     public class SubscriptionPaymentSettingsPaymentMethodOptionsOptions : INestedOptions
     {
         /// <summary>
+        /// This sub-hash contains details about the Canadian pre-authorized debit payment method
+        /// options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("acss_debit")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
+
+        /// <summary>
         /// This sub-hash contains details about the Bancontact payment method options to pass to
         /// the invoice’s PaymentIntent.
         /// </summary>
