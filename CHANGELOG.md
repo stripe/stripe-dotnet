@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.68.0 - 2021-09-16
+* [#2371](https://github.com/stripe/stripe-dotnet/pull/2371) API Updates
+  * Add support for `FullNameAliases` on `AccountIndividualOptions`,  `PersonCreateOptions`, `PersonUpdateOptions`, `Person`, `TokenAccountIndividualOptions`, and `TokenPersonOptions`
+
 ## 39.67.0 - 2021-09-15
 * [#2370](https://github.com/stripe/stripe-dotnet/pull/2370) API Updates
   * Add support for `DefaultFor` on `CheckoutSessionPaymentMethodOptionsAcssDebitMandateOptionsOptions`, `CheckoutSessionPaymentMethodOptionsAcssDebitMandateOptions`, `MandatePaymentMethodDetailsAcssDebit`, `SetupIntentPaymentMethodOptionsAcssDebitMandateOptionsOptions`, and `SetupIntentPaymentMethodOptionsAcssDebitMandateOptions`
