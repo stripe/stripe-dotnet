@@ -61,6 +61,12 @@ namespace Stripe
         public string FirstNameKanji { get; set; }
 
         /// <summary>
+        /// A list of alternate names or aliases that the person is known by.
+        /// </summary>
+        [JsonProperty("full_name_aliases")]
+        public List<string> FullNameAliases { get; set; }
+
+        /// <summary>
         /// The person's gender (International regulations require either "male" or "female").
         /// </summary>
         [JsonProperty("gender")]
