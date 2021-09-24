@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.69.0 - 2021-09-24
+* [#2372](https://github.com/stripe/stripe-dotnet/pull/2372) API Updates
+  * Add support for `AmountAuthorized` and `OvercaptureSupported` on `ChargePaymentMethodDetailsCardPresent`
+
+
 ## 39.68.0 - 2021-09-16
 * [#2371](https://github.com/stripe/stripe-dotnet/pull/2371) API Updates
   * Add support for `FullNameAliases` on `AccountIndividualOptions`,  `PersonCreateOptions`, `PersonUpdateOptions`, `Person`, `TokenAccountIndividualOptions`, and `TokenPersonOptions`
