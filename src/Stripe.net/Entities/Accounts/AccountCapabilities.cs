@@ -126,6 +126,14 @@ namespace Stripe
         public string JcbPayments { get; set; }
 
         /// <summary>
+        /// The status of the Klarna payments capability of the account, or whether the account can
+        /// directly process Klarna charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("klarna_payments")]
+        public string KlarnaPayments { get; set; }
+
+        /// <summary>
         /// The status of the legacy payments capability of the account.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
