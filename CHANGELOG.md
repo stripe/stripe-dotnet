@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.70.0 - 2021-09-29
+* [#2373](https://github.com/stripe/stripe-dotnet/pull/2373) API Updates
+  * Add support for `KlarnaPayments` on `AccountCapabilitiesOptions`, `AccountCapabilitiesOptions`, and `AccountCapabilities`
+
 ## 39.69.0 - 2021-09-24
 * [#2372](https://github.com/stripe/stripe-dotnet/pull/2372) API Updates
   * Add support for `AmountAuthorized` and `OvercaptureSupported` on `ChargePaymentMethodDetailsCardPresent`
