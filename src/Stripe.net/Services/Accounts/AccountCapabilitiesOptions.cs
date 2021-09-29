@@ -96,6 +96,12 @@ namespace Stripe
         public AccountCapabilitiesJcbPaymentsOptions JcbPayments { get; set; }
 
         /// <summary>
+        /// The klarna_payments capability.
+        /// </summary>
+        [JsonProperty("klarna_payments")]
+        public AccountCapabilitiesKlarnaPaymentsOptions KlarnaPayments { get; set; }
+
+        /// <summary>
         /// The legacy_payments capability.
         /// </summary>
         [JsonProperty("legacy_payments")]
