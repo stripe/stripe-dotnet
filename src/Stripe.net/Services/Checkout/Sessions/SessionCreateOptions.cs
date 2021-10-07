@@ -182,6 +182,17 @@ namespace Stripe.Checkout
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
+        /// Controls phone number collection settings for the session.
+        ///
+        /// We recommend that you review your privacy policy and check with your legal contacts
+        /// before using this feature. Learn more about <a
+        /// href="https://stripe.com/docs/payments/checkout/phone-numbers">collecting phone numbers
+        /// with Checkout</a>.
+        /// </summary>
+        [JsonProperty("phone_number_collection")]
+        public SessionPhoneNumberCollectionOptions PhoneNumberCollection { get; set; }
+
+        /// <summary>
         /// A subset of parameters to be passed to SetupIntent creation for Checkout Sessions in
         /// <c>setup</c> mode.
         /// </summary>

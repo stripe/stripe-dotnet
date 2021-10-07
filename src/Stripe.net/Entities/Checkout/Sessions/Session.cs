@@ -245,6 +245,9 @@ namespace Stripe.Checkout
         [JsonProperty("payment_status")]
         public string PaymentStatus { get; set; }
 
+        [JsonProperty("phone_number_collection")]
+        public SessionPhoneNumberCollection PhoneNumberCollection { get; set; }
+
         /// <summary>
         /// The ID of the original expired Checkout Session that triggered the recovery flow.
         /// </summary>
