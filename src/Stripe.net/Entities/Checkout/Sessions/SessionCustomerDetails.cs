@@ -16,6 +16,12 @@ namespace Stripe.Checkout
         public string Email { get; set; }
 
         /// <summary>
+        /// The customer's phone number at the time of checkout.
+        /// </summary>
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+
+        /// <summary>
         /// The customer’s tax exempt status at time of checkout.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
         /// </summary>
