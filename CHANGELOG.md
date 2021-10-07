@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.71.0 - 2021-10-07
+* [#2375](https://github.com/stripe/stripe-dotnet/pull/2375) API Updates
+  * Add support for `PhoneNumberCollection` on `CheckoutSessionCreateOptions` and `CheckoutSession`
+  * Add support for `Phone` on `CheckoutSessionCustomerDetails`
+
 ## 39.70.0 - 2021-09-29
 * [#2373](https://github.com/stripe/stripe-dotnet/pull/2373) API Updates
   * Add support for `KlarnaPayments` on `AccountCapabilitiesOptions`, `AccountCapabilitiesOptions`, and `AccountCapabilities`
