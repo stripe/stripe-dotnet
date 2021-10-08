@@ -349,6 +349,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestCustomerServiceListPaymentMethods()
+        {
+            var service = new CustomerService(this.StripeClient);
+            service.ListPaymentMethods("cus_xyz");
+        }
+
+        [Fact]
         public void TestCustomerServiceRetrieve()
         {
             var service = new CustomerService(this.StripeClient);
