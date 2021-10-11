@@ -61,6 +61,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsIdealOptions Ideal { get; set; }
 
         /// <summary>
+        /// If this is a <c>klarna</c> PaymentMethod, this sub-hash contains details about the
+        /// Klarna payment method options.
+        /// </summary>
+        [JsonProperty("klarna")]
+        public PaymentIntentPaymentMethodOptionsKlarnaOptions Klarna { get; set; }
+
+        /// <summary>
         /// If this is a <c>oxxo</c> PaymentMethod, this sub-hash contains details about the OXXO
         /// payment method options.
         /// </summary>
