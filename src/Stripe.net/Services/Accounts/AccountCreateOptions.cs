@@ -70,7 +70,7 @@ namespace Stripe
 
         /// <summary>
         /// The email address of the account holder. This is only to make the account easier to
-        /// identify to you. Stripe will never directly email Custom accounts.
+        /// identify to you. Stripe only emails Custom accounts with your consent.
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
