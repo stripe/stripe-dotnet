@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.72.0 - 2021-10-11
+* [#2376](https://github.com/stripe/stripe-dotnet/pull/2376) API Updates
+  * Add support for `ListPaymentMethods` method on resource `Customer`
+
 ## 39.71.0 - 2021-10-07
 * [#2375](https://github.com/stripe/stripe-dotnet/pull/2375) API Updates
   * Add support for `PhoneNumberCollection` on `CheckoutSessionCreateOptions` and `CheckoutSession`
