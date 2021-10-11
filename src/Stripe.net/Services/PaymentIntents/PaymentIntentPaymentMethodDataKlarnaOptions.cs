@@ -9,6 +9,6 @@ namespace Stripe
         /// Customer's date of birth.
         /// </summary>
         [JsonProperty("dob")]
-        public PaymentIntentPaymentMethodDataKlarnaDobOptions Dob { get; set; }
+        public DobOptions Dob { get; set; }
     }
 }
