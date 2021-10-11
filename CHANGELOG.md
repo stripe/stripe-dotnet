@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.73.0 - 2021-10-11
+* [#2378](https://github.com/stripe/stripe-dotnet/pull/2378) API Updates
+  * Add support for `PaymentMethodCategory` and `PreferredLocale` on `ChargePaymentMethodDetailsKlarna`
+  * Add support for `Klarna` on `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, and `PaymentMethod`
+
 ## 39.72.0 - 2021-10-11
 * [#2376](https://github.com/stripe/stripe-dotnet/pull/2376) API Updates
   * Add support for `ListPaymentMethods` method on resource `Customer`
