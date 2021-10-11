@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -72,6 +73,26 @@ namespace Stripe
         public virtual IAsyncEnumerable<Customer> ListAutoPagingAsync(CustomerListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual StripeList<PaymentMethod> ListPaymentMethods(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeList<PaymentMethod>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/payment_methods", options, requestOptions);
+        }
+
+        public virtual Task<StripeList<PaymentMethod>> ListPaymentMethodsAsync(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeList<PaymentMethod>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/payment_methods", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<PaymentMethod> ListPaymentMethodsAutoPaging(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<PaymentMethod>($"{this.InstanceUrl(id)}/payment_methods", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<PaymentMethod> ListPaymentMethodsAutoPagingAsync(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<PaymentMethod>($"{this.InstanceUrl(id)}/payment_methods", options, requestOptions, cancellationToken);
         }
 
         public virtual Customer Update(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null)
