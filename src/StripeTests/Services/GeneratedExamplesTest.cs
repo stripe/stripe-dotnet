@@ -1720,6 +1720,45 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTransferReversalServiceCreate()
+        {
+            var options = new TransferReversalCreateOptions { Amount = 100 };
+            var service = new TransferReversalService(this.StripeClient);
+            service.Create("tr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTransferReversalServiceList()
+        {
+            var options = new TransferReversalListOptions { Limit = 3 };
+            var service = new TransferReversalService(this.StripeClient);
+            StripeList<TransferReversal> transferreversals = service.List(
+                "tr_xxxxxxxxxxxxx",
+                options);
+        }
+
+        [Fact]
+        public void TestTransferReversalServiceRetrieve()
+        {
+            var service = new TransferReversalService(this.StripeClient);
+            service.Get("tr_xxxxxxxxxxxxx", "trr_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTransferReversalServiceUpdate()
+        {
+            var options = new TransferReversalUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new TransferReversalService(this.StripeClient);
+            service.Update("tr_xxxxxxxxxxxxx", "trr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
         public void TestTransferServiceCreate()
         {
             var options = new TransferCreateOptions
@@ -1760,6 +1799,16 @@ namespace StripeTests
             };
             var service = new TransferService(this.StripeClient);
             service.Update("tr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestUsageRecordSummaryServiceList()
+        {
+            var options = new UsageRecordSummaryListOptions { Limit = 3 };
+            var service = new UsageRecordSummaryService(this.StripeClient);
+            StripeList<UsageRecordSummary> usagerecordsummaries = service.List(
+                "si_xxxxxxxxxxxxx",
+                options);
         }
 
         [Fact]
