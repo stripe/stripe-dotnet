@@ -74,6 +74,44 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestApplicationFeeRefundServiceCreate()
+        {
+            var service = new ApplicationFeeRefundService(this.StripeClient);
+            service.Create("fee_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestApplicationFeeRefundServiceList()
+        {
+            var options = new ApplicationFeeRefundListOptions { Limit = 3 };
+            var service = new ApplicationFeeRefundService(this.StripeClient);
+            StripeList<ApplicationFeeRefund> applicationfeerefunds = service.List(
+                "fee_xxxxxxxxxxxxx",
+                options);
+        }
+
+        [Fact]
+        public void TestApplicationFeeRefundServiceRetrieve()
+        {
+            var service = new ApplicationFeeRefundService(this.StripeClient);
+            service.Get("fee_xxxxxxxxxxxxx", "fr_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestApplicationFeeRefundServiceUpdate()
+        {
+            var options = new ApplicationFeeRefundUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new ApplicationFeeRefundService(this.StripeClient);
+            service.Update("fee_xxxxxxxxxxxxx", "fr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
         public void TestApplicationFeeServiceList()
         {
             var options = new ApplicationFeeListOptions { Limit = 3 };
@@ -102,6 +140,29 @@ namespace StripeTests
         {
             var service = new BalanceTransactionService(this.StripeClient);
             service.Get("txn_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestCapabilityServiceList()
+        {
+            var service = new CapabilityService(this.StripeClient);
+            StripeList<Capability> capabilities = service.List(
+                "acct_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestCapabilityServiceRetrieve()
+        {
+            var service = new CapabilityService(this.StripeClient);
+            service.Get("acct_xxxxxxxxxxxxx", "card_payments");
+        }
+
+        [Fact]
+        public void TestCapabilityServiceUpdate()
+        {
+            var options = new CapabilityUpdateOptions { Requested = true };
+            var service = new CapabilityService(this.StripeClient);
+            service.Update("acct_xxxxxxxxxxxxx", "card_payments", options);
         }
 
         [Fact]
@@ -312,6 +373,56 @@ namespace StripeTests
         {
             var service = new CreditNoteService(this.StripeClient);
             service.VoidCreditNote("cn_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestCustomerBalanceTransactionServiceCreate()
+        {
+            var options = new CustomerBalanceTransactionCreateOptions
+            {
+                Amount = -500,
+                Currency = "usd",
+            };
+            var service = new CustomerBalanceTransactionService(
+                this.StripeClient);
+            service.Create("cus_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestCustomerBalanceTransactionServiceList()
+        {
+            var options = new CustomerBalanceTransactionListOptions
+            {
+                Limit = 3,
+            };
+            var service = new CustomerBalanceTransactionService(
+                this.StripeClient);
+            StripeList<CustomerBalanceTransaction> customerbalancetransactions = service.List(
+                "cus_xxxxxxxxxxxxx",
+                options);
+        }
+
+        [Fact]
+        public void TestCustomerBalanceTransactionServiceRetrieve()
+        {
+            var service = new CustomerBalanceTransactionService(
+                this.StripeClient);
+            service.Get("cus_xxxxxxxxxxxxx", "cbtxn_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestCustomerBalanceTransactionServiceUpdate()
+        {
+            var options = new CustomerBalanceTransactionUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new CustomerBalanceTransactionService(
+                this.StripeClient);
+            service.Update("cus_xxxxxxxxxxxxx", "cbtxn_xxxxxxxxxxxxx", options);
         }
 
         [Fact]
@@ -617,6 +728,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestLoginLinkServiceCreate()
+        {
+            var service = new LoginLinkService(this.StripeClient);
+            service.Create("acct_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
         public void TestMandateServiceRetrieve()
         {
             var service = new MandateService(this.StripeClient);
@@ -881,6 +999,59 @@ namespace StripeTests
             };
             var service = new PayoutService(this.StripeClient);
             service.Update("po_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPersonServiceCreate()
+        {
+            var options = new PersonCreateOptions
+            {
+                FirstName = "Jane",
+                LastName = "Diaz",
+            };
+            var service = new PersonService(this.StripeClient);
+            service.Create("acct_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPersonServiceDelete()
+        {
+            var service = new PersonService(this.StripeClient);
+            service.Delete("acct_xxxxxxxxxxxxx", "person_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPersonServiceList()
+        {
+            var options = new PersonListOptions { Limit = 3 };
+            var service = new PersonService(this.StripeClient);
+            StripeList<Person> persons = service.List(
+                "acct_xxxxxxxxxxxxx",
+                options);
+        }
+
+        [Fact]
+        public void TestPersonServiceRetrieve()
+        {
+            var service = new PersonService(this.StripeClient);
+            service.Get("acct_xxxxxxxxxxxxx", "person_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPersonServiceUpdate()
+        {
+            var options = new PersonUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new PersonService(this.StripeClient);
+            service.Update(
+                "acct_xxxxxxxxxxxxx",
+                "person_xxxxxxxxxxxxx",
+                options);
         }
 
         [Fact]
@@ -1415,6 +1586,42 @@ namespace StripeTests
             };
             var service = new SubscriptionService(this.StripeClient);
             service.Update("sub_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTaxIdServiceCreate()
+        {
+            var options = new TaxIdCreateOptions
+            {
+                Type = "eu_vat",
+                Value = "DE123456789",
+            };
+            var service = new TaxIdService(this.StripeClient);
+            service.Create("cus_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTaxIdServiceDelete()
+        {
+            var service = new TaxIdService(this.StripeClient);
+            service.Delete("cus_xxxxxxxxxxxxx", "txi_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTaxIdServiceList()
+        {
+            var options = new TaxIdListOptions { Limit = 3 };
+            var service = new TaxIdService(this.StripeClient);
+            StripeList<TaxId> taxids = service.List(
+                "cus_xxxxxxxxxxxxx",
+                options);
+        }
+
+        [Fact]
+        public void TestTaxIdServiceRetrieve()
+        {
+            var service = new TaxIdService(this.StripeClient);
+            service.Get("cus_xxxxxxxxxxxxx", "txi_xxxxxxxxxxxxx");
         }
 
         [Fact]
