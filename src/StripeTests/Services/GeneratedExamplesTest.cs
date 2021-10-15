@@ -30,6 +30,30 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestAccountServiceCreate()
+        {
+            var options = new AccountCreateOptions
+            {
+                Type = "custom",
+                Country = "US",
+                Email = "jenny.rosen@example.com",
+                Capabilities = new AccountCapabilitiesOptions
+                {
+                    CardPayments = new AccountCapabilitiesCardPaymentsOptions
+                    {
+                        Requested = true,
+                    },
+                    Transfers = new AccountCapabilitiesTransfersOptions
+                    {
+                        Requested = true,
+                    },
+                },
+            };
+            var service = new AccountService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestAccountServiceDelete()
         {
             var service = new AccountService(this.StripeClient);
