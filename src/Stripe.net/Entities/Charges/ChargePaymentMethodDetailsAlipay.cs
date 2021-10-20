@@ -9,6 +9,13 @@ namespace Stripe
         /// Uniquely identifies this particular Alipay account. You can use this attribute to check
         /// whether two Alipay accounts are the same.
         /// </summary>
+        [JsonProperty("buyer_id")]
+        public string BuyerId { get; set; }
+
+        /// <summary>
+        /// Uniquely identifies this particular Alipay account. You can use this attribute to check
+        /// whether two Alipay accounts are the same.
+        /// </summary>
         [JsonProperty("fingerprint")]
         public string Fingerprint { get; set; }
 
