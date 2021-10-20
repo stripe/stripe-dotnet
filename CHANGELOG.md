@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.74.0 - 2021-10-20
+* [#2386](https://github.com/stripe/stripe-dotnet/pull/2386) API Updates
+  * Add support for `BuyerId` on `ChargePaymentMethodDetailsAlipay`
+
 ## 39.73.0 - 2021-10-11
 * [#2378](https://github.com/stripe/stripe-dotnet/pull/2378) API Updates
   * Add support for `PaymentMethodCategory` and `PreferredLocale` on `ChargePaymentMethodDetailsKlarna`
