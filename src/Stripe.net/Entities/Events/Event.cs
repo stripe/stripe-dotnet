@@ -6,6 +6,37 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     [JsonConverter(typeof(EventConverter))]
+    /// <summary>
+    /// Events are our way of letting you know when something interesting happens in your
+    /// account. When an interesting event occurs, we create a new <c>Event</c> object. For
+    /// example, when a charge succeeds, we create a <c>charge.succeeded</c> event; and when an
+    /// invoice payment attempt fails, we create an <c>invoice.payment_failed</c> event. Note
+    /// that many API requests may cause multiple events to be created. For example, if you
+    /// create a new subscription for a customer, you will receive both a
+    /// <c>customer.subscription.created</c> event and a <c>charge.succeeded</c> event.
+    ///
+    /// Events occur when the state of another API resource changes. The state of that resource
+    /// at the time of the change is embedded in the event's data field. For example, a
+    /// <c>charge.succeeded</c> event will contain a charge, and an
+    /// <c>invoice.payment_failed</c> event will contain an invoice.
+    ///
+    /// As with other API resources, you can use endpoints to retrieve an <a
+    /// href="https://stripe.com/docs/api#retrieve_event">individual event</a> or a <a
+    /// href="https://stripe.com/docs/api#list_events">list of events</a> from the API. We also
+    /// have a separate <a href="http://en.wikipedia.org/wiki/Webhook">webhooks</a> system for
+    /// sending the <c>Event</c> objects directly to an endpoint on your server. Webhooks are
+    /// managed in your <a href="https://dashboard.stripe.com/account/webhooks">account
+    /// settings</a>, and our <a href="https://stripe.com/docs/webhooks">Using Webhooks</a>
+    /// guide will help you get set up.
+    ///
+    /// When using <a href="https://stripe.com/docs/connect">Connect</a>, you can also receive
+    /// notifications of events that occur in connected accounts. For these events, there will
+    /// be an additional <c>account</c> attribute in the received <c>Event</c> object.
+    ///
+    /// <strong>NOTE:</strong> Right now, access to events through the <a
+    /// href="https://stripe.com/docs/api#retrieve_event">Retrieve Event API</a> is guaranteed
+    /// only for 30 days.
+    /// </summary>
     public class Event : StripeEntity<Event>, IHasId, IHasObject
     {
         /// <summary>

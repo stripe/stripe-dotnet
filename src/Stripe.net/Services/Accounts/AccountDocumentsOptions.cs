@@ -46,5 +46,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("company_tax_id_verification")]
         public AccountDocumentsCompanyTaxIdVerificationOptions CompanyTaxIdVerification { get; set; }
+
+        /// <summary>
+        /// One or more documents showing the company’s proof of registration with the national
+        /// business registry.
+        /// </summary>
+        [JsonProperty("proof_of_registration")]
+        public AccountDocumentsProofOfRegistrationOptions ProofOfRegistration { get; set; }
     }
 }

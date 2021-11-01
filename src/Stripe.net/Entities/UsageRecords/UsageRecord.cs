@@ -5,6 +5,14 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Usage records allow you to report customer usage and metrics to Stripe for metered
+    /// billing of subscription prices.
+    ///
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/billing/subscriptions/metered-billing">Metered
+    /// Billing</a>.
+    /// </summary>
     public class UsageRecord : StripeEntity<UsageRecord>, IHasId, IHasObject
     {
         /// <summary>

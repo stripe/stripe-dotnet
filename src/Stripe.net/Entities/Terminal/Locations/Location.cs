@@ -4,6 +4,12 @@ namespace Stripe.Terminal
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// A Location represents a grouping of readers.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/terminal/fleet/locations">Fleet
+    /// Management</a>.
+    /// </summary>
     public class Location : StripeEntity<Location>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

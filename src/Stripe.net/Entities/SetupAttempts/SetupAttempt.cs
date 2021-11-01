@@ -5,6 +5,11 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A SetupAttempt describes one attempted confirmation of a SetupIntent, whether that
+    /// confirmation was successful or unsuccessful. You can use SetupAttempts to inspect
+    /// details of a specific attempt at setting up a payment method using a SetupIntent.
+    /// </summary>
     public class SetupAttempt : StripeEntity<SetupAttempt>, IHasId, IHasObject
     {
         /// <summary>

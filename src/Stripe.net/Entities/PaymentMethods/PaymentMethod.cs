@@ -6,6 +6,16 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// PaymentMethod objects represent your customer's payment instruments. They can be used
+    /// with <a href="https://stripe.com/docs/payments/payment-intents">PaymentIntents</a> to
+    /// collect payments or saved to Customer objects to store instrument details for future
+    /// payments.
+    ///
+    /// Related guides: <a href="https://stripe.com/docs/payments/payment-methods">Payment
+    /// Methods</a> and <a href="https://stripe.com/docs/payments/more-payment-scenarios">More
+    /// Payment Scenarios</a>.
+    /// </summary>
     public class PaymentMethod : StripeEntity<PaymentMethod>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

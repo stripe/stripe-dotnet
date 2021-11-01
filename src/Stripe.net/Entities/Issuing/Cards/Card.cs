@@ -6,6 +6,10 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// You can <a href="https://stripe.com/docs/issuing/cards">create physical or virtual
+    /// cards</a> that are issued to cardholders.
+    /// </summary>
     public class Card : StripeEntity<Card>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

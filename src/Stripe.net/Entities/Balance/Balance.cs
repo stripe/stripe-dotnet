@@ -4,6 +4,20 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// This is an object representing your Stripe balance. You can retrieve it to see the
+    /// balance currently on your Stripe account.
+    ///
+    /// You can also retrieve the balance history, which contains a list of <a
+    /// href="https://stripe.com/docs/reporting/balance-transaction-types">transactions</a> that
+    /// contributed to the balance (charges, payouts, and so forth).
+    ///
+    /// The available and pending amounts for each currency are broken down further by payment
+    /// source types.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/connect/account-balances">Understanding
+    /// Connect Account Balances</a>.
+    /// </summary>
     public class Balance : StripeEntity<Balance>, IHasObject
     {
         /// <summary>

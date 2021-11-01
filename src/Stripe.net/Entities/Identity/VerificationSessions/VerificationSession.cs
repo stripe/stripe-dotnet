@@ -6,6 +6,22 @@ namespace Stripe.Identity
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A VerificationSession guides you through the process of collecting and verifying the
+    /// identities of your users. It contains details about the type of verification, such as
+    /// what <a href="https://stripe.com/docs/identity/verification-checks">verification
+    /// check</a> to perform. Only create one VerificationSession for each verification in your
+    /// system.
+    ///
+    /// A VerificationSession transitions through <a
+    /// href="https://stripe.com/docs/identity/how-sessions-work">multiple statuses</a>
+    /// throughout its lifetime as it progresses through the verification flow. The
+    /// VerificationSession contains the user’s verified data after verification checks are
+    /// complete.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/identity/verification-sessions">The
+    /// Verification Sessions API</a>.
+    /// </summary>
     public class VerificationSession : StripeEntity<VerificationSession>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

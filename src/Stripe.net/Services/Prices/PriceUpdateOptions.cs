@@ -13,7 +13,8 @@ namespace Stripe
         public bool? Active { get; set; }
 
         /// <summary>
-        /// A lookup key used to retrieve prices dynamically from a static string.
+        /// A lookup key used to retrieve prices dynamically from a static string. This may be up to
+        /// 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
         public string LookupKey { get; set; }

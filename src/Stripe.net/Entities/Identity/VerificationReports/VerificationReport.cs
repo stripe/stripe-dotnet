@@ -5,6 +5,24 @@ namespace Stripe.Identity
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A VerificationReport is the result of an attempt to collect and verify data from a user.
+    /// The collection of verification checks performed is determined from the <c>type</c> and
+    /// <c>options</c> parameters used. You can find the result of each verification check
+    /// performed in the appropriate sub-resource: <c>document</c>, <c>id_number</c>,
+    /// <c>selfie</c>.
+    ///
+    /// Each VerificationReport contains a copy of any data collected by the user as well as
+    /// reference IDs which can be used to access collected images through the <a
+    /// href="https://stripe.com/docs/api/files">FileUpload</a> API. To configure and create
+    /// VerificationReports, use the <a
+    /// href="https://stripe.com/docs/api/identity/verification_sessions">VerificationSession</a>
+    /// API.
+    ///
+    /// Related guides: <a
+    /// href="https://stripe.com/docs/identity/verification-sessions#results">Accessing
+    /// verification results</a>.
+    /// </summary>
     public class VerificationReport : StripeEntity<VerificationReport>, IHasId, IHasObject
     {
         /// <summary>

@@ -4,6 +4,10 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A Mandate is a record of the permission a customer has given you to debit their payment
+    /// method.
+    /// </summary>
     public class Mandate : StripeEntity<Mandate>, IHasId, IHasObject
     {
         /// <summary>

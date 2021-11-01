@@ -6,6 +6,20 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A PaymentIntent guides you through the process of collecting a payment from your
+    /// customer. We recommend that you create exactly one PaymentIntent for each order or
+    /// customer session in your system. You can reference the PaymentIntent later to see the
+    /// history of payment attempts for a particular session.
+    ///
+    /// A PaymentIntent transitions through <a
+    /// href="https://stripe.com/docs/payments/intents#intent-statuses">multiple statuses</a>
+    /// throughout its lifetime as it interfaces with Stripe.js to perform authentication flows
+    /// and ultimately creates at most one successful charge.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/payments/payment-intents">Payment
+    /// Intents API</a>.
+    /// </summary>
     public class PaymentIntent : StripeEntity<PaymentIntent>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

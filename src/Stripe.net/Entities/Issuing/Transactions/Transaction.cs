@@ -6,6 +6,14 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Any use of an <a href="https://stripe.com/docs/issuing">issued card</a> that results in
+    /// funds entering or leaving your Stripe account, such as a completed purchase or refund,
+    /// is represented by an Issuing <c>Transaction</c> object.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/transactions">Issued
+    /// Card Transactions</a>.
+    /// </summary>
     public class Transaction : StripeEntity<Transaction>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>

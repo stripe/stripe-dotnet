@@ -5,6 +5,14 @@ namespace Stripe.Radar
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// An early fraud warning indicates that the card issuer has notified us that a charge may
+    /// be fraudulent.
+    ///
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/disputes/measuring#early-fraud-warnings">Early Fraud
+    /// Warnings</a>.
+    /// </summary>
     public class EarlyFraudWarning : StripeEntity<EarlyFraudWarning>, IHasId, IHasObject
     {
         /// <summary>

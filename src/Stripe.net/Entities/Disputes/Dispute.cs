@@ -6,6 +6,14 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A dispute occurs when a customer questions your charge with their card issuer. When this
+    /// happens, you're given the opportunity to respond to the dispute with evidence that shows
+    /// that the charge is legitimate. You can find more information about the dispute process
+    /// in our <a href="https://stripe.com/docs/disputes">Disputes and Fraud</a> documentation.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/disputes">Disputes and Fraud</a>.
+    /// </summary>
     public class Dispute : StripeEntity<Dispute>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>

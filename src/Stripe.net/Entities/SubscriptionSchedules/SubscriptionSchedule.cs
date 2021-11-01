@@ -6,6 +6,14 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A subscription schedule allows you to create and manage the lifecycle of a subscription
+    /// by predefining expected changes.
+    ///
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/billing/subscriptions/subscription-schedules">Subscription
+    /// Schedules</a>.
+    /// </summary>
     public class SubscriptionSchedule : StripeEntity<SubscriptionSchedule>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

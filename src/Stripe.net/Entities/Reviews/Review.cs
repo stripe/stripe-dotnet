@@ -5,6 +5,12 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Reviews can be used to supplement automated fraud detection with human expertise.
+    ///
+    /// Learn more about <a href="https://stripe.com/radar">Radar</a> and reviewing payments <a
+    /// href="https://stripe.com/docs/radar/reviews">here</a>.
+    /// </summary>
     public class Review : StripeEntity<Review>, IHasId, IHasObject
     {
         /// <summary>

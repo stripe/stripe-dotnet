@@ -6,6 +6,12 @@ namespace Stripe.Radar
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Value lists allow you to group values together which can then be referenced in rules.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/radar/lists#managing-list-items">Default
+    /// Stripe Lists</a>.
+    /// </summary>
     public class ValueList : StripeEntity<ValueList>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
