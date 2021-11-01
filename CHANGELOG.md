@@ -1,5 +1,12 @@
 # Changelog
 
+## 39.75.0 - 2021-11-01
+* [#2388](https://github.com/stripe/stripe-dotnet/pull/2388) API Updates
+  * Add support for `OwnershipDeclaration` on `AccountCompanyOptions`, `AccountCompanyOptions`, `AccountCompany`, and `TokenAccountCompanyOptions`
+  * Add support for `ProofOfRegistration` on `AccountDocumentsOptions` and `AccountDocumentsOptions`
+  * Add support for `OwnershipDeclarationShownAndSigned` on `TokenAccountOptions`
+  * Add top-level documentation for resource classes
+
 ## 39.74.0 - 2021-10-20
 * [#2386](https://github.com/stripe/stripe-dotnet/pull/2386) API Updates
   * Add support for `BuyerId` on `ChargePaymentMethodDetailsAlipay`
