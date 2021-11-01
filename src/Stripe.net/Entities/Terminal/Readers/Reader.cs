@@ -4,6 +4,13 @@ namespace Stripe.Terminal
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// A Reader represents a physical device for accepting payment details.
+    ///
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/terminal/payments/connect-reader">Connecting to a
+    /// Reader</a>.
+    /// </summary>
     public class Reader : StripeEntity<Reader>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

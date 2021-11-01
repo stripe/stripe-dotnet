@@ -26,6 +26,13 @@ namespace Stripe
         public TokenAccountIndividualOptions Individual { get; set; }
 
         /// <summary>
+        /// Whether the user described by the data in the token has been shown the Ownership
+        /// Declaration and indicated that it is correct.
+        /// </summary>
+        [JsonProperty("ownership_declaration_shown_and_signed")]
+        public bool? OwnershipDeclarationShownAndSigned { get; set; }
+
+        /// <summary>
         /// Whether the user described by the data in the token has been shown <a
         /// href="https://stripe.com/docs/connect/account-tokens#stripe-connected-account-agreement">the
         /// Stripe Connected Account Agreement</a>. When creating an account token to create a new

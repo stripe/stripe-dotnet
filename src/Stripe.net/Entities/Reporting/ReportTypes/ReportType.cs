@@ -6,6 +6,18 @@ namespace Stripe.Reporting
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// The Report Type resource corresponds to a particular type of report, such as the
+    /// "Activity summary" or "Itemized payouts" reports. These objects are identified by an ID
+    /// belonging to a set of enumerated values. See <a
+    /// href="https://stripe.com/docs/reporting/statements/api">API Access to Reports
+    /// documentation</a> for those Report Type IDs, along with required and optional
+    /// parameters.
+    ///
+    /// Note that certain report types can only be run based on your live-mode data (not
+    /// test-mode data), and will error when queried without a <a
+    /// href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.
+    /// </summary>
     public class ReportType : StripeEntity<ReportType>, IHasId, IHasObject
     {
         /// <summary>

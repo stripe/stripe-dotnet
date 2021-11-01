@@ -6,7 +6,8 @@ namespace Stripe
     public class ChargePaymentMethodDetailsBoleto : StripeEntity<ChargePaymentMethodDetailsBoleto>
     {
         /// <summary>
-        /// Uniquely identifies this customer tax_id (CNPJ or CPF).
+        /// The tax ID of the customer (CPF for individuals consumers or CNPJ for businesses
+        /// consumers).
         /// </summary>
         [JsonProperty("tax_id")]
         public string TaxId { get; set; }

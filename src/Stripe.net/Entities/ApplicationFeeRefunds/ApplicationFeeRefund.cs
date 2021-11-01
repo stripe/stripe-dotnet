@@ -6,6 +6,15 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// <c>Application Fee Refund</c> objects allow you to refund an application fee that has
+    /// previously been created but not yet refunded. Funds will be refunded to the Stripe
+    /// account from which the fee was originally collected.
+    ///
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/connect/destination-charges#refunding-app-fee">Refunding
+    /// Application Fees</a>.
+    /// </summary>
     public class ApplicationFeeRefund : StripeEntity<ApplicationFeeRefund>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>

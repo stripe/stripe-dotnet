@@ -6,6 +6,13 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// <c>Refund</c> objects allow you to refund a charge that has previously been created but
+    /// not yet refunded. Funds will be refunded to the credit or debit card that was originally
+    /// charged.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/refunds">Refunds</a>.
+    /// </summary>
     public class Refund : StripeEntity<Refund>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>

@@ -5,6 +5,9 @@ namespace Stripe.BillingPortal
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A portal configuration describes the functionality and behavior of a portal session.
+    /// </summary>
     public class Configuration : StripeEntity<Configuration>, IHasId, IHasObject
     {
         /// <summary>

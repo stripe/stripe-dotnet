@@ -6,6 +6,14 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A return represents the full or partial return of a number of <a
+    /// href="https://stripe.com/docs/api#order_items">order items</a>. Returns always belong to
+    /// an order, and may optionally contain a refund.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/orders/guide#handling-returns">Handling
+    /// Returns</a>.
+    /// </summary>
     public class OrderReturn : StripeEntity<OrderReturn>, IHasId, IHasObject
     {
         /// <summary>

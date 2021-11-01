@@ -6,6 +6,15 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Order objects are created to handle end customers' purchases of previously defined <a
+    /// href="https://stripe.com/docs/api#products">products</a>. You can create, retrieve, and
+    /// pay individual orders, as well as list all orders. Orders are identified by a unique,
+    /// random ID.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/orders">Tax, Shipping, and
+    /// Inventory</a>.
+    /// </summary>
     public class Order : StripeEntity<Order>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

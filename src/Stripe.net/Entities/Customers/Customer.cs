@@ -6,6 +6,15 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// <c>Customer</c> objects allow you to perform recurring charges, and to track multiple
+    /// charges, that are associated with the same customer. The API allows you to create,
+    /// delete, and update your customers. You can retrieve individual customers as well as a
+    /// list of all your customers.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/payments/save-during-payment">Save a
+    /// card during payment</a>.
+    /// </summary>
     public class Customer : StripeEntity<Customer>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

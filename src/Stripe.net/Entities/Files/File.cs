@@ -5,6 +5,15 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// This is an object representing a file hosted on Stripe's servers. The file may have been
+    /// uploaded by yourself using the <a href="https://stripe.com/docs/api#create_file">create
+    /// file</a> request (for example, when uploading dispute evidence) or it may have been
+    /// created by Stripe (for example, the results of a <a
+    /// href="https://stripe.com/docs/api#scheduled_queries">Sigma scheduled query</a>).
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/file-upload">File Upload Guide</a>.
+    /// </summary>
     public class File : StripeEntity<File>, IHasId, IHasObject
     {
         /// <summary>

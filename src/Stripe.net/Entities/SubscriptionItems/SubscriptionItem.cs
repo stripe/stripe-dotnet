@@ -6,6 +6,10 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Subscription items allow you to create customer subscriptions with more than one plan,
+    /// making it easy to represent complex billing relationships.
+    /// </summary>
     public class SubscriptionItem : StripeEntity<SubscriptionItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

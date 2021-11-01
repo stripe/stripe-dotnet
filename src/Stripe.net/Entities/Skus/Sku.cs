@@ -6,6 +6,18 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Stores representations of <a
+    /// href="http://en.wikipedia.org/wiki/Stock_keeping_unit">stock keeping units</a>. SKUs
+    /// describe specific product variations, taking into account any combination of:
+    /// attributes, currency, and cost. For example, a product may be a T-shirt, whereas a
+    /// specific SKU represents the <c>size: large</c>, <c>color: red</c> version of that shirt.
+    ///
+    /// Can also be used to manage inventory.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/orders">Tax, Shipping, and
+    /// Inventory</a>.
+    /// </summary>
     public class Sku : StripeEntity<Sku>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

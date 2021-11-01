@@ -6,6 +6,18 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Each customer has a <a
+    /// href="https://stripe.com/docs/api/customers/object#customer_object-balance"><c>balance</c></a>
+    /// value, which denotes a debit or credit that's automatically applied to their next
+    /// invoice upon finalization. You may modify the value directly by using the <a
+    /// href="https://stripe.com/docs/api/customers/update">update customer API</a>, or by
+    /// creating a Customer Balance Transaction, which increments or decrements the customer's
+    /// <c>balance</c> by the specified <c>amount</c>.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/billing/customer/balance">Customer
+    /// Balance</a> to learn more.
+    /// </summary>
     public class CustomerBalanceTransaction : StripeEntity<CustomerBalanceTransaction>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

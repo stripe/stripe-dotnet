@@ -7,6 +7,11 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A Quote is a way to model prices that you'd like to provide to a customer. Once
+    /// accepted, it will automatically create an invoice, subscription or subscription
+    /// schedule.
+    /// </summary>
     public class Quote : StripeEntity<Quote>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
