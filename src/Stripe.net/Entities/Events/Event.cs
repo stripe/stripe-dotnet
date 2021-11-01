@@ -5,7 +5,6 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    [JsonConverter(typeof(EventConverter))]
     /// <summary>
     /// Events are our way of letting you know when something interesting happens in your
     /// account. When an interesting event occurs, we create a new <c>Event</c> object. For
@@ -37,6 +36,7 @@ namespace Stripe
     /// href="https://stripe.com/docs/api#retrieve_event">Retrieve Event API</a> is guaranteed
     /// only for 30 days.
     /// </summary>
+    [JsonConverter(typeof(EventConverter))]
     public class Event : StripeEntity<Event>, IHasId, IHasObject
     {
         /// <summary>
