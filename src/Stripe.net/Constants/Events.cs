@@ -55,6 +55,16 @@ namespace Stripe
         public const string BalanceAvailable = "balance.available";
 
         /// <summary>
+        /// Occurs whenever a portal configuration is created.
+        /// </summary>
+        public const string BillingPortalConfigurationCreated = "billing_portal.configuration.created";
+
+        /// <summary>
+        /// Occurs whenever a portal configuration is updated.
+        /// </summary>
+        public const string BillingPortalConfigurationUpdated = "billing_portal.configuration.updated";
+
+        /// <summary>
         /// Occurs whenever a capability has new requirements or a new status.
         /// </summary>
         public const string CapabilityUpdated = "capability.updated";
@@ -141,6 +151,11 @@ namespace Stripe
         /// Occurs when a Checkout Session has been successfully completed.
         /// </summary>
         public const string CheckoutSessionCompleted = "checkout.session.completed";
+
+        /// <summary>
+        /// Occurs when a Checkout Session is expired.
+        /// </summary>
+        public const string CheckoutSessionExpired = "checkout.session.expired";
 
         /// <summary>
         /// Occurs whenever a coupon is created.
@@ -319,9 +334,14 @@ namespace Stripe
         public const string InvoiceDeleted = "invoice.deleted";
 
         /// <summary>
-        /// Occurs whenever a draft invoice cannot be finalized.
+        /// Deprecated, use InvoiceFinalizationFailed.
         /// </summary>
         public const string InvoiceFinalizationError = "invoice.finalization_error";
+
+        /// <summary>
+        /// Occurs whenever a draft invoice cannot be finalized.
+        /// </summary>
+        public const string InvoiceFinalizationFailed = "invoice.finalization_failed";
 
         /// <summary>
         ///  Occurs whenever a draft invoice is finalized and updated to be an open invoice.
@@ -656,6 +676,26 @@ namespace Stripe
         /// Occurs whenever a promotion code is updated.
         /// </summary>
         public const string PromotionCodeUpdated = "promotion_code.updated";
+
+        /// <summary>
+        /// Occurs whenever a quote is accepted.
+        /// </summary>
+        public const string QuoteAccepted = "quote.accepted";
+
+        /// <summary>
+        /// Occurs whenever a quote is canceled.
+        /// </summary>
+        public const string QuoteCanceled = "quote.canceled";
+
+        /// <summary>
+        /// Occurs whenever a quote is created.
+        /// </summary>
+        public const string QuoteCreated = "quote.created";
+
+        /// <summary>
+        /// Occurs whenever a quote is finalized.
+        /// </summary>
+        public const string QuoteFinalized = "quote.finalized";
 
         /// <summary>
         /// Occurs whenever an early fraud warning is created.
