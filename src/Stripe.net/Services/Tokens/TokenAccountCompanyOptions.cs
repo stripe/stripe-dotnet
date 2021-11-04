@@ -77,6 +77,13 @@ namespace Stripe
         public TokenAccountCompanyOwnershipDeclarationOptions OwnershipDeclaration { get; set; }
 
         /// <summary>
+        /// Whether the user described by the data in the token has been shown the Ownership
+        /// Declaration and indicated that it is correct.
+        /// </summary>
+        [JsonProperty("ownership_declaration_shown_and_signed")]
+        public bool? OwnershipDeclarationShownAndSigned { get; set; }
+
+        /// <summary>
         /// The company's phone number (used for verification).
         /// </summary>
         [JsonProperty("phone")]
