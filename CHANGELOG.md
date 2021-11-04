@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.76.0 - 2021-11-04
+* [#2390](https://github.com/stripe/stripe-dotnet/pull/2390) Add missing events to Events.cs
+  * Add support for `BillingPortalConfigurationCreated`, `BillingPortalConfigurationUpdated`, `CheckoutSessionExpired`, `InvoiceFinalizationFailed`, `QuoteAccepted`, `QuoteCanceled`, `QuoteCreated`, `QuoteFinalized`, `TransferFailed`, and `TransferPaid` on `Events`
+  * Marks `InvoiceFinalizationError` as deprecated. This has been `InvoiceFinalizationFailed` in recent versions of the Stripe API.
+
 ## 39.75.1 - 2021-11-04
 * [#2391](https://github.com/stripe/stripe-dotnet/pull/2391) API Updates
   * Remove support for `OwnershipDeclarationShownAndSigned` on `TokenAccountOptions`. This API was unused.
