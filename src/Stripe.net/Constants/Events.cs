@@ -907,15 +907,6 @@ namespace Stripe
         public const string TransferCreated = "transfer.created";
 
         /// <summary>
-        /// Occurs whenever a transfer failed.
-        /// </summary>
-        public const string TransferFailed = "transfer.failed";
-
-        /// <summary>
-        /// Occurs after a transfer is paid. For Instant Payouts, the event will typically be sent within 30 minutes.
-        /// </summary>
-        public const string TransferPaid = "transfer.paid";
-        /// <summary>
         /// Occurs whenever a transfer is reversed, including partial reversals.
         /// </summary>
         public const string TransferReversed = "transfer.reversed";
