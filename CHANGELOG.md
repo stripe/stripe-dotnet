@@ -1,5 +1,11 @@
 # Changelog
 
+## 39.75.1 - 2021-11-04
+* [#2391](https://github.com/stripe/stripe-dotnet/pull/2391) API Updates
+  * Remove support for `OwnershipDeclarationShownAndSigned` on `TokenAccountOptions`. This API was unused.
+  * Add support for `OwnershipDeclarationShownAndSigned` on `TokenAccountCompanyOptions`
+  
+
 ## 39.75.0 - 2021-11-01
 * [#2388](https://github.com/stripe/stripe-dotnet/pull/2388) API Updates
   * Add support for `OwnershipDeclaration` on `AccountCompanyOptions`, `AccountCompanyOptions`, `AccountCompany`, and `TokenAccountCompanyOptions`
