@@ -63,8 +63,11 @@ namespace Stripe.Checkout
         /// be used. A valid billing address is required for Checkout to prefill the customer's card
         /// details.
         ///
-        /// If the customer changes their email on the Checkout page, the Customer object will be
-        /// updated with the new email.
+        /// If the Customer already has a valid <a
+        /// href="https://stripe.com/docs/api/customers/object#customer_object-email">email</a> set,
+        /// the email will be prefilled and not editable in Checkout. If the Customer does not have
+        /// a valid <c>email</c>, Checkout will set the email entered during the session on the
+        /// Customer.
         ///
         /// If blank for Checkout Sessions in <c>payment</c> or <c>subscription</c> mode, Checkout
         /// will create a new Customer object based on information provided during the payment flow.

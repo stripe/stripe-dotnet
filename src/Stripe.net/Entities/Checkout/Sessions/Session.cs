@@ -317,6 +317,14 @@ namespace Stripe.Checkout
         public SessionShippingAddressCollection ShippingAddressCollection { get; set; }
 
         /// <summary>
+        /// The status of the Checkout Session, one of <c>open</c>, <c>complete</c>, or
+        /// <c>expired</c>.
+        /// One of: <c>complete</c>, <c>expired</c>, or <c>open</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        /// <summary>
         /// Describes the type of transaction being performed by Checkout in order to customize
         /// relevant text on the page, such as the submit button. <c>submit_type</c> can only be
         /// specified on Checkout Sessions in <c>payment</c> mode, but not Checkout Sessions in
