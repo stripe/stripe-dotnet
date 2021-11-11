@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.77.0 - 2021-11-11
+* [#2393](https://github.com/stripe/stripe-dotnet/pull/2393) API Updates
+  * Add support for `Expire` method on resource `Checkout.Session`
+  * Add support for `Status` on `CheckoutSession`
+
 ## 39.76.0 - 2021-11-04
 * [#2390](https://github.com/stripe/stripe-dotnet/pull/2390) Add missing events to Events.cs
   * Add support for `BillingPortalConfigurationCreated`, `BillingPortalConfigurationUpdated`, `CheckoutSessionExpired`, `InvoiceFinalizationFailed`, `QuoteAccepted`, `QuoteCanceled`, `QuoteCreated`, `QuoteFinalized`, `TransferFailed`, and `TransferPaid` on `Events`
