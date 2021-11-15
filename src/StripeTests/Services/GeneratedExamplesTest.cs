@@ -342,13 +342,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCheckoutSessionServiceExpire()
-        {
-            var service = new Stripe.Checkout.SessionService(this.StripeClient);
-            service.Expire("sess_xyz");
-        }
-
-        [Fact]
         public void TestCheckoutSessionServiceList()
         {
             var options = new Stripe.Checkout.SessionListOptions { Limit = 3 };

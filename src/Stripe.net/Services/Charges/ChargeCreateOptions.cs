@@ -33,7 +33,7 @@ namespace Stripe
         /// Whether to immediately capture the charge. Defaults to <c>true</c>. When <c>false</c>,
         /// the charge issues an authorization (or pre-authorization), and will need to be <a
         /// href="https://stripe.com/docs/api#capture_charge">captured</a> later. Uncaptured charges
-        /// expire in <em>seven days</em>. For more information, see the <a
+        /// expire after a set number of days (7 by default). For more information, see the <a
         /// href="https://stripe.com/docs/charges/placing-a-hold">authorizing charges and settling
         /// later</a> documentation.
         /// </summary>
