@@ -75,6 +75,7 @@ namespace Stripe
             { "scheduled_query_run", typeof(Sigma.ScheduledQueryRun) },
             { "setup_attempt", typeof(SetupAttempt) },
             { "setup_intent", typeof(SetupIntent) },
+            { "shipping_rates", typeof(ShippingRate) },
             { "sku", typeof(Sku) },
             { "source", typeof(Source) },
             { "source_mandate_notification", typeof(SourceMandateNotification) },
