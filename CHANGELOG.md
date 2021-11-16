@@ -1,5 +1,11 @@
 # Changelog
 
+## 39.78.0 - 2021-11-16
+* [#2394](https://github.com/stripe/stripe-dotnet/pull/2394) API Updates
+  * Add support for new resource `ShippingRate`
+  * Add support for `ShippingOptions` on `CheckoutSessionCreateOptions` and `CheckoutSession`
+  * Add support for `ShippingRate` on `CheckoutSession`
+
 ## 39.77.0 - 2021-11-11
 * [#2393](https://github.com/stripe/stripe-dotnet/pull/2393) API Updates
   * Add support for `Expire` method on resource `Checkout.Session`
