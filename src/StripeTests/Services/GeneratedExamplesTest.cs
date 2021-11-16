@@ -342,6 +342,46 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestCheckoutSessionServiceCreate2()
+        {
+            var options = new Stripe.Checkout.SessionCreateOptions
+            {
+                SuccessUrl = "https://example.com/success",
+                CancelUrl = "https://example.com/cancel",
+                Mode = "payment",
+                ShippingOptions = new List<Stripe.Checkout.SessionShippingOptionOptions>
+                {
+                    new Stripe.Checkout.SessionShippingOptionOptions
+                    {
+                        ShippingRate = "shr_standard",
+                    },
+                    new Stripe.Checkout.SessionShippingOptionOptions
+                    {
+                        ShippingRateData = new Stripe.Checkout.SessionShippingOptionShippingRateDataOptions
+                        {
+                            DisplayName = "Standard",
+                            DeliveryEstimate = new Stripe.Checkout.SessionShippingOptionShippingRateDataDeliveryEstimateOptions
+                            {
+                                Minimum = new Stripe.Checkout.SessionShippingOptionShippingRateDataDeliveryEstimateMinimumOptions
+                                {
+                                    Unit = "day",
+                                    Value = 5,
+                                },
+                                Maximum = new Stripe.Checkout.SessionShippingOptionShippingRateDataDeliveryEstimateMaximumOptions
+                                {
+                                    Unit = "day",
+                                    Value = 7,
+                                },
+                            },
+                        },
+                    },
+                },
+            };
+            var service = new Stripe.Checkout.SessionService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestCheckoutSessionServiceExpire()
         {
             var service = new Stripe.Checkout.SessionService(this.StripeClient);
@@ -1932,6 +1972,30 @@ namespace StripeTests
             };
             var service = new SetupIntentService(this.StripeClient);
             service.Update("seti_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestShippingRateServiceCreate()
+        {
+            var options = new ShippingRateCreateOptions
+            {
+                DisplayName = "Sample Shipper",
+                FixedAmount = new ShippingRateFixedAmountOptions
+                {
+                    Currency = "usd",
+                    Amount = 400,
+                },
+                Type = "fixed_amount",
+            };
+            var service = new ShippingRateService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestShippingRateServiceList()
+        {
+            var service = new ShippingRateService(this.StripeClient);
+            StripeList<ShippingRate> shippingrates = service.List();
         }
 
         [Fact]
