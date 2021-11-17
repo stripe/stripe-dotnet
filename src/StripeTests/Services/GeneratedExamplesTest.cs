@@ -1295,6 +1295,22 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestPaymentIntentServiceCreate2()
+        {
+            var options = new PaymentIntentCreateOptions
+            {
+                Amount = 1099,
+                Currency = "eur",
+                AutomaticPaymentMethods = new PaymentIntentAutomaticPaymentMethodsOptions
+                {
+                    Enabled = true,
+                },
+            };
+            var service = new PaymentIntentService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestPaymentIntentServiceList()
         {
             var options = new PaymentIntentListOptions { Limit = 3 };

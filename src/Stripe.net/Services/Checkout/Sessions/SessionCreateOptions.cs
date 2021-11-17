@@ -216,7 +216,7 @@ namespace Stripe.Checkout
         public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
 
         /// <summary>
-        /// [To be deprecated] The shipping rate to apply to this Session. Only up to one may be
+        /// [Deprecated] The shipping rate to apply to this Session. Only up to one may be
         /// specified.
         /// </summary>
         [JsonProperty("shipping_rates")]

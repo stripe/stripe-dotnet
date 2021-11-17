@@ -102,6 +102,13 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
+        /// Settings to configure compatible payment methods from the <a
+        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
+        /// </summary>
+        [JsonProperty("automatic_payment_methods")]
+        public PaymentIntentAutomaticPaymentMethods AutomaticPaymentMethods { get; set; }
+
+        /// <summary>
         /// Populated when <c>status</c> is <c>canceled</c>, this is the time at which the
         /// PaymentIntent was canceled. Measured in seconds since the Unix epoch.
         /// </summary>

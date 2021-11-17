@@ -19,7 +19,8 @@ namespace Stripe
 
         /// <summary>
         /// Type of the next action to perform, one of <c>redirect_to_url</c>,
-        /// <c>use_stripe_sdk</c>, <c>alipay_handle_redirect</c>, or <c>oxxo_display_details</c>.
+        /// <c>use_stripe_sdk</c>, <c>alipay_handle_redirect</c>, <c>oxxo_display_details</c>, or
+        /// <c>verify_with_microdeposits</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
