@@ -35,11 +35,9 @@ namespace Stripe
         /// <summary>
         /// If the capability is disabled, this string describes why. Can be
         /// <c>requirements.past_due</c>, <c>requirements.pending_verification</c>, <c>listed</c>,
-        /// <c>platform_paused</c>, <c>rejected.listed</c>, <c>rejected.terms_of_service</c>,
-        /// <c>rejected.card_casher</c>, <c>rejected.auto_fraud_shutdown</c>, <c>rejected.fraud</c>,
-        /// <c>rejected.dishonest_merchant</c>, <c>rejected.identity_fraud</c>,
-        /// <c>rejected.platform_fraud</c>, <c>rejected.platform_terms_of_service</c>,
-        /// <c>rejected.other</c>, <c>under_review</c>, or <c>other</c>.
+        /// <c>platform_paused</c>, <c>rejected.fraud</c>, <c>rejected.listed</c>,
+        /// <c>rejected.terms_of_service</c>, <c>rejected.other</c>, <c>under_review</c>, or
+        /// <c>other</c>.
         ///
         /// <c>rejected.unsupported_business</c> means that the account's business is not supported
         /// by the capability. For example, payment methods may restrict the businesses they support

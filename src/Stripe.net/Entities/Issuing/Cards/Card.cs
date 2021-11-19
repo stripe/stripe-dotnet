@@ -208,5 +208,11 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// Information relating to digital wallets (like Apple Pay and Google Pay).
+        /// </summary>
+        [JsonProperty("wallets")]
+        public CardWallets Wallets { get; set; }
     }
 }

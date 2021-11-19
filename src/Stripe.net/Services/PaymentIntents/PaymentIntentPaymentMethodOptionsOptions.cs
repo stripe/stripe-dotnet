@@ -61,6 +61,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsIdealOptions Ideal { get; set; }
 
         /// <summary>
+        /// If this is a <c>interac_present</c> PaymentMethod, this sub-hash contains details about
+        /// the Card Present payment method options.
+        /// </summary>
+        [JsonProperty("interac_present")]
+        public PaymentIntentPaymentMethodOptionsInteracPresentOptions InteracPresent { get; set; }
+
+        /// <summary>
         /// If this is a <c>klarna</c> PaymentMethod, this sub-hash contains details about the
         /// Klarna payment method options.
         /// </summary>
