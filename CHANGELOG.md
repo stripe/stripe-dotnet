@@ -1,9 +1,12 @@
 # Changelog
 
+## 39.80.0 - 2021-11-19
+* [#2398](https://github.com/stripe/stripe-dotnet/pull/2398) API Updates
+  * Add support for `Wallets` on `IssuingCard`
+
 ## 39.79.0 - 2021-11-17
 * [#2397](https://github.com/stripe/stripe-dotnet/pull/2397) API Updates
   * Add support for `AutomaticPaymentMethods` on `PaymentIntentCreateOptions` and `PaymentIntent`
-  
 
 ## 39.78.1 - 2021-11-16
 * [#2395](https://github.com/stripe/stripe-dotnet/pull/2395)  Update StripeTypeRegistry to be generated.
