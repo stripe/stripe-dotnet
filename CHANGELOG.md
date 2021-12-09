@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.81.0 - 2021-12-09
+* [#2401](https://github.com/stripe/stripe-dotnet/pull/2401) API Updates
+  * Add support for `Giropay` on `PaymentIntentPaymentMethodOptionsOptions` and `PaymentIntentPaymentMethodOptions`
+  * Update comment for `TaxId.Type` with new possible types
+
 ## 39.80.0 - 2021-11-19
 * [#2398](https://github.com/stripe/stripe-dotnet/pull/2398) API Updates
   * Add support for `Wallets` on `IssuingCard`
