@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.82.0 - 2021-12-09
+* [#2402](https://github.com/stripe/stripe-dotnet/pull/2402) API Updates
+  * Add support for `Metadata` on `BillingPortalConfigurationCreateOptions`, `BillingPortalConfigurationUpdateOptions`, and `BillingPortalConfiguration`
+
 ## 39.81.0 - 2021-12-09
 * [#2401](https://github.com/stripe/stripe-dotnet/pull/2401) API Updates
   * Add support for `Giropay` on `PaymentIntentPaymentMethodOptionsOptions` and `PaymentIntentPaymentMethodOptions`
