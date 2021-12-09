@@ -54,6 +54,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
+        /// If this is a <c>giropay</c> PaymentMethod, this sub-hash contains details about the
+        /// Giropay payment method options.
+        /// </summary>
+        [JsonProperty("giropay")]
+        public PaymentIntentPaymentMethodOptionsGiropayOptions Giropay { get; set; }
+
+        /// <summary>
         /// If this is a <c>ideal</c> PaymentMethod, this sub-hash contains details about the Ideal
         /// payment method options.
         /// </summary>
