@@ -14,8 +14,7 @@ namespace Stripe.Terminal
         public string Label { get; set; }
 
         /// <summary>
-        /// The location to assign the reader to. If no location is specified, the reader will be
-        /// assigned to the account's default location.
+        /// The location to assign the reader to.
         /// </summary>
         [JsonProperty("location")]
         public string Location { get; set; }

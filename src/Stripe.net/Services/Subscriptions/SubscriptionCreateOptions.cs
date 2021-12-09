@@ -240,8 +240,9 @@ namespace Stripe
         /// via a subscribed plan. If set, trial_end will override the default trial period of the
         /// plan the customer is being subscribed to. The special value <c>now</c> can be provided
         /// to end the customer's trial immediately. Can be at most two years from
-        /// <c>billing_cycle_anchor</c>. See <a href="docs/billing/subscriptions/trials">Using trial
-        /// periods on subscriptions</a> to learn more.
+        /// <c>billing_cycle_anchor</c>. See <a
+        /// href="https://stripe.com/docs/billing/subscriptions/trials">Using trial periods on
+        /// subscriptions</a> to learn more.
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]
@@ -251,8 +252,8 @@ namespace Stripe
         /// Indicates if a plan's <c>trial_period_days</c> should be applied to the subscription.
         /// Setting <c>trial_end</c> per subscription is preferred, and this defaults to
         /// <c>false</c>. Setting this flag to <c>true</c> together with <c>trial_end</c> is not
-        /// allowed. See <a href="docs/billing/subscriptions/trials">Using trial periods on
-        /// subscriptions</a> to learn more.
+        /// allowed. See <a href="https://stripe.com/docs/billing/subscriptions/trials">Using trial
+        /// periods on subscriptions</a> to learn more.
         /// </summary>
         [JsonProperty("trial_from_plan")]
         public bool? TrialFromPlan { get; set; }
@@ -260,8 +261,8 @@ namespace Stripe
         /// <summary>
         /// Integer representing the number of trial period days before the customer is charged for
         /// the first time. This will always overwrite any trials that might apply via a subscribed
-        /// plan. See <a href="docs/billing/subscriptions/trials">Using trial periods on
-        /// subscriptions</a> to learn more.
+        /// plan. See <a href="https://stripe.com/docs/billing/subscriptions/trials">Using trial
+        /// periods on subscriptions</a> to learn more.
         /// </summary>
         [JsonProperty("trial_period_days")]
         public long? TrialPeriodDays { get; set; }

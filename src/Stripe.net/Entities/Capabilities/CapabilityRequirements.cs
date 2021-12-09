@@ -46,8 +46,8 @@ namespace Stripe
         /// - <a href="https://stripe.com/afterpay-clearpay/legal#restricted-businesses">Afterpay
         /// Clearpay's terms of service</a>.
         ///
-        /// If you believe that the rejection is in error, please contact support@stripe.com for
-        /// assistance.
+        /// If you believe that the rejection is in error, please contact support at
+        /// https://support.stripe.com/contact/ for assistance.
         /// </summary>
         [JsonProperty("disabled_reason")]
         public string DisabledReason { get; set; }
