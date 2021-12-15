@@ -7,10 +7,8 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// <c>Customer</c> objects allow you to perform recurring charges, and to track multiple
-    /// charges, that are associated with the same customer. The API allows you to create,
-    /// delete, and update your customers. You can retrieve individual customers as well as a
-    /// list of all your customers.
+    /// This object represents a customer of your business. It lets you create recurring charges
+    /// and track payments that belong to the same customer.
     ///
     /// Related guide: <a href="https://stripe.com/docs/payments/save-during-payment">Save a
     /// card during payment</a>.
