@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.83.0 - 2021-12-15
+* [#2403](https://github.com/stripe/stripe-dotnet/pull/2403) API Updates
+  * Add support for `SetupFutureUsage` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
+  * Update comments for `Coupon`, `Customer`, `PersonRelationship`, and `PromotionCode` resources, and `PersonRelationshipOptions` and `TokenPersonRelationshipOptions` options
+
 ## 39.82.0 - 2021-12-09
 * [#2402](https://github.com/stripe/stripe-dotnet/pull/2402) API Updates
   * Add support for `Metadata` on `BillingPortalConfigurationCreateOptions`, `BillingPortalConfigurationUpdateOptions`, and `BillingPortalConfiguration`
