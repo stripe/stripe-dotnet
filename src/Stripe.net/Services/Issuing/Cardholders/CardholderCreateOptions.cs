@@ -40,7 +40,8 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The cardholder's name. This will be printed on cards issued to them.
+        /// The cardholder's name. This will be printed on cards issued to them. The maximum length
+        /// of this field is 24 characters.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
