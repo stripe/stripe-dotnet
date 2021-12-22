@@ -14,6 +14,9 @@ namespace Stripe
         [JsonProperty("alipay")]
         public PaymentIntentPaymentMethodOptionsAlipay Alipay { get; set; }
 
+        [JsonProperty("au_becs_debit")]
+        public PaymentIntentPaymentMethodOptionsAuBecsDebit AuBecsDebit { get; set; }
+
         [JsonProperty("bancontact")]
         public PaymentIntentPaymentMethodOptionsBancontact Bancontact { get; set; }
 
