@@ -9,7 +9,8 @@ namespace Stripe
         public PaymentIntentProcessingCard Card { get; set; }
 
         /// <summary>
-        /// Type of the next action to perform, one of <c>card</c>.
+        /// Type of the payment method for which payment is in <c>processing</c> state, one of
+        /// <c>card</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
