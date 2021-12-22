@@ -1,5 +1,15 @@
 # Changelog
 
+## 39.84.0 - 2021-12-22
+* [#2406](https://github.com/stripe/stripe-dotnet/pull/2406) API Updates
+  * Add support for `AuBecsDebit` on `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptionsOptions`, and `PaymentIntentPaymentMethodOptions`
+  
+* [#2405](https://github.com/stripe/stripe-dotnet/pull/2405) API Updates
+  * Add support for `Boleto` on `SetupAttemptPaymentMethodDetails`
+  
+* [#2404](https://github.com/stripe/stripe-dotnet/pull/2404) API Updates
+  * Add support for `Processing` on `PaymentIntent`
+
 ## 39.83.0 - 2021-12-15
 * [#2403](https://github.com/stripe/stripe-dotnet/pull/2403) API Updates
   * Add support for `SetupFutureUsage` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
