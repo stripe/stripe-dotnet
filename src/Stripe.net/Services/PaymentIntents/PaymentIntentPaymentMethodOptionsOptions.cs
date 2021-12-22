@@ -27,6 +27,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsAlipayOptions Alipay { get; set; }
 
         /// <summary>
+        /// If this is a <c>au_becs_debit</c> PaymentMethod, this sub-hash contains details about
+        /// the AU BECS Direct Debit payment method options.
+        /// </summary>
+        [JsonProperty("au_becs_debit")]
+        public PaymentIntentPaymentMethodOptionsAuBecsDebitOptions AuBecsDebit { get; set; }
+
+        /// <summary>
         /// If this is a <c>bancontact</c> PaymentMethod, this sub-hash contains details about the
         /// Bancontact payment method options.
         /// </summary>
