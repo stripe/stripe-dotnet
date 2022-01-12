@@ -1,5 +1,13 @@
 # Changelog
 
+## 39.85.0 - 2022-01-12
+* [#2412](https://github.com/stripe/stripe-dotnet/pull/2412) API Updates
+  * Add support for `CustomerCreation` on `CheckoutSessionCreateOptions` and `CheckoutSession`
+  * Add support for `Fpx` and `Grabpay` on `PaymentIntentPaymentMethodOptionsOptions`,  and `PaymentIntentPaymentMethodOptions`
+  
+* [#2408](https://github.com/stripe/stripe-dotnet/pull/2408) API Updates
+  * Add support for `MandateOptions` on `SubscriptionPaymentSettingsPaymentMethodOptionsCardOptions`, `SubscriptionPaymentSettingsPaymentMethodOptionsCardOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsCard`
+
 ## 39.84.0 - 2021-12-22
 * [#2406](https://github.com/stripe/stripe-dotnet/pull/2406) API Updates
   * Add support for `AuBecsDebit` on `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptionsOptions`, and `PaymentIntentPaymentMethodOptions`
