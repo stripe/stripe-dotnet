@@ -5,6 +5,9 @@ namespace Stripe
 
     public class SubscriptionPaymentSettingsPaymentMethodOptionsCard : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsCard>
     {
+        [JsonProperty("mandate_options")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptions MandateOptions { get; set; }
+
         /// <summary>
         /// We strongly recommend that you rely on our SCA Engine to automatically prompt your
         /// customers for authentication based on risk level and <a
