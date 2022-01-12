@@ -29,8 +29,14 @@ namespace Stripe
         [JsonProperty("card_present")]
         public PaymentIntentPaymentMethodOptionsCardPresent CardPresent { get; set; }
 
+        [JsonProperty("fpx")]
+        public PaymentIntentPaymentMethodOptionsFpx Fpx { get; set; }
+
         [JsonProperty("giropay")]
         public PaymentIntentPaymentMethodOptionsGiropay Giropay { get; set; }
+
+        [JsonProperty("grabpay")]
+        public PaymentIntentPaymentMethodOptionsGrabpay Grabpay { get; set; }
 
         [JsonProperty("ideal")]
         public PaymentIntentPaymentMethodOptionsIdeal Ideal { get; set; }

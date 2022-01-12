@@ -61,11 +61,25 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
+        /// If this is a <c>fpx</c> PaymentMethod, this sub-hash contains details about the FPX
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("fpx")]
+        public PaymentIntentPaymentMethodOptionsFpxOptions Fpx { get; set; }
+
+        /// <summary>
         /// If this is a <c>giropay</c> PaymentMethod, this sub-hash contains details about the
         /// Giropay payment method options.
         /// </summary>
         [JsonProperty("giropay")]
         public PaymentIntentPaymentMethodOptionsGiropayOptions Giropay { get; set; }
+
+        /// <summary>
+        /// If this is a <c>grabpay</c> PaymentMethod, this sub-hash contains details about the
+        /// Grabpay payment method options.
+        /// </summary>
+        [JsonProperty("grabpay")]
+        public PaymentIntentPaymentMethodOptionsGrabpayOptions Grabpay { get; set; }
 
         /// <summary>
         /// If this is a <c>ideal</c> PaymentMethod, this sub-hash contains details about the Ideal

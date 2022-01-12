@@ -60,8 +60,8 @@ namespace Stripe.Checkout
         /// billing address on the Checkout page. In <c>subscription</c> mode, the customer’s <a
         /// href="https://stripe.com/docs/api/customers/update#update_customer-invoice_settings-default_payment_method">default
         /// payment method</a> will be used if it’s a card, and otherwise the most recent card will
-        /// be used. A valid billing address is required for Checkout to prefill the customer's card
-        /// details.
+        /// be used. A valid billing address, billing name and billing email are required on the
+        /// payment method for Checkout to prefill the customer's card details.
         ///
         /// If the Customer already has a valid <a
         /// href="https://stripe.com/docs/api/customers/object#customer_object-email">email</a> set,
@@ -79,6 +79,24 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
+
+        /// <summary>
+        /// Configure whether a Checkout Session creates a <a
+        /// href="https://stripe.com/docs/api/customers">Customer</a> during Session confirmation.
+        ///
+        /// When a Customer is not created, you can still retrieve email, address, and other
+        /// customer data entered in Checkout with <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/object#checkout_session_object-customer_details">customer_details</a>.
+        ///
+        /// Sessions that do not create Customers will instead create <a
+        /// href="https://support.stripe.com/questions/guest-customer-faq">Guest Customers</a> in
+        /// the Dashboard.
+        ///
+        /// Can only be set in <c>payment</c> and <c>setup</c> mode.
+        /// One of: <c>always</c>, or <c>if_required</c>.
+        /// </summary>
+        [JsonProperty("customer_creation")]
+        public string CustomerCreation { get; set; }
 
         /// <summary>
         /// If provided, this value will be used when the Customer object is created. If not
