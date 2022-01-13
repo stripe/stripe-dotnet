@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.86.0 - 2022-01-13
+* [#2413](https://github.com/stripe/stripe-dotnet/pull/2413) API Updates
+  * Add support for `PaidOutOfBand` on `Invoice`
+
 ## 39.85.0 - 2022-01-12
 * [#2412](https://github.com/stripe/stripe-dotnet/pull/2412) API Updates
   * Add support for `CustomerCreation` on `CheckoutSessionCreateOptions` and `CheckoutSession`
