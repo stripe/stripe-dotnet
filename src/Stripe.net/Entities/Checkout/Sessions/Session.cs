@@ -146,6 +146,14 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
+        /// Configure whether a Checkout Session creates a Customer when the Checkout Session
+        /// completes.
+        /// One of: <c>always</c>, or <c>if_required</c>.
+        /// </summary>
+        [JsonProperty("customer_creation")]
+        public string CustomerCreation { get; set; }
+
+        /// <summary>
         /// The customer details including the customer's tax exempt status and the customer's tax
         /// IDs. Only present on Sessions in <c>payment</c> or <c>subscription</c> mode.
         /// </summary>

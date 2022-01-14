@@ -68,8 +68,12 @@ namespace Stripe.Checkout
         /// When setting this to <c>off_session</c>, Checkout will show a notice to the customer
         /// that their payment details will be saved and used for future payments.
         ///
-        /// For both values, Checkout will attach the payment method to either the provided Customer
-        /// for the session, or a new Customer created by Checkout if one has not been provided.
+        /// If a Customer has been provided or Checkout creates a new Customer, Checkout will attach
+        /// the payment method to the Customer.
+        ///
+        /// If Checkout does not create a Customer, the payment method is not attached to a
+        /// Customer. To reuse the payment method, you can retrieve it from the Checkout Session's
+        /// PaymentIntent.
         ///
         /// When processing card payments, Checkout also uses <c>setup_future_usage</c> to
         /// dynamically optimize your payment flow and comply with regional legislation and network
