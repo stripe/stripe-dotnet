@@ -1358,6 +1358,20 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestPaymentLinkServiceListLineItems()
+        {
+            var service = new PaymentLinkService(this.StripeClient);
+            service.ListLineItems("pl_xyz");
+        }
+
+        [Fact]
+        public void TestPaymentLinkServiceRetrieve()
+        {
+            var service = new PaymentLinkService(this.StripeClient);
+            service.Get("pl_xyz");
+        }
+
+        [Fact]
         public void TestPaymentMethodServiceAttach()
         {
             var options = new PaymentMethodAttachOptions
