@@ -1340,6 +1340,24 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestPaymentLinkServiceCreate()
+        {
+            var options = new PaymentLinkCreateOptions
+            {
+                LineItems = new List<PaymentLinkLineItemOptions>
+                {
+                    new PaymentLinkLineItemOptions
+                    {
+                        Price = "price_xxxxxxxxxxxxx",
+                        Quantity = 1,
+                    },
+                },
+            };
+            var service = new PaymentLinkService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestPaymentMethodServiceAttach()
         {
             var options = new PaymentMethodAttachOptions
