@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.87.0 - 2022-01-19
+* [#2414](https://github.com/stripe/stripe-dotnet/pull/2414) API Updates
+  * Add support for `BacsDebit` and `Eps` on `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptionsOptions`, and `PaymentIntentPaymentMethodOptions`
+  * Add support for `ImageUrlPng` and `ImageUrlSvg` on `PaymentIntentNextActionWechatPayDisplayQrCode`
+
 ## 39.86.0 - 2022-01-13
 * [#2413](https://github.com/stripe/stripe-dotnet/pull/2413) API Updates
   * Add support for `PaidOutOfBand` on `Invoice`
