@@ -16,5 +16,17 @@ namespace Stripe
         /// </summary>
         [JsonProperty("image_data_url")]
         public string ImageDataUrl { get; set; }
+
+        /// <summary>
+        /// The image_url_png string used to render QR code, can be used as &lt;img src="…" /&gt;.
+        /// </summary>
+        [JsonProperty("image_url_png")]
+        public string ImageUrlPng { get; set; }
+
+        /// <summary>
+        /// The image_url_svg string used to render QR code, can be used as &lt;img src="…" /&gt;.
+        /// </summary>
+        [JsonProperty("image_url_svg")]
+        public string ImageUrlSvg { get; set; }
     }
 }
