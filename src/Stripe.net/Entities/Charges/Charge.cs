@@ -632,6 +632,7 @@ namespace Stripe
 
         /// <summary>
         /// The status of the payment is either <c>succeeded</c>, <c>pending</c>, or <c>failed</c>.
+        /// One of: <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
