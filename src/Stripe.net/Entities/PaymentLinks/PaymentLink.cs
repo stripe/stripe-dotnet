@@ -1,0 +1,156 @@
+// File generated from our OpenAPI spec
+namespace Stripe
+{
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
+    /// <summary>
+    /// A payment link allows you create payment pages through a url you can share with
+    /// customers.
+    /// </summary>
+    public class PaymentLink : StripeEntity<PaymentLink>, IHasId, IHasMetadata, IHasObject
+    {
+        /// <summary>
+        /// Unique identifier for the object.
+        /// </summary>
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// String representing the object's type. Objects of the same type share the same value.
+        /// </summary>
+        [JsonProperty("object")]
+        public string Object { get; set; }
+
+        /// <summary>
+        /// Whether the payment link's <c>url</c> is active. If <c>false</c>, customers visiting the
+        /// url will be redirected.
+        /// </summary>
+        [JsonProperty("active")]
+        public bool Active { get; set; }
+
+        [JsonProperty("after_completion")]
+        public PaymentLinkAfterCompletion AfterCompletion { get; set; }
+
+        /// <summary>
+        /// Whether user redeemable promotion codes are enabled.
+        /// </summary>
+        [JsonProperty("allow_promotion_codes")]
+        public bool AllowPromotionCodes { get; set; }
+
+        /// <summary>
+        /// The amount of the application fee (if any) that will be requested to be applied to the
+        /// payment and transferred to the application owner's Stripe account.
+        /// </summary>
+        [JsonProperty("application_fee_amount")]
+        public long? ApplicationFeeAmount { get; set; }
+
+        /// <summary>
+        /// This represents the percentage of the subscription invoice subtotal that will be
+        /// transferred to the application owner's Stripe account.
+        /// </summary>
+        [JsonProperty("application_fee_percent")]
+        public decimal? ApplicationFeePercent { get; set; }
+
+        [JsonProperty("automatic_tax")]
+        public PaymentLinkAutomaticTax AutomaticTax { get; set; }
+
+        /// <summary>
+        /// Configuration for collecting the customer's billing address.
+        /// One of: <c>auto</c>, or <c>required</c>.
+        /// </summary>
+        [JsonProperty("billing_address_collection")]
+        public string BillingAddressCollection { get; set; }
+
+        /// <summary>
+        /// The line items representing what is being sold.
+        /// </summary>
+        [JsonProperty("line_items")]
+        public StripeList<LineItem> LineItems { get; set; }
+
+        /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+        public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+
+        #region Expandable OnBehalfOf
+
+        /// <summary>
+        /// (ID of the Account)
+        /// The account on behalf of which to charge. See the <a
+        /// href="https://support.stripe.com/questions/sending-invoices-on-behalf-of-connected-accounts">Connect
+        /// documentation</a> for details.
+        /// </summary>
+        [JsonIgnore]
+        public string OnBehalfOfId
+        {
+            get => this.InternalOnBehalfOf?.Id;
+            set => this.InternalOnBehalfOf = SetExpandableFieldId(value, this.InternalOnBehalfOf);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The account on behalf of which to charge. See the <a
+        /// href="https://support.stripe.com/questions/sending-invoices-on-behalf-of-connected-accounts">Connect
+        /// documentation</a> for details.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Account OnBehalfOf
+        {
+            get => this.InternalOnBehalfOf?.ExpandedObject;
+            set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
+        }
+
+        [JsonProperty("on_behalf_of")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+        internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
+        #endregion
+
+        /// <summary>
+        /// The list of payment method types that customers can use. When <c>null</c>, your <a
+        /// href="https://dashboard.stripe.com/settings/payment_methods">payment methods
+        /// settings</a> will be used.
+        /// </summary>
+        [JsonProperty("payment_method_types")]
+        public List<string> PaymentMethodTypes { get; set; }
+
+        /// <summary>
+        /// Configuration for collecting the customer's shipping address.
+        /// </summary>
+        [JsonProperty("shipping_address_collection")]
+        public PaymentLinkShippingAddressCollection ShippingAddressCollection { get; set; }
+
+        /// <summary>
+        /// When creating a subscription, the specified configuration data will be used. There must
+        /// be at least one line item with a recurring price to use <c>subscription_data</c>.
+        /// </summary>
+        [JsonProperty("subscription_data")]
+        public PaymentLinkSubscriptionData SubscriptionData { get; set; }
+
+        /// <summary>
+        /// The account (if any) the payments will be attributed to for tax reporting, and where
+        /// funds from each payment will be transferred to.
+        /// </summary>
+        [JsonProperty("transfer_data")]
+        public PaymentLinkTransferData TransferData { get; set; }
+
+        /// <summary>
+        /// The public url that can be shared with customers.
+        /// </summary>
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+}
