@@ -71,6 +71,7 @@ namespace Stripe
                 { "order_item", typeof(OrderItem) },
                 { "order_return", typeof(OrderReturn) },
                 { "payment_intent", typeof(PaymentIntent) },
+                { "payment_link", typeof(PaymentLink) },
                 { "payment_method", typeof(PaymentMethod) },
                 { "payout", typeof(Payout) },
                 { "person", typeof(Person) },

@@ -248,6 +248,37 @@ namespace Stripe.Checkout
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
+        #region Expandable PaymentLink
+
+        /// <summary>
+        /// (ID of the PaymentLink)
+        /// The ID of the Payment Link that created this Session.
+        /// </summary>
+        [JsonIgnore]
+        public string PaymentLinkId
+        {
+            get => this.InternalPaymentLink?.Id;
+            set => this.InternalPaymentLink = SetExpandableFieldId(value, this.InternalPaymentLink);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the Payment Link that created this Session.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public PaymentLink PaymentLink
+        {
+            get => this.InternalPaymentLink?.ExpandedObject;
+            set => this.InternalPaymentLink = SetExpandableFieldObject(value, this.InternalPaymentLink);
+        }
+
+        [JsonProperty("payment_link")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentLink>))]
+        internal ExpandableField<PaymentLink> InternalPaymentLink { get; set; }
+        #endregion
+
         /// <summary>
         /// Payment-method-specific configuration for the PaymentIntent or SetupIntent of this
         /// CheckoutSession.

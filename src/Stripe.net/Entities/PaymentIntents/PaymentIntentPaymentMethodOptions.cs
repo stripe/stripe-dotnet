@@ -17,6 +17,9 @@ namespace Stripe
         [JsonProperty("au_becs_debit")]
         public PaymentIntentPaymentMethodOptionsAuBecsDebit AuBecsDebit { get; set; }
 
+        [JsonProperty("bacs_debit")]
+        public PaymentIntentPaymentMethodOptionsBacsDebit BacsDebit { get; set; }
+
         [JsonProperty("bancontact")]
         public PaymentIntentPaymentMethodOptionsBancontact Bancontact { get; set; }
 
@@ -28,6 +31,9 @@ namespace Stripe
 
         [JsonProperty("card_present")]
         public PaymentIntentPaymentMethodOptionsCardPresent CardPresent { get; set; }
+
+        [JsonProperty("eps")]
+        public PaymentIntentPaymentMethodOptionsEps Eps { get; set; }
 
         [JsonProperty("fpx")]
         public PaymentIntentPaymentMethodOptionsFpx Fpx { get; set; }

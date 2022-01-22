@@ -34,6 +34,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsAuBecsDebitOptions AuBecsDebit { get; set; }
 
         /// <summary>
+        /// If this is a <c>bacs_debit</c> PaymentMethod, this sub-hash contains details about the
+        /// BACS Debit payment method options.
+        /// </summary>
+        [JsonProperty("bacs_debit")]
+        public PaymentIntentPaymentMethodOptionsBacsDebitOptions BacsDebit { get; set; }
+
+        /// <summary>
         /// If this is a <c>bancontact</c> PaymentMethod, this sub-hash contains details about the
         /// Bancontact payment method options.
         /// </summary>
@@ -59,6 +66,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("card_present")]
         public PaymentIntentPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
+
+        /// <summary>
+        /// If this is a <c>eps</c> PaymentMethod, this sub-hash contains details about the EPS
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("eps")]
+        public PaymentIntentPaymentMethodOptionsEpsOptions Eps { get; set; }
 
         /// <summary>
         /// If this is a <c>fpx</c> PaymentMethod, this sub-hash contains details about the FPX
