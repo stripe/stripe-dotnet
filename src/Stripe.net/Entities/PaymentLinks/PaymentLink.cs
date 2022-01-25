@@ -6,8 +6,17 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// A payment link allows you create payment pages through a url you can share with
-    /// customers.
+    /// A payment link is a shareable URL that will take your customers to a hosted payment
+    /// page. A payment link can be shared and used multiple times.
+    ///
+    /// When a customer opens a payment link it will open a new <a
+    /// href="https://stripe.com/docs/api/checkout/sessions">checkout session</a> to render the
+    /// payment page. You can use <a
+    /// href="https://stripe.com/docs/api/events/types#event_types-checkout.session.completed">checkout
+    /// session events</a> to track payments through payment links.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/payments/payment-links/api">Payment
+    /// Links API</a>.
     /// </summary>
     public class PaymentLink : StripeEntity<PaymentLink>, IHasId, IHasMetadata, IHasObject
     {
@@ -25,7 +34,7 @@ namespace Stripe
 
         /// <summary>
         /// Whether the payment link's <c>url</c> is active. If <c>false</c>, customers visiting the
-        /// url will be redirected.
+        /// URL will be shown a page saying that the link has been deactivated.
         /// </summary>
         [JsonProperty("active")]
         public bool Active { get; set; }
@@ -120,12 +129,16 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The list of payment method types that customers can use. When <c>null</c>, your <a
-        /// href="https://dashboard.stripe.com/settings/payment_methods">payment methods
-        /// settings</a> will be used.
+        /// The list of payment method types that customers can use. When <c>null</c>, Stripe will
+        /// dynamically show relevant payment methods you've enabled in your <a
+        /// href="https://dashboard.stripe.com/settings/payment_methods">payment method
+        /// settings</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
+
+        [JsonProperty("phone_number_collection")]
+        public PaymentLinkPhoneNumberCollection PhoneNumberCollection { get; set; }
 
         /// <summary>
         /// Configuration for collecting the customer's shipping address.
@@ -148,7 +161,7 @@ namespace Stripe
         public PaymentLinkTransferData TransferData { get; set; }
 
         /// <summary>
-        /// The public url that can be shared with customers.
+        /// The public URL that can be shared with customers.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }
