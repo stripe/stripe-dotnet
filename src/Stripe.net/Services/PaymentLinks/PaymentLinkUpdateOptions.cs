@@ -8,7 +8,7 @@ namespace Stripe
     {
         /// <summary>
         /// Whether the payment link's <c>url</c> is active. If <c>false</c>, customers visiting the
-        /// url will be redirected.
+        /// URL will be shown a page saying that the link has been deactivated.
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; }
@@ -50,16 +50,17 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>. Metadata
-        /// associated with this Payment Link will automatically be copied to Checkout Sessions
-        /// created by this Payment Link.
+        /// associated with this Payment Link will automatically be copied to <a
+        /// href="https://stripe.com/docs/api/checkout/sessions">checkout sessions</a> created by
+        /// this payment link.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The list of payment method types (e.g., card) that customers can use. Only <c>card</c>
-        /// is supported. Pass an empty string to enable automatic payment methods that use your <a
-        /// href="https://dashboard.stripe.com/settings/payment_methods">payment methods
+        /// The list of payment method types that customers can use. Only <c>card</c> is supported.
+        /// Pass an empty string to enable automatic payment methods that use your <a
+        /// href="https://dashboard.stripe.com/settings/payment_methods">payment method
         /// settings</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]

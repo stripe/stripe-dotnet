@@ -6,7 +6,7 @@ namespace Stripe
     public class PaymentLinkAfterCompletionRedirect : StripeEntity<PaymentLinkAfterCompletionRedirect>
     {
         /// <summary>
-        /// The <c>url</c> the customer will be redirected to after the purchase is complete.
+        /// The URL the customer will be redirected to after the purchase is complete.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }

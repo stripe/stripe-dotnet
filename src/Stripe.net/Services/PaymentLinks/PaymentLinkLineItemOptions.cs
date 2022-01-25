@@ -26,7 +26,7 @@ namespace Stripe
         public string Price { get; set; }
 
         /// <summary>
-        /// The quantity of the line item being purchased. Only <c>1</c> is supported.
+        /// The quantity of the line item being purchased.
         /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
