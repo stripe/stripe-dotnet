@@ -60,8 +60,9 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>. Metadata
-        /// associated with this Payment Link will automatically be copied to Checkout Sessions
-        /// created by this Payment Link.
+        /// associated with this Payment Link will automatically be copied to <a
+        /// href="https://stripe.com/docs/api/checkout/sessions">checkout sessions</a> created by
+        /// this payment link.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -73,13 +74,22 @@ namespace Stripe
         public string OnBehalfOf { get; set; }
 
         /// <summary>
-        /// The list of payment method types (e.g., card) that customers can use. Only <c>card</c>
-        /// is supported. If no value is passed, your <a
-        /// href="https://dashboard.stripe.com/settings/payment_methods">payment methods
-        /// settings</a> will be used.
+        /// The list of payment method types that customers can use. Only <c>card</c> is supported.
+        /// If no value is passed, Stripe will dynamically show relevant payment methods from your
+        /// <a href="https://dashboard.stripe.com/settings/payment_methods">payment method
+        /// settings</a> (20+ payment methods <a
+        /// href="https://stripe.com/docs/payments/payment-methods/integration-options#payment-method-product-support">supported</a>).
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
+
+        /// <summary>
+        /// Controls phone number collection settings during checkout.
+        ///
+        /// We recommend that you review your privacy policy and check with your legal contacts.
+        /// </summary>
+        [JsonProperty("phone_number_collection")]
+        public PaymentLinkPhoneNumberCollectionOptions PhoneNumberCollection { get; set; }
 
         /// <summary>
         /// Configuration for collecting the customer's shipping address.

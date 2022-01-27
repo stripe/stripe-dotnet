@@ -20,7 +20,8 @@ namespace Stripe
 
         /// <summary>
         /// The minimum quantity the customer can purchase. By default this value is 0. You can
-        /// specify a value up to 98.
+        /// specify a value up to 98. If there is only one item in the cart then that item's
+        /// quantity cannot go down to 0.
         /// </summary>
         [JsonProperty("minimum")]
         public long? Minimum { get; set; }

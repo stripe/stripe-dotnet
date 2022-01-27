@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.89.0 - 2022-01-25
+* [#2416](https://github.com/stripe/stripe-dotnet/pull/2416) API Updates
+  * Add support for `PhoneNumberCollection` on `PaymentLinkCreateOptions` and `PaymentLink`
+
 ## 39.88.0 - 2022-01-20
 * [#2415](https://github.com/stripe/stripe-dotnet/pull/2415) API Updates
   * Add support for new resource `PaymentLink`
