@@ -1,5 +1,8 @@
 # Changelog
 
+## 39.90.0 - 2022-02-06
+* [#2411](https://github.com/stripe/stripe-dotnet/pull/2411) Add net60 and netcoreapp3.1 targets
+
 ## 39.89.0 - 2022-01-25
 * [#2416](https://github.com/stripe/stripe-dotnet/pull/2416) API Updates
   * Add support for `PhoneNumberCollection` on `PaymentLinkCreateOptions` and `PaymentLink`
