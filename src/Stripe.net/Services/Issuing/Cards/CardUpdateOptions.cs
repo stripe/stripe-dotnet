@@ -23,6 +23,12 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The desired new PIN for this card.
+        /// </summary>
+        [JsonProperty("pin")]
+        public CardPinOptions Pin { get; set; }
+
+        /// <summary>
         /// Rules that control spending for this card. Refer to our <a
         /// href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for
         /// more details.
