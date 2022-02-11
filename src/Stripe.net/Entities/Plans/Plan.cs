@@ -24,7 +24,7 @@ namespace Stripe
     /// Related guides: <a
     /// href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up a
     /// subscription</a> and more about <a
-    /// href="https://stripe.com/docs/billing/prices-guide">products and prices</a>.
+    /// href="https://stripe.com/docs/products-prices/overview">products and prices</a>.
     /// </summary>
     public class Plan : StripeEntity<Plan>, IHasId, IHasMetadata, IHasObject
     {
