@@ -1,5 +1,11 @@
 # Changelog
 
+## 39.91.0 - 2022-02-16
+* [#2422](https://github.com/stripe/stripe-dotnet/pull/2422) API Updates
+  * Add support for `VerifyMicrodeposits` method on resources `PaymentIntent` and `SetupIntent`
+* [#2421](https://github.com/stripe/stripe-dotnet/pull/2421) API Updates
+  * Add support for `Pin` on `IssuingCardUpdateOptions`
+
 ## 39.90.0 - 2022-02-06
 * [#2411](https://github.com/stripe/stripe-dotnet/pull/2411) Add net60 and netcoreapp3.1 targets
 
