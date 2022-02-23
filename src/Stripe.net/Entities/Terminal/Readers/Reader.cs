@@ -38,9 +38,10 @@ namespace Stripe.Terminal
         public string DeviceSwVersion { get; set; }
 
         /// <summary>
-        /// Type of reader, one of <c>bbpos_chipper2x</c>, <c>bbpos_wisepos_e</c>, or
-        /// <c>verifone_P400</c>.
-        /// One of: <c>bbpos_chipper2x</c>, <c>bbpos_wisepos_e</c>, or <c>verifone_P400</c>.
+        /// Type of reader, one of <c>bbpos_wisepad3</c>, <c>stripe_m2</c>, <c>bbpos_chipper2x</c>,
+        /// <c>bbpos_wisepos_e</c>, or <c>verifone_P400</c>.
+        /// One of: <c>bbpos_chipper2x</c>, <c>bbpos_wisepad3</c>, <c>bbpos_wisepos_e</c>,
+        /// <c>stripe_m2</c>, or <c>verifone_P400</c>.
         /// </summary>
         [JsonProperty("device_type")]
         public string DeviceType { get; set; }
