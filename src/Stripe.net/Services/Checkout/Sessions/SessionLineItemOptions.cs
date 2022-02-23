@@ -30,10 +30,7 @@ namespace Stripe.Checkout
         public string Currency { get; set; }
 
         /// <summary>
-        /// The description for the line item, to be displayed on the Checkout page.
-        ///
-        /// If using <c>price</c> or <c>price_data</c>, will default to the name of the associated
-        /// product.
+        /// [Deprecated] The description for the line item, to be displayed on the Checkout page.
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
