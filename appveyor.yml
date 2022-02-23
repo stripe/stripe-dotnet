@@ -1,4 +1,4 @@
-version: 39.91.0.{build}
+version: 39.92.0.{build}
 image: Visual Studio 2022
 
 environment:
