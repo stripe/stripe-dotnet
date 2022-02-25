@@ -292,7 +292,7 @@ namespace Stripe
             RequestOptions requestOptions)
             where T : IStripeEntity
         {
-#if NET461
+#if NET462
             return
                 this.ListRequestAutoPagingSync<T>(url, options, requestOptions);
 #else
@@ -301,7 +301,7 @@ namespace Stripe
 #endif
         }
 
-#if NET461
+#if NET462
         protected IEnumerable<T> ListRequestAutoPagingSync<T>(
             string url,
             ListOptions options,

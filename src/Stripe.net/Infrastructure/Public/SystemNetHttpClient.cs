@@ -27,10 +27,14 @@ namespace Stripe
         private const string StripeNetTargetFramework =
 #if NET5_0
             "net5.0"
+#elif NET6_0
+            "net6.0"
+#elif NETCOREAPP3_1
+            "netcoreapp3.1"
 #elif NETSTANDARD2_0
             "netstandard2.0"
-#elif NET461
-            "net461"
+#elif NET462
+            "net462"
 #else
             "unknown"
 #endif
