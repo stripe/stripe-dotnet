@@ -25,5 +25,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("card")]
         public SubscriptionPaymentSettingsPaymentMethodOptionsCard Card { get; set; }
+
+        /// <summary>
+        /// This sub-hash contains details about the Konbini payment method options to pass to
+        /// invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("konbini")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsKonbini Konbini { get; set; }
     }
 }
