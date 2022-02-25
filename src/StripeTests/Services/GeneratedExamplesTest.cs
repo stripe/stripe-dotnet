@@ -1340,6 +1340,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestPaymentIntentServiceVerifyMicrodeposits()
+        {
+            var service = new PaymentIntentService(this.StripeClient);
+            service.VerifyMicrodeposits("pi_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
         public void TestPaymentLinkServiceCreate()
         {
             var options = new PaymentLinkCreateOptions
@@ -2020,6 +2027,13 @@ namespace StripeTests
             };
             var service = new SetupIntentService(this.StripeClient);
             service.Update("seti_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestSetupIntentServiceVerifyMicrodeposits()
+        {
+            var service = new SetupIntentService(this.StripeClient);
+            service.VerifyMicrodeposits("seti_xxxxxxxxxxxxx");
         }
 
         [Fact]

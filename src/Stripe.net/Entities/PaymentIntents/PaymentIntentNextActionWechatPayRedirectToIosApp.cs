@@ -6,7 +6,7 @@ namespace Stripe
     public class PaymentIntentNextActionWechatPayRedirectToIosApp : StripeEntity<PaymentIntentNextActionWechatPayRedirectToIosApp>
     {
         /// <summary>
-        /// An universal link that redirect to Wechat Pay APP.
+        /// An universal link that redirect to WeChat Pay app.
         /// </summary>
         [JsonProperty("native_url")]
         public string NativeUrl { get; set; }
