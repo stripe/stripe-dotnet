@@ -112,6 +112,7 @@ namespace Stripe
                 },
                 { "terminal.location", typeof(Terminal.Location) },
                 { "terminal.reader", typeof(Terminal.Reader) },
+                { "test_helpers.test_clock", typeof(TestHelpers.TestClock) },
                 { "token", typeof(Token) },
                 { "topup", typeof(Topup) },
                 { "transfer", typeof(Transfer) },
