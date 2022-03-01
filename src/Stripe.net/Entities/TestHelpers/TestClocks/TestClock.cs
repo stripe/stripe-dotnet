@@ -41,6 +41,13 @@ namespace Stripe.TestHelpers
         public bool? Deleted { get; set; }
 
         /// <summary>
+        /// Time at which this clock is scheduled to auto delete.
+        /// </summary>
+        [JsonProperty("deletes_after")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime DeletesAfter { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
         /// Time at which all objects belonging to this clock are frozen.
         /// </summary>
         [JsonProperty("frozen_time")]
