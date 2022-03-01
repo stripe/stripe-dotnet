@@ -130,6 +130,12 @@ namespace Stripe
         [JsonProperty("tax_id_data")]
         public List<CustomerTaxIdDataOptions> TaxIdData { get; set; }
 
+        /// <summary>
+        /// ID of the test clock to attach to the customer.
+        /// </summary>
+        [JsonProperty("test_clock")]
+        public string TestClock { get; set; }
+
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, SubscriptionTrialEnd> TrialEnd { get; set; }
