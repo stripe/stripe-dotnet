@@ -130,6 +130,12 @@ namespace Stripe
         public bool Proration { get; set; }
 
         /// <summary>
+        /// Additional details for proration line items.
+        /// </summary>
+        [JsonProperty("proration_details")]
+        public InvoiceLineItemProrationDetails ProrationDetails { get; set; }
+
+        /// <summary>
         /// The quantity of the subscription, if the line item is a subscription or a proration.
         /// </summary>
         [JsonProperty("quantity")]
