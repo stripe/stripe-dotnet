@@ -1,5 +1,13 @@
 # Changelog
 
+## 39.94.0 - 2022-03-01
+* [#2430](https://github.com/stripe/stripe-dotnet/pull/2430) [#2431](https://github.com/stripe/stripe-dotnet/pull/2431) API Updates
+  * Add support for new resource `TestHelpers.TestClock`
+  * Add support for `TestClock` on `CustomerCreateOptions`, `Customer`, `Invoice`, `InvoiceItem`, `QuoteCreateOptions`, `Quote`, `Subscription`, and `SubscriptionSchedule`
+  * Add support for `PendingInvoiceItemsBehavior` on `InvoiceCreateOptions`
+  * Change type of `ProductUrlOptions` from `string` to `emptyStringable(string)`
+  * Add support for `NextAction` on `Refund`
+
 ## 39.93.0 - 2022-02-25
 * [#2426](https://github.com/stripe/stripe-dotnet/pull/2426) API Updates 
   * Add support for `KonbiniPayments` on `AccountCapabilitiesOptions`, `AccountCapabilitiesOptions`, and `AccountCapabilities`
