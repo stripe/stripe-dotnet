@@ -1,5 +1,11 @@
 # Changelog
 
+## 39.95.0 - 2022-03-02
+* [#2432](https://github.com/stripe/stripe-dotnet/pull/2432) API Updates
+  * Add support for new resources `InvoiceLineItemProrationDetails` and `InvoiceLineItemProrationDetailsCreditedItems`
+  * Add support for `ProrationDetails` on `InvoiceLineItem`
+  
+
 ## 39.94.0 - 2022-03-01
 * [#2430](https://github.com/stripe/stripe-dotnet/pull/2430) [#2431](https://github.com/stripe/stripe-dotnet/pull/2431) API Updates
   * Add support for new resource `TestHelpers.TestClock`
