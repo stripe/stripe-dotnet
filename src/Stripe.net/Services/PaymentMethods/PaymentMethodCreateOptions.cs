@@ -121,6 +121,13 @@ namespace Stripe
         public PaymentMethodKlarnaOptions Klarna { get; set; }
 
         /// <summary>
+        /// If this is a <c>konbini</c> PaymentMethod, this hash contains details about the Konbini
+        /// payment method.
+        /// </summary>
+        [JsonProperty("konbini")]
+        public PaymentMethodKonbiniOptions Konbini { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
@@ -170,7 +177,8 @@ namespace Stripe
         /// One of: <c>acss_debit</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>boleto</c>, <c>card</c>,
         /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>,
-        /// <c>oxxo</c>, <c>p24</c>, <c>sepa_debit</c>, <c>sofort</c>, or <c>wechat_pay</c>.
+        /// <c>konbini</c>, <c>oxxo</c>, <c>p24</c>, <c>sepa_debit</c>, <c>sofort</c>, or
+        /// <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

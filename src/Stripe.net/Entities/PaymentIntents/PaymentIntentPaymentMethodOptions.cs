@@ -53,6 +53,9 @@ namespace Stripe
         [JsonProperty("klarna")]
         public PaymentIntentPaymentMethodOptionsKlarna Klarna { get; set; }
 
+        [JsonProperty("konbini")]
+        public PaymentIntentPaymentMethodOptionsKonbini Konbini { get; set; }
+
         [JsonProperty("oxxo")]
         public PaymentIntentPaymentMethodOptionsOxxo Oxxo { get; set; }
 

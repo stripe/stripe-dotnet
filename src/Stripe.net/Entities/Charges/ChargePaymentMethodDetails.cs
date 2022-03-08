@@ -59,6 +59,9 @@ namespace Stripe
         [JsonProperty("klarna")]
         public ChargePaymentMethodDetailsKlarna Klarna { get; set; }
 
+        [JsonProperty("konbini")]
+        public ChargePaymentMethodDetailsKonbini Konbini { get; set; }
+
         [JsonProperty("multibanco")]
         public ChargePaymentMethodDetailsMultibanco Multibanco { get; set; }
 

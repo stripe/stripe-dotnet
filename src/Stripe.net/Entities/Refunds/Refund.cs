@@ -165,6 +165,9 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("next_action")]
+        public RefundNextAction NextAction { get; set; }
+
         #region Expandable PaymentIntent
 
         /// <summary>

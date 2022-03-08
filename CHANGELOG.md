@@ -1,8 +1,28 @@
 # Changelog
 
+## 39.95.0 - 2022-03-02
+* [#2432](https://github.com/stripe/stripe-dotnet/pull/2432) API Updates
+  * Add support for new resources `InvoiceLineItemProrationDetails` and `InvoiceLineItemProrationDetailsCreditedItems`
+  * Add support for `ProrationDetails` on `InvoiceLineItem`
+  
+
+## 39.94.0 - 2022-03-01
+* [#2430](https://github.com/stripe/stripe-dotnet/pull/2430) [#2431](https://github.com/stripe/stripe-dotnet/pull/2431) API Updates
+  * Add support for new resource `TestHelpers.TestClock`
+  * Add support for `TestClock` on `CustomerCreateOptions`, `Customer`, `Invoice`, `InvoiceItem`, `QuoteCreateOptions`, `Quote`, `Subscription`, and `SubscriptionSchedule`
+  * Add support for `PendingInvoiceItemsBehavior` on `InvoiceCreateOptions`
+  * Change type of `ProductUrlOptions` from `string` to `emptyStringable(string)`
+  * Add support for `NextAction` on `Refund`
+
+## 39.93.0 - 2022-02-25
+* [#2426](https://github.com/stripe/stripe-dotnet/pull/2426) API Updates 
+  * Add support for `KonbiniPayments` on `AccountCapabilitiesOptions`, `AccountCapabilitiesOptions`, and `AccountCapabilities`
+  * Add support for `Konbini` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `CheckoutSessionPaymentMethodOptions`, `InvoicePaymentSettingsPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, `SubscriptionPaymentSettingsPaymentMethodOptionsOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptions`
+  * Add support for `KonbiniDisplayDetails` on `PaymentIntentNextAction`
+
 ## 39.92.0 - 2022-02-23
 * [#2425](https://github.com/stripe/stripe-dotnet/pull/2425) API Updates
-  * Add support for `SetupFutureUsage` on `PaymentIntentPaymentMethodOptionsAcssDebitOptions`, `PaymentIntentPaymentMethodOptionsAfterpayClearpayOptions`, `PaymentIntentPaymentMethodOptionsAlipayOptions`, `PaymentIntentPaymentMethodOptionsAuBecsDebitOptions`, `PaymentIntentPaymentMethodOptionsBacsDebitOptions`, `PaymentIntentPaymentMethodOptionsBancontactOptions`, `PaymentIntentPaymentMethodOptionsBoletoOptions`, `PaymentIntentPaymentMethodOptionsEpsOptions`, `PaymentIntentPaymentMethodOptionsFpxOptions`, `PaymentIntentPaymentMethodOptionsGiropayOptions`, `PaymentIntentPaymentMethodOptionsGrabpayOptions`, `PaymentIntentPaymentMethodOptionsIdealOptions`, `PaymentIntentPaymentMethodOptionsKlarnaOptions`, `PaymentIntentPaymentMethodOptionsOxxoOptions`, `PaymentIntentPaymentMethodOptionsP24Options`, `PaymentIntentPaymentMethodOptionsSepaDebitOptions`, `PaymentIntentPaymentMethodOptionsSofortOptions`, `PaymentIntentPaymentMethodOptionsWechatPayOptions`, `PaymentIntentPaymentMethodOptionsAcssDebitOptions`, `PaymentIntentPaymentMethodOptionsAfterpayClearpayOptions`, `PaymentIntentPaymentMethodOptionsAlipayOptions`, `PaymentIntentPaymentMethodOptionsAuBecsDebitOptions`, `PaymentIntentPaymentMethodOptionsBacsDebitOptions`, `PaymentIntentPaymentMethodOptionsBancontactOptions`, `PaymentIntentPaymentMethodOptionsBoletoOptions`, `PaymentIntentPaymentMethodOptionsEpsOptions`, `PaymentIntentPaymentMethodOptionsFpxOptions`, `PaymentIntentPaymentMethodOptionsGiropayOptions`, `PaymentIntentPaymentMethodOptionsGrabpayOptions`, `PaymentIntentPaymentMethodOptionsIdealOptions`, `PaymentIntentPaymentMethodOptionsKlarnaOptions`, `PaymentIntentPaymentMethodOptionsOxxoOptions`, `PaymentIntentPaymentMethodOptionsP24Options`, `PaymentIntentPaymentMethodOptionsSepaDebitOptions`, `PaymentIntentPaymentMethodOptionsSofortOptions`, `PaymentIntentPaymentMethodOptionsWechatPayOptions`, `PaymentIntentPaymentMethodOptionsAcssDebitOptions`, `PaymentIntentPaymentMethodOptionsAfterpayClearpayOptions`, `PaymentIntentPaymentMethodOptionsAlipayOptions`, `PaymentIntentPaymentMethodOptionsAuBecsDebitOptions`, `PaymentIntentPaymentMethodOptionsBacsDebitOptions`, `PaymentIntentPaymentMethodOptionsBancontactOptions`, `PaymentIntentPaymentMethodOptionsBoletoOptions`, `PaymentIntentPaymentMethodOptionsEpsOptions`, `PaymentIntentPaymentMethodOptionsFpxOptions`, `PaymentIntentPaymentMethodOptionsGiropayOptions`, `PaymentIntentPaymentMethodOptionsGrabpayOptions`, `PaymentIntentPaymentMethodOptionsIdealOptions`, `PaymentIntentPaymentMethodOptionsKlarnaOptions`, `PaymentIntentPaymentMethodOptionsOxxoOptions`, `PaymentIntentPaymentMethodOptionsP24Options`, `PaymentIntentPaymentMethodOptionsSepaDebitOptions`, `PaymentIntentPaymentMethodOptionsSofortOptions`, `PaymentIntentPaymentMethodOptionsWechatPayOptions`, `PaymentIntentPaymentMethodOptionsAcssDebit`, `PaymentIntentPaymentMethodOptionsAfterpayClearpay`, `PaymentIntentPaymentMethodOptionsAlipay`, `PaymentIntentPaymentMethodOptionsAuBecsDebit`, `PaymentIntentPaymentMethodOptionsBacsDebit`, `PaymentIntentPaymentMethodOptionsBancontact`, `PaymentIntentPaymentMethodOptionsBoleto`, `PaymentIntentPaymentMethodOptionsEps`, `PaymentIntentPaymentMethodOptionsFpx`, `PaymentIntentPaymentMethodOptionsGiropay`, `PaymentIntentPaymentMethodOptionsGrabpay`, `PaymentIntentPaymentMethodOptionsIdeal`, `PaymentIntentPaymentMethodOptionsKlarna`, `PaymentIntentPaymentMethodOptionsOxxo`, `PaymentIntentPaymentMethodOptionsP24`, `PaymentIntentPaymentMethodOptionsSepaDebit`, `PaymentIntentPaymentMethodOptionsSofort`, and `PaymentIntentPaymentMethodOptionsWechatPay`
+  * Add support for `SetupFutureUsage` on `PaymentIntentPaymentMethodOptions.*`
 
 ## 39.91.0 - 2022-02-16
 * [#2422](https://github.com/stripe/stripe-dotnet/pull/2422) API Updates

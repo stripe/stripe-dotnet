@@ -134,6 +134,14 @@ namespace Stripe
         public string KlarnaPayments { get; set; }
 
         /// <summary>
+        /// The status of the konbini payments capability of the account, or whether the account can
+        /// directly process konbini charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("konbini_payments")]
+        public string KonbiniPayments { get; set; }
+
+        /// <summary>
         /// The status of the legacy payments capability of the account.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>

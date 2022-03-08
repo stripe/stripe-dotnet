@@ -121,6 +121,9 @@ namespace Stripe
         [JsonProperty("klarna")]
         public PaymentMethodKlarna Klarna { get; set; }
 
+        [JsonProperty("konbini")]
+        public PaymentMethodKonbini Konbini { get; set; }
+
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
@@ -155,8 +158,8 @@ namespace Stripe
         /// One of: <c>acss_debit</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>boleto</c>, <c>card</c>,
         /// <c>card_present</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
-        /// <c>ideal</c>, <c>interac_present</c>, <c>klarna</c>, <c>oxxo</c>, <c>p24</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, or <c>wechat_pay</c>.
+        /// <c>ideal</c>, <c>interac_present</c>, <c>klarna</c>, <c>konbini</c>, <c>oxxo</c>,
+        /// <c>p24</c>, <c>sepa_debit</c>, <c>sofort</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
