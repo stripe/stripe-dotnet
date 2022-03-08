@@ -2487,6 +2487,57 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTestHelpersTestClockServiceAdvance()
+        {
+            var options = new Stripe.TestHelpers.TestClockAdvanceOptions
+            {
+                FrozenTime = DateTimeOffset.FromUnixTimeSeconds(142)
+                    .UtcDateTime,
+            };
+            var service = new Stripe.TestHelpers.TestClockService(
+                this.StripeClient);
+            service.Advance("clock_xyz", options);
+        }
+
+        [Fact]
+        public void TestTestHelpersTestClockServiceCreate()
+        {
+            var options = new Stripe.TestHelpers.TestClockCreateOptions
+            {
+                FrozenTime = DateTimeOffset.FromUnixTimeSeconds(123)
+                    .UtcDateTime,
+                Name = "cogsworth",
+            };
+            var service = new Stripe.TestHelpers.TestClockService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTestHelpersTestClockServiceDelete()
+        {
+            var service = new Stripe.TestHelpers.TestClockService(
+                this.StripeClient);
+            service.Delete("clock_xyz");
+        }
+
+        [Fact]
+        public void TestTestHelpersTestClockServiceList()
+        {
+            var service = new Stripe.TestHelpers.TestClockService(
+                this.StripeClient);
+            StripeList<Stripe.TestHelpers.TestClock> testclocks = service.List();
+        }
+
+        [Fact]
+        public void TestTestHelpersTestClockServiceRetrieve()
+        {
+            var service = new Stripe.TestHelpers.TestClockService(
+                this.StripeClient);
+            service.Get("clock_xyz");
+        }
+
+        [Fact]
         public void TestTokenServiceRetrieve()
         {
             var service = new TokenService(this.StripeClient);

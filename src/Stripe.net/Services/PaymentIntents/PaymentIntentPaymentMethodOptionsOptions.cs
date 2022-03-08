@@ -117,6 +117,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsKlarnaOptions Klarna { get; set; }
 
         /// <summary>
+        /// If this is a <c>konbini</c> PaymentMethod, this sub-hash contains details about the
+        /// Konbini payment method options.
+        /// </summary>
+        [JsonProperty("konbini")]
+        public PaymentIntentPaymentMethodOptionsKonbiniOptions Konbini { get; set; }
+
+        /// <summary>
         /// If this is a <c>oxxo</c> PaymentMethod, this sub-hash contains details about the OXXO
         /// payment method options.
         /// </summary>

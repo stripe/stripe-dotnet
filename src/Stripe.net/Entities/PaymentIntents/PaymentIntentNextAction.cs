@@ -11,6 +11,9 @@ namespace Stripe
         [JsonProperty("boleto_display_details")]
         public PaymentIntentNextActionBoletoDisplayDetails BoletoDisplayDetails { get; set; }
 
+        [JsonProperty("konbini_display_details")]
+        public PaymentIntentNextActionKonbiniDisplayDetails KonbiniDisplayDetails { get; set; }
+
         [JsonProperty("oxxo_display_details")]
         public PaymentIntentNextActionOxxoDisplayDetails OxxoDisplayDetails { get; set; }
 
