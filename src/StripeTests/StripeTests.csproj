@@ -2,7 +2,7 @@
   <Import Project="..\..\netfx.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net6.0;netcoreapp3.1;netcoreapp2.1;net462</TargetFrameworks>
+    <TargetFrameworks>net5.0;net6.0;netcoreapp3.1;net462</TargetFrameworks>
     <AssemblyName>StripeTests</AssemblyName>
     <LangVersion>8</LangVersion>
     <PackageId>StripeTests</PackageId>
