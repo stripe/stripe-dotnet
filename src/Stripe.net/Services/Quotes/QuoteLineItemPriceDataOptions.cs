@@ -20,7 +20,7 @@ namespace Stripe
         public string Product { get; set; }
 
         /// <summary>
-        /// The recurring components of a price such as <c>interval</c> and <c>usage_type</c>.
+        /// The recurring components of a price such as <c>interval</c> and <c>interval_count</c>.
         /// </summary>
         [JsonProperty("recurring")]
         public QuoteLineItemPriceDataRecurringOptions Recurring { get; set; }

@@ -147,7 +147,7 @@ namespace Stripe
 
         /// <summary>
         /// How to handle pending invoice items on invoice creation. One of <c>include</c>,
-        /// <c>include_and_require</c>, or <c>exclude</c>. <c>include</c> will include any pending
+        /// <c>exclude</c>, or <c>include_and_require</c>. <c>include</c> will include any pending
         /// invoice items, and will create an empty draft invoice if no pending invoice items exist.
         /// <c>include_and_require</c> will include any pending invoice items, if no pending invoice
         /// items exist then the request will fail. <c>exclude</c> will always create an empty
