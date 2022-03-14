@@ -40,7 +40,9 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The cardholder's phone number.
+        /// The cardholder's phone number. This is required for all cardholders who will be creating
+        /// EU cards. See the <a href="https://stripe.com/docs/issuing/3d-secure">3D Secure
+        /// documentation</a> for more details.
         /// </summary>
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }

@@ -6,6 +6,15 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// <c>Source</c> objects allow you to accept a variety of payment methods. They represent a
+    /// customer's payment instrument, and can be used with the Stripe API just like a
+    /// <c>Card</c> object: once chargeable, they can be charged, or can be attached to
+    /// customers.
+    ///
+    /// Related guides: <a href="https://stripe.com/docs/sources">Sources API</a> and <a
+    /// href="https://stripe.com/docs/sources/customers">Sources &amp; Customers</a>.
+    /// </summary>
     public class Source : StripeEntity<Source>, IHasId, IHasMetadata, IHasObject, IPaymentSource
     {
         /// <summary>

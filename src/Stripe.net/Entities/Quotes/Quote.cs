@@ -7,6 +7,11 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A Quote is a way to model prices that you'd like to provide to a customer. Once
+    /// accepted, it will automatically create an invoice, subscription or subscription
+    /// schedule.
+    /// </summary>
     public class Quote : StripeEntity<Quote>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -381,6 +386,37 @@ namespace Stripe
         [JsonProperty("subscription_schedule")]
         [JsonConverter(typeof(ExpandableFieldConverter<SubscriptionSchedule>))]
         internal ExpandableField<SubscriptionSchedule> InternalSubscriptionSchedule { get; set; }
+        #endregion
+
+        #region Expandable TestClock
+
+        /// <summary>
+        /// (ID of the TestHelpers.TestClock)
+        /// ID of the test clock this quote belongs to.
+        /// </summary>
+        [JsonIgnore]
+        public string TestClockId
+        {
+            get => this.InternalTestClock?.Id;
+            set => this.InternalTestClock = SetExpandableFieldId(value, this.InternalTestClock);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the test clock this quote belongs to.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public TestHelpers.TestClock TestClock
+        {
+            get => this.InternalTestClock?.ExpandedObject;
+            set => this.InternalTestClock = SetExpandableFieldObject(value, this.InternalTestClock);
+        }
+
+        [JsonProperty("test_clock")]
+        [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
+        internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
         #endregion
 
         [JsonProperty("total_details")]

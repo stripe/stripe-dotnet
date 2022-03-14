@@ -1,10 +1,29 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A Checkout Session represents your customer's session as they pay for one-time purchases
+    /// or subscriptions through <a
+    /// href="https://stripe.com/docs/payments/checkout">Checkout</a> or <a
+    /// href="https://stripe.com/docs/payments/payment-links">Payment Links</a>. We recommend
+    /// creating a new Session each time your customer attempts to pay.
+    ///
+    /// Once payment is successful, the Checkout Session will contain a reference to the <a
+    /// href="https://stripe.com/docs/api/customers">Customer</a>, and either the successful <a
+    /// href="https://stripe.com/docs/api/payment_intents">PaymentIntent</a> or an active <a
+    /// href="https://stripe.com/docs/api/subscriptions">Subscription</a>.
+    ///
+    /// You can create a Checkout Session on your server and pass its ID to the client to begin
+    /// Checkout.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/payments/checkout/api">Checkout Server
+    /// Quickstart</a>.
+    /// </summary>
     public class Session : StripeEntity<Session>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -19,6 +38,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
+
+        /// <summary>
+        /// When set, provides configuration for actions to take if this Checkout Session expires.
+        /// </summary>
+        [JsonProperty("after_expiration")]
+        public SessionAfterExpiration AfterExpiration { get; set; }
 
         /// <summary>
         /// Enables user redeemable promotion codes.
@@ -61,6 +86,19 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("client_reference_id")]
         public string ClientReferenceId { get; set; }
+
+        /// <summary>
+        /// Results of <c>consent_collection</c> for this session.
+        /// </summary>
+        [JsonProperty("consent")]
+        public SessionConsent Consent { get; set; }
+
+        /// <summary>
+        /// When set, provides configuration for the Checkout Session to gather active consent from
+        /// customers.
+        /// </summary>
+        [JsonProperty("consent_collection")]
+        public SessionConsentCollection ConsentCollection { get; set; }
 
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
@@ -108,6 +146,14 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
+        /// Configure whether a Checkout Session creates a Customer when the Checkout Session
+        /// completes.
+        /// One of: <c>always</c>, or <c>if_required</c>.
+        /// </summary>
+        [JsonProperty("customer_creation")]
+        public string CustomerCreation { get; set; }
+
+        /// <summary>
         /// The customer details including the customer's tax exempt status and the customer's tax
         /// IDs. Only present on Sessions in <c>payment</c> or <c>subscription</c> mode.
         /// </summary>
@@ -122,6 +168,13 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("customer_email")]
         public string CustomerEmail { get; set; }
+
+        /// <summary>
+        /// The timestamp at which the Checkout Session will expire.
+        /// </summary>
+        [JsonProperty("expires_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The line items purchased by the customer.
@@ -140,11 +193,11 @@ namespace Stripe.Checkout
         /// The IETF language tag of the locale Checkout is displayed in. If blank or <c>auto</c>,
         /// the browser's locale is used.
         /// One of: <c>auto</c>, <c>bg</c>, <c>cs</c>, <c>da</c>, <c>de</c>, <c>el</c>, <c>en</c>,
-        /// <c>en-GB</c>, <c>es</c>, <c>es-419</c>, <c>et</c>, <c>fi</c>, <c>fr</c>, <c>fr-CA</c>,
-        /// <c>hr</c>, <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>ko</c>, <c>lt</c>, <c>lv</c>,
-        /// <c>ms</c>, <c>mt</c>, <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>, <c>pt-BR</c>,
-        /// <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>, <c>tr</c>, <c>vi</c>,
-        /// <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
+        /// <c>en-GB</c>, <c>es</c>, <c>es-419</c>, <c>et</c>, <c>fi</c>, <c>fil</c>, <c>fr</c>,
+        /// <c>fr-CA</c>, <c>hr</c>, <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>ko</c>,
+        /// <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>, <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>,
+        /// <c>pt-BR</c>, <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>,
+        /// <c>tr</c>, <c>vi</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -195,6 +248,37 @@ namespace Stripe.Checkout
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
+        #region Expandable PaymentLink
+
+        /// <summary>
+        /// (ID of the PaymentLink)
+        /// The ID of the Payment Link that created this Session.
+        /// </summary>
+        [JsonIgnore]
+        public string PaymentLinkId
+        {
+            get => this.InternalPaymentLink?.Id;
+            set => this.InternalPaymentLink = SetExpandableFieldId(value, this.InternalPaymentLink);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the Payment Link that created this Session.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public PaymentLink PaymentLink
+        {
+            get => this.InternalPaymentLink?.ExpandedObject;
+            set => this.InternalPaymentLink = SetExpandableFieldObject(value, this.InternalPaymentLink);
+        }
+
+        [JsonProperty("payment_link")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentLink>))]
+        internal ExpandableField<PaymentLink> InternalPaymentLink { get; set; }
+        #endregion
+
         /// <summary>
         /// Payment-method-specific configuration for the PaymentIntent or SetupIntent of this
         /// CheckoutSession.
@@ -217,6 +301,15 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("payment_status")]
         public string PaymentStatus { get; set; }
+
+        [JsonProperty("phone_number_collection")]
+        public SessionPhoneNumberCollection PhoneNumberCollection { get; set; }
+
+        /// <summary>
+        /// The ID of the original expired Checkout Session that triggered the recovery flow.
+        /// </summary>
+        [JsonProperty("recovered_from")]
+        public string RecoveredFrom { get; set; }
 
         #region Expandable SetupIntent
 
@@ -261,6 +354,51 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("shipping_address_collection")]
         public SessionShippingAddressCollection ShippingAddressCollection { get; set; }
+
+        /// <summary>
+        /// The shipping rate options applied to this Session.
+        /// </summary>
+        [JsonProperty("shipping_options")]
+        public List<SessionShippingOption> ShippingOptions { get; set; }
+
+        #region Expandable ShippingRate
+
+        /// <summary>
+        /// (ID of the ShippingRate)
+        /// The ID of the ShippingRate for Checkout Sessions in <c>payment</c> mode.
+        /// </summary>
+        [JsonIgnore]
+        public string ShippingRateId
+        {
+            get => this.InternalShippingRate?.Id;
+            set => this.InternalShippingRate = SetExpandableFieldId(value, this.InternalShippingRate);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the ShippingRate for Checkout Sessions in <c>payment</c> mode.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public ShippingRate ShippingRate
+        {
+            get => this.InternalShippingRate?.ExpandedObject;
+            set => this.InternalShippingRate = SetExpandableFieldObject(value, this.InternalShippingRate);
+        }
+
+        [JsonProperty("shipping_rate")]
+        [JsonConverter(typeof(ExpandableFieldConverter<ShippingRate>))]
+        internal ExpandableField<ShippingRate> InternalShippingRate { get; set; }
+        #endregion
+
+        /// <summary>
+        /// The status of the Checkout Session, one of <c>open</c>, <c>complete</c>, or
+        /// <c>expired</c>.
+        /// One of: <c>complete</c>, <c>expired</c>, or <c>open</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; set; }
 
         /// <summary>
         /// Describes the type of transaction being performed by Checkout in order to customize

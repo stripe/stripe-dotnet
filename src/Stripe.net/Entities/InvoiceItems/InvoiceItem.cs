@@ -7,6 +7,16 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Sometimes you want to add a charge or credit to a customer, but actually charge or
+    /// credit the customer's card only at the end of a regular billing cycle. This is useful
+    /// for combining several charges (to minimize per-transaction fees), or for having Stripe
+    /// tabulate your usage-based billing totals.
+    ///
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/billing/invoices/subscription#adding-upcoming-invoice-items">Subscription
+    /// Invoices</a>.
+    /// </summary>
     public class InvoiceItem : StripeEntity<InvoiceItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -243,6 +253,37 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_rates")]
         public List<TaxRate> TaxRates { get; set; }
+
+        #region Expandable TestClock
+
+        /// <summary>
+        /// (ID of the TestHelpers.TestClock)
+        /// ID of the test clock this invoice item belongs to.
+        /// </summary>
+        [JsonIgnore]
+        public string TestClockId
+        {
+            get => this.InternalTestClock?.Id;
+            set => this.InternalTestClock = SetExpandableFieldId(value, this.InternalTestClock);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the test clock this invoice item belongs to.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public TestHelpers.TestClock TestClock
+        {
+            get => this.InternalTestClock?.ExpandedObject;
+            set => this.InternalTestClock = SetExpandableFieldObject(value, this.InternalTestClock);
+        }
+
+        [JsonProperty("test_clock")]
+        [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
+        internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
+        #endregion
 
         /// <summary>
         /// Unit amount (in the <c>currency</c> specified) of the invoice item.

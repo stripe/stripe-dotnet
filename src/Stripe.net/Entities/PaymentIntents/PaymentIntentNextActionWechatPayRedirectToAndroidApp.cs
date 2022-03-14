@@ -24,13 +24,13 @@ namespace Stripe
         public string Package { get; set; }
 
         /// <summary>
-        /// an unique merchant ID assigned by Wechat Pay.
+        /// an unique merchant ID assigned by WeChat Pay.
         /// </summary>
         [JsonProperty("partner_id")]
         public string PartnerId { get; set; }
 
         /// <summary>
-        /// an unique trading ID assigned by Wechat Pay.
+        /// an unique trading ID assigned by WeChat Pay.
         /// </summary>
         [JsonProperty("prepay_id")]
         public string PrepayId { get; set; }

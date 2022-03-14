@@ -5,6 +5,12 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Reviews can be used to supplement automated fraud detection with human expertise.
+    ///
+    /// Learn more about <a href="https://stripe.com/radar">Radar</a> and reviewing payments <a
+    /// href="https://stripe.com/docs/radar/reviews">here</a>.
+    /// </summary>
     public class Review : StripeEntity<Review>, IHasId, IHasObject
     {
         /// <summary>
@@ -58,8 +64,10 @@ namespace Stripe
 
         /// <summary>
         /// The reason the review was closed, or null if it has not yet been closed. One of
-        /// <c>approved</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, or <c>disputed</c>.
-        /// One of: <c>approved</c>, <c>disputed</c>, <c>refunded</c>, or <c>refunded_as_fraud</c>.
+        /// <c>approved</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, <c>disputed</c>, or
+        /// <c>redacted</c>.
+        /// One of: <c>approved</c>, <c>disputed</c>, <c>redacted</c>, <c>refunded</c>, or
+        /// <c>refunded_as_fraud</c>.
         /// </summary>
         [JsonProperty("closed_reason")]
         public string ClosedReason { get; set; }
@@ -138,7 +146,8 @@ namespace Stripe
 
         /// <summary>
         /// The reason the review is currently open or closed. One of <c>rule</c>, <c>manual</c>,
-        /// <c>approved</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, or <c>disputed</c>.
+        /// <c>approved</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, <c>disputed</c>, or
+        /// <c>redacted</c>.
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; set; }

@@ -3,6 +3,10 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// <a href="https://stripe.com/docs/tax/tax-codes">Tax codes</a> classify goods and
+    /// services for tax purposes.
+    /// </summary>
     public class TaxCode : StripeEntity<TaxCode>, IHasId, IHasObject
     {
         /// <summary>

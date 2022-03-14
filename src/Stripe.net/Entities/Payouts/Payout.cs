@@ -6,6 +6,16 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A <c>Payout</c> object is created when you receive funds from Stripe, or when you
+    /// initiate a payout to either a bank account or debit card of a <a
+    /// href="https://stripe.com/docs/connect/bank-debit-card-payouts">connected Stripe
+    /// account</a>. You can retrieve individual payouts, as well as list all payouts. Payouts
+    /// are made on <a href="https://stripe.com/docs/connect/manage-payout-schedule">varying
+    /// schedules</a>, depending on your country and industry.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/payouts">Receiving Payouts</a>.
+    /// </summary>
     public class Payout : StripeEntity<Payout>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>

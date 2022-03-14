@@ -6,6 +6,15 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// To charge a credit or a debit card, you create a <c>Charge</c> object. You can retrieve
+    /// and refund individual charges as well as list all charges. Charges are identified by a
+    /// unique, random ID.
+    ///
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/payments/accept-a-payment-charges">Accept a payment with
+    /// the Charges API</a>.
+    /// </summary>
     public class Charge : StripeEntity<Charge>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
@@ -623,6 +632,7 @@ namespace Stripe
 
         /// <summary>
         /// The status of the payment is either <c>succeeded</c>, <c>pending</c>, or <c>failed</c>.
+        /// One of: <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

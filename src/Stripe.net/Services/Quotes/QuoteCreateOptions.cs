@@ -147,6 +147,12 @@ namespace Stripe
         public QuoteSubscriptionDataOptions SubscriptionData { get; set; }
 
         /// <summary>
+        /// ID of the test clock to attach to the quote.
+        /// </summary>
+        [JsonProperty("test_clock")]
+        public string TestClock { get; set; }
+
+        /// <summary>
         /// The data with which to automatically create a Transfer for each of the invoices.
         /// </summary>
         [JsonProperty("transfer_data")]

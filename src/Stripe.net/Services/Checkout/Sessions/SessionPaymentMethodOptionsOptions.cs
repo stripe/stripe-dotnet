@@ -18,13 +18,19 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsBoletoOptions Boleto { get; set; }
 
         /// <summary>
+        /// contains details about the Konbini payment method options.
+        /// </summary>
+        [JsonProperty("konbini")]
+        public SessionPaymentMethodOptionsKonbiniOptions Konbini { get; set; }
+
+        /// <summary>
         /// contains details about the OXXO payment method options.
         /// </summary>
         [JsonProperty("oxxo")]
         public SessionPaymentMethodOptionsOxxoOptions Oxxo { get; set; }
 
         /// <summary>
-        /// contains details about the Wechat Pay payment method options.
+        /// contains details about the WeChat Pay payment method options.
         /// </summary>
         [JsonProperty("wechat_pay")]
         public SessionPaymentMethodOptionsWechatPayOptions WechatPay { get; set; }

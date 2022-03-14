@@ -6,6 +6,13 @@ namespace Stripe
     public class SubscriptionPaymentSettingsPaymentMethodOptions : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptions>
     {
         /// <summary>
+        /// This sub-hash contains details about the Canadian pre-authorized debit payment method
+        /// options to pass to invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("acss_debit")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
+
+        /// <summary>
         /// This sub-hash contains details about the Bancontact payment method options to pass to
         /// invoices created by the subscription.
         /// </summary>
@@ -18,5 +25,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("card")]
         public SubscriptionPaymentSettingsPaymentMethodOptionsCard Card { get; set; }
+
+        /// <summary>
+        /// This sub-hash contains details about the Konbini payment method options to pass to
+        /// invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("konbini")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsKonbini Konbini { get; set; }
     }
 }

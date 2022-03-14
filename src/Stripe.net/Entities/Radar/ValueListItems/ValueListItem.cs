@@ -5,6 +5,13 @@ namespace Stripe.Radar
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Value list items allow you to add specific values to a given Radar value list, which can
+    /// then be used in rules.
+    ///
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/radar/lists#managing-list-items">Managing List Items</a>.
+    /// </summary>
     public class ValueListItem : StripeEntity<ValueListItem>, IHasId, IHasObject
     {
         /// <summary>

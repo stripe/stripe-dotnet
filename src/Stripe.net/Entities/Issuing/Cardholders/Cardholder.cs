@@ -6,6 +6,13 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// An Issuing <c>Cardholder</c> object represents an individual or business entity who is
+    /// <a href="https://stripe.com/docs/issuing">issued</a> cards.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/issuing/cards#create-cardholder">How to
+    /// create a Cardholder</a>.
+    /// </summary>
     public class Cardholder : StripeEntity<Cardholder>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -70,7 +77,10 @@ namespace Stripe.Issuing
         public string Name { get; set; }
 
         /// <summary>
-        /// The cardholder's phone number.
+        /// The cardholder's phone number. This is required for all cardholders who will be creating
+        /// EU cards. See the <a
+        /// href="https://stripe.com/docs/issuing/3d-secure#when-is-3d-secure-applied">3D Secure
+        /// documentation</a> for more details.
         /// </summary>
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }

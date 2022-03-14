@@ -27,6 +27,20 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsAlipayOptions Alipay { get; set; }
 
         /// <summary>
+        /// If this is a <c>au_becs_debit</c> PaymentMethod, this sub-hash contains details about
+        /// the AU BECS Direct Debit payment method options.
+        /// </summary>
+        [JsonProperty("au_becs_debit")]
+        public PaymentIntentPaymentMethodOptionsAuBecsDebitOptions AuBecsDebit { get; set; }
+
+        /// <summary>
+        /// If this is a <c>bacs_debit</c> PaymentMethod, this sub-hash contains details about the
+        /// BACS Debit payment method options.
+        /// </summary>
+        [JsonProperty("bacs_debit")]
+        public PaymentIntentPaymentMethodOptionsBacsDebitOptions BacsDebit { get; set; }
+
+        /// <summary>
         /// If this is a <c>bancontact</c> PaymentMethod, this sub-hash contains details about the
         /// Bancontact payment method options.
         /// </summary>
@@ -54,11 +68,60 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
+        /// If this is a <c>eps</c> PaymentMethod, this sub-hash contains details about the EPS
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("eps")]
+        public PaymentIntentPaymentMethodOptionsEpsOptions Eps { get; set; }
+
+        /// <summary>
+        /// If this is a <c>fpx</c> PaymentMethod, this sub-hash contains details about the FPX
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("fpx")]
+        public PaymentIntentPaymentMethodOptionsFpxOptions Fpx { get; set; }
+
+        /// <summary>
+        /// If this is a <c>giropay</c> PaymentMethod, this sub-hash contains details about the
+        /// Giropay payment method options.
+        /// </summary>
+        [JsonProperty("giropay")]
+        public PaymentIntentPaymentMethodOptionsGiropayOptions Giropay { get; set; }
+
+        /// <summary>
+        /// If this is a <c>grabpay</c> PaymentMethod, this sub-hash contains details about the
+        /// Grabpay payment method options.
+        /// </summary>
+        [JsonProperty("grabpay")]
+        public PaymentIntentPaymentMethodOptionsGrabpayOptions Grabpay { get; set; }
+
+        /// <summary>
         /// If this is a <c>ideal</c> PaymentMethod, this sub-hash contains details about the Ideal
         /// payment method options.
         /// </summary>
         [JsonProperty("ideal")]
         public PaymentIntentPaymentMethodOptionsIdealOptions Ideal { get; set; }
+
+        /// <summary>
+        /// If this is a <c>interac_present</c> PaymentMethod, this sub-hash contains details about
+        /// the Card Present payment method options.
+        /// </summary>
+        [JsonProperty("interac_present")]
+        public PaymentIntentPaymentMethodOptionsInteracPresentOptions InteracPresent { get; set; }
+
+        /// <summary>
+        /// If this is a <c>klarna</c> PaymentMethod, this sub-hash contains details about the
+        /// Klarna payment method options.
+        /// </summary>
+        [JsonProperty("klarna")]
+        public PaymentIntentPaymentMethodOptionsKlarnaOptions Klarna { get; set; }
+
+        /// <summary>
+        /// If this is a <c>konbini</c> PaymentMethod, this sub-hash contains details about the
+        /// Konbini payment method options.
+        /// </summary>
+        [JsonProperty("konbini")]
+        public PaymentIntentPaymentMethodOptionsKonbiniOptions Konbini { get; set; }
 
         /// <summary>
         /// If this is a <c>oxxo</c> PaymentMethod, this sub-hash contains details about the OXXO

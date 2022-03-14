@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class SetupIntentPaymentMethodOptionsAcssDebitMandateOptions : StripeEntity<SetupIntentPaymentMethodOptionsAcssDebitMandateOptions>
@@ -12,8 +13,14 @@ namespace Stripe
         public string CustomMandateUrl { get; set; }
 
         /// <summary>
-        /// Description of the interval. Only required if 'payment_schedule' parmeter is 'interval'
-        /// or 'combined'.
+        /// List of Stripe products where this mandate can be selected automatically.
+        /// </summary>
+        [JsonProperty("default_for")]
+        public List<string> DefaultFor { get; set; }
+
+        /// <summary>
+        /// Description of the interval. Only required if the 'payment_schedule' parameter is
+        /// 'interval' or 'combined'.
         /// </summary>
         [JsonProperty("interval_description")]
         public string IntervalDescription { get; set; }

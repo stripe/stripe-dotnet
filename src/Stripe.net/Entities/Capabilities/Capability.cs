@@ -5,6 +5,12 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// This is an object representing a capability for a Stripe account.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/connect/account-capabilities">Account
+    /// capabilities</a>.
+    /// </summary>
     public class Capability : StripeEntity<Capability>, IHasId, IHasObject
     {
         /// <summary>
@@ -49,6 +55,9 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
+
+        [JsonProperty("future_requirements")]
+        public CapabilityFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
         /// Whether the capability has been requested.

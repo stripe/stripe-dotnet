@@ -33,6 +33,16 @@ namespace Stripe.Checkout
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
+        public virtual Session Expire(string id, SessionExpireOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/expire", options, requestOptions);
+        }
+
+        public virtual Task<Session> ExpireAsync(string id, SessionExpireOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/expire", options, requestOptions, cancellationToken);
+        }
+
         public virtual Session Get(string id, SessionGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.GetEntity(id, options, requestOptions);

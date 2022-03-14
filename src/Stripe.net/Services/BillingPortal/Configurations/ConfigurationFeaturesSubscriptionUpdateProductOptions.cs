@@ -7,7 +7,7 @@ namespace Stripe.BillingPortal
     public class ConfigurationFeaturesSubscriptionUpdateProductOptions : INestedOptions
     {
         /// <summary>
-        /// The list of prices IDs that a subscription can be updated to.
+        /// The list of price IDs for the product that a subscription can be updated to.
         /// </summary>
         [JsonProperty("prices")]
         public List<string> Prices { get; set; }

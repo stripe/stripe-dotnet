@@ -9,11 +9,10 @@ namespace Stripe.Checkout
         /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account. The amount of the
-        /// application fee collected will be capped at the total payment amount. To use an
-        /// application fee, the request must be made on behalf of another account, using the
-        /// <c>Stripe-Account</c> header or an OAuth key. For more information, see the
-        /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
-        /// for connected accounts</a>.
+        /// application fee collected will be capped at the total payment amount. For more
+        /// information, see the PaymentIntents <a
+        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
@@ -68,8 +67,12 @@ namespace Stripe.Checkout
         /// When setting this to <c>off_session</c>, Checkout will show a notice to the customer
         /// that their payment details will be saved and used for future payments.
         ///
-        /// For both values, Checkout will attach the payment method to either the provided Customer
-        /// for the session, or a new Customer created by Checkout if one has not been provided.
+        /// If a Customer has been provided or Checkout creates a new Customer, Checkout will attach
+        /// the payment method to the Customer.
+        ///
+        /// If Checkout does not create a Customer, the payment method is not attached to a
+        /// Customer. To reuse the payment method, you can retrieve it from the Checkout Session's
+        /// PaymentIntent.
         ///
         /// When processing card payments, Checkout also uses <c>setup_future_usage</c> to
         /// dynamically optimize your payment flow and comply with regional legislation and network

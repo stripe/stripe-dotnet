@@ -6,6 +6,16 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// PaymentMethod objects represent your customer's payment instruments. They can be used
+    /// with <a href="https://stripe.com/docs/payments/payment-intents">PaymentIntents</a> to
+    /// collect payments or saved to Customer objects to store instrument details for future
+    /// payments.
+    ///
+    /// Related guides: <a href="https://stripe.com/docs/payments/payment-methods">Payment
+    /// Methods</a> and <a href="https://stripe.com/docs/payments/more-payment-scenarios">More
+    /// Payment Scenarios</a>.
+    /// </summary>
     public class PaymentMethod : StripeEntity<PaymentMethod>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -108,6 +118,12 @@ namespace Stripe
         [JsonProperty("interac_present")]
         public PaymentMethodInteracPresent InteracPresent { get; set; }
 
+        [JsonProperty("klarna")]
+        public PaymentMethodKlarna Klarna { get; set; }
+
+        [JsonProperty("konbini")]
+        public PaymentMethodKonbini Konbini { get; set; }
+
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
@@ -142,8 +158,8 @@ namespace Stripe
         /// One of: <c>acss_debit</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>boleto</c>, <c>card</c>,
         /// <c>card_present</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
-        /// <c>ideal</c>, <c>interac_present</c>, <c>oxxo</c>, <c>p24</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, or <c>wechat_pay</c>.
+        /// <c>ideal</c>, <c>interac_present</c>, <c>klarna</c>, <c>konbini</c>, <c>oxxo</c>,
+        /// <c>p24</c>, <c>sepa_debit</c>, <c>sofort</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

@@ -6,6 +6,20 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A PaymentIntent guides you through the process of collecting a payment from your
+    /// customer. We recommend that you create exactly one PaymentIntent for each order or
+    /// customer session in your system. You can reference the PaymentIntent later to see the
+    /// history of payment attempts for a particular session.
+    ///
+    /// A PaymentIntent transitions through <a
+    /// href="https://stripe.com/docs/payments/intents#intent-statuses">multiple statuses</a>
+    /// throughout its lifetime as it interfaces with Stripe.js to perform authentication flows
+    /// and ultimately creates at most one successful charge.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/payments/payment-intents">Payment
+    /// Intents API</a>.
+    /// </summary>
     public class PaymentIntent : StripeEntity<PaymentIntent>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -86,6 +100,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
+
+        /// <summary>
+        /// Settings to configure compatible payment methods from the <a
+        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
+        /// </summary>
+        [JsonProperty("automatic_payment_methods")]
+        public PaymentIntentAutomaticPaymentMethods AutomaticPaymentMethods { get; set; }
 
         /// <summary>
         /// Populated when <c>status</c> is <c>canceled</c>, this is the time at which the
@@ -340,6 +361,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
+
+        /// <summary>
+        /// If present, this property tells you about the processing state of the payment.
+        /// </summary>
+        [JsonProperty("processing")]
+        public PaymentIntentProcessing Processing { get; set; }
 
         /// <summary>
         /// Email address that the receipt for the resulting payment will be sent to. If

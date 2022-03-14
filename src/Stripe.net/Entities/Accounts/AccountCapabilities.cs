@@ -6,8 +6,8 @@ namespace Stripe
     public class AccountCapabilities : StripeEntity<AccountCapabilities>
     {
         /// <summary>
-        /// The status of the ACSS Direct Debits payments capability of the account, or whether the
-        /// account can directly process ACSS Direct Debits charges.
+        /// The status of the Canadian pre-authorized debits payments capability of the account, or
+        /// whether the account can directly process Canadian pre-authorized debits charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("acss_debit_payments")]
@@ -124,6 +124,22 @@ namespace Stripe
         /// </summary>
         [JsonProperty("jcb_payments")]
         public string JcbPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Klarna payments capability of the account, or whether the account can
+        /// directly process Klarna charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("klarna_payments")]
+        public string KlarnaPayments { get; set; }
+
+        /// <summary>
+        /// The status of the konbini payments capability of the account, or whether the account can
+        /// directly process konbini charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("konbini_payments")]
+        public string KonbiniPayments { get; set; }
 
         /// <summary>
         /// The status of the legacy payments capability of the account.

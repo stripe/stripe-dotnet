@@ -6,6 +6,14 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A subscription schedule allows you to create and manage the lifecycle of a subscription
+    /// by predefining expected changes.
+    ///
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/billing/subscriptions/subscription-schedules">Subscription
+    /// Schedules</a>.
+    /// </summary>
     public class SubscriptionSchedule : StripeEntity<SubscriptionSchedule>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -168,6 +176,37 @@ namespace Stripe
         [JsonProperty("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
+        #endregion
+
+        #region Expandable TestClock
+
+        /// <summary>
+        /// (ID of the TestHelpers.TestClock)
+        /// ID of the test clock this subscription schedule belongs to.
+        /// </summary>
+        [JsonIgnore]
+        public string TestClockId
+        {
+            get => this.InternalTestClock?.Id;
+            set => this.InternalTestClock = SetExpandableFieldId(value, this.InternalTestClock);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the test clock this subscription schedule belongs to.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public TestHelpers.TestClock TestClock
+        {
+            get => this.InternalTestClock?.ExpandedObject;
+            set => this.InternalTestClock = SetExpandableFieldObject(value, this.InternalTestClock);
+        }
+
+        [JsonProperty("test_clock")]
+        [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
+        internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
         #endregion
     }
 }

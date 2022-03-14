@@ -6,6 +6,10 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Subscription items allow you to create customer subscriptions with more than one plan,
+    /// making it easy to represent complex billing relationships.
+    /// </summary>
     public class SubscriptionItem : StripeEntity<SubscriptionItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -66,7 +70,7 @@ namespace Stripe
         /// Related guides: <a
         /// href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up a
         /// subscription</a> and more about <a
-        /// href="https://stripe.com/docs/billing/prices-guide">products and prices</a>.
+        /// href="https://stripe.com/docs/products-prices/overview">products and prices</a>.
         /// </summary>
         [JsonProperty("plan")]
         public Plan Plan { get; set; }
@@ -87,7 +91,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/subscriptions/set-up-subscription">Set up a
         /// subscription</a>, <a href="https://stripe.com/docs/billing/invoices/create">create an
         /// invoice</a>, and more about <a
-        /// href="https://stripe.com/docs/billing/prices-guide">products and prices</a>.
+        /// href="https://stripe.com/docs/products-prices/overview">products and prices</a>.
         /// </summary>
         [JsonProperty("price")]
         public Price Price { get; set; }

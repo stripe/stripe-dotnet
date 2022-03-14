@@ -4,6 +4,15 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// Stripe needs to collect certain pieces of information about each account created. These
+    /// requirements can differ depending on the account's country. The Country Specs API makes
+    /// these rules available to your integration.
+    ///
+    /// You can also view the information from this API call as <a
+    /// href="https://stripe.com/docs/connect/required-verification-information">an online
+    /// guide</a>.
+    /// </summary>
     public class CountrySpec : StripeEntity<CountrySpec>, IHasId, IHasObject
     {
         /// <summary>

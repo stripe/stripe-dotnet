@@ -6,6 +6,12 @@ namespace Stripe.Radar
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Value lists allow you to group values together which can then be referenced in rules.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/radar/lists#managing-list-items">Default
+    /// Stripe Lists</a>.
+    /// </summary>
     public class ValueList : StripeEntity<ValueList>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -47,10 +53,10 @@ namespace Stripe.Radar
 
         /// <summary>
         /// The type of items in the value list. One of <c>card_fingerprint</c>, <c>card_bin</c>,
-        /// <c>email</c>, <c>ip_address</c>, <c>country</c>, <c>string</c>, or
-        /// <c>case_sensitive_string</c>.
+        /// <c>email</c>, <c>ip_address</c>, <c>country</c>, <c>string</c>,
+        /// <c>case_sensitive_string</c>, or <c>customer_id</c>.
         /// One of: <c>card_bin</c>, <c>card_fingerprint</c>, <c>case_sensitive_string</c>,
-        /// <c>country</c>, <c>email</c>, <c>ip_address</c>, or <c>string</c>.
+        /// <c>country</c>, <c>customer_id</c>, <c>email</c>, <c>ip_address</c>, or <c>string</c>.
         /// </summary>
         [JsonProperty("item_type")]
         public string ItemType { get; set; }

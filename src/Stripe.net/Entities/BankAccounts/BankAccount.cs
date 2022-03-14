@@ -5,6 +5,17 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// These bank accounts are payment methods on <c>Customer</c> objects.
+    ///
+    /// On the other hand <a href="https://stripe.com/docs/api#external_accounts">External
+    /// Accounts</a> are transfer destinations on <c>Account</c> objects for <a
+    /// href="https://stripe.com/docs/connect/custom-accounts">Custom accounts</a>. They can be
+    /// bank accounts or debit cards as well, and are documented in the links above.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/payments/bank-debits-transfers">Bank
+    /// Debits and Transfers</a>.
+    /// </summary>
     public class BankAccount : StripeEntity<BankAccount>, IHasId, IHasMetadata, IHasObject, IExternalAccount, IPaymentSource
     {
         /// <summary>
@@ -62,6 +73,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("account_holder_type")]
         public string AccountHolderType { get; set; }
+
+        /// <summary>
+        /// The bank account type. This can only be <c>checking</c> or <c>savings</c> in most
+        /// countries. In Japan, this can only be <c>futsu</c> or <c>toza</c>.
+        /// </summary>
+        [JsonProperty("account_type")]
+        public string AccountType { get; set; }
 
         /// <summary>
         /// A set of available payout methods for this bank account. Only values from this set

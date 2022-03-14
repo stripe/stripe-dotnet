@@ -6,6 +6,13 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// This object represents a customer of your business. It lets you create recurring charges
+    /// and track payments that belong to the same customer.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/payments/save-during-payment">Save a
+    /// card during payment</a>.
+    /// </summary>
     public class Customer : StripeEntity<Customer>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -216,5 +223,36 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_ids")]
         public StripeList<TaxId> TaxIds { get; set; }
+
+        #region Expandable TestClock
+
+        /// <summary>
+        /// (ID of the TestHelpers.TestClock)
+        /// ID of the test clock this customer belongs to.
+        /// </summary>
+        [JsonIgnore]
+        public string TestClockId
+        {
+            get => this.InternalTestClock?.Id;
+            set => this.InternalTestClock = SetExpandableFieldId(value, this.InternalTestClock);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the test clock this customer belongs to.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public TestHelpers.TestClock TestClock
+        {
+            get => this.InternalTestClock?.ExpandedObject;
+            set => this.InternalTestClock = SetExpandableFieldObject(value, this.InternalTestClock);
+        }
+
+        [JsonProperty("test_clock")]
+        [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
+        internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
+        #endregion
     }
 }

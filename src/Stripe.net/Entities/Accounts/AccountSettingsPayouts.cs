@@ -9,8 +9,8 @@ namespace Stripe
         /// A Boolean indicating if Stripe should try to reclaim negative balances from an attached
         /// bank account. See our <a
         /// href="https://stripe.com/docs/connect/account-balances">Understanding Connect Account
-        /// Balances</a> documentation for details. Default value is <c>true</c> for Express
-        /// accounts and <c>false</c> for Custom accounts.
+        /// Balances</a> documentation for details. Default value is <c>false</c> for Custom
+        /// accounts, otherwise <c>true</c>.
         /// </summary>
         [JsonProperty("debit_negative_balances")]
         public bool DebitNegativeBalances { get; set; }

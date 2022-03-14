@@ -6,6 +6,20 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// This is an object representing a person associated with a Stripe account.
+    ///
+    /// A platform cannot access a Standard or Express account's persons after the account
+    /// starts onboarding, such as after generating an account link for the account. See the <a
+    /// href="https://stripe.com/docs/connect/standard-accounts">Standard onboarding</a> or <a
+    /// href="https://stripe.com/docs/connect/express-accounts">Express onboarding
+    /// documentation</a> for information about platform pre-filling and account onboarding
+    /// steps.
+    ///
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/connect/identity-verification-api#person-information">Handling
+    /// Identity Verification with the API</a>.
+    /// </summary>
     public class Person : StripeEntity<Person>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -80,6 +94,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("first_name_kanji")]
         public string FirstNameKanji { get; set; }
+
+        /// <summary>
+        /// A list of alternate names or aliases that the person is known by.
+        /// </summary>
+        [JsonProperty("full_name_aliases")]
+        public List<string> FullNameAliases { get; set; }
+
+        /// <summary>
+        /// Information about the upcoming new requirements for this person, including what
+        /// information needs to be collected, and by when.
+        /// </summary>
+        [JsonProperty("future_requirements")]
+        public PersonFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
         /// The person's gender (International regulations require either "male" or "female").

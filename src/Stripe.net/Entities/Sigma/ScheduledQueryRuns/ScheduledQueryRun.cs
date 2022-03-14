@@ -5,6 +5,12 @@ namespace Stripe.Sigma
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// If you have <a href="https://stripe.com/docs/sigma/scheduled-queries">scheduled a Sigma
+    /// query</a>, you'll receive a <c>sigma.scheduled_query_run.created</c> webhook each time
+    /// the query runs. The webhook contains a <c>ScheduledQueryRun</c> object, which you can
+    /// use to retrieve the query results.
+    /// </summary>
     public class ScheduledQueryRun : StripeEntity<ScheduledQueryRun>, IHasId, IHasObject
     {
         /// <summary>

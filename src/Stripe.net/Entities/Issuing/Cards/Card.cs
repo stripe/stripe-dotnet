@@ -6,6 +6,10 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// You can <a href="https://stripe.com/docs/issuing/cards">create physical or virtual
+    /// cards</a> that are issued to cardholders.
+    /// </summary>
     public class Card : StripeEntity<Card>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -204,5 +208,11 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// Information relating to digital wallets (like Apple Pay and Google Pay).
+        /// </summary>
+        [JsonProperty("wallets")]
+        public CardWallets Wallets { get; set; }
     }
 }

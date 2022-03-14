@@ -31,6 +31,13 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
+        /// When enabled, this PaymentIntent will accept payment methods that you have enabled in
+        /// the Dashboard and are compatible with this PaymentIntent's other parameters.
+        /// </summary>
+        [JsonProperty("automatic_payment_methods")]
+        public PaymentIntentAutomaticPaymentMethodsOptions AutomaticPaymentMethods { get; set; }
+
+        /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>

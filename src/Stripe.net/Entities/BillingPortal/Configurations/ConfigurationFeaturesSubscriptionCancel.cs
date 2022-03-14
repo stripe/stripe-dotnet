@@ -5,6 +5,9 @@ namespace Stripe.BillingPortal
 
     public class ConfigurationFeaturesSubscriptionCancel : StripeEntity<ConfigurationFeaturesSubscriptionCancel>
     {
+        [JsonProperty("cancellation_reason")]
+        public ConfigurationFeaturesSubscriptionCancelCancellationReason CancellationReason { get; set; }
+
         /// <summary>
         /// Whether the feature is enabled.
         /// </summary>

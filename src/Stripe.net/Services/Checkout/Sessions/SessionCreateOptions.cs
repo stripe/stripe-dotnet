@@ -1,17 +1,29 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SessionCreateOptions : BaseOptions, IHasMetadata
     {
+        /// <summary>
+        /// Configure actions after a Checkout Session has expired.
+        /// </summary>
+        [JsonProperty("after_expiration")]
+        public SessionAfterExpirationOptions AfterExpiration { get; set; }
+
         /// <summary>
         /// Enables user redeemable promotion codes.
         /// </summary>
         [JsonProperty("allow_promotion_codes")]
         public bool? AllowPromotionCodes { get; set; }
 
+        /// <summary>
+        /// Settings for automatic tax lookup for this session and resulting payments, invoices, and
+        /// subscriptions.
+        /// </summary>
         [JsonProperty("automatic_tax")]
         public SessionAutomaticTaxOptions AutomaticTax { get; set; }
 
@@ -37,16 +49,25 @@ namespace Stripe.Checkout
         public string ClientReferenceId { get; set; }
 
         /// <summary>
+        /// Configure fields for the Checkout Session to gather active consent from customers.
+        /// </summary>
+        [JsonProperty("consent_collection")]
+        public SessionConsentCollectionOptions ConsentCollection { get; set; }
+
+        /// <summary>
         /// ID of an existing Customer, if one exists. In <c>payment</c> mode, the customer’s most
         /// recent card payment method will be used to prefill the email, name, card details, and
         /// billing address on the Checkout page. In <c>subscription</c> mode, the customer’s <a
         /// href="https://stripe.com/docs/api/customers/update#update_customer-invoice_settings-default_payment_method">default
         /// payment method</a> will be used if it’s a card, and otherwise the most recent card will
-        /// be used. A valid billing address is required for Checkout to prefill the customer's card
-        /// details.
+        /// be used. A valid billing address, billing name and billing email are required on the
+        /// payment method for Checkout to prefill the customer's card details.
         ///
-        /// If the customer changes their email on the Checkout page, the Customer object will be
-        /// updated with the new email.
+        /// If the Customer already has a valid <a
+        /// href="https://stripe.com/docs/api/customers/object#customer_object-email">email</a> set,
+        /// the email will be prefilled and not editable in Checkout. If the Customer does not have
+        /// a valid <c>email</c>, Checkout will set the email entered during the session on the
+        /// Customer.
         ///
         /// If blank for Checkout Sessions in <c>payment</c> or <c>subscription</c> mode, Checkout
         /// will create a new Customer object based on information provided during the payment flow.
@@ -58,6 +79,24 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
+
+        /// <summary>
+        /// Configure whether a Checkout Session creates a <a
+        /// href="https://stripe.com/docs/api/customers">Customer</a> during Session confirmation.
+        ///
+        /// When a Customer is not created, you can still retrieve email, address, and other
+        /// customer data entered in Checkout with <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/object#checkout_session_object-customer_details">customer_details</a>.
+        ///
+        /// Sessions that do not create Customers will instead create <a
+        /// href="https://support.stripe.com/questions/guest-customer-faq">Guest Customers</a> in
+        /// the Dashboard.
+        ///
+        /// Can only be set in <c>payment</c> and <c>setup</c> mode.
+        /// One of: <c>always</c>, or <c>if_required</c>.
+        /// </summary>
+        [JsonProperty("customer_creation")]
+        public string CustomerCreation { get; set; }
 
         /// <summary>
         /// If provided, this value will be used when the Customer object is created. If not
@@ -83,6 +122,15 @@ namespace Stripe.Checkout
         public List<SessionDiscountOptions> Discounts { get; set; }
 
         /// <summary>
+        /// The Epoch time in seconds at which the Checkout Session will expire. It can be anywhere
+        /// from 1 to 24 hours after Checkout Session creation. By default, this value is 24 hours
+        /// from creation.
+        /// </summary>
+        [JsonProperty("expires_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? ExpiresAt { get; set; }
+
+        /// <summary>
         /// A list of items the customer is purchasing. Use this parameter to pass one-time or
         /// recurring <a href="https://stripe.com/docs/api/prices">Prices</a>.
         ///
@@ -100,11 +148,11 @@ namespace Stripe.Checkout
         /// The IETF language tag of the locale Checkout is displayed in. If blank or <c>auto</c>,
         /// the browser's locale is used.
         /// One of: <c>auto</c>, <c>bg</c>, <c>cs</c>, <c>da</c>, <c>de</c>, <c>el</c>, <c>en</c>,
-        /// <c>en-GB</c>, <c>es</c>, <c>es-419</c>, <c>et</c>, <c>fi</c>, <c>fr</c>, <c>fr-CA</c>,
-        /// <c>hr</c>, <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>ko</c>, <c>lt</c>, <c>lv</c>,
-        /// <c>ms</c>, <c>mt</c>, <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>, <c>pt-BR</c>,
-        /// <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>, <c>tr</c>, <c>vi</c>,
-        /// <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
+        /// <c>en-GB</c>, <c>es</c>, <c>es-419</c>, <c>et</c>, <c>fi</c>, <c>fil</c>, <c>fr</c>,
+        /// <c>fr-CA</c>, <c>hr</c>, <c>hu</c>, <c>id</c>, <c>it</c>, <c>ja</c>, <c>ko</c>,
+        /// <c>lt</c>, <c>lv</c>, <c>ms</c>, <c>mt</c>, <c>nb</c>, <c>nl</c>, <c>pl</c>, <c>pt</c>,
+        /// <c>pt-BR</c>, <c>ro</c>, <c>ru</c>, <c>sk</c>, <c>sl</c>, <c>sv</c>, <c>th</c>,
+        /// <c>tr</c>, <c>vi</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
         /// </summary>
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -155,6 +203,17 @@ namespace Stripe.Checkout
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
+        /// Controls phone number collection settings for the session.
+        ///
+        /// We recommend that you review your privacy policy and check with your legal contacts
+        /// before using this feature. Learn more about <a
+        /// href="https://stripe.com/docs/payments/checkout/phone-numbers">collecting phone numbers
+        /// with Checkout</a>.
+        /// </summary>
+        [JsonProperty("phone_number_collection")]
+        public SessionPhoneNumberCollectionOptions PhoneNumberCollection { get; set; }
+
+        /// <summary>
         /// A subset of parameters to be passed to SetupIntent creation for Checkout Sessions in
         /// <c>setup</c> mode.
         /// </summary>
@@ -169,7 +228,14 @@ namespace Stripe.Checkout
         public SessionShippingAddressCollectionOptions ShippingAddressCollection { get; set; }
 
         /// <summary>
-        /// The shipping rate to apply to this Session. Currently, only up to one may be specified.
+        /// The shipping rate options to apply to this Session.
+        /// </summary>
+        [JsonProperty("shipping_options")]
+        public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
+
+        /// <summary>
+        /// [Deprecated] The shipping rate to apply to this Session. Only up to one may be
+        /// specified.
         /// </summary>
         [JsonProperty("shipping_rates")]
         public List<string> ShippingRates { get; set; }
@@ -193,9 +259,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The URL to which Stripe should send customers when payment or setup is complete. If
-        /// you’d like access to the Checkout Session for the successful payment, read more about it
-        /// in the guide on <a
-        /// href="https://stripe.com/docs/payments/checkout/fulfill-orders">fulfilling orders</a>.
+        /// you’d like to use information from the successful Checkout Session on your page, read
+        /// the guide on <a
+        /// href="https://stripe.com/docs/payments/checkout/custom-success-page">customizing your
+        /// success page</a>.
         /// </summary>
         [JsonProperty("success_url")]
         public string SuccessUrl { get; set; }

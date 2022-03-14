@@ -27,7 +27,8 @@ namespace Stripe
 
         /// <summary>
         /// The timestamp for the usage event. This timestamp must be within the current billing
-        /// period of the subscription of the provided <c>subscription_item</c>.
+        /// period of the subscription of the provided <c>subscription_item</c>, and must not be in
+        /// the future.
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

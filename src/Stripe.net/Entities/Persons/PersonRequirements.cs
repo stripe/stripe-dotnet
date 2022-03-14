@@ -7,6 +7,13 @@ namespace Stripe
     public class PersonRequirements : StripeEntity<PersonRequirements>
     {
         /// <summary>
+        /// Fields that are due and can be satisfied by providing the corresponding alternative
+        /// fields instead.
+        /// </summary>
+        [JsonProperty("alternatives")]
+        public List<PersonRequirementsAlternative> Alternatives { get; set; }
+
+        /// <summary>
         /// Fields that need to be collected to keep the person's account enabled. If not collected
         /// by the account's <c>current_deadline</c>, these fields appear in <c>past_due</c> as
         /// well, and the account is disabled.

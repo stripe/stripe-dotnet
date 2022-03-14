@@ -6,6 +6,10 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A Promotion Code represents a customer-redeemable code for a coupon. It can be used to
+    /// create multiple codes for a single coupon.
+    /// </summary>
     public class PromotionCode : StripeEntity<PromotionCode>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -38,8 +42,8 @@ namespace Stripe
         /// A coupon contains information about a percent-off or amount-off discount you might want
         /// to apply to a customer. Coupons may be applied to <a
         /// href="https://stripe.com/docs/api#invoices">invoices</a> or <a
-        /// href="https://stripe.com/docs/api#create_order-coupon">orders</a>. Coupons do not work
-        /// with conventional one-off <a
+        /// href="https://stripe.com/docs/api#create_order_legacy-coupon">orders</a>. Coupons do not
+        /// work with conventional one-off <a
         /// href="https://stripe.com/docs/api#create_charge">charges</a>.
         /// </summary>
         [JsonProperty("coupon")]

@@ -6,6 +6,15 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// This is an object representing a Stripe account. You can retrieve it to see properties
+    /// on the account like its current e-mail address or if the account is enabled yet to make
+    /// live charges.
+    ///
+    /// Some properties, marked below, are available only to platforms that want to <a
+    /// href="https://stripe.com/docs/connect/accounts">create and manage Express or Custom
+    /// accounts</a>.
+    /// </summary>
     public class Account : StripeEntity<Account>, IHasId, IHasMetadata, IHasObject, IPaymentSource
     {
         /// <summary>
@@ -95,6 +104,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("external_accounts")]
         public StripeList<IExternalAccount> ExternalAccounts { get; set; }
+
+        [JsonProperty("future_requirements")]
+        public AccountFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
         /// This is an object representing a person associated with a Stripe account.

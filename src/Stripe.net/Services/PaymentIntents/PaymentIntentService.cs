@@ -103,5 +103,15 @@ namespace Stripe
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
+
+        public virtual PaymentIntent VerifyMicrodeposits(string id, PaymentIntentVerifyMicrodepositsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/verify_microdeposits", options, requestOptions);
+        }
+
+        public virtual Task<PaymentIntent> VerifyMicrodepositsAsync(string id, PaymentIntentVerifyMicrodepositsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/verify_microdeposits", options, requestOptions, cancellationToken);
+        }
     }
 }

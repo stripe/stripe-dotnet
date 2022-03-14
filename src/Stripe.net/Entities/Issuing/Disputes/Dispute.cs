@@ -6,6 +6,14 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// As a <a href="https://stripe.com/docs/issuing">card issuer</a>, you can dispute
+    /// transactions that the cardholder does not recognize, suspects to be fraudulent, or has
+    /// other issues with.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/disputes">Disputing
+    /// Transactions</a>.
+    /// </summary>
     public class Dispute : StripeEntity<Dispute>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>

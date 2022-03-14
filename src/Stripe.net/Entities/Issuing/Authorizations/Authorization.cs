@@ -6,6 +6,15 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// When an <a href="https://stripe.com/docs/issuing">issued card</a> is used to make a
+    /// purchase, an Issuing <c>Authorization</c> object is created. <a
+    /// href="https://stripe.com/docs/issuing/purchases/authorizations">Authorizations</a> must
+    /// be approved for the purchase to be completed successfully.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/authorizations">Issued
+    /// Card Authorizations</a>.
+    /// </summary>
     public class Authorization : StripeEntity<Authorization>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>

@@ -6,6 +6,15 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Tax rates can be applied to <a
+    /// href="https://stripe.com/docs/billing/invoices/tax-rates">invoices</a>, <a
+    /// href="https://stripe.com/docs/billing/subscriptions/taxes">subscriptions</a> and <a
+    /// href="https://stripe.com/docs/payments/checkout/set-up-a-subscription#tax-rates">Checkout
+    /// Sessions</a> to collect tax.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax Rates</a>.
+    /// </summary>
     public class TaxRate : StripeEntity<TaxRate>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -99,7 +108,8 @@ namespace Stripe
 
         /// <summary>
         /// The high-level tax type, such as <c>vat</c> or <c>sales_tax</c>.
-        /// One of: <c>gst</c>, <c>hst</c>, <c>pst</c>, <c>qst</c>, <c>sales_tax</c>, or <c>vat</c>.
+        /// One of: <c>gst</c>, <c>hst</c>, <c>jct</c>, <c>pst</c>, <c>qst</c>, <c>rst</c>,
+        /// <c>sales_tax</c>, or <c>vat</c>.
         /// </summary>
         [JsonProperty("tax_type")]
         public string TaxType { get; set; }

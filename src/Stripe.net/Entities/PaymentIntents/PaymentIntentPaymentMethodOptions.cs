@@ -14,6 +14,12 @@ namespace Stripe
         [JsonProperty("alipay")]
         public PaymentIntentPaymentMethodOptionsAlipay Alipay { get; set; }
 
+        [JsonProperty("au_becs_debit")]
+        public PaymentIntentPaymentMethodOptionsAuBecsDebit AuBecsDebit { get; set; }
+
+        [JsonProperty("bacs_debit")]
+        public PaymentIntentPaymentMethodOptionsBacsDebit BacsDebit { get; set; }
+
         [JsonProperty("bancontact")]
         public PaymentIntentPaymentMethodOptionsBancontact Bancontact { get; set; }
 
@@ -26,8 +32,29 @@ namespace Stripe
         [JsonProperty("card_present")]
         public PaymentIntentPaymentMethodOptionsCardPresent CardPresent { get; set; }
 
+        [JsonProperty("eps")]
+        public PaymentIntentPaymentMethodOptionsEps Eps { get; set; }
+
+        [JsonProperty("fpx")]
+        public PaymentIntentPaymentMethodOptionsFpx Fpx { get; set; }
+
+        [JsonProperty("giropay")]
+        public PaymentIntentPaymentMethodOptionsGiropay Giropay { get; set; }
+
+        [JsonProperty("grabpay")]
+        public PaymentIntentPaymentMethodOptionsGrabpay Grabpay { get; set; }
+
         [JsonProperty("ideal")]
         public PaymentIntentPaymentMethodOptionsIdeal Ideal { get; set; }
+
+        [JsonProperty("interac_present")]
+        public PaymentIntentPaymentMethodOptionsInteracPresent InteracPresent { get; set; }
+
+        [JsonProperty("klarna")]
+        public PaymentIntentPaymentMethodOptionsKlarna Klarna { get; set; }
+
+        [JsonProperty("konbini")]
+        public PaymentIntentPaymentMethodOptionsKonbini Konbini { get; set; }
 
         [JsonProperty("oxxo")]
         public PaymentIntentPaymentMethodOptionsOxxo Oxxo { get; set; }

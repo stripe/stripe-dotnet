@@ -4,6 +4,13 @@ namespace Stripe.Terminal
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// A Reader represents a physical device for accepting payment details.
+    ///
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/terminal/payments/connect-reader">Connecting to a
+    /// Reader</a>.
+    /// </summary>
     public class Reader : StripeEntity<Reader>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -31,8 +38,10 @@ namespace Stripe.Terminal
         public string DeviceSwVersion { get; set; }
 
         /// <summary>
-        /// Type of reader, one of <c>bbpos_chipper2x</c> or <c>verifone_P400</c>.
-        /// One of: <c>bbpos_chipper2x</c>, or <c>verifone_P400</c>.
+        /// Type of reader, one of <c>bbpos_wisepad3</c>, <c>stripe_m2</c>, <c>bbpos_chipper2x</c>,
+        /// <c>bbpos_wisepos_e</c>, or <c>verifone_P400</c>.
+        /// One of: <c>bbpos_chipper2x</c>, <c>bbpos_wisepad3</c>, <c>bbpos_wisepos_e</c>,
+        /// <c>stripe_m2</c>, or <c>verifone_P400</c>.
         /// </summary>
         [JsonProperty("device_type")]
         public string DeviceType { get; set; }

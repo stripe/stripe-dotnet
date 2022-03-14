@@ -7,6 +7,40 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Invoices are statements of amounts owed by a customer, and are either generated one-off,
+    /// or generated periodically from a subscription.
+    ///
+    /// They contain <a href="https://stripe.com/docs/api#invoiceitems">invoice items</a>, and
+    /// proration adjustments that may be caused by subscription upgrades/downgrades (if
+    /// necessary).
+    ///
+    /// If your invoice is configured to be billed through automatic charges, Stripe
+    /// automatically finalizes your invoice and attempts payment. Note that finalizing the
+    /// invoice, <a href="https://stripe.com/docs/billing/invoices/workflow/#auto_advance">when
+    /// automatic</a>, does not happen immediately as the invoice is created. Stripe waits until
+    /// one hour after the last webhook was successfully sent (or the last webhook timed out
+    /// after failing). If you (and the platforms you may have connected to) have no webhooks
+    /// configured, Stripe waits one hour after creation to finalize the invoice.
+    ///
+    /// If your invoice is configured to be billed by sending an email, then based on your <a
+    /// href="https://dashboard.stripe.com/account/billing/automatic">email settings</a>, Stripe
+    /// will email the invoice to your customer and await payment. These emails can contain a
+    /// link to a hosted page to pay the invoice.
+    ///
+    /// Stripe applies any customer credit on the account before determining the amount due for
+    /// the invoice (i.e., the amount that will be actually charged). If the amount due for the
+    /// invoice is less than Stripe's <a
+    /// href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">minimum
+    /// allowed charge per currency</a>, the invoice is automatically marked paid, and we add
+    /// the amount due to the customer's credit balance which is applied to the next invoice.
+    ///
+    /// More details on the customer's credit balance are <a
+    /// href="https://stripe.com/docs/billing/customer/balance">here</a>.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/billing/invoices/sending">Send Invoices
+    /// to Customers</a>.
+    /// </summary>
     public class Invoice : StripeEntity<Invoice>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -547,6 +581,13 @@ namespace Stripe
         [JsonProperty("paid")]
         public bool Paid { get; set; }
 
+        /// <summary>
+        /// Returns true if the invoice was manually marked paid, returns false if the invoice
+        /// hasn't been paid yet or was paid on Stripe.
+        /// </summary>
+        [JsonProperty("paid_out_of_band")]
+        public bool PaidOutOfBand { get; set; }
+
         #region Expandable PaymentIntent
 
         /// <summary>
@@ -727,6 +768,37 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax")]
         public long? Tax { get; set; }
+
+        #region Expandable TestClock
+
+        /// <summary>
+        /// (ID of the TestHelpers.TestClock)
+        /// ID of the test clock this invoice belongs to.
+        /// </summary>
+        [JsonIgnore]
+        public string TestClockId
+        {
+            get => this.InternalTestClock?.Id;
+            set => this.InternalTestClock = SetExpandableFieldId(value, this.InternalTestClock);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the test clock this invoice belongs to.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public TestHelpers.TestClock TestClock
+        {
+            get => this.InternalTestClock?.ExpandedObject;
+            set => this.InternalTestClock = SetExpandableFieldObject(value, this.InternalTestClock);
+        }
+
+        [JsonProperty("test_clock")]
+        [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
+        internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
+        #endregion
 
         [JsonProperty("threshold_reason")]
         public InvoiceThresholdReason ThresholdReason { get; set; }
