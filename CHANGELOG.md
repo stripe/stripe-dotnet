@@ -1,5 +1,17 @@
 # Changelog
 
+## 39.97.0 - 2022-03-11
+* [#2436](https://github.com/stripe/stripe-dotnet/pull/2436) API Updates
+  * Add support for `Mandate` on `ChargePaymentMethodDetailsCard`
+  * Add support for `MandateOptions` on `PaymentIntentPaymentMethodOptionsCardOptions`, `PaymentIntentPaymentMethodOptionsCard`, `SetupIntentPaymentMethodOptionsCardOptions`, and `SetupIntentPaymentMethodOptionsCard`
+  * Add support for `CardAwaitNotification` on `PaymentIntentNextAction`
+  * Add support for `CustomerNotification` on `PaymentIntentProcessingCard`
+  
+
+## 39.96.0 - 2022-03-09
+* [#2435](https://github.com/stripe/stripe-dotnet/pull/2435) API Updates
+  * Add support for `TestClock` on `CustomerListOptions`
+
 ## 39.95.0 - 2022-03-02
 * [#2432](https://github.com/stripe/stripe-dotnet/pull/2432) API Updates
   * Add support for new resources `InvoiceLineItemProrationDetails` and `InvoiceLineItemProrationDetailsCreditedItems`

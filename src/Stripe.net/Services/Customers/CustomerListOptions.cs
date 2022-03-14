@@ -7,5 +7,8 @@ namespace Stripe
     {
         [JsonProperty("email")]
         public string Email { get; set; }
+
+        [JsonProperty("test_clock")]
+        public string TestClock { get; set; }
     }
 }

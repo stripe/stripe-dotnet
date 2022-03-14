@@ -15,6 +15,12 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsCardInstallments Installments { get; set; }
 
         /// <summary>
+        /// Configuration options for setting up an eMandate for cards issued in India.
+        /// </summary>
+        [JsonProperty("mandate_options")]
+        public PaymentIntentPaymentMethodOptionsCardMandateOptions MandateOptions { get; set; }
+
+        /// <summary>
         /// Selected network to process this payment intent on. Depends on the available networks of
         /// the card attached to the payment intent. Can be only set confirm-time.
         /// One of: <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
