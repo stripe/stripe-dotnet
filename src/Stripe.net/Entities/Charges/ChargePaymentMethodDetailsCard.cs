@@ -93,6 +93,12 @@ namespace Stripe
         public string Last4 { get; set; }
 
         /// <summary>
+        /// ID of the mandate used to make this payment or created by it.
+        /// </summary>
+        [JsonProperty("mandate")]
+        public string Mandate { get; set; }
+
+        /// <summary>
         /// True if this payment was marked as MOTO and out of scope for SCA.
         /// </summary>
         [JsonProperty("moto")]

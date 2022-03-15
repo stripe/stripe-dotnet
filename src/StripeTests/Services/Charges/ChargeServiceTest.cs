@@ -49,12 +49,7 @@ namespace StripeTests
             this.listOptions = new ChargeListOptions
             {
                 Limit = 1,
-            };
-
-            this.searchOptions = new ChargeSearchOptions
-            {
-                Limit = 1,
-            };
+            };  
         }
 
         [Fact]
@@ -145,44 +140,6 @@ namespace StripeTests
         public async Task ListAutoPagingAsync()
         {
             var charge = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
-            Assert.NotNull(charge);
-            Assert.Equal("charge", charge.Object);
-        }
-
-        [Fact]
-        public void Search()
-        {
-            var charges = this.service.Search(this.searchOptions);
-            this.AssertRequest(HttpMethod.Get, "/v1/charges/search");
-            Assert.NotNull(charges);
-            Assert.Equal("search_result", charges.Object);
-            Assert.Single(charges.Data);
-            Assert.Equal("charge", charges.Data[0].Object);
-        }
-
-        [Fact]
-        public async Task SearchAsync()
-        {
-            var charges = await this.service.SearchAsync(this.searchOptions);
-            this.AssertRequest(HttpMethod.Get, "/v1/charges/search");
-            Assert.NotNull(charges);
-            Assert.Equal("search_result", charges.Object);
-            Assert.Single(charges.Data);
-            Assert.Equal("charge", charges.Data[0].Object);
-        }
-
-        [Fact]
-        public void SearchAutoPaging()
-        {
-            var charge = this.service.SearchAutoPaging(this.searchOptions).First();
-            Assert.NotNull(charge);
-            Assert.Equal("charge", charge.Object);
-        }
-
-        [Fact]
-        public async Task SearchAutoPagingAsync()
-        {
-            var charge = await this.service.SearchAutoPagingAsync(this.searchOptions).FirstAsync();
             Assert.NotNull(charge);
             Assert.Equal("charge", charge.Object);
         }
