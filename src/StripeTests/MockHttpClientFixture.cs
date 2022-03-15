@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -57,7 +58,8 @@ namespace StripeTests
         /// <param name="path">The HTTP path.</param>
         /// <param name="status">The status code to return.</param>
         /// <param name="response">The response body to return.</param>
-        public void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response)
+        /// <param name="query">The HTTP query.</param>
+        public void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query = null)
         {
             var responseMessage = new HttpResponseMessage(status);
             responseMessage.Content = new StringContent(response);
@@ -66,8 +68,9 @@ namespace StripeTests
                 .Setup<Task<HttpResponseMessage>>(
                     "SendAsync",
                     ItExpr.Is<HttpRequestMessage>(m =>
-                        m.Method == method &&
-                        m.RequestUri.AbsolutePath == path),
+                        (m.Method == method &&
+                        m.RequestUri.AbsolutePath == path) &&
+                        (query == null || m.RequestUri.Query == query)),
                     ItExpr.IsAny<CancellationToken>())
                 .Returns(Task.FromResult(responseMessage));
         }

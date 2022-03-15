@@ -39,6 +39,12 @@ namespace StripeTests
                     continue;
                 }
 
+                // StripeSearchResult is a generic type that is handled separately
+                if (modelClass == typeof(StripeSearchResult<>))
+                {
+                    continue;
+                }
+
                 results.Add(modelClass.Name);
             }
 

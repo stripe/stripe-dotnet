@@ -444,6 +444,117 @@ namespace Stripe
             }
         }
 
+        protected IEnumerable<T> SearchRequestAutoPaging<T>(
+            string url,
+            SearchOptions options,
+            RequestOptions requestOptions)
+            where T : IStripeEntity
+        {
+#if NET461
+            return
+                this.SearchRequestAutoPagingSync<T>(url, options, requestOptions);
+#else
+            return AsyncUtils.ToEnumerable(
+                this.SearchRequestAutoPagingAsync<T>(url, options, requestOptions));
+#endif
+        }
+
+#if NET461
+        private IEnumerable<T> SearchRequestAutoPagingSync<T>(
+            string url,
+            SearchOptions options,
+            RequestOptions requestOptions)
+            where T : IStripeEntity
+        {
+            var page = this.Request<StripeSearchResult<T>>(
+                HttpMethod.Get,
+                url,
+                options,
+                requestOptions);
+
+            options = options ?? new SearchOptions();
+
+            while (true)
+            {
+                foreach (var item in page)
+                {
+                    // Elements in `StripeList` instances are decoded by `StripeObjectConverter`,
+                    // which returns `null` for objects it doesn't know how to decode.
+                    // When auto-paginating, we simply ignore these null elements but still return
+                    // other elements.
+                    if (item == null)
+                    {
+                        continue;
+                    }
+
+                    yield return item;
+                }
+
+                if (!page.HasMore || string.IsNullOrEmpty(page.NextPage))
+                {
+                    break;
+                }
+
+                options.Page = page.NextPage;
+
+                page = this.Request<StripeSearchResult<T>>(
+                    HttpMethod.Get,
+                    url,
+                    options,
+                    requestOptions);
+            }
+}
+
+#endif
+        protected async IAsyncEnumerable<T> SearchRequestAutoPagingAsync<T>(
+            string url,
+            SearchOptions options,
+            RequestOptions requestOptions,
+            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+            where T : IStripeEntity
+        {
+            var page = await this.RequestAsync<StripeSearchResult<T>>(
+                HttpMethod.Get,
+                url,
+                options,
+                requestOptions,
+                cancellationToken);
+
+            options = options ?? new SearchOptions();
+
+            while (true)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                foreach (var item in page)
+                {
+                    // Elements in `StripeList` instances are decoded by `StripeObjectConverter`,
+                    // which returns `null` for objects it doesn't know how to decode.
+                    // When auto-paginating, we simply ignore these null elements but still return
+                    // other elements.
+                    if (item == null)
+                    {
+                        continue;
+                    }
+
+                    yield return item;
+                }
+
+                if (!page.HasMore || string.IsNullOrEmpty(page.NextPage))
+                {
+                    break;
+                }
+
+                options.Page = page.NextPage;
+
+                page = await this.RequestAsync<StripeSearchResult<T>>(
+                    HttpMethod.Get,
+                    url,
+                    options,
+                    requestOptions,
+                    cancellationToken);
+            }
+        }
+
         protected RequestOptions SetupRequestOptions(RequestOptions requestOptions)
         {
             if (requestOptions == null)

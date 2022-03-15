@@ -149,7 +149,8 @@ namespace StripeTests
         /// <param name="path">The HTTP path.</param>
         /// <param name="status">The status code to return.</param>
         /// <param name="response">The response body to return.</param>
-        protected void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response)
+        /// <param name="query">The HTTP query.</param>
+        protected void StubRequest(HttpMethod method, string path, HttpStatusCode status, string response, string query = null)
         {
             if (this.MockHttpClientFixture == null)
             {
@@ -160,7 +161,7 @@ namespace StripeTests
                     + "base constructor.");
             }
 
-            this.MockHttpClientFixture.StubRequest(method, path, status, response);
+            this.MockHttpClientFixture.StubRequest(method, path, status, response, query);
         }
 
         /// <summary>
