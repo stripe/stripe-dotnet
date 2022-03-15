@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -10,7 +11,6 @@ namespace Stripe
         IDeletable<Customer, CustomerDeleteOptions>,
         IListable<Customer, CustomerListOptions>,
         IRetrievable<Customer, CustomerGetOptions>,
-        ISearchable<Customer, CustomerSearchOptions>,
         IUpdatable<Customer, CustomerUpdateOptions>
     {
         public CustomerService()
@@ -75,24 +75,24 @@ namespace Stripe
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual StripeSearchResult<Customer> Search(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<PaymentMethod> ListPaymentMethods(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeSearchResult<Customer>>(HttpMethod.Get, "/v1/search/customers", options, requestOptions);
+            return this.Request<StripeList<PaymentMethod>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/payment_methods", options, requestOptions);
         }
 
-        public virtual Task<StripeSearchResult<Customer>> SearchAsync(CustomerSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<PaymentMethod>> ListPaymentMethodsAsync(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeSearchResult<Customer>>(HttpMethod.Get, "/v1/search/customers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<PaymentMethod>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/payment_methods", options, requestOptions, cancellationToken);
         }
 
-        public virtual IEnumerable<Customer> SearchAutoPaging(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<PaymentMethod> ListPaymentMethodsAutoPaging(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.SearchRequestAutoPaging<Customer>("/v1/search/customers", options, requestOptions);
+            return this.ListRequestAutoPaging<PaymentMethod>($"{this.InstanceUrl(id)}/payment_methods", options, requestOptions);
         }
 
-        public virtual IAsyncEnumerable<Customer> SearchAutoPagingAsync(CustomerSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<PaymentMethod> ListPaymentMethodsAutoPagingAsync(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.SearchRequestAutoPagingAsync<Customer>("/v1/search/customers", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<PaymentMethod>($"{this.InstanceUrl(id)}/payment_methods", options, requestOptions, cancellationToken);
         }
 
         public virtual Customer Update(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null)

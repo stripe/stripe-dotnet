@@ -23,12 +23,6 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsCardInstallmentsOptions Installments { get; set; }
 
         /// <summary>
-        /// Configuration options for setting up an eMandate for cards issued in India.
-        /// </summary>
-        [JsonProperty("mandate_options")]
-        public PaymentIntentPaymentMethodOptionsCardMandateOptionsOptions MandateOptions { get; set; }
-
-        /// <summary>
         /// When specified, this parameter indicates that a transaction will be marked as MOTO (Mail
         /// Order Telephone Order) and thus out of scope for SCA. This parameter can only be
         /// provided during confirmation.

@@ -6,12 +6,6 @@ namespace Stripe
     public class SetupIntentPaymentMethodOptionsCard : StripeEntity<SetupIntentPaymentMethodOptionsCard>
     {
         /// <summary>
-        /// Configuration options for setting up an eMandate for cards issued in India.
-        /// </summary>
-        [JsonProperty("mandate_options")]
-        public SetupIntentPaymentMethodOptionsCardMandateOptions MandateOptions { get; set; }
-
-        /// <summary>
         /// We strongly recommend that you rely on our SCA Engine to automatically prompt your
         /// customers for authentication based on risk level and <a
         /// href="https://stripe.com/docs/strong-customer-authentication">other requirements</a>.

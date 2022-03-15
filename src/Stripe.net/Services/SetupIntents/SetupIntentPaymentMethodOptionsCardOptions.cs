@@ -6,12 +6,6 @@ namespace Stripe
     public class SetupIntentPaymentMethodOptionsCardOptions : INestedOptions
     {
         /// <summary>
-        /// Configuration options for setting up an eMandate for cards issued in India.
-        /// </summary>
-        [JsonProperty("mandate_options")]
-        public SetupIntentPaymentMethodOptionsCardMandateOptionsOptions MandateOptions { get; set; }
-
-        /// <summary>
         /// When specified, this parameter signals that a card has been collected as MOTO (Mail
         /// Order Telephone Order) and thus out of scope for SCA. This parameter can only be
         /// provided during confirmation.

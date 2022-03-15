@@ -10,7 +10,6 @@ namespace Stripe
         ICreatable<Charge, ChargeCreateOptions>,
         IListable<Charge, ChargeListOptions>,
         IRetrievable<Charge, ChargeGetOptions>,
-        ISearchable<Charge, ChargeSearchOptions>,
         IUpdatable<Charge, ChargeUpdateOptions>
     {
         public ChargeService()
@@ -73,26 +72,6 @@ namespace Stripe
         public virtual IAsyncEnumerable<Charge> ListAutoPagingAsync(ChargeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
-        }
-
-        public virtual StripeSearchResult<Charge> Search(ChargeSearchOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<StripeSearchResult<Charge>>(HttpMethod.Get, "/v1/search/charges", options, requestOptions);
-        }
-
-        public virtual Task<StripeSearchResult<Charge>> SearchAsync(ChargeSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<StripeSearchResult<Charge>>(HttpMethod.Get, "/v1/search/charges", options, requestOptions, cancellationToken);
-        }
-
-        public virtual IEnumerable<Charge> SearchAutoPaging(ChargeSearchOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.SearchRequestAutoPaging<Charge>("/v1/search/charges", options, requestOptions);
-        }
-
-        public virtual IAsyncEnumerable<Charge> SearchAutoPagingAsync(ChargeSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.SearchRequestAutoPagingAsync<Charge>("/v1/search/charges", options, requestOptions, cancellationToken);
         }
 
         public virtual Charge Update(string id, ChargeUpdateOptions options, RequestOptions requestOptions = null)

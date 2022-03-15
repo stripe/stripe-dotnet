@@ -476,7 +476,6 @@ namespace Stripe
 
             while (true)
             {
-                string itemId = null;
                 foreach (var item in page)
                 {
                     // Elements in `StripeList` instances are decoded by `StripeObjectConverter`,
@@ -488,16 +487,15 @@ namespace Stripe
                         continue;
                     }
 
-                    itemId = ((IHasId)item).Id;
                     yield return item;
                 }
 
-                if (!page.HasMore || string.IsNullOrEmpty(itemId))
+                if (!page.HasMore || string.IsNullOrEmpty(page.Page))
                 {
                     break;
                 }
 
-                options.NextPage = page.NextPage;
+                options.NextPage = page.Page;
 
                 page = this.Request<StripeSearchResult<T>>(
                     HttpMethod.Get,
@@ -527,12 +525,8 @@ namespace Stripe
             while (true)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-
-                string itemId = null;
                 foreach (var item in page)
                 {
-                    cancellationToken.ThrowIfCancellationRequested();
-
                     // Elements in `StripeList` instances are decoded by `StripeObjectConverter`,
                     // which returns `null` for objects it doesn't know how to decode.
                     // When auto-paginating, we simply ignore these null elements but still return
@@ -542,16 +536,15 @@ namespace Stripe
                         continue;
                     }
 
-                    itemId = ((IHasId)item).Id;
                     yield return item;
                 }
 
-                if (!page.HasMore || string.IsNullOrEmpty(itemId))
+                if (!page.HasMore || string.IsNullOrEmpty(page.Page))
                 {
                     break;
                 }
 
-                options.NextPage = page.NextPage;
+                options.NextPage = page.Page;
 
                 page = await this.RequestAsync<StripeSearchResult<T>>(
                     HttpMethod.Get,
