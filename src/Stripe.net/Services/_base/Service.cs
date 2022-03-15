@@ -460,7 +460,7 @@ namespace Stripe
         }
 
 #if NET461
-        protected IEnumerable<T> SearchRequestAutoPagingSync<T>(
+        private IEnumerable<T> SearchRequestAutoPagingSync<T>(
             string url,
             SearchOptions options,
             RequestOptions requestOptions)
