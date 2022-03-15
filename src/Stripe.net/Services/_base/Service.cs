@@ -367,7 +367,7 @@ namespace Stripe
                     options,
                     requestOptions);
             }
-}
+        }
 
 #endif
         protected async IAsyncEnumerable<T> ListRequestAutoPagingAsync<T>(

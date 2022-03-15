@@ -17,7 +17,6 @@ namespace StripeTests
         private readonly ChargeCreateOptions createOptions;
         private readonly ChargeUpdateOptions updateOptions;
         private readonly ChargeListOptions listOptions;
-        private readonly ChargeSearchOptions searchOptions;
 
         public ChargeServiceTest(
             StripeMockFixture stripeMockFixture,
@@ -49,7 +48,7 @@ namespace StripeTests
             this.listOptions = new ChargeListOptions
             {
                 Limit = 1,
-            };  
+            };
         }
 
         [Fact]
