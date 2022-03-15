@@ -10,8 +10,8 @@ namespace Stripe
         [JsonProperty("limit")]
         public long? Limit { get; set; }
 
-        [JsonProperty("next_page")]
-        public string NextPage { get; set; }
+        [JsonProperty("page")]
+        public string Page { get; set; }
 
         [JsonProperty("query")]
         public string Query { get; set; }

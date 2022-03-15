@@ -52,15 +52,15 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v1/test_entities/search",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""page"": ""page2"", ""has_more"": true}",
+                @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page"": ""page2"", ""has_more"": true}",
                 query: "?query=my+query");
 
             this.StubRequest(
                 HttpMethod.Get,
                 "/v1/test_entities/search",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""page"": null, ""has_more"": false}",
-                "?next_page=page2&query=my+query");
+                @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""next_page"": null, ""has_more"": false}",
+                "?page=page2&query=my+query");
 
             var service = new TestService(this.StripeClient);
 
@@ -81,15 +81,15 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v1/test_entities/search",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""page"": ""page2"", ""has_more"": true}",
+                @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page"": ""page2"", ""has_more"": true}",
                 query: "?query=my+query");
 
             this.StubRequest(
                 HttpMethod.Get,
                 "/v1/test_entities/search",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""page"": null, ""has_more"": false}",
-                "?next_page=page2&query=my+query");
+                @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""next_page"": null, ""has_more"": false}",
+                "?page=page2&query=my+query");
 
             var service = new TestService(this.StripeClient);
 

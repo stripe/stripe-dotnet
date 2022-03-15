@@ -490,12 +490,12 @@ namespace Stripe
                     yield return item;
                 }
 
-                if (!page.HasMore || string.IsNullOrEmpty(page.Page))
+                if (!page.HasMore || string.IsNullOrEmpty(page.NextPage))
                 {
                     break;
                 }
 
-                options.NextPage = page.Page;
+                options.Page = page.NextPage;
 
                 page = this.Request<StripeSearchResult<T>>(
                     HttpMethod.Get,
@@ -539,12 +539,12 @@ namespace Stripe
                     yield return item;
                 }
 
-                if (!page.HasMore || string.IsNullOrEmpty(page.Page))
+                if (!page.HasMore || string.IsNullOrEmpty(page.NextPage))
                 {
                     break;
                 }
 
-                options.NextPage = page.Page;
+                options.Page = page.NextPage;
 
                 page = await this.RequestAsync<StripeSearchResult<T>>(
                     HttpMethod.Get,

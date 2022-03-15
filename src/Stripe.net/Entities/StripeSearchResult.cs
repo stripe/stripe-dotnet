@@ -36,8 +36,8 @@ namespace Stripe
         /// <summary>
         /// The URL for accessing the next page in search results.
         /// </summary>
-        [JsonProperty("page")]
-        public string Page { get; set; }
+        [JsonProperty("next_page")]
+        public string NextPage { get; set; }
 
         public IEnumerator<T> GetEnumerator()
         {
