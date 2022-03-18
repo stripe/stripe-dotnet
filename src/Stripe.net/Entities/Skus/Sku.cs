@@ -15,7 +15,7 @@ namespace Stripe
     ///
     /// Can also be used to manage inventory.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/orders">Tax, Shipping, and
+    /// Related guide: <a href="https://stripe.com/docs/orders-legacy">Tax, Shipping, and
     /// Inventory</a>.
     /// </summary>
     public class Sku : StripeEntity<Sku>, IHasId, IHasMetadata, IHasObject
