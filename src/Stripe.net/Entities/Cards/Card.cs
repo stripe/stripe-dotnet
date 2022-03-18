@@ -274,6 +274,14 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
+        /// For external accounts, possible values are <c>new</c> and <c>errored</c>. If a transfer
+        /// fails, the status is set to <c>errored</c> and transfers are stopped until account
+        /// details are updated.
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        /// <summary>
         /// If the card number is tokenized, this is the method that was used. Can be
         /// <c>android_pay</c> (includes Google Pay), <c>apple_pay</c>, <c>masterpass</c>,
         /// <c>visa_checkout</c>, or null.
