@@ -1,5 +1,11 @@
 # Changelog
 
+## 39.98.0 - 2022-03-18
+* [#2439](https://github.com/stripe/stripe-dotnet/pull/2439) API Updates
+  * Add support for `Status` on `Card`
+* [#2438](https://github.com/stripe/stripe-dotnet/pull/2438) Add missing enums for File purpose
+* [#2437](https://github.com/stripe/stripe-dotnet/pull/2437) Add support for SearchResult objects
+
 ## 39.97.0 - 2022-03-11
 * [#2436](https://github.com/stripe/stripe-dotnet/pull/2436) API Updates
   * Add support for `Mandate` on `ChargePaymentMethodDetailsCard`
