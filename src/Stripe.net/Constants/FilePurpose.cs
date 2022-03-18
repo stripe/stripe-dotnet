@@ -2,6 +2,8 @@ namespace Stripe
 {
     public static class FilePurpose
     {
+        public const string AccountRequirement = "account_requirement";
+
         public const string AdditionalVerification = "additional_verification";
 
         public const string BusinessIcon = "business_icon";
@@ -18,6 +20,8 @@ namespace Stripe
 
         public const string IdentityDocument = "identity_document";
 
+        public const string IdentityDocumentDownloadable = "identity_document_downloadable";
+
         public const string IncorporationArticle = "incorporation_article";
 
         public const string IncorporationDocument = "incorporation_document";
@@ -25,6 +29,8 @@ namespace Stripe
         public const string PaymentProviderTransfer = "payment_provider_transfer";
 
         public const string PciDocument = "pci_document";
+
+        public const string Selfie = "selfie";
 
         public const string ProductFeed = "product_feed";
 
