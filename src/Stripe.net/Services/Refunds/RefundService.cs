@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -22,6 +23,16 @@ namespace Stripe
         }
 
         public override string BasePath => "/v1/refunds";
+
+        public virtual Refund Cancel(string id, RefundCancelOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions);
+        }
+
+        public virtual Task<Refund> CancelAsync(string id, RefundCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions, cancellationToken);
+        }
 
         public virtual Refund Create(RefundCreateOptions options, RequestOptions requestOptions = null)
         {

@@ -14,9 +14,6 @@ namespace Stripe
     /// specific SKU represents the <c>size: large</c>, <c>color: red</c> version of that shirt.
     ///
     /// Can also be used to manage inventory.
-    ///
-    /// Related guide: <a href="https://stripe.com/docs/orders-legacy">Tax, Shipping, and
-    /// Inventory</a>.
     /// </summary>
     public class Sku : StripeEntity<Sku>, IHasId, IHasMetadata, IHasObject
     {
