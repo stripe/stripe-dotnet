@@ -877,6 +877,31 @@ namespace Stripe
         public const string TaxRateUpdated = "tax_rate.updated";
 
         /// <summary>
+        /// Occurs whenever a test clock starts advancing.
+        /// </summary>
+        public const string TestHelpersTestClockAdvancing = "test_helpers.test_clock.advancing";
+
+        /// <summary>
+        /// Occurs whenever a test clock is created.
+        /// </summary>
+        public const string TestHelpersTestClockCreated = "test_helpers.test_clock.created";
+
+        /// <summary>
+        /// Occurs whenever a test clock is deleted.
+        /// </summary>
+        public const string TestHelpersTestClockDeleted = "test_helpers.test_clock.deleted";
+
+        /// <summary>
+        /// Occurs whenever a test clock fails to advance its frozen time.
+        /// </summary>
+        public const string TestHelpersTestClockInternalFailure = "test_helpers.test_clock.internal_failure";
+
+        /// <summary>
+        /// Occurs whenever a test clock transitions to a ready status.
+        /// </summary>
+        public const string TestHelpersTestClockReady = "test_helpers.test_clock.ready";
+
+        /// <summary>
         /// Occurs whenever a top-up is canceled.
         /// </summary>
         public const string TopupCanceled = "topup.canceled";
