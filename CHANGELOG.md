@@ -1,5 +1,12 @@
 # Changelog
 
+## 39.99.0 - 2022-03-23
+* [#2441](https://github.com/stripe/stripe-dotnet/pull/2441) Add new TestClock webhook event constants.
+  * Add  `test_helpers.test_clock.advancing`, `test_helpers.test_clock.created`, `test_helpers.test_clock.deleted`, `test_helpers.test_clock.internal_failure`, and `test_helpers.test_clock.ready` events.
+* [#2440](https://github.com/stripe/stripe-dotnet/pull/2440) API Updates
+  * Add support for `Cancel` method on resource `Refund`
+  * Add support for `TestClock` on `QuoteListOptions`
+
 ## 39.98.0 - 2022-03-18
 * [#2439](https://github.com/stripe/stripe-dotnet/pull/2439) API Updates
   * Add support for `Status` on `Card`
