@@ -3,29 +3,8 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentIntentPaymentMethodOptionsAfterpayClearpayOptions : INestedOptions
+    public class PaymentIntentPaymentMethodOptionsPaynowOptions : INestedOptions
     {
-        /// <summary>
-        /// Controls when the funds will be captured from the customer's account.
-        ///
-        /// If provided, this parameter will override the top-level <c>capture_method</c> when
-        /// finalizing the payment with this payment method type.
-        ///
-        /// If <c>capture_method</c> is already set on the PaymentIntent, providing an empty value
-        /// for this parameter will unset the stored value for this payment method type.
-        /// </summary>
-        [JsonProperty("capture_method")]
-        public string CaptureMethod { get; set; }
-
-        /// <summary>
-        /// Order identifier shown to the customer in Afterpay’s online portal. We recommend using a
-        /// value that helps you answer any questions a customer might have about the payment. The
-        /// identifier is limited to 128 characters and may contain only letters, digits,
-        /// underscores, backslashes and dashes.
-        /// </summary>
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.

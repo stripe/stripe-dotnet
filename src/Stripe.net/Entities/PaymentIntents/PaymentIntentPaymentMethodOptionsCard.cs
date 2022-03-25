@@ -6,6 +6,12 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsCard : StripeEntity<PaymentIntentPaymentMethodOptionsCard>
     {
         /// <summary>
+        /// Controls when the funds will be captured from the customer's account.
+        /// </summary>
+        [JsonProperty("capture_method")]
+        public string CaptureMethod { get; set; }
+
+        /// <summary>
         /// Installment details for this payment (Mexico only).
         ///
         /// For more information, see the <a

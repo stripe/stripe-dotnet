@@ -30,6 +30,12 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsOxxoOptions Oxxo { get; set; }
 
         /// <summary>
+        /// contains details about the Us Bank Account payment method options.
+        /// </summary>
+        [JsonProperty("us_bank_account")]
+        public SessionPaymentMethodOptionsUsBankAccountOptions UsBankAccount { get; set; }
+
+        /// <summary>
         /// contains details about the WeChat Pay payment method options.
         /// </summary>
         [JsonProperty("wechat_pay")]

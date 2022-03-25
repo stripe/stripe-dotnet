@@ -20,6 +20,9 @@ namespace Stripe
         [JsonProperty("oxxo_display_details")]
         public PaymentIntentNextActionOxxoDisplayDetails OxxoDisplayDetails { get; set; }
 
+        [JsonProperty("paynow_display_qr_code")]
+        public PaymentIntentNextActionPaynowDisplayQrCode PaynowDisplayQrCode { get; set; }
+
         [JsonProperty("redirect_to_url")]
         public PaymentIntentNextActionRedirectToUrl RedirectToUrl { get; set; }
 

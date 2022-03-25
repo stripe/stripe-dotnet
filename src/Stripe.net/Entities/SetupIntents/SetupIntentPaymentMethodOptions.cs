@@ -13,5 +13,8 @@ namespace Stripe
 
         [JsonProperty("sepa_debit")]
         public SetupIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("us_bank_account")]
+        public SetupIntentPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
     }
 }

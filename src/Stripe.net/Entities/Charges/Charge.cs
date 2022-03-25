@@ -308,6 +308,39 @@ namespace Stripe
         [JsonProperty("disputed")]
         public bool Disputed { get; set; }
 
+        #region Expandable FailureBalanceTransaction
+
+        /// <summary>
+        /// (ID of the BalanceTransaction)
+        /// ID of the balance transaction that describes the reversal of the balance on your account
+        /// due to payment failure.
+        /// </summary>
+        [JsonIgnore]
+        public string FailureBalanceTransactionId
+        {
+            get => this.InternalFailureBalanceTransaction?.Id;
+            set => this.InternalFailureBalanceTransaction = SetExpandableFieldId(value, this.InternalFailureBalanceTransaction);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the balance transaction that describes the reversal of the balance on your account
+        /// due to payment failure.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public BalanceTransaction FailureBalanceTransaction
+        {
+            get => this.InternalFailureBalanceTransaction?.ExpandedObject;
+            set => this.InternalFailureBalanceTransaction = SetExpandableFieldObject(value, this.InternalFailureBalanceTransaction);
+        }
+
+        [JsonProperty("failure_balance_transaction")]
+        [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+        internal ExpandableField<BalanceTransaction> InternalFailureBalanceTransaction { get; set; }
+        #endregion
+
         /// <summary>
         /// Error code explaining reason for charge failure if available (see <a
         /// href="https://stripe.com/docs/api#errors">the errors section</a> for a list of codes).

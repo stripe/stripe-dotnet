@@ -138,6 +138,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsP24Options P24 { get; set; }
 
         /// <summary>
+        /// If this is a <c>paynow</c> PaymentMethod, this sub-hash contains details about the
+        /// PayNow payment method options.
+        /// </summary>
+        [JsonProperty("paynow")]
+        public PaymentIntentPaymentMethodOptionsPaynowOptions Paynow { get; set; }
+
+        /// <summary>
         /// If this is a <c>sepa_debit</c> PaymentIntent, this sub-hash contains details about the
         /// SEPA Debit payment method options.
         /// </summary>
@@ -150,6 +157,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sofort")]
         public PaymentIntentPaymentMethodOptionsSofortOptions Sofort { get; set; }
+
+        /// <summary>
+        /// If this is a <c>us_bank_account</c> PaymentMethod, this sub-hash contains details about
+        /// the US bank account payment method options.
+        /// </summary>
+        [JsonProperty("us_bank_account")]
+        public PaymentIntentPaymentMethodOptionsUsBankAccountOptions UsBankAccount { get; set; }
 
         /// <summary>
         /// If this is a <c>wechat_pay</c> PaymentMethod, this sub-hash contains details about the

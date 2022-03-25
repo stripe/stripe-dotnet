@@ -3,20 +3,8 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentIntentPaymentMethodOptionsKlarna : StripeEntity<PaymentIntentPaymentMethodOptionsKlarna>
+    public class PaymentIntentPaymentMethodOptionsPaynow : StripeEntity<PaymentIntentPaymentMethodOptionsPaynow>
     {
-        /// <summary>
-        /// Controls when the funds will be captured from the customer's account.
-        /// </summary>
-        [JsonProperty("capture_method")]
-        public string CaptureMethod { get; set; }
-
-        /// <summary>
-        /// Preferred locale of the Klarna checkout page that the customer is redirected to.
-        /// </summary>
-        [JsonProperty("preferred_locale")]
-        public string PreferredLocale { get; set; }
-
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.

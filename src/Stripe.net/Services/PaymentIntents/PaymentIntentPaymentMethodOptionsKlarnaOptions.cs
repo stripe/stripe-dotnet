@@ -6,6 +6,18 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsKlarnaOptions : INestedOptions
     {
         /// <summary>
+        /// Controls when the funds will be captured from the customer's account.
+        ///
+        /// If provided, this parameter will override the top-level <c>capture_method</c> when
+        /// finalizing the payment with this payment method type.
+        ///
+        /// If <c>capture_method</c> is already set on the PaymentIntent, providing an empty value
+        /// for this parameter will unset the stored value for this payment method type.
+        /// </summary>
+        [JsonProperty("capture_method")]
+        public string CaptureMethod { get; set; }
+
+        /// <summary>
         /// Preferred language of the Klarna authorization page that the customer is redirected to.
         /// One of: <c>da-DK</c>, <c>de-AT</c>, <c>de-DE</c>, <c>en-AT</c>, <c>en-BE</c>,
         /// <c>en-DE</c>, <c>en-DK</c>, <c>en-ES</c>, <c>en-FI</c>, <c>en-FR</c>, <c>en-GB</c>,

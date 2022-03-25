@@ -65,7 +65,7 @@ namespace Stripe
         public string Country { get; set; }
 
         /// <summary>
-        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// Time at which the account was connected. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

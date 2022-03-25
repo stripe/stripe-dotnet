@@ -20,5 +20,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("hosted_verification_url")]
         public string HostedVerificationUrl { get; set; }
+
+        /// <summary>
+        /// The type of the microdeposit sent to the customer. Used to distinguish between different
+        /// verification methods.
+        /// One of: <c>amounts</c>, or <c>descriptor_code</c>.
+        /// </summary>
+        [JsonProperty("microdeposit_type")]
+        public string MicrodepositType { get; set; }
     }
 }
