@@ -12,5 +12,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amounts")]
         public List<long?> Amounts { get; set; }
+
+        /// <summary>
+        /// A six-character code starting with SM present in the microdeposit sent to the bank
+        /// account.
+        /// </summary>
+        [JsonProperty("descriptor_code")]
+        public string DescriptorCode { get; set; }
     }
 }

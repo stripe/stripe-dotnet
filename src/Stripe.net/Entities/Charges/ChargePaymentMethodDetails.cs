@@ -71,6 +71,9 @@ namespace Stripe
         [JsonProperty("p24")]
         public ChargePaymentMethodDetailsP24 P24 { get; set; }
 
+        [JsonProperty("paynow")]
+        public ChargePaymentMethodDetailsPaynow Paynow { get; set; }
+
         [JsonProperty("sepa_debit")]
         public ChargePaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
@@ -91,6 +94,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        [JsonProperty("us_bank_account")]
+        public ChargePaymentMethodDetailsUsBankAccount UsBankAccount { get; set; }
 
         [JsonProperty("wechat")]
         public ChargePaymentMethodDetailsWechat Wechat { get; set; }

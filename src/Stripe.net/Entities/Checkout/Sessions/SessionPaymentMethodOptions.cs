@@ -16,5 +16,8 @@ namespace Stripe.Checkout
 
         [JsonProperty("oxxo")]
         public SessionPaymentMethodOptionsOxxo Oxxo { get; set; }
+
+        [JsonProperty("us_bank_account")]
+        public SessionPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
     }
 }

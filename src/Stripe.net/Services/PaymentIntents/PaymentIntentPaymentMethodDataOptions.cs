@@ -142,6 +142,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataP24Options P24 { get; set; }
 
         /// <summary>
+        /// If this is a <c>paynow</c> PaymentMethod, this hash contains details about the PayNow
+        /// payment method.
+        /// </summary>
+        [JsonProperty("paynow")]
+        public PaymentIntentPaymentMethodDataPaynowOptions Paynow { get; set; }
+
+        /// <summary>
         /// If this is a <c>sepa_debit</c> PaymentMethod, this hash contains details about the SEPA
         /// debit bank account.
         /// </summary>
@@ -162,10 +169,18 @@ namespace Stripe
         /// One of: <c>acss_debit</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>boleto</c>, <c>eps</c>,
         /// <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>,
-        /// <c>oxxo</c>, <c>p24</c>, <c>sepa_debit</c>, <c>sofort</c>, or <c>wechat_pay</c>.
+        /// <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>sepa_debit</c>, <c>sofort</c>,
+        /// <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// If this is an <c>us_bank_account</c> PaymentMethod, this hash contains details about the
+        /// US bank account payment method.
+        /// </summary>
+        [JsonProperty("us_bank_account")]
+        public PaymentIntentPaymentMethodDataUsBankAccountOptions UsBankAccount { get; set; }
 
         /// <summary>
         /// If this is an <c>wechat_pay</c> PaymentMethod, this hash contains details about the

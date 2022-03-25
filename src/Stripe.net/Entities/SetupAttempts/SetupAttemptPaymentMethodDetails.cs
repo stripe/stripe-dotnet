@@ -42,5 +42,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        [JsonProperty("us_bank_account")]
+        public SetupAttemptPaymentMethodDetailsUsBankAccount UsBankAccount { get; set; }
     }
 }

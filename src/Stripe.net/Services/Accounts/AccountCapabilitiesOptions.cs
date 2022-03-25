@@ -126,6 +126,12 @@ namespace Stripe
         public AccountCapabilitiesP24PaymentsOptions P24Payments { get; set; }
 
         /// <summary>
+        /// The paynow_payments capability.
+        /// </summary>
+        [JsonProperty("paynow_payments")]
+        public AccountCapabilitiesPaynowPaymentsOptions PaynowPayments { get; set; }
+
+        /// <summary>
         /// The sepa_debit_payments capability.
         /// </summary>
         [JsonProperty("sepa_debit_payments")]
@@ -154,5 +160,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfers")]
         public AccountCapabilitiesTransfersOptions Transfers { get; set; }
+
+        /// <summary>
+        /// The us_bank_account_ach_payments capability.
+        /// </summary>
+        [JsonProperty("us_bank_account_ach_payments")]
+        public AccountCapabilitiesUsBankAccountAchPaymentsOptions UsBankAccountAchPayments { get; set; }
     }
 }

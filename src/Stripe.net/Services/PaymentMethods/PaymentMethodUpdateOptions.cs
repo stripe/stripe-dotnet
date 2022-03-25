@@ -55,5 +55,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sepa_debit")]
         public PaymentMethodSepaDebitOptions SepaDebit { get; set; }
+
+        /// <summary>
+        /// If this is an <c>us_bank_account</c> PaymentMethod, this hash contains details about the
+        /// US bank account payment method.
+        /// </summary>
+        [JsonProperty("us_bank_account")]
+        public PaymentMethodUsBankAccountOptions UsBankAccount { get; set; }
     }
 }

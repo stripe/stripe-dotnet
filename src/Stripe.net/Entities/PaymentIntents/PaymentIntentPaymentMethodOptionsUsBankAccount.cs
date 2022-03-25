@@ -3,20 +3,8 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentIntentPaymentMethodOptionsKlarna : StripeEntity<PaymentIntentPaymentMethodOptionsKlarna>
+    public class PaymentIntentPaymentMethodOptionsUsBankAccount : StripeEntity<PaymentIntentPaymentMethodOptionsUsBankAccount>
     {
-        /// <summary>
-        /// Controls when the funds will be captured from the customer's account.
-        /// </summary>
-        [JsonProperty("capture_method")]
-        public string CaptureMethod { get; set; }
-
-        /// <summary>
-        /// Preferred locale of the Klarna checkout page that the customer is redirected to.
-        /// </summary>
-        [JsonProperty("preferred_locale")]
-        public string PreferredLocale { get; set; }
-
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
@@ -32,8 +20,16 @@ namespace Stripe
         /// When processing card payments, Stripe also uses <c>setup_future_usage</c> to dynamically
         /// optimize your payment flow and comply with regional legislation and network rules, such
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
+        /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
+
+        /// <summary>
+        /// Bank account verification method.
+        /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
+        /// </summary>
+        [JsonProperty("verification_method")]
+        public string VerificationMethod { get; set; }
     }
 }

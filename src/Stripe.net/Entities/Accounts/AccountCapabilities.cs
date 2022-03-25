@@ -165,6 +165,14 @@ namespace Stripe
         public string P24Payments { get; set; }
 
         /// <summary>
+        /// The status of the paynow payments capability of the account, or whether the account can
+        /// directly process paynow charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("paynow_payments")]
+        public string PaynowPayments { get; set; }
+
+        /// <summary>
         /// The status of the SEPA Direct Debits payments capability of the account, or whether the
         /// account can directly process SEPA Direct Debits charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -201,5 +209,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfers")]
         public string Transfers { get; set; }
+
+        /// <summary>
+        /// The status of the US bank account ACH payments capability of the account, or whether the
+        /// account can directly process US bank account charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("us_bank_account_ach_payments")]
+        public string UsBankAccountAchPayments { get; set; }
     }
 }

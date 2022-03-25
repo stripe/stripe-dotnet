@@ -32,5 +32,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("konbini")]
         public SubscriptionPaymentSettingsPaymentMethodOptionsKonbini Konbini { get; set; }
+
+        /// <summary>
+        /// This sub-hash contains details about the ACH direct debit payment method options to pass
+        /// to invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("us_bank_account")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
     }
 }
