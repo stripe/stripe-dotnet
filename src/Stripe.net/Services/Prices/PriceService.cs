@@ -9,6 +9,7 @@ namespace Stripe
         ICreatable<Price, PriceCreateOptions>,
         IListable<Price, PriceListOptions>,
         IRetrievable<Price, PriceGetOptions>,
+        ISearchable<Price, PriceSearchOptions>,
         IUpdatable<Price, PriceUpdateOptions>
     {
         public PriceService()
@@ -61,6 +62,26 @@ namespace Stripe
         public virtual IAsyncEnumerable<Price> ListAutoPagingAsync(PriceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual StripeSearchResult<Price> Search(PriceSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeSearchResult<Price>>(HttpMethod.Get, $"{this.InstanceUrl("search")}", options, requestOptions);
+        }
+
+        public virtual Task<StripeSearchResult<Price>> SearchAsync(PriceSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeSearchResult<Price>>(HttpMethod.Get, $"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Price> SearchAutoPaging(PriceSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.SearchRequestAutoPaging<Price>($"{this.InstanceUrl("search")}", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<Price> SearchAutoPagingAsync(PriceSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.SearchRequestAutoPagingAsync<Price>($"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
         }
 
         public virtual Price Update(string id, PriceUpdateOptions options, RequestOptions requestOptions = null)
