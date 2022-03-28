@@ -46,6 +46,30 @@ namespace StripeTests
         }
 
         [Fact]
+        public void Search_ReturnsOnePage()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v1/test_entities/search",
+                (HttpStatusCode)200,
+                @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page"": ""page2"", ""has_more"": true, ""total_count"": 4}",
+                query: "?query=my+query");
+
+            var service = new TestService(this.StripeClient);
+
+            HashSet<string> ids = new HashSet<string>();
+            var searchResult = service.Search(new SearchOptions() { Query = "my query" });
+            foreach (var testEntity in searchResult)
+            {
+                Assert.NotNull(testEntity);
+                ids.Add(testEntity.Id);
+            }
+
+            Assert.Equal(2, ids.Count);
+            Assert.Equal(4, searchResult.TotalCount);
+        }
+
+        [Fact]
         public void SearchAuto_ReturnsAllPages()
         {
             this.StubRequest(
@@ -71,6 +95,7 @@ namespace StripeTests
                 ids.Add(testEntity.Id);
             }
 
+            Assert.Equal(4, ids.Count);
             Assert.Equal(4, ids.Count);
         }
 
