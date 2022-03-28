@@ -11,6 +11,7 @@ namespace Stripe
         IDeletable<Customer, CustomerDeleteOptions>,
         IListable<Customer, CustomerListOptions>,
         IRetrievable<Customer, CustomerGetOptions>,
+        ISearchable<Customer, CustomerSearchOptions>,
         IUpdatable<Customer, CustomerUpdateOptions>
     {
         public CustomerService()
@@ -93,6 +94,26 @@ namespace Stripe
         public virtual IAsyncEnumerable<PaymentMethod> ListPaymentMethodsAutoPagingAsync(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<PaymentMethod>($"{this.InstanceUrl(id)}/payment_methods", options, requestOptions, cancellationToken);
+        }
+
+        public virtual StripeSearchResult<Customer> Search(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeSearchResult<Customer>>(HttpMethod.Get, $"{this.InstanceUrl("search")}", options, requestOptions);
+        }
+
+        public virtual Task<StripeSearchResult<Customer>> SearchAsync(CustomerSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeSearchResult<Customer>>(HttpMethod.Get, $"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Customer> SearchAutoPaging(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.SearchRequestAutoPaging<Customer>($"{this.InstanceUrl("search")}", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<Customer> SearchAutoPagingAsync(CustomerSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.SearchRequestAutoPagingAsync<Customer>($"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
         }
 
         public virtual Customer Update(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null)
