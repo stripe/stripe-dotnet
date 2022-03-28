@@ -41,7 +41,7 @@ namespace Stripe
 
         /// <summary>
         /// The total count of entries in the search result, not just the current page.
-        /// Only available when <see cref="SearchOptions.Expand"/> contains <c>"total_count"</c>.
+        /// Only available when <see cref="BaseOptions.Expand"/> contains <c>"total_count"</c>.
         /// </summary>
         [JsonProperty("total_count")]
         public long? TotalCount { get; set; }
