@@ -26,6 +26,12 @@ namespace Stripe.Terminal
         public string Object { get; set; }
 
         /// <summary>
+        /// The most recent action performed by the reader.
+        /// </summary>
+        [JsonProperty("action")]
+        public ReaderAction Action { get; set; }
+
+        /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
