@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.101.0 - 2022-03-29
+* [#2443](https://github.com/stripe/stripe-dotnet/pull/2443) API Updates
+  * Add support for Search API
+     * Add support for `Search` method on resources `Charge`, `Customer`, `Invoice`, `PaymentIntent`, `Price`, `Product`, and `Subscription`
+
 ## 39.100.0 - 2022-03-25
 * [#2442](https://github.com/stripe/stripe-dotnet/pull/2442) API Updates
   * Add support for PayNow and US Bank Accounts Debits payments
