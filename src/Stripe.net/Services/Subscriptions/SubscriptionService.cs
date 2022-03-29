@@ -10,6 +10,7 @@ namespace Stripe
         ICreatable<Subscription, SubscriptionCreateOptions>,
         IListable<Subscription, SubscriptionListOptions>,
         IRetrievable<Subscription, SubscriptionGetOptions>,
+        ISearchable<Subscription, SubscriptionSearchOptions>,
         IUpdatable<Subscription, SubscriptionUpdateOptions>
     {
         public SubscriptionService()
@@ -72,6 +73,26 @@ namespace Stripe
         public virtual IAsyncEnumerable<Subscription> ListAutoPagingAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual StripeSearchResult<Subscription> Search(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeSearchResult<Subscription>>(HttpMethod.Get, $"{this.InstanceUrl("search")}", options, requestOptions);
+        }
+
+        public virtual Task<StripeSearchResult<Subscription>> SearchAsync(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeSearchResult<Subscription>>(HttpMethod.Get, $"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Subscription> SearchAutoPaging(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.SearchRequestAutoPaging<Subscription>($"{this.InstanceUrl("search")}", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<Subscription> SearchAutoPagingAsync(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.SearchRequestAutoPagingAsync<Subscription>($"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
         }
 
         public virtual Subscription Update(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null)

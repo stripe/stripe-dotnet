@@ -10,6 +10,7 @@ namespace Stripe
         ICreatable<PaymentIntent, PaymentIntentCreateOptions>,
         IListable<PaymentIntent, PaymentIntentListOptions>,
         IRetrievable<PaymentIntent, PaymentIntentGetOptions>,
+        ISearchable<PaymentIntent, PaymentIntentSearchOptions>,
         IUpdatable<PaymentIntent, PaymentIntentUpdateOptions>
     {
         public PaymentIntentService()
@@ -92,6 +93,26 @@ namespace Stripe
         public virtual IAsyncEnumerable<PaymentIntent> ListAutoPagingAsync(PaymentIntentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+        }
+
+        public virtual StripeSearchResult<PaymentIntent> Search(PaymentIntentSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeSearchResult<PaymentIntent>>(HttpMethod.Get, $"{this.InstanceUrl("search")}", options, requestOptions);
+        }
+
+        public virtual Task<StripeSearchResult<PaymentIntent>> SearchAsync(PaymentIntentSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeSearchResult<PaymentIntent>>(HttpMethod.Get, $"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<PaymentIntent> SearchAutoPaging(PaymentIntentSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.SearchRequestAutoPaging<PaymentIntent>($"{this.InstanceUrl("search")}", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<PaymentIntent> SearchAutoPagingAsync(PaymentIntentSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.SearchRequestAutoPagingAsync<PaymentIntent>($"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
         }
 
         public virtual PaymentIntent Update(string id, PaymentIntentUpdateOptions options, RequestOptions requestOptions = null)
