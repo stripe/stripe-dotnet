@@ -32,19 +32,19 @@ jobs:
           dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
 
       - name: Build Release
-        run: dotnet build src/Stripe.net -c Release /p:ContinuousIntegrationBuild=true
+        run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
 
       - name: Build Debug
-        run: dotnet build src/Stripe.net -c Debug
+        run: dotnet build src -c Debug
 
       - name: Start stripe-mock
         run: docker run -d -p 12111-12112:12111-12112 stripe/stripe-mock && sleep 5
 
       - name: Run test suite
-        run: dotnet test src/StripeTests/StripeTests.csproj -c Release
+        run: dotnet test --no-build src/StripeTests/StripeTests.csproj -c Release
 
       - name: Collect coverage
-        run: dotnet test -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
+        run: dotnet test --no-build -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
 
       - name: Send code coverage report to coveralls.io
         shell: pwsh
@@ -54,7 +54,6 @@ jobs:
           if (Test-Path env:COVERALLS_REPO_TOKEN) {
             ./tools/csmacnz.Coveralls --opencover -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml --useRelativePaths
           }
-
         env:
           CI_NAME: github-actions
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
