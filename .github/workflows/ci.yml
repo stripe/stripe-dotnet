@@ -40,7 +40,7 @@ jobs:
         run: docker run -d -p 12111-12112:12111-12112 stripe/stripe-mock && sleep 5
 
       - name: Run test suite
-        run: dotnet test src/StripeTests\StripeTests.csproj -c Release
+        run: dotnet test src/StripeTests/StripeTests.csproj -c Release
 
       - name: Collect coverage
         run: dotnet test -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
@@ -51,7 +51,7 @@ jobs:
           # Secure env vars are not available on all branches, so make sure the
           # token is available before invoking Coveralls.
           if (Test-Path env:COVERALLS_REPO_TOKEN) {
-            .\tools\csmacnz.Coveralls --opencover -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml --useRelativePaths
+            ./tools/csmacnz.Coveralls --opencover -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml --useRelativePaths
           }
 
         env:
