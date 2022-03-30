@@ -51,7 +51,7 @@ jobs:
         run: |
           # Secure env vars are not available on all branches, so make sure the
           # token is available before invoking Coveralls.
-          if (Test-Path env:COVERALLS_REPO_TOKEN) {
+          if (-not ([string]::IsNullOrEmpty(env:COVERALLS_REPO_TOKEN)) {
             ./tools/csmacnz.Coveralls --opencover -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml --useRelativePaths
           }
         env:
