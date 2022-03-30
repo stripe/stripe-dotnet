@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.102.0 - 2022-03-30
+* [#2444](https://github.com/stripe/stripe-dotnet/pull/2444) API Updates
+  * Add support for `CancelAction`, `ProcessPaymentIntent`, `ProcessSetupIntent`, and `SetReaderDisplay` methods on resource `Terminal.Reader`
+  * Add support for `Action` on `TerminalReader`
+
 ## 39.101.0 - 2022-03-29
 * [#2443](https://github.com/stripe/stripe-dotnet/pull/2443) API Updates
   * Add support for Search API
