@@ -47,13 +47,13 @@ jobs:
         run: dotnet test --no-build -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
 
       - name: Send code coverage report to coveralls.io
-        shell: pwsh
         run: |
           # Secure env vars are not available on all branches, so make sure the
           # token is available before invoking Coveralls.
-          if (-not ([string]::IsNullOrEmpty(env:COVERALLS_REPO_TOKEN)) {
+          if [ -z "${COVERALLS_REPO_TOKEN}" ];
+          then
             ./tools/csmacnz.Coveralls --opencover -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml --useRelativePaths
-          }
+          fi
         env:
           CI_NAME: github-actions
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
