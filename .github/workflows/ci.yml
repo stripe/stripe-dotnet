@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  tests:
+    name: Tests
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+
+      - name: Install tools
+        run: |
+          dotnet tool install dotnet-format --version 4.1.131201 --tool-path tools
+          dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
+
+      - name: Build Release
+        run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
+
+      - name: Build Debug
+        run: dotnet build src -c Debug
+
+      - name: Start stripe-mock
+        run: docker run -d -p 12111-12112:12111-12112 stripe/stripe-mock && sleep 5
+
+      - name: Run test suite
+        run: dotnet test --no-build src/StripeTests/StripeTests.csproj -c Release
+
+      - name: Collect coverage
+        run: dotnet test --no-build -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
+
+      - name: Send code coverage report to coveralls.io
+        run: |
+          # Secure env vars are not available on all branches, so make sure the
+          # token is available before invoking Coveralls.
+          if [ ! -z "${COVERALLS_REPO_TOKEN}" ];
+          then
+            ./tools/csmacnz.Coveralls --opencover -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml --useRelativePaths
+          fi
+        env:
+          CI_NAME: github-actions
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
