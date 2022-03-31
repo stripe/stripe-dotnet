@@ -538,6 +538,11 @@ namespace Stripe
         public const string PaymentIntentCreated = "payment_intent.created";
 
         /// <summary>
+        /// Occurs when funds are applied to a customer_balance PaymentIntent and the 'amount_remaining' changes.
+        /// </summary>
+        public const string PaymentIntentPartiallyFunded = "payment_intent.partially_funded";
+
+        /// <summary>
         /// Occurs when a PaymentIntent has failed the attempt to create a source or a payment.
         /// </summary>
         public const string PaymentIntentPaymentFailed = "payment_intent.payment_failed";
@@ -875,6 +880,16 @@ namespace Stripe
         /// Occurs whenever a tax rate changes.
         /// </summary>
         public const string TaxRateUpdated = "tax_rate.updated";
+
+        /// <summary>
+        /// Occurs whenever an action sent to a Terminal reader failed.
+        /// </summary>
+        public const string TerminalReaderActionFailed = "terminal.reader.action_failed";
+
+        /// <summary>
+        /// Occurs whenever an action sent to a Terminal reader was successful.
+        /// </summary>
+        public const string TerminalReaderActionSucceeded = "terminal.reader.action_succeeded";
 
         /// <summary>
         /// Occurs whenever a test clock starts advancing.
