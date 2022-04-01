@@ -46,7 +46,8 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The period associated with this invoice item.
+        /// The period associated with this invoice item. When set to different values, the period
+        /// will be rendered on the invoice.
         /// </summary>
         [JsonProperty("period")]
         public InvoiceItemPeriodOptions Period { get; set; }
