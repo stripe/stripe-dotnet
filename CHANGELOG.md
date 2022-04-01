@@ -1,5 +1,14 @@
 # Changelog
 
+## 39.103.0 - 2022-04-01
+* [#2446](https://github.com/stripe/stripe-dotnet/pull/2446) API Updates
+  * Add support for `BankTransferPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `CaptureBefore` on `ChargePaymentMethodDetailsCardPresent`
+  * Add support for `Address` and `Name` on `CheckoutSessionCustomerDetails`
+  * Add support for `CustomerBalance` on `InvoicePaymentSettingsPaymentMethodOptionsOptions`, `InvoicePaymentSettingsPaymentMethodOptions`, `SubscriptionPaymentSettingsPaymentMethodOptionsOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptions`
+  * Add support for `RequestExtendedAuthorization` on `PaymentIntentPaymentMethodOptionsCardPresentOptions` and `PaymentIntentPaymentMethodOptionsCardPresent`
+  * Add `payment_intent.partially_funded`, `terminal.reader.action_failed`, and `terminal.reader.action_succeeded` event constants.
+
 ## 39.102.0 - 2022-03-30
 * [#2444](https://github.com/stripe/stripe-dotnet/pull/2444) API Updates
   * Add support for `CancelAction`, `ProcessPaymentIntent`, `ProcessSetupIntent`, and `SetReaderDisplay` methods on resource `Terminal.Reader`
