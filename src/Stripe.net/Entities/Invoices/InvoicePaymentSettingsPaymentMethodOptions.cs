@@ -27,6 +27,13 @@ namespace Stripe
         public InvoicePaymentSettingsPaymentMethodOptionsCard Card { get; set; }
 
         /// <summary>
+        /// If paying by <c>customer_balance</c>, this sub-hash contains details about the Bank
+        /// transfer payment method options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("customer_balance")]
+        public InvoicePaymentSettingsPaymentMethodOptionsCustomerBalance CustomerBalance { get; set; }
+
+        /// <summary>
         /// If paying by <c>konbini</c>, this sub-hash contains details about the Konbini payment
         /// method options to pass to the invoice’s PaymentIntent.
         /// </summary>
