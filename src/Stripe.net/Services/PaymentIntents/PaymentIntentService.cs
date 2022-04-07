@@ -25,6 +25,16 @@ namespace Stripe
 
         public override string BasePath => "/v1/payment_intents";
 
+        public virtual PaymentIntent ApplyCustomerBalance(string id, PaymentIntentApplyCustomerBalanceOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/apply_customer_balance", options, requestOptions);
+        }
+
+        public virtual Task<PaymentIntent> ApplyCustomerBalanceAsync(string id, PaymentIntentApplyCustomerBalanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/apply_customer_balance", options, requestOptions, cancellationToken);
+        }
+
         public virtual PaymentIntent Cancel(string id, PaymentIntentCancelOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions);
