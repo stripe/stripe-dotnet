@@ -1,5 +1,10 @@
 # Changelog
 
+## 39.104.0 - 2022-04-08
+* [#2450](https://github.com/stripe/stripe-dotnet/pull/2450) API Updates
+  * Add support for `ApplyCustomerBalance` method on resource `PaymentIntent`
+  * Add `cash_balance.funds_available` event constant.
+
 ## 39.103.0 - 2022-04-01
 * [#2446](https://github.com/stripe/stripe-dotnet/pull/2446) API Updates
   * Add support for `BankTransferPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
