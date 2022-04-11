@@ -70,6 +70,11 @@ namespace Stripe
         public const string CapabilityUpdated = "capability.updated";
 
         /// <summary>
+        /// Occurs whenever there is a positive remaining cash balance after Stripe automatically reconciles new funds into the cash balance. If you enabled manual reconciliation, this webhook will fire whenever there are new funds into the cash balance.
+        /// </summary>
+        public const string CashBalanceFundsAvailable = "cash_balance.funds_available";
+
+        /// <summary>
         /// Occurs whenever a previously uncaptured charge is captured.
         /// </summary>
         public const string ChargeCaptured = "charge.captured";

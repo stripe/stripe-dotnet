@@ -7,13 +7,13 @@ namespace Stripe
     public class QuoteComputedUpfrontTotalDetailsBreakdown : StripeEntity<QuoteComputedUpfrontTotalDetailsBreakdown>
     {
         /// <summary>
-        /// The aggregated line item discounts.
+        /// The aggregated discounts.
         /// </summary>
         [JsonProperty("discounts")]
         public List<QuoteComputedUpfrontTotalDetailsBreakdownDiscount> Discounts { get; set; }
 
         /// <summary>
-        /// The aggregated line item tax amounts by rate.
+        /// The aggregated tax amounts by rate.
         /// </summary>
         [JsonProperty("taxes")]
         public List<QuoteComputedUpfrontTotalDetailsBreakdownTax> Taxes { get; set; }
