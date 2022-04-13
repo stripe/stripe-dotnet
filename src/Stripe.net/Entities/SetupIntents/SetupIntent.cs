@@ -98,8 +98,8 @@ namespace Stripe
         /// publishable key.
         ///
         /// The client secret can be used to complete payment setup from your frontend. It should
-        /// not be stored, logged, embedded in URLs, or exposed to anyone other than the customer.
-        /// Make sure that you have TLS enabled on any page that includes the client secret.
+        /// not be stored, logged, or exposed to anyone other than the customer. Make sure that you
+        /// have TLS enabled on any page that includes the client secret.
         /// </summary>
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
