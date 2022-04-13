@@ -106,6 +106,15 @@ namespace Stripe
         public string Iin { get; set; }
 
         /// <summary>
+        /// Whether this <a href="https://stripe.com/docs/api/payment_intents">PaymentIntent</a> is
+        /// eligible for incremental authorizations. Request support using
+        /// [request_incremental_authorization_support]
+        /// /docs/api/payment_intents/create#create_payment_intent-payment_method_options-card_present-request_incremental_authorization_support.
+        /// </summary>
+        [JsonProperty("incremental_authorization_supported")]
+        public bool? IncrementalAuthorizationSupported { get; set; }
+
+        /// <summary>
         /// The name of the card's issuing bank. (For internal use only and not typically available
         /// in standard API requests.).
         /// </summary>
