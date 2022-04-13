@@ -1,5 +1,11 @@
 # Changelog
 
+## 39.105.0 - 2022-04-13
+* [#2453](https://github.com/stripe/stripe-dotnet/pull/2453) API Updates
+  * Add support for `IncrementAuthorization` method on resource `PaymentIntent`
+  * Add support for `IncrementalAuthorizationSupported` on `ChargePaymentMethodDetailsCardPresent`
+  * Add support for `RequestIncrementalAuthorizationSupport` on `PaymentIntentPaymentMethodOptionsCardPresentOptions` and `PaymentIntentPaymentMethodOptionsCardPresent`
+
 ## 39.104.0 - 2022-04-08
 * [#2450](https://github.com/stripe/stripe-dotnet/pull/2450) API Updates
   * Add support for `ApplyCustomerBalance` method on resource `PaymentIntent`
