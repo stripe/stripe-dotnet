@@ -68,6 +68,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
+        /// If this is a <c>customer balance</c> PaymentMethod, this sub-hash contains details about
+        /// the customer balance payment method options.
+        /// </summary>
+        [JsonProperty("customer_balance")]
+        public PaymentIntentPaymentMethodOptionsCustomerBalanceOptions CustomerBalance { get; set; }
+
+        /// <summary>
         /// If this is a <c>eps</c> PaymentMethod, this sub-hash contains details about the EPS
         /// payment method options.
         /// </summary>

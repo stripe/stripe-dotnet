@@ -106,6 +106,7 @@ namespace Stripe
                 { "tax_code", typeof(TaxCode) },
                 { "tax_id", typeof(TaxId) },
                 { "tax_rate", typeof(TaxRate) },
+                { "terminal.configuration", typeof(Terminal.Configuration) },
                 {
                     "terminal.connection_token", typeof(
                         Terminal.ConnectionToken)

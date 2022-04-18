@@ -53,6 +53,9 @@ namespace Stripe
         [JsonProperty("amount_capturable")]
         public long AmountCapturable { get; set; }
 
+        [JsonProperty("amount_details")]
+        public PaymentIntentAmountDetails AmountDetails { get; set; }
+
         /// <summary>
         /// Amount that was collected by this PaymentIntent.
         /// </summary>

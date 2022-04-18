@@ -626,6 +626,23 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestCustomerServiceCreateFundingInstructions()
+        {
+            var options = new CustomerCreateFundingInstructionsOptions
+            {
+                BankTransfer = new CustomerBankTransferOptions
+                {
+                    RequestedAddressTypes = new List<string> { "zengin" },
+                    Type = "jp_bank_transfer",
+                },
+                Currency = "usd",
+                FundingType = "bank_transfer",
+            };
+            var service = new CustomerService(this.StripeClient);
+            service.CreateFundingInstructions("cus_123", options);
+        }
+
+        [Fact]
         public void TestCustomerServiceDelete()
         {
             var service = new CustomerService(this.StripeClient);
@@ -2381,6 +2398,57 @@ namespace StripeTests
             var options = new TaxRateUpdateOptions { Active = false };
             var service = new TaxRateService(this.StripeClient);
             service.Update("txr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationServiceCreate()
+        {
+            var options = new Stripe.Terminal.ConfigurationCreateOptions();
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationServiceDelete()
+        {
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            service.Delete("uc_123");
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationServiceList()
+        {
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            StripeList<Stripe.Terminal.Configuration> configurations = service.List();
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationServiceRetrieve()
+        {
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            service.Get("uc_123");
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationServiceUpdate()
+        {
+            var options = new Stripe.Terminal.ConfigurationUpdateOptions
+            {
+                Tipping = new Stripe.Terminal.ConfigurationTippingOptions
+                {
+                    Usd = new Stripe.Terminal.ConfigurationTippingUsdOptions
+                    {
+                        FixedAmounts = new List<long> { 10 },
+                    },
+                },
+            };
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            service.Update("uc_123", options);
         }
 
         [Fact]
