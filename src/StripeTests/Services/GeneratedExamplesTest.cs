@@ -2442,7 +2442,7 @@ namespace StripeTests
                 {
                     Usd = new Stripe.Terminal.ConfigurationTippingUsdOptions
                     {
-                        FixedAmounts = new List<long> { 10 },
+                        FixedAmounts = new List<long?> { 10 },
                     },
                 },
             };

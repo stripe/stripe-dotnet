@@ -48,6 +48,7 @@ namespace Stripe
                 { "fee_refund", typeof(ApplicationFeeRefund) },
                 { "file", typeof(File) },
                 { "file_link", typeof(FileLink) },
+                { "funding_instructions", typeof(FundingInstructions) },
                 {
                     "identity.verification_report", typeof(
                         Identity.VerificationReport)
