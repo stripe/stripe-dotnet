@@ -100,6 +100,9 @@ namespace Stripe
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
+        [JsonProperty("customer_balance")]
+        public PaymentMethodCustomerBalance CustomerBalance { get; set; }
+
         [JsonProperty("eps")]
         public PaymentMethodEps Eps { get; set; }
 
@@ -160,10 +163,10 @@ namespace Stripe
         /// PaymentMethod type.
         /// One of: <c>acss_debit</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>boleto</c>, <c>card</c>,
-        /// <c>card_present</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
-        /// <c>ideal</c>, <c>interac_present</c>, <c>klarna</c>, <c>konbini</c>, <c>oxxo</c>,
-        /// <c>p24</c>, <c>paynow</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>us_bank_account</c>, or
-        /// <c>wechat_pay</c>.
+        /// <c>card_present</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
+        /// <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>, <c>klarna</c>, <c>konbini</c>,
+        /// <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>sepa_debit</c>, <c>sofort</c>,
+        /// <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

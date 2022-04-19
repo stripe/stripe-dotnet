@@ -36,6 +36,16 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
+        public virtual FundingInstructions CreateFundingInstructions(string id, CustomerCreateFundingInstructionsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<FundingInstructions>(HttpMethod.Post, $"{this.InstanceUrl(id)}/funding_instructions", options, requestOptions);
+        }
+
+        public virtual Task<FundingInstructions> CreateFundingInstructionsAsync(string id, CustomerCreateFundingInstructionsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<FundingInstructions>(HttpMethod.Post, $"{this.InstanceUrl(id)}/funding_instructions", options, requestOptions, cancellationToken);
+        }
+
         public virtual Customer Delete(string id, CustomerDeleteOptions options = null, RequestOptions requestOptions = null)
         {
             return this.DeleteEntity(id, options, requestOptions);

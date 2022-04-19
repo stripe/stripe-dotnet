@@ -72,6 +72,13 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// If this is a <c>customer_balance</c> PaymentMethod, this hash contains details about the
+        /// CustomerBalance payment method.
+        /// </summary>
+        [JsonProperty("customer_balance")]
+        public PaymentMethodCustomerBalanceOptions CustomerBalance { get; set; }
+
+        /// <summary>
         /// If this is an <c>eps</c> PaymentMethod, this hash contains details about the EPS payment
         /// method.
         /// </summary>
@@ -183,9 +190,9 @@ namespace Stripe
         /// PaymentMethod type.
         /// One of: <c>acss_debit</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>boleto</c>, <c>card</c>,
-        /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>,
-        /// <c>konbini</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>us_bank_account</c>, or <c>wechat_pay</c>.
+        /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
+        /// <c>ideal</c>, <c>klarna</c>, <c>konbini</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>,
+        /// <c>sepa_debit</c>, <c>sofort</c>, <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

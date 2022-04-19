@@ -28,6 +28,12 @@ namespace Stripe.Terminal
         public Address Address { get; set; }
 
         /// <summary>
+        /// The ID of a configuration that will be used to customize all readers in this location.
+        /// </summary>
+        [JsonProperty("configuration_overrides")]
+        public string ConfigurationOverrides { get; set; }
+
+        /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]

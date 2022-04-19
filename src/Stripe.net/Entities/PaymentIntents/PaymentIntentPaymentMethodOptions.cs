@@ -32,6 +32,9 @@ namespace Stripe
         [JsonProperty("card_present")]
         public PaymentIntentPaymentMethodOptionsCardPresent CardPresent { get; set; }
 
+        [JsonProperty("customer_balance")]
+        public PaymentIntentPaymentMethodOptionsCustomerBalance CustomerBalance { get; set; }
+
         [JsonProperty("eps")]
         public PaymentIntentPaymentMethodOptionsEps Eps { get; set; }
 

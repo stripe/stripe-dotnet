@@ -107,9 +107,8 @@ namespace Stripe
 
         /// <summary>
         /// Whether this <a href="https://stripe.com/docs/api/payment_intents">PaymentIntent</a> is
-        /// eligible for incremental authorizations. Request support using
-        /// [request_incremental_authorization_support]
-        /// /docs/api/payment_intents/create#create_payment_intent-payment_method_options-card_present-request_incremental_authorization_support.
+        /// eligible for incremental authorizations. Request support using <a
+        /// href="https://stripe.com/docs/api/payment_intents/create#create_payment_intent-payment_method_options-card_present-request_incremental_authorization_support">request_incremental_authorization_support</a>.
         /// </summary>
         [JsonProperty("incremental_authorization_supported")]
         public bool? IncrementalAuthorizationSupported { get; set; }

@@ -21,6 +21,12 @@ namespace Stripe
         [JsonProperty("balance")]
         public long? Balance { get; set; }
 
+        /// <summary>
+        /// Balance information and default balance settings for this customer.
+        /// </summary>
+        [JsonProperty("cash_balance")]
+        public CustomerCashBalanceOptions CashBalance { get; set; }
+
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
 
