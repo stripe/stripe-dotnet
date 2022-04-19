@@ -82,4 +82,4 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Publish NuGet packages to NuGet
-      run: dotnet nuget push nuget/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source "nuget.org" --skip-duplicate --no-symbols true
+      run: dotnet nuget push nuget/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source "nuget.org"
