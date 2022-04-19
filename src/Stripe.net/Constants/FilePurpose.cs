@@ -1,3 +1,4 @@
+// File generated from our OpenAPI spec
 namespace Stripe
 {
     public static class FilePurpose
@@ -30,9 +31,9 @@ namespace Stripe
 
         public const string PciDocument = "pci_document";
 
-        public const string Selfie = "selfie";
-
         public const string ProductFeed = "product_feed";
+
+        public const string Selfie = "selfie";
 
         public const string SigmaScheduledQuery = "sigma_scheduled_query";
 
