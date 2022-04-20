@@ -30,6 +30,9 @@ jobs:
         run: |
           dotnet tool install dotnet-format --version 4.1.131201 --tool-path tools
           dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
+          
+      - name: Test
+        run: echo "hello"
 
       - name: Build Release
         run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
