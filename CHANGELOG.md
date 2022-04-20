@@ -1,5 +1,16 @@
 # Changelog
 
+## 39.106.0 - 2022-04-20
+* [#2455](https://github.com/stripe/stripe-dotnet/pull/2455) API Updates
+  * Add support for new resources `FundingInstructions` and `Terminal.Configuration`
+  * Add support for `CreateFundingInstructions` method on resource `Customer`
+  * Add support for `CustomerBalance` on `ChargePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, and `PaymentMethod`
+  * Add support for `CashBalance` on `CustomerCreateOptions` and `CustomerUpdateOptions`
+  * Add support for `AmountDetails` on `PaymentIntent`
+  * Add support for `DisplayBankTransferInstructions` on `PaymentIntentNextAction`
+  * Add support for `ConfigurationOverrides` on `TerminalLocationCreateOptions`, `TerminalLocationUpdateOptions`, and `TerminalLocation`
+* [#2459](https://github.com/stripe/stripe-dotnet/pull/2459) Auto-generate constant files for resource properties.
+
 ## 39.105.0 - 2022-04-13
 * [#2453](https://github.com/stripe/stripe-dotnet/pull/2453) API Updates
   * Add support for `IncrementAuthorization` method on resource `PaymentIntent`
