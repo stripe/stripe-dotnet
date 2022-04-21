@@ -45,8 +45,8 @@ namespace Stripe.Checkout
         public string TaxBehavior { get; set; }
 
         /// <summary>
-        /// A <a href="https://stripe.com/docs/tax/tax-codes">tax code</a> ID. The Shipping tax code
-        /// is <c>txcd_92010001</c>.
+        /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID. The Shipping tax
+        /// code is <c>txcd_92010001</c>.
         /// </summary>
         [JsonProperty("tax_code")]
         public string TaxCode { get; set; }
