@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.107.0 - 2022-04-21
+* [#2463](https://github.com/stripe/stripe-dotnet/pull/2463) API Updates
+  * Add support for `Expire` test helper method on resource `Refund`
+
 ## 39.106.0 - 2022-04-20
 * [#2455](https://github.com/stripe/stripe-dotnet/pull/2455) API Updates
   * Add support for new resources `FundingInstructions` and `Terminal.Configuration`
