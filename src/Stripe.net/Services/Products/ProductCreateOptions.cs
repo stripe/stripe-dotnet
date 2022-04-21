@@ -95,7 +95,7 @@ namespace Stripe
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// A <a href="https://stripe.com/docs/tax/tax-codes">tax code</a> ID.
+        /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
         /// </summary>
         [JsonProperty("tax_code")]
         public string TaxCode { get; set; }

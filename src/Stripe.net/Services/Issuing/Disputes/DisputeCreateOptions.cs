@@ -22,7 +22,8 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The ID of the issuing transaction to create a dispute for.
+        /// The ID of the issuing transaction to create a dispute for. For transaction on Treasury
+        /// FinancialAccounts, use <c>treasury.received_debit</c>.
         /// </summary>
         [JsonProperty("transaction")]
         public string Transaction { get; set; }

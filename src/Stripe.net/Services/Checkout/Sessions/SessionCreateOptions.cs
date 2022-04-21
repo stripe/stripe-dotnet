@@ -88,9 +88,10 @@ namespace Stripe.Checkout
         /// customer data entered in Checkout with <a
         /// href="https://stripe.com/docs/api/checkout/sessions/object#checkout_session_object-customer_details">customer_details</a>.
         ///
-        /// Sessions that do not create Customers will instead create <a
+        /// Sessions that don't create Customers instead create <a
         /// href="https://support.stripe.com/questions/guest-customer-faq">Guest Customers</a> in
-        /// the Dashboard.
+        /// the Dashboard. Promotion codes limited to first time customers will return invalid for
+        /// these Sessions.
         ///
         /// Can only be set in <c>payment</c> and <c>setup</c> mode.
         /// One of: <c>always</c>, or <c>if_required</c>.

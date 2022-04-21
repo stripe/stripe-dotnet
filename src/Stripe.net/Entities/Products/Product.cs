@@ -136,7 +136,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the TaxCode)
-        /// A <a href="https://stripe.com/docs/tax/tax-codes">tax code</a> ID.
+        /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
         /// </summary>
         [JsonIgnore]
         public string TaxCodeId
@@ -147,7 +147,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// A <a href="https://stripe.com/docs/tax/tax-codes">tax code</a> ID.
+        /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

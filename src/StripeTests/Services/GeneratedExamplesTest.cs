@@ -424,7 +424,7 @@ namespace StripeTests
         {
             var options = new CouponCreateOptions
             {
-                PercentOff = 25,
+                PercentOff = 25m,
                 Duration = "repeating",
                 DurationInMonths = 3,
             };
@@ -1869,6 +1869,14 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestRefundServiceExpire()
+        {
+            var service = new Stripe.TestHelpers.RefundService(
+                this.StripeClient);
+            service.Expire("re_123");
+        }
+
+        [Fact]
         public void TestRefundServiceList()
         {
             var options = new RefundListOptions { Limit = 3 };
@@ -2370,7 +2378,7 @@ namespace StripeTests
                 DisplayName = "VAT",
                 Description = "VAT Germany",
                 Jurisdiction = "DE",
-                Percentage = 16,
+                Percentage = 16m,
                 Inclusive = false,
             };
             var service = new TaxRateService(this.StripeClient);
