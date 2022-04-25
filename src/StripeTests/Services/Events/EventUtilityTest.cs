@@ -101,5 +101,19 @@ namespace StripeTests
             var evt = EventUtility.ParseEvent(this.json, false);
             Assert.Equal("2017-05-25", evt.ApiVersion);
         }
+
+        [Theory]
+        [InlineData("t=,v1=2220f87ef101a04665f11cdf770523143f875572008577fa0f20882ddb9cc3c7,v0=63f3a72374a733066c4be69ed7f8e5ac85c22c9f0a6a612ab9a025a9e4ee7eef")]
+        [InlineData("t,v1=,v0=")]
+        [InlineData("t,v1=,v0")]
+        [InlineData("t,v1=,")]
+        [InlineData("t,,")]
+        [InlineData(",,")]
+        [InlineData("t")]
+        public void ValidateSignatureHandlesIncorrectHeaderValues(string headerValue)
+        {
+            Assert.Throws<StripeException>(() =>
+                EventUtility.ValidateSignature("{}", headerValue, string.Empty));
+        }
     }
 }
