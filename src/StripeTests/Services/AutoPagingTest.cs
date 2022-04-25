@@ -21,6 +21,17 @@ namespace StripeTests
         }
 
         [Fact]
+        public void MockingServiceWorks()
+        {
+            Mock<CustomerService> mock = new Mock<CustomerService>();
+            mock.Setup(m => m.Get("cus_1", null, null)).Returns(new Customer() { Name = "My customer" });
+
+            CustomerService service = mock.Object;
+
+            Assert.Equal("My customer", service.Get("cus_1").Name);
+        }
+
+        [Fact]
         public void ListAutoPaging()
         {
             // Set up stubbed requests
