@@ -523,6 +523,16 @@ namespace Stripe
         public const string PaymentCreated = "payment.created";
 
         /// <summary>
+        /// Occurs when a payment link is created.
+        /// </summary>
+        public const string PaymentLinkCreated = "payment_link.created";
+
+        /// <summary>
+        /// Occurs when a payment link is updated.
+        /// </summary>
+        public const string PaymentLinkUpdated = "payment_link.updated";
+
+        /// <summary>
         /// Occurs when a <see cref="PaymentIntent"/> has funds to be captured. Check the
         /// <see cref="PaymentIntent.AmountCapturable"/> property on the PaymentIntent to determine
         /// the amount that can be captured. You may capture the PaymentIntent with an
