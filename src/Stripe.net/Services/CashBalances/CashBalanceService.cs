@@ -5,9 +5,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CashBalanceService : ServiceNested<CashBalance>,
-        INestedSingletonRetrievable<CashBalance, CashBalanceGetOptions>,
-        INestedSingletonUpdatable<CashBalance, CashBalanceUpdateOptions>
+    public class CashBalanceService : ServiceNested<CashBalance>
     {
         public CashBalanceService()
             : base(null)
