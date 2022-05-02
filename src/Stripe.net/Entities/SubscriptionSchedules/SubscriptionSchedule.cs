@@ -28,6 +28,37 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        #region Expandable Application
+
+        /// <summary>
+        /// (ID of the Application)
+        /// ID of the Connect Application that created the schedule.
+        /// </summary>
+        [JsonIgnore]
+        public string ApplicationId
+        {
+            get => this.InternalApplication?.Id;
+            set => this.InternalApplication = SetExpandableFieldId(value, this.InternalApplication);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the Connect Application that created the schedule.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Application Application
+        {
+            get => this.InternalApplication?.ExpandedObject;
+            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
+        }
+
+        [JsonProperty("application")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
+        internal ExpandableField<Application> InternalApplication { get; set; }
+        #endregion
+
         /// <summary>
         /// Time at which the subscription schedule was canceled. Measured in seconds since the Unix
         /// epoch.

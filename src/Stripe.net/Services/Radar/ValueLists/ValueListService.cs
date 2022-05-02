@@ -74,12 +74,12 @@ namespace Stripe.Radar
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual ValueList Update(string id, ValueListUpdateOptions options, RequestOptions requestOptions = null)
+        public virtual ValueList Update(string id, ValueListUpdateOptions options = null, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<ValueList> UpdateAsync(string id, ValueListUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ValueList> UpdateAsync(string id, ValueListUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
