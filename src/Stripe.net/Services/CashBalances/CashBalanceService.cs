@@ -1,12 +1,13 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
 
     public class CashBalanceService : ServiceNested<CashBalance>,
-        INestedRetrievable<CashBalance, CashBalanceGetOptions>,
-        INestedUpdatable<CashBalance, CashBalanceUpdateOptions>
+        INestedSingletonRetrievable<CashBalance, CashBalanceGetOptions>,
+        INestedSingletonUpdatable<CashBalance, CashBalanceUpdateOptions>
     {
         public CashBalanceService()
             : base(null)
@@ -40,7 +41,7 @@ namespace Stripe
             return this.UpdateNestedEntityAsync(parentId, null, options, requestOptions, cancellationToken);
         }
 
-        protected virtual string InstanceUrl(string parentId, string id)
+        protected override string InstanceUrl(string parentId, string id)
         {
             if (string.IsNullOrWhiteSpace(parentId))
             {
@@ -51,6 +52,5 @@ namespace Stripe
 
             return $"{this.ClassUrl(parentId)}";
         }
-
     }
 }
