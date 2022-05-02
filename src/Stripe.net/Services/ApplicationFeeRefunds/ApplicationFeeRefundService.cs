@@ -63,12 +63,12 @@ namespace Stripe
             return this.ListNestedEntitiesAutoPagingAsync(parentId, options, requestOptions, cancellationToken);
         }
 
-        public virtual ApplicationFeeRefund Update(string parentId, string id, ApplicationFeeRefundUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual ApplicationFeeRefund Update(string parentId, string id, ApplicationFeeRefundUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateNestedEntity(parentId, id, options, requestOptions);
         }
 
-        public virtual Task<ApplicationFeeRefund> UpdateAsync(string parentId, string id, ApplicationFeeRefundUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ApplicationFeeRefund> UpdateAsync(string parentId, string id, ApplicationFeeRefundUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
         }

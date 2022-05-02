@@ -84,12 +84,12 @@ namespace Stripe
             return this.RequestAsync<OrderReturn>(HttpMethod.Post, $"{this.InstanceUrl(id)}/returns", options, requestOptions, cancellationToken);
         }
 
-        public virtual Order Update(string id, OrderUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual Order Update(string id, OrderUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Order> UpdateAsync(string id, OrderUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Order> UpdateAsync(string id, OrderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }

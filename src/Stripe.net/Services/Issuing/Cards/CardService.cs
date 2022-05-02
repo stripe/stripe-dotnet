@@ -63,12 +63,12 @@ namespace Stripe.Issuing
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Card Update(string id, CardUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual Card Update(string id, CardUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Card> UpdateAsync(string id, CardUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Card> UpdateAsync(string id, CardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }

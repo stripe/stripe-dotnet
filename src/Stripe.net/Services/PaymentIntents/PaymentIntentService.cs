@@ -135,12 +135,12 @@ namespace Stripe
             return this.SearchRequestAutoPagingAsync<PaymentIntent>($"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
         }
 
-        public virtual PaymentIntent Update(string id, PaymentIntentUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual PaymentIntent Update(string id, PaymentIntentUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<PaymentIntent> UpdateAsync(string id, PaymentIntentUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<PaymentIntent> UpdateAsync(string id, PaymentIntentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }

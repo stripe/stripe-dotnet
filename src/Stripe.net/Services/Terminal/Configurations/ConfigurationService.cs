@@ -74,12 +74,12 @@ namespace Stripe.Terminal
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Configuration Update(string id, ConfigurationUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual Configuration Update(string id, ConfigurationUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Configuration> UpdateAsync(string id, ConfigurationUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Configuration> UpdateAsync(string id, ConfigurationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }

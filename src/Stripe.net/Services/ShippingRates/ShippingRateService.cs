@@ -63,12 +63,12 @@ namespace Stripe
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual ShippingRate Update(string id, ShippingRateUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual ShippingRate Update(string id, ShippingRateUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<ShippingRate> UpdateAsync(string id, ShippingRateUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<ShippingRate> UpdateAsync(string id, ShippingRateUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }

@@ -31,12 +31,12 @@ namespace Stripe
             return this.GetNestedEntityAsync(parentId, null, options, requestOptions, cancellationToken);
         }
 
-        public virtual CashBalance Update(string parentId, CashBalanceUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual CashBalance Update(string parentId, CashBalanceUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateNestedEntity(parentId, null, options, requestOptions);
         }
 
-        public virtual Task<CashBalance> UpdateAsync(string parentId, CashBalanceUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<CashBalance> UpdateAsync(string parentId, CashBalanceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateNestedEntityAsync(parentId, null, options, requestOptions, cancellationToken);
         }

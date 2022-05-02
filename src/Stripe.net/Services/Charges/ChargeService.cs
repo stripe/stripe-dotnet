@@ -95,12 +95,12 @@ namespace Stripe
             return this.SearchRequestAutoPagingAsync<Charge>($"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
         }
 
-        public virtual Charge Update(string id, ChargeUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual Charge Update(string id, ChargeUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Charge> UpdateAsync(string id, ChargeUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Charge> UpdateAsync(string id, ChargeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }

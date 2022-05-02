@@ -74,12 +74,12 @@ namespace Stripe
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
         }
 
-        public virtual Topup Update(string id, TopupUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual Topup Update(string id, TopupUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Topup> UpdateAsync(string id, TopupUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Topup> UpdateAsync(string id, TopupUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }

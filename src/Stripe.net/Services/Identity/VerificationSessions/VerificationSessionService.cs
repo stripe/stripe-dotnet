@@ -84,12 +84,12 @@ namespace Stripe.Identity
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/redact", options, requestOptions, cancellationToken);
         }
 
-        public virtual VerificationSession Update(string id, VerificationSessionUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual VerificationSession Update(string id, VerificationSessionUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<VerificationSession> UpdateAsync(string id, VerificationSessionUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<VerificationSession> UpdateAsync(string id, VerificationSessionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }

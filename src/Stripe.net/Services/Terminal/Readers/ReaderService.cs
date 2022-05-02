@@ -115,12 +115,12 @@ namespace Stripe.Terminal
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/set_reader_display", options, requestOptions, cancellationToken);
         }
 
-        public virtual Reader Update(string id, ReaderUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual Reader Update(string id, ReaderUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Reader> UpdateAsync(string id, ReaderUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Reader> UpdateAsync(string id, ReaderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }

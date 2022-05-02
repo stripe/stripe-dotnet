@@ -85,12 +85,12 @@ namespace Stripe
             return this.SearchRequestAutoPagingAsync<Price>($"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
         }
 
-        public virtual Price Update(string id, PriceUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual Price Update(string id, PriceUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateEntity(id, options, requestOptions);
         }
 
-        public virtual Task<Price> UpdateAsync(string id, PriceUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Price> UpdateAsync(string id, PriceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }

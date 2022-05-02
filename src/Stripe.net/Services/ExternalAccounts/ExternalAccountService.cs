@@ -74,12 +74,12 @@ namespace Stripe
             return this.ListNestedEntitiesAutoPagingAsync(parentId, options, requestOptions, cancellationToken);
         }
 
-        public virtual IExternalAccount Update(string parentId, string id, ExternalAccountUpdateOptions options = null, RequestOptions requestOptions = null)
+        public virtual IExternalAccount Update(string parentId, string id, ExternalAccountUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.UpdateNestedEntity(parentId, id, options, requestOptions);
         }
 
-        public virtual Task<IExternalAccount> UpdateAsync(string parentId, string id, ExternalAccountUpdateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<IExternalAccount> UpdateAsync(string parentId, string id, ExternalAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
         }
