@@ -44,6 +44,15 @@ namespace Stripe
         public long Balance { get; set; }
 
         /// <summary>
+        /// The current funds being held by Stripe on behalf of the customer. These funds can be
+        /// applied towards payment intents with source "cash_balance".The
+        /// settings[reconciliation_mode] field describes whether these funds are applied to such
+        /// payment intents manually or automatically.
+        /// </summary>
+        [JsonProperty("cash_balance")]
+        public CashBalance CashBalance { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]

@@ -30,6 +30,7 @@ namespace Stripe
                 { "billing_portal.session", typeof(BillingPortal.Session) },
                 { "capability", typeof(Capability) },
                 { "card", typeof(Card) },
+                { "cash_balance", typeof(CashBalance) },
                 { "charge", typeof(Charge) },
                 { "checkout.session", typeof(Checkout.Session) },
                 { "country_spec", typeof(CountrySpec) },

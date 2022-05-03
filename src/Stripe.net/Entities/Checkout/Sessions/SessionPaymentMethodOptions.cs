@@ -8,6 +8,9 @@ namespace Stripe.Checkout
         [JsonProperty("acss_debit")]
         public SessionPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("alipay")]
+        public SessionPaymentMethodOptionsAlipay Alipay { get; set; }
+
         [JsonProperty("boleto")]
         public SessionPaymentMethodOptionsBoleto Boleto { get; set; }
 
