@@ -1,5 +1,17 @@
 # Changelog
 
+## 39.108.0 - 2022-05-03
+* [#2472](https://github.com/stripe/stripe-dotnet/pull/2472) API Updates
+  * Add support for new resource `CashBalance`
+  * Change type of `BillingPortalConfigurationApplication` from `$Application` to `deletable($Application)`
+  * Add support for `Alipay` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
+  * Add support for `CashBalance` on `Customer`
+  * Add support for `Application` on `Invoice`, `Quote`, `SubscriptionSchedule`, and `Subscription`
+  
+* [#2470](https://github.com/stripe/stripe-dotnet/pull/2470) Add missing payment links events
+* [#2468](https://github.com/stripe/stripe-dotnet/pull/2468) Harden ValidateSignature against invalid input
+* [#2467](https://github.com/stripe/stripe-dotnet/pull/2467) Cleanup .NET project files
+
 ## 39.107.0 - 2022-04-21
 * [#2463](https://github.com/stripe/stripe-dotnet/pull/2463) API Updates
   * Add support for `Expire` test helper method on resource `Refund`
