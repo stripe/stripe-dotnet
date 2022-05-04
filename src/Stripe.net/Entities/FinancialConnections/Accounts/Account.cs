@@ -85,7 +85,7 @@ namespace Stripe.FinancialConnections
         #region Expandable Ownership
 
         /// <summary>
-        /// (ID of the Ownership)
+        /// (ID of the AccountOwnership)
         /// The most recent information about the account's owners.
         /// </summary>
         [JsonIgnore]
@@ -102,15 +102,15 @@ namespace Stripe.FinancialConnections
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-        public Ownership Ownership
+        public AccountOwnership Ownership
         {
             get => this.InternalOwnership?.ExpandedObject;
             set => this.InternalOwnership = SetExpandableFieldObject(value, this.InternalOwnership);
         }
 
         [JsonProperty("ownership")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Ownership>))]
-        internal ExpandableField<Ownership> InternalOwnership { get; set; }
+        [JsonConverter(typeof(ExpandableFieldConverter<AccountOwnership>))]
+        internal ExpandableField<AccountOwnership> InternalOwnership { get; set; }
         #endregion
 
         /// <summary>
