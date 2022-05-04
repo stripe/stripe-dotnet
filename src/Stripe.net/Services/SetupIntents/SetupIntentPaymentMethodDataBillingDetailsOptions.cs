@@ -9,7 +9,7 @@ namespace Stripe
         /// Billing address.
         /// </summary>
         [JsonProperty("address")]
-        public SetupIntentPaymentMethodDataBillingDetailsAddressOptions Address { get; set; }
+        public AddressOptions Address { get; set; }
 
         /// <summary>
         /// Email address.

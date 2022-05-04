@@ -141,7 +141,7 @@ namespace Stripe
         /// The person's registered address.
         /// </summary>
         [JsonProperty("registered_address")]
-        public TokenPersonRegisteredAddressOptions RegisteredAddress { get; set; }
+        public AddressOptions RegisteredAddress { get; set; }
 
         /// <summary>
         /// The relationship that this person has with the account's legal entity.
