@@ -7,9 +7,15 @@ namespace Stripe.FinancialConnections
 
     public class AccountOwner : StripeEntity<AccountOwner>, IHasId, IHasObject
     {
+        /// <summary>
+        /// Unique identifier for the object.
+        /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// String representing the object's type. Objects of the same type share the same value.
+        /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
