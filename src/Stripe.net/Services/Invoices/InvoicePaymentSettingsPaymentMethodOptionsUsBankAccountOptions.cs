@@ -6,6 +6,12 @@ namespace Stripe
     public class InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountOptions : INestedOptions
     {
         /// <summary>
+        /// Additional fields for Financial Connections Session creation.
+        /// </summary>
+        [JsonProperty("financial_connections")]
+        public InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions FinancialConnections { get; set; }
+
+        /// <summary>
         /// Verification method for the intent.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>

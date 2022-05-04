@@ -6,6 +6,12 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsUsBankAccountOptions : INestedOptions
     {
         /// <summary>
+        /// Additional fields for Financial Connections Session creation.
+        /// </summary>
+        [JsonProperty("financial_connections")]
+        public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions FinancialConnections { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
