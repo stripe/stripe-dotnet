@@ -125,6 +125,12 @@ namespace Stripe
         public string PoliticalExposure { get; set; }
 
         /// <summary>
+        /// The individual's registered address.
+        /// </summary>
+        [JsonProperty("registered_address")]
+        public AccountIndividualRegisteredAddressOptions RegisteredAddress { get; set; }
+
+        /// <summary>
         /// The last four digits of the individual's Social Security Number (U.S. only).
         /// </summary>
         [JsonProperty("ssn_last_4")]

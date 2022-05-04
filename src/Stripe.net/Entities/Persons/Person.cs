@@ -173,6 +173,9 @@ namespace Stripe
         [JsonProperty("political_exposure")]
         public string PoliticalExposure { get; set; }
 
+        [JsonProperty("registered_address")]
+        public Address RegisteredAddress { get; set; }
+
         [JsonProperty("relationship")]
         public PersonRelationship Relationship { get; set; }
 
