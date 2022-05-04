@@ -9,6 +9,6 @@ namespace Stripe
         /// Portion of the amount that corresponds to a tip.
         /// </summary>
         [JsonProperty("amount")]
-        public long Amount { get; set; }
+        public long? Amount { get; set; }
     }
 }
