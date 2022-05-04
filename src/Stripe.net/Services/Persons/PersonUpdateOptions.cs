@@ -145,6 +145,12 @@ namespace Stripe
         public string PoliticalExposure { get; set; }
 
         /// <summary>
+        /// The person's registered address.
+        /// </summary>
+        [JsonProperty("registered_address")]
+        public AddressOptions RegisteredAddress { get; set; }
+
+        /// <summary>
         /// The relationship that this person has with the account's legal entity.
         /// </summary>
         [JsonProperty("relationship")]
