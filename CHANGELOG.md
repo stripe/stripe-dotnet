@@ -1,5 +1,12 @@
 # Changelog
 
+## 39.110.0 - 2022-05-05
+* [#2475](https://github.com/stripe/stripe-dotnet/pull/2475) API Updates
+  * Add support for `DefaultPriceData` on `ProductCreateOptions`
+  * Add support for `DefaultPrice` on `ProductUpdateOptions` and `Product`
+  * Add support for `InstructionsEmail` on `RefundCreateOptions` and `Refund`
+  
+
 ## 39.109.0 - 2022-05-05
 * [#2474](https://github.com/stripe/stripe-dotnet/pull/2474) API Updates
   * Add support for new resources `FinancialConnections.AccountOwner`, `FinancialConnections.AccountOwnership`, `FinancialConnections.Account`, and `FinancialConnections.Session`
