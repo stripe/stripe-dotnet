@@ -5,6 +5,9 @@ namespace Stripe
 
     public class SetupIntentPaymentMethodOptionsUsBankAccount : StripeEntity<SetupIntentPaymentMethodOptionsUsBankAccount>
     {
+        [JsonProperty("financial_connections")]
+        public SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections FinancialConnections { get; set; }
+
         /// <summary>
         /// Bank account verification method.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.

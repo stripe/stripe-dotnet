@@ -26,6 +26,12 @@ namespace Stripe
         public string AccountType { get; set; }
 
         /// <summary>
+        /// The ID of a Financial Connections Account to use as a payment method.
+        /// </summary>
+        [JsonProperty("financial_connections_account")]
+        public string FinancialConnectionsAccount { get; set; }
+
+        /// <summary>
         /// Routing number of the bank account.
         /// </summary>
         [JsonProperty("routing_number")]
