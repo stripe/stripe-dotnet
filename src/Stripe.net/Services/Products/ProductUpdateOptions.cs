@@ -36,6 +36,13 @@ namespace Stripe
         public List<string> DeactivateOn { get; set; }
 
         /// <summary>
+        /// The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> object that is the
+        /// default price for this product.
+        /// </summary>
+        [JsonProperty("default_price")]
+        public string DefaultPrice { get; set; }
+
+        /// <summary>
         /// The product's description, meant to be displayable to the customer. Use this field to
         /// optionally store a long form explanation of the product being sold for your own
         /// rendering purposes.
