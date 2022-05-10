@@ -31,8 +31,7 @@ jobs:
 
       - name: Install tools
         run: |
-          dotnet tool install dotnet-format --version 4.1.131201 --tool-path tools
-          dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
+          dotnet tool restore
 
       - name: Build Release
         run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
@@ -55,7 +54,7 @@ jobs:
           # token is available before invoking Coveralls.
           if [ ! -z "${COVERALLS_REPO_TOKEN}" ];
           then
-            ./tools/csmacnz.Coveralls --opencover -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml --useRelativePaths
+            dotnet tool run csmacnz.Coveralls --opencover -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml --useRelativePaths
           fi
         env:
           CI_NAME: github-actions
