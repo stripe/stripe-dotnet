@@ -446,10 +446,6 @@ namespace Stripe
 
         #region Expandable Order
 
-        /// <summary>
-        /// (ID of the Order)
-        /// ID of the order this charge is for if one exists.
-        /// </summary>
         [JsonIgnore]
         public string OrderId
         {
@@ -457,12 +453,6 @@ namespace Stripe
             set => this.InternalOrder = SetExpandableFieldId(value, this.InternalOrder);
         }
 
-        /// <summary>
-        /// (Expanded)
-        /// ID of the order this charge is for if one exists.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
         [JsonIgnore]
         public Order Order
         {
