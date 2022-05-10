@@ -4,4 +4,4 @@ update-version:
 	@perl -pi -e 's|<Version>[.\d]+</Version>|<Version>$(VERSION)</Version>|' src/Stripe.net/Stripe.net.csproj
 
 codegen-format:
-	dotnet format whitespace src/Stripe.net.sln
+	dotnet format whitespace src/Stripe.net/
