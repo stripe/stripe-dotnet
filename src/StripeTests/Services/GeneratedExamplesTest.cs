@@ -804,6 +804,59 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestFinancialConnectionsAccountServiceDisconnect()
+        {
+            var service = new Stripe.FinancialConnections.AccountService(
+                this.StripeClient);
+            service.Disconnect("fca_xyz");
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsAccountServiceRefresh()
+        {
+            var options = new Stripe.FinancialConnections.AccountRefreshOptions
+            {
+                Features = new List<string> { "balance" },
+            };
+            var service = new Stripe.FinancialConnections.AccountService(
+                this.StripeClient);
+            service.Refresh("fca_xyz", options);
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsAccountServiceRetrieve()
+        {
+            var service = new Stripe.FinancialConnections.AccountService(
+                this.StripeClient);
+            service.Get("fca_xyz");
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsSessionServiceCreate()
+        {
+            var options = new Stripe.FinancialConnections.SessionCreateOptions
+            {
+                AccountHolder = new Stripe.FinancialConnections.SessionAccountHolderOptions
+                {
+                    Type = "customer",
+                    Customer = "cus_123",
+                },
+                Permissions = new List<string> { "balances" },
+            };
+            var service = new Stripe.FinancialConnections.SessionService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsSessionServiceRetrieve()
+        {
+            var service = new Stripe.FinancialConnections.SessionService(
+                this.StripeClient);
+            service.Get("fcsess_xyz");
+        }
+
+        [Fact]
         public void TestInvoiceItemServiceCreate()
         {
             var options = new InvoiceItemCreateOptions
@@ -1202,75 +1255,6 @@ namespace StripeTests
         {
             var service = new MandateService(this.StripeClient);
             service.Get("mandate_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestOrderServiceCreate()
-        {
-            var options = new OrderCreateOptions
-            {
-                Currency = "usd",
-                Email = "jenny.rosen@example.com",
-                Items = new List<OrderItemOptions>
-                {
-                    new OrderItemOptions
-                    {
-                        Type = "sku",
-                        Parent = "sku_xxxxxxxxxxxxx",
-                    },
-                },
-                Shipping = new ShippingOptions
-                {
-                    Name = "Jenny Rosen",
-                    Address = new AddressOptions
-                    {
-                        Line1 = "1234 Main Street",
-                        City = "San Francisco",
-                        State = "CA",
-                        Country = "US",
-                        PostalCode = "94111",
-                    },
-                },
-            };
-            var service = new OrderService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestOrderServiceList()
-        {
-            var options = new OrderListOptions { Limit = 3 };
-            var service = new OrderService(this.StripeClient);
-            StripeList<Order> orders = service.List(options);
-        }
-
-        [Fact]
-        public void TestOrderServicePay()
-        {
-            var options = new OrderPayOptions { Source = "tok_xxxx" };
-            var service = new OrderService(this.StripeClient);
-            service.Pay("or_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestOrderServiceRetrieve()
-        {
-            var service = new OrderService(this.StripeClient);
-            service.Get("or_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestOrderServiceUpdate()
-        {
-            var options = new OrderUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new OrderService(this.StripeClient);
-            service.Update("or_xxxxxxxxxxxxx", options);
         }
 
         [Fact]

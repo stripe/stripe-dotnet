@@ -5,6 +5,9 @@ namespace Stripe.Checkout
 
     public class SessionPaymentMethodOptionsUsBankAccount : StripeEntity<SessionPaymentMethodOptionsUsBankAccount>
     {
+        [JsonProperty("financial_connections")]
+        public SessionPaymentMethodOptionsUsBankAccountFinancialConnections FinancialConnections { get; set; }
+
         /// <summary>
         /// Bank account verification method.
         /// One of: <c>automatic</c>, or <c>instant</c>.

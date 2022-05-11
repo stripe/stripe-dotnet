@@ -1,5 +1,35 @@
 # Changelog
 
+## 39.110.0 - 2022-05-05
+* [#2475](https://github.com/stripe/stripe-dotnet/pull/2475) API Updates
+  * Add support for `DefaultPriceData` on `ProductCreateOptions`
+  * Add support for `DefaultPrice` on `ProductUpdateOptions` and `Product`
+  * Add support for `InstructionsEmail` on `RefundCreateOptions` and `Refund`
+  
+
+## 39.109.0 - 2022-05-05
+* [#2474](https://github.com/stripe/stripe-dotnet/pull/2474) API Updates
+  * Add support for new resources `FinancialConnections.AccountOwner`, `FinancialConnections.AccountOwnership`, `FinancialConnections.Account`, and `FinancialConnections.Session`
+  * Add support for `FinancialConnections` on `CheckoutSessionPaymentMethodOptionsUsBankAccountOptions`, `CheckoutSessionPaymentMethodOptionsUsBankAccount`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountOptions`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccount`, `PaymentIntentPaymentMethodOptionsUsBankAccountOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccount`, `SetupIntentPaymentMethodOptionsUsBankAccountOptions`, `SetupIntentPaymentMethodOptionsUsBankAccount`, `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount`
+  * Add support for `FinancialConnectionsAccount` on `PaymentIntentPaymentMethodDataUsBankAccountOptions`, `PaymentMethodUsBankAccountOptions`, `PaymentMethodUsBankAccount`, and `SetupIntentPaymentMethodDataUsBankAccountOptions`
+  
+* [#2473](https://github.com/stripe/stripe-dotnet/pull/2473) API Updates
+  * Add support for `RegisteredAddress` on `AccountIndividualOptions`, `PersonCreateOptions`, `PersonUpdateOptions`, `Person`, `TokenAccountIndividualOptions`, and `TokenPersonOptions`
+  * Change type of `PaymentIntentAmountDetailsTipAmount` from `nullable(integer)` to `integer`
+  * Add support for `PaymentMethodData` on `SetupIntentConfirmOptions`, `SetupIntentCreateOptions`, and `SetupIntentUpdateOptions`
+
+## 39.108.0 - 2022-05-03
+* [#2472](https://github.com/stripe/stripe-dotnet/pull/2472) API Updates
+  * Add support for new resource `CashBalance`
+  * Change type of `BillingPortalConfigurationApplication` from `$Application` to `deletable($Application)`
+  * Add support for `Alipay` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
+  * Add support for `CashBalance` on `Customer`
+  * Add support for `Application` on `Invoice`, `Quote`, `SubscriptionSchedule`, and `Subscription`
+  
+* [#2470](https://github.com/stripe/stripe-dotnet/pull/2470) Add missing payment links events
+* [#2468](https://github.com/stripe/stripe-dotnet/pull/2468) Harden ValidateSignature against invalid input
+* [#2467](https://github.com/stripe/stripe-dotnet/pull/2467) Cleanup .NET project files
+
 ## 39.107.0 - 2022-04-21
 * [#2463](https://github.com/stripe/stripe-dotnet/pull/2463) API Updates
   * Add support for `Expire` test helper method on resource `Refund`

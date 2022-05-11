@@ -30,6 +30,7 @@ namespace Stripe
                 { "billing_portal.session", typeof(BillingPortal.Session) },
                 { "capability", typeof(Capability) },
                 { "card", typeof(Card) },
+                { "cash_balance", typeof(CashBalance) },
                 { "charge", typeof(Charge) },
                 { "checkout.session", typeof(Checkout.Session) },
                 { "country_spec", typeof(CountrySpec) },
@@ -48,6 +49,22 @@ namespace Stripe
                 { "fee_refund", typeof(ApplicationFeeRefund) },
                 { "file", typeof(File) },
                 { "file_link", typeof(FileLink) },
+                {
+                    "financial_connections.account", typeof(
+                        FinancialConnections.Account)
+                },
+                {
+                    "financial_connections.account_owner", typeof(
+                        FinancialConnections.AccountOwner)
+                },
+                {
+                    "financial_connections.account_ownership", typeof(
+                        FinancialConnections.AccountOwnership)
+                },
+                {
+                    "financial_connections.session", typeof(
+                        FinancialConnections.Session)
+                },
                 { "funding_instructions", typeof(FundingInstructions) },
                 {
                     "identity.verification_report", typeof(

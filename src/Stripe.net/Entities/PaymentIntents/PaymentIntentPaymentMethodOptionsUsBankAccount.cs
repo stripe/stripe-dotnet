@@ -5,6 +5,9 @@ namespace Stripe
 
     public class PaymentIntentPaymentMethodOptionsUsBankAccount : StripeEntity<PaymentIntentPaymentMethodOptionsUsBankAccount>
     {
+        [JsonProperty("financial_connections")]
+        public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections FinancialConnections { get; set; }
+
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
