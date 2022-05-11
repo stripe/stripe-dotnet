@@ -49,6 +49,21 @@ namespace Stripe
         public string BillingAddressCollection { get; set; }
 
         /// <summary>
+        /// Configure fields to gather active consent from customers.
+        /// </summary>
+        [JsonProperty("consent_collection")]
+        public PaymentLinkConsentCollectionOptions ConsentCollection { get; set; }
+
+        /// <summary>
+        /// Configures whether <a href="https://stripe.com/docs/api/checkout/sessions">checkout
+        /// sessions</a> created by this payment link create a <a
+        /// href="https://stripe.com/docs/api/customers">Customer</a>.
+        /// One of: <c>always</c>, or <c>if_required</c>.
+        /// </summary>
+        [JsonProperty("customer_creation")]
+        public string CustomerCreation { get; set; }
+
+        /// <summary>
         /// The line items representing what is being sold. Each line item represents an item being
         /// sold. Up to 20 line items are supported.
         /// </summary>
@@ -72,6 +87,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("on_behalf_of")]
         public string OnBehalfOf { get; set; }
+
+        /// <summary>
+        /// A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in
+        /// <c>payment</c> mode.
+        /// </summary>
+        [JsonProperty("payment_intent_data")]
+        public PaymentLinkPaymentIntentDataOptions PaymentIntentData { get; set; }
 
         /// <summary>
         /// The list of payment method types that customers can use. Only <c>card</c> is supported.
@@ -98,11 +120,33 @@ namespace Stripe
         public PaymentLinkShippingAddressCollectionOptions ShippingAddressCollection { get; set; }
 
         /// <summary>
+        /// The shipping rate options to apply to <a
+        /// href="https://stripe.com/docs/api/checkout/sessions">checkout sessions</a> created by
+        /// this payment link.
+        /// </summary>
+        [JsonProperty("shipping_options")]
+        public List<PaymentLinkShippingOptionOptions> ShippingOptions { get; set; }
+
+        /// <summary>
+        /// Describes the type of transaction being performed in order to customize relevant text on
+        /// the page, such as the submit button.
+        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, or <c>pay</c>.
+        /// </summary>
+        [JsonProperty("submit_type")]
+        public string SubmitType { get; set; }
+
+        /// <summary>
         /// When creating a subscription, the specified configuration data will be used. There must
         /// be at least one line item with a recurring price to use <c>subscription_data</c>.
         /// </summary>
         [JsonProperty("subscription_data")]
         public PaymentLinkSubscriptionDataOptions SubscriptionData { get; set; }
+
+        /// <summary>
+        /// Controls tax ID collection during checkout.
+        /// </summary>
+        [JsonProperty("tax_id_collection")]
+        public PaymentLinkTaxIdCollectionOptions TaxIdCollection { get; set; }
 
         /// <summary>
         /// The account (if any) the payments will be attributed to for tax reporting, and where

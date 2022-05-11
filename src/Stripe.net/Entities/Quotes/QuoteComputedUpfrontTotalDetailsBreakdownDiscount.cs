@@ -12,8 +12,10 @@ namespace Stripe
         public long Amount { get; set; }
 
         /// <summary>
-        /// A discount represents the actual application of a coupon to a particular customer. It
-        /// contains information about when the discount began and when it will end.
+        /// A discount represents the actual application of a <a
+        /// href="https://stripe.com/docs/api#coupons">coupon</a> or <a
+        /// href="https://stripe.com/docs/api#promotion_codes">promotion code</a>. It contains
+        /// information about when the discount began, when it will end, and what it is applied to.
         ///
         /// Related guide: <a
         /// href="https://stripe.com/docs/billing/subscriptions/discounts">Applying Discounts to

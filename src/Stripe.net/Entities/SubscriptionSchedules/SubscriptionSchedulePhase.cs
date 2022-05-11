@@ -6,7 +6,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SubscriptionSchedulePhase : StripeEntity<SubscriptionSchedulePhase>
+    public class SubscriptionSchedulePhase : StripeEntity<SubscriptionSchedulePhase>, IHasMetadata
     {
         /// <summary>
         /// A list of prices and quantities that will generate invoice items appended to the first
@@ -146,6 +146,16 @@ namespace Stripe
         /// </summary>
         [JsonProperty("items")]
         public List<SubscriptionSchedulePhaseItem> Items { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to a phase. Metadata on a schedule's phase will update the underlying
+        /// subscription's <c>metadata</c> when the phase is entered. Updating the underlying
+        /// subscription's <c>metadata</c> directly will not affect the current phase's
+        /// <c>metadata</c>.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// If the subscription schedule will prorate when transitioning to this phase. Possible

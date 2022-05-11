@@ -137,6 +137,13 @@ namespace Stripe
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
+        /// The subscription's description, meant to be displayable to the customer. Use this field
+        /// to optionally store an explanation of the subscription for rendering in Stripe surfaces.
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        /// <summary>
         /// A list of up to 20 subscription items, each with an attached price.
         /// </summary>
         [JsonProperty("items")]
