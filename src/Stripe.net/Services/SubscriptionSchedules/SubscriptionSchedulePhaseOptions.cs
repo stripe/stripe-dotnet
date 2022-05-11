@@ -6,7 +6,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SubscriptionSchedulePhaseOptions : INestedOptions
+    public class SubscriptionSchedulePhaseOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// A list of prices and quantities that will generate invoice items appended to the next
@@ -115,6 +115,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("iterations")]
         public long? Iterations { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to a phase. Metadata on a schedule's phase will update the underlying
+        /// subscription's <c>metadata</c> when the phase is entered, adding new keys and replacing
+        /// existing keys in the subscription's <c>metadata</c>. Individual keys in the
+        /// subscription's <c>metadata</c> can be unset by posting an empty value to them in the
+        /// phase's <c>metadata</c>. To unset all keys in the subscription's <c>metadata</c>, update
+        /// the subscription directly or unset every key individually from the phase's
+        /// <c>metadata</c>.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// If a subscription schedule will create prorations when transitioning to this phase.
