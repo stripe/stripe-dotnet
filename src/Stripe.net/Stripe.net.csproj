@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Stripe.net is a sync/async .NET 4.6.1+ client, and a portable class library for the Stripe API.  (Official Library)</Description>
-    <Version>39.110.0</Version>
+    <Version>39.111.0</Version>
     <LangVersion>8</LangVersion>
     <Authors>Stripe, Jayme Davis</Authors>
     <TargetFrameworks>net5.0;net6.0;netcoreapp3.1;netstandard2.0;net461</TargetFrameworks>

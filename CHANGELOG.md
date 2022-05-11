@@ -1,5 +1,17 @@
 # Changelog
 
+## 39.111.0 - 2022-05-11
+* [#2480](https://github.com/stripe/stripe-dotnet/pull/2480) API Updates
+  * Add support for `Description` on `CheckoutSessionSubscriptionDataOptions`, `SubscriptionCreateOptions`, `SubscriptionUpdateOptions`, and `Subscription`
+  * Add support for `ConsentCollection`, `PaymentIntentData`, `ShippingOptions`, `SubmitType`, and `TaxIdCollection` on `PaymentLinkCreateOptions` and `PaymentLink`
+  * Add support for `CustomerCreation` on `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
+  * Add support for `Metadata` on `SubscriptionSchedulePhasesOptions` and `SubscriptionSchedulePhases`
+* [#2478](https://github.com/stripe/stripe-dotnet/pull/2478) Make dotnet formatting faster
+* [#2479](https://github.com/stripe/stripe-dotnet/pull/2479) API Updates
+  
+  * Add support for `AmountDiscount`, `AmountTax`, and `Product` on `LineItem`
+  
+
 ## 39.110.0 - 2022-05-05
 * [#2475](https://github.com/stripe/stripe-dotnet/pull/2475) API Updates
   * Add support for `DefaultPriceData` on `ProductCreateOptions`
