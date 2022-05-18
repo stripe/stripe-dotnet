@@ -144,6 +144,26 @@ namespace Stripe
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/pay", options, requestOptions, cancellationToken);
         }
 
+        public virtual StripeSearchResult<Invoice> Search(InvoiceSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeSearchResult<Invoice>>(HttpMethod.Get, $"{this.InstanceUrl("search")}", options, requestOptions);
+        }
+
+        public virtual Task<StripeSearchResult<Invoice>> SearchAsync(InvoiceSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeSearchResult<Invoice>>(HttpMethod.Get, $"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Invoice> SearchAutoPaging(InvoiceSearchOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.SearchRequestAutoPaging<Invoice>($"{this.InstanceUrl("search")}", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<Invoice> SearchAutoPagingAsync(InvoiceSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.SearchRequestAutoPagingAsync<Invoice>($"{this.InstanceUrl("search")}", options, requestOptions, cancellationToken);
+        }
+
         public virtual Invoice SendInvoice(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/send", options, requestOptions);
