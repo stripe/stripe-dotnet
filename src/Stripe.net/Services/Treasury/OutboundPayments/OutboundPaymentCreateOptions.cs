@@ -76,7 +76,9 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// The description that appears on the receiving end for this OutboundPayment (for example,
-        /// bank statement for external bank transfer).
+        /// bank statement for external bank transfer). Maximum 10 characters for <c>ach</c>
+        /// payments, 140 characters for <c>wire</c> payments, or 500 characters for <c>stripe</c>
+        /// network transfers. The default value is <c>payment</c>.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }

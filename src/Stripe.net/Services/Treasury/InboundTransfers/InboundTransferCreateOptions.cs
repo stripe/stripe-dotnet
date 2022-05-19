@@ -48,8 +48,8 @@ namespace Stripe.Treasury
         public string OriginPaymentMethod { get; set; }
 
         /// <summary>
-        /// The complete description that appears on your customers' statements. Must contain at
-        /// least one letter, maximum 10 characters.
+        /// The complete description that appears on your customers' statements. Maximum 10
+        /// characters.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
