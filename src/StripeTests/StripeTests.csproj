@@ -4,6 +4,7 @@
     <TargetFrameworks>net5.0;net6.0;netcoreapp3.1;netcoreapp2.1;net461</TargetFrameworks>
     <LangVersion>8</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
