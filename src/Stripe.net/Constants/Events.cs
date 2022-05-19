@@ -972,6 +972,186 @@ namespace Stripe
         public const string TransferUpdated = "transfer.updated";
 
         /// <summary>
+        /// Occurs whenever a CheckDeposit is canceled.
+        /// </summary>
+        public const string TreasuryCheckDepositCanceled = "treasury.check_deposit.canceled";
+
+        /// <summary>
+        /// Occurs whenever a CheckDeposit is created.
+        /// </summary>
+        public const string TreasuryCheckDepositCreated = "treasury.check_deposit.created";
+
+        /// <summary>
+        /// Occurs whenever a CheckDeposit is processing.
+        /// </summary>
+        public const string TreasuryCheckDepositProcessing = "treasury.check_deposit.processing";
+
+        /// <summary>
+        /// Occurs whenever a CheckDeposit is received.
+        /// </summary>
+        public const string TreasuryCheckDepositReceived = "treasury.check_deposit.received";
+
+        /// <summary>
+        /// Occurs whenever a CheckDeposit requires action.
+        /// </summary>
+        public const string TreasuryCheckDepositRequiresAction = "treasury.check_deposit.requires_action";
+
+        /// <summary>
+        /// Occurs whenever a CheckDeposit requires confirmation.
+        /// </summary>
+        public const string TreasuryCheckDepositRequiresConfirmation = "treasury.check_deposit.requires_confirmation";
+
+        /// <summary>
+        /// Occurs whenever a CheckDeposit is reversed.
+        /// </summary>
+        public const string TreasuryCheckDepositReversed = "treasury.check_deposit.reversed";
+
+        /// <summary>
+        /// Occurs whenever an CreditReversal is submitted and created.
+        /// </summary>
+        public const string TreasuryCreditReversalCreated = "treasury.credit_reversal.created";
+
+        /// <summary>
+        /// Occurs whenever an CreditReversal post is posted.
+        /// </summary>
+        public const string TreasuryCreditReversalPosted = "treasury.credit_reversal.posted";
+
+        /// <summary>
+        /// Occurs whenever a DebitReversal is completed.
+        /// </summary>
+        public const string TreasuryDebitReversalCompleted = "treasury.debit_reversal.completed";
+
+        /// <summary>
+        /// Occurs whenever a DebitReversal is created.
+        /// </summary>
+        public const string TreasuryDebitReversalCreated = "treasury.debit_reversal.created";
+
+        /// <summary>
+        /// Occurs whenever an initial credit is granted on a DebitReversal.
+        /// </summary>
+        public const string TreasuryDebitReversalInitialCreditGranted = "treasury.debit_reversal.initial_credit_granted";
+
+        /// <summary>
+        /// Occurs whenever the status of the FinancialAccount becomes closed.
+        /// </summary>
+        public const string TreasuryFinancialAccountClosed = "treasury.financial_account.closed";
+
+        /// <summary>
+        /// Occurs whenever a new FinancialAccount is created.
+        /// </summary>
+        public const string TreasuryFinancialAccountCreated = "treasury.financial_account.created";
+
+        /// <summary>
+        /// Occurs whenever the statuses of any features within an existing FinancialAccount are updated.
+        /// </summary>
+        public const string TreasuryFinancialAccountFeaturesStatusUpdated = "treasury.financial_account.features_status_updated";
+
+        /// <summary>
+        /// Occurs whenever an InboundTransfer is canceled.
+        /// </summary>
+        public const string TreasuryInboundTransferCanceled = "treasury.inbound_transfer.canceled";
+
+        /// <summary>
+        /// Occurs whenever an InboundTransfer is created.
+        /// </summary>
+        public const string TreasuryInboundTransferCreated = "treasury.inbound_transfer.created";
+
+        /// <summary>
+        /// Occurs whenever an InboundTransfer has failed.
+        /// </summary>
+        public const string TreasuryInboundTransferFailed = "treasury.inbound_transfer.failed";
+
+        /// <summary>
+        /// Occurs whenever an InboundTransfer has succeeded.
+        /// </summary>
+        public const string TreasuryInboundTransferSucceeded = "treasury.inbound_transfer.succeeded";
+
+        /// <summary>
+        /// Occurs whenever an OutboundPayment is canceled.
+        /// </summary>
+        public const string TreasuryOutboundPaymentCanceled = "treasury.outbound_payment.canceled";
+
+        /// <summary>
+        /// Occurs whenever a new OutboundPayment is successfully created.
+        /// </summary>
+        public const string TreasuryOutboundPaymentCreated = "treasury.outbound_payment.created";
+
+        /// <summary>
+        /// Occurs whenever the arrival date on an OutboundPayment updates.
+        /// </summary>
+        public const string TreasuryOutboundPaymentExpectedArrivalDateUpdated = "treasury.outbound_payment.expected_arrival_date_updated";
+
+        /// <summary>
+        /// Occurs whenever an OutboundPayment fails.
+        /// </summary>
+        public const string TreasuryOutboundPaymentFailed = "treasury.outbound_payment.failed";
+
+        /// <summary>
+        /// Occurs whenever an OutboundPayment posts.
+        /// </summary>
+        public const string TreasuryOutboundPaymentPosted = "treasury.outbound_payment.posted";
+
+        /// <summary>
+        /// Occurs whenever an OutboundPayment was returned.
+        /// </summary>
+        public const string TreasuryOutboundPaymentReturned = "treasury.outbound_payment.returned";
+
+        /// <summary>
+        /// Occurs whenever an OutboundTransfer is canceled.
+        /// </summary>
+        public const string TreasuryOutboundTransferCanceled = "treasury.outbound_transfer.canceled";
+
+        /// <summary>
+        /// Occurs whenever an OutboundTransfer is created.
+        /// </summary>
+        public const string TreasuryOutboundTransferCreated = "treasury.outbound_transfer.created";
+
+        /// <summary>
+        /// Occurs whenever the arrival date on an OutboundTransfer updates.
+        /// </summary>
+        public const string TreasuryOutboundTransferExpectedArrivalDateUpdated = "treasury.outbound_transfer.expected_arrival_date_updated";
+
+        /// <summary>
+        /// Occurs whenever an OutboundTransfer has failed.
+        /// </summary>
+        public const string TreasuryOutboundTransferFailed = "treasury.outbound_transfer.failed";
+
+        /// <summary>
+        /// Occurs whenever an OutboundTransfer is posted.
+        /// </summary>
+        public const string TreasuryOutboundTransferPosted = "treasury.outbound_transfer.posted";
+
+        /// <summary>
+        /// Occurs whenever an OutboundTransfer is returned.
+        /// </summary>
+        public const string TreasuryOutboundTransferReturned = "treasury.outbound_transfer.returned";
+
+        /// <summary>
+        /// Occurs whenever a received_credit is created as a result of funds being pushed by another account.
+        /// </summary>
+        public const string TreasuryReceivedCreditCreated = "treasury.received_credit.created";
+
+        /// <summary>
+        /// Occurs whenever a received_credit transitions to failed state. Only applicable for check deposits.
+        /// </summary>
+        public const string TreasuryReceivedCreditFailed = "treasury.received_credit.failed";
+
+        /// <summary>
+        /// Occurs whenever a received_credit is reversed, and a received_debit is created. Only applicable for check deposits.
+        /// </summary>
+        public const string TreasuryReceivedCreditReversed = "treasury.received_credit.reversed";
+
+        /// <summary>
+        /// Occurs whenever a received_credit transitions to succeeded state. Only applicable for check deposits.
+        /// </summary>
+        public const string TreasuryReceivedCreditSucceeded = "treasury.received_credit.succeeded";
+
+        /// <summary>
+        /// Occurs whenever a received_debit is created as a result of funds being pulled by another account.
+        /// </summary>
+        public const string TreasuryReceivedDebitCreated = "treasury.received_debit.created";
+
+        /// <summary>
         /// May be sent by Stripe at any time to see if a provided webhook URL is working.
         /// </summary>
         public const string Ping = "ping";
