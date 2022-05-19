@@ -3461,6 +3461,21 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTreasuryInboundTransferServiceFail()
+        {
+            var options = new Stripe.TestHelpers.Treasury.InboundTransferFailOptions
+            {
+                FailureDetails = new Stripe.TestHelpers.Treasury.InboundTransferFailureDetailsOptions
+                {
+                    Code = "account_closed",
+                },
+            };
+            var service = new Stripe.TestHelpers.Treasury.InboundTransferService(
+                this.StripeClient);
+            service.Fail("ibt_123", options);
+        }
+
+        [Fact]
         public void TestTreasuryInboundTransferServiceList()
         {
             var options = new Stripe.Treasury.InboundTransferListOptions
@@ -3480,6 +3495,22 @@ namespace StripeTests
             var service = new Stripe.Treasury.InboundTransferService(
                 this.StripeClient);
             service.Get("ibt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTreasuryInboundTransferServiceReturnInboundTransfer()
+        {
+            var service = new Stripe.TestHelpers.Treasury.InboundTransferService(
+                this.StripeClient);
+            service.ReturnInboundTransfer("ibt_123");
+        }
+
+        [Fact]
+        public void TestTreasuryInboundTransferServiceSucceed()
+        {
+            var service = new Stripe.TestHelpers.Treasury.InboundTransferService(
+                this.StripeClient);
+            service.Succeed("ibt_123");
         }
 
         [Fact]
@@ -3554,6 +3585,14 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTreasuryOutboundTransferServiceFail()
+        {
+            var service = new Stripe.TestHelpers.Treasury.OutboundTransferService(
+                this.StripeClient);
+            service.Fail("obt_123");
+        }
+
+        [Fact]
         public void TestTreasuryOutboundTransferServiceList()
         {
             var options = new Stripe.Treasury.OutboundTransferListOptions
@@ -3568,11 +3607,49 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTreasuryOutboundTransferServicePost()
+        {
+            var service = new Stripe.TestHelpers.Treasury.OutboundTransferService(
+                this.StripeClient);
+            service.Post("obt_123");
+        }
+
+        [Fact]
         public void TestTreasuryOutboundTransferServiceRetrieve()
         {
             var service = new Stripe.Treasury.OutboundTransferService(
                 this.StripeClient);
             service.Get("obt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTreasuryOutboundTransferServiceReturnOutboundTransfer()
+        {
+            var options = new Stripe.TestHelpers.Treasury.OutboundTransferReturnOutboundTransferOptions
+            {
+                ReturnedDetails = new Stripe.TestHelpers.Treasury.OutboundTransferReturnedDetailsOptions
+                {
+                    Code = "account_closed",
+                },
+            };
+            var service = new Stripe.TestHelpers.Treasury.OutboundTransferService(
+                this.StripeClient);
+            service.ReturnOutboundTransfer("obt_123", options);
+        }
+
+        [Fact]
+        public void TestTreasuryReceivedCreditServiceCreate()
+        {
+            var options = new Stripe.TestHelpers.Treasury.ReceivedCreditCreateOptions
+            {
+                FinancialAccount = "fa_123",
+                Network = "ach",
+                Amount = 1234,
+                Currency = "usd",
+            };
+            var service = new Stripe.TestHelpers.Treasury.ReceivedCreditService(
+                this.StripeClient);
+            service.Create(options);
         }
 
         [Fact]
@@ -3595,6 +3672,21 @@ namespace StripeTests
             var service = new Stripe.Treasury.ReceivedCreditService(
                 this.StripeClient);
             service.Get("rc_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTreasuryReceivedDebitServiceCreate()
+        {
+            var options = new Stripe.TestHelpers.Treasury.ReceivedDebitCreateOptions
+            {
+                FinancialAccount = "fa_123",
+                Network = "ach",
+                Amount = 1234,
+                Currency = "usd",
+            };
+            var service = new Stripe.TestHelpers.Treasury.ReceivedDebitService(
+                this.StripeClient);
+            service.Create(options);
         }
 
         [Fact]
