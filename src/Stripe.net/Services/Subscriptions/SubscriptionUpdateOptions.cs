@@ -27,7 +27,8 @@ namespace Stripe
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
-        /// Automatic tax settings for this subscription.
+        /// Automatic tax settings for this subscription. We recommend you only include this
+        /// parameter when the existing value is being changed.
         /// </summary>
         [JsonProperty("automatic_tax")]
         public SubscriptionAutomaticTaxOptions AutomaticTax { get; set; }

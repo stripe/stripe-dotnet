@@ -86,6 +86,12 @@ namespace Stripe.Issuing
         public long ExpYear { get; set; }
 
         /// <summary>
+        /// The financial account this card is attached to.
+        /// </summary>
+        [JsonProperty("financial_account")]
+        public string FinancialAccount { get; set; }
+
+        /// <summary>
         /// The last 4 digits of the card number.
         /// </summary>
         [JsonProperty("last4")]

@@ -45,6 +45,12 @@ namespace Stripe
         public string Last4 { get; set; }
 
         /// <summary>
+        /// Contains information about US bank account networks that can be used.
+        /// </summary>
+        [JsonProperty("networks")]
+        public PaymentMethodUsBankAccountNetworks Networks { get; set; }
+
+        /// <summary>
         /// Routing number of the bank account.
         /// </summary>
         [JsonProperty("routing_number")]

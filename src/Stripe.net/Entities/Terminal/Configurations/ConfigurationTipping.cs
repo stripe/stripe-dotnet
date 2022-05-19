@@ -14,6 +14,9 @@ namespace Stripe.Terminal
         [JsonProperty("chf")]
         public ConfigurationTippingChf Chf { get; set; }
 
+        [JsonProperty("czk")]
+        public ConfigurationTippingCzk Czk { get; set; }
+
         [JsonProperty("dkk")]
         public ConfigurationTippingDkk Dkk { get; set; }
 
