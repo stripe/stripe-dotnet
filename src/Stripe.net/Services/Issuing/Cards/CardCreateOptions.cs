@@ -19,6 +19,9 @@ namespace Stripe.Issuing
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [JsonProperty("financial_account")]
+        public string FinancialAccount { get; set; }
+
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the

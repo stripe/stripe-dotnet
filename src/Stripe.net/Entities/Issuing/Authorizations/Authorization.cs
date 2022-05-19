@@ -185,6 +185,14 @@ namespace Stripe.Issuing
         [JsonProperty("transactions")]
         public List<Transaction> Transactions { get; set; }
 
+        /// <summary>
+        /// <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this
+        /// authorization if it was created on a <a
+        /// href="https://stripe.com/docs/api/treasury/financial_accounts">FinancialAccount</a>.
+        /// </summary>
+        [JsonProperty("treasury")]
+        public AuthorizationTreasury Treasury { get; set; }
+
         [JsonProperty("verification_data")]
         public AuthorizationVerificationData VerificationData { get; set; }
 

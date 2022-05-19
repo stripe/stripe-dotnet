@@ -83,13 +83,13 @@ namespace Stripe
         public string LastName { get; set; }
 
         /// <summary>
-        /// The Kana varation of the individual's last name (Japan only).
+        /// The Kana variation of the individual's last name (Japan only).
         /// </summary>
         [JsonProperty("last_name_kana")]
         public string LastNameKana { get; set; }
 
         /// <summary>
-        /// The Kanji varation of the individual's last name (Japan only).
+        /// The Kanji variation of the individual's last name (Japan only).
         /// </summary>
         [JsonProperty("last_name_kanji")]
         public string LastNameKanji { get; set; }

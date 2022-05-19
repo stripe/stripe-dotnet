@@ -110,5 +110,12 @@ namespace Stripe.Issuing
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
         internal ExpandableField<Transaction> InternalTransaction { get; set; }
         #endregion
+
+        /// <summary>
+        /// <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this
+        /// dispute if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts.
+        /// </summary>
+        [JsonProperty("treasury")]
+        public DisputeTreasury Treasury { get; set; }
     }
 }

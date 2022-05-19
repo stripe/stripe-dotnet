@@ -91,6 +91,8 @@ namespace Stripe
 
         /// <summary>
         /// The list of payment method types (e.g. card) that this PaymentIntent is allowed to use.
+        /// Use automatic_payment_methods to manage payment methods from the <a
+        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }

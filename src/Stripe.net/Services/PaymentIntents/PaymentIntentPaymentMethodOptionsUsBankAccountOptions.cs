@@ -12,6 +12,12 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions FinancialConnections { get; set; }
 
         /// <summary>
+        /// Additional fields for network related functions.
+        /// </summary>
+        [JsonProperty("networks")]
+        public PaymentIntentPaymentMethodOptionsUsBankAccountNetworksOptions Networks { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
