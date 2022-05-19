@@ -27,5 +27,11 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("transaction")]
         public string Transaction { get; set; }
+
+        /// <summary>
+        /// Params for disputes related to Treasury FinancialAccounts.
+        /// </summary>
+        [JsonProperty("treasury")]
+        public DisputeTreasuryOptions Treasury { get; set; }
     }
 }

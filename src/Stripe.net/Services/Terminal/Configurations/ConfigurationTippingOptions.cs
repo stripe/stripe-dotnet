@@ -24,6 +24,12 @@ namespace Stripe.Terminal
         public ConfigurationTippingChfOptions Chf { get; set; }
 
         /// <summary>
+        /// Tipping configuration for CZK.
+        /// </summary>
+        [JsonProperty("czk")]
+        public ConfigurationTippingCzkOptions Czk { get; set; }
+
+        /// <summary>
         /// Tipping configuration for DKK.
         /// </summary>
         [JsonProperty("dkk")]

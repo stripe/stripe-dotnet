@@ -136,6 +136,35 @@ namespace Stripe
                 { "topup", typeof(Topup) },
                 { "transfer", typeof(Transfer) },
                 { "transfer_reversal", typeof(TransferReversal) },
+                { "treasury.credit_reversal", typeof(Treasury.CreditReversal) },
+                { "treasury.debit_reversal", typeof(Treasury.DebitReversal) },
+                {
+                    "treasury.financial_account", typeof(
+                        Treasury.FinancialAccount)
+                },
+                {
+                    "treasury.financial_account_features", typeof(
+                        Treasury.FinancialAccountFeatures)
+                },
+                {
+                    "treasury.inbound_transfer", typeof(
+                        Treasury.InboundTransfer)
+                },
+                {
+                    "treasury.outbound_payment", typeof(
+                        Treasury.OutboundPayment)
+                },
+                {
+                    "treasury.outbound_transfer", typeof(
+                        Treasury.OutboundTransfer)
+                },
+                { "treasury.received_credit", typeof(Treasury.ReceivedCredit) },
+                { "treasury.received_debit", typeof(Treasury.ReceivedDebit) },
+                { "treasury.transaction", typeof(Treasury.Transaction) },
+                {
+                    "treasury.transaction_entry", typeof(
+                        Treasury.TransactionEntry)
+                },
                 { "usage_record", typeof(UsageRecord) },
                 { "usage_record_summary", typeof(UsageRecordSummary) },
                 { "webhook_endpoint", typeof(WebhookEndpoint) },

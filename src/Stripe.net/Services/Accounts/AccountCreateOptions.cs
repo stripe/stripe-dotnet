@@ -49,7 +49,10 @@ namespace Stripe
         /// established. This should be an ISO 3166-1 alpha-2 country code. For example, if you are
         /// in the United States and the business for which you're creating an account is legally
         /// represented in Canada, you would use <c>CA</c> as the country for the account being
-        /// created.
+        /// created. Available countries include <a href="https://stripe.com/global">Stripe's global
+        /// markets</a> as well as countries where <a
+        /// href="https://stripe.com/docs/connect/cross-border-payouts">cross-border payouts</a> are
+        /// supported.
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; set; }
