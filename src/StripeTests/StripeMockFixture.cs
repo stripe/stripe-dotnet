@@ -9,7 +9,7 @@ namespace StripeTests
     public class StripeMockFixture : IDisposable
     {
         /// <value>Minimum required version of stripe-mock.</value>
-        private const string MockMinimumVersion = "0.119.0";
+        private const string MockMinimumVersion = "0.128.0";
 
         private readonly string port;
 
