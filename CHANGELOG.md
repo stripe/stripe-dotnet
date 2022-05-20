@@ -1,5 +1,26 @@
 # Changelog
 
+## 39.112.0 - 2022-05-19
+* [#2489](https://github.com/stripe/stripe-dotnet/pull/2489) API Updates
+  * Add support for new resources `Treasury.CreditReversal`, `Treasury.DebitReversal`, `Treasury.FinancialAccountFeatures`, `Treasury.FinancialAccount`, `Treasury.FlowDetails`, `Treasury.InboundTransfer`, `Treasury.OutboundPayment`, `Treasury.OutboundTransfer`, `Treasury.ReceivedCredit`, `Treasury.ReceivedDebit`, `Treasury.TransactionEntry`, and `Treasury.Transaction`
+  * Add support for `RetrievePaymentMethod` method on resource `Customer`
+  * Add support for `ListOwners` and `List` methods on resource `FinancialConnections.Account`
+  * Change type of `BillingPortalSessionReturnUrl` from `string` to `nullable(string)`
+  * Add support for `AfterpayClearpay`, `AuBecsDebit`, `BacsDebit`, `Eps`, `Fpx`, `Giropay`, `Grabpay`, `Klarna`, `Paynow`, and `SepaDebit` on `CheckoutSessionPaymentMethodOptions`
+  * Add support for `Treasury` on `IssuingAuthorization`, `IssuingDisputeCreateOptions`, `IssuingDispute`, and `IssuingTransaction`
+  * Add support for `FinancialAccount` on `IssuingCardCreateOptions` and `IssuingCard`
+  * Add support for `ClientSecret` on `Order`
+  * Add support for `Networks` on `PaymentIntentPaymentMethodOptionsUsBankAccountOptions`, `PaymentMethodUsBankAccount`, and `SetupIntentPaymentMethodOptionsUsBankAccountOptions`
+  * Add support for `AttachToSelf` and `FlowDirections` on `SetupIntent`
+  * Add support for `SaveDefaultPaymentMethod` on `SubscriptionPaymentSettingsOptions` and `SubscriptionPaymentSettings`
+  * Add support for `Czk` on `TerminalConfigurationTippingOptions` and `TerminalConfigurationTipping`
+* [#2488](https://github.com/stripe/stripe-dotnet/pull/2488) Add Treasury webhook endpoints.
+  * Add event constants `TreasuryCheckDepositCanceled`, `TreasuryCheckDepositCreated`, `TreasuryCheckDepositProcessing`, `TreasuryCheckDepositReceived`, `TreasuryCheckDepositRequiresAction`, `TreasuryCheckDepositRequiresConfirmation`, `TreasuryCheckDepositReversed`, `TreasuryCreditReversalCreated`, `TreasuryCreditReversalPosted`, `TreasuryDebitReversalCompleted`, `TreasuryDebitReversalCreated`, `TreasuryDebitReversalInitialCreditGranted`, `TreasuryFinancialAccountClosed`, `TreasuryFinancialAccountCreated`, `TreasuryFinancialAccountFeaturesStatusUpdated`, `TreasuryInboundTransferCanceled`, `TreasuryInboundTransferCreated`, `TreasuryInboundTransferFailed`, `TreasuryInboundTransferSucceeded`, `TreasuryOutboundPaymentCanceled`, `TreasuryOutboundPaymentCreated`, `TreasuryOutboundPaymentExpectedArrivalDateUpdated`, `TreasuryOutboundPaymentFailed`, `TreasuryOutboundPaymentPosted`, `TreasuryOutboundPaymentReturned`, `TreasuryOutboundTransferCanceled`, `TreasuryOutboundTransferCreated`, `TreasuryOutboundTransferExpectedArrivalDateUpdated`, `TreasuryOutboundTransferFailed`, `TreasuryOutboundTransferPosted`, `TreasuryOutboundTransferReturned`, `TreasuryReceivedCreditCreated`, `TreasuryReceivedCreditFailed`, `TreasuryReceivedCreditReversed`, `TreasuryReceivedCreditSucceeded`, and `TreasuryReceivedDebitCreated`.
+* [#2485](https://github.com/stripe/stripe-dotnet/pull/2485) Add search methods to InvoiceService
+* [#2487](https://github.com/stripe/stripe-dotnet/pull/2487) Set CheckEolTargetFramework to false
+* [#2486](https://github.com/stripe/stripe-dotnet/pull/2486) Revert dotnet format changes
+* [#2484](https://github.com/stripe/stripe-dotnet/pull/2484) Enable embedded symbols
+
 ## 39.111.0 - 2022-05-11
 * [#2480](https://github.com/stripe/stripe-dotnet/pull/2480) API Updates
   * Add support for `Description` on `CheckoutSessionSubscriptionDataOptions`, `SubscriptionCreateOptions`, `SubscriptionUpdateOptions`, and `Subscription`
