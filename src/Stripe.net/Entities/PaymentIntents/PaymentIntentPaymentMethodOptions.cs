@@ -8,6 +8,9 @@ namespace Stripe
         [JsonProperty("acss_debit")]
         public PaymentIntentPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("affirm")]
+        public PaymentIntentPaymentMethodOptionsAffirm Affirm { get; set; }
+
         [JsonProperty("afterpay_clearpay")]
         public PaymentIntentPaymentMethodOptionsAfterpayClearpay AfterpayClearpay { get; set; }
 
@@ -58,6 +61,9 @@ namespace Stripe
 
         [JsonProperty("konbini")]
         public PaymentIntentPaymentMethodOptionsKonbini Konbini { get; set; }
+
+        [JsonProperty("link")]
+        public PaymentIntentPaymentMethodOptionsLink Link { get; set; }
 
         [JsonProperty("oxxo")]
         public PaymentIntentPaymentMethodOptionsOxxo Oxxo { get; set; }

@@ -29,6 +29,9 @@ namespace Stripe
         [JsonProperty("ideal")]
         public SetupAttemptPaymentMethodDetailsIdeal Ideal { get; set; }
 
+        [JsonProperty("link")]
+        public SetupAttemptPaymentMethodDetailsLink Link { get; set; }
+
         [JsonProperty("sepa_debit")]
         public SetupAttemptPaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 

@@ -17,6 +17,13 @@ namespace Stripe
         /// This is a legacy parameter that will be removed in the future. It is a hash that does
         /// not accept any keys.
         /// </summary>
+        [JsonProperty("affirm")]
+        public PaymentMethodAffirmOptions Affirm { get; set; }
+
+        /// <summary>
+        /// This is a legacy parameter that will be removed in the future. It is a hash that does
+        /// not accept any keys.
+        /// </summary>
         [JsonProperty("au_becs_debit")]
         public PaymentMethodAuBecsDebitOptions AuBecsDebit { get; set; }
 
@@ -39,6 +46,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("card")]
         public PaymentMethodCardOptions Card { get; set; }
+
+        /// <summary>
+        /// If this is an <c>Link</c> PaymentMethod, this hash contains details about the Link
+        /// payment method.
+        /// </summary>
+        [JsonProperty("link")]
+        public PaymentMethodLinkOptions Link { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can

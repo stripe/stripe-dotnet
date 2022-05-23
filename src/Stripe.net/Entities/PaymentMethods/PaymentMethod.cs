@@ -33,6 +33,9 @@ namespace Stripe
         [JsonProperty("acss_debit")]
         public PaymentMethodAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("affirm")]
+        public PaymentMethodAffirm Affirm { get; set; }
+
         [JsonProperty("afterpay_clearpay")]
         public PaymentMethodAfterpayClearpay AfterpayClearpay { get; set; }
 
@@ -127,6 +130,9 @@ namespace Stripe
         [JsonProperty("konbini")]
         public PaymentMethodKonbini Konbini { get; set; }
 
+        [JsonProperty("link")]
+        public PaymentMethodLink Link { get; set; }
+
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
@@ -161,11 +167,11 @@ namespace Stripe
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
-        /// One of: <c>acss_debit</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
+        /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>boleto</c>, <c>card</c>,
         /// <c>card_present</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
         /// <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>, <c>klarna</c>, <c>konbini</c>,
-        /// <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>sepa_debit</c>, <c>sofort</c>,
+        /// <c>link</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>sepa_debit</c>, <c>sofort</c>,
         /// <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("type")]
