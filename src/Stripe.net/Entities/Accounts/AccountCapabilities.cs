@@ -219,6 +219,13 @@ namespace Stripe
         public string Transfers { get; set; }
 
         /// <summary>
+        /// The status of the banking capability, or whether the account can have bank accounts.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("treasury")]
+        public string Treasury { get; set; }
+
+        /// <summary>
         /// The status of the US bank account ACH payments capability of the account, or whether the
         /// account can directly process US bank account charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

@@ -168,6 +168,12 @@ namespace Stripe
         public AccountCapabilitiesTransfersOptions Transfers { get; set; }
 
         /// <summary>
+        /// The treasury capability.
+        /// </summary>
+        [JsonProperty("treasury")]
+        public AccountCapabilitiesTreasuryOptions Treasury { get; set; }
+
+        /// <summary>
         /// The us_bank_account_ach_payments capability.
         /// </summary>
         [JsonProperty("us_bank_account_ach_payments")]
