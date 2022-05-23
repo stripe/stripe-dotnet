@@ -153,6 +153,43 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestAppsSecretServiceCreate()
+        {
+            var options = new Stripe.Apps.SecretCreateOptions
+            {
+                Name = "sec_123",
+                Payload = "very secret string",
+                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
+            };
+            var service = new Stripe.Apps.SecretService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestAppsSecretServiceDeleteWhere()
+        {
+            var options = new Stripe.Apps.SecretDeleteWhereOptions
+            {
+                Name = "sec_123",
+                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
+            };
+            var service = new Stripe.Apps.SecretService(this.StripeClient);
+            service.DeleteWhere(options);
+        }
+
+        [Fact]
+        public void TestAppsSecretServiceFind()
+        {
+            var options = new Stripe.Apps.SecretFindOptions
+            {
+                Name = "sec_123",
+                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
+            };
+            var service = new Stripe.Apps.SecretService(this.StripeClient);
+            service.Find(options);
+        }
+
+        [Fact]
         public void TestBillingPortalConfigurationServiceCreate()
         {
             var options = new Stripe.BillingPortal.ConfigurationCreateOptions

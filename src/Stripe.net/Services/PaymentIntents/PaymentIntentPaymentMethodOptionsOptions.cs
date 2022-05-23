@@ -13,6 +13,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
 
         /// <summary>
+        /// If this is an <c>affirm</c> PaymentMethod, this sub-hash contains details about the
+        /// Affirm payment method options.
+        /// </summary>
+        [JsonProperty("affirm")]
+        public PaymentIntentPaymentMethodOptionsAffirmOptions Affirm { get; set; }
+
+        /// <summary>
         /// If this is a <c>afterpay_clearpay</c> PaymentMethod, this sub-hash contains details
         /// about the Afterpay Clearpay payment method options.
         /// </summary>
@@ -129,6 +136,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("konbini")]
         public PaymentIntentPaymentMethodOptionsKonbiniOptions Konbini { get; set; }
+
+        /// <summary>
+        /// If this is a <c>link</c> PaymentMethod, this sub-hash contains details about the Link
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("link")]
+        public PaymentIntentPaymentMethodOptionsLinkOptions Link { get; set; }
 
         /// <summary>
         /// If this is a <c>oxxo</c> PaymentMethod, this sub-hash contains details about the OXXO
