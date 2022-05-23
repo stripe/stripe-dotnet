@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.114.0 - 2022-05-23
+* [#2492](https://github.com/stripe/stripe-dotnet/pull/2492) API Updates
+  * Add support for `Treasury` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+
 ## 39.113.0 - 2022-05-23
 * [#2491](https://github.com/stripe/stripe-dotnet/pull/2491) API Updates
   * Add support for new resource `Apps.Secret`
