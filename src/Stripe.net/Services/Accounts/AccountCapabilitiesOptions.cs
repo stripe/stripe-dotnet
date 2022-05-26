@@ -12,6 +12,12 @@ namespace Stripe
         public AccountCapabilitiesAcssDebitPaymentsOptions AcssDebitPayments { get; set; }
 
         /// <summary>
+        /// The affirm_payments capability.
+        /// </summary>
+        [JsonProperty("affirm_payments")]
+        public AccountCapabilitiesAffirmPaymentsOptions AffirmPayments { get; set; }
+
+        /// <summary>
         /// The afterpay_clearpay_payments capability.
         /// </summary>
         [JsonProperty("afterpay_clearpay_payments")]
@@ -118,6 +124,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("legacy_payments")]
         public AccountCapabilitiesLegacyPaymentsOptions LegacyPayments { get; set; }
+
+        /// <summary>
+        /// The link_payments capability.
+        /// </summary>
+        [JsonProperty("link_payments")]
+        public AccountCapabilitiesLinkPaymentsOptions LinkPayments { get; set; }
 
         /// <summary>
         /// The oxxo_payments capability.

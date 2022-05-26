@@ -1,5 +1,14 @@
 # Changelog
 
+## 39.115.0 - 2022-05-26
+* [#2494](https://github.com/stripe/stripe-dotnet/pull/2494) API Updates
+  * Add support for `AffirmPayments` and `LinkPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `IdNumberSecondary` on `AccountIndividualOptions`, `PersonCreateOptions`, `PersonUpdateOptions`, `TokenAccountIndividualOptions`, and `TokenPersonOptions`
+  * Add support for `HostedInstructionsUrl` on `PaymentIntentNextActionDisplayBankTransferInstructions`
+  * Add support for `IdNumberSecondaryProvided` on `Person`
+  * Add support for `CardIssuing` on `TreasuryFinancialAccountFeaturesOptions` and `TreasuryFinancialAccountUpdateFeaturesOptions`
+  
+
 ## 39.114.0 - 2022-05-23
 * [#2492](https://github.com/stripe/stripe-dotnet/pull/2492) API Updates
   * Add support for `Treasury` on `AccountCapabilitiesOptions` and `AccountCapabilities`
