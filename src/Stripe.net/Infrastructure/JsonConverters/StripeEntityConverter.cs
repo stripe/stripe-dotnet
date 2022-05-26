@@ -1,6 +1,8 @@
 ﻿namespace Stripe.Infrastructure
 {
     using System;
+    using System.IO;
+    using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -56,15 +58,25 @@
                 return null;
             }
 
-            var jsonObject = JObject.Load(reader);
-            var e = Activator.CreateInstance(objectType) as StripeEntity;
+            JToken jToken;
+            if (reader is JTokenReader jTokenReader)
+            {
+                jToken = jTokenReader.CurrentToken;
+                jTokenReader.Skip();
+            }
+            else
+            {
+                jToken = JToken.Load(reader);
+            }
 
-            using (var subReader = jsonObject.CreateReader())
+            var e = (StripeEntity)Activator.CreateInstance(objectType);
+
+            using (var subReader = jToken.CreateReader())
             {
                 serializer.Populate(subReader, e);
             }
 
-            e.RawJObject = jsonObject;
+            e.RawJObject = (JObject)jToken;
             return e;
         }
     }
