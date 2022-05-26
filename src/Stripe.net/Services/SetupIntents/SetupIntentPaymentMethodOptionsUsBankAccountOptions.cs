@@ -6,6 +6,18 @@ namespace Stripe
     public class SetupIntentPaymentMethodOptionsUsBankAccountOptions : INestedOptions
     {
         /// <summary>
+        /// Additional fields for Financial Connections Session creation.
+        /// </summary>
+        [JsonProperty("financial_connections")]
+        public SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions FinancialConnections { get; set; }
+
+        /// <summary>
+        /// Additional fields for network related functions.
+        /// </summary>
+        [JsonProperty("networks")]
+        public SetupIntentPaymentMethodOptionsUsBankAccountNetworksOptions Networks { get; set; }
+
+        /// <summary>
         /// Verification method for the intent.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>

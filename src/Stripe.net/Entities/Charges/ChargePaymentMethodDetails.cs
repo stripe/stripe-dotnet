@@ -14,6 +14,9 @@ namespace Stripe
         [JsonProperty("acss_debit")]
         public ChargePaymentMethodDetailsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("affirm")]
+        public ChargePaymentMethodDetailsAffirm Affirm { get; set; }
+
         [JsonProperty("afterpay_clearpay")]
         public ChargePaymentMethodDetailsAfterpayClearpay AfterpayClearpay { get; set; }
 
@@ -38,6 +41,9 @@ namespace Stripe
         [JsonProperty("card_present")]
         public ChargePaymentMethodDetailsCardPresent CardPresent { get; set; }
 
+        [JsonProperty("customer_balance")]
+        public ChargePaymentMethodDetailsCustomerBalance CustomerBalance { get; set; }
+
         [JsonProperty("eps")]
         public ChargePaymentMethodDetailsEps Eps { get; set; }
 
@@ -61,6 +67,9 @@ namespace Stripe
 
         [JsonProperty("konbini")]
         public ChargePaymentMethodDetailsKonbini Konbini { get; set; }
+
+        [JsonProperty("link")]
+        public ChargePaymentMethodDetailsLink Link { get; set; }
 
         [JsonProperty("multibanco")]
         public ChargePaymentMethodDetailsMultibanco Multibanco { get; set; }

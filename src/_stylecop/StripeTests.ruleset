@@ -9,11 +9,13 @@
 
     <!--
       CS1591: Missing XML comment for publicly visible type or member 'Type_or_Member'
+      SA0001: XmlCommentAnalysisDisabled
       SA1600: ElementsMustBeDocumented
       SA1602: EnumerationItemsMustBeDocumented
       SA1633: FileMustHaveHeader
       Documentation related warnings, not applicable to tests.
     -->
+    <Rule Id="SA0001" Action="None" />
     <Rule Id="CS1591" Action="None" />
     <Rule Id="SA1600" Action="None" />
     <Rule Id="SA1602" Action="None" />

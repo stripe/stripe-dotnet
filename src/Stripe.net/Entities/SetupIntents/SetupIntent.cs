@@ -86,6 +86,18 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// If present, the SetupIntent's payment method will be attached to the in-context Stripe
+        /// Account.
+        ///
+        /// It can only be used for this Stripe Account’s own money movement flows like
+        /// InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a
+        /// PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a
+        /// Customer.
+        /// </summary>
+        [JsonProperty("attach_to_self")]
+        public bool AttachToSelf { get; set; }
+
+        /// <summary>
         /// Reason for cancellation of this SetupIntent, one of <c>abandoned</c>,
         /// <c>requested_by_customer</c>, or <c>duplicate</c>.
         /// One of: <c>abandoned</c>, <c>duplicate</c>, or <c>requested_by_customer</c>.
@@ -98,8 +110,8 @@ namespace Stripe
         /// publishable key.
         ///
         /// The client secret can be used to complete payment setup from your frontend. It should
-        /// not be stored, logged, embedded in URLs, or exposed to anyone other than the customer.
-        /// Make sure that you have TLS enabled on any page that includes the client secret.
+        /// not be stored, logged, or exposed to anyone other than the customer. Make sure that you
+        /// have TLS enabled on any page that includes the client secret.
         /// </summary>
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
@@ -155,6 +167,18 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Indicates the directions of money movement for which this payment method is intended to
+        /// be used.
+        ///
+        /// Include <c>inbound</c> if you intend to use the payment method as the origin to pull
+        /// funds from. Include <c>outbound</c> if you intend to use the payment method as the
+        /// destination to send funds to. You can include both if you intend to use the payment
+        /// method for both purposes.
+        /// </summary>
+        [JsonProperty("flow_directions")]
+        public List<string> FlowDirections { get; set; }
 
         /// <summary>
         /// The error encountered in the previous SetupIntent confirmation.

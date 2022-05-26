@@ -256,6 +256,14 @@ namespace Stripe.Issuing
         public TransactionPurchaseDetails PurchaseDetails { get; set; }
 
         /// <summary>
+        /// <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this
+        /// transaction if it was created on a
+        /// [FinancialAccount](/docs/api/treasury/financial_accounts.
+        /// </summary>
+        [JsonProperty("treasury")]
+        public TransactionTreasury Treasury { get; set; }
+
+        /// <summary>
         /// The nature of the transaction.
         /// One of: <c>capture</c>, or <c>refund</c>.
         /// </summary>

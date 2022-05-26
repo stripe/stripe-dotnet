@@ -6,13 +6,13 @@ namespace Stripe
     public class InvoiceLineItemPeriod : StripeEntity<InvoiceLineItemPeriod>
     {
         /// <summary>
-        /// End of the line item's billing period.
+        /// The end of the period, which must be greater than or equal to the start.
         /// </summary>
         [JsonProperty("end")]
         public long End { get; set; }
 
         /// <summary>
-        /// Start of the line item's billing period.
+        /// The start of the period.
         /// </summary>
         [JsonProperty("start")]
         public long Start { get; set; }

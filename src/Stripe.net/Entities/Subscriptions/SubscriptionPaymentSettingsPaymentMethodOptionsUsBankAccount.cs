@@ -5,6 +5,9 @@ namespace Stripe
 
     public class SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount>
     {
+        [JsonProperty("financial_connections")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections FinancialConnections { get; set; }
+
         /// <summary>
         /// Bank account verification method.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.

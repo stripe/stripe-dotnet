@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     /// <summary>
     /// A line item.
@@ -22,10 +23,22 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
+        /// Total discount amount applied. If no discounts were applied, defaults to 0.
+        /// </summary>
+        [JsonProperty("amount_discount")]
+        public long AmountDiscount { get; set; }
+
+        /// <summary>
         /// Total before any discounts or taxes are applied.
         /// </summary>
         [JsonProperty("amount_subtotal")]
         public long? AmountSubtotal { get; set; }
+
+        /// <summary>
+        /// Total tax amount applied. If no tax was applied, defaults to 0.
+        /// </summary>
+        [JsonProperty("amount_tax")]
+        public long AmountTax { get; set; }
 
         /// <summary>
         /// Total after discounts and taxes.
@@ -65,6 +78,41 @@ namespace Stripe
         /// </summary>
         [JsonProperty("price")]
         public Price Price { get; set; }
+
+        #region Expandable Product
+
+        /// <summary>
+        /// (ID of the Product)
+        /// The ID of the product for this line item.
+        ///
+        /// This will always be the same as <c>price.product</c>.
+        /// </summary>
+        [JsonIgnore]
+        public string ProductId
+        {
+            get => this.InternalProduct?.Id;
+            set => this.InternalProduct = SetExpandableFieldId(value, this.InternalProduct);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the product for this line item.
+        ///
+        /// This will always be the same as <c>price.product</c>.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Product Product
+        {
+            get => this.InternalProduct?.ExpandedObject;
+            set => this.InternalProduct = SetExpandableFieldObject(value, this.InternalProduct);
+        }
+
+        [JsonProperty("product")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Product>))]
+        internal ExpandableField<Product> InternalProduct { get; set; }
+        #endregion
 
         /// <summary>
         /// The quantity of products being purchased.

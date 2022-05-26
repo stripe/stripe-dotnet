@@ -9,10 +9,6 @@ namespace StripeTests
     public class StripeMockFixture : IDisposable
     {
         /// <value>Minimum required version of stripe-mock.</value>
-        /// <remarks>
-        /// If you bump this, don't forget to bump <c>STRIPE_MOCK_VERSION</c> in <c>appveyor.yml</c>
-        /// as well.
-        /// </remarks>
         private const string MockMinimumVersion = "0.119.0";
 
         private readonly string port;

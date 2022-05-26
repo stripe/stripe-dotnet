@@ -27,6 +27,13 @@ namespace Stripe
         public SubscriptionPaymentSettingsPaymentMethodOptionsCard Card { get; set; }
 
         /// <summary>
+        /// This sub-hash contains details about the Bank transfer payment method options to pass to
+        /// invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("customer_balance")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalance CustomerBalance { get; set; }
+
+        /// <summary>
         /// This sub-hash contains details about the Konbini payment method options to pass to
         /// invoices created by the subscription.
         /// </summary>

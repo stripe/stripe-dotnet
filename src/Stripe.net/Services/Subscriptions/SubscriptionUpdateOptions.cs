@@ -27,7 +27,8 @@ namespace Stripe
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
-        /// Automatic tax settings for this subscription.
+        /// Automatic tax settings for this subscription. We recommend you only include this
+        /// parameter when the existing value is being changed.
         /// </summary>
         [JsonProperty("automatic_tax")]
         public SubscriptionAutomaticTaxOptions AutomaticTax { get; set; }
@@ -121,6 +122,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("default_tax_rates")]
         public List<string> DefaultTaxRates { get; set; }
+
+        /// <summary>
+        /// The subscription's description, meant to be displayable to the customer. Use this field
+        /// to optionally store an explanation of the subscription for rendering in Stripe surfaces.
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
 
         /// <summary>
         /// A list of up to 20 subscription items, each with an attached price.

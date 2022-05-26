@@ -13,6 +13,12 @@ namespace Stripe.Terminal
         public AddressOptions Address { get; set; }
 
         /// <summary>
+        /// The ID of a configuration that will be used to customize all readers in this location.
+        /// </summary>
+        [JsonProperty("configuration_overrides")]
+        public string ConfigurationOverrides { get; set; }
+
+        /// <summary>
         /// A name for the location.
         /// </summary>
         [JsonProperty("display_name")]

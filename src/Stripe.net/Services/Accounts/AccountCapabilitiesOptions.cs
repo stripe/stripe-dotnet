@@ -36,6 +36,12 @@ namespace Stripe
         public AccountCapabilitiesBancontactPaymentsOptions BancontactPayments { get; set; }
 
         /// <summary>
+        /// The bank_transfer_payments capability.
+        /// </summary>
+        [JsonProperty("bank_transfer_payments")]
+        public AccountCapabilitiesBankTransferPaymentsOptions BankTransferPayments { get; set; }
+
+        /// <summary>
         /// The boleto_payments capability.
         /// </summary>
         [JsonProperty("boleto_payments")]
@@ -160,6 +166,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfers")]
         public AccountCapabilitiesTransfersOptions Transfers { get; set; }
+
+        /// <summary>
+        /// The treasury capability.
+        /// </summary>
+        [JsonProperty("treasury")]
+        public AccountCapabilitiesTreasuryOptions Treasury { get; set; }
 
         /// <summary>
         /// The us_bank_account_ach_payments capability.

@@ -70,6 +70,39 @@ namespace Stripe
         [JsonProperty("deactivate_on")]
         public List<string> DeactivateOn { get; set; }
 
+        #region Expandable DefaultPrice
+
+        /// <summary>
+        /// (ID of the Price)
+        /// The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> object that is the
+        /// default price for this product.
+        /// </summary>
+        [JsonIgnore]
+        public string DefaultPriceId
+        {
+            get => this.InternalDefaultPrice?.Id;
+            set => this.InternalDefaultPrice = SetExpandableFieldId(value, this.InternalDefaultPrice);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> object that is the
+        /// default price for this product.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Price DefaultPrice
+        {
+            get => this.InternalDefaultPrice?.ExpandedObject;
+            set => this.InternalDefaultPrice = SetExpandableFieldObject(value, this.InternalDefaultPrice);
+        }
+
+        [JsonProperty("default_price")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Price>))]
+        internal ExpandableField<Price> InternalDefaultPrice { get; set; }
+        #endregion
+
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
@@ -136,7 +169,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the TaxCode)
-        /// A <a href="https://stripe.com/docs/tax/tax-codes">tax code</a> ID.
+        /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
         /// </summary>
         [JsonIgnore]
         public string TaxCodeId
@@ -147,7 +180,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// A <a href="https://stripe.com/docs/tax/tax-codes">tax code</a> ID.
+        /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

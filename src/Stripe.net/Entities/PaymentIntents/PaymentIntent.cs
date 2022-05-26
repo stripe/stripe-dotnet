@@ -53,6 +53,9 @@ namespace Stripe
         [JsonProperty("amount_capturable")]
         public long AmountCapturable { get; set; }
 
+        [JsonProperty("amount_details")]
+        public PaymentIntentAmountDetails AmountDetails { get; set; }
+
         /// <summary>
         /// Amount that was collected by this PaymentIntent.
         /// </summary>
@@ -144,11 +147,11 @@ namespace Stripe
         /// publishable key.
         ///
         /// The client secret can be used to complete a payment from your frontend. It should not be
-        /// stored, logged, embedded in URLs, or exposed to anyone other than the customer. Make
-        /// sure that you have TLS enabled on any page that includes the client secret.
+        /// stored, logged, or exposed to anyone other than the customer. Make sure that you have
+        /// TLS enabled on any page that includes the client secret.
         ///
         /// Refer to our docs to <a
-        /// href="https://stripe.com/docs/payments/accept-a-payment?integration=elements">accept a
+        /// href="https://stripe.com/docs/payments/accept-a-payment?ui=elements">accept a
         /// payment</a> and learn about how <c>client_secret</c> should be handled.
         /// </summary>
         [JsonProperty("client_secret")]

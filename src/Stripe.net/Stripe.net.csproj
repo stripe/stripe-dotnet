@@ -1,30 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\netfx.props" />
 
   <PropertyGroup>
     <Description>Stripe.net is a sync/async .NET 4.6.1+ client, and a portable class library for the Stripe API.  (Official Library)</Description>
-    <AssemblyTitle>Stripe.net</AssemblyTitle>
-    <VersionPrefix>39.101.0</VersionPrefix>
-    <Version>39.101.0</Version>
+    <Version>39.114.0</Version>
     <LangVersion>8</LangVersion>
     <Authors>Stripe, Jayme Davis</Authors>
     <TargetFrameworks>net5.0;net6.0;netcoreapp3.1;netstandard2.0;net461</TargetFrameworks>
-    <AssemblyName>Stripe.net</AssemblyName>
-    <PackageId>Stripe.net</PackageId>
     <PackageTags>stripe;payment;credit;cards;money;gateway;paypal;braintree</PackageTags>
-    <PackageIconUrl>http://i.imgur.com/UuBwQ33.png</PackageIconUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/stripe/stripe-dotnet</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <SignAssembly>True</SignAssembly>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <DebugType>embedded</DebugType>
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,6 +31,10 @@
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\_stylecop\StyleCopRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
+  </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />

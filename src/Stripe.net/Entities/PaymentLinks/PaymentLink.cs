@@ -73,6 +73,19 @@ namespace Stripe
         public string BillingAddressCollection { get; set; }
 
         /// <summary>
+        /// When set, provides configuration to gather active consent from customers.
+        /// </summary>
+        [JsonProperty("consent_collection")]
+        public PaymentLinkConsentCollection ConsentCollection { get; set; }
+
+        /// <summary>
+        /// Configuration for Customer creation during checkout.
+        /// One of: <c>always</c>, or <c>if_required</c>.
+        /// </summary>
+        [JsonProperty("customer_creation")]
+        public string CustomerCreation { get; set; }
+
+        /// <summary>
         /// The line items representing what is being sold.
         /// </summary>
         [JsonProperty("line_items")]
@@ -129,6 +142,12 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Indicates the parameters to be passed to PaymentIntent creation during checkout.
+        /// </summary>
+        [JsonProperty("payment_intent_data")]
+        public PaymentLinkPaymentIntentData PaymentIntentData { get; set; }
+
+        /// <summary>
         /// The list of payment method types that customers can use. When <c>null</c>, Stripe will
         /// dynamically show relevant payment methods you've enabled in your <a
         /// href="https://dashboard.stripe.com/settings/payment_methods">payment method
@@ -147,11 +166,28 @@ namespace Stripe
         public PaymentLinkShippingAddressCollection ShippingAddressCollection { get; set; }
 
         /// <summary>
+        /// The shipping rate options applied to the session.
+        /// </summary>
+        [JsonProperty("shipping_options")]
+        public List<PaymentLinkShippingOption> ShippingOptions { get; set; }
+
+        /// <summary>
+        /// Indicates the type of transaction being performed which customizes relevant text on the
+        /// page, such as the submit button.
+        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, or <c>pay</c>.
+        /// </summary>
+        [JsonProperty("submit_type")]
+        public string SubmitType { get; set; }
+
+        /// <summary>
         /// When creating a subscription, the specified configuration data will be used. There must
         /// be at least one line item with a recurring price to use <c>subscription_data</c>.
         /// </summary>
         [JsonProperty("subscription_data")]
         public PaymentLinkSubscriptionData SubscriptionData { get; set; }
+
+        [JsonProperty("tax_id_collection")]
+        public PaymentLinkTaxIdCollection TaxIdCollection { get; set; }
 
         /// <summary>
         /// The account (if any) the payments will be attributed to for tax reporting, and where

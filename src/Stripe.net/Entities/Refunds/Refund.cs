@@ -158,6 +158,12 @@ namespace Stripe
         public string FailureReason { get; set; }
 
         /// <summary>
+        /// Email to which refund instructions, if required, are sent to.
+        /// </summary>
+        [JsonProperty("instructions_email")]
+        public string InstructionsEmail { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
@@ -251,7 +257,8 @@ namespace Stripe
         /// <summary>
         /// Status of the refund. For credit card refunds, this can be <c>pending</c>,
         /// <c>succeeded</c>, or <c>failed</c>. For other types of refunds, it can be
-        /// <c>pending</c>, <c>succeeded</c>, <c>failed</c>, or <c>canceled</c>. Refer to our <a
+        /// <c>pending</c>, <c>requires_action</c>, <c>succeeded</c>, <c>failed</c>, or
+        /// <c>canceled</c>. Refer to our <a
         /// href="https://stripe.com/docs/refunds#failed-refunds">refunds</a> documentation for more
         /// details.
         /// </summary>

@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ChargePaymentMethodDetailsCardPresent : StripeEntity<ChargePaymentMethodDetailsCardPresent>
     {
@@ -17,6 +19,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("brand")]
         public string Brand { get; set; }
+
+        /// <summary>
+        /// When using manual capture, a future timestamp after which the charge will be
+        /// automatically refunded if uncaptured.
+        /// </summary>
+        [JsonProperty("capture_before")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime CaptureBefore { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The cardholder name as read from the card, in <a
@@ -94,6 +104,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("iin")]
         public string Iin { get; set; }
+
+        /// <summary>
+        /// Whether this <a href="https://stripe.com/docs/api/payment_intents">PaymentIntent</a> is
+        /// eligible for incremental authorizations. Request support using <a
+        /// href="https://stripe.com/docs/api/payment_intents/create#create_payment_intent-payment_method_options-card_present-request_incremental_authorization_support">request_incremental_authorization_support</a>.
+        /// </summary>
+        [JsonProperty("incremental_authorization_supported")]
+        public bool? IncrementalAuthorizationSupported { get; set; }
 
         /// <summary>
         /// The name of the card's issuing bank. (For internal use only and not typically available

@@ -39,6 +39,14 @@ namespace Stripe
         public string PaymentMethod { get; set; }
 
         /// <summary>
+        /// When included, this hash creates a PaymentMethod that is set as the <a
+        /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-payment_method"><c>payment_method</c></a>
+        /// value in the SetupIntent.
+        /// </summary>
+        [JsonProperty("payment_method_data")]
+        public SetupIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
+
+        /// <summary>
         /// Payment-method-specific configuration for this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]

@@ -12,6 +12,9 @@ namespace Stripe
         [JsonProperty("charge")]
         public string Charge { get; set; }
 
+        [JsonProperty("instructions_email")]
+        public string InstructionsEmail { get; set; }
+
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the

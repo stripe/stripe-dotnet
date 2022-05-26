@@ -46,6 +46,14 @@ namespace Stripe
         public string BancontactPayments { get; set; }
 
         /// <summary>
+        /// The status of the customer_balance payments capability of the account, or whether the
+        /// account can directly process customer_balance charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("bank_transfer_payments")]
+        public string BankTransferPayments { get; set; }
+
+        /// <summary>
         /// The status of the boleto payments capability of the account, or whether the account can
         /// directly process boleto charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -209,6 +217,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transfers")]
         public string Transfers { get; set; }
+
+        /// <summary>
+        /// The status of the banking capability, or whether the account can have bank accounts.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("treasury")]
+        public string Treasury { get; set; }
 
         /// <summary>
         /// The status of the US bank account ACH payments capability of the account, or whether the

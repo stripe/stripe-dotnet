@@ -20,6 +20,7 @@ namespace Stripe
                 { "apple_pay_domain", typeof(ApplePayDomain) },
                 { "application", typeof(Application) },
                 { "application_fee", typeof(ApplicationFee) },
+                { "apps.secret", typeof(Apps.Secret) },
                 { "balance", typeof(Balance) },
                 { "balance_transaction", typeof(BalanceTransaction) },
                 { "bank_account", typeof(BankAccount) },
@@ -30,6 +31,7 @@ namespace Stripe
                 { "billing_portal.session", typeof(BillingPortal.Session) },
                 { "capability", typeof(Capability) },
                 { "card", typeof(Card) },
+                { "cash_balance", typeof(CashBalance) },
                 { "charge", typeof(Charge) },
                 { "checkout.session", typeof(Checkout.Session) },
                 { "country_spec", typeof(CountrySpec) },
@@ -48,6 +50,23 @@ namespace Stripe
                 { "fee_refund", typeof(ApplicationFeeRefund) },
                 { "file", typeof(File) },
                 { "file_link", typeof(FileLink) },
+                {
+                    "financial_connections.account", typeof(
+                        FinancialConnections.Account)
+                },
+                {
+                    "financial_connections.account_owner", typeof(
+                        FinancialConnections.AccountOwner)
+                },
+                {
+                    "financial_connections.account_ownership", typeof(
+                        FinancialConnections.AccountOwnership)
+                },
+                {
+                    "financial_connections.session", typeof(
+                        FinancialConnections.Session)
+                },
+                { "funding_instructions", typeof(FundingInstructions) },
                 {
                     "identity.verification_report", typeof(
                         Identity.VerificationReport)
@@ -106,6 +125,7 @@ namespace Stripe
                 { "tax_code", typeof(TaxCode) },
                 { "tax_id", typeof(TaxId) },
                 { "tax_rate", typeof(TaxRate) },
+                { "terminal.configuration", typeof(Terminal.Configuration) },
                 {
                     "terminal.connection_token", typeof(
                         Terminal.ConnectionToken)
@@ -117,6 +137,35 @@ namespace Stripe
                 { "topup", typeof(Topup) },
                 { "transfer", typeof(Transfer) },
                 { "transfer_reversal", typeof(TransferReversal) },
+                { "treasury.credit_reversal", typeof(Treasury.CreditReversal) },
+                { "treasury.debit_reversal", typeof(Treasury.DebitReversal) },
+                {
+                    "treasury.financial_account", typeof(
+                        Treasury.FinancialAccount)
+                },
+                {
+                    "treasury.financial_account_features", typeof(
+                        Treasury.FinancialAccountFeatures)
+                },
+                {
+                    "treasury.inbound_transfer", typeof(
+                        Treasury.InboundTransfer)
+                },
+                {
+                    "treasury.outbound_payment", typeof(
+                        Treasury.OutboundPayment)
+                },
+                {
+                    "treasury.outbound_transfer", typeof(
+                        Treasury.OutboundTransfer)
+                },
+                { "treasury.received_credit", typeof(Treasury.ReceivedCredit) },
+                { "treasury.received_debit", typeof(Treasury.ReceivedDebit) },
+                { "treasury.transaction", typeof(Treasury.Transaction) },
+                {
+                    "treasury.transaction_entry", typeof(
+                        Treasury.TransactionEntry)
+                },
                 { "usage_record", typeof(UsageRecord) },
                 { "usage_record_summary", typeof(UsageRecordSummary) },
                 { "webhook_endpoint", typeof(WebhookEndpoint) },
