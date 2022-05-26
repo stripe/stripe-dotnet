@@ -6,6 +6,13 @@ namespace Stripe.Treasury
     public class FinancialAccountUpdateFeaturesOptions : BaseOptions
     {
         /// <summary>
+        /// Encodes the FinancialAccount's ability to be used with the Issuing product, including
+        /// attaching cards to and drawing funds from the FinancialAccount.
+        /// </summary>
+        [JsonProperty("card_issuing")]
+        public FinancialAccountCardIssuingOptions CardIssuing { get; set; }
+
+        /// <summary>
         /// Represents whether this FinancialAccount is eligible for deposit insurance. Various
         /// factors determine the insurance amount.
         /// </summary>

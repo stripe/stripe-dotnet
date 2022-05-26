@@ -14,6 +14,14 @@ namespace Stripe
         public string AcssDebitPayments { get; set; }
 
         /// <summary>
+        /// The status of the Affirm capability of the account, or whether the account can directly
+        /// process Affirm charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("affirm_payments")]
+        public string AffirmPayments { get; set; }
+
+        /// <summary>
         /// The status of the Afterpay Clearpay capability of the account, or whether the account
         /// can directly process Afterpay Clearpay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -155,6 +163,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("legacy_payments")]
         public string LegacyPayments { get; set; }
+
+        /// <summary>
+        /// The status of the link_payments capability of the account, or whether the account can
+        /// directly process Link charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("link_payments")]
+        public string LinkPayments { get; set; }
 
         /// <summary>
         /// The status of the OXXO payments capability of the account, or whether the account can
