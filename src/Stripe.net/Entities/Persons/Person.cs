@@ -121,6 +121,12 @@ namespace Stripe
         public bool IdNumberProvided { get; set; }
 
         /// <summary>
+        /// Whether the person's <c>id_number_secondary</c> was provided.
+        /// </summary>
+        [JsonProperty("id_number_secondary_provided")]
+        public bool IdNumberSecondaryProvided { get; set; }
+
+        /// <summary>
         /// The person's last name.
         /// </summary>
         [JsonProperty("last_name")]

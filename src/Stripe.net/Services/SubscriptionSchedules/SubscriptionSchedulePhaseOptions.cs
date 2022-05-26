@@ -130,10 +130,9 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// If a subscription schedule will create prorations when transitioning to this phase.
-        /// Possible values are <c>create_prorations</c> or <c>none</c>, and the default value is
-        /// <c>create_prorations</c>. See <a
-        /// href="https://stripe.com/docs/billing/subscriptions/prorations">Prorations</a>.
+        /// Whether the subscription schedule will create <a
+        /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when
+        /// transitioning to this phase. The default value is <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]

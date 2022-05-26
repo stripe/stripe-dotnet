@@ -83,6 +83,16 @@ namespace Stripe
         public string IdNumber { get; set; }
 
         /// <summary>
+        /// The person's secondary ID number, as appropriate for their country, will be used for
+        /// enhanced verification checks. In Thailand, this would be the laser code found on the
+        /// back of an ID card. Instead of the number itself, you can also provide a <a
+        /// href="https://stripe.com/docs/js/tokens_sources/create_token?type=pii">PII token
+        /// provided by Stripe.js</a>.
+        /// </summary>
+        [JsonProperty("id_number_secondary")]
+        public string IdNumberSecondary { get; set; }
+
+        /// <summary>
         /// The person's last name.
         /// </summary>
         [JsonProperty("last_name")]
