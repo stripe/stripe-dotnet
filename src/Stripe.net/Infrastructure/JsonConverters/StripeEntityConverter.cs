@@ -62,20 +62,15 @@
             if (reader is JTokenReader jTokenReader)
             {
                 jToken = jTokenReader.CurrentToken;
-                jTokenReader.Skip();
             }
             else
             {
                 jToken = JToken.Load(reader);
+                reader = jToken.CreateReader();
             }
 
             var e = (StripeEntity)Activator.CreateInstance(objectType);
-
-            using (var subReader = jToken.CreateReader())
-            {
-                serializer.Populate(subReader, e);
-            }
-
+            serializer.Populate(reader, e);
             e.RawJObject = (JObject)jToken;
             return e;
         }
