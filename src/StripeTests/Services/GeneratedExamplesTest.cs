@@ -291,6 +291,27 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestCashBalanceServiceRetrieve()
+        {
+            var service = new CashBalanceService(this.StripeClient);
+            service.Get("cus_123");
+        }
+
+        [Fact]
+        public void TestCashBalanceServiceUpdate()
+        {
+            var options = new CashBalanceUpdateOptions
+            {
+                Settings = new CashBalanceSettingsOptions
+                {
+                    ReconciliationMode = "manual",
+                },
+            };
+            var service = new CashBalanceService(this.StripeClient);
+            service.Update("cus_123", options);
+        }
+
+        [Fact]
         public void TestChargeServiceCapture()
         {
             var service = new ChargeService(this.StripeClient);
