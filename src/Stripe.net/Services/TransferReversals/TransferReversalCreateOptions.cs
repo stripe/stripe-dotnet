@@ -7,10 +7,10 @@ namespace Stripe
     public class TransferReversalCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// A positive integer in %s representing how much of this transfer to reverse. Can only
-        /// reverse up to the unreversed amount remaining of the transfer. Partial transfer
-        /// reversals are only allowed for transfers to Stripe Accounts. Defaults to the entire
-        /// transfer amount.
+        /// A positive integer in cents (or local equivalent) representing how much of this transfer
+        /// to reverse. Can only reverse up to the unreversed amount remaining of the transfer.
+        /// Partial transfer reversals are only allowed for transfers to Stripe Accounts. Defaults
+        /// to the entire transfer amount.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }

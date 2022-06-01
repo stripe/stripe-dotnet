@@ -62,6 +62,14 @@ namespace Stripe
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
+        /// Options to configure Radar. See <a
+        /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
+        /// information.
+        /// </summary>
+        [JsonProperty("radar_options")]
+        public PaymentIntentRadarOptionsOptions RadarOptions { get; set; }
+
+        /// <summary>
         /// Email address that the receipt for the resulting payment will be sent to. If
         /// <c>receipt_email</c> is specified for a payment in live mode, a receipt will be sent
         /// regardless of your <a href="https://dashboard.stripe.com/account/emails">email

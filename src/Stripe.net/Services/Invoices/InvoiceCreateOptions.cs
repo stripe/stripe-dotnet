@@ -16,10 +16,10 @@ namespace Stripe
         public List<string> AccountTaxIds { get; set; }
 
         /// <summary>
-        /// A fee in %s that will be applied to the invoice and transferred to the application
-        /// owner's Stripe account. The request must be made with an OAuth key or the Stripe-Account
-        /// header in order to take an application fee. For more information, see the application
-        /// fees <a
+        /// A fee in cents (or local equivalent) that will be applied to the invoice and transferred
+        /// to the application owner's Stripe account. The request must be made with an OAuth key or
+        /// the Stripe-Account header in order to take an application fee. For more information, see
+        /// the application fees <a
         /// href="https://stripe.com/docs/billing/invoices/connect#collecting-fees">documentation</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
