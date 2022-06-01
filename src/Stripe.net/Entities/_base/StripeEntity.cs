@@ -25,7 +25,7 @@ namespace Stripe
         /// </remarks>
         /// <returns>The raw <see cref="JObject">JObject</see>.</returns>
         [JsonIgnore]
-        public JObject RawJObject { get; set; }
+        public JObject RawJObject { get; internal set; }
 
         [JsonIgnore]
         public StripeResponse StripeResponse { get; set; }
