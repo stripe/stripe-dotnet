@@ -43,15 +43,16 @@ namespace Stripe.Checkout
         public string TaxBehavior { get; set; }
 
         /// <summary>
-        /// A non-negative integer in %s representing how much to charge. One of <c>unit_amount</c>
-        /// or <c>unit_amount_decimal</c> is required.
+        /// A non-negative integer in cents (or local equivalent) representing how much to charge.
+        /// One of <c>unit_amount</c> or <c>unit_amount_decimal</c> is required.
         /// </summary>
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
-        /// Same as <c>unit_amount</c>, but accepts a decimal value in %s with at most 12 decimal
-        /// places. Only one of <c>unit_amount</c> and <c>unit_amount_decimal</c> can be set.
+        /// Same as <c>unit_amount</c>, but accepts a decimal value in cents (or local equivalent)
+        /// with at most 12 decimal places. Only one of <c>unit_amount</c> and
+        /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }

@@ -26,8 +26,8 @@ namespace Stripe
         public string AggregateUsage { get; set; }
 
         /// <summary>
-        /// A positive integer in %s (or 0 for a free plan) representing how much to charge on a
-        /// recurring basis.
+        /// A positive integer in cents (or local equivalent) (or 0 for a free plan) representing
+        /// how much to charge on a recurring basis.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }

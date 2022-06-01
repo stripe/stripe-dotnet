@@ -7,14 +7,15 @@ namespace Stripe
     public class CreditNoteCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The integer amount in %s representing the total amount of the credit note.
+        /// The integer amount in cents (or local equivalent) representing the total amount of the
+        /// credit note.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the amount to credit the customer's balance, which
-        /// will be automatically applied to their next invoice.
+        /// The integer amount in cents (or local equivalent) representing the amount to credit the
+        /// customer's balance, which will be automatically applied to their next invoice.
         /// </summary>
         [JsonProperty("credit_amount")]
         public long? CreditAmount { get; set; }
@@ -47,7 +48,8 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the amount that is credited outside of Stripe.
+        /// The integer amount in cents (or local equivalent) representing the amount that is
+        /// credited outside of Stripe.
         /// </summary>
         [JsonProperty("out_of_band_amount")]
         public long? OutOfBandAmount { get; set; }
@@ -68,8 +70,8 @@ namespace Stripe
         public string Refund { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the amount to refund. If set, a refund will be
-        /// created for the charge associated with the invoice.
+        /// The integer amount in cents (or local equivalent) representing the amount to refund. If
+        /// set, a refund will be created for the charge associated with the invoice.
         /// </summary>
         [JsonProperty("refund_amount")]
         public long? RefundAmount { get; set; }

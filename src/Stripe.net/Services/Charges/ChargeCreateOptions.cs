@@ -20,10 +20,10 @@ namespace Stripe
         public long? Amount { get; set; }
 
         /// <summary>
-        /// A fee in %s that will be applied to the charge and transferred to the application
-        /// owner's Stripe account. The request must be made with an OAuth key or the
-        /// <c>Stripe-Account</c> header in order to take an application fee. For more information,
-        /// see the application fees <a
+        /// A fee in cents (or local equivalent) that will be applied to the charge and transferred
+        /// to the application owner's Stripe account. The request must be made with an OAuth key or
+        /// the <c>Stripe-Account</c> header in order to take an application fee. For more
+        /// information, see the application fees <a
         /// href="https://stripe.com/docs/connect/direct-charges#collecting-fees">documentation</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
@@ -89,6 +89,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("on_behalf_of")]
         public string OnBehalfOf { get; set; }
+
+        /// <summary>
+        /// Options to configure Radar. See <a
+        /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
+        /// information.
+        /// </summary>
+        [JsonProperty("radar_options")]
+        public ChargeRadarOptionsOptions RadarOptions { get; set; }
 
         /// <summary>
         /// The email address to which this charge's <a

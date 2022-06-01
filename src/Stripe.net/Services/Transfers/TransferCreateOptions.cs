@@ -7,7 +7,7 @@ namespace Stripe
     public class TransferCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// A positive integer in %s representing how much to transfer.
+        /// A positive integer in cents (or local equivalent) representing how much to transfer.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }

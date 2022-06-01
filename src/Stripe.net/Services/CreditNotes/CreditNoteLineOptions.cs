@@ -48,16 +48,17 @@ namespace Stripe
         public string Type { get; set; }
 
         /// <summary>
-        /// The integer unit amount in %s of the credit note line item. This <c>unit_amount</c> will
-        /// be multiplied by the quantity to get the full amount to credit for this line item. Only
-        /// valid when <c>type</c> is <c>custom_line_item</c>.
+        /// The integer unit amount in cents (or local equivalent) of the credit note line item.
+        /// This <c>unit_amount</c> will be multiplied by the quantity to get the full amount to
+        /// credit for this line item. Only valid when <c>type</c> is <c>custom_line_item</c>.
         /// </summary>
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
-        /// Same as <c>unit_amount</c>, but accepts a decimal value in %s with at most 12 decimal
-        /// places. Only one of <c>unit_amount</c> and <c>unit_amount_decimal</c> can be set.
+        /// Same as <c>unit_amount</c>, but accepts a decimal value in cents (or local equivalent)
+        /// with at most 12 decimal places. Only one of <c>unit_amount</c> and
+        /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
