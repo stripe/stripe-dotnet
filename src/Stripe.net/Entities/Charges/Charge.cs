@@ -522,6 +522,14 @@ namespace Stripe
         public ChargePaymentMethodDetails PaymentMethodDetails { get; set; }
 
         /// <summary>
+        /// Options to configure Radar. See <a
+        /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
+        /// information.
+        /// </summary>
+        [JsonProperty("radar_options")]
+        public ChargeRadarOptions RadarOptions { get; set; }
+
+        /// <summary>
         /// This is the email address that the receipt for this charge was sent to.
         /// </summary>
         [JsonProperty("receipt_email")]

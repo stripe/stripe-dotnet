@@ -29,14 +29,16 @@ namespace Stripe
         public string TaxBehavior { get; set; }
 
         /// <summary>
-        /// A positive integer in %s (or 0 for a free price) representing how much to charge.
+        /// A positive integer in cents (or local equivalent) (or 0 for a free price) representing
+        /// how much to charge.
         /// </summary>
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }
 
         /// <summary>
-        /// Same as <c>unit_amount</c>, but accepts a decimal value in %s with at most 12 decimal
-        /// places. Only one of <c>unit_amount</c> and <c>unit_amount_decimal</c> can be set.
+        /// Same as <c>unit_amount</c>, but accepts a decimal value in cents (or local equivalent)
+        /// with at most 12 decimal places. Only one of <c>unit_amount</c> and
+        /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
         public decimal? UnitAmountDecimal { get; set; }
