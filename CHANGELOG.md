@@ -1,5 +1,12 @@
 # Changelog
 
+## 39.116.0 - 2022-06-01
+* [#2498](https://github.com/stripe/stripe-dotnet/pull/2498) API Updates
+  * Add support for `RadarOptions` on `ChargeCreateOptions`, `Charge`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `AccountHolderName`, `AccountNumber`, `AccountType`, `BankCode`, `BankName`, `BranchCode`, and `BranchName` on `FundingInstructionsBankTransferFinancialAddressesZengin` and `PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressesZengin`
+  * Change type of `OrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType` and `PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType` from `enum` to `literal('jp_bank_transfer')`
+  * Add support for `Network` on `SetupIntentPaymentMethodOptionsCard`
+
 ## 39.115.0 - 2022-05-26
 * [#2494](https://github.com/stripe/stripe-dotnet/pull/2494) API Updates
   * Add support for `AffirmPayments` and `LinkPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
