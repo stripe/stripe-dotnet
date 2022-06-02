@@ -25,7 +25,7 @@ namespace Stripe
         /// </remarks>
         /// <returns>The raw <see cref="JObject">JObject</see>.</returns>
         [JsonIgnore]
-        public JObject RawJObject { get; internal set; }
+        public JObject RawJObject { get; protected set; }
 
         [JsonIgnore]
         public StripeResponse StripeResponse { get; set; }
@@ -49,6 +49,11 @@ namespace Stripe
             where T : IStripeEntity
         {
             return JsonUtils.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
+        }
+
+        internal void SetRawJObject(JObject rawJObject)
+        {
+            this.RawJObject = rawJObject;
         }
 
         /// <summary>Reports a Stripe object as a string.</summary>
