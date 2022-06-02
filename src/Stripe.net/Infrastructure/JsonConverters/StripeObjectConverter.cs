@@ -58,14 +58,10 @@ namespace Stripe.Infrastructure
                 return null;
             }
 
-            var value = Activator.CreateInstance(concreteType);
-
             using (var subReader = jsonObject.CreateReader())
             {
-                serializer.Populate(subReader, value);
+                return serializer.Deserialize(subReader, concreteType);
             }
-
-            return value;
         }
 
         /// <summary>
