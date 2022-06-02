@@ -71,7 +71,7 @@
 
             var e = (StripeEntity)Activator.CreateInstance(objectType);
             serializer.Populate(reader, e);
-            e.RawJObject = (JObject)jToken;
+            e.SetRawJObject((JObject)jToken);
             return e;
         }
     }
