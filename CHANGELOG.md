@@ -1,5 +1,13 @@
 # Changelog
 
+## 39.117.0 - 2022-06-08
+* [#2502](https://github.com/stripe/stripe-dotnet/pull/2502) API Updates
+  * Add support for `Affirm`, `Bancontact`, `Card`, `Ideal`, `P24`, and `Sofort` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
+  * Add support for `AfterpayClearpay`, `AuBecsDebit`, `BacsDebit`, `Eps`, `Fpx`, `Giropay`, `Grabpay`, `Klarna`, `Paynow`, and `SepaDebit` on `CheckoutSessionPaymentMethodOptionsOptions`
+  * Add support for `SetupFutureUsage` on `CheckoutSessionPaymentMethodOptionsAcssDebitOptions`, `CheckoutSessionPaymentMethodOptionsAcssDebit`, `CheckoutSessionPaymentMethodOptionsAfterpayClearpay`, `CheckoutSessionPaymentMethodOptionsAlipayOptions`, `CheckoutSessionPaymentMethodOptionsAlipay`, `CheckoutSessionPaymentMethodOptionsAuBecsDebit`, `CheckoutSessionPaymentMethodOptionsBacsDebit`, `CheckoutSessionPaymentMethodOptionsBoletoOptions`, `CheckoutSessionPaymentMethodOptionsBoleto`, `CheckoutSessionPaymentMethodOptionsEps`, `CheckoutSessionPaymentMethodOptionsFpx`, `CheckoutSessionPaymentMethodOptionsGiropay`, `CheckoutSessionPaymentMethodOptionsGrabpay`, `CheckoutSessionPaymentMethodOptionsKlarna`, `CheckoutSessionPaymentMethodOptionsKonbiniOptions`, `CheckoutSessionPaymentMethodOptionsKonbini`, `CheckoutSessionPaymentMethodOptionsOxxoOptions`, `CheckoutSessionPaymentMethodOptionsOxxo`, `CheckoutSessionPaymentMethodOptionsPaynow`, `CheckoutSessionPaymentMethodOptionsSepaDebit`, `CheckoutSessionPaymentMethodOptionsUsBankAccountOptions`, `CheckoutSessionPaymentMethodOptionsUsBankAccount`, and `CheckoutSessionPaymentMethodOptionsWechatPayOptions`
+  * Add support for `AttachToSelf` on `SetupAttempt`, `SetupIntentCreateOptions`, `SetupIntentListOptions`, and `SetupIntentUpdateOptions`
+  * Add support for `FlowDirections` on `SetupAttempt`, `SetupIntentCreateOptions`, and `SetupIntentUpdateOptions`
+
 ## 39.116.0 - 2022-06-01
 * [#2498](https://github.com/stripe/stripe-dotnet/pull/2498) API Updates
   * Add support for `RadarOptions` on `ChargeCreateOptions`, `Charge`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
