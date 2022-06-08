@@ -119,7 +119,7 @@ namespace Stripe
         public long AmountPaid { get; set; }
 
         /// <summary>
-        /// The amount remaining, in %s, that is due.
+        /// The difference between amount_due and amount_paid, in %s.
         /// </summary>
         [JsonProperty("amount_remaining")]
         public long AmountRemaining { get; set; }

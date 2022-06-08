@@ -9,7 +9,8 @@ namespace Stripe
     /// <summary>
     /// Shipping rates describe the price of shipping presented to your customers and can be
     /// applied to <a href="https://stripe.com/docs/payments/checkout/shipping">Checkout
-    /// Sessions</a> to collect shipping costs.
+    /// Sessions</a> and <a href="https://stripe.com/docs/orders/shipping">Orders</a> to collect
+    /// shipping costs.
     /// </summary>
     public class ShippingRate : StripeEntity<ShippingRate>, IHasId, IHasMetadata, IHasObject
     {

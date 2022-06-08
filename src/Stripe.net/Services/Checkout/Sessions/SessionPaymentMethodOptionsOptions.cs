@@ -12,16 +12,88 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
 
         /// <summary>
+        /// contains details about the Affirm payment method options.
+        /// </summary>
+        [JsonProperty("affirm")]
+        public SessionPaymentMethodOptionsAffirmOptions Affirm { get; set; }
+
+        /// <summary>
+        /// contains details about the Afterpay Clearpay payment method options.
+        /// </summary>
+        [JsonProperty("afterpay_clearpay")]
+        public SessionPaymentMethodOptionsAfterpayClearpayOptions AfterpayClearpay { get; set; }
+
+        /// <summary>
         /// contains details about the Alipay payment method options.
         /// </summary>
         [JsonProperty("alipay")]
         public SessionPaymentMethodOptionsAlipayOptions Alipay { get; set; }
 
         /// <summary>
+        /// contains details about the AU Becs Debit payment method options.
+        /// </summary>
+        [JsonProperty("au_becs_debit")]
+        public SessionPaymentMethodOptionsAuBecsDebitOptions AuBecsDebit { get; set; }
+
+        /// <summary>
+        /// contains details about the Bacs Debit payment method options.
+        /// </summary>
+        [JsonProperty("bacs_debit")]
+        public SessionPaymentMethodOptionsBacsDebitOptions BacsDebit { get; set; }
+
+        /// <summary>
+        /// contains details about the Bancontact payment method options.
+        /// </summary>
+        [JsonProperty("bancontact")]
+        public SessionPaymentMethodOptionsBancontactOptions Bancontact { get; set; }
+
+        /// <summary>
         /// contains details about the Boleto payment method options.
         /// </summary>
         [JsonProperty("boleto")]
         public SessionPaymentMethodOptionsBoletoOptions Boleto { get; set; }
+
+        /// <summary>
+        /// contains details about the Card payment method options.
+        /// </summary>
+        [JsonProperty("card")]
+        public SessionPaymentMethodOptionsCardOptions Card { get; set; }
+
+        /// <summary>
+        /// contains details about the EPS payment method options.
+        /// </summary>
+        [JsonProperty("eps")]
+        public SessionPaymentMethodOptionsEpsOptions Eps { get; set; }
+
+        /// <summary>
+        /// contains details about the EPS payment method options.
+        /// </summary>
+        [JsonProperty("fpx")]
+        public SessionPaymentMethodOptionsFpxOptions Fpx { get; set; }
+
+        /// <summary>
+        /// contains details about the Giropay payment method options.
+        /// </summary>
+        [JsonProperty("giropay")]
+        public SessionPaymentMethodOptionsGiropayOptions Giropay { get; set; }
+
+        /// <summary>
+        /// contains details about the Grabpay payment method options.
+        /// </summary>
+        [JsonProperty("grabpay")]
+        public SessionPaymentMethodOptionsGrabpayOptions Grabpay { get; set; }
+
+        /// <summary>
+        /// contains details about the Ideal payment method options.
+        /// </summary>
+        [JsonProperty("ideal")]
+        public SessionPaymentMethodOptionsIdealOptions Ideal { get; set; }
+
+        /// <summary>
+        /// contains details about the Klarna payment method options.
+        /// </summary>
+        [JsonProperty("klarna")]
+        public SessionPaymentMethodOptionsKlarnaOptions Klarna { get; set; }
 
         /// <summary>
         /// contains details about the Konbini payment method options.
@@ -34,6 +106,30 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("oxxo")]
         public SessionPaymentMethodOptionsOxxoOptions Oxxo { get; set; }
+
+        /// <summary>
+        /// contains details about the P24 payment method options.
+        /// </summary>
+        [JsonProperty("p24")]
+        public SessionPaymentMethodOptionsP24Options P24 { get; set; }
+
+        /// <summary>
+        /// contains details about the PayNow payment method options.
+        /// </summary>
+        [JsonProperty("paynow")]
+        public SessionPaymentMethodOptionsPaynowOptions Paynow { get; set; }
+
+        /// <summary>
+        /// contains details about the Sepa Debit payment method options.
+        /// </summary>
+        [JsonProperty("sepa_debit")]
+        public SessionPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
+
+        /// <summary>
+        /// contains details about the Sofort payment method options.
+        /// </summary>
+        [JsonProperty("sofort")]
+        public SessionPaymentMethodOptionsSofortOptions Sofort { get; set; }
 
         /// <summary>
         /// contains details about the Us Bank Account payment method options.

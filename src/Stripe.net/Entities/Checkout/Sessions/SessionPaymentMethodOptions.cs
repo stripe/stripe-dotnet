@@ -8,6 +8,9 @@ namespace Stripe.Checkout
         [JsonProperty("acss_debit")]
         public SessionPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("affirm")]
+        public SessionPaymentMethodOptionsAffirm Affirm { get; set; }
+
         [JsonProperty("afterpay_clearpay")]
         public SessionPaymentMethodOptionsAfterpayClearpay AfterpayClearpay { get; set; }
 
@@ -20,8 +23,14 @@ namespace Stripe.Checkout
         [JsonProperty("bacs_debit")]
         public SessionPaymentMethodOptionsBacsDebit BacsDebit { get; set; }
 
+        [JsonProperty("bancontact")]
+        public SessionPaymentMethodOptionsBancontact Bancontact { get; set; }
+
         [JsonProperty("boleto")]
         public SessionPaymentMethodOptionsBoleto Boleto { get; set; }
+
+        [JsonProperty("card")]
+        public SessionPaymentMethodOptionsCard Card { get; set; }
 
         [JsonProperty("eps")]
         public SessionPaymentMethodOptionsEps Eps { get; set; }
@@ -35,6 +44,9 @@ namespace Stripe.Checkout
         [JsonProperty("grabpay")]
         public SessionPaymentMethodOptionsGrabpay Grabpay { get; set; }
 
+        [JsonProperty("ideal")]
+        public SessionPaymentMethodOptionsIdeal Ideal { get; set; }
+
         [JsonProperty("klarna")]
         public SessionPaymentMethodOptionsKlarna Klarna { get; set; }
 
@@ -44,11 +56,17 @@ namespace Stripe.Checkout
         [JsonProperty("oxxo")]
         public SessionPaymentMethodOptionsOxxo Oxxo { get; set; }
 
+        [JsonProperty("p24")]
+        public SessionPaymentMethodOptionsP24 P24 { get; set; }
+
         [JsonProperty("paynow")]
         public SessionPaymentMethodOptionsPaynow Paynow { get; set; }
 
         [JsonProperty("sepa_debit")]
         public SessionPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("sofort")]
+        public SessionPaymentMethodOptionsSofort Sofort { get; set; }
 
         [JsonProperty("us_bank_account")]
         public SessionPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
