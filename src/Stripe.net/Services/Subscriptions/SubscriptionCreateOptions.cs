@@ -46,7 +46,8 @@ namespace Stripe
         /// A future timestamp to anchor the subscription's <a
         /// href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a>. This is
         /// used to determine the date of the first full invoice, and, for plans with <c>month</c>
-        /// or <c>year</c> intervals, the day of the month for subsequent invoices.
+        /// or <c>year</c> intervals, the day of the month for subsequent invoices. The timestamp is
+        /// in UTC format.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -223,12 +224,8 @@ namespace Stripe
         /// <summary>
         /// Determines how to handle <a
         /// href="https://stripe.com/docs/subscriptions/billing-cycle#prorations">prorations</a>
-        /// resulting from the <c>billing_cycle_anchor</c>. Valid values are
-        /// <c>create_prorations</c> or <c>none</c>.
-        ///
-        /// Passing <c>create_prorations</c> will cause proration invoice items to be created when
-        /// applicable. Prorations can be disabled by passing <c>none</c>. If no value is passed,
-        /// the default is <c>create_prorations</c>.
+        /// resulting from the <c>billing_cycle_anchor</c>. If no value is passed, the default is
+        /// <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]

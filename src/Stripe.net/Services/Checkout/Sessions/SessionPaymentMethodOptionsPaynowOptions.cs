@@ -3,17 +3,8 @@ namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
 
-    public class SessionPaymentMethodOptionsKonbiniOptions : INestedOptions
+    public class SessionPaymentMethodOptionsPaynowOptions : INestedOptions
     {
-        /// <summary>
-        /// The number of calendar days (between 1 and 60) after which Konbini payment instructions
-        /// will expire. For example, if a PaymentIntent is confirmed with Konbini and
-        /// <c>expires_after_days</c> set to 2 on Monday JST, the instructions will expire on
-        /// Wednesday 23:59:59 JST. Defaults to 3 days.
-        /// </summary>
-        [JsonProperty("expires_after_days")]
-        public long? ExpiresAfterDays { get; set; }
-
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
@@ -32,5 +23,11 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
+
+        /// <summary>
+        /// Confirm that the payer has accepted the P24 terms and conditions.
+        /// </summary>
+        [JsonProperty("tos_shown_and_accepted")]
+        public bool? TosShownAndAccepted { get; set; }
     }
 }

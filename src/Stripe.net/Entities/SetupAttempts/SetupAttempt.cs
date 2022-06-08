@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -60,6 +61,18 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// If present, the SetupIntent's payment method will be attached to the in-context Stripe
+        /// Account.
+        ///
+        /// It can only be used for this Stripe Account’s own money movement flows like
+        /// InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a
+        /// PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a
+        /// Customer.
+        /// </summary>
+        [JsonProperty("attach_to_self")]
+        public bool AttachToSelf { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
@@ -100,6 +113,18 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
+
+        /// <summary>
+        /// Indicates the directions of money movement for which this payment method is intended to
+        /// be used.
+        ///
+        /// Include <c>inbound</c> if you intend to use the payment method as the origin to pull
+        /// funds from. Include <c>outbound</c> if you intend to use the payment method as the
+        /// destination to send funds to. You can include both if you intend to use the payment
+        /// method for both purposes.
+        /// </summary>
+        [JsonProperty("flow_directions")]
+        public List<string> FlowDirections { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if

@@ -5,6 +5,9 @@ namespace Stripe
 
     public class SetupIntentListOptions : ListOptionsWithCreated
     {
+        [JsonProperty("attach_to_self")]
+        public bool? AttachToSelf { get; set; }
+
         [JsonProperty("customer")]
         public string Customer { get; set; }
 

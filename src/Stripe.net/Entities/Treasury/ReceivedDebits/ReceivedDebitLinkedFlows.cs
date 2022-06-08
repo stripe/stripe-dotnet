@@ -12,7 +12,7 @@ namespace Stripe.Treasury
         public string InboundTransfer { get; set; }
 
         /// <summary>
-        /// Set if the ReceivedCredit was created due to an <a
+        /// Set if the ReceivedDebit was created due to an <a
         /// href="https://stripe.com/docs/api#issuing_authorizations">Issuing Authorization</a>
         /// object.
         /// </summary>

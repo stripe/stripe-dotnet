@@ -11,7 +11,7 @@ namespace Stripe
         /// <summary>
         /// If the update is applied, determines the date of the first full invoice, and, for plans
         /// with <c>month</c> or <c>year</c> intervals, the day of the month for subsequent
-        /// invoices.
+        /// invoices. The timestamp is in UTC format.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

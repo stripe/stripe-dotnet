@@ -35,8 +35,8 @@ namespace Stripe
 
         /// <summary>
         /// Either <c>now</c> or <c>unchanged</c>. Setting the value to <c>now</c> resets the
-        /// subscription's billing cycle anchor to the current time. For more information, see the
-        /// billing cycle <a
+        /// subscription's billing cycle anchor to the current time (in UTC). For more information,
+        /// see the billing cycle <a
         /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>now</c>, or <c>unchanged</c>.
         /// </summary>
@@ -217,16 +217,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/subscriptions/billing-cycle#prorations">prorations</a>
         /// when the billing cycle changes (e.g., when switching plans, resetting
         /// <c>billing_cycle_anchor=now</c>, or starting a trial), or if an item's <c>quantity</c>
-        /// changes. Valid values are <c>create_prorations</c>, <c>none</c>, or
-        /// <c>always_invoice</c>.
-        ///
-        /// Passing <c>create_prorations</c> will cause proration invoice items to be created when
-        /// applicable. These proration items will only be invoiced immediately under <a
-        /// href="https://stripe.com/docs/subscriptions/upgrading-downgrading#immediate-payment">certain
-        /// conditions</a>. In order to always invoice immediately for prorations, pass
-        /// <c>always_invoice</c>.
-        ///
-        /// Prorations can be disabled by passing <c>none</c>.
+        /// changes.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]

@@ -7,6 +7,18 @@ namespace Stripe
     public class SetupIntentCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// If present, the SetupIntent's payment method will be attached to the in-context Stripe
+        /// Account.
+        ///
+        /// It can only be used for this Stripe Account’s own money movement flows like
+        /// InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a
+        /// PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a
+        /// Customer.
+        /// </summary>
+        [JsonProperty("attach_to_self")]
+        public bool? AttachToSelf { get; set; }
+
+        /// <summary>
         /// Set to <c>true</c> to attempt to confirm this SetupIntent immediately. This parameter
         /// defaults to <c>false</c>. If the payment method attached is a card, a return_url may be
         /// provided in case additional authentication is required.
@@ -29,6 +41,18 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Indicates the directions of money movement for which this payment method is intended to
+        /// be used.
+        ///
+        /// Include <c>inbound</c> if you intend to use the payment method as the origin to pull
+        /// funds from. Include <c>outbound</c> if you intend to use the payment method as the
+        /// destination to send funds to. You can include both if you intend to use the payment
+        /// method for both purposes.
+        /// </summary>
+        [JsonProperty("flow_directions")]
+        public List<string> FlowDirections { get; set; }
 
         /// <summary>
         /// This hash contains details about the Mandate to create. This parameter can only be used
