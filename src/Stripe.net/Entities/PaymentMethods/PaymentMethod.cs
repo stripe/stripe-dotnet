@@ -157,6 +157,14 @@ namespace Stripe
         [JsonProperty("paynow")]
         public PaymentMethodPaynow Paynow { get; set; }
 
+        /// <summary>
+        /// Options to configure Radar. See <a
+        /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
+        /// information.
+        /// </summary>
+        [JsonProperty("radar_options")]
+        public PaymentMethodRadarOptions RadarOptions { get; set; }
+
         [JsonProperty("sepa_debit")]
         public PaymentMethodSepaDebit SepaDebit { get; set; }
 

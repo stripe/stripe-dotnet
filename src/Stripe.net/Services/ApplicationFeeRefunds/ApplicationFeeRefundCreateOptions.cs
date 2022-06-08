@@ -7,8 +7,8 @@ namespace Stripe
     public class ApplicationFeeRefundCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// A positive integer, in <em>%s</em>, representing how much of this fee to refund. Can
-        /// refund only up to the remaining unrefunded amount of the fee.
+        /// A positive integer, in <em>cents (or local equivalent)</em>, representing how much of
+        /// this fee to refund. Can refund only up to the remaining unrefunded amount of the fee.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }

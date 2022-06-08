@@ -170,6 +170,14 @@ namespace Stripe
         public SetupIntentPaymentMethodDataPaynowOptions Paynow { get; set; }
 
         /// <summary>
+        /// Options to configure Radar. See <a
+        /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
+        /// information.
+        /// </summary>
+        [JsonProperty("radar_options")]
+        public SetupIntentPaymentMethodDataRadarOptionsOptions RadarOptions { get; set; }
+
+        /// <summary>
         /// If this is a <c>sepa_debit</c> PaymentMethod, this hash contains details about the SEPA
         /// debit bank account.
         /// </summary>

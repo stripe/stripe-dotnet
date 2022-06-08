@@ -7,7 +7,8 @@ namespace Stripe
     public class CustomerBalanceTransactionCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The integer amount in <strong>%s</strong> to apply to the customer's credit balance.
+        /// The integer amount in <strong>cents (or local equivalent)</strong> to apply to the
+        /// customer's credit balance.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
