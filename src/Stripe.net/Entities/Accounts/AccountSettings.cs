@@ -28,5 +28,8 @@ namespace Stripe
 
         [JsonProperty("sepa_debit_payments")]
         public AccountSettingsSepaDebitPayments SepaDebitPayments { get; set; }
+
+        [JsonProperty("treasury")]
+        public AccountSettingsTreasury Treasury { get; set; }
     }
 }
