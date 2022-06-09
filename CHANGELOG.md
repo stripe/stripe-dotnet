@@ -1,5 +1,16 @@
 # Changelog
 
+## 39.118.0 - 2022-06-09
+* [#2503](https://github.com/stripe/stripe-dotnet/pull/2503) API Updates
+  * Add support for `Treasury` on `AccountSettingsOptions` and `AccountSettings`
+  * Add support for `RenderingOptions` on `CustomerInvoiceSettingsOptions`
+  * Add support for `EuBankTransfer` on `CustomerBankTransferOptions`, `InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferOptions`, `InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransfer`, `OrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferOptions`, `OrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransfer`, `PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferOptions`, `PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer`, `SubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransfer`
+  * Change type of `CustomerBankTransferRequestedAddressTypesOptions` from `literal('zengin')` to `enum('iban'|'sort_code'|'spei'|'zengin')`
+  * Change type of `CustomerBankTransferTypeOptions`, `OrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferTypeOptions`, `OrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType`, `PaymentIntentNextActionDisplayBankTransferInstructionsType`, `PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferTypeOptions`, and `PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType` from `literal('jp_bank_transfer')` to `enum('eu_bank_transfer'|'gb_bank_transfer'|'jp_bank_transfer'|'mx_bank_transfer')`
+  * Add support for `Iban`, `SortCode`, and `Spei` on `FundingInstructionsBankTransferFinancialAddresses` and `PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddresses`
+  * Change type of `OrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypesOptions`, `OrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes`, `PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypesOptions`, and `PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes` from `literal('zengin')` to `enum`
+  * Add support for `CustomUnitAmount` on `PriceCreateOptions` and `Price`
+
 ## 39.117.0 - 2022-06-08
 * [#2502](https://github.com/stripe/stripe-dotnet/pull/2502) API Updates
   * Add support for `Affirm`, `Bancontact`, `Card`, `Ideal`, `P24`, and `Sofort` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
