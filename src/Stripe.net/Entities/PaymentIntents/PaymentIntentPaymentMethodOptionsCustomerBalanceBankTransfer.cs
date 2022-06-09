@@ -6,18 +6,24 @@ namespace Stripe
 
     public class PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer : StripeEntity<PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer>
     {
+        [JsonProperty("eu_bank_transfer")]
+        public PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer EuBankTransfer { get; set; }
+
         /// <summary>
         /// List of address types that should be returned in the financial_addresses response. If
         /// not specified, all valid types will be returned.
         ///
-        /// Permitted values include: <c>zengin</c>.
+        /// Permitted values include: <c>sort_code</c>, <c>zengin</c>, <c>iban</c>, or <c>spei</c>.
         /// </summary>
         [JsonProperty("requested_address_types")]
         public List<string> RequestedAddressTypes { get; set; }
 
         /// <summary>
         /// The bank transfer type that this PaymentIntent is allowed to use for funding Permitted
-        /// values include: <c>jp_bank_transfer</c>.
+        /// values include: <c>eu_bank_transfer</c>, <c>gb_bank_transfer</c>,
+        /// <c>jp_bank_transfer</c>, or <c>mx_bank_transfer</c>.
+        /// One of: <c>eu_bank_transfer</c>, <c>gb_bank_transfer</c>, <c>jp_bank_transfer</c>, or
+        /// <c>mx_bank_transfer</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

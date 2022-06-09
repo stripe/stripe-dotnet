@@ -34,6 +34,13 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
+        /// When set, provides configuration for the amount to be adjusted by the customer during
+        /// Checkout Sessions and Payment Links.
+        /// </summary>
+        [JsonProperty("custom_unit_amount")]
+        public PriceCustomUnitAmountOptions CustomUnitAmount { get; set; }
+
+        /// <summary>
         /// A lookup key used to retrieve prices dynamically from a static string. This may be up to
         /// 200 characters.
         /// </summary>

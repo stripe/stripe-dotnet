@@ -73,6 +73,13 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
+        /// When set, provides configuration for the amount to be adjusted by the customer during
+        /// Checkout Sessions and Payment Links.
+        /// </summary>
+        [JsonProperty("custom_unit_amount")]
+        public PriceCustomUnitAmount CustomUnitAmount { get; set; }
+
+        /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]

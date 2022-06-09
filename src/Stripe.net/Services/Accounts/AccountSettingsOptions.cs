@@ -35,5 +35,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payouts")]
         public AccountSettingsPayoutsOptions Payouts { get; set; }
+
+        /// <summary>
+        /// Settings specific to the account's Treasury FinancialAccounts.
+        /// </summary>
+        [JsonProperty("treasury")]
+        public AccountSettingsTreasuryOptions Treasury { get; set; }
     }
 }
