@@ -42,5 +42,11 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         [JsonProperty("network")]
         public string Network { get; set; }
+
+        /// <summary>
+        /// Details about the network used for the ReceivedDebit.
+        /// </summary>
+        [JsonProperty("network_details")]
+        public ReceivedDebitNetworkDetailsOptions NetworkDetails { get; set; }
     }
 }
