@@ -5,11 +5,13 @@ on:
   push:
     branches:
       - master
+      - beta
     tags:
       - v[0-9]+.[0-9]+.[0-9]+*
   pull_request:
     branches:
       - master
+      - beta
 
 jobs:
   build:
@@ -44,7 +46,7 @@ jobs:
 
       - name: Run test suite
         run: dotnet test --no-build src/StripeTests/StripeTests.csproj -c Release
-      
+
       - name: Run test suite (Debug)
         run: dotnet test --no-build src/StripeTests/StripeTests.csproj -c Debug
 
