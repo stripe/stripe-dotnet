@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.119.0-beta.1 - 2022-06-15
+* [#2505](https://github.com/stripe/stripe-dotnet/pull/2505) API Updates
+  Add support for NetworkDetails properties on ReceivedCredits/ReceivedDebits resources
+
 ## 39.118.0 - 2022-06-09
 * [#2503](https://github.com/stripe/stripe-dotnet/pull/2503) API Updates
   * Add support for `Treasury` on `AccountSettingsOptions` and `AccountSettings`
