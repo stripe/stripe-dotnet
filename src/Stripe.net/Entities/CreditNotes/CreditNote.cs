@@ -249,8 +249,8 @@ namespace Stripe
         public string Status { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the amount of the credit note, excluding tax and
-        /// invoice level discounts.
+        /// The integer amount in %s representing the amount of the credit note, excluding exclusive
+        /// tax and invoice level discounts.
         /// </summary>
         [JsonProperty("subtotal")]
         public long Subtotal { get; set; }
@@ -267,6 +267,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("total")]
         public long Total { get; set; }
+
+        /// <summary>
+        /// The integer amount in %s representing the total amount of the credit note, excluding
+        /// tax, but including discounts.
+        /// </summary>
+        [JsonProperty("total_excluding_tax")]
+        public long? TotalExcludingTax { get; set; }
 
         /// <summary>
         /// Type of this credit note, one of <c>pre_payment</c> or <c>post_payment</c>. A

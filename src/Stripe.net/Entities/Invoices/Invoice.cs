@@ -721,6 +721,12 @@ namespace Stripe
         public string ReceiptNumber { get; set; }
 
         /// <summary>
+        /// Options for invoice PDF rendering.
+        /// </summary>
+        [JsonProperty("rendering_options")]
+        public InvoiceRenderingOptions RenderingOptions { get; set; }
+
+        /// <summary>
         /// Starting customer balance before the invoice is finalized. If the invoice has not been
         /// finalized yet, this will be the current customer balance.
         /// </summary>
@@ -788,7 +794,8 @@ namespace Stripe
 
         /// <summary>
         /// Total of all subscriptions, invoice items, and prorations on the invoice before any
-        /// invoice level discount or tax is applied. Item discounts are already incorporated.
+        /// invoice level discount or exclusive tax is applied. Item discounts are already
+        /// incorporated.
         /// </summary>
         [JsonProperty("subtotal")]
         public long Subtotal { get; set; }

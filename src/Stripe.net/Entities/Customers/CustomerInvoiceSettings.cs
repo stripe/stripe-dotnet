@@ -51,5 +51,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("footer")]
         public string Footer { get; set; }
+
+        /// <summary>
+        /// Default options for invoice PDF rendering for this customer.
+        /// </summary>
+        [JsonProperty("rendering_options")]
+        public CustomerInvoiceSettingsRenderingOptions RenderingOptions { get; set; }
     }
 }
