@@ -1,5 +1,16 @@
 # Changelog
 
+## 39.119.0 - 2022-06-17
+* [#2508](https://github.com/stripe/stripe-dotnet/pull/2508) API Updates
+  * Add support for `FundCashBalance` test helper method on resource `Customer`
+  * Add support for `StatementDescriptorPrefixKana` and `StatementDescriptorPrefixKanji` on `AccountSettingsCardPaymentsOptions`, `AccountSettingsCardPayments`, and `AccountSettingsPayments`
+  * Add support for `StatementDescriptorSuffixKana` and `StatementDescriptorSuffixKanji` on `CheckoutSessionPaymentMethodOptionsCardOptions`, `CheckoutSessionPaymentMethodOptionsCard`, `PaymentIntentPaymentMethodOptionsCardOptions`, and `PaymentIntentPaymentMethodOptionsCard`
+  * Add support for `TotalExcludingTax` on `CreditNote`
+  * Change type of `CustomerInvoiceSettingsRenderingOptionsOptions` from `rendering_options_param` to `emptyStringable(rendering_options_param)`
+  * Add support for `RenderingOptions` on `CustomerInvoiceSettings` and `Invoice`
+* [#2507](https://github.com/stripe/stripe-dotnet/pull/2507) Trigger workflows on beta branches
+* [#2506](https://github.com/stripe/stripe-dotnet/pull/2506) Support updating pre-release versions
+
 ## 39.118.0 - 2022-06-09
 * [#2503](https://github.com/stripe/stripe-dotnet/pull/2503) API Updates
   * Add support for `Treasury` on `AccountSettingsOptions` and `AccountSettings`
