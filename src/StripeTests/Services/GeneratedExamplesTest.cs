@@ -669,6 +669,19 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestCustomerServiceFundCashBalance()
+        {
+            var options = new Stripe.TestHelpers.CustomerFundCashBalanceOptions
+            {
+                Amount = 30,
+                Currency = "eur",
+            };
+            var service = new Stripe.TestHelpers.CustomerService(
+                this.StripeClient);
+            service.FundCashBalance("cus_123", options);
+        }
+
+        [Fact]
         public void TestCustomerServiceList()
         {
             var options = new CustomerListOptions { Limit = 3 };

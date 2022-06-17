@@ -24,7 +24,9 @@ namespace Stripe.Treasury
         public DebitReversal DebitReversal { get; set; }
 
         /// <summary>
-        /// Use InboundTransfers to add funds to your <a
+        /// Use <a
+        /// href="https://stripe.com/docs/treasury/moving-money/financial-accounts/into/inbound-transfers">InboundTransfers</a>
+        /// to add funds to your <a
         /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> via a
         /// PaymentMethod that is owned by you. The funds will be transferred via an ACH debit.
         /// </summary>
