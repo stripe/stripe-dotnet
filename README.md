@@ -29,10 +29,10 @@ From within Visual Studio:
 
 1. Open the Solution Explorer.
 2. Right-click on a project within your solution.
-3. Click on _Manage NuGet Packages..._
-4. Click on the _Browse_ tab and search for "Stripe.net".
+3. Click on *Manage NuGet Packages...*
+4. Click on the *Browse* tab and search for "Stripe.net".
 5. Click on the Stripe.net package, select the appropriate version in the
-   right-tab and click _Install_.
+   right-tab and click *Install*.
 
 ## Documentation
 
@@ -73,7 +73,8 @@ custom message handler, etc.
 ### Automatic retries
 
 The library automatically retries requests on intermittent failures like on a
-connection error, timeout, or on certain API responses like a status `409 Conflict`. [Idempotency keys][idempotency-keys] are always added to requests to
+connection error, timeout, or on certain API responses like a status `409
+Conflict`. [Idempotency keys][idempotency-keys] are always added to requests to
 make any such subsequent retries safe.
 
 By default, it will perform up to two retries. That number can be configured
