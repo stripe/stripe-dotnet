@@ -1004,6 +1004,7 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever a CheckDeposit is reversed.
         /// </summary>
+        [Obsolete("The event has been removed")]
         public const string TreasuryCheckDepositReversed = "treasury.check_deposit.reversed";
 
         /// <summary>
