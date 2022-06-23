@@ -1137,7 +1137,6 @@ namespace Stripe
         /// </summary>
         public const string TreasuryReceivedCreditFailed = "treasury.received_credit.failed";
 
-
         /// <summary>
         /// Occurs whenever a received_credit is returned, and a received_debit is created. Only applicable for check deposits.
         /// </summary>
