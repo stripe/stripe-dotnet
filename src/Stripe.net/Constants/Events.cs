@@ -1148,7 +1148,6 @@ namespace Stripe
         [Obsolete("The event has been renamed to TreasuryReceivedCreditReturned")]
         public const string TreasuryReceivedCreditReversed = "treasury.received_credit.reversed";
 
-
         /// <summary>
         /// Occurs whenever a received_credit transitions to succeeded state. Only applicable for check deposits.
         /// </summary>
