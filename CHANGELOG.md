@@ -1,5 +1,21 @@
 # Changelog
 
+## 39.120.0 - 2022-06-23
+* [#2518](https://github.com/stripe/stripe-dotnet/pull/2518) API Updates
+  * Add support for `CaptureMethod` on `PaymentIntentConfirmOptions` and `PaymentIntentUpdateOptions`
+* [#2513](https://github.com/stripe/stripe-dotnet/pull/2513) API Updates
+  * Add support for `PromptpayPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Promptpay` on `ChargePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `SubtotalExcludingTax` on `CreditNote` and `Invoice`
+  * Add support for `AmountExcludingTax` and `UnitAmountExcludingTax` on `CreditNoteLineItem` and `InvoiceLineItem`
+  * Add support for `RenderingOptions` on `InvoiceCreateOptions` and `InvoiceUpdateOptions`
+  * Add support for `TotalExcludingTax` on `Invoice`
+  * Add support for `AutomaticPaymentMethods` on `OrderPaymentSettings`
+  * Add support for `PromptpayDisplayQrCode` on `PaymentIntentNextAction`
+* [#2517](https://github.com/stripe/stripe-dotnet/pull/2517) Use the generated API version
+* [#2516](https://github.com/stripe/stripe-dotnet/pull/2516) chore: Remove empty file.
+* [#2509](https://github.com/stripe/stripe-dotnet/pull/2509) Document how to access unsupported parameters and properties
+
 ## 39.119.0 - 2022-06-17
 * [#2508](https://github.com/stripe/stripe-dotnet/pull/2508) API Updates
   * Add support for `FundCashBalance` test helper method on resource `Customer`
