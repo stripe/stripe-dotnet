@@ -31,6 +31,13 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
+        /// Controls when the funds will be captured from the customer's account.
+        /// One of: <c>automatic</c>, or <c>manual</c>.
+        /// </summary>
+        [JsonProperty("capture_method")]
+        public string CaptureMethod { get; set; }
+
+        /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.

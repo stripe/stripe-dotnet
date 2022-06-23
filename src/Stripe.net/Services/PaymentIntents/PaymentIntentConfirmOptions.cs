@@ -6,6 +6,13 @@ namespace Stripe
 
     public class PaymentIntentConfirmOptions : BaseOptions
     {
+        /// <summary>
+        /// Controls when the funds will be captured from the customer's account.
+        /// One of: <c>automatic</c>, or <c>manual</c>.
+        /// </summary>
+        [JsonProperty("capture_method")]
+        public string CaptureMethod { get; set; }
+
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
 
