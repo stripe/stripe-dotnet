@@ -1136,10 +1136,18 @@ namespace Stripe
         /// </summary>
         public const string TreasuryReceivedCreditFailed = "treasury.received_credit.failed";
 
+
+        /// <summary>
+        /// Occurs whenever a received_credit is returned, and a received_debit is created. Only applicable for check deposits.
+        /// </summary>
+        public const string TreasuryReceivedCreditReturned = "treasury.received_credit.returned";
+
         /// <summary>
         /// Occurs whenever a received_credit is reversed, and a received_debit is created. Only applicable for check deposits.
         /// </summary>
+        [Obsolete("The event has been renamed to TreasuryReceivedCreditReturned")]
         public const string TreasuryReceivedCreditReversed = "treasury.received_credit.reversed";
+
 
         /// <summary>
         /// Occurs whenever a received_credit transitions to succeeded state. Only applicable for check deposits.
