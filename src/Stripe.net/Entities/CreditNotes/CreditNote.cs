@@ -256,6 +256,13 @@ namespace Stripe
         public long Subtotal { get; set; }
 
         /// <summary>
+        /// The integer amount in %s representing the amount of the credit note, excluding all tax
+        /// and invoice level discounts.
+        /// </summary>
+        [JsonProperty("subtotal_excluding_tax")]
+        public long? SubtotalExcludingTax { get; set; }
+
+        /// <summary>
         /// The aggregate amounts calculated per tax rate for all line items.
         /// </summary>
         [JsonProperty("tax_amounts")]

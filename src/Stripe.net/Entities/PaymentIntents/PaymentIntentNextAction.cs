@@ -26,6 +26,9 @@ namespace Stripe
         [JsonProperty("paynow_display_qr_code")]
         public PaymentIntentNextActionPaynowDisplayQrCode PaynowDisplayQrCode { get; set; }
 
+        [JsonProperty("promptpay_display_qr_code")]
+        public PaymentIntentNextActionPromptpayDisplayQrCode PromptpayDisplayQrCode { get; set; }
+
         [JsonProperty("redirect_to_url")]
         public PaymentIntentNextActionRedirectToUrl RedirectToUrl { get; set; }
 

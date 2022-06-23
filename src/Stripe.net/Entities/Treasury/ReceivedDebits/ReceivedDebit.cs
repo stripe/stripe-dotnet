@@ -87,6 +87,12 @@ namespace Stripe.Treasury
         public string Network { get; set; }
 
         /// <summary>
+        /// Details describing when a ReceivedDebit might be reversed.
+        /// </summary>
+        [JsonProperty("reversal_details")]
+        public ReceivedDebitReversalDetails ReversalDetails { get; set; }
+
+        /// <summary>
         /// Status of the ReceivedDebit. ReceivedDebits are created with a status of either
         /// <c>succeeded</c> (approved) or <c>failed</c> (declined). The failure reason can be found
         /// under the <c>failure_code</c>.
