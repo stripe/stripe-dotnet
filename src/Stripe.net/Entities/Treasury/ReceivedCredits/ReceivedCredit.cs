@@ -86,6 +86,12 @@ namespace Stripe.Treasury
         public string Network { get; set; }
 
         /// <summary>
+        /// Details describing when a ReceivedCredit may be reversed.
+        /// </summary>
+        [JsonProperty("reversal_details")]
+        public ReceivedCreditReversalDetails ReversalDetails { get; set; }
+
+        /// <summary>
         /// Status of the ReceivedCredit. ReceivedCredits are created either <c>succeeded</c>
         /// (approved) or <c>failed</c> (declined). If a ReceivedCredit is declined, the failure
         /// reason can be found in the <c>failure_code</c> field.

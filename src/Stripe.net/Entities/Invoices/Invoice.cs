@@ -801,6 +801,13 @@ namespace Stripe
         public long Subtotal { get; set; }
 
         /// <summary>
+        /// The integer amount in %s representing the subtotal of the invoice before any invoice
+        /// level discount or tax is applied. Item discounts are already incorporated.
+        /// </summary>
+        [JsonProperty("subtotal_excluding_tax")]
+        public long? SubtotalExcludingTax { get; set; }
+
+        /// <summary>
         /// The amount of tax on this invoice. This is the sum of all the tax amounts on this
         /// invoice.
         /// </summary>
@@ -852,6 +859,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("total_discount_amounts")]
         public List<InvoiceDiscountAmount> TotalDiscountAmounts { get; set; }
+
+        /// <summary>
+        /// The integer amount in %s representing the total amount of the invoice including all
+        /// discounts but excluding all tax.
+        /// </summary>
+        [JsonProperty("total_excluding_tax")]
+        public long? TotalExcludingTax { get; set; }
 
         /// <summary>
         /// The aggregate amounts calculated per tax rate for all line items.

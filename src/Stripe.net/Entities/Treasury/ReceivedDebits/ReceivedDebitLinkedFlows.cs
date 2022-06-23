@@ -6,6 +6,12 @@ namespace Stripe.Treasury
     public class ReceivedDebitLinkedFlows : StripeEntity<ReceivedDebitLinkedFlows>
     {
         /// <summary>
+        /// The DebitReversal created as a result of this ReceivedDebit being reversed.
+        /// </summary>
+        [JsonProperty("debit_reversal")]
+        public string DebitReversal { get; set; }
+
+        /// <summary>
         /// Set if the ReceivedDebit is associated with an InboundTransfer's return of funds.
         /// </summary>
         [JsonProperty("inbound_transfer")]
