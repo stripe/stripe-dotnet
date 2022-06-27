@@ -72,6 +72,9 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [JsonProperty("currency_options")]
+        public PriceCurrencyOptions CurrencyOptions { get; set; }
+
         /// <summary>
         /// When set, provides configuration for the amount to be adjusted by the customer during
         /// Checkout Sessions and Payment Links.

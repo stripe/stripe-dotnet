@@ -5,6 +5,9 @@ namespace Stripe
 
     public class PromotionCodeRestrictions : StripeEntity<PromotionCodeRestrictions>
     {
+        [JsonProperty("currency_options")]
+        public PromotionCodeRestrictionsCurrencyOptions CurrencyOptions { get; set; }
+
         /// <summary>
         /// A Boolean indicating if the Promotion Code should only be redeemed for Customers without
         /// any successful payments or invoices.

@@ -18,5 +18,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
+
+        [JsonProperty("currency_options")]
+        public ShippingRateFixedAmountCurrencyOptions CurrencyOptions { get; set; }
     }
 }

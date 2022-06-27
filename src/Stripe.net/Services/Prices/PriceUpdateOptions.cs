@@ -13,6 +13,14 @@ namespace Stripe
         public bool? Active { get; set; }
 
         /// <summary>
+        /// Prices defined in each available currency option. Each key must be a three-letter <a
+        /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a
+        /// href="https://stripe.com/docs/currencies">supported currency</a>.
+        /// </summary>
+        [JsonProperty("currency_options")]
+        public PriceCurrencyOptionsOptions CurrencyOptions { get; set; }
+
+        /// <summary>
         /// A lookup key used to retrieve prices dynamically from a static string. This may be up to
         /// 200 characters.
         /// </summary>

@@ -55,6 +55,9 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [JsonProperty("currency_options")]
+        public CouponCurrencyOptions CurrencyOptions { get; set; }
+
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>

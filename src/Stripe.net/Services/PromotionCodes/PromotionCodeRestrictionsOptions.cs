@@ -6,6 +6,14 @@ namespace Stripe
     public class PromotionCodeRestrictionsOptions : INestedOptions
     {
         /// <summary>
+        /// Promotion codes defined in each available currency option. Each key must be a
+        /// three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a> and a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+        /// </summary>
+        [JsonProperty("currency_options")]
+        public PromotionCodeRestrictionsCurrencyOptionsOptions CurrencyOptions { get; set; }
+
+        /// <summary>
         /// A Boolean indicating if the Promotion Code should only be redeemed for Customers without
         /// any successful payments or invoices.
         /// </summary>
