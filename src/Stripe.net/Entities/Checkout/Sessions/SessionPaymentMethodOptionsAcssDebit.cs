@@ -5,6 +5,11 @@ namespace Stripe.Checkout
 
     public class SessionPaymentMethodOptionsAcssDebit : StripeEntity<SessionPaymentMethodOptionsAcssDebit>
     {
+        /// <summary>
+        /// Currency supported by the bank account. Returned when the Session is in <c>setup</c>
+        /// mode.
+        /// One of: <c>cad</c>, or <c>usd</c>.
+        /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
