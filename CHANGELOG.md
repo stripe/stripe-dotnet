@@ -1,5 +1,11 @@
 # Changelog
 
+## 39.121.0 - 2022-06-29
+* [#2524](https://github.com/stripe/stripe-dotnet/pull/2524) API Updates
+  * Add support for `DeliverCard`, `FailCard`, `ReturnCard`, and `ShipCard` test helper methods on resource `Issuing.Card`
+  * Change type of `PaymentLinkPaymentMethodTypesOptions` and `PaymentLinkPaymentMethodTypes` from `literal('card')` to `enum`
+  * Add support for `HostedRegulatoryReceiptUrl` on `TreasuryReceivedCredit` and `TreasuryReceivedDebit`
+
 ## 39.120.0 - 2022-06-23
 * [#2518](https://github.com/stripe/stripe-dotnet/pull/2518) API Updates
   * Add support for `CaptureMethod` on `PaymentIntentConfirmOptions` and `PaymentIntentUpdateOptions`
