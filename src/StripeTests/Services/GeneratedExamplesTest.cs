@@ -1398,6 +1398,22 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestIssuingCardServiceDeliverCard()
+        {
+            var service = new Stripe.TestHelpers.Issuing.CardService(
+                this.StripeClient);
+            service.DeliverCard("card_123");
+        }
+
+        [Fact]
+        public void TestIssuingCardServiceFailCard()
+        {
+            var service = new Stripe.TestHelpers.Issuing.CardService(
+                this.StripeClient);
+            service.FailCard("card_123");
+        }
+
+        [Fact]
         public void TestIssuingCardServiceList()
         {
             var options = new Stripe.Issuing.CardListOptions { Limit = 3 };
@@ -1410,6 +1426,22 @@ namespace StripeTests
         {
             var service = new Stripe.Issuing.CardService(this.StripeClient);
             service.Get("ic_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestIssuingCardServiceReturnCard()
+        {
+            var service = new Stripe.TestHelpers.Issuing.CardService(
+                this.StripeClient);
+            service.ReturnCard("card_123");
+        }
+
+        [Fact]
+        public void TestIssuingCardServiceShipCard()
+        {
+            var service = new Stripe.TestHelpers.Issuing.CardService(
+                this.StripeClient);
+            service.ShipCard("card_123");
         }
 
         [Fact]
@@ -2403,7 +2435,11 @@ namespace StripeTests
         [Fact]
         public void TestSetupAttemptServiceList()
         {
-            var options = new SetupAttemptListOptions { Limit = 3 };
+            var options = new SetupAttemptListOptions
+            {
+                Limit = 3,
+                SetupIntent = "si_xyz",
+            };
             var service = new SetupAttemptService(this.StripeClient);
             StripeList<SetupAttempt> setupattempts = service.List(options);
         }
