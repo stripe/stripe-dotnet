@@ -1,5 +1,38 @@
 # Changelog
 
+## 39.121.0 - 2022-06-29
+* [#2524](https://github.com/stripe/stripe-dotnet/pull/2524) API Updates
+  * Add support for `DeliverCard`, `FailCard`, `ReturnCard`, and `ShipCard` test helper methods on resource `Issuing.Card`
+  * Change type of `PaymentLinkPaymentMethodTypesOptions` and `PaymentLinkPaymentMethodTypes` from `literal('card')` to `enum`
+  * Add support for `HostedRegulatoryReceiptUrl` on `TreasuryReceivedCredit` and `TreasuryReceivedDebit`
+
+## 39.120.0 - 2022-06-23
+* [#2518](https://github.com/stripe/stripe-dotnet/pull/2518) API Updates
+  * Add support for `CaptureMethod` on `PaymentIntentConfirmOptions` and `PaymentIntentUpdateOptions`
+* [#2513](https://github.com/stripe/stripe-dotnet/pull/2513) API Updates
+  * Add support for `PromptpayPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Promptpay` on `ChargePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `SubtotalExcludingTax` on `CreditNote` and `Invoice`
+  * Add support for `AmountExcludingTax` and `UnitAmountExcludingTax` on `CreditNoteLineItem` and `InvoiceLineItem`
+  * Add support for `RenderingOptions` on `InvoiceCreateOptions` and `InvoiceUpdateOptions`
+  * Add support for `TotalExcludingTax` on `Invoice`
+  * Add support for `AutomaticPaymentMethods` on `OrderPaymentSettings`
+  * Add support for `PromptpayDisplayQrCode` on `PaymentIntentNextAction`
+* [#2517](https://github.com/stripe/stripe-dotnet/pull/2517) Use the generated API version
+* [#2516](https://github.com/stripe/stripe-dotnet/pull/2516) chore: Remove empty file.
+* [#2509](https://github.com/stripe/stripe-dotnet/pull/2509) Document how to access unsupported parameters and properties
+
+## 39.119.0 - 2022-06-17
+* [#2508](https://github.com/stripe/stripe-dotnet/pull/2508) API Updates
+  * Add support for `FundCashBalance` test helper method on resource `Customer`
+  * Add support for `StatementDescriptorPrefixKana` and `StatementDescriptorPrefixKanji` on `AccountSettingsCardPaymentsOptions`, `AccountSettingsCardPayments`, and `AccountSettingsPayments`
+  * Add support for `StatementDescriptorSuffixKana` and `StatementDescriptorSuffixKanji` on `CheckoutSessionPaymentMethodOptionsCardOptions`, `CheckoutSessionPaymentMethodOptionsCard`, `PaymentIntentPaymentMethodOptionsCardOptions`, and `PaymentIntentPaymentMethodOptionsCard`
+  * Add support for `TotalExcludingTax` on `CreditNote`
+  * Change type of `CustomerInvoiceSettingsRenderingOptionsOptions` from `rendering_options_param` to `emptyStringable(rendering_options_param)`
+  * Add support for `RenderingOptions` on `CustomerInvoiceSettings` and `Invoice`
+* [#2507](https://github.com/stripe/stripe-dotnet/pull/2507) Trigger workflows on beta branches
+* [#2506](https://github.com/stripe/stripe-dotnet/pull/2506) Support updating pre-release versions
+
 ## 39.119.0-beta.1 - 2022-06-15
 * [#2505](https://github.com/stripe/stripe-dotnet/pull/2505) API Updates
   Add support for NetworkDetails properties on ReceivedCredits/ReceivedDebits resources
@@ -37,7 +70,6 @@
   * Add support for `HostedInstructionsUrl` on `PaymentIntentNextActionDisplayBankTransferInstructions`
   * Add support for `IdNumberSecondaryProvided` on `Person`
   * Add support for `CardIssuing` on `TreasuryFinancialAccountFeaturesOptions` and `TreasuryFinancialAccountUpdateFeaturesOptions`
-  
 
 ## 39.114.0 - 2022-05-23
 * [#2492](https://github.com/stripe/stripe-dotnet/pull/2492) API Updates
@@ -81,14 +113,12 @@
 * [#2479](https://github.com/stripe/stripe-dotnet/pull/2479) API Updates
   
   * Add support for `AmountDiscount`, `AmountTax`, and `Product` on `LineItem`
-  
 
 ## 39.110.0 - 2022-05-05
 * [#2475](https://github.com/stripe/stripe-dotnet/pull/2475) API Updates
   * Add support for `DefaultPriceData` on `ProductCreateOptions`
   * Add support for `DefaultPrice` on `ProductUpdateOptions` and `Product`
   * Add support for `InstructionsEmail` on `RefundCreateOptions` and `Refund`
-  
 
 ## 39.109.0 - 2022-05-05
 * [#2474](https://github.com/stripe/stripe-dotnet/pull/2474) API Updates
@@ -209,7 +239,6 @@
   * Add support for `MandateOptions` on `PaymentIntentPaymentMethodOptionsCardOptions`, `PaymentIntentPaymentMethodOptionsCard`, `SetupIntentPaymentMethodOptionsCardOptions`, and `SetupIntentPaymentMethodOptionsCard`
   * Add support for `CardAwaitNotification` on `PaymentIntentNextAction`
   * Add support for `CustomerNotification` on `PaymentIntentProcessingCard`
-  
 
 ## 39.96.0 - 2022-03-09
 * [#2435](https://github.com/stripe/stripe-dotnet/pull/2435) API Updates
@@ -219,7 +248,6 @@
 * [#2432](https://github.com/stripe/stripe-dotnet/pull/2432) API Updates
   * Add support for new resources `InvoiceLineItemProrationDetails` and `InvoiceLineItemProrationDetailsCreditedItems`
   * Add support for `ProrationDetails` on `InvoiceLineItem`
-  
 
 ## 39.94.0 - 2022-03-01
 * [#2430](https://github.com/stripe/stripe-dotnet/pull/2430) [#2431](https://github.com/stripe/stripe-dotnet/pull/2431) API Updates
@@ -330,7 +358,6 @@
 * [#2391](https://github.com/stripe/stripe-dotnet/pull/2391) API Updates
   * Remove support for `OwnershipDeclarationShownAndSigned` on `TokenAccountOptions`. This API was unused.
   * Add support for `OwnershipDeclarationShownAndSigned` on `TokenAccountCompanyOptions`
-  
 
 ## 39.75.0 - 2021-11-01
 * [#2388](https://github.com/stripe/stripe-dotnet/pull/2388) API Updates
@@ -365,7 +392,6 @@
 * [#2372](https://github.com/stripe/stripe-dotnet/pull/2372) API Updates
   * Add support for `AmountAuthorized` and `OvercaptureSupported` on `ChargePaymentMethodDetailsCardPresent`
 
-
 ## 39.68.0 - 2021-09-16
 * [#2371](https://github.com/stripe/stripe-dotnet/pull/2371) API Updates
   * Add support for `FullNameAliases` on `AccountIndividualOptions`,  `PersonCreateOptions`, `PersonUpdateOptions`, `Person`, `TokenAccountIndividualOptions`, and `TokenPersonOptions`
@@ -385,6 +411,7 @@
 * [#2366](https://github.com/stripe/stripe-dotnet/pull/2366) API Updates
   * Add support for `AfterExpiration`, `ConsentCollection`, and `ExpiresAt` on `CheckoutSessionCreateOptions` and `CheckoutSession`
   * Add support for `Consent` and `RecoveredFrom` on `CheckoutSession`
+
 ## 39.64.0 - 2021-08-27
 * [#2365](https://github.com/stripe/stripe-dotnet/pull/2365) API Updates
   * Add support for `CancellationReason` on `BillingPortalConfigurationFeaturesSubscriptionCancelOptions` and `BillingPortalConfigurationFeaturesSubscriptionCancel`
@@ -466,7 +493,6 @@
   * Add support for `TaxType` on `TaxRate` API
   * Add support for `CustomerUpdate` on Checkout `SessionCreateOptions`
 
-
 ## 39.50.0 - 2021-05-26
 * [#2323](https://github.com/stripe/stripe-dotnet/pull/2323) API Updates
   * Added support for `documents` on `PersonUpdateOptions`, `PersonCreateOptions` and `TokenPersonOptions`
@@ -544,8 +570,6 @@
 * [#2278](https://github.com/stripe/stripe-dotnet/pull/2278) Add link to playlist from README
 * [#2277](https://github.com/stripe/stripe-dotnet/pull/2277) API Updates
   * Add support for `nationality` on `Person`, `PersonUpdateOptions`, `PersonCreateOptions` and `TokenCreateParams.person`
-
-
 
 ## 39.33.0 - 2021-01-21
 * [#2274](https://github.com/stripe/stripe-dotnet/pull/2274) API Updates
@@ -731,11 +755,6 @@
     * [#2178](https://github.com/stripe/stripe-dotnet/pull/2178) ⚠️ Unshare `ChargeDestinationOptions`
     * [#2181](https://github.com/stripe/stripe-dotnet/pull/2181) ⚠️ Updates doc strings to match the OpenAPI spec
     * [#2193](https://github.com/stripe/stripe-dotnet/pull/2193) Configure license and icon within repo
-
-
-## 38.0.0  and 39.0.0 - 2020-08-27
-
-We experienced multiple errors during the release of 38.0.0 and 39.0.0 that could not be reverted. The next major version after 37.X is the version 39.1.2 above.
 
 ## 37.35.0 - 2020-08-27
 * [#2186](https://github.com/stripe/stripe-dotnet/pull/2186) Add support for `SepaCreditTransfer` in `SourceTransaction`
@@ -2182,13 +2201,3 @@ List of backwards incompatible changes:
 * [#1022](https://github.com/stripe/stripe-dotnet#1022) Add support for SKUs
 * [#1025](https://github.com/stripe/stripe-dotnet#1025) Add `Discountable` for `StripeInvoiceLineItem`
 
-## Older releases
-
-Note that this changelog is relatively new and we haven't yet backfilled it.
-For details on old releases, check out the releases page:
-
-https://github.com/stripe/stripe-dotnet/releases
-
-<!--
-# vim: set tw=0:
--->

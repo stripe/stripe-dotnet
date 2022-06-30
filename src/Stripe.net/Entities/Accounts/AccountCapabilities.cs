@@ -197,6 +197,14 @@ namespace Stripe
         public string PaynowPayments { get; set; }
 
         /// <summary>
+        /// The status of the promptpay payments capability of the account, or whether the account
+        /// can directly process promptpay charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("promptpay_payments")]
+        public string PromptpayPayments { get; set; }
+
+        /// <summary>
         /// The status of the SEPA Direct Debits payments capability of the account, or whether the
         /// account can directly process SEPA Direct Debits charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

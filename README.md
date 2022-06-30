@@ -84,6 +84,43 @@ with `StripeConfiguration.MaxNetworkRetries`:
 StripeConfiguration.MaxNetworkRetries = 0; // Zero retries
 ```
 
+### How to use undocumented parameters and properties
+
+stripe-dotnet is a typed library and it supports all public properties or parameters.
+
+Stripe sometimes has beta which introduces new properties or parameters that are not immediately public. The library does not support these properties or parameters until they are public but there is still an approach that allows you to use them.
+
+#### Parameters
+
+To pass undocumented parameters to Stripe using stripe-dotnet you need to use the `AddExtraParam()` method, as shown below:
+
+```c#
+var options = new CustomerCreateOptions
+{
+    Email = "jenny.rosen@example.com"
+}
+options.AddExtraParam("secret_feature_enabled", "true");
+options.AddExtraParam("secret_parameter[primary]", "primary value");
+options.AddExtraParam("secret_parameter[secondary]", "secondary value");
+
+var service = new CustomerService();
+var customer = service.Create(options);
+```
+
+#### Properties
+
+To retrieve undocumented properties from Stripe using C# you can use an option in the library to return the raw JSON object and return the property. An example of this is shown below:
+
+```c#
+var service = new CustomerService();
+var customer = service.Get("cus_1234");
+
+customer.RawJObject["secret_feature_enabled"];
+customer.RawJObject["secret_parameter"]["primary"];
+customer.RawJObject["secret_parameter"]["secondary"];
+
+```
+
 ### Writing a plugin
 
 If you're writing a plugin that uses the library, we'd appreciate it if you

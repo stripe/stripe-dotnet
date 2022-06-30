@@ -87,10 +87,10 @@ namespace Stripe.Treasury
         public string Network { get; set; }
 
         /// <summary>
-        /// Details specific to the money movement rails.
+        /// Details describing when a ReceivedDebit might be reversed.
         /// </summary>
-        [JsonProperty("network_details")]
-        public ReceivedDebitNetworkDetails NetworkDetails { get; set; }
+        [JsonProperty("reversal_details")]
+        public ReceivedDebitReversalDetails ReversalDetails { get; set; }
 
         /// <summary>
         /// Status of the ReceivedDebit. ReceivedDebits are created with a status of either
