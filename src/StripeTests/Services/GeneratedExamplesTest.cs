@@ -166,11 +166,24 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestAppsSecretServiceCreate2()
+        {
+            var options = new Stripe.Apps.SecretCreateOptions
+            {
+                Name = "my-api-key",
+                Payload = "secret_key_xxxxxx",
+                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
+            };
+            var service = new Stripe.Apps.SecretService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestAppsSecretServiceDeleteWhere()
         {
             var options = new Stripe.Apps.SecretDeleteWhereOptions
             {
-                Name = "sec_123",
+                Name = "my-api-key",
                 Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
             };
             var service = new Stripe.Apps.SecretService(this.StripeClient);
@@ -187,6 +200,34 @@ namespace StripeTests
             };
             var service = new Stripe.Apps.SecretService(this.StripeClient);
             service.Find(options);
+        }
+
+        [Fact]
+        public void TestAppsSecretServiceList()
+        {
+            var options = new Stripe.Apps.SecretListOptions
+            {
+                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
+                Limit = 2,
+            };
+            var service = new Stripe.Apps.SecretService(this.StripeClient);
+            StripeList<Stripe.Apps.Secret> secrets = service.List(options);
+        }
+
+        [Fact]
+        public void TestBalanceTransactionServiceList()
+        {
+            var options = new BalanceTransactionListOptions { Limit = 3 };
+            var service = new BalanceTransactionService(this.StripeClient);
+            StripeList<BalanceTransaction> balancetransactions = service.List(
+                options);
+        }
+
+        [Fact]
+        public void TestBalanceTransactionServiceRetrieve()
+        {
+            var service = new BalanceTransactionService(this.StripeClient);
+            service.Get("txn_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -556,24 +597,23 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCreditNoteServiceRetrieve()
+        public void TestCreditNoteServicePreview()
         {
-            var service = new CreditNoteService(this.StripeClient);
-            service.Get("cn_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestCreditNoteServiceUpdate()
-        {
-            var options = new CreditNoteUpdateOptions
+            var options = new CreditNotePreviewOptions
             {
-                Metadata = new Dictionary<string, string>
+                Invoice = "in_xxxxxxxxxxxxx",
+                Lines = new List<CreditNoteLineOptions>
                 {
-                    { "order_id", "6735" },
+                    new CreditNoteLineOptions
+                    {
+                        Type = "invoice_line_item",
+                        InvoiceLineItem = "il_xxxxxxxxxxxxx",
+                        Quantity = 1,
+                    },
                 },
             };
             var service = new CreditNoteService(this.StripeClient);
-            service.Update("cn_xxxxxxxxxxxxx", options);
+            service.Preview(options);
         }
 
         [Fact]
@@ -666,6 +706,19 @@ namespace StripeTests
         {
             var service = new CustomerService(this.StripeClient);
             service.Delete("cus_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestCustomerServiceFundCashBalance()
+        {
+            var options = new Stripe.TestHelpers.CustomerFundCashBalanceOptions
+            {
+                Amount = 30,
+                Currency = "eur",
+            };
+            var service = new Stripe.TestHelpers.CustomerService(
+                this.StripeClient);
+            service.FundCashBalance("cus_123", options);
         }
 
         [Fact]
@@ -1345,6 +1398,22 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestIssuingCardServiceDeliverCard()
+        {
+            var service = new Stripe.TestHelpers.Issuing.CardService(
+                this.StripeClient);
+            service.DeliverCard("card_123");
+        }
+
+        [Fact]
+        public void TestIssuingCardServiceFailCard()
+        {
+            var service = new Stripe.TestHelpers.Issuing.CardService(
+                this.StripeClient);
+            service.FailCard("card_123");
+        }
+
+        [Fact]
         public void TestIssuingCardServiceList()
         {
             var options = new Stripe.Issuing.CardListOptions { Limit = 3 };
@@ -1357,6 +1426,22 @@ namespace StripeTests
         {
             var service = new Stripe.Issuing.CardService(this.StripeClient);
             service.Get("ic_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestIssuingCardServiceReturnCard()
+        {
+            var service = new Stripe.TestHelpers.Issuing.CardService(
+                this.StripeClient);
+            service.ReturnCard("card_123");
+        }
+
+        [Fact]
+        public void TestIssuingCardServiceShipCard()
+        {
+            var service = new Stripe.TestHelpers.Issuing.CardService(
+                this.StripeClient);
+            service.ShipCard("card_123");
         }
 
         [Fact]
@@ -1412,29 +1497,6 @@ namespace StripeTests
         {
             var service = new Stripe.Issuing.DisputeService(this.StripeClient);
             service.Submit("idp_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestIssuingDisputeServiceUpdate()
-        {
-            var options = new Stripe.Issuing.DisputeUpdateOptions
-            {
-                Evidence = new Stripe.Issuing.DisputeEvidenceOptions
-                {
-                    Reason = "not_received",
-                    NotReceived = new Stripe.Issuing.DisputeEvidenceNotReceivedOptions
-                    {
-                        ExpectedAt = DateTimeOffset.FromUnixTimeSeconds(
-                            1590000000)
-                            .UtcDateTime,
-                        Explanation = string.Empty,
-                        ProductDescription = "Baseball cap",
-                        ProductType = "merchandise",
-                    },
-                },
-            };
-            var service = new Stripe.Issuing.DisputeService(this.StripeClient);
-            service.Update("idp_xxxxxxxxxxxxx", options);
         }
 
         [Fact]
@@ -3087,18 +3149,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTerminalReaderServiceProcessSetupIntent()
-        {
-            var options = new Stripe.Terminal.ReaderProcessSetupIntentOptions
-            {
-                SetupIntent = "seti_xxxxxxxxxxxxx",
-                CustomerConsentCollected = true,
-            };
-            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
-            service.ProcessSetupIntent("tmr_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
         public void TestTerminalReaderServiceRetrieve()
         {
             var service = new Stripe.Terminal.ReaderService(this.StripeClient);
@@ -3489,9 +3539,16 @@ namespace StripeTests
         [Fact]
         public void TestTreasuryFinancialAccountServiceUpdateFeatures()
         {
+            var options = new Stripe.Treasury.FinancialAccountUpdateFeaturesOptions
+            {
+                CardIssuing = new Stripe.Treasury.FinancialAccountCardIssuingOptions
+                {
+                    Requested = false,
+                },
+            };
             var service = new Stripe.Treasury.FinancialAccountService(
                 this.StripeClient);
-            service.UpdateFeatures("fa_xxxxxxxxxxxxx");
+            service.UpdateFeatures("fa_xxxxxxxxxxxxx", options);
         }
 
         [Fact]

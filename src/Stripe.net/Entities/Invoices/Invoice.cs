@@ -721,6 +721,12 @@ namespace Stripe
         public string ReceiptNumber { get; set; }
 
         /// <summary>
+        /// Options for invoice PDF rendering.
+        /// </summary>
+        [JsonProperty("rendering_options")]
+        public InvoiceRenderingOptions RenderingOptions { get; set; }
+
+        /// <summary>
         /// Starting customer balance before the invoice is finalized. If the invoice has not been
         /// finalized yet, this will be the current customer balance.
         /// </summary>
@@ -788,10 +794,18 @@ namespace Stripe
 
         /// <summary>
         /// Total of all subscriptions, invoice items, and prorations on the invoice before any
-        /// invoice level discount or tax is applied. Item discounts are already incorporated.
+        /// invoice level discount or exclusive tax is applied. Item discounts are already
+        /// incorporated.
         /// </summary>
         [JsonProperty("subtotal")]
         public long Subtotal { get; set; }
+
+        /// <summary>
+        /// The integer amount in %s representing the subtotal of the invoice before any invoice
+        /// level discount or tax is applied. Item discounts are already incorporated.
+        /// </summary>
+        [JsonProperty("subtotal_excluding_tax")]
+        public long? SubtotalExcludingTax { get; set; }
 
         /// <summary>
         /// The amount of tax on this invoice. This is the sum of all the tax amounts on this
@@ -845,6 +859,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("total_discount_amounts")]
         public List<InvoiceDiscountAmount> TotalDiscountAmounts { get; set; }
+
+        /// <summary>
+        /// The integer amount in %s representing the total amount of the invoice including all
+        /// discounts but excluding all tax.
+        /// </summary>
+        [JsonProperty("total_excluding_tax")]
+        public long? TotalExcludingTax { get; set; }
 
         /// <summary>
         /// The aggregate amounts calculated per tax rate for all line items.

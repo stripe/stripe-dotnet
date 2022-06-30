@@ -28,7 +28,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// ID of the source flow. Set if <c>network</c> is <c>stripe</c> and the source flow is
-        /// visible to the merchant. Examples of source flows include OutboundPayments, payouts, or
+        /// visible to the user. Examples of source flows include OutboundPayments, payouts, or
         /// CreditReversals.
         /// </summary>
         [JsonProperty("source_flow")]

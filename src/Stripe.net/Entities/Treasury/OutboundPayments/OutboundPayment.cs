@@ -58,7 +58,8 @@ namespace Stripe.Treasury
         public string Currency { get; set; }
 
         /// <summary>
-        /// ID of the customer to whom an OutboundPayment is sent.
+        /// ID of the <a href="https://stripe.com/docs/api/customers">customer</a> to whom an
+        /// OutboundPayment is sent.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
@@ -102,8 +103,9 @@ namespace Stripe.Treasury
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// A hosted transaction receipt URL that is provided when money movement is considered
-        /// regulated under Stripe's money transmission licenses.
+        /// A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted
+        /// transaction receipt</a> URL that is provided when money movement is considered regulated
+        /// under Stripe's money transmission licenses.
         /// </summary>
         [JsonProperty("hosted_regulatory_receipt_url")]
         public string HostedRegulatoryReceiptUrl { get; set; }

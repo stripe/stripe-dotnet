@@ -155,7 +155,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The customer details including the customer's tax exempt status and the customer's tax
-        /// IDs. Only present on Sessions in <c>payment</c> or <c>subscription</c> mode.
+        /// IDs. Only the customer's email is present on Sessions in <c>setup</c> mode.
         /// </summary>
         [JsonProperty("customer_details")]
         public SessionCustomerDetails CustomerDetails { get; set; }

@@ -159,6 +159,12 @@ namespace Stripe
         public string PendingInvoiceItemsBehavior { get; set; }
 
         /// <summary>
+        /// Options for invoice PDF rendering.
+        /// </summary>
+        [JsonProperty("rendering_options")]
+        public InvoiceRenderingOptionsOptions RenderingOptions { get; set; }
+
+        /// <summary>
         /// Extra information about a charge for the customer's credit card statement. It must
         /// contain at least one letter. If not specified and this invoice is part of a
         /// subscription, the default <c>statement_descriptor</c> will be set to the first

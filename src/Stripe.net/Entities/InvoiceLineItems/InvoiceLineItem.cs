@@ -27,6 +27,13 @@ namespace Stripe
         public long Amount { get; set; }
 
         /// <summary>
+        /// The integer amount in %s representing the amount for this line item, excluding all tax
+        /// and discounts.
+        /// </summary>
+        [JsonProperty("amount_excluding_tax")]
+        public long? AmountExcludingTax { get; set; }
+
+        /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
@@ -173,5 +180,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// The amount in %s representing the unit amount for this line item, excluding all tax and
+        /// discounts.
+        /// </summary>
+        [JsonProperty("unit_amount_excluding_tax")]
+        public decimal? UnitAmountExcludingTax { get; set; }
     }
 }

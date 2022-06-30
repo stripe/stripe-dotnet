@@ -74,6 +74,9 @@ namespace Stripe
         [JsonProperty("paynow")]
         public PaymentIntentPaymentMethodOptionsPaynow Paynow { get; set; }
 
+        [JsonProperty("promptpay")]
+        public PaymentIntentPaymentMethodOptionsPromptpay Promptpay { get; set; }
+
         [JsonProperty("sepa_debit")]
         public PaymentIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 

@@ -66,6 +66,14 @@ namespace Stripe.Treasury
         [JsonProperty("financial_account")]
         public string FinancialAccount { get; set; }
 
+        /// <summary>
+        /// A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted
+        /// transaction receipt</a> URL that is provided when money movement is considered regulated
+        /// under Stripe's money transmission licenses.
+        /// </summary>
+        [JsonProperty("hosted_regulatory_receipt_url")]
+        public string HostedRegulatoryReceiptUrl { get; set; }
+
         [JsonProperty("initiating_payment_method_details")]
         public ReceivedDebitInitiatingPaymentMethodDetails InitiatingPaymentMethodDetails { get; set; }
 
@@ -91,6 +99,12 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("network_details")]
         public ReceivedDebitNetworkDetails NetworkDetails { get; set; }
+
+        /// <summary>
+        /// Details describing when a ReceivedDebit might be reversed.
+        /// </summary>
+        [JsonProperty("reversal_details")]
+        public ReceivedDebitReversalDetails ReversalDetails { get; set; }
 
         /// <summary>
         /// Status of the ReceivedDebit. ReceivedDebits are created with a status of either
