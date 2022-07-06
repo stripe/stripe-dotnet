@@ -1250,6 +1250,17 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestInvoiceServiceUpcoming()
+        {
+            var options = new UpcomingInvoiceOptions
+            {
+                Customer = "cus_9utnxg47pWjV1e",
+            };
+            var service = new InvoiceService(this.StripeClient);
+            service.Upcoming(options);
+        }
+
+        [Fact]
         public void TestInvoiceServiceUpdate()
         {
             var options = new InvoiceUpdateOptions
