@@ -1,5 +1,15 @@
 # Changelog
 
+## 39.122.0 - 2022-07-07
+* [#2528](https://github.com/stripe/stripe-dotnet/pull/2528) API Updates
+  * Add support for `Currency` on `CheckoutSessionCreateOptions`, `InvoiceUpcomingLinesOptions`, `InvoiceUpcomingOptions`, `PaymentLinkCreateOptions`, `SubscriptionCreateOptions`, `SubscriptionSchedulePhasesOptions`, `SubscriptionSchedulePhases`, and `Subscription`
+  * Add support for `CurrencyOptions` on `CheckoutSessionShippingOptionsShippingRateDataFixedAmountOptions`, `CouponCreateOptions`, `CouponUpdateOptions`, `Coupon`, `OrderShippingCostShippingRateDataFixedAmountOptions`, `PriceCreateOptions`, `PriceUpdateOptions`, `Price`, `ProductDefaultPriceDataOptions`, `PromotionCodeRestrictionsOptions`, `PromotionCodeRestrictions`, `ShippingRateFixedAmountOptions`, and `ShippingRateFixedAmount`
+  * Add support for `Restrictions` on `PromotionCodeUpdateOptions`
+  * Add support for `FixedAmount` and `TaxBehavior` on `ShippingRateUpdateOptions`
+* [#2526](https://github.com/stripe/stripe-dotnet/pull/2526) API Updates
+  * Add support for `Customer` on `CheckoutSessionListOptions` and `RefundCreateOptions`
+  * Add support for `Currency` and `Origin` on `RefundCreateOptions`
+
 ## 39.121.0 - 2022-06-29
 * [#2524](https://github.com/stripe/stripe-dotnet/pull/2524) API Updates
   * Add support for `DeliverCard`, `FailCard`, `ReturnCard`, and `ShipCard` test helper methods on resource `Issuing.Card`
