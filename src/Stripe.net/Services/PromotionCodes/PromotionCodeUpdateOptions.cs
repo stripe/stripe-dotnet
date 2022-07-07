@@ -21,5 +21,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// Settings that restrict the redemption of the promotion code.
+        /// </summary>
+        [JsonProperty("restrictions")]
+        public PromotionCodeRestrictionsOptions Restrictions { get; set; }
     }
 }

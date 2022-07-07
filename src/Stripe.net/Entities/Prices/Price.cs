@@ -73,6 +73,14 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
+        /// Prices defined in each available currency option. Each key must be a three-letter <a
+        /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a
+        /// href="https://stripe.com/docs/currencies">supported currency</a>.
+        /// </summary>
+        [JsonProperty("currency_options")]
+        public Dictionary<string, PriceCurrencyOptions> CurrencyOptions { get; set; }
+
+        /// <summary>
         /// When set, provides configuration for the amount to be adjusted by the customer during
         /// Checkout Sessions and Payment Links.
         /// </summary>

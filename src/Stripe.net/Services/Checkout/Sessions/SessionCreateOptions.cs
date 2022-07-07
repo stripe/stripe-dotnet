@@ -55,6 +55,14 @@ namespace Stripe.Checkout
         public SessionConsentCollectionOptions ConsentCollection { get; set; }
 
         /// <summary>
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
         /// ID of an existing Customer, if one exists. In <c>payment</c> mode, the customer’s most
         /// recent card payment method will be used to prefill the email, name, card details, and
         /// billing address on the Checkout page. In <c>subscription</c> mode, the customer’s <a

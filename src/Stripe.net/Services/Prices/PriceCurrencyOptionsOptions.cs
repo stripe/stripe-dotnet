@@ -4,29 +4,14 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class ProductDefaultPriceDataOptions : INestedOptions
+    public class PriceCurrencyOptionsOptions : INestedOptions
     {
         /// <summary>
-        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
-        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
-        /// currency</a>.
+        /// When set, provides configuration for the amount to be adjusted by the customer during
+        /// Checkout Sessions and Payment Links.
         /// </summary>
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        /// <summary>
-        /// Prices defined in each available currency option. Each key must be a three-letter <a
-        /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a
-        /// href="https://stripe.com/docs/currencies">supported currency</a>.
-        /// </summary>
-        [JsonProperty("currency_options")]
-        public Dictionary<string, ProductDefaultPriceDataCurrencyOptionsOptions> CurrencyOptions { get; set; }
-
-        /// <summary>
-        /// The recurring components of a price such as <c>interval</c> and <c>interval_count</c>.
-        /// </summary>
-        [JsonProperty("recurring")]
-        public ProductDefaultPriceDataRecurringOptions Recurring { get; set; }
+        [JsonProperty("custom_unit_amount")]
+        public PriceCurrencyOptionsCustomUnitAmountOptions CustomUnitAmount { get; set; }
 
         /// <summary>
         /// Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One
@@ -38,8 +23,15 @@ namespace Stripe
         public string TaxBehavior { get; set; }
 
         /// <summary>
+        /// Each element represents a pricing tier. This parameter requires <c>billing_scheme</c> to
+        /// be set to <c>tiered</c>. See also the documentation for <c>billing_scheme</c>.
+        /// </summary>
+        [JsonProperty("tiers")]
+        public List<PriceCurrencyOptionsTierOptions> Tiers { get; set; }
+
+        /// <summary>
         /// A positive integer in cents (or local equivalent) (or 0 for a free price) representing
-        /// how much to charge. One of <c>unit_amount</c> or <c>unit_amount_decimal</c> is required.
+        /// how much to charge.
         /// </summary>
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }
