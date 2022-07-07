@@ -6,12 +6,32 @@ namespace Stripe
 
     public class RefundCreateOptions : BaseOptions, IHasMetadata
     {
+        /// <summary>
+        /// A positive integer representing how much to refund.
+        /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
         [JsonProperty("charge")]
         public string Charge { get; set; }
 
+        /// <summary>
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// Customer whose customer balance to refund from.
+        /// </summary>
+        [JsonProperty("customer")]
+        public string Customer { get; set; }
+
+        /// <summary>
+        /// Address to send refund email, use customer email if not specified.
+        /// </summary>
         [JsonProperty("instructions_email")]
         public string InstructionsEmail { get; set; }
 
@@ -23,6 +43,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// Origin of the refund.
+        /// </summary>
+        [JsonProperty("origin")]
+        public string Origin { get; set; }
 
         [JsonProperty("payment_intent")]
         public string PaymentIntent { get; set; }

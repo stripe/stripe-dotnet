@@ -55,6 +55,14 @@ namespace Stripe
         public PaymentLinkConsentCollectionOptions ConsentCollection { get; set; }
 
         /// <summary>
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a> and supported by each line item's price.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
         /// Configures whether <a href="https://stripe.com/docs/api/checkout/sessions">checkout
         /// sessions</a> created by this payment link create a <a
         /// href="https://stripe.com/docs/api/customers">Customer</a>.
@@ -129,7 +137,10 @@ namespace Stripe
 
         /// <summary>
         /// Describes the type of transaction being performed in order to customize relevant text on
-        /// the page, such as the submit button.
+        /// the page, such as the submit button. Changing this value will also affect the hostname
+        /// in the <a
+        /// href="https://stripe.com/docs/api/payment_links/payment_links/object#url">url</a>
+        /// property (example: <c>donate.stripe.com</c>).
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, or <c>pay</c>.
         /// </summary>
         [JsonProperty("submit_type")]
