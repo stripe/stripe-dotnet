@@ -412,6 +412,14 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Indicates whether confirmation for this PaymentIntent using a secret key is
+        /// <c>required</c> or <c>optional</c>.
+        /// One of: <c>optional</c>, or <c>required</c>.
+        /// </summary>
+        [JsonProperty("secret_key_confirmation")]
+        public string SecretKeyConfirmation { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///

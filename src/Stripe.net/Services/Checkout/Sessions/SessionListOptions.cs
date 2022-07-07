@@ -5,6 +5,9 @@ namespace Stripe.Checkout
 
     public class SessionListOptions : ListOptions
     {
+        [JsonProperty("customer")]
+        public string Customer { get; set; }
+
         [JsonProperty("payment_intent")]
         public string PaymentIntent { get; set; }
 

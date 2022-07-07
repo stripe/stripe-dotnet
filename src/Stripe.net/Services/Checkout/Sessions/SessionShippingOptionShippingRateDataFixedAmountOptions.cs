@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class SessionShippingOptionShippingRateDataFixedAmountOptions : INestedOptions
@@ -18,5 +19,13 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// Shipping rates defined in each available currency option. Each key must be a
+        /// three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a> and a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+        /// </summary>
+        [JsonProperty("currency_options")]
+        public Dictionary<string, SessionShippingOptionShippingRateDataFixedAmountCurrencyOptionsOptions> CurrencyOptions { get; set; }
     }
 }

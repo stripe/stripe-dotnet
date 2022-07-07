@@ -1250,6 +1250,17 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestInvoiceServiceUpcoming()
+        {
+            var options = new UpcomingInvoiceOptions
+            {
+                Customer = "cus_9utnxg47pWjV1e",
+            };
+            var service = new InvoiceService(this.StripeClient);
+            service.Upcoming(options);
+        }
+
+        [Fact]
         public void TestInvoiceServiceUpdate()
         {
             var options = new InvoiceUpdateOptions
@@ -1971,6 +1982,35 @@ namespace StripeTests
 
         [Fact]
         public void TestPriceServiceCreate()
+        {
+            var options = new PriceCreateOptions
+            {
+                UnitAmount = 2000,
+                Currency = "usd",
+                CurrencyOptions = new Dictionary<string, PriceCurrencyOptionsOptions>
+                {
+                    {
+                        "uah", new PriceCurrencyOptionsOptions
+                        {
+                            UnitAmount = 5000,
+                        }
+                    },
+                    {
+                        "eur", new PriceCurrencyOptionsOptions
+                        {
+                            UnitAmount = 1800,
+                        }
+                    },
+                },
+                Recurring = new PriceRecurringOptions { Interval = "month" },
+                Product = "prod_xxxxxxxxxxxxx",
+            };
+            var service = new PriceService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPriceServiceCreate2()
         {
             var options = new PriceCreateOptions
             {

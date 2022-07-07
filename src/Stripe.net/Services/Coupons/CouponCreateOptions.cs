@@ -29,6 +29,15 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
+        /// Coupons defined in each available currency option (only supported if <c>amount_off</c>
+        /// is passed). Each key must be a three-letter <a
+        /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a
+        /// href="https://stripe.com/docs/currencies">supported currency</a>.
+        /// </summary>
+        [JsonProperty("currency_options")]
+        public Dictionary<string, CouponCurrencyOptionsOptions> CurrencyOptions { get; set; }
+
+        /// <summary>
         /// Specifies how long the discount will be in effect if used on a subscription. Can be
         /// <c>forever</c>, <c>once</c>, or <c>repeating</c>. Defaults to <c>once</c>.
         /// One of: <c>forever</c>, <c>once</c>, or <c>repeating</c>.

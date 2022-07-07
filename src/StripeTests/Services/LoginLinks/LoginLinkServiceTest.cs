@@ -21,10 +21,7 @@ namespace StripeTests
         {
             this.service = new LoginLinkService(this.StripeClient);
 
-            this.createOptions = new LoginLinkCreateOptions
-            {
-                RedirectUrl = "https://stripe.com/redirect?param=value",
-            };
+            this.createOptions = new LoginLinkCreateOptions();
         }
 
         [Fact]
