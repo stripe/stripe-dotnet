@@ -1,5 +1,13 @@
 # Changelog
 
+## 39.123.0-beta.1 - 2022-07-07
+* [#2529](https://github.com/stripe/stripe-dotnet/pull/2529) API Updates for beta branch
+  - Include `server_side_confirmation_beta=v1` beta
+  - Add `secretKeyConfirmation` to `PaymentIntent`
+* [#2525](https://github.com/stripe/stripe-dotnet/pull/2525) API Updates for beta branch
+  - Updated stable APIs to the latest version
+
+
 ## 39.122.0 - 2022-07-07
 * [#2528](https://github.com/stripe/stripe-dotnet/pull/2528) API Updates
   * Add support for `Currency` on `CheckoutSessionCreateOptions`, `InvoiceUpcomingLinesOptions`, `InvoiceUpcomingOptions`, `PaymentLinkCreateOptions`, `SubscriptionCreateOptions`, `SubscriptionSchedulePhasesOptions`, `SubscriptionSchedulePhases`, and `Subscription`
