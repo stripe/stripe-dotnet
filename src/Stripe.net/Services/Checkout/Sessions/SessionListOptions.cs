@@ -8,6 +8,9 @@ namespace Stripe.Checkout
         [JsonProperty("customer")]
         public string Customer { get; set; }
 
+        [JsonProperty("customer_details")]
+        public SessionCustomerDetailsOptions CustomerDetails { get; set; }
+
         [JsonProperty("payment_intent")]
         public string PaymentIntent { get; set; }
 
