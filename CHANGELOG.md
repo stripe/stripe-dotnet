@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.123.0 - 2022-07-12
+* [#2530](https://github.com/stripe/stripe-dotnet/pull/2530) API Updates
+  * Add support for `CustomerDetails` on `CheckoutSessionListOptions`
+
 ## 39.122.0 - 2022-07-07
 * [#2528](https://github.com/stripe/stripe-dotnet/pull/2528) API Updates
   * Add support for `Currency` on `CheckoutSessionCreateOptions`, `InvoiceUpcomingLinesOptions`, `InvoiceUpcomingOptions`, `PaymentLinkCreateOptions`, `SubscriptionCreateOptions`, `SubscriptionSchedulePhasesOptions`, `SubscriptionSchedulePhases`, and `Subscription`
