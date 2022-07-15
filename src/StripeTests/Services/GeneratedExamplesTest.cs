@@ -1502,6 +1502,73 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestOrderServiceCancel()
+        {
+            var service = new OrderService(this.StripeClient);
+            service.Cancel("order_xyz");
+        }
+
+        [Fact]
+        public void TestOrderServiceCreate()
+        {
+            var options = new OrderCreateOptions
+            {
+                Description = "description",
+                Currency = "usd",
+                LineItems = new List<OrderLineItemOptions>
+                {
+                    new OrderLineItemOptions { Description = "my line item" },
+                },
+            };
+            var service = new OrderService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestOrderServiceList()
+        {
+            var options = new OrderListOptions { Limit = 3 };
+            var service = new OrderService(this.StripeClient);
+            StripeList<Order> orders = service.List(options);
+        }
+
+        [Fact]
+        public void TestOrderServiceListLineItems()
+        {
+            var service = new OrderService(this.StripeClient);
+            service.ListLineItems("order_xyz");
+        }
+
+        [Fact]
+        public void TestOrderServiceReopen()
+        {
+            var service = new OrderService(this.StripeClient);
+            service.Reopen("order_xyz");
+        }
+
+        [Fact]
+        public void TestOrderServiceSubmit()
+        {
+            var options = new OrderSubmitOptions { ExpectedTotal = 100 };
+            var service = new OrderService(this.StripeClient);
+            service.Submit("order_xyz", options);
+        }
+
+        [Fact]
+        public void TestOrderServiceUpdate()
+        {
+            var service = new OrderService(this.StripeClient);
+            service.Update("order_xyz");
+        }
+
+        [Fact]
+        public void TestOrderServiceUpdate2()
+        {
+            var service = new OrderService(this.StripeClient);
+            service.Update("order_xyz");
+        }
+
+        [Fact]
         public void TestPaymentIntentServiceApplyCustomerBalance()
         {
             var service = new PaymentIntentService(this.StripeClient);

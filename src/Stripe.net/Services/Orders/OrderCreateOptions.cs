@@ -7,11 +7,17 @@ namespace Stripe
     public class OrderCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// A coupon code that represents a discount to be applied to this order. Must be one-time
-        /// duration and in same currency as the order. An order can have multiple coupons.
+        /// Settings for automatic tax calculation for this order.
         /// </summary>
-        [JsonProperty("coupon")]
-        public string Coupon { get; set; }
+        [JsonProperty("automatic_tax")]
+        public OrderAutomaticTaxOptions AutomaticTax { get; set; }
+
+        /// <summary>
+        /// Billing details for the customer. If a customer is provided, this will be automatically
+        /// populated with values from that customer if override values are not provided.
+        /// </summary>
+        [JsonProperty("billing_details")]
+        public OrderBillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
@@ -22,25 +28,35 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
-        /// The ID of an existing customer to use for this order. If provided, the customer email
-        /// and shipping address will be used to create the order. Subsequently, the customer will
-        /// also be charged to pay the order. If <c>email</c> or <c>shipping</c> are also provided,
-        /// they will override the values retrieved from the customer object.
+        /// The customer associated with this order.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
 
         /// <summary>
-        /// The email address of the customer placing the order.
+        /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("email")]
-        public string Email { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
 
         /// <summary>
-        /// List of items constituting the order. An order can have up to 25 items.
+        /// The coupons, promotion codes, and/or discounts to apply to the order.
         /// </summary>
-        [JsonProperty("items")]
-        public List<OrderItemOptions> Items { get; set; }
+        [JsonProperty("discounts")]
+        public List<OrderDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
+        /// The IP address of the purchaser for this order.
+        /// </summary>
+        [JsonProperty("ip_address")]
+        public string IpAddress { get; set; }
+
+        /// <summary>
+        /// A list of line items the customer is ordering. Each line item includes information about
+        /// the product, the quantity, and the resulting cost.
+        /// </summary>
+        [JsonProperty("line_items")]
+        public List<OrderLineItemOptions> LineItems { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
@@ -52,10 +68,27 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Shipping address for the order. Required if any of the SKUs are for products that have
-        /// <c>shippable</c> set to true.
+        /// Payment information associated with the order, including payment settings.
         /// </summary>
-        [JsonProperty("shipping")]
-        public ShippingOptions Shipping { get; set; }
+        [JsonProperty("payment")]
+        public OrderPaymentOptions Payment { get; set; }
+
+        /// <summary>
+        /// Settings for the customer cost of shipping for this order.
+        /// </summary>
+        [JsonProperty("shipping_cost")]
+        public OrderShippingCostOptions ShippingCost { get; set; }
+
+        /// <summary>
+        /// Shipping details for the order.
+        /// </summary>
+        [JsonProperty("shipping_details")]
+        public OrderShippingDetailsOptions ShippingDetails { get; set; }
+
+        /// <summary>
+        /// Additional tax details about the purchaser to be used for this order.
+        /// </summary>
+        [JsonProperty("tax_details")]
+        public OrderTaxDetailsOptions TaxDetails { get; set; }
     }
 }
