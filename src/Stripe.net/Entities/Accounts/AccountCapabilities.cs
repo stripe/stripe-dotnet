@@ -62,6 +62,14 @@ namespace Stripe
         public string BankTransferPayments { get; set; }
 
         /// <summary>
+        /// The status of the blik payments capability of the account, or whether the account can
+        /// directly process blik charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("blik_payments")]
+        public string BlikPayments { get; set; }
+
+        /// <summary>
         /// The status of the boleto payments capability of the account, or whether the account can
         /// directly process boleto charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
