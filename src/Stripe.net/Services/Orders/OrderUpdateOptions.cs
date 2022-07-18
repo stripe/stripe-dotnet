@@ -7,11 +7,57 @@ namespace Stripe
     public class OrderUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// A coupon code that represents a discount to be applied to this order. Must be one-time
-        /// duration and in same currency as the order. An order can have multiple coupons.
+        /// Settings for automatic tax calculation for this order.
         /// </summary>
-        [JsonProperty("coupon")]
-        public string Coupon { get; set; }
+        [JsonProperty("automatic_tax")]
+        public OrderAutomaticTaxOptions AutomaticTax { get; set; }
+
+        /// <summary>
+        /// Billing details for the customer. If a customer is provided, this will be automatically
+        /// populated with values from that customer if override values are not provided.
+        /// </summary>
+        [JsonProperty("billing_details")]
+        public OrderBillingDetailsOptions BillingDetails { get; set; }
+
+        /// <summary>
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// The customer associated with this order.
+        /// </summary>
+        [JsonProperty("customer")]
+        public string Customer { get; set; }
+
+        /// <summary>
+        /// An arbitrary string attached to the object. Often useful for displaying to users.
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The coupons, promotion codes, and/or discounts to apply to the order. Pass the empty
+        /// string <c>""</c> to unset this field.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<OrderDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
+        /// The IP address of the purchaser for this order.
+        /// </summary>
+        [JsonProperty("ip_address")]
+        public string IpAddress { get; set; }
+
+        /// <summary>
+        /// A list of line items the customer is ordering. Each line item includes information about
+        /// the product, the quantity, and the resulting cost.
+        /// </summary>
+        [JsonProperty("line_items")]
+        public List<OrderLineItemOptions> LineItems { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
@@ -23,29 +69,27 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The shipping method to select for fulfilling this order. If specified, must be one of
-        /// the <c>id</c>s of a shipping method in the <c>shipping_methods</c> array. If specified,
-        /// will overwrite the existing selected shipping method, updating <c>items</c> as
-        /// necessary.
+        /// Payment information associated with the order, including payment settings.
         /// </summary>
-        [JsonProperty("selected_shipping_method")]
-        public string SelectedShippingMethod { get; set; }
+        [JsonProperty("payment")]
+        public OrderPaymentOptions Payment { get; set; }
 
         /// <summary>
-        /// Tracking information once the order has been fulfilled.
+        /// Settings for the customer cost of shipping for this order.
         /// </summary>
-        [JsonProperty("shipping")]
-        public OrderUpdateShippingOptions Shipping { get; set; }
+        [JsonProperty("shipping_cost")]
+        public OrderShippingCostOptions ShippingCost { get; set; }
 
         /// <summary>
-        /// Current order status. One of <c>created</c>, <c>paid</c>, <c>canceled</c>,
-        /// <c>fulfilled</c>, or <c>returned</c>. More detail in the <a
-        /// href="https://stripe.com/docs/orders/guide#understanding-order-statuses">Orders
-        /// Guide</a>.
-        /// One of: <c>canceled</c>, <c>created</c>, <c>fulfilled</c>, <c>paid</c>, or
-        /// <c>returned</c>.
+        /// Shipping details for the order.
         /// </summary>
-        [JsonProperty("status")]
-        public string Status { get; set; }
+        [JsonProperty("shipping_details")]
+        public OrderShippingDetailsOptions ShippingDetails { get; set; }
+
+        /// <summary>
+        /// Additional tax details about the purchaser to be used for this order.
+        /// </summary>
+        [JsonProperty("tax_details")]
+        public OrderTaxDetailsOptions TaxDetails { get; set; }
     }
 }

@@ -3,17 +3,16 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// Order objects are created to handle end customers' purchases of previously defined <a
-    /// href="https://stripe.com/docs/api#products">products</a>. You can create, retrieve, and
-    /// pay individual orders, as well as list all orders. Orders are identified by a unique,
-    /// random ID.
+    /// An Order describes a purchase being made by a customer, including the products &amp;
+    /// quantities being purchased, the order status, the payment information, and the
+    /// billing/shipping details.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/orders-legacy">Tax, Shipping, and
-    /// Inventory</a>.
+    /// Related guide: <a href="https://stripe.com/docs/orders">Orders overview</a>.
     /// </summary>
     public class Order : StripeEntity<Order>, IHasId, IHasMetadata, IHasObject
     {
@@ -30,66 +29,80 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for
-        /// ¥1, Japanese Yen being a zero-decimal currency) representing the total amount for the
-        /// order.
+        /// Order cost before any discounts or taxes are applied. A positive integer representing
+        /// the subtotal of the order in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g.,
+        /// 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency).
         /// </summary>
-        [JsonProperty("amount")]
-        public long Amount { get; set; }
+        [JsonProperty("amount_subtotal")]
+        public long AmountSubtotal { get; set; }
 
         /// <summary>
-        /// The total amount that was returned to the customer.
+        /// Total order cost after discounts and taxes are applied. A positive integer representing
+        /// the cost of the order in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g.,
+        /// 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). To submit an
+        /// order, the total must be either 0 or at least $0.50 USD or <a
+        /// href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">equivalent
+        /// in charge currency</a>.
         /// </summary>
-        [JsonProperty("amount_returned")]
-        public long? AmountReturned { get; set; }
+        [JsonProperty("amount_total")]
+        public long AmountTotal { get; set; }
+
+        #region Expandable Application
 
         /// <summary>
-        /// ID of the Connect Application that created the order.
-        /// </summary>
-        [JsonProperty("application")]
-        public string Application { get; set; }
-
-        /// <summary>
-        /// A fee in cents that will be applied to the order and transferred to the application
-        /// owner’s Stripe account. The request must be made with an OAuth key or the Stripe-Account
-        /// header in order to take an application fee. For more information, see the application
-        /// fees documentation.
-        /// </summary>
-        [JsonProperty("application_fee")]
-        public long? ApplicationFee { get; set; }
-
-        #region Expandable Charge
-
-        /// <summary>
-        /// (ID of the Charge)
-        /// The ID of the payment used to pay for the order. Present if the order status is
-        /// <c>paid</c>, <c>fulfilled</c>, or <c>refunded</c>.
+        /// (ID of the Application)
+        /// ID of the Connect application that created the Order, if any.
         /// </summary>
         [JsonIgnore]
-        public string ChargeId
+        public string ApplicationId
         {
-            get => this.InternalCharge?.Id;
-            set => this.InternalCharge = SetExpandableFieldId(value, this.InternalCharge);
+            get => this.InternalApplication?.Id;
+            set => this.InternalApplication = SetExpandableFieldId(value, this.InternalApplication);
         }
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the payment used to pay for the order. Present if the order status is
-        /// <c>paid</c>, <c>fulfilled</c>, or <c>refunded</c>.
+        /// ID of the Connect application that created the Order, if any.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-        public Charge Charge
+        public Application Application
         {
-            get => this.InternalCharge?.ExpandedObject;
-            set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
+            get => this.InternalApplication?.ExpandedObject;
+            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
         }
 
-        [JsonProperty("charge")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
-        internal ExpandableField<Charge> InternalCharge { get; set; }
+        [JsonProperty("application")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
+        internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
+
+        [JsonProperty("automatic_tax")]
+        public OrderAutomaticTax AutomaticTax { get; set; }
+
+        /// <summary>
+        /// Customer billing details associated with the order.
+        /// </summary>
+        [JsonProperty("billing_details")]
+        public OrderBillingDetails BillingDetails { get; set; }
+
+        /// <summary>
+        /// The client secret of this Order. Used for client-side retrieval using a publishable key.
+        ///
+        /// The client secret can be used to complete a payment for an Order from your frontend. It
+        /// should not be stored, logged, embedded in URLs, or exposed to anyone other than the
+        /// customer. Make sure that you have TLS enabled on any page that includes the client
+        /// secret.
+        ///
+        /// Refer to our docs for <a
+        /// href="https://stripe.com/docs/orders-beta/create-and-process">creating and processing an
+        /// order</a> to learn about how client_secret should be handled.
+        /// </summary>
+        [JsonProperty("client_secret")]
+        public string ClientSecret { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -110,7 +123,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Customer)
-        /// The customer used for the order.
+        /// The customer which this orders belongs to.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -121,7 +134,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The customer used for the order.
+        /// The customer which this orders belongs to.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -138,22 +151,55 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The email address of the customer placing the order.
+        /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("email")]
-        public string Email { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        #region Expandable Discounts
 
         /// <summary>
-        /// External coupon code to load for this order.
+        /// (IDs of the Discounts)
+        /// The discounts applied to the order. Use <c>expand[]=discounts</c> to expand each
+        /// discount.
         /// </summary>
-        [JsonProperty("external_coupon_code")]
-        public string ExternalCouponCode { get; set; }
+        [JsonIgnore]
+        public List<string> DiscountIds
+        {
+            get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayIds<Discount>(value);
+        }
 
         /// <summary>
-        /// List of items constituting the order. An order can have up to 25 items.
+        /// (Expanded)
+        /// The discounts applied to the order. Use <c>expand[]=discounts</c> to expand each
+        /// discount.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
-        [JsonProperty("items")]
-        public List<OrderItem> Items { get; set; }
+        [JsonIgnore]
+        public List<Discount> Discounts
+        {
+            get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
+        #endregion
+
+        /// <summary>
+        /// A recent IP address of the purchaser used for tax reporting and tax location inference.
+        /// </summary>
+        [JsonProperty("ip_address")]
+        public string IpAddress { get; set; }
+
+        /// <summary>
+        /// A list of line items the customer is ordering. Each line item includes information about
+        /// the product, the quantity, and the resulting cost. There is a maximum of 100 line items.
+        /// </summary>
+        [JsonProperty("line_items")]
+        public StripeList<LineItem> LineItems { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
@@ -170,60 +216,34 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
-        /// <summary>
-        /// A list of returns that have taken place for this order.
-        /// </summary>
-        [JsonProperty("returns")]
-        public StripeList<OrderReturn> Returns { get; set; }
+        [JsonProperty("payment")]
+        public OrderPayment Payment { get; set; }
 
         /// <summary>
-        /// The shipping method that is currently selected for this order, if any. If present, it is
-        /// equal to one of the <c>id</c>s of shipping methods in the <c>shipping_methods</c> array.
-        /// At order creation time, if there are multiple shipping methods, Stripe will
-        /// automatically selected the first method.
+        /// The details of the customer cost of shipping, including the customer chosen
+        /// ShippingRate.
         /// </summary>
-        [JsonProperty("selected_shipping_method")]
-        public string SelectedShippingMethod { get; set; }
+        [JsonProperty("shipping_cost")]
+        public OrderShippingCost ShippingCost { get; set; }
 
         /// <summary>
-        /// The shipping address for the order. Present if the order is for goods to be shipped.
+        /// Customer shipping information associated with the order.
         /// </summary>
-        [JsonProperty("shipping")]
-        public Shipping Shipping { get; set; }
+        [JsonProperty("shipping_details")]
+        public OrderShippingDetails ShippingDetails { get; set; }
 
         /// <summary>
-        /// A list of supported shipping methods for this order. The desired shipping method can be
-        /// specified either by updating the order, or when paying it.
-        /// </summary>
-        [JsonProperty("shipping_methods")]
-        public List<OrderShippingMethod> ShippingMethods { get; set; }
-
-        /// <summary>
-        /// Current order status. One of <c>created</c>, <c>paid</c>, <c>canceled</c>,
-        /// <c>fulfilled</c>, or <c>returned</c>. More details in the <a
-        /// href="https://stripe.com/docs/orders/guide#understanding-order-statuses">Orders
-        /// Guide</a>.
+        /// The overall status of the order.
+        /// One of: <c>canceled</c>, <c>complete</c>, <c>open</c>, <c>processing</c>, or
+        /// <c>submitted</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        /// <summary>
-        /// The timestamps at which the order status was updated.
-        /// </summary>
-        [JsonProperty("status_transitions")]
-        public OrderStatusTransitions StatusTransitions { get; set; }
+        [JsonProperty("tax_details")]
+        public OrderTaxDetails TaxDetails { get; set; }
 
-        /// <summary>
-        /// Time at which the object was last updated. Measured in seconds since the Unix epoch.
-        /// </summary>
-        [JsonProperty("updated")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
-
-        /// <summary>
-        /// The user's order ID if it is different from the Stripe order ID.
-        /// </summary>
-        [JsonProperty("upstream_id")]
-        public string UpstreamId { get; set; }
+        [JsonProperty("total_details")]
+        public OrderTotalDetails TotalDetails { get; set; }
     }
 }
