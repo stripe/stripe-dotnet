@@ -19,7 +19,8 @@ namespace Stripe
 
         /// <summary>
         /// A hash of all cash balances available to this customer. You cannot delete a customer
-        /// with any cash balances, even if the balance is 0.
+        /// with any cash balances, even if the balance is 0. Amounts are represented in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("available")]
         public Dictionary<string, long> Available { get; set; }
