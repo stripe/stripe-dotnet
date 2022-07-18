@@ -14,6 +14,9 @@ namespace Stripe
         [JsonProperty("bacs_debit")]
         public MandatePaymentMethodDetailsBacsDebit BacsDebit { get; set; }
 
+        [JsonProperty("blik")]
+        public MandatePaymentMethodDetailsBlik Blik { get; set; }
+
         [JsonProperty("card")]
         public MandatePaymentMethodDetailsCard Card { get; set; }
 

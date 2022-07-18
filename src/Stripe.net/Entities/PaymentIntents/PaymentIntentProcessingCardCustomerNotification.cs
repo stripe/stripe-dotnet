@@ -9,7 +9,7 @@ namespace Stripe
     {
         /// <summary>
         /// Whether customer approval has been requested for this payment. For payments greater than
-        /// INR 5000 or mandate amount, the customer must provide explicit approval of the payment
+        /// INR 15000 or mandate amount, the customer must provide explicit approval of the payment
         /// with their bank.
         /// </summary>
         [JsonProperty("approval_requested")]
