@@ -50,7 +50,7 @@ namespace Stripe
         public List<BalanceInstantAvailable> InstantAvailable { get; set; }
 
         [JsonProperty("issuing")]
-        public BalanceDetails Issuing { get; set; }
+        public BalanceIssuing Issuing { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
