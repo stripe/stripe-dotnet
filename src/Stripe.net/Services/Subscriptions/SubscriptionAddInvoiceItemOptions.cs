@@ -7,6 +7,12 @@ namespace Stripe
     public class SubscriptionAddInvoiceItemOptions : INestedOptions
     {
         /// <summary>
+        /// The coupons to redeem into discounts for the item.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionAddInvoiceItemDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// The ID of the price object.
         /// </summary>
         [JsonProperty("price")]

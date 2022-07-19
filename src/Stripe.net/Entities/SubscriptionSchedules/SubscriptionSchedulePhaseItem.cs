@@ -14,6 +14,13 @@ namespace Stripe
         [JsonProperty("billing_thresholds")]
         public SubscriptionSchedulePhaseItemBillingThresholds BillingThresholds { get; set; }
 
+        /// <summary>
+        /// The discounts applied to the subscription item. Subscription item discounts are applied
+        /// before subscription discounts. Use <c>expand[]=discounts</c> to expand each discount.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionSchedulePhaseItemDiscount> Discounts { get; set; }
+
         #region Expandable Plan
 
         /// <summary>

@@ -17,6 +17,12 @@ namespace Stripe
         public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
+        /// The coupons to redeem into discounts for the subscription item.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionItemDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to

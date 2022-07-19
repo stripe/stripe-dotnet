@@ -60,6 +60,17 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Configures when the subscription schedule generates prorations for phase transitions.
+        /// Possible values are <c>prorate_on_next_phase</c> or <c>prorate_up_front</c> with the
+        /// default being <c>prorate_on_next_phase</c>. <c>prorate_on_next_phase</c> will apply
+        /// phase changes and generate prorations at transition time.<c>prorate_up_front</c> will
+        /// bill for all phases within the current billing cycle up front.
+        /// One of: <c>prorate_on_next_phase</c>, or <c>prorate_up_front</c>.
+        /// </summary>
+        [JsonProperty("billing_behavior")]
+        public string BillingBehavior { get; set; }
+
+        /// <summary>
         /// Time at which the subscription schedule was canceled. Measured in seconds since the Unix
         /// epoch.
         /// </summary>
@@ -151,6 +162,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("phases")]
         public List<SubscriptionSchedulePhase> Phases { get; set; }
+
+        /// <summary>
+        /// Time period and invoice for a Subscription billed in advance.
+        /// </summary>
+        [JsonProperty("prebilling")]
+        public SubscriptionSchedulePrebilling Prebilling { get; set; }
 
         /// <summary>
         /// Time at which the subscription schedule was released. Measured in seconds since the Unix

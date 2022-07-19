@@ -24,6 +24,16 @@ namespace Stripe
 
         public override string BasePath => "/v1/subscription_schedules";
 
+        public virtual SubscriptionSchedule Amend(string id, SubscriptionScheduleAmendOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/amend", options, requestOptions);
+        }
+
+        public virtual Task<SubscriptionSchedule> AmendAsync(string id, SubscriptionScheduleAmendOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/amend", options, requestOptions, cancellationToken);
+        }
+
         public virtual SubscriptionSchedule Cancel(string id, SubscriptionScheduleCancelOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions);

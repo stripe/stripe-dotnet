@@ -9,7 +9,7 @@ namespace Stripe
     public class SubscriptionSchedulePhase : StripeEntity<SubscriptionSchedulePhase>, IHasMetadata
     {
         /// <summary>
-        /// A list of prices and quantities that will generate invoice items appended to the first
+        /// A list of prices and quantities that will generate invoice items appended to the next
         /// invoice for this phase.
         /// </summary>
         [JsonProperty("add_invoice_items")]
@@ -134,6 +134,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("default_tax_rates")]
         public List<TaxRate> DefaultTaxRates { get; set; }
+
+        /// <summary>
+        /// The stackable discounts that will be applied to the subscription on this phase.
+        /// Subscription item discounts are applied before subscription discounts.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionSchedulePhaseDiscount> Discounts { get; set; }
 
         /// <summary>
         /// The end of this phase of the subscription schedule.

@@ -117,6 +117,13 @@ namespace Stripe
         public string OnBehalfOf { get; set; }
 
         /// <summary>
+        /// List representing phases of the Quote. Each phase can be customized to have different
+        /// durations, prices, and coupons.
+        /// </summary>
+        [JsonProperty("phases")]
+        public List<QuotePhaseOptions> Phases { get; set; }
+
+        /// <summary>
         /// When creating a subscription or subscription schedule, the specified configuration data
         /// will be used. There must be at least one line item with a recurring price for a
         /// subscription or subscription schedule to be created. A subscription schedule is created

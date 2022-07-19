@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -296,6 +297,38 @@ namespace Stripe
         [JsonProperty("discount")]
         public Discount Discount { get; set; }
 
+        #region Expandable Discounts
+
+        /// <summary>
+        /// (IDs of the Discounts)
+        /// The discounts applied to the subscription. Subscription item discounts are applied
+        /// before subscription discounts. Use <c>expand[]=discounts</c> to expand each discount.
+        /// </summary>
+        [JsonIgnore]
+        public List<string> DiscountIds
+        {
+            get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayIds<Discount>(value);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The discounts applied to the subscription. Subscription item discounts are applied
+        /// before subscription discounts. Use <c>expand[]=discounts</c> to expand each discount.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public List<Discount> Discounts
+        {
+            get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
+        #endregion
+
         /// <summary>
         /// If the subscription has ended, the date the subscription ended.
         /// </summary>
@@ -431,6 +464,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("pending_update")]
         public SubscriptionPendingUpdate PendingUpdate { get; set; }
+
+        /// <summary>
+        /// Time period and invoice for a Subscription billed in advance.
+        /// </summary>
+        [JsonProperty("prebilling")]
+        public SubscriptionPrebilling Prebilling { get; set; }
 
         #region Expandable Schedule
 

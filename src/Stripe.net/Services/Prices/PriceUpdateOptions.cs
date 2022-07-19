@@ -37,6 +37,13 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// If specified, subscriptions using this price will be updated to use the new referenced
+        /// price.
+        /// </summary>
+        [JsonProperty("migrate_to")]
+        public PriceMigrateToOptions MigrateTo { get; set; }
+
+        /// <summary>
         /// A brief description of the price, hidden from customers.
         /// </summary>
         [JsonProperty("nickname")]
