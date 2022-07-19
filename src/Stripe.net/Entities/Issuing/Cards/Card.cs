@@ -56,8 +56,8 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
-        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
-        /// currency</a>.
+        /// code</a>, in lowercase. Supported currencies are <c>usd</c> in the US, <c>eur</c> in the
+        /// EU, and <c>gbp</c> in the UK.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }

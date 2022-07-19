@@ -13,6 +13,13 @@ namespace Stripe
         public SetupIntentPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
 
         /// <summary>
+        /// If this is a <c>blik</c> PaymentMethod, this hash contains details about the BLIK
+        /// payment method.
+        /// </summary>
+        [JsonProperty("blik")]
+        public SetupIntentPaymentMethodOptionsBlikOptions Blik { get; set; }
+
+        /// <summary>
         /// Configuration for any card setup attempted on this SetupIntent.
         /// </summary>
         [JsonProperty("card")]

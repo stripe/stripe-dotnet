@@ -1,12 +1,21 @@
 # Changelog
 
+## 39.124.0 - 2022-07-18
+* [#2534](https://github.com/stripe/stripe-dotnet/pull/2534) API Updates
+  * Add support for `BlikPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Blik` on `ChargePaymentMethodDetails`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, `SetupIntentPaymentMethodDataOptions`, `SetupIntentPaymentMethodOptionsOptions`, and `SetupIntentPaymentMethodOptions`
+  * Change type of `CheckoutSessionConsentCollectionPromotionsOptions`, `CheckoutSessionConsentCollectionPromotions`, `PaymentLinkConsentCollectionPromotionsOptions`, and `PaymentLinkConsentCollectionPromotions` from `literal('auto')` to `enum('auto'|'none')`
+
+## 39.123.0 - 2022-07-12
+* [#2530](https://github.com/stripe/stripe-dotnet/pull/2530) API Updates
+  * Add support for `CustomerDetails` on `CheckoutSessionListOptions`
+
 ## 39.123.0-beta.1 - 2022-07-07
 * [#2529](https://github.com/stripe/stripe-dotnet/pull/2529) API Updates for beta branch
   - Include `server_side_confirmation_beta=v1` beta
   - Add `secretKeyConfirmation` to `PaymentIntent`
 * [#2525](https://github.com/stripe/stripe-dotnet/pull/2525) API Updates for beta branch
   - Updated stable APIs to the latest version
-
 
 ## 39.122.0 - 2022-07-07
 * [#2528](https://github.com/stripe/stripe-dotnet/pull/2528) API Updates

@@ -8,6 +8,7 @@ namespace Stripe
         /// <summary>
         /// If set to <c>auto</c>, enables the collection of customer consent for promotional
         /// communications.
+        /// One of: <c>auto</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("promotions")]
         public string Promotions { get; set; }

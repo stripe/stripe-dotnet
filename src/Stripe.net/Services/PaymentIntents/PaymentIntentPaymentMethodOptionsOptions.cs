@@ -55,6 +55,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsBancontactOptions Bancontact { get; set; }
 
         /// <summary>
+        /// If this is a <c>blik</c> PaymentMethod, this sub-hash contains details about the BLIK
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("blik")]
+        public PaymentIntentPaymentMethodOptionsBlikOptions Blik { get; set; }
+
+        /// <summary>
         /// If this is a <c>boleto</c> PaymentMethod, this sub-hash contains details about the
         /// Boleto payment method options.
         /// </summary>

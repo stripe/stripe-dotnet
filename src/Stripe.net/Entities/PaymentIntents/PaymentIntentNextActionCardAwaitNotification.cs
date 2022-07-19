@@ -16,7 +16,7 @@ namespace Stripe
         public DateTime? ChargeAttemptAt { get; set; }
 
         /// <summary>
-        /// For payments greater than INR 5000, the customer must provide explicit approval of the
+        /// For payments greater than INR 15000, the customer must provide explicit approval of the
         /// payment with their bank. For payments of lower amount, no customer action is required.
         /// </summary>
         [JsonProperty("customer_approval_required")]
