@@ -7,6 +7,12 @@ namespace Stripe
     public class QuoteLineItemOptions : INestedOptions, IHasId
     {
         /// <summary>
+        /// The discounts applied to this line item.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<QuoteLineItemDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// The ID of an existing line item on the quote.
         /// </summary>
         [JsonProperty("id")]

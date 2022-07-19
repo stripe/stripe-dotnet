@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// A list of prices and quantities that will generate invoice items appended to the next
-        /// invoice. You may pass up to 20 items.
+        /// invoice for this phase. You may pass up to 20 items.
         /// </summary>
         [JsonProperty("add_invoice_items")]
         public List<SubscriptionSchedulePhaseAddInvoiceItemOptions> AddInvoiceItems { get; set; }
@@ -93,6 +93,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("default_tax_rates")]
         public List<string> DefaultTaxRates { get; set; }
+
+        /// <summary>
+        /// The coupons to redeem into discounts for the schedule phase. If not specified, inherits
+        /// the discount from the subscription's customer. Pass an empty string to avoid inheriting
+        /// any discounts.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionSchedulePhaseDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// The date at which this phase of the subscription schedule ends. If set,

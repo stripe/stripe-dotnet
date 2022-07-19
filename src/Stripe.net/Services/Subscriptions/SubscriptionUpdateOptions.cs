@@ -9,7 +9,7 @@ namespace Stripe
     public class SubscriptionUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// A list of prices and quantities that will generate invoice items appended to the first
+        /// A list of prices and quantities that will generate invoice items appended to the next
         /// invoice for this subscription. You may pass up to 20 items.
         /// </summary>
         [JsonProperty("add_invoice_items")]
@@ -131,6 +131,13 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// The coupons to redeem into discounts for the subscription. If not specified or empty,
+        /// inherits the discount from the subscription's customer.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// A list of up to 20 subscription items, each with an attached price.
         /// </summary>
         [JsonProperty("items")]
@@ -204,6 +211,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("pending_invoice_item_interval")]
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
+
+        /// <summary>
+        /// If specified, the invoicing for the given billing cycle iterations will be processed
+        /// now.
+        /// </summary>
+        [JsonProperty("prebilling")]
+        public SubscriptionPrebillingOptions Prebilling { get; set; }
 
         /// <summary>
         /// The promotion code to apply to this subscription. A promotion code applied to a

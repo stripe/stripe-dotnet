@@ -9,6 +9,17 @@ namespace Stripe
     public class SubscriptionScheduleCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// Configures when the subscription schedule generates prorations for phase transitions.
+        /// Possible values are <c>prorate_on_next_phase</c> or <c>prorate_up_front</c> with the
+        /// default being <c>prorate_on_next_phase</c>. <c>prorate_on_next_phase</c> will apply
+        /// phase changes and generate prorations at transition time.<c>prorate_up_front</c> will
+        /// bill for all phases within the current billing cycle up front.
+        /// One of: <c>prorate_on_next_phase</c>, or <c>prorate_up_front</c>.
+        /// </summary>
+        [JsonProperty("billing_behavior")]
+        public string BillingBehavior { get; set; }
+
+        /// <summary>
         /// The identifier of the customer to create the subscription schedule for.
         /// </summary>
         [JsonProperty("customer")]
@@ -57,6 +68,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("phases")]
         public List<SubscriptionSchedulePhaseOptions> Phases { get; set; }
+
+        /// <summary>
+        /// If specified, the invoicing for the given billing cycle iterations will be processed
+        /// now.
+        /// </summary>
+        [JsonProperty("prebilling")]
+        public SubscriptionSchedulePrebillingOptions Prebilling { get; set; }
 
         /// <summary>
         /// When the subscription schedule starts. We recommend using <c>now</c> so that it starts

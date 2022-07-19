@@ -15,6 +15,12 @@ namespace Stripe
         public SubscriptionSchedulePhaseItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
+        /// The coupons to redeem into discounts for the subscription item.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionSchedulePhaseItemDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// The plan ID to subscribe to. You may specify the same ID in <c>plan</c> and
         /// <c>price</c>.
         /// </summary>
