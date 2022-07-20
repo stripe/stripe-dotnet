@@ -99,7 +99,7 @@ namespace Stripe
                 { "product", typeof(Product) },
                 { "promotion_code", typeof(PromotionCode) },
                 { "quote", typeof(Quote) },
-                { "quote_phase", typeof(QuotePhaseConfiguration) },
+                { "quote_phase", typeof(QuotePhase) },
                 {
                     "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning)
                 },
