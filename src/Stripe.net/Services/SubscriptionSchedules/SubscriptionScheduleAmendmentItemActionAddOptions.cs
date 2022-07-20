@@ -4,13 +4,10 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SubscriptionScheduleAmendmentItemActionAddOptions : INestedOptions, IHasMetadata
+    public class SubscriptionScheduleAmendmentItemActionAddOptions : INestedOptions
     {
         [JsonProperty("discounts")]
         public List<SubscriptionScheduleAmendmentItemActionAddDiscountOptions> Discounts { get; set; }
-
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("price")]
         public string Price { get; set; }

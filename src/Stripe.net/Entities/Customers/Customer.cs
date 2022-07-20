@@ -66,6 +66,13 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        /// <summary>
+        /// The default three-letter <a href="https://stripe.com/docs/currencies">ISO code for the
+        /// currency</a> that the customer will be charged in for billing purposes.
+        /// </summary>
+        [JsonProperty("default_currency")]
+        public string DefaultCurrency { get; set; }
+
         #region Expandable DefaultSource
 
         /// <summary>
@@ -147,6 +154,18 @@ namespace Stripe
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
+
+        /// <summary>
+        /// The current multi-currency balances, if any, being stored on the customer.If positive in
+        /// a currency, the customer has a credit to apply to their next invoice denominated in that
+        /// currency.If negative, the customer has an amount owed that will be added to their next
+        /// invoice denominated in that currency. These balances do not refer to any unpaid
+        /// invoices.They solely track amounts that have yet to be successfully applied to any
+        /// invoice. A balance in a particular currency is only applied to any invoice as an invoice
+        /// in that currency is finalized.
+        /// </summary>
+        [JsonProperty("invoice_credit_balance")]
+        public Dictionary<string, long> InvoiceCreditBalance { get; set; }
 
         /// <summary>
         /// The prefix for the customer used to generate unique invoice numbers.

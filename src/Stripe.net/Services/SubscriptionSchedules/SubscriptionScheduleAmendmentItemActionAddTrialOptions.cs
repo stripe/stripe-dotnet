@@ -11,13 +11,6 @@ namespace Stripe
         [JsonProperty("none")]
         public SubscriptionScheduleAmendmentItemActionAddTrialNoneOptions None { get; set; }
 
-        /// <summary>
-        /// Details of a different price, quantity, or both, to bill your customer for during a paid
-        /// trial.
-        /// </summary>
-        [JsonProperty("paid")]
-        public SubscriptionScheduleAmendmentItemActionAddTrialPaidOptions Paid { get; set; }
-
         [JsonProperty("type")]
         public string Type { get; set; }
     }
