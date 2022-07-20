@@ -173,6 +173,13 @@ namespace Stripe
         public bool? Trial { get; set; }
 
         /// <summary>
+        /// Specify trial behavior when crossing phase boundaries.
+        /// One of: <c>continue</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("trial_continuation")]
+        public string TrialContinuation { get; set; }
+
+        /// <summary>
         /// Sets the phase to trialing from the start date to this date. Must be before the phase
         /// end date, can not be combined with <c>trial</c>.
         /// </summary>
