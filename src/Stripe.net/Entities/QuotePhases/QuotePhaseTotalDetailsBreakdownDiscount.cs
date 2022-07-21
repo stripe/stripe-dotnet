@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class QuotePhaseConfigurationTotalDetailsBreakdownDiscount : StripeEntity<QuotePhaseConfigurationTotalDetailsBreakdownDiscount>
+    public class QuotePhaseTotalDetailsBreakdownDiscount : StripeEntity<QuotePhaseTotalDetailsBreakdownDiscount>
     {
         /// <summary>
         /// The amount discounted.

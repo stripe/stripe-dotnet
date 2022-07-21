@@ -11,7 +11,7 @@ namespace Stripe
     /// A quote phase describes the line items, coupons, and trialing status of a subscription
     /// for a predefined time period.
     /// </summary>
-    public class QuotePhaseConfiguration : StripeEntity<QuotePhaseConfiguration>, IHasId, IHasObject
+    public class QuotePhase : StripeEntity<QuotePhase>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -130,7 +130,7 @@ namespace Stripe
         /// The invoice settings applicable during this phase.
         /// </summary>
         [JsonProperty("invoice_settings")]
-        public QuotePhaseConfigurationInvoiceSettings InvoiceSettings { get; set; }
+        public QuotePhaseInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
         /// Integer representing the multiplier applied to the price interval. For example,
@@ -155,7 +155,7 @@ namespace Stripe
         public string ProrationBehavior { get; set; }
 
         [JsonProperty("total_details")]
-        public QuotePhaseConfigurationTotalDetails TotalDetails { get; set; }
+        public QuotePhaseTotalDetails TotalDetails { get; set; }
 
         /// <summary>
         /// If set to true the entire phase is counted as a trial and the customer will not be

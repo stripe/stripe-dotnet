@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class QuotePhaseConfigurationTotalDetails : StripeEntity<QuotePhaseConfigurationTotalDetails>
+    public class QuotePhaseTotalDetails : StripeEntity<QuotePhaseTotalDetails>
     {
         /// <summary>
         /// This is the sum of all the discounts.
@@ -24,6 +24,6 @@ namespace Stripe
         public long AmountTax { get; set; }
 
         [JsonProperty("breakdown")]
-        public QuotePhaseConfigurationTotalDetailsBreakdown Breakdown { get; set; }
+        public QuotePhaseTotalDetailsBreakdown Breakdown { get; set; }
     }
 }

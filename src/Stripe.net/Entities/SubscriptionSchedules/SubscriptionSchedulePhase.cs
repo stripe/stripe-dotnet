@@ -196,6 +196,13 @@ namespace Stripe
         public SubscriptionSchedulePhaseTransferData TransferData { get; set; }
 
         /// <summary>
+        /// Specify behavior of the trial when crossing schedule phase boundaries.
+        /// One of: <c>continue</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("trial_continuation")]
+        public string TrialContinuation { get; set; }
+
+        /// <summary>
         /// When the trial ends within the phase.
         /// </summary>
         [JsonProperty("trial_end")]

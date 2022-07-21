@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class QuotePhaseConfigurationListOptions : ListOptions
+    public class QuotePhaseListOptions : ListOptions
     {
         [JsonProperty("quote")]
         public string Quote { get; set; }

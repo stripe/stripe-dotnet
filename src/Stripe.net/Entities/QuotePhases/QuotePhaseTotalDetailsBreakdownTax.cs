@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class QuotePhaseConfigurationTotalDetailsBreakdownTax : StripeEntity<QuotePhaseConfigurationTotalDetailsBreakdownTax>
+    public class QuotePhaseTotalDetailsBreakdownTax : StripeEntity<QuotePhaseTotalDetailsBreakdownTax>
     {
         /// <summary>
         /// Amount of tax applied for this rate.

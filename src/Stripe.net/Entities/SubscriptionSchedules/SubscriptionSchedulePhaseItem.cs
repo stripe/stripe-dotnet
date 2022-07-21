@@ -5,7 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class SubscriptionSchedulePhaseItem : StripeEntity<SubscriptionSchedulePhaseItem>
+    public class SubscriptionSchedulePhaseItem : StripeEntity<SubscriptionSchedulePhaseItem>, IHasMetadata
     {
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the related subscription
@@ -20,6 +20,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         public List<SubscriptionSchedulePhaseItemDiscount> Discounts { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an item. Metadata on this item will update the underlying subscription item's
+        /// <c>metadata</c> when the phase is entered.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         #region Expandable Plan
 
@@ -95,5 +103,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_rates")]
         public List<TaxRate> TaxRates { get; set; }
+
+        /// <summary>
+        /// Current trial configuration on this item.
+        /// </summary>
+        [JsonProperty("trial")]
+        public SubscriptionSchedulePhaseItemTrial Trial { get; set; }
     }
 }

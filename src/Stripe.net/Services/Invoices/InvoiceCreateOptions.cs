@@ -51,6 +51,13 @@ namespace Stripe
         public string CollectionMethod { get; set; }
 
         /// <summary>
+        /// The currency to create this invoice in. Defaults to that of <c>customer</c> if not
+        /// specified.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
         /// A list of up to 4 custom fields to be displayed on the invoice.
         /// </summary>
         [JsonProperty("custom_fields")]
