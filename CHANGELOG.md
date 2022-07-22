@@ -1,5 +1,20 @@
 # Changelog
 
+## 39.125.0-beta.1 - 2022-07-22
+* [#2542](https://github.com/stripe/stripe-dotnet/pull/2542) API Updates for beta branch
+  - Updated stable APIs to the latest version
+* [#2540](https://github.com/stripe/stripe-dotnet/pull/2540) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - Add `QuotePhase` resource
+* [#2536](https://github.com/stripe/stripe-dotnet/pull/2536) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - Add `Price.MigrateTo` property
+  - Add `SubscriptionSchedule.Amend` method.
+  - Add `Discount.SubscriptionItem` property.
+  - Add `Quote.SubscriptionData.BillingBehavior`, `BillingCycleAnchor`, `EndBehavior`, `FromSchedule`, `FromSubscription`, `Prebilling`, `ProrationBehavior` properties.
+  - Add `Phases` parameter to `Quote.Create`
+  - Add `Subscription.Discounts`, `Prebilling` properties.
+
 ## 39.124.0 - 2022-07-18
 * [#2534](https://github.com/stripe/stripe-dotnet/pull/2534) API Updates
   * Add support for `BlikPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
