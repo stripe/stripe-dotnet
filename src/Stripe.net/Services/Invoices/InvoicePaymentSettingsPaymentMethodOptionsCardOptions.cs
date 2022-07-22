@@ -6,6 +6,15 @@ namespace Stripe
     public class InvoicePaymentSettingsPaymentMethodOptionsCardOptions : INestedOptions
     {
         /// <summary>
+        /// Installment configuration for payments attempted on this invoice (Mexico Only).
+        ///
+        /// For more information, see the <a
+        /// href="https://stripe.com/docs/payments/installments">installments integration guide</a>.
+        /// </summary>
+        [JsonProperty("installments")]
+        public InvoicePaymentSettingsPaymentMethodOptionsCardInstallmentsOptions Installments { get; set; }
+
+        /// <summary>
         /// We strongly recommend that you rely on our SCA Engine to automatically prompt your
         /// customers for authentication based on risk level and <a
         /// href="https://stripe.com/docs/strong-customer-authentication">other requirements</a>.
