@@ -38,7 +38,7 @@ namespace Stripe
         public long AmountTotal { get; set; }
 
         /// <summary>
-        /// If set to <c>new</c>, the billing_cycle_anchor of the subscription is set to the start
+        /// If set to <c>reset</c>, the billing_cycle_anchor of the subscription is set to the start
         /// of the phase when entering the phase. If unset, then the billing cycle anchor is
         /// automatically modified as needed when entering the phase. For more information, see the
         /// billing cycle <a
