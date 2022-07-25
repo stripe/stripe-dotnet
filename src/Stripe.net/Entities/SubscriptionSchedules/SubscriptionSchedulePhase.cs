@@ -9,7 +9,7 @@ namespace Stripe
     public class SubscriptionSchedulePhase : StripeEntity<SubscriptionSchedulePhase>, IHasMetadata
     {
         /// <summary>
-        /// A list of prices and quantities that will generate invoice items appended to the first
+        /// A list of prices and quantities that will generate invoice items appended to the next
         /// invoice for this phase.
         /// </summary>
         [JsonProperty("add_invoice_items")]

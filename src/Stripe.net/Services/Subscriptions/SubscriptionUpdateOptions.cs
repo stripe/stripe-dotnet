@@ -9,7 +9,7 @@ namespace Stripe
     public class SubscriptionUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// A list of prices and quantities that will generate invoice items appended to the first
+        /// A list of prices and quantities that will generate invoice items appended to the next
         /// invoice for this subscription. You may pass up to 20 items.
         /// </summary>
         [JsonProperty("add_invoice_items")]
