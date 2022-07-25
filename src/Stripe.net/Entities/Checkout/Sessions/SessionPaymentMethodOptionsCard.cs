@@ -5,6 +5,9 @@ namespace Stripe.Checkout
 
     public class SessionPaymentMethodOptionsCard : StripeEntity<SessionPaymentMethodOptionsCard>
     {
+        [JsonProperty("installments")]
+        public SessionPaymentMethodOptionsCardInstallments Installments { get; set; }
+
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
