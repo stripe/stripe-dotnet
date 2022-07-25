@@ -1,5 +1,14 @@
 # Changelog
 
+## 39.125.0 - 2022-07-25
+* [#2543](https://github.com/stripe/stripe-dotnet/pull/2543) API Updates
+  * Add support for `Installments` on `CheckoutSessionPaymentMethodOptionsCardOptions`, `CheckoutSessionPaymentMethodOptionsCard`, `InvoicePaymentSettingsPaymentMethodOptionsCardOptions`, and `InvoicePaymentSettingsPaymentMethodOptionsCard` 
+  * Add support for `DefaultCurrency` and `InvoiceCreditBalance` on `Customer`
+  * Add support for `Currency` on `InvoiceCreateOptions`
+  * Add support for `DefaultMandate` on `InvoicePaymentSettingsOptions` and `InvoicePaymentSettings`
+  * Add support for `Mandate` on `InvoicePayOptions`
+  
+
 ## 39.124.0 - 2022-07-18
 * [#2534](https://github.com/stripe/stripe-dotnet/pull/2534) API Updates
   * Add support for `BlikPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
