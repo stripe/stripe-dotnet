@@ -7,6 +7,14 @@ namespace Stripe
     public class InvoicePaymentSettingsOptions : INestedOptions
     {
         /// <summary>
+        /// ID of the mandate to be used for this invoice. It must correspond to the payment method
+        /// used to pay the invoice, including the invoice's default_payment_method or
+        /// default_source, if set.
+        /// </summary>
+        [JsonProperty("default_mandate")]
+        public string DefaultMandate { get; set; }
+
+        /// <summary>
         /// Payment-method-specific configuration to provide to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]
