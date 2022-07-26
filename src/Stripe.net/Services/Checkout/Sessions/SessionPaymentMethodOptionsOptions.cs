@@ -60,6 +60,12 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsCardOptions Card { get; set; }
 
         /// <summary>
+        /// contains details about the Customer Balance payment method options.
+        /// </summary>
+        [JsonProperty("customer_balance")]
+        public SessionPaymentMethodOptionsCustomerBalanceOptions CustomerBalance { get; set; }
+
+        /// <summary>
         /// contains details about the EPS payment method options.
         /// </summary>
         [JsonProperty("eps")]
