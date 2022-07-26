@@ -23,15 +23,7 @@ namespace Stripe
 
         public const string IdentityDocumentDownloadable = "identity_document_downloadable";
 
-        public const string IncorporationArticle = "incorporation_article";
-
-        public const string IncorporationDocument = "incorporation_document";
-
-        public const string PaymentProviderTransfer = "payment_provider_transfer";
-
         public const string PciDocument = "pci_document";
-
-        public const string ProductFeed = "product_feed";
 
         public const string Selfie = "selfie";
 

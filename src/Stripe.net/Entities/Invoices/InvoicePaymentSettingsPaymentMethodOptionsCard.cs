@@ -5,9 +5,6 @@ namespace Stripe
 
     public class InvoicePaymentSettingsPaymentMethodOptionsCard : StripeEntity<InvoicePaymentSettingsPaymentMethodOptionsCard>
     {
-        [JsonProperty("installments")]
-        public InvoicePaymentSettingsPaymentMethodOptionsCardInstallments Installments { get; set; }
-
         /// <summary>
         /// We strongly recommend that you rely on our SCA Engine to automatically prompt your
         /// customers for authentication based on risk level and <a

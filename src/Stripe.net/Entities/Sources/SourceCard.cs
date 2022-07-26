@@ -20,20 +20,29 @@ namespace Stripe
         [JsonProperty("cvc_check")]
         public string CvcCheck { get; set; }
 
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
         [JsonProperty("dynamic_last4")]
         public string DynamicLast4 { get; set; }
 
         [JsonProperty("exp_month")]
-        public long ExpMonth { get; set; }
+        public long? ExpMonth { get; set; }
 
         [JsonProperty("exp_year")]
-        public long ExpYear { get; set; }
+        public long? ExpYear { get; set; }
 
         [JsonProperty("fingerprint")]
         public string Fingerprint { get; set; }
 
         [JsonProperty("funding")]
         public string Funding { get; set; }
+
+        [JsonProperty("iin")]
+        public string Iin { get; set; }
+
+        [JsonProperty("issuer")]
+        public string Issuer { get; set; }
 
         [JsonProperty("last4")]
         public string Last4 { get; set; }

@@ -11,20 +11,20 @@ namespace Stripe
         /// meets its regulatory obligations.
         /// </summary>
         [JsonProperty("director")]
-        public bool Director { get; set; }
+        public bool? Director { get; set; }
 
         /// <summary>
         /// Whether the person has significant responsibility to control, manage, or direct the
         /// organization.
         /// </summary>
         [JsonProperty("executive")]
-        public bool Executive { get; set; }
+        public bool? Executive { get; set; }
 
         /// <summary>
         /// Whether the person is an owner of the account’s legal entity.
         /// </summary>
         [JsonProperty("owner")]
-        public bool Owner { get; set; }
+        public bool? Owner { get; set; }
 
         /// <summary>
         /// The percent owned by the person of the account's legal entity.
@@ -40,7 +40,7 @@ namespace Stripe
         /// responsible for opening the account.
         /// </summary>
         [JsonProperty("representative")]
-        public bool Representative { get; set; }
+        public bool? Representative { get; set; }
 
         /// <summary>
         /// The person's title (e.g., CEO, Support Engineer).

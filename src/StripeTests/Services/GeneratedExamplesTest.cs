@@ -498,6 +498,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestCheckoutSessionServiceListLineItems()
+        {
+            var service = new Stripe.Checkout.SessionService(this.StripeClient);
+            service.ListLineItems("sess_xyz");
+        }
+
+        [Fact]
         public void TestCheckoutSessionServiceRetrieve()
         {
             var service = new Stripe.Checkout.SessionService(this.StripeClient);
