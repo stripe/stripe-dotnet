@@ -1,5 +1,9 @@
 # Changelog
 
+## 39.126.0 - 2022-07-26
+* [#2544](https://github.com/stripe/stripe-dotnet/pull/2544) API Updates
+  * Add support for `CustomerBalance` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
+
 ## 39.125.0 - 2022-07-25
 * [#2543](https://github.com/stripe/stripe-dotnet/pull/2543) API Updates
   * Add support for `Installments` on `CheckoutSessionPaymentMethodOptionsCardOptions`, `CheckoutSessionPaymentMethodOptionsCard`, `InvoicePaymentSettingsPaymentMethodOptionsCardOptions`, and `InvoicePaymentSettingsPaymentMethodOptionsCard` 
