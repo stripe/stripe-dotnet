@@ -29,8 +29,10 @@ namespace Stripe.Issuing
         public string Object { get; set; }
 
         /// <summary>
-        /// Disputed amount. Usually the amount of the <c>transaction</c>, but can differ (usually
-        /// because of currency fluctuation).
+        /// Disputed amount in the card's currency and in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// Usually the amount of the <c>transaction</c>, but can differ (usually because of
+        /// currency fluctuation).
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
