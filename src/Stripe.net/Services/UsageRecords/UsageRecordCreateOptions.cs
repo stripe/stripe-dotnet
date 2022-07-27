@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -32,6 +33,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<long?, UsageRecordTimestamp> Timestamp { get; set; }
+        public AnyOf<DateTime?, UsageRecordTimestamp> Timestamp { get; set; }
     }
 }
