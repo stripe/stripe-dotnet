@@ -30,10 +30,10 @@ namespace Stripe
         public string Cvc { get; set; }
 
         [JsonProperty("exp_month")]
-        public long? ExpMonth { get; set; }
+        public string ExpMonth { get; set; }
 
         [JsonProperty("exp_year")]
-        public long? ExpYear { get; set; }
+        public string ExpYear { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
