@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -137,16 +136,7 @@ namespace Stripe
         [JsonProperty("tax_exempt")]
         public string TaxExempt { get; set; }
 
-        /// <summary>
-        /// Unix timestamp representing the end of the trial period the customer will get before
-        /// being charged for the first time. This will always overwrite any trials that might apply
-        /// via a subscribed plan. If set, trial_end will override the default trial period of the
-        /// plan the customer is being subscribed to. The special value <c>now</c> can be provided
-        /// to end the customer's trial immediately. Can be at most two years from
-        /// <c>billing_cycle_anchor</c>.
-        /// </summary>
-        [JsonProperty("trial_end")]
-        [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<DateTime?, SubscriptionTrialEnd> TrialEnd { get; set; }
+        [JsonProperty("validate")]
+        public bool? Validate { get; set; }
     }
 }

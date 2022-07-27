@@ -138,5 +138,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("test_clock")]
         public string TestClock { get; set; }
+
+        [JsonProperty("validate")]
+        public bool? Validate { get; set; }
     }
 }
