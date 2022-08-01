@@ -444,27 +444,6 @@ namespace Stripe
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
 
-        #region Expandable Order
-
-        [JsonIgnore]
-        public string OrderId
-        {
-            get => this.InternalOrder?.Id;
-            set => this.InternalOrder = SetExpandableFieldId(value, this.InternalOrder);
-        }
-
-        [JsonIgnore]
-        public Order Order
-        {
-            get => this.InternalOrder?.ExpandedObject;
-            set => this.InternalOrder = SetExpandableFieldObject(value, this.InternalOrder);
-        }
-
-        [JsonProperty("order")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Order>))]
-        internal ExpandableField<Order> InternalOrder { get; set; }
-        #endregion
-
         /// <summary>
         /// Details about whether the payment was accepted, and why. See <a
         /// href="https://stripe.com/docs/declines">understanding declines</a> for details.
