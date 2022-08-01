@@ -66,13 +66,6 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        /// <summary>
-        /// The default three-letter <a href="https://stripe.com/docs/currencies">ISO code for the
-        /// currency</a> that the customer will be charged in for billing purposes.
-        /// </summary>
-        [JsonProperty("default_currency")]
-        public string DefaultCurrency { get; set; }
-
         #region Expandable DefaultSource
 
         /// <summary>

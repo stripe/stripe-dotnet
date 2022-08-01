@@ -32,7 +32,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The reason why the card was canceled.
-        /// One of: <c>lost</c>, or <c>stolen</c>.
+        /// One of: <c>design_rejected</c>, <c>lost</c>, or <c>stolen</c>.
         /// </summary>
         [JsonProperty("cancellation_reason")]
         public string CancellationReason { get; set; }
