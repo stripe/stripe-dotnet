@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class InvoiceLineItemPeriod : StripeEntity<InvoiceLineItemPeriod>
     {
@@ -9,12 +11,14 @@ namespace Stripe
         /// The end of the period, which must be greater than or equal to the start.
         /// </summary>
         [JsonProperty("end")]
-        public long End { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime End { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The start of the period.
         /// </summary>
         [JsonProperty("start")]
-        public long Start { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Start { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

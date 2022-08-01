@@ -6,6 +6,9 @@ namespace Stripe.Checkout
 
     public class SessionPaymentMethodOptionsCustomerBalanceBankTransferOptions : INestedOptions
     {
+        /// <summary>
+        /// Configuration for eu_bank_transfer funding type.
+        /// </summary>
         [JsonProperty("eu_bank_transfer")]
         public SessionPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransferOptions EuBankTransfer { get; set; }
 

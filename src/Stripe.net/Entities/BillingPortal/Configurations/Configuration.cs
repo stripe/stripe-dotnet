@@ -29,11 +29,36 @@ namespace Stripe.BillingPortal
         [JsonProperty("active")]
         public bool Active { get; set; }
 
+        #region Expandable Application
+
         /// <summary>
+        /// (ID of the Application)
         /// ID of the Connect Application that created the configuration.
         /// </summary>
+        [JsonIgnore]
+        public string ApplicationId
+        {
+            get => this.InternalApplication?.Id;
+            set => this.InternalApplication = SetExpandableFieldId(value, this.InternalApplication);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the Connect Application that created the configuration.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Application Application
+        {
+            get => this.InternalApplication?.ExpandedObject;
+            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
+        }
+
         [JsonProperty("application")]
-        public string Application { get; set; }
+        [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
+        internal ExpandableField<Application> InternalApplication { get; set; }
+        #endregion
 
         [JsonProperty("business_profile")]
         public ConfigurationBusinessProfile BusinessProfile { get; set; }

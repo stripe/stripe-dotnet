@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -106,9 +105,6 @@ namespace Stripe
         [JsonProperty("promotion_code")]
         public string PromotionCode { get; set; }
 
-        [JsonProperty("quantity")]
-        public long? Quantity { get; set; }
-
         /// <summary>
         /// The customer's shipping information. Appears on invoices emailed to this customer.
         /// </summary>
@@ -142,10 +138,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("test_clock")]
         public string TestClock { get; set; }
-
-        [JsonProperty("trial_end")]
-        [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<DateTime?, SubscriptionTrialEnd> TrialEnd { get; set; }
 
         [JsonProperty("validate")]
         public bool? Validate { get; set; }

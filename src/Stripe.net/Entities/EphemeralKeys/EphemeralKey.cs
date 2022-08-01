@@ -2,7 +2,6 @@
 namespace Stripe
 {
     using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -19,9 +18,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
-
-        [JsonProperty("associated_objects")]
-        public List<EphemeralKeyAssociatedObject> AssociatedObjects { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.

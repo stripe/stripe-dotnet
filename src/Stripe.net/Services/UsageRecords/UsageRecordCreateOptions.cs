@@ -28,10 +28,11 @@ namespace Stripe
         /// <summary>
         /// The timestamp for the usage event. This timestamp must be within the current billing
         /// period of the subscription of the provided <c>subscription_item</c>, and must not be in
-        /// the future.
+        /// the future. When passing <c>"now"</c>, Stripe records usage for the current time.
+        /// Default is <c>"now"</c> if a value is not provided.
         /// </summary>
         [JsonProperty("timestamp")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime? Timestamp { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, UsageRecordTimestamp> Timestamp { get; set; }
     }
 }
