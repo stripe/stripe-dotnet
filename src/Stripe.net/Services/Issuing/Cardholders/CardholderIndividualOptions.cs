@@ -12,13 +12,15 @@ namespace Stripe.Issuing
         public CardholderIndividualDobOptions Dob { get; set; }
 
         /// <summary>
-        /// The first name of this cardholder.
+        /// The first name of this cardholder. This field cannot contain any special characters or
+        /// numbers.
         /// </summary>
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
 
         /// <summary>
-        /// The last name of this cardholder.
+        /// The last name of this cardholder. This field cannot contain any special characters or
+        /// numbers.
         /// </summary>
         [JsonProperty("last_name")]
         public string LastName { get; set; }
