@@ -14,8 +14,8 @@ namespace Stripe
 
         /// <summary>
         /// Indicates the outcome of 3D Secure authentication.
-        /// One of: <c>attempt_acknowledged</c>, <c>authenticated</c>, <c>failed</c>,
-        /// <c>not_supported</c>, or <c>processing_error</c>.
+        /// One of: <c>attempt_acknowledged</c>, <c>authenticated</c>, <c>exempted</c>,
+        /// <c>failed</c>, <c>not_supported</c>, or <c>processing_error</c>.
         /// </summary>
         [JsonProperty("result")]
         public string Result { get; set; }

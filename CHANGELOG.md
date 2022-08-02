@@ -1,5 +1,28 @@
 # Changelog
 
+## 40.0.0 - 2022-08-02
+
+Major version release for API version 2022-08-01. Default API version changed to "2022-08-01".
+
+Breaking changes that arose during code generation of the library that we postponed for the next major version. For changes to the SDK, read more detailed description at https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v40. For changes to the Stripe products, read more at https://stripe.com/docs/upgrades#2022-08-01.
+
+"⚠️" symbol highlights breaking changes.
+
+* [#2549](https://github.com/stripe/stripe-dotnet/pull/2549) API Updates
+* [#2547](https://github.com/stripe/stripe-dotnet/pull/2547) Next major release changes
+
+## 39.126.0 - 2022-07-26
+* [#2544](https://github.com/stripe/stripe-dotnet/pull/2544) API Updates
+  * Add support for `CustomerBalance` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
+
+## 39.125.0 - 2022-07-25
+* [#2543](https://github.com/stripe/stripe-dotnet/pull/2543) API Updates
+  * Add support for `Installments` on `CheckoutSessionPaymentMethodOptionsCardOptions`, `CheckoutSessionPaymentMethodOptionsCard`, `InvoicePaymentSettingsPaymentMethodOptionsCardOptions`, and `InvoicePaymentSettingsPaymentMethodOptionsCard` 
+  * Add support for `DefaultCurrency` and `InvoiceCreditBalance` on `Customer`
+  * Add support for `Currency` on `InvoiceCreateOptions`
+  * Add support for `DefaultMandate` on `InvoicePaymentSettingsOptions` and `InvoicePaymentSettings`
+  * Add support for `Mandate` on `InvoicePayOptions`
+
 ## 39.125.0-beta.1 - 2022-07-22
 * [#2542](https://github.com/stripe/stripe-dotnet/pull/2542) API Updates for beta branch
   - Updated stable APIs to the latest version

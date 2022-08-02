@@ -503,21 +503,6 @@ namespace Stripe
         public const string OrderPaymentFailed = "order.payment_failed";
 
         /// <summary>
-        /// Occurs whenever payment is attempted on an order, and the payment succeeds.
-        /// </summary>
-        public const string OrderPaymentSucceeded = "order.payment_succeeded";
-
-        /// <summary>
-        /// Occurs whenever an order is updated.
-        /// </summary>
-        public const string OrderUpdated = "order.updated";
-
-        /// <summary>
-        /// Occurs whenever an order return is created.
-        /// </summary>
-        public const string OrderReturnCreated = "order_return.created";
-
-        /// <summary>
         /// Occurs whenever a payment is created.
         /// </summary>
         public const string PaymentCreated = "payment.created";

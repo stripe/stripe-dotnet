@@ -113,12 +113,6 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Warning: this is not in the documentation.
-        /// </summary>
-        [JsonProperty("default_source_type")]
-        public string DefaultSourceType { get; set; }
-
-        /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
@@ -135,7 +129,7 @@ namespace Stripe
         /// <c>delinquent</c> doesn't get reset to <c>false</c>.
         /// </summary>
         [JsonProperty("delinquent")]
-        public bool Delinquent { get; set; }
+        public bool? Delinquent { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
