@@ -5,6 +5,9 @@ namespace Stripe
 
     public class SubscriptionScheduleAmendmentItemActionRemoveOptions : INestedOptions
     {
+        /// <summary>
+        /// ID of a price to remove.
+        /// </summary>
         [JsonProperty("price")]
         public string Price { get; set; }
     }
