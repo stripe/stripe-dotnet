@@ -1,5 +1,10 @@
 # Changelog
 
+## 40.1.0-beta.1 - 2022-08-03
+* [#2550](https://github.com/stripe/stripe-dotnet/pull/2550) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - Added the `Order` resource support
+
 ## 40.0.0 - 2022-08-02
 
 Major version release for API version 2022-08-01. Default API version changed to "2022-08-01".
