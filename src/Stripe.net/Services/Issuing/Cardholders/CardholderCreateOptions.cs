@@ -41,7 +41,8 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The cardholder's name. This will be printed on cards issued to them. The maximum length
-        /// of this field is 24 characters.
+        /// of this field is 24 characters. This field cannot contain any special characters or
+        /// numbers.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }

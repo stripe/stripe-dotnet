@@ -36,8 +36,11 @@ namespace Stripe
         public List<SubscriptionScheduleAmendmentItemActionOptions> ItemActions { get; set; }
 
         /// <summary>
-        /// Changes to how Stripe handles prorations during the amendment time span. Also supported
-        /// as a point-in-time operation when <c>amendment_end</c> is <c>null</c>.
+        /// Changes to how Stripe handles prorations during the amendment time span. Affects if and
+        /// how prorations are created when a future phase starts. In cases where the amendment
+        /// changes the currently active phase, it is used to determine whether or how to prorate
+        /// now, at the time of the request. Also supported as a point-in-time operation when
+        /// <c>amendment_end</c> is <c>null</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]

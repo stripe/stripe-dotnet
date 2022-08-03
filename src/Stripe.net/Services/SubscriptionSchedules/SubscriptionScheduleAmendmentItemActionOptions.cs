@@ -6,7 +6,8 @@ namespace Stripe
     public class SubscriptionScheduleAmendmentItemActionOptions : INestedOptions
     {
         /// <summary>
-        /// Details of the subscription item to add.
+        /// Details of the subscription item to add. The <c>price</c> must be unique across all
+        /// items.
         /// </summary>
         [JsonProperty("add")]
         public SubscriptionScheduleAmendmentItemActionAddOptions Add { get; set; }
@@ -18,7 +19,10 @@ namespace Stripe
         public SubscriptionScheduleAmendmentItemActionRemoveOptions Remove { get; set; }
 
         /// <summary>
-        /// Details of the subscription item to replace the existing items with.
+        /// Details of the subscription item to replace the existing items with. If an item with the
+        /// <c>set[price]</c> already exists, the <c>items</c> array is not cleared. Instead, all of
+        /// the other <c>set</c> properties that are passed in this request will replace the
+        /// existing values for the configuration item.
         /// </summary>
         [JsonProperty("set")]
         public SubscriptionScheduleAmendmentItemActionSetOptions Set { get; set; }

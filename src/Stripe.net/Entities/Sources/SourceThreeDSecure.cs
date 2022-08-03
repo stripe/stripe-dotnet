@@ -56,6 +56,9 @@ namespace Stripe
         [JsonProperty("last4")]
         public string Last4 { get; set; }
 
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
         [JsonProperty("three_d_secure")]
         public string ThreeDSecure { get; set; }
 

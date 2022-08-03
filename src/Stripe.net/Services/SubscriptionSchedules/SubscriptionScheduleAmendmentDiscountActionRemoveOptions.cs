@@ -5,9 +5,15 @@ namespace Stripe
 
     public class SubscriptionScheduleAmendmentDiscountActionRemoveOptions : INestedOptions
     {
+        /// <summary>
+        /// The coupon code to remove from the <c>discounts</c> array.
+        /// </summary>
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
 
+        /// <summary>
+        /// The ID of a discount to remove from the <c>discounts</c> array.
+        /// </summary>
         [JsonProperty("discount")]
         public string Discount { get; set; }
     }

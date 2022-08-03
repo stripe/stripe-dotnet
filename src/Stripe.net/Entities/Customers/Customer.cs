@@ -66,13 +66,6 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        /// <summary>
-        /// The default three-letter <a href="https://stripe.com/docs/currencies">ISO code for the
-        /// currency</a> that the customer will be charged in for billing purposes.
-        /// </summary>
-        [JsonProperty("default_currency")]
-        public string DefaultCurrency { get; set; }
-
         #region Expandable DefaultSource
 
         /// <summary>
@@ -113,12 +106,6 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Warning: this is not in the documentation.
-        /// </summary>
-        [JsonProperty("default_source_type")]
-        public string DefaultSourceType { get; set; }
-
-        /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
@@ -135,7 +122,7 @@ namespace Stripe
         /// <c>delinquent</c> doesn't get reset to <c>false</c>.
         /// </summary>
         [JsonProperty("delinquent")]
-        public bool Delinquent { get; set; }
+        public bool? Delinquent { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.

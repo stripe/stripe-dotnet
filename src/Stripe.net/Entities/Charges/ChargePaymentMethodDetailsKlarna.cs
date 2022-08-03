@@ -18,8 +18,8 @@ namespace Stripe
         /// <c>de-DE</c>, <c>en-DE</c>, <c>da-DK</c>, <c>en-DK</c>, <c>es-ES</c>, <c>en-ES</c>,
         /// <c>fi-FI</c>, <c>sv-FI</c>, <c>en-FI</c>, <c>en-GB</c>, <c>en-IE</c>, <c>it-IT</c>,
         /// <c>en-IT</c>, <c>nl-NL</c>, <c>en-NL</c>, <c>nb-NO</c>, <c>en-NO</c>, <c>sv-SE</c>,
-        /// <c>en-SE</c>, <c>en-US</c>, <c>es-US</c>, <c>fr-FR</c>, <c>en-FR</c>, <c>en-AU</c>, or
-        /// <c>en-NZ</c>.
+        /// <c>en-SE</c>, <c>en-US</c>, <c>es-US</c>, <c>fr-FR</c>, <c>en-FR</c>, <c>en-AU</c>,
+        /// <c>en-NZ</c>, <c>en-CA</c>, or <c>fr-CA</c>.
         /// </summary>
         [JsonProperty("preferred_locale")]
         public string PreferredLocale { get; set; }

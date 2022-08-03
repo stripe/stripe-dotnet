@@ -13,5 +13,8 @@ namespace Stripe
 
         [JsonProperty("iban_last4")]
         public string IbanLast4 { get; set; }
+
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
     }
 }

@@ -14,6 +14,15 @@ namespace Stripe
         [JsonProperty("fingerprint")]
         public string Fingerprint { get; set; }
 
+        [JsonProperty("refund_account_holder_name")]
+        public string RefundAccountHolderName { get; set; }
+
+        [JsonProperty("refund_account_holder_type")]
+        public string RefundAccountHolderType { get; set; }
+
+        [JsonProperty("refund_routing_number")]
+        public string RefundRoutingNumber { get; set; }
+
         [JsonProperty("routing_number")]
         public string RoutingNumber { get; set; }
 
