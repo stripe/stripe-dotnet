@@ -1,10 +1,19 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Apps
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SecretCreateOptions : BaseOptions
     {
+        /// <summary>
+        /// The Unix timestamp for the expiry time of the secret, after which the secret deletes.
+        /// </summary>
+        [JsonProperty("expires_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? ExpiresAt { get; set; }
+
         /// <summary>
         /// A name for the secret that's unique within the scope.
         /// </summary>
