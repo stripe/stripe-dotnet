@@ -20,6 +20,14 @@ namespace Stripe
         public bool? Forgive { get; set; }
 
         /// <summary>
+        /// ID of the mandate to be used for this invoice. It must correspond to the payment method
+        /// used to pay the invoice, including the payment_method param or the invoice's
+        /// default_payment_method or default_source, if set.
+        /// </summary>
+        [JsonProperty("mandate")]
+        public string Mandate { get; set; }
+
+        /// <summary>
         /// Indicates if a customer is on or off-session while an invoice payment is attempted.
         /// Defaults to <c>true</c> (off-session).
         /// </summary>

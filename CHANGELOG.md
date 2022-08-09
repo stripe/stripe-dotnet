@@ -1,5 +1,93 @@
 # Changelog
 
+## 40.1.0 - 2022-08-09
+* [#2553](https://github.com/stripe/stripe-dotnet/pull/2553) API Updates
+  * Add support for `ProcessConfig` on `TerminalReaderActionProcessPaymentIntent`
+* [#2551](https://github.com/stripe/stripe-dotnet/pull/2551) API Updates
+  * Add support for `ExpiresAt` on `AppsSecretCreateOptions` and `AppsSecret`
+
+## 40.0.0 - 2022-08-02
+
+This release includes breaking changes resulting from:
+
+* Moving to use the new API version "2022-08-01". To learn more about these changes to Stripe products, see https://stripe.com/docs/upgrades#2022-08-01
+* Cleaning up the SDK to remove deprecated/unused APIs and rename classes/methods/properties to sync with product APIs. Read more detailed description at https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v40.
+
+"⚠️" symbol highlights breaking changes.
+
+* [#2549](https://github.com/stripe/stripe-dotnet/pull/2549) API Updates
+* [#2547](https://github.com/stripe/stripe-dotnet/pull/2547) Next major release changes
+
+### Added
+* Add `RefundAccountHolderName`, `RefundAccountHolderType`, and `RefundRoutingNumber` properties to `SourceAchCreditTransfer` entity.
+* Add `DataString`, `NativeUrl`, and `StatementDescriptor` properties to `SourceAlipay` entity.
+* Add `Description`, `Iin`, and `Issuer` properties to `SourceCard` and `SourceCardPresent` entities.
+* Add `Reference` and `StatementDescriptor` properties to `SourceEps` entity.
+* Add `StatementDescriptor` property to `SourceBancontact`,`SourceGiropay`, `SourceIdeal`, and `SourceSofort` entities.
+* Add `RefundAccountHolderAddressCity`, `RefundAccountHolderAddressCountry`, `RefundAccountHolderAddressLine1`, `RefundAccountHolderAddressLine2`, `RefundAccountHolderAddressPostalCode`, `RefundAccountHolderAddressState`, `RefundAccountHolderName` and `RefundIban` properties to `SourceMultibanco` and `SourceSepaCreditTransfer` entities.
+* Add `Name` property to `SourceThreeDSecure` entity.
+* Add support for `ShippingCost` and `ShippingDetails` on `CheckoutSession`
+
+### ⚠️ Changed
+* Rename `BalanceDetails` to `BalanceIssuing`. Rename type of `Balance.Issuing` property.
+* Change `Application` property in `BillingPortal.Configuration` entity to be expandable.
+* Change `Delinquent` property in `Customer` entity to be nullable.
+* Change `Amount` property in `Dispute` and `PaymentIntentAmountDetailsTip` entities to be non-nullable. The field is required.
+* Change type of `Start` and `End` property in `InvoiceItemPeriod` and `InvoiceLineItemPeriod` entities to `DateTime`.
+* Change `AmountSubtotal` and `AmountTotal` properties in `LineItem` entity to be non-nullable. The fields are required.
+* Change `Director`, `Executive`, `Owner`, and `Representative` properties in `PersonRelationship` to be nullable.
+* Change `Location` property in `Reader` and `Terminal.Reader` entities to be expandable.
+* Change type of `ExpMonth` and `ExpYear` properties in `ExternalAccountUpdateOptions` and `TokenCardOptions` to `string`.
+* Change type of `StartDate` property in `SubscriptionSchedulePhaseOptions` to union of date and string. This supports `"now"` as a valid value.
+* Change type of `Timestamp` property in `UsageRecordCreateOptions` to union of date and string. This supports `"now"` as a valid value.
+
+### ⚠️ Removed
+* Remove `CustomerPaymentSettingsOptions`, `CustomerPaymentSettingsPaymentMethodOptionsBancontactOptions`, `CustomerPaymentSettingsPaymentMethodOptionsCardOptions`, and `CustomerPaymentSettingsPaymentMethodOptionsOptions`.
+* Remove `IncorporationArticle`,  `IncorporationDocument`, `PaymentProviderTransfer`, and `ProductFeed` from `FilePurpose` constants. The values are no longer in use.
+* Remove `DefaultSourceType` property from `Customer` entity. The field was undocumented and unsupported.
+* Remove `AssociatedObjects` array property from `EphemeralKey` entity. The field was undocumented and unsupported.
+* Remove `EphemeralKeyAssociatedObject` entity.
+* Remove `Quantity` and `TrialEnd` properties in `CustomerCreateOptions`. The fields are not supported in the operation.
+* Remove `TrialEnd` property in `CustomerUpdateOptions`. The property was not supported in the operation.
+* Remove `Order` and `OrderItem` resources and APIs as those have been deprecated for multiple years.
+  * Remove `OrderPaymentSucceeded`, `OrderUpdated`, and `OrderReturnCreated` event constants. These events are deprecated.
+  * Remove `Order` and `OrderId` properties in `Charge` entity. The property was deprecated.
+* Remove `QuoteFinalizeQuoteOptions`. The options weren't used anymore.
+* Remove `RedirectUrl` from `LoginLinkCreateOptions`. The property was deprecated.
+
+## 39.126.0 - 2022-07-26
+* [#2544](https://github.com/stripe/stripe-dotnet/pull/2544) API Updates
+  * Add support for `CustomerBalance` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
+
+## 39.125.0 - 2022-07-25
+* [#2543](https://github.com/stripe/stripe-dotnet/pull/2543) API Updates
+  * Add support for `Installments` on `CheckoutSessionPaymentMethodOptionsCardOptions`, `CheckoutSessionPaymentMethodOptionsCard`, `InvoicePaymentSettingsPaymentMethodOptionsCardOptions`, and `InvoicePaymentSettingsPaymentMethodOptionsCard` 
+  * Add support for `DefaultCurrency` and `InvoiceCreditBalance` on `Customer`
+  * Add support for `Currency` on `InvoiceCreateOptions`
+  * Add support for `DefaultMandate` on `InvoicePaymentSettingsOptions` and `InvoicePaymentSettings`
+  * Add support for `Mandate` on `InvoicePayOptions`
+  
+
+## 39.124.0 - 2022-07-18
+* [#2534](https://github.com/stripe/stripe-dotnet/pull/2534) API Updates
+  * Add support for `BlikPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Blik` on `ChargePaymentMethodDetails`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, `SetupIntentPaymentMethodDataOptions`, `SetupIntentPaymentMethodOptionsOptions`, and `SetupIntentPaymentMethodOptions`
+  * Change type of `CheckoutSessionConsentCollectionPromotionsOptions`, `CheckoutSessionConsentCollectionPromotions`, `PaymentLinkConsentCollectionPromotionsOptions`, and `PaymentLinkConsentCollectionPromotions` from `literal('auto')` to `enum('auto'|'none')`
+
+## 39.123.0 - 2022-07-12
+* [#2530](https://github.com/stripe/stripe-dotnet/pull/2530) API Updates
+  * Add support for `CustomerDetails` on `CheckoutSessionListOptions`
+
+## 39.122.0 - 2022-07-07
+* [#2528](https://github.com/stripe/stripe-dotnet/pull/2528) API Updates
+  * Add support for `Currency` on `CheckoutSessionCreateOptions`, `InvoiceUpcomingLinesOptions`, `InvoiceUpcomingOptions`, `PaymentLinkCreateOptions`, `SubscriptionCreateOptions`, `SubscriptionSchedulePhasesOptions`, `SubscriptionSchedulePhases`, and `Subscription`
+  * Add support for `CurrencyOptions` on `CheckoutSessionShippingOptionsShippingRateDataFixedAmountOptions`, `CouponCreateOptions`, `CouponUpdateOptions`, `Coupon`, `OrderShippingCostShippingRateDataFixedAmountOptions`, `PriceCreateOptions`, `PriceUpdateOptions`, `Price`, `ProductDefaultPriceDataOptions`, `PromotionCodeRestrictionsOptions`, `PromotionCodeRestrictions`, `ShippingRateFixedAmountOptions`, and `ShippingRateFixedAmount`
+  * Add support for `Restrictions` on `PromotionCodeUpdateOptions`
+  * Add support for `FixedAmount` and `TaxBehavior` on `ShippingRateUpdateOptions`
+* [#2526](https://github.com/stripe/stripe-dotnet/pull/2526) API Updates
+  * Add support for `Customer` on `CheckoutSessionListOptions` and `RefundCreateOptions`
+  * Add support for `Currency` and `Origin` on `RefundCreateOptions`
+
 ## 39.121.0 - 2022-06-29
 * [#2524](https://github.com/stripe/stripe-dotnet/pull/2524) API Updates
   * Add support for `DeliverCard`, `FailCard`, `ReturnCard`, and `ShipCard` test helper methods on resource `Issuing.Card`

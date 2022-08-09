@@ -343,12 +343,6 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
-        /// Shipping information for this Checkout Session.
-        /// </summary>
-        [JsonProperty("shipping")]
-        public Shipping Shipping { get; set; }
-
-        /// <summary>
         /// When set, provides configuration for Checkout to collect a shipping address from a
         /// customer.
         /// </summary>
@@ -356,41 +350,23 @@ namespace Stripe.Checkout
         public SessionShippingAddressCollection ShippingAddressCollection { get; set; }
 
         /// <summary>
+        /// The details of the customer cost of shipping, including the customer chosen
+        /// ShippingRate.
+        /// </summary>
+        [JsonProperty("shipping_cost")]
+        public SessionShippingCost ShippingCost { get; set; }
+
+        /// <summary>
+        /// Shipping information for this Checkout Session.
+        /// </summary>
+        [JsonProperty("shipping_details")]
+        public SessionShippingDetails ShippingDetails { get; set; }
+
+        /// <summary>
         /// The shipping rate options applied to this Session.
         /// </summary>
         [JsonProperty("shipping_options")]
         public List<SessionShippingOption> ShippingOptions { get; set; }
-
-        #region Expandable ShippingRate
-
-        /// <summary>
-        /// (ID of the ShippingRate)
-        /// The ID of the ShippingRate for Checkout Sessions in <c>payment</c> mode.
-        /// </summary>
-        [JsonIgnore]
-        public string ShippingRateId
-        {
-            get => this.InternalShippingRate?.Id;
-            set => this.InternalShippingRate = SetExpandableFieldId(value, this.InternalShippingRate);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// The ID of the ShippingRate for Checkout Sessions in <c>payment</c> mode.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-        public ShippingRate ShippingRate
-        {
-            get => this.InternalShippingRate?.ExpandedObject;
-            set => this.InternalShippingRate = SetExpandableFieldObject(value, this.InternalShippingRate);
-        }
-
-        [JsonProperty("shipping_rate")]
-        [JsonConverter(typeof(ExpandableFieldConverter<ShippingRate>))]
-        internal ExpandableField<ShippingRate> InternalShippingRate { get; set; }
-        #endregion
 
         /// <summary>
         /// The status of the Checkout Session, one of <c>open</c>, <c>complete</c>, or

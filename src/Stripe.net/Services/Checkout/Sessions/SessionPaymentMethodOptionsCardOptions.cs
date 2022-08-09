@@ -6,6 +6,12 @@ namespace Stripe.Checkout
     public class SessionPaymentMethodOptionsCardOptions : INestedOptions
     {
         /// <summary>
+        /// Installment options for card payments.
+        /// </summary>
+        [JsonProperty("installments")]
+        public SessionPaymentMethodOptionsCardInstallmentsOptions Installments { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///

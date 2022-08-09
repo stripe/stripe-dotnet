@@ -32,7 +32,7 @@ namespace Stripe
         /// Total before any discounts or taxes are applied.
         /// </summary>
         [JsonProperty("amount_subtotal")]
-        public long? AmountSubtotal { get; set; }
+        public long AmountSubtotal { get; set; }
 
         /// <summary>
         /// Total tax amount applied. If no tax was applied, defaults to 0.
@@ -44,7 +44,7 @@ namespace Stripe
         /// Total after discounts and taxes.
         /// </summary>
         [JsonProperty("amount_total")]
-        public long? AmountTotal { get; set; }
+        public long AmountTotal { get; set; }
 
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency

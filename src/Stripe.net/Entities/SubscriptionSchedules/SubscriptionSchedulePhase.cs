@@ -9,7 +9,7 @@ namespace Stripe
     public class SubscriptionSchedulePhase : StripeEntity<SubscriptionSchedulePhase>, IHasMetadata
     {
         /// <summary>
-        /// A list of prices and quantities that will generate invoice items appended to the first
+        /// A list of prices and quantities that will generate invoice items appended to the next
         /// invoice for this phase.
         /// </summary>
         [JsonProperty("add_invoice_items")]
@@ -84,6 +84,14 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<Coupon>))]
         internal ExpandableField<Coupon> InternalCoupon { get; set; }
         #endregion
+
+        /// <summary>
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
 
         #region Expandable DefaultPaymentMethod
 

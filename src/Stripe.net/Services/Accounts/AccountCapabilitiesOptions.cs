@@ -48,6 +48,12 @@ namespace Stripe
         public AccountCapabilitiesBankTransferPaymentsOptions BankTransferPayments { get; set; }
 
         /// <summary>
+        /// The blik_payments capability.
+        /// </summary>
+        [JsonProperty("blik_payments")]
+        public AccountCapabilitiesBlikPaymentsOptions BlikPayments { get; set; }
+
+        /// <summary>
         /// The boleto_payments capability.
         /// </summary>
         [JsonProperty("boleto_payments")]

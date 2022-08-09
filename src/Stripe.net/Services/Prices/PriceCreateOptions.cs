@@ -34,6 +34,14 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
+        /// Prices defined in each available currency option. Each key must be a three-letter <a
+        /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a
+        /// href="https://stripe.com/docs/currencies">supported currency</a>.
+        /// </summary>
+        [JsonProperty("currency_options")]
+        public Dictionary<string, PriceCurrencyOptionsOptions> CurrencyOptions { get; set; }
+
+        /// <summary>
         /// When set, provides configuration for the amount to be adjusted by the customer during
         /// Checkout Sessions and Payment Links.
         /// </summary>
@@ -122,7 +130,8 @@ namespace Stripe
 
         /// <summary>
         /// A positive integer in cents (or local equivalent) (or 0 for a free price) representing
-        /// how much to charge.
+        /// how much to charge. One of <c>unit_amount</c> or <c>custom_unit_amount</c> is required,
+        /// unless <c>billing_scheme=tiered</c>.
         /// </summary>
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }

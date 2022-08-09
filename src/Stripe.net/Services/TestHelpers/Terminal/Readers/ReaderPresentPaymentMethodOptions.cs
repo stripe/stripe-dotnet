@@ -6,7 +6,7 @@ namespace Stripe.TestHelpers.Terminal
     public class ReaderPresentPaymentMethodOptions : BaseOptions
     {
         /// <summary>
-        /// Simulated card present data.
+        /// Simulated data for the card_present payment method.
         /// </summary>
         [JsonProperty("card_present")]
         public ReaderCardPresentOptions CardPresent { get; set; }

@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// A list of prices and quantities that will generate invoice items appended to the next
-        /// invoice. You may pass up to 20 items.
+        /// invoice for this phase. You may pass up to 20 items.
         /// </summary>
         [JsonProperty("add_invoice_items")]
         public List<SubscriptionSchedulePhaseAddInvoiceItemOptions> AddInvoiceItems { get; set; }
@@ -66,6 +66,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
+
+        /// <summary>
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
 
         /// <summary>
         /// ID of the default payment method for the subscription schedule. It must belong to the

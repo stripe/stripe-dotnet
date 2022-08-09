@@ -42,6 +42,13 @@ namespace Stripe
         public PaymentMethodBillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
+        /// This is a legacy parameter that will be removed in the future. It is a hash that does
+        /// not accept any keys.
+        /// </summary>
+        [JsonProperty("blik")]
+        public PaymentMethodBlikOptions Blik { get; set; }
+
+        /// <summary>
         /// If this is a <c>card</c> PaymentMethod, this hash contains the user's card details.
         /// </summary>
         [JsonProperty("card")]

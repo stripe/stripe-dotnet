@@ -22,5 +22,8 @@ namespace Stripe
 
         [JsonProperty("preferred_language")]
         public string PreferredLanguage { get; set; }
+
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
     }
 }

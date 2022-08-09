@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class ProductDefaultPriceDataOptions : INestedOptions
@@ -12,6 +13,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// Prices defined in each available currency option. Each key must be a three-letter <a
+        /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a
+        /// href="https://stripe.com/docs/currencies">supported currency</a>.
+        /// </summary>
+        [JsonProperty("currency_options")]
+        public Dictionary<string, ProductDefaultPriceDataCurrencyOptionsOptions> CurrencyOptions { get; set; }
 
         /// <summary>
         /// The recurring components of a price such as <c>interval</c> and <c>interval_count</c>.

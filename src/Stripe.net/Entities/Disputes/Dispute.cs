@@ -33,7 +33,7 @@ namespace Stripe
         /// currency fluctuation or because only part of the order is disputed).
         /// </summary>
         [JsonProperty("amount")]
-        public long? Amount { get; set; }
+        public long Amount { get; set; }
 
         /// <summary>
         /// List of zero, one, or two balance transactions that show funds withdrawn and reinstated

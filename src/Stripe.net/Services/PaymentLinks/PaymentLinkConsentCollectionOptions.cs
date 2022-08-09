@@ -10,6 +10,7 @@ namespace Stripe
         /// communications. The Checkout Session will determine whether to display an option to opt
         /// into promotional communication from the merchant depending on the customer's locale.
         /// Only available to US merchants.
+        /// One of: <c>auto</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("promotions")]
         public string Promotions { get; set; }

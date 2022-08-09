@@ -498,6 +498,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestCheckoutSessionServiceListLineItems()
+        {
+            var service = new Stripe.Checkout.SessionService(this.StripeClient);
+            service.ListLineItems("sess_xyz");
+        }
+
+        [Fact]
         public void TestCheckoutSessionServiceRetrieve()
         {
             var service = new Stripe.Checkout.SessionService(this.StripeClient);
@@ -1982,6 +1989,35 @@ namespace StripeTests
 
         [Fact]
         public void TestPriceServiceCreate()
+        {
+            var options = new PriceCreateOptions
+            {
+                UnitAmount = 2000,
+                Currency = "usd",
+                CurrencyOptions = new Dictionary<string, PriceCurrencyOptionsOptions>
+                {
+                    {
+                        "uah", new PriceCurrencyOptionsOptions
+                        {
+                            UnitAmount = 5000,
+                        }
+                    },
+                    {
+                        "eur", new PriceCurrencyOptionsOptions
+                        {
+                            UnitAmount = 1800,
+                        }
+                    },
+                },
+                Recurring = new PriceRecurringOptions { Interval = "month" },
+                Product = "prod_xxxxxxxxxxxxx",
+            };
+            var service = new PriceService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPriceServiceCreate2()
         {
             var options = new PriceCreateOptions
             {
