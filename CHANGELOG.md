@@ -1,5 +1,11 @@
 # Changelog
 
+## 40.1.0 - 2022-08-09
+* [#2553](https://github.com/stripe/stripe-dotnet/pull/2553) API Updates
+  * Add support for `ProcessConfig` on `TerminalReaderActionProcessPaymentIntent`
+* [#2551](https://github.com/stripe/stripe-dotnet/pull/2551) API Updates
+  * Add support for `ExpiresAt` on `AppsSecretCreateOptions` and `AppsSecret`
+
 ## 40.0.0 - 2022-08-02
 
 This release includes breaking changes resulting from:
