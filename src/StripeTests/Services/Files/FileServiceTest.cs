@@ -1,6 +1,9 @@
 namespace StripeTests
 {
+    using System;
+    using System.Buffers.Text;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Net.Http;
     using System.Reflection;
@@ -16,6 +19,7 @@ namespace StripeTests
 
         private readonly FileService service;
         private readonly FileCreateOptions createOptions;
+        private readonly FileCreateOptions base64Options;
         private readonly FileListOptions listOptions;
 
         public FileServiceTest(
@@ -36,6 +40,12 @@ namespace StripeTests
                         { "key", "value" },
                     },
                 },
+                Purpose = FilePurpose.BusinessLogo,
+            };
+
+            this.base64Options = new FileCreateOptions
+            {
+                File = new MemoryStream(Convert.FromBase64String("c3RyaXBlLWRvdG5ldA==")),
                 Purpose = FilePurpose.BusinessLogo,
             };
 
@@ -115,6 +125,15 @@ namespace StripeTests
         public async Task ListAutoPagingAsync()
         {
             var file = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
+            Assert.NotNull(file);
+            Assert.Equal("file", file.Object);
+        }
+
+        [Fact]
+        public void CreateFromBase64()
+        {
+            var file = this.service.Create(this.base64Options);
+            this.AssertRequest(HttpMethod.Post, "/v1/files");
             Assert.NotNull(file);
             Assert.Equal("file", file.Object);
         }
