@@ -8,6 +8,11 @@ namespace Stripe.Infrastructure
 
     internal static class JsonUtils
     {
+        private static readonly JsonSerializerSettings DefaultSerializerSettings = new JsonSerializerSettings()
+        {
+            MaxDepth = 128,
+        };
+
         /// <summary>
         /// Deserializes the JSON to the specified .NET type using
         /// <see cref="JsonSerializerSettings"/>.
@@ -58,16 +63,12 @@ namespace Stripe.Infrastructure
         /// </summary>
         /// <param name="value">The object to serialize.</param>
         /// <param name="formatting">Indicates how the output should be formatted.</param>
-        /// <param name="settings">
-        /// The <see cref="JsonSerializerSettings"/> used to serialize the object.
-        /// </param>
         /// <returns>A JSON string representation of the object.</returns>
         public static string SerializeObject(
             object value,
-            Formatting formatting = Formatting.None,
-            JsonSerializerSettings settings = null)
+            Formatting formatting = Formatting.None)
         {
-            JsonSerializer jsonSerializer = JsonSerializer.Create(settings);
+            JsonSerializer jsonSerializer = JsonSerializer.Create(DefaultSerializerSettings);
             jsonSerializer.Formatting = formatting;
 
             StringBuilder sb = new StringBuilder(256);
