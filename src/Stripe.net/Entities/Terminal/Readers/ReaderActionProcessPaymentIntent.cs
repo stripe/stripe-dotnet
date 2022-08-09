@@ -36,5 +36,11 @@ namespace Stripe.Terminal
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
+
+        /// <summary>
+        /// Represents a per-transaction override of a reader configuration.
+        /// </summary>
+        [JsonProperty("process_config")]
+        public ReaderActionProcessPaymentIntentProcessConfig ProcessConfig { get; set; }
     }
 }
