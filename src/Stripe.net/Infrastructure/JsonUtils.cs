@@ -50,7 +50,7 @@ namespace Stripe.Infrastructure
                 throw new ArgumentNullException(nameof(value));
             }
 
-            JsonSerializer jsonSerializer = JsonSerializer.Create(settings);
+            JsonSerializer jsonSerializer = JsonSerializer.Create(settings ?? DefaultSerializerSettings);
 
             using (JsonTextReader reader = new JsonTextReader(new StringReader(value)))
             {
@@ -68,7 +68,7 @@ namespace Stripe.Infrastructure
             object value,
             Formatting formatting = Formatting.None)
         {
-            JsonSerializer jsonSerializer = JsonSerializer.Create(DefaultSerializerSettings);
+            JsonSerializer jsonSerializer = JsonSerializer.Create(settings);
             jsonSerializer.Formatting = formatting;
 
             StringBuilder sb = new StringBuilder(256);
