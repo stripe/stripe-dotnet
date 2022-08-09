@@ -63,10 +63,14 @@ namespace Stripe.Infrastructure
         /// </summary>
         /// <param name="value">The object to serialize.</param>
         /// <param name="formatting">Indicates how the output should be formatted.</param>
+        /// <param name="settings">
+        /// The <see cref="JsonSerializerSettings"/> used to serialize the object.
+        /// </param>
         /// <returns>A JSON string representation of the object.</returns>
         public static string SerializeObject(
             object value,
-            Formatting formatting = Formatting.None)
+            Formatting formatting = Formatting.None,
+            JsonSerializerSettings settings = null)
         {
             JsonSerializer jsonSerializer = JsonSerializer.Create(settings);
             jsonSerializer.Formatting = formatting;
