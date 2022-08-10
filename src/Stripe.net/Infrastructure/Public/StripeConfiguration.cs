@@ -208,6 +208,7 @@ namespace Stripe
                     new StripeObjectConverter(),
                 },
                 DateParseHandling = DateParseHandling.None,
+                MaxDepth = 128,
             };
         }
 
