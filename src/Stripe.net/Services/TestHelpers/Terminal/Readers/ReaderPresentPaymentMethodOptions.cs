@@ -12,7 +12,14 @@ namespace Stripe.TestHelpers.Terminal
         public ReaderCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
+        /// Simulated data for the interac_present payment method.
+        /// </summary>
+        [JsonProperty("interac_present")]
+        public ReaderInteracPresentOptions InteracPresent { get; set; }
+
+        /// <summary>
         /// Simulated payment type.
+        /// One of: <c>card_present</c>, or <c>interac_present</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

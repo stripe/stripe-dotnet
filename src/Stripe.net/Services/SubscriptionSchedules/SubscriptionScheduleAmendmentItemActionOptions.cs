@@ -27,6 +27,10 @@ namespace Stripe
         [JsonProperty("set")]
         public SubscriptionScheduleAmendmentItemActionSetOptions Set { get; set; }
 
+        /// <summary>
+        /// Determines the type of item action.
+        /// One of: <c>add</c>, <c>remove</c>, or <c>set</c>.
+        /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
     }
