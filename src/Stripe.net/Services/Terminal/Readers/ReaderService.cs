@@ -105,6 +105,16 @@ namespace Stripe.Terminal
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/process_setup_intent", options, requestOptions, cancellationToken);
         }
 
+        public virtual Reader RefundPayment(string id, ReaderRefundPaymentOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/refund_payment", options, requestOptions);
+        }
+
+        public virtual Task<Reader> RefundPaymentAsync(string id, ReaderRefundPaymentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/refund_payment", options, requestOptions, cancellationToken);
+        }
+
         public virtual Reader SetReaderDisplay(string id, ReaderSetReaderDisplayOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/set_reader_display", options, requestOptions);

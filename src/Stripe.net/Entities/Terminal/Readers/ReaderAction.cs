@@ -30,6 +30,12 @@ namespace Stripe.Terminal
         public ReaderActionProcessSetupIntent ProcessSetupIntent { get; set; }
 
         /// <summary>
+        /// Represents a reader action to refund a payment.
+        /// </summary>
+        [JsonProperty("refund_payment")]
+        public ReaderActionRefundPayment RefundPayment { get; set; }
+
+        /// <summary>
         /// Represents a reader action to set the reader display.
         /// </summary>
         [JsonProperty("set_reader_display")]
@@ -44,8 +50,8 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// Type of action performed by the reader.
-        /// One of: <c>process_payment_intent</c>, <c>process_setup_intent</c>, or
-        /// <c>set_reader_display</c>.
+        /// One of: <c>process_payment_intent</c>, <c>process_setup_intent</c>,
+        /// <c>refund_payment</c>, or <c>set_reader_display</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

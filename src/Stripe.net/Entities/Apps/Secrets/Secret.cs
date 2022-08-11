@@ -52,6 +52,13 @@ namespace Stripe.Apps
         public bool Deleted { get; set; }
 
         /// <summary>
+        /// The Unix timestamp for the expiry time of the secret, after which the secret deletes.
+        /// </summary>
+        [JsonProperty("expires_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? ExpiresAt { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

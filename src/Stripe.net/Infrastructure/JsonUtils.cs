@@ -8,6 +8,11 @@ namespace Stripe.Infrastructure
 
     internal static class JsonUtils
     {
+        private static readonly JsonSerializerSettings DefaultSerializerSettings = new JsonSerializerSettings()
+        {
+            MaxDepth = 128,
+        };
+
         /// <summary>
         /// Deserializes the JSON to the specified .NET type using
         /// <see cref="JsonSerializerSettings"/>.
@@ -45,7 +50,7 @@ namespace Stripe.Infrastructure
                 throw new ArgumentNullException(nameof(value));
             }
 
-            JsonSerializer jsonSerializer = JsonSerializer.Create(settings);
+            JsonSerializer jsonSerializer = JsonSerializer.Create(settings ?? DefaultSerializerSettings);
 
             using (JsonTextReader reader = new JsonTextReader(new StringReader(value)))
             {
