@@ -1,5 +1,12 @@
 # Changelog
 
+## 40.2.0 - 2022-08-11
+* [#2556](https://github.com/stripe/stripe-dotnet/pull/2556) API Updates
+  * Add support for `PaymentMethodCollection` on `CheckoutSessionCreateOptions`, `CheckoutSession`, `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
+  
+* [#2555](https://github.com/stripe/stripe-dotnet/pull/2555) Set MaxDepth for serialization and deserialization
+* [#2554](https://github.com/stripe/stripe-dotnet/pull/2554) Add test for FileCreation from base64 in memory
+
 ## 40.1.0 - 2022-08-09
 * [#2553](https://github.com/stripe/stripe-dotnet/pull/2553) API Updates
   * Add support for `ProcessConfig` on `TerminalReaderActionProcessPaymentIntent`
