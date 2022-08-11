@@ -191,6 +191,23 @@ namespace Stripe.Checkout
         public SessionPaymentIntentDataOptions PaymentIntentData { get; set; }
 
         /// <summary>
+        /// Specify whether Checkout should collect a payment method. When set to
+        /// <c>if_required</c>, Checkout will not collect a payment method when the total due for
+        /// the session is 0. This may occur if the Checkout Session includes a free trial or a
+        /// discount.
+        ///
+        /// Can only be set in <c>subscription</c> mode.
+        ///
+        /// If you'd like information on how to collect a payment method outside of Checkout, read
+        /// the guide on configuring <a
+        /// href="https://stripe.com/docs/payments/checkout/free-trials">subscriptions with a free
+        /// trial</a>.
+        /// One of: <c>always</c>, or <c>if_required</c>.
+        /// </summary>
+        [JsonProperty("payment_method_collection")]
+        public string PaymentMethodCollection { get; set; }
+
+        /// <summary>
         /// Payment-method-specific configuration.
         /// </summary>
         [JsonProperty("payment_method_options")]
