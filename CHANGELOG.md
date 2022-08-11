@@ -1,5 +1,10 @@
 # Changelog
 
+## 40.3.0-beta.1 - 2022-08-11
+* [#2557](https://github.com/stripe/stripe-dotnet/pull/2557) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - Add RefundPayment method to Terminal resource
+
 ## 40.2.0 - 2022-08-11
 * [#2556](https://github.com/stripe/stripe-dotnet/pull/2556) API Updates
   * Add support for `PaymentMethodCollection` on `CheckoutSessionCreateOptions`, `CheckoutSession`, `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
