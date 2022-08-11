@@ -148,6 +148,13 @@ namespace Stripe
         public PaymentLinkPaymentIntentData PaymentIntentData { get; set; }
 
         /// <summary>
+        /// Configuration for collecting a payment method during checkout.
+        /// One of: <c>always</c>, or <c>if_required</c>.
+        /// </summary>
+        [JsonProperty("payment_method_collection")]
+        public string PaymentMethodCollection { get; set; }
+
+        /// <summary>
         /// The list of payment method types that customers can use. When <c>null</c>, Stripe will
         /// dynamically show relevant payment methods you've enabled in your <a
         /// href="https://dashboard.stripe.com/settings/payment_methods">payment method
