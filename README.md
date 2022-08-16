@@ -88,7 +88,7 @@ StripeConfiguration.MaxNetworkRetries = 0; // Zero retries
 
 stripe-dotnet is a typed library and it supports all public properties or parameters.
 
-Stripe sometimes has beta which introduces new properties or parameters that are not immediately public. The library does not support these properties or parameters until they are public but there is still an approach that allows you to use them.
+Stripe sometimes has beta features which introduce new properties or parameters that are not immediately public. The library does not support these properties or parameters until they are public but there is still an approach that allows you to use them.
 
 #### Parameters
 
