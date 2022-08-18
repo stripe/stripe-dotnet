@@ -43,6 +43,10 @@ namespace Stripe
                     "customer_balance_transaction", typeof(
                         CustomerBalanceTransaction)
                 },
+                {
+                    "customer_cash_balance_transaction", typeof(
+                        CustomerCashBalanceTransaction)
+                },
                 { "discount", typeof(Discount) },
                 { "dispute", typeof(Dispute) },
                 { "ephemeral_key", typeof(EphemeralKey) },
