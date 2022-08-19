@@ -21,7 +21,7 @@ namespace Stripe.Checkout
     /// You can create a Checkout Session on your server and pass its ID to the client to begin
     /// Checkout.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/payments/checkout/api">Checkout Server
+    /// Related guide: <a href="https://stripe.com/docs/checkout/quickstart">Checkout
     /// Quickstart</a>.
     /// </summary>
     public class Session : StripeEntity<Session>, IHasId, IHasMetadata, IHasObject

@@ -16,7 +16,7 @@ namespace Stripe.Identity
     /// A VerificationSession transitions through <a
     /// href="https://stripe.com/docs/identity/how-sessions-work">multiple statuses</a>
     /// throughout its lifetime as it progresses through the verification flow. The
-    /// VerificationSession contains the user’s verified data after verification checks are
+    /// VerificationSession contains the user's verified data after verification checks are
     /// complete.
     ///
     /// Related guide: <a href="https://stripe.com/docs/identity/verification-sessions">The

@@ -125,13 +125,9 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// <c>Source</c> objects allow you to accept a variety of payment methods. They represent a
-        /// customer's payment instrument, and can be used with the Stripe API just like a
-        /// <c>Card</c> object: once chargeable, they can be charged, or can be attached to
-        /// customers.
-        ///
-        /// Related guides: <a href="https://stripe.com/docs/sources">Sources API</a> and <a
-        /// href="https://stripe.com/docs/sources/customers">Sources &amp; Customers</a>.
+        /// For most Stripe users, the source of every top-up is a bank account. This hash is then
+        /// the <a href="https://stripe.com/docs/api#source_object">source object</a> describing
+        /// that bank account.
         /// </summary>
         [JsonProperty("source")]
         public Source Source { get; set; }
