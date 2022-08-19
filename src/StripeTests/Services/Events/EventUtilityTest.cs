@@ -3,6 +3,7 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
+    [Collection(nameof(TestsThatModifyApiVersion))]
     public class EventUtilityTest : BaseStripeTest
     {
         private readonly long eventTimestamp;
@@ -84,6 +85,27 @@ namespace StripeTests
 
             evt = EventUtility.ParseEvent(serialized);
             Assert.Equal(StripeConfiguration.ApiVersion, evt.ApiVersion);
+        }
+
+        [Fact]
+        public void AcceptsExpectedApiVersionWhenConfiguredWithBeta()
+        {
+            string oldVersion = StripeConfiguration.ApiVersion;
+            try
+            {
+                StripeConfiguration.ApiVersion = "2022-08-02; feature_in_beta=v3";
+
+                var evt = Event.FromJson(this.json);
+                evt.ApiVersion = "2022-08-02";
+                var serialized = evt.ToJson();
+
+                evt = EventUtility.ParseEvent(serialized);
+                Assert.Equal("2022-08-02", evt.ApiVersion);
+            }
+            finally
+            {
+                StripeConfiguration.ApiVersion = oldVersion;
+            }
         }
 
         [Fact]

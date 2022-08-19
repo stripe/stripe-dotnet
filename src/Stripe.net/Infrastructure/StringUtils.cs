@@ -70,5 +70,22 @@ namespace Stripe.Infrastructure
 
             return whitespaceRegex.IsMatch(str);
         }
+
+        /// <summary>
+        /// Trims the beta header part of an API Version string.
+        /// For example, "22-12-2022; orders_beta=v3" is converted to "22-12-2022".
+        /// </summary>
+        /// <param name="apiVersion">The API Version to trim. For example, "22-12-2022; orders_beta=v3".</param>
+        /// <returns>The trimmed API Version string. For example, "22-12-2022".</returns>
+        public static string TrimApiVersion(string apiVersion)
+        {
+            var indexOfSemicolon = apiVersion?.IndexOf(';');
+            if (indexOfSemicolon > -1)
+            {
+                return apiVersion.Substring(0, indexOfSemicolon.Value);
+            }
+
+            return apiVersion;
+        }
     }
 }
