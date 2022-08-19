@@ -1,5 +1,13 @@
 # Changelog
 
+## 40.3.0 - 2022-08-19
+* [#2560](https://github.com/stripe/stripe-dotnet/pull/2560) API Updates
+  * Add support for new resource `CustomerCashBalanceTransaction`
+  * Add support for `Currency` on `PaymentLink`
+  * Add support for `Network` on `SetupIntentPaymentMethodOptionsCardOptions`, `SubscriptionPaymentSettingsPaymentMethodOptionsCardOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsCard`
+* [#2559](https://github.com/stripe/stripe-dotnet/pull/2559) Add a support section to the readme
+* [#2558](https://github.com/stripe/stripe-dotnet/pull/2558) Update README.md
+
 ## 40.2.0 - 2022-08-11
 * [#2556](https://github.com/stripe/stripe-dotnet/pull/2556) API Updates
   * Add support for `PaymentMethodCollection` on `CheckoutSessionCreateOptions`, `CheckoutSession`, `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
