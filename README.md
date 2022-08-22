@@ -143,6 +143,17 @@ This information is passed along when the library makes calls to the Stripe
 API. Note that while `Name` is always required, `Url` and `Version` are
 optional.
 
+### Beta SDKs
+
+Beta versions of Stripe.net contain addditional APIs that are available for customers that were included
+in beta programs for new Stripe products and features.
+
+If you beta requires a `Stripe-Version` header to be sent use the `StripeConfiguration.ApiVersion` property to set it:
+
+```csharp
+StripeConfiguration.ApiVersion += "; feature_beta=v3";
+```
+
 ## Development
 
 The test suite depends on [stripe-mock][stripe-mock], so make sure to fetch
