@@ -13,14 +13,6 @@ namespace Stripe
         public SubscriptionScheduleAmendmentAmendmentStartAmendmentEndOptions AmendmentEnd { get; set; }
 
         /// <summary>
-        /// Specify that this amendment should start at the current time as determined by Stripe
-        /// servers. In the case of Test Clocks, <c>now</c> uses the frozen time on the testmode
-        /// clock.
-        /// </summary>
-        [JsonProperty("now")]
-        public SubscriptionScheduleAmendmentAmendmentStartNowOptions Now { get; set; }
-
-        /// <summary>
         /// A precise Unix timestamp for the amendment to start.
         /// </summary>
         [JsonProperty("timestamp")]

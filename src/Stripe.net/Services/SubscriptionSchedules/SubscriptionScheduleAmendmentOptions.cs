@@ -29,8 +29,7 @@ namespace Stripe
         public List<SubscriptionScheduleAmendmentDiscountActionOptions> DiscountActions { get; set; }
 
         /// <summary>
-        /// Changes to the items being billed or provisioned to your customer during the amendment
-        /// time span.
+        /// Changes to the subscription items during the amendment time span.
         /// </summary>
         [JsonProperty("item_actions")]
         public List<SubscriptionScheduleAmendmentItemActionOptions> ItemActions { get; set; }
