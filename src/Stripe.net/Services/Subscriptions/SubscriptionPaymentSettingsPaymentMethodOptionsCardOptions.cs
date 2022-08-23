@@ -12,6 +12,16 @@ namespace Stripe
         public SubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
+        /// Selected network to process this Subscription on. Depends on the available networks of
+        /// the card attached to the Subscription. Can be only set confirm-time.
+        /// One of: <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
+        /// <c>interac</c>, <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>unknown</c>, or
+        /// <c>visa</c>.
+        /// </summary>
+        [JsonProperty("network")]
+        public string Network { get; set; }
+
+        /// <summary>
         /// We strongly recommend that you rely on our SCA Engine to automatically prompt your
         /// customers for authentication based on risk level and <a
         /// href="https://stripe.com/docs/strong-customer-authentication">other requirements</a>.

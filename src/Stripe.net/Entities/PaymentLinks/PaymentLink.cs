@@ -79,6 +79,14 @@ namespace Stripe
         public PaymentLinkConsentCollection ConsentCollection { get; set; }
 
         /// <summary>
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
         /// Configuration for Customer creation during checkout.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>

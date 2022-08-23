@@ -5,6 +5,10 @@
 
 The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 2.0+, and .NET Framework 4.6.1+.
 
+## Support
+
+New features and bug fixes are released on the latest major version of the Stripe .NET client library. If you are on an older major version, we recommend that you upgrade to the latest in order to use the new features and bug fixes including those for security vulnerabilities. Older major versions of the package will continue to be available for use, but will not be receiving any updates.
+
 ## Installation
 
 Using the [.NET Core command-line interface (CLI) tools][dotnet-core-cli-tools]:
@@ -88,7 +92,7 @@ StripeConfiguration.MaxNetworkRetries = 0; // Zero retries
 
 stripe-dotnet is a typed library and it supports all public properties or parameters.
 
-Stripe sometimes has beta which introduces new properties or parameters that are not immediately public. The library does not support these properties or parameters until they are public but there is still an approach that allows you to use them.
+Stripe sometimes has beta features which introduce new properties or parameters that are not immediately public. The library does not support these properties or parameters until they are public but there is still an approach that allows you to use them.
 
 #### Parameters
 

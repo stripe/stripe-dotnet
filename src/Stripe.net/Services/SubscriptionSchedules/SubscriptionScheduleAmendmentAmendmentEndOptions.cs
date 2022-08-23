@@ -12,12 +12,6 @@ namespace Stripe
         public SubscriptionScheduleAmendmentAmendmentEndDurationOptions Duration { get; set; }
 
         /// <summary>
-        /// Cover all remaining phases of the subscription schedule with the amendment.
-        /// </summary>
-        [JsonProperty("schedule_end")]
-        public SubscriptionScheduleAmendmentAmendmentEndScheduleEndOptions ScheduleEnd { get; set; }
-
-        /// <summary>
         /// A precise Unix timestamp for the amendment to end. Must be after the
         /// <c>amendment_start</c>.
         /// </summary>
