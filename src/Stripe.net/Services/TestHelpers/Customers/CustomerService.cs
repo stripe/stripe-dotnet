@@ -20,14 +20,14 @@ namespace Stripe.TestHelpers
 
         public override string BasePath => "/v1/test_helpers/customers";
 
-        public virtual CustomerBalanceTransaction FundCashBalance(string id, CustomerFundCashBalanceOptions options = null, RequestOptions requestOptions = null)
+        public virtual CustomerCashBalanceTransaction FundCashBalance(string id, CustomerFundCashBalanceOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CustomerBalanceTransaction>(HttpMethod.Post, $"{this.InstanceUrl(id)}/fund_cash_balance", options, requestOptions);
+            return this.Request<CustomerCashBalanceTransaction>(HttpMethod.Post, $"{this.InstanceUrl(id)}/fund_cash_balance", options, requestOptions);
         }
 
-        public virtual Task<CustomerBalanceTransaction> FundCashBalanceAsync(string id, CustomerFundCashBalanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<CustomerCashBalanceTransaction> FundCashBalanceAsync(string id, CustomerFundCashBalanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CustomerBalanceTransaction>(HttpMethod.Post, $"{this.InstanceUrl(id)}/fund_cash_balance", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CustomerCashBalanceTransaction>(HttpMethod.Post, $"{this.InstanceUrl(id)}/fund_cash_balance", options, requestOptions, cancellationToken);
         }
     }
 }
