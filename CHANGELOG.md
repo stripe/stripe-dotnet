@@ -1,5 +1,11 @@
 # Changelog
 
+## 40.4.0 - 2022-08-23
+* [#2562](https://github.com/stripe/stripe-dotnet/pull/2562) Add beta README.md section
+* [#2564](https://github.com/stripe/stripe-dotnet/pull/2564) API Updates
+  * Change the return type of `CustomerService.FundCashBalance` test helper from `CustomerBalanceTransaction` to `CustomerCashBalanceTransaction`.
+    * This would generally be considered a breaking change, but we've worked with all existing users to migrate and are comfortable releasing this as a minor as it is solely a test helper method. This was essentially broken prior to this change. 
+
 ## 40.3.0 - 2022-08-19
 * [#2560](https://github.com/stripe/stripe-dotnet/pull/2560) API Updates
   * Add support for new resource `CustomerCashBalanceTransaction`
