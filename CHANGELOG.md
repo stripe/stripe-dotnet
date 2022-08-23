@@ -1,5 +1,11 @@
 # Changelog
 
+## 40.4.0-beta.1 - 2022-08-23
+* [#2563](https://github.com/stripe/stripe-dotnet/pull/2563) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - `Stripe-Version` beta headers are not pinned by-default and need to be manually specified, please refer to [beta SDKs README section](https://github.com/stripe/stripe-dotnet/blob/master/README.md#beta-sdks) 
+* [#2561](https://github.com/stripe/stripe-dotnet/pull/2561) Make APIVersion configuration settable
+
 ## 40.3.0 - 2022-08-19
 * [#2560](https://github.com/stripe/stripe-dotnet/pull/2560) API Updates
   * Add support for new resource `CustomerCashBalanceTransaction`
