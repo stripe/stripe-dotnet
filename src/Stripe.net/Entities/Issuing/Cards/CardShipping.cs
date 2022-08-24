@@ -18,6 +18,12 @@ namespace Stripe.Issuing
         public string Carrier { get; set; }
 
         /// <summary>
+        /// Additional information that may be required for clearing customs.
+        /// </summary>
+        [JsonProperty("customs")]
+        public CardShippingCustoms Customs { get; set; }
+
+        /// <summary>
         /// A unix timestamp representing a best estimate of when the card will be delivered.
         /// </summary>
         [JsonProperty("eta")]
@@ -29,6 +35,14 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The phone number of the receiver of the bulk shipment. This phone number will be
+        /// provided to the shipping company, who might use it to contact the receiver in case of
+        /// delivery issues.
+        /// </summary>
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
 
         /// <summary>
         /// Shipment service, such as <c>standard</c> or <c>express</c>.

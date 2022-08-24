@@ -72,6 +72,8 @@ namespace Stripe
                         FinancialConnections.Session)
                 },
                 { "funding_instructions", typeof(FundingInstructions) },
+                { "gift_cards.card", typeof(GiftCards.Card) },
+                { "gift_cards.transaction", typeof(GiftCards.Transaction) },
                 {
                     "identity.verification_report", typeof(
                         Identity.VerificationReport)
