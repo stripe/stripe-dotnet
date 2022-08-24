@@ -155,6 +155,8 @@ We highly recommend keeping an eye on when the beta feature you are interested i
 
 If your beta feature requires a `Stripe-Version` header to be sent, use the `StripeConfiguration.ApiVersion` property to set it:
 
+> Note: the `ApiVersion` can only be set in beta versions of the library. 
+
 ```csharp
 StripeConfiguration.ApiVersion += "; feature_beta=v3";
 ```
