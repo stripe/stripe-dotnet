@@ -55,19 +55,13 @@ jobs:
         run: dotnet test --no-build src/StripeTests/StripeTests.csproj -c Debug
 
       - name: Collect coverage
-        run: dotnet test --no-build -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
+        run: dotnet test --no-build -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:ExcludeByAttribute=CompilerGenerated
 
-      - name: Send code coverage report to coveralls.io
-        run: |
-          # Secure env vars are not available on all branches, so make sure the
-          # token is available before invoking Coveralls.
-          if [ ! -z "${COVERALLS_REPO_TOKEN}" ];
-          then
-            dotnet tool run csmacnz.Coveralls --opencover -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml --useRelativePaths
-          fi
-        env:
-          CI_NAME: github-actions
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+      - name: Publish coverage report to coveralls.io
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: src/StripeTests/coverage.netcoreapp3.1.info
 
       - name: Pack
         run: dotnet pack src -c Release --no-build --output nuget
