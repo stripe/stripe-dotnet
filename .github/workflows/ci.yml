@@ -67,7 +67,6 @@ jobs:
             --commitId $commitId \
             --commitBranch $commitBranch \
             --commitAuthor $commitAuthor \
-            --commitMessage $commitMessage \
             --useRelativePaths \
             --serviceName $CI_NAME \
             --jobId $jobId \
@@ -75,9 +74,8 @@ jobs:
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
           commitId: ${{ github.sha }}
-          commitBranch: ${{ github.ref_name }}
+          commitBranch: ${{ github.event.pull_request.head.ref }}
           commitAuthor: ${{ github.event.pull_request.user.login }}
-          commitMessage: ${{ github.event.pull_request.head.message }}
           CI_NAME: github-actions
           jobId: ${{ github.run_id }}
           pullRequestId: ${{ github.event.pull_request.head.sha }}
