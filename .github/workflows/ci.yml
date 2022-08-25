@@ -48,11 +48,12 @@ jobs:
       - name: Start stripe-mock
         run: docker run -d -p 12111-12112:12111-12112 stripe/stripe-mock && sleep 5
 
-      - name: Run test suite
-        run: dotnet test --no-build src/StripeTests/StripeTests.csproj -c Release
+      # TODO: UNCOMMENT ME
+      # - name: Run test suite
+      #   run: dotnet test --no-build src/StripeTests/StripeTests.csproj -c Release
 
-      - name: Run test suite (Debug)
-        run: dotnet test --no-build src/StripeTests/StripeTests.csproj -c Debug
+      # - name: Run test suite (Debug)
+      #   run: dotnet test --no-build src/StripeTests/StripeTests.csproj -c Debug
 
       - name: Collect coverage
         run: dotnet test --no-build -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
@@ -73,13 +74,13 @@ jobs:
             --pullRequest $pullRequestId
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-          commitId: $GITHUB_SHA
-          commitBranch: $GITHUB_REF_NAME
+          commitId: ${{ github.sha }}
+          commitBranch: ${{ github.ref_name }}
           commitAuthor: ${{ github.event.pull_request.user.login }}
-          commitMessage: ${{ github.event.head_commit.message }}
+          commitMessage: ${{ github.event.pull_request.head.message }}
           CI_NAME: github-actions
           jobId: ${{ github.run_id }}
-          pullRequestId: $GITHUB_REF
+          pullRequestId: ${{ github.event.pull_request.head.sha }}
 
       - name: Pack
         run: dotnet pack src -c Release --no-build --output nuget
