@@ -5,6 +5,9 @@ namespace Stripe
 
     public class OrderTotalDetails : StripeEntity<OrderTotalDetails>
     {
+        [JsonProperty("amount_credit")]
+        public long AmountCredit { get; set; }
+
         /// <summary>
         /// This is the sum of all the discounts.
         /// </summary>

@@ -12,10 +12,22 @@ namespace Stripe.Issuing
         public AddressOptions Address { get; set; }
 
         /// <summary>
+        /// Customs information for the shipment.
+        /// </summary>
+        [JsonProperty("customs")]
+        public CardShippingCustomsOptions Customs { get; set; }
+
+        /// <summary>
         /// The name printed on the shipping label when shipping the card.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Phone number of the recipient of the shipment.
+        /// </summary>
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
 
         /// <summary>
         /// Shipment service.

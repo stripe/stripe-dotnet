@@ -28,6 +28,9 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("amount_remaining")]
+        public long AmountRemaining { get; set; }
+
         /// <summary>
         /// Order cost before any discounts or taxes are applied. A positive integer representing
         /// the subtotal of the order in the <a
@@ -110,6 +113,12 @@ namespace Stripe
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// The credits applied to the Order. At most 10 credits can be applied to an Order.
+        /// </summary>
+        [JsonProperty("credits")]
+        public List<OrderCredit> Credits { get; set; }
 
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
