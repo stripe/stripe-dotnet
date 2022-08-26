@@ -59,7 +59,7 @@ jobs:
         run: dotnet test --no-build -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
 
       - name: Send code coverage report to coveralls.io
-        run:
+        run: |
           dotnet tool run csmacnz.Coveralls \
             --opencover \
             -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml \
@@ -67,8 +67,6 @@ jobs:
             --commitId $commitId \
             --commitBranch $commitBranch \
             --commitAuthor $commitAuthor \
-            --commitEmail $commitEmail \
-            --commitMessage $commitMessage \
             --useRelativePaths \
             --serviceName $CI_NAME \
             --jobId $jobId \
