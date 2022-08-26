@@ -68,8 +68,7 @@ jobs:
             --commitId $commitId \
             --commitBranch $commitBranch \
             --jobId $jobId \
-            --serviceName $CI_NAME \
-            --pullRequest $pullRequestId
+            --serviceName $CI_NAME
 
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
