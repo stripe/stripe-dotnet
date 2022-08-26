@@ -1,5 +1,12 @@
 # Changelog
 
+## 40.5.0 - 2022-08-26
+* [#2568](https://github.com/stripe/stripe-dotnet/pull/2568) API Updates
+  * Add support for `LoginPage` on `BillingPortalConfigurationCreateOptions`, `BillingPortalConfigurationUpdateOptions`, and `BillingPortalConfiguration`
+  * Add support for `Customs` and `PhoneNumber` on `IssuingCardShippingOptions` and `IssuingCardShipping`
+  * Add support for `Description` on `QuoteSubscriptionDataOptions`, `QuoteSubscriptionData`, `SubscriptionScheduleDefaultSettingsOptions`, `SubscriptionScheduleDefaultSettings`, `SubscriptionSchedulePhasesOptions`, and `SubscriptionSchedulePhases`
+* [#2565](https://github.com/stripe/stripe-dotnet/pull/2565) Update README.md to clarify that API version can only be change in beta
+
 ## 40.4.0 - 2022-08-23
 * [#2562](https://github.com/stripe/stripe-dotnet/pull/2562) Add beta README.md section
 * [#2564](https://github.com/stripe/stripe-dotnet/pull/2564) API Updates
