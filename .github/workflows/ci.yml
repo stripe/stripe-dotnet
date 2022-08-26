@@ -80,7 +80,7 @@ jobs:
           commitAuthor: ${{ github.event.pull_request.user.login }}
           commitEmail: ""
           commitMessage: ""
-          CI_NAME: github-actions
+          CI_NAME: "Github Actions"
           jobId: ${{ github.run_id }}
           pullRequestId: ${{ github.event.pull_request.head.sha }}
 
