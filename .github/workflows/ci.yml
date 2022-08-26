@@ -67,7 +67,6 @@ jobs:
             --useRelativePaths \
             --commitId $commitId \
             --commitBranch $commitBranch \
-            --commitAuthor $commitAuthor \
             --jobId $jobId \
             --serviceName $CI_NAME \
             --pullRequest $pullRequestId
