@@ -67,8 +67,7 @@ jobs:
             --useRelativePaths \
             --commitId $commitId \
             --commitBranch $commitBranch \
-            --jobId $jobId \
-            --serviceName $CI_NAME
+            --jobId $jobId
 
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
