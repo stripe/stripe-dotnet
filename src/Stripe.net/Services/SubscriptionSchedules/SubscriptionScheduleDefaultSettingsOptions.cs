@@ -60,6 +60,13 @@ namespace Stripe
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
+        /// Subscription description, meant to be displayable to the customer. Use this field to
+        /// optionally store an explanation of the subscription.
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        /// <summary>
         /// All invoices will be billed using the specified settings.
         /// </summary>
         [JsonProperty("invoice_settings")]

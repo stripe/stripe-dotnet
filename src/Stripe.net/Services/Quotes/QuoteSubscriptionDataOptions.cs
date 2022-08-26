@@ -8,6 +8,13 @@ namespace Stripe
     public class QuoteSubscriptionDataOptions : INestedOptions
     {
         /// <summary>
+        /// The subscription's description, meant to be displayable to the customer. Use this field
+        /// to optionally store an explanation of the subscription.
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        /// <summary>
         /// When creating a new subscription, the date of which the subscription schedule will start
         /// after the quote is accepted. When updating a subscription, the date of which the
         /// subscription will be updated using a subscription schedule. The special value
