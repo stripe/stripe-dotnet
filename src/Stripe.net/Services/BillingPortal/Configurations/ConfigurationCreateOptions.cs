@@ -28,6 +28,15 @@ namespace Stripe.BillingPortal
         public ConfigurationFeaturesOptions Features { get; set; }
 
         /// <summary>
+        /// The hosted login page for this configuration. Learn more about the portal login page in
+        /// our <a
+        /// href="https://stripe.com/docs/billing/subscriptions/integrating-customer-portal#share">integration
+        /// docs</a>.
+        /// </summary>
+        [JsonProperty("login_page")]
+        public ConfigurationLoginPageOptions LoginPage { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
