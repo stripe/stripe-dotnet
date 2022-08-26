@@ -1,5 +1,10 @@
 # Changelog
 
+## 40.5.0-beta.1 - 2022-08-26
+* [#2566](https://github.com/stripe/stripe-dotnet/pull/2566) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for the beta [Gift Card API](https://stripe.com/docs/gift-cards).
+
 ## 40.4.0 - 2022-08-23
 * [#2562](https://github.com/stripe/stripe-dotnet/pull/2562) Add beta README.md section
 * [#2564](https://github.com/stripe/stripe-dotnet/pull/2564) API Updates
