@@ -68,7 +68,6 @@ jobs:
             --commitId $commitId \
             --commitBranch $commitBranch \
             --commitAuthor $commitAuthor \
-            --commitMessage $commitMessage \
             --jobId $jobId
 
         env:
@@ -76,7 +75,6 @@ jobs:
           commitId: ${{ github.sha }}
           commitBranch: ${{ github.event.pull_request.head.ref }}
           commitAuthor: ${{ github.event.pull_request.user.login }}
-          commitMessage: ${{ github.event.head_commit.message }}
           jobId: ${{ github.run_id }}
 
       - name: Pack
