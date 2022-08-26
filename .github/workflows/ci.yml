@@ -78,7 +78,6 @@ jobs:
           commitAuthor: ${{ github.event.pull_request.user.login }}
           jobId: ${{ github.run_id }}
           CI_NAME: "Github Actions"
-          pullRequestId: ${{ github.event.pull_request.head.sha }}
 
       - name: Pack
         run: dotnet pack src -c Release --no-build --output nuget
