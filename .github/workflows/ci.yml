@@ -68,7 +68,7 @@ jobs:
             --commitId $commitId \
             --commitBranch $commitBranch \
             --commitAuthor $commitAuthor \
-            --commitMessage #commitMessage \
+            --commitMessage $commitMessage \
             --jobId $jobId
 
         env:
