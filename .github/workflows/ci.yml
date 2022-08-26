@@ -67,6 +67,8 @@ jobs:
             --commitId $commitId \
             --commitBranch $commitBranch \
             --commitAuthor $commitAuthor \
+            --commitEmail $commitEmail \
+            --commitMessage $commitMessage \
             --useRelativePaths \
             --serviceName $CI_NAME \
             --jobId $jobId \
@@ -76,6 +78,8 @@ jobs:
           commitId: ${{ github.sha }}
           commitBranch: ${{ github.event.pull_request.head.ref }}
           commitAuthor: ${{ github.event.pull_request.user.login }}
+          commitEmail: ""
+          commitMessage: ""
           CI_NAME: github-actions
           jobId: ${{ github.run_id }}
           pullRequestId: ${{ github.event.pull_request.head.sha }}
