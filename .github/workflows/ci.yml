@@ -64,7 +64,9 @@ jobs:
             --opencover \
             -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml \
             --repoToken $COVERALLS_REPO_TOKEN \
-            --useRelativePaths
+            --useRelativePaths \
+            --commitId $commitId \
+            --commitBranch $commitBranch \
 
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
