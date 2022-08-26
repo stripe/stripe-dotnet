@@ -67,14 +67,18 @@ jobs:
             --useRelativePaths \
             --commitId $commitId \
             --commitBranch $commitBranch \
+            --commitAuthor $commitAuthor \
+            --jobId $jobId \
+            --serviceName $CI_NAME \
+            --pullRequest $pullRequestId
 
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
           commitId: ${{ github.sha }}
           commitBranch: ${{ github.event.pull_request.head.ref }}
           commitAuthor: ${{ github.event.pull_request.user.login }}
-          CI_NAME: "Github Actions"
           jobId: ${{ github.run_id }}
+          CI_NAME: "Github Actions"
           pullRequestId: ${{ github.event.pull_request.head.sha }}
 
       - name: Pack
