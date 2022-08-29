@@ -68,6 +68,7 @@ jobs:
             --commitBranch $commitBranch \
             --commitAuthor $commitAuthor \
             --jobId $jobId
+            --pullRequestId $pullRequestId
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
           commitId: ${{ github.sha }}
