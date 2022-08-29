@@ -71,9 +71,10 @@ jobs:
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
           commitId: ${{ github.sha }}
-          commitBranch: ${{ github.event.pull_request.head.ref }}
-          commitAuthor: ${{ github.event.pull_request.user.login }}
+          commitBranch: ${{ github.ref }}
+          commitAuthor: ${{ github.actor }}
           jobId: ${{ github.run_id }}
+          pullRequestId: ${{ github.event.pull_request.number }}
 
       - name: Pack
         run: dotnet pack src -c Release --no-build --output nuget
