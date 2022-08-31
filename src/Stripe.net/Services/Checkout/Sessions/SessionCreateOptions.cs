@@ -147,8 +147,8 @@ namespace Stripe.Checkout
         /// to consolidate line items if there are more than a few dozen.
         ///
         /// For <c>subscription</c> mode, there is a maximum of 20 line items with recurring Prices
-        /// and 20 line items with one-time Prices. Line items with one-time Prices in will be on
-        /// the initial invoice only.
+        /// and 20 line items with one-time Prices. Line items with one-time Prices will be on the
+        /// initial invoice only.
         /// </summary>
         [JsonProperty("line_items")]
         public List<SessionLineItemOptions> LineItems { get; set; }
