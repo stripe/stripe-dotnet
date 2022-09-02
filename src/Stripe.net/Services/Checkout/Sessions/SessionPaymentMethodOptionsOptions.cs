@@ -72,7 +72,7 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsEpsOptions Eps { get; set; }
 
         /// <summary>
-        /// contains details about the EPS payment method options.
+        /// contains details about the FPX payment method options.
         /// </summary>
         [JsonProperty("fpx")]
         public SessionPaymentMethodOptionsFpxOptions Fpx { get; set; }

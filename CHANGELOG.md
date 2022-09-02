@@ -1,5 +1,11 @@
 # Changelog
 
+## 40.6.0 - 2022-08-31
+* [#2573](https://github.com/stripe/stripe-dotnet/pull/2573) API Updates
+  * Add support for `Description` on `PaymentLinkSubscriptionDataOptions` and `PaymentLinkSubscriptionData`
+* [#2570](https://github.com/stripe/stripe-dotnet/pull/2570) Update Coveralls command line arguments
+* [#2569](https://github.com/stripe/stripe-dotnet/pull/2569) Add test coverage using Coveralls
+
 ## 40.5.0 - 2022-08-26
 * [#2568](https://github.com/stripe/stripe-dotnet/pull/2568) API Updates
   * Add support for `LoginPage` on `BillingPortalConfigurationCreateOptions`, `BillingPortalConfigurationUpdateOptions`, and `BillingPortalConfiguration`
