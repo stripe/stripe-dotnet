@@ -1,5 +1,9 @@
 # Changelog
 
+## 40.7.0 - 2022-09-06
+* [#2574](https://github.com/stripe/stripe-dotnet/pull/2574) API Updates
+  * Add support for new value `terminal_reader_splashscreen` on `FilePurpose`
+
 ## 40.6.0 - 2022-08-31
 * [#2573](https://github.com/stripe/stripe-dotnet/pull/2573) API Updates
   * Add support for `Description` on `PaymentLinkSubscriptionDataOptions` and `PaymentLinkSubscriptionData`
