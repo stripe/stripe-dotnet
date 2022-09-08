@@ -45,6 +45,15 @@ namespace Stripe.Issuing
         public string PhoneNumber { get; set; }
 
         /// <summary>
+        /// Whether a signature is required for card delivery. This feature is only supported for US
+        /// users. Standard shipping service does not support signature on delivery. The default
+        /// value for standard shipping service is false and for express and priority services is
+        /// true.
+        /// </summary>
+        [JsonProperty("require_signature")]
+        public bool? RequireSignature { get; set; }
+
+        /// <summary>
         /// Shipment service, such as <c>standard</c> or <c>express</c>.
         /// One of: <c>express</c>, <c>priority</c>, or <c>standard</c>.
         /// </summary>
