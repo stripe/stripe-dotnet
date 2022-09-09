@@ -1,5 +1,9 @@
 # Changelog
 
+## 40.8.0 - 2022-09-09
+* [#2575](https://github.com/stripe/stripe-dotnet/pull/2575) API Updates
+  * Add support for `RequireSignature` on `IssuingCardShippingOptions` and `IssuingCardShipping`
+
 ## 40.7.0 - 2022-09-06
 * [#2574](https://github.com/stripe/stripe-dotnet/pull/2574) API Updates
   * Add support for new value `terminal_reader_splashscreen` on `FilePurpose`
