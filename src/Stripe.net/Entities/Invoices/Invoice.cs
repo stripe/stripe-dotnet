@@ -511,6 +511,14 @@ namespace Stripe
         public string Footer { get; set; }
 
         /// <summary>
+        /// Details of the invoice that was cloned. See the <a
+        /// href="https://stripe.com/docs/invoicing/invoice-revisions">revision documentation</a>
+        /// for more details.
+        /// </summary>
+        [JsonProperty("from_invoice")]
+        public InvoiceFromInvoice FromInvoice { get; set; }
+
+        /// <summary>
         /// The URL for the hosted invoice page, which allows customers to view and pay an invoice.
         /// If the invoice has not been finalized yet, this will be null.
         /// </summary>
@@ -530,6 +538,37 @@ namespace Stripe
         /// </summary>
         [JsonProperty("last_finalization_error")]
         public StripeError LastFinalizationError { get; set; }
+
+        #region Expandable LatestRevision
+
+        /// <summary>
+        /// (ID of the Invoice)
+        /// The ID of the most recent non-draft revision of this invoice.
+        /// </summary>
+        [JsonIgnore]
+        public string LatestRevisionId
+        {
+            get => this.InternalLatestRevision?.Id;
+            set => this.InternalLatestRevision = SetExpandableFieldId(value, this.InternalLatestRevision);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the most recent non-draft revision of this invoice.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Invoice LatestRevision
+        {
+            get => this.InternalLatestRevision?.ExpandedObject;
+            set => this.InternalLatestRevision = SetExpandableFieldObject(value, this.InternalLatestRevision);
+        }
+
+        [JsonProperty("latest_revision")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
+        internal ExpandableField<Invoice> InternalLatestRevision { get; set; }
+        #endregion
 
         /// <summary>
         /// The individual line items that make up the invoice. <c>lines</c> is sorted as follows:
