@@ -217,8 +217,10 @@ namespace Stripe.Checkout
         /// A list of the types of payment methods (e.g., <c>card</c>) this Checkout Session can
         /// accept.
         ///
-        /// Do not include this attribute if you prefer to manage your payment methods from the <a
-        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
+        /// In <c>payment</c> and <c>subscription</c> mode, you can omit this attribute to manage
+        /// your payment methods from the <a
+        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>. It is
+        /// required in <c>setup</c> mode.
         ///
         /// Read more about the supported payment methods and their requirements in our <a
         /// href="https://stripe.com/docs/payments/checkout/payment-methods">payment method details

@@ -128,6 +128,14 @@ namespace Stripe
         public string Footer { get; set; }
 
         /// <summary>
+        /// Revise an existing invoice. The new invoice will be created in <c>status=draft</c>. See
+        /// the <a href="https://stripe.com/docs/invoicing/invoice-revisions">revision
+        /// documentation</a> for more details.
+        /// </summary>
+        [JsonProperty("from_invoice")]
+        public InvoiceFromInvoiceOptions FromInvoice { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
