@@ -1,5 +1,14 @@
 # Changelog
 
+## 40.9.0 - 2022-09-15
+* [#2577](https://github.com/stripe/stripe-dotnet/pull/2577) API Updates
+  * Add support for `Pix` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `CheckoutSessionPaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `FromInvoice` on `InvoiceCreateOptions` and `Invoice`
+  * Add support for `LatestRevision` on `Invoice`
+  * Add support for `Amount` on `IssuingDisputeCreateOptions` and `IssuingDisputeUpdateOptions`
+  * Add support for `PixDisplayQrCode` on `PaymentIntentNextAction`
+  * Add support for `Created` on `TreasuryCreditReversal` and `TreasuryDebitReversal`
+
 ## 40.8.0 - 2022-09-09
 * [#2575](https://github.com/stripe/stripe-dotnet/pull/2575) API Updates
   * Add support for `RequireSignature` on `IssuingCardShippingOptions` and `IssuingCardShipping`
