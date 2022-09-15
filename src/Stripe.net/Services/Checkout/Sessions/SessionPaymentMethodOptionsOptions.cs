@@ -126,6 +126,12 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsPaynowOptions Paynow { get; set; }
 
         /// <summary>
+        /// contains details about the Pix payment method options.
+        /// </summary>
+        [JsonProperty("pix")]
+        public SessionPaymentMethodOptionsPixOptions Pix { get; set; }
+
+        /// <summary>
         /// contains details about the Sepa Debit payment method options.
         /// </summary>
         [JsonProperty("sepa_debit")]

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -30,6 +31,13 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
+
+        /// <summary>
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency

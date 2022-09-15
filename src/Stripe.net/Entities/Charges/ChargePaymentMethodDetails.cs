@@ -86,6 +86,9 @@ namespace Stripe
         [JsonProperty("paynow")]
         public ChargePaymentMethodDetailsPaynow Paynow { get; set; }
 
+        [JsonProperty("pix")]
+        public ChargePaymentMethodDetailsPix Pix { get; set; }
+
         [JsonProperty("promptpay")]
         public ChargePaymentMethodDetailsPromptpay Promptpay { get; set; }
 
