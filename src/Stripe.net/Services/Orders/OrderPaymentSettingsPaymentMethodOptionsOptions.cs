@@ -83,6 +83,13 @@ namespace Stripe
         public OrderPaymentSettingsPaymentMethodOptionsP24Options P24 { get; set; }
 
         /// <summary>
+        /// If paying by <c>paypal</c>, this sub-hash contains details about the PayPal payment
+        /// method options to pass to the order's PaymentIntent.
+        /// </summary>
+        [JsonProperty("paypal")]
+        public OrderPaymentSettingsPaymentMethodOptionsPaypalOptions Paypal { get; set; }
+
+        /// <summary>
         /// If paying by <c>sepa_debit</c>, this sub-hash contains details about the SEPA Debit
         /// payment method options to pass to the order's PaymentIntent.
         /// </summary>

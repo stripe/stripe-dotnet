@@ -7,15 +7,15 @@ namespace Stripe
 
     /// <summary>
     /// An AccountSession allows a Connect platform to grant access to a connected account in
-    /// Connect Elements.
+    /// Connect Embedded UIs.
     ///
     /// We recommend that you create an AccountSession each time you need to display an embedded
     /// UI to your user. Do not save AccountSessions to your database as they expire relatively
     /// quickly, and cannot be used more than once.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/connect/get-started-connect-elements">Connect
-    /// Elements</a>.
+    /// href="https://stripe.com/docs/connect/get-started-connect-elements">Connect Embedded
+    /// UIs</a>.
     /// </summary>
     public class AccountSession : StripeEntity<AccountSession>, IHasObject
     {
@@ -41,7 +41,7 @@ namespace Stripe
         ///
         /// Refer to our docs to <a
         /// href="https://stripe.com/docs/connect/get-started-connect-elements">setup Connect
-        /// Elements</a> and learn about how <c>client_secret</c> should be handled.
+        /// Embedded UIs</a> and learn about how <c>client_secret</c> should be handled.
         /// </summary>
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
