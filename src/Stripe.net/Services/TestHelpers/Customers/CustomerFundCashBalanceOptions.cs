@@ -6,14 +6,10 @@ namespace Stripe.TestHelpers
     public class CustomerFundCashBalanceOptions : BaseOptions
     {
         /// <summary>
-        /// Amount intended to be collected by this PaymentIntent. A positive integer representing
-        /// how much to charge in the <a
+        /// Amount to be used for this test cash balance transaction. A positive integer
+        /// representing how much to fund in the <a
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g.,
-        /// 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum
-        /// amount is $0.50 US or <a
-        /// href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">equivalent
-        /// in charge currency</a>. The amount value supports up to eight digits (e.g., a value of
-        /// 99999999 for a USD charge of $999,999.99).
+        /// 100 cents to fund $1.00 or 100 to fund ¥100, a zero-decimal currency).
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
@@ -26,6 +22,13 @@ namespace Stripe.TestHelpers
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        /// <summary>
+        /// A description of the test funding. This simulates free-text references supplied by
+        /// customers when making bank transfers to their cash balance. You can use this to test how
+        /// Stripe's <a
+        /// href="https://stripe.com/docs/payments/customer-balance/reconciliation">reconciliation
+        /// algorithm</a> applies to different user inputs.
+        /// </summary>
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }

@@ -14,7 +14,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The maximum quantity the customer can purchase for the Checkout Session. By default this
-        /// value is 99. You can specify a value up to 999.
+        /// value is 99. You can specify a value up to 999999.
         /// </summary>
         [JsonProperty("maximum")]
         public long? Maximum { get; set; }

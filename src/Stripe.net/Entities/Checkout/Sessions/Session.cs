@@ -444,7 +444,8 @@ namespace Stripe.Checkout
         /// The URL to the Checkout Session. Redirect customers to this URL to take them to
         /// Checkout. If you’re using <a
         /// href="https://stripe.com/docs/payments/checkout/custom-domains">Custom Domains</a>, the
-        /// URL will use your subdomain. Otherwise, it’ll use <c>checkout.stripe.com.</c>.
+        /// URL will use your subdomain. Otherwise, it’ll use <c>checkout.stripe.com.</c> This value
+        /// is only present when the session is active.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }

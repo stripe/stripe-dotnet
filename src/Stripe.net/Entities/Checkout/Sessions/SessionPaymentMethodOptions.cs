@@ -65,6 +65,9 @@ namespace Stripe.Checkout
         [JsonProperty("paynow")]
         public SessionPaymentMethodOptionsPaynow Paynow { get; set; }
 
+        [JsonProperty("pix")]
+        public SessionPaymentMethodOptionsPix Pix { get; set; }
+
         [JsonProperty("sepa_debit")]
         public SessionPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 
