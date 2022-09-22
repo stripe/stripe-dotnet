@@ -40,6 +40,13 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// For non-card charges, you can use this value as the complete description that appears on
+        /// your customers’ statements. Must contain at least one letter, maximum 22 characters.
+        /// </summary>
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
+
+        /// <summary>
         /// The parameters used to automatically create a Transfer when the payment is captured. For
         /// more information, see the PaymentIntents <a
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
