@@ -14,5 +14,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("promotions")]
         public string Promotions { get; set; }
+
+        /// <summary>
+        /// If set to <c>required</c>, it requires customers to check a terms of service checkbox
+        /// before being able to pay. There must be a valid terms of service URL set in your <a
+        /// href="https://dashboard.stripe.com/settings/public">Dashboard settings</a>.
+        /// One of: <c>none</c>, or <c>required</c>.
+        /// </summary>
+        [JsonProperty("terms_of_service")]
+        public string TermsOfService { get; set; }
     }
 }

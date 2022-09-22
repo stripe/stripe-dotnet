@@ -12,5 +12,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("promotions")]
         public string Promotions { get; set; }
+
+        /// <summary>
+        /// If <c>accepted</c>, the customer in this Checkout Session has agreed to the merchant's
+        /// terms of service.
+        /// </summary>
+        [JsonProperty("terms_of_service")]
+        public string TermsOfService { get; set; }
     }
 }
