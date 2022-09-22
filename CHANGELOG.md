@@ -1,5 +1,12 @@
 # Changelog
 
+## 40.10.0 - 2022-09-22
+* [#2578](https://github.com/stripe/stripe-dotnet/pull/2578) API Updates
+  * Add support for `TermsOfService` on `CheckoutSessionConsentCollectionOptions`, `CheckoutSessionConsentCollection`, `CheckoutSessionConsent`, `PaymentLinkConsentCollectionOptions`, and `PaymentLinkConsentCollection`
+  * ⚠️  Remove support for `Plan` on `CheckoutSessionPaymentMethodOptionsCardInstallmentsOptions`. The property was mistakenly released and never worked.
+  * Add support for `StatementDescriptor` on `PaymentIntentIncrementAuthorizationOptions`
+  
+
 ## 40.9.0 - 2022-09-15
 * [#2577](https://github.com/stripe/stripe-dotnet/pull/2577) API Updates
   * Add support for `Pix` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `CheckoutSessionPaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
