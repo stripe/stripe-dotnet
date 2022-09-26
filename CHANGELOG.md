@@ -1,5 +1,10 @@
 # Changelog
 
+## 40.11.0-beta.1 - 2022-09-26
+* [#2579](https://github.com/stripe/stripe-dotnet/pull/2579) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add `FinancingOffer`, `FinancingSummary` and `FinancingTransaction` resources. 
+
 ## 40.10.0 - 2022-09-22
 * [#2578](https://github.com/stripe/stripe-dotnet/pull/2578) API Updates
   * Add support for `TermsOfService` on `CheckoutSessionConsentCollectionOptions`, `CheckoutSessionConsentCollection`, `CheckoutSessionConsent`, `PaymentLinkConsentCollectionOptions`, and `PaymentLinkConsentCollection`
