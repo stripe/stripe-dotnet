@@ -12,7 +12,8 @@ namespace Stripe
         /// Set this to <c>true</c> to create a file link for the newly created file. Creating a
         /// link is only possible when the file's <c>purpose</c> is one of the following:
         /// <c>business_icon</c>, <c>business_logo</c>, <c>customer_signature</c>,
-        /// <c>dispute_evidence</c>, <c>pci_document</c>, or <c>tax_document_user_upload</c>.
+        /// <c>dispute_evidence</c>, <c>pci_document</c>, <c>tax_document_user_upload</c>, or
+        /// <c>terminal_reader_splashscreen</c>.
         /// </summary>
         [JsonProperty("create")]
         public bool? Create { get; set; }

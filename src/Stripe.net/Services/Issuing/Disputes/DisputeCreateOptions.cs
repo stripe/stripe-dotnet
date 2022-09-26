@@ -7,6 +7,14 @@ namespace Stripe.Issuing
     public class DisputeCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// The dispute amount in the card's currency and in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. If
+        /// not set, defaults to the full transaction amount.
+        /// </summary>
+        [JsonProperty("amount")]
+        public long? Amount { get; set; }
+
+        /// <summary>
         /// Evidence provided for the dispute.
         /// </summary>
         [JsonProperty("evidence")]

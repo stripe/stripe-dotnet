@@ -160,6 +160,12 @@ namespace Stripe
         [JsonProperty("paynow")]
         public PaymentMethodPaynow Paynow { get; set; }
 
+        [JsonProperty("paypal")]
+        public PaymentMethodPaypal Paypal { get; set; }
+
+        [JsonProperty("pix")]
+        public PaymentMethodPix Pix { get; set; }
+
         [JsonProperty("promptpay")]
         public PaymentMethodPromptpay Promptpay { get; set; }
 
@@ -185,8 +191,9 @@ namespace Stripe
         /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>blik</c>, <c>boleto</c>,
         /// <c>card</c>, <c>card_present</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
         /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>, <c>klarna</c>,
-        /// <c>konbini</c>, <c>link</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>promptpay</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, <c>us_bank_account</c>, or <c>wechat_pay</c>.
+        /// <c>konbini</c>, <c>link</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>paypal</c>,
+        /// <c>pix</c>, <c>promptpay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>us_bank_account</c>,
+        /// or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

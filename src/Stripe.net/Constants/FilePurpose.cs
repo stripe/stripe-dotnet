@@ -30,5 +30,7 @@ namespace Stripe
         public const string SigmaScheduledQuery = "sigma_scheduled_query";
 
         public const string TaxDocumentUserUpload = "tax_document_user_upload";
+
+        public const string TerminalReaderSplashscreen = "terminal_reader_splashscreen";
     }
 }

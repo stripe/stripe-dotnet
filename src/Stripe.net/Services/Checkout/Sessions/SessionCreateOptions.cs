@@ -147,8 +147,8 @@ namespace Stripe.Checkout
         /// to consolidate line items if there are more than a few dozen.
         ///
         /// For <c>subscription</c> mode, there is a maximum of 20 line items with recurring Prices
-        /// and 20 line items with one-time Prices. Line items with one-time Prices in will be on
-        /// the initial invoice only.
+        /// and 20 line items with one-time Prices. Line items with one-time Prices will be on the
+        /// initial invoice only.
         /// </summary>
         [JsonProperty("line_items")]
         public List<SessionLineItemOptions> LineItems { get; set; }
@@ -217,8 +217,10 @@ namespace Stripe.Checkout
         /// A list of the types of payment methods (e.g., <c>card</c>) this Checkout Session can
         /// accept.
         ///
-        /// Do not include this attribute if you prefer to manage your payment methods from the <a
-        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
+        /// In <c>payment</c> and <c>subscription</c> mode, you can omit this attribute to manage
+        /// your payment methods from the <a
+        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>. It is
+        /// required in <c>setup</c> mode.
         ///
         /// Read more about the supported payment methods and their requirements in our <a
         /// href="https://stripe.com/docs/payments/checkout/payment-methods">payment method details

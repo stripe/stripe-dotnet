@@ -72,7 +72,7 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsEpsOptions Eps { get; set; }
 
         /// <summary>
-        /// contains details about the EPS payment method options.
+        /// contains details about the FPX payment method options.
         /// </summary>
         [JsonProperty("fpx")]
         public SessionPaymentMethodOptionsFpxOptions Fpx { get; set; }
@@ -124,6 +124,18 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("paynow")]
         public SessionPaymentMethodOptionsPaynowOptions Paynow { get; set; }
+
+        /// <summary>
+        /// contains details about the PayPal payment method options.
+        /// </summary>
+        [JsonProperty("paypal")]
+        public SessionPaymentMethodOptionsPaypalOptions Paypal { get; set; }
+
+        /// <summary>
+        /// contains details about the Pix payment method options.
+        /// </summary>
+        [JsonProperty("pix")]
+        public SessionPaymentMethodOptionsPixOptions Pix { get; set; }
 
         /// <summary>
         /// contains details about the Sepa Debit payment method options.

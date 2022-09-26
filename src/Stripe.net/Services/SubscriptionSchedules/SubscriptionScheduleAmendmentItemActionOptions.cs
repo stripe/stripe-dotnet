@@ -6,8 +6,8 @@ namespace Stripe
     public class SubscriptionScheduleAmendmentItemActionOptions : INestedOptions
     {
         /// <summary>
-        /// Details of the subscription item to add. The <c>price</c> must be unique across all
-        /// items.
+        /// Details of the subscription item to add. If an item with the same <c>price</c> exists,
+        /// it will be replaced by this new item. Otherwise, it adds the new item.
         /// </summary>
         [JsonProperty("add")]
         public SubscriptionScheduleAmendmentItemActionAddOptions Add { get; set; }

@@ -30,6 +30,12 @@ namespace Stripe.Issuing
         public string PhoneNumber { get; set; }
 
         /// <summary>
+        /// Whether a signature is required for card delivery.
+        /// </summary>
+        [JsonProperty("require_signature")]
+        public bool? RequireSignature { get; set; }
+
+        /// <summary>
         /// Shipment service.
         /// One of: <c>express</c>, <c>priority</c>, or <c>standard</c>.
         /// </summary>

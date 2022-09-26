@@ -1,5 +1,41 @@
 # Changelog
 
+## 40.10.0 - 2022-09-22
+* [#2578](https://github.com/stripe/stripe-dotnet/pull/2578) API Updates
+  * Add support for `TermsOfService` on `CheckoutSessionConsentCollectionOptions`, `CheckoutSessionConsentCollection`, `CheckoutSessionConsent`, `PaymentLinkConsentCollectionOptions`, and `PaymentLinkConsentCollection`
+  * ⚠️  Remove support for `Plan` on `CheckoutSessionPaymentMethodOptionsCardInstallmentsOptions`. The property was mistakenly released and never worked.
+  * Add support for `StatementDescriptor` on `PaymentIntentIncrementAuthorizationOptions`
+
+## 40.9.0 - 2022-09-15
+* [#2577](https://github.com/stripe/stripe-dotnet/pull/2577) API Updates
+  * Add support for `Pix` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `CheckoutSessionPaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `FromInvoice` on `InvoiceCreateOptions` and `Invoice`
+  * Add support for `LatestRevision` on `Invoice`
+  * Add support for `Amount` on `IssuingDisputeCreateOptions` and `IssuingDisputeUpdateOptions`
+  * Add support for `PixDisplayQrCode` on `PaymentIntentNextAction`
+  * Add support for `Created` on `TreasuryCreditReversal` and `TreasuryDebitReversal`
+
+## 40.8.0 - 2022-09-09
+* [#2575](https://github.com/stripe/stripe-dotnet/pull/2575) API Updates
+  * Add support for `RequireSignature` on `IssuingCardShippingOptions` and `IssuingCardShipping`
+
+## 40.7.0 - 2022-09-06
+* [#2574](https://github.com/stripe/stripe-dotnet/pull/2574) API Updates
+  * Add support for new value `terminal_reader_splashscreen` on `FilePurpose`
+
+## 40.6.0 - 2022-08-31
+* [#2573](https://github.com/stripe/stripe-dotnet/pull/2573) API Updates
+  * Add support for `Description` on `PaymentLinkSubscriptionDataOptions` and `PaymentLinkSubscriptionData`
+* [#2570](https://github.com/stripe/stripe-dotnet/pull/2570) Update Coveralls command line arguments
+* [#2569](https://github.com/stripe/stripe-dotnet/pull/2569) Add test coverage using Coveralls
+
+## 40.5.0 - 2022-08-26
+* [#2568](https://github.com/stripe/stripe-dotnet/pull/2568) API Updates
+  * Add support for `LoginPage` on `BillingPortalConfigurationCreateOptions`, `BillingPortalConfigurationUpdateOptions`, and `BillingPortalConfiguration`
+  * Add support for `Customs` and `PhoneNumber` on `IssuingCardShippingOptions` and `IssuingCardShipping`
+  * Add support for `Description` on `QuoteSubscriptionDataOptions`, `QuoteSubscriptionData`, `SubscriptionScheduleDefaultSettingsOptions`, `SubscriptionScheduleDefaultSettings`, `SubscriptionSchedulePhasesOptions`, and `SubscriptionSchedulePhases`
+* [#2565](https://github.com/stripe/stripe-dotnet/pull/2565) Update README.md to clarify that API version can only be change in beta
+
 ## 40.5.0-beta.1 - 2022-08-26
 * [#2566](https://github.com/stripe/stripe-dotnet/pull/2566) API Updates for beta branch
   * Updated stable APIs to the latest version

@@ -173,6 +173,20 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsPaynowOptions Paynow { get; set; }
 
         /// <summary>
+        /// If this is a <c>paypal</c> PaymentMethod, this sub-hash contains details about the
+        /// PayPal payment method options.
+        /// </summary>
+        [JsonProperty("paypal")]
+        public PaymentIntentPaymentMethodOptionsPaypalOptions Paypal { get; set; }
+
+        /// <summary>
+        /// If this is a <c>pix</c> PaymentMethod, this sub-hash contains details about the Pix
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("pix")]
+        public PaymentIntentPaymentMethodOptionsPixOptions Pix { get; set; }
+
+        /// <summary>
         /// If this is a <c>promptpay</c> PaymentMethod, this sub-hash contains details about the
         /// PromptPay payment method options.
         /// </summary>

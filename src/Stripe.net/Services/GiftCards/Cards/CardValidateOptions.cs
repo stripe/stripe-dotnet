@@ -14,7 +14,7 @@ namespace Stripe.GiftCards
         /// <summary>
         /// The pin associated with the gift card. Not all gift cards have pins.
         /// </summary>
-        [JsonProperty("pin")]
-        public string Pin { get; set; }
+        [JsonProperty("giftcard_pin")]
+        public string GiftcardPin { get; set; }
     }
 }

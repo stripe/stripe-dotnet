@@ -31,6 +31,15 @@ namespace Stripe
                 },
                 { "billing_portal.session", typeof(BillingPortal.Session) },
                 { "capability", typeof(Capability) },
+                { "capital.financing_offer", typeof(Capital.FinancingOffer) },
+                {
+                    "capital.financing_summary", typeof(
+                        Capital.FinancingSummary)
+                },
+                {
+                    "capital.financing_transaction", typeof(
+                        Capital.FinancingTransaction)
+                },
                 { "card", typeof(Card) },
                 { "cash_balance", typeof(CashBalance) },
                 { "charge", typeof(Charge) },

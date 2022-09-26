@@ -7,8 +7,7 @@ namespace Stripe.FinancialConnections
     public class AccountRefreshOptions : BaseOptions
     {
         /// <summary>
-        /// The list of account features that you would like to refresh. Either: <c>balance</c> or
-        /// <c>ownership</c>.
+        /// The list of account features that you would like to refresh.
         /// </summary>
         [JsonProperty("features")]
         public List<string> Features { get; set; }
