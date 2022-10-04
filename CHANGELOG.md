@@ -1,9 +1,16 @@
 # Changelog
 
+## 40.11.0 - 2022-09-29
+* [#2580](https://github.com/stripe/stripe-dotnet/pull/2580) API Updates
+  * Change type of `ChargePaymentMethodDetailsCardPresentIncrementalAuthorizationSupported` and `ChargePaymentMethodDetailsCardPresentOvercaptureSupported` from `nullable(boolean)` to `boolean`
+  * Add support for `Created` on `CheckoutSession`
+  * Add support for `SetupFutureUsage` on `PaymentIntentPaymentMethodOptionsPixOptions` and `PaymentIntentPaymentMethodOptionsPix`
+  * Deprecate `SessionSubscriptionDataOptions.items` (use the `line_items` param instead). This will be removed in the next major version.
+
 ## 40.11.0-beta.1 - 2022-09-26
 * [#2579](https://github.com/stripe/stripe-dotnet/pull/2579) API Updates for beta branch
   * Updated stable APIs to the latest version
-  * Add `FinancingOffer`, `FinancingSummary` and `FinancingTransaction` resources. 
+  * Add `FinancingOffer`, `FinancingSummary` and `FinancingTransaction` resources.
 
 ## 40.10.0 - 2022-09-22
 * [#2578](https://github.com/stripe/stripe-dotnet/pull/2578) API Updates

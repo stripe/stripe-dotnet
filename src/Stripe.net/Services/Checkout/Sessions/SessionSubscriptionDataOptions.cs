@@ -43,8 +43,7 @@ namespace Stripe.Checkout
         public string Description { get; set; }
 
         /// <summary>
-        /// A list of items, each with an attached plan, that the customer is subscribing to. Prefer
-        /// using <c>line_items</c>.
+        /// This parameter is deprecated. Use the line_items parameter on the Session instead.
         /// </summary>
         [JsonProperty("items")]
         public List<SessionSubscriptionDataItemOptions> Items { get; set; }
