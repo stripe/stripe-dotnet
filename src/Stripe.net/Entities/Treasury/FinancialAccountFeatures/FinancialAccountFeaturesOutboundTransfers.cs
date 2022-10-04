@@ -6,7 +6,7 @@ namespace Stripe.Treasury
     public class FinancialAccountFeaturesOutboundTransfers : StripeEntity<FinancialAccountFeaturesOutboundTransfers>
     {
         /// <summary>
-        /// Toggle settings for enabling/disabling a feature.
+        /// Toggle settings for enabling/disabling an ACH specific feature.
         /// </summary>
         [JsonProperty("ach")]
         public FinancialAccountFeaturesOutboundTransfersAch Ach { get; set; }

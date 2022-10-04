@@ -16,5 +16,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("preferred_locale")]
         public string PreferredLocale { get; set; }
+
+        /// <summary>
+        /// A unique reference ID of the PayPal transaction. This must be a globally unique ID
+        /// across all PayPal transactions or the transaction will fail.
+        /// </summary>
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace Stripe
         /// <c>amendment_start</c>.
         /// </summary>
         [JsonProperty("timestamp")]
-        public SubscriptionScheduleAmendmentAmendmentEndTimestampOptions Timestamp { get; set; }
+        public long? Timestamp { get; set; }
 
         /// <summary>
         /// Select one of three ways to pass the <c>amendment_end</c>.
