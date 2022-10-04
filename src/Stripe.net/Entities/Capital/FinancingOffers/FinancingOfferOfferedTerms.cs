@@ -33,10 +33,9 @@ namespace Stripe.Capital
 
         /// <summary>
         /// Populated when the <c>product_type</c> of the <c>financingoffer</c> is <c>refill</c>.
-        /// Represents the discount rate percentage on remaining premium on the existing loan. When
-        /// the <c>financing_offer</c> is paid out, the
-        /// <c>previous_financing_fee_discount_amount</c> will be computed as the multiple of this
-        /// rate and the remaining premium.
+        /// Represents the discount rate percentage on remaining fee on the existing loan. When the
+        /// <c>financing_offer</c> is paid out, the <c>previous_financing_fee_discount_amount</c>
+        /// will be computed as the multiple of this rate and the remaining fee.
         /// </summary>
         [JsonProperty("previous_financing_fee_discount_rate")]
         public decimal? PreviousFinancingFeeDiscountRate { get; set; }
