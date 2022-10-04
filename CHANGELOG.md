@@ -1,5 +1,10 @@
 # Changelog
 
+## 40.12.0-beta.1 - 2022-10-04
+* [#2583](https://github.com/stripe/stripe-dotnet/pull/2583) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Added `ReferenceId` to `PaymentIntentPaymentMethodOptionsPaypalOptions`
+
 ## 40.11.0 - 2022-09-29
 * [#2580](https://github.com/stripe/stripe-dotnet/pull/2580) API Updates
   * Change type of `ChargePaymentMethodDetailsCardPresentIncrementalAuthorizationSupported` and `ChargePaymentMethodDetailsCardPresentOvercaptureSupported` from `nullable(boolean)` to `boolean`
