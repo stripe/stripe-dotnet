@@ -7,9 +7,9 @@ namespace Stripe
     {
         /// <summary>
         /// The code for the type of error.
-        /// One of: <c>invalid_address_city_state_postal_code</c>, <c>invalid_street_address</c>,
-        /// <c>invalid_tos_acceptance</c>, <c>invalid_value_other</c>,
-        /// <c>verification_document_address_mismatch</c>,
+        /// One of: <c>invalid_address_city_state_postal_code</c>, <c>invalid_dob_age_under_18</c>,
+        /// <c>invalid_street_address</c>, <c>invalid_tos_acceptance</c>,
+        /// <c>invalid_value_other</c>, <c>verification_document_address_mismatch</c>,
         /// <c>verification_document_address_missing</c>, <c>verification_document_corrupt</c>,
         /// <c>verification_document_country_not_supported</c>,
         /// <c>verification_document_dob_mismatch</c>, <c>verification_document_duplicate_type</c>,
