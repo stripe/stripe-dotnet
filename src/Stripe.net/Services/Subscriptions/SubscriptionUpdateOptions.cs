@@ -71,7 +71,8 @@ namespace Stripe
         /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
         /// Stripe will attempt to pay this subscription at the end of the cycle using the default
         /// source attached to the customer. When sending an invoice, Stripe will email your
-        /// customer an invoice with payment instructions. Defaults to <c>charge_automatically</c>.
+        /// customer an invoice with payment instructions and mark the subscription as
+        /// <c>active</c>. Defaults to <c>charge_automatically</c>.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]

@@ -81,7 +81,8 @@ namespace Stripe
         /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
         /// Stripe will attempt to pay this subscription at the end of the cycle using the default
         /// source attached to the customer. When sending an invoice, Stripe will email your
-        /// customer an invoice with payment instructions. Defaults to <c>charge_automatically</c>.
+        /// customer an invoice with payment instructions and mark the subscription as
+        /// <c>active</c>. Defaults to <c>charge_automatically</c>.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]
@@ -175,6 +176,8 @@ namespace Stripe
         public bool? OffSession { get; set; }
 
         /// <summary>
+        /// Only applies to subscriptions with <c>collection_method=charge_automatically</c>.
+        ///
         /// Use <c>allow_incomplete</c> to create subscriptions with <c>status=incomplete</c> if the
         /// first invoice cannot be paid. Creating subscriptions with this status allows you to
         /// manage scenarios where additional user actions are needed to pay a subscription's
@@ -202,6 +205,9 @@ namespace Stripe
         ///
         /// <c>pending_if_incomplete</c> is only used with updates and cannot be passed when
         /// creating a subscription.
+        ///
+        /// Subscriptions with <c>collection_method=send_invoice</c> are automatically activated
+        /// regardless of the first invoice status.
         /// One of: <c>allow_incomplete</c>, <c>default_incomplete</c>, <c>error_if_incomplete</c>,
         /// or <c>pending_if_incomplete</c>.
         /// </summary>
