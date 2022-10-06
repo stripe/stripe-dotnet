@@ -1,5 +1,9 @@
 # Changelog
 
+## 40.12.0 - 2022-10-06
+* [#2584](https://github.com/stripe/stripe-dotnet/pull/2584) API Updates
+  * Add support for `Klarna` on `SetupAttemptPaymentMethodDetails`
+
 ## 40.11.0 - 2022-09-29
 * [#2580](https://github.com/stripe/stripe-dotnet/pull/2580) API Updates
   * Change type of `ChargePaymentMethodDetailsCardPresentIncrementalAuthorizationSupported` and `ChargePaymentMethodDetailsCardPresentOvercaptureSupported` from `nullable(boolean)` to `boolean`
