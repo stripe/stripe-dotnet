@@ -9,7 +9,7 @@
   * Add support for `Klarna` on `SetupAttemptPaymentMethodDetails`
 
 ## 40.12.0-beta.2 - 2022-10-04
-* [#999](https://github.com/stripe/stripe-dotnet/pull/999) DESCRIBE CHANGES HERE (try to use the same style, tense, etc. as the other entries)
+* Updated stable APIs to the latest version
 
 ## 40.12.0-beta.1 - 2022-10-04
 * [#2583](https://github.com/stripe/stripe-dotnet/pull/2583) API Updates for beta branch
