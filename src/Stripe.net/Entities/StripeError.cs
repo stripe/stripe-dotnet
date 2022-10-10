@@ -71,6 +71,12 @@ namespace Stripe
         public string PaymentMethodType { get; set; }
 
         /// <summary>
+        /// A URL to the request log entry in your dashboard.
+        /// </summary>
+        [JsonProperty("request_log_url")]
+        public string RequestLogUrl { get; set; }
+
+        /// <summary>
         /// The <see cref="Stripe.SetupIntent"/> object for errors returned on a request
         /// involving a <see cref="Stripe.SetupIntent"/>.
         /// </summary>
