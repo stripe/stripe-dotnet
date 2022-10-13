@@ -154,6 +154,12 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Details about the authorization, such as identifiers, set by the card network.
+        /// </summary>
+        [JsonProperty("network_data")]
+        public AuthorizationNetworkData NetworkData { get; set; }
+
+        /// <summary>
         /// The pending authorization request. This field will only be non-null during an
         /// <c>issuing_authorization.request</c> webhook.
         /// </summary>
