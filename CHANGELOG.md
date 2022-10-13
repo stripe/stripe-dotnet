@@ -1,5 +1,10 @@
 # Changelog
 
+## 40.13.0 - 2022-10-13
+* [#2589](https://github.com/stripe/stripe-dotnet/pull/2589) API Updates
+  * Add support for `NetworkData` on `IssuingAuthorization`
+* [#2586](https://github.com/stripe/stripe-dotnet/pull/2586) Add request_log_url on StripeError
+
 ## 40.12.0 - 2022-10-06
 * [#2584](https://github.com/stripe/stripe-dotnet/pull/2584) API Updates
   * Add support for `Klarna` on `SetupAttemptPaymentMethodDetails`
