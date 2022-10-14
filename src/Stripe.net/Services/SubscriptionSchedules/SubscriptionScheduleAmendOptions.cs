@@ -11,5 +11,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amendments")]
         public List<SubscriptionScheduleAmendmentOptions> Amendments { get; set; }
+
+        /// <summary>
+        /// Changes to apply to the subscription schedule.
+        /// </summary>
+        [JsonProperty("schedule_settings")]
+        public SubscriptionScheduleScheduleSettingsOptions ScheduleSettings { get; set; }
     }
 }
