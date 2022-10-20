@@ -10,5 +10,11 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("skip_tipping")]
         public bool SkipTipping { get; set; }
+
+        /// <summary>
+        /// Represents a per-transaction tipping configuration.
+        /// </summary>
+        [JsonProperty("tipping")]
+        public ReaderActionProcessPaymentIntentProcessConfigTipping Tipping { get; set; }
     }
 }

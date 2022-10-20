@@ -7,7 +7,7 @@ namespace Stripe.Issuing
     {
         /// <summary>
         /// The Treasury <a
-        /// href="https://stripe.com/docs/api/treasury/received_debits">ReceivedCredit</a>
+        /// href="https://stripe.com/docs/api/treasury/received_credits">ReceivedCredit</a>
         /// representing this Issuing transaction if it is a refund.
         /// </summary>
         [JsonProperty("received_credit")]
@@ -15,7 +15,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The Treasury <a
-        /// href="https://stripe.com/docs/api/treasury/received_credits">ReceivedDebit</a>
+        /// href="https://stripe.com/docs/api/treasury/received_debits">ReceivedDebit</a>
         /// representing this Issuing transaction if it is a capture.
         /// </summary>
         [JsonProperty("received_debit")]
