@@ -1,5 +1,9 @@
 # Changelog
 
+## 40.14.0 - 2022-10-20
+* [#2591](https://github.com/stripe/stripe-dotnet/pull/2591) API Updates
+  * Add support for `Tipping` on `TerminalReaderActionProcessPaymentIntentProcessConfig` and `TerminalReaderProcessConfigOptions`
+
 ## 40.13.0 - 2022-10-13
 * [#2589](https://github.com/stripe/stripe-dotnet/pull/2589) API Updates
   * Add support for `NetworkData` on `IssuingAuthorization`
