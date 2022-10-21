@@ -31,6 +31,8 @@ namespace Stripe
 
         public const string P24 = "p24";
 
+        public const string Paypal = "paypal";
+
         public const string SepaCreditTransfer = "sepa_credit_transfer";
 
         public const string SepaDebit = "sepa_debit";
