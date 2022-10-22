@@ -1,5 +1,9 @@
 # Changelog
 
+## 40.14.0 - 2022-10-20
+* [#2591](https://github.com/stripe/stripe-dotnet/pull/2591) API Updates
+  * Add support for `Tipping` on `TerminalReaderActionProcessPaymentIntentProcessConfig` and `TerminalReaderProcessConfigOptions`
+
 ## 40.14.0-beta.1 - 2022-10-14
 * [#2590](https://github.com/stripe/stripe-dotnet/pull/2590) API Updates for beta branch
   * Updated stable APIs to the latest version
