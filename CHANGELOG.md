@@ -1,5 +1,12 @@
 # Changelog
 
+## 40.15.0-beta.1 - 2022-10-21
+* [#2593](https://github.com/stripe/stripe-dotnet/pull/2593) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `Paypal` on `ChargePaymentMethodDetails` and `Source`
+  * Add support for `NetworkData` on `IssuingTransaction`
+  * Add support for `BillingCycleAnchor` on `SubscriptionScheduleAmendmentsOptions`
+
 ## 40.14.0 - 2022-10-20
 * [#2591](https://github.com/stripe/stripe-dotnet/pull/2591) API Updates
   * Add support for `Tipping` on `TerminalReaderActionProcessPaymentIntentProcessConfig` and `TerminalReaderProcessConfigOptions`
