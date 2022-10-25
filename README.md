@@ -72,7 +72,7 @@ Console.WriteLine(customer.Email);
 
 ### Retrieve a resource
 
-The `Retrieve` method of the service class can be used to create a new resource:
+The `Retrieve` method of the service class can be used to retrieve a resource:
 
 ``` C#
 var service = new CustomerService();
@@ -131,11 +131,18 @@ customers = service.List(new CustomerListOptions()
 {
     StartingAfter = lastId,
 });
+
+// Enumerate the subsequnt page
+foreach (Customer customer in customers)
+{
+   lastId = customer.Id;
+   Console.WriteLine(customer.Email);
+}
 ```
 
 ### Listing a resource with auto-pagination
 
-The `ListAutoPaging` method on the service class can be used to list resources page-by-page.
+The `ListAutoPaging` method on the service class can be used to automatically iterate over all pages.
 
 ```C#
 var service = new CustomerService();
