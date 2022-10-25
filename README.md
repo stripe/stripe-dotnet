@@ -132,7 +132,7 @@ customers = service.List(new CustomerListOptions()
     StartingAfter = lastId,
 });
 
-// Enumerate the subsequnt page
+// Enumerate the subsequent page
 foreach (Customer customer in customers)
 {
    lastId = customer.Id;
