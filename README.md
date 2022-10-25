@@ -55,7 +55,7 @@ Stripe.ApiKey = "sk_test_..."
 
 ### Creating a resource
 
-The `Create` method on the service class can be used to create a new resource:
+The `Create` method of the service class can be used to create a new resource:
 
 ``` C#
 var options = new CustomerCreateOptions
@@ -72,7 +72,7 @@ Console.WriteLine(customer.Email);
 
 ### Retrieve a resource
 
-The `Retrieve` method on the service class can be used to create a new resource:
+The `Retrieve` method of the service class can be used to create a new resource:
 
 ``` C#
 var service = new CustomerService();
@@ -83,7 +83,7 @@ Console.WriteLine(customer.Email);
 
 ### Updating a resource
 
-The `Update` method on the service class can be used to update a resource:
+The `Update` method of the service class can be used to update a resource:
 
 ```C#
 
@@ -101,7 +101,7 @@ Console.WriteLine(customer.Email);
 
 ### Deleting a resource
 
-The `Delete` method on the service class can be used to delete a resource:
+The `Delete` method of the service class can be used to delete a resource:
 
 ```C#
 var service = new CustomerService();
@@ -113,14 +113,13 @@ Customer customer = service.Delete("cus_123", options);
 The `List` method on the service class can be used to list resources page-by-page.
 
 > **NOTE**
-> The `List` method returns only a single page, you have to manually continue the iteration.
+> The `List` method returns only a single page, you have to manually continue the iteration using the `StartingAfter` parameter.
 
 ```C#
-
 var service = new CustomerService();
 var customers = service.List();
 
-string lastId = null
+string lastId = null;
 
 // Enumerate the first page of the list
 foreach (Customer customer in customers)
@@ -133,6 +132,21 @@ customers = service.List(new CustomerListOptions()
 {
     StartingAfter = lastId,
 });
+```
+
+### Listing a resource with auto-pagination
+
+The `ListAutoPaging` method on the service class can be used to list resources page-by-page.
+
+```C#
+var service = new CustomerService();
+var customers = service.ListAutoPaging();
+
+// Enumerate all pages of the list
+foreach (Customer customer in customers)
+{
+   Console.WriteLine(customer.Email);
+}
 ```
 
 
