@@ -50,7 +50,7 @@ Stripe authenticates API requests using your account’s secret key, which you c
 Use `Stripe.ApiKey` property to set the secret key.
 
 ``` C#
-Stripe.ApiKey = "sk_test_..."
+Stripe.ApiKey = "sk_test_...";
 ```
 
 ### Creating a resource
@@ -61,7 +61,7 @@ The `Create` method of the service class can be used to create a new resource:
 var options = new CustomerCreateOptions
 {
     Email = "customer@example.com"
-}
+};
 
 var service = new CustomerService();
 Customer customer = service.Create(options);
@@ -86,11 +86,10 @@ Console.WriteLine(customer.Email);
 The `Update` method of the service class can be used to update a resource:
 
 ```C#
-
 var options = new CustomerUpdateOptions
 {
     Email = "updated-email@example.com"
-}
+};
 
 var service = new CustomerService();
 Customer customer = service.Update("cus_123", options);
@@ -148,7 +147,6 @@ foreach (Customer customer in customers)
    Console.WriteLine(customer.Email);
 }
 ```
-
 
 ### Per-request configuration
 
