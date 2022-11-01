@@ -66,6 +66,7 @@ jobs:
         run: echo "commitBranch=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
 
       - name: Send code coverage report to coveralls.io
+        if: env.COVERALLS_REPO_TOKEN
         run: |
           export ARGS="--opencover \
             -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml \
