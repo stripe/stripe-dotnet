@@ -78,6 +78,12 @@ namespace Stripe
         public AccountCapabilitiesCartesBancairesPaymentsOptions CartesBancairesPayments { get; set; }
 
         /// <summary>
+        /// The cashapp_payments capability.
+        /// </summary>
+        [JsonProperty("cashapp_payments")]
+        public AccountCapabilitiesCashappPaymentsOptions CashappPayments { get; set; }
+
+        /// <summary>
         /// The eps_payments capability.
         /// </summary>
         [JsonProperty("eps_payments")]
@@ -202,5 +208,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("us_bank_account_ach_payments")]
         public AccountCapabilitiesUsBankAccountAchPaymentsOptions UsBankAccountAchPayments { get; set; }
+
+        /// <summary>
+        /// The zip_payments capability.
+        /// </summary>
+        [JsonProperty("zip_payments")]
+        public AccountCapabilitiesZipPaymentsOptions ZipPayments { get; set; }
     }
 }

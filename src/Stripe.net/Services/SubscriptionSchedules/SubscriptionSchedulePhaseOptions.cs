@@ -153,6 +153,13 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The account on behalf of which to charge, for each of the associated subscription's
+        /// invoices.
+        /// </summary>
+        [JsonProperty("on_behalf_of")]
+        public string OnBehalfOf { get; set; }
+
+        /// <summary>
         /// Whether the subscription schedule will create <a
         /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when
         /// transitioning to this phase. The default value is <c>create_prorations</c>.
@@ -193,5 +200,11 @@ namespace Stripe
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
+
+        /// <summary>
+        /// Settings related to subscription trials.
+        /// </summary>
+        [JsonProperty("trial_settings")]
+        public SubscriptionSchedulePhaseTrialSettingsOptions TrialSettings { get; set; }
     }
 }

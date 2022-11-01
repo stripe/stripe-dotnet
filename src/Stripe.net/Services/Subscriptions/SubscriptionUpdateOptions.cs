@@ -160,6 +160,12 @@ namespace Stripe
         public bool? OffSession { get; set; }
 
         /// <summary>
+        /// The account on behalf of which to charge, for each of the subscription's invoices.
+        /// </summary>
+        [JsonProperty("on_behalf_of")]
+        public string OnBehalfOf { get; set; }
+
+        /// <summary>
         /// If specified, payment collection for this subscription will be paused.
         /// </summary>
         [JsonProperty("pause_collection")]
