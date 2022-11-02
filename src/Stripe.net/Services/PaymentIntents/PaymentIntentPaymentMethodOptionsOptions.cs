@@ -82,6 +82,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
+        /// If this is a <c>cashapp</c> PaymentMethod, this sub-hash contains details about the Cash
+        /// App Pay payment method options.
+        /// </summary>
+        [JsonProperty("cashapp")]
+        public PaymentIntentPaymentMethodOptionsCashappOptions Cashapp { get; set; }
+
+        /// <summary>
         /// If this is a <c>customer balance</c> PaymentMethod, this sub-hash contains details about
         /// the customer balance payment method options.
         /// </summary>

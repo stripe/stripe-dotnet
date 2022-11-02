@@ -44,6 +44,9 @@ namespace Stripe
         [JsonProperty("card_present")]
         public ChargePaymentMethodDetailsCardPresent CardPresent { get; set; }
 
+        [JsonProperty("cashapp")]
+        public ChargePaymentMethodDetailsCashapp Cashapp { get; set; }
+
         [JsonProperty("customer_balance")]
         public ChargePaymentMethodDetailsCustomerBalance CustomerBalance { get; set; }
 
@@ -124,5 +127,8 @@ namespace Stripe
 
         [JsonProperty("wechat_pay")]
         public ChargePaymentMethodDetailsWechatPay WechatPay { get; set; }
+
+        [JsonProperty("zip")]
+        public ChargePaymentMethodDetailsZip Zip { get; set; }
     }
 }

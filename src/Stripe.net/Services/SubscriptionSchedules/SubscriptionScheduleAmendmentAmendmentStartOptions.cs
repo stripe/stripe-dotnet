@@ -13,6 +13,12 @@ namespace Stripe
         public SubscriptionScheduleAmendmentAmendmentStartAmendmentEndOptions AmendmentEnd { get; set; }
 
         /// <summary>
+        /// Use the <c>end</c> time of a given discount.
+        /// </summary>
+        [JsonProperty("discount_end")]
+        public SubscriptionScheduleAmendmentAmendmentStartDiscountEndOptions DiscountEnd { get; set; }
+
+        /// <summary>
         /// A precise Unix timestamp for the amendment to start.
         /// </summary>
         [JsonProperty("timestamp")]
@@ -20,8 +26,8 @@ namespace Stripe
 
         /// <summary>
         /// Select one of three ways to pass the <c>amendment_start</c>.
-        /// One of: <c>amendment_end</c>, <c>now</c>, <c>schedule_end</c>, <c>timestamp</c>, or
-        /// <c>upcoming_invoice</c>.
+        /// One of: <c>amendment_end</c>, <c>discount_end</c>, <c>now</c>, <c>schedule_end</c>,
+        /// <c>timestamp</c>, or <c>upcoming_invoice</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

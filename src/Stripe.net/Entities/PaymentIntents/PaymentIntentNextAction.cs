@@ -14,6 +14,9 @@ namespace Stripe
         [JsonProperty("card_await_notification")]
         public PaymentIntentNextActionCardAwaitNotification CardAwaitNotification { get; set; }
 
+        [JsonProperty("cashapp_handle_redirect_or_display_qr_code")]
+        public PaymentIntentNextActionCashappHandleRedirectOrDisplayQrCode CashappHandleRedirectOrDisplayQrCode { get; set; }
+
         [JsonProperty("display_bank_transfer_instructions")]
         public PaymentIntentNextActionDisplayBankTransferInstructions DisplayBankTransferInstructions { get; set; }
 

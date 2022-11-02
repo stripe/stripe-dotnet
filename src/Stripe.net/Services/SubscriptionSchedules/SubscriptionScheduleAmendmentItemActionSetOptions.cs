@@ -7,7 +7,7 @@ namespace Stripe
     public class SubscriptionScheduleAmendmentItemActionSetOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
-        /// If the an item with the <c>price</c> already exists, passing this will override the
+        /// If an item with the <c>price</c> already exists, passing this will override the
         /// <c>discounts</c> array on the subscription item that matches that price. Otherwise, the
         /// <c>items</c> array is cleared and a single new item is added with the supplied
         /// <c>discounts</c>.
@@ -16,7 +16,7 @@ namespace Stripe
         public List<SubscriptionScheduleAmendmentItemActionSetDiscountOptions> Discounts { get; set; }
 
         /// <summary>
-        /// If the an item with the <c>price</c> already exists, passing this will override the
+        /// If an item with the <c>price</c> already exists, passing this will override the
         /// <c>metadata</c> on the subscription item that matches that price. Otherwise, the
         /// <c>items</c> array is cleared and a single new item is added with the supplied
         /// <c>metadata</c>.
@@ -31,15 +31,15 @@ namespace Stripe
         public string Price { get; set; }
 
         /// <summary>
-        /// If the an item with the <c>price</c> already exists, passing this will override the
-        /// quantity on the subscription item that matches that price. Otherwise, the <c>items</c>
-        /// array is cleared and a single new item is added with the supplied <c>quantity</c>.
+        /// If an item with the <c>price</c> already exists, passing this will override the quantity
+        /// on the subscription item that matches that price. Otherwise, the <c>items</c> array is
+        /// cleared and a single new item is added with the supplied <c>quantity</c>.
         /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
 
         /// <summary>
-        /// If the an item with the <c>price</c> already exists, passing this will override the
+        /// If an item with the <c>price</c> already exists, passing this will override the
         /// <c>tax_rates</c> array on the subscription item that matches that price. Otherwise, the
         /// <c>items</c> array is cleared and a single new item is added with the supplied
         /// <c>tax_rates</c>.
@@ -48,7 +48,7 @@ namespace Stripe
         public List<string> TaxRates { get; set; }
 
         /// <summary>
-        /// If the an item with the <c>price</c> already exists, passing this will override the
+        /// If an item with the <c>price</c> already exists, passing this will override the
         /// <c>trial</c> configuration on the subscription item that matches that price. Otherwise,
         /// the <c>items</c> array is cleared and a single new item is added with the supplied
         /// <c>trial</c>.

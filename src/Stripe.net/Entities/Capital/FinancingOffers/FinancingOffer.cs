@@ -86,10 +86,22 @@ namespace Stripe.Capital
         public string ProductType { get; set; }
 
         /// <summary>
+        /// The ID of the financing offer that replaced this offer.
+        /// </summary>
+        [JsonProperty("replacement")]
+        public string Replacement { get; set; }
+
+        /// <summary>
+        /// The ID of the financing offer that this offer is a replacement for.
+        /// </summary>
+        [JsonProperty("replacement_for")]
+        public string ReplacementFor { get; set; }
+
+        /// <summary>
         /// The current status of the offer.
         /// One of: <c>accepted</c>, <c>canceled</c>, <c>completed</c>, <c>delivered</c>,
-        /// <c>expired</c>, <c>fully_repaid</c>, <c>paid_out</c>, <c>rejected</c>, or
-        /// <c>undelivered</c>.
+        /// <c>expired</c>, <c>fully_repaid</c>, <c>paid_out</c>, <c>rejected</c>, <c>replaced</c>,
+        /// or <c>undelivered</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

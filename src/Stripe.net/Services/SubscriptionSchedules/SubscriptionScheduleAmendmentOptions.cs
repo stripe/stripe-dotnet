@@ -52,5 +52,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("proration_behavior")]
         public string ProrationBehavior { get; set; }
+
+        /// <summary>
+        /// Settings related to subscription trials.
+        /// </summary>
+        [JsonProperty("trial_settings")]
+        public SubscriptionScheduleAmendmentTrialSettingsOptions TrialSettings { get; set; }
     }
 }

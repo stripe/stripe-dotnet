@@ -183,6 +183,12 @@ namespace Stripe
         public bool? OffSession { get; set; }
 
         /// <summary>
+        /// The account on behalf of which to charge, for each of the subscription's invoices.
+        /// </summary>
+        [JsonProperty("on_behalf_of")]
+        public string OnBehalfOf { get; set; }
+
+        /// <summary>
         /// Only applies to subscriptions with <c>collection_method=charge_automatically</c>.
         ///
         /// Use <c>allow_incomplete</c> to create subscriptions with <c>status=incomplete</c> if the
