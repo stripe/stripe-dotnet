@@ -1,5 +1,12 @@
 # Changelog
 
+## 40.15.0-beta.2 - 2022-11-02
+* [#2597](https://github.com/stripe/stripe-dotnet/pull/2597) API Updates for beta branch
+  * Updated beta APIs to the latest stable version
+  * Add support for `cashappPayments` and `zipPayments` on `Account`.
+  * Add support for `cashapp` and `zip` on `Charge`, `PaymentMethod`.
+  * Add support for `trialSettings` on `SubscriptionSchedule`.
+
 ## 40.15.0-beta.1 - 2022-10-21
 * [#2593](https://github.com/stripe/stripe-dotnet/pull/2593) API Updates for beta branch
   * Updated stable APIs to the latest version
