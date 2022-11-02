@@ -43,6 +43,118 @@ how to use the library.
 
 ## Usage
 
+### Authentication
+
+Stripe authenticates API requests using your account’s secret key, which you can find in the Stripe Dashboard. By default, secret keys can be used to perform any API request without restriction.
+
+Use `Stripe.ApiKey` property to set the secret key.
+
+``` C#
+Stripe.ApiKey = "sk_test_...";
+```
+
+### Creating a resource
+
+The `Create` method of the service class can be used to create a new resource:
+
+``` C#
+var options = new CustomerCreateOptions
+{
+    Email = "customer@example.com"
+};
+
+var service = new CustomerService();
+Customer customer = service.Create(options);
+
+// Newly created customer is returned
+Console.WriteLine(customer.Email);
+```
+
+### Retrieve a resource
+
+The `Retrieve` method of the service class can be used to retrieve a resource:
+
+``` C#
+var service = new CustomerService();
+Customer customer = service.Get("cus_1234");
+
+Console.WriteLine(customer.Email);
+```
+
+### Updating a resource
+
+The `Update` method of the service class can be used to update a resource:
+
+```C#
+var options = new CustomerUpdateOptions
+{
+    Email = "updated-email@example.com"
+};
+
+var service = new CustomerService();
+Customer customer = service.Update("cus_123", options);
+
+// The updated customer is returned
+Console.WriteLine(customer.Email);
+```
+
+### Deleting a resource
+
+The `Delete` method of the service class can be used to delete a resource:
+
+```C#
+var service = new CustomerService();
+Customer customer = service.Delete("cus_123", options);
+```
+
+### Listing a resource
+
+The `List` method on the service class can be used to list resources page-by-page.
+
+> **NOTE**
+> The `List` method returns only a single page, you have to manually continue the iteration using the `StartingAfter` parameter.
+
+```C#
+var service = new CustomerService();
+var customers = service.List();
+
+string lastId = null;
+
+// Enumerate the first page of the list
+foreach (Customer customer in customers)
+{
+   lastId = customer.Id;
+   Console.WriteLine(customer.Email);
+}
+
+customers = service.List(new CustomerListOptions()
+{
+    StartingAfter = lastId,
+});
+
+// Enumerate the subsequent page
+foreach (Customer customer in customers)
+{
+   lastId = customer.Id;
+   Console.WriteLine(customer.Email);
+}
+```
+
+### Listing a resource with auto-pagination
+
+The `ListAutoPaging` method on the service class can be used to automatically iterate over all pages.
+
+```C#
+var service = new CustomerService();
+var customers = service.ListAutoPaging();
+
+// Enumerate all pages of the list
+foreach (Customer customer in customers)
+{
+   Console.WriteLine(customer.Email);
+}
+```
+
 ### Per-request configuration
 
 All of the service methods accept an optional `RequestOptions` object. This is
