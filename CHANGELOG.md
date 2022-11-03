@@ -1,5 +1,10 @@
 # Changelog
 
+## 40.15.0 - 2022-11-03
+* [#2596](https://github.com/stripe/stripe-dotnet/pull/2596) API Updates
+  * Add support for `OnBehalfOf` on `CheckoutSessionSubscriptionDataOptions`, `SubscriptionCreateOptions`, `SubscriptionScheduleDefaultSettingsOptions`, `SubscriptionScheduleDefaultSettings`, `SubscriptionSchedulePhasesOptions`, `SubscriptionSchedulePhases`, `SubscriptionUpdateOptions`, and `Subscription`
+  * Add support for `TaxBehavior` and `TaxCode` on `InvoiceInvoiceItemsOptions`, `InvoiceItemCreateOptions`, and `InvoiceItemUpdateOptions`
+
 ## 40.14.0 - 2022-10-20
 * [#2591](https://github.com/stripe/stripe-dotnet/pull/2591) API Updates
   * Add support for `Tipping` on `TerminalReaderActionProcessPaymentIntentProcessConfig` and `TerminalReaderProcessConfigOptions`
