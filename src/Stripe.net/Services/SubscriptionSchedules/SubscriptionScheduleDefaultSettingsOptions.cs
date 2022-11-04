@@ -73,6 +73,13 @@ namespace Stripe
         public SubscriptionScheduleDefaultSettingsInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
+        /// The account on behalf of which to charge, for each of the associated subscription's
+        /// invoices.
+        /// </summary>
+        [JsonProperty("on_behalf_of")]
+        public string OnBehalfOf { get; set; }
+
+        /// <summary>
         /// The data with which to automatically create a Transfer for each of the associated
         /// subscription's invoices.
         /// </summary>

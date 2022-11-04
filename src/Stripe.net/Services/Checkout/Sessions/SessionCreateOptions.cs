@@ -176,8 +176,8 @@ namespace Stripe.Checkout
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The mode of the Checkout Session. Required when using prices or <c>setup</c> mode. Pass
-        /// <c>subscription</c> if the Checkout Session includes at least one recurring item.
+        /// The mode of the Checkout Session. Pass <c>subscription</c> if the Checkout Session
+        /// includes at least one recurring item.
         /// One of: <c>payment</c>, <c>setup</c>, or <c>subscription</c>.
         /// </summary>
         [JsonProperty("mode")]

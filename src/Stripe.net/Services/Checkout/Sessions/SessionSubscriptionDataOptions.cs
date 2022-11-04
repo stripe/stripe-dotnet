@@ -52,6 +52,12 @@ namespace Stripe.Checkout
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The account on behalf of which to charge, for each of the subscription's invoices.
+        /// </summary>
+        [JsonProperty("on_behalf_of")]
+        public string OnBehalfOf { get; set; }
+
+        /// <summary>
         /// If specified, the funds from the subscription's invoices will be transferred to the
         /// destination and the ID of the resulting transfers will be found on the resulting
         /// charges.

@@ -103,6 +103,21 @@ namespace Stripe
         public string Subscription { get; set; }
 
         /// <summary>
+        /// Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One
+        /// of <c>inclusive</c>, <c>exclusive</c>, or <c>unspecified</c>. Once specified as either
+        /// <c>inclusive</c> or <c>exclusive</c>, it cannot be changed.
+        /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
+        /// </summary>
+        [JsonProperty("tax_behavior")]
+        public string TaxBehavior { get; set; }
+
+        /// <summary>
+        /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
+        /// </summary>
+        [JsonProperty("tax_code")]
+        public string TaxCode { get; set; }
+
+        /// <summary>
         /// The tax rates which apply to the invoice item. When set, the <c>default_tax_rates</c> on
         /// the invoice do not apply to this invoice item.
         /// </summary>

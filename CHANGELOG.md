@@ -1,5 +1,19 @@
 # Changelog
 
+## 40.15.0 - 2022-11-03
+* [#2596](https://github.com/stripe/stripe-dotnet/pull/2596) API Updates
+  * Add support for `OnBehalfOf` on `CheckoutSessionSubscriptionDataOptions`, `SubscriptionCreateOptions`, `SubscriptionScheduleDefaultSettingsOptions`, `SubscriptionScheduleDefaultSettings`, `SubscriptionSchedulePhasesOptions`, `SubscriptionSchedulePhases`, `SubscriptionUpdateOptions`, and `Subscription`
+  * Add support for `TaxBehavior` and `TaxCode` on `InvoiceInvoiceItemsOptions`, `InvoiceItemCreateOptions`, and `InvoiceItemUpdateOptions`
+
+## 40.14.0 - 2022-10-20
+* [#2591](https://github.com/stripe/stripe-dotnet/pull/2591) API Updates
+  * Add support for `Tipping` on `TerminalReaderActionProcessPaymentIntentProcessConfig` and `TerminalReaderProcessConfigOptions`
+
+## 40.13.0 - 2022-10-13
+* [#2589](https://github.com/stripe/stripe-dotnet/pull/2589) API Updates
+  * Add support for `NetworkData` on `IssuingAuthorization`
+* [#2586](https://github.com/stripe/stripe-dotnet/pull/2586) Add request_log_url on StripeError
+
 ## 40.12.0 - 2022-10-06
 * [#2584](https://github.com/stripe/stripe-dotnet/pull/2584) API Updates
   * Add support for `Klarna` on `SetupAttemptPaymentMethodDetails`
