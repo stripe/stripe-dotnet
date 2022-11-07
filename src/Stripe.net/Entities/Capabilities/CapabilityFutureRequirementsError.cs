@@ -8,8 +8,9 @@ namespace Stripe
         /// <summary>
         /// The code for the type of error.
         /// One of: <c>invalid_address_city_state_postal_code</c>, <c>invalid_dob_age_under_18</c>,
-        /// <c>invalid_street_address</c>, <c>invalid_tos_acceptance</c>,
-        /// <c>invalid_value_other</c>, <c>verification_document_address_mismatch</c>,
+        /// <c>invalid_representative_country</c>, <c>invalid_street_address</c>,
+        /// <c>invalid_tos_acceptance</c>, <c>invalid_value_other</c>,
+        /// <c>verification_document_address_mismatch</c>,
         /// <c>verification_document_address_missing</c>, <c>verification_document_corrupt</c>,
         /// <c>verification_document_country_not_supported</c>,
         /// <c>verification_document_dob_mismatch</c>, <c>verification_document_duplicate_type</c>,
@@ -33,8 +34,9 @@ namespace Stripe
         /// <c>verification_failed_document_match</c>, <c>verification_failed_id_number_match</c>,
         /// <c>verification_failed_keyed_identity</c>, <c>verification_failed_keyed_match</c>,
         /// <c>verification_failed_name_match</c>, <c>verification_failed_other</c>,
-        /// <c>verification_failed_tax_id_match</c>, <c>verification_failed_tax_id_not_issued</c>,
-        /// <c>verification_missing_executives</c>, <c>verification_missing_owners</c>, or
+        /// <c>verification_failed_residential_address</c>, <c>verification_failed_tax_id_match</c>,
+        /// <c>verification_failed_tax_id_not_issued</c>, <c>verification_missing_executives</c>,
+        /// <c>verification_missing_owners</c>, or
         /// <c>verification_requires_additional_memorandum_of_associations</c>.
         /// </summary>
         [JsonProperty("code")]

@@ -364,6 +364,39 @@ namespace Stripe
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? NextPendingInvoiceItemInvoice { get; set; }
 
+        #region Expandable OnBehalfOf
+
+        /// <summary>
+        /// (ID of the Account)
+        /// The account (if any) the charge was made on behalf of for charges associated with this
+        /// subscription. See the Connect documentation for details.
+        /// </summary>
+        [JsonIgnore]
+        public string OnBehalfOfId
+        {
+            get => this.InternalOnBehalfOf?.Id;
+            set => this.InternalOnBehalfOf = SetExpandableFieldId(value, this.InternalOnBehalfOf);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The account (if any) the charge was made on behalf of for charges associated with this
+        /// subscription. See the Connect documentation for details.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Account OnBehalfOf
+        {
+            get => this.InternalOnBehalfOf?.ExpandedObject;
+            set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
+        }
+
+        [JsonProperty("on_behalf_of")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+        internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
+        #endregion
+
         /// <summary>
         /// If specified, payment collection for this subscription will be paused.
         /// </summary>
