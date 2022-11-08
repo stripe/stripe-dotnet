@@ -1,5 +1,11 @@
 # Changelog
 
+## 40.16.0 - 2022-11-08
+* [#2602](https://github.com/stripe/stripe-dotnet/pull/2602) API Updates
+  * Add support for `ReasonMessage` on `IssuingAuthorizationRequestHistory`
+* [#2598](https://github.com/stripe/stripe-dotnet/pull/2598) Next major release changes
+* [#2599](https://github.com/stripe/stripe-dotnet/pull/2599) Merge master and update generated code
+
 ## 40.15.0 - 2022-11-03
 * [#2596](https://github.com/stripe/stripe-dotnet/pull/2596) API Updates
   * Add support for `OnBehalfOf` on `CheckoutSessionSubscriptionDataOptions`, `SubscriptionCreateOptions`, `SubscriptionScheduleDefaultSettingsOptions`, `SubscriptionScheduleDefaultSettings`, `SubscriptionSchedulePhasesOptions`, `SubscriptionSchedulePhases`, `SubscriptionUpdateOptions`, and `Subscription`
