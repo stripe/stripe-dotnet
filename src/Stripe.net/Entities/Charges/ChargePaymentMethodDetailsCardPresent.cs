@@ -111,7 +111,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/payment_intents/create#create_payment_intent-payment_method_options-card_present-request_incremental_authorization_support">request_incremental_authorization_support</a>.
         /// </summary>
         [JsonProperty("incremental_authorization_supported")]
-        public bool? IncrementalAuthorizationSupported { get; set; }
+        public bool IncrementalAuthorizationSupported { get; set; }
 
         /// <summary>
         /// The name of the card's issuing bank. (For internal use only and not typically available
@@ -138,7 +138,7 @@ namespace Stripe
         /// Defines whether the authorized amount can be over-captured or not.
         /// </summary>
         [JsonProperty("overcapture_supported")]
-        public bool? OvercaptureSupported { get; set; }
+        public bool OvercaptureSupported { get; set; }
 
         /// <summary>
         /// How card details were read in this transaction.
