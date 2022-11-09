@@ -137,12 +137,6 @@ namespace Stripe
         public string CaptureMethod { get; set; }
 
         /// <summary>
-        /// Charges that were created by this PaymentIntent, if any.
-        /// </summary>
-        [JsonProperty("charges")]
-        public StripeList<Charge> Charges { get; set; }
-
-        /// <summary>
         /// The client secret of this PaymentIntent. Used for client-side retrieval using a
         /// publishable key.
         ///
@@ -263,6 +257,37 @@ namespace Stripe
         /// </summary>
         [JsonProperty("last_payment_error")]
         public StripeError LastPaymentError { get; set; }
+
+        #region Expandable LatestCharge
+
+        /// <summary>
+        /// (ID of the Charge)
+        /// The latest charge created by this payment intent.
+        /// </summary>
+        [JsonIgnore]
+        public string LatestChargeId
+        {
+            get => this.InternalLatestCharge?.Id;
+            set => this.InternalLatestCharge = SetExpandableFieldId(value, this.InternalLatestCharge);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The latest charge created by this payment intent.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Charge LatestCharge
+        {
+            get => this.InternalLatestCharge?.ExpandedObject;
+            set => this.InternalLatestCharge = SetExpandableFieldObject(value, this.InternalLatestCharge);
+        }
+
+        [JsonProperty("latest_charge")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
+        internal ExpandableField<Charge> InternalLatestCharge { get; set; }
+        #endregion
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
