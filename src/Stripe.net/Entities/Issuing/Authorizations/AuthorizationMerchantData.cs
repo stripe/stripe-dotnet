@@ -54,5 +54,11 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("state")]
         public string State { get; set; }
+
+        /// <summary>
+        /// URL provided by the merchant on a 3DS request.
+        /// </summary>
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 }

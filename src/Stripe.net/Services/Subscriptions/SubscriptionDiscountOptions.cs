@@ -16,5 +16,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discount")]
         public string Discount { get; set; }
+
+        /// <summary>
+        /// Details to determine how long the discount should be applied for.
+        /// </summary>
+        [JsonProperty("discount_end")]
+        public SubscriptionDiscountDiscountEndOptions DiscountEnd { get; set; }
     }
 }
