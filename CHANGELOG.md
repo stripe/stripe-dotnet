@@ -1,5 +1,11 @@
 # Changelog
 
+## 40.17.0-beta.1 - 2022-11-10
+* [#2606](https://github.com/stripe/stripe-dotnet/pull/2606) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `Url` on `AuthorizationMerchantData`.
+  * Add support for  `DiscountEnd` on `*DiscountOptions`.
+
 ## 40.16.0 - 2022-11-08
 * [#2602](https://github.com/stripe/stripe-dotnet/pull/2602) API Updates
   * Add support for `ReasonMessage` on `IssuingAuthorizationRequestHistory`
