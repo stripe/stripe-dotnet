@@ -23,11 +23,5 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
-
-        /// <summary>
-        /// Confirm that the payer has accepted the P24 terms and conditions.
-        /// </summary>
-        [JsonProperty("tos_shown_and_accepted")]
-        public bool? TosShownAndAccepted { get; set; }
     }
 }

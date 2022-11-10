@@ -18,6 +18,12 @@ namespace Stripe
         public string Discount { get; set; }
 
         /// <summary>
+        /// Details to determine how long the discount should be applied for.
+        /// </summary>
+        [JsonProperty("discount_end")]
+        public SubscriptionScheduleAmendmentDiscountActionAddDiscountEndOptions DiscountEnd { get; set; }
+
+        /// <summary>
         /// The index, starting at 0, at which to position the new discount. When not supplied,
         /// Stripe defaults to appending the discount to the end of the <c>discounts</c> array.
         /// </summary>

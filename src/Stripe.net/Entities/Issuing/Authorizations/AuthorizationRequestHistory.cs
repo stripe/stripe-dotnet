@@ -69,9 +69,17 @@ namespace Stripe.Issuing
         /// <c>cardholder_inactive</c>, <c>cardholder_verification_required</c>,
         /// <c>insufficient_funds</c>, <c>not_allowed</c>, <c>spending_controls</c>,
         /// <c>suspected_fraud</c>, <c>verification_failed</c>, <c>webhook_approved</c>,
-        /// <c>webhook_declined</c>, or <c>webhook_timeout</c>.
+        /// <c>webhook_declined</c>, <c>webhook_error</c>, or <c>webhook_timeout</c>.
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; set; }
+
+        /// <summary>
+        /// If approve/decline decision is directly responsed to the webhook with json payload and
+        /// if the response is invalid (e.g., parsing errors), we surface the detailed message via
+        /// this field.
+        /// </summary>
+        [JsonProperty("reason_message")]
+        public string ReasonMessage { get; set; }
     }
 }

@@ -34,5 +34,11 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("expiry_check")]
         public string ExpiryCheck { get; set; }
+
+        /// <summary>
+        /// 3D Secure details.
+        /// </summary>
+        [JsonProperty("three_d_secure")]
+        public AuthorizationVerificationDataThreeDSecure ThreeDSecure { get; set; }
     }
 }
