@@ -14,49 +14,12 @@ namespace Stripe.Checkout
         public SessionLineItemAdjustableQuantityOptions AdjustableQuantity { get; set; }
 
         /// <summary>
-        /// [Deprecated] The amount to be collected per unit of the line item. If specified, must
-        /// also pass <c>currency</c> and <c>name</c>.
-        /// </summary>
-        [JsonProperty("amount")]
-        public long? Amount { get; set; }
-
-        /// <summary>
-        /// [Deprecated] Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO
-        /// currency code</a>, in lowercase. Must be a <a
-        /// href="https://stripe.com/docs/currencies">supported currency</a>. Required if
-        /// <c>amount</c> is passed.
-        /// </summary>
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        /// <summary>
-        /// [Deprecated] The description for the line item, to be displayed on the Checkout page.
-        /// </summary>
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        /// <summary>
         /// The <a href="https://stripe.com/docs/api/tax_rates">tax rates</a> that will be applied
         /// to this line item depending on the customer's billing/shipping address. We currently
         /// support the following countries: US, GB, AU, and all countries in the EU.
         /// </summary>
         [JsonProperty("dynamic_tax_rates")]
         public List<string> DynamicTaxRates { get; set; }
-
-        /// <summary>
-        /// [Deprecated] A list of image URLs representing this line item. Each image can be up to 5
-        /// MB in size. If passing <c>price</c> or <c>price_data</c>, specify images on the
-        /// associated product instead.
-        /// </summary>
-        [JsonProperty("images")]
-        public List<string> Images { get; set; }
-
-        /// <summary>
-        /// [Deprecated] The name for the item to be displayed on the Checkout page. Required if
-        /// <c>amount</c> is passed.
-        /// </summary>
-        [JsonProperty("name")]
-        public string Name { get; set; }
 
         /// <summary>
         /// The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> or <a

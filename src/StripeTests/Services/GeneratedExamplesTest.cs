@@ -2648,65 +2648,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestSkuServiceCreate()
-        {
-            var options = new SkuCreateOptions
-            {
-                Attributes = new Dictionary<string, string>
-                {
-                    { "size", "Medium" },
-                    { "gender", "Unisex" },
-                },
-                Price = 1500,
-                Currency = "usd",
-                Inventory = new SkuInventoryOptions
-                {
-                    Type = "finite",
-                    Quantity = 500,
-                },
-                Product = "prod_xxxxxxxxxxxxx",
-            };
-            var service = new SkuService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestSkuServiceDelete()
-        {
-            var service = new SkuService(this.StripeClient);
-            service.Delete("sku_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSkuServiceList()
-        {
-            var options = new SkuListOptions { Limit = 3 };
-            var service = new SkuService(this.StripeClient);
-            StripeList<Sku> skus = service.List(options);
-        }
-
-        [Fact]
-        public void TestSkuServiceRetrieve()
-        {
-            var service = new SkuService(this.StripeClient);
-            service.Get("sku_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSkuServiceUpdate()
-        {
-            var options = new SkuUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new SkuService(this.StripeClient);
-            service.Update("sku_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
         public void TestSourceServiceRetrieve()
         {
             var service = new SourceService(this.StripeClient);

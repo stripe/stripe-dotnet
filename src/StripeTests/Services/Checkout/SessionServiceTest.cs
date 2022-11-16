@@ -32,25 +32,16 @@ namespace StripeTests.Checkout
                 {
                     new SessionLineItemOptions
                     {
-                        Images = new List<string>
-                        {
-                            "https://stripe.com/image1",
-                        },
                         PriceData = new SessionLineItemPriceDataOptions
                         {
                             Currency = "usd",
                             Product = "prod_123",
                             UnitAmountDecimal = 0.01234567890m, // Ensure decimals work
                         },
-                        Name = "item name",
                         Quantity = 2,
                     },
                     new SessionLineItemOptions
                     {
-                        Images = new List<string>
-                        {
-                            "https://stripe.com/image1",
-                        },
                         PriceData = new SessionLineItemPriceDataOptions
                         {
                             Currency = "usd",
