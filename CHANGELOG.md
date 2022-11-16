@@ -1,5 +1,24 @@
 # Changelog
 
+## 41.0.0 - 2022-11-16
+
+Breaking changes that arose during code generation of the library that we postponed for the next major version. For changes to the Stripe products, read more at https://stripe.com/docs/upgrades#2022-11-15.
+
+"⚠️" symbol highlights breaking changes.
+
+⚠️ Removed
+- Removed deprecated `Sku` resource (#2588)
+- Removed `LineItem.Product` property that was released by mistake. (#2587)
+- Removed deprecated `SessionSubscriptionDataOptions.Items` property. (#2587)
+- Removed deprecated `Amount`, `Currency`, `Description`, `Images`, `Name` properties from `SessionLineItemOptions` (https://github.com/stripe/stripe-dotnet/pull/2604)
+- Removed `Charges` field on `PaymentIntent` and replace it with `LatestCharge`. (https://github.com/stripe/stripe-dotnet/pull/2604)
+- Removed unused `SessionDisplayItem` class. (#2588)
+- Removed unused `SessionDisplayItemCustom` class. (#2588)
+- Remove support for `TosShownAndAccepted` on `CheckoutSessionPaymentMethodOptionsPaynowOptions`. The property was mistakenly released and never worked. (#2605)
+
+⚠️ Changed
+- `IncrementalAuthorizationSupported` and `OvercaptureSupported` become non-nullable in `ChargePaymentMethodDetailsCardPresent`.
+
 ## 40.16.0 - 2022-11-08
 * [#2602](https://github.com/stripe/stripe-dotnet/pull/2602) API Updates
   * Add support for `ReasonMessage` on `IssuingAuthorizationRequestHistory`
