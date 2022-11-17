@@ -115,6 +115,9 @@ namespace Stripe.Checkout
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [JsonProperty("custom_text")]
+        public SessionCustomText CustomText { get; set; }
+
         #region Expandable Customer
 
         /// <summary>

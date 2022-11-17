@@ -86,6 +86,9 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [JsonProperty("custom_text")]
+        public PaymentLinkCustomText CustomText { get; set; }
+
         /// <summary>
         /// Configuration for Customer creation during checkout.
         /// One of: <c>always</c>, or <c>if_required</c>.
