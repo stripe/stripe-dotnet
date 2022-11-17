@@ -1,5 +1,13 @@
 # Changelog
 
+## 41.1.0 - 2022-11-17
+* [#2610](https://github.com/stripe/stripe-dotnet/pull/2610) API Updates
+  * Add support for `HostedInstructionsUrl` on `PaymentIntentNextActionWechatPayDisplayQrCode`
+* [#2609](https://github.com/stripe/stripe-dotnet/pull/2609) API Updates
+  * Add support for `CustomText` on `CheckoutSessionCreateOptions`, `CheckoutSession`, `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
+  * Add support for `HostedInstructionsUrl` on `PaymentIntentNextActionPaynowDisplayQrCode`
+  
+
 ## 41.0.0 - 2022-11-16
 
 Breaking changes that arose during code generation of the library that we postponed for the next major version. For changes to the Stripe products, read more at https://stripe.com/docs/upgrades#2022-11-15.
