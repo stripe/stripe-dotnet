@@ -186,6 +186,43 @@ namespace Stripe.Checkout
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
+        #region Expandable Invoice
+
+        /// <summary>
+        /// (ID of the Invoice)
+        /// ID of the invoice created by the Checkout Session, if it exists.
+        /// </summary>
+        [JsonIgnore]
+        public string InvoiceId
+        {
+            get => this.InternalInvoice?.Id;
+            set => this.InternalInvoice = SetExpandableFieldId(value, this.InternalInvoice);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the invoice created by the Checkout Session, if it exists.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Invoice Invoice
+        {
+            get => this.InternalInvoice?.ExpandedObject;
+            set => this.InternalInvoice = SetExpandableFieldObject(value, this.InternalInvoice);
+        }
+
+        [JsonProperty("invoice")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
+        internal ExpandableField<Invoice> InternalInvoice { get; set; }
+        #endregion
+
+        /// <summary>
+        /// Details on the state of invoice creation for the Checkout Session.
+        /// </summary>
+        [JsonProperty("invoice_creation")]
+        public SessionInvoiceCreation InvoiceCreation { get; set; }
+
         /// <summary>
         /// The line items purchased by the customer.
         /// </summary>

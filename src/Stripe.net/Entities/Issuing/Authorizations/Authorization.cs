@@ -167,12 +167,11 @@ namespace Stripe.Issuing
         public AuthorizationPendingRequest PendingRequest { get; set; }
 
         /// <summary>
-        /// History of every time <c>pending_request</c> was approved/denied, either by you directly
-        /// or by Stripe (e.g. based on your <c>spending_controls</c>). If the merchant changes the
-        /// authorization by performing an <a
-        /// href="https://stripe.com/docs/issuing/purchases/authorizations">incremental
-        /// authorization</a>, you can look at this field to see the previous requests for the
-        /// authorization.
+        /// History of every time a <c>pending_request</c> authorization was approved/declined,
+        /// either by you directly or by Stripe (e.g. based on your spending_controls). If the
+        /// merchant changes the authorization by performing an incremental authorization, you can
+        /// look at this field to see the previous requests for the authorization. This field can be
+        /// helpful in determining why a given authorization was approved/declined.
         /// </summary>
         [JsonProperty("request_history")]
         public List<AuthorizationRequestHistory> RequestHistory { get; set; }
@@ -203,8 +202,9 @@ namespace Stripe.Issuing
         public AuthorizationVerificationData VerificationData { get; set; }
 
         /// <summary>
-        /// The digital wallet used for this authorization. One of <c>apple_pay</c>,
-        /// <c>google_pay</c>, or <c>samsung_pay</c>.
+        /// The digital wallet used for this transaction. One of <c>apple_pay</c>,
+        /// <c>google_pay</c>, or <c>samsung_pay</c>. Will populate as <c>null</c> when no digital
+        /// wallet was utilized.
         /// </summary>
         [JsonProperty("wallet")]
         public string Wallet { get; set; }
