@@ -1,5 +1,15 @@
 # Changelog
 
+## 41.2.0 - 2022-12-06
+* [#2614](https://github.com/stripe/stripe-dotnet/pull/2614) API Updates
+  * Add support for `FlowData` on `BillingPortalSessionCreateOptions`
+  * Add support for `Flow` on `BillingPortalSession`
+* [#2613](https://github.com/stripe/stripe-dotnet/pull/2613) API Updates
+  * Add support for `IndiaInternationalPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `InvoiceCreation` on `CheckoutSessionCreateOptions` and `CheckoutSession`
+  * Add support for `Invoice` on `CheckoutSession`
+  * Add support for `Metadata` on `SubscriptionSchedulePhasesItemsOptions` and `SubscriptionSchedulePhasesItems`
+
 ## 41.1.0 - 2022-11-17
 * [#2610](https://github.com/stripe/stripe-dotnet/pull/2610) API Updates
   * Add support for `HostedInstructionsUrl` on `PaymentIntentNextActionWechatPayDisplayQrCode`
