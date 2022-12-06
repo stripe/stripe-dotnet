@@ -21,6 +21,12 @@ namespace Stripe.BillingPortal
         public string Customer { get; set; }
 
         /// <summary>
+        /// Information about a specific flow for the customer to go through.
+        /// </summary>
+        [JsonProperty("flow_data")]
+        public SessionFlowDataOptions FlowData { get; set; }
+
+        /// <summary>
         /// The IETF language tag of the locale Customer Portal is displayed in. If blank or auto,
         /// the customer’s <c>preferred_locales</c> or browser’s locale is used.
         /// One of: <c>auto</c>, <c>bg</c>, <c>cs</c>, <c>da</c>, <c>de</c>, <c>el</c>, <c>en</c>,
