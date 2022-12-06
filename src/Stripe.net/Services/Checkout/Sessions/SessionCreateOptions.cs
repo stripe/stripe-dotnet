@@ -146,6 +146,12 @@ namespace Stripe.Checkout
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
+        /// Generate a post-purchase Invoice for one-time payments.
+        /// </summary>
+        [JsonProperty("invoice_creation")]
+        public SessionInvoiceCreationOptions InvoiceCreation { get; set; }
+
+        /// <summary>
         /// A list of items the customer is purchasing. Use this parameter to pass one-time or
         /// recurring <a href="https://stripe.com/docs/api/prices">Prices</a>.
         ///

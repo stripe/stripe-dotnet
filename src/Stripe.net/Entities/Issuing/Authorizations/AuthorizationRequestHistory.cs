@@ -64,7 +64,8 @@ namespace Stripe.Issuing
         public string MerchantCurrency { get; set; }
 
         /// <summary>
-        /// The reason for the approval or decline.
+        /// When an authorization is approved or declined by you or by Stripe, this field provides
+        /// additional detail on the reason for the outcome.
         /// One of: <c>account_disabled</c>, <c>card_active</c>, <c>card_inactive</c>,
         /// <c>cardholder_inactive</c>, <c>cardholder_verification_required</c>,
         /// <c>insufficient_funds</c>, <c>not_allowed</c>, <c>spending_controls</c>,

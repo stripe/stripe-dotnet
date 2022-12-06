@@ -142,6 +142,14 @@ namespace Stripe
         public string IdealPayments { get; set; }
 
         /// <summary>
+        /// The status of the india_international_payments capability of the account, or whether the
+        /// account can process international charges (non INR) in India.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("india_international_payments")]
+        public string IndiaInternationalPayments { get; set; }
+
+        /// <summary>
         /// The status of the JCB payments capability of the account, or whether the account (Japan
         /// only) can directly process JCB credit card charges in JPY currency.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

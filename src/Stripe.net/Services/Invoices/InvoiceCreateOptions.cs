@@ -188,10 +188,8 @@ namespace Stripe
 
         /// <summary>
         /// The ID of the subscription to invoice, if any. If set, the created invoice will only
-        /// include pending invoice items for that subscription and pending invoice items not
-        /// associated with any subscription if <c>pending_invoice_items_behavior</c> is
-        /// <c>include</c>. The subscription's billing cycle and regular subscription events won't
-        /// be affected.
+        /// include pending invoice items for that subscription. The subscription's billing cycle
+        /// and regular subscription events won't be affected.
         /// </summary>
         [JsonProperty("subscription")]
         public string Subscription { get; set; }

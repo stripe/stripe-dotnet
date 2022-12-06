@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SubscriptionSchedulePhaseItemOptions : INestedOptions
+    public class SubscriptionSchedulePhaseItemOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
@@ -13,6 +13,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_thresholds")]
         public SubscriptionSchedulePhaseItemBillingThresholdsOptions BillingThresholds { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to a configuration item. Metadata on a configuration item will update the
+        /// underlying subscription item's <c>metadata</c> when the phase is entered, adding new
+        /// keys and replacing existing keys. Individual keys in the subscription item's
+        /// <c>metadata</c> can be unset by posting an empty value to them in the configuration
+        /// item's <c>metadata</c>. To unset all keys in the subscription item's <c>metadata</c>,
+        /// update the subscription item directly or unset every key individually from the
+        /// configuration item's <c>metadata</c>.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The plan ID to subscribe to. You may specify the same ID in <c>plan</c> and

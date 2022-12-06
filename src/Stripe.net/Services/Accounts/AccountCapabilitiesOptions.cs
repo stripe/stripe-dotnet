@@ -108,6 +108,12 @@ namespace Stripe
         public AccountCapabilitiesIdealPaymentsOptions IdealPayments { get; set; }
 
         /// <summary>
+        /// The india_international_payments capability.
+        /// </summary>
+        [JsonProperty("india_international_payments")]
+        public AccountCapabilitiesIndiaInternationalPaymentsOptions IndiaInternationalPayments { get; set; }
+
+        /// <summary>
         /// The jcb_payments capability.
         /// </summary>
         [JsonProperty("jcb_payments")]
