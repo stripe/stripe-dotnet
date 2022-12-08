@@ -63,6 +63,12 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
+        /// Display additional text for your customers using custom text.
+        /// </summary>
+        [JsonProperty("custom_text")]
+        public PaymentLinkCustomTextOptions CustomText { get; set; }
+
+        /// <summary>
         /// Configures whether <a href="https://stripe.com/docs/api/checkout/sessions">checkout
         /// sessions</a> created by this payment link create a <a
         /// href="https://stripe.com/docs/api/customers">Customer</a>.

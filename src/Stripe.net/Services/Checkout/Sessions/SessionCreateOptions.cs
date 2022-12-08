@@ -63,6 +63,12 @@ namespace Stripe.Checkout
         public string Currency { get; set; }
 
         /// <summary>
+        /// Display additional text for your customers using custom text.
+        /// </summary>
+        [JsonProperty("custom_text")]
+        public SessionCustomTextOptions CustomText { get; set; }
+
+        /// <summary>
         /// ID of an existing Customer, if one exists. In <c>payment</c> mode, the customer’s most
         /// recent card payment method will be used to prefill the email, name, card details, and
         /// billing address on the Checkout page. In <c>subscription</c> mode, the customer’s <a
@@ -138,6 +144,12 @@ namespace Stripe.Checkout
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
+
+        /// <summary>
+        /// Generate a post-purchase Invoice for one-time payments.
+        /// </summary>
+        [JsonProperty("invoice_creation")]
+        public SessionInvoiceCreationOptions InvoiceCreation { get; set; }
 
         /// <summary>
         /// A list of items the customer is purchasing. Use this parameter to pass one-time or

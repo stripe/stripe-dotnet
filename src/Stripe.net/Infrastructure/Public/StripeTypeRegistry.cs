@@ -127,7 +127,6 @@ namespace Stripe
                 { "setup_attempt", typeof(SetupAttempt) },
                 { "setup_intent", typeof(SetupIntent) },
                 { "shipping_rate", typeof(ShippingRate) },
-                { "sku", typeof(Sku) },
                 { "source", typeof(Source) },
                 {
                     "source_mandate_notification", typeof(

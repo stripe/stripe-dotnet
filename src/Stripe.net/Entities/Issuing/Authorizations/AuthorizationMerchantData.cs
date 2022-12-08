@@ -38,7 +38,8 @@ namespace Stripe.Issuing
         public string Name { get; set; }
 
         /// <summary>
-        /// Identifier assigned to the seller by the card brand.
+        /// Identifier assigned to the seller by the card network. Different card networks may
+        /// assign different network_id fields to the same merchant.
         /// </summary>
         [JsonProperty("network_id")]
         public string NetworkId { get; set; }

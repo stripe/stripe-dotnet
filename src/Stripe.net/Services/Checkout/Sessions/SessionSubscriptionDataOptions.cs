@@ -43,12 +43,6 @@ namespace Stripe.Checkout
         public string Description { get; set; }
 
         /// <summary>
-        /// This parameter is deprecated. Use the line_items parameter on the Session instead.
-        /// </summary>
-        [JsonProperty("items")]
-        public List<SessionSubscriptionDataItemOptions> Items { get; set; }
-
-        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
