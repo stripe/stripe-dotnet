@@ -1,5 +1,11 @@
 # Changelog
 
+## 41.3.0-beta.1 - 2022-12-08
+* [#2618](https://github.com/stripe/stripe-dotnet/pull/2618) API Updates for beta branch
+  * Updated stable APIs to the latest version
+* [#2615](https://github.com/stripe/stripe-dotnet/pull/2615) API Updates for beta branch
+  * Updated stable APIs to the latest version
+
 ## 41.2.0 - 2022-12-06
 * [#2614](https://github.com/stripe/stripe-dotnet/pull/2614) API Updates
   * Add support for `FlowData` on `BillingPortalSessionCreateOptions`
