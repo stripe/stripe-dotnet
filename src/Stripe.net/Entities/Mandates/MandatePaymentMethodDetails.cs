@@ -20,6 +20,9 @@ namespace Stripe
         [JsonProperty("card")]
         public MandatePaymentMethodDetailsCard Card { get; set; }
 
+        [JsonProperty("cashapp")]
+        public MandatePaymentMethodDetailsCashapp Cashapp { get; set; }
+
         [JsonProperty("link")]
         public MandatePaymentMethodDetailsLink Link { get; set; }
 

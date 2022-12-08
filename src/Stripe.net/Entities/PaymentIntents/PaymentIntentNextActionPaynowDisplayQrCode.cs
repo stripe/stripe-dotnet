@@ -13,6 +13,13 @@ namespace Stripe
         public string Data { get; set; }
 
         /// <summary>
+        /// The URL to the hosted PayNow instructions page, which allows customers to view the
+        /// PayNow QR code.
+        /// </summary>
+        [JsonProperty("hosted_instructions_url")]
+        public string HostedInstructionsUrl { get; set; }
+
+        /// <summary>
         /// The image_url_png string used to render QR code.
         /// </summary>
         [JsonProperty("image_url_png")]

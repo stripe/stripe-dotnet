@@ -20,13 +20,13 @@ namespace Stripe
         public string HostedInstructionsUrl { get; set; }
 
         /// <summary>
-        /// The image_url_png string used to render QR code, can be used as &lt;img src="…" /&gt;.
+        /// The PNG path used to render the QR code, can be used as the source in an HTML img tag.
         /// </summary>
         [JsonProperty("image_url_png")]
         public string ImageUrlPng { get; set; }
 
         /// <summary>
-        /// The image_url_svg string used to render QR code, can be used as &lt;img src="…" /&gt;.
+        /// The SVG path used to render the QR code, can be used as the source in an HTML img tag.
         /// </summary>
         [JsonProperty("image_url_svg")]
         public string ImageUrlSvg { get; set; }

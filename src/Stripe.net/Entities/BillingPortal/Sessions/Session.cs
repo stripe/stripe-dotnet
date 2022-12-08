@@ -81,6 +81,12 @@ namespace Stripe.BillingPortal
         public string Customer { get; set; }
 
         /// <summary>
+        /// Information about a specific flow for the customer to go through.
+        /// </summary>
+        [JsonProperty("flow")]
+        public SessionFlow Flow { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
