@@ -43,6 +43,12 @@ namespace Stripe
         public List<SubscriptionScheduleAmendmentItemActionOptions> ItemActions { get; set; }
 
         /// <summary>
+        /// Instructions for how to modify phase metadata.
+        /// </summary>
+        [JsonProperty("metadata_actions")]
+        public List<SubscriptionScheduleAmendmentMetadataActionOptions> MetadataActions { get; set; }
+
+        /// <summary>
         /// Changes to how Stripe handles prorations during the amendment time span. Affects if and
         /// how prorations are created when a future phase starts. In cases where the amendment
         /// changes the currently active phase, it is used to determine whether or how to prorate

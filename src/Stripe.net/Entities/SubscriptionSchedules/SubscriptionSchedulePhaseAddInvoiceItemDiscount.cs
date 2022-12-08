@@ -67,5 +67,11 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<Discount>))]
         internal ExpandableField<Discount> InternalDiscount { get; set; }
         #endregion
+
+        /// <summary>
+        /// Details to determine how long the discount should be applied for.
+        /// </summary>
+        [JsonProperty("discount_end")]
+        public SubscriptionSchedulePhaseAddInvoiceItemDiscountDiscountEnd DiscountEnd { get; set; }
     }
 }
