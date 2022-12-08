@@ -343,7 +343,7 @@ namespace Stripe
 
         /// <summary>
         /// Error code explaining reason for charge failure if available (see <a
-        /// href="https://stripe.com/docs/api#errors">the errors section</a> for a list of codes).
+        /// href="https://stripe.com/docs/error-codes">the errors section</a> for a list of codes).
         /// </summary>
         [JsonProperty("failure_code")]
         public string FailureCode { get; set; }
