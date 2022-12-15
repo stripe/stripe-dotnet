@@ -178,13 +178,15 @@ namespace Stripe
 
         /// <summary>
         /// Transaction type: <c>adjustment</c>, <c>applied_to_invoice</c>, <c>credit_note</c>,
-        /// <c>initial</c>, <c>invoice_too_large</c>, <c>invoice_too_small</c>,
-        /// <c>unspent_receiver_credit</c>, or <c>unapplied_from_invoice</c>. See the <a
+        /// <c>initial</c>, <c>invoice_overpaid</c>, <c>invoice_too_large</c>,
+        /// <c>invoice_too_small</c>, <c>unspent_receiver_credit</c>, or
+        /// <c>unapplied_from_invoice</c>. See the <a
         /// href="https://stripe.com/docs/billing/customer/balance#types">Customer Balance page</a>
         /// to learn more about transaction types.
         /// One of: <c>adjustment</c>, <c>applied_to_invoice</c>, <c>credit_note</c>,
-        /// <c>initial</c>, <c>invoice_too_large</c>, <c>invoice_too_small</c>, <c>migration</c>,
-        /// <c>unapplied_from_invoice</c>, or <c>unspent_receiver_credit</c>.
+        /// <c>initial</c>, <c>invoice_overpaid</c>, <c>invoice_too_large</c>,
+        /// <c>invoice_too_small</c>, <c>migration</c>, <c>unapplied_from_invoice</c>, or
+        /// <c>unspent_receiver_credit</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
