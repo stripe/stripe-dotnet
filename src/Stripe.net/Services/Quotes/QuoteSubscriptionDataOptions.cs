@@ -8,6 +8,12 @@ namespace Stripe
     public class QuoteSubscriptionDataOptions : INestedOptions
     {
         /// <summary>
+        /// The start of the period to bill from when the Quote is accepted.
+        /// </summary>
+        [JsonProperty("bill_on_acceptance")]
+        public QuoteSubscriptionDataBillOnAcceptanceOptions BillOnAcceptance { get; set; }
+
+        /// <summary>
         /// Configures when the subscription schedule generates prorations for phase transitions.
         /// Possible values are <c>prorate_on_next_phase</c> or <c>prorate_up_front</c> with the
         /// default being <c>prorate_on_next_phase</c>. <c>prorate_on_next_phase</c> will apply

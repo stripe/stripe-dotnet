@@ -1,0 +1,77 @@
+// File generated from our OpenAPI spec
+namespace Stripe
+{
+    using Newtonsoft.Json;
+
+    public class QuoteSubscriptionDataOverrideOptions : INestedOptions
+    {
+        /// <summary>
+        /// Whether the override applies to an existing Subscription Schedule or a new Subscription
+        /// Schedule.
+        /// </summary>
+        [JsonProperty("applies_to")]
+        public QuoteSubscriptionDataOverrideAppliesToOptions AppliesTo { get; set; }
+
+        /// <summary>
+        /// The start of the period to bill from when the Quote is accepted.
+        /// </summary>
+        [JsonProperty("bill_on_acceptance")]
+        public QuoteSubscriptionDataOverrideBillOnAcceptanceOptions BillOnAcceptance { get; set; }
+
+        /// <summary>
+        /// Configures when the subscription schedule generates prorations for phase transitions.
+        /// Possible values are <c>prorate_on_next_phase</c> or <c>prorate_up_front</c> with the
+        /// default being <c>prorate_on_next_phase</c>. <c>prorate_on_next_phase</c> will apply
+        /// phase changes and generate prorations at transition time.<c>prorate_up_front</c> will
+        /// bill for all phases within the current billing cycle up front.
+        /// One of: <c>prorate_on_next_phase</c>, or <c>prorate_up_front</c>.
+        /// </summary>
+        [JsonProperty("billing_behavior")]
+        public string BillingBehavior { get; set; }
+
+        /// <summary>
+        /// The customer the Subscription Data override applies to. This is only relevant when
+        /// <c>applies_to.type=new_reference</c>.
+        /// </summary>
+        [JsonProperty("customer")]
+        public string Customer { get; set; }
+
+        /// <summary>
+        /// The subscription's description, meant to be displayable to the customer. Use this field
+        /// to optionally store an explanation of the subscription.
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Configures how the subscription schedule behaves when it ends. Possible values are
+        /// <c>release</c> or <c>cancel</c> with the default being <c>release</c>. <c>release</c>
+        /// will end the subscription schedule and keep the underlying subscription
+        /// running.<c>cancel</c> will end the subscription schedule and cancel the underlying
+        /// subscription.
+        /// One of: <c>cancel</c>, or <c>release</c>.
+        /// </summary>
+        [JsonProperty("end_behavior")]
+        public string EndBehavior { get; set; }
+
+        /// <summary>
+        /// Determines how to handle <a
+        /// href="https://stripe.com/docs/subscriptions/billing-cycle#prorations">prorations</a>.
+        /// When creating a subscription, valid values are <c>create_prorations</c> or <c>none</c>.
+        ///
+        /// When updating a subscription, valid values are <c>create_prorations</c>, <c>none</c>, or
+        /// <c>always_invoice</c>.
+        ///
+        /// Passing <c>create_prorations</c> will cause proration invoice items to be created when
+        /// applicable. These proration items will only be invoiced immediately under <a
+        /// href="https://stripe.com/docs/subscriptions/upgrading-downgrading#immediate-payment">certain
+        /// conditions</a>. In order to always invoice immediately for prorations, pass
+        /// <c>always_invoice</c>.
+        ///
+        /// Prorations can be disabled by passing <c>none</c>.
+        /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("proration_behavior")]
+        public string ProrationBehavior { get; set; }
+    }
+}

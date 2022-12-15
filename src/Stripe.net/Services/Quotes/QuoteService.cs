@@ -55,6 +55,16 @@ namespace Stripe
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
+        public virtual Quote DraftQuote(string id, QuoteDraftQuoteOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/draft", options, requestOptions);
+        }
+
+        public virtual Task<Quote> DraftQuoteAsync(string id, QuoteDraftQuoteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/draft", options, requestOptions, cancellationToken);
+        }
+
         public virtual Quote FinalizeQuote(string id, QuoteFinalizeOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/finalize", options, requestOptions);
@@ -133,6 +143,96 @@ namespace Stripe
         public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, QuoteListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<LineItem>($"{this.InstanceUrl(id)}/line_items", options, requestOptions, cancellationToken);
+        }
+
+        public virtual StripeList<QuoteLine> ListLines(string id, QuoteListLinesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeList<QuoteLine>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/lines", options, requestOptions);
+        }
+
+        public virtual Task<StripeList<QuoteLine>> ListLinesAsync(string id, QuoteListLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeList<QuoteLine>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/lines", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<QuoteLine> ListLinesAutoPaging(string id, QuoteListLinesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<QuoteLine>($"{this.InstanceUrl(id)}/lines", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<QuoteLine> ListLinesAutoPagingAsync(string id, QuoteListLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<QuoteLine>($"{this.InstanceUrl(id)}/lines", options, requestOptions, cancellationToken);
+        }
+
+        public virtual StripeList<InvoiceLineItem> PreviewInvoiceLines(string id, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoice_lines", options, requestOptions);
+        }
+
+        public virtual Task<StripeList<InvoiceLineItem>> PreviewInvoiceLinesAsync(string id, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoice_lines", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<InvoiceLineItem> PreviewInvoiceLinesAutoPaging(string id, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl(id)}/preview_invoice_lines", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<InvoiceLineItem> PreviewInvoiceLinesAutoPagingAsync(string id, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"{this.InstanceUrl(id)}/preview_invoice_lines", options, requestOptions, cancellationToken);
+        }
+
+        public virtual StripeList<Invoice> PreviewInvoices(string id, QuotePreviewInvoicesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeList<Invoice>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoices", options, requestOptions);
+        }
+
+        public virtual Task<StripeList<Invoice>> PreviewInvoicesAsync(string id, QuotePreviewInvoicesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeList<Invoice>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoices", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<Invoice> PreviewInvoicesAutoPaging(string id, QuotePreviewInvoicesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<Invoice>($"{this.InstanceUrl(id)}/preview_invoices", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<Invoice> PreviewInvoicesAutoPagingAsync(string id, QuotePreviewInvoicesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<Invoice>($"{this.InstanceUrl(id)}/preview_invoices", options, requestOptions, cancellationToken);
+        }
+
+        public virtual StripeList<SubscriptionSchedule> PreviewSubscriptionSchedules(string id, QuotePreviewSubscriptionSchedulesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeList<SubscriptionSchedule>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_subscription_schedules", options, requestOptions);
+        }
+
+        public virtual Task<StripeList<SubscriptionSchedule>> PreviewSubscriptionSchedulesAsync(string id, QuotePreviewSubscriptionSchedulesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeList<SubscriptionSchedule>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_subscription_schedules", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<SubscriptionSchedule> PreviewSubscriptionSchedulesAutoPaging(string id, QuotePreviewSubscriptionSchedulesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<SubscriptionSchedule>($"{this.InstanceUrl(id)}/preview_subscription_schedules", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<SubscriptionSchedule> PreviewSubscriptionSchedulesAutoPagingAsync(string id, QuotePreviewSubscriptionSchedulesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<SubscriptionSchedule>($"{this.InstanceUrl(id)}/preview_subscription_schedules", options, requestOptions, cancellationToken);
+        }
+
+        public virtual Quote Reestimate(string id, QuoteReestimateOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/reestimate", options, requestOptions);
+        }
+
+        public virtual Task<Quote> ReestimateAsync(string id, QuoteReestimateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/reestimate", options, requestOptions, cancellationToken);
         }
 
         public virtual Quote Update(string id, QuoteUpdateOptions options, RequestOptions requestOptions = null)

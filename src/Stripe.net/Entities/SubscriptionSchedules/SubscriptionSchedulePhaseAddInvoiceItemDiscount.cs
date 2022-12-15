@@ -73,5 +73,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discount_end")]
         public SubscriptionSchedulePhaseAddInvoiceItemDiscountDiscountEnd DiscountEnd { get; set; }
+
+        /// <summary>
+        /// The index, starting at 0, at which to position the new discount. When not supplied,
+        /// Stripe defaults to appending the discount to the end of the <c>discounts</c> array.
+        /// </summary>
+        [JsonProperty("index")]
+        public long? Index { get; set; }
     }
 }
