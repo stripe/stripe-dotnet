@@ -113,6 +113,7 @@ namespace Stripe
                 { "product", typeof(Product) },
                 { "promotion_code", typeof(PromotionCode) },
                 { "quote", typeof(Quote) },
+                { "quote_line", typeof(QuoteLine) },
                 { "quote_phase", typeof(QuotePhase) },
                 {
                     "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning)
@@ -136,6 +137,8 @@ namespace Stripe
                 { "subscription", typeof(Subscription) },
                 { "subscription_item", typeof(SubscriptionItem) },
                 { "subscription_schedule", typeof(SubscriptionSchedule) },
+                { "tax.calculation", typeof(TaxCalculation) },
+                { "tax.transaction", typeof(TaxTransaction) },
                 { "tax_code", typeof(TaxCode) },
                 { "tax_id", typeof(TaxId) },
                 { "tax_rate", typeof(TaxRate) },

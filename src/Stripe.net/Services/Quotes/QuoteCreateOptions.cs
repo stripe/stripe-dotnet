@@ -123,6 +123,14 @@ namespace Stripe
         public List<QuoteLineItemOptions> LineItems { get; set; }
 
         /// <summary>
+        /// A list of lines on the quote. These lines describe changes that will be used to create
+        /// new subscription schedules or update existing subscription schedules when the quote is
+        /// accepted.
+        /// </summary>
+        [JsonProperty("lines")]
+        public List<QuoteLineOptions> Lines { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
@@ -153,6 +161,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscription_data")]
         public QuoteSubscriptionDataOptions SubscriptionData { get; set; }
+
+        /// <summary>
+        /// List representing overrides for <c>subscription_data</c> configurations for specific
+        /// groups.
+        /// </summary>
+        [JsonProperty("subscription_data_overrides")]
+        public List<QuoteSubscriptionDataOverrideOptions> SubscriptionDataOverrides { get; set; }
 
         /// <summary>
         /// ID of the test clock to attach to the quote.

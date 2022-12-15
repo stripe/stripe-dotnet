@@ -60,6 +60,12 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Details to identify the subscription schedule the quote line applies to.
+        /// </summary>
+        [JsonProperty("applies_to")]
+        public SubscriptionScheduleAppliesTo AppliesTo { get; set; }
+
+        /// <summary>
         /// Configures when the subscription schedule generates prorations for phase transitions.
         /// Possible values are <c>prorate_on_next_phase</c> or <c>prorate_up_front</c> with the
         /// default being <c>prorate_on_next_phase</c>. <c>prorate_on_next_phase</c> will apply

@@ -16,7 +16,6 @@ namespace Stripe
 
         /// <summary>
         /// The discount end type.
-        /// One of: <c>duration</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
