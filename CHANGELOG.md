@@ -1,5 +1,12 @@
 # Changelog
 
+## 41.3.0-beta.2 - 2022-12-15
+* [#2621](https://github.com/stripe/stripe-dotnet/pull/2621) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for new resources `QuoteLine`, `TaxCalculation`, and `TaxTransaction`
+  * Add support for `Create` and `ListLineItems` methods on resource `TaxCalculation`
+  * Add support for `CreateReversal`, `Create`, and `Get` methods on resource `TaxTransaction`
+
 ## 41.3.0-beta.1 - 2022-12-08
 * [#2618](https://github.com/stripe/stripe-dotnet/pull/2618) API Updates for beta branch
   * Updated stable APIs to the latest version
