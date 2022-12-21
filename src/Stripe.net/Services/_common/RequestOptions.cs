@@ -2,7 +2,7 @@ namespace Stripe
 {
     using System;
 
-    public class RequestOptions
+    public class RequestOptions : ICloneable
     {
         /// <summary>
         /// Gets or sets the <a href="https://stripe.com/docs/api/authentication?lang=dotnet">API
@@ -38,5 +38,10 @@ namespace Stripe
         /// is only used for creating ephemeral keys, which require a specific API version.
         /// </remarks>
         internal string StripeVersion { get; set; }
+
+        public object Clone()
+            {
+                return this.MemberwiseClone();
+            }
     }
 }
