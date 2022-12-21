@@ -2,7 +2,7 @@ namespace Stripe
 {
     using System;
 
-    public class RequestOptions : ICloneable
+    public class RequestOptions
     {
         /// <summary>
         /// Gets or sets the <a href="https://stripe.com/docs/api/authentication?lang=dotnet">API
@@ -39,9 +39,9 @@ namespace Stripe
         /// </remarks>
         internal string StripeVersion { get; set; }
 
-        public object Clone()
+        internal RequestOptions Clone()
             {
-                return this.MemberwiseClone();
+                return (RequestOptions)this.MemberwiseClone();
             }
     }
 }
