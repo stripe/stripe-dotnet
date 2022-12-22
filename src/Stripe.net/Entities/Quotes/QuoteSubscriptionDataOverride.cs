@@ -40,8 +40,7 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// Behavior of the subscription schedule and underlying subscription when it ends. Possible
-        /// values are <c>release</c> and <c>cancel</c>.
+        /// Behavior of the subscription schedule and underlying subscription when it ends.
         /// One of: <c>cancel</c>, or <c>release</c>.
         /// </summary>
         [JsonProperty("end_behavior")]

@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class TaxTransactionCreateOptions : BaseOptions, IHasMetadata
+    public class TransactionCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Tax Calculation ID to be used as input when creating the transaction.

@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using Newtonsoft.Json;
 
-    public class TaxCalculationCustomerDetailsTaxIdOptions : INestedOptions
+    public class CalculationCustomerDetailsTaxIdOptions : INestedOptions
     {
         /// <summary>
         /// Type of the tax ID, one of <c>ae_trn</c>, <c>au_abn</c>, <c>au_arn</c>, <c>bg_uic</c>,

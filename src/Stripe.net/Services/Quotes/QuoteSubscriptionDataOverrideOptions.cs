@@ -44,11 +44,7 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// Configures how the subscription schedule behaves when it ends. Possible values are
-        /// <c>release</c> or <c>cancel</c> with the default being <c>release</c>. <c>release</c>
-        /// will end the subscription schedule and keep the underlying subscription
-        /// running.<c>cancel</c> will end the subscription schedule and cancel the underlying
-        /// subscription.
+        /// Behavior of the subscription schedule and underlying subscription when it ends.
         /// One of: <c>cancel</c>, or <c>release</c>.
         /// </summary>
         [JsonProperty("end_behavior")]

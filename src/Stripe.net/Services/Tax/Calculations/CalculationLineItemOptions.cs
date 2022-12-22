@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using Newtonsoft.Json;
 
-    public class TaxCalculationLineItemOptions : INestedOptions
+    public class CalculationLineItemOptions : INestedOptions
     {
         /// <summary>
         /// A positive integer in cents representing the line item's total price. If

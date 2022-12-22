@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using Newtonsoft.Json;
 
-    public class TaxCalculationCustomerDetailsTaxId : StripeEntity<TaxCalculationCustomerDetailsTaxId>
+    public class TransactionCustomerDetailsTaxId : StripeEntity<TransactionCustomerDetailsTaxId>
     {
         /// <summary>
         /// The type of the tax ID, one of <c>eu_vat</c>, <c>br_cnpj</c>, <c>br_cpf</c>,

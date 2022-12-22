@@ -1,16 +1,16 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class TaxTransactionCustomerDetails : StripeEntity<TaxTransactionCustomerDetails>
+    public class TransactionCustomerDetails : StripeEntity<TransactionCustomerDetails>
     {
         /// <summary>
         /// The customer's postal address (e.g., home or business location).
         /// </summary>
         [JsonProperty("address")]
-        public TaxTransactionCustomerDetailsAddress Address { get; set; }
+        public TransactionCustomerDetailsAddress Address { get; set; }
 
         /// <summary>
         /// The type of customer address provided.
@@ -29,6 +29,6 @@ namespace Stripe
         /// The customer's tax IDs (e.g., EU VAT numbers).
         /// </summary>
         [JsonProperty("tax_ids")]
-        public List<TaxTransactionCustomerDetailsTaxId> TaxIds { get; set; }
+        public List<TransactionCustomerDetailsTaxId> TaxIds { get; set; }
     }
 }

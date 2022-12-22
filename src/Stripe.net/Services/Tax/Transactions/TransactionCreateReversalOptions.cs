@@ -1,16 +1,16 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class TaxTransactionCreateReversalOptions : BaseOptions, IHasMetadata
+    public class TransactionCreateReversalOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// The line item amounts to reverse.
         /// </summary>
         [JsonProperty("line_items")]
-        public List<TaxTransactionLineItemOptions> LineItems { get; set; }
+        public List<TransactionLineItemOptions> LineItems { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
@@ -30,7 +30,7 @@ namespace Stripe
         public string Mode { get; set; }
 
         /// <summary>
-        /// The ID of the transaction to partially or fully reverse.
+        /// The ID of the Transaction to partially or fully reverse.
         /// </summary>
         [JsonProperty("original_transaction")]
         public string OriginalTransaction { get; set; }
