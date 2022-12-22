@@ -38,5 +38,10 @@ namespace Stripe
         /// is only used for creating ephemeral keys, which require a specific API version.
         /// </remarks>
         internal string StripeVersion { get; set; }
+
+        internal RequestOptions Clone()
+        {
+            return (RequestOptions)this.MemberwiseClone();
+        }
     }
 }
