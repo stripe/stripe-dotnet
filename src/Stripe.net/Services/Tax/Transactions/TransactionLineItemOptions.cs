@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class TaxTransactionLineItemOptions : INestedOptions, IHasMetadata
+    public class TransactionLineItemOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The amount to reverse, in negative integer cents.

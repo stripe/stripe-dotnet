@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class TaxCalculationCreateOptions : BaseOptions
+    public class CalculationCreateOptions : BaseOptions
     {
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
@@ -25,13 +25,13 @@ namespace Stripe
         /// Details about the customer, including address and tax IDs.
         /// </summary>
         [JsonProperty("customer_details")]
-        public TaxCalculationCustomerDetailsOptions CustomerDetails { get; set; }
+        public CalculationCustomerDetailsOptions CustomerDetails { get; set; }
 
         /// <summary>
         /// A list of items the customer is purchasing.
         /// </summary>
         [JsonProperty("line_items")]
-        public List<TaxCalculationLineItemOptions> LineItems { get; set; }
+        public List<CalculationLineItemOptions> LineItems { get; set; }
 
         /// <summary>
         /// The boolean value that indicates if the calculation is a preview. If true, the

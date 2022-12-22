@@ -1,19 +1,19 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class TaxCalculationCustomerDetailsOptions : INestedOptions
+    public class CalculationCustomerDetails : StripeEntity<CalculationCustomerDetails>
     {
         /// <summary>
         /// The customer's postal address (e.g., home or business location).
         /// </summary>
         [JsonProperty("address")]
-        public AddressOptions Address { get; set; }
+        public CalculationCustomerDetailsAddress Address { get; set; }
 
         /// <summary>
-        /// The type of customer address provided. Required when using <c>address</c>.
+        /// The type of customer address provided.
         /// One of: <c>billing</c>, or <c>shipping</c>.
         /// </summary>
         [JsonProperty("address_source")]
@@ -26,9 +26,9 @@ namespace Stripe
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// The customer's tax IDs.
+        /// The customer's tax IDs (e.g., EU VAT numbers).
         /// </summary>
         [JsonProperty("tax_ids")]
-        public List<TaxCalculationCustomerDetailsTaxIdOptions> TaxIds { get; set; }
+        public List<CalculationCustomerDetailsTaxId> TaxIds { get; set; }
     }
 }

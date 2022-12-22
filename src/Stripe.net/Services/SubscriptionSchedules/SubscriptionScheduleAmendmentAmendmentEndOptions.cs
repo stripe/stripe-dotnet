@@ -26,8 +26,8 @@ namespace Stripe
 
         /// <summary>
         /// Select one of three ways to pass the <c>amendment_end</c>.
-        /// One of: <c>discount_end</c>, <c>duration</c>, <c>schedule_end</c>, <c>timestamp</c>, or
-        /// <c>upcoming_invoice</c>.
+        /// One of: <c>discount_end</c>, <c>duration</c>, <c>schedule_end</c>, <c>timestamp</c>,
+        /// <c>trial_end</c>, <c>trial_start</c>, or <c>upcoming_invoice</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

@@ -1,5 +1,10 @@
 # Changelog
 
+## 41.3.0 - 2022-12-22
+* [#2626](https://github.com/stripe/stripe-dotnet/pull/2626) API Updates
+  * Add support for `UsingMerchantDefault` on `CashBalanceSettings`
+* [#2625](https://github.com/stripe/stripe-dotnet/pull/2625) Stop `FileService` from mutating its `RequestOptions` argument
+
 ## 41.3.0-beta.2 - 2022-12-15
 * [#2621](https://github.com/stripe/stripe-dotnet/pull/2621) API Updates for beta branch
   * Updated stable APIs to the latest version

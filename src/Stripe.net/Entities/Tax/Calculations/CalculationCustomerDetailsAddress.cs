@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using Newtonsoft.Json;
 
-    public class TaxTransactionCustomerDetailsAddress : StripeEntity<TaxTransactionCustomerDetailsAddress>
+    public class CalculationCustomerDetailsAddress : StripeEntity<CalculationCustomerDetailsAddress>
     {
         /// <summary>
         /// City, district, suburb, town, or village.

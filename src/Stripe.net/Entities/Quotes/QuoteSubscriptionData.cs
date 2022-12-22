@@ -8,7 +8,7 @@ namespace Stripe
     public class QuoteSubscriptionData : StripeEntity<QuoteSubscriptionData>
     {
         /// <summary>
-        /// TODO.
+        /// Describes what period to bill for upon accepting the quote.
         /// </summary>
         [JsonProperty("bill_on_acceptance")]
         public QuoteSubscriptionDataBillOnAcceptance BillOnAcceptance { get; set; }
@@ -48,8 +48,7 @@ namespace Stripe
         public DateTime? EffectiveDate { get; set; }
 
         /// <summary>
-        /// Behavior of the subscription schedule and underlying subscription when it ends. Possible
-        /// values are <c>release</c> and <c>cancel</c>.
+        /// Behavior of the subscription schedule and underlying subscription when it ends.
         /// One of: <c>cancel</c>, or <c>release</c>.
         /// </summary>
         [JsonProperty("end_behavior")]

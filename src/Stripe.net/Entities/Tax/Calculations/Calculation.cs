@@ -1,5 +1,5 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using System;
     using System.Collections.Generic;
@@ -7,12 +7,12 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// A Tax <c>Transaction</c> records the tax collected from or refunded to your customer.
+    /// A Tax <c>Calculation</c> allows you to calculate the tax to collect from your customer.
     /// </summary>
-    public class TaxTransaction : StripeEntity<TaxTransaction>, IHasId, IHasMetadata, IHasObject
+    public class Calculation : StripeEntity<Calculation>, IHasId, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the transaction.
+        /// Unique identifier for the calculation.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -24,11 +24,10 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// Total after taxes.
         /// </summary>
-        [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        [JsonProperty("amount_total")]
+        public long AmountTotal { get; set; }
 
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
@@ -46,10 +45,18 @@ namespace Stripe
         public string Customer { get; set; }
 
         [JsonProperty("customer_details")]
-        public TaxTransactionCustomerDetails CustomerDetails { get; set; }
+        public CalculationCustomerDetails CustomerDetails { get; set; }
 
         /// <summary>
-        /// The tax collected or refunded, by line item.
+        /// Timestamp of date at which the tax calculation will expire. Empty if the calculation is
+        /// an unsaved preview.
+        /// </summary>
+        [JsonProperty("expires_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? ExpiresAt { get; set; }
+
+        /// <summary>
+        /// The list of items the customer is purchasing.
         /// </summary>
         [JsonProperty("line_items")]
         public StripeList<LineItem> LineItems { get; set; }
@@ -62,24 +69,28 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
-        /// attach to an object. This can be useful for storing additional information about the
-        /// object in a structured format.
-        /// </summary>
-        [JsonProperty("metadata")]
-        public Dictionary<string, string> Metadata { get; set; }
-
-        /// <summary>
         /// A custom unique identifier, such as 'myOrder_123'.
         /// </summary>
         [JsonProperty("reference")]
         public string Reference { get; set; }
 
         /// <summary>
-        /// If <c>type=reversal</c>, contains information about what was reversed.
+        /// The amount of tax to be collected on top of the line item prices.
         /// </summary>
-        [JsonProperty("reversal")]
-        public TaxTransactionReversal Reversal { get; set; }
+        [JsonProperty("tax_amount_exclusive")]
+        public long TaxAmountExclusive { get; set; }
+
+        /// <summary>
+        /// The amount of tax already included in the line item prices.
+        /// </summary>
+        [JsonProperty("tax_amount_inclusive")]
+        public long TaxAmountInclusive { get; set; }
+
+        /// <summary>
+        /// Breakdown of individual tax amounts that add up to the total.
+        /// </summary>
+        [JsonProperty("tax_breakdown")]
+        public List<CalculationTaxBreakdown> TaxBreakdown { get; set; }
 
         /// <summary>
         /// Timestamp of date at which the tax rules and rates in effect applies for the
@@ -88,12 +99,5 @@ namespace Stripe
         [JsonProperty("tax_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime TaxDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
-
-        /// <summary>
-        /// If <c>reversal</c>, this transaction reverses an earlier transaction.
-        /// One of: <c>reversal</c>, or <c>transaction</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
     }
 }

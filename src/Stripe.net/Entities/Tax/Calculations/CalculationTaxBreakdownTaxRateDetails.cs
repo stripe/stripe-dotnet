@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using Newtonsoft.Json;
 
-    public class TaxCalculationTaxBreakdownTaxRateDetails : StripeEntity<TaxCalculationTaxBreakdownTaxRateDetails>
+    public class CalculationTaxBreakdownTaxRateDetails : StripeEntity<CalculationTaxBreakdownTaxRateDetails>
     {
         /// <summary>
         /// Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO

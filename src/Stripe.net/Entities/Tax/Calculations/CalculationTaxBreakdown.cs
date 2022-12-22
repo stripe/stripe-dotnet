@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Tax
 {
     using Newtonsoft.Json;
 
-    public class TaxCalculationTaxBreakdown : StripeEntity<TaxCalculationTaxBreakdown>
+    public class CalculationTaxBreakdown : StripeEntity<CalculationTaxBreakdown>
     {
         /// <summary>
         /// The amount of tax, in integer cents.
@@ -18,7 +18,7 @@ namespace Stripe
         public bool Inclusive { get; set; }
 
         [JsonProperty("tax_rate_details")]
-        public TaxCalculationTaxBreakdownTaxRateDetails TaxRateDetails { get; set; }
+        public CalculationTaxBreakdownTaxRateDetails TaxRateDetails { get; set; }
 
         /// <summary>
         /// The amount on which tax is calculated, in integer cents.
