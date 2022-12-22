@@ -1,5 +1,10 @@
 # Changelog
 
+## 41.4.0-beta.1 - 2022-12-22
+* [#2627](https://github.com/stripe/stripe-dotnet/pull/2627) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Move `Stripe.TaxTransaction` and `Stripe.TaxCalculation` to `Stripe.Tax.Transaction` and `Stripe.Tax.Calculation`.
+
 ## 41.3.0 - 2022-12-22
 * [#2626](https://github.com/stripe/stripe-dotnet/pull/2626) API Updates
   * Add support for `UsingMerchantDefault` on `CashBalanceSettings`
