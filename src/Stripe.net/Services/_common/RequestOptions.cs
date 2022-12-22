@@ -40,8 +40,8 @@ namespace Stripe
         internal string StripeVersion { get; set; }
 
         internal RequestOptions Clone()
-            {
-                return (RequestOptions)this.MemberwiseClone();
-            }
+        {
+            return (RequestOptions)this.MemberwiseClone();
+        }
     }
 }
