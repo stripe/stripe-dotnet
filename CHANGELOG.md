@@ -1,5 +1,9 @@
 # Changelog
 
+## 41.4.0 - 2023-01-05
+* [#2629](https://github.com/stripe/stripe-dotnet/pull/2629) API Updates
+  * Add support for `CardIssuing` on `IssuingCardholderIndividual`
+
 ## 41.3.0 - 2022-12-22
 * [#2626](https://github.com/stripe/stripe-dotnet/pull/2626) API Updates
   * Add support for `UsingMerchantDefault` on `CashBalanceSettings`
