@@ -5,6 +5,9 @@ namespace Stripe.Issuing
 
     public class CardholderIndividual : StripeEntity<CardholderIndividual>
     {
+        [JsonProperty("card_issuing")]
+        public CardholderIndividualCardIssuing CardIssuing { get; set; }
+
         /// <summary>
         /// The date of birth of this cardholder.
         /// </summary>
