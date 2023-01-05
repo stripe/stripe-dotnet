@@ -101,9 +101,8 @@ namespace StripeTests
         [Fact]
         public void TestApplicationFeeRefundServiceCreate()
         {
-            var options = new ApplicationFeeRefundCreateOptions();
             var service = new ApplicationFeeRefundService(this.StripeClient);
-            service.Create("fee_xxxxxxxxxxxxx", options);
+            service.Create("fee_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1556,9 +1555,8 @@ namespace StripeTests
         [Fact]
         public void TestLoginLinkServiceCreate()
         {
-            var options = new LoginLinkCreateOptions();
             var service = new LoginLinkService(this.StripeClient);
-            service.Create("acct_xxxxxxxxxxxxx", options);
+            service.Create("acct_xxxxxxxxxxxxx");
         }
 
         [Fact]
