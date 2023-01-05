@@ -6,10 +6,16 @@ namespace Stripe
     public class QuoteSubscriptionDataBillOnAcceptanceBillUntilOptions : INestedOptions
     {
         /// <summary>
+        /// Details of the duration over which to bill.
+        /// </summary>
+        [JsonProperty("duration")]
+        public QuoteSubscriptionDataBillOnAcceptanceBillUntilDurationOptions Duration { get; set; }
+
+        /// <summary>
         /// Details of a Quote line item from which to bill until.
         /// </summary>
-        [JsonProperty("line_starts_at")]
-        public QuoteSubscriptionDataBillOnAcceptanceBillUntilLineStartsAtOptions LineStartsAt { get; set; }
+        [JsonProperty("line_ends_at")]
+        public QuoteSubscriptionDataBillOnAcceptanceBillUntilLineEndsAtOptions LineEndsAt { get; set; }
 
         /// <summary>
         /// Details of a Unix timestamp to bill until.

@@ -13,7 +13,7 @@ namespace Stripe
         public QuoteSubscriptionDataOverrideAppliesToOptions AppliesTo { get; set; }
 
         /// <summary>
-        /// The start of the period to bill from when the Quote is accepted.
+        /// Describes the period to bill for upon accepting the quote.
         /// </summary>
         [JsonProperty("bill_on_acceptance")]
         public QuoteSubscriptionDataOverrideBillOnAcceptanceOptions BillOnAcceptance { get; set; }

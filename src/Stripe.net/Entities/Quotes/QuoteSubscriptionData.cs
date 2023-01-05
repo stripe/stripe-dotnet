@@ -8,7 +8,7 @@ namespace Stripe
     public class QuoteSubscriptionData : StripeEntity<QuoteSubscriptionData>
     {
         /// <summary>
-        /// Describes what period to bill for upon accepting the quote.
+        /// Describes the period to bill for upon accepting the quote.
         /// </summary>
         [JsonProperty("bill_on_acceptance")]
         public QuoteSubscriptionDataBillOnAcceptance BillOnAcceptance { get; set; }

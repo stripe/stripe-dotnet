@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class QuoteSubscriptionDataBillOnAcceptanceBillUntilLineStartsAtOptions : INestedOptions, IHasId
+    public class QuoteSubscriptionDataBillOnAcceptanceBillUntilLineEndsAtOptions : INestedOptions, IHasId
     {
         /// <summary>
         /// The ID of a quote line.

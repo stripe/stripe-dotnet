@@ -90,7 +90,7 @@ namespace Stripe
         public PaymentMethodCardNetworks Networks { get; set; }
 
         /// <summary>
-        /// Contains details on how this Card maybe be used for 3D Secure authentication.
+        /// Contains details on how this Card may be used for 3D Secure authentication.
         /// </summary>
         [JsonProperty("three_d_secure_usage")]
         public PaymentMethodCardThreeDSecureUsage ThreeDSecureUsage { get; set; }
