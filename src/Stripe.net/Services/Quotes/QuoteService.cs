@@ -165,6 +165,16 @@ namespace Stripe
             return this.ListRequestAutoPagingAsync<QuoteLine>($"{this.InstanceUrl(id)}/lines", options, requestOptions, cancellationToken);
         }
 
+        public virtual Quote MarkStaleQuote(string id, QuoteMarkStaleQuoteOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/mark_stale", options, requestOptions);
+        }
+
+        public virtual Task<Quote> MarkStaleQuoteAsync(string id, QuoteMarkStaleQuoteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/mark_stale", options, requestOptions, cancellationToken);
+        }
+
         public virtual StripeList<InvoiceLineItem> PreviewInvoiceLines(string id, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoice_lines", options, requestOptions);
