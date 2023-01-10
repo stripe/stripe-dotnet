@@ -43,7 +43,7 @@ namespace Stripe
 
         private async Task<StripeResponse> FetchResponseAsTextAsync()
         {
-            var reader = new StreamReader(this.Body);
+            using var reader = new StreamReader(this.Body);
             var content = await reader.ReadToEndAsync().ConfigureAwait(false);
             return new StripeResponse(this.StatusCode, this.Headers, content);
         }
