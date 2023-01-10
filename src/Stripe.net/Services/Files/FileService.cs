@@ -72,6 +72,7 @@ namespace Stripe
 
             if (requestOptions.BaseUrl == null)
             {
+                requestOptions = requestOptions.Clone();
                 requestOptions.BaseUrl = this.Client.FilesBase;
             }
 

@@ -1,5 +1,15 @@
 # Changelog
 
+## 41.4.0 - 2023-01-05
+* [#2629](https://github.com/stripe/stripe-dotnet/pull/2629) API Updates
+  * Add support for `CardIssuing` on `IssuingCardholderIndividual`
+
+## 41.3.0 - 2022-12-22
+* [#2626](https://github.com/stripe/stripe-dotnet/pull/2626) API Updates
+  * Add support for `UsingMerchantDefault` on `CashBalanceSettings`
+* [#2625](https://github.com/stripe/stripe-dotnet/pull/2625) Stop `FileService` from mutating its `RequestOptions` argument
+
+
 ## 41.2.0 - 2022-12-06
 * [#2614](https://github.com/stripe/stripe-dotnet/pull/2614) API Updates
   * Add support for `FlowData` on `BillingPortalSessionCreateOptions`

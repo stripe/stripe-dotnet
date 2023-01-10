@@ -11,5 +11,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("reconciliation_mode")]
         public string ReconciliationMode { get; set; }
+
+        /// <summary>
+        /// A flag to indicate if reconciliation mode returned is the user's default or is specific
+        /// to this customer cash balance.
+        /// </summary>
+        [JsonProperty("using_merchant_default")]
+        public bool UsingMerchantDefault { get; set; }
     }
 }
