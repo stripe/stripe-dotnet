@@ -57,12 +57,12 @@ namespace Stripe
 
         public virtual Quote DraftQuote(string id, QuoteDraftQuoteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/draft", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/mark_draft", options, requestOptions);
         }
 
         public virtual Task<Quote> DraftQuoteAsync(string id, QuoteDraftQuoteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/draft", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/mark_draft", options, requestOptions, cancellationToken);
         }
 
         public virtual Quote FinalizeQuote(string id, QuoteFinalizeOptions options = null, RequestOptions requestOptions = null)

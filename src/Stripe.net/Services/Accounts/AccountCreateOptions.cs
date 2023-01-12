@@ -45,6 +45,12 @@ namespace Stripe
         public AccountCompanyOptions Company { get; set; }
 
         /// <summary>
+        /// The configuration of the account when <c>type</c> is not provided.
+        /// </summary>
+        [JsonProperty("controller")]
+        public AccountControllerOptions Controller { get; set; }
+
+        /// <summary>
         /// The country in which the account holder resides, or in which the business is legally
         /// established. This should be an ISO 3166-1 alpha-2 country code. For example, if you are
         /// in the United States and the business for which you're creating an account is legally

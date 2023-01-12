@@ -5,6 +5,12 @@ namespace Stripe
 
     public class AccountController : StripeEntity<AccountController>
     {
+        [JsonProperty("application")]
+        public AccountControllerApplication Application { get; set; }
+
+        [JsonProperty("dashboard")]
+        public AccountControllerDashboard Dashboard { get; set; }
+
         /// <summary>
         /// <c>true</c> if the Connect application retrieving the resource controls the account and
         /// can therefore exercise <a
