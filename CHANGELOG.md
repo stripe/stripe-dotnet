@@ -1,5 +1,10 @@
 # Changelog
 
+## 41.5.0 - 2023-01-19
+* [#2633](https://github.com/stripe/stripe-dotnet/pull/2633) API Updates
+  * Add support for `VerificationSession` on `EphemeralKeyCreateOptions`
+* [#2622](https://github.com/stripe/stripe-dotnet/pull/2622) Fix missing IDisposable using
+
 ## 41.5.0-beta.2 - 2023-01-12
 * [#2632](https://github.com/stripe/stripe-dotnet/pull/2632) API Updates for beta branch
   * Updated stable APIs to the latest version
@@ -10,7 +15,6 @@
   * Remove support for `Timestamp` on `QuoteLineActionsAddDiscountDiscountEnd`
   * Change type of `QuoteLineActionsAddDiscountDiscountEndType` from `literal('timestamp')` to `literal('line_ends_at')`
   * Remove support for `Index` on `QuoteLineActionsAddItemDiscounts`, `QuoteLineActionsRemoveDiscount`, `QuoteLineActionsSetDiscounts`, `QuoteLineActionsSetItemsDiscounts`, `SubscriptionSchedulePhasesAddInvoiceItemsDiscounts`, `SubscriptionSchedulePhasesDiscounts`, and `SubscriptionSchedulePhasesItemsDiscounts`
-  
 
 ## 41.5.0-beta.1 - 2023-01-05
 * [#2630](https://github.com/stripe/stripe-dotnet/pull/2630) API Updates for beta branch
