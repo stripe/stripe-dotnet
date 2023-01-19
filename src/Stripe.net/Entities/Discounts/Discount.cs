@@ -1,13 +1,25 @@
+// File generated from our OpenAPI spec
 namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// A discount represents the actual application of a <a
+    /// href="https://stripe.com/docs/api#coupons">coupon</a> or <a
+    /// href="https://stripe.com/docs/api#promotion_codes">promotion code</a>. It contains
+    /// information about when the discount began, when it will end, and what it is applied to.
+    ///
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/billing/subscriptions/discounts">Applying Discounts to
+    /// Subscriptions</a>.
+    /// </summary>
     public class Discount : StripeEntity<Discount>, IHasId, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the object.
+        /// The ID of the discount object. Discounts cannot be fetched by ID. Use
+        /// <c>expand[]=discounts</c> in API calls to expand discount IDs in an array.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -26,7 +38,14 @@ namespace Stripe
         public string CheckoutSession { get; set; }
 
         /// <summary>
-        /// Hash describing the coupon applied to create this discount.
+        /// A coupon contains information about a percent-off or amount-off discount you might want
+        /// to apply to a customer. Coupons may be applied to <a
+        /// href="https://stripe.com/docs/api#subscriptions">subscriptions</a>, <a
+        /// href="https://stripe.com/docs/api#invoices">invoices</a>, <a
+        /// href="https://stripe.com/docs/api/checkout/sessions">checkout sessions</a>, <a
+        /// href="https://stripe.com/docs/api#quotes">quotes</a>, and more. Coupons do not work with
+        /// conventional one-off <a href="https://stripe.com/docs/api#create_charge">charges</a> or
+        /// <a href="https://stripe.com/docs/api/payment_intents">payment intents</a>.
         /// </summary>
         [JsonProperty("coupon")]
         public Coupon Coupon { get; set; }
@@ -47,6 +66,8 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The ID of the customer associated with this discount.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Customer Customer
@@ -67,24 +88,24 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// If the coupon has a <c>duration</c> of <c>repeating</c>, the date that this discount
-        /// will end. If the coupon has a <c>duration</c> of <c>once</c> or forever, this attribute
-        /// will be null.
+        /// If the coupon has a duration of <c>repeating</c>, the date that this discount will end.
+        /// If the coupon has a duration of <c>once</c> or <c>forever</c>, this attribute will be
+        /// null.
         /// </summary>
         [JsonProperty("end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? End { get; set; }
 
         /// <summary>
-        /// The invoice that the discount’s coupon was applied to, if it was applied directly to a
+        /// The invoice that the discount's coupon was applied to, if it was applied directly to a
         /// particular invoice.
         /// </summary>
         [JsonProperty("invoice")]
         public string Invoice { get; set; }
 
         /// <summary>
-        /// The invoice item id (or invoice line item id for invoice line items of
-        /// type=‘subscription’) that the discount’s coupon was applied to, if it was applied
+        /// The invoice item <c>id</c> (or invoice line item <c>id</c> for invoice line items of
+        /// type='subscription') that the discount's coupon was applied to, if it was applied
         /// directly to a particular invoice item or invoice line item.
         /// </summary>
         [JsonProperty("invoice_item")]
@@ -106,6 +127,8 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The promotion code applied to create this discount.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public PromotionCode PromotionCode
@@ -144,6 +167,8 @@ namespace Stripe
         /// (Expanded)
         /// The subscription that this coupon is applied to, if it is applied to a particular
         /// subscription.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
         public Subscription Subscription

@@ -19,5 +19,12 @@ namespace Stripe
 
         [JsonIgnore]
         public string StripeVersion { get; set; }
+
+        /// <summary>
+        /// The ID of the Identity VerificationSession you'd like to access using the resulting
+        /// ephemeral key.
+        /// </summary>
+        [JsonProperty("verification_session")]
+        public string VerificationSession { get; set; }
     }
 }
