@@ -1,5 +1,10 @@
 # Changelog
 
+## 41.6.0-beta.1 - 2023-01-19
+* [#2635](https://github.com/stripe/stripe-dotnet/pull/2635) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `Tax.Settings` resource.
+
 ## 41.5.0 - 2023-01-19
 * [#2633](https://github.com/stripe/stripe-dotnet/pull/2633) API Updates
   * Add support for `VerificationSession` on `EphemeralKeyCreateOptions`
