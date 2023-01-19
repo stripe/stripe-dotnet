@@ -9,8 +9,8 @@ namespace Stripe
     {
         /// <summary>
         /// The reason this quote was marked as canceled.
-        /// One of: <c>quote_accepted</c>, <c>quote_expired</c>, <c>quote_superseded</c>,
-        /// <c>subscription_canceled</c>, or <c>user_canceled</c>.
+        /// One of: <c>canceled</c>, <c>quote_accepted</c>, <c>quote_expired</c>,
+        /// <c>quote_superseded</c>, or <c>subscription_canceled</c>.
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; set; }
