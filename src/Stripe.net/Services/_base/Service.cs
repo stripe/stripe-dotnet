@@ -292,7 +292,7 @@ namespace Stripe
             RequestOptions requestOptions)
             where T : IStripeEntity
         {
-#if NET461
+#if NETFRAMEWORK
             return
                 this.ListRequestAutoPagingSync<T>(url, options, requestOptions);
 #else
@@ -301,7 +301,7 @@ namespace Stripe
 #endif
         }
 
-#if NET461
+#if NETFRAMEWORK
         protected IEnumerable<T> ListRequestAutoPagingSync<T>(
             string url,
             ListOptions options,
@@ -450,7 +450,7 @@ namespace Stripe
             RequestOptions requestOptions)
             where T : IStripeEntity
         {
-#if NET461
+#if NETFRAMEWORK
             return
                 this.SearchRequestAutoPagingSync<T>(url, options, requestOptions);
 #else
@@ -459,7 +459,7 @@ namespace Stripe
 #endif
         }
 
-#if NET461
+#if NETFRAMEWORK
         private IEnumerable<T> SearchRequestAutoPagingSync<T>(
             string url,
             SearchOptions options,

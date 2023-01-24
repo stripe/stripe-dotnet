@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net6.0;netcoreapp3.1;netcoreapp2.1;net461</TargetFrameworks>
-    <LangVersion>8</LangVersion>
+    <TargetFrameworks>net5.0;net6.0;netcoreapp3.1;netcoreapp2.1;net462</TargetFrameworks>
+    <LangVersion>10</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
   </PropertyGroup>
@@ -24,7 +24,7 @@
     <PackageReference Include="System.Linq.Async" Version="4.1.1" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 
