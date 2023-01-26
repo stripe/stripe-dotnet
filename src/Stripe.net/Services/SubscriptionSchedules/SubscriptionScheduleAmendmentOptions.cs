@@ -60,6 +60,14 @@ namespace Stripe
         public string ProrationBehavior { get; set; }
 
         /// <summary>
+        /// Ends the subscription schedule early as dictated by either the accompanying amendment's
+        /// start or end.
+        /// One of: <c>amendment_end</c>, or <c>amendment_start</c>.
+        /// </summary>
+        [JsonProperty("set_schedule_end")]
+        public string SetScheduleEnd { get; set; }
+
+        /// <summary>
         /// Settings related to subscription trials.
         /// </summary>
         [JsonProperty("trial_settings")]

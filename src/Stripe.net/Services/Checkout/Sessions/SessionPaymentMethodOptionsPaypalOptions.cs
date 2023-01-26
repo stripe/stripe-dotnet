@@ -5,6 +5,9 @@ namespace Stripe.Checkout
 
     public class SessionPaymentMethodOptionsPaypalOptions : INestedOptions
     {
+        [JsonProperty("billing_agreement_id")]
+        public string BillingAgreementId { get; set; }
+
         [JsonProperty("currency")]
         public string Currency { get; set; }
     }
