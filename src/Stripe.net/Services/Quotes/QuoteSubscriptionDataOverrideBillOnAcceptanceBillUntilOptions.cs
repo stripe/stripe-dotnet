@@ -18,10 +18,10 @@ namespace Stripe
         public QuoteSubscriptionDataOverrideBillOnAcceptanceBillUntilLineEndsAtOptions LineEndsAt { get; set; }
 
         /// <summary>
-        /// Details of a Unix timestamp to bill until.
+        /// A precise Unix timestamp.
         /// </summary>
         [JsonProperty("timestamp")]
-        public QuoteSubscriptionDataOverrideBillOnAcceptanceBillUntilTimestampOptions Timestamp { get; set; }
+        public long? Timestamp { get; set; }
 
         /// <summary>
         /// The type of method to specify the <c>bill_until</c> time.

@@ -59,6 +59,14 @@ namespace Stripe
         public string ProrationBehavior { get; set; }
 
         /// <summary>
+        /// Timestsamp helper to end the underlying schedule early, based on the acompanying line's
+        /// start or end date.
+        /// One of: <c>line_ends_at</c>, or <c>line_starts_at</c>.
+        /// </summary>
+        [JsonProperty("set_schedule_end")]
+        public string SetScheduleEnd { get; set; }
+
+        /// <summary>
         /// Details to identify the earliest timestamp where the proposed change should take effect.
         /// </summary>
         [JsonProperty("starts_at")]

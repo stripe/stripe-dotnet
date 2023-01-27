@@ -12,10 +12,10 @@ namespace Stripe
         public QuoteSubscriptionDataBillOnAcceptanceBillFromLineStartsAtOptions LineStartsAt { get; set; }
 
         /// <summary>
-        /// Details for a Unix timestamp to start the bill period from.
+        /// A precise Unix timestamp.
         /// </summary>
         [JsonProperty("timestamp")]
-        public QuoteSubscriptionDataBillOnAcceptanceBillFromTimestampOptions Timestamp { get; set; }
+        public long? Timestamp { get; set; }
 
         /// <summary>
         /// The type of method to specify the <c>bill_from</c> time.
