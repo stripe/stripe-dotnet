@@ -1,5 +1,12 @@
 # Changelog
 
+## 41.6.0-beta.2 - 2023-01-26
+* [#2638](https://github.com/stripe/stripe-dotnet/pull/2638) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `ListTransactions` method on resource `Tax.Transaction`
+  * Add support for `BillingAgreementId` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`
+  * Change type of `QuoteSubscriptionDataOverridesOptions` from `array(create_specs)` to `emptyStringable(array(update_specs))`
+
 ## 41.6.0-beta.1 - 2023-01-19
 * [#2635](https://github.com/stripe/stripe-dotnet/pull/2635) API Updates for beta branch
   * Updated stable APIs to the latest version
