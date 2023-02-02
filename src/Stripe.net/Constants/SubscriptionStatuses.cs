@@ -13,6 +13,8 @@ namespace Stripe
 
         public const string PastDue = "past_due";
 
+        public const string Paused = "paused";
+
         public const string Trialing = "trialing";
 
         public const string Unpaid = "unpaid";

@@ -75,5 +75,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("refund_amount")]
         public long? RefundAmount { get; set; }
+
+        /// <summary>
+        /// When shipping_cost contains the shipping_rate from the invoice, the shipping_cost is
+        /// included in the credit note.
+        /// </summary>
+        [JsonProperty("shipping_cost")]
+        public CreditNoteShippingCostOptions ShippingCost { get; set; }
     }
 }

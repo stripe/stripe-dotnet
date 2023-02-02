@@ -111,8 +111,9 @@ namespace Stripe
         /// <c>return_initiated</c>, or <c>return_canceled</c>. New types may be added in future.
         /// See <a href="https://stripe.com/docs/payments/customer-balance#types">Customer
         /// Balance</a> to learn more about these types.
-        /// One of: <c>applied_to_payment</c>, <c>funded</c>, <c>refunded_from_payment</c>,
-        /// <c>return_canceled</c>, <c>return_initiated</c>, or <c>unapplied_from_payment</c>.
+        /// One of: <c>applied_to_payment</c>, <c>funded</c>, <c>funding_reversed</c>,
+        /// <c>refunded_from_payment</c>, <c>return_canceled</c>, <c>return_initiated</c>, or
+        /// <c>unapplied_from_payment</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

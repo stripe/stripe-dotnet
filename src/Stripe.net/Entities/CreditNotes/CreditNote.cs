@@ -34,6 +34,12 @@ namespace Stripe
         public long Amount { get; set; }
 
         /// <summary>
+        /// This is the sum of all the shipping amounts.
+        /// </summary>
+        [JsonProperty("amount_shipping")]
+        public long AmountShipping { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
@@ -238,6 +244,12 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
         internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion
+
+        /// <summary>
+        /// The details of the cost of shipping, including the ShippingRate applied to the invoice.
+        /// </summary>
+        [JsonProperty("shipping_cost")]
+        public CreditNoteShippingCost ShippingCost { get; set; }
 
         /// <summary>
         /// Status of this credit note, one of <c>issued</c> or <c>void</c>. Learn more about <a

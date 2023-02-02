@@ -14,6 +14,9 @@ namespace Stripe.Checkout
         [JsonProperty("payment_intent")]
         public string PaymentIntent { get; set; }
 
+        [JsonProperty("payment_link")]
+        public string PaymentLink { get; set; }
+
         [JsonProperty("subscription")]
         public string Subscription { get; set; }
     }
