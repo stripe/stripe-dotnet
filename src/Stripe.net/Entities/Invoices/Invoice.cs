@@ -127,6 +127,12 @@ namespace Stripe
         [JsonProperty("amount_remaining")]
         public long AmountRemaining { get; set; }
 
+        /// <summary>
+        /// This is the sum of all the shipping amounts.
+        /// </summary>
+        [JsonProperty("amount_shipping")]
+        public long AmountShipping { get; set; }
+
         #region Expandable Application
 
         /// <summary>
@@ -767,6 +773,20 @@ namespace Stripe
         /// </summary>
         [JsonProperty("rendering_options")]
         public InvoiceRenderingOptions RenderingOptions { get; set; }
+
+        /// <summary>
+        /// The details of the cost of shipping, including the ShippingRate applied on the invoice.
+        /// </summary>
+        [JsonProperty("shipping_cost")]
+        public InvoiceShippingCost ShippingCost { get; set; }
+
+        /// <summary>
+        /// Shipping details for the invoice. The Invoice PDF will use the <c>shipping_details</c>
+        /// value if it is set, otherwise the PDF will render the shipping address from the
+        /// customer.
+        /// </summary>
+        [JsonProperty("shipping_details")]
+        public InvoiceShippingDetails ShippingDetails { get; set; }
 
         /// <summary>
         /// Starting customer balance before the invoice is finalized. If the invoice has not been

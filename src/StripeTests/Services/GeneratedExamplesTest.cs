@@ -2801,6 +2801,19 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestSubscriptionServiceResume()
+        {
+            var options = new SubscriptionResumeOptions
+            {
+                ProrationDate = DateTimeOffset.FromUnixTimeSeconds(1675400000)
+                    .UtcDateTime,
+                ProrationBehavior = "always_invoice",
+            };
+            var service = new SubscriptionService(this.StripeClient);
+            service.Resume("sub_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
         public void TestSubscriptionServiceRetrieve()
         {
             var service = new SubscriptionService(this.StripeClient);

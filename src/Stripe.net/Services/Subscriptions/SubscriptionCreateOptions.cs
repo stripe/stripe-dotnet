@@ -261,10 +261,9 @@ namespace Stripe
 
         /// <summary>
         /// Unix timestamp representing the end of the trial period the customer will get before
-        /// being charged for the first time. This will always overwrite any trials that might apply
-        /// via a subscribed plan. If set, trial_end will override the default trial period of the
-        /// plan the customer is being subscribed to. The special value <c>now</c> can be provided
-        /// to end the customer's trial immediately. Can be at most two years from
+        /// being charged for the first time. If set, trial_end will override the default trial
+        /// period of the plan the customer is being subscribed to. The special value <c>now</c> can
+        /// be provided to end the customer's trial immediately. Can be at most two years from
         /// <c>billing_cycle_anchor</c>. See <a
         /// href="https://stripe.com/docs/billing/subscriptions/trials">Using trial periods on
         /// subscriptions</a> to learn more.
@@ -291,5 +290,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("trial_period_days")]
         public long? TrialPeriodDays { get; set; }
+
+        /// <summary>
+        /// Settings related to subscription trials.
+        /// </summary>
+        [JsonProperty("trial_settings")]
+        public SubscriptionTrialSettingsOptions TrialSettings { get; set; }
     }
 }

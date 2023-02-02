@@ -530,7 +530,7 @@ namespace Stripe
         /// created, but then immediately automatically closed). After receiving updated payment
         /// information from a customer, you may choose to reopen and pay their closed invoices.
         /// One of: <c>active</c>, <c>canceled</c>, <c>incomplete</c>, <c>incomplete_expired</c>,
-        /// <c>past_due</c>, <c>trialing</c>, or <c>unpaid</c>.
+        /// <c>past_due</c>, <c>paused</c>, <c>trialing</c>, or <c>unpaid</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -580,6 +580,12 @@ namespace Stripe
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
+
+        /// <summary>
+        /// Settings related to subscription trials.
+        /// </summary>
+        [JsonProperty("trial_settings")]
+        public SubscriptionTrialSettings TrialSettings { get; set; }
 
         /// <summary>
         /// If the subscription has a trial, the beginning of that trial.
