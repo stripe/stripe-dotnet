@@ -1,5 +1,18 @@
 # Changelog
 
+## 41.7.0-beta.1 - 2023-02-02
+* [#2642](https://github.com/stripe/stripe-dotnet/pull/2642) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for new resource `FinancialConnections.Transaction`
+  * Add support for `List` method on resource `Transaction`
+  * Add support for `Prefetch` on `-PaymentMethodOptionsUsBankAccountFinancialConnections`, and `-PaymentMethodOptionsUsBankAccountFinancialConnectionsOptions` across several APIs.
+  * Add support for `InferredBalancesRefresh`, `Subscriptions`, and `TransactionRefresh` on `FinancialConnectionsAccount`
+  * Add support for `ManualEntry` on `FinancialConnectionsSessionCreateOptions` and `FinancialConnectionsSession`
+  * Add support for `StatusDetails` and `Status` on `FinancialConnectionsSession`
+  * Add support for `AccountNumber` on `PaymentMethodUsBankAccount`
+  * Remove support for `Id` on `QuoteLinesStartsAtLineEndsAtOptions`
+  
+
 ## 41.6.0 - 2023-02-02
 * [#2640](https://github.com/stripe/stripe-dotnet/pull/2640) API Updates
   * Add support for `Resume` method on resource `Subscription`
