@@ -15,6 +15,12 @@ namespace Stripe
         public List<string> Permissions { get; set; }
 
         /// <summary>
+        /// List of data features that you would like to retrieve upon account creation.
+        /// </summary>
+        [JsonProperty("prefetch")]
+        public List<string> Prefetch { get; set; }
+
+        /// <summary>
         /// For webview integrations only. Upon completing OAuth login in the native browser, the
         /// user will be redirected to this URL to return to your app.
         /// </summary>
