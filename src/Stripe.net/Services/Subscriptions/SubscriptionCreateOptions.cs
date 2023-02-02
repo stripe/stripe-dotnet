@@ -304,5 +304,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("trial_period_days")]
         public long? TrialPeriodDays { get; set; }
+
+        /// <summary>
+        /// Settings related to subscription trials.
+        /// </summary>
+        [JsonProperty("trial_settings")]
+        public SubscriptionTrialSettingsOptions TrialSettings { get; set; }
     }
 }

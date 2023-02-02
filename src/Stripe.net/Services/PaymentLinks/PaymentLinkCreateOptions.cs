@@ -78,6 +78,12 @@ namespace Stripe
         public string CustomerCreation { get; set; }
 
         /// <summary>
+        /// Generate a post-purchase Invoice for one-time payments.
+        /// </summary>
+        [JsonProperty("invoice_creation")]
+        public PaymentLinkInvoiceCreationOptions InvoiceCreation { get; set; }
+
+        /// <summary>
         /// The line items representing what is being sold. Each line item represents an item being
         /// sold. Up to 20 line items are supported.
         /// </summary>

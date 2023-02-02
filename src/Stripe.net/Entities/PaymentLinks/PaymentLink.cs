@@ -97,6 +97,12 @@ namespace Stripe
         public string CustomerCreation { get; set; }
 
         /// <summary>
+        /// Configuration for creating invoice for payment mode payment links.
+        /// </summary>
+        [JsonProperty("invoice_creation")]
+        public PaymentLinkInvoiceCreation InvoiceCreation { get; set; }
+
+        /// <summary>
         /// The line items representing what is being sold.
         /// </summary>
         [JsonProperty("line_items")]

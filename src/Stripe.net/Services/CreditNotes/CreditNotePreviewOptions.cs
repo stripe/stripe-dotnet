@@ -35,5 +35,8 @@ namespace Stripe
 
         [JsonProperty("refund_amount")]
         public long? RefundAmount { get; set; }
+
+        [JsonProperty("shipping_cost")]
+        public CreditNoteShippingCostOptions ShippingCost { get; set; }
     }
 }
