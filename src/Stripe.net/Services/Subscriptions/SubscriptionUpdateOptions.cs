@@ -285,5 +285,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("trial_from_plan")]
         public bool? TrialFromPlan { get; set; }
+
+        /// <summary>
+        /// Settings related to subscription trials.
+        /// </summary>
+        [JsonProperty("trial_settings")]
+        public SubscriptionTrialSettingsOptions TrialSettings { get; set; }
     }
 }

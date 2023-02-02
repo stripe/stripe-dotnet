@@ -13,5 +13,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("permissions")]
         public List<string> Permissions { get; set; }
+
+        /// <summary>
+        /// List of data features that you would like to retrieve upon account creation.
+        /// </summary>
+        [JsonProperty("prefetch")]
+        public List<string> Prefetch { get; set; }
     }
 }

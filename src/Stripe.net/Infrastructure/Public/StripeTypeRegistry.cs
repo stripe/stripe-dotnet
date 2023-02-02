@@ -69,6 +69,10 @@ namespace Stripe
                         FinancialConnections.Account)
                 },
                 {
+                    "financial_connections.account_inferred_balance", typeof(
+                        FinancialConnections.InferredBalance)
+                },
+                {
                     "financial_connections.account_owner", typeof(
                         FinancialConnections.AccountOwner)
                 },
@@ -79,6 +83,10 @@ namespace Stripe
                 {
                     "financial_connections.session", typeof(
                         FinancialConnections.Session)
+                },
+                {
+                    "financial_connections.transaction", typeof(
+                        FinancialConnections.Transaction)
                 },
                 { "funding_instructions", typeof(FundingInstructions) },
                 { "gift_cards.card", typeof(GiftCards.Card) },

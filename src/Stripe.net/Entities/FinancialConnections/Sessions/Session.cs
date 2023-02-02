@@ -50,6 +50,9 @@ namespace Stripe.FinancialConnections
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        [JsonProperty("manual_entry")]
+        public SessionManualEntry ManualEntry { get; set; }
+
         /// <summary>
         /// Permissions requested for accounts collected during this session.
         /// </summary>
@@ -57,10 +60,26 @@ namespace Stripe.FinancialConnections
         public List<string> Permissions { get; set; }
 
         /// <summary>
+        /// Data features requested to be retrieved upon account creation.
+        /// </summary>
+        [JsonProperty("prefetch")]
+        public List<string> Prefetch { get; set; }
+
+        /// <summary>
         /// For webview integrations only. Upon completing OAuth login in the native browser, the
         /// user will be redirected to this URL to return to your app.
         /// </summary>
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
+
+        /// <summary>
+        /// The current state of the session.
+        /// One of: <c>cancelled</c>, <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("status_details")]
+        public SessionStatusDetails StatusDetails { get; set; }
     }
 }
