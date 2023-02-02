@@ -1,5 +1,16 @@
 # Changelog
 
+## 41.6.0 - 2023-02-02
+* [#2640](https://github.com/stripe/stripe-dotnet/pull/2640) API Updates
+  * Add support for `Resume` method on resource `Subscription`
+  * Add support for `PaymentLink` on `CheckoutSessionListOptions`
+  * Add support for `TrialSettings` on `CheckoutSessionSubscriptionDataOptions`, `SubscriptionCreateOptions`, `SubscriptionUpdateOptions`, and `Subscription`
+  * Add support for `ShippingCost` on `CreditNoteCreateOptions`, `CreditNotePreviewLinesOptions`, `CreditNotePreviewOptions`, `CreditNote`, `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
+  * Add support for `AmountShipping` on `CreditNote` and `Invoice`
+  * Add support for `ShippingDetails` on `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
+  * Add support for `SubscriptionResumeAt` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
+  * Add support for `InvoiceCreation` on `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
+
 ## 41.5.0 - 2023-01-19
 * [#2633](https://github.com/stripe/stripe-dotnet/pull/2633) API Updates
   * Add support for `VerificationSession` on `EphemeralKeyCreateOptions`
