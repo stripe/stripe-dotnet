@@ -144,6 +144,13 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// The stackable discounts that will be applied to the subscription on this phase.
+        /// Subscription item discounts are applied before subscription discounts.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionSchedulePhaseDiscount> Discounts { get; set; }
+
+        /// <summary>
         /// The end of this phase of the subscription schedule.
         /// </summary>
         [JsonProperty("end_date")]
@@ -230,10 +237,23 @@ namespace Stripe
         public SubscriptionSchedulePhaseTransferData TransferData { get; set; }
 
         /// <summary>
+        /// Specify behavior of the trial when crossing schedule phase boundaries.
+        /// One of: <c>continue</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("trial_continuation")]
+        public string TrialContinuation { get; set; }
+
+        /// <summary>
         /// When the trial ends within the phase.
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
+
+        /// <summary>
+        /// Settings related to any trials on the subscription during this phase.
+        /// </summary>
+        [JsonProperty("trial_settings")]
+        public SubscriptionSchedulePhaseTrialSettings TrialSettings { get; set; }
     }
 }

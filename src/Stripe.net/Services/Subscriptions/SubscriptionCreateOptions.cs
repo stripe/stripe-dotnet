@@ -155,6 +155,13 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// The coupons to redeem into discounts for the subscription. If not specified or empty,
+        /// inherits the discount from the subscription's customer.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// A list of up to 20 subscription items, each with an attached price.
         /// </summary>
         [JsonProperty("items")]
@@ -233,6 +240,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("pending_invoice_item_interval")]
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
+
+        /// <summary>
+        /// If specified, the invoicing for the given billing cycle iterations will be processed
+        /// now.
+        /// </summary>
+        [JsonProperty("prebilling")]
+        public SubscriptionPrebillingOptions Prebilling { get; set; }
 
         /// <summary>
         /// The API ID of a promotion code to apply to this subscription. A promotion code applied

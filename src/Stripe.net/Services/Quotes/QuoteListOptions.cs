@@ -8,6 +8,9 @@ namespace Stripe
         [JsonProperty("customer")]
         public string Customer { get; set; }
 
+        [JsonProperty("from_subscription")]
+        public string FromSubscription { get; set; }
+
         [JsonProperty("status")]
         public string Status { get; set; }
 

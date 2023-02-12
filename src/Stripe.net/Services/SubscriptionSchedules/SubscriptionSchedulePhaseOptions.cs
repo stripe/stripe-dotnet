@@ -102,6 +102,14 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// The coupons to redeem into discounts for the schedule phase. If not specified, inherits
+        /// the discount from the subscription's customer. Pass an empty string to avoid inheriting
+        /// any discounts.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionSchedulePhaseDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// The date at which this phase of the subscription schedule ends. If set,
         /// <c>iterations</c> must not be set.
         /// </summary>
@@ -184,11 +192,24 @@ namespace Stripe
         public bool? Trial { get; set; }
 
         /// <summary>
+        /// Specify trial behavior when crossing phase boundaries.
+        /// One of: <c>continue</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("trial_continuation")]
+        public string TrialContinuation { get; set; }
+
+        /// <summary>
         /// Sets the phase to trialing from the start date to this date. Must be before the phase
         /// end date, can not be combined with <c>trial</c>.
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
+
+        /// <summary>
+        /// Settings related to subscription trials.
+        /// </summary>
+        [JsonProperty("trial_settings")]
+        public SubscriptionSchedulePhaseTrialSettingsOptions TrialSettings { get; set; }
     }
 }

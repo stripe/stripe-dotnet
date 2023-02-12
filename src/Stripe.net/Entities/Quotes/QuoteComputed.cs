@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class QuoteComputed : StripeEntity<QuoteComputed>
     {
@@ -13,6 +15,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("recurring")]
         public QuoteComputedRecurring Recurring { get; set; }
+
+        /// <summary>
+        /// The time at which the quote's estimated schedules and upcoming invoices were generated.
+        /// </summary>
+        [JsonProperty("updated_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("upfront")]
         public QuoteComputedUpfront Upfront { get; set; }

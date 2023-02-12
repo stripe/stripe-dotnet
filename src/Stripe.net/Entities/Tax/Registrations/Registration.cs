@@ -1,0 +1,85 @@
+// File generated from our OpenAPI spec
+namespace Stripe.Tax
+{
+    using Newtonsoft.Json;
+
+    /// <summary>
+    /// A Tax <c>Registration</c> lets us know that your business is registered to collect tax
+    /// on payments within a region, enabling you to <a
+    /// href="https://stripe.com/docs/tax">automatically collect tax</a>.
+    ///
+    /// Stripe will not register on your behalf with the relevant authorities when you create a
+    /// Tax <c>Registration</c> object. For more information on how to register to collect tax,
+    /// see <a href="https://stripe.com/docs/tax/registering">our guide</a>.
+    /// </summary>
+    public class Registration : StripeEntity<Registration>, IHasId, IHasObject
+    {
+        /// <summary>
+        /// Unique identifier for the object.
+        /// </summary>
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// String representing the object's type. Objects of the same type share the same value.
+        /// </summary>
+        [JsonProperty("object")]
+        public string Object { get; set; }
+
+        /// <summary>
+        /// Time at which the registration becomes active. Measured in seconds since the Unix epoch.
+        /// </summary>
+        [JsonProperty("active_from")]
+        public long ActiveFrom { get; set; }
+
+        /// <summary>
+        /// Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO
+        /// 3166-1 alpha-2</a>).
+        /// </summary>
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        /// <summary>
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// </summary>
+        [JsonProperty("created")]
+        public long Created { get; set; }
+
+        /// <summary>
+        /// If set, the registration stops being active at this time. If not set, the registration
+        /// will be active indefinitely. Measured in seconds since the Unix epoch.
+        /// </summary>
+        [JsonProperty("expires_at")]
+        public long? ExpiresAt { get; set; }
+
+        /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+        public bool Livemode { get; set; }
+
+        /// <summary>
+        /// State, county, province, or region.
+        /// </summary>
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        /// <summary>
+        /// The status of the registration. This field is present for convenience and can be deduced
+        /// from <c>active_from</c> and <c>expires_at</c>.
+        /// One of: <c>active</c>, <c>expired</c>, or <c>scheduled</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// The type of the registration. See <a href="https://stripe.com/docs/tax/registering">our
+        /// guide</a> for more information about registration types.
+        /// One of: <c>domestic_small_seller</c>, <c>simplified</c>, <c>standard</c>,
+        /// <c>vat_oss_non_union</c>, or <c>vat_oss_union</c>.
+        /// </summary>
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+}

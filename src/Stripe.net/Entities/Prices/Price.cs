@@ -116,6 +116,12 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Subscriptions using this price will be migrated to use the new referenced price.
+        /// </summary>
+        [JsonProperty("migrate_to")]
+        public PriceMigrateTo MigrateTo { get; set; }
+
+        /// <summary>
         /// A brief description of the price, hidden from customers.
         /// </summary>
         [JsonProperty("nickname")]

@@ -19,6 +19,12 @@ namespace Stripe.FinancialConnections
         public SessionFiltersOptions Filters { get; set; }
 
         /// <summary>
+        /// Settings for configuring manual entry of account details for this Session.
+        /// </summary>
+        [JsonProperty("manual_entry")]
+        public SessionManualEntryOptions ManualEntry { get; set; }
+
+        /// <summary>
         /// List of data features that you would like to request access to.
         ///
         /// Possible values are <c>balances</c>, <c>transactions</c>, <c>ownership</c>, and
@@ -26,6 +32,12 @@ namespace Stripe.FinancialConnections
         /// </summary>
         [JsonProperty("permissions")]
         public List<string> Permissions { get; set; }
+
+        /// <summary>
+        /// List of data features that you would like to retrieve upon account creation.
+        /// </summary>
+        [JsonProperty("prefetch")]
+        public List<string> Prefetch { get; set; }
 
         /// <summary>
         /// For webview integrations only. Upon completing OAuth login in the native browser, the

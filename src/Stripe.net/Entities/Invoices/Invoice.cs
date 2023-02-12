@@ -171,6 +171,9 @@ namespace Stripe
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
+        [JsonProperty("applies_to")]
+        public InvoiceAppliesTo AppliesTo { get; set; }
+
         /// <summary>
         /// Number of payment attempts made for this invoice, from the perspective of the payment
         /// retry schedule. Any payment attempt counts as the first attempt, and subsequently only

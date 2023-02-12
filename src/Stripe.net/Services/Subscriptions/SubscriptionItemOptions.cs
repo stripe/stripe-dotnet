@@ -28,6 +28,12 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
+        /// The coupons to redeem into discounts for the subscription item.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionItemDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// Subscription item to update.
         /// </summary>
         [JsonProperty("id")]
@@ -76,5 +82,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_rates")]
         public List<string> TaxRates { get; set; }
+
+        /// <summary>
+        /// Define options to configure the trial on the subscription item.
+        /// </summary>
+        [JsonProperty("trial")]
+        public SubscriptionItemTrialOptions Trial { get; set; }
     }
 }

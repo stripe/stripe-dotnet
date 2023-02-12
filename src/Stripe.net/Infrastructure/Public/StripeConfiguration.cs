@@ -23,14 +23,26 @@ namespace Stripe
         private static int maxNetworkRetries = SystemNetHttpClient.DefaultMaxNumberRetries;
 
         private static IStripeClient stripeClient;
+        private static string apiVersion;
 
         static StripeConfiguration()
         {
             StripeNetVersion = new AssemblyName(typeof(StripeConfiguration).GetTypeInfo().Assembly.FullName).Version.ToString(3);
+            ApiVersion = Stripe.ApiVersion.Current;
         }
 
+        internal static string TrimmedApiVersion { get; private set; }
+
         /// <summary>API version used by Stripe.net.</summary>
-        public static string ApiVersion => Stripe.ApiVersion.Current;
+        public static string ApiVersion
+        {
+            get => apiVersion;
+            set
+            {
+                apiVersion = value;
+                TrimmedApiVersion = StringUtils.TrimApiVersion(value);
+            }
+        }
 
         /// <summary>Gets or sets the API key.</summary>
         /// <remarks>

@@ -17,6 +17,7 @@ namespace Stripe
             {
                 { "account", typeof(Account) },
                 { "account_link", typeof(AccountLink) },
+                { "account_session", typeof(AccountSession) },
                 { "apple_pay_domain", typeof(ApplePayDomain) },
                 { "application", typeof(Application) },
                 { "application_fee", typeof(ApplicationFee) },
@@ -30,6 +31,15 @@ namespace Stripe
                 },
                 { "billing_portal.session", typeof(BillingPortal.Session) },
                 { "capability", typeof(Capability) },
+                { "capital.financing_offer", typeof(Capital.FinancingOffer) },
+                {
+                    "capital.financing_summary", typeof(
+                        Capital.FinancingSummary)
+                },
+                {
+                    "capital.financing_transaction", typeof(
+                        Capital.FinancingTransaction)
+                },
                 { "card", typeof(Card) },
                 { "cash_balance", typeof(CashBalance) },
                 { "charge", typeof(Charge) },
@@ -59,6 +69,10 @@ namespace Stripe
                         FinancialConnections.Account)
                 },
                 {
+                    "financial_connections.account_inferred_balance", typeof(
+                        FinancialConnections.InferredBalance)
+                },
+                {
                     "financial_connections.account_owner", typeof(
                         FinancialConnections.AccountOwner)
                 },
@@ -70,7 +84,13 @@ namespace Stripe
                     "financial_connections.session", typeof(
                         FinancialConnections.Session)
                 },
+                {
+                    "financial_connections.transaction", typeof(
+                        FinancialConnections.Transaction)
+                },
                 { "funding_instructions", typeof(FundingInstructions) },
+                { "gift_cards.card", typeof(GiftCards.Card) },
+                { "gift_cards.transaction", typeof(GiftCards.Transaction) },
                 {
                     "identity.verification_report", typeof(
                         Identity.VerificationReport)
@@ -90,6 +110,7 @@ namespace Stripe
                 { "line_item", typeof(InvoiceLineItem) },
                 { "login_link", typeof(LoginLink) },
                 { "mandate", typeof(Mandate) },
+                { "order", typeof(Order) },
                 { "payment_intent", typeof(PaymentIntent) },
                 { "payment_link", typeof(PaymentLink) },
                 { "payment_method", typeof(PaymentMethod) },
@@ -100,6 +121,8 @@ namespace Stripe
                 { "product", typeof(Product) },
                 { "promotion_code", typeof(PromotionCode) },
                 { "quote", typeof(Quote) },
+                { "quote_line", typeof(QuoteLine) },
+                { "quote_phase", typeof(QuotePhase) },
                 {
                     "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning)
                 },
@@ -122,6 +145,10 @@ namespace Stripe
                 { "subscription", typeof(Subscription) },
                 { "subscription_item", typeof(SubscriptionItem) },
                 { "subscription_schedule", typeof(SubscriptionSchedule) },
+                { "tax.calculation", typeof(Tax.Calculation) },
+                { "tax.registration", typeof(Tax.Registration) },
+                { "tax.settings", typeof(Tax.Settings) },
+                { "tax.transaction", typeof(Tax.Transaction) },
                 { "tax_code", typeof(TaxCode) },
                 { "tax_id", typeof(TaxId) },
                 { "tax_rate", typeof(TaxRate) },

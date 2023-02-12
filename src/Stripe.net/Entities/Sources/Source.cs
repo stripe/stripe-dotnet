@@ -145,6 +145,9 @@ namespace Stripe
         [JsonProperty("p24")]
         public SourceP24 P24 { get; set; }
 
+        [JsonProperty("paypal")]
+        public SourcePaypal Paypal { get; set; }
+
         [JsonProperty("receiver")]
         public SourceReceiver Receiver { get; set; }
 
@@ -192,8 +195,8 @@ namespace Stripe
         /// One of: <c>ach_credit_transfer</c>, <c>ach_debit</c>, <c>acss_debit</c>, <c>alipay</c>,
         /// <c>au_becs_debit</c>, <c>bancontact</c>, <c>card</c>, <c>card_present</c>, <c>eps</c>,
         /// <c>giropay</c>, <c>ideal</c>, <c>klarna</c>, <c>multibanco</c>, <c>p24</c>,
-        /// <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>three_d_secure</c>, or
-        /// <c>wechat</c>.
+        /// <c>paypal</c>, <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>,
+        /// <c>three_d_secure</c>, or <c>wechat</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

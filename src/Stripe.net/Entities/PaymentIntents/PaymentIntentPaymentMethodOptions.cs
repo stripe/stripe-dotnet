@@ -38,6 +38,9 @@ namespace Stripe
         [JsonProperty("card_present")]
         public PaymentIntentPaymentMethodOptionsCardPresent CardPresent { get; set; }
 
+        [JsonProperty("cashapp")]
+        public PaymentIntentPaymentMethodOptionsCashapp Cashapp { get; set; }
+
         [JsonProperty("customer_balance")]
         public PaymentIntentPaymentMethodOptionsCustomerBalance CustomerBalance { get; set; }
 
@@ -76,6 +79,9 @@ namespace Stripe
 
         [JsonProperty("paynow")]
         public PaymentIntentPaymentMethodOptionsPaynow Paynow { get; set; }
+
+        [JsonProperty("paypal")]
+        public PaymentIntentPaymentMethodOptionsPaypal Paypal { get; set; }
 
         [JsonProperty("pix")]
         public PaymentIntentPaymentMethodOptionsPix Pix { get; set; }

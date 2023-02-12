@@ -111,6 +111,12 @@ namespace Stripe.Treasury
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Details about the network used for the OutboundTransfer.
+        /// </summary>
+        [JsonProperty("network_details")]
+        public OutboundTransferNetworkDetails NetworkDetails { get; set; }
+
+        /// <summary>
         /// Details about a returned OutboundTransfer. Only set when the status is <c>returned</c>.
         /// </summary>
         [JsonProperty("returned_details")]

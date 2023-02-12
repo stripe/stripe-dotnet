@@ -94,6 +94,12 @@ namespace Stripe.Treasury
         public string Network { get; set; }
 
         /// <summary>
+        /// Details specific to the money movement rails.
+        /// </summary>
+        [JsonProperty("network_details")]
+        public ReceivedCreditNetworkDetails NetworkDetails { get; set; }
+
+        /// <summary>
         /// Details describing when a ReceivedCredit may be reversed.
         /// </summary>
         [JsonProperty("reversal_details")]
