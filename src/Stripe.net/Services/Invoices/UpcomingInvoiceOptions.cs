@@ -16,6 +16,9 @@ namespace Stripe
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
 
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
         [JsonProperty("customer")]
         public string Customer { get; set; }
 
@@ -34,6 +37,9 @@ namespace Stripe
         [JsonProperty("schedule")]
         public string Schedule { get; set; }
 
+        [JsonProperty("subscription")]
+        public string Subscription { get; set; }
+
         [JsonProperty("subscription_billing_cycle_anchor")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, SubscriptionBillingCycleAnchor> SubscriptionBillingCycleAnchor { get; set; }
@@ -51,9 +57,6 @@ namespace Stripe
         [JsonProperty("subscription_default_tax_rates")]
         public List<string> SubscriptionDefaultTaxRates { get; set; }
 
-        [JsonProperty("subscription")]
-        public string Subscription { get; set; }
-
         [JsonProperty("subscription_items")]
         public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
 
@@ -67,6 +70,10 @@ namespace Stripe
         [JsonProperty("subscription_proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? SubscriptionProrationDate { get; set; }
+
+        [JsonProperty("subscription_resume_at")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, UpcomingInvoiceSubscriptionResumeAt> SubscriptionResumeAt { get; set; }
 
         [JsonProperty("subscription_start_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
