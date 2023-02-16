@@ -18,7 +18,7 @@ namespace Stripe.Checkout
     /// href="https://stripe.com/docs/api/payment_intents">PaymentIntent</a> or an active <a
     /// href="https://stripe.com/docs/api/subscriptions">Subscription</a>.
     ///
-    /// You can create a Checkout Session on your server and pass its ID to the client to begin
+    /// You can create a Checkout Session on your server and redirect to its URL to begin
     /// Checkout.
     ///
     /// Related guide: <a href="https://stripe.com/docs/checkout/quickstart">Checkout
@@ -27,8 +27,7 @@ namespace Stripe.Checkout
     public class Session : StripeEntity<Session>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the object. Used to pass to <c>redirectToCheckout</c> in
-        /// Stripe.js.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -114,6 +113,13 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// Collect additional information from your customer using custom fields. Up to 2 fields
+        /// are supported.
+        /// </summary>
+        [JsonProperty("custom_fields")]
+        public List<SessionCustomField> CustomFields { get; set; }
 
         [JsonProperty("custom_text")]
         public SessionCustomText CustomText { get; set; }

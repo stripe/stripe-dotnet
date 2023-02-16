@@ -6,7 +6,10 @@ namespace Stripe
     public class SubscriptionSchedulePhaseItemBillingThresholdsOptions : INestedOptions
     {
         /// <summary>
-        /// Usage threshold that triggers the subscription to advance to a new billing period.
+        /// Number of units that meets the billing threshold to advance the subscription to a new
+        /// billing period (e.g., it takes 10 $5 units to meet a $50 <a
+        /// href="https://stripe.com/docs/api/subscriptions/update#update_subscription-billing_thresholds-amount_gte">monetary
+        /// threshold</a>).
         /// </summary>
         [JsonProperty("usage_gte")]
         public long? UsageGte { get; set; }
