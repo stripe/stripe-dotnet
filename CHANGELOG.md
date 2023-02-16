@@ -1,5 +1,15 @@
 # Changelog
 
+## 41.7.0 - 2023-02-16
+* [#2643](https://github.com/stripe/stripe-dotnet/pull/2643) API Updates
+  * Add support for `RefundPayment` method on resource `Terminal.Reader`
+  * Add support for `CustomFields` on `CheckoutSessionCreateOptions`, `CheckoutSession`, `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
+  * Add support for `InteracPresent` on `TestHelpersTerminalReaderPresentPaymentMethodOptions`
+  * Change type of `TerminalReaderTypeOptions` from `literal('card_present')` to `enum('card_present'|'interac_present')`
+  * Add support for `RefundPayment` on `TerminalReaderAction`
+  * Update `ShippingAddress` on `SessionCustomTextOptions` and `PaymentLinkCustomTextOptions` to use `SessionCustomTextShippingAddressOptions` and `PaymentLinkCustomTextShippingAddressOptions` instead of shared `AddressOptions`. This did not work before and did not align with the API definitions (extension of https://github.com/stripe/stripe-dotnet/pull/2644).
+* [#2646](https://github.com/stripe/stripe-dotnet/pull/2646) Add missing parameters to the Upcoming Invoice API
+
 ## 41.6.0 - 2023-02-02
 * [#2640](https://github.com/stripe/stripe-dotnet/pull/2640) API Updates
   * Add support for `Resume` method on resource `Subscription`
