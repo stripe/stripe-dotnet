@@ -20,5 +20,11 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// A custom order or sale identifier, such as 'myOrder_123'.
+        /// </summary>
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
     }
 }

@@ -11,7 +11,6 @@
   * Add support for `StatusDetails` and `Status` on `FinancialConnectionsSession`
   * Add support for `AccountNumber` on `PaymentMethodUsBankAccount`
   * Remove support for `Id` on `QuoteLinesStartsAtLineEndsAtOptions`
-  
 
 ## 41.6.0 - 2023-02-02
 * [#2640](https://github.com/stripe/stripe-dotnet/pull/2640) API Updates
