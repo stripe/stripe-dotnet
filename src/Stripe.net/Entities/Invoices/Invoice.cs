@@ -581,7 +581,9 @@ namespace Stripe
 
         /// <summary>
         /// The individual line items that make up the invoice. <c>lines</c> is sorted as follows:
-        /// invoice items in reverse chronological order, followed by the subscription, if any.
+        /// (1) pending invoice items (including prorations) in reverse chronological order, (2)
+        /// subscription items in reverse chronological order, and (3) invoice items added after
+        /// invoice creation in chronological order.
         /// </summary>
         [JsonProperty("lines")]
         public StripeList<InvoiceLineItem> Lines { get; set; }

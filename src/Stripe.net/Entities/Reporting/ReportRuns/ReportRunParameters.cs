@@ -27,14 +27,18 @@ namespace Stripe.Reporting
         public string Currency { get; set; }
 
         /// <summary>
-        /// Ending timestamp of data to be included in the report run (exclusive).
+        /// Ending timestamp of data to be included in the report run. Can be any UTC timestamp
+        /// between 1 second after the user specified <c>interval_start</c> and 1 second before this
+        /// report's last <c>data_available_end</c> value.
         /// </summary>
         [JsonProperty("interval_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime IntervalEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Starting timestamp of data to be included in the report run.
+        /// Starting timestamp of data to be included in the report run. Can be any UTC timestamp
+        /// between 1 second after this report's <c>data_available_start</c> and 1 second before the
+        /// user specified <c>interval_end</c> value.
         /// </summary>
         [JsonProperty("interval_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

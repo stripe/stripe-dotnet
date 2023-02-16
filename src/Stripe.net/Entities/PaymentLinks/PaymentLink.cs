@@ -86,6 +86,13 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        /// <summary>
+        /// Collect additional information from your customer using custom fields. Up to 2 fields
+        /// are supported.
+        /// </summary>
+        [JsonProperty("custom_fields")]
+        public List<PaymentLinkCustomField> CustomFields { get; set; }
+
         [JsonProperty("custom_text")]
         public PaymentLinkCustomText CustomText { get; set; }
 

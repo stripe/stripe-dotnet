@@ -152,7 +152,9 @@ namespace Stripe
 
         /// <summary>
         /// If the refund failed, the reason for refund failure if known. Possible values are
-        /// <c>lost_or_stolen_card</c>, <c>expired_or_canceled_card</c>, or <c>unknown</c>.
+        /// <c>lost_or_stolen_card</c>, <c>expired_or_canceled_card</c>,
+        /// <c>charge_for_pending_refund_disputed</c>, <c>insufficient_funds</c>, <c>declined</c>,
+        /// <c>merchant_request</c> or <c>unknown</c>.
         /// </summary>
         [JsonProperty("failure_reason")]
         public string FailureReason { get; set; }
