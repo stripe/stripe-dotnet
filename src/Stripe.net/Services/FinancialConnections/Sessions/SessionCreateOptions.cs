@@ -19,6 +19,12 @@ namespace Stripe.FinancialConnections
         public SessionFiltersOptions Filters { get; set; }
 
         /// <summary>
+        /// Settings for configuring Session-specific limits.
+        /// </summary>
+        [JsonProperty("limits")]
+        public SessionLimitsOptions Limits { get; set; }
+
+        /// <summary>
         /// Settings for configuring manual entry of account details for this Session.
         /// </summary>
         [JsonProperty("manual_entry")]

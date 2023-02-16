@@ -42,12 +42,6 @@ namespace Stripe.Tax
         public bool? Preview { get; set; }
 
         /// <summary>
-        /// A custom order or sale identifier, such as 'myOrder_123'.
-        /// </summary>
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        /// <summary>
         /// Timestamp of date at which the tax rules and rates in effect applies for the
         /// calculation. Measured in seconds since the Unix epoch.
         /// </summary>

@@ -69,12 +69,6 @@ namespace Stripe.Tax
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A custom unique identifier, such as 'myOrder_123'.
-        /// </summary>
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        /// <summary>
         /// The amount of tax to be collected on top of the line item prices.
         /// </summary>
         [JsonProperty("tax_amount_exclusive")]

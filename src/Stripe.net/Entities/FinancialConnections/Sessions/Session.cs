@@ -43,6 +43,9 @@ namespace Stripe.FinancialConnections
         [JsonProperty("filters")]
         public SessionFilters Filters { get; set; }
 
+        [JsonProperty("limits")]
+        public SessionLimits Limits { get; set; }
+
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
