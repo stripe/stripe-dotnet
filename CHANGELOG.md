@@ -1,5 +1,14 @@
 # Changelog
 
+## 41.8.0-beta.1 - 2023-02-16
+* [#2647](https://github.com/stripe/stripe-dotnet/pull/2647) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `CurrencyConversion` on `CheckoutSession`
+  * Add support for `Limits` on `FinancialConnectionsSessionCreateOptions` and `FinancialConnectionsSession`
+  * Remove support for `Enabled` on `FinancialConnectionsSessionManualEntryOptions`
+  * Remove support for `Reference` on `TaxCalculationCreateOptions` and `TaxCalculation`
+  * Add support for `Reference` on `TaxTransactionCreateOptions`
+
 ## 41.7.0-beta.1 - 2023-02-02
 * [#2642](https://github.com/stripe/stripe-dotnet/pull/2642) API Updates for beta branch
   * Updated stable APIs to the latest version
