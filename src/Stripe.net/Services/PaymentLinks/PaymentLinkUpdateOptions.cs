@@ -39,6 +39,13 @@ namespace Stripe
         public string BillingAddressCollection { get; set; }
 
         /// <summary>
+        /// Collect additional information from your customer using custom fields. Up to 2 fields
+        /// are supported.
+        /// </summary>
+        [JsonProperty("custom_fields")]
+        public List<PaymentLinkCustomFieldOptions> CustomFields { get; set; }
+
+        /// <summary>
         /// Display additional text for your customers using custom text.
         /// </summary>
         [JsonProperty("custom_text")]
