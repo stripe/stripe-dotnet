@@ -8,14 +8,15 @@ namespace Stripe
     public class InvoiceItemPeriodOptions : INestedOptions
     {
         /// <summary>
-        /// The end of the period, which must be greater than or equal to the start.
+        /// The end of the period, which must be greater than or equal to the start. This value is
+        /// inclusive.
         /// </summary>
         [JsonProperty("end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? End { get; set; }
 
         /// <summary>
-        /// The start of the period.
+        /// The start of the period. This value is inclusive.
         /// </summary>
         [JsonProperty("start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
