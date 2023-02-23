@@ -202,7 +202,8 @@ namespace Stripe.Issuing
         public CardSpendingControls SpendingControls { get; set; }
 
         /// <summary>
-        /// Whether authorizations can be approved on this card.
+        /// Whether authorizations can be approved on this card. May be blocked from activating
+        /// cards depending on past-due Cardholder requirements. Defaults to <c>inactive</c>.
         /// One of: <c>active</c>, <c>canceled</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]

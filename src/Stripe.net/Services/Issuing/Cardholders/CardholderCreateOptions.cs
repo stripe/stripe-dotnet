@@ -74,7 +74,9 @@ namespace Stripe.Issuing
         public string Status { get; set; }
 
         /// <summary>
-        /// One of <c>individual</c> or <c>company</c>.
+        /// One of <c>individual</c> or <c>company</c>. See <a
+        /// href="https://stripe.com/docs/issuing/other/choose-cardholder">Choose a cardholder
+        /// type</a> for more details.
         /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
         [JsonProperty("type")]
