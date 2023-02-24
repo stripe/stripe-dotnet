@@ -6,7 +6,7 @@ namespace Stripe.TestHelpers.Terminal
     public class ReaderCardPresentOptions : INestedOptions
     {
         /// <summary>
-        /// Card Number.
+        /// The card number, as a string without any separators.
         /// </summary>
         [JsonProperty("number")]
         public string Number { get; set; }
