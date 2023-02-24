@@ -37,9 +37,10 @@ namespace Stripe.Issuing
         public CardSpendingControlsOptions SpendingControls { get; set; }
 
         /// <summary>
-        /// Dictates whether authorizations can be approved on this card. If this card is being
-        /// canceled because it was lost or stolen, this information should be provided as
-        /// <c>cancellation_reason</c>.
+        /// Dictates whether authorizations can be approved on this card. May be blocked from
+        /// activating cards depending on past-due Cardholder requirements. Defaults to
+        /// <c>inactive</c>. If this card is being canceled because it was lost or stolen, this
+        /// information should be provided as <c>cancellation_reason</c>.
         /// One of: <c>active</c>, <c>canceled</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]

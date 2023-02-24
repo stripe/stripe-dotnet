@@ -1257,6 +1257,17 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestInvoiceServiceRetrieve2()
+        {
+            var options = new InvoiceGetOptions
+            {
+                Expand = new List<string> { "customer" },
+            };
+            var service = new InvoiceService(this.StripeClient);
+            service.Get("in_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
         public void TestInvoiceServiceSearch()
         {
             var options = new InvoiceSearchOptions
