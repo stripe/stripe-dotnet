@@ -1,5 +1,10 @@
 # Changelog
 
+## 41.8.0-beta.2 - 2023-02-23
+* [#2649](https://github.com/stripe/stripe-dotnet/pull/2649) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `ManualEntry` on `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnections`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, and `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections`
+
 ## 41.8.0-beta.1 - 2023-02-16
 * [#2647](https://github.com/stripe/stripe-dotnet/pull/2647) API Updates for beta branch
   * Updated stable APIs to the latest version
