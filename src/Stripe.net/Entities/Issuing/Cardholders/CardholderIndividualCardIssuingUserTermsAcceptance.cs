@@ -9,13 +9,15 @@ namespace Stripe.Issuing
     {
         /// <summary>
         /// The Unix timestamp marking when the cardholder accepted the Authorized User Terms.
+        /// Required for Celtic Spend Card users.
         /// </summary>
         [JsonProperty("date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Date { get; set; }
 
         /// <summary>
-        /// The IP address from which the cardholder accepted the Authorized User Terms.
+        /// The IP address from which the cardholder accepted the Authorized User Terms. Required
+        /// for Celtic Spend Card users.
         /// </summary>
         [JsonProperty("ip")]
         public string Ip { get; set; }
