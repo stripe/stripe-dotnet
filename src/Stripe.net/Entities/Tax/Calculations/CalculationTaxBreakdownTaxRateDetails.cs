@@ -26,8 +26,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The tax type, such as <c>vat</c> or <c>sales_tax</c>.
-        /// One of: <c>gst</c>, <c>hst</c>, <c>jct</c>, <c>pst</c>, <c>qst</c>, <c>rst</c>,
-        /// <c>sales_tax</c>, or <c>vat</c>.
+        /// One of: <c>gst</c>, <c>hst</c>, <c>igst</c>, <c>jct</c>, <c>pst</c>, <c>qst</c>,
+        /// <c>rst</c>, <c>sales_tax</c>, or <c>vat</c>.
         /// </summary>
         [JsonProperty("tax_type")]
         public string TaxType { get; set; }
