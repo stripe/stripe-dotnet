@@ -91,7 +91,7 @@ jobs:
           pullRequestId: ${{ github.event.pull_request.number }}
 
       - name: Pack
-        run: dotnet pack src -c Release --no-build --output nuget
+        run: dotnet pack src/Stripe.net -c Release --no-build --output nuget
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v2
         with:
