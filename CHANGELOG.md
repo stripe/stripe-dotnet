@@ -1,5 +1,10 @@
 # Changelog
 
+## 41.8.0 - 2023-03-02
+* [#2651](https://github.com/stripe/stripe-dotnet/pull/2651) API Updates
+  * Add support for `ReconciliationStatus` on `Payout`
+* [#2648](https://github.com/stripe/stripe-dotnet/pull/2648) API Updates
+
 ## 41.8.0-beta.2 - 2023-02-23
 * [#2649](https://github.com/stripe/stripe-dotnet/pull/2649) API Updates for beta branch
   * Updated stable APIs to the latest version
