@@ -1,5 +1,14 @@
 # Changelog
 
+## 41.9.0-beta.1 - 2023-03-02
+* [#2653](https://github.com/stripe/stripe-dotnet/pull/2653) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for new resources `Issuing.CardBundle` and `Issuing.CardDesign`
+  * Add support for `Get` and `List` methods on resource `CardBundle`
+  * Add support for `Get`, `List`, and `Update` methods on resource `CardDesign`
+  * Remove support for `Controller` on `AccountUpdateOptions`
+  * Add support for `CardDesign` on `IssuingCardCreateOptions` and `IssuingCard`
+
 ## 41.8.0 - 2023-03-02
 * [#2651](https://github.com/stripe/stripe-dotnet/pull/2651) API Updates
   * Add support for `ReconciliationStatus` on `Payout`
