@@ -45,12 +45,6 @@ namespace Stripe
         public AccountCompanyOptions Company { get; set; }
 
         /// <summary>
-        /// The configuration of the account when using unified accounts.
-        /// </summary>
-        [JsonProperty("controller")]
-        public AccountControllerOptions Controller { get; set; }
-
-        /// <summary>
         /// Three-letter ISO currency code representing the default currency for the account. This
         /// must be a currency that <a href="https://stripe.com/docs/payouts">Stripe supports in the
         /// account's country</a>.

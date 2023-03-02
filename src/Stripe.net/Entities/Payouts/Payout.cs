@@ -242,6 +242,16 @@ namespace Stripe
         internal ExpandableField<Payout> InternalOriginalPayout { get; set; }
         #endregion
 
+        /// <summary>
+        /// If <c>completed</c>, the <a
+        /// href="https://stripe.com/docs/api/balance_transactions/list#balance_transaction_list-payout">Balance
+        /// Transactions API</a> may be used to list all Balance Transactions that were paid out in
+        /// this payout.
+        /// One of: <c>completed</c>, <c>in_progress</c>, or <c>not_applicable</c>.
+        /// </summary>
+        [JsonProperty("reconciliation_status")]
+        public string ReconciliationStatus { get; set; }
+
         #region Expandable ReversedBy
 
         /// <summary>
