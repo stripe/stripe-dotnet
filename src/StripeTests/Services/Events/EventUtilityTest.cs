@@ -54,7 +54,10 @@ namespace StripeTests
             var exception = Assert.Throws<StripeException>(() =>
                 EventUtility.ConstructEvent(this.json + "this_changes_the_json", this.signature, this.secret));
 
-            Assert.Equal("The signature for the webhook is not present in the Stripe-Signature header.", exception.Message);
+            Assert.Equal(
+                "The expected signature was not found in the Stripe-Signature header. " +
+                "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.",
+                exception.Message);
         }
 
         [Fact]
