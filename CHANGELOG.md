@@ -1,5 +1,11 @@
 # Changelog
 
+## 41.8.0 - 2023-03-02
+* [#2651](https://github.com/stripe/stripe-dotnet/pull/2651) API Updates
+  * Add support for `ReconciliationStatus` on `Payout`
+* [#2648](https://github.com/stripe/stripe-dotnet/pull/2648) API Updates
+
+
 ## 41.7.0 - 2023-02-16
 * [#2643](https://github.com/stripe/stripe-dotnet/pull/2643) API Updates
   * Add support for `RefundPayment` method on resource `Terminal.Reader`
