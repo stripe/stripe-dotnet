@@ -6,6 +6,12 @@ namespace Stripe
     public class SubscriptionCancelOptions : BaseOptions
     {
         /// <summary>
+        /// Details about why this subscription was cancelled.
+        /// </summary>
+        [JsonProperty("cancellation_details")]
+        public SubscriptionCancellationDetailsOptions CancellationDetails { get; set; }
+
+        /// <summary>
         /// Will generate a final invoice that invoices for any un-invoiced metered usage and
         /// new/pending proration invoice items.
         /// </summary>

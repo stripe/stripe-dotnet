@@ -9,7 +9,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// If <c>disabled_reason</c> is present, all cards will decline authorizations with
         /// <c>cardholder_verification_required</c> reason.
-        /// One of: <c>listed</c>, <c>rejected.listed</c>, or <c>under_review</c>.
+        /// One of: <c>listed</c>, <c>rejected.listed</c>, <c>requirements.past_due</c>, or
+        /// <c>under_review</c>.
         /// </summary>
         [JsonProperty("disabled_reason")]
         public string DisabledReason { get; set; }
