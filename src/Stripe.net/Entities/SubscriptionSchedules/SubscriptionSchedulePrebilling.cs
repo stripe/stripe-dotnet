@@ -51,5 +51,13 @@ namespace Stripe
         [JsonProperty("period_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime PeriodStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Whether to cancel or preserve <c>prebilling</c> if the subscription is updated during
+        /// the prebilled period.
+        /// One of: <c>prebill</c>, or <c>reset</c>.
+        /// </summary>
+        [JsonProperty("update_behavior")]
+        public string UpdateBehavior { get; set; }
     }
 }

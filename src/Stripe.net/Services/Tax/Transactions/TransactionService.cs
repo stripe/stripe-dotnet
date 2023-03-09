@@ -71,25 +71,5 @@ namespace Stripe.Tax
         {
             return this.ListRequestAutoPagingAsync<LineItem>($"{this.InstanceUrl(id)}/line_items", options, requestOptions, cancellationToken);
         }
-
-        public virtual StripeList<Transaction> ListTransactions(TransactionListTransactionsOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<StripeList<Transaction>>(HttpMethod.Get, $"{this.InstanceUrl("undefined")}", options, requestOptions);
-        }
-
-        public virtual Task<StripeList<Transaction>> ListTransactionsAsync(TransactionListTransactionsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<StripeList<Transaction>>(HttpMethod.Get, $"{this.InstanceUrl("undefined")}", options, requestOptions, cancellationToken);
-        }
-
-        public virtual IEnumerable<Transaction> ListTransactionsAutoPaging(TransactionListTransactionsOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<Transaction>($"{this.InstanceUrl("undefined")}", options, requestOptions);
-        }
-
-        public virtual IAsyncEnumerable<Transaction> ListTransactionsAutoPagingAsync(TransactionListTransactionsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<Transaction>($"{this.InstanceUrl("undefined")}", options, requestOptions, cancellationToken);
-        }
     }
 }

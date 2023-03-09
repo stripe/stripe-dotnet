@@ -59,9 +59,6 @@ namespace Stripe
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
-        /// <summary>
-        /// Details to identify the subscription schedule the quote line applies to.
-        /// </summary>
         [JsonProperty("applies_to")]
         public SubscriptionScheduleAppliesTo AppliesTo { get; set; }
 
