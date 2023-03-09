@@ -1,5 +1,11 @@
 # Changelog
 
+## 41.9.0 - 2023-03-09
+* [#2654](https://github.com/stripe/stripe-dotnet/pull/2654) API Updates
+  * Add support for `CardIssuing` on `IssuingCardholderIndividualOptions`
+  * Add support for `CancellationDetails` on `SubscriptionCancelOptions`, `SubscriptionUpdateOptions`, and `Subscription`
+* [#2652](https://github.com/stripe/stripe-dotnet/pull/2652) Improve webhook error
+
 ## 41.8.0 - 2023-03-02
 * [#2651](https://github.com/stripe/stripe-dotnet/pull/2651) API Updates
   * Add support for `ReconciliationStatus` on `Payout`
