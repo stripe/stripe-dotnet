@@ -3,7 +3,7 @@ namespace Stripe.Tax
 {
     using Newtonsoft.Json;
 
-    public class CalculationTaxBreakdown : StripeEntity<CalculationTaxBreakdown>
+    public class CalculationTaxSummary : StripeEntity<CalculationTaxSummary>
     {
         /// <summary>
         /// The amount of tax, in integer cents.
@@ -18,7 +18,7 @@ namespace Stripe.Tax
         public bool Inclusive { get; set; }
 
         [JsonProperty("tax_rate_details")]
-        public CalculationTaxBreakdownTaxRateDetails TaxRateDetails { get; set; }
+        public CalculationTaxSummaryTaxRateDetails TaxRateDetails { get; set; }
 
         /// <summary>
         /// The amount on which tax is calculated, in integer cents.

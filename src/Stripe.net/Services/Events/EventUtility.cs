@@ -152,7 +152,8 @@ namespace Stripe
             if (!IsSignaturePresent(signature, signatureItems["v1"]))
             {
                 throw new StripeException(
-                    "The signature for the webhook is not present in the Stripe-Signature header.");
+                    "The expected signature was not found in the Stripe-Signature header. " +
+                    "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.");
             }
 
             var webhookUtc = Convert.ToInt32(signatureItems["t"].FirstOrDefault());

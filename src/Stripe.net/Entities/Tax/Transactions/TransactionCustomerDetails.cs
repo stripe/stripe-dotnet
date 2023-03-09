@@ -30,5 +30,12 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("tax_ids")]
         public List<TransactionCustomerDetailsTaxId> TaxIds { get; set; }
+
+        /// <summary>
+        /// The taxability override used for taxation.
+        /// One of: <c>customer_exempt</c>, <c>none</c>, or <c>reverse_charge</c>.
+        /// </summary>
+        [JsonProperty("taxability_override")]
+        public string TaxabilityOverride { get; set; }
     }
 }

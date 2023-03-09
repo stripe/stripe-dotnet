@@ -81,17 +81,17 @@ namespace Stripe.Tax
         public long TaxAmountInclusive { get; set; }
 
         /// <summary>
-        /// Breakdown of individual tax amounts that add up to the total.
-        /// </summary>
-        [JsonProperty("tax_breakdown")]
-        public List<CalculationTaxBreakdown> TaxBreakdown { get; set; }
-
-        /// <summary>
         /// Timestamp of date at which the tax rules and rates in effect applies for the
         /// calculation.
         /// </summary>
         [JsonProperty("tax_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime TaxDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Summary of individual tax amounts that add up to the total.
+        /// </summary>
+        [JsonProperty("tax_summary")]
+        public List<CalculationTaxSummary> TaxSummary { get; set; }
     }
 }
