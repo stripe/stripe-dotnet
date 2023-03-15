@@ -102,6 +102,14 @@ namespace Stripe
         public string CartesBancairesPayments { get; set; }
 
         /// <summary>
+        /// The status of the Cash App Pay capability of the account, or whether the account can
+        /// directly process Cash App Pay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("cashapp_payments")]
+        public string CashappPayments { get; set; }
+
+        /// <summary>
         /// The status of the EPS payments capability of the account, or whether the account can
         /// directly process EPS charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

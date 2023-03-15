@@ -3,19 +3,19 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentIntentPaymentMethodOptionsAffirm : StripeEntity<PaymentIntentPaymentMethodOptionsAffirm>
+    public class PaymentIntentPaymentMethodOptionsCashappOptions : INestedOptions
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
+        ///
+        /// If provided, this parameter will override the top-level <c>capture_method</c> when
+        /// finalizing the payment with this payment method type.
+        ///
+        /// If <c>capture_method</c> is already set on the PaymentIntent, providing an empty value
+        /// for this parameter will unset the stored value for this payment method type.
         /// </summary>
         [JsonProperty("capture_method")]
         public string CaptureMethod { get; set; }
-
-        /// <summary>
-        /// Preferred language of the Affirm authorization page that the customer is redirected to.
-        /// </summary>
-        [JsonProperty("preferred_locale")]
-        public string PreferredLocale { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
@@ -32,6 +32,10 @@ namespace Stripe
         /// When processing card payments, Stripe also uses <c>setup_future_usage</c> to dynamically
         /// optimize your payment flow and comply with regional legislation and network rules, such
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
+        ///
+        /// If <c>setup_future_usage</c> is already set and you are performing a request using a
+        /// publishable key, you may only update the value from <c>on_session</c> to
+        /// <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
