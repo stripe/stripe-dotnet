@@ -175,24 +175,24 @@ namespace Stripe
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/mark_stale", options, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<InvoiceLineItem> PreviewInvoiceLines(string id, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null)
+        public virtual StripeList<InvoiceLineItem> PreviewInvoiceLines(string id, string preview_invoice, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoice_lines", options, requestOptions);
+            return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoices/{preview_invoice}/lines", options, requestOptions);
         }
 
-        public virtual Task<StripeList<InvoiceLineItem>> PreviewInvoiceLinesAsync(string id, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<StripeList<InvoiceLineItem>> PreviewInvoiceLinesAsync(string id, string preview_invoice, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoice_lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoices/{preview_invoice}/lines", options, requestOptions, cancellationToken);
         }
 
-        public virtual IEnumerable<InvoiceLineItem> PreviewInvoiceLinesAutoPaging(string id, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null)
+        public virtual IEnumerable<InvoiceLineItem> PreviewInvoiceLinesAutoPaging(string id, string preview_invoice, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl(id)}/preview_invoice_lines", options, requestOptions);
+            return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl(id)}/preview_invoices/{preview_invoice}/lines", options, requestOptions);
         }
 
-        public virtual IAsyncEnumerable<InvoiceLineItem> PreviewInvoiceLinesAutoPagingAsync(string id, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual IAsyncEnumerable<InvoiceLineItem> PreviewInvoiceLinesAutoPagingAsync(string id, string preview_invoice, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"{this.InstanceUrl(id)}/preview_invoice_lines", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"{this.InstanceUrl(id)}/preview_invoices/{preview_invoice}/lines", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Invoice> PreviewInvoices(string id, QuotePreviewInvoicesOptions options = null, RequestOptions requestOptions = null)

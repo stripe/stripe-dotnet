@@ -29,6 +29,9 @@ namespace Stripe
         [JsonProperty("card_present")]
         public SetupAttemptPaymentMethodDetailsCardPresent CardPresent { get; set; }
 
+        [JsonProperty("cashapp")]
+        public SetupAttemptPaymentMethodDetailsCashapp Cashapp { get; set; }
+
         [JsonProperty("ideal")]
         public SetupAttemptPaymentMethodDetailsIdeal Ideal { get; set; }
 
@@ -37,6 +40,9 @@ namespace Stripe
 
         [JsonProperty("link")]
         public SetupAttemptPaymentMethodDetailsLink Link { get; set; }
+
+        [JsonProperty("paypal")]
+        public SetupAttemptPaymentMethodDetailsPaypal Paypal { get; set; }
 
         [JsonProperty("sepa_debit")]
         public SetupAttemptPaymentMethodDetailsSepaDebit SepaDebit { get; set; }
