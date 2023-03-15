@@ -15,8 +15,7 @@ namespace Stripe
     /// href="https://stripe.com/docs/api/events/types#event_types-checkout.session.completed">checkout
     /// session events</a> to track payments through payment links.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/payments/payment-links/api">Payment
-    /// Links API</a>.
+    /// Related guide: <a href="https://stripe.com/docs/payment-links">Payment Links API</a>.
     /// </summary>
     public class PaymentLink : StripeEntity<PaymentLink>, IHasId, IHasMetadata, IHasObject
     {

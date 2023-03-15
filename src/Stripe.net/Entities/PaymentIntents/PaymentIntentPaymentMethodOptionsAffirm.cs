@@ -12,6 +12,12 @@ namespace Stripe
         public string CaptureMethod { get; set; }
 
         /// <summary>
+        /// Preferred language of the Affirm authorization page that the customer is redirected to.
+        /// </summary>
+        [JsonProperty("preferred_locale")]
+        public string PreferredLocale { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///

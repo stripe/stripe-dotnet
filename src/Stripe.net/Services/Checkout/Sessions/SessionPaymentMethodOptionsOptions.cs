@@ -60,6 +60,12 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsCardOptions Card { get; set; }
 
         /// <summary>
+        /// contains details about the Cashapp Pay payment method options.
+        /// </summary>
+        [JsonProperty("cashapp")]
+        public SessionPaymentMethodOptionsCashappOptions Cashapp { get; set; }
+
+        /// <summary>
         /// contains details about the Customer Balance payment method options.
         /// </summary>
         [JsonProperty("customer_balance")]

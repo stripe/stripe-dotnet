@@ -2,7 +2,6 @@
 namespace Stripe.Capital
 {
     using System.Collections.Generic;
-    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -50,16 +49,6 @@ namespace Stripe.Capital
         public virtual IAsyncEnumerable<FinancingOffer> ListAutoPagingAsync(FinancingOfferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
-        }
-
-        public virtual FinancingOffer MarkDelivered(string id, FinancingOfferMarkDeliveredOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/mark_delivered", options, requestOptions);
-        }
-
-        public virtual Task<FinancingOffer> MarkDeliveredAsync(string id, FinancingOfferMarkDeliveredOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/mark_delivered", options, requestOptions, cancellationToken);
         }
     }
 }
