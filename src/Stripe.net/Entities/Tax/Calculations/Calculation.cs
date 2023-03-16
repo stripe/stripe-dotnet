@@ -69,6 +69,12 @@ namespace Stripe.Tax
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// The shipping cost details for the calculation.
+        /// </summary>
+        [JsonProperty("shipping_cost")]
+        public CalculationShippingCost ShippingCost { get; set; }
+
+        /// <summary>
         /// The amount of tax to be collected on top of the line item prices.
         /// </summary>
         [JsonProperty("tax_amount_exclusive")]

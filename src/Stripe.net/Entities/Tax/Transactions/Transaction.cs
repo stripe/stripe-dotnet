@@ -82,6 +82,12 @@ namespace Stripe.Tax
         public TransactionReversal Reversal { get; set; }
 
         /// <summary>
+        /// The shipping cost details for the transaction.
+        /// </summary>
+        [JsonProperty("shipping_cost")]
+        public TransactionShippingCost ShippingCost { get; set; }
+
+        /// <summary>
         /// Timestamp of date at which the tax rules and rates in effect applies for the
         /// calculation.
         /// </summary>

@@ -22,8 +22,8 @@ namespace Stripe.Tax
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// If <c>partial</c>, the provided line item amounts are reversed. If <c>full</c>, the
-        /// original transaction is fully reversed.
+        /// If <c>partial</c>, the provided line item or shipping cost amounts are reversed. If
+        /// <c>full</c>, the original transaction is fully reversed.
         /// One of: <c>full</c>, or <c>partial</c>.
         /// </summary>
         [JsonProperty("mode")]
@@ -41,5 +41,11 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("reference")]
         public string Reference { get; set; }
+
+        /// <summary>
+        /// The shipping cost to reverse.
+        /// </summary>
+        [JsonProperty("shipping_cost")]
+        public TransactionShippingCostOptions ShippingCost { get; set; }
     }
 }
