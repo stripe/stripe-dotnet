@@ -1,5 +1,15 @@
 # Changelog
 
+## 41.11.0-beta.1 - 2023-03-16
+* [#2658](https://github.com/stripe/stripe-dotnet/pull/2658) API Updates
+  * Add support for `CreateFromCalculation` method on resource `Tax.Transaction`
+  * Add support for `Paypal` on `MandatePaymentMethodDetails`, `SetupAttemptPaymentMethodDetails`, `SetupIntentPaymentMethodOptionsOptions`, and `SetupIntentPaymentMethodOptions`
+  * Add support for `SetupFutureUsage` on `OrderPaymentSettingsPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypal`, `PaymentIntentPaymentMethodOptionsPaypalOptions`, and `PaymentIntentPaymentMethodOptionsPaypal`
+  * Remove support for `AppliesTo` on `QuotePreviewInvoiceLinesOptions`
+  * Add support for `ShippingCost` on `TaxCalculationCreateOptions`, `TaxCalculation`, `TaxTransactionCreateReversalOptions`, and `TaxTransaction`
+  * Add support for `TaxBreakdown` on `TaxCalculation`
+  * Remove support for `TaxSummary` on `TaxCalculation`
+
 ## 41.10.0-beta.1 - 2023-03-09
 * [#2655](https://github.com/stripe/stripe-dotnet/pull/2655) API Updates for beta branch
   * Updated stable APIs to the latest version
