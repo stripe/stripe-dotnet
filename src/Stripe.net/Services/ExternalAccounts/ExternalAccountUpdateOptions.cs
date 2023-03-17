@@ -70,6 +70,12 @@ namespace Stripe
         public bool? DefaultForCurrency { get; set; }
 
         /// <summary>
+        /// Documents that may be submitted to satisfy various informational requests.
+        /// </summary>
+        [JsonProperty("documents")]
+        public ExternalAccountDocumentsOptions Documents { get; set; }
+
+        /// <summary>
         /// Two digit number representing the card’s expiration month.
         /// </summary>
         [JsonProperty("exp_month")]

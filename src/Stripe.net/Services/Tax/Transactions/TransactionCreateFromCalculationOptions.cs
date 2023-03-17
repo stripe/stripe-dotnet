@@ -4,13 +4,13 @@ namespace Stripe.Tax
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class TransactionCreateOptions : BaseOptions, IHasMetadata
+    public class TransactionCreateFromCalculationOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Tax Calculation ID to be used as input when creating the transaction.
         /// </summary>
-        [JsonProperty("from_calculation")]
-        public string FromCalculation { get; set; }
+        [JsonProperty("calculation")]
+        public string Calculation { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can

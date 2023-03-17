@@ -32,6 +32,9 @@ namespace Stripe.Checkout
         [JsonProperty("card")]
         public SessionPaymentMethodOptionsCard Card { get; set; }
 
+        [JsonProperty("cashapp")]
+        public SessionPaymentMethodOptionsCashapp Cashapp { get; set; }
+
         [JsonProperty("customer_balance")]
         public SessionPaymentMethodOptionsCustomerBalance CustomerBalance { get; set; }
 

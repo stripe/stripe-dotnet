@@ -13,7 +13,7 @@ namespace Stripe.Tax
         public AddressOptions Address { get; set; }
 
         /// <summary>
-        /// The type of customer address provided. Required when using <c>address</c>.
+        /// The type of customer address provided.
         /// One of: <c>billing</c>, or <c>shipping</c>.
         /// </summary>
         [JsonProperty("address_source")]

@@ -32,6 +32,16 @@ namespace Stripe.Tax
             return this.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
 
+        public virtual Transaction CreateFromCalculation(TransactionCreateFromCalculationOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl("create_from_calculation")}", options, requestOptions);
+        }
+
+        public virtual Task<Transaction> CreateFromCalculationAsync(TransactionCreateFromCalculationOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl("create_from_calculation")}", options, requestOptions, cancellationToken);
+        }
+
         public virtual Transaction CreateReversal(TransactionCreateReversalOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl("create_reversal")}", options, requestOptions);

@@ -42,6 +42,12 @@ namespace Stripe.Tax
         public bool? Preview { get; set; }
 
         /// <summary>
+        /// Shipping cost details to be used for the calculation.
+        /// </summary>
+        [JsonProperty("shipping_cost")]
+        public CalculationShippingCostOptions ShippingCost { get; set; }
+
+        /// <summary>
         /// Timestamp of date at which the tax rules and rates in effect applies for the
         /// calculation. Measured in seconds since the Unix epoch.
         /// </summary>

@@ -158,6 +158,13 @@ namespace Stripe
         public string Fingerprint { get; set; }
 
         /// <summary>
+        /// Information about upcoming new requirements for the bank account, including what
+        /// information needs to be collected.
+        /// </summary>
+        [JsonProperty("future_requirements")]
+        public BankAccountFutureRequirements FutureRequirements { get; set; }
+
+        /// <summary>
         /// The last four digits of the bank account number.
         /// </summary>
         [JsonProperty("last4")]
@@ -170,6 +177,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// Information about the requirements for the bank account, including what information
+        /// needs to be collected.
+        /// </summary>
+        [JsonProperty("requirements")]
+        public BankAccountRequirements Requirements { get; set; }
 
         /// <summary>
         /// The routing transit number for the bank account.

@@ -1,22 +1,10 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
 
-    public class PaymentIntentPaymentMethodOptionsAffirm : StripeEntity<PaymentIntentPaymentMethodOptionsAffirm>
+    public class SessionPaymentMethodOptionsCashapp : StripeEntity<SessionPaymentMethodOptionsCashapp>
     {
-        /// <summary>
-        /// Controls when the funds will be captured from the customer's account.
-        /// </summary>
-        [JsonProperty("capture_method")]
-        public string CaptureMethod { get; set; }
-
-        /// <summary>
-        /// Preferred language of the Affirm authorization page that the customer is redirected to.
-        /// </summary>
-        [JsonProperty("preferred_locale")]
-        public string PreferredLocale { get; set; }
-
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.

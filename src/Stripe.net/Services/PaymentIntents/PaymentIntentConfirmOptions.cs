@@ -19,7 +19,7 @@ namespace Stripe
 
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
-        /// One of: <c>automatic</c>, or <c>manual</c>.
+        /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("capture_method")]
         public string CaptureMethod { get; set; }

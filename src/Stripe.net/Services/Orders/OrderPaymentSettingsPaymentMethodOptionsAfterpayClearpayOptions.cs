@@ -13,7 +13,7 @@ namespace Stripe
         ///
         /// If <c>capture_method</c> is already set on the PaymentIntent, providing an empty value
         /// for this parameter will unset the stored value for this payment method type.
-        /// One of: <c>automatic</c>, or <c>manual</c>.
+        /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("capture_method")]
         public string CaptureMethod { get; set; }

@@ -17,6 +17,9 @@ namespace Stripe
         [JsonProperty("link")]
         public SetupIntentPaymentMethodOptionsLink Link { get; set; }
 
+        [JsonProperty("paypal")]
+        public SetupIntentPaymentMethodOptionsPaypal Paypal { get; set; }
+
         [JsonProperty("sepa_debit")]
         public SetupIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 
