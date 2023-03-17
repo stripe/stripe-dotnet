@@ -1,5 +1,20 @@
 # Changelog
 
+## 41.10.0 - 2023-03-16
+* [#2659](https://github.com/stripe/stripe-dotnet/pull/2659) API Updates
+  * Add support for `CashappPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `FutureRequirements` and `Requirements` on `BankAccount`
+  * Add support for `Cashapp` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `CheckoutSessionPaymentMethodOptions`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `Country` on `ChargePaymentMethodDetailsLink`
+  * Add support for `PreferredLocale` on `PaymentIntentPaymentMethodOptionsAffirmOptions` and `PaymentIntentPaymentMethodOptionsAffirm`
+  * Add support for `CashappHandleRedirectOrDisplayQrCode` on `PaymentIntentNextAction` and `SetupIntentNextAction`
+  
+* [#2657](https://github.com/stripe/stripe-dotnet/pull/2657) Update generated code (new)
+  * Add support for `CashappPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Cashapp` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `CheckoutSessionPaymentMethodOptions`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `PreferredLocale` on `PaymentIntentPaymentMethodOptionsAffirmOptions` and `PaymentIntentPaymentMethodOptionsAffirm`
+  * Add support for `CashappHandleRedirectOrDisplayQrCode` on `PaymentIntentNextAction` and `SetupIntentNextAction`
+
 ## 41.9.0 - 2023-03-09
 * [#2654](https://github.com/stripe/stripe-dotnet/pull/2654) API Updates
   * Add support for `CardIssuing` on `IssuingCardholderIndividualOptions`
