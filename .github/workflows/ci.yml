@@ -46,14 +46,13 @@ jobs:
       - name: Build Debug
         run: dotnet build src -c Debug
 
-      - name: Start stripe-mock
-        run: docker run -d -p 12111-12112:12111-12112 stripe/stripe-mock && sleep 5
+      - uses: stripe/openapi/actions/stripe-mock@master
 
       - name: Run test suite
         run: dotnet test --no-build src/StripeTests/StripeTests.csproj -c Release
 
       - name: Run test suite (Debug)
-        run: dotnet test --no-build src/StripeTests/StripeTests.csproj -c Debug
+        run: make ci-test
 
       - name: Collect coverage
         run: dotnet test --no-build -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
@@ -115,3 +114,7 @@ jobs:
         dotnet-version: 6.0.x
     - name: Publish NuGet packages to NuGet
       run: dotnet nuget push nuget/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source "nuget.org"
+    - uses: stripe/openapi/actions/notify-release@master
+      if: always()
+      with:
+        bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
