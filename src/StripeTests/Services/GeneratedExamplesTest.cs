@@ -2977,6 +2977,18 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTaxTransactionServiceCreateFromCalculation()
+        {
+            var options = new Stripe.Tax.TransactionCreateFromCalculationOptions
+            {
+                Calculation = "xxx",
+                Reference = "yyy",
+            };
+            var service = new Stripe.Tax.TransactionService(this.StripeClient);
+            service.CreateFromCalculation(options);
+        }
+
+        [Fact]
         public void TestTerminalConfigurationServiceCreate()
         {
             var options = new Stripe.Terminal.ConfigurationCreateOptions();
