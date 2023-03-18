@@ -35,6 +35,16 @@ namespace Stripe.Terminal
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel_action", options, requestOptions, cancellationToken);
         }
 
+        public virtual Reader CollectInputs(string id, ReaderCollectInputsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/collect_inputs", options, requestOptions);
+        }
+
+        public virtual Task<Reader> CollectInputsAsync(string id, ReaderCollectInputsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/collect_inputs", options, requestOptions, cancellationToken);
+        }
+
         public virtual Reader Create(ReaderCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.CreateEntity(options, requestOptions);
