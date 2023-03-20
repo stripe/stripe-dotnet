@@ -24,6 +24,12 @@ namespace Stripe.Capital
         public FinancingSummaryDetails Details { get; set; }
 
         /// <summary>
+        /// The Financing Offer ID this Financing Summary corresponds to.
+        /// </summary>
+        [JsonProperty("financing_offer")]
+        public string FinancingOffer { get; set; }
+
+        /// <summary>
         /// Status of the Connected Account's financing. <a
         /// href="https://stripe.com/docs/api/capital/financing_summary">/v1/capital/financing_summary</a>
         /// will only return <c>details</c> for <c>paid_out</c> financing.
