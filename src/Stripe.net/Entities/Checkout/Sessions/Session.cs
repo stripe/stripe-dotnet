@@ -115,6 +115,12 @@ namespace Stripe.Checkout
         public string Currency { get; set; }
 
         /// <summary>
+        /// Currency conversion details for automatic currency conversion sessions.
+        /// </summary>
+        [JsonProperty("currency_conversion")]
+        public SessionCurrencyConversion CurrencyConversion { get; set; }
+
+        /// <summary>
         /// Collect additional information from your customer using custom fields. Up to 2 fields
         /// are supported.
         /// </summary>
