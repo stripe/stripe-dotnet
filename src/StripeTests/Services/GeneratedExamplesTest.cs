@@ -2895,6 +2895,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTaxCalculationServiceListLineItems()
+        {
+            var service = new Stripe.Tax.CalculationService(this.StripeClient);
+            service.ListLineItems("xxx");
+        }
+
+        [Fact]
         public void TestTaxCodeServiceList()
         {
             var options = new TaxCodeListOptions { Limit = 3 };
