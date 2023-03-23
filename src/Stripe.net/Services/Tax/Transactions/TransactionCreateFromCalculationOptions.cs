@@ -23,7 +23,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// A custom order or sale identifier, such as 'myOrder_123'. Must be unique across all
-        /// transactions including reversals.
+        /// transactions, including reversals.
         /// </summary>
         [JsonProperty("reference")]
         public string Reference { get; set; }

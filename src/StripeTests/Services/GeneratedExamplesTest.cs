@@ -2256,6 +2256,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestQuoteServicePreviewInvoiceLines()
+        {
+            var service = new QuoteService(this.StripeClient);
+            service.PreviewInvoiceLines("qt_xyz", "in_xyz");
+        }
+
+        [Fact]
         public void TestQuoteServiceRetrieve()
         {
             var service = new QuoteService(this.StripeClient);
@@ -2888,6 +2895,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTaxCalculationServiceListLineItems()
+        {
+            var service = new Stripe.Tax.CalculationService(this.StripeClient);
+            service.ListLineItems("xxx");
+        }
+
+        [Fact]
         public void TestTaxCodeServiceList()
         {
             var options = new TaxCodeListOptions { Limit = 3 };
@@ -2974,6 +2988,18 @@ namespace StripeTests
             var options = new TaxRateUpdateOptions { Active = false };
             var service = new TaxRateService(this.StripeClient);
             service.Update("txr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTaxTransactionServiceCreateFromCalculation()
+        {
+            var options = new Stripe.Tax.TransactionCreateFromCalculationOptions
+            {
+                Calculation = "xxx",
+                Reference = "yyy",
+            };
+            var service = new Stripe.Tax.TransactionService(this.StripeClient);
+            service.CreateFromCalculation(options);
         }
 
         [Fact]

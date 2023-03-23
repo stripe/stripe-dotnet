@@ -9,7 +9,7 @@ namespace Stripe
     {
         /// <summary>
         /// Date by which evidence must be submitted in order to successfully challenge dispute.
-        /// Will be null if the customer's bank or credit card company doesn't allow a response for
+        /// Will be 0 if the customer's bank or credit card company doesn't allow a response for
         /// this particular dispute.
         /// </summary>
         [JsonProperty("due_by")]

@@ -48,8 +48,7 @@ namespace Stripe.Tax
         public CalculationCustomerDetails CustomerDetails { get; set; }
 
         /// <summary>
-        /// Timestamp of date at which the tax calculation will expire. Empty if the calculation is
-        /// an unsaved preview.
+        /// Timestamp of date at which the tax calculation will expire.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -59,7 +58,7 @@ namespace Stripe.Tax
         /// The list of items the customer is purchasing.
         /// </summary>
         [JsonProperty("line_items")]
-        public StripeList<LineItem> LineItems { get; set; }
+        public StripeList<CalculationLineItem> LineItems { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if

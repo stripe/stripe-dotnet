@@ -34,14 +34,6 @@ namespace Stripe.Tax
         public List<CalculationLineItemOptions> LineItems { get; set; }
 
         /// <summary>
-        /// The boolean value that indicates if the calculation is a preview. If true, the
-        /// calculation is not stored. If false, the calculation is stored for 48 hours. Defaults to
-        /// true.
-        /// </summary>
-        [JsonProperty("preview")]
-        public bool? Preview { get; set; }
-
-        /// <summary>
         /// Shipping cost details to be used for the calculation.
         /// </summary>
         [JsonProperty("shipping_cost")]
@@ -49,7 +41,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// Timestamp of date at which the tax rules and rates in effect applies for the
-        /// calculation. Measured in seconds since the Unix epoch.
+        /// calculation. Measured in seconds since the Unix epoch. Can be up to 48 hours in the
+        /// past, and up to 48 hours in the future.
         /// </summary>
         [JsonProperty("tax_date")]
         public long? TaxDate { get; set; }

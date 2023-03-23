@@ -19,6 +19,13 @@ namespace Stripe
         public bool? AttachToSelf { get; set; }
 
         /// <summary>
+        /// When enabled, this SetupIntent will accept payment methods that you have enabled in the
+        /// Dashboard and are compatible with this SetupIntent's other parameters.
+        /// </summary>
+        [JsonProperty("automatic_payment_methods")]
+        public SetupIntentAutomaticPaymentMethodsOptions AutomaticPaymentMethods { get; set; }
+
+        /// <summary>
         /// Set to <c>true</c> to attempt to confirm this SetupIntent immediately. This parameter
         /// defaults to <c>false</c>. If the payment method attached is a card, a return_url may be
         /// provided in case additional authentication is required.

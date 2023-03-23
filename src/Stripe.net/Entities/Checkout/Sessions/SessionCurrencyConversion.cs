@@ -18,6 +18,12 @@ namespace Stripe.Checkout
         public long AmountTotal { get; set; }
 
         /// <summary>
+        /// Exchange rate used to convert source currency amounts to customer currency amounts.
+        /// </summary>
+        [JsonProperty("fx_rate")]
+        public decimal FxRate { get; set; }
+
+        /// <summary>
         /// Creation currency of the CheckoutSession before localization.
         /// </summary>
         [JsonProperty("source_currency")]

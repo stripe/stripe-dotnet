@@ -6,6 +6,12 @@ namespace Stripe.Terminal
     public class ReaderAction : StripeEntity<ReaderAction>
     {
         /// <summary>
+        /// Represents a reader action to collect customer inputs.
+        /// </summary>
+        [JsonProperty("collect_inputs")]
+        public ReaderActionCollectInputs CollectInputs { get; set; }
+
+        /// <summary>
         /// Failure code, only set if status is <c>failed</c>.
         /// </summary>
         [JsonProperty("failure_code")]
@@ -50,8 +56,8 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// Type of action performed by the reader.
-        /// One of: <c>process_payment_intent</c>, <c>process_setup_intent</c>,
-        /// <c>refund_payment</c>, or <c>set_reader_display</c>.
+        /// One of: <c>collect_inputs</c>, <c>process_payment_intent</c>,
+        /// <c>process_setup_intent</c>, <c>refund_payment</c>, or <c>set_reader_display</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

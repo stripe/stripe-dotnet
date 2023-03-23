@@ -33,7 +33,8 @@ namespace Stripe.Tax
         public string OriginalLineItem { get; set; }
 
         /// <summary>
-        /// The quantity reversed.
+        /// The quantity reversed. Appears in <a href="https://stripe.com/docs/tax/reports">tax
+        /// exports</a>, but does not affect the amount of tax reversed.
         /// </summary>
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }

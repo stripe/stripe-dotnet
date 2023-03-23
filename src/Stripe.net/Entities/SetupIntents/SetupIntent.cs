@@ -98,6 +98,12 @@ namespace Stripe
         public bool AttachToSelf { get; set; }
 
         /// <summary>
+        /// Settings for automatic payment methods compatible with this Setup Intent.
+        /// </summary>
+        [JsonProperty("automatic_payment_methods")]
+        public SetupIntentAutomaticPaymentMethods AutomaticPaymentMethods { get; set; }
+
+        /// <summary>
         /// Reason for cancellation of this SetupIntent, one of <c>abandoned</c>,
         /// <c>requested_by_customer</c>, or <c>duplicate</c>.
         /// One of: <c>abandoned</c>, <c>duplicate</c>, or <c>requested_by_customer</c>.

@@ -7,7 +7,7 @@ namespace Stripe.Tax
     public class CalculationCustomerDetailsOptions : INestedOptions
     {
         /// <summary>
-        /// The customer's postal address (e.g., home or business location).
+        /// The customer's postal address (for example, home or business location).
         /// </summary>
         [JsonProperty("address")]
         public AddressOptions Address { get; set; }
@@ -32,9 +32,10 @@ namespace Stripe.Tax
         public List<CalculationCustomerDetailsTaxIdOptions> TaxIds { get; set; }
 
         /// <summary>
-        /// When <c>reverse_charge</c> is provided, the reverse charge rule is applied for taxation.
-        /// When <c>customer_exempt</c> is sent, it treats the customer as tax exempt. Defaults to
-        /// <c>none</c>.
+        /// Overrides the tax calculation result to allow you to not collect tax from your customer.
+        /// Use this if you've manually checked your customer's tax exemptions. Prefer providing the
+        /// customer's <c>tax_ids</c> where possible, which automatically determines whether
+        /// <c>reverse_charge</c> applies.
         /// One of: <c>customer_exempt</c>, <c>none</c>, or <c>reverse_charge</c>.
         /// </summary>
         [JsonProperty("taxability_override")]
