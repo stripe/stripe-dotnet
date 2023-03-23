@@ -52,7 +52,7 @@ namespace Stripe.Tax
         /// The tax collected or refunded, by line item.
         /// </summary>
         [JsonProperty("line_items")]
-        public StripeList<LineItem> LineItems { get; set; }
+        public StripeList<TransactionLineItem> LineItems { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if

@@ -59,7 +59,7 @@ namespace Stripe.Tax
         /// The list of items the customer is purchasing.
         /// </summary>
         [JsonProperty("line_items")]
-        public StripeList<LineItem> LineItems { get; set; }
+        public StripeList<CalculationLineItem> LineItems { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
