@@ -1,5 +1,13 @@
 # Changelog
 
+## 41.11.0 - 2023-03-23
+* [#2661](https://github.com/stripe/stripe-dotnet/pull/2661) Update generated code
+  * Add support for new resources `Tax.CalculationLineItem`, `Tax.Calculation`, `Tax.TransactionLineItem`, and `Tax.Transaction`
+  * Add support for `Create` and `ListLineItems` methods on resource `Calculation`
+  * Add support for `CreateFromCalculation`, `CreateReversal`, `Create`, `Get`, and `ListLineItems` methods on resource `Transaction`
+  * Add support for `CurrencyConversion` on `CheckoutSession`
+  * Add support for `AutomaticPaymentMethods` on `SetupIntentCreateOptions` and `SetupIntent`
+
 ## 41.10.0 - 2023-03-16
 * [#2659](https://github.com/stripe/stripe-dotnet/pull/2659) API Updates
   * Add support for `CashappPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
