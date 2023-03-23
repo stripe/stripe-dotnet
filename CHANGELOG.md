@@ -1,5 +1,17 @@
 # Changelog
 
+## 41.12.0-beta.1 - 2023-03-23
+* [#2662](https://github.com/stripe/stripe-dotnet/pull/2662) Update generated code for beta (new)
+  * Add support for new resources `Tax.CalculationLineItem` and `Tax.TransactionLineItem`
+  * Add support for `CollectInputs` method on resource `Terminal.Reader`
+  * Add support for `FinancingOffer` on `CapitalFinancingSummary`
+  * Add support for `FxRate` on `CheckoutSessionCurrencyConversion`
+  * Add support for `AutomaticPaymentMethods` on `SetupIntentCreateOptions` and `SetupIntent`
+  * Remove support for `Preview` on `TaxCalculationCreateOptions`
+  * Change type of `TaxCalculationLineItems` from `$LineItem` to `$Tax.CalculationLineItem`
+  * Change type of `TaxTransactionLineItems` from `$LineItem` to `$Tax.TransactionLineItem`
+  * Add support for `CollectInputs` on `TerminalReaderAction`
+
 ## 41.11.0-beta.1 - 2023-03-16
 * [#2658](https://github.com/stripe/stripe-dotnet/pull/2658) API Updates
   * Add support for `CreateFromCalculation` method on resource `Tax.Transaction`
