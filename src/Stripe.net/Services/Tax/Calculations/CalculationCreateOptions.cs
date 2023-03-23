@@ -41,7 +41,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// Timestamp of date at which the tax rules and rates in effect applies for the
-        /// calculation. Measured in seconds since the Unix epoch.
+        /// calculation. Measured in seconds since the Unix epoch. Can be up to 48 hours in the
+        /// past, and up to 48 hours in the future.
         /// </summary>
         [JsonProperty("tax_date")]
         public long? TaxDate { get; set; }

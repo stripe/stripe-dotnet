@@ -48,8 +48,7 @@ namespace Stripe.Tax
         public CalculationCustomerDetails CustomerDetails { get; set; }
 
         /// <summary>
-        /// Timestamp of date at which the tax calculation will expire. Empty if the calculation is
-        /// an unsaved preview.
+        /// Timestamp of date at which the tax calculation will expire.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

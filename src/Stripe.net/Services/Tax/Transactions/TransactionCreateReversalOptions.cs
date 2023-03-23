@@ -36,8 +36,9 @@ namespace Stripe.Tax
         public string OriginalTransaction { get; set; }
 
         /// <summary>
-        /// A custom identifier for this reversal, such as 'myOrder_123-refund_1'. Must be unique
-        /// across all transactions.
+        /// A custom identifier for this reversal, such as 'myOrder_123-refund_1', which must be
+        /// unique across all transactions. The reference helps identify this reversal transaction
+        /// in exported <a href="https://stripe.com/docs/tax/reports">tax reports</a>.
         /// </summary>
         [JsonProperty("reference")]
         public string Reference { get; set; }

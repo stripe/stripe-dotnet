@@ -14,8 +14,10 @@ namespace Stripe.Tax
         public long? Amount { get; set; }
 
         /// <summary>
-        /// If provided, the shipping rate's <c>amount</c>, <c>tax_code</c> and <c>tax_behavior</c>
-        /// are used. It cannot be used with <c>amount</c>, <c>tax_code</c> and <c>tax_behavior</c>.
+        /// If provided, the <a href="https://stripe.com/docs/api/shipping_rates/object">shipping
+        /// rate</a>'s <c>amount</c>, <c>tax_code</c> and <c>tax_behavior</c> are used. If you
+        /// provide a shipping rate, then you cannot pass the <c>amount</c>, <c>tax_code</c>, or
+        /// <c>tax_behavior</c> parameters.
         /// </summary>
         [JsonProperty("shipping_rate")]
         public string ShippingRate { get; set; }

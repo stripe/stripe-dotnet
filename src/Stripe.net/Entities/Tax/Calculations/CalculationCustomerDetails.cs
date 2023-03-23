@@ -7,7 +7,7 @@ namespace Stripe.Tax
     public class CalculationCustomerDetails : StripeEntity<CalculationCustomerDetails>
     {
         /// <summary>
-        /// The customer's postal address (e.g., home or business location).
+        /// The customer's postal address (for example, home or business location).
         /// </summary>
         [JsonProperty("address")]
         public CalculationCustomerDetailsAddress Address { get; set; }
@@ -26,7 +26,7 @@ namespace Stripe.Tax
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// The customer's tax IDs (e.g., EU VAT numbers).
+        /// The customer's tax IDs (for example, EU VAT numbers).
         /// </summary>
         [JsonProperty("tax_ids")]
         public List<CalculationCustomerDetailsTaxId> TaxIds { get; set; }
