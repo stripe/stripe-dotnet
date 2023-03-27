@@ -203,10 +203,13 @@ namespace Stripe
         /// account fails, we'll set the status to <c>errored</c> and will not continue to send
         /// transfers until the bank details are updated.
         ///
-        /// For external accounts, possible values are <c>new</c> and <c>errored</c>. Validations
-        /// aren't run against external accounts because they're only used for payouts. This means
-        /// the other statuses don't apply. If a transfer fails, the status is set to <c>errored</c>
-        /// and transfers are stopped until account details are updated.
+        /// For external accounts, possible values are <c>new</c>, <c>errored</c> and
+        /// <c>verification_failed</c>. If a transfer fails, the status is set to <c>errored</c> and
+        /// transfers are stopped until account details are updated. In India, if we can't <a
+        /// href="https://support.stripe.com/questions/bank-account-ownership-verification">verify
+        /// the owner of the bank account</a>, we'll set the status to <c>verification_failed</c>.
+        /// Other validations aren't run against external accounts because they're only used for
+        /// payouts. This means the other statuses don't apply.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
