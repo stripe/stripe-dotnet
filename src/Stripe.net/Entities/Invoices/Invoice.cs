@@ -812,8 +812,7 @@ namespace Stripe
         /// <c>uncollectible</c>, or <c>void</c>. <a
         /// href="https://stripe.com/docs/billing/invoices/workflow#workflow-overview">Learn
         /// more</a>.
-        /// One of: <c>deleted</c>, <c>draft</c>, <c>open</c>, <c>paid</c>, <c>uncollectible</c>, or
-        /// <c>void</c>.
+        /// One of: <c>draft</c>, <c>open</c>, <c>paid</c>, <c>uncollectible</c>, or <c>void</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
