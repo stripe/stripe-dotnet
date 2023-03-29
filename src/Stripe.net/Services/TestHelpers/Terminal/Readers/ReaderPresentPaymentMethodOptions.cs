@@ -6,6 +6,12 @@ namespace Stripe.TestHelpers.Terminal
     public class ReaderPresentPaymentMethodOptions : BaseOptions
     {
         /// <summary>
+        /// Simulated on-reader tip amount.
+        /// </summary>
+        [JsonProperty("amount_tip")]
+        public long? AmountTip { get; set; }
+
+        /// <summary>
         /// Simulated data for the card_present payment method.
         /// </summary>
         [JsonProperty("card_present")]
