@@ -7,7 +7,6 @@ namespace Stripe.Tax
     using System.Threading.Tasks;
 
     public class TransactionService : Service<Transaction>,
-        ICreatable<Transaction, TransactionCreateOptions>,
         IRetrievable<Transaction, TransactionGetOptions>
     {
         public TransactionService()
@@ -21,16 +20,6 @@ namespace Stripe.Tax
         }
 
         public override string BasePath => "/v1/tax/transactions";
-
-        public virtual Transaction Create(TransactionCreateOptions options, RequestOptions requestOptions = null)
-        {
-            return this.CreateEntity(options, requestOptions);
-        }
-
-        public virtual Task<Transaction> CreateAsync(TransactionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
-        }
 
         public virtual Transaction CreateFromCalculation(TransactionCreateFromCalculationOptions options = null, RequestOptions requestOptions = null)
         {
