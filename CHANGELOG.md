@@ -1,5 +1,13 @@
 # Changelog
 
+## 41.12.0 - 2023-03-30
+* [#2667](https://github.com/stripe/stripe-dotnet/pull/2667) Update generated code
+  * Remove support for `Create` method on resource `Tax.Transaction`
+    * This is not a breaking change, as this method was deprecated before the Tax Transactions API was released in favor of the `CreateFromCalculation ` method.
+  * Add support for `ExportLicenseId` and `ExportPurposeCode` on `AccountCompanyOptions`, `AccountCompany`, and `TokenAccountCompanyOptions`
+  * Add support for `AmountTip` on `TestHelpersTerminalReaderPresentPaymentMethodOptions`
+* [#2669](https://github.com/stripe/stripe-dotnet/pull/2669) Update .gitattributes
+
 ## 41.11.0 - 2023-03-23
 * [#2661](https://github.com/stripe/stripe-dotnet/pull/2661) Update generated code
   * Add support for new resources `Tax.CalculationLineItem`, `Tax.Calculation`, `Tax.TransactionLineItem`, and `Tax.Transaction`
