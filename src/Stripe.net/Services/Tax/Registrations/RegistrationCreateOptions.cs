@@ -36,7 +36,7 @@ namespace Stripe.Tax
         /// The type of the Tax Registration. See <a
         /// href="https://stripe.com/docs/tax/registering">our guide</a> for more information about
         /// registration types.
-        /// One of: <c>domestic_small_seller</c>, <c>simplified</c>, <c>standard</c>,
+        /// One of: <c>domestic_small_seller</c>, <c>ioss</c>, <c>simplified</c>, <c>standard</c>,
         /// <c>vat_oss_non_union</c>, or <c>vat_oss_union</c>.
         /// </summary>
         [JsonProperty("type")]

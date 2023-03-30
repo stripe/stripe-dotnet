@@ -12,6 +12,14 @@
   * Change type of `TaxTransactionLineItems` from `$LineItem` to `$Tax.TransactionLineItem`
   * Add support for `CollectInputs` on `TerminalReaderAction`
 
+## 41.11.0 - 2023-03-23
+* [#2661](https://github.com/stripe/stripe-dotnet/pull/2661) Update generated code
+  * Add support for new resources `Tax.CalculationLineItem`, `Tax.Calculation`, `Tax.TransactionLineItem`, and `Tax.Transaction`
+  * Add support for `Create` and `ListLineItems` methods on resource `Calculation`
+  * Add support for `CreateFromCalculation`, `CreateReversal`, `Create`, `Get`, and `ListLineItems` methods on resource `Transaction`
+  * Add support for `CurrencyConversion` on `CheckoutSession`
+  * Add support for `AutomaticPaymentMethods` on `SetupIntentCreateOptions` and `SetupIntent`
+
 ## 41.11.0-beta.1 - 2023-03-16
 * [#2658](https://github.com/stripe/stripe-dotnet/pull/2658) API Updates
   * Add support for `CreateFromCalculation` method on resource `Tax.Transaction`
@@ -22,17 +30,6 @@
   * Add support for `TaxBreakdown` on `TaxCalculation`
   * Remove support for `TaxSummary` on `TaxCalculation`
 
-## 41.10.0-beta.1 - 2023-03-09
-* [#2655](https://github.com/stripe/stripe-dotnet/pull/2655) API Updates for beta branch
-  * Updated stable APIs to the latest version
-  * Remove support for `ListTransactions` method on resource `Tax.Transaction`
-  * Add support for `UpdateBehavior` on `SubscriptionPrebillingOptions`, `SubscriptionPrebilling`, `SubscriptionSchedulePrebillingOptions`, and `SubscriptionSchedulePrebilling`
-  * Add support for `Prebilling` on `SubscriptionScheduleAmendOptions`
-  * Add support for `TaxabilityOverride` on `TaxCalculationCustomerDetailsOptions`, `TaxCalculationCustomerDetails`, and `TaxTransactionCustomerDetails`
-  * Add support for `TaxSummary` on `TaxCalculation`
-  * Remove support for `TaxBreakdown` on `TaxCalculation`
-  * Add support for `TaxBehavior` on `TaxSettingsDefaultsOptions` and `TaxSettingsDefaults`
-  
 ## 41.10.0 - 2023-03-16
 * [#2659](https://github.com/stripe/stripe-dotnet/pull/2659) API Updates
   * Add support for `CashappPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
@@ -47,6 +44,17 @@
   * Add support for `Cashapp` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `CheckoutSessionPaymentMethodOptions`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, and `SetupIntentPaymentMethodDataOptions`
   * Add support for `PreferredLocale` on `PaymentIntentPaymentMethodOptionsAffirmOptions` and `PaymentIntentPaymentMethodOptionsAffirm`
   * Add support for `CashappHandleRedirectOrDisplayQrCode` on `PaymentIntentNextAction` and `SetupIntentNextAction`
+
+## 41.10.0-beta.1 - 2023-03-09
+* [#2655](https://github.com/stripe/stripe-dotnet/pull/2655) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Remove support for `ListTransactions` method on resource `Tax.Transaction`
+  * Add support for `UpdateBehavior` on `SubscriptionPrebillingOptions`, `SubscriptionPrebilling`, `SubscriptionSchedulePrebillingOptions`, and `SubscriptionSchedulePrebilling`
+  * Add support for `Prebilling` on `SubscriptionScheduleAmendOptions`
+  * Add support for `TaxabilityOverride` on `TaxCalculationCustomerDetailsOptions`, `TaxCalculationCustomerDetails`, and `TaxTransactionCustomerDetails`
+  * Add support for `TaxSummary` on `TaxCalculation`
+  * Remove support for `TaxBreakdown` on `TaxCalculation`
+  * Add support for `TaxBehavior` on `TaxSettingsDefaultsOptions` and `TaxSettingsDefaults`
 
 ## 41.9.0 - 2023-03-09
 * [#2654](https://github.com/stripe/stripe-dotnet/pull/2654) API Updates
