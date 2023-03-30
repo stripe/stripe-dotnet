@@ -40,6 +40,19 @@ namespace Stripe
         public bool ExecutivesProvided { get; set; }
 
         /// <summary>
+        /// The export license ID number of the company, also referred as Import Export Code (India
+        /// only).
+        /// </summary>
+        [JsonProperty("export_license_id")]
+        public string ExportLicenseId { get; set; }
+
+        /// <summary>
+        /// The purpose code to use for export transactions (India only).
+        /// </summary>
+        [JsonProperty("export_purpose_code")]
+        public string ExportPurposeCode { get; set; }
+
+        /// <summary>
         /// The company's legal name.
         /// </summary>
         [JsonProperty("name")]
