@@ -1,5 +1,9 @@
 # Changelog
 
+## 41.13.0-beta.1 - 2023-03-30
+* [#2670](https://github.com/stripe/stripe-dotnet/pull/2670) Update generated code for beta
+
+
 ## 41.12.0-beta.1 - 2023-03-23
 * [#2662](https://github.com/stripe/stripe-dotnet/pull/2662) Update generated code for beta (new)
   * Add support for new resources `Tax.CalculationLineItem` and `Tax.TransactionLineItem`
