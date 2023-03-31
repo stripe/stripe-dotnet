@@ -30,7 +30,8 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// Address to send refund email, use customer email if not specified.
+        /// For payment methods without native refund support (e.g., Konbini, PromptPay), use this
+        /// email from the customer to receive refund instructions.
         /// </summary>
         [JsonProperty("instructions_email")]
         public string InstructionsEmail { get; set; }
