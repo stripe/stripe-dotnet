@@ -13,5 +13,8 @@ namespace Stripe.Capital
 
         [JsonProperty("reversed_transaction")]
         public string ReversedTransaction { get; set; }
+
+        [JsonProperty("treasury_transaction")]
+        public string TreasuryTransaction { get; set; }
     }
 }
