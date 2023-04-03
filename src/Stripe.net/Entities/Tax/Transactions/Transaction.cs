@@ -7,7 +7,10 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// A Tax transaction records the tax collected from or refunded to your customer.
+    /// A Tax Transaction records the tax collected from or refunded to your customer.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/tax/custom#tax-transaction">Calculate
+    /// tax in your custom payment flow</a>.
     /// </summary>
     public class Transaction : StripeEntity<Transaction>, IHasId, IHasMetadata, IHasObject
     {
