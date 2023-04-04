@@ -251,6 +251,12 @@ namespace Stripe
         /// Occurs whenever a customer ends their subscription.
         /// </summary>
         public const string CustomerSubscriptionDeleted = "customer.subscription.deleted";
+        
+        /// <summart>
+        /// Occurs whenever a customer’s subscription is paused.
+        /// Only applies when subscriptions enter <c>status=paused</c>, not when payment collection is paused.
+        /// </summary>
+        public const string CustomerSubscriptionPaused = "customer.subscription.paused";
 
         /// <summary>
         /// Occurs whenever a customer's subscription's pending update is
@@ -263,6 +269,12 @@ namespace Stripe
         /// before the related invoice is paid.
         /// </summary>
         public const string CustomerSubscriptionPendingUpdateExpired = "customer.subscription.pending_update_expired";
+
+        /// <summart>
+        /// Occurs whenever a customer’s subscription is no longer paused.
+        /// Only applies when a <c>status=paused</c> subscription is resumed, not when payment collection is resumed.
+        /// </summary>
+        public const string CustomerSubscriptionResumed = "customer.subscription.resumed";
 
         /// <summary>
         /// Occurs three days before the trial period of a subscription is scheduled to end.
