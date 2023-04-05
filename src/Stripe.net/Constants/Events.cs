@@ -758,7 +758,7 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever a refund from a customer’s cash balance is updated.
         /// </summary>
-        public const string RefundCreated = "refund.updated";
+        public const string RefundUpdated = "refund.updated";
 
         /// <summary>
         /// Occurs whenever a requested <see cref="Reporting.ReportRun"/> failed to complete.
