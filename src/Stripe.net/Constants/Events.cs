@@ -208,6 +208,11 @@ namespace Stripe
         public const string CustomerUpdated = "customer.updated";
 
         /// <summary>
+        /// Occurs whenever a new customer cash balance transaction is created.
+        /// </summary>
+        public const string CustomerCashBalanceTransactionCreated = "customer_cash_balance_transaction.created";
+
+        /// <summary>
         /// Occurs whenever a coupon is attached to a customer.
         /// </summary>
         public const string CustomerDiscountCreated = "customer.discount.created";
@@ -612,6 +617,12 @@ namespace Stripe
         /// </summary>
         public const string PayoutFailed = "payout.failed";
 
+
+        /// <summary>
+        /// Occurs whenever balance transactions paid out in an automatic payout can be queried.
+        /// </summary>
+        public const string PayoutReconciliationCompleted = "payout.reconciliation_completed";
+
         /// <summary>
         /// Occurs whenever a payout is *expected* to be available in the destination account.
         /// If the payout fails, a <see cref="PayoutFailed"/> notification is also sent, at a later
@@ -738,6 +749,16 @@ namespace Stripe
         /// Occurs whenever a recipient is updated.
         /// </summary>
         public const string RecipientUpdated = "recipient.updated";
+
+        /// <summary>
+        /// Occurs whenever a refund from a customer’s cash balance is created.
+        /// </summary>
+        public const string RefundCreated = "refund.created";
+
+        /// <summary>
+        /// Occurs whenever a refund from a customer’s cash balance is updated.
+        /// </summary>
+        public const string RefundCreated = "refund.updated";
 
         /// <summary>
         /// Occurs whenever a requested <see cref="Reporting.ReportRun"/> failed to complete.
