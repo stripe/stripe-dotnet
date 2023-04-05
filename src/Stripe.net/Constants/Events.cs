@@ -252,7 +252,7 @@ namespace Stripe
         /// </summary>
         public const string CustomerSubscriptionDeleted = "customer.subscription.deleted";
         
-        /// <summart>
+        /// <summary>
         /// Occurs whenever a customer’s subscription is paused.
         /// Only applies when subscriptions enter <c>status=paused</c>, not when payment collection is paused.
         /// </summary>
