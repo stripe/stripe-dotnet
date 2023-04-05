@@ -275,7 +275,7 @@ namespace Stripe
         /// </summary>
         public const string CustomerSubscriptionPendingUpdateExpired = "customer.subscription.pending_update_expired";
 
-        /// <summart>
+        /// <summary>
         /// Occurs whenever a customer’s subscription is no longer paused.
         /// Only applies when a <c>status=paused</c> subscription is resumed, not when payment collection is resumed.
         /// </summary>
