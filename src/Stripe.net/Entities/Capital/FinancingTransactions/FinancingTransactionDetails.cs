@@ -51,5 +51,11 @@ namespace Stripe.Capital
         /// </summary>
         [JsonProperty("total_amount")]
         public long TotalAmount { get; set; }
+
+        /// <summary>
+        /// This is an object representing a linked transaction on a Capital Financing Transaction.
+        /// </summary>
+        [JsonProperty("transaction")]
+        public FinancingTransactionDetailsTransaction Transaction { get; set; }
     }
 }

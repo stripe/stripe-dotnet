@@ -28,10 +28,10 @@ namespace Stripe
 
         /// <summary>
         /// The type of the card wallet, one of <c>amex_express_checkout</c>, <c>apple_pay</c>,
-        /// <c>google_pay</c>, <c>masterpass</c>, <c>samsung_pay</c>, or <c>visa_checkout</c>. An
-        /// additional hash is included on the Wallet subhash with a name matching this value. It
-        /// contains additional information specific to the card wallet type.
-        /// One of: <c>amex_express_checkout</c>, <c>apple_pay</c>, <c>google_pay</c>,
+        /// <c>google_pay</c>, <c>masterpass</c>, <c>samsung_pay</c>, <c>visa_checkout</c>, or
+        /// <c>link</c>. An additional hash is included on the Wallet subhash with a name matching
+        /// this value. It contains additional information specific to the card wallet type.
+        /// One of: <c>amex_express_checkout</c>, <c>apple_pay</c>, <c>google_pay</c>, <c>link</c>,
         /// <c>masterpass</c>, <c>samsung_pay</c>, or <c>visa_checkout</c>.
         /// </summary>
         [JsonProperty("type")]

@@ -1,8 +1,20 @@
 # Changelog
 
+## 41.13.0 - 2023-04-06
+* [#2672](https://github.com/stripe/stripe-dotnet/pull/2672) Update generated code
+  * Add support for `Country` on `PaymentMethodLink`
+  * Add support for `StatusDetails` on `PaymentMethodUsBankAccount`
+
 ## 41.13.0-beta.1 - 2023-03-30
 * [#2670](https://github.com/stripe/stripe-dotnet/pull/2670) Update generated code for beta
 
+## 41.12.0 - 2023-03-30
+* [#2667](https://github.com/stripe/stripe-dotnet/pull/2667) Update generated code
+  * Remove support for `Create` method on resource `Tax.Transaction`
+    * This is not a breaking change, as this method was deprecated before the Tax Transactions API was released in favor of the `CreateFromCalculation ` method.
+  * Add support for `ExportLicenseId` and `ExportPurposeCode` on `AccountCompanyOptions`, `AccountCompany`, and `TokenAccountCompanyOptions`
+  * Add support for `AmountTip` on `TestHelpersTerminalReaderPresentPaymentMethodOptions`
+* [#2669](https://github.com/stripe/stripe-dotnet/pull/2669) Update .gitattributes
 
 ## 41.12.0-beta.1 - 2023-03-23
 * [#2662](https://github.com/stripe/stripe-dotnet/pull/2662) Update generated code for beta (new)
