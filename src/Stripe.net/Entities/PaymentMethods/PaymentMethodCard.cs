@@ -6,8 +6,8 @@ namespace Stripe
     public class PaymentMethodCard : StripeEntity<PaymentMethodCard>
     {
         /// <summary>
-        /// Card brand. Can be <c>amex</c>, <c>diners</c>, <c>discover</c>, <c>jcb</c>,
-        /// <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or <c>unknown</c>.
+        /// Card brand. Can be <c>amex</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
+        /// <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
         public string Brand { get; set; }

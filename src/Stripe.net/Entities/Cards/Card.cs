@@ -119,7 +119,8 @@ namespace Stripe
 
         /// <summary>
         /// Card brand. Can be <c>American Express</c>, <c>Diners Club</c>, <c>Discover</c>,
-        /// <c>JCB</c>, <c>MasterCard</c>, <c>UnionPay</c>, <c>Visa</c>, or <c>Unknown</c>.
+        /// <c>Eftpos Australia</c>, <c>JCB</c>, <c>MasterCard</c>, <c>UnionPay</c>, <c>Visa</c>, or
+        /// <c>Unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
         public string Brand { get; set; }
