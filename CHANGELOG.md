@@ -1,5 +1,10 @@
 # Changelog
 
+## 41.14.0-beta.1 - 2023-04-06
+* [#2671](https://github.com/stripe/stripe-dotnet/pull/2671) Update generated code for beta
+  * Add support for `TreasuryTransaction` on `CapitalFinancingTransactionListOptions`
+  * Add support for `Transaction` on `CapitalFinancingTransactionDetails`
+
 ## 41.13.0 - 2023-04-06
 * [#2672](https://github.com/stripe/stripe-dotnet/pull/2672) Update generated code
   * Add support for `Country` on `PaymentMethodLink`
