@@ -7,7 +7,10 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// A Tax <c>Calculation</c> allows you to calculate the tax to collect from your customer.
+    /// A Tax Calculation allows you to calculate the tax to collect from your customer.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/tax/custom">Calculate tax in your custom
+    /// payment flow</a>.
     /// </summary>
     public class Calculation : StripeEntity<Calculation>, IHasId, IHasObject
     {

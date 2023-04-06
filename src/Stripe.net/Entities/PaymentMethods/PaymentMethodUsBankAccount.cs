@@ -55,5 +55,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("routing_number")]
         public string RoutingNumber { get; set; }
+
+        /// <summary>
+        /// Contains information about the future reusability of this PaymentMethod.
+        /// </summary>
+        [JsonProperty("status_details")]
+        public PaymentMethodUsBankAccountStatusDetails StatusDetails { get; set; }
     }
 }
