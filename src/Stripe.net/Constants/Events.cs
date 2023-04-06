@@ -256,7 +256,7 @@ namespace Stripe
         /// Occurs whenever a customer ends their subscription.
         /// </summary>
         public const string CustomerSubscriptionDeleted = "customer.subscription.deleted";
-        
+
         /// <summary>
         /// Occurs whenever a customer’s subscription is paused.
         /// Only applies when subscriptions enter <c>status=paused</c>, not when payment collection is paused.
@@ -616,7 +616,6 @@ namespace Stripe
         /// Occurs whenever Stripe attempts to send a payout and that transfer fails.
         /// </summary>
         public const string PayoutFailed = "payout.failed";
-
 
         /// <summary>
         /// Occurs whenever balance transactions paid out in an automatic payout can be queried.
