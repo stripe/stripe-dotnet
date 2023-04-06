@@ -29,9 +29,12 @@ namespace Stripe
         public ProductDefaultPriceDataRecurringOptions Recurring { get; set; }
 
         /// <summary>
-        /// Specifies whether the price is considered inclusive of taxes or exclusive of taxes. One
-        /// of <c>inclusive</c>, <c>exclusive</c>, or <c>unspecified</c>. Once specified as either
-        /// <c>inclusive</c> or <c>exclusive</c>, it cannot be changed.
+        /// Only required if a <a
+        /// href="https://stripe.com/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)">default
+        /// tax behavior</a> was not provided in the Stripe Tax settings. Specifies whether the
+        /// price is considered inclusive of taxes or exclusive of taxes. One of <c>inclusive</c>,
+        /// <c>exclusive</c>, or <c>unspecified</c>. Once specified as either <c>inclusive</c> or
+        /// <c>exclusive</c>, it cannot be changed.
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
