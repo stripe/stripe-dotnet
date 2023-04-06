@@ -1,5 +1,10 @@
 # Changelog
 
+## 41.13.0 - 2023-04-06
+* [#2672](https://github.com/stripe/stripe-dotnet/pull/2672) Update generated code
+  * Add support for `Country` on `PaymentMethodLink`
+  * Add support for `StatusDetails` on `PaymentMethodUsBankAccount`
+
 ## 41.12.0 - 2023-03-30
 * [#2667](https://github.com/stripe/stripe-dotnet/pull/2667) Update generated code
   * Remove support for `Create` method on resource `Tax.Transaction`
