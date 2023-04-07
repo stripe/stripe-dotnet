@@ -208,6 +208,11 @@ namespace Stripe
         public const string CustomerUpdated = "customer.updated";
 
         /// <summary>
+        /// Occurs whenever a new customer cash balance transaction is created.
+        /// </summary>
+        public const string CustomerCashBalanceTransactionCreated = "customer_cash_balance_transaction.created";
+
+        /// <summary>
         /// Occurs whenever a coupon is attached to a customer.
         /// </summary>
         public const string CustomerDiscountCreated = "customer.discount.created";
@@ -253,6 +258,12 @@ namespace Stripe
         public const string CustomerSubscriptionDeleted = "customer.subscription.deleted";
 
         /// <summary>
+        /// Occurs whenever a customer’s subscription is paused.
+        /// Only applies when subscriptions enter <c>status=paused</c>, not when payment collection is paused.
+        /// </summary>
+        public const string CustomerSubscriptionPaused = "customer.subscription.paused";
+
+        /// <summary>
         /// Occurs whenever a customer's subscription's pending update is
         /// applied, and the subscription is updated.
         /// </summary>
@@ -263,6 +274,12 @@ namespace Stripe
         /// before the related invoice is paid.
         /// </summary>
         public const string CustomerSubscriptionPendingUpdateExpired = "customer.subscription.pending_update_expired";
+
+        /// <summary>
+        /// Occurs whenever a customer’s subscription is no longer paused.
+        /// Only applies when a <c>status=paused</c> subscription is resumed, not when payment collection is resumed.
+        /// </summary>
+        public const string CustomerSubscriptionResumed = "customer.subscription.resumed";
 
         /// <summary>
         /// Occurs three days before the trial period of a subscription is scheduled to end.
@@ -601,6 +618,11 @@ namespace Stripe
         public const string PayoutFailed = "payout.failed";
 
         /// <summary>
+        /// Occurs whenever balance transactions paid out in an automatic payout can be queried.
+        /// </summary>
+        public const string PayoutReconciliationCompleted = "payout.reconciliation_completed";
+
+        /// <summary>
         /// Occurs whenever a payout is *expected* to be available in the destination account.
         /// If the payout fails, a <see cref="PayoutFailed"/> notification is also sent, at a later
         /// time.
@@ -726,6 +748,16 @@ namespace Stripe
         /// Occurs whenever a recipient is updated.
         /// </summary>
         public const string RecipientUpdated = "recipient.updated";
+
+        /// <summary>
+        /// Occurs whenever a refund from a customer’s cash balance is created.
+        /// </summary>
+        public const string RefundCreated = "refund.created";
+
+        /// <summary>
+        /// Occurs whenever a refund from a customer’s cash balance is updated.
+        /// </summary>
+        public const string RefundUpdated = "refund.updated";
 
         /// <summary>
         /// Occurs whenever a requested <see cref="Reporting.ReportRun"/> failed to complete.
