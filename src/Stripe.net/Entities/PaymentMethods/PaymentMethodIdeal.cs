@@ -21,7 +21,8 @@ namespace Stripe
         /// The Bank Identifier Code of the customer's bank, if the bank was provided.
         /// One of: <c>ABNANL2A</c>, <c>ASNBNL21</c>, <c>BITSNL2A</c>, <c>BUNQNL2A</c>,
         /// <c>FVLBNL22</c>, <c>HANDNL2A</c>, <c>INGBNL2A</c>, <c>KNABNL2H</c>, <c>MOYONL21</c>,
-        /// <c>RABONL2U</c>, <c>RBRBNL21</c>, <c>REVOLT21</c>, <c>SNSBNL2A</c>, or <c>TRIONL2U</c>.
+        /// <c>RABONL2U</c>, <c>RBRBNL21</c>, <c>REVOIE23</c>, <c>REVOLT21</c>, <c>SNSBNL2A</c>, or
+        /// <c>TRIONL2U</c>.
         /// </summary>
         [JsonProperty("bic")]
         public string Bic { get; set; }
