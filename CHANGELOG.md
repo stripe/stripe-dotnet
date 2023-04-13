@@ -1,5 +1,12 @@
 # Changelog
 
+## 41.14.0-beta.2 - 2023-04-13
+* [#2675](https://github.com/stripe/stripe-dotnet/pull/2675) Update generated code for beta
+  * Add support for `CollectPaymentMethod` and `ConfirmPaymentIntent` methods on resource `Terminal.Reader`
+  * Add support for `PaypalPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `CollectPaymentMethod` and `ConfirmPaymentIntent` on `TerminalReaderAction`
+  * Add support for `StripeAccount` on `TerminalReaderActionProcessPaymentIntent` and `TerminalReaderActionRefundPayment`
+
 ## 41.14.0-beta.1 - 2023-04-06
 * [#2671](https://github.com/stripe/stripe-dotnet/pull/2671) Update generated code for beta
   * Add support for `TreasuryTransaction` on `CapitalFinancingTransactionListOptions`
