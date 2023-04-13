@@ -4,8 +4,14 @@ namespace Stripe.Terminal
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ReaderActionProcessPaymentIntent : StripeEntity<ReaderActionProcessPaymentIntent>
+    public class ReaderActionCollectPaymentMethod : StripeEntity<ReaderActionCollectPaymentMethod>
     {
+        /// <summary>
+        /// Represents a per-transaction override of a reader configuration.
+        /// </summary>
+        [JsonProperty("collect_config")]
+        public ReaderActionCollectPaymentMethodCollectConfig CollectConfig { get; set; }
+
         #region Expandable PaymentIntent
 
         /// <summary>
@@ -38,10 +44,17 @@ namespace Stripe.Terminal
         #endregion
 
         /// <summary>
-        /// Represents a per-transaction override of a reader configuration.
+        /// PaymentMethod objects represent your customer's payment instruments. You can use them
+        /// with <a href="https://stripe.com/docs/payments/payment-intents">PaymentIntents</a> to
+        /// collect payments or save them to Customer objects to store instrument details for future
+        /// payments.
+        ///
+        /// Related guides: <a href="https://stripe.com/docs/payments/payment-methods">Payment
+        /// Methods</a> and <a href="https://stripe.com/docs/payments/more-payment-scenarios">More
+        /// Payment Scenarios</a>.
         /// </summary>
-        [JsonProperty("process_config")]
-        public ReaderActionProcessPaymentIntentProcessConfig ProcessConfig { get; set; }
+        [JsonProperty("payment_method")]
+        public PaymentMethod PaymentMethod { get; set; }
 
         [JsonProperty("stripe_account")]
         public string StripeAccount { get; set; }

@@ -221,6 +221,14 @@ namespace Stripe
         public string PaynowPayments { get; set; }
 
         /// <summary>
+        /// The status of the PayPal payments capability of the account, or whether the account can
+        /// directly process PayPal charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("paypal_payments")]
+        public string PaypalPayments { get; set; }
+
+        /// <summary>
         /// The status of the promptpay payments capability of the account, or whether the account
         /// can directly process promptpay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

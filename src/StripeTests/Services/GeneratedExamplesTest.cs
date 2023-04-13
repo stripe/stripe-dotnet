@@ -1661,6 +1661,26 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestPaymentIntentServiceCreate3()
+        {
+            var options = new PaymentIntentCreateOptions
+            {
+                Amount = 200,
+                Currency = "usd",
+                PaymentMethodData = new PaymentIntentPaymentMethodDataOptions
+                {
+                    Type = "p24",
+                    P24 = new PaymentIntentPaymentMethodDataP24Options
+                    {
+                        Bank = "blik",
+                    },
+                },
+            };
+            var service = new PaymentIntentService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestPaymentIntentServiceIncrementAuthorization()
         {
             var options = new PaymentIntentIncrementAuthorizationOptions

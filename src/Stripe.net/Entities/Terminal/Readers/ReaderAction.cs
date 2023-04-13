@@ -12,6 +12,18 @@ namespace Stripe.Terminal
         public ReaderActionCollectInputs CollectInputs { get; set; }
 
         /// <summary>
+        /// Represents a reader action to collect a payment method.
+        /// </summary>
+        [JsonProperty("collect_payment_method")]
+        public ReaderActionCollectPaymentMethod CollectPaymentMethod { get; set; }
+
+        /// <summary>
+        /// Represents a reader action to confirm a payment.
+        /// </summary>
+        [JsonProperty("confirm_payment_intent")]
+        public ReaderActionConfirmPaymentIntent ConfirmPaymentIntent { get; set; }
+
+        /// <summary>
         /// Failure code, only set if status is <c>failed</c>.
         /// </summary>
         [JsonProperty("failure_code")]
@@ -56,7 +68,8 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// Type of action performed by the reader.
-        /// One of: <c>collect_inputs</c>, <c>process_payment_intent</c>,
+        /// One of: <c>collect_inputs</c>, <c>collect_payment_method</c>,
+        /// <c>confirm_payment_intent</c>, <c>process_payment_intent</c>,
         /// <c>process_setup_intent</c>, <c>refund_payment</c>, or <c>set_reader_display</c>.
         /// </summary>
         [JsonProperty("type")]

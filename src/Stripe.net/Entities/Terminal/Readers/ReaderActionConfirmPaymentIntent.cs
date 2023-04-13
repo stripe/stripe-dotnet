@@ -4,7 +4,7 @@ namespace Stripe.Terminal
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class ReaderActionProcessPaymentIntent : StripeEntity<ReaderActionProcessPaymentIntent>
+    public class ReaderActionConfirmPaymentIntent : StripeEntity<ReaderActionConfirmPaymentIntent>
     {
         #region Expandable PaymentIntent
 
@@ -36,12 +36,6 @@ namespace Stripe.Terminal
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
-
-        /// <summary>
-        /// Represents a per-transaction override of a reader configuration.
-        /// </summary>
-        [JsonProperty("process_config")]
-        public ReaderActionProcessPaymentIntentProcessConfig ProcessConfig { get; set; }
 
         [JsonProperty("stripe_account")]
         public string StripeAccount { get; set; }
