@@ -20,26 +20,16 @@ namespace Stripe.Tax
         public string Country { get; set; }
 
         /// <summary>
+        /// Specific options for a registration in the specified <c>country</c>.
+        /// </summary>
+        [JsonProperty("country_options")]
+        public RegistrationCountryOptionsOptions CountryOptions { get; set; }
+
+        /// <summary>
         /// If set, the Tax Registration stops being active at this time. If not set, the Tax
         /// Registration will be active indefinitely. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("expires_at")]
         public long? ExpiresAt { get; set; }
-
-        /// <summary>
-        /// State, county, province, or region.
-        /// </summary>
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        /// <summary>
-        /// The type of the Tax Registration. See <a
-        /// href="https://stripe.com/docs/tax/registering">our guide</a> for more information about
-        /// registration types.
-        /// One of: <c>domestic_small_seller</c>, <c>ioss</c>, <c>simplified</c>, <c>standard</c>,
-        /// <c>vat_oss_non_union</c>, or <c>vat_oss_union</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
     }
 }
