@@ -1,5 +1,11 @@
 # Changelog
 
+## 41.14.0-beta.3 - 2023-04-20
+* [#2680](https://github.com/stripe/stripe-dotnet/pull/2680) Update generated code for beta
+  * Add support for `Zip` on `PaymentIntentPaymentMethodOptionsOptions` and `PaymentIntentPaymentMethodOptions`
+  * Add support for `CountryOptions` on `TaxRegistrationCreateOptions` and `TaxRegistration`
+  * Remove support for `State` and `Type` on `TaxRegistrationCreateOptions` and `TaxRegistration`
+
 ## 41.14.0-beta.2 - 2023-04-13
 * [#2675](https://github.com/stripe/stripe-dotnet/pull/2675) Update generated code for beta
   * Add support for `CollectPaymentMethod` and `ConfirmPaymentIntent` methods on resource `Terminal.Reader`
