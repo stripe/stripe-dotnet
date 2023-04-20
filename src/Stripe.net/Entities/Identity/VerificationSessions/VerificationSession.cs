@@ -113,6 +113,9 @@ namespace Stripe.Identity
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        /// A set of options for the session’s verification checks.
+        /// </summary>
         [JsonProperty("options")]
         public VerificationSessionOptions Options { get; set; }
 

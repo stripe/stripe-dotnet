@@ -8,7 +8,7 @@ namespace Stripe.Tax
     /// on payments within a region, enabling you to <a
     /// href="https://stripe.com/docs/tax">automatically collect tax</a>.
     ///
-    /// Stripe will not register on your behalf with the relevant authorities when you create a
+    /// Stripe doesn't register on your behalf with the relevant authorities when you create a
     /// Tax <c>Registration</c> object. For more information on how to register to collect tax,
     /// see <a href="https://stripe.com/docs/tax/registering">our guide</a>.
     /// </summary>
@@ -39,6 +39,9 @@ namespace Stripe.Tax
         [JsonProperty("country")]
         public string Country { get; set; }
 
+        [JsonProperty("country_options")]
+        public RegistrationCountryOptions CountryOptions { get; set; }
+
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
@@ -60,26 +63,11 @@ namespace Stripe.Tax
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// State, county, province, or region.
-        /// </summary>
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        /// <summary>
         /// The status of the registration. This field is present for convenience and can be deduced
         /// from <c>active_from</c> and <c>expires_at</c>.
         /// One of: <c>active</c>, <c>expired</c>, or <c>scheduled</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
-
-        /// <summary>
-        /// The type of the registration. See <a href="https://stripe.com/docs/tax/registering">our
-        /// guide</a> for more information about registration types.
-        /// One of: <c>domestic_small_seller</c>, <c>ioss</c>, <c>simplified</c>, <c>standard</c>,
-        /// <c>vat_oss_non_union</c>, or <c>vat_oss_union</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
     }
 }
