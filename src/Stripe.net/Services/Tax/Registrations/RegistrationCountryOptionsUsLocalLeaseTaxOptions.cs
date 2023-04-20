@@ -6,7 +6,8 @@ namespace Stripe.Tax
     public class RegistrationCountryOptionsUsLocalLeaseTaxOptions : INestedOptions
     {
         /// <summary>
-        /// A FIPS/GNIS code representing the local jurisdiction.
+        /// A <a href="https://www.census.gov/library/reference/code-lists/ansi.html">FIPS code</a>
+        /// representing the local jurisdiction.
         /// </summary>
         [JsonProperty("jurisdiction")]
         public string Jurisdiction { get; set; }

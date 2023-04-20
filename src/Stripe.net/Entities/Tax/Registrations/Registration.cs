@@ -8,7 +8,7 @@ namespace Stripe.Tax
     /// on payments within a region, enabling you to <a
     /// href="https://stripe.com/docs/tax">automatically collect tax</a>.
     ///
-    /// Stripe will not register on your behalf with the relevant authorities when you create a
+    /// Stripe doesn't register on your behalf with the relevant authorities when you create a
     /// Tax <c>Registration</c> object. For more information on how to register to collect tax,
     /// see <a href="https://stripe.com/docs/tax/registering">our guide</a>.
     /// </summary>
