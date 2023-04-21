@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PaymentIntentCaptureOptions : BaseOptions
+    public class PaymentIntentCaptureOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// The amount to capture from the PaymentIntent, which must be less than or equal to the
@@ -23,6 +24,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// For non-card charges, you can use this value as the complete description that appears on
