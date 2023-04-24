@@ -47,10 +47,10 @@ how to use the library.
 
 Stripe authenticates API requests using your account’s secret key, which you can find in the Stripe Dashboard. By default, secret keys can be used to perform any API request without restriction.
 
-Use `Stripe.ApiKey` property to set the secret key.
+Use `StripeConfiguration.ApiKey` property to set the secret key.
 
 ``` C#
-Stripe.ApiKey = "sk_test_...";
+StripeConfiguration.ApiKey = "sk_test_...";
 ```
 
 ### Creating a resource
