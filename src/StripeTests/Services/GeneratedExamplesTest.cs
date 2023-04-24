@@ -2014,6 +2014,20 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestPlanServiceCreate2()
+        {
+            var options = new PlanCreateOptions
+            {
+                Amount = 2000,
+                Currency = "usd",
+                Interval = "month",
+                Product = new PlanProductOptions { Name = "My product" },
+            };
+            var service = new PlanService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestPlanServiceDelete()
         {
             var service = new PlanService(this.StripeClient);
