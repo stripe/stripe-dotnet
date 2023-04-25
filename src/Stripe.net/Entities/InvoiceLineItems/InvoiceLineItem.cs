@@ -91,38 +91,12 @@ namespace Stripe
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 
-        #region Expandable InvoiceItem
-
         /// <summary>
-        /// (ID of the InvoiceItem)
         /// The ID of the <a href="https://stripe.com/docs/api/invoiceitems">invoice item</a>
         /// associated with this line item if any.
         /// </summary>
-        [JsonIgnore]
-        public string InvoiceItemId
-        {
-            get => this.InternalInvoiceItem?.Id;
-            set => this.InternalInvoiceItem = SetExpandableFieldId(value, this.InternalInvoiceItem);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// The ID of the <a href="https://stripe.com/docs/api/invoiceitems">invoice item</a>
-        /// associated with this line item if any.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-        public InvoiceItem InvoiceItem
-        {
-            get => this.InternalInvoiceItem?.ExpandedObject;
-            set => this.InternalInvoiceItem = SetExpandableFieldObject(value, this.InternalInvoiceItem);
-        }
-
         [JsonProperty("invoice_item")]
-        [JsonConverter(typeof(ExpandableFieldConverter<InvoiceItem>))]
-        internal ExpandableField<InvoiceItem> InternalInvoiceItem { get; set; }
-        #endregion
+        public string InvoiceItem { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
@@ -174,69 +148,18 @@ namespace Stripe
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
 
-        #region Expandable Subscription
-
         /// <summary>
-        /// (ID of the Subscription)
         /// The subscription that the invoice item pertains to, if any.
         /// </summary>
-        [JsonIgnore]
-        public string SubscriptionId
-        {
-            get => this.InternalSubscription?.Id;
-            set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// The subscription that the invoice item pertains to, if any.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-        public Subscription Subscription
-        {
-            get => this.InternalSubscription?.ExpandedObject;
-            set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
-        }
-
         [JsonProperty("subscription")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
-        internal ExpandableField<Subscription> InternalSubscription { get; set; }
-        #endregion
-
-        #region Expandable SubscriptionItem
+        public string Subscription { get; set; }
 
         /// <summary>
-        /// (ID of the SubscriptionItem)
         /// The subscription item that generated this line item. Left empty if the line item is not
         /// an explicit result of a subscription.
         /// </summary>
-        [JsonIgnore]
-        public string SubscriptionItemId
-        {
-            get => this.InternalSubscriptionItem?.Id;
-            set => this.InternalSubscriptionItem = SetExpandableFieldId(value, this.InternalSubscriptionItem);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// The subscription item that generated this line item. Left empty if the line item is not
-        /// an explicit result of a subscription.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-        public SubscriptionItem SubscriptionItem
-        {
-            get => this.InternalSubscriptionItem?.ExpandedObject;
-            set => this.InternalSubscriptionItem = SetExpandableFieldObject(value, this.InternalSubscriptionItem);
-        }
-
         [JsonProperty("subscription_item")]
-        [JsonConverter(typeof(ExpandableFieldConverter<SubscriptionItem>))]
-        internal ExpandableField<SubscriptionItem> InternalSubscriptionItem { get; set; }
-        #endregion
+        public string SubscriptionItem { get; set; }
 
         /// <summary>
         /// The amount of tax calculated per tax rate for this line item.
