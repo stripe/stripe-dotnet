@@ -2,6 +2,7 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class RegistrationCreateOptions : BaseOptions
     {
@@ -10,7 +11,8 @@ namespace Stripe.Tax
         /// epoch.
         /// </summary>
         [JsonProperty("active_from")]
-        public long? ActiveFrom { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<long?, RegistrationActiveFrom> ActiveFrom { get; set; }
 
         /// <summary>
         /// Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO
