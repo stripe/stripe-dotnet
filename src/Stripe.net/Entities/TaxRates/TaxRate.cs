@@ -94,7 +94,8 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// This represents the tax rate percent out of 100.
+        /// Tax rate percentage out of 100. For tax calculations with automatic_tax[enabled]=true,
+        /// this percentage includes the statutory tax rate of non-taxable jurisdictions.
         /// </summary>
         [JsonProperty("percentage")]
         public decimal Percentage { get; set; }
