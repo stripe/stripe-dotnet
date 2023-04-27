@@ -4,7 +4,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// Indicates that registration becomes active now.
-        ///</summary>
+        /// </summary>
         public static readonly RegistrationActiveFrom Now
             = new RegistrationActiveFrom("now");
 

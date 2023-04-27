@@ -4,7 +4,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// Indicates that registration expires now.
-        ///</summary>
+        /// </summary>
         public static readonly RegistrationExpiresAt Now
             = new RegistrationExpiresAt("now");
 
