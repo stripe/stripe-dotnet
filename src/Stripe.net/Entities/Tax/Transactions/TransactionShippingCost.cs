@@ -21,7 +21,9 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The ID of an existing <a
-        /// href="https://stripe.com/docs/api/shipping_rates/object">ShippingRate</a>.
+        /// href="https://stripe.com/docs/api/shipping_rates/object">ShippingRate</a>. (It is not
+        /// populated for the transaction resource object and will be removed in the next API
+        /// version.).
         /// </summary>
         [JsonProperty("shipping_rate")]
         public string ShippingRate { get; set; }
@@ -35,7 +37,8 @@ namespace Stripe.Tax
         public string TaxBehavior { get; set; }
 
         /// <summary>
-        /// Detailed account of taxes relevant to shipping cost.
+        /// Detailed account of taxes relevant to shipping cost. (It is not populated for the
+        /// transaction resource object and will be removed in the next API version.).
         /// </summary>
         [JsonProperty("tax_breakdown")]
         public List<TransactionShippingCostTaxBreakdown> TaxBreakdown { get; set; }
