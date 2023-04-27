@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Tax
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class TransactionShippingCost : StripeEntity<TransactionShippingCost>
@@ -32,6 +33,12 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("tax_behavior")]
         public string TaxBehavior { get; set; }
+
+        /// <summary>
+        /// Detailed account of taxes relevant to shipping cost.
+        /// </summary>
+        [JsonProperty("tax_breakdown")]
+        public List<TransactionShippingCostTaxBreakdown> TaxBreakdown { get; set; }
 
         /// <summary>
         /// The <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID used for
