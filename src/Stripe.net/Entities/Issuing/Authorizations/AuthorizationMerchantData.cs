@@ -57,6 +57,12 @@ namespace Stripe.Issuing
         public string State { get; set; }
 
         /// <summary>
+        /// An ID assigned by the seller to the location of the sale.
+        /// </summary>
+        [JsonProperty("terminal_id")]
+        public string TerminalId { get; set; }
+
+        /// <summary>
         /// URL provided by the merchant on a 3DS request.
         /// </summary>
         [JsonProperty("url")]

@@ -2,20 +2,25 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class RegistrationUpdateOptions : BaseOptions
     {
         /// <summary>
-        /// Time at which the registration becomes active. Measured in seconds since the Unix epoch.
+        /// Time at which the registration becomes active. It can be either <c>now</c> to indicate
+        /// the current time, or a timestamp measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("active_from")]
-        public long? ActiveFrom { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<long?, RegistrationActiveFrom> ActiveFrom { get; set; }
 
         /// <summary>
         /// If set, the registration stops being active at this time. If not set, the registration
-        /// will be active indefinitely. Measured in seconds since the Unix epoch.
+        /// will be active indefinitely. It can be either <c>now</c> to indicate the current time,
+        /// or a timestamp measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("expires_at")]
-        public long? ExpiresAt { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<long?, RegistrationExpiresAt> ExpiresAt { get; set; }
     }
 }
