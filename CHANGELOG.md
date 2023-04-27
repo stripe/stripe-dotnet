@@ -1,5 +1,14 @@
 # Changelog
 
+## 41.15.0-beta.1 - 2023-04-27
+* [#2683](https://github.com/stripe/stripe-dotnet/pull/2683) Update generated code for beta
+  * Add support for `BillingCycleAnchor` and `ProrationBehavior` on `CheckoutSessionSubscriptionDataOptions`
+  * Add support for `TerminalId` on `IssuingAuthorizationMerchantData` and `IssuingTransactionMerchantData`
+  * Add support for `Metadata` on `PaymentIntentCaptureOptions`
+  * Add support for `Checks` on `SetupAttemptPaymentMethodDetailsCard`
+  * Add support for `TaxBreakdown` on `TaxCalculationShippingCost` and `TaxTransactionShippingCost`
+  * Change type of `TaxRegistrationActiveFromOptions` and `TaxRegistrationExpiresAtOptions` from `longInteger` to `longInteger | literal('now')`
+
 ## 41.14.0-beta.3 - 2023-04-20
 * [#2680](https://github.com/stripe/stripe-dotnet/pull/2680) Update generated code for beta
   * Add support for `Zip` on `PaymentIntentPaymentMethodOptionsOptions` and `PaymentIntentPaymentMethodOptions`
