@@ -20,6 +20,13 @@ namespace Stripe.Checkout
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
+        /// A future timestamp to anchor the subscription's billing cycle for new subscriptions.
+        /// </summary>
+        [JsonProperty("billing_cycle_anchor")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? BillingCycleAnchor { get; set; }
+
+        /// <summary>
         /// The ID of the coupon to apply to this subscription. A coupon applied to a subscription
         /// will only affect invoices created for that particular subscription.
         /// </summary>
@@ -56,6 +63,14 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("on_behalf_of")]
         public string OnBehalfOf { get; set; }
+
+        /// <summary>
+        /// Determines how to handle prorations resulting from the <c>billing_cycle_anchor</c>. If
+        /// no value is passed, the default is <c>create_prorations</c>.
+        /// One of: <c>create_prorations</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("proration_behavior")]
+        public string ProrationBehavior { get; set; }
 
         /// <summary>
         /// If specified, the funds from the subscription's invoices will be transferred to the
