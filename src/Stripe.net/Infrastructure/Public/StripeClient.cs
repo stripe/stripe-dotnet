@@ -118,6 +118,27 @@ namespace Stripe
             return ProcessResponse<T>(response);
         }
 
+        /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="path">The path of the request.</param>
+        /// <param name="options">The parameters of the request.</param>
+        /// <param name="requestOptions">The special modifiers of the request.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>The task object representing the asynchronous operation.</returns>
+        /// <exception cref="StripeException">Thrown if the request fails.</exception>
+        public async Task<StripeResponse> RawRequestAsync(
+            HttpMethod method,
+            string path,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken = default)
+        {
+            var request = new StripeRequest(this, method, path, options, requestOptions);
+
+            return await this.HttpClient.MakeRequestAsync(request, cancellationToken)
+                .ConfigureAwait(false);
+        }
+
         /// <inheritdoc/>
         public async Task<Stream> RequestStreamingAsync(
             HttpMethod method,

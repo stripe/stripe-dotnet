@@ -179,6 +179,33 @@ namespace StripeTests
         }
 
         [Fact]
+        public async Task RawRequestAsync_Form()
+        {
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var myOptions = new BaseOptions {
+                ExtraParams = new System.Collections.Generic.Dictionary<string, object> {
+                    { "foo", "bar" },
+                },
+            };
+            var rawresponse = await this.stripeClient.RawRequestAsync(
+                HttpMethod.Post,
+                "/v1/charges",
+                myOptions,
+                this.requestOptions);
+
+            // Print the charge for Debugging
+            Assert.Equal("{\"id\": \"ch_123\"}", rawresponse.Content);
+
+            // Assert that the expected parameters were sent.
+            Assert.Equal("foo=bar", this.httpClient.
+            // Assert.NotNull(charge);
+            // Assert.Equal("ch_123", charge.Id);
+            // Assert.Equal(response, charge.StripeResponse);
+        }
+
+        [Fact]
         public async Task RequestStreamingAsync_OkResponse_InvalidJson()
         {
             var streamedResponse = new StripeStreamedResponse(
