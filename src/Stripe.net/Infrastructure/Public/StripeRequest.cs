@@ -172,7 +172,10 @@ namespace Stripe
 
             if (optionsEncoding.Equals(RawRequestOptions.Encoding.JSON))
             {
-                return JsonContent.Create(options, typeof(BaseOptions));
+                return new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(options))
+                {
+                    Headers = { ContentType = new MediaTypeHeaderValue("application/json") },
+                };
             }
 
             return FormEncoder.CreateHttpContent(options);
