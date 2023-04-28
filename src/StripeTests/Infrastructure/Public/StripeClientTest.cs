@@ -184,9 +184,13 @@ namespace StripeTests
             var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
             this.httpClient.Response = response;
 
-            var myOptions = new BaseOptions {
-                ExtraParams = new System.Collections.Generic.Dictionary<string, object> {
-                    { "foo", "bar" },
+            var myOptions = new BaseOptions
+            {
+                ExtraParams = new System.Collections.Generic.Dictionary<string, object>
+                {
+                    {
+                        "foo", "bar"
+                    },
                 },
             };
             var rawresponse = await this.stripeClient.RawRequestAsync(
@@ -199,10 +203,7 @@ namespace StripeTests
             Assert.Equal("{\"id\": \"ch_123\"}", rawresponse.Content);
 
             // Assert that the expected parameters were sent.
-            Assert.Equal("foo=bar", this.httpClient.
-            // Assert.NotNull(charge);
-            // Assert.Equal("ch_123", charge.Id);
-            // Assert.Equal(response, charge.StripeResponse);
+            Assert.Equal("foo=bar", await this.httpClient.LastRequest.Content.ReadAsStringAsync());
         }
 
         [Fact]
@@ -306,10 +307,14 @@ namespace StripeTests
 
             public StripeStreamedResponse StreamedResponse { get; set; }
 
+            public StripeRequest LastRequest { get; set; }
+
             public Task<StripeResponse> MakeRequestAsync(
                 StripeRequest request,
                 CancellationToken cancellationToken = default)
             {
+                this.LastRequest = request;
+
                 if (this.Response == null)
                 {
                     throw new StripeTestException("Response is null");
@@ -322,6 +327,8 @@ namespace StripeTests
                 StripeRequest request,
                 CancellationToken cancellationToken = default)
             {
+                this.LastRequest = request;
+
                 if (this.StreamedResponse == null)
                 {
                     throw new StripeTestException("StreamedResponse is null");

@@ -5,6 +5,22 @@ namespace Stripe
     public class RequestOptions
     {
         /// <summary>
+        /// Enum for Encoding.
+        /// </summary>
+        public enum Encoding
+        {
+            /// <summary>
+            /// Represents URL form encoding
+            /// </summary>
+            FORM,
+
+            /// <summary>
+            /// Represents JSON encoding
+            /// </summary>
+            JSON,
+        }
+
+        /// <summary>
         /// Gets or sets the <a href="https://stripe.com/docs/api/authentication?lang=dotnet">API
         /// key</a> to use for the request.
         /// </summary>
@@ -38,6 +54,9 @@ namespace Stripe
         /// is only used for creating ephemeral keys, which require a specific API version.
         /// </remarks>
         internal string StripeVersion { get; set; }
+
+        /// <summary>Gets or sets the options encoding for the request.</summary>
+        internal Encoding OptionsEncoding { get; set; }
 
         internal RequestOptions Clone()
         {

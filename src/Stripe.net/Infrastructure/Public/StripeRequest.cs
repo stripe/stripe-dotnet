@@ -4,6 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Net.Http.Headers;
+    using System.Net.Http.Json;
     using System.Text;
     using Stripe.Infrastructure;
     using Stripe.Infrastructure.FormEncoding;
@@ -42,6 +43,8 @@ namespace Stripe
             this.AuthorizationHeader = BuildAuthorizationHeader(client, requestOptions);
 
             this.StripeHeaders = BuildStripeHeaders(method, requestOptions);
+
+            this.OptionsEncoding = requestOptions.OptionsEncoding;
         }
 
         /// <summary>The HTTP method for the request (GET, POST or DELETE).</summary>
@@ -68,7 +71,9 @@ namespace Stripe
         /// For non-POST requests, this will be <c>null</c>.
         /// </summary>
         /// <remarks>This getter creates a new instance every time it is called.</remarks>
-        public HttpContent Content => BuildContent(this.Method, this.options);
+        public HttpContent Content => BuildContent(this.Method, this.options, this.OptionsEncoding);
+
+        internal RequestOptions.Encoding OptionsEncoding { get; }
 
         /// <summary>Returns a string that represents the <see cref="StripeRequest"/>.</summary>
         /// <returns>A string that represents the <see cref="StripeRequest"/>.</returns>
@@ -151,11 +156,16 @@ namespace Stripe
             return stripeHeaders;
         }
 
-        private static HttpContent BuildContent(HttpMethod method, BaseOptions options)
+        private static HttpContent BuildContent(HttpMethod method, BaseOptions options, RequestOptions.Encoding optionsEncoding)
         {
             if (method != HttpMethod.Post)
             {
                 return null;
+            }
+
+            if (optionsEncoding.Equals(RequestOptions.Encoding.JSON))
+            {
+                return JsonContent.Create(options, typeof(BaseOptions));
             }
 
             return FormEncoder.CreateHttpContent(options);
