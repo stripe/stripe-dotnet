@@ -6,7 +6,6 @@ namespace Stripe
     using System.Net.Http.Headers;
     using System.Net.Http.Json;
     using System.Text;
-    using Stripe.Infrastructure;
     using Stripe.Infrastructure.FormEncoding;
 
     /// <summary>
@@ -44,7 +43,15 @@ namespace Stripe
 
             this.StripeHeaders = BuildStripeHeaders(method, requestOptions);
 
-            this.OptionsEncoding = requestOptions.OptionsEncoding;
+            if (requestOptions.GetType() == typeof(RawRequestOptions))
+            {
+                // Set OptionsEncoding if request options is an instance of RawRequestOptions
+                this.OptionsEncoding = (requestOptions as RawRequestOptions).OptionsEncoding;
+            }
+            else
+            {
+                this.OptionsEncoding = RawRequestOptions.Encoding.FORM;
+            }
         }
 
         /// <summary>The HTTP method for the request (GET, POST or DELETE).</summary>
@@ -73,7 +80,7 @@ namespace Stripe
         /// <remarks>This getter creates a new instance every time it is called.</remarks>
         public HttpContent Content => BuildContent(this.Method, this.options, this.OptionsEncoding);
 
-        internal RequestOptions.Encoding OptionsEncoding { get; }
+        internal RawRequestOptions.Encoding OptionsEncoding { get; }
 
         /// <summary>Returns a string that represents the <see cref="StripeRequest"/>.</summary>
         /// <returns>A string that represents the <see cref="StripeRequest"/>.</returns>
@@ -156,14 +163,14 @@ namespace Stripe
             return stripeHeaders;
         }
 
-        private static HttpContent BuildContent(HttpMethod method, BaseOptions options, RequestOptions.Encoding optionsEncoding)
+        private static HttpContent BuildContent(HttpMethod method, BaseOptions options, RawRequestOptions.Encoding optionsEncoding)
         {
             if (method != HttpMethod.Post)
             {
                 return null;
             }
 
-            if (optionsEncoding.Equals(RequestOptions.Encoding.JSON))
+            if (optionsEncoding.Equals(RawRequestOptions.Encoding.JSON))
             {
                 return JsonContent.Create(options, typeof(BaseOptions));
             }
