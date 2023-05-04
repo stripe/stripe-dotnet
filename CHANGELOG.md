@@ -1,5 +1,10 @@
 # Changelog
 
+## 41.15.0 - 2023-05-04
+* [#2687](https://github.com/stripe/stripe-dotnet/pull/2687) Update generated code
+  * Add support for `Link` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
+  * Add support for `Brand`, `Country`, `Description`, `ExpMonth`, `ExpYear`, `Fingerprint`, `Funding`, `Iin`, `Issuer`, `Last4`, `Network`, and `Wallet` on `SetupAttemptPaymentMethodDetailsCard`
+
 ## 41.15.0-beta.1 - 2023-04-27
 * [#2683](https://github.com/stripe/stripe-dotnet/pull/2683) Update generated code for beta
   * Add support for `BillingCycleAnchor` and `ProrationBehavior` on `CheckoutSessionSubscriptionDataOptions`
