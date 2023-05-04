@@ -43,7 +43,7 @@ namespace Stripe
 
             this.StripeHeaders = BuildStripeHeaders(method, requestOptions);
 
-            if (requestOptions.GetType() == typeof(RawRequestOptions))
+            if (requestOptions?.GetType() == typeof(RawRequestOptions))
             {
                 // Set OptionsEncoding if request options is an instance of RawRequestOptions
                 this.OptionsEncoding = (requestOptions as RawRequestOptions).OptionsEncoding;

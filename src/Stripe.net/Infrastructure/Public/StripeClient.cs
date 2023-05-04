@@ -118,6 +118,25 @@ namespace Stripe
             return ProcessResponse<T>(response);
         }
 
+        /// <summary>Sends a request to Stripe's API as a synchronous operation.</summary>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="path">The path of the request.</param>
+        /// <param name="options">The parameters of the request.</param>
+        /// <param name="requestOptions">The special modifiers of the request.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>The response as a StripeResponse.</returns>
+        /// <exception cref="StripeException">Thrown if the request fails.</exception>
+        public StripeResponse RawRequest(
+            HttpMethod method,
+            string path,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken = default)
+        {
+            return this.RawRequestAsync(method, path, options, requestOptions, cancellationToken)
+                .ConfigureAwait(false).GetAwaiter().GetResult();
+        }
+
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The path of the request.</param>
@@ -136,7 +155,6 @@ namespace Stripe
             // TODO (raw request) - throw error if attempt JSON encoding on non-post
             // TODO (raw request) - support non-async version
             // TODO (raw request) - README entry
-
             var request = new StripeRequest(this, method, path, options, requestOptions);
 
             return await this.HttpClient.MakeRequestAsync(request, cancellationToken)
