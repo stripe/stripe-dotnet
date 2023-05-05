@@ -11,6 +11,9 @@ namespace Stripe
         [JsonProperty("preferred_locale")]
         public string PreferredLocale { get; set; }
 
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
         [JsonProperty("reference_id")]
         public string ReferenceId { get; set; }
 

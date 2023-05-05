@@ -6,10 +6,24 @@ namespace Stripe
     public class ChargePaymentMethodDetailsPaypal : StripeEntity<ChargePaymentMethodDetailsPaypal>
     {
         /// <summary>
+        /// Owner's email. Values are provided by PayPal directly (if supported) at the time of
+        /// authorization or settlement. They cannot be set or mutated.
+        /// </summary>
+        [JsonProperty("payer_email")]
+        public string PayerEmail { get; set; }
+
+        /// <summary>
         /// PayPal account PayerID. This identifier uniquely identifies the PayPal customer.
         /// </summary>
         [JsonProperty("payer_id")]
         public string PayerId { get; set; }
+
+        /// <summary>
+        /// Owner's full name. Values provided by PayPal directly (if supported) at the time of
+        /// authorization or settlement. They cannot be set or mutated.
+        /// </summary>
+        [JsonProperty("payer_name")]
+        public string PayerName { get; set; }
 
         /// <summary>
         /// The shipping address for the customer, as supplied by the merchant at the point of
