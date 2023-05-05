@@ -1,5 +1,9 @@
 # Changelog
 
+## 41.16.0-beta.1 - 2023-05-04
+* [#2686](https://github.com/stripe/stripe-dotnet/pull/2686) Update generated code for beta
+  * Updated stable APIs to the latest version
+
 ## 41.15.0 - 2023-05-04
 * [#2687](https://github.com/stripe/stripe-dotnet/pull/2687) Update generated code
   * Add support for `Link` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
