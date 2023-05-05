@@ -118,6 +118,28 @@ namespace Stripe
             return ProcessResponse<T>(response);
         }
 
+        /// <inheritdoc/>
+        public async Task<Stream> RequestStreamingAsync(
+            HttpMethod method,
+            string path,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken = default)
+        {
+            var request = new StripeRequest(this, method, path, options, requestOptions);
+
+            var response = await this.HttpClient.MakeStreamingRequestAsync(request, cancellationToken)
+                .ConfigureAwait(false);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return response.Body;
+            }
+
+            var readResponse = await response.ToStripeResponseAsync().ConfigureAwait(false);
+            throw BuildStripeException(readResponse);
+        }
+
         /// <summary>Sends a request to Stripe's API as a synchronous operation.</summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The path of the request.</param>
@@ -160,26 +182,14 @@ namespace Stripe
                     .ConfigureAwait(false);
         }
 
-        /// <inheritdoc/>
-        public async Task<Stream> RequestStreamingAsync(
-            HttpMethod method,
-            string path,
-            BaseOptions options,
-            RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
+        /// <summary>Deserializes a JSON string into a Stripe object.</summary>
+        /// <typeparam name="T">The type of the Stripe object to deserialize to.</typeparam>
+        /// <param name="response">The HTTP response as a StripeResponse.</param>
+        /// <returns>The deserialized Stripe object from the JSON string.</returns>
+        public T Deserialize<T>(string response)
+            where T : IStripeEntity
         {
-            var request = new StripeRequest(this, method, path, options, requestOptions);
-
-            var response = await this.HttpClient.MakeStreamingRequestAsync(request, cancellationToken)
-                .ConfigureAwait(false);
-
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                return response.Body;
-            }
-
-            var readResponse = await response.ToStripeResponseAsync().ConfigureAwait(false);
-            throw BuildStripeException(readResponse);
+            return StripeEntity.FromJson<T>(response);
         }
 
         private static IHttpClient BuildDefaultHttpClient()

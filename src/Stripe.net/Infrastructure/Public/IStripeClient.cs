@@ -77,6 +77,13 @@ namespace Stripe
             RequestOptions requestOptions,
             CancellationToken cancellationToken = default);
 
+        /// <summary>Deserializes a JSON string into a Stripe object.</summary>
+        /// <typeparam name="T">The type of the Stripe object to deserialize to.</typeparam>
+        /// <param name="response">The HTTP response as a StripeResponse.</param>
+        /// <returns>The deserialized Stripe object from the JSON string.</returns>
+        T Deserialize<T>(string response)
+            where T : IStripeEntity;
+
         /// <summary>Sends a request to Stripe's API as an asynchronous operation and returns a <see cref="Stream"/> as the response.</summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The path of the request.</param>

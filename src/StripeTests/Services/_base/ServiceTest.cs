@@ -176,6 +176,12 @@ namespace StripeTests
                 return Task.FromResult(default(StripeResponse));
             }
 
+            public T Deserialize<T>(string response)
+                where T : IStripeEntity
+            {
+                return default(T);
+            }
+
             public Task<Stream> RequestStreamingAsync(
                 HttpMethod method,
                 string path,

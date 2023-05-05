@@ -9,6 +9,7 @@ namespace StripeTests
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
+    using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
@@ -240,7 +241,8 @@ namespace StripeTests
         [Fact]
         public async Task RawRequestAsync_Json()
         {
-            var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
             this.httpClient.Response = response;
 
             var myOptions = new BaseOptions
@@ -252,7 +254,7 @@ namespace StripeTests
                     },
                 },
             };
-            var rawresponse = await this.stripeClient.RawRequestAsync(
+            var rawResponse = await this.stripeClient.RawRequestAsync(
                 HttpMethod.Post,
                 "/v1/charges",
                 myOptions,
@@ -268,11 +270,38 @@ namespace StripeTests
 
             var lastRequest = this.httpClient.LastRequest;
 
-            Assert.Equal("{\"id\": \"ch_123\"}", rawresponse.Content);
+            Assert.Equal(content, rawResponse.Content);
             Assert.Equal("application/json", lastRequest.Content.Headers.GetValues("Content-Type").First());
             Assert.Equal("{\"foo\":\"bar\"}", await lastRequest.Content.ReadAsStringAsync());
             Assert.Equal("2020-08-27", lastRequest.StripeHeaders["Stripe-Version"]);
             Assert.Equal("bar", lastRequest.StripeHeaders["foo"]);
+        }
+
+        [Fact]
+        public async Task Deserialize()
+        {
+            var content = "{\"bar\": \"baz\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var myOptions = new BaseOptions
+            {
+                ExtraParams = new System.Collections.Generic.Dictionary<string, object>
+                {
+                    {
+                        "bar", "baz"
+                    },
+                },
+            };
+            var rawResponse = await this.stripeClient.RawRequestAsync(
+                HttpMethod.Post,
+                "/v1/foo",
+                myOptions,
+                this.requestOptions);
+
+            var deserialized = this.StripeClient.Deserialize<Foo>(rawResponse.Content);
+
+            Assert.Equal(typeof(Foo), deserialized.GetType());
         }
 
         [Fact]
@@ -405,6 +434,12 @@ namespace StripeTests
 
                 return Task.FromResult(this.StreamedResponse);
             }
+        }
+
+        private class Foo : StripeEntity<Foo>
+        {
+            [JsonProperty("bar")]
+            public string Bar { get; set; }
         }
     }
 }
