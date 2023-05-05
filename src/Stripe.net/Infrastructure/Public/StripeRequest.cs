@@ -4,7 +4,6 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Net.Http.Headers;
-    using System.Net.Http.Json;
     using System.Text;
     using Stripe.Infrastructure.FormEncoding;
 
@@ -158,6 +157,15 @@ namespace Stripe
             else if (method == HttpMethod.Post)
             {
                 stripeHeaders.Add("Idempotency-Key", Guid.NewGuid().ToString());
+            }
+
+            var additionalHeaders = (requestOptions as RawRequestOptions)?.AdditionalHeaders;
+            if (additionalHeaders != null)
+            {
+                foreach (KeyValuePair<string, string> item in additionalHeaders)
+                {
+                    stripeHeaders[item.Key] = item.Value;
+                }
             }
 
             return stripeHeaders;

@@ -153,12 +153,11 @@ namespace Stripe
             CancellationToken cancellationToken = default)
         {
             // TODO (raw request) - throw error if attempt JSON encoding on non-post
-            // TODO (raw request) - support non-async version
             // TODO (raw request) - README entry
             var request = new StripeRequest(this, method, path, options, requestOptions);
 
             return await this.HttpClient.MakeRequestAsync(request, cancellationToken)
-                .ConfigureAwait(false);
+                    .ConfigureAwait(false);
         }
 
         /// <inheritdoc/>

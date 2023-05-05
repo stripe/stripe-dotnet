@@ -154,6 +154,28 @@ namespace StripeTests
                 return Task.FromResult(default(T));
             }
 
+            public StripeResponse RawRequest(
+                HttpMethod method,
+                string path,
+                BaseOptions options,
+                RequestOptions requestOptions,
+                CancellationToken cancellationToken = default)
+            {
+                this.LastOptions = options;
+                return default(StripeResponse);
+            }
+
+            public Task<StripeResponse> RawRequestAsync(
+                HttpMethod method,
+                string path,
+                BaseOptions options,
+                RequestOptions requestOptions,
+                CancellationToken cancellationToken = default)
+            {
+                this.LastOptions = options;
+                return Task.FromResult(default(StripeResponse));
+            }
+
             public Task<Stream> RequestStreamingAsync(
                 HttpMethod method,
                 string path,

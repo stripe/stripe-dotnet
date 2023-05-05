@@ -47,6 +47,36 @@ namespace Stripe
             CancellationToken cancellationToken = default)
             where T : IStripeEntity;
 
+        /// <summary>Sends a request to Stripe's API as a synchronous operation.</summary>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="path">The path of the request.</param>
+        /// <param name="options">The parameters of the request.</param>
+        /// <param name="requestOptions">The special modifiers of the request.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>The response as a StripeResponse.</returns>
+        /// <exception cref="StripeException">Thrown if the request fails.</exception>
+        StripeResponse RawRequest(
+            HttpMethod method,
+            string path,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="path">The path of the request.</param>
+        /// <param name="options">The parameters of the request.</param>
+        /// <param name="requestOptions">The special modifiers of the request.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>The task object representing the asynchronous operation.</returns>
+        /// <exception cref="StripeException">Thrown if the request fails.</exception>
+        Task<StripeResponse> RawRequestAsync(
+            HttpMethod method,
+            string path,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken = default);
+
         /// <summary>Sends a request to Stripe's API as an asynchronous operation and returns a <see cref="Stream"/> as the response.</summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The path of the request.</param>
