@@ -18,6 +18,12 @@ namespace Stripe
         public string ReferenceId { get; set; }
 
         /// <summary>
+        /// The risk correlation ID for an on-session payment using a saved PayPal payment method.
+        /// </summary>
+        [JsonProperty("risk_correlation_id")]
+        public string RiskCorrelationId { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
