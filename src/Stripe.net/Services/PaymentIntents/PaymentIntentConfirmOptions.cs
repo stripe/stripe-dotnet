@@ -124,8 +124,8 @@ namespace Stripe
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
-        /// Set to <c>true</c> only when using manual confirmation and the iOS or Android SDKs to
-        /// handle additional authentication steps.
+        /// Set to <c>true</c> when confirming server-side and using Stripe.js, iOS, or Android
+        /// client-side SDKs to handle the next actions.
         /// </summary>
         [JsonProperty("use_stripe_sdk")]
         public bool? UseStripeSdk { get; set; }
