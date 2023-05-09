@@ -26,6 +26,13 @@ namespace Stripe
         public string PayerName { get; set; }
 
         /// <summary>
+        /// The level of protection offered as defined by PayPal Seller Protection for Merchants,
+        /// for this transaction.
+        /// </summary>
+        [JsonProperty("seller_protection")]
+        public ChargePaymentMethodDetailsPaypalSellerProtection SellerProtection { get; set; }
+
+        /// <summary>
         /// The shipping address for the customer, as supplied by the merchant at the point of
         /// payment execution. This shipping address will not be updated if the merchant updates the
         /// shipping address on the PaymentIntent after the PaymentIntent was successfully
