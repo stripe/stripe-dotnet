@@ -5,15 +5,28 @@ namespace Stripe
 
     public class OrderPaymentSettingsPaymentMethodOptionsPaypalOptions : INestedOptions
     {
+        /// <summary>
+        /// Controls when the funds will be captured from the customer's account.
+        /// </summary>
         [JsonProperty("capture_method")]
         public string CaptureMethod { get; set; }
 
         [JsonProperty("preferred_locale")]
         public string PreferredLocale { get; set; }
 
+        /// <summary>
+        /// A reference of the PayPal transaction visible to customer which is mapped to PayPal's
+        /// invoice ID. This must be a globally unique ID if you have configured in your PayPal
+        /// settings to block multiple payments per invoice ID.
+        /// </summary>
         [JsonProperty("reference")]
         public string Reference { get; set; }
 
+        /// <summary>
+        /// A reference of the PayPal transaction visible to customer which is mapped to PayPal's
+        /// invoice ID. This must be a globally unique ID if you have configured in your PayPal
+        /// settings to block multiple payments per invoice ID.
+        /// </summary>
         [JsonProperty("reference_id")]
         public string ReferenceId { get; set; }
 
