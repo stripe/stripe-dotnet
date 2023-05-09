@@ -26,6 +26,9 @@ namespace Stripe
         [JsonProperty("link")]
         public MandatePaymentMethodDetailsLink Link { get; set; }
 
+        [JsonProperty("paypal")]
+        public MandatePaymentMethodDetailsPaypal Paypal { get; set; }
+
         [JsonProperty("sepa_debit")]
         public MandatePaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
