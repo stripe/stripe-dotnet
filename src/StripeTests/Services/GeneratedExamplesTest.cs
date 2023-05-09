@@ -2290,6 +2290,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestQuoteServiceListLineItems()
+        {
+            var service = new QuoteService(this.StripeClient);
+            service.ListLineItems("qt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
         public void TestQuoteServiceRetrieve()
         {
             var service = new QuoteService(this.StripeClient);
