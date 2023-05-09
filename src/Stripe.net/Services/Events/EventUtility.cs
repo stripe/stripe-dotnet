@@ -158,7 +158,7 @@ namespace Stripe
 
             if (tolerance != null)
             {
-                var webhookUtc = Convert.ToInt32(signatureItems["t"].FirstOrDefault());
+                var webhookUtc = Convert.ToInt64(signatureItems["t"].FirstOrDefault());
                 if (Math.Abs(utcNow - webhookUtc) > tolerance)
                 {
                     throw new StripeException(
