@@ -82,7 +82,7 @@ namespace Stripe
             string json,
             string stripeSignatureHeader,
             string secret,
-            long tolerance = DefaultTimeTolerance,
+            long? tolerance = DefaultTimeTolerance,
             bool throwOnApiVersionMismatch = true)
         {
             return ConstructEvent(
@@ -120,7 +120,7 @@ namespace Stripe
             string json,
             string stripeSignatureHeader,
             string secret,
-            long tolerance,
+            long? tolerance,
             long utcNow,
             bool throwOnApiVersionMismatch = true)
         {
@@ -128,12 +128,12 @@ namespace Stripe
             return ParseEvent(json, throwOnApiVersionMismatch);
         }
 
-        public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long tolerance = DefaultTimeTolerance)
+        public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long? tolerance = DefaultTimeTolerance)
         {
             ValidateSignature(json, stripeSignatureHeader, secret, tolerance, DateTimeOffset.UtcNow.ToUnixTimeSeconds());
         }
 
-        public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long tolerance, long utcNow)
+        public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long? tolerance, long utcNow)
         {
             var signatureItems = ParseStripeSignature(stripeSignatureHeader);
             var signature = string.Empty;
@@ -156,12 +156,14 @@ namespace Stripe
                     "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.");
             }
 
-            var webhookUtc = Convert.ToInt32(signatureItems["t"].FirstOrDefault());
-
-            if (Math.Abs(utcNow - webhookUtc) > tolerance)
+            if (tolerance != null)
             {
-                throw new StripeException(
-                    "The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.");
+                var webhookUtc = Convert.ToInt32(signatureItems["t"].FirstOrDefault());
+                if (Math.Abs(utcNow - webhookUtc) > tolerance)
+                {
+                    throw new StripeException(
+                        "The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.");
+                }
             }
         }
 
