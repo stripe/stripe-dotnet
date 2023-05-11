@@ -1,5 +1,15 @@
 # Changelog
 
+## 41.16.0 - 2023-05-11
+* [#2692](https://github.com/stripe/stripe-dotnet/pull/2692) Update generated code
+  * Add support for `Paypal` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, `SetupIntentPaymentMethodDataOptions`, `SetupIntentPaymentMethodOptionsOptions`, and `SetupIntentPaymentMethodOptions`
+  * Add support for `NetworkToken` on `ChargePaymentMethodDetailsCard`
+  * Add support for `TaxabilityReason` and `TaxableAmount` on `CheckoutSessionShippingCostTaxes`, `CheckoutSessionTotalDetailsBreakdownTaxes`, `CreditNoteShippingCostTaxes`, `CreditNoteTaxAmounts`, `InvoiceShippingCostTaxes`, `InvoiceTotalTaxAmounts`, `LineItemTaxes`, `QuoteComputedRecurringTotalDetailsBreakdownTaxes`, `QuoteComputedUpfrontTotalDetailsBreakdownTaxes`, and `QuoteTotalDetailsBreakdownTaxes`
+  * Add support for `Brand`, `CardholderName`, `Country`, `ExpMonth`, `ExpYear`, `Fingerprint`, `Funding`, `Last4`, `Networks`, and `ReadMethod` on `PaymentMethodCardPresent` and `PaymentMethodInteracPresent`
+  * Add support for `PreferredLocales` on `PaymentMethodInteracPresent`
+  * Add support for `EffectivePercentage` on `TaxRate`
+  * Add support for `GbBankTransfer ` and `JpBankTransfer ` on `CustomerCashBalanceTransactionFundedBankTransfer`
+
 ## 41.15.0 - 2023-05-04
 * [#2687](https://github.com/stripe/stripe-dotnet/pull/2687) Update generated code
   * Add support for `Link` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
