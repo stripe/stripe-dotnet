@@ -8,8 +8,8 @@ namespace Stripe.Tax
     /// You can use Tax <c>Settings</c> to manage configurations used by Stripe Tax
     /// calculations.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/tax/connect/settings">Account
-    /// settings</a>.
+    /// Related guide: <a href="https://stripe.com/docs/tax/settings-api">Using the Settings
+    /// API</a>.
     /// </summary>
     public class Settings : StripeEntity<Settings>, IHasObject
     {

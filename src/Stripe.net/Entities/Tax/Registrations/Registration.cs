@@ -11,6 +11,9 @@ namespace Stripe.Tax
     /// Stripe doesn't register on your behalf with the relevant authorities when you create a
     /// Tax <c>Registration</c> object. For more information on how to register to collect tax,
     /// see <a href="https://stripe.com/docs/tax/registering">our guide</a>.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/tax/registrations-api">Using the
+    /// Registrations API</a>.
     /// </summary>
     public class Registration : StripeEntity<Registration>, IHasId, IHasObject
     {
