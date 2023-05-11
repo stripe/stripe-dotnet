@@ -138,6 +138,12 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsPaynowOptions Paynow { get; set; }
 
         /// <summary>
+        /// contains details about the PayPal payment method options.
+        /// </summary>
+        [JsonProperty("paypal")]
+        public SessionPaymentMethodOptionsPaypalOptions Paypal { get; set; }
+
+        /// <summary>
         /// contains details about the Pix payment method options.
         /// </summary>
         [JsonProperty("pix")]
