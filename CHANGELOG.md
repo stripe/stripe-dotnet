@@ -1,5 +1,16 @@
 # Changelog
 
+## 41.17.0-beta.1 - 2023-05-11
+* [#2691](https://github.com/stripe/stripe-dotnet/pull/2691) Update generated code for beta
+  * Add support for `PayerEmail`, `PayerName`, and `SellerProtection` on `ChargePaymentMethodDetailsPaypal`
+  * Add support for `CaptureMethod`, `PreferredLocale`, `ReferenceId`, and `SetupFutureUsage` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`
+  * Add support for `Reference` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypal`, `PaymentIntentPaymentMethodOptionsPaypalOptions`, and `PaymentIntentPaymentMethodOptionsPaypal`
+  * Add support for `RiskCorrelationId` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypalOptions`, and `PaymentIntentPaymentMethodOptionsPaypalOptions`
+  * Remove support for `BillingAgreementId` and `Currency` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`
+  * Add support for `Fingerprint`, `PayerId`, and `VerifiedEmail` on `MandatePaymentMethodDetailsPaypal` and `PaymentMethodPaypal`
+  * Add support for `TaxabilityReason` and `TaxableAmount` on `OrderShippingCostTaxes`, `OrderTotalDetailsBreakdownTaxes`, and `QuotePhaseTotalDetailsBreakdownTaxes`
+  * Add support for `HeadOffice` on `TaxSettingsUpdateOptions` and `TaxSettings`
+
 ## 41.16.0 - 2023-05-11
 * [#2692](https://github.com/stripe/stripe-dotnet/pull/2692) Update generated code
   * Add support for `Paypal` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, `SetupIntentPaymentMethodDataOptions`, `SetupIntentPaymentMethodOptionsOptions`, and `SetupIntentPaymentMethodOptions`
