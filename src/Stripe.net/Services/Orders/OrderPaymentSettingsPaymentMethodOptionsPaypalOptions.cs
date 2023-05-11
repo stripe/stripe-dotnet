@@ -11,6 +11,14 @@ namespace Stripe
         [JsonProperty("capture_method")]
         public string CaptureMethod { get; set; }
 
+        /// <summary>
+        /// <a href="https://stripe.com/docs/payments/paypal/supported-locales">Preferred locale</a>
+        /// of the PayPal checkout page that the customer is redirected to.
+        /// One of: <c>cs-CZ</c>, <c>da-DK</c>, <c>de-AT</c>, <c>de-DE</c>, <c>de-LU</c>,
+        /// <c>el-GR</c>, <c>en-GB</c>, <c>en-US</c>, <c>es-ES</c>, <c>fi-FI</c>, <c>fr-BE</c>,
+        /// <c>fr-FR</c>, <c>fr-LU</c>, <c>hu-HU</c>, <c>it-IT</c>, <c>nl-BE</c>, <c>nl-NL</c>,
+        /// <c>pl-PL</c>, <c>pt-PT</c>, <c>sk-SK</c>, or <c>sv-SE</c>.
+        /// </summary>
         [JsonProperty("preferred_locale")]
         public string PreferredLocale { get; set; }
 
