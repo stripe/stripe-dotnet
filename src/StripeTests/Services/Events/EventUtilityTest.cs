@@ -44,7 +44,7 @@ namespace StripeTests
             var exception = Assert.Throws<StripeException>(() =>
                 EventUtility.ConstructEvent(this.json, this.signature, this.secret, tolerance, fakeCurrentTimestamp));
 
-            Assert.Equal("The webhook cannot be processed because the current timestamp is outside of the allowed tolerance.", exception.Message);
+            Assert.Equal("The webhook or app signature cannot be processed because the current timestamp is outside of the allowed tolerance.", exception.Message);
         }
 
         [Fact]
@@ -56,7 +56,7 @@ namespace StripeTests
 
             Assert.Equal(
                 "The expected signature was not found in the Stripe-Signature header. " +
-                "Make sure you're using the correct webhook secret (whsec_) and confirm the incoming request came from Stripe.",
+                "Make sure you're using the correct webhook secret (whsec_) or app secret (apsec_) and confirm the incoming request came from Stripe.",
                 exception.Message);
         }
 
@@ -66,7 +66,7 @@ namespace StripeTests
             var exception = Assert.Throws<StripeException>(() =>
                 EventUtility.ConstructEvent(this.json, this.signature, this.secret + "\ud802"));
 
-            Assert.Equal("The webhook cannot be processed because the signature cannot be safely calculated.", exception.Message);
+            Assert.Equal("The webhook or app signature cannot be processed because the signature cannot be safely calculated.", exception.Message);
         }
 
         [Fact]
@@ -75,7 +75,7 @@ namespace StripeTests
             var exception = Assert.Throws<StripeException>(() =>
                 EventUtility.ConstructEvent(this.json + "\ud802", this.signature, this.secret));
 
-            Assert.Equal("The webhook cannot be processed because the signature cannot be safely calculated.", exception.Message);
+            Assert.Equal("The webhook or app signature cannot be processed because the signature cannot be safely calculated.", exception.Message);
         }
 
         [Fact]
