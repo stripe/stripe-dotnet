@@ -11,7 +11,7 @@ namespace Stripe.Issuing
     /// <a href="https://stripe.com/docs/issuing">issued</a> cards.
     ///
     /// Related guide: <a href="https://stripe.com/docs/issuing/cards#create-cardholder">How to
-    /// create a Cardholder</a>.
+    /// create a cardholder</a>.
     /// </summary>
     public class Cardholder : StripeEntity<Cardholder>, IHasId, IHasMetadata, IHasObject
     {

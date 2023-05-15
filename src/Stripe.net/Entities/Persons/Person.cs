@@ -18,7 +18,7 @@ namespace Stripe
     ///
     /// Related guide: <a
     /// href="https://stripe.com/docs/connect/identity-verification-api#person-information">Handling
-    /// Identity Verification with the API</a>.
+    /// identity verification with the API</a>.
     /// </summary>
     public class Person : StripeEntity<Person>, IHasId, IHasMetadata, IHasObject
     {

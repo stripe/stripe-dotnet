@@ -16,7 +16,7 @@ namespace Stripe
     /// source types.
     ///
     /// Related guide: <a href="https://stripe.com/docs/connect/account-balances">Understanding
-    /// Connect Account Balances</a>.
+    /// Connect account balances</a>.
     /// </summary>
     public class Balance : StripeEntity<Balance>, IHasObject
     {

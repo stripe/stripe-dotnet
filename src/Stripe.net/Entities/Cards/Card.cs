@@ -10,7 +10,7 @@ namespace Stripe
     /// can also store multiple debit cards on a recipient in order to transfer to those cards
     /// later.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/sources/cards">Card Payments with
+    /// Related guide: <a href="https://stripe.com/docs/sources/cards">Card payments with
     /// Sources</a>.
     /// </summary>
     public class Card : StripeEntity<Card>, IHasId, IHasMetadata, IHasObject, IExternalAccount, IPaymentSource

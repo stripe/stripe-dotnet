@@ -10,8 +10,8 @@ namespace Stripe
     /// To top up your Stripe balance, you create a top-up object. You can retrieve individual
     /// top-ups, as well as list all top-ups. Top-ups are identified by a unique, random ID.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/connect/top-ups">Topping Up your
-    /// Platform Account</a>.
+    /// Related guide: <a href="https://stripe.com/docs/connect/top-ups">Topping up your
+    /// platform account</a>.
     /// </summary>
     public class Topup : StripeEntity<Topup>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {

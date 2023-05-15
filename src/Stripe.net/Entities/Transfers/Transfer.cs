@@ -17,7 +17,7 @@ namespace Stripe
     /// href="https://stripe.com/docs/transfer-payout-split">transfer/payout split</a>.
     ///
     /// Related guide: <a href="https://stripe.com/docs/connect/charges-transfers">Creating
-    /// Separate Charges and Transfers</a>.
+    /// separate charges and transfers</a>.
     /// </summary>
     public class Transfer : StripeEntity<Transfer>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {

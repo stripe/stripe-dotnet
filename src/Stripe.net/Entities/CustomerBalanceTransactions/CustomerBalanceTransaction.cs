@@ -8,7 +8,7 @@ namespace Stripe
 
     /// <summary>
     /// Each customer has a <a
-    /// href="https://stripe.com/docs/api/customers/object#customer_object-balance"><c>balance</c></a>
+    /// href="https://stripe.com/docs/api/customers/object#customer_object-balance">Balance</a>
     /// value, which denotes a debit or credit that's automatically applied to their next
     /// invoice upon finalization. You may modify the value directly by using the <a
     /// href="https://stripe.com/docs/api/customers/update">update customer API</a>, or by
@@ -16,7 +16,7 @@ namespace Stripe
     /// <c>balance</c> by the specified <c>amount</c>.
     ///
     /// Related guide: <a href="https://stripe.com/docs/billing/customer/balance">Customer
-    /// Balance</a> to learn more.
+    /// balance</a>.
     /// </summary>
     public class CustomerBalanceTransaction : StripeEntity<CustomerBalanceTransaction>, IHasId, IHasMetadata, IHasObject
     {

@@ -18,8 +18,8 @@ namespace Stripe
         /// information about when the discount began, when it will end, and what it is applied to.
         ///
         /// Related guide: <a
-        /// href="https://stripe.com/docs/billing/subscriptions/discounts">Applying Discounts to
-        /// Subscriptions</a>.
+        /// href="https://stripe.com/docs/billing/subscriptions/discounts">Applying discounts to
+        /// subscriptions</a>.
         /// </summary>
         [JsonProperty("discount")]
         public Discount Discount { get; set; }

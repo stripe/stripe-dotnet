@@ -12,7 +12,7 @@ namespace Stripe
     /// created by Stripe (for example, the results of a <a
     /// href="https://stripe.com/docs/api#scheduled_queries">Sigma scheduled query</a>).
     ///
-    /// Related guide: <a href="https://stripe.com/docs/file-upload">File Upload Guide</a>.
+    /// Related guide: <a href="https://stripe.com/docs/file-upload">File upload guide</a>.
     /// </summary>
     public class File : StripeEntity<File>, IHasId, IHasObject
     {
