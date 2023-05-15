@@ -22,7 +22,7 @@ namespace Stripe.Checkout
     /// Checkout.
     ///
     /// Related guide: <a href="https://stripe.com/docs/checkout/quickstart">Checkout
-    /// Quickstart</a>.
+    /// quickstart</a>.
     /// </summary>
     public class Session : StripeEntity<Session>, IHasId, IHasMetadata, IHasObject
     {

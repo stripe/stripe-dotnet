@@ -40,7 +40,7 @@ namespace Stripe.Treasury
         /// be approved for the purchase to be completed successfully.
         ///
         /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/authorizations">Issued
-        /// Card Authorizations</a>.
+        /// card authorizations</a>.
         /// </summary>
         [JsonProperty("issuing_authorization")]
         public Issuing.Authorization IssuingAuthorization { get; set; }

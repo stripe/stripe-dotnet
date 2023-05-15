@@ -38,8 +38,8 @@ namespace Stripe
     /// More details on the customer's credit balance are <a
     /// href="https://stripe.com/docs/billing/customer/balance">here</a>.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/billing/invoices/sending">Send Invoices
-    /// to Customers</a>.
+    /// Related guide: <a href="https://stripe.com/docs/billing/invoices/sending">Send invoices
+    /// to customers</a>.
     /// </summary>
     public class Invoice : StripeEntity<Invoice>, IHasId, IHasMetadata, IHasObject
     {

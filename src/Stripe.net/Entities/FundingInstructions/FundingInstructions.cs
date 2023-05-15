@@ -10,7 +10,7 @@ namespace Stripe
     /// <c>customer_balance</c> payment method. Customers can fund this balance by initiating a
     /// bank transfer to any account in the <c>financial_addresses</c> field. Related guide: <a
     /// href="https://stripe.com/docs/payments/customer-balance/funding-instructions">Customer
-    /// Balance - Funding Instructions</a> to learn more.
+    /// balance funding instructions</a>.
     /// </summary>
     public class FundingInstructions : StripeEntity<FundingInstructions>, IHasObject
     {

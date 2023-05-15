@@ -18,7 +18,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/checkout/set-up-a-subscription#tax-rates">Checkout
         /// Sessions</a> to collect tax.
         ///
-        /// Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax Rates</a>.
+        /// Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax rates</a>.
         /// </summary>
         [JsonProperty("rate")]
         public TaxRate Rate { get; set; }

@@ -13,7 +13,7 @@ namespace Stripe.Issuing
     /// be approved for the purchase to be completed successfully.
     ///
     /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/authorizations">Issued
-    /// Card Authorizations</a>.
+    /// card authorizations</a>.
     /// </summary>
     public class Authorization : StripeEntity<Authorization>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {

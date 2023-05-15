@@ -10,7 +10,7 @@ namespace Stripe
     /// Issue a credit note to adjust an invoice's amount after the invoice is finalized.
     ///
     /// Related guide: <a href="https://stripe.com/docs/billing/invoices/credit-notes">Credit
-    /// Notes</a>.
+    /// notes</a>.
     /// </summary>
     public class CreditNote : StripeEntity<CreditNote>, IHasId, IHasMetadata, IHasObject
     {

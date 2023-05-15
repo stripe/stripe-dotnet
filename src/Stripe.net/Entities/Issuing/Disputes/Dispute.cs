@@ -11,8 +11,8 @@ namespace Stripe.Issuing
     /// transactions that the cardholder does not recognize, suspects to be fraudulent, or has
     /// other issues with.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/disputes">Disputing
-    /// Transactions</a>.
+    /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/disputes">Issuing
+    /// disputes</a>.
     /// </summary>
     public class Dispute : StripeEntity<Dispute>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
