@@ -91,5 +91,25 @@ namespace Stripe.FinancialConnections
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/refresh", options, requestOptions, cancellationToken);
         }
+
+        public virtual Account Subscribe(string id, AccountSubscribeOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/subscribe", options, requestOptions);
+        }
+
+        public virtual Task<Account> SubscribeAsync(string id, AccountSubscribeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/subscribe", options, requestOptions, cancellationToken);
+        }
+
+        public virtual Account Unsubscribe(string id, AccountUnsubscribeOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/unsubscribe", options, requestOptions);
+        }
+
+        public virtual Task<Account> UnsubscribeAsync(string id, AccountUnsubscribeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/unsubscribe", options, requestOptions, cancellationToken);
+        }
     }
 }
