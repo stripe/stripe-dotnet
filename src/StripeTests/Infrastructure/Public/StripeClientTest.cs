@@ -247,6 +247,27 @@ namespace StripeTests
         }
 
         [Fact]
+        public async Task RawRequestAsync_StripeContext()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var rawResponse = await this.stripeClient.RawRequestAsync(
+                HttpMethod.Post,
+                "/v1/charges",
+                "{\"foo\":\"bar\"}",
+                new RawRequestOptions
+                {
+                    StripeContext = "ctx_123",
+                });
+
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal("ctx_123", lastRequest.StripeHeaders["Stripe-Context"]);
+        }
+
+        [Fact]
         public async Task PreviewGetAsync_Json()
         {
             var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";

@@ -207,6 +207,11 @@ namespace Stripe
 
             if (requestOptions is RawRequestOptions rawRequestOptions)
             {
+                if (!string.IsNullOrEmpty(rawRequestOptions.StripeContext))
+                {
+                    stripeHeaders.Add("Stripe-Context", rawRequestOptions.StripeContext);
+                }
+
                 foreach (KeyValuePair<string, string> item in rawRequestOptions.AdditionalHeaders)
                 {
                     stripeHeaders[item.Key] = item.Value;

@@ -8,6 +8,9 @@ namespace Stripe
         public ApiMode ApiMode { get; set; }
 
         /// <summary>Gets or sets additional headers for the request.</summary>
-        public Dictionary<string, string> AdditionalHeaders { get; } = new Dictionary<string, string>();
+        public Dictionary<string, string> AdditionalHeaders { get; set; } = new Dictionary<string, string>();
+
+        /// <summary>Gets or sets the value or Stripe-Context request header.</summary>
+        public string StripeContext { get; set; }
     }
 }
