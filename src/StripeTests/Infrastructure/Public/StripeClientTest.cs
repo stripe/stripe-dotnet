@@ -205,19 +205,10 @@ namespace StripeTests
             var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
             this.httpClient.Response = response;
 
-            var myOptions = new BaseOptions
-            {
-                ExtraParams = new System.Collections.Generic.Dictionary<string, object>
-                {
-                    {
-                        "foo", "bar"
-                    },
-                },
-            };
             var rawresponse = this.stripeClient.RawRequest(
                 HttpMethod.Post,
                 "/v1/charges",
-                "{\"id\": \"ch_123\"}");
+                "foo=bar");
 
             var lastRequest = this.httpClient.LastRequest;
 
@@ -233,19 +224,10 @@ namespace StripeTests
             var response = new StripeResponse(HttpStatusCode.OK, null, content);
             this.httpClient.Response = response;
 
-            var myOptions = new BaseOptions
-            {
-                ExtraParams = new System.Collections.Generic.Dictionary<string, object>
-                {
-                    {
-                        "foo", "bar"
-                    },
-                },
-            };
             var rawResponse = await this.stripeClient.RawRequestAsync(
                 HttpMethod.Post,
                 "/v1/charges",
-                "foo=bar",
+                "{\"foo\":\"bar\"}",
                 new RawRequestOptions
                 {
                     ApiMode = ApiMode.Preview,

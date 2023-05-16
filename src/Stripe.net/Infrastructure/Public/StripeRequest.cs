@@ -235,7 +235,7 @@ namespace Stripe
 
             return this.content != null ? new StringContent(this.content)
             {
-                Headers = { ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded") },
+                Headers = { ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded") { CharSet = "utf-8" } },
             }
             : FormEncoder.CreateHttpContent(this.options);
         }
