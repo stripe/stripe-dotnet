@@ -8,6 +8,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Newtonsoft.Json.Linq;
     using Stripe.Infrastructure;
+    using Stripe.Services;
 
     /// <summary>
     /// A Stripe client, used to issue requests to Stripe's API and deserialize responses.
@@ -93,6 +94,11 @@ namespace Stripe
         /// <value>The <see cref="IHttpClient"/> used to send HTTP requests.</value>
         public IHttpClient HttpClient { get; }
 
+        /// <summary>
+        /// Gets the <see cref="PreviewService"/> instance that allows sending requests to preview endpoints.
+        /// </summary>
+        public PreviewService Preview => new PreviewService(this);
+
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
         /// <typeparam name="T">Type of the Stripe entity returned by the API.</typeparam>
         /// <param name="method">The HTTP method.</param>
@@ -143,7 +149,7 @@ namespace Stripe
         /// <summary>Sends a request to Stripe's API as a synchronous operation.</summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The path of the request.</param>
-        /// <param name="options">The parameters of the request.</param>
+        /// <param name="content">The body of the request.</param>
         /// <param name="requestOptions">The special modifiers of the request.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The response as a StripeResponse.</returns>
@@ -151,18 +157,18 @@ namespace Stripe
         public StripeResponse RawRequest(
             HttpMethod method,
             string path,
-            BaseOptions options,
-            RequestOptions requestOptions,
+            string content = null,
+            RawRequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return this.RawRequestAsync(method, path, options, requestOptions, cancellationToken)
+            return this.RawRequestAsync(method, path, content, requestOptions, cancellationToken)
                 .ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The path of the request.</param>
-        /// <param name="options">The parameters of the request.</param>
+        /// <param name="content">The body of the request.</param>
         /// <param name="requestOptions">The special modifiers of the request.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>
@@ -170,13 +176,16 @@ namespace Stripe
         public async Task<StripeResponse> RawRequestAsync(
             HttpMethod method,
             string path,
-            BaseOptions options,
-            RequestOptions requestOptions,
+            string content = null,
+            RawRequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            // TODO (raw request) - throw error if attempt JSON encoding on non-post
-            // TODO (raw request) - README entry
-            var request = new StripeRequest(this, method, path, options, requestOptions);
+            if (method != HttpMethod.Post && content != null)
+            {
+                throw new InvalidOperationException("content is not allowed for non-POST requests.");
+            }
+
+            var request = StripeRequest.CreateWithStringContent(this, method, path, content, requestOptions);
 
             return await this.HttpClient.MakeRequestAsync(request, cancellationToken)
                     .ConfigureAwait(false);

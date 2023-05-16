@@ -47,43 +47,6 @@ namespace Stripe
             CancellationToken cancellationToken = default)
             where T : IStripeEntity;
 
-        /// <summary>Sends a request to Stripe's API as a synchronous operation.</summary>
-        /// <param name="method">The HTTP method.</param>
-        /// <param name="path">The path of the request.</param>
-        /// <param name="options">The parameters of the request.</param>
-        /// <param name="requestOptions">The special modifiers of the request.</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>The response as a StripeResponse.</returns>
-        /// <exception cref="StripeException">Thrown if the request fails.</exception>
-        StripeResponse RawRequest(
-            HttpMethod method,
-            string path,
-            BaseOptions options,
-            RequestOptions requestOptions,
-            CancellationToken cancellationToken = default);
-
-        /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
-        /// <param name="method">The HTTP method.</param>
-        /// <param name="path">The path of the request.</param>
-        /// <param name="options">The parameters of the request.</param>
-        /// <param name="requestOptions">The special modifiers of the request.</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>The task object representing the asynchronous operation.</returns>
-        /// <exception cref="StripeException">Thrown if the request fails.</exception>
-        Task<StripeResponse> RawRequestAsync(
-            HttpMethod method,
-            string path,
-            BaseOptions options,
-            RequestOptions requestOptions,
-            CancellationToken cancellationToken = default);
-
-        /// <summary>Deserializes a JSON string into a Stripe object.</summary>
-        /// <typeparam name="T">The type of the Stripe object to deserialize to.</typeparam>
-        /// <param name="response">The HTTP response as a StripeResponse.</param>
-        /// <returns>The deserialized Stripe object from the JSON string.</returns>
-        T Deserialize<T>(string response)
-            where T : IStripeEntity;
-
         /// <summary>Sends a request to Stripe's API as an asynchronous operation and returns a <see cref="Stream"/> as the response.</summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The path of the request.</param>

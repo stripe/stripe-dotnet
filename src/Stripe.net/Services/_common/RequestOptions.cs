@@ -37,7 +37,7 @@ namespace Stripe
         /// </remarks>
         internal string StripeVersion { get; set; }
 
-        internal RequestOptions Clone()
+        internal virtual RequestOptions Clone()
         {
             return (RequestOptions)this.MemberwiseClone();
         }

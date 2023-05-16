@@ -12,7 +12,11 @@ namespace Stripe
     /// </summary>
     public class StripeRequest
     {
+        // Either options os content can be set.
+        // If content is set, it will be used instead of serialized options.
         private readonly BaseOptions options;
+        private readonly string content;
+        private readonly ApiMode apiMode;
 
         /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
         /// <param name="client">The client creating the request.</param>
@@ -40,17 +44,40 @@ namespace Stripe
 
             this.AuthorizationHeader = BuildAuthorizationHeader(client, requestOptions);
 
-            this.StripeHeaders = BuildStripeHeaders(method, requestOptions);
+            this.apiMode = requestOptions is RawRequestOptions rawRequestOptions ? rawRequestOptions.ApiMode : ApiMode.Standard;
 
-            if (requestOptions?.GetType() == typeof(RawRequestOptions))
+            this.StripeHeaders = BuildStripeHeaders(method, requestOptions, this.apiMode);
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
+        /// <param name="client">The client creating the request.</param>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="path">The path of the request.</param>
+        /// <param name="content">The body the request.</param>
+        /// <param name="requestOptions">The special modifiers of the request.</param>
+        private StripeRequest(
+            IStripeClient client,
+            HttpMethod method,
+            string path,
+            string content,
+            RequestOptions requestOptions)
+        {
+            if (client == null)
             {
-                // Set OptionsEncoding if request options is an instance of RawRequestOptions
-                this.OptionsEncoding = (requestOptions as RawRequestOptions).OptionsEncoding;
+                throw new ArgumentNullException(nameof(client));
             }
-            else
-            {
-                this.OptionsEncoding = RawRequestOptions.Encoding.FORM;
-            }
+
+            this.content = content;
+
+            this.Method = method;
+
+            this.Uri = BuildUri(client, method, path, null, requestOptions);
+
+            this.AuthorizationHeader = BuildAuthorizationHeader(client, requestOptions);
+
+            this.apiMode = requestOptions is RawRequestOptions rawRequestOptions ? rawRequestOptions.ApiMode : ApiMode.Standard;
+
+            this.StripeHeaders = BuildStripeHeaders(method, requestOptions, this.apiMode);
         }
 
         /// <summary>The HTTP method for the request (GET, POST or DELETE).</summary>
@@ -77,9 +104,24 @@ namespace Stripe
         /// For non-POST requests, this will be <c>null</c>.
         /// </summary>
         /// <remarks>This getter creates a new instance every time it is called.</remarks>
-        public HttpContent Content => BuildContent(this.Method, this.options, this.OptionsEncoding);
+        public HttpContent Content => this.BuildContent();
 
-        internal RawRequestOptions.Encoding OptionsEncoding { get; }
+        /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
+        /// <param name="client">The client creating the request.</param>
+        /// <param name="method">The HTTP method.</param>
+        /// <param name="path">The path of the request.</param>
+        /// <param name="content">The body the request.</param>
+        /// <param name="requestOptions">The special modifiers of the request.</param>
+        /// <returns>Returns a new instance of the <see cref="StripeRequest"/> class.</returns>
+        internal static StripeRequest CreateWithStringContent(
+            IStripeClient client,
+            HttpMethod method,
+            string path,
+            string content,
+            RequestOptions requestOptions)
+        {
+            return new StripeRequest(client, method, path, content, requestOptions);
+        }
 
         /// <summary>Returns a string that represents the <see cref="StripeRequest"/>.</summary>
         /// <returns>A string that represents the <see cref="StripeRequest"/>.</returns>
@@ -138,11 +180,15 @@ namespace Stripe
 
         private static Dictionary<string, string> BuildStripeHeaders(
             HttpMethod method,
-            RequestOptions requestOptions)
+            RequestOptions requestOptions,
+            ApiMode apiMode)
         {
+            string defaultVersion =
+                apiMode == ApiMode.Standard ? StripeConfiguration.ApiVersion : ApiVersion.CurrentPreview;
+
             var stripeHeaders = new Dictionary<string, string>
             {
-                { "Stripe-Version", requestOptions?.StripeVersion ?? StripeConfiguration.ApiVersion },
+                { "Stripe-Version", requestOptions?.StripeVersion ?? defaultVersion },
             };
 
             if (!string.IsNullOrEmpty(requestOptions?.StripeAccount))
@@ -159,10 +205,9 @@ namespace Stripe
                 stripeHeaders.Add("Idempotency-Key", Guid.NewGuid().ToString());
             }
 
-            var additionalHeaders = (requestOptions as RawRequestOptions)?.AdditionalHeaders;
-            if (additionalHeaders != null)
+            if (requestOptions is RawRequestOptions rawRequestOptions)
             {
-                foreach (KeyValuePair<string, string> item in additionalHeaders)
+                foreach (KeyValuePair<string, string> item in rawRequestOptions.AdditionalHeaders)
                 {
                     stripeHeaders[item.Key] = item.Value;
                 }
@@ -171,22 +216,28 @@ namespace Stripe
             return stripeHeaders;
         }
 
-        private static HttpContent BuildContent(HttpMethod method, BaseOptions options, RawRequestOptions.Encoding optionsEncoding)
+        private HttpContent BuildContent()
         {
-            if (method != HttpMethod.Post)
+            if (this.Method != HttpMethod.Post)
             {
                 return null;
             }
 
-            if (optionsEncoding.Equals(RawRequestOptions.Encoding.JSON))
+            if (this.apiMode == ApiMode.Preview)
             {
-                return new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(options))
+                string serializedContent = this.content ?? Newtonsoft.Json.JsonConvert.SerializeObject(this.options);
+
+                return new StringContent(serializedContent)
                 {
                     Headers = { ContentType = new MediaTypeHeaderValue("application/json") },
                 };
             }
 
-            return FormEncoder.CreateHttpContent(options);
+            return this.content != null ? new StringContent(this.content)
+            {
+                Headers = { ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded") },
+            }
+            : FormEncoder.CreateHttpContent(this.options);
         }
     }
 }

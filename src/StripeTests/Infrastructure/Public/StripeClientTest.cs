@@ -187,21 +187,10 @@ namespace StripeTests
             var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
             this.httpClient.Response = response;
 
-            var myOptions = new BaseOptions
-            {
-                ExtraParams = new System.Collections.Generic.Dictionary<string, object>
-                {
-                    {
-                        "foo", "bar"
-                    },
-                },
-            };
-
             var rawresponse = await this.stripeClient.RawRequestAsync(
                 HttpMethod.Post,
                 "/v1/charges",
-                myOptions,
-                this.requestOptions);
+                "foo=bar");
 
             var lastRequest = this.httpClient.LastRequest;
 
@@ -228,8 +217,7 @@ namespace StripeTests
             var rawresponse = this.stripeClient.RawRequest(
                 HttpMethod.Post,
                 "/v1/charges",
-                myOptions,
-                this.requestOptions);
+                "{\"id\": \"ch_123\"}");
 
             var lastRequest = this.httpClient.LastRequest;
 
@@ -257,13 +245,12 @@ namespace StripeTests
             var rawResponse = await this.stripeClient.RawRequestAsync(
                 HttpMethod.Post,
                 "/v1/charges",
-                myOptions,
+                "foo=bar",
                 new RawRequestOptions
                 {
-                    OptionsEncoding = RawRequestOptions.Encoding.JSON,
-                    AdditionalHeaders = new Dictionary<string, string>
+                    ApiMode = ApiMode.Preview,
+                    AdditionalHeaders =
                     {
-                        { "Stripe-Version", "2020-08-27" },
                         { "foo", "bar" },
                     },
                 });
@@ -273,33 +260,72 @@ namespace StripeTests
             Assert.Equal(content, rawResponse.Content);
             Assert.Equal("application/json", lastRequest.Content.Headers.GetValues("Content-Type").First());
             Assert.Equal("{\"foo\":\"bar\"}", await lastRequest.Content.ReadAsStringAsync());
-            Assert.Equal("2020-08-27", lastRequest.StripeHeaders["Stripe-Version"]);
+            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
             Assert.Equal("bar", lastRequest.StripeHeaders["foo"]);
         }
 
         [Fact]
-        public async Task Deserialize()
+        public async Task PreviewGetAsync_Json()
         {
-            var content = "{\"bar\": \"baz\"}";
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
             var response = new StripeResponse(HttpStatusCode.OK, null, content);
             this.httpClient.Response = response;
 
-            var myOptions = new BaseOptions
-            {
-                ExtraParams = new System.Collections.Generic.Dictionary<string, object>
-                {
-                    {
-                        "bar", "baz"
-                    },
-                },
-            };
-            var rawResponse = await this.stripeClient.RawRequestAsync(
-                HttpMethod.Post,
-                "/v1/foo",
-                myOptions,
-                this.requestOptions);
+            var rawResponse = await this.stripeClient.Preview.Get("/v1/charges/ch_123");
+            var lastRequest = this.httpClient.LastRequest;
 
-            var deserialized = this.StripeClient.Deserialize<Foo>(rawResponse.Content);
+            Assert.Equal(HttpMethod.Get, lastRequest.Method);
+            Assert.Equal(content, rawResponse.Content);
+            Assert.Null(lastRequest.Content);
+            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
+        }
+
+        [Fact]
+        public async Task PreviewPostAsync_Json()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var rawResponse = await this.stripeClient.Preview.Post("/v1/charges/ch_123", "{\"foo\":\"bar\"}");
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal(HttpMethod.Post, lastRequest.Method);
+            Assert.Equal(content, rawResponse.Content);
+            Assert.Equal("application/json", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal("{\"foo\":\"bar\"}", await lastRequest.Content.ReadAsStringAsync());
+            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
+            Assert.Equal("application/json", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal("{\"foo\":\"bar\"}", await lastRequest.Content.ReadAsStringAsync());
+        }
+
+        [Fact]
+        public async Task PreviewDeleteAsync_Json()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var rawResponse = await this.stripeClient.Preview.Delete("/v1/charges/ch_123");
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal(HttpMethod.Delete, lastRequest.Method);
+            Assert.Equal(content, rawResponse.Content);
+            Assert.Null(lastRequest.Content);
+            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
+        }
+
+        [Fact]
+        public void RawRequestThrowsForNonPostOptions()
+        {
+            Assert.Throws<InvalidOperationException>(() => this.stripeClient.RawRequest(HttpMethod.Get, "/", "abc"));
+        }
+
+        [Fact]
+        public void Deserialize()
+        {
+            var content = "{\"bar\": \"baz\"}";
+            var deserialized = this.stripeClient.Deserialize<Foo>(content);
 
             Assert.Equal(typeof(Foo), deserialized.GetType());
         }
