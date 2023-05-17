@@ -13,17 +13,35 @@ namespace Stripe.Services
             this.client = client;
         }
 
-        public Task<StripeResponse> Get(string path, RawRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public StripeResponse Get(string path, RawRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.GetAsync(path, requestOptions, cancellationToken)
+                .GetAwaiter().GetResult();
+        }
+
+        public Task<StripeResponse> GetAsync(string path, RawRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.client.RawRequestAsync(HttpMethod.Get, path, null, BuildPreviewOptions(requestOptions), cancellationToken);
         }
 
-        public Task<StripeResponse> Post(string path, string body, RawRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public StripeResponse Post(string path, string body, RawRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.PostAsync(path, body, requestOptions, cancellationToken)
+                .GetAwaiter().GetResult();
+        }
+
+        public Task<StripeResponse> PostAsync(string path, string body, RawRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.client.RawRequestAsync(HttpMethod.Post, path, body, BuildPreviewOptions(requestOptions), cancellationToken);
         }
 
-        public Task<StripeResponse> Delete(string path, RawRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public StripeResponse Delete(string path, RawRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.DeleteAsync(path, requestOptions, cancellationToken)
+                .GetAwaiter().GetResult();
+        }
+
+        public Task<StripeResponse> DeleteAsync(string path, RawRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.client.RawRequestAsync(HttpMethod.Delete, path, null, BuildPreviewOptions(requestOptions), cancellationToken);
         }

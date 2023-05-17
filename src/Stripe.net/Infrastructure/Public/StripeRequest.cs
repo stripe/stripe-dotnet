@@ -12,7 +12,7 @@ namespace Stripe
     /// </summary>
     public class StripeRequest
     {
-        // Either options os content can be set.
+        // Either options or content can be set.
         // If content is set, it will be used instead of serialized options.
         private readonly BaseOptions options;
         private readonly string content;
