@@ -1,5 +1,7 @@
 namespace Stripe
 {
+    using System;
+
     public class RequestOptions
     {
         /// <summary>
@@ -37,7 +39,7 @@ namespace Stripe
         /// </remarks>
         internal string StripeVersion { get; set; }
 
-        internal virtual RequestOptions Clone()
+        internal RequestOptions Clone()
         {
             return (RequestOptions)this.MemberwiseClone();
         }
