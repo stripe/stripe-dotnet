@@ -11,11 +11,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("code")]
         public string Code { get; set; }
-
-        /// <summary>
-        /// Details of the BLIK mandate.
-        /// </summary>
-        [JsonProperty("mandate_options")]
-        public SetupIntentPaymentMethodOptionsBlikMandateOptionsOptions MandateOptions { get; set; }
     }
 }
