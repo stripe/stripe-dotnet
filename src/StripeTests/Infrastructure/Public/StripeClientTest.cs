@@ -2,11 +2,13 @@ namespace StripeTests
 {
     using System;
     using System.IO;
+    using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
+    using Newtonsoft.Json;
     using Stripe;
     using Xunit;
 
@@ -179,6 +181,230 @@ namespace StripeTests
         }
 
         [Fact]
+        public async Task RawRequestAsync_Form()
+        {
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var rawresponse = await this.stripeClient.RawRequestAsync(
+                HttpMethod.Post,
+                "/v1/charges",
+                "foo=bar");
+
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal("{\"id\": \"ch_123\"}", rawresponse.Content);
+            Assert.Equal("application/x-www-form-urlencoded; charset=utf-8", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal("foo=bar", await lastRequest.Content.ReadAsStringAsync());
+        }
+
+        [Fact]
+        public async Task RawRequest_Form()
+        {
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var rawresponse = this.stripeClient.RawRequest(
+                HttpMethod.Post,
+                "/v1/charges",
+                "foo=bar");
+
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal("{\"id\": \"ch_123\"}", rawresponse.Content);
+            Assert.Equal("application/x-www-form-urlencoded; charset=utf-8", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal("foo=bar", await lastRequest.Content.ReadAsStringAsync());
+        }
+
+        [Fact]
+        public async Task RawRequestAsync_Json()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var rawResponse = await this.stripeClient.RawRequestAsync(
+                HttpMethod.Post,
+                "/v1/charges",
+                "{\"foo\":\"bar\"}",
+                new RawRequestOptions
+                {
+                    ApiMode = ApiMode.Preview,
+                    AdditionalHeaders =
+                    {
+                        { "foo", "bar" },
+                    },
+                });
+
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal(content, rawResponse.Content);
+            Assert.Equal("application/json", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal("{\"foo\":\"bar\"}", await lastRequest.Content.ReadAsStringAsync());
+            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
+            Assert.Equal("bar", lastRequest.StripeHeaders["foo"]);
+        }
+
+        [Fact]
+        public async Task RawRequestAsync_StripeContext()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var rawResponse = await this.stripeClient.RawRequestAsync(
+                HttpMethod.Post,
+                "/v1/charges",
+                "{\"foo\":\"bar\"}",
+                new RawRequestOptions
+                {
+                    StripeContext = "ctx_123",
+                });
+
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal("ctx_123", lastRequest.StripeHeaders["Stripe-Context"]);
+        }
+
+        [Fact]
+        public void RawRequest_StripeContext()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var rawResponse = this.stripeClient.RawRequest(
+                HttpMethod.Post,
+                "/v1/charges",
+                "{\"foo\":\"bar\"}",
+                new RawRequestOptions
+                {
+                    StripeContext = "ctx_123",
+                });
+
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal("ctx_123", lastRequest.StripeHeaders["Stripe-Context"]);
+        }
+
+        [Fact]
+        public async Task PreviewGetAsync_Json()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var rawResponse = await this.stripeClient.Preview.GetAsync("/v1/charges/ch_123");
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal(HttpMethod.Get, lastRequest.Method);
+            Assert.Equal(content, rawResponse.Content);
+            Assert.Null(lastRequest.Content);
+            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
+        }
+
+        [Fact]
+        public void PreviewGet_Json()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var rawResponse = this.stripeClient.Preview.Get("/v1/charges/ch_123");
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal(HttpMethod.Get, lastRequest.Method);
+            Assert.Equal(content, rawResponse.Content);
+            Assert.Null(lastRequest.Content);
+            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
+        }
+
+        [Fact]
+        public async Task PreviewPostAsync_Json()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var rawResponse = await this.stripeClient.Preview.PostAsync("/v1/charges/ch_123", "{\"foo\":\"bar\"}");
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal(HttpMethod.Post, lastRequest.Method);
+            Assert.Equal(content, rawResponse.Content);
+            Assert.Equal("application/json", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal("{\"foo\":\"bar\"}", await lastRequest.Content.ReadAsStringAsync());
+            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
+            Assert.Equal("application/json", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal("{\"foo\":\"bar\"}", await lastRequest.Content.ReadAsStringAsync());
+        }
+
+        [Fact]
+        public async Task PreviewPost_Json()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var rawResponse = this.stripeClient.Preview.Post("/v1/charges/ch_123", "{\"foo\":\"bar\"}");
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal(HttpMethod.Post, lastRequest.Method);
+            Assert.Equal(content, rawResponse.Content);
+            Assert.Equal("application/json", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal("{\"foo\":\"bar\"}", await lastRequest.Content.ReadAsStringAsync());
+            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
+            Assert.Equal("application/json", lastRequest.Content.Headers.GetValues("Content-Type").First());
+            Assert.Equal("{\"foo\":\"bar\"}", await lastRequest.Content.ReadAsStringAsync());
+        }
+
+        [Fact]
+        public async Task PreviewDeleteAsync_Json()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var rawResponse = await this.stripeClient.Preview.DeleteAsync("/v1/charges/ch_123");
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal(HttpMethod.Delete, lastRequest.Method);
+            Assert.Equal(content, rawResponse.Content);
+            Assert.Null(lastRequest.Content);
+            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
+        }
+
+        [Fact]
+        public void PreviewDelete_Json()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            var rawResponse = this.stripeClient.Preview.Delete("/v1/charges/ch_123");
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.Equal(HttpMethod.Delete, lastRequest.Method);
+            Assert.Equal(content, rawResponse.Content);
+            Assert.Null(lastRequest.Content);
+            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
+        }
+
+        [Fact]
+        public void RawRequestThrowsForNonPostOptions()
+        {
+            Assert.Throws<InvalidOperationException>(() => this.stripeClient.RawRequest(HttpMethod.Get, "/", "abc"));
+        }
+
+        [Fact]
+        public void Deserialize()
+        {
+            var content = "{\"bar\": \"baz\"}";
+            var deserialized = this.stripeClient.Deserialize<Foo>(content);
+
+            Assert.Equal(typeof(Foo), deserialized.GetType());
+        }
+
+        [Fact]
         public async Task RequestStreamingAsync_OkResponse_InvalidJson()
         {
             var streamedResponse = new StripeStreamedResponse(
@@ -279,10 +505,14 @@ namespace StripeTests
 
             public StripeStreamedResponse StreamedResponse { get; set; }
 
+            public StripeRequest LastRequest { get; set; }
+
             public Task<StripeResponse> MakeRequestAsync(
                 StripeRequest request,
                 CancellationToken cancellationToken = default)
             {
+                this.LastRequest = request;
+
                 if (this.Response == null)
                 {
                     throw new StripeTestException("Response is null");
@@ -295,6 +525,8 @@ namespace StripeTests
                 StripeRequest request,
                 CancellationToken cancellationToken = default)
             {
+                this.LastRequest = request;
+
                 if (this.StreamedResponse == null)
                 {
                     throw new StripeTestException("StreamedResponse is null");
@@ -302,6 +534,12 @@ namespace StripeTests
 
                 return Task.FromResult(this.StreamedResponse);
             }
+        }
+
+        private class Foo : StripeEntity<Foo>
+        {
+            [JsonProperty("bar")]
+            public string Bar { get; set; }
         }
     }
 }
