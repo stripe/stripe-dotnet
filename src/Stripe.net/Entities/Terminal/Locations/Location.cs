@@ -8,7 +8,7 @@ namespace Stripe.Terminal
     /// A Location represents a grouping of readers.
     ///
     /// Related guide: <a href="https://stripe.com/docs/terminal/fleet/locations">Fleet
-    /// Management</a>.
+    /// management</a>.
     /// </summary>
     public class Location : StripeEntity<Location>, IHasId, IHasMetadata, IHasObject
     {

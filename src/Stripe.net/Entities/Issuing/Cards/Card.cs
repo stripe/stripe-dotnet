@@ -42,7 +42,7 @@ namespace Stripe.Issuing
         /// <a href="https://stripe.com/docs/issuing">issued</a> cards.
         ///
         /// Related guide: <a href="https://stripe.com/docs/issuing/cards#create-cardholder">How to
-        /// create a Cardholder</a>.
+        /// create a cardholder</a>.
         /// </summary>
         [JsonProperty("cardholder")]
         public Cardholder Cardholder { get; set; }
