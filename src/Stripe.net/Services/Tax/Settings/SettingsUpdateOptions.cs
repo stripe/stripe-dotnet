@@ -13,7 +13,13 @@ namespace Stripe.Tax
         public SettingsDefaultsOptions Defaults { get; set; }
 
         /// <summary>
-        /// The places where your business is located.
+        /// The place where your business is located.
+        /// </summary>
+        [JsonProperty("head_office")]
+        public SettingsHeadOfficeOptions HeadOffice { get; set; }
+
+        /// <summary>
+        /// The deprecated places where your business is located.
         /// </summary>
         [JsonProperty("locations")]
         public List<SettingsLocationOptions> Locations { get; set; }

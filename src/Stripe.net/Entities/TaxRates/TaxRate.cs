@@ -66,6 +66,14 @@ namespace Stripe
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Actual/effective tax rate percentage out of 100. For tax calculations with
+        /// automatic_tax[enabled]=true, this percentage does not include the statutory tax rate of
+        /// non-taxable jurisdictions.
+        /// </summary>
+        [JsonProperty("effective_percentage")]
+        public decimal? EffectivePercentage { get; set; }
+
+        /// <summary>
         /// This specifies if the tax rate is inclusive or exclusive.
         /// </summary>
         [JsonProperty("inclusive")]

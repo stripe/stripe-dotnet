@@ -1,5 +1,35 @@
 # Changelog
 
+## 41.17.0-beta.1 - 2023-05-11
+* [#2691](https://github.com/stripe/stripe-dotnet/pull/2691) Update generated code for beta
+  * Add support for `PayerEmail`, `PayerName`, and `SellerProtection` on `ChargePaymentMethodDetailsPaypal`
+  * Add support for `CaptureMethod`, `PreferredLocale`, `ReferenceId`, and `SetupFutureUsage` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`
+  * Add support for `Reference` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypal`, `PaymentIntentPaymentMethodOptionsPaypalOptions`, and `PaymentIntentPaymentMethodOptionsPaypal`
+  * Add support for `RiskCorrelationId` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypalOptions`, and `PaymentIntentPaymentMethodOptionsPaypalOptions`
+  * Remove support for `BillingAgreementId` and `Currency` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`
+  * Add support for `Fingerprint`, `PayerId`, and `VerifiedEmail` on `MandatePaymentMethodDetailsPaypal` and `PaymentMethodPaypal`
+  * Add support for `TaxabilityReason` and `TaxableAmount` on `OrderShippingCostTaxes`, `OrderTotalDetailsBreakdownTaxes`, and `QuotePhaseTotalDetailsBreakdownTaxes`
+  * Add support for `HeadOffice` on `TaxSettingsUpdateOptions` and `TaxSettings`
+
+## 41.16.0 - 2023-05-11
+* [#2692](https://github.com/stripe/stripe-dotnet/pull/2692) Update generated code
+  * Add support for `Paypal` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, `SetupIntentPaymentMethodDataOptions`, `SetupIntentPaymentMethodOptionsOptions`, and `SetupIntentPaymentMethodOptions`
+  * Add support for `NetworkToken` on `ChargePaymentMethodDetailsCard`
+  * Add support for `TaxabilityReason` and `TaxableAmount` on `CheckoutSessionShippingCostTaxes`, `CheckoutSessionTotalDetailsBreakdownTaxes`, `CreditNoteShippingCostTaxes`, `CreditNoteTaxAmounts`, `InvoiceShippingCostTaxes`, `InvoiceTotalTaxAmounts`, `LineItemTaxes`, `QuoteComputedRecurringTotalDetailsBreakdownTaxes`, `QuoteComputedUpfrontTotalDetailsBreakdownTaxes`, and `QuoteTotalDetailsBreakdownTaxes`
+  * Add support for `Brand`, `CardholderName`, `Country`, `ExpMonth`, `ExpYear`, `Fingerprint`, `Funding`, `Last4`, `Networks`, and `ReadMethod` on `PaymentMethodCardPresent` and `PaymentMethodInteracPresent`
+  * Add support for `PreferredLocales` on `PaymentMethodInteracPresent`
+  * Add support for `EffectivePercentage` on `TaxRate`
+  * Add support for `GbBankTransfer ` and `JpBankTransfer ` on `CustomerCashBalanceTransactionFundedBankTransfer`
+
+## 41.16.0-beta.1 - 2023-05-04
+* [#2686](https://github.com/stripe/stripe-dotnet/pull/2686) Update generated code for beta
+  * Updated stable APIs to the latest version
+
+## 41.15.0 - 2023-05-04
+* [#2687](https://github.com/stripe/stripe-dotnet/pull/2687) Update generated code
+  * Add support for `Link` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
+  * Add support for `Brand`, `Country`, `Description`, `ExpMonth`, `ExpYear`, `Fingerprint`, `Funding`, `Iin`, `Issuer`, `Last4`, `Network`, and `Wallet` on `SetupAttemptPaymentMethodDetailsCard`
+
 ## 41.15.0-beta.1 - 2023-04-27
 * [#2683](https://github.com/stripe/stripe-dotnet/pull/2683) Update generated code for beta
   * Add support for `BillingCycleAnchor` and `ProrationBehavior` on `CheckoutSessionSubscriptionDataOptions`
@@ -8,6 +38,18 @@
   * Add support for `Checks` on `SetupAttemptPaymentMethodDetailsCard`
   * Add support for `TaxBreakdown` on `TaxCalculationShippingCost` and `TaxTransactionShippingCost`
   * Change type of `TaxRegistrationActiveFromOptions` and `TaxRegistrationExpiresAtOptions` from `longInteger` to `longInteger | literal('now')`
+
+## 41.14.0 - 2023-04-27
+* [#2682](https://github.com/stripe/stripe-dotnet/pull/2682) Update generated code
+  * Add support for `BillingCycleAnchor` and `ProrationBehavior` on `CheckoutSessionSubscriptionDataOptions`
+  * Add support for `TerminalId` on `IssuingAuthorizationMerchantData` and `IssuingTransactionMerchantData`
+  * Add support for `Metadata` on `PaymentIntentCaptureOptions`
+  * Add support for `Checks` on `SetupAttemptPaymentMethodDetailsCard`
+  * Add support for `TaxBreakdown` on `TaxCalculationShippingCost` and `TaxTransactionShippingCost`
+* [#2685](https://github.com/stripe/stripe-dotnet/pull/2685) Fix incorrect ApiKey snippet in README
+* [#2679](https://github.com/stripe/stripe-dotnet/pull/2679) Update generated code
+* [#2676](https://github.com/stripe/stripe-dotnet/pull/2676) Update generated code
+* [#2673](https://github.com/stripe/stripe-dotnet/pull/2673) Added Events.CustomerSubscriptionPaused/Resumed.
 
 ## 41.14.0-beta.3 - 2023-04-20
 * [#2680](https://github.com/stripe/stripe-dotnet/pull/2680) Update generated code for beta

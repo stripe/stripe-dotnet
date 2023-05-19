@@ -8,6 +8,12 @@ namespace Stripe
         [JsonProperty("eu_bank_transfer")]
         public CustomerCashBalanceTransactionFundedBankTransferEuBankTransfer EuBankTransfer { get; set; }
 
+        [JsonProperty("gb_bank_transfer")]
+        public CustomerCashBalanceTransactionFundedBankTransferGbBankTransfer GbBankTransfer { get; set; }
+
+        [JsonProperty("jp_bank_transfer")]
+        public CustomerCashBalanceTransactionFundedBankTransferJpBankTransfer JpBankTransfer { get; set; }
+
         /// <summary>
         /// The user-supplied reference field on the bank transfer.
         /// </summary>

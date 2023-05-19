@@ -59,6 +59,9 @@ namespace Stripe.Checkout
         [JsonProperty("konbini")]
         public SessionPaymentMethodOptionsKonbini Konbini { get; set; }
 
+        [JsonProperty("link")]
+        public SessionPaymentMethodOptionsLink Link { get; set; }
+
         [JsonProperty("oxxo")]
         public SessionPaymentMethodOptionsOxxo Oxxo { get; set; }
 

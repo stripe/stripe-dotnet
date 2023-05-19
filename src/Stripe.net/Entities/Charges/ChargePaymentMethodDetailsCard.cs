@@ -114,6 +114,13 @@ namespace Stripe
         public string Network { get; set; }
 
         /// <summary>
+        /// If this card has network token credentials, this contains the details of the network
+        /// token credentials.
+        /// </summary>
+        [JsonProperty("network_token")]
+        public ChargePaymentMethodDetailsCardNetworkToken NetworkToken { get; set; }
+
+        /// <summary>
         /// Populated if this transaction used 3D Secure authentication.
         /// </summary>
         [JsonProperty("three_d_secure")]
