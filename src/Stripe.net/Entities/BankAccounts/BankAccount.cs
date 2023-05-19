@@ -14,7 +14,7 @@ namespace Stripe
     /// bank accounts or debit cards as well, and are documented in the links above.
     ///
     /// Related guide: <a href="https://stripe.com/docs/payments/bank-debits-transfers">Bank
-    /// Debits and Transfers</a>.
+    /// debits and transfers</a>.
     /// </summary>
     public class BankAccount : StripeEntity<BankAccount>, IHasId, IHasMetadata, IHasObject, IExternalAccount, IPaymentSource
     {

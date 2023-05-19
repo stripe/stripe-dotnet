@@ -12,8 +12,8 @@ namespace Stripe
     /// balance.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/reports/balance-transaction-types">Balance Transaction
-    /// Types</a>.
+    /// href="https://stripe.com/docs/reports/balance-transaction-types">Balance transaction
+    /// types</a>.
     /// </summary>
     public class BalanceTransaction : StripeEntity<BalanceTransaction>, IHasId, IHasObject
     {

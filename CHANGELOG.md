@@ -1,5 +1,11 @@
 # Changelog
 
+## 41.17.0 - 2023-05-19
+* [#2696](https://github.com/stripe/stripe-dotnet/pull/2696) Update generated code
+  * Add support for `SubscriptionUpdateConfirm` and `SubscriptionUpdate` on `BillingPortalSessionFlowDataOptions` and `BillingPortalSessionFlow`
+  * Add support for `Link` on `ChargePaymentMethodDetailsCardWallet` and `PaymentMethodCardWallet`
+  * Add support for `BuyerId` and `Cashtag` on `ChargePaymentMethodDetailsCashapp` and `PaymentMethodCashapp`
+
 ## 41.17.0-beta.1 - 2023-05-11
 * [#2691](https://github.com/stripe/stripe-dotnet/pull/2691) Update generated code for beta
   * Add support for `PayerEmail`, `PayerName`, and `SellerProtection` on `ChargePaymentMethodDetailsPaypal`

@@ -20,7 +20,7 @@ namespace Stripe
     ///
     /// Related guide: <a
     /// href="https://stripe.com/docs/connect/charges-transfers#reversing-transfers">Reversing
-    /// Transfers</a>.
+    /// transfers</a>.
     /// </summary>
     public class TransferReversal : StripeEntity<TransferReversal>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {

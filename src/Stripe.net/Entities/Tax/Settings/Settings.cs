@@ -40,5 +40,16 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("locations")]
         public List<SettingsLocation> Locations { get; set; }
+
+        /// <summary>
+        /// The <c>active</c> status indicates you have all required settings to calculate tax. A
+        /// status can transition out of <c>active</c> when new required settings are introduced.
+        /// One of: <c>active</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("status_details")]
+        public SettingsStatusDetails StatusDetails { get; set; }
     }
 }

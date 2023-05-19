@@ -10,8 +10,8 @@ namespace Stripe.Radar
     /// be fraudulent.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/disputes/measuring#early-fraud-warnings">Early Fraud
-    /// Warnings</a>.
+    /// href="https://stripe.com/docs/disputes/measuring#early-fraud-warnings">Early fraud
+    /// warnings</a>.
     /// </summary>
     public class EarlyFraudWarning : StripeEntity<EarlyFraudWarning>, IHasId, IHasObject
     {
