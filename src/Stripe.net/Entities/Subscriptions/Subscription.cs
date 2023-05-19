@@ -11,7 +11,7 @@ namespace Stripe
     /// Subscriptions allow you to charge a customer on a recurring basis.
     ///
     /// Related guide: <a href="https://stripe.com/docs/billing/subscriptions/creating">Creating
-    /// Subscriptions</a>.
+    /// subscriptions</a>.
     /// </summary>
     public class Subscription : StripeEntity<Subscription>, IHasId, IHasMetadata, IHasObject
     {

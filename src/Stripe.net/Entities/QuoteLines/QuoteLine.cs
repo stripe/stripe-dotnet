@@ -59,7 +59,7 @@ namespace Stripe
         public string ProrationBehavior { get; set; }
 
         /// <summary>
-        /// Timestsamp helper to end the underlying schedule early, based on the acompanying line's
+        /// Timestamp helper to end the underlying schedule early, based on the acompanying line's
         /// start or end date.
         /// One of: <c>line_ends_at</c>, or <c>line_starts_at</c>.
         /// </summary>

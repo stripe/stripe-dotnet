@@ -12,7 +12,7 @@ namespace Stripe.Issuing
     /// is represented by an Issuing <c>Transaction</c> object.
     ///
     /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/transactions">Issued
-    /// Card Transactions</a>.
+    /// card transactions</a>.
     /// </summary>
     public class Transaction : StripeEntity<Transaction>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {

@@ -10,7 +10,7 @@ namespace Stripe.Radar
     /// then be used in rules.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/radar/lists#managing-list-items">Managing List Items</a>.
+    /// href="https://stripe.com/docs/radar/lists#managing-list-items">Managing list items</a>.
     /// </summary>
     public class ValueListItem : StripeEntity<ValueListItem>, IHasId, IHasObject
     {

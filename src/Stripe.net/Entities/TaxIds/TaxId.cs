@@ -10,8 +10,8 @@ namespace Stripe
     /// href="https://stripe.com/docs/api/customers">customer</a>. A customer's tax IDs are
     /// displayed on invoices and credit notes issued for the customer.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-ids">Customer Tax
-    /// Identification Numbers</a>.
+    /// Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-ids">Customer tax
+    /// identification numbers</a>.
     /// </summary>
     public class TaxId : StripeEntity<TaxId>, IHasId, IHasObject
     {

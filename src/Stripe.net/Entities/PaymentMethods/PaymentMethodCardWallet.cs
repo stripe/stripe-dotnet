@@ -20,6 +20,9 @@ namespace Stripe
         [JsonProperty("google_pay")]
         public PaymentMethodCardWalletGooglePay GooglePay { get; set; }
 
+        [JsonProperty("link")]
+        public PaymentMethodCardWalletLink Link { get; set; }
+
         [JsonProperty("masterpass")]
         public PaymentMethodCardWalletMasterpass Masterpass { get; set; }
 

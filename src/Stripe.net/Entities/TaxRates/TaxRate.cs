@@ -13,7 +13,7 @@ namespace Stripe
     /// href="https://stripe.com/docs/payments/checkout/set-up-a-subscription#tax-rates">Checkout
     /// Sessions</a> to collect tax.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax Rates</a>.
+    /// Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax rates</a>.
     /// </summary>
     public class TaxRate : StripeEntity<TaxRate>, IHasId, IHasMetadata, IHasObject
     {
@@ -117,8 +117,9 @@ namespace Stripe
 
         /// <summary>
         /// The high-level tax type, such as <c>vat</c> or <c>sales_tax</c>.
-        /// One of: <c>gst</c>, <c>hst</c>, <c>igst</c>, <c>jct</c>, <c>lease_tax</c>, <c>pst</c>,
-        /// <c>qst</c>, <c>rst</c>, <c>sales_tax</c>, or <c>vat</c>.
+        /// One of: <c>amusement_tax</c>, <c>communications_tax</c>, <c>gst</c>, <c>hst</c>,
+        /// <c>igst</c>, <c>jct</c>, <c>lease_tax</c>, <c>pst</c>, <c>qst</c>, <c>rst</c>,
+        /// <c>sales_tax</c>, or <c>vat</c>.
         /// </summary>
         [JsonProperty("tax_type")]
         public string TaxType { get; set; }
