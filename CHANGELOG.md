@@ -1,5 +1,12 @@
 # Changelog
 
+## 41.18.0-beta.1 - 2023-05-19
+* [#2697](https://github.com/stripe/stripe-dotnet/pull/2697) Update generated code for beta
+  * Add support for `Subscribe` and `Unsubscribe` methods on resource `FinancialConnections.Account`
+  * Add support for `NextRefreshAvailableAt` on `FinancialConnectionsAccountBalanceRefresh`, `FinancialConnectionsAccountInferredBalancesRefresh`, `FinancialConnectionsAccountOwnershipRefresh`, and `FinancialConnectionsAccountTransactionRefresh`
+  * Add support for `StatusDetails` and `Status` on `TaxSettings`
+* [#2690](https://github.com/stripe/stripe-dotnet/pull/2690) StripeClient.RawRequest
+
 ## 41.17.0 - 2023-05-19
 * [#2696](https://github.com/stripe/stripe-dotnet/pull/2696) Update generated code
   * Add support for `SubscriptionUpdateConfirm` and `SubscriptionUpdate` on `BillingPortalSessionFlowDataOptions` and `BillingPortalSessionFlow`
