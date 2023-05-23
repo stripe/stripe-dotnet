@@ -187,8 +187,15 @@ namespace Stripe
 
             var request = StripeRequest.CreateWithStringContent(this, method, path, content, requestOptions);
 
-            return await this.HttpClient.MakeRequestAsync(request, cancellationToken)
+            var response = await this.HttpClient.MakeRequestAsync(request, cancellationToken)
                     .ConfigureAwait(false);
+
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw BuildStripeException(response);
+            }
+
+            return response;
         }
 
         /// <summary>Deserializes a JSON string into a Stripe object.</summary>
@@ -261,7 +268,7 @@ namespace Stripe
             return new StripeException(
                 response.StatusCode,
                 stripeError,
-                stripeError.Message ?? stripeError.ErrorDescription)
+                stripeError.Message ?? stripeError.ErrorDescription ?? stripeError.DeveloperMessage)
             {
                 StripeResponse = response,
             };

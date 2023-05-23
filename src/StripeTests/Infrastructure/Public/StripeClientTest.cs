@@ -320,6 +320,18 @@ namespace StripeTests
         }
 
         [Fact]
+        public void PreviewGet_ThrowsExceptionWithDeveloperMessageAsMessage()
+        {
+            var content = "{\"error\": {\"developer_message\": \"Unacceptable!\"}}";
+            var response = new StripeResponse(HttpStatusCode.BadRequest, null, content);
+            this.httpClient.Response = response;
+
+            var exception = Assert.Throws<StripeException>(() => this.stripeClient.Preview.Get("/v1/charges/ch_123"));
+
+            Assert.Equal("Unacceptable!", exception.Message);
+        }
+
+        [Fact]
         public async Task PreviewPostAsync_Json()
         {
             var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
