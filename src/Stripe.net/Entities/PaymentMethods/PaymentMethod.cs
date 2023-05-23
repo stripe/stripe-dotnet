@@ -196,7 +196,7 @@ namespace Stripe
         /// <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>,
         /// <c>klarna</c>, <c>konbini</c>, <c>link</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>,
         /// <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>sepa_debit</c>, <c>sofort</c>,
-        /// <c>us_bank_account</c>, or <c>wechat_pay</c>.
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -206,5 +206,8 @@ namespace Stripe
 
         [JsonProperty("wechat_pay")]
         public PaymentMethodWechatPay WechatPay { get; set; }
+
+        [JsonProperty("zip")]
+        public PaymentMethodZip Zip { get; set; }
     }
 }

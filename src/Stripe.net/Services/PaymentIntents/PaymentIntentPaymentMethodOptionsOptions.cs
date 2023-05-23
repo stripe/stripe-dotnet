@@ -227,5 +227,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("wechat_pay")]
         public PaymentIntentPaymentMethodOptionsWechatPayOptions WechatPay { get; set; }
+
+        /// <summary>
+        /// If this is a <c>zip</c> PaymentMethod, this sub-hash contains details about the Zip
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("zip")]
+        public PaymentIntentPaymentMethodOptionsZipOptions Zip { get; set; }
     }
 }

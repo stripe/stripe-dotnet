@@ -127,5 +127,8 @@ namespace Stripe
 
         [JsonProperty("wechat_pay")]
         public ChargePaymentMethodDetailsWechatPay WechatPay { get; set; }
+
+        [JsonProperty("zip")]
+        public ChargePaymentMethodDetailsZip Zip { get; set; }
     }
 }
