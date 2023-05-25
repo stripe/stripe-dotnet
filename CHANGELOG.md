@@ -3,6 +3,11 @@
 ## 41.19.0-beta.1 - 2023-05-25
 * [#2700](https://github.com/stripe/stripe-dotnet/pull/2700) Handle developer_message in preview error responses
 
+## 41.18.0 - 2023-05-25
+* [#2699](https://github.com/stripe/stripe-dotnet/pull/2699) Update generated code
+  * Add support for `ZipPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Zip` on `ChargePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+
 ## 41.18.0-beta.1 - 2023-05-19
 * [#2697](https://github.com/stripe/stripe-dotnet/pull/2697) Update generated code for beta
   * Add support for `Subscribe` and `Unsubscribe` methods on resource `FinancialConnections.Account`
