@@ -1,5 +1,10 @@
 # Changelog
 
+## 41.18.0 - 2023-05-25
+* [#2699](https://github.com/stripe/stripe-dotnet/pull/2699) Update generated code
+  * Add support for `ZipPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Zip` on `ChargePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+
 ## 41.17.0 - 2023-05-19
 * [#2696](https://github.com/stripe/stripe-dotnet/pull/2696) Update generated code
   * Add support for `SubscriptionUpdateConfirm` and `SubscriptionUpdate` on `BillingPortalSessionFlowDataOptions` and `BillingPortalSessionFlow`
