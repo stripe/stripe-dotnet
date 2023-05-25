@@ -90,5 +90,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("us_bank_account")]
         public PaymentMethodUsBankAccountOptions UsBankAccount { get; set; }
+
+        /// <summary>
+        /// This is a legacy parameter that will be removed in the future. It is a hash that does
+        /// not accept any keys.
+        /// </summary>
+        [JsonProperty("zip")]
+        public PaymentMethodZipOptions Zip { get; set; }
     }
 }

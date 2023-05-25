@@ -97,8 +97,8 @@ namespace Stripe
         public bool DetailsSubmitted { get; set; }
 
         /// <summary>
-        /// An email address associated with the account. You can treat this as metadata: it is not
-        /// used for authentication or messaging account holders.
+        /// An email address associated with the account. It's not used for authentication and
+        /// Stripe doesn't market to this field without explicit approval from the platform.
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }

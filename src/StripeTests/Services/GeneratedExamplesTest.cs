@@ -2929,6 +2929,37 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTaxCalculationServiceCreate()
+        {
+            var options = new Stripe.Tax.CalculationCreateOptions
+            {
+                Currency = "usd",
+                LineItems = new List<Stripe.Tax.CalculationLineItemOptions>
+                {
+                    new Stripe.Tax.CalculationLineItemOptions
+                    {
+                        Amount = 1000,
+                        Reference = "L1",
+                    },
+                },
+                CustomerDetails = new Stripe.Tax.CalculationCustomerDetailsOptions
+                {
+                    Address = new AddressOptions
+                    {
+                        Line1 = "354 Oyster Point Blvd",
+                        City = "South San Francisco",
+                        State = "CA",
+                        PostalCode = "94080",
+                        Country = "US",
+                    },
+                    AddressSource = "shipping",
+                },
+            };
+            var service = new Stripe.Tax.CalculationService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestTaxCalculationServiceListLineItems()
         {
             var service = new Stripe.Tax.CalculationService(this.StripeClient);
