@@ -214,6 +214,12 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// If specified, payment collection for this subscription will be paused.
+        /// </summary>
+        [JsonProperty("pause_collection")]
+        public SubscriptionSchedulePhasePauseCollection PauseCollection { get; set; }
+
+        /// <summary>
         /// If the subscription schedule will prorate when transitioning to this phase. Possible
         /// values are <c>create_prorations</c> and <c>none</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.

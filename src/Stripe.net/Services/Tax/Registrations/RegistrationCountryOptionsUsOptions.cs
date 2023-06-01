@@ -6,6 +6,12 @@ namespace Stripe.Tax
     public class RegistrationCountryOptionsUsOptions : INestedOptions
     {
         /// <summary>
+        /// Options for the local amusement tax registration.
+        /// </summary>
+        [JsonProperty("local_amusement_tax")]
+        public RegistrationCountryOptionsUsLocalAmusementTaxOptions LocalAmusementTax { get; set; }
+
+        /// <summary>
         /// Options for the local lease tax registration.
         /// </summary>
         [JsonProperty("local_lease_tax")]

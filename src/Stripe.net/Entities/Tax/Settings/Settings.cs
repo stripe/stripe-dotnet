@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Tax
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -34,12 +33,6 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
-
-        /// <summary>
-        /// The deprecated places where your business is located.
-        /// </summary>
-        [JsonProperty("locations")]
-        public List<SettingsLocation> Locations { get; set; }
 
         /// <summary>
         /// The <c>active</c> status indicates you have all required settings to calculate tax. A

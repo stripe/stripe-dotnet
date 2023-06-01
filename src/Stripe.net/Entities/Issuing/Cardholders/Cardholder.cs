@@ -85,6 +85,15 @@ namespace Stripe.Issuing
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
 
+        /// <summary>
+        /// The cardholder’s preferred locales (languages), ordered by preference. Locales can be
+        /// <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>. This changes the language of
+        /// the <a href="https://stripe.com/docs/issuing/3d-secure">3D Secure flow</a> and one-time
+        /// password messages sent to the cardholder.
+        /// </summary>
+        [JsonProperty("preferred_locales")]
+        public List<string> PreferredLocales { get; set; }
+
         [JsonProperty("requirements")]
         public CardholderRequirements Requirements { get; set; }
 

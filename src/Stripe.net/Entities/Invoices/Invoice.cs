@@ -852,6 +852,12 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Details about the subscription that created this invoice.
+        /// </summary>
+        [JsonProperty("subscription_details")]
+        public InvoiceSubscriptionDetails SubscriptionDetails { get; set; }
+
+        /// <summary>
         /// Only set for upcoming invoices that preview prorations. The time used to calculate
         /// prorations.
         /// </summary>

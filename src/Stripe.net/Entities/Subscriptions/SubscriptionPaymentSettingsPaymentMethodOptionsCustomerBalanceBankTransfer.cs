@@ -10,8 +10,8 @@ namespace Stripe
 
         /// <summary>
         /// The bank transfer type that can be used for funding. Permitted values include:
-        /// <c>eu_bank_transfer</c>, <c>gb_bank_transfer</c>, <c>jp_bank_transfer</c>, or
-        /// <c>mx_bank_transfer</c>.
+        /// <c>eu_bank_transfer</c>, <c>gb_bank_transfer</c>, <c>jp_bank_transfer</c>,
+        /// <c>mx_bank_transfer</c>, or <c>us_bank_transfer</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
