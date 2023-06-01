@@ -31,6 +31,13 @@ namespace Stripe
         public string Country { get; set; }
 
         /// <summary>
+        /// A high-level description of the type of cards issued in this range. (For internal use
+        /// only and not typically available in standard API requests.).
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Two-digit number representing the card's expiration month.
         /// </summary>
         [JsonProperty("exp_month")]
@@ -60,6 +67,20 @@ namespace Stripe
         /// </summary>
         [JsonProperty("funding")]
         public string Funding { get; set; }
+
+        /// <summary>
+        /// Issuer identification number of the card. (For internal use only and not typically
+        /// available in standard API requests.).
+        /// </summary>
+        [JsonProperty("iin")]
+        public string Iin { get; set; }
+
+        /// <summary>
+        /// The name of the card's issuing bank. (For internal use only and not typically available
+        /// in standard API requests.).
+        /// </summary>
+        [JsonProperty("issuer")]
+        public string Issuer { get; set; }
 
         /// <summary>
         /// The last four digits of the card.
