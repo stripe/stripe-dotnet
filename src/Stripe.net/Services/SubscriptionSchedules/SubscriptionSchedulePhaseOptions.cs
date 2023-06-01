@@ -160,6 +160,12 @@ namespace Stripe
         public string OnBehalfOf { get; set; }
 
         /// <summary>
+        /// If specified, payment collection for this subscription will be paused.
+        /// </summary>
+        [JsonProperty("pause_collection")]
+        public SubscriptionSchedulePhasePauseCollectionOptions PauseCollection { get; set; }
+
+        /// <summary>
         /// Whether the subscription schedule will create <a
         /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when
         /// transitioning to this phase. The default value is <c>create_prorations</c>. This setting

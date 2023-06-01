@@ -59,6 +59,12 @@ namespace Stripe
         public string ProrationBehavior { get; set; }
 
         /// <summary>
+        /// Details to modify the pause_collection behavior of the subscription schedule.
+        /// </summary>
+        [JsonProperty("set_pause_collection")]
+        public QuoteLineSetPauseCollection SetPauseCollection { get; set; }
+
+        /// <summary>
         /// Timestamp helper to end the underlying schedule early, based on the acompanying line's
         /// start or end date.
         /// One of: <c>line_ends_at</c>, or <c>line_starts_at</c>.
