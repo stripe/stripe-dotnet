@@ -3,7 +3,7 @@ namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
 
-    public class SessionCustomFieldNumeric : StripeEntity<SessionCustomFieldNumeric>
+    public class SessionCustomFieldNumericOptions : INestedOptions
     {
         /// <summary>
         /// The maximum character length constraint for the customer's input.
@@ -16,11 +16,5 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("minimum_length")]
         public long? MinimumLength { get; set; }
-
-        /// <summary>
-        /// The value entered by the customer, containing only digits.
-        /// </summary>
-        [JsonProperty("value")]
-        public string Value { get; set; }
     }
 }

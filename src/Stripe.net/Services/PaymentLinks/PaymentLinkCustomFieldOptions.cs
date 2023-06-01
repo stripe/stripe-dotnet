@@ -25,11 +25,23 @@ namespace Stripe
         public PaymentLinkCustomFieldLabelOptions Label { get; set; }
 
         /// <summary>
+        /// Configuration for <c>type=numeric</c> fields.
+        /// </summary>
+        [JsonProperty("numeric")]
+        public PaymentLinkCustomFieldNumericOptions Numeric { get; set; }
+
+        /// <summary>
         /// Whether the customer is required to complete the field before completing the Checkout
         /// Session. Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("optional")]
         public bool? Optional { get; set; }
+
+        /// <summary>
+        /// Configuration for <c>type=text</c> fields.
+        /// </summary>
+        [JsonProperty("text")]
+        public PaymentLinkCustomFieldTextOptions Text { get; set; }
 
         /// <summary>
         /// The type of the field.
