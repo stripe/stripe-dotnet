@@ -5,6 +5,9 @@ namespace Stripe.Tax
 
     public class RegistrationCountryOptionsUs : StripeEntity<RegistrationCountryOptionsUs>
     {
+        [JsonProperty("local_amusement_tax")]
+        public RegistrationCountryOptionsUsLocalAmusementTax LocalAmusementTax { get; set; }
+
         [JsonProperty("local_lease_tax")]
         public RegistrationCountryOptionsUsLocalLeaseTax LocalLeaseTax { get; set; }
 
