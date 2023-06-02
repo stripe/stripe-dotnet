@@ -35,7 +35,7 @@ namespace Stripe.Treasury
         /// are made on <a href="https://stripe.com/docs/connect/manage-payout-schedule">varying
         /// schedules</a>, depending on your country and industry.
         ///
-        /// Related guide: <a href="https://stripe.com/docs/payouts">Receiving Payouts</a>.
+        /// Related guide: <a href="https://stripe.com/docs/payouts">Receiving payouts</a>.
         /// </summary>
         [JsonProperty("payout")]
         public Payout Payout { get; set; }

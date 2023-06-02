@@ -13,7 +13,7 @@ namespace Stripe
     ///
     /// Related guide: <a
     /// href="https://stripe.com/docs/connect/destination-charges#refunding-app-fee">Refunding
-    /// Application Fees</a>.
+    /// application fees</a>.
     /// </summary>
     public class ApplicationFeeRefund : StripeEntity<ApplicationFeeRefund>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {

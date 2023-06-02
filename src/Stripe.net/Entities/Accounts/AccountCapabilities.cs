@@ -280,5 +280,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("us_bank_account_ach_payments")]
         public string UsBankAccountAchPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Zip capability of the account, or whether the account can directly
+        /// process Zip charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("zip_payments")]
+        public string ZipPayments { get; set; }
     }
 }

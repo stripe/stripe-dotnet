@@ -16,7 +16,7 @@ namespace Stripe
     /// endpoints.
     ///
     /// Related guide: <a href="https://stripe.com/docs/webhooks/configure">Setting up
-    /// Webhooks</a>.
+    /// webhooks</a>.
     /// </summary>
     public class WebhookEndpoint : StripeEntity<WebhookEndpoint>, IHasId, IHasMetadata, IHasObject
     {

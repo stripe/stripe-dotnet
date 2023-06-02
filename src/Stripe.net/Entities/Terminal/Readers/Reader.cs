@@ -10,7 +10,7 @@ namespace Stripe.Terminal
     ///
     /// Related guide: <a
     /// href="https://stripe.com/docs/terminal/payments/connect-reader">Connecting to a
-    /// Reader</a>.
+    /// reader</a>.
     /// </summary>
     public class Reader : StripeEntity<Reader>, IHasId, IHasMetadata, IHasObject
     {

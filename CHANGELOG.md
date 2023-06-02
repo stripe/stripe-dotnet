@@ -1,5 +1,24 @@
 # Changelog
 
+## 41.19.0 - 2023-06-01
+* [#2701](https://github.com/stripe/stripe-dotnet/pull/2701) Update generated code
+  * Add support for `Numeric` and `Text` on `CheckoutSessionCustomFieldsOptions` and `PaymentLinkCustomFieldsOptions`
+  * Add support for `MaximumLength` and `MinimumLength` on `CheckoutSessionCustomFieldsNumeric` and `CheckoutSessionCustomFieldsText`
+  * Add support for `PreferredLocales` on `IssuingCardholderCreateOptions`, `IssuingCardholderUpdateOptions`, and `IssuingCardholder`
+  * Add support for `Description`, `Iin`, and `Issuer` on `PaymentMethodCardPresent` and `PaymentMethodInteracPresent`
+  * Add support for `PayerEmail` on `PaymentMethodPaypal`
+
+## 41.18.0 - 2023-05-25
+* [#2699](https://github.com/stripe/stripe-dotnet/pull/2699) Update generated code
+  * Add support for `ZipPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Zip` on `ChargePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+
+## 41.17.0 - 2023-05-19
+* [#2696](https://github.com/stripe/stripe-dotnet/pull/2696) Update generated code
+  * Add support for `SubscriptionUpdateConfirm` and `SubscriptionUpdate` on `BillingPortalSessionFlowDataOptions` and `BillingPortalSessionFlow`
+  * Add support for `Link` on `ChargePaymentMethodDetailsCardWallet` and `PaymentMethodCardWallet`
+  * Add support for `BuyerId` and `Cashtag` on `ChargePaymentMethodDetailsCashapp` and `PaymentMethodCashapp`
+
 ## 41.16.0 - 2023-05-11
 * [#2692](https://github.com/stripe/stripe-dotnet/pull/2692) Update generated code
   * Add support for `Paypal` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, `SetupIntentPaymentMethodDataOptions`, `SetupIntentPaymentMethodOptionsOptions`, and `SetupIntentPaymentMethodOptions`

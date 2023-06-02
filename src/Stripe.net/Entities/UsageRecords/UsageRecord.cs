@@ -10,8 +10,7 @@ namespace Stripe
     /// billing of subscription prices.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/billing/subscriptions/metered-billing">Metered
-    /// Billing</a>.
+    /// href="https://stripe.com/docs/billing/subscriptions/metered-billing">Metered billing</a>.
     /// </summary>
     public class UsageRecord : StripeEntity<UsageRecord>, IHasId, IHasObject
     {

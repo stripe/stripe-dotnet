@@ -12,7 +12,7 @@ namespace Stripe
     ///
     /// Related guide: <a
     /// href="https://stripe.com/docs/billing/subscriptions/subscription-schedules">Subscription
-    /// Schedules</a>.
+    /// schedules</a>.
     /// </summary>
     public class SubscriptionSchedule : StripeEntity<SubscriptionSchedule>, IHasId, IHasMetadata, IHasObject
     {

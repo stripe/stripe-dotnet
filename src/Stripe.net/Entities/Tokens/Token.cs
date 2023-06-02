@@ -27,10 +27,6 @@ namespace Stripe
     /// href="https://stripe.com/docs/api#external_accounts">Custom accounts</a>. Note that <a
     /// href="https://stripe.com/docs/radar">Radar</a>, our integrated solution for automatic
     /// fraud protection, performs best with integrations that use client-side tokenization.
-    ///
-    /// Related guide: <a
-    /// href="https://stripe.com/docs/payments/accept-a-payment-charges#web-create-token">Accept
-    /// a payment</a>.
     /// </summary>
     public class Token : StripeEntity<Token>, IHasId, IHasObject
     {
@@ -55,7 +51,7 @@ namespace Stripe
         /// bank accounts or debit cards as well, and are documented in the links above.
         ///
         /// Related guide: <a href="https://stripe.com/docs/payments/bank-debits-transfers">Bank
-        /// Debits and Transfers</a>.
+        /// debits and transfers</a>.
         /// </summary>
         [JsonProperty("bank_account")]
         public BankAccount BankAccount { get; set; }
@@ -65,7 +61,7 @@ namespace Stripe
         /// can also store multiple debit cards on a recipient in order to transfer to those cards
         /// later.
         ///
-        /// Related guide: <a href="https://stripe.com/docs/sources/cards">Card Payments with
+        /// Related guide: <a href="https://stripe.com/docs/sources/cards">Card payments with
         /// Sources</a>.
         /// </summary>
         [JsonProperty("card")]
