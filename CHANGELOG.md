@@ -9,6 +9,13 @@
   * Remove support for `Locations` on `TaxSettingsUpdateOptions` and `TaxSettings`
 * [#2698](https://github.com/stripe/stripe-dotnet/pull/2698) Update generated code for beta
 
+## 41.19.0 - 2023-06-01
+* [#2701](https://github.com/stripe/stripe-dotnet/pull/2701) Update generated code
+  * Add support for `Numeric` and `Text` on `CheckoutSessionCustomFieldsOptions` and `PaymentLinkCustomFieldsOptions`
+  * Add support for `MaximumLength` and `MinimumLength` on `CheckoutSessionCustomFieldsNumeric` and `CheckoutSessionCustomFieldsText`
+  * Add support for `PreferredLocales` on `IssuingCardholderCreateOptions`, `IssuingCardholderUpdateOptions`, and `IssuingCardholder`
+  * Add support for `Description`, `Iin`, and `Issuer` on `PaymentMethodCardPresent` and `PaymentMethodInteracPresent`
+  * Add support for `PayerEmail` on `PaymentMethodPaypal`
 
 ## 41.19.0-beta.1 - 2023-05-25
 * [#2700](https://github.com/stripe/stripe-dotnet/pull/2700) Handle developer_message in preview error responses
