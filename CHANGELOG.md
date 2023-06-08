@@ -1,5 +1,9 @@
 # Changelog
 
+## 41.21.0-beta.1 - 2023-06-08
+* [#2704](https://github.com/stripe/stripe-dotnet/pull/2704) Update generated code for beta
+  * Updated beta APIs to the latest stable version
+
 ## 41.20.0-beta.1 - 2023-06-01
 * [#2702](https://github.com/stripe/stripe-dotnet/pull/2702) Update generated code for beta
   * Add support for `SubscriptionDetails` on `Invoice`
