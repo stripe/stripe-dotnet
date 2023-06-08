@@ -5,6 +5,10 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Login Links are single-use login link for an Express account to access their Stripe
+    /// dashboard.
+    /// </summary>
     public class LoginLink : StripeEntity<LoginLink>, IHasObject
     {
         /// <summary>
