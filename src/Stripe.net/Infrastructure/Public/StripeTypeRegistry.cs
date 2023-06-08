@@ -15,6 +15,7 @@ namespace Stripe
         public static readonly IReadOnlyDictionary<string, Type> ObjectsToTypes = new ReadOnlyDictionary<string, Type>(
             new Dictionary<string, Type>
             {
+                { "accepted_financing", typeof(AcceptedFinancing) },
                 { "account", typeof(Account) },
                 { "account_link", typeof(AccountLink) },
                 { "account_session", typeof(AccountSession) },
