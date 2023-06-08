@@ -26,8 +26,8 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
-        /// Controls whether Stripe will perform <a
-        /// href="https://stripe.com/docs/billing/invoices/workflow/#auto_advance">automatic
+        /// Controls whether Stripe performs <a
+        /// href="https://stripe.com/docs/invoicing/integration/automatic-advancement-collection">automatic
         /// collection</a> of the invoice.
         /// </summary>
         [JsonProperty("auto_advance")]
