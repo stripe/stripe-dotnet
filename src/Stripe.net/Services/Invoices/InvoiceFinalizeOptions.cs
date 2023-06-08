@@ -6,10 +6,10 @@ namespace Stripe
     public class InvoiceFinalizeOptions : BaseOptions
     {
         /// <summary>
-        /// Controls whether Stripe will perform <a
-        /// href="https://stripe.com/docs/invoicing/automatic-charging">automatic collection</a> of
-        /// the invoice. When <c>false</c>, the invoice's state will not automatically advance
-        /// without an explicit action.
+        /// Controls whether Stripe performs <a
+        /// href="https://stripe.com/docs/invoicing/integration/automatic-advancement-collection">automatic
+        /// collection</a> of the invoice. If <c>false</c>, the invoice's state doesn't
+        /// automatically advance without an explicit action.
         /// </summary>
         [JsonProperty("auto_advance")]
         public bool? AutoAdvance { get; set; }
