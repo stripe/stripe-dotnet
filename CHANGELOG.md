@@ -1,5 +1,12 @@
 # Changelog
 
+## 41.20.0 - 2023-06-08
+* [#2705](https://github.com/stripe/stripe-dotnet/pull/2705) Update generated code
+  * Add support for `TaxabilityReason` on `TaxCalculationTaxBreakdown`
+* [#2709](https://github.com/stripe/stripe-dotnet/pull/2709) Revert "Move ShippingOptions"
+* [#2707](https://github.com/stripe/stripe-dotnet/pull/2707) Move ShippingOptions
+* [#2703](https://github.com/stripe/stripe-dotnet/pull/2703) Fix stripe_net_target_framework telemetry
+
 ## 41.19.0 - 2023-06-01
 * [#2701](https://github.com/stripe/stripe-dotnet/pull/2701) Update generated code
   * Add support for `Numeric` and `Text` on `CheckoutSessionCustomFieldsOptions` and `PaymentLinkCustomFieldsOptions`
