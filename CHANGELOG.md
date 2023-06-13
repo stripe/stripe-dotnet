@@ -4,6 +4,13 @@
 * [#2704](https://github.com/stripe/stripe-dotnet/pull/2704) Update generated code for beta
   * Updated beta APIs to the latest stable version
 
+## 41.20.0 - 2023-06-08
+* [#2705](https://github.com/stripe/stripe-dotnet/pull/2705) Update generated code
+  * Add support for `TaxabilityReason` on `TaxCalculationTaxBreakdown`
+* [#2709](https://github.com/stripe/stripe-dotnet/pull/2709) Revert "Move ShippingOptions"
+* [#2707](https://github.com/stripe/stripe-dotnet/pull/2707) Move ShippingOptions
+* [#2703](https://github.com/stripe/stripe-dotnet/pull/2703) Fix stripe_net_target_framework telemetry
+
 ## 41.20.0-beta.1 - 2023-06-01
 * [#2702](https://github.com/stripe/stripe-dotnet/pull/2702) Update generated code for beta
   * Add support for `SubscriptionDetails` on `Invoice`
