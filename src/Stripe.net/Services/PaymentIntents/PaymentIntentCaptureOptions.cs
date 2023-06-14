@@ -35,6 +35,12 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
         /// For non-card charges, you can use this value as the complete description that appears on
         /// your customers’ statements. Must contain at least one letter, maximum 22 characters.
         /// </summary>

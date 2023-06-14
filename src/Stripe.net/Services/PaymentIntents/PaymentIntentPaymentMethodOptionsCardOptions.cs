@@ -115,5 +115,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kanji")]
         public string StatementDescriptorSuffixKanji { get; set; }
+
+        /// <summary>
+        /// Statement details for this payment intent. You can use this to override the merchant
+        /// details shown on your customers' statements.
+        /// </summary>
+        [JsonProperty("statement_details")]
+        public PaymentIntentPaymentMethodOptionsCardStatementDetailsOptions StatementDetails { get; set; }
     }
 }

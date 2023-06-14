@@ -45,6 +45,12 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        public ChargePaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
         /// This is the email address that the receipt for this charge will be sent to. If this
         /// field is updated, then a new email receipt will be sent to the updated address.
         /// </summary>

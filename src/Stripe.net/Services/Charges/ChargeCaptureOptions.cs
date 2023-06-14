@@ -29,6 +29,12 @@ namespace Stripe
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        public ChargePaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
         /// The email address to send this charge's receipt to. This will override the
         /// previously-specified email address for this charge, if one was set. Receipts will not be
         /// sent in test mode.
