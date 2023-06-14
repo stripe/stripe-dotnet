@@ -84,8 +84,8 @@ namespace Stripe
         /// <summary>
         /// The Stripe account ID for which these funds are intended. Automatically set if you use
         /// the <c>destination</c> parameter. For details, see <a
-        /// href="https://stripe.com/docs/connect/charges-transfers#on-behalf-of">Creating Separate
-        /// Charges and Transfers</a>.
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#on-behalf-of">Creating
+        /// Separate Charges and Transfers</a>.
         /// </summary>
         [JsonProperty("on_behalf_of")]
         public string OnBehalfOf { get; set; }
@@ -148,7 +148,7 @@ namespace Stripe
 
         /// <summary>
         /// A string that identifies this transaction as part of a group. For details, see <a
-        /// href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Grouping
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-options">Grouping
         /// transactions</a>.
         /// </summary>
         [JsonProperty("transfer_group")]
