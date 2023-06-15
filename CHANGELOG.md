@@ -1,5 +1,12 @@
 # Changelog
 
+## 41.21.0-beta.2 - 2023-06-15
+* [#2712](https://github.com/stripe/stripe-dotnet/pull/2712) Update generated code for beta
+  * Add support for `PaymentDetails` on `ChargeCaptureOptions`, `ChargeUpdateOptions`, `PaymentIntentCaptureOptions`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentUpdateOptions`, and `PaymentIntent`
+  * Add support for `StatementDetails` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
+* [#2711](https://github.com/stripe/stripe-dotnet/pull/2711) Update generated code for beta
+
+
 ## 41.21.0-beta.1 - 2023-06-08
 * [#2704](https://github.com/stripe/stripe-dotnet/pull/2704) Update generated code for beta
   * Updated beta APIs to the latest stable version
