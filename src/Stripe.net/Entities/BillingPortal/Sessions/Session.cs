@@ -113,8 +113,8 @@ namespace Stripe.BillingPortal
         /// The account for which the session was created on behalf of. When specified, only
         /// subscriptions and invoices with this <c>on_behalf_of</c> account appear in the portal.
         /// For more information, see the <a
-        /// href="https://stripe.com/docs/connect/charges-transfers#on-behalf-of">docs</a>. Use the
-        /// <a
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#on-behalf-of">docs</a>.
+        /// Use the <a
         /// href="https://stripe.com/docs/api/accounts/object#account_object-settings-branding">Accounts
         /// API</a> to modify the <c>on_behalf_of</c> account's branding settings, which the portal
         /// displays.

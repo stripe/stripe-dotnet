@@ -26,8 +26,8 @@ namespace Stripe
 
         /// <summary>
         /// The ID of a connected Stripe account. &lt;a
-        /// href="/docs/connect/charges-transfers"&gt;See the Connect documentation&lt;/a&gt; for
-        /// details.
+        /// href="/docs/connect/separate-charges-and-transfers"&gt;See the Connect
+        /// documentation&lt;/a&gt; for details.
         /// </summary>
         [JsonProperty("destination")]
         public string Destination { get; set; }
@@ -45,8 +45,8 @@ namespace Stripe
         /// You can use this parameter to transfer funds from a charge before they are added to your
         /// available balance. A pending balance will transfer immediately but the funds will not
         /// become available until the original charge becomes available. <a
-        /// href="https://stripe.com/docs/connect/charges-transfers#transfer-availability">See the
-        /// Connect documentation</a> for details.
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-availability">See
+        /// the Connect documentation</a> for details.
         /// </summary>
         [JsonProperty("source_transaction")]
         public string SourceTransaction { get; set; }
@@ -61,7 +61,7 @@ namespace Stripe
 
         /// <summary>
         /// A string that identifies this transaction as part of a group. See the <a
-        /// href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-options">Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]
