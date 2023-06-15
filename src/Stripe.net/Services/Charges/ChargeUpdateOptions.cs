@@ -45,6 +45,12 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        public ChargePaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
         /// This is the email address that the receipt for this charge will be sent to. If this
         /// field is updated, then a new email receipt will be sent to the updated address.
         /// </summary>
@@ -60,7 +66,7 @@ namespace Stripe
         /// <summary>
         /// A string that identifies this transaction as part of a group. <c>transfer_group</c> may
         /// only be provided if it has not been set. See the <a
-        /// href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-options">Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]

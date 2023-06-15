@@ -90,5 +90,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kanji")]
         public string StatementDescriptorSuffixKanji { get; set; }
+
+        [JsonProperty("statement_details")]
+        public PaymentIntentPaymentMethodOptionsCardStatementDetails StatementDetails { get; set; }
     }
 }

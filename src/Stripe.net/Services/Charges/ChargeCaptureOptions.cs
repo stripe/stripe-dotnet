@@ -29,6 +29,12 @@ namespace Stripe
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        public ChargePaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
         /// The email address to send this charge's receipt to. This will override the
         /// previously-specified email address for this charge, if one was set. Receipts will not be
         /// sent in test mode.
@@ -64,7 +70,7 @@ namespace Stripe
         /// <summary>
         /// A string that identifies this transaction as part of a group. <c>transfer_group</c> may
         /// only be provided if it has not been set. See the <a
-        /// href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-options">Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]

@@ -50,6 +50,12 @@ namespace Stripe
         public bool? OffSession { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or <a
         /// href="https://stripe.com/docs/payments/payment-methods/transitioning#compatibility">compatible
         /// Source</a> object) to attach to this PaymentIntent.

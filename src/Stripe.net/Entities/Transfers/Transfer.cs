@@ -16,8 +16,9 @@ namespace Stripe
     /// payout endpoints. For more information, read about the <a
     /// href="https://stripe.com/docs/transfer-payout-split">transfer/payout split</a>.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/connect/charges-transfers">Creating
-    /// separate charges and transfers</a>.
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">Creating separate
+    /// charges and transfers</a>.
     /// </summary>
     public class Transfer : StripeEntity<Transfer>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
@@ -232,7 +233,7 @@ namespace Stripe
 
         /// <summary>
         /// A string that identifies this transaction as part of a group. See the <a
-        /// href="https://stripe.com/docs/connect/charges-transfers#transfer-options">Connect
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-options">Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]
