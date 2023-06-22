@@ -20,5 +20,14 @@
     <Rule Id="SA1600" Action="None" />
     <Rule Id="SA1602" Action="None" />
     <Rule Id="SA1633" Action="None" />
+
+    <!--
+      Keep those rules disabled as we actively use region in the code
+       - SA1124: DoNotUseRegions
+       - SA1202: ElementsMustBeOrderedByAccess
+      If we keep regions we can't do the latter as we have internal in the middle
+    -->
+    <Rule Id="SA1124" Action="None" />
+    <Rule Id="SA1202" Action="None" />
   </Rules>
 </RuleSet>
