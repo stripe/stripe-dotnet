@@ -1,11 +1,19 @@
 # Changelog
 
+## 41.21.0 - 2023-06-22
+* [#2714](https://github.com/stripe/stripe-dotnet/pull/2714) Update generated code
+  * Add support for `OnBehalfOf` on `Mandate`
+* [#2716](https://github.com/stripe/stripe-dotnet/pull/2716) Deserialization test
+* [#2713](https://github.com/stripe/stripe-dotnet/pull/2713) Update generated code
+  * Release specs are identical.
+* [#2710](https://github.com/stripe/stripe-dotnet/pull/2710) Update generated code
+  * Change type of `FileFileOptions` from `string` to `file`
+
 ## 41.21.0-beta.2 - 2023-06-15
 * [#2712](https://github.com/stripe/stripe-dotnet/pull/2712) Update generated code for beta
   * Add support for `PaymentDetails` on `ChargeCaptureOptions`, `ChargeUpdateOptions`, `PaymentIntentCaptureOptions`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentUpdateOptions`, and `PaymentIntent`
   * Add support for `StatementDetails` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
 * [#2711](https://github.com/stripe/stripe-dotnet/pull/2711) Update generated code for beta
-
 
 ## 41.21.0-beta.1 - 2023-06-08
 * [#2704](https://github.com/stripe/stripe-dotnet/pull/2704) Update generated code for beta

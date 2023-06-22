@@ -26,6 +26,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// Type of registration to be created in the US.
+        /// One of: <c>local_lease_tax</c>, or <c>state_sales_tax</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
