@@ -1,5 +1,14 @@
 # Changelog
 
+## 41.21.0 - 2023-06-22
+* [#2714](https://github.com/stripe/stripe-dotnet/pull/2714) Update generated code
+  * Add support for `OnBehalfOf` on `Mandate`
+* [#2716](https://github.com/stripe/stripe-dotnet/pull/2716) Deserialization test
+* [#2713](https://github.com/stripe/stripe-dotnet/pull/2713) Update generated code
+  * Release specs are identical.
+* [#2710](https://github.com/stripe/stripe-dotnet/pull/2710) Update generated code
+  * Change type of `FileFileOptions` from `string` to `file`
+
 ## 41.20.0 - 2023-06-08
 * [#2705](https://github.com/stripe/stripe-dotnet/pull/2705) Update generated code
   * Add support for `TaxabilityReason` on `TaxCalculationTaxBreakdown`
