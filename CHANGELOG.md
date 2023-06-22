@@ -1,5 +1,11 @@
 # Changelog
 
+## 41.22.0-beta.1 - 2023-06-22
+* [#2715](https://github.com/stripe/stripe-dotnet/pull/2715) Update generated code for beta
+  * Add support for new resource `CustomerSession`
+  * Add support for `Create` method on resource `CustomerSession`
+  * Change type of `TaxRegistrationCountryOptionsUsTypeOptions` and `TaxRegistrationCountryOptionsUsType` from `literal('state_sales_tax')` to `enum('local_lease_tax'|'state_sales_tax')`
+
 ## 41.21.0 - 2023-06-22
 * [#2714](https://github.com/stripe/stripe-dotnet/pull/2714) Update generated code
   * Add support for `OnBehalfOf` on `Mandate`
