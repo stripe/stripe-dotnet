@@ -35,6 +35,12 @@ namespace Stripe
         [JsonProperty("multi_use")]
         public MandateMultiUse MultiUse { get; set; }
 
+        /// <summary>
+        /// The account (if any) for which the mandate is intended.
+        /// </summary>
+        [JsonProperty("on_behalf_of")]
+        public string OnBehalfOf { get; set; }
+
         #region Expandable PaymentMethod
 
         /// <summary>
