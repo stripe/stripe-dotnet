@@ -564,9 +564,11 @@ namespace Stripe
         /// A subscription that is currently in a trial period is <c>trialing</c> and moves to
         /// <c>active</c> when the trial period is over.
         ///
-        /// If subscription <c>collection_method=charge_automatically</c> it becomes <c>past_due</c>
-        /// when payment to renew it fails and <c>canceled</c> or <c>unpaid</c> (depending on your
-        /// subscriptions settings) when Stripe has exhausted all payment retry attempts.
+        /// If subscription <c>collection_method=charge_automatically</c>, it becomes
+        /// <c>past_due</c> when payment is required but cannot be paid (due to failed payment or
+        /// awaiting additional user actions). Once Stripe has exhausted all payment retry attempts,
+        /// the subscription will become <c>canceled</c> or <c>unpaid</c> (depending on your
+        /// subscriptions settings).
         ///
         /// If subscription <c>collection_method=send_invoice</c> it becomes <c>past_due</c> when
         /// its invoice is not paid by the due date, and <c>canceled</c> or <c>unpaid</c> if it is
