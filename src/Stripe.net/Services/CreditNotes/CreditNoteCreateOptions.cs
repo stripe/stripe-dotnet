@@ -23,9 +23,9 @@ namespace Stripe
         public long? CreditAmount { get; set; }
 
         /// <summary>
-        /// The date when this credit note is in effect. Same as <c>created</c> unless overwritten
-        /// by the user. When defined, this value replaces the system-generated 'Date of issue'
-        /// printed on the credit note PDF.
+        /// The date when this credit note is in effect. Same as <c>created</c> unless overwritten.
+        /// When defined, this value replaces the system-generated 'Date of issue' printed on the
+        /// credit note PDF.
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
