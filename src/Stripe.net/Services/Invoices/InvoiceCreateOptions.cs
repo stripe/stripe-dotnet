@@ -122,9 +122,9 @@ namespace Stripe
         public DateTime? DueDate { get; set; }
 
         /// <summary>
-        /// The date when this invoice is in effect. Same as <c>finalized_at</c> unless overwritten
-        /// by the user. When defined, this value replaces the system-generated 'Date of issue'
-        /// printed on the invoice PDF and receipt.
+        /// The date when this invoice is in effect. Same as <c>finalized_at</c> unless overwritten.
+        /// When defined, this value replaces the system-generated 'Date of issue' printed on the
+        /// invoice PDF and receipt.
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
