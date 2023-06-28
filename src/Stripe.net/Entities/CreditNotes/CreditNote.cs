@@ -128,6 +128,15 @@ namespace Stripe
         [JsonProperty("discount_amounts")]
         public List<CreditNoteDiscountAmount> DiscountAmounts { get; set; }
 
+        /// <summary>
+        /// The date when this credit note is in effect. Same as <c>created</c> unless overwritten
+        /// by the user. When defined, this value replaces the system-generated 'Date of issue'
+        /// printed on the credit note PDF.
+        /// </summary>
+        [JsonProperty("effective_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? EffectiveAt { get; set; }
+
         #region Expandable Invoice
 
         /// <summary>
