@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CreditNotePreviewOptions : BaseOptions, IHasMetadata
     {
@@ -11,6 +13,10 @@ namespace Stripe
 
         [JsonProperty("credit_amount")]
         public long? CreditAmount { get; set; }
+
+        [JsonProperty("effective_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? EffectiveAt { get; set; }
 
         [JsonProperty("invoice")]
         public string Invoice { get; set; }
