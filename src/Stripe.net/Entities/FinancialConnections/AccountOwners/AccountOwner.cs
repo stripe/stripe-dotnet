@@ -5,6 +5,9 @@ namespace Stripe.FinancialConnections
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Describes an owner of an account.
+    /// </summary>
     public class AccountOwner : StripeEntity<AccountOwner>, IHasId, IHasObject
     {
         /// <summary>
