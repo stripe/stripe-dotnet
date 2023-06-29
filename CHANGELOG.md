@@ -1,5 +1,9 @@
 # Changelog
 
+## 41.22.0 - 2023-06-29
+* [#2717](https://github.com/stripe/stripe-dotnet/pull/2717) Update generated code
+  * Add support for `EffectiveAt` on `CreditNoteCreateOptions`, `CreditNotePreviewLinesOptions`, `CreditNotePreviewOptions`, `CreditNote`, `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
+
 ## 41.21.0 - 2023-06-22
 * [#2714](https://github.com/stripe/stripe-dotnet/pull/2714) Update generated code
   * Add support for `OnBehalfOf` on `Mandate`
