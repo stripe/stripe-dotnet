@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CreditNoteCreateOptions : BaseOptions, IHasMetadata
     {
@@ -19,6 +21,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("credit_amount")]
         public long? CreditAmount { get; set; }
+
+        /// <summary>
+        /// The date when this credit note is in effect. Same as <c>created</c> unless overwritten.
+        /// When defined, this value replaces the system-generated 'Date of issue' printed on the
+        /// credit note PDF.
+        /// </summary>
+        [JsonProperty("effective_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? EffectiveAt { get; set; }
 
         /// <summary>
         /// ID of the invoice.
