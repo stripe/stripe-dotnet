@@ -510,6 +510,15 @@ namespace Stripe
         public DateTime? DueDate { get; set; }
 
         /// <summary>
+        /// The date when this invoice is in effect. Same as <c>finalized_at</c> unless overwritten.
+        /// When defined, this value replaces the system-generated 'Date of issue' printed on the
+        /// invoice PDF and receipt.
+        /// </summary>
+        [JsonProperty("effective_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? EffectiveAt { get; set; }
+
+        /// <summary>
         /// Ending customer balance after the invoice is finalized. Invoices are finalized
         /// approximately an hour after successful webhook delivery or when payment collection is
         /// attempted for the invoice. If the invoice has not been finalized yet, this will be null.

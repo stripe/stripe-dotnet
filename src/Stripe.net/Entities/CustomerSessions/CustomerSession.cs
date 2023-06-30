@@ -7,7 +7,7 @@ namespace Stripe
 
     /// <summary>
     /// A customer session allows you to grant client access to Stripe's frontend SDKs (like
-    /// BillingJs) control over a customer.
+    /// StripeJs) control over a customer.
     /// </summary>
     public class CustomerSession : StripeEntity<CustomerSession>, IHasObject
     {

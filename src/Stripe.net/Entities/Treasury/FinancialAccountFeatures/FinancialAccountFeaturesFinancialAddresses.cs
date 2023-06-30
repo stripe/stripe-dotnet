@@ -6,7 +6,7 @@ namespace Stripe.Treasury
     public class FinancialAccountFeaturesFinancialAddresses : StripeEntity<FinancialAccountFeaturesFinancialAddresses>
     {
         /// <summary>
-        /// Toggle settings for enabling/disabling a feature.
+        /// Toggle settings for enabling/disabling the ABA address feature.
         /// </summary>
         [JsonProperty("aba")]
         public FinancialAccountFeaturesFinancialAddressesAba Aba { get; set; }
