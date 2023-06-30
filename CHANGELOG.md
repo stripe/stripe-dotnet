@@ -4,6 +4,10 @@
 * [#2718](https://github.com/stripe/stripe-dotnet/pull/2718) Update generated code for beta
   * Add support for `Metadata` on `InvoiceSubscriptionDetails`
 
+## 41.22.0 - 2023-06-29
+* [#2717](https://github.com/stripe/stripe-dotnet/pull/2717) Update generated code
+  * Add support for `EffectiveAt` on `CreditNoteCreateOptions`, `CreditNotePreviewLinesOptions`, `CreditNotePreviewOptions`, `CreditNote`, `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
+
 ## 41.22.0-beta.1 - 2023-06-22
 * [#2715](https://github.com/stripe/stripe-dotnet/pull/2715) Update generated code for beta
   * Add support for new resource `CustomerSession`
