@@ -1,5 +1,9 @@
 # Changelog
 
+## 41.23.0-beta.1 - 2023-06-29
+* [#2718](https://github.com/stripe/stripe-dotnet/pull/2718) Update generated code for beta
+  * Add support for `Metadata` on `InvoiceSubscriptionDetails`
+
 ## 41.22.0-beta.1 - 2023-06-22
 * [#2715](https://github.com/stripe/stripe-dotnet/pull/2715) Update generated code for beta
   * Add support for new resource `CustomerSession`
