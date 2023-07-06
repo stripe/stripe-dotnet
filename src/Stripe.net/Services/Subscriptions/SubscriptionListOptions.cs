@@ -7,6 +7,9 @@ namespace Stripe
 
     public class SubscriptionListOptions : ListOptionsWithCreated
     {
+        [JsonProperty("automatic_tax")]
+        public SubscriptionAutomaticTaxOptions AutomaticTax { get; set; }
+
         [JsonProperty("collection_method")]
         public string CollectionMethod { get; set; }
 
