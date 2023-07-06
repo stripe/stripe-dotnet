@@ -1,5 +1,10 @@
 # Changelog
 
+## 41.23.0 - 2023-07-06
+* [#2720](https://github.com/stripe/stripe-dotnet/pull/2720) Update generated code
+  * Add support for `Numeric` and `Text` on `PaymentLinkCustomFields`
+  * Add support for `AutomaticTax` on `SubscriptionListOptions`
+
 ## 41.22.0 - 2023-06-29
 * [#2717](https://github.com/stripe/stripe-dotnet/pull/2717) Update generated code
   * Add support for `EffectiveAt` on `CreditNoteCreateOptions`, `CreditNotePreviewLinesOptions`, `CreditNotePreviewOptions`, `CreditNote`, `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
