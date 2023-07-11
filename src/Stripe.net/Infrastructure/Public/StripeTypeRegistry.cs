@@ -126,6 +126,7 @@ namespace Stripe
                 {
                     "tax.calculation_line_item", typeof(Tax.CalculationLineItem)
                 },
+                { "tax.settings", typeof(Tax.Settings) },
                 { "tax.transaction", typeof(Tax.Transaction) },
                 {
                     "tax.transaction_line_item", typeof(Tax.TransactionLineItem)
