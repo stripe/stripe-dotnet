@@ -21,9 +21,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The ID of an existing <a
-        /// href="https://stripe.com/docs/api/shipping_rates/object">ShippingRate</a>. (It is not
-        /// populated for the transaction resource object and will be removed in the next API
-        /// version.).
+        /// href="https://stripe.com/docs/api/shipping_rates/object">ShippingRate</a>.
         /// </summary>
         [JsonProperty("shipping_rate")]
         public string ShippingRate { get; set; }
