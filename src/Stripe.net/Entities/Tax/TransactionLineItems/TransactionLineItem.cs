@@ -47,6 +47,12 @@ namespace Stripe.Tax
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The ID of an existing <a href="https://stripe.com/docs/api/products/object">Product</a>.
+        /// </summary>
+        [JsonProperty("product")]
+        public string Product { get; set; }
+
+        /// <summary>
         /// The number of units of the item being purchased. For reversals, this is the quantity
         /// reversed.
         /// </summary>
