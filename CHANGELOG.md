@@ -1,5 +1,13 @@
 # Changelog
 
+## 41.24.0 - 2023-07-13
+* [#2725](https://github.com/stripe/stripe-dotnet/pull/2725) Update generated code
+  * Add support for new resource `Tax.Settings`
+  * Add support for `Get` and `Update` methods on resource `Settings`
+  * Add support for `OrderId` on `ChargePaymentMethodDetailsAfterpayClearpay`
+  * Add support for `AllowRedirects` on `PaymentIntentAutomaticPaymentMethodsOptions`, `PaymentIntentAutomaticPaymentMethods`, `SetupIntentAutomaticPaymentMethodsOptions`, and `SetupIntentAutomaticPaymentMethods`
+  * Add support for `Product` on `TaxTransactionLineItem`
+
 ## 41.23.0 - 2023-07-06
 * [#2720](https://github.com/stripe/stripe-dotnet/pull/2720) Update generated code
   * Add support for `Numeric` and `Text` on `PaymentLinkCustomFields`
