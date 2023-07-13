@@ -39,7 +39,7 @@ namespace Stripe.Tax
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// A Product ID.
+        /// The ID of an existing <a href="https://stripe.com/docs/api/products/object">Product</a>.
         /// </summary>
         [JsonProperty("product")]
         public string Product { get; set; }
