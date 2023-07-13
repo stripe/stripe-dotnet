@@ -1,5 +1,16 @@
 # Changelog
 
+## 41.25.0-beta.1 - 2023-07-13
+* [#2727](https://github.com/stripe/stripe-dotnet/pull/2727) Update generated code for beta
+  Release specs are identical.
+* [#2724](https://github.com/stripe/stripe-dotnet/pull/2724) Update generated code for beta
+  * Add support for new resource `PaymentMethodConfiguration`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `PaymentMethodConfiguration`
+  * Add support for `PaymentMethodConfiguration` on `PaymentIntentCreateOptions` and `PaymentIntentUpdateOptions`
+  * Add support for `PaymentMethodConfigurationDetails` on `PaymentIntent`
+* [#2721](https://github.com/stripe/stripe-dotnet/pull/2721) Update generated code for beta
+
+
 ## 41.24.0 - 2023-07-13
 * [#2725](https://github.com/stripe/stripe-dotnet/pull/2725) Update generated code
   * Add support for new resource `Tax.Settings`
