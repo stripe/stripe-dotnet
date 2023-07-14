@@ -175,6 +175,20 @@ namespace Stripe
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/mark_stale", options, requestOptions, cancellationToken);
         }
 
+        public virtual Stream Pdf(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null)
+        {
+            requestOptions ??= new RequestOptions();
+            requestOptions.BaseUrl ??= this.Client.FilesBase;
+            return this.RequestStreaming(HttpMethod.Get, $"{this.InstanceUrl(id)}/pdf", options, requestOptions);
+        }
+
+        public virtual Task<Stream> PdfAsync(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            requestOptions ??= new RequestOptions();
+            requestOptions.BaseUrl ??= this.Client.FilesBase;
+            return this.RequestStreamingAsync(HttpMethod.Get, $"{this.InstanceUrl(id)}/pdf", options, requestOptions, cancellationToken);
+        }
+
         public virtual StripeList<InvoiceLineItem> PreviewInvoiceLines(string id, string preview_invoice, QuotePreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoices/{preview_invoice}/lines", options, requestOptions);
@@ -253,33 +267,6 @@ namespace Stripe
         public virtual Task<Quote> UpdateAsync(string id, QuoteUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
-        }
-
-        public virtual Stream Pdf(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null)
-        {
-            requestOptions = this.SetupRequestOptionsForPdfRequest(requestOptions);
-            return this.RequestStreaming(HttpMethod.Get, $"{this.InstanceUrl(id)}/pdf", options, requestOptions);
-        }
-
-        public virtual Task<Stream> PdfAsync(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            requestOptions = this.SetupRequestOptionsForPdfRequest(requestOptions);
-            return this.RequestStreamingAsync(HttpMethod.Get, $"{this.InstanceUrl(id)}/pdf", options, requestOptions, cancellationToken);
-        }
-
-        private RequestOptions SetupRequestOptionsForPdfRequest(RequestOptions requestOptions)
-        {
-            if (requestOptions == null)
-            {
-                requestOptions = new RequestOptions();
-            }
-
-            if (requestOptions.BaseUrl == null)
-            {
-                requestOptions.BaseUrl = this.Client.FilesBase;
-            }
-
-            return requestOptions;
         }
     }
 }
