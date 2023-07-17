@@ -136,5 +136,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("usage")]
         public string Usage { get; set; }
+
+        /// <summary>
+        /// Set to <c>true</c> when confirming server-side and using Stripe.js, iOS, or Android
+        /// client-side SDKs to handle the next actions.
+        /// </summary>
+        [JsonProperty("use_stripe_sdk")]
+        public bool? UseStripeSdk { get; set; }
     }
 }
