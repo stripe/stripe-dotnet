@@ -1,5 +1,11 @@
 # Changelog
 
+## 41.25.0 - 2023-07-20
+* [#2732](https://github.com/stripe/stripe-dotnet/pull/2732) Update generated code
+  * Add support for `UseStripeSdk` on `SetupIntentConfirmOptions` and `SetupIntentCreateOptions`
+* [#2728](https://github.com/stripe/stripe-dotnet/pull/2728) Update generated code
+* [#2730](https://github.com/stripe/stripe-dotnet/pull/2730) changelog: fixed namespace param names
+
 ## 41.25.0-beta.1 - 2023-07-13
 * [#2727](https://github.com/stripe/stripe-dotnet/pull/2727) Update generated code for beta
   Release specs are identical.
