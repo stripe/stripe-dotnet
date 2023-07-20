@@ -60,9 +60,8 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Funds that are not yet available in the balance, due to the 7-day rolling pay cycle. The
-        /// pending balance for each currency, and for each payment type, can be found in the
-        /// <c>source_types</c> property.
+        /// Funds that are not yet available in the balance. The pending balance for each currency,
+        /// and for each payment type, can be found in the <c>source_types</c> property.
         /// </summary>
         [JsonProperty("pending")]
         public List<BalanceAmount> Pending { get; set; }

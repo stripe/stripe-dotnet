@@ -28,7 +28,8 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// Which supported input type will be collected.
-        /// One of: <c>selection</c>, or <c>signature</c>.
+        /// One of: <c>email</c>, <c>numeric</c>, <c>phone</c>, <c>selection</c>, <c>signature</c>,
+        /// or <c>text</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

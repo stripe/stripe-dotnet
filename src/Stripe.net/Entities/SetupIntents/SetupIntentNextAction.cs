@@ -19,6 +19,14 @@ namespace Stripe
         [JsonProperty("type")]
         public string Type { get; set; }
 
+        /// <summary>
+        /// When confirming a SetupIntent with Stripe.js, Stripe.js depends on the contents of this
+        /// dictionary to invoke authentication flows. The shape of the contents is subject to
+        /// change and is only intended to be used by Stripe.js.
+        /// </summary>
+        [JsonProperty("use_stripe_sdk")]
+        public SetupIntentNextActionUseStripeSdk UseStripeSdk { get; set; }
+
         [JsonProperty("verify_with_microdeposits")]
         public SetupIntentNextActionVerifyWithMicrodeposits VerifyWithMicrodeposits { get; set; }
     }
