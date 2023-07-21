@@ -227,6 +227,12 @@ namespace Stripe.Checkout
         public string PaymentMethodCollection { get; set; }
 
         /// <summary>
+        /// The ID of the payment method configuration to use with this Checkout session.
+        /// </summary>
+        [JsonProperty("payment_method_configuration")]
+        public string PaymentMethodConfiguration { get; set; }
+
+        /// <summary>
         /// Payment-method-specific configuration.
         /// </summary>
         [JsonProperty("payment_method_options")]
