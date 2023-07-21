@@ -13,7 +13,7 @@ namespace Stripe
     /// starts onboarding, such as after generating an account link for the account. See the <a
     /// href="https://stripe.com/docs/connect/standard-accounts">Standard onboarding</a> or <a
     /// href="https://stripe.com/docs/connect/express-accounts">Express onboarding
-    /// documentation</a> for information about platform pre-filling and account onboarding
+    /// documentation</a> for information about platform prefilling and account onboarding
     /// steps.
     ///
     /// Related guide: <a
