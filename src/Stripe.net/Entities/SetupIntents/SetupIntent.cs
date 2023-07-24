@@ -339,6 +339,12 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Information about the payment method configuration used for this Setup Intent.
+        /// </summary>
+        [JsonProperty("payment_method_configuration_details")]
+        public SetupIntentPaymentMethodConfigurationDetails PaymentMethodConfigurationDetails { get; set; }
+
+        /// <summary>
         /// Payment-method-specific configuration for this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]
