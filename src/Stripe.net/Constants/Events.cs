@@ -614,7 +614,6 @@ namespace Stripe
         /// <summary>
         /// The "payment.created" webhook event.
         /// </summary>
-        [Obsolete("Use InvoicePaid instead.")]
         public const string PaymentCreated = "payment.created";
 
         /// <summary>
