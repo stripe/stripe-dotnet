@@ -2304,6 +2304,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestQuoteServicePdf()
+        {
+            var service = new QuoteService(this.StripeClient);
+            service.Pdf("qt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
         public void TestQuoteServiceRetrieve()
         {
             var service = new QuoteService(this.StripeClient);
@@ -2986,6 +2993,13 @@ namespace StripeTests
         {
             var service = new TaxCodeService(this.StripeClient);
             service.Get("txcd_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTaxFormServicePdf()
+        {
+            var service = new Stripe.Tax.FormService(this.StripeClient);
+            service.Pdf("form_xxxxxxxxxxxxx");
         }
 
         [Fact]
