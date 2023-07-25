@@ -1,6 +1,8 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
+
     public static class Events
     {
         /// <summary>
