@@ -2996,6 +2996,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTaxFormServicePdf()
+        {
+            var service = new Stripe.Tax.FormService(this.StripeClient);
+            service.Pdf("form_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
         public void TestTaxIdServiceCreate()
         {
             var options = new TaxIdCreateOptions
