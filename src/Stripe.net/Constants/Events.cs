@@ -152,8 +152,8 @@ namespace Stripe
         public const string ChargeExpired = "charge.expired";
 
         /// <summary>
-        /// The "charge.failed" event type.
-        /// See https://stripe.com/docs/api/events/types#event_types-charge.failed for details.
+        /// The "charge.failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.failed for details.
         /// </summary>
         public const string ChargeFailed = "charge.failed";
 
