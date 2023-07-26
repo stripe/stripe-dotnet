@@ -1,3 +1,4 @@
+// File generated from our OpenAPI spec
 namespace Stripe
 {
     using System;
@@ -5,1172 +6,1569 @@ namespace Stripe
     public static class Events
     {
         /// <summary>
-        /// Occurs whenever an account status or property has changed.
-        /// </summary>
-        public const string AccountUpdated = "account.updated";
-
-        /// <summary>
-        /// Occurs whenever a user authorizes an application. Sent to the related application only.
+        /// The "account.application.authorized" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-account.application.authorized for
+        /// details.
         /// </summary>
         public const string AccountApplicationAuthorized = "account.application.authorized";
 
         /// <summary>
-        /// Occurs whenever a user deauthorizes an application. Sent to the related application only.
+        /// The "account.application.deauthorized" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-account.application.deauthorized
+        /// for details.
         /// </summary>
         public const string AccountApplicationDeauthorized = "account.application.deauthorized";
 
         /// <summary>
-        /// Occurs whenever an external account is created.
+        /// The "account.external_account.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-account.external_account.created
+        /// for details.
         /// </summary>
         public const string AccountExternalAccountCreated = "account.external_account.created";
 
         /// <summary>
-        /// Occurs whenever an external account is deleted.
+        /// The "account.external_account.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-account.external_account.deleted
+        /// for details.
         /// </summary>
         public const string AccountExternalAccountDeleted = "account.external_account.deleted";
 
         /// <summary>
-        /// Occurs whenever an external account is updated.
+        /// The "account.external_account.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-account.external_account.updated
+        /// for details.
         /// </summary>
         public const string AccountExternalAccountUpdated = "account.external_account.updated";
 
         /// <summary>
-        /// Occurs whenever an application fee is created on a charge.
+        /// The "account.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-account.updated for details.
+        /// </summary>
+        public const string AccountUpdated = "account.updated";
+
+        /// <summary>
+        /// The "application_fee.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-application_fee.created for
+        /// details.
         /// </summary>
         public const string ApplicationFeeCreated = "application_fee.created";
 
         /// <summary>
-        /// Occurs whenever an application fee is refunded, whether from refunding a charge or from refunding the application fee directly, including partial refunds.
-        /// </summary>
-        public const string ApplicationFeeRefunded = "application_fee.refunded";
-
-        /// <summary>
-        /// Occurs whenever an application fee refund is updated.
+        /// The "application_fee.refund.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-application_fee.refund.updated for
+        /// details.
         /// </summary>
         public const string ApplicationFeeRefundUpdated = "application_fee.refund.updated";
 
         /// <summary>
-        /// Occurs whenever your Stripe balance has been updated (e.g. when a charge collected is available to be paid out). By default, Stripe will automatically transfer any funds in your balance to your bank account on a daily basis.
+        /// The "application_fee.refunded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-application_fee.refunded for
+        /// details.
+        /// </summary>
+        public const string ApplicationFeeRefunded = "application_fee.refunded";
+
+        /// <summary>
+        /// The "balance.available" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-balance.available for details.
         /// </summary>
         public const string BalanceAvailable = "balance.available";
 
         /// <summary>
-        /// Occurs whenever a portal configuration is created.
+        /// The "billing_portal.configuration.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-billing_portal.configuration.created
+        /// for details.
         /// </summary>
         public const string BillingPortalConfigurationCreated = "billing_portal.configuration.created";
 
         /// <summary>
-        /// Occurs whenever a portal configuration is updated.
+        /// The "billing_portal.configuration.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-billing_portal.configuration.updated
+        /// for details.
         /// </summary>
         public const string BillingPortalConfigurationUpdated = "billing_portal.configuration.updated";
 
         /// <summary>
-        /// Occurs whenever a capability has new requirements or a new status.
+        /// The "billing_portal.session.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-billing_portal.session.created for
+        /// details.
+        /// </summary>
+        public const string BillingPortalSessionCreated = "billing_portal.session.created";
+
+        /// <summary>
+        /// The "capability.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-capability.updated for details.
         /// </summary>
         public const string CapabilityUpdated = "capability.updated";
 
         /// <summary>
-        /// Occurs whenever there is a positive remaining cash balance after Stripe automatically reconciles new funds into the cash balance. If you enabled manual reconciliation, this webhook will fire whenever there are new funds into the cash balance.
+        /// The "cash_balance.funds_available" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-cash_balance.funds_available for
+        /// details.
         /// </summary>
         public const string CashBalanceFundsAvailable = "cash_balance.funds_available";
 
         /// <summary>
-        /// Occurs whenever a previously uncaptured charge is captured.
+        /// The "charge.captured" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.captured for details.
         /// </summary>
         public const string ChargeCaptured = "charge.captured";
 
         /// <summary>
-        /// Occurs whenever a previously uncaptured charge expires.
-        /// </summary>
-        public const string ChargeExpired = "charge.expired";
-
-        /// <summary>
-        /// Occurs whenever a failed charge attempt occurs.
-        /// </summary>
-        public const string ChargeFailed = "charge.failed";
-
-        /// <summary>
-        /// Occurs whenever a pending charge is created.
-        /// </summary>
-        public const string ChargePending = "charge.pending";
-
-        /// <summary>
-        /// Occurs whenever a charge is refunded, including partial refunds.
-        /// </summary>
-        public const string ChargeRefunded = "charge.refunded";
-
-        /// <summary>
-        /// Occurs whenever a new charge is created and is successful.
-        /// </summary>
-        public const string ChargeSucceeded = "charge.succeeded";
-
-        /// <summary>
-        /// Occurs whenever a charge description or metadata is updated.
-        /// </summary>
-        public const string ChargeUpdated = "charge.updated";
-
-        /// <summary>
-        /// Occurs when the dispute is closed and the dispute status changes to
-        /// <c>charge_refunded</c>, <c>lost</c>, <c>warning_closed</c>, or <c>won</c>.
+        /// The "charge.dispute.closed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.dispute.closed for details.
         /// </summary>
         public const string ChargeDisputeClosed = "charge.dispute.closed";
 
         /// <summary>
-        /// Occurs whenever a customer disputes a charge with their bank.
+        /// The "charge.dispute.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.dispute.created for details.
         /// </summary>
         public const string ChargeDisputeCreated = "charge.dispute.created";
 
         /// <summary>
-        /// Occurs when funds are reinstated to your account after a dispute is closed. This
-        /// includes <a href="https://stripe.com/docs/disputes#disputes-on-partially-refunded-payments">partially
-        /// refunded payments</a>.
+        /// The "charge.dispute.funds_reinstated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.dispute.funds_reinstated for
+        /// details.
         /// </summary>
         public const string ChargeDisputeFundsReinstated = "charge.dispute.funds_reinstated";
 
         /// <summary>
-        /// Occurs when funds are removed from your account due to a dispute.
+        /// The "charge.dispute.funds_withdrawn" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.dispute.funds_withdrawn for
+        /// details.
         /// </summary>
         public const string ChargeDisputeFundsWithdrawn = "charge.dispute.funds_withdrawn";
 
         /// <summary>
-        /// Occurs when the dispute is updated (usually with evidence).
+        /// The "charge.dispute.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.dispute.updated for details.
         /// </summary>
         public const string ChargeDisputeUpdated = "charge.dispute.updated";
 
         /// <summary>
-        /// Occurs whenever a refund is updated on selected payment methods.
+        /// The "charge.expired" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.expired for details.
+        /// </summary>
+        public const string ChargeExpired = "charge.expired";
+
+        /// <summary>
+        /// The "charge.failed" event type.
+        /// See https://stripe.com/docs/api/events/types#event_types-charge.failed for details.
+        /// </summary>
+        public const string ChargeFailed = "charge.failed";
+
+        /// <summary>
+        /// The "charge.pending" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.pending for details.
+        /// </summary>
+        public const string ChargePending = "charge.pending";
+
+        /// <summary>
+        /// The "charge.refund.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.refund.updated for details.
         /// </summary>
         public const string ChargeRefundUpdated = "charge.refund.updated";
 
         /// <summary>
-        /// Occurs when a Checkout Session asynchronous payment has failed.
+        /// The "charge.refunded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.refunded for details.
+        /// </summary>
+        public const string ChargeRefunded = "charge.refunded";
+
+        /// <summary>
+        /// The "charge.succeeded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.succeeded for details.
+        /// </summary>
+        public const string ChargeSucceeded = "charge.succeeded";
+
+        /// <summary>
+        /// The "charge.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-charge.updated for details.
+        /// </summary>
+        public const string ChargeUpdated = "charge.updated";
+
+        /// <summary>
+        /// The "checkout.session.async_payment_failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-checkout.session.async_payment_failed
+        /// for details.
         /// </summary>
         public const string CheckoutSessionAsyncPaymentFailed = "checkout.session.async_payment_failed";
 
         /// <summary>
-        /// Occurs when a Checkout Session asynchronous payment has succeeded.
+        /// The "checkout.session.async_payment_succeeded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-checkout.session.async_payment_succeeded
+        /// for details.
         /// </summary>
         public const string CheckoutSessionAsyncPaymentSucceeded = "checkout.session.async_payment_succeeded";
 
         /// <summary>
-        /// Occurs when a Checkout Session has been successfully completed.
+        /// The "checkout.session.completed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-checkout.session.completed for
+        /// details.
         /// </summary>
         public const string CheckoutSessionCompleted = "checkout.session.completed";
 
         /// <summary>
-        /// Occurs when a Checkout Session is expired.
+        /// The "checkout.session.expired" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-checkout.session.expired for
+        /// details.
         /// </summary>
         public const string CheckoutSessionExpired = "checkout.session.expired";
 
         /// <summary>
-        /// Occurs whenever a coupon is created.
+        /// The "coupon.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-coupon.created for details.
         /// </summary>
         public const string CouponCreated = "coupon.created";
 
         /// <summary>
-        /// Occurs whenever a coupon is deleted.
+        /// The "coupon.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-coupon.deleted for details.
         /// </summary>
         public const string CouponDeleted = "coupon.deleted";
 
         /// <summary>
-        /// Occurs whenever a coupon is updated.
+        /// The "coupon.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-coupon.updated for details.
         /// </summary>
         public const string CouponUpdated = "coupon.updated";
 
         /// <summary>
-        /// Occurs whenever a credit note is created.
+        /// The "credit_note.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-credit_note.created for details.
         /// </summary>
         public const string CreditNoteCreated = "credit_note.created";
 
         /// <summary>
-        /// Occurs whenever a credit note is updated.
+        /// The "credit_note.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-credit_note.updated for details.
         /// </summary>
         public const string CreditNoteUpdated = "credit_note.updated";
 
         /// <summary>
-        /// Occurs whenever a credit note is voided.
+        /// The "credit_note.voided" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-credit_note.voided for details.
         /// </summary>
         public const string CreditNoteVoided = "credit_note.voided";
 
         /// <summary>
-        /// Occurs whenever a new customer is created.
-        /// </summary>
-        public const string CustomerCreated = "customer.created";
-
-        /// <summary>
-        /// Occurs whenever a customer is deleted.
-        /// </summary>
-        public const string CustomerDeleted = "customer.deleted";
-
-        /// <summary>
-        /// Occurs whenever any property of a customer changes.
-        /// </summary>
-        public const string CustomerUpdated = "customer.updated";
-
-        /// <summary>
-        /// Occurs whenever a new customer cash balance transaction is created.
+        /// The "customer_cash_balance_transaction.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer_cash_balance_transaction.created
+        /// for details.
         /// </summary>
         public const string CustomerCashBalanceTransactionCreated = "customer_cash_balance_transaction.created";
 
         /// <summary>
-        /// Occurs whenever a coupon is attached to a customer.
+        /// The "customer.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.created for details.
+        /// </summary>
+        public const string CustomerCreated = "customer.created";
+
+        /// <summary>
+        /// The "customer.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.deleted for details.
+        /// </summary>
+        public const string CustomerDeleted = "customer.deleted";
+
+        /// <summary>
+        /// The "customer.discount.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.discount.created for
+        /// details.
         /// </summary>
         public const string CustomerDiscountCreated = "customer.discount.created";
 
         /// <summary>
-        /// Occurs whenever a customer's discount is removed.
+        /// The "customer.discount.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.discount.deleted for
+        /// details.
         /// </summary>
         public const string CustomerDiscountDeleted = "customer.discount.deleted";
 
         /// <summary>
-        /// Occurs whenever a customer is switched from one coupon to another.
+        /// The "customer.discount.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.discount.updated for
+        /// details.
         /// </summary>
         public const string CustomerDiscountUpdated = "customer.discount.updated";
 
         /// <summary>
-        /// Occurs whenever a new source is created for the customer.
+        /// The "customer.source.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.source.created for
+        /// details.
         /// </summary>
         public const string CustomerSourceCreated = "customer.source.created";
 
         /// <summary>
-        /// Occurs whenever a source is removed from a customer.
+        /// The "customer.source.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.source.deleted for
+        /// details.
         /// </summary>
         public const string CustomerSourceDeleted = "customer.source.deleted";
 
         /// <summary>
-        /// Occurs whenever a source will expire at the end of the month.
+        /// The "customer.source.expiring" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.source.expiring for
+        /// details.
         /// </summary>
         public const string CustomerSourceExpiring = "customer.source.expiring";
 
         /// <summary>
-        /// Occurs whenever a source's details are changed.
+        /// The "customer.source.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.source.updated for
+        /// details.
         /// </summary>
         public const string CustomerSourceUpdated = "customer.source.updated";
 
         /// <summary>
-        /// Occurs whenever a customer with no subscription is signed up for a plan.
+        /// The "customer.subscription.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.subscription.created for
+        /// details.
         /// </summary>
         public const string CustomerSubscriptionCreated = "customer.subscription.created";
 
         /// <summary>
-        /// Occurs whenever a customer ends their subscription.
+        /// The "customer.subscription.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.subscription.deleted for
+        /// details.
         /// </summary>
         public const string CustomerSubscriptionDeleted = "customer.subscription.deleted";
 
         /// <summary>
-        /// Occurs whenever a customer’s subscription is paused.
-        /// Only applies when subscriptions enter <c>status=paused</c>, not when payment collection is paused.
+        /// The "customer.subscription.paused" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.subscription.paused for
+        /// details.
         /// </summary>
         public const string CustomerSubscriptionPaused = "customer.subscription.paused";
 
         /// <summary>
-        /// Occurs whenever a customer's subscription's pending update is
-        /// applied, and the subscription is updated.
+        /// The "customer.subscription.pending_update_applied" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.subscription.pending_update_applied
+        /// for details.
         /// </summary>
         public const string CustomerSubscriptionPendingUpdateApplied = "customer.subscription.pending_update_applied";
 
         /// <summary>
-        /// Occurs whenever a customer's subscription's pending update expires
-        /// before the related invoice is paid.
+        /// The "customer.subscription.pending_update_expired" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.subscription.pending_update_expired
+        /// for details.
         /// </summary>
         public const string CustomerSubscriptionPendingUpdateExpired = "customer.subscription.pending_update_expired";
 
         /// <summary>
-        /// Occurs whenever a customer’s subscription is no longer paused.
-        /// Only applies when a <c>status=paused</c> subscription is resumed, not when payment collection is resumed.
+        /// The "customer.subscription.resumed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.subscription.resumed for
+        /// details.
         /// </summary>
         public const string CustomerSubscriptionResumed = "customer.subscription.resumed";
 
         /// <summary>
-        /// Occurs three days before the trial period of a subscription is scheduled to end.
+        /// The "customer.subscription.trial_will_end" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.subscription.trial_will_end
+        /// for details.
         /// </summary>
         public const string CustomerSubscriptionTrialWillEnd = "customer.subscription.trial_will_end";
 
         /// <summary>
-        /// Occurs whenever a subscription changes (e.g., switching from one plan to another,
-        /// or changing the status from trial to active).
+        /// The "customer.subscription.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.subscription.updated for
+        /// details.
         /// </summary>
         public const string CustomerSubscriptionUpdated = "customer.subscription.updated";
 
         /// <summary>
-        /// Occurs whenever a tax ID is created for a customer.
+        /// The "customer.tax_id.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.tax_id.created for
+        /// details.
         /// </summary>
         public const string CustomerTaxIdCreated = "customer.tax_id.created";
 
         /// <summary>
-        /// Occurs whenever a tax ID is deleted from a customer.
+        /// The "customer.tax_id.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.tax_id.deleted for
+        /// details.
         /// </summary>
         public const string CustomerTaxIdDeleted = "customer.tax_id.deleted";
 
         /// <summary>
-        /// Occurs whenever a customer's tax ID is updated.
+        /// The "customer.tax_id.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.tax_id.updated for
+        /// details.
         /// </summary>
         public const string CustomerTaxIdUpdated = "customer.tax_id.updated";
 
         /// <summary>
-        /// Occurs whenever a new Stripe-generated file is available for your account.
+        /// The "customer.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-customer.updated for details.
+        /// </summary>
+        public const string CustomerUpdated = "customer.updated";
+
+        /// <summary>
+        /// The "file.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-file.created for details.
         /// </summary>
         public const string FileCreated = "file.created";
 
         /// <summary>
-        /// Occurs whenever a VerificationSession is canceled.
+        /// The "financial_connections.account.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-financial_connections.account.created
+        /// for details.
+        /// </summary>
+        public const string FinancialConnectionsAccountCreated = "financial_connections.account.created";
+
+        /// <summary>
+        /// The "financial_connections.account.deactivated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-financial_connections.account.deactivated
+        /// for details.
+        /// </summary>
+        public const string FinancialConnectionsAccountDeactivated = "financial_connections.account.deactivated";
+
+        /// <summary>
+        /// The "financial_connections.account.disconnected" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-financial_connections.account.disconnected
+        /// for details.
+        /// </summary>
+        public const string FinancialConnectionsAccountDisconnected = "financial_connections.account.disconnected";
+
+        /// <summary>
+        /// The "financial_connections.account.reactivated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-financial_connections.account.reactivated
+        /// for details.
+        /// </summary>
+        public const string FinancialConnectionsAccountReactivated = "financial_connections.account.reactivated";
+
+        /// <summary>
+        /// The "financial_connections.account.refreshed_balance" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-financial_connections.account.refreshed_balance
+        /// for details.
+        /// </summary>
+        public const string FinancialConnectionsAccountRefreshedBalance = "financial_connections.account.refreshed_balance";
+
+        /// <summary>
+        /// The "identity.verification_session.canceled" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-identity.verification_session.canceled
+        /// for details.
         /// </summary>
         public const string IdentityVerificationSessionCanceled = "identity.verification_session.canceled";
 
         /// <summary>
-        /// Occurs whenever a VerificationSession is created.
+        /// The "identity.verification_session.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-identity.verification_session.created
+        /// for details.
         /// </summary>
         public const string IdentityVerificationSessionCreated = "identity.verification_session.created";
 
         /// <summary>
-        /// Occurs whenever a VerificationSession transitions to processing.
+        /// The "identity.verification_session.processing" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-identity.verification_session.processing
+        /// for details.
         /// </summary>
         public const string IdentityVerificationSessionProcessing = "identity.verification_session.processing";
 
         /// <summary>
-        /// Occurs whenever a VerificationSession is redacted.
+        /// The "identity.verification_session.redacted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-identity.verification_session.redacted
+        /// for details.
         /// </summary>
         public const string IdentityVerificationSessionRedacted = "identity.verification_session.redacted";
 
         /// <summary>
-        /// Occurs whenever a VerificationSession transitions to require user input.
+        /// The "identity.verification_session.requires_input" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-identity.verification_session.requires_input
+        /// for details.
         /// </summary>
         public const string IdentityVerificationSessionRequiresInput = "identity.verification_session.requires_input";
 
         /// <summary>
-        /// Occurs whenever a VerificationSession is verified.
+        /// The "identity.verification_session.verified" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-identity.verification_session.verified
+        /// for details.
         /// </summary>
         public const string IdentityVerificationSessionVerified = "identity.verification_session.verified";
 
         /// <summary>
-        /// Occurs whenever a new invoice is created. To learn how webhooks can be used with this
-        /// event, and how they can affect it, see
-        /// <a href="https://stripe.com/docs/subscriptions/webhooks">Using Webhooks with
-        /// Subscriptions</a>.
+        /// The "invoice.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.created for details.
         /// </summary>
         public const string InvoiceCreated = "invoice.created";
 
         /// <summary>
-        /// Occurs whenever a draft invoice is deleted.
+        /// The "invoice.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.deleted for details.
         /// </summary>
         public const string InvoiceDeleted = "invoice.deleted";
 
         /// <summary>
-        /// Deprecated, use InvoiceFinalizationFailed.
+        /// The "invoice.finalization_error" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.finalization_error for
+        /// details.
         /// </summary>
+        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
         public const string InvoiceFinalizationError = "invoice.finalization_error";
 
         /// <summary>
-        /// Occurs whenever a draft invoice cannot be finalized.
+        /// The "invoice.finalization_failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.finalization_failed for
+        /// details.
         /// </summary>
         public const string InvoiceFinalizationFailed = "invoice.finalization_failed";
 
         /// <summary>
-        ///  Occurs whenever a draft invoice is finalized and updated to be an open invoice.
+        /// The "invoice.finalized" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.finalized for details.
         /// </summary>
         public const string InvoiceFinalized = "invoice.finalized";
 
         /// <summary>
-        /// Occurs whenever an invoice is marked uncollectible.
+        /// The "invoice.marked_uncollectible" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.marked_uncollectible for
+        /// details.
         /// </summary>
         public const string InvoiceMarkedUncollectible = "invoice.marked_uncollectible";
 
         /// <summary>
-        /// Occurs whenever an invoice payment attempt succeeds or an invoice is marked as paid
-        /// out-of-band.
+        /// The "invoice.paid" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.paid for details.
         /// </summary>
         public const string InvoicePaid = "invoice.paid";
 
         /// <summary>
-        /// Occurs whenever an invoice payment attempt requires further user action to complete.
+        /// The "invoice.payment_action_required" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.payment_action_required for
+        /// details.
         /// </summary>
         public const string InvoicePaymentActionRequired = "invoice.payment_action_required";
 
         /// <summary>
-        /// Occurs whenever an invoice payment attempt fails, due either to a declined payment or
-        /// to the lack of a stored payment method.
+        /// The "invoice.payment_failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.payment_failed for details.
         /// </summary>
         public const string InvoicePaymentFailed = "invoice.payment_failed";
 
-        [Obsolete("Use InvoicePaid instead.")]
+        /// <summary>
+        /// The "invoice.payment_succeeded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.payment_succeeded for
+        /// details.
+        /// </summary>
         public const string InvoicePaymentSucceeded = "invoice.payment_succeeded";
 
         /// <summary>
-        /// Occurs whenever an invoice email is sent out.
+        /// The "invoice.sent" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.sent for details.
         /// </summary>
         public const string InvoiceSent = "invoice.sent";
 
         /// <summary>
-        /// Occurs X number of days before a subscription is scheduled to create an invoice that is
-        /// automatically charged—where X is determined by your
-        /// <a href="https://dashboard.stripe.com/account/billing/automatic">subscriptions
-        /// settings</a>. Note: The received <see cref="Invoice"/> object will not have an invoice
-        /// ID.
+        /// The "invoice.upcoming" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.upcoming for details.
         /// </summary>
         public const string InvoiceUpcoming = "invoice.upcoming";
 
         /// <summary>
-        /// Occurs whenever an invoice changes (e.g., the invoice amount).
+        /// The "invoice.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.updated for details.
         /// </summary>
         public const string InvoiceUpdated = "invoice.updated";
 
         /// <summary>
-        /// Occurs whenever an invoice is voided.
+        /// The "invoice.voided" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoice.voided for details.
         /// </summary>
         public const string InvoiceVoided = "invoice.voided";
 
         /// <summary>
-        /// Occurs whenever an invoice item is created.
+        /// The "invoiceitem.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoiceitem.created for details.
         /// </summary>
         public const string InvoiceItemCreated = "invoiceitem.created";
 
         /// <summary>
-        /// Occurs whenever an invoice item is deleted.
+        /// The "invoiceitem.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoiceitem.deleted for details.
         /// </summary>
         public const string InvoiceItemDeleted = "invoiceitem.deleted";
 
         /// <summary>
-        /// Occurs whenever an invoice item is updated.
+        /// The "invoiceitem.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoiceitem.updated for details.
         /// </summary>
         public const string InvoiceItemUpdated = "invoiceitem.updated";
 
         /// <summary>
-        /// Occurs whenever an issuing authorization is created.
+        /// The "issuing_authorization.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_authorization.created for
+        /// details.
         /// </summary>
         public const string IssuingAuthorizationCreated = "issuing_authorization.created";
 
         /// <summary>
-        /// Occurs whenever an issuing authorization request is sent.
+        /// The "issuing_authorization.request" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_authorization.request for
+        /// details.
         /// </summary>
         public const string IssuingAuthorizationRequest = "issuing_authorization.request";
 
         /// <summary>
-        /// Occurs whenever an issuing authorization is updated.
+        /// The "issuing_authorization.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_authorization.updated for
+        /// details.
         /// </summary>
         public const string IssuingAuthorizationUpdated = "issuing_authorization.updated";
 
         /// <summary>
-        /// Occurs whenever an issuing card is created.
+        /// The "issuing_card.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_card.created for details.
         /// </summary>
         public const string IssuingCardCreated = "issuing_card.created";
 
         /// <summary>
-        /// Occurs whenever an issuing card is updated.
+        /// The "issuing_card.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_card.updated for details.
         /// </summary>
         public const string IssuingCardUpdated = "issuing_card.updated";
 
         /// <summary>
-        /// Occurs whenever an issuing cardholder is created.
+        /// The "issuing_cardholder.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_cardholder.created for
+        /// details.
         /// </summary>
         public const string IssuingCardholderCreated = "issuing_cardholder.created";
 
         /// <summary>
-        /// Occurs whenever an issuing cardholder is updated.
+        /// The "issuing_cardholder.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_cardholder.updated for
+        /// details.
         /// </summary>
         public const string IssuingCardholderUpdated = "issuing_cardholder.updated";
 
         /// <summary>
-        /// Occurs whenever a dispute is closed.
+        /// The "issuing_dispute.closed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_dispute.closed for details.
         /// </summary>
         public const string IssuingDisputeClosed = "issuing_dispute.closed";
 
         /// <summary>
-        /// Occurs whenever an issuing dispute is created.
+        /// The "issuing_dispute.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_dispute.created for
+        /// details.
         /// </summary>
         public const string IssuingDisputeCreated = "issuing_dispute.created";
 
         /// <summary>
-        /// Occurs whenever an issuing dispute's funds are reinstate.
+        /// The "issuing_dispute.funds_reinstated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_dispute.funds_reinstated
+        /// for details.
         /// </summary>
         public const string IssuingDisputeFundsReinstated = "issuing_dispute.funds_reinstated";
 
         /// <summary>
-        /// Occurs whenever a dispute is submitted.
+        /// The "issuing_dispute.submitted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_dispute.submitted for
+        /// details.
         /// </summary>
         public const string IssuingDisputeSubmitted = "issuing_dispute.submitted";
 
         /// <summary>
-        /// Occurs whenever an issuing dispute is updated.
+        /// The "issuing_dispute.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_dispute.updated for
+        /// details.
         /// </summary>
         public const string IssuingDisputeUpdated = "issuing_dispute.updated";
 
         /// <summary>
-        /// Occurs whenever an issuing transaction is created.
+        /// The "issuing_transaction.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_transaction.created for
+        /// details.
         /// </summary>
         public const string IssuingTransactionCreated = "issuing_transaction.created";
 
         /// <summary>
-        /// Occurs whenever an issuing transaction is updated.
+        /// The "issuing_transaction.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_transaction.updated for
+        /// details.
         /// </summary>
         public const string IssuingTransactionUpdated = "issuing_transaction.updated";
 
         /// <summary>
-        /// Occurs whenever a mandate is updated.
+        /// The "mandate.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-mandate.updated for details.
         /// </summary>
         public const string MandateUpdated = "mandate.updated";
 
         /// <summary>
-        /// Occurs whenever an order is created.
+        /// The "order.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-order.created for details.
         /// </summary>
         public const string OrderCreated = "order.created";
 
         /// <summary>
-        /// Occurs whenever payment is attempted on an order, and the payment fails.
+        /// The "order.payment_failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-order.payment_failed for details.
         /// </summary>
+        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
         public const string OrderPaymentFailed = "order.payment_failed";
 
         /// <summary>
-        /// Occurs whenever a payment is created.
-        /// </summary>
-        public const string PaymentCreated = "payment.created";
-
-        /// <summary>
-        /// Occurs when a payment link is created.
-        /// </summary>
-        public const string PaymentLinkCreated = "payment_link.created";
-
-        /// <summary>
-        /// Occurs when a payment link is updated.
-        /// </summary>
-        public const string PaymentLinkUpdated = "payment_link.updated";
-
-        /// <summary>
-        /// Occurs when a <see cref="PaymentIntent"/> has funds to be captured. Check the
-        /// <see cref="PaymentIntent.AmountCapturable"/> property on the PaymentIntent to determine
-        /// the amount that can be captured. You may capture the PaymentIntent with an
-        /// <see cref="PaymentIntentCaptureOptions.AmountToCapture"/> value up to the specified
-        /// amount. <a href="https://stripe.com/docs/api/payment_intents/capture">Learn more about
-        /// capturing PaymentIntents.</a>
+        /// The "payment_intent.amount_capturable_updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_intent.amount_capturable_updated
+        /// for details.
         /// </summary>
         public const string PaymentIntentAmountCapturableUpdated = "payment_intent.amount_capturable_updated";
 
         /// <summary>
-        /// Occurs when a PaymentIntent is canceled.
+        /// The "payment_intent.canceled" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_intent.canceled for
+        /// details.
         /// </summary>
         public const string PaymentIntentCanceled = "payment_intent.canceled";
 
         /// <summary>
-        /// Occurs when a new PaymentIntent is created.
+        /// The "payment_intent.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_intent.created for details.
         /// </summary>
         public const string PaymentIntentCreated = "payment_intent.created";
 
         /// <summary>
-        /// Occurs when funds are applied to a customer_balance PaymentIntent and the 'amount_remaining' changes.
+        /// The "payment_intent.partially_funded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_intent.partially_funded for
+        /// details.
         /// </summary>
         public const string PaymentIntentPartiallyFunded = "payment_intent.partially_funded";
 
         /// <summary>
-        /// Occurs when a PaymentIntent has failed the attempt to create a source or a payment.
+        /// The "payment_intent.payment_failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_intent.payment_failed for
+        /// details.
         /// </summary>
         public const string PaymentIntentPaymentFailed = "payment_intent.payment_failed";
 
         /// <summary>
-        /// Occurs when a PaymentIntent has started processing.
+        /// The "payment_intent.processing" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_intent.processing for
+        /// details.
         /// </summary>
         public const string PaymentIntentProcessing = "payment_intent.processing";
 
         /// <summary>
-        /// Occurs when a PaymentIntent transitions to requires_action state.
+        /// The "payment_intent.requires_action" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_intent.requires_action for
+        /// details.
         /// </summary>
         public const string PaymentIntentRequiresAction = "payment_intent.requires_action";
 
         /// <summary>
-        /// Occurs when a PaymentIntent has been successfully fulfilled.
+        /// The "payment_intent.succeeded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_intent.succeeded for
+        /// details.
         /// </summary>
         public const string PaymentIntentSucceeded = "payment_intent.succeeded";
 
         /// <summary>
-        /// Occurs whenever a new payment method is attached to a customer.
+        /// The "payment_link.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_link.created for details.
+        /// </summary>
+        public const string PaymentLinkCreated = "payment_link.created";
+
+        /// <summary>
+        /// The "payment_link.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_link.updated for details.
+        /// </summary>
+        public const string PaymentLinkUpdated = "payment_link.updated";
+
+        /// <summary>
+        /// The "payment_method.attached" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_method.attached for
+        /// details.
         /// </summary>
         public const string PaymentMethodAttached = "payment_method.attached";
 
         /// <summary>
-        /// Occurs whenever a payment method's details are automatically updated by the network.
+        /// The "payment_method.automatically_updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_method.automatically_updated
+        /// for details.
         /// </summary>
         public const string PaymentMethodAutomaticallyUpdated = "payment_method.automatically_updated";
 
+        /// <summary>
+        /// The "payment_method.card_automatically_updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_method.card_automatically_updated
+        /// for details.
+        /// </summary>
         [Obsolete("Use PaymentMethodAutomaticallyUpdated instead.")]
         public const string PaymentMethodCardAutomaticallyUpdated = "payment_method.card_automatically_updated";
 
         /// <summary>
-        /// Occurs whenever a payment method is detached from a customer.
+        /// The "payment_method.detached" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_method.detached for
+        /// details.
         /// </summary>
         public const string PaymentMethodDetached = "payment_method.detached";
 
         /// <summary>
-        /// Occurs whenever a payment method is updated via the API.
+        /// The "payment_method.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment_method.updated for details.
         /// </summary>
         public const string PaymentMethodUpdated = "payment_method.updated";
 
         /// <summary>
-        /// Occurs whenever a payout is canceled.
+        /// The "payment.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payment.created for details.
+        /// </summary>
+        public const string PaymentCreated = "payment.created";
+
+        /// <summary>
+        /// The "payout.canceled" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payout.canceled for details.
         /// </summary>
         public const string PayoutCanceled = "payout.canceled";
 
         /// <summary>
-        /// Occurs whenever a new payout is created.
+        /// The "payout.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payout.created for details.
         /// </summary>
         public const string PayoutCreated = "payout.created";
 
         /// <summary>
-        /// Occurs whenever Stripe attempts to send a payout and that transfer fails.
+        /// The "payout.failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payout.failed for details.
         /// </summary>
         public const string PayoutFailed = "payout.failed";
 
         /// <summary>
-        /// Occurs whenever balance transactions paid out in an automatic payout can be queried.
-        /// </summary>
-        public const string PayoutReconciliationCompleted = "payout.reconciliation_completed";
-
-        /// <summary>
-        /// Occurs whenever a payout is *expected* to be available in the destination account.
-        /// If the payout fails, a <see cref="PayoutFailed"/> notification is also sent, at a later
-        /// time.
+        /// The "payout.paid" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payout.paid for details.
         /// </summary>
         public const string PayoutPaid = "payout.paid";
 
         /// <summary>
-        /// Occurs whenever a payout's metadata is updated.
+        /// The "payout.reconciliation_completed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payout.reconciliation_completed for
+        /// details.
+        /// </summary>
+        public const string PayoutReconciliationCompleted = "payout.reconciliation_completed";
+
+        /// <summary>
+        /// The "payout.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-payout.updated for details.
         /// </summary>
         public const string PayoutUpdated = "payout.updated";
 
         /// <summary>
-        /// Occurs whenever a person is created.
+        /// The "person.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-person.created for details.
         /// </summary>
         public const string PersonCreated = "person.created";
 
         /// <summary>
-        /// Occurs whenever a person is deleted.
+        /// The "person.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-person.deleted for details.
         /// </summary>
         public const string PersonDeleted = "person.deleted";
 
         /// <summary>
-        /// Occurs whenever a person is updated.
+        /// The "person.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-person.updated for details.
         /// </summary>
         public const string PersonUpdated = "person.updated";
 
         /// <summary>
-        /// Occurs whenever a plan is created.
+        /// The "ping" event type. See https://stripe.com/docs/api/events/types#event_types-ping for
+        /// details.
+        /// </summary>
+        public const string Ping = "ping";
+
+        /// <summary>
+        /// The "plan.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-plan.created for details.
         /// </summary>
         public const string PlanCreated = "plan.created";
 
         /// <summary>
-        /// Occurs whenever a plan is deleted.
+        /// The "plan.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-plan.deleted for details.
         /// </summary>
         public const string PlanDeleted = "plan.deleted";
 
         /// <summary>
-        /// Occurs whenever a plan is updated.
+        /// The "plan.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-plan.updated for details.
         /// </summary>
         public const string PlanUpdated = "plan.updated";
 
         /// <summary>
-        /// Occurs whenever a price is created.
+        /// The "price.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-price.created for details.
         /// </summary>
         public const string PriceCreated = "price.created";
 
         /// <summary>
-        /// Occurs whenever a price is deleted.
+        /// The "price.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-price.deleted for details.
         /// </summary>
         public const string PriceDeleted = "price.deleted";
 
         /// <summary>
-        /// Occurs whenever a price is updated.
+        /// The "price.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-price.updated for details.
         /// </summary>
         public const string PriceUpdated = "price.updated";
 
         /// <summary>
-        /// Occurs whenever a product is created.
+        /// The "product.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-product.created for details.
         /// </summary>
         public const string ProductCreated = "product.created";
 
         /// <summary>
-        /// Occurs whenever a product is deleted.
+        /// The "product.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-product.deleted for details.
         /// </summary>
         public const string ProductDeleted = "product.deleted";
 
         /// <summary>
-        /// Occurs whenever a product is updated.
+        /// The "product.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-product.updated for details.
         /// </summary>
         public const string ProductUpdated = "product.updated";
 
         /// <summary>
-        /// Occurs whenever a promotion code is created.
+        /// The "promotion_code.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-promotion_code.created for details.
         /// </summary>
         public const string PromotionCodeCreated = "promotion_code.created";
 
         /// <summary>
-        /// Occurs whenever a promotion code is updated.
+        /// The "promotion_code.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-promotion_code.updated for details.
         /// </summary>
         public const string PromotionCodeUpdated = "promotion_code.updated";
 
         /// <summary>
-        /// Occurs whenever a quote is accepted.
+        /// The "quote.accepted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-quote.accepted for details.
         /// </summary>
         public const string QuoteAccepted = "quote.accepted";
 
         /// <summary>
-        /// Occurs whenever a quote is canceled.
+        /// The "quote.canceled" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-quote.canceled for details.
         /// </summary>
         public const string QuoteCanceled = "quote.canceled";
 
         /// <summary>
-        /// Occurs whenever a quote is created.
+        /// The "quote.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-quote.created for details.
         /// </summary>
         public const string QuoteCreated = "quote.created";
 
         /// <summary>
-        /// Occurs whenever a quote is finalized.
+        /// The "quote.finalized" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-quote.finalized for details.
         /// </summary>
         public const string QuoteFinalized = "quote.finalized";
 
         /// <summary>
-        /// Occurs whenever an early fraud warning is created.
+        /// The "radar.early_fraud_warning.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-radar.early_fraud_warning.created
+        /// for details.
         /// </summary>
         public const string RadarEarlyFraudWarningCreated = "radar.early_fraud_warning.created";
 
         /// <summary>
-        /// Occurs whenever an early fraud warning is updated.
+        /// The "radar.early_fraud_warning.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-radar.early_fraud_warning.updated
+        /// for details.
         /// </summary>
         public const string RadarEarlyFraudWarningUpdated = "radar.early_fraud_warning.updated";
 
         /// <summary>
-        /// Occurs whenever a recipient is created.
+        /// The "recipient.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-recipient.created for details.
         /// </summary>
         public const string RecipientCreated = "recipient.created";
 
         /// <summary>
-        /// Occurs whenever a recipient is deleted.
+        /// The "recipient.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-recipient.deleted for details.
         /// </summary>
         public const string RecipientDeleted = "recipient.deleted";
 
         /// <summary>
-        /// Occurs whenever a recipient is updated.
+        /// The "recipient.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-recipient.updated for details.
         /// </summary>
         public const string RecipientUpdated = "recipient.updated";
 
         /// <summary>
-        /// Occurs whenever a refund from a customer’s cash balance is created.
+        /// The "refund.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-refund.created for details.
         /// </summary>
         public const string RefundCreated = "refund.created";
 
         /// <summary>
-        /// Occurs whenever a refund from a customer’s cash balance is updated.
+        /// The "refund.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-refund.updated for details.
         /// </summary>
         public const string RefundUpdated = "refund.updated";
 
         /// <summary>
-        /// Occurs whenever a requested <see cref="Reporting.ReportRun"/> failed to complete.
+        /// The "reporting.report_run.failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-reporting.report_run.failed for
+        /// details.
         /// </summary>
         public const string ReportingReportRunFailed = "reporting.report_run.failed";
 
         /// <summary>
-        /// Occurs whenever a requested <see cref="Reporting.ReportRun"/> completed succesfully.
+        /// The "reporting.report_run.succeeded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-reporting.report_run.succeeded for
+        /// details.
         /// </summary>
         public const string ReportingReportRunSucceeded = "reporting.report_run.succeeded";
 
         /// <summary>
-        /// Occurs whenever a requested <see cref="Reporting.ReportType"/> is updated (typically to
-        /// indicate that a new day's data has come available).
+        /// The "reporting.report_type.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-reporting.report_type.updated for
+        /// details.
         /// </summary>
         public const string ReportingReportTypeUpdated = "reporting.report_type.updated";
 
         /// <summary>
-        /// Occurs whenever a review is closed. The review's reason field indicates why:
-        /// <c>approved</c>, <c>disputed</c>, <c>refunded</c>, or <c>refunded_as_fraud</c>.
+        /// The "review.closed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-review.closed for details.
         /// </summary>
         public const string ReviewClosed = "review.closed";
 
         /// <summary>
-        /// Occurs whenever a review is opened.
+        /// The "review.opened" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-review.opened for details.
         /// </summary>
         public const string ReviewOpened = "review.opened";
 
         /// <summary>
-        /// Occurs when a SetupIntent is canceled.
+        /// The "setup_intent.canceled" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-setup_intent.canceled for details.
         /// </summary>
         public const string SetupIntentCanceled = "setup_intent.canceled";
 
         /// <summary>
-        /// Occurs when a new SetupIntent is created.
+        /// The "setup_intent.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-setup_intent.created for details.
         /// </summary>
         public const string SetupIntentCreated = "setup_intent.created";
 
         /// <summary>
-        /// Occurs when a SetupIntent is in <c>requires_action</c> state.
+        /// The "setup_intent.requires_action" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-setup_intent.requires_action for
+        /// details.
         /// </summary>
         public const string SetupIntentRequiresAction = "setup_intent.requires_action";
 
         /// <summary>
-        /// Occurs when a SetupIntent has failed the attempt to setup a payment method.
+        /// The "setup_intent.setup_failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-setup_intent.setup_failed for
+        /// details.
         /// </summary>
         public const string SetupIntentSetupFailed = "setup_intent.setup_failed";
 
         /// <summary>
-        /// Occurs when a SetupIntent has successfully setup a payment method.
+        /// The "setup_intent.succeeded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-setup_intent.succeeded for details.
         /// </summary>
         public const string SetupIntentSucceeded = "setup_intent.succeeded";
 
         /// <summary>
-        /// Occurs whenever a Sigma scheduled query run finishes.
+        /// The "sigma.scheduled_query_run.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-sigma.scheduled_query_run.created
+        /// for details.
         /// </summary>
+        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
         public const string SigmaScheduleQueryRunCreated = "sigma.scheduled_query_run.created";
 
         /// <summary>
-        /// Occurs whenever a SKU is created.
+        /// The "sku.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-sku.created for details.
         /// </summary>
         public const string SkuCreated = "sku.created";
 
         /// <summary>
-        /// Occurs whenever a SKU is deleted.
+        /// The "sku.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-sku.deleted for details.
         /// </summary>
         public const string SkuDeleted = "sku.deleted";
 
         /// <summary>
-        /// Occurs whenever a SKU is updated.
+        /// The "sku.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-sku.updated for details.
         /// </summary>
         public const string SkuUpdated = "sku.updated";
 
         /// <summary>
-        /// Occurs whenever a source is canceled.
+        /// The "source.canceled" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-source.canceled for details.
         /// </summary>
         public const string SourceCanceled = "source.canceled";
 
         /// <summary>
-        /// Occurs whenever a source transitions to chargeable.
+        /// The "source.chargeable" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-source.chargeable for details.
         /// </summary>
         public const string SourceChargeable = "source.chargeable";
 
         /// <summary>
-        /// Occurs whenever a source is failed.
+        /// The "source.failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-source.failed for details.
         /// </summary>
         public const string SourceFailed = "source.failed";
 
         /// <summary>
-        /// Occurs whenever a source mandate notification method is set to manual.
+        /// The "source.mandate_notification" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-source.mandate_notification for
+        /// details.
         /// </summary>
         public const string SourceMandateNotification = "source.mandate_notification";
 
         /// <summary>
-        /// Occurs whenever the refund attributes are required on a receiver source to process a
-        /// refund or a mispayment.
+        /// The "source.refund_attributes_required" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-source.refund_attributes_required
+        /// for details.
         /// </summary>
         public const string SourceRefundAttributesRequired = "source.refund_attributes_required";
 
         /// <summary>
-        /// Occurs whenever a source transaction is created.
+        /// The "source.transaction.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-source.transaction.created for
+        /// details.
         /// </summary>
         public const string SourceTransactionCreated = "source.transaction.created";
 
         /// <summary>
-        /// Occurs whenever a source transaction is updated.
+        /// The "source.transaction.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-source.transaction.updated for
+        /// details.
         /// </summary>
         public const string SourceTransactionUpdated = "source.transaction.updated";
 
         /// <summary>
-        /// Occurs whenever a subscription schedule is canceled due to the underlying subscription
-        /// being canceled because of delinquency.
+        /// The "subscription_schedule.aborted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-subscription_schedule.aborted for
+        /// details.
         /// </summary>
         public const string SubscriptionScheduleAborted = "subscription_schedule.aborted";
 
         /// <summary>
-        /// Occurs whenever a subscription schedule is canceled.
+        /// The "subscription_schedule.canceled" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-subscription_schedule.canceled for
+        /// details.
         /// </summary>
         public const string SubscriptionScheduleCanceled = "subscription_schedule.canceled";
 
         /// <summary>
-        /// Occurs whenever a new subscription schedule is completed.
+        /// The "subscription_schedule.completed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-subscription_schedule.completed for
+        /// details.
         /// </summary>
         public const string SubscriptionScheduleCompleted = "subscription_schedule.completed";
 
         /// <summary>
-        /// Occurs whenever a new subscription schedule is created.
+        /// The "subscription_schedule.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-subscription_schedule.created for
+        /// details.
         /// </summary>
         public const string SubscriptionScheduleCreated = "subscription_schedule.created";
 
         /// <summary>
-        /// Occurs 7 days before a subscription schedule will expire.
+        /// The "subscription_schedule.expiring" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-subscription_schedule.expiring for
+        /// details.
         /// </summary>
         public const string SubscriptionScheduleExpiring = "subscription_schedule.expiring";
 
         /// <summary>
-        /// Occurs whenever a new subscription schedule is released.
+        /// The "subscription_schedule.released" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-subscription_schedule.released for
+        /// details.
         /// </summary>
         public const string SubscriptionScheduleReleased = "subscription_schedule.released";
 
         /// <summary>
-        /// Occurs whenever a subscription schedule is updated.
+        /// The "subscription_schedule.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-subscription_schedule.updated for
+        /// details.
         /// </summary>
         public const string SubscriptionScheduleUpdated = "subscription_schedule.updated";
 
         /// <summary>
-        /// Occurs whenever a tax rate is created.
+        /// The "tax_rate.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-tax_rate.created for details.
         /// </summary>
         public const string TaxRateCreated = "tax_rate.created";
 
         /// <summary>
-        /// Occurs whenever a tax rate changes.
+        /// The "tax_rate.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-tax_rate.updated for details.
         /// </summary>
         public const string TaxRateUpdated = "tax_rate.updated";
 
         /// <summary>
-        /// Occurs whenever an action sent to a Terminal reader failed.
+        /// The "tax.settings.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-tax.settings.updated for details.
+        /// </summary>
+        public const string TaxSettingsUpdated = "tax.settings.updated";
+
+        /// <summary>
+        /// The "terminal.reader.action_failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-terminal.reader.action_failed for
+        /// details.
         /// </summary>
         public const string TerminalReaderActionFailed = "terminal.reader.action_failed";
 
         /// <summary>
-        /// Occurs whenever an action sent to a Terminal reader was successful.
+        /// The "terminal.reader.action_succeeded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-terminal.reader.action_succeeded
+        /// for details.
         /// </summary>
         public const string TerminalReaderActionSucceeded = "terminal.reader.action_succeeded";
 
         /// <summary>
-        /// Occurs whenever a test clock starts advancing.
+        /// The "test_helpers.test_clock.advancing" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-test_helpers.test_clock.advancing
+        /// for details.
         /// </summary>
         public const string TestHelpersTestClockAdvancing = "test_helpers.test_clock.advancing";
 
         /// <summary>
-        /// Occurs whenever a test clock is created.
+        /// The "test_helpers.test_clock.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-test_helpers.test_clock.created for
+        /// details.
         /// </summary>
         public const string TestHelpersTestClockCreated = "test_helpers.test_clock.created";
 
         /// <summary>
-        /// Occurs whenever a test clock is deleted.
+        /// The "test_helpers.test_clock.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-test_helpers.test_clock.deleted for
+        /// details.
         /// </summary>
         public const string TestHelpersTestClockDeleted = "test_helpers.test_clock.deleted";
 
         /// <summary>
-        /// Occurs whenever a test clock fails to advance its frozen time.
+        /// The "test_helpers.test_clock.internal_failure" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-test_helpers.test_clock.internal_failure
+        /// for details.
         /// </summary>
         public const string TestHelpersTestClockInternalFailure = "test_helpers.test_clock.internal_failure";
 
         /// <summary>
-        /// Occurs whenever a test clock transitions to a ready status.
+        /// The "test_helpers.test_clock.ready" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-test_helpers.test_clock.ready for
+        /// details.
         /// </summary>
         public const string TestHelpersTestClockReady = "test_helpers.test_clock.ready";
 
         /// <summary>
-        /// Occurs whenever a top-up is canceled.
+        /// The "topup.canceled" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-topup.canceled for details.
         /// </summary>
         public const string TopupCanceled = "topup.canceled";
 
         /// <summary>
-        /// Occurs whenever a top-up is created.
+        /// The "topup.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-topup.created for details.
         /// </summary>
         public const string TopupCreated = "topup.created";
 
         /// <summary>
-        /// Occurs whenever a top-up fails.
+        /// The "topup.failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-topup.failed for details.
         /// </summary>
         public const string TopupFailed = "topup.failed";
 
         /// <summary>
-        /// Occurs whenever a top-up is reversed.
+        /// The "topup.reversed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-topup.reversed for details.
         /// </summary>
         public const string TopupReversed = "topup.reversed";
 
         /// <summary>
-        /// Occurs whenever a top-up succeeds.
+        /// The "topup.succeeded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-topup.succeeded for details.
         /// </summary>
         public const string TopupSucceeded = "topup.succeeded";
 
         /// <summary>
-        /// Occurs whenever a new transfer is created.
+        /// The "transfer.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-transfer.created for details.
         /// </summary>
         public const string TransferCreated = "transfer.created";
 
         /// <summary>
-        /// Occurs whenever a transfer is reversed, including partial reversals.
+        /// The "transfer.reversed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-transfer.reversed for details.
         /// </summary>
         public const string TransferReversed = "transfer.reversed";
 
         /// <summary>
-        /// Occurs whenever the description or metadata of a transfer is updated.
+        /// The "transfer.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-transfer.updated for details.
         /// </summary>
         public const string TransferUpdated = "transfer.updated";
 
         /// <summary>
-        /// Occurs whenever a CheckDeposit is canceled.
+        /// The "treasury.check_deposit.canceled" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.canceled for
+        /// details.
         /// </summary>
+        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
         public const string TreasuryCheckDepositCanceled = "treasury.check_deposit.canceled";
 
         /// <summary>
-        /// Occurs whenever a CheckDeposit is created.
+        /// The "treasury.check_deposit.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.created for
+        /// details.
         /// </summary>
+        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
         public const string TreasuryCheckDepositCreated = "treasury.check_deposit.created";
 
         /// <summary>
-        /// Occurs whenever a CheckDeposit is processing.
+        /// The "treasury.check_deposit.processing" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.processing
+        /// for details.
         /// </summary>
+        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
         public const string TreasuryCheckDepositProcessing = "treasury.check_deposit.processing";
 
         /// <summary>
-        /// Occurs whenever a CheckDeposit is received.
+        /// The "treasury.check_deposit.received" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.received for
+        /// details.
         /// </summary>
+        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
         public const string TreasuryCheckDepositReceived = "treasury.check_deposit.received";
 
         /// <summary>
-        /// Occurs whenever a CheckDeposit requires action.
+        /// The "treasury.check_deposit.requires_action" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.requires_action
+        /// for details.
         /// </summary>
+        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
         public const string TreasuryCheckDepositRequiresAction = "treasury.check_deposit.requires_action";
 
         /// <summary>
-        /// Occurs whenever a CheckDeposit requires confirmation.
+        /// The "treasury.check_deposit.requires_confirmation" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.requires_confirmation
+        /// for details.
         /// </summary>
+        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
         public const string TreasuryCheckDepositRequiresConfirmation = "treasury.check_deposit.requires_confirmation";
 
         /// <summary>
-        /// Occurs whenever a CheckDeposit is reversed.
+        /// The "treasury.check_deposit.reversed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.reversed for
+        /// details.
         /// </summary>
+        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
         public const string TreasuryCheckDepositReversed = "treasury.check_deposit.reversed";
 
         /// <summary>
-        /// Occurs whenever an CreditReversal is submitted and created.
+        /// The "treasury.credit_reversal.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.credit_reversal.created
+        /// for details.
         /// </summary>
         public const string TreasuryCreditReversalCreated = "treasury.credit_reversal.created";
 
         /// <summary>
-        /// Occurs whenever an CreditReversal post is posted.
+        /// The "treasury.credit_reversal.posted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.credit_reversal.posted for
+        /// details.
         /// </summary>
         public const string TreasuryCreditReversalPosted = "treasury.credit_reversal.posted";
 
         /// <summary>
-        /// Occurs whenever a DebitReversal is completed.
+        /// The "treasury.debit_reversal.completed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.debit_reversal.completed
+        /// for details.
         /// </summary>
         public const string TreasuryDebitReversalCompleted = "treasury.debit_reversal.completed";
 
         /// <summary>
-        /// Occurs whenever a DebitReversal is created.
+        /// The "treasury.debit_reversal.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.debit_reversal.created for
+        /// details.
         /// </summary>
         public const string TreasuryDebitReversalCreated = "treasury.debit_reversal.created";
 
         /// <summary>
-        /// Occurs whenever an initial credit is granted on a DebitReversal.
+        /// The "treasury.debit_reversal.initial_credit_granted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.debit_reversal.initial_credit_granted
+        /// for details.
         /// </summary>
         public const string TreasuryDebitReversalInitialCreditGranted = "treasury.debit_reversal.initial_credit_granted";
 
         /// <summary>
-        /// Occurs whenever the status of the FinancialAccount becomes closed.
+        /// The "treasury.financial_account.closed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.financial_account.closed
+        /// for details.
         /// </summary>
         public const string TreasuryFinancialAccountClosed = "treasury.financial_account.closed";
 
         /// <summary>
-        /// Occurs whenever a new FinancialAccount is created.
+        /// The "treasury.financial_account.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.financial_account.created
+        /// for details.
         /// </summary>
         public const string TreasuryFinancialAccountCreated = "treasury.financial_account.created";
 
         /// <summary>
-        /// Occurs whenever the statuses of any features within an existing FinancialAccount are updated.
+        /// The "treasury.financial_account.features_status_updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.financial_account.features_status_updated
+        /// for details.
         /// </summary>
         public const string TreasuryFinancialAccountFeaturesStatusUpdated = "treasury.financial_account.features_status_updated";
 
         /// <summary>
-        /// Occurs whenever an InboundTransfer is canceled.
+        /// The "treasury.inbound_transfer.canceled" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.inbound_transfer.canceled
+        /// for details.
         /// </summary>
         public const string TreasuryInboundTransferCanceled = "treasury.inbound_transfer.canceled";
 
         /// <summary>
-        /// Occurs whenever an InboundTransfer is created.
+        /// The "treasury.inbound_transfer.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.inbound_transfer.created
+        /// for details.
         /// </summary>
         public const string TreasuryInboundTransferCreated = "treasury.inbound_transfer.created";
 
         /// <summary>
-        /// Occurs whenever an InboundTransfer has failed.
+        /// The "treasury.inbound_transfer.failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.inbound_transfer.failed
+        /// for details.
         /// </summary>
         public const string TreasuryInboundTransferFailed = "treasury.inbound_transfer.failed";
 
         /// <summary>
-        /// Occurs whenever an InboundTransfer has succeeded.
+        /// The "treasury.inbound_transfer.succeeded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.inbound_transfer.succeeded
+        /// for details.
         /// </summary>
         public const string TreasuryInboundTransferSucceeded = "treasury.inbound_transfer.succeeded";
 
         /// <summary>
-        /// Occurs whenever an OutboundPayment is canceled.
+        /// The "treasury.outbound_payment.canceled" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.outbound_payment.canceled
+        /// for details.
         /// </summary>
         public const string TreasuryOutboundPaymentCanceled = "treasury.outbound_payment.canceled";
 
         /// <summary>
-        /// Occurs whenever a new OutboundPayment is successfully created.
+        /// The "treasury.outbound_payment.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.outbound_payment.created
+        /// for details.
         /// </summary>
         public const string TreasuryOutboundPaymentCreated = "treasury.outbound_payment.created";
 
         /// <summary>
-        /// Occurs whenever the arrival date on an OutboundPayment updates.
+        /// The "treasury.outbound_payment.expected_arrival_date_updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.outbound_payment.expected_arrival_date_updated
+        /// for details.
         /// </summary>
         public const string TreasuryOutboundPaymentExpectedArrivalDateUpdated = "treasury.outbound_payment.expected_arrival_date_updated";
 
         /// <summary>
-        /// Occurs whenever an OutboundPayment fails.
+        /// The "treasury.outbound_payment.failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.outbound_payment.failed
+        /// for details.
         /// </summary>
         public const string TreasuryOutboundPaymentFailed = "treasury.outbound_payment.failed";
 
         /// <summary>
-        /// Occurs whenever an OutboundPayment posts.
+        /// The "treasury.outbound_payment.posted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.outbound_payment.posted
+        /// for details.
         /// </summary>
         public const string TreasuryOutboundPaymentPosted = "treasury.outbound_payment.posted";
 
         /// <summary>
-        /// Occurs whenever an OutboundPayment was returned.
+        /// The "treasury.outbound_payment.returned" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.outbound_payment.returned
+        /// for details.
         /// </summary>
         public const string TreasuryOutboundPaymentReturned = "treasury.outbound_payment.returned";
 
         /// <summary>
-        /// Occurs whenever an OutboundTransfer is canceled.
+        /// The "treasury.outbound_transfer.canceled" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.outbound_transfer.canceled
+        /// for details.
         /// </summary>
         public const string TreasuryOutboundTransferCanceled = "treasury.outbound_transfer.canceled";
 
         /// <summary>
-        /// Occurs whenever an OutboundTransfer is created.
+        /// The "treasury.outbound_transfer.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.outbound_transfer.created
+        /// for details.
         /// </summary>
         public const string TreasuryOutboundTransferCreated = "treasury.outbound_transfer.created";
 
         /// <summary>
-        /// Occurs whenever the arrival date on an OutboundTransfer updates.
+        /// The "treasury.outbound_transfer.expected_arrival_date_updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.outbound_transfer.expected_arrival_date_updated
+        /// for details.
         /// </summary>
         public const string TreasuryOutboundTransferExpectedArrivalDateUpdated = "treasury.outbound_transfer.expected_arrival_date_updated";
 
         /// <summary>
-        /// Occurs whenever an OutboundTransfer has failed.
+        /// The "treasury.outbound_transfer.failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.outbound_transfer.failed
+        /// for details.
         /// </summary>
         public const string TreasuryOutboundTransferFailed = "treasury.outbound_transfer.failed";
 
         /// <summary>
-        /// Occurs whenever an OutboundTransfer is posted.
+        /// The "treasury.outbound_transfer.posted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.outbound_transfer.posted
+        /// for details.
         /// </summary>
         public const string TreasuryOutboundTransferPosted = "treasury.outbound_transfer.posted";
 
         /// <summary>
-        /// Occurs whenever an OutboundTransfer is returned.
+        /// The "treasury.outbound_transfer.returned" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.outbound_transfer.returned
+        /// for details.
         /// </summary>
         public const string TreasuryOutboundTransferReturned = "treasury.outbound_transfer.returned";
 
         /// <summary>
-        /// Occurs whenever a received_credit is created as a result of funds being pushed by another account.
+        /// The "treasury.received_credit.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.received_credit.created
+        /// for details.
         /// </summary>
         public const string TreasuryReceivedCreditCreated = "treasury.received_credit.created";
 
         /// <summary>
-        /// Occurs whenever a received_credit transitions to failed state. Only applicable for check deposits.
+        /// The "treasury.received_credit.failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.received_credit.failed for
+        /// details.
         /// </summary>
         public const string TreasuryReceivedCreditFailed = "treasury.received_credit.failed";
 
         /// <summary>
-        /// Occurs whenever a received_credit is reversed, and a received_debit is created. Only applicable for check deposits.
+        /// The "treasury.received_credit.reversed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.received_credit.reversed
+        /// for details.
         /// </summary>
+        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
         public const string TreasuryReceivedCreditReversed = "treasury.received_credit.reversed";
 
         /// <summary>
-        /// Occurs whenever a received_credit transitions to succeeded state. Only applicable for check deposits.
+        /// The "treasury.received_credit.succeeded" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.received_credit.succeeded
+        /// for details.
         /// </summary>
         public const string TreasuryReceivedCreditSucceeded = "treasury.received_credit.succeeded";
 
         /// <summary>
-        /// Occurs whenever a received_debit is created as a result of funds being pulled by another account.
+        /// The "treasury.received_debit.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-treasury.received_debit.created for
+        /// details.
         /// </summary>
         public const string TreasuryReceivedDebitCreated = "treasury.received_debit.created";
-
-        /// <summary>
-        /// May be sent by Stripe at any time to see if a provided webhook URL is working.
-        /// </summary>
-        public const string Ping = "ping";
     }
 }
