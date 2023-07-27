@@ -6,7 +6,7 @@ namespace Stripe
     public class SetupIntentPaymentMethodOptionsLink : StripeEntity<SetupIntentPaymentMethodOptionsLink>
     {
         /// <summary>
-        /// Token used for persistent Link logins.
+        /// [Deprecated] This is a legacy parameter that no longer has any function.
         /// </summary>
         [JsonProperty("persistent_token")]
         public string PersistentToken { get; set; }
