@@ -1,5 +1,11 @@
 # Changelog
 
+## 41.26.0 - 2023-07-27
+* [#2733](https://github.com/stripe/stripe-dotnet/pull/2733) Update generated code
+  * Add support for `MonthlyEstimatedRevenue` on `AccountBusinessProfileOptions` and `AccountBusinessProfile`
+* [#2735](https://github.com/stripe/stripe-dotnet/pull/2735) Auto-generate event constants
+  * Add support for `BillingPortalSessionCreated`, `FinancialConnectionsAccountCreated`, `FinancialConnectionsAccountDeactivated`, `FinancialConnectionsAccountDisconnected`, `FinancialConnectionsAccountReactivated`, `FinancialConnectionsAccountRefreshedBalance`, and `TaxSettingsUpdated` on `Event`
+
 ## 41.25.0 - 2023-07-20
 * [#2732](https://github.com/stripe/stripe-dotnet/pull/2732) Update generated code
   * Add support for `UseStripeSdk` on `SetupIntentConfirmOptions` and `SetupIntentCreateOptions`
