@@ -14,6 +14,13 @@ namespace Stripe
         public string Mcc { get; set; }
 
         /// <summary>
+        /// An estimate of the monthly revenue of the business. Only accepted for accounts in Brazil
+        /// and India.
+        /// </summary>
+        [JsonProperty("monthly_estimated_revenue")]
+        public AccountBusinessProfileMonthlyEstimatedRevenueOptions MonthlyEstimatedRevenue { get; set; }
+
+        /// <summary>
         /// The customer-facing business name.
         /// </summary>
         [JsonProperty("name")]

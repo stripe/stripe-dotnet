@@ -13,6 +13,9 @@ namespace Stripe
         [JsonProperty("mcc")]
         public string Mcc { get; set; }
 
+        [JsonProperty("monthly_estimated_revenue")]
+        public AccountBusinessProfileMonthlyEstimatedRevenue MonthlyEstimatedRevenue { get; set; }
+
         /// <summary>
         /// The customer-facing business name.
         /// </summary>
