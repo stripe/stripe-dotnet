@@ -268,7 +268,7 @@ namespace Stripe
             return new StripeException(
                 response.StatusCode,
                 stripeError,
-                stripeError.Message ?? stripeError.ErrorDescription ?? stripeError.DeveloperMessage)
+                stripeError.Message ?? stripeError.ErrorDescription)
             {
                 StripeResponse = response,
             };
