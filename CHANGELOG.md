@@ -1,10 +1,13 @@
 # Changelog
 
+## 41.27.0-beta.1 - 2023-07-27
+  * Updated stable APIs to the latest version
+
 ## 41.25.0 - 2023-07-20
 * [#2732](https://github.com/stripe/stripe-dotnet/pull/2732) Update generated code
   * Add support for `UseStripeSdk` on `SetupIntentConfirmOptions` and `SetupIntentCreateOptions`
 * [#2728](https://github.com/stripe/stripe-dotnet/pull/2728) Update generated code
-* [#2730](https://github.com/stripe/stripe-dotnet/pull/2730) changelog: fixed namespace param names
+  * Add support for UseStripeSdk on SetupIntentConfirmOptions and SetupIntentCreateOptions
 
 ## 41.25.0-beta.1 - 2023-07-13
 * [#2727](https://github.com/stripe/stripe-dotnet/pull/2727) Update generated code for beta
@@ -60,7 +63,7 @@
 
 ## 41.21.0-beta.1 - 2023-06-08
 * [#2704](https://github.com/stripe/stripe-dotnet/pull/2704) Update generated code for beta
-  * Updated beta APIs to the latest stable version
+  * Updated stable APIs to the latest version
 
 ## 41.20.0 - 2023-06-08
 * [#2705](https://github.com/stripe/stripe-dotnet/pull/2705) Update generated code
@@ -433,7 +436,7 @@ Breaking changes that arose during code generation of the library that we postpo
 
 ## 40.15.0-beta.2 - 2022-11-02
 * [#2597](https://github.com/stripe/stripe-dotnet/pull/2597) API Updates for beta branch
-  * Updated beta APIs to the latest stable version
+  * Updated stable APIs to the latest version
   * Add support for `cashappPayments` and `zipPayments` on `Account`.
   * Add support for `cashapp` and `zip` on `Charge`, `PaymentMethod`.
   * Add support for `trialSettings` on `SubscriptionSchedule`.
