@@ -55,7 +55,7 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
-        /// This represents the percentage of the subscription invoice subtotal that will be
+        /// This represents the percentage of the subscription invoice total that will be
         /// transferred to the application owner's Stripe account.
         /// </summary>
         [JsonProperty("application_fee_percent")]

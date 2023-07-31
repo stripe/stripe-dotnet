@@ -10,10 +10,10 @@ namespace Stripe.Checkout
     {
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal places. This
-        /// represents the percentage of the subscription invoice subtotal that will be transferred
-        /// to the application owner's Stripe account. To use an application fee percent, the
-        /// request must be made on behalf of another account, using the <c>Stripe-Account</c>
-        /// header or an OAuth key. For more information, see the application fees <a
+        /// represents the percentage of the subscription invoice total that will be transferred to
+        /// the application owner's Stripe account. To use an application fee percent, the request
+        /// must be made on behalf of another account, using the <c>Stripe-Account</c> header or an
+        /// OAuth key. For more information, see the application fees <a
         /// href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</a>.
         /// </summary>
         [JsonProperty("application_fee_percent")]
