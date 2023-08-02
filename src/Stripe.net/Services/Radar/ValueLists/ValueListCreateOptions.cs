@@ -13,12 +13,14 @@ namespace Stripe.Radar
         public string Alias { get; set; }
 
         /// <summary>
-        /// Type of the items in the value list. One of <c>card_fingerprint</c>, <c>card_bin</c>,
+        /// Type of the items in the value list. One of <c>card_fingerprint</c>,
+        /// <c>us_bank_account_fingerprint</c>, <c>sepa_debit_fingerprint</c>, <c>card_bin</c>,
         /// <c>email</c>, <c>ip_address</c>, <c>country</c>, <c>string</c>,
         /// <c>case_sensitive_string</c>, or <c>customer_id</c>. Use <c>string</c> if the item type
         /// is unknown or mixed.
         /// One of: <c>card_bin</c>, <c>card_fingerprint</c>, <c>case_sensitive_string</c>,
-        /// <c>country</c>, <c>customer_id</c>, <c>email</c>, <c>ip_address</c>, or <c>string</c>.
+        /// <c>country</c>, <c>customer_id</c>, <c>email</c>, <c>ip_address</c>,
+        /// <c>sepa_debit_fingerprint</c>, <c>string</c>, or <c>us_bank_account_fingerprint</c>.
         /// </summary>
         [JsonProperty("item_type")]
         public string ItemType { get; set; }
