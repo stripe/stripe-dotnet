@@ -1,5 +1,15 @@
 # Changelog
 
+## 41.28.0-beta.1 - 2023-08-03
+* [#2737](https://github.com/stripe/stripe-dotnet/pull/2737) Update generated code for beta
+  * Add support for `SubmitCard` test helper method on resource `Issuing.Card`
+  * Add support for `AddressValidation` on `IssuingCardShippingOptions` and `IssuingCardShipping`
+  * Add support for `Shipping` on `Issuing.CardUpdateOptions`
+  * Change type of `OrderDescriptionOptions`, `OrderLineItemsProductDataDescriptionOptions`, `OrderLineItemsProductDataTaxCodeOptions`, `OrderShippingDetailsPhoneOptions`, `PaymentMethodConfigurationApplicationOptions`, and `QuoteSubscriptionDataOverridesDescriptionOptions` from `string` to `emptyStringable(string)`
+  * Add support for `Reason` on `QuoteMarkStaleQuoteOptions`
+  * Add support for `MarkedStale` on `QuoteStatusDetailsStaleLastReason`
+* [#2739](https://github.com/stripe/stripe-dotnet/pull/2739) Remove developer_message support
+
 ## 41.27.0-beta.1 - 2023-07-27
   * Updated stable APIs to the latest version
 
