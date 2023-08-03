@@ -7,7 +7,7 @@ namespace Stripe
     public class InvoiceLineItemDiscountAmount : StripeEntity<InvoiceLineItemDiscountAmount>
     {
         /// <summary>
-        /// The amount, in %s, of the discount.
+        /// The amount, in cents (or local equivalent), of the discount.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
