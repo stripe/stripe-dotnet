@@ -35,14 +35,14 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Amount in %s to be transferred.
+        /// Amount in cents (or local equivalent) to be transferred.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         /// <summary>
-        /// Amount in %s reversed (can be less than the amount attribute on the transfer if a
-        /// partial reversal was issued).
+        /// Amount in cents (or local equivalent) reversed (can be less than the amount attribute on
+        /// the transfer if a partial reversal was issued).
         /// </summary>
         [JsonProperty("amount_reversed")]
         public long AmountReversed { get; set; }

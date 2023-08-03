@@ -27,8 +27,8 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the total amount of the credit note, including
-        /// tax.
+        /// The integer amount in cents (or local equivalent) representing the total amount of the
+        /// credit note, including tax.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -117,7 +117,8 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The integer amount in %s representing the total amount of discount that was credited.
+        /// The integer amount in cents (or local equivalent) representing the total amount of
+        /// discount that was credited.
         /// </summary>
         [JsonProperty("discount_amount")]
         public long DiscountAmount { get; set; }
@@ -270,15 +271,15 @@ namespace Stripe
         public string Status { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the amount of the credit note, excluding exclusive
-        /// tax and invoice level discounts.
+        /// The integer amount in cents (or local equivalent) representing the amount of the credit
+        /// note, excluding exclusive tax and invoice level discounts.
         /// </summary>
         [JsonProperty("subtotal")]
         public long Subtotal { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the amount of the credit note, excluding all tax
-        /// and invoice level discounts.
+        /// The integer amount in cents (or local equivalent) representing the amount of the credit
+        /// note, excluding all tax and invoice level discounts.
         /// </summary>
         [JsonProperty("subtotal_excluding_tax")]
         public long? SubtotalExcludingTax { get; set; }
@@ -290,15 +291,15 @@ namespace Stripe
         public List<CreditNoteTaxAmount> TaxAmounts { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the total amount of the credit note, including tax
-        /// and all discount.
+        /// The integer amount in cents (or local equivalent) representing the total amount of the
+        /// credit note, including tax and all discount.
         /// </summary>
         [JsonProperty("total")]
         public long Total { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the total amount of the credit note, excluding
-        /// tax, but including discounts.
+        /// The integer amount in cents (or local equivalent) representing the total amount of the
+        /// credit note, excluding tax, but including discounts.
         /// </summary>
         [JsonProperty("total_excluding_tax")]
         public long? TotalExcludingTax { get; set; }

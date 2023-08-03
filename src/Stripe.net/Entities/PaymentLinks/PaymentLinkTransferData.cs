@@ -7,8 +7,8 @@ namespace Stripe
     public class PaymentLinkTransferData : StripeEntity<PaymentLinkTransferData>
     {
         /// <summary>
-        /// The amount in %s that will be transferred to the destination account. By default, the
-        /// entire amount is transferred to the destination.
+        /// The amount in cents (or local equivalent) that will be transferred to the destination
+        /// account. By default, the entire amount is transferred to the destination.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }

@@ -30,7 +30,7 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Gross amount of the transaction, in %s.
+        /// Gross amount of the transaction, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -77,19 +77,19 @@ namespace Stripe
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
-        /// Fees (in %s) paid for this transaction.
+        /// Fees (in cents (or local equivalent)) paid for this transaction.
         /// </summary>
         [JsonProperty("fee")]
         public long Fee { get; set; }
 
         /// <summary>
-        /// Detailed breakdown of fees (in %s) paid for this transaction.
+        /// Detailed breakdown of fees (in cents (or local equivalent)) paid for this transaction.
         /// </summary>
         [JsonProperty("fee_details")]
         public List<BalanceTransactionFeeDetail> FeeDetails { get; set; }
 
         /// <summary>
-        /// Net amount of the transaction, in %s.
+        /// Net amount of the transaction, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("net")]
         public long Net { get; set; }
