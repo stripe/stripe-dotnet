@@ -43,13 +43,6 @@ namespace Stripe
         public string Message { get; set; }
 
         /// <summary>
-        /// A human-readable message providing more details about the error. For card errors, these
-        /// messages can be shown to your users.
-        /// </summary>
-        [JsonProperty("developer_message")]
-        public string DeveloperMessage { get; set; }
-
-        /// <summary>
         /// If the error is parameter-specific, the parameter related to the error. For example,
         /// you can use this to display a message near the correct form field.
         /// </summary>
