@@ -12,7 +12,7 @@ namespace Stripe.Issuing
         public CardholderIndividualCardIssuingOptions CardIssuing { get; set; }
 
         /// <summary>
-        /// The date of birth of this cardholder.
+        /// The date of birth of this cardholder. Cardholders must be older than 13 years old.
         /// </summary>
         [JsonProperty("dob")]
         public CardholderIndividualDobOptions Dob { get; set; }
