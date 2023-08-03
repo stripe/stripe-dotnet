@@ -12,6 +12,12 @@ namespace Stripe
         public string LineInvalid { get; set; }
 
         /// <summary>
+        /// The user supplied mark stale reason.
+        /// </summary>
+        [JsonProperty("marked_stale")]
+        public string MarkedStale { get; set; }
+
+        /// <summary>
         /// The ID of the subscription that was canceled.
         /// </summary>
         [JsonProperty("subscription_canceled")]

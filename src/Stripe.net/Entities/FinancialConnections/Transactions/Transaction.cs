@@ -30,7 +30,7 @@ namespace Stripe.FinancialConnections
         public string Account { get; set; }
 
         /// <summary>
-        /// The amount of this transaction, in %s.
+        /// The amount of this transaction, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }

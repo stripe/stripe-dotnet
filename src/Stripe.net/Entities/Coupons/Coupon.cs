@@ -114,8 +114,8 @@ namespace Stripe
 
         /// <summary>
         /// Percent that will be taken off the subtotal of any invoices for this customer for the
-        /// duration of the coupon. For example, a coupon with percent_off of 50 will make a %s100
-        /// invoice %s50 instead.
+        /// duration of the coupon. For example, a coupon with percent_off of 50 will make a $ (or
+        /// local equivalent)100 invoice $ (or local equivalent)50 instead.
         /// </summary>
         [JsonProperty("percent_off")]
         public decimal? PercentOff { get; set; }

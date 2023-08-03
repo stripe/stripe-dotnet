@@ -79,8 +79,8 @@ namespace Stripe
 
         /// <summary>
         /// A non-negative decimal between 0 and 100, with at most two decimal places. This
-        /// represents the percentage of the subscription invoice subtotal that will be transferred
-        /// to the application owner's Stripe account. Only applicable if there are line items with
+        /// represents the percentage of the subscription invoice total that will be transferred to
+        /// the application owner's Stripe account. Only applicable if there are line items with
         /// recurring prices on the quote.
         /// </summary>
         [JsonProperty("application_fee_percent")]

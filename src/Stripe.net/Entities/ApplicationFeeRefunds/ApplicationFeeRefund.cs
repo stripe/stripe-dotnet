@@ -30,7 +30,7 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Amount, in %s.
+        /// Amount, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }

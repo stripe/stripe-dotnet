@@ -29,6 +29,12 @@ namespace Stripe.Issuing
         public CardPinOptions Pin { get; set; }
 
         /// <summary>
+        /// Updated shipping information for the card.
+        /// </summary>
+        [JsonProperty("shipping")]
+        public CardShippingOptions Shipping { get; set; }
+
+        /// <summary>
         /// Rules that control spending for this card. Refer to our <a
         /// href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for
         /// more details.

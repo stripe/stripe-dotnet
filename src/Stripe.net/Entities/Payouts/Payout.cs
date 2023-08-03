@@ -31,7 +31,8 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Amount (in %s) to be transferred to your bank account or debit card.
+        /// Amount (in cents (or local equivalent)) to be transferred to your bank account or debit
+        /// card.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
