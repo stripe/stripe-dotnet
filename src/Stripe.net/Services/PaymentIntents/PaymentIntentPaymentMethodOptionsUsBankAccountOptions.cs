@@ -18,6 +18,12 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsUsBankAccountNetworksOptions Networks { get; set; }
 
         /// <summary>
+        /// Preferred transaction settlement speed.
+        /// </summary>
+        [JsonProperty("preferred_settlement_speed")]
+        public string PreferredSettlementSpeed { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
