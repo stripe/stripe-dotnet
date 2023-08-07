@@ -5,9 +5,6 @@ namespace Stripe
 
     public class AccountBankAccountOptions : INestedOptions
     {
-        [JsonProperty("object")]
-        internal string Object => "bank_account";
-
         /// <summary>
         /// The name of the person or business that owns the bank account.This field is required
         /// when attaching the bank account to a <c>Customer</c> object.
