@@ -2837,34 +2837,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestSubscriptionScheduleServiceCreate()
-        {
-            var options = new SubscriptionScheduleCreateOptions
-            {
-                Customer = "cus_xxxxxxxxxxxxx",
-                StartDate = 1676070661,
-                EndBehavior = "release",
-                Phases = new List<SubscriptionSchedulePhaseOptions>
-                {
-                    new SubscriptionSchedulePhaseOptions
-                    {
-                        Items = new List<SubscriptionSchedulePhaseItemOptions>
-                        {
-                            new SubscriptionSchedulePhaseItemOptions
-                            {
-                                Price = "price_xxxxxxxxxxxxx",
-                                Quantity = 1,
-                            },
-                        },
-                        Iterations = 12,
-                    },
-                },
-            };
-            var service = new SubscriptionScheduleService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
         public void TestSubscriptionScheduleServiceList()
         {
             var options = new SubscriptionScheduleListOptions { Limit = 3 };
@@ -2896,40 +2868,6 @@ namespace StripeTests
             };
             var service = new SubscriptionScheduleService(this.StripeClient);
             service.Update("sub_sched_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestSubscriptionScheduleServiceUpdate2()
-        {
-            var options = new SubscriptionScheduleUpdateOptions
-            {
-                Phases = new List<SubscriptionSchedulePhaseOptions>
-                {
-                    new SubscriptionSchedulePhaseOptions
-                    {
-                        EndDate = SubscriptionSchedulePhaseEndDate.Now,
-                    },
-                },
-            };
-            var service = new SubscriptionScheduleService(this.StripeClient);
-            service.Update("xyz", options);
-        }
-
-        [Fact]
-        public void TestSubscriptionScheduleServiceUpdate3()
-        {
-            var options = new SubscriptionScheduleUpdateOptions
-            {
-                Phases = new List<SubscriptionSchedulePhaseOptions>
-                {
-                    new SubscriptionSchedulePhaseOptions
-                    {
-                        EndDate = 1676070661,
-                    },
-                },
-            };
-            var service = new SubscriptionScheduleService(this.StripeClient);
-            service.Update("xyz", options);
         }
 
         [Fact]

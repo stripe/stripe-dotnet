@@ -6,6 +6,9 @@ namespace Stripe
 
     public class AccountCardOptions : INestedOptions, IHasMetadata
     {
+        [JsonProperty("object")]
+        internal string Object => "card";
+
         [JsonProperty("address_city")]
         public string AddressCity { get; set; }
 
