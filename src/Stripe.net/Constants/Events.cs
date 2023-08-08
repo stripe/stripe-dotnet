@@ -1069,6 +1069,12 @@ namespace Stripe
         public const string PromotionCodeUpdated = "promotion_code.updated";
 
         /// <summary>
+        /// The "quote.accept_failed" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-quote.accept_failed for details.
+        /// </summary>
+        public const string QuoteAcceptFailed = "quote.accept_failed";
+
+        /// <summary>
         /// The "quote.accepted" event type. See
         /// https://stripe.com/docs/api/events/types#event_types-quote.accepted for details.
         /// </summary>
