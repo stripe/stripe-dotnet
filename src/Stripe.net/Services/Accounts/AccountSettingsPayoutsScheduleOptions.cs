@@ -33,7 +33,7 @@ namespace Stripe
         /// is <c>monthly</c>.
         /// </summary>
         [JsonProperty("monthly_anchor")]
-        public string MonthlyAnchor { get; set; }
+        public long? MonthlyAnchor { get; set; }
 
         /// <summary>
         /// The day of the week when available funds are paid out, specified as <c>monday</c>,

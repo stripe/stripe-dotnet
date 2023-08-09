@@ -49,7 +49,8 @@ namespace Stripe
         public string Plan { get; set; }
 
         /// <summary>
-        /// The ID of the price object.
+        /// The ID of the price object. When changing a subscription item's price, <c>quantity</c>
+        /// is set to 1 unless a <c>quantity</c> parameter is provided.
         /// </summary>
         [JsonProperty("price")]
         public string Price { get; set; }
