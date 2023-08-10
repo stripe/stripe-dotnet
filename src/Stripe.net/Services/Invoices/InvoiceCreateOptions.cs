@@ -181,13 +181,6 @@ namespace Stripe
         public string PendingInvoiceItemsBehavior { get; set; }
 
         /// <summary>
-        /// The rendering-related settings that control how the invoice is displayed on
-        /// customer-facing surfaces such as PDF and Hosted Invoice Page.
-        /// </summary>
-        [JsonProperty("rendering")]
-        public InvoiceRenderingOptions Rendering { get; set; }
-
-        /// <summary>
         /// Options for invoice PDF rendering.
         /// </summary>
         [JsonProperty("rendering_options")]
