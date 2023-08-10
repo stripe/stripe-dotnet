@@ -3,7 +3,7 @@ namespace Stripe.Sigma
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// If you have <a href="https://stripe.com/docs/sigma/scheduled-queries">scheduled a Sigma

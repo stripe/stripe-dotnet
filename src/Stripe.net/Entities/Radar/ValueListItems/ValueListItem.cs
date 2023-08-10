@@ -3,7 +3,7 @@ namespace Stripe.Radar
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Value list items allow you to add specific values to a given Radar value list, which can

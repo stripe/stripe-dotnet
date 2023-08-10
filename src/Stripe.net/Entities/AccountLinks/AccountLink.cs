@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Account Links are the means by which a Connect platform grants a connected account

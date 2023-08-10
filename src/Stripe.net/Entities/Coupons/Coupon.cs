@@ -4,7 +4,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A coupon contains information about a percent-off or amount-off discount you might want

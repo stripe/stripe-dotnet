@@ -4,7 +4,7 @@ namespace Stripe.Issuing
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// An Issuing <c>Cardholder</c> object represents an individual or business entity who is

@@ -3,7 +3,7 @@ namespace Stripe.Treasury
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Transactions represent changes to a <a

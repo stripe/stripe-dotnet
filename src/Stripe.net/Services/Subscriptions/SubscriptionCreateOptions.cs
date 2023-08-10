@@ -4,6 +4,16 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+
+/* Unmerged change from project 'Stripe.net(netcoreapp3.1)'
+Before:
+    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
+After:
+    using Newtonsoft.Json.Converters;
+    using Stripe.Infrastructure;
+*/
+    using Newtonsoft.Json.Converters;
     using Stripe.Infrastructure;
 
     public class SubscriptionCreateOptions : BaseOptions, IHasMetadata

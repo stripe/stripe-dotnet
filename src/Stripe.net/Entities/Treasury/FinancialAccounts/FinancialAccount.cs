@@ -4,7 +4,7 @@ namespace Stripe.Treasury
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Stripe Treasury provides users with a container for money called a FinancialAccount that

@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using Stripe.Infrastructure;
 
     public class BalanceTransactionListOptions : ListOptionsWithCreated

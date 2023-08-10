@@ -4,7 +4,7 @@ namespace Stripe.Tax
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A Tax Calculation allows you to calculate the tax to collect from your customer.

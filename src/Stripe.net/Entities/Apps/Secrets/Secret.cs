@@ -3,7 +3,7 @@ namespace Stripe.Apps
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Secret Store is an API that allows Stripe Apps developers to securely persist secrets

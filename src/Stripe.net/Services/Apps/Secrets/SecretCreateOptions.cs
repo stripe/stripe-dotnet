@@ -3,7 +3,7 @@ namespace Stripe.Apps
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     public class SecretCreateOptions : BaseOptions
     {

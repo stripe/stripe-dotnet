@@ -3,7 +3,7 @@ namespace Stripe.Identity
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A VerificationReport is the result of an attempt to collect and verify data from a user.

@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// This is an object representing a file hosted on Stripe's servers. The file may have been

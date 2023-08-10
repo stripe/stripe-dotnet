@@ -1,9 +1,8 @@
 namespace Stripe
 {
     using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     public class SourceMandateNotification : StripeEntity<SourceMandateNotification>, IHasId, IHasObject
     {

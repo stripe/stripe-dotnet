@@ -4,7 +4,7 @@ namespace Stripe.Reporting
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     public class ReportRunParameters : StripeEntity<ReportRunParameters>
     {

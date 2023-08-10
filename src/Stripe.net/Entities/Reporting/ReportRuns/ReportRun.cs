@@ -3,7 +3,7 @@ namespace Stripe.Reporting
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// The Report Run object represents an instance of a report type generated with specific

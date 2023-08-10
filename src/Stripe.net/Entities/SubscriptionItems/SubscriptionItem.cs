@@ -4,7 +4,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Subscription items allow you to create customer subscriptions with more than one plan,

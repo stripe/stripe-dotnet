@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Usage records allow you to report customer usage and metrics to Stripe for metered

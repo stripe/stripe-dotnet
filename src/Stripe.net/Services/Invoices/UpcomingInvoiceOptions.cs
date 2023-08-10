@@ -3,6 +3,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using Stripe.Infrastructure;
 
     public class UpcomingInvoiceOptions : BaseOptions

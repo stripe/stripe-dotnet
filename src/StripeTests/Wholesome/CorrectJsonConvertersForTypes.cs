@@ -6,6 +6,7 @@ namespace StripeTests
     using System.Reflection;
     using System.Text;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using Stripe;
     using Stripe.Infrastructure;
     using Xunit;

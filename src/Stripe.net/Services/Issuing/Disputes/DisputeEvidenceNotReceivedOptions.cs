@@ -3,7 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     public class DisputeEvidenceNotReceivedOptions : INestedOptions
     {

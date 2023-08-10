@@ -3,7 +3,7 @@ namespace Stripe.FinancialConnections
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Describes a snapshot of the owners of an account at a particular point in time.

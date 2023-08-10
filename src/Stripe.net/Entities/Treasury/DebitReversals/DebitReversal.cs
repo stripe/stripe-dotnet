@@ -4,6 +4,7 @@ namespace Stripe.Treasury
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using Stripe.Infrastructure;
 
     /// <summary>

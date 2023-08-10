@@ -4,7 +4,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// This is an object representing a Stripe account. You can retrieve it to see properties

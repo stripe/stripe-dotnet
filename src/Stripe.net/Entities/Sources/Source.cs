@@ -4,7 +4,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// <c>Source</c> objects allow you to accept a variety of payment methods. They represent a

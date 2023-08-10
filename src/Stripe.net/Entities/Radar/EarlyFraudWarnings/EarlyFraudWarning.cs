@@ -3,6 +3,7 @@ namespace Stripe.Radar
 {
     using System;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using Stripe.Infrastructure;
 
     /// <summary>

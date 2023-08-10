@@ -4,7 +4,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// You can configure <a href="https://stripe.com/docs/webhooks/">webhook endpoints</a> via

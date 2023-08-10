@@ -3,6 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using Stripe.Infrastructure;
 
     public class DisputeEvidenceMerchandiseNotAsDescribed : StripeEntity<DisputeEvidenceMerchandiseNotAsDescribed>

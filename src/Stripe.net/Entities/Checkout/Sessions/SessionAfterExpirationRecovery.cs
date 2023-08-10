@@ -3,7 +3,7 @@ namespace Stripe.Checkout
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     public class SessionAfterExpirationRecovery : StripeEntity<SessionAfterExpirationRecovery>
     {

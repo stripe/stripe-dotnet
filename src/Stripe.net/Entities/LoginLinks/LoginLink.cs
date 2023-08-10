@@ -3,7 +3,7 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Login Links are single-use login link for an Express account to access their Stripe

@@ -3,7 +3,7 @@ namespace Stripe.TestHelpers
 {
     using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A test clock enables deterministic control over objects in testmode. With a test clock,

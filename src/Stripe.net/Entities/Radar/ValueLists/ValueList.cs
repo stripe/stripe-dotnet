@@ -4,7 +4,7 @@ namespace Stripe.Radar
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// Value lists allow you to group values together which can then be referenced in rules.

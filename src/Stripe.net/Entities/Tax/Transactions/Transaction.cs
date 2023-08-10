@@ -4,7 +4,7 @@ namespace Stripe.Tax
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// A Tax Transaction records the tax collected from or refunded to your customer.
