@@ -14,6 +14,12 @@ namespace Stripe.Terminal
         [JsonProperty("generated_card")]
         public string GeneratedCard { get; set; }
 
+        /// <summary>
+        /// Represents a per-setup override of a reader configuration.
+        /// </summary>
+        [JsonProperty("process_config")]
+        public ReaderActionProcessSetupIntentProcessConfig ProcessConfig { get; set; }
+
         #region Expandable SetupIntent
 
         /// <summary>
