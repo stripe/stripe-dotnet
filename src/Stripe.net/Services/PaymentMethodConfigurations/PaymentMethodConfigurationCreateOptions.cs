@@ -267,6 +267,14 @@ namespace Stripe
         public PaymentMethodConfigurationPaynowOptions Paynow { get; set; }
 
         /// <summary>
+        /// PayPal, a digital wallet popular with customers in Europe, allows your customers
+        /// worldwide to pay using their PayPal account. Check this <a
+        /// href="https://stripe.com/docs/payments/paypal">page</a> for more details.
+        /// </summary>
+        [JsonProperty("paypal")]
+        public PaymentMethodConfigurationPaypalOptions Paypal { get; set; }
+
+        /// <summary>
         /// PromptPay is a Thailand-based payment method that allows customers to make a payment
         /// using their preferred app from participating banks. Check this <a
         /// href="https://stripe.com/docs/payments/promptpay">page</a> for more details.

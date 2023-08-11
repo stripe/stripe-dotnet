@@ -34,7 +34,7 @@ jobs:
             3.1.x
             5.0.x
             6.0.x
-            7.0.x
+            7.0.307
 
       - name: Install tools
         run: |

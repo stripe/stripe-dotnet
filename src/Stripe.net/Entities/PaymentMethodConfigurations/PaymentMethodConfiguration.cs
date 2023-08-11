@@ -147,6 +147,9 @@ namespace Stripe
         [JsonProperty("paynow")]
         public PaymentMethodConfigurationPaynow Paynow { get; set; }
 
+        [JsonProperty("paypal")]
+        public PaymentMethodConfigurationPaypal Paypal { get; set; }
+
         [JsonProperty("promptpay")]
         public PaymentMethodConfigurationPromptpay Promptpay { get; set; }
 

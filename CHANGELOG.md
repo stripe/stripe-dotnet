@@ -10,6 +10,12 @@
   * Add support for `MarkedStale` on `QuoteStatusDetailsStaleLastReason`
 * [#2739](https://github.com/stripe/stripe-dotnet/pull/2739) Remove developer_message support
 
+## 41.27.0 - 2023-08-03
+* [#2741](https://github.com/stripe/stripe-dotnet/pull/2741) Update generated code
+  * Add support for `PreferredSettlementSpeed` on `PaymentIntentPaymentMethodOptionsUsBankAccountOptions` and `PaymentIntentPaymentMethodOptionsUsBankAccount`
+* [#2738](https://github.com/stripe/stripe-dotnet/pull/2738) Update generated code
+  * Add support for `SubscriptionDetails` on `Invoice`
+
 ## 41.27.0-beta.1 - 2023-07-27
   * Updated stable APIs to the latest version
 
