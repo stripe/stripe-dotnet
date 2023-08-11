@@ -1,5 +1,9 @@
 # Changelog
 
+## 41.29.0-beta.1 - 2023-08-10
+* [#2743](https://github.com/stripe/stripe-dotnet/pull/2743) Update generated code for beta
+  * Add support for `Paypal` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+
 ## 41.28.0-beta.1 - 2023-08-03
 * [#2737](https://github.com/stripe/stripe-dotnet/pull/2737) Update generated code for beta
   * Add support for `SubmitCard` test helper method on resource `Issuing.Card`
