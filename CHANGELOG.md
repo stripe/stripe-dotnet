@@ -1,5 +1,9 @@
 # Changelog
 
+## 41.28.0 - 2023-08-10
+* [#2742](https://github.com/stripe/stripe-dotnet/pull/2742) Update generated code
+  * Add support for `AdjustedForOverdraft` to `CustomerCashBalanceTransaction`
+
 ## 41.27.0 - 2023-08-03
 * [#2741](https://github.com/stripe/stripe-dotnet/pull/2741) Update generated code
   * Add support for `PreferredSettlementSpeed` on `PaymentIntentPaymentMethodOptionsUsBankAccountOptions` and `PaymentIntentPaymentMethodOptionsUsBankAccount`
