@@ -4,6 +4,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// The credit note line item object.
+    /// </summary>
     public class CreditNoteLineItem : StripeEntity<CreditNoteLineItem>, IHasId, IHasObject
     {
         /// <summary>

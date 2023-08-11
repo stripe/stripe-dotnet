@@ -29,7 +29,7 @@ namespace Stripe.BillingPortal
         public SessionFlowDataOptions FlowData { get; set; }
 
         /// <summary>
-        /// The IETF language tag of the locale Customer Portal is displayed in. If blank or auto,
+        /// The IETF language tag of the locale customer portal is displayed in. If blank or auto,
         /// the customer’s <c>preferred_locales</c> or browser’s locale is used.
         /// One of: <c>auto</c>, <c>bg</c>, <c>cs</c>, <c>da</c>, <c>de</c>, <c>el</c>, <c>en</c>,
         /// <c>en-AU</c>, <c>en-CA</c>, <c>en-GB</c>, <c>en-IE</c>, <c>en-IN</c>, <c>en-NZ</c>,
