@@ -30,7 +30,7 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Gross amount of the transaction, in %s.
+        /// Gross amount of the transaction, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -77,19 +77,19 @@ namespace Stripe
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
-        /// Fees (in %s) paid for this transaction.
+        /// Fees (in cents (or local equivalent)) paid for this transaction.
         /// </summary>
         [JsonProperty("fee")]
         public long Fee { get; set; }
 
         /// <summary>
-        /// Detailed breakdown of fees (in %s) paid for this transaction.
+        /// Detailed breakdown of fees (in cents (or local equivalent)) paid for this transaction.
         /// </summary>
         [JsonProperty("fee_details")]
         public List<BalanceTransactionFeeDetail> FeeDetails { get; set; }
 
         /// <summary>
-        /// Net amount of the transaction, in %s.
+        /// Net amount of the transaction, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("net")]
         public long Net { get; set; }
@@ -146,12 +146,12 @@ namespace Stripe
         /// <c>charge</c>, <c>connect_collection_transfer</c>, <c>contribution</c>,
         /// <c>issuing_authorization_hold</c>, <c>issuing_authorization_release</c>,
         /// <c>issuing_dispute</c>, <c>issuing_transaction</c>, <c>payment</c>,
-        /// <c>payment_failure_refund</c>, <c>payment_refund</c>, <c>payout</c>,
-        /// <c>payout_cancel</c>, <c>payout_failure</c>, <c>refund</c>, <c>refund_failure</c>,
-        /// <c>reserve_transaction</c>, <c>reserved_funds</c>, <c>stripe_fee</c>,
-        /// <c>stripe_fx_fee</c>, <c>tax_fee</c>, <c>topup</c>, <c>topup_reversal</c>,
-        /// <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>, or
-        /// <c>transfer_refund</c>. <a
+        /// <c>payment_failure_refund</c>, <c>payment_refund</c>, <c>payment_reversal</c>,
+        /// <c>payout</c>, <c>payout_cancel</c>, <c>payout_failure</c>, <c>refund</c>,
+        /// <c>refund_failure</c>, <c>reserve_transaction</c>, <c>reserved_funds</c>,
+        /// <c>stripe_fee</c>, <c>stripe_fx_fee</c>, <c>tax_fee</c>, <c>topup</c>,
+        /// <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>,
+        /// or <c>transfer_refund</c>. <a
         /// href="https://stripe.com/docs/reports/balance-transaction-types">Learn more</a> about
         /// balance transaction types and what they represent. If you are looking to classify
         /// transactions for accounting purposes, you might want to consider
@@ -161,12 +161,12 @@ namespace Stripe
         /// <c>charge</c>, <c>connect_collection_transfer</c>, <c>contribution</c>,
         /// <c>issuing_authorization_hold</c>, <c>issuing_authorization_release</c>,
         /// <c>issuing_dispute</c>, <c>issuing_transaction</c>, <c>payment</c>,
-        /// <c>payment_failure_refund</c>, <c>payment_refund</c>, <c>payout</c>,
-        /// <c>payout_cancel</c>, <c>payout_failure</c>, <c>refund</c>, <c>refund_failure</c>,
-        /// <c>reserve_transaction</c>, <c>reserved_funds</c>, <c>stripe_fee</c>,
-        /// <c>stripe_fx_fee</c>, <c>tax_fee</c>, <c>topup</c>, <c>topup_reversal</c>,
-        /// <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>, or
-        /// <c>transfer_refund</c>.
+        /// <c>payment_failure_refund</c>, <c>payment_refund</c>, <c>payment_reversal</c>,
+        /// <c>payout</c>, <c>payout_cancel</c>, <c>payout_failure</c>, <c>refund</c>,
+        /// <c>refund_failure</c>, <c>reserve_transaction</c>, <c>reserved_funds</c>,
+        /// <c>stripe_fee</c>, <c>stripe_fx_fee</c>, <c>tax_fee</c>, <c>topup</c>,
+        /// <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>,
+        /// or <c>transfer_refund</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

@@ -117,13 +117,13 @@ namespace Stripe
         public long AmountDue { get; set; }
 
         /// <summary>
-        /// The amount, in %s, that was paid.
+        /// The amount, in cents (or local equivalent), that was paid.
         /// </summary>
         [JsonProperty("amount_paid")]
         public long AmountPaid { get; set; }
 
         /// <summary>
-        /// The difference between amount_due and amount_paid, in %s.
+        /// The difference between amount_due and amount_paid, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("amount_remaining")]
         public long AmountRemaining { get; set; }
@@ -166,8 +166,8 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The fee in %s that will be applied to the invoice and transferred to the application
-        /// owner's Stripe account when the invoice is paid.
+        /// The fee in cents (or local equivalent) that will be applied to the invoice and
+        /// transferred to the application owner's Stripe account when the invoice is paid.
         /// </summary>
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
@@ -859,6 +859,12 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Details about the subscription that created this invoice.
+        /// </summary>
+        [JsonProperty("subscription_details")]
+        public InvoiceSubscriptionDetails SubscriptionDetails { get; set; }
+
+        /// <summary>
         /// Only set for upcoming invoices that preview prorations. The time used to calculate
         /// prorations.
         /// </summary>
@@ -875,8 +881,9 @@ namespace Stripe
         public long Subtotal { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the subtotal of the invoice before any invoice
-        /// level discount or tax is applied. Item discounts are already incorporated.
+        /// The integer amount in cents (or local equivalent) representing the subtotal of the
+        /// invoice before any invoice level discount or tax is applied. Item discounts are already
+        /// incorporated.
         /// </summary>
         [JsonProperty("subtotal_excluding_tax")]
         public long? SubtotalExcludingTax { get; set; }
@@ -935,8 +942,8 @@ namespace Stripe
         public List<InvoiceDiscountAmount> TotalDiscountAmounts { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the total amount of the invoice including all
-        /// discounts but excluding all tax.
+        /// The integer amount in cents (or local equivalent) representing the total amount of the
+        /// invoice including all discounts but excluding all tax.
         /// </summary>
         [JsonProperty("total_excluding_tax")]
         public long? TotalExcludingTax { get; set; }

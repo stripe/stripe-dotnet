@@ -26,6 +26,9 @@ namespace Stripe
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("adjusted_for_overdraft")]
+        public CustomerCashBalanceTransactionAdjustedForOverdraft AdjustedForOverdraft { get; set; }
+
         [JsonProperty("applied_to_payment")]
         public CustomerCashBalanceTransactionAppliedToPayment AppliedToPayment { get; set; }
 
@@ -109,9 +112,9 @@ namespace Stripe
         /// The type of the cash balance transaction. New types may be added in future. See <a
         /// href="https://stripe.com/docs/payments/customer-balance#types">Customer Balance</a> to
         /// learn more about these types.
-        /// One of: <c>applied_to_payment</c>, <c>funded</c>, <c>funding_reversed</c>,
-        /// <c>refunded_from_payment</c>, <c>return_canceled</c>, <c>return_initiated</c>, or
-        /// <c>unapplied_from_payment</c>.
+        /// One of: <c>adjusted_for_overdraft</c>, <c>applied_to_payment</c>, <c>funded</c>,
+        /// <c>funding_reversed</c>, <c>refunded_from_payment</c>, <c>return_canceled</c>,
+        /// <c>return_initiated</c>, or <c>unapplied_from_payment</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

@@ -51,14 +51,14 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Amount earned, in %s.
+        /// Amount earned, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         /// <summary>
-        /// Amount in %s refunded (can be less than the amount attribute on the fee if a partial
-        /// refund was issued).
+        /// Amount in cents (or local equivalent) refunded (can be less than the amount attribute on
+        /// the fee if a partial refund was issued).
         /// </summary>
         [JsonProperty("amount_refunded")]
         public long AmountRefunded { get; set; }

@@ -4,6 +4,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// The credit note line item object.
+    /// </summary>
     public class CreditNoteLineItem : StripeEntity<CreditNoteLineItem>, IHasId, IHasObject
     {
         /// <summary>
@@ -19,15 +22,15 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the gross amount being credited for this line
-        /// item, excluding (exclusive) tax and discounts.
+        /// The integer amount in cents (or local equivalent) representing the gross amount being
+        /// credited for this line item, excluding (exclusive) tax and discounts.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the amount being credited for this line item,
-        /// excluding all tax and discounts.
+        /// The integer amount in cents (or local equivalent) representing the amount being credited
+        /// for this line item, excluding all tax and discounts.
         /// </summary>
         [JsonProperty("amount_excluding_tax")]
         public long? AmountExcludingTax { get; set; }
@@ -39,7 +42,8 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the discount being credited for this line item.
+        /// The integer amount in cents (or local equivalent) representing the discount being
+        /// credited for this line item.
         /// </summary>
         [JsonProperty("discount_amount")]
         public long DiscountAmount { get; set; }
@@ -104,8 +108,8 @@ namespace Stripe
         public decimal? UnitAmountDecimal { get; set; }
 
         /// <summary>
-        /// The amount in %s representing the unit amount being credited for this line item,
-        /// excluding all tax and discounts.
+        /// The amount in cents (or local equivalent) representing the unit amount being credited
+        /// for this line item, excluding all tax and discounts.
         /// </summary>
         [JsonProperty("unit_amount_excluding_tax")]
         public decimal? UnitAmountExcludingTax { get; set; }

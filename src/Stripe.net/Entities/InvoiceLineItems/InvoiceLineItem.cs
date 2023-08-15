@@ -21,14 +21,14 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// The amount, in %s.
+        /// The amount, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         /// <summary>
-        /// The integer amount in %s representing the amount for this line item, excluding all tax
-        /// and discounts.
+        /// The integer amount in cents (or local equivalent) representing the amount for this line
+        /// item, excluding all tax and discounts.
         /// </summary>
         [JsonProperty("amount_excluding_tax")]
         public long? AmountExcludingTax { get; set; }
@@ -182,8 +182,8 @@ namespace Stripe
         public string Type { get; set; }
 
         /// <summary>
-        /// The amount in %s representing the unit amount for this line item, excluding all tax and
-        /// discounts.
+        /// The amount in cents (or local equivalent) representing the unit amount for this line
+        /// item, excluding all tax and discounts.
         /// </summary>
         [JsonProperty("unit_amount_excluding_tax")]
         public decimal? UnitAmountExcludingTax { get; set; }

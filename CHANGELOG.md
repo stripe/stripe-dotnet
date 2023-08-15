@@ -1,5 +1,15 @@
 # Changelog
 
+## 41.28.0 - 2023-08-10
+* [#2742](https://github.com/stripe/stripe-dotnet/pull/2742) Update generated code
+  * Add support for `AdjustedForOverdraft` to `CustomerCashBalanceTransaction`
+
+## 41.27.0 - 2023-08-03
+* [#2741](https://github.com/stripe/stripe-dotnet/pull/2741) Update generated code
+  * Add support for `PreferredSettlementSpeed` on `PaymentIntentPaymentMethodOptionsUsBankAccountOptions` and `PaymentIntentPaymentMethodOptionsUsBankAccount`
+* [#2738](https://github.com/stripe/stripe-dotnet/pull/2738) Update generated code
+  * Add support for `SubscriptionDetails` on `Invoice`
+
 ## 41.26.0 - 2023-07-27
 * [#2733](https://github.com/stripe/stripe-dotnet/pull/2733) Update generated code
   * Add support for `MonthlyEstimatedRevenue` on `AccountBusinessProfileOptions` and `AccountBusinessProfile`

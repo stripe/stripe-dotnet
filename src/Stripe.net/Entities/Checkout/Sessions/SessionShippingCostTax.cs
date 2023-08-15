@@ -36,7 +36,7 @@ namespace Stripe.Checkout
         public string TaxabilityReason { get; set; }
 
         /// <summary>
-        /// The amount on which tax is calculated, in %s.
+        /// The amount on which tax is calculated, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("taxable_amount")]
         public long? TaxableAmount { get; set; }

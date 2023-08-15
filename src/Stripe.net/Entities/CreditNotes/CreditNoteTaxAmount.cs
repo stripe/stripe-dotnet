@@ -7,7 +7,7 @@ namespace Stripe
     public class CreditNoteTaxAmount : StripeEntity<CreditNoteTaxAmount>
     {
         /// <summary>
-        /// The amount, in %s, of the tax.
+        /// The amount, in cents (or local equivalent), of the tax.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -62,7 +62,7 @@ namespace Stripe
         public string TaxabilityReason { get; set; }
 
         /// <summary>
-        /// The amount on which tax is calculated, in %s.
+        /// The amount on which tax is calculated, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("taxable_amount")]
         public long? TaxableAmount { get; set; }

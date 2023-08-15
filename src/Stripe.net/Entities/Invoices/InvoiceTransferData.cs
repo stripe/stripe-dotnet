@@ -7,8 +7,9 @@ namespace Stripe
     public class InvoiceTransferData : StripeEntity<InvoiceTransferData>
     {
         /// <summary>
-        /// The amount in %s that will be transferred to the destination account when the invoice is
-        /// paid. By default, the entire amount is transferred to the destination.
+        /// The amount in cents (or local equivalent) that will be transferred to the destination
+        /// account when the invoice is paid. By default, the entire amount is transferred to the
+        /// destination.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
