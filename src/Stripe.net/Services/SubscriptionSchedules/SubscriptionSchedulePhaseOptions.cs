@@ -114,8 +114,8 @@ namespace Stripe
         /// <c>iterations</c> must not be set.
         /// </summary>
         [JsonProperty("end_date")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime? EndDate { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, SubscriptionSchedulePhaseEndDate> EndDate { get; set; }
 
         /// <summary>
         /// All invoices will be billed using the specified settings.
@@ -179,9 +179,13 @@ namespace Stripe
         [JsonProperty("proration_behavior")]
         public string ProrationBehavior { get; set; }
 
+        /// <summary>
+        /// The date at which this phase of the subscription schedule starts or <c>now</c>. Must be
+        /// set on the first phase.
+        /// </summary>
         [JsonProperty("start_date")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime? StartDate { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, SubscriptionSchedulePhaseStartDate> StartDate { get; set; }
 
         /// <summary>
         /// The data with which to automatically create a Transfer for each of the associated
@@ -209,8 +213,8 @@ namespace Stripe
         /// end date, can not be combined with <c>trial</c>.
         /// </summary>
         [JsonProperty("trial_end")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime? TrialEnd { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, SubscriptionSchedulePhaseTrialEnd> TrialEnd { get; set; }
 
         /// <summary>
         /// Settings related to subscription trials.
