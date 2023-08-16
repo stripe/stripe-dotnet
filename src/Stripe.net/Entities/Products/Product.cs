@@ -42,32 +42,11 @@ namespace Stripe
         public bool Active { get; set; }
 
         /// <summary>
-        /// A list of up to 5 attributes that each SKU can provide values for (e.g., <c>["color",
-        /// "size"]</c>).
-        /// </summary>
-        [JsonProperty("attributes")]
-        public List<string> Attributes { get; set; }
-
-        /// <summary>
-        /// A short one-line description of the product, meant to be displayable to the customer.
-        /// Only applicable to products of <c>type=good</c>.
-        /// </summary>
-        [JsonProperty("caption")]
-        public string Caption { get; set; }
-
-        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
-
-        /// <summary>
-        /// An array of connect application identifiers that cannot purchase this product. Only
-        /// applicable to products of <c>type=good</c>.
-        /// </summary>
-        [JsonProperty("deactivate_on")]
-        public List<string> DeactivateOn { get; set; }
 
         #region Expandable DefaultPrice
 
