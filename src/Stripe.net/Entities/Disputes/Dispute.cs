@@ -169,10 +169,9 @@ namespace Stripe
         /// <summary>
         /// Current status of dispute. Possible values are <c>warning_needs_response</c>,
         /// <c>warning_under_review</c>, <c>warning_closed</c>, <c>needs_response</c>,
-        /// <c>under_review</c>, <c>charge_refunded</c>, <c>won</c>, or <c>lost</c>.
-        /// One of: <c>charge_refunded</c>, <c>lost</c>, <c>needs_response</c>, <c>under_review</c>,
-        /// <c>warning_closed</c>, <c>warning_needs_response</c>, <c>warning_under_review</c>, or
-        /// <c>won</c>.
+        /// <c>under_review</c>, <c>won</c>, or <c>lost</c>.
+        /// One of: <c>lost</c>, <c>needs_response</c>, <c>under_review</c>, <c>warning_closed</c>,
+        /// <c>warning_needs_response</c>, <c>warning_under_review</c>, or <c>won</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

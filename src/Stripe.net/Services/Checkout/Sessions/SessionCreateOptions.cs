@@ -284,13 +284,6 @@ namespace Stripe.Checkout
         public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
 
         /// <summary>
-        /// [Deprecated] The shipping rate to apply to this Session. Only up to one may be
-        /// specified.
-        /// </summary>
-        [JsonProperty("shipping_rates")]
-        public List<string> ShippingRates { get; set; }
-
-        /// <summary>
         /// Describes the type of transaction being performed by Checkout in order to customize
         /// relevant text on the page, such as the submit button. <c>submit_type</c> can only be
         /// specified on Checkout Sessions in <c>payment</c> mode, but not Checkout Sessions in

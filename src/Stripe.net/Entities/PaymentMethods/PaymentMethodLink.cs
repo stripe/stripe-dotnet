@@ -6,14 +6,6 @@ namespace Stripe
     public class PaymentMethodLink : StripeEntity<PaymentMethodLink>
     {
         /// <summary>
-        /// Two-letter ISO code representing the funding source (i.e. card, bank) country beneath
-        /// the Link payment method. You could use this attribute to get a sense of the
-        /// international breakdown of funding sources you've collected.
-        /// </summary>
-        [JsonProperty("country")]
-        public string Country { get; set; }
-
-        /// <summary>
         /// Account owner's email address.
         /// </summary>
         [JsonProperty("email")]
