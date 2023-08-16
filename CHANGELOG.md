@@ -1,6 +1,8 @@
 # Changelog
 
 ## 42.0.0 - 2023-08-16
+* This release changes the pinned API version to `2023-08-16`. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2023-08-16) and carefully review the API changes before upgrading `stripe-dotnet`.
+* More information is available in the [stripe-dotnet v42 migration guide](https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v42)
 * [#2750](https://github.com/stripe/stripe-dotnet/pull/2750) Update generated code
   "⚠️" symbol highlights breaking changes.
   * ⚠️Remove support for `AvailableOn` on `BalanceTransactionListOptions`
