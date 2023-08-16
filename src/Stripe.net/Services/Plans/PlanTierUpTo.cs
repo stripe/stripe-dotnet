@@ -1,8 +1,8 @@
+// File generated from our OpenAPI spec
 namespace Stripe
 {
     public class PlanTierUpTo : StringEnum
     {
-        /// <summary>Use this value to define a fallback tier.</summary>
         public static readonly PlanTierUpTo Inf = new PlanTierUpTo("inf");
 
         private PlanTierUpTo(string value)

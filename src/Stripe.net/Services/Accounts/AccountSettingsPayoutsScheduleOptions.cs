@@ -2,14 +2,21 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class AccountSettingsPayoutsScheduleOptions : INestedOptions
     {
         /// <summary>
-        /// temp.
+        /// The number of days charge funds are held before being paid out. May also be set to
+        /// <c>minimum</c>, representing the lowest available value for the account country. Default
+        /// is <c>minimum</c>. The <c>delay_days</c> parameter remains at the last configured value
+        /// if <c>interval</c> is <c>manual</c>. <a
+        /// href="https://stripe.com/docs/connect/manage-payout-schedule">Learn more about
+        /// controlling payout delay days</a>.
         /// </summary>
         [JsonProperty("delay_days")]
-        public string DelayDays { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<long?, AccountSettingsPayoutsScheduleDelayDays> DelayDays { get; set; }
 
         /// <summary>
         /// How frequently available funds are paid out. One of: <c>daily</c>, <c>manual</c>,
@@ -26,7 +33,7 @@ namespace Stripe
         /// is <c>monthly</c>.
         /// </summary>
         [JsonProperty("monthly_anchor")]
-        public string MonthlyAnchor { get; set; }
+        public long? MonthlyAnchor { get; set; }
 
         /// <summary>
         /// The day of the week when available funds are paid out, specified as <c>monday</c>,
