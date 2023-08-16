@@ -1,8 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using System;
-
     public static class Events
     {
         /// <summary>
@@ -498,14 +496,6 @@ namespace Stripe
         public const string InvoiceDeleted = "invoice.deleted";
 
         /// <summary>
-        /// The "invoice.finalization_error" event type. See
-        /// https://stripe.com/docs/api/events/types#event_types-invoice.finalization_error for
-        /// details.
-        /// </summary>
-        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
-        public const string InvoiceFinalizationError = "invoice.finalization_error";
-
-        /// <summary>
         /// The "invoice.finalization_failed" event type. See
         /// https://stripe.com/docs/api/events/types#event_types-invoice.finalization_failed for
         /// details.
@@ -701,13 +691,6 @@ namespace Stripe
         public const string OrderCreated = "order.created";
 
         /// <summary>
-        /// The "order.payment_failed" event type. See
-        /// https://stripe.com/docs/api/events/types#event_types-order.payment_failed for details.
-        /// </summary>
-        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
-        public const string OrderPaymentFailed = "order.payment_failed";
-
-        /// <summary>
         /// The "payment_intent.amount_capturable_updated" event type. See
         /// https://stripe.com/docs/api/events/types#event_types-payment_intent.amount_capturable_updated
         /// for details.
@@ -789,14 +772,6 @@ namespace Stripe
         public const string PaymentMethodAutomaticallyUpdated = "payment_method.automatically_updated";
 
         /// <summary>
-        /// The "payment_method.card_automatically_updated" event type. See
-        /// https://stripe.com/docs/api/events/types#event_types-payment_method.card_automatically_updated
-        /// for details.
-        /// </summary>
-        [Obsolete("Use PaymentMethodAutomaticallyUpdated instead.")]
-        public const string PaymentMethodCardAutomaticallyUpdated = "payment_method.card_automatically_updated";
-
-        /// <summary>
         /// The "payment_method.detached" event type. See
         /// https://stripe.com/docs/api/events/types#event_types-payment_method.detached for
         /// details.
@@ -808,12 +783,6 @@ namespace Stripe
         /// https://stripe.com/docs/api/events/types#event_types-payment_method.updated for details.
         /// </summary>
         public const string PaymentMethodUpdated = "payment_method.updated";
-
-        /// <summary>
-        /// The "payment.created" event type. See
-        /// https://stripe.com/docs/api/events/types#event_types-payment.created for details.
-        /// </summary>
-        public const string PaymentCreated = "payment.created";
 
         /// <summary>
         /// The "payout.canceled" event type. See
@@ -1080,8 +1049,7 @@ namespace Stripe
         /// https://stripe.com/docs/api/events/types#event_types-sigma.scheduled_query_run.created
         /// for details.
         /// </summary>
-        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
-        public const string SigmaScheduleQueryRunCreated = "sigma.scheduled_query_run.created";
+        public const string SigmaScheduledQueryRunCreated = "sigma.scheduled_query_run.created";
 
         /// <summary>
         /// The "sku.created" event type. See
@@ -1312,62 +1280,6 @@ namespace Stripe
         public const string TransferUpdated = "transfer.updated";
 
         /// <summary>
-        /// The "treasury.check_deposit.canceled" event type. See
-        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.canceled for
-        /// details.
-        /// </summary>
-        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
-        public const string TreasuryCheckDepositCanceled = "treasury.check_deposit.canceled";
-
-        /// <summary>
-        /// The "treasury.check_deposit.created" event type. See
-        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.created for
-        /// details.
-        /// </summary>
-        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
-        public const string TreasuryCheckDepositCreated = "treasury.check_deposit.created";
-
-        /// <summary>
-        /// The "treasury.check_deposit.processing" event type. See
-        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.processing
-        /// for details.
-        /// </summary>
-        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
-        public const string TreasuryCheckDepositProcessing = "treasury.check_deposit.processing";
-
-        /// <summary>
-        /// The "treasury.check_deposit.received" event type. See
-        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.received for
-        /// details.
-        /// </summary>
-        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
-        public const string TreasuryCheckDepositReceived = "treasury.check_deposit.received";
-
-        /// <summary>
-        /// The "treasury.check_deposit.requires_action" event type. See
-        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.requires_action
-        /// for details.
-        /// </summary>
-        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
-        public const string TreasuryCheckDepositRequiresAction = "treasury.check_deposit.requires_action";
-
-        /// <summary>
-        /// The "treasury.check_deposit.requires_confirmation" event type. See
-        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.requires_confirmation
-        /// for details.
-        /// </summary>
-        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
-        public const string TreasuryCheckDepositRequiresConfirmation = "treasury.check_deposit.requires_confirmation";
-
-        /// <summary>
-        /// The "treasury.check_deposit.reversed" event type. See
-        /// https://stripe.com/docs/api/events/types#event_types-treasury.check_deposit.reversed for
-        /// details.
-        /// </summary>
-        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
-        public const string TreasuryCheckDepositReversed = "treasury.check_deposit.reversed";
-
-        /// <summary>
         /// The "treasury.credit_reversal.created" event type. See
         /// https://stripe.com/docs/api/events/types#event_types-treasury.credit_reversal.created
         /// for details.
@@ -1548,14 +1460,6 @@ namespace Stripe
         /// details.
         /// </summary>
         public const string TreasuryReceivedCreditFailed = "treasury.received_credit.failed";
-
-        /// <summary>
-        /// The "treasury.received_credit.reversed" event type. See
-        /// https://stripe.com/docs/api/events/types#event_types-treasury.received_credit.reversed
-        /// for details.
-        /// </summary>
-        [Obsolete("This event is part of a beta or deprecated API and will be removed.")]
-        public const string TreasuryReceivedCreditReversed = "treasury.received_credit.reversed";
 
         /// <summary>
         /// The "treasury.received_credit.succeeded" event type. See
