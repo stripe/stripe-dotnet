@@ -98,7 +98,7 @@ namespace Stripe
         public bool AttachToSelf { get; set; }
 
         /// <summary>
-        /// Settings for automatic payment methods compatible with this Setup Intent.
+        /// Settings for dynamic payment methods compatible with this Setup Intent.
         /// </summary>
         [JsonProperty("automatic_payment_methods")]
         public SetupIntentAutomaticPaymentMethods AutomaticPaymentMethods { get; set; }

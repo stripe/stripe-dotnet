@@ -103,7 +103,7 @@ namespace Stripe
 
         /// <summary>
         /// The list of payment method types that customers can use. Pass an empty string to enable
-        /// automatic payment methods that use your <a
+        /// dynamic payment methods that use your <a
         /// href="https://dashboard.stripe.com/settings/payment_methods">payment method
         /// settings</a>.
         /// </summary>
