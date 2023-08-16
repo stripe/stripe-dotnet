@@ -13,29 +13,6 @@ namespace Stripe
         public bool? Active { get; set; }
 
         /// <summary>
-        /// A list of up to 5 alphanumeric attributes that each SKU can provide values for (e.g.,
-        /// <c>["color", "size"]</c>). If a value for <c>attributes</c> is specified, the list
-        /// specified will replace the existing attributes list on this product. Any attributes not
-        /// present after the update will be deleted from the SKUs for this product.
-        /// </summary>
-        [JsonProperty("attributes")]
-        public List<string> Attributes { get; set; }
-
-        /// <summary>
-        /// A short one-line description of the product, meant to be displayable to the customer.
-        /// May only be set if <c>type=good</c>.
-        /// </summary>
-        [JsonProperty("caption")]
-        public string Caption { get; set; }
-
-        /// <summary>
-        /// An array of Connect application names or identifiers that should not be able to order
-        /// the SKUs for this product. May only be set if <c>type=good</c>.
-        /// </summary>
-        [JsonProperty("deactivate_on")]
-        public List<string> DeactivateOn { get; set; }
-
-        /// <summary>
         /// The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> object that is the
         /// default price for this product.
         /// </summary>

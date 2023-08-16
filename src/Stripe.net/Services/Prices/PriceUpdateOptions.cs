@@ -43,12 +43,6 @@ namespace Stripe
         public string Nickname { get; set; }
 
         /// <summary>
-        /// The recurring components of a price such as <c>interval</c> and <c>usage_type</c>.
-        /// </summary>
-        [JsonProperty("recurring")]
-        public PriceRecurringOptions Recurring { get; set; }
-
-        /// <summary>
         /// Only required if a <a
         /// href="https://stripe.com/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)">default
         /// tax behavior</a> was not provided in the Stripe Tax settings. Specifies whether the

@@ -12,6 +12,12 @@ namespace Stripe.Terminal
         public bool? CustomerConsentCollected { get; set; }
 
         /// <summary>
+        /// Configuration overrides.
+        /// </summary>
+        [JsonProperty("process_config")]
+        public ReaderProcessConfigOptions ProcessConfig { get; set; }
+
+        /// <summary>
         /// SetupIntent ID.
         /// </summary>
         [JsonProperty("setup_intent")]
