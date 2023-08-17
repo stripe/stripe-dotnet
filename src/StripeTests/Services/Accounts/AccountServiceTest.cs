@@ -92,7 +92,7 @@ namespace StripeTests
                         Schedule = new AccountSettingsPayoutsScheduleOptions
                         {
                             Interval = "monthly",
-                            MonthlyAnchor = "10",
+                            MonthlyAnchor = 10,
                         },
                     },
                 },

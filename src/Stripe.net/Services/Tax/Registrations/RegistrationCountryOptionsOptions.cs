@@ -120,12 +120,6 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsGrOptions Gr { get; set; }
 
         /// <summary>
-        /// Options for the registration in HK.
-        /// </summary>
-        [JsonProperty("hk")]
-        public RegistrationCountryOptionsHkOptions Hk { get; set; }
-
-        /// <summary>
         /// Options for the registration in HR.
         /// </summary>
         [JsonProperty("hr")]

@@ -62,9 +62,6 @@ namespace Stripe.Tax
         [JsonProperty("gr")]
         public RegistrationCountryOptionsGr Gr { get; set; }
 
-        [JsonProperty("hk")]
-        public RegistrationCountryOptionsHk Hk { get; set; }
-
         [JsonProperty("hr")]
         public RegistrationCountryOptionsHr Hr { get; set; }
 
