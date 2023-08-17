@@ -3,7 +3,7 @@ namespace Stripe.Tax
 {
     using Newtonsoft.Json;
 
-    public class RegistrationCountryOptions : StripeEntity<RegistrationCountryOptions>, IHasId
+    public class RegistrationCountryOptions : StripeEntity<RegistrationCountryOptions>
     {
         [JsonProperty("ae")]
         public RegistrationCountryOptionsAe Ae { get; set; }
