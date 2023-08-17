@@ -3,7 +3,7 @@ namespace Stripe.Tax
 {
     using Newtonsoft.Json;
 
-    public class RegistrationCountryOptionsOptions : INestedOptions
+    public class RegistrationCountryOptionsOptions : INestedOptions, IHasId
     {
         /// <summary>
         /// Options for the registration in AE.
