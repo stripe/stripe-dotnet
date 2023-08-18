@@ -154,6 +154,9 @@ namespace Stripe
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
+        [JsonProperty("payment_method_details")]
+        public DisputePaymentMethodDetails PaymentMethodDetails { get; set; }
+
         /// <summary>
         /// Reason given by cardholder for dispute. Possible values are <c>bank_cannot_process</c>,
         /// <c>check_returned</c>, <c>credit_not_processed</c>, <c>customer_initiated</c>,
