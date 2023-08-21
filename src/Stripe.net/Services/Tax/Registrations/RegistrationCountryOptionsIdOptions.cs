@@ -7,7 +7,6 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// Type of registration to be created in <c>country</c>.
-        /// One of: <c>simplified</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
