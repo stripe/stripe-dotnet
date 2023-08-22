@@ -534,8 +534,9 @@ namespace Stripe
 
         /// <summary>
         /// A string that identifies the resulting payment as part of a group. See the
-        /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
-        /// for connected accounts</a> for details.
+        /// PaymentIntents <a
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">use case for
+        /// connected accounts</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
