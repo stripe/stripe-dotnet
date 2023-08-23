@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    public class QuotePreviewSubscriptionSchedulesOptions : ListOptions
+    public class QuoteListPreviewInvoicesOptions : ListOptions
     {
     }
 }
