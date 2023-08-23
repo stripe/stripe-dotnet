@@ -59,9 +59,6 @@ namespace Stripe
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
-        [JsonProperty("applies_to")]
-        public SubscriptionScheduleAppliesTo AppliesTo { get; set; }
-
         /// <summary>
         /// Configures when the subscription schedule generates prorations for phase transitions.
         /// Possible values are <c>prorate_on_next_phase</c> or <c>prorate_up_front</c> with the

@@ -205,9 +205,9 @@ namespace Stripe
 
         /// <summary>
         /// The method used to send this payout, which can be <c>standard</c> or <c>instant</c>.
-        /// <c>instant</c> is only supported for payouts to debit cards. (See <a
-        /// href="https://stripe.com/blog/instant-payouts-for-marketplaces">Instant payouts for
-        /// marketplaces</a> for more information.).
+        /// <c>instant</c> is supported for payouts to debit cards and bank accounts in certain
+        /// countries. (See <a href="https://stripe.com/docs/payouts/instant-payouts-banks">Bank
+        /// support for Instant Payouts</a> for more information.).
         /// </summary>
         [JsonProperty("method")]
         public string Method { get; set; }
