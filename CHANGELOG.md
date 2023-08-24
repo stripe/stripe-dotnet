@@ -1,5 +1,12 @@
 # Changelog
 
+## 42.2.0 - 2023-08-24
+* [#2753](https://github.com/stripe/stripe-dotnet/pull/2753) Update generated code
+  * Add support for `Retention` on `BillingPortalSessionFlowDataSubscriptionCancelOptions` and `BillingPortalSessionFlowSubscriptionCancel`
+  * Add support for `Prefetch` on `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnections`, `FinancialConnections.SessionCreateOptions`, `FinancialConnectionsSession`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`
+  * Add support for `PaymentMethodDetails` on `Dispute`
+  * Add support for `BalanceTransaction` on `CustomerCashBalanceTransactionAdjustedForOverdraft`
+
 ## 42.1.0 - 2023-08-17
 * [#2752](https://github.com/stripe/stripe-dotnet/pull/2752) Update generated code
   * Add support for `FlatAmount` on `Tax.TransactionCreateReversalOptions`
