@@ -154,6 +154,9 @@ namespace Stripe
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
+        [JsonProperty("payment_method_details")]
+        public DisputePaymentMethodDetails PaymentMethodDetails { get; set; }
+
         /// <summary>
         /// Reason given by cardholder for dispute. Possible values are <c>bank_cannot_process</c>,
         /// <c>check_returned</c>, <c>credit_not_processed</c>, <c>customer_initiated</c>,
@@ -169,10 +172,9 @@ namespace Stripe
         /// <summary>
         /// Current status of dispute. Possible values are <c>warning_needs_response</c>,
         /// <c>warning_under_review</c>, <c>warning_closed</c>, <c>needs_response</c>,
-        /// <c>under_review</c>, <c>charge_refunded</c>, <c>won</c>, or <c>lost</c>.
-        /// One of: <c>charge_refunded</c>, <c>lost</c>, <c>needs_response</c>, <c>under_review</c>,
-        /// <c>warning_closed</c>, <c>warning_needs_response</c>, <c>warning_under_review</c>, or
-        /// <c>won</c>.
+        /// <c>under_review</c>, <c>won</c>, or <c>lost</c>.
+        /// One of: <c>lost</c>, <c>needs_response</c>, <c>under_review</c>, <c>warning_closed</c>,
+        /// <c>warning_needs_response</c>, <c>warning_under_review</c>, or <c>won</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

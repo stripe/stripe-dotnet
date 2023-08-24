@@ -7,6 +7,13 @@ namespace Stripe.Tax
     public class TransactionCreateReversalOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// A flat amount to reverse across the entire transaction, in negative integer cents. This
+        /// value represents the total amount to refund from the transaction, including taxes.
+        /// </summary>
+        [JsonProperty("flat_amount")]
+        public long? FlatAmount { get; set; }
+
+        /// <summary>
         /// The line item amounts to reverse.
         /// </summary>
         [JsonProperty("line_items")]

@@ -1,8 +1,52 @@
 # Changelog
 
+## 42.1.0 - 2023-08-17
+* [#2752](https://github.com/stripe/stripe-dotnet/pull/2752) Update generated code
+  * Add support for `FlatAmount` on `Tax.TransactionCreateReversalOptions`
+
+## 42.0.0 - 2023-08-16
+* This release changes the pinned API version to `2023-08-16`. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2023-08-16) and carefully review the API changes before upgrading `stripe-dotnet`.
+* More information is available in the [stripe-dotnet v42 migration guide](https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v42)
+* [#2750](https://github.com/stripe/stripe-dotnet/pull/2750) Update generated code
+  "⚠️" symbol highlights breaking changes.
+  * ⚠️Remove support for `AvailableOn` on `BalanceTransactionListOptions`
+    * Use of this parameter is discouraged. You may use [`.AddExtraParam`](https://github.com/stripe/stripe-dotnet/#parameters) if sending the parameter is still required.
+  * ⚠️Remove support for `Destination` on `Charge`
+    * Please use `TransferData` or `OnBehalfOf` instead.
+  * ⚠️Remove support for `ShippingRates` on `Checkout.SessionCreateOptions`
+    * Please use `ShippingOptions` instead.
+  * ⚠️Remove support for `Coupon` and `TrialFromPlan` on `CheckoutSessionSubscriptionDataOptions`
+    * Please [migrate to the Prices API](https://stripe.com/docs/billing/migration/migrating-prices), or use [`.AddExtraParam`](https://github.com/stripe/stripe-dotnet/#parameters) if sending the parameter is still required.
+  * ⚠️Remove support for `Blik` on `MandatePaymentMethodDetails`, `PaymentMethodUpdateOptions`, `SetupAttemptPaymentMethodDetails`, `SetupIntentPaymentMethodOptionsOptions`, and `SetupIntentPaymentMethodOptions`
+      * These fields were mistakenly released.
+  * ⚠️Remove support for `AcssDebit`, `Affirm`, `AuBecsDebit`, `BacsDebit`, `Cashapp`, `SepaDebit`, and `Zip` on `PaymentMethodUpdateOptions`
+      * These fields were empty hashes.
+  * ⚠️Remove support for `Country` on `PaymentMethodLink`
+      * This field was not fully operational.
+  * ⚠️Remove support for `Recurring` on `PriceUpdateOptions`
+      * This property should be set on create only.
+  * ⚠️Remove support for `Attributes`, `Caption`, and `DeactivateOn` on `ProductCreateOptions`, `ProductUpdateOptions`, and `Product`
+    * These fields are not fully operational.
+  * ⚠️Remove support for `AlternateStatementDescriptors` and `Dispute` on `Charge`
+    * Use of these parameters is discouraged.
+* [#2744](https://github.com/stripe/stripe-dotnet/pull/2744) Type changes
+  * ⚠️ Generate more accurate types for `AccountSettingsPayoutsScheduleOptions.DelayDays`, `SubscriptionSchedulePhaseOptions.EndDate`, `SubscriptionSchedulePhaseOptions.StartDate`, and
+  `SubscriptionSchedulePhaseOptions.TrialEnd`. These fields are dates or numbers that also support special signifier strings like "now". They have been changed to use `AnyOf<...>`.
+* [#2746](http://github.com/stripe/stripe-dotnet/pull/2746) Type changes
+  * ⚠️ Change type of `AccountSettingsPayoutsScheduleOptions.MonthlyAnchor` from string to long.
+* [#2751](https://github.com/stripe/stripe-dotnet/pull/2751) 
+  * ⚠️ Remove several deprecated constants from `Event`
+  * ⚠️ Make `Discount.Start` non-nullable
+  * ⚠️ Reflect that `Discount.Subscription` is not expandable
+  * ⚠️ Reflect that several fields on `InvoiceLineItem` are expandable.
+
 ## 41.29.0-beta.1 - 2023-08-10
 * [#2743](https://github.com/stripe/stripe-dotnet/pull/2743) Update generated code for beta
   * Add support for `Paypal` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+
+## 41.28.0 - 2023-08-10
+* [#2742](https://github.com/stripe/stripe-dotnet/pull/2742) Update generated code
+  * Add support for `AdjustedForOverdraft` to `CustomerCashBalanceTransaction`
 
 ## 41.28.0-beta.1 - 2023-08-03
 * [#2737](https://github.com/stripe/stripe-dotnet/pull/2737) Update generated code for beta

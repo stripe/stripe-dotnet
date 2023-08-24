@@ -130,6 +130,8 @@ namespace Stripe
                 { "quote", typeof(Quote) },
                 { "quote_line", typeof(QuoteLine) },
                 { "quote_phase", typeof(QuotePhase) },
+                { "quote_preview_invoice", typeof(QuotePreviewInvoice) },
+                { "quote_preview_schedule", typeof(QuotePreviewSchedule) },
                 {
                     "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning)
                 },

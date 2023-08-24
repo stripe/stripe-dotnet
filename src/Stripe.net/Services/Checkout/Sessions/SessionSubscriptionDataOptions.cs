@@ -27,13 +27,6 @@ namespace Stripe.Checkout
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
-        /// The ID of the coupon to apply to this subscription. A coupon applied to a subscription
-        /// will only affect invoices created for that particular subscription.
-        /// </summary>
-        [JsonProperty("coupon")]
-        public string Coupon { get; set; }
-
-        /// <summary>
         /// The tax rates that will apply to any subscription item that does not have
         /// <c>tax_rates</c> set. Invoices created will have their <c>default_tax_rates</c>
         /// populated from the subscription.
@@ -87,14 +80,6 @@ namespace Stripe.Checkout
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
-
-        /// <summary>
-        /// Indicates if a plan’s <c>trial_period_days</c> should be applied to the subscription.
-        /// Setting <c>trial_end</c> on <c>subscription_data</c> is preferred. Defaults to
-        /// <c>false</c>.
-        /// </summary>
-        [JsonProperty("trial_from_plan")]
-        public bool? TrialFromPlan { get; set; }
 
         /// <summary>
         /// Integer representing the number of trial period days before the customer is charged for

@@ -346,7 +346,8 @@ namespace Stripe.Checkout
         public string PaymentMethodCollection { get; set; }
 
         /// <summary>
-        /// Information about the payment method configuration used for this Checkout session.
+        /// Information about the payment method configuration used for this Checkout session if
+        /// using dynamic payment methods.
         /// </summary>
         [JsonProperty("payment_method_configuration_details")]
         public SessionPaymentMethodConfigurationDetails PaymentMethodConfigurationDetails { get; set; }

@@ -147,40 +147,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime? Start { get; set; }
-
-        #region Expandable Subscription
+        public DateTime Start { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// (ID of the Subscription)
         /// The subscription that this coupon is applied to, if it is applied to a particular
         /// subscription.
         /// </summary>
-        [JsonIgnore]
-        public string SubscriptionId
-        {
-            get => this.InternalSubscription?.Id;
-            set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// The subscription that this coupon is applied to, if it is applied to a particular
-        /// subscription.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-        public Subscription Subscription
-        {
-            get => this.InternalSubscription?.ExpandedObject;
-            set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
-        }
-
         [JsonProperty("subscription")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
-        internal ExpandableField<Subscription> InternalSubscription { get; set; }
-        #endregion
+        public string Subscription { get; set; }
 
         /// <summary>
         /// The subscription item that this coupon is applied to, if it is applied to a particular

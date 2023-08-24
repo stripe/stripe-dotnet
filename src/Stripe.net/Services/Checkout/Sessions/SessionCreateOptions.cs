@@ -284,17 +284,10 @@ namespace Stripe.Checkout
         public SessionShippingAddressCollectionOptions ShippingAddressCollection { get; set; }
 
         /// <summary>
-        /// The shipping rate options to apply to this Session.
+        /// The shipping rate options to apply to this Session. Up to a maximum of 5.
         /// </summary>
         [JsonProperty("shipping_options")]
         public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
-
-        /// <summary>
-        /// [Deprecated] The shipping rate to apply to this Session. Only up to one may be
-        /// specified.
-        /// </summary>
-        [JsonProperty("shipping_rates")]
-        public List<string> ShippingRates { get; set; }
 
         /// <summary>
         /// Describes the type of transaction being performed by Checkout in order to customize
