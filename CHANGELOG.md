@@ -1,11 +1,11 @@
 # Changelog
 
-## 42.0.0-beta.1 - 2023-08-24
-* [#2749](https://github.com/stripe/stripe-dotnet/pull/2749) Update generated code for beta
-  * Add support for new resources `QuotePreviewInvoice` and `QuotePreviewSchedule`
-  * Remove support for `AppliesTo` on `Invoice` and `SubscriptionSchedule`
-  * Add support for `Cl`, `Co`, `Id`, `Kr`, `Mx`, `My`, `Sa`, `Th`, `Tr`, and `Vn` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
-  * Remove support for `Hk` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
+## 42.2.0 - 2023-08-24
+* [#2753](https://github.com/stripe/stripe-dotnet/pull/2753) Update generated code
+  * Add support for `Retention` on `BillingPortalSessionFlowDataSubscriptionCancelOptions` and `BillingPortalSessionFlowSubscriptionCancel`
+  * Add support for `Prefetch` on `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnections`, `FinancialConnections.SessionCreateOptions`, `FinancialConnectionsSession`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`
+  * Add support for `PaymentMethodDetails` on `Dispute`
+  * Add support for `BalanceTransaction` on `CustomerCashBalanceTransactionAdjustedForOverdraft`
 
 ## 42.1.0 - 2023-08-17
 * [#2752](https://github.com/stripe/stripe-dotnet/pull/2752) Update generated code
@@ -46,6 +46,13 @@
   * ⚠️ Make `Discount.Start` non-nullable
   * ⚠️ Reflect that `Discount.Subscription` is not expandable
   * ⚠️ Reflect that several fields on `InvoiceLineItem` are expandable.
+
+## 42.0.0-beta.1 - 2023-08-24
+* [#2749](https://github.com/stripe/stripe-dotnet/pull/2749) Update generated code for beta
+  * Add support for new resources `QuotePreviewInvoice` and `QuotePreviewSchedule`
+  * Remove support for `AppliesTo` on `Invoice` and `SubscriptionSchedule`
+  * Add support for `Cl`, `Co`, `Id`, `Kr`, `Mx`, `My`, `Sa`, `Th`, `Tr`, and `Vn` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
+  * Remove support for `Hk` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
 
 ## 41.29.0-beta.1 - 2023-08-10
 * [#2743](https://github.com/stripe/stripe-dotnet/pull/2743) Update generated code for beta
