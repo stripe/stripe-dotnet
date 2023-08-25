@@ -185,46 +185,6 @@ namespace Stripe
             return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"{this.InstanceUrl(id)}/preview_invoices/{preview_invoice}/lines", options, requestOptions, cancellationToken);
         }
 
-        public virtual StripeList<QuotePreviewInvoice> ListPreviewInvoices(string id, QuoteListPreviewInvoicesOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<StripeList<QuotePreviewInvoice>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoices", options, requestOptions);
-        }
-
-        public virtual Task<StripeList<QuotePreviewInvoice>> ListPreviewInvoicesAsync(string id, QuoteListPreviewInvoicesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<StripeList<QuotePreviewInvoice>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoices", options, requestOptions, cancellationToken);
-        }
-
-        public virtual IEnumerable<QuotePreviewInvoice> ListPreviewInvoicesAutoPaging(string id, QuoteListPreviewInvoicesOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<QuotePreviewInvoice>($"{this.InstanceUrl(id)}/preview_invoices", options, requestOptions);
-        }
-
-        public virtual IAsyncEnumerable<QuotePreviewInvoice> ListPreviewInvoicesAutoPagingAsync(string id, QuoteListPreviewInvoicesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<QuotePreviewInvoice>($"{this.InstanceUrl(id)}/preview_invoices", options, requestOptions, cancellationToken);
-        }
-
-        public virtual StripeList<QuotePreviewSchedule> ListPreviewSubscriptionSchedules(string id, QuoteListPreviewSubscriptionSchedulesOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<StripeList<QuotePreviewSchedule>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_subscription_schedules", options, requestOptions);
-        }
-
-        public virtual Task<StripeList<QuotePreviewSchedule>> ListPreviewSubscriptionSchedulesAsync(string id, QuoteListPreviewSubscriptionSchedulesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<StripeList<QuotePreviewSchedule>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_subscription_schedules", options, requestOptions, cancellationToken);
-        }
-
-        public virtual IEnumerable<QuotePreviewSchedule> ListPreviewSubscriptionSchedulesAutoPaging(string id, QuoteListPreviewSubscriptionSchedulesOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<QuotePreviewSchedule>($"{this.InstanceUrl(id)}/preview_subscription_schedules", options, requestOptions);
-        }
-
-        public virtual IAsyncEnumerable<QuotePreviewSchedule> ListPreviewSubscriptionSchedulesAutoPagingAsync(string id, QuoteListPreviewSubscriptionSchedulesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<QuotePreviewSchedule>($"{this.InstanceUrl(id)}/preview_subscription_schedules", options, requestOptions, cancellationToken);
-        }
-
         public virtual Quote MarkStaleQuote(string id, QuoteMarkStaleQuoteOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/mark_stale", options, requestOptions);
