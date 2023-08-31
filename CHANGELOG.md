@@ -1,5 +1,11 @@
 # Changelog
 
+## 42.3.0 - 2023-08-31
+* [#2755](https://github.com/stripe/stripe-dotnet/pull/2755) Update generated code
+  * Add support for new resource `AccountSession`
+  * Add support for `Create` method on resource `AccountSession`
+  * Add support for `Application` on `PaymentLink`
+
 ## 42.2.0 - 2023-08-24
 * [#2753](https://github.com/stripe/stripe-dotnet/pull/2753) Update generated code
   * Add support for `Retention` on `BillingPortalSessionFlowDataSubscriptionCancelOptions` and `BillingPortalSessionFlowSubscriptionCancel`
