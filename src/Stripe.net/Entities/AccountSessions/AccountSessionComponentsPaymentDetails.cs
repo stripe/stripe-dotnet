@@ -10,8 +10,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("enabled")]
         public bool Enabled { get; set; }
-
-        [JsonProperty("features")]
-        public AccountSessionComponentsPaymentDetailsFeatures Features { get; set; }
     }
 }
