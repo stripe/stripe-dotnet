@@ -102,8 +102,10 @@ namespace Stripe
         public List<string> FullNameAliases { get; set; }
 
         /// <summary>
-        /// Information about the upcoming new requirements for this person, including what
-        /// information needs to be collected, and by when.
+        /// Information about the <a
+        /// href="https://stripe.com/docs/connect/custom-accounts/future-requirements">upcoming new
+        /// requirements for this person</a>, including what information needs to be collected, and
+        /// by when.
         /// </summary>
         [JsonProperty("future_requirements")]
         public PersonFutureRequirements FutureRequirements { get; set; }

@@ -90,8 +90,9 @@ namespace Stripe.Checkout
         /// a valid <c>email</c>, Checkout will set the email entered during the session on the
         /// Customer.
         ///
-        /// If blank for Checkout Sessions in <c>payment</c> or <c>subscription</c> mode, Checkout
-        /// will create a new Customer object based on information provided during the payment flow.
+        /// If blank for Checkout Sessions in <c>subscription</c> mode or with
+        /// <c>customer_creation</c> set as <c>always</c> in <c>payment</c> mode, Checkout will
+        /// create a new Customer object based on information provided during the payment flow.
         ///
         /// You can set <a
         /// href="https://stripe.com/docs/api/checkout/sessions/create#create_checkout_session-payment_intent_data-setup_future_usage"><c>payment_intent_data.setup_future_usage</c></a>
