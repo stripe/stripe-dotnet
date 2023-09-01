@@ -103,9 +103,9 @@ namespace Stripe
         public List<QuoteLineItemOptions> LineItems { get; set; }
 
         /// <summary>
-        /// A list of lines on the quote. These lines describe changes that will be used to create
-        /// new subscription schedules or update existing subscription schedules when the quote is
-        /// accepted.
+        /// A list of lines on the quote. These lines describe changes, in the order provided, that
+        /// will be used to create new subscription schedules or update existing subscription
+        /// schedules when the quote is accepted.
         /// </summary>
         [JsonProperty("lines")]
         public List<QuoteLineOptions> Lines { get; set; }
