@@ -185,7 +185,24 @@ namespace Stripe
         /// <c>test_helpers.test_clock.deleted</c>, <c>test_helpers.test_clock.internal_failure</c>,
         /// <c>test_helpers.test_clock.ready</c>, <c>topup.canceled</c>, <c>topup.created</c>,
         /// <c>topup.failed</c>, <c>topup.reversed</c>, <c>topup.succeeded</c>,
-        /// <c>transfer.created</c>, <c>transfer.reversed</c>, or <c>transfer.updated</c>.
+        /// <c>transfer.created</c>, <c>transfer.reversed</c>, <c>transfer.updated</c>,
+        /// <c>treasury.credit_reversal.created</c>, <c>treasury.credit_reversal.posted</c>,
+        /// <c>treasury.debit_reversal.completed</c>, <c>treasury.debit_reversal.created</c>,
+        /// <c>treasury.debit_reversal.initial_credit_granted</c>,
+        /// <c>treasury.financial_account.closed</c>, <c>treasury.financial_account.created</c>,
+        /// <c>treasury.financial_account.features_status_updated</c>,
+        /// <c>treasury.inbound_transfer.canceled</c>, <c>treasury.inbound_transfer.created</c>,
+        /// <c>treasury.inbound_transfer.failed</c>, <c>treasury.inbound_transfer.succeeded</c>,
+        /// <c>treasury.outbound_payment.canceled</c>, <c>treasury.outbound_payment.created</c>,
+        /// <c>treasury.outbound_payment.expected_arrival_date_updated</c>,
+        /// <c>treasury.outbound_payment.failed</c>, <c>treasury.outbound_payment.posted</c>,
+        /// <c>treasury.outbound_payment.returned</c>, <c>treasury.outbound_transfer.canceled</c>,
+        /// <c>treasury.outbound_transfer.created</c>,
+        /// <c>treasury.outbound_transfer.expected_arrival_date_updated</c>,
+        /// <c>treasury.outbound_transfer.failed</c>, <c>treasury.outbound_transfer.posted</c>,
+        /// <c>treasury.outbound_transfer.returned</c>, <c>treasury.received_credit.created</c>,
+        /// <c>treasury.received_credit.failed</c>, <c>treasury.received_credit.succeeded</c>, or
+        /// <c>treasury.received_debit.created</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
