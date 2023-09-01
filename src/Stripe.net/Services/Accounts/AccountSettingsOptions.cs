@@ -37,6 +37,12 @@ namespace Stripe
         public AccountSettingsPayoutsOptions Payouts { get; set; }
 
         /// <summary>
+        /// Settings specific to the account's tax forms.
+        /// </summary>
+        [JsonProperty("tax_forms")]
+        public AccountSettingsTaxFormsOptions TaxForms { get; set; }
+
+        /// <summary>
         /// Settings specific to the account's Treasury FinancialAccounts.
         /// </summary>
         [JsonProperty("treasury")]

@@ -47,6 +47,37 @@ namespace Stripe
         [JsonProperty("allow_promotion_codes")]
         public bool AllowPromotionCodes { get; set; }
 
+        #region Expandable Application
+
+        /// <summary>
+        /// (ID of the Application)
+        /// The ID of the Connect application that created the Payment Link.
+        /// </summary>
+        [JsonIgnore]
+        public string ApplicationId
+        {
+            get => this.InternalApplication?.Id;
+            set => this.InternalApplication = SetExpandableFieldId(value, this.InternalApplication);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the Connect application that created the Payment Link.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Application Application
+        {
+            get => this.InternalApplication?.ExpandedObject;
+            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
+        }
+
+        [JsonProperty("application")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
+        internal ExpandableField<Application> InternalApplication { get; set; }
+        #endregion
+
         /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account.

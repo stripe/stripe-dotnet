@@ -202,16 +202,16 @@ namespace Stripe
         public InvoiceAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
-        /// Indicates the reason why the invoice was created. <c>subscription_cycle</c> indicates an
-        /// invoice created by a subscription advancing into a new period.
-        /// <c>subscription_create</c> indicates an invoice created due to creating a subscription.
-        /// <c>subscription_update</c> indicates an invoice created due to updating a subscription.
-        /// <c>subscription</c> is set for all old invoices to indicate either a change to a
-        /// subscription or a period advancement. <c>manual</c> is set for all invoices unrelated to
-        /// a subscription (for example: created via the invoice editor). The <c>upcoming</c> value
-        /// is reserved for simulated invoices per the upcoming invoice endpoint.
-        /// <c>subscription_threshold</c> indicates an invoice created due to a billing threshold
-        /// being reached.
+        /// Indicates the reason why the invoice was created.
+        ///
+        /// * <c>manual</c>: Unrelated to a subscription, for example, created via the invoice
+        /// editor. * <c>subscription</c>: No longer in use. Applies to subscriptions from before
+        /// May 2018 where no distinction was made between updates, cycles, and thresholds. *
+        /// <c>subscription_create</c>: A new subscription was created. * <c>subscription_cycle</c>:
+        /// A subscription advanced into a new period. * <c>subscription_threshold</c>: A
+        /// subscription reached a billing threshold. * <c>subscription_update</c>: A subscription
+        /// was updated. * <c>upcoming</c>: Reserved for simulated invoices, per the upcoming
+        /// invoice endpoint.
         /// One of: <c>automatic_pending_invoice_item_invoice</c>, <c>manual</c>,
         /// <c>quote_accept</c>, <c>subscription</c>, <c>subscription_create</c>,
         /// <c>subscription_cycle</c>, <c>subscription_threshold</c>, <c>subscription_update</c>, or

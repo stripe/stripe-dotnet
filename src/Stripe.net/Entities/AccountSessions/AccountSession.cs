@@ -47,6 +47,9 @@ namespace Stripe
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
 
+        [JsonProperty("components")]
+        public AccountSessionComponents Components { get; set; }
+
         /// <summary>
         /// The timestamp at which this AccountSession will expire.
         /// </summary>

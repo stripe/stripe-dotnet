@@ -16,6 +16,12 @@ namespace Stripe
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, TokenBankAccountOptions> BankAccount { get; set; }
 
+        /// <summary>
+        /// The card this token will represent. If you also pass in a customer, the card must be the
+        /// ID of a card belonging to the customer. Otherwise, if you do not pass in a customer,
+        /// this is a dictionary containing a user's credit card details, with the options described
+        /// below.
+        /// </summary>
         [JsonProperty("card")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, TokenCardOptions> Card { get; set; }
