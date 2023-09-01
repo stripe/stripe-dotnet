@@ -1,5 +1,11 @@
 # Changelog
 
+## 42.4.0-beta.1 - 2023-09-01
+* [#2759](https://github.com/stripe/stripe-dotnet/pull/2759) Update generated code for beta
+  * Rename `QuoteService.ListPreviewInvoices` to `QuotePreviewInvoiceService.List` and `QuoteService.ListPreviewSubscriptionSchedules` to `QuotePreviewScheduleService.List`
+  * Add support for `TaxForms` on `AccountSettingsOptions` and `AccountSettings`
+  * Add support for `Components` on `AccountSessionCreateOptions` and `AccountSession`
+
 ## 42.3.0 - 2023-08-31
 * [#2755](https://github.com/stripe/stripe-dotnet/pull/2755) Update generated code
   * Add support for new resource `AccountSession`
