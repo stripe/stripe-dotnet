@@ -10,5 +10,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("account")]
         public string Account { get; set; }
+
+        /// <summary>
+        /// Each key of the dictionary represents an embedded component, and each embedded component
+        /// maps to its configuration (e.g. whether it has been enabled or not).
+        /// </summary>
+        [JsonProperty("components")]
+        public AccountSessionComponentsOptions Components { get; set; }
     }
 }

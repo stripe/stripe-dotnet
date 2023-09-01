@@ -134,10 +134,11 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (ID of the Customer)
-        /// The ID of the customer for this Session. For Checkout Sessions in <c>payment</c> or
-        /// <c>subscription</c> mode, Checkout will create a new customer object based on
-        /// information provided during the payment flow unless an existing customer was provided
-        /// when the Session was created.
+        /// The ID of the customer for this Session. For Checkout Sessions in <c>subscription</c>
+        /// mode or Checkout Sessions with <c>customer_creation</c> set as <c>always</c> in
+        /// <c>payment</c> mode, Checkout will create a new customer object based on information
+        /// provided during the payment flow unless an existing customer was provided when the
+        /// Session was created.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -148,10 +149,11 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the customer for this Session. For Checkout Sessions in <c>payment</c> or
-        /// <c>subscription</c> mode, Checkout will create a new customer object based on
-        /// information provided during the payment flow unless an existing customer was provided
-        /// when the Session was created.
+        /// The ID of the customer for this Session. For Checkout Sessions in <c>subscription</c>
+        /// mode or Checkout Sessions with <c>customer_creation</c> set as <c>always</c> in
+        /// <c>payment</c> mode, Checkout will create a new customer object based on information
+        /// provided during the payment flow unless an existing customer was provided when the
+        /// Session was created.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

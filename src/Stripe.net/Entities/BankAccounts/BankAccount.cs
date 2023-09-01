@@ -158,8 +158,10 @@ namespace Stripe
         public string Fingerprint { get; set; }
 
         /// <summary>
-        /// Information about upcoming new requirements for the bank account, including what
-        /// information needs to be collected.
+        /// Information about the <a
+        /// href="https://stripe.com/docs/connect/custom-accounts/future-requirements">upcoming new
+        /// requirements for the bank account</a>, including what information needs to be collected,
+        /// and by when.
         /// </summary>
         [JsonProperty("future_requirements")]
         public BankAccountFutureRequirements FutureRequirements { get; set; }

@@ -68,7 +68,7 @@ namespace Stripe
 
         /// <summary>
         /// The government-issued ID number of the individual, as appropriate for the
-        /// representative’s country. (Examples are a Social Security Number in the U.S., or a
+        /// representative's country. (Examples are a Social Security Number in the U.S., or a
         /// Social Insurance Number in Canada). Instead of the number itself, you can also provide a
         /// <a href="https://stripe.com/docs/js/tokens_sources/create_token?type=pii">PII token
         /// created with Stripe.js</a>.
