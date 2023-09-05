@@ -12,7 +12,7 @@ namespace Stripe
     /// This includes funding by the customer, allocation to payments, and refunds to the
     /// customer.
     /// </summary>
-    public class CustomerCashBalanceTransaction : StripeEntity<CustomerCashBalanceTransaction>, IHasId, IHasObject
+    public class CustomerCashBalanceTransaction : StripeEntity<CustomerCashBalanceTransaction>, IHasId, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.
