@@ -77,7 +77,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// Whether this card design is used to create cards when one is not specified.
-        /// One of: <c>default</c>, or <c>none</c>.
+        /// One of: <c>default</c>, <c>none</c>, or <c>platform_default</c>.
         /// </summary>
         [JsonProperty("preference")]
         public string Preference { get; set; }
