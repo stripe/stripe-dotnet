@@ -16,8 +16,7 @@ namespace Stripe.Checkout
         /// List of address types that should be returned in the financial_addresses response. If
         /// not specified, all valid types will be returned.
         ///
-        /// Permitted values include: <c>sort_code</c>, <c>zengin</c>, <c>iban</c>, <c>spei</c>, or
-        /// <c>ca_bank_account_address</c>.
+        /// Permitted values include: <c>sort_code</c>, <c>zengin</c>, <c>iban</c>, or <c>spei</c>.
         /// </summary>
         [JsonProperty("requested_address_types")]
         public List<string> RequestedAddressTypes { get; set; }
