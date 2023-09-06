@@ -683,6 +683,12 @@ namespace Stripe
         public const string InvoiceItemDeleted = "invoiceitem.deleted";
 
         /// <summary>
+        /// The "invoiceitem.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-invoiceitem.updated for details.
+        /// </summary>
+        public const string InvoiceItemUpdated = "invoiceitem.updated";
+
+        /// <summary>
         /// The "issuing_authorization.created" event type. See
         /// https://stripe.com/docs/api/events/types#event_types-issuing_authorization.created for
         /// details.

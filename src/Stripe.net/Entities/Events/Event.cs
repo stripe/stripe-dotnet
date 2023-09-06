@@ -215,8 +215,8 @@ namespace Stripe
         /// <c>treasury.outbound_transfer.expected_arrival_date_updated</c>,
         /// <c>treasury.outbound_transfer.failed</c>, <c>treasury.outbound_transfer.posted</c>,
         /// <c>treasury.outbound_transfer.returned</c>, <c>treasury.received_credit.created</c>,
-        /// <c>treasury.received_credit.failed</c>, <c>treasury.received_credit.succeeded</c>, or
-        /// <c>treasury.received_debit.created</c>.
+        /// <c>treasury.received_credit.failed</c>, <c>treasury.received_credit.succeeded</c>,
+        /// <c>treasury.received_debit.created</c>, or <c>invoiceitem.updated</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
