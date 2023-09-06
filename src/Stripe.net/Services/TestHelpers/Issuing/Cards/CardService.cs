@@ -59,15 +59,5 @@ namespace Stripe.TestHelpers.Issuing
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/shipping/ship", options, requestOptions, cancellationToken);
         }
-
-        public virtual Card SubmitCard(string id, CardSubmitCardOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/shipping/submit", options, requestOptions);
-        }
-
-        public virtual Task<Card> SubmitCardAsync(string id, CardSubmitCardOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/shipping/submit", options, requestOptions, cancellationToken);
-        }
     }
 }
