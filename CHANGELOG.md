@@ -1,5 +1,20 @@
 # Changelog
 
+## 42.4.0 - 2023-09-07
+* [#2760](https://github.com/stripe/stripe-dotnet/pull/2760) Update generated code
+  * Add support for new resource `PaymentMethodDomain`
+  * Add support for `Create`, `Get`, `List`, `Update`, and `Validate` methods on resource `PaymentMethodDomain`
+  * Add support for `Features` on `ProductCreateOptions`, `ProductUpdateOptions`, and `Product`
+* [#2755](https://github.com/stripe/stripe-dotnet/pull/2755) Update generated code
+  * Add support for new resource `AccountSession`
+  * Add support for `Create` method on resource `AccountSession`
+  * Add support for `Application` on `PaymentLink`
+* [#2753](https://github.com/stripe/stripe-dotnet/pull/2753) Update generated code
+  * Add support for `Retention` on `BillingPortalSessionFlowDataSubscriptionCancelOptions` and `BillingPortalSessionFlowSubscriptionCancel`
+  * Add support for `Prefetch` on `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnections`, `FinancialConnections.SessionCreateOptions`, `FinancialConnectionsSession`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`
+  * Add support for `PaymentMethodDetails` on `Dispute`
+  * Add support for `BalanceTransaction` on `CustomerCashBalanceTransactionAdjustedForOverdraft`
+
 ## 42.3.0 - 2023-08-31
 * [#2755](https://github.com/stripe/stripe-dotnet/pull/2755) Update generated code
   * Add support for new resource `AccountSession`
