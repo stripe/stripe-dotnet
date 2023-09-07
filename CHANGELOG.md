@@ -1,5 +1,21 @@
 # Changelog
 
+## 42.5.0-beta.1 - 2023-09-07
+* [#2762](https://github.com/stripe/stripe-dotnet/pull/2762) Update generated code for beta
+  * Release specs are identical.
+* [#2761](https://github.com/stripe/stripe-dotnet/pull/2761) Update generated code for beta
+  * Remove support for `SubmitCard` test helper method on resource `Issuing.Card`
+  * Add support for `CardDesign` on `Issuing.CardUpdateOptions`
+* [#2759](https://github.com/stripe/stripe-dotnet/pull/2759) Update generated code for beta
+  * Rename `QuoteService.ListPreviewInvoices` to `QuotePreviewInvoiceService.List` and `QuoteService.ListPreviewSubscriptionSchedules` to `QuotePreviewScheduleService.List`
+  * Add support for `TaxForms` on `AccountSettingsOptions` and `AccountSettings`
+  * Add support for `Components` on `AccountSessionCreateOptions` and `AccountSession`
+* [#2749](https://github.com/stripe/stripe-dotnet/pull/2749) Update generated code for beta
+  * Add support for new resources `QuotePreviewInvoice` and `QuotePreviewSchedule`
+  * Remove support for `AppliesTo` on `Invoice` and `SubscriptionSchedule`
+  * Add support for `Cl`, `Co`, `Id`, `Kr`, `Mx`, `My`, `Sa`, `Th`, `Tr`, and `Vn` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
+  * Remove support for `Hk` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
+
 ## 42.4.0 - 2023-09-07
 * [#2760](https://github.com/stripe/stripe-dotnet/pull/2760) Update generated code
   * Add support for new resource `PaymentMethodDomain`
