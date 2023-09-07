@@ -117,7 +117,9 @@ namespace Stripe
         public string Gender { get; set; }
 
         /// <summary>
-        /// Whether the person's <c>id_number</c> was provided.
+        /// Whether the person's <c>id_number</c> was provided. True if either the full ID number
+        /// was provided or if only the required part of the ID number was provided (ex. last four
+        /// of an individual's SSN for the US indicated by <c>ssn_last_4_provided</c>).
         /// </summary>
         [JsonProperty("id_number_provided")]
         public bool IdNumberProvided { get; set; }
