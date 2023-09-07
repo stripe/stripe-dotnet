@@ -121,6 +121,7 @@ namespace Stripe
                     "payment_method_configuration", typeof(
                         PaymentMethodConfiguration)
                 },
+                { "payment_method_domain", typeof(PaymentMethodDomain) },
                 { "payout", typeof(Payout) },
                 { "person", typeof(Person) },
                 { "plan", typeof(Plan) },
