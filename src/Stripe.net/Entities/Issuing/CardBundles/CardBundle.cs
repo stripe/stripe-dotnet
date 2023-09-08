@@ -21,6 +21,9 @@ namespace Stripe.Issuing
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("features")]
+        public CardBundleFeatures Features { get; set; }
+
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.

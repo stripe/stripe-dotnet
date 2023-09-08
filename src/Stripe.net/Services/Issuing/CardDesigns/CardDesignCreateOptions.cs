@@ -4,7 +4,7 @@ namespace Stripe.Issuing
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CardDesignUpdateOptions : BaseOptions, IHasMetadata
+    public class CardDesignCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// The card bundle object belonging to this card design.
@@ -41,7 +41,7 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Friendly display name. Providing an empty string will set the field to null.
+        /// Friendly display name.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
