@@ -17,6 +17,13 @@ namespace Stripe
         [JsonProperty("issuing_card")]
         public string IssuingCard { get; set; }
 
+        /// <summary>
+        /// A single-use token, created by Stripe.js, used for creating ephemeral keys for Issuing
+        /// Cards without exchanging sensitive information.
+        /// </summary>
+        [JsonProperty("nonce")]
+        public string Nonce { get; set; }
+
         [JsonIgnore]
         public string StripeVersion { get; set; }
 
