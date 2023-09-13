@@ -8,6 +8,16 @@ namespace Stripe
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
 
+        /// <summary>
+        /// ID of the ConfirmationToken used to confirm this SetupIntent.
+        ///
+        /// If the provided ConfirmationToken contains properties that are also being provided in
+        /// this request, such as <c>payment_method</c>, then the values in this request will take
+        /// precedence.
+        /// </summary>
+        [JsonProperty("confirmation_token")]
+        public string ConfirmationToken { get; set; }
+
         [JsonProperty("mandate_data")]
         public SetupIntentMandateDataOptions MandateData { get; set; }
 
