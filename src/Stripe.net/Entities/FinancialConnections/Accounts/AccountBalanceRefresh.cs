@@ -17,7 +17,7 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// Time at which the next balance refresh can be initiated. This value will be <c>null</c>
-        /// when when <c>status</c> is <c>pending</c>. Measured in seconds since the Unix epoch.
+        /// when <c>status</c> is <c>pending</c>. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("next_refresh_available_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
