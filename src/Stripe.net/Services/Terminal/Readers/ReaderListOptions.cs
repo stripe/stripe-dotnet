@@ -11,6 +11,9 @@ namespace Stripe.Terminal
         [JsonProperty("location")]
         public string Location { get; set; }
 
+        [JsonProperty("serial_number")]
+        public string SerialNumber { get; set; }
+
         [JsonProperty("status")]
         public string Status { get; set; }
     }
