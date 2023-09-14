@@ -47,11 +47,11 @@ namespace Stripe.Issuing
         public string Name { get; set; }
 
         /// <summary>
-        /// Whether this card design is used to create cards when one is not specified.
-        /// One of: <c>default</c>, or <c>none</c>.
+        /// Information on whether this card design is used to create cards when one is not
+        /// specified.
         /// </summary>
-        [JsonProperty("preference")]
-        public string Preference { get; set; }
+        [JsonProperty("preferences")]
+        public CardDesignPreferencesOptions Preferences { get; set; }
 
         /// <summary>
         /// If set to true, will atomically remove the lookup key from the existing card design, and

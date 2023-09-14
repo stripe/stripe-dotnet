@@ -112,12 +112,8 @@ namespace Stripe.Issuing
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        /// <summary>
-        /// Whether this card design is used to create cards when one is not specified.
-        /// One of: <c>default</c>, <c>none</c>, or <c>platform_default</c>.
-        /// </summary>
-        [JsonProperty("preference")]
-        public string Preference { get; set; }
+        [JsonProperty("preferences")]
+        public CardDesignPreferences Preferences { get; set; }
 
         [JsonProperty("rejection_reasons")]
         public CardDesignRejectionReasons RejectionReasons { get; set; }

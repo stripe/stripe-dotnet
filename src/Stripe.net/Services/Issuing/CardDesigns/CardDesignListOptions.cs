@@ -9,8 +9,8 @@ namespace Stripe.Issuing
         [JsonProperty("lookup_keys")]
         public List<string> LookupKeys { get; set; }
 
-        [JsonProperty("preference")]
-        public string Preference { get; set; }
+        [JsonProperty("preferences")]
+        public CardDesignPreferencesOptions Preferences { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
