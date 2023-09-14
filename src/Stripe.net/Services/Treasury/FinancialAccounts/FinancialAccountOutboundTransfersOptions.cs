@@ -12,7 +12,7 @@ namespace Stripe.Treasury
         public FinancialAccountOutboundTransfersAchOptions Ach { get; set; }
 
         /// <summary>
-        /// Enables US domestic wire tranfers via the OutboundTransfers API.
+        /// Enables US domestic wire transfers via the OutboundTransfers API.
         /// </summary>
         [JsonProperty("us_domestic_wire")]
         public FinancialAccountOutboundTransfersUsDomesticWireOptions UsDomesticWire { get; set; }
