@@ -1326,11 +1326,138 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestIssuingAuthorizationServiceCapture()
+        {
+            var options = new Stripe.TestHelpers.Issuing.AuthorizationCaptureOptions
+            {
+                CaptureAmount = 100,
+                CloseAuthorization = true,
+                PurchaseDetails = new Stripe.TestHelpers.Issuing.AuthorizationPurchaseDetailsOptions
+                {
+                    Flight = new Stripe.TestHelpers.Issuing.AuthorizationPurchaseDetailsFlightOptions
+                    {
+                        DepartureAt = DateTimeOffset.FromUnixTimeSeconds(
+                            1633651200)
+                            .UtcDateTime,
+                        PassengerName = "John Doe",
+                        Refundable = true,
+                        Segments = new List<Stripe.TestHelpers.Issuing.AuthorizationPurchaseDetailsFlightSegmentOptions>
+                        {
+                            new Stripe.TestHelpers.Issuing.AuthorizationPurchaseDetailsFlightSegmentOptions
+                            {
+                                ArrivalAirportCode = "SFO",
+                                Carrier = "Delta",
+                                DepartureAirportCode = "LAX",
+                                FlightNumber = "DL100",
+                                ServiceClass = "Economy",
+                                StopoverAllowed = true,
+                            },
+                        },
+                        TravelAgency = "Orbitz",
+                    },
+                    Fuel = new Stripe.TestHelpers.Issuing.AuthorizationPurchaseDetailsFuelOptions
+                    {
+                        Type = "diesel",
+                        Unit = "liter",
+                        UnitCostDecimal = "3.5",
+                        VolumeDecimal = "10",
+                    },
+                    Lodging = new Stripe.TestHelpers.Issuing.AuthorizationPurchaseDetailsLodgingOptions
+                    {
+                        CheckInAt = DateTimeOffset.FromUnixTimeSeconds(
+                            1633651200)
+                            .UtcDateTime,
+                        Nights = 2,
+                    },
+                    Receipt = new List<Stripe.TestHelpers.Issuing.AuthorizationPurchaseDetailsReceiptOptions>
+                    {
+                        new Stripe.TestHelpers.Issuing.AuthorizationPurchaseDetailsReceiptOptions
+                        {
+                            Description = "Room charge",
+                            Quantity = "1",
+                            Total = 200,
+                            UnitCost = 200,
+                        },
+                    },
+                    Reference = "foo",
+                },
+            };
+            var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
+                this.StripeClient);
+            service.Capture("example_authorization", options);
+        }
+
+        [Fact]
+        public void TestIssuingAuthorizationServiceCreate()
+        {
+            var options = new Stripe.TestHelpers.Issuing.AuthorizationCreateOptions
+            {
+                Amount = 100,
+                AmountDetails = new Stripe.TestHelpers.Issuing.AuthorizationAmountDetailsOptions
+                {
+                    AtmFee = 10,
+                    CashbackAmount = 5,
+                },
+                AuthorizationMethod = "chip",
+                Card = "foo",
+                Currency = "bar",
+                IsAmountControllable = true,
+                MerchantData = new Stripe.TestHelpers.Issuing.AuthorizationMerchantDataOptions
+                {
+                    Category = "ac_refrigeration_repair",
+                    City = "foo",
+                    Country = "bar",
+                    Name = "foo",
+                    NetworkId = "bar",
+                    PostalCode = "foo",
+                    State = "bar",
+                    TerminalId = "foo",
+                },
+                NetworkData = new Stripe.TestHelpers.Issuing.AuthorizationNetworkDataOptions
+                {
+                    AcquiringInstitutionId = "foo",
+                },
+                VerificationData = new Stripe.TestHelpers.Issuing.AuthorizationVerificationDataOptions
+                {
+                    AddressLine1Check = "mismatch",
+                    AddressPostalCodeCheck = "match",
+                    CvcCheck = "match",
+                    ExpiryCheck = "mismatch",
+                },
+                Wallet = "apple_pay",
+            };
+            var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestIssuingAuthorizationServiceDecline()
         {
             var service = new Stripe.Issuing.AuthorizationService(
                 this.StripeClient);
             service.Decline("iauth_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestIssuingAuthorizationServiceExpire()
+        {
+            var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
+                this.StripeClient);
+            service.Expire("example_authorization");
+        }
+
+        [Fact]
+        public void TestIssuingAuthorizationServiceIncrement()
+        {
+            var options = new Stripe.TestHelpers.Issuing.AuthorizationIncrementOptions
+            {
+                IncrementAmount = 50,
+                IsAmountControllable = true,
+            };
+            var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
+                this.StripeClient);
+            service.Increment("example_authorization", options);
         }
 
         [Fact]
@@ -1352,6 +1479,18 @@ namespace StripeTests
             var service = new Stripe.Issuing.AuthorizationService(
                 this.StripeClient);
             service.Get("iauth_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestIssuingAuthorizationServiceReverse()
+        {
+            var options = new Stripe.TestHelpers.Issuing.AuthorizationReverseOptions
+            {
+                ReverseAmount = 20,
+            };
+            var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
+                this.StripeClient);
+            service.Reverse("example_authorization", options);
         }
 
         [Fact]
@@ -1547,6 +1686,154 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestIssuingTransactionServiceCreateForceCapture()
+        {
+            var options = new Stripe.TestHelpers.Issuing.TransactionCreateForceCaptureOptions
+            {
+                Amount = 100,
+                Card = "foo",
+                Currency = "bar",
+                MerchantData = new Stripe.TestHelpers.Issuing.TransactionMerchantDataOptions
+                {
+                    Category = "ac_refrigeration_repair",
+                    City = "foo",
+                    Country = "US",
+                    Name = "foo",
+                    NetworkId = "bar",
+                    PostalCode = "10001",
+                    State = "NY",
+                    TerminalId = "foo",
+                },
+                PurchaseDetails = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsOptions
+                {
+                    Flight = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsFlightOptions
+                    {
+                        DepartureAt = DateTimeOffset.FromUnixTimeSeconds(
+                            1633651200)
+                            .UtcDateTime,
+                        PassengerName = "John Doe",
+                        Refundable = true,
+                        Segments = new List<Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsFlightSegmentOptions>
+                        {
+                            new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsFlightSegmentOptions
+                            {
+                                ArrivalAirportCode = "SFO",
+                                Carrier = "Delta",
+                                DepartureAirportCode = "LAX",
+                                FlightNumber = "DL100",
+                                ServiceClass = "Economy",
+                                StopoverAllowed = true,
+                            },
+                        },
+                        TravelAgency = "Orbitz",
+                    },
+                    Fuel = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsFuelOptions
+                    {
+                        Type = "diesel",
+                        Unit = "liter",
+                        UnitCostDecimal = "3.5",
+                        VolumeDecimal = "10",
+                    },
+                    Lodging = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsLodgingOptions
+                    {
+                        CheckInAt = DateTimeOffset.FromUnixTimeSeconds(
+                            1533651200)
+                            .UtcDateTime,
+                        Nights = 2,
+                    },
+                    Receipt = new List<Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsReceiptOptions>
+                    {
+                        new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsReceiptOptions
+                        {
+                            Description = "Room charge",
+                            Quantity = "1",
+                            Total = 200,
+                            UnitCost = 200,
+                        },
+                    },
+                    Reference = "foo",
+                },
+            };
+            var service = new Stripe.TestHelpers.Issuing.TransactionService(
+                this.StripeClient);
+            service.CreateForceCapture(options);
+        }
+
+        [Fact]
+        public void TestIssuingTransactionServiceCreateUnlinkedRefund()
+        {
+            var options = new Stripe.TestHelpers.Issuing.TransactionCreateUnlinkedRefundOptions
+            {
+                Amount = 100,
+                Card = "foo",
+                Currency = "bar",
+                MerchantData = new Stripe.TestHelpers.Issuing.TransactionMerchantDataOptions
+                {
+                    Category = "ac_refrigeration_repair",
+                    City = "foo",
+                    Country = "bar",
+                    Name = "foo",
+                    NetworkId = "bar",
+                    PostalCode = "foo",
+                    State = "bar",
+                    TerminalId = "foo",
+                },
+                PurchaseDetails = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsOptions
+                {
+                    Flight = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsFlightOptions
+                    {
+                        DepartureAt = DateTimeOffset.FromUnixTimeSeconds(
+                            1533651200)
+                            .UtcDateTime,
+                        PassengerName = "John Doe",
+                        Refundable = true,
+                        Segments = new List<Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsFlightSegmentOptions>
+                        {
+                            new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsFlightSegmentOptions
+                            {
+                                ArrivalAirportCode = "SFO",
+                                Carrier = "Delta",
+                                DepartureAirportCode = "LAX",
+                                FlightNumber = "DL100",
+                                ServiceClass = "Economy",
+                                StopoverAllowed = true,
+                            },
+                        },
+                        TravelAgency = "Orbitz",
+                    },
+                    Fuel = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsFuelOptions
+                    {
+                        Type = "diesel",
+                        Unit = "liter",
+                        UnitCostDecimal = "3.5",
+                        VolumeDecimal = "10",
+                    },
+                    Lodging = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsLodgingOptions
+                    {
+                        CheckInAt = DateTimeOffset.FromUnixTimeSeconds(
+                            1533651200)
+                            .UtcDateTime,
+                        Nights = 2,
+                    },
+                    Receipt = new List<Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsReceiptOptions>
+                    {
+                        new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsReceiptOptions
+                        {
+                            Description = "Room charge",
+                            Quantity = "1",
+                            Total = 200,
+                            UnitCost = 200,
+                        },
+                    },
+                    Reference = "foo",
+                },
+            };
+            var service = new Stripe.TestHelpers.Issuing.TransactionService(
+                this.StripeClient);
+            service.CreateUnlinkedRefund(options);
+        }
+
+        [Fact]
         public void TestIssuingTransactionServiceList()
         {
             var options = new Stripe.Issuing.TransactionListOptions
@@ -1557,6 +1844,18 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Issuing.Transaction> transactions = service.List(
                 options);
+        }
+
+        [Fact]
+        public void TestIssuingTransactionServiceRefund()
+        {
+            var options = new Stripe.TestHelpers.Issuing.TransactionRefundOptions
+            {
+                RefundAmount = 50,
+            };
+            var service = new Stripe.TestHelpers.Issuing.TransactionService(
+                this.StripeClient);
+            service.Refund("example_transaction", options);
         }
 
         [Fact]
@@ -1820,6 +2119,70 @@ namespace StripeTests
             var options = new PaymentLinkUpdateOptions { Active = false };
             var service = new PaymentLinkService(this.StripeClient);
             service.Update("plink_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPaymentMethodConfigurationServiceCreate()
+        {
+            var options = new PaymentMethodConfigurationCreateOptions
+            {
+                AcssDebit = new PaymentMethodConfigurationAcssDebitOptions
+                {
+                    DisplayPreference = new PaymentMethodConfigurationAcssDebitDisplayPreferenceOptions
+                    {
+                        Preference = "none",
+                    },
+                },
+                Affirm = new PaymentMethodConfigurationAffirmOptions
+                {
+                    DisplayPreference = new PaymentMethodConfigurationAffirmDisplayPreferenceOptions
+                    {
+                        Preference = "none",
+                    },
+                },
+            };
+            var service = new PaymentMethodConfigurationService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPaymentMethodConfigurationServiceList()
+        {
+            var options = new PaymentMethodConfigurationListOptions
+            {
+                Application = "foo",
+            };
+            var service = new PaymentMethodConfigurationService(
+                this.StripeClient);
+            StripeList<PaymentMethodConfiguration> paymentmethodconfigurations = service.List(
+                options);
+        }
+
+        [Fact]
+        public void TestPaymentMethodConfigurationServiceRetrieve()
+        {
+            var service = new PaymentMethodConfigurationService(
+                this.StripeClient);
+            service.Get("foo");
+        }
+
+        [Fact]
+        public void TestPaymentMethodConfigurationServiceUpdate()
+        {
+            var options = new PaymentMethodConfigurationUpdateOptions
+            {
+                AcssDebit = new PaymentMethodConfigurationAcssDebitOptions
+                {
+                    DisplayPreference = new PaymentMethodConfigurationAcssDebitDisplayPreferenceOptions
+                    {
+                        Preference = "on",
+                    },
+                },
+            };
+            var service = new PaymentMethodConfigurationService(
+                this.StripeClient);
+            service.Update("foo", options);
         }
 
         [Fact]
