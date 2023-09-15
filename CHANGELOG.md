@@ -1,5 +1,33 @@
 # Changelog
 
+## 42.6.0-beta.1 - 2023-09-14
+* [#2765](https://github.com/stripe/stripe-dotnet/pull/2765) Update generated code for beta
+  * Add support for new resource `ConfirmationToken`
+  * Add support for `Get` method on resource `ConfirmationToken`
+  * Add support for `Create` method on resource `Issuing.CardDesign`
+  * Add support for `RejectTestmode` test helper method on resource `Issuing.CardDesign`
+  * Add support for `Features` on `IssuingCardBundle`
+  * Add support for `Preferences` on `Issuing.CardDesignListOptions`, `Issuing.CardDesignUpdateOptions`, and `IssuingCardDesign`
+  * Remove support for `Preference` on `Issuing.CardDesignListOptions`, `Issuing.CardDesignUpdateOptions`, and `IssuingCardDesign`
+  * Add support for `CardBundle` on `Issuing.CardDesignUpdateOptions`
+  * Add support for `CardLogo` and `CarrierText` on `Issuing.CardDesignUpdateOptions` and `IssuingCardDesign`
+  * Change type of `IssuingCardDesignLookupKeyOptions` and `IssuingCardDesignNameOptions` from `string` to `emptyStringable(string)`
+  * Add support for `RejectionReasons` on `IssuingCardDesign`
+  * Add support for `ConfirmationToken` on `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `SetupIntentConfirmOptions`, and `SetupIntentCreateOptions`
+
+## 42.5.0 - 2023-09-14
+* [#2767](https://github.com/stripe/stripe-dotnet/pull/2767) Update generated code
+  * Add support for new resource `PaymentMethodConfiguration`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `PaymentMethodConfiguration`
+  * Add support for `PaymentMethodConfiguration` on `Checkout.SessionCreateOptions`, `PaymentIntentCreateOptions`, `PaymentIntentUpdateOptions`, `SetupIntentCreateOptions`, and `SetupIntentUpdateOptions`
+  * Add support for `PaymentMethodConfigurationDetails` on `CheckoutSession`, `PaymentIntent`, and `SetupIntent`
+* [#2764](https://github.com/stripe/stripe-dotnet/pull/2764) Update generated code
+  * Add support for `Capture`, `Create`, `Expire`, `Increment`, and `Reverse` test helper methods on resource `Issuing.Authorization`
+  * Add support for `CreateForceCapture`, `CreateUnlinkedRefund`, and `Refund` test helper methods on resource `Issuing.Transaction`
+  * Add support for `Nonce` on `EphemeralKeyCreateOptions`
+  * Add support for `CashbackAmount` on `IssuingAuthorizationAmountDetails`, `IssuingAuthorizationPendingRequestAmountDetails`, `IssuingAuthorizationRequestHistoryAmountDetails`, and `IssuingTransactionAmountDetails`
+  * Add support for `SerialNumber` on `Terminal.ReaderListOptions`
+
 ## 42.5.0-beta.1 - 2023-09-07
 * [#2762](https://github.com/stripe/stripe-dotnet/pull/2762) Update generated code for beta
   * Release specs are identical.
