@@ -8,9 +8,8 @@ namespace Stripe
 
     /// <summary>
     /// A dispute occurs when a customer questions your charge with their card issuer. When this
-    /// happens, you're given the opportunity to respond to the dispute with evidence that shows
-    /// that the charge is legitimate. You can find more information about the dispute process
-    /// in our <a href="https://stripe.com/docs/disputes">Disputes and Fraud</a> documentation.
+    /// happens, you have the opportunity to respond to the dispute with evidence that shows
+    /// that the charge is legitimate.
     ///
     /// Related guide: <a href="https://stripe.com/docs/disputes">Disputes and fraud</a>.
     /// </summary>
@@ -29,7 +28,7 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Disputed amount. Usually the amount of the charge, but can differ (usually because of
+        /// Disputed amount. Usually the amount of the charge, but it can differ (usually because of
         /// currency fluctuation or because only part of the order is disputed).
         /// </summary>
         [JsonProperty("amount")]
@@ -46,7 +45,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Charge)
-        /// ID of the charge that was disputed.
+        /// ID of the charge that's disputed.
         /// </summary>
         [JsonIgnore]
         public string ChargeId
@@ -57,7 +56,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// ID of the charge that was disputed.
+        /// ID of the charge that's disputed.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -95,9 +94,9 @@ namespace Stripe
         public DisputeEvidenceDetails EvidenceDetails { get; set; }
 
         /// <summary>
-        /// If true, it is still possible to refund the disputed payment. Once the payment has been
-        /// fully refunded, no further funds will be withdrawn from your Stripe account as a result
-        /// of this dispute.
+        /// If true, it's still possible to refund the disputed payment. After the payment has been
+        /// fully refunded, no further funds are withdrawn from your Stripe account as a result of
+        /// this dispute.
         /// </summary>
         [JsonProperty("is_charge_refundable")]
         public bool IsChargeRefundable { get; set; }
@@ -127,7 +126,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the PaymentIntent)
-        /// ID of the PaymentIntent that was disputed.
+        /// ID of the PaymentIntent that's disputed.
         /// </summary>
         [JsonIgnore]
         public string PaymentIntentId
@@ -138,7 +137,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// ID of the PaymentIntent that was disputed.
+        /// ID of the PaymentIntent that's disputed.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -163,7 +162,7 @@ namespace Stripe
         /// <c>debit_not_authorized</c>, <c>duplicate</c>, <c>fraudulent</c>, <c>general</c>,
         /// <c>incorrect_account_details</c>, <c>insufficient_funds</c>,
         /// <c>product_not_received</c>, <c>product_unacceptable</c>, <c>subscription_canceled</c>,
-        /// or <c>unrecognized</c>. Read more about <a
+        /// or <c>unrecognized</c>. Learn more about <a
         /// href="https://stripe.com/docs/disputes/categories">dispute reasons</a>.
         /// </summary>
         [JsonProperty("reason")]

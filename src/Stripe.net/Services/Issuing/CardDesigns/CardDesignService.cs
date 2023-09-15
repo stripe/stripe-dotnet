@@ -6,6 +6,7 @@ namespace Stripe.Issuing
     using System.Threading.Tasks;
 
     public class CardDesignService : Service<CardDesign>,
+        ICreatable<CardDesign, CardDesignCreateOptions>,
         IListable<CardDesign, CardDesignListOptions>,
         IRetrievable<CardDesign, CardDesignGetOptions>,
         IUpdatable<CardDesign, CardDesignUpdateOptions>
@@ -21,6 +22,16 @@ namespace Stripe.Issuing
         }
 
         public override string BasePath => "/v1/issuing/card_designs";
+
+        public virtual CardDesign Create(CardDesignCreateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.CreateEntity(options, requestOptions);
+        }
+
+        public virtual Task<CardDesign> CreateAsync(CardDesignCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+        }
 
         public virtual CardDesign Get(string id, CardDesignGetOptions options = null, RequestOptions requestOptions = null)
         {

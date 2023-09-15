@@ -7,6 +7,24 @@ namespace Stripe.Issuing
     public class CardDesignUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// The card bundle object belonging to this card design.
+        /// </summary>
+        [JsonProperty("card_bundle")]
+        public string CardBundle { get; set; }
+
+        /// <summary>
+        /// The file for the card logo, for use with card bundles that support card logos.
+        /// </summary>
+        [JsonProperty("card_logo")]
+        public string CardLogo { get; set; }
+
+        /// <summary>
+        /// Hash containing carrier text, for use with card bundles that support carrier text.
+        /// </summary>
+        [JsonProperty("carrier_text")]
+        public CardDesignCarrierTextOptions CarrierText { get; set; }
+
+        /// <summary>
         /// A lookup key used to retrieve card designs dynamically from a static string. This may be
         /// up to 200 characters.
         /// </summary>
@@ -29,11 +47,11 @@ namespace Stripe.Issuing
         public string Name { get; set; }
 
         /// <summary>
-        /// Whether this card design is used to create cards when one is not specified.
-        /// One of: <c>default</c>, or <c>none</c>.
+        /// Information on whether this card design is used to create cards when one is not
+        /// specified.
         /// </summary>
-        [JsonProperty("preference")]
-        public string Preference { get; set; }
+        [JsonProperty("preferences")]
+        public CardDesignPreferencesOptions Preferences { get; set; }
 
         /// <summary>
         /// If set to true, will atomically remove the lookup key from the existing card design, and

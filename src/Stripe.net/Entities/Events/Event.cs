@@ -8,33 +8,32 @@ namespace Stripe
     /// <summary>
     /// Events are our way of letting you know when something interesting happens in your
     /// account. When an interesting event occurs, we create a new <c>Event</c> object. For
-    /// example, when a charge succeeds, we create a <c>charge.succeeded</c> event; and when an
-    /// invoice payment attempt fails, we create an <c>invoice.payment_failed</c> event. Note
-    /// that many API requests may cause multiple events to be created. For example, if you
-    /// create a new subscription for a customer, you will receive both a
-    /// <c>customer.subscription.created</c> event and a <c>charge.succeeded</c> event.
+    /// example, when a charge succeeds, we create a <c>charge.succeeded</c> event, and when an
+    /// invoice payment attempt fails, we create an <c>invoice.payment_failed</c> event. Certain
+    /// API requests might create multiple events. For example, if you create a new subscription
+    /// for a customer, you receive both a <c>customer.subscription.created</c> event and a
+    /// <c>charge.succeeded</c> event.
     ///
-    /// Events occur when the state of another API resource changes. The state of that resource
-    /// at the time of the change is embedded in the event's data field. For example, a
-    /// <c>charge.succeeded</c> event will contain a charge, and an
-    /// <c>invoice.payment_failed</c> event will contain an invoice.
+    /// Events occur when the state of another API resource changes. The event's data field
+    /// embeds the resource's state at the time of the change. For example, a
+    /// <c>charge.succeeded</c> event contains a charge, and an <c>invoice.payment_failed</c>
+    /// event contains an invoice.
     ///
     /// As with other API resources, you can use endpoints to retrieve an <a
     /// href="https://stripe.com/docs/api#retrieve_event">individual event</a> or a <a
     /// href="https://stripe.com/docs/api#list_events">list of events</a> from the API. We also
     /// have a separate <a href="http://en.wikipedia.org/wiki/Webhook">webhooks</a> system for
-    /// sending the <c>Event</c> objects directly to an endpoint on your server. Webhooks are
-    /// managed in your <a href="https://dashboard.stripe.com/account/webhooks">account
-    /// settings</a>, and our <a href="https://stripe.com/docs/webhooks">Using Webhooks</a>
-    /// guide will help you get set up.
+    /// sending the <c>Event</c> objects directly to an endpoint on your server. You can manage
+    /// webhooks in your <a href="https://dashboard.stripe.com/account/webhooks">account
+    /// settings</a>. Learn how to [listen for events] (/docs/webhooks) so that your integration
+    /// can automatically trigger reactions.
     ///
     /// When using <a href="https://stripe.com/docs/connect">Connect</a>, you can also receive
-    /// notifications of events that occur in connected accounts. For these events, there will
-    /// be an additional <c>account</c> attribute in the received <c>Event</c> object.
+    /// event notifications that occur in connected accounts. For these events, there's an
+    /// additional <c>account</c> attribute in the received <c>Event</c> object.
     ///
-    /// <strong>NOTE:</strong> Right now, access to events through the <a
-    /// href="https://stripe.com/docs/api#retrieve_event">Retrieve Event API</a> is guaranteed
-    /// only for 30 days.
+    /// We only guarantee access to events through the <a
+    /// href="https://stripe.com/docs/api#retrieve_event">Retrieve Event API</a> for 30 days.
     /// </summary>
     [JsonConverter(typeof(EventConverter))]
     public class Event : StripeEntity<Event>, IHasId, IHasObject
@@ -52,14 +51,14 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// The connected account that originated the event.
+        /// The connected account that originates the event.
         /// </summary>
         [JsonProperty("account")]
         public string Account { get; set; }
 
         /// <summary>
-        /// The Stripe API version used to render <c>data</c>. <em>Note: This property is populated
-        /// only for events on or after October 31, 2014</em>.
+        /// The Stripe API version used to render <c>data</c>. This property is populated only for
+        /// events on or after October 31, 2014.
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; set; }
@@ -82,20 +81,21 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Number of webhooks that have yet to be successfully delivered (i.e., to return a 20x
-        /// response) to the URLs you've specified.
+        /// Number of webhooks that haven't been successfully delivered (for example, to return a
+        /// 20x response) to the URLs you specify.
         /// </summary>
         [JsonProperty("pending_webhooks")]
         public long PendingWebhooks { get; set; }
 
         /// <summary>
-        /// Information on the API request that instigated the event.
+        /// Information on the API request that triggers the event.
         /// </summary>
         [JsonProperty("request")]
         public EventRequest Request { get; set; }
 
         /// <summary>
-        /// Description of the event (e.g., <c>invoice.created</c> or <c>charge.refunded</c>).
+        /// Description of the event (for example, <c>invoice.created</c> or
+        /// <c>charge.refunded</c>).
         /// One of: <c>account.application.authorized</c>, <c>account.application.deauthorized</c>,
         /// <c>account.external_account.created</c>, <c>account.external_account.deleted</c>,
         /// <c>account.external_account.updated</c>, <c>account.updated</c>,
@@ -155,12 +155,12 @@ namespace Stripe
         /// <c>issuing_authorization.request</c>, <c>issuing_authorization.updated</c>,
         /// <c>issuing_card.created</c>, <c>issuing_card.updated</c>,
         /// <c>issuing_card_design.activated</c>, <c>issuing_card_design.deactivated</c>,
-        /// <c>issuing_card_design.updated</c>, <c>issuing_cardholder.created</c>,
-        /// <c>issuing_cardholder.updated</c>, <c>issuing_dispute.closed</c>,
-        /// <c>issuing_dispute.created</c>, <c>issuing_dispute.funds_reinstated</c>,
-        /// <c>issuing_dispute.submitted</c>, <c>issuing_dispute.updated</c>,
-        /// <c>issuing_transaction.created</c>, <c>issuing_transaction.updated</c>,
-        /// <c>mandate.updated</c>, <c>order.created</c>,
+        /// <c>issuing_card_design.rejected</c>, <c>issuing_card_design.updated</c>,
+        /// <c>issuing_cardholder.created</c>, <c>issuing_cardholder.updated</c>,
+        /// <c>issuing_dispute.closed</c>, <c>issuing_dispute.created</c>,
+        /// <c>issuing_dispute.funds_reinstated</c>, <c>issuing_dispute.submitted</c>,
+        /// <c>issuing_dispute.updated</c>, <c>issuing_transaction.created</c>,
+        /// <c>issuing_transaction.updated</c>, <c>mandate.updated</c>, <c>order.created</c>,
         /// <c>payment_intent.amount_capturable_updated</c>, <c>payment_intent.canceled</c>,
         /// <c>payment_intent.created</c>, <c>payment_intent.partially_funded</c>,
         /// <c>payment_intent.payment_failed</c>, <c>payment_intent.processing</c>,

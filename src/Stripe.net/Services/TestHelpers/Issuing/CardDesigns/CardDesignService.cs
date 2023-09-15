@@ -39,5 +39,15 @@ namespace Stripe.TestHelpers.Issuing
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/status/deactivate", options, requestOptions, cancellationToken);
         }
+
+        public virtual CardDesign RejectTestmode(string id, CardDesignRejectTestmodeOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/status/reject", options, requestOptions);
+        }
+
+        public virtual Task<CardDesign> RejectTestmodeAsync(string id, CardDesignRejectTestmodeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/status/reject", options, requestOptions, cancellationToken);
+        }
     }
 }

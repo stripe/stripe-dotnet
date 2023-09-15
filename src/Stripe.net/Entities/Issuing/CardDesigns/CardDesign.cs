@@ -54,6 +54,43 @@ namespace Stripe.Issuing
         internal ExpandableField<CardBundle> InternalCardBundle { get; set; }
         #endregion
 
+        #region Expandable CardLogo
+
+        /// <summary>
+        /// (ID of the File)
+        /// The file for the card logo, for use with card bundles that support card logos.
+        /// </summary>
+        [JsonIgnore]
+        public string CardLogoId
+        {
+            get => this.InternalCardLogo?.Id;
+            set => this.InternalCardLogo = SetExpandableFieldId(value, this.InternalCardLogo);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The file for the card logo, for use with card bundles that support card logos.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public File CardLogo
+        {
+            get => this.InternalCardLogo?.ExpandedObject;
+            set => this.InternalCardLogo = SetExpandableFieldObject(value, this.InternalCardLogo);
+        }
+
+        [JsonProperty("card_logo")]
+        [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+        internal ExpandableField<File> InternalCardLogo { get; set; }
+        #endregion
+
+        /// <summary>
+        /// Hash containing carrier text, for use with card bundles that support carrier text.
+        /// </summary>
+        [JsonProperty("carrier_text")]
+        public CardDesignCarrierText CarrierText { get; set; }
+
         /// <summary>
         /// A lookup key used to retrieve card designs dynamically from a static string. This may be
         /// up to 200 characters.
@@ -75,12 +112,11 @@ namespace Stripe.Issuing
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        /// <summary>
-        /// Whether this card design is used to create cards when one is not specified.
-        /// One of: <c>default</c>, <c>none</c>, or <c>platform_default</c>.
-        /// </summary>
-        [JsonProperty("preference")]
-        public string Preference { get; set; }
+        [JsonProperty("preferences")]
+        public CardDesignPreferences Preferences { get; set; }
+
+        [JsonProperty("rejection_reasons")]
+        public CardDesignRejectionReasons RejectionReasons { get; set; }
 
         /// <summary>
         /// Whether this card design can be used to create cards.

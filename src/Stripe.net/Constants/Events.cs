@@ -724,6 +724,13 @@ namespace Stripe
         public const string IssuingCardDesignDeactivated = "issuing_card_design.deactivated";
 
         /// <summary>
+        /// The "issuing_card_design.rejected" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-issuing_card_design.rejected for
+        /// details.
+        /// </summary>
+        public const string IssuingCardDesignRejected = "issuing_card_design.rejected";
+
+        /// <summary>
         /// The "issuing_card_design.updated" event type. See
         /// https://stripe.com/docs/api/events/types#event_types-issuing_card_design.updated for
         /// details.

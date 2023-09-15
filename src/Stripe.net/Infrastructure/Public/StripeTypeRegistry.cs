@@ -44,6 +44,7 @@ namespace Stripe
                 { "cash_balance", typeof(CashBalance) },
                 { "charge", typeof(Charge) },
                 { "checkout.session", typeof(Checkout.Session) },
+                { "confirmation_token", typeof(ConfirmationToken) },
                 { "country_spec", typeof(CountrySpec) },
                 { "coupon", typeof(Coupon) },
                 { "credit_note", typeof(CreditNote) },

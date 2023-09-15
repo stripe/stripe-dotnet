@@ -59,6 +59,16 @@ namespace Stripe
         public string ConfirmationMethod { get; set; }
 
         /// <summary>
+        /// ID of the ConfirmationToken used to confirm this PaymentIntent.
+        ///
+        /// If the provided ConfirmationToken contains properties that are also being provided in
+        /// this request, such as <c>payment_method</c>, then the values in this request will take
+        /// precedence.
+        /// </summary>
+        [JsonProperty("confirmation_token")]
+        public string ConfirmationToken { get; set; }
+
+        /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
