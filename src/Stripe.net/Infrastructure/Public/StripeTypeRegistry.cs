@@ -94,6 +94,10 @@ namespace Stripe
                 { "payment_intent", typeof(PaymentIntent) },
                 { "payment_link", typeof(PaymentLink) },
                 { "payment_method", typeof(PaymentMethod) },
+                {
+                    "payment_method_configuration", typeof(
+                        PaymentMethodConfiguration)
+                },
                 { "payment_method_domain", typeof(PaymentMethodDomain) },
                 { "payout", typeof(Payout) },
                 { "person", typeof(Person) },
