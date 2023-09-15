@@ -7,7 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// This object represents a customer of your business. It lets you create recurring charges
+    /// This object represents a customer of your business. Use it to create recurring charges
     /// and track payments that belong to the same customer.
     ///
     /// Related guide: <a href="https://stripe.com/docs/payments/save-during-payment">Save a
@@ -34,19 +34,19 @@ namespace Stripe
         public Address Address { get; set; }
 
         /// <summary>
-        /// Current balance, if any, being stored on the customer. If negative, the customer has
-        /// credit to apply to their next invoice. If positive, the customer has an amount owed that
-        /// will be added to their next invoice. The balance does not refer to any unpaid invoices;
-        /// it solely takes into account amounts that have yet to be successfully applied to any
-        /// invoice. This balance is only taken into account as invoices are finalized.
+        /// The current balance, if any, that's stored on the customer. If negative, the customer
+        /// has credit to apply to their next invoice. If positive, the customer has an amount owed
+        /// that's added to their next invoice. The balance only considers amounts that Stripe
+        /// hasn't successfully applied to any invoice. It doesn't reflect unpaid invoices. This
+        /// balance is only taken into account after invoices finalize.
         /// </summary>
         [JsonProperty("balance")]
         public long Balance { get; set; }
 
         /// <summary>
-        /// The current funds being held by Stripe on behalf of the customer. These funds can be
-        /// applied towards payment intents with source "cash_balance". The
-        /// settings[reconciliation_mode] field describes whether these funds are applied to such
+        /// The current funds being held by Stripe on behalf of the customer. You can apply these
+        /// funds towards payment intents when the source is "cash_balance". The
+        /// <c>settings[reconciliation_mode]</c> field describes if these funds apply to these
         /// payment intents manually or automatically.
         /// </summary>
         [JsonProperty("cash_balance")]
@@ -72,7 +72,7 @@ namespace Stripe
         /// (ID of the IPaymentSource)
         /// ID of the default payment source for the customer.
         ///
-        /// If you are using payment methods created via the PaymentMethods API, see the <a
+        /// If you use payment methods created through the PaymentMethods API, see the <a
         /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
         /// field instead.
         /// </summary>
@@ -87,7 +87,7 @@ namespace Stripe
         /// (Expanded)
         /// ID of the default payment source for the customer.
         ///
-        /// If you are using payment methods created via the PaymentMethods API, see the <a
+        /// If you use payment methods created through the PaymentMethods API, see the <a
         /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
         /// field instead.
         ///
@@ -112,14 +112,14 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// When the customer's latest invoice is billed by charging automatically,
-        /// <c>delinquent</c> is <c>true</c> if the invoice's latest charge failed. When the
-        /// customer's latest invoice is billed by sending an invoice, <c>delinquent</c> is
-        /// <c>true</c> if the invoice isn't paid by its due date.
+        /// If Stripe bills the customer's latest invoice by automatically charging and the latest
+        /// charge fails, it sets <c>delinquent`` to </c>true<c>. If Stripe bills the invoice by
+        /// sending it, and the invoice isn't paid by the due date, it also sets `delinquent</c> to
+        /// <c>true</c>.
         ///
-        /// If an invoice is marked uncollectible by <a
+        /// If an invoice becomes uncollectible by <a
         /// href="https://stripe.com/docs/billing/automatic-collection">dunning</a>,
-        /// <c>delinquent</c> doesn't get reset to <c>false</c>.
+        /// <c>delinquent</c> doesn't reset to <c>false</c>.
         /// </summary>
         [JsonProperty("delinquent")]
         public bool? Delinquent { get; set; }
@@ -143,13 +143,13 @@ namespace Stripe
         public string Email { get; set; }
 
         /// <summary>
-        /// The current multi-currency balances, if any, being stored on the customer. If positive
+        /// The current multi-currency balances, if any, that's stored on the customer. If positive
         /// in a currency, the customer has a credit to apply to their next invoice denominated in
-        /// that currency. If negative, the customer has an amount owed that will be added to their
-        /// next invoice denominated in that currency. These balances do not refer to any unpaid
-        /// invoices. They solely track amounts that have yet to be successfully applied to any
-        /// invoice. A balance in a particular currency is only applied to any invoice as an invoice
-        /// in that currency is finalized.
+        /// that currency. If negative, the customer has an amount owed that's added to their next
+        /// invoice denominated in that currency. These balances don't apply to unpaid invoices.
+        /// They solely track amounts that Stripe hasn't successfully applied to any invoice. Stripe
+        /// only applies a balance in a specific currency to an invoice after that invoice (which is
+        /// in the same currency) finalizes.
         /// </summary>
         [JsonProperty("invoice_credit_balance")]
         public Dictionary<string, long> InvoiceCreditBalance { get; set; }
@@ -185,7 +185,7 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
-        /// The suffix of the customer's next invoice number, e.g., 0001.
+        /// The suffix of the customer's next invoice number (for example, 0001).
         /// </summary>
         [JsonProperty("next_invoice_sequence")]
         public long NextInvoiceSequence { get; set; }
@@ -225,9 +225,9 @@ namespace Stripe
         public CustomerTax Tax { get; set; }
 
         /// <summary>
-        /// Describes the customer's tax exemption status. One of <c>none</c>, <c>exempt</c>, or
-        /// <c>reverse</c>. When set to <c>reverse</c>, invoice and receipt PDFs include the text
-        /// <strong>"Reverse charge"</strong>.
+        /// Describes the customer's tax exemption status, which is <c>none</c>, <c>exempt</c>, or
+        /// <c>reverse</c>. When set to <c>reverse</c>, invoice and receipt PDFs include the
+        /// following text: <strong>"Reverse charge"</strong>.
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
         /// </summary>
         [JsonProperty("tax_exempt")]
@@ -243,7 +243,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the TestHelpers.TestClock)
-        /// ID of the test clock this customer belongs to.
+        /// ID of the test clock that this customer belongs to.
         /// </summary>
         [JsonIgnore]
         public string TestClockId
@@ -254,7 +254,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// ID of the test clock this customer belongs to.
+        /// ID of the test clock that this customer belongs to.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
