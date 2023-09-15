@@ -1,5 +1,18 @@
 # Changelog
 
+## 42.5.0 - 2023-09-14
+* [#2767](https://github.com/stripe/stripe-dotnet/pull/2767) Update generated code
+  * Add support for new resource `PaymentMethodConfiguration`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `PaymentMethodConfiguration`
+  * Add support for `PaymentMethodConfiguration` on `Checkout.SessionCreateOptions`, `PaymentIntentCreateOptions`, `PaymentIntentUpdateOptions`, `SetupIntentCreateOptions`, and `SetupIntentUpdateOptions`
+  * Add support for `PaymentMethodConfigurationDetails` on `CheckoutSession`, `PaymentIntent`, and `SetupIntent`
+* [#2764](https://github.com/stripe/stripe-dotnet/pull/2764) Update generated code
+  * Add support for `Capture`, `Create`, `Expire`, `Increment`, and `Reverse` test helper methods on resource `Issuing.Authorization`
+  * Add support for `CreateForceCapture`, `CreateUnlinkedRefund`, and `Refund` test helper methods on resource `Issuing.Transaction`
+  * Add support for `Nonce` on `EphemeralKeyCreateOptions`
+  * Add support for `CashbackAmount` on `IssuingAuthorizationAmountDetails`, `IssuingAuthorizationPendingRequestAmountDetails`, `IssuingAuthorizationRequestHistoryAmountDetails`, and `IssuingTransactionAmountDetails`
+  * Add support for `SerialNumber` on `Terminal.ReaderListOptions`
+
 ## 42.4.0 - 2023-09-07
 * [#2760](https://github.com/stripe/stripe-dotnet/pull/2760) Update generated code
   * Add support for new resource `PaymentMethodDomain`
