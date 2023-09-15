@@ -1359,8 +1359,8 @@ namespace StripeTests
                     {
                         Type = "diesel",
                         Unit = "liter",
-                        UnitCostDecimal = 3.5M,
-                        VolumeDecimal = 10M,
+                        UnitCostDecimal = "3.5",
+                        VolumeDecimal = "10",
                     },
                     Lodging = new Stripe.TestHelpers.Issuing.AuthorizationPurchaseDetailsLodgingOptions
                     {
@@ -1374,7 +1374,7 @@ namespace StripeTests
                         new Stripe.TestHelpers.Issuing.AuthorizationPurchaseDetailsReceiptOptions
                         {
                             Description = "Room charge",
-                            Quantity = 1M,
+                            Quantity = "1",
                             Total = 200,
                             UnitCost = 200,
                         },
@@ -1400,7 +1400,7 @@ namespace StripeTests
                 },
                 AuthorizationMethod = "chip",
                 Card = "foo",
-                Currency = "usd",
+                Currency = "bar",
                 IsAmountControllable = true,
                 MerchantData = new Stripe.TestHelpers.Issuing.AuthorizationMerchantDataOptions
                 {
@@ -1692,7 +1692,7 @@ namespace StripeTests
             {
                 Amount = 100,
                 Card = "foo",
-                Currency = "usd",
+                Currency = "bar",
                 MerchantData = new Stripe.TestHelpers.Issuing.TransactionMerchantDataOptions
                 {
                     Category = "ac_refrigeration_repair",
@@ -1731,8 +1731,8 @@ namespace StripeTests
                     {
                         Type = "diesel",
                         Unit = "liter",
-                        UnitCostDecimal = 3.5M,
-                        VolumeDecimal = 10M,
+                        UnitCostDecimal = "3.5",
+                        VolumeDecimal = "10",
                     },
                     Lodging = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsLodgingOptions
                     {
@@ -1746,7 +1746,7 @@ namespace StripeTests
                         new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsReceiptOptions
                         {
                             Description = "Room charge",
-                            Quantity = 1M,
+                            Quantity = "1",
                             Total = 200,
                             UnitCost = 200,
                         },
@@ -1766,7 +1766,7 @@ namespace StripeTests
             {
                 Amount = 100,
                 Card = "foo",
-                Currency = "usd",
+                Currency = "bar",
                 MerchantData = new Stripe.TestHelpers.Issuing.TransactionMerchantDataOptions
                 {
                     Category = "ac_refrigeration_repair",
@@ -1805,8 +1805,8 @@ namespace StripeTests
                     {
                         Type = "diesel",
                         Unit = "liter",
-                        UnitCostDecimal = 3.5M,
-                        VolumeDecimal = 10M,
+                        UnitCostDecimal = "3.5",
+                        VolumeDecimal = "10",
                     },
                     Lodging = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsLodgingOptions
                     {
@@ -1820,7 +1820,7 @@ namespace StripeTests
                         new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsReceiptOptions
                         {
                             Description = "Room charge",
-                            Quantity = 1M,
+                            Quantity = "1",
                             Total = 200,
                             UnitCost = 200,
                         },
