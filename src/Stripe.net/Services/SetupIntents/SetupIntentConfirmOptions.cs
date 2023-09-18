@@ -8,6 +8,9 @@ namespace Stripe
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
 
+        /// <summary>
+        /// This hash contains details about the Mandate to create.
+        /// </summary>
         [JsonProperty("mandate_data")]
         public SetupIntentMandateDataOptions MandateData { get; set; }
 

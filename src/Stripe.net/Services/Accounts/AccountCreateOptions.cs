@@ -78,6 +78,20 @@ namespace Stripe
         [JsonProperty("email")]
         public string Email { get; set; }
 
+        /// <summary>
+        /// A card or bank account to attach to the account for receiving <a
+        /// href="https://stripe.com/docs/connect/bank-debit-card-payouts">payouts</a> (you won’t be
+        /// able to use it for top-ups). You can provide either a token, like the ones returned by
+        /// <a href="https://stripe.com/docs/js">Stripe.js</a>, or a dictionary, as documented in
+        /// the <c>external_account</c> parameter for <a
+        /// href="https://stripe.com/docs/api#account_create_bank_account">bank account</a>
+        /// creation. &lt;br&gt;&lt;br&gt;By default, providing an external account sets it as the
+        /// new default external account for its currency, and deletes the old default if one
+        /// exists. To add additional external accounts without replacing the existing default for
+        /// the currency, use the <a
+        /// href="https://stripe.com/docs/api#account_create_bank_account">bank account</a> or <a
+        /// href="https://stripe.com/docs/api#account_create_card">card creation</a> APIs.
+        /// </summary>
         [JsonProperty("external_account")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, AccountBankAccountOptions, AccountCardOptions> ExternalAccount { get; set; }

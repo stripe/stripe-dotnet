@@ -12,6 +12,9 @@ namespace Stripe
         [JsonProperty("account")]
         public TokenAccountOptions Account { get; set; }
 
+        /// <summary>
+        /// The bank account this token will represent.
+        /// </summary>
         [JsonProperty("bank_account")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, TokenBankAccountOptions> BankAccount { get; set; }

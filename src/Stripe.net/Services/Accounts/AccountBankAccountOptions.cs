@@ -19,6 +19,7 @@ namespace Stripe
         /// The type of entity that holds the account. It can be <c>company</c> or
         /// <c>individual</c>. This field is required when attaching the bank account to a
         /// <c>Customer</c> object.
+        /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
         [JsonProperty("account_holder_type")]
         public string AccountHolderType { get; set; }
