@@ -5,6 +5,9 @@ namespace Stripe
 
     public class ApplicationFeeListOptions : ListOptionsWithCreated
     {
+        /// <summary>
+        /// Only return application fees for the charge specified by this charge ID.
+        /// </summary>
         [JsonProperty("charge")]
         public string Charge { get; set; }
     }

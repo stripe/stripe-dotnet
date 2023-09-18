@@ -5,6 +5,9 @@ namespace Stripe.Terminal
 
     public class ConfigurationListOptions : ListOptions
     {
+        /// <summary>
+        /// if present, only return the account default or non-default configurations.
+        /// </summary>
         [JsonProperty("is_account_default")]
         public bool? IsAccountDefault { get; set; }
     }

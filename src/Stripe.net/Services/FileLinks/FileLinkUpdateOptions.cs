@@ -8,6 +8,10 @@ namespace Stripe
 
     public class FileLinkUpdateOptions : BaseOptions, IHasMetadata
     {
+        /// <summary>
+        /// A future timestamp after which the link will no longer be usable, or <c>now</c> to
+        /// expire the link immediately.
+        /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }

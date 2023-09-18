@@ -18,6 +18,9 @@ namespace Stripe
         [JsonProperty("confirmation_token")]
         public string ConfirmationToken { get; set; }
 
+        /// <summary>
+        /// This hash contains details about the Mandate to create.
+        /// </summary>
         [JsonProperty("mandate_data")]
         public SetupIntentMandateDataOptions MandateData { get; set; }
 

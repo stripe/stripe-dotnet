@@ -5,9 +5,19 @@ namespace Stripe.Tax
 
     public class FormListOptions : ListOptions
     {
+        /// <summary>
+        /// The payee whose volume is represented on the tax form.
+        /// </summary>
         [JsonProperty("payee")]
         public FormPayeeOptions Payee { get; set; }
 
+        /// <summary>
+        /// An optional filter on the list, based on the object <c>type</c> field. Without the
+        /// filter, the list includes all current and future tax form types. If your integration
+        /// expects only one type of tax form in the response, make sure to provide a type value in
+        /// the request.
+        /// One of: <c>us_1099_k</c>, <c>us_1099_misc</c>, or <c>us_1099_nec</c>.
+        /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
     }

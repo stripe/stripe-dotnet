@@ -76,6 +76,15 @@ namespace Stripe
         [JsonProperty("boleto")]
         public PaymentMethodBoletoOptions Boleto { get; set; }
 
+        /// <summary>
+        /// If this is a <c>card</c> PaymentMethod, this hash contains the user's card details. For
+        /// backwards compatibility, you can alternatively provide a Stripe token (e.g., for Apple
+        /// Pay, Amex Express Checkout, or legacy Checkout) into the card hash with format <c>card:
+        /// {token: "tok_visa"}</c>. When providing a card number, you must meet the requirements
+        /// for <a href="https://stripe.com/docs/security#validating-pci-compliance">PCI
+        /// compliance</a>. We strongly recommend using Stripe.js instead of interacting with this
+        /// API directly.
+        /// </summary>
         [JsonProperty("card")]
         public PaymentMethodCardOptions Card { get; set; }
 
