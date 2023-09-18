@@ -120,6 +120,14 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        /// Set to <c>true</c> to indicate that the customer is not in your checkout flow during
+        /// this payment attempt, and therefore is unable to authenticate. This parameter is
+        /// intended for scenarios where you collect card details and <a
+        /// href="https://stripe.com/docs/payments/cards/charging-saved-cards">charge them
+        /// later</a>. This parameter can only be used with <a
+        /// href="https://stripe.com/docs/api/payment_intents/create#create_payment_intent-confirm"><c>confirm=true</c></a>.
+        /// </summary>
         [JsonProperty("off_session")]
         public bool? OffSession { get; set; }
 

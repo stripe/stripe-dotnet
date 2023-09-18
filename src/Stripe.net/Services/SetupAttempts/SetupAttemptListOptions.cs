@@ -5,6 +5,9 @@ namespace Stripe
 
     public class SetupAttemptListOptions : ListOptionsWithCreated
     {
+        /// <summary>
+        /// Only return SetupAttempts created by the SetupIntent specified by this ID.
+        /// </summary>
         [JsonProperty("setup_intent")]
         public string SetupIntent { get; set; }
     }
