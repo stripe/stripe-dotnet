@@ -16,5 +16,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("submit")]
         public PaymentLinkCustomTextSubmitOptions Submit { get; set; }
+
+        /// <summary>
+        /// Custom text that should be displayed in place of the default terms of service agreement
+        /// text.
+        /// </summary>
+        [JsonProperty("terms_of_service_acceptance")]
+        public PaymentLinkCustomTextTermsOfServiceAcceptanceOptions TermsOfServiceAcceptance { get; set; }
     }
 }

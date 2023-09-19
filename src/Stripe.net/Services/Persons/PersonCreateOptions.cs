@@ -76,8 +76,8 @@ namespace Stripe
         /// The person's ID number, as appropriate for their country. For example, a social security
         /// number in the U.S., social insurance number in Canada, etc. Instead of the number
         /// itself, you can also provide a <a
-        /// href="https://stripe.com/docs/js/tokens_sources/create_token?type=pii">PII token
-        /// provided by Stripe.js</a>.
+        /// href="https://stripe.com/docs/js/tokens/create_token?type=pii">PII token provided by
+        /// Stripe.js</a>.
         /// </summary>
         [JsonProperty("id_number")]
         public string IdNumber { get; set; }
@@ -86,8 +86,8 @@ namespace Stripe
         /// The person's secondary ID number, as appropriate for their country, will be used for
         /// enhanced verification checks. In Thailand, this would be the laser code found on the
         /// back of an ID card. Instead of the number itself, you can also provide a <a
-        /// href="https://stripe.com/docs/js/tokens_sources/create_token?type=pii">PII token
-        /// provided by Stripe.js</a>.
+        /// href="https://stripe.com/docs/js/tokens/create_token?type=pii">PII token provided by
+        /// Stripe.js</a>.
         /// </summary>
         [JsonProperty("id_number_secondary")]
         public string IdNumberSecondary { get; set; }
