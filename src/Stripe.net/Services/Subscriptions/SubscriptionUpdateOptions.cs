@@ -145,6 +145,12 @@ namespace Stripe
         public List<SubscriptionDiscountOptions> Discounts { get; set; }
 
         /// <summary>
+        /// All invoices will be billed using the specified settings.
+        /// </summary>
+        [JsonProperty("invoice_settings")]
+        public SubscriptionInvoiceSettingsOptions InvoiceSettings { get; set; }
+
+        /// <summary>
         /// A list of up to 20 subscription items, each with an attached price.
         /// </summary>
         [JsonProperty("items")]
