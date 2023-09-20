@@ -103,8 +103,8 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
-        /// The list of payment method types (e.g. card) that this PaymentIntent is allowed to use.
-        /// Use automatic_payment_methods to manage payment methods from the <a
+        /// The list of payment method types (for example, card) that this PaymentIntent can use.
+        /// Use <c>automatic_payment_methods</c> to manage payment methods from the <a
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
@@ -165,19 +165,18 @@ namespace Stripe
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
-        /// The parameters used to automatically create a Transfer when the payment succeeds. For
-        /// more information, see the PaymentIntents <a
-        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
-        /// accounts</a>.
+        /// Use this parameter to automatically create a Transfer when the payment succeeds. Learn
+        /// more about the <a href="https://stripe.com/docs/payments/connected-accounts">use case
+        /// for connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
         public PaymentIntentTransferDataOptions TransferData { get; set; }
 
         /// <summary>
-        /// A string that identifies the resulting payment as part of a group. <c>transfer_group</c>
-        /// may only be provided if it has not been set. See the PaymentIntents <a
+        /// A string that identifies the resulting payment as part of a group. You can only provide
+        /// <c>transfer_group</c> if it hasn't been set. Learn more about the <a
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
-        /// accounts</a> for details.
+        /// accounts</a>.
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
