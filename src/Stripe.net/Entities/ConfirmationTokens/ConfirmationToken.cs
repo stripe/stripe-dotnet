@@ -32,12 +32,6 @@ namespace Stripe
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// ID of the Customer this ConfirmationToken belongs to.
-        /// </summary>
-        [JsonProperty("customer")]
-        public string Customer { get; set; }
-
-        /// <summary>
         /// Time at which this ConfirmationToken expires and can no longer be used to confirm a
         /// PaymentIntent or SetupIntent. This is set to null once this ConfirmationToken has been
         /// used.
