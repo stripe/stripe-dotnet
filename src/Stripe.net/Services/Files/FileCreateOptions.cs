@@ -7,14 +7,14 @@ namespace Stripe
     public class FileCreateOptions : BaseOptions
     {
         /// <summary>
-        /// A file to upload. The file should follow the specifications of RFC 2388 (which defines
-        /// file transfers for the <c>multipart/form-data</c> protocol).
+        /// A file to upload. Make sure that the specifications follow RFC 2388, which defines file
+        /// transfers for the <c>multipart/form-data</c> protocol.
         /// </summary>
         [JsonProperty("file")]
         public Stream File { get; set; }
 
         /// <summary>
-        /// Optional parameters to automatically create a <a
+        /// Optional parameters that automatically create a <a
         /// href="https://stripe.com/docs/api#file_links">file link</a> for the newly created file.
         /// </summary>
         [JsonProperty("file_link_data")]

@@ -8,7 +8,7 @@ namespace Stripe
 
     /// <summary>
     /// To share the contents of a <c>File</c> object with non-Stripe users, you can create a
-    /// <c>FileLink</c>. <c>FileLink</c>s contain a URL that can be used to retrieve the
+    /// <c>FileLink</c>. <c>FileLink</c>s contain a URL that you can use to retrieve the
     /// contents of the file without authentication.
     /// </summary>
     public class FileLink : StripeEntity<FileLink>, IHasId, IHasMetadata, IHasObject
@@ -33,13 +33,13 @@ namespace Stripe
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Whether this link is already expired.
+        /// Returns if the link is already expired.
         /// </summary>
         [JsonProperty("expired")]
         public bool Expired { get; set; }
 
         /// <summary>
-        /// Time at which the link expires.
+        /// Time that the link expires.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

@@ -9,7 +9,7 @@ namespace Stripe
     public class FileLinkCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// A future timestamp after which the link will no longer be usable.
+        /// The link isn't usable after this future timestamp.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

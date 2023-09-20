@@ -16,5 +16,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("submit")]
         public SessionCustomTextSubmitOptions Submit { get; set; }
+
+        /// <summary>
+        /// Custom text that should be displayed in place of the default terms of service agreement
+        /// text.
+        /// </summary>
+        [JsonProperty("terms_of_service_acceptance")]
+        public SessionCustomTextTermsOfServiceAcceptanceOptions TermsOfServiceAcceptance { get; set; }
     }
 }
