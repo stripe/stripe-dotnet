@@ -123,7 +123,7 @@ namespace Stripe
         /// steps.
         ///
         /// Related guide: <a
-        /// href="https://stripe.com/docs/connect/identity-verification-api#person-information">Handling
+        /// href="https://stripe.com/docs/connect/handling-api-verification#person-information">Handling
         /// identity verification with the API</a>.
         /// </summary>
         [JsonProperty("individual")]
