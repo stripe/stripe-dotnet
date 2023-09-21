@@ -1,6 +1,8 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
+
     public static class Events
     {
         /// <summary>
@@ -581,6 +583,7 @@ namespace Stripe
         /// The "invoiceitem.updated" event type. See
         /// https://stripe.com/docs/api/events/types#event_types-invoiceitem.updated for details.
         /// </summary>
+        [Obsolete("This event is deprecated and going to be removed")]
         public const string InvoiceItemUpdated = "invoiceitem.updated";
 
         /// <summary>
