@@ -1,5 +1,10 @@
 # Changelog
 
+## 42.6.0 - 2023-09-21
+* [#2769](https://github.com/stripe/stripe-dotnet/pull/2769) Update generated code
+  * Add support for `TermsOfServiceAcceptance` on `CheckoutSessionCustomTextOptions`, `CheckoutSessionCustomText`, `PaymentLinkCustomTextOptions`, and `PaymentLinkCustomText`
+* [#2770](https://github.com/stripe/stripe-dotnet/pull/2770) Add comments for query parameters
+
 ## 42.5.0 - 2023-09-14
 * [#2767](https://github.com/stripe/stripe-dotnet/pull/2767) Update generated code
   * Add support for new resource `PaymentMethodConfiguration`
