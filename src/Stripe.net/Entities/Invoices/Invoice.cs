@@ -552,6 +552,13 @@ namespace Stripe
         public string InvoicePdf { get; set; }
 
         /// <summary>
+        /// The connected account that issues the invoice. The invoice is presented with the
+        /// branding and support information of the specified account.
+        /// </summary>
+        [JsonProperty("issuer")]
+        public InvoiceIssuer Issuer { get; set; }
+
+        /// <summary>
         /// The error encountered during the previous attempt to finalize the invoice. This field is
         /// cleared when the invoice is successfully finalized.
         /// </summary>

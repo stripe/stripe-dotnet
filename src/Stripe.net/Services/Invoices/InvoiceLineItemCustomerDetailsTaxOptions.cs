@@ -1,8 +1,9 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
 
+    [Obsolete("This type is unused and is going to be removed.")]
     public class InvoiceLineItemCustomerDetailsTaxOptions : INestedOptions
     {
         /// <summary>

@@ -5,9 +5,16 @@ namespace Stripe.Radar
 
     public class EarlyFraudWarningListOptions : ListOptions
     {
+        /// <summary>
+        /// Only return early fraud warnings for the charge specified by this charge ID.
+        /// </summary>
         [JsonProperty("charge")]
         public string Charge { get; set; }
 
+        /// <summary>
+        /// Only return early fraud warnings for charges that were created by the PaymentIntent
+        /// specified by this PaymentIntent ID.
+        /// </summary>
         [JsonProperty("payment_intent")]
         public string PaymentIntent { get; set; }
     }

@@ -5,6 +5,9 @@ namespace Stripe
 
     public class PaymentMethodConfigurationListOptions : ListOptions
     {
+        /// <summary>
+        /// The Connect application to filter by.
+        /// </summary>
         [JsonProperty("application")]
         public string Application { get; set; }
     }

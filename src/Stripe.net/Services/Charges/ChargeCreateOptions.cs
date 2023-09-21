@@ -117,6 +117,19 @@ namespace Stripe
         [JsonProperty("shipping")]
         public ChargeShippingOptions Shipping { get; set; }
 
+        /// <summary>
+        /// A payment source to be charged. This can be the ID of a <a
+        /// href="https://stripe.com/docs/api#cards">card</a> (i.e., credit or debit card), a <a
+        /// href="https://stripe.com/docs/api#bank_accounts">bank account</a>, a <a
+        /// href="https://stripe.com/docs/api#sources">source</a>, a <a
+        /// href="https://stripe.com/docs/api#tokens">token</a>, or a <a
+        /// href="https://stripe.com/docs/connect/account-debits#charging-a-connected-account">connected
+        /// account</a>. For certain sources---namely, <a
+        /// href="https://stripe.com/docs/api#cards">cards</a>, <a
+        /// href="https://stripe.com/docs/api#bank_accounts">bank accounts</a>, and attached <a
+        /// href="https://stripe.com/docs/api#sources">sources</a>---you must also pass the ID of
+        /// the associated customer.
+        /// </summary>
         [JsonProperty("source")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
