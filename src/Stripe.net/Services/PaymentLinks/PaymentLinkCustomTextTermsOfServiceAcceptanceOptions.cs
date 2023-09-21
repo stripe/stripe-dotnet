@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
-namespace Stripe.Checkout
+namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class SessionCustomTextShippingAddressOptions : INestedOptions
+    public class PaymentLinkCustomTextTermsOfServiceAcceptanceOptions : INestedOptions
     {
         /// <summary>
         /// Text may be up to 1200 characters in length.

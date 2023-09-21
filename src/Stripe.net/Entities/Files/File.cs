@@ -6,11 +6,11 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// This is an object representing a file hosted on Stripe's servers. The file may have been
-    /// uploaded by yourself using the <a href="https://stripe.com/docs/api#create_file">create
-    /// file</a> request (for example, when uploading dispute evidence) or it may have been
-    /// created by Stripe (for example, the results of a <a
-    /// href="https://stripe.com/docs/api#scheduled_queries">Sigma scheduled query</a>).
+    /// This object represents files hosted on Stripe's servers. You can upload files with the
+    /// <a href="https://stripe.com/docs/api#create_file">create file</a> request (for example,
+    /// when uploading dispute evidence). Stripe also creates files independetly (for example,
+    /// the results of a <a href="https://stripe.com/docs/api#scheduled_queries">Sigma scheduled
+    /// query</a>).
     ///
     /// Related guide: <a href="https://stripe.com/docs/file-upload">File upload guide</a>.
     /// </summary>
@@ -36,14 +36,14 @@ namespace Stripe
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The time at which the file expires and is no longer available in epoch seconds.
+        /// The file expires and isn't available at this time in epoch seconds.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
-        /// A filename for the file, suitable for saving to a filesystem.
+        /// The suitable name for saving the file to a filesystem.
         /// </summary>
         [JsonProperty("filename")]
         public string Filename { get; set; }
@@ -70,25 +70,25 @@ namespace Stripe
         public string Purpose { get; set; }
 
         /// <summary>
-        /// The size in bytes of the file object.
+        /// The size of the file object in bytes.
         /// </summary>
         [JsonProperty("size")]
         public long Size { get; set; }
 
         /// <summary>
-        /// A user friendly title for the document.
+        /// A suitable title for the document.
         /// </summary>
         [JsonProperty("title")]
         public string Title { get; set; }
 
         /// <summary>
-        /// The type of the file returned (e.g., <c>csv</c>, <c>pdf</c>, <c>jpg</c>, or <c>png</c>).
+        /// The returned file type (for example, <c>csv</c>, <c>pdf</c>, <c>jpg</c>, or <c>png</c>).
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// The URL from which the file can be downloaded using your live secret API key.
+        /// Use your live secret API key to download the file from this URL.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }

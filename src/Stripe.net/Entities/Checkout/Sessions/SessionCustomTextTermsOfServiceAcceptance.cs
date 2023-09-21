@@ -3,7 +3,7 @@ namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
 
-    public class SessionCustomTextShippingAddressOptions : INestedOptions
+    public class SessionCustomTextTermsOfServiceAcceptance : StripeEntity<SessionCustomTextTermsOfServiceAcceptance>
     {
         /// <summary>
         /// Text may be up to 1200 characters in length.

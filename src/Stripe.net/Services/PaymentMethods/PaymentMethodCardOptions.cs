@@ -29,6 +29,11 @@ namespace Stripe
         [JsonProperty("number")]
         public string Number { get; set; }
 
+        /// <summary>
+        /// For backwards compatibility, you can alternatively provide a Stripe token (e.g., for
+        /// Apple Pay, Amex Express Checkout, or legacy Checkout) into the card hash with format
+        /// card: {token: "tok_visa"}.
+        /// </summary>
         [JsonProperty("token")]
         public string Token { get; set; }
     }

@@ -6,8 +6,8 @@ namespace Stripe
     public class FileListOptions : ListOptionsWithCreated
     {
         /// <summary>
-        /// The file purpose to filter queries by. If none is provided, files will not be filtered
-        /// by purpose.
+        /// Filter queries by the file purpose. If you don't provide a purpose, the queries return
+        /// unfiltered files.
         /// One of: <c>account_requirement</c>, <c>additional_verification</c>,
         /// <c>business_icon</c>, <c>business_logo</c>, <c>customer_signature</c>,
         /// <c>dispute_evidence</c>, <c>document_provider_identity_document</c>,

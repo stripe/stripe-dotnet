@@ -19,7 +19,7 @@ namespace Stripe
         public bool? Create { get; set; }
 
         /// <summary>
-        /// A future timestamp after which the link will no longer be usable.
+        /// The link isn't available after this future timestamp.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
