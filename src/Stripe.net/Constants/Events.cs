@@ -688,6 +688,13 @@ namespace Stripe
         public const string MandateUpdated = "mandate.updated";
 
         /// <summary>
+        /// The "order.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-order.created for details.
+        /// </summary>
+        [Obsolete("This event is deprecated and going to be removed")]
+        public const string OrderCreated = "order.created";
+
+        /// <summary>
         /// The "payment_intent.amount_capturable_updated" event type. See
         /// https://stripe.com/docs/api/events/types#event_types-payment_intent.amount_capturable_updated
         /// for details.
@@ -947,6 +954,27 @@ namespace Stripe
         public const string RadarEarlyFraudWarningUpdated = "radar.early_fraud_warning.updated";
 
         /// <summary>
+        /// The "recipient.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-recipient.created for details.
+        /// </summary>
+        [Obsolete("This event is deprecated and going to be removed")]
+        public const string RecipientCreated = "recipient.created";
+
+        /// <summary>
+        /// The "recipient.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-recipient.deleted for details.
+        /// </summary>
+        [Obsolete("This event is deprecated and going to be removed")]
+        public const string RecipientDeleted = "recipient.deleted";
+
+        /// <summary>
+        /// The "recipient.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-recipient.updated for details.
+        /// </summary>
+        [Obsolete("This event is deprecated and going to be removed")]
+        public const string RecipientUpdated = "recipient.updated";
+
+        /// <summary>
         /// The "refund.created" event type. See
         /// https://stripe.com/docs/api/events/types#event_types-refund.created for details.
         /// </summary>
@@ -1029,6 +1057,27 @@ namespace Stripe
         /// for details.
         /// </summary>
         public const string SigmaScheduledQueryRunCreated = "sigma.scheduled_query_run.created";
+
+        /// <summary>
+        /// The "sku.created" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-sku.created for details.
+        /// </summary>
+        [Obsolete("This event is deprecated and going to be removed")]
+        public const string SkuCreated = "sku.created";
+
+        /// <summary>
+        /// The "sku.deleted" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-sku.deleted for details.
+        /// </summary>
+        [Obsolete("This event is deprecated and going to be removed")]
+        public const string SkuDeleted = "sku.deleted";
+
+        /// <summary>
+        /// The "sku.updated" event type. See
+        /// https://stripe.com/docs/api/events/types#event_types-sku.updated for details.
+        /// </summary>
+        [Obsolete("This event is deprecated and going to be removed")]
+        public const string SkuUpdated = "sku.updated";
 
         /// <summary>
         /// The "source.canceled" event type. See
