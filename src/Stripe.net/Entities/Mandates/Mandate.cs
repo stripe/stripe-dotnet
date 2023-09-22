@@ -5,8 +5,8 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// A Mandate is a record of the permission a customer has given you to debit their payment
-    /// method.
+    /// A Mandate is a record of the permission that your customer gives you to debit their
+    /// payment method.
     /// </summary>
     public class Mandate : StripeEntity<Mandate>, IHasId, IHasObject
     {
@@ -36,7 +36,7 @@ namespace Stripe
         public MandateMultiUse MultiUse { get; set; }
 
         /// <summary>
-        /// The account (if any) for which the mandate is intended.
+        /// The account (if any) that the mandate is intended for.
         /// </summary>
         [JsonProperty("on_behalf_of")]
         public string OnBehalfOf { get; set; }
@@ -79,7 +79,7 @@ namespace Stripe
         public MandateSingleUse SingleUse { get; set; }
 
         /// <summary>
-        /// The status of the mandate, which indicates whether it can be used to initiate a payment.
+        /// The mandate status indicates whether or not you can use it to initiate a payment.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("status")]
