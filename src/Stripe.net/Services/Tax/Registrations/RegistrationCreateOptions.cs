@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Tax
 {
+    using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -33,6 +34,7 @@ namespace Stripe.Tax
         /// epoch.
         /// </summary>
         [JsonProperty("expires_at")]
-        public long? ExpiresAt { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? ExpiresAt { get; set; }
     }
 }

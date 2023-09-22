@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Tax
 {
+    using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -21,6 +22,6 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<long?, RegistrationExpiresAt> ExpiresAt { get; set; }
+        public AnyOf<DateTime?, RegistrationExpiresAt> ExpiresAt { get; set; }
     }
 }

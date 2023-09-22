@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class QuoteLineStartsAtOptions : INestedOptions
     {
@@ -21,7 +23,8 @@ namespace Stripe
         /// A precise Unix timestamp.
         /// </summary>
         [JsonProperty("timestamp")]
-        public long? Timestamp { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? Timestamp { get; set; }
 
         /// <summary>
         /// Select a way to pass in <c>starts_at</c>.
