@@ -788,7 +788,8 @@ namespace Stripe
         /// prorations.
         /// </summary>
         [JsonProperty("subscription_proration_date")]
-        public long SubscriptionProrationDate { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime SubscriptionProrationDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Total of all subscriptions, invoice items, and prorations on the invoice before any
