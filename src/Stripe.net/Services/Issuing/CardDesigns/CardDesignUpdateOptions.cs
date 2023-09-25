@@ -13,7 +13,8 @@ namespace Stripe.Issuing
         public string CardBundle { get; set; }
 
         /// <summary>
-        /// The file for the card logo, for use with card bundles that support card logos.
+        /// The file for the card logo, for use with card bundles that support card logos. Must have
+        /// <c>purpose</c> value of <c>issuing_logo</c>.
         /// </summary>
         [JsonProperty("card_logo")]
         public string CardLogo { get; set; }
