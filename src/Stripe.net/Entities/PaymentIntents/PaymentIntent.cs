@@ -57,7 +57,7 @@ namespace Stripe
         public PaymentIntentAmountDetails AmountDetails { get; set; }
 
         /// <summary>
-        /// Amount that was collected by this PaymentIntent.
+        /// Amount that this PaymentIntent collects.
         /// </summary>
         [JsonProperty("amount_received")]
         public long AmountReceived { get; set; }
@@ -262,7 +262,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Charge)
-        /// The latest charge created by this payment intent.
+        /// The latest charge created by this PaymentIntent.
         /// </summary>
         [JsonIgnore]
         public string LatestChargeId
@@ -273,7 +273,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The latest charge created by this payment intent.
+        /// The latest charge created by this PaymentIntent.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -299,8 +299,9 @@ namespace Stripe
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
-        /// object in a structured format. For more information, see the <a
-        /// href="https://stripe.com/docs/payments/payment-intents/creating-payment-intents#storing-information-in-metadata">documentation</a>.
+        /// object in a structured format. Learn more about <a
+        /// href="https://stripe.com/docs/payments/payment-intents/creating-payment-intents#storing-information-in-metadata">storing
+        /// information in metadata</a>.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -542,18 +543,17 @@ namespace Stripe
         public string Status { get; set; }
 
         /// <summary>
-        /// The data with which to automatically create a Transfer when the payment is finalized.
-        /// See the PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use
-        /// case for connected accounts</a> for details.
+        /// The data that automatically creates a Transfer after the payment finalizes. Learn more
+        /// about the <a href="https://stripe.com/docs/payments/connected-accounts">use case for
+        /// connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
         public PaymentIntentTransferData TransferData { get; set; }
 
         /// <summary>
-        /// A string that identifies the resulting payment as part of a group. See the
-        /// PaymentIntents <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">use case for
-        /// connected accounts</a> for details.
+        /// A string that identifies the resulting payment as part of a group. Learn more about the
+        /// <a href="https://stripe.com/docs/connect/separate-charges-and-transfers">use case for
+        /// connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }

@@ -7,8 +7,8 @@ namespace Stripe
     public class PaymentIntentIncrementAuthorizationOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The updated total amount you intend to collect from the cardholder. This amount must be
-        /// greater than the currently authorized amount.
+        /// The updated total amount that you intend to collect from the cardholder. This amount
+        /// must be greater than the currently authorized amount.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
@@ -47,10 +47,9 @@ namespace Stripe
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// The parameters used to automatically create a Transfer when the payment is captured. For
-        /// more information, see the PaymentIntents <a
-        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
-        /// accounts</a>.
+        /// The parameters used to automatically create a transfer after the payment is captured.
+        /// Learn more about the <a href="https://stripe.com/docs/payments/connected-accounts">use
+        /// case for connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
         public PaymentIntentTransferDataOptions TransferData { get; set; }

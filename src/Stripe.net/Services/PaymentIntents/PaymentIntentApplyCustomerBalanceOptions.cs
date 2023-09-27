@@ -6,15 +6,15 @@ namespace Stripe
     public class PaymentIntentApplyCustomerBalanceOptions : BaseOptions
     {
         /// <summary>
-        /// Amount intended to be applied to this PaymentIntent from the customer’s cash balance.
+        /// Amount that you intend to apply to this PaymentIntent from the customer’s cash balance.
         ///
         /// A positive integer representing how much to charge in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g.,
-        /// 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency).
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (for
+        /// example, 100 cents to charge 1 USD or 100 to charge 100 JPY, a zero-decimal currency).
         ///
         /// The maximum amount is the amount of the PaymentIntent.
         ///
-        /// When omitted, the amount defaults to the remaining amount requested on the
+        /// When you omit the amount, it defaults to the remaining amount requested on the
         /// PaymentIntent.
         /// </summary>
         [JsonProperty("amount")]
