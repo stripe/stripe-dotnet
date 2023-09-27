@@ -6,7 +6,7 @@ namespace Stripe
     public class PaymentIntentListOptions : ListOptionsWithCreated
     {
         /// <summary>
-        /// Only return PaymentIntents for the customer specified by this customer ID.
+        /// Only return PaymentIntents for the customer that this customer ID specifies.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
