@@ -6,7 +6,7 @@ namespace Stripe
     public class PaymentIntentGetOptions : BaseOptions
     {
         /// <summary>
-        /// The client secret of the PaymentIntent. It's required if you use a publishable key to
+        /// The client secret of the PaymentIntent. We require it if you use a publishable key to
         /// retrieve the source.
         /// </summary>
         [JsonProperty("client_secret")]
