@@ -707,7 +707,9 @@ namespace Stripe
         public QuotePreviewInvoiceRendering Rendering { get; set; }
 
         /// <summary>
-        /// Options for invoice PDF rendering.
+        /// This is a legacy field that will be removed soon. For details about
+        /// <c>rendering_options</c>, refer to <c>rendering</c> instead. Options for invoice PDF
+        /// rendering.
         /// </summary>
         [JsonProperty("rendering_options")]
         public QuotePreviewInvoiceRenderingOptions RenderingOptions { get; set; }
