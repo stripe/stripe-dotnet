@@ -16,7 +16,7 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// The price the customer should subscribe to through this flow. The price must also be
         /// included in the configuration's <a
-        /// href="docs/api/customer_portal/configuration#portal_configuration_object-features-subscription_update-products"><c>features.subscription_update.products</c></a>.
+        /// href="https://stripe.com/docs/api/customer_portal/configuration#portal_configuration_object-features-subscription_update-products"><c>features.subscription_update.products</c></a>.
         /// </summary>
         [JsonProperty("price")]
         public string Price { get; set; }
