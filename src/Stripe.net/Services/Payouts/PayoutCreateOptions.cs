@@ -27,8 +27,8 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// The ID of a bank account or a card to send the payout to. If no destination is supplied,
-        /// the default external account for the specified currency will be used.
+        /// The ID of a bank account or a card to send the payout to. If you don't provide a
+        /// destination, we use the default external account for the specified currency.
         /// </summary>
         [JsonProperty("destination")]
         public string Destination { get; set; }
@@ -43,10 +43,11 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The method used to send this payout, which can be <c>standard</c> or <c>instant</c>.
-        /// <c>instant</c> is supported for payouts to debit cards and bank accounts in certain
-        /// countries. (See <a href="https://stripe.com/docs/payouts/instant-payouts-banks">Bank
-        /// support for Instant Payouts</a> for more information.).
+        /// The method used to send this payout, which is <c>standard</c> or <c>instant</c>. We
+        /// support <c>instant</c> for payouts to debit cards and bank accounts in certain
+        /// countries. Learn more about <a
+        /// href="https://stripe.com/docs/payouts/instant-payouts-banks">bank support for Instant
+        /// Payouts</a>.
         /// One of: <c>instant</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("method")]
@@ -54,7 +55,7 @@ namespace Stripe
 
         /// <summary>
         /// The balance type of your Stripe balance to draw this payout from. Balances for different
-        /// payment sources are kept separately. You can find the amounts with the balances API. One
+        /// payment sources are kept separately. You can find the amounts with the Balances API. One
         /// of <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.
         /// One of: <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.
         /// </summary>
@@ -62,10 +63,10 @@ namespace Stripe
         public string SourceType { get; set; }
 
         /// <summary>
-        /// A string to be displayed on the recipient's bank or card statement. This may be at most
-        /// 22 characters. Attempting to use a <c>statement_descriptor</c> longer than 22 characters
-        /// will return an error. Note: Most banks will truncate this information and/or display it
-        /// inconsistently. Some may not display it at all.
+        /// A string that displays on the recipient's bank or card statement (up to 22 characters).
+        /// A <c>statement_descriptor</c> that's longer than 22 characters return an error. Most
+        /// banks truncate this information and display it inconsistently. Some banks might not
+        /// display it at all.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }

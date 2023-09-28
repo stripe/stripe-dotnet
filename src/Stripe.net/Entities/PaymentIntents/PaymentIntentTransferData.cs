@@ -23,8 +23,8 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Account)
-        /// The account (if any) the payment will be attributed to for tax reporting, and where
-        /// funds from the payment will be transferred to upon payment success.
+        /// The account (if any) that the payment is attributed to for tax reporting, and where
+        /// funds from the payment are transferred to after payment success.
         /// </summary>
         [JsonIgnore]
         public string DestinationId
@@ -35,8 +35,8 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The account (if any) the payment will be attributed to for tax reporting, and where
-        /// funds from the payment will be transferred to upon payment success.
+        /// The account (if any) that the payment is attributed to for tax reporting, and where
+        /// funds from the payment are transferred to after payment success.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

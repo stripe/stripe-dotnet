@@ -781,7 +781,16 @@ namespace Stripe
         public string ReceiptNumber { get; set; }
 
         /// <summary>
-        /// Options for invoice PDF rendering.
+        /// The rendering-related settings that control how the invoice is displayed on
+        /// customer-facing surfaces such as PDF and Hosted Invoice Page.
+        /// </summary>
+        [JsonProperty("rendering")]
+        public InvoiceRendering Rendering { get; set; }
+
+        /// <summary>
+        /// This is a legacy field that will be removed soon. For details about
+        /// <c>rendering_options</c>, refer to <c>rendering</c> instead. Options for invoice PDF
+        /// rendering.
         /// </summary>
         [JsonProperty("rendering_options")]
         public InvoiceRenderingOptions RenderingOptions { get; set; }

@@ -148,7 +148,7 @@ namespace Stripe
         /// <c>issuing_dispute.closed</c>, <c>issuing_dispute.created</c>,
         /// <c>issuing_dispute.funds_reinstated</c>, <c>issuing_dispute.submitted</c>,
         /// <c>issuing_dispute.updated</c>, <c>issuing_transaction.created</c>,
-        /// <c>issuing_transaction.updated</c>, <c>mandate.updated</c>, <c>order.created</c>,
+        /// <c>issuing_transaction.updated</c>, <c>mandate.updated</c>,
         /// <c>payment_intent.amount_capturable_updated</c>, <c>payment_intent.canceled</c>,
         /// <c>payment_intent.created</c>, <c>payment_intent.partially_funded</c>,
         /// <c>payment_intent.payment_failed</c>, <c>payment_intent.processing</c>,
@@ -164,15 +164,13 @@ namespace Stripe
         /// <c>promotion_code.created</c>, <c>promotion_code.updated</c>, <c>quote.accepted</c>,
         /// <c>quote.canceled</c>, <c>quote.created</c>, <c>quote.finalized</c>,
         /// <c>radar.early_fraud_warning.created</c>, <c>radar.early_fraud_warning.updated</c>,
-        /// <c>recipient.created</c>, <c>recipient.deleted</c>, <c>recipient.updated</c>,
         /// <c>refund.created</c>, <c>refund.updated</c>, <c>reporting.report_run.failed</c>,
         /// <c>reporting.report_run.succeeded</c>, <c>reporting.report_type.updated</c>,
         /// <c>review.closed</c>, <c>review.opened</c>, <c>setup_intent.canceled</c>,
         /// <c>setup_intent.created</c>, <c>setup_intent.requires_action</c>,
         /// <c>setup_intent.setup_failed</c>, <c>setup_intent.succeeded</c>,
-        /// <c>sigma.scheduled_query_run.created</c>, <c>sku.created</c>, <c>sku.deleted</c>,
-        /// <c>sku.updated</c>, <c>source.canceled</c>, <c>source.chargeable</c>,
-        /// <c>source.failed</c>, <c>source.mandate_notification</c>,
+        /// <c>sigma.scheduled_query_run.created</c>, <c>source.canceled</c>,
+        /// <c>source.chargeable</c>, <c>source.failed</c>, <c>source.mandate_notification</c>,
         /// <c>source.refund_attributes_required</c>, <c>source.transaction.created</c>,
         /// <c>source.transaction.updated</c>, <c>subscription_schedule.aborted</c>,
         /// <c>subscription_schedule.canceled</c>, <c>subscription_schedule.completed</c>,
@@ -201,7 +199,10 @@ namespace Stripe
         /// <c>treasury.outbound_transfer.failed</c>, <c>treasury.outbound_transfer.posted</c>,
         /// <c>treasury.outbound_transfer.returned</c>, <c>treasury.received_credit.created</c>,
         /// <c>treasury.received_credit.failed</c>, <c>treasury.received_credit.succeeded</c>,
-        /// <c>treasury.received_debit.created</c>, or <c>invoiceitem.updated</c>.
+        /// <c>treasury.received_debit.created</c>, <c>invoiceitem.updated</c>,
+        /// <c>order.created</c>, <c>recipient.created</c>, <c>recipient.deleted</c>,
+        /// <c>recipient.updated</c>, <c>sku.created</c>, <c>sku.deleted</c>, <c>sku.updated</c>, or
+        /// <c>ping</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

@@ -6,13 +6,13 @@ namespace Stripe
     public class MandateSingleUse : StripeEntity<MandateSingleUse>
     {
         /// <summary>
-        /// On a single use mandate, the amount of the payment.
+        /// The amount of the payment on a single use mandate.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         /// <summary>
-        /// On a single use mandate, the currency of the payment.
+        /// The currency of the payment on a single use mandate.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
