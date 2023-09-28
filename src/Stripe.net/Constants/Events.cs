@@ -323,6 +323,12 @@ namespace Stripe
         public const string CustomerSubscriptionCreated = "customer.subscription.created";
 
         /// <summary>
+        /// An ad-hoc custom event that is sent based on user configured <a
+        /// href="https://stripe.com/docs/billing/revenue-recovery/automations">Automation</a>.
+        /// </summary>
+        public const string CustomerSubscriptionCustomEvent = "customer.subscription.custom_event";
+
+        /// <summary>
         /// Occurs whenever a customer's subscription ends.
         /// </summary>
         public const string CustomerSubscriptionDeleted = "customer.subscription.deleted";
@@ -585,28 +591,6 @@ namespace Stripe
         public const string IssuingAuthorizationUpdated = "issuing_authorization.updated";
 
         /// <summary>
-        /// Occurs whenever a card design is activated following the activation of the card bundle
-        /// that belongs to it.
-        /// </summary>
-        public const string IssuingCardDesignActivated = "issuing_card_design.activated";
-
-        /// <summary>
-        /// Occurs whenever a card design is deactivated following the deactivation of the card
-        /// bundle that belongs to it.
-        /// </summary>
-        public const string IssuingCardDesignDeactivated = "issuing_card_design.deactivated";
-
-        /// <summary>
-        /// Occurs whenever a card design is rejected by design review.
-        /// </summary>
-        public const string IssuingCardDesignRejected = "issuing_card_design.rejected";
-
-        /// <summary>
-        /// Occurs whenever a card design is updated.
-        /// </summary>
-        public const string IssuingCardDesignUpdated = "issuing_card_design.updated";
-
-        /// <summary>
         /// Occurs whenever a card is created.
         /// </summary>
         public const string IssuingCardCreated = "issuing_card.created";
@@ -650,6 +634,28 @@ namespace Stripe
         /// Occurs whenever a dispute is updated.
         /// </summary>
         public const string IssuingDisputeUpdated = "issuing_dispute.updated";
+
+        /// <summary>
+        /// Occurs whenever a personalization design is activated following the activation of the
+        /// physical bundle that belongs to it.
+        /// </summary>
+        public const string IssuingPersonalizationDesignActivated = "issuing_personalization_design.activated";
+
+        /// <summary>
+        /// Occurs whenever a personalization design is deactivated following the deactivation of
+        /// the physical bundle that belongs to it.
+        /// </summary>
+        public const string IssuingPersonalizationDesignDeactivated = "issuing_personalization_design.deactivated";
+
+        /// <summary>
+        /// Occurs whenever a personalization design is rejected by design review.
+        /// </summary>
+        public const string IssuingPersonalizationDesignRejected = "issuing_personalization_design.rejected";
+
+        /// <summary>
+        /// Occurs whenever a personalization design is updated.
+        /// </summary>
+        public const string IssuingPersonalizationDesignUpdated = "issuing_personalization_design.updated";
 
         /// <summary>
         /// Occurs whenever an issuing transaction is created.

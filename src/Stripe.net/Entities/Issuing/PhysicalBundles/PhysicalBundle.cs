@@ -4,10 +4,10 @@ namespace Stripe.Issuing
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A Card Bundle represents the bundle of physical items - card stock, carrier letter, and
-    /// envelope - that is shipped to a cardholder when you create a physical card.
+    /// A Physical Bundle represents the bundle of physical items - card stock, carrier letter,
+    /// and envelope - that is shipped to a cardholder when you create a physical card.
     /// </summary>
-    public class CardBundle : StripeEntity<CardBundle>, IHasId, IHasObject
+    public class PhysicalBundle : StripeEntity<PhysicalBundle>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -22,7 +22,7 @@ namespace Stripe.Issuing
         public string Object { get; set; }
 
         [JsonProperty("features")]
-        public CardBundleFeatures Features { get; set; }
+        public PhysicalBundleFeatures Features { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
@@ -38,14 +38,14 @@ namespace Stripe.Issuing
         public string Name { get; set; }
 
         /// <summary>
-        /// Whether this card bundle can be used to create cards.
+        /// Whether this physical bundle can be used to create cards.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>review</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// Whether this card bundle is a standard Stripe offering or custom-made for you.
+        /// Whether this physical bundle is a standard Stripe offering or custom-made for you.
         /// One of: <c>custom</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("type")]

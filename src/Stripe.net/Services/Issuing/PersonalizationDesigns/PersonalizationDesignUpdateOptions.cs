@@ -4,30 +4,24 @@ namespace Stripe.Issuing
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CardDesignCreateOptions : BaseOptions, IHasMetadata
+    public class PersonalizationDesignUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The card bundle object belonging to this card design.
-        /// </summary>
-        [JsonProperty("card_bundle")]
-        public string CardBundle { get; set; }
-
-        /// <summary>
-        /// The file for the card logo, for use with card bundles that support card logos. Must have
-        /// <c>purpose</c> value of <c>issuing_logo</c>.
+        /// The file for the card logo, for use with physical bundles that support card logos. Must
+        /// have <c>purpose</c> value of <c>issuing_logo</c>.
         /// </summary>
         [JsonProperty("card_logo")]
         public string CardLogo { get; set; }
 
         /// <summary>
-        /// Hash containing carrier text, for use with card bundles that support carrier text.
+        /// Hash containing carrier text, for use with physical bundles that support carrier text.
         /// </summary>
         [JsonProperty("carrier_text")]
-        public CardDesignCarrierTextOptions CarrierText { get; set; }
+        public PersonalizationDesignCarrierTextOptions CarrierText { get; set; }
 
         /// <summary>
-        /// A lookup key used to retrieve card designs dynamically from a static string. This may be
-        /// up to 200 characters.
+        /// A lookup key used to retrieve personalization designs dynamically from a static string.
+        /// This may be up to 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
         public string LookupKey { get; set; }
@@ -42,21 +36,27 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Friendly display name.
+        /// Friendly display name. Providing an empty string will set the field to null.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Information on whether this card design is used to create cards when one is not
-        /// specified.
+        /// The physical bundle object belonging to this personalization design.
         /// </summary>
-        [JsonProperty("preferences")]
-        public CardDesignPreferencesOptions Preferences { get; set; }
+        [JsonProperty("physical_bundle")]
+        public string PhysicalBundle { get; set; }
 
         /// <summary>
-        /// If set to true, will atomically remove the lookup key from the existing card design, and
-        /// assign it to this card design.
+        /// Information on whether this personalization design is used to create cards when one is
+        /// not specified.
+        /// </summary>
+        [JsonProperty("preferences")]
+        public PersonalizationDesignPreferencesOptions Preferences { get; set; }
+
+        /// <summary>
+        /// If set to true, will atomically remove the lookup key from the existing personalization
+        /// design, and assign it to this personalization design.
         /// </summary>
         [JsonProperty("transfer_lookup_key")]
         public bool? TransferLookupKey { get; set; }

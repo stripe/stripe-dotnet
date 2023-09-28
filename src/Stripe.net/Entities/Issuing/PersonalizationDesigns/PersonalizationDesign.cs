@@ -6,10 +6,10 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// A Card Design is a logical grouping of a Card Bundle, card logo, and carrier text that
-    /// represents a product line.
+    /// A Personalization Design is a logical grouping of a Physical Bundle, card logo, and
+    /// carrier text that represents a product line.
     /// </summary>
-    public class CardDesign : StripeEntity<CardDesign>, IHasId, IHasMetadata, IHasObject
+    public class PersonalizationDesign : StripeEntity<PersonalizationDesign>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -23,42 +23,11 @@ namespace Stripe.Issuing
         [JsonProperty("object")]
         public string Object { get; set; }
 
-        #region Expandable CardBundle
-
-        /// <summary>
-        /// (ID of the CardBundle)
-        /// The card bundle object belonging to this card design.
-        /// </summary>
-        [JsonIgnore]
-        public string CardBundleId
-        {
-            get => this.InternalCardBundle?.Id;
-            set => this.InternalCardBundle = SetExpandableFieldId(value, this.InternalCardBundle);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// The card bundle object belonging to this card design.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-        public CardBundle CardBundle
-        {
-            get => this.InternalCardBundle?.ExpandedObject;
-            set => this.InternalCardBundle = SetExpandableFieldObject(value, this.InternalCardBundle);
-        }
-
-        [JsonProperty("card_bundle")]
-        [JsonConverter(typeof(ExpandableFieldConverter<CardBundle>))]
-        internal ExpandableField<CardBundle> InternalCardBundle { get; set; }
-        #endregion
-
         #region Expandable CardLogo
 
         /// <summary>
         /// (ID of the File)
-        /// The file for the card logo, for use with card bundles that support card logos.
+        /// The file for the card logo, for use with physical bundles that support card logos.
         /// </summary>
         [JsonIgnore]
         public string CardLogoId
@@ -69,7 +38,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (Expanded)
-        /// The file for the card logo, for use with card bundles that support card logos.
+        /// The file for the card logo, for use with physical bundles that support card logos.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -86,14 +55,14 @@ namespace Stripe.Issuing
         #endregion
 
         /// <summary>
-        /// Hash containing carrier text, for use with card bundles that support carrier text.
+        /// Hash containing carrier text, for use with physical bundles that support carrier text.
         /// </summary>
         [JsonProperty("carrier_text")]
-        public CardDesignCarrierText CarrierText { get; set; }
+        public PersonalizationDesignCarrierText CarrierText { get; set; }
 
         /// <summary>
-        /// A lookup key used to retrieve card designs dynamically from a static string. This may be
-        /// up to 200 characters.
+        /// A lookup key used to retrieve personalization designs dynamically from a static string.
+        /// This may be up to 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
         public string LookupKey { get; set; }
@@ -112,14 +81,45 @@ namespace Stripe.Issuing
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("preferences")]
-        public CardDesignPreferences Preferences { get; set; }
-
-        [JsonProperty("rejection_reasons")]
-        public CardDesignRejectionReasons RejectionReasons { get; set; }
+        #region Expandable PhysicalBundle
 
         /// <summary>
-        /// Whether this card design can be used to create cards.
+        /// (ID of the PhysicalBundle)
+        /// The physical bundle object belonging to this personalization design.
+        /// </summary>
+        [JsonIgnore]
+        public string PhysicalBundleId
+        {
+            get => this.InternalPhysicalBundle?.Id;
+            set => this.InternalPhysicalBundle = SetExpandableFieldId(value, this.InternalPhysicalBundle);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The physical bundle object belonging to this personalization design.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public PhysicalBundle PhysicalBundle
+        {
+            get => this.InternalPhysicalBundle?.ExpandedObject;
+            set => this.InternalPhysicalBundle = SetExpandableFieldObject(value, this.InternalPhysicalBundle);
+        }
+
+        [JsonProperty("physical_bundle")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PhysicalBundle>))]
+        internal ExpandableField<PhysicalBundle> InternalPhysicalBundle { get; set; }
+        #endregion
+
+        [JsonProperty("preferences")]
+        public PersonalizationDesignPreferences Preferences { get; set; }
+
+        [JsonProperty("rejection_reasons")]
+        public PersonalizationDesignRejectionReasons RejectionReasons { get; set; }
+
+        /// <summary>
+        /// Whether this personalization design can be used to create cards.
         /// One of: <c>active</c>, <c>inactive</c>, <c>rejected</c>, or <c>review</c>.
         /// </summary>
         [JsonProperty("status")]

@@ -37,37 +37,6 @@ namespace Stripe.Issuing
         [JsonProperty("cancellation_reason")]
         public string CancellationReason { get; set; }
 
-        #region Expandable CardDesign
-
-        /// <summary>
-        /// (ID of the CardDesign)
-        /// The card design object belonging to this card.
-        /// </summary>
-        [JsonIgnore]
-        public string CardDesignId
-        {
-            get => this.InternalCardDesign?.Id;
-            set => this.InternalCardDesign = SetExpandableFieldId(value, this.InternalCardDesign);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// The card design object belonging to this card.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-        public CardDesign CardDesign
-        {
-            get => this.InternalCardDesign?.ExpandedObject;
-            set => this.InternalCardDesign = SetExpandableFieldObject(value, this.InternalCardDesign);
-        }
-
-        [JsonProperty("card_design")]
-        [JsonConverter(typeof(ExpandableFieldConverter<CardDesign>))]
-        internal ExpandableField<CardDesign> InternalCardDesign { get; set; }
-        #endregion
-
         /// <summary>
         /// An Issuing <c>Cardholder</c> object represents an individual or business entity who is
         /// <a href="https://stripe.com/docs/issuing">issued</a> cards.
@@ -153,6 +122,37 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("number")]
         public string Number { get; set; }
+
+        #region Expandable PersonalizationDesign
+
+        /// <summary>
+        /// (ID of the PersonalizationDesign)
+        /// The personalization design object belonging to this card.
+        /// </summary>
+        [JsonIgnore]
+        public string PersonalizationDesignId
+        {
+            get => this.InternalPersonalizationDesign?.Id;
+            set => this.InternalPersonalizationDesign = SetExpandableFieldId(value, this.InternalPersonalizationDesign);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The personalization design object belonging to this card.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public PersonalizationDesign PersonalizationDesign
+        {
+            get => this.InternalPersonalizationDesign?.ExpandedObject;
+            set => this.InternalPersonalizationDesign = SetExpandableFieldObject(value, this.InternalPersonalizationDesign);
+        }
+
+        [JsonProperty("personalization_design")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PersonalizationDesign>))]
+        internal ExpandableField<PersonalizationDesign> InternalPersonalizationDesign { get; set; }
+        #endregion
 
         #region Expandable ReplacedBy
 

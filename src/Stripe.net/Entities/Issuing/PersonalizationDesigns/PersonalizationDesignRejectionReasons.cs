@@ -4,7 +4,7 @@ namespace Stripe.Issuing
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class CardDesignRejectionReasons : StripeEntity<CardDesignRejectionReasons>
+    public class PersonalizationDesignRejectionReasons : StripeEntity<PersonalizationDesignRejectionReasons>
     {
         /// <summary>
         /// The reason(s) the card logo was rejected.

@@ -7,12 +7,6 @@ namespace Stripe.Issuing
     public class CardCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The card design object belonging to this card.
-        /// </summary>
-        [JsonProperty("card_design")]
-        public string CardDesign { get; set; }
-
-        /// <summary>
         /// The <a href="https://stripe.com/docs/api#issuing_cardholder_object">Cardholder</a>
         /// object with which the card will be associated.
         /// </summary>
@@ -36,6 +30,12 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The personalization design object belonging to this card.
+        /// </summary>
+        [JsonProperty("personalization_design")]
+        public string PersonalizationDesign { get; set; }
 
         /// <summary>
         /// The card this is meant to be a replacement for (if any).

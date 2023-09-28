@@ -3,7 +3,7 @@ namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
 
-    public class CardDesignCarrierText : StripeEntity<CardDesignCarrierText>
+    public class PersonalizationDesignCarrierTextOptions : INestedOptions
     {
         /// <summary>
         /// The footer body text of the carrier letter.

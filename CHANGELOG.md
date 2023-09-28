@@ -1,5 +1,9 @@
 # Changelog
 
+## 42.7.0 - 2023-09-28
+* [#2772](https://github.com/stripe/stripe-dotnet/pull/2772) Update generated code
+  * Add support for `Rendering` on `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
+
 ## 42.7.0-beta.1 - 2023-09-21
 * [#2768](https://github.com/stripe/stripe-dotnet/pull/2768) Update generated code for beta
   * Remove support for `Customer` on `ConfirmationToken`

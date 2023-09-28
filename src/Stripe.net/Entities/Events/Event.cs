@@ -88,6 +88,15 @@ namespace Stripe
         public long PendingWebhooks { get; set; }
 
         /// <summary>
+        /// Information about the action that causes the event. Only present when the event is
+        /// triggered by an API request or an <a
+        /// href="https://stripe.com/docs/billing/revenue-recovery/automations">Automation</a>
+        /// action.
+        /// </summary>
+        [JsonProperty("reason")]
+        public EventReason Reason { get; set; }
+
+        /// <summary>
         /// Information on the API request that triggers the event.
         /// </summary>
         [JsonProperty("request")]
@@ -124,7 +133,8 @@ namespace Stripe
         /// <c>customer.source.deleted</c>, <c>customer.source.expiring</c>,
         /// <c>customer.source.updated</c>, <c>customer.subscription.collection_paused</c>,
         /// <c>customer.subscription.collection_resumed</c>, <c>customer.subscription.created</c>,
-        /// <c>customer.subscription.deleted</c>, <c>customer.subscription.paused</c>,
+        /// <c>customer.subscription.custom_event</c>, <c>customer.subscription.deleted</c>,
+        /// <c>customer.subscription.paused</c>,
         /// <c>customer.subscription.pending_update_applied</c>,
         /// <c>customer.subscription.pending_update_expired</c>,
         /// <c>customer.subscription.resumed</c>, <c>customer.subscription.trial_will_end</c>,
@@ -154,12 +164,13 @@ namespace Stripe
         /// <c>invoiceitem.deleted</c>, <c>issuing_authorization.created</c>,
         /// <c>issuing_authorization.request</c>, <c>issuing_authorization.updated</c>,
         /// <c>issuing_card.created</c>, <c>issuing_card.updated</c>,
-        /// <c>issuing_card_design.activated</c>, <c>issuing_card_design.deactivated</c>,
-        /// <c>issuing_card_design.rejected</c>, <c>issuing_card_design.updated</c>,
         /// <c>issuing_cardholder.created</c>, <c>issuing_cardholder.updated</c>,
         /// <c>issuing_dispute.closed</c>, <c>issuing_dispute.created</c>,
         /// <c>issuing_dispute.funds_reinstated</c>, <c>issuing_dispute.submitted</c>,
-        /// <c>issuing_dispute.updated</c>, <c>issuing_transaction.created</c>,
+        /// <c>issuing_dispute.updated</c>, <c>issuing_personalization_design.activated</c>,
+        /// <c>issuing_personalization_design.deactivated</c>,
+        /// <c>issuing_personalization_design.rejected</c>,
+        /// <c>issuing_personalization_design.updated</c>, <c>issuing_transaction.created</c>,
         /// <c>issuing_transaction.updated</c>, <c>mandate.updated</c>,
         /// <c>payment_intent.amount_capturable_updated</c>, <c>payment_intent.canceled</c>,
         /// <c>payment_intent.created</c>, <c>payment_intent.partially_funded</c>,
