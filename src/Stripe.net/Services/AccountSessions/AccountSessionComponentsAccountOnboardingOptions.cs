@@ -10,5 +10,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }
+
+        /// <summary>
+        /// The list of features enabled in the embedded component.
+        /// </summary>
+        [JsonProperty("features")]
+        public AccountSessionComponentsAccountOnboardingFeaturesOptions Features { get; set; }
     }
 }
