@@ -105,10 +105,13 @@ namespace Stripe
                 { "invoiceitem", typeof(InvoiceItem) },
                 { "issuing.authorization", typeof(Issuing.Authorization) },
                 { "issuing.card", typeof(Issuing.Card) },
-                { "issuing.card_bundle", typeof(Issuing.CardBundle) },
-                { "issuing.card_design", typeof(Issuing.CardDesign) },
                 { "issuing.cardholder", typeof(Issuing.Cardholder) },
                 { "issuing.dispute", typeof(Issuing.Dispute) },
+                {
+                    "issuing.personalization_design", typeof(
+                        Issuing.PersonalizationDesign)
+                },
+                { "issuing.physical_bundle", typeof(Issuing.PhysicalBundle) },
                 { "issuing.transaction", typeof(Issuing.Transaction) },
                 { "item", typeof(LineItem) },
                 { "line_item", typeof(InvoiceLineItem) },

@@ -6,13 +6,13 @@ namespace Stripe
     public class MandateCustomerAcceptanceOnline : StripeEntity<MandateCustomerAcceptanceOnline>
     {
         /// <summary>
-        /// The IP address from which the Mandate was accepted by the customer.
+        /// The customer accepts the mandate from this IP address.
         /// </summary>
         [JsonProperty("ip_address")]
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// The user agent of the browser from which the Mandate was accepted by the customer.
+        /// The customer accepts the mandate using the user agent of the browser.
         /// </summary>
         [JsonProperty("user_agent")]
         public string UserAgent { get; set; }

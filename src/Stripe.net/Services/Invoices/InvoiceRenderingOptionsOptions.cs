@@ -14,5 +14,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amount_tax_display")]
         public string AmountTaxDisplay { get; set; }
+
+        /// <summary>
+        /// Invoice pdf rendering options.
+        /// </summary>
+        [JsonProperty("pdf")]
+        public InvoiceRenderingPdfOptions Pdf { get; set; }
     }
 }

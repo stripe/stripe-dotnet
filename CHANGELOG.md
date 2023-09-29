@@ -1,5 +1,9 @@
 # Changelog
 
+## 42.7.0 - 2023-09-28
+* [#2772](https://github.com/stripe/stripe-dotnet/pull/2772) Update generated code
+  * Add support for `Rendering` on `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
+
 ## 42.7.0-beta.1 - 2023-09-21
 * [#2768](https://github.com/stripe/stripe-dotnet/pull/2768) Update generated code for beta
   * Remove support for `Customer` on `ConfirmationToken`
@@ -9,6 +13,11 @@
   * Change type of `IssuingCardDesignCarrierTextOptions` from `carrier_text_param` to `emptyStringable(carrier_text_param)`
   * Add support for `InvoiceSettings` on `SubscriptionCreateOptions` and `SubscriptionUpdateOptions`
   * Remove `InvoiceLineItemDiscountDiscountEndDurationOptions`, `InvoiceLineItemDiscountDiscountEndOptions`, `InvoiceLineItemInvoiceItemDiscountDiscountEndDurationOptions`, `InvoiceLineItemInvoiceItemDiscountDiscountEndOptions`, `InvoiceLineItemSubscriptionItemDiscountDiscountEndDurationOptions`, `InvoiceLineItemSubscriptionItemDiscountDiscountEndOptions.cs`, `InvoiceLineItemSubscriptionItemDiscountOptions`, `InvoiceLineItemSubscriptionPrebillingOptions`. These are obsolete and not used anywhere.
+
+## 42.6.0 - 2023-09-21
+* [#2769](https://github.com/stripe/stripe-dotnet/pull/2769) Update generated code
+  * Add support for `TermsOfServiceAcceptance` on `CheckoutSessionCustomTextOptions`, `CheckoutSessionCustomText`, `PaymentLinkCustomTextOptions`, and `PaymentLinkCustomText`
+* [#2770](https://github.com/stripe/stripe-dotnet/pull/2770) Add comments for query parameters
 
 ## 42.6.0-beta.1 - 2023-09-14
 * [#2765](https://github.com/stripe/stripe-dotnet/pull/2765) Update generated code for beta

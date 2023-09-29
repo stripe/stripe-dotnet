@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Tax
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     /// <summary>
     /// A Tax <c>Registration</c> lets us know that your business is registered to collect tax
@@ -49,14 +51,16 @@ namespace Stripe.Tax
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        public long Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// If set, the registration stops being active at this time. If not set, the registration
         /// will be active indefinitely. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("expires_at")]
-        public long? ExpiresAt { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if

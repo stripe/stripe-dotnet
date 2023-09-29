@@ -820,6 +820,13 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestDiscountServiceDeleteSubscriptionDiscount()
+        {
+            var service = new DiscountService(this.StripeClient);
+            service.DeleteSubscriptionDiscount("sub_xyz");
+        }
+
+        [Fact]
         public void TestDisputeServiceClose()
         {
             var service = new DisputeService(this.StripeClient);

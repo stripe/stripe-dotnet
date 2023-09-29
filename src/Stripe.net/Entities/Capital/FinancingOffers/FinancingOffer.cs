@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Capital
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     /// <summary>
     /// This is an object representing an offer of financing from Stripe Capital to a Connect
@@ -40,7 +42,8 @@ namespace Stripe.Capital
         /// Time at which the offer was created. Given in seconds since unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        public long Created { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Time at which the offer expires. Given in seconds since unix epoch.

@@ -30,7 +30,8 @@ namespace Stripe
         /// A precise Unix timestamp.
         /// </summary>
         [JsonProperty("timestamp")]
-        public long? Timestamp { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? Timestamp { get; set; }
 
         /// <summary>
         /// The type of method to specify the <c>bill_until</c> time.

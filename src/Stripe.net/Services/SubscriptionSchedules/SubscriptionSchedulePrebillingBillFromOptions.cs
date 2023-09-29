@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SubscriptionSchedulePrebillingBillFromOptions : INestedOptions
     {
@@ -15,7 +17,8 @@ namespace Stripe
         /// Start the prebilled period at a precise integer timestamp, starting from the Unix epoch.
         /// </summary>
         [JsonProperty("timestamp")]
-        public long? Timestamp { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? Timestamp { get; set; }
 
         /// <summary>
         /// Select one of several ways to pass the <c>bill_from</c> value.

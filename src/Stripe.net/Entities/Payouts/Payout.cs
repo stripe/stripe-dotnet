@@ -10,8 +10,8 @@ namespace Stripe
     /// A <c>Payout</c> object is created when you receive funds from Stripe, or when you
     /// initiate a payout to either a bank account or debit card of a <a
     /// href="https://stripe.com/docs/connect/bank-debit-card-payouts">connected Stripe
-    /// account</a>. You can retrieve individual payouts, as well as list all payouts. Payouts
-    /// are made on <a href="https://stripe.com/docs/connect/manage-payout-schedule">varying
+    /// account</a>. You can retrieve individual payouts, and list all payouts. Payouts are made
+    /// on <a href="https://stripe.com/docs/connect/manage-payout-schedule">varying
     /// schedules</a>, depending on your country and industry.
     ///
     /// Related guide: <a href="https://stripe.com/docs/payouts">Receiving payouts</a>.
@@ -31,25 +31,25 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Amount (in cents (or local equivalent)) to be transferred to your bank account or debit
+        /// The amount (in cents (or local equivalent)) that transfers to your bank account or debit
         /// card.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         /// <summary>
-        /// Date the payout is expected to arrive in the bank. This factors in delays like weekends
-        /// or bank holidays.
+        /// Date that you can expect the payout to arrive in the bank. This factors in delays to
+        /// account for weekends or bank holidays.
         /// </summary>
         [JsonProperty("arrival_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime ArrivalDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Returns <c>true</c> if the payout was created by an <a
-        /// href="https://stripe.com/docs/payouts#payout-schedule">automated payout schedule</a>,
-        /// and <c>false</c> if it was <a
-        /// href="https://stripe.com/docs/payouts#manual-payouts">requested manually</a>.
+        /// Returns <c>true</c> if the payout is created by an <a
+        /// href="https://stripe.com/docs/payouts#payout-schedule">automated payout schedule</a> and
+        /// <c>false</c> if it's <a href="https://stripe.com/docs/payouts#manual-payouts">requested
+        /// manually</a>.
         /// </summary>
         [JsonProperty("automatic")]
         public bool Automatic { get; set; }
@@ -112,7 +112,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the IExternalAccount)
-        /// ID of the bank account or card the payout was sent to.
+        /// ID of the bank account or card the payout is sent to.
         /// </summary>
         [JsonIgnore]
         public string DestinationId
@@ -123,7 +123,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// ID of the bank account or card the payout was sent to.
+        /// ID of the bank account or card the payout is sent to.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -143,9 +143,9 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the BalanceTransaction)
-        /// If the payout failed or was canceled, this will be the ID of the balance transaction
-        /// that reversed the initial balance transaction, and puts the funds from the failed payout
-        /// back in your balance.
+        /// If the payout fails or cancels, this is the ID of the balance transaction that reverses
+        /// the initial balance transaction and returns the funds from the failed payout back in
+        /// your balance.
         /// </summary>
         [JsonIgnore]
         public string FailureBalanceTransactionId
@@ -156,9 +156,9 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// If the payout failed or was canceled, this will be the ID of the balance transaction
-        /// that reversed the initial balance transaction, and puts the funds from the failed payout
-        /// back in your balance.
+        /// If the payout fails or cancels, this is the ID of the balance transaction that reverses
+        /// the initial balance transaction and returns the funds from the failed payout back in
+        /// your balance.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -175,15 +175,14 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Error code explaining reason for payout failure if available. See <a
-        /// href="https://stripe.com/docs/api#payout_failures">Types of payout failures</a> for a
-        /// list of failure codes.
+        /// Error code that provides a reason for a payout failure, if available. View our <a
+        /// href="https://stripe.com/docs/api#payout_failures">list of failure codes</a>.
         /// </summary>
         [JsonProperty("failure_code")]
         public string FailureCode { get; set; }
 
         /// <summary>
-        /// Message to user further explaining reason for payout failure if available.
+        /// Message that provides the reason for a payout failure, if available.
         /// </summary>
         [JsonProperty("failure_message")]
         public string FailureMessage { get; set; }
@@ -206,8 +205,9 @@ namespace Stripe
         /// <summary>
         /// The method used to send this payout, which can be <c>standard</c> or <c>instant</c>.
         /// <c>instant</c> is supported for payouts to debit cards and bank accounts in certain
-        /// countries. (See <a href="https://stripe.com/docs/payouts/instant-payouts-banks">Bank
-        /// support for Instant Payouts</a> for more information.).
+        /// countries. Learn more about <a
+        /// href="https://stripe.com/docs/payouts/instant-payouts-banks">bank support for Instant
+        /// Payouts</a>.
         /// </summary>
         [JsonProperty("method")]
         public string Method { get; set; }
@@ -244,10 +244,9 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// If <c>completed</c>, the <a
+        /// If <c>completed</c>, you can use the <a
         /// href="https://stripe.com/docs/api/balance_transactions/list#balance_transaction_list-payout">Balance
-        /// Transactions API</a> may be used to list all Balance Transactions that were paid out in
-        /// this payout.
+        /// Transactions API</a> to list all balance transactions that are paid out in this payout.
         /// One of: <c>completed</c>, <c>in_progress</c>, or <c>not_applicable</c>.
         /// </summary>
         [JsonProperty("reconciliation_status")]
@@ -257,7 +256,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Payout)
-        /// If the payout was reversed, this is the ID of the payout that reverses this payout.
+        /// If the payout reverses, this is the ID of the payout that reverses this payout.
         /// </summary>
         [JsonIgnore]
         public string ReversedById
@@ -268,7 +267,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// If the payout was reversed, this is the ID of the payout that reverses this payout.
+        /// If the payout reverses, this is the ID of the payout that reverses this payout.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -285,24 +284,24 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The source balance this payout came from. One of <c>card</c>, <c>fpx</c>, or
-        /// <c>bank_account</c>.
+        /// The source balance this payout came from, which can be one of the following:
+        /// <c>card</c>, <c>fpx</c>, or <c>bank_account</c>.
         /// </summary>
         [JsonProperty("source_type")]
         public string SourceType { get; set; }
 
         /// <summary>
-        /// Extra information about a payout to be displayed on the user's bank statement.
+        /// Extra information about a payout that displays on the user's bank statement.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
         /// Current status of the payout: <c>paid</c>, <c>pending</c>, <c>in_transit</c>,
-        /// <c>canceled</c> or <c>failed</c>. A payout is <c>pending</c> until it is submitted to
-        /// the bank, when it becomes <c>in_transit</c>. The status then changes to <c>paid</c> if
-        /// the transaction goes through, or to <c>failed</c> or <c>canceled</c> (within 5 business
-        /// days). Some failed payouts may initially show as <c>paid</c> but then change to
+        /// <c>canceled</c> or <c>failed</c>. A payout is <c>pending</c> until it's submitted to the
+        /// bank, when it becomes <c>in_transit</c>. The status changes to <c>paid</c> if the
+        /// transaction succeeds, or to <c>failed</c> or <c>canceled</c> (within 5 business days).
+        /// Some payouts that fail might initially show as <c>paid</c>, then change to
         /// <c>failed</c>.
         /// </summary>
         [JsonProperty("status")]

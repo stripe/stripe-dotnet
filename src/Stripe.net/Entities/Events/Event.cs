@@ -88,6 +88,15 @@ namespace Stripe
         public long PendingWebhooks { get; set; }
 
         /// <summary>
+        /// Information about the action that causes the event. Only present when the event is
+        /// triggered by an API request or an <a
+        /// href="https://stripe.com/docs/billing/revenue-recovery/automations">Automation</a>
+        /// action.
+        /// </summary>
+        [JsonProperty("reason")]
+        public EventReason Reason { get; set; }
+
+        /// <summary>
         /// Information on the API request that triggers the event.
         /// </summary>
         [JsonProperty("request")]
@@ -124,7 +133,8 @@ namespace Stripe
         /// <c>customer.source.deleted</c>, <c>customer.source.expiring</c>,
         /// <c>customer.source.updated</c>, <c>customer.subscription.collection_paused</c>,
         /// <c>customer.subscription.collection_resumed</c>, <c>customer.subscription.created</c>,
-        /// <c>customer.subscription.deleted</c>, <c>customer.subscription.paused</c>,
+        /// <c>customer.subscription.custom_event</c>, <c>customer.subscription.deleted</c>,
+        /// <c>customer.subscription.paused</c>,
         /// <c>customer.subscription.pending_update_applied</c>,
         /// <c>customer.subscription.pending_update_expired</c>,
         /// <c>customer.subscription.resumed</c>, <c>customer.subscription.trial_will_end</c>,
@@ -154,13 +164,14 @@ namespace Stripe
         /// <c>invoiceitem.deleted</c>, <c>issuing_authorization.created</c>,
         /// <c>issuing_authorization.request</c>, <c>issuing_authorization.updated</c>,
         /// <c>issuing_card.created</c>, <c>issuing_card.updated</c>,
-        /// <c>issuing_card_design.activated</c>, <c>issuing_card_design.deactivated</c>,
-        /// <c>issuing_card_design.rejected</c>, <c>issuing_card_design.updated</c>,
         /// <c>issuing_cardholder.created</c>, <c>issuing_cardholder.updated</c>,
         /// <c>issuing_dispute.closed</c>, <c>issuing_dispute.created</c>,
         /// <c>issuing_dispute.funds_reinstated</c>, <c>issuing_dispute.submitted</c>,
-        /// <c>issuing_dispute.updated</c>, <c>issuing_transaction.created</c>,
-        /// <c>issuing_transaction.updated</c>, <c>mandate.updated</c>, <c>order.created</c>,
+        /// <c>issuing_dispute.updated</c>, <c>issuing_personalization_design.activated</c>,
+        /// <c>issuing_personalization_design.deactivated</c>,
+        /// <c>issuing_personalization_design.rejected</c>,
+        /// <c>issuing_personalization_design.updated</c>, <c>issuing_transaction.created</c>,
+        /// <c>issuing_transaction.updated</c>, <c>mandate.updated</c>,
         /// <c>payment_intent.amount_capturable_updated</c>, <c>payment_intent.canceled</c>,
         /// <c>payment_intent.created</c>, <c>payment_intent.partially_funded</c>,
         /// <c>payment_intent.payment_failed</c>, <c>payment_intent.processing</c>,
@@ -177,31 +188,29 @@ namespace Stripe
         /// <c>quote.accept_failed</c>, <c>quote.accepted</c>, <c>quote.accepting</c>,
         /// <c>quote.canceled</c>, <c>quote.created</c>, <c>quote.draft</c>, <c>quote.finalized</c>,
         /// <c>quote.reestimated</c>, <c>quote.stale</c>, <c>radar.early_fraud_warning.created</c>,
-        /// <c>radar.early_fraud_warning.updated</c>, <c>recipient.created</c>,
-        /// <c>recipient.deleted</c>, <c>recipient.updated</c>, <c>refund.created</c>,
-        /// <c>refund.updated</c>, <c>reporting.report_run.failed</c>,
-        /// <c>reporting.report_run.succeeded</c>, <c>reporting.report_type.updated</c>,
-        /// <c>review.closed</c>, <c>review.opened</c>, <c>setup_intent.canceled</c>,
-        /// <c>setup_intent.created</c>, <c>setup_intent.requires_action</c>,
-        /// <c>setup_intent.setup_failed</c>, <c>setup_intent.succeeded</c>,
-        /// <c>sigma.scheduled_query_run.created</c>, <c>sku.created</c>, <c>sku.deleted</c>,
-        /// <c>sku.updated</c>, <c>source.canceled</c>, <c>source.chargeable</c>,
-        /// <c>source.failed</c>, <c>source.mandate_notification</c>,
-        /// <c>source.refund_attributes_required</c>, <c>source.transaction.created</c>,
-        /// <c>source.transaction.updated</c>, <c>subscription_schedule.aborted</c>,
-        /// <c>subscription_schedule.canceled</c>, <c>subscription_schedule.completed</c>,
-        /// <c>subscription_schedule.created</c>, <c>subscription_schedule.expiring</c>,
-        /// <c>subscription_schedule.released</c>, <c>subscription_schedule.updated</c>,
-        /// <c>tax.form.updated</c>, <c>tax.settings.updated</c>, <c>tax_rate.created</c>,
-        /// <c>tax_rate.updated</c>, <c>terminal.reader.action_failed</c>,
-        /// <c>terminal.reader.action_succeeded</c>, <c>terminal.reader.action_updated</c>,
-        /// <c>test_helpers.test_clock.advancing</c>, <c>test_helpers.test_clock.created</c>,
-        /// <c>test_helpers.test_clock.deleted</c>, <c>test_helpers.test_clock.internal_failure</c>,
-        /// <c>test_helpers.test_clock.ready</c>, <c>topup.canceled</c>, <c>topup.created</c>,
-        /// <c>topup.failed</c>, <c>topup.reversed</c>, <c>topup.succeeded</c>,
-        /// <c>transfer.created</c>, <c>transfer.reversed</c>, <c>transfer.updated</c>,
-        /// <c>treasury.credit_reversal.created</c>, <c>treasury.credit_reversal.posted</c>,
-        /// <c>treasury.debit_reversal.completed</c>, <c>treasury.debit_reversal.created</c>,
+        /// <c>radar.early_fraud_warning.updated</c>, <c>refund.created</c>, <c>refund.updated</c>,
+        /// <c>reporting.report_run.failed</c>, <c>reporting.report_run.succeeded</c>,
+        /// <c>reporting.report_type.updated</c>, <c>review.closed</c>, <c>review.opened</c>,
+        /// <c>setup_intent.canceled</c>, <c>setup_intent.created</c>,
+        /// <c>setup_intent.requires_action</c>, <c>setup_intent.setup_failed</c>,
+        /// <c>setup_intent.succeeded</c>, <c>sigma.scheduled_query_run.created</c>,
+        /// <c>source.canceled</c>, <c>source.chargeable</c>, <c>source.failed</c>,
+        /// <c>source.mandate_notification</c>, <c>source.refund_attributes_required</c>,
+        /// <c>source.transaction.created</c>, <c>source.transaction.updated</c>,
+        /// <c>subscription_schedule.aborted</c>, <c>subscription_schedule.canceled</c>,
+        /// <c>subscription_schedule.completed</c>, <c>subscription_schedule.created</c>,
+        /// <c>subscription_schedule.expiring</c>, <c>subscription_schedule.released</c>,
+        /// <c>subscription_schedule.updated</c>, <c>tax.form.updated</c>,
+        /// <c>tax.settings.updated</c>, <c>tax_rate.created</c>, <c>tax_rate.updated</c>,
+        /// <c>terminal.reader.action_failed</c>, <c>terminal.reader.action_succeeded</c>,
+        /// <c>terminal.reader.action_updated</c>, <c>test_helpers.test_clock.advancing</c>,
+        /// <c>test_helpers.test_clock.created</c>, <c>test_helpers.test_clock.deleted</c>,
+        /// <c>test_helpers.test_clock.internal_failure</c>, <c>test_helpers.test_clock.ready</c>,
+        /// <c>topup.canceled</c>, <c>topup.created</c>, <c>topup.failed</c>, <c>topup.reversed</c>,
+        /// <c>topup.succeeded</c>, <c>transfer.created</c>, <c>transfer.reversed</c>,
+        /// <c>transfer.updated</c>, <c>treasury.credit_reversal.created</c>,
+        /// <c>treasury.credit_reversal.posted</c>, <c>treasury.debit_reversal.completed</c>,
+        /// <c>treasury.debit_reversal.created</c>,
         /// <c>treasury.debit_reversal.initial_credit_granted</c>,
         /// <c>treasury.financial_account.closed</c>, <c>treasury.financial_account.created</c>,
         /// <c>treasury.financial_account.features_status_updated</c>,
@@ -216,7 +225,10 @@ namespace Stripe
         /// <c>treasury.outbound_transfer.failed</c>, <c>treasury.outbound_transfer.posted</c>,
         /// <c>treasury.outbound_transfer.returned</c>, <c>treasury.received_credit.created</c>,
         /// <c>treasury.received_credit.failed</c>, <c>treasury.received_credit.succeeded</c>,
-        /// <c>treasury.received_debit.created</c>, or <c>invoiceitem.updated</c>.
+        /// <c>treasury.received_debit.created</c>, <c>invoiceitem.updated</c>,
+        /// <c>order.created</c>, <c>recipient.created</c>, <c>recipient.deleted</c>,
+        /// <c>recipient.updated</c>, <c>sku.created</c>, <c>sku.deleted</c>, <c>sku.updated</c>, or
+        /// <c>ping</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

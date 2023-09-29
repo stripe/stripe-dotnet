@@ -6,12 +6,12 @@ namespace Stripe
 
     public class RefundCreateOptions : BaseOptions, IHasMetadata
     {
-        /// <summary>
-        /// A positive integer representing how much to refund.
-        /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
+        /// <summary>
+        /// The identifier of the charge to refund.
+        /// </summary>
         [JsonProperty("charge")]
         public string Charge { get; set; }
 
@@ -51,15 +51,39 @@ namespace Stripe
         [JsonProperty("origin")]
         public string Origin { get; set; }
 
+        /// <summary>
+        /// The identifier of the PaymentIntent to refund.
+        /// </summary>
         [JsonProperty("payment_intent")]
         public string PaymentIntent { get; set; }
 
+        /// <summary>
+        /// String indicating the reason for the refund. If set, possible values are
+        /// <c>duplicate</c>, <c>fraudulent</c>, and <c>requested_by_customer</c>. If you believe
+        /// the charge to be fraudulent, specifying <c>fraudulent</c> as the reason will add the
+        /// associated card and email to your <a href="https://stripe.com/docs/radar/lists">block
+        /// lists</a>, and will also help us improve our fraud detection algorithms.
+        /// One of: <c>duplicate</c>, <c>fraudulent</c>, or <c>requested_by_customer</c>.
+        /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; set; }
 
+        /// <summary>
+        /// Boolean indicating whether the application fee should be refunded when refunding this
+        /// charge. If a full charge refund is given, the full application fee will be refunded.
+        /// Otherwise, the application fee will be refunded in an amount proportional to the amount
+        /// of the charge refunded. An application fee can be refunded only by the application that
+        /// created the charge.
+        /// </summary>
         [JsonProperty("refund_application_fee")]
         public bool? RefundApplicationFee { get; set; }
 
+        /// <summary>
+        /// Boolean indicating whether the transfer should be reversed when refunding this charge.
+        /// The transfer will be reversed proportionally to the amount being refunded (either the
+        /// entire or partial amount).&lt;br&gt;&lt;br&gt;A transfer can be reversed only by the
+        /// application that created the charge.
+        /// </summary>
         [JsonProperty("reverse_transfer")]
         public bool? ReverseTransfer { get; set; }
     }

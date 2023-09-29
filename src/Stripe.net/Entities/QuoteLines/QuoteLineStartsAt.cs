@@ -35,7 +35,8 @@ namespace Stripe
         /// A precise Unix timestamp.
         /// </summary>
         [JsonProperty("timestamp")]
-        public long? Timestamp { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? Timestamp { get; set; }
 
         /// <summary>
         /// Select a way to pass in <c>starts_at</c>.
