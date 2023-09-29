@@ -31,6 +31,15 @@ namespace Stripe.Issuing
         public bool Approved { get; set; }
 
         /// <summary>
+        /// A code created by Stripe which is shared with the merchant to validate the
+        /// authorization. This field will be populated if the authorization message was approved.
+        /// The code is typically a six-digit number prefixed with ‘S’. For example, S498162. Please
+        /// note that the code is not guaranteed to be unique across authorizations.
+        /// </summary>
+        [JsonProperty("authorization_code")]
+        public string AuthorizationCode { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
