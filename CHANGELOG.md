@@ -1,5 +1,11 @@
 # Changelog
 
+## 42.8.0-beta.1 - 2023-09-28
+* [#2773](https://github.com/stripe/stripe-dotnet/pull/2773) Update generated code for beta
+  * Rename resources `Issuing.CardDesign` and `Issuing.CardBundle` to `Issuing.PersonalizationDesign` and `Issuing.PhysicalBundle`
+  * Add support for `Features` on `AccountSessionComponentsAccountOnboardingOptions`, `AccountSessionComponentsPaymentDetailsOptions`, `AccountSessionComponentsPaymentDetails`, `AccountSessionComponentsPaymentsOptions`, `AccountSessionComponentsPayments`, `AccountSessionComponentsPayoutsOptions`, and `AccountSessionComponentsPayouts`
+  * Add support for `Reason` on `Event`
+
 ## 42.7.0 - 2023-09-28
 * [#2772](https://github.com/stripe/stripe-dotnet/pull/2772) Update generated code
   * Add support for `Rendering` on `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
