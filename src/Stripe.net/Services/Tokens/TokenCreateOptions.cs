@@ -7,7 +7,7 @@ namespace Stripe
     public class TokenCreateOptions : BaseOptions
     {
         /// <summary>
-        /// Information for the account this token will represent.
+        /// Information for the account this token represents.
         /// </summary>
         [JsonProperty("account")]
         public TokenAccountOptions Account { get; set; }
@@ -30,31 +30,31 @@ namespace Stripe
         public AnyOf<string, TokenCardOptions> Card { get; set; }
 
         /// <summary>
-        /// The customer (owned by the application's account) for which to create a token. This can
-        /// be used only with an <a href="https://stripe.com/docs/connect/standard-accounts">OAuth
+        /// Create a token for the customer, which is owned by the application's account. You can
+        /// only use this with an <a href="https://stripe.com/docs/connect/standard-accounts">OAuth
         /// access token</a> or <a
-        /// href="https://stripe.com/docs/connect/authentication">Stripe-Account header</a>. For
-        /// more details, see <a
-        /// href="https://stripe.com/docs/connect/cloning-saved-payment-methods">Cloning Saved
-        /// Payment Methods</a>.
+        /// href="https://stripe.com/docs/connect/authentication">Stripe-Account header</a>. Learn
+        /// more about <a
+        /// href="https://stripe.com/docs/connect/cloning-saved-payment-methods">cloning saved
+        /// payment methods</a>.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
 
         /// <summary>
-        /// The updated CVC value this token will represent.
+        /// The updated CVC value this token represents.
         /// </summary>
         [JsonProperty("cvc_update")]
         public TokenCvcUpdateOptions CvcUpdate { get; set; }
 
         /// <summary>
-        /// Information for the person this token will represent.
+        /// Information for the person this token represents.
         /// </summary>
         [JsonProperty("person")]
         public TokenPersonOptions Person { get; set; }
 
         /// <summary>
-        /// The PII this token will represent.
+        /// The PII this token represents.
         /// </summary>
         [JsonProperty("pii")]
         public TokenPiiOptions Pii { get; set; }
