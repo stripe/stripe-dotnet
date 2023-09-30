@@ -15,8 +15,8 @@ namespace Stripe.Treasury
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// <c>true`` if the OutboundPayment creation request is being made on behalf of an end user
-        /// by a platform. Otherwise, </c>false`.
+        /// <c>true</c> if the OutboundPayment creation request is being made on behalf of an end
+        /// user by a platform. Otherwise, <c>false</c>.
         /// </summary>
         [JsonProperty("present")]
         public bool Present { get; set; }
