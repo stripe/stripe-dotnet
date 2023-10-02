@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.FinancialConnections
 {
-    public class AccountListInferredBalancesOptions : ListOptions
+    public class AccountInferredBalanceListOptions : ListOptions
     {
     }
 }

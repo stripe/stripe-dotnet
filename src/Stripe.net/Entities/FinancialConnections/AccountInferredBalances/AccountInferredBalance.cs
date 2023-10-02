@@ -11,7 +11,7 @@ namespace Stripe.FinancialConnections
     /// balance snapshot provided by a financial institution, or inferred using transactions
     /// data.
     /// </summary>
-    public class InferredBalance : StripeEntity<InferredBalance>, IHasId, IHasObject
+    public class AccountInferredBalance : StripeEntity<AccountInferredBalance>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.

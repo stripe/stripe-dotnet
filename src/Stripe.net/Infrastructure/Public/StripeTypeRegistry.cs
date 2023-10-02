@@ -72,7 +72,7 @@ namespace Stripe
                 },
                 {
                     "financial_connections.account_inferred_balance", typeof(
-                        FinancialConnections.InferredBalance)
+                        FinancialConnections.AccountInferredBalance)
                 },
                 {
                     "financial_connections.account_owner", typeof(
