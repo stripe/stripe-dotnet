@@ -4,7 +4,34 @@ namespace Stripe
     using Newtonsoft.Json;
 
     /// <summary>
-    /// An object detailing payment method configurations.
+    /// PaymentMethodConfigurations control which payment methods are displayed to your
+    /// customers when you don't explicitly specify payment method types. You can have multiple
+    /// configurations with different sets of payment methods for different scenarios.
+    ///
+    /// There are two types of PaymentMethodConfigurations. Which is used depends on the <a
+    /// href="https://stripe.com/docs/connect/charges">charge type</a>:.
+    ///
+    /// <strong>Direct</strong> configurations apply to payments created on your account,
+    /// including Connect destination charges, Connect separate charges and transfers, and
+    /// payments not involving Connect.
+    ///
+    /// <strong>Child</strong> configurations apply to payments created on your connected
+    /// accounts using direct charges, and charges with the on_behalf_of parameter.
+    ///
+    /// Child configurations have a <c>parent</c> that sets default values and controls which
+    /// settings connected accounts may override. You can specify a parent ID at payment time,
+    /// and Stripe will automatically resolve the connected account’s associated child
+    /// configuration. Parent configurations are <a
+    /// href="https://dashboard.stripe.com/settings/payment_methods/connected_accounts">managed
+    /// in the dashboard</a> and are not available in this API.
+    ///
+    /// Related guides: - <a
+    /// href="https://stripe.com/docs/connect/payment-method-configurations">Payment Method
+    /// Configurations API</a> - <a
+    /// href="https://stripe.com/docs/payments/multiple-payment-method-configs">Multiple payment
+    /// method configurations on dynamic payment methods</a> - <a
+    /// href="https://stripe.com/docs/connect/multiple-payment-method-configurations">Multiple
+    /// configurations for your Connect accounts</a>.
     /// </summary>
     public class PaymentMethodConfiguration : StripeEntity<PaymentMethodConfiguration>, IHasId, IHasObject
     {
@@ -42,7 +69,7 @@ namespace Stripe
         public PaymentMethodConfigurationApplePay ApplePay { get; set; }
 
         /// <summary>
-        /// The Connect application associated with this configuration.
+        /// For child configs, the Connect application associated with the configuration.
         /// </summary>
         [JsonProperty("application")]
         public string Application { get; set; }
@@ -93,7 +120,8 @@ namespace Stripe
         public PaymentMethodConfigurationIdeal Ideal { get; set; }
 
         /// <summary>
-        /// The default configuration is used whenever no payment method configuration is specified.
+        /// The default configuration is used whenever a payment method configuration is not
+        /// specified.
         /// </summary>
         [JsonProperty("is_default")]
         public bool IsDefault { get; set; }
@@ -121,7 +149,7 @@ namespace Stripe
         public PaymentMethodConfigurationMultibanco Multibanco { get; set; }
 
         /// <summary>
-        /// Configuration name.
+        /// The configuration's name.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -136,7 +164,7 @@ namespace Stripe
         public PaymentMethodConfigurationP24 P24 { get; set; }
 
         /// <summary>
-        /// The configuration's parent configuration.
+        /// For child configs, the configuration's parent configuration.
         /// </summary>
         [JsonProperty("parent")]
         public string Parent { get; set; }
