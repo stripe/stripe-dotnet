@@ -29,7 +29,9 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Gross amount of the transaction (in cents (or local equivalent)).
+        /// Gross amount of this transaction (in cents (or local equivalent)). A positive value
+        /// represents funds charged to another party, and a negative value represents funds sent to
+        /// another party.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -75,7 +77,8 @@ namespace Stripe
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
-        /// Fees (in cents (or local equivalent)) paid for this transaction.
+        /// Fees (in cents (or local equivalent)) paid for this transaction. Represented as a
+        /// positive integer when assessed.
         /// </summary>
         [JsonProperty("fee")]
         public long Fee { get; set; }
@@ -87,7 +90,10 @@ namespace Stripe
         public List<BalanceTransactionFeeDetail> FeeDetails { get; set; }
 
         /// <summary>
-        /// Net amount of the transaction (in cents (or local equivalent)).
+        /// Net impact to a Stripe balance (in cents (or local equivalent)). A positive value
+        /// represents incrementing a Stripe balance, and a negative value decrementing a Stripe
+        /// balance. You can calculate the net impact of a transaction on a balance by <c>amount</c>
+        /// - <c>fee</c>.
         /// </summary>
         [JsonProperty("net")]
         public long Net { get; set; }
