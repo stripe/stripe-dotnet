@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PaymentLinkPaymentIntentDataOptions : INestedOptions
+    public class PaymentLinkPaymentIntentDataOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
@@ -11,6 +12,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("capture_method")]
         public string CaptureMethod { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will
+        /// declaratively set metadata on [Payment Intents] (/docs/api/payment_intents) generated
+        /// from this payment link. Unlike object-level metadata, this field is declarative. Updates
+        /// will clear prior values.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Indicates that you intend to <a
