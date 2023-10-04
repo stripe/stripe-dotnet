@@ -255,6 +255,41 @@ namespace Stripe.Issuing
         [JsonProperty("purchase_details")]
         public TransactionPurchaseDetails PurchaseDetails { get; set; }
 
+        #region Expandable Token
+
+        /// <summary>
+        /// (ID of the Token)
+        /// <a href="https://stripe.com/docs/api/issuing/tokens/object">Token</a> object used for
+        /// this transaction. If a network token was not used for this transaction, this field will
+        /// be null.
+        /// </summary>
+        [JsonIgnore]
+        public string TokenId
+        {
+            get => this.InternalToken?.Id;
+            set => this.InternalToken = SetExpandableFieldId(value, this.InternalToken);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// <a href="https://stripe.com/docs/api/issuing/tokens/object">Token</a> object used for
+        /// this transaction. If a network token was not used for this transaction, this field will
+        /// be null.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Token Token
+        {
+            get => this.InternalToken?.ExpandedObject;
+            set => this.InternalToken = SetExpandableFieldObject(value, this.InternalToken);
+        }
+
+        [JsonProperty("token")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Token>))]
+        internal ExpandableField<Token> InternalToken { get; set; }
+        #endregion
+
         /// <summary>
         /// <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this
         /// transaction if it was created on a

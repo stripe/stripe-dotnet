@@ -183,6 +183,41 @@ namespace Stripe.Issuing
         [JsonProperty("status")]
         public string Status { get; set; }
 
+        #region Expandable Token
+
+        /// <summary>
+        /// (ID of the Token)
+        /// <a href="https://stripe.com/docs/api/issuing/tokens/object">Token</a> object used for
+        /// this authorization. If a network token was not used for this authorization, this field
+        /// will be null.
+        /// </summary>
+        [JsonIgnore]
+        public string TokenId
+        {
+            get => this.InternalToken?.Id;
+            set => this.InternalToken = SetExpandableFieldId(value, this.InternalToken);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// <a href="https://stripe.com/docs/api/issuing/tokens/object">Token</a> object used for
+        /// this authorization. If a network token was not used for this authorization, this field
+        /// will be null.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Token Token
+        {
+            get => this.InternalToken?.ExpandedObject;
+            set => this.InternalToken = SetExpandableFieldObject(value, this.InternalToken);
+        }
+
+        [JsonProperty("token")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Token>))]
+        internal ExpandableField<Token> InternalToken { get; set; }
+        #endregion
+
         /// <summary>
         /// List of <a href="https://stripe.com/docs/api/issuing/transactions">transactions</a>
         /// associated with this authorization.
