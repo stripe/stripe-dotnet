@@ -131,40 +131,6 @@ namespace Stripe
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
-        #region Expandable Margins
-
-        /// <summary>
-        /// (IDs of the Margins)
-        /// The margins applied to the line item. When set, the <c>default_margins</c> on the
-        /// invoice do not apply to the line item. Use <c>expand[]=margins</c> to expand each
-        /// margin.
-        /// </summary>
-        [JsonIgnore]
-        public List<string> MarginIds
-        {
-            get => this.InternalMargins?.Select((x) => x.Id).ToList();
-            set => this.InternalMargins = SetExpandableArrayIds<Margin>(value);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// The margins applied to the line item. When set, the <c>default_margins</c> on the
-        /// invoice do not apply to the line item. Use <c>expand[]=margins</c> to expand each
-        /// margin.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-        public List<Margin> Margins
-        {
-            get => this.InternalMargins?.Select((x) => x.ExpandedObject).ToList();
-            set => this.InternalMargins = SetExpandableArrayObjects(value);
-        }
-
-        [JsonProperty("margins", ItemConverterType = typeof(ExpandableFieldConverter<Margin>))]
-        internal List<ExpandableField<Margin>> InternalMargins { get; set; }
-        #endregion
-
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
