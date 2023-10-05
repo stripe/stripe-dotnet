@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class ExternalAccountListOptions : ListOptions
+    public class ExternalAccountListOptions : ListOptions, IHasObject
     {
         /// <summary>
         /// Filter external accounts according to a particular object type.
