@@ -155,6 +155,26 @@ namespace Stripe
             return this.ListRequestAutoPagingAsync<QuoteLine>($"{this.InstanceUrl(id)}/lines", options, requestOptions, cancellationToken);
         }
 
+        public virtual StripeList<InvoiceLineItem> ListPreviewInvoiceLines(string id, string preview_invoice, QuoteListPreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoices/{preview_invoice}/lines", options, requestOptions);
+        }
+
+        public virtual Task<StripeList<InvoiceLineItem>> ListPreviewInvoiceLinesAsync(string id, string preview_invoice, QuoteListPreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/preview_invoices/{preview_invoice}/lines", options, requestOptions, cancellationToken);
+        }
+
+        public virtual IEnumerable<InvoiceLineItem> ListPreviewInvoiceLinesAutoPaging(string id, string preview_invoice, QuoteListPreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<InvoiceLineItem>($"{this.InstanceUrl(id)}/preview_invoices/{preview_invoice}/lines", options, requestOptions);
+        }
+
+        public virtual IAsyncEnumerable<InvoiceLineItem> ListPreviewInvoiceLinesAutoPagingAsync(string id, string preview_invoice, QuoteListPreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"{this.InstanceUrl(id)}/preview_invoices/{preview_invoice}/lines", options, requestOptions, cancellationToken);
+        }
+
         public virtual Quote MarkDraft(string id, QuoteMarkDraftOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/mark_draft", options, requestOptions);

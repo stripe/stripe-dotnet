@@ -2612,13 +2612,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestQuotePreviewInvoiceServiceListLines()
-        {
-            var service = new QuotePreviewInvoiceService(this.StripeClient);
-            service.ListLines("qt_xyz", "in_xyz");
-        }
-
-        [Fact]
         public void TestQuoteServiceAccept()
         {
             var service = new QuoteService(this.StripeClient);
@@ -2671,6 +2664,13 @@ namespace StripeTests
         {
             var service = new QuoteService(this.StripeClient);
             service.ListLineItems("qt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestQuoteServiceListPreviewInvoiceLines()
+        {
+            var service = new QuoteService(this.StripeClient);
+            service.ListPreviewInvoiceLines("qt_xyz", "in_xyz");
         }
 
         [Fact]
