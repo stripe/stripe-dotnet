@@ -1,5 +1,15 @@
 # Changelog
 
+## 42.9.0-beta.1 - 2023-10-05
+* [#2775](https://github.com/stripe/stripe-dotnet/pull/2775) Update generated code for beta
+  * Add support for `MarkDraft` and `MarkStale` methods on resource `Quote`
+  * Remove support for `DraftQuote` and `MarkStaleQuote` methods on resource `Quote`
+  * Add support for `Liability` on `CheckoutSessionAutomaticTaxOptions` and `CheckoutSessionAutomaticTax`
+  * Add support for `Issuer` on `CheckoutSessionInvoiceCreationInvoiceDataOptions` and `CheckoutSessionInvoiceCreationInvoiceData`
+  * Add support for `InvoiceSettings` on `CheckoutSessionSubscriptionDataOptions`
+  * Add support for `PersonalizationDesign` on `Issuing.CardListOptions`
+  * Add support for `AllowBackdatedLines` on `QuoteCreateOptions`, `QuoteUpdateOptions`, and `Quote`
+
 ## 42.8.0-beta.1 - 2023-09-28
 * [#2773](https://github.com/stripe/stripe-dotnet/pull/2773) Update generated code for beta
   * Rename resources `Issuing.CardDesign` and `Issuing.CardBundle` to `Issuing.PersonalizationDesign` and `Issuing.PhysicalBundle`
