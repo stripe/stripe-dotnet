@@ -29,6 +29,9 @@ namespace Stripe.Issuing
         [JsonProperty("last4")]
         public string Last4 { get; set; }
 
+        [JsonProperty("personalization_design")]
+        public string PersonalizationDesign { get; set; }
+
         /// <summary>
         /// Only return cards that have the given status. One of <c>active</c>, <c>inactive</c>, or
         /// <c>canceled</c>.
