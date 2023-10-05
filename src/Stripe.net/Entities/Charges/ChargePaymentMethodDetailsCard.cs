@@ -6,6 +6,12 @@ namespace Stripe
     public class ChargePaymentMethodDetailsCard : StripeEntity<ChargePaymentMethodDetailsCard>
     {
         /// <summary>
+        /// The authorized amount.
+        /// </summary>
+        [JsonProperty("amount_authorized")]
+        public long? AmountAuthorized { get; set; }
+
+        /// <summary>
         /// Card brand. Can be <c>amex</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
         /// <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or <c>unknown</c>.
         /// </summary>
@@ -44,6 +50,9 @@ namespace Stripe
         [JsonProperty("exp_year")]
         public long ExpYear { get; set; }
 
+        [JsonProperty("extended_authorization")]
+        public ChargePaymentMethodDetailsCardExtendedAuthorization ExtendedAuthorization { get; set; }
+
         /// <summary>
         /// Uniquely identifies this particular card number. You can use this attribute to check
         /// whether two customers who’ve signed up with you are using the same card number, for
@@ -69,6 +78,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("iin")]
         public string Iin { get; set; }
+
+        [JsonProperty("incremental_authorization")]
+        public ChargePaymentMethodDetailsCardIncrementalAuthorization IncrementalAuthorization { get; set; }
 
         /// <summary>
         /// Installment details for this payment (Mexico only).
@@ -104,6 +116,9 @@ namespace Stripe
         [JsonProperty("moto")]
         public bool? Moto { get; set; }
 
+        [JsonProperty("multicapture")]
+        public ChargePaymentMethodDetailsCardMulticapture Multicapture { get; set; }
+
         /// <summary>
         /// Identifies which network this charge was processed on. Can be <c>amex</c>,
         /// <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
@@ -119,6 +134,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("network_token")]
         public ChargePaymentMethodDetailsCardNetworkToken NetworkToken { get; set; }
+
+        [JsonProperty("overcapture")]
+        public ChargePaymentMethodDetailsCardOvercapture Overcapture { get; set; }
 
         /// <summary>
         /// Populated if this transaction used 3D Secure authentication.

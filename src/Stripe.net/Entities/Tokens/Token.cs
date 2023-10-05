@@ -9,23 +9,20 @@ namespace Stripe
     /// Tokenization is the process Stripe uses to collect sensitive card or bank account
     /// details, or personally identifiable information (PII), directly from your customers in a
     /// secure manner. A token representing this information is returned to your server to use.
-    /// You should use our <a href="https://stripe.com/docs/payments">recommended payments
-    /// integrations</a> to perform this process client-side. This ensures that no sensitive
-    /// card data touches your server, and allows your integration to operate in a PCI-compliant
-    /// way.
+    /// Use our <a href="https://stripe.com/docs/payments">recommended payments integrations</a>
+    /// to perform this process on the client-side. This guarantees that no sensitive card data
+    /// touches your server, and allows your integration to operate in a PCI-compliant way.
     ///
-    /// If you cannot use client-side tokenization, you can also create tokens using the API
-    /// with either your publishable or secret API key. Keep in mind that if your integration
-    /// uses this method, you are responsible for any PCI compliance that may be required, and
-    /// you must keep your secret API key safe. Unlike with client-side tokenization, your
-    /// customer's information is not sent directly to Stripe, so we cannot determine how it is
-    /// handled or stored.
+    /// If you can't use client-side tokenization, you can also create tokens using the API with
+    /// either your publishable or secret API key. If your integration uses this method, you're
+    /// responsible for any PCI compliance that it might require, and you must keep your secret
+    /// API key safe. Unlike with client-side tokenization, your customer's information isn't
+    /// sent directly to Stripe, so we can't determine how it's handled or stored.
     ///
-    /// Tokens cannot be stored or used more than once. To store card or bank account
-    /// information for later use, you can create <a
-    /// href="https://stripe.com/docs/api#customers">Customer</a> objects or <a
-    /// href="https://stripe.com/docs/api#external_accounts">Custom accounts</a>. Note that <a
-    /// href="https://stripe.com/docs/radar">Radar</a>, our integrated solution for automatic
+    /// You can't store or use tokens more than once. To store card or bank account information
+    /// for later use, create <a href="https://stripe.com/docs/api#customers">Customer</a>
+    /// objects or <a href="https://stripe.com/docs/api#external_accounts">Custom accounts</a>.
+    /// <a href="https://stripe.com/docs/radar">Radar</a>, our integrated solution for automatic
     /// fraud protection, performs best with integrations that use client-side tokenization.
     /// </summary>
     public class Token : StripeEntity<Token>, IHasId, IHasObject
@@ -68,7 +65,7 @@ namespace Stripe
         public Card Card { get; set; }
 
         /// <summary>
-        /// IP address of the client that generated the token.
+        /// IP address of the client that generates the token.
         /// </summary>
         [JsonProperty("client_ip")]
         public string ClientIp { get; set; }
@@ -94,7 +91,7 @@ namespace Stripe
         public string Type { get; set; }
 
         /// <summary>
-        /// Whether this token has already been used (tokens can be used only once).
+        /// Determines if you have already used this token (you can only use tokens once).
         /// </summary>
         [JsonProperty("used")]
         public bool Used { get; set; }
