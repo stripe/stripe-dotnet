@@ -6,8 +6,8 @@ namespace Stripe
     public class PaymentMethodConfigurationGiropayDisplayPreference : StripeEntity<PaymentMethodConfigurationGiropayDisplayPreference>
     {
         /// <summary>
-        /// For child configurations, whether or not the account's preference will be observed. If
-        /// <c>false</c>, the parent configuration's preference is used.
+        /// For child configs, whether or not the account's preference will be observed. If
+        /// <c>false</c>, the parent configuration's default is used.
         /// </summary>
         [JsonProperty("overridable")]
         public bool? Overridable { get; set; }

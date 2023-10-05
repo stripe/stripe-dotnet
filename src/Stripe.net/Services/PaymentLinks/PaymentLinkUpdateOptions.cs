@@ -86,6 +86,13 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in
+        /// <c>payment</c> mode.
+        /// </summary>
+        [JsonProperty("payment_intent_data")]
+        public PaymentLinkPaymentIntentDataOptions PaymentIntentData { get; set; }
+
+        /// <summary>
         /// Specify whether Checkout should collect a payment method. When set to
         /// <c>if_required</c>, Checkout will not collect a payment method when the total due for
         /// the session is 0.This may occur if the Checkout Session includes a free trial or a
@@ -115,5 +122,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("shipping_address_collection")]
         public PaymentLinkShippingAddressCollectionOptions ShippingAddressCollection { get; set; }
+
+        /// <summary>
+        /// When creating a subscription, the specified configuration data will be used. There must
+        /// be at least one line item with a recurring price to use <c>subscription_data</c>.
+        /// </summary>
+        [JsonProperty("subscription_data")]
+        public PaymentLinkSubscriptionDataOptions SubscriptionData { get; set; }
     }
 }

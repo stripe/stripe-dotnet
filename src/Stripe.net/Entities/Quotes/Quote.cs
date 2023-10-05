@@ -27,6 +27,13 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
+        /// Allow quote lines to have <c>starts_at</c> in the past if collection is paused between
+        /// <c>starts_at</c> and now.
+        /// </summary>
+        [JsonProperty("allow_backdated_lines")]
+        public bool? AllowBackdatedLines { get; set; }
+
+        /// <summary>
         /// Total before any discounts or taxes are applied.
         /// </summary>
         [JsonProperty("amount_subtotal")]

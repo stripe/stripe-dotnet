@@ -72,7 +72,7 @@ namespace Stripe
                 },
                 {
                     "financial_connections.account_inferred_balance", typeof(
-                        FinancialConnections.InferredBalance)
+                        FinancialConnections.AccountInferredBalance)
                 },
                 {
                     "financial_connections.account_owner", typeof(
@@ -112,6 +112,7 @@ namespace Stripe
                         Issuing.PersonalizationDesign)
                 },
                 { "issuing.physical_bundle", typeof(Issuing.PhysicalBundle) },
+                { "issuing.token", typeof(Issuing.Token) },
                 { "issuing.transaction", typeof(Issuing.Transaction) },
                 { "item", typeof(LineItem) },
                 { "line_item", typeof(InvoiceLineItem) },
@@ -136,7 +137,10 @@ namespace Stripe
                 { "quote_line", typeof(QuoteLine) },
                 { "quote_phase", typeof(QuotePhase) },
                 { "quote_preview_invoice", typeof(QuotePreviewInvoice) },
-                { "quote_preview_schedule", typeof(QuotePreviewSchedule) },
+                {
+                    "quote_preview_subscription_schedule", typeof(
+                        QuotePreviewSubscriptionSchedule)
+                },
                 {
                     "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning)
                 },

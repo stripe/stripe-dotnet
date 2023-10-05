@@ -9,6 +9,13 @@ namespace Stripe
     public class QuoteCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// Set to true to allow quote lines to have <c>starts_at</c> in the past if collection is
+        /// paused between <c>starts_at</c> and now.
+        /// </summary>
+        [JsonProperty("allow_backdated_lines")]
+        public bool? AllowBackdatedLines { get; set; }
+
+        /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account. There cannot be any
         /// line items with recurring prices when using this field.
