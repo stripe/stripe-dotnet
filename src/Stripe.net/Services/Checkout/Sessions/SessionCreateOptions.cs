@@ -271,6 +271,24 @@ namespace Stripe.Checkout
         public SessionPhoneNumberCollectionOptions PhoneNumberCollection { get; set; }
 
         /// <summary>
+        /// This parameter applies to <c>ui_mode: embedded</c>. By default, Stripe will always
+        /// redirect to your return_url after a successful confirmation. If you set
+        /// <c>redirect_on_completion: 'if_required'</c>, then we will only redirect if your user
+        /// chooses a redirect-based payment method.
+        /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("redirect_on_completion")]
+        public string RedirectOnCompletion { get; set; }
+
+        /// <summary>
+        /// The URL to redirect your customer back to after they authenticate or cancel their
+        /// payment on the payment method's app or site. This parameter is required if ui_mode is
+        /// <c>embedded</c> and redirect-based payment methods are enabled on the session.
+        /// </summary>
+        [JsonProperty("return_url")]
+        public string ReturnUrl { get; set; }
+
+        /// <summary>
         /// A subset of parameters to be passed to SetupIntent creation for Checkout Sessions in
         /// <c>setup</c> mode.
         /// </summary>
@@ -322,5 +340,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("tax_id_collection")]
         public SessionTaxIdCollectionOptions TaxIdCollection { get; set; }
+
+        /// <summary>
+        /// <c>ui_mode</c> can be <c>hosted</c> or <c>embedded</c>. The default is <c>hosted</c>.
+        /// One of: <c>embedded</c>, or <c>hosted</c>.
+        /// </summary>
+        [JsonProperty("ui_mode")]
+        public string UiMode { get; set; }
     }
 }
