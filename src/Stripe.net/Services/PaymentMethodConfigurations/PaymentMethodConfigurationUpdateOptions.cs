@@ -197,8 +197,9 @@ namespace Stripe
 
         /// <summary>
         /// JCB is a credit card company based in Japan. JCB is currently available in Japan to
-        /// businesses approved by JCB, and available to all businesses in the US, Canada,
-        /// Australia, New Zealand, UK, and Ireland. Check this <a
+        /// businesses approved by JCB, and available to all businesses in Australia, Canada, Hong
+        /// Kong, Japan, New Zealand, Singapore, Switzerland, United Kingdom, United States, and all
+        /// countries in the European Economic Area except Iceland. Check this <a
         /// href="https://support.stripe.com/questions/accepting-japan-credit-bureau-%28jcb%29-payments">page</a>
         /// for more details.
         /// </summary>
