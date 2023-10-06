@@ -15,8 +15,8 @@ namespace Stripe
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will set
-        /// metadata on [Payment Intents] (/docs/api/payment_intents) generated from this payment
-        /// link.
+        /// metadata on <a href="https://stripe.com/docs/api/payment_intents">Payment Intents</a>
+        /// generated from this payment link.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
