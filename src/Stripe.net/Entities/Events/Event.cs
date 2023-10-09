@@ -108,6 +108,7 @@ namespace Stripe
         /// One of: <c>account.application.authorized</c>, <c>account.application.deauthorized</c>,
         /// <c>account.external_account.created</c>, <c>account.external_account.deleted</c>,
         /// <c>account.external_account.updated</c>, <c>account.updated</c>,
+        /// <c>account_notice.created</c>, <c>account_notice.updated</c>,
         /// <c>application_fee.created</c>, <c>application_fee.refund.updated</c>,
         /// <c>application_fee.refunded</c>, <c>balance.available</c>,
         /// <c>billing_portal.configuration.created</c>,

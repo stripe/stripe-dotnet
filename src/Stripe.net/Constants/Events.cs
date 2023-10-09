@@ -6,6 +6,16 @@ namespace Stripe
     public static class Events
     {
         /// <summary>
+        /// Occurs whenever an AccountNotice is created.
+        /// </summary>
+        public const string AccountNoticeCreated = "account_notice.created";
+
+        /// <summary>
+        /// Occurs whenever an AccountNotice is updated.
+        /// </summary>
+        public const string AccountNoticeUpdated = "account_notice.updated";
+
+        /// <summary>
         /// Occurs whenever a user authorizes an application. Sent to the related application only.
         /// </summary>
         public const string AccountApplicationAuthorized = "account.application.authorized";
