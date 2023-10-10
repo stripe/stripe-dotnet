@@ -43,6 +43,9 @@ namespace Stripe.Terminal
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        [JsonProperty("offline")]
+        public ConfigurationOffline Offline { get; set; }
+
         [JsonProperty("tipping")]
         public ConfigurationTipping Tipping { get; set; }
 
