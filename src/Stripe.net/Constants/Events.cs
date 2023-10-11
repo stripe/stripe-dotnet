@@ -334,7 +334,7 @@ namespace Stripe
 
         /// <summary>
         /// An ad-hoc custom event that is sent based on user configured <a
-        /// href="https://stripe.com/docs/billing/revenue-recovery/automations">Automation</a>.
+        /// href="https://stripe.com/docs/billing/revenue-recovery/automations#send-custom-webhook-event-action">Automation</a>.
         /// </summary>
         public const string CustomerSubscriptionCustomEvent = "customer.subscription.custom_event";
 
