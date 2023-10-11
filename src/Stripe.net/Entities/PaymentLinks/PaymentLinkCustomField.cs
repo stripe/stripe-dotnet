@@ -5,9 +5,6 @@ namespace Stripe
 
     public class PaymentLinkCustomField : StripeEntity<PaymentLinkCustomField>
     {
-        /// <summary>
-        /// Configuration for <c>type=dropdown</c> fields.
-        /// </summary>
         [JsonProperty("dropdown")]
         public PaymentLinkCustomFieldDropdown Dropdown { get; set; }
 
@@ -21,9 +18,6 @@ namespace Stripe
         [JsonProperty("label")]
         public PaymentLinkCustomFieldLabel Label { get; set; }
 
-        /// <summary>
-        /// Configuration for <c>type=numeric</c> fields.
-        /// </summary>
         [JsonProperty("numeric")]
         public PaymentLinkCustomFieldNumeric Numeric { get; set; }
 
@@ -34,9 +28,6 @@ namespace Stripe
         [JsonProperty("optional")]
         public bool Optional { get; set; }
 
-        /// <summary>
-        /// Configuration for <c>type=text</c> fields.
-        /// </summary>
         [JsonProperty("text")]
         public PaymentLinkCustomFieldText Text { get; set; }
 

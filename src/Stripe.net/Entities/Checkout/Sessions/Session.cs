@@ -87,6 +87,12 @@ namespace Stripe.Checkout
         public string ClientReferenceId { get; set; }
 
         /// <summary>
+        /// Client secret to be used when initializing Stripe.js embedded checkout.
+        /// </summary>
+        [JsonProperty("client_secret")]
+        public string ClientSecret { get; set; }
+
+        /// <summary>
         /// Results of <c>consent_collection</c> for this session.
         /// </summary>
         [JsonProperty("consent")]
@@ -386,6 +392,24 @@ namespace Stripe.Checkout
         [JsonProperty("recovered_from")]
         public string RecoveredFrom { get; set; }
 
+        /// <summary>
+        /// Applies to Checkout Sessions with <c>ui_mode: embedded</c>. By default, Stripe will
+        /// always redirect to your return_url after a successful confirmation. If you set
+        /// <c>redirect_on_completion: 'if_required'</c>, then we will only redirect if your user
+        /// chooses a redirect-based payment method.
+        /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("redirect_on_completion")]
+        public string RedirectOnCompletion { get; set; }
+
+        /// <summary>
+        /// Applies to Checkout Sessions with <c>ui_mode: embedded</c>. The URL to redirect your
+        /// customer back to after they authenticate or cancel their payment on the payment method's
+        /// app or site.
+        /// </summary>
+        [JsonProperty("return_url")]
+        public string ReturnUrl { get; set; }
+
         #region Expandable SetupIntent
 
         /// <summary>
@@ -507,6 +531,13 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("total_details")]
         public SessionTotalDetails TotalDetails { get; set; }
+
+        /// <summary>
+        /// The UI mode of the Session. Can be <c>hosted</c> (default) or <c>embedded</c>.
+        /// One of: <c>embedded</c>, or <c>hosted</c>.
+        /// </summary>
+        [JsonProperty("ui_mode")]
+        public string UiMode { get; set; }
 
         /// <summary>
         /// The URL to the Checkout Session. Redirect customers to this URL to take them to

@@ -15,8 +15,9 @@ namespace Stripe
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will
-        /// declaratively set metadata on [Subscriptions] (/docs/api/subscriptions) generated from
-        /// this payment link. Unlike object-level metadata, this field is declarative. Updates will
+        /// declaratively set metadata on <a
+        /// href="https://stripe.com/docs/api/subscriptions">Subscriptions</a> generated from this
+        /// payment link. Unlike object-level metadata, this field is declarative. Updates will
         /// clear prior values.
         /// </summary>
         [JsonProperty("metadata")]

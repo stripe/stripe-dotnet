@@ -5,9 +5,6 @@ namespace Stripe.Checkout
 
     public class SessionCustomField : StripeEntity<SessionCustomField>
     {
-        /// <summary>
-        /// Configuration for <c>type=dropdown</c> fields.
-        /// </summary>
         [JsonProperty("dropdown")]
         public SessionCustomFieldDropdown Dropdown { get; set; }
 
@@ -21,9 +18,6 @@ namespace Stripe.Checkout
         [JsonProperty("label")]
         public SessionCustomFieldLabel Label { get; set; }
 
-        /// <summary>
-        /// Configuration for <c>type=numeric</c> fields.
-        /// </summary>
         [JsonProperty("numeric")]
         public SessionCustomFieldNumeric Numeric { get; set; }
 
@@ -34,9 +28,6 @@ namespace Stripe.Checkout
         [JsonProperty("optional")]
         public bool Optional { get; set; }
 
-        /// <summary>
-        /// Configuration for <c>type=text</c> fields.
-        /// </summary>
         [JsonProperty("text")]
         public SessionCustomFieldText Text { get; set; }
 

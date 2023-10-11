@@ -24,7 +24,7 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// Only return SetupIntents associated with the specified payment method.
+        /// Only return SetupIntents that associate with the specified payment method.
         /// </summary>
         [JsonProperty("payment_method")]
         public string PaymentMethod { get; set; }
