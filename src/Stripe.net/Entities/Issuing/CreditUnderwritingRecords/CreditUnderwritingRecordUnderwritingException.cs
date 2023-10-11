@@ -3,8 +3,14 @@ namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
 
-    public class CreditUnderwritingRecordException : StripeEntity<CreditUnderwritingRecordException>
+    public class CreditUnderwritingRecordUnderwritingException : StripeEntity<CreditUnderwritingRecordUnderwritingException>
     {
+        /// <summary>
+        /// Written explanation for the exception.
+        /// </summary>
+        [JsonProperty("explanation")]
+        public string Explanation { get; set; }
+
         /// <summary>
         /// The decision before the exception was applied.
         /// One of: <c>additional_information_requested</c>, <c>application_rejected</c>,
@@ -13,11 +19,5 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("original_decision_type")]
         public string OriginalDecisionType { get; set; }
-
-        /// <summary>
-        /// Written explanation for the exception.
-        /// </summary>
-        [JsonProperty("reason")]
-        public string Reason { get; set; }
     }
 }

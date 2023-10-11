@@ -74,14 +74,6 @@ namespace Stripe.Issuing
         public DateTime? DecisionDeadline { get; set; }
 
         /// <summary>
-        /// If an exception to the usual underwriting criteria was made for this application,
-        /// details about the exception must be provided. Exceptions should only be granted in rare
-        /// circumstances, in consultation with Stripe Compliance.
-        /// </summary>
-        [JsonProperty("exception")]
-        public CreditUnderwritingRecordException Exception { get; set; }
-
-        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
@@ -95,5 +87,13 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// If an exception to the usual underwriting criteria was made for this application,
+        /// details about the exception must be provided. Exceptions should only be granted in rare
+        /// circumstances, in consultation with Stripe Compliance.
+        /// </summary>
+        [JsonProperty("underwriting_exception")]
+        public CreditUnderwritingRecordUnderwritingException UnderwritingException { get; set; }
     }
 }

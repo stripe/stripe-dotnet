@@ -35,5 +35,13 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// If an exception to the usual underwriting criteria was made for this decision, details
+        /// about the exception must be provided. Exceptions should only be granted in rare
+        /// circumstances, in consultation with Stripe Compliance.
+        /// </summary>
+        [JsonProperty("underwriting_exception")]
+        public CreditUnderwritingRecordUnderwritingExceptionOptions UnderwritingException { get; set; }
     }
 }
