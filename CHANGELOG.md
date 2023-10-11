@@ -1,5 +1,11 @@
 # Changelog
 
+## 42.10.0-beta.1 - 2023-10-11
+* [#2777](https://github.com/stripe/stripe-dotnet/pull/2777) Update generated code for beta
+  * Add support for new resources `AccountNotice` and `Issuing.CreditUnderwritingRecord`
+  * Add support for `Get`, `List`, and `Update` methods on resource `AccountNotice`
+  * Add support for `Correct`, `CreateFromApplication`, `CreateFromProactiveReview`, `Get`, `List`, and `ReportDecision` methods on resource `CreditUnderwritingRecord`
+
 ## 42.9.0 - 2023-10-11
 * [#2778](https://github.com/stripe/stripe-dotnet/pull/2778) Update generated code
   * Add support for `RedirectOnCompletion`, `ReturnUrl`, and `UiMode` on `Checkout.SessionCreateOptions` and `CheckoutSession`
