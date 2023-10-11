@@ -1,5 +1,12 @@
 # Changelog
 
+## 42.9.0 - 2023-10-11
+* [#2778](https://github.com/stripe/stripe-dotnet/pull/2778) Update generated code
+  * Add support for `RedirectOnCompletion`, `ReturnUrl`, and `UiMode` on `Checkout.SessionCreateOptions` and `CheckoutSession`
+  * Add support for `ClientSecret` on `CheckoutSession`
+  * Add support for `PostalCode` on `IssuingAuthorizationVerificationData`
+  * Add support for `Offline` on `Terminal.ConfigurationCreateOptions`, `Terminal.ConfigurationUpdateOptions`, and `TerminalConfiguration`
+
 ## 42.9.0-beta.1 - 2023-10-05
 * [#2775](https://github.com/stripe/stripe-dotnet/pull/2775) Update generated code for beta
   * Add support for `MarkDraft` and `MarkStale` methods on resource `Quote`
@@ -9,6 +16,20 @@
   * Add support for `InvoiceSettings` on `CheckoutSessionSubscriptionDataOptions`
   * Add support for `PersonalizationDesign` on `Issuing.CardListOptions`
   * Add support for `AllowBackdatedLines` on `QuoteCreateOptions`, `QuoteUpdateOptions`, and `Quote`
+
+## 42.8.0 - 2023-10-05
+* [#2776](https://github.com/stripe/stripe-dotnet/pull/2776) Update generated code
+  * Add support for new resource `Issuing.Token`
+  * Add support for `Get`, `List`, and `Update` methods on resource `Token`
+  * Add support for `AmountAuthorized`, `ExtendedAuthorization`, `IncrementalAuthorization`, `Multicapture`, and `Overcapture` on `ChargePaymentMethodDetailsCard`
+  * Add support for `Token` on `IssuingAuthorization` and `IssuingTransaction`
+  * Add support for `AuthorizationCode` on `IssuingAuthorizationRequestHistory`
+  * Add support for `RequestExtendedAuthorization`, `RequestMulticapture`, and `RequestOvercapture` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
+  * Add support for `RequestIncrementalAuthorization` on `PaymentIntentPaymentMethodOptionsCardOptions`, `PaymentIntentPaymentMethodOptionsCardPresentOptions`, and `PaymentIntentPaymentMethodOptionsCard`
+  * Add support for `FinalCapture` on `PaymentIntentCaptureOptions`
+  * Add support for `Metadata` on `PaymentLinkPaymentIntentDataOptions`, `PaymentLinkPaymentIntentData`, `PaymentLinkSubscriptionDataOptions`, and `PaymentLinkSubscriptionData`
+  * Add support for `StatementDescriptorSuffix` and `StatementDescriptor` on `PaymentLinkPaymentIntentDataOptions` and `PaymentLinkPaymentIntentData`
+  * Add support for `PaymentIntentData` and `SubscriptionData` on `PaymentLinkUpdateOptions`
 
 ## 42.8.0-beta.1 - 2023-09-28
 * [#2773](https://github.com/stripe/stripe-dotnet/pull/2773) Update generated code for beta

@@ -36,6 +36,13 @@ namespace Stripe.Issuing
         public string ExpiryCheck { get; set; }
 
         /// <summary>
+        /// The postal code submitted as part of the authorization used for postal code
+        /// verification.
+        /// </summary>
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; }
+
+        /// <summary>
         /// 3D Secure details.
         /// </summary>
         [JsonProperty("three_d_secure")]

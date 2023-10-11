@@ -17,6 +17,7 @@ namespace Stripe
             {
                 { "account", typeof(Account) },
                 { "account_link", typeof(AccountLink) },
+                { "account_notice", typeof(AccountNotice) },
                 { "account_session", typeof(AccountSession) },
                 { "apple_pay_domain", typeof(ApplePayDomain) },
                 { "application", typeof(Application) },
@@ -106,6 +107,10 @@ namespace Stripe
                 { "issuing.authorization", typeof(Issuing.Authorization) },
                 { "issuing.card", typeof(Issuing.Card) },
                 { "issuing.cardholder", typeof(Issuing.Cardholder) },
+                {
+                    "issuing.credit_underwriting_record", typeof(
+                        Issuing.CreditUnderwritingRecord)
+                },
                 { "issuing.dispute", typeof(Issuing.Dispute) },
                 {
                     "issuing.personalization_design", typeof(
