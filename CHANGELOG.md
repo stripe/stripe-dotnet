@@ -1,5 +1,12 @@
 # Changelog
 
+## 42.9.0 - 2023-10-11
+* [#2778](https://github.com/stripe/stripe-dotnet/pull/2778) Update generated code
+  * Add support for `RedirectOnCompletion`, `ReturnUrl`, and `UiMode` on `Checkout.SessionCreateOptions` and `CheckoutSession`
+  * Add support for `ClientSecret` on `CheckoutSession`
+  * Add support for `PostalCode` on `IssuingAuthorizationVerificationData`
+  * Add support for `Offline` on `Terminal.ConfigurationCreateOptions`, `Terminal.ConfigurationUpdateOptions`, and `TerminalConfiguration`
+
 ## 42.9.0-beta.1 - 2023-10-05
 * [#2775](https://github.com/stripe/stripe-dotnet/pull/2775) Update generated code for beta
   * Add support for `MarkDraft` and `MarkStale` methods on resource `Quote`
