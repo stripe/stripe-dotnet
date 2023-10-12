@@ -28,8 +28,8 @@ namespace Stripe
     /// Related guides: - <a
     /// href="https://stripe.com/docs/connect/payment-method-configurations">Payment Method
     /// Configurations API</a> - <a
-    /// href="https://stripe.com/docs/payments/multiple-payment-method-configs">Multiple payment
-    /// method configurations on dynamic payment methods</a> - <a
+    /// href="https://stripe.com/docs/payments/multiple-payment-method-configs">Multiple
+    /// configurations on dynamic payment methods</a> - <a
     /// href="https://stripe.com/docs/connect/multiple-payment-method-configurations">Multiple
     /// configurations for your Connect accounts</a>.
     /// </summary>
