@@ -668,6 +668,16 @@ namespace Stripe
         public const string IssuingPersonalizationDesignUpdated = "issuing_personalization_design.updated";
 
         /// <summary>
+        /// Occurs whenever an issuing digital wallet token is created.
+        /// </summary>
+        public const string IssuingTokenCreated = "issuing_token.created";
+
+        /// <summary>
+        /// Occurs whenever an issuing digital wallet token is updated.
+        /// </summary>
+        public const string IssuingTokenUpdated = "issuing_token.updated";
+
+        /// <summary>
         /// Occurs whenever an issuing transaction is created.
         /// </summary>
         public const string IssuingTransactionCreated = "issuing_transaction.created";
