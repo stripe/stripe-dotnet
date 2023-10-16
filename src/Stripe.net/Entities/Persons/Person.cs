@@ -40,6 +40,9 @@ namespace Stripe
         [JsonProperty("account")]
         public string Account { get; set; }
 
+        [JsonProperty("additional_tos_acceptances")]
+        public PersonAdditionalTosAcceptances AdditionalTosAcceptances { get; set; }
+
         [JsonProperty("address")]
         public Address Address { get; set; }
 

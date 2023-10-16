@@ -21,6 +21,13 @@ namespace Stripe
         public bool? Executive { get; set; }
 
         /// <summary>
+        /// A filter on the list of people returned based on whether these people are legal
+        /// guardians of the account's representative.
+        /// </summary>
+        [JsonProperty("legal_guardian")]
+        public bool? LegalGuardian { get; set; }
+
+        /// <summary>
         /// A filter on the list of people returned based on whether these people are owners of the
         /// account's company.
         /// </summary>
