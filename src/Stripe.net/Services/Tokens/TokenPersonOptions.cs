@@ -7,6 +7,12 @@ namespace Stripe
     public class TokenPersonOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
+        /// Details on the legal guardian's acceptance of the required Stripe agreements.
+        /// </summary>
+        [JsonProperty("additional_tos_acceptances")]
+        public TokenPersonAdditionalTosAcceptancesOptions AdditionalTosAcceptances { get; set; }
+
+        /// <summary>
         /// The person's address.
         /// </summary>
         [JsonProperty("address")]

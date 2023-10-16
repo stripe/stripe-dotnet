@@ -21,6 +21,12 @@ namespace Stripe
         public bool? Executive { get; set; }
 
         /// <summary>
+        /// Whether the person is the legal guardian of the account's representative.
+        /// </summary>
+        [JsonProperty("legal_guardian")]
+        public bool? LegalGuardian { get; set; }
+
+        /// <summary>
         /// Whether the person is an owner of the account’s legal entity.
         /// </summary>
         [JsonProperty("owner")]
