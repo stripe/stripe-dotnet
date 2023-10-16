@@ -112,14 +112,19 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// If Stripe bills the customer's latest invoice by automatically charging and the latest
-        /// charge fails, it sets <c>delinquent`` to </c>true<c>. If Stripe bills the invoice by
-        /// sending it, and the invoice isn't paid by the due date, it also sets `delinquent</c> to
+        /// Tracks the most recent state change on any invoice belonging to the customer. Paying an
+        /// invoice or marking it uncollectible via the API will set this field to false. An
+        /// automatic payment failure or passing the <c>invoice.due_date</c> will set this field to
         /// <c>true</c>.
         ///
         /// If an invoice becomes uncollectible by <a
         /// href="https://stripe.com/docs/billing/automatic-collection">dunning</a>,
         /// <c>delinquent</c> doesn't reset to <c>false</c>.
+        ///
+        /// If you care whether the customer has paid their most recent subscription invoice, use
+        /// <c>subscription.status</c> instead. Paying or marking uncollectible any customer invoice
+        /// regardless of whether it is the latest invoice for a subscription will always set this
+        /// field to <c>false</c>.
         /// </summary>
         [JsonProperty("delinquent")]
         public bool? Delinquent { get; set; }
