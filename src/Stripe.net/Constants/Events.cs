@@ -334,7 +334,7 @@ namespace Stripe
 
         /// <summary>
         /// An ad-hoc custom event that is sent based on user configured <a
-        /// href="https://stripe.com/docs/billing/revenue-recovery/automations">Automation</a>.
+        /// href="https://stripe.com/docs/billing/revenue-recovery/automations#send-custom-webhook-event-action">Automation</a>.
         /// </summary>
         public const string CustomerSubscriptionCustomEvent = "customer.subscription.custom_event";
 
@@ -666,6 +666,16 @@ namespace Stripe
         /// Occurs whenever a personalization design is updated.
         /// </summary>
         public const string IssuingPersonalizationDesignUpdated = "issuing_personalization_design.updated";
+
+        /// <summary>
+        /// Occurs whenever an issuing digital wallet token is created.
+        /// </summary>
+        public const string IssuingTokenCreated = "issuing_token.created";
+
+        /// <summary>
+        /// Occurs whenever an issuing digital wallet token is updated.
+        /// </summary>
+        public const string IssuingTokenUpdated = "issuing_token.updated";
 
         /// <summary>
         /// Occurs whenever an issuing transaction is created.
