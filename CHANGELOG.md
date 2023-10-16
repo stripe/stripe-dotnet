@@ -1,5 +1,9 @@
 # Changelog
 
+## 42.10.0 - 2023-10-16
+* [#2780](https://github.com/stripe/stripe-dotnet/pull/2780) Update generated code
+  * Add support for `issuing_token.created` and `issuing_token.updated` event types.
+
 ## 42.9.0 - 2023-10-11
 * [#2778](https://github.com/stripe/stripe-dotnet/pull/2778) Update generated code
   * Add support for `RedirectOnCompletion`, `ReturnUrl`, and `UiMode` on `Checkout.SessionCreateOptions` and `CheckoutSession`
