@@ -1,8 +1,13 @@
 # Changelog
 
+## 43.0.0 - 2023-10-16
+* This release changes the pinned API version to `2023-10-16`. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2023-10-16) and carefully review the API changes before upgrading `Stripe.net`.
+* [#2781](https://github.com/stripe/stripe-dotnet/pull/2781) Update generated code
+  * Add support for `LegalGuardian` on `AccountRelationshipOptions` and `TokenPersonRelationshipOptions`
+  * Add support for `AdditionalTosAcceptances` on `TokenPersonOptions`
+
 ## 42.11.0-beta.1 - 2023-10-16
 * [#2779](https://github.com/stripe/stripe-dotnet/pull/2779) Update generated code for beta
-
 
 ## 42.10.0 - 2023-10-16
 * [#2780](https://github.com/stripe/stripe-dotnet/pull/2780) Update generated code
