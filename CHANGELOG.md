@@ -1,5 +1,9 @@
 # Changelog
 
+## 43.1.0-beta.1 - 2023-10-17
+* [#2782](https://github.com/stripe/stripe-dotnet/pull/2782) Update generated code for beta
+  - Update pinned API version to `2023-10-16`
+
 ## 43.0.0 - 2023-10-16
 * This release changes the pinned API version to `2023-10-16`. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2023-10-16) and carefully review the API changes before upgrading `Stripe.net`.
 * [#2781](https://github.com/stripe/stripe-dotnet/pull/2781) Update generated code
