@@ -33,11 +33,13 @@ namespace Stripe
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
-        /// If the account is disabled, this string describes why. Can be
+        /// If the account is disabled, this string describes why. <a
+        /// href="https://stripe.com/docs/connect/handling-api-verification">Learn more about
+        /// handling verification issues</a>. Can be <c>action_required.requested_capabilities</c>,
         /// <c>requirements.past_due</c>, <c>requirements.pending_verification</c>, <c>listed</c>,
-        /// <c>platform_paused</c>, <c>rejected.fraud</c>, <c>rejected.listed</c>,
-        /// <c>rejected.terms_of_service</c>, <c>rejected.other</c>, <c>under_review</c>, or
-        /// <c>other</c>.
+        /// <c>platform_paused</c>, <c>rejected.fraud</c>, <c>rejected.incomplete_verification</c>,
+        /// <c>rejected.listed</c>, <c>rejected.other</c>, <c>rejected.terms_of_service</c>,
+        /// <c>under_review</c>, or <c>other</c>.
         /// </summary>
         [JsonProperty("disabled_reason")]
         public string DisabledReason { get; set; }
