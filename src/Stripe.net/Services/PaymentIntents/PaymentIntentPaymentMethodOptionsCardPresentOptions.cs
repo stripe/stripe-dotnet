@@ -14,6 +14,13 @@ namespace Stripe
         public bool? RequestExtendedAuthorization { get; set; }
 
         /// <summary>
+        /// This field was released by mistake and will be removed in the next major version.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_incremental_authorization")]
+        public string RequestIncrementalAuthorization { get; set; }
+
+        /// <summary>
         /// Request ability to <a
         /// href="https://stripe.com/docs/terminal/features/incremental-authorizations">increment</a>
         /// this PaymentIntent if the combination of MCC and card brand is eligible. Check <a
