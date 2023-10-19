@@ -10,14 +10,14 @@ namespace Stripe.Issuing
         /// connected account will use the Connect platform's default if no personalization design
         /// is set as the account default.
         /// </summary>
-        [JsonProperty("account_default")]
-        public bool AccountDefault { get; set; }
+        [JsonProperty("is_default")]
+        public bool IsDefault { get; set; }
 
         /// <summary>
         /// Whether this personalization design is used to create cards when one is not specified
-        /// and an account default for this connected account does not exist.
+        /// and a default for this connected account does not exist.
         /// </summary>
-        [JsonProperty("platform_default")]
-        public bool? PlatformDefault { get; set; }
+        [JsonProperty("is_platform_default")]
+        public bool? IsPlatformDefault { get; set; }
     }
 }
