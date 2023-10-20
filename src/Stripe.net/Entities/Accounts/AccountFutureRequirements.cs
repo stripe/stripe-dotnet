@@ -34,9 +34,7 @@ namespace Stripe
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
-        /// This is typed as a string for consistency with <c>requirements.disabled_reason</c>, but
-        /// it safe to assume <c>future_requirements.disabled_reason</c> is empty because fields in
-        /// <c>future_requirements</c> will never disable the account.
+        /// This is typed as a string for consistency with <c>requirements.disabled_reason</c>.
         /// </summary>
         [JsonProperty("disabled_reason")]
         public string DisabledReason { get; set; }
