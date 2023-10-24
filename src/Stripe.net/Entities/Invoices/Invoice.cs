@@ -370,6 +370,38 @@ namespace Stripe
         [JsonProperty("customer_tax_ids")]
         public List<InvoiceCustomerTaxId> CustomerTaxIds { get; set; }
 
+        #region Expandable DefaultMargins
+
+        /// <summary>
+        /// (IDs of the DefaultMargins)
+        /// The margins applied to the invoice. Can be overridden by line item <c>margins</c>. Use
+        /// <c>expand[]=default_margins</c> to expand each margin.
+        /// </summary>
+        [JsonIgnore]
+        public List<string> DefaultMarginIds
+        {
+            get => this.InternalDefaultMargins?.Select((x) => x.Id).ToList();
+            set => this.InternalDefaultMargins = SetExpandableArrayIds<Margin>(value);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The margins applied to the invoice. Can be overridden by line item <c>margins</c>. Use
+        /// <c>expand[]=default_margins</c> to expand each margin.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public List<Margin> DefaultMargins
+        {
+            get => this.InternalDefaultMargins?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalDefaultMargins = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("default_margins", ItemConverterType = typeof(ExpandableFieldConverter<Margin>))]
+        internal List<ExpandableField<Margin>> InternalDefaultMargins { get; set; }
+        #endregion
+
         #region Expandable DefaultPaymentMethod
 
         /// <summary>
@@ -963,6 +995,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("total_excluding_tax")]
         public long? TotalExcludingTax { get; set; }
+
+        /// <summary>
+        /// The aggregate amounts calculated per margin across all line items.
+        /// </summary>
+        [JsonProperty("total_margin_amounts")]
+        public List<InvoiceTotalMarginAmount> TotalMarginAmounts { get; set; }
 
         /// <summary>
         /// The aggregate amounts calculated per tax rate for all line items.
