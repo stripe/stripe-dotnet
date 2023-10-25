@@ -252,9 +252,8 @@ namespace Stripe
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
-        /// The parameters that you can use to automatically create a Transfer after the payment
-        /// succeeds. Learn more about the <a
-        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// The parameters that you can use to automatically create a Transfer. Learn more about the
+        /// <a href="https://stripe.com/docs/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
