@@ -6,7 +6,7 @@ namespace Stripe
     public class SubscriptionSchedulePhaseTrialSettings : StripeEntity<SubscriptionSchedulePhaseTrialSettings>
     {
         /// <summary>
-        /// Defines how the subscription should behaves when a trial ensd.
+        /// Defines how the subscription should behave when a trial ends.
         /// </summary>
         [JsonProperty("end_behavior")]
         public SubscriptionSchedulePhaseTrialSettingsEndBehavior EndBehavior { get; set; }
