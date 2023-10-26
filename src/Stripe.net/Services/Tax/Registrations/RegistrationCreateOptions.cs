@@ -9,7 +9,8 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// Time at which the Tax Registration becomes active. It can be either <c>now</c> to
-        /// indicate the current time, or a timestamp measured in seconds since the Unix epoch.
+        /// indicate the current time, or a future timestamp measured in seconds since the Unix
+        /// epoch.
         /// </summary>
         [JsonProperty("active_from")]
         [JsonConverter(typeof(AnyOfConverter))]

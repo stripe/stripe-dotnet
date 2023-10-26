@@ -64,6 +64,13 @@ namespace Stripe
         public long? DaysUntilDue { get; set; }
 
         /// <summary>
+        /// The ids of the margins to apply to the invoice. Can be overridden by line item
+        /// <c>margins</c>.
+        /// </summary>
+        [JsonProperty("default_margins")]
+        public List<string> DefaultMargins { get; set; }
+
+        /// <summary>
         /// ID of the default payment method for the invoice. It must belong to the customer
         /// associated with the invoice. If not set, defaults to the subscription's default payment
         /// method, if any, or to the default payment method in the customer's invoice settings.

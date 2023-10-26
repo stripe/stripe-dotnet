@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class PaymentIntentPaymentMethodOptionsPaypal : StripeEntity<PaymentIntentPaymentMethodOptionsPaypal>
@@ -52,5 +53,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
+
+        /// <summary>
+        /// The Stripe connected account IDs of the sellers on the platform for this transaction
+        /// (optional). Only allowed when <a
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">separate charges
+        /// and transfers</a> are used.
+        /// </summary>
+        [JsonProperty("subsellers")]
+        public List<string> Subsellers { get; set; }
     }
 }

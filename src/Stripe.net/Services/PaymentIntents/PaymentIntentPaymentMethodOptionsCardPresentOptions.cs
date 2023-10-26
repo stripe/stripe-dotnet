@@ -14,9 +14,7 @@ namespace Stripe
         public bool? RequestExtendedAuthorization { get; set; }
 
         /// <summary>
-        /// Request ability to <a
-        /// href="https://stripe.com/docs/payments/incremental-authorization">increment</a> for this
-        /// PaymentIntent.
+        /// This field was released by mistake and will be removed in the next major version.
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_incremental_authorization")]

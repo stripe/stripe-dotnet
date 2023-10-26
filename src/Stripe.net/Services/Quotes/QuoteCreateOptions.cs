@@ -171,7 +171,7 @@ namespace Stripe
 
         /// <summary>
         /// List representing overrides for <c>subscription_data</c> configurations for specific
-        /// groups.
+        /// subscription schedules.
         /// </summary>
         [JsonProperty("subscription_data_overrides")]
         public List<QuoteSubscriptionDataOverrideOptions> SubscriptionDataOverrides { get; set; }

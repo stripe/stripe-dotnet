@@ -411,6 +411,10 @@ namespace Stripe
         [JsonProperty("subscription_data")]
         public QuoteSubscriptionData SubscriptionData { get; set; }
 
+        /// <summary>
+        /// List representing overrides for <c>subscription_data</c> configurations for specific
+        /// subscription schedules.
+        /// </summary>
         [JsonProperty("subscription_data_overrides")]
         public List<QuoteSubscriptionDataOverride> SubscriptionDataOverrides { get; set; }
 
