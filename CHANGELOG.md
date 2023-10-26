@@ -1,5 +1,21 @@
 # Changelog
 
+## 43.1.0-beta.2 - 2023-10-26
+* [#2784](https://github.com/stripe/stripe-dotnet/pull/2784) Update generated code for beta
+  * Add support for new resource `Margin`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `Margin`
+  * Add support for `Subsellers` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypal`, `PaymentIntentPaymentMethodOptionsPaypalOptions`, `PaymentIntentPaymentMethodOptionsPaypal`, `SetupIntentPaymentMethodOptionsPaypalOptions`, and `SetupIntentPaymentMethodOptionsPaypal`
+  * Add support for `DefaultMargins` on `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
+  * Add support for `TotalMarginAmounts` on `Invoice`
+  * Add support for `Margins` on `InvoiceItemCreateOptions`, `InvoiceItemUpdateOptions`, and `InvoiceItem`
+  * Add support for `IsDefault` on `IssuingPersonalizationDesignPreferencesOptions` and `IssuingPersonalizationDesignPreferences`
+  * Add support for `IsPlatformDefault` on `IssuingPersonalizationDesignPreferencesOptions` and `IssuingPersonalizationDesignPreferences`
+  * Remove support for `AccountDefault` on `IssuingPersonalizationDesignPreferencesOptions` and `IssuingPersonalizationDesignPreferences`
+  * Remove support for `PlatformDefault` on `IssuingPersonalizationDesignPreferencesOptions` and `IssuingPersonalizationDesignPreferences`
+  * Add support for `Liability` on `PaymentLinkAutomaticTaxOptions` and `PaymentLinkAutomaticTax`
+  * Add support for `Issuer` on `PaymentLinkInvoiceCreationInvoiceDataOptions` and `PaymentLinkInvoiceCreationInvoiceData`
+  * Add support for `InvoiceSettings` on `PaymentLinkSubscriptionDataOptions` and `PaymentLinkSubscriptionData`
+
 ## 43.1.0-beta.1 - 2023-10-17
 * [#2782](https://github.com/stripe/stripe-dotnet/pull/2782) Update generated code for beta
   - Update pinned API version to `2023-10-16`
