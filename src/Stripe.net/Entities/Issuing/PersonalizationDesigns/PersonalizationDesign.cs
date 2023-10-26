@@ -27,7 +27,8 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (ID of the File)
-        /// The file for the card logo, for use with physical bundles that support card logos.
+        /// The file for the card logo to use with physical bundles that support card logos. Must
+        /// have a <c>purpose</c> value of <c>issuing_logo</c>.
         /// </summary>
         [JsonIgnore]
         public string CardLogoId
@@ -38,7 +39,8 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (Expanded)
-        /// The file for the card logo, for use with physical bundles that support card logos.
+        /// The file for the card logo to use with physical bundles that support card logos. Must
+        /// have a <c>purpose</c> value of <c>issuing_logo</c>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

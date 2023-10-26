@@ -6,9 +6,9 @@ namespace Stripe.Issuing
     public class PersonalizationDesignPreferencesOptions : INestedOptions
     {
         /// <summary>
-        /// Whether this personalization design is used to create cards when one is not specified. A
-        /// connected account will use the Connect platform's default if no personalization design
-        /// is set as default.
+        /// Whether we use this personalization design to create cards when one isn't specified. A
+        /// connected account uses the Connect platform's default design if no personalization
+        /// design is set as the default design.
         /// </summary>
         [JsonProperty("is_default")]
         public bool? IsDefault { get; set; }
