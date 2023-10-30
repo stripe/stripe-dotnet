@@ -19,6 +19,7 @@ namespace Stripe
 
         /// <summary>
         /// Preferred transaction settlement speed.
+        /// One of: <c>fastest</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("preferred_settlement_speed")]
         public string PreferredSettlementSpeed { get; set; }
@@ -42,6 +43,7 @@ namespace Stripe
         /// If <c>setup_future_usage</c> is already set and you are performing a request using a
         /// publishable key, you may only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
+        /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         public string SetupFutureUsage { get; set; }

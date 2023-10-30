@@ -35,6 +35,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// Whether the product was a merchandise or service.
+        /// One of: <c>merchandise</c>, or <c>service</c>.
         /// </summary>
         [JsonProperty("product_type")]
         public string ProductType { get; set; }

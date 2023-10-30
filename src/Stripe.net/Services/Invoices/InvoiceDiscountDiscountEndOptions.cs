@@ -17,8 +17,8 @@ namespace Stripe
         /// A precise Unix timestamp for the discount to end. Must be in the future.
         /// </summary>
         [JsonProperty("timestamp")]
-        [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<DateTime?, long?> Timestamp { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? Timestamp { get; set; }
 
         /// <summary>
         /// The type of calculation made to determine when the discount ends.

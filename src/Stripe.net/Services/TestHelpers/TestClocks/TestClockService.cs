@@ -26,12 +26,12 @@ namespace Stripe.TestHelpers
 
         public virtual TestClock Advance(string id, TestClockAdvanceOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/advance", options, requestOptions);
+            return this.Request<TestClock>(HttpMethod.Post, $"{this.InstanceUrl(id)}/advance", options, requestOptions);
         }
 
         public virtual Task<TestClock> AdvanceAsync(string id, TestClockAdvanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/advance", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TestClock>(HttpMethod.Post, $"{this.InstanceUrl(id)}/advance", options, requestOptions, cancellationToken);
         }
 
         public virtual TestClock Create(TestClockCreateOptions options, RequestOptions requestOptions = null)

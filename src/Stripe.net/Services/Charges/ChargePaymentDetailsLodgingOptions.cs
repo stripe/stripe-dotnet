@@ -61,6 +61,8 @@ namespace Stripe
 
         /// <summary>
         /// List of additional charges being billed.
+        /// One of: <c>gift_shop</c>, <c>laundry</c>, <c>mini_bar</c>, <c>other</c>,
+        /// <c>restaurant</c>, or <c>telephone</c>.
         /// </summary>
         [JsonProperty("extra_charges")]
         public List<string> ExtraCharges { get; set; }
