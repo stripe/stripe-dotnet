@@ -23,12 +23,15 @@ namespace Stripe.FinancialConnections
         ///
         /// Possible values are <c>balances</c>, <c>transactions</c>, <c>ownership</c>, and
         /// <c>payment_method</c>.
+        /// One of: <c>balances</c>, <c>ownership</c>, <c>payment_method</c>, or
+        /// <c>transactions</c>.
         /// </summary>
         [JsonProperty("permissions")]
         public List<string> Permissions { get; set; }
 
         /// <summary>
         /// List of data features that you would like to retrieve upon account creation.
+        /// One of: <c>balances</c>, or <c>ownership</c>.
         /// </summary>
         [JsonProperty("prefetch")]
         public List<string> Prefetch { get; set; }

@@ -14,6 +14,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// The list of networks that the address supports.
+        /// One of: <c>ach</c>, or <c>us_domestic_wire</c>.
         /// </summary>
         [JsonProperty("supported_networks")]
         public List<string> SupportedNetworks { get; set; }

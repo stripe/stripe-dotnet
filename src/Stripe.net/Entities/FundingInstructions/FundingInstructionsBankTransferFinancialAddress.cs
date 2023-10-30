@@ -26,6 +26,7 @@ namespace Stripe
 
         /// <summary>
         /// The payment networks supported by this FinancialAddress.
+        /// One of: <c>bacs</c>, <c>fps</c>, <c>sepa</c>, <c>spei</c>, or <c>zengin</c>.
         /// </summary>
         [JsonProperty("supported_networks")]
         public List<string> SupportedNetworks { get; set; }

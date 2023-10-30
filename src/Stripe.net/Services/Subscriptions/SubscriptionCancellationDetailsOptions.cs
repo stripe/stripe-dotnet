@@ -15,6 +15,9 @@ namespace Stripe
         /// <summary>
         /// The customer submitted reason for why they canceled, if the subscription was canceled
         /// explicitly by the user.
+        /// One of: <c>customer_service</c>, <c>low_quality</c>, <c>missing_features</c>,
+        /// <c>other</c>, <c>switched_service</c>, <c>too_complex</c>, <c>too_expensive</c>, or
+        /// <c>unused</c>.
         /// </summary>
         [JsonProperty("feedback")]
         public string Feedback { get; set; }

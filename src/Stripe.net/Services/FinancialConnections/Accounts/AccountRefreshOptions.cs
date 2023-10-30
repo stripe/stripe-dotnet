@@ -8,6 +8,7 @@ namespace Stripe.FinancialConnections
     {
         /// <summary>
         /// The list of account features that you would like to refresh.
+        /// One of: <c>balance</c>, or <c>ownership</c>.
         /// </summary>
         [JsonProperty("features")]
         public List<string> Features { get; set; }

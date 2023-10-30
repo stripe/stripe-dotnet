@@ -84,6 +84,7 @@ namespace Stripe
         /// <summary>
         /// A set of available payout methods for this bank account. Only values from this set
         /// should be passed as the <c>method</c> when creating a payout.
+        /// One of: <c>instant</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("available_payout_methods")]
         public List<string> AvailablePayoutMethods { get; set; }

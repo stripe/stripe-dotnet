@@ -14,22 +14,20 @@ namespace Stripe
         public bool? Director { get; set; }
 
         /// <summary>
-        /// A filter on the list of people returned based on whether these people are executives of
-        /// the account's company.
+        /// Whether the person has significant responsibility to control, manage, or direct the
+        /// organization.
         /// </summary>
         [JsonProperty("executive")]
         public bool? Executive { get; set; }
 
         /// <summary>
-        /// A filter on the list of people returned based on whether these people are legal
-        /// guardians of the account's representative.
+        /// Whether the person is the legal guardian of the account's representative.
         /// </summary>
         [JsonProperty("legal_guardian")]
         public bool? LegalGuardian { get; set; }
 
         /// <summary>
-        /// A filter on the list of people returned based on whether these people are owners of the
-        /// account's company.
+        /// Whether the person is an owner of the account’s legal entity.
         /// </summary>
         [JsonProperty("owner")]
         public bool? Owner { get; set; }
