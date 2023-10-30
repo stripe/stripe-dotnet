@@ -106,14 +106,14 @@ namespace Stripe
             return this.ListRequestAutoPagingAsync<PaymentMethod>($"{this.InstanceUrl(id)}/payment_methods", options, requestOptions, cancellationToken);
         }
 
-        public virtual PaymentMethod RetrievePaymentMethod(string id, string payment_method, CustomerRetrievePaymentMethodOptions options = null, RequestOptions requestOptions = null)
+        public virtual PaymentMethod RetrievePaymentMethod(string parentId, string id, CustomerRetrievePaymentMethodOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentMethod>(HttpMethod.Get, $"{this.InstanceUrl(id)}/payment_methods/{payment_method}", options, requestOptions);
+            return this.Request<PaymentMethod>(HttpMethod.Get, $"{this.InstanceUrl(parentId)}/payment_methods/{id}", options, requestOptions);
         }
 
-        public virtual Task<PaymentMethod> RetrievePaymentMethodAsync(string id, string payment_method, CustomerRetrievePaymentMethodOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<PaymentMethod> RetrievePaymentMethodAsync(string parentId, string id, CustomerRetrievePaymentMethodOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentMethod>(HttpMethod.Get, $"{this.InstanceUrl(id)}/payment_methods/{payment_method}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethod>(HttpMethod.Get, $"{this.InstanceUrl(parentId)}/payment_methods/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeSearchResult<Customer> Search(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
