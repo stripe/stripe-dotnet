@@ -35,6 +35,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// Result of cardholder's attempt to return the product.
+        /// One of: <c>merchant_rejected</c>, or <c>successful</c>.
         /// </summary>
         [JsonProperty("return_status")]
         public string ReturnStatus { get; set; }

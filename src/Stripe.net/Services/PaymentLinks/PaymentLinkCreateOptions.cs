@@ -144,6 +144,12 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/payment_methods">payment method settings</a>
         /// (20+ payment methods <a
         /// href="https://stripe.com/docs/payments/payment-methods/integration-options#payment-method-product-support">supported</a>).
+        /// One of: <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>, <c>au_becs_debit</c>,
+        /// <c>bacs_debit</c>, <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
+        /// <c>cashapp</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>,
+        /// <c>klarna</c>, <c>konbini</c>, <c>link</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>,
+        /// <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>sepa_debit</c>, <c>sofort</c>,
+        /// <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }

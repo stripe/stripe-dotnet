@@ -10,6 +10,7 @@ namespace Stripe.Identity
         /// Array of strings of allowed identity document types. If the provided identity document
         /// isn’t one of the allowed types, the verification check will fail with a
         /// document_type_not_allowed error code.
+        /// One of: <c>driving_license</c>, <c>id_card</c>, or <c>passport</c>.
         /// </summary>
         [JsonProperty("allowed_types")]
         public List<string> AllowedTypes { get; set; }

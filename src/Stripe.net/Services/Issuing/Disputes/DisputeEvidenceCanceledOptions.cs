@@ -54,12 +54,14 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// Whether the product was a merchandise or service.
+        /// One of: <c>merchandise</c>, or <c>service</c>.
         /// </summary>
         [JsonProperty("product_type")]
         public string ProductType { get; set; }
 
         /// <summary>
         /// Result of cardholder's attempt to return the product.
+        /// One of: <c>merchant_rejected</c>, or <c>successful</c>.
         /// </summary>
         [JsonProperty("return_status")]
         public string ReturnStatus { get; set; }

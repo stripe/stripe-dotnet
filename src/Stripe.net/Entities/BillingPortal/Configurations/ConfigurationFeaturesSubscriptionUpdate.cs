@@ -9,6 +9,7 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// The types of subscription updates that are supported for items listed in the
         /// <c>products</c> attribute. When empty, subscriptions are not updateable.
+        /// One of: <c>price</c>, <c>promotion_code</c>, or <c>quantity</c>.
         /// </summary>
         [JsonProperty("default_allowed_updates")]
         public List<string> DefaultAllowedUpdates { get; set; }

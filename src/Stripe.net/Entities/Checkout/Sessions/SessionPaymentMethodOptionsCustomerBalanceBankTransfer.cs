@@ -14,6 +14,8 @@ namespace Stripe.Checkout
         /// not specified, all valid types will be returned.
         ///
         /// Permitted values include: <c>sort_code</c>, <c>zengin</c>, <c>iban</c>, or <c>spei</c>.
+        /// One of: <c>aba</c>, <c>iban</c>, <c>sepa</c>, <c>sort_code</c>, <c>spei</c>,
+        /// <c>swift</c>, or <c>zengin</c>.
         /// </summary>
         [JsonProperty("requested_address_types")]
         public List<string> RequestedAddressTypes { get; set; }

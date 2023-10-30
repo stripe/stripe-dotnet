@@ -151,6 +151,9 @@ namespace Stripe
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
 
+        /// <summary>
+        /// One of: <c>automatic</c>, or <c>manual</c>.
+        /// </summary>
         [JsonProperty("confirmation_method")]
         public string ConfirmationMethod { get; set; }
 

@@ -27,6 +27,10 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// The array of paths to active Features in the Features hash.
+        /// One of: <c>card_issuing</c>, <c>deposit_insurance</c>, <c>financial_addresses.aba</c>,
+        /// <c>inbound_transfers.ach</c>, <c>intra_stripe_flows</c>, <c>outbound_payments.ach</c>,
+        /// <c>outbound_payments.us_domestic_wire</c>, <c>outbound_transfers.ach</c>,
+        /// <c>outbound_transfers.us_domestic_wire</c>, or <c>remote_deposit_capture</c>.
         /// </summary>
         [JsonProperty("active_features")]
         public List<string> ActiveFeatures { get; set; }
@@ -82,6 +86,10 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// The array of paths to pending Features in the Features hash.
+        /// One of: <c>card_issuing</c>, <c>deposit_insurance</c>, <c>financial_addresses.aba</c>,
+        /// <c>inbound_transfers.ach</c>, <c>intra_stripe_flows</c>, <c>outbound_payments.ach</c>,
+        /// <c>outbound_payments.us_domestic_wire</c>, <c>outbound_transfers.ach</c>,
+        /// <c>outbound_transfers.us_domestic_wire</c>, or <c>remote_deposit_capture</c>.
         /// </summary>
         [JsonProperty("pending_features")]
         public List<string> PendingFeatures { get; set; }
@@ -94,6 +102,10 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// The array of paths to restricted Features in the Features hash.
+        /// One of: <c>card_issuing</c>, <c>deposit_insurance</c>, <c>financial_addresses.aba</c>,
+        /// <c>inbound_transfers.ach</c>, <c>intra_stripe_flows</c>, <c>outbound_payments.ach</c>,
+        /// <c>outbound_payments.us_domestic_wire</c>, <c>outbound_transfers.ach</c>,
+        /// <c>outbound_transfers.us_domestic_wire</c>, or <c>remote_deposit_capture</c>.
         /// </summary>
         [JsonProperty("restricted_features")]
         public List<string> RestrictedFeatures { get; set; }

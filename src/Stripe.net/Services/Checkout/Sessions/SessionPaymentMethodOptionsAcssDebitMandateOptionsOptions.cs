@@ -19,6 +19,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// List of Stripe products where this mandate can be selected automatically. Only usable in
         /// <c>setup</c> mode.
+        /// One of: <c>invoice</c>, or <c>subscription</c>.
         /// </summary>
         [JsonProperty("default_for")]
         public List<string> DefaultFor { get; set; }

@@ -52,6 +52,7 @@ namespace Stripe.Issuing
         /// <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>. This changes the language of
         /// the <a href="https://stripe.com/docs/issuing/3d-secure">3D Secure flow</a> and one-time
         /// password messages sent to the cardholder.
+        /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>.
         /// </summary>
         [JsonProperty("preferred_locales")]
         public List<string> PreferredLocales { get; set; }

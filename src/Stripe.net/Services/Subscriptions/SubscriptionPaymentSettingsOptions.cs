@@ -20,6 +20,12 @@ namespace Stripe
         /// customer’s default payment method, and your <a
         /// href="https://dashboard.stripe.com/settings/billing/invoice">invoice template
         /// settings</a>.
+        /// One of: <c>ach_credit_transfer</c>, <c>ach_debit</c>, <c>acss_debit</c>,
+        /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>boleto</c>, <c>card</c>,
+        /// <c>cashapp</c>, <c>customer_balance</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
+        /// <c>ideal</c>, <c>konbini</c>, <c>link</c>, <c>paynow</c>, <c>paypal</c>,
+        /// <c>promptpay</c>, <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>,
+        /// <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
