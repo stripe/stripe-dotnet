@@ -21,7 +21,7 @@ namespace Stripe.BillingPortal
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// The list of products that support subscription updates.
+        /// The list of up to 10 products that support subscription updates.
         /// </summary>
         [JsonProperty("products")]
         public List<ConfigurationFeaturesSubscriptionUpdateProductOptions> Products { get; set; }
