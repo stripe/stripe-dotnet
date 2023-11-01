@@ -74,6 +74,9 @@ namespace Stripe.Checkout
         [JsonProperty("pix")]
         public SessionPaymentMethodOptionsPix Pix { get; set; }
 
+        [JsonProperty("revolut_pay")]
+        public SessionPaymentMethodOptionsRevolutPay RevolutPay { get; set; }
+
         [JsonProperty("sepa_debit")]
         public SessionPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 

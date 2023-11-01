@@ -150,6 +150,12 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsPixOptions Pix { get; set; }
 
         /// <summary>
+        /// contains details about the RevolutPay payment method options.
+        /// </summary>
+        [JsonProperty("revolut_pay")]
+        public SessionPaymentMethodOptionsRevolutPayOptions RevolutPay { get; set; }
+
+        /// <summary>
         /// contains details about the Sepa Debit payment method options.
         /// </summary>
         [JsonProperty("sepa_debit")]
