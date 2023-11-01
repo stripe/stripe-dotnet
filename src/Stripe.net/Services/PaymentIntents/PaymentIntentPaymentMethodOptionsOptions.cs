@@ -201,6 +201,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsPromptpayOptions Promptpay { get; set; }
 
         /// <summary>
+        /// If this is a <c>revolut_pay</c> PaymentMethod, this sub-hash contains details about the
+        /// Demo Pay payment method options.
+        /// </summary>
+        [JsonProperty("revolut_pay")]
+        public PaymentIntentPaymentMethodOptionsRevolutPayOptions RevolutPay { get; set; }
+
+        /// <summary>
         /// If this is a <c>sepa_debit</c> PaymentIntent, this sub-hash contains details about the
         /// SEPA Debit payment method options.
         /// </summary>
