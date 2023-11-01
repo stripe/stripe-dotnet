@@ -53,7 +53,7 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
-        [Obsolete("Use ThisPropertyWillBeRemovedInTheNextMajorVersion instead.")]
+        [Obsolete("This property will be removed in the next major version")]
         [JsonProperty("customer_data")]
         public string CustomerData { get; set; }
 
