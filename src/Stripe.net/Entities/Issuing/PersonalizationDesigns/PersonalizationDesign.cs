@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -61,6 +62,13 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("carrier_text")]
         public PersonalizationDesignCarrierText CarrierText { get; set; }
+
+        /// <summary>
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// A lookup key used to retrieve personalization designs dynamically from a static string.
