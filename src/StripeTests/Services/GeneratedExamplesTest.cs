@@ -186,7 +186,7 @@ namespace StripeTests
         {
             var options = new ApplicationFeeListOptions { Limit = 3 };
             var service = new ApplicationFeeService(this.StripeClient);
-            StripeList<ApplicationFee> applicationfees = service.List(options);
+            StripeList<ApplicationFee> applicationFees = service.List(options);
         }
 
         [Fact]
@@ -201,9 +201,8 @@ namespace StripeTests
         {
             var options = new ApplicationFeeRefundListOptions { Limit = 3 };
             var service = new ApplicationFeeRefundService(this.StripeClient);
-            StripeList<ApplicationFeeRefund> applicationfeerefunds = service.List(
-                "fee_xxxxxxxxxxxxx",
-                options);
+            StripeList<ApplicationFeeRefund> applicationFeeRefunds = service
+                .List("fee_xxxxxxxxxxxxx", options);
         }
 
         [Fact]
@@ -313,7 +312,7 @@ namespace StripeTests
         {
             var options = new BalanceTransactionListOptions { Limit = 3 };
             var service = new BalanceTransactionService(this.StripeClient);
-            StripeList<BalanceTransaction> balancetransactions = service.List(
+            StripeList<BalanceTransaction> balanceTransactions = service.List(
                 options);
         }
 
@@ -333,8 +332,8 @@ namespace StripeTests
             };
             var service = new Stripe.BillingPortal.ConfigurationService(
                 this.StripeClient);
-            StripeList<Stripe.BillingPortal.Configuration> configurations = service.List(
-                options);
+            StripeList<Stripe.BillingPortal.Configuration> configurations = service
+                .List(options);
         }
 
         [Fact]
@@ -497,7 +496,7 @@ namespace StripeTests
         public void TestCheckoutSessionsLineItemsGet()
         {
             var service = new Stripe.Checkout.SessionService(this.StripeClient);
-            service.ListLineItems("sess_xyz");
+            StripeList<LineItem> lineItems = service.ListLineItems("sess_xyz");
         }
 
         [Fact]
@@ -565,7 +564,7 @@ namespace StripeTests
         {
             var options = new CountrySpecListOptions { Limit = 3 };
             var service = new CountrySpecService(this.StripeClient);
-            StripeList<CountrySpec> countryspecs = service.List(options);
+            StripeList<CountrySpec> countrySpecs = service.List(options);
         }
 
         [Fact]
@@ -602,7 +601,7 @@ namespace StripeTests
         {
             var options = new CouponCreateOptions
             {
-                PercentOff = 25.5m,
+                PercentOff = 25.5M,
                 Duration = "repeating",
                 DurationInMonths = 3,
             };
@@ -629,7 +628,7 @@ namespace StripeTests
         {
             var options = new CreditNoteListOptions { Limit = 3 };
             var service = new CreditNoteService(this.StripeClient);
-            StripeList<CreditNote> creditnotes = service.List(options);
+            StripeList<CreditNote> creditNotes = service.List(options);
         }
 
         [Fact]
@@ -688,9 +687,8 @@ namespace StripeTests
             };
             var service = new CustomerBalanceTransactionService(
                 this.StripeClient);
-            StripeList<CustomerBalanceTransaction> customerbalancetransactions = service.List(
-                "cus_xxxxxxxxxxxxx",
-                options);
+            StripeList<CustomerBalanceTransaction> customerBalanceTransactions = service
+                .List("cus_xxxxxxxxxxxxx", options);
         }
 
         [Fact]
@@ -805,7 +803,8 @@ namespace StripeTests
                 Type = "card",
             };
             var service = new CustomerService(this.StripeClient);
-            service.ListPaymentMethods("cus_xyz", options);
+            StripeList<PaymentMethod> paymentMethods = service
+                .ListPaymentMethods("cus_xyz", options);
         }
 
         [Fact]
@@ -816,7 +815,8 @@ namespace StripeTests
                 Type = "card",
             };
             var service = new CustomerService(this.StripeClient);
-            service.ListPaymentMethods("cus_xxxxxxxxxxxxx", options);
+            StripeList<PaymentMethod> paymentMethods = service
+                .ListPaymentMethods("cus_xxxxxxxxxxxxx", options);
         }
 
         [Fact]
@@ -878,7 +878,7 @@ namespace StripeTests
         {
             var options = new TaxIdListOptions { Limit = 3 };
             var service = new TaxIdService(this.StripeClient);
-            StripeList<TaxId> taxids = service.List(
+            StripeList<TaxId> taxIds = service.List(
                 "cus_xxxxxxxxxxxxx",
                 options);
         }
@@ -958,7 +958,7 @@ namespace StripeTests
         {
             var options = new FileLinkListOptions { Limit = 3 };
             var service = new FileLinkService(this.StripeClient);
-            StripeList<FileLink> filelinks = service.List(options);
+            StripeList<FileLink> fileLinks = service.List(options);
         }
 
         [Fact]
@@ -1009,6 +1009,19 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestFilesPost()
+        {
+            var options = new FileCreateOptions
+            {
+                Purpose = "account_requirement",
+                File = new System.IO.MemoryStream(
+                    System.Text.Encoding.UTF8.GetBytes("File contents")),
+            };
+            var service = new FileService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestFinancialConnectionsAccountsDisconnectPost()
         {
             var service = new Stripe.FinancialConnections.AccountService(
@@ -1029,7 +1042,8 @@ namespace StripeTests
         {
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
-            StripeList<Stripe.FinancialConnections.Account> accounts = service.List();
+            StripeList<Stripe.FinancialConnections.Account> accounts = service
+                .List();
         }
 
         [Fact]
@@ -1052,8 +1066,8 @@ namespace StripeTests
             };
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
-            StripeList<Stripe.FinancialConnections.Account> accounts = service.List(
-                options);
+            StripeList<Stripe.FinancialConnections.Account> accounts = service
+                .List(options);
         }
 
         [Fact]
@@ -1073,7 +1087,8 @@ namespace StripeTests
             };
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
-            service.ListOwners("fca_xyz", options);
+            StripeList<Stripe.FinancialConnections.AccountOwner> accountOwners = service
+                .ListOwners("fca_xyz", options);
         }
 
         [Fact]
@@ -1086,7 +1101,8 @@ namespace StripeTests
             };
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
-            service.ListOwners("fca_xxxxxxxxxxxxx", options);
+            StripeList<Stripe.FinancialConnections.AccountOwner> accountOwners = service
+                .ListOwners("fca_xxxxxxxxxxxxx", options);
         }
 
         [Fact]
@@ -1164,8 +1180,8 @@ namespace StripeTests
             };
             var service = new Stripe.Identity.VerificationReportService(
                 this.StripeClient);
-            StripeList<Stripe.Identity.VerificationReport> verificationreports = service.List(
-                options);
+            StripeList<Stripe.Identity.VerificationReport> verificationReports = service
+                .List(options);
         }
 
         [Fact]
@@ -1193,8 +1209,8 @@ namespace StripeTests
             };
             var service = new Stripe.Identity.VerificationSessionService(
                 this.StripeClient);
-            StripeList<Stripe.Identity.VerificationSession> verificationsessions = service.List(
-                options);
+            StripeList<Stripe.Identity.VerificationSession> verificationSessions = service
+                .List(options);
         }
 
         [Fact]
@@ -1249,7 +1265,7 @@ namespace StripeTests
         {
             var options = new InvoiceItemListOptions { Limit = 3 };
             var service = new InvoiceItemService(this.StripeClient);
-            StripeList<InvoiceItem> invoiceitems = service.List(options);
+            StripeList<InvoiceItem> invoiceItems = service.List(options);
         }
 
         [Fact]
@@ -1425,8 +1441,8 @@ namespace StripeTests
             };
             var service = new Stripe.Issuing.AuthorizationService(
                 this.StripeClient);
-            StripeList<Stripe.Issuing.Authorization> authorizations = service.List(
-                options);
+            StripeList<Stripe.Issuing.Authorization> authorizations = service
+                .List(options);
         }
 
         [Fact]
@@ -1677,7 +1693,7 @@ namespace StripeTests
         {
             var options = new PaymentIntentListOptions { Limit = 3 };
             var service = new PaymentIntentService(this.StripeClient);
-            StripeList<PaymentIntent> paymentintents = service.List(options);
+            StripeList<PaymentIntent> paymentIntents = service.List(options);
         }
 
         [Fact]
@@ -1805,7 +1821,7 @@ namespace StripeTests
         {
             var options = new PaymentLinkListOptions { Limit = 3 };
             var service = new PaymentLinkService(this.StripeClient);
-            StripeList<PaymentLink> paymentlinks = service.List(options);
+            StripeList<PaymentLink> paymentLinks = service.List(options);
         }
 
         [Fact]
@@ -1819,7 +1835,7 @@ namespace StripeTests
         public void TestPaymentLinksLineItemsGet()
         {
             var service = new PaymentLinkService(this.StripeClient);
-            service.ListLineItems("pl_xyz");
+            StripeList<LineItem> lineItems = service.ListLineItems("pl_xyz");
         }
 
         [Fact]
@@ -1875,8 +1891,8 @@ namespace StripeTests
             };
             var service = new PaymentMethodConfigurationService(
                 this.StripeClient);
-            StripeList<PaymentMethodConfiguration> paymentmethodconfigurations = service.List(
-                options);
+            StripeList<PaymentMethodConfiguration> paymentMethodConfigurations = service
+                .List(options);
         }
 
         [Fact]
@@ -1957,7 +1973,7 @@ namespace StripeTests
                 Type = "card",
             };
             var service = new PaymentMethodService(this.StripeClient);
-            StripeList<PaymentMethod> paymentmethods = service.List(options);
+            StripeList<PaymentMethod> paymentMethods = service.List(options);
         }
 
         [Fact]
@@ -2261,7 +2277,7 @@ namespace StripeTests
         {
             var options = new PromotionCodeListOptions { Limit = 3 };
             var service = new PromotionCodeService(this.StripeClient);
-            StripeList<PromotionCode> promotioncodes = service.List(options);
+            StripeList<PromotionCode> promotionCodes = service.List(options);
         }
 
         [Fact]
@@ -2336,7 +2352,8 @@ namespace StripeTests
         public void TestQuotesLineItemsGet()
         {
             var service = new QuoteService(this.StripeClient);
-            service.ListLineItems("qt_xxxxxxxxxxxxx");
+            StripeList<LineItem> lineItems = service.ListLineItems(
+                "qt_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2383,7 +2400,8 @@ namespace StripeTests
         public void TestQuotesPreviewInvoicesLinesGet()
         {
             var service = new QuoteService(this.StripeClient);
-            service.ListPreviewInvoiceLines("qt_xyz", "in_xyz");
+            StripeList<InvoiceLineItem> invoiceLineItems = service
+                .ListPreviewInvoiceLines("qt_xyz", "in_xyz");
         }
 
         [Fact]
@@ -2395,8 +2413,8 @@ namespace StripeTests
             };
             var service = new Stripe.Radar.EarlyFraudWarningService(
                 this.StripeClient);
-            StripeList<Stripe.Radar.EarlyFraudWarning> earlyfraudwarnings = service.List(
-                options);
+            StripeList<Stripe.Radar.EarlyFraudWarning> earlyFraudWarnings = service
+                .List(options);
         }
 
         [Fact]
@@ -2425,8 +2443,8 @@ namespace StripeTests
             };
             var service = new Stripe.Radar.ValueListItemService(
                 this.StripeClient);
-            StripeList<Stripe.Radar.ValueListItem> valuelistitems = service.List(
-                options);
+            StripeList<Stripe.Radar.ValueListItem> valueListItems = service
+                .List(options);
         }
 
         [Fact]
@@ -2462,7 +2480,7 @@ namespace StripeTests
         {
             var options = new Stripe.Radar.ValueListListOptions { Limit = 3 };
             var service = new Stripe.Radar.ValueListService(this.StripeClient);
-            StripeList<Stripe.Radar.ValueList> valuelists = service.List(
+            StripeList<Stripe.Radar.ValueList> valueLists = service.List(
                 options);
         }
 
@@ -2553,7 +2571,7 @@ namespace StripeTests
             };
             var service = new Stripe.Reporting.ReportRunService(
                 this.StripeClient);
-            StripeList<Stripe.Reporting.ReportRun> reportruns = service.List(
+            StripeList<Stripe.Reporting.ReportRun> reportRuns = service.List(
                 options);
         }
 
@@ -2590,7 +2608,8 @@ namespace StripeTests
         {
             var service = new Stripe.Reporting.ReportTypeService(
                 this.StripeClient);
-            StripeList<Stripe.Reporting.ReportType> reporttypes = service.List();
+            StripeList<Stripe.Reporting.ReportType> reportTypes = service
+                .List();
         }
 
         [Fact]
@@ -2632,7 +2651,7 @@ namespace StripeTests
                 SetupIntent = "si_xyz",
             };
             var service = new SetupAttemptService(this.StripeClient);
-            StripeList<SetupAttempt> setupattempts = service.List(options);
+            StripeList<SetupAttempt> setupAttempts = service.List(options);
         }
 
         [Fact]
@@ -2658,7 +2677,7 @@ namespace StripeTests
         {
             var options = new SetupIntentListOptions { Limit = 3 };
             var service = new SetupIntentService(this.StripeClient);
-            StripeList<SetupIntent> setupintents = service.List(options);
+            StripeList<SetupIntent> setupIntents = service.List(options);
         }
 
         [Fact]
@@ -2715,7 +2734,7 @@ namespace StripeTests
         public void TestShippingRatesGet()
         {
             var service = new ShippingRateService(this.StripeClient);
-            StripeList<ShippingRate> shippingrates = service.List();
+            StripeList<ShippingRate> shippingRates = service.List();
         }
 
         [Fact]
@@ -2723,7 +2742,7 @@ namespace StripeTests
         {
             var options = new ShippingRateListOptions { Limit = 3 };
             var service = new ShippingRateService(this.StripeClient);
-            StripeList<ShippingRate> shippingrates = service.List(options);
+            StripeList<ShippingRate> shippingRates = service.List(options);
         }
 
         [Fact]
@@ -2790,8 +2809,8 @@ namespace StripeTests
             };
             var service = new Stripe.Sigma.ScheduledQueryRunService(
                 this.StripeClient);
-            StripeList<Stripe.Sigma.ScheduledQueryRun> scheduledqueryruns = service.List(
-                options);
+            StripeList<Stripe.Sigma.ScheduledQueryRun> scheduledQueryRuns = service
+                .List(options);
         }
 
         [Fact]
@@ -2845,7 +2864,7 @@ namespace StripeTests
                 Subscription = "sub_xxxxxxxxxxxxx",
             };
             var service = new SubscriptionItemService(this.StripeClient);
-            StripeList<SubscriptionItem> subscriptionitems = service.List(
+            StripeList<SubscriptionItem> subscriptionItems = service.List(
                 options);
         }
 
@@ -2888,9 +2907,22 @@ namespace StripeTests
         {
             var options = new UsageRecordSummaryListOptions { Limit = 3 };
             var service = new UsageRecordSummaryService(this.StripeClient);
-            StripeList<UsageRecordSummary> usagerecordsummaries = service.List(
+            StripeList<UsageRecordSummary> usageRecordSummaries = service.List(
                 "si_xxxxxxxxxxxxx",
                 options);
+        }
+
+        [Fact]
+        public void TestSubscriptionItemsUsageRecordsPost()
+        {
+            var options = new UsageRecordCreateOptions
+            {
+                Quantity = 100,
+                Timestamp = DateTimeOffset.FromUnixTimeSeconds(1571252444)
+                    .UtcDateTime,
+            };
+            var service = new UsageRecordService(this.StripeClient);
+            service.Create("si_xxxxxxxxxxxxx", options);
         }
 
         [Fact]
@@ -2905,8 +2937,8 @@ namespace StripeTests
         {
             var options = new SubscriptionScheduleListOptions { Limit = 3 };
             var service = new SubscriptionScheduleService(this.StripeClient);
-            StripeList<SubscriptionSchedule> subscriptionschedules = service.List(
-                options);
+            StripeList<SubscriptionSchedule> subscriptionSchedules = service
+                .List(options);
         }
 
         [Fact]
@@ -2914,6 +2946,35 @@ namespace StripeTests
         {
             var service = new SubscriptionScheduleService(this.StripeClient);
             service.Get("sub_sched_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSubscriptionSchedulesPost()
+        {
+            var options = new SubscriptionScheduleCreateOptions
+            {
+                Customer = "cus_xxxxxxxxxxxxx",
+                StartDate = DateTimeOffset.FromUnixTimeSeconds(1676070661)
+                    .UtcDateTime,
+                EndBehavior = "release",
+                Phases = new List<SubscriptionSchedulePhaseOptions>
+                {
+                    new SubscriptionSchedulePhaseOptions
+                    {
+                        Items = new List<SubscriptionSchedulePhaseItemOptions>
+                        {
+                            new SubscriptionSchedulePhaseItemOptions
+                            {
+                                Price = "price_xxxxxxxxxxxxx",
+                                Quantity = 1,
+                            },
+                        },
+                        Iterations = 12,
+                    },
+                },
+            };
+            var service = new SubscriptionScheduleService(this.StripeClient);
+            service.Create(options);
         }
 
         [Fact]
@@ -3010,7 +3071,8 @@ namespace StripeTests
         public void TestTaxCalculationsLineItemsGet()
         {
             var service = new Stripe.Tax.CalculationService(this.StripeClient);
-            service.ListLineItems("xxx");
+            StripeList<Stripe.Tax.CalculationLineItem> calculationLineItems = service
+                .ListLineItems("xxx");
         }
 
         [Fact]
@@ -3049,7 +3111,7 @@ namespace StripeTests
         {
             var options = new TaxCodeListOptions { Limit = 3 };
             var service = new TaxCodeService(this.StripeClient);
-            StripeList<TaxCode> taxcodes = service.List(options);
+            StripeList<TaxCode> taxCodes = service.List(options);
         }
 
         [Fact]
@@ -3071,7 +3133,7 @@ namespace StripeTests
         {
             var options = new TaxRateListOptions { Limit = 3 };
             var service = new TaxRateService(this.StripeClient);
-            StripeList<TaxRate> taxrates = service.List(options);
+            StripeList<TaxRate> taxRates = service.List(options);
         }
 
         [Fact]
@@ -3089,7 +3151,7 @@ namespace StripeTests
                 DisplayName = "VAT",
                 Description = "VAT Germany",
                 Jurisdiction = "DE",
-                Percentage = 16m,
+                Percentage = 16M,
                 Inclusive = false,
             };
             var service = new TaxRateService(this.StripeClient);
@@ -3137,7 +3199,8 @@ namespace StripeTests
         {
             var service = new Stripe.Terminal.ConfigurationService(
                 this.StripeClient);
-            StripeList<Stripe.Terminal.Configuration> configurations = service.List();
+            StripeList<Stripe.Terminal.Configuration> configurations = service
+                .List();
         }
 
         [Fact]
@@ -3157,8 +3220,8 @@ namespace StripeTests
             };
             var service = new Stripe.Terminal.ConfigurationService(
                 this.StripeClient);
-            StripeList<Stripe.Terminal.Configuration> configurations = service.List(
-                options);
+            StripeList<Stripe.Terminal.Configuration> configurations = service
+                .List(options);
         }
 
         [Fact]
@@ -3224,6 +3287,15 @@ namespace StripeTests
             var service = new Stripe.Terminal.ConfigurationService(
                 this.StripeClient);
             service.Update("tmc_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTerminalConnectionTokensPost()
+        {
+            var options = new Stripe.Terminal.ConnectionTokenCreateOptions();
+            var service = new Stripe.Terminal.ConnectionTokenService(
+                this.StripeClient);
+            service.Create(options);
         }
 
         [Fact]
@@ -3759,7 +3831,8 @@ namespace StripeTests
         {
             var service = new Stripe.TestHelpers.TestClockService(
                 this.StripeClient);
-            StripeList<Stripe.TestHelpers.TestClock> testclocks = service.List();
+            StripeList<Stripe.TestHelpers.TestClock> testClocks = service
+                .List();
         }
 
         [Fact]
@@ -3779,7 +3852,7 @@ namespace StripeTests
             };
             var service = new Stripe.TestHelpers.TestClockService(
                 this.StripeClient);
-            StripeList<Stripe.TestHelpers.TestClock> testclocks = service.List(
+            StripeList<Stripe.TestHelpers.TestClock> testClocks = service.List(
                 options);
         }
 
@@ -3918,6 +3991,102 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTokensPost()
+        {
+            var options = new TokenCreateOptions
+            {
+                Card = new TokenCardOptions
+                {
+                    Number = "4242424242424242",
+                    ExpMonth = "5",
+                    ExpYear = "2023",
+                    Cvc = "314",
+                },
+            };
+            var service = new TokenService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTokensPost2()
+        {
+            var options = new TokenCreateOptions
+            {
+                BankAccount = new TokenBankAccountOptions
+                {
+                    Country = "US",
+                    Currency = "usd",
+                    AccountHolderName = "Jenny Rosen",
+                    AccountHolderType = "individual",
+                    RoutingNumber = "110000000",
+                    AccountNumber = "000123456789",
+                },
+            };
+            var service = new TokenService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTokensPost3()
+        {
+            var options = new TokenCreateOptions
+            {
+                Pii = new TokenPiiOptions { IdNumber = "000000000" },
+            };
+            var service = new TokenService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTokensPost4()
+        {
+            var options = new TokenCreateOptions
+            {
+                Account = new TokenAccountOptions
+                {
+                    Individual = new TokenAccountIndividualOptions
+                    {
+                        FirstName = "Jane",
+                        LastName = "Doe",
+                    },
+                    TosShownAndAccepted = true,
+                },
+            };
+            var service = new TokenService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTokensPost5()
+        {
+            var options = new TokenCreateOptions
+            {
+                Person = new TokenPersonOptions
+                {
+                    FirstName = "Jane",
+                    LastName = "Doe",
+                    Relationship = new TokenPersonRelationshipOptions
+                    {
+                        Owner = true,
+                    },
+                },
+            };
+            var service = new TokenService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTokensPost6()
+        {
+            var options = new TokenCreateOptions
+            {
+                CvcUpdate = new TokenCvcUpdateOptions { Cvc = "123" },
+            };
+            var service = new TokenService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestTopupsCancelPost()
         {
             var service = new TopupService(this.StripeClient);
@@ -4015,7 +4184,7 @@ namespace StripeTests
         {
             var options = new TransferReversalListOptions { Limit = 3 };
             var service = new TransferReversalService(this.StripeClient);
-            StripeList<TransferReversal> transferreversals = service.List(
+            StripeList<TransferReversal> transferReversals = service.List(
                 "tr_xxxxxxxxxxxxx",
                 options);
         }
@@ -4059,8 +4228,8 @@ namespace StripeTests
             };
             var service = new Stripe.Treasury.CreditReversalService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.CreditReversal> creditreversals = service.List(
-                options);
+            StripeList<Stripe.Treasury.CreditReversal> creditReversals = service
+                .List(options);
         }
 
         [Fact]
@@ -4093,8 +4262,8 @@ namespace StripeTests
             };
             var service = new Stripe.Treasury.DebitReversalService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.DebitReversal> debitreversals = service.List(
-                options);
+            StripeList<Stripe.Treasury.DebitReversal> debitReversals = service
+                .List(options);
         }
 
         [Fact]
@@ -4134,8 +4303,8 @@ namespace StripeTests
             };
             var service = new Stripe.Treasury.FinancialAccountService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.FinancialAccount> financialaccounts = service.List(
-                options);
+            StripeList<Stripe.Treasury.FinancialAccount> financialAccounts = service
+                .List(options);
         }
 
         [Fact]
@@ -4192,8 +4361,8 @@ namespace StripeTests
             };
             var service = new Stripe.Treasury.InboundTransferService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.InboundTransfer> inboundtransfers = service.List(
-                options);
+            StripeList<Stripe.Treasury.InboundTransfer> inboundTransfers = service
+                .List(options);
         }
 
         [Fact]
@@ -4238,8 +4407,8 @@ namespace StripeTests
             };
             var service = new Stripe.Treasury.OutboundPaymentService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.OutboundPayment> outboundpayments = service.List(
-                options);
+            StripeList<Stripe.Treasury.OutboundPayment> outboundPayments = service
+                .List(options);
         }
 
         [Fact]
@@ -4285,8 +4454,8 @@ namespace StripeTests
             };
             var service = new Stripe.Treasury.OutboundTransferService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.OutboundTransfer> outboundtransfers = service.List(
-                options);
+            StripeList<Stripe.Treasury.OutboundTransfer> outboundTransfers = service
+                .List(options);
         }
 
         [Fact]
@@ -4323,8 +4492,8 @@ namespace StripeTests
             };
             var service = new Stripe.Treasury.ReceivedCreditService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.ReceivedCredit> receivedcredits = service.List(
-                options);
+            StripeList<Stripe.Treasury.ReceivedCredit> receivedCredits = service
+                .List(options);
         }
 
         [Fact]
@@ -4345,8 +4514,8 @@ namespace StripeTests
             };
             var service = new Stripe.Treasury.ReceivedDebitService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.ReceivedDebit> receiveddebits = service.List(
-                options);
+            StripeList<Stripe.Treasury.ReceivedDebit> receivedDebits = service
+                .List(options);
         }
 
         [Fact]
@@ -4367,8 +4536,8 @@ namespace StripeTests
             };
             var service = new Stripe.Treasury.TransactionEntryService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.TransactionEntry> transactionentries = service.List(
-                options);
+            StripeList<Stripe.Treasury.TransactionEntry> transactionEntries = service
+                .List(options);
         }
 
         [Fact]
@@ -4413,7 +4582,7 @@ namespace StripeTests
         {
             var options = new WebhookEndpointListOptions { Limit = 3 };
             var service = new WebhookEndpointService(this.StripeClient);
-            StripeList<WebhookEndpoint> webhookendpoints = service.List(
+            StripeList<WebhookEndpoint> webhookEndpoints = service.List(
                 options);
         }
 
