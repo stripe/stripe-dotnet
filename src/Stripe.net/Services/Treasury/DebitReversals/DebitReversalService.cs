@@ -2,6 +2,7 @@
 namespace Stripe.Treasury
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -24,42 +25,42 @@ namespace Stripe.Treasury
 
         public virtual DebitReversal Create(DebitReversalCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<DebitReversal>(HttpMethod.Post, $"/v1/treasury/debit_reversals", options, requestOptions);
         }
 
         public virtual Task<DebitReversal> CreateAsync(DebitReversalCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<DebitReversal>(HttpMethod.Post, $"/v1/treasury/debit_reversals", options, requestOptions, cancellationToken);
         }
 
         public virtual DebitReversal Get(string id, DebitReversalGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<DebitReversal>(HttpMethod.Get, $"/v1/treasury/debit_reversals/{id}", options, requestOptions);
         }
 
         public virtual Task<DebitReversal> GetAsync(string id, DebitReversalGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<DebitReversal>(HttpMethod.Get, $"/v1/treasury/debit_reversals/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<DebitReversal> List(DebitReversalListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<DebitReversal>>(HttpMethod.Get, $"/v1/treasury/debit_reversals", options, requestOptions);
         }
 
         public virtual Task<StripeList<DebitReversal>> ListAsync(DebitReversalListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<DebitReversal>>(HttpMethod.Get, $"/v1/treasury/debit_reversals", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<DebitReversal> ListAutoPaging(DebitReversalListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<DebitReversal>($"/v1/treasury/debit_reversals", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<DebitReversal> ListAutoPagingAsync(DebitReversalListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<DebitReversal>($"/v1/treasury/debit_reversals", options, requestOptions, cancellationToken);
         }
     }
 }

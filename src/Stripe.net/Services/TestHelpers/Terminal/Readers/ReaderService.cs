@@ -22,12 +22,12 @@ namespace Stripe.TestHelpers.Terminal
 
         public virtual Stripe.Terminal.Reader PresentPaymentMethod(string id, ReaderPresentPaymentMethodOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/present_payment_method", options, requestOptions);
+            return this.Request<Stripe.Terminal.Reader>(HttpMethod.Post, $"/v1/test_helpers/terminal/readers/{id}/present_payment_method", options, requestOptions);
         }
 
         public virtual Task<Stripe.Terminal.Reader> PresentPaymentMethodAsync(string id, ReaderPresentPaymentMethodOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/present_payment_method", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Terminal.Reader>(HttpMethod.Post, $"/v1/test_helpers/terminal/readers/{id}/present_payment_method", options, requestOptions, cancellationToken);
         }
     }
 }
