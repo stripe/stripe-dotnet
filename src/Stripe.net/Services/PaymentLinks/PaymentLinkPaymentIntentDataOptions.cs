@@ -14,6 +14,12 @@ namespace Stripe
         public string CaptureMethod { get; set; }
 
         /// <summary>
+        /// An arbitrary string attached to the object. Often useful for displaying to users.
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will
         /// declaratively set metadata on <a
         /// href="https://stripe.com/docs/api/payment_intents">Payment Intents</a> generated from
