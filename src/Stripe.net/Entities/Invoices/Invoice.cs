@@ -134,6 +134,13 @@ namespace Stripe
         [JsonProperty("amount_shipping")]
         public long AmountShipping { get; set; }
 
+        /// <summary>
+        /// List of expected payments and corresponding due dates. This value will be null for
+        /// invoices where collection_method=charge_automatically.
+        /// </summary>
+        [JsonProperty("amounts_due")]
+        public List<InvoiceAmountsDue> AmountsDue { get; set; }
+
         #region Expandable Application
 
         /// <summary>
@@ -755,6 +762,12 @@ namespace Stripe
 
         [JsonProperty("payment_settings")]
         public InvoicePaymentSettings PaymentSettings { get; set; }
+
+        /// <summary>
+        /// Payments for this invoice.
+        /// </summary>
+        [JsonProperty("payments")]
+        public StripeList<InvoicePayment> Payments { get; set; }
 
         /// <summary>
         /// End of the usage period during which invoice items were added to this invoice.

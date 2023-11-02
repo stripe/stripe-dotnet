@@ -107,6 +107,7 @@ namespace Stripe
                         Identity.VerificationSession)
                 },
                 { "invoice", typeof(Invoice) },
+                { "invoice_payment", typeof(InvoicePayment) },
                 { "invoiceitem", typeof(InvoiceItem) },
                 { "issuing.authorization", typeof(Issuing.Authorization) },
                 { "issuing.card", typeof(Issuing.Card) },

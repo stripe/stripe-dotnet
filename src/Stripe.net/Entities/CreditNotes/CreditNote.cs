@@ -215,6 +215,12 @@ namespace Stripe
         [JsonProperty("pdf")]
         public string Pdf { get; set; }
 
+        [JsonProperty("post_payment_amount")]
+        public long PostPaymentAmount { get; set; }
+
+        [JsonProperty("pre_payment_amount")]
+        public long PrePaymentAmount { get; set; }
+
         /// <summary>
         /// Reason for issuing this credit note, one of <c>duplicate</c>, <c>fraudulent</c>,
         /// <c>order_change</c>, or <c>product_unsatisfactory</c>.
@@ -254,6 +260,12 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
         internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion
+
+        /// <summary>
+        /// Refunds related to this credit note.
+        /// </summary>
+        [JsonProperty("refunds")]
+        public List<CreditNoteRefund> Refunds { get; set; }
 
         /// <summary>
         /// The details of the cost of shipping, including the ShippingRate applied to the invoice.
