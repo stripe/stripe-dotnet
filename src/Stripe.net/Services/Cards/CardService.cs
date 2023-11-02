@@ -12,6 +12,7 @@ namespace Stripe
         INestedRetrievable<Card, CardGetOptions>,
         INestedUpdatable<Card, CardUpdateOptions>
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         public CardService()
             : base(null)
         {
@@ -83,5 +84,6 @@ namespace Stripe
         {
             return this.UpdateNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
         }
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 }

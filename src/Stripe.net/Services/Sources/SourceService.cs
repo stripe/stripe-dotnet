@@ -11,6 +11,7 @@ namespace Stripe
         IUpdatable<Source, SourceUpdateOptions>,
         INestedListable<Source, SourceListOptions>
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         public SourceService()
             : base(null)
         {
@@ -102,5 +103,6 @@ namespace Stripe
         {
             return this.RequestAsync<Source>(HttpMethod.Post, $"{this.InstanceUrl(id)}/verify", options, requestOptions, cancellationToken);
         }
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 }
