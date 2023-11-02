@@ -14,6 +14,19 @@
   * Change type of `TaxRegistrationActiveFromOptions` and `TaxRegistrationExpiresAtOptions` to `literal('now') | DateTime`
   * Change type of `TaxRegistrationActiveFrom`, `TaxRegistrationCreated`, `TaxRegistrationExpiresAtOptions`, and `TaxRegistrationExpiresAt` from `longInteger` to `DateTime`
 
+## 43.1.0 - 2023-11-02
+* [#2787](https://github.com/stripe/stripe-dotnet/pull/2787) Update generated code
+  * Add support for new resource `Tax.Registration`
+  * Add support for `Create`, `List`, and `Update` methods on resource `Registration`
+  * Add support for `RevolutPay` throughout the API.
+  * Add support for `Aba` and `Swift` on `FundingInstructionsBankTransferFinancialAddresses` and `PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddresses`
+  * Add support for `Url` on `IssuingAuthorizationMerchantDataOptions`, `IssuingAuthorizationMerchantData`, `IssuingTransactionMerchantDataOptions`, and `IssuingTransactionMerchantData`
+  * Add support for `AuthenticationExemption` and `ThreeDSecure` on `IssuingAuthorizationVerificationDataOptions` and `IssuingAuthorizationVerificationData`
+  * Add support for `Description` on `PaymentLinkPaymentIntentDataOptions` and `PaymentLinkPaymentIntentData`
+* [#2791](https://github.com/stripe/stripe-dotnet/pull/2791) Use RequestAsync directly
+* [#2790](https://github.com/stripe/stripe-dotnet/pull/2790) Generate all resource classes
+* [#2789](https://github.com/stripe/stripe-dotnet/pull/2789) Add list enum comments and autogenerate more options
+
 ## 43.1.0-beta.2 - 2023-10-26
 * [#2784](https://github.com/stripe/stripe-dotnet/pull/2784) Update generated code for beta
   * Add support for new resource `Margin`
