@@ -276,9 +276,10 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
-        /// For external accounts, possible values are <c>new</c> and <c>errored</c>. If a transfer
-        /// fails, the status is set to <c>errored</c> and transfers are stopped until account
-        /// details are updated.
+        /// For external accounts that are cards, possible values are <c>new</c> and <c>errored</c>.
+        /// If a payout fails, the status is set to <c>errored</c> and <a
+        /// href="https://stripe.com/docs/payouts#payout-schedule">scheduled payouts</a> are stopped
+        /// until account details are updated.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
